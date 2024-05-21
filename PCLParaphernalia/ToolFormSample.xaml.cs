@@ -566,8 +566,7 @@ namespace PCLParaphernalia
             if (!File.Exists (filename))
                 idPresent = false;
             else
-                idPresent = PCLDownloadMacro.checkMacroFile (filename,
-                                                             ref macroId);
+                idPresent = PCLDownloadMacro.checkMacroFile (filename, ref macroId);
 
             if (idPresent)
             {
@@ -629,8 +628,7 @@ namespace PCLParaphernalia
             if (!File.Exists(filename))
                 idPresent = false;
             else
-                idPresent = PCLXLDownloadStream.checkStreamFile (filename,
-                                                                 ref streamName);
+                idPresent = PCLXLDownloadStream.checkStreamFile (filename, ref streamName);
 
             if (idPresent)
             {
@@ -1031,11 +1029,9 @@ namespace PCLParaphernalia
                                                    ref _flagPrintDescTextPCL);
 
             if (indxMethodTemp < (Int32) ToolFormSamplePCL.eMacroMethod.Max)
-                _indxMethodPCL =
-                    (ToolFormSamplePCL.eMacroMethod) indxMethodTemp;
+                _indxMethodPCL = (ToolFormSamplePCL.eMacroMethod) indxMethodTemp;
             else
-                _indxMethodPCL =
-                    ToolFormSamplePCL.eMacroMethod.CallBegin;
+                _indxMethodPCL = ToolFormSamplePCL.eMacroMethod.CallBegin;
             
             ToolFormSamplePersist.loadDataGeneral ("PCLXL",
                                                    ref _indxPaperTypePCLXL,
@@ -1052,11 +1048,9 @@ namespace PCLParaphernalia
                                                    ref _flagPrintDescTextPCLXL);
 
             if (indxMethodTemp < (Int32) ToolFormSamplePCLX.eStreamMethod.Max)
-                _indxMethodPCLXL =
-                    (ToolFormSamplePCLX.eStreamMethod) indxMethodTemp;
+                _indxMethodPCLXL = (ToolFormSamplePCLX.eStreamMethod) indxMethodTemp;
             else
-                _indxMethodPCLXL =
-                    ToolFormSamplePCLX.eStreamMethod.ExecuteBegin;
+                _indxMethodPCLXL = ToolFormSamplePCLX.eStreamMethod.ExecuteBegin;
 
             ToolFormSamplePersist.loadDataPCL (ref _flagMainOnPrnDiskPCL,
                                                ref _flagRearOnPrnDiskPCL,
@@ -1082,46 +1076,36 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if ((_indxOrientationPCL < 0) ||
-                (_indxOrientationPCL >= _ctOrientations))
+            if ((_indxOrientationPCL < 0) || (_indxOrientationPCL >= _ctOrientations))
                 _indxOrientationPCL = 0;
 
-            if ((_indxOrientRearPCL < 0) ||
-                (_indxOrientRearPCL >= _ctOrientations))
+            if ((_indxOrientRearPCL < 0) || (_indxOrientRearPCL >= _ctOrientations))
                 _indxOrientRearPCL = 0;
 
-            if ((_indxPaperSizePCL < 0) ||
-                (_indxPaperSizePCL >= _ctPaperSizes))
+            if ((_indxPaperSizePCL < 0) || (_indxPaperSizePCL >= _ctPaperSizes))
                 _indxPaperSizePCL = 0;
 
-            if ((_indxPaperTypePCL < 0) ||
-                (_indxPaperTypePCL >= _ctPaperTypes))
+            if ((_indxPaperTypePCL < 0) || (_indxPaperTypePCL >= _ctPaperTypes))
                 _indxPaperTypePCL = 0;
 
-            if ((_indxPlexModePCL < 0) ||
-                (_indxPlexModePCL >= _ctPlexModes))
+            if ((_indxPlexModePCL < 0) || (_indxPlexModePCL >= _ctPlexModes))
                 _indxPlexModePCL = 0;
 
             //----------------------------------------------------------------//
             
-            if ((_indxOrientationPCLXL < 0) ||
-                (_indxOrientationPCLXL >= _ctOrientations))
+            if ((_indxOrientationPCLXL < 0) || (_indxOrientationPCLXL >= _ctOrientations))
                 _indxOrientationPCLXL = 0;
 
-            if ((_indxOrientRearPCLXL < 0) ||
-                (_indxOrientRearPCLXL >= _ctOrientations))
+            if ((_indxOrientRearPCLXL < 0) || (_indxOrientRearPCLXL >= _ctOrientations))
                 _indxOrientRearPCLXL = 0;
 
-            if ((_indxPaperSizePCLXL < 0) ||
-                (_indxPaperSizePCLXL >= _ctPaperSizes))
+            if ((_indxPaperSizePCLXL < 0) || (_indxPaperSizePCLXL >= _ctPaperSizes))
                 _indxPaperSizePCLXL = 0;
 
-            if ((_indxPaperTypePCLXL < 0 ) ||
-                (_indxPaperTypePCLXL >= _ctPaperTypes))
+            if ((_indxPaperTypePCLXL < 0 ) || (_indxPaperTypePCLXL >= _ctPaperTypes))
                 _indxPaperTypePCLXL = 0;
 
-            if ((_indxPlexModePCLXL < 0) ||
-                (_indxPlexModePCLXL >= _ctPlexModes))
+            if ((_indxPlexModePCLXL < 0) || (_indxPlexModePCLXL >= _ctPlexModes))
                 _indxPlexModePCLXL = 0;
         }
 
@@ -1314,27 +1298,21 @@ namespace PCLParaphernalia
                     grpPCLRearFormData.Visibility = Visibility.Hidden;
                 }
 
-                if (_indxMethodPCL ==
-                        ToolFormSamplePCL.eMacroMethod.CallEnd)
+                if (_indxMethodPCL == ToolFormSamplePCL.eMacroMethod.CallEnd)
                     rbPCLMethodCallEnd.IsChecked = true;
-                else if (_indxMethodPCL ==
-                        ToolFormSamplePCL.eMacroMethod.ExecuteBegin)
+                else if (_indxMethodPCL == ToolFormSamplePCL.eMacroMethod.ExecuteBegin)
                     rbPCLMethodExecuteBegin.IsChecked = true;
-                else if (_indxMethodPCL ==
-                        ToolFormSamplePCL.eMacroMethod.ExecuteEnd)
+                else if (_indxMethodPCL == ToolFormSamplePCL.eMacroMethod.ExecuteEnd)
                     rbPCLMethodExecuteEnd.IsChecked = true;
-                else if (_indxMethodPCL ==
-                        ToolFormSamplePCL.eMacroMethod.Overlay)
+                else if (_indxMethodPCL == ToolFormSamplePCL.eMacroMethod.Overlay)
                     rbPCLMethodOverlay.IsChecked = true;
                 else
                     rbPCLMethodCallBegin.IsChecked = true;
 
-                if ((_flagMainFormPCL) && (! _flagMainOnPrnDiskPCL) &&
-                    (File.Exists (_formFileMainPCL)))
+                if ((_flagMainFormPCL) && (! _flagMainOnPrnDiskPCL) && (File.Exists (_formFileMainPCL)))
                     checkPCLFormFile (true, _formFileMainPCL);
 
-                if ((_flagRearFormPCL) && (!_flagRearOnPrnDiskPCL) &&
-                    (File.Exists (_formFileRearPCL)))
+                if ((_flagRearFormPCL) && (!_flagRearOnPrnDiskPCL) && (File.Exists (_formFileRearPCL)))
                     checkPCLFormFile (false, _formFileRearPCL);
             }
             else
@@ -1409,8 +1387,7 @@ namespace PCLParaphernalia
                     grpPCLXLRearFormData.Visibility = Visibility.Hidden;
                 }
 
-                if (_indxMethodPCLXL ==
-                        ToolFormSamplePCLX.eStreamMethod.ExecuteEnd)
+                if (_indxMethodPCLXL == ToolFormSamplePCLX.eStreamMethod.ExecuteEnd)
                     rbPCLXLMethodExecuteEnd.IsChecked = true;
                 else
                     rbPCLXLMethodExecuteBegin.IsChecked = true;
