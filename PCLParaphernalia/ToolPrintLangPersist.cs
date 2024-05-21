@@ -4,11 +4,11 @@ using System;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class manages persistent storage of options for the PrinterInfo tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class ToolPrintLangPersist
     {
@@ -24,7 +24,7 @@ namespace PCLParaphernalia
         const string _subKeyToolsPDLData      = "PdlData";
         const string _subKeyToolsPrintLang    = "PrintLang";
         const string _subKeyPCL               = "PCL";
-        const string _subKeyPCLXL             = "PCLXL"; 
+        const string _subKeyPCLXL             = "PCLXL";
         const string _subKeyPML               = "PML";
         const string _subKeySymSets           = "SymSets";
         const string _subKeyFonts             = "Fonts";
@@ -347,7 +347,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void loadDataRpt (ref int indxRptFileFmt,
-                                        ref int indxRptChkMarks, 
+                                        ref int indxRptChkMarks,
                                         ref bool flagOptRptWrap)
         {
             RegistryKey keyMain =
@@ -411,7 +411,7 @@ namespace PCLParaphernalia
                                                    _indexZero);
             }
         }
- 
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // s a v e D a t a C o m m o n                                        //

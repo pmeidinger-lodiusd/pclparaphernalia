@@ -4,11 +4,11 @@ using System.Text;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class handles a PCL Symbol Set object.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
     [System.Reflection.Obfuscation(
@@ -389,7 +389,7 @@ namespace PCLParaphernalia
                 return PCLSymSetMaps.getMapArray ((int) _mapId, false);
             }
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
         // M a p A r r a y U s e r S e t                                      //
@@ -439,7 +439,7 @@ namespace PCLParaphernalia
                 }
             }
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
         // M a p p i n g P C L                                                //
@@ -465,7 +465,7 @@ namespace PCLParaphernalia
                 }
             }
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
         // M a p p i n g P C L D i f f                                        //

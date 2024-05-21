@@ -11,11 +11,11 @@ namespace PCLParaphernalia
 {
     /// <summary>
     /// Interaction logic for ToolPrnAnalyse.xaml
-    /// 
+    ///
     /// Class handles the Prn Analyse tool form.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     [Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
@@ -260,7 +260,7 @@ namespace PCLParaphernalia
                 _options.getOptClrMap (ref _flagClrMapUseClr,
                                        ref _indxClrMapBack,
                                        ref _indxClrMapFore);
-                
+
                 _options.metricsSave();
             }
         }

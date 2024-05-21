@@ -4,12 +4,12 @@ using System.IO;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PCL support for the Text and Background element
     /// of the Text Modification action of the MiscSamples tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2014
-    /// 
+    ///
     /// </summary>
     static class ToolMiscSamplesActTxtModPatPCL
     {

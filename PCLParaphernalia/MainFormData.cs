@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class manages temporary storage of common data for the main form.
-    /// 
+    ///
     /// © Chris Hutchinson 2011
-    /// 
+    ///
     /// </summary>
     static class MainFormData
     {
@@ -81,14 +81,14 @@ namespace PCLParaphernalia
                                            ref int revision)
         {
             if (crnt)
-            { 
+            {
                 major    = _versionMajorCrnt;
                 minor    = _versionMinorCrnt;
                 build    = _versionBuildCrnt;
                 revision = _versionRevisionCrnt;
             }
             else
-            { 
+            {
                 major    = _versionMajorOld;
                 minor    = _versionMinorOld;
                 build    = _versionBuildOld;

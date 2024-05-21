@@ -4,11 +4,11 @@ using System.IO;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PCL support for the FontSample tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class ToolFontSamplePCL
     {
@@ -171,7 +171,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < pageCt; i++)
             {
-                ushort rangeOffset = sampleRangeOffsets[i];  
+                ushort rangeOffset = sampleRangeOffsets[i];
 
                 generatePage(prnWriter,
                              fontType,
@@ -315,7 +315,7 @@ namespace PCLParaphernalia
             {
                 PCLWriter.fontDownloadRemove(prnWriter, downloadID);
             }
-            
+
             if (fontMacroRemove)
             {
                 PCLWriter.macroControl (prnWriter,
@@ -665,7 +665,7 @@ namespace PCLParaphernalia
             posY += _lineSpacing;
 
             PCLWriter.text(prnWriter, posX, posY, 0, "Size:");
-            
+
             posY += _lineSpacing;
 
             PCLWriter.text(prnWriter, posX, posY, 0, "Symbol set:");
@@ -776,7 +776,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             PCLWriter.font(prnWriter, true, "19U", "s0p10h0s3b4099T");
-            
+
             posX = (short)(marginX + ((_cellWidth * 7) / 2));
             posY = _posYDesc;
 
@@ -787,11 +787,11 @@ namespace PCLParaphernalia
                 const int halfLen = (maxLen - 5) / 2;
 
                 int len = fontFilename.Length;
- 
+
                 if (len < maxLen)
                     PCLWriter.text(prnWriter, posX, posY, 0, fontFilename);
                 else
-                    PCLWriter.text(prnWriter, posX, posY, 0, 
+                    PCLWriter.text(prnWriter, posX, posY, 0,
                                    fontFilename.Substring(0, halfLen) +
                                    " ... " +
                                    fontFilename.Substring(len-halfLen,
@@ -899,7 +899,7 @@ namespace PCLParaphernalia
                 fontSelectById)
             {
                 if (fontBound)
-                    PCLWriter.font(prnWriter, true, "", 
+                    PCLWriter.font(prnWriter, true, "",
                                    fontIdNo + "X");
                 else
                     PCLWriter.font(prnWriter, true, symSetId,

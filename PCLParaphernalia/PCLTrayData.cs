@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class handles a PCL Input Tray (Paper Source) object.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     class PCLTrayData
     {

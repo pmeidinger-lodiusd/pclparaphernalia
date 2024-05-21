@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class handles a PJL 'status readback' Command object.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "properties renaming")]
 

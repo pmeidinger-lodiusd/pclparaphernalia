@@ -6,11 +6,11 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a set of PCL Symbol Set map objects.
-    /// 
+    ///
     /// © Chris Hutchinson 2016
-    /// 
+    ///
     /// </summary>
     static partial class PCLSymSetMaps
     {

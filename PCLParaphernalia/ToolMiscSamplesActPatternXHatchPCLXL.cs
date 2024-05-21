@@ -4,12 +4,12 @@ using System.IO;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PCL XL support for the Cross-hatch element of the
     /// Patterns action of the MiscSamples tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2014
-    /// 
+    ///
     /// </summary>
     static class ToolMiscSamplesActPatternXHatchPCLXL
     {

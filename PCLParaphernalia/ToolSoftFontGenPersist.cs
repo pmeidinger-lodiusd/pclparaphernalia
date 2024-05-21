@@ -4,12 +4,12 @@ using System;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class manages persistent storage of options for the Soft Font
     ///	Generate tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2012
-    /// 
+    ///
     /// </summary>
     static class ToolSoftFontGenPersist
     {
@@ -23,12 +23,12 @@ namespace PCLParaphernalia
 
         const string _subKeyTools              = "Tools";
         const string _subKeyToolsSoftFontGen   = "SoftFontGen";
-        const string _subKeyMapping            = "Mapping"; 
-        const string _subKeyPCL5               = "PCL5"; 
-        const string _subKeyPCL6               = "PCL6"; 
-        const string _subKeyPCL                = "PCL"; 
-        const string _subKeyPCLXL              = "PCLXL"; 
-        const string _subKeyTTF                = "TTF"; 
+        const string _subKeyMapping            = "Mapping";
+        const string _subKeyPCL5               = "PCL5";
+        const string _subKeyPCL6               = "PCL6";
+        const string _subKeyPCL                = "PCL";
+        const string _subKeyPCLXL              = "PCLXL";
+        const string _subKeyTTF                = "TTF";
 
         const string _nameTargetFolder         = "TargetFolder";
         const string _nameAdhocFontFile        = "AdhocFontFile";
@@ -189,8 +189,8 @@ namespace PCLParaphernalia
             string defWorkFolder = ToolCommonData.DefWorkFolder;
 
             key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen +
-                                 "\\" + _subKeyPCL; 
-                  
+                                 "\\" + _subKeyPCL;
+
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 // update from v2_8_0_0 begin //
@@ -202,7 +202,7 @@ namespace PCLParaphernalia
 
                 targetFolder = (string)subKey.GetValue(_nameTargetFolder,
                                                        defWorkFolder);
-                
+
                 tmpInt = (int) subKey.GetValue (_nameFlagLogVerbose,
                                                          _flagTrue);
 
@@ -358,7 +358,7 @@ namespace PCLParaphernalia
                                                          _defaultFontFileTTF);
             }
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // s a v e D a t a C o m m o n                                        //
@@ -381,7 +381,7 @@ namespace PCLParaphernalia
                 subKey.SetValue(_nameIndxPDL,
                                 indxPDL,
                                 RegistryValueKind.DWord);
-                
+
                 if (flagLogVerbose)
                     subKey.SetValue (_nameFlagLogVerbose,
                                     _flagTrue,
@@ -415,7 +415,7 @@ namespace PCLParaphernalia
 
             key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen +
                                  "\\" + _subKeyMapping;
-            
+
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 subKey.SetValue(_nameIndxSymSet,

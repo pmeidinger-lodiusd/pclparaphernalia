@@ -4,12 +4,12 @@ using System.IO;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides support for the PCLXL Gray element of the
     /// Colour action of the MiscSamples tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2014
-    /// 
+    ///
     /// </summary>
     static class ToolMiscSamplesActColourGrayPCLXL
     {
@@ -98,7 +98,7 @@ namespace PCLParaphernalia
                          indxOrientation,
                          sampleDef,
                          formAsMacro);
- 
+
             generateJobTrailer(prnWriter, formAsMacro);
         }
 
@@ -627,7 +627,7 @@ namespace PCLParaphernalia
 
             prnWriter.Write(bufStd, 0, indStd);
             indStd = 0;
-            
+
             //----------------------------------------------------------------//
 
             if (formAsMacro)

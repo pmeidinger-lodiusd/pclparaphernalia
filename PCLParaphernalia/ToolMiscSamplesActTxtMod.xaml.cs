@@ -8,13 +8,13 @@ namespace PCLParaphernalia
 {
     /// <summary>
     /// Interaction logic for ToolMiscSamples.xaml
-    /// 
+    ///
     /// Class handles the MiscSamples Character Embellishments tab.
-    /// 
+    ///
     /// © Chris Hutchinson 2015
-    /// 
+    ///
     /// </summary>
-    
+
     [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 

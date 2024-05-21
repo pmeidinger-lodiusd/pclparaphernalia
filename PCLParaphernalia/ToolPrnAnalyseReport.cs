@@ -5,11 +5,11 @@ using System.Reflection;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides the Prn Analyse 'save report' function.
-    /// 
+    ///
     /// © Chris Hutchinson 2010-2017
-    /// 
+    ///
     /// </summary>
     static class ToolPrnAnalyseReport
     {
@@ -551,7 +551,7 @@ namespace PCLParaphernalia
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
-            
+
             ReportCore.tableRowPair (writer, rptFileFmt,
                                  "Filename", prnFilename,
                                  _colSpanNone, _colSpanNone,

@@ -4,11 +4,11 @@ using System.Data;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class handles PCL XL downloadable soft font headers.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     class PrnParseFontHddrPCLXL
     {
@@ -80,7 +80,7 @@ namespace PCLParaphernalia
         private bool _showBinData;
 
         private PrnParseConstants.eOptOffsetFormats _indxOffsetFormat;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P r n P a r s e F o n t H d d r P C L X L                          //
@@ -113,7 +113,7 @@ namespace PCLParaphernalia
         {
             int binDataLen;
             bool validSegs = false;
-            
+
             PrnParseConstants.eContType contType;
 
             bool continuation = false;
@@ -123,7 +123,7 @@ namespace PCLParaphernalia
             // Initialise.                                                    //
             //                                                                //
             //----------------------------------------------------------------//
-            
+
             _table = table;
             _buf = buf;
             _fileOffset = fileOffset;
@@ -131,7 +131,7 @@ namespace PCLParaphernalia
             _analysisLevel = linkData.AnalysisLevel;
 
             _options = options;
-            
+
             contType = linkData.getContType();
 
             _indxOffsetFormat = _options.IndxGenOffsetFormat;
@@ -326,7 +326,7 @@ namespace PCLParaphernalia
 
             return _validHddr;
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // p r o c e s s F o n t H e a d e r                                  //
@@ -366,7 +366,7 @@ namespace PCLParaphernalia
                 "PCLXL Binary",
                 "[ " + _cHddrDescLen.ToString() + " bytes ]",
                 "Font header");
-            
+
             if (_showBinData)
             {
                 PrnParseData.processBinary(
@@ -393,7 +393,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             _hddrFormat  = (ePCLXLFontFormat) _buf[bufOffset];
-            
+
             if (_hddrFormat == ePCLXLFontFormat.Download)
             {
                 //------------------------------------------------------------//
@@ -424,7 +424,7 @@ namespace PCLParaphernalia
                     "",
                     "Header format (" + _hddrFormat + ") is not recognised");
             }
-            
+
             if (!_validHddr)
             {
                 PrnParseCommon.addTextRow (
@@ -535,7 +535,7 @@ namespace PCLParaphernalia
 
                 indxSymSet =
                     PCLSymbolSets.getIndexForId ((ushort)ix1);
- 
+
                 PrnParseCommon.addTextRow (
                     PrnParseRowTypes.eType.PCLXLFontHddr,
                     _table,
@@ -594,7 +594,7 @@ namespace PCLParaphernalia
                         itemDesc = scaling.ToString() + ": Unknown";
                         break;
                 }
- 
+
                 PrnParseCommon.addTextRow (
                     PrnParseRowTypes.eType.PCLXLFontHddr,
                     _table,
@@ -604,7 +604,6 @@ namespace PCLParaphernalia
                     "Technology:",
                     itemDesc);
 
- 
                 PrnParseCommon.addTextRow (
                     PrnParseRowTypes.eType.PCLXLFontHddr,
                     _table,
@@ -622,7 +621,6 @@ namespace PCLParaphernalia
 
                 ix1 = (_buf[bufOffset + 6] * 256) + _buf[bufOffset + 7];
 
- 
                 PrnParseCommon.addTextRow (
                     PrnParseRowTypes.eType.PCLXLFontHddr,
                     _table,

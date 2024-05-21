@@ -8,13 +8,13 @@ namespace PCLParaphernalia
 {
     /// <summary>
     /// Interaction logic for ToolPrintLang.xaml
-    /// 
+    ///
     /// Class handles the Print Languages tool form.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
-    
+
     [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
@@ -835,7 +835,7 @@ namespace PCLParaphernalia
         private void displayFontData()
         {
             setColsFonts ();
-            
+
             dgSeq.Items.Clear ();
 
             _ctItems = PCLFonts.displayFontList (dgSeq);
@@ -855,7 +855,7 @@ namespace PCLParaphernalia
         private void displayHPGL2Commands()
         {
             setColsHPGL2 ();
-            
+
             dgSeq.Items.Clear ();
 
             _ctItems = HPGL2Commands.displaySeqList(dgSeq);
@@ -2359,7 +2359,7 @@ namespace PCLParaphernalia
                 {
                     colMapPCL.FontFamily = _fontFixed;
                 }
-                else 
+                else
                 {
                     colMapStd.FontFamily = _fontFixed;
                 }

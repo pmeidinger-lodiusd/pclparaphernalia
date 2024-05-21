@@ -4,11 +4,11 @@ using System.IO;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PCL XL support for the PrintArea tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class ToolPrintAreaPCLXL
     {
@@ -302,7 +302,7 @@ namespace PCLParaphernalia
             PCLXLWriter.addOperator(ref buffer,
                               ref indBuf,
                               PCLXLOperators.eTag.SetCursor);
-            
+
             PCLXLWriter.addAttrSint16XY(ref buffer,
                                   ref indBuf,
                                   PCLXLAttributes.eTag.EndPoint,
@@ -321,7 +321,7 @@ namespace PCLParaphernalia
             PCLXLWriter.addOperator(ref buffer,
                               ref indBuf,
                               PCLXLOperators.eTag.NewPath);
-            
+
             PCLXLWriter.addAttrSint16XY(ref buffer,
                                   ref indBuf,
                                   PCLXLAttributes.eTag.Point,
@@ -330,7 +330,7 @@ namespace PCLParaphernalia
             PCLXLWriter.addOperator(ref buffer,
                               ref indBuf,
                               PCLXLOperators.eTag.SetCursor);
- 
+
             posX1 = _rulerCell;             // relative movement X
             posY1 = 0;                      // relative movement Y
             posX2 = 0;                      // relative draw X
@@ -361,7 +361,7 @@ namespace PCLParaphernalia
                     posY1 = - _rulerDiv;
                 }
             }
-    
+
             PCLXLWriter.addOperator(ref buffer,
                               ref indBuf,
                               PCLXLOperators.eTag.PaintPath);
@@ -392,7 +392,7 @@ namespace PCLParaphernalia
             PCLXLWriter.addOperator(ref buffer,
                               ref indBuf,
                               PCLXLOperators.eTag.SetCursor);
-            
+
             PCLXLWriter.addAttrSint16XY(ref buffer,
                                   ref indBuf,
                                   PCLXLAttributes.eTag.EndPoint,
@@ -420,7 +420,7 @@ namespace PCLParaphernalia
             PCLXLWriter.addOperator(ref buffer,
                               ref indBuf,
                               PCLXLOperators.eTag.SetCursor);
- 
+
             posX1 = 0;                      // relative movement X
             posY1 = _rulerCell;             // relative movement Y
             posX2 = _rulerDiv;              // relative draw X
@@ -500,7 +500,7 @@ namespace PCLParaphernalia
 
             PCLXLWriter.writeStreamBlock(prnWriter, formAsMacro,
                                    buffer, ref indBuf);
-            
+
             PCLXLWriter.font(prnWriter, formAsMacro, ptSize,
                        _symSet_19U, "Arial           ");
 
@@ -514,7 +514,7 @@ namespace PCLParaphernalia
 
             ptSize  = (short)(10 * scaleText);
             lineInc = (short)((_sessionUPI * scaleText) / 8);
-            
+
             PCLXLWriter.font(prnWriter, formAsMacro, ptSize,
                        _symSet_19U, "Arial           ");
 
@@ -593,7 +593,7 @@ namespace PCLParaphernalia
                        posX1, posY1,
                        "demonstrate how objects are clipped by the" +
                        " boundaries of the printable area.");
-            
+
             posY1 += lineInc;
             posY1 += lineInc;
 
@@ -790,7 +790,7 @@ namespace PCLParaphernalia
                     {
                         float width,
                                length;
-                         
+
                         width  = (float)(paperWidth  * unitsToInches);
                         length = (float)(paperLength * unitsToInches);
 
@@ -888,7 +888,7 @@ namespace PCLParaphernalia
 
             prnWriter.Write(bufStd, 0, indStd);
             indStd = 0;
-            
+
             //----------------------------------------------------------------//
 
             if (formAsMacro)
@@ -971,7 +971,7 @@ namespace PCLParaphernalia
 
             PCLXLWriter.font(prnWriter, false, ptSize,
                        _symSet_19U, "Courier       Bd");
-            
+
             posX = (short)(_posXDesc + (_rulerCell * scaleText));
             posY = _posYDesc;
 
@@ -1043,7 +1043,7 @@ namespace PCLParaphernalia
                       "\"");
 
             posY += lineInc;
-            
+
             if (pjlCommand == "")
                 PCLXLWriter.text(prnWriter, false, false,
                            PCLXLWriter.advances_Courier, ptSize,
@@ -1105,7 +1105,7 @@ namespace PCLParaphernalia
 
             prnWriter.Write(bufStd, 0, indStd);
             indStd = 0;
-            
+
             //----------------------------------------------------------------//
             //                                                                //
             // Fixed-pitch 10cpi text - 180-degree rotated.                   //
@@ -1212,7 +1212,7 @@ namespace PCLParaphernalia
 
             short posX = startX;
             short posY = startY;
-            
+
             PCLXLWriter.addAttrUbyte(ref bufStd,
                                ref indStd,
                                PCLXLAttributes.eTag.GrayLevel,

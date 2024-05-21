@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class handles a PML 'action type' object.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
     [System.Reflection.Obfuscation(

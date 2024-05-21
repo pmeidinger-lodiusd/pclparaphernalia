@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a PCL Simple Escape Sequence.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
     [System.Reflection.Obfuscation(
@@ -49,7 +49,7 @@ namespace PCLParaphernalia
         private readonly PrnParseConstants.eOvlAct _makeOvlAct;
 
         private readonly PrnParseConstants.eSeqGrp _seqGrp;
-      
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L C o m p l e x S e q                                          //
@@ -79,7 +79,7 @@ namespace PCLParaphernalia
 
             _value             = value;
             _actionType        = actionType;
- 
+
             _description       = description;
 
             _flagDiscrete = flagDiscrete;
@@ -288,7 +288,7 @@ namespace PCLParaphernalia
                 if (_flagDiscrete && (!_flagValGeneric) && (!_flagValVarious))
                     value = " (#=" + _value.ToString() + ")";
                 else
-                    value = "";                
+                    value = "";
                 if (_flagNilValue)
                 {
                     if (_flagNilGChar)
@@ -312,7 +312,7 @@ namespace PCLParaphernalia
                                     (char) _keyTChar +
                                     value;
                 }
-                
+
                 return seq;
             }
         }

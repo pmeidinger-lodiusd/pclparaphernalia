@@ -4,11 +4,11 @@ using System.Text;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class handles a PCL Symbol Set Type.
-    /// 
+    ///
     /// © Chris Hutchinson 2015
-    /// 
+    ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
     [System.Reflection.Obfuscation(

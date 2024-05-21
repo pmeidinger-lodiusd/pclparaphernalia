@@ -3,13 +3,13 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a PCL XL Attribute Definer tag.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
-    
+
  // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
     [System.Reflection.Obfuscation(
         Feature = "renaming",
@@ -28,7 +28,7 @@ namespace PCLParaphernalia
         private readonly string _description;
 
         private readonly bool _flagReserved;
-      
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L X L A t t r D e f i n e r                                    //

@@ -4,11 +4,11 @@ using System.IO;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PCL XL support for the FormSample tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2012
-    /// 
+    ///
     /// </summary>
     static class ToolFormSamplePCLX
     {
@@ -28,7 +28,7 @@ namespace PCLParaphernalia
         }
 
         private static readonly string[] streamMethodNames =
-        { 
+        {
           "Execute stream (@ start of page)",
           "Execute stream (@ end of page)",
           "Max - invalid"
@@ -377,7 +377,7 @@ namespace PCLParaphernalia
                 posX = 600;
                 posY = 1350;
 
-                PCLXLWriter.text(prnWriter, false, false, 
+                PCLXLWriter.text(prnWriter, false, false,
                                  PCLXLWriter.advances_Courier,
                                   crntPtSize, posX, posY, "Page:");
 
@@ -677,7 +677,7 @@ namespace PCLParaphernalia
                 // Generate test pages.                                       //
                 //                                                            //
                 //------------------------------------------------------------//
-                
+
                 generatePage (prnWriter,
                               pageNo,
                               pageCount,

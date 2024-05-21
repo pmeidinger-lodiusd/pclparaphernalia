@@ -3,12 +3,12 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a PCL Character Complement/Requirement Collection bit,
     /// as used in (unbound) Font headers and Symbol Set definitions.
-    /// 
+    ///
     /// © Chris Hutchinson 2013
-    /// 
+    ///
     /// </summary>
     class PCLCharCollection
     {

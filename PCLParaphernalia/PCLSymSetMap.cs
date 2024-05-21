@@ -5,11 +5,11 @@ using System.Windows;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class handles a PCL Symbol Set map object.
-    /// 
+    ///
     /// © Chris Hutchinson 2015
-    /// 
+    ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
     [System.Reflection.Obfuscation(
@@ -39,7 +39,7 @@ namespace PCLParaphernalia
 
         private readonly ushort _codepointMin;
         private ushort _codepointMax;
-        
+
         private readonly bool _flagMapDiff;
         private readonly bool _flagNullMapPCL;
         private readonly bool _flagNullMapStd;
@@ -651,7 +651,7 @@ namespace PCLParaphernalia
                           rowLastIndx;
 
                     StringBuilder map;
-                    
+
                     //--------------------------------------------------------//
                     //                                                        //
                     // Calculate number of map rows, including those for      //
@@ -1075,7 +1075,7 @@ namespace PCLParaphernalia
                     string[] noDiff = new string[1] {
                         "Not defined" +
                         " - see Standard (Strict) mapping definition"};
-                    
+
                     return noDiff;
                 }
             }

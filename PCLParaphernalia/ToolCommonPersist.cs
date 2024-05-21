@@ -4,11 +4,11 @@ using System;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class manages persistent storage of common Tool options.
-    /// 
+    ///
     /// © Chris Hutchinson 2011
-    /// 
+    ///
     /// </summary>
     static class ToolCommonPersist
     {
@@ -19,7 +19,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         const string _mainKey             = MainForm._regMainKey;
-  
+
         const string _subKeyTools         = "Tools";
 
         const string _nameIndxToolType    = "IndxToolType";

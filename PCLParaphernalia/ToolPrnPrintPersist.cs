@@ -4,11 +4,11 @@ using System;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class manages persistent storage of options for the Prn Print tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class ToolPrnPrintPersist
     {
@@ -26,7 +26,7 @@ namespace PCLParaphernalia
         const string _nameCaptureFile         = "CaptureFile";
         const string _nameFilename            = "Filename";
 
-        const string _defaultCaptureFile      = "CaptureFile_PrnPrint.prn";  
+        const string _defaultCaptureFile      = "CaptureFile_PrnPrint.prn";
         const string _defaultFilename         = "DefaultPrintFile.prn";
 
         //--------------------------------------------------------------------//
@@ -56,7 +56,7 @@ namespace PCLParaphernalia
                                                        _defaultCaptureFile);
             }
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // l o a d D a t a G e n e r a l                                      //

@@ -4,11 +4,11 @@ using System;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class manages persistent storage of options for the AnalysePRN tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class ToolPrnAnalysePersist
     {
@@ -22,14 +22,14 @@ namespace PCLParaphernalia
 
         const string _subKeyTools               = "Tools";
         const string _subKeyToolsAnalyse        = "PrnAnalyse";
-        const string _subKeyOptCharSet          = "OptCharSet"; 
-        const string _subKeyOptClrMap           = "OptClrMap"; 
-        const string _subKeyOptGeneral          = "OptGeneral"; 
-        const string _subKeyOptHPGL2            = "OptHPGL2"; 
-        const string _subKeyOptPCL              = "OptPCL"; 
-        const string _subKeyOptPCLXL            = "OptPCLXL"; 
-        const string _subKeyOptPML              = "OptPML"; 
-        const string _subKeyOptStats            = "OptStats"; 
+        const string _subKeyOptCharSet          = "OptCharSet";
+        const string _subKeyOptClrMap           = "OptClrMap";
+        const string _subKeyOptGeneral          = "OptGeneral";
+        const string _subKeyOptHPGL2            = "OptHPGL2";
+        const string _subKeyOptPCL              = "OptPCL";
+        const string _subKeyOptPCLXL            = "OptPCLXL";
+        const string _subKeyOptPML              = "OptPML";
+        const string _subKeyOptStats            = "OptStats";
 
         const string _subKeyCrnt                = "Crnt";
         const string _subKeyUserThemeRoot       = "UserTheme_";
@@ -39,7 +39,7 @@ namespace PCLParaphernalia
         const string _nameFlagAutoAnalyse       = "FlagAutoAnalyse";
         const string _nameFlagDiagFileAccess    = "FlagDiagFileAccess";
         const string _nameFlagBinData           = "FlagBinData";
-        
+
         const string _nameFlagAlphaNumId        = "FlagAlphaNumId";
         const string _nameFlagColourLookup      = "FlagColourLookup";
         const string _nameFlagConfIO            = "FlagConfIO";
@@ -89,7 +89,7 @@ namespace PCLParaphernalia
         const int _flagFalse = 0;
         const int _flagTrue = 1;
         const int _indexZero = 0;
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // l o a d D a t a                                                    //
@@ -112,7 +112,7 @@ namespace PCLParaphernalia
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 filename      = (string)subKey.GetValue(_nameFilename,
-                                                        defWorkFolder + "\\" + 
+                                                        defWorkFolder + "\\" +
                                                         _defaultFilename);
             }
         }
@@ -324,7 +324,7 @@ namespace PCLParaphernalia
 
             string key = _subKeyTools + "\\" + _subKeyToolsAnalyse +
                                         "\\" + _subKeyOptClrMap +
-                                        "\\" + _subKeyUserThemeRoot + themeNo; 
+                                        "\\" + _subKeyUserThemeRoot + themeNo;
 
             //----------------------------------------------------------------//
 

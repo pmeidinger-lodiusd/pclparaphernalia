@@ -4,11 +4,11 @@ using System.Data;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class handles PCL downloadable soft font characters.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     class PrnParseFontCharPCL
     {
@@ -68,7 +68,7 @@ namespace PCLParaphernalia
         private ePCLCharClass _charClass;
 
         private byte[] _buf;
-        
+
         private byte _charDescLen;
 
         private int _fileOffset;
@@ -127,7 +127,7 @@ namespace PCLParaphernalia
                                        DataTable table)
         {
             int binDataLen;
-            
+
             PrnParseConstants.eContType contType;
 
             //----------------------------------------------------------------//
@@ -135,14 +135,14 @@ namespace PCLParaphernalia
             // Initialise.                                                    //
             //                                                                //
             //----------------------------------------------------------------//
-            
+
             _table = table;
             _buf = buf;
             _fileOffset = fileOffset;
 
             _linkData = linkData;
             _options = options;
-            
+
             contType = _linkData.getContType();
             _analysisLevel = _linkData.AnalysisLevel;
 
@@ -733,7 +733,7 @@ namespace PCLParaphernalia
                             PrnParseCommon.byteToHexString (crntByte));
 
                         _charChksVal = (256 - (_charChksVal % 256)) % 256;
-                            
+
                         if (_charChksVal != crntByte)
                         {
                             crntByte = (byte) _charChksVal;
@@ -747,10 +747,10 @@ namespace PCLParaphernalia
                                 "",
                                 "Calculated checksum is 0x" +
                                 PrnParseCommon.byteToHexString (crntByte));
-                                
+
                             _validChar = false;
                         }
-                            
+
                         //----------------------------------------------------//
                         //                                                    //
                         // Adjust pointers.                                   //
@@ -1212,7 +1212,7 @@ namespace PCLParaphernalia
             else
             {
                 contType = PrnParseConstants.eContType.None;
-      
+
                 _linkData.resetContData();
 
                 binDataLen = _charDataBlockRem;
@@ -1220,7 +1220,7 @@ namespace PCLParaphernalia
                 _charDataRem -= _charDataBlockRem;
                 _charDataBlockRem = 0;
 
-                _nextStage = eStage.ShowChecksum; 
+                _nextStage = eStage.ShowChecksum;
            }
 
             if (binDataLen != 0)
@@ -1972,7 +1972,7 @@ namespace PCLParaphernalia
 
                 _charDataRem      = _charDataLen;
                 _charDataBlockRem = _charDataLen;
-                
+
                 if ((_charDataLen + 2) > _charRem)
                 {
                     //--------------------------------------------------------//

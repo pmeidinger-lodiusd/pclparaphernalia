@@ -6,11 +6,11 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides details of PCL XL Whitespace tags.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class PCLXLWhitespaces
     {
@@ -26,7 +26,7 @@ namespace PCLParaphernalia
         private static PCLXLWhitespace _tagUnknown;
 
         private static int _tagCount;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L X L W h i t e s p a c e s                                    //
@@ -63,7 +63,7 @@ namespace PCLParaphernalia
             else
             {
                 seqKnown = false;
-                tag = _tagUnknown; 
+                tag = _tagUnknown;
             }
 
             mnemonic    = tag.Mnemonic;

@@ -4,12 +4,12 @@ using System.IO;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PCL XL support for the Unicode Characters action
     /// of the MiscSamples tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2014
-    /// 
+    ///
     /// </summary>
     static class ToolMiscSamplesActUnicodePCLXL
     {

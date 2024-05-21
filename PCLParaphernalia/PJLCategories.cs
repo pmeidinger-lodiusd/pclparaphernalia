@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a set of PJL 'status readback' Category objects.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class PJLCategories
     {
@@ -23,7 +23,7 @@ namespace PCLParaphernalia
             Std
         }
 
-        private static readonly PJLCategory[] _categories = 
+        private static readonly PJLCategory[] _categories =
         {
             new PJLCategory(eCategoryType.Custom,
                             "<specify value>"),
@@ -50,7 +50,7 @@ namespace PCLParaphernalia
             new PJLCategory(eCategoryType.Std,
                             "USTATUS")
         };
-        
+
         private static readonly int _categoryCount = _categories.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//

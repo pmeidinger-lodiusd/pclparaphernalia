@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides the windows printer Target functions.
     /// Class enables raw data to be sent to a Windows printer
     /// Details obtained from Microsoft support document.
-    /// 
+    ///
     /// © Chris Hutchinson 2014-2018
-    /// 
+    ///
     /// </summary>
     static class TargetWinPrint
     {

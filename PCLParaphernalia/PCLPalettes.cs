@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides definitions for simple colour palettes.
-    /// 
+    ///
     /// © Chris Hutchinson 2014
-    /// 
+    ///
     /// </summary>
     public static class PCLPalettes
     {
@@ -60,7 +60,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static readonly PCLPalette[] _palettes = 
+        private static readonly PCLPalette[] _palettes =
         {
             new PCLPalette ("Monochrome",
                             true,
@@ -73,7 +73,7 @@ namespace PCLParaphernalia
                             8),
 
             new PCLPalette ("Simple Colour RGB",
-                            false, 
+                            false,
                             3,
                             8)
         };
@@ -96,7 +96,7 @@ namespace PCLParaphernalia
         static PCLPalettes ()
         {
             int crntIndex;
-            
+
             //----------------------------------------------------------------//
 
             crntIndex = (int) eIndex.PCLMonochrome;
@@ -105,7 +105,7 @@ namespace PCLParaphernalia
             _palettes[crntIndex].setClrItemBlack ();
             _palettes[crntIndex].addColour ("White", (byte) eSimpleMono.White);
             _palettes[crntIndex].setClrItemWhite ();
-            
+
             //----------------------------------------------------------------//
 
             crntIndex = (int) eIndex.PCLSimpleColourCMY;
@@ -128,7 +128,7 @@ namespace PCLParaphernalia
             _palettes[crntIndex].setClrItemWhite ();
             _palettes[crntIndex].addColour ("Yellow",
                                             (byte) eSimpleCMY.Yellow);
-            
+
             //----------------------------------------------------------------//
 
             crntIndex = (int) eIndex.PCLSimpleColourRGB;

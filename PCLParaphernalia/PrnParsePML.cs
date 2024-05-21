@@ -5,11 +5,11 @@ using System.Text;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines functions to parse PML commands.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     class PrnParsePML
     {
@@ -66,7 +66,7 @@ namespace PCLParaphernalia
         // and DMCMD statements).                                             //
         //                                                                    //
         //--------------------------------------------------------------------//
-  
+
         public bool processPMLASCIIHex (byte[]          buf,
                                            int fileOffset,
                                            int seqDataLen,
@@ -88,12 +88,12 @@ namespace PCLParaphernalia
                   offset;
 
             //----------------------------------------------------------------//
-            
+
             _table = table;
             _fileOffset = fileOffset;
 
             _analysisLevel = linkData.AnalysisLevel + 1;    // always embedded
-            
+
             _verboseMode = options.FlagPMLVerbose;
 
             _indxOffsetFormat = options.IndxGenOffsetFormat;
@@ -156,9 +156,9 @@ namespace PCLParaphernalia
                 int hexVal = 0;
 
                 _buf = new byte[seqLen];
-                
+
                 offset = bufOffset;
-                
+
                 for (int i = 0; (i < seqLen) && (!invalidSeqFound); i++)
                 {
                     crntByte = buf[offset];
@@ -242,7 +242,7 @@ namespace PCLParaphernalia
                 "",
                 "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 
-            return invalidSeqFound;        
+            return invalidSeqFound;
         }
 
         //--------------------------------------------------------------------//
@@ -354,7 +354,7 @@ namespace PCLParaphernalia
         // Process hexadecimal PML sequence.                                  //
         //                                                                    //
         //--------------------------------------------------------------------//
-     
+
         private bool processPMLSeq (int seqLen,
                                        int seqOffset,
                                        bool hddrExpected)
@@ -563,7 +563,7 @@ namespace PCLParaphernalia
                                  partLen,
                                  "PML Outcome",
                                  tagDesc);
-                    
+
                     partOffset += partLen;
                 }
 
@@ -751,7 +751,7 @@ namespace PCLParaphernalia
             chunkOpLen = 0;
             heldItem = 0;
             heldItemLen = 0;
-            
+
             while (ipPtr < seqLen)
             {
                 decode = "";
@@ -810,7 +810,7 @@ namespace PCLParaphernalia
                                                     lastSlice,
                                                     dataType);
                 }
-            
+
                 //------------------------------------------------------------//
                 //                                                            //
                 // Loop step 3:                                               //
@@ -842,7 +842,7 @@ namespace PCLParaphernalia
                 {
                     chunkComplete = true;
                 }
-                
+
                 if (_verboseMode || seqError || chunkComplete)
                 {
                     if (firstLine)
@@ -1237,7 +1237,7 @@ namespace PCLParaphernalia
                 //--------------------------------------------------------//
 
                 string seq;
-                
+
                 seq = PrnParseCommon.byteArrayToHexString (_buf,
                                                            sliceOffset,
                                                            sliceLen);
@@ -1298,7 +1298,7 @@ namespace PCLParaphernalia
                 //--------------------------------------------------------//
 
                 string seq;
-                
+
                 seq = PrnParseCommon.byteArrayToHexString (_buf,
                                                            sliceOffset,
                                                            sliceLen);

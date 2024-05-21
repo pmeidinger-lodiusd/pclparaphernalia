@@ -4,12 +4,12 @@ using System.Text;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides print-language-independent routines associated with
     /// 'parsing' of print file UTF-8 data strings.
-    /// 
+    ///
     /// © Chris Hutchinson 2012
-    /// 
+    ///
     /// </summary>
     static class PrnParseDataUTF8
     {
@@ -78,7 +78,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-   
         static readonly long[] cOffsetsUTF8 =
         {
             0x0000000000,   // 0 trailing bytes //
@@ -165,7 +164,7 @@ namespace PCLParaphernalia
             0xF8,           // 4 trailing bytes //
             0xFC            // 5 trailing bytes //
         };
-       
+
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
         // Class variables.                                                   //
@@ -308,7 +307,7 @@ namespace PCLParaphernalia
 
                     codepoint +=  seq[ptrFwd++];
                     codepoint <<= 6;
-                    
+
                     goto case 3;   // as C# does not support fall-through //
 
                 case 3:
@@ -319,7 +318,7 @@ namespace PCLParaphernalia
 
                     codepoint +=  seq[ptrFwd++];
                     codepoint <<= 6;
-                    
+
                     goto case 2;   // as C# does not support fall-through //
 
                 case 2:
@@ -329,7 +328,7 @@ namespace PCLParaphernalia
                         return eUTF8Result.invalidTrailByteMark;
 
                 //  leadByte = seq[--ptrRev];
-                    
+
                     switch (leadByte)
                     {
                         case 0xE0:
@@ -450,7 +449,7 @@ namespace PCLParaphernalia
             codepoint -= cOffsetsUTF8[seqLen - 1];
 
             codepointUCS = (int) codepoint;
-            
+
             return eUTF8Result.success;
         }
 
@@ -533,19 +532,19 @@ namespace PCLParaphernalia
                     utf8Seq[seqPos--] =
                         (byte) ((codepoint | cTrailByteMark) & cTrailByteMask);
                     codepoint >>= 6;
-                    goto case 3; 
+                    goto case 3;
 
                 case 3:
                     utf8Seq[seqPos--] =
                         (byte) ((codepoint | cTrailByteMark) & cTrailByteMask);
                     codepoint >>= 6;
-                    goto case 2; 
+                    goto case 2;
 
                 case 2:
                     utf8Seq[seqPos--] =
                         (byte) ((codepoint | cTrailByteMark) & cTrailByteMask);
                     codepoint >>= 6;
-                    goto case 1; 
+                    goto case 1;
 
                 case 1:
                     utf8Seq[seqPos--] =
@@ -693,7 +692,7 @@ namespace PCLParaphernalia
             ref uint utf32Value)
         {
             long codepoint = 0;
-            int seqPos = 0; 
+            int seqPos = 0;
 
             switch (utf8SeqLen)
             {

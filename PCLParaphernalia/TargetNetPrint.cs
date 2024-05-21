@@ -8,11 +8,11 @@ using System.Windows;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides the network printer Target functions.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class TargetNetPrint
     {

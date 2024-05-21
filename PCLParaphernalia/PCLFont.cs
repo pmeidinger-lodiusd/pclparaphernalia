@@ -4,11 +4,11 @@ using System.Text;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class handles a PCL Font object.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
     [System.Reflection.Obfuscation(
@@ -24,14 +24,14 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private readonly PCLFonts.eFontType _fontType;
-        
+
         private readonly string _fontName;
 
         private readonly short _fontIndex;
 
         private readonly ushort _symSetNumber;
         private readonly ushort _symSetDefault;
-        
+
         private readonly ushort _typeface;
 
         private readonly double _pitch;
@@ -63,7 +63,7 @@ namespace PCLParaphernalia
         private readonly string _nameBoldItalic;
 
         private readonly ushort[] _symSets;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L F o n t                                                      //
@@ -99,17 +99,17 @@ namespace PCLParaphernalia
                         string nameBoldItalic,
                         ushort[]          symSets)
         {
-            _fontIndex          = fontIndex;   
+            _fontIndex          = fontIndex;
             _fontType           = fontType;
             _fontName           = fontName;
-        
+
             _bound              = bound;
             _proportional       = proportional;
             _scalable           = scalable;
 
             _symSetNumber       = symbolSet;
             _typeface           = typeface;
-        
+
             _contourRatio       = contourRatio;
             _pitch              = pitch;
             _pointSize          = pointSize;
@@ -308,7 +308,7 @@ namespace PCLParaphernalia
             if (_scalable)
             {
                 // Scalable; the size parameter defines the required size.
-                
+
                 if (_proportional)
                 {
                     // Scalable; proportionally-spaced
@@ -512,7 +512,7 @@ namespace PCLParaphernalia
         // Return the symbol set (Kind1) value.                               //
         //                                                                    //
         //--------------------------------------------------------------------//
-        
+
         public ushort getSymbolSetNumber()
         {
             if (_bound)

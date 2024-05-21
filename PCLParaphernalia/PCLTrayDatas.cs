@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a set of PCL Input Tray (Paper Source) objects.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class PCLTrayDatas
     {
@@ -24,7 +24,7 @@ namespace PCLParaphernalia
             PCLXL
         }
 
-        private static readonly PCLTrayData[] _trayDatas = 
+        private static readonly PCLTrayData[] _trayDatas =
         {
             // must be in same order as ePDL enumeration 
             new PCLTrayData(7, 0, 299, -1),

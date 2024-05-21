@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class handles a PCLXL Palette object.
-    /// 
+    ///
     /// © Chris Hutchinson 2014
-    /// 
+    ///
     /// </summary>
     class PCLXLPalette
     {
@@ -191,7 +191,6 @@ namespace PCLParaphernalia
             get { return _flagMonochrome; }
         }
 
-  
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
         // P a l e t t e N a m e                                              //
@@ -217,7 +216,7 @@ namespace PCLParaphernalia
 
         public void setClrItemBlack ()
         {
-            _clrItemBlack = (byte) (_crntClrItem - 1); 
+            _clrItemBlack = (byte) (_crntClrItem - 1);
         }
 
         //--------------------------------------------------------------------//

@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a set of PCL 'status readback' Entity Type objects.
-    /// 
+    ///
     /// © Chris Hutchinson 2017
-    /// 
+    ///
     /// </summary>
     static class PrnParseRowTypes
     {
@@ -52,7 +52,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static readonly PrnParseRowType[] _rowTypes = 
+        private static readonly PrnParseRowType[] _rowTypes =
         {
             new PrnParseRowType(eType.MsgError,
                                 "Error message"),
@@ -105,9 +105,9 @@ namespace PCLParaphernalia
             new PrnParseRowType(eType.PrescribeCommand,
                                 "Prescribe command")
        };
-        
+
         private static readonly int _rowTypeCount = _rowTypes.GetUpperBound(0) + 1;
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // g e t C o u n t                                                    //

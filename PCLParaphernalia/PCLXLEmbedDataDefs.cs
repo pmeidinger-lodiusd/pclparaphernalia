@@ -5,11 +5,11 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides details of PCL XL Embedded Data Definer tags.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class PCLXLEmbedDataDefs
     {
@@ -35,7 +35,7 @@ namespace PCLParaphernalia
             new SortedList<byte, PCLXLEmbedDataDef>();
 
         private static int _tagCount;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L X L E m b e d D a t a D e f s                                //

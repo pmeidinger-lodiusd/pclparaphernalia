@@ -5,11 +5,11 @@ using System.Windows;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides core support for the ImageBitmap tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class ToolImageBitmapCore
     {
@@ -162,7 +162,7 @@ namespace PCLParaphernalia
 
             _ipStream.Close();
             _ipStream = null;
-        }         
+        }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -212,7 +212,7 @@ namespace PCLParaphernalia
             }
 
             return open;
-        }         
+        }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -242,8 +242,8 @@ namespace PCLParaphernalia
             ResX         = _infoHeader.xPelsPerMetre;
             ResY         = _infoHeader.yPelsPerMetre;
             PaletteSize  = _paletteSize;
-            MonoBW       = _monochromeBlackWhite; 
-            
+            MonoBW       = _monochromeBlackWhite;
+
             return;
         }
 
@@ -281,7 +281,7 @@ namespace PCLParaphernalia
         {
             if (firstBlock)
             {
-                int offset = (int) _fileHeader.dataOffset + 
+                int offset = (int) _fileHeader.dataOffset +
                                (bufSize * _infoHeader.height);
 
                 _ipStream.Seek(offset, SeekOrigin.Begin);
@@ -485,9 +485,9 @@ namespace PCLParaphernalia
         private static ushort readUInt16LE()
         {
             byte[] buf = new byte[2];
-            
+
             _binReader.Read(buf, 0, 2);
-            
+
             if (! BitConverter.IsLittleEndian)
                 Array.Reverse(buf, 0, 2);
 

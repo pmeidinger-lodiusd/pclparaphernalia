@@ -7,11 +7,11 @@ using System.Windows.Threading;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a class which helps with focus quirks.
     ///
     /// © Chris Hutchinson 2013
-    /// 
+    ///
     /// </summary>
     public static class Helper_WPFFocusFix
     {

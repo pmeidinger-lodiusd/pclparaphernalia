@@ -4,11 +4,11 @@ using System;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class manages persistent storage of options for the ImageBitmap tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class ToolImageBitmapPersist
     {
@@ -133,7 +133,7 @@ namespace PCLParaphernalia
                 }
             }
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // l o a d D a t a C o m m o n                                        //

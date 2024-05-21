@@ -5,11 +5,11 @@ using System.Text;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines functions to parse HP-GL/2 commands.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     class PrnParseHPGL2
     {
@@ -28,7 +28,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private PrnParseLinkData _linkData;
-        
+
         private PrnParseOptions _options;
 
         private DataTable _table;
@@ -57,7 +57,7 @@ namespace PCLParaphernalia
         private byte _labelTerm;
 
         private bool _labelTrans;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P r n P a r s e H P G L 2                                          //
@@ -496,7 +496,7 @@ namespace PCLParaphernalia
       //      _textParsingMethod = 0;                             // TEMP
 
             //----------------------------------------------------------------//
-                    
+
             _indxOffsetFormat = _options.IndxGenOffsetFormat;
 
             _options.getOptCharSet (ref _indxCharSetName,
@@ -512,12 +512,12 @@ namespace PCLParaphernalia
             if (linkData.isContinuation())
                 seqInvalid = parseContinuation (ref bufRem,
                                                 ref bufOffset,
-                                                ref endReached); 
+                                                ref endReached);
             else
                 seqInvalid = parseSequences (ref bufRem,
                                              ref bufOffset,
                                              ref crntPDL,
-                                             ref endReached);  
+                                             ref endReached);
 
             return seqInvalid;
         }
@@ -554,7 +554,7 @@ namespace PCLParaphernalia
 
             byte prefixA = 0x00,
                  prefixB = 0x00;
-            
+
             _linkData.getContData (ref contType,
                                    ref prefixLen,
                                    ref contDataLen,
@@ -793,7 +793,7 @@ namespace PCLParaphernalia
                     langSwitch = true;
 
                     crntPDL = ToolCommonData.ePrintLang.PCL;
-                    
+
                     /*
                     //--------------------------------------------------------//
                     //                                                        //
@@ -959,7 +959,7 @@ namespace PCLParaphernalia
                     }
                 }
             }
-            
+
             return invalidSeqFound;
         }
 
@@ -1047,7 +1047,7 @@ namespace PCLParaphernalia
                     paraByte1 = _buf[bufOffset];
                     firstQuoteFound = false;
                 }
-                else if (contType == 
+                else if (contType ==
                     PrnParseConstants.eContType.HPGL2LongQuote)
                 {
                     paraByte1 = _buf[bufOffset];
@@ -1089,7 +1089,6 @@ namespace PCLParaphernalia
                                                ref optSymbolMode,
                                                ref desc);
 
-            
             //----------------------------------------------------------------//
             //                                                                //
             // Process command.                                               //
@@ -1192,7 +1191,7 @@ namespace PCLParaphernalia
                 else
                 {
                     seqLen = HPGL2MnemonicLen + 1;
-                  
+
                     paraByte2 = _buf [bufOffset + 3];
 
                     if (paraByte2 == PrnParseConstants.asciiSemiColon)
@@ -1544,7 +1543,7 @@ namespace PCLParaphernalia
                             "*** Warning ***",
                             "",
                             "Invalid Label terminator");
-                                   
+
                          _labelTerm = PrnParseConstants.asciiETX;
                     }
                     else
@@ -1626,10 +1625,10 @@ namespace PCLParaphernalia
                         "Label transparency is now " + showChar);
                 }
             }
-  
+
             return invalidSeqFound;
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // R e s e t H P G L 2                                                //

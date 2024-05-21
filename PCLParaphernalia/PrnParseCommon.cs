@@ -4,12 +4,12 @@ using System.Data;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides print-language-independent routines associated with
     /// 'parsing' of print file.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class PrnParseCommon
     {
@@ -24,11 +24,11 @@ namespace PCLParaphernalia
         // Class variables.                                                   //
         //                                                                    //
         //--------------------------------------------------------------------//
-        
+
         static bool _showMacroData = true;
 
         static PrnParse.eParseType _parseType;
-        
+
         static int _macroLevel = 0;
 
         static readonly string _colName_RowType = PrnParseConstants.cRptA_colName_RowType;
@@ -275,7 +275,7 @@ namespace PCLParaphernalia
 
                 if ((b != 0xff) || (c != 0xff))
                     all_ffs = false;
-                
+
                 j = i * quintet;
 
                 chars[j] = PrnParseConstants.cHexChars[b >> 4];
@@ -304,7 +304,7 @@ namespace PCLParaphernalia
 
             chars[0] = PrnParseConstants.cHexChars[b >> 4];
             chars[1] = PrnParseConstants.cHexChars[b & 0xF];
-            
+
             return new string(chars);
         }
 
@@ -336,7 +336,7 @@ namespace PCLParaphernalia
         //                                                        M e t h o d //
         // i s A l p h a b e t i c                                            //
         //--------------------------------------------------------------------//
-        
+
         public static bool isAlphabetic(byte byteVal)
         {
             if (((byteVal >= PrnParseConstants.asciiAlphaLCMin)
@@ -350,7 +350,7 @@ namespace PCLParaphernalia
             else
                 return false;
         }
- 
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // s e t D i s p l a y C r i t e r i a                                //

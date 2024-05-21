@@ -6,11 +6,11 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a set of PCL Symbol Set map objects.
-    /// 
+    ///
     /// © Chris Hutchinson 2015
-    /// 
+    ///
     /// </summary>
     static partial class PCLSymSetMaps
     {
@@ -108,7 +108,7 @@ namespace PCLParaphernalia
                 new ushort [2] {0xbd40, 0xbdfe},
                 new ushort [2] {0xbe40, 0xbefe},
                 new ushort [2] {0xbf40, 0xbffe},
-                
+
                 new ushort [2] {0xc040, 0xc0fe},
                 new ushort [2] {0xc140, 0xc1fe},
                 new ushort [2] {0xc240, 0xc2fe},
@@ -125,7 +125,7 @@ namespace PCLParaphernalia
                 new ushort [2] {0xcd40, 0xcdfe},
                 new ushort [2] {0xce40, 0xcefe},
                 new ushort [2] {0xcf40, 0xcffe},
-                
+
                 new ushort [2] {0xd040, 0xd0fe},
                 new ushort [2] {0xd140, 0xd1fe},
                 new ushort [2] {0xd240, 0xd2fe},
@@ -142,7 +142,7 @@ namespace PCLParaphernalia
                 new ushort [2] {0xdd40, 0xddfe},
                 new ushort [2] {0xde40, 0xdefe},
                 new ushort [2] {0xdf40, 0xdffe},
-                
+
                 new ushort [2] {0xe040, 0xe0fe},
                 new ushort [2] {0xe140, 0xe1fe},
                 new ushort [2] {0xe240, 0xe2fe},
@@ -159,7 +159,7 @@ namespace PCLParaphernalia
                 new ushort [2] {0xed40, 0xedfe},
                 new ushort [2] {0xee40, 0xeefe},
                 new ushort [2] {0xef40, 0xeffe},
-                
+
                 new ushort [2] {0xf040, 0xf0fe},
                 new ushort [2] {0xf140, 0xf1fe},
                 new ushort [2] {0xf240, 0xf2fe},

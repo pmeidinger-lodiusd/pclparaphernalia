@@ -9,13 +9,13 @@ namespace PCLParaphernalia
 {
     /// <summary>
     /// Interaction logic for ToolFormSample.xaml
-    /// 
+    ///
     /// Class handles the FormSample tool form.
-    /// 
+    ///
     /// © Chris Hutchinson 2012
-    /// 
+    ///
     /// </summary>
-    
+
     [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
@@ -29,7 +29,7 @@ namespace PCLParaphernalia
 
         private const ushort _defaultMacroIdMainPCL   = 32767;
         private const ushort _defaultMacroIdRearPCL   = 32766;
-        
+
         private const ushort _defaultPageCount = 3;
 
         private const string _defaultFormNameRootPCLXL = "testform";
@@ -40,7 +40,7 @@ namespace PCLParaphernalia
             (int) ToolCommonData.ePrintLang.PCLXL,
         };
 
-        private static readonly int[] _subsetOrientations = 
+        private static readonly int[] _subsetOrientations =
         {
             (int) PCLOrientations.eIndex.Portrait,
             (int) PCLOrientations.eIndex.Landscape,
@@ -260,7 +260,7 @@ namespace PCLParaphernalia
                             ToolCommonData.eToolIds.FormSample,
                             ToolCommonData.eToolSubIds.None,
                             _crntPDL);
-                 
+
                         ToolFormSamplePCLX.generateJob(
                                 binWriter,
                                 _subsetPaperSizes[_indxPaperSizePCLXL],
@@ -560,7 +560,7 @@ namespace PCLParaphernalia
             bool idPresent;
 
             int macroId = 0;
-       
+
             if (!File.Exists (filename))
                 idPresent = false;
             else
@@ -903,7 +903,7 @@ namespace PCLParaphernalia
             int index;
 
             _initialised = false;
- 
+
             //----------------------------------------------------------------//
             //                                                                //
             // Populate form.                                                 //
@@ -923,7 +923,7 @@ namespace PCLParaphernalia
             }
 
             //----------------------------------------------------------------//
-            
+
             cbOrientation.Items.Clear();
             cbRearOrientation.Items.Clear ();
 
@@ -953,7 +953,7 @@ namespace PCLParaphernalia
             }
 
             //----------------------------------------------------------------//
-            
+
             cbPaperType.Items.Clear();
 
             _ctPaperTypes = _subsetPaperTypes.Length;
@@ -966,7 +966,7 @@ namespace PCLParaphernalia
             }
 
             //----------------------------------------------------------------//
-            
+
             cbPlexMode.Items.Clear();
 
             _ctPlexModes = _subsetPlexModes.Length;
@@ -993,7 +993,7 @@ namespace PCLParaphernalia
             pdlOptionsRestore();
 
             cbPDL.SelectedIndex = (byte)_indxPDL;
-     
+
             _initialised = true;
        }
 
@@ -1009,9 +1009,9 @@ namespace PCLParaphernalia
         private void metricsLoad()
         {
             int indxMethodTemp = 0;
-           
+
             ToolFormSamplePersist.loadDataCommon(ref _indxPDL);
-            
+
             ToolFormSamplePersist.loadDataGeneral ("PCL",
                                                    ref _indxPaperTypePCL,
                                                    ref _indxPaperSizePCL,
@@ -1030,7 +1030,7 @@ namespace PCLParaphernalia
                 _indxMethodPCL = (ToolFormSamplePCL.eMacroMethod) indxMethodTemp;
             else
                 _indxMethodPCL = ToolFormSamplePCL.eMacroMethod.CallBegin;
-            
+
             ToolFormSamplePersist.loadDataGeneral ("PCLXL",
                                                    ref _indxPaperTypePCLXL,
                                                    ref _indxPaperSizePCLXL,
@@ -1069,7 +1069,7 @@ namespace PCLParaphernalia
 
             if ((_indxPDL < 0) || (_indxPDL >= _ctPDLs))
                 _indxPDL = 0;
-            
+
             _crntPDL = (ToolCommonData.ePrintLang) _subsetPDLs[_indxPDL];
 
             //----------------------------------------------------------------//
@@ -1090,7 +1090,7 @@ namespace PCLParaphernalia
                 _indxPlexModePCL = 0;
 
             //----------------------------------------------------------------//
-            
+
             if ((_indxOrientationPCLXL < 0) || (_indxOrientationPCLXL >= _ctOrientations))
                 _indxOrientationPCLXL = 0;
 
@@ -1817,7 +1817,7 @@ namespace PCLParaphernalia
                                       winPrintername;
             }
         }
- 
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // s e l e c t P C L F o r m F i l e                                  //
@@ -2350,7 +2350,7 @@ namespace PCLParaphernalia
         private bool validatePCLSelectionCombo()
         {
             bool OK = true;
-            
+
             //----------------------------------------------------------------//
 
             if (_flagMainFormPCL)
@@ -2370,13 +2370,13 @@ namespace PCLParaphernalia
                     txtPCLFormFileMain.SelectAll ();
                 }
             }
-            
+
             //----------------------------------------------------------------//
 
             if (OK && _flagRearFormPCL)
             {
                 if ((! _flagRearOnPrnDiskPCL) &&
-                    (! File.Exists(_formFileRearPCL))) 
+                    (! File.Exists(_formFileRearPCL)))
                 {
                     OK = false;
 
@@ -2390,7 +2390,7 @@ namespace PCLParaphernalia
                     txtPCLFormFileRear.SelectAll ();
                 }
             }
-            
+
             //----------------------------------------------------------------//
 
             if (OK && _flagMainFormPCL && _flagRearFormPCL)
@@ -2401,7 +2401,7 @@ namespace PCLParaphernalia
 
                     MessageBox.Show ("Macro identifiers '" + _macroIdMainPCL +
                                      "' for Main and Rear forms " +
-                                     " are both the same.\n\n", 
+                                     " are both the same.\n\n",
                                      "PCL selection combination",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
@@ -2599,7 +2599,7 @@ namespace PCLParaphernalia
 
             if (_flagMainFormPCLXL)
             {
-                if (! File.Exists(_formFileMainPCLXL)) 
+                if (! File.Exists(_formFileMainPCLXL))
                 {
                     OK = false;
 
@@ -2616,7 +2616,7 @@ namespace PCLParaphernalia
 
             if (OK && _flagRearFormPCLXL)
             {
-                if (! File.Exists(_formFileRearPCLXL)) 
+                if (! File.Exists(_formFileRearPCLXL))
                 {
                     OK = false;
 

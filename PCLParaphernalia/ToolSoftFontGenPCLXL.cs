@@ -7,11 +7,11 @@ using System.Windows;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PCL XL handling for the Soft Font Generate tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2012
-    /// 
+    ///
     /// </summary>
     class ToolSoftFontGenPCLXL
     {
@@ -21,7 +21,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int cSizeFontname = 16; 
+        const int cSizeFontname = 16;
         const int cSizeHddrDesc        = 8;
         const int cSizeCharHddrClass0  = 6;
         const int cSizeCharHddrClass1  = 10;
@@ -45,7 +45,7 @@ namespace PCLParaphernalia
         private readonly DataTable _tableLog;
 
         private bool _symbolMapping = false;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // T o o l S o f t G e n P C L X L                                    //
@@ -56,7 +56,7 @@ namespace PCLParaphernalia
                                    ToolSoftFontGenTTF ttfHandler)
         {
             _baseHandler = new ToolSoftFontGenPCLCommon();
- 
+
             _tableLog = tableLog;
 
             _ttfHandler = ttfHandler;
@@ -724,7 +724,7 @@ namespace PCLParaphernalia
             // Write Format 0 font header.                                    //
             //                                                                //
             //----------------------------------------------------------------//
-   
+
             hddrDesc[0] = 0;                    // Format
             hddrDesc[1] = (byte) PCLXLAttrEnums.eVal.ePortraitOrientation;
             hddrDesc[2] = msByte (symSet);      // Symbol set MSB

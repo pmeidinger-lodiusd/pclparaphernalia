@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a set of PCL 'status readback' Location Type objects.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class PCLLocationTypes
     {
@@ -27,7 +27,7 @@ namespace PCLParaphernalia
             ROMDevice
         }
 
-        private static readonly PCLLocationType[] _locationTypes = 
+        private static readonly PCLLocationType[] _locationTypes =
         {
             new PCLLocationType(eType.All,            "2",
                                 "All locations"),
@@ -42,10 +42,10 @@ namespace PCLParaphernalia
             new PCLLocationType(eType.ROMDevice,      "7",
                                 "SIMMs/DIMMs")
         };
-        
+
         private static readonly int _locationTypeCount =
             _locationTypes.GetUpperBound(0) + 1;
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // g e t C o u n t                                                    //

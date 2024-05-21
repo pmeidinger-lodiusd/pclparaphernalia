@@ -4,12 +4,12 @@ using System.IO;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PCL support for the Cross-hatch element of the
     /// Patterns action of the MiscSamples tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2014
-    /// 
+    ///
     /// </summary>
     static class ToolMiscSamplesActPatternXHatchPCL
     {
@@ -469,10 +469,10 @@ namespace PCLParaphernalia
             _patternsCt = PCLPatternDefs.getCount(
                 PCLPatternDefs.eType.CrossHatch);
 
-            _patternIds     = new ushort[_patternsCt]; 
-            _patternHeights = new ushort[_patternsCt]; 
-            _patternWidths  = new ushort[_patternsCt]; 
-            _patternDescs   = new string[_patternsCt]; 
+            _patternIds     = new ushort[_patternsCt];
+            _patternHeights = new ushort[_patternsCt];
+            _patternWidths  = new ushort[_patternsCt];
+            _patternDescs   = new string[_patternsCt];
 
             for (int i = 0; i < _patternsCt; i++)
             {

@@ -4,12 +4,12 @@ using System.IO;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PCL support for the Character Modification element
     /// of the Text Modification action of the MiscSamples tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2014
-    /// 
+    ///
     /// </summary>
     static class ToolMiscSamplesActTxtModChrPCL
     {
@@ -40,7 +40,7 @@ namespace PCLParaphernalia
         // Static variables.                                                  //
         //                                                                    //
         //--------------------------------------------------------------------//
-            
+
         static readonly int _indxFontArial     = PCLFonts.getIndexForName("Arial");
         static readonly int _indxFontCourier   = PCLFonts.getIndexForName("Courier");
 
@@ -238,7 +238,7 @@ namespace PCLParaphernalia
             posX = (short)(_posXDesc - logXOffset);
             posY = _posYDesc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "PCL & HP-GL/2 Font Embellishments:");
 
             ptSize  = 12;
@@ -250,22 +250,22 @@ namespace PCLParaphernalia
 
             posY += _lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "Font:");
 
             posY += _lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "Size X:");
-            
+
             posY += _lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "Size Y:");
-            
+
             posY += _lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "Slant X:");
 
             posY += _lineInc;
@@ -273,7 +273,7 @@ namespace PCLParaphernalia
 
             PCLWriter.text(prnWriter, posX, posY, 0,
                       "Extra space:");
-            
+
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -327,7 +327,7 @@ namespace PCLParaphernalia
                    tanAngle;
 
             //----------------------------------------------------------------//
-            
+
             if (formAsMacro)
                 PCLWriter.macroControl(prnWriter, _macroId,
                                        PCLWriter.eMacroControl.Call);

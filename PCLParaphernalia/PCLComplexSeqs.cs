@@ -6,11 +6,11 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines the sets of PCL escape sequences.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class PCLComplexSeqs
     {
@@ -19,7 +19,7 @@ namespace PCLParaphernalia
         // Constants and enumerations.                                        //
         //                                                                    //
         //--------------------------------------------------------------------//
- 
+
         public const int _valueVarious = 99999;
         public const int _valueGeneric = 99998;
         public const int _valueDummy   = 99997;
@@ -88,7 +88,7 @@ namespace PCLParaphernalia
 
             string keyRoot,
                    key;
-            
+
             keyRoot = iChar.ToString ("X2") +
                       gChar.ToString ("X2") +
                       tChar.ToString ("X2");
@@ -117,7 +117,7 @@ namespace PCLParaphernalia
                 // not been found in the table.                               //
                 //                                                            //
                 //------------------------------------------------------------//
-                
+
                 seqKnown = true;
                 seq = _seqs[keyRoot];
             }
@@ -418,7 +418,7 @@ namespace PCLParaphernalia
                    gChar.ToString ("X2") +
                    tChar.ToString ("X2");
             value = _valueGeneric;                               // ???       //
-            _seqUnknown = 
+            _seqUnknown =
                  new PCLComplexSeq (iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
@@ -3513,7 +3513,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
                                    PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Stroke Weight: Semi Bold"));
             value = 2;                                           // (s2B      //
@@ -7974,7 +7974,7 @@ namespace PCLParaphernalia
                 for (int i = 0; i < count; i++)
                 {
                     if (! PCLPaperSizes.IsIdUnknownPCL(i))
-                    { 
+                    {
                         value = PCLPaperSizes.getIdPCL(i);
 
                         _seqs.Add(root + ":" + value.ToString("X4"),
@@ -8011,7 +8011,7 @@ namespace PCLParaphernalia
             const bool flagNilGChar = true;
 
             int ctSymsets;
-            
+
             ctSymsets = PCLSymbolSets.getCount ();
 
             if (ctSymsets > 0)

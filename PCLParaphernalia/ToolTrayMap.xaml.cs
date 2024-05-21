@@ -9,13 +9,13 @@ namespace PCLParaphernalia
 {
     /// <summary>
     /// Interaction logic for ToolTrayMap.xaml
-    /// 
+    ///
     /// Class handles the TrayMap tool form.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
-    
+
     [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
@@ -44,7 +44,7 @@ namespace PCLParaphernalia
             (int) ToolCommonData.ePrintLang.PCLXL,
         };
 
-        private static readonly int[] _subsetOrientations = 
+        private static readonly int[] _subsetOrientations =
         {
             (int) PCLOrientations.eIndex.Portrait,
             (int) PCLOrientations.eIndex.Landscape,
@@ -803,7 +803,7 @@ namespace PCLParaphernalia
         {
             crntPDL = _crntPDL;
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // i n i t i a l i s e                                                //
@@ -841,7 +841,7 @@ namespace PCLParaphernalia
             }
 
             //----------------------------------------------------------------//
-            
+
             cbSheetCt.Items.Clear();
 
             for (int i = 1; i <= _maxSheetNo; i++)
@@ -1024,11 +1024,11 @@ namespace PCLParaphernalia
             metricsLoad();
 
             pdlOptionsRestore();
-            
+
             cbPDL.SelectedIndex = (byte)_indxPDL;
-            
+
             _initialised = true;
-            
+
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                 cbSheetCt.SelectedIndex = _sheetCtPCL - 1;
             else
@@ -1098,7 +1098,7 @@ namespace PCLParaphernalia
 
             if ((_indxPDL < 0) || (_indxPDL >= _ctPDLs))
                 _indxPDL = 0;
-            
+
             _crntPDL = (ToolCommonData.ePrintLang) _subsetPDLs [_indxPDL];
 
             //----------------------------------------------------------------//

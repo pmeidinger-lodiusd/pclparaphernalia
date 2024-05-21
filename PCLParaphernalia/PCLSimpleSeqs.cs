@@ -6,11 +6,11 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines the sets of PCL escape sequences.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class PCLSimpleSeqs
     {
@@ -26,7 +26,7 @@ namespace PCLParaphernalia
         private static PCLSimpleSeq _seqUnknown;
 
         private static int _seqsCount;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L S i m p l e S e q s                                          //
@@ -62,7 +62,7 @@ namespace PCLParaphernalia
             bool seqKnown;
 
             PCLSimpleSeq seq;
-            
+
             if (_seqs.IndexOfKey (iChar) != -1)
             {
                 seqKnown = true;
@@ -73,7 +73,7 @@ namespace PCLParaphernalia
                 seqKnown = false;
                 seq = _seqUnknown;
             }
-            
+
             optObsolete     = seq.FlagObsolete;
             optResetHPGL2   = seq.FlagResetHPGL2;
             description     = seq.Description;
@@ -287,7 +287,7 @@ namespace PCLParaphernalia
                                  PrnParseConstants.eOvlAct.None,
                                  PrnParseConstants.eSeqGrp.Unknown,
                                  "*** Unknown sequence ***");
-            
+
             sChar = 0x31;                                                // 1 //
             _seqs.Add(sChar,
                  new PCLSimpleSeq(sChar,

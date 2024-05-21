@@ -6,11 +6,11 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a set of PML 'outcome type' objects.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class PMLOutcomes
     {
@@ -26,7 +26,7 @@ namespace PCLParaphernalia
         private static PMLOutcome _unknownTag;
 
         private static int _tagCount;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P M L O u t c o m e T y p e s                                      //
@@ -240,7 +240,7 @@ namespace PCLParaphernalia
 
             tag = 0x20;                                              // ?    //
             _unknownTag =
-                new PMLOutcome (tag, 
+                new PMLOutcome (tag,
                                     "*** Unknown tag ***");
 
             tag = 0x00;                                              // 0x00 //

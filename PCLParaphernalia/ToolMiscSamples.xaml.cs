@@ -9,13 +9,13 @@ namespace PCLParaphernalia
 {
     /// <summary>
     /// Interaction logic for ToolMiscSamples.xaml
-    /// 
+    ///
     /// Class handles the MiscSamples tool form.
-    /// 
+    ///
     /// © Chris Hutchinson 2015
-    /// 
+    ///
     /// </summary>
-    
+
     [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
@@ -49,7 +49,7 @@ namespace PCLParaphernalia
             Unicode
         };
 
-        private readonly string[] sSampleNames = 
+        private readonly string[] sSampleNames =
         {
             // must be in same order as _subsetTypes array
 
@@ -85,7 +85,7 @@ namespace PCLParaphernalia
             (int) ToolCommonData.eToolSubIds.Unicode
         };
 
-        private static readonly int[] _subsetOrientations = 
+        private static readonly int[] _subsetOrientations =
         {
             (int) PCLOrientations.eIndex.Portrait,
             (int) PCLOrientations.eIndex.Landscape,
@@ -439,7 +439,7 @@ namespace PCLParaphernalia
                                     _flagLogOperUseMacrosPCLXL,
                                     _flagLogOperOptSrcTextPatPCLXL);
                             }
-                            
+
                             break;
 
                         case (int) eSampleType.LogPage:
@@ -778,7 +778,7 @@ namespace PCLParaphernalia
         private void initialise()
         {
             int index;
-                
+
             //----------------------------------------------------------------//
             //                                                                //
             // Populate form.                                                 //
@@ -912,8 +912,8 @@ namespace PCLParaphernalia
             else if (_indxSampleType == (int) eSampleType.LogPage)
             {
                 if (_crntPDL == ToolCommonData.ePrintLang.PCLXL)
-                    chkOptFormAsMacro.Visibility = Visibility.Hidden; 
-                
+                    chkOptFormAsMacro.Visibility = Visibility.Hidden;
+
                 initialiseDataLogPage ();
 
                 cbSampleType.SelectedIndex = (int) eSampleType.LogPage;
@@ -986,7 +986,7 @@ namespace PCLParaphernalia
 
             if ((_indxPDL < 0) || (_indxPDL >= _ctPDLs))
                 _indxPDL = 0;
-            
+
             _crntPDL = (ToolCommonData.ePrintLang) _subsetPDLs[_indxPDL];
 
             //----------------------------------------------------------------//
@@ -1002,7 +1002,7 @@ namespace PCLParaphernalia
             metricsLoadDataPattern();
             metricsLoadDataTxtMod();
             metricsLoadDataUnicode();
-            
+
             //----------------------------------------------------------------//
 
             if ((_indxOrientationPCL < 0) ||

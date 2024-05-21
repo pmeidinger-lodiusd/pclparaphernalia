@@ -4,11 +4,11 @@ using System;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class manages persistent storage of options for the FontSample tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class ToolFontSamplePersist
     {
@@ -22,14 +22,14 @@ namespace PCLParaphernalia
 
         const string _subKeyTools             = "Tools";
         const string _subKeyToolsFontSample   = "FontSample";
-        const string _subKeyPCL5              = "PCL5"; 
-        const string _subKeyPCL6              = "PCL6"; 
-        const string _subKeyPCL               = "PCL"; 
-        const string _subKeyPCLXL             = "PCLXL"; 
-        const string _subKeyCustom            = "Custom"; 
-        const string _subKeyDownload          = "Download"; 
-        const string _subKeyPreset            = "Preset"; 
-        const string _subKeyPrnDisk           = "PrnMassStore"; 
+        const string _subKeyPCL5              = "PCL5";
+        const string _subKeyPCL6              = "PCL6";
+        const string _subKeyPCL               = "PCL";
+        const string _subKeyPCLXL             = "PCLXL";
+        const string _subKeyCustom            = "Custom";
+        const string _subKeyDownload          = "Download";
+        const string _subKeyPreset            = "Preset";
+        const string _subKeyPrnDisk           = "PrnMassStore";
 
         const string _nameCaptureFile         = "CaptureFile";
         const string _nameDownloadFile        = "DownloadFile";
@@ -72,13 +72,13 @@ namespace PCLParaphernalia
         const int _flagTrue                 = 1;
         const int _indexZero                = 0;
 
-        const string _defaultCaptureFilePCL   = "CaptureFile_FontSamplePCL.prn";  
-        const string _defaultCaptureFilePCLXL = "CaptureFile_FontSamplePCLXL.prn";  
-        const string _defaultFontFilePCL      = "DefaultFontFile.sft";  
-        const string _defaultFontFilePCLXL    = "DefaultFontFile.sfx";  
+        const string _defaultCaptureFilePCL   = "CaptureFile_FontSamplePCL.prn";
+        const string _defaultCaptureFilePCLXL = "CaptureFile_FontSamplePCLXL.prn";
+        const string _defaultFontFilePCL      = "DefaultFontFile.sft";
+        const string _defaultFontFilePCLXL    = "DefaultFontFile.sfx";
         const string _defaultFontName         = "Arial";
-        const string _defaultSymSetUserFile   = "DefaultSymSetFile.pcl";  
-        const string _defaultMassStoreFontFile = "DefaultFont.sfp";  
+        const string _defaultSymSetUserFile   = "DefaultSymSetFile.pcl";
+        const string _defaultMassStoreFontFile = "DefaultFont.sfp";
 
         const int _sizeFactor                = 1000;
         const int _defaultHeightPtsK         = 15 * _sizeFactor;
@@ -87,7 +87,7 @@ namespace PCLParaphernalia
         const int _defaultSoftFontIdPCL      = 101;
         const int _defaultSoftFontIdMacroPCL = 201;
         const int _defaultIndxVariant  = (int)PCLFonts.eVariant.Regular;
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // l o a d D a t a C a p t u r e                                      //
@@ -364,8 +364,8 @@ namespace PCLParaphernalia
 
             key = _subKeyTools + "\\" + _subKeyToolsFontSample +
                                  "\\" + _subKeyPCL +
-                                 "\\" + _subKeyCustom; 
-                  
+                                 "\\" + _subKeyCustom;
+
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 tmpInt = (int)subKey.GetValue(_nameFlagProportional,
@@ -456,15 +456,15 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             key = _subKeyTools + "\\" + _subKeyToolsFontSample +
-                                 "\\" + _subKeyPCL + 
-                                 "\\" + _subKeyDownload; 
-                  
+                                 "\\" + _subKeyPCL +
+                                 "\\" + _subKeyDownload;
+
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 downloadFile = (string)subKey.GetValue(_nameDownloadFile,
                                                        defWorkFolder + "\\" +
                                                        _defaultFontFilePCL);
-                
+
                 tmpInt       = (int)subKey.GetValue(_nameDownloadId,
                                                       1);
                 downloadId   = (ushort)tmpInt;
@@ -534,8 +534,8 @@ namespace PCLParaphernalia
 
             key = _subKeyTools + "\\" + _subKeyToolsFontSample +
                                  "\\" + _subKeyPCL +
-                                 "\\" + _subKeyPreset; 
-                  
+                                 "\\" + _subKeyPreset;
+
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 indxFont     = (int)subKey.GetValue(_nameIndxFont,
@@ -753,8 +753,8 @@ namespace PCLParaphernalia
 
             key = _subKeyTools + "\\" + _subKeyToolsFontSample +
                                  "\\" + _subKeyPCLXL +
-                                 "\\" + _subKeyCustom; 
-                  
+                                 "\\" + _subKeyCustom;
+
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 fontName     = (string)subKey.GetValue(_nameFontName,
@@ -806,12 +806,12 @@ namespace PCLParaphernalia
 
             key = _subKeyTools + "\\" + _subKeyToolsFontSample +
                                  "\\" + _subKeyPCLXL +
-                                 "\\" + _subKeyDownload; 
-                  
+                                 "\\" + _subKeyDownload;
+
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 downloadFile = (string)subKey.GetValue(_nameDownloadFile,
-                                                       defWorkFolder + "\\" + 
+                                                       defWorkFolder + "\\" +
                                                        _defaultFontFilePCLXL);
 
                 tmpInt       = (int) subKey.GetValue(_nameFlagDownloadRemove,
@@ -865,8 +865,8 @@ namespace PCLParaphernalia
 
             key = _subKeyTools + "\\" + _subKeyToolsFontSample +
                                  "\\" + _subKeyPCLXL +
-                                 "\\" + _subKeyPreset; 
-                  
+                                 "\\" + _subKeyPreset;
+
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 indxFont     = (int)subKey.GetValue(_nameIndxFont,
@@ -892,7 +892,7 @@ namespace PCLParaphernalia
                                                           _defaultSymSetUserFile);
             }
         }
-       
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // s a v e D a t a C a p t u r e                                      //
@@ -939,7 +939,7 @@ namespace PCLParaphernalia
                 }
             }
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // s a v e D a t a C o m m o n                                        //

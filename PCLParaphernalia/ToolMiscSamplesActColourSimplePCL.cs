@@ -4,12 +4,12 @@ using System.IO;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PCL support for the PCL Simple element of the
     /// Colours action of the MiscSamples tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2014
-    /// 
+    ///
     /// </summary>
     static class ToolMiscSamplesActColourSimplePCL
     {
@@ -524,7 +524,7 @@ namespace PCLParaphernalia
                                      PCLWriter.eSimplePalette.CMY);
 
             posX += _colInc;
-            
+
             rectX = posX;
             rectY = posY;
 

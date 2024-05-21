@@ -5,11 +5,11 @@ using System.Windows;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class handles PCL (download) macros.
-    /// 
+    ///
     /// © Chris Hutchinson 2012
-    /// 
+    ///
     /// </summary>
     static class PCLDownloadMacro
     {
@@ -272,6 +272,6 @@ namespace PCLParaphernalia
             }
 
             return open;
-        }         
+        }
     }
 }

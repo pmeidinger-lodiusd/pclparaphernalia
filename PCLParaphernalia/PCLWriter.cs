@@ -5,11 +5,11 @@ using System.Text;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides primitive and macro operations for PCL print language.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class PCLWriter
     {
@@ -847,7 +847,7 @@ namespace PCLParaphernalia
                            "1l"   +             // perforation skip enable
                            "0E"   +             // Top Margin (lines)
                   "\x1b" + "&a0L";              // Left Margin (columns)
-   
+
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
 
@@ -900,7 +900,7 @@ namespace PCLParaphernalia
                            "i" +             // Custom paper width
                            dptLength +
                            "J";              // Custom paper length
-   
+
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
 
             seq = "\x1b" + "&l" +
@@ -962,8 +962,8 @@ namespace PCLParaphernalia
                                         short colour3)
         {
             string seq;
-            
-            seq = "\x1b" + "*v" +              
+
+            seq = "\x1b" + "*v" +
                            colour1 + "a" +      // Colour Component 1
                            colour2 + "b" +      // Colour Component 2
                            colour3 + "c" +      // Colour Component 3
@@ -1008,7 +1008,7 @@ namespace PCLParaphernalia
                                          eSimplePalette palette)
         {
             string seq;
-            
+
             if (palette == eSimplePalette.RGB)
                 seq = "\x1b" + "*r3U";          // Simple Colour: RGB palette
             else if (palette == eSimplePalette.CMY)
@@ -1289,7 +1289,7 @@ namespace PCLParaphernalia
                            srcWidth + "s" +     // Source Width
                            srcHeight + "t" +    // Source Height
                            "1A" +               // Start Raster Graphics: at X
-                  "\x1b" + "*b" + 
+                  "\x1b" + "*b" +
                            compressMode + "M";  // Compression mode
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
@@ -1341,7 +1341,7 @@ namespace PCLParaphernalia
                 (destScalePercentY == 100))
             {
                 seq = "\x1b" + "*r1A" +         // Start Raster Graphics: at X
-                      "\x1b" + "*b" + 
+                      "\x1b" + "*b" +
                       compressionMode + "M";    // Compression mode
             }
             else
@@ -1393,7 +1393,7 @@ namespace PCLParaphernalia
         {
             string seq;
 
-            seq = "\x1b" + "*b" + 
+            seq = "\x1b" + "*b" +
                            compressMode + "M";  // Compression mode
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
@@ -1520,7 +1520,7 @@ namespace PCLParaphernalia
                                             short width,
                                             short stroke,
                                             bool floating,
-                                            bool relative) 
+                                            bool relative)
         {
             string seq;
 
@@ -1884,7 +1884,7 @@ namespace PCLParaphernalia
             string seq;
 
             seq = "\x1b" + "%-12345X";          // Universal Exit Language
-            
+
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
 
             if (pjlCommand != "")
@@ -1893,7 +1893,7 @@ namespace PCLParaphernalia
 
                 prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
             }
-             
+
             seq = "@PJL Enter Language = PCL" +
                   "\x0d" + "\x0a"   +
                   "\x1b" + "E" +                // Printer Reset
@@ -1921,7 +1921,7 @@ namespace PCLParaphernalia
             {
                 macroControl(prnWriter, macroId, eMacroControl.Delete);
             }
-            
+
             seq = "\x1b" + "E" +                // Printer Reset
                   "\x1b" + "%-12345X";          // Universal Exit Language
 

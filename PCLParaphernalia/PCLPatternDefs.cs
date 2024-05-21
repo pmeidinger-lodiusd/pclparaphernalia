@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides definitions for standard PCL patterns.
-    /// 
+    ///
     /// © Chris Hutchinson 2016
-    /// 
+    ///
     /// </summary>
     public static class PCLPatternDefs
     {

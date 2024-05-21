@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a set of PJL 'status readback' Variable objects.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class PJLVariables
     {
@@ -26,7 +26,7 @@ namespace PCLParaphernalia
             PS
         }
 
-        private static readonly PJLVariable[] _vars = 
+        private static readonly PJLVariable[] _vars =
         {
             new PJLVariable(eVarType.Custom,
                             "<specify value>"),
@@ -256,7 +256,7 @@ namespace PCLParaphernalia
             new PJLVariable(eVarType.PS,
                             "RESOURCESAVESIZE")
         };
-        
+
         private static readonly int _varCount = _vars.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//

@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class handles 'link' data for 'parsing' of print file.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     class PrnParseLinkData
     {
@@ -17,7 +17,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-       
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
         // Class variables.                                                   //
@@ -45,7 +44,7 @@ namespace PCLParaphernalia
 
         private string _makeOvlStreamName;
 
-        private PCLXLOperators.eEmbedDataType _pclxlEmbedType; 
+        private PCLXLOperators.eEmbedDataType _pclxlEmbedType;
 
         private int _prefixLen;
         private int _dataLen;
@@ -56,7 +55,7 @@ namespace PCLParaphernalia
         private int _entryRem;
         private int _entrySz1;
         private int _entrySz2;
-   
+
         private bool _pclComboSeq;
         private bool _pclComboFirst;
         private bool _pclComboLast;
@@ -69,7 +68,7 @@ namespace PCLParaphernalia
 
         private bool _backTrack;
         private bool _eof;
-        
+
         private byte _prefixA;
         private byte _prefixB;
 
@@ -104,15 +103,15 @@ namespace PCLParaphernalia
             _entryRem              = 0;
             _entrySz1              = 0;
             _entrySz2              = 0;
-            
+
             _backTrack             = false;
             _prefixA               = 0x00;
             _prefixB               = 0x00;
-            
+
             _eof                   = false;
 
             _fileSize              = 0;
-            
+
             _makeOvlOffset         = 0;
             _makeOvlSkipBegin      = -1;
             _makeOvlSkipEnd        = -1;
@@ -464,7 +463,7 @@ namespace PCLParaphernalia
             get { return _makeOvlPos; }
             set { _makeOvlPos = value; }
         }
- 
+
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
         // M a k e O v l R e s t o r e S t a t e X L                          //
@@ -476,7 +475,7 @@ namespace PCLParaphernalia
             get { return _makeOvlRestoreStateXL; }
             set { _makeOvlRestoreStateXL = value; }
         }
- 
+
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
         // M a k e O v l S h o w                                              //

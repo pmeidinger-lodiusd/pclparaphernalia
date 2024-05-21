@@ -4,11 +4,11 @@ using System.IO;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PCL XL support for the FontSample tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class ToolFontSamplePCLXL
     {
@@ -170,7 +170,7 @@ namespace PCLParaphernalia
         {
             if ((downloadFont) && (downloadFontRemove))
             {
-                PCLXLWriter.fontRemove(prnWriter, false, fontName); 
+                PCLXLWriter.fontRemove(prnWriter, false, fontName);
             }
 
             PCLXLWriter.stdJobTrailer(prnWriter, formAsMacro, _formName);
@@ -260,7 +260,7 @@ namespace PCLParaphernalia
                                      ref indBuf,
                                      PCLXLAttributes.eTag.NullBrush,
                                      0);
-            
+
             PCLXLWriter.addOperator(ref buffer,
                                     ref indBuf,
                                     PCLXLOperators.eTag.SetBrushSource);
@@ -454,13 +454,13 @@ namespace PCLParaphernalia
                                          _posYGrid,
                                          _marginX  + twoCellWidth,
                                          _posYGrid + twoCellHeight);
-            
+
             PCLXLWriter.addAttrSint16XY(ref buffer,
                                         ref indBuf,
                                         PCLXLAttributes.eTag.StartPoint,
                                         _marginX + _cellWidth,
                                         _posYGrid);
-            
+
             PCLXLWriter.addAttrSint16XY(ref buffer,
                                         ref indBuf,
                                         PCLXLAttributes.eTag.EndPoint,
@@ -627,7 +627,7 @@ namespace PCLParaphernalia
                                         PCLXLOperators.eTag.LineRelPath);
 
                 if (i == 1)
-                { 
+                {
                     posX1 = -gridWidthOuter;
                     posY1 = _cellHeight;
                 }
@@ -866,7 +866,7 @@ namespace PCLParaphernalia
                                          buffer, ref indBuf);
 
             //----------------------------------------------------------------//
-            
+
             crntPtSize = 6;
 
             PCLXLWriter.font(prnWriter, formAsMacro, 6,
@@ -1404,7 +1404,7 @@ namespace PCLParaphernalia
 
             prnWriter.Write(buffer, 0, indBuf);
             indBuf = 0;
-            
+
             PCLXLWriter.font(prnWriter, false, crntPtSize,
                              symSetKind1, fontName);
 
@@ -1426,7 +1426,7 @@ namespace PCLParaphernalia
             {
                 startRow = 0;
                 startCol = startIndxMajor;
-    
+
                 rowSize = (short)(_gridDim - startIndxMajor);
 
                 posX = (short)(_marginX + (_cellWidth * (startIndxMajor + 1)) +
@@ -1495,7 +1495,7 @@ namespace PCLParaphernalia
                         }
                     }
                     else
-                    { 
+                    {
                         for (int col = 0;
                                    col < rowSize;
                                    col++)

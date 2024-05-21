@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines an HP-GL/2 Command.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "properties renaming")]
 
@@ -33,7 +33,7 @@ namespace PCLParaphernalia
 
         private int _statsCtParent;
         private int _statsCtChild;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // H P G L 2 C o m m a n d                                            //
@@ -53,7 +53,7 @@ namespace PCLParaphernalia
         {
             _mnemonic       = mnemonic;
             _description    = description;
-        
+
             _flagResetHPGL2 = flagResetHPGL2;
             _flagBinaryData = flagBinaryData;
             _flagFlipTransp = flagFlipTransp;

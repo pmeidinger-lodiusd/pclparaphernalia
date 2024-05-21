@@ -4,12 +4,12 @@ using System.IO;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PCL support for the Define Logical Page action
     /// of the MiscSamples tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2014
-    /// 
+    ///
     /// </summary>
     static class ToolMiscSamplesActLogPagePCL
     {
@@ -386,7 +386,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (formAsMacro)
-                PCLWriter.macroControl(prnWriter, _macroId, 
+                PCLWriter.macroControl(prnWriter, _macroId,
                                        PCLWriter.eMacroControl.Call);
             else
                 generateOverlay(prnWriter, false,

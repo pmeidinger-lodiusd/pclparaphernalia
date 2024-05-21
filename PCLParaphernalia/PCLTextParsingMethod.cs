@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class handles a PCL Text Parsing Method object.
-    /// 
+    ///
     /// © Chris Hutchinson 2015
-    /// 
+    ///
     /// </summary>
     class PCLTextParsingMethod
     {
@@ -42,7 +42,7 @@ namespace PCLParaphernalia
             _indxMethod = indxMethod;
             _value      = value;
             _desc       = desc;
-            
+
             _rangeDataSingle = rangeDataSingle;
             _rangeDataDouble = rangeDataDouble;
         }

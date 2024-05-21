@@ -6,11 +6,11 @@ using System.Windows;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PCL handling for the Soft Font Generate tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2012
-    /// 
+    ///
     /// </summary>
     class ToolSoftFontGenPCL
     {
@@ -44,7 +44,7 @@ namespace PCLParaphernalia
         private readonly DataTable _tableLog;
 
         private bool _symbolMapping = false;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // T o o l S o f t G e n P C L                                        //
@@ -55,7 +55,7 @@ namespace PCLParaphernalia
                                    ToolSoftFontGenTTF ttfHandler)
         {
             _baseHandler = new ToolSoftFontGenPCLCommon();
- 
+
             _tableLog = tableLog;
 
             _ttfHandler = ttfHandler;
@@ -426,13 +426,13 @@ namespace PCLParaphernalia
             //       called recursively.                                      //
             //                                                                //
             //----------------------------------------------------------------//
-            
+
             if (glyphLength > 0)
             {
                 bool flagOK = true;
 
                 glyphData = new byte[glyphLength];
-        
+
                 flagOK = _ttfHandler.readByteArray ((int) glyphOffset,
                                                     (int) glyphLength,
                                                     ref glyphData);

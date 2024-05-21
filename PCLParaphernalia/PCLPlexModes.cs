@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a set of PCL Plex Mode objects.
-    /// 
+    ///
     /// © Chris Hutchinson 2012
-    /// 
+    ///
     /// </summary>
     static class PCLPlexModes
     {
@@ -41,7 +41,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static readonly PCLPlexMode[] _plexModes = 
+        private static readonly PCLPlexMode[] _plexModes =
         {
             new PCLPlexMode (ePlexType.Simplex,
                              "Simplex",

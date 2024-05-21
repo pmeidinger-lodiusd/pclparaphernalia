@@ -6,11 +6,11 @@ using System.Windows;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PJL File System support for the Status Readback tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2015
-    /// 
+    ///
     /// </summary>
     static class ToolStatusReadbackPJLFS
     {
@@ -231,7 +231,7 @@ namespace PCLParaphernalia
                 PJLCommands.eRequestType reqType;
 
                 string cmdName;
-    
+
                 reqType = PJLCommands.getType(cmdIndx);
                 cmdName = PJLCommands.getName(cmdIndx);
 

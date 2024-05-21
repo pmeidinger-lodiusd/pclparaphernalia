@@ -6,11 +6,11 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides details of HP-GL/2 control code characters.
-    /// 
+    ///
     /// © Chris Hutchinson 2013
-    /// 
+    ///
     /// </summary>
     static class HPGL2ControlCodes
     {
@@ -26,7 +26,7 @@ namespace PCLParaphernalia
         private static HPGL2ControlCode _tagUnknown;
 
         private static int _tagCount;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // H P G L 2 C o n t r o l C o d e s                                  //
@@ -62,7 +62,7 @@ namespace PCLParaphernalia
             else
             {
                 seqKnown = false;
-                tag = _tagUnknown; 
+                tag = _tagUnknown;
             }
 
             description = tag.Description;
@@ -278,7 +278,7 @@ namespace PCLParaphernalia
             _tagUnknown =
                 new HPGL2ControlCode (tag,
                                       true,
-                                      "", 
+                                      "",
                                       "*** Unknown tag ***");
 
             tag = 0x00;                                               // 0x00 //

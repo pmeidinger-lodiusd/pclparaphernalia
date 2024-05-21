@@ -4,11 +4,11 @@ using System;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class manages persistent storage of options for the StatusReadback tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class ToolStatusReadbackPersist
     {
@@ -52,7 +52,7 @@ namespace PCLParaphernalia
 
         const string _defaultReportFilePCL      = "ReportFile_StatusReadbackPCL.txt";
         const string _defaultReportFilePJL      = "ReportFile_StatusReadbackPJL.txt";
-        
+
         const string _defaultCustomCatPJL       = "CUSTOM_CAT_1";
         const string _defaultCustomVarPJL       = "CUSTOM_VAR_1";
 
@@ -467,7 +467,7 @@ namespace PCLParaphernalia
                 }
             }
         }
- 
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // s a v e D a t a C o m m o n                                        //

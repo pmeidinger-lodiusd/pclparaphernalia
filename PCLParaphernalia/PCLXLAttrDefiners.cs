@@ -5,11 +5,11 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides details of PCL XL Attribute Definer tags.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class PCLXLAttrDefiners
     {
@@ -35,7 +35,7 @@ namespace PCLParaphernalia
             new SortedList<byte, PCLXLAttrDefiner>();
 
         private static int _tagCount;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L X L A t t r D e f i n e r s                                  //

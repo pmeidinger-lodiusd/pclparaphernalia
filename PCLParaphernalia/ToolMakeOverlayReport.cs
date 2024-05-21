@@ -5,11 +5,11 @@ using System.Reflection;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides the Make Overlay 'save report' function.
-    /// 
+    ///
     /// © Chris Hutchinson 2012
-    /// 
+    ///
     /// </summary>
     static class ToolMakeOverlayReport
     {
@@ -21,7 +21,7 @@ namespace PCLParaphernalia
 
         const int _maxSizeNameTag = 15;
         const int _colSpanNone = -1;
-        
+
         const bool _flagNone = false;
         const bool _flagBlankBefore = true;
 

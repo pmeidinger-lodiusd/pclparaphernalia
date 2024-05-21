@@ -9,13 +9,13 @@ namespace PCLParaphernalia
 {
     /// <summary>
     /// Interaction logic for ToolPrinterInfo.xaml
-    /// 
+    ///
     /// Class handles the PrinterInfo tool form.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
-    
+
     [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
@@ -37,14 +37,14 @@ namespace PCLParaphernalia
         private const string _defaultPJLFSObjPath = "0:\\pcl\\macros\\macro1";
         private const string _defaultPJLFSVolume  = "0:";
 
-        private static readonly PJLCommands.eCmdIndex[] _subsetPJLCommands = 
+        private static readonly PJLCommands.eCmdIndex[] _subsetPJLCommands =
         {
             PJLCommands.eCmdIndex.DINQUIRE,
             PJLCommands.eCmdIndex.INFO,
             PJLCommands.eCmdIndex.INQUIRE
         };
 
-        private static readonly PJLCommands.eCmdIndex [] _subsetPJLFSCommands = 
+        private static readonly PJLCommands.eCmdIndex [] _subsetPJLFSCommands =
         {
             PJLCommands.eCmdIndex.FSAPPEND,
             PJLCommands.eCmdIndex.FSDELETE,
@@ -542,14 +542,14 @@ namespace PCLParaphernalia
                 lbPJLFSOpt1.Content = "Size:";
                 lbPJLFSOpt1.Visibility = Visibility.Visible;
                 txtPJLFSOpt1.Visibility = Visibility.Visible;
-                
+
                 _valPJLFSOpt1 = _defaultPJLFSSize;
                 txtPJLFSOpt1.Text = _valPJLFSOpt1.ToString ();
 
                 lbPJLFSOpt2.Content = "Offset:";
                 lbPJLFSOpt2.Visibility = Visibility.Visible;
                 txtPJLFSOpt2.Visibility = Visibility.Visible;
-                
+
                 _valPJLFSOpt2 = _defaultPJLFSOffset;
                 txtPJLFSOpt2.Text = _valPJLFSOpt2.ToString ();
             }
@@ -567,7 +567,7 @@ namespace PCLParaphernalia
                 lbPJLFSOpt2.Content = "Entry:";
                 lbPJLFSOpt2.Visibility = Visibility.Visible;
                 txtPJLFSOpt2.Visibility = Visibility.Visible;
-                
+
                 _valPJLFSOpt2 = _defaultPJLFSEntry;
                 txtPJLFSOpt2.Text = _valPJLFSOpt2.ToString ();
             }
@@ -681,7 +681,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             cbPCLEntityType.Items.Clear();
-            
+
             _ctPCLEntityTypes = PCLEntityTypes.getCount();
 
             for (int i = 0; i < _ctPCLEntityTypes; i++)
@@ -703,7 +703,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             cbPJLCommand.Items.Clear();
-            
+
             _ctPJLCommands = _subsetPJLCommands.Length;
 
             for (int i = 0; i < _ctPJLCommands; i++)
@@ -716,7 +716,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             cbPJLFSCommand.Items.Clear();
-            
+
             _ctPJLFSCommands = _subsetPJLFSCommands.Length;
 
             for (int i = 0; i < _ctPJLFSCommands; i++)
@@ -729,7 +729,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             cbPJLCategory.Items.Clear();
-            
+
             _ctPJLCategories = PJLCategories.getCount();
 
             for (int i = 0; i < _ctPJLCategories; i++)
@@ -740,7 +740,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             cbPJLVariable.Items.Clear();
-            
+
             _ctPJLVariables = PJLVariables.getCount();
 
             for (int i = 0; i < _ctPJLVariables; i++)

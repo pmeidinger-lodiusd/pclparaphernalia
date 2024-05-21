@@ -7,11 +7,11 @@ using System.Windows;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides the core Target functions.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class TargetCore
     {
@@ -34,11 +34,11 @@ namespace PCLParaphernalia
         // Fields (class variables).                                          //
         //                                                                    //
         //--------------------------------------------------------------------//
-        
+
     	private static eTarget _targetType;
     	private static ReportCore.eRptFileFmt _rptFileFmt;
     	private static ReportCore.eRptChkMarks _rptChkMarks;
-	    
+
         private static int _netPrinterPort;
 
         private static int _netPrinterTimeoutSend;
@@ -119,7 +119,7 @@ namespace PCLParaphernalia
                 ToolFontSamplePersist.loadDataCapture (crntPDL,
                                                        ref _saveFilename);
             else if (crntToolId == ToolCommonData.eToolIds.FormSample)
-                ToolFormSamplePersist.loadDataCapture (crntPDL, 
+                ToolFormSamplePersist.loadDataCapture (crntPDL,
                                                        ref _saveFilename);
             else if (crntToolId == ToolCommonData.eToolIds.ImageBitmap)
                 ToolImageBitmapPersist.loadDataCapture (crntPDL,
@@ -141,7 +141,7 @@ namespace PCLParaphernalia
 
             else if (crntToolId == ToolCommonData.eToolIds.MiscSamples)
                 ToolMiscSamplesPersist.loadDataCapture (
-                             crntToolSubId, 
+                             crntToolSubId,
                              crntPDL,
                              ref _saveFilename);
 
@@ -514,11 +514,11 @@ namespace PCLParaphernalia
                 };
 
                 bool? dialogResult = saveDialog.ShowDialog();
-                
+
                 if (dialogResult == true)
                 {
                     _saveFilename = saveDialog.FileName;
-                    _crntFilename = _saveFilename; 
+                    _crntFilename = _saveFilename;
 
                     metricsSaveFileCapt (crntToolId, crntToolSubId, crntPDL,
                                          _saveFilename);
@@ -538,7 +538,7 @@ namespace PCLParaphernalia
                                 DateTime.Now.ToString("yyyyMMdd_HHmmss_fff") +
                                 ".dia";
             }
-                
+
             try
             {
                 _opStream = File.Create(_crntFilename);

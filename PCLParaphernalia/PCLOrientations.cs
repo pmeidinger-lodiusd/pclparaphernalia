@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a set of PCL Orientation objects.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class PCLOrientations
     {
@@ -40,21 +40,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static readonly PCLOrientation[] _orientations = 
+        private static readonly PCLOrientation[] _orientations =
         {
-            new PCLOrientation(eAspect.Portrait, 
+            new PCLOrientation(eAspect.Portrait,
                                "Portrait",
                                0x00,
                                (byte)PCLXLAttrEnums.eVal.ePortraitOrientation),
-            new PCLOrientation(eAspect.Landscape, 
+            new PCLOrientation(eAspect.Landscape,
                                "Landscape",
                                0x01,
                                (byte)PCLXLAttrEnums.eVal.eLandscapeOrientation),
-            new PCLOrientation(eAspect.Portrait, 
+            new PCLOrientation(eAspect.Portrait,
                                "Reverse Portrait",
                                0x02,
                                (byte)PCLXLAttrEnums.eVal.eReversePortrait),
-            new PCLOrientation(eAspect.Landscape, 
+            new PCLOrientation(eAspect.Landscape,
                                "Reverse Landscape",
                                0x03,
                                (byte)PCLXLAttrEnums.eVal.eReverseLandscape)

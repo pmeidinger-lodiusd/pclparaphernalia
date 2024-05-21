@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a class which enables raw data to be sent to a
     /// Windows printer - from Microsoft support document.
     ///
     /// © Chris Hutchinson 2014
-    /// 
+    ///
     /// </summary>
     public class Helper_RawPrinter
     {
@@ -21,7 +21,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-        
+
         private class DOCINFOA
         {
             [MarshalAs(UnmanagedType.LPStr)] public string pDocName;
@@ -245,9 +245,9 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             bytes = br.ReadBytes(nLength);
-            
+
             pUnmanagedBytes = Marshal.AllocCoTaskMem(nLength);
-            
+
             Marshal.Copy(bytes, 0, pUnmanagedBytes, nLength);
 
             //----------------------------------------------------------------//
@@ -265,7 +265,7 @@ namespace PCLParaphernalia
             // Free the unmanaged memory and exit.                            //
             //                                                                //
             //----------------------------------------------------------------//
-            
+
             Marshal.FreeCoTaskMem(pUnmanagedBytes);
 
             return bSuccess;
@@ -290,7 +290,7 @@ namespace PCLParaphernalia
             int dwCount;
 
             dwCount = szString.Length; // How many characters are in the string?
-            
+
             //----------------------------------------------------------------//
             //                                                                //
             // Assume that the printer is expecting ANSI text, and then       //

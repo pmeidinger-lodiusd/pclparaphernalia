@@ -4,12 +4,12 @@ using System.IO;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides support for the Logical Operations action
     /// of the MiscSamples tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2014
-    /// 
+    ///
     /// </summary>
     static class ToolMiscSamplesActLogOperPCLXL
     {
@@ -254,7 +254,7 @@ namespace PCLParaphernalia
                                 idClrS1, idClrS2,
                                 flagOptColour, true, flagSrcTextPat);
             }
-            
+
             generatePageSet (prnWriter,
                              indxPaperSize,
                              indxPaperType,
@@ -552,7 +552,7 @@ namespace PCLParaphernalia
                               ref indStd,
                               PCLXLOperators.eTag.SetBrushSource);
 
-            PCLXLWriter.font (prnWriter, false, ptSize, _symSet_19U, 
+            PCLXLWriter.font (prnWriter, false, ptSize, _symSet_19U,
                               _nameFontArialBold);
 
             PCLXLWriter.text(prnWriter, false, false,
@@ -646,7 +646,7 @@ namespace PCLParaphernalia
             PCLXLWriter.addOperator(ref bufStd,
                               ref indStd,
                               PCLXLOperators.eTag.PushGS);
-            
+
             PCLXLWriter.addAttrSint16XY(ref bufStd,
                                   ref indStd,
                                   PCLXLAttributes.eTag.PageOrigin,
@@ -661,7 +661,7 @@ namespace PCLParaphernalia
 
             writeDestBox (prnWriter, rgbClrD1, rgbClrD2, rgbClrBlack,
                           flagOptColour, false);
-            
+
             PCLXLWriter.addOperator(ref bufStd,
                               ref indStd,
                               PCLXLOperators.eTag.PopGS);
@@ -891,7 +891,7 @@ namespace PCLParaphernalia
                        PCLLogicalOperations.getDescShort (defaultROP));
 
             //----------------------------------------------------------------//
-            
+
             posY -= _incInch / 3;
 
             PCLXLWriter.addOperator (ref bufStd,
@@ -917,7 +917,7 @@ namespace PCLParaphernalia
                               PCLXLOperators.eTag.PopGS);
 
             //----------------------------------------------------------------//
-            
+
             posX += _colInc;
             posY += _incInch / 3;
 
@@ -1437,7 +1437,7 @@ namespace PCLParaphernalia
                                 flagSrcTextPat);
             }
         }
- 
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // w r i t e D e s t B o x                                            //
@@ -1682,7 +1682,7 @@ namespace PCLParaphernalia
 
                 PCLXLWriter.addOperator (ref buffer, ref indBuf,
                                          PCLXLOperators.eTag.PopGS);
-                
+
                 PCLXLWriter.addAttrSint16XY(ref buffer, ref indBuf,
                                             PCLXLAttributes.eTag.PageOrigin,
                                             0, _rowInc);
@@ -1857,7 +1857,7 @@ namespace PCLParaphernalia
                            "Pattern=opaque");
             }
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // w r i t e P a t t e r n                                            //

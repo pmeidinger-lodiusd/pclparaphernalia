@@ -5,11 +5,11 @@ using Microsoft.Win32;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides common Tool functions.
-    /// 
+    ///
     /// © Chris Hutchinson 2013
-    /// 
+    ///
     /// </summary>
     public static class ToolCommonFunctions
     {
@@ -164,7 +164,7 @@ namespace PCLParaphernalia
                 }
             }
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // g e t F o l d e r N a m e                                          //
@@ -177,7 +177,7 @@ namespace PCLParaphernalia
         public static void getFolderName (string pathName,
                                           ref string folderName)
         {
-            string tmpVol   = "", 
+            string tmpVol   = "",
                    tmpTname = "",
                    tmpExt   = "";
 

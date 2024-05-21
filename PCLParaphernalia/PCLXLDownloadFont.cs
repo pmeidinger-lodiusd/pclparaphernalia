@@ -5,11 +5,11 @@ using System.Windows;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class handles PCL XL downloadable soft fonts.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class PCLXLDownloadFont
     {
@@ -51,7 +51,7 @@ namespace PCLParaphernalia
         {
             _binReader.Close();
             _ipStream.Close();
-        }         
+        }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -85,7 +85,7 @@ namespace PCLParaphernalia
                 bool endLoop;
 
                 byte[] buf = new byte[bufSize];
-                
+
                 endLoop = false;
 
                 while (!endLoop)
@@ -170,7 +170,7 @@ namespace PCLParaphernalia
             }
 
             return open;
-        }         
+        }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -243,7 +243,7 @@ namespace PCLParaphernalia
                                                   ref ushort symSetNo)
         {
             const ushort symSetUnicode = 590;
-            
+
             const byte techTrueType = 1;
             //  const Byte techBitmap   = 254;
 
@@ -260,14 +260,14 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             symSetNo = (ushort)((hddr[2] * 256) + hddr[3]);
-            
+
             if (symSetNo == symSetUnicode)
                 bound = false;
             else
                 bound = true;
 
             //----------------------------------------------------------------//
-            
+
             technology = hddr[4];
 
             if (technology == techTrueType)
@@ -276,7 +276,7 @@ namespace PCLParaphernalia
                 scalable = false;
 
             return OK;
-        }         
+        }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -419,7 +419,7 @@ namespace PCLParaphernalia
 
                     if ((dataLen < _minHddrDescLen)                           ||
                         (buf[pos+3] != (byte)PCLXLAttrDefiners.eTag.Ubyte)            ||
-                        (buf[pos+4] != 
+                        (buf[pos+4] !=
                             (byte)PCLXLAttributes.eTag.FontHeaderLength)          ||
                         (buf[pos+5] != (byte)PCLXLOperators.eTag.ReadFontHeader))
                     {
@@ -443,7 +443,7 @@ namespace PCLParaphernalia
                                           buf[pos + 7];
 
                             pos += 5;
-                       
+
                             if (hddrDescLen < _minHddrDescLen)
                                 OK = false;
                         }
@@ -458,19 +458,19 @@ namespace PCLParaphernalia
             if (OK)
             {
                 hddrOffset = (ushort)pos;
-                
+
                 return true;
             }
             else
             {
-                MessageBox.Show(messHeader + 
+                MessageBox.Show(messHeader +
                                 "Font file format not recognised." +
                                  messTrailer,
                                 "PCL XL soft font file",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
                 return false;
-            }   
+            }
         }
     }
 }

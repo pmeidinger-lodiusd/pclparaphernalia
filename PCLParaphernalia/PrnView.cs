@@ -7,13 +7,13 @@ using System.Windows;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class handles viewing of content of (print) file.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
-    
+
     [System.Reflection.Obfuscation(Feature = "properties renaming")]
 
     class PrnView
@@ -24,7 +24,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-      
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
         // Class variables.                                                   //
@@ -41,7 +40,7 @@ namespace PCLParaphernalia
         PrnParseConstants.eOptCharSetSubActs _indxCharSetSubAct = 0;
         PrnParseConstants.eOptCharSets _indxCharSetName = 0;
         int _valCharSetSubCode = 0;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P r n V i e w                                                      //
@@ -69,7 +68,7 @@ namespace PCLParaphernalia
             const int colOffset = 0;
             const int colHex = 1;
             const int colText = 2;
-            
+
             DataRow row;
 
             //  Int32 rowNo = _fixedRows + _rowCt;
@@ -323,7 +322,7 @@ namespace PCLParaphernalia
                         // Extract required details from current slice.       //
                         //                                                    //
                         //----------------------------------------------------//
-                        
+
                         offsetCrnt = blockStart + i;
 
                         offsetStr  = string.Format (offsetFormat, offsetCrnt);

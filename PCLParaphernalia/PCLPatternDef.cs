@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class handles a PCL Pattern Def object.
-    /// 
+    ///
     /// © Chris Hutchinson 2016
-    /// 
+    ///
     /// </summary>
     class PCLPatternDef
     {

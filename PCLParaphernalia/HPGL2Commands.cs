@@ -6,11 +6,11 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines the set of HP-GL/2 Commands.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class HPGL2Commands
     {
@@ -26,7 +26,7 @@ namespace PCLParaphernalia
         private static HPGL2Command _cmdUnknown;
 
         private static int _cmdsCount;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // H P G L 2 C o m m a n d s                                          //
@@ -922,7 +922,7 @@ namespace PCLParaphernalia
                                  flagNone, flagNone,
                                  flagNone, flagNone,
                                  flagNone, flagNone,
-                                 flagNone, flagSymbolMode, 
+                                 flagNone, flagSymbolMode,
                                  "Symbol Mode"));
             command = "SP";                                             // SP //
             _cmds.Add(command,

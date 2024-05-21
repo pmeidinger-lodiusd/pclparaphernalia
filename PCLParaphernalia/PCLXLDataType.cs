@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a PCL XL Data Type tag.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
     [System.Reflection.Obfuscation(
@@ -36,7 +36,7 @@ namespace PCLParaphernalia
         private int _statsCtChild;
 
         private readonly PCLXLDataTypes.eBaseType _baseType;
-      
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L X L D a t a T y p e                                          //
@@ -47,7 +47,7 @@ namespace PCLParaphernalia
                              bool flagReserved,
                              bool flagArray,
                              int groupSize,
-                             int unitSize,  
+                             int unitSize,
                              PCLXLDataTypes.eBaseType baseType,
                              string description)
 	    {

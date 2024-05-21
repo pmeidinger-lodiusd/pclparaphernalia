@@ -5,12 +5,12 @@ using System.Text;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides print-language-independent routines associated with
     /// 'parsing' of print file data strings.
-    /// 
+    ///
     /// © Chris Hutchinson 2012
-    /// 
+    ///
     /// </summary>
     static class PrnParseData
     {
@@ -21,7 +21,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         const int _decodeSliceMax = 4;
-        
+
         public enum eCharType
         {
             C0Controls = 0,
@@ -32,7 +32,7 @@ namespace PCLParaphernalia
             Extended,
             TwoByte
         }
-      
+
         const string cCcName_0x07        = "<BEL>",
                      cCcName_0x0a        = "<LF>",
                      cCcName_0x0c        = "<FF>",
@@ -250,7 +250,7 @@ namespace PCLParaphernalia
                                 "]");
                         }
                     }
-                    
+
                     firstLine = false;
                     crntOffset += sliceLen;
                 }
@@ -585,16 +585,16 @@ namespace PCLParaphernalia
                         {
                             seq[i] = buf[offset + i];
                         }
-                        
+
                         result = PrnParseDataUTF8.checkUTF8Seq(seq,
                                                                seqLen,
                                                                ref codepoint);
-                        
+
                         if (result == PrnParseDataUTF8.eUTF8Result.success)
                             showChar = "[U+" + codepoint.ToString ("x4") + "]";
                         else
                             showChar = "[invalid UTF-8]";
-                        
+
                         line += showChar;
 
                         lineLen += seqLen;
@@ -714,7 +714,7 @@ namespace PCLParaphernalia
                                 string seqBytes;
 
                                 if (multiByteData)
-                                { 
+                                {
                                     seqBytes = showElementSeqData(buf,
                                                                   lineStart,
                                                                   lineLen);

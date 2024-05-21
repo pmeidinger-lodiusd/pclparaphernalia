@@ -8,13 +8,13 @@ namespace PCLParaphernalia
 {
     /// <summary>
     /// Interaction logic for ToolImageBitmap.xaml
-    /// 
+    ///
     /// Class handles the ImageBitmap tool form.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
-    
+
     [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
@@ -32,7 +32,7 @@ namespace PCLParaphernalia
             (int) ToolCommonData.ePrintLang.PCLXL,
         };
 
-        private static readonly int[] _subsetOrientations = 
+        private static readonly int[] _subsetOrientations =
         {
             (int) PCLOrientations.eIndex.Portrait,
             (int) PCLOrientations.eIndex.Landscape,
@@ -308,7 +308,7 @@ namespace PCLParaphernalia
             txtSrcMonoBW.Text       = srcBlackWhite.ToString();
 
             grpProps.Visibility = Visibility.Visible;
-            
+
             if (bitmapOpen)
             {
                 ToolImageBitmapCore.bitmapClose();
@@ -457,7 +457,7 @@ namespace PCLParaphernalia
         private void initialise()
         {
             int index;
-            
+
             _initialised = false;
 
             //----------------------------------------------------------------//

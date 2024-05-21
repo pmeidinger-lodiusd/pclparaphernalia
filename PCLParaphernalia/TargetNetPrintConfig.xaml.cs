@@ -6,13 +6,13 @@ namespace PCLParaphernalia
 {
     /// <summary>
     /// Interaction logic for TargetNetPrinter.xaml
-    /// 
+    ///
     /// Class handles the Target (printer) definition form.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
-    
+
     [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
@@ -146,7 +146,6 @@ namespace PCLParaphernalia
                                               _timeoutReceive);
         }
 
-    
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // t x t P r i n t e r A d d r e s s _ T e x t C h a n g e d          //
@@ -161,7 +160,7 @@ namespace PCLParaphernalia
         {
             _printerAddress = txtPrinterAddress.Text;
         }
-    
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // t x t P r i n t e r P o r t _ T e x t C h a n g e d                //

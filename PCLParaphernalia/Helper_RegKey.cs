@@ -6,12 +6,12 @@ using System.Text;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a class which allows a registry key to be renamed (this
     /// function is not available within the .Net framework).
-    /// 
+    ///
     /// © Chris Hutchinson 2014
-    /// 
+    ///
     /// </summary>
     static class Helper_RegKey
     {
@@ -58,7 +58,7 @@ namespace PCLParaphernalia
                 object objValue = sourceKey.GetValue(valueName);
 
                 RegistryValueKind valKind = sourceKey.GetValueKind(valueName);
-                
+
                 targetKey.SetValue(valueName, objValue, valKind);
             }
 

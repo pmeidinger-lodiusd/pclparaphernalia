@@ -4,11 +4,11 @@ using System;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class manages persistent storage of options for the FormSample tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2012
-    /// 
+    ///
     /// </summary>
     static class ToolFormSamplePersist
     {
@@ -22,9 +22,9 @@ namespace PCLParaphernalia
 
         const string _subKeyTools             = "Tools";
         const string _subKeyToolsFormSample   = "FormSample";
-        const string _subKeyPCL5              = "PCL5"; 
+        const string _subKeyPCL5              = "PCL5";
         const string _subKeyPCL6              = "PCL6";
-        const string _subKeyPCL               = "PCL"; 
+        const string _subKeyPCL               = "PCL";
         const string _subKeyPCLXL             = "PCLXL";
 
         const string _nameCaptureFile         = "CaptureFile";
@@ -64,7 +64,7 @@ namespace PCLParaphernalia
         const string _defaultFilePCLRear      = "DefaultFilePCLRear.ovl";
         const string _defaultFilePCLXLMain    = "DefaultFilePCLXLMain.ovx";
         const string _defaultFilePCLXLRear    = "DefaultFilePCLXLRear.ovx";
-        const string _defaultFormNameMain     = "TestFormMain";  
+        const string _defaultFormNameMain     = "TestFormMain";
         const string _defaultFormNameRear     = "TestFormRear";
 
         const int _defaultMacroIdMain       = 32767;
@@ -502,7 +502,7 @@ namespace PCLParaphernalia
 
             key = _subKeyTools + "\\" + _subKeyToolsFormSample +
                                  "\\" + pdlName;
-            
+
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 subKey.SetValue(_nameIndxPaperType,

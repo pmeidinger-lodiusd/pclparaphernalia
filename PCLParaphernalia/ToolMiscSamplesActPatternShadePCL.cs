@@ -4,12 +4,12 @@ using System.IO;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PCL support for the Shading element of the
     /// Patterns action of the MiscSamples tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2014
-    /// 
+    ///
     /// </summary>
     static class ToolMiscSamplesActPatternShadePCL
     {
@@ -326,7 +326,7 @@ namespace PCLParaphernalia
 
             PCLWriter.text(prnWriter, posX, posY, 0,
                       "User-defined 300 dpi");
-            
+
             posX = (short)(_posXData3 - logXOffset);
 
             PCLWriter.text(prnWriter, posX, posY, 0,

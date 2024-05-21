@@ -4,11 +4,11 @@ using System.Data;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class handles PCL XL downloadable soft font characters.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     class PrnParseFontCharPCLXL
     {
@@ -109,7 +109,7 @@ namespace PCLParaphernalia
                                        DataTable table)
         {
             int binDataLen;
-            
+
             PrnParseConstants.eContType contType;
 
             //----------------------------------------------------------------//
@@ -117,14 +117,14 @@ namespace PCLParaphernalia
             // Initialise.                                                    //
             //                                                                //
             //----------------------------------------------------------------//
-            
+
             _table = table;
             _buf = buf;
             _fileOffset = fileOffset;
 
             _linkData = linkData;
             _options = options;
-            
+
             contType = _linkData.getContType();
             _analysisLevel = _linkData.AnalysisLevel;
 
@@ -522,7 +522,7 @@ namespace PCLParaphernalia
                     "Format and/or Class invalid");
             }
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // p r o c e s s D a t a H e a d e r                                  //
@@ -676,7 +676,7 @@ namespace PCLParaphernalia
                 //    ((paddedCharWidth) / 8) * charHeight) bytes.            //
                 //                                                            //
                 //------------------------------------------------------------//
-                
+
                 ui32a = (uint) (bytesPerRow * _charHeight);
 
                 PrnParseCommon.addTextRow (
@@ -754,7 +754,7 @@ namespace PCLParaphernalia
                     "Character Data Size:",
                     "",
                     _charDataSize.ToString() + " bytes " +
-                    " (header = " + _charHddrLen + 
+                    " (header = " + _charHddrLen +
                     "; glyph data = "  + ui16a + ")");
 
                 if ((_charDataSize + _blockHddrLen) != _charLen)
@@ -822,7 +822,7 @@ namespace PCLParaphernalia
                     {
                         si16a = (short) ((_buf[bufOffset + 4] * 256) +
                                           _buf[bufOffset + 5]);
-        
+
                         PrnParseCommon.addTextRow (
                             PrnParseRowTypes.eType.PCLXLFontChar,
                             _table,

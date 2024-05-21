@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides definitions for simple colour palettes.
-    /// 
+    ///
     /// © Chris Hutchinson 2014
-    /// 
+    ///
     /// </summary>
     public static class PCLXLPalettes
     {
@@ -55,7 +55,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static readonly PCLXLPalette[] _palettes = 
+        private static readonly PCLXLPalette[] _palettes =
         {
             new PCLXLPalette ("Gray",
                               true,
@@ -84,7 +84,7 @@ namespace PCLParaphernalia
         static PCLXLPalettes ()
         {
             int crntIndex;
-            
+
             //----------------------------------------------------------------//
 
             crntIndex = (int) eIndex.PCLXLGray;

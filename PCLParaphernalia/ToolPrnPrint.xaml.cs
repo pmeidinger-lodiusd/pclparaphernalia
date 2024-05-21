@@ -8,13 +8,13 @@ namespace PCLParaphernalia
 {
     /// <summary>
     /// Interaction logic for ToolPrnPrint.xaml
-    /// 
+    ///
     /// Class handles the Prn Print tool form.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
-    
+
     [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 

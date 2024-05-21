@@ -6,11 +6,11 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a set of PML 'action type' objects.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class PMLDataTypes
     {
@@ -49,7 +49,7 @@ namespace PCLParaphernalia
         private static PMLDataType _unknownTag;
 
         private static int _tagCount;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P M L D a t a T y p e s                                            //
@@ -263,7 +263,7 @@ namespace PCLParaphernalia
 
             tag = 0x20;                                              // ?    //
             _unknownTag =
-                new PMLDataType (tag, 
+                new PMLDataType (tag,
                                    "*** Unknown tag ***");
 
             tag = (byte) eTag.ObjectID;                              // 0x00 //

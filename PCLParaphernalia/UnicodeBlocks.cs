@@ -6,12 +6,12 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class lists the defined Unicode blocks.
-	/// Correct as at Unicode.org "Blocks-10.0.0.txt" dated 2017-04-12  
-    /// 
+	/// Correct as at Unicode.org "Blocks-10.0.0.txt" dated 2017-04-12
+    ///
     /// © Chris Hutchinson 2017
-    /// 
+    ///
     /// </summary>
     static class UnicodeBlocks
     {
@@ -26,7 +26,7 @@ namespace PCLParaphernalia
         // Class variables.                                                   //
         //                                                                    //
         //--------------------------------------------------------------------//
-        
+
         private static int _blocksCount;
 
         private static readonly SortedList<uint, UnicodeBlock> _blocksList =

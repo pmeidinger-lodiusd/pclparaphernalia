@@ -4,12 +4,12 @@ using System;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class manages persistent storage of options for the SymbolSetGenerate
     /// tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2013
-    /// 
+    ///
     /// </summary>
     static class ToolSymbolSetGenPersist
     {
@@ -23,8 +23,8 @@ namespace PCLParaphernalia
 
         const string _subKeyTools             = "Tools";
         const string _subKeyToolsSymSetGen    = "SymSetGen";
-        const string _subKeyDonor             = "Donor"; 
-        const string _subKeyTarget            = "Target"; 
+        const string _subKeyDonor             = "Donor";
+        const string _subKeyTarget            = "Target";
 
         const string _nameFlagSymSetUserSet   = "FlagSymSetUserSet";
         const string _nameFlagSymSetMapPCL    = "FlagSymSetMapPCL";
@@ -46,7 +46,7 @@ namespace PCLParaphernalia
         const long _defaultReqMSL           = 0;
         const long _defaultReqUnicode       = 1;
 
-        const string _defaultSymSetFile       = "DefaultSymSetFile.pcl";  
+        const string _defaultSymSetFile       = "DefaultSymSetFile.pcl";
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -58,8 +58,8 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void loadDataDonor (ref int indxSymSet,
-                                          ref bool flagSymSetUserSet, 
-                                          ref bool flagSymSetMapPCL, 
+                                          ref bool flagSymSetUserSet,
+                                          ref bool flagSymSetMapPCL,
                                           ref string symSetFile)
         {
             RegistryKey keyMain =
@@ -72,13 +72,13 @@ namespace PCLParaphernalia
             string defWorkFolder = ToolCommonData.DefWorkFolder;
 
             key = _subKeyTools + "\\" + _subKeyToolsSymSetGen +
-                                 "\\" + _subKeyDonor; 
-                  
+                                 "\\" + _subKeyDonor;
+
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 indxSymSet   = (int) subKey.GetValue(_nameIndxSymSet,
                                                        _indexZero);
-                 
+
                 tmpInt       = (int) subKey.GetValue(_nameFlagSymSetUserSet,
                                                        _flagFalse);
 
@@ -86,7 +86,7 @@ namespace PCLParaphernalia
                     flagSymSetUserSet = false;
                 else
                     flagSymSetUserSet = true;
-                 
+
                 tmpInt       = (int) subKey.GetValue(_nameFlagSymSetMapPCL,
                                                        _flagFalse);
 
@@ -205,7 +205,7 @@ namespace PCLParaphernalia
                 tmpInt64       = (long) subKey.GetValue (_nameCharReqMSL,
                                                         _defaultReqMSL);
                 charReqMSL     = (ulong) tmpInt64;
-                
+
                 symSetFolder = (string)subKey.GetValue (_nameSymSetFolder,
                                                         defWorkFolder);
             }
@@ -231,8 +231,8 @@ namespace PCLParaphernalia
             string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsSymSetGen +
-                                 "\\" + _subKeyDonor; 
-            
+                                 "\\" + _subKeyDonor;
+
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 subKey.SetValue (_nameIndxSymSet,

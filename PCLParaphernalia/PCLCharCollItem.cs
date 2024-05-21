@@ -17,10 +17,10 @@ namespace PCLParaphernalia
         private int _bitNo;
 
         private string _desc;
-        
+
         private bool _isChecked;
         private bool _isEnabled;
-        
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         //--------------------------------------------------------------------//
@@ -51,7 +51,7 @@ namespace PCLParaphernalia
         public int BitNo
         {
             get { return _bitNo; }
-            set { _bitNo = value; } 
+            set { _bitNo = value; }
         }
 
         //--------------------------------------------------------------------//
@@ -75,7 +75,7 @@ namespace PCLParaphernalia
         public string Desc
         {
             get { return _desc; }
-            set { _desc = value; } 
+            set { _desc = value; }
         }
 
         //--------------------------------------------------------------------//
@@ -83,15 +83,15 @@ namespace PCLParaphernalia
         // I s C h e c k e d                                                  //
         //                                                                    //
         //--------------------------------------------------------------------//
-        
+
         public bool IsChecked
         {
             get { return _isChecked; }
-        
+
             set
             {
                 _isChecked = value;
-                
+
                 onPropertyChanged ("IsChecked");
             }
         }
@@ -114,7 +114,7 @@ namespace PCLParaphernalia
         // o n P r o p e r t y C h a n g e d                                  //
         //                                                                    //
         //--------------------------------------------------------------------//
-        
+
         private void onPropertyChanged (string propertyName)
         {
             if (this.PropertyChanged != null)

@@ -4,11 +4,11 @@ using System.Data;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides the Soft Font Generator 'save report' function.
-    /// 
+    ///
     /// © Chris Hutchinson 2012
-    /// 
+    ///
     /// </summary>
     static class ToolSoftFontGenReport
     {

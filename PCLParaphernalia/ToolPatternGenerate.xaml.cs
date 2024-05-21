@@ -11,13 +11,13 @@ namespace PCLParaphernalia
 {
     /// <summary>
     /// Interaction logic for ToolPatternGenerate.xaml
-    /// 
+    ///
     /// Class handles the pattern Generate tool form.
-    /// 
+    ///
     /// © Chris Hutchinson 2017
-    /// 
+    ///
     /// </summary>
-    
+
     [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
@@ -35,7 +35,7 @@ namespace PCLParaphernalia
             (int) ToolCommonData.ePrintLang.PCLXL,
         };
 
-        private static readonly int[] _subsetOrientations = 
+        private static readonly int[] _subsetOrientations =
         {
             (int) PCLOrientations.eIndex.Portrait,
             (int) PCLOrientations.eIndex.Landscape,
@@ -491,7 +491,7 @@ namespace PCLParaphernalia
         private void initialise()
         {
             int index;
-            
+
             _initialised = false;
 
             //----------------------------------------------------------------//

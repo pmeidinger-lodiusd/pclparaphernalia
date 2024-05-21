@@ -7,13 +7,13 @@ namespace PCLParaphernalia
 {
     /// <summary>
     /// Interaction logic for ToolMiscSamples.xaml
-    /// 
+    ///
     /// Class handles the MiscSamples: Unicode Characters tab.
-    /// 
+    ///
     /// © Chris Hutchinson 2015
-    /// 
+    ///
     /// </summary>
-    
+
     [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
@@ -67,7 +67,7 @@ namespace PCLParaphernalia
                 unicodeUCS2 = (uint) ((cbUnicodeCp01.SelectedIndex * 256) +
                                          cbUnicodeCp02.SelectedIndex);
 
-                string unicodeBlock = 
+                string unicodeBlock =
                     UnicodeBlocks.getBlocknameForCodepoint (unicodeUCS2);
 
                 UnicodeCategory unicodeCat =
@@ -79,13 +79,13 @@ namespace PCLParaphernalia
                     _unicodeUCS2PCLXL = unicodeUCS2;
 
                 PrnParseDataUTF8.convertUTF32ToUTF8HexString (unicodeUCS2,
-                                                              true, 
+                                                              true,
                                                               ref utf8HexVal);
 
                 txtUnicodeUTF8.Text = utf8HexVal;
 
-                txtUnicodeBlock.Text = unicodeBlock;              
-                txtUnicodeCat.Text   = unicodeCat.ToString ();              
+                txtUnicodeBlock.Text = unicodeBlock;
+                txtUnicodeCat.Text   = unicodeCat.ToString ();
             }
         }
 
@@ -217,7 +217,7 @@ namespace PCLParaphernalia
                 cbUnicodeFont.SelectedIndex = _indxUnicodeFontPCLXL;
 
                 setFontOptionsVariants (_indxUnicodeFontPCLXL,
-                                        true, 
+                                        true,
                                         ref _unicodeFontVarPCLXL);
 
                 cbUnicodeCp01.SelectedIndex = (int) (_unicodeUCS2PCLXL / 256);
@@ -333,7 +333,7 @@ namespace PCLParaphernalia
                 ref _flagUnicodeFormAsMacroPCL);
 
             _unicodeUCS2PCL = (uint) tmpInt;
-            
+
             ToolMiscSamplesPersist.loadDataTypeUnicode (
                 "PCLXL",
                 ref _indxUnicodeFontPCLXL,
@@ -491,9 +491,9 @@ namespace PCLParaphernalia
                     varSet;
 
             int fontIndx;
-            
+
             fontIndx = _subsetUnicodeFonts[indxFont];
-            
+
             varSet = false;
 
             //----------------------------------------------------------------//
@@ -529,7 +529,7 @@ namespace PCLParaphernalia
 
             if (varI)
                 rbUnicodeFontVarI.Visibility = Visibility.Visible;
-            
+
             if (varB)
                 rbUnicodeFontVarB.Visibility = Visibility.Visible;
 
@@ -537,7 +537,7 @@ namespace PCLParaphernalia
                 rbUnicodeFontVarBI.Visibility = Visibility.Visible;
 
             //----------------------------------------------------------------//
-            
+
             if (samePreset)
             {
                 if (varR && (fontVar == PCLFonts.eVariant.Regular))

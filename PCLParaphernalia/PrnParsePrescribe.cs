@@ -5,12 +5,12 @@ using System.Text;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides routines associated with 'parsing' of
 	/// Kyocera Prescribe commands.
-    /// 
+    ///
     /// © Chris Hutchinson 2017
-    /// 
+    ///
     /// </summary>
     class PrnParsePrescribe
     {
@@ -322,7 +322,7 @@ namespace PCLParaphernalia
             {
                 if ((_buf[bufOffset] ==
                         PrnParseConstants.prescribeSCRCDelimiter)
-                                      && 
+                                      &&
                     (_buf[bufOffset + 1] == _linkData.PrescribeSCRC)
                                       &&
                     (_buf[bufOffset + 2] ==

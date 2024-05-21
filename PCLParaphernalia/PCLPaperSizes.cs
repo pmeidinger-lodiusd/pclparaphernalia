@@ -6,11 +6,11 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a set of PCL Paper Size objects.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class PCLPaperSizes
     {
@@ -1933,7 +1933,7 @@ namespace PCLParaphernalia
                                  300,
                                  240,
                                  200)            };
-        
+
             _paperSizeCount = _paperSizes.GetUpperBound(0) + 1;
 
             if (_paperSizeCount != _eIndexCt)

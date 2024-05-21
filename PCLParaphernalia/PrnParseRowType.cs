@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class handles a PrnParse 'row type' object.
-    /// 
+    ///
     /// © Chris Hutchinson 2017
-    /// 
+    ///
     /// </summary>
     class PrnParseRowType
     {

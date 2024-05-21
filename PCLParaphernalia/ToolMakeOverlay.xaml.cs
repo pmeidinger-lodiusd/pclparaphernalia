@@ -10,13 +10,13 @@ namespace PCLParaphernalia
 {
     /// <summary>
     /// Interaction logic for ToolMakeOverlay.xaml
-    /// 
+    ///
     /// Class handles the Make Overlay tool form.
-    /// 
+    ///
     /// © Chris Hutchinson 2010-2017
-    /// 
+    ///
     /// </summary>
-    
+
     [Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
@@ -300,7 +300,7 @@ namespace PCLParaphernalia
                 tabPCL.IsSelected = true;
 
                 tabPCLXL.IsEnabled = false;
-                
+
                 _ovlFilenamePCL = _prnFilename.Substring (0, ptr) + ".ovl";
 
                 txtPCLOvlFilename.Text = _ovlFilenamePCL;
@@ -539,10 +539,10 @@ namespace PCLParaphernalia
             txtPCLMacroId.Text = _macroIdPCL.ToString ();
             txtPCLXLStreamName.Text = _streamNamePCLXL;
 
-            rbPCLOvlEnc.IsChecked = _flagOvlEncPCL;  
+            rbPCLOvlEnc.IsChecked = _flagOvlEncPCL;
             rbPCLXLOvlEnc.IsChecked = _flagOvlEncPCLXL;
 
-            chkPCLRestoreCursor.IsChecked = _flagRestoreCursorPCL;  
+            chkPCLRestoreCursor.IsChecked = _flagRestoreCursorPCL;
             chkPCLXLRestoreGS.IsChecked     = _flagRestoreGSPCLXL;
 
             if (_flagOvlEncPCL)
@@ -634,12 +634,12 @@ namespace PCLParaphernalia
             ToolMakeOverlayPersist.loadDataCommon (ref _prnFilename);
 
             ToolMakeOverlayPersist.loadDataPCL (ref _ovlFilenamePCL,
-                                                 ref _flagRestoreCursorPCL, 
+                                                 ref _flagRestoreCursorPCL,
                                                  ref _flagOvlEncPCL,
                                                  ref _macroIdPCL);
 
             ToolMakeOverlayPersist.loadDataPCLXL (ref _ovlFilenamePCLXL,
-                                                 ref _flagRestoreGSPCLXL, 
+                                                 ref _flagRestoreGSPCLXL,
                                                  ref _flagOvlEncPCLXL,
                                                  ref _streamNamePCLXL);
         }

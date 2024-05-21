@@ -4,12 +4,12 @@ using System.IO;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PCL support for the Rotation element
     /// of the Text Modification action of the MiscSamples tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2014
-    /// 
+    ///
     /// </summary>
     static class ToolMiscSamplesActTxtModRotPCL
     {
@@ -43,7 +43,7 @@ namespace PCLParaphernalia
         // Static variables.                                                  //
         //                                                                    //
         //--------------------------------------------------------------------//
-            
+
         static readonly int _indxFontArial     = PCLFonts.getIndexForName("Arial");
         static readonly int _indxFontCourier   = PCLFonts.getIndexForName("Courier");
 
@@ -241,7 +241,7 @@ namespace PCLParaphernalia
             posX = (short)(_posXDesc - logXOffset);
             posY = _posYHddr;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "PCL & HP-GL/2 Text Rotation:");
 
             ptSize  = 12;
@@ -253,14 +253,14 @@ namespace PCLParaphernalia
 
             posY = _posYDesc1;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "Orthogonal:");
 
             posY = _posYDesc2;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "Non-orthogonal:");
-            
+
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -314,7 +314,7 @@ namespace PCLParaphernalia
                    cosAngle;
 
             //----------------------------------------------------------------//
-            
+
             if (formAsMacro)
                 PCLWriter.macroControl(prnWriter, _macroId,
                                        PCLWriter.eMacroControl.Call);

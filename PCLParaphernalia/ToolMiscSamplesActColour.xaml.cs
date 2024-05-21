@@ -7,13 +7,13 @@ namespace PCLParaphernalia
 {
     /// <summary>
     /// Interaction logic for ToolMiscSamples.xaml
-    /// 
+    ///
     /// Class handles the MiscSamples: Colour tab.
-    /// 
+    ///
     /// © Chris Hutchinson 2014
-    /// 
+    ///
     /// </summary>
-    
+
     [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
@@ -57,7 +57,7 @@ namespace PCLParaphernalia
         // Fields (class variables).                                          //
         //                                                                    //
         //--------------------------------------------------------------------//
-        
+
         private eColourType _indxColourTypePCL;
         private eColourType _indxColourTypePCLXL;
 
@@ -136,21 +136,21 @@ namespace PCLParaphernalia
             txtColourPCL_CID_02.Text = (x & 0xff).ToString (format);
             x >>= 8;
             txtColourPCL_CID_01.Text = (x & 0xff).ToString (format);
-            
+
             x = _samplesPCL_CID [1];
             txtColourPCL_CID_13.Text = (x & 0xff).ToString (format);
             x >>= 8;
             txtColourPCL_CID_12.Text = (x & 0xff).ToString (format);
             x >>= 8;
             txtColourPCL_CID_11.Text = (x & 0xff).ToString (format);
-            
+
             x = _samplesPCL_CID [2];
             txtColourPCL_CID_23.Text = (x & 0xff).ToString (format);
             x >>= 8;
             txtColourPCL_CID_22.Text = (x & 0xff).ToString (format);
             x >>= 8;
             txtColourPCL_CID_21.Text = (x & 0xff).ToString (format);
-            
+
             x = _samplesPCL_CID [3];
             txtColourPCL_CID_33.Text = (x & 0xff).ToString (format);
             x >>= 8;
@@ -183,13 +183,13 @@ namespace PCLParaphernalia
 
             x = _samplesPCLXL_Gray [0];
             txtColourPCLXL_Gray_01.Text = (x & 0xff).ToString (format);
-            
+
             x = _samplesPCLXL_Gray [1];
             txtColourPCLXL_Gray_11.Text = (x & 0xff).ToString (format);
-            
+
             x = _samplesPCLXL_Gray [2];
             txtColourPCLXL_Gray_21.Text = (x & 0xff).ToString (format);
-            
+
             x = _samplesPCLXL_Gray [3];
             txtColourPCLXL_Gray_31.Text = (x & 0xff).ToString (format);
         }
@@ -222,21 +222,21 @@ namespace PCLParaphernalia
             txtColourPCLXL_RGB_02.Text = (x & 0xff).ToString (format);
             x >>= 8;
             txtColourPCLXL_RGB_01.Text = (x & 0xff).ToString (format);
-            
+
             x = _samplesPCLXL_RGB [1];
             txtColourPCLXL_RGB_13.Text = (x & 0xff).ToString (format);
             x >>= 8;
             txtColourPCLXL_RGB_12.Text = (x & 0xff).ToString (format);
             x >>= 8;
             txtColourPCLXL_RGB_11.Text = (x & 0xff).ToString (format);
-            
+
             x = _samplesPCLXL_RGB [2];
             txtColourPCLXL_RGB_23.Text = (x & 0xff).ToString (format);
             x >>= 8;
             txtColourPCLXL_RGB_22.Text = (x & 0xff).ToString (format);
             x >>= 8;
             txtColourPCLXL_RGB_21.Text = (x & 0xff).ToString (format);
-            
+
             x = _samplesPCLXL_RGB [3];
             txtColourPCLXL_RGB_33.Text = (x & 0xff).ToString (format);
             x >>= 8;
@@ -519,7 +519,7 @@ namespace PCLParaphernalia
                     rbColourOptPCLFmtHex.IsChecked = true;
                 else
                     rbColourOptPCLFmtDec.IsChecked = true;
-                
+
                 colourMapPCL_CID_Display (_flagColourFmtHexPCL);
 
                 grpColourModePCL_CID.Visibility = Visibility.Visible;
@@ -817,7 +817,7 @@ namespace PCLParaphernalia
             TextBox source = e.Source as TextBox;
 
             bool flagOK = false;
-            
+
             flagOK = txtColourCheckBoxId (source, nameRootLen, sampleCt, planeCt,
                                           ref sampleNo, ref planeNo,
                                           ref planeSig);
@@ -995,7 +995,7 @@ namespace PCLParaphernalia
                     mask = ((mask << 8) & 0xffffff) | 0xff;
                     newComp <<= 8;
                 }
-                
+
                 sampleDef[sampleNo] = (oldVal & mask) | newComp;
             }
             else

@@ -4,11 +4,11 @@ using System;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class manages persistent storage of options for the PrintArea tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class ToolPrintAreaPersist
     {
@@ -340,7 +340,7 @@ namespace PCLParaphernalia
 
             key = _subKeyTools + "\\" + _subKeyToolsPrintArea +
                                  "\\" + pdlName;
-            
+
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 subKey.SetValue(_nameIndxOrientation,

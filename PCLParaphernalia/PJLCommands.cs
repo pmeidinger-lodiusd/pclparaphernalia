@@ -6,11 +6,11 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a set of PJL 'status readback' Command objects.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class PJLCommands
     {
@@ -374,9 +374,9 @@ namespace PCLParaphernalia
         public static void populateTable ()
         {
             eCmdIndex indx;
-            
+
             indx = eCmdIndex.Unknown;
-            _cmdUnknown = 
+            _cmdUnknown =
                 new PJLCommand (indx,
                                 eCmdFormat.Standard,
                                 eRequestType.None,

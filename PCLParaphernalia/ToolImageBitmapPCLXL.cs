@@ -5,11 +5,11 @@ using System.Windows;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PCL XL support for the ImageBitmap tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class ToolImageBitmapPCLXL
     {
@@ -247,7 +247,7 @@ namespace PCLParaphernalia
                 imageCrntLine += imageBlockHeight;
             }
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // g e n e r a t e I m a g e H e a d e r                              //
@@ -285,7 +285,7 @@ namespace PCLParaphernalia
             byte colourDepth = 0,
                  colourMapping = 0,
                  colourSpace = 0;
-       
+
             //----------------------------------------------------------------//
             //                                                                //
             // Calculate destination size.                                    //
@@ -524,11 +524,11 @@ namespace PCLParaphernalia
             int indStd;
 
             indStd = 0;
-            
+
             PCLXLWriter.addOperator(ref bufStd,
                               ref indStd,
                               PCLXLOperators.eTag.EndImage);
-            
+
             PCLXLWriter.addOperator(ref bufStd,
                               ref indStd,
                               PCLXLOperators.eTag.PopGS);
@@ -589,7 +589,7 @@ namespace PCLParaphernalia
             int indStd;
 
             PCLXLWriter.stdJobHeader(prnWriter, "");
- 
+
             indStd = 0;
 
             if (orientation < PCLOrientations.getCount())

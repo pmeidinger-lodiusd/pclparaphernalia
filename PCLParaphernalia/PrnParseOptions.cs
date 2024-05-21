@@ -5,11 +5,11 @@ using System.Windows.Media;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class manages options for the AnalysePRN tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     public class PrnParseOptions
     {
@@ -34,11 +34,11 @@ namespace PCLParaphernalia
         private int _valCharSetSubCode;
 
         private PrnParseConstants.eOptOffsetFormats _indxGenOffsetFormat;
-        
+
         private PrnParseConstants.eOptOffsetFormats _indxCurFOffsetFormat;
 
         private PrnParseConstants.eOptStatsLevel _indxStatsLevel;
-        
+
         private ToolCommonData.ePrintLang _indxCurFInitLang;
 
         private PrnParseConstants.ePCLXLBinding _indxCurFXLBinding;
@@ -142,14 +142,14 @@ namespace PCLParaphernalia
 
             parent.getOptClrMapStdClrs (ref _ctClrMapStdClrs,
                                         ref _stdClrsPropertyInfo);
-            
+
             parent.getOptCurF (ref _indxCurFInitLang,
                                ref _indxCurFXLBinding,
                                ref _indxCurFOffsetFormat,
                                ref _valCurFOffsetStart,
                                ref _valCurFOffsetEnd,
                                ref _valCurFOffsetMax);
-            
+
             parent.getOptGeneral (ref _indxGenOffsetFormat,
                                   ref _flagGenMiscAutoAnalyse,
                                   ref _flagGenDiagFileAccess);
@@ -193,7 +193,7 @@ namespace PCLParaphernalia
             parent.getOptPML (ref _flagPMLWithinPCL,
                               ref _flagPMLWithinPJL,
                               ref _flagPMLMiscVerbose);
-            
+
             parent.getOptStats (ref _indxStatsLevel,
                                 ref _flagStatsExcUnusedPCLObs,
                                 ref _flagStatsExcUnusedPCLXLRes);
@@ -482,7 +482,7 @@ namespace PCLParaphernalia
             valFontDrawWidth    = _valPCLFontDrawWidth;
 
             flagMacroDisplay    = _flagPCLMacroDisplay;
-            
+
             flagMiscStyleData   = _flagPCLMiscStyleData;
             flagMiscBinData     = _flagPCLMiscBinData;
 

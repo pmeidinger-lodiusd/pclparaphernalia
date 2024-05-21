@@ -5,11 +5,11 @@ using System.Windows;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class handles PCL (download) symbol sets.
-    /// 
+    ///
     /// © Chris Hutchinson 2013
-    /// 
+    ///
     /// </summary>
     static class PCLDownloadSymSet
     {
@@ -47,9 +47,9 @@ namespace PCLParaphernalia
         public static bool checkSymSetFile (
             string filename,
             ref ushort symSetNo,
-            ref ushort firstCode, 
+            ref ushort firstCode,
             ref ushort lastCode,
-            ref PCLSymSetTypes.eIndex symSetType) 
+            ref PCLSymSetTypes.eIndex symSetType)
         {
             bool flagOK = true;
 
@@ -277,7 +277,7 @@ namespace PCLParaphernalia
                 byte x;
 
                 offset += prefixLen;
-                
+
                 maxPos = offset + maxRead;
 
                 if (fileSize <= maxPos)
@@ -330,7 +330,7 @@ namespace PCLParaphernalia
             else if ((hddrLen + hddrOffset) > fileSize)
             {
                 flagOK = false;
-                
+
                 MessageBox.Show (messHeader +
                                 "Header (offset = '" + hddrOffset + "') of" +
                                 "length '" + hddrLen + "' is inconsistent" +
@@ -356,7 +356,7 @@ namespace PCLParaphernalia
                 if (hddrSize > hddrLen)
                 {
                     flagOK = false;
-                    
+
                     MessageBox.Show (messHeader +
                                     "Header size '" + hddrSize + "' is" +
                                     " inconsistent with sequence data size of '" +
@@ -369,7 +369,7 @@ namespace PCLParaphernalia
                 else if (hddrSize != hddrDescLen)
                 {
                     flagOK = false;
-                    
+
                     MessageBox.Show (messHeader +
                                     "Header size '" + hddrSize +
                                     "' != expected size of '" +
@@ -491,7 +491,7 @@ namespace PCLParaphernalia
                   mapBytes,
                   mapIndx,
                   mapPos;
- 
+
             codeCt = lastCode - firstCode + 1;
             mapBytes = codeCt * 2;
 
@@ -516,7 +516,7 @@ namespace PCLParaphernalia
                 mapCode = (ushort) ((buf [mapPos] * 256) + buf [mapPos + 1]);
 
                 mapIndx = firstCode + i;
-                
+
                 if (((mapIndx >= rangeC1Min) && (mapIndx <= rangeC1Max)) &&
                     (mapCode != 0xffff))
                     usesC1Range = true;
@@ -538,7 +538,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             PCLSymbolSets.setDataUserSet (symSetNo, symSetType, map);
-        
+
             return OK;
         }
 
@@ -661,6 +661,6 @@ namespace PCLParaphernalia
             }
 
             return open;
-        }         
+        }
     }
 }

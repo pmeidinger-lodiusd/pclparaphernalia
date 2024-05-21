@@ -8,13 +8,13 @@ namespace PCLParaphernalia
 {
     /// <summary>
     /// Interaction logic for ToolPrintArea.xaml
-    /// 
+    ///
     /// Class handles the PrintArea tool form.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
-    
+
     [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
@@ -37,7 +37,7 @@ namespace PCLParaphernalia
             (int) ToolCommonData.ePrintLang.PCLXL,
         };
 
-        private static readonly int[] _subsetOrientations = 
+        private static readonly int[] _subsetOrientations =
         {
             (int) PCLOrientations.eIndex.Portrait,
             (int) PCLOrientations.eIndex.Landscape,
@@ -191,7 +191,7 @@ namespace PCLParaphernalia
                 string pjlCommand;
 
                 int indxPaperSize;
-                
+
                 BinaryWriter binWriter = null;
 
                 TargetCore.requestStreamOpen (
@@ -467,8 +467,8 @@ namespace PCLParaphernalia
         {
             int index;
 
-            _initialised = false; 
-                
+            _initialised = false;
+
             //----------------------------------------------------------------//
             //                                                                //
             // Populate form.                                                 //
@@ -486,7 +486,7 @@ namespace PCLParaphernalia
                 cbPDL.Items.Add(Enum.GetName(
                     typeof(ToolCommonData.ePrintLang), i));
             }
-            
+
             //----------------------------------------------------------------//
 
             cbOrientation.Items.Clear();
@@ -571,7 +571,7 @@ namespace PCLParaphernalia
                 rbCustomUseMetric.IsChecked = true;
             else
                 rbCustomUseMetric.IsChecked = false;
-            
+
             _initialised = true;
         }
 
@@ -614,7 +614,7 @@ namespace PCLParaphernalia
 
             if ((_indxPDL < 0) || (_indxPDL >= _ctPDLs))
                 _indxPDL = 0;
-            
+
             _crntPDL = (ToolCommonData.ePrintLang) _subsetPDLs [_indxPDL];
 
             //----------------------------------------------------------------//
@@ -774,9 +774,9 @@ namespace PCLParaphernalia
 
             if (_flagCustomUseMetric)
                 rbCustomUseMetric.IsChecked = true;
-            else 
+            else
                 rbCustomUseImperial.IsChecked = true;
-               
+
             PCLPaperSizes.setCustomShortEdge(_customShortEdgeDots,
                                              _sessionUPI);
             PCLPaperSizes.setCustomLongEdge(_customLongEdgeDots,
@@ -979,7 +979,7 @@ namespace PCLParaphernalia
             if (_flagCustomPaperSize)
                 PCLPaperSizes.resetCustomDesc();
 
-            setPaperMetrics(false); 
+            setPaperMetrics(false);
         }
 
         //--------------------------------------------------------------------//
@@ -1142,15 +1142,15 @@ namespace PCLParaphernalia
 
             sizeShortEdge = PCLPaperSizes.getSizeShortEdge(indxPaperSize,
                                                            _sessionUPI);
-            
+
             marginsUnprintable =
                 PCLPaperSizes.getMarginsUnprintable(indxPaperSize,
                                                     _sessionUPI);
-            
+
             marginsLogicalLand =
                 PCLPaperSizes.getMarginsLogicalLand(indxPaperSize,
                                                     _sessionUPI);
-            
+
             marginsLogicalPort =
                 PCLPaperSizes.getMarginsLogicalPort(indxPaperSize,
                                                     _sessionUPI);
@@ -1701,7 +1701,7 @@ namespace PCLParaphernalia
                 if (lostFocusEvent)
                 {
                     string newText;
-                    
+
                     if (shortEdge)
                         newText = defValShort.ToString("F0");
                     else

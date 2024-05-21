@@ -7,11 +7,11 @@ using System.Windows;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides common routines associated with the Make Overlay tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2012
-    /// 
+    ///
     /// </summary>
     static class PrnParseMakeOvl
     {
@@ -20,7 +20,7 @@ namespace PCLParaphernalia
         // Constants and enumerations.                                        //
         //                                                                    //
         //--------------------------------------------------------------------//
-        
+
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
         // Class variables.                                                   //
@@ -526,7 +526,7 @@ namespace PCLParaphernalia
                     makeOvlActNew = PrnParseConstants.eOvlAct.Adjust;
                     makeOvlShowNew = PrnParseConstants.eOvlShow.None;
                 }
-                else 
+                else
                 {
                     makeOvlShowNew = PrnParseConstants.eOvlShow.None;
                 }
@@ -542,7 +542,7 @@ namespace PCLParaphernalia
                 if (makeOvlActCrnt == PrnParseConstants.eOvlAct.PageChange)
                 {
                     breakpoint = true;
-                    
+
                     makeOvlActNew = PrnParseConstants.eOvlAct.PageBoundary;
                     makeOvlShowNew = PrnParseConstants.eOvlShow.None;
 
@@ -677,7 +677,7 @@ namespace PCLParaphernalia
                     {
                         linkData.MakeOvlSkipBegin = seqBegin;
                     }
-                
+
                     linkData.MakeOvlSkipEnd = seqEnd;
                 }
             }
@@ -949,7 +949,7 @@ namespace PCLParaphernalia
                     linkData.MakeOvlSkipBegin = seqEnd - 1;
                     linkData.MakeOvlSkipEnd = seqEnd;
                 }
-                else 
+                else
                 {
                     linkData.MakeOvlShow = PrnParseConstants.eOvlShow.None;
                 }
@@ -998,7 +998,7 @@ namespace PCLParaphernalia
 
                     if (! firstPass)
                         linkData.MakeOvlPos = PrnParseConstants.eOvlPos.BetweenPages;
-                    
+
                     linkData.MakeOvlAct = PrnParseConstants.eOvlAct.Remove;
                     linkData.MakeOvlSkipBegin = seqBegin;
                     linkData.MakeOvlSkipEnd = seqEnd;
@@ -1023,7 +1023,7 @@ namespace PCLParaphernalia
                     linkData.MakeOvlSkipBegin = seqEnd - 1;
                     linkData.MakeOvlSkipEnd = seqEnd;
                 }
-                else 
+                else
                 {
                     linkData.MakeOvlShow = PrnParseConstants.eOvlShow.None;
                 }
@@ -1189,7 +1189,7 @@ namespace PCLParaphernalia
                     linkData.MakeOvlSkipBegin = seqEnd - 1;
                     linkData.MakeOvlSkipEnd = seqEnd;
                 }
-                else 
+                else
                 {
                     linkData.MakeOvlShow = PrnParseConstants.eOvlShow.None;
                 }
@@ -1255,7 +1255,7 @@ namespace PCLParaphernalia
 
             seqBegin = fileOffset + hddrEnd;
             seqEnd   = fileOffset + hddrEnd;
-            
+
             if (linkData.MakeOvlRestoreStateXL)
             {
                 string descText;
@@ -1339,7 +1339,7 @@ namespace PCLParaphernalia
                     0x59, // Y //
                     macroId.ToString (),
                     crntPos);
-                
+
                 crntPos = PrnParseConstants.eOffsetPosition.CrntPosition;
 
                 insertSequencePCL (

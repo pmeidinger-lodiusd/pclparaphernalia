@@ -5,11 +5,11 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a set of PCL Symbol Set objects.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class PCLSymbolSets
     {
@@ -437,7 +437,7 @@ namespace PCLParaphernalia
         public static bool getSymsetDataForIdAlpha(int selection,
                                                       byte idAlpha,
                                                       ref ushort kind1,
-                                                      ref ushort idNum,  
+                                                      ref ushort idNum,
                                                       ref string name)
         {
             bool symsetPresent;
@@ -572,7 +572,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Unbound_Unicode,
                                          PCLTextParsingMethods.eIndex.m83_UTF8,
                                          56,                         //    1X //
-                                         "",  
+                                         "",
                                          "<unbound>",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -1557,7 +1557,7 @@ namespace PCLParaphernalia
             int index;
 
             ushort[] mapArray;
-        
+
             index = getIndexForId(symSetNo);
 
             if (index == -1)

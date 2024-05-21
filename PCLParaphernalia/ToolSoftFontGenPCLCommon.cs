@@ -7,12 +7,12 @@ using System.Windows;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides common (PCL and PCL XL) handling for the Soft Font
     /// Generate tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2012
-    /// 
+    ///
     /// </summary>
     class ToolSoftFontGenPCLCommon
     {
@@ -34,7 +34,7 @@ namespace PCLParaphernalia
 
         private const int cSizeSegHddrFmt15  = 4;
         private const int cSizeSegHddrFmt16  = 6;
-        
+
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
         // Class variables.                                                   //
@@ -42,9 +42,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private BinaryWriter _binWriter;
-        
+
         private ToolSoftFontGenTTF _ttfHandler = null;
-        
+
         private readonly ASCIIEncoding _ascii = new ASCIIEncoding ();
 
         private byte[] _dataBuf = new byte[cDataBufLen];
@@ -108,7 +108,7 @@ namespace PCLParaphernalia
 
             if (pdlIsPCLXL || fmt16)
                 segHddrSize = cSizeSegHddrFmt16;
-            else 
+            else
                 segHddrSize = cSizeSegHddrFmt15;
 
             //----------------------------------------------------------------//
@@ -676,7 +676,7 @@ namespace PCLParaphernalia
             numTables = _ttfHandler.getOutputNumTables (pdlIsPCLXL,
                                                         symSetUnbound,
                                                         flagVMetrics);
-            
+
             sizeTables = _ttfHandler.getSegGTTablesSize (pdlIsPCLXL,
                                                          symSetUnbound,
                                                          flagVMetrics);
@@ -921,7 +921,7 @@ namespace PCLParaphernalia
                 // cvt                                                        //
                 //                                                            //
                 //------------------------------------------------------------//
-                
+
                 tabLen = _metrics_cvt.TableLength;
 
                 if (tabLen != 0)

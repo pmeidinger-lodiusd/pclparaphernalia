@@ -4,11 +4,11 @@ using System.IO;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PCL support for the TrayMap tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class ToolTrayMapPCL
     {
@@ -269,19 +269,19 @@ namespace PCLParaphernalia
 
             posY += posYInc;
             PCLWriter.text(prnWriter, posX, posY, 0, "Paper Size:");
-        
+
             posY += posYInc;
             PCLWriter.text(prnWriter, posX, posY, 0, "Paper Type:");
-        
+
             posY += posYInc;
             PCLWriter.text(prnWriter, posX, posY, 0, "Plex Mode:");
-        
+
             posY += posYInc;
             PCLWriter.text(prnWriter, posX, posY, 0, "Orientation: ");
-        
+
             posY += posYInc;
             PCLWriter.text(prnWriter, posX, posY, 0, "PCL Tray ID:");
-        
+
             posY += posYInc;
             PCLWriter.text(prnWriter, posX, posY, 0, "Printer Tray:");
 
@@ -293,7 +293,7 @@ namespace PCLParaphernalia
 
             PCLWriter.font(prnWriter, true,
                            "19U", "s1p" + ptSizeSub + "v0s3b16602T");
-        
+
             PCLWriter.text(prnWriter, posX, posY, 0,
                       "record the tray name/number used in this box");
 
@@ -601,7 +601,7 @@ namespace PCLParaphernalia
             {
                 PCLWriter.pageFace(prnWriter, true);
             }
-               
+
             if (formAsMacro)
                 PCLWriter.macroControl(prnWriter, macroIdFront,
                                        PCLWriter.eMacroControl.Call);
@@ -654,7 +654,7 @@ namespace PCLParaphernalia
             else
                 PCLWriter.text(prnWriter, posX, posY, 0,
                           PCLPaperTypes.getName(indxPaperType));
-            
+
             //----------------------------------------------------------------//
 
             posY += posYInc;
@@ -702,7 +702,7 @@ namespace PCLParaphernalia
                         prnWriter,
                         PCLOrientations.getIdPCL(indxOrientRear).ToString());
                 }
-                                                         
+
                 PCLWriter.pageFace(prnWriter, false);
 
                 if (formAsMacro)

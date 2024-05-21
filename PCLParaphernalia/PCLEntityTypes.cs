@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a set of PCL 'status readback' Entity Type objects.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class PCLEntityTypes
     {
@@ -27,7 +27,7 @@ namespace PCLParaphernalia
             FontExtended
         }
 
-        private static readonly PCLEntityType[] _entityTypes = 
+        private static readonly PCLEntityType[] _entityTypes =
         {
             new PCLEntityType(eType.Memory,         "1",
                               "Memory"),
@@ -42,9 +42,9 @@ namespace PCLParaphernalia
             new PCLEntityType(eType.FontExtended,   "4",
                               "Font Extended")
         };
-        
+
         private static readonly int _entityTypeCount = _entityTypes.GetUpperBound(0) + 1;
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // g e t C o u n t                                                    //

@@ -5,11 +5,11 @@ using System.Windows;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PCL support for the ImageBitmap tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class ToolImageBitmapPCL
     {
@@ -147,7 +147,7 @@ namespace PCLParaphernalia
             bytesPerRowPadded = bytesPerRow;
 
             padBytes = bytesPerRow % 4;
-            
+
             if (padBytes != 0)
             {
                 padBytes = 4 - padBytes;
@@ -161,7 +161,7 @@ namespace PCLParaphernalia
                 ToolImageBitmapCore.getNextImageBlock(ref bufSub,
                                                       bytesPerRowPadded,
                                                       firstBlock);
-                                
+
                 if (! indexed)      // if (srcBitsPerPixel == 24)
                 {
                     // change BGR components to RGB //
@@ -185,7 +185,7 @@ namespace PCLParaphernalia
                 PCLWriter.rasterTransferRow(prnWriter, bytesPerRow, bufSub);
             }
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // g e n e r a t e I m a g e H e a d e r                              //
@@ -226,7 +226,7 @@ namespace PCLParaphernalia
 
             coordX = (short)(destPosX * 600);
             coordY = (short)(destPosY * 600);
-            
+
             PCLWriter.palettePushPop(prnWriter, PCLWriter.ePushPop.Push);
 
             PCLWriter.cursorPosition(prnWriter, coordX, coordY);
@@ -330,7 +330,7 @@ namespace PCLParaphernalia
                                             0x08,   // Bits per component
                                             0x08);  // Bits per component
                 }
-                
+
                 if (paletteEntries != 0)
                 {
                     byte red   = 0x00,
@@ -343,7 +343,7 @@ namespace PCLParaphernalia
                                                                ref red,
                                                                ref green,
                                                                ref blue);
-                        
+
                         PCLWriter.paletteEntry(prnWriter, i, red, green, blue);
                     }
                 }

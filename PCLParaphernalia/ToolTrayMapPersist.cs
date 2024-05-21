@@ -4,11 +4,11 @@ using System;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class manages persistent storage of options for the TrayMap tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class ToolTrayMapPersist
     {
@@ -134,7 +134,7 @@ namespace PCLParaphernalia
                 }
             }
         }
-      
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // l o a d D a t a C o m m o n                                        //
@@ -177,7 +177,7 @@ namespace PCLParaphernalia
 
         public static void loadDataPCLOpt (ref bool flagFormAsMacro,
                                            ref int sheetCt)
-        { 
+        {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 

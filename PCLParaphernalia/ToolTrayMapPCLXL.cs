@@ -4,11 +4,11 @@ using System.IO;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PCL XL support for the TrayMap tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class ToolTrayMapPCLXL
     {
@@ -102,7 +102,7 @@ namespace PCLParaphernalia
             generateJobHeader(prnWriter);
 
             if (formAsMacro)
-                generateOverlaySet (prnWriter, 
+                generateOverlaySet (prnWriter,
                                    pageCount,
                                    indxPaperSize,
                                    indxPlexMode,
@@ -130,7 +130,7 @@ namespace PCLParaphernalia
                             formAsMacro);
 
             if (formAsMacro)
-                generateOverlayDeletes (prnWriter, 
+                generateOverlayDeletes (prnWriter,
                                         formCountFront, formCountRear,
                                         formNamesFront, formNamesRear);
 
@@ -768,7 +768,7 @@ namespace PCLParaphernalia
                                    indxPlexMode,
                                    true,        // always true 'cos possible different Paper Type on each sheet
                                    true);
-                        
+
             //----------------------------------------------------------------//
 
             if (formAsMacro)

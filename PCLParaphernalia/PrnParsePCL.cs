@@ -5,11 +5,11 @@ using System.Text;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines functions to parse PCL escape sequences.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     class PrnParsePCL
     {
@@ -26,13 +26,13 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private PrnParseLinkData _linkData;
-        
+
         private PrnParseOptions _options;
 
         private readonly PrnParse.eParseType _parseType;
 
         private readonly PrnParseHPGL2 _parseHPGL2;
- 
+
         private readonly PrnParseFontHddrPCL _parseFontHddrPCL;
         private readonly PrnParseFontCharPCL _parseFontCharPCL;
         private readonly PrnParsePCLBinary   _parsePCLBinary;
@@ -78,7 +78,7 @@ namespace PCLParaphernalia
         private bool _analysePML;
 
         private readonly ASCIIEncoding _ascii = new ASCIIEncoding ();
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P r n P a r s e P C L                                              //
@@ -175,12 +175,12 @@ namespace PCLParaphernalia
                 seqInvalid = parseContinuation (ref bufRem,
                                                 ref bufOffset,
                                                 ref crntPDL,
-                                                ref endReached); 
+                                                ref endReached);
             else
                 seqInvalid = parseSequence (ref bufRem,
                                             ref bufOffset,
                                             ref crntPDL,
-                                            ref endReached);  
+                                            ref endReached);
 
             return seqInvalid;
         }
@@ -220,9 +220,9 @@ namespace PCLParaphernalia
 
             byte prefixA = 0x00,
                  prefixB = 0x00;
-            
+
             contType = PrnParseConstants.eContType.None;
-            
+
             _linkData.getContData (ref contType,
                                    ref prefixLen,
                                    ref contDataLen,
@@ -293,7 +293,7 @@ namespace PCLParaphernalia
                     true,
                     _indxOffsetFormat,
                     _analysisLevel);
-                
+
                 //------------------------------------------------------------//
                 //                                                            //
                 // Adjust continuation data and pointers.                     //
@@ -371,7 +371,7 @@ namespace PCLParaphernalia
                                                             _linkData,
                                                             _options,
                                                             _table);
-                
+
                 if (!charOK)
                     invalidSeqFound = true;
             }
@@ -3779,7 +3779,7 @@ namespace PCLParaphernalia
                 "     ----> Width",
                 "",
                 itemDesc);
-            
+
             index = style & 0x03;
 
             switch (index)

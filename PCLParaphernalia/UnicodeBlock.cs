@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a Unicode block.
-    /// 
+    ///
     /// © Chris Hutchinson 2017
-    /// 
+    ///
     /// </summary>
     class UnicodeBlock
     {

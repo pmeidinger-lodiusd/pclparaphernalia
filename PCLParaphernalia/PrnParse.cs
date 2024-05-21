@@ -7,13 +7,13 @@ using System.Windows;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class handles 'parsing' of print file.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
-    
+
     [System.Reflection.Obfuscation(Feature = "properties renaming")]
 
     class PrnParse
@@ -30,7 +30,7 @@ namespace PCLParaphernalia
             MakeOverlay,
             ScanForPDL
         }
-       
+
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
         // Class variables.                                                   //
@@ -53,7 +53,7 @@ namespace PCLParaphernalia
    //   private Int32 _perCentMax;
 
         private long _fileSize = 0;
-        
+
         private readonly int _analysisLevel;
 
         private readonly PrnParsePCL   _parsePCL;
@@ -71,7 +71,7 @@ namespace PCLParaphernalia
 
         private string _prnFilename;
         private string _subFilename;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P r n P a r s e                                                    //
@@ -82,7 +82,7 @@ namespace PCLParaphernalia
                         int analysisLevel)
         {
             _parseType = parseType;
-          
+
             _analysisLevel = analysisLevel;
 
             _parseHPGL2 = new PrnParseHPGL2();
@@ -104,7 +104,7 @@ namespace PCLParaphernalia
             _subFileCreated = false;
             _subFileOpen    = false;
         }
- 
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // a n a l y s e                                                      //
@@ -174,7 +174,7 @@ namespace PCLParaphernalia
        //   Int32 perCent = 0;
 
             ToolCommonData.ePrintLang newPDL;
-            
+
             PrnParseConstants.eOptCharSetSubActs indxCharSetSubAct = 0;
             PrnParseConstants.eOptCharSets indxCharSetName = 0;
             PrnParseConstants.eOptOffsetFormats indxOffsetFormat = 0;
@@ -214,7 +214,7 @@ namespace PCLParaphernalia
 
                 blockStart = analyseActionStart ();
             }
-            
+
             if (_fileSize == 0)
                 endReached = true;
             else if (blockStart != 0)
@@ -248,7 +248,7 @@ namespace PCLParaphernalia
                     {
                         _linkData.setEof (true);
                     }
-                    
+
                     //--------------------------------------------------------//
                     //                                                        //
                     // Analyse the current 'block'.                           //
@@ -337,7 +337,7 @@ namespace PCLParaphernalia
                                     _PCLXLFirstCall);
 
                                 _PCLXLFirstCall = false;
-                                
+
                                 break;
 
                             case ToolCommonData.ePrintLang.XL2HB :
@@ -355,7 +355,7 @@ namespace PCLParaphernalia
                                     _PCLXLFirstCall);
 
                                 _PCLXLFirstCall = false;
-                                
+
                                 break;
 
                             case ToolCommonData.ePrintLang.Prescribe :
@@ -372,7 +372,7 @@ namespace PCLParaphernalia
                                     _table);
 
                                 break;
-                    
+
                             default :
 
                                 badSeq = true;
@@ -385,12 +385,12 @@ namespace PCLParaphernalia
                                     "*** Warning ***",
                                     "",
                                     "Unknown language; revert to PCL");
-                                
+
                                 newPDL = ToolCommonData.ePrintLang.PCL;
                                 endReached = true;      // TEMP ??????????
                                 break;
                         }
-                        
+
                         //----------------------------------------------------//
                         //                                                    //
                         // Check for and report on language switch.           //
@@ -432,21 +432,21 @@ namespace PCLParaphernalia
                                 case ToolCommonData.ePrintLang.HPGL2:
                                     langName = "HP-GL/2";
                                     break;
-                                
+
                                 case ToolCommonData.ePrintLang.PJL:
                                     langName = "PJL";
 
                                     if (makeMacroScan || makeMacroRun)
                                         if (_linkData.IsEofSet && (bufRem == 0))
                                             newPDL = ToolCommonData.ePrintLang.PCL;
-                                        else 
+                                        else
                                             endReached = false;
                                     break;
-                                
+
                                 case ToolCommonData.ePrintLang.PostScript:
                                     langName = "PostScript";
                                     break;
-                                
+
                                 case ToolCommonData.ePrintLang.Prescribe:
                                     langName = "Prescribe";
 
@@ -459,7 +459,7 @@ namespace PCLParaphernalia
                                 case ToolCommonData.ePrintLang.XL2HB:
                                     langName = "XL2HB (Brother GDI (PCL XL based))";
                                     break;
-                                
+
                                 default:
                                     langName = "Unknown";
                                     break;
@@ -488,8 +488,8 @@ namespace PCLParaphernalia
                             invalidSeqFound = true;
 
                         backTrack = false;
-                        
-                        if ((_parseType == eParseType.MakeOverlay) 
+
+                        if ((_parseType == eParseType.MakeOverlay)
                                       &&
                             (_linkData.MakeOvlAct !=
                                 PrnParseConstants.eOvlAct.None))
@@ -618,7 +618,7 @@ namespace PCLParaphernalia
 
                         bufRem = contDataLen;
                         if (bufRem < 0)
-                            bufRem = -bufRem; 
+                            bufRem = -bufRem;
 
                         while (bufRem > 0)
                         {
@@ -646,7 +646,7 @@ namespace PCLParaphernalia
                                 _analysisLevel);
                         }
                     }
-                    else 
+                    else
                     {
                         if (_crntPDL == ToolCommonData.ePrintLang.PCLXL)
                         {
@@ -698,7 +698,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            if (invalidSeqFound) 
+            if (invalidSeqFound)
             {
                 MessageBox.Show ("Invalid sequence(s) detected during " +
                                  "level " + _analysisLevel + " analysis.\r\n" +
@@ -933,13 +933,13 @@ namespace PCLParaphernalia
                 if (type == PCLXLOperators.eEmbedDataType.FontHeader)
                 {
                     _linkData.setBacktrack (  // not really Backtrack but works!
-                        PrnParseConstants.eContType.PCLXLFontHddr,              
+                        PrnParseConstants.eContType.PCLXLFontHddr,
                         (int) _fileSize);
                  }
                 else if (type == PCLXLOperators.eEmbedDataType.FontChar)
                 {
                     _linkData.setBacktrack (  // not really Backtrack but works!
-                        PrnParseConstants.eContType.PCLXLFontChar,              
+                        PrnParseConstants.eContType.PCLXLFontChar,
                         (int) _fileSize);
                 }
 
@@ -1152,7 +1152,7 @@ namespace PCLParaphernalia
             DataTable table)
         {
             bool badSeq;
-            
+
             ToolCommonData.ePrintLang crntPDL =
                 ToolCommonData.ePrintLang.PCL;
 
@@ -1257,7 +1257,7 @@ namespace PCLParaphernalia
                     MessageBox.Show ("IO Exception:\r\n" +
                                      e.Message + "\r\n" +
                                      "Deleting temporary file '" +
-                                     _subFilename + "'", 
+                                     _subFilename + "'",
                                      "Embedded PCL XL analysis",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
@@ -1464,7 +1464,7 @@ namespace PCLParaphernalia
 
             return OK;
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // o v l F i l e C l o s e                                            //
@@ -1557,7 +1557,7 @@ namespace PCLParaphernalia
                 saveDialog.Filter = "Print Overlays | *.ovl; *.OVL";
                 saveDialog.DefaultExt = "ovl";
             }
-            
+
             saveDialog.RestoreDirectory = true;
             saveDialog.InitialDirectory = saveDirectory;
             saveDialog.OverwritePrompt = true;
@@ -1727,7 +1727,7 @@ namespace PCLParaphernalia
                 catch (IOException e)
                 {
                     MessageBox.Show ("IO Exception:\r\n" +
-                                     e.Message + 
+                                     e.Message +
                                      "Opening print file '" +
                                      filename + "'",
                                      "Print file selection",

@@ -9,11 +9,11 @@ namespace PCLParaphernalia
 {
     /// <summary>
     /// Interaction logic for MainForm.xaml
-    /// 
+    ///
     /// This is the main form of the PCLParaphernalia application.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     [Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
@@ -173,7 +173,7 @@ namespace PCLParaphernalia
                 // Invoke default working folder dialogue.                        //
                 //                                                                //
                 //----------------------------------------------------------------//
-        
+
                 WorkFolder workFolder = new WorkFolder ();
 
                 bool? dialogResult = workFolder.ShowDialog();
@@ -237,7 +237,7 @@ namespace PCLParaphernalia
                 // ***** for design time use only *****                       //
                 //                                                            //
                 //------------------------------------------------------------//
-                
+
                 toolXXXDiags_Selected (this, null);
             }
             else if (filename != "")
@@ -247,7 +247,7 @@ namespace PCLParaphernalia
                 // Load 'PRN File Analyse' tool and pass in file name.        //
                 //                                                            //
                 //------------------------------------------------------------//
-                
+
                 startToolId = ToolCommonData.eToolIds.PrnAnalyse;
 
                 toolPrnAnalyse_Selected(this, null);
@@ -606,7 +606,7 @@ namespace PCLParaphernalia
                                                RoutedEventArgs e)
         {
             crntToolResetPDL();
-            
+
             crntToolResetSubId();
 
             TargetFile targetFile = new TargetFile (_crntToolId, _crntSubId,
@@ -1131,7 +1131,7 @@ namespace PCLParaphernalia
 
             _subFormToolStatusReadback.Content = null;
             _subFormToolStatusReadback.Close();
-            
+
             grid1.Children.Clear();
             grid1.Children.Add(content as UIElement);
         }
@@ -1177,7 +1177,7 @@ namespace PCLParaphernalia
         // Called when the 'Tray Map' item is selected.                       //
         //                                                                    //
         //--------------------------------------------------------------------//
-        
+
         private void toolTrayMap_Selected(object sender, RoutedEventArgs e)
         {
             crntToolSaveMetrics ();
@@ -1191,11 +1191,11 @@ namespace PCLParaphernalia
 
             TargetCore.metricsLoadFileCapt (_crntToolId, _crntSubId, _crntPDL);
 
-            object content = _subFormToolTrayMap.Content;  
-            
-            _subFormToolTrayMap.Content = null;    
+            object content = _subFormToolTrayMap.Content;
+
+            _subFormToolTrayMap.Content = null;
             _subFormToolTrayMap.Close();
-            
+
             grid1.Children.Clear();
             grid1.Children.Add(content as UIElement);
         }
@@ -1295,6 +1295,6 @@ namespace PCLParaphernalia
             helpProvider1.SetHelpNavigator(this.chkMain, HelpNavigator.Topic);
             helpProvider1.SetHelpKeyword(this.chkMain, @"/HTMLHelp_Examples/jump_to_anchor.htm#AnchorSample");
         }
-        */ 
+        */
     }
 }

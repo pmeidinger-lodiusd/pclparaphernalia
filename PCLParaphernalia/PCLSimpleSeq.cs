@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a PCL Simple Escape Sequence.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
     [System.Reflection.Obfuscation(
@@ -51,7 +51,7 @@ namespace PCLParaphernalia
         {
             _keySChar        = keySChar;
             _description     = description;
- 
+
             _flagObsolete    = flagObsolete;
             _flagResetHPGL2  = flagResetHPGL2;
 

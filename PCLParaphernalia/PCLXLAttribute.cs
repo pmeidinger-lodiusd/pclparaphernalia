@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a PCL XL Attribute tag.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
     [System.Reflection.Obfuscation(
@@ -41,7 +41,7 @@ namespace PCLParaphernalia
 
         private int _statsCtParent;
         private int _statsCtChild;
-      
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L X L A t t r i b u t e                                        //
@@ -105,7 +105,7 @@ namespace PCLParaphernalia
             flagUintTxt       = _flagUintTxt;
             flagValIsLen      = _flagValIsLen;
             flagValIsPCL      = _flagValIsPCL;
-            makeOvlAct = _makeOvlAct; 
+            makeOvlAct = _makeOvlAct;
             description       = _description;
         }
 

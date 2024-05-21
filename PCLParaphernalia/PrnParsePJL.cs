@@ -5,11 +5,11 @@ using System.Text;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines functions to parse PJL commands.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     class PrnParsePJL
     {
@@ -30,14 +30,14 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private PrnParseLinkData _linkData;
-        
+
         private PrnParseOptions _options;
 
         private DataTable _table;
 
         private byte[] _buf;
 
-        private int _analysisLevel;  
+        private int _analysisLevel;
 
         private int _fileOffset;
         private int _endOffset;
@@ -213,20 +213,20 @@ namespace PCLParaphernalia
 
             _endOffset = _options.ValCurFOffsetEnd;
 
-            _showPML = _options.FlagPMLWithinPJL;   
-            
+            _showPML = _options.FlagPMLWithinPJL;
+
             //----------------------------------------------------------------//
 
             if (linkData.isContinuation())
                 seqInvalid = parseContinuation (ref bufRem,
                                                 ref bufOffset,
                                                 ref crntPDL,
-                                                ref endReached); 
+                                                ref endReached);
             else
                 seqInvalid = parseSequences (ref bufRem,
                                              ref bufOffset,
                                              ref crntPDL,
-                                             ref endReached);  
+                                             ref endReached);
 
             return seqInvalid;
         }
@@ -260,7 +260,7 @@ namespace PCLParaphernalia
 
             byte prefixA = 0x00,
                  prefixB = 0x00;
-            
+
             _linkData.getContData (ref contType,
                                    ref prefixLen,
                                    ref contDataLen,
@@ -922,7 +922,7 @@ namespace PCLParaphernalia
                 if ((commandName.Length == 5)
                             &&
                     (commandName.Substring (0, 5) == "ENTER")
-                            && 
+                            &&
                     (commandParams.Length > 9)
                             &&
                     (commandParams.Substring (0, 9) == "LANGUAGE="))
@@ -966,7 +966,7 @@ namespace PCLParaphernalia
                          (((commandName.Length == 5)
                             &&
                            (commandName.Substring (0, 5) == "DMCMD"))
-                            ||  
+                            ||
                           ((commandName.Length == 6)
                             &&
                            (commandName.Substring (0, 6) == "DMINFO"))))

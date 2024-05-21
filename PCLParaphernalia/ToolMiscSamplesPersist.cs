@@ -4,11 +4,11 @@ using System;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class manages persistent storage of options for the MiscSamples tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2014
-    /// 
+    ///
     /// </summary>
     static class ToolMiscSamplesPersist
     {
@@ -41,7 +41,7 @@ namespace PCLParaphernalia
         const string _nameFlagSrcTextPat      = "FlagSrcTextPat";
         const string _nameFlagUseColour       = "FlagUseColour";
         const string _nameFlagUseMacros       = "FlagUseMacros";
-        
+
         const string _nameIndxColourMode      = "IndxColourMode";
         const string _nameIndxColourD1        = "IndxColourD1";
         const string _nameIndxColourD2        = "IndxColourD2";
@@ -102,7 +102,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void loadDataCapture(
-            ToolCommonData.eToolSubIds crntToolSubId, 
+            ToolCommonData.eToolSubIds crntToolSubId,
             ToolCommonData.ePrintLang  crntPDL,
             ref string captureFile)
         {
@@ -117,32 +117,32 @@ namespace PCLParaphernalia
             if (crntToolSubId == ToolCommonData.eToolSubIds.Colour)
             {
                 subKeyType = "\\" + _subKeyColour;
-                defFileBase = _defaultCaptureFileRoot + _subKeyColour; 
+                defFileBase = _defaultCaptureFileRoot + _subKeyColour;
             }
             else if (crntToolSubId == ToolCommonData.eToolSubIds.LogOper)
             {
                 subKeyType = "\\" + _subKeyLogOper;
-                defFileBase = _defaultCaptureFileRoot + _subKeyLogOper; 
+                defFileBase = _defaultCaptureFileRoot + _subKeyLogOper;
             }
             else if (crntToolSubId == ToolCommonData.eToolSubIds.LogPage)
             {
                 subKeyType = "\\" + _subKeyLogPage;
-                defFileBase = _defaultCaptureFileRoot + _subKeyLogPage; 
+                defFileBase = _defaultCaptureFileRoot + _subKeyLogPage;
             }
             else if (crntToolSubId == ToolCommonData.eToolSubIds.Pattern)
             {
                 subKeyType = "\\" + _subKeyPattern;
-                defFileBase = _defaultCaptureFileRoot + _subKeyPattern; 
+                defFileBase = _defaultCaptureFileRoot + _subKeyPattern;
             }
             else if (crntToolSubId == ToolCommonData.eToolSubIds.TxtMod)
             {
                 subKeyType = "\\" + _subKeyTxtMod;
-                defFileBase = _defaultCaptureFileRoot + _subKeyTxtMod; 
+                defFileBase = _defaultCaptureFileRoot + _subKeyTxtMod;
             }
             else if (crntToolSubId == ToolCommonData.eToolSubIds.Unicode)
             {
                 subKeyType = "\\" + _subKeyUnicode;
-                defFileBase = _defaultCaptureFileRoot + _subKeyUnicode; 
+                defFileBase = _defaultCaptureFileRoot + _subKeyUnicode;
             }
 
             if (crntPDL == ToolCommonData.ePrintLang.PCL)
@@ -366,7 +366,7 @@ namespace PCLParaphernalia
         public static void loadDataTypeLogOper (string pdlName,
                                                 ref int indxMode,
                                                 ref int indxROPFrom,
-                                                ref int indxROPTo, 
+                                                ref int indxROPTo,
                                                 ref int indxClrD1,
                                                 ref int indxClrD2,
                                                 ref int indxClrS1,
@@ -798,7 +798,7 @@ namespace PCLParaphernalia
             key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyCommon +
                                  "\\" + pdlName;
-            
+
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 subKey.SetValue(_nameIndxOrientation,
@@ -837,7 +837,7 @@ namespace PCLParaphernalia
             key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyColour +
                                  "\\" + pdlName;
-            
+
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 subKey.SetValue(_nameIndxColourMode,
@@ -1029,7 +1029,7 @@ namespace PCLParaphernalia
             key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyLogPage +
                                  "\\" + pdlName;
-            
+
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 subKey.SetValue(_nameOffsetLeft,
@@ -1081,7 +1081,7 @@ namespace PCLParaphernalia
             key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyPattern +
                                  "\\" + pdlName;
-            
+
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 subKey.SetValue(_nameIndxPatternType,
@@ -1116,7 +1116,7 @@ namespace PCLParaphernalia
             key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyTxtMod +
                                  "\\" + pdlName;
-            
+
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 subKey.SetValue(_nameIndxTxtModType,
@@ -1153,7 +1153,7 @@ namespace PCLParaphernalia
             key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyUnicode +
                                  "\\" + pdlName;
-            
+
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 subKey.SetValue(_nameIndxFont,

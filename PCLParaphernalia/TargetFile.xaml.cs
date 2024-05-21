@@ -7,13 +7,13 @@ namespace PCLParaphernalia
 {
     /// <summary>
     /// Interaction logic for TargetFile.xaml
-    /// 
+    ///
     /// Class handles the Target (file) definition form.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
-    
+
     [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 

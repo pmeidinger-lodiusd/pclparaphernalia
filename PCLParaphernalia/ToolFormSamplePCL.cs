@@ -4,11 +4,11 @@ using System.IO;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PCL support for the FormSample tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2012
-    /// 
+    ///
     /// </summary>
     static class ToolFormSamplePCL
     {
@@ -31,7 +31,7 @@ namespace PCLParaphernalia
         }
 
         private static readonly string[] macroMethodNames =
-        { 
+        {
           "Call macro (@ start of page)",
           "Call macro (@ end of page)",
           "Execute macro (@ start of page)",
@@ -111,7 +111,7 @@ namespace PCLParaphernalia
                              indxOrientation,
                              indxOrientRear,
                              indxPlexMode,
-                             flagSimplexJob, 
+                             flagSimplexJob,
                              flagMainForm,
                              flagRearForm,
                              flagMainOnPrnDisk,
@@ -123,8 +123,8 @@ namespace PCLParaphernalia
                              indxMethod,
                              macroIdMain,
                              macroIdRear);
-           
-            generateJobTrailer (prnWriter, 
+
+            generateJobTrailer (prnWriter,
                                 flagMacroRemove,
                                 flagMainForm,
                                 flagRearForm,
@@ -481,7 +481,7 @@ namespace PCLParaphernalia
                 // Write headers.                                             //
                 //                                                            //
                 //------------------------------------------------------------//
-                
+
                 PCLWriter.font (prnWriter, true, "19U", "s0p12h0s0b4099T");
 
                 posX = 600 - _logPageOffset;

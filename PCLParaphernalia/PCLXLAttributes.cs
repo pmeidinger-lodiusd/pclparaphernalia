@@ -6,11 +6,11 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides details of PCL XL Attribute tags.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class PCLXLAttributes
     {
@@ -162,7 +162,7 @@ namespace PCLParaphernalia
         private static PCLXLAttribute _tagUnknown;
 
         private static int _tagCount;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L X L A t t r i b u t e s                                      //
@@ -216,7 +216,7 @@ namespace PCLParaphernalia
                 seqKnown = false;
                 tag = _tagUnknown;
             }
-            
+
             tag.getDetails (ref flagReserved,
                             ref flagAttrEnum,
                             ref flagOperEnum,
@@ -481,7 +481,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,  
+                                   PrnParseConstants.eOvlAct.None,
                                    "*** Unknown tag ***");
 
             tagA = (byte) eTag.PaletteDepth;                          // 0x02 //
@@ -1371,7 +1371,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagAttrEnum, flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "VUExtension"));
 
             tagA = (byte) eTag.VUDataLength;                          // 0x92 //
@@ -1381,7 +1381,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagNone,     flagNone,     flagValIsLen, flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "VUDataLength"));
 
             tagA = (byte) eTag.VUAttr1;                               // 0x93 //
@@ -1391,7 +1391,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "VUAttr1"));
 
             tagA = (byte) eTag.VUAttr2;                               // 0x94 //
@@ -1401,7 +1401,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "VUAttr2"));
 
             tagA = (byte) eTag.VUAttr3;                               // 0x95 //
@@ -1411,7 +1411,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "VUAttr3"));
 
             tagA = (byte) eTag.VUAttr4;                               // 0x96 //
@@ -1421,7 +1421,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "VUAttr4"));
 
             tagA = (byte) eTag.VUAttr5;                               // 0x97 //
@@ -1431,7 +1431,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "VUAttr5"));
 
             tagA = (byte) eTag.VUAttr6;                               // 0x98 //
@@ -1441,7 +1441,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "VUAttr6"));
 
             tagA = (byte) eTag.VUAttr7;                               // 0x99 //
@@ -1451,7 +1451,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "VUAttr7"));
 
             tagA = (byte) eTag.VUAttr8;                               // 0x9a //
@@ -1461,7 +1461,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "VUAttr8"));
 
             tagA = (byte) eTag.VUAttr9;                               // 0x9b //
@@ -1471,7 +1471,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "VUAttr9"));
 
             tagA = (byte) eTag.VUAttr10;                              // 0x9c //
@@ -1481,7 +1481,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "VUAttr10"));
 
             tagA = (byte) eTag.VUAttr11;                              // 0x9d //
@@ -1491,7 +1491,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "VUAttr11"));
 
             tagA = (byte) eTag.VUAttr12;                              // 0x9e //
@@ -1501,7 +1501,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "VUAttr12"));
 
             tagA = 0x9f;                                               // 0x9f //
@@ -1511,7 +1511,7 @@ namespace PCLParaphernalia
                                    flagReserved, flagNone,     flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "* Reserved *"));
 
             tagA = (byte) eTag.EnableDiagnostics;                     // 0xa0 //
@@ -1521,7 +1521,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagAttrEnum, flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "EnableDiagnostics"));
 
             tagA = (byte) eTag.CharAngle;                             // 0xa1 //
@@ -1531,7 +1531,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "CharAngle"));
 
             tagA = (byte) eTag.CharCode;                              // 0xa2 //
@@ -1541,7 +1541,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "CharCode"));
 
             tagA = (byte) eTag.CharDataSize;                          // 0xa3 //
@@ -1551,7 +1551,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "CharDataSize"));
 
             tagA = (byte) eTag.CharScale;                             // 0xa4 //
@@ -1561,7 +1561,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "CharScale"));
 
             tagA = (byte) eTag.CharShear;                             // 0xa5 //
@@ -1571,7 +1571,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "CharShear"));
 
             tagA = (byte) eTag.CharSize;                              // 0xa6 //
@@ -1581,7 +1581,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.CharSize,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "CharSize"));
 
             tagA = (byte) eTag.FontHeaderLength;                      // 0xa7 //
@@ -1591,7 +1591,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "FontHeaderLength"));
 
             tagA = (byte) eTag.FontName;                              // 0xa8 //
@@ -1601,7 +1601,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagUbyteTxt, flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "FontName"));
 
             tagA = (byte) eTag.FontFormat;                            // 0xa9 //
@@ -1621,7 +1621,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagAttrEnum, flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "SymbolSet"));
 
             tagA = (byte) eTag.TextData;                              // 0xab //
@@ -1631,7 +1631,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagUbyteTxt, flagUintTxt,  flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "TextData"));
 
             tagA = (byte) eTag.CharSubModeArray;                      // 0xac //
@@ -1641,7 +1641,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagAttrEnum, flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "CharSubModeArray"));
 
             tagA = (byte) eTag.WritingMode;                           // 0xad //
@@ -1651,7 +1651,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagAttrEnum, flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "WritingMode"));
 
             tagA = (byte) eTag.BitmapCharScaling;                     // 0xae //
@@ -1661,7 +1661,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "BitmapCharScaling"));
 
             tagA = (byte) eTag.XSpacingData;                          // 0xaf //
@@ -1671,7 +1671,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "XSpacingData"));
 
             tagA = (byte) eTag.YSpacingData;                          // 0xb0 //
@@ -1681,7 +1681,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "YSpacingData"));
 
             tagA = (byte) eTag.CharBoldValue;                         // 0xb1 //
@@ -1691,7 +1691,7 @@ namespace PCLParaphernalia
                                    flagNone,     flagNone,     flagNone,
                                    flagNone,     flagNone,     flagNone,     flagNone,
                                    PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None, 
+                                   PrnParseConstants.eOvlAct.None,
                                    "CharBoldValue"));
 
             _tagCount = _tags.Count;

@@ -12,13 +12,13 @@ namespace PCLParaphernalia
 {
     /// <summary>
     /// Interaction logic for ToolXXXDiags.xaml
-    /// 
+    ///
     /// Class handles the temporary XXX Diags tool form.
-    /// 
+    ///
     /// © Chris Hutchinson 2013
-    /// 
+    ///
     /// </summary>
-    
+
     [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
@@ -132,7 +132,7 @@ namespace PCLParaphernalia
         // T o o l X X X D i a g s                                            //
         //                                                                    //
         //--------------------------------------------------------------------//
-     
+
         public ToolXXXDiags(ref ToolCommonData.ePrintLang crntPDL)
         {
             InitializeComponent();
@@ -152,7 +152,7 @@ namespace PCLParaphernalia
         {
             crntPDL = ToolCommonData.ePrintLang.Unknown;
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // i n i t i a l i s e                                                //
@@ -233,7 +233,7 @@ namespace PCLParaphernalia
 
             //Use the enumerationFlags to filter out unwanted print queues
             PrintQueueCollection printQueuesOnLocalServer = printServer.GetPrintQueues(enumerationFlags);
-            
+
             MessageBox.Show("These are your shared, local print queues:\n\n",
                             "Windows printer selection",
                             MessageBoxButton.OK,
@@ -247,7 +247,7 @@ namespace PCLParaphernalia
                             MessageBoxImage.Exclamation);
             }
         }
- 
+
         /*-
         private void printerTrays ()
         {
@@ -282,7 +282,7 @@ namespace PCLParaphernalia
 
             //Use the enumerationFlags to filter out unwanted print queues
             PrintQueueCollection printQueuesOnLocalServer = printServer.GetPrintQueues (enumerationFlags);
-            
+
             txtDiags.Text += "These are your shared, local print queues:\n\n";
 
             foreach (PrintQueue printer in printQueuesOnLocalServer)
@@ -300,7 +300,7 @@ namespace PCLParaphernalia
             PrintQueue defaultPrintQueue = LocalPrintServer.GetDefaultPrintQueue ();
 
             PrintPropertyDictionary printQueueProperties = defaultPrintQueue.PropertiesCollection;
-            
+
             txtDiags.Text += "These are the properties, and their types, of " +
                              defaultPrintQueue.Name +
                              " " +

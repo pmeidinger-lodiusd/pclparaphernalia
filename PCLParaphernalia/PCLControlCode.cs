@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a PCL Control Code.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
     [System.Reflection.Obfuscation(
@@ -34,7 +34,7 @@ namespace PCLParaphernalia
         private readonly PrnParseConstants.eOvlAct _makeOvlAct;
 
         private readonly PrnParseConstants.eSeqGrp _seqGrp;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L C o n t r o l C o d e                                        //

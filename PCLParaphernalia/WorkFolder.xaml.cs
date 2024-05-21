@@ -8,13 +8,13 @@ namespace PCLParaphernalia
 {
     /// <summary>
     /// Interaction logic for WorkFolder.xaml
-    /// 
+    ///
     /// Class handles the working folder definition form.
-    /// 
+    ///
     /// © Chris Hutchinson 2014
-    /// 
+    ///
     /// </summary>
-    
+
     [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
@@ -171,7 +171,7 @@ namespace PCLParaphernalia
             bool selected = false;
 
             FolderBrowserDialog folderDialog = new FolderBrowserDialog();
-            
+
             folderDialog.SelectedPath = _tmpFolder;
 
             DialogResult dlgResult = folderDialog.ShowDialog();

@@ -5,11 +5,11 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a set of PCL Font objects.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class PCLFonts
     {
@@ -1946,7 +1946,7 @@ namespace PCLParaphernalia
                 true ,     0,     3,     "                ",
                 true ,     1,     3,     "                ",
                 symSets_Dummy));
-        
+
             _fonts.Add (new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,

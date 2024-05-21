@@ -4,11 +4,11 @@ using System.IO;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PCL support for the PrintArea tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class ToolPrintAreaPCL
     {
@@ -283,7 +283,7 @@ namespace PCLParaphernalia
             for (int i = 0; i < rulerCellsX; i++)
             {
                 PCLWriter.lineVertical(prnWriter, posX, posY, _rulerDiv, stroke);
-                
+
                 posX += _rulerCell;
             }
 
@@ -292,12 +292,12 @@ namespace PCLParaphernalia
             // Vertical ruler.                                                //
             //                                                                //
             //----------------------------------------------------------------//
-            
+
             posX = (short)(_rulerOriginX - logXOffset);
             posY = _rulerOriginY;
 
             PCLWriter.lineVertical(prnWriter, posX, posY, rulerHeight, stroke);
-                
+
             posY += _rulerCell;
 
             for (int i = 0; i < rulerCellsY; i++)
@@ -344,7 +344,7 @@ namespace PCLParaphernalia
             posX = (short)(_posXHddr - logXOffset);
             posY = _posYHddr;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "PCL print area sample");
 
             ptSize = (short)(10 * scaleText);
@@ -365,7 +365,7 @@ namespace PCLParaphernalia
 
             posY += lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "Orientation:");
 
             posY += lineInc;
@@ -375,74 +375,74 @@ namespace PCLParaphernalia
 
             posY += lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "Paper width:");
-            
+
             posY += lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "Paper length:");
-            
+
             posY += lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "PJL option:");
 
             //----------------------------------------------------------------//
 
             posY = (short)(_posYDesc + (_rulerCell * scaleText));
-           
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "Black squares of side 3 units, each containing a" +
                       " central white square of side one");
 
             posY += lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "unit, and some directional markers, as per the" +
                       " half-size sample above,");
 
             posY += lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "demonstrate how objects are clipped by the" +
                       " boundaries of the printable area.");
 
             posY += lineInc;
             posY += lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "The four corner squares are (theoretically) positioned" +
                       " in the corners of the");
-            
+
             posY += lineInc;
-            
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "physical sheet, except that the left edges of the top" +
                       " and bottom left-hand squares");
-            
+
             posY += lineInc;
-            
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "are constrained to be positioned at the left margin" +
                       " of the PCL logical page,");
-            
+
             posY += lineInc;
-            
-            PCLWriter.text(prnWriter, posX, posY, 0, 
-                      "which is inset from the sheet edge, and marked here" + 
+
+            PCLWriter.text(prnWriter, posX, posY, 0,
+                      "which is inset from the sheet edge, and marked here" +
                       " with a vertical line.");
 
             posY += lineInc;
             posY += lineInc;
-            
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "The middle left-hand square is positioned relative" +
                       " to the bottom and right logical");
-            
+
             posY += lineInc;
-            
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "page margins, and rotated 180 degrees.");
 
             posY += lineInc;
@@ -455,25 +455,25 @@ namespace PCLParaphernalia
             posY += lineInc;
 
             PCLWriter.text(prnWriter, posX, posY, 0,
-                      "printable area; one set is shown relative to the" + 
+                      "printable area; one set is shown relative to the" +
                       " left logical page margin, and");
-            
+
             posY += lineInc;
 
             PCLWriter.text(prnWriter, posX, posY, 0,
-                      "another set (rotated 180 degrees) is shown" + 
+                      "another set (rotated 180 degrees) is shown" +
                       " relative to the right margin.");
 
             posY += lineInc;
             posY += lineInc;
-            
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "PJL options may move the logical page and/or" +
                       " unprintable area margins relative");
 
             posY += lineInc;
-            
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "to the physical sheet.");
 
             //----------------------------------------------------------------//
@@ -544,9 +544,9 @@ namespace PCLParaphernalia
                   ptSize;
 
             int ctA;
-            
+
             //----------------------------------------------------------------//
-            
+
             if (formAsMacro)
                 PCLWriter.macroControl(prnWriter, _macroId, PCLWriter.eMacroControl.Call);
             else
@@ -670,11 +670,11 @@ namespace PCLParaphernalia
             posY = _posYText;
 
             ctA = paperWidth * 10 / _sessionUPI;
-            
+
             PCLWriter.text(prnWriter, 0, posY, 0, digitsTextA.Substring(0, ctA));
-           
+
             posY += _rulerDiv;
-            
+
             PCLWriter.text(prnWriter, 0, posY, 0, digitsTextB.Substring(0, ctA));
 
             //----------------------------------------------------------------//

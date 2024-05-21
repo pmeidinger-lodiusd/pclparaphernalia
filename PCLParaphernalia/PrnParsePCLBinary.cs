@@ -5,12 +5,12 @@ using System.Text;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines functions to parse the binary data associated with various
     /// PCL escape sequences.
-    /// 
+    ///
     /// © Chris Hutchinson 2013
-    /// 
+    ///
     /// </summary>
     class PrnParsePCLBinary
     {
@@ -379,7 +379,7 @@ namespace PCLParaphernalia
                                       0x00,
                                       0x00);
             }
-            else 
+            else
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1161,7 +1161,7 @@ namespace PCLParaphernalia
                                         binDataRem,
                                         buf,
                                         ref bufRem,
-                                        ref bufOffset,  
+                                        ref bufOffset,
                                         table);
                             break;
 
@@ -2008,7 +2008,7 @@ namespace PCLParaphernalia
             offset = bufOffset;
 
             format = buf[offset];
-            
+
             PrnParseCommon.addTextRow (
                 PrnParseRowTypes.eType.PCLDecode,
                 table,
@@ -3186,7 +3186,7 @@ namespace PCLParaphernalia
             {
                 ushort uint16Val;
                 byte byteVal;
- 
+
                 offset++;
 
                 byteVal = buf[offset];
@@ -4486,7 +4486,7 @@ namespace PCLParaphernalia
             offset = bufOffset;
 
             //----------------------------------------------------------------//
-            
+
             binDataRem = binDataLen;
 
             if (binDataRem > bufRem)
@@ -4942,7 +4942,7 @@ namespace PCLParaphernalia
 
                 offset = bufOffset;
 
-                height = (ushort)((buf [offset] * 256) + buf [offset + 1]); 
+                height = (ushort)((buf [offset] * 256) + buf [offset + 1]);
 
                 PrnParseCommon.addTextRow (
                     PrnParseRowTypes.eType.PCLDecode,
@@ -4957,7 +4957,7 @@ namespace PCLParaphernalia
 
                 offset += 2;
 
-                width = (ushort)((buf [offset] * 256) + buf [offset + 1]); 
+                width = (ushort)((buf [offset] * 256) + buf [offset + 1]);
 
                 PrnParseCommon.addTextRow (
                     PrnParseRowTypes.eType.PCLDecode,
@@ -5160,13 +5160,13 @@ namespace PCLParaphernalia
             binDataRem -= dataSize;
 
             matrixRem -= dataSize;
-            
+
             if (matrixRem > 0)
             {
                 linkData.EntryRem = matrixRem;
 
                 contType =
-                    PrnParseConstants.eContType.PCLDitherMatrixPlaneData; 
+                    PrnParseConstants.eContType.PCLDitherMatrixPlaneData;
 
                 linkData.setContData (contType,
                                       0,
@@ -5442,7 +5442,7 @@ namespace PCLParaphernalia
                     if ((argLen == 1) && (functionIndex == 4))
                     {
                         offset++;
-        
+
                         colourTreatment = buf [offset];
 
                         switch (colourTreatment)
@@ -5659,7 +5659,7 @@ namespace PCLParaphernalia
 
             if ((binDataLen < lenMin) || (binDataLen > lenMax))
             {
-                PrnParseCommon.addTextRow 
+                PrnParseCommon.addTextRow
                     (PrnParseRowTypes.eType.MsgWarning,
                     table,
                     PrnParseConstants.eOvlShow.None,
@@ -6341,7 +6341,7 @@ namespace PCLParaphernalia
                         //----------------------------------------------------//
 
                         offset++;
-                        
+
                         byteVal = buf[offset];
 
                         PrnParseCommon.addTextRow (
@@ -6354,7 +6354,7 @@ namespace PCLParaphernalia
                             byteVal.ToString());
 
                         //----------------------------------------------------//
-                        
+
                         offset++;
 
                         byteVal = buf[offset];
@@ -6369,7 +6369,7 @@ namespace PCLParaphernalia
                             byteVal.ToString());
 
                         //----------------------------------------------------//
-                        
+
                         offset++;
                     }
                 }
@@ -6720,7 +6720,7 @@ namespace PCLParaphernalia
                         codeDesc);
 
                     //------------------------------------------------------------//
-                   
+
                     offset += 2;
 
                     uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
@@ -6876,7 +6876,7 @@ namespace PCLParaphernalia
             rowBytes = linkData.EntrySz1;
        //   rowCt    = linkData.EntryCt;
             rowNo    = linkData.EntryNo;
-            
+
             indxOffsetFormat = options.IndxGenOffsetFormat;
 
             offset = bufOffset;

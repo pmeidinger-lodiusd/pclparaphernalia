@@ -12,13 +12,13 @@ namespace PCLParaphernalia
 {
     /// <summary>
     /// Interaction logic for ToolSymbolSetGenerate.xaml
-    /// 
+    ///
     /// Class handles the SymbolSetGenerate tool form.
-    /// 
+    ///
     /// © Chris Hutchinson 2013
-    /// 
+    ///
     /// </summary>
-    
+
     [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
@@ -58,7 +58,7 @@ namespace PCLParaphernalia
         private ushort _codeMin = 0;
         private ushort _codeMax = 0;
         private ushort _codeCt  = 0;
-        
+
         private int _sizeCharSet;
 
         private ushort _offsetMin;
@@ -66,14 +66,14 @@ namespace PCLParaphernalia
 
         private bool _initialised             = false;
         private bool _initialisedOffsets      = false;
-        private bool _flagDonorSymSetMapPCL   = false;   
+        private bool _flagDonorSymSetMapPCL   = false;
         private bool _flagDonorSymSetUserSet  = false;
-        private bool _flagMapHex              = true;   
-        private bool _flagCharCollReqInhibit  = false;   
-        private bool _flagCharCollReqSpecific = false;   
-        private bool _flagIndexUnicode        = true;   
-        private bool _flagIgnoreC0            = true;   
-        private bool _flagIgnoreC1            = true;   
+        private bool _flagMapHex              = true;
+        private bool _flagCharCollReqInhibit  = false;
+        private bool _flagCharCollReqSpecific = false;
+        private bool _flagIndexUnicode        = true;
+        private bool _flagIgnoreC0            = true;
+        private bool _flagIgnoreC1            = true;
         private bool _flagMultiByteMap        = false;
         private bool _flagMultiByteSet        = false;
 
@@ -81,7 +81,7 @@ namespace PCLParaphernalia
         private bool _flagSymSetNullMapStd    = false;
 
         private readonly ASCIIEncoding _ascii = new ASCIIEncoding ();
-        
+
         private int[] _subsetSymSets;
 
         private int _ctMappedSymSets = 0;
@@ -158,7 +158,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private void btnCodePtClearAll_Click (object sender, EventArgs e)
-        { 
+        {
             for (int i = 0; i < cSizeCharSet_16bit; i++)
             {
                 _symSetMapTarget [i] = cCodePointUnused;
@@ -184,7 +184,7 @@ namespace PCLParaphernalia
             string idAlpha = "",
                    idNum = "";
 
-            int targetOffset = (_symSetNoTargetMax - _donorSymSetNo) / 
+            int targetOffset = (_symSetNoTargetMax - _donorSymSetNo) /
                                  offsetFactor * offsetFactor;
 
             _targetSymSetNo = (ushort) (_donorSymSetNo + targetOffset);
@@ -222,7 +222,7 @@ namespace PCLParaphernalia
                     _flagMultiByteSet = true;
                 else
                     _flagMultiByteSet = false;
-                
+
                 setMultiByteData (_flagMultiByteSet);
 
                 for (int i = 0; i < sizeDonorSet; i++)
@@ -269,7 +269,7 @@ namespace PCLParaphernalia
 
                 ToolCommonFunctions.getFolderName (_donorSymSetFile,
                                                    ref _donorSymSetFolder);
-                
+
                 donorSymSetChange ();
             }
         }
@@ -559,7 +559,7 @@ namespace PCLParaphernalia
                     _donorSymSetNoUserSet = _defaultSymSetNo;
 
                     PCLSymbolSets.setDataUserSetDefault (_defaultSymSetNo);
-                    
+
                     _symSetMapTarget = PCLSymbolSets.getMapArrayUserSet ();
 
                     txtDonorSymSetFile.Text = "***** Invalid symbol set file *****";
@@ -854,7 +854,7 @@ namespace PCLParaphernalia
                 if (bitType != PCLCharCollections.eBitType.Collection)
                 {
                     bitSet = item.IsChecked;
-                 
+
                     if (bitSet)
                     {
                         bitNo = item.BitNo;
@@ -932,7 +932,7 @@ bitVal;
 
             for (int i = 0; i < _ctMappedSymSets; i++)
             {
-                index = _subsetSymSets[i];    
+                index = _subsetSymSets[i];
                 cbDonorSymSet.Items.Add (PCLSymbolSets.getName(index));
             }
         }
@@ -2288,7 +2288,7 @@ bitVal;
                    idAlpha = "";
 
             grpTargetSymSetDetails.Visibility = Visibility.Hidden;
-            
+
             if (_flagDonorSymSetUserSet)
             {
                 //--------------------------------------------------------//
@@ -2585,7 +2585,7 @@ bitVal;
                 _targetSymSetFolder + "\\" +
                 "DefineSymbolSet_" +
                 PCLSymbolSets.translateKind1ToId (_targetSymSetNo) +
-                mapType + 
+                mapType +
                 ".pcl";
 
             txtTargetSymSetFile.Text = _targetSymSetFile;
@@ -2903,7 +2903,7 @@ bitVal;
 
             return OK;
         }
- 
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // v a l i d a t e T a r g e t S y m S e t I d A l p h a              //

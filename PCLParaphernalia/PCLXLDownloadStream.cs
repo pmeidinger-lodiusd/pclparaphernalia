@@ -5,11 +5,11 @@ using System.Windows;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class handles PCL XL downloadable user stream.
-    /// 
+    ///
     /// © Chris Hutchinson 2012
-    /// 
+    ///
     /// </summary>
     static class PCLXLDownloadStream
     {
@@ -193,7 +193,7 @@ namespace PCLParaphernalia
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
             }
-        }         
+        }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -229,7 +229,7 @@ namespace PCLParaphernalia
                 bool endLoop;
 
                 byte[] buffer = new byte[bufSize];
-                
+
                 endLoop = false;
 
                 if (! encapsulated)
@@ -322,6 +322,6 @@ namespace PCLParaphernalia
             }
 
             return open;
-        }         
+        }
     }
 }

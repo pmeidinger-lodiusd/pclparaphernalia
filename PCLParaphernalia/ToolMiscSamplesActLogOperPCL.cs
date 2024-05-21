@@ -4,12 +4,12 @@ using System.IO;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PCL support for the Logical Operations action
     /// of the MiscSamples tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2014
-    /// 
+    ///
     /// </summary>
     static class ToolMiscSamplesActLogOperPCL
     {
@@ -32,9 +32,9 @@ namespace PCLParaphernalia
         const int _macroIdSrcBoxRasterNeg = 202;
         const int _macroIdSrcBoxRasters   = 211;
         const int _macroIdSrcBoxText      = 212;
-        const int _macroIdSrcBox          = 221; 
+        const int _macroIdSrcBox          = 221;
         const int _macroIdSrcBoxRow       = 231;
- 
+
         const int _patternId              = 101;
 
         const short _incInch     = (_unitsPerInch * 1);
@@ -56,7 +56,7 @@ namespace PCLParaphernalia
         const short _posYPage_n_Data = _pageOriginY + (_incInch / 3);
 
         const short _destBoxSide = _incInch;
-        
+
         const short _sourceImagePixelsWidth  = 192;
         const short _sourceImagePixelsHeight = 192;
 
@@ -374,7 +374,7 @@ namespace PCLParaphernalia
             srcOffsetX = (short) (((_destBoxSide / 2) -
                                     _sourceImagePixelsWidth) / 2);
             srcOffsetY = (short) ((_destBoxSide -
-                                   _sourceImagePixelsHeight) / 2); 
+                                   _sourceImagePixelsHeight) / 2);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -386,7 +386,7 @@ namespace PCLParaphernalia
 
             if (flagOptColour)
                 PCLWriter.setForegroundColour (prnWriter, idClrBlack);
-            
+
             ptSize = 15;
 
             PCLWriter.font (prnWriter, true, "19U",
@@ -429,7 +429,7 @@ namespace PCLParaphernalia
             PCLWriter.text (prnWriter, posX, posY, 0,
                       "and the effect of the different Logical Operation" +
                       " (ROP) values, together with Source");
-            
+
              posY += _lineInc;
 
             PCLWriter.text (prnWriter, posX, posY, 0,
@@ -555,10 +555,10 @@ namespace PCLParaphernalia
                       "colours = " + nameClrD1 + " / " + nameClrD2);
 
             //----------------------------------------------------------------//
-            
+
             posY = _posYPage_1_Data1;
             posY += _rowInc;
-            
+
             PCLWriter.text (prnWriter, posX, posY, 0,
                       "colours = " + nameClrS1 + " / " + nameClrS2);
 
@@ -708,9 +708,9 @@ namespace PCLParaphernalia
             posY += _rowInc;
 
             PCLWriter.text (prnWriter, posX, posY, 0,
-                      "The following pages show the effects of the various" + 
+                      "The following pages show the effects of the various" +
                       " Logical Operation (ROP)");
- 
+
             posY += _lineInc;
 
             PCLWriter.text (prnWriter, posX, posY, 0,
@@ -760,7 +760,7 @@ namespace PCLParaphernalia
             srcOffsetX = (short) (((_destBoxSide / 2) -
                                     _sourceImagePixelsWidth) / 2);
             srcOffsetY = (short) ((_destBoxSide -
-                                   _sourceImagePixelsHeight) / 2); 
+                                   _sourceImagePixelsHeight) / 2);
 
             //----------------------------------------------------------------//
 
@@ -823,7 +823,7 @@ namespace PCLParaphernalia
                                   _patternId);
 
             //----------------------------------------------------------------//
-            
+
             posX = (short) (_posXPage_n_Data + _colInc - logXOffset);
             posY = _posYPage_n_Data;
 
@@ -1012,7 +1012,7 @@ namespace PCLParaphernalia
                                           true,
                                           false);
             }
-            
+
             PCLWriter.setForegroundColour (prnWriter, idClrBlack);
 
             PCLWriter.cursorPushPop (prnWriter, PCLWriter.ePushPop.Pop);
@@ -1615,7 +1615,7 @@ namespace PCLParaphernalia
                 //      3 - delta row; the latter is used to repeat rows.     //
                 //                                                            //
                 //------------------------------------------------------------//
-                
+
                 const int planeCt = 3;
 
                 int indxClr1,
@@ -1843,7 +1843,7 @@ namespace PCLParaphernalia
 
                     PCLWriter.rasterTransferRow(prnWriter,
                                                  blockSize,
-                                                 block); 
+                                                 block);
                 }
 
                 PCLWriter.rasterEnd (prnWriter);

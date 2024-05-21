@@ -69,7 +69,6 @@ namespace PCLParaphernalia
         private int _valPCLXLFontDrawHeight;
         private int _valPCLXLFontDrawWidth;
 
-        
         private bool _initialised;
         private bool _inhibitChecks;
         private bool _fileOpen;
@@ -82,7 +81,7 @@ namespace PCLParaphernalia
         private bool _flagHPGL2MiscBinData;
 
         private bool _flagPCLMacroDisplay;
-        
+
         private bool _flagPCLMiscBinData;
         private bool _flagPCLMiscStyleData;
 
@@ -131,7 +130,7 @@ namespace PCLParaphernalia
         // reference to a class instance supplied to the constructor.         //
         //                                                                    //
         //--------------------------------------------------------------------//
-        
+
         public ToolPrnAnalyseOptDlg(PrnParseOptions options,
                                     long fileSize)
         {
@@ -140,7 +139,7 @@ namespace PCLParaphernalia
             InitializeComponent ();
 
             initialise (options, fileSize);
-            
+
             _inhibitChecks = false;
         }
 
@@ -488,7 +487,7 @@ namespace PCLParaphernalia
                                   _flagPCLXLMiscOperPos,
                                   _flagPCLXLMiscBinData,
                                   _flagPCLXLMiscVerbose);
-            
+
             _options.setOptPML (_flagPMLWithinPCL,
                                 _flagPMLWithinPJL,
                                 _flagPMLMiscVerbose);
@@ -502,7 +501,7 @@ namespace PCLParaphernalia
             // Close form.                                                    //
             //                                                                //
             //----------------------------------------------------------------//
-            
+
             this.DialogResult = true;
         }
 
@@ -537,7 +536,7 @@ namespace PCLParaphernalia
                 _txtClrMapSamples[_crntClrMapRowType].ToolTip =
                     pInfoBack.Name + " / " + pInfoFore.Name;
 
-                _indxClrMapBack [_crntClrMapRowType] = 
+                _indxClrMapBack [_crntClrMapRowType] =
                     cbClrMapBack.SelectedIndex;
 
                 //------------------------------------------------------------//
@@ -1205,7 +1204,7 @@ namespace PCLParaphernalia
         {
             if (! _inhibitChecks)
             {
-                _flagPCLXLEncUserStream = 
+                _flagPCLXLEncUserStream =
                     (bool) chkPCLXLEncUserStream.IsChecked;
             }
         }
@@ -1453,7 +1452,7 @@ namespace PCLParaphernalia
             _initialised = false;
 
             _options = options;
-            
+
             _fileSize = fileSize;
 
             //----------------------------------------------------------------//
@@ -1497,7 +1496,7 @@ namespace PCLParaphernalia
             prepareTabPCLXL (options);
             prepareTabPML (options);
             prepareTabStats (options);
-            
+
             prepareTabCurF (options, fileSize);
 
             //----------------------------------------------------------------//
@@ -1609,7 +1608,7 @@ namespace PCLParaphernalia
         private void prepareTabCharSet(PrnParseOptions options)
         {
             char subChar;
-            
+
             //----------------------------------------------------------------//
             //                                                                //
             // Get current values.                                            //
@@ -1636,9 +1635,9 @@ namespace PCLParaphernalia
                 rbCharSetNameWinANSI.IsChecked = true;
 
             //----------------------------------------------------------------//
-            
+
             sldrCharSetSubCode.IsEnabled = false;
-            
+
             if (_indxCharSetSubAct ==
                 PrnParseConstants.eOptCharSetSubActs.Mnemonics)
                 rbCharSetSubActMnemonics.IsChecked  = true;
@@ -1925,7 +1924,7 @@ namespace PCLParaphernalia
             // If it should, set dialogue display values to current values.   //
             //                                                                //
             //----------------------------------------------------------------//
-            
+
             _fileOpen = false;
 
             if (fileSize != -1)
@@ -1992,7 +1991,7 @@ namespace PCLParaphernalia
 
                     fmt = "";
                 }
-                
+
                 txtCurFOffsetStart.Text = _valCurFOffsetStart.ToString(fmt);
                 txtCurFOffsetEnd.Text   = _valCurFOffsetEnd.ToString(fmt);
                 txtCurFOffsetMax.Text   = _valCurFOffsetMax.ToString (fmt);
@@ -2030,12 +2029,12 @@ namespace PCLParaphernalia
                 PrnParseConstants.eOptOffsetFormats.Hexadecimal)
                 rbGenOffsetHex.IsChecked = true;
             else
-                rbGenOffsetDec.IsChecked = true; 
- 
+                rbGenOffsetDec.IsChecked = true;
+
             //----------------------------------------------------------------//
 
             chkGenMiscAutoAnalyse.IsChecked = _flagGenMiscAutoAnalyse;
- 
+
             //----------------------------------------------------------------//
 
             chkGenDiagFileAccess.IsChecked = _flagGenDiagFileAccess;
@@ -2148,7 +2147,7 @@ namespace PCLParaphernalia
 
             chkPCLMiscStyleData.IsChecked       = _flagPCLMiscStyleData;
             chkPCLMiscBinData.IsChecked         = _flagPCLMiscBinData;
-            
+
             chkPCLTransAlphaNumId.IsChecked     = _flagPCLTransAlphaNumId;
             chkPCLTransColourLookup.IsChecked   = _flagPCLTransColourLookup;
             chkPCLTransConfIO.IsChecked         = _flagPCLTransConfIO;
@@ -2230,7 +2229,7 @@ namespace PCLParaphernalia
             chkPCLXLEncUserStream.IsChecked     = _flagPCLXLEncUserStream;
             chkPCLXLEncPCLPassThrough.IsChecked = _flagPCLXLEncPCLPassThrough;
             chkPCLXLEncPCLFontSelect.IsChecked  = _flagPCLXLEncPCLFontSelect;
-            
+
             chkPCLXLMiscOperPos.IsChecked       = _flagPCLXLMiscOperPos;
             chkPCLXLMiscBinData.IsChecked       = _flagPCLXLMiscBinData;
             chkPCLXLMiscVerbose.IsChecked       = _flagPCLXLMiscVerbose;
@@ -2303,7 +2302,7 @@ namespace PCLParaphernalia
                 chkStatsExcUnusedPCLObs.IsEnabled = false;
                 chkStatsExcUnusedPCLXLRes.IsEnabled = false;
             }
-            else 
+            else
             {
                 rbStatsLevAll.IsChecked = true;
 
@@ -2752,7 +2751,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtCurFOffsetStart_LostFocus(object sender, 
+        private void txtCurFOffsetStart_LostFocus(object sender,
                                                   RoutedEventArgs e)
         {
             validateCurFOffsetStart ();
@@ -2772,7 +2771,7 @@ namespace PCLParaphernalia
             bool OK;
 
             OK = true;  // or validateCharSetSubCode ();
-            
+
             return OK;
         }
         /*
@@ -2850,7 +2849,7 @@ namespace PCLParaphernalia
 
             OK = int.TryParse (crntText, out int value);
 
-            if (OK && (value != -1)) 
+            if (OK && (value != -1))
                 if ((value > _fileSize)            ||
                     (value < _valCurFOffsetStart))
                     OK = false;
@@ -2941,7 +2940,7 @@ namespace PCLParaphernalia
         private bool validateGeneral()
         {
             bool OK;
-            
+
             OK = true;
 
             return OK;

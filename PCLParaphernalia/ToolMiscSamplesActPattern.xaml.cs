@@ -8,13 +8,13 @@ namespace PCLParaphernalia
 {
     /// <summary>
     /// Interaction logic for ToolMiscSamples.xaml
-    /// 
+    ///
     /// Class handles the MiscSamples: Patterns tab.
-    /// 
+    ///
     /// © Chris Hutchinson 2015
-    /// 
+    ///
     /// </summary>
-    
+
     [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
@@ -37,7 +37,7 @@ namespace PCLParaphernalia
         // Fields (class variables).                                          //
         //                                                                    //
         //--------------------------------------------------------------------//
-        
+
         private ePatternType _indxPatternTypePCL;
         private ePatternType _indxPatternTypePCLXL;
 

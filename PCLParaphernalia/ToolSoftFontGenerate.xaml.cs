@@ -13,13 +13,13 @@ namespace PCLParaphernalia
 {
     /// <summary>
     /// Interaction logic for ToolSoftFontGenerate.xaml
-    /// 
+    ///
     /// Class handles the SoftFontGenerate tool form.
-    /// 
+    ///
     /// © Chris Hutchinson 2011
-    /// 
+    ///
     /// </summary>
-    
+
     [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
@@ -86,7 +86,7 @@ namespace PCLParaphernalia
         private ToolSoftFontGenTTF _ttfHandler;
 
         private ToolCommonData.ePrintLang _crntPDL;
-        
+
         private DataSet _dataSetLogChars;
         private DataSet _dataSetLogDonor;
         private DataSet _dataSetLogMapping;
@@ -100,7 +100,7 @@ namespace PCLParaphernalia
         private readonly ASCIIEncoding _ascii = new ASCIIEncoding ();
 
         private int _ctTTFFonts;
-        
+
         private int[] _subsetSymSets;
 
         private int _ctMappedSymSets = 0;
@@ -308,15 +308,15 @@ namespace PCLParaphernalia
             ToolSoftFontGenTTF.eLicenceType licenceType;
 
             conversionText = _ascii.GetBytes (convTextStr);
-            
+
             licenceType = _ttfHandler.checkLicence (ref licenceText);
 
             if (licenceType == ToolSoftFontGenTTF.eLicenceType.NotAllowed)
             {
-                MessageBoxResult msgBoxResult = 
+                MessageBoxResult msgBoxResult =
                         MessageBox.Show (
                         "Donor TrueType font has a restrictive license:\n\n" +
-                        licenceText +  
+                        licenceText +
                         "\n\nConversion will proceed only if you confirm " +
                         "that you are allowed to convert the font;" +
                         "\n\nDid you obtained permission from the legal owner?",
@@ -331,10 +331,10 @@ namespace PCLParaphernalia
             }
             else if (licenceType == ToolSoftFontGenTTF.eLicenceType.OwnerOnly)
             {
-                MessageBoxResult msgBoxResult = 
+                MessageBoxResult msgBoxResult =
                     MessageBox.Show (
                         "Donor TrueType font has a restrictive license:\n\n" +
-                        licenceText +  
+                        licenceText +
                         "\n\nConversion will proceed only if you agree " +
                         "to use the converted font solely on your own system;" +
                         "\n\nDo you agree?",
@@ -579,7 +579,7 @@ namespace PCLParaphernalia
                 if (_symSetUnbound)
                     _sizeCharSet = cSizeCharSet_UCS_2;
                 else if (_symSetUserSet)
-                    _sizeCharSet = 
+                    _sizeCharSet =
                         PCLSymbolSets.getMapArrayMax (_indxSymSetTarget) + 1;
                 else
                     _sizeCharSet =
@@ -698,7 +698,7 @@ namespace PCLParaphernalia
                     else
                     {
                         grpSymSet.Visibility = Visibility.Visible;
-                    
+
                         symSetNoTargetPCL   = _symSetNoTargetPCL;
                         symSetNoTargetPCLXL = _symSetNoTargetPCLXL;
                     }
@@ -963,7 +963,7 @@ namespace PCLParaphernalia
                                                 SelectionChangedEventArgs e)
         {
             bool allowFontFileSelect;
-            
+
             resetFormState ();
 
             _fontWithinTTC = false;
@@ -1238,7 +1238,7 @@ namespace PCLParaphernalia
             initialisePCLCharCollCompLists ();
 
             //----------------------------------------------------------------//
-            
+
             btnPCLGenerate.Content = "Generate soft font file";
 
             //----------------------------------------------------------------//
@@ -1415,7 +1415,7 @@ namespace PCLParaphernalia
                 // not  .FON    etc.                                          //
                 //                                                            //
                 //------------------------------------------------------------//
-                
+
                 foreach (string valueName in key.GetValueNames ())
                 {
                     string value = key.GetValue (valueName).ToString ();
@@ -1605,7 +1605,7 @@ namespace PCLParaphernalia
 
                 cbTTFTypeface.SelectedIndex = 0;
             }
-            */ 
+            */
         }
 
         //--------------------------------------------------------------------//
@@ -1801,7 +1801,7 @@ bitVal;
 
             for (int i = 0; i < _ctMappedSymSets; i++)
             {
-                index = _subsetSymSets[i];    
+                index = _subsetSymSets[i];
                 cbSymSet.Items.Add (PCLSymbolSets.getName(index));
             }
 
@@ -2583,7 +2583,7 @@ bitVal;
         {
             string idNum = "",
                    idAlpha = "";
-            
+
             if (_symSetUnbound)
             {
                 //--------------------------------------------------------//
@@ -2701,7 +2701,7 @@ bitVal;
                     txtSymSetIdAlpha.IsEnabled = false;
 
                     //--------------------------------------------------------//
-                    
+
                     txtSymSetType.Text =
                         PCLSymSetTypes.getDescShort ((int) _symSetType);
 
@@ -2768,7 +2768,7 @@ bitVal;
         {
             if (tabDetails.SelectedItem.Equals (tabPCLXL))
                 _crntPDL = ToolCommonData.ePrintLang.PCLXL;
-            else 
+            else
                 _crntPDL = ToolCommonData.ePrintLang.PCL;
         }
 
@@ -2810,7 +2810,7 @@ bitVal;
             if (showSubIds)
                 subIdStructure = subId.ToString() + ": ";
             else
-                subIdStructure = ""; 
+                subIdStructure = "";
 
             switch (index)
             {
@@ -3441,7 +3441,7 @@ bitVal;
                 _symSetUserFile = txtSymSetFile.Text;
 
                 checkPCLSymSetFile ();
-                
+
                 setSymSetAttributesTarget ();
             }
         }
@@ -3608,7 +3608,7 @@ bitVal;
                         ("Symbol Set (kind1) number '" + crntText +
                          "' is invalid.\n\n" +
                          "Valid range is :\n\t" +
-                         minVal + " <= value <= " + maxVal + 
+                         minVal + " <= value <= " + maxVal +
                          "\nand the value modulo 32 must be in the range " +
                          "1 -> 26, excluding 24",
                          "PCL symbol set number invalid",

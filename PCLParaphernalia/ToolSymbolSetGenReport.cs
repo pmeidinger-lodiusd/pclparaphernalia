@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides the Symbol Set Generator 'save report' function.
-    /// 
+    ///
     /// © Chris Hutchinson 2013
-    /// 
+    ///
     /// </summary>
     static class ToolSymbolSetGenReport
     {
@@ -100,7 +100,7 @@ namespace PCLParaphernalia
                                 flagIgnoreC0, flagIgnoreC1, flagMapHex,
                                 symSetType);
 
-                reportBodyMap (rptFileFmt, writer, symSetMap, 
+                reportBodyMap (rptFileFmt, writer, symSetMap,
                                codeMin, codeMax,
                                flagIgnoreC0, flagIgnoreC1, flagMapHex);
 
@@ -304,7 +304,7 @@ namespace PCLParaphernalia
                 }
             }
             else
-            { 
+            {
                 lcCol = lcDec;
                 lrHddr = lrDec;
 

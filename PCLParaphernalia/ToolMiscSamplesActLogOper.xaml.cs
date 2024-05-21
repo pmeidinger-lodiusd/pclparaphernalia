@@ -8,13 +8,13 @@ namespace PCLParaphernalia
 {
     /// <summary>
     /// Interaction logic for ToolMiscSamples.xaml
-    /// 
+    ///
     /// Class handles the MiscSamples: Logical operations tab.
-    /// 
+    ///
     /// © Chris Hutchinson 2015
-    /// 
+    ///
     /// </summary>
-    
+
     [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
@@ -30,14 +30,14 @@ namespace PCLParaphernalia
         private static readonly int _logOperROPMax = 255;
         private static readonly int _logOperROPInc = 8;
 
-        private static readonly short[] _subsetLogOperModesPCL = 
+        private static readonly short[] _subsetLogOperModesPCL =
         {
             (int) PCLPalettes.eIndex.PCLMonochrome,
             (int) PCLPalettes.eIndex.PCLSimpleColourCMY,
             (int) PCLPalettes.eIndex.PCLSimpleColourRGB
         };
 
-        private static readonly short[] _subsetLogOperModesPCLXL = 
+        private static readonly short[] _subsetLogOperModesPCLXL =
         {
             (int) PCLXLPalettes.eIndex.PCLXLGray,
             (int) PCLXLPalettes.eIndex.PCLXLRGB
@@ -52,10 +52,10 @@ namespace PCLParaphernalia
         private bool _flagLogOperUseMacrosPCL;
         private bool _flagLogOperUseMacrosPCLXL;
         private bool _flagLogOperOptSrcTextPatPCLXL;
- 
+
         private int _indxLogOperModePCL;
         private int _indxLogOperModePCLXL;
- 
+
         private int _indxLogOperROPFromPCL;
         private int _indxLogOperROPFromPCLXL;
         private int _indxLogOperROPToPCL;
@@ -97,7 +97,7 @@ namespace PCLParaphernalia
 
         private short[] _ctLogOperClrsPCL;
         private short[] _ctLogOperClrsPCLXL;
- 
+
         private string[,] _clrsLogOperPCL;
         private string[,] _clrsLogOperPCLXL;
 
@@ -547,7 +547,7 @@ namespace PCLParaphernalia
                               fromVal = (_logOperROPInc * temp),
                               maxVal  = (_logOperROPInc *
                                         _indxLogOperROPToPCL);
- 
+
                         MessageBox.Show ("'From' value " + fromVal +
                                          " > 'To' value " + toVal + "\r\n" +
                                          "Reset to maximum consistent value " +
@@ -860,7 +860,7 @@ namespace PCLParaphernalia
             }
 
             //----------------------------------------------------------------//
-            
+
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
             {
                 tabLogOperDataPCL.IsSelected = true;
@@ -868,13 +868,13 @@ namespace PCLParaphernalia
                 if (PCLPalettes.isMonochrome (_indxLogOperModePCL))
                 {
                     tabLogOperClrMonoPCL.IsSelected = true;
-            
+
                     initialiseDataLogOperMonoPCL ();
                 }
                 else
                 {
                     tabLogOperClrSimplePCL.IsSelected = true;
-            
+
                     initialiseDataLogOperClrsPCL ();
                 }
 
@@ -890,13 +890,13 @@ namespace PCLParaphernalia
                 if (PCLXLPalettes.isMonochrome (_indxLogOperModePCLXL))
                 {
                     tabLogOperClrGrayPCLXL.IsSelected = true;
-            
+
                     initialiseDataLogOperGrayPCLXL ();
                 }
                 else
                 {
                     tabLogOperClrRGBPCLXL.IsSelected = true;
-            
+
                     initialiseDataLogOperClrsPCLXL ();
                 }
 

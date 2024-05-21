@@ -6,13 +6,13 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines the sets of PCL Character Complement/Requirement
     /// Collection bits, as used in (unbound) Font headers and Symbol Set
     /// definitions.
-    /// 
+    ///
     /// © Chris Hutchinson 2013
-    /// 
+    ///
     /// </summary>
     static class PCLCharCollections
     {
@@ -37,7 +37,7 @@ namespace PCLParaphernalia
         // Class variables.                                                   //
         //                                                                    //
         //--------------------------------------------------------------------//
-        
+
         private static int _collsCount;
 
         private static readonly SortedList<int, PCLCharCollection> _collsList =

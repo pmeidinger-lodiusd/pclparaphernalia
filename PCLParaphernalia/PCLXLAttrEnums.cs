@@ -6,11 +6,11 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides details of PCL XL Attribute Enumeration values.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class PCLXLAttrEnums
     {
@@ -156,10 +156,10 @@ namespace PCLParaphernalia
         private static readonly SortedList<string, PCLXLAttrEnum> _tags =
             new SortedList<string, PCLXLAttrEnum>();
 
-        private static PCLXLAttrEnum _tagUnknown; 
+        private static PCLXLAttrEnum _tagUnknown;
 
         private static int _tagCount;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L X L A t t r E n u m s                                        //
@@ -407,7 +407,7 @@ namespace PCLParaphernalia
             int enumVal;
 
             string root;
-            
+
             attrLen = attrLen1;
 
             _tagUnknown =

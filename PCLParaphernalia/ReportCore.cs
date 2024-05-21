@@ -9,11 +9,11 @@ using System.Xml;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides the core Report functions.
-    /// 
+    ///
     /// © Chris Hutchinson 2017
-    /// 
+    ///
     /// </summary>
     static class ReportCore
     {
@@ -951,7 +951,7 @@ namespace PCLParaphernalia
         {
             htmlWriter.RenderEndTag ();     // </table>
         }
-  
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // h d d r C l o s e X m l                                            //
@@ -1115,7 +1115,7 @@ namespace PCLParaphernalia
         public static void lineBlockOpen (object writer,
                                           eRptFileFmt rptFileFmt)
         {
-            string tag = "lineblock"; 
+            string tag = "lineblock";
 
             if (rptFileFmt == eRptFileFmt.html)
                 lineBlockOpenHtml ((HtmlTextWriter)writer, tag);
@@ -1783,7 +1783,7 @@ namespace PCLParaphernalia
 
             string colSep = " ".PadRight (_lcSep, ' ');
 
-            StringBuilder line = new StringBuilder (); 
+            StringBuilder line = new StringBuilder ();
 
             for (int i = 0; i < colCt; i++)
             {

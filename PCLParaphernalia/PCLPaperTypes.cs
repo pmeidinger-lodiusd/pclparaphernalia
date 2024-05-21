@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a set of PCL Paper Type objects.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class PCLPaperTypes
     {
@@ -19,7 +19,7 @@ namespace PCLParaphernalia
         // of the definition array; the entries must be in the same order.    //
         //                                                                    //
         //--------------------------------------------------------------------//
-        
+
         public enum eEntryType
         {
             Standard,
@@ -46,7 +46,7 @@ namespace PCLParaphernalia
         // Class variables.                                                   //
         //                                                                    //
         //--------------------------------------------------------------------//
-       
+
         private static readonly PCLPaperType[] _paperTypes =
         {
             new PCLPaperType(eEntryType.NotSet,  "<not set>"),

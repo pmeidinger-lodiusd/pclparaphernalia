@@ -5,11 +5,11 @@ using System.Text;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class handles segmented data elements of downloadable soft fonts.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     class PrnParseFontSegs
     {
@@ -26,7 +26,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private PrnParseLinkData _linkData;
-        
+
         private PrnParseConstants.eContType _contType;
 
         private DataTable _table;
@@ -72,7 +72,7 @@ namespace PCLParaphernalia
             const int arrayBytes  = 8;
             const int bitsPerByte = 8;
             const int arrayBits = arrayBytes * bitsPerByte;
- 
+
             PCLCharCollections.eBitType bitType;
             PrnParseRowTypes.eType rowType;
 
@@ -198,7 +198,7 @@ namespace PCLParaphernalia
             // Display details of collection bits.                            //
             //                                                                //
             //----------------------------------------------------------------//
-            
+
             if (charCollVal == 0)
             {
                 if (complement)
@@ -330,7 +330,7 @@ namespace PCLParaphernalia
             {
                 _contType = PrnParseConstants.eContType.PCLXLFontHddr;
                 _rowType = PrnParseRowTypes.eType.PCLXLFontHddr;
-                _showBinData = options.FlagPCLXLMiscBinData; 
+                _showBinData = options.FlagPCLXLMiscBinData;
             }
 
             if (largeSegs)
@@ -825,7 +825,7 @@ namespace PCLParaphernalia
                     " including type & size fields))");
 
                 baseOffset += segHddrLen;
- 
+
                 //------------------------------------------------------------//
                 //                                                            //
                 // Adjust offsets and remainders.                             //
@@ -1270,7 +1270,7 @@ namespace PCLParaphernalia
                 //       x+2-x+3     Y Resolution                             //
                 //                                                            //
                 //------------------------------------------------------------//
-            
+
                 ui16a = (ushort)((_buf[dataOffset    ] * 256) +
                                   _buf[dataOffset + 1]);
 
@@ -1495,7 +1495,7 @@ namespace PCLParaphernalia
                 }
             }
         }
-            
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // p r o c e s s S e g _ C E                                          //
@@ -2369,7 +2369,7 @@ namespace PCLParaphernalia
                 // Obtain 'Number of Tables' value from SFNT Directory Header //
                 //                                                            //
                 //------------------------------------------------------------//
-                
+
                 numTables = (ushort)((_buf[dataOffset + 4] * 256) +
                                       _buf[dataOffset + 5]);
 
@@ -3534,7 +3534,7 @@ namespace PCLParaphernalia
                     "        data:",
                     "Format:",
                     ui16a.ToString());
-                
+
                 //------------------------------------------------------------//
                 //                                                            //
                 // bytes  x+1        Number of Ranges                         //

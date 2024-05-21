@@ -6,11 +6,11 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a set of Kyocera Prescibe command objects.
-    /// 
+    ///
     /// © Chris Hutchinson 2017
-    /// 
+    ///
     /// </summary>
     static class PrescribeCommands
     {
@@ -1401,7 +1401,7 @@ namespace PCLParaphernalia
                           "[Read/Write Resource File] Write data to external device"));
 
              */
-             
+
              command = "SATU";
             _cmds.Add(command,
                       new PrescribeCommand(

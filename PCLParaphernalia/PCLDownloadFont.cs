@@ -5,11 +5,11 @@ using System.Windows;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class handles PCL downloadable soft fonts.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class PCLDownloadFont
     {
@@ -55,7 +55,7 @@ namespace PCLParaphernalia
         {
             _binReader.Close();
             _ipStream.Close();
-        }         
+        }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -89,7 +89,7 @@ namespace PCLParaphernalia
                 bool endLoop;
 
                 byte[] buf = new byte[bufSize];
-                
+
                 endLoop = false;
 
                 while (!endLoop)

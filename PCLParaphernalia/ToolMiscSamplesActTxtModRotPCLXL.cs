@@ -4,12 +4,12 @@ using System.IO;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PCL XL support for the Rotation element
     /// of the Text Modification action of the MiscSamples tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2014
-    /// 
+    ///
     /// </summary>
     static class ToolMiscSamplesActTxtModRotPCLXL
     {
@@ -48,10 +48,10 @@ namespace PCLParaphernalia
         static readonly string _fontNameArial    =
             PCLFonts.getPCLXLName (_fontIndexArial,
                                   PCLFonts.eVariant.Regular);
-        static readonly string _fontNameCourier  = 
+        static readonly string _fontNameCourier  =
             PCLFonts.getPCLXLName (_fontIndexCourier,
                                   PCLFonts.eVariant.Regular);
-        static readonly string _fontNameCourierBold  = 
+        static readonly string _fontNameCourierBold  =
             PCLFonts.getPCLXLName (_fontIndexCourier,
                                   PCLFonts.eVariant.Bold);
 
@@ -86,7 +86,7 @@ namespace PCLParaphernalia
                          indxPaperType,
                          indxOrientation,
                          formAsMacro);
- 
+
             generateJobTrailer(prnWriter, formAsMacro);
         }
 
@@ -231,12 +231,12 @@ namespace PCLParaphernalia
             boxX2 = (ushort) (PCLPaperSizes.getPaperWidth (
                                     indxPaperSize, _unitsPerInch,
                                     PCLOrientations.eAspect.Portrait) -
-                              boxX1); 
+                              boxX1);
 
             boxY2 = (ushort) (PCLPaperSizes.getPaperLength (
                                     indxPaperSize, _unitsPerInch,
                                     PCLOrientations.eAspect.Portrait) -
-                              boxY1); 
+                              boxY1);
 
             PCLXLWriter.addAttrUbyte(ref buffer,
                                ref indBuf,
@@ -282,7 +282,7 @@ namespace PCLParaphernalia
             PCLXLWriter.addOperator(ref buffer,
                               ref indBuf,
                               PCLXLOperators.eTag.SetBrushSource);
-            
+
             PCLXLWriter.addAttrUint16XY(ref buffer,
                                   ref indBuf,
                                   PCLXLAttributes.eTag.EllipseDimension,
@@ -328,7 +328,7 @@ namespace PCLParaphernalia
                                    buffer, ref indBuf);
 
             ptSize  = 15;
-            
+
             PCLXLWriter.font(prnWriter, formAsMacro, ptSize,
                              _symSet_19U, _fontNameCourierBold);
 
@@ -341,7 +341,7 @@ namespace PCLParaphernalia
                        "PCL XL Text Rotation:");
 
             ptSize  = 12;
-            
+
             PCLXLWriter.font(prnWriter, formAsMacro, ptSize,
                              _symSet_19U, _fontNameCourier);
 
@@ -364,7 +364,7 @@ namespace PCLParaphernalia
             // Overlay end.                                                   //
             //                                                                //
             //----------------------------------------------------------------//
-            
+
             PCLXLWriter.addOperator(ref buffer,
                               ref indBuf,
                               PCLXLOperators.eTag.PopGS);
@@ -471,7 +471,7 @@ namespace PCLParaphernalia
 
             prnWriter.Write(bufStd, 0, indStd);
             indStd = 0;
-            
+
             //----------------------------------------------------------------//
 
             if (formAsMacro)
@@ -554,10 +554,10 @@ namespace PCLParaphernalia
 
             posY += _lineInc;
 
-            PCLXLWriter.charAngle (prnWriter, false, 0); 
-            PCLXLWriter.charBold  (prnWriter, false, 0); 
+            PCLXLWriter.charAngle (prnWriter, false, 0);
+            PCLXLWriter.charBold  (prnWriter, false, 0);
             PCLXLWriter.charScale (prnWriter, false,
-                                   (float) 1.0, (float) 1.0); 
+                                   (float) 1.0, (float) 1.0);
             PCLXLWriter.charShear (prnWriter, false,
                                    (float) 0.0, (float) 0.0);
 
@@ -583,10 +583,10 @@ namespace PCLParaphernalia
 
             PCLXLWriter.charShear(prnWriter, false,
                                    (float)0.0, (float)0.0);
-            
+
             PCLXLWriter.charScale(prnWriter, false,
-                                   (float)2.0, (float)1.0); 
-            
+                                   (float)2.0, (float)1.0);
+
             PCLXLWriter.charAngle(prnWriter, false, -45);
 
             PCLXLWriter.textAngled(prnWriter, false,
@@ -596,9 +596,9 @@ namespace PCLParaphernalia
 
             posX = (short)(posX + ((7 * _incInch) / 4));
             posY += _lineInc;
-            
+
             PCLXLWriter.charScale(prnWriter, false,
-                                   (float)1.0, (float)2.0); 
+                                   (float)1.0, (float)2.0);
 
             PCLXLWriter.charAngle(prnWriter, false, 30);
 

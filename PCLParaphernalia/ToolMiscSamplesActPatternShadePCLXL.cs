@@ -4,12 +4,12 @@ using System.IO;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PCL XL support for the Shading element of the
     /// Patterns action of the MiscSamples tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2014
-    /// 
+    ///
     /// </summary>
     static class ToolMiscSamplesActPatternShadePCLXL
     {
@@ -118,7 +118,7 @@ namespace PCLParaphernalia
                          indxPaperType,
                          indxOrientation,
                          formAsMacro);
- 
+
             generateJobTrailer(prnWriter, formAsMacro);
         }
 
@@ -553,7 +553,7 @@ namespace PCLParaphernalia
 
             prnWriter.Write(bufStd, 0, indStd);
             indStd = 0;
-            
+
             //----------------------------------------------------------------//
 
             if (formAsMacro)
@@ -667,9 +667,9 @@ namespace PCLParaphernalia
             PCLXLWriter.addOperator (ref bufStd,
                                     ref indStd,
                                     PCLXLOperators.eTag.SetPatternTxMode);
-            
+
             prnWriter.Write(bufStd, 0, indStd);
-            
+
             indStd = 0;
 
             //----------------------------------------------------------------//
@@ -716,7 +716,7 @@ namespace PCLParaphernalia
             }
 
             prnWriter.Write(bufStd, 0, indStd);
-            
+
             indStd = 0;
 
             //----------------------------------------------------------------//

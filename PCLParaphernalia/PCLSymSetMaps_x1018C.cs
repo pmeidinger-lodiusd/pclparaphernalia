@@ -6,11 +6,11 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a set of PCL Symbol Set map objects.
-    /// 
+    ///
     /// © Chris Hutchinson 2015
-    /// 
+    ///
     /// </summary>
     static partial class PCLSymSetMaps
     {
@@ -32,7 +32,7 @@ namespace PCLParaphernalia
         //          range?                                                    //
         //                                                                    //
         //--------------------------------------------------------------------//
- 
+
         private static void unicodeMap_x1018C ()
         {
             const eSymSetMapId mapId = eSymSetMapId.map_x1018C;
@@ -150,7 +150,7 @@ namespace PCLParaphernalia
             }
 
             //----------------------------------------------------------------//
-    
+
             rangeNo = 0;
             rangeMin = rangeData [rangeNo] [0];
 
@@ -8137,4 +8137,4 @@ namespace PCLParaphernalia
                                          null));
         }
     }
-}        
+}

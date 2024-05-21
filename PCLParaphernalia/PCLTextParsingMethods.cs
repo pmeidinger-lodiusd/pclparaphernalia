@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a set of PCL Text Parsing Method objects.
-    /// 
+    ///
     /// © Chris Hutchinson 2015
-    /// 
+    ///
     /// </summary>
     static class PCLTextParsingMethods
     {
@@ -52,7 +52,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static readonly PCLTextParsingMethod[] _methods = 
+        private static readonly PCLTextParsingMethod[] _methods =
         {
             //----------------------------------------------------------------//
             //                                                                //
@@ -65,47 +65,47 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             new PCLTextParsingMethod (eIndex.not_specified,
-                                      (short) ePCLVal.not_specified, 
+                                      (short) ePCLVal.not_specified,
                                       "<not specified>",
                                       new ushort [] {0x00, 0xff},
                                       null),
             new PCLTextParsingMethod (eIndex.m0_1_byte_default,
-                                      (short) ePCLVal.m0_1_byte_default, 
+                                      (short) ePCLVal.m0_1_byte_default,
                                       "1-byte (default)",
                                       new ushort [] {0x00, 0xff},
                                       null),
             new PCLTextParsingMethod (eIndex.m1_1_byte_alt,
-                                      (short) ePCLVal.m1_1_byte_alt, 
+                                      (short) ePCLVal.m1_1_byte_alt,
                                       "1-byte",
                                       new ushort [] {0x00, 0xff},
                                       null),
             new PCLTextParsingMethod (eIndex.m2_2_byte,
-                                      (short) ePCLVal.m2_2_byte, 
+                                      (short) ePCLVal.m2_2_byte,
                                       "2-byte",
                                       null,
                                       new ushort [] {0x00, 0xff, 0x0100, 0xffff}),
             new PCLTextParsingMethod (eIndex.m21_1_or_2_byte_Asian7bit,
-                                      (short) ePCLVal.m21_1_or_2_byte_Asian7bit, 
+                                      (short) ePCLVal.m21_1_or_2_byte_Asian7bit,
                                       "1- or 2-byte Asian 7-bit",
                                       new ushort [] {0x00, 0x20},
                                       new ushort [] {0x2100, 0xffff}),
             new PCLTextParsingMethod (eIndex.m31_1_or_2_byte_ShiftJIS,
-                                      (short) ePCLVal.m31_1_or_2_byte_ShiftJIS, 
+                                      (short) ePCLVal.m31_1_or_2_byte_ShiftJIS,
                                       "1- or 2-byte Shift-JIS",
                                       new ushort [] {0x00, 0x80, 0xa0, 0xdf, 0xfd, 0xff},
                                       new ushort [] {0x8100, 0x9fff, 0xe000, 0xfcff}),
             new PCLTextParsingMethod (eIndex.m38_1_or_2_byte_Asian8bit,
-                                      (short) ePCLVal.m38_1_or_2_byte_Asian8bit, 
+                                      (short) ePCLVal.m38_1_or_2_byte_Asian8bit,
                                       "1- or 2-byte Asian 8-bit",
                                       new ushort [] {0x00, 0x7f},
                                       new ushort [] {0x8000, 0xffff}),
             new PCLTextParsingMethod (eIndex.m83_UTF8,
-                                      (short) ePCLVal.m83_UTF8, 
+                                      (short) ePCLVal.m83_UTF8,
                                       "UTF-8",
                                       new ushort [] {0x00, 0xff},
                                       new ushort [] {0x0100, 0xffff}),
             new PCLTextParsingMethod (eIndex.m1008_UTF8_alt,
-                                      (short) ePCLVal.m1008_UTF8_alt, 
+                                      (short) ePCLVal.m1008_UTF8_alt,
                                       "UTF-8 (alternative)",
                                       new ushort [] {0x00, 0xff},
                                       new ushort [] {0x0100, 0xffff})

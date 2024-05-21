@@ -5,11 +5,11 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines a set of PCL Symbol Set Type objects.
-    /// 
+    ///
     /// © Chris Hutchinson 2015
-    /// 
+    ///
     /// </summary>
     static class PCLSymSetTypes
     {
@@ -24,7 +24,7 @@ namespace PCLParaphernalia
 
 		private static readonly bool _flagBound   = true;
 		private static readonly bool _flagUnbound = false;
-		
+
 		public enum eIndex
         {
             Unknown            = 0,
@@ -35,7 +35,7 @@ namespace PCLParaphernalia
             Unbound_MSL        = 5,
             Unbound_Unicode    = 6
         };
-		
+
 		private enum eIdPCL: byte
         {
             Unknown            = 0,
@@ -220,7 +220,7 @@ namespace PCLParaphernalia
             _sets.Add (new PCLSymSetType (
                             (byte) eIdPCL.Bound_8bit,
                             _flagBound,
-							"1: Bound; 8-bit (192 charset: " + 
+							"1: Bound; 8-bit (192 charset: " +
                                 "0x20-7f, 0xa0-ff printable)",
                             "1: 8 bit"));
 

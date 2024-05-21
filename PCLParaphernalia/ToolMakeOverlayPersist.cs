@@ -4,11 +4,11 @@ using System;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class manages persistent storage of options for the Make Overlay tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2012
-    /// 
+    ///
     /// </summary>
     static class ToolMakeOverlayPersist
     {
@@ -26,7 +26,7 @@ namespace PCLParaphernalia
         const string _subKeyPCL6              = "PCL6";
         const string _subKeyPCL               = "PCL";
         const string _subKeyPCLXL             = "PCLXL";
-        
+
         const string _namePrnFilename         = "PrintFilename";
         const string _nameOvlFilename         = "OverlayFilename";
         const string _nameMacroId             = "MacroId";
@@ -45,7 +45,7 @@ namespace PCLParaphernalia
         const int _flagFalse = 0;
         const int _flagTrue  = 1;
         const int _indexZero = 0;
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // l o a d D a t a C o m m o n                                        //

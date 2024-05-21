@@ -4,11 +4,11 @@ using System.IO;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides PJL support for the PrinterInfo tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class ToolStatusReadbackPJL
     {
@@ -35,7 +35,7 @@ namespace PCLParaphernalia
                 PJLCommands.eRequestType reqType;
 
                 string cmdName;
-    
+
                 reqType = PJLCommands.getType(cmdIndx);
                 cmdName = PJLCommands.getName(cmdIndx);
 
@@ -85,7 +85,7 @@ namespace PCLParaphernalia
                                            "@PJL " +
                                            cmdName + " " +
                                            customVar + "\x0d\x0a" +
-                                  "\x1b" + "%-12345X"; 
+                                  "\x1b" + "%-12345X";
                         }
                         else
                         {

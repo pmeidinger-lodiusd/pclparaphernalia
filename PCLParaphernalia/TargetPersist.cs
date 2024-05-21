@@ -4,11 +4,11 @@ using System;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class manages persistent storage of Target options.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class TargetPersist
     {
@@ -19,7 +19,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         const string _mainKey             = MainForm._regMainKey;
-  
+
         const string _subKeyTarget            = "Target";
         const string _subKeyTargetFile        = "File";
         const string _subKeyTargetPrinter     = "Printer";
@@ -276,7 +276,7 @@ namespace PCLParaphernalia
                                  RegistryValueKind.String);
             }
         }
- 
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // s a v e D a t a W o r k F o l d e r                                //

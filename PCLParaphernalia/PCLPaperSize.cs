@@ -3,11 +3,11 @@
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class handles a PCL Paper Size object.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
     [System.Reflection.Obfuscation(
@@ -41,7 +41,7 @@ namespace PCLParaphernalia
 
         private bool _paperSizeIsMetric;
         private bool _paperSizeIsRare;
-        
+
         private ushort _sizeUnitsPerInch;
         private uint _sizeShortEdge;
         private uint _sizeLongEdge;
@@ -623,7 +623,7 @@ namespace PCLParaphernalia
             {
                 string id,
                        name;
-                 
+
                 if (_paperSizeIdPCLXL == 0xff)
                     id = "?";
                 else

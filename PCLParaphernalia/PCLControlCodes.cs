@@ -6,11 +6,11 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class defines the sets of PCL control codes.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class PCLControlCodes
     {
@@ -26,7 +26,7 @@ namespace PCLParaphernalia
         private static PCLControlCode _tagUnknown;
 
         private static int _tagsCount;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L C o n t r o l C o d e s                                      //
@@ -77,7 +77,7 @@ namespace PCLParaphernalia
             flagLineTerm = tag.FlagLineTerm;
             mnemonic     = tag.Mnemonic;
             description  = tag.DescExcMnemonic;
-            
+
             makeOvlAct = tag.makeOvlAct;
 
             tag.incrementStatisticsCount (macroLevel);   // Statistical data

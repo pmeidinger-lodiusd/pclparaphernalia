@@ -4,11 +4,11 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides the PDLData 'save report' function.
-    /// 
+    ///
     /// © Chris Hutchinson 2010
-    /// 
+    ///
     /// </summary>
     static class ToolPrintLangReport
     {
@@ -765,7 +765,7 @@ namespace PCLParaphernalia
             colHddrs = new string[colCt] { c0Name, c1Name, c2Hddr, c3Hddr, c4Name };
             colNames = new string[colCt] { c0Name, c1Name, c2Name, c3Name, c4Name };
             colSizes = new int[colCt] { lc0, lc1, lc2, lc3, lc4 };
-            
+
             //----------------------------------------------------------------//
             //                                                                //
             // Open the table and Write the column header text.               //
@@ -824,7 +824,7 @@ namespace PCLParaphernalia
                     data[4] = pclComplexSeq.Description;
                 }
 
-                ReportCore.tableRowText (writer,rptFileFmt, colCt, data, 
+                ReportCore.tableRowText (writer,rptFileFmt, colCt, data,
                                       colNames, colSizes);
             }
 

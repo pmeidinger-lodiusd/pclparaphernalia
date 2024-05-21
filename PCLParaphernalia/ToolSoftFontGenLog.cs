@@ -5,11 +5,11 @@ using System.Windows;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// 
+    ///
     /// Class provides log handling for the Soft Font Generate tool.
-    /// 
+    ///
     /// © Chris Hutchinson 2011
-    /// 
+    ///
     /// </summary>
     static class ToolSoftFontGenLog
     {
@@ -132,7 +132,7 @@ namespace PCLParaphernalia
         // error dialogue.                                                    //
         //                                                                    //
         //--------------------------------------------------------------------//
-        
+
         public static void logError(DataTable table,
                                     MessageBoxImage type,
                                     string message)
@@ -142,10 +142,10 @@ namespace PCLParaphernalia
                     table, true,  true,  "*** COMMENT ***", message);
             else if (type == MessageBoxImage.Warning)
                 logNameAndValue (
-                    table, true,  true,  "*** WARNING ***", message); 
+                    table, true,  true,  "*** WARNING ***", message);
             else
                 logNameAndValue (
-                    table, true,  true,  "*** ERROR ***", message); 
+                    table, true,  true,  "*** ERROR ***", message);
 
             MessageBox.Show (message,
                              "Processing font",
@@ -270,7 +270,7 @@ namespace PCLParaphernalia
                     {
                         vStart++;
                     }
-                    
+
                     vRem = vLen - vStart;
 
                     //----------------------------------------------------//
@@ -293,7 +293,7 @@ namespace PCLParaphernalia
                         }
 
                         lastChar = value[vStart + rowLen - 1];
-                   
+
                         tempStr = value.Substring (vStart, rowLen);
 
                         //----------------------------------------------------//
@@ -304,14 +304,14 @@ namespace PCLParaphernalia
 
                         logData = tempStr.Replace ((char) cASCII_CarriageReturn,
                                                    (char) cASCII_Space);
-                        
+
                         tempStr = logData;
 
                         logData = tempStr.Replace ((char) cASCII_HorizontalTab,
                                                    (char) cASCII_Space);
-                        
+
                         vPos = logData.IndexOf ((char) cASCII_LineFeed);
-                        
+
                         if (vPos != -1)
                         {
                             rowLen = vPos;

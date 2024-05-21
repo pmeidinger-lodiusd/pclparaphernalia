@@ -7,13 +7,13 @@ namespace PCLParaphernalia
 {
     /// <summary>
     /// Interaction logic for TargetRptFile.xaml
-    /// 
+    ///
     /// Class handles the Target (report file) definition form.
-    /// 
+    ///
     /// © Chris Hutchinson 2017
-    /// 
+    ///
     /// </summary>
-    
+
     [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
