@@ -7138,8 +7138,6 @@ namespace PCLParaphernalia
 
             bool msByte;
 
-            string tempStr;
-
             iTot = 0;
             msByte = true;
 
@@ -7193,8 +7191,6 @@ namespace PCLParaphernalia
             byte[] byteArray;
 
             float f;
-
-            string tempStr;
 
             uiTot = 0;
 

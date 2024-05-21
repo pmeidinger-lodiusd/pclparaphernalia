@@ -1239,8 +1239,6 @@ namespace PCLParaphernalia
                                              bool fmt16,
                                              ref byte sumMod256)
         {
-            bool flagOK;
-
             byte[] segId = new byte[2] { 0xff, 0xff };
 
             return writeHddrSegHddr(pdlIsPCLXL,
