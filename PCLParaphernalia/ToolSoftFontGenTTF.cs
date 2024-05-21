@@ -874,8 +874,6 @@ namespace PCLParaphernalia
 
         public bool fontFileReOpen()
         {
-            bool flagOK = true;
-
             return fontFileOpen(_filenameTTF, ref _fontFileSize);
         }
 
