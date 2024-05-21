@@ -42,8 +42,8 @@ namespace PCLParaphernalia
         private eTxtModType _indxTxtModTypePCL;
         private eTxtModType _indxTxtModTypePCLXL;
 
-        private Boolean _flagTxtModFormAsMacroPCL;
-        private Boolean _flagTxtModFormAsMacroPCLXL;
+        private bool _flagTxtModFormAsMacroPCL;
+        private bool _flagTxtModFormAsMacroPCLXL;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -197,16 +197,16 @@ namespace PCLParaphernalia
 
         public void metricsLoadDataTxtMod()
         {
-            Int32 tmpInt = 0;
+            int tmpInt = 0;
 
             ToolMiscSamplesPersist.loadDataTypeTxtMod (
                 "PCL",
                 ref tmpInt,
                 ref _flagTxtModFormAsMacroPCL);
 
-            if (tmpInt == (Int32)eTxtModType.Pat)
+            if (tmpInt == (int)eTxtModType.Pat)
                 _indxTxtModTypePCL = eTxtModType.Pat;
-            else if (tmpInt == (Int32)eTxtModType.Rot)
+            else if (tmpInt == (int)eTxtModType.Rot)
                 _indxTxtModTypePCL = eTxtModType.Rot;
             else
                 _indxTxtModTypePCL = eTxtModType.Chr;
@@ -216,9 +216,9 @@ namespace PCLParaphernalia
                 ref tmpInt,
                 ref _flagTxtModFormAsMacroPCLXL);
 
-            if (tmpInt == (Int32)eTxtModType.Pat)
+            if (tmpInt == (int)eTxtModType.Pat)
                 _indxTxtModTypePCLXL = eTxtModType.Pat;
-            else if (tmpInt == (Int32)eTxtModType.Rot)
+            else if (tmpInt == (int)eTxtModType.Rot)
                 _indxTxtModTypePCLXL = eTxtModType.Rot;
             else
                 _indxTxtModTypePCLXL = eTxtModType.Chr;
@@ -237,12 +237,12 @@ namespace PCLParaphernalia
         {
             ToolMiscSamplesPersist.saveDataTypeTxtMod (
                 "PCL",
-                (Int32)_indxTxtModTypePCL,
+                (int)_indxTxtModTypePCL,
                 _flagTxtModFormAsMacroPCL);
 
             ToolMiscSamplesPersist.saveDataTypeTxtMod (
                 "PCLXL",
-                (Int32)_indxPatternTypePCLXL,
+                (int)_indxPatternTypePCLXL,
                 _flagTxtModFormAsMacroPCLXL);
         }
 
@@ -316,7 +316,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private void setFlagTxtModFormAsMacro (
-            Boolean setFlag,
+            bool setFlag,
             ToolCommonData.ePrintLang crntPDL)
         {
             if (crntPDL == ToolCommonData.ePrintLang.PCL)

@@ -35,10 +35,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean checkIPAddress(String        ipString,
+        public static bool checkIPAddress(string ipString,
                                              ref IPAddress ipAddress)
         {
-            Boolean OK;
+            bool OK;
 
             OK = IPAddress.TryParse(ipString, out ipAddress);
 
@@ -68,14 +68,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean readResponseBlock (Int32 offset,
-                                                 Int32 bufRem,
-                                                 ref Byte[] replyData,
-                                                 ref Int32 blockLen)
+        public static bool readResponseBlock (int offset,
+                                                 int bufRem,
+                                                 ref byte[] replyData,
+                                                 ref int blockLen)
         {
-            Int32 readLen = 0;
+            int readLen = 0;
 
-            Boolean OK = true;
+            bool OK = true;
 
             try
             {
@@ -124,14 +124,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 sendData(BinaryReader prnReader,
-                                     String       ipString,
-                                     Int32        port,
-                                     Int32        timeoutSend,
-                                     Int32        timeoutReceive,
-                                     Boolean      keepConnect)
+        public static int sendData(BinaryReader prnReader,
+                                     string ipString,
+                                     int port,
+                                     int timeoutSend,
+                                     int timeoutReceive,
+                                     bool keepConnect)
         {
-            Int32 result = 0;
+            int result = 0;
 
             IPAddress ipAddress = new IPAddress(0x00);
 
@@ -153,8 +153,8 @@ namespace PCLParaphernalia
 
                     IPEndPoint ipEndPoint;
 
-                    Int32 readLen;
-                    Int32 sockRes;
+                    int readLen;
+                    int sockRes;
 
                     ipEndPoint = new IPEndPoint(ipAddress,
                                                 port);
@@ -177,9 +177,9 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    const Int32 bufLen = 512;
+                    const int bufLen = 512;
 
-                    Byte[] prnData = new Byte[bufLen];
+                    byte[] prnData = new byte[bufLen];
 
                     prnReader.BaseStream.Position = 0;
                     prnData = prnReader.ReadBytes(bufLen);

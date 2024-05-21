@@ -25,7 +25,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private String _saveFilename;
+        private string _saveFilename;
         private ToolCommonData.eToolIds    _crntToolId;
         private ToolCommonData.eToolSubIds _crntSubId;
         private ToolCommonData.ePrintLang  _crntPDL;
@@ -91,9 +91,9 @@ namespace PCLParaphernalia
 
         private void btnOpFilenameBrowse_Click(object sender, RoutedEventArgs e)
         {
-            Boolean selected;
+            bool selected;
 
-            String filename = _saveFilename;
+            string filename = _saveFilename;
 
             selected = selectTargetFile (ref filename);
 
@@ -194,7 +194,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            Double windowScale = MainFormData.WindowScale;
+            double windowScale = MainFormData.WindowScale;
 
             zoomSlider.Value = windowScale;
 
@@ -233,7 +233,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectTargetFile (ref String targetFile)
+        private bool selectTargetFile (ref string targetFile)
         {
             SaveFileDialog saveDialog = ToolCommonFunctions.createSaveFileDialog(targetFile);
 

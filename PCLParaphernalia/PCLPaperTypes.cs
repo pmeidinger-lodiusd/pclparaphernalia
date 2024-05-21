@@ -63,7 +63,7 @@ namespace PCLParaphernalia
             new PCLPaperType(eEntryType.Standard,"Rough")
         };
 
-        private static Int32 _paperTypeCount = _paperTypes.GetUpperBound(0) + 1;
+        private static int _paperTypeCount = _paperTypes.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -74,7 +74,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getCount()
+        public static int getCount()
         {
             return _paperTypeCount;
         }
@@ -88,7 +88,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getName(Int32 index)
+        public static string getName(int index)
         {
             return _paperTypes[index].getName();
         }
@@ -102,7 +102,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eEntryType getType(Int32 index)
+        public static eEntryType getType(int index)
         {
             return _paperTypes[index].getType();
         }

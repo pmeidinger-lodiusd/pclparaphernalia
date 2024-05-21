@@ -22,9 +22,9 @@ namespace PCLParaphernalia
 
         void App_Startup(object sender, StartupEventArgs e)
         {
-            String filename = "";
+            string filename = "";
 
-            Int32 argCt = e.Args.Count();
+            int argCt = e.Args.Count();
 
             if (argCt != 0)
             {

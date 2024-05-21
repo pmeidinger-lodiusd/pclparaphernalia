@@ -18,7 +18,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private UInt16 _resolution;
+        private ushort _resolution;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -26,7 +26,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLRasterResolution(UInt16 value)
+        public PCLRasterResolution(ushort value)
         {
             _resolution = value;
         }
@@ -40,7 +40,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16 getValue()
+        public ushort getValue()
         {
             return _resolution;
         }

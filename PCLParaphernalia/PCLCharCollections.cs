@@ -23,7 +23,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public const Int32 itemsCt = 64;
+        public const int itemsCt = 64;
 
         public enum eBitType
         {
@@ -39,10 +39,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
         
-        private static Int32 _collsCount;
+        private static int _collsCount;
 
-        private static SortedList<Int32, PCLCharCollection> _collsList =
-              new SortedList<Int32, PCLCharCollection>();
+        private static SortedList<int, PCLCharCollection> _collsList =
+              new SortedList<int, PCLCharCollection>();
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -64,7 +64,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getCollsCount()
+        public static int getCollsCount()
         {
             return _collsCount;
         }
@@ -78,7 +78,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getBitNo (Int32 index)
+        public static int getBitNo (int index)
         {
             return _collsList [index].getBitNo ();
         }
@@ -92,7 +92,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eBitType getBitType (Int32 index)
+        public static eBitType getBitType (int index)
         {
             return _collsList [index].getBitType ();
         }
@@ -106,7 +106,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getDescMSL (Int32 index)
+        public static string getDescMSL (int index)
         {
             return _collsList [index].getDescMSL ();
         }
@@ -121,7 +121,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getDescUnicode (Int32 index)
+        public static string getDescUnicode (int index)
         {
             return _collsList [index].getDescUnicode ();
         }
@@ -135,7 +135,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getindexForKey (Int32 bitNo)
+        public static int getindexForKey (int bitNo)
         {
             return _collsList.IndexOfKey (bitNo);
         }
@@ -151,7 +151,7 @@ namespace PCLParaphernalia
 
         private static void populateTable()
         {
-            Int32 bitNo;
+            int bitNo;
 
             bitNo = 0;                                                  //  0 //
             _collsList.Add (

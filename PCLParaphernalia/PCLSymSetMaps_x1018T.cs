@@ -38,218 +38,218 @@ namespace PCLParaphernalia
         {
             const eSymSetMapId mapId = eSymSetMapId.map_x1018T;
 
-            const Int32 rangeCt = 176;
+            const int rangeCt = 176;
 
-        //  const UInt16 offset = 0x8080;
+            //  const UInt16 offset = 0x8080;
 
-            Int32 rangeNo;
+            int rangeNo;
 
-            UInt16 [] [] rangeData = new UInt16 [rangeCt] []
+            ushort[] [] rangeData = new ushort[rangeCt] []
             {
             //  new UInt16 [2] {0x0020, 0x007e},
-                new UInt16 [2] {0xa140, 0xa17e},
-                new UInt16 [2] {0xa1a1, 0xa1fe},
-                new UInt16 [2] {0xa240, 0xa27e},
-                new UInt16 [2] {0xa2a1, 0xa2fe},
-                new UInt16 [2] {0xa340, 0xa37e},
-                new UInt16 [2] {0xa3a1, 0xa3fe},
-                new UInt16 [2] {0xa440, 0xa47e},
-                new UInt16 [2] {0xa4a1, 0xa4fe},
-                new UInt16 [2] {0xa540, 0xa57e},
-                new UInt16 [2] {0xa5a1, 0xa5fe},
-                new UInt16 [2] {0xa640, 0xa67e},
-                new UInt16 [2] {0xa6a1, 0xa6fe},
-                new UInt16 [2] {0xa740, 0xa77e},
-                new UInt16 [2] {0xa7a1, 0xa7fe},
-                new UInt16 [2] {0xa840, 0xa87e},
-                new UInt16 [2] {0xa8a1, 0xa8fe},
-                new UInt16 [2] {0xa940, 0xa97e},
-                new UInt16 [2] {0xa9a1, 0xa9fe},
-                new UInt16 [2] {0xaa40, 0xaa7e},
-                new UInt16 [2] {0xaaa1, 0xaafe},
-                new UInt16 [2] {0xab40, 0xab7e},
-                new UInt16 [2] {0xaba1, 0xabfe},
-                new UInt16 [2] {0xac40, 0xac7e},
-                new UInt16 [2] {0xaca1, 0xacfe},
-                new UInt16 [2] {0xad40, 0xad7e},
-                new UInt16 [2] {0xada1, 0xadfe},
-                new UInt16 [2] {0xae40, 0xae7e},
-                new UInt16 [2] {0xaea1, 0xaefe},
-                new UInt16 [2] {0xaf40, 0xaf7e},
-                new UInt16 [2] {0xafa1, 0xaffe},
+                new ushort [2] {0xa140, 0xa17e},
+                new ushort [2] {0xa1a1, 0xa1fe},
+                new ushort [2] {0xa240, 0xa27e},
+                new ushort [2] {0xa2a1, 0xa2fe},
+                new ushort [2] {0xa340, 0xa37e},
+                new ushort [2] {0xa3a1, 0xa3fe},
+                new ushort [2] {0xa440, 0xa47e},
+                new ushort [2] {0xa4a1, 0xa4fe},
+                new ushort [2] {0xa540, 0xa57e},
+                new ushort [2] {0xa5a1, 0xa5fe},
+                new ushort [2] {0xa640, 0xa67e},
+                new ushort [2] {0xa6a1, 0xa6fe},
+                new ushort [2] {0xa740, 0xa77e},
+                new ushort [2] {0xa7a1, 0xa7fe},
+                new ushort [2] {0xa840, 0xa87e},
+                new ushort [2] {0xa8a1, 0xa8fe},
+                new ushort [2] {0xa940, 0xa97e},
+                new ushort [2] {0xa9a1, 0xa9fe},
+                new ushort [2] {0xaa40, 0xaa7e},
+                new ushort [2] {0xaaa1, 0xaafe},
+                new ushort [2] {0xab40, 0xab7e},
+                new ushort [2] {0xaba1, 0xabfe},
+                new ushort [2] {0xac40, 0xac7e},
+                new ushort [2] {0xaca1, 0xacfe},
+                new ushort [2] {0xad40, 0xad7e},
+                new ushort [2] {0xada1, 0xadfe},
+                new ushort [2] {0xae40, 0xae7e},
+                new ushort [2] {0xaea1, 0xaefe},
+                new ushort [2] {0xaf40, 0xaf7e},
+                new ushort [2] {0xafa1, 0xaffe},
 
-                new UInt16 [2] {0xb040, 0xb07e},
-                new UInt16 [2] {0xb0a1, 0xb0fe},
-                new UInt16 [2] {0xb140, 0xb17e},
-                new UInt16 [2] {0xb1a1, 0xb1fe},
-                new UInt16 [2] {0xb240, 0xb27e},
-                new UInt16 [2] {0xb2a1, 0xb2fe},
-                new UInt16 [2] {0xb340, 0xb37e},
-                new UInt16 [2] {0xb3a1, 0xb3fe},
-                new UInt16 [2] {0xb440, 0xb47e},
-                new UInt16 [2] {0xb4a1, 0xb4fe},
-                new UInt16 [2] {0xb540, 0xb57e},
-                new UInt16 [2] {0xb5a1, 0xb5fe},
-                new UInt16 [2] {0xb640, 0xb67e},
-                new UInt16 [2] {0xb6a1, 0xb6fe},
-                new UInt16 [2] {0xb740, 0xb77e},
-                new UInt16 [2] {0xb7a1, 0xb7fe},
-                new UInt16 [2] {0xb840, 0xb87e},
-                new UInt16 [2] {0xb8a1, 0xb8fe},
-                new UInt16 [2] {0xb940, 0xb97e},
-                new UInt16 [2] {0xb9a1, 0xb9fe},
-                new UInt16 [2] {0xba40, 0xba7e},
-                new UInt16 [2] {0xbaa1, 0xbafe},
-                new UInt16 [2] {0xbb40, 0xbb7e},
-                new UInt16 [2] {0xbba1, 0xbbfe},
-                new UInt16 [2] {0xbc40, 0xbc7e},
-                new UInt16 [2] {0xbca1, 0xbcfe},
-                new UInt16 [2] {0xbd40, 0xbd7e},
-                new UInt16 [2] {0xbda1, 0xbdfe},
-                new UInt16 [2] {0xbe40, 0xbe7e},
-                new UInt16 [2] {0xbea1, 0xbefe},
-                new UInt16 [2] {0xbf40, 0xbf7e},
-                new UInt16 [2] {0xbfa1, 0xbffe},
+                new ushort [2] {0xb040, 0xb07e},
+                new ushort [2] {0xb0a1, 0xb0fe},
+                new ushort [2] {0xb140, 0xb17e},
+                new ushort [2] {0xb1a1, 0xb1fe},
+                new ushort [2] {0xb240, 0xb27e},
+                new ushort [2] {0xb2a1, 0xb2fe},
+                new ushort [2] {0xb340, 0xb37e},
+                new ushort [2] {0xb3a1, 0xb3fe},
+                new ushort [2] {0xb440, 0xb47e},
+                new ushort [2] {0xb4a1, 0xb4fe},
+                new ushort [2] {0xb540, 0xb57e},
+                new ushort [2] {0xb5a1, 0xb5fe},
+                new ushort [2] {0xb640, 0xb67e},
+                new ushort [2] {0xb6a1, 0xb6fe},
+                new ushort [2] {0xb740, 0xb77e},
+                new ushort [2] {0xb7a1, 0xb7fe},
+                new ushort [2] {0xb840, 0xb87e},
+                new ushort [2] {0xb8a1, 0xb8fe},
+                new ushort [2] {0xb940, 0xb97e},
+                new ushort [2] {0xb9a1, 0xb9fe},
+                new ushort [2] {0xba40, 0xba7e},
+                new ushort [2] {0xbaa1, 0xbafe},
+                new ushort [2] {0xbb40, 0xbb7e},
+                new ushort [2] {0xbba1, 0xbbfe},
+                new ushort [2] {0xbc40, 0xbc7e},
+                new ushort [2] {0xbca1, 0xbcfe},
+                new ushort [2] {0xbd40, 0xbd7e},
+                new ushort [2] {0xbda1, 0xbdfe},
+                new ushort [2] {0xbe40, 0xbe7e},
+                new ushort [2] {0xbea1, 0xbefe},
+                new ushort [2] {0xbf40, 0xbf7e},
+                new ushort [2] {0xbfa1, 0xbffe},
 
-                new UInt16 [2] {0xc040, 0xc07e},
-                new UInt16 [2] {0xc0a1, 0xc0fe},
-                new UInt16 [2] {0xc140, 0xc17e},
-                new UInt16 [2] {0xc1a1, 0xc1fe},
-                new UInt16 [2] {0xc240, 0xc27e},
-                new UInt16 [2] {0xc2a1, 0xc2fe},
-                new UInt16 [2] {0xc340, 0xc37e},
-                new UInt16 [2] {0xc3a1, 0xc3fe},
-                new UInt16 [2] {0xc440, 0xc47e},
-                new UInt16 [2] {0xc4a1, 0xc4fe},
-                new UInt16 [2] {0xc540, 0xc57e},
-                new UInt16 [2] {0xc5a1, 0xc5fe},
-                new UInt16 [2] {0xc640, 0xc67e},
-                new UInt16 [2] {0xc6a1, 0xc6fe},
-                new UInt16 [2] {0xc740, 0xc77e},
-                new UInt16 [2] {0xc7a1, 0xc7fe},
+                new ushort [2] {0xc040, 0xc07e},
+                new ushort [2] {0xc0a1, 0xc0fe},
+                new ushort [2] {0xc140, 0xc17e},
+                new ushort [2] {0xc1a1, 0xc1fe},
+                new ushort [2] {0xc240, 0xc27e},
+                new ushort [2] {0xc2a1, 0xc2fe},
+                new ushort [2] {0xc340, 0xc37e},
+                new ushort [2] {0xc3a1, 0xc3fe},
+                new ushort [2] {0xc440, 0xc47e},
+                new ushort [2] {0xc4a1, 0xc4fe},
+                new ushort [2] {0xc540, 0xc57e},
+                new ushort [2] {0xc5a1, 0xc5fe},
+                new ushort [2] {0xc640, 0xc67e},
+                new ushort [2] {0xc6a1, 0xc6fe},
+                new ushort [2] {0xc740, 0xc77e},
+                new ushort [2] {0xc7a1, 0xc7fe},
        //       new UInt16 [2] {0xc840, 0xc87e},
        //       new UInt16 [2] {0xc8a1, 0xc8fe},
-                new UInt16 [2] {0xc940, 0xc97e},
-                new UInt16 [2] {0xc9a1, 0xc9fe},
-                new UInt16 [2] {0xca40, 0xca7e},
-                new UInt16 [2] {0xcaa1, 0xcafe},
-                new UInt16 [2] {0xcb40, 0xcb7e},
-                new UInt16 [2] {0xcba1, 0xcbfe},
-                new UInt16 [2] {0xcc40, 0xcc7e},
-                new UInt16 [2] {0xcca1, 0xccfe},
-                new UInt16 [2] {0xcd40, 0xcd7e},
-                new UInt16 [2] {0xcda1, 0xcdfe},
-                new UInt16 [2] {0xce40, 0xce7e},
-                new UInt16 [2] {0xcea1, 0xcefe},
-                new UInt16 [2] {0xcf40, 0xcf7e},
-                new UInt16 [2] {0xcfa1, 0xcffe},
+                new ushort [2] {0xc940, 0xc97e},
+                new ushort [2] {0xc9a1, 0xc9fe},
+                new ushort [2] {0xca40, 0xca7e},
+                new ushort [2] {0xcaa1, 0xcafe},
+                new ushort [2] {0xcb40, 0xcb7e},
+                new ushort [2] {0xcba1, 0xcbfe},
+                new ushort [2] {0xcc40, 0xcc7e},
+                new ushort [2] {0xcca1, 0xccfe},
+                new ushort [2] {0xcd40, 0xcd7e},
+                new ushort [2] {0xcda1, 0xcdfe},
+                new ushort [2] {0xce40, 0xce7e},
+                new ushort [2] {0xcea1, 0xcefe},
+                new ushort [2] {0xcf40, 0xcf7e},
+                new ushort [2] {0xcfa1, 0xcffe},
 
-                new UInt16 [2] {0xd040, 0xd07e},
-                new UInt16 [2] {0xd0a1, 0xd0fe},
-                new UInt16 [2] {0xd140, 0xd17e},
-                new UInt16 [2] {0xd1a1, 0xd1fe},
-                new UInt16 [2] {0xd240, 0xd27e},
-                new UInt16 [2] {0xd2a1, 0xd2fe},
-                new UInt16 [2] {0xd340, 0xd37e},
-                new UInt16 [2] {0xd3a1, 0xd3fe},
-                new UInt16 [2] {0xd440, 0xd47e},
-                new UInt16 [2] {0xd4a1, 0xd4fe},
-                new UInt16 [2] {0xd540, 0xd57e},
-                new UInt16 [2] {0xd5a1, 0xd5fe},
-                new UInt16 [2] {0xd640, 0xd67e},
-                new UInt16 [2] {0xd6a1, 0xd6fe},
-                new UInt16 [2] {0xd740, 0xd77e},
-                new UInt16 [2] {0xd7a1, 0xd7fe},
-                new UInt16 [2] {0xd840, 0xd87e},
-                new UInt16 [2] {0xd8a1, 0xd8fe},
-                new UInt16 [2] {0xd940, 0xd97e},
-                new UInt16 [2] {0xd9a1, 0xd9fe},
-                new UInt16 [2] {0xda40, 0xda7e},
-                new UInt16 [2] {0xdaa1, 0xdafe},
-                new UInt16 [2] {0xdb40, 0xdb7e},
-                new UInt16 [2] {0xdba1, 0xdbfe},
-                new UInt16 [2] {0xdc40, 0xdc7e},
-                new UInt16 [2] {0xdca1, 0xdcfe},
-                new UInt16 [2] {0xdd40, 0xdd7e},
-                new UInt16 [2] {0xdda1, 0xddfe},
-                new UInt16 [2] {0xde40, 0xde7e},
-                new UInt16 [2] {0xdea1, 0xdefe},
-                new UInt16 [2] {0xdf40, 0xdf7e},
-                new UInt16 [2] {0xdfa1, 0xdffe},
+                new ushort [2] {0xd040, 0xd07e},
+                new ushort [2] {0xd0a1, 0xd0fe},
+                new ushort [2] {0xd140, 0xd17e},
+                new ushort [2] {0xd1a1, 0xd1fe},
+                new ushort [2] {0xd240, 0xd27e},
+                new ushort [2] {0xd2a1, 0xd2fe},
+                new ushort [2] {0xd340, 0xd37e},
+                new ushort [2] {0xd3a1, 0xd3fe},
+                new ushort [2] {0xd440, 0xd47e},
+                new ushort [2] {0xd4a1, 0xd4fe},
+                new ushort [2] {0xd540, 0xd57e},
+                new ushort [2] {0xd5a1, 0xd5fe},
+                new ushort [2] {0xd640, 0xd67e},
+                new ushort [2] {0xd6a1, 0xd6fe},
+                new ushort [2] {0xd740, 0xd77e},
+                new ushort [2] {0xd7a1, 0xd7fe},
+                new ushort [2] {0xd840, 0xd87e},
+                new ushort [2] {0xd8a1, 0xd8fe},
+                new ushort [2] {0xd940, 0xd97e},
+                new ushort [2] {0xd9a1, 0xd9fe},
+                new ushort [2] {0xda40, 0xda7e},
+                new ushort [2] {0xdaa1, 0xdafe},
+                new ushort [2] {0xdb40, 0xdb7e},
+                new ushort [2] {0xdba1, 0xdbfe},
+                new ushort [2] {0xdc40, 0xdc7e},
+                new ushort [2] {0xdca1, 0xdcfe},
+                new ushort [2] {0xdd40, 0xdd7e},
+                new ushort [2] {0xdda1, 0xddfe},
+                new ushort [2] {0xde40, 0xde7e},
+                new ushort [2] {0xdea1, 0xdefe},
+                new ushort [2] {0xdf40, 0xdf7e},
+                new ushort [2] {0xdfa1, 0xdffe},
 
-                new UInt16 [2] {0xe040, 0xe07e},
-                new UInt16 [2] {0xe0a1, 0xe0fe},
-                new UInt16 [2] {0xe140, 0xe17e},
-                new UInt16 [2] {0xe1a1, 0xe1fe},
-                new UInt16 [2] {0xe240, 0xe27e},
-                new UInt16 [2] {0xe2a1, 0xe2fe},
-                new UInt16 [2] {0xe340, 0xe37e},
-                new UInt16 [2] {0xe3a1, 0xe3fe},
-                new UInt16 [2] {0xe440, 0xe47e},
-                new UInt16 [2] {0xe4a1, 0xe4fe},
-                new UInt16 [2] {0xe540, 0xe57e},
-                new UInt16 [2] {0xe5a1, 0xe5fe},
-                new UInt16 [2] {0xe640, 0xe67e},
-                new UInt16 [2] {0xe6a1, 0xe6fe},
-                new UInt16 [2] {0xe740, 0xe77e},
-                new UInt16 [2] {0xe7a1, 0xe7fe},
-                new UInt16 [2] {0xe840, 0xe87e},
-                new UInt16 [2] {0xe8a1, 0xe8fe},
-                new UInt16 [2] {0xe940, 0xe97e},
-                new UInt16 [2] {0xe9a1, 0xe9fe},
-                new UInt16 [2] {0xea40, 0xea7e},
-                new UInt16 [2] {0xeaa1, 0xeafe},
-                new UInt16 [2] {0xeb40, 0xeb7e},
-                new UInt16 [2] {0xeba1, 0xebfe},
-                new UInt16 [2] {0xec40, 0xec7e},
-                new UInt16 [2] {0xeca1, 0xecfe},
-                new UInt16 [2] {0xed40, 0xed7e},
-                new UInt16 [2] {0xeda1, 0xedfe},
-                new UInt16 [2] {0xee40, 0xee7e},
-                new UInt16 [2] {0xeea1, 0xeefe},
-                new UInt16 [2] {0xef40, 0xef7e},
-                new UInt16 [2] {0xefa1, 0xeffe},
+                new ushort [2] {0xe040, 0xe07e},
+                new ushort [2] {0xe0a1, 0xe0fe},
+                new ushort [2] {0xe140, 0xe17e},
+                new ushort [2] {0xe1a1, 0xe1fe},
+                new ushort [2] {0xe240, 0xe27e},
+                new ushort [2] {0xe2a1, 0xe2fe},
+                new ushort [2] {0xe340, 0xe37e},
+                new ushort [2] {0xe3a1, 0xe3fe},
+                new ushort [2] {0xe440, 0xe47e},
+                new ushort [2] {0xe4a1, 0xe4fe},
+                new ushort [2] {0xe540, 0xe57e},
+                new ushort [2] {0xe5a1, 0xe5fe},
+                new ushort [2] {0xe640, 0xe67e},
+                new ushort [2] {0xe6a1, 0xe6fe},
+                new ushort [2] {0xe740, 0xe77e},
+                new ushort [2] {0xe7a1, 0xe7fe},
+                new ushort [2] {0xe840, 0xe87e},
+                new ushort [2] {0xe8a1, 0xe8fe},
+                new ushort [2] {0xe940, 0xe97e},
+                new ushort [2] {0xe9a1, 0xe9fe},
+                new ushort [2] {0xea40, 0xea7e},
+                new ushort [2] {0xeaa1, 0xeafe},
+                new ushort [2] {0xeb40, 0xeb7e},
+                new ushort [2] {0xeba1, 0xebfe},
+                new ushort [2] {0xec40, 0xec7e},
+                new ushort [2] {0xeca1, 0xecfe},
+                new ushort [2] {0xed40, 0xed7e},
+                new ushort [2] {0xeda1, 0xedfe},
+                new ushort [2] {0xee40, 0xee7e},
+                new ushort [2] {0xeea1, 0xeefe},
+                new ushort [2] {0xef40, 0xef7e},
+                new ushort [2] {0xefa1, 0xeffe},
 
-                new UInt16 [2] {0xf040, 0xf07e},
-                new UInt16 [2] {0xf0a1, 0xf0fe},
-                new UInt16 [2] {0xf140, 0xf17e},
-                new UInt16 [2] {0xf1a1, 0xf1fe},
-                new UInt16 [2] {0xf240, 0xf27e},
-                new UInt16 [2] {0xf2a1, 0xf2fe},
-                new UInt16 [2] {0xf340, 0xf37e},
-                new UInt16 [2] {0xf3a1, 0xf3fe},
-                new UInt16 [2] {0xf440, 0xf47e},
-                new UInt16 [2] {0xf4a1, 0xf4fe},
-                new UInt16 [2] {0xf540, 0xf57e},
-                new UInt16 [2] {0xf5a1, 0xf5fe},
-                new UInt16 [2] {0xf640, 0xf67e},
-                new UInt16 [2] {0xf6a1, 0xf6fe},
-                new UInt16 [2] {0xf740, 0xf77e},
-                new UInt16 [2] {0xf7a1, 0xf7fe},
-                new UInt16 [2] {0xf840, 0xf87e},
-                new UInt16 [2] {0xf8a1, 0xf8fe},
-                new UInt16 [2] {0xf940, 0xf97e},
-                new UInt16 [2] {0xf9a1, 0xf9d5}
+                new ushort [2] {0xf040, 0xf07e},
+                new ushort [2] {0xf0a1, 0xf0fe},
+                new ushort [2] {0xf140, 0xf17e},
+                new ushort [2] {0xf1a1, 0xf1fe},
+                new ushort [2] {0xf240, 0xf27e},
+                new ushort [2] {0xf2a1, 0xf2fe},
+                new ushort [2] {0xf340, 0xf37e},
+                new ushort [2] {0xf3a1, 0xf3fe},
+                new ushort [2] {0xf440, 0xf47e},
+                new ushort [2] {0xf4a1, 0xf4fe},
+                new ushort [2] {0xf540, 0xf57e},
+                new ushort [2] {0xf5a1, 0xf5fe},
+                new ushort [2] {0xf640, 0xf67e},
+                new ushort [2] {0xf6a1, 0xf6fe},
+                new ushort [2] {0xf740, 0xf77e},
+                new ushort [2] {0xf7a1, 0xf7fe},
+                new ushort [2] {0xf840, 0xf87e},
+                new ushort [2] {0xf8a1, 0xf8fe},
+                new ushort [2] {0xf940, 0xf97e},
+                new ushort [2] {0xf9a1, 0xf9d5}
             };
 
-            UInt16 [] rangeSizes = new UInt16 [rangeCt];
+            ushort[] rangeSizes = new ushort[rangeCt];
 
-            UInt16 [] [] mapDataStd = new UInt16 [rangeCt] [];
+            ushort[] [] mapDataStd = new ushort[rangeCt] [];
 
-            UInt16 rangeMin,
+            ushort rangeMin,
                    rangeMax;
 
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i < rangeCt; i++)
+            for (int i = 0; i < rangeCt; i++)
             {
-                rangeSizes [i] = (UInt16) (rangeData [i] [1] -
+                rangeSizes [i] = (ushort) (rangeData [i] [1] -
                                            rangeData [i] [0] + 1);
             }
 
-            for (Int32 i = 0; i < rangeCt; i++)
+            for (int i = 0; i < rangeCt; i++)
             {
-                mapDataStd [i] = new UInt16 [rangeSizes [i]];
+                mapDataStd [i] = new ushort[rangeSizes [i]];
             }
 
             //----------------------------------------------------------------//
@@ -258,7 +258,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -338,7 +338,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -449,7 +449,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -527,7 +527,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -638,7 +638,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -716,7 +716,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -760,7 +760,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -838,7 +838,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -949,7 +949,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -1027,7 +1027,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -1138,7 +1138,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -1216,7 +1216,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -1327,7 +1327,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -1405,7 +1405,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -1516,7 +1516,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -1594,7 +1594,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -1705,7 +1705,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -1783,7 +1783,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -1894,7 +1894,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -1972,7 +1972,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -2083,7 +2083,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -2161,7 +2161,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -2272,7 +2272,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -2350,7 +2350,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -2461,7 +2461,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -2539,7 +2539,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -2650,7 +2650,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -2728,7 +2728,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -2839,7 +2839,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -2917,7 +2917,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -3028,7 +3028,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -3106,7 +3106,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -3217,7 +3217,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -3295,7 +3295,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -3406,7 +3406,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -3484,7 +3484,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -3595,7 +3595,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -3673,7 +3673,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -3784,7 +3784,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -3862,7 +3862,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -3973,7 +3973,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -4051,7 +4051,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -4162,7 +4162,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -4240,7 +4240,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -4351,7 +4351,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -4429,7 +4429,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -4540,7 +4540,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -4618,7 +4618,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -4729,7 +4729,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -4807,7 +4807,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -4918,7 +4918,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -4996,7 +4996,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -5107,7 +5107,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -5185,7 +5185,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -5296,7 +5296,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -5374,7 +5374,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -5485,7 +5485,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -5563,7 +5563,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -5674,7 +5674,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -5752,7 +5752,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -5863,7 +5863,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -5941,7 +5941,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -6052,7 +6052,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -6130,7 +6130,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -6241,7 +6241,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -6319,7 +6319,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -6430,7 +6430,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -6508,7 +6508,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -6619,7 +6619,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -6697,7 +6697,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -6808,7 +6808,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -6886,7 +6886,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -6997,7 +6997,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -7075,7 +7075,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -7186,7 +7186,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -7264,7 +7264,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -7375,7 +7375,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -7453,7 +7453,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -7562,7 +7562,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -7639,7 +7639,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -7750,7 +7750,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -7828,7 +7828,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -7939,7 +7939,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -8017,7 +8017,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -8128,7 +8128,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -8206,7 +8206,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -8317,7 +8317,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -8395,7 +8395,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -8506,7 +8506,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -8584,7 +8584,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -8695,7 +8695,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -8773,7 +8773,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -8884,7 +8884,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -8962,7 +8962,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -9073,7 +9073,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -9151,7 +9151,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -9262,7 +9262,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -9340,7 +9340,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -9451,7 +9451,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -9529,7 +9529,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -9640,7 +9640,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -9718,7 +9718,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -9829,7 +9829,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -9907,7 +9907,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -10018,7 +10018,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -10096,7 +10096,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -10207,7 +10207,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -10285,7 +10285,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -10396,7 +10396,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -10474,7 +10474,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -10585,7 +10585,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -10663,7 +10663,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -10774,7 +10774,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -10852,7 +10852,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -10963,7 +10963,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -11041,7 +11041,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -11152,7 +11152,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -11230,7 +11230,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -11341,7 +11341,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -11419,7 +11419,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -11530,7 +11530,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -11608,7 +11608,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -11719,7 +11719,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -11797,7 +11797,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -11908,7 +11908,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -11986,7 +11986,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -12097,7 +12097,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -12175,7 +12175,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -12286,7 +12286,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -12364,7 +12364,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -12475,7 +12475,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -12553,7 +12553,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -12664,7 +12664,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -12742,7 +12742,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -12853,7 +12853,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -12931,7 +12931,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -13042,7 +13042,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -13120,7 +13120,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -13231,7 +13231,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -13309,7 +13309,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -13420,7 +13420,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -13498,7 +13498,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -13609,7 +13609,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -13687,7 +13687,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -13798,7 +13798,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -13876,7 +13876,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -13987,7 +13987,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -14065,7 +14065,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -14176,7 +14176,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -14254,7 +14254,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -14365,7 +14365,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -14443,7 +14443,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -14554,7 +14554,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -14632,7 +14632,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -14743,7 +14743,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -14821,7 +14821,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -14932,7 +14932,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -15010,7 +15010,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -15121,7 +15121,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -15199,7 +15199,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -15310,7 +15310,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -15388,7 +15388,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -15499,7 +15499,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -15577,7 +15577,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -15688,7 +15688,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -15766,7 +15766,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -15877,7 +15877,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -15955,7 +15955,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -16066,7 +16066,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -16144,7 +16144,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -16255,7 +16255,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -16333,7 +16333,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -16444,7 +16444,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -16522,7 +16522,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -16633,7 +16633,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }
@@ -16711,7 +16711,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData [rangeNo] [0];
             rangeMax = rangeData [rangeNo] [1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd [rangeNo] [i - rangeMin] = 0xffff;
             }

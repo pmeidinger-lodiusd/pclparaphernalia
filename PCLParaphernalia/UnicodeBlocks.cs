@@ -28,10 +28,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
         
-        private static Int32 _blocksCount;
+        private static int _blocksCount;
 
-        private static SortedList<UInt32, UnicodeBlock> _blocksList =
-              new SortedList<UInt32, UnicodeBlock>();
+        private static SortedList<uint, UnicodeBlock> _blocksList =
+              new SortedList<uint, UnicodeBlock>();
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -53,7 +53,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getBlocksCount()
+        public static int getBlocksCount()
         {
             return _blocksCount;
         }
@@ -67,7 +67,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt32 getRangeEnd (UInt32 index)
+        public static uint getRangeEnd (uint index)
         {
             return _blocksList [index].RangeEnd;
         }
@@ -81,7 +81,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt32 getRangeStart (UInt32 index)
+        public static uint getRangeStart (uint index)
         {
             return _blocksList [index].RangeStart;
         }
@@ -95,7 +95,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getName (UInt32 index)
+        public static string getName (uint index)
         {
             return _blocksList [index].Name;
         }
@@ -109,13 +109,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt32 getIndexForCodepoint (UInt32 codepoint)
+        public static uint getIndexForCodepoint (uint codepoint)
         {
-            Boolean found = false;
+            bool found = false;
 
-            UInt32 key = 0;
+            uint key = 0;
 
-            foreach (KeyValuePair<UInt32, UnicodeBlock> kvp in _blocksList)
+            foreach (KeyValuePair<uint, UnicodeBlock> kvp in _blocksList)
             {
                 key = kvp.Key;
 
@@ -144,13 +144,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getBlocknameForCodepoint (UInt32 codepoint)
+        public static string getBlocknameForCodepoint (uint codepoint)
         {
-            Boolean found = false;
+            bool found = false;
 
-            UInt32 key = 0xffffffff;
+            uint key = 0xffffffff;
 
-            foreach (KeyValuePair<UInt32, UnicodeBlock> kvp in _blocksList)
+            foreach (KeyValuePair<uint, UnicodeBlock> kvp in _blocksList)
             {
                 key = kvp.Key;
 
