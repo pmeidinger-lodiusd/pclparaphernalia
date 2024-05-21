@@ -9,12 +9,12 @@ using System.Windows;
 // associated with an assembly.
 [assembly: AssemblyTitle("PCLParaphernalia")]
 [assembly: AssemblyDescription ("PCL print utility tools")]
-[assembly: AssemblyConfiguration(string.Empty)]
+[assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany ("PCLParaphernalia")]
 [assembly: AssemblyProduct("PCLParaphernalia")]
 [assembly: AssemblyCopyright ("Copyright © Chris Hutchinson 2010-2018")]
-[assembly: AssemblyTrademark(string.Empty)]
-[assembly: AssemblyCulture(string.Empty)]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
