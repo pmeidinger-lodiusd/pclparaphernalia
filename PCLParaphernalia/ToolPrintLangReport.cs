@@ -1983,7 +1983,7 @@ namespace PCLParaphernalia
 
                 ReportCore.tableRowPair (writer, rptFileFmt,
                                      "Select",
-                                     ((flagPCLOptDiscrete == true) ?
+                                     ((flagPCLOptDiscrete) ?
                                         "Show" : "Do not show") +
                                      " discrete values for enumerated sequences",
                                      _colSpanNone, _colSpanNone,
@@ -1992,7 +1992,7 @@ namespace PCLParaphernalia
 
                 ReportCore.tableRowPair (writer, rptFileFmt,
                                      "Select",
-                                     ((flagPCLOptObsolete == true) ?
+                                     ((flagPCLOptObsolete) ?
                                         "Show" : "Do not show") +
                                      " obsolete sequences",
                                      _colSpanNone, _colSpanNone,
@@ -2120,7 +2120,7 @@ namespace PCLParaphernalia
 
                 ReportCore.tableRowPair (writer, rptFileFmt,
                                      "Select",
-                                     ((flagPCLXLOptReserved == true) ?
+                                     ((flagPCLXLOptReserved) ?
                                         "Show" : "Do not show") +
                                      " reserved values",
                                      _colSpanNone, _colSpanNone,

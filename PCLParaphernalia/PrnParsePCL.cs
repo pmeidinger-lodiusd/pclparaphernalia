@@ -1150,7 +1150,7 @@ namespace PCLParaphernalia
                             _analysisLevel);
 
                         if (_parseType == PrnParse.eParseType.MakeOverlay &&
-                            _linkData.MakeOvlPageMark == true)
+                            _linkData.MakeOvlPageMark)
                         {
                             PrnParseConstants.eOvlPos makeOvlPos;
 

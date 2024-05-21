@@ -1725,7 +1725,7 @@ namespace PCLParaphernalia
 
                 if (row[colNames[i]] is bool)
                 {
-                    if ((bool)row[colNames[i]] == true)
+                    if ((bool)row[colNames[i]])
                     {
                         if (rptChkMarks == eRptChkMarks.boxsym)
                             htmlWriter.Write (_chkMarkBoxSymTrue);
@@ -1793,7 +1793,7 @@ namespace PCLParaphernalia
 
                 if (row[colNames[i]] is bool)
                 {
-                    if ((bool)row[colNames[i]] == true)
+                    if ((bool)row[colNames[i]])
                     {
                         if (rptChkMarks == eRptChkMarks.boxsym)
                             itemData = _chkMarkBoxSymTrue;
@@ -1856,7 +1856,7 @@ namespace PCLParaphernalia
 
                 if (row[colNames[i]] is bool)
                 {
-                    if ((bool)row[colNames[i]] == true)
+                    if ((bool)row[colNames[i]])
                     {
                         if (rptChkMarks == eRptChkMarks.boxsym)
                             xmlWriter.WriteString (_chkMarkBoxSymTrue);

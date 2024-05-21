@@ -284,7 +284,7 @@ namespace PCLParaphernalia
                     if (incUsedSeqsOnly)
                         displaySeq = false;
                     else if (excUnusedObsSeqs &&
-                             (kvp.Value.FlagObsolete == true))
+                             (kvp.Value.FlagObsolete))
                         displaySeq = false;
                 }
 

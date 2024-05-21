@@ -918,7 +918,7 @@ namespace PCLParaphernalia
             for (int i = 0; i < btnCt; i++)
             {
 
-                if (_patternStateBtns[i] == true)
+                if (_patternStateBtns[i])
                 {
                     setBtns.Append(" " + i);
                 }

@@ -105,7 +105,7 @@ namespace PCLParaphernalia
             {
                 seqObsolete = kvp.Value.FlagObsolete;
 
-                if ((incObsSeqs == true) ||
+                if ((incObsSeqs) ||
                     ((incObsSeqs == false) && (!seqObsolete)))
                 {
                     count++;
@@ -179,7 +179,7 @@ namespace PCLParaphernalia
                     if (incUsedSeqsOnly)
                         displaySeq = false;
                     else if (excUnusedObsSeqs &&
-                             (kvp.Value.FlagObsolete == true))
+                             (kvp.Value.FlagObsolete))
                         displaySeq = false;
                 }
 

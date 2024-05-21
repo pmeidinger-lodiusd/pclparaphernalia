@@ -195,7 +195,7 @@ namespace PCLParaphernalia
                     if (incUsedSeqsOnly)
                         displaySeq = false;
                     else if (excUnusedResTags &&
-                             (kvp.Value.FlagReserved == true))
+                             (kvp.Value.FlagReserved))
                         displaySeq = false;
                 }
 
@@ -286,7 +286,7 @@ namespace PCLParaphernalia
             {
                 tagReserved = kvp.Value.FlagReserved;
 
-                if ((incResTags == true) ||
+                if ((incResTags) ||
                     ((incResTags == false) && (!tagReserved)))
                 {
                     count++;

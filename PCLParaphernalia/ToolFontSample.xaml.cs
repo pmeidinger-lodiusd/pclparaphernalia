@@ -1132,8 +1132,8 @@ namespace PCLParaphernalia
                             _fontPrnDiskMacroIdPCL,
                             fontFilename,
                             symSetUserSet,
-                            (_mapCodesRelevant == true) ? _showMapCodesUCS2PCL : false,
-                            (_mapCodesRelevant == true) ? _showMapCodesUTF8PCL : false,
+                            (_mapCodesRelevant) ? _showMapCodesUCS2PCL : false,
+                            (_mapCodesRelevant) ? _showMapCodesUTF8PCL : false,
                             _symSetUserActEmbedPCL,
                             _symSetUserFile);
                     }
@@ -1168,8 +1168,8 @@ namespace PCLParaphernalia
                             _downloadRemovePCLXL,
                             _fontFilenamePCLXL,
                             symSetUserSet,
-                            (_mapCodesRelevant == true) ? _showMapCodesUCS2PCLXL : false,
-                            (_mapCodesRelevant == true) ? _showMapCodesUTF8PCLXL : false,
+                            (_mapCodesRelevant) ? _showMapCodesUCS2PCLXL : false,
+                            (_mapCodesRelevant) ? _showMapCodesUTF8PCLXL : false,
                             _symSetUserFile);
                     }
 
