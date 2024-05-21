@@ -285,7 +285,7 @@ namespace PCLParaphernalia
             {
                 tagReserved = kvp.Value.FlagReserved;
 
-                if ((incResTags) ||
+                if (incResTags ||
                     ((!incResTags) && (!tagReserved)))
                 {
                     count++;

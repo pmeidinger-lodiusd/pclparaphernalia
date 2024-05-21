@@ -147,20 +147,20 @@ namespace PCLParaphernalia
 
                 lenB = lenA - indxA - 1;
 
-                indxB = pathName.LastIndexOf (".", (lenA - 1), lenB);
+                indxB = pathName.LastIndexOf (".", lenA - 1, lenB);
 
                 lenC = lenA - indxB - 1;
 
                 if (indxB == -1)
                 {
-                    lastName  = pathName.Substring ((indxA + 1), lenB);
+                    lastName  = pathName.Substring (indxA + 1, lenB);
                     extension = "";
                 }
                 else
                 {
-                    lastName  = pathName.Substring ((indxA + 1),
-                                                    (lenB - lenC - 1));
-                    extension = pathName.Substring ((indxB + 1), lenC);
+                    lastName  = pathName.Substring (indxA + 1,
+                                                    lenB - lenC - 1);
+                    extension = pathName.Substring (indxB + 1, lenC);
                 }
             }
         }

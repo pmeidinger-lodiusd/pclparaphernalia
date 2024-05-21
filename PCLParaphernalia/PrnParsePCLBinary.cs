@@ -3606,7 +3606,7 @@ namespace PCLParaphernalia
                     uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                     codeDesc = uint16Val.ToString() + " (-> bits per pixel = " +
-                               Math.Ceiling((Math.Log((double)uint16Val, 2))).ToString() +
+                               Math.Ceiling(Math.Log((double)uint16Val, 2)).ToString() +
                                ")";
 
                     PrnParseCommon.addTextRow (
@@ -4346,7 +4346,7 @@ namespace PCLParaphernalia
 
                 _parseFontHddrPCL.ParseSegs.decodeCharCompReq (
                     false,
-                    (format == format_MSL),
+                    format == format_MSL,
                     true,
                     fileOffset,
                     buf,

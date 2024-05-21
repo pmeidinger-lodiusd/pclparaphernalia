@@ -1023,11 +1023,11 @@ namespace PCLParaphernalia
             PCLXLWriter.text(prnWriter, false, false,
                        PCLXLWriter.advances_Courier, ptSize,
                        posX, posY,
-                      (Math.Round((paperWidth *
-                                   unitsToMilliMetres), 2)).ToString("F1") +
+                      (Math.Round(paperWidth *
+                                   unitsToMilliMetres, 2)).ToString("F1") +
                       " mm = " +
-                      (Math.Round((paperWidth *
-                                   unitsToInches), 3)).ToString("F3") +
+                      (Math.Round(paperWidth *
+                                   unitsToInches, 3)).ToString("F3") +
                       "\"");
 
             posY += lineInc;
@@ -1035,11 +1035,11 @@ namespace PCLParaphernalia
             PCLXLWriter.text(prnWriter, false, false,
                        PCLXLWriter.advances_Courier, ptSize,
                        posX, posY,
-                      (Math.Round((paperLength *
-                                   unitsToMilliMetres), 2)).ToString("F1") +
+                      (Math.Round(paperLength *
+                                   unitsToMilliMetres, 2)).ToString("F1") +
                       " mm = " +
-                      (Math.Round((paperLength *
-                                   unitsToInches), 3)).ToString("F3") +
+                      (Math.Round(paperLength *
+                                   unitsToInches, 3)).ToString("F3") +
                       "\"");
 
             posY += lineInc;
@@ -1192,11 +1192,11 @@ namespace PCLParaphernalia
                 scaler = 1;
 
             boxOuterEdge    = (short)(_boxOuterEdge / scaler);
-            boxInnerEdge    = (short)((_boxOuterEdge / 3) / scaler);
-            boxInnerOffset  = (short)((_boxOuterEdge / 3) / scaler);
-            boxMarkerEdge   = (short)((_boxOuterEdge / 15) / scaler);
-            boxMarkerOffset = (short)(((_boxOuterEdge -
-                                        boxMarkerEdge) / 2) / scaler);
+            boxInnerEdge    = (short)(_boxOuterEdge / 3 / scaler);
+            boxInnerOffset  = (short)(_boxOuterEdge / 3 / scaler);
+            boxMarkerEdge   = (short)(_boxOuterEdge / 15 / scaler);
+            boxMarkerOffset = (short)((_boxOuterEdge -
+                                        boxMarkerEdge) / 2 / scaler);
 
             //----------------------------------------------------------------//
 

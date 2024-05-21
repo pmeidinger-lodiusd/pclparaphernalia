@@ -514,7 +514,7 @@ namespace PCLParaphernalia
                         utf8Char = true;
                 }
 
-                if ((multiByteChar) || (utf8Char))
+                if (multiByteChar || utf8Char)
                     multiByteData = true;
 
                 //------------------------------------------------------------//
@@ -1076,7 +1076,7 @@ namespace PCLParaphernalia
                     else if (charType == eCharType.C0Controls)
                     {
                         ccName = cC0Names_List.Substring (
-                            (charVal * cC0NameLen),
+                            charVal * cC0NameLen,
                             cC0NameLen);
 
                         if (ccName.Substring (cC0NameLen - 1, 1) == " ")
@@ -1091,7 +1091,7 @@ namespace PCLParaphernalia
                     else if (charType == eCharType.C1Controls)
                     {
                         ccName = cC1Names_List.Substring (
-                            ((charVal - 128) * cC1NameLen),
+                            (charVal - 128) * cC1NameLen,
                             cC1NameLen);
 
                         if (ccName.Substring (cC1NameLen - 2, 2) == "  ")
@@ -1130,7 +1130,7 @@ namespace PCLParaphernalia
                             (charType == eCharType.Space))
                     {
                         ccName = cC0Names_List.Substring (
-                                    (charVal * cC0NameLen),
+                                    charVal * cC0NameLen,
                                     cC0NameLen);
 
                         if (ccName.Substring (cC0NameLen - 1, 1) == " ")
@@ -1145,7 +1145,7 @@ namespace PCLParaphernalia
                     else if (charType == eCharType.C1Controls)
                     {
                         ccName = cC1Names_List.Substring (
-                            ((charVal - 128) * cC1NameLen),
+                            (charVal - 128) * cC1NameLen,
                             cC1NameLen);
 
                         if (ccName.Substring (cC1NameLen - 2, 2) == "  ")

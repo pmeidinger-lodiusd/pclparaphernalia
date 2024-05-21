@@ -197,7 +197,7 @@ namespace PCLParaphernalia
                     maxPos = (int)(fileSize - 1);
 
                 for (pos = offset;
-                     (flagOK) && (!foundTerm) && (pos < maxPos);
+                     flagOK && (!foundTerm) && (pos < maxPos);
                      pos++)
                 {
                     x = _binReader.ReadByte ();
@@ -284,7 +284,7 @@ namespace PCLParaphernalia
                     maxPos = (int)(fileSize - 1);
 
                 for (pos = offset;
-                     (flagOK) && (!foundTerm) && (pos < maxPos);
+                     flagOK && (!foundTerm) && (pos < maxPos);
                      pos++)
                 {
                     x = _binReader.ReadByte ();
@@ -517,7 +517,7 @@ namespace PCLParaphernalia
 
                 mapIndx = firstCode + i;
 
-                if (((mapIndx >= rangeC1Min) && (mapIndx <= rangeC1Max)) &&
+                if ((mapIndx >= rangeC1Min) && (mapIndx <= rangeC1Max) &&
                     (mapCode != 0xffff))
                     usesC1Range = true;
 
@@ -530,7 +530,7 @@ namespace PCLParaphernalia
                 symSetType = PCLSymSetTypes.eIndex.Bound_16bit;
             else if ((firstCode >= 0x20) && (lastCode <= 0x7f))
                 symSetType = PCLSymSetTypes.eIndex.Bound_7bit;
-            else if ((firstCode >= 0x20) || (usesC1Range))
+            else if ((firstCode >= 0x20) || usesC1Range)
                 symSetType = PCLSymSetTypes.eIndex.Bound_PC8;
             else
                 symSetType = PCLSymSetTypes.eIndex.Bound_8bit;

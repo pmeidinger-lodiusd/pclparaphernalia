@@ -1235,13 +1235,13 @@ namespace PCLParaphernalia
             PCLWriter.cursorPushPop (prnWriter, PCLWriter.ePushPop.Pop);
             PCLWriter.cursorPushPop (prnWriter, PCLWriter.ePushPop.Push);
 
-            PCLWriter.cursorRelative (prnWriter, (_colInc * 2), 0);
+            PCLWriter.cursorRelative (prnWriter, _colInc * 2, 0);
 
             prnWriter.Write ("Source = opaque".ToCharArray ());
 
             PCLWriter.cursorPushPop (prnWriter, PCLWriter.ePushPop.Pop);
 
-            PCLWriter.cursorRelative (prnWriter, 0, (_incInch / 6));
+            PCLWriter.cursorRelative (prnWriter, 0, _incInch / 6);
 
             ptSize = 8;
 

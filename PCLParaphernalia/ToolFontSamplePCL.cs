@@ -1293,8 +1293,8 @@ namespace PCLParaphernalia
 
                         PCLWriter.cursorPushPop(prnWriter, PCLWriter.ePushPop.Push);
 
-                        codeVal = (ushort)(((indxMajor * _gridDim) +
-                                             indxMinor) + sampleRangeOffset);
+                        codeVal = (ushort)((indxMajor * _gridDim) +
+                                             indxMinor + sampleRangeOffset);
 
                         if (symSetUserSet)
                         {
@@ -1373,8 +1373,8 @@ namespace PCLParaphernalia
 
                         PCLWriter.cursorPushPop(prnWriter, PCLWriter.ePushPop.Push);
 
-                        codeVal = (ushort)(((indxMajor * _gridDim) +
-                                             indxMinor) + sampleRangeOffset);
+                        codeVal = (ushort)((indxMajor * _gridDim) +
+                                             indxMinor + sampleRangeOffset);
 
                         if (symSetUserSet)
                         {

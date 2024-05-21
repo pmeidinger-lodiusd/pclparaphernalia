@@ -259,7 +259,7 @@ namespace PCLParaphernalia
                                     _indxLogOperMonoS2PCL,
                                     _indxLogOperMonoT1PCL,
                                     _indxLogOperMonoT2PCL,
-                                    (_indxLogOperROPFromPCL * _logOperROPInc),
+                                    _indxLogOperROPFromPCL * _logOperROPInc,
                                     ((_indxLogOperROPToPCL + 1) * _logOperROPInc) - 1,
                                     _flagLogOperUseMacrosPCL);
                             }
@@ -277,7 +277,7 @@ namespace PCLParaphernalia
                                     _indxLogOperClrS2PCL,
                                     _indxLogOperClrT1PCL,
                                     _indxLogOperClrT2PCL,
-                                    (_indxLogOperROPFromPCL * _logOperROPInc),
+                                    _indxLogOperROPFromPCL * _logOperROPInc,
                                     ((_indxLogOperROPToPCL + 1) * _logOperROPInc) - 1,
                                     _flagLogOperUseMacrosPCL);
                             }
@@ -414,7 +414,7 @@ namespace PCLParaphernalia
                                     _indxLogOperGrayS2PCLXL,
                                     _indxLogOperGrayT1PCLXL,
                                     _indxLogOperGrayT2PCLXL,
-                                    (_indxLogOperROPFromPCLXL * _logOperROPInc),
+                                    _indxLogOperROPFromPCLXL * _logOperROPInc,
                                     ((_indxLogOperROPToPCLXL + 1) * _logOperROPInc) - 1,
                                     _flagLogOperUseMacrosPCLXL,
                                     _flagLogOperOptSrcTextPatPCLXL);
@@ -433,7 +433,7 @@ namespace PCLParaphernalia
                                     _indxLogOperClrS2PCLXL,
                                     _indxLogOperClrT1PCLXL,
                                     _indxLogOperClrT2PCLXL,
-                                    (_indxLogOperROPFromPCLXL * _logOperROPInc),
+                                    _indxLogOperROPFromPCLXL * _logOperROPInc,
                                     ((_indxLogOperROPToPCLXL + 1) * _logOperROPInc) - 1,
                                     _flagLogOperUseMacrosPCLXL,
                                     _flagLogOperOptSrcTextPatPCLXL);

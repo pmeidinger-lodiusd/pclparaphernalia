@@ -38,7 +38,7 @@ namespace PCLParaphernalia
         const short _posXDesc4 = _posXDesc;
 
         const short _posYHddr = _pageOriginY;
-        const short _posYDesc1 = _pageOriginY + (_incInch);
+        const short _posYDesc1 = _pageOriginY + _incInch;
         const short _posYDesc2 = _pageOriginY + ((_incInch * 5) / 4);
         const short _posYDesc3 = _pageOriginY + ((_incInch * 7) / 4);
         const short _posYDesc4 = _pageOriginY + (_incInch * 2);

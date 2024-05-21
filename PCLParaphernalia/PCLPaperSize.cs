@@ -232,14 +232,14 @@ namespace PCLParaphernalia
                 {
                     if (_paperSizeIsMetric)
                     {
-                        size = (Math.Round((_sizeLongEdge *
-                                            _unitsToMilliMetres), 3)).ToString("F0") +
+                        size = (Math.Round(_sizeLongEdge *
+                                            _unitsToMilliMetres, 3)).ToString("F0") +
                                             " mm";
                     }
                     else
                     {
-                        size = (Math.Round((_sizeLongEdge *
-                                            _unitsToInches), 3)).ToString("F3") +
+                        size = (Math.Round(_sizeLongEdge *
+                                            _unitsToInches, 3)).ToString("F3") +
                                             "\"";
                     }
                 }
@@ -274,14 +274,14 @@ namespace PCLParaphernalia
                 {
                     if (_paperSizeIsMetric)
                     {
-                        size = (Math.Round((_sizeShortEdge *
-                                            _unitsToMilliMetres), 3)).ToString("F0") +
+                        size = (Math.Round(_sizeShortEdge *
+                                            _unitsToMilliMetres, 3)).ToString("F0") +
                                             " mm";
                     }
                     else
                     {
-                        size = (Math.Round((_sizeShortEdge *
-                                            _unitsToInches), 3)).ToString("F3") +
+                        size = (Math.Round(_sizeShortEdge *
+                                            _unitsToInches, 3)).ToString("F3") +
                                             "\"";
                     }
                 }

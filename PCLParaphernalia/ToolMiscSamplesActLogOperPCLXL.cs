@@ -2589,7 +2589,7 @@ namespace PCLParaphernalia
 
             PCLXLWriter.text (prnWriter, flagUseMacros, true,
                               PCLXLWriter.advances_ArialRegular, ptSize,
-                              (_destBoxSide / 4), 0,
+                              _destBoxSide / 4, 0,
                               "O");
 
             //----------------------------------------------------------------//

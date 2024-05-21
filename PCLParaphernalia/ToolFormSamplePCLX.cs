@@ -621,7 +621,7 @@ namespace PCLParaphernalia
             //                                                            //
             //------------------------------------------------------------//
 
-            if ((flagRearForm) && (flagRearBPlate))
+            if (flagRearForm && flagRearBPlate)
             {
                 PCLXLWriter.pageBegin (prnWriter,
                                        indxPaperSize,

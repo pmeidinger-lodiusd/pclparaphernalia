@@ -25,12 +25,12 @@ namespace PCLParaphernalia
 
         const short _posXDesc = _pageOriginX;
         const short _posXData1 = _pageOriginX + ((7 * _incInch) / 3);
-        const short _posXData2 = _posXData1 + ((3 * _incInch / 2));
-        const short _posXData3 = _posXData2 + ((3 * _incInch / 2));
+        const short _posXData2 = _posXData1 + (3 * _incInch / 2);
+        const short _posXData3 = _posXData2 + (3 * _incInch / 2);
 
         const short _posYHddr = _pageOriginY;
         const short _posYDesc1 = _pageOriginY + (2 * _incInch);
-        const short _posYDesc2 = _pageOriginY + ((3 * _incInch / 2));
+        const short _posYDesc2 = _pageOriginY + (3 * _incInch / 2);
         const short _posYData = _pageOriginY + (2 * _incInch);
 
         const short _patternBase_300 = 300;

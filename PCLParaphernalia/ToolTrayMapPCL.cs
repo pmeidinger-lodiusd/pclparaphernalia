@@ -299,7 +299,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            posX  = (short)(((scaleFactor * _posXValue) - _logPageOffset));
+            posX  = (short)((scaleFactor * _posXValue) - _logPageOffset);
             posY -= (short)(scaleFactor * (_posXIncSub * 2));
 
             PCLWriter.rectangleOutline(prnWriter, posX, posY,
@@ -611,7 +611,7 @@ namespace PCLParaphernalia
             posYInc = (short)(scaleFactor * _posYIncMain);
 
             posX = (short)((scaleFactor *_posXValue) - _logPageOffset);
-            posY = (short)((scaleFactor *_posYDesc));
+            posY = (short)(scaleFactor * _posYDesc);
 
             PCLWriter.font (prnWriter, true,
                             "19U", "s0p" + pitchMain + "h0s3b4099T");

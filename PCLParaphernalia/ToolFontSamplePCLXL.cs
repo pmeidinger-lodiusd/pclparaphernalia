@@ -168,7 +168,7 @@ namespace PCLParaphernalia
                                                bool downloadFontRemove,
                                                string fontName)
         {
-            if ((downloadFont) && (downloadFontRemove))
+            if (downloadFont && downloadFontRemove)
             {
                 PCLXLWriter.fontRemove(prnWriter, false, fontName);
             }
@@ -1415,7 +1415,7 @@ namespace PCLParaphernalia
             int startCol;
             short rowSize;
 
-            if ((showC0Chars) || (sampleRangeOffset != 0))
+            if (showC0Chars || (sampleRangeOffset != 0))
                 startIndxMajor = indxMajorC0Start;
             else
                 startIndxMajor = indxMajorC0End;
@@ -1643,8 +1643,8 @@ namespace PCLParaphernalia
 
                     for (int indxMinor = 0; indxMinor < _gridDim; indxMinor++)
                     {
-                        codeVal = (ushort)(((indxMajor * _gridDim) +
-                                             indxMinor) + sampleRangeOffset);
+                        codeVal = (ushort)((indxMajor * _gridDim) +
+                                             indxMinor + sampleRangeOffset);
 
                         if (symSetUserSet)
                         {
@@ -1719,8 +1719,8 @@ namespace PCLParaphernalia
 
                     for (int indxMinor = 0; indxMinor < _gridDim; indxMinor++)
                     {
-                        codeVal = (ushort)(((indxMajor * _gridDim) +
-                                             indxMinor) + sampleRangeOffset);
+                        codeVal = (ushort)((indxMajor * _gridDim) +
+                                             indxMinor + sampleRangeOffset);
 
                         if (symSetUserSet)
                         {
