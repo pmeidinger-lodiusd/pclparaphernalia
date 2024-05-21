@@ -182,7 +182,7 @@ namespace PCLParaphernalia
                         firstSliceAfterCC,
                         nonGraphics,
                         knownCC;
-                ;
+                
 
                 string seq = string.Empty,
                        ccDesc = string.Empty;
