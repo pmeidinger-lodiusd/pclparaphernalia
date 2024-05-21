@@ -160,7 +160,7 @@ namespace PCLParaphernalia
                 //------------------------------------------------------------//
 
                 int sliceLen,
-                      crntOffset; ;
+                      crntOffset;
 
                 bool firstLine;
 
