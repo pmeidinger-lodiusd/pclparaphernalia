@@ -216,7 +216,7 @@ namespace PCLParaphernalia
                                   60);
 
             boxX = (short)((_unitsPerInch / 2) - logXOffset);
-            boxY = (short)(_unitsPerInch / 2);
+            boxY = _unitsPerInch / 2;
 
             boxWidth = (short)(_paperWidth - _unitsPerInch);
             boxHeight = (short)(_paperHeight - _unitsPerInch);
@@ -287,8 +287,8 @@ namespace PCLParaphernalia
             rectX = posX;
             rectY = posY;
 
-            rectHeight = (short)((_lineInc * 3) / 5);
-            rectWidth  = (short)((_unitsPerInch * 9) / 10);
+            rectHeight = (_lineInc * 3) / 5;
+            rectWidth  = (_unitsPerInch * 9) / 10;
 
             PCLWriter.patternTransparency(prnWriter, false);
 

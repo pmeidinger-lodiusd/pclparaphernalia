@@ -1163,7 +1163,7 @@ namespace PCLParaphernalia
 
             indBuf = 0;
 
-            symSetId = PCLSymbolSets.translateKind1ToId((ushort)symSetKind1);
+            symSetId = PCLSymbolSets.translateKind1ToId(symSetKind1);
             charSize = PCLXLWriter.getCharSize((float)pointSize);
             displayCharSize = charSize.ToString("F2");
 
@@ -1428,8 +1428,8 @@ namespace PCLParaphernalia
 
                 posX = (short)(_marginX + (_cellWidth * (startIndxMajor + 1)) +
                                           (_cellWidth / 3));
-                posY = (short)(_posYGrid + _cellHeight +
-                                          (_cellHeight * 2 / 3));
+                posY = _posYGrid + _cellHeight +
+                                          (_cellHeight * 2 / 3);
             }
             else
             {
@@ -1647,7 +1647,7 @@ namespace PCLParaphernalia
                         {
                             if (codeVal <= symSetUserMapMax)
                             {
-                                mapVal = symSetUserMap[(int)codeVal];
+                                mapVal = symSetUserMap[codeVal];
                             }
                             else
                             {
@@ -1723,7 +1723,7 @@ namespace PCLParaphernalia
                         {
                             if (codeVal <= symSetUserMapMax)
                             {
-                                mapVal = symSetUserMap[(int)codeVal];
+                                mapVal = symSetUserMap[codeVal];
                             }
                             else
                             {

@@ -4268,7 +4268,7 @@ namespace PCLParaphernalia
                             //                                                //
                             //------------------------------------------------//
 
-                            _attrDataVal = (int) iTot;
+                            _attrDataVal = iTot;
                         }
                     }
                 }

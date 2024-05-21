@@ -160,7 +160,7 @@ namespace PCLParaphernalia
                     (PCLFonts.getType(i) ==
                      PCLFonts.eFontType.PresetFamilyMember)))
                 {
-                    _subsetUnicodeFonts[index++] = (int)i;
+                    _subsetUnicodeFonts[index++] = i;
                     cbUnicodeFont.Items.Add(PCLFonts.getName(i));
                 }
             }

@@ -513,7 +513,7 @@ namespace PCLParaphernalia
 
             for (int j = 0; j < sliceSize; j++)
             {
-                uiSub = (byte) Buf[j];
+                uiSub = Buf[j];
                 uiTot = (uiTot << 8) | uiSub;
             }
 
@@ -542,7 +542,7 @@ namespace PCLParaphernalia
 
             for (int j = 0; j < sliceSize; j++)
             {
-                uiSub = (byte) Buf[j];
+                uiSub = Buf[j];
                 uiTot = (uiTot << 8) | uiSub;
             }
 
@@ -571,7 +571,7 @@ namespace PCLParaphernalia
 
             for (int j = 0; j < sliceSize; j++)
             {
-                uiSub = (byte) Buf[j];
+                uiSub = Buf[j];
                 uiTot = (uiTot << 8) | uiSub;
             }
 
@@ -600,7 +600,7 @@ namespace PCLParaphernalia
 
             for (int j = 0; j < sliceSize; j++)
             {
-                uiSub = (byte) Buf[j];
+                uiSub = Buf[j];
                 uiTot = (uiTot << 8) | uiSub;
             }
 
@@ -3100,15 +3100,15 @@ namespace PCLParaphernalia
                                 baseEndCode =
                                     (int) (subTabOffset + 14);
                                 baseStartCode =
-                                    (int) (baseEndCode + fmt4SegCountx2 + 2);
+                                     baseEndCode + fmt4SegCountx2 + 2;
                                 baseIdDelta =
-                                    (int) (baseStartCode + fmt4SegCountx2);
+                                     baseStartCode + fmt4SegCountx2;
                                 baseIdRangeOffset =
-                                    (int) (baseIdDelta + fmt4SegCountx2);
+                                     baseIdDelta + fmt4SegCountx2;
                                 baseGlyphIdArray =
-                                    (int) (baseIdRangeOffset + fmt4SegCountx2);
+                                     baseIdRangeOffset + fmt4SegCountx2;
                                 sizeGlyphIdArray =
-                                    (int) (fmt4Length - x);
+                                     fmt4Length - x;
                             }
                         }
                     }
@@ -4354,7 +4354,7 @@ namespace PCLParaphernalia
                                 " too short for " + nameRecCount  +
                                 " encoding records");
                         }
-                        else if ((uint)stringsOffset > tabLength)
+                        else if (stringsOffset > tabLength)
                         {
                             flagOK  = false;
 

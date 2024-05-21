@@ -369,10 +369,10 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            srcOffsetX = (short) (((_destBoxSide / 2) -
-                                    _sourceImagePixelsWidth) / 2);
-            srcOffsetY = (short) ((_destBoxSide -
-                                   _sourceImagePixelsHeight) / 2);
+            srcOffsetX = ((_destBoxSide / 2) -
+                                    _sourceImagePixelsWidth) / 2;
+            srcOffsetY = (_destBoxSide -
+                                   _sourceImagePixelsHeight) / 2;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -755,10 +755,10 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            srcOffsetX = (short) (((_destBoxSide / 2) -
-                                    _sourceImagePixelsWidth) / 2);
-            srcOffsetY = (short) ((_destBoxSide -
-                                   _sourceImagePixelsHeight) / 2);
+            srcOffsetX = ((_destBoxSide / 2) -
+                                    _sourceImagePixelsWidth) / 2;
+            srcOffsetY = (_destBoxSide -
+                                   _sourceImagePixelsHeight) / 2;
 
             //----------------------------------------------------------------//
 
@@ -766,7 +766,7 @@ namespace PCLParaphernalia
                                   PCLWriter.ePatternType.SolidBlack,
                                   -1);
 
-            PCLWriter.setROP (prnWriter, (byte) (_defaultROP));
+            PCLWriter.setROP (prnWriter, _defaultROP);
 
             ptSize = 10;
 
@@ -1298,10 +1298,10 @@ namespace PCLParaphernalia
             const ushort patWidth = 16; // multiple of 8
             const ushort patHeight = 16; // multiple of 8
 
-            const byte patWidthMS = (byte) ((patWidth >> 8) & 0xff);
-            const byte patWidthLS = (byte) (patWidth & 0xff);
-            const byte patHeightMS = (byte) ((patHeight >> 8) & 0xff);
-            const byte patHeightLS = (byte) (patHeight & 0xff);
+            const byte patWidthMS = (patWidth >> 8) & 0xff;
+            const byte patWidthLS = patWidth & 0xff;
+            const byte patHeightMS = (patHeight >> 8) & 0xff;
+            const byte patHeightLS = patHeight & 0xff;
 
             byte[] patternBase = { 0xC0, 0x01,      // row 00
                                     0xE0, 0x00,      //     01
@@ -1404,8 +1404,8 @@ namespace PCLParaphernalia
                 const byte format = 20;
                 const byte bitsPerPixel = 1;
 
-                const byte rasterResMS = (byte) ((rasterRes >> 8) & 0xff);
-                const byte rasterResLS = (byte) (rasterRes & 0xff);
+                const byte rasterResMS = (rasterRes >> 8) & 0xff;
+                const byte rasterResLS = rasterRes & 0xff;
 
                 byte[] hddrFmt_20 = { format,
                                       0x00,

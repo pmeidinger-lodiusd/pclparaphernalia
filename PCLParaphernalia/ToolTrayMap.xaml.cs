@@ -1185,7 +1185,7 @@ namespace PCLParaphernalia
 
         //  trayIdSetStore();
 
-            ToolTrayMapPersist.saveDataCommon((int)_indxPDL);
+            ToolTrayMapPersist.saveDataCommon(_indxPDL);
 
             ToolTrayMapPersist.saveDataPCLOpt (_formAsMacroPCL,
                                                _sheetCtPCL);

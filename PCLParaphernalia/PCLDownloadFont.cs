@@ -501,7 +501,7 @@ namespace PCLParaphernalia
                 double dotsK = 0.0;
 
                 dotsQtr = (ushort)((hddr[16] << 8) + hddr[17]);
-                dotsExt = (ushort)(hddr[40]);
+                dotsExt = hddr[40];
                 dotsK = (dotsQtr << 8) + dotsExt;
 
                 if ((dotsQtr == 0) && (dotsExt == 0))
@@ -515,7 +515,7 @@ namespace PCLParaphernalia
                 }
 
                 dotsQtr = (ushort)((hddr[18] << 8) + hddr[19]);
-                dotsExt = (ushort)(hddr[41]);
+                dotsExt = hddr[41];
 
                 if ((dotsQtr == 0) && (dotsExt == 0))
                 {
@@ -536,7 +536,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             style = (ushort)((hddr[4] << 8) + hddr[23]);
-            weight = (short)hddr[24];
+            weight = hddr[24];
             typeface = (ushort)((hddr[26] << 8) + hddr[25]);
 
             //----------------------------------------------------------------//

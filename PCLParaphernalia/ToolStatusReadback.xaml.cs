@@ -705,7 +705,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < _ctPJLCommands; i++)
             {
-                indxCmd = (PJLCommands.eCmdIndex) _subsetPJLCommands[i];
+                indxCmd = _subsetPJLCommands[i];
 
                 cbPJLCommand.Items.Add (PJLCommands.getName (indxCmd));
             }
@@ -718,7 +718,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < _ctPJLFSCommands; i++)
             {
-                indxCmd = (PJLCommands.eCmdIndex) _subsetPJLFSCommands[i];
+                indxCmd = _subsetPJLFSCommands[i];
 
                 cbPJLFSCommand.Items.Add (PJLCommands.getName (indxCmd));
             }

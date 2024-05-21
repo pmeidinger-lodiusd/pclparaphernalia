@@ -531,7 +531,7 @@ namespace PCLParaphernalia
 
             flagOK = writeHddrSegHddr (pdlIsPCLXL,
                                        fmt16,
-                                       (uint)cSizeSegCC,
+                                       cSizeSegCC,
                                        segId,
                                        ref sumMod256);
 
@@ -618,7 +618,7 @@ namespace PCLParaphernalia
 
             flagOK = writeHddrSegHddr (pdlIsPCLXL,
                                        fmt16,
-                                       (uint)cSizeSegGC,
+                                       cSizeSegGC,
                                        segId,
                                        ref sumMod256);
 
@@ -684,7 +684,7 @@ namespace PCLParaphernalia
 
             flagOK = writeHddrSegHddr (pdlIsPCLXL,
                                        fmt16,
-                                       (uint) segLenGT,
+                                        segLenGT,
                                        segId,
                                        ref sumMod256);
 
@@ -711,7 +711,7 @@ namespace PCLParaphernalia
                                           (ushort)numTables,
                                           ref sumMod256);
 
-                crntOffset = (uint)(cSizeSegGTDirHddr + sizeDirectory);
+                crntOffset = cSizeSegGTDirHddr + sizeDirectory;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1281,7 +1281,7 @@ namespace PCLParaphernalia
 
             flagOK = writeHddrSegHddr (pdlIsPCLXL,
                                        fmt16,
-                                       (uint)cSizeSegPA,
+                                       cSizeSegPA,
                                        segId,
                                        ref sumMod256);
 
@@ -1363,7 +1363,7 @@ namespace PCLParaphernalia
 
             flagOK = writeHddrSegHddr (pdlIsPCLXL,
                                        fmt16,
-                                       (uint) cSizeSegVR,
+                                        cSizeSegVR,
                                        segId,
                                        ref sumMod256);
 

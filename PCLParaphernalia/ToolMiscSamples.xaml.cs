@@ -1043,7 +1043,7 @@ namespace PCLParaphernalia
             pdlOptionsStore();
 
             ToolMiscSamplesPersist.saveDataCommon(_indxPDL,
-                                                  (int)_indxSampleType);
+                                                  _indxSampleType);
 
             ToolMiscSamplesPersist.saveDataCommonPDL (
                 "PCL",
@@ -1220,10 +1220,10 @@ namespace PCLParaphernalia
                 _paperMarginsLogicalTop  = 0;
 
                 _paperWidthPhysical =
-                    (ushort)(_paperSizeShortEdge);
+                    _paperSizeShortEdge;
 
                 _paperLengthPhysical =
-                    (ushort)(_paperSizeLongEdge);
+                    _paperSizeLongEdge;
 
                 _paperWidthPrintable =
                     (ushort)(_paperSizeShortEdge -
@@ -1238,7 +1238,7 @@ namespace PCLParaphernalia
                              (_paperMarginsLogicalPort * 2));
 
                 _paperLengthLogical =
-                    (ushort)(_paperSizeLongEdge);
+                    _paperSizeLongEdge;
             }
             else
             {
@@ -1246,10 +1246,10 @@ namespace PCLParaphernalia
                 _paperMarginsLogicalTop = 0;
 
                 _paperWidthPhysical =
-                    (ushort)(_paperSizeLongEdge);
+                    _paperSizeLongEdge;
 
                 _paperLengthPhysical =
-                    (ushort)(_paperSizeShortEdge);
+                    _paperSizeShortEdge;
 
                 _paperWidthPrintable =
                     (ushort)(_paperSizeLongEdge -
@@ -1264,7 +1264,7 @@ namespace PCLParaphernalia
                              (_paperMarginsLogicalLand * 2));
 
                 _paperLengthLogical =
-                    (ushort)(_paperSizeShortEdge);
+                    _paperSizeShortEdge;
             }
         }
      }

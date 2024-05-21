@@ -661,7 +661,7 @@ namespace PCLParaphernalia
         {
             pdlOptionsStore();
 
-            ToolPrintAreaPersist.saveDataCommon((int)_indxPDL);
+            ToolPrintAreaPersist.saveDataCommon(_indxPDL);
 
             ToolPrintAreaPersist.saveDataPCL("PCL",
                                              _indxOrientationPCL,
@@ -1156,7 +1156,7 @@ namespace PCLParaphernalia
                 lengthPrintable = (ushort)(sizeLongEdge -
                                           (marginsUnprintable * 2));
 
-                lengthLogical   = (ushort)sizeLongEdge;
+                lengthLogical   = sizeLongEdge;
             }
             else
             {
@@ -1171,7 +1171,7 @@ namespace PCLParaphernalia
                 lengthPrintable = (ushort)(sizeShortEdge -
                                           (marginsUnprintable * 2));
 
-                lengthLogical   = (ushort)sizeShortEdge;
+                lengthLogical   = sizeShortEdge;
             }
 
             //----------------------------------------------------------------//

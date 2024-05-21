@@ -157,8 +157,8 @@ namespace PCLParaphernalia
                 indxClrBack = indxClrMapBack[i];
                 indxClrFore = indxClrMapFore[i];
 
-                pInfoBack = stdClrsPropertyInfo[indxClrBack] as PropertyInfo;
-                pInfoFore = stdClrsPropertyInfo[indxClrFore] as PropertyInfo;
+                pInfoBack = stdClrsPropertyInfo[indxClrBack];
+                pInfoFore = stdClrsPropertyInfo[indxClrFore];
 
                 classes[i] = rowType;
                 clrBack[i] = pInfoBack.Name;
