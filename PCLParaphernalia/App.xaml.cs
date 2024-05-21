@@ -23,7 +23,7 @@ namespace PCLParaphernalia
         {
             string filename = string.Empty;
 
-            int argCt = e.Args.Count();
+            int argCt = e.Args.Length;
 
             if (argCt != 0)
             {
