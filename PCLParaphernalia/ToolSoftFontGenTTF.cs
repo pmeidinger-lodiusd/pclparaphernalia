@@ -1437,13 +1437,9 @@ namespace PCLParaphernalia
                     text_OS_2_panose);
 
                 if (_post_isFixedPitch == 0)
-                    text_post = "post | isFixedPitch = 0x" +
-                                _post_isFixedPitch.ToString ("x8") +
-                                " (= proportionally-spaced)";
+                    text_post = "post | isFixedPitch = 0x" + _post_isFixedPitch.ToString ("x8") + " (= proportionally-spaced)";
                 else
-                    text_post = "post | isFixedPitch = 0x" +
-                                _post_isFixedPitch.ToString ("x8") +
-                                " (= fixed-pitch)";
+                    text_post = "post | isFixedPitch = 0x" + _post_isFixedPitch.ToString ("x8") + " (= fixed-pitch)";
 
                 ToolSoftFontGenLog.logNameAndValue (
                     _tableDonor, false, false,
@@ -3164,28 +3160,18 @@ namespace PCLParaphernalia
                     }
                 }
 
-                flagOK = readByteArray (baseEndCode,
-                                        fmt4SegCountx2,
-                                        ref indexEndCode);
+                flagOK = readByteArray (baseEndCode, fmt4SegCountx2, ref indexEndCode);
                 if (flagOK)
-                    flagOK = readByteArray (baseStartCode,
-                                            fmt4SegCountx2,
-                                            ref indexStartCode);
+                    flagOK = readByteArray (baseStartCode, fmt4SegCountx2, ref indexStartCode);
 
                 if (flagOK)
-                    flagOK = readByteArray (baseIdDelta,
-                                            fmt4SegCountx2,
-                                            ref indexIdDelta);
+                    flagOK = readByteArray (baseIdDelta, fmt4SegCountx2, ref indexIdDelta);
 
                 if (flagOK)
-                    flagOK = readByteArray (baseIdRangeOffset,
-                                            fmt4SegCountx2,
-                                            ref indexIdRangeOffset);
+                    flagOK = readByteArray (baseIdRangeOffset, fmt4SegCountx2, ref indexIdRangeOffset);
 
                 if (flagOK)
-                    flagOK = readByteArray (baseGlyphIdArray,
-                                            sizeGlyphIdArray,
-                                            ref glyphIdArray);
+                    flagOK = readByteArray (baseGlyphIdArray, sizeGlyphIdArray, ref glyphIdArray);
 
                 if (flagOK)
                 {

@@ -613,8 +613,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if ((_indxOrientationPCL < 0) ||
-                (_indxOrientationPCL >= _ctOrientations))
+            if ((_indxOrientationPCL < 0) || (_indxOrientationPCL >= _ctOrientations))
                 _indxOrientationPCL = 0;
 
             if ((_indxPaperSizePCL < 0) || (_indxPaperSizePCL >= _ctPaperSizes))

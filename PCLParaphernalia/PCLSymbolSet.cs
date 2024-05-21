@@ -115,9 +115,7 @@ namespace PCLParaphernalia
             get
             {
                 if (! _mapped)
-                {
                     return false;
-                }
                 else if (PCLSymSetMaps.nullMapPCL((int)_mapId))
                     return false;
                 else

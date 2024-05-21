@@ -199,11 +199,9 @@ namespace PCLParaphernalia
             if (charCollVal == 0)
             {
                 if (complement)
-                    codeDesc = "All bits unset - compatible with any" +
-                               " character set";
+                    codeDesc = "All bits unset - compatible with any" + " character set";
                 else
-                    codeDesc = "All bits unset - compatible with any" +
-                               " typeface";
+                    codeDesc = "All bits unset - compatible with any" + " typeface";
 
                 PrnParseCommon.addTextRow (
                     rowType,

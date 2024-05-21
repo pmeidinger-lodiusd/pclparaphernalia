@@ -1897,17 +1897,11 @@ namespace PCLParaphernalia
                                          bool nameAsHddr)
         {
             if (rptFileFmt == eRptFileFmt.html)
-                tableRowPairHtml ((HtmlTextWriter)writer,
-                                  txtName, txtVal,
-                                  colSpanName, colSpanVal,
-                                  blankBefore, blankAfter, nameAsHddr);
+                tableRowPairHtml ((HtmlTextWriter)writer, txtName, txtVal, colSpanName, colSpanVal, blankBefore, blankAfter, nameAsHddr);
             else if (rptFileFmt == eRptFileFmt.xml)
-                tableRowPairXml ((XmlWriter)writer, txtName, txtVal,
-                                 colSpanName, colSpanVal,
-                                 blankBefore, blankAfter, nameAsHddr);
+                tableRowPairXml ((XmlWriter)writer, txtName, txtVal, colSpanName, colSpanVal, blankBefore, blankAfter, nameAsHddr);
             else
-                tableRowPairText ((StreamWriter)writer, txtName, txtVal,
-                                  sizeName, sizeVal, blankBefore);
+                tableRowPairText ((StreamWriter)writer, txtName, txtVal, sizeName, sizeVal, blankBefore);
         }
 
         //--------------------------------------------------------------------//

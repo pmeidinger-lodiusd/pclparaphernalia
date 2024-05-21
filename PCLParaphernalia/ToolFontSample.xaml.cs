@@ -4521,10 +4521,8 @@ namespace PCLParaphernalia
             else
                 selSeqAttr = "<Esc>(" + _fontSelSeqPCL;
 
-            if ((_symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet) &&
-                (! _symSetUserActEmbedPCL))
-                symSetId = PCLSymbolSets.getId(
-                                    PCLSymbolSets.IndexUnicode);
+            if ((_symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet) && (! _symSetUserActEmbedPCL))
+                symSetId = PCLSymbolSets.getId(PCLSymbolSets.IndexUnicode);
             else
                 symSetId = _symSetId;
 

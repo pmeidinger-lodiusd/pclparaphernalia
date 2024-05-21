@@ -1627,8 +1627,7 @@ namespace PCLParaphernalia
 
             if (_indxCharSetName == PrnParseConstants.eOptCharSets.ASCII)
                 rbCharSetNameASCII.IsChecked = true;
-            else if (_indxCharSetName ==
-                PrnParseConstants.eOptCharSets.ISO_8859_1)
+            else if (_indxCharSetName == PrnParseConstants.eOptCharSets.ISO_8859_1)
                 rbCharSetNameISO88591.IsChecked = true;
             else
                 rbCharSetNameWinANSI.IsChecked = true;
@@ -2812,8 +2811,7 @@ namespace PCLParaphernalia
             OK = int.TryParse (crntText, out int value);
 
             if (OK && (value != -1))
-                if ((value > _fileSize)            ||
-                    (value < _valCurFOffsetStart))
+                if ((value > _fileSize) || (value < _valCurFOffsetStart))
                     OK = false;
 
             if (OK)

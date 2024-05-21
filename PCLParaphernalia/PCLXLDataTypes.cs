@@ -192,8 +192,7 @@ namespace PCLParaphernalia
                 {
                     if (incUsedSeqsOnly)
                         displaySeq = false;
-                    else if (excUnusedResTags &&
-                             (kvp.Value.FlagReserved))
+                    else if (excUnusedResTags && (kvp.Value.FlagReserved))
                         displaySeq = false;
                 }
 
