@@ -102,7 +102,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static List<PCLSymSetMap> _sets =
+        private static readonly List<PCLSymSetMap> _sets =
             new List<PCLSymSetMap> ();
 
         //--------------------------------------------------------------------//

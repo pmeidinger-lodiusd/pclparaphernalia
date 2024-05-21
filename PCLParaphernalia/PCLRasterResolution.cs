@@ -18,7 +18,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private ushort _resolution;
+        private readonly ushort _resolution;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

@@ -18,14 +18,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private PCLTextParsingMethods.eIndex _indxMethod;
+        private readonly PCLTextParsingMethods.eIndex _indxMethod;
 
-        private short _value;
+        private readonly short _value;
 
-        private string _desc;
+        private readonly string _desc;
 
-        private ushort[] _rangeDataSingle;
-        private ushort[] _rangeDataDouble;
+        private readonly ushort[] _rangeDataSingle;
+        private readonly ushort[] _rangeDataDouble;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

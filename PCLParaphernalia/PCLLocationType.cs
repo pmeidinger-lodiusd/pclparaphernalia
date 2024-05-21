@@ -18,9 +18,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private PCLLocationTypes.eType _locationType;
-        private string _locationName;
-        private string _locationIdPCL;
+        private readonly PCLLocationTypes.eType _locationType;
+        private readonly string _locationName;
+        private readonly string _locationIdPCL;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

@@ -56,7 +56,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static PCLXLPalette[] _palettes = 
+        private static readonly PCLXLPalette[] _palettes = 
         {
             new PCLXLPalette ("Gray",
                               true,
@@ -67,7 +67,7 @@ namespace PCLParaphernalia
                               16)   // include 8 'pure' colours + 8 grays
         };
 
-        private static int _paletteCount =
+        private static readonly int _paletteCount =
             _palettes.GetUpperBound (0) + 1;
 
         //--------------------------------------------------------------------//

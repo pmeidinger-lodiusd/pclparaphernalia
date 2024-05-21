@@ -157,7 +157,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static SortedList<int, PCLXLAttribute> _tags =
+        private static readonly SortedList<int, PCLXLAttribute> _tags =
             new SortedList<int, PCLXLAttribute>();
 
         private static PCLXLAttribute _tagUnknown;

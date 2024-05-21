@@ -18,8 +18,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private PrnParseRowTypes.eType _rowType;
-        private string _rowTypeDesc;
+        private readonly PrnParseRowTypes.eType _rowType;
+        private readonly string _rowTypeDesc;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

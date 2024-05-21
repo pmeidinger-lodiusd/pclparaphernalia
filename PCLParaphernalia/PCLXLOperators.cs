@@ -143,7 +143,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static SortedList<byte, PCLXLOperator> _tags =
+        private static readonly SortedList<byte, PCLXLOperator> _tags =
             new SortedList<byte, PCLXLOperator>();
 
         private static PCLXLOperator _tagUnknown;

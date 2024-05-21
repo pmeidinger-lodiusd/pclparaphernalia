@@ -32,13 +32,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private PCLPaperSizes.eIndex _paperSizeIndex;
+        private readonly PCLPaperSizes.eIndex _paperSizeIndex;
 
-        private string _paperSizeName;
+        private readonly string _paperSizeName;
         private string _paperSizeDesc;
-        private byte _paperSizeIdPCL;
-        private byte _paperSizeIdPCLXL;
-        private string _paperSizeNamePCLXL;
+        private readonly byte _paperSizeIdPCL;
+        private readonly byte _paperSizeIdPCLXL;
+        private readonly string _paperSizeNamePCLXL;
 
         private bool _paperSizeIsMetric;
         private bool _paperSizeIsRare;

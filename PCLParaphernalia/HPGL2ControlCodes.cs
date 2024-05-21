@@ -21,7 +21,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static SortedList<byte, HPGL2ControlCode> _tags =
+        private static readonly SortedList<byte, HPGL2ControlCode> _tags =
             new SortedList<byte, HPGL2ControlCode>();
 
         private static HPGL2ControlCode _tagUnknown;

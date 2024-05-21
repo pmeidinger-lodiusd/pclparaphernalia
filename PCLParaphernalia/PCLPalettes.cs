@@ -61,7 +61,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static PCLPalette[] _palettes = 
+        private static readonly PCLPalette[] _palettes = 
         {
             new PCLPalette ("Monochrome",
                             true,
@@ -79,7 +79,7 @@ namespace PCLParaphernalia
                             8)
         };
 
-        private static int _paletteCount =
+        private static readonly int _paletteCount =
             _palettes.GetUpperBound (0) + 1;
 
         //--------------------------------------------------------------------//

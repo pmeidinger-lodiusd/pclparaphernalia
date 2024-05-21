@@ -18,10 +18,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private short _idAutoSelect;
-        private short _idDefault;
-        private short _idMaximum;
-        private short _idNotSet;
+        private readonly short _idAutoSelect;
+        private readonly short _idDefault;
+        private readonly short _idMaximum;
+        private readonly short _idNotSet;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

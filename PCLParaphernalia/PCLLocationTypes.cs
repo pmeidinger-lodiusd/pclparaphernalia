@@ -28,7 +28,7 @@ namespace PCLParaphernalia
             ROMDevice
         }
 
-        private static PCLLocationType[] _locationTypes = 
+        private static readonly PCLLocationType[] _locationTypes = 
         {
             new PCLLocationType(eType.All,            "2",
                                 "All locations"),
@@ -44,7 +44,7 @@ namespace PCLParaphernalia
                                 "SIMMs/DIMMs")
         };
         
-        private static int _locationTypeCount =
+        private static readonly int _locationTypeCount =
             _locationTypes.GetUpperBound(0) + 1;
         
         //--------------------------------------------------------------------//

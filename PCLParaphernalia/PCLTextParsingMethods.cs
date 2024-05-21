@@ -53,7 +53,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static PCLTextParsingMethod[] _methods = 
+        private static readonly PCLTextParsingMethod[] _methods = 
         {
             //----------------------------------------------------------------//
             //                                                                //
@@ -112,7 +112,7 @@ namespace PCLParaphernalia
                                       new ushort [] {0x0100, 0xffff})
         };
 
-        private static int _methodCount =
+        private static readonly int _methodCount =
             _methods.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//

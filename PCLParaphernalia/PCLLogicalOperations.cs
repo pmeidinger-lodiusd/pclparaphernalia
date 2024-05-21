@@ -24,7 +24,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static PCLLogicalOperation [] _rops =
+        private static readonly PCLLogicalOperation [] _rops =
         {
             new PCLLogicalOperation (  0, 0x0042,
                                      "0"          , "Black"),
@@ -540,7 +540,7 @@ namespace PCLParaphernalia
                                      "1"          , "White")
         };
 
-        private static int _ropCount = _rops.GetUpperBound(0) + 1;
+        private static readonly int _ropCount = _rops.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

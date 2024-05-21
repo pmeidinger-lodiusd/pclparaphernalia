@@ -18,9 +18,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private PCLEntityTypes.eType _entityType;
-        private string _entityName;
-        private string _entityIdPCL;
+        private readonly PCLEntityTypes.eType _entityType;
+        private readonly string _entityName;
+        private readonly string _entityIdPCL;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

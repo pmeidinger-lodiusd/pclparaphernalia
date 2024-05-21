@@ -86,7 +86,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static SortedList<string, PJLCommand> _cmds =
+        private static readonly SortedList<string, PJLCommand> _cmds =
             new SortedList<string, PJLCommand> ();
 
         private static PJLCommand _cmdUnknown;

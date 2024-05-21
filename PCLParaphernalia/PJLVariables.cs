@@ -27,7 +27,7 @@ namespace PCLParaphernalia
             PS
         }
 
-        private static PJLVariable[] _vars = 
+        private static readonly PJLVariable[] _vars = 
         {
             new PJLVariable(eVarType.Custom,
                             "<specify value>"),
@@ -258,7 +258,7 @@ namespace PCLParaphernalia
                             "RESOURCESAVESIZE")
         };
         
-        private static int _varCount = _vars.GetUpperBound(0) + 1;
+        private static readonly int _varCount = _vars.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

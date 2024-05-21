@@ -24,7 +24,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private uint _tag;
+        private readonly uint _tag;
         private uint _checksum;
         private uint _offset;
         private uint _length;

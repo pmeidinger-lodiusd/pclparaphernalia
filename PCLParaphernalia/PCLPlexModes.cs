@@ -42,7 +42,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static PCLPlexMode[] _plexModes = 
+        private static readonly PCLPlexMode[] _plexModes = 
         {
             new PCLPlexMode (ePlexType.Simplex,
                              "Simplex",
@@ -61,7 +61,7 @@ namespace PCLParaphernalia
                              (byte) PCLXLAttrEnums.eVal.eDuplexHorizontalBinding)
         };
 
-        private static int _plexModeCount =
+        private static readonly int _plexModeCount =
             _plexModes.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//

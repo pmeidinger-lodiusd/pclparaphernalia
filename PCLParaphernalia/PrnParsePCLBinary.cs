@@ -27,9 +27,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        PrnParseFontHddrPCL _parseFontHddrPCL;
+        readonly PrnParseFontHddrPCL _parseFontHddrPCL;
 
-        private ASCIIEncoding _ascii = new ASCIIEncoding();
+        private readonly ASCIIEncoding _ascii = new ASCIIEncoding();
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

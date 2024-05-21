@@ -20,10 +20,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private PJLCommands.eRequestType _reqType;
-        private PJLCommands.eCmdFormat   _cmdFormat;
-        private string _cmdName;
-        private string _cmdDesc;
+        private readonly PJLCommands.eRequestType _reqType;
+        private readonly PJLCommands.eCmdFormat   _cmdFormat;
+        private readonly string _cmdName;
+        private readonly string _cmdDesc;
 
         private int _statsCtParent;
         private int _statsCtChild;

@@ -23,12 +23,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private byte _tag;
+        private readonly byte _tag;
 
-        private string _description;
-        private string _mnemonic;
+        private readonly string _description;
+        private readonly string _mnemonic;
 
-        private bool _noOp;
+        private readonly bool _noOp;
 
         private int _statsCtParent;
         private int _statsCtChild;

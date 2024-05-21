@@ -111,13 +111,13 @@ namespace PCLParaphernalia
             Unknown = 31
         }
 
-        private static ushort[] symSets_Dummy = new ushort[]
+        private static readonly ushort[] symSets_Dummy = new ushort[]
             { 0xffff };
 
-        private static ushort[] symSets_Unicode = new ushort[]
+        private static readonly ushort[] symSets_Unicode = new ushort[]
             { PCLSymbolSets.translateIdToKind1("18N") };
 
-        private static ushort[] symSets_Europe = new ushort[]
+        private static readonly ushort[] symSets_Europe = new ushort[]
             { PCLSymbolSets.translateIdToKind1("0D"),
               PCLSymbolSets.translateIdToKind1("0H"),
               PCLSymbolSets.translateIdToKind1("0I"),
@@ -171,7 +171,7 @@ namespace PCLParaphernalia
               PCLSymbolSets.translateIdToKind1("26U")
             };
 
-        private static ushort[] symSets_Europe_Not_Hebrew_Greek_Cyrillic = new ushort[]
+        private static readonly ushort[] symSets_Europe_Not_Hebrew_Greek_Cyrillic = new ushort[]
             { PCLSymbolSets.translateIdToKind1("0D"),
               PCLSymbolSets.translateIdToKind1("0I"),
               PCLSymbolSets.translateIdToKind1("0N"),
@@ -212,7 +212,7 @@ namespace PCLParaphernalia
               PCLSymbolSets.translateIdToKind1("26U")
             };
 
-        private static ushort[] symSets_Arabic = new ushort[]
+        private static readonly ushort[] symSets_Arabic = new ushort[]
             { PCLSymbolSets.translateIdToKind1("0U"),
               PCLSymbolSets.translateIdToKind1("5M"),
               PCLSymbolSets.translateIdToKind1("8M"),
@@ -222,7 +222,7 @@ namespace PCLParaphernalia
               PCLSymbolSets.translateIdToKind1("11N")
             };
 
-        private static ushort[] symSets_Hebrew = new ushort[]
+        private static readonly ushort[] symSets_Hebrew = new ushort[]
             { PCLSymbolSets.translateIdToKind1("0H"),
               PCLSymbolSets.translateIdToKind1("0U"),
               PCLSymbolSets.translateIdToKind1("5M"),
@@ -239,7 +239,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static List<PCLFont> _fonts =
+        private static readonly List<PCLFont> _fonts =
             new List<PCLFont> ();
 
         private static int _fontsCount;
