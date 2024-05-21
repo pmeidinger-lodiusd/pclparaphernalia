@@ -126,7 +126,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="HPGL2Command.cs" />
     <Compile Include="HPGL2Commands.cs" />
     <Compile Include="HPGL2ControlCode.cs" />
