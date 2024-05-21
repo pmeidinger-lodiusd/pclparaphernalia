@@ -195,19 +195,9 @@ namespace PCLParaphernalia
                                           string[]    rowClrFore)
         {
             if (rptFileFmt == eRptFileFmt.html)
-                docInitialiseHtml ((HtmlTextWriter)writer,
-                                   ctRowClrStyles,
-                                   rowClasses,
-                                   rowClrBack,
-                                   rowClrFore);
+                docInitialiseHtml ((HtmlTextWriter)writer, ctRowClrStyles, rowClasses, rowClrBack, rowClrFore);
             else if (rptFileFmt == eRptFileFmt.xml)
-                docInitialiseXml ((XmlWriter)writer,
-                                   useTables,
-                                   useLines,
-                                   ctRowClrStyles,
-                                   rowClasses,
-                                   rowClrBack,
-                                   rowClrFore);
+                docInitialiseXml ((XmlWriter)writer, useTables, useLines, ctRowClrStyles, rowClasses, rowClrBack, rowClrFore);
             else
                 docInitialiseText ((StreamWriter)writer);
         }

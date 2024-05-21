@@ -1459,7 +1459,9 @@ namespace PCLParaphernalia
             OK = double.TryParse(crntText, out double value);
 
             if ((value < minVal) || (value > maxVal))
+            {
                 OK = false;
+            }
             else
             {
                 valueDots = (ushort)(value * scaleToDots);
@@ -1625,7 +1627,9 @@ namespace PCLParaphernalia
             OK = double.TryParse(crntText, out double value);
 
             if ((value < minVal) || (value > maxVal))
+            {
                 OK = false;
+            }
             else
             {
                 valueDots = (ushort)(value * scaleToDots);

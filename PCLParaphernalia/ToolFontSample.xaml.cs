@@ -4786,11 +4786,15 @@ namespace PCLParaphernalia
                 else
                 {
                     if (proportional)
+                    {
                         // Bitmap; proportionally-spaced
-                        seq += height.ToString ("F2") + "v";
+                        seq += height.ToString("F2") + "v";
+                    }
                     else
+                    {    
                         // Bitmap; fixed-pitch
-                        seq += height.ToString ("F2") + "v" + pitch.ToString ("F2") + "h";
+                        seq += height.ToString("F2") + "v" + pitch.ToString("F2") + "h";
+                    }
                 }
 
                 seq += style.ToString () + "s" +
