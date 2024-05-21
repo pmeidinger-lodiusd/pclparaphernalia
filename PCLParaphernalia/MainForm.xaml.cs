@@ -185,19 +185,19 @@ namespace PCLParaphernalia
 
             TargetCore.InitialiseSettings();
 
-            if (TargetCore.GetType() == TargetCore.Target.File)
+            if (TargetCore.GetTargetType() == TargetCore.Target.File)
             {
                 menuItemTargetFile.IsChecked = true;
                 menuItemTargetNetPrinter.IsChecked = false;
                 menuItemTargetWinPrinter.IsChecked = false;
             }
-            else if (TargetCore.GetType() == TargetCore.Target.NetPrinter)
+            else if (TargetCore.GetTargetType() == TargetCore.Target.NetPrinter)
             {
                 menuItemTargetFile.IsChecked = false;
                 menuItemTargetNetPrinter.IsChecked = true;
                 menuItemTargetWinPrinter.IsChecked = false;
             }
-            else if (TargetCore.GetType() == TargetCore.Target.WinPrinter)
+            else if (TargetCore.GetTargetType() == TargetCore.Target.WinPrinter)
             {
                 menuItemTargetFile.IsChecked = false;
                 menuItemTargetNetPrinter.IsChecked = false;

@@ -63,7 +63,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Target GetType()
+        public static Target GetTargetType()
         {
             return _targetType;
         }

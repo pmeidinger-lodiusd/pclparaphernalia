@@ -215,7 +215,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                _targetType = TargetCore.GetType();
+                _targetType = TargetCore.GetTargetType();
 
                 if (_targetType == TargetCore.Target.File)
                 {
@@ -1084,7 +1084,7 @@ namespace PCLParaphernalia
 
         public void resetTarget()
         {
-            TargetCore.Target targetType = TargetCore.GetType();
+            TargetCore.Target targetType = TargetCore.GetTargetType();
 
             if (targetType == TargetCore.Target.File)
             {

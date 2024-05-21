@@ -1781,7 +1781,7 @@ namespace PCLParaphernalia
 
         public void ResetTarget()
         {
-            TargetCore.Target targetType = TargetCore.GetType();
+            TargetCore.Target targetType = TargetCore.GetTargetType();
 
             if (targetType == TargetCore.Target.File)
             {
