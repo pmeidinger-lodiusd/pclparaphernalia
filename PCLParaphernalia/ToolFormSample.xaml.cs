@@ -1359,12 +1359,16 @@ namespace PCLParaphernalia
                 chkPCLXLGSPushPop.IsChecked = _flagGSPushPopPCLXL;
 
                 if (_flagRearFormPCLXL)
+                {
                     if (_flagMainFormPCLXL)
                         rbPCLXLOptFormBoth.IsChecked = true;
                     else
                         rbPCLXLOptFormRear.IsChecked = true;
+                }
                 else
+                {
                     rbPCLXLOptFormMain.IsChecked = true;
+                }
 
                 if (_flagMainFormPCLXL)
                     grpPCLXLMainFormData.Visibility = Visibility.Visible;

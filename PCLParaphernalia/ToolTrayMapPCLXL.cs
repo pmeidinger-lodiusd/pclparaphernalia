@@ -862,12 +862,18 @@ namespace PCLParaphernalia
             posY += posYInc;
 
             if (indxPaperType >= PCLPaperTypes.getCount())
+            {
                 tmpStr = "*** unknown ***";
+            }
             else if (PCLPaperTypes.getType(indxPaperType) ==
-                    PCLPaperTypes.eEntryType.NotSet)
+                                PCLPaperTypes.eEntryType.NotSet)
+            {
                 tmpStr = "<not set>";
+            }
             else
+            {
                 tmpStr = PCLPaperTypes.getName(indxPaperType);
+            }
 
             PCLXLWriter.Text(prnWriter, false, false,
                        PCLXLWriter.advances_Courier, ptSizeMain,

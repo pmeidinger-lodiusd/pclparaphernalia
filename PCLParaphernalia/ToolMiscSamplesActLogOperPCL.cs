@@ -195,11 +195,15 @@ namespace PCLParaphernalia
             if (flagOptColour)
             {
                 if (idClrT1 == idClrBlack)                                   // ***** DO WE NEED TO DISTINGUISH THIS *****
+                {
                     writePattern(prnWriter, _patternId, idClrT1, idClrT2,
-                                  false);
+                                                  false);
+                }
                 else
+                {
                     writePattern(prnWriter, _patternId, idClrT1, idClrT2,
-                                  true);
+                                                  true);
+                }
             }
             else
             {
@@ -469,11 +473,15 @@ namespace PCLParaphernalia
                                       posX,
                                       posY);
             if (flagUseMacros)
+            {
                 PCLWriter.macroControl(prnWriter, _macroIdDestBox,
-                                        PCLWriter.eMacroControl.Call);
+                                                    PCLWriter.eMacroControl.Call);
+            }
             else
+            {
                 writeDestBox(prnWriter, idClrD1, idClrD2, idClrBlack,
-                              flagOptColour, false);
+                                          flagOptColour, false);
+            }
 
             if (flagOptColour)
                 PCLWriter.setForegroundColour(prnWriter, idClrBlack);
@@ -614,10 +622,14 @@ namespace PCLParaphernalia
                                       posY);
 
             if (flagUseMacros)
+            {
                 PCLWriter.macroControl(prnWriter, _macroIdDestBoxRowHddr,
-                                        PCLWriter.eMacroControl.Call);
+                                                    PCLWriter.eMacroControl.Call);
+            }
             else
+            {
                 writeDestBoxRowHddr(prnWriter, false);
+            }
 
             posY += _incInch / 3;
 
@@ -644,11 +656,15 @@ namespace PCLParaphernalia
                                       posY);
 
             if (flagUseMacros)
+            {
                 PCLWriter.macroControl(prnWriter, _macroIdDestBoxRow,
-                                        PCLWriter.eMacroControl.Call);
+                                                    PCLWriter.eMacroControl.Call);
+            }
             else
+            {
                 writeDestBoxRow(prnWriter, idClrD1, idClrD2, idClrBlack,
-                                 flagOptColour, false);
+                                             flagOptColour, false);
+            }
 
             //----------------------------------------------------------------//
 
@@ -680,8 +696,10 @@ namespace PCLParaphernalia
                                         PCLWriter.eMacroControl.Call);
             }
             else
+            {
                 writeSrcBoxRow(prnWriter, idClrS1, idClrS2, idClrBlack,
-                                flagOptColour, false);
+                                            flagOptColour, false);
+            }
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -796,11 +814,15 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (flagUseMacros)
+            {
                 PCLWriter.macroControl(prnWriter, _macroIdDestBoxPage,
-                                        PCLWriter.eMacroControl.Call);
+                                                    PCLWriter.eMacroControl.Call);
+            }
             else
+            {
                 writeDestBoxPage(prnWriter, logXOffset, idClrD1, idClrD2,
-                                  idClrBlack, flagOptColour, false);
+                                              idClrBlack, flagOptColour, false);
+            }
 
             //----------------------------------------------------------------//
 
@@ -844,8 +866,10 @@ namespace PCLParaphernalia
                                             PCLWriter.eMacroControl.Call);
                 }
                 else
+                {
                     writeSrcBoxRow(prnWriter, idClrS1, idClrS2, idClrBlack,
-                                    flagOptColour, false);
+                                                    flagOptColour, false);
+                }
 
                 posY += +_rowInc;
 
@@ -1068,10 +1092,14 @@ namespace PCLParaphernalia
                                       posY);
 
             if (flagUseMacros)
+            {
                 PCLWriter.macroControl(prnWriter, _macroIdDestBoxRowHddr,
-                                        PCLWriter.eMacroControl.Call);
+                                                    PCLWriter.eMacroControl.Call);
+            }
             else
+            {
                 writeDestBoxRowHddr(prnWriter, false);
+            }
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1089,11 +1117,15 @@ namespace PCLParaphernalia
             for (int i = 0; i < 8; i++)
             {
                 if (flagUseMacros)
+                {
                     PCLWriter.macroControl(prnWriter, _macroIdDestBoxRow,
-                                            PCLWriter.eMacroControl.Call);
+                                                            PCLWriter.eMacroControl.Call);
+                }
                 else
+                {
                     writeDestBoxRow(prnWriter, idClrD1, idClrD2, idClrBlack,
-                                     flagOptColour, false);
+                                                     flagOptColour, false);
+                }
 
                 PCLWriter.cursorRelative(prnWriter,
                                           0,
@@ -1138,44 +1170,60 @@ namespace PCLParaphernalia
             PCLWriter.cursorPushPop(prnWriter, PCLWriter.ePushPop.Push);
 
             if (flagUseMacros)
+            {
                 PCLWriter.macroControl(prnWriter, _macroIdDestBox,     // box 1
-                                        PCLWriter.eMacroControl.Call);
+                                                    PCLWriter.eMacroControl.Call);
+            }
             else
+            {
                 writeDestBox(prnWriter, idClrD1, idClrD2, idClrBlack,
-                              flagOptColour, false);
+                                          flagOptColour, false);
+            }
 
             PCLWriter.cursorRelative(prnWriter,
                                       _colInc,
                                       0);
 
             if (flagUseMacros)
+            {
                 PCLWriter.macroControl(prnWriter, _macroIdDestBox,     // box 2
-                                        PCLWriter.eMacroControl.Call);
+                                                    PCLWriter.eMacroControl.Call);
+            }
             else
+            {
                 writeDestBox(prnWriter, idClrD1, idClrD2, idClrBlack,
-                              flagOptColour, false);
+                                          flagOptColour, false);
+            }
 
             PCLWriter.cursorRelative(prnWriter,
                                       _colInc,
                                       0);
 
             if (flagUseMacros)
+            {
                 PCLWriter.macroControl(prnWriter, _macroIdDestBox,     // box 3
-                                        PCLWriter.eMacroControl.Call);
+                                                    PCLWriter.eMacroControl.Call);
+            }
             else
+            {
                 writeDestBox(prnWriter, idClrD1, idClrD2, idClrBlack,
-                              flagOptColour, false);
+                                          flagOptColour, false);
+            }
 
             PCLWriter.cursorRelative(prnWriter,
                                       _colInc,
                                       0);
 
             if (flagUseMacros)
+            {
                 PCLWriter.macroControl(prnWriter, _macroIdDestBox,     // box 4
-                                        PCLWriter.eMacroControl.Call);
+                                                    PCLWriter.eMacroControl.Call);
+            }
             else
+            {
                 writeDestBox(prnWriter, idClrD1, idClrD2, idClrBlack,
-                              flagOptColour, false);
+                                          flagOptColour, false);
+            }
 
             PCLWriter.cursorPushPop(prnWriter, PCLWriter.ePushPop.Pop);
 
@@ -1713,13 +1761,17 @@ namespace PCLParaphernalia
                         }
 
                         if (plane < (planeCt - 1))
+                        {
                             PCLWriter.rasterTransferPlane(prnWriter,
-                                                           maskLen,
-                                                           opRow);
+                                                                                   maskLen,
+                                                                                   opRow);
+                        }
                         else
+                        {
                             PCLWriter.rasterTransferRow(prnWriter,
-                                                         maskLen,
-                                                         opRow);
+                                                                                 maskLen,
+                                                                                 opRow);
+                        }
 
                         indxClr1 >>= 1;   // next plane of colour
                         indxClr2 >>= 1;   // next plane of colour
@@ -1886,11 +1938,15 @@ namespace PCLParaphernalia
             PCLWriter.patternTransparency(prnWriter, false);
 
             if (flagUseMacros)
+            {
                 PCLWriter.macroControl(prnWriter, _macroIdSrcBox,
-                                        PCLWriter.eMacroControl.Call);
+                                                    PCLWriter.eMacroControl.Call);
+            }
             else
+            {
                 writeSrcBox(prnWriter, idClrS1, idClrS2, idClrBlack,
-                             flagOptColour, false);
+                                         flagOptColour, false);
+            }
 
             //----------------------------------------------------------------//
 
@@ -1902,11 +1958,15 @@ namespace PCLParaphernalia
             PCLWriter.patternTransparency(prnWriter, true);
 
             if (flagUseMacros)
+            {
                 PCLWriter.macroControl(prnWriter, _macroIdSrcBox,
-                                         PCLWriter.eMacroControl.Call);
+                                                     PCLWriter.eMacroControl.Call);
+            }
             else
+            {
                 writeSrcBox(prnWriter, idClrS1, idClrS2, idClrBlack,
-                             flagOptColour, false);
+                                         flagOptColour, false);
+            }
 
             //----------------------------------------------------------------//
 
@@ -1918,11 +1978,15 @@ namespace PCLParaphernalia
             PCLWriter.patternTransparency(prnWriter, false);
 
             if (flagUseMacros)
+            {
                 PCLWriter.macroControl(prnWriter, _macroIdSrcBox,
-                                        PCLWriter.eMacroControl.Call);
+                                                    PCLWriter.eMacroControl.Call);
+            }
             else
+            {
                 writeSrcBox(prnWriter, idClrS1, idClrS2, idClrBlack,
-                             flagOptColour, false);
+                                         flagOptColour, false);
+            }
 
             //----------------------------------------------------------------//
 
@@ -1934,11 +1998,15 @@ namespace PCLParaphernalia
             PCLWriter.patternTransparency(prnWriter, true);
 
             if (flagUseMacros)
+            {
                 PCLWriter.macroControl(prnWriter, _macroIdSrcBox,
-                                        PCLWriter.eMacroControl.Call);
+                                                    PCLWriter.eMacroControl.Call);
+            }
             else
+            {
                 writeSrcBox(prnWriter, idClrS1, idClrS2, idClrBlack,
-                             flagOptColour, false);
+                                         flagOptColour, false);
+            }
 
             //----------------------------------------------------------------//
 

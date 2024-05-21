@@ -450,9 +450,13 @@ namespace PCLParaphernalia
             {
                 if (_options.IndxGenOffsetFormat ==
                     PrnParseConstants.eOptOffsetFormats.Decimal)
+                {
                     e.Column.Header = headername + ": dec";
+                }
                 else
+                {
                     e.Column.Header = headername + ": hex";
+                }
             }
         }
 
@@ -530,9 +534,13 @@ namespace PCLParaphernalia
             {
                 if (_options.IndxGenOffsetFormat ==
                     PrnParseConstants.eOptOffsetFormats.Decimal)
+                {
                     e.Column.Header = headername + ": dec";
+                }
                 else
+                {
                     e.Column.Header = headername + ": hex";
+                }
             }
         }
 

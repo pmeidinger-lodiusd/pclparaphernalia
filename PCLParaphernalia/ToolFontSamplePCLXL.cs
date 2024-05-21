@@ -1275,10 +1275,14 @@ namespace PCLParaphernalia
                 int len = fontFilename.Length;
 
                 if (len < maxLen)
+                {
                     tempId = fontFilename;
+                }
                 else
+                {
                     tempId = fontFilename.Substring(0, halfLen) + " ... " +
-                             fontFilename.Substring(len - halfLen, halfLen);
+                                             fontFilename.Substring(len - halfLen, halfLen);
+                }
 
                 PCLXLWriter.Text(prnWriter, false, false,
                                  PCLXLWriter.advances_Courier, crntPtSize,
@@ -1341,19 +1345,23 @@ namespace PCLParaphernalia
                 posY += _lineSpacing / 2;
 
                 if (len < maxLen)
+                {
                     PCLXLWriter.Text(prnWriter, false, false,
-                                     PCLXLWriter.advances_Courier, crntPtSize,
-                                     posX, posY,
-                                     "Symbol set file: " + symSetUserFile);
+                                                     PCLXLWriter.advances_Courier, crntPtSize,
+                                                     posX, posY,
+                                                     "Symbol set file: " + symSetUserFile);
+                }
                 else
+                {
                     PCLXLWriter.Text(prnWriter, false, false,
-                                     PCLXLWriter.advances_Courier, crntPtSize,
-                                     posX, posY,
-                                     "Symbol set file: " +
-                                     symSetUserFile.Substring(0, halfLen) +
-                                     " ... " +
-                                     symSetUserFile.Substring(len - halfLen,
-                                                              halfLen));
+                                                     PCLXLWriter.advances_Courier, crntPtSize,
+                                                     posX, posY,
+                                                     "Symbol set file: " +
+                                                     symSetUserFile.Substring(0, halfLen) +
+                                                     " ... " +
+                                                     symSetUserFile.Substring(len - halfLen,
+                                                                              halfLen));
+                }
             }
 
             //----------------------------------------------------------------//

@@ -977,15 +977,19 @@ namespace PCLParaphernalia
             posY = _posYDesc;
 
             if (customPaperSize)
+            {
                 PCLXLWriter.Text(prnWriter, false, false,
-                       PCLXLWriter.advances_Courier, ptSize,
-                       posX, posY,
-                       PCLPaperSizes.getNameAndDesc(indxPaperSize));
+                                   PCLXLWriter.advances_Courier, ptSize,
+                                   posX, posY,
+                                   PCLPaperSizes.getNameAndDesc(indxPaperSize));
+            }
             else
+            {
                 PCLXLWriter.Text(prnWriter, false, false,
-                       PCLXLWriter.advances_Courier, ptSize,
-                       posX, posY,
-                       PCLPaperSizes.getName(indxPaperSize));
+                                   PCLXLWriter.advances_Courier, ptSize,
+                                   posX, posY,
+                                   PCLPaperSizes.getName(indxPaperSize));
+            }
 
             posY += lineInc;
 
@@ -1046,13 +1050,17 @@ namespace PCLParaphernalia
             posY += lineInc;
 
             if (pjlCommand?.Length == 0)
+            {
                 PCLXLWriter.Text(prnWriter, false, false,
-                           PCLXLWriter.advances_Courier, ptSize,
-                           posX, posY, "<none>");
+                                       PCLXLWriter.advances_Courier, ptSize,
+                                       posX, posY, "<none>");
+            }
             else
+            {
                 PCLXLWriter.Text(prnWriter, false, false,
-                           PCLXLWriter.advances_Courier, ptSize,
-                           posX, posY, pjlCommand);
+                                       PCLXLWriter.advances_Courier, ptSize,
+                                       posX, posY, pjlCommand);
+            }
 
             //----------------------------------------------------------------//
             //                                                                //

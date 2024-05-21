@@ -202,11 +202,15 @@ namespace PCLParaphernalia
                     valVarious = kvp.Value.FlagValVarious;
 
                     if (incDiscreteVal && valGeneric)
+                    {
                         displaySeq = false;
+                    }
                     else if ((!incDiscreteVal) &&
-                             (!valGeneric) &&
-                             (!valVarious))
+                                                 (!valGeneric) &&
+                                                 (!valVarious))
+                    {
                         displaySeq = false;
+                    }
                 }
 
                 if (displaySeq)
@@ -280,10 +284,14 @@ namespace PCLParaphernalia
                 if (count == 0)
                 {
                     if (incUsedSeqsOnly)
+                    {
                         displaySeq = false;
+                    }
                     else if (excUnusedObsSeqs &&
-                             (kvp.Value.FlagObsolete))
+                                                 (kvp.Value.FlagObsolete))
+                    {
                         displaySeq = false;
+                    }
                 }
 
                 if (displaySeq)

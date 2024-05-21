@@ -589,9 +589,13 @@ namespace PCLParaphernalia
 
             if ((tempRasterRes < 0) ||
                 (tempRasterRes >= _ctRasterResolutions))
+            {
                 _indxRasterResolutionPCL = 0;
+            }
             else
+            {
                 _indxRasterResolutionPCL = tempRasterRes;
+            }
 
             ToolImageBitmapPersist.loadDataPCL("PCL",
                                                ref _indxOrientationPCL,

@@ -391,11 +391,15 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (formAsMacro)
+            {
                 PCLWriter.macroControl(prnWriter, _macroId,
-                                       PCLWriter.eMacroControl.Call);
+                                                   PCLWriter.eMacroControl.Call);
+            }
             else
+            {
                 generateOverlay(prnWriter, false,
-                                paperWidth, paperLength, logXOffset);
+                                            paperWidth, paperLength, logXOffset);
+            }
 
             //----------------------------------------------------------------//
             //                                                                //

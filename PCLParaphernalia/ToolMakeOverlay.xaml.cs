@@ -233,19 +233,23 @@ namespace PCLParaphernalia
                                              ref flagOptRptWrap);
 
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+            {
                 ToolMakeOverlayReport.generate(rptFileFmt,
-                                               _tableProgress,
-                                                _prnFilename,
-                                                _ovlFilenamePCL,
-                                                flagOffsetHex,
-                                                _options);
+                                                           _tableProgress,
+                                                            _prnFilename,
+                                                            _ovlFilenamePCL,
+                                                            flagOffsetHex,
+                                                            _options);
+            }
             else
+            {
                 ToolMakeOverlayReport.generate(rptFileFmt,
-                                               _tableProgress,
-                                                _prnFilename,
-                                                _ovlFilenamePCLXL,
-                                                flagOffsetHex,
-                                                _options);
+                                                           _tableProgress,
+                                                            _prnFilename,
+                                                            _ovlFilenamePCLXL,
+                                                            flagOffsetHex,
+                                                            _options);
+            }
 
             btnSaveReport.Visibility = Visibility.Visible;
         }

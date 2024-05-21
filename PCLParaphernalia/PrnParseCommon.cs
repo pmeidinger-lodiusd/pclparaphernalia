@@ -99,12 +99,18 @@ namespace PCLParaphernalia
                 {
                     if (offset ==
                         (int)PrnParseConstants.eOffsetPosition.StartOfFile)
+                    {
                         offsetText = "<Start>";
+                    }
                     else if (offset ==
-                        (int)PrnParseConstants.eOffsetPosition.EndOfFile)
+                                            (int)PrnParseConstants.eOffsetPosition.EndOfFile)
+                    {
                         offsetText = "<End>";
+                    }
                     else
+                    {
                         offsetText = string.Empty;
+                    }
                 }
                 else
                 {
@@ -112,18 +118,26 @@ namespace PCLParaphernalia
                         PrnParseConstants.eOptOffsetFormats.Decimal)
                     {
                         if (level == 0)
+                        {
                             offsetText = string.Format("{0:d10}", offset);
+                        }
                         else
+                        {
                             offsetText = string.Format("{0:d2}", level) + ":" +
-                                         string.Format("{0:d10}", offset);
+                                                                 string.Format("{0:d10}", offset);
+                        }
                     }
                     else
                     {
                         if (level == 0)
+                        {
                             offsetText = string.Format("{0:x8}", offset);
+                        }
                         else
+                        {
                             offsetText = string.Format("{0:x2}", level) + ":" +
-                                         string.Format("{0:x8}", offset);
+                                                                 string.Format("{0:x8}", offset);
+                        }
                     }
                 }
 

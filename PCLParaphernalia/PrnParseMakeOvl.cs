@@ -1286,10 +1286,14 @@ namespace PCLParaphernalia
                 linkData.MakeOvlSkipEnd = seqEnd;
 
                 if (encapsulate)
+                {
                     descText = "PushGS (encapsulated within" +
-                               " ReadStream structure)";
+                                               " ReadStream structure)";
+                }
                 else
+                {
                     descText = "PushGS";
+                }
 
                 PrnParseCommon.addDataRow(
                     PrnParseRowTypes.eType.PCLXLOperator,

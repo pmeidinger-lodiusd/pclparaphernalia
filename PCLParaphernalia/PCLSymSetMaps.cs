@@ -207,12 +207,16 @@ namespace PCLParaphernalia
                                       bool differentOnly)
         {
             if (flagMapPCL)
+            {
                 if (differentOnly)
                     return _sets[selection].MappingPCLDiff;
                 else
                     return _sets[selection].MappingPCL;
+            }
             else
+            {
                 return _sets[selection].MappingStd;
+            }
         }
 
         //--------------------------------------------------------------------//
@@ -248,12 +252,16 @@ namespace PCLParaphernalia
                                          bool differentOnly)
         {
             if (flagMapPCL)
+            {
                 if (differentOnly)
                     return _sets[selection].MapRowsPCLDiff;
                 else
                     return _sets[selection].MapRowsPCL;
+            }
             else
+            {
                 return _sets[selection].MapRowsStd;
+            }
         }
 
         //--------------------------------------------------------------------//

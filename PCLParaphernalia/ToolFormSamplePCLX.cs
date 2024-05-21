@@ -433,15 +433,19 @@ namespace PCLParaphernalia
                     if (flagRearForm)
                     {
                         if (flagRearBPlate)
+                        {
                             PCLXLWriter.Text(prnWriter, false, false,
-                                              PCLXLWriter.advances_Courier,
-                                              crntPtSize, posX, posY,
-                                              "Rear Boilerplate:");
+                                                                      PCLXLWriter.advances_Courier,
+                                                                      crntPtSize, posX, posY,
+                                                                      "Rear Boilerplate:");
+                        }
                         else
+                        {
                             PCLXLWriter.Text(prnWriter, false, false,
-                                              PCLXLWriter.advances_Courier,
-                                              crntPtSize, posX, posY,
-                                              "Rear Form:");
+                                                                      PCLXLWriter.advances_Courier,
+                                                                      crntPtSize, posX, posY,
+                                                                      "Rear Form:");
+                        }
                     }
                 }
 
@@ -537,17 +541,21 @@ namespace PCLParaphernalia
                         int len = formFileMain.Length;
 
                         if (len < maxLen)
+                        {
                             PCLXLWriter.Text(prnWriter, false, false,
-                                              PCLXLWriter.advances_Courier,
-                                              crntPtSize, posX, posY, formFileMain);
+                                                                      PCLXLWriter.advances_Courier,
+                                                                      crntPtSize, posX, posY, formFileMain);
+                        }
                         else
+                        {
                             PCLXLWriter.Text(prnWriter, false, false,
-                                              PCLXLWriter.advances_Courier,
-                                              crntPtSize, posX, posY,
-                                              formFileMain.Substring(0, halfLen) +
-                                              " ... " +
-                                              formFileMain.Substring(len - halfLen,
-                                                                      halfLen));
+                                                                      PCLXLWriter.advances_Courier,
+                                                                      crntPtSize, posX, posY,
+                                                                      formFileMain.Substring(0, halfLen) +
+                                                                      " ... " +
+                                                                      formFileMain.Substring(len - halfLen,
+                                                                                              halfLen));
+                        }
                     }
 
                     posY += incPosY;
@@ -560,17 +568,21 @@ namespace PCLParaphernalia
                         int len = formFileRear.Length;
 
                         if (len < maxLen)
+                        {
                             PCLXLWriter.Text(prnWriter, false, false,
-                                              PCLXLWriter.advances_Courier,
-                                              crntPtSize, posX, posY, formFileRear);
+                                                                      PCLXLWriter.advances_Courier,
+                                                                      crntPtSize, posX, posY, formFileRear);
+                        }
                         else
+                        {
                             PCLXLWriter.Text(prnWriter, false, false,
-                                              PCLXLWriter.advances_Courier,
-                                              crntPtSize, posX, posY,
-                                              formFileRear.Substring(0, halfLen) +
-                                              " ... " +
-                                              formFileRear.Substring(len - halfLen,
-                                                                      halfLen));
+                                                                      PCLXLWriter.advances_Courier,
+                                                                      crntPtSize, posX, posY,
+                                                                      formFileRear.Substring(0, halfLen) +
+                                                                      " ... " +
+                                                                      formFileRear.Substring(len - halfLen,
+                                                                                              halfLen));
+                        }
                     }
                 }
             }

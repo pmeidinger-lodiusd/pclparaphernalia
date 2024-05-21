@@ -354,7 +354,9 @@ namespace PCLParaphernalia
                         pos += 3;
                     }
                     else
+                    {
                         dataLen = 0;
+                    }
 
                     if ((dataLen < minFontNameLen) || (dataLen > maxFontNameLen))
                     {
@@ -375,9 +377,13 @@ namespace PCLParaphernalia
 
                         if ((buf[pos] != (byte)PCLXLAttrDefiners.eTag.Ubyte) ||
                             (buf[pos + 1] != (byte)PCLXLAttributes.eTag.FontName))
+                        {
                             OK = false;
+                        }
                         else
+                        {
                             pos += 2;
+                        }
                     }
                 }
                 else if (buf[pos] == (byte)PCLXLDataTypes.eTag.Ubyte)
@@ -391,7 +397,9 @@ namespace PCLParaphernalia
                         OK = false;
                     }
                     else
+                    {
                         pos += 4;
+                    }
                 }
                 else if (buf[pos] == (byte)PCLXLOperators.eTag.BeginFontHeader)
                 {

@@ -261,10 +261,14 @@ namespace PCLParaphernalia
                 if (count == 0)
                 {
                     if (incUsedSeqsOnly)
+                    {
                         displaySeq = false;
+                    }
                     else if (excUnusedResTags &&
-                             (kvp.Value.FlagReserved))
+                                                 (kvp.Value.FlagReserved))
+                    {
                         displaySeq = false;
+                    }
                 }
 
                 if (displaySeq)

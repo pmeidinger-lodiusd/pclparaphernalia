@@ -124,32 +124,52 @@ namespace PCLParaphernalia
                               flagSymSetMap);
 
                 if (infoType == ToolCommonData.eToolSubIds.PCL)
+                {
                     reportBodyPCLSeqs(rptFileFmt, rptChkMarks,
-                                      writer, dgSeq);
+                                                      writer, dgSeq);
+                }
                 else if (infoType == ToolCommonData.eToolSubIds.HPGL2)
+                {
                     reportBodyHPGL2Commands(rptFileFmt, writer, dgSeq);
+                }
                 else if (infoType == ToolCommonData.eToolSubIds.PCLXLTags)
+                {
                     reportBodyPCLXLTags(rptFileFmt, rptChkMarks,
-                                        writer, dgSeq);
+                                                        writer, dgSeq);
+                }
                 else if (infoType == ToolCommonData.eToolSubIds.PCLXLEnums)
+                {
                     reportBodyPCLXLEnums(rptFileFmt, writer, dgSeq);
+                }
                 else if (infoType == ToolCommonData.eToolSubIds.PJLCmds)
+                {
                     reportBodyPJLCommands(rptFileFmt, writer, dgSeq);
+                }
                 else if (infoType == ToolCommonData.eToolSubIds.PMLTags)
+                {
                     reportBodyPMLTags(rptFileFmt, writer, dgSeq);
+                }
                 else if (infoType == ToolCommonData.eToolSubIds.SymbolSets)
+                {
                     reportBodySymbolSets(rptFileFmt, rptChkMarks,
-                                          writer, dgSeq,
-                                          flagSymSetMap, flagOptRptWrap,
-                                          symSetMapType);
+                                                          writer, dgSeq,
+                                                          flagSymSetMap, flagOptRptWrap,
+                                                          symSetMapType);
+                }
                 else if (infoType == ToolCommonData.eToolSubIds.Fonts)
+                {
                     reportBodyFonts(rptFileFmt, rptChkMarks,
-                                     writer, dgSeq,
-                                     flagSymSetList, flagOptRptWrap);
+                                                     writer, dgSeq,
+                                                     flagSymSetList, flagOptRptWrap);
+                }
                 else if (infoType == ToolCommonData.eToolSubIds.PaperSizes)
+                {
                     reportBodyPaperSizes(rptFileFmt, writer, dgSeq);
+                }
                 else if (infoType == ToolCommonData.eToolSubIds.PrescribeCmds)
+                {
                     reportBodyPrescribeCommands(rptFileFmt, writer, dgSeq);
+                }
 
                 ReportCore.docFinalise(rptFileFmt, writer);
 
@@ -1607,83 +1627,103 @@ namespace PCLParaphernalia
                             if (symSetMapType == ToolPrintLang.SymSetMapType.Std)
                             {
                                 if (mapStd)
+                                {
                                     ReportCore.tableRowPair(
-                                        writer, rptFileFmt, c6bHddr,
-                                        symbolSet.MappingStd,
-                                        colSpanName, colSpanVal,
-                                        _maxSizeNameTag, maxLineLen,
-                                        _flagBlankBefore, _flagBlankAfter, _flagNameAsHddr);
+                                                                        writer, rptFileFmt, c6bHddr,
+                                                                        symbolSet.MappingStd,
+                                                                        colSpanName, colSpanVal,
+                                                                        _maxSizeNameTag, maxLineLen,
+                                                                        _flagBlankBefore, _flagBlankAfter, _flagNameAsHddr);
+                                }
                                 else
+                                {
                                     ReportCore.tableRowPair(
-                                        writer, rptFileFmt, c6bHddr,
-                                        "Not defined - see LaserJet mapping definition",
-                                        colSpanName, colSpanVal,
-                                        _maxSizeNameTag, maxLineLen,
-                                        _flagBlankBefore, _flagBlankAfter, _flagNameAsHddr);
+                                                                        writer, rptFileFmt, c6bHddr,
+                                                                        "Not defined - see LaserJet mapping definition",
+                                                                        colSpanName, colSpanVal,
+                                                                        _maxSizeNameTag, maxLineLen,
+                                                                        _flagBlankBefore, _flagBlankAfter, _flagNameAsHddr);
+                                }
                             }
                             else if (symSetMapType == ToolPrintLang.SymSetMapType.PCL)
                             {
                                 if (mapPCL)
+                                {
                                     ReportCore.tableRowPair(
-                                        writer, rptFileFmt, c7bHddr,
-                                        symbolSet.MappingPCL,
-                                        colSpanName, colSpanVal,
-                                        _maxSizeNameTag, maxLineLen,
-                                        _flagBlankBefore, _flagBlankAfter, _flagNameAsHddr);
+                                                                        writer, rptFileFmt, c7bHddr,
+                                                                        symbolSet.MappingPCL,
+                                                                        colSpanName, colSpanVal,
+                                                                        _maxSizeNameTag, maxLineLen,
+                                                                        _flagBlankBefore, _flagBlankAfter, _flagNameAsHddr);
+                                }
                                 else
+                                {
                                     ReportCore.tableRowPair(
-                                        writer, rptFileFmt, c7bHddr,
-                                        "Not defined - see Standard (Strict) mapping definition",
-                                        colSpanName, colSpanVal,
-                                        _maxSizeNameTag, maxLineLen,
-                                        _flagBlankBefore, _flagBlankAfter, _flagNameAsHddr);
+                                                                        writer, rptFileFmt, c7bHddr,
+                                                                        "Not defined - see Standard (Strict) mapping definition",
+                                                                        colSpanName, colSpanVal,
+                                                                        _maxSizeNameTag, maxLineLen,
+                                                                        _flagBlankBefore, _flagBlankAfter, _flagNameAsHddr);
+                                }
                             }
                             else // if (symSetMapType == ToolPrintLang.eSymSetMapType.Both)
                             {
                                 if (mapStd)
+                                {
                                     ReportCore.tableRowPair(
-                                        writer, rptFileFmt, c6bHddr,
-                                        symbolSet.MappingStd,
-                                        colSpanName, colSpanVal,
-                                        _maxSizeNameTag, maxLineLen,
-                                        _flagBlankBefore, _flagNone, _flagNameAsHddr);
+                                                                        writer, rptFileFmt, c6bHddr,
+                                                                        symbolSet.MappingStd,
+                                                                        colSpanName, colSpanVal,
+                                                                        _maxSizeNameTag, maxLineLen,
+                                                                        _flagBlankBefore, _flagNone, _flagNameAsHddr);
+                                }
                                 else
+                                {
                                     ReportCore.tableRowPair(
-                                        writer, rptFileFmt, c6bHddr,
-                                        "Not defined - see LaserJet mapping definition",
-                                        colSpanName, colSpanVal,
-                                        _maxSizeNameTag, maxLineLen,
-                                        _flagBlankBefore, _flagNone, _flagNameAsHddr);
+                                                                        writer, rptFileFmt, c6bHddr,
+                                                                        "Not defined - see LaserJet mapping definition",
+                                                                        colSpanName, colSpanVal,
+                                                                        _maxSizeNameTag, maxLineLen,
+                                                                        _flagBlankBefore, _flagNone, _flagNameAsHddr);
+                                }
 
                                 if (mapPCL)
+                                {
                                     ReportCore.tableRowPair(
-                                        writer, rptFileFmt, c7bHddr,
-                                        symbolSet.MappingPCL,
-                                        colSpanName, colSpanVal,
-                                        _maxSizeNameTag, maxLineLen,
-                                        _flagBlankBefore, _flagNone, _flagNameAsHddr);
+                                                                        writer, rptFileFmt, c7bHddr,
+                                                                        symbolSet.MappingPCL,
+                                                                        colSpanName, colSpanVal,
+                                                                        _maxSizeNameTag, maxLineLen,
+                                                                        _flagBlankBefore, _flagNone, _flagNameAsHddr);
+                                }
                                 else
+                                {
                                     ReportCore.tableRowPair(
-                                        writer, rptFileFmt, c7bHddr,
-                                        "Not defined - see Standard (Strict) mapping definition",
-                                        colSpanName, colSpanVal,
-                                        _maxSizeNameTag, maxLineLen,
-                                        _flagBlankBefore, _flagNone, _flagNameAsHddr);
+                                                                        writer, rptFileFmt, c7bHddr,
+                                                                        "Not defined - see Standard (Strict) mapping definition",
+                                                                        colSpanName, colSpanVal,
+                                                                        _maxSizeNameTag, maxLineLen,
+                                                                        _flagBlankBefore, _flagNone, _flagNameAsHddr);
+                                }
 
                                 if (mapStd && mapPCL)
+                                {
                                     ReportCore.tableRowPair(
-                                        writer, rptFileFmt, c8Hddr,
-                                        symbolSet.MappingPCL,
-                                        colSpanName, colSpanVal,
-                                        _maxSizeNameTag, maxLineLen,
-                                        _flagBlankBefore, _flagBlankAfter, _flagNameAsHddr);
+                                                                        writer, rptFileFmt, c8Hddr,
+                                                                        symbolSet.MappingPCL,
+                                                                        colSpanName, colSpanVal,
+                                                                        _maxSizeNameTag, maxLineLen,
+                                                                        _flagBlankBefore, _flagBlankAfter, _flagNameAsHddr);
+                                }
                                 else
+                                {
                                     ReportCore.tableRowPair(
-                                        writer, rptFileFmt, c8Hddr,
-                                        "Not applicable (only one set defined)",
-                                        colSpanName, colSpanVal,
-                                        _maxSizeNameTag, maxLineLen,
-                                        _flagBlankBefore, _flagBlankAfter, _flagNameAsHddr);
+                                                                        writer, rptFileFmt, c8Hddr,
+                                                                        "Not applicable (only one set defined)",
+                                                                        colSpanName, colSpanVal,
+                                                                        _maxSizeNameTag, maxLineLen,
+                                                                        _flagBlankBefore, _flagBlankAfter, _flagNameAsHddr);
+                                }
                             }
                         }
                         else

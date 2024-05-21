@@ -764,10 +764,14 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (formAsMacro)
+            {
                 PCLWriter.macroControl(prnWriter, _macroId,
-                                       PCLWriter.eMacroControl.Call);
+                                                   PCLWriter.eMacroControl.Call);
+            }
             else
+            {
                 generateOverlay(prnWriter, false, optGridVertical, logXOffset);
+            }
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -789,16 +793,22 @@ namespace PCLParaphernalia
                 int len = fontFilename.Length;
 
                 if (len < maxLen)
+                {
                     PCLWriter.text(prnWriter, posX, posY, 0, fontFilename);
+                }
                 else
+                {
                     PCLWriter.text(prnWriter, posX, posY, 0,
-                                   fontFilename.Substring(0, halfLen) +
-                                   " ... " +
-                                   fontFilename.Substring(len - halfLen,
-                                                          halfLen));
+                                                   fontFilename.Substring(0, halfLen) +
+                                                   " ... " +
+                                                   fontFilename.Substring(len - halfLen,
+                                                                          halfLen));
+                }
             }
             else
+            {
                 PCLWriter.text(prnWriter, posX, posY, 0, fontId);
+            }
 
             //----------------------------------------------------------------//
 
@@ -806,15 +816,21 @@ namespace PCLParaphernalia
 
             if ((fontType == PCLFonts.eFontType.PrnDisk) &&
                 (!prnDiskFontDataKnown))
+            {
                 PCLWriter.text(prnWriter, posX, posY, 0,
-                               "characteristics not known");
+                                           "characteristics not known");
+            }
             else if (sizeIsHeight)
+            {
                 PCLWriter.text(prnWriter, posX, posY, 0,
-                               fontSize.ToString("F2") + " point");
+                                           fontSize.ToString("F2") + " point");
+            }
             else
+            {
                 PCLWriter.text(prnWriter, posX, posY, 0,
-                               fontSize.ToString("F2") +
-                               " characters-per-inch");
+                                           fontSize.ToString("F2") +
+                                           " characters-per-inch");
+            }
 
             //----------------------------------------------------------------//
 
@@ -861,15 +877,19 @@ namespace PCLParaphernalia
                 posY += _lineSpacing / 2;
 
                 if (len < maxLen)
+                {
                     PCLWriter.text(prnWriter, posX, posY, 0,
-                                   "Symbol set file: " + symSetUserFile);
+                                                   "Symbol set file: " + symSetUserFile);
+                }
                 else
+                {
                     PCLWriter.text(prnWriter, posX, posY, 0,
-                                   "Symbol set file: " +
-                                   symSetUserFile.Substring(0, halfLen) +
-                                   " ... " +
-                                   symSetUserFile.Substring(len - halfLen,
-                                                            halfLen));
+                                                   "Symbol set file: " +
+                                                   symSetUserFile.Substring(0, halfLen) +
+                                                   " ... " +
+                                                   symSetUserFile.Substring(len - halfLen,
+                                                                            halfLen));
+                }
             }
 
             //----------------------------------------------------------------//
@@ -897,11 +917,15 @@ namespace PCLParaphernalia
                 fontSelectById)
             {
                 if (fontBound)
+                {
                     PCLWriter.font(prnWriter, true, string.Empty,
-                                   fontIdNo + "X");
+                                                   fontIdNo + "X");
+                }
                 else
+                {
                     PCLWriter.font(prnWriter, true, symSetId,
-                                   fontIdNo + "X");
+                                                   fontIdNo + "X");
+                }
 
                 if (fontSelSeq != string.Empty)
                     PCLWriter.font(prnWriter, true, string.Empty, fontSelSeq);
@@ -935,10 +959,14 @@ namespace PCLParaphernalia
                     PCLTextParsingMethods.Index.m83_UTF8) ||
                 (indxTextParseMethod ==
                     PCLTextParsingMethods.Index.m1008_UTF8_alt))
+            {
                 utf8 = true;
+            }
             else if (indxTextParseMethod ==
-                      PCLTextParsingMethods.Index.m2_2_byte)
+                                  PCLTextParsingMethods.Index.m2_2_byte)
+            {
                 twoByteMethod = true;
+            }
 
             //----------------------------------------------------------------//
 

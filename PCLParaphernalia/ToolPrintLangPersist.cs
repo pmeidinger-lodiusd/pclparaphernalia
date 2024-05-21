@@ -411,13 +411,17 @@ namespace PCLParaphernalia
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 if (flagOptMap)
+                {
                     subKey.SetValue(_nameFlagOptMapping,
-                                    _flagTrue,
-                                    RegistryValueKind.DWord);
+                                                    _flagTrue,
+                                                    RegistryValueKind.DWord);
+                }
                 else
+                {
                     subKey.SetValue(_nameFlagOptMapping,
-                                    _flagFalse,
-                                    RegistryValueKind.DWord);
+                                                    _flagFalse,
+                                                    RegistryValueKind.DWord);
+                }
             }
         }
 
@@ -445,49 +449,69 @@ namespace PCLParaphernalia
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 if (flagSeqControl)
+                {
                     subKey.SetValue(_nameFlagSeqControl,
-                                    _flagTrue,
-                                    RegistryValueKind.DWord);
+                                                    _flagTrue,
+                                                    RegistryValueKind.DWord);
+                }
                 else
+                {
                     subKey.SetValue(_nameFlagSeqControl,
-                                    _flagFalse,
-                                    RegistryValueKind.DWord);
+                                                    _flagFalse,
+                                                    RegistryValueKind.DWord);
+                }
 
                 if (flagSeqSimple)
+                {
                     subKey.SetValue(_nameFlagSeqSimple,
-                                    _flagTrue,
-                                    RegistryValueKind.DWord);
+                                                    _flagTrue,
+                                                    RegistryValueKind.DWord);
+                }
                 else
+                {
                     subKey.SetValue(_nameFlagSeqSimple,
-                                    _flagFalse,
-                                    RegistryValueKind.DWord);
+                                                    _flagFalse,
+                                                    RegistryValueKind.DWord);
+                }
 
                 if (flagSeqComplex)
+                {
                     subKey.SetValue(_nameFlagSeqComplex,
-                                    _flagTrue,
-                                    RegistryValueKind.DWord);
+                                                    _flagTrue,
+                                                    RegistryValueKind.DWord);
+                }
                 else
+                {
                     subKey.SetValue(_nameFlagSeqComplex,
-                                    _flagFalse,
-                                    RegistryValueKind.DWord);
+                                                    _flagFalse,
+                                                    RegistryValueKind.DWord);
+                }
 
                 if (flagOptObsolete)
+                {
                     subKey.SetValue(_nameFlagOptObsolete,
-                                    _flagTrue,
-                                    RegistryValueKind.DWord);
+                                                    _flagTrue,
+                                                    RegistryValueKind.DWord);
+                }
                 else
+                {
                     subKey.SetValue(_nameFlagOptObsolete,
-                                    _flagFalse,
-                                    RegistryValueKind.DWord);
+                                                    _flagFalse,
+                                                    RegistryValueKind.DWord);
+                }
 
                 if (flagOptDiscrete)
+                {
                     subKey.SetValue(_nameFlagOptDiscrete,
-                                    _flagTrue,
-                                    RegistryValueKind.DWord);
+                                                    _flagTrue,
+                                                    RegistryValueKind.DWord);
+                }
                 else
+                {
                     subKey.SetValue(_nameFlagOptDiscrete,
-                                    _flagFalse,
-                                    RegistryValueKind.DWord);
+                                                    _flagFalse,
+                                                    RegistryValueKind.DWord);
+                }
             }
         }
 
@@ -517,67 +541,95 @@ namespace PCLParaphernalia
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 if (flagTagDataType)
+                {
                     subKey.SetValue(_nameFlagTagDataType,
-                                    _flagTrue,
-                                    RegistryValueKind.DWord);
+                                                    _flagTrue,
+                                                    RegistryValueKind.DWord);
+                }
                 else
+                {
                     subKey.SetValue(_nameFlagTagDataType,
-                                    _flagFalse,
-                                    RegistryValueKind.DWord);
+                                                    _flagFalse,
+                                                    RegistryValueKind.DWord);
+                }
 
                 if (flagTagAttribute)
+                {
                     subKey.SetValue(_nameFlagTagAttribute,
-                                    _flagTrue,
-                                    RegistryValueKind.DWord);
+                                                    _flagTrue,
+                                                    RegistryValueKind.DWord);
+                }
                 else
+                {
                     subKey.SetValue(_nameFlagTagAttribute,
-                                    _flagFalse,
-                                    RegistryValueKind.DWord);
+                                                    _flagFalse,
+                                                    RegistryValueKind.DWord);
+                }
 
                 if (flagTagOperator)
+                {
                     subKey.SetValue(_nameFlagTagOperator,
-                                    _flagTrue,
-                                    RegistryValueKind.DWord);
+                                                    _flagTrue,
+                                                    RegistryValueKind.DWord);
+                }
                 else
+                {
                     subKey.SetValue(_nameFlagTagOperator,
-                                    _flagFalse,
-                                    RegistryValueKind.DWord);
+                                                    _flagFalse,
+                                                    RegistryValueKind.DWord);
+                }
 
                 if (flagTagAttrDefiner)
+                {
                     subKey.SetValue(_nameFlagTagAttrDefiner,
-                                    _flagTrue,
-                                    RegistryValueKind.DWord);
+                                                    _flagTrue,
+                                                    RegistryValueKind.DWord);
+                }
                 else
+                {
                     subKey.SetValue(_nameFlagTagAttrDefiner,
-                                    _flagFalse,
-                                    RegistryValueKind.DWord);
+                                                    _flagFalse,
+                                                    RegistryValueKind.DWord);
+                }
 
                 if (flagTagEmbedDataDef)
+                {
                     subKey.SetValue(_nameFlagTagEmbedDataDef,
-                                    _flagTrue,
-                                    RegistryValueKind.DWord);
+                                                    _flagTrue,
+                                                    RegistryValueKind.DWord);
+                }
                 else
+                {
                     subKey.SetValue(_nameFlagTagEmbedDataDef,
-                                    _flagFalse,
-                                    RegistryValueKind.DWord);
+                                                    _flagFalse,
+                                                    RegistryValueKind.DWord);
+                }
 
                 if (flagTagWhitespace)
+                {
                     subKey.SetValue(_nameFlagTagWhitespace,
-                                    _flagTrue,
-                                    RegistryValueKind.DWord);
+                                                    _flagTrue,
+                                                    RegistryValueKind.DWord);
+                }
                 else
+                {
                     subKey.SetValue(_nameFlagTagWhitespace,
-                                    _flagFalse,
-                                    RegistryValueKind.DWord);
+                                                    _flagFalse,
+                                                    RegistryValueKind.DWord);
+                }
 
                 if (flagOptReserved)
+                {
                     subKey.SetValue(_nameFlagOptReserved,
-                                    _flagTrue,
-                                    RegistryValueKind.DWord);
+                                                    _flagTrue,
+                                                    RegistryValueKind.DWord);
+                }
                 else
+                {
                     subKey.SetValue(_nameFlagOptReserved,
-                                    _flagFalse,
-                                    RegistryValueKind.DWord);
+                                                    _flagFalse,
+                                                    RegistryValueKind.DWord);
+                }
             }
         }
 
@@ -603,31 +655,43 @@ namespace PCLParaphernalia
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 if (flagTagDataType)
+                {
                     subKey.SetValue(_nameFlagTagDataType,
-                                     _flagTrue,
-                                     RegistryValueKind.DWord);
+                                                     _flagTrue,
+                                                     RegistryValueKind.DWord);
+                }
                 else
+                {
                     subKey.SetValue(_nameFlagTagDataType,
-                                     _flagFalse,
-                                     RegistryValueKind.DWord);
+                                                     _flagFalse,
+                                                     RegistryValueKind.DWord);
+                }
 
                 if (flagTagAction)
+                {
                     subKey.SetValue(_nameFlagTagAction,
-                                     _flagTrue,
-                                     RegistryValueKind.DWord);
+                                                     _flagTrue,
+                                                     RegistryValueKind.DWord);
+                }
                 else
+                {
                     subKey.SetValue(_nameFlagTagAction,
-                                     _flagFalse,
-                                     RegistryValueKind.DWord);
+                                                     _flagFalse,
+                                                     RegistryValueKind.DWord);
+                }
 
                 if (flagTagOutcome)
+                {
                     subKey.SetValue(_nameFlagTagOutcome,
-                                     _flagTrue,
-                                     RegistryValueKind.DWord);
+                                                     _flagTrue,
+                                                     RegistryValueKind.DWord);
+                }
                 else
+                {
                     subKey.SetValue(_nameFlagTagOutcome,
-                                     _flagFalse,
-                                     RegistryValueKind.DWord);
+                                                     _flagFalse,
+                                                     RegistryValueKind.DWord);
+                }
             }
         }
 
@@ -660,13 +724,17 @@ namespace PCLParaphernalia
                                 RegistryValueKind.DWord);
 
                 if (flagOptRptWrap)
+                {
                     subKey.SetValue(_nameFlagOptRptWrap,
-                                     _flagTrue,
-                                     RegistryValueKind.DWord);
+                                                     _flagTrue,
+                                                     RegistryValueKind.DWord);
+                }
                 else
+                {
                     subKey.SetValue(_nameFlagOptRptWrap,
-                                     _flagFalse,
-                                     RegistryValueKind.DWord);
+                                                     _flagFalse,
+                                                     RegistryValueKind.DWord);
+                }
             }
         }
 
@@ -691,13 +759,17 @@ namespace PCLParaphernalia
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 if (flagOptMap)
+                {
                     subKey.SetValue(_nameFlagOptMapping,
-                                    _flagTrue,
-                                    RegistryValueKind.DWord);
+                                                    _flagTrue,
+                                                    RegistryValueKind.DWord);
+                }
                 else
+                {
                     subKey.SetValue(_nameFlagOptMapping,
-                                    _flagFalse,
-                                    RegistryValueKind.DWord);
+                                                    _flagFalse,
+                                                    RegistryValueKind.DWord);
+                }
 
                 subKey.SetValue(_nameSymSetMapType,
                                  mapType,

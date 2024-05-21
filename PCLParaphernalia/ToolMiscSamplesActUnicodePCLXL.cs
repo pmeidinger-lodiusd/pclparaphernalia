@@ -566,16 +566,20 @@ namespace PCLParaphernalia
             posY = _posYData;
 
             if (codePoint < 0x010000)
+            {
                 PCLXLWriter.Text(prnWriter, false, false,
-                                  PCLXLWriter.advances_ArialRegular, ptSize,
-                                  posX, posY,
-                                  "U+" + codePoint.ToString("x4"));
+                                              PCLXLWriter.advances_ArialRegular, ptSize,
+                                              posX, posY,
+                                              "U+" + codePoint.ToString("x4"));
+            }
             else
+            {
                 // should not happen 'cos XL only supports 16-bit values !
                 PCLXLWriter.Text(prnWriter, false, false,
                                   PCLXLWriter.advances_ArialRegular, ptSize,
                                   posX, posY,
                                   "U+" + codePoint.ToString("x6"));
+            }
 
             PrnParseDataUTF8.convertUTF32ToUTF8Bytes(codePoint,
                                                       ref utf8Len,

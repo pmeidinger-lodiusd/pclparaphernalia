@@ -1637,15 +1637,25 @@ namespace PCLParaphernalia
             sldrCharSetSubCode.IsEnabled = false;
 
             if (_indxCharSetSubAct == PrnParseConstants.eOptCharSetSubActs.Mnemonics)
+            {
                 rbCharSetSubActMnemonics.IsChecked = true;
+            }
             else if (_indxCharSetSubAct == PrnParseConstants.eOptCharSetSubActs.MnemonicsIncSpace)
+            {
                 rbCharSetSubActMnemonicsAndSpaces.IsChecked = true;
+            }
             else if (_indxCharSetSubAct == PrnParseConstants.eOptCharSetSubActs.Hex)
+            {
                 rbCharSetSubActHex.IsChecked = true;
+            }
             else if (_indxCharSetSubAct == PrnParseConstants.eOptCharSetSubActs.Dots)
+            {
                 rbCharSetSubActDots.IsChecked = true;
+            }
             else if (_indxCharSetSubAct == PrnParseConstants.eOptCharSetSubActs.Spaces)
+            {
                 rbCharSetSubActSpaces.IsChecked = true;
+            }
             else
             {
                 rbCharSetSubActSubstitute.IsChecked = true;
@@ -2342,15 +2352,25 @@ namespace PCLParaphernalia
                 txtCharSetSubCode.IsEnabled = false;
 
                 if (rbCharSetSubActMnemonics.IsChecked == true)
+                {
                     _indxCharSetSubAct = PrnParseConstants.eOptCharSetSubActs.Mnemonics;
+                }
                 else if (rbCharSetSubActMnemonicsAndSpaces.IsChecked == true)
+                {
                     _indxCharSetSubAct = PrnParseConstants.eOptCharSetSubActs.MnemonicsIncSpace;
+                }
                 else if (rbCharSetSubActHex.IsChecked == true)
+                {
                     _indxCharSetSubAct = PrnParseConstants.eOptCharSetSubActs.Hex;
+                }
                 else if (rbCharSetSubActDots.IsChecked == true)
+                {
                     _indxCharSetSubAct = PrnParseConstants.eOptCharSetSubActs.Dots;
+                }
                 else if (rbCharSetSubActSpaces.IsChecked == true)
+                {
                     _indxCharSetSubAct = PrnParseConstants.eOptCharSetSubActs.Spaces;
+                }
                 else
                 {
                     _indxCharSetSubAct = PrnParseConstants.eOptCharSetSubActs.Substitute;
@@ -2377,7 +2397,9 @@ namespace PCLParaphernalia
                 grpCurFXLBind.Visibility = Visibility.Hidden;
 
                 if (rbCurFInitLangPCL.IsChecked == true)
+                {
                     _indxCurFInitLang = ToolCommonData.ePrintLang.PCL;
+                }
                 else if (rbCurFInitLangPCLXL.IsChecked == true)
                 {
                     _indxCurFInitLang = ToolCommonData.ePrintLang.PCLXL;
@@ -2385,11 +2407,17 @@ namespace PCLParaphernalia
                     grpCurFXLBind.Visibility = Visibility.Visible;
                 }
                 else if (rbCurFInitLangHPGL2.IsChecked == true)
+                {
                     _indxCurFInitLang = ToolCommonData.ePrintLang.HPGL2;
+                }
                 else if (rbCurFInitLangPJL.IsChecked == true)
+                {
                     _indxCurFInitLang = ToolCommonData.ePrintLang.PJL;
+                }
                 else
+                {
                     _indxCurFInitLang = ToolCommonData.ePrintLang.PostScript;
+                }
             }
         }
 

@@ -211,7 +211,9 @@ namespace PCLParaphernalia
                 for (int j = 0; j < imageRowMult; j++)
                 {
                     if ((i + j) >= imageHeight)
+                    {
                         j = imageRowMult;
+                    }
                     else
                     {
                         ToolImageBitmapCore.getNextImageBlock(ref bufSub,

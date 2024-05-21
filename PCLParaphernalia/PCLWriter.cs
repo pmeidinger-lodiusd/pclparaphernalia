@@ -579,35 +579,51 @@ namespace PCLParaphernalia
             string seq;
 
             if (control == eMacroControl.StartDef)
+            {
                 seq = "\x1b" + "&f" +
-                               macroId + "y" +  // Macro: ID
-                               "0X";            // Macro: start definition
+                                           macroId + "y" +  // Macro: ID
+                                           "0X";            // Macro: start definition
+            }
             else if (control == eMacroControl.StopDef)
+            {
                 seq = "\x1b" + "&f" +
-                               //   macroId + "y" +  // Macro: ID - don't need this
-                               "1X";            // Macro: end definition
+                                           //   macroId + "y" +  // Macro: ID - don't need this
+                                           "1X";            // Macro: end definition
+            }
             else if (control == eMacroControl.Execute)
+            {
                 seq = "\x1b" + "&f" +
-                               macroId + "y" +  // Macro: ID
-                               "2X";            // Macro: Execute
+                                           macroId + "y" +  // Macro: ID
+                                           "2X";            // Macro: Execute
+            }
             else if (control == eMacroControl.Call)
+            {
                 seq = "\x1b" + "&f" +
-                               macroId + "y" +  // Macro: ID
-                               "3X";            // Macro: call
+                                           macroId + "y" +  // Macro: ID
+                                           "3X";            // Macro: call
+            }
             else if (control == eMacroControl.Overlay)
+            {
                 seq = "\x1b" + "&f" +
-                               macroId + "y" +  // Macro: ID
-                               "4X";            // Macro: enable for overlay
+                                           macroId + "y" +  // Macro: ID
+                                           "4X";            // Macro: enable for overlay
+            }
             else if (control == eMacroControl.Delete)
+            {
                 seq = "\x1b" + "&f" +
-                               macroId + "y" +  // Macro: ID
-                               "8X";            // Macro: delete
+                                           macroId + "y" +  // Macro: ID
+                                           "8X";            // Macro: delete
+            }
             else if (control == eMacroControl.MakePermanent)
+            {
                 seq = "\x1b" + "&f" +
-                               macroId + "y" +  // Macro: ID
-                               "10X";           // Macro: make permanent
+                                           macroId + "y" +  // Macro: ID
+                                           "10X";           // Macro: make permanent
+            }
             else
+            {
                 seq = string.Empty;
+            }
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
@@ -1483,17 +1499,23 @@ namespace PCLParaphernalia
             string posSeq;
 
             if (floating)
+            {
                 posSeq = string.Empty;
+            }
             else if (relative)
+            {
                 posSeq = "\x1b" + "*p" +
-                           (coordX > 0 ? "+" : string.Empty) +
-                           coordX + "x" +       // Position: Horizontal
-                           (coordY > 0 ? "+" : string.Empty) +
-                           coordY + "Y";        // Position: Vertical
+                                       (coordX > 0 ? "+" : string.Empty) +
+                                       coordX + "x" +       // Position: Horizontal
+                                       (coordY > 0 ? "+" : string.Empty) +
+                                       coordY + "Y";        // Position: Vertical
+            }
             else
+            {
                 posSeq = "\x1b" + "*p" +
-                           coordX + "x" +       // Position: Horizontal
-                           coordY + "Y";        // Position: Vertical
+                                       coordX + "x" +       // Position: Horizontal
+                                       coordY + "Y";        // Position: Vertical
+            }
 
             //----------------------------------------------------------------//
 
@@ -1550,17 +1572,23 @@ namespace PCLParaphernalia
             string posSeq;
 
             if (floating)
+            {
                 posSeq = string.Empty;
+            }
             else if (relative)
+            {
                 posSeq = "\x1b" + "*p" +
-                           (coordX > 0 ? "+" : string.Empty) +
-                           coordX + "x" +       // Position: Horizontal
-                           (coordY > 0 ? "+" : string.Empty) +
-                           coordY + "Y";        // Position: Vertical
+                                       (coordX > 0 ? "+" : string.Empty) +
+                                       coordX + "x" +       // Position: Horizontal
+                                       (coordY > 0 ? "+" : string.Empty) +
+                                       coordY + "Y";        // Position: Vertical
+            }
             else
+            {
                 posSeq = "\x1b" + "*p" +
-                           coordX + "x" +       // Position: Horizontal
-                           coordY + "Y";        // Position: Vertical
+                                       coordX + "x" +       // Position: Horizontal
+                                       coordY + "Y";        // Position: Vertical
+            }
 
             //----------------------------------------------------------------//
 
@@ -1599,17 +1627,23 @@ namespace PCLParaphernalia
             string posSeq;
 
             if (floating)
+            {
                 posSeq = string.Empty;
+            }
             else if (relative)
+            {
                 posSeq = "\x1b" + "*p" +
-                           (coordX > 0 ? "+" : string.Empty) +
-                           coordX + "x" +       // Position: Horizontal
-                           (coordY > 0 ? "+" : string.Empty) +
-                           coordY + "Y";        // Position: Vertical
+                                       (coordX > 0 ? "+" : string.Empty) +
+                                       coordX + "x" +       // Position: Horizontal
+                                       (coordY > 0 ? "+" : string.Empty) +
+                                       coordY + "Y";        // Position: Vertical
+            }
             else
+            {
                 posSeq = "\x1b" + "*p" +
-                           coordX + "x" +       // Position: Horizontal
-                           coordY + "Y";        // Position: Vertical
+                                       coordX + "x" +       // Position: Horizontal
+                                       coordY + "Y";        // Position: Vertical
+            }
 
             //----------------------------------------------------------------//
 
@@ -1659,17 +1693,23 @@ namespace PCLParaphernalia
             string posSeq;
 
             if (floating)
+            {
                 posSeq = string.Empty;
+            }
             else if (relative)
+            {
                 posSeq = "\x1b" + "*p" +
-                           (coordX > 0 ? "+" : string.Empty) +
-                           coordX + "x" +       // Position: Horizontal
-                           (coordY > 0 ? "+" : string.Empty) +
-                           coordY + "Y";        // Position: Vertical
+                                       (coordX > 0 ? "+" : string.Empty) +
+                                       coordX + "x" +       // Position: Horizontal
+                                       (coordY > 0 ? "+" : string.Empty) +
+                                       coordY + "Y";        // Position: Vertical
+            }
             else
+            {
                 posSeq = "\x1b" + "*p" +
-                           coordX + "x" +       // Position: Horizontal
-                           coordY + "Y";        // Position: Vertical
+                                       coordX + "x" +       // Position: Horizontal
+                                       coordY + "Y";        // Position: Vertical
+            }
 
             //----------------------------------------------------------------//
 

@@ -224,9 +224,13 @@ namespace PCLParaphernalia
 
             if (options.IndxGenOffsetFormat ==
                 PrnParseConstants.eOptOffsetFormats.Hexadecimal)
+            {
                 offsetFormat = "{0:x8}";
+            }
             else
+            {
                 offsetFormat = "{0:d10}";
+            }
 
             options.getOptCharSet(ref _indxCharSetName,
                                    ref _indxCharSetSubAct,

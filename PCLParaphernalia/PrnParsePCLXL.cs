@@ -276,10 +276,14 @@ namespace PCLParaphernalia
                                            encapsulate);
 
                 if (encapsulate)
+                {
                     descText = "PopGS (encapsulated within" +
-                               " ReadStream structure)";
+                                               " ReadStream structure)";
+                }
                 else
+                {
                     descText = "PopGS";
+                }
 
                 PrnParseCommon.addTextRow(
                     PrnParseRowTypes.eType.PCLXLOperator,
@@ -400,17 +404,21 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (linkData.isContinuation())
+            {
                 seqInvalid = parseContinuation(ref bufRem,
-                                                ref bufOffset,
-                                                ref crntPDL,
-                                                ref endReached,
-                                                firstCall);
+                                                            ref bufOffset,
+                                                            ref crntPDL,
+                                                            ref endReached,
+                                                            firstCall);
+            }
             else
+            {
                 seqInvalid = parseSequences(ref bufRem,
-                                             ref bufOffset,
-                                             ref crntPDL,
-                                             ref endReached,
-                                             firstCall);
+                                                         ref bufOffset,
+                                                         ref crntPDL,
+                                                         ref endReached,
+                                                         firstCall);
+            }
 
             return seqInvalid;
         }
@@ -765,9 +773,11 @@ namespace PCLParaphernalia
                                                 ref bufOffset);
 
                         if (badSeq)
+                        {
                             invalidSeqFound = true;
+                        }
                         else if (_hddrRead &&
-                                 (_parseType == PrnParse.eParseType.MakeOverlay))
+                                                         (_parseType == PrnParse.eParseType.MakeOverlay))
                         {
                             _breakpoint =
                                 PrnParseMakeOvl.checkActionPCLXLPushGS(
@@ -1968,9 +1978,13 @@ namespace PCLParaphernalia
 
                         if ((baseType == PCLXLDataTypes.eBaseType.Sint16) ||
                             (baseType == PCLXLDataTypes.eBaseType.Uint16))
+                        {
                             valLen = 2;
+                        }
                         else
+                        {
                             valLen = 4;
+                        }
 
                         if (_bindType ==
                             PrnParseConstants.ePCLXLBinding.BinaryMSFirst)
@@ -2038,10 +2052,14 @@ namespace PCLParaphernalia
                                      PrnParseRowTypes.eType.PCLXLDataValue);
 
                         if (decodeIndent != 0)
+                        {
                             text = new string(' ', decodeIndent) +
-                                   "Enumerated value not recognised";
+                                                           "Enumerated value not recognised";
+                        }
                         else
+                        {
                             text = "Enumerated value not recognised";
+                        }
 
                         PrnParseCommon.addTextRow(
                             PrnParseRowTypes.eType.MsgWarning,
@@ -3166,10 +3184,14 @@ namespace PCLParaphernalia
                                  PrnParseRowTypes.eType.PCLXLOperator);
 
                     if (_linkData.MakeOvlEncapsulate)
+                    {
                         descText = "SetPageScale (encapsulated within" +
-                                   " ReadStream structure)";
+                                                       " ReadStream structure)";
+                    }
                     else
+                    {
                         descText = "SetPageScale";
+                    }
 
                     PrnParseCommon.addTextRow(
                         PrnParseRowTypes.eType.PCLXLOperator,

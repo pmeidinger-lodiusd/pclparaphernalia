@@ -217,15 +217,19 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (linkData.isContinuation())
+            {
                 seqInvalid = parseContinuation(ref bufRem,
-                                                ref bufOffset,
-                                                ref crntPDL,
-                                                ref endReached);
+                                                            ref bufOffset,
+                                                            ref crntPDL,
+                                                            ref endReached);
+            }
             else
+            {
                 seqInvalid = parseSequences(ref bufRem,
-                                             ref bufOffset,
-                                             ref crntPDL,
-                                             ref endReached);
+                                                         ref bufOffset,
+                                                         ref crntPDL,
+                                                         ref endReached);
+            }
 
             return seqInvalid;
         }
@@ -763,13 +767,17 @@ namespace PCLParaphernalia
                 commandName = cmd.ToString();
 
                 if (commandName?.Length == 0)
+                {
                     seqKnown = PJLCommands.checkCmd(PJLCommands.nullCmdKey,
-                                                     ref desc,
-                                                     _analysisLevel);
+                                                                     ref desc,
+                                                                     _analysisLevel);
+                }
                 else
+                {
                     seqKnown = PJLCommands.checkCmd(cmd.ToString(),
-                                                     ref desc,
-                                                     _analysisLevel);
+                                                                     ref desc,
+                                                                     _analysisLevel);
+                }
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -940,24 +948,38 @@ namespace PCLParaphernalia
 
                     if ((langLen >= 5) &&
                         (lang.Substring(0, 5) == "PCLXL"))
+                    {
                         crntPDL = ToolCommonData.ePrintLang.PCLXL;
+                    }
                     else if ((langLen >= 7) &&
-                             (lang.Substring(0, 7) == "PCL3GUI"))
+                                                 (lang.Substring(0, 7) == "PCL3GUI"))
+                    {
                         crntPDL = ToolCommonData.ePrintLang.PCL3GUI;
+                    }
                     else if ((langLen >= 3) &&
-                             (lang.Substring(0, 3) == "PCL"))
+                                                 (lang.Substring(0, 3) == "PCL"))
+                    {
                         crntPDL = ToolCommonData.ePrintLang.PCL;
+                    }
                     else if ((langLen >= 10) &&
-                             (lang.Substring(0, 10) == "POSTSCRIPT"))
+                                                 (lang.Substring(0, 10) == "POSTSCRIPT"))
+                    {
                         crntPDL = ToolCommonData.ePrintLang.PostScript;
+                    }
                     else if ((langLen >= 4) &&
-                             (lang.Substring(0, 4) == "HPGL"))
+                                                 (lang.Substring(0, 4) == "HPGL"))
+                    {
                         crntPDL = ToolCommonData.ePrintLang.HPGL2;
+                    }
                     else if ((langLen >= 5) &&
-                             (lang.Substring(0, 5) == "XL2HB"))
+                                                 (lang.Substring(0, 5) == "XL2HB"))
+                    {
                         crntPDL = ToolCommonData.ePrintLang.XL2HB;
+                    }
                     else
+                    {
                         crntPDL = ToolCommonData.ePrintLang.Unknown;
+                    }
                 }
                 else if (_showPML &&
                          (((commandName.Length == 5)

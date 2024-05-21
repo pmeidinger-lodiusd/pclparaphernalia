@@ -586,11 +586,17 @@ namespace PCLParaphernalia
                         i = 12;
                     }
                     else if (x < '\x30')
+                    {
                         OK = false;
+                    }
                     else if (x > '\x39')
+                    {
                         OK = false;
+                    }
                     else
+                    {
                         value = (ushort)((value * 10) + (x - '\x30'));
+                    }
                 }
             }
 

@@ -2778,7 +2778,9 @@ namespace PCLParaphernalia
                             text1 = string.Empty;
 
                         if (ix1 == 0)
+                        {
                             text3 = "On baseline";
+                        }
                         else if (ix2 < 0)
                         {
                             ix2 = -ix2;

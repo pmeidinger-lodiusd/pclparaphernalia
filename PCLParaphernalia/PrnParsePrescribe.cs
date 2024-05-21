@@ -215,15 +215,19 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (linkData.isContinuation())
+            {
                 seqInvalid = parseContinuation(ref bufRem,
-                                                ref bufOffset,
-                                                ref crntPDL,
-                                                ref endReached);
+                                                            ref bufOffset,
+                                                            ref crntPDL,
+                                                            ref endReached);
+            }
             else
+            {
                 seqInvalid = parseSequences(ref bufRem,
-                                             ref bufOffset,
-                                             ref crntPDL,
-                                             ref endReached);
+                                                         ref bufOffset,
+                                                         ref crntPDL,
+                                                         ref endReached);
+            }
 
             if (endReached)
             {

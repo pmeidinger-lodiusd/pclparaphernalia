@@ -537,20 +537,28 @@ namespace PCLParaphernalia
                     posY += incPosY;
 
                     if (flagMainOnPrnDisk)
+                    {
                         PCLWriter.text(prnWriter, posX, posY, 0,
-                                        "Main form printer file:");
+                                                            "Main form printer file:");
+                    }
                     else
+                    {
                         PCLWriter.text(prnWriter, posX, posY, 0,
-                                        "Main form download file:");
+                                                            "Main form download file:");
+                    }
 
                     posY += incPosY;
 
                     if (flagRearOnPrnDisk)
+                    {
                         PCLWriter.text(prnWriter, posX, posY, 0,
-                                        "Rear form printer file:");
+                                                            "Rear form printer file:");
+                    }
                     else
+                    {
                         PCLWriter.text(prnWriter, posX, posY, 0,
-                                        "Rear form download file:");
+                                                            "Rear form download file:");
+                    }
 
                     posY += incPosY;
 
@@ -627,13 +635,17 @@ namespace PCLParaphernalia
                         int len = formFileMain.Length;
 
                         if (len < maxLen)
+                        {
                             PCLWriter.text(prnWriter, posX, posY, 0, formFileMain);
+                        }
                         else
+                        {
                             PCLWriter.text(prnWriter, posX, posY, 0,
-                                           formFileMain.Substring(0, halfLen) +
-                                           " ... " +
-                                           formFileMain.Substring(len - halfLen,
-                                                                  halfLen));
+                                                                   formFileMain.Substring(0, halfLen) +
+                                                                   " ... " +
+                                                                   formFileMain.Substring(len - halfLen,
+                                                                                          halfLen));
+                        }
                     }
 
                     posY += incPosY;
@@ -646,13 +658,17 @@ namespace PCLParaphernalia
                         int len = formFileRear.Length;
 
                         if (len < maxLen)
+                        {
                             PCLWriter.text(prnWriter, posX, posY, 0, formFileRear);
+                        }
                         else
+                        {
                             PCLWriter.text(prnWriter, posX, posY, 0,
-                                           formFileRear.Substring(0, halfLen) +
-                                           " ... " +
-                                           formFileRear.Substring(len - halfLen,
-                                                                  halfLen));
+                                                                   formFileRear.Substring(0, halfLen) +
+                                                                   " ... " +
+                                                                   formFileRear.Substring(len - halfLen,
+                                                                                          halfLen));
+                        }
                     }
                 }
             }

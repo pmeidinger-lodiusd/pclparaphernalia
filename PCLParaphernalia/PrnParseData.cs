@@ -723,48 +723,56 @@ namespace PCLParaphernalia
                                 }
 
                                 if (showOffset)
+                                {
                                     PrnParseCommon.addDataRow(
-                                        PrnParseRowTypes.eType.DataText,
-                                        table,
-                                        PrnParseConstants.eOvlShow.None,
-                                        indxOffsetFormat,
-                                        fileOffset + lineStart,
-                                        level,
-                                        typeText,
-                                        seqBytes,
-                                        line);
+                                                                        PrnParseRowTypes.eType.DataText,
+                                                                        table,
+                                                                        PrnParseConstants.eOvlShow.None,
+                                                                        indxOffsetFormat,
+                                                                        fileOffset + lineStart,
+                                                                        level,
+                                                                        typeText,
+                                                                        seqBytes,
+                                                                        line);
+                                }
                                 else
+                                {
                                     PrnParseCommon.addTextRow(
-                                        PrnParseRowTypes.eType.DataText,
-                                        table,
-                                        PrnParseConstants.eOvlShow.None,
-                                        string.Empty,
-                                        typeText,
-                                        string.Empty,
-                                        line);
+                                                                        PrnParseRowTypes.eType.DataText,
+                                                                        table,
+                                                                        PrnParseConstants.eOvlShow.None,
+                                                                        string.Empty,
+                                                                        typeText,
+                                                                        string.Empty,
+                                                                        line);
+                                }
                             }
                             else
                             {
                                 if (showOffset)
+                                {
                                     PrnParseCommon.addDataRow(
-                                        PrnParseRowTypes.eType.DataText,
-                                        table,
-                                        PrnParseConstants.eOvlShow.None,
-                                        indxOffsetFormat,
-                                        fileOffset + lineStart,
-                                        level,
-                                        string.Empty,
-                                        string.Empty,
-                                        line);
+                                                                        PrnParseRowTypes.eType.DataText,
+                                                                        table,
+                                                                        PrnParseConstants.eOvlShow.None,
+                                                                        indxOffsetFormat,
+                                                                        fileOffset + lineStart,
+                                                                        level,
+                                                                        string.Empty,
+                                                                        string.Empty,
+                                                                        line);
+                                }
                                 else
+                                {
                                     PrnParseCommon.addTextRow(
-                                        PrnParseRowTypes.eType.DataText,
-                                        table,
-                                        PrnParseConstants.eOvlShow.None,
-                                        string.Empty,
-                                        string.Empty,
-                                        string.Empty,
-                                        line);
+                                                                        PrnParseRowTypes.eType.DataText,
+                                                                        table,
+                                                                        PrnParseConstants.eOvlShow.None,
+                                                                        string.Empty,
+                                                                        string.Empty,
+                                                                        string.Empty,
+                                                                        line);
+                                }
                             }
 
                             contLine = false;
@@ -809,25 +817,29 @@ namespace PCLParaphernalia
                             foundLF = false;
 
                             if (showOffset)
+                            {
                                 PrnParseCommon.addDataRow(
-                                    PrnParseRowTypes.eType.PCLControlCode,
-                                    table,
-                                    makeOvlShow,
-                                    indxOffsetFormat,
-                                    fileOffset + offset,
-                                    level,
-                                    "PCL Control Code",
-                                    "0x" + c1.ToString("x2"),
-                                    mnemonicCC + ": " + descCC);
+                                                                PrnParseRowTypes.eType.PCLControlCode,
+                                                                table,
+                                                                makeOvlShow,
+                                                                indxOffsetFormat,
+                                                                fileOffset + offset,
+                                                                level,
+                                                                "PCL Control Code",
+                                                                "0x" + c1.ToString("x2"),
+                                                                mnemonicCC + ": " + descCC);
+                            }
                             else
+                            {
                                 PrnParseCommon.addTextRow(
-                                    PrnParseRowTypes.eType.PCLControlCode,
-                                    table,
-                                    makeOvlShow,
-                                    string.Empty,
-                                    "PCL Control Code",
-                                    "0x" + c1.ToString("x2"),
-                                    mnemonicCC + ": " + descCC);
+                                                                PrnParseRowTypes.eType.PCLControlCode,
+                                                                table,
+                                                                makeOvlShow,
+                                                                string.Empty,
+                                                                "PCL Control Code",
+                                                                "0x" + c1.ToString("x2"),
+                                                                mnemonicCC + ": " + descCC);
+                            }
 
                             contLine = false;
                         }
@@ -860,50 +872,58 @@ namespace PCLParaphernalia
                             }
 
                             if (showOffset)
+                            {
                                 PrnParseCommon.addDataRow(
-                                    PrnParseRowTypes.eType.DataText,
-                                    table,
-                                    makeOvlShow,
-                                    indxOffsetFormat,
-                                    fileOffset + lineStart,
-                                    level,
-                                    typeText,
-                                    seqBytes,
-                                    line);
+                                                                PrnParseRowTypes.eType.DataText,
+                                                                table,
+                                                                makeOvlShow,
+                                                                indxOffsetFormat,
+                                                                fileOffset + lineStart,
+                                                                level,
+                                                                typeText,
+                                                                seqBytes,
+                                                                line);
+                            }
                             else
+                            {
                                 PrnParseCommon.addTextRow(
-                                    PrnParseRowTypes.eType.DataText,
-                                    table,
-                                    PrnParseConstants.eOvlShow.None,
-                                    string.Empty,
-                                    typeText,
-                                    string.Empty,
-                                    line);
+                                                                PrnParseRowTypes.eType.DataText,
+                                                                table,
+                                                                PrnParseConstants.eOvlShow.None,
+                                                                string.Empty,
+                                                                typeText,
+                                                                string.Empty,
+                                                                line);
+                            }
 
                             contLine = true;
                         }
                         else
                         {
                             if (showOffset)
+                            {
                                 PrnParseCommon.addDataRow(
-                                    PrnParseRowTypes.eType.DataText,
-                                    table,
-                                    makeOvlShow,
-                                    indxOffsetFormat,
-                                    fileOffset + lineStart,
-                                    level,
-                                    string.Empty,
-                                    string.Empty,
-                                    line);
+                                                                PrnParseRowTypes.eType.DataText,
+                                                                table,
+                                                                makeOvlShow,
+                                                                indxOffsetFormat,
+                                                                fileOffset + lineStart,
+                                                                level,
+                                                                string.Empty,
+                                                                string.Empty,
+                                                                line);
+                            }
                             else
+                            {
                                 PrnParseCommon.addTextRow(
-                                    PrnParseRowTypes.eType.DataText,
-                                    table,
-                                    makeOvlShow,
-                                    string.Empty,
-                                    string.Empty,
-                                    string.Empty,
-                                    line);
+                                                                PrnParseRowTypes.eType.DataText,
+                                                                table,
+                                                                makeOvlShow,
+                                                                string.Empty,
+                                                                string.Empty,
+                                                                string.Empty,
+                                                                line);
+                            }
                         }
 
                         line = string.Empty;
@@ -932,48 +952,56 @@ namespace PCLParaphernalia
                 if (!contLine)
                 {
                     if (showOffset)
+                    {
                         PrnParseCommon.addDataRow(
-                            PrnParseRowTypes.eType.DataText,
-                            table,
-                            makeOvlShow,
-                            indxOffsetFormat,
-                            fileOffset + lineStart,
-                            level,
-                            typeText,
-                            string.Empty,
-                            line);
+                                                PrnParseRowTypes.eType.DataText,
+                                                table,
+                                                makeOvlShow,
+                                                indxOffsetFormat,
+                                                fileOffset + lineStart,
+                                                level,
+                                                typeText,
+                                                string.Empty,
+                                                line);
+                    }
                     else
+                    {
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.DataText,
-                            table,
-                            makeOvlShow,
-                            string.Empty,
-                            typeText,
-                            string.Empty,
-                            line);
+                                                PrnParseRowTypes.eType.DataText,
+                                                table,
+                                                makeOvlShow,
+                                                string.Empty,
+                                                typeText,
+                                                string.Empty,
+                                                line);
+                    }
                 }
                 else
                 {
                     if (showOffset)
+                    {
                         PrnParseCommon.addDataRow(
-                            PrnParseRowTypes.eType.DataText,
-                            table,
-                            makeOvlShow,
-                            indxOffsetFormat,
-                            fileOffset + lineStart,
-                            level,
-                            string.Empty,
-                            string.Empty,
-                            line);
+                                                PrnParseRowTypes.eType.DataText,
+                                                table,
+                                                makeOvlShow,
+                                                indxOffsetFormat,
+                                                fileOffset + lineStart,
+                                                level,
+                                                string.Empty,
+                                                string.Empty,
+                                                line);
+                    }
                     else
+                    {
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.DataText,
-                            table,
-                            makeOvlShow,
-                            string.Empty,
-                            string.Empty,
-                            string.Empty,
-                            line);
+                                                PrnParseRowTypes.eType.DataText,
+                                                table,
+                                                makeOvlShow,
+                                                string.Empty,
+                                                string.Empty,
+                                                string.Empty,
+                                                line);
+                    }
                 }
             }
 
@@ -1027,27 +1055,43 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (charVal > 0xff)
+            {
                 charType = eCharType.TwoByte;
+            }
             else if (charVal == PrnParseConstants.asciiSpace)
+            {
                 charType = eCharType.Space;
+            }
             else if (charVal == PrnParseConstants.asciiDEL)
+            {
                 charType = eCharType.DEL;
+            }
             else if (charVal < 0x21)
+            {
                 charType = eCharType.C0Controls;
+            }
             else if ((showCharSet == PrnParseConstants.eOptCharSets.ASCII)
-                                    &&
-                        (charVal >= 0x80))
+                                                &&
+                                    (charVal >= 0x80))
+            {
                 charType = eCharType.Extended;
+            }
             else if ((showCharSet == PrnParseConstants.eOptCharSets.ISO_8859_1)
-                                    &&
-                        (charVal >= 0xa0))
+                                                &&
+                                    (charVal >= 0xa0))
+            {
                 charType = eCharType.Graphic;
+            }
             else if ((showCharSet == PrnParseConstants.eOptCharSets.ISO_8859_1)
-                                       &&
-                        (charVal >= 0x80))
+                                                   &&
+                                    (charVal >= 0x80))
+            {
                 charType = eCharType.C1Controls;
+            }
             else
+            {
                 charType = eCharType.Graphic;
+            }
 
             //----------------------------------------------------------------//
             //                                                                //

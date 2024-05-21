@@ -359,22 +359,30 @@ namespace PCLParaphernalia
                                 RegistryValueKind.DWord);
 
                 if (flagFormAsMacro)
+                {
                     subKey.SetValue(_nameFlagFormAsMacro,
-                                    _flagTrue,
-                                    RegistryValueKind.DWord);
+                                                    _flagTrue,
+                                                    RegistryValueKind.DWord);
+                }
                 else
+                {
                     subKey.SetValue(_nameFlagFormAsMacro,
-                                    _flagFalse,
-                                    RegistryValueKind.DWord);
+                                                    _flagFalse,
+                                                    RegistryValueKind.DWord);
+                }
 
                 if (flagCustomUseMetric)
+                {
                     subKey.SetValue(_nameFlagCustomUseMetric,
-                                    _flagTrue,
-                                    RegistryValueKind.DWord);
+                                                    _flagTrue,
+                                                    RegistryValueKind.DWord);
+                }
                 else
+                {
                     subKey.SetValue(_nameFlagCustomUseMetric,
-                                    _flagFalse,
-                                    RegistryValueKind.DWord);
+                                                    _flagFalse,
+                                                    RegistryValueKind.DWord);
+                }
 
                 subKey.SetValue(_nameCustomShortEdge,
                                 customShortEdge,

@@ -556,11 +556,15 @@ namespace PCLParaphernalia
                                     contDataLen = _linkData.DataLen;
 
                                     if (contDataLen > 0)
+                                    {
                                         _ipStream.Seek(contDataLen,
-                                                        SeekOrigin.Begin);
+                                                                                            SeekOrigin.Begin);
+                                    }
                                     else
+                                    {
                                         _ipStream.Seek(contDataLen,
-                                                        SeekOrigin.Current);
+                                                                                            SeekOrigin.Current);
+                                    }
 
                                     bufRem = 0;
                                 }

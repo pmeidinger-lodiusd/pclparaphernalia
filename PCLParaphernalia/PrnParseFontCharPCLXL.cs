@@ -461,7 +461,9 @@ namespace PCLParaphernalia
                     _charHddrLen = 8;
                 }
                 else
+                {
                     _validChar = false;
+                }
             }
             else if (_truetypeFont)
             {
@@ -481,7 +483,9 @@ namespace PCLParaphernalia
                     _charHddrLen = 10;
                 }
                 else
+                {
                     _validChar = false;
+                }
             }
 
             PrnParseCommon.addTextRow(

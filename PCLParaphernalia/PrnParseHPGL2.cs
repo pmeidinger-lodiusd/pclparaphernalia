@@ -507,14 +507,18 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (linkData.isContinuation())
+            {
                 seqInvalid = parseContinuation(ref bufRem,
-                                                ref bufOffset,
-                                                ref endReached);
+                                                            ref bufOffset,
+                                                            ref endReached);
+            }
             else
+            {
                 seqInvalid = parseSequences(ref bufRem,
-                                             ref bufOffset,
-                                             ref crntPDL,
-                                             ref endReached);
+                                                         ref bufOffset,
+                                                         ref crntPDL,
+                                                         ref endReached);
+            }
 
             return seqInvalid;
         }
@@ -1434,7 +1438,9 @@ namespace PCLParaphernalia
                     //--------------------------------------------------------//
 
                     if (_linkData.IsEofSet)
+                    {
                         termFound = true;
+                    }
                     else
                     {
                         continuation = true;

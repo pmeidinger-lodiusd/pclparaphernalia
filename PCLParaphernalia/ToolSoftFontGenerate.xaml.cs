@@ -196,25 +196,29 @@ namespace PCLParaphernalia
                 ref flagOptRptWrap);
 
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+            {
                 ToolSoftFontGenReport.generate(rptFileFmt,
-                                                rptChkMarks,
-                                                _tableLogDonor,
-                                                _tableLogMapping,
-                                                _tableLogTarget,
-                                                _tableLogChars,
-                                                _fontNameTTF,
-                                                _fontFilenameTTF,
-                                                _fontFilenamePCL);
+                                                            rptChkMarks,
+                                                            _tableLogDonor,
+                                                            _tableLogMapping,
+                                                            _tableLogTarget,
+                                                            _tableLogChars,
+                                                            _fontNameTTF,
+                                                            _fontFilenameTTF,
+                                                            _fontFilenamePCL);
+            }
             else
+            {
                 ToolSoftFontGenReport.generate(rptFileFmt,
-                                                rptChkMarks,
-                                                _tableLogDonor,
-                                                _tableLogMapping,
-                                                _tableLogTarget,
-                                                _tableLogChars,
-                                                _fontNameTTF,
-                                                _fontFilenameTTF,
-                                                _fontFilenamePCLXL);
+                                                            rptChkMarks,
+                                                            _tableLogDonor,
+                                                            _tableLogMapping,
+                                                            _tableLogTarget,
+                                                            _tableLogChars,
+                                                            _fontNameTTF,
+                                                            _fontFilenameTTF,
+                                                            _fontFilenamePCLXL);
+            }
         }
 
         //--------------------------------------------------------------------//
@@ -568,13 +572,19 @@ namespace PCLParaphernalia
                 _tableLogChars.Clear();
 
                 if (_symSetUnbound)
+                {
                     _sizeCharSet = cSizeCharSet_UCS_2;
+                }
                 else if (_symSetUserSet)
+                {
                     _sizeCharSet =
-                        PCLSymbolSets.GetMapArrayMax(_indxSymSetTarget) + 1;
+                                        PCLSymbolSets.GetMapArrayMax(_indxSymSetTarget) + 1;
+                }
                 else
+                {
                     _sizeCharSet =
-                        PCLSymbolSets.GetMapArrayMax(_indxSymSetTarget) + 1;
+                                        PCLSymbolSets.GetMapArrayMax(_indxSymSetTarget) + 1;
+                }
 
                 _ttfHandler = new ToolSoftFontGenTTF(_tableLogDonor,
                                                       _tableLogMapping,
@@ -969,10 +979,14 @@ namespace PCLParaphernalia
             {
                 allowFontFileSelect = false;
                 if (_fontFiles[_indxFont].Contains("\\"))
+                {
                     _fontFilenameTTF = _fontFiles[_indxFont];
+                }
                 else
+                {
                     _fontFilenameTTF = _fontsFolder + "\\" +
-                                       _fontFiles[_indxFont];
+                                                       _fontFiles[_indxFont];
+                }
 
                 txtTTFFile.Text = _fontFilenameTTF;
             }
@@ -1803,15 +1817,19 @@ bitVal;
                 string.Empty);
 
             if (monoSpaced)
+            {
                 ToolSoftFontGenLog.logNameAndValue(
-                    _tableLogTarget, false, false,
-                    "Spacing:",
-                    "Value:   " + "0 (= fixed-pitch)");
+                                _tableLogTarget, false, false,
+                                "Spacing:",
+                                "Value:   " + "0 (= fixed-pitch)");
+            }
             else
+            {
                 ToolSoftFontGenLog.logNameAndValue(
-                    _tableLogTarget, false, false,
-                    "Spacing:",
-                    "Value:   " + "1 (= proportionally-spaced)");
+                                _tableLogTarget, false, false,
+                                "Spacing:",
+                                "Value:   " + "1 (= proportionally-spaced)");
+            }
 
             ToolSoftFontGenLog.logNameAndValue(
                 _tableLogTarget, false, false,

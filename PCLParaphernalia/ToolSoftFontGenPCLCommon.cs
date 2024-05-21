@@ -1504,13 +1504,17 @@ namespace PCLParaphernalia
                 if (flagOK)
                 {
                     if (pdlIsPCLXL)
+                    {
                         flagOK = writeHddrSegDataVI(pdlIsPCLXL, fmt16,
-                                                     conversionText,
-                                                     ref sumMod256);
+                                                                         conversionText,
+                                                                         ref sumMod256);
+                    }
                     else
+                    {
                         flagOK = writeHddrSegDataCP(pdlIsPCLXL, fmt16,
-                                                     conversionText,
-                                                     ref sumMod256);
+                                                                         conversionText,
+                                                                         ref sumMod256);
+                    }
                 }
             }
 

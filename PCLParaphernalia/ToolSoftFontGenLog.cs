@@ -135,14 +135,20 @@ namespace PCLParaphernalia
                                     string message)
         {
             if (type == MessageBoxImage.Information)
+            {
                 logNameAndValue(
-                    table, true, true, "*** COMMENT ***", message);
+                                table, true, true, "*** COMMENT ***", message);
+            }
             else if (type == MessageBoxImage.Warning)
+            {
                 logNameAndValue(
-                    table, true, true, "*** WARNING ***", message);
+                                table, true, true, "*** WARNING ***", message);
+            }
             else
+            {
                 logNameAndValue(
-                    table, true, true, "*** ERROR ***", message);
+                                table, true, true, "*** ERROR ***", message);
+            }
 
             MessageBox.Show(message,
                              "Processing font",

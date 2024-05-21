@@ -611,11 +611,15 @@ namespace PCLParaphernalia
             }
 
             if (formAsMacro)
+            {
                 PCLWriter.macroControl(prnWriter, macroIdFront,
-                                       PCLWriter.eMacroControl.Call);
+                                                   PCLWriter.eMacroControl.Call);
+            }
             else
+            {
                 generateOverlayFront(prnWriter, false,
-                                      _noForm, scaleFactor);
+                                                  _noForm, scaleFactor);
+            }
 
             //----------------------------------------------------------------//
 
@@ -645,56 +649,80 @@ namespace PCLParaphernalia
             posY += posYInc;
 
             if (indxPaperSize >= PCLPaperSizes.getCount())
+            {
                 PCLWriter.text(prnWriter, posX, posY, 0, "*** unknown ***");
+            }
             else
+            {
                 PCLWriter.text(prnWriter, posX, posY, 0,
-                          PCLPaperSizes.getName(indxPaperSize));
+                                      PCLPaperSizes.getName(indxPaperSize));
+            }
 
             //----------------------------------------------------------------//
 
             posY += posYInc;
 
             if (indxPaperType >= PCLPaperTypes.getCount())
+            {
                 PCLWriter.text(prnWriter, posX, posY, 0, "*** unknown ***");
+            }
             else if (PCLPaperTypes.getType(indxPaperType) ==
-                    PCLPaperTypes.eEntryType.NotSet)
+                                PCLPaperTypes.eEntryType.NotSet)
+            {
                 PCLWriter.text(prnWriter, posX, posY, 0, "<not set>");
+            }
             else
+            {
                 PCLWriter.text(prnWriter, posX, posY, 0,
-                          PCLPaperTypes.getName(indxPaperType));
+                                      PCLPaperTypes.getName(indxPaperType));
+            }
 
             //----------------------------------------------------------------//
 
             posY += posYInc;
 
             if (indxPlexMode >= PCLPlexModes.getCount())
+            {
                 PCLWriter.text(prnWriter, posX, posY, 0, "*** unknown ***");
+            }
             else
+            {
                 PCLWriter.text(prnWriter, posX, posY, 0,
-                          PCLPlexModes.getName(indxPlexMode));
+                                      PCLPlexModes.getName(indxPlexMode));
+            }
 
             //----------------------------------------------------------------//
 
             posY += posYInc;
 
             if (indxOrientFront >= PCLOrientations.getCount())
+            {
                 PCLWriter.text(prnWriter, posX, posY, 0, "*** unknown ***");
+            }
             else
+            {
                 PCLWriter.text(prnWriter, posX, posY, 0,
-                          PCLOrientations.getName(indxOrientFront));
+                                      PCLOrientations.getName(indxOrientFront));
+            }
 
             //----------------------------------------------------------------//
 
             posY += posYInc;
 
             if (indxPaperTray == PCLTrayDatas.GetIdNotSetPCL())
+            {
                 PCLWriter.text(prnWriter, posX, posY, 0, "<not set>");
+            }
             else if (indxPaperTray == _trayIdAutoSelectPCL)
+            {
                 PCLWriter.text(prnWriter, posX, posY, 0,
-                               indxPaperTray.ToString() + " (auto-select)");
+                                           indxPaperTray.ToString() + " (auto-select)");
+            }
             else
+            {
                 PCLWriter.text(prnWriter, posX, posY, 0,
-                               indxPaperTray.ToString());
+                                           indxPaperTray.ToString());
+            }
 
             //----------------------------------------------------------------//
             //                                                                // 
@@ -714,11 +742,15 @@ namespace PCLParaphernalia
                 PCLWriter.pageFace(prnWriter, false);
 
                 if (formAsMacro)
+                {
                     PCLWriter.macroControl(prnWriter, macroIdRear,
-                                           PCLWriter.eMacroControl.Call);
+                                                           PCLWriter.eMacroControl.Call);
+                }
                 else
+                {
                     generateOverlayRear(prnWriter, false,
-                                         _noForm, scaleFactor);
+                                                         _noForm, scaleFactor);
+                }
 
                 //----------------------------------------------------------------//
 
@@ -737,10 +769,14 @@ namespace PCLParaphernalia
                 posY += (short)(posYInc * 4);
 
                 if (indxOrientRear >= PCLOrientations.getCount())
+                {
                     PCLWriter.text(prnWriter, posX, posY, 0, "*** unknown ***");
+                }
                 else
+                {
                     PCLWriter.text(prnWriter, posX, posY, 0,
-                              PCLOrientations.getName(indxOrientRear));
+                                              PCLOrientations.getName(indxOrientRear));
+                }
             }
 
             PCLWriter.formFeed(prnWriter);

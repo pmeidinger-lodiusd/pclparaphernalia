@@ -331,11 +331,15 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (formAsMacro)
+            {
                 PCLWriter.macroControl(prnWriter, _macroId,
-                                       PCLWriter.eMacroControl.Call);
+                                                   PCLWriter.eMacroControl.Call);
+            }
             else
+            {
                 generateOverlay(prnWriter, false, logXOffset,
-                                indxPaperSize, indxOrientation);
+                                            indxPaperSize, indxOrientation);
+            }
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -354,11 +358,15 @@ namespace PCLParaphernalia
             posY = _posYData;
 
             if (codePoint < 0x010000)
+            {
                 PCLWriter.text(prnWriter, posX, posY, 0, "U+" +
-                               codePoint.ToString("x4"));
+                                           codePoint.ToString("x4"));
+            }
             else
+            {
                 PCLWriter.text(prnWriter, posX, posY, 0, "U+" +
-                               codePoint.ToString("x6"));
+                                           codePoint.ToString("x6"));
+            }
 
             PrnParseDataUTF8.convertUTF32ToUTF8Bytes(codePoint,
                                                       ref utf8Len,

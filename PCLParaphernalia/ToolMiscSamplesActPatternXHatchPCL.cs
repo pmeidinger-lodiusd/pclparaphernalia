@@ -381,11 +381,15 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (formAsMacro)
+            {
                 PCLWriter.macroControl(prnWriter, _macroId,
-                                       PCLWriter.eMacroControl.Call);
+                                                   PCLWriter.eMacroControl.Call);
+            }
             else
+            {
                 generateOverlay(prnWriter, false, logXOffset,
-                                indxPaperSize, indxOrientation);
+                                            indxPaperSize, indxOrientation);
+            }
 
             rectHeight = _lineInc / 2;
             rectWidth = _lineInc;

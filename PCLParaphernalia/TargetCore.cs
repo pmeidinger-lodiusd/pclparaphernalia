@@ -115,31 +115,48 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (crntToolId == ToolCommonData.eToolIds.FontSample)
+            {
                 ToolFontSamplePersist.loadDataCapture(crntPDL, ref _saveFilename);
+            }
             else if (crntToolId == ToolCommonData.eToolIds.FormSample)
+            {
                 ToolFormSamplePersist.loadDataCapture(crntPDL, ref _saveFilename);
+            }
             else if (crntToolId == ToolCommonData.eToolIds.ImageBitmap)
+            {
                 ToolImageBitmapPersist.loadDataCapture(crntPDL, ref _saveFilename);
+            }
             else if (crntToolId == ToolCommonData.eToolIds.PrintArea)
+            {
                 ToolPrintAreaPersist.loadDataCapture(crntPDL, ref _saveFilename);
+            }
             else if (crntToolId == ToolCommonData.eToolIds.PrnPrint)
+            {
                 ToolPrnPrintPersist.loadDataCapture(crntPDL, ref _saveFilename);
+            }
             else if (crntToolId == ToolCommonData.eToolIds.StatusReadback)
+            {
                 ToolStatusReadbackPersist.loadDataCapture(crntPDL, ref _saveFilename);
+            }
             else if (crntToolId == ToolCommonData.eToolIds.TrayMap)
+            {
                 ToolTrayMapPersist.loadDataCapture(crntPDL, ref _saveFilename);
+            }
 
             //----------------------------------------------------------------//
 
             else if (crntToolId == ToolCommonData.eToolIds.MiscSamples)
+            {
                 ToolMiscSamplesPersist.loadDataCapture(
-                             crntToolSubId,
-                             crntPDL,
-                             ref _saveFilename);
+                                         crntToolSubId,
+                                         crntPDL,
+                                         ref _saveFilename);
+            }
 
             //----------------------------------------------------------------//
 
             else
+            {
                 //     Tool MakeOverlay // ***** Do DUMMY procs ? ***** //
                 //     Tool PrintLang
                 //     Tool PrnAnalyse
@@ -148,6 +165,7 @@ namespace PCLParaphernalia
                 //     Tool XXXDiags
 
                 _saveFilename = string.Empty;
+            }
         }
 
         //--------------------------------------------------------------------//
@@ -190,7 +208,9 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (flagNA)
+            {
                 tmpFmt = indxFmtNA;
+            }
             else
             {
                 if (tmpFmt >= indxFmtNA)

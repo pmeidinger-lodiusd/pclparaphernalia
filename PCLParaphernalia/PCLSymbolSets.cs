@@ -1527,11 +1527,15 @@ namespace PCLParaphernalia
             _sets[_indxUserSet].MapArrayUserSet = mapArray;
 
             if (symSetType == PCLSymSetTypes.Index.Bound_16bit)
+            {
                 _sets[_indxUserSet].ParsingMethod =
-                    PCLTextParsingMethods.Index.m83_UTF8;
+                                PCLTextParsingMethods.Index.m83_UTF8;
+            }
             else
+            {
                 _sets[_indxUserSet].ParsingMethod =
-                    PCLTextParsingMethods.Index.not_specified;
+                                PCLTextParsingMethods.Index.not_specified;
+            }
         }
 
         //--------------------------------------------------------------------//

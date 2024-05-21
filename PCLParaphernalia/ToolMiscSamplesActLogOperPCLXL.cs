@@ -990,11 +990,15 @@ namespace PCLParaphernalia
             indStd = 0;
 
             if (flagUseMacros)
+            {
                 PCLXLWriter.StreamExec(prnWriter, false, _streamIdSrcBoxRow);
+            }
             else
+            {
                 writeSrcBoxRow(prnWriter, indxClrS1, indxClrS2, rgbClrBlack,
-                                idClrS1, idClrS2,
-                                flagOptColour, false, flagSrcTextPat);
+                                            idClrS1, idClrS2,
+                                            flagOptColour, false, flagSrcTextPat);
+            }
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1248,10 +1252,14 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (flagUseMacros)
+            {
                 PCLXLWriter.StreamExec(prnWriter, false, _streamIdDestBoxPage);
+            }
             else
+            {
                 writeDestBoxPage(prnWriter, rgbClrD1, rgbClrD2, rgbClrBlack,
-                                  flagOptColour, false);
+                                              flagOptColour, false);
+            }
 
             //----------------------------------------------------------------//
 
@@ -1300,12 +1308,16 @@ namespace PCLParaphernalia
                 indStd = 0;
 
                 if (flagUseMacros)
+                {
                     PCLXLWriter.StreamExec(prnWriter, false,
-                                            _streamIdSrcBoxRow);
+                                                            _streamIdSrcBoxRow);
+                }
                 else
+                {
                     writeSrcBoxRow(prnWriter, rgbClrS1, rgbClrS2,
-                                    rgbClrBlack, idClrS1, idClrS2,
-                                    flagOptColour, false, flagSrcTextPat);
+                                                    rgbClrBlack, idClrS1, idClrS2,
+                                                    flagOptColour, false, flagSrcTextPat);
+                }
 
                 posY += +_rowInc;
 

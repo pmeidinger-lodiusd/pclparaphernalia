@@ -260,22 +260,30 @@ namespace PCLParaphernalia
                                 RegistryValueKind.DWord);
 
                 if (flagEncapsulated)
+                {
                     subKey.SetValue(_nameFlagEncapsulated,
-                                    _flagTrue,
-                                    RegistryValueKind.DWord);
+                                                    _flagTrue,
+                                                    RegistryValueKind.DWord);
+                }
                 else
+                {
                     subKey.SetValue(_nameFlagEncapsulated,
-                                    _flagFalse,
-                                    RegistryValueKind.DWord);
+                                                    _flagFalse,
+                                                    RegistryValueKind.DWord);
+                }
 
                 if (flagRestoreCursor)
+                {
                     subKey.SetValue(_nameFlagRestoreCursor,
-                                    _flagTrue,
-                                    RegistryValueKind.DWord);
+                                                    _flagTrue,
+                                                    RegistryValueKind.DWord);
+                }
                 else
+                {
                     subKey.SetValue(_nameFlagRestoreCursor,
-                                    _flagFalse,
-                                    RegistryValueKind.DWord);
+                                                    _flagFalse,
+                                                    RegistryValueKind.DWord);
+                }
             }
         }
 
@@ -309,22 +317,30 @@ namespace PCLParaphernalia
                 }
 
                 if (flagEncapsulated)
+                {
                     subKey.SetValue(_nameFlagEncapsulated,
-                                    _flagTrue,
-                                    RegistryValueKind.DWord);
+                                                    _flagTrue,
+                                                    RegistryValueKind.DWord);
+                }
                 else
+                {
                     subKey.SetValue(_nameFlagEncapsulated,
-                                    _flagFalse,
-                                    RegistryValueKind.DWord);
+                                                    _flagFalse,
+                                                    RegistryValueKind.DWord);
+                }
 
                 if (flagRestoreGS)
+                {
                     subKey.SetValue(_nameFlagRestoreGS,
-                                    _flagTrue,
-                                    RegistryValueKind.DWord);
+                                                    _flagTrue,
+                                                    RegistryValueKind.DWord);
+                }
                 else
+                {
                     subKey.SetValue(_nameFlagRestoreGS,
-                                    _flagFalse,
-                                    RegistryValueKind.DWord);
+                                                    _flagFalse,
+                                                    RegistryValueKind.DWord);
+                }
 
                 if (streamName != null)
                 {

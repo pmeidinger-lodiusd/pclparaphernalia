@@ -84,7 +84,9 @@ namespace PCLParaphernalia
                         pos += 3;
                     }
                     else
+                    {
                         dataLen = 0;
+                    }
 
                     if ((dataLen < minStreamNameLen) || (dataLen > maxStreamNameLen))
                     {
@@ -236,11 +238,15 @@ namespace PCLParaphernalia
                     readSize = _binReader.Read(buffer, 0, bufSize);
 
                     if (readSize == 0)
+                    {
                         endLoop = true;
+                    }
                     else
+                    {
                         PCLXLWriter.WriteStreamBlock(prnWriter,
-                                                      !encapsulated,
-                                                      buffer, ref readSize);
+                                                                          !encapsulated,
+                                                                          buffer, ref readSize);
+                    }
                 }
 
                 if (!encapsulated)

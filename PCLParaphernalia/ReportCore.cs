@@ -1929,12 +1929,16 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (padClass != string.Empty)
+            {
                 if (nameAsHddr)
                     htmlWriter.AddAttribute("class", padClass + " " + "fmtAdorn");
                 else
                     htmlWriter.AddAttribute("class", padClass);
+            }
             else if (nameAsHddr)
+            {
                 htmlWriter.AddAttribute("class", "fmtAdorn");
+            }
 
             if (colSpanName != -1)
                 htmlWriter.AddAttribute("colspan", colSpanName.ToString());

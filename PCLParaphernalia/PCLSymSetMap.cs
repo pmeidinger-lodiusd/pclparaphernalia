@@ -372,11 +372,15 @@ namespace PCLParaphernalia
                         for (int j = 0; j < rowCt; j++)
                         {
                             if (rowId < 0x10)
+                            {
                                 map.Append("0x" + rowId.ToString("X1") +
-                                            "0->   ");
+                                                                        "0->   ");
+                            }
                             else
+                            {
                                 map.Append("0x" + rowId.ToString("X3") +
-                                            "0-> ");
+                                                                        "0-> ");
+                            }
 
                             cell = rowId * rowLen;
 
@@ -396,7 +400,9 @@ namespace PCLParaphernalia
                                     mapValStd = _mapDataStd[i][mapIndx];
 
                                     if (mapValPCL == mapValStd)
+                                    {
                                         map.Append("---- ");
+                                    }
                                     else
                                     {
                                         difference = true;
@@ -581,12 +587,18 @@ namespace PCLParaphernalia
             get
             {
                 if (_flagMapDiff)
+                {
                     return MappingPCL;
+                }
                 else if (NullMapStd)
+                {
                     return MappingPCL;
+                }
                 else
+                {
                     return "Not defined" +
-                           " - see Standard (Strict) mapping definition";
+                                           " - see Standard (Strict) mapping definition";
+                }
             }
         }
 
@@ -672,11 +684,15 @@ namespace PCLParaphernalia
                         for (int j = 0; j < rowCt; j++)
                         {
                             if (rowId < 0x10)
+                            {
                                 map.Append("0x" + rowId.ToString("X1") +
-                                           "0->   ");
+                                                                       "0->   ");
+                            }
                             else
+                            {
                                 map.Append("0x" + rowId.ToString("X3") +
-                                           "0-> ");
+                                                                       "0-> ");
+                            }
 
                             cell = rowId * rowLen;
 
@@ -820,11 +836,15 @@ namespace PCLParaphernalia
                         for (int j = 0; j < rowCt; j++)
                         {
                             if (rowId < 0x10)
+                            {
                                 crntRow.Append("0x" + rowId.ToString("X1") +
-                                                "0->   ");
+                                                                            "0->   ");
+                            }
                             else
+                            {
                                 crntRow.Append("0x" + rowId.ToString("X3") +
-                                                "0-> ");
+                                                                            "0-> ");
+                            }
 
                             cell = rowId * rowLen;
 
@@ -844,7 +864,9 @@ namespace PCLParaphernalia
                                     mapValStd = _mapDataStd[i][mapIndx];
 
                                     if (mapValPCL == mapValStd)
+                                    {
                                         crntRow.Append("---- ");
+                                    }
                                     else
                                     {
                                         difference = true;
@@ -875,7 +897,9 @@ namespace PCLParaphernalia
                 }
 
                 if (difference)
+                {
                     return mapRows;
+                }
                 else
                 {
                     string[] mapRowsSame = new string[1] { "none" };
@@ -973,11 +997,15 @@ namespace PCLParaphernalia
                         for (int j = 0; j < rowCt; j++)
                         {
                             if (rowId < 0x10)
+                            {
                                 crntRow.Append("0x" + rowId.ToString("X1") +
-                                                "0->   ");
+                                                                            "0->   ");
+                            }
                             else
+                            {
                                 crntRow.Append("0x" + rowId.ToString("X3") +
-                                                "0-> ");
+                                                                            "0-> ");
+                            }
 
                             cell = rowId * rowLen;
 
@@ -1044,9 +1072,13 @@ namespace PCLParaphernalia
             get
             {
                 if (_flagMapDiff)
+                {
                     return MapRowsPCL;
+                }
                 else if (NullMapStd)
+                {
                     return MapRowsPCL;
+                }
                 else
                 {
                     string[] noDiff = new string[1] {
@@ -1147,11 +1179,15 @@ namespace PCLParaphernalia
                         for (int j = 0; j < rowCt; j++)
                         {
                             if (rowId < 0x10)
+                            {
                                 crntRow.Append("0x" + rowId.ToString("X1") +
-                                                "0->   ");
+                                                                            "0->   ");
+                            }
                             else
+                            {
                                 crntRow.Append("0x" + rowId.ToString("X3") +
-                                                "0-> ");
+                                                                            "0-> ");
+                            }
 
                             cell = rowId * rowLen;
 

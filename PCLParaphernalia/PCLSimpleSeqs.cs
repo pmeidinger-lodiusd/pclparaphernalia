@@ -175,10 +175,14 @@ namespace PCLParaphernalia
                 if (count == 0)
                 {
                     if (incUsedSeqsOnly)
+                    {
                         displaySeq = false;
+                    }
                     else if (excUnusedObsSeqs &&
-                             (kvp.Value.FlagObsolete))
+                                                 (kvp.Value.FlagObsolete))
+                    {
                         displaySeq = false;
+                    }
                 }
 
                 if (displaySeq)

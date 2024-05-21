@@ -2815,12 +2815,16 @@ bitVal;
             string txtCodepoint = source.Text;
 
             if (_flagMapHex)
+            {
                 OK = ushort.TryParse(txtCodepoint,
-                                      NumberStyles.HexNumber,
-                                      CultureInfo.InvariantCulture,
-                                      out value);
+                                                  NumberStyles.HexNumber,
+                                                  CultureInfo.InvariantCulture,
+                                                  out value);
+            }
             else
+            {
                 OK = ushort.TryParse(txtCodepoint, out value);
+            }
 
             if (OK)
             {

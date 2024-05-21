@@ -58,9 +58,13 @@ namespace PCLParaphernalia
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
             {
                 if (_indxPatternTypePCL == ePatternType.Shading)
+                {
                     rbPatternTypeShading.IsChecked = true;
+                }
                 else if (_indxPatternTypePCL == ePatternType.XHatch)
+                {
                     rbPatternTypeXHatch.IsChecked = true;
+                }
                 else
                 {
                     _indxPatternTypePCL = ePatternType.Shading;
@@ -73,9 +77,13 @@ namespace PCLParaphernalia
             else
             {
                 if (_indxPatternTypePCLXL == ePatternType.Shading)
+                {
                     rbPatternTypeShading.IsChecked = true;
+                }
                 else if (_indxPatternTypePCLXL == ePatternType.XHatch)
+                {
                     rbPatternTypeXHatch.IsChecked = true;
+                }
                 else
                 {
                     _indxPatternTypePCLXL = ePatternType.Shading;

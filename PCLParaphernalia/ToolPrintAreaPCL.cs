@@ -190,18 +190,22 @@ namespace PCLParaphernalia
             }
 
             if (customPaperSize)
+            {
                 PCLWriter.pageHeaderCustom(prnWriter,
-                                            indxPaperType,
-                                            indxOrientation,
-                                            indxPlexMode,
-                                            paperWidth,
-                                            paperLength);
+                                                        indxPaperType,
+                                                        indxOrientation,
+                                                        indxPlexMode,
+                                                        paperWidth,
+                                                        paperLength);
+            }
             else
+            {
                 PCLWriter.pageHeader(prnWriter,
-                                      indxPaperSize,
-                                      indxPaperType,
-                                      indxOrientation,
-                                      indxPlexMode);
+                                                  indxPaperSize,
+                                                  indxPaperType,
+                                                  indxOrientation,
+                                                  indxPlexMode);
+            }
         }
 
         //--------------------------------------------------------------------//
@@ -551,10 +555,14 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (formAsMacro)
+            {
                 PCLWriter.macroControl(prnWriter, _macroId, PCLWriter.eMacroControl.Call);
+            }
             else
+            {
                 generateOverlay(prnWriter, false,
-                                paperWidth, paperLength, logXOffset, scaleText);
+                                            paperWidth, paperLength, logXOffset, scaleText);
+            }
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -609,11 +617,15 @@ namespace PCLParaphernalia
             posY = _posYDesc;
 
             if (customPaperSize)
+            {
                 PCLWriter.text(prnWriter, posX, posY, 0,
-                          PCLPaperSizes.getNameAndDesc(indxPaperSize));
+                                      PCLPaperSizes.getNameAndDesc(indxPaperSize));
+            }
             else
+            {
                 PCLWriter.text(prnWriter, posX, posY, 0,
-                          PCLPaperSizes.getName(indxPaperSize));
+                                      PCLPaperSizes.getName(indxPaperSize));
+            }
 
             posY += lineInc;
 
@@ -628,12 +640,16 @@ namespace PCLParaphernalia
             posY += lineInc;
 
             if (rearFace)
+            {
                 PCLWriter.text(prnWriter, posX, posY, 0,
-                          PCLPlexModes.getName(indxPlexMode) +
-                            ": rear face");
+                                      PCLPlexModes.getName(indxPlexMode) +
+                                        ": rear face");
+            }
             else
+            {
                 PCLWriter.text(prnWriter, posX, posY, 0,
-                          PCLPlexModes.getName(indxPlexMode));
+                                      PCLPlexModes.getName(indxPlexMode));
+            }
 
             posY += lineInc;
 

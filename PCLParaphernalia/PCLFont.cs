@@ -186,11 +186,16 @@ namespace PCLParaphernalia
                 // Bitmap; the size is pre-defined.
 
                 if (_proportional)
+                {
                     // Bitmap; proportionally-spaced
                     cmd.Append(",4,").Append(_pointSize);
+                }
                 else
+                {
                     // Bitmap; fixed-pitch
                     cmd.Append(",3,").Append(_pitch);
+                }
+
                 cmd.Append(",4,").Append(_pointSize);
             }
 

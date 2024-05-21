@@ -171,15 +171,19 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (linkData.isContinuation())
+            {
                 seqInvalid = parseContinuation(ref bufRem,
-                                                ref bufOffset,
-                                                ref crntPDL,
-                                                ref endReached);
+                                                            ref bufOffset,
+                                                            ref crntPDL,
+                                                            ref endReached);
+            }
             else
+            {
                 seqInvalid = parseSequence(ref bufRem,
-                                            ref bufOffset,
-                                            ref crntPDL,
-                                            ref endReached);
+                                                        ref bufOffset,
+                                                        ref crntPDL,
+                                                        ref endReached);
+            }
 
             return seqInvalid;
         }
@@ -881,9 +885,13 @@ namespace PCLParaphernalia
                     (int)PCLTextParsingMethods.PCLVal.m83_UTF8) ||
                     (_textParsingMethod ==
                     (int)PCLTextParsingMethods.PCLVal.m1008_UTF8_alt))
+                {
                     typeText = "UTF-8 data";
+                }
                 else
+                {
                     typeText = "Data";
+                }
 
                 PrnParseData.processLines(
                     _table,
@@ -1120,9 +1128,13 @@ namespace PCLParaphernalia
                             (int)PCLTextParsingMethods.PCLVal.m83_UTF8) ||
                             (_textParsingMethod ==
                             (int)PCLTextParsingMethods.PCLVal.m1008_UTF8_alt))
+                        {
                             typeText = "UTF-8 data";
+                        }
                         else
+                        {
                             typeText = "Data";
+                        }
 
                         PrnParseData.processLines(
                             _table,
@@ -2283,10 +2295,14 @@ namespace PCLParaphernalia
                     {
                         if (optDisplayHexVal &&
                             vCheck) // vCheck ensures we don't do this for invalid or fractional values
+                        {
                             val = _ascii.GetString(_buf, vPosCrnt, vLen) +
-                                " (0x" + vInt.ToString("x") + ")";
+                                                        " (0x" + vInt.ToString("x") + ")";
+                        }
                         else
+                        {
                             val = _ascii.GetString(_buf, vPosCrnt, vLen);
+                        }
                     }
                     else
                     {

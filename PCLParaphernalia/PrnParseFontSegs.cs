@@ -2632,16 +2632,18 @@ namespace PCLParaphernalia
                         ui32b = (uint)(tableOffset + offset);
 
                         if (offset == 0)
+                        {
                             PrnParseCommon.addDataRow(
-                                _rowType,
-                                _table,
-                                PrnParseConstants.eOvlShow.None,
-                                _indxOffsetFormat,
-                                baseOffset + 20 + j,
-                                _analysisLevel,
-                                "        data:",
-                                "      Offset:",
-                                "0");
+                                                        _rowType,
+                                                        _table,
+                                                        PrnParseConstants.eOvlShow.None,
+                                                        _indxOffsetFormat,
+                                                        baseOffset + 20 + j,
+                                                        _analysisLevel,
+                                                        "        data:",
+                                                        "      Offset:",
+                                                        "0");
+                        }
                         else
                         {
                             PrnParseCommon.addDataRow(

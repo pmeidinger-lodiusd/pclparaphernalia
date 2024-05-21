@@ -231,12 +231,16 @@ namespace PCLParaphernalia
                 if (FlagNilValue)
                 {
                     if (FlagNilGChar)
+                    {
                         seq = "<Esc>" + (char)_keyPChar +
-                                        (char)_keyTChar;
+                                                            (char)_keyTChar;
+                    }
                     else
+                    {
                         seq = "<Esc>" + (char)_keyPChar +
-                                        (char)_keyGChar +
-                                        (char)_keyTChar;
+                                                            (char)_keyGChar +
+                                                            (char)_keyTChar;
+                    }
                 }
                 else if (FlagNilGChar)
                 {
