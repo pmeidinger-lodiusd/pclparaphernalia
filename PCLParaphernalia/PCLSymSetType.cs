@@ -16,7 +16,6 @@ namespace PCLParaphernalia
 
     class PCLSymSetType
     {
-
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L S y m b o l S e t T y p e                                    //

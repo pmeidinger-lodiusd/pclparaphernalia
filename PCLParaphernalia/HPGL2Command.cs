@@ -12,7 +12,6 @@ namespace PCLParaphernalia
 
     class HPGL2Command
     {
-
         private int _statsCtParent;
         private int _statsCtChild;
 

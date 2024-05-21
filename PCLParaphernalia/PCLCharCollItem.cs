@@ -6,7 +6,6 @@ namespace PCLParaphernalia
 {
     class PCLCharCollItem : INotifyPropertyChanged
     {
-
         private bool _isChecked;
 
         public event PropertyChangedEventHandler PropertyChanged;

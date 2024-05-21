@@ -10,7 +10,6 @@ namespace PCLParaphernalia
     /// </summary>
     static class MainFormData
     {
-
         private static int _versionMajorOld = -1;
         private static int _versionMinorOld = -1;
         private static int _versionBuildOld = -1;

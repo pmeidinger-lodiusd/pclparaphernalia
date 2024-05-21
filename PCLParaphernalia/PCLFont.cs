@@ -16,7 +16,6 @@ namespace PCLParaphernalia
 
     class PCLFont
     {
-
         private readonly ushort _symSetNumber;
         private readonly ushort _symSetDefault;
 

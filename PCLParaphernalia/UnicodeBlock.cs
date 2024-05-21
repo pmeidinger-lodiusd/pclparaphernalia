@@ -10,7 +10,6 @@ namespace PCLParaphernalia
     /// </summary>
     class UnicodeBlock
     {
-
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // U n i c o d e B l o c k                                            //

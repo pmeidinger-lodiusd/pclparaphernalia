@@ -17,7 +17,6 @@ namespace PCLParaphernalia
 
     class PCLSymSetMap
     {
-
         private readonly ushort[][] _mapDataStd;
         private readonly ushort[][] _mapDataPCL;
         private ushort _codepointMax;

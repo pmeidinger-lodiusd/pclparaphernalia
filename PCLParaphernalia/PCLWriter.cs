@@ -912,7 +912,6 @@ namespace PCLParaphernalia
                            "0E" +               // Top Margin (lines)
                   "\x1b" + "&a0L";              // Left Margin (columns)
 
-
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
 

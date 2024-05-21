@@ -12,7 +12,6 @@ namespace PCLParaphernalia
 
     class PJLCommand
     {
-
         private int _statsCtParent;
         private int _statsCtChild;
 
