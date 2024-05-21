@@ -19,6 +19,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Roslynator", "RCS1234:Duplicate enum value", Justification = "<Pending>")]
         public enum eVal : byte
         {
             e1Bit                     = 0x00,  // Attr 0x33, 0x62 //
