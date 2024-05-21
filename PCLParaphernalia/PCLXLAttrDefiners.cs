@@ -68,7 +68,7 @@ namespace PCLParaphernalia
                 tagReserved = kvp.Value.FlagReserved;
 
                 if ((incResTags) ||
-                    ((incResTags == false) && (!tagReserved)))
+                    ((!incResTags) && (!tagReserved)))
                 {
                     count++;
                     grid.Items.Add(kvp.Value);

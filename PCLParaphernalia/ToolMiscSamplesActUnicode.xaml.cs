@@ -159,7 +159,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < ctr; i++)
             {
-                if ((PCLFonts.isBoundFont(i) == false) &&
+                if ((!PCLFonts.isBoundFont(i)) &&
                     ((PCLFonts.getType(i) ==
                      PCLFonts.eFontType.PresetTypeface) ||
                     (PCLFonts.getType(i) ==

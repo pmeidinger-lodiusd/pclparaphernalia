@@ -179,7 +179,7 @@ namespace PCLParaphernalia
 
                 ClosePrinter(hPrinter);
             }
-            if (bSuccess == false)
+            if (!bSuccess)
             {
                 //------------------------------------------------------------//
                 //                                                            //

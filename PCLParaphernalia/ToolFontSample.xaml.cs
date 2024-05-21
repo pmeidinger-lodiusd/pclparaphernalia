@@ -4977,7 +4977,7 @@ namespace PCLParaphernalia
                 found = false;
 
                 for (int i = 0;
-                     (i < _ctParseMethods) && (found == false);
+                     (i < _ctParseMethods) && (!found);
                      i++)
                 {
                     if (_subsetParseMethods[i] == _indxParseMethod)
@@ -5039,7 +5039,7 @@ namespace PCLParaphernalia
                 found = false;
 
                 for (int i = 0;
-                     (i < _ctParseMethods) && (found == false);
+                     (i < _ctParseMethods) && (!found);
                      i++)
                 {
                     if (_subsetParseMethods[i] == _indxParseMethod)

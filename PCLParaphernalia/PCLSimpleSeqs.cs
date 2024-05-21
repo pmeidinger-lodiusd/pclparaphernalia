@@ -105,7 +105,7 @@ namespace PCLParaphernalia
                 seqObsolete = kvp.Value.FlagObsolete;
 
                 if ((incObsSeqs) ||
-                    ((incObsSeqs == false) && (!seqObsolete)))
+                    ((!incObsSeqs) && (!seqObsolete)))
                 {
                     count++;
                     grid.Items.Add(kvp.Value);
