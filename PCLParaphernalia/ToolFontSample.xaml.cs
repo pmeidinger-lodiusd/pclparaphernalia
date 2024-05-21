@@ -6179,13 +6179,12 @@ namespace PCLParaphernalia
             const ushort maxVal = 32767;
             const ushort defVal = _defaultFontStylePCL;
 
-            ushort value;
 
             bool OK = true;
 
             string crntText = txtPCLStyle.Text;
 
-            OK = ushort.TryParse(crntText, out value);
+            OK = ushort.TryParse(crntText, out ushort value);
              
             if (OK)
                 if ((value < minVal) || (value > maxVal))
@@ -6248,13 +6247,12 @@ namespace PCLParaphernalia
             const ushort maxVal = 65535;
             const ushort defVal = _defaultFontTypefacePCL;
 
-            ushort value;
 
             bool OK = true;
 
             string crntText = txtPCLTypeface.Text;
 
-            OK = ushort.TryParse(crntText, out value);
+            OK = ushort.TryParse(crntText, out ushort value);
 
             if (OK)
                 if ((value < minVal) || (value > maxVal))
@@ -6317,13 +6315,12 @@ namespace PCLParaphernalia
             const short maxVal = 7;
             const short defVal = _defaultFontWeightPCL;
 
-            short value;
 
             bool OK = true;
 
             string crntText = txtPCLWeight.Text;
 
-            OK = short.TryParse(crntText, out value);
+            OK = short.TryParse(crntText, out short value);
 
             if (OK)
                 if ((value < minVal) || (value > maxVal))
@@ -6386,13 +6383,12 @@ namespace PCLParaphernalia
             const ushort maxVal = 32767;
             const ushort defVal = _defaultSoftFontIdPCL;
 
-            ushort value;
 
             bool OK = true;
 
             string crntText = txtPCLSoftFontId.Text;
 
-            OK = ushort.TryParse(crntText, out value);
+            OK = ushort.TryParse(crntText, out ushort value);
 
             if (OK)
                 if ((value < minVal) || (value > maxVal))
@@ -6461,13 +6457,12 @@ namespace PCLParaphernalia
             const ushort maxVal = 32767;
             const ushort defVal = _defaultSoftFontIdMacroPCL;
 
-            ushort value;
 
             bool OK = true;
 
             string crntText = txtPCLSoftFontMacroId.Text;
 
-            OK = ushort.TryParse (crntText, out value);
+            OK = ushort.TryParse (crntText, out ushort value);
 
             if (OK)
                 if ((value < minVal) || (value > maxVal))
@@ -6768,13 +6763,12 @@ namespace PCLParaphernalia
             const ushort maxVal = 2047;
             const ushort defVal = _defaultSymSetIdNum;
 
-            ushort value;
 
             bool OK = true;
 
             string crntText = txtSymSetIdNum.Text;
 
-            OK = ushort.TryParse(crntText, out value);
+            OK = ushort.TryParse(crntText, out ushort value);
 
             if (OK)
                 if ((value < minVal) || (value > maxVal))

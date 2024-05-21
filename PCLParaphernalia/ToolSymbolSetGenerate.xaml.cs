@@ -2637,7 +2637,6 @@ namespace PCLParaphernalia
         {
             bool flagOK = false;
 
-            ushort mapIndx;
 
             TextBox source = e.Source as TextBox;
 
@@ -2657,7 +2656,7 @@ namespace PCLParaphernalia
             flagOK = ushort.TryParse (txtBoxName.Substring (8, 2),
                                       NumberStyles.HexNumber,
                                       CultureInfo.InvariantCulture,
-                                      out mapIndx);
+                                      out ushort mapIndx);
 
             if (flagOK)
             {
@@ -3001,13 +3000,12 @@ namespace PCLParaphernalia
             const ushort maxVal = 1023;
             const ushort defVal = _defaultSymSetIdNum;
 
-            ushort value;
 
             bool OK = true;
 
             string crntText = txtTargetSymSetIdNum.Text;
 
-            OK = ushort.TryParse (crntText, out value);
+            OK = ushort.TryParse (crntText, out ushort value);
 
             if (OK)
                 if ((value < minVal) || (value > maxVal))

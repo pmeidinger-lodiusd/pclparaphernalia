@@ -2256,7 +2256,6 @@ namespace PCLParaphernalia
             const ushort maxVal = 32767;
             ushort defVal;
 
-            ushort value;
 
             bool OK = true;
 
@@ -2276,7 +2275,7 @@ namespace PCLParaphernalia
                 crntText = txtPCLMacroIdMain.Text;
             }
 
-            OK = ushort.TryParse(crntText, out value);
+            OK = ushort.TryParse(crntText, out ushort value);
 
             if (OK)
                 if ((value < minVal) || (value > maxVal))
@@ -2441,13 +2440,12 @@ namespace PCLParaphernalia
             const ushort maxVal = 20;
             const ushort defVal = _defaultPageCount;
 
-            ushort value;
 
             bool OK = true;
 
             string crntText = txtPCLTestPageCount.Text;
 
-            OK = ushort.TryParse (crntText, out value);
+            OK = ushort.TryParse (crntText, out ushort value);
 
             if (OK)
                 if ((value < minVal) || (value > maxVal))
@@ -2681,13 +2679,12 @@ namespace PCLParaphernalia
             const ushort maxVal = 20;
             const ushort defVal = _defaultPageCount;
 
-            ushort value;
 
             bool OK = true;
 
             string crntText = txtPCLXLTestPageCount.Text;
 
-            OK = ushort.TryParse (crntText, out value);
+            OK = ushort.TryParse (crntText, out ushort value);
 
             if (OK)
                 if ((value < minVal) || (value > maxVal))

@@ -729,7 +729,6 @@ namespace PCLParaphernalia
         {
             bool flagOK = true;
 
-            ushort mapIndx;
 
             string txtBoxName;
 
@@ -750,7 +749,7 @@ namespace PCLParaphernalia
             flagOK = ushort.TryParse (txtBoxName.Substring (nameRootLen, 2),
                                       NumberStyles.Integer,
                                       CultureInfo.InvariantCulture,
-                                      out mapIndx);
+                                      out ushort mapIndx);
 
             if (flagOK)
             {

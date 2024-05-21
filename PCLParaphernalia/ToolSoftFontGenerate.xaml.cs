@@ -3483,13 +3483,12 @@ namespace PCLParaphernalia
             const ushort maxVal = 1023;
             const ushort defVal = _defaultPCLStyleNo;
 
-            ushort value;
 
             bool OK = true;
 
             string crntText = txtPCLStyleNo.Text;
 
-            OK = ushort.TryParse(crntText, out value);
+            OK = ushort.TryParse(crntText, out ushort value);
 
             if (OK)
             {
@@ -3557,13 +3556,12 @@ namespace PCLParaphernalia
             const ushort maxVal = 65530;
             const ushort defVal = _defaultSymSetNo;
 
-            ushort value;
 
             bool OK = true;
 
             string crntText = txtPCLSymSetNo.Text;
 
-            OK = ushort.TryParse (crntText, out value);
+            OK = ushort.TryParse (crntText, out ushort value);
 
             if (OK)
             {
@@ -3643,13 +3641,12 @@ namespace PCLParaphernalia
             const ushort maxVal = 65535;
             const ushort defVal = _defaultPCLTypefaceNo;
 
-            ushort value;
 
             bool OK = true;
 
             string crntText = txtPCLTypefaceNo.Text;
 
-            OK = ushort.TryParse (crntText, out value);
+            OK = ushort.TryParse (crntText, out ushort value);
 
             if (OK)
             {
@@ -3715,13 +3712,12 @@ namespace PCLParaphernalia
             const sbyte maxVal = 7;
             const sbyte defVal = _defaultPCLWeightNo;
 
-            sbyte value;
 
             bool OK = true;
 
             string crntText = txtPCLWeightNo.Text;
 
-            OK = sbyte.TryParse(crntText, out value);
+            OK = sbyte.TryParse(crntText, out sbyte value);
 
             if (OK)
             {
@@ -3787,13 +3783,12 @@ namespace PCLParaphernalia
             const ushort maxVal = 65530;
             const ushort defVal = _defaultSymSetNo;
 
-            ushort value;
 
             bool OK = true;
 
             string crntText = txtPCLXLSymSetNo.Text;
 
-            OK = ushort.TryParse (crntText, out value);
+            OK = ushort.TryParse (crntText, out ushort value);
 
             if (OK)
             {

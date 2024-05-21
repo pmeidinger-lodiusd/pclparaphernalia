@@ -1432,7 +1432,6 @@ namespace PCLParaphernalia
         private bool validatePJLFSOpt1 (bool lostFocusEvent,
                                            ref int newValue)
         {
-            int value;
             int defVal;
 
             string boxName;
@@ -1452,7 +1451,7 @@ namespace PCLParaphernalia
 
             string crntText = txtPJLFSOpt1.Text;
 
-            OK = int.TryParse (crntText, out value);
+            OK = int.TryParse (crntText, out int value);
 
             if (OK)
                 if (value < 0)
@@ -1507,7 +1506,6 @@ namespace PCLParaphernalia
         private bool validatePJLFSOpt2 (bool lostFocusEvent,
                                            ref int newValue)
         {
-            int value;
             int defVal;
 
             string boxName;
@@ -1527,7 +1525,7 @@ namespace PCLParaphernalia
 
             string crntText = txtPJLFSOpt2.Text;
 
-            OK = int.TryParse (crntText, out value);
+            OK = int.TryParse (crntText, out int value);
 
             if (OK)
                 if (value < 0)

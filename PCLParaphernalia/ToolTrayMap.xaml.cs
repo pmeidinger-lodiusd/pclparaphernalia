@@ -330,7 +330,6 @@ namespace PCLParaphernalia
         {
             bool flagOK = false;
 
-            ushort sheetIndx;
 
             ComboBox source = e.Source as ComboBox;
 
@@ -350,7 +349,7 @@ namespace PCLParaphernalia
             flagOK = ushort.TryParse(cbName.Substring(2, 2),
                                       NumberStyles.HexNumber,
                                       CultureInfo.InvariantCulture,
-                                      out sheetIndx);
+                                      out ushort sheetIndx);
 
             if (flagOK)
             {
@@ -392,7 +391,6 @@ namespace PCLParaphernalia
         {
             bool flagOK = false;
 
-            ushort sheetIndx;
 
             ComboBox source = e.Source as ComboBox;
 
@@ -412,7 +410,7 @@ namespace PCLParaphernalia
             flagOK = ushort.TryParse(cbName.Substring(2, 2),
                                       NumberStyles.HexNumber,
                                       CultureInfo.InvariantCulture,
-                                      out sheetIndx);
+                                      out ushort sheetIndx);
 
             if (flagOK)
             {
@@ -455,7 +453,6 @@ namespace PCLParaphernalia
         {
             bool flagOK = false;
 
-            ushort sheetIndx;
 
             ComboBox source = e.Source as ComboBox;
 
@@ -475,7 +472,7 @@ namespace PCLParaphernalia
             flagOK = ushort.TryParse(cbName.Substring(2, 2),
                                       NumberStyles.HexNumber,
                                       CultureInfo.InvariantCulture,
-                                      out sheetIndx);
+                                      out ushort sheetIndx);
 
             if (flagOK)
             {
@@ -520,7 +517,6 @@ namespace PCLParaphernalia
             {
                 bool flagOK = false;
 
-                ushort sheetIndx;
 
                 ComboBox source = e.Source as ComboBox;
 
@@ -540,7 +536,7 @@ namespace PCLParaphernalia
                 flagOK = ushort.TryParse(cbName.Substring(2, 2),
                                           NumberStyles.HexNumber,
                                           CultureInfo.InvariantCulture,
-                                          out sheetIndx);
+                                          out ushort sheetIndx);
 
                 if (flagOK)
                 {
@@ -584,7 +580,6 @@ namespace PCLParaphernalia
         {
             bool flagOK = false;
 
-            ushort sheetIndx;
 
             ComboBox source = e.Source as ComboBox;
 
@@ -604,7 +599,7 @@ namespace PCLParaphernalia
             flagOK = ushort.TryParse(cbName.Substring(2, 2),
                                       NumberStyles.HexNumber,
                                       CultureInfo.InvariantCulture,
-                                      out sheetIndx);
+                                      out ushort sheetIndx);
 
             if (flagOK)
             {
@@ -670,7 +665,6 @@ namespace PCLParaphernalia
         {
             bool flagOK = false;
 
-            ushort sheetIndx;
 
             ComboBox source = e.Source as ComboBox;
 
@@ -690,7 +684,7 @@ namespace PCLParaphernalia
             flagOK = ushort.TryParse(cbName.Substring(2, 2),
                                       NumberStyles.HexNumber,
                                       CultureInfo.InvariantCulture,
-                                      out sheetIndx);
+                                      out ushort sheetIndx);
 
             if (flagOK)
             {

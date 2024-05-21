@@ -2841,13 +2841,12 @@ namespace PCLParaphernalia
 
         private bool validateCurFOffsetEnd()
         {
-            int value;
 
             bool OK = true;
 
             string crntText = txtCurFOffsetEnd.Text;
 
-            OK = int.TryParse (crntText, out value);
+            OK = int.TryParse (crntText, out int value);
 
             if ((OK) && (value != -1)) 
                 if ((value > _fileSize)            ||
@@ -2892,13 +2891,12 @@ namespace PCLParaphernalia
 
         private bool validateCurFOffsetStart()
         {
-            int value;
 
             bool OK = true;
 
             string crntText = txtCurFOffsetStart.Text;
 
-            OK = int.TryParse (crntText, out value);
+            OK = int.TryParse (crntText, out int value);
 
             if (OK)
                 if ((value < 0) || (value > _fileSize))

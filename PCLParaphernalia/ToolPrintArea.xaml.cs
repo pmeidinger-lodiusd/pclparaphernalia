@@ -1444,8 +1444,7 @@ namespace PCLParaphernalia
             const double defValLong  = 11.69;
 
             double minVal,
-                   maxVal,
-                   value = 0;
+                   maxVal;
 
             ushort valueDots = 0;
 
@@ -1479,7 +1478,7 @@ namespace PCLParaphernalia
                 crntText = txtLongEdgeImperial.Text;
             }
 
-            OK = double.TryParse(crntText, out value);
+            OK = double.TryParse(crntText, out double value);
 
             if ((value < minVal) || (value > maxVal))
                 OK = false;
@@ -1646,7 +1645,7 @@ namespace PCLParaphernalia
                 crntText = txtLongEdgeMetric.Text;
             }
 
-            OK = double.TryParse(crntText, out value);
+            OK = double.TryParse(crntText, out double value);
 
             if ((value < minVal) || (value > maxVal))
                 OK = false;

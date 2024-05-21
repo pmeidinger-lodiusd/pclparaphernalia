@@ -185,8 +185,7 @@ namespace PCLParaphernalia
             bool bDriverXPS = false;
 
             IntPtr driverInfo = new IntPtr ();
-            int buf_len = 0;
-            int IntPtrSize = Marshal.SizeOf (typeof (IntPtr));
+            int IntPtrSize = Marshal.SizeOf(typeof(IntPtr));
 
             driverInfo = IntPtr.Zero;
 
@@ -211,7 +210,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             bSuccess = GetPrinterDriver (hPrinter, "", 8,
-                                         driverInfo, 0, out buf_len);
+                                         driverInfo, 0, out int buf_len);
 
             if (GetLastError () == ERROR_INSUFFICIENT_BUFFER)
             {
