@@ -299,7 +299,6 @@ namespace PCLParaphernalia
 
         public static void displayStatsCountsHddr(DataTable table)
         {
-            
             //----------------------------------------------------------------//
 
             DataRow row = table.NewRow ();

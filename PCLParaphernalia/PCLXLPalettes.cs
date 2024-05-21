@@ -82,7 +82,6 @@ namespace PCLParaphernalia
 
         static PCLXLPalettes ()
         {
-            
             //----------------------------------------------------------------//
 
             int crntIndex = (int) eIndex.PCLXLGray;

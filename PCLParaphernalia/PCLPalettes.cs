@@ -94,7 +94,6 @@ namespace PCLParaphernalia
 
         static PCLPalettes ()
         {
-            
             //----------------------------------------------------------------//
 
             int crntIndex = (int) eIndex.PCLMonochrome;
