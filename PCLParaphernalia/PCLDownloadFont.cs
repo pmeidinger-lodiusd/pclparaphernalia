@@ -416,7 +416,6 @@ namespace PCLParaphernalia
 
                     Boolean endSegs = false;
 
-
                     Byte[] segData;
 
                     Int32 segDataLen;

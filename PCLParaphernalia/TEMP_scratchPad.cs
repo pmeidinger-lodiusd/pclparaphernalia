@@ -264,12 +264,6 @@ namespace PCLParaphernalia
             }
             */
 
-
-
-
-
-
-
             /*
             //--------------------------------------------------------------------//
             // EXAMPLE
@@ -426,7 +420,6 @@ namespace PCLParaphernalia
                 dgAnalysis.DataContext = dataSet.Tables[0];  
             }
             */
-
 
         }
     }

@@ -1150,7 +1150,6 @@ namespace PCLParaphernalia
             rangeShift = (UInt16) ((numTables * cSizeSegGTDirEntry)
                                    - searchRange);
 
-
             indxHddr[0] = 0;
             indxHddr[1] = 1;
             indxHddr[2] = 0;

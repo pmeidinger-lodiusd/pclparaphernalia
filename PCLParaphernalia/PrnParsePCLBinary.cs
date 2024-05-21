@@ -2113,7 +2113,6 @@ namespace PCLParaphernalia
 
                     codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
-
                     PrnParseCommon.addTextRow (
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
@@ -4589,7 +4588,6 @@ namespace PCLParaphernalia
             {
                 linkData.resetContData ();
             }
-
 
             return dataOK;
         }

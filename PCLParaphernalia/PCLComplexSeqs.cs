@@ -288,7 +288,6 @@ namespace PCLParaphernalia
                         displaySeq = false;
                 }
 
-
                 if (displaySeq)
                 {
                     if (! hddrWritten)
@@ -1674,7 +1673,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eOvlAct.PageChange,
                                    PrnParseConstants.eSeqGrp.PageControl,
                                    "Page Size (# = discrete value)"));
-
 
             populateTableAddPaperSizes(iChar, gChar, tChar, root);
 
@@ -7965,7 +7963,6 @@ namespace PCLParaphernalia
         {
             const Boolean flagNone = false;
             const Boolean flagDiscrete = true;
-
 
             Int32 count;
 

@@ -126,7 +126,6 @@ namespace PCLParaphernalia
 
             generateJobHeader(prnWriter);
 
-
             if (formAsMacro)
                 generateOverlaySet(prnWriter,
                                    pageCount,

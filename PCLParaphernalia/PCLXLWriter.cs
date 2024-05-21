@@ -58,7 +58,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
         // Font advance metrics.                                              //
@@ -1051,7 +1050,6 @@ namespace PCLParaphernalia
             addOperator (ref buffer,
                          ref indBuf,
                          PCLXLOperators.eTag.BeginChar);
-
 
             writeStreamBlock (prnWriter, embeddedStream,
                               buffer, ref indBuf);

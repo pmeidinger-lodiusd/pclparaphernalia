@@ -776,7 +776,6 @@ namespace PCLParaphernalia
 
             rectY += _lineInc;
 
-
             PCLXLWriter.addAttrUbyte (ref bufStd,
                                ref indStd,
                                PCLXLAttributes.eTag.GrayLevel,
@@ -805,7 +804,6 @@ namespace PCLParaphernalia
 
             rectY += _lineInc;
 
-
             PCLXLWriter.addAttrUbyte (ref bufStd,
                                ref indStd,
                                PCLXLAttributes.eTag.GrayLevel,
@@ -833,7 +831,6 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             rectY += _lineInc;
-
 
             PCLXLWriter.addAttrUbyte (ref bufStd,
                                ref indStd,

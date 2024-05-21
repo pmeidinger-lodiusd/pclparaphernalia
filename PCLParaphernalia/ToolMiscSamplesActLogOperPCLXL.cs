@@ -1667,7 +1667,6 @@ namespace PCLParaphernalia
             PCLXLWriter.addOperator (ref buffer, ref indBuf,
                                      PCLXLOperators.eTag.SetPageOrigin);
 
-
             PCLXLWriter.writeStreamBlock (prnWriter, flagUseMacros,
                                           buffer, ref indBuf);
 
@@ -1692,14 +1691,12 @@ namespace PCLParaphernalia
                 PCLXLWriter.addOperator (ref buffer, ref indBuf,
                                          PCLXLOperators.eTag.SetPageOrigin);
 
-
                 PCLXLWriter.writeStreamBlock (prnWriter, flagUseMacros,
                                               buffer, ref indBuf);
             }
 
             PCLXLWriter.addOperator (ref buffer, ref indBuf,
                                      PCLXLOperators.eTag.PopGS);
-
 
             PCLXLWriter.writeStreamBlock (prnWriter, flagUseMacros,
                                           buffer, ref indBuf);
@@ -2209,7 +2206,6 @@ namespace PCLParaphernalia
 
                 maskLen = maskRowCrnt.Length;
                 blockHeight = (UInt16) rowCtCrnt;
-
 
                 blockSize = maskLen * bitsPerPixel * blockHeight;
                 block = new Byte [blockSize];

@@ -778,7 +778,6 @@ namespace PCLParaphernalia
             posX1 = _marginX  + _cellWidth;
             posY1 = _posYGrid + _cellHeight;
 
-
             if (optGridVertical)
             {
                 posX2 = (Int16)(posX1 + twoCellWidth);
@@ -844,7 +843,6 @@ namespace PCLParaphernalia
                                         PCLXLOperators.eTag.Rectangle);
             }
 
-
             PCLXLWriter.writeStreamBlock(prnWriter, formAsMacro,
                                          buffer, ref indBuf);
 
@@ -855,7 +853,6 @@ namespace PCLParaphernalia
             // option was selected.                                           //
             //                                                                //
             //----------------------------------------------------------------//
-
 
             PCLXLWriter.addAttrUbyte(ref buffer,
                                      ref indBuf,
@@ -971,7 +968,6 @@ namespace PCLParaphernalia
                     posY1 += _cellHeight;
                 }
             }
-
 
             posX1 = _marginX  + gridWidthInner + _cellWidth + (_cellWidth / 8);
             posY1 = _posYGrid + _cellHeight + _lineSpacing;

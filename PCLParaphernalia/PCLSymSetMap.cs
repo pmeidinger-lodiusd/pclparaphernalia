@@ -783,7 +783,6 @@ namespace PCLParaphernalia
                     const Int32 rowLen = 16;
                     const Int32 rowSize = 9 + (rowLen * 5) + 2;
 
-
                     UInt16 mapValStd,
                            mapValPCL;
 

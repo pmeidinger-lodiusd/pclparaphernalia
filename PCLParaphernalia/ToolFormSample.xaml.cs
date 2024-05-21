@@ -2390,7 +2390,6 @@ namespace PCLParaphernalia
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
 
-
                     txtPCLFormFileRear.Focus ();
                     txtPCLFormFileRear.SelectAll ();
                 }
@@ -2632,7 +2631,6 @@ namespace PCLParaphernalia
                                      "PCLXL main form",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
-
 
                     txtPCLXLFormFileRear.Focus ();
                     txtPCLXLFormFileRear.SelectAll ();

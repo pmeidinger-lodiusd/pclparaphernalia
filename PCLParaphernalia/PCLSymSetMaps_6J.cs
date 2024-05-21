@@ -214,7 +214,6 @@ namespace PCLParaphernalia
             mapDataPCL[2][0xde - rangeMin] = 0x02db;
             mapDataPCL[2][0xdf - rangeMin] = 0x02c7;
 
-
             mapDataPCL[2][0xe0 - rangeMin] = 0x03a9;
             mapDataPCL[2][0xe6 - rangeMin] = 0x0132;
             mapDataPCL[2][0xe7 - rangeMin] = 0x013f;

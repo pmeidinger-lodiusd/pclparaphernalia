@@ -27,7 +27,6 @@ namespace PCLParaphernalia
         private UInt16 [] _rangeDataSingle;
         private UInt16 [] _rangeDataDouble;
 
-
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L T e x t P a r s i n g M e t h o d                            //

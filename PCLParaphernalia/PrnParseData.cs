@@ -914,7 +914,6 @@ namespace PCLParaphernalia
                         lineLen = 0;
                     }
 
-
                     if (!foundEsc)
                     {
                         offset++;

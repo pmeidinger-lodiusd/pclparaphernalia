@@ -1216,7 +1216,6 @@ namespace PCLParaphernalia
             ToolTrayMapPersist.saveDataPCLXLOpt (_formAsMacroPCLXL,
                                                  _sheetCtPCLXL);
 
-
             for (Int32 i = 0; i < _maxSheetNo; i++)
             {
                 ToolTrayMapPersist.saveDataSheetOpt (

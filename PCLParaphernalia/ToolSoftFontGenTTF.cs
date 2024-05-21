@@ -673,7 +673,6 @@ namespace PCLParaphernalia
                 UInt32 tabId = 0,
                        tabVersion = 0;
 
-
                 typeTTC = false;
 
                 flagOK = readBytesAsUInt32 (0, ref tabId);
@@ -3029,7 +3028,6 @@ namespace PCLParaphernalia
                                                 ref subTabFormat);
                 }
 
-
                 if (flagOK)
                 {
                     if (subTabFormat == 4)
@@ -3377,7 +3375,6 @@ namespace PCLParaphernalia
                                     // modify this indexing somewhat.         //
                                     //                                        //
                                     //----------------------------------------//
-
 
                                     Int32 j = (Int32)(idRangeOffset +
                                             ((charCode - startCode) * 2) -
@@ -5416,7 +5413,6 @@ namespace PCLParaphernalia
             {
                 flagOK = readBytesAsUInt16 ((Int32)tabOffset, ref tabVersion);
 
-
                 if (flagOK)
                 {
                     flagOK = readBytesAsUInt32 ((Int32)(tabOffset + 12),
@@ -5454,7 +5450,6 @@ namespace PCLParaphernalia
 
             return flagOK;
         }
-
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -5714,7 +5709,6 @@ namespace PCLParaphernalia
                     "Length of '" + tabName + "' table too small: " +
                     tabLength + " < " + reqLength);
             }
-
 
             if (flagOK)
             {

@@ -119,7 +119,6 @@ namespace PCLParaphernalia
         {
             Boolean open = false;
 
-
             if ((fileName == null) || (fileName == ""))
             {
                 MessageBox.Show ("Download font file name is null.",

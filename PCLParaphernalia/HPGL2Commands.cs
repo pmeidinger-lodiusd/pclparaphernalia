@@ -180,7 +180,6 @@ namespace PCLParaphernalia
                         displaySeq = false;
                 }
 
-
                 if (displaySeq)
                 {
                     if (!hddrWritten)
@@ -1014,7 +1013,6 @@ namespace PCLParaphernalia
                                  flagNone, flagNone,
                                  flagNone, flagNone,
                                  "Pen Width Unit Selection"));
-
 
             _cmdsCount = _cmds.Count;
         }

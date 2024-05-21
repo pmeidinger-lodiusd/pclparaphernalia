@@ -147,7 +147,6 @@ namespace PCLParaphernalia
             return flagOK;
         }
 
-
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // r e a d S y m S e t I d                                            //
@@ -503,7 +502,6 @@ namespace PCLParaphernalia
             _ipStream.Seek (mapOffset, SeekOrigin.Begin);
 
             _binReader.Read (buf, 0, mapBytes);
-
 
             //----------------------------------------------------------------//
 

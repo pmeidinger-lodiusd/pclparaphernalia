@@ -350,7 +350,6 @@ namespace PCLParaphernalia
                 }
             }
 
-
             //----------------------------------------------------------------//
             //                                                                //
             // Generate raster definition and start sequences.                //

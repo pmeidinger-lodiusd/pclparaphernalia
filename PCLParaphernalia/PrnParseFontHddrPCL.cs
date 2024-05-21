@@ -291,7 +291,6 @@ namespace PCLParaphernalia
                     processGlobalData(ref bufRem,
                                       ref bufOffset);
 
-
                 }
                 else if ((_hddrFormat == ePCLFontFormat.TrueType)
                                         ||

@@ -1063,7 +1063,6 @@ namespace PCLParaphernalia
                                "_" + _analysisLevel +
                                ".tmp";
 
-
                 try
                 {
                     _subStream = File.Create (_subFilename);

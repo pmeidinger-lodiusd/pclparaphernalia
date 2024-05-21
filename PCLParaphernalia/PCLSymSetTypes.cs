@@ -144,7 +144,6 @@ namespace PCLParaphernalia
             return _sets[selection].IdPCL;
         }
 
-
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // g e t I n d e x F o r I d P C L                                    //

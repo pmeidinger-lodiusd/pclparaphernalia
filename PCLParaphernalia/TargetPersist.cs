@@ -294,7 +294,6 @@ namespace PCLParaphernalia
 
             String key = _subKeyTarget + "\\" + _subKeyWorkFolder;
 
-
             using (RegistryKey subKey = keyMain.CreateSubKey (key))
             {
                 subKey.SetValue (_nameFoldername,

@@ -295,7 +295,6 @@ namespace PCLParaphernalia
                         displaySeq = false;
                 }
 
-
                 if (displaySeq)
                 {
                     if (!hddrWritten)
@@ -1307,7 +1306,6 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eROP_DPSxon"));
 
-
             enumVal = 66;                                  // ---- 0x2c    66 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
@@ -1409,7 +1407,6 @@ namespace PCLParaphernalia
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eROP_DPSDaox"));
-
 
             enumVal = 83;                                  // ---- 0x2c    83 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
@@ -3061,13 +3058,11 @@ namespace PCLParaphernalia
                                   flagValIsTxt,
                                   "HP_SetColorTreatment"));
 
-
             enumVal = 0x68701002;                          // ---- 0x91 hp1002//
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagValIsTxt,
                                   "HP_SetHalftoneMethod"));
-
 
             enumVal = 0x68701003;                          // ---- 0x91 hp1003//
             _tags.Add(root + ":" + enumVal.ToString("X8"),
@@ -3075,13 +3070,11 @@ namespace PCLParaphernalia
                                   flagValIsTxt,
                                   "HP_DownloadColorTable"));
 
-
             enumVal = 0x68702002;                          // ---- 0x91 hp2002//
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagValIsTxt,
                                   "HP_SelectMediaFinish"));
-
 
             enumVal = 0x68702004;                          // ---- 0x91 hp2004//
             _tags.Add(root + ":" + enumVal.ToString("X8"),
@@ -3089,13 +3082,11 @@ namespace PCLParaphernalia
                                   flagValIsTxt,
                                   "HP_SetInternalLUT"));
 
-
             enumVal = 0x68702101;                          // ---- 0x91 hp2101//
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagValIsTxt,
                                   "HP_JetReady1p0"));
-
 
             enumVal = 0x68704000;                          // ---- 0x91 hp4000//
             _tags.Add(root + ":" + enumVal.ToString("X8"),
@@ -3103,20 +3094,17 @@ namespace PCLParaphernalia
                                   flagValIsTxt,
                                   "JR3BeginImage"));
 
-
             enumVal = 0x68704001;                          // ---- 0x91 hp4001//
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagValIsTxt,
                                   "JR3ReadImage"));
 
-
             enumVal = 0x68704002;                          // ---- 0x91 hp4002//
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagValIsTxt,
                                   "JR3EndImage"));
-
 
             enumVal = 0x68704003;                          // ---- 0x91 hp4003//
             _tags.Add(root + ":" + enumVal.ToString("X8"),
@@ -3153,7 +3141,6 @@ namespace PCLParaphernalia
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "ePageDiag"));
-
 
             attrTagA = (Byte) PCLXLAttributes.eTag.SymbolSet;        // 0xaa // 
             root = operTag.ToString ("X2") +
@@ -3567,7 +3554,6 @@ namespace PCLParaphernalia
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eLight"));
-
 
             attrTagA = (Byte) PCLXLAttributes.eTag.RasterObjects;     // 0x20 // 
             root = operTag.ToString ("X2") +

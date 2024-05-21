@@ -16773,8 +16773,6 @@ namespace PCLParaphernalia
             mapDataStd [rangeNo] [0xF9D4 - rangeMin] = 0x9F49;
             mapDataStd [rangeNo] [0xF9D5 - rangeMin] = 0x9F98;
 
-
-
             //----------------------------------------------------------------//
 
        //     rangeNo++;

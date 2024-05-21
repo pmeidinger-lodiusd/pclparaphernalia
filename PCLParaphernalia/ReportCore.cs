@@ -1405,7 +1405,6 @@ namespace PCLParaphernalia
 
                     htmlWriter.RenderBeginTag ("th");
 
-
                     htmlWriter.WriteEncodedText (colHddrs[i].ToString ());
                     htmlWriter.RenderEndTag ();    // </td>
 

@@ -812,7 +812,6 @@ namespace PCLParaphernalia
                 _customShortEdgeDotsPCL = _customShortEdgeDots;
                 _customLongEdgeDotsPCL  = _customLongEdgeDots;
 
-
                 if (chkOptFormAsMacro.IsChecked == true)
                     _formAsMacroPCL = true;
                 else
@@ -1587,7 +1586,6 @@ namespace PCLParaphernalia
 
             return OK;
         }
-
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

@@ -695,7 +695,6 @@ namespace PCLParaphernalia
             flagExcUnusedPCLXLRes = _flagStatsExcUnusedPCLXLRes;
         }
 
-
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
         // I n d x G e n O f f s e t F o r m a t                              //

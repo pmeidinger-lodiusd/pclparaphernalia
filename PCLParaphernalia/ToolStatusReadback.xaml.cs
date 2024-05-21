@@ -362,7 +362,6 @@ namespace PCLParaphernalia
                 ref rptChkMarks,
                 ref flagOptRptWrap);
 
-
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                 ToolStatusReadbackReport.generate(rptFileFmt,
                                                   txtReply,
@@ -1504,7 +1503,6 @@ namespace PCLParaphernalia
         // Validate PJL File System optional paramater 2.                     //
         //                                                                    //
         //--------------------------------------------------------------------//
-
 
         private Boolean validatePJLFSOpt2 (Boolean lostFocusEvent,
                                            ref Int32 newValue)

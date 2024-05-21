@@ -531,7 +531,6 @@ namespace PCLParaphernalia
 
             indStd = 0;
 
-
             //----------------------------------------------------------------//
             //                                                                //
             // Code-point data.                                               //

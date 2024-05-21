@@ -299,7 +299,6 @@ namespace PCLParaphernalia
                         displaySeq = false;
                 }
 
-
                 if (displaySeq)
                 {
                     if (!hddrWritten)
@@ -785,7 +784,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eActPCLXL.None,
                                    PrnParseConstants.eOvlAct.None,
                                    "TxMode"));
-
 
             tagA = (Byte) eTag.CustomMediaSize;                       // 0x2f //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1696,7 +1694,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eActPCLXL.None,
                                    PrnParseConstants.eOvlAct.None, 
                                    "CharBoldValue"));
-
 
             _tagCount = _tags.Count;
         }

@@ -273,7 +273,6 @@ namespace PCLParaphernalia
         {
             Boolean open = false;
 
-
             if ((fileName == null) || (fileName == ""))
             {
                 MessageBox.Show ("Download stream file name is null.",

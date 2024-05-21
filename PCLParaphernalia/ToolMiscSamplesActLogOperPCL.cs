@@ -634,7 +634,6 @@ namespace PCLParaphernalia
             PCLWriter.text (prnWriter, posX, posY, 0,
                             PCLLogicalOperations.getDescShort (_defaultROP));
 
-
             posY += _lineInc;
 
             PCLWriter.text (prnWriter, posX, posY, 0,
@@ -796,7 +795,6 @@ namespace PCLParaphernalia
 
                 posY += _rowInc;
             }
-
 
             //----------------------------------------------------------------//
 

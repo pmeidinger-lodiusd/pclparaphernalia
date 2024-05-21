@@ -183,7 +183,6 @@ namespace PCLParaphernalia
                         displaySeq = false;
                 }
 
-
                 if (displaySeq)
                 {
                     if (!hddrWritten)

@@ -2421,7 +2421,6 @@ namespace PCLParaphernalia
             return dialogResult == true;
         }
 
-
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // s e l e c t S y m S e t F i l e                                    //

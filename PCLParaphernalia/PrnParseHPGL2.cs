@@ -47,7 +47,6 @@ namespace PCLParaphernalia
         private PrnParseConstants.eOptCharSets _indxCharSetName;
         private Int32 _valCharSetSubCode;
 
-
   //      private Int32 _textParsingMethod;
         private Int32 _analysisLevel = 0;    // TEMP?? //
         private Int32 _macroLevel    = 0;    // TEMP?? //
@@ -712,7 +711,6 @@ namespace PCLParaphernalia
 
             return invalidSeqFound;
         }
-
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

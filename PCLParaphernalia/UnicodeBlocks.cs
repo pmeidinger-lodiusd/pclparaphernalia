@@ -1862,7 +1862,6 @@ namespace PCLParaphernalia
                     0x100000, 0x10FFFF,
                     "Supplementary Private Use Area-B"));
 
-
             _blocksCount = _blocksList.Count;
         }
     }

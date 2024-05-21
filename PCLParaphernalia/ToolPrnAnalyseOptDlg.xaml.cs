@@ -1554,7 +1554,6 @@ namespace PCLParaphernalia
             else
                 ctCols = reqCols;
 
-
             if (grid != null)
             {
                 //------------------------------------------------------------//
@@ -2520,7 +2519,6 @@ namespace PCLParaphernalia
                 }
             }
         }
-
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

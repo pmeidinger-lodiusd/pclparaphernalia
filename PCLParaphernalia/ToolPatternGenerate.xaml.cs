@@ -93,7 +93,6 @@ namespace PCLParaphernalia
         private static Boolean[] _patternStateBtns;
         private static UniformGrid _uGridPattern;
 
-
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // T o o l P a t t e r n G e n e r a t e                              //
@@ -890,10 +889,6 @@ namespace PCLParaphernalia
             //   grpProps.Visibility = Visibility.Hidden;
             }
         }
-
-
-
-
 
         //--------------------------------------------------------------------//
 

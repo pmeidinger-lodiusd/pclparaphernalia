@@ -35,7 +35,6 @@ namespace PCLParaphernalia
         private const UInt16 _defaultSymSetNo         = 14;          //    0N //
         private const UInt16 _symSetNoTargetMax       = 32762;       // 1023Z //
 
-
         private const Int32  cSizeCharSet_8bit        = 256;
         private const Int32  cSizeCharSet_16bit       = 65536;
         private const Int32  cCodePointUnused         = 65535;
@@ -2591,7 +2590,6 @@ namespace PCLParaphernalia
 
             txtTargetSymSetFile.Text = _targetSymSetFile;
         }
-
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

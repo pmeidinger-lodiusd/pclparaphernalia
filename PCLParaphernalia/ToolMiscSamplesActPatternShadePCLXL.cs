@@ -380,7 +380,6 @@ namespace PCLParaphernalia
 
             posY = _posYDesc1;
 
-
             for (Int32 i = 0; i < _patternsCt; i++)
             {
                 PCLXLWriter.text(prnWriter, formAsMacro, false,

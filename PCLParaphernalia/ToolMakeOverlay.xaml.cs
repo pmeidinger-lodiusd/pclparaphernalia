@@ -794,7 +794,6 @@ namespace PCLParaphernalia
             openDialog.Filter = "Overlay Files|*.ovx; *.OVX" +
                                 "|All files|*.*";
 
-
             Nullable<Boolean> dialogResult = openDialog.ShowDialog();
 
             if (dialogResult == true)
@@ -818,7 +817,6 @@ namespace PCLParaphernalia
 
             openDialog.Filter = "Print Files|*.prn; *.PRN" +
                                 "|All files|*.*";
-
 
             Nullable<Boolean> dialogResult = openDialog.ShowDialog();
 

@@ -831,7 +831,6 @@ namespace PCLParaphernalia
                     if (i < (symSetCt - 1))
                         crntRow.Append (", ");
 
-
                     if ((i > 0) && ((i % maxPerRow) == 0))
                     {
                         mapRows[rowIndx] = crntRow.ToString ();

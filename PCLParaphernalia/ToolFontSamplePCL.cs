@@ -675,7 +675,6 @@ namespace PCLParaphernalia
 
             PCLWriter.text(prnWriter, posX, posY, 0, "Description:");
 
-
             //----------------------------------------------------------------//
             //                                                                //
             // Footer text.                                                   //
@@ -1067,7 +1066,6 @@ namespace PCLParaphernalia
 
             posXStart = posX;
             posYStart = posY;
-
 
             //----------------------------------------------------------------//
 

@@ -23642,7 +23642,6 @@ namespace PCLParaphernalia
             mapDataStd [rangeNo] [0xFE4E - rangeMin] = 0xFA28;
             mapDataStd [rangeNo] [0xFE4F - rangeMin] = 0xFA29;
 
-
             //----------------------------------------------------------------//
 
             _sets.Add (new PCLSymSetMap (mapId,

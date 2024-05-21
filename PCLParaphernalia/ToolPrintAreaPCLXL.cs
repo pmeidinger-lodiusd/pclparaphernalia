@@ -825,7 +825,6 @@ namespace PCLParaphernalia
                 }
             }
 
-
             if ((indxPaperType < PCLPaperTypes.getCount()) &&
                 (PCLPaperTypes.getType(indxPaperType) !=
                     PCLPaperTypes.eEntryType.NotSet))

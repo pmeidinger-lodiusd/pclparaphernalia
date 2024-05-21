@@ -294,7 +294,6 @@ namespace PCLParaphernalia
             return invalidSeqFound;
         }
 
-
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // p a r s e S e q u e n c e s                                        //
