@@ -40,7 +40,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void binSrcFileClose()
+        private static void BinSrcFileClose()
         {
             _binReader.Close();
             _ipStream.Close();
@@ -55,7 +55,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void binSrcFileCopy(BinaryWriter prnWriter)
+        private static void BinSrcFileCopy(BinaryWriter prnWriter)
         {
             const int bufSize = 2048;
             int readSize;
@@ -86,8 +86,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool binSrcFileOpen(string fileName,
-                                               ref long fileSize)
+        private static bool BinSrcFileOpen(string fileName, ref long fileSize)
         {
             bool open = false;
 
@@ -141,7 +140,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void binTgtFileClose()
+        private static void BinTgtFileClose()
         {
             _binWriter.Close();
             _opStream.Close();
@@ -156,7 +155,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool binTgtFileOpen(string fileName)
+        private static bool BinTgtFileOpen(string fileName)
         {
             bool open = false;
 
@@ -196,9 +195,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void binTgtFileWrite(byte[] buf,
-                                             int bufOffset,
-                                             int writeLen)
+        private static void BinTgtFileWrite(byte[] buf, int bufOffset, int writeLen)
         {
             _binWriter.Write(buf, bufOffset, writeLen);
         }
@@ -212,7 +209,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generateRequest(BinaryWriter prnWriter,
+        public static void GenerateRequest(BinaryWriter prnWriter,
                                             PJLCommands.CmdIndex cmdIndx,
                                             bool secJob,
                                             string password,
@@ -256,7 +253,7 @@ namespace PCLParaphernalia
 
                     long fileSize = 0;
 
-                    OK = binSrcFileOpen(binSrcFilename, ref fileSize);
+                    OK = BinSrcFileOpen(binSrcFilename, ref fileSize);
 
                     if (OK)
                     {
@@ -270,8 +267,8 @@ namespace PCLParaphernalia
 
                         // Read and send content of binSrcFilename
 
-                        binSrcFileCopy(prnWriter);
-                        binSrcFileClose();
+                        BinSrcFileCopy(prnWriter);
+                        BinSrcFileClose();
 
                         // terminate job with UEL
 
@@ -335,9 +332,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string readResponse(
-            PJLCommands.CmdIndex cmdIndx,
-            string binTgtFilenamePJLFS)
+        public static string ReadResponse(PJLCommands.CmdIndex cmdIndx, string binTgtFilenamePJLFS)
         {
             PJLCommands.RequestType reqType = PJLCommands.GetType(cmdIndx);
 
@@ -353,7 +348,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                return readResponseQuery();
+                return ReadResponseQuery();
             }
             else if (reqType == PJLCommands.RequestType.FSUpload)
             {
@@ -364,7 +359,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                return readResponseUpload(binTgtFilenamePJLFS);
+                return ReadResponseUpload(binTgtFilenamePJLFS);
             }
             else
             {
@@ -397,7 +392,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static string readResponseQuery()
+        private static string ReadResponseQuery()
         {
             const int replyBufLen = 32768;
 
@@ -513,13 +508,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static string readResponseUpload(string binTgtFilename)
+        private static string ReadResponseUpload(string binTgtFilename)
         {
             const int replyBufLen = 32768;
 
             string reply = string.Empty;
 
-            bool binFileOpen = binTgtFileOpen(binTgtFilename);
+            bool binFileOpen = BinTgtFileOpen(binTgtFilename);
 
             if (!binFileOpen)
             {
@@ -636,7 +631,7 @@ namespace PCLParaphernalia
 
                             cmdLen++;    // account for <LF> byte //
 
-                            binSize = readResponseUploadSize(replyBlock, cmdLen);
+                            binSize = ReadResponseUploadSize(replyBlock, cmdLen);
 
                             reply = Encoding.ASCII.GetString(replyBlock,
                                                               0,
@@ -675,7 +670,7 @@ namespace PCLParaphernalia
 
                             binTot = binLen;
 
-                            binTgtFileWrite(replyBlock, cmdLen, binLen);
+                            BinTgtFileWrite(replyBlock, cmdLen, binLen);
                         }
                         else
                         {
@@ -696,7 +691,7 @@ namespace PCLParaphernalia
                             binSize = -1;
                             binRem = 0;
 
-                            binTgtFileWrite(replyBlock, 0, blockLen);
+                            BinTgtFileWrite(replyBlock, 0, blockLen);
                         }
                     }
                     else
@@ -740,7 +735,7 @@ namespace PCLParaphernalia
 
                         binTot += binLen;
 
-                        binTgtFileWrite(replyBlock, 0, binLen);
+                        BinTgtFileWrite(replyBlock, 0, binLen);
                     }
 
                     if ((supLen != 0) && (!supDataWritten))
@@ -772,7 +767,7 @@ namespace PCLParaphernalia
 
                 TargetCore.ResponseCloseConnection();
 
-                binTgtFileClose();
+                BinTgtFileClose();
 
                 //--------------------------------------------------------//
                 //                                                        //
@@ -819,7 +814,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static int readResponseUploadSize(byte[] replyBlock,
+        private static int ReadResponseUploadSize(byte[] replyBlock,
                                                      int cmdLen)
         {
             int binSize = 0;
@@ -956,7 +951,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void sendRequest(PJLCommands.CmdIndex cmdIndx)
+        public static void SendRequest(PJLCommands.CmdIndex cmdIndx)
         {
             PJLCommands.RequestType reqType =
                 PJLCommands.GetType(cmdIndx);

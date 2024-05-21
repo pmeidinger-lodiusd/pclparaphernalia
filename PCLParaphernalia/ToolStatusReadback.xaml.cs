@@ -197,7 +197,7 @@ namespace PCLParaphernalia
                         path = _objPathPJLFS;
                     }
 
-                    ToolStatusReadbackPJLFS.generateRequest(requestWriter,
+                    ToolStatusReadbackPJLFS.GenerateRequest(requestWriter,
                                                              _cmdIndxPJLFS,
                                                              _flagPJLFSSecJob,
                                                              _passwordPJLFS,
@@ -264,9 +264,9 @@ namespace PCLParaphernalia
                         //                                                        //
                         //--------------------------------------------------------//
 
-                        ToolStatusReadbackPJLFS.sendRequest(_cmdIndxPJLFS);
+                        ToolStatusReadbackPJLFS.SendRequest(_cmdIndxPJLFS);
 
-                        txtReply.Text = ToolStatusReadbackPJLFS.readResponse(
+                        txtReply.Text = ToolStatusReadbackPJLFS.ReadResponse(
                             _cmdIndxPJLFS,
                             _binTgtFilenamePJLFS);
                     }
