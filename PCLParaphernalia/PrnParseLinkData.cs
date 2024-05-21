@@ -346,10 +346,7 @@ namespace PCLParaphernalia
 
         public bool isContinuation()
         {
-            if (_contType == PrnParseConstants.eContType.None)
-                return false;
-            else
-                return true;
+            return _contType != PrnParseConstants.eContType.None;
         }
 
         //--------------------------------------------------------------------//

@@ -1509,10 +1509,7 @@ namespace PCLParaphernalia
 
         public static bool isMapped(int selection)
         {
-            if (_sets[selection].FlagMapped)
-                return true;
-            else
-                return false;
+            return _sets[selection].FlagMapped;
         }
 
         //--------------------------------------------------------------------//

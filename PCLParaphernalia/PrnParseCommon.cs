@@ -339,16 +339,13 @@ namespace PCLParaphernalia
 
         public static bool isAlphabetic(byte byteVal)
         {
-            if (((byteVal >= PrnParseConstants.asciiAlphaLCMin)
+            return ((byteVal >= PrnParseConstants.asciiAlphaLCMin)
                                    &&
                  (byteVal <= PrnParseConstants.asciiAlphaLCMax))
                                    ||
                 ((byteVal >= PrnParseConstants.asciiAlphaUCMin)
                                    &&
-                 (byteVal <= PrnParseConstants.asciiAlphaUCMax)))
-                return true;
-            else
-                return false;
+                 (byteVal <= PrnParseConstants.asciiAlphaUCMax));
         }
 
         //--------------------------------------------------------------------//

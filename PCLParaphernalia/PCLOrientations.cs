@@ -145,10 +145,7 @@ namespace PCLParaphernalia
 
         public static bool isLandscape(int index)
         {
-            if (_orientations[index].getAspect () == eAspect.Landscape)
-                return true;
-            else
-                return false;
+            return _orientations[index].getAspect() == eAspect.Landscape;
         }
     }
 }

@@ -571,10 +571,7 @@ namespace PCLParaphernalia
 
         public bool isBoundFont()
         {
-            if (_bound)
-                return true;
-            else
-                return false;
+            return _bound;
         }
 
         //--------------------------------------------------------------------//
@@ -589,12 +586,9 @@ namespace PCLParaphernalia
 
         public bool isPresetFont()
         {
-            if ((_fontType == PCLFonts.eFontType.Custom)   ||
-                (_fontType == PCLFonts.eFontType.Download) ||
-                (_fontType == PCLFonts.eFontType.PrnDisk))
-                return false;
-            else
-                return true;
+            return (_fontType != PCLFonts.eFontType.Custom) &&
+                (_fontType != PCLFonts.eFontType.Download) &&
+                (_fontType != PCLFonts.eFontType.PrnDisk);
         }
 
         //--------------------------------------------------------------------//
@@ -609,10 +603,7 @@ namespace PCLParaphernalia
 
         public bool isProportionalFont()
         {
-            if (_proportional)
-                return true;
-            else
-                return false;
+            return _proportional;
         }
 
         //--------------------------------------------------------------------//
@@ -715,10 +706,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                if (_scalable)
-                    return true;
-                else
-                    return false;
+                return _scalable;
             }
         }
 
