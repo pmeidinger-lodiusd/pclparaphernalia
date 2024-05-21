@@ -441,10 +441,7 @@ namespace PCLParaphernalia
 
             while (!foundEsc && !foundTerm && !continuation && len > 0)
             {
-                if (firstChar && ignoreFirst)
-                    ignoreFE = true;
-                else
-                    ignoreFE = false;
+                ignoreFE = firstChar && ignoreFirst;
 
                 c1 = buf[offset];
 

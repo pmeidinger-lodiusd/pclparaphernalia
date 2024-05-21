@@ -2310,15 +2310,9 @@ namespace PCLParaphernalia
                 chkStatsExcUnusedPCLXLRes.IsEnabled = true;
             }
 
-            if (_flagStatsExcUnusedPCLObs)
-                chkStatsExcUnusedPCLObs.IsChecked = true;
-            else
-                chkStatsExcUnusedPCLObs.IsChecked = false;
+            chkStatsExcUnusedPCLObs.IsChecked = _flagStatsExcUnusedPCLObs;
 
-            if (_flagStatsExcUnusedPCLXLRes)
-                chkStatsExcUnusedPCLXLRes.IsChecked = true;
-            else
-                chkStatsExcUnusedPCLXLRes.IsChecked = false;
+            chkStatsExcUnusedPCLXLRes.IsChecked = _flagStatsExcUnusedPCLXLRes;
         }
 
         //--------------------------------------------------------------------//

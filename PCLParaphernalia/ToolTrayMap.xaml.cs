@@ -1271,19 +1271,13 @@ namespace PCLParaphernalia
             {
                 _sheetCtPCL = cbSheetCt.SelectedIndex + 1;
 
-                if (chkOptFormAsMacro.IsChecked == true)
-                    _formAsMacroPCL = true;
-                else
-                    _formAsMacroPCL = false;
+                _formAsMacroPCL = chkOptFormAsMacro.IsChecked == true;
             }
             else
             {
                 _sheetCtPCLXL = cbSheetCt.SelectedIndex + 1;
 
-                if (chkOptFormAsMacro.IsChecked == true)
-                    _formAsMacroPCLXL = true;
-                else
-                    _formAsMacroPCLXL = false;
+                _formAsMacroPCLXL = chkOptFormAsMacro.IsChecked == true;
             }
 
             sheetDataStore ();

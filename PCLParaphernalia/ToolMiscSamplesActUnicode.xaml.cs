@@ -203,10 +203,7 @@ namespace PCLParaphernalia
                 cbUnicodeCp01.SelectedIndex = (int) (_unicodeUCS2PCL / 256);
                 cbUnicodeCp02.SelectedIndex = (int) (_unicodeUCS2PCL % 256);
 
-                if (_flagUnicodeFormAsMacroPCL)
-                    chkOptFormAsMacro.IsChecked = true;
-                else
-                    chkOptFormAsMacro.IsChecked = false;
+                chkOptFormAsMacro.IsChecked = _flagUnicodeFormAsMacroPCL;
             }
             else
             {
@@ -223,10 +220,7 @@ namespace PCLParaphernalia
                 cbUnicodeCp01.SelectedIndex = (int) (_unicodeUCS2PCLXL / 256);
                 cbUnicodeCp02.SelectedIndex = (int) (_unicodeUCS2PCLXL % 256);
 
-                if (_flagUnicodeFormAsMacroPCLXL)
-                    chkOptFormAsMacro.IsChecked = true;
-                else
-                    chkOptFormAsMacro.IsChecked = false;
+                chkOptFormAsMacro.IsChecked = _flagUnicodeFormAsMacroPCLXL;
             }
 
             _initialised = true;
@@ -455,17 +449,11 @@ namespace PCLParaphernalia
         {
             if (crntPDL == ToolCommonData.ePrintLang.PCL)
             {
-                if (setFlag)
-                    _flagUnicodeFormAsMacroPCL = true;
-                else
-                    _flagUnicodeFormAsMacroPCL = false;
+                _flagUnicodeFormAsMacroPCL = setFlag;
             }
             else if (crntPDL == ToolCommonData.ePrintLang.PCLXL)
             {
-                if (setFlag)
-                    _flagUnicodeFormAsMacroPCLXL = true;
-                else
-                    _flagUnicodeFormAsMacroPCLXL = false;
+                _flagUnicodeFormAsMacroPCLXL = setFlag;
             }
         }
 

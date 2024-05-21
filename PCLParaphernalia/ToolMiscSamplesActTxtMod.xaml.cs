@@ -74,10 +74,7 @@ namespace PCLParaphernalia
                     rbTxtModTypeChr.IsChecked = true;
                 }
 
-                if (_flagTxtModFormAsMacroPCL)
-                    chkOptFormAsMacro.IsChecked = true;
-                else
-                    chkOptFormAsMacro.IsChecked = false;
+                chkOptFormAsMacro.IsChecked = _flagTxtModFormAsMacroPCL;
             }
             else
             {
@@ -94,10 +91,7 @@ namespace PCLParaphernalia
                     rbTxtModTypeChr.IsChecked = true;
                 }
 
-                if (_flagTxtModFormAsMacroPCL)
-                    chkOptFormAsMacro.IsChecked = true;
-                else
-                    chkOptFormAsMacro.IsChecked = false;
+                chkOptFormAsMacro.IsChecked = _flagTxtModFormAsMacroPCL;
             }
 
             initialiseDescTxtMod();
@@ -321,17 +315,11 @@ namespace PCLParaphernalia
         {
             if (crntPDL == ToolCommonData.ePrintLang.PCL)
             {
-                if (setFlag)
-                    _flagTxtModFormAsMacroPCL = true;
-                else
-                    _flagTxtModFormAsMacroPCL = false;
+                _flagTxtModFormAsMacroPCL = setFlag;
             }
             else if (crntPDL == ToolCommonData.ePrintLang.PCLXL)
             {
-                if (setFlag)
-                    _flagTxtModFormAsMacroPCLXL = true;
-                else
-                    _flagTxtModFormAsMacroPCLXL = false;
+                _flagTxtModFormAsMacroPCLXL = setFlag;
             }
         }
     }

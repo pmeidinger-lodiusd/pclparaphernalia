@@ -294,10 +294,7 @@ namespace PCLParaphernalia
                                         ||
                          (_hddrFormat == ePCLFontFormat.Universal))
                 {
-                    if (_hddrFormat == ePCLFontFormat.Universal)
-                        largeSegs = true;
-                    else
-                        largeSegs = false;
+                    largeSegs = _hddrFormat == ePCLFontFormat.Universal;
 
                     continuation = _parseSegs.processSegData (_buf,
                                                               _fileOffset,

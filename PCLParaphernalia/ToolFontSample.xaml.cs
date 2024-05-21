@@ -1057,10 +1057,7 @@ namespace PCLParaphernalia
 
                         //----------------------------------------------------//
 
-                        if (_symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet)
-                            symSetUserSet = true;
-                        else
-                            symSetUserSet = false;
+                        symSetUserSet = _symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet;
 
                         //----------------------------------------------------//
 
@@ -1141,10 +1138,7 @@ namespace PCLParaphernalia
                     {
                         bool symSetUserSet;
 
-                        if (_symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet)
-                            symSetUserSet = true;
-                        else
-                            symSetUserSet = false;
+                        symSetUserSet = _symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet;
 
                         if (validatePCLXLFontCharacteristics ())
                             setFontSelectData ();
@@ -2181,10 +2175,7 @@ namespace PCLParaphernalia
 
                     chkPCLPrnDiskDataKnown.Visibility = Visibility.Visible;
 
-                    if (_prnDiskFontDataKnownPCL)
-                        chkPCLPrnDiskDataKnown.IsChecked = true;
-                    else
-                        chkPCLPrnDiskDataKnown.IsChecked = false;
+                    chkPCLPrnDiskDataKnown.IsChecked = _prnDiskFontDataKnownPCL;
                 }
                 else // if (_fontType == PCLFonts.eFontType.Custom)
                 {
@@ -2521,15 +2512,9 @@ namespace PCLParaphernalia
 
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
             {
-                if (_showMapCodesUCS2PCL)
-                    chkOptShowMapCodesUCS2.IsChecked = true;
-                else
-                    chkOptShowMapCodesUCS2.IsChecked = false;
+                chkOptShowMapCodesUCS2.IsChecked = _showMapCodesUCS2PCL;
 
-                if (_showMapCodesUTF8PCL)
-                    chkOptShowMapCodesUTF8.IsChecked = true;
-                else
-                    chkOptShowMapCodesUTF8.IsChecked = false;
+                chkOptShowMapCodesUTF8.IsChecked = _showMapCodesUTF8PCL;
 
                 if (_symSetUserActEmbedPCL)
                     rbSymSetUserActEmbed.IsChecked = true;
@@ -2538,15 +2523,9 @@ namespace PCLParaphernalia
             }
             else if (_crntPDL == ToolCommonData.ePrintLang.PCLXL)
             {
-                if (_showMapCodesUCS2PCLXL)
-                    chkOptShowMapCodesUCS2.IsChecked = true;
-                else
-                    chkOptShowMapCodesUCS2.IsChecked = false;
+                chkOptShowMapCodesUCS2.IsChecked = _showMapCodesUCS2PCLXL;
 
-                if (_showMapCodesUTF8PCLXL)
-                    chkOptShowMapCodesUTF8.IsChecked = true;
-                else
-                    chkOptShowMapCodesUTF8.IsChecked = false;
+                chkOptShowMapCodesUTF8.IsChecked = _showMapCodesUTF8PCLXL;
 
                 rbSymSetUserActIndex.IsChecked = true;
             }
@@ -3062,30 +3041,15 @@ namespace PCLParaphernalia
 
                 _indxFontPCL        = cbFont.SelectedIndex;
 
-                if (chkOptFormAsMacro.IsChecked == true)
-                    _formAsMacroPCL = true;
-                else
-                    _formAsMacroPCL = false;
+                _formAsMacroPCL = chkOptFormAsMacro.IsChecked == true;
 
-                if (chkOptShowC0Chars.IsChecked == true)
-                    _showC0CharsPCL = true;
-                else
-                    _showC0CharsPCL = false;
+                _showC0CharsPCL = chkOptShowC0Chars.IsChecked == true;
 
-                if (chkOptShowMapCodesUCS2.IsChecked == true)
-                    _showMapCodesUCS2PCL = true;
-                else
-                    _showMapCodesUCS2PCL = false;
+                _showMapCodesUCS2PCL = chkOptShowMapCodesUCS2.IsChecked == true;
 
-                if (chkOptShowMapCodesUTF8.IsChecked == true)
-                    _showMapCodesUTF8PCL = true;
-                else
-                    _showMapCodesUTF8PCL = false;
+                _showMapCodesUTF8PCL = chkOptShowMapCodesUTF8.IsChecked == true;
 
-                if (rbSymSetUserActEmbed.IsChecked == true)
-                    _symSetUserActEmbedPCL = true;
-                else
-                    _symSetUserActEmbedPCL = false;
+                _symSetUserActEmbedPCL = rbSymSetUserActEmbed.IsChecked == true;
             }
             else
             {
@@ -3095,25 +3059,13 @@ namespace PCLParaphernalia
 
                 _indxFontPCLXL        = cbFont.SelectedIndex;
 
-                if (chkOptFormAsMacro.IsChecked == true)
-                    _formAsMacroPCLXL = true;
-                else
-                    _formAsMacroPCLXL = false;
+                _formAsMacroPCLXL = chkOptFormAsMacro.IsChecked == true;
 
-                if (chkOptShowC0Chars.IsChecked == true)
-                    _showC0CharsPCLXL = true;
-                else
-                    _showC0CharsPCLXL = false;
+                _showC0CharsPCLXL = chkOptShowC0Chars.IsChecked == true;
 
-                if (chkOptShowMapCodesUCS2.IsChecked == true)
-                    _showMapCodesUCS2PCLXL = true;
-                else
-                    _showMapCodesUCS2PCLXL = false;
+                _showMapCodesUCS2PCLXL = chkOptShowMapCodesUCS2.IsChecked == true;
 
-                if (chkOptShowMapCodesUTF8.IsChecked == true)
-                    _showMapCodesUTF8PCLXL = true;
-                else
-                    _showMapCodesUTF8PCLXL = false;
+                _showMapCodesUTF8PCLXL = chkOptShowMapCodesUTF8.IsChecked == true;
             }
         }
 
@@ -3905,10 +3857,7 @@ namespace PCLParaphernalia
                 else
                     rbPCLSelectByChar.IsChecked = true;
 
-                if (_downloadRemovePCL)
-                    chkPCLSoftFontRemove.IsChecked = true;
-                else
-                    chkPCLSoftFontRemove.IsChecked = false;
+                chkPCLSoftFontRemove.IsChecked = _downloadRemovePCL;
 
                 setFontOptionsPCLBasic (true, false);
                 setFontOptionsPCLDesign (true, false);
@@ -3984,10 +3933,7 @@ namespace PCLParaphernalia
                     rbPCLSelectByChar.IsEnabled = false;
                 }
 
-                if (_prnDiskRemovePCL)
-                    chkPCLSoftFontRemove.IsChecked = true;
-                else
-                    chkPCLSoftFontRemove.IsChecked = false;
+                chkPCLSoftFontRemove.IsChecked = _prnDiskRemovePCL;
             }
             else if (_fontType == PCLFonts.eFontType.Custom)
             {
@@ -4332,10 +4278,7 @@ namespace PCLParaphernalia
                     lbPCLXLHeightComment.Visibility = Visibility.Visible;
                 }
 
-                if (_downloadRemovePCLXL)
-                    chkPCLXLSoftFontRemove.IsChecked = true;
-                else
-                    chkPCLXLSoftFontRemove.IsChecked = false;
+                chkPCLXLSoftFontRemove.IsChecked = _downloadRemovePCLXL;
             }
             else if (_fontType == PCLFonts.eFontType.PrnDisk)
             {

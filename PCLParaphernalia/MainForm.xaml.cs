@@ -153,17 +153,10 @@ namespace PCLParaphernalia
                                                 versionBuildOld,
                                                 versionRevisionOld);
 
-            if ((versionMajorCrnt != versionMajorOld) ||
+            MainFormData.VersionChange = (versionMajorCrnt != versionMajorOld) ||
                 (versionMinorCrnt != versionMinorOld) ||
                 (versionBuildCrnt != versionBuildOld) ||
-                (versionRevisionCrnt != versionRevisionOld))
-            {
-                MainFormData.VersionChange = true;
-            }
-            else
-            {
-                MainFormData.VersionChange = false;
-            }
+                (versionRevisionCrnt != versionRevisionOld);
 
             if (versionMajorOld == -1)
             {

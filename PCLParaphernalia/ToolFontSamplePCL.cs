@@ -146,10 +146,7 @@ namespace PCLParaphernalia
                 }
             }
 
-            if (fontType == PCLFonts.eFontType.Download)
-                downloadFont = true;
-            else
-                downloadFont = false;
+            downloadFont = fontType == PCLFonts.eFontType.Download;
 
             //----------------------------------------------------------------//
 

@@ -324,10 +324,7 @@ namespace PCLParaphernalia
                          MessageBoxButton.YesNo,
                          MessageBoxImage.Warning);
 
-                if (msgBoxResult == MessageBoxResult.Yes)
-                    proceed = true;
-                else
-                    proceed = false;
+                proceed = msgBoxResult == MessageBoxResult.Yes;
             }
             else if (licenceType == ToolSoftFontGenTTF.eLicenceType.OwnerOnly)
             {
@@ -342,10 +339,7 @@ namespace PCLParaphernalia
                         MessageBoxButton.YesNo,
                         MessageBoxImage.Warning);
 
-                if (msgBoxResult == MessageBoxResult.Yes)
-                    proceed = true;
-                else
-                    proceed = false;
+                proceed = msgBoxResult == MessageBoxResult.Yes;
             }
 
             if (proceed)
@@ -745,10 +739,7 @@ namespace PCLParaphernalia
                     rbPCLTIgnore.Visibility = Visibility.Visible; // should already be visible?
                     rbPCLTUse.Visibility = Visibility.Visible;    // should already be visible?
 
-                    if (_flagUsePCLT)
-                        usePCLT = true;
-                    else
-                        usePCLT = false;
+                    usePCLT = _flagUsePCLT;
                 }
                 else
                 {
@@ -1291,10 +1282,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if (_flagLogVerbose)
-                chkLogVerbose.IsChecked = true;
-            else
-                chkLogVerbose.IsChecked = false;
+            chkLogVerbose.IsChecked = _flagLogVerbose;
 
             //----------------------------------------------------------------//
 
@@ -1305,10 +1293,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if (_flagSegGTLastPCL)
-                chkPCLSegGTLast.IsChecked = true;
-            else
-                chkPCLSegGTLast.IsChecked = false;
+            chkPCLSegGTLast.IsChecked = _flagSegGTLastPCL;
 
             //----------------------------------------------------------------//
 
@@ -1340,15 +1325,9 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if (_flagVMetricsPCL)
-                chkPCLVMetrics.IsChecked = true;
-            else
-                chkPCLVMetrics.IsChecked = false;
+            chkPCLVMetrics.IsChecked = _flagVMetricsPCL;
 
-            if (_flagVMetricsPCLXL)
-                chkPCLXLVMetrics.IsChecked = true;
-            else
-                chkPCLXLVMetrics.IsChecked = false;
+            chkPCLXLVMetrics.IsChecked = _flagVMetricsPCLXL;
 
             //----------------------------------------------------------------//
 
@@ -2059,18 +2038,12 @@ bitVal;
 
                 if (bitType == PCLCharCollections.eBitType.Collection)
                 {
-                //  if ((_charCollCompPCL & bitVal) == 0)
-                    if ((collBits & bitVal) == 0)
-                        item.IsChecked = true;
-                    else
-                        item.IsChecked = false;
+                    //  if ((_charCollCompPCL & bitVal) == 0)
+                    item.IsChecked = (collBits & bitVal) == 0;
                 }
                 else
                 {
-                    if ((_charCollCompPCLAll & bitVal) == 0)
-                        item.IsChecked = true;
-                    else
-                        item.IsChecked = false;
+                    item.IsChecked = (_charCollCompPCLAll & bitVal) == 0;
                 }
             }
 

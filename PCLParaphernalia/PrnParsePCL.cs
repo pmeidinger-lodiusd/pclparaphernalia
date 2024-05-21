@@ -1743,10 +1743,7 @@ namespace PCLParaphernalia
                     p_or_TChar = (byte) (crntByte - 0x20);
                     comboLast = false;
 
-                    if (comboSeq)
-                        comboFirst = false;
-                    else
-                        comboFirst = true;
+                    comboFirst = !comboSeq;
 
                     comboSeq = true;
                 }
@@ -1948,10 +1945,7 @@ namespace PCLParaphernalia
                     vLen = i - vPosCrnt;
                     vtLen = vLen + 1;
 
-                    if (vInvalid || vFractional)
-                        vCheck = false;
-                    else
-                        vCheck = true;
+                    vCheck = !vInvalid && !vFractional;
 
                     /*
                     if (CheckExtensionTable)

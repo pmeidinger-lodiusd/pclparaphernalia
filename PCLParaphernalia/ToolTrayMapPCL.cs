@@ -408,10 +408,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < pageCount; i++)
             {
-                if (PCLPlexModes.isSimplex(indxPlexMode[i]))
-                    duplexSheet[i] = false;
-                else
-                    duplexSheet[i] = true;
+                duplexSheet[i] = !PCLPlexModes.isSimplex(indxPlexMode[i]);
             }
 
             //----------------------------------------------------------------//

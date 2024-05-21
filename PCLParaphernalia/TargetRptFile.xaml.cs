@@ -201,10 +201,7 @@ namespace PCLParaphernalia
                     else
                         rbRptChkMarksText.IsChecked = true;
 
-                    if (_flagOptRptWrap)
-                        chkRptOptWrap.IsChecked = true;
-                    else
-                        chkRptOptWrap.IsChecked = false;
+                    chkRptOptWrap.IsChecked = _flagOptRptWrap;
                 }
                 else if (_crntToolId == ToolCommonData.eToolIds.SoftFontGenerate)
                 {

@@ -903,14 +903,7 @@ namespace PCLParaphernalia
 
                 x.IsThreeState = false;
 
-                if (x.IsChecked == true)
-                {
-                    _patternStateBtns[i] = true;
-                }
-                else
-                {
-                    _patternStateBtns[i] = false;
-                }
+                _patternStateBtns[i] = x.IsChecked == true;
             }
 
             StringBuilder setBtns = new StringBuilder();

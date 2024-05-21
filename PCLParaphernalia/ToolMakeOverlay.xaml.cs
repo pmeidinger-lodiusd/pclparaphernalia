@@ -227,11 +227,8 @@ namespace PCLParaphernalia
             ReportCore.eRptFileFmt rptFileFmt = ReportCore.eRptFileFmt.NA;
             ReportCore.eRptChkMarks rptChkMarks = ReportCore.eRptChkMarks.NA;
 
-            if (_options.IndxGenOffsetFormat ==
-                PrnParseConstants.eOptOffsetFormats.Decimal)
-                flagOffsetHex = false;
-            else
-                flagOffsetHex = true;
+            flagOffsetHex = _options.IndxGenOffsetFormat !=
+                PrnParseConstants.eOptOffsetFormats.Decimal;
 
             TargetCore.metricsReturnFileRpt (ToolCommonData.eToolIds.MakeOverlay,
                                              ref rptFileFmt,

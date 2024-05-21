@@ -3138,10 +3138,7 @@ namespace PCLParaphernalia
 
                     bool operHasAttrList;
 
-                    if (bufOffset == _attrDataStart)
-                        operHasAttrList = false;
-                    else
-                        operHasAttrList = true;
+                    operHasAttrList = bufOffset != _attrDataStart;
 
                     _breakpoint = PrnParseMakeOvl.checkActionPCLXLOper (
                                     false,

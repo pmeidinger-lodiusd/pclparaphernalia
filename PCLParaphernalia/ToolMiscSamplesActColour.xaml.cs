@@ -289,10 +289,7 @@ namespace PCLParaphernalia
                     grpColourModePCLFormat.Visibility = Visibility.Hidden;
                 }
 
-                if (_flagColourFormAsMacroPCL)
-                    chkOptFormAsMacro.IsChecked = true;
-                else
-                    chkOptFormAsMacro.IsChecked = false;
+                chkOptFormAsMacro.IsChecked = _flagColourFormAsMacroPCL;
             }
             else
             {
@@ -327,10 +324,7 @@ namespace PCLParaphernalia
                     colourMapPCLXL_Gray_Display (_flagColourFmtHexPCLXL);
                 }
 
-                if (_flagColourFormAsMacroPCLXL)
-                    chkOptFormAsMacro.IsChecked = true;
-                else
-                    chkOptFormAsMacro.IsChecked = false;
+                chkOptFormAsMacro.IsChecked = _flagColourFormAsMacroPCLXL;
             }
 
             initialiseDescColour();
@@ -695,17 +689,11 @@ namespace PCLParaphernalia
         {
             if (crntPDL == ToolCommonData.ePrintLang.PCL)
             {
-                if (setFlag)
-                    _flagColourFormAsMacroPCL = true;
-                else
-                    _flagColourFormAsMacroPCL = false;
+                _flagColourFormAsMacroPCL = setFlag;
             }
             else if (crntPDL == ToolCommonData.ePrintLang.PCLXL)
             {
-                if (setFlag)
-                    _flagColourFormAsMacroPCLXL = true;
-                else
-                    _flagColourFormAsMacroPCLXL = false;
+                _flagColourFormAsMacroPCLXL = setFlag;
             }
         }
 

@@ -282,11 +282,8 @@ namespace PCLParaphernalia
             ReportCore.eRptFileFmt rptFileFmt = ReportCore.eRptFileFmt.NA;
             ReportCore.eRptChkMarks rptChkMarks = ReportCore.eRptChkMarks.NA;
 
-            if (_options.IndxGenOffsetFormat ==
-                PrnParseConstants.eOptOffsetFormats.Decimal)
-                flagOffsetHex = false;
-            else
-                flagOffsetHex = true;
+            flagOffsetHex = _options.IndxGenOffsetFormat !=
+                PrnParseConstants.eOptOffsetFormats.Decimal;
 
             TargetCore.metricsReturnFileRpt (ToolCommonData.eToolIds.PrnAnalyse,
                                              ref rptFileFmt,
@@ -351,11 +348,8 @@ namespace PCLParaphernalia
 
                 _tableStatistics.Clear();
 
-                if (level ==
-                    PrnParseConstants.eOptStatsLevel.ReferencedOnly)
-                    incUsedSeqsOnly = true;
-                else
-                    incUsedSeqsOnly = false;
+                incUsedSeqsOnly = level ==
+                    PrnParseConstants.eOptStatsLevel.ReferencedOnly;
 
                 PrescribeCommands.displayStatsCounts(_tableStatistics,
                                                       incUsedSeqsOnly);

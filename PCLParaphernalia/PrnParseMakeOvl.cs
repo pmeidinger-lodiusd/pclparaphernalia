@@ -1420,10 +1420,7 @@ namespace PCLParaphernalia
 
             vInt16 = 0;
 
-            if (short.TryParse (value, out vInt16))
-                vCheck = true;
-            else
-                vCheck = false;
+            vCheck = short.TryParse(value, out vInt16);
 
             seqKnown = PCLComplexSeqs.checkComplexSeq (
                             0,

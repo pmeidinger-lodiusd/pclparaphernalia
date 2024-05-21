@@ -567,10 +567,7 @@ namespace PCLParaphernalia
 
             cbPDL.SelectedIndex = (byte)_indxPDL;
 
-            if (_flagCustomUseMetric)
-                rbCustomUseMetric.IsChecked = true;
-            else
-                rbCustomUseMetric.IsChecked = false;
+            rbCustomUseMetric.IsChecked = _flagCustomUseMetric;
 
             _initialised = true;
         }
@@ -810,10 +807,7 @@ namespace PCLParaphernalia
                 _customShortEdgeDotsPCL = _customShortEdgeDots;
                 _customLongEdgeDotsPCL  = _customLongEdgeDots;
 
-                if (chkOptFormAsMacro.IsChecked == true)
-                    _formAsMacroPCL = true;
-                else
-                    _formAsMacroPCL = false;
+                _formAsMacroPCL = chkOptFormAsMacro.IsChecked == true;
             }
             else
             {
@@ -827,10 +821,7 @@ namespace PCLParaphernalia
                 _customShortEdgeDotsPCLXL = _customShortEdgeDots;
                 _customLongEdgeDotsPCLXL  = _customLongEdgeDots;
 
-                if (chkOptFormAsMacro.IsChecked == true)
-                    _formAsMacroPCLXL = true;
-                else
-                    _formAsMacroPCLXL = false;
+                _formAsMacroPCLXL = chkOptFormAsMacro.IsChecked == true;
             }
         }
 

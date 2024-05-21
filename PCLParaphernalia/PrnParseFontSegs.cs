@@ -223,10 +223,7 @@ namespace PCLParaphernalia
                 {
                     bitVal = ((ulong)0x01) << i;
 
-                    if ((charCollVal & bitVal) != 0)
-                        bitSet = true;
-                    else
-                        bitSet = false;
+                    bitSet = (charCollVal & bitVal) != 0;
 
                     if (bitSet && (!complement))
                         bitSig = true;

@@ -1547,18 +1547,11 @@ namespace PCLParaphernalia
 
             if (_drawCharShape)
             {
-                if ((_charHeight > _drawCharMaxHeight)
+                shapeTooLarge = (_charHeight > _drawCharMaxHeight)
                                 ||
                     (_charWidth > _drawCharMaxWidth)
                                 ||
-                    (_charDataLen > PrnParseConstants.bufSize))
-                {
-                    shapeTooLarge = true;
-                }
-                else
-                {
-                   shapeTooLarge = false;
-                }
+                    (_charDataLen > PrnParseConstants.bufSize);
             }
 
             if (_charRem > bufRem)

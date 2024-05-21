@@ -174,10 +174,7 @@ namespace PCLParaphernalia
             nameClrT1 = PCLPalettes.getColourName(indxPalette, indxClrT1);
             nameClrT2 = PCLPalettes.getColourName(indxPalette, indxClrT2);
 
-            if (PCLPalettes.isMonochrome (indxPalette))
-                flagOptColour = false;
-            else
-                flagOptColour = true;
+            flagOptColour = !PCLPalettes.isMonochrome(indxPalette);
 
             //----------------------------------------------------------------//
 
