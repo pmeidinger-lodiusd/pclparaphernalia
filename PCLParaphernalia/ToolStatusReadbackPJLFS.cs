@@ -92,7 +92,7 @@ namespace PCLParaphernalia
         {
             bool open = false;
 
-            if ((fileName == null) || (fileName == ""))
+            if ((fileName == null) || (fileName?.Length == 0))
             {
                 MessageBox.Show ("Binary source filename is null.",
                                 "PJL FS file invalid",
@@ -161,7 +161,7 @@ namespace PCLParaphernalia
         {
             bool open = false;
 
-            if ((fileName == null) || (fileName == ""))
+            if ((fileName == null) || (fileName?.Length == 0))
             {
                 MessageBox.Show("Target filename is null.",
                                 "PJL FS file invalid",

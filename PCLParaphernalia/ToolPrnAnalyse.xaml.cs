@@ -823,7 +823,7 @@ namespace PCLParaphernalia
 
             long fileSize = -1;
 
-            if ((filename == null) || (filename == ""))
+            if ((filename == null) || (filename?.Length == 0))
             {
                 MessageBox.Show("Print file name is null.",
                                 "Print file selection",

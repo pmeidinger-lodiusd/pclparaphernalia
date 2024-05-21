@@ -233,7 +233,7 @@ namespace PCLParaphernalia
         {
             bool open = false;
 
-            if ((fileName == null) || (fileName == ""))
+            if ((fileName == null) || (fileName?.Length == 0))
             {
                 MessageBox.Show ("Download macro file name is null.",
                                 "PCL macro file name invalid",

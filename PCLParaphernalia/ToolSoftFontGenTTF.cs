@@ -818,7 +818,7 @@ namespace PCLParaphernalia
 
             _filenameTTF = filename;
 
-            if ((filename == null) || (filename == ""))
+            if ((filename == null) || (filename?.Length == 0))
             {
                 MessageBox.Show ("Font file name is null.",
                                 "Source (TrueType) font file selection",

@@ -765,7 +765,7 @@ namespace PCLParaphernalia
 
                 commandName = cmd.ToString ();
 
-                if (commandName == "")
+                if (commandName?.Length == 0)
                     seqKnown = PJLCommands.checkCmd (PJLCommands.nullCmdKey,
                                                      ref desc,
                                                      _analysisLevel);

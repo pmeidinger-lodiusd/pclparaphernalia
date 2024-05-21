@@ -1066,7 +1066,7 @@ namespace PCLParaphernalia
                     lbIdName.Visibility = Visibility.Visible;
                     txtIdName.Visibility = Visibility.Visible;
 
-                    if (_flagTrayIdUnknown && (idName == ""))
+                    if (_flagTrayIdUnknown && (idName?.Length == 0))
                     {
                         _flagForceCustomPaperSize = true;
                         lbIdUnknown.Visibility = Visibility.Visible;

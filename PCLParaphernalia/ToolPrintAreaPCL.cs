@@ -654,7 +654,7 @@ namespace PCLParaphernalia
 
             posY += lineInc;
 
-            if (pjlCommand == "")
+            if (pjlCommand?.Length == 0)
                 PCLWriter.text(prnWriter, posX, posY, 0, "<none>");
             else
                 PCLWriter.text(prnWriter, posX, posY, 0, pjlCommand);

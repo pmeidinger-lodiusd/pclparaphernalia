@@ -3838,7 +3838,7 @@ namespace PCLParaphernalia
                 txtPCLSoftFontFile.Text = _fontFilenamePCL;
                 txtPCLSoftFontId.Text = _fontDownloadIdPCL.ToString ();
 
-                if ((_fontFilenamePCL == "") && (!_initialised))
+                if ((_fontFilenamePCL?.Length == 0) && (!_initialised))
                 {
                     // wait till later to select file
                 }
@@ -4257,7 +4257,7 @@ namespace PCLParaphernalia
 
                 txtPCLXLFontName.IsEnabled = false;
 
-                if ((_fontFilenamePCLXL == "") && (!_initialised))
+                if ((_fontFilenamePCLXL?.Length == 0) && (!_initialised))
                 {
                     // wait till later to select file
                 }
@@ -4541,7 +4541,7 @@ namespace PCLParaphernalia
 
             //--------------------------------------------------------------------//
 
-            if (_fontSelSeqPCL == "")
+            if (_fontSelSeqPCL?.Length == 0)
                 selSeqAttr = "";
             else
                 selSeqAttr = "<Esc>(" + _fontSelSeqPCL;
@@ -5965,7 +5965,7 @@ namespace PCLParaphernalia
 
             string crntText = txtPCLHeight.Text;
 
-            if (crntText == "")
+            if (crntText?.Length == 0)
             {
                 if ((_fontType == PCLFonts.eFontType.Download) &&
                     _downloadSelByIdPCL && (!_fontScalable))
@@ -6046,7 +6046,7 @@ namespace PCLParaphernalia
 
             string crntText = txtPCLPitch.Text;
 
-            if (crntText == "")
+            if (crntText?.Length == 0)
             {
                 if ((_fontType == PCLFonts.eFontType.Download) &&
                      _downloadSelByIdPCL && (!_fontScalable))
@@ -6489,7 +6489,7 @@ namespace PCLParaphernalia
 
             string crntText = txtPCLXLHeight.Text;
 
-            if (crntText == "")
+            if (crntText?.Length == 0)
             {
                 if (_fontScalable)
                     OK = false;
@@ -6567,7 +6567,7 @@ namespace PCLParaphernalia
 
             len = crntText.Length;
 
-            if (crntText == "")
+            if (crntText?.Length == 0)
             {
                 OK = false;
             }

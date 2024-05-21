@@ -1044,7 +1044,7 @@ namespace PCLParaphernalia
 
             posY += lineInc;
 
-            if (pjlCommand == "")
+            if (pjlCommand?.Length == 0)
                 PCLXLWriter.text(prnWriter, false, false,
                            PCLXLWriter.advances_Courier, ptSize,
                            posX, posY, "<none>");

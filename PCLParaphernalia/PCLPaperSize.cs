@@ -626,7 +626,7 @@ namespace PCLParaphernalia
                 else
                     id = _paperSizeIdPCLXL.ToString();
 
-                if (_paperSizeNamePCLXL == "")
+                if (_paperSizeNamePCLXL?.Length == 0)
                     name = "?";
                 else
                     name = _paperSizeNamePCLXL;

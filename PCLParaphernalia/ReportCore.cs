@@ -1742,7 +1742,7 @@ namespace PCLParaphernalia
                             htmlWriter.Write (_chkMarkTextFalse);
                     }
                 }
-                else if ((i == 0) && (row[colNames[0]].ToString () == ""))
+                else if ((i == 0) && (row[colNames[0]].ToString()?.Length == 0))
                 {
                     htmlWriter.Write ("&nbsp;");
                 }
@@ -1875,7 +1875,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    if ((i == 0) && (row[colNames[0]].ToString () == ""))
+                    if ((i == 0) && (row[colNames[0]].ToString()?.Length == 0))
                         xmlWriter.WriteCharEntity ((char)0xa0);
                     else
                         xmlWriter.WriteString (row[colNames[i]].ToString ());
@@ -2159,7 +2159,7 @@ namespace PCLParaphernalia
             for (int i = 0; i < colCt; i++)
             {
                 htmlWriter.RenderBeginTag ("td");
-                if ((i == 0) && (data[0] == ""))
+                if ((i == 0) && (data[0]?.Length == 0))
                     htmlWriter.Write ("&nbsp;");
                 else
                     htmlWriter.WriteEncodedText (data[i]);
@@ -2225,7 +2225,7 @@ namespace PCLParaphernalia
             for (int i = 0; i < colCt; i++)
             {
                 xmlWriter.WriteStartElement (colNames[i].ToLower ());
-                if ((i == 0) && (data[0] == ""))
+                if ((i == 0) && (data[0]?.Length == 0))
                     xmlWriter.WriteCharEntity ((char)0xa0);
                 else
                     xmlWriter.WriteString (data[i]);

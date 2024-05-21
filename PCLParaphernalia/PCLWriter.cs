@@ -132,7 +132,7 @@ namespace PCLParaphernalia
         {
             StringBuilder cmd = new StringBuilder ();
 
-            if (parameters == "")
+            if (parameters?.Length == 0)
                 cmd.Append (mnemonic);
             else
                 cmd.Append (mnemonic).Append (parameters);

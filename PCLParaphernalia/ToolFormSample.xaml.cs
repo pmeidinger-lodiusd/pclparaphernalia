@@ -2524,7 +2524,7 @@ namespace PCLParaphernalia
 
             len = crntText.Length;
 
-            if (crntText == "")
+            if (crntText?.Length == 0)
             {
                 OK = false;
             }

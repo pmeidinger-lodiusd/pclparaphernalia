@@ -370,7 +370,7 @@ namespace PCLParaphernalia
             string name = _paperSizes[index].getName();
             string desc = _paperSizes[index].getDesc();
 
-            if (desc == "")
+            if (desc?.Length == 0)
                 return name;
             else
                 return name + ": " + desc;

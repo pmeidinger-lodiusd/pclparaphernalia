@@ -526,7 +526,7 @@ namespace PCLParaphernalia
 
             string crntText = txtLogPageOffLeftDPt.Text;
 
-            if (crntText == "")
+            if (crntText?.Length == 0)
             {
                 value = 0;
             }
@@ -599,7 +599,7 @@ namespace PCLParaphernalia
 
             string crntText = txtLogPageOffTopDPt.Text;
 
-            if (crntText == "")
+            if (crntText?.Length == 0)
             {
                 value = 0;
             }
@@ -672,7 +672,7 @@ namespace PCLParaphernalia
 
             string crntText = txtLogPageHeightDPt.Text;
 
-            if (crntText == "")
+            if (crntText?.Length == 0)
             {
                 value = 0;
             }
@@ -745,7 +745,7 @@ namespace PCLParaphernalia
 
             string crntText = txtLogPageWidthDPt.Text;
 
-            if (crntText == "")
+            if (crntText?.Length == 0)
             {
                 value = 0;
             }

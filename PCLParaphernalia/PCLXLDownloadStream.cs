@@ -267,7 +267,7 @@ namespace PCLParaphernalia
         {
             bool open = false;
 
-            if ((fileName == null) || (fileName == ""))
+            if ((fileName == null) || (fileName?.Length == 0))
             {
                 MessageBox.Show ("Download stream file name is null.",
                                 "PCL XL stream invalid",
