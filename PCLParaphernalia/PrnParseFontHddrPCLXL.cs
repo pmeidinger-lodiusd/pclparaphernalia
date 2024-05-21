@@ -191,9 +191,9 @@ namespace PCLParaphernalia
                 processFontHeader (ref bufRem,
                                    ref bufOffset);
 
-                bufRem    = bufRem    - _cHddrDescLen;
-                _hddrRem  = _hddrRem  - _cHddrDescLen;
-                bufOffset = bufOffset + _cHddrDescLen;
+                bufRem    -= _cHddrDescLen;
+                _hddrRem  -= _cHddrDescLen;
+                bufOffset += _cHddrDescLen;
 
                 if (_validHddr)
                     _nextStage = eStage.ShowData;
@@ -284,7 +284,7 @@ namespace PCLParaphernalia
                     contType = PrnParseConstants.eContType.PCLXLFontHddr;
 
                     binDataLen = bufRem;
-                    _hddrRem   = _hddrRem - bufRem;
+                    _hddrRem   -= bufRem;
 
                     linkData.setContinuation (contType);
                 }
@@ -320,8 +320,8 @@ namespace PCLParaphernalia
                         _indxOffsetFormat,
                         _analysisLevel);
 
-                    bufRem    = bufRem - binDataLen;
-                    bufOffset = bufOffset + binDataLen;
+                    bufRem    -= binDataLen;
+                    bufOffset += binDataLen;
                 }
             }
 

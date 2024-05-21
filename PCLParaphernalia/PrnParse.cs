@@ -586,7 +586,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        blockStart = blockStart + blockLen;
+                        blockStart += blockLen;
                     }
 
                     if (_linkData.IsEofSet)

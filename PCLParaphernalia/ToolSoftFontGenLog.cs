@@ -360,7 +360,7 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        vStart = vStart + rowLen;
+                        vStart += rowLen;
                         firstLine = false;
 
                         row[colValue] = logData;

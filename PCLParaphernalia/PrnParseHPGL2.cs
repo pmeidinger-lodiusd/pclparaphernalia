@@ -135,7 +135,7 @@ namespace PCLParaphernalia
                                           prefixLen),
                         desc);
 
-                    len = len - prefixLen;
+                    len -= prefixLen;
                 }
 
                 //------------------------------------------------------------//
@@ -625,8 +625,8 @@ namespace PCLParaphernalia
                                         true,
                                         "");
 
-                    bufRem = bufRem - seqLen;
-                    bufOffset = bufOffset + seqLen;
+                    bufRem -= seqLen;
+                    bufOffset += seqLen;
 
                     _linkData.resetContData ();
                 }
@@ -1124,8 +1124,8 @@ namespace PCLParaphernalia
                                     false,
                                     desc);
 
-                bufOffset = bufOffset + seqLen;
-                bufRem    = bufRem - seqLen;
+                bufOffset += seqLen;
+                bufRem    -= seqLen;
 
                 termFound = PrnParseData.processLines (
                     _table,
@@ -1373,8 +1373,8 @@ namespace PCLParaphernalia
                                         false,
                                         desc);
 
-                    bufOffset = bufOffset + seqLen;
-                    bufRem    = bufRem - seqLen;
+                    bufOffset += seqLen;
+                    bufRem    -= seqLen;
 
                     continuation = true;
                     contType = PrnParseConstants.eContType.HPGL2Binary;
@@ -1416,8 +1416,8 @@ namespace PCLParaphernalia
                                         continuation,
                                         desc);
 
-                    bufOffset = bufOffset + seqLen;
-                    bufRem    = bufRem - seqLen;
+                    bufOffset += seqLen;
+                    bufRem    -= seqLen;
 
                     continuation = true;
 
@@ -1474,7 +1474,7 @@ namespace PCLParaphernalia
 
                     if (inclusiveTerm)
                     {
-                        seqLen = seqLen + 1;
+                        seqLen++;
                     }
 
                     displayHPGL2Command(ref bufOffset,
@@ -1485,8 +1485,8 @@ namespace PCLParaphernalia
                                         continuation,
                                         desc);
 
-                    bufOffset = bufOffset + seqLen;
-                    bufRem    = bufRem - seqLen;
+                    bufOffset += seqLen;
+                    bufRem    -= seqLen;
 
                     continuation = false;
                 }

@@ -273,9 +273,9 @@ namespace PCLParaphernalia
                 processDescriptor(ref bufRem,
                                   ref bufOffset);
 
-                bufRem       = bufRem    - _charDescLen;
-                _charRem     = _charRem  - _charDescLen;
-                bufOffset    = bufOffset + _charDescLen;
+                bufRem       -= _charDescLen;
+                _charRem     -= _charDescLen;
+                bufOffset    += _charDescLen;
 
                 if (_validChar)
                     _nextStage = eStage.ShowData;
@@ -451,7 +451,7 @@ namespace PCLParaphernalia
                     contType = PrnParseConstants.eContType.PCLFontChar;
 
                     binDataLen = bufRem;
-                    _charRem   = _charRem - bufRem;
+                    _charRem   -= bufRem;
 
                     _linkData.setContinuation (contType);
                 }
@@ -484,8 +484,8 @@ namespace PCLParaphernalia
                         "[ " + binDataLen + " bytes ]",
                         "");
 
-                    bufRem    = bufRem - binDataLen;
-                    bufOffset = bufOffset + binDataLen;
+                    bufRem    -= binDataLen;
+                    bufOffset += binDataLen;
                 }
             }
 
@@ -604,9 +604,9 @@ namespace PCLParaphernalia
             //                                                        //
             //--------------------------------------------------------//
 
-            bufRem    = bufRem    - _blockHddrLen;
-            _charRem  = _charRem  - _blockHddrLen;
-            bufOffset = bufOffset + _blockHddrLen;
+            bufRem    -= _blockHddrLen;
+            _charRem  -= _blockHddrLen;
+            bufOffset += _blockHddrLen;
         }
 
         //--------------------------------------------------------------------//
@@ -759,8 +759,8 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        bufRem    = bufRem    - _charRem;
-                        bufOffset = bufOffset + _charRem;
+                        bufRem    -= _charRem;
+                        bufOffset += _charRem;
 
                         _charRem = 0;
                         _nextStage = eStage.EndOK;
@@ -1205,9 +1205,9 @@ namespace PCLParaphernalia
                 contType = PrnParseConstants.eContType.PCLFontChar;
 
                 binDataLen        = bufRem;
-                _charRem          = _charRem - bufRem;
-                _charDataRem      = _charDataRem - bufRem;
-                _charDataBlockRem = _charDataBlockRem - bufRem;
+                _charRem          -= bufRem;
+                _charDataRem      -= bufRem;
+                _charDataBlockRem -= bufRem;
 
                 _linkData.setContinuation (contType);
             }
@@ -1218,8 +1218,8 @@ namespace PCLParaphernalia
                 _linkData.resetContData();
 
                 binDataLen = _charDataBlockRem;
-                _charRem = _charRem - _charDataBlockRem;
-                _charDataRem = _charDataRem - _charDataBlockRem;
+                _charRem -= _charDataBlockRem;
+                _charDataRem -= _charDataBlockRem;
                 _charDataBlockRem = 0;
 
                 _nextStage = eStage.ShowChecksum; 
@@ -1267,8 +1267,8 @@ namespace PCLParaphernalia
                     _charChksVal += _buf[bufOffset + i];
                 }
 
-                bufRem    = bufRem - binDataLen;
-                bufOffset = bufOffset + binDataLen;
+                bufRem    -= binDataLen;
+                bufOffset += binDataLen;
             }
         }
 
@@ -1499,9 +1499,9 @@ namespace PCLParaphernalia
                 contType = PrnParseConstants.eContType.None;
                 _linkData.resetContData ();
 
-                _charRem = _charRem - hddrLen;
-                bufRem = bufRem - hddrLen;
-                bufOffset = bufOffset + hddrLen;
+                _charRem -= hddrLen;
+                bufRem -= hddrLen;
+                bufOffset += hddrLen;
                 _charDataRem = _charDataLen;
                 _charDataBlockRem = _charDataLen;
 
@@ -1579,7 +1579,7 @@ namespace PCLParaphernalia
 
                     _linkData.setBacktrack (contType, - bufRem);
 
-                    bufOffset  = bufOffset + bufRem;
+                    bufOffset  += bufRem;
                     bufRem     = 0;
                     binDataLen = 0;
                 }
@@ -1590,7 +1590,7 @@ namespace PCLParaphernalia
                     contType   = PrnParseConstants.eContType.PCLFontChar;
 
                     binDataLen = bufRem;
-                    _charRem   = _charRem - bufRem;
+                    _charRem   -= bufRem;
 
                     _linkData.setContinuation (contType);
                 }
@@ -1654,8 +1654,8 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufRem    = bufRem - binDataLen;
-                bufOffset = bufOffset + binDataLen;
+                bufRem    -= binDataLen;
+                bufOffset += binDataLen;
             }
         }
 
@@ -1687,7 +1687,7 @@ namespace PCLParaphernalia
                 contType = PrnParseConstants.eContType.PCLFontChar;
 
                 binDataLen = bufRem;
-                _charRem   = _charRem - bufRem;
+                _charRem   -= bufRem;
 
                 _linkData.setContinuation (contType);
             }
@@ -1745,8 +1745,8 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufRem    = bufRem - binDataLen;
-                bufOffset = bufOffset + binDataLen;
+                bufRem    -= binDataLen;
+                bufOffset += binDataLen;
             }
         }
 
@@ -1778,9 +1778,9 @@ namespace PCLParaphernalia
                 contType = PrnParseConstants.eContType.PCLFontChar;
 
                 binDataLen        = bufRem;
-                _charRem          = _charRem - bufRem;
-                _charDataRem      = _charDataRem - bufRem;
-                _charDataBlockRem = _charDataBlockRem - bufRem;
+                _charRem          -= bufRem;
+                _charDataRem      -= bufRem;
+                _charDataBlockRem -= bufRem;
 
                 _linkData.setContinuation (contType);
             }
@@ -1790,8 +1790,8 @@ namespace PCLParaphernalia
                 _linkData.resetContData();
 
                 binDataLen        = _charDataBlockRem;
-                _charRem          = _charRem - _charDataBlockRem;
-                _charDataRem      = _charDataRem - _charDataBlockRem;
+                _charRem          -= _charDataBlockRem;
+                _charDataRem      -= _charDataBlockRem;
                 _charDataBlockRem = 0;
 
                 _nextStage = eStage.ShowChecksum;
@@ -1839,8 +1839,8 @@ namespace PCLParaphernalia
                     _charChksVal += _buf[bufOffset + i];
                 }
 
-                bufRem    = bufRem - binDataLen;
-                bufOffset = bufOffset + binDataLen;
+                bufRem    -= binDataLen;
+                bufOffset += binDataLen;
             }
         }
 
@@ -1968,9 +1968,9 @@ namespace PCLParaphernalia
                 contType = PrnParseConstants.eContType.None;
                 _linkData.resetContData ();
 
-                _charRem = _charRem - hddrLen;
-                bufRem = bufRem - hddrLen;
-                bufOffset = bufOffset + hddrLen;
+                _charRem -= hddrLen;
+                bufRem -= hddrLen;
+                bufOffset += hddrLen;
 
                 _charDataRem      = _charDataLen;
                 _charDataBlockRem = _charDataLen;
@@ -2134,7 +2134,7 @@ namespace PCLParaphernalia
                             else
                                 rowImage += " ";
 
-                            sub = sub << 1;
+                            sub <<= 1;
                         }
                     }
 
@@ -2168,7 +2168,7 @@ namespace PCLParaphernalia
                     }
 
                     firstLine = false;
-                    crntOffset = crntOffset + sliceLen;
+                    crntOffset += sliceLen;
                 }
             }
             else if (_charClass == ePCLCharClass.BitmapCompressed)
