@@ -54,17 +54,17 @@ namespace PCLParaphernalia
 
         public static void Focus(UIElement element)
         {
-            ThreadPool.QueueUserWorkItem(delegate (object objName)
+            ThreadPool.QueueUserWorkItem((object objName) =>
             {
                 UIElement elem = (UIElement)objName;
 
                 elem.Dispatcher.Invoke(DispatcherPriority.Normal,
 
-                    (MethodInvoker)delegate ()
+                    (MethodInvoker)(() =>
                     {
                         elem.Focus();
                         Keyboard.Focus(elem);
-                    });
+                    }));
             }, element);
         }
     }
