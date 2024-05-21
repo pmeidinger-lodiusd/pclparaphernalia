@@ -171,11 +171,11 @@ namespace PCLParaphernalia
             ref int[] indxClrMapBack,
             ref int[] indxClrMapFore)
         {
-            PrnParseRowTypes.eType rowType;
+            eType rowType;
 
             for (int i = 0; i < _rowTypeCount; i++)
             {
-                rowType = (PrnParseRowTypes.eType)i;
+                rowType = (eType)i;
 
                 switch (rowType)
                 {

@@ -16,7 +16,7 @@ namespace PCLParaphernalia
     /// 
     /// </summary>
     
-    [System.Reflection.ObfuscationAttribute(Feature = "renaming",
+    [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
     public partial class ToolFormSample : Window
@@ -1836,7 +1836,7 @@ namespace PCLParaphernalia
             openDialog.Filter = "PCL Overlay files|*.ovl; *.OVL" +
                                 "|All files|*.*";
 
-            Nullable<Boolean> dialogResult = openDialog.ShowDialog();
+            bool? dialogResult = openDialog.ShowDialog();
 
             if (dialogResult == true)
                 selectedName = openDialog.FileName;
@@ -1860,7 +1860,7 @@ namespace PCLParaphernalia
             openDialog.Filter = "PCLXL Overlay files|*.ovx; *.OVX" +
                                 "|All files|*.*";
 
-            Nullable<Boolean> dialogResult = openDialog.ShowDialog();
+            bool? dialogResult = openDialog.ShowDialog();
 
             if (dialogResult == true)
                 selectedName = openDialog.FileName;

@@ -10,7 +10,7 @@ namespace PCLParaphernalia
     /// 
     /// </summary>
 
-    [System.Reflection.ObfuscationAttribute (Feature = "properties renaming")]
+    [System.Reflection.Obfuscation(Feature = "properties renaming")]
 
     class PJLCommand
     {

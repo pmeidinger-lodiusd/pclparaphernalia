@@ -514,7 +514,7 @@ namespace PCLParaphernalia
                     FileName = _crntFilename
                 };
 
-                Nullable<Boolean> dialogResult = saveDialog.ShowDialog();
+                bool? dialogResult = saveDialog.ShowDialog();
                 
                 if (dialogResult == true)
                 {

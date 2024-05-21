@@ -301,7 +301,7 @@ namespace PCLParaphernalia
                 FileName = tmpFilename
             };
 
-            Nullable<Boolean> dialogResult = saveDialog.ShowDialog ();
+            bool? dialogResult = saveDialog.ShowDialog ();
 
             if (dialogResult == true)
             {

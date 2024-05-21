@@ -16,7 +16,7 @@ namespace PCLParaphernalia
     /// 
     /// </summary>
 
-    [System.Reflection.ObfuscationAttribute(Feature = "renaming",
+    [Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
     public partial class MainForm : Window
@@ -177,7 +177,7 @@ namespace PCLParaphernalia
         
                 WorkFolder workFolder = new WorkFolder ();
 
-                Nullable<Boolean> dialogResult = workFolder.ShowDialog();
+                bool? dialogResult = workFolder.ShowDialog();
             }
 
             MainFormPersist.saveVersionData (versionMajorCrnt,
@@ -613,7 +613,7 @@ namespace PCLParaphernalia
             TargetFile targetFile = new TargetFile (_crntToolId, _crntSubId,
                                                     _crntPDL);
 
-            Nullable<Boolean> dialogResult = targetFile.ShowDialog ();
+            bool? dialogResult = targetFile.ShowDialog ();
 
             if (dialogResult == true)
             {
@@ -665,7 +665,7 @@ namespace PCLParaphernalia
             TargetNetPrintConfig targetNetPrintConfig =
                 new TargetNetPrintConfig ();
 
-            Nullable<Boolean> dialogResult = targetNetPrintConfig.ShowDialog ();
+            bool? dialogResult = targetNetPrintConfig.ShowDialog ();
 
             if (dialogResult == true)
             {
@@ -700,7 +700,7 @@ namespace PCLParaphernalia
                                                              _crntSubId,
                                                              _crntPDL);
 
-            Nullable<Boolean> dialogResult = targetRptFile.ShowDialog ();
+            bool? dialogResult = targetRptFile.ShowDialog ();
         }
 
         //--------------------------------------------------------------------//
@@ -740,7 +740,7 @@ namespace PCLParaphernalia
             TargetWinPrintConfig targetWinPrintConfig =
                 new TargetWinPrintConfig ();
 
-            Nullable<Boolean> dialogResult = targetWinPrintConfig.ShowDialog ();
+            bool? dialogResult = targetWinPrintConfig.ShowDialog ();
 
             if (dialogResult == true)
             {

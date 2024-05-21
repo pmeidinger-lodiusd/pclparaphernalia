@@ -10,7 +10,7 @@ namespace PCLParaphernalia
     /// 
     /// </summary>
 
-    [System.Reflection.ObfuscationAttribute(Feature = "renaming",
+    [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
     public static class ToolCommonData
@@ -21,7 +21,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        [System.Reflection.ObfuscationAttribute(Exclude = true)]
+        [System.Reflection.Obfuscation(Exclude = true)]
 
         public enum eToolIds : byte
         {
@@ -44,7 +44,7 @@ namespace PCLParaphernalia
             XXXDiags
         }
 
-        [System.Reflection.ObfuscationAttribute(Exclude = true)]
+        [System.Reflection.Obfuscation(Exclude = true)]
 
         public enum eToolSubIds : byte
         {
