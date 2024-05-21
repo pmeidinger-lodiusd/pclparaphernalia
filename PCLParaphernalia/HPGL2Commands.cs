@@ -1024,13 +1024,13 @@ namespace PCLParaphernalia
         {
             HPGL2Command cmd;
 
-            _cmdUnknown.resetStatistics();
+            _cmdUnknown.ResetStatistics();
 
             foreach (KeyValuePair<string, HPGL2Command> kvp in _cmds)
             {
                 cmd = kvp.Value;
 
-                cmd.resetStatistics();
+                cmd.ResetStatistics();
             }
         }
     }
