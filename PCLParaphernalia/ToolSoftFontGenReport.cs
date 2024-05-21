@@ -38,7 +38,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generate (ReportCore.eRptFileFmt rptFileFmt,
+        public static void generate(ReportCore.eRptFileFmt rptFileFmt,
                                      ReportCore.eRptChkMarks rptChkMarks,
                                      DataTable tableDonor,
                                      DataTable tableMapping,
@@ -46,7 +46,7 @@ namespace PCLParaphernalia
                                      DataTable tableChars,
                                      string fontNameTTF,
                                      string fontFilenameTTF,
-                                     string fontFilenamePCL )
+                                     string fontFilenamePCL)
         {
             object stream = null;
             object writer = null;
@@ -65,38 +65,38 @@ namespace PCLParaphernalia
 
             saveFilename = fontFilenamePCL + "_report." + fileExt;
 
-            OK = ReportCore.docOpen (rptFileFmt,
+            OK = ReportCore.docOpen(rptFileFmt,
                                      ref saveFilename,
                                      ref stream,
                                      ref writer);
             if (OK)
             {
-                ReportCore.docInitialise (rptFileFmt, writer, true, false,
+                ReportCore.docInitialise(rptFileFmt, writer, true, false,
                                           0, null,
                                           null, null);
 
-                reportHddr (rptFileFmt, writer,
+                reportHddr(rptFileFmt, writer,
                             fontNameTTF, fontFilenameTTF, fontFilenamePCL);
 
-                reportHddrSub (rptFileFmt, writer, "Donor font details");
+                reportHddrSub(rptFileFmt, writer, "Donor font details");
 
-                reportBodyStd (rptFileFmt, rptChkMarks, writer, tableDonor);
+                reportBodyStd(rptFileFmt, rptChkMarks, writer, tableDonor);
 
-                reportHddrSub (rptFileFmt, writer, "Mapping details");
+                reportHddrSub(rptFileFmt, writer, "Mapping details");
 
-                reportBodyStd (rptFileFmt, rptChkMarks, writer, tableMapping);
+                reportBodyStd(rptFileFmt, rptChkMarks, writer, tableMapping);
 
-                reportHddrSub (rptFileFmt, writer, "Target font details");
+                reportHddrSub(rptFileFmt, writer, "Target font details");
 
-                reportBodyStd (rptFileFmt, rptChkMarks, writer, tableTarget);
+                reportBodyStd(rptFileFmt, rptChkMarks, writer, tableTarget);
 
-                reportHddrSub (rptFileFmt, writer, "Generated character details");
+                reportHddrSub(rptFileFmt, writer, "Generated character details");
 
-                reportBodyChars (rptFileFmt, rptChkMarks, writer, tableChars);
+                reportBodyChars(rptFileFmt, rptChkMarks, writer, tableChars);
 
-                ReportCore.docFinalise (rptFileFmt, writer);
+                ReportCore.docFinalise(rptFileFmt, writer);
 
-                ReportCore.docClose (rptFileFmt, stream, writer);
+                ReportCore.docClose(rptFileFmt, stream, writer);
             }
         }
 
@@ -109,11 +109,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void reportBodyChars (
+        private static void reportBodyChars(
             ReportCore.eRptFileFmt rptFileFmt,
             ReportCore.eRptChkMarks rptChkMarks,
             object writer,
-            DataTable table )
+            DataTable table)
         {
             const int colCt = 13;
 
@@ -184,7 +184,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableHddrData (writer, rptFileFmt, false,
+            ReportCore.tableHddrData(writer, rptFileFmt, false,
                                       colCt, colHddrs, colSizes);
 
             //----------------------------------------------------------------//
@@ -197,7 +197,7 @@ namespace PCLParaphernalia
             {
                 DataRow row = table.Rows[i];
 
-                ReportCore.tableRowData (writer, rptFileFmt, rptChkMarks,
+                ReportCore.tableRowData(writer, rptFileFmt, rptChkMarks,
                                          colCt, null,
                                          row, colNames, colSizes);
             }
@@ -208,7 +208,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableClose (writer, rptFileFmt);
+            ReportCore.tableClose(writer, rptFileFmt);
         }
 
         //--------------------------------------------------------------------//
@@ -220,7 +220,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void reportBodyStd (
+        private static void reportBodyStd(
             ReportCore.eRptFileFmt rptFileFmt,
             ReportCore.eRptChkMarks rptChkMarks,
             object writer,
@@ -252,7 +252,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableHddrData (writer, rptFileFmt, false,
+            ReportCore.tableHddrData(writer, rptFileFmt, false,
                                   colCt, colHddrs, colSizes);
 
             //----------------------------------------------------------------//
@@ -265,7 +265,7 @@ namespace PCLParaphernalia
             {
                 DataRow row = table.Rows[i];
 
-                ReportCore.tableRowData (writer, rptFileFmt, rptChkMarks,
+                ReportCore.tableRowData(writer, rptFileFmt, rptChkMarks,
                                          colCt, null,
                                          row, colNames, colSizes);
             }
@@ -276,7 +276,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableClose (writer, rptFileFmt);
+            ReportCore.tableClose(writer, rptFileFmt);
         }
 
         //--------------------------------------------------------------------//
@@ -288,7 +288,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void reportHddr (ReportCore.eRptFileFmt rptFileFmt,
+        private static void reportHddr(ReportCore.eRptFileFmt rptFileFmt,
                                         object writer,
                                         string fontNameTTF,
                                         string fontFilenameTTF,
@@ -304,7 +304,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.hddrTitle (writer, rptFileFmt, false, title);
+            ReportCore.hddrTitle(writer, rptFileFmt, false, title);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -313,33 +313,33 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableHddrPair (writer, rptFileFmt);
+            ReportCore.tableHddrPair(writer, rptFileFmt);
 
-            ReportCore.tableRowPair (writer, rptFileFmt,
-                                 "Date_time", DateTime.Now.ToString (),
+            ReportCore.tableRowPair(writer, rptFileFmt,
+                                 "Date_time", DateTime.Now.ToString(),
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
-            ReportCore.tableRowPair (writer, rptFileFmt,
+            ReportCore.tableRowPair(writer, rptFileFmt,
                                  "Target_PCL_font_file", fontFilenamePCL,
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
-            ReportCore.tableRowPair (writer, rptFileFmt,
+            ReportCore.tableRowPair(writer, rptFileFmt,
                                  "Donor_TTF_name", fontNameTTF,
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
-            ReportCore.tableRowPair (writer, rptFileFmt,
+            ReportCore.tableRowPair(writer, rptFileFmt,
                                  "Donor_TTF_file", fontFilenameTTF,
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
-            ReportCore.tableClose (writer, rptFileFmt);
+            ReportCore.tableClose(writer, rptFileFmt);
         }
 
         //--------------------------------------------------------------------//
@@ -351,7 +351,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void reportHddrSub (ReportCore.eRptFileFmt rptFileFmt,
+        private static void reportHddrSub(ReportCore.eRptFileFmt rptFileFmt,
                                            object writer,
                                            string subHead)
         {
@@ -361,7 +361,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.hddrTitle (writer, rptFileFmt, true, subHead);
+            ReportCore.hddrTitle(writer, rptFileFmt, true, subHead);
         }
     }
 }

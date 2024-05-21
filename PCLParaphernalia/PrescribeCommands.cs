@@ -20,7 +20,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static readonly SortedList<string, PrescribeCommand> _cmds =
-            new SortedList<string, PrescribeCommand> ();
+            new SortedList<string, PrescribeCommand>();
 
         private static PrescribeCommand _cmdUnknown;
         private static PrescribeCommand _cmdIntro;
@@ -33,7 +33,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static PrescribeCommands ()
+        static PrescribeCommands()
         {
             populateTable();
         }
@@ -47,7 +47,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkCmd (string name,
+        public static bool checkCmd(string name,
                                         ref string description,
                                         ref bool flagCmdExit,
                                         ref bool flagCmdSetCRC,
@@ -57,7 +57,7 @@ namespace PCLParaphernalia
 
             PrescribeCommand cmd;
 
-            if (_cmds.IndexOfKey (name) != -1)
+            if (_cmds.IndexOfKey(name) != -1)
             {
                 seqKnown = true;
                 cmd = _cmds[name];
@@ -72,7 +72,7 @@ namespace PCLParaphernalia
             flagCmdExit = cmd.IsCmdExit;
             flagCmdSetCRC = cmd.IsCmdSetCRC;
 
-            cmd.incrementStatisticsCount (level);
+            cmd.incrementStatisticsCount(level);
 
             return seqKnown;
         }
@@ -86,12 +86,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void checkCmdIntro (ref string description,
+        public static void checkCmdIntro(ref string description,
                                           int level)
         {
             description = _cmdIntro.Description;
 
-            _cmdIntro.incrementStatisticsCount (level);
+            _cmdIntro.incrementStatisticsCount(level);
         }
 
         //--------------------------------------------------------------------//
@@ -103,7 +103,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int displayCmds (DataGrid grid)
+        public static int displayCmds(DataGrid grid)
         {
             int count = 0;
 
@@ -111,7 +111,7 @@ namespace PCLParaphernalia
                 in _cmds)
             {
                 count++;
-                grid.Items.Add (kvp.Value);
+                grid.Items.Add(kvp.Value);
             }
 
             return count;
@@ -126,7 +126,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCounts (DataTable table,
+        public static void displayStatsCounts(DataTable table,
                                                bool incUsedSeqsOnly)
         {
             int count = 0;
@@ -151,11 +151,11 @@ namespace PCLParaphernalia
             {
                 if (!hddrWritten)
                 {
-                    displayStatsCountsHddr (table);
+                    displayStatsCountsHddr(table);
                     hddrWritten = true;
                 }
 
-                row = table.NewRow ();
+                row = table.NewRow();
 
                 row[0] = _cmdIntro.Name;
                 row[1] = _cmdIntro.Description;
@@ -163,7 +163,7 @@ namespace PCLParaphernalia
                 row[3] = _cmdIntro.StatsCtChild;
                 row[4] = _cmdIntro.StatsCtTotal;
 
-                table.Rows.Add (row);
+                table.Rows.Add(row);
             }
 
             //----------------------------------------------------------------//
@@ -177,11 +177,11 @@ namespace PCLParaphernalia
             {
                 if (!hddrWritten)
                 {
-                    displayStatsCountsHddr (table);
+                    displayStatsCountsHddr(table);
                     hddrWritten = true;
                 }
 
-                row = table.NewRow ();
+                row = table.NewRow();
 
                 row[0] = _cmdUnknown.Name;
                 row[1] = _cmdUnknown.Description;
@@ -189,7 +189,7 @@ namespace PCLParaphernalia
                 row[3] = _cmdUnknown.StatsCtChild;
                 row[4] = _cmdUnknown.StatsCtTotal;
 
-                table.Rows.Add (row);
+                table.Rows.Add(row);
             }
 
             //----------------------------------------------------------------//
@@ -211,11 +211,11 @@ namespace PCLParaphernalia
                 {
                     if (!hddrWritten)
                     {
-                        displayStatsCountsHddr (table);
+                        displayStatsCountsHddr(table);
                         hddrWritten = true;
                     }
 
-                    row = table.NewRow ();
+                    row = table.NewRow();
 
                     row[0] = kvp.Value.Name;
                     row[1] = kvp.Value.Description;
@@ -223,7 +223,7 @@ namespace PCLParaphernalia
                     row[3] = kvp.Value.StatsCtChild;
                     row[4] = kvp.Value.StatsCtTotal;
 
-                    table.Rows.Add (row);
+                    table.Rows.Add(row);
                 }
             }
         }
@@ -241,7 +241,7 @@ namespace PCLParaphernalia
         {
             //----------------------------------------------------------------//
 
-            DataRow row = table.NewRow ();
+            DataRow row = table.NewRow();
 
             row[0] = string.Empty;
             row[1] = "___________________";
@@ -249,9 +249,9 @@ namespace PCLParaphernalia
             row[3] = string.Empty;
             row[4] = string.Empty;
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
 
-            row = table.NewRow ();
+            row = table.NewRow();
 
             row[0] = string.Empty;
             row[1] = "Prescribe commands:";
@@ -259,9 +259,9 @@ namespace PCLParaphernalia
             row[3] = string.Empty;
             row[4] = string.Empty;
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
 
-            row = table.NewRow ();
+            row = table.NewRow();
 
             row[0] = string.Empty;
             row[1] = "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯";
@@ -269,7 +269,7 @@ namespace PCLParaphernalia
             row[3] = string.Empty;
             row[4] = string.Empty;
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
         }
 
         //--------------------------------------------------------------------//
@@ -295,7 +295,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getDesc (string name)
+        public static string getDesc(string name)
         {
             return _cmds[name].Description;
         }
@@ -309,7 +309,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getDescCmdIntro ()
+        public static string getDescCmdIntro()
         {
             return _cmdIntro.Description;
         }
@@ -337,7 +337,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void populateTable ()
+        public static void populateTable()
         {
             string command = "?";
             _cmdUnknown =
@@ -1397,7 +1397,7 @@ namespace PCLParaphernalia
 
              */
 
-             command = "SATU";
+            command = "SATU";
             _cmds.Add(command,
                       new PrescribeCommand(
                           command,
@@ -1985,14 +1985,14 @@ namespace PCLParaphernalia
         {
             PrescribeCommand cmd;
 
-            _cmdUnknown.resetStatistics ();
-            _cmdIntro.resetStatistics ();
+            _cmdUnknown.resetStatistics();
+            _cmdIntro.resetStatistics();
 
             foreach (KeyValuePair<string, PrescribeCommand> kvp in _cmds)
             {
                 cmd = kvp.Value;
 
-                cmd.resetStatistics ();
+                cmd.resetStatistics();
             }
         }
     }

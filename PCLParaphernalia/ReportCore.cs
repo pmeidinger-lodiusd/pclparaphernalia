@@ -24,14 +24,14 @@ namespace PCLParaphernalia
 
         const int _lcSep = PrnParseConstants.cColSeparatorLen;
 
-        public static string _chkMarkBoxSymFalse = '\u2610'.ToString ();
-        public static string _chkMarkBoxSymTrue  = '\u2611'.ToString ();
+        public static string _chkMarkBoxSymFalse = '\u2610'.ToString();
+        public static string _chkMarkBoxSymTrue = '\u2611'.ToString();
 
-        public static string _chkMarkTxtSymFalse = '\x2d'.ToString ();
-        public static string _chkMarkTxtSymTrue  = '\x2b'.ToString ();
+        public static string _chkMarkTxtSymFalse = '\x2d'.ToString();
+        public static string _chkMarkTxtSymTrue = '\x2b'.ToString();
 
         public static string _chkMarkTextFalse = "false";
-        public static string _chkMarkTextTrue  = "true ";
+        public static string _chkMarkTextTrue = "true ";
 
         public enum eRptFileFmt : byte
         {
@@ -64,37 +64,37 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void docClose (eRptFileFmt rptFileFmt,
+        public static void docClose(eRptFileFmt rptFileFmt,
                                      object stream,
                                      object writer)
         {
             if (rptFileFmt == eRptFileFmt.html)
             {
-                HtmlTextWriter htmlWriter = (HtmlTextWriter) writer;
-                htmlWriter.Close ();
+                HtmlTextWriter htmlWriter = (HtmlTextWriter)writer;
+                htmlWriter.Close();
                 writer = null;
 
-                StreamWriter htmlStream = (StreamWriter) stream;
+                StreamWriter htmlStream = (StreamWriter)stream;
 
-                htmlStream.Close ();
+                htmlStream.Close();
                 stream = null;
             }
             else if (rptFileFmt == eRptFileFmt.xml)
             {
                 XmlWriter xmlWriter = (XmlWriter)writer;
-                xmlWriter.Close ();
+                xmlWriter.Close();
                 writer = null;
 
                 StreamWriter xmlStream = (StreamWriter)stream;
 
-                xmlStream.Close ();
+                xmlStream.Close();
                 stream = null;
             }
             else
             {
                 StreamWriter txtWriter = (StreamWriter)writer;
 
-                txtWriter.Close ();
+                txtWriter.Close();
                 writer = null;
             }
         }
@@ -108,15 +108,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void docFinalise (eRptFileFmt rptFileFmt,
+        public static void docFinalise(eRptFileFmt rptFileFmt,
                                         object writer)
         {
             if (rptFileFmt == eRptFileFmt.html)
-                docFinaliseHtml ((HtmlTextWriter)writer);
+                docFinaliseHtml((HtmlTextWriter)writer);
             else if (rptFileFmt == eRptFileFmt.xml)
-                docFinaliseXml ((XmlWriter)writer);
+                docFinaliseXml((XmlWriter)writer);
             else
-                docFinaliseText ((StreamWriter)writer);
+                docFinaliseText((StreamWriter)writer);
         }
 
         //--------------------------------------------------------------------//
@@ -128,15 +128,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void docFinaliseHtml (HtmlTextWriter htmlWriter)
+        public static void docFinaliseHtml(HtmlTextWriter htmlWriter)
         {
-            htmlWriter.RenderBeginTag ("p");
-            htmlWriter.Write ("*** End of Report ***");
-            htmlWriter.RenderEndTag ();    // </p>
+            htmlWriter.RenderBeginTag("p");
+            htmlWriter.Write("*** End of Report ***");
+            htmlWriter.RenderEndTag();    // </p>
 
-            htmlWriter.RenderEndTag ();    // </body>
+            htmlWriter.RenderEndTag();    // </body>
 
-            htmlWriter.RenderEndTag ();    // </html>
+            htmlWriter.RenderEndTag();    // </html>
         }
 
         //--------------------------------------------------------------------//
@@ -148,10 +148,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void docFinaliseText (StreamWriter txtWriter)
+        public static void docFinaliseText(StreamWriter txtWriter)
         {
-            txtWriter.WriteLine (string.Empty);
-            txtWriter.WriteLine ("*** End of Report ***");
+            txtWriter.WriteLine(string.Empty);
+            txtWriter.WriteLine("*** End of Report ***");
         }
 
         //--------------------------------------------------------------------//
@@ -163,17 +163,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void docFinaliseXml (XmlWriter xmlWriter)
+        public static void docFinaliseXml(XmlWriter xmlWriter)
         {
-            xmlWriter.WriteStartElement ("trailer");
+            xmlWriter.WriteStartElement("trailer");
 
-            xmlWriter.WriteStartElement ("text");
-            xmlWriter.WriteString ("*** End of Report ***");
-            xmlWriter.WriteEndElement ();   // </text>
+            xmlWriter.WriteStartElement("text");
+            xmlWriter.WriteString("*** End of Report ***");
+            xmlWriter.WriteEndElement();   // </text>
 
-            xmlWriter.WriteEndElement ();   // </trailer>
+            xmlWriter.WriteEndElement();   // </trailer>
 
-            xmlWriter.WriteEndDocument ();
+            xmlWriter.WriteEndDocument();
         }
 
         //--------------------------------------------------------------------//
@@ -185,21 +185,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void docInitialise (eRptFileFmt rptFileFmt,
+        public static void docInitialise(eRptFileFmt rptFileFmt,
                                           object writer,
                                           bool useTables,
                                           bool useLines,
                                           int ctRowClrStyles,
-                                          string[]    rowClasses,
-                                          string[]    rowClrBack,
-                                          string[]    rowClrFore)
+                                          string[] rowClasses,
+                                          string[] rowClrBack,
+                                          string[] rowClrFore)
         {
             if (rptFileFmt == eRptFileFmt.html)
-                docInitialiseHtml ((HtmlTextWriter)writer, ctRowClrStyles, rowClasses, rowClrBack, rowClrFore);
+                docInitialiseHtml((HtmlTextWriter)writer, ctRowClrStyles, rowClasses, rowClrBack, rowClrFore);
             else if (rptFileFmt == eRptFileFmt.xml)
-                docInitialiseXml ((XmlWriter)writer, useTables, useLines, ctRowClrStyles, rowClasses, rowClrBack, rowClrFore);
+                docInitialiseXml((XmlWriter)writer, useTables, useLines, ctRowClrStyles, rowClasses, rowClrBack, rowClrFore);
             else
-                docInitialiseText ((StreamWriter)writer);
+                docInitialiseText((StreamWriter)writer);
         }
 
         //--------------------------------------------------------------------//
@@ -211,7 +211,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void docInitialiseHtml (HtmlTextWriter htmlWriter,
+        public static void docInitialiseHtml(HtmlTextWriter htmlWriter,
                                               int ctRowClrStyles,
                                               string[] rowClasses,
                                               string[] rowClrBack,
@@ -223,16 +223,16 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            htmlWriter.WriteLine ("<!doctype html>");
+            htmlWriter.WriteLine("<!doctype html>");
 
-            htmlWriter.RenderBeginTag ("html");
+            htmlWriter.RenderBeginTag("html");
 
-            htmlWriter.RenderBeginTag ("head");
+            htmlWriter.RenderBeginTag("head");
 
-            htmlWriter.AddAttribute ("charset", "utf-8");
-            htmlWriter.RenderBeginTag ("meta");
-            htmlWriter.RenderEndTag ();
-            htmlWriter.WriteLine (string.Empty);
+            htmlWriter.AddAttribute("charset", "utf-8");
+            htmlWriter.RenderBeginTag("meta");
+            htmlWriter.RenderEndTag();
+            htmlWriter.WriteLine(string.Empty);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -241,9 +241,9 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            htmlWriter.RenderBeginTag ("style");
+            htmlWriter.RenderBeginTag("style");
 
-            docInitStyles (eRptFileFmt.html, htmlWriter, ctRowClrStyles,
+            docInitStyles(eRptFileFmt.html, htmlWriter, ctRowClrStyles,
                            rowClasses, rowClrBack, rowClrFore);
 
             //----------------------------------------------------------------//
@@ -252,12 +252,12 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            htmlWriter.RenderEndTag ();    // </style>
+            htmlWriter.RenderEndTag();    // </style>
 
-            htmlWriter.RenderEndTag ();    // </head>
-            htmlWriter.WriteLine (string.Empty);
+            htmlWriter.RenderEndTag();    // </head>
+            htmlWriter.WriteLine(string.Empty);
 
-            htmlWriter.RenderBeginTag ("body");
+            htmlWriter.RenderBeginTag("body");
         }
 
         //--------------------------------------------------------------------//
@@ -269,7 +269,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void docInitialiseText (StreamWriter txtWriter)
+        public static void docInitialiseText(StreamWriter txtWriter)
         {
             // ******* nothing to do *******
         }
@@ -283,7 +283,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void docInitialiseXml (XmlWriter xmlWriter,
+        public static void docInitialiseXml(XmlWriter xmlWriter,
                                              bool useTables,
                                              bool useLines,
                                              int ctRowClrStyles,
@@ -291,7 +291,7 @@ namespace PCLParaphernalia
                                              string[] rowClrBack,
                                              string[] rowClrFore)
         {
-            xmlWriter.WriteStartDocument ();
+            xmlWriter.WriteStartDocument();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -299,7 +299,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            xmlWriter.WriteProcessingInstruction (
+            xmlWriter.WriteProcessingInstruction(
                 "xml-stylesheet",
                 "type=\"text/xsl\" href=\"#stylesheet\"");
 
@@ -309,7 +309,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            xmlWriter.WriteDocType ("report", null, null,
+            xmlWriter.WriteDocType("report", null, null,
                                     "<!ATTLIST xsl:stylesheet id ID #REQUIRED>");
 
             //----------------------------------------------------------------//
@@ -318,9 +318,9 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            xmlWriter.WriteStartElement ("report");
+            xmlWriter.WriteStartElement("report");
 
-            xmlWriter.WriteComment ("Start XSL");
+            xmlWriter.WriteComment("Start XSL");
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -328,19 +328,19 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            xmlWriter.WriteStartElement ("xsl", "stylesheet",
+            xmlWriter.WriteStartElement("xsl", "stylesheet",
                                          "http://www.w3.org/1999/XSL/Transform");
-            xmlWriter.WriteAttributeString ("id", "stylesheet");
-            xmlWriter.WriteAttributeString ("version", "1.0");
+            xmlWriter.WriteAttributeString("id", "stylesheet");
+            xmlWriter.WriteAttributeString("version", "1.0");
 
-            xmlWriter.WriteStartElement ("xsl", "output", null);
-            xmlWriter.WriteAttributeString ("indent", "yes");
-            xmlWriter.WriteAttributeString ("method", "html");
-            xmlWriter.WriteEndElement ();
+            xmlWriter.WriteStartElement("xsl", "output", null);
+            xmlWriter.WriteAttributeString("indent", "yes");
+            xmlWriter.WriteAttributeString("method", "html");
+            xmlWriter.WriteEndElement();
 
-            xmlWriter.WriteStartElement ("xsl", "template", null);
-            xmlWriter.WriteAttributeString ("match", "xsl:stylesheet");
-            xmlWriter.WriteEndElement ();
+            xmlWriter.WriteStartElement("xsl", "template", null);
+            xmlWriter.WriteAttributeString("match", "xsl:stylesheet");
+            xmlWriter.WriteEndElement();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -348,30 +348,30 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            xmlWriter.WriteComment ("template: styles");
+            xmlWriter.WriteComment("template: styles");
 
-            xmlWriter.WriteStartElement ("xsl", "template", null);
-            xmlWriter.WriteAttributeString ("match", "/report");
+            xmlWriter.WriteStartElement("xsl", "template", null);
+            xmlWriter.WriteAttributeString("match", "/report");
 
-            xmlWriter.WriteStartElement ("html");
-            xmlWriter.WriteStartElement ("head");
-            xmlWriter.WriteStartElement ("style");
-     //     xmlWriter.WriteStartElement ("xsl", "comment", null);
+            xmlWriter.WriteStartElement("html");
+            xmlWriter.WriteStartElement("head");
+            xmlWriter.WriteStartElement("style");
+            //     xmlWriter.WriteStartElement ("xsl", "comment", null);
 
-            docInitStyles (eRptFileFmt.xml, xmlWriter, ctRowClrStyles,
+            docInitStyles(eRptFileFmt.xml, xmlWriter, ctRowClrStyles,
                            rowClasses, rowClrBack, rowClrFore);
 
-     //     xmlWriter.WriteEndElement ();               // </xsl:comment>
-            xmlWriter.WriteEndElement ();               // </style
-            xmlWriter.WriteEndElement ();               // </head>
+            //     xmlWriter.WriteEndElement ();               // </xsl:comment>
+            xmlWriter.WriteEndElement();               // </style
+            xmlWriter.WriteEndElement();               // </head>
 
-            xmlWriter.WriteStartElement ("body");
-            xmlWriter.WriteStartElement ("xsl", "apply-templates", null);
-            xmlWriter.WriteEndElement ();               // 
+            xmlWriter.WriteStartElement("body");
+            xmlWriter.WriteStartElement("xsl", "apply-templates", null);
+            xmlWriter.WriteEndElement();               // 
 
-            xmlWriter.WriteEndElement ();               // </body
-            xmlWriter.WriteEndElement ();               // </html>
-            xmlWriter.WriteEndElement ();               // </xsl:template>
+            xmlWriter.WriteEndElement();               // </body
+            xmlWriter.WriteEndElement();               // </html>
+            xmlWriter.WriteEndElement();               // </xsl:template>
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -379,20 +379,20 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            xmlWriter.WriteComment ("template: header");
+            xmlWriter.WriteComment("template: header");
 
-            xmlWriter.WriteStartElement ("xsl", "template", null);
-            xmlWriter.WriteAttributeString ("match", "/report/header");
+            xmlWriter.WriteStartElement("xsl", "template", null);
+            xmlWriter.WriteAttributeString("match", "/report/header");
 
-            xmlWriter.WriteStartElement ("p");
-            xmlWriter.WriteAttributeString ("class", "title");
+            xmlWriter.WriteStartElement("p");
+            xmlWriter.WriteAttributeString("class", "title");
 
-            xmlWriter.WriteStartElement ("xsl", "value-of", null);
-            xmlWriter.WriteAttributeString ("select", "title");
-            xmlWriter.WriteEndElement ();               // </xsl:value-of>
-            xmlWriter.WriteEndElement ();               // </p>
+            xmlWriter.WriteStartElement("xsl", "value-of", null);
+            xmlWriter.WriteAttributeString("select", "title");
+            xmlWriter.WriteEndElement();               // </xsl:value-of>
+            xmlWriter.WriteEndElement();               // </p>
 
-            xmlWriter.WriteEndElement ();               // </xsl:template>
+            xmlWriter.WriteEndElement();               // </xsl:template>
 
             if (useLines)
             {
@@ -402,22 +402,22 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                xmlWriter.WriteStartElement ("xsl", "template", null);
-                xmlWriter.WriteAttributeString ("match", "/report/lineblock");
+                xmlWriter.WriteStartElement("xsl", "template", null);
+                xmlWriter.WriteAttributeString("match", "/report/lineblock");
 
-                xmlWriter.WriteStartElement ("xsl", "for-each", null);
-                xmlWriter.WriteAttributeString ("select", "item/value");
+                xmlWriter.WriteStartElement("xsl", "for-each", null);
+                xmlWriter.WriteAttributeString("select", "item/value");
 
-                xmlWriter.WriteStartElement ("p");
+                xmlWriter.WriteStartElement("p");
 
-                xmlWriter.WriteStartElement ("xsl", "value-of", null);
-                xmlWriter.WriteAttributeString ("select", ".");
+                xmlWriter.WriteStartElement("xsl", "value-of", null);
+                xmlWriter.WriteAttributeString("select", ".");
 
-                xmlWriter.WriteEndElement ();       // </xsl:value-of>
-                xmlWriter.WriteEndElement ();       // </p>
-                xmlWriter.WriteEndElement ();       // </xsl:for-each>
+                xmlWriter.WriteEndElement();       // </xsl:value-of>
+                xmlWriter.WriteEndElement();       // </p>
+                xmlWriter.WriteEndElement();       // </xsl:for-each>
 
-                xmlWriter.WriteEndElement ();               // </xsl:template>
+                xmlWriter.WriteEndElement();               // </xsl:template>
             }
 
             if (useTables)
@@ -428,87 +428,87 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                xmlWriter.WriteComment ("template: tabledata");
+                xmlWriter.WriteComment("template: tabledata");
 
-                xmlWriter.WriteStartElement ("xsl", "template", null);
-                xmlWriter.WriteAttributeString ("match", "/report/tabledata");
+                xmlWriter.WriteStartElement("xsl", "template", null);
+                xmlWriter.WriteAttributeString("match", "/report/tabledata");
 
-                xmlWriter.WriteStartElement ("table");
-
-                //------------------------------------------------------------//
-
-                xmlWriter.WriteComment ("template: tabledata hddr");
-
-                xmlWriter.WriteStartElement ("tr");
-
-                xmlWriter.WriteStartElement ("xsl", "for-each", null);
-                xmlWriter.WriteAttributeString ("select", "hddr/col");
-                xmlWriter.WriteStartElement ("th");
-                xmlWriter.WriteStartElement ("xsl", "attribute", null);
-                xmlWriter.WriteAttributeString ("name", "class");
-                xmlWriter.WriteStartElement ("xsl", "value-of", null);
-                xmlWriter.WriteAttributeString ("select", "../@hddrstyle");
-                xmlWriter.WriteEndElement ();       // </xsl:value-of>
-                xmlWriter.WriteEndElement ();       // </xsl:attribute>
-
-                xmlWriter.WriteStartElement ("xsl", "value-of", null);
-                xmlWriter.WriteAttributeString ("select", ".");
-
-                xmlWriter.WriteEndElement ();       // </xsl:value-of>
-                xmlWriter.WriteEndElement ();       // </th>
-                xmlWriter.WriteEndElement ();       // </xsl:for-each>
-
-                xmlWriter.WriteEndElement ();       // </tr>
+                xmlWriter.WriteStartElement("table");
 
                 //------------------------------------------------------------//
 
-                xmlWriter.WriteComment ("template: tabledata item");
+                xmlWriter.WriteComment("template: tabledata hddr");
 
-                xmlWriter.WriteStartElement ("xsl", "for-each", null);
-                xmlWriter.WriteAttributeString ("select", "item");
+                xmlWriter.WriteStartElement("tr");
 
-                xmlWriter.WriteStartElement ("tr");
-                xmlWriter.WriteStartElement ("xsl", "attribute", null);
-                xmlWriter.WriteAttributeString ("name", "class");
-                xmlWriter.WriteStartElement ("xsl", "value-of", null);
-                xmlWriter.WriteAttributeString ("select", "@rowType");
-                xmlWriter.WriteEndElement ();       // </xsl:value-of>
-                xmlWriter.WriteEndElement ();       // </xsl:attribute>
+                xmlWriter.WriteStartElement("xsl", "for-each", null);
+                xmlWriter.WriteAttributeString("select", "hddr/col");
+                xmlWriter.WriteStartElement("th");
+                xmlWriter.WriteStartElement("xsl", "attribute", null);
+                xmlWriter.WriteAttributeString("name", "class");
+                xmlWriter.WriteStartElement("xsl", "value-of", null);
+                xmlWriter.WriteAttributeString("select", "../@hddrstyle");
+                xmlWriter.WriteEndElement();       // </xsl:value-of>
+                xmlWriter.WriteEndElement();       // </xsl:attribute>
 
-                xmlWriter.WriteStartElement ("xsl", "for-each", null);
-                xmlWriter.WriteAttributeString ("select", "*");
-                xmlWriter.WriteStartElement ("td");
+                xmlWriter.WriteStartElement("xsl", "value-of", null);
+                xmlWriter.WriteAttributeString("select", ".");
 
-                xmlWriter.WriteStartElement ("xsl", "attribute", null);
-                xmlWriter.WriteAttributeString ("name", "class");
-                xmlWriter.WriteStartElement ("xsl", "value-of", null);
-                xmlWriter.WriteAttributeString (
+                xmlWriter.WriteEndElement();       // </xsl:value-of>
+                xmlWriter.WriteEndElement();       // </th>
+                xmlWriter.WriteEndElement();       // </xsl:for-each>
+
+                xmlWriter.WriteEndElement();       // </tr>
+
+                //------------------------------------------------------------//
+
+                xmlWriter.WriteComment("template: tabledata item");
+
+                xmlWriter.WriteStartElement("xsl", "for-each", null);
+                xmlWriter.WriteAttributeString("select", "item");
+
+                xmlWriter.WriteStartElement("tr");
+                xmlWriter.WriteStartElement("xsl", "attribute", null);
+                xmlWriter.WriteAttributeString("name", "class");
+                xmlWriter.WriteStartElement("xsl", "value-of", null);
+                xmlWriter.WriteAttributeString("select", "@rowType");
+                xmlWriter.WriteEndElement();       // </xsl:value-of>
+                xmlWriter.WriteEndElement();       // </xsl:attribute>
+
+                xmlWriter.WriteStartElement("xsl", "for-each", null);
+                xmlWriter.WriteAttributeString("select", "*");
+                xmlWriter.WriteStartElement("td");
+
+                xmlWriter.WriteStartElement("xsl", "attribute", null);
+                xmlWriter.WriteAttributeString("name", "class");
+                xmlWriter.WriteStartElement("xsl", "value-of", null);
+                xmlWriter.WriteAttributeString(
                     "select", "concat(../@padType, ' ', @txtfmt)");
-                xmlWriter.WriteEndElement ();       // </xsl:value-of>
-                xmlWriter.WriteEndElement ();       // </xsl:attribute>
+                xmlWriter.WriteEndElement();       // </xsl:value-of>
+                xmlWriter.WriteEndElement();       // </xsl:attribute>
 
-                xmlWriter.WriteStartElement ("xsl", "attribute", null);
-                xmlWriter.WriteAttributeString ("name", "colspan");
-                xmlWriter.WriteStartElement ("xsl", "value-of", null);
-                xmlWriter.WriteAttributeString ("select", "@colspan");
-                xmlWriter.WriteEndElement ();       // </xsl:value-of>
-                xmlWriter.WriteEndElement ();       // </xsl:attribute>
+                xmlWriter.WriteStartElement("xsl", "attribute", null);
+                xmlWriter.WriteAttributeString("name", "colspan");
+                xmlWriter.WriteStartElement("xsl", "value-of", null);
+                xmlWriter.WriteAttributeString("select", "@colspan");
+                xmlWriter.WriteEndElement();       // </xsl:value-of>
+                xmlWriter.WriteEndElement();       // </xsl:attribute>
 
-                xmlWriter.WriteStartElement ("xsl", "value-of", null);
-                xmlWriter.WriteAttributeString ("select", ".");
+                xmlWriter.WriteStartElement("xsl", "value-of", null);
+                xmlWriter.WriteAttributeString("select", ".");
 
-                xmlWriter.WriteEndElement ();       // </xsl:value-of>
-                xmlWriter.WriteEndElement ();       // </td>
-                xmlWriter.WriteEndElement ();       // </xsl:for-each>
+                xmlWriter.WriteEndElement();       // </xsl:value-of>
+                xmlWriter.WriteEndElement();       // </td>
+                xmlWriter.WriteEndElement();       // </xsl:for-each>
 
-                xmlWriter.WriteEndElement ();       // </tr>
-                xmlWriter.WriteEndElement ();       // </xsl:for-each>
+                xmlWriter.WriteEndElement();       // </tr>
+                xmlWriter.WriteEndElement();       // </xsl:for-each>
 
                 //------------------------------------------------------------//
 
-                xmlWriter.WriteEndElement ();       // </table>
+                xmlWriter.WriteEndElement();       // </table>
 
-                xmlWriter.WriteEndElement ();       // </xsl:template>
+                xmlWriter.WriteEndElement();       // </xsl:template>
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -516,46 +516,46 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                xmlWriter.WriteComment ("template: tablepair");
+                xmlWriter.WriteComment("template: tablepair");
 
-                xmlWriter.WriteStartElement ("xsl", "template", null);
-                xmlWriter.WriteAttributeString ("match", "/report/tablepair");
+                xmlWriter.WriteStartElement("xsl", "template", null);
+                xmlWriter.WriteAttributeString("match", "/report/tablepair");
 
-                xmlWriter.WriteStartElement ("table");
-
-                //------------------------------------------------------------//
-
-                xmlWriter.WriteStartElement ("xsl", "for-each", null);
-                xmlWriter.WriteAttributeString ("select", "item");
-
-                xmlWriter.WriteStartElement ("tr");
-
-                xmlWriter.WriteStartElement ("xsl", "for-each", null);
-                xmlWriter.WriteAttributeString ("select", "*");
-                xmlWriter.WriteStartElement ("td");
-
-                xmlWriter.WriteStartElement ("xsl", "attribute", null);
-                xmlWriter.WriteAttributeString ("name", "class");
-                xmlWriter.WriteStartElement ("xsl", "value-of", null);
-                xmlWriter.WriteAttributeString ("select", "../@padType");
-                xmlWriter.WriteEndElement ();       // </xsl:value-of>
-                xmlWriter.WriteEndElement ();       // </xsl:attribute>
-
-                xmlWriter.WriteStartElement ("xsl", "value-of", null);
-                xmlWriter.WriteAttributeString ("select", ".");
-
-                xmlWriter.WriteEndElement ();       // </xsl:value-of>
-                xmlWriter.WriteEndElement ();       // </td>
-                xmlWriter.WriteEndElement ();       // </xsl:for-each>
-
-                xmlWriter.WriteEndElement ();       // </tr>
-                xmlWriter.WriteEndElement ();       // </xsl:for-each>
+                xmlWriter.WriteStartElement("table");
 
                 //------------------------------------------------------------//
 
-                xmlWriter.WriteEndElement ();       // </table>
+                xmlWriter.WriteStartElement("xsl", "for-each", null);
+                xmlWriter.WriteAttributeString("select", "item");
 
-                xmlWriter.WriteEndElement ();       // </xsl:template>
+                xmlWriter.WriteStartElement("tr");
+
+                xmlWriter.WriteStartElement("xsl", "for-each", null);
+                xmlWriter.WriteAttributeString("select", "*");
+                xmlWriter.WriteStartElement("td");
+
+                xmlWriter.WriteStartElement("xsl", "attribute", null);
+                xmlWriter.WriteAttributeString("name", "class");
+                xmlWriter.WriteStartElement("xsl", "value-of", null);
+                xmlWriter.WriteAttributeString("select", "../@padType");
+                xmlWriter.WriteEndElement();       // </xsl:value-of>
+                xmlWriter.WriteEndElement();       // </xsl:attribute>
+
+                xmlWriter.WriteStartElement("xsl", "value-of", null);
+                xmlWriter.WriteAttributeString("select", ".");
+
+                xmlWriter.WriteEndElement();       // </xsl:value-of>
+                xmlWriter.WriteEndElement();       // </td>
+                xmlWriter.WriteEndElement();       // </xsl:for-each>
+
+                xmlWriter.WriteEndElement();       // </tr>
+                xmlWriter.WriteEndElement();       // </xsl:for-each>
+
+                //------------------------------------------------------------//
+
+                xmlWriter.WriteEndElement();       // </table>
+
+                xmlWriter.WriteEndElement();       // </xsl:template>
             }
 
             //----------------------------------------------------------------//
@@ -564,18 +564,18 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            xmlWriter.WriteComment ("template: trailer");
+            xmlWriter.WriteComment("template: trailer");
 
-            xmlWriter.WriteStartElement ("xsl", "template", null);
-            xmlWriter.WriteAttributeString ("match", "/report/trailer");
+            xmlWriter.WriteStartElement("xsl", "template", null);
+            xmlWriter.WriteAttributeString("match", "/report/trailer");
 
-            xmlWriter.WriteStartElement ("p");
+            xmlWriter.WriteStartElement("p");
 
-            xmlWriter.WriteStartElement ("xsl", "value-of", null);
-            xmlWriter.WriteAttributeString ("select", "text");
-            xmlWriter.WriteEndElement ();               // </xsl:value-of>
-            xmlWriter.WriteEndElement ();               // </p>
-            xmlWriter.WriteEndElement ();               // </xsl:template>
+            xmlWriter.WriteStartElement("xsl", "value-of", null);
+            xmlWriter.WriteAttributeString("select", "text");
+            xmlWriter.WriteEndElement();               // </xsl:value-of>
+            xmlWriter.WriteEndElement();               // </p>
+            xmlWriter.WriteEndElement();               // </xsl:template>
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -583,7 +583,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            xmlWriter.WriteEndElement ();               // </xsl:stylesheet>
+            xmlWriter.WriteEndElement();               // </xsl:stylesheet>
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -591,7 +591,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            xmlWriter.WriteComment ("Start XML");
+            xmlWriter.WriteComment("Start XML");
         }
 
         //--------------------------------------------------------------------//
@@ -604,12 +604,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void docInitStyles (eRptFileFmt rptFileFmt,
+        public static void docInitStyles(eRptFileFmt rptFileFmt,
                                           object writer,
                                           int ctRowClrStyles,
-                                          string[]     rowClasses,
-                                          string[]     rowClrBack,
-                                          string[]     rowClrFore)
+                                          string[] rowClasses,
+                                          string[] rowClrBack,
+                                          string[] rowClrFore)
         {
             string[] stdStyles =
             {
@@ -706,9 +706,9 @@ namespace PCLParaphernalia
             };
 
             if (rptFileFmt == eRptFileFmt.html)
-                docInitStylesHtml ((HtmlTextWriter)writer, stdStyles, ctRowClrStyles, rowClasses, rowClrBack, rowClrFore);
+                docInitStylesHtml((HtmlTextWriter)writer, stdStyles, ctRowClrStyles, rowClasses, rowClrBack, rowClrFore);
             else if (rptFileFmt == eRptFileFmt.xml)
-                docInitStylesXml ((XmlWriter)writer, stdStyles, ctRowClrStyles, rowClasses, rowClrBack, rowClrFore);
+                docInitStylesXml((XmlWriter)writer, stdStyles, ctRowClrStyles, rowClasses, rowClrBack, rowClrFore);
         }
 
         //--------------------------------------------------------------------//
@@ -722,12 +722,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void docInitStylesHtml (HtmlTextWriter htmlWriter,
-                                              string[]       stdStyles,
+        public static void docInitStylesHtml(HtmlTextWriter htmlWriter,
+                                              string[] stdStyles,
                                               int ctRowClrStyles,
-                                              string[]       rowClasses,
-                                              string[]       rowClrBack,
-                                              string[]       rowClrFore)
+                                              string[] rowClasses,
+                                              string[] rowClrBack,
+                                              string[] rowClrFore)
         {
             //----------------------------------------------------------------//
             //                                                                //
@@ -739,7 +739,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < ctLines; i++)
             {
-                htmlWriter.WriteLine (stdStyles[i]);
+                htmlWriter.WriteLine(stdStyles[i]);
             }
 
             //----------------------------------------------------------------//
@@ -750,21 +750,21 @@ namespace PCLParaphernalia
 
             if (ctRowClrStyles > 0)
             {
-                htmlWriter.WriteLine (string.Empty);
+                htmlWriter.WriteLine(string.Empty);
 
                 for (int i = 0; i < ctRowClrStyles; i++)
                 {
-                    htmlWriter.Write ("tr." +
+                    htmlWriter.Write("tr." +
                                       rowClasses[i] + " {");
-                    htmlWriter.Write (" background-color: " +
+                    htmlWriter.Write(" background-color: " +
                                       rowClrBack[i] + ";");
-                    htmlWriter.Write (" color: " +
+                    htmlWriter.Write(" color: " +
                                       rowClrFore[i] + ";");
 
                     if (i == ctRowClrStyles)
-                        htmlWriter.Write (" }");
+                        htmlWriter.Write(" }");
                     else
-                        htmlWriter.WriteLine (" }");
+                        htmlWriter.WriteLine(" }");
                 }
             }
         }
@@ -780,12 +780,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void docInitStylesXml (XmlWriter xmlWriter,
-                                             string[]  stdStyles,
+        public static void docInitStylesXml(XmlWriter xmlWriter,
+                                             string[] stdStyles,
                                              int ctRowClrStyles,
-                                             string[]  rowClasses,
-                                             string[]  rowClrBack,
-                                             string[]  rowClrFore)
+                                             string[] rowClasses,
+                                             string[] rowClrBack,
+                                             string[] rowClrFore)
         {
             //----------------------------------------------------------------//
             //                                                                //
@@ -795,11 +795,11 @@ namespace PCLParaphernalia
 
             int ctLines = stdStyles.Length;
 
-            xmlWriter.WriteString ("\r\n");
+            xmlWriter.WriteString("\r\n");
 
             for (int i = 0; i < ctLines; i++)
             {
-                xmlWriter.WriteString ("\t\t\t" + stdStyles[i] + "\r\n");
+                xmlWriter.WriteString("\t\t\t" + stdStyles[i] + "\r\n");
             }
 
             //----------------------------------------------------------------//
@@ -812,17 +812,17 @@ namespace PCLParaphernalia
             {
                 for (int i = 0; i < ctRowClrStyles; i++)
                 {
-                    xmlWriter.WriteString ("\t\t\t" + "tr." +
+                    xmlWriter.WriteString("\t\t\t" + "tr." +
                                            rowClasses[i] + " {");
-                    xmlWriter.WriteString (" background-color: " +
+                    xmlWriter.WriteString(" background-color: " +
                                            rowClrBack[i] + ";");
-                    xmlWriter.WriteString (" color: " +
+                    xmlWriter.WriteString(" color: " +
                                            rowClrFore[i] + ";");
-                    xmlWriter.WriteString (" }\r\n");
+                    xmlWriter.WriteString(" }\r\n");
                 }
             }
 
-            xmlWriter.WriteString ("\t\t");
+            xmlWriter.WriteString("\t\t");
         }
 
         //--------------------------------------------------------------------//
@@ -834,7 +834,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool docOpen (eRptFileFmt rptFileFmt,
+        public static bool docOpen(eRptFileFmt rptFileFmt,
                                        ref string saveFilename,
                                        ref object stream,
                                        ref object writer)
@@ -857,7 +857,7 @@ namespace PCLParaphernalia
                 saveDialog.DefaultExt = "txt";
             }
 
-            bool? dialogResult = saveDialog.ShowDialog ();
+            bool? dialogResult = saveDialog.ShowDialog();
             bool fileOpen = false;
 
             if (dialogResult == true)
@@ -866,17 +866,17 @@ namespace PCLParaphernalia
 
                 if (rptFileFmt == eRptFileFmt.html)
                 {
-                    stream = new StreamWriter (saveFilename);
+                    stream = new StreamWriter(saveFilename);
 
                     if (stream != null)
                     {
-                        writer = new HtmlTextWriter ((StreamWriter)stream);
+                        writer = new HtmlTextWriter((StreamWriter)stream);
                         fileOpen = true;
                     }
                 }
                 else if (rptFileFmt == eRptFileFmt.xml)
                 {
-                    stream = new StreamWriter (saveFilename);
+                    stream = new StreamWriter(saveFilename);
 
                     if (stream != null)
                     {
@@ -886,14 +886,14 @@ namespace PCLParaphernalia
                             Indent = true
                         };
 
-                        writer = XmlWriter.Create ((StreamWriter) stream, settings);
+                        writer = XmlWriter.Create((StreamWriter)stream, settings);
                         fileOpen = true;
                     }
                 }
                 else
                 {
                     stream = null;
-                    writer = new StreamWriter (saveFilename);
+                    writer = new StreamWriter(saveFilename);
 
                     if (writer != null)
                     {
@@ -914,13 +914,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void hddrClose (object writer,
+        public static void hddrClose(object writer,
                                       eRptFileFmt rptFileFmt)
         {
             if (rptFileFmt == eRptFileFmt.html)
-                hddrCloseHtml ((HtmlTextWriter)writer);
+                hddrCloseHtml((HtmlTextWriter)writer);
             else if (rptFileFmt == eRptFileFmt.xml)
-                hddrCloseXml ((XmlWriter)writer);
+                hddrCloseXml((XmlWriter)writer);
         }
 
         //--------------------------------------------------------------------//
@@ -932,9 +932,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void hddrCloseHtml (HtmlTextWriter htmlWriter)
+        private static void hddrCloseHtml(HtmlTextWriter htmlWriter)
         {
-            htmlWriter.RenderEndTag ();     // </table>
+            htmlWriter.RenderEndTag();     // </table>
         }
 
         //--------------------------------------------------------------------//
@@ -946,9 +946,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void hddrCloseXml (XmlWriter xmlWriter)
+        private static void hddrCloseXml(XmlWriter xmlWriter)
         {
-            xmlWriter.WriteEndElement ();
+            xmlWriter.WriteEndElement();
         }
 
         //--------------------------------------------------------------------//
@@ -960,17 +960,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void hddrTitle (object writer,
+        public static void hddrTitle(object writer,
                                       eRptFileFmt rptFileFmt,
                                       bool subHddr,
                                       string txtVal)
         {
             if (rptFileFmt == eRptFileFmt.html)
-                hddrTitleHtml ((HtmlTextWriter)writer, txtVal);
+                hddrTitleHtml((HtmlTextWriter)writer, txtVal);
             else if (rptFileFmt == eRptFileFmt.xml)
-                hddrTitleXml ((XmlWriter)writer, txtVal);
+                hddrTitleXml((XmlWriter)writer, txtVal);
             else
-                hddrTitleText ((StreamWriter)writer, subHddr, txtVal);
+                hddrTitleText((StreamWriter)writer, subHddr, txtVal);
         }
 
         //--------------------------------------------------------------------//
@@ -982,14 +982,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void hddrTitleHtml (HtmlTextWriter htmlWriter,
+        private static void hddrTitleHtml(HtmlTextWriter htmlWriter,
                                            string txtVal)
         {
-            htmlWriter.AddAttribute ("class", "title");
-            htmlWriter.RenderBeginTag ("p");
-            htmlWriter.WriteEncodedText (txtVal);
-            htmlWriter.RenderEndTag ();
-            htmlWriter.WriteLine (string.Empty);
+            htmlWriter.AddAttribute("class", "title");
+            htmlWriter.RenderBeginTag("p");
+            htmlWriter.WriteEncodedText(txtVal);
+            htmlWriter.RenderEndTag();
+            htmlWriter.WriteLine(string.Empty);
         }
 
         //--------------------------------------------------------------------//
@@ -1001,20 +1001,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void hddrTitleText (StreamWriter txtWriter,
+        private static void hddrTitleText(StreamWriter txtWriter,
                                            bool subHddr,
                                            string txtVal)
         {
             if (subHddr)
-                txtWriter.WriteLine (string.Empty);
+                txtWriter.WriteLine(string.Empty);
 
-            txtWriter.WriteLine (txtVal);
+            txtWriter.WriteLine(txtVal);
 
             if (subHddr)
             {
                 int len = txtVal.Length;
 
-                txtWriter.WriteLine ("-".PadRight (len, '-'));
+                txtWriter.WriteLine("-".PadRight(len, '-'));
             }
         }
 
@@ -1027,18 +1027,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void hddrTitleXml (XmlWriter xmlWriter,
+        private static void hddrTitleXml(XmlWriter xmlWriter,
                                           string txtVal)
         {
-            xmlWriter.WriteStartElement ("header");
+            xmlWriter.WriteStartElement("header");
 
-            xmlWriter.WriteStartElement ("title");
+            xmlWriter.WriteStartElement("title");
 
-            xmlWriter.WriteString (txtVal);
+            xmlWriter.WriteString(txtVal);
 
-            xmlWriter.WriteEndElement ();           // </title>
+            xmlWriter.WriteEndElement();           // </title>
 
-            xmlWriter.WriteEndElement ();           // </header>
+            xmlWriter.WriteEndElement();           // </header>
         }
 
         //--------------------------------------------------------------------//
@@ -1050,13 +1050,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void lineBlockClose (object writer,
+        public static void lineBlockClose(object writer,
                                           eRptFileFmt rptFileFmt)
         {
             if (rptFileFmt == eRptFileFmt.html)
-                lineBlockCloseHtml ((HtmlTextWriter)writer);
+                lineBlockCloseHtml((HtmlTextWriter)writer);
             else if (rptFileFmt == eRptFileFmt.xml)
-                lineBlockCloseXml ((XmlWriter)writer);
+                lineBlockCloseXml((XmlWriter)writer);
         }
 
         //--------------------------------------------------------------------//
@@ -1068,10 +1068,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void lineBlockCloseHtml (HtmlTextWriter htmlWriter)
+        private static void lineBlockCloseHtml(HtmlTextWriter htmlWriter)
         {
-            htmlWriter.RenderEndTag ();
-            htmlWriter.WriteLine (string.Empty);
+            htmlWriter.RenderEndTag();
+            htmlWriter.WriteLine(string.Empty);
         }
 
         //--------------------------------------------------------------------//
@@ -1083,9 +1083,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void lineBlockCloseXml (XmlWriter xmlWriter)
+        private static void lineBlockCloseXml(XmlWriter xmlWriter)
         {
-            xmlWriter.WriteEndElement ();
+            xmlWriter.WriteEndElement();
         }
 
         //--------------------------------------------------------------------//
@@ -1097,15 +1097,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void lineBlockOpen (object writer,
+        public static void lineBlockOpen(object writer,
                                           eRptFileFmt rptFileFmt)
         {
             const string tag = "lineblock";
 
             if (rptFileFmt == eRptFileFmt.html)
-                lineBlockOpenHtml ((HtmlTextWriter)writer, tag);
+                lineBlockOpenHtml((HtmlTextWriter)writer, tag);
             else if (rptFileFmt == eRptFileFmt.xml)
-                lineBlockOpenXml ((XmlWriter)writer, tag);
+                lineBlockOpenXml((XmlWriter)writer, tag);
         }
 
         //--------------------------------------------------------------------//
@@ -1117,10 +1117,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void lineBlockOpenHtml (HtmlTextWriter htmlWriter,
+        private static void lineBlockOpenHtml(HtmlTextWriter htmlWriter,
                                                string tag)
         {
-            htmlWriter.RenderBeginTag (tag);
+            htmlWriter.RenderBeginTag(tag);
         }
 
         //--------------------------------------------------------------------//
@@ -1132,10 +1132,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void lineBlockOpenXml (XmlWriter xmlWriter,
+        private static void lineBlockOpenXml(XmlWriter xmlWriter,
                                               string txtName)
         {
-            xmlWriter.WriteStartElement (txtName);
+            xmlWriter.WriteStartElement(txtName);
         }
 
         //--------------------------------------------------------------------//
@@ -1147,18 +1147,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void lineItem (object writer,
+        public static void lineItem(object writer,
                                      eRptFileFmt rptFileFmt,
                                      string txtVal,
                                      int sizeVal,
                                      bool firstItem)
         {
             if (rptFileFmt == eRptFileFmt.html)
-                lineItemHtml ((HtmlTextWriter)writer, txtVal, sizeVal, firstItem);
+                lineItemHtml((HtmlTextWriter)writer, txtVal, sizeVal, firstItem);
             else if (rptFileFmt == eRptFileFmt.xml)
-                lineItemXml ((XmlWriter)writer, txtVal);
+                lineItemXml((XmlWriter)writer, txtVal);
             else
-                lineItemText ((StreamWriter)writer, txtVal, sizeVal, firstItem);
+                lineItemText((StreamWriter)writer, txtVal, sizeVal, firstItem);
         }
 
         //--------------------------------------------------------------------//
@@ -1170,7 +1170,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void lineItemHtml (HtmlTextWriter htmlWriter,
+        private static void lineItemHtml(HtmlTextWriter htmlWriter,
                                           string txtVal,
                                           int maxSizeVal,
                                           bool firstItem)
@@ -1183,30 +1183,30 @@ namespace PCLParaphernalia
 
             if (firstItem)
             {
-                htmlWriter.RenderBeginTag ("p");
-                htmlWriter.Write ("&nbsp;");
-                htmlWriter.RenderEndTag ();
-                htmlWriter.WriteLine (string.Empty);
+                htmlWriter.RenderBeginTag("p");
+                htmlWriter.Write("&nbsp;");
+                htmlWriter.RenderEndTag();
+                htmlWriter.WriteLine(string.Empty);
             }
 
             while (valPos + maxSizeVal < valLen)
             {
-                htmlWriter.RenderBeginTag ("p");
-                htmlWriter.WriteEncodedText (
-                        txtVal.Substring (valPos, maxSizeVal));
-                htmlWriter.RenderEndTag ();
-                htmlWriter.WriteLine (string.Empty);
+                htmlWriter.RenderBeginTag("p");
+                htmlWriter.WriteEncodedText(
+                        txtVal.Substring(valPos, maxSizeVal));
+                htmlWriter.RenderEndTag();
+                htmlWriter.WriteLine(string.Empty);
 
                 valPos += maxSizeVal;
             }
 
             if (valPos <= valLen)
             {
-                htmlWriter.RenderBeginTag ("p");
-                htmlWriter.WriteEncodedText (
-                        txtVal.Substring (valPos, valLen - valPos));
-                htmlWriter.RenderEndTag ();
-                htmlWriter.WriteLine (string.Empty);
+                htmlWriter.RenderBeginTag("p");
+                htmlWriter.WriteEncodedText(
+                        txtVal.Substring(valPos, valLen - valPos));
+                htmlWriter.RenderEndTag();
+                htmlWriter.WriteLine(string.Empty);
             }
         }
 
@@ -1219,7 +1219,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void lineItemText (StreamWriter txtWriter,
+        private static void lineItemText(StreamWriter txtWriter,
                                           string txtVal,
                                           int maxSizeVal,
                                           bool blankBefore)
@@ -1228,23 +1228,23 @@ namespace PCLParaphernalia
                   valLen;
 
             if (blankBefore)
-                txtWriter.WriteLine ();
+                txtWriter.WriteLine();
 
             valLen = txtVal.Length;
             valPos = 0;
 
             while (valPos + maxSizeVal < valLen)
             {
-                txtWriter.WriteLine (
-                        txtVal.Substring (valPos, maxSizeVal));
+                txtWriter.WriteLine(
+                        txtVal.Substring(valPos, maxSizeVal));
 
                 valPos += maxSizeVal;
             }
 
             if (valPos <= valLen)
             {
-                txtWriter.WriteLine (
-                        txtVal.Substring (valPos, valLen - valPos));
+                txtWriter.WriteLine(
+                        txtVal.Substring(valPos, valLen - valPos));
             }
         }
 
@@ -1257,33 +1257,33 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void lineItemXml (XmlWriter xmlWriter,
+        private static void lineItemXml(XmlWriter xmlWriter,
                                          string txtVal)
         {
-            xmlWriter.WriteStartElement ("item");
+            xmlWriter.WriteStartElement("item");
 
             try
             {
-                string validXml = XmlConvert.VerifyXmlChars (txtVal);
+                string validXml = XmlConvert.VerifyXmlChars(txtVal);
 
-                xmlWriter.WriteStartElement ("value");
+                xmlWriter.WriteStartElement("value");
 
-                xmlWriter.WriteString (validXml);
+                xmlWriter.WriteString(validXml);
             }
             catch
             {
-                byte[] bytes = System.Text.Encoding.UTF8.GetBytes (txtVal);
+                byte[] bytes = System.Text.Encoding.UTF8.GetBytes(txtVal);
 
-                string base64 = Convert.ToBase64String (bytes);
+                string base64 = Convert.ToBase64String(bytes);
 
-                xmlWriter.WriteStartElement ("valuebase64");
+                xmlWriter.WriteStartElement("valuebase64");
 
-                xmlWriter.WriteString (base64);
+                xmlWriter.WriteString(base64);
             }
 
-            xmlWriter.WriteEndElement ();
+            xmlWriter.WriteEndElement();
 
-            xmlWriter.WriteEndElement ();   // </item>
+            xmlWriter.WriteEndElement();   // </item>
         }
 
         //--------------------------------------------------------------------//
@@ -1295,13 +1295,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void tableClose (object writer,
+        public static void tableClose(object writer,
                                        eRptFileFmt rptFileFmt)
         {
             if (rptFileFmt == eRptFileFmt.html)
-                tableCloseHtml ((HtmlTextWriter)writer);
+                tableCloseHtml((HtmlTextWriter)writer);
             else if (rptFileFmt == eRptFileFmt.xml)
-                tableCloseXml ((XmlWriter)writer);
+                tableCloseXml((XmlWriter)writer);
         }
 
         //--------------------------------------------------------------------//
@@ -1313,10 +1313,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableCloseHtml (HtmlTextWriter htmlWriter)
+        private static void tableCloseHtml(HtmlTextWriter htmlWriter)
         {
-            htmlWriter.RenderEndTag ();
-            htmlWriter.WriteLine (string.Empty);
+            htmlWriter.RenderEndTag();
+            htmlWriter.WriteLine(string.Empty);
         }
 
         //--------------------------------------------------------------------//
@@ -1328,9 +1328,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableCloseXml (XmlWriter xmlWriter)
+        private static void tableCloseXml(XmlWriter xmlWriter)
         {
-            xmlWriter.WriteEndElement ();
+            xmlWriter.WriteEndElement();
         }
 
         //--------------------------------------------------------------------//
@@ -1342,7 +1342,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void tableHddrData (object writer,
+        public static void tableHddrData(object writer,
                                           eRptFileFmt rptFileFmt,
                                           bool plain,
                                           int colCt,
@@ -1350,11 +1350,11 @@ namespace PCLParaphernalia
                                           int[] colSizes)
         {
             if (rptFileFmt == eRptFileFmt.html)
-                tableHddrDataHtml ((HtmlTextWriter)writer, plain, colCt, colHddrs);
+                tableHddrDataHtml((HtmlTextWriter)writer, plain, colCt, colHddrs);
             else if (rptFileFmt == eRptFileFmt.xml)
-                tableHddrDataXml ((XmlWriter)writer, plain, colCt, colHddrs);
+                tableHddrDataXml((XmlWriter)writer, plain, colCt, colHddrs);
             else
-                tableHddrDataText ((StreamWriter)writer, colCt, colHddrs, colSizes);
+                tableHddrDataText((StreamWriter)writer, colCt, colHddrs, colSizes);
         }
 
         //--------------------------------------------------------------------//
@@ -1366,36 +1366,36 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableHddrDataHtml (HtmlTextWriter htmlWriter,
+        private static void tableHddrDataHtml(HtmlTextWriter htmlWriter,
                                                bool plain,
                                                int colCt,
                                                string[] colHddrs)
         {
             int lastCol = colCt - 1;
 
-            htmlWriter.WriteLine (string.Empty);
-            htmlWriter.RenderBeginTag ("table");
+            htmlWriter.WriteLine(string.Empty);
+            htmlWriter.RenderBeginTag("table");
 
             if (colCt > 0)
             {
-                htmlWriter.RenderBeginTag ("tr");
+                htmlWriter.RenderBeginTag("tr");
 
                 for (int i = 0; i < colCt; i++)
                 {
                     if (plain)
-                        htmlWriter.AddAttribute ("class", "plain");
+                        htmlWriter.AddAttribute("class", "plain");
 
-                    htmlWriter.RenderBeginTag ("th");
+                    htmlWriter.RenderBeginTag("th");
 
-                    htmlWriter.WriteEncodedText (colHddrs[i]);
-                    htmlWriter.RenderEndTag ();    // </td>
+                    htmlWriter.WriteEncodedText(colHddrs[i]);
+                    htmlWriter.RenderEndTag();    // </td>
 
                     if (i != lastCol)
-                        htmlWriter.WriteLine (string.Empty);
+                        htmlWriter.WriteLine(string.Empty);
                 }
 
-                htmlWriter.RenderEndTag ();    // </tr>
-                htmlWriter.WriteLine (string.Empty);
+                htmlWriter.RenderEndTag();    // </tr>
+                htmlWriter.WriteLine(string.Empty);
             }
         }
 
@@ -1408,7 +1408,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableHddrDataText (StreamWriter txtWriter,
+        private static void tableHddrDataText(StreamWriter txtWriter,
                                                int colCt,
                                                string[] colHddrs,
                                                int[] colSizes)
@@ -1417,34 +1417,34 @@ namespace PCLParaphernalia
             {
                 int lastCol = colCt - 1;
 
-                string colSep = " ".PadRight (_lcSep, ' ');
+                string colSep = " ".PadRight(_lcSep, ' ');
 
-                StringBuilder line = new StringBuilder ();
+                StringBuilder line = new StringBuilder();
 
-                txtWriter.WriteLine (string.Empty);
+                txtWriter.WriteLine(string.Empty);
 
                 for (int i = 0; i < colCt; i++)
                 {
-                    line.Append (colHddrs[i].PadRight (colSizes[i],
+                    line.Append(colHddrs[i].PadRight(colSizes[i],
                                                                    ' '));
 
                     if (i != lastCol)
-                        line.Append (colSep);
+                        line.Append(colSep);
                 }
 
-                txtWriter.WriteLine (line);
+                txtWriter.WriteLine(line);
 
-                line.Clear ();
+                line.Clear();
 
                 for (int i = 0; i < colCt; i++)
                 {
-                    line.Append ("-".PadRight (colSizes[i], '-'));
+                    line.Append("-".PadRight(colSizes[i], '-'));
 
                     if (i != lastCol)
-                        line.Append (colSep);
+                        line.Append(colSep);
                 }
 
-                txtWriter.WriteLine (line);
+                txtWriter.WriteLine(line);
             }
         }
 
@@ -1457,33 +1457,33 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableHddrDataXml (XmlWriter xmlWriter,
+        private static void tableHddrDataXml(XmlWriter xmlWriter,
                                               bool plain,
                                               int colCt,
                                               string[] colHddrs)
         {
-            xmlWriter.WriteStartElement ("tabledata");
+            xmlWriter.WriteStartElement("tabledata");
 
             if (colCt > 0)
             {
                 if (plain)
                 {
-                    xmlWriter.WriteStartElement ("hddr");
-                    xmlWriter.WriteAttributeString ("hddrstyle", "plain");
+                    xmlWriter.WriteStartElement("hddr");
+                    xmlWriter.WriteAttributeString("hddrstyle", "plain");
                 }
                 else
                 {
-                    xmlWriter.WriteStartElement ("hddr");
+                    xmlWriter.WriteStartElement("hddr");
                 }
 
                 for (int i = 0; i < colCt; i++)
                 {
-                    xmlWriter.WriteStartElement ("col");
-                    xmlWriter.WriteString (colHddrs[i]);
-                    xmlWriter.WriteEndElement ();
+                    xmlWriter.WriteStartElement("col");
+                    xmlWriter.WriteString(colHddrs[i]);
+                    xmlWriter.WriteEndElement();
                 }
 
-                xmlWriter.WriteEndElement ();
+                xmlWriter.WriteEndElement();
             }
         }
 
@@ -1496,15 +1496,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void tableHddrPair (object writer,
+        public static void tableHddrPair(object writer,
                                           eRptFileFmt rptFileFmt)
         {
             if (rptFileFmt == eRptFileFmt.html)
-                tableHddrPairHtml ((HtmlTextWriter)writer);
+                tableHddrPairHtml((HtmlTextWriter)writer);
             else if (rptFileFmt == eRptFileFmt.xml)
-                tableHddrPairXml ((XmlWriter)writer);
+                tableHddrPairXml((XmlWriter)writer);
             else
-                tableHddrPairText ((StreamWriter)writer);
+                tableHddrPairText((StreamWriter)writer);
         }
 
         //--------------------------------------------------------------------//
@@ -1516,11 +1516,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableHddrPairHtml (HtmlTextWriter htmlWriter)
+        private static void tableHddrPairHtml(HtmlTextWriter htmlWriter)
         {
-            htmlWriter.WriteLine (string.Empty);
-            htmlWriter.RenderBeginTag ("table");
-            htmlWriter.WriteLine (string.Empty);
+            htmlWriter.WriteLine(string.Empty);
+            htmlWriter.RenderBeginTag("table");
+            htmlWriter.WriteLine(string.Empty);
         }
 
         //--------------------------------------------------------------------//
@@ -1532,9 +1532,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableHddrPairText (StreamWriter txtWriter)
+        private static void tableHddrPairText(StreamWriter txtWriter)
         {
-            txtWriter.WriteLine (string.Empty);
+            txtWriter.WriteLine(string.Empty);
         }
 
         //--------------------------------------------------------------------//
@@ -1546,9 +1546,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableHddrPairXml (XmlWriter xmlWriter)
+        private static void tableHddrPairXml(XmlWriter xmlWriter)
         {
-            xmlWriter.WriteStartElement ("tablepair");
+            xmlWriter.WriteStartElement("tablepair");
         }
 
         //--------------------------------------------------------------------//
@@ -1562,7 +1562,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void tableMultiRowText (
+        public static void tableMultiRowText(
             object writer,
             eRptFileFmt rptFileFmt,
             int colCt,
@@ -1574,7 +1574,7 @@ namespace PCLParaphernalia
         {
             if (rptFileFmt == eRptFileFmt.text)
             {
-                tableMultiRowTextText (
+                tableMultiRowTextText(
                     (StreamWriter)writer, colCt, arrData, colSizes,
                     blankBefore, blankAfter, blankAfterMultiRow);
             }
@@ -1590,7 +1590,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableMultiRowTextText (
+        private static void tableMultiRowTextText(
             StreamWriter txtWriter,
             int colCt,
             string[][] arrData,
@@ -1605,9 +1605,9 @@ namespace PCLParaphernalia
 
             const string space = " ";
 
-            string colSep = " ".PadRight (_lcSep, ' ');
+            string colSep = " ".PadRight(_lcSep, ' ');
 
-            StringBuilder line = new StringBuilder ();
+            StringBuilder line = new StringBuilder();
 
             for (int i = 0; i < colCt; i++)
             {
@@ -1619,7 +1619,7 @@ namespace PCLParaphernalia
 
             if (blankBefore)
             {
-                txtWriter.WriteLine (string.Empty);
+                txtWriter.WriteLine(string.Empty);
             }
 
             for (int i = 0; i < maxRows; i++)
@@ -1627,21 +1627,21 @@ namespace PCLParaphernalia
                 for (int j = 0; j < colCt; j++)
                 {
                     if (arrData[j].Length <= i)
-                        line.Append (space.PadRight (colSizes[j], ' '));
+                        line.Append(space.PadRight(colSizes[j], ' '));
                     else
-                        line.Append (arrData[j][i].PadRight (colSizes[j], ' '));
+                        line.Append(arrData[j][i].PadRight(colSizes[j], ' '));
 
                     if (j != lastCol)
-                        line.Append (colSep);
+                        line.Append(colSep);
                 }
 
-                txtWriter.WriteLine (line);
-                line.Clear ();
+                txtWriter.WriteLine(line);
+                line.Clear();
             }
 
             if (blankAfter || (blankAfterMultiRow && (maxRows > 1)))
             {
-                txtWriter.WriteLine (string.Empty);
+                txtWriter.WriteLine(string.Empty);
             }
         }
 
@@ -1654,7 +1654,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void tableRowData (object writer,
+        public static void tableRowData(object writer,
                                          eRptFileFmt rptFileFmt,
                                          eRptChkMarks rptChkMarks,
                                          int colCt,
@@ -1664,11 +1664,11 @@ namespace PCLParaphernalia
                                          int[] colSizes)
         {
             if (rptFileFmt == eRptFileFmt.html)
-                tableRowDataHtml ((HtmlTextWriter)writer, rptChkMarks, colCt, rowType, row, colNames);
+                tableRowDataHtml((HtmlTextWriter)writer, rptChkMarks, colCt, rowType, row, colNames);
             else if (rptFileFmt == eRptFileFmt.xml)
-                tableRowDataXml ((XmlWriter)writer, rptChkMarks, colCt, rowType, row, colNames);
+                tableRowDataXml((XmlWriter)writer, rptChkMarks, colCt, rowType, row, colNames);
             else
-                tableRowDataText ((StreamWriter)writer, rptChkMarks, colCt, rowType, row, colNames, colSizes);
+                tableRowDataText((StreamWriter)writer, rptChkMarks, colCt, rowType, row, colNames, colSizes);
         }
 
         //--------------------------------------------------------------------//
@@ -1681,7 +1681,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableRowDataHtml (HtmlTextWriter htmlWriter,
+        private static void tableRowDataHtml(HtmlTextWriter htmlWriter,
                                               eRptChkMarks rptChkMarks,
                                               int colCt,
                                               string rowType,
@@ -1691,52 +1691,52 @@ namespace PCLParaphernalia
             int lastCol = colCt - 1;
 
             if (rowType != null)
-                htmlWriter.AddAttribute ("class", rowType);
+                htmlWriter.AddAttribute("class", rowType);
 
-            htmlWriter.RenderBeginTag ("tr");
+            htmlWriter.RenderBeginTag("tr");
 
             for (int i = 0; i < colCt; i++)
             {
-                htmlWriter.RenderBeginTag ("td");
+                htmlWriter.RenderBeginTag("td");
 
                 if (row[colNames[i]] is bool)
                 {
                     if ((bool)row[colNames[i]])
                     {
                         if (rptChkMarks == eRptChkMarks.boxsym)
-                            htmlWriter.Write (_chkMarkBoxSymTrue);
+                            htmlWriter.Write(_chkMarkBoxSymTrue);
                         else if (rptChkMarks == eRptChkMarks.txtsym)
-                            htmlWriter.Write (_chkMarkTxtSymTrue);
+                            htmlWriter.Write(_chkMarkTxtSymTrue);
                         else
-                            htmlWriter.Write (_chkMarkTextTrue);
+                            htmlWriter.Write(_chkMarkTextTrue);
                     }
                     else
                     {
                         if (rptChkMarks == eRptChkMarks.boxsym)
-                            htmlWriter.Write (_chkMarkBoxSymFalse);
+                            htmlWriter.Write(_chkMarkBoxSymFalse);
                         else if (rptChkMarks == eRptChkMarks.txtsym)
-                            htmlWriter.Write (_chkMarkTxtSymFalse);
+                            htmlWriter.Write(_chkMarkTxtSymFalse);
                         else
-                            htmlWriter.Write (_chkMarkTextFalse);
+                            htmlWriter.Write(_chkMarkTextFalse);
                     }
                 }
                 else if ((i == 0) && (row[colNames[0]].ToString()?.Length == 0))
                 {
-                    htmlWriter.Write ("&nbsp;");
+                    htmlWriter.Write("&nbsp;");
                 }
                 else
                 {
-                    htmlWriter.WriteEncodedText (row[colNames[i]].ToString ());
+                    htmlWriter.WriteEncodedText(row[colNames[i]].ToString());
                 }
 
-                htmlWriter.RenderEndTag ();    // </td>
+                htmlWriter.RenderEndTag();    // </td>
 
                 if (i != lastCol)
-                    htmlWriter.WriteLine (string.Empty);
+                    htmlWriter.WriteLine(string.Empty);
             }
 
-            htmlWriter.RenderEndTag ();    // </tr>
-            htmlWriter.WriteLine (string.Empty);
+            htmlWriter.RenderEndTag();    // </tr>
+            htmlWriter.WriteLine(string.Empty);
         }
 
         //--------------------------------------------------------------------//
@@ -1749,7 +1749,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableRowDataText (StreamWriter txtWriter,
+        private static void tableRowDataText(StreamWriter txtWriter,
                                               eRptChkMarks rptChkMarks,
                                               int colCt,
                                               string rowType,
@@ -1759,9 +1759,9 @@ namespace PCLParaphernalia
         {
             int lastCol = colCt - 1;
 
-            string colSep = " ".PadRight (_lcSep, ' ');
+            string colSep = " ".PadRight(_lcSep, ' ');
 
-            StringBuilder line = new StringBuilder ();
+            StringBuilder line = new StringBuilder();
 
             for (int i = 0; i < colCt; i++)
             {
@@ -1790,16 +1790,16 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    itemData = row[colNames[i]].ToString ();
+                    itemData = row[colNames[i]].ToString();
                 }
 
-                line.Append (itemData.PadRight (colSizes[i], ' '));
+                line.Append(itemData.PadRight(colSizes[i], ' '));
 
                 if (i != lastCol)
-                    line.Append (colSep);
+                    line.Append(colSep);
             }
 
-            txtWriter.WriteLine (line);
+            txtWriter.WriteLine(line);
         }
 
         //--------------------------------------------------------------------//
@@ -1812,57 +1812,57 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableRowDataXml (XmlWriter xmlWriter,
+        private static void tableRowDataXml(XmlWriter xmlWriter,
                                               eRptChkMarks rptChkMarks,
                                              int colCt,
                                              string rowType,
                                              DataRow row,
                                              string[] colNames)
         {
-            xmlWriter.WriteStartElement ("item");
+            xmlWriter.WriteStartElement("item");
 
             if (rowType != null)
             {
-                xmlWriter.WriteAttributeString ("rowType", rowType);
+                xmlWriter.WriteAttributeString("rowType", rowType);
             }
 
             for (int i = 0; i < colCt; i++)
             {
-                xmlWriter.WriteStartElement (colNames[i].ToLower ());
+                xmlWriter.WriteStartElement(colNames[i].ToLower());
 
                 if (row[colNames[i]] is bool)
                 {
                     if ((bool)row[colNames[i]])
                     {
                         if (rptChkMarks == eRptChkMarks.boxsym)
-                            xmlWriter.WriteString (_chkMarkBoxSymTrue);
+                            xmlWriter.WriteString(_chkMarkBoxSymTrue);
                         else if (rptChkMarks == eRptChkMarks.txtsym)
-                            xmlWriter.WriteString (_chkMarkTxtSymTrue);
+                            xmlWriter.WriteString(_chkMarkTxtSymTrue);
                         else
-                            xmlWriter.WriteString (_chkMarkTextTrue);
+                            xmlWriter.WriteString(_chkMarkTextTrue);
                     }
                     else
                     {
                         if (rptChkMarks == eRptChkMarks.boxsym)
-                            xmlWriter.WriteString (_chkMarkBoxSymFalse);
+                            xmlWriter.WriteString(_chkMarkBoxSymFalse);
                         else if (rptChkMarks == eRptChkMarks.txtsym)
-                            xmlWriter.WriteString (_chkMarkTxtSymFalse);
+                            xmlWriter.WriteString(_chkMarkTxtSymFalse);
                         else
-                            xmlWriter.WriteString (_chkMarkTextFalse);
+                            xmlWriter.WriteString(_chkMarkTextFalse);
                     }
                 }
                 else
                 {
                     if ((i == 0) && (row[colNames[0]].ToString()?.Length == 0))
-                        xmlWriter.WriteCharEntity ((char)0xa0);
+                        xmlWriter.WriteCharEntity((char)0xa0);
                     else
-                        xmlWriter.WriteString (row[colNames[i]].ToString ());
+                        xmlWriter.WriteString(row[colNames[i]].ToString());
                 }
 
-                xmlWriter.WriteEndElement ();
+                xmlWriter.WriteEndElement();
             }
 
-            xmlWriter.WriteEndElement ();   // </item>
+            xmlWriter.WriteEndElement();   // </item>
         }
 
         //--------------------------------------------------------------------//
@@ -1874,7 +1874,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void tableRowPair (object writer,
+        public static void tableRowPair(object writer,
                                          eRptFileFmt rptFileFmt,
                                          string txtName,
                                          string txtVal,
@@ -1887,11 +1887,11 @@ namespace PCLParaphernalia
                                          bool nameAsHddr)
         {
             if (rptFileFmt == eRptFileFmt.html)
-                tableRowPairHtml ((HtmlTextWriter)writer, txtName, txtVal, colSpanName, colSpanVal, blankBefore, blankAfter, nameAsHddr);
+                tableRowPairHtml((HtmlTextWriter)writer, txtName, txtVal, colSpanName, colSpanVal, blankBefore, blankAfter, nameAsHddr);
             else if (rptFileFmt == eRptFileFmt.xml)
-                tableRowPairXml ((XmlWriter)writer, txtName, txtVal, colSpanName, colSpanVal, blankBefore, blankAfter, nameAsHddr);
+                tableRowPairXml((XmlWriter)writer, txtName, txtVal, colSpanName, colSpanVal, blankBefore, blankAfter, nameAsHddr);
             else
-                tableRowPairText ((StreamWriter)writer, txtName, txtVal, sizeName, sizeVal, blankBefore);
+                tableRowPairText((StreamWriter)writer, txtName, txtVal, sizeName, sizeVal, blankBefore);
         }
 
         //--------------------------------------------------------------------//
@@ -1904,7 +1904,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableRowPairHtml (HtmlTextWriter htmlWriter,
+        private static void tableRowPairHtml(HtmlTextWriter htmlWriter,
                                               string txtName,
                                               string txtVal,
                                               int colSpanName,
@@ -1915,7 +1915,7 @@ namespace PCLParaphernalia
         {
             string padClass = string.Empty;
 
-            htmlWriter.RenderBeginTag ("tr");
+            htmlWriter.RenderBeginTag("tr");
 
             //----------------------------------------------------------------//
 
@@ -1930,40 +1930,40 @@ namespace PCLParaphernalia
 
             if (padClass != string.Empty)
                 if (nameAsHddr)
-                    htmlWriter.AddAttribute ("class", padClass + " " + "fmtAdorn");
+                    htmlWriter.AddAttribute("class", padClass + " " + "fmtAdorn");
                 else
-                    htmlWriter.AddAttribute ("class", padClass);
+                    htmlWriter.AddAttribute("class", padClass);
             else if (nameAsHddr)
-                    htmlWriter.AddAttribute ("class", "fmtAdorn");
+                htmlWriter.AddAttribute("class", "fmtAdorn");
 
             if (colSpanName != -1)
-                htmlWriter.AddAttribute ("colspan", colSpanName.ToString ());
+                htmlWriter.AddAttribute("colspan", colSpanName.ToString());
 
-            htmlWriter.RenderBeginTag ("td");
+            htmlWriter.RenderBeginTag("td");
 
-            htmlWriter.WriteEncodedText (txtName);
-            htmlWriter.RenderEndTag ();    // </td>
+            htmlWriter.WriteEncodedText(txtName);
+            htmlWriter.RenderEndTag();    // </td>
 
-            htmlWriter.WriteLine (string.Empty);
+            htmlWriter.WriteLine(string.Empty);
 
             //----------------------------------------------------------------//
 
             if (padClass != string.Empty)
-                htmlWriter.AddAttribute ("class", padClass);
+                htmlWriter.AddAttribute("class", padClass);
 
             if (colSpanName != -1)
-                htmlWriter.AddAttribute ("colspan", colSpanVal.ToString ());
+                htmlWriter.AddAttribute("colspan", colSpanVal.ToString());
 
-            htmlWriter.RenderBeginTag ("td");
+            htmlWriter.RenderBeginTag("td");
 
-            htmlWriter.WriteEncodedText (txtVal);
-            htmlWriter.RenderEndTag ();    // </td>
+            htmlWriter.WriteEncodedText(txtVal);
+            htmlWriter.RenderEndTag();    // </td>
 
             //----------------------------------------------------------------//
 
-            htmlWriter.RenderEndTag ();    // </tr>
+            htmlWriter.RenderEndTag();    // </tr>
 
-            htmlWriter.WriteLine (string.Empty);
+            htmlWriter.WriteLine(string.Empty);
         }
 
         //--------------------------------------------------------------------//
@@ -1976,7 +1976,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableRowPairText (StreamWriter txtWriter,
+        private static void tableRowPairText(StreamWriter txtWriter,
                                               string txtName,
                                               string txtVal,
                                               int maxSizeName,
@@ -1989,7 +1989,7 @@ namespace PCLParaphernalia
             bool firstLine = true;
 
             if (blankBefore)
-                txtWriter.WriteLine ();
+                txtWriter.WriteLine();
 
             valLen = txtVal.Length;
             valPos = 0;
@@ -1999,13 +1999,13 @@ namespace PCLParaphernalia
                 string prefix;
 
                 if (firstLine)
-                    prefix = (txtName + ":").PadRight (maxSizeName, ' ');
+                    prefix = (txtName + ":").PadRight(maxSizeName, ' ');
                 else
-                    prefix = " ".PadRight (maxSizeName, ' ');
+                    prefix = " ".PadRight(maxSizeName, ' ');
 
-                txtWriter.WriteLine (
+                txtWriter.WriteLine(
                         prefix +
-                        txtVal.Substring (valPos, maxSizeVal));
+                        txtVal.Substring(valPos, maxSizeVal));
 
                 valPos += maxSizeVal;
                 firstLine = false;
@@ -2016,13 +2016,13 @@ namespace PCLParaphernalia
                 string prefix;
 
                 if (firstLine)
-                    prefix = (txtName + ":").PadRight (maxSizeName, ' ');
+                    prefix = (txtName + ":").PadRight(maxSizeName, ' ');
                 else
-                    prefix = " ".PadRight (maxSizeName, ' ');
+                    prefix = " ".PadRight(maxSizeName, ' ');
 
-                txtWriter.WriteLine (
+                txtWriter.WriteLine(
                         prefix +
-                        txtVal.Substring (valPos, valLen - valPos));
+                        txtVal.Substring(valPos, valLen - valPos));
             }
         }
 
@@ -2036,7 +2036,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableRowPairXml (XmlWriter xmlWriter,
+        private static void tableRowPairXml(XmlWriter xmlWriter,
                                              string txtName,
                                              string txtVal,
                                              int colSpanName,
@@ -2058,27 +2058,27 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            xmlWriter.WriteStartElement ("item");
+            xmlWriter.WriteStartElement("item");
 
             if (padClass != string.Empty)
-                xmlWriter.WriteAttributeString ("padType", padClass);
+                xmlWriter.WriteAttributeString("padType", padClass);
 
-            xmlWriter.WriteStartElement ("name");
+            xmlWriter.WriteStartElement("name");
             if (colSpanName != -1)
-                xmlWriter.WriteAttributeString ("colspan", colSpanName.ToString ());
+                xmlWriter.WriteAttributeString("colspan", colSpanName.ToString());
             if (nameAsHddr)
-                xmlWriter.WriteAttributeString ("txtfmt", "fmtAdorn");
+                xmlWriter.WriteAttributeString("txtfmt", "fmtAdorn");
 
-            xmlWriter.WriteString (txtName);
-            xmlWriter.WriteEndElement ();
+            xmlWriter.WriteString(txtName);
+            xmlWriter.WriteEndElement();
 
-            xmlWriter.WriteStartElement ("value");
+            xmlWriter.WriteStartElement("value");
             if (colSpanName != -1)
-                xmlWriter.WriteAttributeString ("colspan", colSpanVal.ToString ());
-            xmlWriter.WriteString (txtVal);
-            xmlWriter.WriteEndElement ();
+                xmlWriter.WriteAttributeString("colspan", colSpanVal.ToString());
+            xmlWriter.WriteString(txtVal);
+            xmlWriter.WriteEndElement();
 
-            xmlWriter.WriteEndElement ();   // </item>
+            xmlWriter.WriteEndElement();   // </item>
         }
 
         //--------------------------------------------------------------------//
@@ -2090,7 +2090,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void tableRowText (object writer,
+        public static void tableRowText(object writer,
                                          eRptFileFmt rptFileFmt,
                                          int colCt,
                                          string[] data,
@@ -2098,11 +2098,11 @@ namespace PCLParaphernalia
                                          int[] colSizes)
         {
             if (rptFileFmt == eRptFileFmt.html)
-                tableRowTextHtml ((HtmlTextWriter)writer, colCt, data);
+                tableRowTextHtml((HtmlTextWriter)writer, colCt, data);
             else if (rptFileFmt == eRptFileFmt.xml)
-                tableRowTextXml ((XmlWriter)writer, colCt, data, colNames);
+                tableRowTextXml((XmlWriter)writer, colCt, data, colNames);
             else
-                tableRowTextText ((StreamWriter)writer, colCt, data, colSizes);
+                tableRowTextText((StreamWriter)writer, colCt, data, colSizes);
         }
 
         //--------------------------------------------------------------------//
@@ -2115,29 +2115,29 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableRowTextHtml (HtmlTextWriter htmlWriter,
+        private static void tableRowTextHtml(HtmlTextWriter htmlWriter,
                                               int colCt,
                                               string[] data)
         {
             int lastCol = colCt - 1;
 
-            htmlWriter.RenderBeginTag ("tr");
+            htmlWriter.RenderBeginTag("tr");
 
             for (int i = 0; i < colCt; i++)
             {
-                htmlWriter.RenderBeginTag ("td");
+                htmlWriter.RenderBeginTag("td");
                 if ((i == 0) && (data[0]?.Length == 0))
-                    htmlWriter.Write ("&nbsp;");
+                    htmlWriter.Write("&nbsp;");
                 else
-                    htmlWriter.WriteEncodedText (data[i]);
-                htmlWriter.RenderEndTag ();    // </td>
+                    htmlWriter.WriteEncodedText(data[i]);
+                htmlWriter.RenderEndTag();    // </td>
 
                 if (i != lastCol)
-                    htmlWriter.WriteLine (string.Empty);
+                    htmlWriter.WriteLine(string.Empty);
             }
 
-            htmlWriter.RenderEndTag ();    // </tr>
-            htmlWriter.WriteLine (string.Empty);
+            htmlWriter.RenderEndTag();    // </tr>
+            htmlWriter.WriteLine(string.Empty);
         }
 
         //--------------------------------------------------------------------//
@@ -2150,26 +2150,26 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableRowTextText (StreamWriter txtWriter,
+        private static void tableRowTextText(StreamWriter txtWriter,
                                               int colCt,
                                               string[] data,
                                               int[] colSizes)
         {
             int lastCol = colCt - 1;
 
-            string colSep = " ".PadRight (_lcSep, ' ');
+            string colSep = " ".PadRight(_lcSep, ' ');
 
-            StringBuilder line = new StringBuilder ();
+            StringBuilder line = new StringBuilder();
 
             for (int i = 0; i < colCt; i++)
             {
-                line.Append (data[i].PadRight (colSizes[i], ' '));
+                line.Append(data[i].PadRight(colSizes[i], ' '));
 
                 if (i != lastCol)
-                    line.Append (colSep);
+                    line.Append(colSep);
             }
 
-            txtWriter.WriteLine (line);
+            txtWriter.WriteLine(line);
         }
 
         //--------------------------------------------------------------------//
@@ -2182,24 +2182,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableRowTextXml (XmlWriter xmlWriter,
+        private static void tableRowTextXml(XmlWriter xmlWriter,
                                              int colCt,
                                              string[] data,
                                              string[] colNames)
         {
-            xmlWriter.WriteStartElement ("item");
+            xmlWriter.WriteStartElement("item");
 
             for (int i = 0; i < colCt; i++)
             {
-                xmlWriter.WriteStartElement (colNames[i].ToLower ());
+                xmlWriter.WriteStartElement(colNames[i].ToLower());
                 if ((i == 0) && (data[0]?.Length == 0))
-                    xmlWriter.WriteCharEntity ((char)0xa0);
+                    xmlWriter.WriteCharEntity((char)0xa0);
                 else
-                    xmlWriter.WriteString (data[i]);
-                xmlWriter.WriteEndElement ();
+                    xmlWriter.WriteString(data[i]);
+                xmlWriter.WriteEndElement();
             }
 
-            xmlWriter.WriteEndElement ();   // </tableitem>
+            xmlWriter.WriteEndElement();   // </tableitem>
         }
     }
 }

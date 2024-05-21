@@ -75,9 +75,9 @@ namespace PCLParaphernalia
             string formNameMain,
             string formNameRear)
         {
-            bool flagSimplexJob = PCLPlexModes.isSimplex (indxPlexMode);
+            bool flagSimplexJob = PCLPlexModes.isSimplex(indxPlexMode);
 
-            generateJobHeader (prnWriter,
+            generateJobHeader(prnWriter,
                               indxPaperSize,
                               indxPaperType,
                               indxOrientation,
@@ -94,7 +94,7 @@ namespace PCLParaphernalia
                               formNameMain,
                               formNameRear);
 
-            generatePageSet (prnWriter,
+            generatePageSet(prnWriter,
                              testPageCount,
                              indxPaperSize,
                              indxPaperType,
@@ -113,7 +113,7 @@ namespace PCLParaphernalia
                              formNameMain,
                              formNameRear);
 
-            generateJobTrailer (prnWriter,
+            generateJobTrailer(prnWriter,
                                 flagStreamRemove,
                                 flagMainForm,
                                 flagRearForm,
@@ -148,7 +148,7 @@ namespace PCLParaphernalia
             string formNameMain,
             string formNameRear)
         {
-            PCLXLWriter.StdJobHeader (prnWriter, string.Empty);
+            PCLXLWriter.StdJobHeader(prnWriter, string.Empty);
 
             if (flagMainForm)
             {
@@ -204,18 +204,18 @@ namespace PCLParaphernalia
             {
                 if (flagMainForm)
                 {
-                    PCLXLWriter.StreamRemove (prnWriter,
+                    PCLXLWriter.StreamRemove(prnWriter,
                                              formNameMain);
                 }
 
                 if (flagRearForm)
                 {
-                    PCLXLWriter.StreamRemove (prnWriter,
+                    PCLXLWriter.StreamRemove(prnWriter,
                                              formNameRear);
                 }
             }
 
-            PCLXLWriter.StdJobTrailer (prnWriter, false, string.Empty);
+            PCLXLWriter.StdJobTrailer(prnWriter, false, string.Empty);
         }
 
         //--------------------------------------------------------------------//
@@ -248,7 +248,7 @@ namespace PCLParaphernalia
                                          string formNameMain,
                                          string formNameRear)
         {
-            const int lenBuf  = 1024;
+            const int lenBuf = 1024;
             const short incPosY = 150;
 
             byte[] buffer = new byte[lenBuf];
@@ -271,9 +271,9 @@ namespace PCLParaphernalia
 
             if (flagFrontFace)
             {
-                indxOrient   = indxOrientation;
+                indxOrient = indxOrientation;
                 pageUsesForm = flagMainForm;
-                formName     = formNameMain;
+                formName = formNameMain;
             }
             else
             {
@@ -282,12 +282,12 @@ namespace PCLParaphernalia
                 if (flagRearForm)
                 {
                     pageUsesForm = flagRearForm;
-                    formName     = formNameRear;
+                    formName = formNameRear;
                 }
                 else
                 {
                     pageUsesForm = flagMainForm;
-                    formName     = formNameMain;
+                    formName = formNameMain;
                 }
             }
 
@@ -298,7 +298,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLXLWriter.PageBegin (prnWriter,
+            PCLXLWriter.PageBegin(prnWriter,
                                    indxPaperSize,
                                    indxPaperType,
                                    -1,
@@ -313,25 +313,25 @@ namespace PCLParaphernalia
                 {
                     if (flagGSPushPop)
                     {
-                        PCLXLWriter.AddOperator (
+                        PCLXLWriter.AddOperator(
                            ref buffer,
                            ref indBuf,
                            PCLXLOperators.eTag.PushGS);
 
-                        prnWriter.Write (buffer, 0, indBuf);
+                        prnWriter.Write(buffer, 0, indBuf);
                         indBuf = 0;
                     }
 
-                    PCLXLWriter.StreamExec (prnWriter, false, formName);
+                    PCLXLWriter.StreamExec(prnWriter, false, formName);
 
                     if (flagGSPushPop)
                     {
-                        PCLXLWriter.AddOperator (
+                        PCLXLWriter.AddOperator(
                             ref buffer,
                             ref indBuf,
                             PCLXLOperators.eTag.PopGS);
 
-                        prnWriter.Write (buffer, 0, indBuf);
+                        prnWriter.Write(buffer, 0, indBuf);
                         indBuf = 0;
                     }
                 }
@@ -353,28 +353,28 @@ namespace PCLParaphernalia
 
                 crntPtSize = 10;
 
-                PCLXLWriter.AddAttrUbyte (ref buffer,
+                PCLXLWriter.AddAttrUbyte(ref buffer,
                                          ref indBuf,
                                          PCLXLAttributes.eTag.ColorSpace,
-                                         (byte) PCLXLAttrEnums.Val.eGray);
+                                         (byte)PCLXLAttrEnums.Val.eGray);
 
-                PCLXLWriter.AddOperator (ref buffer,
+                PCLXLWriter.AddOperator(ref buffer,
                                         ref indBuf,
                                         PCLXLOperators.eTag.SetColorSpace);
 
-                PCLXLWriter.AddAttrUbyte (ref buffer,
+                PCLXLWriter.AddAttrUbyte(ref buffer,
                                          ref indBuf,
                                          PCLXLAttributes.eTag.GrayLevel,
                                          0);
 
-                PCLXLWriter.AddOperator (ref buffer,
+                PCLXLWriter.AddOperator(ref buffer,
                                         ref indBuf,
                                         PCLXLOperators.eTag.SetBrushSource);
 
-                prnWriter.Write (buffer, 0, indBuf);
+                prnWriter.Write(buffer, 0, indBuf);
                 indBuf = 0;
 
-                PCLXLWriter.Font (prnWriter, false, crntPtSize,
+                PCLXLWriter.Font(prnWriter, false, crntPtSize,
                                  _symSet_19U, "Courier         ");
 
                 posX = 600;
@@ -453,19 +453,19 @@ namespace PCLParaphernalia
 
                 crntPtSize = 10;
 
-                PCLXLWriter.AddAttrUbyte (ref buffer,
+                PCLXLWriter.AddAttrUbyte(ref buffer,
                                          ref indBuf,
                                          PCLXLAttributes.eTag.GrayLevel,
                                          0);
 
-                PCLXLWriter.AddOperator (ref buffer,
+                PCLXLWriter.AddOperator(ref buffer,
                                         ref indBuf,
                                         PCLXLOperators.eTag.SetBrushSource);
 
-                prnWriter.Write (buffer, 0, indBuf);
+                prnWriter.Write(buffer, 0, indBuf);
                 indBuf = 0;
 
-                PCLXLWriter.Font (prnWriter, false, crntPtSize,
+                PCLXLWriter.Font(prnWriter, false, crntPtSize,
                                  _symSet_19U, "Courier       Bd");
 
                 posX = 1800;
@@ -485,40 +485,40 @@ namespace PCLParaphernalia
                     PCLXLWriter.Text(prnWriter, false, false,
                                       PCLXLWriter.advances_Courier, crntPtSize,
                                       posX, posY,
-                                      PCLPaperSizes.getName (indxPaperSize));
+                                      PCLPaperSizes.getName(indxPaperSize));
 
                     posY += incPosY;
 
                     PCLXLWriter.Text(prnWriter, false, false,
                                       PCLXLWriter.advances_Courier, crntPtSize,
                                       posX, posY,
-                                      PCLPaperTypes.getName (indxPaperType));
+                                      PCLPaperTypes.getName(indxPaperType));
 
                     posY += incPosY;
 
                     PCLXLWriter.Text(prnWriter, false, false,
                                       PCLXLWriter.advances_Courier, crntPtSize,
                                       posX, posY,
-                                      PCLPlexModes.getName (indxPlexMode));
+                                      PCLPlexModes.getName(indxPlexMode));
 
                     posY += incPosY;
 
                     PCLXLWriter.Text(prnWriter, false, false,
                                       PCLXLWriter.advances_Courier, crntPtSize,
                                       posX, posY,
-                                      streamMethodNames[(int) indxMethod]);
+                                      streamMethodNames[(int)indxMethod]);
 
                     posY += incPosY;
 
                     PCLXLWriter.Text(prnWriter, false, false,
                                       PCLXLWriter.advances_Courier, crntPtSize,
                                       posX, posY,
-                                      PCLOrientations.getName (indxOrientation));
+                                      PCLOrientations.getName(indxOrientation));
 
                     if (flagSimplexJob)
                         textOrientRear = "<not applicable>";
                     else
-                        textOrientRear = PCLOrientations.getName (indxOrientRear);
+                        textOrientRear = PCLOrientations.getName(indxOrientRear);
 
                     posY += incPosY;
 
@@ -544,9 +544,9 @@ namespace PCLParaphernalia
                             PCLXLWriter.Text(prnWriter, false, false,
                                               PCLXLWriter.advances_Courier,
                                               crntPtSize, posX, posY,
-                                              formFileMain.Substring (0, halfLen) +
+                                              formFileMain.Substring(0, halfLen) +
                                               " ... " +
-                                              formFileMain.Substring (len - halfLen,
+                                              formFileMain.Substring(len - halfLen,
                                                                       halfLen));
                     }
 
@@ -567,9 +567,9 @@ namespace PCLParaphernalia
                             PCLXLWriter.Text(prnWriter, false, false,
                                               PCLXLWriter.advances_Courier,
                                               crntPtSize, posX, posY,
-                                              formFileRear.Substring (0, halfLen) +
+                                              formFileRear.Substring(0, halfLen) +
                                               " ... " +
-                                              formFileRear.Substring (len - halfLen,
+                                              formFileRear.Substring(len - halfLen,
                                                                       halfLen));
                     }
                 }
@@ -588,25 +588,25 @@ namespace PCLParaphernalia
                 {
                     if (flagGSPushPop)
                     {
-                        PCLXLWriter.AddOperator (
+                        PCLXLWriter.AddOperator(
                            ref buffer,
                            ref indBuf,
                            PCLXLOperators.eTag.PushGS);
 
-                        prnWriter.Write (buffer, 0, indBuf);
+                        prnWriter.Write(buffer, 0, indBuf);
                         indBuf = 0;
                     }
 
-                    PCLXLWriter.StreamExec (prnWriter, false, formName);
+                    PCLXLWriter.StreamExec(prnWriter, false, formName);
 
                     if (flagGSPushPop)
                     {
-                        PCLXLWriter.AddOperator (
+                        PCLXLWriter.AddOperator(
                             ref buffer,
                             ref indBuf,
                             PCLXLOperators.eTag.PopGS);
 
-                        prnWriter.Write (buffer, 0, indBuf);
+                        prnWriter.Write(buffer, 0, indBuf);
                         indBuf = 0;
                     }
                 }
@@ -618,7 +618,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLXLWriter.PageEnd (prnWriter, 1);
+            PCLXLWriter.PageEnd(prnWriter, 1);
 
             //------------------------------------------------------------//
             //                                                            //
@@ -628,7 +628,7 @@ namespace PCLParaphernalia
 
             if (flagRearForm && flagRearBPlate)
             {
-                PCLXLWriter.PageBegin (prnWriter,
+                PCLXLWriter.PageBegin(prnWriter,
                                        indxPaperSize,
                                        indxPaperType,
                                        -1,
@@ -637,9 +637,9 @@ namespace PCLParaphernalia
                                        firstPage,
                                        false);
 
-                PCLXLWriter.StreamExec (prnWriter, false, formNameRear);
+                PCLXLWriter.StreamExec(prnWriter, false, formNameRear);
 
-                PCLXLWriter.PageEnd (prnWriter, 1);
+                PCLXLWriter.PageEnd(prnWriter, 1);
             }
         }
 
@@ -681,7 +681,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                generatePage (prnWriter,
+                generatePage(prnWriter,
                               pageNo,
                               pageCount,
                               indxPaperSize,

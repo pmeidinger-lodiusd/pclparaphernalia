@@ -68,7 +68,7 @@ namespace PCLParaphernalia
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            metricsSave ();
+            metricsSave();
 
             DialogResult = true;
         }
@@ -82,14 +82,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbPrinters_SelectionChanged (object sender,
+        private void cbPrinters_SelectionChanged(object sender,
                                                   EventArgs e)
         {
             if (_initialised)
             {
                 if (cbPrinters.SelectedIndex != -1)
                 {
-                    _printerName = cbPrinters.SelectedItem.ToString ();
+                    _printerName = cbPrinters.SelectedItem.ToString();
                 }
             }
         }
@@ -106,7 +106,7 @@ namespace PCLParaphernalia
         private void initialise()
         {
             int indxPrinter = 0;
-            int ctPrinters  = 0;
+            int ctPrinters = 0;
 
             string printerName;
 
@@ -116,9 +116,9 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            TargetCore.metricsLoadWinPrinter (ref _printerName);
+            TargetCore.metricsLoadWinPrinter(ref _printerName);
 
-            cbPrinters.Items.Clear ();
+            cbPrinters.Items.Clear();
 
             ctPrinters = PrinterSettings.InstalledPrinters.Count;
 
@@ -126,7 +126,7 @@ namespace PCLParaphernalia
             {
                 printerName = PrinterSettings.InstalledPrinters[i];
 
-                cbPrinters.Items.Add (printerName);
+                cbPrinters.Items.Add(printerName);
 
                 if (printerName == _printerName)
                     indxPrinter = i;
@@ -185,7 +185,7 @@ namespace PCLParaphernalia
 
         public void metricsSave()
         {
-            TargetCore.metricsSaveWinPrinter (_printerName);
+            TargetCore.metricsSaveWinPrinter(_printerName);
         }
     }
 }

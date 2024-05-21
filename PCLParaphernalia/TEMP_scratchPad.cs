@@ -29,11 +29,11 @@ namespace PCLParaphernalia
                                        '\u03a3'  // Sigma
                                       };
 
-            UnicodeEncoding Unicode = new UnicodeEncoding ();
+            UnicodeEncoding Unicode = new UnicodeEncoding();
 
-            int byteCount = Unicode.GetByteCount (chars, 1, 2);
+            int byteCount = Unicode.GetByteCount(chars, 1, 2);
             bytes = new byte[byteCount];
-            int bytesEncodedCount = Unicode.GetBytes (chars, 1, 2, bytes, 0);
+            int bytesEncodedCount = Unicode.GetBytes(chars, 1, 2, bytes, 0);
 
             // At this point:
             //  byteCount           = 4
@@ -58,20 +58,20 @@ namespace PCLParaphernalia
                                        '\u03a3'  // Sigma
                                       };
 
-            UTF8Encoding utf8 = new UTF8Encoding ();
+            UTF8Encoding utf8 = new UTF8Encoding();
 
-            int byteCount = utf8.GetByteCount (chars, 1, 2);
+            int byteCount = utf8.GetByteCount(chars, 1, 2);
             bytes = new byte[byteCount];
-            int bytesEncodedCount = utf8.GetBytes (chars, 1, 2, bytes, 0);
+            int bytesEncodedCount = utf8.GetBytes(chars, 1, 2, bytes, 0);
 
             // At this point:
             //  byteCount           = 3
             //  bytesEncodedCount   = 3
             //  bytes[]             = { '\x23', '\xce', '\xa0' }
 
-            byteCount = utf8.GetByteCount (chars, 0, 2);
+            byteCount = utf8.GetByteCount(chars, 0, 2);
             bytes = new byte[byteCount];
-            bytesEncodedCount = utf8.GetBytes (chars, 0, 2, bytes, 0);
+            bytesEncodedCount = utf8.GetBytes(chars, 0, 2, bytes, 0);
 
             // At this point:
             //  byteCount           = 2
@@ -104,34 +104,34 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             bufStd[indxStd++] = escape;
-            bufStd[indxStd++] = (byte) '*';
-            bufStd[indxStd++] = (byte) 'p';
+            bufStd[indxStd++] = (byte)'*';
+            bufStd[indxStd++] = (byte)'p';
 
-            temp = coordX.ToString ();
-            textLen = (short) temp.Length;
+            temp = coordX.ToString();
+            textLen = (short)temp.Length;
 
             for (int i = 0; i < textLen; i++)
             {
-                bufStd[indxStd++] = (byte) temp[i];
+                bufStd[indxStd++] = (byte)temp[i];
             }
 
-            bufStd[indxStd++] = (byte) 'x';
+            bufStd[indxStd++] = (byte)'x';
 
-            temp = coordY.ToString ();
-            textLen = (short) temp.Length;
+            temp = coordY.ToString();
+            textLen = (short)temp.Length;
 
             for (int i = 0; i < textLen; i++)
             {
-                bufStd[indxStd++] = (byte) temp[i];
+                bufStd[indxStd++] = (byte)temp[i];
             }
 
-            bufStd[indxStd++] = (byte) 'Y';
+            bufStd[indxStd++] = (byte)'Y';
 
-            textLen = (short) text.Length;
+            textLen = (short)text.Length;
 
             for (int i = 0; i < textLen; i++)
             {
-                bufStd[indxStd++] = (byte) text[i];
+                bufStd[indxStd++] = (byte)text[i];
             }
 
             //----------------------------------------------------------------//

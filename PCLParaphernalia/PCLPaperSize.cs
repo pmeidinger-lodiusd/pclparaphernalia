@@ -63,16 +63,16 @@ namespace PCLParaphernalia
                             ushort marginsLogicalLand,
                             ushort marginsUnprintable)
         {
-            _paperSizeIndex     = sizeIndex;
+            _paperSizeIndex = sizeIndex;
             Name = name;
-            _paperSizeDesc      = desc;
-            _paperSizeIdPCL     = idPCL;
-            _paperSizeIdPCLXL   = idPCLXL;
+            _paperSizeDesc = desc;
+            _paperSizeIdPCL = idPCL;
+            _paperSizeIdPCLXL = idPCLXL;
             _paperSizeNamePCLXL = namePCLXL;
             IsMetricSize = isMetricSize;
-            _paperSizeIsRare    = isRareSize;
+            _paperSizeIsRare = isRareSize;
 
-            _sizeUnitsPerInch   = sizeUnitsPerInch;
+            _sizeUnitsPerInch = sizeUnitsPerInch;
             CustomShortEdge = sizeShortEdge;
             CustomLongEdge = sizeLongEdge;
             _marginsLogicalPort = marginsLogicalPort;
@@ -91,7 +91,7 @@ namespace PCLParaphernalia
 
         public void customDataCopy(PCLPaperSize customEntry)
         {
-            customEntry.customDataPaste (Name,
+            customEntry.customDataPaste(Name,
                                          IsMetricSize,
                                          _paperSizeIsRare,
                                          _sizeUnitsPerInch,
@@ -115,7 +115,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void customDataPaste (string donorName,
+        private void customDataPaste(string donorName,
                                       bool isMetricSize,
                                       bool isRareSize,
                                       ushort sizeUnitsPerInch,
@@ -128,9 +128,9 @@ namespace PCLParaphernalia
             _paperSizeDesc = donorName;
 
             IsMetricSize = isMetricSize;
-            _paperSizeIsRare    = isRareSize;
+            _paperSizeIsRare = isRareSize;
 
-            _sizeUnitsPerInch   = sizeUnitsPerInch;
+            _sizeUnitsPerInch = sizeUnitsPerInch;
             CustomShortEdge = sizeShortEdge;
             CustomLongEdge = sizeLongEdge;
             _marginsLogicalPort = marginsLogicalPort;
@@ -362,7 +362,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort getLogPageLength (ushort sessionUPI,
+        public ushort getLogPageLength(ushort sessionUPI,
                                         PCLOrientations.eAspect aspect)
         {
             if (aspect == PCLOrientations.eAspect.Portrait)
@@ -388,7 +388,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort getLogPageWidth (ushort sessionUPI,
+        public ushort getLogPageWidth(ushort sessionUPI,
                                        PCLOrientations.eAspect aspect)
         {
             if (aspect == PCLOrientations.eAspect.Portrait)

@@ -25,8 +25,8 @@ namespace PCLParaphernalia
         {
             TableTag = tag;
             _checksum = 0;
-            _offset   = 0;
-            _length   = 0;
+            _offset = 0;
+            _length = 0;
             _padBytes = 0;
         }
 
@@ -98,7 +98,7 @@ namespace PCLParaphernalia
 
         public uint TablePadLen
         {
-            get { return (uint) (_length + _padBytes); }
+            get { return (uint)(_length + _padBytes); }
         }
 
         //--------------------------------------------------------------------//
@@ -124,8 +124,8 @@ namespace PCLParaphernalia
         public void getByteRange(ref uint offset,
                                  ref uint length)
         {
-            offset   = _offset;
-            length   = _length;
+            offset = _offset;
+            length = _length;
         }
 
         //--------------------------------------------------------------------//
@@ -137,11 +137,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void initialise ()
+        public void initialise()
         {
             _checksum = 0;
-            _offset   = 0;
-            _length   = 0;
+            _offset = 0;
+            _length = 0;
             _padBytes = 0;
         }
 
@@ -160,8 +160,8 @@ namespace PCLParaphernalia
                                int padBytes)
         {
             _checksum = checksum;
-            _offset   = offset;
-            _length   = length;
+            _offset = offset;
+            _length = length;
             _padBytes = padBytes;
         }
 

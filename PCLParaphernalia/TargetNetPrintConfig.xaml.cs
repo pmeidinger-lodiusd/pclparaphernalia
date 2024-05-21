@@ -65,7 +65,7 @@ namespace PCLParaphernalia
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            metricsSave ();
+            metricsSave();
 
             DialogResult = true;
         }
@@ -81,15 +81,15 @@ namespace PCLParaphernalia
 
         private void initialise()
         {
-            TargetCore.metricsLoadNetPrinter (ref _printerAddress,
+            TargetCore.metricsLoadNetPrinter(ref _printerAddress,
                                               ref _printerPort,
                                               ref _timeoutSend,
                                               ref _timeoutReceive);
 
             txtPrinterAddress.Text = _printerAddress;
-            txtPrinterPort.Text    = _printerPort.ToString();
+            txtPrinterPort.Text = _printerPort.ToString();
 
-            txtTimeoutSend.Text    = _timeoutSend.ToString();
+            txtTimeoutSend.Text = _timeoutSend.ToString();
             txtTimeoutReceive.Text = _timeoutReceive.ToString();
 
             //----------------------------------------------------------------//
@@ -137,7 +137,7 @@ namespace PCLParaphernalia
 
         public void metricsSave()
         {
-            TargetCore.metricsSaveNetPrinter (_printerAddress,
+            TargetCore.metricsSaveNetPrinter(_printerAddress,
                                               _printerPort,
                                               _timeoutSend,
                                               _timeoutReceive);
@@ -182,7 +182,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtTimeoutReceive_TextChanged (object sender,
+        private void txtTimeoutReceive_TextChanged(object sender,
                                                     TextChangedEventArgs e)
         {
             _timeoutReceive = int.Parse(txtTimeoutReceive.Text);
@@ -197,7 +197,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtTimeoutSend_TextChanged (object sender,
+        private void txtTimeoutSend_TextChanged(object sender,
                                                  TextChangedEventArgs e)
         {
             _timeoutSend = int.Parse(txtTimeoutSend.Text);

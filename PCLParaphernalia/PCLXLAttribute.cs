@@ -53,23 +53,23 @@ namespace PCLParaphernalia
                               PrnParseConstants.eActPCLXL actionType,
                               PrnParseConstants.eOvlAct makeOvlAct,
                               string description)
-	    {
-            _tagLen            = tagLen;
-            _tagA              = tagA;
-            _tagB              = tagB;
+        {
+            _tagLen = tagLen;
+            _tagA = tagA;
+            _tagB = tagB;
             FlagReserved = flagReserved;
             FlagAttrEnum = flagAttrEnum;
             FlagOperEnum = flagOperEnum;
-            _flagUbyteTxt      = flagUbyteTxt;
-            _flagUintTxt       = flagUintTxt;
-            _flagValIsLen      = flagValIsLen;
-            _flagValIsPCL      = flagValIsPCL;
-            _actionType        = actionType;
-            this.makeOvlAct        = makeOvlAct;
+            _flagUbyteTxt = flagUbyteTxt;
+            _flagUintTxt = flagUintTxt;
+            _flagValIsLen = flagValIsLen;
+            _flagValIsPCL = flagValIsPCL;
+            _actionType = actionType;
+            this.makeOvlAct = makeOvlAct;
             Description = description;
 
             _statsCtParent = 0;
-            _statsCtChild  = 0;
+            _statsCtChild = 0;
         }
 
         //--------------------------------------------------------------------//
@@ -78,7 +78,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getDetails (
+        public void getDetails(
             ref bool flagReserved,
             ref bool flagAttrEnum,
             ref bool flagOperEnum,
@@ -90,15 +90,15 @@ namespace PCLParaphernalia
             ref PrnParseConstants.eOvlAct makeOvlAct,
             ref string description)
         {
-            flagReserved      = FlagReserved;
-            flagAttrEnum      = FlagAttrEnum;
-            flagOperEnum      = FlagOperEnum;
-            flagUbyteTxt      = _flagUbyteTxt;
-            flagUintTxt       = _flagUintTxt;
-            flagValIsLen      = _flagValIsLen;
-            flagValIsPCL      = _flagValIsPCL;
+            flagReserved = FlagReserved;
+            flagAttrEnum = FlagAttrEnum;
+            flagOperEnum = FlagOperEnum;
+            flagUbyteTxt = _flagUbyteTxt;
+            flagUintTxt = _flagUintTxt;
+            flagValIsLen = _flagValIsLen;
+            flagValIsPCL = _flagValIsPCL;
             makeOvlAct = this.makeOvlAct;
-            description       = Description;
+            description = Description;
         }
 
         //--------------------------------------------------------------------//

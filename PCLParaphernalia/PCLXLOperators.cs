@@ -41,98 +41,98 @@ namespace PCLParaphernalia
 
         public enum eTag : byte
         {
-            ArcPath                     = 0x91,
-            BeginChar                   = 0x52,
-            BeginFontHeader             = 0x4f,
-            BeginImage                  = 0xb0,
-            BeginPage                   = 0x43,
-            BeginRastPattern            = 0xb3,
-            BeginScan                   = 0xb6,
-            BeginSession                = 0x41,
-            BeginStream                 = 0x5b,
-            BezierPath                  = 0x93,
-            BezierRelPath               = 0x95,
-            Chord                       = 0x96,
-            ChordPath                   = 0x97,
-            CloseDataSource             = 0x49,
-            CloseSubPath                = 0x84,
-            Comment                     = 0x47,
-            EchoComment                 = 0x4a,
-            Ellipse                     = 0x98,
-            EllipsePath                 = 0x99,
-            EndChar                     = 0x54,
-            EndFontHeader               = 0x51,
-            EndImage                    = 0xb2,
-            EndPage                     = 0x44,
-            EndRastPattern              = 0xb5,
-            EndScan                     = 0xb8,
-            EndSession                  = 0x42,
-            EndStream                   = 0x5d,
-            ExecStream                  = 0x5e,
-            LinePath                    = 0x9b,
-            LineRelPath                 = 0x9d,
-            NewPath                     = 0x85,
-            OpenDataSource              = 0x48,
-            PaintPath                   = 0x86,
-            PassThrough                 = 0xbf,
-            Pie                         = 0x9e,
-            PiePath                     = 0x9f,
-            PopGS                       = 0x60,
-            PushGS                      = 0x61,
-            Query                       = 0x4b,
-            ReadChar                    = 0x53,
-            ReadFontHeader              = 0x50,
-            ReadImage                   = 0xb1,
-            ReadRastPattern             = 0xb4,
-            ReadStream                  = 0x5c,
-            Rectangle                   = 0xa0,
-            RectanglePath               = 0xa1,
-            RemoveFont                  = 0x55,
-            RemoveStream                = 0x5f,
-            RoundRectangle              = 0xa2,
-            RoundRectanglePath          = 0xa3,
-            ScanLineRel                 = 0xb9,
-            SetAdaptiveHalftoning       = 0x94,
-            SetBrushSource              = 0x63,
-            SetCharAngle                = 0x64,
-            SetCharAttributes           = 0x56,
-            SetCharBoldValue            = 0x7d,
-            SetCharScale                = 0x65,
-            SetCharShear                = 0x66,
-            SetCharSubMode              = 0x81,
-            SetClipIntersect            = 0x67,
-            SetClipMode                 = 0x7f,
-            SetClipRectangle            = 0x68,
-            SetClipReplace              = 0x62,
-            SetClipToPage               = 0x69,
-            SetColorSpace               = 0x6a,
-            SetColorTrapping            = 0x92,
-            SetColorTreatment           = 0x58,
-            SetCursor                   = 0x6b,
-            SetCursorRel                = 0x6c,
-            SetDefaultGS                = 0x57,
-            SetFillMode                 = 0x6e,
-            SetFont                     = 0x6f,
-            SetHalftoneMethod           = 0x6d,
-            SetLineCap                  = 0x71,
-            SetLineDash                 = 0x70,
-            SetLineJoin                 = 0x72,
-            SetMiterLimit               = 0x73,
-            SetNeutralAxis              = 0x7e,
-            SetPageDefaultCTM           = 0x74,
-            SetPageOrigin               = 0x75,
-            SetPageRotation             = 0x76,
-            SetPageScale                = 0x77,
-            SetPathToClip               = 0x80,
-            SetPatternTxMode            = 0x78,
-            SetPenSource                = 0x79,
-            SetPenWidth                 = 0x7a,
-            SetROP                      = 0x7b,
-            SetSourceTxMode             = 0x7c,
-            SystemText                  = 0xaa,
-            Text                        = 0xa8,
-            TextPath                    = 0xa9,
-            VendorUnique                = 0x46
+            ArcPath = 0x91,
+            BeginChar = 0x52,
+            BeginFontHeader = 0x4f,
+            BeginImage = 0xb0,
+            BeginPage = 0x43,
+            BeginRastPattern = 0xb3,
+            BeginScan = 0xb6,
+            BeginSession = 0x41,
+            BeginStream = 0x5b,
+            BezierPath = 0x93,
+            BezierRelPath = 0x95,
+            Chord = 0x96,
+            ChordPath = 0x97,
+            CloseDataSource = 0x49,
+            CloseSubPath = 0x84,
+            Comment = 0x47,
+            EchoComment = 0x4a,
+            Ellipse = 0x98,
+            EllipsePath = 0x99,
+            EndChar = 0x54,
+            EndFontHeader = 0x51,
+            EndImage = 0xb2,
+            EndPage = 0x44,
+            EndRastPattern = 0xb5,
+            EndScan = 0xb8,
+            EndSession = 0x42,
+            EndStream = 0x5d,
+            ExecStream = 0x5e,
+            LinePath = 0x9b,
+            LineRelPath = 0x9d,
+            NewPath = 0x85,
+            OpenDataSource = 0x48,
+            PaintPath = 0x86,
+            PassThrough = 0xbf,
+            Pie = 0x9e,
+            PiePath = 0x9f,
+            PopGS = 0x60,
+            PushGS = 0x61,
+            Query = 0x4b,
+            ReadChar = 0x53,
+            ReadFontHeader = 0x50,
+            ReadImage = 0xb1,
+            ReadRastPattern = 0xb4,
+            ReadStream = 0x5c,
+            Rectangle = 0xa0,
+            RectanglePath = 0xa1,
+            RemoveFont = 0x55,
+            RemoveStream = 0x5f,
+            RoundRectangle = 0xa2,
+            RoundRectanglePath = 0xa3,
+            ScanLineRel = 0xb9,
+            SetAdaptiveHalftoning = 0x94,
+            SetBrushSource = 0x63,
+            SetCharAngle = 0x64,
+            SetCharAttributes = 0x56,
+            SetCharBoldValue = 0x7d,
+            SetCharScale = 0x65,
+            SetCharShear = 0x66,
+            SetCharSubMode = 0x81,
+            SetClipIntersect = 0x67,
+            SetClipMode = 0x7f,
+            SetClipRectangle = 0x68,
+            SetClipReplace = 0x62,
+            SetClipToPage = 0x69,
+            SetColorSpace = 0x6a,
+            SetColorTrapping = 0x92,
+            SetColorTreatment = 0x58,
+            SetCursor = 0x6b,
+            SetCursorRel = 0x6c,
+            SetDefaultGS = 0x57,
+            SetFillMode = 0x6e,
+            SetFont = 0x6f,
+            SetHalftoneMethod = 0x6d,
+            SetLineCap = 0x71,
+            SetLineDash = 0x70,
+            SetLineJoin = 0x72,
+            SetMiterLimit = 0x73,
+            SetNeutralAxis = 0x7e,
+            SetPageDefaultCTM = 0x74,
+            SetPageOrigin = 0x75,
+            SetPageRotation = 0x76,
+            SetPageScale = 0x77,
+            SetPathToClip = 0x80,
+            SetPatternTxMode = 0x78,
+            SetPenSource = 0x79,
+            SetPenWidth = 0x7a,
+            SetROP = 0x7b,
+            SetSourceTxMode = 0x7c,
+            SystemText = 0xaa,
+            Text = 0xa8,
+            TextPath = 0xa9,
+            VendorUnique = 0x46
         }
 
         //--------------------------------------------------------------------//
@@ -168,7 +168,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkTag (
+        public static bool checkTag(
             byte tagToCheck,
             ref bool flagEndSession,
             ref bool flagReserved,
@@ -180,7 +180,7 @@ namespace PCLParaphernalia
 
             PCLXLOperator tag;
 
-            if (_tags.IndexOfKey (tagToCheck) != -1)
+            if (_tags.IndexOfKey(tagToCheck) != -1)
             {
                 seqKnown = true;
                 tag = _tags[tagToCheck];
@@ -191,7 +191,7 @@ namespace PCLParaphernalia
                 tag = _tagUnknown;
             }
 
-            tag.getDetails (ref flagEndSession,
+            tag.getDetails(ref flagEndSession,
                             ref flagReserved,
                             ref embedDataType,
                             ref makeOvlAct,
@@ -235,11 +235,11 @@ namespace PCLParaphernalia
             {
                 if (!hddrWritten)
                 {
-                    displayStatsCountsHddr (table);
+                    displayStatsCountsHddr(table);
                     hddrWritten = true;
                 }
 
-                row = table.NewRow ();
+                row = table.NewRow();
 
                 row[0] = _tagUnknown.Tag;
                 row[1] = _tagUnknown.Description;
@@ -247,7 +247,7 @@ namespace PCLParaphernalia
                 row[3] = _tagUnknown.StatsCtChild;
                 row[4] = _tagUnknown.StatsCtTotal;
 
-                table.Rows.Add (row);
+                table.Rows.Add(row);
             }
 
             //----------------------------------------------------------------//
@@ -271,11 +271,11 @@ namespace PCLParaphernalia
                 {
                     if (!hddrWritten)
                     {
-                        displayStatsCountsHddr (table);
+                        displayStatsCountsHddr(table);
                         hddrWritten = true;
                     }
 
-                    row = table.NewRow ();
+                    row = table.NewRow();
 
                     row[0] = kvp.Value.Tag;
                     row[1] = kvp.Value.Description;
@@ -283,7 +283,7 @@ namespace PCLParaphernalia
                     row[3] = kvp.Value.StatsCtChild;
                     row[4] = kvp.Value.StatsCtTotal;
 
-                    table.Rows.Add (row);
+                    table.Rows.Add(row);
                 }
             }
         }
@@ -301,7 +301,7 @@ namespace PCLParaphernalia
         {
             //----------------------------------------------------------------//
 
-            DataRow row = table.NewRow ();
+            DataRow row = table.NewRow();
 
             row[0] = string.Empty;
             row[1] = "_____________________";
@@ -309,9 +309,9 @@ namespace PCLParaphernalia
             row[3] = string.Empty;
             row[4] = string.Empty;
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
 
-            row = table.NewRow ();
+            row = table.NewRow();
 
             row[0] = string.Empty;
             row[1] = "PCL XL Operator tags:";
@@ -319,9 +319,9 @@ namespace PCLParaphernalia
             row[3] = string.Empty;
             row[4] = string.Empty;
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
 
-            row = table.NewRow ();
+            row = table.NewRow();
 
             row[0] = string.Empty;
             row[1] = "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯";
@@ -329,7 +329,7 @@ namespace PCLParaphernalia
             row[3] = string.Empty;
             row[4] = string.Empty;
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
         }
 
         //--------------------------------------------------------------------//
@@ -386,17 +386,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void incrementStatsCount (byte tagByte,
+        public static void incrementStatsCount(byte tagByte,
                                                 int level)
         {
             PCLXLOperator tag;
 
-            if (_tags.IndexOfKey (tagByte) != -1)
+            if (_tags.IndexOfKey(tagByte) != -1)
                 tag = _tags[tagByte];
             else
                 tag = _tagUnknown;
 
-            tag.incrementStatisticsCount (level);
+            tag.incrementStatisticsCount(level);
         }
 
         //--------------------------------------------------------------------//
@@ -410,8 +410,8 @@ namespace PCLParaphernalia
 
         private static void populateTable()
         {
-            const bool flagNone       = false;
-            const bool flagReserved   = true;
+            const bool flagNone = false;
+            const bool flagReserved = true;
             const bool flagEndSession = true;
 
             byte tag = 0x20;                                              // ?    //
@@ -421,28 +421,28 @@ namespace PCLParaphernalia
                                      PrnParseConstants.eOvlAct.None,
                                      "*** Unknown tag ***");
 
-            tag = (byte) eTag.BeginSession;                          // 0x41 //
+            tag = (byte)eTag.BeginSession;                          // 0x41 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.Replace_0x77,
                                      "BeginSession"));
 
-            tag = (byte) eTag.EndSession;                            // 0x42 //
+            tag = (byte)eTag.EndSession;                            // 0x42 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagEndSession, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.Remove,
                                      "EndSession"));
 
-            tag = (byte) eTag.BeginPage;                             // 0x43 //
+            tag = (byte)eTag.BeginPage;                             // 0x43 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.PageBegin,
                                      "BeginPage"));
 
-            tag = (byte) eTag.EndPage;                               // 0x44 //
+            tag = (byte)eTag.EndPage;                               // 0x44 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
@@ -456,42 +456,42 @@ namespace PCLParaphernalia
                                      PrnParseConstants.eOvlAct.None,
                                      "* Reserved *"));
 
-            tag = (byte) eTag.VendorUnique;                          // 0x46 //
+            tag = (byte)eTag.VendorUnique;                          // 0x46 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "VendorUnique"));
 
-            tag = (byte) eTag.Comment;                               // 0x47 //
+            tag = (byte)eTag.Comment;                               // 0x47 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "Comment"));
 
-            tag = (byte) eTag.OpenDataSource;                        // 0x48 //
+            tag = (byte)eTag.OpenDataSource;                        // 0x48 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.Remove,
                                      "OpenDataSource"));
 
-            tag = (byte) eTag.CloseDataSource;                       // 0x49 //
+            tag = (byte)eTag.CloseDataSource;                       // 0x49 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.Remove,
                                      "CloseDataSource"));
 
-            tag = (byte) eTag.EchoComment;                           // 0x4a //
+            tag = (byte)eTag.EchoComment;                           // 0x4a //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "EchoComment"));
 
-            tag = (byte) eTag.Query;                                 // 0x4b //
+            tag = (byte)eTag.Query;                                 // 0x4b //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
@@ -519,70 +519,70 @@ namespace PCLParaphernalia
                                      PrnParseConstants.eOvlAct.None,
                                      "* Reserved *"));
 
-            tag = (byte) eTag.BeginFontHeader;                       // 0x4f //
+            tag = (byte)eTag.BeginFontHeader;                       // 0x4f //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "BeginFontHeader"));
 
-            tag = (byte) eTag.ReadFontHeader;                        // 0x50 //
+            tag = (byte)eTag.ReadFontHeader;                        // 0x50 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.FontHeader,
                                      PrnParseConstants.eOvlAct.None,
                                      "ReadFontHeader"));
 
-            tag = (byte) eTag.EndFontHeader;                         // 0x51 //
+            tag = (byte)eTag.EndFontHeader;                         // 0x51 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "EndFontHeader"));
 
-            tag = (byte) eTag.BeginChar;                             // 0x52 //
+            tag = (byte)eTag.BeginChar;                             // 0x52 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "BeginChar"));
 
-            tag = (byte) eTag.ReadChar;                              // 0x53 //
+            tag = (byte)eTag.ReadChar;                              // 0x53 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.FontChar,
                                      PrnParseConstants.eOvlAct.None,
                                      "ReadChar"));
 
-            tag = (byte) eTag.EndChar;                               // 0x54 //
+            tag = (byte)eTag.EndChar;                               // 0x54 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "EndChar"));
 
-            tag = (byte) eTag.RemoveFont;                            // 0x55 //
+            tag = (byte)eTag.RemoveFont;                            // 0x55 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "RemoveFont"));
 
-            tag = (byte) eTag.SetCharAttributes;                     // 0x56 //
+            tag = (byte)eTag.SetCharAttributes;                     // 0x56 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetCharAttributes"));
 
-            tag = (byte) eTag.SetDefaultGS;                          // 0x57 //
+            tag = (byte)eTag.SetDefaultGS;                          // 0x57 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetDefaultGS"));
 
-            tag = (byte) eTag.SetColorTreatment;                     // 0x58 //
+            tag = (byte)eTag.SetColorTreatment;                     // 0x58 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
@@ -603,273 +603,273 @@ namespace PCLParaphernalia
                                      PrnParseConstants.eOvlAct.None,
                                      "* Reserved *"));
 
-            tag = (byte) eTag.BeginStream;                           // 0x5b //
+            tag = (byte)eTag.BeginStream;                           // 0x5b //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.Illegal,
                                      "BeginStream"));
 
-            tag = (byte) eTag.ReadStream;                            // 0x5c //
+            tag = (byte)eTag.ReadStream;                            // 0x5c //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.Stream,
                                      PrnParseConstants.eOvlAct.Illegal,
                                      "ReadStream"));
 
-            tag = (byte) eTag.EndStream;                             // 0x5d //
+            tag = (byte)eTag.EndStream;                             // 0x5d //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.Illegal,
                                      "EndStream"));
 
-            tag = (byte) eTag.ExecStream;                            // 0x5e //
+            tag = (byte)eTag.ExecStream;                            // 0x5e //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "ExecStream"));
 
-            tag = (byte) eTag.RemoveStream;                          // 0x5f //
+            tag = (byte)eTag.RemoveStream;                          // 0x5f //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "RemoveStream"));
 
-            tag = (byte) eTag.PopGS;                                 // 0x60 //
+            tag = (byte)eTag.PopGS;                                 // 0x60 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "PopGS"));
 
-            tag = (byte) eTag.PushGS;                                // 0x61 //
+            tag = (byte)eTag.PushGS;                                // 0x61 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "PushGS"));
 
-            tag = (byte) eTag.SetClipReplace;                        // 0x62 //
+            tag = (byte)eTag.SetClipReplace;                        // 0x62 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetClipReplace"));
 
-            tag = (byte) eTag.SetBrushSource;                        // 0x63 //
+            tag = (byte)eTag.SetBrushSource;                        // 0x63 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetBrushSource"));
 
-            tag = (byte) eTag.SetCharAngle;                          // 0x64 //
+            tag = (byte)eTag.SetCharAngle;                          // 0x64 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetCharAngle"));
 
-            tag = (byte) eTag.SetCharScale;                          // 0x65 //
+            tag = (byte)eTag.SetCharScale;                          // 0x65 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetCharScale"));
 
-            tag = (byte) eTag.SetCharShear;                          // 0x66 //
+            tag = (byte)eTag.SetCharShear;                          // 0x66 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetCharShear"));
 
-            tag = (byte) eTag.SetClipIntersect;                      // 0x67 //
+            tag = (byte)eTag.SetClipIntersect;                      // 0x67 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetClipIntersect"));
 
-            tag = (byte) eTag.SetClipRectangle;                      // 0x68 //
+            tag = (byte)eTag.SetClipRectangle;                      // 0x68 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetClipRectangle"));
 
-            tag = (byte) eTag.SetClipToPage;                         // 0x69 //
+            tag = (byte)eTag.SetClipToPage;                         // 0x69 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetClipToPage"));
 
-            tag = (byte) eTag.SetColorSpace;                         // 0x6a //
+            tag = (byte)eTag.SetColorSpace;                         // 0x6a //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetColorSpace"));
 
-            tag = (byte) eTag.SetCursor;                             // 0x6b //
+            tag = (byte)eTag.SetCursor;                             // 0x6b //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetCursor"));
 
-            tag = (byte) eTag.SetCursorRel;                          // 0x6c //
+            tag = (byte)eTag.SetCursorRel;                          // 0x6c //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetCursorRel"));
 
-            tag = (byte) eTag.SetHalftoneMethod;                     // 0x6d //
+            tag = (byte)eTag.SetHalftoneMethod;                     // 0x6d //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.DitherMatrix,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetHalftoneMethod"));
 
-            tag = (byte) eTag.SetFillMode;                           // 0x6e //
+            tag = (byte)eTag.SetFillMode;                           // 0x6e //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetFillMode"));
 
-            tag = (byte) eTag.SetFont;                               // 0x6f //
+            tag = (byte)eTag.SetFont;                               // 0x6f //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetFont"));
 
-            tag = (byte) eTag.SetLineDash;                           // 0x70 //
+            tag = (byte)eTag.SetLineDash;                           // 0x70 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetLineDash"));
 
-            tag = (byte) eTag.SetLineCap;                            // 0x71 //
+            tag = (byte)eTag.SetLineCap;                            // 0x71 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetLineCap"));
 
-            tag = (byte) eTag.SetLineJoin;                           // 0x72 //
+            tag = (byte)eTag.SetLineJoin;                           // 0x72 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetLineJoin"));
 
-            tag = (byte) eTag.SetMiterLimit;                         // 0x73 //
+            tag = (byte)eTag.SetMiterLimit;                         // 0x73 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetMiterLimit"));
 
-            tag = (byte) eTag.SetPageDefaultCTM;                     // 0x74 //
+            tag = (byte)eTag.SetPageDefaultCTM;                     // 0x74 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.Remove,
                                      "SetPageDefaultCTM"));
 
-            tag = (byte) eTag.SetPageOrigin;                         // 0x75 //
+            tag = (byte)eTag.SetPageOrigin;                         // 0x75 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetPageOrigin"));
 
-            tag = (byte) eTag.SetPageRotation;                       // 0x76 //
+            tag = (byte)eTag.SetPageRotation;                       // 0x76 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetPageRotation"));
 
-            tag = (byte) eTag.SetPageScale;                          // 0x77 //
+            tag = (byte)eTag.SetPageScale;                          // 0x77 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetPageScale"));
 
-            tag = (byte) eTag.SetPatternTxMode;                      // 0x78 //
+            tag = (byte)eTag.SetPatternTxMode;                      // 0x78 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetPatternTxMode"));
 
-            tag = (byte) eTag.SetPenSource;                          // 0x79 //
+            tag = (byte)eTag.SetPenSource;                          // 0x79 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetPenSource"));
 
-            tag = (byte) eTag.SetPenWidth;                           // 0x7a //
+            tag = (byte)eTag.SetPenWidth;                           // 0x7a //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetPenWidth"));
 
-            tag = (byte) eTag.SetROP;                                // 0x7b //
+            tag = (byte)eTag.SetROP;                                // 0x7b //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetROP"));
 
-            tag = (byte) eTag.SetSourceTxMode;                       // 0x7c //
+            tag = (byte)eTag.SetSourceTxMode;                       // 0x7c //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetSourceTxMode"));
 
-            tag = (byte) eTag.SetCharBoldValue;                      // 0x7d //
+            tag = (byte)eTag.SetCharBoldValue;                      // 0x7d //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetCharBoldValue"));
 
-            tag = (byte) eTag.SetNeutralAxis;                        // 0x7e //
+            tag = (byte)eTag.SetNeutralAxis;                        // 0x7e //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetNeutralAxis"));
 
-            tag = (byte) eTag.SetClipMode;                           // 0x7f //
+            tag = (byte)eTag.SetClipMode;                           // 0x7f //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetClipMode"));
 
-            tag = (byte) eTag.SetPathToClip;                         // 0x80 //
+            tag = (byte)eTag.SetPathToClip;                         // 0x80 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetPathToClip"));
 
-            tag = (byte) eTag.SetCharSubMode;                        // 0x81 //
+            tag = (byte)eTag.SetCharSubMode;                        // 0x81 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
@@ -890,21 +890,21 @@ namespace PCLParaphernalia
                                      PrnParseConstants.eOvlAct.None,
                                      "* Reserved *"));
 
-            tag = (byte) eTag.CloseSubPath;                          // 0x84 //
+            tag = (byte)eTag.CloseSubPath;                          // 0x84 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "CloseSubPath"));
 
-            tag = (byte) eTag.NewPath;                               // 0x85 //
+            tag = (byte)eTag.NewPath;                               // 0x85 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "NewPath"));
 
-            tag = (byte) eTag.PaintPath;                             // 0x86 //
+            tag = (byte)eTag.PaintPath;                             // 0x86 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
@@ -981,63 +981,63 @@ namespace PCLParaphernalia
                                      PrnParseConstants.eOvlAct.None,
                                      "* Reserved *"));
 
-            tag = (byte) eTag.ArcPath;                               // 0x91 //
+            tag = (byte)eTag.ArcPath;                               // 0x91 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "ArcPath"));
 
-            tag = (byte) eTag.SetColorTrapping;                      // 0x92 //
+            tag = (byte)eTag.SetColorTrapping;                      // 0x92 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetColorTrapping"));
 
-            tag = (byte) eTag.BezierPath;                            // 0x93 //
+            tag = (byte)eTag.BezierPath;                            // 0x93 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.Points,
                                      PrnParseConstants.eOvlAct.None,
                                      "BezierPath"));
 
-            tag = (byte) eTag.SetAdaptiveHalftoning;                 // 0x94 //
+            tag = (byte)eTag.SetAdaptiveHalftoning;                 // 0x94 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "SetAdaptiveHalftoning"));
 
-            tag = (byte) eTag.BezierRelPath;                         // 0x95 //
+            tag = (byte)eTag.BezierRelPath;                         // 0x95 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.Points,
                                      PrnParseConstants.eOvlAct.None,
                                      "BezierRelPath"));
 
-            tag = (byte) eTag.Chord;                                 // 0x96 //
+            tag = (byte)eTag.Chord;                                 // 0x96 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "Chord"));
 
-            tag = (byte) eTag.ChordPath;                             // 0x97 //
+            tag = (byte)eTag.ChordPath;                             // 0x97 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "ChordPath"));
 
-            tag = (byte) eTag.Ellipse;                               // 0x98 //
+            tag = (byte)eTag.Ellipse;                               // 0x98 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "Ellipse"));
 
-            tag = (byte) eTag.EllipsePath;                           // 0x99 //
+            tag = (byte)eTag.EllipsePath;                           // 0x99 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
@@ -1051,7 +1051,7 @@ namespace PCLParaphernalia
                                      PrnParseConstants.eOvlAct.None,
                                      "* Reserved *"));
 
-            tag = (byte) eTag.LinePath;                              // 0x9b //
+            tag = (byte)eTag.LinePath;                              // 0x9b //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.Points,
@@ -1065,49 +1065,49 @@ namespace PCLParaphernalia
                                      PrnParseConstants.eOvlAct.None,
                                      "* Reserved *"));
 
-            tag = (byte) eTag.LineRelPath;                           // 0x9d //
+            tag = (byte)eTag.LineRelPath;                           // 0x9d //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.Points,
                                      PrnParseConstants.eOvlAct.None,
                                      "LineRelPath"));
 
-            tag = (byte) eTag.Pie;                                   // 0x9e //
+            tag = (byte)eTag.Pie;                                   // 0x9e //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "Pie"));
 
-            tag = (byte) eTag.PiePath;                               // 0x9f //
+            tag = (byte)eTag.PiePath;                               // 0x9f //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "PiePath"));
 
-            tag = (byte) eTag.Rectangle;                             // 0xa0 //
+            tag = (byte)eTag.Rectangle;                             // 0xa0 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "Rectangle"));
 
-            tag = (byte) eTag.RectanglePath;                         // 0xa1 //
+            tag = (byte)eTag.RectanglePath;                         // 0xa1 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "RectanglePath"));
 
-            tag = (byte) eTag.RoundRectangle;                        // 0xa2 //
+            tag = (byte)eTag.RoundRectangle;                        // 0xa2 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "RoundRectangle"));
 
-            tag = (byte) eTag.RoundRectanglePath;                    // 0xa3 //
+            tag = (byte)eTag.RoundRectanglePath;                    // 0xa3 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
@@ -1142,21 +1142,21 @@ namespace PCLParaphernalia
                                      PrnParseConstants.eOvlAct.None,
                                      "* Reserved *"));
 
-            tag = (byte) eTag.Text;                                  // 0xa8 //
+            tag = (byte)eTag.Text;                                  // 0xa8 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "Text"));
 
-            tag = (byte) eTag.TextPath;                              // 0xa9 //
+            tag = (byte)eTag.TextPath;                              // 0xa9 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "TextPath"));
 
-            tag = (byte) eTag.SystemText;                            // 0xaa //
+            tag = (byte)eTag.SystemText;                            // 0xaa //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
@@ -1198,49 +1198,49 @@ namespace PCLParaphernalia
                                      PrnParseConstants.eOvlAct.None,
                                      "* Reserved *"));
 
-            tag = (byte) eTag.BeginImage;                            // 0xb0 //
+            tag = (byte)eTag.BeginImage;                            // 0xb0 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "BeginImage"));
 
-            tag = (byte) eTag.ReadImage;                             // 0xb1 //
+            tag = (byte)eTag.ReadImage;                             // 0xb1 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.Image,
                                      PrnParseConstants.eOvlAct.None,
                                      "ReadImage"));
 
-            tag = (byte) eTag.EndImage;                              // 0xb2 //
+            tag = (byte)eTag.EndImage;                              // 0xb2 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "EndImage"));
 
-            tag = (byte) eTag.BeginRastPattern;                      // 0xb3 //
+            tag = (byte)eTag.BeginRastPattern;                      // 0xb3 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "BeginRastPattern"));
 
-            tag = (byte) eTag.ReadRastPattern;                       // 0xb4 //
+            tag = (byte)eTag.ReadRastPattern;                       // 0xb4 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.RasterPattern,
                                      PrnParseConstants.eOvlAct.None,
                                      "ReadRastPattern"));
 
-            tag = (byte) eTag.EndRastPattern;                        // 0xb5 //
+            tag = (byte)eTag.EndRastPattern;                        // 0xb5 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "EndRastPattern"));
 
-            tag = (byte) eTag.BeginScan;                             // 0xb6 //
+            tag = (byte)eTag.BeginScan;                             // 0xb6 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.Scan,
@@ -1254,21 +1254,21 @@ namespace PCLParaphernalia
                                      PrnParseConstants.eOvlAct.None,
                                      "* Reserved *"));
 
-            tag = (byte) eTag.EndScan;                               // 0xb8 //
+            tag = (byte)eTag.EndScan;                               // 0xb8 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "EndScan"));
 
-            tag = (byte) eTag.ScanLineRel;                           // 0xb9 //
+            tag = (byte)eTag.ScanLineRel;                           // 0xb9 //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,
                                      PrnParseConstants.eOvlAct.None,
                                      "ScanLineRel"));
 
-            tag = (byte) eTag.PassThrough;                           // 0xbf //
+            tag = (byte)eTag.PassThrough;                           // 0xbf //
             _tags.Add(tag,
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.PassThrough,
@@ -1291,13 +1291,13 @@ namespace PCLParaphernalia
         {
             PCLXLOperator tag;
 
-            _tagUnknown.resetStatistics ();
+            _tagUnknown.resetStatistics();
 
             foreach (KeyValuePair<byte, PCLXLOperator> kvp in _tags)
             {
                 tag = kvp.Value;
 
-                tag.resetStatistics ();
+                tag.resetStatistics();
             }
         }
     }

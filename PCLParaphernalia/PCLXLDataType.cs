@@ -38,20 +38,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-	    public PCLXLDataType(byte tag,
+        public PCLXLDataType(byte tag,
                              bool flagReserved,
                              bool flagArray,
                              int groupSize,
                              int unitSize,
                              PCLXLDataTypes.eBaseType baseType,
                              string description)
-	    {
-            _tag           = tag;
+        {
+            _tag = tag;
             FlagReserved = flagReserved;
-            _flagArray     = flagArray;
-            _groupSize     = groupSize;
-            _unitSize      = unitSize;
-            _baseType      = baseType;
+            _flagArray = flagArray;
+            _groupSize = groupSize;
+            _unitSize = unitSize;
+            _baseType = baseType;
             Description = description;
 
             _statsCtParent = 0;
@@ -64,19 +64,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getDetails (ref bool flagReserved,
+        public void getDetails(ref bool flagReserved,
                                 ref bool flagArray,
                                 ref int groupSize,
                                 ref int unitSize,
                                 ref PCLXLDataTypes.eBaseType baseType,
                                 ref string description)
         {
-            flagReserved  = FlagReserved;
-            flagArray     = _flagArray;
-            groupSize     = _groupSize;
-            unitSize      = _unitSize;
-            baseType      = _baseType;
-	        description   = Description;
+            flagReserved = FlagReserved;
+            flagArray = _flagArray;
+            groupSize = _groupSize;
+            unitSize = _unitSize;
+            baseType = _baseType;
+            description = Description;
         }
 
         //--------------------------------------------------------------------//

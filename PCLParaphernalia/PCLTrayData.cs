@@ -32,10 +32,10 @@ namespace PCLParaphernalia
                            short idMaximum,
                            short idNotSet)
         {
-            _idDefault    = idDefault;
+            _idDefault = idDefault;
             _idAutoSelect = idAutoSelect;
-            _idMaximum    = idMaximum;
-            _idNotSet     = idNotSet;
+            _idMaximum = idMaximum;
+            _idNotSet = idNotSet;
         }
 
         //--------------------------------------------------------------------//

@@ -25,7 +25,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLXLPalette (string name,
+        public PCLXLPalette(string name,
                              bool flagMonochrome,
                              byte ctClrItems)
         {
@@ -33,11 +33,11 @@ namespace PCLParaphernalia
             Monochrome = flagMonochrome;
             CtClrItems = ctClrItems;
 
-            _colourIds   = new byte[ctClrItems];
+            _colourIds = new byte[ctClrItems];
             _colourNames = new string[ctClrItems];
-            _colourRGBs  = new int[ctClrItems];
+            _colourRGBs = new int[ctClrItems];
 
-            _crntClrItem  = 0;
+            _crntClrItem = 0;
             _clrItemBlack = 0;
             _clrItemWhite = 0;
         }
@@ -51,13 +51,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void addColour (string name,
+        public void addColour(string name,
                                int RGB,
                                byte id)
         {
             _colourNames[_crntClrItem] = name;
-            _colourRGBs[_crntClrItem]  = RGB;
-            _colourIds [_crntClrItem]  = id;
+            _colourRGBs[_crntClrItem] = RGB;
+            _colourIds[_crntClrItem] = id;
 
             _crntClrItem++;
         }
@@ -104,7 +104,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getColourName (int item)
+        public string getColourName(int item)
         {
             return _colourNames[item];
         }
@@ -118,9 +118,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte getColourId (int item)
+        public byte getColourId(int item)
         {
-            return _colourIds [item];
+            return _colourIds[item];
         }
 
         //--------------------------------------------------------------------//
@@ -132,7 +132,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int getColourRGB (int item)
+        public int getColourRGB(int item)
         {
             return _colourRGBs[item];
         }
@@ -147,7 +147,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getGrayLevel (byte item)
+        public string getGrayLevel(byte item)
         {
             if (item == 0)
             {
@@ -193,9 +193,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setClrItemBlack ()
+        public void setClrItemBlack()
         {
-            _clrItemBlack = (byte) (_crntClrItem - 1);
+            _clrItemBlack = (byte)(_crntClrItem - 1);
         }
 
         //--------------------------------------------------------------------//
@@ -207,9 +207,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setClrItemWhite ()
+        public void setClrItemWhite()
         {
-            _clrItemWhite = (byte) (_crntClrItem - 1);
+            _clrItemWhite = (byte)(_crntClrItem - 1);
         }
     }
 }

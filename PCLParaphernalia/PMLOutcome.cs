@@ -35,7 +35,7 @@ namespace PCLParaphernalia
         public PMLOutcome(byte tag,
                               string description)
         {
-            _tag         = tag;
+            _tag = tag;
             Description = description;
         }
 
@@ -133,7 +133,7 @@ namespace PCLParaphernalia
 
         public string Tag
         {
-            get { return "0x" + _tag.ToString ("x2"); }
+            get { return "0x" + _tag.ToString("x2"); }
         }
 
         //--------------------------------------------------------------------//

@@ -49,8 +49,8 @@ namespace PCLParaphernalia
             Max
         }
 
-        readonly FontFamily _fontFixed = new FontFamily ("Courier New");
-        readonly FontFamily _fontProp = new FontFamily ("Arial");
+        readonly FontFamily _fontFixed = new FontFamily("Courier New");
+        readonly FontFamily _fontProp = new FontFamily("Arial");
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -112,7 +112,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ToolPrintLang (ref ToolCommonData.ePrintLang crntPDL)
+        public ToolPrintLang(ref ToolCommonData.ePrintLang crntPDL)
         {
             InitializeComponent();
 
@@ -135,23 +135,23 @@ namespace PCLParaphernalia
             InfoType infoType = (InfoType)_indxType;
 
             if (infoType == InfoType.PCL)
-                displayPCLSeqs ();
+                displayPCLSeqs();
             else if (infoType == InfoType.HPGL2)
-                displayHPGL2Commands ();
+                displayHPGL2Commands();
             else if (infoType == InfoType.PCLXLTags)
-                displayPCLXLTags ();
+                displayPCLXLTags();
             else if (infoType == InfoType.PCLXLEnums)
-                displayPCLXLEnums ();
+                displayPCLXLEnums();
             else if (infoType == InfoType.PJLCmds)
-                displayPJLCmds ();
+                displayPJLCmds();
             else if (infoType == InfoType.PMLTags)
-                displayPMLTags ();
+                displayPMLTags();
             else if (infoType == InfoType.SymbolSets)
-                displaySymbolSetData ();
+                displaySymbolSetData();
             else if (infoType == InfoType.Fonts)
-                displayFontData ();
+                displayFontData();
             else if (infoType == InfoType.PaperSizes)
-                displayPaperSizeData ();
+                displayPaperSizeData();
             else if (infoType == InfoType.PrescribeCmds)
                 displayPrescribeCmds();
 
@@ -174,12 +174,12 @@ namespace PCLParaphernalia
             ReportCore.eRptFileFmt rptFileFmt = ReportCore.eRptFileFmt.NA;
             ReportCore.eRptChkMarks rptChkMarks = ReportCore.eRptChkMarks.NA;
 
-            TargetCore.metricsReturnFileRpt (ToolCommonData.eToolIds.PrintLang,
+            TargetCore.metricsReturnFileRpt(ToolCommonData.eToolIds.PrintLang,
                                              ref rptFileFmt,
                                              ref rptChkMarks,
                                              ref flagOptRptWrap);
 
-            ToolPrintLangReport.generate (_subsetTypes [_indxType],
+            ToolPrintLangReport.generate(_subsetTypes[_indxType],
                                           rptFileFmt,
                                           rptChkMarks,
                                           dgSeq,
@@ -671,7 +671,7 @@ namespace PCLParaphernalia
         {
             _flagPMLTagAction = true;
 
-            clearDetails ();
+            clearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -688,7 +688,7 @@ namespace PCLParaphernalia
         {
             _flagPMLTagAction = false;
 
-            clearDetails ();
+            clearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -705,7 +705,7 @@ namespace PCLParaphernalia
         {
             _flagPMLTagDataType = true;
 
-            clearDetails ();
+            clearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -722,7 +722,7 @@ namespace PCLParaphernalia
         {
             _flagPMLTagDataType = false;
 
-            clearDetails ();
+            clearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -739,7 +739,7 @@ namespace PCLParaphernalia
         {
             _flagPMLTagOutcome = true;
 
-            clearDetails ();
+            clearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -756,7 +756,7 @@ namespace PCLParaphernalia
         {
             _flagPMLTagOutcome = false;
 
-            clearDetails ();
+            clearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -769,15 +769,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkSymSetOptMap_Checked (object sender,
+        private void chkSymSetOptMap_Checked(object sender,
                                               RoutedEventArgs e)
         {
             _flagSymSetMap = true;
 
-        //  grpSymSetMapSet.Visibility = Visibility.Visible;
+            //  grpSymSetMapSet.Visibility = Visibility.Visible;
             grpSymSetMapType.Visibility = Visibility.Visible;
 
-            clearDetails ();
+            clearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -790,15 +790,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkSymSetOptMap_Unchecked (object sender,
+        private void chkSymSetOptMap_Unchecked(object sender,
                                                 RoutedEventArgs e)
         {
             _flagSymSetMap = false;
 
-       //   grpSymSetMapSet.Visibility = Visibility.Hidden;
+            //   grpSymSetMapSet.Visibility = Visibility.Hidden;
             grpSymSetMapType.Visibility = Visibility.Hidden;
 
-            clearDetails ();
+            clearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -833,13 +833,13 @@ namespace PCLParaphernalia
 
         private void displayFontData()
         {
-            setColsFonts ();
+            setColsFonts();
 
-            dgSeq.Items.Clear ();
+            dgSeq.Items.Clear();
 
-            _ctItems = PCLFonts.displayFontList (dgSeq);
+            _ctItems = PCLFonts.displayFontList(dgSeq);
 
-            txtCount.Text = _ctItems.ToString ();
+            txtCount.Text = _ctItems.ToString();
         }
 
         //--------------------------------------------------------------------//
@@ -853,14 +853,14 @@ namespace PCLParaphernalia
 
         private void displayHPGL2Commands()
         {
-            setColsHPGL2 ();
+            setColsHPGL2();
 
-            dgSeq.Items.Clear ();
+            dgSeq.Items.Clear();
 
             _ctItems = HPGL2Commands.displaySeqList(dgSeq);
 
             txtCount.Text = _ctItems.ToString();
-         }
+        }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -893,9 +893,9 @@ namespace PCLParaphernalia
 
         private void displayPCLSeqs()
         {
-            if ((! _flagPCLSeqSimple)  &&
-                (! _flagPCLSeqComplex) &&
-                (! _flagPCLSeqControl))
+            if ((!_flagPCLSeqSimple) &&
+                (!_flagPCLSeqComplex) &&
+                (!_flagPCLSeqControl))
             {
                 MessageBox.Show("At least one sequence type must be selected",
                                 "PCL sequence type selection",
@@ -904,9 +904,9 @@ namespace PCLParaphernalia
             }
             else
             {
-                setColsPCL ();
+                setColsPCL();
 
-                dgSeq.Items.Clear ();
+                dgSeq.Items.Clear();
 
                 _ctItems = 0;
 
@@ -934,9 +934,9 @@ namespace PCLParaphernalia
 
         private void displayPCLXLEnums()
         {
-            setColsPCLXLEnums ();
+            setColsPCLXLEnums();
 
-            dgSeq.Items.Clear ();
+            dgSeq.Items.Clear();
 
             _ctItems = PCLXLAttrEnums.DisplayTags(dgSeq);
 
@@ -954,12 +954,12 @@ namespace PCLParaphernalia
 
         private void displayPCLXLTags()
         {
-            if ((! _flagPCLXLTagDataType)      &&
-                (! _flagPCLXLTagAttribute)     &&
-                (! _flagPCLXLTagOperator)      &&
-                (! _flagPCLXLTagWhitespace)    &&
-                (! _flagPCLXLTagAttrDef)       &&
-                (! _flagPCLXLTagEmbedDataLen))
+            if ((!_flagPCLXLTagDataType) &&
+                (!_flagPCLXLTagAttribute) &&
+                (!_flagPCLXLTagOperator) &&
+                (!_flagPCLXLTagWhitespace) &&
+                (!_flagPCLXLTagAttrDef) &&
+                (!_flagPCLXLTagEmbedDataLen))
             {
                 MessageBox.Show("At least one tag type must be selected",
                                 "PCL XL tag type selection",
@@ -968,9 +968,9 @@ namespace PCLParaphernalia
             }
             else
             {
-                setColsPCLXLTags ();
+                setColsPCLXLTags();
 
-                dgSeq.Items.Clear ();
+                dgSeq.Items.Clear();
 
                 _ctItems = 0;
 
@@ -1007,13 +1007,13 @@ namespace PCLParaphernalia
 
         private void displayPJLCmds()
         {
-            setColsPJLCmds ();
+            setColsPJLCmds();
 
-            dgSeq.Items.Clear ();
+            dgSeq.Items.Clear();
 
-            _ctItems = PJLCommands.displayCmds (dgSeq);
+            _ctItems = PJLCommands.displayCmds(dgSeq);
 
-            txtCount.Text = _ctItems.ToString ();
+            txtCount.Text = _ctItems.ToString();
         }
 
         //--------------------------------------------------------------------//
@@ -1031,29 +1031,29 @@ namespace PCLParaphernalia
                 (!_flagPMLTagAction) &&
                 (!_flagPMLTagOutcome))
             {
-                MessageBox.Show ("At least one tag type must be selected",
+                MessageBox.Show("At least one tag type must be selected",
                                 "PML tag type selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
             }
             else
             {
-                setColsPMLTags ();
+                setColsPMLTags();
 
-                dgSeq.Items.Clear ();
+                dgSeq.Items.Clear();
 
                 _ctItems = 0;
 
                 if (_flagPMLTagDataType)
-                    _ctItems += PMLDataTypes.displayTags (dgSeq);
+                    _ctItems += PMLDataTypes.displayTags(dgSeq);
 
                 if (_flagPMLTagAction)
-                    _ctItems += PMLActions.displayTags (dgSeq);
+                    _ctItems += PMLActions.displayTags(dgSeq);
 
                 if (_flagPMLTagOutcome)
-                    _ctItems += PMLOutcomes.displayTags (dgSeq);
+                    _ctItems += PMLOutcomes.displayTags(dgSeq);
 
-                txtCount.Text = _ctItems.ToString ();
+                txtCount.Text = _ctItems.ToString();
             }
         }
 
@@ -1088,13 +1088,13 @@ namespace PCLParaphernalia
 
         private void displaySymbolSetData()
         {
-            setColsSymbolSets ();
+            setColsSymbolSets();
 
-            dgSeq.Items.Clear ();
+            dgSeq.Items.Clear();
 
-            _ctItems = PCLSymbolSets.DisplaySeqList (dgSeq);
+            _ctItems = PCLSymbolSets.DisplaySeqList(dgSeq);
 
-            txtCount.Text = _ctItems.ToString ();
+            txtCount.Text = _ctItems.ToString();
         }
 
         //--------------------------------------------------------------------//
@@ -1139,7 +1139,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            resetTarget ();
+            resetTarget();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1224,20 +1224,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsLoad ()
+        private void metricsLoad()
         {
             int tmpInt = 0;
 
-            ToolPrintLangPersist.loadDataCommon (ref _indxType,
+            ToolPrintLangPersist.loadDataCommon(ref _indxType,
                                                  ref _saveFilename);
 
-            ToolPrintLangPersist.loadDataPCL (ref _flagPCLSeqControl,
+            ToolPrintLangPersist.loadDataPCL(ref _flagPCLSeqControl,
                                               ref _flagPCLSeqSimple,
                                               ref _flagPCLSeqComplex,
                                               ref _flagPCLOptObsolete,
                                               ref _flagPCLOptDiscrete);
 
-            ToolPrintLangPersist.loadDataPCLXL (ref _flagPCLXLTagDataType,
+            ToolPrintLangPersist.loadDataPCLXL(ref _flagPCLXLTagDataType,
                                                 ref _flagPCLXLTagAttribute,
                                                 ref _flagPCLXLTagOperator,
                                                 ref _flagPCLXLTagAttrDef,
@@ -1245,24 +1245,24 @@ namespace PCLParaphernalia
                                                 ref _flagPCLXLTagWhitespace,
                                                 ref _flagPCLXLOptReserved);
 
-            ToolPrintLangPersist.loadDataPML (ref _flagPMLTagDataType,
+            ToolPrintLangPersist.loadDataPML(ref _flagPMLTagDataType,
                                               ref _flagPMLTagAction,
                                               ref _flagPMLTagOutcome);
 
-            ToolPrintLangPersist.loadDataFonts (ref _flagSymSetList);
+            ToolPrintLangPersist.loadDataFonts(ref _flagSymSetList);
 
-            ToolPrintLangPersist.loadDataSymSets (ref _flagSymSetMap,
+            ToolPrintLangPersist.loadDataSymSets(ref _flagSymSetMap,
                                                   ref tmpInt);
 
             //----------------------------------------------------------------//
 
             if ((_indxType < 0) || (_indxType >= _ctTypes))
-                _indxType = (int) InfoType.PCL;
+                _indxType = (int)InfoType.PCL;
 
-            if ((tmpInt < 0) || (tmpInt >= (int) SymSetMapType.Max))
+            if ((tmpInt < 0) || (tmpInt >= (int)SymSetMapType.Max))
                 _symSetMapType = SymSetMapType.Both;
             else
-                _symSetMapType = (SymSetMapType) tmpInt;
+                _symSetMapType = (SymSetMapType)tmpInt;
 
             //----------------------------------------------------------------//
 
@@ -1339,16 +1339,16 @@ namespace PCLParaphernalia
 
         public void metricsSave()
         {
-            ToolPrintLangPersist.saveDataCommon (_indxType,
+            ToolPrintLangPersist.saveDataCommon(_indxType,
                                                  _saveFilename);
 
-            ToolPrintLangPersist.saveDataPCL (_flagPCLSeqControl,
+            ToolPrintLangPersist.saveDataPCL(_flagPCLSeqControl,
                                               _flagPCLSeqSimple,
                                               _flagPCLSeqComplex,
                                               _flagPCLOptObsolete,
                                               _flagPCLOptDiscrete);
 
-            ToolPrintLangPersist.saveDataPCLXL (_flagPCLXLTagDataType,
+            ToolPrintLangPersist.saveDataPCLXL(_flagPCLXLTagDataType,
                                                 _flagPCLXLTagAttribute,
                                                 _flagPCLXLTagOperator,
                                                 _flagPCLXLTagAttrDef,
@@ -1356,14 +1356,14 @@ namespace PCLParaphernalia
                                                 _flagPCLXLTagWhitespace,
                                                 _flagPCLXLOptReserved);
 
-            ToolPrintLangPersist.saveDataPML (_flagPMLTagDataType,
+            ToolPrintLangPersist.saveDataPML(_flagPMLTagDataType,
                                               _flagPMLTagAction,
                                               _flagPMLTagOutcome);
 
-            ToolPrintLangPersist.saveDataFonts (_flagSymSetList);
+            ToolPrintLangPersist.saveDataFonts(_flagSymSetList);
 
-            ToolPrintLangPersist.saveDataSymSets (_flagSymSetMap,
-                                                  (int) _symSetMapType);
+            ToolPrintLangPersist.saveDataSymSets(_flagSymSetMap,
+                                                  (int)_symSetMapType);
         }
 
         //--------------------------------------------------------------------//
@@ -1383,7 +1383,7 @@ namespace PCLParaphernalia
 
             clearDetails();
 
-            setColsFonts ();
+            setColsFonts();
         }
 
         //--------------------------------------------------------------------//
@@ -1502,9 +1502,9 @@ namespace PCLParaphernalia
 
             tabInfoType.SelectedItem = tabPJLCmds;
 
-            clearDetails ();
+            clearDetails();
 
-            setColsPJLCmds ();
+            setColsPJLCmds();
         }
 
         //--------------------------------------------------------------------//
@@ -1522,9 +1522,9 @@ namespace PCLParaphernalia
 
             tabInfoType.SelectedItem = tabPMLTags;
 
-            clearDetails ();
+            clearDetails();
 
-            setColsPMLTags ();
+            setColsPMLTags();
         }
 
         //--------------------------------------------------------------------//
@@ -1536,16 +1536,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbSelTypePrescribeCmds_Click (object sender,
+        private void rbSelTypePrescribeCmds_Click(object sender,
                                                    RoutedEventArgs e)
         {
             _indxType = (int)InfoType.PrescribeCmds;
 
             tabInfoType.SelectedItem = tabPrescribeCmds;
 
-            clearDetails ();
+            clearDetails();
 
-            setColsPrescribeCmds ();
+            setColsPrescribeCmds();
         }
 
         //--------------------------------------------------------------------//
@@ -1563,9 +1563,9 @@ namespace PCLParaphernalia
 
             tabInfoType.SelectedItem = tabSymbolSets;
 
-            clearDetails ();
+            clearDetails();
 
-            setColsSymbolSets ();
+            setColsSymbolSets();
         }
 
         //--------------------------------------------------------------------//
@@ -1577,11 +1577,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbSymSetMapBoth_Click (object sender, RoutedEventArgs e)
+        private void rbSymSetMapBoth_Click(object sender, RoutedEventArgs e)
         {
             _symSetMapType = SymSetMapType.Both;
 
-            clearDetails ();
+            clearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -1593,11 +1593,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbSymSetMapPCL_Click (object sender, RoutedEventArgs e)
+        private void rbSymSetMapPCL_Click(object sender, RoutedEventArgs e)
         {
             _symSetMapType = SymSetMapType.PCL;
 
-            clearDetails ();
+            clearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -1609,11 +1609,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbSymSetMapStd_Click (object sender, RoutedEventArgs e)
+        private void rbSymSetMapStd_Click(object sender, RoutedEventArgs e)
         {
             _symSetMapType = SymSetMapType.Std;
 
-            clearDetails ();
+            clearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -1641,22 +1641,22 @@ namespace PCLParaphernalia
 
         private void setColsFonts()
         {
-            DataGridTextColumn colTypeface = new DataGridTextColumn ();
-            DataGridTextColumn colName = new DataGridTextColumn ();
-            DataGridTextColumn colSpacing = new DataGridTextColumn ();
+            DataGridTextColumn colTypeface = new DataGridTextColumn();
+            DataGridTextColumn colName = new DataGridTextColumn();
+            DataGridTextColumn colSpacing = new DataGridTextColumn();
             DataGridCheckBoxColumn colFlagScalable =
-                new DataGridCheckBoxColumn ();
-            DataGridTextColumn colBound = new DataGridTextColumn ();
-            DataGridTextColumn colPitch = new DataGridTextColumn ();
-            DataGridTextColumn colHeight = new DataGridTextColumn ();
+                new DataGridCheckBoxColumn();
+            DataGridTextColumn colBound = new DataGridTextColumn();
+            DataGridTextColumn colPitch = new DataGridTextColumn();
+            DataGridTextColumn colHeight = new DataGridTextColumn();
             DataGridCheckBoxColumn colFlagVar_R =
-                new DataGridCheckBoxColumn ();
+                new DataGridCheckBoxColumn();
             DataGridCheckBoxColumn colFlagVar_I =
-                new DataGridCheckBoxColumn ();
+                new DataGridCheckBoxColumn();
             DataGridCheckBoxColumn colFlagVar_B =
-                new DataGridCheckBoxColumn ();
+                new DataGridCheckBoxColumn();
             DataGridCheckBoxColumn colFlagVar_BI =
-                new DataGridCheckBoxColumn ();
+                new DataGridCheckBoxColumn();
             DataGridTextColumn colSymbolSets = null;
 
             if (_flagSymSetList)
@@ -1677,55 +1677,55 @@ namespace PCLParaphernalia
             colFlagVar_B.Header = "Bold?";
             colFlagVar_BI.Header = "Bold Italic?";
 
-            dgSeq.Columns.Clear ();
-            dgSeq.Columns.Add (colTypeface);
-            dgSeq.Columns.Add (colName);
-            dgSeq.Columns.Add (colSpacing);
-            dgSeq.Columns.Add (colFlagScalable);
-            dgSeq.Columns.Add (colBound);
-            dgSeq.Columns.Add (colPitch);
-            dgSeq.Columns.Add (colHeight);
-            dgSeq.Columns.Add (colFlagVar_R);
-            dgSeq.Columns.Add (colFlagVar_I);
-            dgSeq.Columns.Add (colFlagVar_B);
-            dgSeq.Columns.Add (colFlagVar_BI);
+            dgSeq.Columns.Clear();
+            dgSeq.Columns.Add(colTypeface);
+            dgSeq.Columns.Add(colName);
+            dgSeq.Columns.Add(colSpacing);
+            dgSeq.Columns.Add(colFlagScalable);
+            dgSeq.Columns.Add(colBound);
+            dgSeq.Columns.Add(colPitch);
+            dgSeq.Columns.Add(colHeight);
+            dgSeq.Columns.Add(colFlagVar_R);
+            dgSeq.Columns.Add(colFlagVar_I);
+            dgSeq.Columns.Add(colFlagVar_B);
+            dgSeq.Columns.Add(colFlagVar_BI);
 
             if (_flagSymSetList)
             {
                 dgSeq.Columns.Add(colSymbolSets);
             }
 
-            Binding bindId = new Binding ("Typeface");
+            Binding bindId = new Binding("Typeface");
             bindId.Mode = BindingMode.OneWay;
 
-            Binding bindName = new Binding ("Name");
+            Binding bindName = new Binding("Name");
             bindName.Mode = BindingMode.OneWay;
 
-            Binding bindSpacing = new Binding ("Spacing");
+            Binding bindSpacing = new Binding("Spacing");
             bindSpacing.Mode = BindingMode.OneWay;
 
-            Binding bindFlagScalable = new Binding ("Scalable");
+            Binding bindFlagScalable = new Binding("Scalable");
             bindFlagScalable.Mode = BindingMode.OneWay;
 
-            Binding bindBound = new Binding ("BoundSymbolSet");
+            Binding bindBound = new Binding("BoundSymbolSet");
             bindBound.Mode = BindingMode.OneWay;
 
-            Binding bindPitch = new Binding ("Pitch");
+            Binding bindPitch = new Binding("Pitch");
             bindPitch.Mode = BindingMode.OneWay;
 
-            Binding bindHeight = new Binding ("Height");
+            Binding bindHeight = new Binding("Height");
             bindHeight.Mode = BindingMode.OneWay;
 
-            Binding bindFlagVar_R = new Binding ("Var_Regular");
+            Binding bindFlagVar_R = new Binding("Var_Regular");
             bindFlagVar_R.Mode = BindingMode.OneWay;
 
-            Binding bindFlagVar_I = new Binding ("Var_Italic");
+            Binding bindFlagVar_I = new Binding("Var_Italic");
             bindFlagVar_I.Mode = BindingMode.OneWay;
 
-            Binding bindFlagVar_B = new Binding ("Var_Bold");
+            Binding bindFlagVar_B = new Binding("Var_Bold");
             bindFlagVar_B.Mode = BindingMode.OneWay;
 
-            Binding bindFlagVar_BI = new Binding ("Var_BoldItalic");
+            Binding bindFlagVar_BI = new Binding("Var_BoldItalic");
             bindFlagVar_BI.Mode = BindingMode.OneWay;
 
             Binding bindSymbolSets = null;
@@ -1759,7 +1759,8 @@ namespace PCLParaphernalia
             if (_flagSymSetList)
             {
                 colSymbolSets.FontFamily = _fontFixed;
-            }        }
+            }
+        }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -1772,7 +1773,7 @@ namespace PCLParaphernalia
 
         private void setColsHPGL2()
         {
-            DataGridTextColumn colMnemonic    = new DataGridTextColumn();
+            DataGridTextColumn colMnemonic = new DataGridTextColumn();
             DataGridTextColumn colDescription = new DataGridTextColumn();
 
             colMnemonic.Header = "Mnemonic";
@@ -1846,8 +1847,8 @@ namespace PCLParaphernalia
             Binding bindIdNamePCLXL = new Binding("IdNamePCLXL");
             bindIdNamePCLXL.Mode = BindingMode.OneWay;
 
-            colName.Binding  = bindName;
-            colDesc.Binding  = bindDesc;
+            colName.Binding = bindName;
+            colDesc.Binding = bindDesc;
             colEdgeShort.Binding = bindEdgeShort;
             colEdgeLong.Binding = bindEdgeLong;
             colIdPCL.Binding = bindIdPCL;
@@ -2011,39 +2012,39 @@ namespace PCLParaphernalia
             colType.Binding = bindType;
             colFlagReserved.Binding = bindFlagReserved;
             colDescription.Binding = bindDescription;
-        /*
-            BindingSource BS = new BindingSource();
-            DataTable testTable = new DataTable();
-            testTable.Columns.Add("Column1", typeof(int));
-            testTable.Columns.Add("Column2", typeof(string));
-            testTable.Columns.Add("Column3", typeof(string));
-            testTable.Rows.Add(1, "Value1", "Test1");
-            testTable.Rows.Add(2, "Value2", "Test2");
-            testTable.Rows.Add(2, "Value2", "Test1");
-            testTable.Rows.Add(3, "Value3", "Test3");
-            testTable.Rows.Add(4, "Value4", "Test4");
-            testTable.Rows.Add(4, "Value4", "Test3");
-            DataView view = testTable.DefaultView;
-            view.Sort = "Column2 ASC, Column3 ASC";
-         // Sorting Column 2 and column 3
-            BS.DataSource = view;
-            DataGridViewTextBoxColumn textColumn0 = new DataGridViewTextBoxColumn();
-            textColumn0.DataPropertyName = "Column1";
-            dataGridView1.Columns.Add(textColumn0);
-            textColumn0.SortMode = DataGridViewColumnSortMode.Programmatic;
-            textColumn0.HeaderCell.SortGlyphDirection = SortOrder.None;
-            DataGridViewTextBoxColumn textColumn1 = new DataGridViewTextBoxColumn();
-            textColumn1.DataPropertyName = "Column2";
-            dataGridView1.Columns.Add(textColumn1);
-            textColumn1.SortMode = DataGridViewColumnSortMode.Programmatic;
-            textColumn1.HeaderCell.SortGlyphDirection = SortOrder.Ascending;
-            DataGridViewTextBoxColumn textColumn2 = new DataGridViewTextBoxColumn();
-            textColumn2.DataPropertyName = "Column3";
-            dataGridView1.Columns.Add(textColumn2);
-            textColumn2.SortMode = DataGridViewColumnSortMode.Programmatic;
-            textColumn2.HeaderCell.SortGlyphDirection = SortOrder.Ascending;
-            dataGridView1.DataSource = BS;         
-        */
+            /*
+                BindingSource BS = new BindingSource();
+                DataTable testTable = new DataTable();
+                testTable.Columns.Add("Column1", typeof(int));
+                testTable.Columns.Add("Column2", typeof(string));
+                testTable.Columns.Add("Column3", typeof(string));
+                testTable.Rows.Add(1, "Value1", "Test1");
+                testTable.Rows.Add(2, "Value2", "Test2");
+                testTable.Rows.Add(2, "Value2", "Test1");
+                testTable.Rows.Add(3, "Value3", "Test3");
+                testTable.Rows.Add(4, "Value4", "Test4");
+                testTable.Rows.Add(4, "Value4", "Test3");
+                DataView view = testTable.DefaultView;
+                view.Sort = "Column2 ASC, Column3 ASC";
+             // Sorting Column 2 and column 3
+                BS.DataSource = view;
+                DataGridViewTextBoxColumn textColumn0 = new DataGridViewTextBoxColumn();
+                textColumn0.DataPropertyName = "Column1";
+                dataGridView1.Columns.Add(textColumn0);
+                textColumn0.SortMode = DataGridViewColumnSortMode.Programmatic;
+                textColumn0.HeaderCell.SortGlyphDirection = SortOrder.None;
+                DataGridViewTextBoxColumn textColumn1 = new DataGridViewTextBoxColumn();
+                textColumn1.DataPropertyName = "Column2";
+                dataGridView1.Columns.Add(textColumn1);
+                textColumn1.SortMode = DataGridViewColumnSortMode.Programmatic;
+                textColumn1.HeaderCell.SortGlyphDirection = SortOrder.Ascending;
+                DataGridViewTextBoxColumn textColumn2 = new DataGridViewTextBoxColumn();
+                textColumn2.DataPropertyName = "Column3";
+                dataGridView1.Columns.Add(textColumn2);
+                textColumn2.SortMode = DataGridViewColumnSortMode.Programmatic;
+                textColumn2.HeaderCell.SortGlyphDirection = SortOrder.Ascending;
+                dataGridView1.DataSource = BS;         
+            */
 
             dgSeq.FontFamily = _fontProp;
             colTag.FontFamily = _fontFixed;
@@ -2060,20 +2061,20 @@ namespace PCLParaphernalia
 
         private void setColsPJLCmds()
         {
-            DataGridTextColumn colCmd = new DataGridTextColumn ();
-            DataGridTextColumn colDescription = new DataGridTextColumn ();
+            DataGridTextColumn colCmd = new DataGridTextColumn();
+            DataGridTextColumn colDescription = new DataGridTextColumn();
 
             colCmd.Header = "Command";
             colDescription.Header = "Description";
 
-            dgSeq.Columns.Clear ();
-            dgSeq.Columns.Add (colCmd);
-            dgSeq.Columns.Add (colDescription);
+            dgSeq.Columns.Clear();
+            dgSeq.Columns.Add(colCmd);
+            dgSeq.Columns.Add(colDescription);
 
-            Binding bindCmd = new Binding ("Name");
+            Binding bindCmd = new Binding("Name");
             bindCmd.Mode = BindingMode.OneWay;
 
-            Binding bindDescription = new Binding ("Description");
+            Binding bindDescription = new Binding("Description");
             bindDescription.Mode = BindingMode.OneWay;
 
             colCmd.Binding = bindCmd;
@@ -2094,26 +2095,26 @@ namespace PCLParaphernalia
 
         private void setColsPMLTags()
         {
-            DataGridTextColumn colTag = new DataGridTextColumn ();
-            DataGridTextColumn colType = new DataGridTextColumn ();
-            DataGridTextColumn colDescription = new DataGridTextColumn ();
+            DataGridTextColumn colTag = new DataGridTextColumn();
+            DataGridTextColumn colType = new DataGridTextColumn();
+            DataGridTextColumn colDescription = new DataGridTextColumn();
 
             colTag.Header = "Tag value";
             colType.Header = "Type";
             colDescription.Header = "Description";
 
-            dgSeq.Columns.Clear ();
-            dgSeq.Columns.Add (colTag);
-            dgSeq.Columns.Add (colType);
-            dgSeq.Columns.Add (colDescription);
+            dgSeq.Columns.Clear();
+            dgSeq.Columns.Add(colTag);
+            dgSeq.Columns.Add(colType);
+            dgSeq.Columns.Add(colDescription);
 
-            Binding bindTag = new Binding ("Tag");
+            Binding bindTag = new Binding("Tag");
             bindTag.Mode = BindingMode.OneWay;
 
-            Binding bindType = new Binding ("Type");
+            Binding bindType = new Binding("Type");
             bindType.Mode = BindingMode.OneWay;
 
-            Binding bindDescription = new Binding ("Description");
+            Binding bindDescription = new Binding("Description");
             bindDescription.Mode = BindingMode.OneWay;
 
             colTag.Binding = bindTag;
@@ -2167,14 +2168,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setColsSymbolSets ()
+        private void setColsSymbolSets()
         {
-            DataGridTextColumn colGroup = new DataGridTextColumn ();
-            DataGridTextColumn colType = new DataGridTextColumn ();
-            DataGridTextColumn colId = new DataGridTextColumn ();
-            DataGridTextColumn colKind1 = new DataGridTextColumn ();
-            DataGridTextColumn colAlias = new DataGridTextColumn ();
-            DataGridTextColumn colName = new DataGridTextColumn ();
+            DataGridTextColumn colGroup = new DataGridTextColumn();
+            DataGridTextColumn colType = new DataGridTextColumn();
+            DataGridTextColumn colId = new DataGridTextColumn();
+            DataGridTextColumn colKind1 = new DataGridTextColumn();
+            DataGridTextColumn colAlias = new DataGridTextColumn();
+            DataGridTextColumn colName = new DataGridTextColumn();
             DataGridTextColumn colMapStd = null;
             DataGridTextColumn colMapPCL = null;
             DataGridTextColumn colMapDiff = null;
@@ -2187,31 +2188,31 @@ namespace PCLParaphernalia
             {
                 if (_symSetMapType == SymSetMapType.Both)
                 {
-                    colMapStd = new DataGridTextColumn ();
+                    colMapStd = new DataGridTextColumn();
                     colMapStd.Header = "Mapping (Strict)";
 
-                    colMapPCL = new DataGridTextColumn ();
+                    colMapPCL = new DataGridTextColumn();
                     colMapPCL.Header = "Mapping (LaserJet)";
 
-                    colMapDiff = new DataGridTextColumn ();
+                    colMapDiff = new DataGridTextColumn();
                     colMapDiff.Header = "Mapping (difference)";
                 }
                 else if (_symSetMapType == SymSetMapType.PCL)
                 {
-                    colMapPCL = new DataGridTextColumn ();
+                    colMapPCL = new DataGridTextColumn();
                     colMapPCL.Header = "Mapping (LaserJet)";
                 }
                 else
                 {
-                    colMapStd = new DataGridTextColumn ();
+                    colMapStd = new DataGridTextColumn();
                     colMapStd.Header = "Mapping (Strict)";
                 }
             }
             else
             {
-                colFlagMapStd = new DataGridCheckBoxColumn ();
+                colFlagMapStd = new DataGridCheckBoxColumn();
                 colFlagMapStd.Header = "Map (Strict)?";
-                colFlagMapPCL = new DataGridCheckBoxColumn ();
+                colFlagMapPCL = new DataGridCheckBoxColumn();
                 colFlagMapPCL.Header = "Map (Laserjet)?";
             }
 
@@ -2222,62 +2223,62 @@ namespace PCLParaphernalia
             colAlias.Header = "Alias";
             colName.Header = "Name";
 
-            dgSeq.Columns.Clear ();
-            dgSeq.Columns.Add (colGroup);
-            dgSeq.Columns.Add (colType);
-            dgSeq.Columns.Add (colId);
-            dgSeq.Columns.Add (colKind1);
-            dgSeq.Columns.Add (colAlias);
-            dgSeq.Columns.Add (colName);
+            dgSeq.Columns.Clear();
+            dgSeq.Columns.Add(colGroup);
+            dgSeq.Columns.Add(colType);
+            dgSeq.Columns.Add(colId);
+            dgSeq.Columns.Add(colKind1);
+            dgSeq.Columns.Add(colAlias);
+            dgSeq.Columns.Add(colName);
 
             if (showMaps)
             {
                 if (_symSetMapType == SymSetMapType.Both)
                 {
-                    dgSeq.Columns.Add (colMapStd);
-                    dgSeq.Columns.Add (colMapPCL);
-                    dgSeq.Columns.Add (colMapDiff);
+                    dgSeq.Columns.Add(colMapStd);
+                    dgSeq.Columns.Add(colMapPCL);
+                    dgSeq.Columns.Add(colMapDiff);
                 }
                 else if (_symSetMapType == SymSetMapType.PCL)
                 {
-                    dgSeq.Columns.Add (colMapPCL);
+                    dgSeq.Columns.Add(colMapPCL);
                 }
                 else
                 {
-                    dgSeq.Columns.Add (colMapStd);
+                    dgSeq.Columns.Add(colMapStd);
                 }
             }
             else
             {
-                dgSeq.Columns.Add (colFlagMapStd);
-                dgSeq.Columns.Add (colFlagMapPCL);
+                dgSeq.Columns.Add(colFlagMapStd);
+                dgSeq.Columns.Add(colFlagMapPCL);
             }
 
-            Binding bindGroup = new Binding ("Groupname");
+            Binding bindGroup = new Binding("Groupname");
             bindGroup.Mode = BindingMode.OneWay;
 
-            Binding bindType = new Binding ("TypeDescShort");
+            Binding bindType = new Binding("TypeDescShort");
             bindType.Mode = BindingMode.OneWay;
 
-            Binding bindId = new Binding ("Id");
+            Binding bindId = new Binding("Id");
             bindId.Mode = BindingMode.OneWay;
 
-            Binding bindKind1 = new Binding ("Kind1");
+            Binding bindKind1 = new Binding("Kind1");
             bindKind1.Mode = BindingMode.OneWay;
 
-            Binding bindAlias = new Binding ("Alias");
+            Binding bindAlias = new Binding("Alias");
             bindAlias.Mode = BindingMode.OneWay;
 
-            Binding bindName = new Binding ("Name");
+            Binding bindName = new Binding("Name");
             bindName.Mode = BindingMode.OneWay;
 
             if (showMaps)
             {
                 if (_symSetMapType == SymSetMapType.Both)
                 {
-                    var bindMapStd = new Binding ("MappingStd");
-                    var bindMapPCL = new Binding ("MappingPCL");
-                    var bindMapDiff = new Binding ("MappingDiff");
+                    var bindMapStd = new Binding("MappingStd");
+                    var bindMapPCL = new Binding("MappingPCL");
+                    var bindMapDiff = new Binding("MappingDiff");
 
                     bindMapStd.Mode = BindingMode.OneWay;
                     bindMapPCL.Mode = BindingMode.OneWay;
@@ -2289,24 +2290,24 @@ namespace PCLParaphernalia
                 }
                 else if (_symSetMapType == SymSetMapType.PCL)
                 {
-                    var bindMapPCL = new Binding ("MappingPCL");
+                    var bindMapPCL = new Binding("MappingPCL");
                     bindMapPCL.Mode = BindingMode.OneWay;
                     colMapPCL.Binding = bindMapPCL;
                 }
                 else
                 {
-                    var bindMapStd = new Binding ("MappingStd");
+                    var bindMapStd = new Binding("MappingStd");
                     bindMapStd.Mode = BindingMode.OneWay;
                     colMapStd.Binding = bindMapStd;
                 }
             }
             else
             {
-                var bindFlagMapStd = new Binding ("FlagMapStd");
+                var bindFlagMapStd = new Binding("FlagMapStd");
                 bindFlagMapStd.Mode = BindingMode.OneWay;
                 colFlagMapStd.Binding = bindFlagMapStd;
 
-                var bindFlagMapPCL = new Binding ("FlagMapPCL");
+                var bindFlagMapPCL = new Binding("FlagMapPCL");
                 bindFlagMapPCL.Mode = BindingMode.OneWay;
                 colFlagMapPCL.Binding = bindFlagMapPCL;
             }

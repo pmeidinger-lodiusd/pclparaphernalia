@@ -52,10 +52,10 @@ namespace PCLParaphernalia
             MacroLevel = macroLevel;
             PclxlEmbedType = pclxlEmbedType;
 
-            _contType              = PrnParseConstants.eContType.None;
-            _prefixLen             = 0;
+            _contType = PrnParseConstants.eContType.None;
+            _prefixLen = 0;
             DataLen = 0;
-            _downloadRem           = 0;
+            _downloadRem = 0;
 
             EntryCt = 0;
             EntryNo = 0;
@@ -63,11 +63,11 @@ namespace PCLParaphernalia
             EntrySz1 = 0;
             EntrySz2 = 0;
 
-            _backTrack             = false;
-            _prefixA               = 0x00;
-            _prefixB               = 0x00;
+            _backTrack = false;
+            _prefixA = 0x00;
+            _prefixB = 0x00;
 
-            _eof                   = false;
+            _eof = false;
 
             FileSize = 0;
 
@@ -83,7 +83,7 @@ namespace PCLParaphernalia
             MakeOvlXL = false;
             MakeOvlEncapsulate = false;
 
-            _pclComboStart         = -1;
+            _pclComboStart = -1;
             PclComboSeq = false;
             PclComboFirst = false;
             PclComboLast = false;
@@ -196,13 +196,13 @@ namespace PCLParaphernalia
                                 ref byte prefixA,
                                 ref byte prefixB)
         {
-            contType          = _contType;
-            prefixLen         = _prefixLen;
-            dataLen           = DataLen;
-            downloadRem       = _downloadRem;
-            backTrack         = _backTrack;
-            prefixA           = _prefixA;
-            prefixB           = _prefixB;
+            contType = _contType;
+            prefixLen = _prefixLen;
+            dataLen = DataLen;
+            downloadRem = _downloadRem;
+            backTrack = _backTrack;
+            prefixA = _prefixA;
+            prefixB = _prefixB;
         }
 
         //--------------------------------------------------------------------//
@@ -234,11 +234,11 @@ namespace PCLParaphernalia
                                     ref bool pclComboModified,
                                     ref long pclComboStart)
         {
-            pclComboSeq      = PclComboSeq;
-            pclComboFirst    = PclComboFirst;
-            pclComboLast     = PclComboLast;
+            pclComboSeq = PclComboSeq;
+            pclComboFirst = PclComboFirst;
+            pclComboLast = PclComboLast;
             pclComboModified = PclComboModified;
-            pclComboStart    = _pclComboStart;
+            pclComboStart = _pclComboStart;
         }
 
         //--------------------------------------------------------------------//
@@ -255,8 +255,8 @@ namespace PCLParaphernalia
                                   ref byte prefixB)
         {
             prefixLen = _prefixLen;
-            prefixA   = _prefixA;
-            prefixB   = _prefixB;
+            prefixA = _prefixA;
+            prefixB = _prefixB;
         }
 
         //--------------------------------------------------------------------//
@@ -480,13 +480,13 @@ namespace PCLParaphernalia
 
         public void resetContData()
         {
-            _contType            = PrnParseConstants.eContType.None;
-            _prefixLen           = 0;
+            _contType = PrnParseConstants.eContType.None;
+            _prefixLen = 0;
             DataLen = 0;
-            _downloadRem         = 0;
-            _backTrack           = false;
-            _prefixA             = 0x00;
-            _prefixB             = 0x00;
+            _downloadRem = 0;
+            _backTrack = false;
+            _prefixA = 0x00;
+            _prefixB = 0x00;
         }
 
         //--------------------------------------------------------------------//
@@ -504,7 +504,7 @@ namespace PCLParaphernalia
             PclComboFirst = false;
             PclComboLast = false;
             PclComboModified = false;
-            _pclComboStart       = -1;
+            _pclComboStart = -1;
         }
 
         //--------------------------------------------------------------------//
@@ -516,16 +516,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setBacktrack (PrnParseConstants.eContType contType,
+        public void setBacktrack(PrnParseConstants.eContType contType,
                                   int dataLen)
         {
-            _contType          = contType;
-            _prefixLen         = 0;
+            _contType = contType;
+            _prefixLen = 0;
             DataLen = dataLen;
-            _downloadRem       = 0;
-            _backTrack         = true;
-            _prefixA           = 0x20;
-            _prefixB           = 0x20;
+            _downloadRem = 0;
+            _backTrack = true;
+            _prefixA = 0x20;
+            _prefixB = 0x20;
         }
 
         //--------------------------------------------------------------------//
@@ -545,13 +545,13 @@ namespace PCLParaphernalia
                                 byte prefixA,
                                 byte prefixB)
         {
-            _contType          = contType;
-            _prefixLen         = prefixLen;
+            _contType = contType;
+            _prefixLen = prefixLen;
             DataLen = dataLen;
-            _downloadRem       = downloadRem;
-            _backTrack         = backTrack;
-            _prefixA           = prefixA;
-            _prefixB           = prefixB;
+            _downloadRem = downloadRem;
+            _backTrack = backTrack;
+            _prefixA = prefixA;
+            _prefixB = prefixB;
         }
 
         //--------------------------------------------------------------------//
@@ -563,15 +563,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setContinuation (PrnParseConstants.eContType contType)
+        public void setContinuation(PrnParseConstants.eContType contType)
         {
-            _contType          = contType;
-            _prefixLen         = 0;
+            _contType = contType;
+            _prefixLen = 0;
             DataLen = 0;
-            _downloadRem       = 0;
-            _backTrack         = false;
-            _prefixA           = 0x20;
-            _prefixB           = 0x20;
+            _downloadRem = 0;
+            _backTrack = false;
+            _prefixA = 0x20;
+            _prefixB = 0x20;
         }
 
         //--------------------------------------------------------------------//
@@ -607,7 +607,7 @@ namespace PCLParaphernalia
             PclComboFirst = pclComboFirst;
             PclComboLast = pclComboLast;
             PclComboModified = pclComboModified;
-            _pclComboStart    = pclComboStart;
+            _pclComboStart = pclComboStart;
         }
 
         //--------------------------------------------------------------------//

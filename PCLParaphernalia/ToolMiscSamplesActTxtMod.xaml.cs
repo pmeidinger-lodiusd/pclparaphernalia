@@ -190,7 +190,7 @@ namespace PCLParaphernalia
         {
             int tmpInt = 0;
 
-            ToolMiscSamplesPersist.loadDataTypeTxtMod (
+            ToolMiscSamplesPersist.loadDataTypeTxtMod(
                 "PCL",
                 ref tmpInt,
                 ref _flagTxtModFormAsMacroPCL);
@@ -202,7 +202,7 @@ namespace PCLParaphernalia
             else
                 _indxTxtModTypePCL = eTxtModType.Chr;
 
-            ToolMiscSamplesPersist.loadDataTypeTxtMod (
+            ToolMiscSamplesPersist.loadDataTypeTxtMod(
                 "PCLXL",
                 ref tmpInt,
                 ref _flagTxtModFormAsMacroPCLXL);
@@ -226,12 +226,12 @@ namespace PCLParaphernalia
 
         public void metricsSaveDataTxtMod()
         {
-            ToolMiscSamplesPersist.saveDataTypeTxtMod (
+            ToolMiscSamplesPersist.saveDataTypeTxtMod(
                 "PCL",
                 (int)_indxTxtModTypePCL,
                 _flagTxtModFormAsMacroPCL);
 
-            ToolMiscSamplesPersist.saveDataTypeTxtMod (
+            ToolMiscSamplesPersist.saveDataTypeTxtMod(
                 "PCLXL",
                 (int)_indxPatternTypePCLXL,
                 _flagTxtModFormAsMacroPCLXL);
@@ -246,7 +246,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbTxtModTypeChr_Click (object sender,
+        private void rbTxtModTypeChr_Click(object sender,
                                             RoutedEventArgs e)
         {
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
@@ -266,7 +266,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbTxtModTypePat_Click (object sender,
+        private void rbTxtModTypePat_Click(object sender,
                                             RoutedEventArgs e)
         {
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
@@ -286,7 +286,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbTxtModTypeRot_Click (object sender,
+        private void rbTxtModTypeRot_Click(object sender,
                                             RoutedEventArgs e)
         {
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
@@ -306,7 +306,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setFlagTxtModFormAsMacro (
+        private void setFlagTxtModFormAsMacro(
             bool setFlag,
             ToolCommonData.ePrintLang crntPDL)
         {

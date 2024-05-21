@@ -17,22 +17,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _hexChars          = "0123456789ABCDEF";
+        const string _hexChars = "0123456789ABCDEF";
 
-        const int _macroId            = 1;
-        const ushort _sessionUPI        = PCLWriter.sessionUPI;
+        const int _macroId = 1;
+        const ushort _sessionUPI = PCLWriter.sessionUPI;
 
-        const short _boxOuterEdge       = _sessionUPI * 1;
-        const short _rulerOriginX       = _sessionUPI * 1;
-        const short _rulerOriginY       = _sessionUPI * 1;
-        const short _rulerCell          = _sessionUPI * 1;
-        const short _rulerDiv           = _rulerCell / 5;
+        const short _boxOuterEdge = _sessionUPI * 1;
+        const short _rulerOriginX = _sessionUPI * 1;
+        const short _rulerOriginY = _sessionUPI * 1;
+        const short _rulerCell = _sessionUPI * 1;
+        const short _rulerDiv = _rulerCell / 5;
 
-        const short _posXHddr           = _rulerOriginX + (2 * _rulerDiv);
-        const short _posXDesc           = _rulerOriginX + (1 * _rulerDiv);
-        const short _posYHddr           = _rulerOriginY - (2 * _rulerDiv);
-        const short _posYText           = _rulerOriginY + (2 * _rulerDiv);
-        const short _posYDesc           = _rulerOriginY + (6 * _rulerDiv);
+        const short _posXHddr = _rulerOriginX + (2 * _rulerDiv);
+        const short _posXDesc = _rulerOriginX + (1 * _rulerDiv);
+        const short _posYHddr = _rulerOriginY - (2 * _rulerDiv);
+        const short _posYText = _rulerOriginY + (2 * _rulerDiv);
+        const short _posYDesc = _rulerOriginY + (6 * _rulerDiv);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -87,8 +87,8 @@ namespace PCLParaphernalia
 
             if (PCLPaperSizes.isCustomSize(indxPaperSize))
                 customPaperSize = true;
-    //      else if (PCLPaperSizes.getIdPCL(indxPaperSize) == 0xff)
-    //          customPaperSize = true;
+            //      else if (PCLPaperSizes.getIdPCL(indxPaperSize) == 0xff)
+            //          customPaperSize = true;
             else
                 customPaperSize = false;
 
@@ -102,7 +102,7 @@ namespace PCLParaphernalia
                                                         _sessionUPI, aspect);
 
             scaleTextLength = (float)paperLength / A4Length;
-            scaleTextWidth  = (float)paperWidth  / A4Width;
+            scaleTextWidth = (float)paperWidth / A4Width;
 
             if (scaleTextLength < scaleTextWidth)
                 scaleText = scaleTextLength;
@@ -190,14 +190,14 @@ namespace PCLParaphernalia
             }
 
             if (customPaperSize)
-                PCLWriter.pageHeaderCustom (prnWriter,
+                PCLWriter.pageHeaderCustom(prnWriter,
                                             indxPaperType,
                                             indxOrientation,
                                             indxPlexMode,
                                             paperWidth,
                                             paperLength);
             else
-                PCLWriter.pageHeader (prnWriter,
+                PCLWriter.pageHeader(prnWriter,
                                       indxPaperSize,
                                       indxPaperType,
                                       indxOrientation,
@@ -253,9 +253,9 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            rulerCellsX = (short)((paperWidth  / _sessionUPI) - 1);
+            rulerCellsX = (short)((paperWidth / _sessionUPI) - 1);
             rulerCellsY = (short)((paperLength / _sessionUPI) - 1);
-            rulerWidth  = (short)(rulerCellsX * _sessionUPI);
+            rulerWidth = (short)(rulerCellsX * _sessionUPI);
             rulerHeight = (short)(rulerCellsY * _sessionUPI);
 
             //----------------------------------------------------------------//
@@ -532,7 +532,7 @@ namespace PCLParaphernalia
                                        "12345678901234567890" +
                                        "12345678901234567890";
 
-            const double unitsToInches      = 1.00 / _sessionUPI;
+            const double unitsToInches = 1.00 / _sessionUPI;
             const double unitsToMilliMetres = 25.4 / _sessionUPI;
 
             const short bottomMargin = (short)(0.5 * _sessionUPI);
@@ -562,7 +562,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            squareRightX  = (short)(paperWidth  - _boxOuterEdge - logXOffset);
+            squareRightX = (short)(paperWidth - _boxOuterEdge - logXOffset);
             squareBottomY = (short)(paperLength - _boxOuterEdge);
 
             // Top-left.                                                      //
@@ -570,28 +570,28 @@ namespace PCLParaphernalia
             posX = 0;
             posY = 0;
 
-            generateSquare (prnWriter, posX, posY, false);
+            generateSquare(prnWriter, posX, posY, false);
 
             // Top-right.                                                     //
 
             posX = squareRightX;
             posY = 0;
 
-            generateSquare (prnWriter, posX, posY, false);
+            generateSquare(prnWriter, posX, posY, false);
 
             // Bottom-left.                                                   //
 
             posX = 0;
             posY = squareBottomY;
 
-            generateSquare (prnWriter, posX, posY, false);
+            generateSquare(prnWriter, posX, posY, false);
 
             // Bottom-right.                                                  //
 
             posX = squareRightX;
             posY = squareBottomY;
 
-            generateSquare (prnWriter, posX, posY, false);
+            generateSquare(prnWriter, posX, posY, false);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -713,7 +713,7 @@ namespace PCLParaphernalia
             posX = squareRightX;
             posY = (short)(((paperLength - _boxOuterEdge) / 2) - bottomMargin);
 
-            generateSquare (prnWriter, posX, posY, false);
+            generateSquare(prnWriter, posX, posY, false);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -761,10 +761,10 @@ namespace PCLParaphernalia
             else
                 scaler = 1;
 
-            boxOuterEdge    = (short)(_boxOuterEdge / scaler);
-            boxInnerEdge    = (short)(_boxOuterEdge / 3 / scaler);
-            boxInnerOffset  = (short)(_boxOuterEdge / 3 / scaler);
-            boxMarkerEdge   = (short)(_boxOuterEdge / 15 / scaler);
+            boxOuterEdge = (short)(_boxOuterEdge / scaler);
+            boxInnerEdge = (short)(_boxOuterEdge / 3 / scaler);
+            boxInnerOffset = (short)(_boxOuterEdge / 3 / scaler);
+            boxMarkerEdge = (short)(_boxOuterEdge / 15 / scaler);
             boxMarkerOffset = (short)((_boxOuterEdge -
                                         boxMarkerEdge) / 2 / scaler);
 

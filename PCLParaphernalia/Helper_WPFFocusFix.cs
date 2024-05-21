@@ -20,7 +20,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private delegate void MethodInvoker ();
+        private delegate void MethodInvoker();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -52,20 +52,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void Focus (UIElement element)
+        public static void Focus(UIElement element)
         {
-            ThreadPool.QueueUserWorkItem (delegate (object objName)
+            ThreadPool.QueueUserWorkItem(delegate (object objName)
             {
-                UIElement elem = (UIElement) objName;
+                UIElement elem = (UIElement)objName;
 
-                elem.Dispatcher.Invoke (DispatcherPriority.Normal,
+                elem.Dispatcher.Invoke(DispatcherPriority.Normal,
 
-                    (MethodInvoker) delegate ()
+                    (MethodInvoker)delegate ()
                     {
-                        elem.Focus ();
-                        Keyboard.Focus (elem);
+                        elem.Focus();
+                        Keyboard.Focus(elem);
                     });
-            }, element );
+            }, element);
         }
     }
 }

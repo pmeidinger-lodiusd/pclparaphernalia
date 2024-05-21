@@ -32,11 +32,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-	    public PCLXLWhitespace (byte tag,
+        public PCLXLWhitespace(byte tag,
                                 string mnemonic,
                                 string description)
-	    {
-            _tag           = tag;
+        {
+            _tag = tag;
             Mnemonic = mnemonic;
             Description = description;
 

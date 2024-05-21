@@ -54,11 +54,11 @@ namespace PCLParaphernalia
             PrnParseConstants.eSeqGrp seqGrp,
             string description)
         {
-            _keyPChar          = keyPChar;
-            _keyGChar          = keyGChar;
-            _keyTChar          = keyTChar;
+            _keyPChar = keyPChar;
+            _keyGChar = keyGChar;
+            _keyTChar = keyTChar;
 
-            _value             = value;
+            _value = value;
             ActionType = actionType;
 
             Description = description;
@@ -73,14 +73,14 @@ namespace PCLParaphernalia
             FlagDisplayHexVal = flagDisplayHexVal;
 
             this.makeOvlAct = makeOvlAct;
-            _seqGrp     = seqGrp;
+            _seqGrp = seqGrp;
 
             FlagValGeneric = value == PCLComplexSeqs._valueGeneric;
 
             FlagValVarious = value == PCLComplexSeqs._valueVarious;
 
             _statsCtParent = 0;
-            _statsCtChild  = 0;
+            _statsCtChild = 0;
         }
 
         //--------------------------------------------------------------------//
@@ -208,7 +208,7 @@ namespace PCLParaphernalia
         public void resetStatistics()
         {
             _statsCtParent = 0;
-            _statsCtChild  = 0;
+            _statsCtChild = 0;
         }
 
         //--------------------------------------------------------------------//
@@ -231,24 +231,24 @@ namespace PCLParaphernalia
                 if (FlagNilValue)
                 {
                     if (FlagNilGChar)
-                        seq = "<Esc>" + (char) _keyPChar +
-                                        (char) _keyTChar;
+                        seq = "<Esc>" + (char)_keyPChar +
+                                        (char)_keyTChar;
                     else
-                        seq = "<Esc>" + (char) _keyPChar +
-                                        (char) _keyGChar +
-                                        (char) _keyTChar;
+                        seq = "<Esc>" + (char)_keyPChar +
+                                        (char)_keyGChar +
+                                        (char)_keyTChar;
                 }
                 else if (FlagNilGChar)
                 {
-                    seq = "<Esc>" + (char) _keyPChar + "#" +
-                                    (char) _keyTChar +
+                    seq = "<Esc>" + (char)_keyPChar + "#" +
+                                    (char)_keyTChar +
                                     value;
                 }
                 else
                 {
-                    seq = "<Esc>" + (char) _keyPChar +
-                                    (char) _keyGChar + "#" +
-                                    (char) _keyTChar +
+                    seq = "<Esc>" + (char)_keyPChar +
+                                    (char)_keyGChar + "#" +
+                                    (char)_keyTChar +
                                     value;
                 }
 

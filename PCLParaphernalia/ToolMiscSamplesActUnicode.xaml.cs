@@ -53,34 +53,34 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbUnicodeCp_SelectionChanged (object sender,
+        private void cbUnicodeCp_SelectionChanged(object sender,
                                                    SelectionChangedEventArgs e)
         {
             if (_initialised)
             {
                 string utf8HexVal = string.Empty;
-                uint unicodeUCS2 = (uint) ((cbUnicodeCp01.SelectedIndex * 256) +
+                uint unicodeUCS2 = (uint)((cbUnicodeCp01.SelectedIndex * 256) +
                                          cbUnicodeCp02.SelectedIndex);
 
                 string unicodeBlock =
-                    UnicodeBlocks.getBlocknameForCodepoint (unicodeUCS2);
+                    UnicodeBlocks.getBlocknameForCodepoint(unicodeUCS2);
 
                 UnicodeCategory unicodeCat =
-                    CharUnicodeInfo.GetUnicodeCategory ((char) unicodeUCS2);
+                    CharUnicodeInfo.GetUnicodeCategory((char)unicodeUCS2);
 
                 if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                     _unicodeUCS2PCL = unicodeUCS2;
                 else
                     _unicodeUCS2PCLXL = unicodeUCS2;
 
-                PrnParseDataUTF8.convertUTF32ToUTF8HexString (unicodeUCS2,
+                PrnParseDataUTF8.convertUTF32ToUTF8HexString(unicodeUCS2,
                                                               true,
                                                               ref utf8HexVal);
 
                 txtUnicodeUTF8.Text = utf8HexVal;
 
                 txtUnicodeBlock.Text = unicodeBlock;
-                txtUnicodeCat.Text   = unicodeCat.ToString ();
+                txtUnicodeCat.Text = unicodeCat.ToString();
             }
         }
 
@@ -108,7 +108,7 @@ namespace PCLParaphernalia
                     else
                         _indxUnicodeFontPCL = indxFont;
 
-                    setFontOptionsVariants (_indxUnicodeFontPCL,
+                    setFontOptionsVariants(_indxUnicodeFontPCL,
                                             samePreset,
                                             ref _unicodeFontVarPCL);
                 }
@@ -119,7 +119,7 @@ namespace PCLParaphernalia
                     else
                         _indxUnicodeFontPCLXL = indxFont;
 
-                    setFontOptionsVariants (_indxUnicodeFontPCLXL,
+                    setFontOptionsVariants(_indxUnicodeFontPCLXL,
                                             samePreset,
                                             ref _unicodeFontVarPCLXL);
                 }
@@ -193,12 +193,12 @@ namespace PCLParaphernalia
 
                 cbUnicodeFont.SelectedIndex = _indxUnicodeFontPCL;
 
-                setFontOptionsVariants (_indxUnicodeFontPCL,
+                setFontOptionsVariants(_indxUnicodeFontPCL,
                                         true,
                                         ref _unicodeFontVarPCL);
 
-                cbUnicodeCp01.SelectedIndex = (int) (_unicodeUCS2PCL / 256);
-                cbUnicodeCp02.SelectedIndex = (int) (_unicodeUCS2PCL % 256);
+                cbUnicodeCp01.SelectedIndex = (int)(_unicodeUCS2PCL / 256);
+                cbUnicodeCp02.SelectedIndex = (int)(_unicodeUCS2PCL % 256);
 
                 chkOptFormAsMacro.IsChecked = _flagUnicodeFormAsMacroPCL;
             }
@@ -212,19 +212,19 @@ namespace PCLParaphernalia
 
                 cbUnicodeFont.SelectedIndex = _indxUnicodeFontPCLXL;
 
-                setFontOptionsVariants (_indxUnicodeFontPCLXL,
+                setFontOptionsVariants(_indxUnicodeFontPCLXL,
                                         true,
                                         ref _unicodeFontVarPCLXL);
 
-                cbUnicodeCp01.SelectedIndex = (int) (_unicodeUCS2PCLXL / 256);
-                cbUnicodeCp02.SelectedIndex = (int) (_unicodeUCS2PCLXL % 256);
+                cbUnicodeCp01.SelectedIndex = (int)(_unicodeUCS2PCLXL / 256);
+                cbUnicodeCp02.SelectedIndex = (int)(_unicodeUCS2PCLXL % 256);
 
                 chkOptFormAsMacro.IsChecked = _flagUnicodeFormAsMacroPCLXL;
             }
 
             _initialised = true;
 
-            initialiseDescUnicode ();
+            initialiseDescUnicode();
 
             cbUnicodeCp_SelectionChanged(this, null);
         }
@@ -238,7 +238,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseDescUnicode ()
+        private void initialiseDescUnicode()
         {
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
             {
@@ -318,23 +318,23 @@ namespace PCLParaphernalia
         {
             int tmpInt = 0;
 
-            ToolMiscSamplesPersist.loadDataTypeUnicode (
+            ToolMiscSamplesPersist.loadDataTypeUnicode(
                 "PCL",
                 ref _indxUnicodeFontPCL,
                 ref _unicodeFontVarPCL,
                 ref tmpInt,
                 ref _flagUnicodeFormAsMacroPCL);
 
-            _unicodeUCS2PCL = (uint) tmpInt;
+            _unicodeUCS2PCL = (uint)tmpInt;
 
-            ToolMiscSamplesPersist.loadDataTypeUnicode (
+            ToolMiscSamplesPersist.loadDataTypeUnicode(
                 "PCLXL",
                 ref _indxUnicodeFontPCLXL,
                 ref _unicodeFontVarPCLXL,
                 ref tmpInt,
                 ref _flagUnicodeFormAsMacroPCLXL);
 
-            _unicodeUCS2PCLXL = (uint) tmpInt;
+            _unicodeUCS2PCLXL = (uint)tmpInt;
         }
 
         //--------------------------------------------------------------------//
@@ -349,18 +349,18 @@ namespace PCLParaphernalia
 
         public void metricsSaveDataUnicode()
         {
-            ToolMiscSamplesPersist.saveDataTypeUnicode (
+            ToolMiscSamplesPersist.saveDataTypeUnicode(
                 "PCL",
                 _indxUnicodeFontPCL,
                 _unicodeFontVarPCL,
-                (int) _unicodeUCS2PCL,
+                (int)_unicodeUCS2PCL,
                 _flagUnicodeFormAsMacroPCL);
 
-            ToolMiscSamplesPersist.saveDataTypeUnicode (
+            ToolMiscSamplesPersist.saveDataTypeUnicode(
                 "PCLXL",
                 _indxUnicodeFontPCLXL,
                 _unicodeFontVarPCLXL,
-                (int) _unicodeUCS2PCLXL,
+                (int)_unicodeUCS2PCLXL,
                 _flagUnicodeFormAsMacroPCLXL);
         }
 
@@ -442,7 +442,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setFlagUnicodeFormAsMacro (
+        private void setFlagUnicodeFormAsMacro(
             bool setFlag,
             ToolCommonData.ePrintLang crntPDL)
         {
@@ -467,7 +467,7 @@ namespace PCLParaphernalia
         //                                                                    // 
         //--------------------------------------------------------------------//
 
-        private void setFontOptionsVariants (int indxFont,
+        private void setFontOptionsVariants(int indxFont,
                                              bool samePreset,
                                              ref PCLFonts.eVariant fontVar)
         {
@@ -495,16 +495,16 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            varR = PCLFonts.variantExists (fontIndx,
+            varR = PCLFonts.variantExists(fontIndx,
                                            PCLFonts.eVariant.Regular);
 
-            varI = PCLFonts.variantExists (fontIndx,
+            varI = PCLFonts.variantExists(fontIndx,
                                            PCLFonts.eVariant.Italic);
 
-            varB = PCLFonts.variantExists (fontIndx,
+            varB = PCLFonts.variantExists(fontIndx,
                                            PCLFonts.eVariant.Bold);
 
-            varBI = PCLFonts.variantExists (fontIndx,
+            varBI = PCLFonts.variantExists(fontIndx,
                                             PCLFonts.eVariant.BoldItalic);
 
             //----------------------------------------------------------------//

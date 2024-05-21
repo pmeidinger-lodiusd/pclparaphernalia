@@ -44,7 +44,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static readonly List<PCLSymbolSet> _sets =
-            new List<PCLSymbolSet> ();
+            new List<PCLSymbolSet>();
 
         private static int _indxSymbol;
         private static int _indxUnbound;
@@ -86,17 +86,17 @@ namespace PCLParaphernalia
 
             foreach (PCLSymbolSet v in _sets)
             {
-                if ((v.Group == SymSetGroup.Preset)  ||
+                if ((v.Group == SymSetGroup.Preset) ||
                     (v.Group == SymSetGroup.Unicode) ||
                     (v.Group == SymSetGroup.Unbound))
                 {
                     count++;
-                    grid.Items.Add (v);
+                    grid.Items.Add(v);
                 }
                 else if (v.Group == SymSetGroup.NonStd)
                 {
                     count++;
-                    grid.Items.Add (v);
+                    grid.Items.Add(v);
                 }
             }
 
@@ -126,7 +126,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCountMapped ()
+        public static int GetCountMapped()
         {
             return _setsCountMapped;
         }
@@ -140,7 +140,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCountStd ()
+        public static int GetCountStd()
         {
             return _setsCountStd;
         }
@@ -155,7 +155,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCountUserSet ()
+        public static int GetCountUserSet()
         {
             return _setsCountUserSet;
         }
@@ -169,9 +169,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static SymSetGroup GetGroup (int selection)
+        public static SymSetGroup GetGroup(int selection)
         {
-            return _sets [selection].Group;
+            return _sets[selection].Group;
         }
 
         //--------------------------------------------------------------------//
@@ -231,8 +231,8 @@ namespace PCLParaphernalia
         {
             for (int i = 0; i < _setsCountTotal; i++)
             {
-                if ((GetKind1 (i) == kind1) &&
-                    (GetGroup (i) != SymSetGroup.UserSet))
+                if ((GetKind1(i) == kind1) &&
+                    (GetGroup(i) != SymSetGroup.UserSet))
                 {
                     return i;
                 }
@@ -258,7 +258,7 @@ namespace PCLParaphernalia
             int index = GetIndexForId(kind1);
 
             if (index == -1)
-                name =  "unknown";
+                name = "unknown";
             else
                 name = GetName(index);
         }
@@ -272,16 +272,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void GetIndicesMapped (int firstIndex,
+        public static void GetIndicesMapped(int firstIndex,
                                              ref int[] subset)
         {
             int index = firstIndex;
 
             for (int i = 0; i < _setsCountTotal; i++)
             {
-                if (_sets [i].FlagMapped)
+                if (_sets[i].FlagMapped)
                 {
-                    subset [index] = i;
+                    subset[index] = i;
 
                     index++;
                 }
@@ -313,7 +313,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort GetMapArrayMax (int selection)
+        public static ushort GetMapArrayMax(int selection)
         {
             return _sets[selection].MapArrayMax;
         }
@@ -328,7 +328,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort[] GetMapArray (int selection,
+        public static ushort[] GetMapArray(int selection,
                                              bool flagMapPCL)
         {
             if (_sets[selection].Group == SymSetGroup.UserSet)
@@ -363,9 +363,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort[] GetMapArrayUserSet ()
+        public static ushort[] GetMapArrayUserSet()
         {
-            return _sets [_indxUserSet].MapArrayUserSet;
+            return _sets[_indxUserSet].MapArrayUserSet;
         }
 
         //--------------------------------------------------------------------//
@@ -413,7 +413,7 @@ namespace PCLParaphernalia
                                             ref ushort idNum,
                                             ref string name)
         {
-            bool symsetPresent = _sets[selection].getSymsetData (ref kind1,
+            bool symsetPresent = _sets[selection].getSymsetData(ref kind1,
                                                             ref idNum,
                                                             ref name);
 
@@ -437,7 +437,7 @@ namespace PCLParaphernalia
                                                       ref ushort idNum,
                                                       ref string name)
         {
-            bool symsetPresent = _sets[selection].getSymsetDataForIdAlpha (idAlpha,
+            bool symsetPresent = _sets[selection].getSymsetDataForIdAlpha(idAlpha,
                                                                       ref kind1,
                                                                       ref idNum,
                                                                       ref name);
@@ -456,7 +456,7 @@ namespace PCLParaphernalia
 
         public static PCLSymSetTypes.Index GetType(int selection)
         {
-            return _sets [selection].Type;
+            return _sets[selection].Type;
         }
 
         //--------------------------------------------------------------------//
@@ -471,7 +471,7 @@ namespace PCLParaphernalia
         public static int IndexSymbol
         {
             get { return _indxSymbol; }
-        //    set { _indxSymbol = value; }
+            //    set { _indxSymbol = value; }
         }
 
         //--------------------------------------------------------------------//
@@ -486,7 +486,7 @@ namespace PCLParaphernalia
         public static int IndexUnicode
         {
             get { return _indxUnicode; }
-        //    set { _indxUnicode = value; }
+            //    set { _indxUnicode = value; }
         }
 
         //--------------------------------------------------------------------//
@@ -501,7 +501,7 @@ namespace PCLParaphernalia
         public static int IndexUserSet
         {
             get { return _indxUserSet; }
-        //    set { _indxUserSet = value; }
+            //    set { _indxUserSet = value; }
         }
 
         //--------------------------------------------------------------------//
@@ -516,7 +516,7 @@ namespace PCLParaphernalia
         public static int IndexUnbound
         {
             get { return _indxUnbound; }
-        //    set { _indxUnbound = value; }
+            //    set { _indxUnbound = value; }
         }
 
         //--------------------------------------------------------------------//
@@ -529,7 +529,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool NullMapPCL (int selection)
+        public static bool NullMapPCL(int selection)
         {
             return _sets[selection].NullMapPCL;
         }
@@ -563,7 +563,7 @@ namespace PCLParaphernalia
         {
             SymSetGroup group;
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Unbound,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Unbound,
                                          PCLSymSetTypes.Index.Unbound_Unicode,
                                          PCLTextParsingMethods.Index.m83_UTF8,
                                          56,                         //    1X //
@@ -574,7 +574,7 @@ namespace PCLParaphernalia
 
             _indxUnbound = _sets.Count - 1;
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Symbol,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Symbol,
                                          PCLSymSetTypes.Index.Bound_PC8,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          0,                          //    ?? // 
@@ -585,7 +585,7 @@ namespace PCLParaphernalia
 
             _indxSymbol = _sets.Count - 1;
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Custom,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Custom,
                                          PCLSymSetTypes.Index.Unknown,
                                          PCLTextParsingMethods.Index.not_specified,
                                          0,                          //    ?? //
@@ -594,7 +594,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          278,                        //    8V //
@@ -603,7 +603,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_8V));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          57,                         //    1Y //
@@ -612,7 +612,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          153,                        //    4Y //
@@ -621,7 +621,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          89,                         //    2Y //
@@ -630,7 +630,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          25,                         //    0Y //
@@ -639,7 +639,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          185,                        //    5Y //
@@ -648,7 +648,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          249,                        //    7Y //
@@ -657,7 +657,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          217,                        //    6Y //
@@ -666,7 +666,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          281,                        //    8Y //
@@ -675,7 +675,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          505,                        //   15Y //
@@ -684,7 +684,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.Index.m38_1_or_2_byte_Asian8bit,
                                          596,                        //   18T //
@@ -693,7 +693,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.NonStd,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.NonStd,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.Index.m38_1_or_2_byte_Asian8bit,
                                          32596,                      // 1018T //
@@ -702,7 +702,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_x1018T));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.Index.m38_1_or_2_byte_Asian8bit,
                                          564,                        //   17T //
@@ -711,7 +711,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.Index.m38_1_or_2_byte_Asian8bit,
                                          660,                        //   20T //
@@ -720,7 +720,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          50,                         //    1R //
@@ -729,7 +729,7 @@ namespace PCLParaphernalia
                                          false,
                                         PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          234,                        //    7J //
@@ -738,7 +738,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_7J));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          263,                        //    8G //
@@ -747,7 +747,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_8G));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          8,                          //    0H //
@@ -756,7 +756,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_0H));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          264,                        //    8H //
@@ -765,7 +765,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_8H));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          37,                         //    1E //
@@ -774,7 +774,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_1E));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          21,                         //    0U //
@@ -783,7 +783,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_0U));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          19,                         //    0S //
@@ -792,7 +792,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_0S));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          9,                          //    0I //
@@ -801,7 +801,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_0I));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          83,                         //    2S //
@@ -810,7 +810,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_2S));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          39,                         //    1G //
@@ -819,7 +819,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_1G));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          4,                          //    0D //
@@ -828,7 +828,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_0D));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          38,                         //    1F //
@@ -837,7 +837,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_1F));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          14,                         //    0N //
@@ -846,7 +846,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_0N));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          78,                         //    2N //
@@ -855,7 +855,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_2N));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          110,                        //    3N //
@@ -864,7 +864,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_3N));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          142,                        //    4N //
@@ -873,7 +873,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_4N));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          334,                        //   10N //
@@ -882,7 +882,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_10N));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          366,                        //   11N //
@@ -891,7 +891,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_11N));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          398,                        //   12N //
@@ -900,7 +900,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_12N));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          232,                        //    7H //
@@ -909,7 +909,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_7H));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          174,                        //    5N //
@@ -918,7 +918,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_5N));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          206,                        //    6N //
@@ -927,7 +927,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_6N));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.NonStd,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.NonStd,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          32052,                      // 1001T //
@@ -936,7 +936,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_x1001T));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          302,                        //    9N //
@@ -945,7 +945,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_9N));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.Index.m21_1_or_2_byte_Asian7bit,
                                          555,                        //   17K //
@@ -954,7 +954,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.Index.m31_1_or_2_byte_ShiftJIS,
                                          619,                        //   19K //
@@ -963,7 +963,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.NonStd,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.NonStd,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.Index.m31_1_or_2_byte_ShiftJIS,
                                          32619,                      // 1019K //
@@ -972,7 +972,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_x1019K));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.Index.m38_1_or_2_byte_Asian8bit,
                                          616,                        //   19H //
@@ -981,7 +981,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.Index.m38_1_or_2_byte_Asian8bit,
                                          584,                        //   18H //
@@ -990,7 +990,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.Index.m38_1_or_2_byte_Asian8bit,
                                          712,                        //   22H //
@@ -999,7 +999,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.Index.m38_1_or_2_byte_Asian8bit,
                                          680,                        //   21H //
@@ -1008,7 +1008,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          53,                         //    1U //
@@ -1017,7 +1017,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_1U));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          269,                        //    8M //
@@ -1026,7 +1026,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_8M));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          394,                        //   12J //
@@ -1035,7 +1035,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_12J));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          473,                        //   14Y //
@@ -1044,7 +1044,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          335,                        //   10O //
@@ -1053,7 +1053,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          202,                        //    6J //
@@ -1062,7 +1062,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_6J));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          15,                         //    0O //
@@ -1071,7 +1071,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          47,                         //    1O //
@@ -1080,7 +1080,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          341,                        //   10U //
@@ -1089,7 +1089,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_10U));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          373,                        //   11U //
@@ -1098,7 +1098,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_11U));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          391,                        //   12G //
@@ -1107,7 +1107,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_12G));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          308,                        //    9T //
@@ -1116,7 +1116,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_9T));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          853,                        //   26U //
@@ -1125,7 +1125,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_26U));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          405,                        //   12U //
@@ -1134,7 +1134,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_12U));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          327,                        //   10G //
@@ -1143,7 +1143,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_10G));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          565,                        //   17U //
@@ -1152,7 +1152,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_17U));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          437,                        //   13U //
@@ -1161,7 +1161,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_13U));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          488,                        //   15H //
@@ -1170,7 +1170,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_15H));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          342,                        //   10V //
@@ -1179,7 +1179,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_10V));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          114,                        //    3R //
@@ -1188,7 +1188,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_3R));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          466,                        //   14R //
@@ -1197,7 +1197,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_14R));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          298,                        //    9J //
@@ -1206,7 +1206,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_9J));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          501,                        //   15U //
@@ -1215,7 +1215,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_15U));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          173,                        //    5M //
@@ -1224,7 +1224,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_5M));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          330,                        //   10J //
@@ -1233,7 +1233,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_10J));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                           277,                        //    8U //
@@ -1242,7 +1242,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_8U));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          149,                        //    4U //
@@ -1251,7 +1251,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_4U));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.Index.m38_1_or_2_byte_Asian8bit,
                                          579,                        //   18C //
@@ -1260,7 +1260,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.NonStd,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.NonStd,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.Index.m38_1_or_2_byte_Asian8bit,
                                          32579,                      // 1018C //
@@ -1269,7 +1269,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_x1018C));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.Index.m38_1_or_2_byte_Asian8bit,
                                          643,                        //   20C //
@@ -1278,7 +1278,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.NonStd,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.NonStd,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.Index.m38_1_or_2_byte_Asian8bit,
                                          32643,                      // 1020C //
@@ -1287,7 +1287,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_x1020C));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          621,                        //   19M //
@@ -1296,7 +1296,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                           PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          52,                         //    1T //
@@ -1305,7 +1305,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_1T));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          276,                        //    8T //
@@ -1314,7 +1314,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Unicode,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Unicode,
                                          PCLSymSetTypes.Index.Bound_16bit,
                                          PCLTextParsingMethods.Index.m83_UTF8,
                                          590,                        //   18N //
@@ -1325,7 +1325,7 @@ namespace PCLParaphernalia
 
             _indxUnicode = _sets.Count - 1;
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          426,                        //   13J //
@@ -1334,7 +1334,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          205,                        //    6M //
@@ -1343,7 +1343,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          458,                        //   14J //
@@ -1352,7 +1352,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          309,                        //    9U //
@@ -1361,7 +1361,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_9U));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          620,                        //   19L //
@@ -1370,7 +1370,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_19L));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          629,                        //   19U //
@@ -1379,7 +1379,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_19U));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          293,                        //    9E //
@@ -1388,7 +1388,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_9E));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          180,                        //    5T //
@@ -1397,7 +1397,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_5T));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          310,                        //    9V //
@@ -1406,7 +1406,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_9V));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          306,                        //    9R //
@@ -1415,7 +1415,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_9R));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          295,                        //    9G //
@@ -1424,7 +1424,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_9G));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.NonStd,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.NonStd,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          28852,                      //  901T //
@@ -1433,7 +1433,7 @@ namespace PCLParaphernalia
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_x901T));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          18540,                      //  579L //
@@ -1442,7 +1442,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.Preset,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          460,                        //   14L //
@@ -1451,7 +1451,7 @@ namespace PCLParaphernalia
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
 
-            _sets.Add (new PCLSymbolSet (SymSetGroup.UserSet,
+            _sets.Add(new PCLSymbolSet(SymSetGroup.UserSet,
                                          PCLSymSetTypes.Index.Bound_PC8,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
                                          65530,                      //    ?? //
@@ -1462,17 +1462,17 @@ namespace PCLParaphernalia
 
             _indxUserSet = _sets.Count - 1;
 
-            _setsCountTotal   = _sets.Count;
+            _setsCountTotal = _sets.Count;
 
-            _setsCountCustom  = 0;
-            _setsCountPreset  = 0;
+            _setsCountCustom = 0;
+            _setsCountPreset = 0;
             _setsCountUnicode = 0;
             _setsCountUserSet = 0;
-            _setsCountMapped  = 0;
+            _setsCountMapped = 0;
 
             for (int i = 0; i < _setsCountTotal; i++)
             {
-                group = _sets [i].Group;
+                group = _sets[i].Group;
 
                 if (group == SymSetGroup.Custom)
                     _setsCountCustom++;
@@ -1483,7 +1483,7 @@ namespace PCLParaphernalia
                 else if (group == SymSetGroup.UserSet)
                     _setsCountUserSet++;
 
-                if (_sets [i].FlagMapped)
+                if (_sets[i].FlagMapped)
                     _setsCountMapped++;
             }
 
@@ -1517,14 +1517,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void SetDataUserSet (ushort symSetNo,
+        public static void SetDataUserSet(ushort symSetNo,
                                            PCLSymSetTypes.Index symSetType,
                                            ushort[] mapArray)
         {
-            _sets [_indxUserSet].Kind1           = symSetNo;
-            _sets [_indxUserSet].Id              = TranslateKind1ToId (symSetNo);
-            _sets [_indxUserSet].Type            = symSetType;
-            _sets [_indxUserSet].MapArrayUserSet = mapArray;
+            _sets[_indxUserSet].Kind1 = symSetNo;
+            _sets[_indxUserSet].Id = TranslateKind1ToId(symSetNo);
+            _sets[_indxUserSet].Type = symSetType;
+            _sets[_indxUserSet].MapArrayUserSet = mapArray;
 
             if (symSetType == PCLSymSetTypes.Index.Bound_16bit)
                 _sets[_indxUserSet].ParsingMethod =
@@ -1544,7 +1544,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void SetDataUserSetDefault (ushort symSetNo)
+        public static void SetDataUserSetDefault(ushort symSetNo)
         {
             int index;
 
@@ -1553,14 +1553,14 @@ namespace PCLParaphernalia
             index = GetIndexForId(symSetNo);
 
             if (index == -1)
-                mapArray = PCLSymSetMaps.getMapArrayUserSet ();
+                mapArray = PCLSymSetMaps.getMapArrayUserSet();
             else
-                mapArray = GetMapArray (index, false);
+                mapArray = GetMapArray(index, false);
 
-            _sets [_indxUserSet].Kind1           = symSetNo;
-            _sets [_indxUserSet].Id              = TranslateKind1ToId (symSetNo);
-            _sets [_indxUserSet].Type = PCLSymSetTypes.Index.Bound_PC8;
-            _sets [_indxUserSet].MapArrayUserSet = mapArray;
+            _sets[_indxUserSet].Kind1 = symSetNo;
+            _sets[_indxUserSet].Id = TranslateKind1ToId(symSetNo);
+            _sets[_indxUserSet].Type = PCLSymSetTypes.Index.Bound_PC8;
+            _sets[_indxUserSet].MapArrayUserSet = mapArray;
         }
 
         //--------------------------------------------------------------------//
@@ -1748,7 +1748,7 @@ namespace PCLParaphernalia
         {
             if ((kind1 < 1) || (kind1 > 65530))
             {
-                idNum   = string.Empty;
+                idNum = string.Empty;
                 idAlpha = string.Empty;
 
                 return;
@@ -1758,8 +1758,8 @@ namespace PCLParaphernalia
                 ushort kind1Num = (ushort)(kind1 / 32);
                 ushort kind1Alpha = (ushort)((kind1 - (kind1Num * 32)) + 64);
 
-                idNum   = kind1Num.ToString ();
-                idAlpha = Convert.ToChar (kind1Alpha).ToString();
+                idNum = kind1Num.ToString();
+                idAlpha = Convert.ToChar(kind1Alpha).ToString();
 
                 return;
             }

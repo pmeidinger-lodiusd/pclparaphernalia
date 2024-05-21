@@ -20,21 +20,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _hexChars          = "0123456789ABCDEF";
+        const string _hexChars = "0123456789ABCDEF";
 
-        const int _macroId            = 1;
-        const ushort _unitsPerInch      = PCLWriter.sessionUPI;
+        const int _macroId = 1;
+        const ushort _unitsPerInch = PCLWriter.sessionUPI;
 
         const short _rulerDivPerCell = 10;
         const short _rulerVOriginX = (_unitsPerInch * 6);
         const short _rulerHOriginY = (_unitsPerInch * 5);
-        const short _rulerCell     = (_unitsPerInch * 1);
-        const short _rulerDiv      = (_rulerCell / _rulerDivPerCell);
+        const short _rulerCell = (_unitsPerInch * 1);
+        const short _rulerDiv = (_rulerCell / _rulerDivPerCell);
 
         const short _posOrigin = _rulerCell;
-        const short _posXDesc  = _posOrigin + (4 * _rulerDiv);
-        const short _posYHddr  = _posOrigin - (4 * _rulerDiv);
-        const short _posYDesc  = _posOrigin + (4 * _rulerDiv);
+        const short _posXDesc = _posOrigin + (4 * _rulerDiv);
+        const short _posYHddr = _posOrigin - (4 * _rulerDiv);
+        const short _posYDesc = _posOrigin + (4 * _rulerDiv);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -106,7 +106,7 @@ namespace PCLParaphernalia
                               paperLength,
                               logXOffset);
 
-            generatePageSet (prnWriter,
+            generatePageSet(prnWriter,
                              indxPaperSize,
                              indxPaperType,
                              indxOrientation,
@@ -206,7 +206,7 @@ namespace PCLParaphernalia
 
             rulerCellsX = (short)((paperWidth / _unitsPerInch) + 1);
             rulerCellsY = (short)((paperLength / _unitsPerInch) + 1);
-            rulerWidth  = (short)(rulerCellsX * _unitsPerInch);
+            rulerWidth = (short)(rulerCellsX * _unitsPerInch);
             rulerHeight = (short)(rulerCellsY * _unitsPerInch);
 
             //----------------------------------------------------------------//
@@ -379,7 +379,7 @@ namespace PCLParaphernalia
             const double unitsToInches = (1.00 / _unitsPerInch);
             const double unitsToMilliMetres = (25.4 / _unitsPerInch);
 
-            const double dcptsToInches      = (1.00 / dcptsPerInch);
+            const double dcptsToInches = (1.00 / dcptsPerInch);
             const double dcptsToMilliMetres = (25.4 / dcptsPerInch);
 
             short posX,
@@ -538,7 +538,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generatePageSet (BinaryWriter prnWriter,
+        private static void generatePageSet(BinaryWriter prnWriter,
                                              int indxPaperSize,
                                              int indxPaperType,
                                              int indxOrientation,
@@ -554,7 +554,7 @@ namespace PCLParaphernalia
         {
             if (incStdPage)
             {
-                generatePage (prnWriter,
+                generatePage(prnWriter,
                               indxPaperSize,
                               indxPaperType,
                               indxOrientation,

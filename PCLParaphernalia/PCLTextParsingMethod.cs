@@ -31,16 +31,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLTextParsingMethod (
+        public PCLTextParsingMethod(
             PCLTextParsingMethods.Index indxMethod,
             short value,
             string desc,
-            ushort[]                     rangeDataSingle,
-            ushort[]                     rangeDataDouble)
+            ushort[] rangeDataSingle,
+            ushort[] rangeDataDouble)
         {
             _indxMethod = indxMethod;
-            _value      = value;
-            _desc       = desc;
+            _value = value;
+            _desc = desc;
 
             _rangeDataSingle = rangeDataSingle;
             _rangeDataDouble = rangeDataDouble;
@@ -55,7 +55,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getDesc ()
+        public string getDesc()
         {
             return _desc;
         }
@@ -70,12 +70,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getDescLong ()
+        public string getDescLong()
         {
             if (_value < 0)
                 return _desc;
             else
-                return _value.ToString () + ": " + _desc;
+                return _value.ToString() + ": " + _desc;
         }
 
         //--------------------------------------------------------------------//
@@ -87,7 +87,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLTextParsingMethods.Index getMethodType ()
+        public PCLTextParsingMethods.Index getMethodType()
         {
             return _indxMethod;
         }
@@ -101,7 +101,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort[] getRangeDataDouble ()
+        public ushort[] getRangeDataDouble()
         {
             return _rangeDataDouble;
         }
@@ -115,7 +115,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int getRangeDataDoubleCt ()
+        public int getRangeDataDoubleCt()
         {
             if (_rangeDataDouble == null)
                 return 0;
@@ -132,7 +132,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort[] getRangeDataSingle ()
+        public ushort[] getRangeDataSingle()
         {
             return _rangeDataSingle;
         }
@@ -146,7 +146,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int getRangeDataSingleCt ()
+        public int getRangeDataSingleCt()
         {
             if (_rangeDataSingle == null)
                 return 0;
@@ -163,7 +163,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int getValue ()
+        public int getValue()
         {
             return _value;
         }

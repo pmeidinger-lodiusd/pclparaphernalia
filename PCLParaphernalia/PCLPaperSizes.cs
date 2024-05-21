@@ -24,8 +24,8 @@ namespace PCLParaphernalia
 
         public const ushort _paperSizeUPI = 1200;
 
-        private const byte _unknownID      = 0xff;
-        private const byte _unknownEnum    = 0xff;
+        private const byte _unknownID = 0xff;
+        private const byte _unknownEnum = 0xff;
 
         public enum eIndex
         {
@@ -156,9 +156,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void customDataCopy (int index)
+        public static void customDataCopy(int index)
         {
-            _paperSizes[index].customDataCopy (
+            _paperSizes[index].customDataCopy(
                 _paperSizes[(int)eIndex.Custom]);
         }
 
@@ -177,8 +177,8 @@ namespace PCLParaphernalia
 
             foreach (PCLPaperSize v in _paperSizes)
             {
-                    count++;
-                    grid.Items.Add(v);
+                count++;
+                grid.Items.Add(v);
             }
 
             return count;
@@ -267,7 +267,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort getLogPageLength (int index,
+        public static ushort getLogPageLength(int index,
                                                ushort sessionUPI,
                                                PCLOrientations.eAspect aspect)
         {
@@ -284,7 +284,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort getLogPageWidth (int index,
+        public static ushort getLogPageWidth(int index,
                                               ushort sessionUPI,
                                               PCLOrientations.eAspect aspect)
         {
@@ -524,13 +524,13 @@ namespace PCLParaphernalia
 
         private static void populateTable()
         {
-            const bool sizeIsMetric   = true;
+            const bool sizeIsMetric = true;
             const bool sizeIsImperial = false;
 
-            const bool sizeIsRare     = true;
-            const bool sizeIsCommon   = false;
+            const bool sizeIsRare = true;
+            const bool sizeIsCommon = false;
 
-            _paperSizes = new PCLPaperSize []
+            _paperSizes = new PCLPaperSize[]
             {
                 new PCLPaperSize(eIndex.Custom, // Custom - sizes can be overridden
                                  "<Custom>",    // name
@@ -1970,11 +1970,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setCustomLongEdge (ushort size,
+        public static void setCustomLongEdge(ushort size,
                                               ushort sessionUPI)
         {
             _paperSizes[(int)eIndex.Custom].CustomLongEdge =
-                (uint) ((size * _paperSizeUPI) / sessionUPI);
+                (uint)((size * _paperSizeUPI) / sessionUPI);
         }
 
         //--------------------------------------------------------------------//
@@ -1987,11 +1987,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setCustomShortEdge (ushort size,
+        public static void setCustomShortEdge(ushort size,
                                                ushort sessionUPI)
         {
             _paperSizes[(int)eIndex.Custom].CustomShortEdge =
-                (uint) ((size * _paperSizeUPI) / sessionUPI);
+                (uint)((size * _paperSizeUPI) / sessionUPI);
         }
     }
 }

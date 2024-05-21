@@ -161,7 +161,7 @@ namespace PCLParaphernalia
                                                       bytesPerRowPadded,
                                                       firstBlock);
 
-                if (! indexed)      // if (srcBitsPerPixel == 24)
+                if (!indexed)      // if (srcBitsPerPixel == 24)
                 {
                     // change BGR components to RGB //
 
@@ -279,27 +279,27 @@ namespace PCLParaphernalia
             if (srcBlackWhite)
             {
                 indexed = true;
-                bitsPerIndex   = 0x01;
+                bitsPerIndex = 0x01;
                 paletteEntries = 0;
             }
             else if (srcBitsPerPixel == 1)
             {
                 indexed = true;
-                bitsPerIndex   = 0x01;
-            //  paletteEntries = 0x00000001 << 1;
+                bitsPerIndex = 0x01;
+                //  paletteEntries = 0x00000001 << 1;
                 paletteEntries = srcPaletteEntries;
             }
             else if (srcBitsPerPixel == 4)
             {
                 indexed = true;
-                bitsPerIndex   = 0x04;
-            //  paletteEntries = 0x00000001 << 4;
+                bitsPerIndex = 0x04;
+                //  paletteEntries = 0x00000001 << 4;
                 paletteEntries = srcPaletteEntries;
             }
             else if (srcBitsPerPixel == 24)
             {
                 indexed = false;
-                bitsPerIndex   = 0x00;
+                bitsPerIndex = 0x00;
                 paletteEntries = 0;
             }
 
@@ -332,9 +332,9 @@ namespace PCLParaphernalia
 
                 if (paletteEntries != 0)
                 {
-                    byte red   = 0x00,
+                    byte red = 0x00,
                          green = 0x00,
-                         blue  = 0x00;
+                         blue = 0x00;
 
                     for (short i = 0; i < paletteEntries; i++)
                     {
@@ -354,7 +354,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLWriter.rasterResolution (prnWriter,
+            PCLWriter.rasterResolution(prnWriter,
                                         rasterResolution,
                                         true);
 

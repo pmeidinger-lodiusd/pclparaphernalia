@@ -34,7 +34,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkOldVersion (int major,
+        public static bool checkOldVersion(int major,
                                                int minor,
                                                int build,
                                                int revision)
@@ -64,7 +64,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void getVersionData (bool crnt,
+        public static void getVersionData(bool crnt,
                                            ref int major,
                                            ref int minor,
                                            ref int build,
@@ -72,16 +72,16 @@ namespace PCLParaphernalia
         {
             if (crnt)
             {
-                major    = _versionMajorCrnt;
-                minor    = _versionMinorCrnt;
-                build    = _versionBuildCrnt;
+                major = _versionMajorCrnt;
+                minor = _versionMinorCrnt;
+                build = _versionBuildCrnt;
                 revision = _versionRevisionCrnt;
             }
             else
             {
-                major    = _versionMajorOld;
-                minor    = _versionMinorOld;
-                build    = _versionBuildOld;
+                major = _versionMajorOld;
+                minor = _versionMinorOld;
+                build = _versionBuildOld;
                 revision = _versionRevisionOld;
             }
         }
@@ -95,7 +95,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setVersionData (bool crnt,
+        public static void setVersionData(bool crnt,
                                            int major,
                                            int minor,
                                            int build,
@@ -103,16 +103,16 @@ namespace PCLParaphernalia
         {
             if (crnt)
             {
-                _versionMajorCrnt    = major;
-                _versionMinorCrnt    = minor;
-                _versionBuildCrnt    = build;
+                _versionMajorCrnt = major;
+                _versionMinorCrnt = minor;
+                _versionBuildCrnt = build;
                 _versionRevisionCrnt = revision;
             }
             else
             {
-                _versionMajorOld    = major;
-                _versionMinorOld    = minor;
-                _versionBuildOld    = build;
+                _versionMajorOld = major;
+                _versionMinorOld = minor;
+                _versionBuildOld = build;
                 _versionRevisionOld = revision;
             }
         }

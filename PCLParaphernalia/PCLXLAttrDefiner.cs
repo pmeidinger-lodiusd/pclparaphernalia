@@ -29,14 +29,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-	    public PCLXLAttrDefiner(byte tag,
+        public PCLXLAttrDefiner(byte tag,
                                 bool flagReserved,
                                 string description)
-	    {
-            _tag          = tag;
+        {
+            _tag = tag;
             FlagReserved = flagReserved;
             Description = description;
-	    }
+        }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //

@@ -23,7 +23,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLSymSetType (byte idPCL,
+        public PCLSymSetType(byte idPCL,
                                  bool flagBound,
                                  string descStd,
                                  string descShort)

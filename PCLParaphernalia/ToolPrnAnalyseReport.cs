@@ -41,12 +41,12 @@ namespace PCLParaphernalia
 
         public static void generate(
             ToolPrnAnalyse.eInfoType indxInfoType,
-			ReportCore.eRptFileFmt   rptFileFmt,
-            DataTable                table,
+            ReportCore.eRptFileFmt rptFileFmt,
+            DataTable table,
             string prnFilename,
             long fileSize,
             bool flagOffsetHex,
-            PrnParseOptions          options)
+            PrnParseOptions options)
         {
             object stream = null;
             object writer = null;
@@ -69,14 +69,14 @@ namespace PCLParaphernalia
             {
                 saveFilename = prnFilename + "_analysis." + fileExt;
 
-                OK = ReportCore.docOpen (rptFileFmt,
+                OK = ReportCore.docOpen(rptFileFmt,
                                          ref saveFilename,
                                          ref stream,
                                          ref writer);
 
                 if (OK)
                 {
-                    int ctClrMapRowTypes = PrnParseRowTypes.getCount ();
+                    int ctClrMapRowTypes = PrnParseRowTypes.getCount();
 
                     bool useClr = options.FlagClrMapUseClr;
 
@@ -88,38 +88,38 @@ namespace PCLParaphernalia
                         string[] rowClrBack = new string[ctClrMapRowTypes];
                         string[] rowClrFore = new string[ctClrMapRowTypes];
 
-                        getRowColourStyleData (options,
+                        getRowColourStyleData(options,
                                                ref rowClasses,
                                                ref rowClrBack,
                                                ref rowClrFore);
 
-                        ReportCore.docInitialise (rptFileFmt, writer, true, false,
+                        ReportCore.docInitialise(rptFileFmt, writer, true, false,
                                                   ctClrMapRowTypes, rowClasses,
                                                   rowClrBack, rowClrFore);
                     }
                     else
                     {
-                        ReportCore.docInitialise (rptFileFmt, writer, true, false,
+                        ReportCore.docInitialise(rptFileFmt, writer, true, false,
                                                   0, null,
                                                   null, null);
                     }
 
-                    reportHeader (indxInfoType, rptFileFmt, writer,
+                    reportHeader(indxInfoType, rptFileFmt, writer,
                                   prnFilename, fileSize, reportSize);
 
-                    reportBodyAnalysis (rptFileFmt, writer,
+                    reportBodyAnalysis(rptFileFmt, writer,
                                         table, flagOffsetHex);
 
-                    ReportCore.docFinalise (rptFileFmt, writer);
+                    ReportCore.docFinalise(rptFileFmt, writer);
 
-                    ReportCore.docClose (rptFileFmt, stream, writer);
+                    ReportCore.docClose(rptFileFmt, stream, writer);
                 }
             }
             else if (indxInfoType == ToolPrnAnalyse.eInfoType.Content)
             {
                 saveFilename = prnFilename + "_content." + fileExt;
 
-                OK = ReportCore.docOpen (rptFileFmt,
+                OK = ReportCore.docOpen(rptFileFmt,
                                          ref saveFilename,
                                          ref stream,
                                          ref writer);
@@ -127,26 +127,26 @@ namespace PCLParaphernalia
                 {
                     reportSize = table.Rows.Count;
 
-                    ReportCore.docInitialise (rptFileFmt, writer, true, false,
+                    ReportCore.docInitialise(rptFileFmt, writer, true, false,
                                               0, null,
                                               null, null);
 
-                    reportHeader (indxInfoType, rptFileFmt, writer,
+                    reportHeader(indxInfoType, rptFileFmt, writer,
                                   prnFilename, fileSize, reportSize);
 
-                    reportBodyContent (rptFileFmt, writer,
+                    reportBodyContent(rptFileFmt, writer,
                                        table, flagOffsetHex);
 
-                    ReportCore.docFinalise (rptFileFmt, writer);
+                    ReportCore.docFinalise(rptFileFmt, writer);
 
-                    ReportCore.docClose (rptFileFmt, stream, writer);
+                    ReportCore.docClose(rptFileFmt, stream, writer);
                 }
             }
             else if (indxInfoType == ToolPrnAnalyse.eInfoType.Statistics)
             {
                 saveFilename = prnFilename + "_statistics." + fileExt;
 
-                OK = ReportCore.docOpen (rptFileFmt,
+                OK = ReportCore.docOpen(rptFileFmt,
                                          ref saveFilename,
                                          ref stream,
                                          ref writer);
@@ -154,19 +154,19 @@ namespace PCLParaphernalia
                 {
                     reportSize = table.Rows.Count;
 
-                    ReportCore.docInitialise (rptFileFmt, writer, true, false,
+                    ReportCore.docInitialise(rptFileFmt, writer, true, false,
                                               0, null,
                                               null, null);
 
-                    reportHeader (indxInfoType, rptFileFmt, writer,
+                    reportHeader(indxInfoType, rptFileFmt, writer,
                                   prnFilename, fileSize, reportSize);
 
-                    reportBodyStatistics (rptFileFmt, writer,
+                    reportBodyStatistics(rptFileFmt, writer,
                                           table);
 
-                    ReportCore.docFinalise (rptFileFmt, writer);
+                    ReportCore.docFinalise(rptFileFmt, writer);
 
-                    ReportCore.docClose (rptFileFmt, stream, writer);
+                    ReportCore.docClose(rptFileFmt, stream, writer);
                 }
             }
         }
@@ -180,7 +180,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void getRowColourStyleData (
+        private static void getRowColourStyleData(
             PrnParseOptions options,
             ref string[] classes,
             ref string[] clrBack,
@@ -196,17 +196,17 @@ namespace PCLParaphernalia
             PropertyInfo pInfoBack,
                          pInfoFore;
 
-            int ctClrMapRowTypes = PrnParseRowTypes.getCount ();
+            int ctClrMapRowTypes = PrnParseRowTypes.getCount();
             int ctClrMapStdClrs = 0;
 
             int[] indxClrMapBack = new int[ctClrMapRowTypes];
             int[] indxClrMapFore = new int[ctClrMapRowTypes];
 
-            options.getOptClrMap (ref flagClrMapUseClr,
+            options.getOptClrMap(ref flagClrMapUseClr,
                                   ref indxClrMapBack,
                                   ref indxClrMapFore);
 
-            options.getOptClrMapStdClrs (ref ctClrMapStdClrs,
+            options.getOptClrMapStdClrs(ref ctClrMapStdClrs,
                                          ref stdClrsPropertyInfo);
 
             //----------------------------------------------------------------//
@@ -214,7 +214,7 @@ namespace PCLParaphernalia
             for (int i = 0; i < ctClrMapRowTypes; i++)
             {
                 string rowType =
-                    Enum.GetName (typeof (PrnParseRowTypes.eType), i);
+                    Enum.GetName(typeof(PrnParseRowTypes.eType), i);
 
                 indxClrBack = indxClrMapBack[i];
                 indxClrFore = indxClrMapFore[i];
@@ -237,10 +237,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void reportBodyAnalysis (
+        private static void reportBodyAnalysis(
             ReportCore.eRptFileFmt rptFileFmt,
             object writer,
-            DataTable              table,
+            DataTable table,
             bool flagOffsetHex)
         {
             const int colCt = 4;
@@ -280,7 +280,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableHddrData (writer, rptFileFmt, false,
+            ReportCore.tableHddrData(writer, rptFileFmt, false,
                                   colCt, colHddrs, colSizes);
 
             //----------------------------------------------------------------//
@@ -296,10 +296,10 @@ namespace PCLParaphernalia
                 int indxRowType = (int)row[rtName];
 
                 string rowType = Enum.GetName
-                                    (typeof (PrnParseRowTypes.eType),
+                                    (typeof(PrnParseRowTypes.eType),
                                      indxRowType);
 
-                ReportCore.tableRowData (
+                ReportCore.tableRowData(
                     writer, rptFileFmt,
                     ReportCore.eRptChkMarks.text,   // not used by this tool //
                     colCt, rowType,
@@ -312,7 +312,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableClose (writer, rptFileFmt);
+            ReportCore.tableClose(writer, rptFileFmt);
         }
 
         //--------------------------------------------------------------------//
@@ -324,10 +324,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void reportBodyContent (
+        private static void reportBodyContent(
             ReportCore.eRptFileFmt rptFileFmt,
             object writer,
-            DataTable              table,
+            DataTable table,
             bool flagOffsetHex)
         {
             const int colCt = 3;
@@ -370,7 +370,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableHddrData (writer, rptFileFmt, false,
+            ReportCore.tableHddrData(writer, rptFileFmt, false,
                                   colCt, colHddrs, colSizes);
 
             //----------------------------------------------------------------//
@@ -383,7 +383,7 @@ namespace PCLParaphernalia
             {
                 DataRow row = table.Rows[i];
 
-                ReportCore.tableRowData (
+                ReportCore.tableRowData(
                     writer, rptFileFmt,
                     ReportCore.eRptChkMarks.text,   // not used by this tool //
                     colCt, null,
@@ -396,7 +396,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableClose (writer, rptFileFmt);
+            ReportCore.tableClose(writer, rptFileFmt);
         }
 
         //--------------------------------------------------------------------//
@@ -408,10 +408,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void reportBodyStatistics (
+        private static void reportBodyStatistics(
             ReportCore.eRptFileFmt rptFileFmt,
             object writer,
-            DataTable              table)
+            DataTable table)
         {
             const int colCt = 5;
 
@@ -441,7 +441,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableHddrData (writer, rptFileFmt, false,
+            ReportCore.tableHddrData(writer, rptFileFmt, false,
                                   colCt, colNames, colSizes);
 
             //----------------------------------------------------------------//
@@ -454,7 +454,7 @@ namespace PCLParaphernalia
             {
                 DataRow row = table.Rows[i];
 
-                ReportCore.tableRowData (
+                ReportCore.tableRowData(
                     writer, rptFileFmt,
                     ReportCore.eRptChkMarks.text,   // not used by this tool //
                     colCt, null,
@@ -467,7 +467,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableClose (writer, rptFileFmt);
+            ReportCore.tableClose(writer, rptFileFmt);
         }
 
         //--------------------------------------------------------------------//
@@ -479,9 +479,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void reportHeader (
+        private static void reportHeader(
             ToolPrnAnalyse.eInfoType indxInfoType,
-            ReportCore.eRptFileFmt   rptFileFmt,
+            ReportCore.eRptFileFmt rptFileFmt,
             object writer,
             string prnFilename,
             long fileSize,
@@ -496,9 +496,9 @@ namespace PCLParaphernalia
                 title = "*** Prn Analysis ***";
 
                 maxLineLen = PrnParseConstants.cRptA_colMax_Offset +
-                             PrnParseConstants.cRptA_colMax_Type   +
-                             PrnParseConstants.cRptA_colMax_Seq    +
-                             PrnParseConstants.cRptA_colMax_Desc   +
+                             PrnParseConstants.cRptA_colMax_Type +
+                             PrnParseConstants.cRptA_colMax_Seq +
+                             PrnParseConstants.cRptA_colMax_Desc +
                              (PrnParseConstants.cColSeparatorLen * 3) - 12;
             }
             else if (indxInfoType == ToolPrnAnalyse.eInfoType.Content)
@@ -506,19 +506,19 @@ namespace PCLParaphernalia
                 title = "*** Prn Content ***";
 
                 maxLineLen = PrnParseConstants.cRptC_colMax_Offset +
-                             PrnParseConstants.cRptC_colMax_Hex    +
-                             PrnParseConstants.cRptC_colMax_Text   +
+                             PrnParseConstants.cRptC_colMax_Hex +
+                             PrnParseConstants.cRptC_colMax_Text +
                              (PrnParseConstants.cColSeparatorLen * 2) - 12;
             }
             else if (indxInfoType == ToolPrnAnalyse.eInfoType.Statistics)
             {
                 title = "*** Prn Analysis Statistics ***";
 
-                maxLineLen = PrnParseConstants.cRptS_colMax_Seq  +
+                maxLineLen = PrnParseConstants.cRptS_colMax_Seq +
                              PrnParseConstants.cRptS_colMax_Desc +
-                             PrnParseConstants.cRptS_colMax_CtP  +
-                             PrnParseConstants.cRptS_colMax_CtE  +
-                             PrnParseConstants.cRptS_colMax_CtT  +
+                             PrnParseConstants.cRptS_colMax_CtP +
+                             PrnParseConstants.cRptS_colMax_CtE +
+                             PrnParseConstants.cRptS_colMax_CtT +
                              (PrnParseConstants.cColSeparatorLen * 4) - 12;
             }
 
@@ -528,7 +528,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.hddrTitle (writer, rptFileFmt, false, title);
+            ReportCore.hddrTitle(writer, rptFileFmt, false, title);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -537,34 +537,34 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableHddrPair (writer, rptFileFmt);
+            ReportCore.tableHddrPair(writer, rptFileFmt);
 
-            ReportCore.tableRowPair (writer, rptFileFmt,
+            ReportCore.tableRowPair(writer, rptFileFmt,
                                  "Date_time", DateTime.Now.ToString(),
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
-            ReportCore.tableRowPair (writer, rptFileFmt,
+            ReportCore.tableRowPair(writer, rptFileFmt,
                                  "Filename", prnFilename,
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
-            ReportCore.tableRowPair (writer, rptFileFmt,
-                                 "Filesize", fileSize.ToString () + " bytes",
+            ReportCore.tableRowPair(writer, rptFileFmt,
+                                 "Filesize", fileSize.ToString() + " bytes",
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
-            ReportCore.tableRowPair (writer, rptFileFmt,
+            ReportCore.tableRowPair(writer, rptFileFmt,
                                  "Report_size", reportSize +
                                     " rows (excluding header and trailer lines)",
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
-            ReportCore.tableClose (writer, rptFileFmt);
+            ReportCore.tableClose(writer, rptFileFmt);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace PCLParaphernalia
     /// </summary>
     class PCLPatternDef
     {
-		private readonly PCLPatternDefs.eType _type;
+        private readonly PCLPatternDefs.eType _type;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -18,16 +18,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLPatternDef (string desc,
-		                      PCLPatternDefs.eType type,
+        public PCLPatternDef(string desc,
+                              PCLPatternDefs.eType type,
                               ushort id,
                               ushort idSec,
                               ushort height,
                               ushort width,
-                              byte[]   pattern)
+                              byte[] pattern)
         {
             Desc = desc;
-			_type           = type;
+            _type = type;
             Id = id;
             IdSec = idSec;
             Height = height;

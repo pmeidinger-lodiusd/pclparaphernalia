@@ -20,20 +20,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int _macroId           = 1;
-        const ushort _unitsPerInch     = PCLWriter.sessionUPI;
+        const int _macroId = 1;
+        const ushort _unitsPerInch = PCLWriter.sessionUPI;
 
-        const short _pageOriginX       = (_unitsPerInch * 1);
-        const short _pageOriginY       = (_unitsPerInch * 1);
-        const short _incInch           = (_unitsPerInch * 1);
-        const short _lineInc           = (_unitsPerInch * 5) / 6;
+        const short _pageOriginX = (_unitsPerInch * 1);
+        const short _pageOriginY = (_unitsPerInch * 1);
+        const short _incInch = (_unitsPerInch * 1);
+        const short _lineInc = (_unitsPerInch * 5) / 6;
 
-        const short _posXDesc  = _pageOriginX;
-        const short _posXData  = _pageOriginX + (2 * _incInch);
+        const short _posXDesc = _pageOriginX;
+        const short _posXData = _pageOriginX + (2 * _incInch);
 
-        const short _posYHddr  = _pageOriginY;
-        const short _posYDesc  = _pageOriginY + (2 * _incInch);
-        const short _posYData  = _pageOriginY + (2 * _incInch);
+        const short _posYHddr = _pageOriginY;
+        const short _posYDesc = _pageOriginY + (2 * _incInch);
+        const short _posYData = _pageOriginY + (2 * _incInch);
 
         const short _shade_1 = 40;
         const short _shade_2 = 20;
@@ -292,7 +292,7 @@ namespace PCLParaphernalia
             rectY = posY;
 
             rectHeight = (_lineInc * 3) / 5;
-            rectWidth  = (_unitsPerInch * 9) / 10;
+            rectWidth = (_unitsPerInch * 9) / 10;
 
             PCLWriter.patternTransparency(prnWriter, false);
 
@@ -406,7 +406,7 @@ namespace PCLParaphernalia
                                          bool formAsMacro,
                                          ushort logXOffset)
         {
-            const string sampleText  = "000000000000000";
+            const string sampleText = "000000000000000";
 
             short posX,
                   posY;

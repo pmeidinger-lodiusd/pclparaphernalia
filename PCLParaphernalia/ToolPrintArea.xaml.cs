@@ -25,7 +25,7 @@ namespace PCLParaphernalia
 
         const ushort _sessionUPI = 600;
 
-        const double _unitsToInches      = 1.00 / _sessionUPI;
+        const double _unitsToInches = 1.00 / _sessionUPI;
         const double _unitsToMilliMetres = 25.4 / _sessionUPI;
 
         private static readonly int[] _subsetPDLs =
@@ -142,7 +142,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ToolPrintArea (ref ToolCommonData.ePrintLang crntPDL)
+        public ToolPrintArea(ref ToolCommonData.ePrintLang crntPDL)
         {
             InitializeComponent();
 
@@ -173,7 +173,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             _indxPDL = cbPDL.SelectedIndex;
-            _crntPDL = (ToolCommonData.ePrintLang) _subsetPDLs [_indxPDL];
+            _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
 
             pdlOptionsStore();
 
@@ -191,7 +191,7 @@ namespace PCLParaphernalia
 
                 BinaryWriter binWriter = null;
 
-                TargetCore.requestStreamOpen (
+                TargetCore.requestStreamOpen(
                     ref binWriter,
                     ToolCommonData.eToolIds.PrintArea,
                     ToolCommonData.eToolSubIds.None,
@@ -288,7 +288,7 @@ namespace PCLParaphernalia
                     _indxOrientationPCLXL = cbOrientation.SelectedIndex;
 
                 setPaperMetrics(true);
-           }
+            }
         }
 
         //--------------------------------------------------------------------//
@@ -354,7 +354,7 @@ namespace PCLParaphernalia
                 pdlOptionsStore();
 
                 _indxPDL = cbPDL.SelectedIndex;
-                _crntPDL = (ToolCommonData.ePrintLang) _subsetPDLs [_indxPDL];
+                _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
 
                 pdlOptionsRestore();
             }
@@ -413,7 +413,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkOptFormAsMacro_Checked (object sender,
+        private void chkOptFormAsMacro_Checked(object sender,
                                                 RoutedEventArgs e)
         {
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
@@ -431,7 +431,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkOptFormAsMacro_Unchecked (object sender,
+        private void chkOptFormAsMacro_Unchecked(object sender,
                                                   RoutedEventArgs e)
         {
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
@@ -550,7 +550,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            resetTarget ();
+            resetTarget();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -609,7 +609,7 @@ namespace PCLParaphernalia
             if ((_indxPDL < 0) || (_indxPDL >= _ctPDLs))
                 _indxPDL = 0;
 
-            _crntPDL = (ToolCommonData.ePrintLang) _subsetPDLs [_indxPDL];
+            _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
 
             //----------------------------------------------------------------//
 
@@ -636,7 +636,7 @@ namespace PCLParaphernalia
             if ((_indxPaperTypePCLXL < 0) || (_indxPaperTypePCLXL >= _ctPaperTypes))
                 _indxPaperTypePCLXL = 0;
 
-            if ((_indxPJLCommandPCLXL < 0) ||(_indxPJLCommandPCLXL >= _ctPJLCommands))
+            if ((_indxPJLCommandPCLXL < 0) || (_indxPJLCommandPCLXL >= _ctPJLCommands))
                 _indxPJLCommandPCLXL = 0;
         }
 
@@ -691,71 +691,71 @@ namespace PCLParaphernalia
         {
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
             {
-                cbOrientation.SelectedIndex  = _indxOrientationPCL;
-                cbPaperSize.SelectedIndex    = _indxPaperSizePCL;
-                cbPaperType.SelectedIndex    = _indxPaperTypePCL;
-                cbPlexMode.SelectedIndex     = _indxPlexModePCL;
-                cbPJLCommand.SelectedIndex   = _indxPJLCommandPCL;
-                chkOptFormAsMacro.IsChecked  = _formAsMacroPCL;
+                cbOrientation.SelectedIndex = _indxOrientationPCL;
+                cbPaperSize.SelectedIndex = _indxPaperSizePCL;
+                cbPaperType.SelectedIndex = _indxPaperTypePCL;
+                cbPlexMode.SelectedIndex = _indxPlexModePCL;
+                cbPJLCommand.SelectedIndex = _indxPJLCommandPCL;
+                chkOptFormAsMacro.IsChecked = _formAsMacroPCL;
 
-                lbLogPageMarginLR.Visibility        = Visibility.Visible;
-                lbLogPageMarginTB.Visibility        = Visibility.Visible;
-                lbLogPageLength.Visibility          = Visibility.Visible;
-                lbLogPageWidth.Visibility           = Visibility.Visible;
+                lbLogPageMarginLR.Visibility = Visibility.Visible;
+                lbLogPageMarginTB.Visibility = Visibility.Visible;
+                lbLogPageLength.Visibility = Visibility.Visible;
+                lbLogPageWidth.Visibility = Visibility.Visible;
 
-                txtLogPageMarginLRDots.Visibility     = Visibility.Visible;
-                txtLogPageMarginLRMetric.Visibility   = Visibility.Visible;
+                txtLogPageMarginLRDots.Visibility = Visibility.Visible;
+                txtLogPageMarginLRMetric.Visibility = Visibility.Visible;
                 txtLogPageMarginLRImperial.Visibility = Visibility.Visible;
 
-                txtLogPageMarginTBDots.Visibility     = Visibility.Visible;
-                txtLogPageMarginTBMetric.Visibility   = Visibility.Visible;
+                txtLogPageMarginTBDots.Visibility = Visibility.Visible;
+                txtLogPageMarginTBMetric.Visibility = Visibility.Visible;
                 txtLogPageMarginTBImperial.Visibility = Visibility.Visible;
 
-                txtLogPageLengthDots.Visibility     = Visibility.Visible;
-                txtLogPageLengthMetric.Visibility   = Visibility.Visible;
+                txtLogPageLengthDots.Visibility = Visibility.Visible;
+                txtLogPageLengthMetric.Visibility = Visibility.Visible;
                 txtLogPageLengthImperial.Visibility = Visibility.Visible;
 
-                txtLogPageWidthDots.Visibility      = Visibility.Visible;
-                txtLogPageWidthMetric.Visibility    = Visibility.Visible;
-                txtLogPageWidthImperial.Visibility  = Visibility.Visible;
+                txtLogPageWidthDots.Visibility = Visibility.Visible;
+                txtLogPageWidthMetric.Visibility = Visibility.Visible;
+                txtLogPageWidthImperial.Visibility = Visibility.Visible;
 
                 _flagCustomUseMetric = _flagCustomUseMetricPCL;
                 _customShortEdgeDots = _customShortEdgeDotsPCL;
-                _customLongEdgeDots  = _customLongEdgeDotsPCL;
+                _customLongEdgeDots = _customLongEdgeDotsPCL;
             }
             else
             {
-                cbOrientation.SelectedIndex  = _indxOrientationPCLXL;
-                cbPaperSize.SelectedIndex    = _indxPaperSizePCLXL;
-                cbPaperType.SelectedIndex    = _indxPaperTypePCLXL;
-                cbPlexMode.SelectedIndex     = _indxPlexModePCLXL;
-                cbPJLCommand.SelectedIndex   = _indxPJLCommandPCLXL;
-                chkOptFormAsMacro.IsChecked  = _formAsMacroPCLXL;
+                cbOrientation.SelectedIndex = _indxOrientationPCLXL;
+                cbPaperSize.SelectedIndex = _indxPaperSizePCLXL;
+                cbPaperType.SelectedIndex = _indxPaperTypePCLXL;
+                cbPlexMode.SelectedIndex = _indxPlexModePCLXL;
+                cbPJLCommand.SelectedIndex = _indxPJLCommandPCLXL;
+                chkOptFormAsMacro.IsChecked = _formAsMacroPCLXL;
 
                 lbLogPageMarginLR.Visibility = Visibility.Hidden;
                 lbLogPageMarginTB.Visibility = Visibility.Hidden;
-                lbLogPageLength.Visibility   = Visibility.Hidden;
-                lbLogPageWidth.Visibility    = Visibility.Hidden;
+                lbLogPageLength.Visibility = Visibility.Hidden;
+                lbLogPageWidth.Visibility = Visibility.Hidden;
 
-                txtLogPageMarginLRDots.Visibility     = Visibility.Hidden;
-                txtLogPageMarginLRMetric.Visibility   = Visibility.Hidden;
+                txtLogPageMarginLRDots.Visibility = Visibility.Hidden;
+                txtLogPageMarginLRMetric.Visibility = Visibility.Hidden;
                 txtLogPageMarginLRImperial.Visibility = Visibility.Hidden;
 
-                txtLogPageMarginTBDots.Visibility     = Visibility.Hidden;
-                txtLogPageMarginTBMetric.Visibility   = Visibility.Hidden;
+                txtLogPageMarginTBDots.Visibility = Visibility.Hidden;
+                txtLogPageMarginTBMetric.Visibility = Visibility.Hidden;
                 txtLogPageMarginTBImperial.Visibility = Visibility.Hidden;
 
-                txtLogPageLengthDots.Visibility     = Visibility.Hidden;
-                txtLogPageLengthMetric.Visibility   = Visibility.Hidden;
+                txtLogPageLengthDots.Visibility = Visibility.Hidden;
+                txtLogPageLengthMetric.Visibility = Visibility.Hidden;
                 txtLogPageLengthImperial.Visibility = Visibility.Hidden;
 
-                txtLogPageWidthDots.Visibility     = Visibility.Hidden;
-                txtLogPageWidthMetric.Visibility   = Visibility.Hidden;
+                txtLogPageWidthDots.Visibility = Visibility.Hidden;
+                txtLogPageWidthMetric.Visibility = Visibility.Hidden;
                 txtLogPageWidthImperial.Visibility = Visibility.Hidden;
 
                 _flagCustomUseMetric = _flagCustomUseMetricPCLXL;
                 _customShortEdgeDots = _customShortEdgeDotsPCLXL;
-                _customLongEdgeDots  = _customLongEdgeDotsPCLXL;
+                _customLongEdgeDots = _customLongEdgeDotsPCLXL;
             }
 
             if (_flagCustomUseMetric)
@@ -787,28 +787,28 @@ namespace PCLParaphernalia
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
             {
                 _indxOrientationPCL = cbOrientation.SelectedIndex;
-                _indxPaperSizePCL   = cbPaperSize.SelectedIndex;
-                _indxPaperTypePCL   = cbPaperType.SelectedIndex;
-                _indxPlexModePCL    = cbPlexMode.SelectedIndex;
-                _indxPJLCommandPCL  = cbPJLCommand.SelectedIndex;
+                _indxPaperSizePCL = cbPaperSize.SelectedIndex;
+                _indxPaperTypePCL = cbPaperType.SelectedIndex;
+                _indxPlexModePCL = cbPlexMode.SelectedIndex;
+                _indxPJLCommandPCL = cbPJLCommand.SelectedIndex;
 
                 _flagCustomUseMetricPCL = _flagCustomUseMetric;
                 _customShortEdgeDotsPCL = _customShortEdgeDots;
-                _customLongEdgeDotsPCL  = _customLongEdgeDots;
+                _customLongEdgeDotsPCL = _customLongEdgeDots;
 
                 _formAsMacroPCL = chkOptFormAsMacro.IsChecked == true;
             }
             else
             {
                 _indxOrientationPCLXL = cbOrientation.SelectedIndex;
-                _indxPaperSizePCLXL   = cbPaperSize.SelectedIndex;
-                _indxPaperTypePCLXL   = cbPaperType.SelectedIndex;
-                _indxPlexModePCLXL    = cbPlexMode.SelectedIndex;
-                _indxPJLCommandPCLXL  = cbPJLCommand.SelectedIndex;
+                _indxPaperSizePCLXL = cbPaperSize.SelectedIndex;
+                _indxPaperTypePCLXL = cbPaperType.SelectedIndex;
+                _indxPlexModePCLXL = cbPlexMode.SelectedIndex;
+                _indxPJLCommandPCLXL = cbPJLCommand.SelectedIndex;
 
                 _flagCustomUseMetricPCLXL = _flagCustomUseMetric;
                 _customShortEdgeDotsPCLXL = _customShortEdgeDots;
-                _customLongEdgeDotsPCLXL  = _customLongEdgeDots;
+                _customLongEdgeDotsPCLXL = _customLongEdgeDots;
 
                 _formAsMacroPCLXL = chkOptFormAsMacro.IsChecked == true;
             }
@@ -861,7 +861,7 @@ namespace PCLParaphernalia
 
         public void resetTarget()
         {
-            TargetCore.eTarget targetType = TargetCore.getType ();
+            TargetCore.eTarget targetType = TargetCore.getType();
 
             if (targetType == TargetCore.eTarget.File)
             {
@@ -883,13 +883,13 @@ namespace PCLParaphernalia
                 btnGenerate.Content = "Generate & send test data to " +
                                       "\r\n" +
                                       netPrnAddress + " : " +
-                                      netPrnPort.ToString ();
+                                      netPrnPort.ToString();
             }
             else if (targetType == TargetCore.eTarget.WinPrinter)
             {
                 string winPrintername = string.Empty;
 
-                TargetCore.metricsLoadWinPrinter (ref winPrintername);
+                TargetCore.metricsLoadWinPrinter(ref winPrintername);
 
                 btnGenerate.Content = "Generate & send test data to printer " +
                                       "\r\n" +
@@ -923,21 +923,21 @@ namespace PCLParaphernalia
 
                 lbCustomUnits.Visibility = Visibility.Visible;
                 rbCustomUseImperial.Visibility = Visibility.Visible;
-                rbCustomUseMetric.Visibility   = Visibility.Visible;
+                rbCustomUseMetric.Visibility = Visibility.Visible;
 
                 if (_flagCustomUseMetric)
                 {
-                    txtLongEdgeImperial.IsReadOnly  = true;
-                    txtLongEdgeMetric.IsReadOnly    = false;
+                    txtLongEdgeImperial.IsReadOnly = true;
+                    txtLongEdgeMetric.IsReadOnly = false;
                     txtShortEdgeImperial.IsReadOnly = true;
-                    txtShortEdgeMetric.IsReadOnly   = false;
+                    txtShortEdgeMetric.IsReadOnly = false;
                 }
                 else
                 {
-                    txtLongEdgeImperial.IsReadOnly  = false;
-                    txtLongEdgeMetric.IsReadOnly    = true;
+                    txtLongEdgeImperial.IsReadOnly = false;
+                    txtLongEdgeMetric.IsReadOnly = true;
                     txtShortEdgeImperial.IsReadOnly = false;
-                    txtShortEdgeMetric.IsReadOnly   = true;
+                    txtShortEdgeMetric.IsReadOnly = true;
                 }
             }
             else
@@ -946,12 +946,12 @@ namespace PCLParaphernalia
 
                 lbCustomUnits.Visibility = Visibility.Hidden;
                 rbCustomUseImperial.Visibility = Visibility.Hidden;
-                rbCustomUseMetric.Visibility   = Visibility.Hidden;
+                rbCustomUseMetric.Visibility = Visibility.Hidden;
 
-                txtLongEdgeImperial.IsReadOnly  = true; // not needed if hidden ??
-                txtLongEdgeMetric.IsReadOnly    = true;
+                txtLongEdgeImperial.IsReadOnly = true; // not needed if hidden ??
+                txtLongEdgeMetric.IsReadOnly = true;
                 txtShortEdgeImperial.IsReadOnly = true;
-                txtShortEdgeMetric.IsReadOnly   = true;
+                txtShortEdgeMetric.IsReadOnly = true;
             }
 
             //----------------------------------------------------------------//
@@ -1105,14 +1105,14 @@ namespace PCLParaphernalia
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
             {
                 indxOrientation = _subsetOrientations[_indxOrientationPCL];
-                indxPaperSize   = _subsetPaperSizes[_indxPaperSizePCL];
-                indxPaperType   = _indxPaperTypePCL;
+                indxPaperSize = _subsetPaperSizes[_indxPaperSizePCL];
+                indxPaperType = _indxPaperTypePCL;
             }
             else
             {
                 indxOrientation = _subsetOrientations[_indxOrientationPCLXL];
-                indxPaperSize   = _subsetPaperSizes[_indxPaperSizePCLXL];
-                indxPaperType   = _indxPaperTypePCLXL;
+                indxPaperSize = _subsetPaperSizes[_indxPaperSizePCLXL];
+                indxPaperType = _indxPaperTypePCLXL;
             }
 
             aspect = PCLOrientations.getAspect(indxOrientation);
@@ -1142,13 +1142,13 @@ namespace PCLParaphernalia
                 widthPrintable = (ushort)(sizeShortEdge -
                                           (marginsUnprintable * 2));
 
-                widthLogical   = (ushort)(sizeShortEdge -
+                widthLogical = (ushort)(sizeShortEdge -
                                           (marginsLogicalPort * 2));
 
                 lengthPrintable = (ushort)(sizeLongEdge -
                                           (marginsUnprintable * 2));
 
-                lengthLogical   = sizeLongEdge;
+                lengthLogical = sizeLongEdge;
             }
             else
             {
@@ -1157,13 +1157,13 @@ namespace PCLParaphernalia
                 widthPrintable = (ushort)(sizeLongEdge -
                                           (marginsUnprintable * 2));
 
-                widthLogical   = (ushort)(sizeLongEdge -
+                widthLogical = (ushort)(sizeLongEdge -
                                           (marginsLogicalLand * 2));
 
                 lengthPrintable = (ushort)(sizeShortEdge -
                                           (marginsUnprintable * 2));
 
-                lengthLogical   = sizeShortEdge;
+                lengthLogical = sizeShortEdge;
             }
 
             //----------------------------------------------------------------//
@@ -1175,18 +1175,18 @@ namespace PCLParaphernalia
             if (!logicalOnly)
             {
                 txtShortEdgeDots.Text = sizeShortEdge.ToString("F0");
-                txtLongEdgeDots.Text  = sizeLongEdge.ToString("F0");
-                txtDotsPerInch.Text   = _sessionUPI.ToString("F0");
+                txtLongEdgeDots.Text = sizeLongEdge.ToString("F0");
+                txtDotsPerInch.Text = _sessionUPI.ToString("F0");
             }
 
-            txtLogPageMarginLRDots.Text   = marginsLogical.ToString("F0");
-            txtLogPageMarginTBDots.Text   = zero.ToString("F0");
-            txtLogPageWidthDots.Text      = widthLogical.ToString("F0");
-            txtLogPageLengthDots.Text     = lengthLogical.ToString("F0");
+            txtLogPageMarginLRDots.Text = marginsLogical.ToString("F0");
+            txtLogPageMarginTBDots.Text = zero.ToString("F0");
+            txtLogPageWidthDots.Text = widthLogical.ToString("F0");
+            txtLogPageLengthDots.Text = lengthLogical.ToString("F0");
 
             txtUnprintableMarginDots.Text = marginsUnprintable.ToString("F0");
-            txtPrintWidthDots.Text        = widthPrintable.ToString("F0");
-            txtPrintLengthDots.Text       = lengthPrintable.ToString("F0");
+            txtPrintWidthDots.Text = widthPrintable.ToString("F0");
+            txtPrintLengthDots.Text = lengthPrintable.ToString("F0");
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1197,34 +1197,34 @@ namespace PCLParaphernalia
             if (!logicalOnly)
             {
                 txtShortEdgeMetric.Text =
-                    Math.Round (sizeShortEdge *
+                    Math.Round(sizeShortEdge *
                                   _unitsToMilliMetres, 2).ToString("F1");
 
                 txtLongEdgeMetric.Text =
-                    Math.Round (sizeLongEdge *
+                    Math.Round(sizeLongEdge *
                                   _unitsToMilliMetres, 2).ToString("F1");
             }
 
             txtLogPageMarginLRMetric.Text
-                = Math.Round (marginsLogical *
+                = Math.Round(marginsLogical *
                                 _unitsToMilliMetres, 2).ToString("F1");
             txtLogPageMarginTBMetric.Text
                 = zero.ToString("F1");
             txtLogPageWidthMetric.Text
-                = Math.Round (widthLogical    *
+                = Math.Round(widthLogical *
                                _unitsToMilliMetres, 2).ToString("F1");
             txtLogPageLengthMetric.Text
-                = Math.Round (lengthLogical   *
+                = Math.Round(lengthLogical *
                                 _unitsToMilliMetres, 2).ToString("F1");
 
             txtUnprintableMarginMetric.Text
-                = Math.Round (marginsUnprintable *
+                = Math.Round(marginsUnprintable *
                                 _unitsToMilliMetres, 2).ToString("F1");
             txtPrintWidthMetric.Text
-                = Math.Round (widthPrintable  *
+                = Math.Round(widthPrintable *
                                 _unitsToMilliMetres, 2).ToString("F1");
             txtPrintLengthMetric.Text
-                = Math.Round (lengthPrintable *
+                = Math.Round(lengthPrintable *
                                 _unitsToMilliMetres, 2).ToString("F1");
 
             //----------------------------------------------------------------//
@@ -1236,34 +1236,34 @@ namespace PCLParaphernalia
             if (!logicalOnly)
             {
                 txtShortEdgeImperial.Text =
-                    Math.Round (sizeShortEdge *
+                    Math.Round(sizeShortEdge *
                                   _unitsToInches, 3).ToString("F3");
 
                 txtLongEdgeImperial.Text =
-                    Math.Round (sizeLongEdge *
+                    Math.Round(sizeLongEdge *
                                   _unitsToInches, 3).ToString("F3");
             }
 
             txtLogPageMarginLRImperial.Text
-                = Math.Round (marginsLogical *
+                = Math.Round(marginsLogical *
                                 _unitsToInches, 3).ToString("F3");
             txtLogPageMarginTBImperial.Text
                 = zero.ToString("F3");
             txtLogPageWidthImperial.Text
-                = Math.Round (widthLogical    *
+                = Math.Round(widthLogical *
                                 _unitsToInches, 3).ToString("F3");
             txtLogPageLengthImperial.Text
-                = Math.Round (lengthLogical   *
+                = Math.Round(lengthLogical *
                                 _unitsToInches, 3).ToString("F3");
 
             txtUnprintableMarginImperial.Text
-                = Math.Round (marginsUnprintable *
+                = Math.Round(marginsUnprintable *
                                 _unitsToInches, 3).ToString("F3");
             txtPrintWidthImperial.Text
-                = Math.Round (widthPrintable  *
+                = Math.Round(widthPrintable *
                                 _unitsToInches, 3).ToString("F3");
             txtPrintLengthImperial.Text
-                = Math.Round (lengthPrintable *
+                = Math.Round(lengthPrintable *
                                 _unitsToInches, 3).ToString("F3");
         }
 
@@ -1289,7 +1289,7 @@ namespace PCLParaphernalia
                     txtLongEdgeDots.Text = _customLongEdgeDots.ToString();
 
                     txtLongEdgeMetric.Text =
-                        Math.Round (_customLongEdgeDots *
+                        Math.Round(_customLongEdgeDots *
                                      _unitsToMilliMetres, 2).ToString("F1");
 
                     PCLPaperSizes.setCustomLongEdge(_customLongEdgeDots,
@@ -1355,7 +1355,7 @@ namespace PCLParaphernalia
                     txtShortEdgeDots.Text = _customShortEdgeDots.ToString();
 
                     txtShortEdgeMetric.Text =
-                        Math.Round (_customShortEdgeDots *
+                        Math.Round(_customShortEdgeDots *
                                       _unitsToMilliMetres, 2).ToString("F1");
 
                     PCLPaperSizes.setCustomShortEdge(_customShortEdgeDots,
@@ -1388,7 +1388,7 @@ namespace PCLParaphernalia
                     txtShortEdgeDots.Text = _customShortEdgeDots.ToString();
 
                     txtShortEdgeImperial.Text =
-                        Math.Round (_customShortEdgeDots *
+                        Math.Round(_customShortEdgeDots *
                                       _unitsToInches, 3).ToString("F3");
 
                     PCLPaperSizes.setCustomShortEdge(_customShortEdgeDots,
@@ -1416,10 +1416,10 @@ namespace PCLParaphernalia
             const double scaleToDots = 1 / _unitsToInches;
             const double minValShort = 3.00;
             const double maxValShort = 12.00;
-            const double minValLong  = 5.00;
-            const double maxValLong  = 18.00;
+            const double minValLong = 5.00;
+            const double maxValLong = 18.00;
             const double defValShort = 8.27;  // A4 dimension
-            const double defValLong  = 11.69;
+            const double defValLong = 11.69;
 
             double minVal,
                    maxVal;
@@ -1439,7 +1439,7 @@ namespace PCLParaphernalia
                 edgeOther = "Long";
                 edgeOtherVal =
                     Math.Round(_customLongEdgeDots *
-                                 _unitsToInches,3).ToString("F3");
+                                 _unitsToInches, 3).ToString("F3");
                 minVal = minValShort;
                 maxVal = maxValShort;
                 crntText = txtShortEdgeImperial.Text;
@@ -1450,7 +1450,7 @@ namespace PCLParaphernalia
                 edgeOther = "Short";
                 edgeOtherVal =
                     Math.Round(_customShortEdgeDots *
-                                 _unitsToInches,3).ToString("F3");
+                                 _unitsToInches, 3).ToString("F3");
                 minVal = minValLong;
                 maxVal = maxValLong;
                 crntText = txtLongEdgeImperial.Text;
@@ -1584,10 +1584,10 @@ namespace PCLParaphernalia
             const double scaleMinMax = _sessionUPI * _unitsToMilliMetres;
             const double minValShort = scaleMinMax * 3.00;
             const double maxValShort = scaleMinMax * 12.00;
-            const double minValLong  = scaleMinMax * 5.00;
-            const double maxValLong  = scaleMinMax * 18.00;
+            const double minValLong = scaleMinMax * 5.00;
+            const double maxValLong = scaleMinMax * 18.00;
             const double defValShort = 210;  // A4 dimension
-            const double defValLong  = 297;
+            const double defValLong = 297;
 
             double minVal,
                    maxVal;
@@ -1603,22 +1603,22 @@ namespace PCLParaphernalia
 
             if (shortEdge)
             {
-                edgeThis  = "Short";
+                edgeThis = "Short";
                 edgeOther = "Long";
                 edgeOtherVal =
                     Math.Round(_customLongEdgeDots *
-                                 _unitsToMilliMetres,2).ToString("F1");
+                                 _unitsToMilliMetres, 2).ToString("F1");
                 minVal = minValShort;
                 maxVal = maxValShort;
                 crntText = txtShortEdgeMetric.Text;
             }
             else
             {
-                edgeThis  = "Long";
+                edgeThis = "Long";
                 edgeOther = "Short";
                 edgeOtherVal =
                     Math.Round(_customShortEdgeDots *
-                                 _unitsToMilliMetres,2).ToString("F1");
+                                 _unitsToMilliMetres, 2).ToString("F1");
                 minVal = minValLong;
                 maxVal = maxValLong;
                 crntText = txtLongEdgeMetric.Text;
@@ -1700,7 +1700,7 @@ namespace PCLParaphernalia
                     if (shortEdge)
                     {
                         _customShortEdgeDots =
-                            (ushort)(defValShort *scaleToDots);
+                            (ushort)(defValShort * scaleToDots);
 
                         txtShortEdgeMetric.Text = newText;
                     }

@@ -17,7 +17,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLCharCollItem (int bitNo,
+        public PCLCharCollItem(int bitNo,
                                 PCLCharCollections.eBitType bitType,
                                 string desc,
                                 bool isEnabled,
@@ -68,7 +68,7 @@ namespace PCLParaphernalia
             {
                 _isChecked = value;
 
-                onPropertyChanged (nameof(IsChecked));
+                onPropertyChanged(nameof(IsChecked));
             }
         }
 
@@ -86,11 +86,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void onPropertyChanged (string propertyName)
+        private void onPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
             {
-                PropertyChanged (
+                PropertyChanged(
                     this,
                     new PropertyChangedEventArgs(propertyName));
             }

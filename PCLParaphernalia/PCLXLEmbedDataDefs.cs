@@ -20,8 +20,8 @@ namespace PCLParaphernalia
 
         public enum eTag : byte
         {
-            Int    = 0xfa,
-            Byte   = 0xfb
+            Int = 0xfa,
+            Byte = 0xfb
         }
 
         //--------------------------------------------------------------------//
@@ -88,15 +88,15 @@ namespace PCLParaphernalia
 
         private static void populateTable()
         {
-            const bool flagNone     = false;
+            const bool flagNone = false;
 
-            byte tag = (byte) eTag.Int;                                   // 0xfa //
+            byte tag = (byte)eTag.Int;                                   // 0xfa //
             _tags.Add(tag,
                 new PCLXLEmbedDataDef(tag,
                                          flagNone,
                                          "data length integer"));
 
-            tag = (byte) eTag.Byte;                                  // 0xfb //
+            tag = (byte)eTag.Byte;                                  // 0xfb //
             _tags.Add(tag,
                 new PCLXLEmbedDataDef(tag,
                                          flagNone,

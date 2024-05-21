@@ -21,8 +21,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int _macroId           = 1;
-        const ushort _unitsPerInch     = PCLWriter.sessionUPI;
+        const int _macroId = 1;
+        const ushort _unitsPerInch = PCLWriter.sessionUPI;
 
         const short _pageOriginX = _unitsPerInch * 1;
         const short _pageOriginY = _unitsPerInch * 1;
@@ -67,7 +67,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generateJob(BinaryWriter      prnWriter,
+        public static void generateJob(BinaryWriter prnWriter,
                                        int indxPaperSize,
                                        int indxPaperType,
                                        int indxOrientation,
@@ -308,7 +308,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generatePage(BinaryWriter      prnWriter,
+        private static void generatePage(BinaryWriter prnWriter,
                                          int indxPaperSize,
                                          int indxPaperType,
                                          int indxOrientation,
@@ -360,11 +360,11 @@ namespace PCLParaphernalia
                 PCLWriter.text(prnWriter, posX, posY, 0, "U+" +
                                codePoint.ToString("x6"));
 
-            PrnParseDataUTF8.convertUTF32ToUTF8Bytes (codePoint,
+            PrnParseDataUTF8.convertUTF32ToUTF8Bytes(codePoint,
                                                       ref utf8Len,
                                                       ref utf8Seq);
 
-            PrnParseDataUTF8.convertUTF32ToUTF8HexString (codePoint,
+            PrnParseDataUTF8.convertUTF32ToUTF8HexString(codePoint,
                                                           true,
                                                           ref utf8HexVal);
 
@@ -381,7 +381,7 @@ namespace PCLParaphernalia
             posY += _lineInc;
 
             PCLWriter.text(prnWriter, posX, posY, 0,
-                           PCLFonts.getName (indxFont) +
+                           PCLFonts.getName(indxFont) +
                            " " +
                            Enum.GetName(typeof(PCLFonts.eVariant), fontVar));
 
@@ -394,7 +394,7 @@ namespace PCLParaphernalia
                                                       fontVar,
                                                       ptSize, 0));
 
-            PCLWriter.textParsingMethod (
+            PCLWriter.textParsingMethod(
                 prnWriter,
                 PCLTextParsingMethods.Index.m83_UTF8);
 

@@ -17,36 +17,36 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _mainKey                 = MainForm._regMainKey;
+        const string _mainKey = MainForm._regMainKey;
 
-        const string _subKeyTools             = "Tools";
-        const string _subKeyToolsImageBitmap  = "ImageBitmap";
-        const string _subKeyPCL5              = "PCL5";
-        const string _subKeyPCL6              = "PCL6";
-        const string _subKeyPCL               = "PCL";
-        const string _subKeyPCLXL             = "PCLXL";
+        const string _subKeyTools = "Tools";
+        const string _subKeyToolsImageBitmap = "ImageBitmap";
+        const string _subKeyPCL5 = "PCL5";
+        const string _subKeyPCL6 = "PCL6";
+        const string _subKeyPCL = "PCL";
+        const string _subKeyPCLXL = "PCLXL";
 
-        const string _nameCaptureFile         = "CaptureFile";
-        const string _nameCoordX              = "CoordX";
-        const string _nameCoordY              = "CoordY";
-        const string _nameFilename            = "Filename";
-        const string _nameIndxOrientation     = "IndxOrientation";
-        const string _nameIndxPaperSize       = "IndxPaperSize";
-        const string _nameIndxPaperType       = "IndxPaperType";
-        const string _nameIndxPDL             = "IndxPDL";
-        const string _nameIndxRasterRes       = "IndxRasterRes";
-        const string _nameScaleX              = "ScaleX";
-        const string _nameScaleY              = "ScaleY";
+        const string _nameCaptureFile = "CaptureFile";
+        const string _nameCoordX = "CoordX";
+        const string _nameCoordY = "CoordY";
+        const string _nameFilename = "Filename";
+        const string _nameIndxOrientation = "IndxOrientation";
+        const string _nameIndxPaperSize = "IndxPaperSize";
+        const string _nameIndxPaperType = "IndxPaperType";
+        const string _nameIndxPDL = "IndxPDL";
+        const string _nameIndxRasterRes = "IndxRasterRes";
+        const string _nameScaleX = "ScaleX";
+        const string _nameScaleY = "ScaleY";
 
-        const int _indexZero                = 0;
+        const int _indexZero = 0;
 
-        const string _defaultCaptureFile      = "CaptureFile_ImageBitmap.prn";
-        const string _defaultCaptureFilePCL   = "CaptureFile_ImageBitmapPCL.prn";
+        const string _defaultCaptureFile = "CaptureFile_ImageBitmap.prn";
+        const string _defaultCaptureFilePCL = "CaptureFile_ImageBitmapPCL.prn";
         const string _defaultCaptureFilePCLXL = "CaptureFile_ImageBitmapPCLXL.prn";
-        const string _defaultFilename         = "DefaultImageFile.bmp";
+        const string _defaultFilename = "DefaultImageFile.bmp";
 
-        const int _defaultCoord             = 300;
-        const int _defaultScale             = 100;
+        const int _defaultCoord = 300;
+        const int _defaultScale = 100;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -175,20 +175,20 @@ namespace PCLParaphernalia
                 indxPDL = (int)subKey.GetValue(_nameIndxPDL,
                                                        _indexZero);
 
-                filename      = (string)subKey.GetValue(_nameFilename,
+                filename = (string)subKey.GetValue(_nameFilename,
                                                         defWorkFolder + "\\" +
                                                         _defaultFilename);
 
-                destPosX      = (int)subKey.GetValue(_nameCoordX,
+                destPosX = (int)subKey.GetValue(_nameCoordX,
                                                        _defaultCoord);
 
-                destPosY      = (int)subKey.GetValue(_nameCoordY,
+                destPosY = (int)subKey.GetValue(_nameCoordY,
                                                        _defaultCoord);
 
-                destScaleX    = (int)subKey.GetValue(_nameScaleX,
+                destScaleX = (int)subKey.GetValue(_nameScaleX,
                                                        _defaultScale);
 
-                destScaleY    = (int)subKey.GetValue(_nameScaleY,
+                destScaleY = (int)subKey.GetValue(_nameScaleY,
                                                        _defaultScale);
 
                 indxRasterRes = (int)subKey.GetValue(_nameIndxRasterRes,
@@ -220,9 +220,9 @@ namespace PCLParaphernalia
             {
                 indxOrientation = (int)subKey.GetValue(_nameIndxOrientation,
                                                          _indexZero);
-                indxPaperSize   = (int)subKey.GetValue(_nameIndxPaperSize,
+                indxPaperSize = (int)subKey.GetValue(_nameIndxPaperSize,
                                                          _indexZero);
-                indxPaperType   = (int)subKey.GetValue(_nameIndxPaperType,
+                indxPaperType = (int)subKey.GetValue(_nameIndxPaperType,
                                                          _indexZero);
             }
         }
@@ -304,7 +304,7 @@ namespace PCLParaphernalia
 
                 if (filename != null)
                 {
-                    subKey.SetValue (_nameFilename,
+                    subKey.SetValue(_nameFilename,
                                     filename,
                                     RegistryValueKind.String);
                 }

@@ -42,12 +42,12 @@ namespace PCLParaphernalia
             PrnParseConstants.eSeqGrp seqGrp,
             string description)
         {
-            _value             = value;
+            _value = value;
             Mnemonic = mnemonic;
             DescExcMnemonic = description;
             FlagLineTerm = flagLineTerm;
-            this.makeOvlAct        = makeOvlAct;
-            _seqGrp            = seqGrp;
+            this.makeOvlAct = makeOvlAct;
+            _seqGrp = seqGrp;
 
             _statsCtParent = 0;
             _statsCtChild = 0;

@@ -40,10 +40,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void binSrcFileClose ()
+        private static void binSrcFileClose()
         {
-            _binReader.Close ();
-            _ipStream.Close ();
+            _binReader.Close();
+            _ipStream.Close();
         }
 
         //--------------------------------------------------------------------//
@@ -55,7 +55,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void binSrcFileCopy (BinaryWriter prnWriter)
+        private static void binSrcFileCopy(BinaryWriter prnWriter)
         {
             const int bufSize = 2048;
             int readSize;
@@ -68,12 +68,12 @@ namespace PCLParaphernalia
 
             while (!endLoop)
             {
-                readSize = _binReader.Read (buf, 0, bufSize);
+                readSize = _binReader.Read(buf, 0, bufSize);
 
                 if (readSize == 0)
                     endLoop = true;
                 else
-                    prnWriter.Write (buf, 0, readSize);
+                    prnWriter.Write(buf, 0, readSize);
             }
         }
 
@@ -86,23 +86,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool binSrcFileOpen (string fileName,
+        private static bool binSrcFileOpen(string fileName,
                                                ref long fileSize)
         {
             bool open = false;
 
             if ((fileName == null) || (fileName?.Length == 0))
             {
-                MessageBox.Show ("Binary source filename is null.",
+                MessageBox.Show("Binary source filename is null.",
                                 "PJL FS file invalid",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
                 return false;
             }
-            else if (!File.Exists (fileName))
+            else if (!File.Exists(fileName))
             {
-                MessageBox.Show ("Binary source file '" + fileName +
+                MessageBox.Show("Binary source file '" + fileName +
                                 "' does not exist.",
                                 "PJL FS file invalid",
                                 MessageBoxButton.OK,
@@ -112,7 +112,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                _ipStream = File.Open (fileName,
+                _ipStream = File.Open(fileName,
                                       FileMode.Open,
                                       FileAccess.Read,
                                       FileShare.None);
@@ -121,11 +121,11 @@ namespace PCLParaphernalia
                 {
                     open = true;
 
-                    FileInfo fi = new FileInfo (fileName);
+                    FileInfo fi = new FileInfo(fileName);
 
                     fileSize = fi.Length;
 
-                    _binReader = new BinaryReader (_ipStream);
+                    _binReader = new BinaryReader(_ipStream);
                 }
             }
 
@@ -156,7 +156,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool binTgtFileOpen (string fileName)
+        private static bool binTgtFileOpen(string fileName)
         {
             bool open = false;
 
@@ -180,7 +180,7 @@ namespace PCLParaphernalia
                 {
                     open = true;
 
-                    _binWriter = new BinaryWriter (_opStream);
+                    _binWriter = new BinaryWriter(_opStream);
                 }
             }
 
@@ -196,11 +196,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void binTgtFileWrite (byte[] buf,
+        private static void binTgtFileWrite(byte[] buf,
                                              int bufOffset,
                                              int writeLen)
         {
-            _binWriter.Write (buf, bufOffset, writeLen);
+            _binWriter.Write(buf, bufOffset, writeLen);
         }
 
         //--------------------------------------------------------------------//
@@ -212,7 +212,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generateRequest (BinaryWriter prnWriter,
+        public static void generateRequest(BinaryWriter prnWriter,
                                             PJLCommands.eCmdIndex cmdIndx,
                                             bool secJob,
                                             string password,
@@ -241,13 +241,13 @@ namespace PCLParaphernalia
                                        password +
                                        "\x0d\x0a";
 
-                    jobEnd =  "\x1b" + "%-12345X";
+                    jobEnd = "\x1b" + "%-12345X";
                 }
                 else
                 {
                     jobHddr = "\x1b" + "%-12345X";
 
-                    jobEnd =  "\x1b" + "%-12345X";
+                    jobEnd = "\x1b" + "%-12345X";
                 }
 
                 if (reqType == PJLCommands.eRequestType.FSBinSrc)
@@ -256,26 +256,26 @@ namespace PCLParaphernalia
 
                     long fileSize = 0;
 
-                    OK = binSrcFileOpen (binSrcFilename, ref fileSize);
+                    OK = binSrcFileOpen(binSrcFilename, ref fileSize);
 
                     if (OK)
                     {
                         seq = jobHddr +
                               "@PJL " + cmdName +
-                              " FORMAT:BINARY SIZE=" + fileSize.ToString () +
+                              " FORMAT:BINARY SIZE=" + fileSize.ToString() +
                               " NAME=" + '"' + pathname + '"' +
                               "\x0d\x0a";
 
-                        prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
+                        prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
 
                         // Read and send content of binSrcFilename
 
-                        binSrcFileCopy (prnWriter);
-                        binSrcFileClose ();
+                        binSrcFileCopy(prnWriter);
+                        binSrcFileClose();
 
                         // terminate job with UEL
 
-                        prnWriter.Write (jobEnd.ToCharArray (), 0, jobEnd.Length);
+                        prnWriter.Write(jobEnd.ToCharArray(), 0, jobEnd.Length);
                     }
                 }
                 else if (reqType == PJLCommands.eRequestType.FSDirList)
@@ -283,8 +283,8 @@ namespace PCLParaphernalia
                     seq = jobHddr +
                           "@PJL " + cmdName +
                           " NAME=" + '"' + pathname + '"' +
-                          " ENTRY=" + option2.ToString () +
-                          " COUNT=" + option1.ToString () +
+                          " ENTRY=" + option2.ToString() +
+                          " COUNT=" + option1.ToString() +
                           "\x0d\x0a" +
                           jobEnd;
 
@@ -306,8 +306,8 @@ namespace PCLParaphernalia
                           "@PJL " +
                           cmdName +
                           " NAME=" + '"' + pathname + '"' +
-                          " OFFSET=" + option2.ToString () +
-                          " SIZE=" + option1.ToString () +
+                          " OFFSET=" + option2.ToString() +
+                          " SIZE=" + option1.ToString() +
                           "\x0d\x0a" +
                           jobEnd;
 
@@ -335,7 +335,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string readResponse (
+        public static string readResponse(
             PJLCommands.eCmdIndex cmdIndx,
             string binTgtFilenamePJLFS)
         {
@@ -353,7 +353,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                return readResponseQuery ();
+                return readResponseQuery();
             }
             else if (reqType == PJLCommands.eRequestType.FSUpload)
             {
@@ -364,7 +364,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                return readResponseUpload (binTgtFilenamePJLFS);
+                return readResponseUpload(binTgtFilenamePJLFS);
             }
             else
             {
@@ -381,7 +381,7 @@ namespace PCLParaphernalia
                 //------------------------------------------------------------//
 
                 return "No response is expected from the " +
-                        PJLCommands.getName (cmdIndx) +
+                        PJLCommands.getName(cmdIndx) +
                         " action command";
             }
         }
@@ -397,7 +397,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static string readResponseQuery ()
+        private static string readResponseQuery()
         {
             const int replyBufLen = 32768;
 
@@ -513,15 +513,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static string readResponseUpload (string binTgtFilename)
+        private static string readResponseUpload(string binTgtFilename)
         {
             const int replyBufLen = 32768;
 
             string reply = string.Empty;
 
-            bool binFileOpen = binTgtFileOpen (binTgtFilename);
+            bool binFileOpen = binTgtFileOpen(binTgtFilename);
 
-            if (! binFileOpen)
+            if (!binFileOpen)
             {
                 reply = "Failed to open target binary file:\r\n\r\n" +
                         binTgtFilename;
@@ -620,7 +620,7 @@ namespace PCLParaphernalia
 
                         firstBlock = false;
 
-                        cmdLen = Array.IndexOf (replyBlock,
+                        cmdLen = Array.IndexOf(replyBlock,
                                                 PrnParseConstants.asciiLF,
                                                 0, blockLen);
 
@@ -636,9 +636,9 @@ namespace PCLParaphernalia
 
                             cmdLen += 1;    // account for <LF> byte //
 
-                            binSize = readResponseUploadSize (replyBlock, cmdLen);
+                            binSize = readResponseUploadSize(replyBlock, cmdLen);
 
-                            reply = Encoding.ASCII.GetString (replyBlock,
+                            reply = Encoding.ASCII.GetString(replyBlock,
                                                               0,
                                                               cmdLen) +
                                     "\r\n" +
@@ -740,7 +740,7 @@ namespace PCLParaphernalia
 
                         binTot += binLen;
 
-                        binTgtFileWrite (replyBlock, 0, binLen);
+                        binTgtFileWrite(replyBlock, 0, binLen);
                     }
 
                     if ((supLen != 0) && (!supDataWritten))
@@ -755,7 +755,7 @@ namespace PCLParaphernalia
                                  " such bytes:\r\n\r\n" +
                                  ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" +
                                  "\r\n" +
-                                 Encoding.ASCII.GetString (replyBlock,
+                                 Encoding.ASCII.GetString(replyBlock,
                                                            binLen,
                                                            supLen) +
                                  "\r\n" +
@@ -819,7 +819,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static int readResponseUploadSize (byte[] replyBlock,
+        private static int readResponseUploadSize(byte[] replyBlock,
                                                      int cmdLen)
         {
             int binSize = 0;
@@ -956,7 +956,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void sendRequest (PJLCommands.eCmdIndex cmdIndx)
+        public static void sendRequest(PJLCommands.eCmdIndex cmdIndx)
         {
             PJLCommands.eRequestType reqType =
                 PJLCommands.getType(cmdIndx);

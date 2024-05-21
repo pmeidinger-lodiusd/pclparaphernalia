@@ -38,30 +38,30 @@ namespace PCLParaphernalia
 
         public enum eTag : byte
         {
-            Real32                      = 0xc5,
-            Real32Array                 = 0xcd,
-            Real32Box                   = 0xe5,
-            Real32XY                    = 0xd5,
-            Sint16                      = 0xc3,
-            Sint16Array                 = 0xcb,
-            Sint16Box                   = 0xe3,
-            Sint16XY                    = 0xd3,
-            Sint32                      = 0xc4,
-            Sint32Array                 = 0xcc,
-            Sint32Box                   = 0xe4,
-            Sint32XY                    = 0xd4,
-            Ubyte                       = 0xc0,
-            UbyteArray                  = 0xc8,
-            UbyteBox                    = 0xe0,
-            UbyteXY                     = 0xd0,
-            Uint16                      = 0xc1,
-            Uint16Array                 = 0xc9,
-            Uint16Box                   = 0xe1,
-            Uint16XY                    = 0xd1,
-            Uint32                      = 0xc2,
-            Uint32Array                 = 0xca,
-            Uint32Box                   = 0xe2,
-            Uint32XY                    = 0xd2
+            Real32 = 0xc5,
+            Real32Array = 0xcd,
+            Real32Box = 0xe5,
+            Real32XY = 0xd5,
+            Sint16 = 0xc3,
+            Sint16Array = 0xcb,
+            Sint16Box = 0xe3,
+            Sint16XY = 0xd3,
+            Sint32 = 0xc4,
+            Sint32Array = 0xcc,
+            Sint32Box = 0xe4,
+            Sint32XY = 0xd4,
+            Ubyte = 0xc0,
+            UbyteArray = 0xc8,
+            UbyteBox = 0xe0,
+            UbyteXY = 0xd0,
+            Uint16 = 0xc1,
+            Uint16Array = 0xc9,
+            Uint16Box = 0xe1,
+            Uint16XY = 0xd1,
+            Uint32 = 0xc2,
+            Uint32Array = 0xca,
+            Uint32Box = 0xe2,
+            Uint32XY = 0xd2
         }
 
         //--------------------------------------------------------------------//
@@ -97,7 +97,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkTag (byte tagToCheck,
+        public static bool checkTag(byte tagToCheck,
                                         ref bool flagReserved,
                                         ref bool flagArray,
                                         ref int groupSize,
@@ -109,7 +109,7 @@ namespace PCLParaphernalia
 
             PCLXLDataType tag;
 
-            if (_tags.IndexOfKey (tagToCheck) != -1)
+            if (_tags.IndexOfKey(tagToCheck) != -1)
             {
                 seqKnown = true;
                 tag = _tags[tagToCheck];
@@ -120,7 +120,7 @@ namespace PCLParaphernalia
                 tag = _tagUnknown;
             }
 
-            tag.getDetails (ref flagReserved,
+            tag.getDetails(ref flagReserved,
                             ref flagArray,
                             ref groupSize,
                             ref unitSize,
@@ -165,11 +165,11 @@ namespace PCLParaphernalia
             {
                 if (!hddrWritten)
                 {
-                    displayStatsCountsHddr (table);
+                    displayStatsCountsHddr(table);
                     hddrWritten = true;
                 }
 
-                row = table.NewRow ();
+                row = table.NewRow();
 
                 row[0] = _tagUnknown.Tag;
                 row[1] = _tagUnknown.Description;
@@ -177,7 +177,7 @@ namespace PCLParaphernalia
                 row[3] = _tagUnknown.StatsCtChild;
                 row[4] = _tagUnknown.StatsCtTotal;
 
-                table.Rows.Add (row);
+                table.Rows.Add(row);
             }
 
             //----------------------------------------------------------------//
@@ -200,11 +200,11 @@ namespace PCLParaphernalia
                 {
                     if (!hddrWritten)
                     {
-                        displayStatsCountsHddr (table);
+                        displayStatsCountsHddr(table);
                         hddrWritten = true;
                     }
 
-                    row = table.NewRow ();
+                    row = table.NewRow();
 
                     row[0] = kvp.Value.Tag;
                     row[1] = kvp.Value.Description;
@@ -212,7 +212,7 @@ namespace PCLParaphernalia
                     row[3] = kvp.Value.StatsCtChild;
                     row[4] = kvp.Value.StatsCtTotal;
 
-                    table.Rows.Add (row);
+                    table.Rows.Add(row);
                 }
             }
         }
@@ -230,7 +230,7 @@ namespace PCLParaphernalia
         {
             //----------------------------------------------------------------//
 
-            DataRow row = table.NewRow ();
+            DataRow row = table.NewRow();
 
             row[0] = string.Empty;
             row[1] = "_____________________";
@@ -238,9 +238,9 @@ namespace PCLParaphernalia
             row[3] = string.Empty;
             row[4] = string.Empty;
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
 
-            row = table.NewRow ();
+            row = table.NewRow();
 
             row[0] = string.Empty;
             row[1] = "PCL XL DataType tags:";
@@ -248,9 +248,9 @@ namespace PCLParaphernalia
             row[3] = string.Empty;
             row[4] = string.Empty;
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
 
-            row = table.NewRow ();
+            row = table.NewRow();
 
             row[0] = string.Empty;
             row[1] = "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯";
@@ -258,7 +258,7 @@ namespace PCLParaphernalia
             row[3] = string.Empty;
             row[4] = string.Empty;
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
         }
 
         //--------------------------------------------------------------------//
@@ -301,17 +301,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void incrementStatsCount (byte tagByte,
+        public static void incrementStatsCount(byte tagByte,
                                                 int level)
         {
             PCLXLDataType tag;
 
-            if (_tags.IndexOfKey (tagByte) != -1)
+            if (_tags.IndexOfKey(tagByte) != -1)
                 tag = _tags[tagByte];
             else
                 tag = _tagUnknown;
 
-            tag.incrementStatisticsCount (level);
+            tag.incrementStatisticsCount(level);
         }
 
         //--------------------------------------------------------------------//
@@ -325,67 +325,67 @@ namespace PCLParaphernalia
 
         private static void populateTable()
         {
-            const bool flagNone     = false;
+            const bool flagNone = false;
             const bool flagReserved = true;
-            const bool flagArray    = true;
+            const bool flagArray = true;
 
             const int sizeSingle = 1;
             const int sizeDouble = 2;
-            const int sizeQuad   = 4;
+            const int sizeQuad = 4;
 
             byte tag = 0x20;                                              // ?    //
             _tagUnknown =
                 new PCLXLDataType(tag,
                                   flagReserved, flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Unknown,
                                   "*** Unknown tag ***");
 
-            tag = (byte) eTag.Ubyte;                                 // 0xc0 //
+            tag = (byte)eTag.Ubyte;                                 // 0xc0 //
             _tags.Add(tag,
                 new PCLXLDataType(tag,
-                                  flagNone,     flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  flagNone, flagNone,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Ubyte,
                                   "ubyte"));
 
-            tag = (byte) eTag.Uint16;                                // 0xc1 //
+            tag = (byte)eTag.Uint16;                                // 0xc1 //
             _tags.Add(tag,
                 new PCLXLDataType(tag,
-                                  flagNone,     flagNone,
-                                  sizeSingle,   sizeDouble,
+                                  flagNone, flagNone,
+                                  sizeSingle, sizeDouble,
                                   eBaseType.Uint16,
                                   "uint16"));
 
-            tag = (byte) eTag.Uint32;                                // 0xc2 //
+            tag = (byte)eTag.Uint32;                                // 0xc2 //
             _tags.Add(tag,
                 new PCLXLDataType(tag,
-                                  flagNone,     flagNone,
-                                  sizeSingle,   sizeQuad,
+                                  flagNone, flagNone,
+                                  sizeSingle, sizeQuad,
                                   eBaseType.Uint32,
                                   "uint32"));
 
-            tag = (byte) eTag.Sint16;                                // 0xc3 //
+            tag = (byte)eTag.Sint16;                                // 0xc3 //
             _tags.Add(tag,
                 new PCLXLDataType(tag,
-                                  flagNone,     flagNone,
-                                  sizeSingle,   sizeDouble,
+                                  flagNone, flagNone,
+                                  sizeSingle, sizeDouble,
                                   eBaseType.Sint16,
                                   "sint16"));
 
-            tag = (byte) eTag.Sint32;                                // 0xc4 //
+            tag = (byte)eTag.Sint32;                                // 0xc4 //
             _tags.Add(tag,
                 new PCLXLDataType(tag,
-                                  flagNone,     flagNone,
-                                  sizeSingle,   sizeQuad,
+                                  flagNone, flagNone,
+                                  sizeSingle, sizeQuad,
                                   eBaseType.Sint32,
                                   "sint32"));
 
-            tag = (byte) eTag.Real32;                                // 0xc5 //
+            tag = (byte)eTag.Real32;                                // 0xc5 //
             _tags.Add(tag,
                 new PCLXLDataType(tag,
-                                  flagNone,     flagNone,
-                                  sizeSingle,   sizeQuad,
+                                  flagNone, flagNone,
+                                  sizeSingle, sizeQuad,
                                   eBaseType.Real32,
                                   "real32"));
 
@@ -393,7 +393,7 @@ namespace PCLParaphernalia
             _tags.Add(tag,
                 new PCLXLDataType(tag,
                                   flagReserved, flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Unknown,
                                   "* Reserved *"));
 
@@ -401,55 +401,55 @@ namespace PCLParaphernalia
             _tags.Add(tag,
                 new PCLXLDataType(tag,
                                   flagReserved, flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Unknown,
                                   "* Reserved *"));
 
-            tag = (byte) eTag.UbyteArray;                            // 0xc8 //
+            tag = (byte)eTag.UbyteArray;                            // 0xc8 //
             _tags.Add(tag,
                 new PCLXLDataType(tag,
-                                  flagNone,     flagArray,
-                                  sizeSingle,   sizeSingle,
+                                  flagNone, flagArray,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Ubyte,
                                   "ubyte_array"));
 
-            tag = (byte) eTag.Uint16Array;                           // 0xc9 //
+            tag = (byte)eTag.Uint16Array;                           // 0xc9 //
             _tags.Add(tag,
                 new PCLXLDataType(tag,
-                                  flagNone,     flagArray,
-                                  sizeSingle,   sizeDouble,
+                                  flagNone, flagArray,
+                                  sizeSingle, sizeDouble,
                                   eBaseType.Uint16,
                                   "uint16_array"));
 
-            tag = (byte) eTag.Uint32Array;                           // 0xca //
+            tag = (byte)eTag.Uint32Array;                           // 0xca //
             _tags.Add(tag,
                 new PCLXLDataType(tag,
-                                  flagNone,     flagArray,
-                                  sizeSingle,   sizeQuad,
+                                  flagNone, flagArray,
+                                  sizeSingle, sizeQuad,
                                   eBaseType.Uint32,
                                   "uint32_array"));
 
-            tag = (byte) eTag.Sint16Array;                           // 0xcb //
+            tag = (byte)eTag.Sint16Array;                           // 0xcb //
             _tags.Add(tag,
                 new PCLXLDataType(tag,
-                                  flagNone,     flagArray,
-                                  sizeSingle,   sizeDouble,
+                                  flagNone, flagArray,
+                                  sizeSingle, sizeDouble,
                                   eBaseType.Sint16,
                                   "sint16_array"));
 
-            tag = (byte) eTag.Sint32Array;                           // 0xcc //
+            tag = (byte)eTag.Sint32Array;                           // 0xcc //
             _tags.Add(tag,
                 new PCLXLDataType(tag,
-                                  flagNone,     flagArray,
-                                  sizeSingle,   sizeQuad,
+                                  flagNone, flagArray,
+                                  sizeSingle, sizeQuad,
                                   eBaseType.Sint32,
                                   "sint32_array"));
 
-            tag = (byte) eTag.Real32Array;                           // 0xcd //
+            tag = (byte)eTag.Real32Array;                           // 0xcd //
             _tags.Add(tag,
                 new PCLXLDataType(tag,
-                                  flagNone,     flagArray,
-                                  sizeSingle,   sizeQuad,
+                                  flagNone, flagArray,
+                                  sizeSingle, sizeQuad,
                                   eBaseType.Real32,
                                   "real32_array"));
 
@@ -457,7 +457,7 @@ namespace PCLParaphernalia
             _tags.Add(tag,
                 new PCLXLDataType(tag,
                                   flagReserved, flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Unknown,
                                   "* Reserved *"));
 
@@ -465,55 +465,55 @@ namespace PCLParaphernalia
             _tags.Add(tag,
                 new PCLXLDataType(tag,
                                   flagReserved, flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Unknown,
                                   "* Reserved *"));
 
-            tag = (byte) eTag.UbyteXY;                               // 0xd0 //
+            tag = (byte)eTag.UbyteXY;                               // 0xd0 //
             _tags.Add(tag,
                 new PCLXLDataType(tag,
-                                  flagNone,     flagNone,
-                                  sizeDouble,   sizeSingle,
+                                  flagNone, flagNone,
+                                  sizeDouble, sizeSingle,
                                   eBaseType.Ubyte,
                                   "ubyte_xy"));
 
-            tag = (byte) eTag.Uint16XY;                              // 0xd1 //
+            tag = (byte)eTag.Uint16XY;                              // 0xd1 //
             _tags.Add(tag,
                 new PCLXLDataType(tag,
-                                  flagNone,     flagNone,
-                                  sizeDouble,   sizeDouble,
+                                  flagNone, flagNone,
+                                  sizeDouble, sizeDouble,
                                   eBaseType.Uint16,
                                   "uint16_xy"));
 
-            tag = (byte) eTag.Uint32XY;                              // 0xd2 //
+            tag = (byte)eTag.Uint32XY;                              // 0xd2 //
             _tags.Add(tag,
                 new PCLXLDataType(tag,
-                                  flagNone,     flagNone,
-                                  sizeDouble,   sizeQuad,
+                                  flagNone, flagNone,
+                                  sizeDouble, sizeQuad,
                                   eBaseType.Uint32,
                                   "uint32_xy"));
 
-            tag = (byte) eTag.Sint16XY;                              // 0xd3 //
+            tag = (byte)eTag.Sint16XY;                              // 0xd3 //
             _tags.Add(tag,
                 new PCLXLDataType(tag,
-                                  flagNone,     flagNone,
-                                  sizeDouble,   sizeDouble,
+                                  flagNone, flagNone,
+                                  sizeDouble, sizeDouble,
                                   eBaseType.Sint16,
                                   "sint16_xy"));
 
-            tag = (byte) eTag.Sint32XY;                              // 0xd4 //
+            tag = (byte)eTag.Sint32XY;                              // 0xd4 //
             _tags.Add(tag,
                 new PCLXLDataType(tag,
-                                  flagNone,     flagNone,
-                                  sizeDouble,   sizeQuad,
+                                  flagNone, flagNone,
+                                  sizeDouble, sizeQuad,
                                   eBaseType.Sint32,
                                   "sint32_xy"));
 
-            tag = (byte) eTag.Real32XY;                              // 0xd5 //
+            tag = (byte)eTag.Real32XY;                              // 0xd5 //
             _tags.Add(tag,
                 new PCLXLDataType(tag,
-                                  flagNone,     flagNone,
-                                  sizeDouble,   sizeQuad,
+                                  flagNone, flagNone,
+                                  sizeDouble, sizeQuad,
                                   eBaseType.Real32,
                                   "real32_xy"));
 
@@ -521,7 +521,7 @@ namespace PCLParaphernalia
             _tags.Add(tag,
                 new PCLXLDataType(tag,
                                   flagReserved, flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Unknown,
                                   "* Reserved *"));
 
@@ -529,7 +529,7 @@ namespace PCLParaphernalia
             _tags.Add(tag,
                 new PCLXLDataType(tag,
                                   flagReserved, flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Unknown,
                                   "* Reserved *"));
 
@@ -537,7 +537,7 @@ namespace PCLParaphernalia
             _tags.Add(tag,
                 new PCLXLDataType(tag,
                                   flagReserved, flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Unknown,
                                   "* Reserved *"));
 
@@ -545,7 +545,7 @@ namespace PCLParaphernalia
             _tags.Add(tag,
                 new PCLXLDataType(tag,
                                   flagReserved, flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Unknown,
                                   "* Reserved *"));
 
@@ -553,7 +553,7 @@ namespace PCLParaphernalia
             _tags.Add(tag,
                 new PCLXLDataType(tag,
                                   flagReserved, flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Unknown,
                                   "* Reserved *"));
 
@@ -561,7 +561,7 @@ namespace PCLParaphernalia
             _tags.Add(tag,
                 new PCLXLDataType(tag,
                                   flagReserved, flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Unknown,
                                   "* Reserved *"));
 
@@ -569,7 +569,7 @@ namespace PCLParaphernalia
             _tags.Add(tag,
                 new PCLXLDataType(tag,
                                   flagReserved, flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Unknown,
                                   "* Reserved *"));
 
@@ -577,7 +577,7 @@ namespace PCLParaphernalia
             _tags.Add(tag,
                 new PCLXLDataType(tag,
                                   flagReserved, flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Unknown,
                                   "* Reserved *"));
 
@@ -585,7 +585,7 @@ namespace PCLParaphernalia
             _tags.Add(tag,
                 new PCLXLDataType(tag,
                                   flagReserved, flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Unknown,
                                   "* Reserved *"));
 
@@ -593,55 +593,55 @@ namespace PCLParaphernalia
             _tags.Add(tag,
                 new PCLXLDataType(tag,
                                   flagReserved, flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Unknown,
                                   "* Reserved *"));
 
-            tag = (byte) eTag.UbyteBox;                              // 0xe0 //
+            tag = (byte)eTag.UbyteBox;                              // 0xe0 //
             _tags.Add(tag,
                 new PCLXLDataType(tag,
-                                  flagNone,     flagNone,
-                                  sizeQuad,     sizeSingle,
+                                  flagNone, flagNone,
+                                  sizeQuad, sizeSingle,
                                   eBaseType.Ubyte,
                                   "ubyte_box"));
 
-            tag = (byte) eTag.Uint16Box;                             // 0xe1 //
+            tag = (byte)eTag.Uint16Box;                             // 0xe1 //
             _tags.Add(tag,
                 new PCLXLDataType(tag,
-                                  flagNone,     flagNone,
-                                  sizeQuad,     sizeDouble,
+                                  flagNone, flagNone,
+                                  sizeQuad, sizeDouble,
                                   eBaseType.Uint16,
                                   "uint16_box"));
 
-            tag = (byte) eTag.Uint32Box;                             // 0xe2 //
+            tag = (byte)eTag.Uint32Box;                             // 0xe2 //
             _tags.Add(tag,
                 new PCLXLDataType(tag,
-                                  flagNone,     flagNone,
-                                  sizeQuad,     sizeQuad,
+                                  flagNone, flagNone,
+                                  sizeQuad, sizeQuad,
                                   eBaseType.Uint32,
                                   "uint32_box"));
 
-            tag = (byte) eTag.Sint16Box;                             // 0xe3 //
+            tag = (byte)eTag.Sint16Box;                             // 0xe3 //
             _tags.Add(tag,
                 new PCLXLDataType(tag,
-                                  flagNone,     flagNone,
-                                  sizeQuad,     sizeDouble,
+                                  flagNone, flagNone,
+                                  sizeQuad, sizeDouble,
                                   eBaseType.Sint16,
                                   "sint16_box"));
 
-            tag = (byte) eTag.Sint32Box;                             // 0xe4 //
+            tag = (byte)eTag.Sint32Box;                             // 0xe4 //
             _tags.Add(tag,
                 new PCLXLDataType(tag,
-                                  flagNone,     flagNone,
-                                  sizeQuad,     sizeQuad,
+                                  flagNone, flagNone,
+                                  sizeQuad, sizeQuad,
                                   eBaseType.Sint32,
                                   "sint32_box"));
 
-            tag = (byte) eTag.Real32Box;                             // 0xe5 //
+            tag = (byte)eTag.Real32Box;                             // 0xe5 //
             _tags.Add(tag,
                 new PCLXLDataType(tag,
-                                  flagNone,     flagNone,
-                                  sizeQuad,     sizeQuad,
+                                  flagNone, flagNone,
+                                  sizeQuad, sizeQuad,
                                   eBaseType.Real32,
                                   "real32_box"));
 
@@ -649,7 +649,7 @@ namespace PCLParaphernalia
             _tags.Add(tag,
                 new PCLXLDataType(tag,
                                   flagReserved, flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Unknown,
                                   "* Reserved *"));
 
@@ -657,7 +657,7 @@ namespace PCLParaphernalia
             _tags.Add(tag,
                 new PCLXLDataType(tag,
                                   flagReserved, flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Unknown,
                                   "* Reserved *"));
 
@@ -665,7 +665,7 @@ namespace PCLParaphernalia
             _tags.Add(tag,
                 new PCLXLDataType(tag,
                                   flagReserved, flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Unknown,
                                   "* Reserved *"));
 
@@ -673,7 +673,7 @@ namespace PCLParaphernalia
             _tags.Add(tag,
                 new PCLXLDataType(tag,
                                   flagReserved, flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Unknown,
                                   "* Reserved *"));
 
@@ -681,7 +681,7 @@ namespace PCLParaphernalia
             _tags.Add(tag,
                 new PCLXLDataType(tag,
                                   flagReserved, flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Unknown,
                                   "* Reserved *"));
 
@@ -689,7 +689,7 @@ namespace PCLParaphernalia
             _tags.Add(tag,
                 new PCLXLDataType(tag,
                                   flagReserved, flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Unknown,
                                   "* Reserved *"));
 
@@ -697,7 +697,7 @@ namespace PCLParaphernalia
             _tags.Add(tag,
                 new PCLXLDataType(tag,
                                   flagReserved, flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Unknown,
                                   "* Reserved *"));
 
@@ -705,7 +705,7 @@ namespace PCLParaphernalia
             _tags.Add(tag,
                 new PCLXLDataType(tag,
                                   flagReserved, flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Unknown,
                                   "* Reserved *"));
 
@@ -713,7 +713,7 @@ namespace PCLParaphernalia
             _tags.Add(tag,
                 new PCLXLDataType(tag,
                                   flagReserved, flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Unknown,
                                   "* Reserved *"));
 
@@ -721,7 +721,7 @@ namespace PCLParaphernalia
             _tags.Add(tag,
                 new PCLXLDataType(tag,
                                   flagReserved, flagNone,
-                                  sizeSingle,   sizeSingle,
+                                  sizeSingle, sizeSingle,
                                   eBaseType.Unknown,
                                   "* Reserved *"));
 
@@ -741,13 +741,13 @@ namespace PCLParaphernalia
         {
             PCLXLDataType tag;
 
-            _tagUnknown.resetStatistics ();
+            _tagUnknown.resetStatistics();
 
             foreach (KeyValuePair<byte, PCLXLDataType> kvp in _tags)
             {
                 tag = kvp.Value;
 
-                tag.resetStatistics ();
+                tag.resetStatistics();
             }
         }
     }

@@ -18,7 +18,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-         //--------------------------------------------------------------------//
+        //--------------------------------------------------------------------//
         //                                                        F i e l d s //
         // Class variables.                                                   //
         //                                                                    //
@@ -51,7 +51,7 @@ namespace PCLParaphernalia
 
             byte[] buf = new byte[prefixLen];
 
-            _binReader.Read (buf, 0, prefixLen);
+            _binReader.Read(buf, 0, prefixLen);
 
             if ((buf[0] != '\x1b') ||
                 (buf[1] != '&') ||
@@ -80,7 +80,7 @@ namespace PCLParaphernalia
                      flagOK && (!foundTerm) && (pos < maxPos);
                      pos++)
                 {
-                    x = _binReader.ReadByte ();
+                    x = _binReader.ReadByte();
 
                     if (x == 'y')
                         foundTerm = true;
@@ -134,7 +134,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            fileOpen = macroFileOpen (filename, ref fileSize);
+            fileOpen = macroFileOpen(filename, ref fileSize);
 
             if (!fileOpen)
             {
@@ -142,11 +142,11 @@ namespace PCLParaphernalia
             }
             else
             {
-                macroIdPresent = checkForMacroId (filename,
+                macroIdPresent = checkForMacroId(filename,
                                                   fileSize,
                                                   ref macroId);
 
-                macroFileClose ();
+                macroFileClose();
             }
 
             return macroIdPresent;
@@ -163,8 +163,8 @@ namespace PCLParaphernalia
 
         private static void macroFileClose()
         {
-            _binReader.Close ();
-            _ipStream.Close ();
+            _binReader.Close();
+            _ipStream.Close();
         }
 
         //--------------------------------------------------------------------//
@@ -185,7 +185,7 @@ namespace PCLParaphernalia
 
             long fileSize = 0;
 
-            fileOpen = macroFileOpen (filename, ref fileSize);
+            fileOpen = macroFileOpen(filename, ref fileSize);
 
             if (!fileOpen)
             {
@@ -204,15 +204,15 @@ namespace PCLParaphernalia
 
                 while (!endLoop)
                 {
-                    readSize = _binReader.Read (buf, 0, bufSize);
+                    readSize = _binReader.Read(buf, 0, bufSize);
 
                     if (readSize == 0)
                         endLoop = true;
                     else
-                        prnWriter.Write (buf, 0, readSize);
+                        prnWriter.Write(buf, 0, readSize);
                 }
 
-                macroFileClose ();
+                macroFileClose();
             }
 
             return OK;
@@ -234,16 +234,16 @@ namespace PCLParaphernalia
 
             if ((fileName == null) || (fileName?.Length == 0))
             {
-                MessageBox.Show ("Download macro file name is null.",
+                MessageBox.Show("Download macro file name is null.",
                                 "PCL macro file name invalid",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
                 return false;
             }
-            else if (!File.Exists (fileName))
+            else if (!File.Exists(fileName))
             {
-                MessageBox.Show ("Download macro file '" + fileName +
+                MessageBox.Show("Download macro file '" + fileName +
                                 "' does not exist.",
                                 "PCL macro file name invalid",
                                 MessageBoxButton.OK,
@@ -253,7 +253,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                _ipStream = File.Open (fileName,
+                _ipStream = File.Open(fileName,
                                       FileMode.Open,
                                       FileAccess.Read,
                                       FileShare.None);
@@ -262,11 +262,11 @@ namespace PCLParaphernalia
                 {
                     open = true;
 
-                    FileInfo fi = new FileInfo (fileName);
+                    FileInfo fi = new FileInfo(fileName);
 
                     fileSize = fi.Length;
 
-                    _binReader = new BinaryReader (_ipStream);
+                    _binReader = new BinaryReader(_ipStream);
                 }
             }
 

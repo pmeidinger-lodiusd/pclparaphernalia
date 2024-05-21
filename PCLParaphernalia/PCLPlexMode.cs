@@ -29,15 +29,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLPlexMode (PCLPlexModes.ePlexType plexType,
+        public PCLPlexMode(PCLPlexModes.ePlexType plexType,
                             string name,
                             byte idPCL,
                             byte idPCLXLLand,
                             byte idPCLXLPort)
         {
-            _plexType           = plexType;
-            _plexModeName       = name;
-            _plexModeIdPCL      = idPCL;
+            _plexType = plexType;
+            _plexModeName = name;
+            _plexModeIdPCL = idPCL;
             _plexModeIdPCLXLLand = idPCLXLLand;
             _plexModeIdPCLXLPort = idPCLXLPort;
         }

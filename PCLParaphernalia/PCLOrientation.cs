@@ -32,10 +32,10 @@ namespace PCLParaphernalia
                               byte idPCL,
                               byte idPCLXL)
         {
-            _orientationAspect  = aspect;
-            _orientationName    = name;
-            _orientationIdPCL  = idPCL;
-            _orientationIdPCLXL  = idPCLXL;
+            _orientationAspect = aspect;
+            _orientationName = name;
+            _orientationIdPCL = idPCL;
+            _orientationIdPCLXL = idPCLXL;
         }
 
         //--------------------------------------------------------------------//

@@ -20,7 +20,7 @@ namespace PCLParaphernalia
 
         public enum eTag : byte
         {
-            Ubyte  = 0xf8,
+            Ubyte = 0xf8,
             Uint16 = 0xf9
         }
 
@@ -88,16 +88,16 @@ namespace PCLParaphernalia
 
         private static void populateTable()
         {
-            const bool flagNone     = false;
+            const bool flagNone = false;
             const bool flagReserved = true;
 
-            byte tag = (byte) eTag.Ubyte;                                 // 0xf8 //
+            byte tag = (byte)eTag.Ubyte;                                 // 0xf8 //
             _tags.Add(tag,
                 new PCLXLAttrDefiner(tag,
                                      flagNone,
                                      "ubyte"));
 
-            tag = (byte) eTag.Uint16;                                // 0xf9 //
+            tag = (byte)eTag.Uint16;                                // 0xf9 //
             _tags.Add(tag,
                 new PCLXLAttrDefiner(tag,
                                      flagReserved,

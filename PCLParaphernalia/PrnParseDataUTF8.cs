@@ -22,20 +22,20 @@ namespace PCLParaphernalia
 
         public enum eUTF8Result
         {
-            success                 = 0,
-            incompleteSeq           = 1,
-            invalidLength           = 2,
-            invalidLeadByteMark     = 3,
-            invalidTrailByteMark    = 4,
-            illegalSixByteSeq       = 5,
-            illegalFiveByteSeq      = 6,
-            overlongTwoByteSeq      = 7,
-            overlongThreeByteSeq    = 8,
-            overlongFourByteSeq     = 9,
-            overvalueFourByteSeq    = 10,
-            surrogateCodepointUTF8  = 11,
+            success = 0,
+            incompleteSeq = 1,
+            invalidLength = 2,
+            invalidLeadByteMark = 3,
+            invalidTrailByteMark = 4,
+            illegalSixByteSeq = 5,
+            illegalFiveByteSeq = 6,
+            overlongTwoByteSeq = 7,
+            overlongThreeByteSeq = 8,
+            overlongFourByteSeq = 9,
+            overvalueFourByteSeq = 10,
+            surrogateCodepointUTF8 = 11,
             surrogateCodepointUTF32 = 21,
-            exceedsLegalMaximum     = 22
+            exceedsLegalMaximum = 22
         };
 
         const byte cTrailByteMask = 0xBF;
@@ -172,7 +172,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-   //     static PrnParse.eParseType _parseType;
+        //     static PrnParse.eParseType _parseType;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -284,7 +284,7 @@ namespace PCLParaphernalia
                     if ((trailByte < 0x80) || (trailByte > 0xBF))
                         return eUTF8Result.invalidTrailByteMark;
 
-                    codepoint +=  seq[ptrFwd++];
+                    codepoint += seq[ptrFwd++];
                     codepoint <<= 6;
 
                     goto case 5;   // as C# does not support fall-through //
@@ -295,7 +295,7 @@ namespace PCLParaphernalia
                     if ((trailByte < 0x80) || (trailByte > 0xBF))
                         return eUTF8Result.invalidTrailByteMark;
 
-                    codepoint +=  seq[ptrFwd++];
+                    codepoint += seq[ptrFwd++];
                     codepoint <<= 6;
 
                     goto case 4;   // as C# does not support fall-through //
@@ -306,7 +306,7 @@ namespace PCLParaphernalia
                     if ((trailByte < 0x80) || (trailByte > 0xBF))
                         return eUTF8Result.invalidTrailByteMark;
 
-                    codepoint +=  seq[ptrFwd++];
+                    codepoint += seq[ptrFwd++];
                     codepoint <<= 6;
 
                     goto case 3;   // as C# does not support fall-through //
@@ -317,7 +317,7 @@ namespace PCLParaphernalia
                     if ((trailByte < 0x80) || (trailByte > 0xBF))
                         return eUTF8Result.invalidTrailByteMark;
 
-                    codepoint +=  seq[ptrFwd++];
+                    codepoint += seq[ptrFwd++];
                     codepoint <<= 6;
 
                     goto case 2;   // as C# does not support fall-through //
@@ -328,7 +328,7 @@ namespace PCLParaphernalia
                     if ((trailByte < 0x80) || (trailByte > 0xBF))
                         return eUTF8Result.invalidTrailByteMark;
 
-                //  leadByte = seq[--ptrRev];
+                    //  leadByte = seq[--ptrRev];
 
                     switch (leadByte)
                     {
@@ -392,7 +392,7 @@ namespace PCLParaphernalia
                             break;
                     }
 
-                    codepoint +=  seq[ptrFwd++];
+                    codepoint += seq[ptrFwd++];
                     codepoint <<= 6;
 
                     goto case 1;   // as C# does not support fall-through //
@@ -405,14 +405,14 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                 // leadByte = seq[--ptrRev];
+                    // leadByte = seq[--ptrRev];
 
                     if (leadByte >= 0x80 && leadByte < 0xC0)
                         return eUTF8Result.invalidLeadByteMark;
                     else if (leadByte >= 0xC0 && leadByte < 0xC2)
                         return eUTF8Result.overlongTwoByteSeq;
 
-                    codepoint +=  seq[ptrFwd++];
+                    codepoint += seq[ptrFwd++];
 
                     break;
 
@@ -449,7 +449,7 @@ namespace PCLParaphernalia
 
             codepoint -= cOffsetsUTF8[seqLen - 1];
 
-            codepointUCS = (int) codepoint;
+            codepointUCS = (int)codepoint;
 
             return eUTF8Result.success;
         }
@@ -531,25 +531,25 @@ namespace PCLParaphernalia
 
                 case 4:
                     utf8Seq[seqPos--] =
-                        (byte) ((codepoint | cTrailByteMark) & cTrailByteMask);
+                        (byte)((codepoint | cTrailByteMark) & cTrailByteMask);
                     codepoint >>= 6;
                     goto case 3;
 
                 case 3:
                     utf8Seq[seqPos--] =
-                        (byte) ((codepoint | cTrailByteMark) & cTrailByteMask);
+                        (byte)((codepoint | cTrailByteMark) & cTrailByteMask);
                     codepoint >>= 6;
                     goto case 2;
 
                 case 2:
                     utf8Seq[seqPos--] =
-                        (byte) ((codepoint | cTrailByteMark) & cTrailByteMask);
+                        (byte)((codepoint | cTrailByteMark) & cTrailByteMask);
                     codepoint >>= 6;
                     goto case 1;
 
                 case 1:
                     utf8Seq[seqPos--] =
-                        (byte) (codepoint | cLeadByteMarksUTF8[utf8SeqLen - 1]);
+                        (byte)(codepoint | cLeadByteMarksUTF8[utf8SeqLen - 1]);
                     break;
             }
 
@@ -670,7 +670,7 @@ namespace PCLParaphernalia
                 utf8HexVal.Append(utf8Seq[i].ToString("x2"));
             }
 
-            utf8Hex = utf8HexVal.ToString ();
+            utf8Hex = utf8HexVal.ToString();
 
             return result;
         }
@@ -729,7 +729,7 @@ namespace PCLParaphernalia
 
             codepoint -= cOffsetsUTF8[utf8SeqLen - 1];
 
-            utf32Value = (uint) codepoint;
+            utf32Value = (uint)codepoint;
         }
     }
 }

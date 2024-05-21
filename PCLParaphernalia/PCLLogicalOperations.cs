@@ -22,7 +22,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static readonly PCLLogicalOperation [] _rops =
+        private static readonly PCLLogicalOperation[] _rops =
         {
             new PCLLogicalOperation (  0, 0x0042,
                                      "0"          , "Black"),
@@ -550,7 +550,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string actInfix (int index)
+        public static string actInfix(int index)
         {
             return _rops[index].ActInfix;
         }
@@ -614,9 +614,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short getROPId (int index)
+        public static short getROPId(int index)
         {
-            return _rops[index].getROPId ();
+            return _rops[index].getROPId();
         }
     }
 }

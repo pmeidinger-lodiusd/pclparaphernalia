@@ -17,35 +17,35 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _mainKey                 = MainForm._regMainKey;
+        const string _mainKey = MainForm._regMainKey;
 
-        const string _subKeyTools             = "Tools";
-        const string _subKeyToolsPrintArea    = "PrintArea";
-        const string _subKeyPCL5              = "PCL5";
-        const string _subKeyPCL6              = "PCL6";
-        const string _subKeyPCL               = "PCL";
-        const string _subKeyPCLXL             = "PCLXL";
+        const string _subKeyTools = "Tools";
+        const string _subKeyToolsPrintArea = "PrintArea";
+        const string _subKeyPCL5 = "PCL5";
+        const string _subKeyPCL6 = "PCL6";
+        const string _subKeyPCL = "PCL";
+        const string _subKeyPCLXL = "PCLXL";
 
-        const string _nameCaptureFile         = "CaptureFile";
-        const string _nameFlagFormAsMacro     = "FlagFormAsMacro";
+        const string _nameCaptureFile = "CaptureFile";
+        const string _nameFlagFormAsMacro = "FlagFormAsMacro";
         const string _nameFlagCustomUseMetric = "FlagCustomUseMetric";
-        const string _nameCustomShortEdge     = "CustomShortEdge";
-        const string _nameCustomLongEdge      = "CustomLongEdge";
-        const string _nameIndxOrientation     = "IndxOrientation";
-        const string _nameIndxPaperSize       = "IndxPaperSize";
-        const string _nameIndxPaperType       = "IndxPaperType";
-        const string _nameIndxPDL             = "IndxPDL";
-        const string _nameIndxPJLCommand      = "IndxPJLCommand";
-        const string _nameIndxPlexMode        = "IndxPlexMode";
+        const string _nameCustomShortEdge = "CustomShortEdge";
+        const string _nameCustomLongEdge = "CustomLongEdge";
+        const string _nameIndxOrientation = "IndxOrientation";
+        const string _nameIndxPaperSize = "IndxPaperSize";
+        const string _nameIndxPaperType = "IndxPaperType";
+        const string _nameIndxPDL = "IndxPDL";
+        const string _nameIndxPJLCommand = "IndxPJLCommand";
+        const string _nameIndxPlexMode = "IndxPlexMode";
 
-        const int _flagFalse                = 0;
-        const int _flagTrue                 = 1;
-        const int _indexZero                = 0;
+        const int _flagFalse = 0;
+        const int _flagTrue = 1;
+        const int _indexZero = 0;
 
         const int _customShortEdgeDefault = 4960;    // A4 dots @ 600 dpi 
-        const int _customLongEdgeDefault  = 7014;    // A4 dots @ 600 dpi 
+        const int _customLongEdgeDefault = 7014;    // A4 dots @ 600 dpi 
 
-        const string _defaultCaptureFilePCL   = "CaptureFile_PrintAreaPCL.prn";
+        const string _defaultCaptureFilePCL = "CaptureFile_PrintAreaPCL.prn";
         const string _defaultCaptureFilePCLXL = "CaptureFile_PrintAreaPCLXL.prn";
 
         //--------------------------------------------------------------------//
@@ -205,24 +205,24 @@ namespace PCLParaphernalia
                 indxOrientation = (int)subKey.GetValue(_nameIndxOrientation,
                                                          _indexZero);
 
-                indxPaperSize   = (int)subKey.GetValue(_nameIndxPaperSize,
+                indxPaperSize = (int)subKey.GetValue(_nameIndxPaperSize,
                                                          _indexZero);
 
-                indxPaperType   = (int)subKey.GetValue(_nameIndxPaperType,
+                indxPaperType = (int)subKey.GetValue(_nameIndxPaperType,
                                                          _indexZero);
 
-                indxPlexMode    = (int) subKey.GetValue(_nameIndxPlexMode,
+                indxPlexMode = (int)subKey.GetValue(_nameIndxPlexMode,
                                                           _indexZero);
 
                 indxPJLCommand = (int)subKey.GetValue(_nameIndxPJLCommand,
                                                          _indexZero);
 
-                tmpInt          = (int)subKey.GetValue(_nameFlagFormAsMacro,
+                tmpInt = (int)subKey.GetValue(_nameFlagFormAsMacro,
                                                          _flagTrue);
 
                 flagFormAsMacro = tmpInt != _flagFalse;
 
-                tmpInt          = (int)subKey.GetValue(_nameFlagCustomUseMetric,
+                tmpInt = (int)subKey.GetValue(_nameFlagCustomUseMetric,
                                                          _flagTrue);
 
                 flagCustomUseMetric = tmpInt != _flagFalse;
@@ -235,7 +235,7 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameCustomLongEdge,
                                                 _customLongEdgeDefault);
 
-                customLongEdge  = (ushort)tmpInt;
+                customLongEdge = (ushort)tmpInt;
             }
         }
 

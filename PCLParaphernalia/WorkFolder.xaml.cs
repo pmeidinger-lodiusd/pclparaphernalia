@@ -33,11 +33,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public WorkFolder ()
+        public WorkFolder()
         {
             InitializeComponent();
 
-            initialise ();
+            initialise();
         }
 
         //--------------------------------------------------------------------//
@@ -70,7 +70,7 @@ namespace PCLParaphernalia
 
             string filename = _workFoldername;
 
-            selected = selectDefWorkFolder (ref filename);
+            selected = selectDefWorkFolder(ref filename);
 
             if (selected)
             {
@@ -90,7 +90,7 @@ namespace PCLParaphernalia
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            metricsSave ();
+            metricsSave();
 
             DialogResult = true;
         }
@@ -104,7 +104,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialise ()
+        private void initialise()
         {
             _workFoldername = _tmpFolder;
 
@@ -147,7 +147,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsSave ()
+        private void metricsSave()
         {
             TargetPersist.saveDataWorkFolder(_workFoldername);
         }
@@ -163,7 +163,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool selectDefWorkFolder (ref string targetFolder)
+        private bool selectDefWorkFolder(ref string targetFolder)
         {
             bool selected = false;
 
@@ -194,7 +194,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtFoldername_LostFocus (object sender,
+        private void txtFoldername_LostFocus(object sender,
                                             RoutedEventArgs e)
         {
             _workFoldername = txtFoldername.Text;

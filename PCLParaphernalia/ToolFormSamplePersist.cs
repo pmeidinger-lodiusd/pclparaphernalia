@@ -17,58 +17,58 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _mainKey                 = MainForm._regMainKey;
+        const string _mainKey = MainForm._regMainKey;
 
-        const string _subKeyTools             = "Tools";
-        const string _subKeyToolsFormSample   = "FormSample";
-        const string _subKeyPCL5              = "PCL5";
-        const string _subKeyPCL6              = "PCL6";
-        const string _subKeyPCL               = "PCL";
-        const string _subKeyPCLXL             = "PCLXL";
+        const string _subKeyTools = "Tools";
+        const string _subKeyToolsFormSample = "FormSample";
+        const string _subKeyPCL5 = "PCL5";
+        const string _subKeyPCL6 = "PCL6";
+        const string _subKeyPCL = "PCL";
+        const string _subKeyPCLXL = "PCLXL";
 
-        const string _nameCaptureFile         = "CaptureFile";
-        const string _nameFormNameMain        = "FormNameMain";
-        const string _nameFormNameRear        = "FormNameRear";
-        const string _nameFormFileMain        = "FormFileMain";
-        const string _nameFormFileRear        = "FormFileRear";
-        const string _namePrnDiskFileMain     = "PrnDiskFileMain";
-        const string _namePrnDiskFileRear     = "PrnDiskFileRear";
-        const string _nameMacroIdMain         = "MacroIdMain";
-        const string _nameMacroIdRear         = "MacroIdRear";
-        const string _nameFlagMacroRemove     = "FlagMacroRemove";
-        const string _nameFlagMainForm        = "FlagMainForm";
-        const string _nameFlagRearForm        = "FlagRearForm";
-        const string _nameFlagMainOnPrnDisk   = "FlagMainOnPrnDisk";
-        const string _nameFlagRearOnPrnDisk   = "FlagRearOnPrnDisk";
-        const string _nameFlagRearBPlate      = "FlagRearBPlate";
-        const string _nameFlagGSPushPop       = "FlagGSPushPop";
-        const string _nameFlagPrintDescText   = "FlagPrintDescText";
-        const string _nameTestPageCount       = "TestPageCount";
-        const string _nameIndxMethod          = "IndxMethod";
-        const string _nameIndxOrientation     = "IndxOrientation";
-        const string _nameIndxOrientRear      = "IndxOrientationRear";
-        const string _nameIndxPaperSize       = "IndxPaperSize";
-        const string _nameIndxPaperType       = "IndxPaperType";
-        const string _nameIndxPDL             = "IndxPDL";
-        const string _nameIndxPlexMode        = "IndxPlexMode";
+        const string _nameCaptureFile = "CaptureFile";
+        const string _nameFormNameMain = "FormNameMain";
+        const string _nameFormNameRear = "FormNameRear";
+        const string _nameFormFileMain = "FormFileMain";
+        const string _nameFormFileRear = "FormFileRear";
+        const string _namePrnDiskFileMain = "PrnDiskFileMain";
+        const string _namePrnDiskFileRear = "PrnDiskFileRear";
+        const string _nameMacroIdMain = "MacroIdMain";
+        const string _nameMacroIdRear = "MacroIdRear";
+        const string _nameFlagMacroRemove = "FlagMacroRemove";
+        const string _nameFlagMainForm = "FlagMainForm";
+        const string _nameFlagRearForm = "FlagRearForm";
+        const string _nameFlagMainOnPrnDisk = "FlagMainOnPrnDisk";
+        const string _nameFlagRearOnPrnDisk = "FlagRearOnPrnDisk";
+        const string _nameFlagRearBPlate = "FlagRearBPlate";
+        const string _nameFlagGSPushPop = "FlagGSPushPop";
+        const string _nameFlagPrintDescText = "FlagPrintDescText";
+        const string _nameTestPageCount = "TestPageCount";
+        const string _nameIndxMethod = "IndxMethod";
+        const string _nameIndxOrientation = "IndxOrientation";
+        const string _nameIndxOrientRear = "IndxOrientationRear";
+        const string _nameIndxPaperSize = "IndxPaperSize";
+        const string _nameIndxPaperType = "IndxPaperType";
+        const string _nameIndxPDL = "IndxPDL";
+        const string _nameIndxPlexMode = "IndxPlexMode";
 
-        const int _flagFalse                = 0;
-        const int _flagTrue                 = 1;
-        const int _indexZero                = 0;
+        const int _flagFalse = 0;
+        const int _flagTrue = 1;
+        const int _indexZero = 0;
 
-        const string _defaultCaptureFile      = "Capture_FormSample.prn";
-        const string _defaultCaptureFilePCL   = "CaptureFile_FormSamplePCL.prn";
+        const string _defaultCaptureFile = "Capture_FormSample.prn";
+        const string _defaultCaptureFilePCL = "CaptureFile_FormSamplePCL.prn";
         const string _defaultCaptureFilePCLXL = "CaptureFile_FormSamplePCLXL.prn";
-        const string _defaultFilePCLMain      = "DefaultFilePCLMain.ovl";
-        const string _defaultFilePCLRear      = "DefaultFilePCLRear.ovl";
-        const string _defaultFilePCLXLMain    = "DefaultFilePCLXLMain.ovx";
-        const string _defaultFilePCLXLRear    = "DefaultFilePCLXLRear.ovx";
-        const string _defaultFormNameMain     = "TestFormMain";
-        const string _defaultFormNameRear     = "TestFormRear";
+        const string _defaultFilePCLMain = "DefaultFilePCLMain.ovl";
+        const string _defaultFilePCLRear = "DefaultFilePCLRear.ovl";
+        const string _defaultFilePCLXLMain = "DefaultFilePCLXLMain.ovx";
+        const string _defaultFilePCLXLRear = "DefaultFilePCLXLRear.ovx";
+        const string _defaultFormNameMain = "TestFormMain";
+        const string _defaultFormNameRear = "TestFormRear";
 
-        const int _defaultMacroIdMain       = 32767;
-        const int _defaultMacroIdRear       = 32766;
-        const int _defaultTestPageCount     = 3;
+        const int _defaultMacroIdMain = 32767;
+        const int _defaultMacroIdRear = 32766;
+        const int _defaultTestPageCount = 3;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -168,7 +168,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCommon (ref int indxPDL)
+        public static void loadDataCommon(ref int indxPDL)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -203,7 +203,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataGeneral (
+        public static void loadDataGeneral(
             string pdlName,
             ref int indxPaperType,
             ref int indxPaperSize,
@@ -230,42 +230,42 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxPaperType   = (int)subKey.GetValue(_nameIndxPaperType,
+                indxPaperType = (int)subKey.GetValue(_nameIndxPaperType,
                                                          _indexZero);
-                indxPaperSize   = (int)subKey.GetValue(_nameIndxPaperSize,
+                indxPaperSize = (int)subKey.GetValue(_nameIndxPaperSize,
                                                          _indexZero);
                 indxOrientation = (int)subKey.GetValue(_nameIndxOrientation,
                                                          _indexZero);
-                indxPlexMode    = (int)subKey.GetValue(_nameIndxPlexMode,
+                indxPlexMode = (int)subKey.GetValue(_nameIndxPlexMode,
                                                          _indexZero);
-                indxOrientRear  = (int)subKey.GetValue(_nameIndxOrientRear,
+                indxOrientRear = (int)subKey.GetValue(_nameIndxOrientRear,
                                                          _indexZero);
-                indxMethod      = (int)subKey.GetValue(_nameIndxMethod,
+                indxMethod = (int)subKey.GetValue(_nameIndxMethod,
                                                          _indexZero);
-                testPageCount   = (int)subKey.GetValue(_nameTestPageCount,
+                testPageCount = (int)subKey.GetValue(_nameTestPageCount,
                                                          _defaultTestPageCount);
 
-                tmpInt = (int) subKey.GetValue (_nameFlagMacroRemove,
+                tmpInt = (int)subKey.GetValue(_nameFlagMacroRemove,
                                                   _flagTrue);
 
                 flagMacroRemove = tmpInt != _flagFalse;
 
-                tmpInt = (int) subKey.GetValue (_nameFlagMainForm,
+                tmpInt = (int)subKey.GetValue(_nameFlagMainForm,
                                                   _flagTrue);
 
                 flagMainForm = tmpInt != _flagFalse;
 
-                tmpInt = (int) subKey.GetValue (_nameFlagRearForm,
+                tmpInt = (int)subKey.GetValue(_nameFlagRearForm,
                                                   _flagTrue);
 
                 flagRearForm = tmpInt != _flagFalse;
 
-                tmpInt = (int) subKey.GetValue (_nameFlagRearBPlate,
+                tmpInt = (int)subKey.GetValue(_nameFlagRearBPlate,
                                                   _flagTrue);
 
                 flagRearBPlate = tmpInt != _flagFalse;
 
-                tmpInt = (int) subKey.GetValue (_nameFlagPrintDescText,
+                tmpInt = (int)subKey.GetValue(_nameFlagPrintDescText,
                                                   _flagTrue);
 
                 flagPrintDescText = tmpInt != _flagFalse;
@@ -281,7 +281,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCL (ref bool flagMainOnPrnDisk,
+        public static void loadDataPCL(ref bool flagMainOnPrnDisk,
                                         ref bool flagRearOnPrnDisk,
                                         ref string formFileMain,
                                         ref string formFileRear,
@@ -291,7 +291,7 @@ namespace PCLParaphernalia
                                         ref int macroIdRear)
         {
             RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey (_mainKey);
+                Registry.CurrentUser.CreateSubKey(_mainKey);
 
             string key;
 
@@ -302,7 +302,7 @@ namespace PCLParaphernalia
             key = _subKeyTools + "\\" + _subKeyToolsFormSample +
                                  "\\" + _subKeyPCL;
 
-            using (RegistryKey subKey = keyMain.CreateSubKey (key))
+            using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 tmpInt = (int)subKey.GetValue(_nameFlagMainOnPrnDisk,
                                                 _flagFalse);
@@ -314,21 +314,21 @@ namespace PCLParaphernalia
 
                 flagRearOnPrnDisk = tmpInt != _flagFalse;
 
-                formFileMain = (string) subKey.GetValue (_nameFormFileMain,
+                formFileMain = (string)subKey.GetValue(_nameFormFileMain,
                                                           defWorkFolder + "\\" +
                                                           _defaultFilePCLMain);
-                formFileRear  = (string) subKey.GetValue (_nameFormFileRear,
+                formFileRear = (string)subKey.GetValue(_nameFormFileRear,
                                                           defWorkFolder + "\\" +
                                                           _defaultFilePCLRear);
 
-                prnDiskFileMain = (string) subKey.GetValue (_namePrnDiskFileMain,
+                prnDiskFileMain = (string)subKey.GetValue(_namePrnDiskFileMain,
                                                             _defaultFilePCLMain);
-                prnDiskFileRear = (string) subKey.GetValue (_namePrnDiskFileRear,
+                prnDiskFileRear = (string)subKey.GetValue(_namePrnDiskFileRear,
                                                             _defaultFilePCLRear);
 
-                macroIdMain   = (int) subKey.GetValue (_nameMacroIdMain,
+                macroIdMain = (int)subKey.GetValue(_nameMacroIdMain,
                                                          _defaultMacroIdMain);
-                macroIdRear   = (int) subKey.GetValue (_nameMacroIdRear,
+                macroIdRear = (int)subKey.GetValue(_nameMacroIdRear,
                                                          _defaultMacroIdRear);
             }
         }
@@ -342,14 +342,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCLXL (ref string formFileMain,
+        public static void loadDataPCLXL(ref string formFileMain,
                                           ref string formFileRear,
                                           ref string formNameMain,
                                           ref string formNameRear,
                                           ref bool flagGSPushPop)
         {
             RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey (_mainKey);
+                Registry.CurrentUser.CreateSubKey(_mainKey);
 
             int tmpInt;
 
@@ -360,20 +360,20 @@ namespace PCLParaphernalia
             key = _subKeyTools + "\\" + _subKeyToolsFormSample +
                                  "\\" + _subKeyPCLXL;
 
-            using (RegistryKey subKey = keyMain.CreateSubKey (key))
+            using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                formFileMain = (string) subKey.GetValue (_nameFormFileMain,
+                formFileMain = (string)subKey.GetValue(_nameFormFileMain,
                                                          defWorkFolder + "\\" +
                                                          _defaultFilePCLXLMain);
-                formFileRear = (string) subKey.GetValue (_nameFormFileRear,
+                formFileRear = (string)subKey.GetValue(_nameFormFileRear,
                                                          defWorkFolder + "\\" +
                                                          _defaultFilePCLXLRear);
-                formNameMain = (string) subKey.GetValue (_nameFormNameMain,
+                formNameMain = (string)subKey.GetValue(_nameFormNameMain,
                                                          _defaultFormNameMain);
-                formNameRear = (string) subKey.GetValue (_nameFormNameRear,
+                formNameRear = (string)subKey.GetValue(_nameFormNameRear,
                                                          _defaultFormNameRear);
 
-                tmpInt = (int) subKey.GetValue (_nameFlagGSPushPop,
+                tmpInt = (int)subKey.GetValue(_nameFlagGSPushPop,
                                                   _flagTrue);
 
                 flagGSPushPop = tmpInt != _flagFalse;
@@ -436,7 +436,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCommon (int indxPDL)
+        public static void saveDataCommon(int indxPDL)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -460,7 +460,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataGeneral (string pdlName,
+        public static void saveDataGeneral(string pdlName,
                                             int indxPaperType,
                                             int indxPaperSize,
                                             int indxOrientation,
@@ -511,47 +511,47 @@ namespace PCLParaphernalia
                                 RegistryValueKind.DWord);
 
                 if (flagMacroRemove)
-                    subKey.SetValue (_nameFlagMacroRemove,
+                    subKey.SetValue(_nameFlagMacroRemove,
                                     _flagTrue,
                                     RegistryValueKind.DWord);
                 else
-                    subKey.SetValue (_nameFlagMacroRemove,
+                    subKey.SetValue(_nameFlagMacroRemove,
                                     _flagFalse,
                                     RegistryValueKind.DWord);
 
                 if (flagMainForm)
-                    subKey.SetValue (_nameFlagMainForm,
+                    subKey.SetValue(_nameFlagMainForm,
                                     _flagTrue,
                                     RegistryValueKind.DWord);
                 else
-                    subKey.SetValue (_nameFlagMainForm,
+                    subKey.SetValue(_nameFlagMainForm,
                                     _flagFalse,
                                     RegistryValueKind.DWord);
 
                 if (flagRearForm)
-                    subKey.SetValue (_nameFlagRearForm,
+                    subKey.SetValue(_nameFlagRearForm,
                                     _flagTrue,
                                     RegistryValueKind.DWord);
                 else
-                    subKey.SetValue (_nameFlagRearForm,
+                    subKey.SetValue(_nameFlagRearForm,
                                     _flagFalse,
                                     RegistryValueKind.DWord);
 
                 if (flagRearBPlate)
-                    subKey.SetValue (_nameFlagRearBPlate,
+                    subKey.SetValue(_nameFlagRearBPlate,
                                     _flagTrue,
                                     RegistryValueKind.DWord);
                 else
-                    subKey.SetValue (_nameFlagRearBPlate,
+                    subKey.SetValue(_nameFlagRearBPlate,
                                     _flagFalse,
                                     RegistryValueKind.DWord);
 
                 if (flagPrintDescText)
-                    subKey.SetValue (_nameFlagPrintDescText,
+                    subKey.SetValue(_nameFlagPrintDescText,
                                     _flagTrue,
                                     RegistryValueKind.DWord);
                 else
-                    subKey.SetValue (_nameFlagPrintDescText,
+                    subKey.SetValue(_nameFlagPrintDescText,
                                     _flagFalse,
                                     RegistryValueKind.DWord);
             }
@@ -566,7 +566,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCL (bool flagMainOnPrnDisk,
+        public static void saveDataPCL(bool flagMainOnPrnDisk,
                                         bool flagRearOnPrnDisk,
                                         string formFileMain,
                                         string formFileRear,
@@ -603,28 +603,28 @@ namespace PCLParaphernalia
 
                 if (formFileMain != null)
                 {
-                    subKey.SetValue (_nameFormFileMain,
+                    subKey.SetValue(_nameFormFileMain,
                                     formFileMain,
                                     RegistryValueKind.String);
                 }
 
                 if (formFileRear != null)
                 {
-                    subKey.SetValue (_nameFormFileRear,
+                    subKey.SetValue(_nameFormFileRear,
                                     formFileRear,
                                     RegistryValueKind.String);
                 }
 
                 if (prnDiskFileMain != null)
                 {
-                    subKey.SetValue (_namePrnDiskFileMain,
+                    subKey.SetValue(_namePrnDiskFileMain,
                                      prnDiskFileMain,
                                      RegistryValueKind.String);
                 }
 
                 if (prnDiskFileRear != null)
                 {
-                    subKey.SetValue (_namePrnDiskFileRear,
+                    subKey.SetValue(_namePrnDiskFileRear,
                                      prnDiskFileRear,
                                      RegistryValueKind.String);
                 }
@@ -648,7 +648,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCLXL (string formFileMain,
+        public static void saveDataPCLXL(string formFileMain,
                                           string formFileRear,
                                           string formNameMain,
                                           string formNameRear,
@@ -664,38 +664,38 @@ namespace PCLParaphernalia
             {
                 if (formFileMain != null)
                 {
-                    subKey.SetValue (_nameFormFileMain,
+                    subKey.SetValue(_nameFormFileMain,
                                     formFileMain,
                                     RegistryValueKind.String);
                 }
 
                 if (formFileRear != null)
                 {
-                    subKey.SetValue (_nameFormFileRear,
+                    subKey.SetValue(_nameFormFileRear,
                                     formFileRear,
                                     RegistryValueKind.String);
                 }
 
                 if (formNameMain != null)
                 {
-                    subKey.SetValue (_nameFormNameMain,
+                    subKey.SetValue(_nameFormNameMain,
                                     formNameMain,
                                     RegistryValueKind.String);
                 }
 
                 if (formNameRear != null)
                 {
-                    subKey.SetValue (_nameFormNameRear,
+                    subKey.SetValue(_nameFormNameRear,
                                     formNameRear,
                                     RegistryValueKind.String);
                 }
 
                 if (flagGSPushPop)
-                    subKey.SetValue (_nameFlagGSPushPop,
+                    subKey.SetValue(_nameFlagGSPushPop,
                                     _flagTrue,
                                     RegistryValueKind.DWord);
                 else
-                    subKey.SetValue (_nameFlagGSPushPop,
+                    subKey.SetValue(_nameFlagGSPushPop,
                                     _flagFalse,
                                     RegistryValueKind.DWord);
             }

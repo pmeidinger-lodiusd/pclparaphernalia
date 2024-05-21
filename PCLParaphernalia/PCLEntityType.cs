@@ -30,9 +30,9 @@ namespace PCLParaphernalia
                              string id,
                              string name)
         {
-            _entityType   = type;
+            _entityType = type;
             _entityIdPCL = id;
-            _entityName   = name;
+            _entityName = name;
         }
 
         //--------------------------------------------------------------------//

@@ -56,7 +56,7 @@ namespace PCLParaphernalia
             new PrnParseRowType(eType.MsgError,
                                 "Error message"),
             new PrnParseRowType(eType.MsgWarning,
-                     			"Warning message"),
+                                 "Warning message"),
             new PrnParseRowType(eType.MsgComment,
                                 "Comment"),
             new PrnParseRowType(eType.MsgDiag,
@@ -130,7 +130,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getDesc (int selection)
+        public static string getDesc(int selection)
         {
             return _rowTypes[selection].getDesc();
         }
@@ -165,7 +165,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setDefaultClrs (
+        public static void setDefaultClrs(
             ref int[] indxClrMapBack,
             ref int[] indxClrMapFore)
         {
@@ -198,7 +198,7 @@ namespace PCLParaphernalia
 
                         break;
 
-                     case PrnParseRowTypes.eType.MsgDiag:
+                    case PrnParseRowTypes.eType.MsgDiag:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.Fuchsia;
                         indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Yellow;
@@ -331,7 +331,7 @@ namespace PCLParaphernalia
 
                         break;
 
-                   case PrnParseRowTypes.eType.PJLCommand:
+                    case PrnParseRowTypes.eType.PJLCommand:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.Khaki;
                         indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Black;

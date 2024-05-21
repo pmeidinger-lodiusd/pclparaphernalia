@@ -17,36 +17,36 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _mainKey             = MainForm._regMainKey;
+        const string _mainKey = MainForm._regMainKey;
 
-        const string _subKeyTools         = "Tools";
-        const string _subKeyToolsTrayMap  = "TrayMap";
-        const string _subKeyPCL5          = "PCL5";
-        const string _subKeyPCL6          = "PCL6";
-        const string _subKeyPCL           = "PCL";
-        const string _subKeyPCLXL         = "PCLXL";
-        const string _subKeySheetRoot     = "Sheet_";
+        const string _subKeyTools = "Tools";
+        const string _subKeyToolsTrayMap = "TrayMap";
+        const string _subKeyPCL5 = "PCL5";
+        const string _subKeyPCL6 = "PCL6";
+        const string _subKeyPCL = "PCL";
+        const string _subKeyPCLXL = "PCLXL";
+        const string _subKeySheetRoot = "Sheet_";
 
-        const string _nameCaptureFile     = "CaptureFile";
+        const string _nameCaptureFile = "CaptureFile";
         const string _nameFlagFormAsMacro = "FlagFormAsMacro";
         const string _nameIndxOrientation = "IndxOrientation"; // pre v2.8 //
         const string _nameIndxOrientFront = "IndxOrientFront";
-        const string _nameIndxOrientRear  = "IndxOrientRear";
-        const string _nameIndxPaperSize   = "IndxPaperSize";
-        const string _nameIndxPaperType   = "IndxPaperType";
-        const string _nameIndxPaperTray   = "IndxPaperTray";
-        const string _nameIndxPDL         = "IndxPDL";
-        const string _nameIndxPlexMode    = "IndxPlexMode";
-        const string _nameIndxTrayIdOpt   = "IndxTrayIdOpt"; // pre v2.8 //
-        const string _nameSheetCt         = "SheetCt";
-        const string _nameTrayIdList      = "TrayIdList"; // pre v2.8 //
+        const string _nameIndxOrientRear = "IndxOrientRear";
+        const string _nameIndxPaperSize = "IndxPaperSize";
+        const string _nameIndxPaperType = "IndxPaperType";
+        const string _nameIndxPaperTray = "IndxPaperTray";
+        const string _nameIndxPDL = "IndxPDL";
+        const string _nameIndxPlexMode = "IndxPlexMode";
+        const string _nameIndxTrayIdOpt = "IndxTrayIdOpt"; // pre v2.8 //
+        const string _nameSheetCt = "SheetCt";
+        const string _nameTrayIdList = "TrayIdList"; // pre v2.8 //
 
-        const int _flagFalse            = 0;
-        const int _flagTrue             = 1;
-        const int _indexZero            = 0;
-        const int _indexOne             = 1;
+        const int _flagFalse = 0;
+        const int _flagTrue = 1;
+        const int _indexZero = 0;
+        const int _indexOne = 1;
 
-        const string _defaultCaptureFilePCL   = "CaptureFile_TrayMapPCL.prn";
+        const string _defaultCaptureFilePCL = "CaptureFile_TrayMapPCL.prn";
         const string _defaultCaptureFilePCLXL = "CaptureFile_TrayMapPCLXL.prn";
 
         //--------------------------------------------------------------------//
@@ -178,7 +178,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCLOpt (ref bool flagFormAsMacro,
+        public static void loadDataPCLOpt(ref bool flagFormAsMacro,
                                            ref int sheetCt)
         {
             RegistryKey keyMain =
@@ -188,7 +188,7 @@ namespace PCLParaphernalia
 
             int tmpInt;
 
-            byte[] buffer = {0x00};
+            byte[] buffer = { 0x00 };
 
             key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
                                  "\\" + _subKeyPCL;
@@ -202,7 +202,7 @@ namespace PCLParaphernalia
                       vBui = -1,
                       vRev = -1;
 
-                MainFormData.getVersionData (false,
+                MainFormData.getVersionData(false,
                                              ref vMaj, ref vMin,
                                              ref vBui, ref vRev);
 
@@ -224,7 +224,7 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                tmpInt          = (int)subKey.GetValue(_nameFlagFormAsMacro,
+                tmpInt = (int)subKey.GetValue(_nameFlagFormAsMacro,
                                                          _flagTrue);
 
                 flagFormAsMacro = tmpInt != _flagFalse;
@@ -243,7 +243,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCLXLOpt (ref bool flagFormAsMacro,
+        public static void loadDataPCLXLOpt(ref bool flagFormAsMacro,
                                              ref int sheetCt)
         {
             RegistryKey keyMain =
@@ -308,7 +308,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataSheetOpt (string pdlName,
+        public static void loadDataSheetOpt(string pdlName,
                                              int sheetNo,
                                              ref int indxPaperSize,
                                              ref int indxPaperType,
@@ -323,7 +323,7 @@ namespace PCLParaphernalia
             string key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
                                  "\\" + pdlName +
                                  "\\" + _subKeySheetRoot +
-                                 sheetNo.ToString ("D2");
+                                 sheetNo.ToString("D2");
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -426,7 +426,7 @@ namespace PCLParaphernalia
         // Store current TrayMap PCL options.                                 //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCLOpt (bool flagFormAsMacro,
+        public static void saveDataPCLOpt(bool flagFormAsMacro,
                                            int sheetCt)
         {
             RegistryKey keyMain =
@@ -460,7 +460,7 @@ namespace PCLParaphernalia
         // Store current TrayMap PCL XL options.                              //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCLXLOpt (bool flagFormAsMacro,
+        public static void saveDataPCLXLOpt(bool flagFormAsMacro,
                                              int sheetCt)
         {
             RegistryKey keyMain =
@@ -495,7 +495,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataSheetOpt (string pdlName,
+        public static void saveDataSheetOpt(string pdlName,
                                              int sheetNo,
                                              int indxPaperSize,
                                              int indxPaperType,

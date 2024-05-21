@@ -29,12 +29,12 @@ namespace PCLParaphernalia
         const int lm0 = 21;
         const int lm1 = 57;
 
-        const int lcDec  = 5;
-        const int lcHex  = 4;
-        const int lrDec  = 5;
-        const int lrHex  = 4;
+        const int lcDec = 5;
+        const int lcHex = 4;
+        const int lrDec = 5;
+        const int lrHex = 4;
 
-        const int lSep   = 1;
+        const int lSep = 1;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -51,7 +51,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void Generate (ReportCore.eRptFileFmt rptFileFmt,
+        public static void Generate(ReportCore.eRptFileFmt rptFileFmt,
                                      string symSetFilename,
                                      ushort symSetNo,
                                      ushort[] symSetMap,
@@ -80,31 +80,31 @@ namespace PCLParaphernalia
 
             string saveFilename = symSetFilename + "_report." + fileExt;
 
-            OK = ReportCore.docOpen (rptFileFmt,
+            OK = ReportCore.docOpen(rptFileFmt,
                                      ref saveFilename,
                                      ref stream,
                                      ref writer);
 
             if (OK)
             {
-                ReportCore.docInitialise (rptFileFmt, writer, true, false,
+                ReportCore.docInitialise(rptFileFmt, writer, true, false,
                                           0, null,
                                           null, null);
 
-                ReportHddr (rptFileFmt, writer, symSetFilename);
+                ReportHddr(rptFileFmt, writer, symSetFilename);
 
-                ReportBodyMain (rptFileFmt, writer, symSetNo,
+                ReportBodyMain(rptFileFmt, writer, symSetNo,
                                 codeMin, codeMax, codeCt, charCollReq,
                                 flagIgnoreC0, flagIgnoreC1, flagMapHex,
                                 symSetType);
 
-                ReportBodyMap (rptFileFmt, writer, symSetMap,
+                ReportBodyMap(rptFileFmt, writer, symSetMap,
                                codeMin, codeMax,
                                flagIgnoreC0, flagIgnoreC1, flagMapHex);
 
-                ReportCore.docFinalise (rptFileFmt, writer);
+                ReportCore.docFinalise(rptFileFmt, writer);
 
-                ReportCore.docClose (rptFileFmt, stream, writer);
+                ReportCore.docClose(rptFileFmt, stream, writer);
             }
         }
 
@@ -117,7 +117,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void ReportBodyMain (
+        private static void ReportBodyMain(
             ReportCore.eRptFileFmt rptFileFmt,
             object writer,
         //  String symSetFilename,
@@ -139,7 +139,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.hddrTitle (writer, rptFileFmt, true,
+            ReportCore.hddrTitle(writer, rptFileFmt, true,
                                   "Symbol set details:");
 
             //----------------------------------------------------------------//
@@ -148,67 +148,67 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableHddrPair (writer, rptFileFmt);
+            ReportCore.tableHddrPair(writer, rptFileFmt);
 
-            ReportCore.tableRowPair (writer, rptFileFmt,
-                                 "SymSetNo", symSetNo.ToString (),
+            ReportCore.tableRowPair(writer, rptFileFmt,
+                                 "SymSetNo", symSetNo.ToString(),
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
-            ReportCore.tableRowPair (writer, rptFileFmt,
+            ReportCore.tableRowPair(writer, rptFileFmt,
                                  "SymSetId",
                                  PCLSymbolSets.TranslateKind1ToId(symSetNo),
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
-            ReportCore.tableRowPair (writer, rptFileFmt,
+            ReportCore.tableRowPair(writer, rptFileFmt,
                                  "IgnoreC0Codes",
                                  flagIgnoreC0 ? "true" : "false",
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
-            ReportCore.tableRowPair (writer, rptFileFmt,
+            ReportCore.tableRowPair(writer, rptFileFmt,
                                  "IgnoreC1Codes",
                                  flagIgnoreC1 ? "true" : "false",
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
-            ReportCore.tableRowPair (writer, rptFileFmt,
+            ReportCore.tableRowPair(writer, rptFileFmt,
                                  "FirstCode",
-                                 flagMapHex ? "0x" + codeMin.ToString ("x4")
-                                             : codeMin.ToString (),
+                                 flagMapHex ? "0x" + codeMin.ToString("x4")
+                                             : codeMin.ToString(),
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
-            ReportCore.tableRowPair (writer, rptFileFmt,
+            ReportCore.tableRowPair(writer, rptFileFmt,
                                  "Lastcode",
-                                 flagMapHex ? "0x" + codeMax.ToString ("x4")
-                                             : codeMax.ToString (),
+                                 flagMapHex ? "0x" + codeMax.ToString("x4")
+                                             : codeMax.ToString(),
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
-            ReportCore.tableRowPair (writer, rptFileFmt,
+            ReportCore.tableRowPair(writer, rptFileFmt,
                                  "CharCount",
-                                 flagMapHex ? "0x" + codeCt.ToString ("x4")
-                                             : codeCt.ToString (),
+                                 flagMapHex ? "0x" + codeCt.ToString("x4")
+                                             : codeCt.ToString(),
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
-            ReportCore.tableRowPair (writer, rptFileFmt,
+            ReportCore.tableRowPair(writer, rptFileFmt,
                                  "CharReqBits",
-                                 "0x" + charCollReq.ToString ("x16"),
+                                 "0x" + charCollReq.ToString("x16"),
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
-            ReportCore.tableClose (writer, rptFileFmt);
+            ReportCore.tableClose(writer, rptFileFmt);
         }
 
         //--------------------------------------------------------------------//
@@ -220,7 +220,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void ReportBodyMap (
+        private static void ReportBodyMap(
             ReportCore.eRptFileFmt rptFileFmt,
             object writer,
             ushort[] symSetMap,
@@ -258,19 +258,19 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.hddrTitle (writer, rptFileFmt, true,
+            ReportCore.hddrTitle(writer, rptFileFmt, true,
                                   "Mapping detail:");
 
-            ReportCore.tableHddrPair (writer, rptFileFmt);
+            ReportCore.tableHddrPair(writer, rptFileFmt);
 
-            ReportCore.tableRowPair (writer, rptFileFmt,
+            ReportCore.tableRowPair(writer, rptFileFmt,
                                  "Format",
                                  flagMapHex ? "hexadecimal" : "decimal",
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
-            ReportCore.tableClose (writer, rptFileFmt);
+            ReportCore.tableClose(writer, rptFileFmt);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -293,8 +293,8 @@ namespace PCLParaphernalia
                 for (int i = 1; i < colCt; i++)
                 {
                     colSizes[i] = lcHex;
-                    colNames[i] = "col" + (i - 1).ToString ("D2");
-                    colHddrs[i] = "_" + (i - 1).ToString ("x");
+                    colNames[i] = "col" + (i - 1).ToString("D2");
+                    colHddrs[i] = "_" + (i - 1).ToString("x");
                 }
             }
             else
@@ -312,12 +312,12 @@ namespace PCLParaphernalia
                 for (int i = 1; i < colCt; i++)
                 {
                     colSizes[i] = lcDec;
-                    colNames[i] = "col" + (i - 1).ToString ("D2");
-                    colHddrs[i] = "+" + (i - 1).ToString ("d");
+                    colNames[i] = "col" + (i - 1).ToString("D2");
+                    colHddrs[i] = "+" + (i - 1).ToString("d");
                 }
             }
 
-            ReportCore.tableHddrData (writer, rptFileFmt, true,
+            ReportCore.tableHddrData(writer, rptFileFmt, true,
                                       colCt, colHddrs, colSizes);
 
             //----------------------------------------------------------------//
@@ -339,14 +339,14 @@ namespace PCLParaphernalia
 
                 if (flagMapHex)
                 {
-                    rowData[0] = (rowIndx.ToString (fmtHddr).
-                                    Substring (0, 3) + "_").
-                                    PadLeft (lrHddr, ' ');
+                    rowData[0] = (rowIndx.ToString(fmtHddr).
+                                    Substring(0, 3) + "_").
+                                    PadLeft(lrHddr, ' ');
                 }
                 else
                 {
-                    rowData[0] = rowIndx.ToString (fmtHddr).
-                                    PadLeft (lrHddr, ' ');
+                    rowData[0] = rowIndx.ToString(fmtHddr).
+                                    PadLeft(lrHddr, ' ');
                 }
 
                 for (int j = 0; j < colCtData; j++)
@@ -357,25 +357,25 @@ namespace PCLParaphernalia
 
                     if ((mapIndx < codeMin) || (mapIndx > codeMax))
                     {
-                        val = " ".PadLeft (lcCol, ' ');
+                        val = " ".PadLeft(lcCol, ' ');
                     }
                     else if (flagIgnoreC1 &&
                              (mapIndx >= cCodePointC1Min) &&
                               (mapIndx <= cCodePointC1Max))
                     {
                         val = cCodePointUnused.
-                                ToString (fmtVal).PadLeft (lcCol, ' ');
+                                ToString(fmtVal).PadLeft(lcCol, ' ');
                     }
                     else
                     {
                         val = symSetMap[mapIndx].
-                                ToString (fmtVal).PadLeft (lcCol, ' ');
+                                ToString(fmtVal).PadLeft(lcCol, ' ');
                     }
 
                     rowData[j + 1] = val;
                 }
 
-                ReportCore.tableRowText (writer, rptFileFmt, colCt,
+                ReportCore.tableRowText(writer, rptFileFmt, colCt,
                                      rowData, colNames, colSizes);
             }
 
@@ -385,7 +385,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableClose (writer, rptFileFmt);
+            ReportCore.tableClose(writer, rptFileFmt);
         }
 
         //--------------------------------------------------------------------//
@@ -397,7 +397,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void ReportHddr (ReportCore.eRptFileFmt rptFileFmt,
+        private static void ReportHddr(ReportCore.eRptFileFmt rptFileFmt,
                                         object writer,
                                         string symSetFilename)
         {
@@ -411,7 +411,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.hddrTitle (writer, rptFileFmt, false, title);
+            ReportCore.hddrTitle(writer, rptFileFmt, false, title);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -420,21 +420,21 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableHddrPair (writer, rptFileFmt);
+            ReportCore.tableHddrPair(writer, rptFileFmt);
 
-            ReportCore.tableRowPair (writer, rptFileFmt,
-                                 "Date_time", DateTime.Now.ToString (),
+            ReportCore.tableRowPair(writer, rptFileFmt,
+                                 "Date_time", DateTime.Now.ToString(),
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
-            ReportCore.tableRowPair (writer, rptFileFmt,
+            ReportCore.tableRowPair(writer, rptFileFmt,
                                  "Symbol set file", symSetFilename,
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
-            ReportCore.tableClose (writer, rptFileFmt);
+            ReportCore.tableClose(writer, rptFileFmt);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generateRequest (BinaryWriter prnWriter,
+        public static void generateRequest(BinaryWriter prnWriter,
                                             PJLCommands.eCmdIndex cmdIndx,
                                             int indexCategory,
                                             int indexVariable,
@@ -42,7 +42,7 @@ namespace PCLParaphernalia
                 {
                     if (indexCategory < PJLCategories.getCount())
                     {
-                        if (PJLCategories.getType (indexCategory) ==
+                        if (PJLCategories.getType(indexCategory) ==
                             PJLCategories.eCategoryType.Custom)
                         {
                             seq = "\x1b" + "%-12345X" +
@@ -54,7 +54,7 @@ namespace PCLParaphernalia
                         }
                         else
                         {
-                            string categoryName = PJLCategories.getName (indexCategory);
+                            string categoryName = PJLCategories.getName(indexCategory);
 
                             seq = "\x1b" + "%-12345X" +
                                            "@PJL ECHO PCLParaphernalia" + "\x0d\x0a" +
@@ -87,7 +87,7 @@ namespace PCLParaphernalia
                             string variableName;
                             string personality;
 
-                            variableName = PJLVariables.getName (indexVariable);
+                            variableName = PJLVariables.getName(indexVariable);
 
                             if (varType == PJLVariables.eVarType.PCL)
                                 personality = "LPARM : PCL ";
@@ -144,7 +144,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string readResponse ()
+        public static string readResponse()
         {
             const int replyBufLen = 32768;
 

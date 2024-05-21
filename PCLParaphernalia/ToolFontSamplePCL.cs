@@ -17,23 +17,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _hexChars          = "0123456789ABCDEF";
+        const string _hexChars = "0123456789ABCDEF";
 
-        const int _macroId            = 1;
-        const short _gridDim            = 16;
-        const int _gridDimHalf        = _gridDim / 2;
-        const short _gridCols           = _gridDim;
-        const short _gridRows           = _gridDim;
-        const ushort _unitsPerInch      = PCLWriter.sessionUPI;
+        const int _macroId = 1;
+        const short _gridDim = 16;
+        const int _gridDimHalf = _gridDim / 2;
+        const short _gridCols = _gridDim;
+        const short _gridRows = _gridDim;
+        const ushort _unitsPerInch = PCLWriter.sessionUPI;
 
-        const short _lineSpacing        = _unitsPerInch / 4;
-        const short _cellWidth          = (_unitsPerInch * 1) / 3;
-        const short _cellHeight         = (_unitsPerInch * 25) / 60;
+        const short _lineSpacing = _unitsPerInch / 4;
+        const short _cellWidth = (_unitsPerInch * 1) / 3;
+        const short _cellHeight = (_unitsPerInch * 25) / 60;
 
-        const short _marginX            = (_unitsPerInch * 7) / 6;
-        const short _posYDesc           = (_unitsPerInch * 3) / 4;
-        const short _posYGrid           = _posYDesc + (_lineSpacing * 4);
-        const short _posYSelData        = _posYGrid +
+        const short _marginX = (_unitsPerInch * 7) / 6;
+        const short _posYDesc = (_unitsPerInch * 3) / 4;
+        const short _posYGrid = _posYDesc + (_lineSpacing * 4);
+        const short _posYSelData = _posYGrid +
                                           (_cellHeight * (_gridRows + 2)) +
                                           (_lineSpacing * 2);
 
@@ -61,9 +61,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generateJob (
-            BinaryWriter                 prnWriter,
-            PCLFonts.eFontType           fontType,
+        public static void generateJob(
+            BinaryWriter prnWriter,
+            PCLFonts.eFontType fontType,
             int indxPaperSize,
             int indxPaperType,
             int indxOrientation,
@@ -78,7 +78,7 @@ namespace PCLParaphernalia
             string fontSelDesc,
             string fontSelSeq,
             string symbolSetName,
-            ushort[]                    sampleRangeOffsets,
+            ushort[] sampleRangeOffsets,
             PCLTextParsingMethods.Index indxTextParseMethod,
             double pointSize,
             bool sizeIsHeight,
@@ -119,7 +119,7 @@ namespace PCLParaphernalia
                 symSetKind1 = PCLSymbolSets.TranslateIdToKind1(symbolSet);
 
                 if ((!symSetUserActEmbed) ||
-                    showMapCodesUCS2    || showMapCodesUTF8)
+                    showMapCodesUCS2 || showMapCodesUTF8)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -224,9 +224,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateJobHeader (
-            BinaryWriter           prnWriter,
-            PCLFonts.eFontType     fontType,
+        private static void generateJobHeader(
+            BinaryWriter prnWriter,
+            PCLFonts.eFontType fontType,
             bool prnDiskFontLoadViaMacro,
             int indxPaperSize,
             int indxPaperType,
@@ -241,46 +241,46 @@ namespace PCLParaphernalia
             bool symSetUserActEmbed,
             string symSetUserFile)
         {
-            PCLWriter.stdJobHeader (prnWriter, string.Empty);
+            PCLWriter.stdJobHeader(prnWriter, string.Empty);
 
             if (symSetUserSet && symSetUserActEmbed)
             {
-                PCLDownloadSymSet.symSetFileCopy (prnWriter, symSetUserFile);
+                PCLDownloadSymSet.symSetFileCopy(prnWriter, symSetUserFile);
             }
 
             if (fontType == PCLFonts.eFontType.Download)
             {
-                PCLWriter.fontDownloadID (prnWriter, fontIdNo);
+                PCLWriter.fontDownloadID(prnWriter, fontIdNo);
 
-                PCLDownloadFont.FontFileCopy (prnWriter, fontFilename);
+                PCLDownloadFont.FontFileCopy(prnWriter, fontFilename);
 
-                PCLWriter.fontDownloadSave (prnWriter, true);
+                PCLWriter.fontDownloadSave(prnWriter, true);
             }
             else if (fontType == PCLFonts.eFontType.PrnDisk)
             {
                 if (prnDiskFontLoadViaMacro)
                 {
-                    PCLWriter.fontFileIdAssociate (prnWriter,
+                    PCLWriter.fontFileIdAssociate(prnWriter,
                                                    fontIdNo,
                                                    fontMacroIdNo,
                                                    fontFilename);
                 }
                 else
                 {
-                    PCLWriter.fontFileIdAssociate (prnWriter,
+                    PCLWriter.fontFileIdAssociate(prnWriter,
                                                    fontIdNo,
                                                    fontFilename);
                 }
 
-                PCLWriter.fontDownloadSave (prnWriter, true);
+                PCLWriter.fontDownloadSave(prnWriter, true);
             }
 
             if (formAsMacro)
             {
-                generateOverlay (prnWriter, true, optGridVertical, logXOffset);
+                generateOverlay(prnWriter, true, optGridVertical, logXOffset);
             }
 
-            PCLWriter.pageHeader (prnWriter,
+            PCLWriter.pageHeader(prnWriter,
                                   indxPaperSize,
                                   indxPaperType,
                                   indxOrientation,
@@ -314,8 +314,8 @@ namespace PCLParaphernalia
 
             if (fontMacroRemove)
             {
-                PCLWriter.macroControl (prnWriter,
-                                        (short) fontMacroIdNo,
+                PCLWriter.macroControl(prnWriter,
+                                        (short)fontMacroIdNo,
                                         PCLWriter.eMacroControl.Delete);
             }
 
@@ -715,9 +715,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generatePage (
-            BinaryWriter                 prnWriter,
-            PCLFonts.eFontType           fontType,
+        private static void generatePage(
+            BinaryWriter prnWriter,
+            PCLFonts.eFontType fontType,
             bool prnDiskFontDataKnown,
             bool formAsMacro,
             bool showC0Chars,
@@ -744,10 +744,10 @@ namespace PCLParaphernalia
             bool symSetUserActEmbed,
             string symSetUserFile)
         {
-            const int rangeC0Max        = 0x1f;
-            const int singleByteMax     = 0xff;
-            const int indxMajorC0Start  = 0;
-            const int indxMajorC0End    = 2;
+            const int rangeC0Max = 0x1f;
+            const int singleByteMax = 0xff;
+            const int indxMajorC0Start = 0;
+            const int indxMajorC0End = 2;
             const int sizeSingleByteSet = 256;
 
             short marginX = (short)(_marginX - logXOffset);
@@ -794,7 +794,7 @@ namespace PCLParaphernalia
                     PCLWriter.text(prnWriter, posX, posY, 0,
                                    fontFilename.Substring(0, halfLen) +
                                    " ... " +
-                                   fontFilename.Substring(len-halfLen,
+                                   fontFilename.Substring(len - halfLen,
                                                           halfLen));
             }
             else
@@ -805,7 +805,7 @@ namespace PCLParaphernalia
             posY += _lineSpacing;
 
             if ((fontType == PCLFonts.eFontType.PrnDisk) &&
-                (! prnDiskFontDataKnown))
+                (!prnDiskFontDataKnown))
                 PCLWriter.text(prnWriter, posX, posY, 0,
                                "characteristics not known");
             else if (sizeIsHeight)
@@ -823,20 +823,20 @@ namespace PCLParaphernalia
             if ((fontType == PCLFonts.eFontType.PrnDisk) &&
                 (!prnDiskFontDataKnown))
             {
-                PCLWriter.text (prnWriter, posX, posY, 0,
+                PCLWriter.text(prnWriter, posX, posY, 0,
                                "characteristics not known");
             }
             else if (sampleRangeOffset == 0)
             {
-                PCLWriter.text (prnWriter, posX, posY, 0,
+                PCLWriter.text(prnWriter, posX, posY, 0,
                                 symSetId + " (" + symbolSetName + ")");
             }
             else
             {
                 string offsetText = ": Range offset 0x" +
-                             sampleRangeOffset.ToString ("X4");
+                             sampleRangeOffset.ToString("X4");
 
-                PCLWriter.text (prnWriter, posX, posY, 0,
+                PCLWriter.text(prnWriter, posX, posY, 0,
                                 symSetId + " (" + symbolSetName + ")" +
                                 offsetText);
             }
@@ -881,13 +881,13 @@ namespace PCLParaphernalia
 
             if (fontLoadDesc != string.Empty)
             {
-                PCLWriter.text (prnWriter, posX, posY, 0,
+                PCLWriter.text(prnWriter, posX, posY, 0,
                                 fontLoadDesc);
 
                 posY += _lineSpacing;
             }
 
-            PCLWriter.text (prnWriter, posX, posY, 0,
+            PCLWriter.text(prnWriter, posX, posY, 0,
                             fontSelDesc);
 
             //----------------------------------------------------------------//
@@ -1085,7 +1085,7 @@ namespace PCLParaphernalia
 
                     PCLWriter.cursorPushPop(prnWriter, PCLWriter.ePushPop.Push);
 
-                    ushort codeVal = (ushort) (sampleRangeOffset +
+                    ushort codeVal = (ushort)(sampleRangeOffset +
                                                (indxMajor * _gridDim) +
                                                indxMinor);
 
@@ -1174,7 +1174,7 @@ namespace PCLParaphernalia
                             }
                         }
                         else if ((codeVal <= singleByteMax) &&
-                                 (! twoByteMethod))
+                                 (!twoByteMethod))
                         {
                             //------------------------------------------------//
                             //                                                //
@@ -1240,7 +1240,7 @@ namespace PCLParaphernalia
             if (indxTextParseMethod !=
                 PCLTextParsingMethods.Index.not_specified)
             {
-                PCLWriter.textParsingMethod (
+                PCLWriter.textParsingMethod(
                     prnWriter,
                     PCLTextParsingMethods.Index.m0_1_byte_default);
             }
@@ -1398,14 +1398,14 @@ namespace PCLParaphernalia
                             string utf8Hex = null;
                             int utf8HexLen = 0;
 
-                            PrnParseDataUTF8.convertUTF32ToUTF8HexString (
+                            PrnParseDataUTF8.convertUTF32ToUTF8HexString(
                                 mapVal,
                                 true,
                                 ref utf8Hex);
 
                             utf8HexLen = utf8Hex.Length;
 
-                            prnWriter.Write (utf8Hex.ToCharArray(),
+                            prnWriter.Write(utf8Hex.ToCharArray(),
                                              0, utf8HexLen);
                         }
                     }

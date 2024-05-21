@@ -24,8 +24,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLSymbolSet (PCLSymbolSets.SymSetGroup group,
-                             PCLSymSetTypes.Index   indxType,
+        public PCLSymbolSet(PCLSymbolSets.SymSetGroup group,
+                             PCLSymSetTypes.Index indxType,
                              PCLTextParsingMethods.Index parsingMethod,
                              ushort kind1,
                              string alias,
@@ -56,7 +56,7 @@ namespace PCLParaphernalia
             Id = IdNum.ToString() + Convert.ToChar(IdAlpha);
 
             FlagMapped = mapped;
-            _mapId   = mapId;
+            _mapId = mapId;
         }
 
         //--------------------------------------------------------------------//
@@ -187,10 +187,10 @@ namespace PCLParaphernalia
             }
             else if (idAlpha == IdAlpha)
             {
-                matches    = true;
-                kind1      = Kind1;
-                idNum      = IdNum;
-                name       = Name;
+                matches = true;
+                kind1 = Kind1;
+                idNum = IdNum;
+                name = Name;
             }
             else
             {
@@ -222,7 +222,7 @@ namespace PCLParaphernalia
 
         public string Groupname
         {
-            get { return Group.ToString (); }
+            get { return Group.ToString(); }
         }
 
         //--------------------------------------------------------------------//
@@ -297,7 +297,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                return PCLSymSetMaps.getCodepointMax ((int) _mapId);
+                return PCLSymSetMaps.getCodepointMax((int)_mapId);
             }
         }
 
@@ -314,7 +314,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                return PCLSymSetMaps.getMapArray ((int) _mapId, true);
+                return PCLSymSetMaps.getMapArray((int)_mapId, true);
             }
         }
 
@@ -331,7 +331,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                return PCLSymSetMaps.getMapArray ((int) _mapId, false);
+                return PCLSymSetMaps.getMapArray((int)_mapId, false);
             }
         }
 
@@ -349,12 +349,12 @@ namespace PCLParaphernalia
         {
             get
             {
-                return PCLSymSetMaps.getMapArrayUserSet ();
+                return PCLSymSetMaps.getMapArrayUserSet();
             }
 
             set
             {
-                PCLSymSetMaps.setMapArrayUserSet (value);
+                PCLSymSetMaps.setMapArrayUserSet(value);
             }
         }
 
@@ -380,7 +380,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    return PCLSymSetMaps.mappingDiff ((int) _mapId);
+                    return PCLSymSetMaps.mappingDiff((int)_mapId);
                 }
             }
         }
@@ -406,7 +406,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    return PCLSymSetMaps.mapping ((int) _mapId, true, false);
+                    return PCLSymSetMaps.mapping((int)_mapId, true, false);
                 }
             }
         }
@@ -434,7 +434,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    return PCLSymSetMaps.mapping ((int) _mapId, true, true);
+                    return PCLSymSetMaps.mapping((int)_mapId, true, true);
                 }
             }
         }
@@ -460,7 +460,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    return PCLSymSetMaps.mapping ((int) _mapId, false, false);
+                    return PCLSymSetMaps.mapping((int)_mapId, false, false);
                 }
             }
         }
@@ -490,7 +490,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    return PCLSymSetMaps.mapRowsDiff ((int)_mapId);
+                    return PCLSymSetMaps.mapRowsDiff((int)_mapId);
                 }
             }
         }
@@ -519,7 +519,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    return PCLSymSetMaps.mapRows ((int)_mapId, true, false);
+                    return PCLSymSetMaps.mapRows((int)_mapId, true, false);
                 }
             }
         }
@@ -550,7 +550,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    return PCLSymSetMaps.mapRows ((int)_mapId, true, true);
+                    return PCLSymSetMaps.mapRows((int)_mapId, true, true);
                 }
             }
         }
@@ -579,7 +579,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    return PCLSymSetMaps.mapRows ((int)_mapId, false, false);
+                    return PCLSymSetMaps.mapRows((int)_mapId, false, false);
                 }
             }
         }
@@ -666,7 +666,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                return PCLSymSetTypes.GetDescShort ((int)Type);
+                return PCLSymSetTypes.GetDescShort((int)Type);
             }
         }
     }

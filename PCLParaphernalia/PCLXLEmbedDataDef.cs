@@ -29,14 +29,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-	    public PCLXLEmbedDataDef(byte tag,
+        public PCLXLEmbedDataDef(byte tag,
                                     bool flagReserved,
                                     string description)
-	    {
-            _tag          = tag;
+        {
+            _tag = tag;
             FlagReserved = flagReserved;
             Description = description;
-	    }
+        }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //

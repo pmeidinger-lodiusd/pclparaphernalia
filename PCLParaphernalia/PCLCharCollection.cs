@@ -30,16 +30,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLCharCollection (
+        public PCLCharCollection(
             PCLCharCollections.eBitType bitType,
             int bitNo,
             string descMSL,
             string descUnicode)
         {
-            _bitType         = bitType;
-            _bitNo           = bitNo;
-            _descMSL         = descMSL;
-            _descUnicode     = descUnicode;
+            _bitType = bitType;
+            _bitNo = bitNo;
+            _descMSL = descMSL;
+            _descUnicode = descUnicode;
         }
 
         //--------------------------------------------------------------------//
@@ -51,7 +51,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int getBitNo ()
+        public int getBitNo()
         {
             return _bitNo;
         }
@@ -65,7 +65,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLCharCollections.eBitType getBitType ()
+        public PCLCharCollections.eBitType getBitType()
         {
             return _bitType;
         }
@@ -79,7 +79,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getDescMSL ()
+        public string getDescMSL()
         {
             return _descMSL;
         }
@@ -94,7 +94,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getDescUnicode ()
+        public string getDescUnicode()
         {
             return _descUnicode;
         }

@@ -26,20 +26,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void unicodeMap_0H ()
+        private static void unicodeMap_0H()
         {
             const eSymSetMapId mapId = eSymSetMapId.map_0H;
 
             const int rangeCt = 1;
 
-            ushort[] [] rangeData = new ushort[rangeCt] []
+            ushort[][] rangeData = new ushort[rangeCt][]
             {
                 new ushort [2] {0x20, 0x7f}
             };
 
             ushort[] rangeSizes = new ushort[rangeCt];
 
-            ushort[] [] mapDataPCL = new ushort[rangeCt] [];
+            ushort[][] mapDataPCL = new ushort[rangeCt][];
 
             ushort rangeMin,
                    rangeMax,
@@ -49,13 +49,13 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < rangeCt; i++)
             {
-                rangeSizes [i] = (ushort) (rangeData [i] [1] -
-                                           rangeData [i] [0] + 1);
+                rangeSizes[i] = (ushort)(rangeData[i][1] -
+                                           rangeData[i][0] + 1);
             }
 
             for (int i = 0; i < rangeCt; i++)
             {
-                mapDataPCL [i] = new ushort[rangeSizes [i]];
+                mapDataPCL[i] = new ushort[rangeSizes[i]];
             }
 
             //----------------------------------------------------------------//
@@ -64,13 +64,13 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            rangeMin = rangeData [0] [0];
-            rangeMax = rangeData [0] [1];
-            rangeSize = rangeSizes [0];
+            rangeMin = rangeData[0][0];
+            rangeMax = rangeData[0][1];
+            rangeSize = rangeSizes[0];
 
             for (ushort i = rangeMin; i <= rangeMax; i++)
             {
-                mapDataPCL [0] [i - rangeMin] = i;
+                mapDataPCL[0][i - rangeMin] = i;
             }
 
             mapDataPCL[0][0x27 - rangeMin] = 0x2019;
@@ -104,11 +104,11 @@ namespace PCLParaphernalia
             mapDataPCL[0][0x79 - rangeMin] = 0x05e9;
             mapDataPCL[0][0x7a - rangeMin] = 0x05ea;
 
-            mapDataPCL[0] [0x7f - rangeMin] = 0x2592;
+            mapDataPCL[0][0x7f - rangeMin] = 0x2592;
 
             //----------------------------------------------------------------//
 
-            _sets.Add (new PCLSymSetMap (mapId,
+            _sets.Add(new PCLSymSetMap(mapId,
                                          rangeCt,
                                          rangeData,
                                          null,

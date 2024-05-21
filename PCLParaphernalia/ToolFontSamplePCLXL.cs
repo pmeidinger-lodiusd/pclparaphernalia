@@ -17,24 +17,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _formName          = "FontSampleForm";
-        const string _hexChars          = "0123456789ABCDEF";
+        const string _formName = "FontSampleForm";
+        const string _hexChars = "0123456789ABCDEF";
 
-        const int _symSet_19U         = 629;
-        const short _gridDim            = 16;
-        const int _gridDimHalf        = _gridDim / 2;
-        const short _gridCols           = _gridDim;
-        const short _gridRows           = _gridDim;
-        const ushort _unitsPerInch      = PCLXLWriter._sessionUPI;
+        const int _symSet_19U = 629;
+        const short _gridDim = 16;
+        const int _gridDimHalf = _gridDim / 2;
+        const short _gridCols = _gridDim;
+        const short _gridRows = _gridDim;
+        const ushort _unitsPerInch = PCLXLWriter._sessionUPI;
 
-        const short _lineSpacing        = _unitsPerInch / 4;
-        const short _cellWidth          = (_unitsPerInch * 1) / 3;
-        const short _cellHeight         = (_unitsPerInch * 25) / 60;
+        const short _lineSpacing = _unitsPerInch / 4;
+        const short _cellWidth = (_unitsPerInch * 1) / 3;
+        const short _cellHeight = (_unitsPerInch * 25) / 60;
 
-        const short _marginX            = (_unitsPerInch * 7) / 6;
-        const short _posYDesc           = (_unitsPerInch * 3) / 4;
-        const short _posYGrid           = _posYDesc + (_lineSpacing * 4);
-        const short _posYSelData        = _posYGrid +
+        const short _marginX = (_unitsPerInch * 7) / 6;
+        const short _posYDesc = (_unitsPerInch * 3) / 4;
+        const short _posYGrid = _posYDesc + (_lineSpacing * 4);
+        const short _posYSelData = _posYGrid +
                                           (_cellHeight * (_gridRows + 2)) +
                                           (_lineSpacing * 2);
 
@@ -64,7 +64,7 @@ namespace PCLParaphernalia
                                        ushort symbolSet,
                                        string fontName,
                                        string symbolSetName,
-                                       ushort[]    sampleRangeOffsets,
+                                       ushort[] sampleRangeOffsets,
                                        double pointSize,
                                        bool downloadFont,
                                        bool downloadFontRemove,
@@ -89,7 +89,7 @@ namespace PCLParaphernalia
 
             if (downloadFont)
             {
-                PCLXLDownloadFont.fontFileCopy (prnWriter, fontFilename);
+                PCLXLDownloadFont.fontFileCopy(prnWriter, fontFilename);
             }
 
             //----------------------------------------------------------------//
@@ -190,17 +190,17 @@ namespace PCLParaphernalia
                                             bool formAsMacro,
                                             bool optGridVertical)
         {
-            const short twoCellWidth    = _cellWidth  * 2;
-            const short twoCellHeight   = _cellHeight * 2;
+            const short twoCellWidth = _cellWidth * 2;
+            const short twoCellHeight = _cellHeight * 2;
 
-            const short gridWidthInner  = _cellWidth  * _gridCols;
+            const short gridWidthInner = _cellWidth * _gridCols;
             const short gridHeightInner = _cellHeight * _gridRows;
-            const short gridWidthOuter  = _cellWidth  * (_gridCols + 2);
+            const short gridWidthOuter = _cellWidth * (_gridCols + 2);
             const short gridHeightOuter = _cellHeight * (_gridRows + 2);
 
-            const int lenBuf     = 1024;
-            const short patternID  = 1;
-            const ushort patWidth  = 24;
+            const int lenBuf = 1024;
+            const short patternID = 1;
+            const ushort patWidth = 24;
             const ushort patHeight = 24;
 
             byte[] buffer = new byte[lenBuf];
@@ -451,7 +451,7 @@ namespace PCLParaphernalia
                                          PCLXLAttributes.eTag.BoundingBox,
                                          _marginX,
                                          _posYGrid,
-                                         _marginX  + twoCellWidth,
+                                         _marginX + twoCellWidth,
                                          _posYGrid + twoCellHeight);
 
             PCLXLWriter.AddAttrSint16XY(ref buffer,
@@ -500,7 +500,7 @@ namespace PCLParaphernalia
             PCLXLWriter.WriteStreamBlock(prnWriter, formAsMacro,
                                          buffer, ref indBuf);
 
-            posX1 = _marginX  + gridWidthOuter  - twoCellWidth;
+            posX1 = _marginX + gridWidthOuter - twoCellWidth;
             posY1 = _posYGrid + gridHeightOuter - twoCellHeight;
 
             PCLXLWriter.AddOperator(ref buffer,
@@ -746,7 +746,7 @@ namespace PCLParaphernalia
             PCLXLWriter.WriteStreamBlock(prnWriter, formAsMacro,
                                          buffer, ref indBuf);
 
-            PCLXLWriter.PatternDefine (prnWriter,
+            PCLXLWriter.PatternDefine(prnWriter,
                                        formAsMacro,
                                        patternID,
                                        patWidth,
@@ -773,7 +773,7 @@ namespace PCLParaphernalia
                                     ref indBuf,
                                     PCLXLOperators.eTag.SetBrushSource);
 
-            posX1 = _marginX  + _cellWidth;
+            posX1 = _marginX + _cellWidth;
             posY1 = _posYGrid + _cellHeight;
 
             if (optGridVertical)
@@ -871,14 +871,14 @@ namespace PCLParaphernalia
             PCLXLWriter.Font(prnWriter, formAsMacro, 6,
                              _symSet_19U, "Courier       Bd");
 
-            posX1 = _marginX  + (_cellWidth / 3);
+            posX1 = _marginX + (_cellWidth / 3);
             posY1 = _posYGrid + _lineSpacing;
 
             PCLXLWriter.Text(prnWriter, formAsMacro, false,
                              PCLXLWriter.advances_Courier, crntPtSize,
                              posX1, posY1, "hex");
 
-            posX1 = _marginX  + gridWidthInner + _cellWidth  + (_cellWidth / 5);
+            posX1 = _marginX + gridWidthInner + _cellWidth + (_cellWidth / 5);
             posY1 = _posYGrid + gridHeightInner + _cellHeight + _lineSpacing;
 
             PCLXLWriter.Text(prnWriter, formAsMacro, false,
@@ -892,7 +892,7 @@ namespace PCLParaphernalia
             PCLXLWriter.Font(prnWriter, formAsMacro, crntPtSize,
                              _symSet_19U, "Courier       Bd");
 
-            posX1 = _marginX  + ((_cellWidth * 17) / 20);
+            posX1 = _marginX + ((_cellWidth * 17) / 20);
             posY1 = _posYGrid + _lineSpacing;
 
             if (optGridVertical)
@@ -939,7 +939,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            posX1 = _marginX  + (_cellWidth / 4);
+            posX1 = _marginX + (_cellWidth / 4);
             posY1 = _posYGrid + _cellHeight + _lineSpacing;
 
             if (optGridVertical)
@@ -967,7 +967,7 @@ namespace PCLParaphernalia
                 }
             }
 
-            posX1 = _marginX  + gridWidthInner + _cellWidth + (_cellWidth / 8);
+            posX1 = _marginX + gridWidthInner + _cellWidth + (_cellWidth / 8);
             posY1 = _posYGrid + _cellHeight + _lineSpacing;
 
             if (optGridVertical)
@@ -1096,7 +1096,7 @@ namespace PCLParaphernalia
 
             if (formAsMacro)
             {
-                PCLXLWriter.AddOperator (ref buffer,
+                PCLXLWriter.AddOperator(ref buffer,
                                   ref indBuf,
                                   PCLXLOperators.eTag.EndStream);
 
@@ -1134,10 +1134,10 @@ namespace PCLParaphernalia
                                          bool showMapCodesUTF8,
                                          string symSetUserFile,
                                          ushort symSetUserMapMax,
-                                         ushort[]     symSetUserMap)
+                                         ushort[] symSetUserMap)
         {
             const int indxMajorC0Start = 0;
-            const int indxMajorC0End   = 2;
+            const int indxMajorC0End = 2;
             const int lenBuf = 1024;
 
             byte[] buffer = new byte[lenBuf];
@@ -1196,7 +1196,7 @@ namespace PCLParaphernalia
             PCLXLWriter.AddAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.eTag.SimplexPageMode,
-                                     (byte) PCLXLAttrEnums.Val.eSimplexFrontSide);
+                                     (byte)PCLXLAttrEnums.Val.eSimplexFrontSide);
 
             PCLXLWriter.AddOperator(ref buffer,
                                     ref indBuf,
@@ -1309,7 +1309,7 @@ namespace PCLParaphernalia
             else
             {
                 string offsetText = ": Range offset 0x" +
-                             sampleRangeOffset.ToString ("X4");
+                             sampleRangeOffset.ToString("X4");
 
                 PCLXLWriter.Text(prnWriter, false, false,
                                  PCLXLWriter.advances_Courier, crntPtSize,
@@ -1470,7 +1470,7 @@ namespace PCLParaphernalia
 
                 indxMajor = startIndxMajor + (row - startRow);
 
-                if ((sampleRangeOffset == 0) && (! symSetUserSet))
+                if ((sampleRangeOffset == 0) && (!symSetUserSet))
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -1532,7 +1532,7 @@ namespace PCLParaphernalia
                                    col++)
                         {
                             codes16Bit[col] =
-                                (ushort) (sampleRangeOffset +
+                                (ushort)(sampleRangeOffset +
                                           ((startIndxMajor + col) * _gridDim) +
                                            row);
                         }

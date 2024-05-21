@@ -34,15 +34,15 @@ namespace PCLParaphernalia
 
         public enum PCLVal
         {
-            not_specified              = -1,
-            m0_1_byte_default          = 0,
-            m1_1_byte_alt              = 1,
-            m2_2_byte                  = 2,
-            m21_1_or_2_byte_Asian7bit  = 21,
-            m31_1_or_2_byte_ShiftJIS   = 31,
-            m38_1_or_2_byte_Asian8bit  = 38,
-            m83_UTF8                   = 83,
-            m1008_UTF8_alt             = 1008
+            not_specified = -1,
+            m0_1_byte_default = 0,
+            m1_1_byte_alt = 1,
+            m2_2_byte = 2,
+            m21_1_or_2_byte_Asian7bit = 21,
+            m31_1_or_2_byte_ShiftJIS = 31,
+            m38_1_or_2_byte_Asian8bit = 38,
+            m83_UTF8 = 83,
+            m1008_UTF8_alt = 1008
         }
 
         //--------------------------------------------------------------------//
@@ -137,7 +137,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetDesc (int index)
+        public static string GetDesc(int index)
         {
             return _methods[index].getDesc();
         }
@@ -152,7 +152,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetDescLong (int index)
+        public static string GetDescLong(int index)
         {
             return _methods[index].getDescLong();
         }
@@ -182,9 +182,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort[] GetRangeDataDouble (int index)
+        public static ushort[] GetRangeDataDouble(int index)
         {
-            return _methods[index].getRangeDataDouble ();
+            return _methods[index].getRangeDataDouble();
         }
 
         //--------------------------------------------------------------------//
@@ -197,9 +197,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetRangeDataDoubleCt (int index)
+        public static int GetRangeDataDoubleCt(int index)
         {
-            return _methods[index].getRangeDataDoubleCt ();
+            return _methods[index].getRangeDataDoubleCt();
         }
 
         //--------------------------------------------------------------------//
@@ -212,9 +212,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort[] GetRangeDataSingle (int index)
+        public static ushort[] GetRangeDataSingle(int index)
         {
-            return _methods[index].getRangeDataSingle ();
+            return _methods[index].getRangeDataSingle();
         }
 
         //--------------------------------------------------------------------//
@@ -227,9 +227,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetRangeDataSingleCt (int index)
+        public static int GetRangeDataSingleCt(int index)
         {
-            return _methods[index].getRangeDataSingleCt ();
+            return _methods[index].getRangeDataSingleCt();
         }
 
         //--------------------------------------------------------------------//
@@ -242,7 +242,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetValue (int index)
+        public static int GetValue(int index)
         {
             return _methods[index].getValue();
         }

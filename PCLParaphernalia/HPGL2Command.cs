@@ -46,7 +46,7 @@ namespace PCLParaphernalia
             FlagSymbolMode = flagSymbolMode;
 
             _statsCtParent = 0;
-            _statsCtChild  = 0;
+            _statsCtChild = 0;
         }
 
         //--------------------------------------------------------------------//

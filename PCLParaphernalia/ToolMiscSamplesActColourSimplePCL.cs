@@ -20,29 +20,29 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int _macroId           = 1;
-        const ushort _unitsPerInch     = PCLWriter.sessionUPI;
+        const int _macroId = 1;
+        const ushort _unitsPerInch = PCLWriter.sessionUPI;
 
         const short _pageOriginX = (_unitsPerInch * 1);
         const short _pageOriginY = (_unitsPerInch * 1);
-        const short _incInch     = (_unitsPerInch * 1);
-        const short _lineInc     = (_unitsPerInch * 5) / 6;
-        const short _colInc      = (_unitsPerInch * 3) / 2;
+        const short _incInch = (_unitsPerInch * 1);
+        const short _lineInc = (_unitsPerInch * 5) / 6;
+        const short _colInc = (_unitsPerInch * 3) / 2;
 
-        const short _posXDesc  = _pageOriginX;
+        const short _posXDesc = _pageOriginX;
         const short _posXDesc1 = _posXDesc + ((_incInch * 15) / 4);
         const short _posXDesc2 = _posXDesc + ((_incInch * 5) / 2);
         const short _posXDesc3 = _posXDesc;
         const short _posXDesc4 = _posXDesc;
 
-        const short _posYHddr  = _pageOriginY;
+        const short _posYHddr = _pageOriginY;
         const short _posYDesc1 = _pageOriginY + _incInch;
         const short _posYDesc2 = _pageOriginY + ((_incInch * 5) / 4);
         const short _posYDesc3 = _pageOriginY + ((_incInch * 7) / 4);
         const short _posYDesc4 = _pageOriginY + (_incInch * 2);
 
-        const short _posXData  = _posXDesc + ((_incInch * 5) / 2);
-        const short _posYData  = _pageOriginY + ((_incInch * 7) / 4);
+        const short _posXData = _posXDesc + ((_incInch * 5) / 2);
+        const short _posYData = _pageOriginY + ((_incInch * 7) / 4);
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -270,7 +270,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            posX = (short) (_posXDesc1 - logXOffset);
+            posX = (short)(_posXDesc1 - logXOffset);
             posY = _posYDesc1;
 
             PCLWriter.text(prnWriter, posX, posY, 0,
@@ -278,10 +278,10 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            posX = (short) (_posXDesc2 - logXOffset);
+            posX = (short)(_posXDesc2 - logXOffset);
             posY = _posYDesc2;
 
-            posX = (short) (_posXDesc2 - logXOffset);
+            posX = (short)(_posXDesc2 - logXOffset);
 
             PCLWriter.text(prnWriter, posX, posY, 0,
                            "Mono");
@@ -298,7 +298,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            posX = (short) (_posXDesc3 - logXOffset);
+            posX = (short)(_posXDesc3 - logXOffset);
             posY = _posYDesc3;
 
             PCLWriter.text(prnWriter, posX, posY, 0,
@@ -345,12 +345,12 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            rectX = (short) (_posXDesc2 - (_incInch / 4) - logXOffset);
+            rectX = (short)(_posXDesc2 - (_incInch / 4) - logXOffset);
             rectY = _posYDesc2 + (_incInch / 4);
             rectWidth = (_incInch * 17) / 4;
             rectHeight = _incInch * 7;
 
-            PCLWriter.rectangleShaded (prnWriter, rectX, rectY,
+            PCLWriter.rectangleShaded(prnWriter, rectX, rectY,
                                       rectHeight, rectWidth, 5,
                                       false, false);
 
@@ -404,7 +404,7 @@ namespace PCLParaphernalia
                                 indxPaperSize, indxOrientation);
 
             rectHeight = _lineInc / 2;
-            rectWidth  = _lineInc;
+            rectWidth = _lineInc;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -413,7 +413,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLWriter.patternTransparency (prnWriter,
+            PCLWriter.patternTransparency(prnWriter,
                                            true);
 
             //----------------------------------------------------------------//
@@ -422,7 +422,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLWriter.paletteSimple (prnWriter,
+            PCLWriter.paletteSimple(prnWriter,
                                      PCLWriter.eSimplePalette.K);
 
             posX = (short)(_posXData - logXOffset);
@@ -431,17 +431,17 @@ namespace PCLParaphernalia
             rectX = posX;
             rectY = posY;
 
-            PCLWriter.setForegroundColour (prnWriter, 0);
+            PCLWriter.setForegroundColour(prnWriter, 0);
 
-            PCLWriter.rectangleSolid (prnWriter, rectX, rectY,
+            PCLWriter.rectangleSolid(prnWriter, rectX, rectY,
                                       rectHeight, rectWidth, false,
                                       false, false);
 
             rectY += _lineInc;
 
-            PCLWriter.setForegroundColour (prnWriter, 1);
+            PCLWriter.setForegroundColour(prnWriter, 1);
 
-            PCLWriter.rectangleSolid (prnWriter, rectX, rectY,
+            PCLWriter.rectangleSolid(prnWriter, rectX, rectY,
                                       rectHeight, rectWidth, false,
                                       false, false);
 
@@ -451,7 +451,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLWriter.paletteSimple (prnWriter,
+            PCLWriter.paletteSimple(prnWriter,
                                      PCLWriter.eSimplePalette.RGB);
 
             posX += _colInc;
@@ -459,65 +459,65 @@ namespace PCLParaphernalia
             rectX = posX;
             rectY = posY;
 
-            PCLWriter.setForegroundColour (prnWriter, 0);
+            PCLWriter.setForegroundColour(prnWriter, 0);
 
-            PCLWriter.rectangleSolid (prnWriter, rectX, rectY,
+            PCLWriter.rectangleSolid(prnWriter, rectX, rectY,
                                       rectHeight, rectWidth, false,
                                       false, false);
 
             rectY += _lineInc;
 
-            PCLWriter.setForegroundColour (prnWriter, 1);
+            PCLWriter.setForegroundColour(prnWriter, 1);
 
-            PCLWriter.rectangleSolid (prnWriter, rectX, rectY,
+            PCLWriter.rectangleSolid(prnWriter, rectX, rectY,
                                       rectHeight, rectWidth, false,
                                       false, false);
 
             rectY += _lineInc;
 
-            PCLWriter.setForegroundColour (prnWriter, 2);
+            PCLWriter.setForegroundColour(prnWriter, 2);
 
-            PCLWriter.rectangleSolid (prnWriter, rectX, rectY,
+            PCLWriter.rectangleSolid(prnWriter, rectX, rectY,
                                       rectHeight, rectWidth, false,
                                       false, false);
 
             rectY += _lineInc;
 
-            PCLWriter.setForegroundColour (prnWriter, 3);
+            PCLWriter.setForegroundColour(prnWriter, 3);
 
-            PCLWriter.rectangleSolid (prnWriter, rectX, rectY,
+            PCLWriter.rectangleSolid(prnWriter, rectX, rectY,
                                       rectHeight, rectWidth, false,
                                       false, false);
 
             rectY += _lineInc;
 
-            PCLWriter.setForegroundColour (prnWriter, 4);
+            PCLWriter.setForegroundColour(prnWriter, 4);
 
-            PCLWriter.rectangleSolid (prnWriter, rectX, rectY,
+            PCLWriter.rectangleSolid(prnWriter, rectX, rectY,
                                       rectHeight, rectWidth, false,
                                       false, false);
 
             rectY += _lineInc;
 
-            PCLWriter.setForegroundColour (prnWriter, 5);
+            PCLWriter.setForegroundColour(prnWriter, 5);
 
-            PCLWriter.rectangleSolid (prnWriter, rectX, rectY,
+            PCLWriter.rectangleSolid(prnWriter, rectX, rectY,
                                       rectHeight, rectWidth, false,
                                       false, false);
 
             rectY += _lineInc;
 
-            PCLWriter.setForegroundColour (prnWriter, 6);
+            PCLWriter.setForegroundColour(prnWriter, 6);
 
-            PCLWriter.rectangleSolid (prnWriter, rectX, rectY,
+            PCLWriter.rectangleSolid(prnWriter, rectX, rectY,
                                       rectHeight, rectWidth, false,
                                       false, false);
 
             rectY += _lineInc;
 
-            PCLWriter.setForegroundColour (prnWriter, 7);
+            PCLWriter.setForegroundColour(prnWriter, 7);
 
-            PCLWriter.rectangleSolid (prnWriter, rectX, rectY,
+            PCLWriter.rectangleSolid(prnWriter, rectX, rectY,
                                       rectHeight, rectWidth, false,
                                       false, false);
 
@@ -527,7 +527,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLWriter.paletteSimple (prnWriter,
+            PCLWriter.paletteSimple(prnWriter,
                                      PCLWriter.eSimplePalette.CMY);
 
             posX += _colInc;
@@ -535,65 +535,65 @@ namespace PCLParaphernalia
             rectX = posX;
             rectY = posY;
 
-            PCLWriter.setForegroundColour (prnWriter, 0);
+            PCLWriter.setForegroundColour(prnWriter, 0);
 
-            PCLWriter.rectangleSolid (prnWriter, rectX, rectY,
+            PCLWriter.rectangleSolid(prnWriter, rectX, rectY,
                                       rectHeight, rectWidth, true,
                                       false, false);
 
             rectY += _lineInc;
 
-            PCLWriter.setForegroundColour (prnWriter, 1);
+            PCLWriter.setForegroundColour(prnWriter, 1);
 
-            PCLWriter.rectangleSolid (prnWriter, rectX, rectY,
+            PCLWriter.rectangleSolid(prnWriter, rectX, rectY,
                                       rectHeight, rectWidth, false,
                                       false, false);
 
             rectY += _lineInc;
 
-            PCLWriter.setForegroundColour (prnWriter, 2);
+            PCLWriter.setForegroundColour(prnWriter, 2);
 
-            PCLWriter.rectangleSolid (prnWriter, rectX, rectY,
+            PCLWriter.rectangleSolid(prnWriter, rectX, rectY,
                                       rectHeight, rectWidth, false,
                                       false, false);
 
             rectY += _lineInc;
 
-            PCLWriter.setForegroundColour (prnWriter, 3);
+            PCLWriter.setForegroundColour(prnWriter, 3);
 
-            PCLWriter.rectangleSolid (prnWriter, rectX, rectY,
+            PCLWriter.rectangleSolid(prnWriter, rectX, rectY,
                                       rectHeight, rectWidth, false,
                                       false, false);
 
             rectY += _lineInc;
 
-            PCLWriter.setForegroundColour (prnWriter, 4);
+            PCLWriter.setForegroundColour(prnWriter, 4);
 
-            PCLWriter.rectangleSolid (prnWriter, rectX, rectY,
+            PCLWriter.rectangleSolid(prnWriter, rectX, rectY,
                                       rectHeight, rectWidth, false,
                                       false, false);
 
             rectY += _lineInc;
 
-            PCLWriter.setForegroundColour (prnWriter, 5);
+            PCLWriter.setForegroundColour(prnWriter, 5);
 
-            PCLWriter.rectangleSolid (prnWriter, rectX, rectY,
+            PCLWriter.rectangleSolid(prnWriter, rectX, rectY,
                                       rectHeight, rectWidth, false,
                                       false, false);
 
             rectY += _lineInc;
 
-            PCLWriter.setForegroundColour (prnWriter, 6);
+            PCLWriter.setForegroundColour(prnWriter, 6);
 
-            PCLWriter.rectangleSolid (prnWriter, rectX, rectY,
+            PCLWriter.rectangleSolid(prnWriter, rectX, rectY,
                                       rectHeight, rectWidth, false,
                                       false, false);
 
             rectY += _lineInc;
 
-            PCLWriter.setForegroundColour (prnWriter, 7);
+            PCLWriter.setForegroundColour(prnWriter, 7);
 
-            PCLWriter.rectangleSolid (prnWriter, rectX, rectY,
+            PCLWriter.rectangleSolid(prnWriter, rectX, rectY,
                                       rectHeight, rectWidth, false,
                                       false, false);
 

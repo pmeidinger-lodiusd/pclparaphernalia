@@ -107,7 +107,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool sendBytesToPrinter (string szPrinterName,
+        public static bool sendBytesToPrinter(string szPrinterName,
                                                IntPtr pBytes,
                                                int dwCount)
         {
@@ -206,7 +206,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool sendFileToPrinter (string szPrinterName,
+        public static bool sendFileToPrinter(string szPrinterName,
                                               string szFileName)
         {
             //----------------------------------------------------------------//
@@ -255,7 +255,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            bSuccess = sendBytesToPrinter (szPrinterName,
+            bSuccess = sendBytesToPrinter(szPrinterName,
                                            pUnmanagedBytes,
                                            nLength);
 
@@ -281,7 +281,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool sendStringToPrinter (
+        public static bool sendStringToPrinter(
             string szPrinterName,
             string szString)
         {

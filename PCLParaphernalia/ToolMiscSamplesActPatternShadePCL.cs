@@ -20,23 +20,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int _macroId           = 1;
-        const ushort _unitsPerInch     = PCLWriter.sessionUPI;
+        const int _macroId = 1;
+        const ushort _unitsPerInch = PCLWriter.sessionUPI;
 
         const short _pageOriginX = (_unitsPerInch * 1);
         const short _pageOriginY = (_unitsPerInch * 1);
-        const short _incInch     = (_unitsPerInch * 1);
-        const short _lineInc     = (_unitsPerInch * 5) / 6;
+        const short _incInch = (_unitsPerInch * 1);
+        const short _lineInc = (_unitsPerInch * 5) / 6;
 
-        const short _posXDesc  = _pageOriginX;
+        const short _posXDesc = _pageOriginX;
         const short _posXData1 = _pageOriginX + ((7 * _incInch) / 3);
         const short _posXData2 = _posXData1 + (3 * _incInch / 2);
         const short _posXData3 = _posXData2 + (3 * _incInch / 2);
 
-        const short _posYHddr  = _pageOriginY;
+        const short _posYHddr = _pageOriginY;
         const short _posYDesc1 = _pageOriginY + (2 * _incInch);
         const short _posYDesc2 = _pageOriginY + (3 * _incInch / 2);
-        const short _posYData  = _pageOriginY + (2 * _incInch);
+        const short _posYData = _pageOriginY + (2 * _incInch);
 
         const short _patternBase_300 = 300;
         const short _patternBase_600 = 600;
@@ -387,7 +387,7 @@ namespace PCLParaphernalia
                                 indxPaperSize, indxOrientation);
 
             rectHeight = _lineInc / 2;
-            rectWidth  = _lineInc;
+            rectWidth = _lineInc;
 
             //----------------------------------------------------------------//
             //                                                                //

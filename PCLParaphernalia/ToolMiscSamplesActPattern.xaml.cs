@@ -143,22 +143,22 @@ namespace PCLParaphernalia
         {
             int tmpInt = 0;
 
-            ToolMiscSamplesPersist.loadDataTypePattern (
+            ToolMiscSamplesPersist.loadDataTypePattern(
                 "PCL",
                 ref tmpInt,
                 ref _flagPatternFormAsMacroPCL);
 
-            if (tmpInt == (int) ePatternType.XHatch)
+            if (tmpInt == (int)ePatternType.XHatch)
                 _indxPatternTypePCL = ePatternType.XHatch;
             else
                 _indxPatternTypePCL = ePatternType.Shading;
 
-            ToolMiscSamplesPersist.loadDataTypePattern (
+            ToolMiscSamplesPersist.loadDataTypePattern(
                 "PCLXL",
                 ref tmpInt,
                 ref _flagPatternFormAsMacroPCLXL);
 
-            if (tmpInt == (int) ePatternType.XHatch)
+            if (tmpInt == (int)ePatternType.XHatch)
                 _indxPatternTypePCLXL = ePatternType.XHatch;
             else
                 _indxPatternTypePCLXL = ePatternType.Shading;
@@ -175,14 +175,14 @@ namespace PCLParaphernalia
 
         public void metricsSaveDataPattern()
         {
-            ToolMiscSamplesPersist.saveDataTypePattern (
+            ToolMiscSamplesPersist.saveDataTypePattern(
                 "PCL",
-                (int) _indxPatternTypePCL,
+                (int)_indxPatternTypePCL,
                 _flagPatternFormAsMacroPCL);
 
-            ToolMiscSamplesPersist.saveDataTypePattern (
+            ToolMiscSamplesPersist.saveDataTypePattern(
                 "PCLXL",
-                (int) _indxPatternTypePCLXL,
+                (int)_indxPatternTypePCLXL,
                 _flagPatternFormAsMacroPCLXL);
         }
 
@@ -195,7 +195,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbPatternTypeShading_Click (object sender,
+        private void rbPatternTypeShading_Click(object sender,
                                                  RoutedEventArgs e)
         {
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
@@ -215,7 +215,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbPatternTypeXHatch_Click (object sender,
+        private void rbPatternTypeXHatch_Click(object sender,
                                                 RoutedEventArgs e)
         {
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
@@ -235,7 +235,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setFlagPatternFormAsMacro (
+        private void setFlagPatternFormAsMacro(
             bool setFlag,
             ToolCommonData.ePrintLang crntPDL)
         {

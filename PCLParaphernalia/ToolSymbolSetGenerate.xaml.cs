@@ -27,18 +27,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private const char _defaultSymSetIdAlpha    = 'N';
-        private const ushort _defaultSymSetIdNum      = 0;
-        private const ushort _defaultSymSetNo         = 14;          //    0N //
-        private const ushort _symSetNoTargetMax       = 32762;       // 1023Z //
+        private const char _defaultSymSetIdAlpha = 'N';
+        private const ushort _defaultSymSetIdNum = 0;
+        private const ushort _defaultSymSetNo = 14;          //    0N //
+        private const ushort _symSetNoTargetMax = 32762;       // 1023Z //
 
-        private const int cSizeCharSet_8bit        = 256;
-        private const int cSizeCharSet_16bit       = 65536;
-        private const int cCodePointUnused         = 65535;
-        private const int cCodePointC0Min          = 0x00;
-        private const int cCodePointC0Max          = 0x1f;
-        private const int cCodePointC1Min          = 0x80;
-        private const int cCodePointC1Max          = 0x9f;
+        private const int cSizeCharSet_8bit = 256;
+        private const int cSizeCharSet_16bit = 65536;
+        private const int cCodePointUnused = 65535;
+        private const int cCodePointC0Min = 0x00;
+        private const int cCodePointC0Max = 0x1f;
+        private const int cCodePointC1Min = 0x80;
+        private const int cCodePointC1Max = 0x9f;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -54,30 +54,30 @@ namespace PCLParaphernalia
 
         private ushort _codeMin = 0;
         private ushort _codeMax = 0;
-        private ushort _codeCt  = 0;
+        private ushort _codeCt = 0;
 
         private int _sizeCharSet;
 
         private ushort _offsetMin;
         private ushort _offsetMax;
 
-        private bool _initialised             = false;
-        private bool _initialisedOffsets      = false;
-        private bool _flagDonorSymSetMapPCL   = false;
-        private bool _flagDonorSymSetUserSet  = false;
-        private bool _flagMapHex              = true;
-        private bool _flagCharCollReqInhibit  = false;
+        private bool _initialised = false;
+        private bool _initialisedOffsets = false;
+        private bool _flagDonorSymSetMapPCL = false;
+        private bool _flagDonorSymSetUserSet = false;
+        private bool _flagMapHex = true;
+        private bool _flagCharCollReqInhibit = false;
         private bool _flagCharCollReqSpecific = false;
-        private bool _flagIndexUnicode        = true;
-        private bool _flagIgnoreC0            = true;
-        private bool _flagIgnoreC1            = true;
-        private bool _flagMultiByteMap        = false;
-        private bool _flagMultiByteSet        = false;
+        private bool _flagIndexUnicode = true;
+        private bool _flagIgnoreC0 = true;
+        private bool _flagIgnoreC1 = true;
+        private bool _flagMultiByteMap = false;
+        private bool _flagMultiByteSet = false;
 
-        private bool _flagSymSetNullMapPCL    = false;
-        private bool _flagSymSetNullMapStd    = false;
+        private bool _flagSymSetNullMapPCL = false;
+        private bool _flagSymSetNullMapStd = false;
 
-        private readonly ASCIIEncoding _ascii = new ASCIIEncoding ();
+        private readonly ASCIIEncoding _ascii = new ASCIIEncoding();
 
         private int[] _subsetSymSets;
 
@@ -106,9 +106,9 @@ namespace PCLParaphernalia
         private string _targetSymSetFolder;
 
         private ObservableCollection<PCLCharCollItem> _charCollReqListMSL =
-                    new ObservableCollection<PCLCharCollItem> ();
+                    new ObservableCollection<PCLCharCollItem>();
         private ObservableCollection<PCLCharCollItem> _charCollReqListUnicode =
-                    new ObservableCollection<PCLCharCollItem> ();
+                    new ObservableCollection<PCLCharCollItem>();
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -116,7 +116,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ToolSymbolSetGenerate (ref ToolCommonData.ePrintLang crntPDL)
+        public ToolSymbolSetGenerate(ref ToolCommonData.ePrintLang crntPDL)
         {
             InitializeComponent();
 
@@ -134,14 +134,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void btnCodePtClear_Click (object sender, EventArgs e)
+        private void btnCodePtClear_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < cSizeCharSet_8bit; i++)
             {
-                _symSetMapTarget [_offsetMin + i] = cCodePointUnused;
+                _symSetMapTarget[_offsetMin + i] = cCodePointUnused;
             }
 
-            mapDisplay (_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
+            mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
                         _offsetMin);
         }
 
@@ -154,14 +154,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void btnCodePtClearAll_Click (object sender, EventArgs e)
+        private void btnCodePtClearAll_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < cSizeCharSet_16bit; i++)
             {
-                _symSetMapTarget [i] = cCodePointUnused;
+                _symSetMapTarget[i] = cCodePointUnused;
             }
 
-            mapDisplay (_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
+            mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
                         _offsetMin);
         }
 
@@ -174,7 +174,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void btnDefineSymSet_Click (object sender, EventArgs e)
+        private void btnDefineSymSet_Click(object sender, EventArgs e)
         {
             const ushort offsetFactor = 100 * 32;
 
@@ -184,21 +184,21 @@ namespace PCLParaphernalia
             int targetOffset = (_symSetNoTargetMax - _donorSymSetNo) /
                                  offsetFactor * offsetFactor;
 
-            _targetSymSetNo = (ushort) (_donorSymSetNo + targetOffset);
+            _targetSymSetNo = (ushort)(_donorSymSetNo + targetOffset);
 
-            PCLSymbolSets.TranslateKind1ToId (_targetSymSetNo,
+            PCLSymbolSets.TranslateKind1ToId(_targetSymSetNo,
                                               ref idNum,
                                               ref idAlpha);
 
-            txtTargetSymSetNo.Text = _donorSymSetNo.ToString ();
+            txtTargetSymSetNo.Text = _donorSymSetNo.ToString();
 
             txtTargetSymSetIdNum.Text = idNum;
             txtTargetSymSetIdAlpha.Text = idAlpha;
-            txtTargetSymSetNo.Text = _targetSymSetNo.ToString ();
+            txtTargetSymSetNo.Text = _targetSymSetNo.ToString();
 
             //----------------------------------------------------------------//
 
-            setTargetSymSetFilename ();
+            setTargetSymSetFilename();
 
             if (_flagDonorSymSetUserSet)
             {
@@ -206,29 +206,29 @@ namespace PCLParaphernalia
             }
             else
             {
-                int sizeDonorSet = PCLSymbolSets.GetMapArrayMax (
-                    _subsetSymSets [_indxDonorSymSetSubset]) + 1;
+                int sizeDonorSet = PCLSymbolSets.GetMapArrayMax(
+                    _subsetSymSets[_indxDonorSymSetSubset]) + 1;
 
-                _symSetMapDonor = PCLSymbolSets.GetMapArray (
-                                _subsetSymSets [_indxDonorSymSetSubset],
+                _symSetMapDonor = PCLSymbolSets.GetMapArray(
+                                _subsetSymSets[_indxDonorSymSetSubset],
                                 _flagDonorSymSetMapPCL);
 
                 _flagMultiByteSet = sizeDonorSet > cSizeCharSet_8bit;
 
-                setMultiByteData (_flagMultiByteSet);
+                setMultiByteData(_flagMultiByteSet);
 
                 for (int i = 0; i < sizeDonorSet; i++)
                 {
-                    _symSetMapTarget [i] = _symSetMapDonor [i];
+                    _symSetMapTarget[i] = _symSetMapDonor[i];
                 }
 
                 for (int i = sizeDonorSet; i < _sizeCharSet; i++)
                 {
-                    _symSetMapTarget [i] = cCodePointUnused;
+                    _symSetMapTarget[i] = cCodePointUnused;
                 }
             }
 
-            mapDisplay (_flagMapHex, _flagIgnoreC0, _flagIgnoreC1, _offsetMin);
+            mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1, _offsetMin);
 
             btnDefineSymSet.IsEnabled = false;
             btnGenerateSymSet.IsEnabled = true;
@@ -245,24 +245,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void btnDonorSymSetFileBrowse_Click (object sender,
+        private void btnDonorSymSetFileBrowse_Click(object sender,
                                                      RoutedEventArgs e)
         {
             bool selected;
 
             string filename = _donorSymSetFile;
 
-            selected = selectDonorSymSetFile (ref filename);
+            selected = selectDonorSymSetFile(ref filename);
 
             if (selected)
             {
                 _donorSymSetFile = filename;
                 txtDonorSymSetFile.Text = _donorSymSetFile;
 
-                ToolCommonFunctions.getFolderName (_donorSymSetFile,
+                ToolCommonFunctions.getFolderName(_donorSymSetFile,
                                                    ref _donorSymSetFolder);
 
-                donorSymSetChange ();
+                donorSymSetChange();
             }
         }
 
@@ -275,15 +275,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void btnGenerateSymSet_Click (object sender, EventArgs e)
+        private void btnGenerateSymSet_Click(object sender, EventArgs e)
         {
-            ToolSymbolSetGenPCL PCLHandler = new ToolSymbolSetGenPCL ();
+            ToolSymbolSetGenPCL PCLHandler = new ToolSymbolSetGenPCL();
 
-            mapMetrics (_flagIgnoreC0, _flagIgnoreC1, _sizeCharSet,
+            mapMetrics(_flagIgnoreC0, _flagIgnoreC1, _sizeCharSet,
                         ref _codeMin, ref _codeMax, ref _codeCt,
                         ref _targetSymSetType);
 
-            PCLHandler.generateSymSet (ref _targetSymSetFile,
+            PCLHandler.generateSymSet(ref _targetSymSetFile,
                                         _flagIgnoreC0,
                                         _flagIgnoreC1,
                                         _targetSymSetNo,
@@ -319,13 +319,13 @@ namespace PCLParaphernalia
             ReportCore.eRptFileFmt rptFileFmt = ReportCore.eRptFileFmt.NA;
             ReportCore.eRptChkMarks rptChkMarks = ReportCore.eRptChkMarks.NA;
 
-            TargetCore.metricsReturnFileRpt (
+            TargetCore.metricsReturnFileRpt(
                 ToolCommonData.eToolIds.SymbolSetGenerate,
                 ref rptFileFmt,
                 ref rptChkMarks,    // not used by this tool //
                 ref flagOptRptWrap);
 
-            ToolSymbolSetGenReport.Generate (rptFileFmt,
+            ToolSymbolSetGenReport.Generate(rptFileFmt,
                                              _targetSymSetFile,
                                              _targetSymSetNo,
                                              _symSetMapTarget,
@@ -349,21 +349,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void btnTargetSymSetFileBrowse_Click (object sender,
+        private void btnTargetSymSetFileBrowse_Click(object sender,
                                                       RoutedEventArgs e)
         {
             bool selected;
 
             string filename = _targetSymSetFile;
 
-            selected = selectTargetSymSetFile (ref filename);
+            selected = selectTargetSymSetFile(ref filename);
 
             if (selected)
             {
                 _targetSymSetFile = filename;
                 txtTargetSymSetFile.Text = _targetSymSetFile;
 
-                ToolCommonFunctions.getFolderName (_targetSymSetFile,
+                ToolCommonFunctions.getFolderName(_targetSymSetFile,
                                                    ref _targetSymSetFolder);
             }
         }
@@ -381,7 +381,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        void cbCharColls_SelectionChanged (object sender,
+        void cbCharColls_SelectionChanged(object sender,
                                            SelectionChangedEventArgs e)
         {
             cbCharColls.SelectedItem = null;
@@ -397,13 +397,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        void cbCharCollsItem_PropertyChanged (object sender,
+        void cbCharCollsItem_PropertyChanged(object sender,
                                               PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "IsChecked")
             {
-                if (! _flagCharCollReqInhibit)
-                    setTargetCharCollReqArray (_flagIndexUnicode);
+                if (!_flagCharCollReqInhibit)
+                    setTargetCharCollReqArray(_flagIndexUnicode);
             }
         }
 
@@ -416,13 +416,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbDonorSymSet_SelectionChanged (
+        private void cbDonorSymSet_SelectionChanged(
             object sender,
             SelectionChangedEventArgs e)
         {
             if (_initialised && cbDonorSymSet.HasItems)
             {
-                setDonorSymSetAttributes ();
+                setDonorSymSetAttributes();
 
                 btnDefineSymSet.IsEnabled = true;
                 btnGenerateSymSet.IsEnabled = false;
@@ -439,7 +439,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbOffsetRange_SelectionChanged (
+        private void cbOffsetRange_SelectionChanged(
             object sender,
             SelectionChangedEventArgs e)
         {
@@ -447,9 +447,9 @@ namespace PCLParaphernalia
             {
                 _indxOffsets = cbOffsetRange.SelectedIndex;
 
-                setOffsetData ();
+                setOffsetData();
 
-                mapDisplay (_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
+                mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
                             _offsetMin);
             }
         }
@@ -463,17 +463,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool checkDonorSymSetFile ()
+        private bool checkDonorSymSetFile()
         {
             bool flagOK = true;
 
             bool selected = true;
 
-            if (!File.Exists (_donorSymSetFile))
+            if (!File.Exists(_donorSymSetFile))
             {
                 string filename = _donorSymSetFile;
 
-                MessageBox.Show (
+                MessageBox.Show(
                     "File " + _donorSymSetFile + " does not exist",
                     "Symbol Set definition file",
                      MessageBoxButton.OK,
@@ -485,20 +485,20 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                selected = selectDonorSymSetFile (ref filename);
+                selected = selectDonorSymSetFile(ref filename);
 
                 if (selected)
                 {
                     _donorSymSetFile = filename;
                     txtDonorSymSetFile.Text = _donorSymSetFile;
 
-                    ToolCommonFunctions.getFolderName (_donorSymSetFile,
+                    ToolCommonFunctions.getFolderName(_donorSymSetFile,
                                                        ref _donorSymSetFolder);
                 }
                 else
                 {
                     rbDonorSymSetPreset.IsChecked = true;
-                    rbDonorSymSetPreset_Click (this, null);
+                    rbDonorSymSetPreset_Click(this, null);
                 }
             }
 
@@ -512,7 +512,7 @@ namespace PCLParaphernalia
                 PCLSymSetTypes.Index symSetType =
                     PCLSymSetTypes.Index.Unknown;
 
-                flagOK = PCLDownloadSymSet.checkSymSetFile (
+                flagOK = PCLDownloadSymSet.checkSymSetFile(
                     _donorSymSetFile,
                     ref _donorSymSetNoUserSet,
                     ref firstCode,
@@ -525,18 +525,18 @@ namespace PCLParaphernalia
 
                     _flagMultiByteSet = sizeDonorSet > cSizeCharSet_8bit;
 
-                    setMultiByteData (_flagMultiByteSet);
+                    setMultiByteData(_flagMultiByteSet);
 
-                    _symSetMapUserSet = PCLSymbolSets.GetMapArrayUserSet ();
+                    _symSetMapUserSet = PCLSymbolSets.GetMapArrayUserSet();
 
                     for (int i = 0; i < sizeDonorSet; i++)
                     {
-                        _symSetMapTarget [i] = _symSetMapUserSet [i];
+                        _symSetMapTarget[i] = _symSetMapUserSet[i];
                     }
 
                     for (int i = sizeDonorSet; i < _sizeCharSet; i++)
                     {
-                        _symSetMapTarget [i] = cCodePointUnused;
+                        _symSetMapTarget[i] = cCodePointUnused;
                     }
 
                     txtDonorSymSetFile.Text = _donorSymSetFile;
@@ -545,9 +545,9 @@ namespace PCLParaphernalia
                 {
                     _donorSymSetNoUserSet = _defaultSymSetNo;
 
-                    PCLSymbolSets.SetDataUserSetDefault (_defaultSymSetNo);
+                    PCLSymbolSets.SetDataUserSetDefault(_defaultSymSetNo);
 
-                    _symSetMapTarget = PCLSymbolSets.GetMapArrayUserSet ();
+                    _symSetMapTarget = PCLSymbolSets.GetMapArrayUserSet();
 
                     txtDonorSymSetFile.Text = "***** Invalid symbol set file *****";
                 }
@@ -565,13 +565,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkIgnoreC0_Checked (object sender, RoutedEventArgs e)
+        private void chkIgnoreC0_Checked(object sender, RoutedEventArgs e)
         {
             _flagIgnoreC0 = true;
 
             if (_initialised)
             {
-                mapDisplay (_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
+                mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
                             _offsetMin);
             }
         }
@@ -585,13 +585,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkIgnoreC0_Unchecked (object sender, RoutedEventArgs e)
+        private void chkIgnoreC0_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagIgnoreC0 = false;
 
             if (_initialised)
             {
-                mapDisplay (_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
+                mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
                             _offsetMin);
             }
         }
@@ -605,13 +605,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkIgnoreC1_Checked (object sender, RoutedEventArgs e)
+        private void chkIgnoreC1_Checked(object sender, RoutedEventArgs e)
         {
             _flagIgnoreC1 = true;
 
             if (_initialised)
             {
-                mapDisplay (_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
+                mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
                             _offsetMin);
             }
         }
@@ -625,13 +625,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkIgnoreC1_Unchecked (object sender, RoutedEventArgs e)
+        private void chkIgnoreC1_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagIgnoreC1 = false;
 
             if (_initialised)
             {
-                mapDisplay (_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
+                mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
                             _offsetMin);
             }
         }
@@ -645,14 +645,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void donorSymSetChange ()
+        private void donorSymSetChange()
         {
             bool flagOK = true;
 
             if (_flagDonorSymSetUserSet)
-                flagOK = checkDonorSymSetFile ();
+                flagOK = checkDonorSymSetFile();
 
-            setDonorSymSetAttributes ();
+            setDonorSymSetAttributes();
 
             grpTargetSymSetDetails.Visibility = Visibility.Hidden;
 
@@ -702,7 +702,7 @@ namespace PCLParaphernalia
 
             _sizeCharSet = cSizeCharSet_8bit;
 
-            initialiseSymSetList ();
+            initialiseSymSetList();
 
             btnDefineSymSet.IsEnabled = true;
             btnGenerateSymSet.IsEnabled = false;
@@ -716,9 +716,9 @@ namespace PCLParaphernalia
 
             metricsLoad();
 
-     //     mapDisplay (_flagMapHex, _flagIgnoreC0, _flagIgnoreC1);
+            //     mapDisplay (_flagMapHex, _flagIgnoreC0, _flagIgnoreC1);
 
-            cbDonorSymSet.SelectedIndex  = _indxDonorSymSetSubset;
+            cbDonorSymSet.SelectedIndex = _indxDonorSymSetSubset;
 
             txtDonorSymSetFile.Text = _donorSymSetFile;
 
@@ -734,7 +734,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            setOffsetRanges ();
+            setOffsetRanges();
 
             _symSetMap8bit = new ushort[cSizeCharSet_8bit];
             _symSetMapTarget = _symSetMap8bit;
@@ -744,13 +744,13 @@ namespace PCLParaphernalia
 
             btnCodePtClearAll.Visibility = Visibility.Hidden;
 
-            setMultiByteData (_flagMultiByteSet);
+            setMultiByteData(_flagMultiByteSet);
 
-            donorSymSetChange ();
+            donorSymSetChange();
 
             //----------------------------------------------------------------//
 
-            initialiseCharCollReqLists ();
+            initialiseCharCollReqLists();
 
             //----------------------------------------------------------------//
 
@@ -774,7 +774,7 @@ namespace PCLParaphernalia
                 cbCharColls.Visibility = Visibility.Visible;
                 tblkCharCollsText.Visibility = Visibility.Visible;
 
-                populateCharCollReq (_flagIndexUnicode);
+                populateCharCollReq(_flagIndexUnicode);
 
                 if (_flagIndexUnicode)
                     _targetCharCollReq = _targetCharCollReqUnicode;
@@ -793,7 +793,7 @@ namespace PCLParaphernalia
                     _targetCharCollReq = _targetCharCollReqAllMSL;
             }
 
-            setTargetCharCollReqValue (_targetCharCollReq);
+            setTargetCharCollReqValue(_targetCharCollReq);
 
             _initialised = true;
         }
@@ -807,7 +807,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseCharCollReqLists ()
+        private void initialiseCharCollReqLists()
         {
             int bitNo;
 
@@ -823,10 +823,10 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLCharCollItems items = new PCLCharCollItems ();
+            PCLCharCollItems items = new PCLCharCollItems();
 
-            _charCollReqListMSL     = items.loadReqListMSL ();
-            _charCollReqListUnicode = items.loadReqListUnicode ();
+            _charCollReqListMSL = items.loadReqListMSL();
+            _charCollReqListUnicode = items.loadReqListUnicode();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -886,14 +886,14 @@ bitVal;
             foreach (PCLCharCollItem item in _charCollReqListMSL)
             {
                 item.PropertyChanged +=
-                    new PropertyChangedEventHandler (
+                    new PropertyChangedEventHandler(
                         cbCharCollsItem_PropertyChanged);
             }
 
             foreach (PCLCharCollItem item in _charCollReqListUnicode)
             {
                 item.PropertyChanged +=
-                    new PropertyChangedEventHandler (
+                    new PropertyChangedEventHandler(
                         cbCharCollsItem_PropertyChanged);
             }
         }
@@ -913,16 +913,16 @@ bitVal;
 
             cbDonorSymSet.Items.Clear();
 
-            _ctMappedSymSets = PCLSymbolSets.GetCountMapped ();
+            _ctMappedSymSets = PCLSymbolSets.GetCountMapped();
 
             _subsetSymSets = new int[_ctMappedSymSets];
 
-            PCLSymbolSets.GetIndicesMapped (0, ref _subsetSymSets);
+            PCLSymbolSets.GetIndicesMapped(0, ref _subsetSymSets);
 
             for (int i = 0; i < _ctMappedSymSets; i++)
             {
                 index = _subsetSymSets[i];
-                cbDonorSymSet.Items.Add (PCLSymbolSets.GetName(index));
+                cbDonorSymSet.Items.Add(PCLSymbolSets.GetName(index));
             }
         }
 
@@ -935,7 +935,7 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void mapDisplay (bool hexDisplay,
+        private void mapDisplay(bool hexDisplay,
                                  bool ignoreC0,
                                  bool ignoreC1,
                                  ushort offset)
@@ -944,7 +944,7 @@ bitVal;
 
             ushort codeMin = 0,
                    codeMax = 0,
-                   codeCt  = 0;
+                   codeCt = 0;
 
             string format;
 
@@ -1031,39 +1031,39 @@ bitVal;
 
             if ((offset == 0) && ignoreC0)
             {
-                txtMap0x00.Text = noGlyph.ToString (format);
-                txtMap0x01.Text = noGlyph.ToString (format);
-                txtMap0x02.Text = noGlyph.ToString (format);
-                txtMap0x03.Text = noGlyph.ToString (format);
-                txtMap0x04.Text = noGlyph.ToString (format);
-                txtMap0x05.Text = noGlyph.ToString (format);
-                txtMap0x06.Text = noGlyph.ToString (format);
-                txtMap0x07.Text = noGlyph.ToString (format);
-                txtMap0x08.Text = noGlyph.ToString (format);
-                txtMap0x09.Text = noGlyph.ToString (format);
-                txtMap0x0a.Text = noGlyph.ToString (format);
-                txtMap0x0b.Text = noGlyph.ToString (format);
-                txtMap0x0c.Text = noGlyph.ToString (format);
-                txtMap0x0d.Text = noGlyph.ToString (format);
-                txtMap0x0e.Text = noGlyph.ToString (format);
-                txtMap0x0f.Text = noGlyph.ToString (format);
+                txtMap0x00.Text = noGlyph.ToString(format);
+                txtMap0x01.Text = noGlyph.ToString(format);
+                txtMap0x02.Text = noGlyph.ToString(format);
+                txtMap0x03.Text = noGlyph.ToString(format);
+                txtMap0x04.Text = noGlyph.ToString(format);
+                txtMap0x05.Text = noGlyph.ToString(format);
+                txtMap0x06.Text = noGlyph.ToString(format);
+                txtMap0x07.Text = noGlyph.ToString(format);
+                txtMap0x08.Text = noGlyph.ToString(format);
+                txtMap0x09.Text = noGlyph.ToString(format);
+                txtMap0x0a.Text = noGlyph.ToString(format);
+                txtMap0x0b.Text = noGlyph.ToString(format);
+                txtMap0x0c.Text = noGlyph.ToString(format);
+                txtMap0x0d.Text = noGlyph.ToString(format);
+                txtMap0x0e.Text = noGlyph.ToString(format);
+                txtMap0x0f.Text = noGlyph.ToString(format);
 
-                txtMap0x10.Text = noGlyph.ToString (format);
-                txtMap0x11.Text = noGlyph.ToString (format);
-                txtMap0x12.Text = noGlyph.ToString (format);
-                txtMap0x13.Text = noGlyph.ToString (format);
-                txtMap0x14.Text = noGlyph.ToString (format);
-                txtMap0x15.Text = noGlyph.ToString (format);
-                txtMap0x16.Text = noGlyph.ToString (format);
-                txtMap0x17.Text = noGlyph.ToString (format);
-                txtMap0x18.Text = noGlyph.ToString (format);
-                txtMap0x19.Text = noGlyph.ToString (format);
-                txtMap0x1a.Text = noGlyph.ToString (format);
-                txtMap0x1b.Text = noGlyph.ToString (format);
-                txtMap0x1c.Text = noGlyph.ToString (format);
-                txtMap0x1d.Text = noGlyph.ToString (format);
-                txtMap0x1e.Text = noGlyph.ToString (format);
-                txtMap0x1f.Text = noGlyph.ToString (format);
+                txtMap0x10.Text = noGlyph.ToString(format);
+                txtMap0x11.Text = noGlyph.ToString(format);
+                txtMap0x12.Text = noGlyph.ToString(format);
+                txtMap0x13.Text = noGlyph.ToString(format);
+                txtMap0x14.Text = noGlyph.ToString(format);
+                txtMap0x15.Text = noGlyph.ToString(format);
+                txtMap0x16.Text = noGlyph.ToString(format);
+                txtMap0x17.Text = noGlyph.ToString(format);
+                txtMap0x18.Text = noGlyph.ToString(format);
+                txtMap0x19.Text = noGlyph.ToString(format);
+                txtMap0x1a.Text = noGlyph.ToString(format);
+                txtMap0x1b.Text = noGlyph.ToString(format);
+                txtMap0x1c.Text = noGlyph.ToString(format);
+                txtMap0x1d.Text = noGlyph.ToString(format);
+                txtMap0x1e.Text = noGlyph.ToString(format);
+                txtMap0x1f.Text = noGlyph.ToString(format);
 
                 txtMap0x00.IsEnabled = false;
                 txtMap0x01.IsEnabled = false;
@@ -1101,39 +1101,39 @@ bitVal;
             }
             else
             {
-                txtMap0x00.Text = _symSetMapTarget [offset + 0x00].ToString (format);
-                txtMap0x01.Text = _symSetMapTarget [offset + 0x01].ToString (format);
-                txtMap0x02.Text = _symSetMapTarget [offset + 0x02].ToString (format);
-                txtMap0x03.Text = _symSetMapTarget [offset + 0x03].ToString (format);
-                txtMap0x04.Text = _symSetMapTarget [offset + 0x04].ToString (format);
-                txtMap0x05.Text = _symSetMapTarget [offset + 0x05].ToString (format);
-                txtMap0x06.Text = _symSetMapTarget [offset + 0x06].ToString (format);
-                txtMap0x07.Text = _symSetMapTarget [offset + 0x07].ToString (format);
-                txtMap0x08.Text = _symSetMapTarget [offset + 0x08].ToString (format);
-                txtMap0x09.Text = _symSetMapTarget [offset + 0x09].ToString (format);
-                txtMap0x0a.Text = _symSetMapTarget [offset + 0x0a].ToString (format);
-                txtMap0x0b.Text = _symSetMapTarget [offset + 0x0b].ToString (format);
-                txtMap0x0c.Text = _symSetMapTarget [offset + 0x0c].ToString (format);
-                txtMap0x0d.Text = _symSetMapTarget [offset + 0x0d].ToString (format);
-                txtMap0x0e.Text = _symSetMapTarget [offset + 0x0e].ToString (format);
-                txtMap0x0f.Text = _symSetMapTarget [offset + 0x0f].ToString (format);
+                txtMap0x00.Text = _symSetMapTarget[offset + 0x00].ToString(format);
+                txtMap0x01.Text = _symSetMapTarget[offset + 0x01].ToString(format);
+                txtMap0x02.Text = _symSetMapTarget[offset + 0x02].ToString(format);
+                txtMap0x03.Text = _symSetMapTarget[offset + 0x03].ToString(format);
+                txtMap0x04.Text = _symSetMapTarget[offset + 0x04].ToString(format);
+                txtMap0x05.Text = _symSetMapTarget[offset + 0x05].ToString(format);
+                txtMap0x06.Text = _symSetMapTarget[offset + 0x06].ToString(format);
+                txtMap0x07.Text = _symSetMapTarget[offset + 0x07].ToString(format);
+                txtMap0x08.Text = _symSetMapTarget[offset + 0x08].ToString(format);
+                txtMap0x09.Text = _symSetMapTarget[offset + 0x09].ToString(format);
+                txtMap0x0a.Text = _symSetMapTarget[offset + 0x0a].ToString(format);
+                txtMap0x0b.Text = _symSetMapTarget[offset + 0x0b].ToString(format);
+                txtMap0x0c.Text = _symSetMapTarget[offset + 0x0c].ToString(format);
+                txtMap0x0d.Text = _symSetMapTarget[offset + 0x0d].ToString(format);
+                txtMap0x0e.Text = _symSetMapTarget[offset + 0x0e].ToString(format);
+                txtMap0x0f.Text = _symSetMapTarget[offset + 0x0f].ToString(format);
 
-                txtMap0x10.Text = _symSetMapTarget [offset + 0x10].ToString (format);
-                txtMap0x11.Text = _symSetMapTarget [offset + 0x11].ToString (format);
-                txtMap0x12.Text = _symSetMapTarget [offset + 0x12].ToString (format);
-                txtMap0x13.Text = _symSetMapTarget [offset + 0x13].ToString (format);
-                txtMap0x14.Text = _symSetMapTarget [offset + 0x14].ToString (format);
-                txtMap0x15.Text = _symSetMapTarget [offset + 0x15].ToString (format);
-                txtMap0x16.Text = _symSetMapTarget [offset + 0x16].ToString (format);
-                txtMap0x17.Text = _symSetMapTarget [offset + 0x17].ToString (format);
-                txtMap0x18.Text = _symSetMapTarget [offset + 0x18].ToString (format);
-                txtMap0x19.Text = _symSetMapTarget [offset + 0x19].ToString (format);
-                txtMap0x1a.Text = _symSetMapTarget [offset + 0x1a].ToString (format);
-                txtMap0x1b.Text = _symSetMapTarget [offset + 0x1b].ToString (format);
-                txtMap0x1c.Text = _symSetMapTarget [offset + 0x1c].ToString (format);
-                txtMap0x1d.Text = _symSetMapTarget [offset + 0x1d].ToString (format);
-                txtMap0x1e.Text = _symSetMapTarget [offset + 0x1e].ToString (format);
-                txtMap0x1f.Text = _symSetMapTarget [offset + 0x1f].ToString (format);
+                txtMap0x10.Text = _symSetMapTarget[offset + 0x10].ToString(format);
+                txtMap0x11.Text = _symSetMapTarget[offset + 0x11].ToString(format);
+                txtMap0x12.Text = _symSetMapTarget[offset + 0x12].ToString(format);
+                txtMap0x13.Text = _symSetMapTarget[offset + 0x13].ToString(format);
+                txtMap0x14.Text = _symSetMapTarget[offset + 0x14].ToString(format);
+                txtMap0x15.Text = _symSetMapTarget[offset + 0x15].ToString(format);
+                txtMap0x16.Text = _symSetMapTarget[offset + 0x16].ToString(format);
+                txtMap0x17.Text = _symSetMapTarget[offset + 0x17].ToString(format);
+                txtMap0x18.Text = _symSetMapTarget[offset + 0x18].ToString(format);
+                txtMap0x19.Text = _symSetMapTarget[offset + 0x19].ToString(format);
+                txtMap0x1a.Text = _symSetMapTarget[offset + 0x1a].ToString(format);
+                txtMap0x1b.Text = _symSetMapTarget[offset + 0x1b].ToString(format);
+                txtMap0x1c.Text = _symSetMapTarget[offset + 0x1c].ToString(format);
+                txtMap0x1d.Text = _symSetMapTarget[offset + 0x1d].ToString(format);
+                txtMap0x1e.Text = _symSetMapTarget[offset + 0x1e].ToString(format);
+                txtMap0x1f.Text = _symSetMapTarget[offset + 0x1f].ToString(format);
 
                 txtMap0x00.IsEnabled = true;
                 txtMap0x01.IsEnabled = true;
@@ -1172,145 +1172,145 @@ bitVal;
 
             //----------------------------------------------------------------//
 
-            txtMap0x20.Text = _symSetMapTarget [offset + 0x20].ToString (format);
-            txtMap0x21.Text = _symSetMapTarget [offset + 0x21].ToString (format);
-            txtMap0x22.Text = _symSetMapTarget [offset + 0x22].ToString (format);
-            txtMap0x23.Text = _symSetMapTarget [offset + 0x23].ToString (format);
-            txtMap0x24.Text = _symSetMapTarget [offset + 0x24].ToString (format);
-            txtMap0x25.Text = _symSetMapTarget [offset + 0x25].ToString (format);
-            txtMap0x26.Text = _symSetMapTarget [offset + 0x26].ToString (format);
-            txtMap0x27.Text = _symSetMapTarget [offset + 0x27].ToString (format);
-            txtMap0x28.Text = _symSetMapTarget [offset + 0x28].ToString (format);
-            txtMap0x29.Text = _symSetMapTarget [offset + 0x29].ToString (format);
-            txtMap0x2a.Text = _symSetMapTarget [offset + 0x2a].ToString (format);
-            txtMap0x2b.Text = _symSetMapTarget [offset + 0x2b].ToString (format);
-            txtMap0x2c.Text = _symSetMapTarget [offset + 0x2c].ToString (format);
-            txtMap0x2d.Text = _symSetMapTarget [offset + 0x2d].ToString (format);
-            txtMap0x2e.Text = _symSetMapTarget [offset + 0x2e].ToString (format);
-            txtMap0x2f.Text = _symSetMapTarget [offset + 0x2f].ToString (format);
+            txtMap0x20.Text = _symSetMapTarget[offset + 0x20].ToString(format);
+            txtMap0x21.Text = _symSetMapTarget[offset + 0x21].ToString(format);
+            txtMap0x22.Text = _symSetMapTarget[offset + 0x22].ToString(format);
+            txtMap0x23.Text = _symSetMapTarget[offset + 0x23].ToString(format);
+            txtMap0x24.Text = _symSetMapTarget[offset + 0x24].ToString(format);
+            txtMap0x25.Text = _symSetMapTarget[offset + 0x25].ToString(format);
+            txtMap0x26.Text = _symSetMapTarget[offset + 0x26].ToString(format);
+            txtMap0x27.Text = _symSetMapTarget[offset + 0x27].ToString(format);
+            txtMap0x28.Text = _symSetMapTarget[offset + 0x28].ToString(format);
+            txtMap0x29.Text = _symSetMapTarget[offset + 0x29].ToString(format);
+            txtMap0x2a.Text = _symSetMapTarget[offset + 0x2a].ToString(format);
+            txtMap0x2b.Text = _symSetMapTarget[offset + 0x2b].ToString(format);
+            txtMap0x2c.Text = _symSetMapTarget[offset + 0x2c].ToString(format);
+            txtMap0x2d.Text = _symSetMapTarget[offset + 0x2d].ToString(format);
+            txtMap0x2e.Text = _symSetMapTarget[offset + 0x2e].ToString(format);
+            txtMap0x2f.Text = _symSetMapTarget[offset + 0x2f].ToString(format);
 
-            txtMap0x30.Text = _symSetMapTarget [offset + 0x30].ToString (format);
-            txtMap0x31.Text = _symSetMapTarget [offset + 0x31].ToString (format);
-            txtMap0x32.Text = _symSetMapTarget [offset + 0x32].ToString (format);
-            txtMap0x33.Text = _symSetMapTarget [offset + 0x33].ToString (format);
-            txtMap0x34.Text = _symSetMapTarget [offset + 0x34].ToString (format);
-            txtMap0x35.Text = _symSetMapTarget [offset + 0x35].ToString (format);
-            txtMap0x36.Text = _symSetMapTarget [offset + 0x36].ToString (format);
-            txtMap0x37.Text = _symSetMapTarget [offset + 0x37].ToString (format);
-            txtMap0x38.Text = _symSetMapTarget [offset + 0x38].ToString (format);
-            txtMap0x39.Text = _symSetMapTarget [offset + 0x39].ToString (format);
-            txtMap0x3a.Text = _symSetMapTarget [offset + 0x3a].ToString (format);
-            txtMap0x3b.Text = _symSetMapTarget [offset + 0x3b].ToString (format);
-            txtMap0x3c.Text = _symSetMapTarget [offset + 0x3c].ToString (format);
-            txtMap0x3d.Text = _symSetMapTarget [offset + 0x3d].ToString (format);
-            txtMap0x3e.Text = _symSetMapTarget [offset + 0x3e].ToString (format);
-            txtMap0x3f.Text = _symSetMapTarget [offset + 0x3f].ToString (format);
+            txtMap0x30.Text = _symSetMapTarget[offset + 0x30].ToString(format);
+            txtMap0x31.Text = _symSetMapTarget[offset + 0x31].ToString(format);
+            txtMap0x32.Text = _symSetMapTarget[offset + 0x32].ToString(format);
+            txtMap0x33.Text = _symSetMapTarget[offset + 0x33].ToString(format);
+            txtMap0x34.Text = _symSetMapTarget[offset + 0x34].ToString(format);
+            txtMap0x35.Text = _symSetMapTarget[offset + 0x35].ToString(format);
+            txtMap0x36.Text = _symSetMapTarget[offset + 0x36].ToString(format);
+            txtMap0x37.Text = _symSetMapTarget[offset + 0x37].ToString(format);
+            txtMap0x38.Text = _symSetMapTarget[offset + 0x38].ToString(format);
+            txtMap0x39.Text = _symSetMapTarget[offset + 0x39].ToString(format);
+            txtMap0x3a.Text = _symSetMapTarget[offset + 0x3a].ToString(format);
+            txtMap0x3b.Text = _symSetMapTarget[offset + 0x3b].ToString(format);
+            txtMap0x3c.Text = _symSetMapTarget[offset + 0x3c].ToString(format);
+            txtMap0x3d.Text = _symSetMapTarget[offset + 0x3d].ToString(format);
+            txtMap0x3e.Text = _symSetMapTarget[offset + 0x3e].ToString(format);
+            txtMap0x3f.Text = _symSetMapTarget[offset + 0x3f].ToString(format);
 
-            txtMap0x40.Text = _symSetMapTarget [offset + 0x40].ToString (format);
-            txtMap0x41.Text = _symSetMapTarget [offset + 0x41].ToString (format);
-            txtMap0x42.Text = _symSetMapTarget [offset + 0x42].ToString (format);
-            txtMap0x43.Text = _symSetMapTarget [offset + 0x43].ToString (format);
-            txtMap0x44.Text = _symSetMapTarget [offset + 0x44].ToString (format);
-            txtMap0x45.Text = _symSetMapTarget [offset + 0x45].ToString (format);
-            txtMap0x46.Text = _symSetMapTarget [offset + 0x46].ToString (format);
-            txtMap0x47.Text = _symSetMapTarget [offset + 0x47].ToString (format);
-            txtMap0x48.Text = _symSetMapTarget [offset + 0x48].ToString (format);
-            txtMap0x49.Text = _symSetMapTarget [offset + 0x49].ToString (format);
-            txtMap0x4a.Text = _symSetMapTarget [offset + 0x4a].ToString (format);
-            txtMap0x4b.Text = _symSetMapTarget [offset + 0x4b].ToString (format);
-            txtMap0x4c.Text = _symSetMapTarget [offset + 0x4c].ToString (format);
-            txtMap0x4d.Text = _symSetMapTarget [offset + 0x4d].ToString (format);
-            txtMap0x4e.Text = _symSetMapTarget [offset + 0x4e].ToString (format);
-            txtMap0x4f.Text = _symSetMapTarget [offset + 0x4f].ToString (format);
+            txtMap0x40.Text = _symSetMapTarget[offset + 0x40].ToString(format);
+            txtMap0x41.Text = _symSetMapTarget[offset + 0x41].ToString(format);
+            txtMap0x42.Text = _symSetMapTarget[offset + 0x42].ToString(format);
+            txtMap0x43.Text = _symSetMapTarget[offset + 0x43].ToString(format);
+            txtMap0x44.Text = _symSetMapTarget[offset + 0x44].ToString(format);
+            txtMap0x45.Text = _symSetMapTarget[offset + 0x45].ToString(format);
+            txtMap0x46.Text = _symSetMapTarget[offset + 0x46].ToString(format);
+            txtMap0x47.Text = _symSetMapTarget[offset + 0x47].ToString(format);
+            txtMap0x48.Text = _symSetMapTarget[offset + 0x48].ToString(format);
+            txtMap0x49.Text = _symSetMapTarget[offset + 0x49].ToString(format);
+            txtMap0x4a.Text = _symSetMapTarget[offset + 0x4a].ToString(format);
+            txtMap0x4b.Text = _symSetMapTarget[offset + 0x4b].ToString(format);
+            txtMap0x4c.Text = _symSetMapTarget[offset + 0x4c].ToString(format);
+            txtMap0x4d.Text = _symSetMapTarget[offset + 0x4d].ToString(format);
+            txtMap0x4e.Text = _symSetMapTarget[offset + 0x4e].ToString(format);
+            txtMap0x4f.Text = _symSetMapTarget[offset + 0x4f].ToString(format);
 
-            txtMap0x50.Text = _symSetMapTarget [offset + 0x50].ToString (format);
-            txtMap0x51.Text = _symSetMapTarget [offset + 0x51].ToString (format);
-            txtMap0x52.Text = _symSetMapTarget [offset + 0x52].ToString (format);
-            txtMap0x53.Text = _symSetMapTarget [offset + 0x53].ToString (format);
-            txtMap0x54.Text = _symSetMapTarget [offset + 0x54].ToString (format);
-            txtMap0x55.Text = _symSetMapTarget [offset + 0x55].ToString (format);
-            txtMap0x56.Text = _symSetMapTarget [offset + 0x56].ToString (format);
-            txtMap0x57.Text = _symSetMapTarget [offset + 0x57].ToString (format);
-            txtMap0x58.Text = _symSetMapTarget [offset + 0x58].ToString (format);
-            txtMap0x59.Text = _symSetMapTarget [offset + 0x59].ToString (format);
-            txtMap0x5a.Text = _symSetMapTarget [offset + 0x5a].ToString (format);
-            txtMap0x5b.Text = _symSetMapTarget [offset + 0x5b].ToString (format);
-            txtMap0x5c.Text = _symSetMapTarget [offset + 0x5c].ToString (format);
-            txtMap0x5d.Text = _symSetMapTarget [offset + 0x5d].ToString (format);
-            txtMap0x5e.Text = _symSetMapTarget [offset + 0x5e].ToString (format);
-            txtMap0x5f.Text = _symSetMapTarget [offset + 0x5f].ToString (format);
+            txtMap0x50.Text = _symSetMapTarget[offset + 0x50].ToString(format);
+            txtMap0x51.Text = _symSetMapTarget[offset + 0x51].ToString(format);
+            txtMap0x52.Text = _symSetMapTarget[offset + 0x52].ToString(format);
+            txtMap0x53.Text = _symSetMapTarget[offset + 0x53].ToString(format);
+            txtMap0x54.Text = _symSetMapTarget[offset + 0x54].ToString(format);
+            txtMap0x55.Text = _symSetMapTarget[offset + 0x55].ToString(format);
+            txtMap0x56.Text = _symSetMapTarget[offset + 0x56].ToString(format);
+            txtMap0x57.Text = _symSetMapTarget[offset + 0x57].ToString(format);
+            txtMap0x58.Text = _symSetMapTarget[offset + 0x58].ToString(format);
+            txtMap0x59.Text = _symSetMapTarget[offset + 0x59].ToString(format);
+            txtMap0x5a.Text = _symSetMapTarget[offset + 0x5a].ToString(format);
+            txtMap0x5b.Text = _symSetMapTarget[offset + 0x5b].ToString(format);
+            txtMap0x5c.Text = _symSetMapTarget[offset + 0x5c].ToString(format);
+            txtMap0x5d.Text = _symSetMapTarget[offset + 0x5d].ToString(format);
+            txtMap0x5e.Text = _symSetMapTarget[offset + 0x5e].ToString(format);
+            txtMap0x5f.Text = _symSetMapTarget[offset + 0x5f].ToString(format);
 
-            txtMap0x60.Text = _symSetMapTarget [offset + 0x60].ToString (format);
-            txtMap0x61.Text = _symSetMapTarget [offset + 0x61].ToString (format);
-            txtMap0x62.Text = _symSetMapTarget [offset + 0x62].ToString (format);
-            txtMap0x63.Text = _symSetMapTarget [offset + 0x63].ToString (format);
-            txtMap0x64.Text = _symSetMapTarget [offset + 0x64].ToString (format);
-            txtMap0x65.Text = _symSetMapTarget [offset + 0x65].ToString (format);
-            txtMap0x66.Text = _symSetMapTarget [offset + 0x66].ToString (format);
-            txtMap0x67.Text = _symSetMapTarget [offset + 0x67].ToString (format);
-            txtMap0x68.Text = _symSetMapTarget [offset + 0x68].ToString (format);
-            txtMap0x69.Text = _symSetMapTarget [offset + 0x69].ToString (format);
-            txtMap0x6a.Text = _symSetMapTarget [offset + 0x6a].ToString (format);
-            txtMap0x6b.Text = _symSetMapTarget [offset + 0x6b].ToString (format);
-            txtMap0x6c.Text = _symSetMapTarget [offset + 0x6c].ToString (format);
-            txtMap0x6d.Text = _symSetMapTarget [offset + 0x6d].ToString (format);
-            txtMap0x6e.Text = _symSetMapTarget [offset + 0x6e].ToString (format);
-            txtMap0x6f.Text = _symSetMapTarget [offset + 0x6f].ToString (format);
+            txtMap0x60.Text = _symSetMapTarget[offset + 0x60].ToString(format);
+            txtMap0x61.Text = _symSetMapTarget[offset + 0x61].ToString(format);
+            txtMap0x62.Text = _symSetMapTarget[offset + 0x62].ToString(format);
+            txtMap0x63.Text = _symSetMapTarget[offset + 0x63].ToString(format);
+            txtMap0x64.Text = _symSetMapTarget[offset + 0x64].ToString(format);
+            txtMap0x65.Text = _symSetMapTarget[offset + 0x65].ToString(format);
+            txtMap0x66.Text = _symSetMapTarget[offset + 0x66].ToString(format);
+            txtMap0x67.Text = _symSetMapTarget[offset + 0x67].ToString(format);
+            txtMap0x68.Text = _symSetMapTarget[offset + 0x68].ToString(format);
+            txtMap0x69.Text = _symSetMapTarget[offset + 0x69].ToString(format);
+            txtMap0x6a.Text = _symSetMapTarget[offset + 0x6a].ToString(format);
+            txtMap0x6b.Text = _symSetMapTarget[offset + 0x6b].ToString(format);
+            txtMap0x6c.Text = _symSetMapTarget[offset + 0x6c].ToString(format);
+            txtMap0x6d.Text = _symSetMapTarget[offset + 0x6d].ToString(format);
+            txtMap0x6e.Text = _symSetMapTarget[offset + 0x6e].ToString(format);
+            txtMap0x6f.Text = _symSetMapTarget[offset + 0x6f].ToString(format);
 
-            txtMap0x70.Text = _symSetMapTarget [offset + 0x70].ToString (format);
-            txtMap0x71.Text = _symSetMapTarget [offset + 0x71].ToString (format);
-            txtMap0x72.Text = _symSetMapTarget [offset + 0x72].ToString (format);
-            txtMap0x73.Text = _symSetMapTarget [offset + 0x73].ToString (format);
-            txtMap0x74.Text = _symSetMapTarget [offset + 0x74].ToString (format);
-            txtMap0x75.Text = _symSetMapTarget [offset + 0x75].ToString (format);
-            txtMap0x76.Text = _symSetMapTarget [offset + 0x76].ToString (format);
-            txtMap0x77.Text = _symSetMapTarget [offset + 0x77].ToString (format);
-            txtMap0x78.Text = _symSetMapTarget [offset + 0x78].ToString (format);
-            txtMap0x79.Text = _symSetMapTarget [offset + 0x79].ToString (format);
-            txtMap0x7a.Text = _symSetMapTarget [offset + 0x7a].ToString (format);
-            txtMap0x7b.Text = _symSetMapTarget [offset + 0x7b].ToString (format);
-            txtMap0x7c.Text = _symSetMapTarget [offset + 0x7c].ToString (format);
-            txtMap0x7d.Text = _symSetMapTarget [offset + 0x7d].ToString (format);
-            txtMap0x7e.Text = _symSetMapTarget [offset + 0x7e].ToString (format);
-            txtMap0x7f.Text = _symSetMapTarget [offset + 0x7f].ToString (format);
+            txtMap0x70.Text = _symSetMapTarget[offset + 0x70].ToString(format);
+            txtMap0x71.Text = _symSetMapTarget[offset + 0x71].ToString(format);
+            txtMap0x72.Text = _symSetMapTarget[offset + 0x72].ToString(format);
+            txtMap0x73.Text = _symSetMapTarget[offset + 0x73].ToString(format);
+            txtMap0x74.Text = _symSetMapTarget[offset + 0x74].ToString(format);
+            txtMap0x75.Text = _symSetMapTarget[offset + 0x75].ToString(format);
+            txtMap0x76.Text = _symSetMapTarget[offset + 0x76].ToString(format);
+            txtMap0x77.Text = _symSetMapTarget[offset + 0x77].ToString(format);
+            txtMap0x78.Text = _symSetMapTarget[offset + 0x78].ToString(format);
+            txtMap0x79.Text = _symSetMapTarget[offset + 0x79].ToString(format);
+            txtMap0x7a.Text = _symSetMapTarget[offset + 0x7a].ToString(format);
+            txtMap0x7b.Text = _symSetMapTarget[offset + 0x7b].ToString(format);
+            txtMap0x7c.Text = _symSetMapTarget[offset + 0x7c].ToString(format);
+            txtMap0x7d.Text = _symSetMapTarget[offset + 0x7d].ToString(format);
+            txtMap0x7e.Text = _symSetMapTarget[offset + 0x7e].ToString(format);
+            txtMap0x7f.Text = _symSetMapTarget[offset + 0x7f].ToString(format);
 
             //----------------------------------------------------------------//
 
             if ((offset == 0) && ignoreC1)
             {
-                txtMap0x80.Text = noGlyph.ToString (format);
-                txtMap0x81.Text = noGlyph.ToString (format);
-                txtMap0x82.Text = noGlyph.ToString (format);
-                txtMap0x83.Text = noGlyph.ToString (format);
-                txtMap0x84.Text = noGlyph.ToString (format);
-                txtMap0x85.Text = noGlyph.ToString (format);
-                txtMap0x86.Text = noGlyph.ToString (format);
-                txtMap0x87.Text = noGlyph.ToString (format);
-                txtMap0x88.Text = noGlyph.ToString (format);
-                txtMap0x89.Text = noGlyph.ToString (format);
-                txtMap0x8a.Text = noGlyph.ToString (format);
-                txtMap0x8b.Text = noGlyph.ToString (format);
-                txtMap0x8c.Text = noGlyph.ToString (format);
-                txtMap0x8d.Text = noGlyph.ToString (format);
-                txtMap0x8e.Text = noGlyph.ToString (format);
-                txtMap0x8f.Text = noGlyph.ToString (format);
+                txtMap0x80.Text = noGlyph.ToString(format);
+                txtMap0x81.Text = noGlyph.ToString(format);
+                txtMap0x82.Text = noGlyph.ToString(format);
+                txtMap0x83.Text = noGlyph.ToString(format);
+                txtMap0x84.Text = noGlyph.ToString(format);
+                txtMap0x85.Text = noGlyph.ToString(format);
+                txtMap0x86.Text = noGlyph.ToString(format);
+                txtMap0x87.Text = noGlyph.ToString(format);
+                txtMap0x88.Text = noGlyph.ToString(format);
+                txtMap0x89.Text = noGlyph.ToString(format);
+                txtMap0x8a.Text = noGlyph.ToString(format);
+                txtMap0x8b.Text = noGlyph.ToString(format);
+                txtMap0x8c.Text = noGlyph.ToString(format);
+                txtMap0x8d.Text = noGlyph.ToString(format);
+                txtMap0x8e.Text = noGlyph.ToString(format);
+                txtMap0x8f.Text = noGlyph.ToString(format);
 
-                txtMap0x90.Text = noGlyph.ToString (format);
-                txtMap0x91.Text = noGlyph.ToString (format);
-                txtMap0x92.Text = noGlyph.ToString (format);
-                txtMap0x93.Text = noGlyph.ToString (format);
-                txtMap0x94.Text = noGlyph.ToString (format);
-                txtMap0x95.Text = noGlyph.ToString (format);
-                txtMap0x96.Text = noGlyph.ToString (format);
-                txtMap0x97.Text = noGlyph.ToString (format);
-                txtMap0x98.Text = noGlyph.ToString (format);
-                txtMap0x99.Text = noGlyph.ToString (format);
-                txtMap0x9a.Text = noGlyph.ToString (format);
-                txtMap0x9b.Text = noGlyph.ToString (format);
-                txtMap0x9c.Text = noGlyph.ToString (format);
-                txtMap0x9d.Text = noGlyph.ToString (format);
-                txtMap0x9e.Text = noGlyph.ToString (format);
-                txtMap0x9f.Text = noGlyph.ToString (format);
+                txtMap0x90.Text = noGlyph.ToString(format);
+                txtMap0x91.Text = noGlyph.ToString(format);
+                txtMap0x92.Text = noGlyph.ToString(format);
+                txtMap0x93.Text = noGlyph.ToString(format);
+                txtMap0x94.Text = noGlyph.ToString(format);
+                txtMap0x95.Text = noGlyph.ToString(format);
+                txtMap0x96.Text = noGlyph.ToString(format);
+                txtMap0x97.Text = noGlyph.ToString(format);
+                txtMap0x98.Text = noGlyph.ToString(format);
+                txtMap0x99.Text = noGlyph.ToString(format);
+                txtMap0x9a.Text = noGlyph.ToString(format);
+                txtMap0x9b.Text = noGlyph.ToString(format);
+                txtMap0x9c.Text = noGlyph.ToString(format);
+                txtMap0x9d.Text = noGlyph.ToString(format);
+                txtMap0x9e.Text = noGlyph.ToString(format);
+                txtMap0x9f.Text = noGlyph.ToString(format);
 
                 txtMap0x80.IsEnabled = false;
                 txtMap0x81.IsEnabled = false;
@@ -1348,39 +1348,39 @@ bitVal;
             }
             else
             {
-                txtMap0x80.Text = _symSetMapTarget [offset + 0x80].ToString (format);
-                txtMap0x81.Text = _symSetMapTarget [offset + 0x81].ToString (format);
-                txtMap0x82.Text = _symSetMapTarget [offset + 0x82].ToString (format);
-                txtMap0x83.Text = _symSetMapTarget [offset + 0x83].ToString (format);
-                txtMap0x84.Text = _symSetMapTarget [offset + 0x84].ToString (format);
-                txtMap0x85.Text = _symSetMapTarget [offset + 0x85].ToString (format);
-                txtMap0x86.Text = _symSetMapTarget [offset + 0x86].ToString (format);
-                txtMap0x87.Text = _symSetMapTarget [offset + 0x87].ToString (format);
-                txtMap0x88.Text = _symSetMapTarget [offset + 0x88].ToString (format);
-                txtMap0x89.Text = _symSetMapTarget [offset + 0x89].ToString (format);
-                txtMap0x8a.Text = _symSetMapTarget [offset + 0x8a].ToString (format);
-                txtMap0x8b.Text = _symSetMapTarget [offset + 0x8b].ToString (format);
-                txtMap0x8c.Text = _symSetMapTarget [offset + 0x8c].ToString (format);
-                txtMap0x8d.Text = _symSetMapTarget [offset + 0x8d].ToString (format);
-                txtMap0x8e.Text = _symSetMapTarget [offset + 0x8e].ToString (format);
-                txtMap0x8f.Text = _symSetMapTarget [offset + 0x8f].ToString (format);
+                txtMap0x80.Text = _symSetMapTarget[offset + 0x80].ToString(format);
+                txtMap0x81.Text = _symSetMapTarget[offset + 0x81].ToString(format);
+                txtMap0x82.Text = _symSetMapTarget[offset + 0x82].ToString(format);
+                txtMap0x83.Text = _symSetMapTarget[offset + 0x83].ToString(format);
+                txtMap0x84.Text = _symSetMapTarget[offset + 0x84].ToString(format);
+                txtMap0x85.Text = _symSetMapTarget[offset + 0x85].ToString(format);
+                txtMap0x86.Text = _symSetMapTarget[offset + 0x86].ToString(format);
+                txtMap0x87.Text = _symSetMapTarget[offset + 0x87].ToString(format);
+                txtMap0x88.Text = _symSetMapTarget[offset + 0x88].ToString(format);
+                txtMap0x89.Text = _symSetMapTarget[offset + 0x89].ToString(format);
+                txtMap0x8a.Text = _symSetMapTarget[offset + 0x8a].ToString(format);
+                txtMap0x8b.Text = _symSetMapTarget[offset + 0x8b].ToString(format);
+                txtMap0x8c.Text = _symSetMapTarget[offset + 0x8c].ToString(format);
+                txtMap0x8d.Text = _symSetMapTarget[offset + 0x8d].ToString(format);
+                txtMap0x8e.Text = _symSetMapTarget[offset + 0x8e].ToString(format);
+                txtMap0x8f.Text = _symSetMapTarget[offset + 0x8f].ToString(format);
 
-                txtMap0x90.Text = _symSetMapTarget [offset + 0x90].ToString (format);
-                txtMap0x91.Text = _symSetMapTarget [offset + 0x91].ToString (format);
-                txtMap0x92.Text = _symSetMapTarget [offset + 0x92].ToString (format);
-                txtMap0x93.Text = _symSetMapTarget [offset + 0x93].ToString (format);
-                txtMap0x94.Text = _symSetMapTarget [offset + 0x94].ToString (format);
-                txtMap0x95.Text = _symSetMapTarget [offset + 0x95].ToString (format);
-                txtMap0x96.Text = _symSetMapTarget [offset + 0x96].ToString (format);
-                txtMap0x97.Text = _symSetMapTarget [offset + 0x97].ToString (format);
-                txtMap0x98.Text = _symSetMapTarget [offset + 0x98].ToString (format);
-                txtMap0x99.Text = _symSetMapTarget [offset + 0x99].ToString (format);
-                txtMap0x9a.Text = _symSetMapTarget [offset + 0x9a].ToString (format);
-                txtMap0x9b.Text = _symSetMapTarget [offset + 0x9b].ToString (format);
-                txtMap0x9c.Text = _symSetMapTarget [offset + 0x9c].ToString (format);
-                txtMap0x9d.Text = _symSetMapTarget [offset + 0x9d].ToString (format);
-                txtMap0x9e.Text = _symSetMapTarget [offset + 0x9e].ToString (format);
-                txtMap0x9f.Text = _symSetMapTarget [offset + 0x9f].ToString (format);
+                txtMap0x90.Text = _symSetMapTarget[offset + 0x90].ToString(format);
+                txtMap0x91.Text = _symSetMapTarget[offset + 0x91].ToString(format);
+                txtMap0x92.Text = _symSetMapTarget[offset + 0x92].ToString(format);
+                txtMap0x93.Text = _symSetMapTarget[offset + 0x93].ToString(format);
+                txtMap0x94.Text = _symSetMapTarget[offset + 0x94].ToString(format);
+                txtMap0x95.Text = _symSetMapTarget[offset + 0x95].ToString(format);
+                txtMap0x96.Text = _symSetMapTarget[offset + 0x96].ToString(format);
+                txtMap0x97.Text = _symSetMapTarget[offset + 0x97].ToString(format);
+                txtMap0x98.Text = _symSetMapTarget[offset + 0x98].ToString(format);
+                txtMap0x99.Text = _symSetMapTarget[offset + 0x99].ToString(format);
+                txtMap0x9a.Text = _symSetMapTarget[offset + 0x9a].ToString(format);
+                txtMap0x9b.Text = _symSetMapTarget[offset + 0x9b].ToString(format);
+                txtMap0x9c.Text = _symSetMapTarget[offset + 0x9c].ToString(format);
+                txtMap0x9d.Text = _symSetMapTarget[offset + 0x9d].ToString(format);
+                txtMap0x9e.Text = _symSetMapTarget[offset + 0x9e].ToString(format);
+                txtMap0x9f.Text = _symSetMapTarget[offset + 0x9f].ToString(format);
 
                 txtMap0x80.IsEnabled = true;
                 txtMap0x81.IsEnabled = true;
@@ -1419,127 +1419,127 @@ bitVal;
 
             //----------------------------------------------------------------//
 
-            txtMap0xa0.Text = _symSetMapTarget [offset + 0xa0].ToString (format);
-            txtMap0xa1.Text = _symSetMapTarget [offset + 0xa1].ToString (format);
-            txtMap0xa2.Text = _symSetMapTarget [offset + 0xa2].ToString (format);
-            txtMap0xa3.Text = _symSetMapTarget [offset + 0xa3].ToString (format);
-            txtMap0xa4.Text = _symSetMapTarget [offset + 0xa4].ToString (format);
-            txtMap0xa5.Text = _symSetMapTarget [offset + 0xa5].ToString (format);
-            txtMap0xa6.Text = _symSetMapTarget [offset + 0xa6].ToString (format);
-            txtMap0xa7.Text = _symSetMapTarget [offset + 0xa7].ToString (format);
-            txtMap0xa8.Text = _symSetMapTarget [offset + 0xa8].ToString (format);
-            txtMap0xa9.Text = _symSetMapTarget [offset + 0xa9].ToString (format);
-            txtMap0xaa.Text = _symSetMapTarget [offset + 0xaa].ToString (format);
-            txtMap0xab.Text = _symSetMapTarget [offset + 0xab].ToString (format);
-            txtMap0xac.Text = _symSetMapTarget [offset + 0xac].ToString (format);
-            txtMap0xad.Text = _symSetMapTarget [offset + 0xad].ToString (format);
-            txtMap0xae.Text = _symSetMapTarget [offset + 0xae].ToString (format);
-            txtMap0xaf.Text = _symSetMapTarget [offset + 0xaf].ToString (format);
+            txtMap0xa0.Text = _symSetMapTarget[offset + 0xa0].ToString(format);
+            txtMap0xa1.Text = _symSetMapTarget[offset + 0xa1].ToString(format);
+            txtMap0xa2.Text = _symSetMapTarget[offset + 0xa2].ToString(format);
+            txtMap0xa3.Text = _symSetMapTarget[offset + 0xa3].ToString(format);
+            txtMap0xa4.Text = _symSetMapTarget[offset + 0xa4].ToString(format);
+            txtMap0xa5.Text = _symSetMapTarget[offset + 0xa5].ToString(format);
+            txtMap0xa6.Text = _symSetMapTarget[offset + 0xa6].ToString(format);
+            txtMap0xa7.Text = _symSetMapTarget[offset + 0xa7].ToString(format);
+            txtMap0xa8.Text = _symSetMapTarget[offset + 0xa8].ToString(format);
+            txtMap0xa9.Text = _symSetMapTarget[offset + 0xa9].ToString(format);
+            txtMap0xaa.Text = _symSetMapTarget[offset + 0xaa].ToString(format);
+            txtMap0xab.Text = _symSetMapTarget[offset + 0xab].ToString(format);
+            txtMap0xac.Text = _symSetMapTarget[offset + 0xac].ToString(format);
+            txtMap0xad.Text = _symSetMapTarget[offset + 0xad].ToString(format);
+            txtMap0xae.Text = _symSetMapTarget[offset + 0xae].ToString(format);
+            txtMap0xaf.Text = _symSetMapTarget[offset + 0xaf].ToString(format);
 
-            txtMap0xb0.Text = _symSetMapTarget [offset + 0xb0].ToString (format);
-            txtMap0xb1.Text = _symSetMapTarget [offset + 0xb1].ToString (format);
-            txtMap0xb2.Text = _symSetMapTarget [offset + 0xb2].ToString (format);
-            txtMap0xb3.Text = _symSetMapTarget [offset + 0xb3].ToString (format);
-            txtMap0xb4.Text = _symSetMapTarget [offset + 0xb4].ToString (format);
-            txtMap0xb5.Text = _symSetMapTarget [offset + 0xb5].ToString (format);
-            txtMap0xb6.Text = _symSetMapTarget [offset + 0xb6].ToString (format);
-            txtMap0xb7.Text = _symSetMapTarget [offset + 0xb7].ToString (format);
-            txtMap0xb8.Text = _symSetMapTarget [offset + 0xb8].ToString (format);
-            txtMap0xb9.Text = _symSetMapTarget [offset + 0xb9].ToString (format);
-            txtMap0xba.Text = _symSetMapTarget [offset + 0xba].ToString (format);
-            txtMap0xbb.Text = _symSetMapTarget [offset + 0xbb].ToString (format);
-            txtMap0xbc.Text = _symSetMapTarget [offset + 0xbc].ToString (format);
-            txtMap0xbd.Text = _symSetMapTarget [offset + 0xbd].ToString (format);
-            txtMap0xbe.Text = _symSetMapTarget [offset + 0xbe].ToString (format);
-            txtMap0xbf.Text = _symSetMapTarget [offset + 0xbf].ToString (format);
+            txtMap0xb0.Text = _symSetMapTarget[offset + 0xb0].ToString(format);
+            txtMap0xb1.Text = _symSetMapTarget[offset + 0xb1].ToString(format);
+            txtMap0xb2.Text = _symSetMapTarget[offset + 0xb2].ToString(format);
+            txtMap0xb3.Text = _symSetMapTarget[offset + 0xb3].ToString(format);
+            txtMap0xb4.Text = _symSetMapTarget[offset + 0xb4].ToString(format);
+            txtMap0xb5.Text = _symSetMapTarget[offset + 0xb5].ToString(format);
+            txtMap0xb6.Text = _symSetMapTarget[offset + 0xb6].ToString(format);
+            txtMap0xb7.Text = _symSetMapTarget[offset + 0xb7].ToString(format);
+            txtMap0xb8.Text = _symSetMapTarget[offset + 0xb8].ToString(format);
+            txtMap0xb9.Text = _symSetMapTarget[offset + 0xb9].ToString(format);
+            txtMap0xba.Text = _symSetMapTarget[offset + 0xba].ToString(format);
+            txtMap0xbb.Text = _symSetMapTarget[offset + 0xbb].ToString(format);
+            txtMap0xbc.Text = _symSetMapTarget[offset + 0xbc].ToString(format);
+            txtMap0xbd.Text = _symSetMapTarget[offset + 0xbd].ToString(format);
+            txtMap0xbe.Text = _symSetMapTarget[offset + 0xbe].ToString(format);
+            txtMap0xbf.Text = _symSetMapTarget[offset + 0xbf].ToString(format);
 
-            txtMap0xc0.Text = _symSetMapTarget [offset + 0xc0].ToString (format);
-            txtMap0xc1.Text = _symSetMapTarget [offset + 0xc1].ToString (format);
-            txtMap0xc2.Text = _symSetMapTarget [offset + 0xc2].ToString (format);
-            txtMap0xc3.Text = _symSetMapTarget [offset + 0xc3].ToString (format);
-            txtMap0xc4.Text = _symSetMapTarget [offset + 0xc4].ToString (format);
-            txtMap0xc5.Text = _symSetMapTarget [offset + 0xc5].ToString (format);
-            txtMap0xc6.Text = _symSetMapTarget [offset + 0xc6].ToString (format);
-            txtMap0xc7.Text = _symSetMapTarget [offset + 0xc7].ToString (format);
-            txtMap0xc8.Text = _symSetMapTarget [offset + 0xc8].ToString (format);
-            txtMap0xc9.Text = _symSetMapTarget [offset + 0xc9].ToString (format);
-            txtMap0xca.Text = _symSetMapTarget [offset + 0xca].ToString (format);
-            txtMap0xcb.Text = _symSetMapTarget [offset + 0xcb].ToString (format);
-            txtMap0xcc.Text = _symSetMapTarget [offset + 0xcc].ToString (format);
-            txtMap0xcd.Text = _symSetMapTarget [offset + 0xcd].ToString (format);
-            txtMap0xce.Text = _symSetMapTarget [offset + 0xce].ToString (format);
-            txtMap0xcf.Text = _symSetMapTarget [offset + 0xcf].ToString (format);
+            txtMap0xc0.Text = _symSetMapTarget[offset + 0xc0].ToString(format);
+            txtMap0xc1.Text = _symSetMapTarget[offset + 0xc1].ToString(format);
+            txtMap0xc2.Text = _symSetMapTarget[offset + 0xc2].ToString(format);
+            txtMap0xc3.Text = _symSetMapTarget[offset + 0xc3].ToString(format);
+            txtMap0xc4.Text = _symSetMapTarget[offset + 0xc4].ToString(format);
+            txtMap0xc5.Text = _symSetMapTarget[offset + 0xc5].ToString(format);
+            txtMap0xc6.Text = _symSetMapTarget[offset + 0xc6].ToString(format);
+            txtMap0xc7.Text = _symSetMapTarget[offset + 0xc7].ToString(format);
+            txtMap0xc8.Text = _symSetMapTarget[offset + 0xc8].ToString(format);
+            txtMap0xc9.Text = _symSetMapTarget[offset + 0xc9].ToString(format);
+            txtMap0xca.Text = _symSetMapTarget[offset + 0xca].ToString(format);
+            txtMap0xcb.Text = _symSetMapTarget[offset + 0xcb].ToString(format);
+            txtMap0xcc.Text = _symSetMapTarget[offset + 0xcc].ToString(format);
+            txtMap0xcd.Text = _symSetMapTarget[offset + 0xcd].ToString(format);
+            txtMap0xce.Text = _symSetMapTarget[offset + 0xce].ToString(format);
+            txtMap0xcf.Text = _symSetMapTarget[offset + 0xcf].ToString(format);
 
-            txtMap0xd0.Text = _symSetMapTarget [offset + 0xd0].ToString (format);
-            txtMap0xd1.Text = _symSetMapTarget [offset + 0xd1].ToString (format);
-            txtMap0xd2.Text = _symSetMapTarget [offset + 0xd2].ToString (format);
-            txtMap0xd3.Text = _symSetMapTarget [offset + 0xd3].ToString (format);
-            txtMap0xd4.Text = _symSetMapTarget [offset + 0xd4].ToString (format);
-            txtMap0xd5.Text = _symSetMapTarget [offset + 0xd5].ToString (format);
-            txtMap0xd6.Text = _symSetMapTarget [offset + 0xd6].ToString (format);
-            txtMap0xd7.Text = _symSetMapTarget [offset + 0xd7].ToString (format);
-            txtMap0xd8.Text = _symSetMapTarget [offset + 0xd8].ToString (format);
-            txtMap0xd9.Text = _symSetMapTarget [offset + 0xd9].ToString (format);
-            txtMap0xda.Text = _symSetMapTarget [offset + 0xda].ToString (format);
-            txtMap0xdb.Text = _symSetMapTarget [offset + 0xdb].ToString (format);
-            txtMap0xdc.Text = _symSetMapTarget [offset + 0xdc].ToString (format);
-            txtMap0xdd.Text = _symSetMapTarget [offset + 0xdd].ToString (format);
-            txtMap0xde.Text = _symSetMapTarget [offset + 0xde].ToString (format);
-            txtMap0xdf.Text = _symSetMapTarget [offset + 0xdf].ToString (format);
+            txtMap0xd0.Text = _symSetMapTarget[offset + 0xd0].ToString(format);
+            txtMap0xd1.Text = _symSetMapTarget[offset + 0xd1].ToString(format);
+            txtMap0xd2.Text = _symSetMapTarget[offset + 0xd2].ToString(format);
+            txtMap0xd3.Text = _symSetMapTarget[offset + 0xd3].ToString(format);
+            txtMap0xd4.Text = _symSetMapTarget[offset + 0xd4].ToString(format);
+            txtMap0xd5.Text = _symSetMapTarget[offset + 0xd5].ToString(format);
+            txtMap0xd6.Text = _symSetMapTarget[offset + 0xd6].ToString(format);
+            txtMap0xd7.Text = _symSetMapTarget[offset + 0xd7].ToString(format);
+            txtMap0xd8.Text = _symSetMapTarget[offset + 0xd8].ToString(format);
+            txtMap0xd9.Text = _symSetMapTarget[offset + 0xd9].ToString(format);
+            txtMap0xda.Text = _symSetMapTarget[offset + 0xda].ToString(format);
+            txtMap0xdb.Text = _symSetMapTarget[offset + 0xdb].ToString(format);
+            txtMap0xdc.Text = _symSetMapTarget[offset + 0xdc].ToString(format);
+            txtMap0xdd.Text = _symSetMapTarget[offset + 0xdd].ToString(format);
+            txtMap0xde.Text = _symSetMapTarget[offset + 0xde].ToString(format);
+            txtMap0xdf.Text = _symSetMapTarget[offset + 0xdf].ToString(format);
 
-            txtMap0xe0.Text = _symSetMapTarget [offset + 0xe0].ToString (format);
-            txtMap0xe1.Text = _symSetMapTarget [offset + 0xe1].ToString (format);
-            txtMap0xe2.Text = _symSetMapTarget [offset + 0xe2].ToString (format);
-            txtMap0xe3.Text = _symSetMapTarget [offset + 0xe3].ToString (format);
-            txtMap0xe4.Text = _symSetMapTarget [offset + 0xe4].ToString (format);
-            txtMap0xe5.Text = _symSetMapTarget [offset + 0xe5].ToString (format);
-            txtMap0xe6.Text = _symSetMapTarget [offset + 0xe6].ToString (format);
-            txtMap0xe7.Text = _symSetMapTarget [offset + 0xe7].ToString (format);
-            txtMap0xe8.Text = _symSetMapTarget [offset + 0xe8].ToString (format);
-            txtMap0xe9.Text = _symSetMapTarget [offset + 0xe9].ToString (format);
-            txtMap0xea.Text = _symSetMapTarget [offset + 0xea].ToString (format);
-            txtMap0xeb.Text = _symSetMapTarget [offset + 0xeb].ToString (format);
-            txtMap0xec.Text = _symSetMapTarget [offset + 0xec].ToString (format);
-            txtMap0xed.Text = _symSetMapTarget [offset + 0xed].ToString (format);
-            txtMap0xee.Text = _symSetMapTarget [offset + 0xee].ToString (format);
-            txtMap0xef.Text = _symSetMapTarget [offset + 0xef].ToString (format);
+            txtMap0xe0.Text = _symSetMapTarget[offset + 0xe0].ToString(format);
+            txtMap0xe1.Text = _symSetMapTarget[offset + 0xe1].ToString(format);
+            txtMap0xe2.Text = _symSetMapTarget[offset + 0xe2].ToString(format);
+            txtMap0xe3.Text = _symSetMapTarget[offset + 0xe3].ToString(format);
+            txtMap0xe4.Text = _symSetMapTarget[offset + 0xe4].ToString(format);
+            txtMap0xe5.Text = _symSetMapTarget[offset + 0xe5].ToString(format);
+            txtMap0xe6.Text = _symSetMapTarget[offset + 0xe6].ToString(format);
+            txtMap0xe7.Text = _symSetMapTarget[offset + 0xe7].ToString(format);
+            txtMap0xe8.Text = _symSetMapTarget[offset + 0xe8].ToString(format);
+            txtMap0xe9.Text = _symSetMapTarget[offset + 0xe9].ToString(format);
+            txtMap0xea.Text = _symSetMapTarget[offset + 0xea].ToString(format);
+            txtMap0xeb.Text = _symSetMapTarget[offset + 0xeb].ToString(format);
+            txtMap0xec.Text = _symSetMapTarget[offset + 0xec].ToString(format);
+            txtMap0xed.Text = _symSetMapTarget[offset + 0xed].ToString(format);
+            txtMap0xee.Text = _symSetMapTarget[offset + 0xee].ToString(format);
+            txtMap0xef.Text = _symSetMapTarget[offset + 0xef].ToString(format);
 
-            txtMap0xf0.Text = _symSetMapTarget [offset + 0xf0].ToString (format);
-            txtMap0xf1.Text = _symSetMapTarget [offset + 0xf1].ToString (format);
-            txtMap0xf2.Text = _symSetMapTarget [offset + 0xf2].ToString (format);
-            txtMap0xf3.Text = _symSetMapTarget [offset + 0xf3].ToString (format);
-            txtMap0xf4.Text = _symSetMapTarget [offset + 0xf4].ToString (format);
-            txtMap0xf5.Text = _symSetMapTarget [offset + 0xf5].ToString (format);
-            txtMap0xf6.Text = _symSetMapTarget [offset + 0xf6].ToString (format);
-            txtMap0xf7.Text = _symSetMapTarget [offset + 0xf7].ToString (format);
-            txtMap0xf8.Text = _symSetMapTarget [offset + 0xf8].ToString (format);
-            txtMap0xf9.Text = _symSetMapTarget [offset + 0xf9].ToString (format);
-            txtMap0xfa.Text = _symSetMapTarget [offset + 0xfa].ToString (format);
-            txtMap0xfb.Text = _symSetMapTarget [offset + 0xfb].ToString (format);
-            txtMap0xfc.Text = _symSetMapTarget [offset + 0xfc].ToString (format);
-            txtMap0xfd.Text = _symSetMapTarget [offset + 0xfd].ToString (format);
-            txtMap0xfe.Text = _symSetMapTarget [offset + 0xfe].ToString (format);
-            txtMap0xff.Text = _symSetMapTarget [offset + 0xff].ToString (format);
+            txtMap0xf0.Text = _symSetMapTarget[offset + 0xf0].ToString(format);
+            txtMap0xf1.Text = _symSetMapTarget[offset + 0xf1].ToString(format);
+            txtMap0xf2.Text = _symSetMapTarget[offset + 0xf2].ToString(format);
+            txtMap0xf3.Text = _symSetMapTarget[offset + 0xf3].ToString(format);
+            txtMap0xf4.Text = _symSetMapTarget[offset + 0xf4].ToString(format);
+            txtMap0xf5.Text = _symSetMapTarget[offset + 0xf5].ToString(format);
+            txtMap0xf6.Text = _symSetMapTarget[offset + 0xf6].ToString(format);
+            txtMap0xf7.Text = _symSetMapTarget[offset + 0xf7].ToString(format);
+            txtMap0xf8.Text = _symSetMapTarget[offset + 0xf8].ToString(format);
+            txtMap0xf9.Text = _symSetMapTarget[offset + 0xf9].ToString(format);
+            txtMap0xfa.Text = _symSetMapTarget[offset + 0xfa].ToString(format);
+            txtMap0xfb.Text = _symSetMapTarget[offset + 0xfb].ToString(format);
+            txtMap0xfc.Text = _symSetMapTarget[offset + 0xfc].ToString(format);
+            txtMap0xfd.Text = _symSetMapTarget[offset + 0xfd].ToString(format);
+            txtMap0xfe.Text = _symSetMapTarget[offset + 0xfe].ToString(format);
+            txtMap0xff.Text = _symSetMapTarget[offset + 0xff].ToString(format);
 
             //----------------------------------------------------------------//
 
-            mapMetrics (ignoreC0, ignoreC1, _sizeCharSet,
+            mapMetrics(ignoreC0, ignoreC1, _sizeCharSet,
                         ref codeMin, ref codeMax, ref codeCt,
                         ref _targetSymSetType);
 
-            txtCodeMin.Text = codeMin.ToString (format);
-            txtCodeMax.Text = codeMax.ToString (format);
-            txtCodeCt.Text = codeCt.ToString (format);
+            txtCodeMin.Text = codeMin.ToString(format);
+            txtCodeMax.Text = codeMax.ToString(format);
+            txtCodeCt.Text = codeCt.ToString(format);
 
             if (_flagMultiByteSet)
             {
                 if (hexDisplay)
-                    txtMapOffset.Text = "0x" + offset.ToString (format) + "+";
+                    txtMapOffset.Text = "0x" + offset.ToString(format) + "+";
                 else
-                    txtMapOffset.Text = offset.ToString (format) + "+";
+                    txtMapOffset.Text = offset.ToString(format) + "+";
 
-                txtOffsetRangeMin.Text = _offsetMin.ToString (format);
-                txtOffsetRangeMax.Text = _offsetMax.ToString (format);
+                txtOffsetRangeMin.Text = _offsetMin.ToString(format);
+                txtOffsetRangeMax.Text = _offsetMax.ToString(format);
             }
 
             grpTargetSymSetDetails.Visibility = Visibility.Visible;
@@ -1554,7 +1554,7 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void mapMetrics (bool ignoreC0,
+        private void mapMetrics(bool ignoreC0,
                                  bool ignoreC1,
                                  int setSize,
                                  ref ushort codeMin,
@@ -1588,9 +1588,9 @@ bitVal;
                     codePointSig = true;
                 }
 
-                if (codePointSig && (_symSetMapTarget [i] != cCodePointUnused))
+                if (codePointSig && (_symSetMapTarget[i] != cCodePointUnused))
                 {
-                    codeMin = (ushort) i;
+                    codeMin = (ushort)i;
 
                     i = setSize; // end loop
                 }
@@ -1619,9 +1619,9 @@ bitVal;
                     codePointSig = true;
                 }
 
-                if (codePointSig && (_symSetMapTarget [i] != cCodePointUnused))
+                if (codePointSig && (_symSetMapTarget[i] != cCodePointUnused))
                 {
-                    codeMax = (ushort) i;
+                    codeMax = (ushort)i;
 
                     i = -1; // end loop
                 }
@@ -1650,7 +1650,7 @@ bitVal;
                     codePointSig = true;
                 }
 
-                if (codePointSig && (_symSetMapTarget [i] != cCodePointUnused))
+                if (codePointSig && (_symSetMapTarget[i] != cCodePointUnused))
                 {
                     codeCt++;
                 }
@@ -1664,7 +1664,7 @@ bitVal;
 
             usesC1Range = false;
 
-            if (! ignoreC1)
+            if (!ignoreC1)
             {
                 int checkMin;
                 int checkMax;
@@ -1681,7 +1681,7 @@ bitVal;
 
                 for (int i = checkMin; i < checkMax; i++)
                 {
-                    if (_symSetMapTarget [i] != cCodePointUnused)
+                    if (_symSetMapTarget[i] != cCodePointUnused)
                         usesC1Range = true;
                 }
             }
@@ -1709,16 +1709,16 @@ bitVal;
 
         private void metricsLoad()
         {
-            ToolSymbolSetGenPersist.loadDataDonor (
+            ToolSymbolSetGenPersist.loadDataDonor(
                 ref _indxDonorSymSetSubset,
                 ref _flagDonorSymSetUserSet,
                 ref _flagDonorSymSetMapPCL,
                 ref _donorSymSetFile);
 
-            ToolCommonFunctions.getFolderName (_donorSymSetFile,
+            ToolCommonFunctions.getFolderName(_donorSymSetFile,
                                                ref _donorSymSetFolder);
 
-            ToolSymbolSetGenPersist.loadDataTarget (
+            ToolSymbolSetGenPersist.loadDataTarget(
                 ref _flagMapHex,
                 ref _flagIgnoreC0,
                 ref _flagIgnoreC1,
@@ -1746,7 +1746,7 @@ bitVal;
 
         public void metricsSave()
         {
-            ToolSymbolSetGenPersist.saveDataDonor (
+            ToolSymbolSetGenPersist.saveDataDonor(
                 _indxDonorSymSetSubset,
                 _flagDonorSymSetUserSet,
                 _flagDonorSymSetMapPCL,
@@ -1754,11 +1754,11 @@ bitVal;
 
             if ((_targetSymSetFile != string.Empty) && (_targetSymSetFile != null))
             {
-                ToolCommonFunctions.getFolderName (_targetSymSetFile,
+                ToolCommonFunctions.getFolderName(_targetSymSetFile,
                                                    ref _targetSymSetFolder);
             }
 
-            ToolSymbolSetGenPersist.saveDataTarget (
+            ToolSymbolSetGenPersist.saveDataTarget(
                 _flagMapHex,
                 _flagIgnoreC0,
                 _flagIgnoreC1,
@@ -1789,7 +1789,7 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void populateCharCollReq (bool flagIndexUnicode)
+        private void populateCharCollReq(bool flagIndexUnicode)
         {
             ulong bitVal;
 
@@ -1819,7 +1819,7 @@ bitVal;
                     }
                 }
 
-                setTargetCharCollReqValue (_targetCharCollReqUnicode);
+                setTargetCharCollReqValue(_targetCharCollReqUnicode);
             }
             else
             {
@@ -1841,7 +1841,7 @@ bitVal;
                     }
                 }
 
-                setTargetCharCollReqValue (_targetCharCollReqMSL);
+                setTargetCharCollReqValue(_targetCharCollReqMSL);
             }
 
             _flagCharCollReqInhibit = false;
@@ -1857,7 +1857,7 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbCharReqAll_Click (object sender,
+        private void rbCharReqAll_Click(object sender,
                                          RoutedEventArgs e)
         {
             _flagCharCollReqSpecific = false;
@@ -1870,7 +1870,7 @@ bitVal;
             else
                 _targetCharCollReq = _targetCharCollReqAllMSL;
 
-            setTargetCharCollReqValue (_targetCharCollReq);
+            setTargetCharCollReqValue(_targetCharCollReq);
         }
 
         //--------------------------------------------------------------------//
@@ -1883,12 +1883,12 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbCharReqSpecific_Click (object sender,
+        private void rbCharReqSpecific_Click(object sender,
                                               RoutedEventArgs e)
         {
             _flagCharCollReqSpecific = true;
 
-            populateCharCollReq (_flagIndexUnicode);
+            populateCharCollReq(_flagIndexUnicode);
 
             cbCharColls.Visibility = Visibility.Visible;
             tblkCharCollsText.Visibility = Visibility.Visible;
@@ -1898,7 +1898,7 @@ bitVal;
             else
                 _targetCharCollReq = _targetCharCollReqMSL;
 
-            setTargetCharCollReqValue (_targetCharCollReq);
+            setTargetCharCollReqValue(_targetCharCollReq);
         }
 
         //--------------------------------------------------------------------//
@@ -1910,12 +1910,12 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbDonorSymSetMapPCL_Click (object sender,
+        private void rbDonorSymSetMapPCL_Click(object sender,
                                                 RoutedEventArgs e)
         {
             _flagDonorSymSetMapPCL = true;
 
-            donorSymSetChange ();
+            donorSymSetChange();
         }
 
         //--------------------------------------------------------------------//
@@ -1927,12 +1927,12 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbDonorSymSetMapStd_Click (object sender,
+        private void rbDonorSymSetMapStd_Click(object sender,
                                                 RoutedEventArgs e)
         {
             _flagDonorSymSetMapPCL = false;
 
-            donorSymSetChange ();
+            donorSymSetChange();
         }
 
         //--------------------------------------------------------------------//
@@ -1944,7 +1944,7 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbDonorSymSetPreset_Click (object sender,
+        private void rbDonorSymSetPreset_Click(object sender,
                                                 RoutedEventArgs e)
         {
             _flagDonorSymSetUserSet = false;
@@ -1960,7 +1960,7 @@ bitVal;
             btnGenerateSymSet.IsEnabled = false;
             btnLogSave.IsEnabled = false;
 
-            donorSymSetChange ();
+            donorSymSetChange();
         }
 
         //--------------------------------------------------------------------//
@@ -1973,7 +1973,7 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbDonorSymSetUserSet_Click (object sender,
+        private void rbDonorSymSetUserSet_Click(object sender,
                                                  RoutedEventArgs e)
         {
             _flagDonorSymSetUserSet = true;
@@ -1989,7 +1989,7 @@ bitVal;
             btnGenerateSymSet.IsEnabled = false;
             btnLogSave.IsEnabled = false;
 
-            donorSymSetChange ();
+            donorSymSetChange();
         }
 
         //--------------------------------------------------------------------//
@@ -2001,16 +2001,16 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbIndexMSL_Click (object sender,
+        private void rbIndexMSL_Click(object sender,
                                        RoutedEventArgs e)
         {
             _flagIndexUnicode = false;
 
             if (_flagCharCollReqSpecific)
             {
-                populateCharCollReq (_flagIndexUnicode);
+                populateCharCollReq(_flagIndexUnicode);
 
-                MessageBox.Show ("Specific 'Character collection" +
+                MessageBox.Show("Specific 'Character collection" +
                                  " requirements' settings need to be" +
                                  " reviewed as the 'Symbol index' type" +
                                  " has been changed.",
@@ -2022,7 +2022,7 @@ bitVal;
             {
                 _targetCharCollReq = _targetCharCollReqAllMSL;
 
-                setTargetCharCollReqValue (_targetCharCollReq);
+                setTargetCharCollReqValue(_targetCharCollReq);
             }
         }
 
@@ -2035,16 +2035,16 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbIndexUnicode_Click (object sender,
+        private void rbIndexUnicode_Click(object sender,
                                            RoutedEventArgs e)
         {
             _flagIndexUnicode = true;
 
             if (_flagCharCollReqSpecific)
             {
-                populateCharCollReq (_flagIndexUnicode);
+                populateCharCollReq(_flagIndexUnicode);
 
-                MessageBox.Show ("Specific 'Character collection" +
+                MessageBox.Show("Specific 'Character collection" +
                                  " requirements' settings need to be " +
                                  " reviewed as the 'Symbol index' type" +
                                  " has been changed.",
@@ -2056,7 +2056,7 @@ bitVal;
             {
                 _targetCharCollReq = _targetCharCollReqAllUnicode;
 
-                setTargetCharCollReqValue (_targetCharCollReq);
+                setTargetCharCollReqValue(_targetCharCollReq);
             }
         }
 
@@ -2069,12 +2069,12 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbMapDec_Click (object sender,
+        private void rbMapDec_Click(object sender,
                                      RoutedEventArgs e)
         {
             _flagMapHex = false;
 
-            mapDisplay (_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
+            mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
                         _offsetMin);
         }
 
@@ -2087,12 +2087,12 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbMapHex_Click (object sender,
+        private void rbMapHex_Click(object sender,
                                      RoutedEventArgs e)
         {
             _flagMapHex = true;
 
-            mapDisplay (_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
+            mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
                         _offsetMin);
         }
 
@@ -2105,7 +2105,7 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbTypeMonoByte_Click (object sender,
+        private void rbTypeMonoByte_Click(object sender,
                                            RoutedEventArgs e)
         {
             _flagMultiByteSet = false;
@@ -2118,9 +2118,9 @@ bitVal;
 
             cbOffsetRange.SelectedIndex = 0;
 
-            setOffsetData ();
+            setOffsetData();
 
-            mapDisplay (_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
+            mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
                         _offsetMin);
         }
 
@@ -2133,7 +2133,7 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbTypeMultiByte_Click (object sender,
+        private void rbTypeMultiByte_Click(object sender,
                                             RoutedEventArgs e)
         {
             _flagMultiByteSet = true;
@@ -2148,12 +2148,12 @@ bitVal;
 
                 for (int i = 0; i < cSizeCharSet_8bit; i++)
                 {
-                    _symSetMapTarget [i] = _symSetMap8bit [i];
+                    _symSetMapTarget[i] = _symSetMap8bit[i];
                 }
 
                 for (int i = cSizeCharSet_8bit; i < cSizeCharSet_16bit; i++)
                 {
-                    _symSetMapTarget [i] = cCodePointUnused;
+                    _symSetMapTarget[i] = cCodePointUnused;
                 }
             }
 
@@ -2163,9 +2163,9 @@ bitVal;
 
             cbOffsetRange.SelectedIndex = 0;
 
-            setOffsetData ();
+            setOffsetData();
 
-            mapDisplay (_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
+            mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
                         _offsetMin);
         }
 
@@ -2193,7 +2193,7 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool selectDonorSymSetFile (ref string symSetFilename)
+        private bool selectDonorSymSetFile(ref string symSetFilename)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(symSetFilename);
 
@@ -2218,7 +2218,7 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool selectTargetSymSetFile (ref string symSetFilename)
+        private bool selectTargetSymSetFile(ref string symSetFilename)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(symSetFilename);
 
@@ -2243,7 +2243,7 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setDonorSymSetAttributes ()
+        private void setDonorSymSetAttributes()
         {
             string idNum = string.Empty,
                    idAlpha = string.Empty;
@@ -2269,11 +2269,11 @@ bitVal;
 
                 _donorSymSetNo = _donorSymSetNoUserSet;
 
-                PCLSymbolSets.TranslateKind1ToId (_donorSymSetNoUserSet,
+                PCLSymbolSets.TranslateKind1ToId(_donorSymSetNoUserSet,
                                                   ref idNum,
                                                   ref idAlpha);
 
-                txtDonorSymSetNo.Text = _donorSymSetNoUserSet.ToString ();
+                txtDonorSymSetNo.Text = _donorSymSetNoUserSet.ToString();
 
                 txtDonorSymSetIdNum.Text = idNum;
                 txtDonorSymSetIdAlpha.Text = idAlpha;
@@ -2284,9 +2284,9 @@ bitVal;
 
                 _indxDonorSymSetSubset = cbDonorSymSet.SelectedIndex;
 
-                indxDonorSymSet = _subsetSymSets [_indxDonorSymSetSubset];
+                indxDonorSymSet = _subsetSymSets[_indxDonorSymSetSubset];
 
-                _donorSymSetGroup = PCLSymbolSets.GetGroup (indxDonorSymSet);
+                _donorSymSetGroup = PCLSymbolSets.GetGroup(indxDonorSymSet);
 
                 _flagSymSetNullMapPCL = PCLSymbolSets.NullMapPCL(indxDonorSymSet);
                 _flagSymSetNullMapStd = PCLSymbolSets.NullMapStd(indxDonorSymSet);
@@ -2312,11 +2312,11 @@ bitVal;
                     txtDonorSymSetIdNum.IsEnabled = false;
                     txtDonorSymSetIdAlpha.IsEnabled = false;
 
-                    _donorSymSetNo = PCLSymbolSets.GetKind1 (indxDonorSymSet);
+                    _donorSymSetNo = PCLSymbolSets.GetKind1(indxDonorSymSet);
 
-                    txtDonorSymSetNo.Text = _donorSymSetNo.ToString ();
+                    txtDonorSymSetNo.Text = _donorSymSetNo.ToString();
 
-                    PCLSymbolSets.TranslateKind1ToId (_donorSymSetNo,
+                    PCLSymbolSets.TranslateKind1ToId(_donorSymSetNo,
                                                       ref idNum,
                                                       ref idAlpha);
 
@@ -2357,7 +2357,7 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setMultiByteData (bool multiByte)
+        private void setMultiByteData(bool multiByte)
         {
             if (multiByte)
             {
@@ -2401,26 +2401,26 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setOffsetData ()
+        private void setOffsetData()
         {
-            _offsetMin = (ushort) (_indxOffsets * 256);
-            _offsetMax = (ushort) (_offsetMin + 0xff);
+            _offsetMin = (ushort)(_indxOffsets * 256);
+            _offsetMax = (ushort)(_offsetMin + 0xff);
 
             if (_flagMapHex)
             {
-                txtOffsetRangeMin.Text = _offsetMin.ToString ("x4");
-                txtOffsetRangeMax.Text = _offsetMax.ToString ("x4");
+                txtOffsetRangeMin.Text = _offsetMin.ToString("x4");
+                txtOffsetRangeMax.Text = _offsetMax.ToString("x4");
 
                 if (_offsetMin != 0)
-                    txtMapOffset.Text = _offsetMin.ToString ("x4") + "+";
+                    txtMapOffset.Text = _offsetMin.ToString("x4") + "+";
             }
             else
             {
-                txtOffsetRangeMin.Text = _offsetMin.ToString ();
-                txtOffsetRangeMax.Text = _offsetMax.ToString ();
+                txtOffsetRangeMin.Text = _offsetMin.ToString();
+                txtOffsetRangeMax.Text = _offsetMax.ToString();
 
                 if (_offsetMin != 0)
-                    txtMapOffset.Text = _offsetMin.ToString () + "+";
+                    txtMapOffset.Text = _offsetMin.ToString() + "+";
             }
         }
 
@@ -2433,15 +2433,15 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setOffsetRanges ()
+        private void setOffsetRanges()
         {
             _initialisedOffsets = false;
 
-            cbOffsetRange.Items.Clear ();
+            cbOffsetRange.Items.Clear();
 
             for (int i = 0; i < 256; i++)
             {
-                cbOffsetRange.Items.Add (i.ToString ("x2") + "00");
+                cbOffsetRange.Items.Add(i.ToString("x2") + "00");
             }
 
             cbOffsetRange.SelectedIndex = 0;
@@ -2460,7 +2460,7 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setTargetCharCollReqArray (bool flagIndexUnicode)
+        private void setTargetCharCollReqArray(bool flagIndexUnicode)
         {
             ulong targetCharCollReq = 0,
                    bitVal;
@@ -2481,14 +2481,14 @@ bitVal;
                 }
             }
 
-            setTargetCharCollReqValue (targetCharCollReq);
+            setTargetCharCollReqValue(targetCharCollReq);
 
             //----------------------------------------------------------------//
 
             if (flagIndexUnicode)
                 _targetCharCollReqUnicode = targetCharCollReq;
             else
-                _targetCharCollReqMSL     = targetCharCollReq;
+                _targetCharCollReqMSL = targetCharCollReq;
         }
 
         //--------------------------------------------------------------------//
@@ -2500,9 +2500,9 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setTargetCharCollReqValue (ulong arrayVal)
+        private void setTargetCharCollReqValue(ulong arrayVal)
         {
-            tblkCharColls.Text = "0x" +  arrayVal.ToString ("x16");
+            tblkCharColls.Text = "0x" + arrayVal.ToString("x16");
         }
 
         //--------------------------------------------------------------------//
@@ -2514,14 +2514,14 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setTargetSymSetAttributes ()
+        private void setTargetSymSetAttributes()
         {
             string symSetId = txtTargetSymSetIdNum.Text +
                               txtTargetSymSetIdAlpha.Text;
 
-            _targetSymSetNo = PCLSymbolSets.TranslateIdToKind1 (symSetId);
+            _targetSymSetNo = PCLSymbolSets.TranslateIdToKind1(symSetId);
 
-            txtTargetSymSetNo.Text = _targetSymSetNo.ToString ();
+            txtTargetSymSetNo.Text = _targetSymSetNo.ToString();
         }
 
         //--------------------------------------------------------------------//
@@ -2533,7 +2533,7 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setTargetSymSetFilename ()
+        private void setTargetSymSetFilename()
         {
             string mapType;
 
@@ -2545,7 +2545,7 @@ bitVal;
             _targetSymSetFile =
                 _targetSymSetFolder + "\\" +
                 "DefineSymbolSet_" +
-                PCLSymbolSets.TranslateKind1ToId (_targetSymSetNo) +
+                PCLSymbolSets.TranslateKind1ToId(_targetSymSetNo) +
                 mapType +
                 ".pcl";
 
@@ -2561,12 +2561,12 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtDonorSymSetFile_LostFocus (object sender,
+        private void txtDonorSymSetFile_LostFocus(object sender,
                                                    RoutedEventArgs e)
         {
             _donorSymSetFile = txtDonorSymSetFile.Text;
 
-            donorSymSetChange ();
+            donorSymSetChange();
         }
 
         //--------------------------------------------------------------------//
@@ -2578,11 +2578,11 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtMap_GotFocus (object sender, RoutedEventArgs e)
+        private void txtMap_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox source = e.Source as TextBox;
 
-            source.SelectAll ();
+            source.SelectAll();
         }
 
         //--------------------------------------------------------------------//
@@ -2594,7 +2594,7 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtMap_LostFocus (object sender, RoutedEventArgs e)
+        private void txtMap_LostFocus(object sender, RoutedEventArgs e)
         {
             bool flagOK = false;
 
@@ -2611,7 +2611,7 @@ bitVal;
 
             string txtBoxName = source.Name; // should be in format txtMap0xpq
 
-            flagOK = ushort.TryParse (txtBoxName.Substring (8, 2),
+            flagOK = ushort.TryParse(txtBoxName.Substring(8, 2),
                                       NumberStyles.HexNumber,
                                       CultureInfo.InvariantCulture,
                                       out ushort mapIndx);
@@ -2624,7 +2624,7 @@ bitVal;
 
             if (!flagOK)
             {
-                MessageBox.Show ("Unable to detemine which mapping text box" +
+                MessageBox.Show("Unable to detemine which mapping text box" +
                                  " has just lost focus!",
                                 "***** Internal error *****",
                                 MessageBoxButton.OK,
@@ -2632,7 +2632,7 @@ bitVal;
             }
             else
             {
-                flagOK = validateMapEntry (source, (ushort) (_offsetMin +  mapIndx));
+                flagOK = validateMapEntry(source, (ushort)(_offsetMin + mapIndx));
 
                 if (flagOK)
                 {
@@ -2647,17 +2647,17 @@ bitVal;
                     else
                         format = string.Empty;
 
-                    mapMetrics (_flagIgnoreC0, _flagIgnoreC1, _sizeCharSet,
+                    mapMetrics(_flagIgnoreC0, _flagIgnoreC1, _sizeCharSet,
                                 ref codeMin, ref codeMax, ref codeCt,
                                 ref _targetSymSetType);
 
-                    txtCodeMin.Text = codeMin.ToString (format);
-                    txtCodeMax.Text = codeMax.ToString (format);
-                    txtCodeCt.Text = codeCt.ToString (format);
+                    txtCodeMin.Text = codeMin.ToString(format);
+                    txtCodeMax.Text = codeMax.ToString(format);
+                    txtCodeCt.Text = codeCt.ToString(format);
                 }
                 else
                 {
-                    Helper_WPFFocusFix.Focus (source);   // need this to focus
+                    Helper_WPFFocusFix.Focus(source);   // need this to focus
                 }
             }
         }
@@ -2671,12 +2671,12 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtTargetSymSetFile_LostFocus (object sender,
+        private void txtTargetSymSetFile_LostFocus(object sender,
                                                     RoutedEventArgs e)
         {
             _targetSymSetFile = txtTargetSymSetFile.Text;
 
-            ToolCommonFunctions.getFolderName (_targetSymSetFile,
+            ToolCommonFunctions.getFolderName(_targetSymSetFile,
                                                ref _targetSymSetFolder);
         }
 
@@ -2692,10 +2692,10 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtTargetSymSetIdAlpha_GotFocus (object sender,
+        private void txtTargetSymSetIdAlpha_GotFocus(object sender,
                                                   RoutedEventArgs e)
         {
-            txtTargetSymSetIdAlpha.SelectAll ();
+            txtTargetSymSetIdAlpha.SelectAll();
         }
 
         //--------------------------------------------------------------------//
@@ -2707,14 +2707,14 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtTargetSymSetIdAlpha_LostFocus (object sender,
+        private void txtTargetSymSetIdAlpha_LostFocus(object sender,
                                                        RoutedEventArgs e)
         {
-            if (validateTargetSymSetIdAlpha (true))
+            if (validateTargetSymSetIdAlpha(true))
             {
-                setTargetSymSetAttributes ();
+                setTargetSymSetAttributes();
 
-                setTargetSymSetFilename ();
+                setTargetSymSetFilename();
             }
         }
 
@@ -2727,14 +2727,14 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtTargetSymSetIdAlpha_TextChanged (object sender,
+        private void txtTargetSymSetIdAlpha_TextChanged(object sender,
                                                          TextChangedEventArgs e)
         {
-            if (validateTargetSymSetIdAlpha (false))
+            if (validateTargetSymSetIdAlpha(false))
             {
-                setTargetSymSetAttributes ();
+                setTargetSymSetAttributes();
 
-                setTargetSymSetFilename ();
+                setTargetSymSetFilename();
             }
         }
 
@@ -2750,10 +2750,10 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtTargetSymSetIdNum_GotFocus (object sender,
+        private void txtTargetSymSetIdNum_GotFocus(object sender,
                                                     RoutedEventArgs e)
         {
-            txtTargetSymSetIdNum.SelectAll ();
+            txtTargetSymSetIdNum.SelectAll();
         }
 
         //--------------------------------------------------------------------//
@@ -2765,14 +2765,14 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtTargetSymSetIdNum_LostFocus (object sender,
+        private void txtTargetSymSetIdNum_LostFocus(object sender,
                                                      RoutedEventArgs e)
         {
-            if (validateTargetSymSetIdNum (true))
+            if (validateTargetSymSetIdNum(true))
             {
-                setTargetSymSetAttributes ();
+                setTargetSymSetAttributes();
 
-                setTargetSymSetFilename ();
+                setTargetSymSetFilename();
             }
         }
 
@@ -2785,14 +2785,14 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtTargetSymSetIdNum_TextChanged (object sender,
+        private void txtTargetSymSetIdNum_TextChanged(object sender,
                                                        TextChangedEventArgs e)
         {
-            if (validateTargetSymSetIdNum (false))
+            if (validateTargetSymSetIdNum(false))
             {
-                setTargetSymSetAttributes ();
+                setTargetSymSetAttributes();
 
-                setTargetSymSetFilename ();
+                setTargetSymSetFilename();
             }
         }
 
@@ -2805,7 +2805,7 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool validateMapEntry (TextBox source,
+        private bool validateMapEntry(TextBox source,
                                           ushort mapIndx)
         {
             bool OK = true;
@@ -2815,16 +2815,16 @@ bitVal;
             string txtCodepoint = source.Text;
 
             if (_flagMapHex)
-                OK = ushort.TryParse (txtCodepoint,
+                OK = ushort.TryParse(txtCodepoint,
                                       NumberStyles.HexNumber,
                                       CultureInfo.InvariantCulture,
                                       out value);
             else
-                OK = ushort.TryParse (txtCodepoint, out value);
+                OK = ushort.TryParse(txtCodepoint, out value);
 
             if (OK)
             {
-                _symSetMapTarget [mapIndx] = value;
+                _symSetMapTarget[mapIndx] = value;
             }
             else
             {
@@ -2835,21 +2835,21 @@ bitVal;
 
                 if (_flagMapHex)
                 {
-                    format     = "x4";
+                    format = "x4";
                     formatDesc = "hexadecimal";
                 }
                 else
                 {
-                    format     = string.Empty;
+                    format = string.Empty;
                     formatDesc = "decimal";
                 }
 
-                valText     = _symSetMapTarget[mapIndx].ToString (format);
-                indxText    = mapIndx.ToString (format);
+                valText = _symSetMapTarget[mapIndx].ToString(format);
+                indxText = mapIndx.ToString(format);
 
                 source.Text = valText;
 
-                MessageBox.Show ("Map point " + formatDesc +
+                MessageBox.Show("Map point " + formatDesc +
                                  " '" + indxText + "':\n\n" +
                                  "Target code-point value " + formatDesc +
                                  " '" + txtCodepoint + "' is invalid.\n\n" +
@@ -2872,7 +2872,7 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool validateTargetSymSetIdAlpha (bool lostFocusEvent)
+        private bool validateTargetSymSetIdAlpha(bool lostFocusEvent)
         {
             const char minVal = 'A';
             const char maxVal = 'Z';
@@ -2894,7 +2894,7 @@ bitVal;
             }
             else
             {
-                value = char.ConvertToUtf32 (crntText, 0);
+                value = char.ConvertToUtf32(crntText, 0);
 
                 if ((value < minVal) || (value > maxVal) || (value == badVal))
                     OK = false;
@@ -2904,7 +2904,7 @@ bitVal;
             {
                 if (lostFocusEvent)
                 {
-                    MessageBox.Show ("Alphabetic part '" + crntText +
+                    MessageBox.Show("Alphabetic part '" + crntText +
                                     "' of identifier is invalid.\n\n" +
                                     "Value will be reset to default '" +
                                     defVal + "'",
@@ -2912,13 +2912,13 @@ bitVal;
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
 
-                    txtTargetSymSetIdAlpha.Text = defVal.ToString ();
+                    txtTargetSymSetIdAlpha.Text = defVal.ToString();
 
                     OK = true;
                 }
                 else
                 {
-                    MessageBox.Show ("Alphabetic part '" + crntText +
+                    MessageBox.Show("Alphabetic part '" + crntText +
                                     "' of identifier is invalid.\n\n" +
                                     "Valid range is :\n\t" +
                                     minVal + " <= value <= " + maxVal +
@@ -2927,8 +2927,8 @@ bitVal;
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 
-                    txtTargetSymSetIdAlpha.Focus ();
-                    txtTargetSymSetIdAlpha.SelectAll ();
+                    txtTargetSymSetIdAlpha.Focus();
+                    txtTargetSymSetIdAlpha.SelectAll();
                 }
             }
 
@@ -2952,7 +2952,7 @@ bitVal;
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool validateTargetSymSetIdNum (bool lostFocusEvent)
+        private bool validateTargetSymSetIdNum(bool lostFocusEvent)
         {
             const ushort minVal = 0;
             const ushort maxVal = 1023;
@@ -2962,7 +2962,7 @@ bitVal;
 
             string crntText = txtTargetSymSetIdNum.Text;
 
-            OK = ushort.TryParse (crntText, out ushort value);
+            OK = ushort.TryParse(crntText, out ushort value);
 
             if (OK)
             {
@@ -2974,9 +2974,9 @@ bitVal;
             {
                 if (lostFocusEvent)
                 {
-                    string newText = defVal.ToString ();
+                    string newText = defVal.ToString();
 
-                    MessageBox.Show ("Numeric part '" + crntText +
+                    MessageBox.Show("Numeric part '" + crntText +
                                     "' of identifier is invalid.\n\n" +
                                     "Value will be reset to default '" +
                                     newText + "'",
@@ -2990,7 +2990,7 @@ bitVal;
                 }
                 else
                 {
-                    MessageBox.Show ("Numeric part '" + crntText +
+                    MessageBox.Show("Numeric part '" + crntText +
                                     "' of identifier is invalid.\n\n" +
                                     "Valid range is :\n\t" +
                                     minVal + " <= value <= " + maxVal,
@@ -2998,8 +2998,8 @@ bitVal;
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 
-                    txtTargetSymSetIdNum.Focus ();
-                    txtTargetSymSetIdNum.SelectAll ();
+                    txtTargetSymSetIdNum.Focus();
+                    txtTargetSymSetIdNum.SelectAll();
                 }
             }
 

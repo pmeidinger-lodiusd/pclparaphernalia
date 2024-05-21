@@ -37,19 +37,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-	    public PCLXLAttrEnum(byte operTag,
+        public PCLXLAttrEnum(byte operTag,
                              byte attrTagA,
                              byte attrTagB,
                              int attrTagLen,
                              int value,
                              bool flagValIsTxt,
                              string description)
-	    {
-            _operTag       = operTag;
-            _attrTagA      = attrTagA;
-            _attrTagB      = attrTagB;
-            _attrTagLen    = attrTagLen;
-            _value         = value;
+        {
+            _operTag = operTag;
+            _attrTagA = attrTagA;
+            _attrTagB = attrTagB;
+            _attrTagLen = attrTagLen;
+            _value = value;
             FlagValIsTxt = flagValIsTxt;
             Description = description;
 
@@ -95,11 +95,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getDetails (ref bool flagValIsTxt,
+        public void getDetails(ref bool flagValIsTxt,
                                 ref string description)
         {
             flagValIsTxt = FlagValIsTxt;
-            description  = Description;
+            description = Description;
         }
 
         //--------------------------------------------------------------------//
@@ -130,9 +130,9 @@ namespace PCLParaphernalia
             get
             {
                 if (_operTag == 0x00)
-                      return "--";
-                  else
-                      return PCLXLOperators.getDesc(_operTag);
+                    return "--";
+                else
+                    return PCLXLOperators.getDesc(_operTag);
             }
         }
 
@@ -206,9 +206,9 @@ namespace PCLParaphernalia
             get
             {
                 if (FlagValIsTxt)
-                      return "0x" + _value.ToString("X");
-                  else
-                      return _value.ToString();
+                    return "0x" + _value.ToString("X");
+                else
+                    return _value.ToString();
             }
         }
 
@@ -229,7 +229,7 @@ namespace PCLParaphernalia
                 if (_operTag == 0x00)
                     oper = "----";
                 else
-                    oper = "0x" + _operTag.ToString ("x2");
+                    oper = "0x" + _operTag.ToString("x2");
 
                 if ((_attrTagLen == 1) && (_attrTagA == 0x00))
                 {
@@ -238,14 +238,14 @@ namespace PCLParaphernalia
                 else
                 {
                     if (_attrTagLen == 1)
-                        attr = "0x" + _attrTagA.ToString ("x2") + "  ";
+                        attr = "0x" + _attrTagA.ToString("x2") + "  ";
                     else
-                        attr = "0x" + _attrTagA.ToString ("x2") + _attrTagB.ToString ("x2");
+                        attr = "0x" + _attrTagA.ToString("x2") + _attrTagB.ToString("x2");
 
                     if (_value < 0x00ffff)
-                        text = oper + " " + attr + " " + _value.ToString ();
+                        text = oper + " " + attr + " " + _value.ToString();
                     else
-                        text = oper + " " + attr + " 0x" + _value.ToString ("x8");
+                        text = oper + " " + attr + " 0x" + _value.ToString("x8");
                 }
 
                 return text;

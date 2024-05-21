@@ -21,29 +21,29 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-		private static readonly bool _flagBound   = true;
-		private static readonly bool _flagUnbound = false;
+        private static readonly bool _flagBound = true;
+        private static readonly bool _flagUnbound = false;
 
-		public enum Index
+        public enum Index
         {
-            Unknown            = 0,
-            Bound_7bit         = 1,
-            Bound_8bit         = 2,
-            Bound_PC8          = 3,
-            Bound_16bit        = 4,
-            Unbound_MSL        = 5,
-            Unbound_Unicode    = 6
+            Unknown = 0,
+            Bound_7bit = 1,
+            Bound_8bit = 2,
+            Bound_PC8 = 3,
+            Bound_16bit = 4,
+            Unbound_MSL = 5,
+            Unbound_Unicode = 6
         };
 
-		private enum IdPCL: byte
+        private enum IdPCL : byte
         {
-            Unknown            = 0,
-            Bound_7bit         = 0,
-            Bound_8bit         = 1,
-            Bound_PC8          = 2,
-            Bound_16bit        = 3,
-            Unbound_MSL        = 10,
-            Unbound_Unicode    = 11
+            Unknown = 0,
+            Bound_7bit = 0,
+            Bound_8bit = 1,
+            Bound_PC8 = 2,
+            Bound_16bit = 3,
+            Unbound_MSL = 10,
+            Unbound_Unicode = 11
         };
 
         //--------------------------------------------------------------------//
@@ -53,7 +53,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static readonly List<PCLSymSetType> _sets =
-            new List<PCLSymSetType> ();
+            new List<PCLSymSetType>();
 
         private static int _setsCountBound;
         private static int _setsCountTotal;
@@ -92,7 +92,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCountBound ()
+        public static int GetCountBound()
         {
             return _setsCountBound;
         }
@@ -107,7 +107,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetDescShort (int selection)
+        public static string GetDescShort(int selection)
         {
             return _sets[selection].DescShort;
         }
@@ -122,7 +122,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetDescStd (int selection)
+        public static string GetDescStd(int selection)
         {
             return _sets[selection].DescStd;
         }
@@ -133,11 +133,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
         //                                                                    //
         // Return the PCL identifier associated with the specified Symbol Set //
-		// Type index.                                                        //
+        // Type index.                                                        //
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte GetIdPCL (int selection)
+        public static byte GetIdPCL(int selection)
         {
             return _sets[selection].IdPCL;
         }
@@ -159,14 +159,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Index GetIndexForIdPCL (byte idPCL)
+        public static Index GetIndexForIdPCL(byte idPCL)
         {
             string entry = Enum.GetName(typeof(IdPCL), idPCL);
 
             if (entry == null)
                 return Index.Bound_PC8;
             else
-                return (Index) Enum.Parse(typeof(Index), entry);
+                return (Index)Enum.Parse(typeof(Index), entry);
         }
 
         //--------------------------------------------------------------------//
@@ -175,11 +175,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
         //                                                                    //
         // Return indication of whether or not the symbol set type associated //
-		// with the specified index is bound or unbound.                      //
+        // with the specified index is bound or unbound.                      //
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool IsBound (int selection)
+        public static bool IsBound(int selection)
         {
             return _sets[selection].IsBound;
         }
@@ -198,48 +198,48 @@ namespace PCLParaphernalia
 
         private static void PopulateSymbolSetTypeTable()
         {
-            _sets.Add (new PCLSymSetType (
-							(byte) IdPCL.Unknown,
-							_flagBound,
-							"<unknown>",
+            _sets.Add(new PCLSymSetType(
+                            (byte)IdPCL.Unknown,
+                            _flagBound,
+                            "<unknown>",
                             "<unknown>"));
 
-            _sets.Add (new PCLSymSetType (
-							(byte) IdPCL.Bound_7bit,
-							_flagBound,
-							"0: Bound; 7-bit (96 charset: " +
+            _sets.Add(new PCLSymSetType(
+                            (byte)IdPCL.Bound_7bit,
+                            _flagBound,
+                            "0: Bound; 7-bit (96 charset: " +
                                 "0x20-7f printable)",
                             "0: 7-bit"));
 
-            _sets.Add (new PCLSymSetType (
-                            (byte) IdPCL.Bound_8bit,
+            _sets.Add(new PCLSymSetType(
+                            (byte)IdPCL.Bound_8bit,
                             _flagBound,
-							"1: Bound; 8-bit (192 charset: " +
+                            "1: Bound; 8-bit (192 charset: " +
                                 "0x20-7f, 0xa0-ff printable)",
                             "1: 8 bit"));
 
-            _sets.Add (new PCLSymSetType (
-                            (byte) IdPCL.Bound_PC8,
+            _sets.Add(new PCLSymSetType(
+                            (byte)IdPCL.Bound_PC8,
                             _flagBound,
-							"2: Bound; PC-8 (256 charset: " +
+                            "2: Bound; PC-8 (256 charset: " +
                                 "0x01-06, 0x10-1a, 0x1c-ff printable)",
                             "2: 8-bit PC8"));
 
-            _sets.Add (new PCLSymSetType (
-                            (byte) IdPCL.Bound_16bit,
+            _sets.Add(new PCLSymSetType(
+                            (byte)IdPCL.Bound_16bit,
                             _flagBound,
-							"3: Bound; 16-bit (65535 charset: " +
+                            "3: Bound; 16-bit (65535 charset: " +
                                 "(0x01-06, 0x10-1a, 0x1c-fffd printable)",
                             "3: 16-bit"));
 
-            _sets.Add (new PCLSymSetType (
-                            (byte) IdPCL.Unbound_MSL,
+            _sets.Add(new PCLSymSetType(
+                            (byte)IdPCL.Unbound_MSL,
                             _flagUnbound,
                             "10: Unbound; uses HP MSL numbers",
                             "10: index MSL"));
 
-            _sets.Add (new PCLSymSetType (
-                            (byte) IdPCL.Unbound_Unicode,
+            _sets.Add(new PCLSymSetType(
+                            (byte)IdPCL.Unbound_Unicode,
                             _flagUnbound,
                             "11: Unbound; uses Unicode code points",
                              "11: index U+"));
@@ -249,7 +249,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < _setsCountTotal; i++)
             {
-                if (_sets [i].IsBound == _flagBound)
+                if (_sets[i].IsBound == _flagBound)
                     _setsCountBound++;
             }
         }

@@ -20,22 +20,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _formName          = "MiscTxtModChrForm";
+        const string _formName = "MiscTxtModChrForm";
 
-        const int _symSet_19U         = 629;
-        const ushort _unitsPerInch      = PCLXLWriter._sessionUPI;
+        const int _symSet_19U = 629;
+        const ushort _unitsPerInch = PCLXLWriter._sessionUPI;
 
-        const short _pageOriginX        = (_unitsPerInch * 1);
-        const short _pageOriginY        = (_unitsPerInch * 1);
-        const short _incInch            = (_unitsPerInch * 1);
-        const short _lineInc            = (_unitsPerInch * 5) / 6;
+        const short _pageOriginX = (_unitsPerInch * 1);
+        const short _pageOriginY = (_unitsPerInch * 1);
+        const short _incInch = (_unitsPerInch * 1);
+        const short _lineInc = (_unitsPerInch * 5) / 6;
 
-        const short _posXDesc           = _pageOriginX;
-        const short _posXData1          = _pageOriginX + ((3 * _incInch) / 2);
-        const short _posXData2          = _pageOriginX + ((7 * _incInch) / 2);
+        const short _posXDesc = _pageOriginX;
+        const short _posXData1 = _pageOriginX + ((3 * _incInch) / 2);
+        const short _posXData2 = _pageOriginX + ((7 * _incInch) / 2);
 
-        const short _posYDesc           = _pageOriginY;
-        const short _posYData           = _pageOriginY;
+        const short _posYDesc = _pageOriginY;
+        const short _posYData = _pageOriginY;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -43,17 +43,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static readonly short _fontIndexArial   = PCLFonts.getIndexForName ("Arial");
-        static readonly short _fontIndexCourier = PCLFonts.getIndexForName ("Courier");
+        static readonly short _fontIndexArial = PCLFonts.getIndexForName("Arial");
+        static readonly short _fontIndexCourier = PCLFonts.getIndexForName("Courier");
 
-        static readonly string _fontNameArial    =
-            PCLFonts.getPCLXLName (_fontIndexArial,
+        static readonly string _fontNameArial =
+            PCLFonts.getPCLXLName(_fontIndexArial,
                                   PCLFonts.eVariant.Regular);
-        static readonly string _fontNameCourier  =
-            PCLFonts.getPCLXLName (_fontIndexCourier,
+        static readonly string _fontNameCourier =
+            PCLFonts.getPCLXLName(_fontIndexCourier,
                                   PCLFonts.eVariant.Regular);
-        static readonly string _fontNameCourierBold  =
-            PCLFonts.getPCLXLName (_fontIndexCourier,
+        static readonly string _fontNameCourierBold =
+            PCLFonts.getPCLXLName(_fontIndexCourier,
                                   PCLFonts.eVariant.Bold);
 
         //--------------------------------------------------------------------//
@@ -229,12 +229,12 @@ namespace PCLParaphernalia
             boxX1 = _unitsPerInch / 2;  // half-inch left margin
             boxY1 = _unitsPerInch / 2;  // half-inch top-margin
 
-            boxX2 = (ushort) (PCLPaperSizes.getPaperWidth (
+            boxX2 = (ushort)(PCLPaperSizes.getPaperWidth(
                                     indxPaperSize, _unitsPerInch,
                                     PCLOrientations.eAspect.Portrait) -
                               boxX1);
 
-            boxY2 = (ushort) (PCLPaperSizes.getPaperLength (
+            boxY2 = (ushort)(PCLPaperSizes.getPaperLength(
                                     indxPaperSize, _unitsPerInch,
                                     PCLOrientations.eAspect.Portrait) -
                               boxY1);
@@ -328,7 +328,7 @@ namespace PCLParaphernalia
             PCLXLWriter.WriteStreamBlock(prnWriter, formAsMacro,
                                    buffer, ref indBuf);
 
-            ptSize  = 15;
+            ptSize = 15;
 
             PCLXLWriter.Font(prnWriter, formAsMacro, ptSize,
                              _symSet_19U, _fontNameCourierBold);
@@ -341,7 +341,7 @@ namespace PCLParaphernalia
                        posX, posY,
                        "PCL XL Font Embellishments:");
 
-            ptSize  = 12;
+            ptSize = 12;
 
             PCLXLWriter.Font(prnWriter, formAsMacro, ptSize,
                              _symSet_19U, _fontNameCourier);
@@ -440,7 +440,7 @@ namespace PCLParaphernalia
 
             byte[] bufStd = new byte[sizeStd];
 
-            const string sampleText  = "0123456789";
+            const string sampleText = "0123456789";
 
             short posX,
                   posY;
@@ -539,25 +539,25 @@ namespace PCLParaphernalia
 
             ptSize = 18;
 
-            PCLXLWriter.AddAttrUbyte (ref bufStd,
+            PCLXLWriter.AddAttrUbyte(ref bufStd,
                                ref indStd,
                                PCLXLAttributes.eTag.GrayLevel,
                                0);
 
-            PCLXLWriter.AddOperator (ref bufStd,
+            PCLXLWriter.AddOperator(ref bufStd,
                               ref indStd,
                               PCLXLOperators.eTag.SetBrushSource);
 
-            PCLXLWriter.AddAttrUbyte (ref bufStd,
+            PCLXLWriter.AddAttrUbyte(ref bufStd,
                                ref indStd,
                                PCLXLAttributes.eTag.NullPen,
                                0);
 
-            PCLXLWriter.AddOperator (ref bufStd,
+            PCLXLWriter.AddOperator(ref bufStd,
                               ref indStd,
                               PCLXLOperators.eTag.SetPenSource);
 
-            PCLXLWriter.Font (prnWriter, false, ptSize,
+            PCLXLWriter.Font(prnWriter, false, ptSize,
                              _symSet_19U, _fontNameCourier);
 
             posX = _posXData1;
@@ -642,9 +642,9 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ptSize  = 36;
+            ptSize = 36;
 
-            PCLXLWriter.Font (prnWriter, false, ptSize,
+            PCLXLWriter.Font(prnWriter, false, ptSize,
                              _symSet_19U, _fontNameArial);
 
             posX = _posXData2;
@@ -652,12 +652,12 @@ namespace PCLParaphernalia
 
             posY += _lineInc;
 
-            PCLXLWriter.CharAngle (prnWriter, false, 0);
-            PCLXLWriter.CharBold  (prnWriter, false, 0);
-            PCLXLWriter.CharScale (prnWriter, false,
-                                   (float) 1.0, (float) 1.0);
-            PCLXLWriter.CharShear (prnWriter, false,
-                                   (float) 0.0, (float) 0.0);
+            PCLXLWriter.CharAngle(prnWriter, false, 0);
+            PCLXLWriter.CharBold(prnWriter, false, 0);
+            PCLXLWriter.CharScale(prnWriter, false,
+                                   (float)1.0, (float)1.0);
+            PCLXLWriter.CharShear(prnWriter, false,
+                                   (float)0.0, (float)0.0);
 
             PCLXLWriter.Text(prnWriter, false, false,
                        PCLXLWriter.advances_Courier, ptSize,
@@ -668,7 +668,7 @@ namespace PCLParaphernalia
 
             posY += _lineInc;
 
-            PCLXLWriter.CharAngle (prnWriter, false, -30);
+            PCLXLWriter.CharAngle(prnWriter, false, -30);
 
             PCLXLWriter.Text(prnWriter, false, false,
                        PCLXLWriter.advances_ArialRegular, ptSize,
@@ -679,48 +679,21 @@ namespace PCLParaphernalia
 
             posY += _lineInc;
 
-            PCLXLWriter.CharAngle (prnWriter, false, +45);
+            PCLXLWriter.CharAngle(prnWriter, false, +45);
 
             PCLXLWriter.Text(prnWriter, false, false,
                        PCLXLWriter.advances_ArialRegular, ptSize,
                        posX, posY,
                        sampleText);
 
-            PCLXLWriter.CharAngle (prnWriter, false, 0);
+            PCLXLWriter.CharAngle(prnWriter, false, 0);
 
             //----------------------------------------------------------------//
 
             posY += _lineInc;
 
-            PCLXLWriter.CharScale (prnWriter, false,
-                                   (float) 1.5, (float) 1.0);
-
-            PCLXLWriter.Text(prnWriter, false, false,
-                       PCLXLWriter.advances_ArialRegular, ptSize,
-                       posX, posY,
-                       sampleText);
-
-            //----------------------------------------------------------------//
-
-            posY += _lineInc;
-
-            PCLXLWriter.CharScale (prnWriter, false,
-                                   (float) 1.0, (float) 2.0);
-
-            PCLXLWriter.Text(prnWriter, false, false,
-                       PCLXLWriter.advances_ArialRegular, ptSize,
-                       posX, posY,
-                       sampleText);
-
-            PCLXLWriter.CharScale (prnWriter, false,
-                                   (float) 1.0, (float) 1.0);
-
-            //----------------------------------------------------------------//
-
-            posY += _lineInc;
-
-            PCLXLWriter.CharShear (prnWriter, false,
-                                   (float) 0.75, (float) 0.0);
+            PCLXLWriter.CharScale(prnWriter, false,
+                                   (float)1.5, (float)1.0);
 
             PCLXLWriter.Text(prnWriter, false, false,
                        PCLXLWriter.advances_ArialRegular, ptSize,
@@ -731,8 +704,23 @@ namespace PCLParaphernalia
 
             posY += _lineInc;
 
-            PCLXLWriter.CharShear (prnWriter, false,
-                                   (float) -0.90, (float) 0.0);
+            PCLXLWriter.CharScale(prnWriter, false,
+                                   (float)1.0, (float)2.0);
+
+            PCLXLWriter.Text(prnWriter, false, false,
+                       PCLXLWriter.advances_ArialRegular, ptSize,
+                       posX, posY,
+                       sampleText);
+
+            PCLXLWriter.CharScale(prnWriter, false,
+                                   (float)1.0, (float)1.0);
+
+            //----------------------------------------------------------------//
+
+            posY += _lineInc;
+
+            PCLXLWriter.CharShear(prnWriter, false,
+                                   (float)0.75, (float)0.0);
 
             PCLXLWriter.Text(prnWriter, false, false,
                        PCLXLWriter.advances_ArialRegular, ptSize,
@@ -743,8 +731,8 @@ namespace PCLParaphernalia
 
             posY += _lineInc;
 
-            PCLXLWriter.CharShear (prnWriter, false,
-                                   (float) 0.0, (float) 0.75);
+            PCLXLWriter.CharShear(prnWriter, false,
+                                   (float)-0.90, (float)0.0);
 
             PCLXLWriter.Text(prnWriter, false, false,
                        PCLXLWriter.advances_ArialRegular, ptSize,
@@ -755,8 +743,20 @@ namespace PCLParaphernalia
 
             posY += _lineInc;
 
-            PCLXLWriter.CharShear (prnWriter, false,
-                                   (float) 0.0, (float) -0.90);
+            PCLXLWriter.CharShear(prnWriter, false,
+                                   (float)0.0, (float)0.75);
+
+            PCLXLWriter.Text(prnWriter, false, false,
+                       PCLXLWriter.advances_ArialRegular, ptSize,
+                       posX, posY,
+                       sampleText);
+
+            //----------------------------------------------------------------//
+
+            posY += _lineInc;
+
+            PCLXLWriter.CharShear(prnWriter, false,
+                                   (float)0.0, (float)-0.90);
 
             PCLXLWriter.Text(prnWriter, false, false,
                        PCLXLWriter.advances_ArialRegular, ptSize,
@@ -781,7 +781,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            prnWriter.Write (bufStd, 0, indStd);
+            prnWriter.Write(bufStd, 0, indStd);
             indStd = 0;
 
             //----------------------------------------------------------------//

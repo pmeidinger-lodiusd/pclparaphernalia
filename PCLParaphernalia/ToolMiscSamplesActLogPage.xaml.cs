@@ -22,7 +22,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         const int _defLogPageOffLeftDPt = 170;
-        const int _defLogPageOffTopDPt  = 0;
+        const int _defLogPageOffTopDPt = 0;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -93,7 +93,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseDataLogPage ()
+        private void initialiseDataLogPage()
         {
             lbOrientation.Visibility = Visibility.Visible;
             cbOrientation.Visibility = Visibility.Visible;
@@ -147,7 +147,7 @@ namespace PCLParaphernalia
 
         public void metricsLoadDataLogPage()
         {
-            ToolMiscSamplesPersist.loadDataTypeLogPage (
+            ToolMiscSamplesPersist.loadDataTypeLogPage(
                 "PCL",
                 ref _logPageOffLeftDPt,
                 ref _logPageOffTopDPt,
@@ -187,7 +187,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setFlagLogPageFormAsMacro (
+        private void setFlagLogPageFormAsMacro(
             bool setFlag,
             ToolCommonData.ePrintLang crntPDL)
         {
@@ -662,7 +662,7 @@ namespace PCLParaphernalia
         {
             const int minVal = 1;
             const int maxVal = 65535;
-            int defVal = (int) (_paperLengthLogical * _unitsToDPts);
+            int defVal = (int)(_paperLengthLogical * _unitsToDPts);
 
             int value = 0;
 
@@ -735,7 +735,7 @@ namespace PCLParaphernalia
         {
             const int minVal = 1;
             const int maxVal = 65535;
-            int defVal = (int) (_paperWidthLogical * _unitsToDPts);
+            int defVal = (int)(_paperWidthLogical * _unitsToDPts);
 
             int value = 0;
 

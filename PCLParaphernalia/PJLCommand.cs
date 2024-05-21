@@ -22,15 +22,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PJLCommand(PJLCommands.eCmdIndex    indx,
-                          PJLCommands.eCmdFormat   format,
+        public PJLCommand(PJLCommands.eCmdIndex indx,
+                          PJLCommands.eCmdFormat format,
                           PJLCommands.eRequestType type,
                           string desc)
         {
             if (indx == PJLCommands.eCmdIndex.Null)
                 Name = PJLCommands.nullCmdKey;
             else
-                Name = indx.ToString ();
+                Name = indx.ToString();
 
             Description = desc;
             Format = format;

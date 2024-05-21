@@ -62,7 +62,7 @@ namespace PCLParaphernalia
 
             PCLControlCode tag;
 
-            if (_tags.IndexOfKey (tagVal) != -1)
+            if (_tags.IndexOfKey(tagVal) != -1)
             {
                 tagKnown = true;
                 tag = _tags[tagVal];
@@ -74,12 +74,12 @@ namespace PCLParaphernalia
             }
 
             flagLineTerm = tag.FlagLineTerm;
-            mnemonic     = tag.Mnemonic;
-            description  = tag.DescExcMnemonic;
+            mnemonic = tag.Mnemonic;
+            description = tag.DescExcMnemonic;
 
             makeOvlAct = tag.makeOvlAct;
 
-            tag.incrementStatisticsCount (macroLevel);   // Statistical data
+            tag.incrementStatisticsCount(macroLevel);   // Statistical data
 
             return tagKnown;
         }
@@ -115,7 +115,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCounts (DataTable table,
+        public static void displayStatsCounts(DataTable table,
                                                bool incUsedSeqsOnly)
         {
             int count = 0;
@@ -145,11 +145,11 @@ namespace PCLParaphernalia
                 {
                     if (!hddrWritten)
                     {
-                        displayStatsCountsHddr (table);
+                        displayStatsCountsHddr(table);
                         hddrWritten = true;
                     }
 
-                    row = table.NewRow ();
+                    row = table.NewRow();
 
                     row[0] = kvp.Value.Sequence;
                     row[1] = kvp.Value.Description;
@@ -157,7 +157,7 @@ namespace PCLParaphernalia
                     row[3] = kvp.Value.StatsCtChild;
                     row[4] = kvp.Value.StatsCtTotal;
 
-                    table.Rows.Add (row);
+                    table.Rows.Add(row);
                 }
             }
         }
@@ -175,7 +175,7 @@ namespace PCLParaphernalia
         {
             //----------------------------------------------------------------//
 
-            DataRow row = table.NewRow ();
+            DataRow row = table.NewRow();
 
             row[0] = string.Empty;
             row[1] = "__________________";
@@ -183,9 +183,9 @@ namespace PCLParaphernalia
             row[3] = string.Empty;
             row[4] = string.Empty;
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
 
-            row = table.NewRow ();
+            row = table.NewRow();
 
             row[0] = string.Empty;
             row[1] = "PCL control codes:";
@@ -193,9 +193,9 @@ namespace PCLParaphernalia
             row[3] = string.Empty;
             row[4] = string.Empty;
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
 
-            row = table.NewRow ();
+            row = table.NewRow();
 
             row[0] = string.Empty;
             row[1] = "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯";
@@ -203,7 +203,7 @@ namespace PCLParaphernalia
             row[3] = string.Empty;
             row[4] = string.Empty;
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
         }
 
         //--------------------------------------------------------------------//
@@ -233,7 +233,7 @@ namespace PCLParaphernalia
         {
             byte codeVal = 0xff;                                       // 0xff:    //
             _tagUnknown =
-                new PCLControlCode (codeVal, false,
+                new PCLControlCode(codeVal, false,
                                    string.Empty,
                                    PrnParseConstants.eOvlAct.None,
                                    PrnParseConstants.eSeqGrp.Unknown,
@@ -330,7 +330,7 @@ namespace PCLParaphernalia
             {
                 tag = kvp.Value;
 
-                tag.resetStatistics ();
+                tag.resetStatistics();
             }
         }
     }

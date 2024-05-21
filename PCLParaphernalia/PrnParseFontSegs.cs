@@ -44,7 +44,7 @@ namespace PCLParaphernalia
         private PrnParseConstants.eOptOffsetFormats _indxOffsetFormat;
         private PrnParseRowTypes.eType _rowType;
 
-        private readonly ASCIIEncoding _ascii = new ASCIIEncoding ();
+        private readonly ASCIIEncoding _ascii = new ASCIIEncoding();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -68,7 +68,7 @@ namespace PCLParaphernalia
                                          PrnParseOptions options,
                                          DataTable table)
         {
-            const int arrayBytes  = 8;
+            const int arrayBytes = 8;
             const int bitsPerByte = 8;
             const int arrayBits = arrayBytes * bitsPerByte;
 
@@ -124,7 +124,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < arrayBytes; i++)
             {
-                charCollArray = (charCollArray << 8) + buf [offset + i];
+                charCollArray = (charCollArray << 8) + buf[offset + i];
             }
 
             //----------------------------------------------------------------//
@@ -134,20 +134,20 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            charCollVal   = 0;
+            charCollVal = 0;
             charCollIndex = 0;
 
             for (int i = 0; i < arrayBits; i++)
             {
-                bitVal = ((ulong) 0x01) << i;
+                bitVal = ((ulong)0x01) << i;
 
                 if ((charCollArray & bitVal) != 0)
                 {
                     // bit is set //
 
-                    listIndex = PCLCharCollections.getindexForKey (i);
+                    listIndex = PCLCharCollections.getindexForKey(i);
 
-                    bitType = PCLCharCollections.getBitType (listIndex);
+                    bitType = PCLCharCollections.getBitType(listIndex);
 
                     if (bitType == PCLCharCollections.eBitType.Collection)
                         charCollVal += bitVal;
@@ -169,7 +169,7 @@ namespace PCLParaphernalia
                 else if ((!complement) && (charCollIndex == 0x00))
                     codeDesc = "'000' = MSL";
                 else
-                    codeDesc = "'" + charCollIndex.ToString () + "' not MSL value!";
+                    codeDesc = "'" + charCollIndex.ToString() + "' not MSL value!";
             }
             else
             {
@@ -178,10 +178,10 @@ namespace PCLParaphernalia
                 else if ((!complement) && (charCollIndex == 0x01))
                     codeDesc = "'001' = Unicode";
                 else
-                    codeDesc = "'" + charCollIndex.ToString () + "' not Unicode value!";
+                    codeDesc = "'" + charCollIndex.ToString() + "' not Unicode value!";
             }
 
-            PrnParseCommon.addTextRow (
+            PrnParseCommon.addTextRow(
                 rowType,
                 table,
                 PrnParseConstants.eOvlShow.None,
@@ -203,7 +203,7 @@ namespace PCLParaphernalia
                 else
                     codeDesc = "All bits unset - compatible with any" + " typeface";
 
-                PrnParseCommon.addTextRow (
+                PrnParseCommon.addTextRow(
                     rowType,
                     table,
                     PrnParseConstants.eOvlShow.None,
@@ -229,14 +229,14 @@ namespace PCLParaphernalia
 
                     if (bitSig)
                     {
-                        listIndex = PCLCharCollections.getindexForKey (i);
+                        listIndex = PCLCharCollections.getindexForKey(i);
 
                         if (format_MSL)
-                            codeDesc = PCLCharCollections.getDescMSL (listIndex);
+                            codeDesc = PCLCharCollections.getDescMSL(listIndex);
                         else
-                            codeDesc = PCLCharCollections.getDescUnicode (listIndex);
+                            codeDesc = PCLCharCollections.getDescUnicode(listIndex);
 
-                        PrnParseCommon.addTextRow (
+                        PrnParseCommon.addTextRow(
                             rowType,
                             table,
                             PrnParseConstants.eOvlShow.None,
@@ -338,7 +338,7 @@ namespace PCLParaphernalia
 
             contType = PrnParseConstants.eContType.None;
 
-            _linkData.resetContData ();
+            _linkData.resetContData();
 
             if (firstSeg)
             {
@@ -359,7 +359,7 @@ namespace PCLParaphernalia
                 else
                     text = "PCL XL Binary";
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     PrnParseRowTypes.eType.DataBinary,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -398,7 +398,7 @@ namespace PCLParaphernalia
 
                         contType = _contType;
 
-                        _linkData.setBacktrack (contType, - bufRem);
+                        _linkData.setBacktrack(contType, -bufRem);
                     }
                     else
                     {
@@ -427,7 +427,7 @@ namespace PCLParaphernalia
                         switch (segType)
                         {
                             case 0x4150:
-                                processSeg_AP (segSize,
+                                processSeg_AP(segSize,
                                                segHddrLen,
                                                ref bufRem,
                                                ref bufOffset,
@@ -437,7 +437,7 @@ namespace PCLParaphernalia
                                 break;
 
                             case 0x4252:
-                                processSeg_BR (segSize,
+                                processSeg_BR(segSize,
                                                segHddrLen,
                                                ref bufRem,
                                                ref bufOffset,
@@ -447,7 +447,7 @@ namespace PCLParaphernalia
                                 break;
 
                             case 0x4343:
-                                processSeg_CC (segSize,
+                                processSeg_CC(segSize,
                                                segHddrLen,
                                                ref bufRem,
                                                ref bufOffset,
@@ -457,7 +457,7 @@ namespace PCLParaphernalia
                                 break;
 
                             case 0x4345:
-                                processSeg_CE (segSize,
+                                processSeg_CE(segSize,
                                                segHddrLen,
                                                ref bufRem,
                                                ref bufOffset,
@@ -467,7 +467,7 @@ namespace PCLParaphernalia
                                 break;
 
                             case 0x4350:
-                                processSeg_CP (segSize,
+                                processSeg_CP(segSize,
                                                segHddrLen,
                                                ref bufRem,
                                                ref bufOffset,
@@ -477,7 +477,7 @@ namespace PCLParaphernalia
                                 break;
 
                             case 0x4743:
-                                processSeg_GC (segSize,
+                                processSeg_GC(segSize,
                                                segHddrLen,
                                                ref bufRem,
                                                ref bufOffset,
@@ -487,7 +487,7 @@ namespace PCLParaphernalia
                                 break;
 
                             case 0x4749:
-                                processSeg_GI (segSize,
+                                processSeg_GI(segSize,
                                                segHddrLen,
                                                ref bufRem,
                                                ref bufOffset,
@@ -497,7 +497,7 @@ namespace PCLParaphernalia
                                 break;
 
                             case 0x4754:
-                                processSeg_GT (segSize,
+                                processSeg_GT(segSize,
                                                segHddrLen,
                                                ref bufRem,
                                                ref bufOffset,
@@ -507,7 +507,7 @@ namespace PCLParaphernalia
                                 break;
 
                             case 0x4946:
-                                processSeg_IF (segSize,
+                                processSeg_IF(segSize,
                                                segHddrLen,
                                                ref bufRem,
                                                ref bufOffset,
@@ -517,7 +517,7 @@ namespace PCLParaphernalia
                                 break;
 
                             case 0x5041:
-                                processSeg_PA (segSize,
+                                processSeg_PA(segSize,
                                                segHddrLen,
                                                ref bufRem,
                                                ref bufOffset,
@@ -527,7 +527,7 @@ namespace PCLParaphernalia
                                 break;
 
                             case 0x5046:
-                                processSeg_PF (segSize,
+                                processSeg_PF(segSize,
                                                segHddrLen,
                                                ref bufRem,
                                                ref bufOffset,
@@ -537,7 +537,7 @@ namespace PCLParaphernalia
                                 break;
 
                             case 0x5446:
-                                processSeg_TF (segSize,
+                                processSeg_TF(segSize,
                                                segHddrLen,
                                                ref bufRem,
                                                ref bufOffset,
@@ -547,7 +547,7 @@ namespace PCLParaphernalia
                                 break;
 
                             case 0x5645:
-                                processSeg_VE (segSize,
+                                processSeg_VE(segSize,
                                                segHddrLen,
                                                ref bufRem,
                                                ref bufOffset,
@@ -557,7 +557,7 @@ namespace PCLParaphernalia
                                 break;
 
                             case 0x5649:
-                                processSeg_VI (segSize,
+                                processSeg_VI(segSize,
                                                segHddrLen,
                                                ref bufRem,
                                                ref bufOffset,
@@ -567,7 +567,7 @@ namespace PCLParaphernalia
                                 break;
 
                             case 0x5652:
-                                processSeg_VR (segSize,
+                                processSeg_VR(segSize,
                                                segHddrLen,
                                                ref bufRem,
                                                ref bufOffset,
@@ -577,7 +577,7 @@ namespace PCLParaphernalia
                                 break;
 
                             case 0x5654:
-                                processSeg_VT (segSize,
+                                processSeg_VT(segSize,
                                                segHddrLen,
                                                ref bufRem,
                                                ref bufOffset,
@@ -587,7 +587,7 @@ namespace PCLParaphernalia
                                 break;
 
                             case 0x5857:
-                                processSeg_XW (segSize,
+                                processSeg_XW(segSize,
                                                segHddrLen,
                                                ref bufRem,
                                                ref bufOffset,
@@ -597,7 +597,7 @@ namespace PCLParaphernalia
                                 break;
 
                             case 0x00ffff:
-                                processSegNull (segSize,
+                                processSegNull(segSize,
                                                 segHddrLen,
                                                 ref bufRem,
                                                 ref bufOffset,
@@ -607,7 +607,7 @@ namespace PCLParaphernalia
                                 break;
 
                             default:
-                                processSegUnknown (segType,
+                                processSegUnknown(segType,
                                                    segSize,
                                                    segHddrLen,
                                                    ref bufRem,
@@ -618,7 +618,7 @@ namespace PCLParaphernalia
                                 break;
                         }
 
-                        contType = _linkData.getContType ();
+                        contType = _linkData.getContType();
 
                         if (contType != PrnParseConstants.eContType.None)
                             continuation = true;
@@ -643,7 +643,7 @@ namespace PCLParaphernalia
                     hddrDataRem -= bufRem;
                     hddrRem -= bufRem;
 
-                    _linkData.setContinuation (contType);
+                    _linkData.setContinuation(contType);
                 }
                 else
                 {
@@ -668,7 +668,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    PrnParseData.processBinary (
+                    PrnParseData.processBinary(
                         _table,
                         PrnParseConstants.eOvlShow.None,
                         _buf,
@@ -751,13 +751,13 @@ namespace PCLParaphernalia
 
                 contType = _contType;
 
-                _linkData.setBacktrack (contType, - bufRem);
+                _linkData.setBacktrack(contType, -bufRem);
             }
             else
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary (
+                    PrnParseData.processBinary(
                         _table,
                         PrnParseConstants.eOvlShow.None,
                         _buf,
@@ -790,7 +790,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -801,7 +801,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     segTypeDesc);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -835,7 +835,7 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    reportError (
+                    reportError(
                         "Segment (size " + segSize + ") larger than",
                         "remainder (" + hddrDataRem + ") of segmented data",
                         "Header is  internally inconsistent");
@@ -848,7 +848,7 @@ namespace PCLParaphernalia
 
                     if (_segRem != 0)
                     {
-                        reportError (
+                        reportError(
                             "Segment remainder " + _segRem + " non-zero",
                             string.Empty, string.Empty);
                     }
@@ -899,13 +899,13 @@ namespace PCLParaphernalia
 
                 contType = _contType;
 
-                _linkData.setBacktrack (contType, - bufRem);
+                _linkData.setBacktrack(contType, -bufRem);
             }
             else
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary (
+                    PrnParseData.processBinary(
                         _table,
                         PrnParseConstants.eOvlShow.None,
                         _buf,
@@ -938,7 +938,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -949,7 +949,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     segTypeDesc);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -985,7 +985,7 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    reportError (
+                    reportError(
                         "Segment (size " + segSize + ") larger than",
                         "remainder (" + hddrDataRem + ") of segmented data",
                         "Header is  internally inconsistent");
@@ -1041,13 +1041,13 @@ namespace PCLParaphernalia
 
                 contType = _contType;
 
-                _linkData.setBacktrack (contType, - bufRem);
+                _linkData.setBacktrack(contType, -bufRem);
             }
             else
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary (
+                    PrnParseData.processBinary(
                         _table,
                         PrnParseConstants.eOvlShow.None,
                         _buf,
@@ -1080,7 +1080,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -1091,7 +1091,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     segTypeDesc);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -1119,7 +1119,7 @@ namespace PCLParaphernalia
                 //------------------------------------------------------------//
 
                 bufOffset += minSegLen;
-                bufRem    -= minSegLen;
+                bufRem -= minSegLen;
                 hddrDataRem -= minSegLen;
                 hddrRem -= minSegLen;
 
@@ -1131,7 +1131,7 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    reportError (
+                    reportError(
                         "Segment (size " + segSize + ") larger than",
                         "remainder (" + hddrDataRem + ") of segmented data",
                         "Header is  internally inconsistent");
@@ -1174,7 +1174,7 @@ namespace PCLParaphernalia
             ushort ui16a;
 
             minSegSize = 4;
-            minSegLen  = segHddrLen + minSegSize;
+            minSegLen = segHddrLen + minSegSize;
             baseOffset = bufOffset + _fileOffset;
             dataOffset = bufOffset + segHddrLen;
 
@@ -1189,13 +1189,13 @@ namespace PCLParaphernalia
 
                 contType = _contType;
 
-                _linkData.setBacktrack (contType, - bufRem);
+                _linkData.setBacktrack(contType, -bufRem);
             }
             else
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary (
+                    PrnParseData.processBinary(
                         _table,
                         PrnParseConstants.eOvlShow.None,
                         _buf,
@@ -1228,7 +1228,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -1239,7 +1239,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     segTypeDesc);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -1261,10 +1261,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                ui16a = (ushort)((_buf[dataOffset    ] * 256) +
+                ui16a = (ushort)((_buf[dataOffset] * 256) +
                                   _buf[dataOffset + 1]);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -1278,7 +1278,7 @@ namespace PCLParaphernalia
                 ui16a = (ushort)((_buf[dataOffset + 2] * 256) +
                                   _buf[dataOffset + 3]);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -1295,10 +1295,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufOffset    += minSegLen;
-                bufRem       -= minSegLen;
+                bufOffset += minSegLen;
+                bufRem -= minSegLen;
                 hddrDataRem -= minSegLen;
-                hddrRem     -= minSegLen;
+                hddrRem -= minSegLen;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1308,7 +1308,7 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    reportError (
+                    reportError(
                         "Segment (size " + segSize + ") larger than",
                         "remainder (" + hddrDataRem + ") of segmented data",
                         "Header is  internally inconsistent");
@@ -1321,7 +1321,7 @@ namespace PCLParaphernalia
 
                     if (_segRem != 0)
                     {
-                        reportError (
+                        reportError(
                             "Segment remainder " + _segRem + " non-zero",
                             string.Empty, string.Empty);
                     }
@@ -1371,13 +1371,13 @@ namespace PCLParaphernalia
 
                 contType = _contType;
 
-                _linkData.setBacktrack (contType, -bufRem);
+                _linkData.setBacktrack(contType, -bufRem);
             }
             else
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary (
+                    PrnParseData.processBinary(
                         _table,
                         PrnParseConstants.eOvlShow.None,
                         _buf,
@@ -1410,7 +1410,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -1421,7 +1421,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     segTypeDesc);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -1472,7 +1472,7 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    reportError (
+                    reportError(
                         "Segment (size " + segSize + ") larger than",
                         "remainder (" + hddrDataRem + ") of segmented data",
                         "Header is  internally inconsistent");
@@ -1528,13 +1528,13 @@ namespace PCLParaphernalia
 
                 contType = _contType;
 
-                _linkData.setBacktrack (contType, -bufRem);
+                _linkData.setBacktrack(contType, -bufRem);
             }
             else
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary (
+                    PrnParseData.processBinary(
                         _table,
                         PrnParseConstants.eOvlShow.None,
                         _buf,
@@ -1567,7 +1567,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -1578,7 +1578,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     segTypeDesc);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -1618,7 +1618,7 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    reportError (
+                    reportError(
                         "Segment (size " + segSize + ") larger than",
                         "remainder (" + hddrDataRem + ") of segmented data",
                         "Header is  internally inconsistent");
@@ -1685,13 +1685,13 @@ namespace PCLParaphernalia
 
                 contType = _contType;
 
-                _linkData.setBacktrack (contType, -bufRem);
+                _linkData.setBacktrack(contType, -bufRem);
             }
             else
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary (
+                    PrnParseData.processBinary(
                         _table,
                         PrnParseConstants.eOvlShow.None,
                         _buf,
@@ -1724,7 +1724,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -1735,7 +1735,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     segTypeDesc);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -1779,7 +1779,7 @@ namespace PCLParaphernalia
                         textB = string.Empty;
                     }
 
-                    PrnParseCommon.addDataRow (
+                    PrnParseCommon.addDataRow(
                         _rowType,
                         _table,
                         PrnParseConstants.eOvlShow.None,
@@ -1788,7 +1788,7 @@ namespace PCLParaphernalia
                         _analysisLevel,
                         textA,
                         textB,
-                        _ascii.GetString (_buf,
+                        _ascii.GetString(_buf,
                                           dataOffset + cpyOffset,
                                           sliceLen));
 
@@ -1816,7 +1816,7 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    reportError (
+                    reportError(
                         "Segment (size " + segSize + ") larger than",
                         "remainder (" + hddrDataRem + ") of segmented data",
                         "Header is  internally inconsistent");
@@ -1879,7 +1879,7 @@ namespace PCLParaphernalia
 
                 contType = _contType;
 
-                _linkData.setBacktrack (contType, - bufRem);
+                _linkData.setBacktrack(contType, -bufRem);
             }
             else
             {
@@ -1918,13 +1918,13 @@ namespace PCLParaphernalia
 
                 contType = _contType;
 
-                _linkData.setBacktrack (contType, - bufRem);
+                _linkData.setBacktrack(contType, -bufRem);
             }
             else
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary (
+                    PrnParseData.processBinary(
                         _table,
                         PrnParseConstants.eOvlShow.None,
                         _buf,
@@ -1957,7 +1957,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -1968,7 +1968,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     segTypeDesc);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -1989,10 +1989,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                ui16a = (ushort)((_buf[dataOffset    ] * 256) +
+                ui16a = (ushort)((_buf[dataOffset] * 256) +
                                   _buf[dataOffset + 1]);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -2012,7 +2012,7 @@ namespace PCLParaphernalia
                 ui16a = (ushort)((_buf[dataOffset + 2] * 256) +
                                   _buf[dataOffset + 3]);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -2029,7 +2029,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -2056,10 +2056,10 @@ namespace PCLParaphernalia
                     {
                         int j = i * 6;
 
-                        ui16a = (ushort) ((_buf[dataOffset + 6 + j] * 256) +
+                        ui16a = (ushort)((_buf[dataOffset + 6 + j] * 256) +
                                           _buf[dataOffset + 7 + j]);
 
-                        PrnParseCommon.addDataRow (
+                        PrnParseCommon.addDataRow(
                             _rowType,
                             _table,
                             PrnParseConstants.eOvlShow.None,
@@ -2068,12 +2068,12 @@ namespace PCLParaphernalia
                             _analysisLevel,
                             "        data:",
                             "Region Start:",
-                            "0x" + ui16a.ToString ("X4"));
+                            "0x" + ui16a.ToString("X4"));
 
-                        ui16a = (ushort) ((_buf[dataOffset + 8 + j] * 256) +
+                        ui16a = (ushort)((_buf[dataOffset + 8 + j] * 256) +
                                           _buf[dataOffset + 9 + j]);
 
-                        PrnParseCommon.addDataRow (
+                        PrnParseCommon.addDataRow(
                             _rowType,
                             _table,
                             PrnParseConstants.eOvlShow.None,
@@ -2082,12 +2082,12 @@ namespace PCLParaphernalia
                             _analysisLevel,
                             "        data:",
                             "       End:",
-                            "0x" + ui16a.ToString ("X4"));
+                            "0x" + ui16a.ToString("X4"));
 
-                        ui16a = (ushort) ((_buf[dataOffset + 10 + j] * 256) +
+                        ui16a = (ushort)((_buf[dataOffset + 10 + j] * 256) +
                                           _buf[dataOffset + 11 + j]);
 
-                        PrnParseCommon.addDataRow (
+                        PrnParseCommon.addDataRow(
                             _rowType,
                             _table,
                             PrnParseConstants.eOvlShow.None,
@@ -2096,12 +2096,12 @@ namespace PCLParaphernalia
                             _analysisLevel,
                             "        data:",
                             "       Galley:",
-                            "0x" + ui16a.ToString ("X4"));
+                            "0x" + ui16a.ToString("X4"));
                     }
                 }
                 else
                 {
-                    reportError (
+                    reportError(
                         "Possibly corrupt: 'Region Count' value " + numRegions,
                         "makes minimum segment header size " +
                             (minSegLen + varSegSize) + " bytes",
@@ -2128,7 +2128,7 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    reportError (
+                    reportError(
                         "Segment (size " + segSize + ") larger than",
                         "remainder (" + hddrDataRem + ") of segmented data",
                         "Header is  internally inconsistent");
@@ -2141,7 +2141,7 @@ namespace PCLParaphernalia
 
                     if (_segRem != 0)
                     {
-                        reportError (
+                        reportError(
                             "Segment remainder " + _segRem + " non-zero",
                             string.Empty, string.Empty);
                     }
@@ -2191,13 +2191,13 @@ namespace PCLParaphernalia
 
                 contType = _contType;
 
-                _linkData.setBacktrack (contType, -bufRem);
+                _linkData.setBacktrack(contType, -bufRem);
             }
             else
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary (
+                    PrnParseData.processBinary(
                         _table,
                         PrnParseConstants.eOvlShow.None,
                         _buf,
@@ -2230,7 +2230,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -2241,7 +2241,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     segTypeDesc);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -2277,7 +2277,7 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    reportError (
+                    reportError(
                         "Segment (size " + segSize + ") larger than",
                         "remainder (" + hddrDataRem + ") of segmented data",
                         "Header is  internally inconsistent");
@@ -2350,7 +2350,7 @@ namespace PCLParaphernalia
 
                 contType = _contType;
 
-                _linkData.setBacktrack (contType, - bufRem);
+                _linkData.setBacktrack(contType, -bufRem);
             }
             else
             {
@@ -2368,13 +2368,13 @@ namespace PCLParaphernalia
                 if ((minSegLen + varSegSize) <= PrnParseConstants.bufSize)
                 {
                     minSegSize += varSegSize;
-                    minSegLen  += varSegSize;
+                    minSegLen += varSegSize;
                     numTablesOK = true;
                 }
                 else
                 {
                     numTablesOK = false;
-                    _validSegs  = false;
+                    _validSegs = false;
                 }
             }
 
@@ -2389,13 +2389,13 @@ namespace PCLParaphernalia
 
                 contType = _contType;
 
-                _linkData.setBacktrack (contType, -bufRem);
+                _linkData.setBacktrack(contType, -bufRem);
             }
             else
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary (
+                    PrnParseData.processBinary(
                         _table,
                         PrnParseConstants.eOvlShow.None,
                         _buf,
@@ -2428,7 +2428,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -2439,7 +2439,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     segTypeDesc);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -2463,12 +2463,12 @@ namespace PCLParaphernalia
 
                 tableOffset = baseOffset;
 
-                ui32a = (uint) ((_buf[dataOffset] * 65536 * 256) +
+                ui32a = (uint)((_buf[dataOffset] * 65536 * 256) +
                                  (_buf[dataOffset + 1] * 65536) +
                                  (_buf[dataOffset + 2] * 256) +
                                   _buf[dataOffset + 3]);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -2477,7 +2477,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        data:",
                     "SFNT version:",
-                    "0x" + ui32a.ToString ("X8"));
+                    "0x" + ui32a.ToString("X8"));
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -2485,7 +2485,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -2494,7 +2494,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        data:",
                     "Table Count:",
-                    numTables.ToString ());
+                    numTables.ToString());
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -2504,10 +2504,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                ui16a = (ushort) ((_buf[dataOffset + 6] * 256) +
+                ui16a = (ushort)((_buf[dataOffset + 6] * 256) +
                                   _buf[dataOffset + 7]);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -2516,7 +2516,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        data:",
                     "Search Range:",
-                    ui16a.ToString ());
+                    ui16a.ToString());
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -2526,10 +2526,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                ui16a = (ushort) ((_buf[dataOffset + 8] * 256) +
+                ui16a = (ushort)((_buf[dataOffset + 8] * 256) +
                                   _buf[dataOffset + 9]);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -2538,7 +2538,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        data:",
                     "Entry Selector:",
-                    ui16a.ToString ());
+                    ui16a.ToString());
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -2548,10 +2548,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                ui16a = (ushort) ((_buf[dataOffset + 10] * 256) +
+                ui16a = (ushort)((_buf[dataOffset + 10] * 256) +
                                   _buf[dataOffset + 11]);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -2560,7 +2560,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        data:",
                     "Range Shift:",
-                    ui16a.ToString ());
+                    ui16a.ToString());
 
                 if (numTablesOK)
                 {
@@ -2585,7 +2585,7 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        PrnParseCommon.addDataRow (
+                        PrnParseCommon.addDataRow(
                             _rowType,
                             _table,
                             PrnParseConstants.eOvlShow.None,
@@ -2594,7 +2594,7 @@ namespace PCLParaphernalia
                             _analysisLevel,
                             "        data:",
                             "Table Tag:",
-                            _ascii.GetString (_buf, dataOffset + 12 + j, 4));
+                            _ascii.GetString(_buf, dataOffset + 12 + j, 4));
 
                         //----------------------------------------------------//
                         //                                                    //
@@ -2602,12 +2602,12 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        ui32a = (uint) ((_buf[dataOffset + 16 + j] * 65536 * 256) +
+                        ui32a = (uint)((_buf[dataOffset + 16 + j] * 65536 * 256) +
                                          (_buf[dataOffset + 17 + j] * 65536) +
                                          (_buf[dataOffset + 18 + j] * 256) +
                                           _buf[dataOffset + 19 + j]);
 
-                        PrnParseCommon.addDataRow (
+                        PrnParseCommon.addDataRow(
                             _rowType,
                             _table,
                             PrnParseConstants.eOvlShow.None,
@@ -2616,7 +2616,7 @@ namespace PCLParaphernalia
                             _analysisLevel,
                             "        data:",
                             "      Checksum:",
-                            "0x" + ui32a.ToString ("X8"));
+                            "0x" + ui32a.ToString("X8"));
 
                         //----------------------------------------------------//
                         //                                                    //
@@ -2624,15 +2624,15 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        offset = (uint) ((_buf[dataOffset + 20 + j] * 65536 * 256) +
+                        offset = (uint)((_buf[dataOffset + 20 + j] * 65536 * 256) +
                                            (_buf[dataOffset + 21 + j] * 65536) +
                                            (_buf[dataOffset + 22 + j] * 256) +
                                             _buf[dataOffset + 23 + j]);
 
-                        ui32b = (uint) (tableOffset + offset);
+                        ui32b = (uint)(tableOffset + offset);
 
                         if (offset == 0)
-                            PrnParseCommon.addDataRow (
+                            PrnParseCommon.addDataRow(
                                 _rowType,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
@@ -2644,7 +2644,7 @@ namespace PCLParaphernalia
                                 "0");
                         else
                         {
-                            PrnParseCommon.addDataRow (
+                            PrnParseCommon.addDataRow(
                                 _rowType,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
@@ -2653,8 +2653,8 @@ namespace PCLParaphernalia
                                 _analysisLevel,
                                 "        data:",
                                 "      Offset:",
-                                offset.ToString () + " relative (= " +
-                                ui32b.ToString () + " absolute)");
+                                offset.ToString() + " relative (= " +
+                                ui32b.ToString() + " absolute)");
                         }
 
                         //----------------------------------------------------//
@@ -2665,7 +2665,7 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        size = (uint) ((_buf[dataOffset + 24 + j] * 65536 * 256) +
+                        size = (uint)((_buf[dataOffset + 24 + j] * 65536 * 256) +
                                          (_buf[dataOffset + 25 + j] * 65536) +
                                          (_buf[dataOffset + 26 + j] * 256) +
                                           _buf[dataOffset + 27 + j]);
@@ -2674,7 +2674,7 @@ namespace PCLParaphernalia
 
                         if (padBytes == 0)
                         {
-                            PrnParseCommon.addDataRow (
+                            PrnParseCommon.addDataRow(
                                 _rowType,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
@@ -2683,14 +2683,14 @@ namespace PCLParaphernalia
                                 _analysisLevel,
                                 "        data:",
                                 "      Size:",
-                                size.ToString ());
+                                size.ToString());
                         }
                         else
                         {
                             padBytes = 4 - padBytes;
                             padSize = (uint)(size + padBytes);
 
-                            PrnParseCommon.addDataRow (
+                            PrnParseCommon.addDataRow(
                                 _rowType,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
@@ -2699,13 +2699,13 @@ namespace PCLParaphernalia
                                 _analysisLevel,
                                 "        data:",
                                 "      Size:",
-                                size.ToString ()    + " (padded size = " +
-                                padSize.ToString () + ")");
+                                size.ToString() + " (padded size = " +
+                                padSize.ToString() + ")");
                         }
 
                         if ((offset > segSize) || ((offset + size) > segSize))
                         {
-                            reportError (
+                            reportError(
                                 "Offset and/or size incompatible with" +
                                     " segment size",
                                 string.Empty, string.Empty);
@@ -2714,7 +2714,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    reportError (
+                    reportError(
                         "Possibly corrupt: 'Table Count' value " + numTables,
                         "makes minimum segment header size " +
                             (minSegLen + varSegSize) + " bytes",
@@ -2741,7 +2741,7 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    reportError (
+                    reportError(
                         "Segment (size " + segSize + ") larger than",
                         "remainder (" + hddrDataRem + ") of segmented data",
                         "Header is  internally inconsistent");
@@ -2797,13 +2797,13 @@ namespace PCLParaphernalia
 
                 contType = _contType;
 
-                _linkData.setBacktrack (contType, -bufRem);
+                _linkData.setBacktrack(contType, -bufRem);
             }
             else
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary (
+                    PrnParseData.processBinary(
                         _table,
                         PrnParseConstants.eOvlShow.None,
                         _buf,
@@ -2836,7 +2836,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -2847,7 +2847,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     segTypeDesc);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -2883,7 +2883,7 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    reportError (
+                    reportError(
                         "Segment (size " + segSize + ") larger than",
                         "remainder (" + hddrDataRem + ") of segmented data",
                         "Header is  internally inconsistent");
@@ -2943,13 +2943,13 @@ namespace PCLParaphernalia
 
                 contType = _contType;
 
-                _linkData.setBacktrack (contType, -bufRem);
+                _linkData.setBacktrack(contType, -bufRem);
             }
             else
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary (
+                    PrnParseData.processBinary(
                         _table,
                         PrnParseConstants.eOvlShow.None,
                         _buf,
@@ -2982,7 +2982,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -2993,7 +2993,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     segTypeDesc);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -3026,7 +3026,7 @@ namespace PCLParaphernalia
                     panoseSet += b;
                 }
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -3056,7 +3056,7 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    reportError (
+                    reportError(
                         "Segment (size " + segSize + ") larger than",
                         "remainder (" + hddrDataRem + ") of segmented data",
                         "Header is  internally inconsistent");
@@ -3112,13 +3112,13 @@ namespace PCLParaphernalia
 
                 contType = _contType;
 
-                _linkData.setBacktrack (contType, -bufRem);
+                _linkData.setBacktrack(contType, -bufRem);
             }
             else
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary (
+                    PrnParseData.processBinary(
                         _table,
                         PrnParseConstants.eOvlShow.None,
                         _buf,
@@ -3151,7 +3151,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -3162,7 +3162,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     segTypeDesc);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -3198,7 +3198,7 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    reportError (
+                    reportError(
                         "Segment (size " + segSize + ") larger than",
                         "remainder (" + hddrDataRem + ") of segmented data",
                         "Header is  internally inconsistent");
@@ -3254,13 +3254,13 @@ namespace PCLParaphernalia
 
                 contType = _contType;
 
-                _linkData.setBacktrack (contType, -bufRem);
+                _linkData.setBacktrack(contType, -bufRem);
             }
             else
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary (
+                    PrnParseData.processBinary(
                         _table,
                         PrnParseConstants.eOvlShow.None,
                         _buf,
@@ -3293,7 +3293,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -3304,7 +3304,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     segTypeDesc);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -3340,7 +3340,7 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    reportError (
+                    reportError(
                         "Segment (size " + segSize + ") larger than",
                         "remainder (" + hddrDataRem + ") of segmented data",
                         "Header is  internally inconsistent");
@@ -3403,7 +3403,7 @@ namespace PCLParaphernalia
 
                 contType = _contType;
 
-                _linkData.setBacktrack (contType, - bufRem);
+                _linkData.setBacktrack(contType, -bufRem);
             }
             else
             {
@@ -3441,13 +3441,13 @@ namespace PCLParaphernalia
 
                 contType = _contType;
 
-                _linkData.setBacktrack (contType, - bufRem);
+                _linkData.setBacktrack(contType, -bufRem);
             }
             else
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary (
+                    PrnParseData.processBinary(
                         _table,
                         PrnParseConstants.eOvlShow.None,
                         _buf,
@@ -3480,7 +3480,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -3491,7 +3491,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     segTypeDesc);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -3514,7 +3514,7 @@ namespace PCLParaphernalia
 
                 ui16a = _buf[bufOffset + 6];
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -3531,7 +3531,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -3557,10 +3557,10 @@ namespace PCLParaphernalia
                     {
                         int j = i * 4;
 
-                        ui16a = (ushort) ((_buf[bufOffset + 8 + j] * 256) +
+                        ui16a = (ushort)((_buf[bufOffset + 8 + j] * 256) +
                                            _buf[bufOffset + 9 + j]);
 
-                        PrnParseCommon.addDataRow (
+                        PrnParseCommon.addDataRow(
                             _rowType,
                             _table,
                             PrnParseConstants.eOvlShow.None,
@@ -3569,14 +3569,14 @@ namespace PCLParaphernalia
                             _analysisLevel,
                             "        data:",
                             "Range FirstCode:",
-                            "0x" + ui16a.ToString ("X4"));
+                            "0x" + ui16a.ToString("X4"));
 
                         j += 2;
 
-                        ui16a = (ushort) ((_buf[bufOffset + 8 + j] * 256) +
+                        ui16a = (ushort)((_buf[bufOffset + 8 + j] * 256) +
                                            _buf[bufOffset + 9 + j]);
 
-                        PrnParseCommon.addDataRow (
+                        PrnParseCommon.addDataRow(
                             _rowType,
                             _table,
                             PrnParseConstants.eOvlShow.None,
@@ -3585,12 +3585,12 @@ namespace PCLParaphernalia
                             _analysisLevel,
                             "        data:",
                             "      LastCode:",
-                            "0x" + ui16a.ToString ("X4"));
+                            "0x" + ui16a.ToString("X4"));
                     }
                 }
                 else
                 {
-                    reportError (
+                    reportError(
                         "Possibly corrupt: 'Range Count' value " + numRanges,
                         "makes minimum segment header size " +
                             (minSegLen + varSegSize) + " bytes",
@@ -3617,7 +3617,7 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    reportError (
+                    reportError(
                         "Segment (size " + segSize + ") larger than",
                         "remainder (" + hddrDataRem + ") of segmented data",
                         "Header is  internally inconsistent");
@@ -3630,7 +3630,7 @@ namespace PCLParaphernalia
 
                     if (_segRem != 0)
                     {
-                        reportError (
+                        reportError(
                             "Segment remainder " + _segRem + " non-zero",
                             string.Empty, string.Empty);
                     }
@@ -3691,13 +3691,13 @@ namespace PCLParaphernalia
 
                 contType = _contType;
 
-                _linkData.setBacktrack (contType, -bufRem);
+                _linkData.setBacktrack(contType, -bufRem);
             }
             else
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary (
+                    PrnParseData.processBinary(
                         _table,
                         PrnParseConstants.eOvlShow.None,
                         _buf,
@@ -3730,7 +3730,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -3741,7 +3741,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     segTypeDesc);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -3785,7 +3785,7 @@ namespace PCLParaphernalia
                         textB = string.Empty;
                     }
 
-                    PrnParseCommon.addDataRow (
+                    PrnParseCommon.addDataRow(
                         _rowType,
                         _table,
                         PrnParseConstants.eOvlShow.None,
@@ -3794,7 +3794,7 @@ namespace PCLParaphernalia
                         _analysisLevel,
                         textA,
                         textB,
-                        _ascii.GetString (_buf,
+                        _ascii.GetString(_buf,
                                           dataOffset + infOffset,
                                           sliceLen));
 
@@ -3822,7 +3822,7 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    reportError (
+                    reportError(
                         "Segment (size " + segSize + ") larger than",
                         "remainder (" + hddrDataRem + ") of segmented data",
                         "Header is  internally inconsistent");
@@ -3882,13 +3882,13 @@ namespace PCLParaphernalia
 
                 contType = _contType;
 
-                _linkData.setBacktrack (contType, - bufRem);
+                _linkData.setBacktrack(contType, -bufRem);
             }
             else
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary (
+                    PrnParseData.processBinary(
                         _table,
                         PrnParseConstants.eOvlShow.None,
                         _buf,
@@ -3921,7 +3921,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -3932,7 +3932,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     segTypeDesc);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -3953,10 +3953,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                ui16a = (ushort)((_buf[dataOffset    ] * 256) +
+                ui16a = (ushort)((_buf[dataOffset] * 256) +
                                   _buf[dataOffset + 1]);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -3976,7 +3976,7 @@ namespace PCLParaphernalia
                 si16a = (short)((_buf[dataOffset + 2] * 256) +
                                  _buf[dataOffset + 3]);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -4006,7 +4006,7 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    reportError (
+                    reportError(
                         "Segment (size " + segSize + ") larger than",
                         "remainder (" + hddrDataRem + ") of segmented data",
                         "Header is  internally inconsistent");
@@ -4019,7 +4019,7 @@ namespace PCLParaphernalia
 
                     if (_segRem != 0)
                     {
-                        reportError (
+                        reportError(
                             "Segment remainder " + _segRem + " non-zero",
                             string.Empty, string.Empty);
                     }
@@ -4074,13 +4074,13 @@ namespace PCLParaphernalia
 
                 contType = _contType;
 
-                _linkData.setBacktrack (contType, - bufRem);
+                _linkData.setBacktrack(contType, -bufRem);
             }
             else
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary (
+                    PrnParseData.processBinary(
                         _table,
                         PrnParseConstants.eOvlShow.None,
                         _buf,
@@ -4113,7 +4113,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -4124,7 +4124,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     segTypeDesc);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -4145,7 +4145,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                numSubs    = (ushort)((segSize - 4) / 4);
+                numSubs = (ushort)((segSize - 4) / 4);
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -4156,14 +4156,14 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                for (int i =0; i<numSubs; i++)
+                for (int i = 0; i < numSubs; i++)
                 {
                     int j = i * 4;
 
-                    ui16a = (ushort)((_buf[dataOffset + j    ] * 256) +
+                    ui16a = (ushort)((_buf[dataOffset + j] * 256) +
                                       _buf[dataOffset + j + 1]);
 
-                    PrnParseCommon.addDataRow (
+                    PrnParseCommon.addDataRow(
                         _rowType,
                         _table,
                         PrnParseConstants.eOvlShow.None,
@@ -4177,7 +4177,7 @@ namespace PCLParaphernalia
                     ui16a = (ushort)((_buf[dataOffset + j + 2] * 256) +
                                       _buf[dataOffset + j + 3]);
 
-                    PrnParseCommon.addDataRow (
+                    PrnParseCommon.addDataRow(
                         _rowType,
                         _table,
                         PrnParseConstants.eOvlShow.None,
@@ -4197,12 +4197,12 @@ namespace PCLParaphernalia
                 //------------------------------------------------------------//
 
                 eoTMOffset = segHddrLen + (numSubs * 4);
-                minSegLen  = eoTMOffset + 4;
+                minSegLen = eoTMOffset + 4;
 
-                ui16a = (ushort)((_buf[dataOffset + eoTMOffset    ] * 256) +
+                ui16a = (ushort)((_buf[dataOffset + eoTMOffset] * 256) +
                                   _buf[dataOffset + eoTMOffset + 1]);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -4216,7 +4216,7 @@ namespace PCLParaphernalia
                 ui16a = (ushort)((_buf[dataOffset + eoTMOffset + 2] * 256) +
                                   _buf[dataOffset + eoTMOffset + 3]);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -4246,7 +4246,7 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    reportError (
+                    reportError(
                         "Segment (size " + segSize + ") larger than",
                         "remainder (" + hddrDataRem + ") of segmented data",
                         "Header is  internally inconsistent");
@@ -4259,7 +4259,7 @@ namespace PCLParaphernalia
 
                     if (_segRem != 0)
                     {
-                        reportError (
+                        reportError(
                             "Segment remainder " + _segRem + " non-zero",
                             string.Empty, string.Empty);
                     }
@@ -4309,13 +4309,13 @@ namespace PCLParaphernalia
 
                 contType = _contType;
 
-                _linkData.setBacktrack (contType, -bufRem);
+                _linkData.setBacktrack(contType, -bufRem);
             }
             else
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary (
+                    PrnParseData.processBinary(
                         _table,
                         PrnParseConstants.eOvlShow.None,
                         _buf,
@@ -4348,7 +4348,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -4359,7 +4359,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     segTypeDesc);
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -4395,7 +4395,7 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    reportError (
+                    reportError(
                         "Segment (size " + segSize + ") larger than",
                         "remainder (" + hddrDataRem + ") of segmented data",
                         "Header is  internally inconsistent");
@@ -4418,13 +4418,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void reportError (string line1,
+        private void reportError(string line1,
                                   string line2,
                                   string line3)
         {
             _validSegs = false;
 
-            PrnParseCommon.addTextRow (
+            PrnParseCommon.addTextRow(
                 PrnParseRowTypes.eType.MsgWarning,
                 _table,
                 PrnParseConstants.eOvlShow.None,
@@ -4435,7 +4435,7 @@ namespace PCLParaphernalia
 
             if (line2 != string.Empty)
             {
-                PrnParseCommon.addTextRow (
+                PrnParseCommon.addTextRow(
                     PrnParseRowTypes.eType.MsgWarning,
                     _table,
                     PrnParseConstants.eOvlShow.None,
@@ -4447,7 +4447,7 @@ namespace PCLParaphernalia
 
             if (line3 != string.Empty)
             {
-                PrnParseCommon.addTextRow (
+                PrnParseCommon.addTextRow(
                     PrnParseRowTypes.eType.MsgWarning,
                     _table,
                     PrnParseConstants.eOvlShow.None,

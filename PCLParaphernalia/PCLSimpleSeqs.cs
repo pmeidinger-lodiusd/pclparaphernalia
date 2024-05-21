@@ -50,7 +50,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkSimpleSeq (
+        public static bool checkSimpleSeq(
             int macroLevel,
             byte iChar,
             ref bool optObsolete,
@@ -62,7 +62,7 @@ namespace PCLParaphernalia
 
             PCLSimpleSeq seq;
 
-            if (_seqs.IndexOfKey (iChar) != -1)
+            if (_seqs.IndexOfKey(iChar) != -1)
             {
                 seqKnown = true;
                 seq = _seqs[iChar];
@@ -73,9 +73,9 @@ namespace PCLParaphernalia
                 seq = _seqUnknown;
             }
 
-            optObsolete     = seq.FlagObsolete;
-            optResetHPGL2   = seq.FlagResetHPGL2;
-            description     = seq.Description;
+            optObsolete = seq.FlagObsolete;
+            optResetHPGL2 = seq.FlagResetHPGL2;
+            description = seq.Description;
             makeOvlAct = seq.makeOvlAct;
 
             seq.incrementStatisticsCount(macroLevel);   // Statistical data
@@ -123,7 +123,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCounts (DataTable table,
+        public static void displayStatsCounts(DataTable table,
                                                bool incUsedSeqsOnly,
                                                bool excUnusedObsSeqs)
         {
@@ -147,13 +147,13 @@ namespace PCLParaphernalia
 
             if (displaySeq)
             {
-                if (! hddrWritten)
+                if (!hddrWritten)
                 {
-                    displayStatsCountsHddr (table);
+                    displayStatsCountsHddr(table);
                     hddrWritten = true;
                 }
 
-                row = table.NewRow ();
+                row = table.NewRow();
 
                 row[0] = _seqUnknown.Sequence;
                 row[1] = _seqUnknown.Description;
@@ -161,7 +161,7 @@ namespace PCLParaphernalia
                 row[3] = _seqUnknown.StatsCtChild;
                 row[4] = _seqUnknown.StatsCtTotal;
 
-                table.Rows.Add (row);
+                table.Rows.Add(row);
             }
 
             //----------------------------------------------------------------//
@@ -185,11 +185,11 @@ namespace PCLParaphernalia
                 {
                     if (!hddrWritten)
                     {
-                        displayStatsCountsHddr (table);
+                        displayStatsCountsHddr(table);
                         hddrWritten = true;
                     }
 
-                    row = table.NewRow ();
+                    row = table.NewRow();
 
                     row[0] = kvp.Value.Sequence;
                     row[1] = kvp.Value.Description;
@@ -197,7 +197,7 @@ namespace PCLParaphernalia
                     row[3] = kvp.Value.StatsCtChild;
                     row[4] = kvp.Value.StatsCtTotal;
 
-                    table.Rows.Add (row);
+                    table.Rows.Add(row);
                 }
             }
         }
@@ -211,11 +211,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCountsHddr (DataTable table)
+        public static void displayStatsCountsHddr(DataTable table)
         {
             //----------------------------------------------------------------//
 
-            DataRow row = table.NewRow ();
+            DataRow row = table.NewRow();
 
             row[0] = string.Empty;
             row[1] = "_____________________";
@@ -223,9 +223,9 @@ namespace PCLParaphernalia
             row[3] = string.Empty;
             row[4] = string.Empty;
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
 
-            row = table.NewRow ();
+            row = table.NewRow();
 
             row[0] = string.Empty;
             row[1] = "PCL simple sequences:";
@@ -233,9 +233,9 @@ namespace PCLParaphernalia
             row[3] = string.Empty;
             row[4] = string.Empty;
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
 
-            row = table.NewRow ();
+            row = table.NewRow();
 
             row[0] = string.Empty;
             row[1] = "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯";
@@ -243,7 +243,7 @@ namespace PCLParaphernalia
             row[3] = string.Empty;
             row[4] = string.Empty;
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
         }
 
         //--------------------------------------------------------------------//
@@ -271,17 +271,17 @@ namespace PCLParaphernalia
 
         private static void populateTable()
         {
-            const bool flagNone     = false;
+            const bool flagNone = false;
             const bool flagObsolete = true;
             const bool flagResetGL2 = true;
 
             byte sChar = 0x20;                                                // ? //
-             _seqUnknown =
-                new PCLSimpleSeq(sChar,
-                                 flagNone, flagNone,
-                                 PrnParseConstants.eOvlAct.None,
-                                 PrnParseConstants.eSeqGrp.Unknown,
-                                 "*** Unknown sequence ***");
+            _seqUnknown =
+               new PCLSimpleSeq(sChar,
+                                flagNone, flagNone,
+                                PrnParseConstants.eOvlAct.None,
+                                PrnParseConstants.eSeqGrp.Unknown,
+                                "*** Unknown sequence ***");
 
             sChar = 0x31;                                                // 1 //
             _seqs.Add(sChar,
@@ -427,13 +427,13 @@ namespace PCLParaphernalia
         {
             PCLSimpleSeq seq;
 
-            _seqUnknown.resetStatistics ();
+            _seqUnknown.resetStatistics();
 
             foreach (KeyValuePair<byte, PCLSimpleSeq> kvp in _seqs)
             {
                 seq = kvp.Value;
 
-                seq.resetStatistics ();
+                seq.resetStatistics();
             }
         }
     }

@@ -171,7 +171,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            resetTarget ();
+            resetTarget();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -190,11 +190,11 @@ namespace PCLParaphernalia
             _initialised = true;
 
             if (_initialised)
-                txtDiags.Clear ();
+                txtDiags.Clear();
 
-            prtdata_01 ();
+            prtdata_01();
 
-            prtdata_02 ();
+            prtdata_02();
         }
         /*
         private void rawPrinterTest_00 ()
@@ -221,10 +221,10 @@ namespace PCLParaphernalia
         }
         */
 
-        public static void rawPrinterTest_01 ()
+        public static void rawPrinterTest_01()
         {
             // Specify that the list will contain only the print queues that are installed as local and are shared
-            EnumeratedPrintQueueTypes[] enumerationFlags = {EnumeratedPrintQueueTypes.Local};
+            EnumeratedPrintQueueTypes[] enumerationFlags = { EnumeratedPrintQueueTypes.Local };
 
             LocalPrintServer printServer = new LocalPrintServer();
 
@@ -269,16 +269,16 @@ namespace PCLParaphernalia
         }
         */
 
-        private void prtdata_01 ()
+        private void prtdata_01()
         {
             // Specify that the list will contain only the print queues that are installed as local and are shared
-            EnumeratedPrintQueueTypes [] enumerationFlags = {EnumeratedPrintQueueTypes.Local,
+            EnumeratedPrintQueueTypes[] enumerationFlags = {EnumeratedPrintQueueTypes.Local,
                                                 EnumeratedPrintQueueTypes.Shared};
 
-            LocalPrintServer printServer = new LocalPrintServer ();
+            LocalPrintServer printServer = new LocalPrintServer();
 
             //Use the enumerationFlags to filter out unwanted print queues
-            PrintQueueCollection printQueuesOnLocalServer = printServer.GetPrintQueues (enumerationFlags);
+            PrintQueueCollection printQueuesOnLocalServer = printServer.GetPrintQueues(enumerationFlags);
 
             txtDiags.Text += "These are your shared, local print queues:\n\n";
 
@@ -290,11 +290,11 @@ namespace PCLParaphernalia
             txtDiags.Text += "\n\n\n";
         }
 
-        private void prtdata_02 ()
+        private void prtdata_02()
         {
             // Enumerate the properties, and their types, of a queue without using Reflection
-            LocalPrintServer localPrintServer = new LocalPrintServer ();
-            PrintQueue defaultPrintQueue = LocalPrintServer.GetDefaultPrintQueue ();
+            LocalPrintServer localPrintServer = new LocalPrintServer();
+            PrintQueue defaultPrintQueue = LocalPrintServer.GetDefaultPrintQueue();
 
             PrintPropertyDictionary printQueueProperties = defaultPrintQueue.PropertiesCollection;
 
@@ -309,10 +309,10 @@ namespace PCLParaphernalia
 
                 if (property.Value != null)
                 {
-                     txtDiags.Text += property.Name +
-                                      "\t" + property.Value.GetType() +
-                                      "\t" + property.Value +
-                                      "\n";
+                    txtDiags.Text += property.Name +
+                                     "\t" + property.Value.GetType() +
+                                     "\t" + property.Value +
+                                     "\n";
                 }
             }
         }

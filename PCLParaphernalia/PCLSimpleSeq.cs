@@ -42,17 +42,17 @@ namespace PCLParaphernalia
             PrnParseConstants.eSeqGrp seqGrp,
             string description)
         {
-            _keySChar        = keySChar;
+            _keySChar = keySChar;
             Description = description;
 
             FlagObsolete = flagObsolete;
             FlagResetHPGL2 = flagResetHPGL2;
 
-            this.makeOvlAct      = makeOvlAct;
-            _seqGrp          = seqGrp;
+            this.makeOvlAct = makeOvlAct;
+            _seqGrp = seqGrp;
 
-            _statsCtParent   = 0;
-            _statsCtChild    = 0;
+            _statsCtParent = 0;
+            _statsCtChild = 0;
         }
 
         //--------------------------------------------------------------------//
@@ -138,7 +138,7 @@ namespace PCLParaphernalia
 
         public string Sequence
         {
-            get { return "<Esc>" + (char) _keySChar; }
+            get { return "<Esc>" + (char)_keySChar; }
         }
 
         //--------------------------------------------------------------------//

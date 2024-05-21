@@ -22,11 +22,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private readonly ToolCommonData.eToolIds    _crntToolId;
+        private readonly ToolCommonData.eToolIds _crntToolId;
         private readonly ToolCommonData.eToolSubIds _crntSubId;
-        private readonly ToolCommonData.ePrintLang  _crntPDL;
-        private ReportCore.eRptFileFmt     _rptFileFmt;
-        private ReportCore.eRptChkMarks    _rptChkMarks;
+        private readonly ToolCommonData.ePrintLang _crntPDL;
+        private ReportCore.eRptFileFmt _rptFileFmt;
+        private ReportCore.eRptChkMarks _rptChkMarks;
 
         private bool _flagOptRptWrap;
 
@@ -36,17 +36,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public TargetRptFile (ToolCommonData.eToolIds    crntToolId,
+        public TargetRptFile(ToolCommonData.eToolIds crntToolId,
                               ToolCommonData.eToolSubIds crntSubId,
-                              ToolCommonData.ePrintLang  crntPDL)
+                              ToolCommonData.ePrintLang crntPDL)
         {
             InitializeComponent();
 
             _crntToolId = crntToolId;
-            _crntSubId  = crntSubId;
-            _crntPDL    = crntPDL;
+            _crntSubId = crntSubId;
+            _crntPDL = crntPDL;
 
-            initialise ();
+            initialise();
         }
 
         //--------------------------------------------------------------------//
@@ -74,7 +74,7 @@ namespace PCLParaphernalia
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            metricsSave ();
+            metricsSave();
 
             DialogResult = true;
         }
@@ -88,7 +88,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkRptOptWrap_Checked (object sender,
+        private void chkRptOptWrap_Checked(object sender,
                                             RoutedEventArgs e)
         {
             _flagOptRptWrap = true;
@@ -103,7 +103,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkRptOptWrap_Unchecked (object sender,
+        private void chkRptOptWrap_Unchecked(object sender,
                                               RoutedEventArgs e)
         {
             _flagOptRptWrap = false;
@@ -118,7 +118,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialise ()
+        private void initialise()
         {
             btnOK.Visibility = Visibility.Hidden;
 
@@ -131,20 +131,20 @@ namespace PCLParaphernalia
             if (_crntSubId == ToolCommonData.eToolSubIds.None)
             {
                 txtCrntTool.Text =
-                    Enum.GetName (typeof (ToolCommonData.eToolIds),
+                    Enum.GetName(typeof(ToolCommonData.eToolIds),
                                   _crntToolId);
             }
             else
             {
                 txtCrntTool.Text =
-                    Enum.GetName (typeof (ToolCommonData.eToolIds),
+                    Enum.GetName(typeof(ToolCommonData.eToolIds),
                                   _crntToolId) +
                     "|" +
-                    Enum.GetName (typeof (ToolCommonData.eToolSubIds),
+                    Enum.GetName(typeof(ToolCommonData.eToolSubIds),
                                   _crntSubId);
             }
 
-            txtCrntPDL.Text  = _crntPDL.ToString ();
+            txtCrntPDL.Text = _crntPDL.ToString();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -168,7 +168,7 @@ namespace PCLParaphernalia
                 lbFileNA.Visibility = Visibility.Hidden;
                 btnOK.Visibility = Visibility.Visible;
 
-                TargetCore.metricsReturnFileRpt (_crntToolId,
+                TargetCore.metricsReturnFileRpt(_crntToolId,
                                                  ref _rptFileFmt,
                                                  ref _rptChkMarks,
                                                  ref _flagOptRptWrap);
@@ -193,7 +193,7 @@ namespace PCLParaphernalia
 
                     if (_rptChkMarks == ReportCore.eRptChkMarks.boxsym)
                         rbRptChkMarksBoxSym.IsChecked = true;
-                    else if(_rptChkMarks == ReportCore.eRptChkMarks.txtsym)
+                    else if (_rptChkMarks == ReportCore.eRptChkMarks.txtsym)
                         rbRptChkMarksTxtSym.IsChecked = true;
                     else
                         rbRptChkMarksText.IsChecked = true;
@@ -258,9 +258,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsSave ()
+        private void metricsSave()
         {
-            TargetCore.metricsSaveFileRpt (_crntToolId, _rptFileFmt,
+            TargetCore.metricsSaveFileRpt(_crntToolId, _rptFileFmt,
                                            _rptChkMarks, _flagOptRptWrap);
         }
 
@@ -273,7 +273,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbRptFmtHtml_Click (object sender,
+        private void rbRptFmtHtml_Click(object sender,
                                          RoutedEventArgs e)
         {
             _rptFileFmt = ReportCore.eRptFileFmt.html;
@@ -288,7 +288,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbRptFmtText_Click (object sender,
+        private void rbRptFmtText_Click(object sender,
                                          RoutedEventArgs e)
         {
             _rptFileFmt = ReportCore.eRptFileFmt.text;
@@ -303,7 +303,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbRptFmtXml_Click (object sender,
+        private void rbRptFmtXml_Click(object sender,
                                         RoutedEventArgs e)
         {
             _rptFileFmt = ReportCore.eRptFileFmt.xml;
@@ -319,7 +319,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbRptChkMarksBoxSym_Click (object sender,
+        private void rbRptChkMarksBoxSym_Click(object sender,
                                                 RoutedEventArgs e)
         {
             _rptChkMarks = ReportCore.eRptChkMarks.boxsym;
@@ -335,7 +335,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbRptChkMarksText_Click (object sender,
+        private void rbRptChkMarksText_Click(object sender,
                                               RoutedEventArgs e)
         {
             _rptChkMarks = ReportCore.eRptChkMarks.text;
@@ -351,7 +351,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbRptChkMarksTxtSym_Click (object sender,
+        private void rbRptChkMarksTxtSym_Click(object sender,
                                                 RoutedEventArgs e)
         {
             _rptChkMarks = ReportCore.eRptChkMarks.txtsym;

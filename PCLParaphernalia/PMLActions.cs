@@ -32,7 +32,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static PMLActions ()
+        static PMLActions()
         {
             populateTable();
         }
@@ -54,7 +54,7 @@ namespace PCLParaphernalia
 
             PMLAction tag;
 
-            if (_tags.IndexOfKey (tagToCheck) != -1)
+            if (_tags.IndexOfKey(tagToCheck) != -1)
             {
                 seqKnown = true;
                 tag = _tags[tagToCheck];
@@ -65,9 +65,9 @@ namespace PCLParaphernalia
                 tag = _unknownTag;
             }
 
-            description = tag.getDesc ();
+            description = tag.getDesc();
 
-            tag.incrementStatisticsCount (1);   // Statistical data
+            tag.incrementStatisticsCount(1);   // Statistical data
 
             return seqKnown;
         }
@@ -88,7 +88,7 @@ namespace PCLParaphernalia
             foreach (KeyValuePair<byte, PMLAction> kvp in _tags)
             {
                 count++;
-                grid.Items.Add (kvp.Value);
+                grid.Items.Add(kvp.Value);
             }
 
             return count;
@@ -133,11 +133,11 @@ namespace PCLParaphernalia
                 {
                     if (!hddrWritten)
                     {
-                        displayStatsCountsHddr (table);
+                        displayStatsCountsHddr(table);
                         hddrWritten = true;
                     }
 
-                    row = table.NewRow ();
+                    row = table.NewRow();
 
                     row[0] = kvp.Value.Tag;
                     row[1] = kvp.Value.Description;
@@ -145,7 +145,7 @@ namespace PCLParaphernalia
                     row[3] = kvp.Value.StatsCtChild;
                     row[4] = kvp.Value.StatsCtTotal;
 
-                    table.Rows.Add (row);
+                    table.Rows.Add(row);
                 }
             }
         }
@@ -163,7 +163,7 @@ namespace PCLParaphernalia
         {
             //----------------------------------------------------------------//
 
-            DataRow row = table.NewRow ();
+            DataRow row = table.NewRow();
 
             row[0] = string.Empty;
             row[1] = "____________";
@@ -171,9 +171,9 @@ namespace PCLParaphernalia
             row[3] = string.Empty;
             row[4] = string.Empty;
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
 
-            row = table.NewRow ();
+            row = table.NewRow();
 
             row[0] = string.Empty;
             row[1] = "PML Actions:";
@@ -181,9 +181,9 @@ namespace PCLParaphernalia
             row[3] = string.Empty;
             row[4] = string.Empty;
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
 
-            row = table.NewRow ();
+            row = table.NewRow();
 
             row[0] = string.Empty;
             row[1] = "¯¯¯¯¯¯¯¯¯¯¯¯";
@@ -191,7 +191,7 @@ namespace PCLParaphernalia
             row[3] = string.Empty;
             row[4] = string.Empty;
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
         }
 
         //--------------------------------------------------------------------//
@@ -235,87 +235,87 @@ namespace PCLParaphernalia
         {
             byte tag = 0x20;                                              // ?    //
             _unknownTag =
-                new PMLAction (tag,
+                new PMLAction(tag,
                                    "*** Unknown tag ***");
 
             tag = 0x00;                                              // 0x00 //
-            _tags.Add (tag,
-                new PMLAction (tag,
+            _tags.Add(tag,
+                new PMLAction(tag,
                                    "GetRequest"));
 
             tag = 0x01;                                              // 0x01 //
-            _tags.Add (tag,
-                new PMLAction (tag,
+            _tags.Add(tag,
+                new PMLAction(tag,
                                    "GetNextRequest"));
 
             tag = 0x02;                                              // 0x02 //
-            _tags.Add (tag,
-                new PMLAction (tag,
+            _tags.Add(tag,
+                new PMLAction(tag,
                                    "GetBlockRequest"));
 
             tag = 0x03;                                              // 0x03 //
-            _tags.Add (tag,
-                new PMLAction (tag,
+            _tags.Add(tag,
+                new PMLAction(tag,
                                    "GetNextBlockRequest"));
 
             tag = 0x04;                                              // 0x04 //
-            _tags.Add (tag,
-                new PMLAction (tag,
+            _tags.Add(tag,
+                new PMLAction(tag,
                                    "SetRequest"));
 
             tag = 0x05;                                              // 0x05 //
-            _tags.Add (tag,
-                new PMLAction (tag,
+            _tags.Add(tag,
+                new PMLAction(tag,
                                    "EnableTrapRequest"));
 
             tag = 0x06;                                              // 0x06 //
-            _tags.Add (tag,
-                new PMLAction (tag,
+            _tags.Add(tag,
+                new PMLAction(tag,
                                    "DisableTrapRequest"));
 
             tag = 0x07;                                              // 0x07 //
-            _tags.Add (tag,
-                new PMLAction (tag,
+            _tags.Add(tag,
+                new PMLAction(tag,
                                    "TrapRequest"));
 
             tag = 0x80;                                              // 0x80 //
-            _tags.Add (tag,
-                new PMLAction (tag,
+            _tags.Add(tag,
+                new PMLAction(tag,
                                    "GetReply"));
 
             tag = 0x81;                                              // 0x81 //
-            _tags.Add (tag,
-                new PMLAction (tag,
+            _tags.Add(tag,
+                new PMLAction(tag,
                                    "GetNextReply"));
 
             tag = 0x82;                                              // 0x82 //
-            _tags.Add (tag,
-                new PMLAction (tag,
+            _tags.Add(tag,
+                new PMLAction(tag,
                                    "GetBlockReply"));
 
             tag = 0x83;                                              // 0x83 //
-            _tags.Add (tag,
-                new PMLAction (tag,
+            _tags.Add(tag,
+                new PMLAction(tag,
                                    "GetNextBlockReply"));
 
             tag = 0x84;                                              // 0x84 //
-            _tags.Add (tag,
-                new PMLAction (tag,
+            _tags.Add(tag,
+                new PMLAction(tag,
                                    "SetReply"));
 
             tag = 0x85;                                              // 0x85 //
-            _tags.Add (tag,
-                new PMLAction (tag,
+            _tags.Add(tag,
+                new PMLAction(tag,
                                    "EnableTrapReply"));
 
             tag = 0x86;                                              // 0x86 //
-            _tags.Add (tag,
-                new PMLAction (tag,
+            _tags.Add(tag,
+                new PMLAction(tag,
                                    "DisableTrapReply"));
 
             tag = 0x87;                                              // 0x87 //
-            _tags.Add (tag,
-                new PMLAction (tag,
+            _tags.Add(tag,
+                new PMLAction(tag,
                                    "TrapReply"));
 
             _tagCount = _tags.Count;

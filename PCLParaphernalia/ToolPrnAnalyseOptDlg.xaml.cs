@@ -45,11 +45,11 @@ namespace PCLParaphernalia
 
         private long _fileSize;
 
-        private PropertyInfo [] _stdClrsPropertyInfo;
+        private PropertyInfo[] _stdClrsPropertyInfo;
 
         private string[] _clrMapThemeNames;
 
-        private TextBox [] _txtClrMapSamples;
+        private TextBox[] _txtClrMapSamples;
         private int _ctClrMapStdClrs;
         private int _ctClrMapRowTypes;
         private int _crntClrMapTheme;
@@ -136,9 +136,9 @@ namespace PCLParaphernalia
         {
             _inhibitChecks = true;
 
-            InitializeComponent ();
+            InitializeComponent();
 
-            initialise (options, fileSize);
+            initialise(options, fileSize);
 
             _inhibitChecks = false;
         }
@@ -167,7 +167,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void btnClrMapSetAllRowTypesSame_Click (
+        private void btnClrMapSetAllRowTypesSame_Click(
             object sender,
             RoutedEventArgs e)
         {
@@ -179,11 +179,11 @@ namespace PCLParaphernalia
             PropertyInfo pInfoFore =
                 cbClrMapFore.SelectedItem as PropertyInfo;
 
-            Color selClrBack = (Color)pInfoBack.GetValue (null, null);
-            Color selClrFore = (Color)pInfoFore.GetValue (null, null);
+            Color selClrBack = (Color)pInfoBack.GetValue(null, null);
+            Color selClrFore = (Color)pInfoFore.GetValue(null, null);
 
-            SolidColorBrush selBrBack = new SolidColorBrush ();
-            SolidColorBrush selBrFore = new SolidColorBrush ();
+            SolidColorBrush selBrBack = new SolidColorBrush();
+            SolidColorBrush selBrFore = new SolidColorBrush();
 
             selBrBack.Color = selClrBack;
             selBrFore.Color = selClrFore;
@@ -225,7 +225,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void btnClrMapThemeReset_Click (object sender,
+        private void btnClrMapThemeReset_Click(object sender,
                                                 RoutedEventArgs e)
         {
             int indxClrBack;
@@ -240,7 +240,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PrnParseRowTypes.setDefaultClrs (ref _indxClrMapBack,
+            PrnParseRowTypes.setDefaultClrs(ref _indxClrMapBack,
                                              ref _indxClrMapFore);
 
             //----------------------------------------------------------------//
@@ -252,11 +252,11 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < _ctClrMapRowTypes; i++)
             {
-                Color clrBack = new Color (),
-                      clrFore = new Color ();
+                Color clrBack = new Color(),
+                      clrFore = new Color();
 
-                SolidColorBrush brushBack = new SolidColorBrush (),
-                                brushFore = new SolidColorBrush ();
+                SolidColorBrush brushBack = new SolidColorBrush(),
+                                brushFore = new SolidColorBrush();
 
                 indxClrBack = _indxClrMapBack[i];
                 indxClrFore = _indxClrMapFore[i];
@@ -264,8 +264,8 @@ namespace PCLParaphernalia
                 pInfoBack = _stdClrsPropertyInfo[indxClrBack];
                 pInfoFore = _stdClrsPropertyInfo[indxClrFore];
 
-                clrBack = (Color)pInfoBack.GetValue (null, null);
-                clrFore = (Color)pInfoFore.GetValue (null, null);
+                clrBack = (Color)pInfoBack.GetValue(null, null);
+                clrFore = (Color)pInfoFore.GetValue(null, null);
 
                 brushBack.Color = clrBack;
                 brushFore.Color = clrFore;
@@ -317,7 +317,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void btnClrMapThemeRestore_Click (object sender,
+        private void btnClrMapThemeRestore_Click(object sender,
                                                   RoutedEventArgs e)
         {
             int indxClrBack;
@@ -332,7 +332,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ToolPrnAnalysePersist.loadOptClrMapTheme (_crntClrMapTheme,
+            ToolPrnAnalysePersist.loadOptClrMapTheme(_crntClrMapTheme,
                                                       ref _indxClrMapBack,
                                                       ref _indxClrMapFore);
 
@@ -345,11 +345,11 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < _ctClrMapRowTypes; i++)
             {
-                Color clrBack = new Color (),
-                      clrFore = new Color ();
+                Color clrBack = new Color(),
+                      clrFore = new Color();
 
-                SolidColorBrush brushBack = new SolidColorBrush (),
-                                brushFore = new SolidColorBrush ();
+                SolidColorBrush brushBack = new SolidColorBrush(),
+                                brushFore = new SolidColorBrush();
 
                 indxClrBack = _indxClrMapBack[i];
                 indxClrFore = _indxClrMapFore[i];
@@ -357,8 +357,8 @@ namespace PCLParaphernalia
                 pInfoBack = _stdClrsPropertyInfo[indxClrBack];
                 pInfoFore = _stdClrsPropertyInfo[indxClrFore];
 
-                clrBack = (Color)pInfoBack.GetValue (null, null);
-                clrFore = (Color)pInfoFore.GetValue (null, null);
+                clrBack = (Color)pInfoBack.GetValue(null, null);
+                clrFore = (Color)pInfoFore.GetValue(null, null);
 
                 brushBack.Color = clrBack;
                 brushFore.Color = clrFore;
@@ -397,7 +397,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void btnClrMapThemeSave_Click (object sender,
+        private void btnClrMapThemeSave_Click(object sender,
                                                RoutedEventArgs e)
         {
             //----------------------------------------------------------------//
@@ -408,7 +408,7 @@ namespace PCLParaphernalia
 
             string name = _clrMapThemeNames[_crntClrMapTheme];
 
-            ToolPrnAnalysePersist.saveOptClrMapTheme (
+            ToolPrnAnalysePersist.saveOptClrMapTheme(
                 _crntClrMapTheme,
                 _indxClrMapBack,
                 _indxClrMapFore,
@@ -434,27 +434,27 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            _options.setOptCharSet (_indxCharSetName,
+            _options.setOptCharSet(_indxCharSetName,
                                     _indxCharSetSubAct,
                                     _valCharSetSubCode);
 
-            _options.setOptClrMap (_flagClrMapUseClr,
+            _options.setOptClrMap(_flagClrMapUseClr,
                                    _indxClrMapBack,
                                    _indxClrMapFore);
 
-            _options.setOptCurF (_indxCurFInitLang,
+            _options.setOptCurF(_indxCurFInitLang,
                                  _indxCurFXLBinding,
                                  _indxCurFOffsetFormat,
                                  _valCurFOffsetStart,
                                  _valCurFOffsetEnd);
 
-            _options.setOptGeneral (_indxGenOffsetFormat,
+            _options.setOptGeneral(_indxGenOffsetFormat,
                                     _flagGenMiscAutoAnalyse,
                                     _flagGenDiagFileAccess);
 
-            _options.setOptHPGL2 (_flagHPGL2MiscBinData);
+            _options.setOptHPGL2(_flagHPGL2MiscBinData);
 
-            _options.setOptPCL (_flagPCLFontHddr,
+            _options.setOptPCL(_flagPCLFontHddr,
                                 _flagPCLFontChar,
                                 _flagPCLFontDraw,
                                 _valPCLFontDrawHeight,
@@ -476,7 +476,7 @@ namespace PCLParaphernalia
                                 _flagPCLTransUserPattern,
                                 _flagPCLTransViewIlluminant);
 
-            _options.setOptPCLXL (_flagPCLXLFontHddr,
+            _options.setOptPCLXL(_flagPCLXLFontHddr,
                                   _flagPCLXLFontChar,
                                   _flagPCLXLFontDraw,
                                   _valPCLXLFontDrawHeight,
@@ -488,11 +488,11 @@ namespace PCLParaphernalia
                                   _flagPCLXLMiscBinData,
                                   _flagPCLXLMiscVerbose);
 
-            _options.setOptPML (_flagPMLWithinPCL,
+            _options.setOptPML(_flagPMLWithinPCL,
                                 _flagPMLWithinPJL,
                                 _flagPMLMiscVerbose);
 
-            _options.setOptStats (_indxStatsLevel,
+            _options.setOptStats(_indxStatsLevel,
                                   _flagStatsExcUnusedPCLObs,
                                   _flagStatsExcUnusedPCLXLRes);
 
@@ -514,7 +514,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbClrMapBack_SelectionChanged (object sender,
+        private void cbClrMapBack_SelectionChanged(object sender,
                                                     SelectionChangedEventArgs e)
         {
             if (_initialised && (cbClrMapBack.HasItems && !_inhibitChecks))
@@ -524,9 +524,9 @@ namespace PCLParaphernalia
                 PropertyInfo pInfoFore =
                     cbClrMapFore.SelectedItem as PropertyInfo;
 
-                Color selClr = (Color)pInfoBack.GetValue (null, null);
+                Color selClr = (Color)pInfoBack.GetValue(null, null);
 
-                SolidColorBrush selBr = new SolidColorBrush ();
+                SolidColorBrush selBr = new SolidColorBrush();
 
                 cbClrMapBack.ToolTip = pInfoBack.Name;
 
@@ -536,7 +536,7 @@ namespace PCLParaphernalia
                 _txtClrMapSamples[_crntClrMapRowType].ToolTip =
                     pInfoBack.Name + " / " + pInfoFore.Name;
 
-                _indxClrMapBack [_crntClrMapRowType] =
+                _indxClrMapBack[_crntClrMapRowType] =
                     cbClrMapBack.SelectedIndex;
 
                 //------------------------------------------------------------//
@@ -564,7 +564,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbClrMapFore_SelectionChanged (object sender,
+        private void cbClrMapFore_SelectionChanged(object sender,
                                                     SelectionChangedEventArgs e)
         {
             if (_initialised && (cbClrMapFore.HasItems && !_inhibitChecks))
@@ -574,9 +574,9 @@ namespace PCLParaphernalia
                 PropertyInfo pInfoFore =
                     cbClrMapFore.SelectedItem as PropertyInfo;
 
-                Color selClr = (Color) pInfoFore.GetValue (null, null);
+                Color selClr = (Color)pInfoFore.GetValue(null, null);
 
-                SolidColorBrush selBr = new SolidColorBrush ();
+                SolidColorBrush selBr = new SolidColorBrush();
 
                 cbClrMapFore.ToolTip = pInfoFore.Name;
 
@@ -614,7 +614,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbClrMapRowType_SelectionChanged (object sender,
+        private void cbClrMapRowType_SelectionChanged(object sender,
                                                        SelectionChangedEventArgs e)
         {
             if (_initialised && cbClrMapRowType.HasItems)
@@ -641,10 +641,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbClrMapTheme_SelectionChanged (object sender,
+        private void cbClrMapTheme_SelectionChanged(object sender,
                                                      SelectionChangedEventArgs e)
         {
-            if (_initialised && (cbClrMapTheme.HasItems &&!_inhibitChecks))
+            if (_initialised && (cbClrMapTheme.HasItems && !_inhibitChecks))
             {
                 string name = string.Empty;
 
@@ -654,7 +654,7 @@ namespace PCLParaphernalia
                 {
                     _crntClrMapTheme = tempInt;
 
-                    ToolPrnAnalysePersist.loadOptClrMapThemeName (
+                    ToolPrnAnalysePersist.loadOptClrMapThemeName(
                         _crntClrMapTheme, ref name);
 
                     txtClrMapThemeName.Text = name;
@@ -677,7 +677,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkClrMapUseClr_Change (object sender,
+        private void chkClrMapUseClr_Change(object sender,
                                              RoutedEventArgs e)
         {
             if (!_inhibitChecks)
@@ -689,7 +689,7 @@ namespace PCLParaphernalia
                     grpClrMapSelect.Visibility = Visibility.Visible;
                     grpClrMapSamples.Visibility = Visibility.Visible;
                     grpClrMapThemes.Visibility = Visibility.Visible;
-               }
+                }
                 else
                 {
                     grpClrMapSelect.Visibility = Visibility.Hidden;
@@ -708,10 +708,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkGenDiagFileAccess_Change (object sender,
+        private void chkGenDiagFileAccess_Change(object sender,
                                                   RoutedEventArgs e)
         {
-            if (! _inhibitChecks)
+            if (!_inhibitChecks)
             {
                 _flagGenDiagFileAccess =
                     (bool)chkGenDiagFileAccess.IsChecked;
@@ -730,10 +730,10 @@ namespace PCLParaphernalia
         private void chkGenMiscAutoAnalyse_Change(object sender,
                                                   RoutedEventArgs e)
         {
-            if (! _inhibitChecks)
+            if (!_inhibitChecks)
             {
                 _flagGenMiscAutoAnalyse =
-                    (bool) chkGenMiscAutoAnalyse.IsChecked;
+                    (bool)chkGenMiscAutoAnalyse.IsChecked;
             }
         }
 
@@ -749,10 +749,10 @@ namespace PCLParaphernalia
         private void chkHPGL2MiscBinData_Change(object sender,
                                                 RoutedEventArgs e)
         {
-            if (! _inhibitChecks)
+            if (!_inhibitChecks)
             {
                 _flagHPGL2MiscBinData =
-                    (bool) chkHPGL2MiscBinData.IsChecked;
+                    (bool)chkHPGL2MiscBinData.IsChecked;
             }
         }
 
@@ -768,9 +768,9 @@ namespace PCLParaphernalia
         private void chkPCLFontChar_Change(object sender,
                                            RoutedEventArgs e)
         {
-            if (! _inhibitChecks)
+            if (!_inhibitChecks)
             {
-                _flagPCLFontChar = (bool) chkPCLFontChar.IsChecked;
+                _flagPCLFontChar = (bool)chkPCLFontChar.IsChecked;
 
                 chkPCLFontDraw.IsEnabled = false;
                 sldrPCLFontDrawHeight.IsEnabled = false;
@@ -801,9 +801,9 @@ namespace PCLParaphernalia
         private void chkPCLFontDraw_Change(object sender,
                                                RoutedEventArgs e)
         {
-            if (! _inhibitChecks)
+            if (!_inhibitChecks)
             {
-                _flagPCLFontDraw = (bool) chkPCLFontDraw.IsChecked;
+                _flagPCLFontDraw = (bool)chkPCLFontDraw.IsChecked;
 
                 if (_flagPCLFontDraw)
                 {
@@ -830,9 +830,9 @@ namespace PCLParaphernalia
         private void chkPCLFontHddr_Change(object sender,
                                            RoutedEventArgs e)
         {
-            if (! _inhibitChecks)
+            if (!_inhibitChecks)
             {
-                _flagPCLFontHddr = (bool) chkPCLFontHddr.IsChecked;
+                _flagPCLFontHddr = (bool)chkPCLFontHddr.IsChecked;
             }
         }
 
@@ -848,9 +848,9 @@ namespace PCLParaphernalia
         private void chkPCLMacroDisplay_Change(object sender,
                                                RoutedEventArgs e)
         {
-            if (! _inhibitChecks)
+            if (!_inhibitChecks)
             {
-                _flagPCLMacroDisplay = (bool) chkPCLMacroDisplay.IsChecked;
+                _flagPCLMacroDisplay = (bool)chkPCLMacroDisplay.IsChecked;
             }
         }
 
@@ -866,9 +866,9 @@ namespace PCLParaphernalia
         private void chkPCLMiscBinData_Change(object sender,
                                               RoutedEventArgs e)
         {
-            if (! _inhibitChecks)
+            if (!_inhibitChecks)
             {
-                _flagPCLMiscBinData = (bool) chkPCLMiscBinData.IsChecked;
+                _flagPCLMiscBinData = (bool)chkPCLMiscBinData.IsChecked;
             }
         }
 
@@ -884,9 +884,9 @@ namespace PCLParaphernalia
         private void chkPCLMiscStyleData_Change(object sender,
                                                 RoutedEventArgs e)
         {
-            if (! _inhibitChecks)
+            if (!_inhibitChecks)
             {
-                _flagPCLMiscStyleData = (bool) chkPCLMiscStyleData.IsChecked;
+                _flagPCLMiscStyleData = (bool)chkPCLMiscStyleData.IsChecked;
             }
         }
 
@@ -1059,7 +1059,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLTransDriverConf_Change (object sender,
+        private void chkPCLTransDriverConf_Change(object sender,
                                                    RoutedEventArgs e)
         {
             if (!_inhibitChecks)
@@ -1162,10 +1162,10 @@ namespace PCLParaphernalia
         private void chkPCLXLEncPCLFontSelect_Change(object sender,
                                                      RoutedEventArgs e)
         {
-            if (! _inhibitChecks)
+            if (!_inhibitChecks)
             {
                 _flagPCLXLEncPCLFontSelect =
-                    (bool) chkPCLXLEncPCLFontSelect.IsChecked;
+                    (bool)chkPCLXLEncPCLFontSelect.IsChecked;
             }
         }
 
@@ -1182,10 +1182,10 @@ namespace PCLParaphernalia
         private void chkPCLXLEncPCLPassThrough_Change(object sender,
                                                       RoutedEventArgs e)
         {
-            if (! _inhibitChecks)
+            if (!_inhibitChecks)
             {
                 _flagPCLXLEncPCLPassThrough =
-                    (bool) chkPCLXLEncPCLPassThrough.IsChecked;
+                    (bool)chkPCLXLEncPCLPassThrough.IsChecked;
             }
         }
 
@@ -1202,10 +1202,10 @@ namespace PCLParaphernalia
         private void chkPCLXLEncUserStream_Change(object sender,
                                                   RoutedEventArgs e)
         {
-            if (! _inhibitChecks)
+            if (!_inhibitChecks)
             {
                 _flagPCLXLEncUserStream =
-                    (bool) chkPCLXLEncUserStream.IsChecked;
+                    (bool)chkPCLXLEncUserStream.IsChecked;
             }
         }
 
@@ -1223,7 +1223,7 @@ namespace PCLParaphernalia
         {
             if (!_inhibitChecks)
             {
-                _flagPCLXLFontChar = (bool) chkPCLXLFontChar.IsChecked;
+                _flagPCLXLFontChar = (bool)chkPCLXLFontChar.IsChecked;
 
                 chkPCLXLFontDraw.IsEnabled = false;
                 sldrPCLXLFontDrawHeight.IsEnabled = false;
@@ -1256,7 +1256,7 @@ namespace PCLParaphernalia
         {
             if (!_inhibitChecks)
             {
-                _flagPCLXLFontDraw = (bool) chkPCLXLFontDraw.IsChecked;
+                _flagPCLXLFontDraw = (bool)chkPCLXLFontDraw.IsChecked;
 
                 if (_flagPCLXLFontDraw)
                 {
@@ -1283,10 +1283,10 @@ namespace PCLParaphernalia
         private void chkPCLXLFontHddr_Change(object sender,
                                              RoutedEventArgs e)
         {
-            if (! _inhibitChecks)
+            if (!_inhibitChecks)
             {
                 _flagPCLXLFontHddr =
-                    (bool) chkPCLXLFontHddr.IsChecked;
+                    (bool)chkPCLXLFontHddr.IsChecked;
             }
         }
 
@@ -1302,9 +1302,9 @@ namespace PCLParaphernalia
         private void chkPCLXLMiscBinData_Change(object sender,
                                                 RoutedEventArgs e)
         {
-            if (! _inhibitChecks)
+            if (!_inhibitChecks)
             {
-                _flagPCLXLMiscBinData = (bool) chkPCLXLMiscBinData.IsChecked;
+                _flagPCLXLMiscBinData = (bool)chkPCLXLMiscBinData.IsChecked;
             }
         }
         //--------------------------------------------------------------------//
@@ -1319,9 +1319,9 @@ namespace PCLParaphernalia
         private void chkPCLXLMiscOperPos_Change(object sender,
                                                 RoutedEventArgs e)
         {
-            if (! _inhibitChecks)
+            if (!_inhibitChecks)
             {
-                _flagPCLXLMiscOperPos = (bool) chkPCLXLMiscOperPos.IsChecked;
+                _flagPCLXLMiscOperPos = (bool)chkPCLXLMiscOperPos.IsChecked;
             }
         }
 
@@ -1337,9 +1337,9 @@ namespace PCLParaphernalia
         private void chkPCLXLMiscVerbose_Change(object sender,
                                                 RoutedEventArgs e)
         {
-            if (! _inhibitChecks)
+            if (!_inhibitChecks)
             {
-                _flagPCLXLMiscVerbose = (bool) chkPCLXLMiscVerbose.IsChecked;
+                _flagPCLXLMiscVerbose = (bool)chkPCLXLMiscVerbose.IsChecked;
             }
         }
 
@@ -1355,9 +1355,9 @@ namespace PCLParaphernalia
         private void chkPMLMiscVerbose_Change(object sender,
                                               RoutedEventArgs e)
         {
-            if (! _inhibitChecks)
+            if (!_inhibitChecks)
             {
-                _flagPMLMiscVerbose = (bool) chkPMLMiscVerbose.IsChecked;
+                _flagPMLMiscVerbose = (bool)chkPMLMiscVerbose.IsChecked;
             }
         }
 
@@ -1373,9 +1373,9 @@ namespace PCLParaphernalia
         private void chkPMLWithinPCL_Change(object sender,
                                             RoutedEventArgs e)
         {
-            if (! _inhibitChecks)
+            if (!_inhibitChecks)
             {
-                _flagPMLWithinPCL = (bool) chkPMLWithinPCL.IsChecked;
+                _flagPMLWithinPCL = (bool)chkPMLWithinPCL.IsChecked;
             }
         }
 
@@ -1391,9 +1391,9 @@ namespace PCLParaphernalia
         private void chkPMLWithinPJL_Change(object sender,
                                             RoutedEventArgs e)
         {
-            if (! _inhibitChecks)
+            if (!_inhibitChecks)
             {
-                _flagPMLWithinPJL = (bool) chkPMLWithinPJL.IsChecked;
+                _flagPMLWithinPJL = (bool)chkPMLWithinPJL.IsChecked;
             }
         }
 
@@ -1407,13 +1407,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkStatsExcUnusedPCLObs_Change (object sender,
+        private void chkStatsExcUnusedPCLObs_Change(object sender,
                                                      RoutedEventArgs e)
         {
             if (!_inhibitChecks)
             {
                 _flagStatsExcUnusedPCLObs =
-                    (bool) chkStatsExcUnusedPCLObs.IsChecked;
+                    (bool)chkStatsExcUnusedPCLObs.IsChecked;
             }
         }
 
@@ -1427,13 +1427,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkStatsExcUnusedPCLXLRes_Change (object sender,
+        private void chkStatsExcUnusedPCLXLRes_Change(object sender,
                                                        RoutedEventArgs e)
         {
             if (!_inhibitChecks)
             {
                 _flagStatsExcUnusedPCLXLRes =
-                    (bool) chkStatsExcUnusedPCLXLRes.IsChecked;
+                    (bool)chkStatsExcUnusedPCLXLRes.IsChecked;
             }
         }
 
@@ -1480,7 +1480,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             Height = 800 * windowScale;
-            Width  = 450 * windowScale;
+            Width = 450 * windowScale;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1488,16 +1488,16 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            prepareTabCharSet (options);
-            prepareTabGen (options);
-            prepareTabClrMap (options);
-            prepareTabHPGL2 (options);
-            prepareTabPCL (options);
-            prepareTabPCLXL (options);
-            prepareTabPML (options);
-            prepareTabStats (options);
+            prepareTabCharSet(options);
+            prepareTabGen(options);
+            prepareTabClrMap(options);
+            prepareTabHPGL2(options);
+            prepareTabPCL(options);
+            prepareTabPCLXL(options);
+            prepareTabPML(options);
+            prepareTabStats(options);
 
-            prepareTabCurF (options, fileSize);
+            prepareTabCurF(options, fileSize);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1530,7 +1530,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseClrMapPickerGrid (object sender,
+        private void initialiseClrMapPickerGrid(object sender,
                                                  RoutedEventArgs e)
         {
             const int reqCols = 10;
@@ -1564,7 +1564,7 @@ namespace PCLParaphernalia
                 {
                     for (int r = 0; r < ctRows; r++)
                     {
-                        grid.RowDefinitions.Add (new RowDefinition ());
+                        grid.RowDefinitions.Add(new RowDefinition());
                     }
                 }
 
@@ -1578,7 +1578,7 @@ namespace PCLParaphernalia
                 {
                     for (int c = 0; c < ctCols; c++)
                     {
-                        grid.ColumnDefinitions.Add (new ColumnDefinition ());
+                        grid.ColumnDefinitions.Add(new ColumnDefinition());
                     }
                 }
 
@@ -1590,8 +1590,8 @@ namespace PCLParaphernalia
 
                 for (int i = 0; i < grid.Children.Count; i++)
                 {
-                    Grid.SetColumn (grid.Children[i], i % reqCols);
-                    Grid.SetRow (grid.Children[i], i / reqCols);
+                    Grid.SetColumn(grid.Children[i], i % reqCols);
+                    Grid.SetRow(grid.Children[i], i / reqCols);
                 }
             }
         }
@@ -1615,7 +1615,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            options.getOptCharSet (ref _indxCharSetName,
+            options.getOptCharSet(ref _indxCharSetName,
                                    ref _indxCharSetSubAct,
                                    ref _valCharSetSubCode);
 
@@ -1637,7 +1637,7 @@ namespace PCLParaphernalia
             sldrCharSetSubCode.IsEnabled = false;
 
             if (_indxCharSetSubAct == PrnParseConstants.eOptCharSetSubActs.Mnemonics)
-                rbCharSetSubActMnemonics.IsChecked  = true;
+                rbCharSetSubActMnemonics.IsChecked = true;
             else if (_indxCharSetSubAct == PrnParseConstants.eOptCharSetSubActs.MnemonicsIncSpace)
                 rbCharSetSubActMnemonicsAndSpaces.IsChecked = true;
             else if (_indxCharSetSubAct == PrnParseConstants.eOptCharSetSubActs.Hex)
@@ -1654,11 +1654,11 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            subChar = (char) _valCharSetSubCode;
+            subChar = (char)_valCharSetSubCode;
 
             sldrCharSetSubCode.Value = _valCharSetSubCode;
 
-            txtCharSetSubCode.Text = _valCharSetSubCode.ToString ();
+            txtCharSetSubCode.Text = _valCharSetSubCode.ToString();
             txtCharSetSubChar.Text = subChar.ToString();
         }
 
@@ -1671,10 +1671,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void prepareTabClrMap (PrnParseOptions options)
+        private void prepareTabClrMap(PrnParseOptions options)
         {
             const int indxRowTypeDefault = 0;
-            const int indxThemeDefault   = 0;
+            const int indxThemeDefault = 0;
 
             PropertyInfo pInfoBack,
                          pInfoFore;
@@ -1688,13 +1688,13 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            cbClrMapRowType.Items.Clear ();
+            cbClrMapRowType.Items.Clear();
 
-            _ctClrMapRowTypes = PrnParseRowTypes.getCount ();
+            _ctClrMapRowTypes = PrnParseRowTypes.getCount();
 
             for (int i = 0; i < _ctClrMapRowTypes; i++)
             {
-                cbClrMapRowType.Items.Add (PrnParseRowTypes.getDesc (i));
+                cbClrMapRowType.Items.Add(PrnParseRowTypes.getDesc(i));
             }
 
             cbClrMapRowType.SelectedIndex = indxRowTypeDefault;
@@ -1708,11 +1708,11 @@ namespace PCLParaphernalia
             _indxClrMapBack = new int[_ctClrMapRowTypes];
             _indxClrMapFore = new int[_ctClrMapRowTypes];
 
-            options.getOptClrMap (ref _flagClrMapUseClr,
+            options.getOptClrMap(ref _flagClrMapUseClr,
                                   ref _indxClrMapBack,
                                   ref _indxClrMapFore);
 
-            options.getOptClrMapStdClrs (ref _ctClrMapStdClrs,
+            options.getOptClrMapStdClrs(ref _ctClrMapStdClrs,
                                          ref _stdClrsPropertyInfo);
 
             //----------------------------------------------------------------//
@@ -1749,11 +1749,11 @@ namespace PCLParaphernalia
             if ((_ctClrMapRowTypes % ctSampleCols) != 0)
                 ctSampleRows++;
 
-            Grid grid1 = new Grid ();
+            Grid grid1 = new Grid();
 
             for (int i = 0; i < ctSampleCols; i++)
             {
-                grid1.ColumnDefinitions.Add (new ColumnDefinition ());
+                grid1.ColumnDefinitions.Add(new ColumnDefinition());
             }
 
             for (int i = 0; i < ctSampleRows; i++)
@@ -1762,7 +1762,7 @@ namespace PCLParaphernalia
                 {
                     MinHeight = 25
                 };
-                grid1.RowDefinitions.Add (rowDefX);
+                grid1.RowDefinitions.Add(rowDefX);
             }
 
             Thickness thk1 = new Thickness
@@ -1777,11 +1777,11 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < _ctClrMapRowTypes; i++)
             {
-                Color clrBack = new Color (),
-                      clrFore = new Color ();
+                Color clrBack = new Color(),
+                      clrFore = new Color();
 
-                SolidColorBrush brushBack = new SolidColorBrush (),
-                                brushFore = new SolidColorBrush ();
+                SolidColorBrush brushBack = new SolidColorBrush(),
+                                brushFore = new SolidColorBrush();
 
                 int crntRow = i / ctSampleCols;
                 int crntCol = i % ctSampleCols;
@@ -1801,8 +1801,8 @@ namespace PCLParaphernalia
                 pInfoBack = _stdClrsPropertyInfo[indxClrBack];
                 pInfoFore = _stdClrsPropertyInfo[indxClrFore];
 
-                clrBack = (Color) pInfoBack.GetValue (null, null);
-                clrFore = (Color) pInfoFore.GetValue (null, null);
+                clrBack = (Color)pInfoBack.GetValue(null, null);
+                clrFore = (Color)pInfoFore.GetValue(null, null);
 
                 brushBack.Color = clrBack;
                 brushFore.Color = clrFore;
@@ -1813,10 +1813,10 @@ namespace PCLParaphernalia
                 _txtClrMapSamples[i].ToolTip = pInfoBack.Name + " / " +
                                                pInfoFore.Name;
 
-                Grid.SetRow (_txtClrMapSamples[i], crntRow);
-                Grid.SetColumn (_txtClrMapSamples[i], crntCol);
+                Grid.SetRow(_txtClrMapSamples[i], crntRow);
+                Grid.SetColumn(_txtClrMapSamples[i], crntCol);
 
-                grid1.Children.Add (_txtClrMapSamples[i]);
+                grid1.Children.Add(_txtClrMapSamples[i]);
             }
 
             grpClrMapSamples.Content = grid1;
@@ -1829,17 +1829,17 @@ namespace PCLParaphernalia
 
             _clrMapThemeNames = new string[_ctClrMapThemes];
 
-            cbClrMapTheme.Items.Clear ();
+            cbClrMapTheme.Items.Clear();
 
             for (int i = 0; i < _ctClrMapThemes; i++)
             {
                 string name = string.Empty;
 
-                ToolPrnAnalysePersist.loadOptClrMapThemeName (i, ref name);
+                ToolPrnAnalysePersist.loadOptClrMapThemeName(i, ref name);
 
                 _clrMapThemeNames[i] = name;
 
-                cbClrMapTheme.Items.Add (i + ": " + name);
+                cbClrMapTheme.Items.Add(i + ": " + name);
             }
 
             _crntClrMapTheme = indxThemeDefault;
@@ -1895,7 +1895,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void prepareTabCurF (PrnParseOptions options,
+        private void prepareTabCurF(PrnParseOptions options,
                                      long fileSize)
         {
             //----------------------------------------------------------------//
@@ -1904,7 +1904,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            options.getOptCurF (ref _indxCurFInitLang,
+            options.getOptCurF(ref _indxCurFInitLang,
                                 ref _indxCurFXLBinding,
                                 ref _indxCurFOffsetFormat,
                                 ref _valCurFOffsetStart,
@@ -1932,7 +1932,7 @@ namespace PCLParaphernalia
 
                 _fileOpen = true;
 
-                _valCurFOffsetMax = (int) fileSize;
+                _valCurFOffsetMax = (int)fileSize;
 
                 if (_indxCurFInitLang == ToolCommonData.ePrintLang.PCL)
                     rbCurFInitLangPCL.IsChecked = true;
@@ -1980,8 +1980,8 @@ namespace PCLParaphernalia
                 }
 
                 txtCurFOffsetStart.Text = _valCurFOffsetStart.ToString(fmt);
-                txtCurFOffsetEnd.Text   = _valCurFOffsetEnd.ToString(fmt);
-                txtCurFOffsetMax.Text   = _valCurFOffsetMax.ToString (fmt);
+                txtCurFOffsetEnd.Text = _valCurFOffsetEnd.ToString(fmt);
+                txtCurFOffsetMax.Text = _valCurFOffsetMax.ToString(fmt);
             }
         }
 
@@ -2002,7 +2002,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            options.getOptGeneral (ref _indxGenOffsetFormat,
+            options.getOptGeneral(ref _indxGenOffsetFormat,
                                    ref _flagGenMiscAutoAnalyse,
                                    ref _flagGenDiagFileAccess);
 
@@ -2043,7 +2043,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            options.getOptHPGL2 (ref _flagHPGL2MiscBinData);
+            options.getOptHPGL2(ref _flagHPGL2MiscBinData);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -2051,7 +2051,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            chkHPGL2MiscBinData.IsChecked    = _flagHPGL2MiscBinData;
+            chkHPGL2MiscBinData.IsChecked = _flagHPGL2MiscBinData;
         }
 
         //--------------------------------------------------------------------//
@@ -2071,7 +2071,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            options.getOptPCL (ref _flagPCLFontHddr,
+            options.getOptPCL(ref _flagPCLFontHddr,
                                ref _flagPCLFontChar,
                                ref _flagPCLFontDraw,
                                ref _valPCLFontDrawHeight,
@@ -2101,18 +2101,18 @@ namespace PCLParaphernalia
 
             sldrPCLFontDrawHeight.IsEnabled = false;
 
-            chkPCLFontHddr.IsChecked         = _flagPCLFontHddr;
-            chkPCLFontChar.IsChecked         = _flagPCLFontChar;
+            chkPCLFontHddr.IsChecked = _flagPCLFontHddr;
+            chkPCLFontChar.IsChecked = _flagPCLFontChar;
 
-            chkPCLFontDraw.IsChecked         = _flagPCLFontDraw;
+            chkPCLFontDraw.IsChecked = _flagPCLFontDraw;
 
-            sldrPCLFontDrawHeight.Value      = _valPCLFontDrawHeight;
-            sldrPCLFontDrawWidth.Value       = _valPCLFontDrawWidth;
+            sldrPCLFontDrawHeight.Value = _valPCLFontDrawHeight;
+            sldrPCLFontDrawWidth.Value = _valPCLFontDrawWidth;
 
             txtPCLFontDrawHeight.Text =
-                _valPCLFontDrawHeight.ToString ();
-            txtPCLFontDrawWidth.Text  =
-                _valPCLFontDrawWidth.ToString ();
+                _valPCLFontDrawHeight.ToString();
+            txtPCLFontDrawWidth.Text =
+                _valPCLFontDrawWidth.ToString();
 
             chkPCLFontDraw.IsEnabled = false;
             sldrPCLFontDrawHeight.IsEnabled = false;
@@ -2129,23 +2129,23 @@ namespace PCLParaphernalia
                 }
             }
 
-            chkPCLMacroDisplay.IsChecked        = _flagPCLMacroDisplay;
+            chkPCLMacroDisplay.IsChecked = _flagPCLMacroDisplay;
 
-            chkPCLMiscStyleData.IsChecked       = _flagPCLMiscStyleData;
-            chkPCLMiscBinData.IsChecked         = _flagPCLMiscBinData;
+            chkPCLMiscStyleData.IsChecked = _flagPCLMiscStyleData;
+            chkPCLMiscBinData.IsChecked = _flagPCLMiscBinData;
 
-            chkPCLTransAlphaNumId.IsChecked     = _flagPCLTransAlphaNumId;
-            chkPCLTransColourLookup.IsChecked   = _flagPCLTransColourLookup;
-            chkPCLTransConfIO.IsChecked         = _flagPCLTransConfIO;
-            chkPCLTransConfImageData.IsChecked  = _flagPCLTransConfImageData;
+            chkPCLTransAlphaNumId.IsChecked = _flagPCLTransAlphaNumId;
+            chkPCLTransColourLookup.IsChecked = _flagPCLTransColourLookup;
+            chkPCLTransConfIO.IsChecked = _flagPCLTransConfIO;
+            chkPCLTransConfImageData.IsChecked = _flagPCLTransConfImageData;
             chkPCLTransConfRasterData.IsChecked = _flagPCLTransConfRasterData;
-            chkPCLTransDefLogPage.IsChecked     = _flagPCLTransDefLogPage;
-            chkPCLTransDefSymSet.IsChecked      = _flagPCLTransDefSymSet;
-            chkPCLTransDitherMatrix.IsChecked   = _flagPCLTransDitherMatrix;
-            chkPCLTransDriverConf.IsChecked     = _flagPCLTransDriverConf;
-            chkPCLTransEscEncText.IsChecked     = _flagPCLTransEscEncText;
-            chkPCLTransPaletteConf.IsChecked    = _flagPCLTransPaletteConf;
-            chkPCLTransUserPattern.IsChecked    = _flagPCLTransUserPattern;
+            chkPCLTransDefLogPage.IsChecked = _flagPCLTransDefLogPage;
+            chkPCLTransDefSymSet.IsChecked = _flagPCLTransDefSymSet;
+            chkPCLTransDitherMatrix.IsChecked = _flagPCLTransDitherMatrix;
+            chkPCLTransDriverConf.IsChecked = _flagPCLTransDriverConf;
+            chkPCLTransEscEncText.IsChecked = _flagPCLTransEscEncText;
+            chkPCLTransPaletteConf.IsChecked = _flagPCLTransPaletteConf;
+            chkPCLTransUserPattern.IsChecked = _flagPCLTransUserPattern;
             chkPCLTransViewIlluminant.IsChecked = _flagPCLTransViewIlluminant;
         }
 
@@ -2166,7 +2166,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            options.getOptPCLXL (ref _flagPCLXLFontHddr,
+            options.getOptPCLXL(ref _flagPCLXLFontHddr,
                                  ref _flagPCLXLFontChar,
                                  ref _flagPCLXLFontDraw,
                                  ref _valPCLXLFontDrawHeight,
@@ -2184,18 +2184,18 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            chkPCLXLFontHddr.IsChecked          = _flagPCLXLFontHddr;
-            chkPCLXLFontChar.IsChecked          = _flagPCLXLFontChar;
+            chkPCLXLFontHddr.IsChecked = _flagPCLXLFontHddr;
+            chkPCLXLFontChar.IsChecked = _flagPCLXLFontChar;
 
-            chkPCLXLFontDraw.IsChecked          = _flagPCLXLFontDraw;
+            chkPCLXLFontDraw.IsChecked = _flagPCLXLFontDraw;
 
-            sldrPCLXLFontDrawHeight.Value       = _valPCLXLFontDrawHeight;
-            sldrPCLXLFontDrawWidth.Value        = _valPCLXLFontDrawWidth;
+            sldrPCLXLFontDrawHeight.Value = _valPCLXLFontDrawHeight;
+            sldrPCLXLFontDrawWidth.Value = _valPCLXLFontDrawWidth;
 
             txtPCLXLFontDrawHeight.Text =
-                _valPCLXLFontDrawHeight.ToString ();
+                _valPCLXLFontDrawHeight.ToString();
             txtPCLXLFontDrawWidth.Text =
-                _valPCLXLFontDrawWidth.ToString ();
+                _valPCLXLFontDrawWidth.ToString();
 
             chkPCLXLFontDraw.IsEnabled = false;
             sldrPCLXLFontDrawHeight.IsEnabled = false;
@@ -2212,13 +2212,13 @@ namespace PCLParaphernalia
                 }
             }
 
-            chkPCLXLEncUserStream.IsChecked     = _flagPCLXLEncUserStream;
+            chkPCLXLEncUserStream.IsChecked = _flagPCLXLEncUserStream;
             chkPCLXLEncPCLPassThrough.IsChecked = _flagPCLXLEncPCLPassThrough;
-            chkPCLXLEncPCLFontSelect.IsChecked  = _flagPCLXLEncPCLFontSelect;
+            chkPCLXLEncPCLFontSelect.IsChecked = _flagPCLXLEncPCLFontSelect;
 
-            chkPCLXLMiscOperPos.IsChecked       = _flagPCLXLMiscOperPos;
-            chkPCLXLMiscBinData.IsChecked       = _flagPCLXLMiscBinData;
-            chkPCLXLMiscVerbose.IsChecked       = _flagPCLXLMiscVerbose;
+            chkPCLXLMiscOperPos.IsChecked = _flagPCLXLMiscOperPos;
+            chkPCLXLMiscBinData.IsChecked = _flagPCLXLMiscBinData;
+            chkPCLXLMiscVerbose.IsChecked = _flagPCLXLMiscVerbose;
         }
 
         //--------------------------------------------------------------------//
@@ -2238,7 +2238,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            options.getOptPML (ref _flagPMLWithinPCL,
+            options.getOptPML(ref _flagPMLWithinPCL,
                                ref _flagPMLWithinPJL,
                                ref _flagPMLMiscVerbose);
 
@@ -2248,9 +2248,9 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            chkPMLWithinPCL.IsChecked    = _flagPMLWithinPCL;
-            chkPMLWithinPJL.IsChecked    = _flagPMLWithinPJL;
-            chkPMLMiscVerbose.IsChecked  = _flagPMLMiscVerbose;
+            chkPMLWithinPCL.IsChecked = _flagPMLWithinPCL;
+            chkPMLWithinPJL.IsChecked = _flagPMLWithinPJL;
+            chkPMLMiscVerbose.IsChecked = _flagPMLMiscVerbose;
         }
 
         //--------------------------------------------------------------------//
@@ -2270,7 +2270,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            options.getOptStats (ref _indxStatsLevel,
+            options.getOptStats(ref _indxStatsLevel,
                                  ref _flagStatsExcUnusedPCLObs,
                                  ref _flagStatsExcUnusedPCLXLRes);
 
@@ -2313,7 +2313,7 @@ namespace PCLParaphernalia
 
         private void rbCharsetName_Checked(object sender, RoutedEventArgs e)
         {
-            if (! _inhibitChecks)
+            if (!_inhibitChecks)
             {
                 if (rbCharSetNameASCII.IsChecked == true)
                     _indxCharSetName = PrnParseConstants.eOptCharSets.ASCII;
@@ -2337,7 +2337,7 @@ namespace PCLParaphernalia
         private void rbCharsetSubAct_Checked(object sender,
                                              RoutedEventArgs e)
         {
-            if (! _inhibitChecks)
+            if (!_inhibitChecks)
             {
                 txtCharSetSubCode.IsEnabled = false;
 
@@ -2372,7 +2372,7 @@ namespace PCLParaphernalia
         private void rbCurFInitLang_Checked(object sender,
                                             RoutedEventArgs e)
         {
-            if (! _inhibitChecks)
+            if (!_inhibitChecks)
             {
                 grpCurFXLBind.Visibility = Visibility.Hidden;
 
@@ -2406,7 +2406,7 @@ namespace PCLParaphernalia
         private void rbCurFOffsetFormat_Checked(object sender,
                                                 RoutedEventArgs e)
         {
-            if (! _inhibitChecks)
+            if (!_inhibitChecks)
             {
                 string fmt;
 
@@ -2423,9 +2423,9 @@ namespace PCLParaphernalia
                     fmt = string.Empty;
                 }
 
-                txtCurFOffsetStart.Text = _valCurFOffsetStart.ToString (fmt);
-                txtCurFOffsetEnd.Text = _valCurFOffsetEnd.ToString (fmt);
-                txtCurFOffsetMax.Text = _valCurFOffsetMax.ToString (fmt);
+                txtCurFOffsetStart.Text = _valCurFOffsetStart.ToString(fmt);
+                txtCurFOffsetEnd.Text = _valCurFOffsetEnd.ToString(fmt);
+                txtCurFOffsetMax.Text = _valCurFOffsetMax.ToString(fmt);
             }
         }
 
@@ -2537,12 +2537,12 @@ namespace PCLParaphernalia
             {
                 char subChar;
 
-                _valCharSetSubCode = (int) sldrCharSetSubCode.Value;
+                _valCharSetSubCode = (int)sldrCharSetSubCode.Value;
 
-                subChar = (char) _valCharSetSubCode;
+                subChar = (char)_valCharSetSubCode;
 
-                txtCharSetSubCode.Text = _valCharSetSubCode.ToString ();
-                txtCharSetSubChar.Text = subChar.ToString ();
+                txtCharSetSubCode.Text = _valCharSetSubCode.ToString();
+                txtCharSetSubChar.Text = subChar.ToString();
             }
         }
 
@@ -2562,9 +2562,9 @@ namespace PCLParaphernalia
         {
             if (!_inhibitChecks)
             {
-                _valPCLFontDrawHeight = (int) sldrPCLFontDrawHeight.Value;
+                _valPCLFontDrawHeight = (int)sldrPCLFontDrawHeight.Value;
 
-                txtPCLFontDrawHeight.Text = _valPCLFontDrawHeight.ToString ();
+                txtPCLFontDrawHeight.Text = _valPCLFontDrawHeight.ToString();
             }
         }
 
@@ -2584,9 +2584,9 @@ namespace PCLParaphernalia
         {
             if (!_inhibitChecks)
             {
-                _valPCLFontDrawWidth = (int) sldrPCLFontDrawWidth.Value;
+                _valPCLFontDrawWidth = (int)sldrPCLFontDrawWidth.Value;
 
-                txtPCLFontDrawWidth.Text = _valPCLFontDrawWidth.ToString ();
+                txtPCLFontDrawWidth.Text = _valPCLFontDrawWidth.ToString();
             }
         }
 
@@ -2607,10 +2607,10 @@ namespace PCLParaphernalia
         {
             if (!_inhibitChecks)
             {
-                _valPCLXLFontDrawHeight = (int) sldrPCLXLFontDrawHeight.Value;
+                _valPCLXLFontDrawHeight = (int)sldrPCLXLFontDrawHeight.Value;
 
                 txtPCLXLFontDrawHeight.Text =
-                    _valPCLXLFontDrawHeight.ToString ();
+                    _valPCLXLFontDrawHeight.ToString();
             }
         }
 
@@ -2631,9 +2631,9 @@ namespace PCLParaphernalia
         {
             if (!_inhibitChecks)
             {
-                _valPCLXLFontDrawWidth = (int) sldrPCLXLFontDrawWidth.Value;
+                _valPCLXLFontDrawWidth = (int)sldrPCLXLFontDrawWidth.Value;
 
-                txtPCLXLFontDrawWidth.Text = _valPCLXLFontDrawWidth.ToString ();
+                txtPCLXLFontDrawWidth.Text = _valPCLXLFontDrawWidth.ToString();
             }
         }
 
@@ -2651,17 +2651,17 @@ namespace PCLParaphernalia
         {
             bool OK = true;
 
-            TabItem newTab = (TabItem) tabOptType.SelectedItem;
+            TabItem newTab = (TabItem)tabOptType.SelectedItem;
 
             if (!_inhibitChecks)
             {
                 if (_crntTab == tabGeneral)
                 {
-                    OK = validateGeneral ();
+                    OK = validateGeneral();
                 }
                 else if (_crntTab == tabCharSet)
                 {
-                    OK = validateCharSet ();
+                    OK = validateCharSet();
                 }
 
                 if (OK)
@@ -2682,7 +2682,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtClrMapThemeName_LostFocus (object sender,
+        private void txtClrMapThemeName_LostFocus(object sender,
                                                    RoutedEventArgs e)
         {
             _clrMapThemeNames[_crntClrMapTheme] = txtClrMapThemeName.Text;
@@ -2701,7 +2701,7 @@ namespace PCLParaphernalia
         private void txtCurFOffsetEnd_LostFocus(object sender,
                                                 RoutedEventArgs e)
         {
-            validateCurFOffsetEnd ();
+            validateCurFOffsetEnd();
         }
 
         //--------------------------------------------------------------------//
@@ -2717,7 +2717,7 @@ namespace PCLParaphernalia
         private void txtCurFOffsetStart_LostFocus(object sender,
                                                   RoutedEventArgs e)
         {
-            validateCurFOffsetStart ();
+            validateCurFOffsetStart();
         }
 
         //--------------------------------------------------------------------//
@@ -2808,7 +2808,7 @@ namespace PCLParaphernalia
 
             string crntText = txtCurFOffsetEnd.Text;
 
-            OK = int.TryParse (crntText, out int value);
+            OK = int.TryParse(crntText, out int value);
 
             if (OK && (value != -1))
             {
@@ -2824,7 +2824,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                MessageBox.Show ("Value '" + crntText + "' is invalid.\n\n" +
+                MessageBox.Show("Value '" + crntText + "' is invalid.\n\n" +
                                  "Valid range is :\n\t" +
                                  0 + " <= value <= " + _fileSize + "\n" +
                                  "(and > Start value " + _valCurFOffsetStart + ")",
@@ -2836,8 +2836,8 @@ namespace PCLParaphernalia
 
                 tabOptType.SelectedItem = _crntTab;
 
-                txtCurFOffsetEnd.SelectAll ();
-                txtCurFOffsetEnd.Focus ();
+                txtCurFOffsetEnd.SelectAll();
+                txtCurFOffsetEnd.Focus();
             }
 
             return OK;
@@ -2858,7 +2858,7 @@ namespace PCLParaphernalia
 
             string crntText = txtCurFOffsetStart.Text;
 
-            OK = int.TryParse (crntText, out int value);
+            OK = int.TryParse(crntText, out int value);
 
             if (OK)
             {
@@ -2874,7 +2874,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                MessageBox.Show ("Value '" + crntText + "' is invalid.\n\n" +
+                MessageBox.Show("Value '" + crntText + "' is invalid.\n\n" +
                                  "Valid range is :\n\t" +
                                  0 + " <= value <= " + _fileSize,
                                  "Offset Start Point",
@@ -2885,8 +2885,8 @@ namespace PCLParaphernalia
 
                 tabOptType.SelectedItem = _crntTab;
 
-                txtCurFOffsetStart.SelectAll ();
-                txtCurFOffsetStart.Focus ();
+                txtCurFOffsetStart.SelectAll();
+                txtCurFOffsetStart.Focus();
             }
 
             return OK;

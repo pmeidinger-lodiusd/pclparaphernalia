@@ -18,8 +18,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private const int _lenPJLIntro   = 4;       // @PJL //
-        private const int _maxPJLCmdLen  = 1024;
+        private const int _lenPJLIntro = 4;       // @PJL //
+        private const int _maxPJLCmdLen = 1024;
         private const int _maxPJLLineLen = 50;
 
         //--------------------------------------------------------------------//
@@ -49,7 +49,7 @@ namespace PCLParaphernalia
         private PrnParseConstants.eOptCharSets _indxCharSetName;
         private int _valCharSetSubCode;
 
-        private readonly ASCIIEncoding _ascii = new ASCIIEncoding ();
+        private readonly ASCIIEncoding _ascii = new ASCIIEncoding();
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -81,7 +81,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool findPJLTerminator (
+        private bool findPJLTerminator(
             int bufRem,
             int bufOffset,
             ref int commandLen,
@@ -100,10 +100,10 @@ namespace PCLParaphernalia
                     foundLF;
 
             continuation = false;
-            foundTerm    = false;
-            foundLF      = false;
+            foundTerm = false;
+            foundLF = false;
 
-            rem    = bufRem    - _lenPJLIntro;
+            rem = bufRem - _lenPJLIntro;
             offset = bufOffset + _lenPJLIntro;
             cmdLen = _lenPJLIntro;
 
@@ -119,7 +119,7 @@ namespace PCLParaphernalia
 
                 if (crntByte == PrnParseConstants.asciiLF)
                 {
-                    foundLF   = true;
+                    foundLF = true;
                     foundTerm = true;
                     offset++;
                     cmdLen++;
@@ -151,7 +151,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.eContType.PJL;
 
-                _linkData.setBacktrack (contType, -bufRem);
+                _linkData.setBacktrack(contType, -bufRem);
 
                 commandLen = 0;
             }
@@ -174,15 +174,15 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public bool parseBuffer(
-            byte[]                             buf,
+            byte[] buf,
             ref int fileOffset,
             ref int bufRem,
             ref int bufOffset,
-            ref ToolCommonData.ePrintLang    crntPDL,
+            ref ToolCommonData.ePrintLang crntPDL,
             ref bool endReached,
-            PrnParseLinkData                    linkData,
-            PrnParseOptions                     options,
-            DataTable                           table)
+            PrnParseLinkData linkData,
+            PrnParseOptions options,
+            DataTable table)
         {
             bool seqInvalid;
 
@@ -192,10 +192,10 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            _buf        = buf;
-            _linkData   = linkData;
-            _options    = options;
-            _table      = table;
+            _buf = buf;
+            _linkData = linkData;
+            _options = options;
+            _table = table;
             _fileOffset = fileOffset;
 
             _analysisLevel = _linkData.AnalysisLevel;
@@ -206,7 +206,7 @@ namespace PCLParaphernalia
 
             _indxOffsetFormat = _options.IndxGenOffsetFormat;
 
-            _options.getOptCharSet (ref _indxCharSetName,
+            _options.getOptCharSet(ref _indxCharSetName,
                                     ref _indxCharSetSubAct,
                                     ref _valCharSetSubCode);
 
@@ -217,12 +217,12 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (linkData.isContinuation())
-                seqInvalid = parseContinuation (ref bufRem,
+                seqInvalid = parseContinuation(ref bufRem,
                                                 ref bufOffset,
                                                 ref crntPDL,
                                                 ref endReached);
             else
-                seqInvalid = parseSequences (ref bufRem,
+                seqInvalid = parseSequences(ref bufRem,
                                              ref bufOffset,
                                              ref crntPDL,
                                              ref endReached);
@@ -242,7 +242,7 @@ namespace PCLParaphernalia
         private bool parseContinuation(
             ref int bufRem,
             ref int bufOffset,
-            ref ToolCommonData.ePrintLang    crntPDL,
+            ref ToolCommonData.ePrintLang crntPDL,
             ref bool endReached)
         {
             PrnParseConstants.eContType contType = PrnParseConstants.eContType.None;
@@ -258,7 +258,7 @@ namespace PCLParaphernalia
             byte prefixA = 0x00,
                  prefixB = 0x00;
 
-            _linkData.getContData (ref contType,
+            _linkData.getContData(ref contType,
                                    ref prefixLen,
                                    ref contDataLen,
                                    ref downloadRem,
@@ -284,7 +284,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                _linkData.resetContData ();
+                _linkData.resetContData();
             }
 
             if ((_endOffset != -1) && ((_fileOffset + bufOffset) > _endOffset))
@@ -396,9 +396,9 @@ namespace PCLParaphernalia
 
                         contType = PrnParseConstants.eContType.PJL;
 
-                        _linkData.setBacktrack (contType, - bufRem);
+                        _linkData.setBacktrack(contType, -bufRem);
                     }
-                    else if (_ascii.GetString (_buf, bufOffset, _lenPJLIntro)
+                    else if (_ascii.GetString(_buf, bufOffset, _lenPJLIntro)
                              != "@PJL")
                     {
                         //----------------------------------------------------//
@@ -411,7 +411,7 @@ namespace PCLParaphernalia
 
                         invalidSeqFound = true;
 
-                        PrnParseCommon.addTextRow (
+                        PrnParseCommon.addTextRow(
                             PrnParseRowTypes.eType.MsgWarning,
                             _table,
                             PrnParseConstants.eOvlShow.None,
@@ -420,7 +420,7 @@ namespace PCLParaphernalia
                             string.Empty,
                             "Unexpected sequence found");
 
-                        PrnParseData.processLines (
+                        PrnParseData.processLines(
                             _table,
                             PrnParseConstants.eOvlShow.None,
                             _linkData,
@@ -438,7 +438,7 @@ namespace PCLParaphernalia
                             "Data",
                             0,
                             _indxCharSetSubAct,
-                            (byte) _valCharSetSubCode,
+                            (byte)_valCharSetSubCode,
                             _indxCharSetName,
                             _indxOffsetFormat,
                             _analysisLevel);
@@ -451,7 +451,7 @@ namespace PCLParaphernalia
                         //                                                             //
                         //-------------------------------------------------------------//
 
-                        badSeq = processPJLCommand (ref bufRem,
+                        badSeq = processPJLCommand(ref bufRem,
                                                     ref bufOffset,
                                                     ref continuation,
                                                     ref langSwitch,
@@ -463,9 +463,9 @@ namespace PCLParaphernalia
                 }
             }
 
-            _linkData.MakeOvlAct    = PrnParseConstants.eOvlAct.Remove;
+            _linkData.MakeOvlAct = PrnParseConstants.eOvlAct.Remove;
             _linkData.MakeOvlSkipBegin = startPos;
-            _linkData.MakeOvlSkipEnd   = _fileOffset + bufOffset;
+            _linkData.MakeOvlSkipEnd = _fileOffset + bufOffset;
 
             return invalidSeqFound;
         }
@@ -557,14 +557,14 @@ namespace PCLParaphernalia
                    showChar,
                    desc = string.Empty;
 
-            StringBuilder seq = new StringBuilder ();
+            StringBuilder seq = new StringBuilder();
 
-            StringBuilder cmd = new StringBuilder ();
+            StringBuilder cmd = new StringBuilder();
 
-            StringBuilder cmdPart1 = new StringBuilder ();
-            StringBuilder cmdPart2 = new StringBuilder ();
+            StringBuilder cmdPart1 = new StringBuilder();
+            StringBuilder cmdPart2 = new StringBuilder();
 
-            cmdPart1.Append ("@PJL");
+            cmdPart1.Append("@PJL");
 
             invalidSeqFound = false;
             foundStartQuote = false;
@@ -639,7 +639,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.eContType.PJL;
 
-                _linkData.setBacktrack (contType, -bufRem);
+                _linkData.setBacktrack(contType, -bufRem);
             }
             else
             {
@@ -653,7 +653,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                cmdRem = cmdLen    - _lenPJLIntro;
+                cmdRem = cmdLen - _lenPJLIntro;
                 offset = bufOffset + _lenPJLIntro;
 
                 //------------------------------------------------------------//
@@ -664,7 +664,7 @@ namespace PCLParaphernalia
 
                 endLoop = false;
 
-                while ((! endLoop) && (cmdRem > 0))
+                while ((!endLoop) && (cmdRem > 0))
                 {
                     crntByte = _buf[offset];
 
@@ -672,13 +672,13 @@ namespace PCLParaphernalia
                                          ||
                         (crntByte == PrnParseConstants.asciiHT))
                     {
-                        showChar = PrnParseData.processByte (
+                        showChar = PrnParseData.processByte(
                                         crntByte,
                                         _indxCharSetSubAct,
-                                        (byte) _valCharSetSubCode,
+                                        (byte)_valCharSetSubCode,
                                         _indxCharSetName);
 
-                        cmdPart1.Append (showChar);
+                        cmdPart1.Append(showChar);
 
                         offset++;
                         cmdRem--;
@@ -737,17 +737,17 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        crntChar = (char) crntByte;
-                        normChar = char.ToUpper (crntChar);
-                        cmd.Append (normChar);
+                        crntChar = (char)crntByte;
+                        normChar = char.ToUpper(crntChar);
+                        cmd.Append(normChar);
 
-                        showChar = PrnParseData.processByte (
+                        showChar = PrnParseData.processByte(
                                         crntByte,
                                         _indxCharSetSubAct,
-                                        (byte) _valCharSetSubCode,
+                                        (byte)_valCharSetSubCode,
                                         _indxCharSetName);
 
-                        cmdPart1.Append (showChar);
+                        cmdPart1.Append(showChar);
 
                         offset++;
                         cmdRem--;
@@ -760,14 +760,14 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                commandName = cmd.ToString ();
+                commandName = cmd.ToString();
 
                 if (commandName?.Length == 0)
-                    seqKnown = PJLCommands.checkCmd (PJLCommands.nullCmdKey,
+                    seqKnown = PJLCommands.checkCmd(PJLCommands.nullCmdKey,
                                                      ref desc,
                                                      _analysisLevel);
                 else
-                    seqKnown = PJLCommands.checkCmd (cmd.ToString (),
+                    seqKnown = PJLCommands.checkCmd(cmd.ToString(),
                                                      ref desc,
                                                      _analysisLevel);
 
@@ -797,16 +797,16 @@ namespace PCLParaphernalia
                         }
                     }
 
-                    crntChar = (char) crntByte;
-                    normChar = char.ToUpper (crntChar);
+                    crntChar = (char)crntByte;
+                    normChar = char.ToUpper(crntChar);
 
-                    showChar = PrnParseData.processByte (
+                    showChar = PrnParseData.processByte(
                                     crntByte,
                                     _indxCharSetSubAct,
-                                    (byte) _valCharSetSubCode,
+                                    (byte)_valCharSetSubCode,
                                     _indxCharSetName);
 
-                    cmdPart2.Append (showChar);
+                    cmdPart2.Append(showChar);
 
                     if ((crntByte == PrnParseConstants.asciiSpace)
                                          ||
@@ -817,11 +817,11 @@ namespace PCLParaphernalia
                                          ||
                              (crntByte < PrnParseConstants.asciiSpace))
                     {
-                        seq.Append ((char) PrnParseConstants.asciiPeriod);
+                        seq.Append((char)PrnParseConstants.asciiPeriod);
                     }
                     else
                     {
-                        seq.Append (normChar);
+                        seq.Append(normChar);
                     }
 
                     offset++;
@@ -834,7 +834,7 @@ namespace PCLParaphernalia
                 //                                                        //
                 //--------------------------------------------------------//
 
-                commandParams = cmdPart2.ToString ();
+                commandParams = cmdPart2.ToString();
 
                 len = commandParams.Length;
                 lineStart = 0;
@@ -852,7 +852,7 @@ namespace PCLParaphernalia
                     {
                         line = commandParams.Substring(lineStart,
                                                        len);
-                        len  = 0;
+                        len = 0;
                     }
 
                     if (firstLine)
@@ -861,7 +861,7 @@ namespace PCLParaphernalia
 
                         if (!seqKnown)
                         {
-                            PrnParseCommon.addTextRow (
+                            PrnParseCommon.addTextRow(
                                 PrnParseRowTypes.eType.MsgWarning,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
@@ -873,7 +873,7 @@ namespace PCLParaphernalia
 
                         if (noWhitespace)
                         {
-                            PrnParseCommon.addTextRow (
+                            PrnParseCommon.addTextRow(
                                 PrnParseRowTypes.eType.MsgWarning,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
@@ -884,7 +884,7 @@ namespace PCLParaphernalia
                                 " by space or tab character:");
                         }
 
-                        PrnParseCommon.addDataRow (
+                        PrnParseCommon.addDataRow(
                             PrnParseRowTypes.eType.PJLCommand,
                             _table,
                             PrnParseConstants.eOvlShow.Remove,
@@ -892,12 +892,12 @@ namespace PCLParaphernalia
                             _fileOffset + bufOffset,
                             _analysisLevel,
                             "PJL Command",
-                            cmdPart1.ToString (),
+                            cmdPart1.ToString(),
                             line);
                     }
                     else
                     {
-                        PrnParseCommon.addTextRow (
+                        PrnParseCommon.addTextRow(
                             PrnParseRowTypes.eType.PJLCommand,
                             _table,
                             PrnParseConstants.eOvlShow.Remove,
@@ -914,15 +914,15 @@ namespace PCLParaphernalia
                 //                                                        //
                 //--------------------------------------------------------//
 
-                commandParams = seq.ToString ();
+                commandParams = seq.ToString();
 
                 if ((commandName.Length == 5)
                             &&
-                    (commandName.Substring (0, 5) == "ENTER")
+                    (commandName.Substring(0, 5) == "ENTER")
                             &&
                     (commandParams.Length > 9)
                             &&
-                    (commandParams.Substring (0, 9) == "LANGUAGE="))
+                    (commandParams.Substring(0, 9) == "LANGUAGE="))
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -934,27 +934,27 @@ namespace PCLParaphernalia
 
                     seqLen = seq.Length;
 
-                    lang = commandParams.Substring (9, seqLen - 9);
+                    lang = commandParams.Substring(9, seqLen - 9);
 
                     langLen = lang.Length;
 
                     if ((langLen >= 5) &&
-                        (lang.Substring (0, 5) == "PCLXL"))
+                        (lang.Substring(0, 5) == "PCLXL"))
                         crntPDL = ToolCommonData.ePrintLang.PCLXL;
                     else if ((langLen >= 7) &&
-                             (lang.Substring (0, 7) == "PCL3GUI"))
+                             (lang.Substring(0, 7) == "PCL3GUI"))
                         crntPDL = ToolCommonData.ePrintLang.PCL3GUI;
                     else if ((langLen >= 3) &&
-                             (lang.Substring (0, 3) == "PCL"))
+                             (lang.Substring(0, 3) == "PCL"))
                         crntPDL = ToolCommonData.ePrintLang.PCL;
                     else if ((langLen >= 10) &&
-                             (lang.Substring (0, 10) == "POSTSCRIPT"))
+                             (lang.Substring(0, 10) == "POSTSCRIPT"))
                         crntPDL = ToolCommonData.ePrintLang.PostScript;
                     else if ((langLen >= 4) &&
-                             (lang.Substring (0, 4) == "HPGL"))
+                             (lang.Substring(0, 4) == "HPGL"))
                         crntPDL = ToolCommonData.ePrintLang.HPGL2;
                     else if ((langLen >= 5) &&
-                             (lang.Substring (0, 5) == "XL2HB"))
+                             (lang.Substring(0, 5) == "XL2HB"))
                         crntPDL = ToolCommonData.ePrintLang.XL2HB;
                     else
                         crntPDL = ToolCommonData.ePrintLang.Unknown;
@@ -962,11 +962,11 @@ namespace PCLParaphernalia
                 else if (_showPML &&
                          (((commandName.Length == 5)
                             &&
-                           (commandName.Substring (0, 5) == "DMCMD"))
+                           (commandName.Substring(0, 5) == "DMCMD"))
                             ||
                           ((commandName.Length == 6)
                             &&
-                           (commandName.Substring (0, 6) == "DMINFO"))))
+                           (commandName.Substring(0, 6) == "DMINFO"))))
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -976,7 +976,7 @@ namespace PCLParaphernalia
 
                     if ((commandParams.Length > 9)
                             &&
-                        (commandParams.Substring (0, 9) == "ASCIIHEX="))
+                        (commandParams.Substring(0, 9) == "ASCIIHEX="))
                     {
                         //----------------------------------------------------//
                         //                                                    //
@@ -989,14 +989,14 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        PrnParsePML parsePML = new PrnParsePML ();
+                        PrnParsePML parsePML = new PrnParsePML();
 
                         seqLen = quoteEnd - quoteStart - 1;
 
                         if (seqLen > 0)
                         {
                             invalidSeqFound =
-                                parsePML.processPMLASCIIHex (_buf,
+                                parsePML.processPMLASCIIHex(_buf,
                                                             _fileOffset,
                                                             seqLen,
                                                             quoteStart + 1,
@@ -1008,7 +1008,7 @@ namespace PCLParaphernalia
                 }
 
                 bufOffset = offset;
-                bufRem   -= cmdLen;
+                bufRem -= cmdLen;
             }
 
             return invalidSeqFound;

@@ -24,8 +24,8 @@ namespace PCLParaphernalia
 
         private enum ePCLXLFontTechnology : byte
         {
-            TrueType           = 1,
-            Bitmap             = 254,
+            TrueType = 1,
+            Bitmap = 254,
         }
 
         //--------------------------------------------------------------------//
@@ -70,7 +70,7 @@ namespace PCLParaphernalia
 
             long fileSize = 0;
 
-            fileOpen = fontFileOpen (fontFilename, ref fileSize);
+            fileOpen = fontFileOpen(fontFilename, ref fileSize);
 
             if (!fileOpen)
             {
@@ -94,10 +94,10 @@ namespace PCLParaphernalia
                     if (readSize == 0)
                         endLoop = true;
                     else
-                       prnWriter.Write(buf, 0, readSize);
+                        prnWriter.Write(buf, 0, readSize);
                 }
 
-                fontFileClose ();
+                fontFileClose();
             }
 
             return OK;
@@ -119,16 +119,16 @@ namespace PCLParaphernalia
 
             if ((fileName == null) || (fileName?.Length == 0))
             {
-                MessageBox.Show ("Download font file name is null.",
+                MessageBox.Show("Download font file name is null.",
                                 "PCL XL font selection attribute invalid",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
                 return false;
             }
-            else if (!File.Exists (fileName))
+            else if (!File.Exists(fileName))
             {
-                MessageBox.Show ("Download font file '" + fileName +
+                MessageBox.Show("Download font file '" + fileName +
                                 "' does not exist.",
                                 "PCL XL font selection attribute invalid",
                                 MessageBoxButton.OK,
@@ -140,14 +140,14 @@ namespace PCLParaphernalia
             {
                 try
                 {
-                    _ipStream = File.Open (fileName,
+                    _ipStream = File.Open(fileName,
                                            FileMode.Open,
                                            FileAccess.Read,
                                            FileShare.None);
                 }
                 catch (IOException e)
                 {
-                    MessageBox.Show ("IO Exception:\r\n" +
+                    MessageBox.Show("IO Exception:\r\n" +
                                      e.Message + "\r\n" +
                                      "Opening soft font file '" +
                                      fileName + "'",
@@ -160,11 +160,11 @@ namespace PCLParaphernalia
                 {
                     open = true;
 
-                    FileInfo fi = new FileInfo (fileName);
+                    FileInfo fi = new FileInfo(fileName);
 
                     fileSize = fi.Length;
 
-                    _binReader = new BinaryReader (_ipStream);
+                    _binReader = new BinaryReader(_ipStream);
                 }
             }
 
@@ -190,8 +190,8 @@ namespace PCLParaphernalia
 
             bool OK = true;
 
-            ushort hddrOffset  = 0;
-            long fileSize    = 0;
+            ushort hddrOffset = 0;
+            long fileSize = 0;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -199,28 +199,28 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            fileOpen = fontFileOpen (fontFilename, ref fileSize);
+            fileOpen = fontFileOpen(fontFilename, ref fileSize);
 
-            if (! fileOpen)
+            if (!fileOpen)
             {
                 OK = false;
             }
             else
             {
-                OK = readHddrIntro (fontFilename,
+                OK = readHddrIntro(fontFilename,
                                     fileSize,
                                     ref fontName,
                                     ref hddrOffset);
 
                 if (OK)
                 {
-                    OK = readHddrDescriptor (hddrOffset,
+                    OK = readHddrDescriptor(hddrOffset,
                                              ref scalable,
                                              ref bound,
                                              ref symSetNo);
                 }
 
-                fontFileClose ();
+                fontFileClose();
             }
 
             return OK;
@@ -307,7 +307,7 @@ namespace PCLParaphernalia
             const byte minFontNameLen = 12;
             const byte maxFontNameLen = 20;
 
-            string messHeader  = "Download font file '" + fileName + "':\n\n";
+            string messHeader = "Download font file '" + fileName + "':\n\n";
             const string messTrailer = "\n\nYou will have to choose another file.";
 
             bool OK = true;
@@ -321,7 +321,7 @@ namespace PCLParaphernalia
             {
                 MessageBox.Show(messHeader +
                                 "File size < minimum (" + minFileSize +
-                                " bytes)."                            +
+                                " bytes)." +
                                 messTrailer,
                                 "PCL XL soft font file",
                                 MessageBoxButton.OK,
@@ -410,11 +410,11 @@ namespace PCLParaphernalia
                 {
                     dataLen = (ushort)((buf[pos + 2] * 256) + buf[pos + 1]);
 
-                    if ((dataLen < _minHddrDescLen)                           ||
-                        (buf[pos+3] != (byte)PCLXLAttrDefiners.eTag.Ubyte)            ||
-                        (buf[pos+4] !=
-                            (byte)PCLXLAttributes.eTag.FontHeaderLength)          ||
-                        (buf[pos+5] != (byte)PCLXLOperators.eTag.ReadFontHeader))
+                    if ((dataLen < _minHddrDescLen) ||
+                        (buf[pos + 3] != (byte)PCLXLAttrDefiners.eTag.Ubyte) ||
+                        (buf[pos + 4] !=
+                            (byte)PCLXLAttributes.eTag.FontHeaderLength) ||
+                        (buf[pos + 5] != (byte)PCLXLOperators.eTag.ReadFontHeader))
                     {
                         OK = false;
                     }
@@ -428,7 +428,7 @@ namespace PCLParaphernalia
 
                             pos += 2;
                         }
-                        else if (buf[pos] == (byte) PCLXLEmbedDataDefs.eTag.Int)
+                        else if (buf[pos] == (byte)PCLXLEmbedDataDefs.eTag.Int)
                         {
                             hddrDescLen = (buf[pos + 4] * 256 * 256 * 256) +
                                           (buf[pos + 5] * 256 * 256) +

@@ -19,19 +19,19 @@ namespace PCLParaphernalia
 
         const string _mainKey = MainForm._regMainKey;
 
-        const string _subKeyVersionData    = "VersionData";
-        const string _subKeyWindowState    = "WindowState";
+        const string _subKeyVersionData = "VersionData";
+        const string _subKeyWindowState = "WindowState";
 
-        const string _nameVersionBuild     = "Build";
-        const string _nameVersionMajor     = "Major";
-        const string _nameVersionMinor     = "Minor";
-        const string _nameVersionRevision  = "Revision";
+        const string _nameVersionBuild = "Build";
+        const string _nameVersionMajor = "Major";
+        const string _nameVersionMinor = "Minor";
+        const string _nameVersionRevision = "Revision";
 
-        const string _nameMainWindowLeft   = "MainWindowLeft";
-        const string _nameMainWindowTop    = "MainWindowTop";
+        const string _nameMainWindowLeft = "MainWindowLeft";
+        const string _nameMainWindowTop = "MainWindowTop";
         const string _nameMainWindowHeight = "MainWindowHeight";
-        const string _nameMainWindowWidth  = "MainWindowWidth";
-        const string _nameMainWindowScale  = "MainWindowScale";
+        const string _nameMainWindowWidth = "MainWindowWidth";
+        const string _nameMainWindowScale = "MainWindowScale";
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -43,7 +43,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadVersionData (ref int major,
+        public static void loadVersionData(ref int major,
                                             ref int minor,
                                             ref int build,
                                             ref int revision)
@@ -56,10 +56,10 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                major    = (int) subKey.GetValue(_nameVersionMajor,    -1);
-                minor    = (int) subKey.GetValue(_nameVersionMinor,    -1);
-                build    = (int) subKey.GetValue(_nameVersionBuild,    -1);
-                revision = (int) subKey.GetValue(_nameVersionRevision, -1);
+                major = (int)subKey.GetValue(_nameVersionMajor, -1);
+                minor = (int)subKey.GetValue(_nameVersionMinor, -1);
+                build = (int)subKey.GetValue(_nameVersionBuild, -1);
+                revision = (int)subKey.GetValue(_nameVersionRevision, -1);
             }
         }
 
@@ -73,7 +73,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadWindowData (ref int left,
+        public static void loadWindowData(ref int left,
                                            ref int top,
                                            ref int height,
                                            ref int width,
@@ -86,11 +86,11 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                left   = (int)subKey.GetValue(_nameMainWindowLeft,   -1);
-                top    = (int)subKey.GetValue(_nameMainWindowTop,    -1);
+                left = (int)subKey.GetValue(_nameMainWindowLeft, -1);
+                top = (int)subKey.GetValue(_nameMainWindowTop, -1);
                 height = (int)subKey.GetValue(_nameMainWindowHeight, -1);
-                width  = (int)subKey.GetValue(_nameMainWindowWidth,  -1);
-                scale  = (int)subKey.GetValue(_nameMainWindowScale,  100);
+                width = (int)subKey.GetValue(_nameMainWindowWidth, -1);
+                scale = (int)subKey.GetValue(_nameMainWindowScale, 100);
             }
         }
 
@@ -103,7 +103,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveVersionData (int major,
+        public static void saveVersionData(int major,
                                             int minor,
                                             int build,
                                             int revision)
@@ -113,13 +113,13 @@ namespace PCLParaphernalia
 
             const string key = _subKeyVersionData;
 
-            using(RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                subKey.SetValue(_nameVersionMajor,    major,
+                subKey.SetValue(_nameVersionMajor, major,
                                 RegistryValueKind.DWord);
-                subKey.SetValue(_nameVersionMinor,    minor,
+                subKey.SetValue(_nameVersionMinor, minor,
                                 RegistryValueKind.DWord);
-                subKey.SetValue(_nameVersionBuild,    build,
+                subKey.SetValue(_nameVersionBuild, build,
                                 RegistryValueKind.DWord);
                 subKey.SetValue(_nameVersionRevision, revision,
                                 RegistryValueKind.DWord);
@@ -135,7 +135,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveWindowData (int mwLeft,
+        public static void saveWindowData(int mwLeft,
                                           int mwTop,
                                           int mwHeight,
                                           int mwWidth,
@@ -146,17 +146,17 @@ namespace PCLParaphernalia
 
             const string key = _subKeyWindowState;
 
-            using(RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                subKey.SetValue(_nameMainWindowLeft,   mwLeft,
+                subKey.SetValue(_nameMainWindowLeft, mwLeft,
                                                     RegistryValueKind.DWord);
-                subKey.SetValue(_nameMainWindowTop,    mwTop,
+                subKey.SetValue(_nameMainWindowTop, mwTop,
                                                     RegistryValueKind.DWord);
                 subKey.SetValue(_nameMainWindowHeight, mwHeight,
                                                     RegistryValueKind.DWord);
-                subKey.SetValue(_nameMainWindowWidth,  mwWidth,
+                subKey.SetValue(_nameMainWindowWidth, mwWidth,
                                                     RegistryValueKind.DWord);
-                subKey.SetValue(_nameMainWindowScale,  mwScale,
+                subKey.SetValue(_nameMainWindowScale, mwScale,
                                                     RegistryValueKind.DWord);
             }
         }

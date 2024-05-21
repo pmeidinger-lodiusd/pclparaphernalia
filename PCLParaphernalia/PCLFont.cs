@@ -50,7 +50,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLFont (short fontIndex,
+        public PCLFont(short fontIndex,
                         PCLFonts.eFontType fontType,
                         string fontName,
                         bool bound,
@@ -77,46 +77,46 @@ namespace PCLParaphernalia
                         ushort styleBoldItalic,
                         short weightBoldItalic,
                         string nameBoldItalic,
-                        ushort[]          symSets)
+                        ushort[] symSets)
         {
             IndexNo = fontIndex;
             Type = fontType;
             Name = fontName;
 
-            _bound              = bound;
-            _proportional       = proportional;
+            _bound = bound;
+            _proportional = proportional;
             Scalable = scalable;
 
-            _symSetNumber       = symbolSet;
+            _symSetNumber = symbolSet;
             Typeface = typeface;
 
-            _contourRatio       = contourRatio;
-            _pitch              = pitch;
-            _pointSize          = pointSize;
+            _contourRatio = contourRatio;
+            _pitch = pitch;
+            _pointSize = pointSize;
 
             Var_Regular = varRegular;
             Var_Italic = varItalic;
             Var_Bold = varBold;
             Var_BoldItalic = varBoldItalic;
 
-            _styleRegular       = styleRegular;
-            _styleItalic        = styleItalic;
-            _styleBold          = styleBold;
-            _styleBoldItalic    = styleBoldItalic;
+            _styleRegular = styleRegular;
+            _styleItalic = styleItalic;
+            _styleBold = styleBold;
+            _styleBoldItalic = styleBoldItalic;
 
-            _weightRegular      = weightRegular;
-            _weightItalic       = weightItalic;
-            _weightBold         = weightBold;
-            _weightBoldItalic   = weightBoldItalic;
+            _weightRegular = weightRegular;
+            _weightItalic = weightItalic;
+            _weightBold = weightBold;
+            _weightBoldItalic = weightBoldItalic;
 
-            _nameRegular        = nameRegular;
-            _nameItalic         = nameItalic;
-            _nameBold           = nameBold;
-            _nameBoldItalic     = nameBoldItalic;
+            _nameRegular = nameRegular;
+            _nameItalic = nameItalic;
+            _nameBold = nameBold;
+            _nameBoldItalic = nameBoldItalic;
 
-            _symSets            = symSets;
+            _symSets = symSets;
 
-            _symSetDefault      = 14;       // = "0N"
+            _symSetDefault = 14;       // = "0N"
         }
 
         //--------------------------------------------------------------------//
@@ -134,7 +134,7 @@ namespace PCLParaphernalia
             get
             {
                 if (_bound)
-                    return PCLSymbolSets.TranslateKind1ToId (_symSetNumber);
+                    return PCLSymbolSets.TranslateKind1ToId(_symSetNumber);
                 else
                     return string.Empty;
             }
@@ -149,22 +149,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getHPGL2FontDef (PCLFonts.eVariant variant,
+        public string getHPGL2FontDef(PCLFonts.eVariant variant,
                                        ushort symbolSet,
                                        double height,
                                        double pitch)
         {
-            StringBuilder cmd = new StringBuilder (255);
+            StringBuilder cmd = new StringBuilder(255);
 
             if (_symSetNumber != 0)
-                cmd.Append ("1,").Append (_symSetNumber);
+                cmd.Append("1,").Append(_symSetNumber);
             else
-                cmd.Append ("1,").Append (symbolSet);
+                cmd.Append("1,").Append(symbolSet);
 
             if (_proportional)
-                cmd.Append (",2,1");
+                cmd.Append(",2,1");
             else
-                cmd.Append (",2,0");
+                cmd.Append(",2,0");
 
             if (Scalable)
             {
@@ -173,12 +173,12 @@ namespace PCLParaphernalia
                 if (_proportional)
                 {
                     // Scalable; proportionally-spaced
-                    cmd.Append (",4,").Append (height);
+                    cmd.Append(",4,").Append(height);
                 }
                 else
                 {
                     // Scalable; fixed-pitch
-                    cmd.Append (",3,").Append (pitch);
+                    cmd.Append(",3,").Append(pitch);
                 }
             }
             else
@@ -187,37 +187,37 @@ namespace PCLParaphernalia
 
                 if (_proportional)
                     // Bitmap; proportionally-spaced
-                    cmd.Append (",4,").Append (_pointSize);
+                    cmd.Append(",4,").Append(_pointSize);
                 else
                     // Bitmap; fixed-pitch
-                    cmd.Append (",3,").Append (_pitch);
-                    cmd.Append (",4,").Append (_pointSize);
+                    cmd.Append(",3,").Append(_pitch);
+                cmd.Append(",4,").Append(_pointSize);
             }
 
             if (variant == PCLFonts.eVariant.Italic)
             {
-                cmd.Append (",5,").Append (_styleItalic);
-                cmd.Append (",6,").Append (_weightItalic);
+                cmd.Append(",5,").Append(_styleItalic);
+                cmd.Append(",6,").Append(_weightItalic);
             }
             else if (variant == PCLFonts.eVariant.Bold)
             {
-                cmd.Append (",5,").Append (_styleBold);
-                cmd.Append (",6,").Append (_weightBold);
+                cmd.Append(",5,").Append(_styleBold);
+                cmd.Append(",6,").Append(_weightBold);
             }
             else if (variant == PCLFonts.eVariant.BoldItalic)
             {
-                cmd.Append (",5,").Append (_styleBoldItalic);
-                cmd.Append (",6,").Append (_weightBoldItalic);
+                cmd.Append(",5,").Append(_styleBoldItalic);
+                cmd.Append(",6,").Append(_weightBoldItalic);
             }
             else
             {
-                cmd.Append (",5,").Append (_styleRegular);
-                cmd.Append (",6,").Append (_weightRegular);
+                cmd.Append(",5,").Append(_styleRegular);
+                cmd.Append(",6,").Append(_weightRegular);
             }
 
-            cmd.Append (",7,").Append (Typeface);
+            cmd.Append(",7,").Append(Typeface);
 
-            return cmd.ToString ();
+            return cmd.ToString();
         }
 
         //--------------------------------------------------------------------//
@@ -244,7 +244,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool getPCLFontIdData (ref ushort typeface,
+        public bool getPCLFontIdData(ref ushort typeface,
                                          ref string fontName)
         {
             bool presetFont = false;
@@ -253,8 +253,8 @@ namespace PCLParaphernalia
                 (Type == PCLFonts.eFontType.PresetFamily))
             {
                 presetFont = true;
-                typeface   = Typeface;
-                fontName   = Name;
+                typeface = Typeface;
+                fontName = Name;
             }
             else
             {
@@ -274,7 +274,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getPCLFontSelect (PCLFonts.eVariant variant,
+        public string getPCLFontSelect(PCLFonts.eVariant variant,
                                         double height,
                                         double pitch)
         {
@@ -327,22 +327,22 @@ namespace PCLParaphernalia
 
             if (variant == PCLFonts.eVariant.Italic)
             {
-                seq += _styleItalic.ToString()  + "s" +
+                seq += _styleItalic.ToString() + "s" +
                        _weightItalic.ToString() + "b";
             }
             else if (variant == PCLFonts.eVariant.Bold)
             {
-                seq += _styleBold.ToString()  + "s" +
+                seq += _styleBold.ToString() + "s" +
                        _weightBold.ToString() + "b";
             }
             else if (variant == PCLFonts.eVariant.BoldItalic)
             {
-                seq += _styleBoldItalic.ToString()  + "s" +
+                seq += _styleBoldItalic.ToString() + "s" +
                        _weightBoldItalic.ToString() + "b";
             }
             else
             {
-                seq += _styleRegular.ToString()  + "s" +
+                seq += _styleRegular.ToString() + "s" +
                        _weightRegular.ToString() + "b";
             }
 
@@ -519,7 +519,7 @@ namespace PCLParaphernalia
             get
             {
                 if (_pitch != 0)
-                    return _pointSize.ToString ();
+                    return _pointSize.ToString();
                 else
                     return string.Empty;
             }
@@ -594,7 +594,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool isSymSetInList (ushort symSetNo)
+        public bool isSymSetInList(ushort symSetNo)
         {
             int symSetCt = _symSets.Length;
 
@@ -624,7 +624,7 @@ namespace PCLParaphernalia
 
             if ((!symSetFound) && (!_bound))
             {
-                if (PCLSymbolSets.GetKind1 (PCLSymbolSets.IndexUnicode) ==
+                if (PCLSymbolSets.GetKind1(PCLSymbolSets.IndexUnicode) ==
                     symSetNo)
                 {
                     symSetFound = true;
@@ -660,7 +660,7 @@ namespace PCLParaphernalia
             get
             {
                 if (_pitch != 0)
-                    return _pitch.ToString ();
+                    return _pitch.ToString();
                 else
                     return string.Empty;
             }
@@ -774,29 +774,29 @@ namespace PCLParaphernalia
 
                 mapRows = new string[rowCt];
 
-                crntRow = new StringBuilder (rowSize);
+                crntRow = new StringBuilder(rowSize);
 
                 for (int i = 0; i < symSetCt; i++)
                 {
                     string symSetId =
-                        PCLSymbolSets.TranslateKind1ToId (_symSets[i]);
+                        PCLSymbolSets.TranslateKind1ToId(_symSets[i]);
 
-                    crntRow.Append (symSetId);
+                    crntRow.Append(symSetId);
 
                     if (i < (symSetCt - 1))
-                        crntRow.Append (", ");
+                        crntRow.Append(", ");
 
                     if ((i > 0) && ((i % maxPerRow) == 0))
                     {
-                        mapRows[rowIndx] = crntRow.ToString ();
+                        mapRows[rowIndx] = crntRow.ToString();
 
-                        crntRow.Clear ();
+                        crntRow.Clear();
                         rowIndx++;
                     }
                 }
 
                 if (crntRow.Length > 0)
-                    mapRows[rowIndx] = crntRow.ToString ();
+                    mapRows[rowIndx] = crntRow.ToString();
 
                 return mapRows;
             }
@@ -830,10 +830,10 @@ namespace PCLParaphernalia
                     symSetList.Append(symSetId);
 
                     if (i < (symSetCt - 1))
-                        symSetList.Append (", ");
+                        symSetList.Append(", ");
 
                     if ((i > 0) && ((i % maxPerRow) == 0))
-                        symSetList.Append ("\r\n");
+                        symSetList.Append("\r\n");
                 }
 
                 return symSetList.ToString();

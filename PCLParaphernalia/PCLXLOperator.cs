@@ -32,22 +32,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-	    public PCLXLOperator(byte tag,
+        public PCLXLOperator(byte tag,
                              bool flagEndSession,
                              bool flagReserved,
                              PCLXLOperators.eEmbedDataType embedDataType,
                              PrnParseConstants.eOvlAct makeOvlAct,
                              string description)
-	    {
-            _tag               = tag;
+        {
+            _tag = tag;
             FlagEndSession = flagEndSession;
             FlagReserved = flagReserved;
             EmbedDataType = embedDataType;
             Description = description;
             this.makeOvlAct = makeOvlAct;
 
-            _statsCtParent  = 0;
-            _statsCtChild   = 0;
+            _statsCtParent = 0;
+            _statsCtChild = 0;
         }
 
         //--------------------------------------------------------------------//
@@ -56,18 +56,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getDetails (
+        public void getDetails(
             ref bool flagEndSession,
             ref bool flagReserved,
             ref PCLXLOperators.eEmbedDataType embedDataType,
             ref PrnParseConstants.eOvlAct makeOvlAct,
             ref string description)
         {
-            flagEndSession    = FlagEndSession;
-            flagReserved      = FlagReserved;
-            embedDataType     = EmbedDataType;
+            flagEndSession = FlagEndSession;
+            flagReserved = FlagReserved;
+            embedDataType = EmbedDataType;
             makeOvlAct = this.makeOvlAct;
-            description       = Description;
+            description = Description;
         }
 
         //--------------------------------------------------------------------//

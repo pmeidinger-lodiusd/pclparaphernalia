@@ -64,7 +64,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool readResponseBlock (int offset,
+        public static bool readResponseBlock(int offset,
                                                  int bufRem,
                                                  ref byte[] replyData,
                                                  ref int blockLen)
@@ -87,7 +87,7 @@ namespace PCLParaphernalia
 
             catch (SocketException e)
             {
-                MessageBox.Show ("SocketException" +
+                MessageBox.Show("SocketException" +
                                  "Message: " + e.Message + "\n\n" +
                                  "ErrorCode: " + e.ErrorCode + "\n\n" +
                                  "SocketErrorCode: " + e.SocketErrorCode,
@@ -202,7 +202,7 @@ namespace PCLParaphernalia
 
                 catch (SocketException e)
                 {
-                    MessageBox.Show ("SocketException:\n\n" +
+                    MessageBox.Show("SocketException:\n\n" +
                                      "Message: " + e.Message + "\n\n" +
                                      "ErrorCode: " + e.ErrorCode + "\n\n" +
                                      "SocketErrorCode: " + e.SocketErrorCode,

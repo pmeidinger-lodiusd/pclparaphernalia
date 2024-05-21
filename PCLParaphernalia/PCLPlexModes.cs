@@ -32,7 +32,7 @@ namespace PCLParaphernalia
             DuplexShortEdge
         }
 
-        public const int eSimplex = (int) eIndex.Simplex;
+        public const int eSimplex = (int)eIndex.Simplex;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -141,7 +141,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool isSimplex (int index)
+        public static bool isSimplex(int index)
         {
             return _plexModes[index].getPlexType() == ePlexType.Simplex;
         }

@@ -22,7 +22,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrescribeCommand (string name,
+        public PrescribeCommand(string name,
                                  string desc,
                                  bool flagCmdIntro,
                                  bool flagCmdExit,

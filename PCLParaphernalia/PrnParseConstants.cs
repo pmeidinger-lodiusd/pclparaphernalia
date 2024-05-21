@@ -373,7 +373,7 @@ namespace PCLParaphernalia
             WhiteSmoke,
             Yellow,
             YellowGreen
-    	}
+        }
 
         public const int bufSize = 2048;        // multiple of 16         
         public const int viewBytesPerLine = 16; // divisor of 1024

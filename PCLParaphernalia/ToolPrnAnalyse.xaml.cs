@@ -255,7 +255,7 @@ namespace PCLParaphernalia
 
                 resetStatistics();
 
-                _options.getOptClrMap (ref _flagClrMapUseClr,
+                _options.getOptClrMap(ref _flagClrMapUseClr,
                                        ref _indxClrMapBack,
                                        ref _indxClrMapFore);
 
@@ -283,14 +283,14 @@ namespace PCLParaphernalia
             flagOffsetHex = _options.IndxGenOffsetFormat !=
                 PrnParseConstants.eOptOffsetFormats.Decimal;
 
-            TargetCore.metricsReturnFileRpt (ToolCommonData.eToolIds.PrnAnalyse,
+            TargetCore.metricsReturnFileRpt(ToolCommonData.eToolIds.PrnAnalyse,
                                              ref rptFileFmt,
                                              ref rptChkMarks,
                                              ref flagOptRptWrap);
 
             if (tabCtrl.SelectedItem == tabStatistics)
             {
-                ToolPrnAnalyseReport.generate (eInfoType.Statistics,
+                ToolPrnAnalyseReport.generate(eInfoType.Statistics,
                                                rptFileFmt,
                                                _tableStatistics,
                                                _prnFilename,
@@ -300,7 +300,7 @@ namespace PCLParaphernalia
             }
             else if (tabCtrl.SelectedItem == tabContent)
             {
-                ToolPrnAnalyseReport.generate (eInfoType.Content,
+                ToolPrnAnalyseReport.generate(eInfoType.Content,
                                                rptFileFmt,
                                                _tableContent,
                                                _prnFilename,
@@ -310,7 +310,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                ToolPrnAnalyseReport.generate (eInfoType.Analysis,
+                ToolPrnAnalyseReport.generate(eInfoType.Analysis,
                                                rptFileFmt,
                                                _tableAnalysis,
                                                _prnFilename,
@@ -483,19 +483,19 @@ namespace PCLParaphernalia
 
                     int rowType;
 
-                    Color clrBack = new Color (),
-                          clrFore = new Color ();
+                    Color clrBack = new Color(),
+                          clrFore = new Color();
 
-                    SolidColorBrush brushBack = new SolidColorBrush (),
-                                    brushFore = new SolidColorBrush ();
+                    SolidColorBrush brushBack = new SolidColorBrush(),
+                                    brushFore = new SolidColorBrush();
 
                     rowType = (int)row[PrnParseConstants.cRptA_colName_RowType];
 
                     indxClrBack = _indxClrMapBack[rowType];
                     indxClrFore = _indxClrMapFore[rowType];
 
-                    clrBack = (Color)_stdClrsPropertyInfo[indxClrBack].GetValue (null, null);
-                    clrFore = (Color)_stdClrsPropertyInfo[indxClrFore].GetValue (null, null);
+                    clrBack = (Color)_stdClrsPropertyInfo[indxClrBack].GetValue(null, null);
+                    clrFore = (Color)_stdClrsPropertyInfo[indxClrFore].GetValue(null, null);
 
                     brushBack.Color = clrBack;
                     brushFore.Color = clrFore;
@@ -633,16 +633,16 @@ namespace PCLParaphernalia
 
             _fileSize = -1;
 
-            int ctRowTypes = PrnParseRowTypes.getCount ();
+            int ctRowTypes = PrnParseRowTypes.getCount();
 
             _indxClrMapBack = new int[ctRowTypes];
             _indxClrMapFore = new int[ctRowTypes];
 
-            _options.getOptClrMap (ref _flagClrMapUseClr,
+            _options.getOptClrMap(ref _flagClrMapUseClr,
                                    ref _indxClrMapBack,
                                    ref _indxClrMapFore);
 
-            _options.getOptClrMapStdClrs (ref _ctClrMapStdClrs,
+            _options.getOptClrMapStdClrs(ref _ctClrMapStdClrs,
                                           ref _stdClrsPropertyInfo);
 
             /*

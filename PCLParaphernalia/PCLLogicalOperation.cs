@@ -29,15 +29,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLLogicalOperation (short opId,
+        public PCLLogicalOperation(short opId,
                                     short opCode,
                                     string actPostfix,
                                     string actInfix)
         {
-            _opId   = opId;
+            _opId = opId;
             _opCode = opCode;       // not used at present //
 
-            _actPostfix  = actPostfix;
+            _actPostfix = actPostfix;
             ActInfix = actInfix;
         }
 
@@ -76,8 +76,8 @@ namespace PCLParaphernalia
             else
                 prefix = string.Empty;
 
-            return prefix + _opId.ToString () +
-                   ": " + _actPostfix.PadRight (_maxPFLen) +
+            return prefix + _opId.ToString() +
+                   ": " + _actPostfix.PadRight(_maxPFLen) +
                    " = " + ActInfix;
         }
 
@@ -103,7 +103,7 @@ namespace PCLParaphernalia
             else
                 prefix = string.Empty;
 
-            return prefix + _opId.ToString () +
+            return prefix + _opId.ToString() +
                    ": " + _actPostfix;
         }
 
@@ -116,7 +116,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public short getROPId ()
+        public short getROPId()
         {
             return _opId;
         }

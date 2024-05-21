@@ -83,7 +83,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool keyExists (
+        public static bool keyExists(
             RegistryKey parentKeyName,
             string subKeyName)
         {

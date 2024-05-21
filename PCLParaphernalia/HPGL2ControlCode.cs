@@ -32,12 +32,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-	    public HPGL2ControlCode(byte tag,
+        public HPGL2ControlCode(byte tag,
                                  bool noOp,
                                  string mnemonic,
                                  string description)
-	    {
-            _tag           = tag;
+        {
+            _tag = tag;
             NoOp = noOp;
             Mnemonic = mnemonic;
             DescExcMnemonic = description;
@@ -121,7 +121,7 @@ namespace PCLParaphernalia
 
         public string Sequence
         {
-            get { return "0x" + _tag.ToString ("x2"); }
+            get { return "0x" + _tag.ToString("x2"); }
         }
 
         //--------------------------------------------------------------------//

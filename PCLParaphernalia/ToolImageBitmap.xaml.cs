@@ -88,7 +88,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ToolImageBitmap (ref ToolCommonData.ePrintLang crntPDL)
+        public ToolImageBitmap(ref ToolCommonData.ePrintLang crntPDL)
         {
             InitializeComponent();
 
@@ -112,7 +112,7 @@ namespace PCLParaphernalia
 
             string filename = _bitmapFilename;
 
-            selected = selectImageFile (ref filename);
+            selected = selectImageFile(ref filename);
 
             if (selected)
             {
@@ -147,7 +147,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             _indxPDL = cbPDL.SelectedIndex;
-            _crntPDL = (ToolCommonData.ePrintLang) _subsetPDLs[_indxPDL];
+            _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
 
             pdlOptionsStore();
 
@@ -183,7 +183,7 @@ namespace PCLParaphernalia
             {
                 BinaryWriter binWriter = null;
 
-                TargetCore.requestStreamOpen (
+                TargetCore.requestStreamOpen(
                     ref binWriter,
                     ToolCommonData.eToolIds.ImageBitmap,
                     ToolCommonData.eToolSubIds.None,
@@ -292,15 +292,15 @@ namespace PCLParaphernalia
                                            ref srcPaletteEntries,
                                            ref srcBlackWhite);
 
-            txtSrcWidth.Text        = srcWidth.ToString();
-            txtSrcHeight.Text       = srcHeight.ToString();
-            txtSrcResX.Text         = srcResX.ToString();
-            txtSrcResY.Text         = srcResY.ToString();
-            txtSrcResXDpi.Text      = ((int)(srcResX/39.37)).ToString();
-            txtSrcResYDpi.Text      = ((int)(srcResY/39.37)).ToString();
-            txtSrcBPP.Text          = srcBitsPerPixel.ToString();
-            txtSrcCompression.Text  = srcCompression.ToString();
-            txtSrcMonoBW.Text       = srcBlackWhite.ToString();
+            txtSrcWidth.Text = srcWidth.ToString();
+            txtSrcHeight.Text = srcHeight.ToString();
+            txtSrcResX.Text = srcResX.ToString();
+            txtSrcResY.Text = srcResY.ToString();
+            txtSrcResXDpi.Text = ((int)(srcResX / 39.37)).ToString();
+            txtSrcResYDpi.Text = ((int)(srcResY / 39.37)).ToString();
+            txtSrcBPP.Text = srcBitsPerPixel.ToString();
+            txtSrcCompression.Text = srcCompression.ToString();
+            txtSrcMonoBW.Text = srcBlackWhite.ToString();
 
             grpProps.Visibility = Visibility.Visible;
 
@@ -390,7 +390,7 @@ namespace PCLParaphernalia
                 pdlOptionsStore();
 
                 _indxPDL = cbPDL.SelectedIndex;
-                _crntPDL = (ToolCommonData.ePrintLang) _subsetPDLs[_indxPDL];
+                _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
 
                 pdlOptionsRestore();
 
@@ -528,7 +528,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            resetTarget ();
+            resetTarget();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -582,7 +582,7 @@ namespace PCLParaphernalia
             if ((_indxPDL < 0) || (_indxPDL >= _ctPDLs))
                 _indxPDL = 0;
 
-            _crntPDL = (ToolCommonData.ePrintLang) _subsetPDLs[_indxPDL];
+            _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
 
             _destPosX = tempPosX / 100;
             _destPosY = tempPosY / 100;
@@ -627,7 +627,7 @@ namespace PCLParaphernalia
                 _indxOrientationPCLXL = 0;
             }
 
-            if ((_indxPaperSizePCLXL  < 0) ||
+            if ((_indxPaperSizePCLXL < 0) ||
                 (_indxPaperSizePCLXL >= _ctPaperSizes))
             {
                 _indxPaperSizePCLXL = 0;
@@ -684,15 +684,15 @@ namespace PCLParaphernalia
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
             {
                 cbOrientation.SelectedIndex = _indxOrientationPCL;
-                cbPaperSize.SelectedIndex   = _indxPaperSizePCL;
-                cbPaperType.SelectedIndex   = _indxPaperTypePCL;
-                cbResolution.SelectedIndex  = _indxRasterResolutionPCL;
+                cbPaperSize.SelectedIndex = _indxPaperSizePCL;
+                cbPaperType.SelectedIndex = _indxPaperTypePCL;
+                cbResolution.SelectedIndex = _indxRasterResolutionPCL;
             }
             else
             {
                 cbOrientation.SelectedIndex = _indxOrientationPCLXL;
-                cbPaperSize.SelectedIndex   = _indxPaperSizePCLXL;
-                cbPaperType.SelectedIndex   = _indxPaperTypePCLXL;
+                cbPaperSize.SelectedIndex = _indxPaperSizePCLXL;
+                cbPaperType.SelectedIndex = _indxPaperTypePCLXL;
             }
         }
 
@@ -710,18 +710,18 @@ namespace PCLParaphernalia
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
             {
                 _indxOrientationPCL = cbOrientation.SelectedIndex;
-                _indxPaperSizePCL   = cbPaperSize.SelectedIndex;
-                _indxPaperTypePCL   = cbPaperType.SelectedIndex;
+                _indxPaperSizePCL = cbPaperSize.SelectedIndex;
+                _indxPaperTypePCL = cbPaperType.SelectedIndex;
             }
             else
             {
                 _indxOrientationPCLXL = cbOrientation.SelectedIndex;
-                _indxPaperSizePCLXL   = cbPaperSize.SelectedIndex;
-                _indxPaperTypePCLXL   = cbPaperType.SelectedIndex;
+                _indxPaperSizePCLXL = cbPaperSize.SelectedIndex;
+                _indxPaperTypePCLXL = cbPaperType.SelectedIndex;
             }
 
-            _destPosX          = Convert.ToSingle(txtDestPosX.Text);
-            _destPosY          = Convert.ToSingle(txtDestPosY.Text);
+            _destPosX = Convert.ToSingle(txtDestPosX.Text);
+            _destPosY = Convert.ToSingle(txtDestPosY.Text);
             _destScalePercentX = Convert.ToInt32(txtDestScaleX.Text);
             _destScalePercentY = Convert.ToInt32(txtDestScaleY.Text);
         }
@@ -737,7 +737,7 @@ namespace PCLParaphernalia
 
         public void resetTarget()
         {
-            TargetCore.eTarget targetType = TargetCore.getType ();
+            TargetCore.eTarget targetType = TargetCore.getType();
 
             if (targetType == TargetCore.eTarget.File)
             {
@@ -759,13 +759,13 @@ namespace PCLParaphernalia
                 btnGenerate.Content = "Generate & send test data to " +
                                       "\r\n" +
                                       netPrnAddress + " : " +
-                                      netPrnPort.ToString ();
+                                      netPrnPort.ToString();
             }
             else if (targetType == TargetCore.eTarget.WinPrinter)
             {
                 string winPrintername = string.Empty;
 
-                TargetCore.metricsLoadWinPrinter (ref winPrintername);
+                TargetCore.metricsLoadWinPrinter(ref winPrintername);
 
                 btnGenerate.Content = "Generate & send test data to printer " +
                                       "\r\n" +

@@ -30,9 +30,9 @@ namespace PCLParaphernalia
                                string id,
                                string name)
         {
-            _locationType   = type;
+            _locationType = type;
             _locationIdPCL = id;
-            _locationName   = name;
+            _locationName = name;
         }
 
         //--------------------------------------------------------------------//
