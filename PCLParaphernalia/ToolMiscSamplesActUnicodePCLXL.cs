@@ -26,10 +26,10 @@ namespace PCLParaphernalia
         const int _symSet_19U         = 629;
         const ushort _unitsPerInch      = PCLXLWriter._sessionUPI;
 
-        const short _pageOriginX = (_unitsPerInch * 1);
-        const short _pageOriginY = (_unitsPerInch * 1);
-        const short _incInch     = (_unitsPerInch * 1);
-        const short _lineInc     = (_unitsPerInch * 5) / 6;
+        const short _pageOriginX = _unitsPerInch * 1;
+        const short _pageOriginY = _unitsPerInch * 1;
+        const short _incInch     = _unitsPerInch * 1;
+        const short _lineInc     = _unitsPerInch * 5 / 6;
 
         const short _posXDesc = _pageOriginX;
         const short _posXData = _pageOriginX + (2 * _incInch);

@@ -24,11 +24,11 @@ namespace PCLParaphernalia
         const int _macroId            = 1;
         const ushort _sessionUPI        = PCLWriter.sessionUPI;
 
-        const short _boxOuterEdge       = (_sessionUPI * 1);
-        const short _rulerOriginX       = (_sessionUPI * 1);
-        const short _rulerOriginY       = (_sessionUPI * 1);
-        const short _rulerCell          = (_sessionUPI * 1);
-        const short _rulerDiv           = (_rulerCell / 5);
+        const short _boxOuterEdge       = _sessionUPI * 1;
+        const short _rulerOriginX       = _sessionUPI * 1;
+        const short _rulerOriginY       = _sessionUPI * 1;
+        const short _rulerCell          = _sessionUPI * 1;
+        const short _rulerDiv           = _rulerCell / 5;
 
         const short _posXHddr           = _rulerOriginX + (2 * _rulerDiv);
         const short _posXDesc           = _rulerOriginX + (1 * _rulerDiv);
@@ -324,7 +324,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            lineInc = (short)((_sessionUPI * scaleText) / 8);
+            lineInc = (short)(_sessionUPI * scaleText / 8);
 
             posX = (short)((_rulerCell * 5.5 * scaleText) - logXOffset);
             posY = (short)(_posYDesc - lineInc);
@@ -530,8 +530,8 @@ namespace PCLParaphernalia
                                        "12345678901234567890" +
                                        "12345678901234567890";
 
-            const double unitsToInches      = (1.00 / _sessionUPI);
-            const double unitsToMilliMetres = (25.4 / _sessionUPI);
+            const double unitsToInches      = 1.00 / _sessionUPI;
+            const double unitsToMilliMetres = 25.4 / _sessionUPI;
 
             const short bottomMargin = (short)(0.5 * _sessionUPI);
 
@@ -598,12 +598,12 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             ptSize = (short)(10 * scaleText);
-            lineInc = (short)((_sessionUPI * scaleText) / 8);
+            lineInc = (short)(_sessionUPI * scaleText / 8);
 
             PCLWriter.font(prnWriter, true, "19U",
                       "s0p" + (120 / ptSize) + "h0s3b4099T");
 
-            posX = (short)((_posXDesc + (_rulerCell * scaleText)) - logXOffset);
+            posX = (short)(_posXDesc + (_rulerCell * scaleText) - logXOffset);
             posY = _posYDesc;
 
             if (customPaperSize)
@@ -636,21 +636,21 @@ namespace PCLParaphernalia
             posY += lineInc;
 
             PCLWriter.text(prnWriter, posX, posY, 0,
-                      (Math.Round((paperWidth *
-                                   unitsToMilliMetres), 2)).ToString("F1") +
+                      Math.Round(paperWidth *
+                                   unitsToMilliMetres, 2).ToString("F1") +
                       " mm = " +
-                      (Math.Round((paperWidth *
-                                   unitsToInches), 3)).ToString("F3") +
+                      Math.Round(paperWidth *
+                                   unitsToInches, 3).ToString("F3") +
                       "\"");
 
             posY += lineInc;
 
             PCLWriter.text(prnWriter, posX, posY, 0,
-                      (Math.Round((paperLength *
-                                   unitsToMilliMetres), 2)).ToString("F1") +
+                      Math.Round(paperLength *
+                                   unitsToMilliMetres, 2).ToString("F1") +
                       " mm = " +
-                      (Math.Round((paperLength *
-                                   unitsToInches), 3)).ToString("F3") +
+                      Math.Round(paperLength *
+                                   unitsToInches, 3).ToString("F3") +
                       "\"");
 
             posY += lineInc;
@@ -670,7 +670,7 @@ namespace PCLParaphernalia
 
             posY = _posYText;
 
-            ctA = (paperWidth * 10) / _sessionUPI;
+            ctA = paperWidth * 10 / _sessionUPI;
             
             PCLWriter.text(prnWriter, 0, posY, 0, digitsTextA.Substring(0, ctA));
            
@@ -694,7 +694,7 @@ namespace PCLParaphernalia
 
             posY = (short)(paperLength - _posYText - (2 * bottomMargin));
 
-            ctA = (paperWidth * 10) / _sessionUPI;
+            ctA = paperWidth * 10 / _sessionUPI;
 
             PCLWriter.text(prnWriter, 0, posY, 0, digitsTextA.Substring(0, ctA));
 
@@ -760,11 +760,11 @@ namespace PCLParaphernalia
                 scaler = 1;
 
             boxOuterEdge    = (short)(_boxOuterEdge / scaler);
-            boxInnerEdge    = (short)((_boxOuterEdge / 3) / scaler);
-            boxInnerOffset  = (short)((_boxOuterEdge / 3) / scaler);
-            boxMarkerEdge   = (short)((_boxOuterEdge / 15) / scaler);
-            boxMarkerOffset = (short)(((_boxOuterEdge -
-                                        boxMarkerEdge) / 2) / scaler);
+            boxInnerEdge    = (short)(_boxOuterEdge / 3 / scaler);
+            boxInnerOffset  = (short)(_boxOuterEdge / 3 / scaler);
+            boxMarkerEdge   = (short)(_boxOuterEdge / 15 / scaler);
+            boxMarkerOffset = (short)((_boxOuterEdge -
+                                        boxMarkerEdge) / 2 / scaler);
 
             //----------------------------------------------------------------//
             //                                                                //

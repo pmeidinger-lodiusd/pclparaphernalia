@@ -540,25 +540,25 @@ namespace PCLParaphernalia
             
             if (samePreset)
             {
-                if ((varR) && (fontVar == PCLFonts.eVariant.Regular))
+                if (varR && (fontVar == PCLFonts.eVariant.Regular))
                 {
                     rbUnicodeFontVarR.IsChecked = true;
                     varSet = true;
                 }
 
-                if ((varI) && (fontVar == PCLFonts.eVariant.Italic))
+                if (varI && (fontVar == PCLFonts.eVariant.Italic))
                 {
                     rbUnicodeFontVarI.IsChecked = true;
                     varSet = true;
                 }
 
-                if ((varB) && (fontVar == PCLFonts.eVariant.Bold))
+                if (varB && (fontVar == PCLFonts.eVariant.Bold))
                 {
                     rbUnicodeFontVarB.IsChecked = true;
                     varSet = true;
                 }
 
-                if ((varBI) && (fontVar == PCLFonts.eVariant.BoldItalic))
+                if (varBI && (fontVar == PCLFonts.eVariant.BoldItalic))
                 {
                     rbUnicodeFontVarBI.IsChecked = true;
                     varSet = true;

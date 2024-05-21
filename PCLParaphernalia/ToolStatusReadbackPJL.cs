@@ -198,7 +198,7 @@ namespace PCLParaphernalia
                     {
                         if (replyData[i] == 0x0c)
                         {
-                            if ((readFF_A) && (replyData[endOffset - 1] == 0x0c))
+                            if (readFF_A && (replyData[endOffset - 1] == 0x0c))
                                 replyComplete = true;
                             else
                                 readFF_A = true;

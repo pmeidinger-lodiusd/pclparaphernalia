@@ -184,8 +184,8 @@ namespace PCLParaphernalia
             string idAlpha = "",
                    idNum = "";
 
-            int targetOffset = ((_symSetNoTargetMax - _donorSymSetNo) / 
-                                 (offsetFactor)) * (offsetFactor);
+            int targetOffset = (_symSetNoTargetMax - _donorSymSetNo) / 
+                                 offsetFactor * offsetFactor;
 
             _targetSymSetNo = (ushort) (_donorSymSetNo + targetOffset);
 
@@ -1040,7 +1040,7 @@ bitVal;
 
             //----------------------------------------------------------------//
 
-            if ((offset == 0) && (ignoreC0))
+            if ((offset == 0) && ignoreC0)
             {
                 txtMap0x00.Text = noGlyph.ToString (format);
                 txtMap0x01.Text = noGlyph.ToString (format);
@@ -1287,7 +1287,7 @@ bitVal;
 
             //----------------------------------------------------------------//
 
-            if ((offset == 0) && (ignoreC1))
+            if ((offset == 0) && ignoreC1)
             {
                 txtMap0x80.Text = noGlyph.ToString (format);
                 txtMap0x81.Text = noGlyph.ToString (format);
@@ -1605,7 +1605,7 @@ bitVal;
                     codePointSig = true;
                 }
 
-                if ((codePointSig) && (_symSetMapTarget [i] != cCodePointUnused))
+                if (codePointSig && (_symSetMapTarget [i] != cCodePointUnused))
                 {
                     codeMin = (ushort) i;
 
@@ -1621,7 +1621,7 @@ bitVal;
 
             codeMax = 0;
 
-            for (int i = (setSize - 1); i >= 0; i--)
+            for (int i = setSize - 1; i >= 0; i--)
             {
                 if ((i >= cCodePointC0Min) && (i <= cCodePointC0Max))
                 {
@@ -1642,7 +1642,7 @@ bitVal;
                     codePointSig = true;
                 }
 
-                if ((codePointSig) && (_symSetMapTarget [i] != cCodePointUnused))
+                if (codePointSig && (_symSetMapTarget [i] != cCodePointUnused))
                 {
                     codeMax = (ushort) i;
 
@@ -1679,7 +1679,7 @@ bitVal;
                     codePointSig = true;
                 }
 
-                if ((codePointSig) && (_symSetMapTarget [i] != cCodePointUnused))
+                if (codePointSig && (_symSetMapTarget [i] != cCodePointUnused))
                 {
                     codeCt++;
                 }
@@ -1721,7 +1721,7 @@ bitVal;
                 symSetType = PCLSymSetTypes.eIndex.Bound_16bit;
             else if ((codeMin >= 0x20) && (codeMax <= 0x7f))
                 symSetType = PCLSymSetTypes.eIndex.Bound_7bit;
-            else if ((codeMin < 0x20) || (usesC1Range))
+            else if ((codeMin < 0x20) || usesC1Range)
                 symSetType = PCLSymSetTypes.eIndex.Bound_PC8;
             else
                 symSetType = PCLSymSetTypes.eIndex.Bound_8bit;

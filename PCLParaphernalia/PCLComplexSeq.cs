@@ -286,7 +286,7 @@ namespace PCLParaphernalia
                 string seq;
                 string value;
 
-                if ((_flagDiscrete) && (!_flagValGeneric) && (!_flagValVarious))
+                if (_flagDiscrete && (!_flagValGeneric) && (!_flagValVarious))
                     value = " (#=" + _value.ToString() + ")";
                 else
                     value = "";                
@@ -348,7 +348,7 @@ namespace PCLParaphernalia
 
         public int StatsCtTotal
         {
-            get { return (_statsCtParent + _statsCtChild); }
+            get { return _statsCtParent + _statsCtChild; }
         }
 
         //--------------------------------------------------------------------//

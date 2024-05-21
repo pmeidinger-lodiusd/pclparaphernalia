@@ -844,7 +844,7 @@ namespace PCLParaphernalia
                 len = commandParams.Length;
                 lineStart = 0;
 
-                while ((firstLine) || (len > 0))
+                while (firstLine || (len > 0))
                 {
                     if (len > _maxPJLLineLen)
                     {
@@ -964,7 +964,7 @@ namespace PCLParaphernalia
                     else
                         crntPDL = ToolCommonData.ePrintLang.Unknown;
                 }
-                else if ((_showPML) &&
+                else if (_showPML &&
                          (((commandName.Length == 5)
                             &&
                            (commandName.Substring (0, 5) == "DMCMD"))

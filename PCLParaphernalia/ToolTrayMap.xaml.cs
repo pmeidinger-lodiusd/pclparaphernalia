@@ -1271,7 +1271,7 @@ namespace PCLParaphernalia
         {
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
             {
-                _sheetCtPCL = (cbSheetCt.SelectedIndex) + 1;
+                _sheetCtPCL = cbSheetCt.SelectedIndex + 1;
 
                 if (chkOptFormAsMacro.IsChecked == true)
                     _formAsMacroPCL = true;
@@ -1280,7 +1280,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                _sheetCtPCLXL = (cbSheetCt.SelectedIndex) + 1;
+                _sheetCtPCLXL = cbSheetCt.SelectedIndex + 1;
 
                 if (chkOptFormAsMacro.IsChecked == true)
                     _formAsMacroPCLXL = true;
@@ -1354,7 +1354,7 @@ namespace PCLParaphernalia
         {
             int sheetCt;
 
-            sheetCt = (cbSheetCt.SelectedIndex) + 1;
+            sheetCt = cbSheetCt.SelectedIndex + 1;
 
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                 _sheetCtPCL = sheetCt;

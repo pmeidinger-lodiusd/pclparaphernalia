@@ -295,7 +295,7 @@ namespace PCLParaphernalia
 
                     len = len - sliceLen - ccAdjust;
                     sliceOffset = sliceOffset + sliceLen + ccAdjust;
-                    sliceStart += (sliceLen + ccAdjust);
+                    sliceStart += sliceLen + ccAdjust;
                     sliceLenMax = PrnParseConstants.cRptA_colMax_Seq - prefixLen;
                     seqBufOffset = 0;
 
@@ -373,7 +373,7 @@ namespace PCLParaphernalia
 
                     len = len - sliceLen - ccAdjust;
 
-                    if ((firstSlice) && (!continuation))
+                    if (firstSlice && (!continuation))
                     {
                         PrnParseCommon.addDataRow (
                             PrnParseRowTypes.eType.HPGL2Command,
@@ -384,7 +384,7 @@ namespace PCLParaphernalia
                             _analysisLevel,
                             "HP-GL/2 Command",
                             seq,
-                            (len == 0 ? desc : ""));
+                            len == 0 ? desc : "");
                     }
                     else if (firstSliceAfterCC)
                     {
@@ -397,7 +397,7 @@ namespace PCLParaphernalia
                             _analysisLevel,
                             "HP-GL/2 Command cont.",
                             seq,
-                            (len == 0 ? desc : ""));
+                            len == 0 ? desc : "");
                     }
                     else
                     {
@@ -410,11 +410,11 @@ namespace PCLParaphernalia
                             _analysisLevel,
                             "",
                             seq,
-                            (len == 0 ? desc : ""));
+                            len == 0 ? desc : "");
                     }
 
-                    sliceStart += (sliceLen + ccAdjust);
-                    sliceOffset += (sliceLen + ccAdjust);
+                    sliceStart += sliceLen + ccAdjust;
+                    sliceOffset += sliceLen + ccAdjust;
                     sliceLen = len;
                     seqBufOffset = 0;
 
@@ -830,9 +830,9 @@ namespace PCLParaphernalia
 
                         _linkData.setBacktrack (contType, - bufRem);
                     }
-                    else if ((PrnParseCommon.isAlphabetic(_buf[bufOffset]))
+                    else if (PrnParseCommon.isAlphabetic(_buf[bufOffset])
                                        &&
-                             (PrnParseCommon.isAlphabetic(_buf[bufOffset + 1])))
+                             PrnParseCommon.isAlphabetic(_buf[bufOffset + 1]))
                     {
                         //----------------------------------------------------//
                         //                                                    //
@@ -1078,7 +1078,7 @@ namespace PCLParaphernalia
             command = ((char) cmdByteA).ToString () +           // need to convert these to UPPER for check
                       ((char) cmdByteB).ToString ();
 
-            seqKnown = HPGL2Commands.checkCmd ((_analysisLevel + _macroLevel),
+            seqKnown = HPGL2Commands.checkCmd (_analysisLevel + _macroLevel,
                                                command,
                                                ref optReset,
                                                ref optBinarySeq,

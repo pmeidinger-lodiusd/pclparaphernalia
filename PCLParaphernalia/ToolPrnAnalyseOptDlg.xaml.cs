@@ -1753,7 +1753,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             int ctSampleCols = 2;
-            int ctSampleRows = (_ctClrMapRowTypes / ctSampleCols);
+            int ctSampleRows = _ctClrMapRowTypes / ctSampleCols;
 
             if ((_ctClrMapRowTypes % ctSampleCols) != 0)
                 ctSampleRows++;
@@ -2854,7 +2854,7 @@ namespace PCLParaphernalia
 
             OK = int.TryParse (crntText, out int value);
 
-            if ((OK) && (value != -1)) 
+            if (OK && (value != -1)) 
                 if ((value > _fileSize)            ||
                     (value < _valCurFOffsetStart))
                     OK = false;

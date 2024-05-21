@@ -193,7 +193,7 @@ namespace PCLParaphernalia
 
                     if (symSetUnbound)
                         charClass = 0;
-                    else if ((tabvmtxPresent) && (flagVMetrics))
+                    else if (tabvmtxPresent && flagVMetrics)
                         charClass = 2;
                     else
                         charClass = 1;

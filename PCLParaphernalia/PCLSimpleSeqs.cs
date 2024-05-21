@@ -178,7 +178,7 @@ namespace PCLParaphernalia
                 {
                     if (incUsedSeqsOnly)
                         displaySeq = false;
-                    else if ((excUnusedObsSeqs) &&
+                    else if (excUnusedObsSeqs &&
                              (kvp.Value.FlagObsolete == true))
                         displaySeq = false;
                 }

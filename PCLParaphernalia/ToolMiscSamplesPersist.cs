@@ -91,7 +91,7 @@ namespace PCLParaphernalia
         const int _defaultShade_2           = 0x80;
         const int _defaultShade_3           = 0xc0;
         const int _defaultCodePoint         = 0x20ac;
-        const int _defaultIndxVariant = (int)(PCLFonts.eVariant.Regular);
+        const int _defaultIndxVariant = (int)PCLFonts.eVariant.Regular;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

@@ -168,38 +168,38 @@ namespace PCLParaphernalia
 
             ReportCore.tableRowPair (writer, rptFileFmt,
                                  "IgnoreC0Codes",
-                                 (flagIgnoreC0 ? "true" : "false"),
+                                 flagIgnoreC0 ? "true" : "false",
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
             ReportCore.tableRowPair (writer, rptFileFmt,
                                  "IgnoreC1Codes",
-                                 (flagIgnoreC1 ? "true" : "false"),
+                                 flagIgnoreC1 ? "true" : "false",
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
             ReportCore.tableRowPair (writer, rptFileFmt,
                                  "FirstCode",
-                                 (flagMapHex ? "0x" + codeMin.ToString ("x4")
-                                             : codeMin.ToString ()),
+                                 flagMapHex ? "0x" + codeMin.ToString ("x4")
+                                             : codeMin.ToString (),
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
             ReportCore.tableRowPair (writer, rptFileFmt,
                                  "Lastcode",
-                                 (flagMapHex ? "0x" + codeMax.ToString ("x4")
-                                             : codeMax.ToString ()),
+                                 flagMapHex ? "0x" + codeMax.ToString ("x4")
+                                             : codeMax.ToString (),
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
             ReportCore.tableRowPair (writer, rptFileFmt,
                                  "CharCount",
-                                 (flagMapHex ? "0x" + codeCt.ToString ("x4")
-                                             : codeCt.ToString ()),
+                                 flagMapHex ? "0x" + codeCt.ToString ("x4")
+                                             : codeCt.ToString (),
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
@@ -272,7 +272,7 @@ namespace PCLParaphernalia
 
             ReportCore.tableRowPair (writer, rptFileFmt,
                                  "Format",
-                                 (flagMapHex ? "hexadecimal" : "decimal"),
+                                 flagMapHex ? "hexadecimal" : "decimal",
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
@@ -342,7 +342,7 @@ namespace PCLParaphernalia
             {
                 string[] rowData = new string[colCt];
 
-                rowIndx = (i * colCtData);
+                rowIndx = i * colCtData;
 
                 if (flagMapHex)
                 {
@@ -366,9 +366,9 @@ namespace PCLParaphernalia
                     {
                         val = " ".PadLeft (lcCol, ' ');
                     }
-                    else if ((flagIgnoreC1) &&
-                             ((mapIndx >= cCodePointC1Min) &&
-                              (mapIndx <= cCodePointC1Max)))
+                    else if (flagIgnoreC1 &&
+                             (mapIndx >= cCodePointC1Min) &&
+                              (mapIndx <= cCodePointC1Max))
                     {
                         val = cCodePointUnused.
                                 ToString (fmtVal).PadLeft (lcCol, ' ');

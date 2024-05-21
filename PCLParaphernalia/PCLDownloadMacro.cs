@@ -79,7 +79,7 @@ namespace PCLParaphernalia
                     maxPos = (int)(fileSize - 1);
 
                 for (pos = offset;
-                     (flagOK) && (!foundTerm) && (pos < maxPos);
+                     flagOK && (!foundTerm) && (pos < maxPos);
                      pos++)
                 {
                     x = _binReader.ReadByte ();

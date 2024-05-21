@@ -512,19 +512,19 @@ namespace PCLParaphernalia
                 {
                     if (((_crntOperEmbedType ==
                             PCLXLOperators.eEmbedDataType.PassThrough) &&
-                         (_analysePassThrough))
+                         _analysePassThrough)
                                                  ||
                         ((_crntOperEmbedType ==
                             PCLXLOperators.eEmbedDataType.Stream) &&
-                         (_analyseStreams))
+                         _analyseStreams)
                                                  ||
                         ((_crntOperEmbedType ==
                             PCLXLOperators.eEmbedDataType.FontHeader) &&
-                         (_analyseFontHddr))
+                         _analyseFontHddr)
                                                  ||
                         ((_crntOperEmbedType ==
                             PCLXLOperators.eEmbedDataType.FontChar) &&
-                         (_analyseFontChar)))
+                         _analyseFontChar))
                     {
                         _analysisOwner.embeddedDataStore (_buf,
                                                           bufOffset,
@@ -771,7 +771,7 @@ namespace PCLParaphernalia
 
                         if (badSeq)
                             invalidSeqFound = true;
-                        else if ((_hddrRead) &&
+                        else if (_hddrRead &&
                                  (_parseType == PrnParse.eParseType.MakeOverlay))
                         {
                             _breakpoint =
@@ -1926,7 +1926,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
                 }
-                else if ((_attrEnumerated) &&
+                else if (_attrEnumerated &&
                          (groupSize == 1)  &&
                          (!arrayType)      &&
                          ((baseType == PCLXLDataTypes.eBaseType.Ubyte)  ||
@@ -1990,7 +1990,7 @@ namespace PCLParaphernalia
                         }
                         else
                         {
-                            for (int j=(valLen - 1); j >= 0; j--)
+                            for (int j=valLen - 1; j >= 0; j--)
                             {
                                 uiSub = _buf[bufOffset + seqHddrLen + j];
                                 uiVal = (uiVal * 256) + uiSub;
@@ -2264,7 +2264,7 @@ namespace PCLParaphernalia
                                      &&
                          (groupSize == 1)
                                      &&
-                         (arrayType && _attrUint16AsUnicode))
+                         arrayType && _attrUint16AsUnicode)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -2599,8 +2599,8 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufOffset += (dataLenSize + 1);
-                bufRem -= (dataLenSize + 1);
+                bufOffset += dataLenSize + 1;
+                bufRem -= dataLenSize + 1;
 
                 if (_embedDataRem < 0)
                 {
@@ -2666,19 +2666,19 @@ namespace PCLParaphernalia
                 {
                     if (((_crntOperEmbedType ==
                             PCLXLOperators.eEmbedDataType.PassThrough) &&
-                         (_analysePassThrough))
+                         _analysePassThrough)
                                                  ||
                         ((_crntOperEmbedType ==
                             PCLXLOperators.eEmbedDataType.Stream) &&
-                         (_analyseStreams))
+                         _analyseStreams)
                                                  ||
                         ((_crntOperEmbedType ==
                             PCLXLOperators.eEmbedDataType.FontHeader) &&
-                         (_analyseFontHddr))
+                         _analyseFontHddr)
                                                  ||
                         ((_crntOperEmbedType ==
                             PCLXLOperators.eEmbedDataType.FontChar) &&
-                         (_analyseFontChar)))
+                         _analyseFontChar))
                     {
                         _analysisOwner.embeddedDataStore (_buf,
                                                           bufOffset,
@@ -3303,7 +3303,7 @@ namespace PCLParaphernalia
             {
                 if ((_prevOperEmbedType ==
                     PCLXLOperators.eEmbedDataType.FontChar) &&
-                    (_analyseFontChar))
+                    _analyseFontChar)
                 {
                     _analysisOwner.embeddedPCLXLAnalyse (
                         ToolCommonData.ePrintLang.PCLXL,
@@ -3314,7 +3314,7 @@ namespace PCLParaphernalia
             {
                 if ((_prevOperEmbedType ==
                     PCLXLOperators.eEmbedDataType.PassThrough) &&
-                    (_analysePassThrough))
+                    _analysePassThrough)
                 {
                     _analysisOwner.embeddedPCLXLAnalyse (
                         ToolCommonData.ePrintLang.PCL,
@@ -3322,7 +3322,7 @@ namespace PCLParaphernalia
                 }
                 else if ((_prevOperEmbedType ==
                             PCLXLOperators.eEmbedDataType.Stream) &&
-                    (_analyseStreams))
+                    _analyseStreams)
                 {
                     _analysisOwner.embeddedPCLXLAnalyse (
                         ToolCommonData.ePrintLang.PCLXL,
@@ -3330,7 +3330,7 @@ namespace PCLParaphernalia
                 }
                 else if ((_prevOperEmbedType ==
                             PCLXLOperators.eEmbedDataType.FontHeader) &&
-                    (_analyseFontHddr))
+                    _analyseFontHddr)
                 {
                     _analysisOwner.embeddedPCLXLAnalyse (
                         ToolCommonData.ePrintLang.PCLXL,
@@ -3338,7 +3338,7 @@ namespace PCLParaphernalia
                 }
                 else if ((_prevOperEmbedType ==
                     PCLXLOperators.eEmbedDataType.FontChar) &&
-                    (_analyseFontChar))
+                    _analyseFontChar)
                 {
                     _analysisOwner.embeddedPCLXLAnalyse (
                         ToolCommonData.ePrintLang.PCLXL,
@@ -3520,7 +3520,7 @@ namespace PCLParaphernalia
                 decodeMax = _decodeAreaMax - decodeIndent;
 
                 if ((baseType == PCLXLDataTypes.eBaseType.Ubyte) &&
-                    (treatUbyteAsAscii))
+                    treatUbyteAsAscii)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -3533,7 +3533,7 @@ namespace PCLParaphernalia
                     sliceLen = _decodeSliceMax;
                 }
                 else if ((baseType == PCLXLDataTypes.eBaseType.Uint16) &&
-                    (treatUint16AsUnicode))
+                    treatUint16AsUnicode)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -3778,8 +3778,8 @@ namespace PCLParaphernalia
                     showChar = PrnParseData.processBytePair (
                         _buf[k],
                         _buf[k + 1],
-                        (_bindType ==
-                            PrnParseConstants.ePCLXLBinding.BinaryMSFirst),
+                        _bindType ==
+                            PrnParseConstants.ePCLXLBinding.BinaryMSFirst,
                         _indxCharSetSubAct,
                         (byte) _valCharSetSubCode,
                         _indxCharSetName);
@@ -4119,7 +4119,7 @@ namespace PCLParaphernalia
                         }
                         else
                         {
-                            for (int j =(sliceLen-1); j >= 0; j--)
+                            for (int j =sliceLen-1; j >= 0; j--)
                             {
                                 uiSub = _buf[sliceOffset + j];
                                 uiTot = (uiTot * 256) + uiSub;
@@ -4176,7 +4176,7 @@ namespace PCLParaphernalia
                         }
                         else
                         {
-                            for (int j = (sliceLen - 1); j >= 0; j--)
+                            for (int j = sliceLen - 1; j >= 0; j--)
                             {
                                 uiSub = _buf[sliceOffset + j];
                                 uiTot = (uiTot * 256) + uiSub;
@@ -4251,7 +4251,7 @@ namespace PCLParaphernalia
                         }
                         else
                         {
-                            for (int j = (sliceLen - 1); j >= 0; j--)
+                            for (int j = sliceLen - 1; j >= 0; j--)
                             {
                                 iSub = _buf[sliceOffset + j];
 
@@ -4451,12 +4451,12 @@ namespace PCLParaphernalia
 
                 for (int j =hexStart; j<hexEnd; j++)
                 {
-                    sub = (_buf[j]);
+                    sub = _buf[j];
                     sub >>= 4;
                     crntByte = PrnParseConstants.cHexBytes[sub];
                     hexBuf[hexPtr++] = (char)crntByte;
 
-                    sub = (_buf[j] & 0x0f);
+                    sub = _buf[j] & 0x0f;
                     crntByte = PrnParseConstants.cHexBytes[sub];
                 //    hexBuf[hexPtr++] = crntByte;
                     hexBuf[hexPtr++] = (char)crntByte;

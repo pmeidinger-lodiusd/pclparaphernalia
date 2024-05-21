@@ -348,10 +348,10 @@ namespace PCLParaphernalia
 
         public static int getCountUnique()
         {
-            return (_fontsCountCustom +
+            return _fontsCountCustom +
                     _fontsCountDownload +
                     _fontsCountPrnDisk +
-                    _fontsCountPreset);
+                    _fontsCountPreset;
         }
 
         //--------------------------------------------------------------------//

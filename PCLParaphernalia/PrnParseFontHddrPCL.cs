@@ -423,7 +423,7 @@ namespace PCLParaphernalia
                     _hddrRem = 0;
                 }
 
-                if ((binDataLen) != 0)
+                if (binDataLen != 0)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -1291,7 +1291,7 @@ namespace PCLParaphernalia
                     "Kind1 value:",
                     ix1.ToString () + " (0x" + ix1.ToString ("x2") + ")");
 
-                if ((indxSymSet) == -1)
+                if (indxSymSet == -1)
                 {
                     PrnParseCommon.addTextRow (
                         PrnParseRowTypes.eType.PCLFontHddr,
@@ -2705,7 +2705,7 @@ namespace PCLParaphernalia
                         "",
                         ix1 + " design units (Y co-ord)");
                 }
-                else if ((_truetypeFont) && (ix1 != 0))
+                else if (_truetypeFont && (ix1 != 0))
                 {
                     PrnParseCommon.addTextRow (
                         PrnParseRowTypes.eType.PCLFontHddr,
@@ -2859,14 +2859,14 @@ namespace PCLParaphernalia
 
                 valOK = false;
 
-                if ((_intelliFont) && (_hddrDescLen > 73))
+                if (_intelliFont && (_hddrDescLen > 73))
                 {
                     valOK = true;
 
                     ix1 = (_buf[bufOffset + 72] * 256) + _buf[bufOffset + 73];
                     ix2 = (_buf[bufOffset + 70] * 256) + _buf[bufOffset + 71];
                 }
-                else if ((_truetypeFont) && (_hddrDescLen > 69))
+                else if (_truetypeFont && (_hddrDescLen > 69))
                 {
                     valOK = true;
 
@@ -2874,7 +2874,7 @@ namespace PCLParaphernalia
                     ix2 = (_buf[bufOffset + 66] * 256) + _buf[bufOffset + 67];
                 }
 
-                if ((valOK) && (ix1 != 0))
+                if (valOK && (ix1 != 0))
                 {
                     PrnParseCommon.addTextRow (
                         PrnParseRowTypes.eType.PCLFontHddr,
@@ -2937,7 +2937,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if ((_intelliFont) && (_hddrDescLen > 74))
+                if (_intelliFont && (_hddrDescLen > 74))
                 {
                     ix1 = _buf[bufOffset + 74];
 
@@ -2962,7 +2962,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if ((_intelliFont) && (_hddrDescLen > 76))
+                if (_intelliFont && (_hddrDescLen > 76))
                 {
                     ix1 = _buf[bufOffset + 76];
 
@@ -3054,7 +3054,7 @@ namespace PCLParaphernalia
                 _nextStage   = eStage.ShowCopyright;
             }
 
-            if ((binDataLen) != 0)
+            if (binDataLen != 0)
             {
                 //------------------------------------------------------------//
                 //                                                            //

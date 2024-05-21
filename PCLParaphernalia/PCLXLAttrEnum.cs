@@ -193,7 +193,7 @@ namespace PCLParaphernalia
 
         public int StatsCtTotal
         {
-            get { return (_statsCtParent + _statsCtChild); }
+            get { return _statsCtParent + _statsCtChild; }
         }
 
         //--------------------------------------------------------------------//
@@ -218,7 +218,7 @@ namespace PCLParaphernalia
             get
             {
                 if (_flagValIsTxt)
-                      return ("0x" + _value.ToString("X"));
+                      return "0x" + _value.ToString("X");
                   else
                       return _value.ToString();
             }

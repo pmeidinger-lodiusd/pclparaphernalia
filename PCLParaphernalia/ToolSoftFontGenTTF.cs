@@ -1291,7 +1291,7 @@ namespace PCLParaphernalia
             cellHeight = (ushort) (_head_yMax - _head_yMin);
 
             mUlinePos = (short)  (- (_head_unitsPerEm * 20) / 100);
-            mUlineDep = (ushort) ((_head_unitsPerEm * 5) / 100);
+            mUlineDep = (ushort) (_head_unitsPerEm * 5 / 100);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1732,7 +1732,7 @@ namespace PCLParaphernalia
                          _tab_maxp.TablePadLen +
                          _tab_prep.TablePadLen;
             
-            if ((! pdlIsPCLXL) || (symSetUnbound))
+            if ((! pdlIsPCLXL) || symSetUnbound)
             {
                 sizeTables = sizeTables +
                              _tab_hhea.TablePadLen +
@@ -2059,7 +2059,7 @@ namespace PCLParaphernalia
                     flagOK = readData_hhea ();
                 }
 
-                if ((flagOK) && (_tab_vhea.TableLength != 0))
+                if (flagOK && (_tab_vhea.TableLength != 0))
                 {
                     flagOK = readData_vhea ();
                 }
@@ -2119,7 +2119,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if ((flagOK) && (_tab_vmtx.TableLength != 0))
+                if (flagOK && (_tab_vmtx.TableLength != 0))
                 {
                     flagOK = readData_vmtx ();
                 }
@@ -2677,7 +2677,7 @@ namespace PCLParaphernalia
                                  tabNumTables.ToString () + " sub-tables");
                 }
 
-                for (int i = 0; (i < tabNumTables) && (flagOK); i++)
+                for (int i = 0; (i < tabNumTables) && flagOK; i++)
                 {
                     flagOK = readBytesAsUInt16 (-1, ref subTabPlatform);
 
@@ -4471,7 +4471,7 @@ namespace PCLParaphernalia
 
                 bool logIdData;
                 
-                for (int i = 0; (i < nameRecCount) && (flagOK); i++)
+                for (int i = 0; (i < nameRecCount) && flagOK; i++)
                 {
                     flagOK = readBytesAsUInt16 (
                         (int) (tabOffset + 6 + (12 * i)),
@@ -4530,7 +4530,7 @@ namespace PCLParaphernalia
                         if ((nameRecPlatform == 3) &&
                             ((nameRecEncoding == 0) ||
                              (nameRecEncoding == 1)) &&
-                            ((nameRecLanguage == 0x0409)))
+                            nameRecLanguage == 0x0409)
                         {
                             bool nameIsFullFontName = false;
 
@@ -5864,7 +5864,7 @@ namespace PCLParaphernalia
                         "Count = " + numTables);
                 }
 
-                for (int i = 0; (i < numTables) && (flagOK); i++)
+                for (int i = 0; (i < numTables) && flagOK; i++)
                 {
                     flagOK = readByteArray(-1, 4, ref tabName);
 
@@ -6066,14 +6066,14 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    if ((_tab_cmap.zeroLength ()) ||
-                        (_tab_glyf.zeroLength ()) ||
-                        (_tab_head.zeroLength ()) ||
-                        (_tab_hhea.zeroLength ()) ||
-                        (_tab_hmtx.zeroLength ()) ||
-                        (_tab_loca.zeroLength ()) ||
-                        (_tab_maxp.zeroLength ()) ||
-                        (_tab_name.zeroLength ()))
+                    if (_tab_cmap.zeroLength () ||
+                        _tab_glyf.zeroLength () ||
+                        _tab_head.zeroLength () ||
+                        _tab_hhea.zeroLength () ||
+                        _tab_hmtx.zeroLength () ||
+                        _tab_loca.zeroLength () ||
+                        _tab_maxp.zeroLength () ||
+                        _tab_name.zeroLength ())
                     {
                         flagOK = false;
                     }

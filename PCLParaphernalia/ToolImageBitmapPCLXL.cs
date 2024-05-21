@@ -303,9 +303,9 @@ namespace PCLParaphernalia
             else
                 srcResY = (int)(srcResY / 39.37);
 
-            destWidth = ((srcWidth * PCLXLWriter._sessionUPI) / srcResX) *
+            destWidth = srcWidth * PCLXLWriter._sessionUPI / srcResX *
                           (destScalePercentX / 100);
-            destHeight = ((srcHeight * PCLXLWriter._sessionUPI) / srcResY) *
+            destHeight = srcHeight * PCLXLWriter._sessionUPI / srcResY *
                           (destScalePercentY / 100);
 
             //----------------------------------------------------------------//

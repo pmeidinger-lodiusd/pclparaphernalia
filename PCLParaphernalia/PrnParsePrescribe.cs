@@ -802,7 +802,7 @@ namespace PCLParaphernalia
 
                     len = len - sliceLen - ccAdjust;
                     sliceOffset = sliceOffset + sliceLen + ccAdjust;
-                    sliceStart += (sliceLen + ccAdjust);
+                    sliceStart += sliceLen + ccAdjust;
                     sliceLenMax = PrnParseConstants.cRptA_colMax_Seq - indent;
 
                     firstSlice = false;

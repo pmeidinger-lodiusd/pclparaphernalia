@@ -87,7 +87,7 @@ namespace PCLParaphernalia
         const int _defaultSymSetNo           = 14;
         const int _defaultSoftFontIdPCL      = 101;
         const int _defaultSoftFontIdMacroPCL = 201;
-        const int _defaultIndxVariant  = (int)(PCLFonts.eVariant.Regular);
+        const int _defaultIndxVariant  = (int)PCLFonts.eVariant.Regular;
         
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

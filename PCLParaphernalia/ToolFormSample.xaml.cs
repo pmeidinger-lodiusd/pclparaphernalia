@@ -1309,10 +1309,10 @@ namespace PCLParaphernalia
                 else
                     rbPCLMethodCallBegin.IsChecked = true;
 
-                if ((_flagMainFormPCL) && (! _flagMainOnPrnDiskPCL) && (File.Exists (_formFileMainPCL)))
+                if (_flagMainFormPCL && (! _flagMainOnPrnDiskPCL) && File.Exists (_formFileMainPCL))
                     checkPCLFormFile (true, _formFileMainPCL);
 
-                if ((_flagRearFormPCL) && (!_flagRearOnPrnDiskPCL) && (File.Exists (_formFileRearPCL)))
+                if (_flagRearFormPCL && (!_flagRearOnPrnDiskPCL) && File.Exists (_formFileRearPCL))
                     checkPCLFormFile (false, _formFileRearPCL);
             }
             else
@@ -1392,10 +1392,10 @@ namespace PCLParaphernalia
                 else
                     rbPCLXLMethodExecuteBegin.IsChecked = true;
 
-                if ((_flagMainFormPCLXL) && (File.Exists (_formFileMainPCLXL)))
+                if (_flagMainFormPCLXL && File.Exists (_formFileMainPCLXL))
                     checkPCLXLFormFile (true, _formFileMainPCLXL);
 
-                if ((_flagRearFormPCLXL) && (File.Exists (_formFileRearPCLXL)))
+                if (_flagRearFormPCLXL && File.Exists (_formFileRearPCLXL))
                     checkPCLXLFormFile (false, _formFileRearPCLXL);
             }
         }
@@ -2355,7 +2355,7 @@ namespace PCLParaphernalia
             
             //----------------------------------------------------------------//
 
-            if ((_flagMainFormPCL))
+            if (_flagMainFormPCL)
             {
                 if ((! _flagMainOnPrnDiskPCL) &&
                     (! File.Exists(_formFileMainPCL)))
@@ -2375,7 +2375,7 @@ namespace PCLParaphernalia
             
             //----------------------------------------------------------------//
 
-            if ((OK) && (_flagRearFormPCL))
+            if (OK && _flagRearFormPCL)
             {
                 if ((! _flagRearOnPrnDiskPCL) &&
                     (! File.Exists(_formFileRearPCL))) 
@@ -2395,7 +2395,7 @@ namespace PCLParaphernalia
             
             //----------------------------------------------------------------//
 
-            if ((OK) && (_flagMainFormPCL) && (_flagRearFormPCL))
+            if (OK && _flagMainFormPCL && _flagRearFormPCL)
             {
                 if (_macroIdMainPCL == _macroIdRearPCL)
                 {
@@ -2599,7 +2599,7 @@ namespace PCLParaphernalia
         {
             bool OK = true;
 
-            if ((_flagMainFormPCLXL))
+            if (_flagMainFormPCLXL)
             {
                 if (! File.Exists(_formFileMainPCLXL)) 
                 {
@@ -2616,7 +2616,7 @@ namespace PCLParaphernalia
                 }
             }
 
-            if ((OK) && (_flagRearFormPCLXL))
+            if (OK && _flagRearFormPCLXL)
             {
                 if (! File.Exists(_formFileRearPCLXL)) 
                 {
@@ -2633,7 +2633,7 @@ namespace PCLParaphernalia
                 }
             }
 
-            if ((OK) && (_flagMainFormPCLXL) && (_flagRearFormPCLXL))
+            if (OK && _flagMainFormPCLXL && _flagRearFormPCLXL)
             {
                 if (_formNameMainPCLXL == _formNameRearPCLXL)
                 {

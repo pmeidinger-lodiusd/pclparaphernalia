@@ -369,8 +369,8 @@ namespace PCLParaphernalia
             int macroId;
             int indxOrient;
 
-            altOrient = (indxOrientation != indxOrientRear);
-            firstPage = (pageNo == 1);
+            altOrient = indxOrientation != indxOrientRear;
+            firstPage = pageNo == 1;
 
             if (flagFrontFace)
             {
@@ -536,7 +536,7 @@ namespace PCLParaphernalia
 
                     posY += incPosY;
 
-                    if ((flagRearForm) && (flagRearBPlate))
+                    if (flagRearForm && flagRearBPlate)
                             PCLWriter.text (prnWriter, posX, posY, 0,
                                 "Rear Form is boilerplate");
                 }
@@ -666,7 +666,7 @@ namespace PCLParaphernalia
             //                                                            //
             //------------------------------------------------------------//
 
-            if ((flagRearForm) && (flagRearBPlate))
+            if (flagRearForm && flagRearBPlate)
             {
                 PCLWriter.pageFace (prnWriter, false);
 

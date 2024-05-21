@@ -198,7 +198,7 @@ namespace PCLParaphernalia
 
         public int StatsCtTotal
         {
-            get { return (_statsCtParent + _statsCtChild); }
+            get { return _statsCtParent + _statsCtChild; }
         }
 
         //--------------------------------------------------------------------//

@@ -166,7 +166,7 @@ namespace PCLParaphernalia
 
             if (format_MSL)
             {
-                if ((complement) && (charCollIndex == 0x07))
+                if (complement && (charCollIndex == 0x07))
                     codeDesc = "'111' = MSL";
                 else if ((!complement) && (charCollIndex == 0x00))
                     codeDesc = "'000' = MSL";
@@ -176,7 +176,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                if ((complement) && (charCollIndex == 0x06))
+                if (complement && (charCollIndex == 0x06))
                     codeDesc = "'110' = Unicode";
                 else if ((!complement) && (charCollIndex == 0x01))
                     codeDesc = "'001' = Unicode";
@@ -384,7 +384,7 @@ namespace PCLParaphernalia
 
             while ((hddrDataRem != 0) &&
                    (contType == PrnParseConstants.eContType.None) &&
-                   (_validSegs))
+                   _validSegs)
             {
                 if (_segRem == 0)
                 {
@@ -670,7 +670,7 @@ namespace PCLParaphernalia
                     hddrRem -= binDataLen;
                 }
 
-                if ((binDataLen) != 0)
+                if (binDataLen != 0)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -706,7 +706,7 @@ namespace PCLParaphernalia
                 }
             }
 
-            if ((hddrDataRem == 0) && (_validSegs))
+            if ((hddrDataRem == 0) && _validSegs)
             {
                 //------------------------------------------------------------//
                 //                                                            //

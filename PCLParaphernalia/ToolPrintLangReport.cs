@@ -262,21 +262,21 @@ namespace PCLParaphernalia
                 chkFalse = ReportCore._chkMarkTextFalse;
             }
 
-            chkTrue3 = (chkTrue.PadLeft ((lc3 / 2) + 1, ' '));
-            chkTrue7 = (chkTrue.PadLeft ((lc7 / 2) + 1, ' '));
-            chkTrue8 = (chkTrue.PadLeft ((lc8 / 2) + 1, ' '));
-            chkTrue9 = (chkTrue.PadLeft ((lc9 / 2) + 1, ' '));
-            chkTrue10 = (chkTrue.PadLeft ((lc10 / 2) + 1, ' '));
+            chkTrue3 = chkTrue.PadLeft ((lc3 / 2) + 1, ' ');
+            chkTrue7 = chkTrue.PadLeft ((lc7 / 2) + 1, ' ');
+            chkTrue8 = chkTrue.PadLeft ((lc8 / 2) + 1, ' ');
+            chkTrue9 = chkTrue.PadLeft ((lc9 / 2) + 1, ' ');
+            chkTrue10 = chkTrue.PadLeft ((lc10 / 2) + 1, ' ');
 
-            chkFalse3 = (chkFalse.PadLeft ((lc3 / 2) + 1, ' '));
-            chkFalse7 = (chkFalse.PadLeft ((lc7 / 2) + 1, ' '));
-            chkFalse8 = (chkFalse.PadLeft ((lc8 / 2) + 1, ' '));
-            chkFalse9 = (chkFalse.PadLeft ((lc9 / 2) + 1, ' '));
-            chkFalse10 = (chkFalse.PadLeft ((lc10 / 2) + 1, ' '));
+            chkFalse3 = chkFalse.PadLeft ((lc3 / 2) + 1, ' ');
+            chkFalse7 = chkFalse.PadLeft ((lc7 / 2) + 1, ' ');
+            chkFalse8 = chkFalse.PadLeft ((lc8 / 2) + 1, ' ');
+            chkFalse9 = chkFalse.PadLeft ((lc9 / 2) + 1, ' ');
+            chkFalse10 = chkFalse.PadLeft ((lc10 / 2) + 1, ' ');
 
             ctItems = dgSeq.Items.Count;
 
-            if ((flagSymSetList) && (! flagOptRptWrap))
+            if (flagSymSetList && (! flagOptRptWrap))
             {
                 colCt = colCtExt;
 
@@ -338,14 +338,14 @@ namespace PCLParaphernalia
                 data[0] = pclFont.Typeface.ToString ();
                 data[1] = pclFont.Name;
                 data[2] = pclFont.Spacing;
-                data[3] = (pclFont.Scalable) ? chkTrue3 : chkFalse3;
+                data[3] = pclFont.Scalable ? chkTrue3 : chkFalse3;
                 data[4] = pclFont.BoundSymbolSet;
                 data[5] = pclFont.Pitch;
                 data[6] = pclFont.Height;
-                data[7] = (pclFont.Var_Regular) ? chkTrue7 : chkFalse7;
-                data[8] = (pclFont.Var_Italic) ? chkTrue8 : chkFalse8;
-                data[9] = (pclFont.Var_Bold) ? chkTrue9 : chkFalse9;
-                data[10] = (pclFont.Var_BoldItalic) ? chkTrue10 : chkFalse10;
+                data[7] = pclFont.Var_Regular ? chkTrue7 : chkFalse7;
+                data[8] = pclFont.Var_Italic ? chkTrue8 : chkFalse8;
+                data[9] = pclFont.Var_Bold ? chkTrue9 : chkFalse9;
+                data[10] = pclFont.Var_BoldItalic ? chkTrue10 : chkFalse10;
 
                 if (!flagSymSetList)
                 {
@@ -755,11 +755,11 @@ namespace PCLParaphernalia
                 chkFalse = ReportCore._chkMarkTextFalse;
             }
 
-            chkTrue2 = (chkTrue.PadLeft ((lc2 / 2) + 1, ' '));
-            chkTrue3 = (chkTrue.PadLeft ((lc3 / 2) + 1, ' '));
+            chkTrue2 = chkTrue.PadLeft ((lc2 / 2) + 1, ' ');
+            chkTrue3 = chkTrue.PadLeft ((lc3 / 2) + 1, ' ');
 
-            chkFalse2 = (chkFalse.PadLeft ((lc2 / 2) + 1, ' '));
-            chkFalse3 = (chkFalse.PadLeft ((lc3 / 2) + 1, ' '));
+            chkFalse2 = chkFalse.PadLeft ((lc2 / 2) + 1, ' ');
+            chkFalse3 = chkFalse.PadLeft ((lc3 / 2) + 1, ' ');
 
             ctItems = dgSeq.Items.Count;
 
@@ -794,9 +794,9 @@ namespace PCLParaphernalia
 
                     data[0] = pclControlCode.Sequence;
                     data[1] = pclControlCode.Type;
-                    data[2] = (pclControlCode.FlagObsolete) ?
+                    data[2] = pclControlCode.FlagObsolete ?
                                 chkTrue2 : chkFalse2;
-                    data[3] = (pclControlCode.FlagValIsLen) ?
+                    data[3] = pclControlCode.FlagValIsLen ?
                                 chkTrue3 : chkFalse3;
                     data[4] = pclControlCode.Description;
                 }
@@ -806,9 +806,9 @@ namespace PCLParaphernalia
 
                     data[0] = pclSimpleSeq.Sequence;
                     data[1] = pclSimpleSeq.Type;
-                    data[2] = (pclSimpleSeq.FlagObsolete) ?
+                    data[2] = pclSimpleSeq.FlagObsolete ?
                                 chkTrue2 : chkFalse2;
-                    data[3] = (pclSimpleSeq.FlagValIsLen) ?
+                    data[3] = pclSimpleSeq.FlagValIsLen ?
                                 chkTrue3 : chkFalse3;
                     data[4] = pclSimpleSeq.Description;
                 }
@@ -818,9 +818,9 @@ namespace PCLParaphernalia
 
                     data[0] = pclComplexSeq.Sequence;
                     data[1] = pclComplexSeq.Type;
-                    data[2] = (pclComplexSeq.FlagObsolete) ?
+                    data[2] = pclComplexSeq.FlagObsolete ?
                                 chkTrue2 : chkFalse2;
-                    data[3] = (pclComplexSeq.FlagValIsLen) ?
+                    data[3] = pclComplexSeq.FlagValIsLen ?
                                 chkTrue3 : chkFalse3;
                     data[4] = pclComplexSeq.Description;
                 }
@@ -991,9 +991,9 @@ namespace PCLParaphernalia
                 chkFalse = ReportCore._chkMarkTextFalse;
             }
 
-            chkTrue2 = (chkTrue.PadLeft ((lc2 / 2) + 1, ' '));
+            chkTrue2 = chkTrue.PadLeft ((lc2 / 2) + 1, ' ');
 
-            chkFalse2 = (chkFalse.PadLeft ((lc2 / 2) + 1, ' '));
+            chkFalse2 = chkFalse.PadLeft ((lc2 / 2) + 1, ' ');
 
             ctItems = dgSeq.Items.Count;
 
@@ -1028,7 +1028,7 @@ namespace PCLParaphernalia
 
                     data[0] = xlAttrDef.Tag;
                     data[1] = xlAttrDef.Type;
-                    data[2] = (xlAttrDef.FlagReserved) ?
+                    data[2] = xlAttrDef.FlagReserved ?
                                 chkTrue2 : chkFalse2;
                     data[3] = xlAttrDef.Description;
                 }
@@ -1038,7 +1038,7 @@ namespace PCLParaphernalia
 
                     data[0] = xlAttribute.Tag;
                     data[1] = xlAttribute.Type;
-                    data[2] = (xlAttribute.FlagReserved) ?
+                    data[2] = xlAttribute.FlagReserved ?
                                 chkTrue2 : chkFalse2;
                     data[3] = xlAttribute.Description;
                 }
@@ -1048,7 +1048,7 @@ namespace PCLParaphernalia
 
                     data[0] = xlDataType.Tag;
                     data[1] = xlDataType.Type;
-                    data[2] = (xlDataType.FlagReserved) ?
+                    data[2] = xlDataType.FlagReserved ?
                                 chkTrue2 : chkFalse2;
                     data[3] = xlDataType.Description;
                 }
@@ -1058,7 +1058,7 @@ namespace PCLParaphernalia
 
                     data[0] = xlEmbedDef.Tag;
                     data[1] = xlEmbedDef.Type;
-                    data[2] = (xlEmbedDef.FlagReserved) ?
+                    data[2] = xlEmbedDef.FlagReserved ?
                                 chkTrue2 : chkFalse2;
                     data[3] = xlEmbedDef.Description;
                 }
@@ -1068,7 +1068,7 @@ namespace PCLParaphernalia
 
                     data[0] = xlOperator.Tag;
                     data[1] = xlOperator.Type;
-                    data[2] = (xlOperator.FlagReserved) ?
+                    data[2] = xlOperator.FlagReserved ?
                                 chkTrue2 : chkFalse2;
                     data[3] = xlOperator.Description;
                 }
@@ -1078,7 +1078,7 @@ namespace PCLParaphernalia
 
                     data[0] = xlWhitespace.Tag;
                     data[1] = xlWhitespace.Type;
-                    data[2] = (xlWhitespace.FlagReserved) ?
+                    data[2] = xlWhitespace.FlagReserved ?
                                 chkTrue2 : chkFalse2;
                     data[3] = xlWhitespace.Description;
                 }
@@ -1447,11 +1447,11 @@ namespace PCLParaphernalia
                 chkFalse = ReportCore._chkMarkTextFalse;
             }
 
-            chkTrue6a = (chkTrue.PadLeft ((lc6a / 2) + 1, ' '));
-            chkTrue7a = (chkTrue.PadLeft ((lc7a / 2) + 1, ' '));
+            chkTrue6a = chkTrue.PadLeft ((lc6a / 2) + 1, ' ');
+            chkTrue7a = chkTrue.PadLeft ((lc7a / 2) + 1, ' ');
 
-            chkFalse6a = (chkFalse.PadLeft ((lc6a / 2) + 1, ' '));
-            chkFalse7a = (chkFalse.PadLeft ((lc7a / 2) + 1, ' '));
+            chkFalse6a = chkFalse.PadLeft ((lc6a / 2) + 1, ' ');
+            chkFalse7a = chkFalse.PadLeft ((lc7a / 2) + 1, ' ');
 
             ctItems = dgSeq.Items.Count;
 
@@ -1571,8 +1571,8 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    data[6] = (mapStd) ? chkTrue6a : chkFalse6a;
-                    data[7] = (mapPCL) ? chkTrue7a : chkFalse7a;
+                    data[6] = mapStd ? chkTrue6a : chkFalse6a;
+                    data[7] = mapPCL ? chkTrue7a : chkFalse7a;
 
                     ReportCore.tableRowText (writer, rptFileFmt, colCt, data,
                                              colNames, colSizes);
@@ -1590,7 +1590,7 @@ namespace PCLParaphernalia
                     ReportCore.tableRowText (writer, rptFileFmt, colCt, data,
                                              colNames, colSizes);
 
-                    if ((mapStd) || (mapPCL))
+                    if (mapStd || mapPCL)
                     {
                         //----------------------------------------------------//
                         //                                                    //
@@ -1672,7 +1672,7 @@ namespace PCLParaphernalia
                                         _maxSizeNameTag, maxLineLen,
                                         _flagBlankBefore, _flagNone, _flagNameAsHddr);
 
-                                if ((mapStd) && (mapPCL))
+                                if (mapStd && mapPCL)
                                     ReportCore.tableRowPair (
                                         writer, rptFileFmt, c8Hddr,
                                         symbolSet.MappingPCL,

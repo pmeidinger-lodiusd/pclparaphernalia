@@ -121,7 +121,7 @@ namespace PCLParaphernalia
                 symSetKind1 = PCLSymbolSets.translateIdToKind1(symbolSet);
 
                 if ((!symSetUserActEmbed) ||
-                    (showMapCodesUCS2)    || (showMapCodesUTF8))
+                    showMapCodesUCS2    || showMapCodesUTF8)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -248,7 +248,7 @@ namespace PCLParaphernalia
         {
             PCLWriter.stdJobHeader (prnWriter, "");
 
-            if ((symSetUserSet) && (symSetUserActEmbed))
+            if (symSetUserSet && symSetUserActEmbed)
             {
                 PCLDownloadSymSet.symSetFileCopy (prnWriter, symSetUserFile);
             }
@@ -312,7 +312,7 @@ namespace PCLParaphernalia
                                                bool symSetUserActEmbed,
                                                ushort symSetUserNo)
         {
-            if ((downloadFont) && (downloadFontRemove))
+            if (downloadFont && downloadFontRemove)
             {
                 PCLWriter.fontDownloadRemove(prnWriter, downloadID);
             }
@@ -324,7 +324,7 @@ namespace PCLParaphernalia
                                         PCLWriter.eMacroControl.Delete);
             }
 
-            if ((symSetUserSet) && (symSetUserActEmbed))
+            if (symSetUserSet && symSetUserActEmbed)
             {
                 PCLWriter.symSetDownloadRemove(prnWriter, symSetUserNo);
             }
@@ -490,7 +490,7 @@ namespace PCLParaphernalia
                                           gridHeightInner, twoCellWidth, shade,
                                           false, false);
 
-                posX += (_gridDimHalf * _cellWidth);
+                posX += _gridDimHalf * _cellWidth;
 
                 PCLWriter.rectangleShaded(prnWriter, posX, posY,
                                           gridHeightInner, twoCellWidth, shade,
@@ -502,7 +502,7 @@ namespace PCLParaphernalia
                                           twoCellHeight, gridWidthInner, shade,
                                           false, false);
 
-                posY += (_gridDimHalf * _cellHeight);
+                posY += _gridDimHalf * _cellHeight;
 
                 PCLWriter.rectangleShaded(prnWriter, posX, posY,
                                           twoCellHeight, gridWidthInner, shade,
@@ -897,14 +897,14 @@ namespace PCLParaphernalia
 
             if (((fontType == PCLFonts.eFontType.Download) ||
                  (fontType == PCLFonts.eFontType.PrnDisk)) &&
-                (fontSelectById))
+                fontSelectById)
             {
                 if (fontBound)
                     PCLWriter.font(prnWriter, true, "", 
-                                   (fontIdNo + "X"));
+                                   fontIdNo + "X");
                 else
                     PCLWriter.font(prnWriter, true, symSetId,
-                                   (fontIdNo + "X"));
+                                   fontIdNo + "X");
 
                 if (fontSelSeq != "")
                     PCLWriter.font(prnWriter, true, "", fontSelSeq);
@@ -1044,7 +1044,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if ((showC0Chars) || (sampleRangeOffset != 0))
+            if (showC0Chars || (sampleRangeOffset != 0))
                 startIndxMajor = indxMajorC0Start;
             else
                 startIndxMajor = indxMajorC0End;
@@ -1094,7 +1094,7 @@ namespace PCLParaphernalia
 
                     validCodePoint = true;
 
-                    if ((checkSingleByteCodes) &&
+                    if (checkSingleByteCodes &&
                         (codeVal <= singleByteMax))
                     {
                         //------------------------------------------------//
@@ -1127,7 +1127,7 @@ namespace PCLParaphernalia
                             byte[] utf8Seq = new byte[4];
                             int utf8Len = 0;
 
-                            if ((symSetUserSet) && (!symSetUserActEmbed))
+                            if (symSetUserSet && (!symSetUserActEmbed))
                             {
                                 ushort mapVal;
 
@@ -1156,7 +1156,7 @@ namespace PCLParaphernalia
 
                                 byte[] x = new byte[1];
 
-                                x[0] = (byte)(codeVal);
+                                x[0] = (byte)codeVal;
 
                                 prnWriter.Write(x, 0, 1);
                             }
@@ -1195,7 +1195,7 @@ namespace PCLParaphernalia
 
                             byte[] x = new byte[1];
 
-                            x[0] = (byte)(codeVal);
+                            x[0] = (byte)codeVal;
 
                             prnWriter.Write(x, 0, 1);
                         }
@@ -1256,7 +1256,7 @@ namespace PCLParaphernalia
 
             if (showMapCodesUCS2)
             {
-                if ((showC0Chars) || (sampleRangeOffset != 0))
+                if (showC0Chars || (sampleRangeOffset != 0))
                     startIndxMajor = indxMajorC0Start;
                 else
                     startIndxMajor = indxMajorC0End;
@@ -1338,7 +1338,7 @@ namespace PCLParaphernalia
 
             if (showMapCodesUTF8)
             {
-                if ((showC0Chars) || (sampleRangeOffset != 0))
+                if (showC0Chars || (sampleRangeOffset != 0))
                     startIndxMajor = indxMajorC0Start;
                 else
                     startIndxMajor = indxMajorC0End;

@@ -289,11 +289,11 @@ namespace PCLParaphernalia
                 _ipStream.Seek(offset, SeekOrigin.Begin);
             }
 
-            _ipStream.Seek((-1*bufSize), SeekOrigin.Current);
+            _ipStream.Seek(-1*bufSize, SeekOrigin.Current);
 
             _binReader.Read(bufSub, 0, bufSize);
 
-            _ipStream.Seek((-1*bufSize), SeekOrigin.Current);
+            _ipStream.Seek(-1*bufSize, SeekOrigin.Current);
        }
 
         //--------------------------------------------------------------------//

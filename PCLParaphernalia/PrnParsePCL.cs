@@ -1705,7 +1705,7 @@ namespace PCLParaphernalia
                     vQuotedStart = true;
                     vQuotedEnd = false;
                 }
-                else if ((vQuotedStart) && (!vQuotedEnd))
+                else if (vQuotedStart && (!vQuotedEnd))
                 {
                     if (crntByte == PrnParseConstants.asciiAngleRight)
                     {
@@ -1834,7 +1834,7 @@ namespace PCLParaphernalia
                         {
                             vNumberStarted = true;
 
-                            vInt = (crntByte - PrnParseConstants.asciiDigit0);
+                            vInt = crntByte - PrnParseConstants.asciiDigit0;
                         }
                         else
                         {
@@ -1872,7 +1872,7 @@ namespace PCLParaphernalia
                                  (crntByte <= PrnParseConstants.asciiDigit9))
                         {
                             vNumberStarted = true;
-                            vInt = (crntByte - PrnParseConstants.asciiDigit0);
+                            vInt = crntByte - PrnParseConstants.asciiDigit0;
                         }
                         else
                         {
@@ -1989,7 +1989,7 @@ namespace PCLParaphernalia
                     }
                     */
 
-                    if ((!seqProprietary) && (CheckStandardTable))
+                    if ((!seqProprietary) && CheckStandardTable)
                     {
                         //----------------------------------------------------//
                         //                                                    //
@@ -1999,8 +1999,8 @@ namespace PCLParaphernalia
                         //----------------------------------------------------//
 
                         seqKnown = PCLComplexSeqs.checkComplexSeq (
-                            (_analysisLevel +
-                             _macroLevel),
+                            _analysisLevel +
+                             _macroLevel,
                             iChar,
                             gChar,
                             p_or_TChar,
@@ -2291,8 +2291,8 @@ namespace PCLParaphernalia
 
                     if (vLen > 0)
                     {
-                        if ((optDisplayHexVal) &&
-                            (vCheck)) // vCheck ensures we don't do this for invalid or fractional values
+                        if (optDisplayHexVal &&
+                            vCheck) // vCheck ensures we don't do this for invalid or fractional values
                             val = _ascii.GetString (_buf, vPosCrnt, vLen) +
                                 " (0x" + vInt.ToString ("x") + ")";
                         else
@@ -2340,7 +2340,7 @@ namespace PCLParaphernalia
                                                          val);
 
                             if ((actType == PrnParseConstants.eActPCL.StyleData)
-                                  && (_interpretStyle))
+                                  && _interpretStyle)
                             {
                                 processStyleData (vInt);
                             }
@@ -2862,7 +2862,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                analyseRun = (_parseType == PrnParse.eParseType.Analyse);
+                analyseRun = _parseType == PrnParse.eParseType.Analyse;
 
                 PrnParseConstants.eOvlShow ovlShow;
 
@@ -2871,9 +2871,9 @@ namespace PCLParaphernalia
                 else
                     ovlShow = PrnParseConstants.eOvlShow.None;
 
-                if ((analyseRun) &&
+                if (analyseRun &&
                     (actType == PrnParseConstants.eActPCL.FontHddr) &&
-                    (_analyseFontHddr))
+                    _analyseFontHddr)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -2899,9 +2899,9 @@ namespace PCLParaphernalia
 
                     continuation = _linkData.isContinuation ();
                 }
-                else if ((analyseRun) &&
+                else if (analyseRun &&
                          (actType == PrnParseConstants.eActPCL.FontChar) &&
-                         (_analyseFontChar))
+                         _analyseFontChar)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -2926,9 +2926,9 @@ namespace PCLParaphernalia
 
                     continuation = _linkData.isContinuation ();
                 }
-                else if ((analyseRun) &&
+                else if (analyseRun &&
                          (actType == PrnParseConstants.eActPCL.AlphaNumericID) &&
-                         (_transAlphaNumId))
+                         _transAlphaNumId)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -2956,9 +2956,9 @@ namespace PCLParaphernalia
 
                     continuation = _linkData.isContinuation();
                 }
-                else if ((analyseRun) &&
+                else if (analyseRun &&
                          (actType == PrnParseConstants.eActPCL.ColourLookup) &&
-                         (_transColourLookup))
+                         _transColourLookup)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -2984,9 +2984,9 @@ namespace PCLParaphernalia
 
                     continuation = _linkData.isContinuation();
                 }
-                else if ((analyseRun) &&
+                else if (analyseRun &&
                          (actType == PrnParseConstants.eActPCL.ConfigurationIO) &&
-                         (_transConfIO))
+                         _transConfIO)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -3012,9 +3012,9 @@ namespace PCLParaphernalia
 
                     continuation = _linkData.isContinuation();
                 }
-                else if ((analyseRun) &&
+                else if (analyseRun &&
                          (actType == PrnParseConstants.eActPCL.ConfigureImageData) &&
-                         (_transConfImageData))
+                         _transConfImageData)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -3042,9 +3042,9 @@ namespace PCLParaphernalia
 
                     continuation = _linkData.isContinuation();
                 }
-                else if ((analyseRun) &&
+                else if (analyseRun &&
                          (actType == PrnParseConstants.eActPCL.ConfigureRasterData) &&
-                         (_transConfRasterData))
+                         _transConfRasterData)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -3074,9 +3074,9 @@ namespace PCLParaphernalia
 
                     continuation = _linkData.isContinuation();
                 }
-                else if ((analyseRun) &&
+                else if (analyseRun &&
                          (actType == PrnParseConstants.eActPCL.LogicalPageData) &&
-                         (_transDefLogPage))
+                         _transDefLogPage)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -3103,9 +3103,9 @@ namespace PCLParaphernalia
 
                     continuation = _linkData.isContinuation();
                 }
-                else if ((analyseRun) &&
+                else if (analyseRun &&
                          (actType == PrnParseConstants.eActPCL.DefineSymbolSet) &&
-                         (_transDefSymSet))
+                         _transDefSymSet)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -3131,9 +3131,9 @@ namespace PCLParaphernalia
 
                     continuation = _linkData.isContinuation();
                 }
-                else if ((analyseRun) &&
+                else if (analyseRun &&
                          (actType == PrnParseConstants.eActPCL.DitherMatrix) &&
-                         (_transDitherMatrix))
+                         _transDitherMatrix)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -3159,9 +3159,9 @@ namespace PCLParaphernalia
 
                     continuation = _linkData.isContinuation();
                 }
-                else if ((analyseRun) &&
+                else if (analyseRun &&
                          (actType == PrnParseConstants.eActPCL.DriverConfiguration) &&
-                         (_transDriverConf))
+                         _transDriverConf)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -3187,9 +3187,9 @@ namespace PCLParaphernalia
 
                     continuation = _linkData.isContinuation ();
                 }
-                else if ((analyseRun) &&
+                else if (analyseRun &&
                          (actType == PrnParseConstants.eActPCL.EscEncText) &&
-                         (_transEscEncText))
+                         _transEscEncText)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -3215,9 +3215,9 @@ namespace PCLParaphernalia
 
                     continuation = _linkData.isContinuation();
                 }
-                else if ((analyseRun) &&
+                else if (analyseRun &&
                          (actType == PrnParseConstants.eActPCL.PaletteConfiguration) &&
-                         (_transPaletteConf))
+                         _transPaletteConf)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -3244,9 +3244,9 @@ namespace PCLParaphernalia
 
                     continuation = _linkData.isContinuation();
                 }
-                else if ((analyseRun) &&
+                else if (analyseRun &&
                          (actType == PrnParseConstants.eActPCL.UserDefinedPattern) &&
-                         (_transUserPattern))
+                         _transUserPattern)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -3272,9 +3272,9 @@ namespace PCLParaphernalia
 
                     continuation = _linkData.isContinuation();
                 }
-                else if ((analyseRun) &&
+                else if (analyseRun &&
                          (actType == PrnParseConstants.eActPCL.ViewIlluminant) &&
-                         (_transViewIlluminant))
+                         _transViewIlluminant)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -3300,9 +3300,9 @@ namespace PCLParaphernalia
 
                     continuation = _linkData.isContinuation();
                 }
-                else if ((analyseRun) &&
+                else if (analyseRun &&
                          (actType == PrnParseConstants.eActPCL.ConfigurationIO) &&
-                         (_analysePML))
+                         _analysePML)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -3328,7 +3328,7 @@ namespace PCLParaphernalia
 
                     continuation = _linkData.isContinuation();
                 }
-                else if ((analyseRun) &&
+                else if (analyseRun &&
                          (actType == PrnParseConstants.eActPCL.EmbeddedData))
                 {
                     //--------------------------------------------------------//
@@ -3532,7 +3532,7 @@ namespace PCLParaphernalia
             iChar = _buf[bufOffset + 1];
 
             seqKnown = PCLSimpleSeqs.checkSimpleSeq (
-                (_analysisLevel + _macroLevel),
+                _analysisLevel + _macroLevel,
                 iChar,
                 ref optObsolete,
                 ref optResetHPGL2,

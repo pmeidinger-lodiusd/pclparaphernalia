@@ -1650,7 +1650,7 @@ namespace PCLParaphernalia
                     if (arrData[j].Length <= i)
                         line.Append (space.PadRight (colSizes[j], ' '));
                     else
-                        line.Append ((arrData[j][i]).PadRight (colSizes[j], ' '));
+                        line.Append (arrData[j][i].PadRight (colSizes[j], ' '));
 
                     if (j != lastCol)
                         line.Append (colSep);
@@ -1660,7 +1660,7 @@ namespace PCLParaphernalia
                 line.Clear ();
             }
 
-            if ((blankAfter) || ((blankAfterMultiRow) && (maxRows > 1)))
+            if (blankAfter || (blankAfterMultiRow && (maxRows > 1)))
             {
                 txtWriter.WriteLine ("");
             }
@@ -1949,7 +1949,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if ((blankBefore) && (blankAfter))
+            if (blankBefore && blankAfter)
                 padClass = "padAntePost";
             else if (blankBefore)
                 padClass = "padAnte";
@@ -2080,7 +2080,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if ((blankBefore) && (blankAfter))
+            if (blankBefore && blankAfter)
                 padClass = "padAntePost";
             else if (blankBefore)
                 padClass = "padAnte";
@@ -2198,7 +2198,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < colCt; i++)
             {
-                line.Append ((data[i]).PadRight (colSizes[i], ' '));
+                line.Append (data[i].PadRight (colSizes[i], ' '));
 
                 if (i != lastCol)
                     line.Append (colSep);

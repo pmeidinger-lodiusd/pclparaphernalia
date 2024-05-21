@@ -118,7 +118,7 @@ namespace PCLParaphernalia
                 mwScale = 100;
             }
 
-            windowScale = ((double)mwScale / 100);
+            windowScale = (double)mwScale / 100;
 
             MainFormData.WindowScale = windowScale;
 

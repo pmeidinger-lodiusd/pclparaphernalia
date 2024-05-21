@@ -79,7 +79,7 @@ namespace PCLParaphernalia
             else
             {
                 _idNum   = (ushort)(kind1 / 32);
-                _idAlpha = (byte)((kind1 - (_idNum * 32)) + 64);
+                _idAlpha = (byte)(kind1 - (_idNum * 32) + 64);
             }
 
             _id = _idNum.ToString() + Convert.ToChar(_idAlpha);

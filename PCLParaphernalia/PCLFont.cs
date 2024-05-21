@@ -324,8 +324,8 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        double calcPitch = (7200 /
-                                                (height * _contourRatio));
+                        double calcPitch = 7200 /
+                                                (height * _contourRatio);
                         seq += calcPitch.ToString("F2") + "h";
                     }
                 }
@@ -409,7 +409,7 @@ namespace PCLParaphernalia
 
         public double getPCLPitch(double ptSize)
         {
-            return (double)((7200 / (ptSize * _contourRatio)));
+            return (double)(7200 / (ptSize * _contourRatio));
         }
 
         //--------------------------------------------------------------------//

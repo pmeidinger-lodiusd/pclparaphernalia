@@ -374,7 +374,7 @@ namespace PCLParaphernalia
             if (desc == "")
                 return name;
             else
-                return (name + ": " + desc);
+                return name + ": " + desc;
         }
 
         //--------------------------------------------------------------------//
@@ -469,7 +469,7 @@ namespace PCLParaphernalia
 
         public static bool isCustomSize(int index)
         {
-            return (_paperSizes[index].FlagCustomSize);
+            return _paperSizes[index].FlagCustomSize;
         }
 
         //--------------------------------------------------------------------//
@@ -518,7 +518,7 @@ namespace PCLParaphernalia
 
         public static bool isRareSize(int index)
         {
-            return (_paperSizes[index].IsRareSize);
+            return _paperSizes[index].IsRareSize;
         }
 
         //--------------------------------------------------------------------//

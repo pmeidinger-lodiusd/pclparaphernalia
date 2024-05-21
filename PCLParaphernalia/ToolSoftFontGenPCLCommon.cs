@@ -107,7 +107,7 @@ namespace PCLParaphernalia
 
             int sizeGTDirectory;
 
-            if ((pdlIsPCLXL) || (fmt16))
+            if (pdlIsPCLXL || fmt16)
                 segHddrSize = cSizeSegHddrFmt16;
             else 
                 segHddrSize = cSizeSegHddrFmt15;
@@ -211,7 +211,7 @@ namespace PCLParaphernalia
                     segmentsLen += segLenCC;
             }
 
-            if ((tabvmtxPresent) && (flagVMetrics))
+            if (tabvmtxPresent && flagVMetrics)
                 segmentsLen += segLenVR;
 
             return segmentsLen;
@@ -792,7 +792,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if ((!pdlIsPCLXL) || (symSetUnbound))
+                if ((!pdlIsPCLXL) || symSetUnbound)
                 {
                     writeHddrSegDataGTDirEntry (pdlIsPCLXL,
                                                 _metrics_hhea.TableTag,
@@ -810,7 +810,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if ((!pdlIsPCLXL) || (symSetUnbound))
+                if ((!pdlIsPCLXL) || symSetUnbound)
                 {
                     writeHddrSegDataGTDirEntry (pdlIsPCLXL,
                                                 _metrics_hmtx.TableTag,
@@ -857,7 +857,7 @@ namespace PCLParaphernalia
                     crntOffset += _metrics_prep.TablePadLen;
                 }
 
-                if ((tabvmtxPresent) && (flagVMetrics))
+                if (tabvmtxPresent && flagVMetrics)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -870,7 +870,7 @@ namespace PCLParaphernalia
 
                     if (tabLen != 0)
                     {
-                        if ((!pdlIsPCLXL) || (symSetUnbound))
+                        if ((!pdlIsPCLXL) || symSetUnbound)
                         {
                             writeHddrSegDataGTDirEntry (
                                 pdlIsPCLXL,
@@ -895,7 +895,7 @@ namespace PCLParaphernalia
 
                     if (tabLen != 0)
                     {
-                        if ((!pdlIsPCLXL) || (symSetUnbound))
+                        if ((!pdlIsPCLXL) || symSetUnbound)
                         {
                             writeHddrSegDataGTDirEntry (
                                 pdlIsPCLXL,
@@ -969,7 +969,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if ((!pdlIsPCLXL) || (symSetUnbound))
+                if ((!pdlIsPCLXL) || symSetUnbound)
                 {
                     writeHddrSegDataGTTableData (pdlIsPCLXL,
                                                 _metrics_hhea.TableLength,
@@ -984,7 +984,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if ((!pdlIsPCLXL) || (symSetUnbound))
+                if ((!pdlIsPCLXL) || symSetUnbound)
                 {
                     writeHddrSegDataGTTableData (pdlIsPCLXL,
                                                 _metrics_hmtx.TableLength,
@@ -1022,7 +1022,7 @@ namespace PCLParaphernalia
                                                 ref sumMod256);
                 }
 
-                if ((tabvmtxPresent) && (flagVMetrics))
+                if (tabvmtxPresent && flagVMetrics)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -1035,7 +1035,7 @@ namespace PCLParaphernalia
 
                     if (tabLen != 0)
                     {
-                        if ((!pdlIsPCLXL) || (symSetUnbound))
+                        if ((!pdlIsPCLXL) || symSetUnbound)
                         {
                             writeHddrSegDataGTTableData (
                                 pdlIsPCLXL,
@@ -1057,7 +1057,7 @@ namespace PCLParaphernalia
 
                     if (tabLen != 0)
                     {
-                        if ((!pdlIsPCLXL) || (symSetUnbound))
+                        if ((!pdlIsPCLXL) || symSetUnbound)
                         {
                             writeHddrSegDataGTTableData (
                                 pdlIsPCLXL,
@@ -1406,7 +1406,7 @@ namespace PCLParaphernalia
         {
             bool flagOK = true;
 
-            if ((pdlIsPCLXL) || (fmt16))
+            if (pdlIsPCLXL || fmt16)
             {
                 byte[] segHddrFmt16 = new byte[cSizeSegHddrFmt16];
 
@@ -1492,7 +1492,7 @@ namespace PCLParaphernalia
                                                  ref sumMod256);
             }
 
-            if ((flagOK) && (!segGTLast))
+            if (flagOK && (!segGTLast))
                 flagOK = writeHddrSegDataGT (pdlIsPCLXL, fmt16,
                                              symSetUnbound,
                                              tabvmtxPresent,
@@ -1520,14 +1520,14 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                if ((tabvmtxPresent) && (flagVMetrics))
+                if (tabvmtxPresent && flagVMetrics)
                 {
                     flagOK = writeHddrSegDataVR (pdlIsPCLXL, fmt16,
                                                  ref sumMod256);
                 }
             }
 
-            if ((flagOK) && (segGTLast))
+            if (flagOK && segGTLast)
                 flagOK = writeHddrSegDataGT(pdlIsPCLXL, fmt16,
                                              symSetUnbound,
                                              tabvmtxPresent,

@@ -732,7 +732,7 @@ namespace PCLParaphernalia
                             }
                             else if (binRem < binLen)
                             {
-                                supLen += (binLen - binRem);
+                                supLen += binLen - binRem;
                                 binLen = binRem;
                                 binRem = 0;
                             }
@@ -926,7 +926,7 @@ namespace PCLParaphernalia
                                  (crntByte <= PrnParseConstants.asciiDigit9))
                         {
                             valStarted = true;
-                            binSize = (crntByte - PrnParseConstants.asciiDigit0);
+                            binSize = crntByte - PrnParseConstants.asciiDigit0;
                         }
                         else
                         {

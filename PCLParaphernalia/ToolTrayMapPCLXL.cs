@@ -27,14 +27,14 @@ namespace PCLParaphernalia
 
         const ushort _unitsPerInch = PCLXLWriter._sessionUPI;
 
-        const short _posXName    = (_unitsPerInch * 1);
-        const short _posXValue   = (_unitsPerInch * 7) / 2;
-        const short _posXIncSub  = (_unitsPerInch / 3);
+        const short _posXName    = _unitsPerInch * 1;
+        const short _posXValue   = _unitsPerInch * 7 / 2;
+        const short _posXIncSub  = _unitsPerInch / 3;
 
-        const short _posYHddr    = (_unitsPerInch * 1);
-        const short _posYDesc    = (_unitsPerInch * 21) / 10;
-        const short _posYIncMain = (_unitsPerInch * 3) / 4;
-        const short _posYIncSub  = (_unitsPerInch / 3);
+        const short _posYHddr    = _unitsPerInch * 1;
+        const short _posYDesc    = _unitsPerInch * 21 / 10;
+        const short _posYIncMain = _unitsPerInch * 3 / 4;
+        const short _posYIncSub  = _unitsPerInch / 3;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -211,7 +211,7 @@ namespace PCLParaphernalia
             const int lenBuf = 1024;
 
             short rectHeight = (short)(scaleFactor * (_unitsPerInch / 2));
-            short rectWidth  = (short)(scaleFactor * ((_unitsPerInch * 7) / 2));
+            short rectWidth  = (short)(scaleFactor * (_unitsPerInch * 7 / 2));
             short rectStroke = (short)(scaleFactor * (_unitsPerInch / 200));
             short rectCorner = (short)(scaleFactor * (_unitsPerInch / 3));
 

@@ -730,7 +730,7 @@ namespace PCLParaphernalia
             posY += _lineInc;
 
             PCLXLWriter.charShear (prnWriter, false,
-                                   (float) (-0.90), (float) 0.0);
+                                   (float) -0.90, (float) 0.0);
 
             PCLXLWriter.text(prnWriter, false, false,
                        PCLXLWriter.advances_ArialRegular, ptSize,
@@ -754,7 +754,7 @@ namespace PCLParaphernalia
             posY += _lineInc;
 
             PCLXLWriter.charShear (prnWriter, false,
-                                   (float) 0.0, (float) (-0.90));
+                                   (float) 0.0, (float) -0.90);
 
             PCLXLWriter.text(prnWriter, false, false,
                        PCLXLWriter.advances_ArialRegular, ptSize,
@@ -762,7 +762,7 @@ namespace PCLParaphernalia
                        sampleText);
 
             PCLXLWriter.charShear(prnWriter, false,
-                                   (float)0.0, (float)(0.0)); 
+                                   (float)0.0, (float)0.0); 
 
             //----------------------------------------------------------------//
 

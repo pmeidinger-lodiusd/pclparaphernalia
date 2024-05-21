@@ -326,7 +326,7 @@ namespace PCLParaphernalia
             {
                 if (! _flagMapDiff)
                 {
-                    if ((_flagNullMapStd) || (_flagNullMapPCL))
+                    if (_flagNullMapStd || _flagNullMapPCL)
                         return "Not applicable (only one set defined)";
                     else
                         return "None";
@@ -403,7 +403,7 @@ namespace PCLParaphernalia
                                 map.Append ("0x" + rowId.ToString ("X3") +
                                             "0-> ");
 
-                            cell = (rowId * rowLen);
+                            cell = rowId * rowLen;
 
                             for (int k = 0; k < rowLen; k++)
                             {
@@ -543,7 +543,7 @@ namespace PCLParaphernalia
                             else
                                 map.Append("0x" + rowId.ToString("X3") + "0-> ");
 
-                            cell = (rowId * rowLen);
+                            cell = rowId * rowLen;
 
                             for (int k = 0; k < rowLen; k++)
                             {
@@ -703,7 +703,7 @@ namespace PCLParaphernalia
                                 map.Append("0x" + rowId.ToString("X3") +
                                            "0-> ");
 
-                            cell = (rowId * rowLen);
+                            cell = rowId * rowLen;
 
                             for (int k = 0; k < rowLen; k++)
                             {
@@ -773,7 +773,7 @@ namespace PCLParaphernalia
                 {
                     mapRows = new string[1];
 
-                    if ((_flagNullMapStd) || (_flagNullMapPCL))
+                    if (_flagNullMapStd || _flagNullMapPCL)
                         mapRows[0] = "Not applicable (only one set defined)";
                     else
                         mapRows[0] = "None";
@@ -851,7 +851,7 @@ namespace PCLParaphernalia
                                 crntRow.Append ("0x" + rowId.ToString ("X3") +
                                                 "0-> ");
 
-                            cell = (rowId * rowLen);
+                            cell = rowId * rowLen;
 
                             for (int k = 0; k < rowLen; k++)
                             {
@@ -1004,7 +1004,7 @@ namespace PCLParaphernalia
                                 crntRow.Append ("0x" + rowId.ToString ("X3") +
                                                 "0-> ");
 
-                            cell = (rowId * rowLen);
+                            cell = rowId * rowLen;
 
                             for (int k = 0; k < rowLen; k++)
                             {
@@ -1178,7 +1178,7 @@ namespace PCLParaphernalia
                                 crntRow.Append ("0x" + rowId.ToString ("X3") +
                                                 "0-> ");
 
-                            cell = (rowId * rowLen);
+                            cell = rowId * rowLen;
 
                             for (int k = 0; k < rowLen; k++)
                             {

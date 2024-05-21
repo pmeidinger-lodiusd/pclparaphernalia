@@ -432,8 +432,8 @@ namespace PCLParaphernalia
             {
                 int j = (i - codeMin) * 2;
 
-                if ((flagIgnoreC1) &&
-                    ((i >= cCodePointC1Min) && (i <= cCodePointC1Max)))
+                if (flagIgnoreC1 &&
+                    (i >= cCodePointC1Min) && (i <= cCodePointC1Max))
                 {
                     mapArray [j]     = 0xff;
                     mapArray [j + 1] = 0xff;

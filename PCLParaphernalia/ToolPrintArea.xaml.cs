@@ -28,8 +28,8 @@ namespace PCLParaphernalia
 
         const ushort _sessionUPI = 600;
 
-        const double _unitsToInches      = (1.00 / _sessionUPI);
-        const double _unitsToMilliMetres = (25.4 / _sessionUPI);
+        const double _unitsToInches      = 1.00 / _sessionUPI;
+        const double _unitsToMilliMetres = 25.4 / _sessionUPI;
 
         private static readonly int[] _subsetPDLs =
         {
@@ -1078,7 +1078,7 @@ namespace PCLParaphernalia
                     lbIdName.Visibility = Visibility.Visible;
                     txtIdName.Visibility = Visibility.Visible;
 
-                    if ((_flagTrayIdUnknown) && (idName == ""))
+                    if (_flagTrayIdUnknown && (idName == ""))
                     {
                         _flagForceCustomPaperSize = true;
                         lbIdUnknown.Visibility = Visibility.Visible;
@@ -1170,7 +1170,7 @@ namespace PCLParaphernalia
                 lengthPrintable = (ushort)(sizeLongEdge -
                                           (marginsUnprintable * 2));
 
-                lengthLogical   = (ushort)(sizeLongEdge);
+                lengthLogical   = (ushort)sizeLongEdge;
             }
             else
             {
@@ -1185,7 +1185,7 @@ namespace PCLParaphernalia
                 lengthPrintable = (ushort)(sizeShortEdge -
                                           (marginsUnprintable * 2));
 
-                lengthLogical   = (ushort)(sizeShortEdge);
+                lengthLogical   = (ushort)sizeShortEdge;
             }
 
             //----------------------------------------------------------------//
@@ -1219,35 +1219,35 @@ namespace PCLParaphernalia
             if (!logicalOnly)
             {
                 txtShortEdgeMetric.Text =
-                    (Math.Round ((sizeShortEdge *
-                                  _unitsToMilliMetres), 2)).ToString("F1");
+                    Math.Round (sizeShortEdge *
+                                  _unitsToMilliMetres, 2).ToString("F1");
 
                 txtLongEdgeMetric.Text =
-                    (Math.Round ((sizeLongEdge *
-                                  _unitsToMilliMetres), 2)).ToString("F1");
+                    Math.Round (sizeLongEdge *
+                                  _unitsToMilliMetres, 2).ToString("F1");
             }
 
             txtLogPageMarginLRMetric.Text
-                = (Math.Round ((marginsLogical *
-                                _unitsToMilliMetres), 2)).ToString("F1");
+                = Math.Round (marginsLogical *
+                                _unitsToMilliMetres, 2).ToString("F1");
             txtLogPageMarginTBMetric.Text
                 = zero.ToString("F1");
             txtLogPageWidthMetric.Text
-                = (Math.Round ((widthLogical    *
-                               _unitsToMilliMetres), 2)).ToString("F1");
+                = Math.Round (widthLogical    *
+                               _unitsToMilliMetres, 2).ToString("F1");
             txtLogPageLengthMetric.Text
-                = (Math.Round ((lengthLogical   *
-                                _unitsToMilliMetres), 2)).ToString("F1");
+                = Math.Round (lengthLogical   *
+                                _unitsToMilliMetres, 2).ToString("F1");
 
             txtUnprintableMarginMetric.Text
-                = (Math.Round ((marginsUnprintable *
-                                _unitsToMilliMetres), 2)).ToString("F1");
+                = Math.Round (marginsUnprintable *
+                                _unitsToMilliMetres, 2).ToString("F1");
             txtPrintWidthMetric.Text
-                = (Math.Round ((widthPrintable  *
-                                _unitsToMilliMetres), 2)).ToString("F1");
+                = Math.Round (widthPrintable  *
+                                _unitsToMilliMetres, 2).ToString("F1");
             txtPrintLengthMetric.Text
-                = (Math.Round ((lengthPrintable *
-                                _unitsToMilliMetres), 2)).ToString("F1");
+                = Math.Round (lengthPrintable *
+                                _unitsToMilliMetres, 2).ToString("F1");
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1258,35 +1258,35 @@ namespace PCLParaphernalia
             if (!logicalOnly)
             {
                 txtShortEdgeImperial.Text =
-                    (Math.Round ((sizeShortEdge *
-                                  _unitsToInches), 3)).ToString("F3");
+                    Math.Round (sizeShortEdge *
+                                  _unitsToInches, 3).ToString("F3");
 
                 txtLongEdgeImperial.Text =
-                    (Math.Round ((sizeLongEdge *
-                                  _unitsToInches), 3)).ToString("F3");
+                    Math.Round (sizeLongEdge *
+                                  _unitsToInches, 3).ToString("F3");
             }
 
             txtLogPageMarginLRImperial.Text
-                = (Math.Round ((marginsLogical *
-                                _unitsToInches), 3)).ToString("F3");
+                = Math.Round (marginsLogical *
+                                _unitsToInches, 3).ToString("F3");
             txtLogPageMarginTBImperial.Text
                 = zero.ToString("F3");
             txtLogPageWidthImperial.Text
-                = (Math.Round ((widthLogical    *
-                                _unitsToInches), 3)).ToString("F3");
+                = Math.Round (widthLogical    *
+                                _unitsToInches, 3).ToString("F3");
             txtLogPageLengthImperial.Text
-                = (Math.Round ((lengthLogical   *
-                                _unitsToInches), 3)).ToString("F3");
+                = Math.Round (lengthLogical   *
+                                _unitsToInches, 3).ToString("F3");
 
             txtUnprintableMarginImperial.Text
-                = (Math.Round ((marginsUnprintable *
-                                _unitsToInches), 3)).ToString("F3");
+                = Math.Round (marginsUnprintable *
+                                _unitsToInches, 3).ToString("F3");
             txtPrintWidthImperial.Text
-                = (Math.Round ((widthPrintable  *
-                                _unitsToInches), 3)).ToString("F3");
+                = Math.Round (widthPrintable  *
+                                _unitsToInches, 3).ToString("F3");
             txtPrintLengthImperial.Text
-                = (Math.Round ((lengthPrintable *
-                                _unitsToInches), 3)).ToString("F3");
+                = Math.Round (lengthPrintable *
+                                _unitsToInches, 3).ToString("F3");
         }
 
         //--------------------------------------------------------------------//
@@ -1304,15 +1304,15 @@ namespace PCLParaphernalia
         private void txtLongEdgeImperial_LostFocus(object sender,
                                                  RoutedEventArgs e)
         {
-            if ((_flagCustomPaperSize) && (!_flagCustomUseMetric))
+            if (_flagCustomPaperSize && (!_flagCustomUseMetric))
             {
                 if (validateEdgeImperial(false, true))
                 {
                     txtLongEdgeDots.Text = _customLongEdgeDots.ToString();
 
                     txtLongEdgeMetric.Text =
-                        Math.Round ((_customLongEdgeDots *
-                                     _unitsToMilliMetres), 2).ToString("F1");
+                        Math.Round (_customLongEdgeDots *
+                                     _unitsToMilliMetres, 2).ToString("F1");
 
                     PCLPaperSizes.setCustomLongEdge(_customLongEdgeDots,
                                                     _sessionUPI);
@@ -1337,15 +1337,15 @@ namespace PCLParaphernalia
         private void txtLongEdgeMetric_LostFocus(object sender,
                                                  RoutedEventArgs e)
         {
-            if ((_flagCustomPaperSize) && (_flagCustomUseMetric))
+            if (_flagCustomPaperSize && _flagCustomUseMetric)
             {
                 if (validateEdgeMetric(false, true))
                 {
                     txtLongEdgeDots.Text = _customLongEdgeDots.ToString();
 
                     txtLongEdgeImperial.Text =
-                        (Math.Round((_customLongEdgeDots *
-                                     _unitsToInches), 3)).ToString("F3");
+                        Math.Round(_customLongEdgeDots *
+                                     _unitsToInches, 3).ToString("F3");
 
                     PCLPaperSizes.setCustomLongEdge(_customLongEdgeDots,
                                                     _sessionUPI);
@@ -1370,15 +1370,15 @@ namespace PCLParaphernalia
         private void txtShortEdgeImperial_LostFocus(object sender,
                                                     RoutedEventArgs e)
         {
-            if ((_flagCustomPaperSize) && (!_flagCustomUseMetric))
+            if (_flagCustomPaperSize && (!_flagCustomUseMetric))
             {
                 if (validateEdgeImperial(true, true))
                 {
                     txtShortEdgeDots.Text = _customShortEdgeDots.ToString();
 
                     txtShortEdgeMetric.Text =
-                        (Math.Round ((_customShortEdgeDots *
-                                      _unitsToMilliMetres), 2)).ToString("F1");
+                        Math.Round (_customShortEdgeDots *
+                                      _unitsToMilliMetres, 2).ToString("F1");
 
                     PCLPaperSizes.setCustomShortEdge(_customShortEdgeDots,
                                                     _sessionUPI);
@@ -1403,15 +1403,15 @@ namespace PCLParaphernalia
         private void txtShortEdgeMetric_LostFocus(object sender,
                                                   RoutedEventArgs e)
         {
-            if ((_flagCustomPaperSize) && (_flagCustomUseMetric))
+            if (_flagCustomPaperSize && _flagCustomUseMetric)
             {
                 if (validateEdgeMetric(true, true))
                 {
                     txtShortEdgeDots.Text = _customShortEdgeDots.ToString();
 
                     txtShortEdgeImperial.Text =
-                        (Math.Round ((_customShortEdgeDots *
-                                      _unitsToInches), 3)).ToString("F3");
+                        Math.Round (_customShortEdgeDots *
+                                      _unitsToInches, 3).ToString("F3");
 
                     PCLPaperSizes.setCustomShortEdge(_customShortEdgeDots,
                                                     _sessionUPI);
@@ -1460,8 +1460,8 @@ namespace PCLParaphernalia
                 edgeThis = "Short";
                 edgeOther = "Long";
                 edgeOtherVal =
-                    (Math.Round((_customLongEdgeDots *
-                                 _unitsToInches),3)).ToString("F3");
+                    Math.Round(_customLongEdgeDots *
+                                 _unitsToInches,3).ToString("F3");
                 minVal = minValShort;
                 maxVal = maxValShort;
                 crntText = txtShortEdgeImperial.Text;
@@ -1471,8 +1471,8 @@ namespace PCLParaphernalia
                 edgeThis = "Long";
                 edgeOther = "Short";
                 edgeOtherVal =
-                    (Math.Round((_customShortEdgeDots *
-                                 _unitsToInches),3)).ToString("F3");
+                    Math.Round(_customShortEdgeDots *
+                                 _unitsToInches,3).ToString("F3");
                 minVal = minValLong;
                 maxVal = maxValLong;
                 crntText = txtLongEdgeImperial.Text;
@@ -1627,8 +1627,8 @@ namespace PCLParaphernalia
                 edgeThis  = "Short";
                 edgeOther = "Long";
                 edgeOtherVal =
-                    (Math.Round((_customLongEdgeDots *
-                                 _unitsToMilliMetres),2)).ToString("F1");
+                    Math.Round(_customLongEdgeDots *
+                                 _unitsToMilliMetres,2).ToString("F1");
                 minVal = minValShort;
                 maxVal = maxValShort;
                 crntText = txtShortEdgeMetric.Text;
@@ -1638,8 +1638,8 @@ namespace PCLParaphernalia
                 edgeThis  = "Long";
                 edgeOther = "Short";
                 edgeOtherVal =
-                    (Math.Round((_customShortEdgeDots *
-                                 _unitsToMilliMetres),2)).ToString("F1");
+                    Math.Round(_customShortEdgeDots *
+                                 _unitsToMilliMetres,2).ToString("F1");
                 minVal = minValLong;
                 maxVal = maxValLong;
                 crntText = txtLongEdgeMetric.Text;

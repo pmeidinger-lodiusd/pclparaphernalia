@@ -145,7 +145,7 @@ namespace PCLParaphernalia
 
         public static bool isSimplex (int index)
         {
-            return (_plexModes[index].getPlexType() == ePlexType.Simplex);
+            return _plexModes[index].getPlexType() == ePlexType.Simplex;
         }
     }
 }

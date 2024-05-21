@@ -301,7 +301,7 @@ namespace PCLParaphernalia
                     sliceLen = PrnParseConstants.viewBytesPerLine;
 
                     for (int i = 0;
-                         ((i < blockLen) && (!endReached));
+                         (i < blockLen) && (!endReached);
                          i += sliceLen)
                     {
                         if ((i + PrnParseConstants.viewBytesPerLine) > blockLen)
@@ -401,12 +401,12 @@ namespace PCLParaphernalia
             endSlice = false;
 
             for (int j = blockOffset;
-                    (j < (blockOffset + sliceLen) && (!endSlice));
+                    j < (blockOffset + sliceLen) && (!endSlice);
                     j++)
             {
                 crntByte = buf[j];
 
-                if (((crntByte < 32) || (crntByte == 0x7f)) ||
+                if ((crntByte < 32) || (crntByte == 0x7f) ||
                     ((_indxCharSetName ==
                         PrnParseConstants.eOptCharSets.ASCII)
                                            &&
@@ -446,7 +446,7 @@ namespace PCLParaphernalia
 
                 hexBuf.Append (cx);
 
-                sub = (crntByte & 0x0f);
+                sub = crntByte & 0x0f;
 
                 cx = PrnParseConstants.cHexChars[sub];
 

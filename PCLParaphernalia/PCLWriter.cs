@@ -877,10 +877,10 @@ namespace PCLParaphernalia
             int dptWidth,
                   dptLength;
 
-            scale = (pointsPerInch * 10.0) / sessionUPI;
+            scale = pointsPerInch * 10.0 / sessionUPI;
 
-            dptWidth  = (int) Math.Round ((scale * paperWidth));
-            dptLength = (int) Math.Round ((scale * paperLength));
+            dptWidth  = (int) Math.Round (scale * paperWidth);
+            dptLength = (int) Math.Round (scale * paperLength);
 
             if (PCLPaperTypes.getType(indxPaperType) !=
                     PCLPaperTypes.eEntryType.NotSet)
@@ -1232,9 +1232,9 @@ namespace PCLParaphernalia
             short dpHeight,
                   dpWidth;
 
-            dpHeight = (short) ((height * pointsPerInch * 10) /
+            dpHeight = (short) (height * pointsPerInch * 10 /
                                  sessionUPI);
-            dpWidth  = (short) ((width  * pointsPerInch * 10) /
+            dpWidth  = (short) (width  * pointsPerInch * 10 /
                                  sessionUPI);
 
             seq = "\x1b" + "*p" +
@@ -1362,9 +1362,9 @@ namespace PCLParaphernalia
                 else
                     srcResY = (int)(srcResY / 39.37);
 
-                destWidth = ((srcWidth * 720) / srcResX) *
+                destWidth = srcWidth * 720 / srcResX *
                               (destScalePercentX / 100);
-                destHeight = ((srcHeight * 720) / srcResY) *
+                destHeight = srcHeight * 720 / srcResY *
                               (destScalePercentY / 100);
 
                 seq = "\x1b" + "*t" +

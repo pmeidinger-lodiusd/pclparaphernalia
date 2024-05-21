@@ -153,7 +153,7 @@ namespace PCLParaphernalia
                         syncLen = skipBegin - crntPos;
                         fragLen = 0;
                     }
-                    else if ((comboSeq) && (!comboFirst))
+                    else if (comboSeq && (!comboFirst))
                     {
                         if (comboStart > crntPos)
                         {
@@ -474,7 +474,7 @@ namespace PCLParaphernalia
                     makeOvlActNew = PrnParseConstants.eOvlAct.Remove;
                     makeOvlShowNew = PrnParseConstants.eOvlShow.Remove;
                 }
-                else if ((comboSeq) && (comboModified))
+                else if (comboSeq && comboModified)
                 {
                     breakpoint = true;
 
@@ -524,7 +524,7 @@ namespace PCLParaphernalia
                     makeOvlPosNew = PrnParseConstants.eOvlPos.AfterPages;
                     makeOvlShowNew = PrnParseConstants.eOvlShow.Remove;
                 }
-                else if ((comboSeq) && (comboModified))
+                else if (comboSeq && comboModified)
                 {
                     breakpoint = true;
 
@@ -816,7 +816,7 @@ namespace PCLParaphernalia
 
             if (breakpoint)
             {
-                if ((firstPass) && (linkData.MakeOvlEncapsulate))
+                if (firstPass && linkData.MakeOvlEncapsulate)
                 {
                     long offset = linkData.MakeOvlOffset;
                     long copyLen = seqBegin - offset;
@@ -1202,8 +1202,8 @@ namespace PCLParaphernalia
 
             if (breakpoint)
             {
-                if ((linkData.MakeOvlEncapsulate) &&
-                    ((firstPass) || (! operHasAttrList)))
+                if (linkData.MakeOvlEncapsulate &&
+                    (firstPass || (! operHasAttrList)))
                 {
                     long offset = linkData.MakeOvlOffset;
                     long copyLen = seqBegin - offset;

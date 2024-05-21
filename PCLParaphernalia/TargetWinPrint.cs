@@ -424,7 +424,7 @@ namespace PCLParaphernalia
                         prnReader.BaseStream.Position = 0;
                         prnData = prnReader.ReadBytes (bufLen);
 
-                        while (((readLen = prnData.Length) != 0) && (bSuccess))
+                        while (((readLen = prnData.Length) != 0) && bSuccess)
                         {
                             IntPtr pUnmanagedBytes = new IntPtr (0);
 

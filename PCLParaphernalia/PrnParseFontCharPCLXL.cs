@@ -156,7 +156,7 @@ namespace PCLParaphernalia
 
             if (_nextStage == eStage.Start)
             {
-                if (bufRem < (_blockHddrLen))
+                if (bufRem < _blockHddrLen)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -325,7 +325,7 @@ namespace PCLParaphernalia
                     _charRem = 0;
                 }
 
-                if ((binDataLen) != 0)
+                if (binDataLen != 0)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -638,7 +638,7 @@ namespace PCLParaphernalia
                 _charWidth = (ushort) ((_buf[bufOffset + 4] * 256) +
                                    _buf[bufOffset + 5]);
 
-                bytesPerRow = (ushort) ((_charWidth / 8));
+                bytesPerRow = (ushort) (_charWidth / 8);
 
                 if ((_charWidth % 8) != 0)
                     bytesPerRow++;
@@ -957,7 +957,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if ((_drawCharShape) && (! shapeTooLarge))
+                if (_drawCharShape && (! shapeTooLarge))
                 {
                     contType = PrnParseConstants.eContType.PCLFontChar;
 
@@ -990,7 +990,7 @@ namespace PCLParaphernalia
                 _nextStage = eStage.EndOK;
             }
 
-            if ((binDataLen) != 0)
+            if (binDataLen != 0)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1086,7 +1086,7 @@ namespace PCLParaphernalia
                 _nextStage = eStage.EndOK;
             }
 
-            if ((binDataLen) != 0)
+            if (binDataLen != 0)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1175,7 +1175,7 @@ namespace PCLParaphernalia
                 _charRem = 0;
             }
 
-            if ((binDataLen) != 0)
+            if (binDataLen != 0)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1308,7 +1308,7 @@ namespace PCLParaphernalia
 
                 string rowImage;
 
-                bytesPerRow = (_charWidth / 8);
+                bytesPerRow = _charWidth / 8;
 
                 if (_charWidth - (bytesPerRow * 8) != 0)
                     bytesPerRow++;
@@ -1341,7 +1341,7 @@ namespace PCLParaphernalia
                          j < (crntOffset + sliceLen);
                          j++)
                     {
-                        sub = (_buf[j]);
+                        sub = _buf[j];
 
                         for (int k = 0; k < 8; k++)
                         {

@@ -974,7 +974,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            charSize = (pointSize * _sessionUPI) / _pointsPerInch;
+            charSize = pointSize * _sessionUPI / _pointsPerInch;
 
             len = fontName.Length;
 
@@ -1313,7 +1313,7 @@ namespace PCLParaphernalia
 
         public static float getCharSize(float pointSize)
         {
-            return (pointSize * _sessionUPI) / _pointsPerInch;
+            return pointSize * _sessionUPI / _pointsPerInch;
         }
 
         //--------------------------------------------------------------------//
@@ -2373,7 +2373,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < textLen; i++)
             {
-                advance = advanceTable[((byte)text[i] - 0x20)];
+                advance = advanceTable[(byte)text[i] - 0x20];
                 tmpAdvance[i] = (short)(advance * scaleFactor);
             }
 
@@ -2440,7 +2440,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < textLen; i++)
             {
-                advance = advanceTable[((byte)text[i] - 0x20)];
+                advance = advanceTable[(byte)text[i] - 0x20];
                 totalAdvance += (short)(advance * scaleFactor);
             }
 
@@ -2569,7 +2569,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < textLen; i++)
             {
-                advance = advanceTable[((byte)text[i] - 0x20)];
+                advance = advanceTable[(byte)text[i] - 0x20];
                 tmpAdvanceX[i] = (short)(advance * scaleFactor);
                 tmpAdvanceY[i] = (short)(advance * scaleFactor * tangent);
             }

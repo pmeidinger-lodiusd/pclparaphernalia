@@ -96,7 +96,7 @@ namespace PCLParaphernalia
 
             key = keyRoot + ":" + vInt.ToString ("X4");
 
-            if ((vCheck) && (_seqs.IndexOfKey (key) != -1))
+            if (vCheck && (_seqs.IndexOfKey (key) != -1))
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -143,7 +143,7 @@ namespace PCLParaphernalia
 
             description = seq.Description;
 
-            if ((flagDiscrete) && (flagValGeneric))
+            if (flagDiscrete && flagValGeneric)
             {
                 int ptr = description.IndexOf ("discrete");
 
@@ -195,7 +195,7 @@ namespace PCLParaphernalia
                 seqObsolete = kvp.Value.FlagObsolete;
                 seqDiscrete = kvp.Value.FlagDiscrete;
 
-                if ((seqObsolete) && (!incObsoleteSeqs))
+                if (seqObsolete && (!incObsoleteSeqs))
                     displaySeq = false;
 
                 if (seqDiscrete)
@@ -203,7 +203,7 @@ namespace PCLParaphernalia
                     valGeneric = kvp.Value.FlagValGeneric;
                     valVarious = kvp.Value.FlagValVarious;
 
-                    if ((incDiscreteVal) && (valGeneric))
+                    if (incDiscreteVal && valGeneric)
                         displaySeq = false;
                     else if ((!incDiscreteVal) &&
                              (!valGeneric) &&
@@ -283,7 +283,7 @@ namespace PCLParaphernalia
                 {
                     if (incUsedSeqsOnly)
                         displaySeq = false;
-                    else if ((excUnusedObsSeqs) &&
+                    else if (excUnusedObsSeqs &&
                              (kvp.Value.FlagObsolete == true))
                         displaySeq = false;
                 }

@@ -1530,7 +1530,7 @@ namespace PCLParaphernalia
 
             if (check)
             {
-                if ((PCLFonts.isPresetFont(_subsetFonts[indxFont])) &&
+                if (PCLFonts.isPresetFont(_subsetFonts[indxFont]) &&
                     (!PCLFonts.isSymSetInList(_subsetFonts[indxFont],
                                              _symSetNo)))
                 {
@@ -4495,25 +4495,25 @@ namespace PCLParaphernalia
 
                 if (samePreset)
                 {
-                    if ((varR) && (_fontVar == PCLFonts.eVariant.Regular))
+                    if (varR && (_fontVar == PCLFonts.eVariant.Regular))
                     {
                         rbVarR.IsChecked = true;
                         varSet = true;
                     }
 
-                    if ((varI) && (_fontVar == PCLFonts.eVariant.Italic))
+                    if (varI && (_fontVar == PCLFonts.eVariant.Italic))
                     {
                         rbVarI.IsChecked = true;
                         varSet = true;
                     }
 
-                    if ((varB) && (_fontVar == PCLFonts.eVariant.Bold))
+                    if (varB && (_fontVar == PCLFonts.eVariant.Bold))
                     {
                         rbVarB.IsChecked = true;
                         varSet = true;
                     }
 
-                    if ((varBI) && (_fontVar == PCLFonts.eVariant.BoldItalic))
+                    if (varBI && (_fontVar == PCLFonts.eVariant.BoldItalic))
                     {
                         rbVarBI.IsChecked = true;
                         varSet = true;
@@ -5071,7 +5071,7 @@ namespace PCLParaphernalia
             if ((_symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet) &&
                 (_symSetType == PCLSymSetTypes.eIndex.Bound_16bit) &&
                 (_crntPDL == ToolCommonData.ePrintLang.PCL)     &&
-                (_symSetUserActEmbedPCL))
+                _symSetUserActEmbedPCL)
             {
                 MessageBox.Show("Few (if any) printers support" +
                                  " user-defined 16-bit symbol sets",
@@ -5371,12 +5371,12 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (rangesStd != null)
-                ctRangesStd = (rangesStd.Length / 2);
+                ctRangesStd = rangesStd.Length / 2;
             else
                 ctRangesStd = -1;
 
             if (rangesDouble != null)
-                ctRangesDouble = (rangesDouble.Length / 2);
+                ctRangesDouble = rangesDouble.Length / 2;
             else
                 ctRangesDouble = -1;
 
@@ -6030,9 +6030,9 @@ namespace PCLParaphernalia
             if (crntText == "")
             {
                 if ((_fontType == PCLFonts.eFontType.Download) &&
-                    (_downloadSelByIdPCL) && (!_fontScalable))
+                    _downloadSelByIdPCL && (!_fontScalable))
                     value = 0;
-                else if ((_fontScalable) && (!_fontProportional))
+                else if (_fontScalable && (!_fontProportional))
                     value = 0;
                 else
                     OK = false;
@@ -6111,7 +6111,7 @@ namespace PCLParaphernalia
             if (crntText == "")
             {
                 if ((_fontType == PCLFonts.eFontType.Download) &&
-                     (_downloadSelByIdPCL) && (!_fontScalable))
+                     _downloadSelByIdPCL && (!_fontScalable))
                     value = 0;
                 else if (_fontProportional)
                     value = 0;

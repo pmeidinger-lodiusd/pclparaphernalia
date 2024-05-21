@@ -404,8 +404,8 @@ namespace PCLParaphernalia
 
                             string langName;
 
-                            makeMacroScan = (_parseType == eParseType.ScanForPDL);
-                            makeMacroRun  = (_parseType == eParseType.MakeOverlay);
+                            makeMacroScan = _parseType == eParseType.ScanForPDL;
+                            makeMacroRun  = _parseType == eParseType.MakeOverlay;
 
                             if (makeMacroScan)
                                 endReached = true;
@@ -415,7 +415,7 @@ namespace PCLParaphernalia
                                 case ToolCommonData.ePrintLang.PCL:
                                     langName = "PCL";
 
-                                    if ((makeMacroScan) || (makeMacroRun))
+                                    if (makeMacroScan || makeMacroRun)
                                         if (_crntPDL == ToolCommonData.ePrintLang.Prescribe)
                                             endReached = false;
 
@@ -436,8 +436,8 @@ namespace PCLParaphernalia
                                 case ToolCommonData.ePrintLang.PJL:
                                     langName = "PJL";
 
-                                    if ((makeMacroScan) || (makeMacroRun))
-                                        if ((_linkData.IsEofSet) && (bufRem == 0))
+                                    if (makeMacroScan || makeMacroRun)
+                                        if (_linkData.IsEofSet && (bufRem == 0))
                                             newPDL = ToolCommonData.ePrintLang.PCL;
                                         else 
                                             endReached = false;
@@ -450,7 +450,7 @@ namespace PCLParaphernalia
                                 case ToolCommonData.ePrintLang.Prescribe:
                                     langName = "Prescribe";
 
-                                    if ((makeMacroScan) || (makeMacroRun))
+                                    if (makeMacroScan || makeMacroRun)
                                         if (bufOffset== 0)
                                             endReached = false;
 
@@ -1190,7 +1190,7 @@ namespace PCLParaphernalia
             ToolCommonData.ePrintLang  newPDL,
             PCLXLOperators.eEmbedDataType type)
         {
-            if ((_subFileOpen) && (_parseType == eParseType.Analyse))
+            if (_subFileOpen && (_parseType == eParseType.Analyse))
             {
                 //------------------------------------------------------------//
                 //                                                            //

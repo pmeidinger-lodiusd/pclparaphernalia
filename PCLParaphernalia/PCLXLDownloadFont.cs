@@ -442,7 +442,7 @@ namespace PCLParaphernalia
                             hddrDescLen = (buf[pos + 4] * 256 * 256 * 256) +
                                           (buf[pos + 5] * 256 * 256) +
                                           (buf[pos + 6] * 256) +
-                                          (buf[pos + 7]);
+                                          buf[pos + 7];
 
                             pos += 5;
                        

@@ -297,7 +297,7 @@ namespace PCLParaphernalia
                     _hddrRem = 0;
                 }
 
-                if ((binDataLen) != 0)
+                if (binDataLen != 0)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -546,7 +546,7 @@ namespace PCLParaphernalia
                     "Kind1 value:",
                     ix1.ToString () + " (0x" + ix1.ToString ("x2") + ")");
 
-                if ((indxSymSet) == -1)
+                if (indxSymSet == -1)
                 {
                     PrnParseCommon.addTextRow (
                         PrnParseRowTypes.eType.PCLXLFontHddr,

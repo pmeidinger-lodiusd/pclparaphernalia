@@ -368,8 +368,8 @@ namespace PCLParaphernalia
 
             boxX = 0;
             boxY = 0;
-            boxWidth  = (short)(_logPageWidth);
-            boxHeight = (short)(_logPageHeight);
+            boxWidth  = (short)_logPageWidth;
+            boxHeight = (short)_logPageHeight;
 
             PCLWriter.pictureFrame (prnWriter,
                                     boxX,

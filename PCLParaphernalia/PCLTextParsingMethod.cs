@@ -77,7 +77,7 @@ namespace PCLParaphernalia
             if (_value < 0)
                 return _desc;
             else
-                return (_value.ToString () + ": " + _desc);
+                return _value.ToString () + ": " + _desc;
         }
 
         //--------------------------------------------------------------------//
@@ -122,7 +122,7 @@ namespace PCLParaphernalia
             if (_rangeDataDouble == null)
                 return 0;
             else
-                return (_rangeDataDouble.Length / 2);
+                return _rangeDataDouble.Length / 2;
         }
 
         //--------------------------------------------------------------------//
@@ -153,7 +153,7 @@ namespace PCLParaphernalia
             if (_rangeDataSingle == null)
                 return 0;
             else
-                return (_rangeDataSingle.Length / 2);
+                return _rangeDataSingle.Length / 2;
         }
 
         //--------------------------------------------------------------------//

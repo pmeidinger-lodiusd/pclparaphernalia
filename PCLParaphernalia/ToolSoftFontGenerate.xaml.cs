@@ -1420,15 +1420,15 @@ namespace PCLParaphernalia
                 {
                     string value = key.GetValue (valueName).ToString ();
 
-                    if ((value.EndsWith (".ttf")) || (value.EndsWith (".TTF"))
+                    if (value.EndsWith (".ttf") || value.EndsWith (".TTF")
                                                   ||
-                        (value.EndsWith (".otf")) || (value.EndsWith (".OTF")))
+                        value.EndsWith (".otf") || value.EndsWith (".OTF"))
                     {
                         _ctTTFFonts++;
 
                         fontList.Add (valueName, value);
                     }
-                    else if ((value.EndsWith (".ttc")) || (value.EndsWith (".TTC")))
+                    else if (value.EndsWith (".ttc") || value.EndsWith (".TTC"))
                     {
                         _ctTTFFonts++;
 
