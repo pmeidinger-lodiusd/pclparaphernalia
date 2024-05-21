@@ -7,9 +7,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides details of PCL XL Data Type tags.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class provides details of PCL XL Data Type tags.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     static class PCLXLDataTypes

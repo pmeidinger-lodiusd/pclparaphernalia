@@ -5,9 +5,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides PJL support for the PrinterInfo tool.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class provides PJL support for the PrinterInfo tool.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     static class ToolStatusReadbackPJL

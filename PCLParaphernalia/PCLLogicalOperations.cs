@@ -4,9 +4,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class defines a set of PCL Logical Operation objects.
-    ///
-    /// © Chris Hutchinson 2014
+    /// <para>Class defines a set of PCL Logical Operation objects.</para>
+    /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
     static class PCLLogicalOperations

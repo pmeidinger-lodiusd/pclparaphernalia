@@ -7,9 +7,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class defines functions to parse PCLXL sequences.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class defines functions to parse PCLXL sequences.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     class PrnParsePCLXL

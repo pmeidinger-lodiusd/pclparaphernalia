@@ -6,9 +6,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class handles PCL XL downloadable soft fonts.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class handles PCL XL downloadable soft fonts.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     static class PCLXLDownloadFont

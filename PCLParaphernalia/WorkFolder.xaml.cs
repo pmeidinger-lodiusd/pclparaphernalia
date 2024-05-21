@@ -7,11 +7,9 @@ using System.Windows.Forms;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// Interaction logic for WorkFolder.xaml
-    ///
-    /// Class handles the working folder definition form.
-    ///
-    /// © Chris Hutchinson 2014
+    /// <para>Interaction logic for WorkFolder.xaml</para>
+    /// <para>Class handles the working folder definition form.</para>
+    /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming",

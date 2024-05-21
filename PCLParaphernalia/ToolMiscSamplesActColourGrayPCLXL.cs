@@ -5,10 +5,11 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
+    /// <para>
     /// Class provides support for the PCLXL Gray element of the
     /// Colour action of the MiscSamples tool.
-    ///
-    /// © Chris Hutchinson 2014
+    /// </para>
+    /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
     static class ToolMiscSamplesActColourGrayPCLXL

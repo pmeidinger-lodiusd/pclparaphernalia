@@ -8,11 +8,9 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// Interaction logic for ToolFontSample.xaml
-    ///
-    /// Class handles the FontSample tool form.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Interaction logic for ToolFontSample.xaml</para>
+    /// <para>Class handles the FontSample tool form.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming",

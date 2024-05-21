@@ -5,10 +5,11 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
+    /// <para>
     /// Class manages persistent storage of options for the SymbolSetGenerate
     /// tool.
-    ///
-    /// © Chris Hutchinson 2013
+    /// </para>
+    /// <para>© Chris Hutchinson 2013</para>
     ///
     /// </summary>
     static class ToolSymbolSetGenPersist

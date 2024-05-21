@@ -7,9 +7,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class defines a set of PJL 'status readback' Command objects.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class defines a set of PJL 'status readback' Command objects.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     static class PJLCommands

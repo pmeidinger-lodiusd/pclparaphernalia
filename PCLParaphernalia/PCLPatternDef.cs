@@ -4,9 +4,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class handles a PCL Pattern Def object.
-    ///
-    /// © Chris Hutchinson 2016
+    /// <para>Class handles a PCL Pattern Def object.</para>
+    /// <para>© Chris Hutchinson 2016</para>
     ///
     /// </summary>
     class PCLPatternDef

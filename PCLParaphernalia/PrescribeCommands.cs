@@ -7,9 +7,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class defines a set of Kyocera Prescibe command objects.
-    ///
-    /// © Chris Hutchinson 2017
+    /// <para>Class defines a set of Kyocera Prescibe command objects.</para>
+    /// <para>© Chris Hutchinson 2017</para>
     ///
     /// </summary>
     static class PrescribeCommands

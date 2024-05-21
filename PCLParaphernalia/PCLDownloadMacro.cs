@@ -6,9 +6,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class handles PCL (download) macros.
-    ///
-    /// © Chris Hutchinson 2012
+    /// <para>Class handles PCL (download) macros.</para>
+    /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
     static class PCLDownloadMacro

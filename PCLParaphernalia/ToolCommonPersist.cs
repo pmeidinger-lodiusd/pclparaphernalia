@@ -5,9 +5,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class manages persistent storage of common Tool options.
-    ///
-    /// © Chris Hutchinson 2011
+    /// <para>Class manages persistent storage of common Tool options.</para>
+    /// <para>© Chris Hutchinson 2011</para>
     ///
     /// </summary>
     static class ToolCommonPersist

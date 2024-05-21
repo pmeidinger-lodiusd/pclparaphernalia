@@ -4,9 +4,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides definitions for simple colour palettes.
-    ///
-    /// © Chris Hutchinson 2014
+    /// <para>Class provides definitions for simple colour palettes.</para>
+    /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
     public static class PCLPalettes

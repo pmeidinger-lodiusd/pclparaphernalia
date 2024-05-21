@@ -4,9 +4,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class defines functions to get & set PCLXL element metrics.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class defines functions to get & set PCLXL element metrics.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     class PrnParsePCLXLElementMetrics

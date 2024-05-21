@@ -6,10 +6,11 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
+    /// <para>
     /// Class defines functions to parse the binary data associated with various
     /// PCL escape sequences.
-    ///
-    /// © Chris Hutchinson 2013
+    /// </para>
+    /// <para>© Chris Hutchinson 2013</para>
     ///
     /// </summary>
     class PrnParsePCLBinary

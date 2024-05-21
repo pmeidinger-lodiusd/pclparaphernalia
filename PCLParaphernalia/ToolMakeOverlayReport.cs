@@ -6,9 +6,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides the Make Overlay 'save report' function.
-    ///
-    /// © Chris Hutchinson 2012
+    /// <para>Class provides the Make Overlay 'save report' function.</para>
+    /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
     static class ToolMakeOverlayReport

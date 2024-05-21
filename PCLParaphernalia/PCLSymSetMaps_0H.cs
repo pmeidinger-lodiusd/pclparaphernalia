@@ -7,9 +7,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class defines a set of PCL Symbol Set map objects.
-    ///
-    /// © Chris Hutchinson 2016
+    /// <para>Class defines a set of PCL Symbol Set map objects.</para>
+    /// <para>© Chris Hutchinson 2016</para>
     ///
     /// </summary>
     static partial class PCLSymSetMaps

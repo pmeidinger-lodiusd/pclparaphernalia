@@ -5,9 +5,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class manages persistent storage of options for the FontSample tool.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class manages persistent storage of options for the FontSample tool.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     static class ToolFontSamplePersist

@@ -5,9 +5,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class manages persistent storage of options for the FormSample tool.
-    ///
-    /// © Chris Hutchinson 2012
+    /// <para>Class manages persistent storage of options for the FormSample tool.</para>
+    /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
     static class ToolFormSamplePersist

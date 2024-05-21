@@ -6,9 +6,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class handles PCL downloadable soft font headers.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class handles PCL downloadable soft font headers.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     class PrnParseFontHddrPCL

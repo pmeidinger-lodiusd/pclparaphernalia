@@ -7,9 +7,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides PJL File System support for the Status Readback tool.
-    ///
-    /// © Chris Hutchinson 2015
+    /// <para>Class provides PJL File System support for the Status Readback tool.</para>
+    /// <para>© Chris Hutchinson 2015</para>
     ///
     /// </summary>
     static class ToolStatusReadbackPJLFS

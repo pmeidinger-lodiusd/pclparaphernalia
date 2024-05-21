@@ -4,9 +4,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class handles a PCLXL Palette object.
-    ///
-    /// © Chris Hutchinson 2014
+    /// <para>Class handles a PCLXL Palette object.</para>
+    /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
     class PCLXLPalette

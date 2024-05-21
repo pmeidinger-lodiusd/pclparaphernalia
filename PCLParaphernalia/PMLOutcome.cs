@@ -4,9 +4,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class handles a PML 'outcome type' object.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class handles a PML 'outcome type' object.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]

@@ -5,10 +5,11 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
+    /// <para>
     /// Class provides PCL XL support for the Text and Background element
     /// of the Text Modification action of the MiscSamples tool.
-    ///
-    /// © Chris Hutchinson 2014
+    /// </para>
+    /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
     static class ToolMiscSamplesActTxtModPatPCLXL

@@ -8,9 +8,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides the core Target functions.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class provides the core Target functions.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     static class TargetCore

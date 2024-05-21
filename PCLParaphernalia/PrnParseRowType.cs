@@ -4,9 +4,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class handles a PrnParse 'row type' object.
-    ///
-    /// © Chris Hutchinson 2017
+    /// <para>Class handles a PrnParse 'row type' object.</para>
+    /// <para>© Chris Hutchinson 2017</para>
     ///
     /// </summary>
     class PrnParseRowType

@@ -6,11 +6,9 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// Interaction logic for TargetFile.xaml
-    ///
-    /// Class handles the Target (file) definition form.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Interaction logic for TargetFile.xaml</para>
+    /// <para>Class handles the Target (file) definition form.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming",

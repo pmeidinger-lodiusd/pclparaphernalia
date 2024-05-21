@@ -11,11 +11,9 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// Interaction logic for ToolSymbolSetGenerate.xaml
-    ///
-    /// Class handles the SymbolSetGenerate tool form.
-    ///
-    /// © Chris Hutchinson 2013
+    /// <para>Interaction logic for ToolSymbolSetGenerate.xaml</para>
+    /// <para>Class handles the SymbolSetGenerate tool form.</para>
+    /// <para>© Chris Hutchinson 2013</para>
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming",

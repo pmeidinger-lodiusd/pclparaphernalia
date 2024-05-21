@@ -4,9 +4,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class defines an HP-GL/2 Command.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class defines an HP-GL/2 Command.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "properties renaming")]

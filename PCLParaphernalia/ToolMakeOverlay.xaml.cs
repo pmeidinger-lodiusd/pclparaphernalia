@@ -9,11 +9,9 @@ using System.Windows.Media;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// Interaction logic for ToolMakeOverlay.xaml
-    ///
-    /// Class handles the Make Overlay tool form.
-    ///
-    /// © Chris Hutchinson 2010-2017
+    /// <para>Interaction logic for ToolMakeOverlay.xaml</para>
+    /// <para>Class handles the Make Overlay tool form.</para>
+    /// <para>© Chris Hutchinson 2010-2017</para>
     ///
     /// </summary>
     [Obfuscation(Feature = "renaming",

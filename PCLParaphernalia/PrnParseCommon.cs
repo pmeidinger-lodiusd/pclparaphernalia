@@ -5,10 +5,11 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
+    /// <para>
     /// Class provides print-language-independent routines associated with
     /// 'parsing' of print file.
-    ///
-    /// © Chris Hutchinson 2010
+    /// </para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     static class PrnParseCommon

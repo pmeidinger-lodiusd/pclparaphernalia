@@ -7,9 +7,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides PCL handling for the Symbol Set Generate tool.
-    ///
-    /// © Chris Hutchinson 2013
+    /// <para>Class provides PCL handling for the Symbol Set Generate tool.</para>
+    /// <para>© Chris Hutchinson 2013</para>
     ///
     /// </summary>
     class ToolSymbolSetGenPCL

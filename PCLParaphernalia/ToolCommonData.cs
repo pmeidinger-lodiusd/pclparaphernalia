@@ -4,9 +4,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides common Tool data.
-    ///
-    /// © Chris Hutchinson 2014
+    /// <para>Class provides common Tool data.</para>
+    /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming",

@@ -6,10 +6,11 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
+    /// <para>
     /// Class provides routines associated with 'parsing' of
 	/// Kyocera Prescribe commands.
-    ///
-    /// © Chris Hutchinson 2017
+    /// </para>
+    /// <para>© Chris Hutchinson 2017</para>
     ///
     /// </summary>
     class PrnParsePrescribe

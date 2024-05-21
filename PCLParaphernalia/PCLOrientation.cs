@@ -4,9 +4,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class handles a PCL Orientation object.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class handles a PCL Orientation object.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     class PCLOrientation

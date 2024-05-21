@@ -7,9 +7,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides the Status Readback 'save report' function.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class provides the Status Readback 'save report' function.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     static class ToolStatusReadbackReport

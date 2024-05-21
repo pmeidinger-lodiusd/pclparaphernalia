@@ -4,9 +4,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class defines constants used by print file 'parse' mechanisms.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class defines constants used by print file 'parse' mechanisms.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "properties renaming")]

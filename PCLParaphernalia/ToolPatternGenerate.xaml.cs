@@ -10,11 +10,9 @@ using System.Windows.Controls.Primitives;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// Interaction logic for ToolPatternGenerate.xaml
-    ///
-    /// Class handles the pattern Generate tool form.
-    ///
-    /// © Chris Hutchinson 2017
+    /// <para>Interaction logic for ToolPatternGenerate.xaml</para>
+    /// <para>Class handles the pattern Generate tool form.</para>
+    /// <para>© Chris Hutchinson 2017</para>
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming",

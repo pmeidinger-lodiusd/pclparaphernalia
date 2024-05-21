@@ -8,11 +8,9 @@ using System.Windows;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// Interaction logic for MainForm.xaml
-    ///
-    /// This is the main form of the PCLParaphernalia application.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Interaction logic for MainForm.xaml</para>
+    /// <para>This is the main form of the PCLParaphernalia application.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     [Obfuscation(Feature = "renaming",

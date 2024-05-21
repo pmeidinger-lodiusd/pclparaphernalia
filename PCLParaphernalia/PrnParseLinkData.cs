@@ -4,9 +4,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class handles 'link' data for 'parsing' of print file.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class handles 'link' data for 'parsing' of print file.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     class PrnParseLinkData

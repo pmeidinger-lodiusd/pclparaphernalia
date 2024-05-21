@@ -7,10 +7,11 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
+    /// <para>
     /// Class defines a class which allows a registry key to be renamed (this
     /// function is not available within the .Net framework).
-    ///
-    /// © Chris Hutchinson 2014
+    /// </para>
+    /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
     static class Helper_RegKey

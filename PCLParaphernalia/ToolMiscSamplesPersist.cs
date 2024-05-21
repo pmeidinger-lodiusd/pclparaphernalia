@@ -5,9 +5,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class manages persistent storage of options for the MiscSamples tool.
-    ///
-    /// © Chris Hutchinson 2014
+    /// <para>Class manages persistent storage of options for the MiscSamples tool.</para>
+    /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
     static class ToolMiscSamplesPersist

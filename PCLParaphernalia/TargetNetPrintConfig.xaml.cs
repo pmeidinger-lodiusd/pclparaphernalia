@@ -5,11 +5,9 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// Interaction logic for TargetNetPrinter.xaml
-    ///
-    /// Class handles the Target (printer) definition form.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Interaction logic for TargetNetPrinter.xaml</para>
+    /// <para>Class handles the Target (printer) definition form.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming",

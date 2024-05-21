@@ -4,9 +4,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class handles Kyocera Prescribe command object.
-    ///
-    /// © Chris Hutchinson 2017
+    /// <para>Class handles Kyocera Prescribe command object.</para>
+    /// <para>© Chris Hutchinson 2017</para>
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "properties renaming")]

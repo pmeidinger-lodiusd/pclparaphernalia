@@ -7,9 +7,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides details of HP-GL/2 control code characters.
-    ///
-    /// © Chris Hutchinson 2013
+    /// <para>Class provides details of HP-GL/2 control code characters.</para>
+    /// <para>© Chris Hutchinson 2013</para>
     ///
     /// </summary>
     static class HPGL2ControlCodes

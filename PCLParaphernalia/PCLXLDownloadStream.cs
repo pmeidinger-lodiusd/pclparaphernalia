@@ -6,9 +6,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class handles PCL XL downloadable user stream.
-    ///
-    /// © Chris Hutchinson 2012
+    /// <para>Class handles PCL XL downloadable user stream.</para>
+    /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
     static class PCLXLDownloadStream

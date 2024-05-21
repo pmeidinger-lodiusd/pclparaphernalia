@@ -6,9 +6,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides details of PCL XL Attribute Definer tags.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class provides details of PCL XL Attribute Definer tags.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     static class PCLXLAttrDefiners

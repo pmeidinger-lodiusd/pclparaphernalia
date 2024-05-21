@@ -8,9 +8,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class defines a class which helps with focus quirks.
-    ///
-    /// © Chris Hutchinson 2013
+    /// <para>Class defines a class which helps with focus quirks.</para>
+    /// <para>© Chris Hutchinson 2013</para>
     ///
     /// </summary>
     public static class Helper_WPFFocusFix

@@ -5,9 +5,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class manages persistent storage of options for the StatusReadback tool.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class manages persistent storage of options for the StatusReadback tool.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     static class ToolStatusReadbackPersist

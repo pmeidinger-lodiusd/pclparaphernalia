@@ -6,20 +6,23 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
+    /// <para>
     /// Class defines the initial / current settings of PCL Character
     /// Complement/Requirement Collection bits, as used in (unbound) Font
     /// headers and Symbol Set definitions.
-    ///
+    /// </para>
+    /// <para>
     /// A font and a symbol set are compatible only if the result of ANDing the
     /// (64-bit) Character Complement field of the font definition with the
     /// (64-bit) Character Requirements field of the symbol set definition is
     /// 64 bits (8 bytes) of zero.
-    ///
+    /// </para>
+    /// <para>
     /// In the descriptions below:
     ///     bit 0   is the least significant bit of the eighth byte
     ///     bit 63  is the most  significant bit of the first  byte
-    ///
-    /// © Chris Hutchinson 2013
+    /// </para>
+    /// <para>© Chris Hutchinson 2013</para>
     ///
     /// </summary>
     class PCLCharCollItems

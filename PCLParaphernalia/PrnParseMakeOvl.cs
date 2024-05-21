@@ -8,9 +8,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides common routines associated with the Make Overlay tool.
-    ///
-    /// © Chris Hutchinson 2012
+    /// <para>Class provides common routines associated with the Make Overlay tool.</para>
+    /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
     static class PrnParseMakeOvl

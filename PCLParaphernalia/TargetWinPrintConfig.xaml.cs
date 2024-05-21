@@ -6,11 +6,9 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// Interaction logic for TargetWinPrintConfig.xaml
-    ///
-    /// Class handles the Target (printer) definition form.
-    ///
-    /// © Chris Hutchinson 2014
+    /// <para>Interaction logic for TargetWinPrintConfig.xaml</para>
+    /// <para>Class handles the Target (printer) definition form.</para>
+    /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming",

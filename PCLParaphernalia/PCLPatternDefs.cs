@@ -4,9 +4,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides definitions for standard PCL patterns.
-    ///
-    /// © Chris Hutchinson 2016
+    /// <para>Class provides definitions for standard PCL patterns.</para>
+    /// <para>© Chris Hutchinson 2016</para>
     ///
     /// </summary>
     public static class PCLPatternDefs

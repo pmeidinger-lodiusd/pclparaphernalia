@@ -7,9 +7,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class defines the sets of PCL control codes.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class defines the sets of PCL control codes.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     static class PCLControlCodes

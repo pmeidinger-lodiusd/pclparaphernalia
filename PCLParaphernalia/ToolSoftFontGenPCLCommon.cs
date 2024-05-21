@@ -8,10 +8,11 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
+    /// <para>
     /// Class provides common (PCL and PCL XL) handling for the Soft Font
     /// Generate tool.
-    ///
-    /// © Chris Hutchinson 2012
+    /// </para>
+    /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
     class ToolSoftFontGenPCLCommon

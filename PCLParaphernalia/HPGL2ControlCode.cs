@@ -4,9 +4,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class defines a HP-GL/2 control code character.
-    ///
-    /// © Chris Hutchinson 2013
+    /// <para>Class defines a HP-GL/2 control code character.</para>
+    /// <para>© Chris Hutchinson 2013</para>
     ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]

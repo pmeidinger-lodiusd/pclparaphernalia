@@ -8,9 +8,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class handles 'parsing' of print file.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class handles 'parsing' of print file.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "properties renaming")]

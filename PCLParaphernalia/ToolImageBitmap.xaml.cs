@@ -7,11 +7,9 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// Interaction logic for ToolImageBitmap.xaml
-    ///
-    /// Class handles the ImageBitmap tool form.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Interaction logic for ToolImageBitmap.xaml</para>
+    /// <para>Class handles the ImageBitmap tool form.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming",

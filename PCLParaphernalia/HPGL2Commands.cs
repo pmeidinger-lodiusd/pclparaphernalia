@@ -7,9 +7,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class defines the set of HP-GL/2 Commands.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class defines the set of HP-GL/2 Commands.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     static class HPGL2Commands

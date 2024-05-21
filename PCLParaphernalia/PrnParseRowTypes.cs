@@ -4,9 +4,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class defines a set of PCL 'status readback' Entity Type objects.
-    ///
-    /// © Chris Hutchinson 2017
+    /// <para>Class defines a set of PCL 'status readback' Entity Type objects.</para>
+    /// <para>© Chris Hutchinson 2017</para>
     ///
     /// </summary>
     static class PrnParseRowTypes

@@ -6,9 +6,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class handles a PCL Symbol Set map object.
-    ///
-    /// © Chris Hutchinson 2015
+    /// <para>Class handles a PCL Symbol Set map object.</para>
+    /// <para>© Chris Hutchinson 2015</para>
     ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]

@@ -4,9 +4,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class defines a PCL Control Code.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class defines a PCL Control Code.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]

@@ -7,11 +7,9 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// Interaction logic for ToolMiscSamples.xaml
-    ///
-    /// Class handles the MiscSamples: Patterns tab.
-    ///
-    /// © Chris Hutchinson 2015
+    /// <para>Interaction logic for ToolMiscSamples.xaml</para>
+    /// <para>Class handles the MiscSamples: Patterns tab.</para>
+    /// <para>© Chris Hutchinson 2015</para>
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming",

@@ -6,9 +6,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides common Tool functions.
-    ///
-    /// © Chris Hutchinson 2013
+    /// <para>Class provides common Tool functions.</para>
+    /// <para>© Chris Hutchinson 2013</para>
     ///
     /// </summary>
     public static class ToolCommonFunctions

@@ -6,9 +6,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides the Prn Analyse 'save report' function.
-    ///
-    /// © Chris Hutchinson 2010-2017
+    /// <para>Class provides the Prn Analyse 'save report' function.</para>
+    /// <para>© Chris Hutchinson 2010-2017</para>
     ///
     /// </summary>
     static class ToolPrnAnalyseReport

@@ -10,9 +10,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides the core Report functions.
-    ///
-    /// © Chris Hutchinson 2017
+    /// <para>Class provides the core Report functions.</para>
+    /// <para>© Chris Hutchinson 2017</para>
     ///
     /// </summary>
     static class ReportCore

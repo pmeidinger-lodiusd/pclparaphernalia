@@ -5,9 +5,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides primitive and macro operations for PCL XL print language.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class provides primitive and macro operations for PCL XL print language.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     static class PCLXLWriter

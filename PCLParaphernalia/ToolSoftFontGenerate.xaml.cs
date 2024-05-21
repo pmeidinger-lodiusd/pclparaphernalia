@@ -12,11 +12,9 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// Interaction logic for ToolSoftFontGenerate.xaml
-    ///
-    /// Class handles the SoftFontGenerate tool form.
-    ///
-    /// © Chris Hutchinson 2011
+    /// <para>Interaction logic for ToolSoftFontGenerate.xaml</para>
+    /// <para>Class handles the SoftFontGenerate tool form.</para>
+    /// <para>© Chris Hutchinson 2011</para>
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming",

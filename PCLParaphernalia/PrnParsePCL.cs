@@ -6,9 +6,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class defines functions to parse PCL escape sequences.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class defines functions to parse PCL escape sequences.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     class PrnParsePCL

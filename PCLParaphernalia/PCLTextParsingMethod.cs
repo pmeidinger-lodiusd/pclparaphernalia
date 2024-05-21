@@ -4,9 +4,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class handles a PCL Text Parsing Method object.
-    ///
-    /// © Chris Hutchinson 2015
+    /// <para>Class handles a PCL Text Parsing Method object.</para>
+    /// <para>© Chris Hutchinson 2015</para>
     ///
     /// </summary>
     class PCLTextParsingMethod

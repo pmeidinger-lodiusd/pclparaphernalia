@@ -4,9 +4,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class defines a Unicode block.
-    ///
-    /// © Chris Hutchinson 2017
+    /// <para>Class defines a Unicode block.</para>
+    /// <para>© Chris Hutchinson 2017</para>
     ///
     /// </summary>
     class UnicodeBlock

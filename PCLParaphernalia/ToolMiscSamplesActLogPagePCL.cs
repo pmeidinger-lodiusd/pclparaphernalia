@@ -5,10 +5,11 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
+    /// <para>
     /// Class provides PCL support for the Define Logical Page action
     /// of the MiscSamples tool.
-    ///
-    /// © Chris Hutchinson 2014
+    /// </para>
+    /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
     static class ToolMiscSamplesActLogPagePCL

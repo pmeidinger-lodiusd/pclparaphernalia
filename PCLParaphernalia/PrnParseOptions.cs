@@ -6,9 +6,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class manages options for the AnalysePRN tool.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class manages options for the AnalysePRN tool.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     public class PrnParseOptions

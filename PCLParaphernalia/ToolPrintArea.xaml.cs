@@ -7,11 +7,9 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// Interaction logic for ToolPrintArea.xaml
-    ///
-    /// Class handles the PrintArea tool form.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Interaction logic for ToolPrintArea.xaml</para>
+    /// <para>Class handles the PrintArea tool form.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming",

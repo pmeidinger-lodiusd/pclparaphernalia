@@ -5,9 +5,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides the Soft Font Generator 'save report' function.
-    ///
-    /// © Chris Hutchinson 2012
+    /// <para>Class provides the Soft Font Generator 'save report' function.</para>
+    /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
     static class ToolSoftFontGenReport

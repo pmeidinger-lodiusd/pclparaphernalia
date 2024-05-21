@@ -6,9 +6,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class handles segmented data elements of downloadable soft fonts.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class handles segmented data elements of downloadable soft fonts.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     class PrnParseFontSegs

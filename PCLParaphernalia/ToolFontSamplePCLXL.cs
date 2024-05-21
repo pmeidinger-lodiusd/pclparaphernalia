@@ -5,9 +5,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides PCL XL support for the FontSample tool.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class provides PCL XL support for the FontSample tool.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     static class ToolFontSamplePCLXL

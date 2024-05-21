@@ -8,9 +8,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides TTF handling for the Soft Font Generate tool.
-    ///
-    /// © Chris Hutchinson 2011
+    /// <para>Class provides TTF handling for the Soft Font Generate tool.</para>
+    /// <para>© Chris Hutchinson 2011</para>
     ///
     /// </summary>
     class ToolSoftFontGenTTF

@@ -6,9 +6,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class defines functions to parse HP-GL/2 commands.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class defines functions to parse HP-GL/2 commands.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     class PrnParseHPGL2

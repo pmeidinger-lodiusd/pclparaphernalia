@@ -6,9 +6,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides core support for the ImageBitmap tool.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class provides core support for the ImageBitmap tool.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     static class ToolImageBitmapCore

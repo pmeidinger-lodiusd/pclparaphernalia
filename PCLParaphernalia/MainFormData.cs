@@ -4,9 +4,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class manages temporary storage of common data for the main form.
-    ///
-    /// © Chris Hutchinson 2011
+    /// <para>Class manages temporary storage of common data for the main form.</para>
+    /// <para>© Chris Hutchinson 2011</para>
     ///
     /// </summary>
     static class MainFormData

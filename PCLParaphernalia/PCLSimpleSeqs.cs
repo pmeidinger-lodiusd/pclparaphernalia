@@ -7,9 +7,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class defines the sets of PCL escape sequences.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class defines the sets of PCL escape sequences.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     static class PCLSimpleSeqs

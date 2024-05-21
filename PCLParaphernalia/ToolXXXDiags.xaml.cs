@@ -11,11 +11,9 @@ using System.Windows.Controls;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// Interaction logic for ToolXXXDiags.xaml
-    ///
-    /// Class handles the temporary XXX Diags tool form.
-    ///
-    /// © Chris Hutchinson 2013
+    /// <para>Interaction logic for ToolXXXDiags.xaml</para>
+    /// <para>Class handles the temporary XXX Diags tool form.</para>
+    /// <para>© Chris Hutchinson 2013</para>
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming",

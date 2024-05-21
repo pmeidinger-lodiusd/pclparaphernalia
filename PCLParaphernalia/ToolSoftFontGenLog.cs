@@ -6,9 +6,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides log handling for the Soft Font Generate tool.
-    ///
-    /// © Chris Hutchinson 2011
+    /// <para>Class provides log handling for the Soft Font Generate tool.</para>
+    /// <para>© Chris Hutchinson 2011</para>
     ///
     /// </summary>
     static class ToolSoftFontGenLog

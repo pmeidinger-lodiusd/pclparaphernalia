@@ -6,9 +6,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class handles PCL (download) symbol sets.
-    ///
-    /// © Chris Hutchinson 2013
+    /// <para>Class handles PCL (download) symbol sets.</para>
+    /// <para>© Chris Hutchinson 2013</para>
     ///
     /// </summary>
     static class PCLDownloadSymSet

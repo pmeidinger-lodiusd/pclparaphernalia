@@ -5,9 +5,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides the PDLData 'save report' function.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class provides the PDLData 'save report' function.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     static class ToolPrintLangReport

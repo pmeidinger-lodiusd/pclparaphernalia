@@ -4,9 +4,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class defines a set of PCL Plex Mode objects.
-    ///
-    /// © Chris Hutchinson 2012
+    /// <para>Class defines a set of PCL Plex Mode objects.</para>
+    /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
     static class PCLPlexModes

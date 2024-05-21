@@ -6,10 +6,11 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
+    /// <para>
     /// Class defines a class which enables raw data to be sent to a
     /// Windows printer - from Microsoft support document.
-    ///
-    /// © Chris Hutchinson 2014
+    /// </para>
+    /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
     public class Helper_RawPrinter

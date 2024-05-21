@@ -9,9 +9,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides the network printer Target functions.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class provides the network printer Target functions.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     static class TargetNetPrint

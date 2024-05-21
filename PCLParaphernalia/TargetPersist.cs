@@ -5,9 +5,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class manages persistent storage of Target options.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class manages persistent storage of Target options.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     static class TargetPersist

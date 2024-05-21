@@ -8,9 +8,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class TEMPORARY test pad.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class TEMPORARY test pad.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     static class TEMP_scratchPad

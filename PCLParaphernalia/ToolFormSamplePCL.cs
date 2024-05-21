@@ -5,9 +5,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides PCL support for the FormSample tool.
-    ///
-    /// © Chris Hutchinson 2012
+    /// <para>Class provides PCL support for the FormSample tool.</para>
+    /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
     static class ToolFormSamplePCL

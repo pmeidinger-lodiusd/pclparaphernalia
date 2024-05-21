@@ -5,10 +5,11 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
+    /// <para>
     /// Class manages persistent storage of options for the Soft Font
     ///	Generate tool.
-    ///
-    /// © Chris Hutchinson 2012
+    /// </para>
+    /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
     static class ToolSoftFontGenPersist

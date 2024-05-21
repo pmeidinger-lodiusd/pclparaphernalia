@@ -4,9 +4,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class defines a PCL XL Data Type tag.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Class defines a PCL XL Data Type tag.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]

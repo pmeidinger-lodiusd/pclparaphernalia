@@ -10,11 +10,9 @@ using System.Windows.Media;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// Interaction logic for ToolPrnAnalyse.xaml
-    ///
-    /// Class handles the Prn Analyse tool form.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Interaction logic for ToolPrnAnalyse.xaml</para>
+    /// <para>Class handles the Prn Analyse tool form.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     [Obfuscation(Feature = "renaming",

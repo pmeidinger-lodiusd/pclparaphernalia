@@ -4,9 +4,8 @@ namespace PCLParaphernalia
 {
     /// <summary>
     ///
-    /// Class provides the Symbol Set Generator 'save report' function.
-    ///
-    /// © Chris Hutchinson 2013
+    /// <para>Class provides the Symbol Set Generator 'save report' function.</para>
+    /// <para>© Chris Hutchinson 2013</para>
     ///
     /// </summary>
     static class ToolSymbolSetGenReport

@@ -7,11 +7,9 @@ using System.Windows.Media;
 namespace PCLParaphernalia
 {
     /// <summary>
-    /// Interaction logic for ToolPrintLang.xaml
-    ///
-    /// Class handles the Print Languages tool form.
-    ///
-    /// © Chris Hutchinson 2010
+    /// <para>Interaction logic for ToolPrintLang.xaml</para>
+    /// <para>Class handles the Print Languages tool form.</para>
+    /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming",
