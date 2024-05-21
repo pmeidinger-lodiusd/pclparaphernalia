@@ -403,7 +403,7 @@ namespace PCLParaphernalia
                 else if (buf[pos] == (byte)PCLXLOperators.Tag.BeginFontHeader)
                 {
                     beginFound = true;
-                    pos += 1;
+                    pos++;
                 }
                 else
                 {

@@ -634,7 +634,7 @@ namespace PCLParaphernalia
                             //                                                    //
                             //----------------------------------------------------//
 
-                            cmdLen += 1;    // account for <LF> byte //
+                            cmdLen++;    // account for <LF> byte //
 
                             binSize = readResponseUploadSize(replyBlock, cmdLen);
 
@@ -651,7 +651,7 @@ namespace PCLParaphernalia
                             if (replyComplete)
                             {
                                 // terminating <FF> found; ignore this in count
-                                binLen -= 1;
+                                binLen--;
                             }
 
                             binRem = binSize;
@@ -719,7 +719,7 @@ namespace PCLParaphernalia
                             if (replyComplete)
                             {
                                 // terminating <FF> found; ignore this in count
-                                binLen -= 1;
+                                binLen--;
                             }
 
                             if (binRem > binLen)

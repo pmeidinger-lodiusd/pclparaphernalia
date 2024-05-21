@@ -110,7 +110,7 @@ namespace PCLParaphernalia
                 else if (buf[pos] == (byte)PCLXLOperators.Tag.BeginStream)
                 {
                     beginFound = true;
-                    pos += 1;
+                    pos++;
                 }
                 else
                 {

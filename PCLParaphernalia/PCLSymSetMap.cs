@@ -345,7 +345,7 @@ namespace PCLParaphernalia
                                   (RangeData[i][0] >> 4) + 1;
 
                         if (i < rangeLastIndx)
-                            rowTot += 1;    // for inter-range gap //
+                            rowTot++;    // for inter-range gap //
                     }
 
                     //--------------------------------------------------------//
@@ -493,7 +493,7 @@ namespace PCLParaphernalia
                                   (RangeData[i][0] >> 4) + 1;
 
                         if (i < rangeLastIndx)
-                            rowTot += 1;    // for inter-range gap //
+                            rowTot++;    // for inter-range gap //
                     }
 
                     //--------------------------------------------------------//
@@ -657,7 +657,7 @@ namespace PCLParaphernalia
                                   (RangeData[i][0] >> 4) + 1;
 
                         if (i < rangeLastIndx)
-                            rowTot += 1;    // for inter-range gap //
+                            rowTot++;    // for inter-range gap //
                     }
 
                     //--------------------------------------------------------//
@@ -806,7 +806,7 @@ namespace PCLParaphernalia
                                   (RangeData[i][0] >> 4) + 1;
 
                         if (i < rangeLastIndx)
-                            rowTot += 1;    // for inter-range gap //
+                            rowTot++;    // for inter-range gap //
                     }
 
                     //--------------------------------------------------------//
@@ -967,7 +967,7 @@ namespace PCLParaphernalia
                                   (RangeData[i][0] >> 4) + 1;
 
                         if (i < rangeLastIndx)
-                            rowTot += 1;    // for inter-range gap //
+                            rowTot++;    // for inter-range gap //
                     }
 
                     //--------------------------------------------------------//
@@ -1149,7 +1149,7 @@ namespace PCLParaphernalia
                                   (RangeData[i][0] >> 4) + 1;
 
                         if (i < rangeLastIndx)
-                            rowTot += 1;    // for inter-range gap //
+                            rowTot++;    // for inter-range gap //
                     }
 
                     //--------------------------------------------------------//

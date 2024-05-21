@@ -982,7 +982,7 @@ namespace PCLParaphernalia
                         item = thisByte;
                     }
 
-                    itemLen -= 1;
+                    itemLen--;
 
                     if (itemLen == 0)
                     {

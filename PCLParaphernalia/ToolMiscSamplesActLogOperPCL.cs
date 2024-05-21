@@ -1739,12 +1739,12 @@ namespace PCLParaphernalia
                                     if ((ipByte & 0x80) != 0)
                                     {
                                         if ((indxClr1 & 0x01) != 0)
-                                            opByte += 1;
+                                            opByte++;
                                     }
                                     else
                                     {
                                         if ((indxClr2 & 0x01) != 0)
-                                            opByte += 1;
+                                            opByte++;
                                     }
                                 }
 
