@@ -10,7 +10,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2010
     /// 
     /// </summary>
-
     static class ToolFontSamplePersist
     {
         //--------------------------------------------------------------------//
@@ -1340,7 +1339,6 @@ namespace PCLParaphernalia
                                                ushort symSetCustom,
                                                string symSetUserFile)
         {
-
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 

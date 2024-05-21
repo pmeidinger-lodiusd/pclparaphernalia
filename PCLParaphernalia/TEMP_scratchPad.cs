@@ -13,7 +13,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2010
     /// 
     /// </summary>
-
     static class TEMP_scratchPad
     {
         private static void bits_01()

@@ -12,7 +12,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2013
     /// 
     /// </summary>
-
     class PrnParsePCLBinary
     {
         //--------------------------------------------------------------------//
@@ -3484,7 +3483,6 @@ namespace PCLParaphernalia
                                       true,
                                       0x00,
                                       0x00);
-
             }
             else
             {
@@ -6316,7 +6314,6 @@ namespace PCLParaphernalia
                                           true,
                                           0x00,
                                           0x00);
-
                 }
                 else
                 {
@@ -6738,7 +6735,6 @@ namespace PCLParaphernalia
                         "Y resolution",
                         "",
                         codeDesc);
-
                 }
 
                 //------------------------------------------------------------//

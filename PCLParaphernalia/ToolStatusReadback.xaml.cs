@@ -276,7 +276,6 @@ namespace PCLParaphernalia
                                     "Choose a network printer Target instead.";
                 }
             }
-
             catch (SocketException sockExc)
             {
                 MessageBox.Show(sockExc.ToString(),
@@ -284,7 +283,6 @@ namespace PCLParaphernalia
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
             }
-
             catch (Exception exc)
             {
                 MessageBox.Show(exc.ToString(),
@@ -840,7 +838,6 @@ namespace PCLParaphernalia
                         if (PJLCategories.getType (_indxPJLCategory) ==
                             PJLCategories.eCategoryType.Custom)
                             txtPJLCustomCat.Visibility = Visibility.Visible;
-
                     }
                     else if (_reqTypePJL == PJLCommands.eRequestType.Variable)
                     {
@@ -1567,6 +1564,5 @@ namespace PCLParaphernalia
 
             return OK;
         }
-
     }
 }

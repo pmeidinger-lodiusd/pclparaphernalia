@@ -22,7 +22,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2013
     /// 
     /// </summary>
-
     class PCLCharCollItems
     {
         //--------------------------------------------------------------------//

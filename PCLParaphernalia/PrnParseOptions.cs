@@ -11,7 +11,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2010
     /// 
     /// </summary>
-
     public class PrnParseOptions
     {
         //--------------------------------------------------------------------//
@@ -880,7 +879,6 @@ namespace PCLParaphernalia
                 i1 = (int) PrnParseConstants.eOptOffsetFormats.Decimal;
 
             _indxGenOffsetFormat = (PrnParseConstants.eOptOffsetFormats) i1;
-
         }
 
         //--------------------------------------------------------------------//

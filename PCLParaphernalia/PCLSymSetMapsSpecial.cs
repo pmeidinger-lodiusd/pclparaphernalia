@@ -12,10 +12,8 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2015
     /// 
     /// </summary>
-
     static partial class PCLSymSetMaps
     {
-
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // u n i c o d e M a p N u l l                                        //

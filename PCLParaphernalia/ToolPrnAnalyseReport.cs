@@ -11,7 +11,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2010-2017
     /// 
     /// </summary>
-
     static class ToolPrnAnalyseReport
     {
         //--------------------------------------------------------------------//

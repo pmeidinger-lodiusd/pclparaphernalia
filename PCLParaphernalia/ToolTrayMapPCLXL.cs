@@ -10,7 +10,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2010
     /// 
     /// </summary>
-
     static class ToolTrayMapPCLXL
     {
         //--------------------------------------------------------------------//
@@ -936,7 +935,6 @@ namespace PCLParaphernalia
 
             if (! simplex)
             {
-
                 indStd = 0;
 
                 PCLXLWriter.pageBegin(prnWriter,
@@ -971,7 +969,6 @@ namespace PCLParaphernalia
 
                     generateOverlayRear (prnWriter, false,
                                          "", scaleFactor);
-
                 }
 
                 //----------------------------------------------------------------//

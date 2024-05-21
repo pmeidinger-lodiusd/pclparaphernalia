@@ -9,7 +9,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2016
     /// 
     /// </summary>
-
     class PCLPatternDef
     {
         //--------------------------------------------------------------------//

@@ -9,7 +9,6 @@ namespace PCLParaphernalia
     /// </summary>
     public partial class App : Application
     {
-
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // A p p _ S t a r t u p                                              //

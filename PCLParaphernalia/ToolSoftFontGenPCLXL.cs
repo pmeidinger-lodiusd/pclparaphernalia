@@ -13,7 +13,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2012
     /// 
     /// </summary>
-
     class ToolSoftFontGenPCLXL
     {
         //--------------------------------------------------------------------//
@@ -223,7 +222,6 @@ namespace PCLParaphernalia
 
                     _ttfHandler.fontFileClose ();
                 }
-
                 catch (Exception exc)
                 {
                     flagOK = false;
@@ -591,7 +589,6 @@ namespace PCLParaphernalia
                 } while ((glyphCompFlags &
                             ToolSoftFontGenTTF.mask_glyf_compFlag_MORE_COMPONENTS) != 0);
             }
-
         }
 
         //--------------------------------------------------------------------//

@@ -9,7 +9,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2010
     /// 
     /// </summary>
-
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
     [System.Reflection.Obfuscation(
         Feature = "renaming",
@@ -231,7 +230,6 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-
                     if (_paperSizeIsMetric)
                     {
                         size = (Math.Round((_sizeLongEdge *
@@ -274,7 +272,6 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-
                     if (_paperSizeIsMetric)
                     {
                         size = (Math.Round((_sizeShortEdge *
@@ -638,7 +635,6 @@ namespace PCLParaphernalia
                     name = _paperSizeNamePCLXL.ToString();
 
                 return id + " / " + name;
-
             }
         }
 

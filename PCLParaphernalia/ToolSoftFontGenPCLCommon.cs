@@ -14,7 +14,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2012
     /// 
     /// </summary>
-
     class ToolSoftFontGenPCLCommon
     {
         //--------------------------------------------------------------------//
@@ -1432,7 +1431,6 @@ namespace PCLParaphernalia
                                  "Soft font header invalid",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
-
             }
             else
             {
@@ -1486,7 +1484,6 @@ namespace PCLParaphernalia
                 }
 
                 if (flagOK)
-
                     flagOK = writeHddrSegDataPA (pdlIsPCLXL, fmt16,
                                                  panoseData,
                                                  ref sumMod256);

@@ -9,7 +9,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2015
     /// 
     /// </summary>
-
     static class PCLTextParsingMethods
     {
         //--------------------------------------------------------------------//

@@ -198,7 +198,6 @@ namespace PCLParaphernalia
             prtdata_01 ();
 
             prtdata_02 ();
-         
         }
         /*
         private void rawPrinterTest_00 ()

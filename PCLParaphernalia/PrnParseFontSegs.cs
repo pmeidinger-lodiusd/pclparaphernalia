@@ -11,7 +11,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2010
     /// 
     /// </summary>
-
     class PrnParseFontSegs
     {
         //--------------------------------------------------------------------//
@@ -2053,7 +2052,6 @@ namespace PCLParaphernalia
 
                 if (numRegionsOK)
                 {
-
                     //--------------------------------------------------------//
                     //                                                        //
                     // bytes x+6- ..     Region N definitions                 //
@@ -3440,7 +3438,6 @@ namespace PCLParaphernalia
                     numRangesOK = false;
                     _validSegs = false;
                 }
-
             }
 
             if (bufRem < minSegLen)
@@ -4275,7 +4272,6 @@ namespace PCLParaphernalia
                         reportError (
                             "Segment remainder " + _segRem + " non-zero",
                             "", "");
-
                     }
                 }
             }

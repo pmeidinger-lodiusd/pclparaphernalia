@@ -12,7 +12,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2012
     /// 
     /// </summary>
-
     class ToolSoftFontGenPCL
     {
         //--------------------------------------------------------------------//
@@ -201,7 +200,6 @@ namespace PCLParaphernalia
 
                     _ttfHandler.fontFileClose ();
                 }
-
                 catch (Exception exc)
                 {
                     flagOK = false;
@@ -781,7 +779,6 @@ namespace PCLParaphernalia
             }
             else
             {
-
                 PCLWriter.fontDownloadHddr (_binWriter, (uint)hddrLen);
 
                 //------------------------------------------------------------//

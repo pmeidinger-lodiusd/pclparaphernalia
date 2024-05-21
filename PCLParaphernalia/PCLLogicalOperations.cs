@@ -9,7 +9,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2014
     /// 
     /// </summary>
-
     static class PCLLogicalOperations
     {
         //--------------------------------------------------------------------//

@@ -12,7 +12,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2014
     /// 
     /// </summary>
-
     public class Helper_RawPrinter
     {
         //--------------------------------------------------------------------//

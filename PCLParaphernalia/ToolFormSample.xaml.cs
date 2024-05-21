@@ -287,7 +287,6 @@ namespace PCLParaphernalia
                     }
                 }
             }
-
             catch (SocketException sockExc)
             {
                 MessageBox.Show (sockExc.ToString (),
@@ -295,7 +294,6 @@ namespace PCLParaphernalia
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
             }
-
             catch (Exception exc)
             {
                 MessageBox.Show (exc.ToString (),

@@ -11,7 +11,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2010
     /// 
     /// </summary>
-
     class PrnParseFontHddrPCL
     {
         //--------------------------------------------------------------------//
@@ -290,7 +289,6 @@ namespace PCLParaphernalia
                 {
                     processGlobalData(ref bufRem,
                                       ref bufOffset);
-
                 }
                 else if ((_hddrFormat == ePCLFontFormat.TrueType)
                                         ||

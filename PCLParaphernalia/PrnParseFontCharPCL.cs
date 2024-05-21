@@ -10,7 +10,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2010
     /// 
     /// </summary>
-
     class PrnParseFontCharPCL
     {
         //--------------------------------------------------------------------//
@@ -393,7 +392,6 @@ namespace PCLParaphernalia
 
                 processChecksum(ref bufRem,
                                 ref bufOffset);
-
             }
 
             if (_nextStage == eStage.EndOK)

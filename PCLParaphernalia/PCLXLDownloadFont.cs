@@ -11,7 +11,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2010
     /// 
     /// </summary>
-
     static class PCLXLDownloadFont
     {
         //--------------------------------------------------------------------//
@@ -147,7 +146,6 @@ namespace PCLParaphernalia
                                            FileAccess.Read,
                                            FileShare.None);
                 }
-
                 catch (IOException e)
                 {
                     MessageBox.Show ("IO Exception:\r\n" +

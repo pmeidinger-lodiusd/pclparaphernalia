@@ -13,7 +13,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2013
     /// 
     /// </summary>
-
     public static class Helper_WPFFocusFix
     {
         //--------------------------------------------------------------------//
@@ -67,7 +66,6 @@ namespace PCLParaphernalia
                         elem.Focus ();
                         Keyboard.Focus (elem);
                     });
-
             }, element );
         }
     }

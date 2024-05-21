@@ -9,7 +9,6 @@ namespace PCLParaphernalia
     /// <summary>
     /// Interaction logic for ToolPrnAnalyseOptDlg.xaml
     /// </summary>
-
     public partial class ToolPrnAnalyseOptDlg : Window
     {
         //--------------------------------------------------------------------//
@@ -1976,7 +1975,6 @@ namespace PCLParaphernalia
                         rbCurFXLBindLS.IsChecked = true;
                     else
                         rbCurFXLBindMS.IsChecked = true;
-
                 }
 
                 //------------------------------------------------------------//
@@ -2695,7 +2693,6 @@ namespace PCLParaphernalia
 
             if (!_inhibitChecks)
             {
-
                 if (_crntTab == tabGeneral)
                 {
                     OK = validateGeneral ();
@@ -2847,7 +2844,6 @@ namespace PCLParaphernalia
 
         private bool validateCurFOffsetEnd()
         {
-
             bool OK = true;
 
             string crntText = txtCurFOffsetEnd.Text;
@@ -2897,7 +2893,6 @@ namespace PCLParaphernalia
 
         private bool validateCurFOffsetStart()
         {
-
             bool OK = true;
 
             string crntText = txtCurFOffsetStart.Text;

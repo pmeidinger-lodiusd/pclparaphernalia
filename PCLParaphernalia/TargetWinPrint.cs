@@ -13,7 +13,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2014-2018
     /// 
     /// </summary>
-
     static class TargetWinPrint
     {
         //--------------------------------------------------------------------//

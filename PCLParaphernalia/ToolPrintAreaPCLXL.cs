@@ -10,7 +10,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2010
     /// 
     /// </summary>
-
     static class ToolPrintAreaPCLXL
     {
         //--------------------------------------------------------------------//
@@ -339,7 +338,6 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < rulerCellsX; i++)
             {
-
                 PCLXLWriter.addAttrSint16XY(ref buffer,
                                       ref indBuf,
                                       PCLXLAttributes.eTag.Point,

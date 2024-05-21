@@ -9,7 +9,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2013
     /// 
     /// </summary>
-
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
     [System.Reflection.Obfuscation(
         Feature = "renaming",

@@ -10,7 +10,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2010
     /// 
     /// </summary>
-
     static class ToolPrintLangReport
     {
         //--------------------------------------------------------------------//
@@ -2241,7 +2240,6 @@ namespace PCLParaphernalia
             {
                 ReportCore.hddrTitle (writer, rptFileFmt, false,
                                       "Paper size list:");
-
             }
             else if (infoType == ToolCommonData.eToolSubIds.PrescribeCmds)
             {

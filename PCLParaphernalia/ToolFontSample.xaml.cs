@@ -1175,7 +1175,6 @@ namespace PCLParaphernalia
 
                     TargetCore.requestStreamWrite (false);
                 }
-
                 catch (SocketException sockExc)
                 {
                     MessageBox.Show (sockExc.ToString (),
@@ -1183,7 +1182,6 @@ namespace PCLParaphernalia
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
                 }
-
                 catch (Exception exc)
                 {
                     MessageBox.Show (exc.ToString (),
@@ -3727,7 +3725,6 @@ namespace PCLParaphernalia
                 {
                     _fontDesc = "custom";
                 }
-
             }
 
             txtFontDesc.Text = _fontDesc;
@@ -5135,7 +5132,6 @@ namespace PCLParaphernalia
 
             if (indxSymSet != -1)
             {
-
                 indxSymSetEntry = _subsetSymSets[indxSymSet];
 
                 _symSetGroup = PCLSymbolSets.getGroup (indxSymSetEntry);

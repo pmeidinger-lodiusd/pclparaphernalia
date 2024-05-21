@@ -1067,7 +1067,6 @@ namespace PCLParaphernalia
                 {
                     _subStream = File.Create (_subFilename);
                 }
-
                 catch (IOException e)
                 {
                     PrnParseCommon.addTextRow (
@@ -1253,7 +1252,6 @@ namespace PCLParaphernalia
                 {
                     File.Delete (_subFilename);
                 }
-
                 catch (IOException e)
                 {
                     MessageBox.Show ("IO Exception:\r\n" +
@@ -1455,7 +1453,6 @@ namespace PCLParaphernalia
             }
             else
             {
-
                 _linkData.FileSize = _fileSize;
 
                 analyseAction(PCLXLOperators.eEmbedDataType.None);
@@ -1578,7 +1575,6 @@ namespace PCLParaphernalia
             {
                 _opStream = File.Create (tmpFilename);
             }
-
             catch (IOException e)
             {
                     PrnParseCommon.addTextRow (
@@ -1654,7 +1650,6 @@ namespace PCLParaphernalia
             {
                 _ipStream.Close ();
             }
-
             catch (IOException e)
             {
                 MessageBox.Show ("IO Exception:\r\n" +
@@ -1729,7 +1724,6 @@ namespace PCLParaphernalia
                                           FileAccess.Read,
                                           FileShare.None);
                 }
-
                 catch (IOException e)
                 {
                     MessageBox.Show ("IO Exception:\r\n" +

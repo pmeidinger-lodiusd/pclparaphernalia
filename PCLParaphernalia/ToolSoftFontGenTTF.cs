@@ -13,7 +13,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2011
     /// 
     /// </summary>
-
     class ToolSoftFontGenTTF
     {
         //--------------------------------------------------------------------//
@@ -857,7 +856,6 @@ namespace PCLParaphernalia
                         _binReader = new BinaryReader (_ipStream);
                     }
                 }
-
                 catch
                 {
                     ToolSoftFontGenLog.logError (
@@ -3297,7 +3295,6 @@ namespace PCLParaphernalia
                                     mapCode = (ushort)i;
                                 }
                             }
-
                             else
                             {
                                 for (ushort j = 0; j < _sizeCharSet; j++)
@@ -6084,7 +6081,6 @@ namespace PCLParaphernalia
                     ToolSoftFontGenLog.logError (
                                 _tableDonor, MessageBoxImage.Error,
                                 "Mandatory TTF table not present");
-                    
                 }
             }
 

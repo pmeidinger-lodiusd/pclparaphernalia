@@ -10,7 +10,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2010
     /// 
     /// </summary>
-
     static class ToolStatusReadbackPJL
     {
         //--------------------------------------------------------------------//
@@ -53,7 +52,6 @@ namespace PCLParaphernalia
                                            cmdName + " " +
                                            customCat + "\x0d\x0a" +
                                   "\x1b" + "%-12345X";
-
                         }
                         else
                         {

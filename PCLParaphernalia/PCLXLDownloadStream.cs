@@ -11,7 +11,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2012
     /// 
     /// </summary>
-
     static class PCLXLDownloadStream
     {
         //--------------------------------------------------------------------//
@@ -185,7 +184,6 @@ namespace PCLParaphernalia
             {
                 _ipStream.Close();
             }
-
             catch (IOException e)
             {
                 MessageBox.Show ("IO Exception:\r\n" +
@@ -195,7 +193,6 @@ namespace PCLParaphernalia
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
             }
-
         }         
 
         //--------------------------------------------------------------------//
@@ -301,7 +298,6 @@ namespace PCLParaphernalia
                                            FileAccess.Read,
                                            FileShare.None);
                 }
-
                 catch (IOException e)
                 {
                     MessageBox.Show ("IO Exception:\r\n" +

@@ -9,7 +9,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2011
     /// 
     /// </summary>
-
     static class MainFormData
     {
         //--------------------------------------------------------------------//

@@ -14,7 +14,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2010
     /// 
     /// </summary>
-
     static class TargetNetPrint
     {
         //--------------------------------------------------------------------//
@@ -101,7 +100,6 @@ namespace PCLParaphernalia
 
                 OK = false;
             }
-
             catch (Exception e)
             {
                 MessageBox.Show("Exception: " + e.ToString(),
@@ -215,7 +213,6 @@ namespace PCLParaphernalia
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Exclamation);
                 }
-
                 catch (Exception e)
                 {
                     MessageBox.Show("Exception:\n\n" + e.ToString(),

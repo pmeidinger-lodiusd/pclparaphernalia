@@ -11,7 +11,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2012
     /// 
     /// </summary>
-
     static class PrnParseDataUTF8
     {
         //--------------------------------------------------------------------//

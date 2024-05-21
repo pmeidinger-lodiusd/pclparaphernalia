@@ -11,7 +11,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2010
     /// 
     /// </summary>
-
     class PrnParsePJL
     {
         //--------------------------------------------------------------------//
@@ -644,7 +643,6 @@ namespace PCLParaphernalia
                 contType = PrnParseConstants.eContType.PJL;
 
                 _linkData.setBacktrack (contType, -bufRem);
-
             }
             else
             {

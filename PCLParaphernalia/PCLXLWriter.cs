@@ -10,7 +10,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2010
     /// 
     /// </summary>
-
     static class PCLXLWriter
     {
         //--------------------------------------------------------------------//
@@ -1534,7 +1533,6 @@ namespace PCLParaphernalia
                                        ref indBuf,
                                        PCLXLAttributes.eTag.MediaSource,
                                        (ushort)indxPaperTray);
-
                 }
             }
 

@@ -13,7 +13,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2017
     /// 
     /// </summary>
-
     static class UnicodeBlocks
     {
         //--------------------------------------------------------------------//

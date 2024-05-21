@@ -15,7 +15,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2017
     /// 
     /// </summary>
-
     static class ReportCore
     {
         //--------------------------------------------------------------------//
@@ -1597,7 +1596,6 @@ namespace PCLParaphernalia
                 tableMultiRowTextText (
                     (StreamWriter)writer, colCt, arrData, colSizes,
                     blankBefore, blankAfter, blankAfterMultiRow);
-
             }
         }
 

@@ -12,7 +12,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2013
     /// 
     /// </summary>
-
     class ToolSymbolSetGenPCL
     {
         //--------------------------------------------------------------------//
@@ -47,7 +46,6 @@ namespace PCLParaphernalia
 
         public ToolSymbolSetGenPCL ()
         {
-
         }
 
         //--------------------------------------------------------------------//
@@ -83,7 +81,6 @@ namespace PCLParaphernalia
                             ref _binWriter,
                             ref _opStream);
             }
-
             catch (Exception exc)
             {
                 flagOK = false;
@@ -147,7 +144,6 @@ namespace PCLParaphernalia
                     _binWriter.Close ();
                     _opStream.Close ();
                 }
-
                 catch (Exception exc)
                 {
                     flagOK = false;

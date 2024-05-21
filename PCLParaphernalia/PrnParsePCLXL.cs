@@ -12,7 +12,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2010
     /// 
     /// </summary>
-
     class PrnParsePCLXL
     {
         //--------------------------------------------------------------------//
@@ -269,7 +268,6 @@ namespace PCLParaphernalia
                                              bool encapsulate,
                                              DataTable table)
         {
-
             if (flagRestoreGS)
             {
                 string descText;
@@ -2232,7 +2230,6 @@ namespace PCLParaphernalia
                                         "",
                                         "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" +
                                         "<<<<<<<<<<<<<<<<<<<<");
-
                                 }
                             }
                         }
@@ -2385,7 +2382,6 @@ namespace PCLParaphernalia
                 }
 
                 _linkData.setBacktrack (contType, - backLen);
-
             }
 
             return invalidSeqFound;

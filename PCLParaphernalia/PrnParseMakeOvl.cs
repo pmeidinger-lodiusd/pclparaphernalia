@@ -13,7 +13,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2012
     /// 
     /// </summary>
-
     static class PrnParseMakeOvl
     {
         //--------------------------------------------------------------------//
@@ -202,7 +201,6 @@ namespace PCLParaphernalia
                     {
                         ipStream.Seek (crntPos, SeekOrigin.Begin);
                     }
-
                     catch (IOException e)
                     {
                         MessageBox.Show ("' IO Exception:\r\n" +
@@ -252,7 +250,6 @@ namespace PCLParaphernalia
                                 }
                             }
                         }
-
                         catch (IOException e)
                         {
                             MessageBox.Show ("' IO Exception:\r\n" +
@@ -279,7 +276,6 @@ namespace PCLParaphernalia
 
                         try
                         {
-
                             byte crntByte;
 
                             byte[] termByte = new byte[1];
@@ -325,7 +321,6 @@ namespace PCLParaphernalia
 
                             binWriter.Write (termByte, 0, 1);
                         }
-
                         catch (IOException e)
                         {
                             MessageBox.Show ("' IO Exception:\r\n" +
@@ -1502,7 +1497,6 @@ namespace PCLParaphernalia
 
                 binWriter.Write (seqBuf, 3, 1);
             }
-
             catch (IOException e)
             {
                 MessageBox.Show ("' IO Exception:\r\n" +

@@ -11,7 +11,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2010
     /// 
     /// </summary>
-
     class PrnParsePML
     {
         //--------------------------------------------------------------------//
@@ -210,7 +209,6 @@ namespace PCLParaphernalia
                 else
                 {
                     invalidSeqFound = processPMLSeq (seqLen, 0, false);
-
                 }
             }
 
@@ -794,7 +792,6 @@ namespace PCLParaphernalia
 
                     if (lastSlice)
                         decode = descText;
-
                 }
                 else
                 {

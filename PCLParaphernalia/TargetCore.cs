@@ -13,7 +13,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2010
     /// 
     /// </summary>
-
     static class TargetCore
     {
         //--------------------------------------------------------------------//
@@ -544,7 +543,6 @@ namespace PCLParaphernalia
             {
                 _opStream = File.Create(_crntFilename);
             }
-
             catch (IOException e)
             {
                 MessageBox.Show ("IO Exception:\r\n" +
@@ -649,7 +647,6 @@ namespace PCLParaphernalia
                 {
                     File.Delete (_crntFilename);
                 }
-
                 catch (IOException e)
                 {
                     MessageBox.Show ("IO Exception:\r\n" +

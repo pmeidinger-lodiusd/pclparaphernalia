@@ -12,7 +12,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2017
     /// 
     /// </summary>
-
     class PrnParsePrescribe
     {
         //--------------------------------------------------------------------//
@@ -581,7 +580,6 @@ namespace PCLParaphernalia
                 contType = PrnParseConstants.eContType.Prescribe;
 
                 _linkData.setBacktrack(contType, -bufRem);
-
             }
             else
             {
