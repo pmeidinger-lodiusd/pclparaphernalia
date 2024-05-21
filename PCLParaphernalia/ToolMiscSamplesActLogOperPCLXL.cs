@@ -38,9 +38,9 @@ namespace PCLParaphernalia
         const short _lineInc                = (_incInch / 6);
 
         const short _posXPage_1_Hddr        = _pageOriginX;
-        const short _posYPage_1_Hddr        = _pageOriginY + (_incInch * 1) / 2;
-        const short _posYPage_1_Data1       = _pageOriginY + (_incInch * 9) / 4;
-        const short _posYPage_1_Data2       = _pageOriginY + (_incInch * 13) / 2;
+        const short _posYPage_1_Hddr        = _pageOriginY + ((_incInch * 1) / 2);
+        const short _posYPage_1_Data1       = _pageOriginY + ((_incInch * 9) / 4);
+        const short _posYPage_1_Data2       = _pageOriginY + ((_incInch * 13) / 2);
 
         const short _posXPage_n_Hddr        = _pageOriginX;
         const short _posYPage_n_Hddr        = _pageOriginY;

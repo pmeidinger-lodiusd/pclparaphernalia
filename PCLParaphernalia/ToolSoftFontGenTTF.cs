@@ -3263,7 +3263,7 @@ namespace PCLParaphernalia
                             ToolSoftFontGenLog.logNameAndValue (
                                 _tableDonor, false, false,
                                 "DIAG: Segment",
-                                segx2 / 2 +
+                                (segx2 / 2) +
                                 ": U+" + startCode.ToString ("x4") +
                                 "->U+" + endCode.ToString ("x4") +
                                 " (" + startCode.ToString () +
