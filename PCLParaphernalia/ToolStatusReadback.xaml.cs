@@ -626,7 +626,7 @@ namespace PCLParaphernalia
             lbPJLFSPwd.Visibility = Visibility.Visible;
             txtPJLFSPwd.Visibility = Visibility.Visible;
 
-            txtPJLFSPwd.Text = _defaultPJLFSPassword.ToString ();
+            txtPJLFSPwd.Text = _defaultPJLFSPassword;
         }
 
         //--------------------------------------------------------------------//

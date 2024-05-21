@@ -543,7 +543,7 @@ namespace PCLParaphernalia
                 ToolSoftFontGenLog.logNameAndValue (
                     _tableLogDonor, true, true,
                     "Font",
-                    "'" + _fontTTCNames [indx].ToString () +
+                    "'" + _fontTTCNames[indx] +
                     "' selected from '" +  _fontFilenameTTF + "' collection");
             }
             else
@@ -774,7 +774,7 @@ namespace PCLParaphernalia
 
                 if (usePCLT)
                 {
-                    _fontNamePCLXL = typefacePCLT.ToString ();
+                    _fontNamePCLXL = typefacePCLT;
 
                     if (!_symSetUnbound)
                     {
@@ -3184,7 +3184,7 @@ bitVal;
 
             txtPCLSymSetIdNum.Text = idNum;
             txtPCLSymSetIdAlpha.Text = idAlpha;
-            txtPCLSymSetName.Text    = name.ToString();
+            txtPCLSymSetName.Text    = name;
         }
 
         //--------------------------------------------------------------------//
@@ -3216,7 +3216,7 @@ bitVal;
 
             txtPCLSymSetIdNum.Text   = idNum;
             txtPCLSymSetIdAlpha.Text = idAlpha;
-            txtPCLSymSetName.Text    = name.ToString();
+            txtPCLSymSetName.Text    = name;
         }
 
         //--------------------------------------------------------------------//
@@ -3248,7 +3248,7 @@ bitVal;
 
             txtPCLTypefaceVendor.Text = vendor.ToString();
             txtPCLTypefaceBase.Text   = basecode.ToString();
-            txtPCLTypefaceName.Text   = name.ToString();
+            txtPCLTypefaceName.Text   = name;
         }
 
         //--------------------------------------------------------------------//
@@ -3277,7 +3277,7 @@ bitVal;
 
             txtPCLTypefaceVendor.Text = _typefaceVendorPCL.ToString ();
             txtPCLTypefaceBase.Text   = _typefaceBasecodePCL.ToString ();
-            txtPCLTypefaceName.Text   = name.ToString();
+            txtPCLTypefaceName.Text   = name;
         }
 
         //--------------------------------------------------------------------//
@@ -3389,7 +3389,7 @@ bitVal;
 
             txtPCLXLSymSetIdNum.Text   = idNum;
             txtPCLXLSymSetIdAlpha.Text = idAlpha;
-            txtPCLXLSymSetName.Text    = name.ToString();
+            txtPCLXLSymSetName.Text    = name;
         }
 
         //--------------------------------------------------------------------//
@@ -3421,7 +3421,7 @@ bitVal;
 
             txtPCLXLSymSetIdNum.Text = idNum;
             txtPCLXLSymSetIdAlpha.Text = idAlpha;
-            txtPCLXLSymSetName.Text    = name.ToString();
+            txtPCLXLSymSetName.Text    = name;
         }
 
         //--------------------------------------------------------------------//

@@ -304,7 +304,7 @@ namespace PCLParaphernalia
             txtDiags.Text += "These are the properties, and their types, of " +
                              defaultPrintQueue.Name +
                              " " +
-                             defaultPrintQueue.GetType ().ToString () + "\n\n";
+                             defaultPrintQueue.GetType() + "\n\n";
 
             foreach (DictionaryEntry entry in printQueueProperties)
             {
@@ -313,8 +313,8 @@ namespace PCLParaphernalia
                 if (property.Value != null)
                 {
                      txtDiags.Text += property.Name +
-                                      "\t" + property.Value.GetType ().ToString () +
-                                      "\t" + property.Value.ToString () +
+                                      "\t" + property.Value.GetType() +
+                                      "\t" + property.Value +
                                       "\n";
                 }
             }

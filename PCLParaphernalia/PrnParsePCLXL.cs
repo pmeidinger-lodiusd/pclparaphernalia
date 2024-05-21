@@ -3670,7 +3670,7 @@ namespace PCLParaphernalia
                             _analysisLevel,
                             typeText,
                             seq,
-                            decode.ToString ());
+                            decode);
                     }
                     else
                     {
@@ -3683,7 +3683,7 @@ namespace PCLParaphernalia
                             _analysisLevel,
                             "",
                             seq,
-                            decode.ToString ());
+                            decode);
                     }
 
                     firstLine = false;

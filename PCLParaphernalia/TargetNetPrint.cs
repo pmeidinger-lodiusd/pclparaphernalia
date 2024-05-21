@@ -102,7 +102,7 @@ namespace PCLParaphernalia
             }
             catch (Exception e)
             {
-                MessageBox.Show("Exception: " + e.ToString(),
+                MessageBox.Show("Exception: " + e,
                                 "Printer output",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Exclamation);
@@ -215,7 +215,7 @@ namespace PCLParaphernalia
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Exception:\n\n" + e.ToString(),
+                    MessageBox.Show("Exception:\n\n" + e,
                                     "Printer output",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Exclamation);

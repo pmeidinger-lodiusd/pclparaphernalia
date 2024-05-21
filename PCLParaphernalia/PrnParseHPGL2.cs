@@ -262,7 +262,7 @@ namespace PCLParaphernalia
                             _fileOffset + bufOffset + sliceOffset,
                             _analysisLevel,
                             "HP-GL/2 Command",
-                            seq.ToString (),
+                            seq,
                             "");
                     }
                     else if (firstSliceAfterCC)
@@ -275,7 +275,7 @@ namespace PCLParaphernalia
                             _fileOffset + bufOffset + sliceOffset,
                             _analysisLevel,
                             "HP-GL/2 Command cont.",
-                            seq.ToString (),
+                            seq,
                             "");
                     }
                     else
@@ -288,7 +288,7 @@ namespace PCLParaphernalia
                             _fileOffset + bufOffset + sliceOffset,
                             _analysisLevel,
                             "",
-                            seq.ToString (),
+                            seq,
                             "");
                     }
 

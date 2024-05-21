@@ -160,7 +160,7 @@ namespace PCLParaphernalia
 
             ReportCore.tableRowPair (writer, rptFileFmt,
                                  "SymSetId",
-                                 PCLSymbolSets.translateKind1ToId (symSetNo).ToString (),
+                                 PCLSymbolSets.translateKind1ToId(symSetNo),
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);

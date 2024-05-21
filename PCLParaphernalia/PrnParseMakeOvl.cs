@@ -1476,7 +1476,7 @@ namespace PCLParaphernalia
                 true,
                 PrnParseConstants.eOvlShow.Insert,
                 typeText,
-                seq.ToString (),
+                seq,
                 descComplex,
                 value);
 

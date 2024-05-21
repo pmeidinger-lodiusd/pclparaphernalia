@@ -778,7 +778,7 @@ namespace PCLParaphernalia
                             _fileOffset + bufOffset + sliceOffset,
                             _analysisLevel,
                             "Prescribe command",
-                            seq.ToString(),
+                            seq,
                             "");
                     }
                     else
@@ -794,7 +794,7 @@ namespace PCLParaphernalia
                             _fileOffset + bufOffset + sliceOffset,
                             _analysisLevel,
                             "",
-                            seq.ToString(),
+                            seq,
                             "");
                     }
 

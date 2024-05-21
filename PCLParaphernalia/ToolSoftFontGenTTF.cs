@@ -4704,14 +4704,14 @@ namespace PCLParaphernalia
                                         ToolSoftFontGenLog.logNameAndValue (
                                             _tableDonor, false, false,
                                             nameText,
-                                            recVal.ToString ());
+                                            recVal);
                                     }
                                     else if (nameIsFullFontName && _logVerbose)
                                     {
                                         ToolSoftFontGenLog.logNameAndValue (
                                             _tableDonor, false, false,
                                             "DIAG: font name",
-                                            recVal.ToString ());
+                                            recVal);
                                     }
 
                                     if (nameIsFullFontName)

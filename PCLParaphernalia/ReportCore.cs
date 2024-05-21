@@ -1406,7 +1406,7 @@ namespace PCLParaphernalia
 
                     htmlWriter.RenderBeginTag ("th");
 
-                    htmlWriter.WriteEncodedText (colHddrs[i].ToString ());
+                    htmlWriter.WriteEncodedText (colHddrs[i]);
                     htmlWriter.RenderEndTag ();    // </td>
 
                     if (i != lastCol)
@@ -1444,7 +1444,7 @@ namespace PCLParaphernalia
 
                 for (int i = 0; i < colCt; i++)
                 {
-                    line.Append (colHddrs[i].ToString ().PadRight (colSizes[i],
+                    line.Append (colHddrs[i].PadRight (colSizes[i],
                                                                    ' '));
 
                     if (i != lastCol)
