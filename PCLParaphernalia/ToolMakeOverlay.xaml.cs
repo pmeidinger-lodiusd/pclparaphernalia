@@ -417,8 +417,7 @@ namespace PCLParaphernalia
             }
             else if (headername == PrnParseConstants.cRptA_colName_Offset)
             {
-                if (_options.IndxGenOffsetFormat ==
-                    PrnParseConstants.eOptOffsetFormats.Decimal)
+                if (_options.IndxGenOffsetFormat == PrnParseConstants.eOptOffsetFormats.Decimal)
                     e.Column.Header = headername + ": dec";
                 else
                     e.Column.Header = headername + ": hex";

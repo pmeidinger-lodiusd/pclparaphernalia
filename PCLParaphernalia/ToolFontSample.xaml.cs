@@ -2743,46 +2743,36 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if ((_indxOrientationPCL < 0) ||
-                (_indxOrientationPCL >= _ctOrientations))
+            if ((_indxOrientationPCL < 0) || (_indxOrientationPCL >= _ctOrientations))
                 _indxOrientationPCL = 0;
 
-            if ((_indxPaperSizePCL < 0) ||
-                (_indxPaperSizePCL >= _ctPaperSizes))
+            if ((_indxPaperSizePCL < 0) || (_indxPaperSizePCL >= _ctPaperSizes))
                 _indxPaperSizePCL = 0;
 
-            if ((_indxPaperTypePCL < 0) ||
-                (_indxPaperTypePCL >= _ctPaperTypes))
+            if ((_indxPaperTypePCL < 0) || (_indxPaperTypePCL >= _ctPaperTypes))
                 _indxPaperTypePCL = 0;
 
-            if ((_indxFontPCL < 0) ||
-                (_indxFontPCL >= _ctFonts))
+            if ((_indxFontPCL < 0) || (_indxFontPCL >= _ctFonts))
                 _indxFontPCL = 0;
 
-            if ((_indxSymSetPCL < 0) ||
-                (_indxSymSetPCL >= _ctSymSets))
+            if ((_indxSymSetPCL < 0) || (_indxSymSetPCL >= _ctSymSets))
                 _indxSymSetPCL = 0;
 
             //----------------------------------------------------------------//
 
-            if ((_indxOrientationPCLXL < 0) ||
-                (_indxOrientationPCLXL >= _ctOrientations))
+            if ((_indxOrientationPCLXL < 0) || (_indxOrientationPCLXL >= _ctOrientations))
                 _indxOrientationPCLXL = 0;
 
-            if ((_indxPaperSizePCLXL < 0) ||
-                (_indxPaperSizePCLXL >= _ctPaperSizes))
+            if ((_indxPaperSizePCLXL < 0) || (_indxPaperSizePCLXL >= _ctPaperSizes))
                 _indxPaperSizePCLXL = 0;
 
-            if ((_indxPaperTypePCLXL < 0) ||
-                (_indxPaperTypePCLXL >= _ctPaperTypes))
+            if ((_indxPaperTypePCLXL < 0) || (_indxPaperTypePCLXL >= _ctPaperTypes))
                 _indxPaperTypePCLXL = 0;
 
-            if ((_indxFontPCLXL < 0) ||
-                (_indxFontPCLXL >= _ctFonts))
+            if ((_indxFontPCLXL < 0) || (_indxFontPCLXL >= _ctFonts))
                 _indxFontPCLXL = 0;
 
-            if ((_indxSymSetPCLXL < 0) ||
-                (_indxSymSetPCLXL >= _ctSymSets))
+            if ((_indxSymSetPCLXL < 0) || (_indxSymSetPCLXL >= _ctSymSets))
                 _indxSymSetPCLXL = 0;
         }
 
@@ -3603,13 +3593,9 @@ namespace PCLParaphernalia
                         showDetails = false;
 
                     if (_prnDiskLoadViaMacro)
-                        _fontDesc = "prn disk load (id=" +
-                                   _fontPrnDiskIdPCL + "); " +
-                                    "via macro (id=" +
-                                    _fontPrnDiskMacroIdPCL + "); ";
+                        _fontDesc = "prn disk load (id=" +_fontPrnDiskIdPCL + "); " + "via macro (id=" +_fontPrnDiskMacroIdPCL + "); ";
                     else
-                        _fontDesc = "prn disk load (id=" +
-                                    _fontPrnDiskIdPCL + "); ";
+                        _fontDesc = "prn disk load (id=" + _fontPrnDiskIdPCL + "); ";
                 }
                 else
                 {
@@ -4619,8 +4605,7 @@ namespace PCLParaphernalia
             }
 
             if (_fontLoadDescPCL != string.Empty)
-                txtPCLSelSeq.Text = _fontLoadDescPCL + " .-. " +
-                                    _fontSelDescPCL;
+                txtPCLSelSeq.Text = _fontLoadDescPCL + " .-. " + _fontSelDescPCL;
             else
                 txtPCLSelSeq.Text = _fontSelDescPCL;
         }
@@ -4808,8 +4793,7 @@ namespace PCLParaphernalia
                         seq += height.ToString ("F2") + "v";
                     else
                         // Bitmap; fixed-pitch
-                        seq += height.ToString ("F2") + "v" +
-                               pitch.ToString ("F2") + "h";
+                        seq += height.ToString ("F2") + "v" + pitch.ToString ("F2") + "h";
                 }
 
                 seq += style.ToString () + "s" +
@@ -5957,8 +5941,7 @@ namespace PCLParaphernalia
 
             if (crntText?.Length == 0)
             {
-                if ((_fontType == PCLFonts.eFontType.Download) &&
-                    _downloadSelByIdPCL && (!_fontScalable))
+                if ((_fontType == PCLFonts.eFontType.Download) && _downloadSelByIdPCL && (!_fontScalable))
                     value = 0;
                 else if (_fontScalable && (!_fontProportional))
                     value = 0;
@@ -6038,8 +6021,7 @@ namespace PCLParaphernalia
 
             if (crntText?.Length == 0)
             {
-                if ((_fontType == PCLFonts.eFontType.Download) &&
-                     _downloadSelByIdPCL && (!_fontScalable))
+                if ((_fontType == PCLFonts.eFontType.Download) && _downloadSelByIdPCL && (!_fontScalable))
                     value = 0;
                 else if (_fontProportional)
                     value = 0;

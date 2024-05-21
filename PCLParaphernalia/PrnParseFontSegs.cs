@@ -169,8 +169,7 @@ namespace PCLParaphernalia
                 else if ((!complement) && (charCollIndex == 0x00))
                     codeDesc = "'000' = MSL";
                 else
-                    codeDesc = "'" + charCollIndex.ToString () +
-                              "' not MSL value!";
+                    codeDesc = "'" + charCollIndex.ToString () + "' not MSL value!";
             }
             else
             {
@@ -179,8 +178,7 @@ namespace PCLParaphernalia
                 else if ((!complement) && (charCollIndex == 0x01))
                     codeDesc = "'001' = Unicode";
                 else
-                    codeDesc = "'" + charCollIndex.ToString () +
-                               "' not Unicode value!";
+                    codeDesc = "'" + charCollIndex.ToString () + "' not Unicode value!";
             }
 
             PrnParseCommon.addTextRow (
@@ -236,11 +234,9 @@ namespace PCLParaphernalia
                         listIndex = PCLCharCollections.getindexForKey (i);
 
                         if (format_MSL)
-                            codeDesc =
-                                PCLCharCollections.getDescMSL (listIndex);
+                            codeDesc = PCLCharCollections.getDescMSL (listIndex);
                         else
-                            codeDesc =
-                                PCLCharCollections.getDescUnicode (listIndex);
+                            codeDesc = PCLCharCollections.getDescUnicode (listIndex);
 
                         PrnParseCommon.addTextRow (
                             rowType,

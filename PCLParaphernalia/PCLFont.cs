@@ -337,8 +337,7 @@ namespace PCLParaphernalia
                     seq += _pointSize.ToString() + "v";
                 else
                     // Bitmap; fixed-pitch
-                    seq += _pointSize.ToString() + "v" +
-                           _pitch.ToString()     + "h";
+                    seq += _pointSize.ToString() + "v" + _pitch.ToString()     + "h";
             }
 
             if (variant == PCLFonts.eVariant.Italic)

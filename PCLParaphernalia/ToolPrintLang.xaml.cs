@@ -912,15 +912,10 @@ namespace PCLParaphernalia
                     _ctItems += PCLControlCodes.displaySeqList(dgSeq);
 
                 if (chkPCLSeqSimple.IsChecked == true)
-                    _ctItems +=
-                        PCLSimpleSeqs.displaySeqList(dgSeq,
-                                                     _flagPCLOptObsolete);
+                    _ctItems += PCLSimpleSeqs.displaySeqList(dgSeq, _flagPCLOptObsolete);
 
                 if (chkPCLSeqComplex.IsChecked == true)
-                    _ctItems +=
-                        PCLComplexSeqs.displaySeqList(dgSeq,
-                                                      _flagPCLOptObsolete,
-                                                      _flagPCLOptDiscrete);
+                    _ctItems += PCLComplexSeqs.displaySeqList(dgSeq, _flagPCLOptObsolete, _flagPCLOptDiscrete);
 
                 txtCount.Text = _ctItems.ToString();
             }
@@ -978,29 +973,19 @@ namespace PCLParaphernalia
                 _ctItems = 0;
 
                 if (_flagPCLXLTagAttrDef)
-                    _ctItems +=
-                        PCLXLAttrDefiners.displayTags(dgSeq,
-                                                      _flagPCLXLOptReserved);
+                    _ctItems += PCLXLAttrDefiners.displayTags(dgSeq, _flagPCLXLOptReserved);
 
                 if (_flagPCLXLTagEmbedDataLen)
-                    _ctItems +=
-                        PCLXLEmbedDataDefs.displayTags(dgSeq,
-                                                       _flagPCLXLOptReserved);
+                    _ctItems += PCLXLEmbedDataDefs.displayTags(dgSeq, _flagPCLXLOptReserved);
 
                 if (_flagPCLXLTagAttribute)
-                    _ctItems +=
-                        PCLXLAttributes.displayTags(dgSeq,
-                                                    _flagPCLXLOptReserved);
+                    _ctItems += PCLXLAttributes.displayTags(dgSeq, _flagPCLXLOptReserved);
 
                 if (_flagPCLXLTagDataType)
-                    _ctItems +=
-                        PCLXLDataTypes.displayTags(dgSeq,
-                                                   _flagPCLXLOptReserved);
+                    _ctItems += PCLXLDataTypes.displayTags(dgSeq, _flagPCLXLOptReserved);
 
                 if (_flagPCLXLTagOperator)
-                    _ctItems +=
-                        PCLXLOperators.displayTags(dgSeq,
-                                                   _flagPCLXLOptReserved);
+                    _ctItems += PCLXLOperators.displayTags(dgSeq, _flagPCLXLOptReserved);
 
                 if (_flagPCLXLTagWhitespace)
                     _ctItems += PCLXLWhitespaces.displayTags(dgSeq);

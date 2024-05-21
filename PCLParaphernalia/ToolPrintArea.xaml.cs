@@ -617,34 +617,27 @@ namespace PCLParaphernalia
                 (_indxOrientationPCL >= _ctOrientations))
                 _indxOrientationPCL = 0;
 
-            if ((_indxPaperSizePCL < 0) ||
-                (_indxPaperSizePCL >= _ctPaperSizes))
+            if ((_indxPaperSizePCL < 0) || (_indxPaperSizePCL >= _ctPaperSizes))
                 _indxPaperSizePCL = 0;
 
-            if ((_indxPaperTypePCL < 0) ||
-                (_indxPaperTypePCL >= _ctPaperTypes))
+            if ((_indxPaperTypePCL < 0) || (_indxPaperTypePCL >= _ctPaperTypes))
                 _indxPaperTypePCL = 0;
 
-            if ((_indxPJLCommandPCL < 0) ||
-                (_indxPJLCommandPCL >= _ctPJLCommands))
+            if ((_indxPJLCommandPCL < 0) || (_indxPJLCommandPCL >= _ctPJLCommands))
                 _indxPJLCommandPCL = 0;
 
             //----------------------------------------------------------------//
 
-            if ((_indxOrientationPCLXL < 0) ||
-                (_indxOrientationPCLXL >= _ctOrientations))
+            if ((_indxOrientationPCLXL < 0) || (_indxOrientationPCLXL >= _ctOrientations))
                 _indxOrientationPCLXL = 0;
 
-            if ((_indxPaperSizePCLXL < 0) ||
-                (_indxPaperSizePCLXL >= _ctPaperSizes))
+            if ((_indxPaperSizePCLXL < 0) || (_indxPaperSizePCLXL >= _ctPaperSizes))
                 _indxPaperSizePCLXL = 0;
 
-            if ((_indxPaperTypePCLXL < 0) ||
-                (_indxPaperTypePCLXL >= _ctPaperTypes))
+            if ((_indxPaperTypePCLXL < 0) || (_indxPaperTypePCLXL >= _ctPaperTypes))
                 _indxPaperTypePCLXL = 0;
 
-            if ((_indxPJLCommandPCLXL < 0) ||
-                (_indxPJLCommandPCLXL >= _ctPJLCommands))
+            if ((_indxPJLCommandPCLXL < 0) ||(_indxPJLCommandPCLXL >= _ctPJLCommands))
                 _indxPJLCommandPCLXL = 0;
         }
 

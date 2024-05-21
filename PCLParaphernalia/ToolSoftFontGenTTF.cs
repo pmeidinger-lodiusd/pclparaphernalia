@@ -1427,13 +1427,9 @@ namespace PCLParaphernalia
                     text_OS_2_avgWidth);
 
                 if (monoSpaced_panose)
-                    text_OS_2_panose = "OS/2 | Panose: Family = " + panoseFamily +
-                                       " & Proportion = " + panoseProportion +
-                                       " indicates font is monospaced";
+                    text_OS_2_panose = "OS/2 | Panose: Family = " + panoseFamily + " & Proportion = " + panoseProportion + " indicates font is monospaced";
                 else
-                    text_OS_2_panose = "OS/2 | Panose: Family = " + panoseFamily +
-                                       " & Proportion = " + panoseProportion +
-                                       " indicates font is not monospaced";
+                    text_OS_2_panose = "OS/2 | Panose: Family = " + panoseFamily + " & Proportion = " + panoseProportion + " indicates font is not monospaced";
 
                 ToolSoftFontGenLog.logNameAndValue (
                     _tableDonor, false, false,
@@ -3046,12 +3042,10 @@ namespace PCLParaphernalia
                             flagOK = readBytesAsUInt16 (-1, ref fmt4SegCountx2);
 
                         if (flagOK)
-                            flagOK = readBytesAsUInt16 (-1,
-                                                        ref fmt4SearchRange);
+                            flagOK = readBytesAsUInt16 (-1, ref fmt4SearchRange);
 
                         if (flagOK)
-                            flagOK = readBytesAsUInt16 (-1,
-                                                        ref fmt4EntrySelector);
+                            flagOK = readBytesAsUInt16 (-1, ref fmt4EntrySelector);
 
                         if (flagOK)
                             flagOK = readBytesAsUInt16 (-1, ref fmt4RangeShift);
@@ -3117,15 +3111,9 @@ namespace PCLParaphernalia
                         flagOK = false;
 
                         if (encodingUnicode)
-                            ToolSoftFontGenLog.logError (
-                                _tableDonor, MessageBoxImage.Error,
-                                "'" + tabName + "' sub-table " + subTabNo +
-                                " for Unicode is not format 4");
+                            ToolSoftFontGenLog.logError (_tableDonor, MessageBoxImage.Error, "'" + tabName + "' sub-table " + subTabNo + " for Unicode is not format 4");
                         else
-                            ToolSoftFontGenLog.logError (
-                                _tableDonor, MessageBoxImage.Error,
-                                "'" + tabName + "' sub-table " + subTabNo +
-                                " for Symbol is not format 4");
+                            ToolSoftFontGenLog.logError (_tableDonor, MessageBoxImage.Error, "'" + tabName + "' sub-table " + subTabNo + " for Symbol is not format 4");
                     }
                 }
             }

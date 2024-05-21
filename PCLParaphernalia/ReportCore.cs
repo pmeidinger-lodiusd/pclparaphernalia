@@ -716,13 +716,9 @@ namespace PCLParaphernalia
             };
 
             if (rptFileFmt == eRptFileFmt.html)
-                docInitStylesHtml (
-                    (HtmlTextWriter)writer, stdStyles, ctRowClrStyles,
-                    rowClasses, rowClrBack, rowClrFore);
+                docInitStylesHtml ((HtmlTextWriter)writer, stdStyles, ctRowClrStyles, rowClasses, rowClrBack, rowClrFore);
             else if (rptFileFmt == eRptFileFmt.xml)
-                docInitStylesXml (
-                    (XmlWriter)writer, stdStyles, ctRowClrStyles,
-                    rowClasses, rowClrBack, rowClrFore);
+                docInitStylesXml ((XmlWriter)writer, stdStyles, ctRowClrStyles, rowClasses, rowClrBack, rowClrFore);
         }
 
         //--------------------------------------------------------------------//
@@ -1168,13 +1164,11 @@ namespace PCLParaphernalia
                                      bool firstItem)
         {
             if (rptFileFmt == eRptFileFmt.html)
-                lineItemHtml ((HtmlTextWriter)writer,
-                              txtVal, sizeVal, firstItem);
+                lineItemHtml ((HtmlTextWriter)writer, txtVal, sizeVal, firstItem);
             else if (rptFileFmt == eRptFileFmt.xml)
                 lineItemXml ((XmlWriter)writer, txtVal);
             else
-                lineItemText ((StreamWriter)writer, txtVal,
-                              sizeVal, firstItem);
+                lineItemText ((StreamWriter)writer, txtVal, sizeVal, firstItem);
         }
 
         //--------------------------------------------------------------------//
@@ -1366,13 +1360,11 @@ namespace PCLParaphernalia
                                           int[] colSizes)
         {
             if (rptFileFmt == eRptFileFmt.html)
-                tableHddrDataHtml ((HtmlTextWriter)writer, plain,
-                                   colCt, colHddrs);
+                tableHddrDataHtml ((HtmlTextWriter)writer, plain, colCt, colHddrs);
             else if (rptFileFmt == eRptFileFmt.xml)
                 tableHddrDataXml ((XmlWriter)writer, plain, colCt, colHddrs);
             else
-                tableHddrDataText ((StreamWriter)writer, colCt, colHddrs,
-                                   colSizes);
+                tableHddrDataText ((StreamWriter)writer, colCt, colHddrs, colSizes);
         }
 
         //--------------------------------------------------------------------//
@@ -1682,14 +1674,11 @@ namespace PCLParaphernalia
                                          int[] colSizes)
         {
             if (rptFileFmt == eRptFileFmt.html)
-                tableRowDataHtml ((HtmlTextWriter)writer, rptChkMarks,
-                                  colCt, rowType, row, colNames);
+                tableRowDataHtml ((HtmlTextWriter)writer, rptChkMarks, colCt, rowType, row, colNames);
             else if (rptFileFmt == eRptFileFmt.xml)
-                tableRowDataXml ((XmlWriter)writer, rptChkMarks,
-                                 colCt, rowType, row, colNames);
+                tableRowDataXml ((XmlWriter)writer, rptChkMarks, colCt, rowType, row, colNames);
             else
-                tableRowDataText ((StreamWriter)writer, rptChkMarks,
-                                  colCt, rowType, row, colNames, colSizes);
+                tableRowDataText ((StreamWriter)writer, rptChkMarks, colCt, rowType, row, colNames, colSizes);
         }
 
         //--------------------------------------------------------------------//
@@ -1957,8 +1946,7 @@ namespace PCLParaphernalia
 
             if (padClass != string.Empty)
                 if (nameAsHddr)
-                    htmlWriter.AddAttribute ("class",
-                                             padClass + " " + "fmtAdorn");
+                    htmlWriter.AddAttribute ("class", padClass + " " + "fmtAdorn");
                 else
                     htmlWriter.AddAttribute ("class", padClass);
             else if (nameAsHddr)
@@ -2093,19 +2081,16 @@ namespace PCLParaphernalia
 
             xmlWriter.WriteStartElement ("name");
             if (colSpanName != -1)
-                xmlWriter.WriteAttributeString ("colspan",
-                                                colSpanName.ToString ());
+                xmlWriter.WriteAttributeString ("colspan", colSpanName.ToString ());
             if (nameAsHddr)
-                xmlWriter.WriteAttributeString ("txtfmt",
-                                                "fmtAdorn");
+                xmlWriter.WriteAttributeString ("txtfmt", "fmtAdorn");
 
             xmlWriter.WriteString (txtName);
             xmlWriter.WriteEndElement ();
 
             xmlWriter.WriteStartElement ("value");
             if (colSpanName != -1)
-                xmlWriter.WriteAttributeString ("colspan",
-                                                colSpanVal.ToString ());
+                xmlWriter.WriteAttributeString ("colspan", colSpanVal.ToString ());
             xmlWriter.WriteString (txtVal);
             xmlWriter.WriteEndElement ();
 
@@ -2131,8 +2116,7 @@ namespace PCLParaphernalia
             if (rptFileFmt == eRptFileFmt.html)
                 tableRowTextHtml ((HtmlTextWriter)writer, colCt, data);
             else if (rptFileFmt == eRptFileFmt.xml)
-                tableRowTextXml ((XmlWriter)writer, colCt,
-                              data, colNames);
+                tableRowTextXml ((XmlWriter)writer, colCt, data, colNames);
             else
                 tableRowTextText ((StreamWriter)writer, colCt, data, colSizes);
         }

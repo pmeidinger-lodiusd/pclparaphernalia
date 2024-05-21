@@ -115,26 +115,19 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (crntToolId == ToolCommonData.eToolIds.FontSample)
-                ToolFontSamplePersist.loadDataCapture (crntPDL,
-                                                       ref _saveFilename);
+                ToolFontSamplePersist.loadDataCapture (crntPDL, ref _saveFilename);
             else if (crntToolId == ToolCommonData.eToolIds.FormSample)
-                ToolFormSamplePersist.loadDataCapture (crntPDL,
-                                                       ref _saveFilename);
+                ToolFormSamplePersist.loadDataCapture (crntPDL, ref _saveFilename);
             else if (crntToolId == ToolCommonData.eToolIds.ImageBitmap)
-                ToolImageBitmapPersist.loadDataCapture (crntPDL,
-                                                        ref _saveFilename);
+                ToolImageBitmapPersist.loadDataCapture (crntPDL, ref _saveFilename);
             else if (crntToolId == ToolCommonData.eToolIds.PrintArea)
-                ToolPrintAreaPersist.loadDataCapture (crntPDL,
-                                                      ref _saveFilename);
+                ToolPrintAreaPersist.loadDataCapture (crntPDL, ref _saveFilename);
             else if (crntToolId == ToolCommonData.eToolIds.PrnPrint)
-                ToolPrnPrintPersist.loadDataCapture (crntPDL,
-                                                     ref _saveFilename);
+                ToolPrnPrintPersist.loadDataCapture (crntPDL,ref _saveFilename);
             else if (crntToolId == ToolCommonData.eToolIds.StatusReadback)
-                ToolStatusReadbackPersist.loadDataCapture (crntPDL,
-                                                           ref _saveFilename);
+                ToolStatusReadbackPersist.loadDataCapture (crntPDL, ref _saveFilename);
             else if (crntToolId == ToolCommonData.eToolIds.TrayMap)
-                ToolTrayMapPersist.loadDataCapture (crntPDL,
-                                                    ref _saveFilename);
+                ToolTrayMapPersist.loadDataCapture (crntPDL, ref _saveFilename);
 
             //----------------------------------------------------------------//
 
@@ -182,13 +175,11 @@ namespace PCLParaphernalia
             if (crntToolId == ToolCommonData.eToolIds.MakeOverlay)
                 ToolMakeOverlayPersist.loadDataRpt (ref tmpFmt);
             else if (crntToolId == ToolCommonData.eToolIds.PrintLang)
-                ToolPrintLangPersist.loadDataRpt (ref tmpFmt, ref tmpChkMarks,
-                                                  ref _flagOptRptWrap);
+                ToolPrintLangPersist.loadDataRpt (ref tmpFmt, ref tmpChkMarks, ref _flagOptRptWrap);
             else if (crntToolId == ToolCommonData.eToolIds.PrnAnalyse)
                 ToolPrnAnalysePersist.loadDataRpt (ref tmpFmt);
             else if (crntToolId == ToolCommonData.eToolIds.SoftFontGenerate)
-                ToolSoftFontGenPersist.loadDataRpt (ref tmpFmt,
-                                                    ref tmpChkMarks);
+                ToolSoftFontGenPersist.loadDataRpt (ref tmpFmt, ref tmpChkMarks);
             else if (crntToolId == ToolCommonData.eToolIds.StatusReadback)
                 ToolStatusReadbackPersist.loadDataRpt (ref tmpFmt);
             else if (crntToolId == ToolCommonData.eToolIds.SymbolSetGenerate)
@@ -314,33 +305,24 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (crntToolId == ToolCommonData.eToolIds.FontSample)
-                ToolFontSamplePersist.saveDataCapture (crntPDL,
-                                                       saveFilename);
+                ToolFontSamplePersist.saveDataCapture (crntPDL, saveFilename);
             else if (crntToolId == ToolCommonData.eToolIds.FormSample)
-                ToolFormSamplePersist.saveDataCapture (crntPDL,
-                                                       saveFilename);
+                ToolFormSamplePersist.saveDataCapture (crntPDL, saveFilename);
             else if (crntToolId == ToolCommonData.eToolIds.ImageBitmap)
-                ToolImageBitmapPersist.saveDataCapture (crntPDL,
-                                                       saveFilename);
+                ToolImageBitmapPersist.saveDataCapture (crntPDL, saveFilename);
             else if (crntToolId == ToolCommonData.eToolIds.PrintArea)
-                ToolPrintAreaPersist.saveDataCapture (crntPDL,
-                                                      saveFilename);
+                ToolPrintAreaPersist.saveDataCapture (crntPDL, saveFilename);
             else if (crntToolId == ToolCommonData.eToolIds.PrnPrint)
-                ToolPrnPrintPersist.saveDataCapture (crntPDL,
-                                                     saveFilename);
+                ToolPrnPrintPersist.saveDataCapture (crntPDL, saveFilename);
             else if (crntToolId == ToolCommonData.eToolIds.StatusReadback)
-                ToolStatusReadbackPersist.saveDataCapture (crntPDL,
-                                                           saveFilename);
+                ToolStatusReadbackPersist.saveDataCapture (crntPDL, saveFilename);
             else if (crntToolId == ToolCommonData.eToolIds.TrayMap)
-                ToolTrayMapPersist.saveDataCapture (crntPDL,
-                                                    saveFilename);
+                ToolTrayMapPersist.saveDataCapture (crntPDL, saveFilename);
 
             //----------------------------------------------------------------//
 
             else if (crntToolId == ToolCommonData.eToolIds.MiscSamples)
-                ToolMiscSamplesPersist.saveDataCapture (crntToolSubId,
-                                                        crntPDL,
-                                                        saveFilename);
+                ToolMiscSamplesPersist.saveDataCapture (crntToolSubId, crntPDL, saveFilename);
 
             //----------------------------------------------------------------//
 
@@ -374,8 +356,7 @@ namespace PCLParaphernalia
             if (crntToolId == ToolCommonData.eToolIds.MakeOverlay)
                 ToolMakeOverlayPersist.saveDataRpt (tmpFmt);
             else if (crntToolId == ToolCommonData.eToolIds.PrintLang)
-                ToolPrintLangPersist.saveDataRpt (tmpFmt, tmpChkMarks,
-                                                  flagOptRptWrap);
+                ToolPrintLangPersist.saveDataRpt (tmpFmt, tmpChkMarks, flagOptRptWrap);
             else if (crntToolId == ToolCommonData.eToolIds.PrnAnalyse)
                 ToolPrnAnalysePersist.saveDataRpt (tmpFmt);
             else if (crntToolId == ToolCommonData.eToolIds.SoftFontGenerate)

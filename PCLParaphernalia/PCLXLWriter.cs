@@ -2335,13 +2335,9 @@ namespace PCLParaphernalia
                             coordX, coordY);
 
             if (relativePoint)
-                addOperator(ref buffer,
-                            ref indBuf,
-                            PCLXLOperators.eTag.SetCursorRel);
+                addOperator(ref buffer, ref indBuf, PCLXLOperators.eTag.SetCursorRel);
             else
-                addOperator(ref buffer,
-                            ref indBuf,
-                            PCLXLOperators.eTag.SetCursor);
+                addOperator(ref buffer, ref indBuf, PCLXLOperators.eTag.SetCursor);
 
             addAttrUbyteArray(ref buffer,
                               ref indBuf,

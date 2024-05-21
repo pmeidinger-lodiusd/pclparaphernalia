@@ -955,10 +955,7 @@ namespace PCLParaphernalia
             string txtNewVal = source.Text;
 
             if (hexFormat)
-                OK = byte.TryParse (txtNewVal,
-                                    NumberStyles.HexNumber,
-                                    CultureInfo.InvariantCulture,
-                                    out value);
+                OK = byte.TryParse (txtNewVal, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out value);
             else
                 OK = byte.TryParse (txtNewVal, out value);
 

@@ -359,8 +359,7 @@ namespace PCLParaphernalia
                 priSec = ')';
 
             if (symSet != string.Empty)
-                seq = "\x1b" + priSec + symSet +
-                      "\x1b" + priSec + fontSel;
+                seq = "\x1b" + priSec + symSet + "\x1b" + priSec + fontSel;
             else
                 seq = "\x1b" + priSec + fontSel;
 

@@ -1172,18 +1172,11 @@ namespace PCLParaphernalia
                     //--------------------------------------------------------//
 
                     if (charType == eCharType.TwoByte)
-                        outStr = "[" +
-                                 PrnParseCommon.byteToHexString (highByte) +
-                                 PrnParseCommon.byteToHexString (lowByte) +
-                                 "]";
-                    else if ((charType == eCharType.Space)
-                                        ||
-                            (charType == eCharType.Graphic))
+                        outStr = "[" + PrnParseCommon.byteToHexString (highByte) + PrnParseCommon.byteToHexString (lowByte) + "]";
+                    else if ((charType == eCharType.Space) || (charType == eCharType.Graphic))
                         outStr = PrnParseCommon.byteToString (lowByte);
                     else
-                        outStr = "[" +
-                                 PrnParseCommon.byteToHexString (lowByte) +
-                                 "]";
+                        outStr = "[" + PrnParseCommon.byteToHexString (lowByte) + "]";
 
                     break;
 
@@ -1195,8 +1188,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    if ((charType == eCharType.Space) ||
-                        (charType == eCharType.Graphic))
+                    if ((charType == eCharType.Space) || (charType == eCharType.Graphic))
                         outStr = PrnParseCommon.byteToString (lowByte);
                     else
                         outStr = ".";
@@ -1211,8 +1203,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    if ((charType == eCharType.Space) ||
-                        (charType == eCharType.Graphic))
+                    if ((charType == eCharType.Space) || (charType == eCharType.Graphic))
                         outStr = PrnParseCommon.byteToString (lowByte);
                     else
                         outStr = " ";
@@ -1228,8 +1219,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    if ((charType == eCharType.Space) ||
-                        (charType == eCharType.Graphic))
+                    if ((charType == eCharType.Space) || (charType == eCharType.Graphic))
                         outStr = PrnParseCommon.byteToString (lowByte);
                     else
                         outStr = PrnParseCommon.byteToString (showSubCode);
