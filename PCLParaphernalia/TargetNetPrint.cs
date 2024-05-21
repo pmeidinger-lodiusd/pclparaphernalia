@@ -159,12 +159,13 @@ namespace PCLParaphernalia
                     ipEndPoint = new IPEndPoint(ipAddress,
                                                 port);
 
-                    _socket = new Socket (ipAddress.AddressFamily,
+                    _socket = new Socket(ipAddress.AddressFamily,
                                           SocketType.Stream,
-                                          ProtocolType.Tcp);
-
-                    _socket.SendTimeout    = timeoutSend;
-                    _socket.ReceiveTimeout = timeoutReceive;
+                                          ProtocolType.Tcp)
+                    {
+                        SendTimeout = timeoutSend,
+                        ReceiveTimeout = timeoutReceive
+                    };
 
                     // or   _socket.SetSocketOption (SocketOptionLevel.Socket,
                     //                               SocketOptionName.SendTimeout, 1000);

@@ -896,9 +896,11 @@ namespace PCLParaphernalia
 
                     if (stream != null)
                     {
-                        XmlWriterSettings settings = new XmlWriterSettings ();
-                        settings.Encoding = Encoding.UTF8;
-                        settings.Indent = true;
+                        XmlWriterSettings settings = new XmlWriterSettings
+                        {
+                            Encoding = Encoding.UTF8,
+                            Indent = true
+                        };
 
                         writer = XmlWriter.Create ((StreamWriter) stream, settings);
                         fileOpen = true;

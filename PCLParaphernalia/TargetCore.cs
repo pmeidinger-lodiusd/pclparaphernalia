@@ -504,14 +504,15 @@ namespace PCLParaphernalia
                                                            len - ptr - 1);
                 }
 
-                saveDialog = new SaveFileDialog();
-
-                saveDialog.Filter           = "Print Files | *.prn";
-                saveDialog.DefaultExt       = "prn";
-                saveDialog.RestoreDirectory = true;
-                saveDialog.InitialDirectory = saveDirectory;
-                saveDialog.OverwritePrompt  = true;
-                saveDialog.FileName         = _crntFilename;
+                saveDialog = new SaveFileDialog
+                {
+                    Filter = "Print Files | *.prn",
+                    DefaultExt = "prn",
+                    RestoreDirectory = true,
+                    InitialDirectory = saveDirectory,
+                    OverwritePrompt = true,
+                    FileName = _crntFilename
+                };
 
                 Nullable<Boolean> dialogResult = saveDialog.ShowDialog();
                 

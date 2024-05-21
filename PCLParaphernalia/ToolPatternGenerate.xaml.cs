@@ -608,11 +608,12 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < btnCt; i++)
             {
-                ToggleButton x = new ToggleButton();
-
-                x.Background = Brushes.White;
-                x.IsChecked = false;
-                x.Style = (Style)FindResource("ToggleButton");
+                ToggleButton x = new ToggleButton
+                {
+                    Background = Brushes.White,
+                    IsChecked = false,
+                    Style = (Style)FindResource("ToggleButton")
+                };
 
                 _uGridPattern.Children.Add(x);
 

@@ -1767,16 +1767,20 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < ctSampleRows; i++)
             {
-                RowDefinition rowDefX = new RowDefinition ();
-                rowDefX.MinHeight = 25;
+                RowDefinition rowDefX = new RowDefinition
+                {
+                    MinHeight = 25
+                };
                 grid1.RowDefinitions.Add (rowDefX);
             }
 
-            Thickness thk1 = new Thickness ();
-            thk1.Bottom = 2;
-            thk1.Top = 2;
-            thk1.Left = 2;
-            thk1.Right = 2;
+            Thickness thk1 = new Thickness
+            {
+                Bottom = 2,
+                Top = 2,
+                Left = 2,
+                Right = 2
+            };
 
             _txtClrMapSamples = new TextBox[_ctClrMapRowTypes];
 
@@ -1794,9 +1798,11 @@ namespace PCLParaphernalia
                 PrnParseRowTypes.eType rowType =
                     (PrnParseRowTypes.eType)i;
 
-                _txtClrMapSamples[i] = new TextBox ();
-                _txtClrMapSamples[i].Margin = thk1;
-                _txtClrMapSamples[i].Text = PrnParseRowTypes.getDesc (i);
+                _txtClrMapSamples[i] = new TextBox
+                {
+                    Margin = thk1,
+                    Text = PrnParseRowTypes.getDesc(i)
+                };
 
                 indxClrBack = _indxClrMapBack[i];
                 indxClrFore = _indxClrMapFore[i];

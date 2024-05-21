@@ -5397,10 +5397,12 @@ namespace PCLParaphernalia
 
                 for (int j = blockMin; j <= blockMax; j++)
                 {
-                    chkOffset = new CheckBox();
-                    chkOffset.Margin = new Thickness(1, 1, 1, 1);
-                    chkOffset.Content = j.ToString("x2") + "00";
-                    chkOffset.IsEnabled = true;
+                    chkOffset = new CheckBox
+                    {
+                        Margin = new Thickness(1, 1, 1, 1),
+                        Content = j.ToString("x2") + "00",
+                        IsEnabled = true
+                    };
 
                     lstSampleOffsets.Items.Add(chkOffset);
 
@@ -5419,10 +5421,12 @@ namespace PCLParaphernalia
 
                 for (int j = blockMin; j <= blockMax; j++)
                 {
-                    chkOffset = new CheckBox();
-                    chkOffset.Margin = new Thickness(1, 1, 1, 1);
-                    chkOffset.Content = j.ToString("x2") + "00";
-                    chkOffset.IsEnabled = true;
+                    chkOffset = new CheckBox
+                    {
+                        Margin = new Thickness(1, 1, 1, 1),
+                        Content = j.ToString("x2") + "00",
+                        IsEnabled = true
+                    };
 
                     lstSampleOffsets.Items.Add(chkOffset);
 

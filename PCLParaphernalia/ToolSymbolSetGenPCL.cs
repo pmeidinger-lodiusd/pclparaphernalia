@@ -290,15 +290,16 @@ namespace PCLParaphernalia
                                                           len - ptr - 1);
             }
 
-            saveDialog = new SaveFileDialog ();
+            saveDialog = new SaveFileDialog
+            {
+                Filter = "PCL Files | *.pcl",
+                DefaultExt = "pcl",
 
-            saveDialog.Filter = "PCL Files | *.pcl";
-            saveDialog.DefaultExt = "pcl";
-
-            saveDialog.RestoreDirectory = true;
-            saveDialog.InitialDirectory = saveDirectory;
-            saveDialog.OverwritePrompt = true;
-            saveDialog.FileName = tmpFilename;
+                RestoreDirectory = true,
+                InitialDirectory = saveDirectory,
+                OverwritePrompt = true,
+                FileName = tmpFilename
+            };
 
             Nullable<Boolean> dialogResult = saveDialog.ShowDialog ();
 

@@ -30,12 +30,14 @@ namespace PCLParaphernalia
             ToolCommonFunctions.splitPathName(initialPath,
                                                ref folderName,
                                                ref fileName);
-            
-            OpenFileDialog openDialog = new OpenFileDialog();
-            openDialog.InitialDirectory = Directory.Exists(folderName) ? folderName : Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            openDialog.FileName = fileName;
-            openDialog.CheckFileExists = true;
-            openDialog.Filter = "All files|*.*";
+
+            OpenFileDialog openDialog = new OpenFileDialog
+            {
+                InitialDirectory = Directory.Exists(folderName) ? folderName : Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                FileName = fileName,
+                CheckFileExists = true,
+                Filter = "All files|*.*"
+            };
 
             return openDialog;
         }
@@ -57,16 +59,17 @@ namespace PCLParaphernalia
                                                ref folderName,
                                                ref fileName);
 
-            SaveFileDialog saveDialog = new SaveFileDialog();
-
-            saveDialog.InitialDirectory = Directory.Exists(folderName) ? folderName : Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            saveDialog.FileName = fileName;
-            saveDialog.Filter = "Print Files | *.prn; *.PRN";
-            saveDialog.DefaultExt = "prn";
-            saveDialog.RestoreDirectory = true;
-            saveDialog.OverwritePrompt = true;
-            saveDialog.CheckFileExists = false;
-            saveDialog.CheckPathExists = true;
+            SaveFileDialog saveDialog = new SaveFileDialog
+            {
+                InitialDirectory = Directory.Exists(folderName) ? folderName : Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                FileName = fileName,
+                Filter = "Print Files | *.prn; *.PRN",
+                DefaultExt = "prn",
+                RestoreDirectory = true,
+                OverwritePrompt = true,
+                CheckFileExists = false,
+                CheckPathExists = true
+            };
 
             return saveDialog;
         }
