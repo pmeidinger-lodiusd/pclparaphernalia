@@ -15,6 +15,7 @@ namespace PCLParaphernalia
     [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0017:Simplify object initialization", Justification = "<Pending>")]
     public partial class ToolPrintLang : Window
     {
         //--------------------------------------------------------------------//
