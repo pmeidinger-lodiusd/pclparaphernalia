@@ -637,7 +637,7 @@ namespace PCLParaphernalia
                                     ref bool typeTTC,
                                     ref uint numFonts)
         {
-            string tabName = "ttcf";
+            const string tabName = "ttcf";
 
             bool flagOK = false;
             bool fileOpen;
@@ -1792,7 +1792,7 @@ namespace PCLParaphernalia
                                    ref uint[] fontOffsets,
                                    ref string[] fontNames)
         {
-            string tabName = "ttcf";
+            const string tabName = "ttcf";
 
             bool flagOK = true;
             bool fileOpen;
@@ -2542,7 +2542,7 @@ namespace PCLParaphernalia
                                        bool symSetUserSet,
                                        bool symSetMapPCL)
         {
-            string tabName = "cmap";
+            const string tabName = "cmap";
 
             bool flagOK = true;
 
@@ -3602,7 +3602,7 @@ namespace PCLParaphernalia
 
         private bool readData_head()
         {
-            string tabName = "head";
+            const string tabName = "head";
 
             bool flagOK = true;
 
@@ -3743,7 +3743,7 @@ namespace PCLParaphernalia
 
         private bool readData_hhea()
         {
-            string tabName = "hhea";
+            const string tabName = "hhea";
 
             bool flagOK = true;
 
@@ -3860,7 +3860,7 @@ namespace PCLParaphernalia
 
         private bool readData_hmtx()
         {
-            string tabName = "hmtx";
+            const string tabName = "hmtx";
 
             bool flagOK = true;
 
@@ -4166,7 +4166,7 @@ namespace PCLParaphernalia
 
         private bool readData_maxp()
         {
-            string tabName = "maxp";
+            const string tabName = "maxp";
 
             bool flagOK = true;
 
@@ -4265,7 +4265,7 @@ namespace PCLParaphernalia
         private bool readData_name(bool getTTCData,
                                       ref string fullFontName)
         {
-            string tabName = "name";
+            const string tabName = "name";
 
             bool flagOK = true;
 
@@ -4760,7 +4760,7 @@ namespace PCLParaphernalia
 
         private bool readData_OS_2()
         {
-            string tabName = "OS/2";
+            const string tabName = "OS/2";
 
             bool flagOK = true;
 
@@ -5100,7 +5100,7 @@ namespace PCLParaphernalia
 
         private bool readData_PCLT ()
         {
-            string tabName = "PCLT";
+            const string tabName = "PCLT";
 
             bool flagOK = true;
 
@@ -5359,7 +5359,7 @@ namespace PCLParaphernalia
 
         private bool readData_post ()
         {
-            string tabName = "post";
+            const string tabName = "post";
 
             bool flagOK = true;
 
@@ -5448,7 +5448,7 @@ namespace PCLParaphernalia
         private bool readData_ttcf (ref bool typeTTC,
                                        ref uint numFonts)
         {
-            string tabName = "ttcf";
+            const string tabName = "ttcf";
 
             bool flagOK = true;
 
@@ -5552,7 +5552,7 @@ namespace PCLParaphernalia
 
         private bool readData_vhea ()
         {
-            string tabName = "vhea";
+            const string tabName = "vhea";
 
             bool flagOK = true;
 
@@ -5637,7 +5637,7 @@ namespace PCLParaphernalia
 
         private bool readData_vmtx ()
         {
-            string tabName = "vmtx";
+            const string tabName = "vmtx";
 
             bool flagOK = true;
 

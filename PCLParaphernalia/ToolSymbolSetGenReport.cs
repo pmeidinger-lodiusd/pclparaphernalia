@@ -332,7 +332,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            int colCtData = colCt - 1;
+            const int colCtData = colCt - 1;
 
             mapIndx = 0;
             rowIndx = codeMin / colCtData;
@@ -407,9 +407,9 @@ namespace PCLParaphernalia
                                         object writer,
                                         string symSetFilename)
         {
-            int maxLineLen = 80;
+            const int maxLineLen = 80;
 
-            string title = "*** Symbol Set Generator ***";
+            const string title = "*** Symbol Set Generator ***";
 
             //----------------------------------------------------------------//
             //                                                                //

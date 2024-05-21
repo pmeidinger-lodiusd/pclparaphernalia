@@ -540,9 +540,9 @@ namespace PCLParaphernalia
                 bool firstBlock = true;
                 bool supDataWritten = false;
 
-                int offset = 0;
+                const int offset = 0;
                 int endOffset = 0;
-                int bufRem = replyBufLen;
+                const int bufRem = replyBufLen;
                 int blockLen = 0;
                 int binLen = 0;
                 int binTot = 0;

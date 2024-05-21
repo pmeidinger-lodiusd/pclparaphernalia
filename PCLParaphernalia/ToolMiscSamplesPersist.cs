@@ -188,7 +188,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples;
+            const string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -393,13 +393,13 @@ namespace PCLParaphernalia
 
             if (pdlName == _subKeyPCL)
             {
-                byte indxPalCMY =
+                const byte indxPalCMY =
                     (byte) PCLPalettes.eIndex.PCLSimpleColourCMY;
 
                 indxClrBlack = PCLPalettes.getClrItemBlack (indxPalCMY);
                 indxClrWhite = PCLPalettes.getClrItemWhite (indxPalCMY);
 
-                byte indxPalMono =
+                const byte indxPalMono =
                     (byte) PCLPalettes.eIndex.PCLMonochrome;
 
                 indxMonoBlack = PCLPalettes.getClrItemBlack (indxPalMono);
@@ -407,7 +407,7 @@ namespace PCLParaphernalia
             }
             else // if (pdlName == _subKeyPCLXL)
             {
-                byte indxPalRGB =
+                const byte indxPalRGB =
                     (byte) PCLXLPalettes.eIndex.PCLXLRGB;
 
                 indxClrBlack = PCLXLPalettes.getClrItemBlack (indxPalRGB);
@@ -735,7 +735,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples;
+            const string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {

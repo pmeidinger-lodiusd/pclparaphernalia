@@ -61,7 +61,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key = _subKeyTarget;
+            const string key = _subKeyTarget;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -88,7 +88,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey (_mainKey);
 
-            string key = _subKeyTarget + "\\" + _subKeyTargetNetPrinter;
+            const string key = _subKeyTarget + "\\" + _subKeyTargetNetPrinter;
 
             //----------------------------------------------------------------//
 
@@ -134,7 +134,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey (_mainKey);
 
-            string key = _subKeyTarget + "\\" + _subKeyTargetWinPrinter;
+            const string key = _subKeyTarget + "\\" + _subKeyTargetWinPrinter;
 
             //----------------------------------------------------------------//
 
@@ -159,7 +159,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key = _subKeyTarget + "\\" + _subKeyWorkFolder;
+            const string key = _subKeyTarget + "\\" + _subKeyWorkFolder;
 
             string defWorkFolder = Environment.GetEnvironmentVariable("TMP");
 
@@ -184,7 +184,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey (_mainKey);
 
-            string key = _subKeyTarget;
+            const string key = _subKeyTarget;
 
             using (RegistryKey subKey = keyMain.CreateSubKey (key))
             {
@@ -291,7 +291,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey (_mainKey);
 
-            string key = _subKeyTarget + "\\" + _subKeyWorkFolder;
+            const string key = _subKeyTarget + "\\" + _subKeyWorkFolder;
 
             using (RegistryKey subKey = keyMain.CreateSubKey (key))
             {

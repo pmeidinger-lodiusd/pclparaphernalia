@@ -925,7 +925,7 @@ namespace PCLParaphernalia
         {
             StringBuilder decode = new StringBuilder ();
 
-            int decodeMax = _decodeAreaMax;
+            const int decodeMax = _decodeAreaMax;
 
             int itemLen = 0;
 

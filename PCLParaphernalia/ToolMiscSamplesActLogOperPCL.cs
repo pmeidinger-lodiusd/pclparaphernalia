@@ -1297,10 +1297,10 @@ namespace PCLParaphernalia
             const ushort patWidth = 16; // multiple of 8
             const ushort patHeight = 16; // multiple of 8
 
-            byte patWidthMS = (byte) ((patWidth >> 8) & 0xff);
-            byte patWidthLS = (byte) (patWidth & 0xff);
-            byte patHeightMS = (byte) ((patHeight >> 8) & 0xff);
-            byte patHeightLS = (byte) (patHeight & 0xff);
+            const byte patWidthMS = (byte) ((patWidth >> 8) & 0xff);
+            const byte patWidthLS = (byte) (patWidth & 0xff);
+            const byte patHeightMS = (byte) ((patHeight >> 8) & 0xff);
+            const byte patHeightLS = (byte) (patHeight & 0xff);
 
             byte[] patternBase = { 0xC0, 0x01,      // row 00
                                     0xE0, 0x00,      //     01
@@ -1336,9 +1336,9 @@ namespace PCLParaphernalia
                 const byte format = 1;
                 const byte bitsPerPixel = 8;
 
-                int patSize = (patWidth * patHeight * bitsPerPixel) / 8;
+                const int patSize = (patWidth * patHeight * bitsPerPixel) / 8;
 
-                int rowBytes = patWidth / 8;
+                const int rowBytes = patWidth / 8;
 
                 int rowVal;
 
@@ -1403,8 +1403,8 @@ namespace PCLParaphernalia
                 const byte format = 20;
                 const byte bitsPerPixel = 1;
 
-                byte rasterResMS = (byte) ((rasterRes >> 8) & 0xff);
-                byte rasterResLS = (byte) (rasterRes & 0xff);
+                const byte rasterResMS = (byte) ((rasterRes >> 8) & 0xff);
+                const byte rasterResLS = (byte) (rasterRes & 0xff);
 
                 byte[] hddrFmt_20 = { format,
                                       0x00,

@@ -1115,7 +1115,7 @@ namespace PCLParaphernalia
         public static void lineBlockOpen (object writer,
                                           eRptFileFmt rptFileFmt)
         {
-            string tag = "lineblock";
+            const string tag = "lineblock";
 
             if (rptFileFmt == eRptFileFmt.html)
                 lineBlockOpenHtml ((HtmlTextWriter)writer, tag);
@@ -1622,7 +1622,7 @@ namespace PCLParaphernalia
 
             int maxRows = 0;
 
-            string space = " ";
+            const string space = " ";
 
             string colSep = " ".PadRight (_lcSep, ' ');
 

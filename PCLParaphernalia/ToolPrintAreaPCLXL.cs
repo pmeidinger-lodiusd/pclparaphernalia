@@ -203,7 +203,7 @@ namespace PCLParaphernalia
             short lineInc,
                   ptSize;
 
-            byte stroke = 1;
+            const byte stroke = 1;
 
             int indBuf;
 

@@ -248,7 +248,7 @@ namespace PCLParaphernalia
             short lineInc,
                   ptSize;
 
-            short stroke = 1;
+            const short stroke = 1;
 
             //----------------------------------------------------------------//
 

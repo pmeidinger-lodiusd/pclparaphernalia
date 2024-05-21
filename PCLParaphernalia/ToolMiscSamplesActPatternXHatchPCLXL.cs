@@ -160,7 +160,7 @@ namespace PCLParaphernalia
                    boxY1,
                    boxY2;
 
-            byte stroke = 1;
+            const byte stroke = 1;
 
             //----------------------------------------------------------------//
 

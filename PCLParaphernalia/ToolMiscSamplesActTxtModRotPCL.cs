@@ -189,7 +189,7 @@ namespace PCLParaphernalia
                   boxHeight,
                   boxWidth;
 
-            byte stroke = 1;
+            const byte stroke = 1;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -292,7 +292,7 @@ namespace PCLParaphernalia
                                          bool formAsMacro,
                                          ushort logXOffset)
         {
-            string lbCRTerm    = "\x0d" + "~";
+            const string lbCRTerm    = "\x0d" + "~";
 
             short posX,
                   posY;

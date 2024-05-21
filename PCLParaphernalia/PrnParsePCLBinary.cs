@@ -1232,7 +1232,7 @@ namespace PCLParaphernalia
         {
             const int fixedLen = 18 - 6;
 
-            bool dataOK = true;
+            const bool dataOK = true;
 
             //----------------------------------------------------------------//
 
@@ -1300,7 +1300,7 @@ namespace PCLParaphernalia
         {
             const int fixedLen = 86 - 6;
 
-            bool dataOK = true;
+            const bool dataOK = true;
 
             //----------------------------------------------------------------//
 
@@ -1454,7 +1454,7 @@ namespace PCLParaphernalia
         {
             const int fixedLen = 30 - 6;
 
-            bool dataOK = true;
+            const bool dataOK = true;
 
             //----------------------------------------------------------------//
 
@@ -1534,7 +1534,7 @@ namespace PCLParaphernalia
         {
             const int fixedLen = 122 - 6;
 
-            bool dataOK = true;
+            const bool dataOK = true;
 
             //----------------------------------------------------------------//
 
@@ -4453,7 +4453,7 @@ namespace PCLParaphernalia
 
             PrnParseConstants.eContType contType;
 
-            bool dataOK = true;
+            const bool dataOK = true;
 
             int lineLen,
                   offset;
@@ -5048,7 +5048,7 @@ namespace PCLParaphernalia
         {
             PrnParseConstants.eContType contType;
 
-            bool dataOK = true;
+            const bool dataOK = true;
 
             int dataSize,
                   planeNo,
@@ -5867,7 +5867,7 @@ namespace PCLParaphernalia
         {
             PrnParseConstants.eContType contType;
 
-            bool dataOK = true;
+            const bool dataOK = true;
 
             int dataSize,
                   offset;
@@ -6020,8 +6020,8 @@ namespace PCLParaphernalia
             const int fixedLen = 9;
             const int itemLen = 3;
 
-            int lenMin = fixedLen + itemLen;
-            int lenMax = fixedLen + (itemLen * 256);   // must be less than buffer size 
+            const int lenMin = fixedLen + itemLen;
+            const int lenMax = fixedLen + (itemLen * 256);   // must be less than buffer size 
 
             PrnParseConstants.eContType contType;
 
@@ -6850,7 +6850,7 @@ namespace PCLParaphernalia
         {
             PrnParseConstants.eContType contType;
 
-            bool dataOK = true;
+            const bool dataOK = true;
 
             int offset;
 

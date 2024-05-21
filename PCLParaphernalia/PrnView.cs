@@ -220,7 +220,7 @@ namespace PCLParaphernalia
             string offsetFormat;
             string offsetStr;
 
-            bool rowLimitReached = false;
+            const bool rowLimitReached = false;
             bool endReached = false;
 
             byte[] buf = new byte[PrnParseConstants.bufSize];

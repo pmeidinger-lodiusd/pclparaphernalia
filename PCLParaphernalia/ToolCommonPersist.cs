@@ -41,7 +41,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key = _subKeyTools;
+            const string key = _subKeyTools;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -64,7 +64,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key = _subKeyTools;
+            const string key = _subKeyTools;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {

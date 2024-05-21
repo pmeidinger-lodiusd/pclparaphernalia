@@ -1385,7 +1385,7 @@ namespace PCLParaphernalia
 
         public void metricsSaveDataLogOper()
         {
-            bool dummyBool = false;
+            const bool dummyBool = false;
 
             ToolMiscSamplesPersist.saveDataTypeLogOper (
                 "PCL",

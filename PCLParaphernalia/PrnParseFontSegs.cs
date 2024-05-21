@@ -76,7 +76,7 @@ namespace PCLParaphernalia
             PCLCharCollections.eBitType bitType;
             PrnParseRowTypes.eType rowType;
 
-            bool dataOK = true;
+            const bool dataOK = true;
 
             ulong charCollArray,
                    charCollVal,
@@ -733,7 +733,7 @@ namespace PCLParaphernalia
                                     ref int hddrRem,
                                     ref int hddrChksVal)
         {
-            string segTypeDesc = "Null";
+            const string segTypeDesc = "Null";
 
             PrnParseConstants.eContType contType;
 
@@ -1023,7 +1023,7 @@ namespace PCLParaphernalia
                                    ref int hddrRem,
                                    ref int hddrChksVal)
         {
-            string segTypeDesc = "AP: Application Support";
+            const string segTypeDesc = "AP: Application Support";
 
             PrnParseConstants.eContType contType;
 
@@ -1169,7 +1169,7 @@ namespace PCLParaphernalia
                                    ref int hddrRem,
                                    ref int hddrChksVal)
         {
-            string segTypeDesc = "BR: Bitmap Resolution";
+            const string segTypeDesc = "BR: Bitmap Resolution";
 
             PrnParseConstants.eContType contType;
 
@@ -1353,7 +1353,7 @@ namespace PCLParaphernalia
                                    ref int hddrRem,
                                    ref int hddrChksVal)
         {
-            string segTypeDesc = "CC: Character Complement";
+            const string segTypeDesc = "CC: Character Complement";
 
             PrnParseConstants.eContType contType;
 
@@ -1510,7 +1510,7 @@ namespace PCLParaphernalia
                                    ref int hddrRem,
                                    ref int hddrChksVal)
         {
-            string segTypeDesc = "CE: Character Enhancement";
+            const string segTypeDesc = "CE: Character Enhancement";
 
             PrnParseConstants.eContType contType;
 
@@ -1656,7 +1656,7 @@ namespace PCLParaphernalia
                                    ref int hddrRem,
                                    ref int hddrChksVal)
         {
-            string segTypeDesc = "CP: Copyright";
+            const string segTypeDesc = "CP: Copyright";
 
             const int sliceMax = 50;
 
@@ -1854,7 +1854,7 @@ namespace PCLParaphernalia
                                    ref int hddrRem,
                                    ref int hddrChksVal)
         {
-            string segTypeDesc = "GC: Galley Character";
+            const string segTypeDesc = "GC: Galley Character";
 
             PrnParseConstants.eContType contType;
 
@@ -2173,7 +2173,7 @@ namespace PCLParaphernalia
                                    ref int hddrRem,
                                    ref int hddrChksVal)
         {
-            string segTypeDesc = "GI: Global Intellifont";
+            const string segTypeDesc = "GI: Global Intellifont";
 
             PrnParseConstants.eContType contType;
 
@@ -2315,7 +2315,7 @@ namespace PCLParaphernalia
                                    ref int hddrRem,
                                    ref int hddrChksVal)
         {
-            string segTypeDesc = "GT: Global TrueType";
+            const string segTypeDesc = "GT: Global TrueType";
 
             PrnParseConstants.eContType contType;
 
@@ -2779,7 +2779,7 @@ namespace PCLParaphernalia
                                    ref int hddrRem,
                                    ref int hddrChksVal)
         {
-            string segTypeDesc = "IF: Intellifont Face";
+            const string segTypeDesc = "IF: Intellifont Face";
 
             PrnParseConstants.eContType contType;
 
@@ -2921,7 +2921,7 @@ namespace PCLParaphernalia
                                    ref int hddrRem,
                                    ref int hddrChksVal)
         {
-            string segTypeDesc = "PA: Panose Description";
+            const string segTypeDesc = "PA: Panose Description";
 
             PrnParseConstants.eContType contType;
 
@@ -3094,7 +3094,7 @@ namespace PCLParaphernalia
                                    ref int hddrRem,
                                    ref int hddrChksVal)
         {
-            string segTypeDesc = "PF: PostScript Font";
+            const string segTypeDesc = "PF: PostScript Font";
 
             PrnParseConstants.eContType contType;
 
@@ -3236,7 +3236,7 @@ namespace PCLParaphernalia
                                    ref int hddrRem,
                                    ref int hddrChksVal)
         {
-            string segTypeDesc = "TF: Type Face String";
+            const string segTypeDesc = "TF: Type Face String";
 
             PrnParseConstants.eContType contType;
 
@@ -3378,7 +3378,7 @@ namespace PCLParaphernalia
                                    ref int hddrRem,
                                    ref int hddrChksVal)
         {
-            string segTypeDesc = "VE: Vertical Exclude";
+            const string segTypeDesc = "VE: Vertical Exclude";
 
             PrnParseConstants.eContType contType;
 
@@ -3662,7 +3662,7 @@ namespace PCLParaphernalia
                                    ref int hddrRem,
                                    ref int hddrChksVal)
         {
-            string segTypeDesc = "VI: Vendor Information";
+            const string segTypeDesc = "VI: Vendor Information";
 
             const int sliceMax = 50;
 
@@ -3860,7 +3860,7 @@ namespace PCLParaphernalia
                                    ref int hddrRem,
                                    ref int hddrChksVal)
         {
-            string segTypeDesc = "VR: Vertical Rotation";
+            const string segTypeDesc = "VR: Vertical Rotation";
 
             PrnParseConstants.eContType contType;
 
@@ -4051,7 +4051,7 @@ namespace PCLParaphernalia
                                    ref int hddrRem,
                                    ref int hddrChksVal)
         {
-            string segTypeDesc = "VT: Vertical Transformation";
+            const string segTypeDesc = "VT: Vertical Transformation";
 
             PrnParseConstants.eContType contType;
 
@@ -4291,7 +4291,7 @@ namespace PCLParaphernalia
                                    ref int hddrRem,
                                    ref int hddrChksVal)
         {
-            string segTypeDesc = "XW: X-Window Font";
+            const string segTypeDesc = "XW: X-Window Font";
 
             PrnParseConstants.eContType contType;
 

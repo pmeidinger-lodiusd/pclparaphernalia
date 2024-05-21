@@ -466,13 +466,13 @@ namespace PCLParaphernalia
             const bool flagValIsLen = true;
             const bool flagValIsPCL = true;
 
-            int tagLen1 = 1;
+            const int tagLen1 = 1;
             //   Int32 tagLen2 = 2; // no 2-byte tags yet defined
 
             int key;
 
             byte tagA;
-            byte tagB = 0x00;
+            const byte tagB = 0x00;
 
             tagA = 0x20;                                              // ?    //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;

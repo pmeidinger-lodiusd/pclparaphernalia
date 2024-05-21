@@ -129,7 +129,7 @@ namespace PCLParaphernalia
                                      int timeoutReceive,
                                      bool keepConnect)
         {
-            int result = 0;
+            const int result = 0;
 
             IPAddress ipAddress = new IPAddress(0x00);
 

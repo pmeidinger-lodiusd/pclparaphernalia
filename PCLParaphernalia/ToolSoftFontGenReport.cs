@@ -299,9 +299,9 @@ namespace PCLParaphernalia
                                         string fontFilenameTTF,
                                         string fontFilenamePCL)
         {
-            int maxLineLen = 80;
+            const int maxLineLen = 80;
 
-            string title = "*** Soft Font Generator ***";
+            const string title = "*** Soft Font Generator ***";
 
             //----------------------------------------------------------------//
             //                                                                //

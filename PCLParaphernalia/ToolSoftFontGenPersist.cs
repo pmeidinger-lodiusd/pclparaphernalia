@@ -73,7 +73,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen;
+            const string key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen;
 
             int tmpInt;
 
@@ -276,7 +276,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey (_mainKey);
 
-            string key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen;
+            const string key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen;
 
             using (RegistryKey subKey = keyMain.CreateSubKey (key))
             {
@@ -344,7 +344,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen;
+            const string key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -562,7 +562,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey (_mainKey);
 
-            string key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen;
+            const string key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen;
 
             using (RegistryKey subKey = keyMain.CreateSubKey (key))
             {

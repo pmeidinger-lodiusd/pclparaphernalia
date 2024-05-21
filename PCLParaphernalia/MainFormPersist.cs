@@ -53,7 +53,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key = _subKeyVersionData;
+            const string key = _subKeyVersionData;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -83,7 +83,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key = _subKeyWindowState;
+            const string key = _subKeyWindowState;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -112,7 +112,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key = _subKeyVersionData;
+            const string key = _subKeyVersionData;
 
             using(RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -145,7 +145,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key = _subKeyWindowState;
+            const string key = _subKeyWindowState;
 
             using(RegistryKey subKey = keyMain.CreateSubKey(key))
             {

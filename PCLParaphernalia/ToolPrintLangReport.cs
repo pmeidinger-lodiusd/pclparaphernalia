@@ -427,7 +427,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    int maxLineLen = 120;
+                    const int maxLineLen = 120;
 
                     ReportCore.tableRowText (writer, rptFileFmt, colCt, data,
                                              colNames, colSizes);
@@ -1584,7 +1584,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    int maxLineLen = 120;
+                    const int maxLineLen = 120;
 
                     ReportCore.tableRowText (writer, rptFileFmt, colCt, data,
                                              colNames, colSizes);
@@ -1870,7 +1870,7 @@ namespace PCLParaphernalia
                                          bool flagSymSetList,
                                          bool flagSymSetMap)
         {
-            int maxLineLen = 80;          // ********************** set this from column sizes ????????????????
+            const int maxLineLen = 80;          // ********************** set this from column sizes ????????????????
 
             int ctCols;
 

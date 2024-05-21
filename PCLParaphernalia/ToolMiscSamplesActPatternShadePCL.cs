@@ -208,7 +208,7 @@ namespace PCLParaphernalia
                   boxHeight,
                   boxWidth;
 
-            byte stroke = 1;
+            const byte stroke = 1;
 
             //----------------------------------------------------------------//
             //                                                                //

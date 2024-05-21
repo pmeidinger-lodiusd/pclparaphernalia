@@ -525,11 +525,11 @@ namespace PCLParaphernalia
 
         private static void populateTable()
         {
-            bool sizeIsMetric   = true;
-            bool sizeIsImperial = false;
+            const bool sizeIsMetric   = true;
+            const bool sizeIsImperial = false;
 
-            bool sizeIsRare     = true;
-            bool sizeIsCommon   = false;
+            const bool sizeIsRare     = true;
+            const bool sizeIsCommon   = false;
 
             _paperSizes = new PCLPaperSize []
             {

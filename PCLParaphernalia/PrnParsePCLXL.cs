@@ -1053,7 +1053,7 @@ namespace PCLParaphernalia
 
             int attrPos = bufOffset;
 
-            string descPrefix = "  ";
+            const string descPrefix = "  ";
 
             string desc = "";
 
@@ -1459,7 +1459,7 @@ namespace PCLParaphernalia
                     flagReserved = false,
                     invalidSeqFound = false;
 
-            string descPrefix = "    ";
+            const string descPrefix = "    ";
             string desc = "";
 
             //----------------------------------------------------------------//

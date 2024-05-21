@@ -1674,7 +1674,7 @@ namespace PCLParaphernalia
         public static ushort translateIdToKind1(ushort idNum,
                                                 byte idAlpha)
         {
-            ushort badValue = 0;
+            const ushort badValue = 0;
 
             if ((idNum < 1) || (idNum > 2047))
                 return badValue;

@@ -177,8 +177,8 @@ namespace PCLParaphernalia
 
         private static bool isDriverXPS (IntPtr hPrinter)
         {
-            uint PRINTER_DRIVER_XPS_FLAG = 0x00000002;
-            uint ERROR_INSUFFICIENT_BUFFER = 0x0000007a;
+            const uint PRINTER_DRIVER_XPS_FLAG = 0x00000002;
+            const uint ERROR_INSUFFICIENT_BUFFER = 0x0000007a;
 
             bool bSuccess = false;
             bool bDriverXPS = false;
@@ -358,7 +358,7 @@ namespace PCLParaphernalia
         public static int sendData (BinaryReader prnReader,
                                       string printerName)
         {
-            int result = 0;
+            const int result = 0;
             int dwError = 0,
                   dwWritten = 0;
 

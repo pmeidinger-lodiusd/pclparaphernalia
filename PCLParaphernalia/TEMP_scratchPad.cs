@@ -96,7 +96,7 @@ namespace PCLParaphernalia
 
             string temp;
 
-            byte escape = 0x1b;
+            const byte escape = 0x1b;
 
             byte[] bufStd = new byte[64];
 

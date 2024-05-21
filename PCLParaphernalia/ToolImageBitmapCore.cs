@@ -305,7 +305,7 @@ namespace PCLParaphernalia
 
         public static int readBmpFileHeader()
         {
-            int result = 0;
+            const int result = 0;
 
             uint temp;
             byte[] id = new byte[2];
@@ -344,7 +344,7 @@ namespace PCLParaphernalia
 
         public static int readBmpInfoHeader()
         {
-            int result = 0;
+            const int result = 0;
 
             _infoHeader.infoSize = readUInt32LE();
 
@@ -382,7 +382,7 @@ namespace PCLParaphernalia
 
         public static int readBmpPalette()
         {
-            int result = 0;
+            const int result = 0;
 
             ushort bitsPerPixel;
 

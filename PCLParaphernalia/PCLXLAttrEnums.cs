@@ -399,9 +399,9 @@ namespace PCLParaphernalia
 
             byte operTag;
             byte attrTagA;
-            byte attrTagB = 0x00;
+            const byte attrTagB = 0x00;
 
-            int attrLen1 = 1;
+            const int attrLen1 = 1;
             //  Int32 attrLen2 = 2; // no 2-byte attribute tages defined yet
             int attrLen;
             int enumVal;

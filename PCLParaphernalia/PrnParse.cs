@@ -181,7 +181,7 @@ namespace PCLParaphernalia
             int valCharSetSubCode = 0;
 
             bool backTrack       = false;
-            bool rowLimitReached = false;
+            const bool rowLimitReached = false;
             bool endReached      = false;
             bool badSeq          = false;
             bool invalidSeqFound = false;

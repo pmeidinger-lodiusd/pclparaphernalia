@@ -335,7 +335,7 @@ namespace PCLParaphernalia
             ref ushort symSetNo,
             ref PCLSymSetTypes.eIndex symSetType)
         {
-            bool OK = true;
+            const bool OK = true;
 
             ushort hddrDescLen;
 
@@ -564,7 +564,7 @@ namespace PCLParaphernalia
             ref ushort hddrLen)
         {
             string messHeader  = "Download font file '" + fileName + "':\r\n";
-            string messTrailer = "\r\nYou will have to choose another file.";
+            const string messTrailer = "\r\nYou will have to choose another file.";
 
             bool OK = false;
 

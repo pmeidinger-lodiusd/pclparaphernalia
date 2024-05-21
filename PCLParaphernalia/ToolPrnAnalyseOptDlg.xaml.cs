@@ -1750,7 +1750,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            int ctSampleCols = 2;
+            const int ctSampleCols = 2;
             int ctSampleRows = _ctClrMapRowTypes / ctSampleCols;
 
             if ((_ctClrMapRowTypes % ctSampleCols) != 0)

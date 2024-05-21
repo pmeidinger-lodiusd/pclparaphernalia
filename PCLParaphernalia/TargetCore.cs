@@ -173,8 +173,8 @@ namespace PCLParaphernalia
             int tmpFmt = 0,
                   tmpChkMarks = 0;
 
-            byte indxFmtNA    = (byte) ReportCore.eRptFileFmt.NA;
-            byte indxOptChkNA = (byte) ReportCore.eRptChkMarks.NA;
+            const byte indxFmtNA    = (byte) ReportCore.eRptFileFmt.NA;
+            const byte indxOptChkNA = (byte) ReportCore.eRptChkMarks.NA;
 
             bool flagNA = false;
 

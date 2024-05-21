@@ -105,7 +105,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key = _subKeyTools + "\\" + _subKeyToolsAnalyse;
+            const string key = _subKeyTools + "\\" + _subKeyToolsAnalyse;
 
             string defWorkFolder = ToolCommonData.DefWorkFolder;
 
@@ -131,7 +131,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey (_mainKey);
 
-            string key = _subKeyTools + "\\" + _subKeyToolsAnalyse;
+            const string key = _subKeyTools + "\\" + _subKeyToolsAnalyse;
 
             using (RegistryKey subKey = keyMain.CreateSubKey (key))
             {
@@ -157,7 +157,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey (_mainKey);
 
-            string key = _subKeyTools + "\\" + _subKeyToolsAnalyse +
+            const string key = _subKeyTools + "\\" + _subKeyToolsAnalyse +
                                         "\\" + _subKeyOptCharSet;
 
             using (RegistryKey subKey = keyMain.CreateSubKey (key))
@@ -186,7 +186,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey (_mainKey);
 
-            string key = _subKeyTools + "\\" + _subKeyToolsAnalyse +
+            const string key = _subKeyTools + "\\" + _subKeyToolsAnalyse +
                                         "\\" + _subKeyOptClrMap;
 
             int tmpInt;
@@ -218,7 +218,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey (_mainKey);
 
-            string key = _subKeyTools + "\\" + _subKeyToolsAnalyse +
+            const string key = _subKeyTools + "\\" + _subKeyToolsAnalyse +
                                         "\\" + _subKeyOptClrMap +
                                         "\\" + _subKeyCrnt;
 
@@ -351,7 +351,7 @@ namespace PCLParaphernalia
 
             int tmpInt;
 
-            string key = _subKeyTools + "\\" + _subKeyToolsAnalyse +
+            const string key = _subKeyTools + "\\" + _subKeyToolsAnalyse +
                                         "\\" + _subKeyOptGeneral;
 
             using (RegistryKey subKey = keyMain.CreateSubKey (key))
@@ -388,7 +388,7 @@ namespace PCLParaphernalia
 
             int tmpInt;
 
-            string key = _subKeyTools + "\\" + _subKeyToolsAnalyse +
+            const string key = _subKeyTools + "\\" + _subKeyToolsAnalyse +
                                         "\\" + _subKeyOptHPGL2;
 
             using (RegistryKey subKey = keyMain.CreateSubKey (key))
@@ -437,7 +437,7 @@ namespace PCLParaphernalia
 
             int tmpInt;
 
-            string key = _subKeyTools + "\\" + _subKeyToolsAnalyse +
+            const string key = _subKeyTools + "\\" + _subKeyToolsAnalyse +
                                         "\\" + _subKeyOptPCL;
 
             using (RegistryKey subKey = keyMain.CreateSubKey (key))
@@ -610,7 +610,7 @@ namespace PCLParaphernalia
 
             int tmpInt;
 
-            string key = _subKeyTools + "\\" + _subKeyToolsAnalyse +
+            const string key = _subKeyTools + "\\" + _subKeyToolsAnalyse +
                                         "\\" + _subKeyOptPCLXL;
 
             using (RegistryKey subKey = keyMain.CreateSubKey (key))
@@ -712,7 +712,7 @@ namespace PCLParaphernalia
 
             int tmpInt;
 
-            string key = _subKeyTools + "\\" + _subKeyToolsAnalyse +
+            const string key = _subKeyTools + "\\" + _subKeyToolsAnalyse +
                                         "\\" + _subKeyOptPML;
 
             using (RegistryKey subKey = keyMain.CreateSubKey (key))
@@ -754,7 +754,7 @@ namespace PCLParaphernalia
 
             int tmpInt;
 
-            string key = _subKeyTools + "\\" + _subKeyToolsAnalyse +
+            const string key = _subKeyTools + "\\" + _subKeyToolsAnalyse +
                                         "\\" + _subKeyOptStats;
 
             using (RegistryKey subKey = keyMain.CreateSubKey (key))
@@ -788,7 +788,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key = _subKeyTools + "\\" + _subKeyToolsAnalyse;
+            const string key = _subKeyTools + "\\" + _subKeyToolsAnalyse;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -815,7 +815,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey (_mainKey);
 
-            string key = _subKeyTools + "\\" + _subKeyToolsAnalyse;
+            const string key = _subKeyTools + "\\" + _subKeyToolsAnalyse;
 
             using (RegistryKey subKey = keyMain.CreateSubKey (key))
             {

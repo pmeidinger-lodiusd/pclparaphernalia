@@ -371,7 +371,7 @@ namespace PCLParaphernalia
             byte[] bufStd = new byte[sizeStd];
 
             byte[] rgbBlack = { 0, 0, 0 };
-            byte greyLevelBlack = 0;
+            const byte greyLevelBlack = 0;
 
             short posX,
                   posY;
@@ -1107,7 +1107,7 @@ namespace PCLParaphernalia
             byte[] bufStd = new byte[sizeStd];
 
             byte[] rgbBlack = {0, 0, 0};
-            byte greyLevelBlack = 0;
+            const byte greyLevelBlack = 0;
 
             short posX,
                   posY;

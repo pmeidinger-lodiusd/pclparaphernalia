@@ -794,8 +794,8 @@ namespace PCLParaphernalia
         {
             int nameRootLen = _txtBoxRootNamePCL_CID.Length;
 
-            int planeCt  = _planeCtPCL_CID;
-            int sampleCt = _sampleCtPCL_CID;
+            const int planeCt  = _planeCtPCL_CID;
+            const int sampleCt = _sampleCtPCL_CID;
 
             int sampleNo = 0,
                   planeNo  = 0,
@@ -837,8 +837,8 @@ namespace PCLParaphernalia
         {
             int nameRootLen = _txtBoxRootNamePCLXL_Gray.Length;
 
-            int planeCt = _planeCtPCLXL_Gray;
-            int sampleCt = _sampleCtPCLXL_Gray;
+            const int planeCt = _planeCtPCLXL_Gray;
+            const int sampleCt = _sampleCtPCLXL_Gray;
 
             int sampleNo = 0,
                   planeNo = 0,
@@ -880,8 +880,8 @@ namespace PCLParaphernalia
         {
             int nameRootLen = _txtBoxRootNamePCLXL_RGB.Length;
 
-            int planeCt = _planeCtPCLXL_RGB;
-            int sampleCt = _sampleCtPCLXL_RGB;
+            const int planeCt = _planeCtPCLXL_RGB;
+            const int sampleCt = _sampleCtPCLXL_RGB;
 
             int sampleNo = 0,
                   planeNo = 0,

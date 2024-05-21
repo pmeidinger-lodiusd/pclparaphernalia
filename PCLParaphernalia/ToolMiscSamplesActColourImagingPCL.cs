@@ -201,7 +201,7 @@ namespace PCLParaphernalia
                   rectHeight,
                   rectWidth;
 
-            byte stroke = 1;
+            const byte stroke = 1;
 
             //----------------------------------------------------------------//
             //                                                                //

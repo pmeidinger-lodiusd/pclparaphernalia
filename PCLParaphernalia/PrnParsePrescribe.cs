@@ -257,7 +257,7 @@ namespace PCLParaphernalia
 
             bool backTrack = false;
 
-            bool invalidSeqFound = false;
+            const bool invalidSeqFound = false;
 
             byte prefixA = 0x00,
                  prefixB = 0x00;

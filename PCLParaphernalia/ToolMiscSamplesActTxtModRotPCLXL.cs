@@ -151,7 +151,7 @@ namespace PCLParaphernalia
                    boxY1,
                    boxY2;
 
-            byte stroke = 1;
+            const byte stroke = 1;
 
             //----------------------------------------------------------------//
 
@@ -401,9 +401,9 @@ namespace PCLParaphernalia
 
             byte[] bufStd = new byte[sizeStd];
 
-            string sampleText  = "0123456789";
-            string sampleTextA = "01234";
-            string sampleTextB = "56789";
+            const string sampleText  = "0123456789";
+            const string sampleTextA = "01234";
+            const string sampleTextB = "56789";
 
             short posX,
                   posY;

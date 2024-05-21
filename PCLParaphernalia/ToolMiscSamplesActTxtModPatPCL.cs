@@ -192,7 +192,7 @@ namespace PCLParaphernalia
                   rectHeight,
                   rectWidth;
 
-            byte stroke = 1;
+            const byte stroke = 1;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -399,7 +399,7 @@ namespace PCLParaphernalia
                                          bool formAsMacro,
                                          ushort logXOffset)
         {
-            string sampleText  = "000000000000000";
+            const string sampleText  = "000000000000000";
 
             short posX,
                   posY;

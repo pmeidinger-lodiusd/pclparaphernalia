@@ -247,7 +247,7 @@ namespace PCLParaphernalia
             const byte techTrueType = 1;
             //  const Byte techBitmap   = 254;
 
-            bool OK = true;
+            const bool OK = true;
 
             byte[] hddr = new byte[_minHddrDescLen];
 
@@ -309,7 +309,7 @@ namespace PCLParaphernalia
             const byte maxFontNameLen = 20;
 
             string messHeader  = "Download font file '" + fileName + "':\n\n";
-            string messTrailer = "\n\nYou will have to choose another file.";
+            const string messTrailer = "\n\nYou will have to choose another file.";
 
             bool OK = true;
             bool beginFound = false;

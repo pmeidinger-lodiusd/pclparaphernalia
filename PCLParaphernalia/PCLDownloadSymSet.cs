@@ -247,7 +247,7 @@ namespace PCLParaphernalia
             bool flagOK = true;
 
             string messHeader = "Download symbol set file '" + fileName + "':\n\n";
-            string messTrailer = "\n\nYou will have to choose another file.";
+            const string messTrailer = "\n\nYou will have to choose another file.";
 
             int offset = (int) fileOffset;
             int value = 0;
@@ -479,7 +479,7 @@ namespace PCLParaphernalia
             const int rangeC1Min = 0x80;
             const int rangeC1Max = 0x9f;
 
-            bool OK = true;
+            const bool OK = true;
 
             bool usesC1Range = false;
 

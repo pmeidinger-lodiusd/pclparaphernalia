@@ -73,7 +73,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key = _subKeyTools + "\\" + _subKeyToolsPrintLang;
+            const string key = _subKeyTools + "\\" + _subKeyToolsPrintLang;
 
             string defWorkFolder = ToolCommonData.DefWorkFolder;
 
@@ -305,7 +305,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey (_mainKey);
 
-            string key = _subKeyTools + "\\" + _subKeyToolsPrintLang;
+            const string key = _subKeyTools + "\\" + _subKeyToolsPrintLang;
 
             int tmpInt;
 
@@ -373,7 +373,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key = _subKeyTools + "\\" + _subKeyToolsPrintLang;
+            const string key = _subKeyTools + "\\" + _subKeyToolsPrintLang;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -654,7 +654,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey (_mainKey);
 
-            string key = _subKeyTools + "\\" + _subKeyToolsPrintLang;
+            const string key = _subKeyTools + "\\" + _subKeyToolsPrintLang;
 
             using (RegistryKey subKey = keyMain.CreateSubKey (key))
             {
