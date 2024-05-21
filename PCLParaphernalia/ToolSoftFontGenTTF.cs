@@ -3434,10 +3434,12 @@ namespace PCLParaphernalia
                                 }
                             }                         // end of 'if(reqCode)' //
 
-                            if (!flagOK) i = endCode + 1;   // force end loop //
+                            if (!flagOK)
+                                i = endCode + 1;   // force end loop //
                         }                             // end of inner 'for'   //
 
-                        if (!flagOK) segx2 = fmt4SegCountx2;// force end loop //
+                        if (!flagOK)
+                            segx2 = fmt4SegCountx2;// force end loop //
                     }                                 // end of outer 'for'   //
                 }                                     // end of 'if(flagOK)'  //
 
