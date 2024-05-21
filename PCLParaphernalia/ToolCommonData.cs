@@ -21,7 +21,7 @@ namespace PCLParaphernalia
 
         [System.Reflection.Obfuscation(Exclude = true)]
 
-        public enum eToolIds : byte
+        public enum ToolIds : byte
         {
             Min,
             FontSample,
@@ -44,7 +44,7 @@ namespace PCLParaphernalia
 
         [System.Reflection.Obfuscation(Exclude = true)]
 
-        public enum eToolSubIds : byte
+        public enum ToolSubIds : byte
         {
             None,
             // used by ToolPrintLang:
@@ -67,7 +67,7 @@ namespace PCLParaphernalia
             Unicode         //
         }
 
-        public enum ePrintLang
+        public enum PrintLang
         {
             PCL = 0,
             PCLXL,
@@ -108,7 +108,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadWorkFoldername()
+        public static void LoadWorkFoldername()
         {
             TargetPersist.loadDataWorkFolder(ref _defWorkFolder);
         }

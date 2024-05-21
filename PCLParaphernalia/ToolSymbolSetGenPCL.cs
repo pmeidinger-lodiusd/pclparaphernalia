@@ -106,7 +106,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    PCLWriter.symSetDownloadCode(_binWriter,
+                    PCLWriter.SymSetDownloadCode(_binWriter,
                                                   symSetNo);
 
                     //--------------------------------------------------------//
@@ -132,7 +132,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    PCLWriter.symSetDownloadSave(_binWriter, true);
+                    PCLWriter.SymSetDownloadSave(_binWriter, true);
 
                     //--------------------------------------------------------//
                     //                                                        //
@@ -363,7 +363,7 @@ namespace PCLParaphernalia
             mapSize = (codeMax - codeMin + 1) * 2;
             descSize = mapSize + cSizeHddrFixed;
 
-            PCLWriter.symSetDownloadDesc(_binWriter, (uint)descSize);
+            PCLWriter.SymSetDownloadDesc(_binWriter, (uint)descSize);
 
             //----------------------------------------------------------------//
             //                                                                //

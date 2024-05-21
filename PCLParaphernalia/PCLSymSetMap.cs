@@ -24,7 +24,7 @@ namespace PCLParaphernalia
 
         private readonly bool _flagMapDiff;
 
-        private readonly PCLSymSetMaps.eSymSetMapId _mapId;
+        private readonly PCLSymSetMaps.SymSetMapId _mapId;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -32,7 +32,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLSymSetMap(PCLSymSetMaps.eSymSetMapId mapId,
+        public PCLSymSetMap(PCLSymSetMaps.SymSetMapId mapId,
                              ushort rangeCt,
                              ushort[][] rangeData,
                              ushort[][] mapDataStd,

@@ -25,28 +25,28 @@ namespace PCLParaphernalia
 
         private static readonly int[] _subsetPDLs =
         {
-            (int) ToolCommonData.ePrintLang.PCL,
-            (int) ToolCommonData.ePrintLang.PCLXL,
+            (int) ToolCommonData.PrintLang.PCL,
+            (int) ToolCommonData.PrintLang.PCLXL,
         };
 
         private static readonly int[] _subsetOrientations =
         {
-            (int) PCLOrientations.eIndex.Portrait,
-            (int) PCLOrientations.eIndex.Landscape,
-            (int) PCLOrientations.eIndex.ReversePortrait,
-            (int) PCLOrientations.eIndex.ReverseLandscape
+            (int) PCLOrientations.Index.Portrait,
+            (int) PCLOrientations.Index.Landscape,
+            (int) PCLOrientations.Index.ReversePortrait,
+            (int) PCLOrientations.Index.ReverseLandscape
         };
 
         private static readonly int[] _subsetPaperSizes =
         {
-            (int) PCLPaperSizes.eIndex.ISO_A4,
-            (int) PCLPaperSizes.eIndex.ANSI_A_Letter
+            (int) PCLPaperSizes.Index.ISO_A4,
+            (int) PCLPaperSizes.Index.ANSI_A_Letter
         };
 
         private static readonly int[] _subsetPaperTypes =
         {
-            (int) PCLPaperTypes.eIndex.NotSet,
-            (int) PCLPaperTypes.eIndex.Plain
+            (int) PCLPaperTypes.Index.NotSet,
+            (int) PCLPaperTypes.Index.Plain
         };
 
         //--------------------------------------------------------------------//
@@ -55,7 +55,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private ToolCommonData.ePrintLang _crntPDL;
+        private ToolCommonData.PrintLang _crntPDL;
 
         private int _ctPDLs;
         private int _ctOrientations;
@@ -88,7 +88,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ToolImageBitmap(ref ToolCommonData.ePrintLang crntPDL)
+        public ToolImageBitmap(ref ToolCommonData.PrintLang crntPDL)
         {
             InitializeComponent();
 
@@ -147,7 +147,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             _indxPDL = cbPDL.SelectedIndex;
-            _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
+            _crntPDL = (ToolCommonData.PrintLang)_subsetPDLs[_indxPDL];
 
             pdlOptionsStore();
 
@@ -183,10 +183,10 @@ namespace PCLParaphernalia
             {
                 BinaryWriter binWriter = null;
 
-                TargetCore.requestStreamOpen(
+                TargetCore.RequestStreamOpen(
                     ref binWriter,
-                    ToolCommonData.eToolIds.ImageBitmap,
-                    ToolCommonData.eToolSubIds.None,
+                    ToolCommonData.ToolIds.ImageBitmap,
+                    ToolCommonData.ToolSubIds.None,
                     _crntPDL);
 
                 if (result == 0)
@@ -197,7 +197,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+                    if (_crntPDL == ToolCommonData.PrintLang.PCL)
                     {
                         ToolImageBitmapPCL.generateJob(
                             binWriter,
@@ -226,7 +226,7 @@ namespace PCLParaphernalia
 
                 if (result == 0)
                 {
-                    TargetCore.requestStreamWrite(false);
+                    TargetCore.RequestStreamWrite(false);
                 }
             }
 
@@ -324,7 +324,7 @@ namespace PCLParaphernalia
         {
             if (_initialised && cbOrientation.HasItems)
             {
-                if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+                if (_crntPDL == ToolCommonData.PrintLang.PCL)
                     _indxOrientationPCL = cbOrientation.SelectedIndex;
                 else
                     _indxOrientationPCLXL = cbOrientation.SelectedIndex;
@@ -345,7 +345,7 @@ namespace PCLParaphernalia
         {
             if (_initialised && cbPaperSize.HasItems)
             {
-                if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+                if (_crntPDL == ToolCommonData.PrintLang.PCL)
                     _indxPaperSizePCL = cbPaperSize.SelectedIndex;
                 else
                     _indxPaperSizePCLXL = cbPaperSize.SelectedIndex;
@@ -366,7 +366,7 @@ namespace PCLParaphernalia
         {
             if (_initialised && cbPaperType.HasItems)
             {
-                if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+                if (_crntPDL == ToolCommonData.PrintLang.PCL)
                     _indxPaperTypePCL = cbPaperType.SelectedIndex;
                 else
                     _indxPaperTypePCLXL = cbPaperType.SelectedIndex;
@@ -390,11 +390,11 @@ namespace PCLParaphernalia
                 pdlOptionsStore();
 
                 _indxPDL = cbPDL.SelectedIndex;
-                _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
+                _crntPDL = (ToolCommonData.PrintLang)_subsetPDLs[_indxPDL];
 
                 pdlOptionsRestore();
 
-                if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+                if (_crntPDL == ToolCommonData.PrintLang.PCL)
                 {
                     lbResolution.Visibility = Visibility.Visible;
                     cbResolution.Visibility = Visibility.Visible;
@@ -423,7 +423,7 @@ namespace PCLParaphernalia
         {
             if (_initialised && cbResolution.HasItems)
             {
-                if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+                if (_crntPDL == ToolCommonData.PrintLang.PCL)
                 {
                     _indxRasterResolutionPCL =
                         (ushort)cbResolution.SelectedIndex;
@@ -437,7 +437,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void giveCrntPDL(ref ToolCommonData.ePrintLang crntPDL)
+        public void giveCrntPDL(ref ToolCommonData.PrintLang crntPDL)
         {
             crntPDL = _crntPDL;
         }
@@ -472,7 +472,7 @@ namespace PCLParaphernalia
                 index = _subsetPDLs[i];
 
                 cbPDL.Items.Add(Enum.GetName(
-                    typeof(ToolCommonData.ePrintLang), i));
+                    typeof(ToolCommonData.PrintLang), i));
             }
 
             //----------------------------------------------------------------//
@@ -485,7 +485,7 @@ namespace PCLParaphernalia
             {
                 index = _subsetOrientations[i];
 
-                cbOrientation.Items.Add(PCLOrientations.getName(index));
+                cbOrientation.Items.Add(PCLOrientations.GetName(index));
             }
 
             //----------------------------------------------------------------//
@@ -498,7 +498,7 @@ namespace PCLParaphernalia
             {
                 index = _subsetPaperSizes[i];
 
-                cbPaperSize.Items.Add(PCLPaperSizes.getName(index));
+                cbPaperSize.Items.Add(PCLPaperSizes.GetName(index));
             }
 
             //----------------------------------------------------------------//
@@ -511,7 +511,7 @@ namespace PCLParaphernalia
             {
                 index = _subsetPaperTypes[i];
 
-                cbPaperType.Items.Add(PCLPaperTypes.getName(index));
+                cbPaperType.Items.Add(PCLPaperTypes.GetName(index));
             }
 
             //----------------------------------------------------------------//
@@ -582,7 +582,7 @@ namespace PCLParaphernalia
             if ((_indxPDL < 0) || (_indxPDL >= _ctPDLs))
                 _indxPDL = 0;
 
-            _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
+            _crntPDL = (ToolCommonData.PrintLang)_subsetPDLs[_indxPDL];
 
             _destPosX = tempPosX / 100;
             _destPosY = tempPosY / 100;
@@ -685,7 +685,7 @@ namespace PCLParaphernalia
 
         private void pdlOptionsRestore()
         {
-            if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 cbOrientation.SelectedIndex = _indxOrientationPCL;
                 cbPaperSize.SelectedIndex = _indxPaperSizePCL;
@@ -711,7 +711,7 @@ namespace PCLParaphernalia
 
         private void pdlOptionsStore()
         {
-            if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 _indxOrientationPCL = cbOrientation.SelectedIndex;
                 _indxPaperSizePCL = cbPaperSize.SelectedIndex;
@@ -741,13 +741,13 @@ namespace PCLParaphernalia
 
         public void resetTarget()
         {
-            TargetCore.eTarget targetType = TargetCore.getType();
+            TargetCore.Target targetType = TargetCore.GetType();
 
-            if (targetType == TargetCore.eTarget.File)
+            if (targetType == TargetCore.Target.File)
             {
                 btnGenerate.Content = "Generate & send test data to file";
             }
-            else if (targetType == TargetCore.eTarget.NetPrinter)
+            else if (targetType == TargetCore.Target.NetPrinter)
             {
                 string netPrnAddress = string.Empty;
                 int netPrnPort = 0;
@@ -755,7 +755,7 @@ namespace PCLParaphernalia
                 int netTimeoutSend = 0;
                 int netTimeoutReceive = 0;
 
-                TargetCore.metricsLoadNetPrinter(ref netPrnAddress,
+                TargetCore.MetricsLoadNetPrinter(ref netPrnAddress,
                                                   ref netPrnPort,
                                                   ref netTimeoutSend,
                                                   ref netTimeoutReceive);
@@ -765,11 +765,11 @@ namespace PCLParaphernalia
                                       netPrnAddress + " : " +
                                       netPrnPort.ToString();
             }
-            else if (targetType == TargetCore.eTarget.WinPrinter)
+            else if (targetType == TargetCore.Target.WinPrinter)
             {
                 string winPrintername = string.Empty;
 
-                TargetCore.metricsLoadWinPrinter(ref winPrintername);
+                TargetCore.MetricsLoadWinPrinter(ref winPrintername);
 
                 btnGenerate.Content = "Generate & send test data to printer " +
                                       "\r\n" +

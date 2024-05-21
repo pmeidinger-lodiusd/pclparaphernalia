@@ -18,7 +18,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public enum eTag : byte
+        public enum Tag : byte
         {
             Ubyte = 0xf8,
             Uint16 = 0xf9
@@ -43,7 +43,7 @@ namespace PCLParaphernalia
 
         static PCLXLAttrDefiners()
         {
-            populateTable();
+            PopulateTable();
         }
 
         //--------------------------------------------------------------------//
@@ -55,8 +55,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int displayTags(DataGrid grid,
-                                        bool incResTags)
+        public static int DisplayTags(DataGrid grid, bool incResTags)
         {
             int count = 0;
 
@@ -86,18 +85,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void populateTable()
+        private static void PopulateTable()
         {
             const bool flagNone = false;
             const bool flagReserved = true;
 
-            byte tag = (byte)eTag.Ubyte;                                 // 0xf8 //
+            byte tag = (byte)Tag.Ubyte;                                 // 0xf8 //
             _tags.Add(tag,
                 new PCLXLAttrDefiner(tag,
                                      flagNone,
                                      "ubyte"));
 
-            tag = (byte)eTag.Uint16;                                // 0xf9 //
+            tag = (byte)Tag.Uint16;                                // 0xf9 //
             _tags.Add(tag,
                 new PCLXLAttrDefiner(tag,
                                      flagReserved,

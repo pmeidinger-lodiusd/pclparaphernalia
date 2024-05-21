@@ -34,7 +34,7 @@ namespace PCLParaphernalia
         const string _txtBoxRootNamePCLXL_Gray = "txtColourPCLXL_Gray_";
         const string _txtBoxRootNamePCLXL_RGB = "txtColourPCLXL_RGB_";
 
-        private enum eColourType : byte
+        private enum ColourType : byte
         {
             PCL_Simple,          // PCL
             PCL_Imaging,         // PCL
@@ -42,7 +42,7 @@ namespace PCLParaphernalia
             PCLXL_RGB            // PCLXL
         }
 
-        public enum ePCLColourSpace : byte
+        public enum PCLColourSpace : byte
         {
             RGB,    // 0 - values as per PCL ConfigureImageData definition  
             CMY,    // 1
@@ -55,8 +55,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private eColourType _indxColourTypePCL;
-        private eColourType _indxColourTypePCLXL;
+        private ColourType _indxColourTypePCL;
+        private ColourType _indxColourTypePCLXL;
 
         private bool _flagColourFmtHexPCL;
         private bool _flagColourFmtHexPCLXL;
@@ -114,7 +114,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void colourMapPCL_CID_Display(bool hexDisplay)
+        private void ColourMapPCL_CID_Display(bool hexDisplay)
         {
             int x;
 
@@ -165,7 +165,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void colourMapPCLXL_Gray_Display(bool hexDisplay)
+        private void ColourMapPCLXL_Gray_Display(bool hexDisplay)
         {
             int x;
 
@@ -200,7 +200,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void colourMapPCLXL_RGB_Display(bool hexDisplay)
+        private void ColourMapPCLXL_RGB_Display(bool hexDisplay)
         {
             int x;
 
@@ -251,18 +251,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseDataColour()
+        private void InitialiseDataColour()
         {
             lbOrientation.Visibility = Visibility.Hidden;
             cbOrientation.Visibility = Visibility.Hidden;
 
             //  chkMiscFormAsMacro.Visibility = Visibility.Visible;
 
-            if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 tabColourData.SelectedItem = tabColourModePCL;
 
-                if (_indxColourTypePCL == eColourType.PCL_Imaging)
+                if (_indxColourTypePCL == ColourType.PCL_Imaging)
                 {
                     rbColourModePCL_Imaging.IsChecked = true;
 
@@ -274,11 +274,11 @@ namespace PCLParaphernalia
                     else
                         rbColourOptPCLFmtDec.IsChecked = true;
 
-                    colourMapPCL_CID_Display(_flagColourFmtHexPCL);
+                    ColourMapPCL_CID_Display(_flagColourFmtHexPCL);
                 }
                 else
                 {
-                    _indxColourTypePCL = eColourType.PCL_Simple;
+                    _indxColourTypePCL = ColourType.PCL_Simple;
 
                     rbColourModePCL_Simple.IsChecked = true;
 
@@ -292,7 +292,7 @@ namespace PCLParaphernalia
             {
                 tabColourData.SelectedItem = tabColourOptPCLXL;
 
-                if (_indxColourTypePCLXL == eColourType.PCLXL_RGB)
+                if (_indxColourTypePCLXL == ColourType.PCLXL_RGB)
                 {
                     rbColourModePCLXL_RGB.IsChecked = true;
 
@@ -303,11 +303,11 @@ namespace PCLParaphernalia
                     else
                         rbColourOptPCLXLFmtDec.IsChecked = true;
 
-                    colourMapPCLXL_RGB_Display(_flagColourFmtHexPCLXL);
+                    ColourMapPCLXL_RGB_Display(_flagColourFmtHexPCLXL);
                 }
                 else
                 {
-                    _indxColourTypePCLXL = eColourType.PCLXL_Gray;
+                    _indxColourTypePCLXL = ColourType.PCLXL_Gray;
 
                     rbColourModePCLXL_Gray.IsChecked = true;
 
@@ -318,13 +318,13 @@ namespace PCLParaphernalia
                     else
                         rbColourOptPCLXLFmtDec.IsChecked = true;
 
-                    colourMapPCLXL_Gray_Display(_flagColourFmtHexPCLXL);
+                    ColourMapPCLXL_Gray_Display(_flagColourFmtHexPCLXL);
                 }
 
                 chkOptFormAsMacro.IsChecked = _flagColourFormAsMacroPCLXL;
             }
 
-            initialiseDescColour();
+            InitialiseDescColour();
         }
 
         //--------------------------------------------------------------------//
@@ -336,11 +336,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseDescColour()
+        private void InitialiseDescColour()
         {
-            if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
-                if (_indxColourTypePCL == eColourType.PCL_Simple)
+                if (_indxColourTypePCL == ColourType.PCL_Simple)
                 {
                     txtColourDesc.Text =
                         "Shows samples of PCL simple colour mode." +
@@ -368,7 +368,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                if (_indxColourTypePCLXL == eColourType.PCLXL_Gray)
+                if (_indxColourTypePCLXL == ColourType.PCLXL_Gray)
                 {
                     txtColourDesc.Text =
                         "Shows samples of PCL XL colour space Gray.";
@@ -390,7 +390,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsLoadDataColour()
+        public void MetricsLoadDataColour()
         {
             int tmpInt = 0;
 
@@ -400,10 +400,10 @@ namespace PCLParaphernalia
                 ref _flagColourFormAsMacroPCL,
                 ref _flagColourFmtHexPCL);
 
-            if (tmpInt == (int)eColourType.PCL_Simple)
-                _indxColourTypePCL = eColourType.PCL_Simple;
+            if (tmpInt == (int)ColourType.PCL_Simple)
+                _indxColourTypePCL = ColourType.PCL_Simple;
             else
-                _indxColourTypePCL = eColourType.PCL_Imaging;
+                _indxColourTypePCL = ColourType.PCL_Imaging;
 
             _samplesPCL_CID = new int[_sampleCtPCL_CID];
 
@@ -422,10 +422,10 @@ namespace PCLParaphernalia
                 ref _flagColourFormAsMacroPCLXL,
                 ref _flagColourFmtHexPCLXL);
 
-            if (tmpInt == (int)eColourType.PCLXL_Gray)
-                _indxColourTypePCLXL = eColourType.PCLXL_Gray;
+            if (tmpInt == (int)ColourType.PCLXL_Gray)
+                _indxColourTypePCLXL = ColourType.PCLXL_Gray;
             else
-                _indxColourTypePCLXL = eColourType.PCLXL_RGB;
+                _indxColourTypePCLXL = ColourType.PCLXL_RGB;
 
             _samplesPCLXL_Gray = new int[_sampleCtPCLXL_Gray];
 
@@ -455,7 +455,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsSaveDataColour()
+        public void MetricsSaveDataColour()
         {
             ToolMiscSamplesPersist.saveDataTypeColour(
                 "PCL",
@@ -500,18 +500,18 @@ namespace PCLParaphernalia
         private void rbColourModePCL_Imaging_Click(object sender,
                                                     RoutedEventArgs e)
         {
-            if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
-                _indxColourTypePCL = eColourType.PCL_Imaging;
+                _indxColourTypePCL = ColourType.PCL_Imaging;
 
-                initialiseDescColour();
+                InitialiseDescColour();
 
                 if (_flagColourFmtHexPCL)
                     rbColourOptPCLFmtHex.IsChecked = true;
                 else
                     rbColourOptPCLFmtDec.IsChecked = true;
 
-                colourMapPCL_CID_Display(_flagColourFmtHexPCL);
+                ColourMapPCL_CID_Display(_flagColourFmtHexPCL);
 
                 grpColourModePCL_CID.Visibility = Visibility.Visible;
                 grpColourModePCLFormat.Visibility = Visibility.Visible;
@@ -527,14 +527,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbColourModePCL_Simple_Click(object sender,
-                                                   RoutedEventArgs e)
+        private void rbColourModePCL_Simple_Click(object sender, RoutedEventArgs e)
         {
-            if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
-                _indxColourTypePCL = eColourType.PCL_Simple;
+                _indxColourTypePCL = ColourType.PCL_Simple;
 
-                initialiseDescColour();
+                InitialiseDescColour();
 
                 grpColourModePCL_CID.Visibility = Visibility.Hidden;
                 grpColourModePCLFormat.Visibility = Visibility.Hidden;
@@ -550,21 +549,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbColourModePCLXL_Gray_Click(object sender,
-                                                   RoutedEventArgs e)
+        private void rbColourModePCLXL_Gray_Click(object sender, RoutedEventArgs e)
         {
-            if (_crntPDL == ToolCommonData.ePrintLang.PCLXL)
+            if (_crntPDL == ToolCommonData.PrintLang.PCLXL)
             {
-                _indxColourTypePCLXL = eColourType.PCLXL_Gray;
+                _indxColourTypePCLXL = ColourType.PCLXL_Gray;
 
-                initialiseDescColour();
+                InitialiseDescColour();
 
                 if (_flagColourFmtHexPCLXL)
                     rbColourOptPCLXLFmtHex.IsChecked = true;
                 else
                     rbColourOptPCLXLFmtDec.IsChecked = true;
 
-                colourMapPCLXL_Gray_Display(_flagColourFmtHexPCLXL);
+                ColourMapPCLXL_Gray_Display(_flagColourFmtHexPCLXL);
 
                 tabColourPCLXLModes.SelectedItem = tabColourModePCLXL_Gray;
             }
@@ -582,17 +580,17 @@ namespace PCLParaphernalia
         private void rbColourModePCLXL_RGB_Click(object sender,
                                                   RoutedEventArgs e)
         {
-            if (_crntPDL == ToolCommonData.ePrintLang.PCLXL)
-                _indxColourTypePCLXL = eColourType.PCLXL_RGB;
+            if (_crntPDL == ToolCommonData.PrintLang.PCLXL)
+                _indxColourTypePCLXL = ColourType.PCLXL_RGB;
 
-            initialiseDescColour();
+            InitialiseDescColour();
 
             if (_flagColourFmtHexPCLXL)
                 rbColourOptPCLXLFmtHex.IsChecked = true;
             else
                 rbColourOptPCLXLFmtDec.IsChecked = true;
 
-            colourMapPCLXL_RGB_Display(_flagColourFmtHexPCLXL);
+            ColourMapPCLXL_RGB_Display(_flagColourFmtHexPCLXL);
 
             tabColourPCLXLModes.SelectedItem = tabColourModePCLXL_RGB;
         }
@@ -611,7 +609,7 @@ namespace PCLParaphernalia
         {
             _flagColourFmtHexPCL = false;
 
-            colourMapPCL_CID_Display(_flagColourFmtHexPCL);
+            ColourMapPCL_CID_Display(_flagColourFmtHexPCL);
         }
 
         //--------------------------------------------------------------------//
@@ -628,7 +626,7 @@ namespace PCLParaphernalia
         {
             _flagColourFmtHexPCL = true;
 
-            colourMapPCL_CID_Display(_flagColourFmtHexPCL);
+            ColourMapPCL_CID_Display(_flagColourFmtHexPCL);
         }
 
         //--------------------------------------------------------------------//
@@ -645,10 +643,10 @@ namespace PCLParaphernalia
         {
             _flagColourFmtHexPCLXL = false;
 
-            if (_indxColourTypePCLXL == eColourType.PCLXL_Gray)
-                colourMapPCLXL_Gray_Display(_flagColourFmtHexPCLXL);
+            if (_indxColourTypePCLXL == ColourType.PCLXL_Gray)
+                ColourMapPCLXL_Gray_Display(_flagColourFmtHexPCLXL);
             else
-                colourMapPCLXL_RGB_Display(_flagColourFmtHexPCLXL);
+                ColourMapPCLXL_RGB_Display(_flagColourFmtHexPCLXL);
         }
 
         //--------------------------------------------------------------------//
@@ -665,10 +663,10 @@ namespace PCLParaphernalia
         {
             _flagColourFmtHexPCLXL = true;
 
-            if (_indxColourTypePCLXL == eColourType.PCLXL_Gray)
-                colourMapPCLXL_Gray_Display(_flagColourFmtHexPCLXL);
+            if (_indxColourTypePCLXL == ColourType.PCLXL_Gray)
+                ColourMapPCLXL_Gray_Display(_flagColourFmtHexPCLXL);
             else
-                colourMapPCLXL_RGB_Display(_flagColourFmtHexPCLXL);
+                ColourMapPCLXL_RGB_Display(_flagColourFmtHexPCLXL);
         }
 
         //--------------------------------------------------------------------//
@@ -682,13 +680,13 @@ namespace PCLParaphernalia
 
         private void setFlagColourFormAsMacro(
             bool setFlag,
-            ToolCommonData.ePrintLang crntPDL)
+            ToolCommonData.PrintLang crntPDL)
         {
-            if (crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 _flagColourFormAsMacroPCL = setFlag;
             }
-            else if (crntPDL == ToolCommonData.ePrintLang.PCLXL)
+            else if (crntPDL == ToolCommonData.PrintLang.PCLXL)
             {
                 _flagColourFormAsMacroPCLXL = setFlag;
             }
@@ -704,7 +702,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool txtColourCheckBoxId(TextBox source,
+        private bool TxtColourCheckBoxId(TextBox source,
                                              int nameRootLen,
                                              int sampleCt,
                                              int planeCt,
@@ -799,13 +797,13 @@ namespace PCLParaphernalia
 
             TextBox source = e.Source as TextBox;
 
-            bool flagOK = txtColourCheckBoxId(source, nameRootLen, sampleCt, planeCt,
+            bool flagOK = TxtColourCheckBoxId(source, nameRootLen, sampleCt, planeCt,
                                           ref sampleNo, ref planeNo,
                                           ref planeSig);
 
             if (flagOK)
             {
-                flagOK = validateMapEntry(source,
+                flagOK = ValidateMapEntry(source,
                                            sampleNo, planeNo, planeSig,
                                            _flagColourFmtHexPCL,
                                            ref _samplesPCL_CID);
@@ -840,13 +838,13 @@ namespace PCLParaphernalia
 
             TextBox source = e.Source as TextBox;
 
-            bool flagOK = txtColourCheckBoxId(source, nameRootLen, sampleCt, planeCt,
+            bool flagOK = TxtColourCheckBoxId(source, nameRootLen, sampleCt, planeCt,
                                           ref sampleNo, ref planeNo,
                                           ref planeSig);
 
             if (flagOK)
             {
-                flagOK = validateMapEntry(source,
+                flagOK = ValidateMapEntry(source,
                                            sampleNo, planeNo, planeSig,
                                            _flagColourFmtHexPCLXL,
                                            ref _samplesPCLXL_Gray);
@@ -881,13 +879,13 @@ namespace PCLParaphernalia
 
             TextBox source = e.Source as TextBox;
 
-            bool flagOK = txtColourCheckBoxId(source, nameRootLen, sampleCt, planeCt,
+            bool flagOK = TxtColourCheckBoxId(source, nameRootLen, sampleCt, planeCt,
                                           ref sampleNo, ref planeNo,
                                           ref planeSig);
 
             if (flagOK)
             {
-                flagOK = validateMapEntry(source,
+                flagOK = ValidateMapEntry(source,
                                            sampleNo, planeNo, planeSig,
                                            _flagColourFmtHexPCLXL,
                                            ref _samplesPCLXL_RGB);
@@ -940,7 +938,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool validateMapEntry(TextBox source,
+        private bool ValidateMapEntry(TextBox source,
                                           int sampleNo,
                                           int planeNo,
                                           int planeSig,

@@ -28,7 +28,7 @@ namespace PCLParaphernalia
 
         static bool _showMacroData = true;
 
-        static PrnParse.eParseType _parseType;
+        static PrnParse.ParseType _parseType;
 
         static int _macroLevel = 0;
 
@@ -49,17 +49,17 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void addDataRow(
-            PrnParseRowTypes.eType rowType,
+            PrnParseRowTypes.Type rowType,
             DataTable table,
-            PrnParseConstants.eOvlShow makeOvlShow,
-            PrnParseConstants.eOptOffsetFormats indxOffsetFormat,
+            PrnParseConstants.OvlShow makeOvlShow,
+            PrnParseConstants.OptOffsetFormats indxOffsetFormat,
             int offset,
             int level,
             string type,
             string seq,
             string desc)
         {
-            if (_parseType == PrnParse.eParseType.ScanForPDL)
+            if (_parseType == PrnParse.ParseType.ScanForPDL)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -67,10 +67,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
             }
-            else if ((_parseType == PrnParse.eParseType.MakeOverlay)
+            else if ((_parseType == PrnParse.ParseType.MakeOverlay)
                                            &&
                      (makeOvlShow ==
-                        PrnParseConstants.eOvlShow.None))
+                        PrnParseConstants.OvlShow.None))
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -98,12 +98,12 @@ namespace PCLParaphernalia
                 if (offset < 0)
                 {
                     if (offset ==
-                        (int)PrnParseConstants.eOffsetPosition.StartOfFile)
+                        (int)PrnParseConstants.OffsetPosition.StartOfFile)
                     {
                         offsetText = "<Start>";
                     }
                     else if (offset ==
-                                            (int)PrnParseConstants.eOffsetPosition.EndOfFile)
+                                            (int)PrnParseConstants.OffsetPosition.EndOfFile)
                     {
                         offsetText = "<End>";
                     }
@@ -115,7 +115,7 @@ namespace PCLParaphernalia
                 else
                 {
                     if (indxOffsetFormat ==
-                        PrnParseConstants.eOptOffsetFormats.Decimal)
+                        PrnParseConstants.OptOffsetFormats.Decimal)
                     {
                         if (level == 0)
                         {
@@ -141,8 +141,8 @@ namespace PCLParaphernalia
                     }
                 }
 
-                if ((_parseType == PrnParse.eParseType.MakeOverlay) &&
-                    (makeOvlShow != PrnParseConstants.eOvlShow.None))
+                if ((_parseType == PrnParse.ParseType.MakeOverlay) &&
+                    (makeOvlShow != PrnParseConstants.OvlShow.None))
                 {
                     row[_colName_Action] = makeOvlShow.ToString();
                 }
@@ -168,15 +168,15 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void addTextRow(
-            PrnParseRowTypes.eType rowType,
+            PrnParseRowTypes.Type rowType,
             DataTable table,
-            PrnParseConstants.eOvlShow makeOvlShow,
+            PrnParseConstants.OvlShow makeOvlShow,
             string offsetText,
             string type,
             string seq,
             string desc)
         {
-            if (_parseType == PrnParse.eParseType.ScanForPDL)
+            if (_parseType == PrnParse.ParseType.ScanForPDL)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -184,10 +184,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
             }
-            else if ((_parseType == PrnParse.eParseType.MakeOverlay)
+            else if ((_parseType == PrnParse.ParseType.MakeOverlay)
                                            &&
                      (makeOvlShow ==
-                        PrnParseConstants.eOvlShow.None))
+                        PrnParseConstants.OvlShow.None))
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -208,9 +208,9 @@ namespace PCLParaphernalia
             {
                 DataRow row = table.NewRow();
 
-                if (_parseType == PrnParse.eParseType.MakeOverlay)
+                if (_parseType == PrnParse.ParseType.MakeOverlay)
                 {
-                    if (makeOvlShow == PrnParseConstants.eOvlShow.Insert)
+                    if (makeOvlShow == PrnParseConstants.OvlShow.Insert)
                         row[_colName_Action] = "Insert";
                     else
                         row[_colName_Action] = string.Empty;
@@ -340,7 +340,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void initialiseRunType(PrnParse.eParseType parseType)
+        public static void initialiseRunType(PrnParse.ParseType parseType)
         {
             _parseType = parseType;
         }

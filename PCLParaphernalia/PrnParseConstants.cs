@@ -18,7 +18,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public enum eContType
+        public enum ContType
         {
             None = 0,
             Abort,
@@ -67,7 +67,7 @@ namespace PCLParaphernalia
             Prescribe
         }
 
-        public enum eActPCL
+        public enum ActPCL
         {
             None,
             AlphaNumericID,
@@ -95,14 +95,14 @@ namespace PCLParaphernalia
             ViewIlluminant
         }
 
-        public enum eActPCLXL
+        public enum ActPCLXL
         {
             None,
             CharSize,
             Measure,
             UnitsPerMeasure
         }
-        public enum eOvlAct
+        public enum OvlAct
         {
             None = 0,
             Adjust,         // PCL    only
@@ -129,7 +129,7 @@ namespace PCLParaphernalia
             Terminate
         }
 
-        public enum eOvlPos
+        public enum OvlPos
         {
             BeforeFirstPage = 0,    // keep these entries in this logical order
             WithinFirstPage,
@@ -140,7 +140,7 @@ namespace PCLParaphernalia
 
         [System.Reflection.Obfuscation(Exclude = true)]
 
-        public enum eOvlShow
+        public enum OvlShow
         {
             None = 0,
             Insert,
@@ -150,7 +150,7 @@ namespace PCLParaphernalia
             Terminate
         }
 
-        public enum eSeqGrp
+        public enum SeqGrp
         {
             Unknown = 0,
             Colour,
@@ -170,7 +170,7 @@ namespace PCLParaphernalia
             UserPattern
         }
 
-        public enum ePCLXLBinding
+        public enum PCLXLBinding
         {
             Unknown = 0,
             BinaryLSFirst,
@@ -178,7 +178,7 @@ namespace PCLParaphernalia
             ASCII
         }
 
-        public enum eOptCharSets
+        public enum OptCharSets
         {
             ASCII = 0,
             ISO_8859_1,
@@ -186,7 +186,7 @@ namespace PCLParaphernalia
             Max     // limit 
         }
 
-        public enum eOptCharSetSubActs
+        public enum OptCharSetSubActs
         {
             Mnemonics = 0,
             MnemonicsIncSpace,
@@ -197,21 +197,21 @@ namespace PCLParaphernalia
             Max     // limit
         }
 
-        public enum eOptOffsetFormats
+        public enum OptOffsetFormats
         {
             Hexadecimal = 0,
             Decimal,
             Max     // limit
         }
 
-        public enum eOptStatsLevel
+        public enum OptStatsLevel
         {
             ReferencedOnly = 0,
             All,
             Max     // limit
         }
 
-        public enum ePMLSeqType
+        public enum PMLSeqType
         {
             Hddr = 0,
             RequestAction,
@@ -222,7 +222,7 @@ namespace PCLParaphernalia
             ReplyData
         }
 
-        public enum eOffsetPosition
+        public enum OffsetPosition
         {
             Unknown = -1,
             StartOfFile = -2,
@@ -230,7 +230,7 @@ namespace PCLParaphernalia
             CrntPosition = -4
         }
 
-        public enum eStdClrs
+        public enum StdClrs
         {
             AliceBlue = 0,
             AntiqueWhite,

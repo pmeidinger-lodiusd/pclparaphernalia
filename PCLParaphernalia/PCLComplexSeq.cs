@@ -29,7 +29,7 @@ namespace PCLParaphernalia
         private int _statsCtParent;
         private int _statsCtChild;
 
-        private readonly PrnParseConstants.eSeqGrp _seqGrp;
+        private readonly PrnParseConstants.SeqGrp _seqGrp;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -49,9 +49,9 @@ namespace PCLParaphernalia
             bool flagObsolete,
             bool flagResetGL2,
             bool flagDisplayHexVal,
-            PrnParseConstants.eActPCL actionType,
-            PrnParseConstants.eOvlAct makeOvlAct,
-            PrnParseConstants.eSeqGrp seqGrp,
+            PrnParseConstants.ActPCL actionType,
+            PrnParseConstants.OvlAct makeOvlAct,
+            PrnParseConstants.SeqGrp seqGrp,
             string description)
         {
             _keyPChar = keyPChar;
@@ -89,7 +89,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.eActPCL ActionType { get; }
+        public PrnParseConstants.ActPCL ActionType { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -194,7 +194,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.eOvlAct makeOvlAct { get; }
+        public PrnParseConstants.OvlAct makeOvlAct { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

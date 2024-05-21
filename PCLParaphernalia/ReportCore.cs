@@ -33,7 +33,7 @@ namespace PCLParaphernalia
         public static string _chkMarkTextFalse = "false";
         public static string _chkMarkTextTrue = "true ";
 
-        public enum eRptFileFmt : byte
+        public enum RptFileFmt : byte
         {
             text,
             html,
@@ -41,7 +41,7 @@ namespace PCLParaphernalia
             NA
         }
 
-        public enum eRptChkMarks : byte
+        public enum RptChkMarks : byte
         {
             text,
             txtsym,
@@ -64,11 +64,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void docClose(eRptFileFmt rptFileFmt,
+        public static void DocClose(RptFileFmt rptFileFmt,
                                      object stream,
                                      object writer)
         {
-            if (rptFileFmt == eRptFileFmt.html)
+            if (rptFileFmt == RptFileFmt.html)
             {
                 HtmlTextWriter htmlWriter = (HtmlTextWriter)writer;
                 htmlWriter.Close();
@@ -79,7 +79,7 @@ namespace PCLParaphernalia
                 htmlStream.Close();
                 stream = null;
             }
-            else if (rptFileFmt == eRptFileFmt.xml)
+            else if (rptFileFmt == RptFileFmt.xml)
             {
                 XmlWriter xmlWriter = (XmlWriter)writer;
                 xmlWriter.Close();
@@ -108,15 +108,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void docFinalise(eRptFileFmt rptFileFmt,
+        public static void DocFinalise(RptFileFmt rptFileFmt,
                                         object writer)
         {
-            if (rptFileFmt == eRptFileFmt.html)
-                docFinaliseHtml((HtmlTextWriter)writer);
-            else if (rptFileFmt == eRptFileFmt.xml)
-                docFinaliseXml((XmlWriter)writer);
+            if (rptFileFmt == RptFileFmt.html)
+                DocFinaliseHtml((HtmlTextWriter)writer);
+            else if (rptFileFmt == RptFileFmt.xml)
+                DocFinaliseXml((XmlWriter)writer);
             else
-                docFinaliseText((StreamWriter)writer);
+                DocFinaliseText((StreamWriter)writer);
         }
 
         //--------------------------------------------------------------------//
@@ -128,7 +128,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void docFinaliseHtml(HtmlTextWriter htmlWriter)
+        public static void DocFinaliseHtml(HtmlTextWriter htmlWriter)
         {
             htmlWriter.RenderBeginTag("p");
             htmlWriter.Write("*** End of Report ***");
@@ -148,7 +148,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void docFinaliseText(StreamWriter txtWriter)
+        public static void DocFinaliseText(StreamWriter txtWriter)
         {
             txtWriter.WriteLine(string.Empty);
             txtWriter.WriteLine("*** End of Report ***");
@@ -163,7 +163,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void docFinaliseXml(XmlWriter xmlWriter)
+        public static void DocFinaliseXml(XmlWriter xmlWriter)
         {
             xmlWriter.WriteStartElement("trailer");
 
@@ -185,7 +185,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void docInitialise(eRptFileFmt rptFileFmt,
+        public static void DocInitialise(RptFileFmt rptFileFmt,
                                           object writer,
                                           bool useTables,
                                           bool useLines,
@@ -194,12 +194,12 @@ namespace PCLParaphernalia
                                           string[] rowClrBack,
                                           string[] rowClrFore)
         {
-            if (rptFileFmt == eRptFileFmt.html)
-                docInitialiseHtml((HtmlTextWriter)writer, ctRowClrStyles, rowClasses, rowClrBack, rowClrFore);
-            else if (rptFileFmt == eRptFileFmt.xml)
-                docInitialiseXml((XmlWriter)writer, useTables, useLines, ctRowClrStyles, rowClasses, rowClrBack, rowClrFore);
+            if (rptFileFmt == RptFileFmt.html)
+                DocInitialiseHtml((HtmlTextWriter)writer, ctRowClrStyles, rowClasses, rowClrBack, rowClrFore);
+            else if (rptFileFmt == RptFileFmt.xml)
+                DocInitialiseXml((XmlWriter)writer, useTables, useLines, ctRowClrStyles, rowClasses, rowClrBack, rowClrFore);
             else
-                docInitialiseText((StreamWriter)writer);
+                DocInitialiseText((StreamWriter)writer);
         }
 
         //--------------------------------------------------------------------//
@@ -211,7 +211,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void docInitialiseHtml(HtmlTextWriter htmlWriter,
+        public static void DocInitialiseHtml(HtmlTextWriter htmlWriter,
                                               int ctRowClrStyles,
                                               string[] rowClasses,
                                               string[] rowClrBack,
@@ -243,7 +243,7 @@ namespace PCLParaphernalia
 
             htmlWriter.RenderBeginTag("style");
 
-            docInitStyles(eRptFileFmt.html, htmlWriter, ctRowClrStyles,
+            DocInitStyles(RptFileFmt.html, htmlWriter, ctRowClrStyles,
                            rowClasses, rowClrBack, rowClrFore);
 
             //----------------------------------------------------------------//
@@ -269,7 +269,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void docInitialiseText(StreamWriter txtWriter)
+        public static void DocInitialiseText(StreamWriter txtWriter)
         {
             // ******* nothing to do *******
         }
@@ -283,7 +283,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void docInitialiseXml(XmlWriter xmlWriter,
+        public static void DocInitialiseXml(XmlWriter xmlWriter,
                                              bool useTables,
                                              bool useLines,
                                              int ctRowClrStyles,
@@ -358,7 +358,7 @@ namespace PCLParaphernalia
             xmlWriter.WriteStartElement("style");
             //     xmlWriter.WriteStartElement ("xsl", "comment", null);
 
-            docInitStyles(eRptFileFmt.xml, xmlWriter, ctRowClrStyles,
+            DocInitStyles(RptFileFmt.xml, xmlWriter, ctRowClrStyles,
                            rowClasses, rowClrBack, rowClrFore);
 
             //     xmlWriter.WriteEndElement ();               // </xsl:comment>
@@ -604,7 +604,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void docInitStyles(eRptFileFmt rptFileFmt,
+        public static void DocInitStyles(RptFileFmt rptFileFmt,
                                           object writer,
                                           int ctRowClrStyles,
                                           string[] rowClasses,
@@ -705,10 +705,10 @@ namespace PCLParaphernalia
                 "}"
             };
 
-            if (rptFileFmt == eRptFileFmt.html)
-                docInitStylesHtml((HtmlTextWriter)writer, stdStyles, ctRowClrStyles, rowClasses, rowClrBack, rowClrFore);
-            else if (rptFileFmt == eRptFileFmt.xml)
-                docInitStylesXml((XmlWriter)writer, stdStyles, ctRowClrStyles, rowClasses, rowClrBack, rowClrFore);
+            if (rptFileFmt == RptFileFmt.html)
+                DocInitStylesHtml((HtmlTextWriter)writer, stdStyles, ctRowClrStyles, rowClasses, rowClrBack, rowClrFore);
+            else if (rptFileFmt == RptFileFmt.xml)
+                DocInitStylesXml((XmlWriter)writer, stdStyles, ctRowClrStyles, rowClasses, rowClrBack, rowClrFore);
         }
 
         //--------------------------------------------------------------------//
@@ -722,7 +722,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void docInitStylesHtml(HtmlTextWriter htmlWriter,
+        public static void DocInitStylesHtml(HtmlTextWriter htmlWriter,
                                               string[] stdStyles,
                                               int ctRowClrStyles,
                                               string[] rowClasses,
@@ -780,7 +780,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void docInitStylesXml(XmlWriter xmlWriter,
+        public static void DocInitStylesXml(XmlWriter xmlWriter,
                                              string[] stdStyles,
                                              int ctRowClrStyles,
                                              string[] rowClasses,
@@ -834,19 +834,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool docOpen(eRptFileFmt rptFileFmt,
+        public static bool DocOpen(RptFileFmt rptFileFmt,
                                        ref string saveFilename,
                                        ref object stream,
                                        ref object writer)
         {
             SaveFileDialog saveDialog = ToolCommonFunctions.createSaveFileDialog(saveFilename);
 
-            if (rptFileFmt == eRptFileFmt.html)
+            if (rptFileFmt == RptFileFmt.html)
             {
                 saveDialog.Filter = "Html Files | *.html";
                 saveDialog.DefaultExt = "html";
             }
-            else if (rptFileFmt == eRptFileFmt.xml)
+            else if (rptFileFmt == RptFileFmt.xml)
             {
                 saveDialog.Filter = "Xml Files | *.xml";
                 saveDialog.DefaultExt = "xml";
@@ -864,7 +864,7 @@ namespace PCLParaphernalia
             {
                 saveFilename = saveDialog.FileName;
 
-                if (rptFileFmt == eRptFileFmt.html)
+                if (rptFileFmt == RptFileFmt.html)
                 {
                     stream = new StreamWriter(saveFilename);
 
@@ -874,7 +874,7 @@ namespace PCLParaphernalia
                         fileOpen = true;
                     }
                 }
-                else if (rptFileFmt == eRptFileFmt.xml)
+                else if (rptFileFmt == RptFileFmt.xml)
                 {
                     stream = new StreamWriter(saveFilename);
 
@@ -914,13 +914,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void hddrClose(object writer,
-                                      eRptFileFmt rptFileFmt)
+        public static void HddrClose(object writer,
+                                      RptFileFmt rptFileFmt)
         {
-            if (rptFileFmt == eRptFileFmt.html)
-                hddrCloseHtml((HtmlTextWriter)writer);
-            else if (rptFileFmt == eRptFileFmt.xml)
-                hddrCloseXml((XmlWriter)writer);
+            if (rptFileFmt == RptFileFmt.html)
+                HddrCloseHtml((HtmlTextWriter)writer);
+            else if (rptFileFmt == RptFileFmt.xml)
+                HddrCloseXml((XmlWriter)writer);
         }
 
         //--------------------------------------------------------------------//
@@ -932,7 +932,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void hddrCloseHtml(HtmlTextWriter htmlWriter)
+        private static void HddrCloseHtml(HtmlTextWriter htmlWriter)
         {
             htmlWriter.RenderEndTag();     // </table>
         }
@@ -946,7 +946,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void hddrCloseXml(XmlWriter xmlWriter)
+        private static void HddrCloseXml(XmlWriter xmlWriter)
         {
             xmlWriter.WriteEndElement();
         }
@@ -960,17 +960,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void hddrTitle(object writer,
-                                      eRptFileFmt rptFileFmt,
+        public static void HddrTitle(object writer,
+                                      RptFileFmt rptFileFmt,
                                       bool subHddr,
                                       string txtVal)
         {
-            if (rptFileFmt == eRptFileFmt.html)
-                hddrTitleHtml((HtmlTextWriter)writer, txtVal);
-            else if (rptFileFmt == eRptFileFmt.xml)
-                hddrTitleXml((XmlWriter)writer, txtVal);
+            if (rptFileFmt == RptFileFmt.html)
+                HddrTitleHtml((HtmlTextWriter)writer, txtVal);
+            else if (rptFileFmt == RptFileFmt.xml)
+                HddrTitleXml((XmlWriter)writer, txtVal);
             else
-                hddrTitleText((StreamWriter)writer, subHddr, txtVal);
+                HddrTitleText((StreamWriter)writer, subHddr, txtVal);
         }
 
         //--------------------------------------------------------------------//
@@ -982,8 +982,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void hddrTitleHtml(HtmlTextWriter htmlWriter,
-                                           string txtVal)
+        private static void HddrTitleHtml(HtmlTextWriter htmlWriter, string txtVal)
         {
             htmlWriter.AddAttribute("class", "title");
             htmlWriter.RenderBeginTag("p");
@@ -1001,9 +1000,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void hddrTitleText(StreamWriter txtWriter,
-                                           bool subHddr,
-                                           string txtVal)
+        private static void HddrTitleText(StreamWriter txtWriter, bool subHddr, string txtVal)
         {
             if (subHddr)
                 txtWriter.WriteLine(string.Empty);
@@ -1027,8 +1024,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void hddrTitleXml(XmlWriter xmlWriter,
-                                          string txtVal)
+        private static void HddrTitleXml(XmlWriter xmlWriter, string txtVal)
         {
             xmlWriter.WriteStartElement("header");
 
@@ -1050,13 +1046,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void lineBlockClose(object writer,
-                                          eRptFileFmt rptFileFmt)
+        public static void LineBlockClose(object writer, RptFileFmt rptFileFmt)
         {
-            if (rptFileFmt == eRptFileFmt.html)
-                lineBlockCloseHtml((HtmlTextWriter)writer);
-            else if (rptFileFmt == eRptFileFmt.xml)
-                lineBlockCloseXml((XmlWriter)writer);
+            if (rptFileFmt == RptFileFmt.html)
+                LineBlockCloseHtml((HtmlTextWriter)writer);
+            else if (rptFileFmt == RptFileFmt.xml)
+                LineBlockCloseXml((XmlWriter)writer);
         }
 
         //--------------------------------------------------------------------//
@@ -1068,7 +1063,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void lineBlockCloseHtml(HtmlTextWriter htmlWriter)
+        private static void LineBlockCloseHtml(HtmlTextWriter htmlWriter)
         {
             htmlWriter.RenderEndTag();
             htmlWriter.WriteLine(string.Empty);
@@ -1083,7 +1078,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void lineBlockCloseXml(XmlWriter xmlWriter)
+        private static void LineBlockCloseXml(XmlWriter xmlWriter)
         {
             xmlWriter.WriteEndElement();
         }
@@ -1097,15 +1092,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void lineBlockOpen(object writer,
-                                          eRptFileFmt rptFileFmt)
+        public static void LineBlockOpen(object writer, RptFileFmt rptFileFmt)
         {
             const string tag = "lineblock";
 
-            if (rptFileFmt == eRptFileFmt.html)
-                lineBlockOpenHtml((HtmlTextWriter)writer, tag);
-            else if (rptFileFmt == eRptFileFmt.xml)
-                lineBlockOpenXml((XmlWriter)writer, tag);
+            if (rptFileFmt == RptFileFmt.html)
+                LineBlockOpenHtml((HtmlTextWriter)writer, tag);
+            else if (rptFileFmt == RptFileFmt.xml)
+                LineBlockOpenXml((XmlWriter)writer, tag);
         }
 
         //--------------------------------------------------------------------//
@@ -1117,8 +1111,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void lineBlockOpenHtml(HtmlTextWriter htmlWriter,
-                                               string tag)
+        private static void LineBlockOpenHtml(HtmlTextWriter htmlWriter, string tag)
         {
             htmlWriter.RenderBeginTag(tag);
         }
@@ -1132,8 +1125,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void lineBlockOpenXml(XmlWriter xmlWriter,
-                                              string txtName)
+        private static void LineBlockOpenXml(XmlWriter xmlWriter, string txtName)
         {
             xmlWriter.WriteStartElement(txtName);
         }
@@ -1147,18 +1139,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void lineItem(object writer,
-                                     eRptFileFmt rptFileFmt,
+        public static void LineItem(object writer,
+                                     RptFileFmt rptFileFmt,
                                      string txtVal,
                                      int sizeVal,
                                      bool firstItem)
         {
-            if (rptFileFmt == eRptFileFmt.html)
-                lineItemHtml((HtmlTextWriter)writer, txtVal, sizeVal, firstItem);
-            else if (rptFileFmt == eRptFileFmt.xml)
-                lineItemXml((XmlWriter)writer, txtVal);
+            if (rptFileFmt == RptFileFmt.html)
+                LineItemHtml((HtmlTextWriter)writer, txtVal, sizeVal, firstItem);
+            else if (rptFileFmt == RptFileFmt.xml)
+                LineItemXml((XmlWriter)writer, txtVal);
             else
-                lineItemText((StreamWriter)writer, txtVal, sizeVal, firstItem);
+                LineItemText((StreamWriter)writer, txtVal, sizeVal, firstItem);
         }
 
         //--------------------------------------------------------------------//
@@ -1170,7 +1162,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void lineItemHtml(HtmlTextWriter htmlWriter,
+        private static void LineItemHtml(HtmlTextWriter htmlWriter,
                                           string txtVal,
                                           int maxSizeVal,
                                           bool firstItem)
@@ -1219,7 +1211,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void lineItemText(StreamWriter txtWriter,
+        private static void LineItemText(StreamWriter txtWriter,
                                           string txtVal,
                                           int maxSizeVal,
                                           bool blankBefore)
@@ -1257,7 +1249,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void lineItemXml(XmlWriter xmlWriter,
+        private static void LineItemXml(XmlWriter xmlWriter,
                                          string txtVal)
         {
             xmlWriter.WriteStartElement("item");
@@ -1295,13 +1287,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void tableClose(object writer,
-                                       eRptFileFmt rptFileFmt)
+        public static void TableClose(object writer,
+                                       RptFileFmt rptFileFmt)
         {
-            if (rptFileFmt == eRptFileFmt.html)
-                tableCloseHtml((HtmlTextWriter)writer);
-            else if (rptFileFmt == eRptFileFmt.xml)
-                tableCloseXml((XmlWriter)writer);
+            if (rptFileFmt == RptFileFmt.html)
+                TableCloseHtml((HtmlTextWriter)writer);
+            else if (rptFileFmt == RptFileFmt.xml)
+                TableCloseXml((XmlWriter)writer);
         }
 
         //--------------------------------------------------------------------//
@@ -1313,7 +1305,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableCloseHtml(HtmlTextWriter htmlWriter)
+        private static void TableCloseHtml(HtmlTextWriter htmlWriter)
         {
             htmlWriter.RenderEndTag();
             htmlWriter.WriteLine(string.Empty);
@@ -1328,7 +1320,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableCloseXml(XmlWriter xmlWriter)
+        private static void TableCloseXml(XmlWriter xmlWriter)
         {
             xmlWriter.WriteEndElement();
         }
@@ -1342,19 +1334,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void tableHddrData(object writer,
-                                          eRptFileFmt rptFileFmt,
+        public static void TableHddrData(object writer,
+                                          RptFileFmt rptFileFmt,
                                           bool plain,
                                           int colCt,
                                           string[] colHddrs,
                                           int[] colSizes)
         {
-            if (rptFileFmt == eRptFileFmt.html)
-                tableHddrDataHtml((HtmlTextWriter)writer, plain, colCt, colHddrs);
-            else if (rptFileFmt == eRptFileFmt.xml)
-                tableHddrDataXml((XmlWriter)writer, plain, colCt, colHddrs);
+            if (rptFileFmt == RptFileFmt.html)
+                TableHddrDataHtml((HtmlTextWriter)writer, plain, colCt, colHddrs);
+            else if (rptFileFmt == RptFileFmt.xml)
+                TableHddrDataXml((XmlWriter)writer, plain, colCt, colHddrs);
             else
-                tableHddrDataText((StreamWriter)writer, colCt, colHddrs, colSizes);
+                TableHddrDataText((StreamWriter)writer, colCt, colHddrs, colSizes);
         }
 
         //--------------------------------------------------------------------//
@@ -1366,7 +1358,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableHddrDataHtml(HtmlTextWriter htmlWriter,
+        private static void TableHddrDataHtml(HtmlTextWriter htmlWriter,
                                                bool plain,
                                                int colCt,
                                                string[] colHddrs)
@@ -1408,7 +1400,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableHddrDataText(StreamWriter txtWriter,
+        private static void TableHddrDataText(StreamWriter txtWriter,
                                                int colCt,
                                                string[] colHddrs,
                                                int[] colSizes)
@@ -1457,7 +1449,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableHddrDataXml(XmlWriter xmlWriter,
+        private static void TableHddrDataXml(XmlWriter xmlWriter,
                                               bool plain,
                                               int colCt,
                                               string[] colHddrs)
@@ -1496,15 +1488,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void tableHddrPair(object writer,
-                                          eRptFileFmt rptFileFmt)
+        public static void TableHddrPair(object writer,
+                                          RptFileFmt rptFileFmt)
         {
-            if (rptFileFmt == eRptFileFmt.html)
-                tableHddrPairHtml((HtmlTextWriter)writer);
-            else if (rptFileFmt == eRptFileFmt.xml)
-                tableHddrPairXml((XmlWriter)writer);
+            if (rptFileFmt == RptFileFmt.html)
+                TableHddrPairHtml((HtmlTextWriter)writer);
+            else if (rptFileFmt == RptFileFmt.xml)
+                TableHddrPairXml((XmlWriter)writer);
             else
-                tableHddrPairText((StreamWriter)writer);
+                TableHddrPairText((StreamWriter)writer);
         }
 
         //--------------------------------------------------------------------//
@@ -1516,7 +1508,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableHddrPairHtml(HtmlTextWriter htmlWriter)
+        private static void TableHddrPairHtml(HtmlTextWriter htmlWriter)
         {
             htmlWriter.WriteLine(string.Empty);
             htmlWriter.RenderBeginTag("table");
@@ -1532,7 +1524,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableHddrPairText(StreamWriter txtWriter)
+        private static void TableHddrPairText(StreamWriter txtWriter)
         {
             txtWriter.WriteLine(string.Empty);
         }
@@ -1546,7 +1538,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableHddrPairXml(XmlWriter xmlWriter)
+        private static void TableHddrPairXml(XmlWriter xmlWriter)
         {
             xmlWriter.WriteStartElement("tablepair");
         }
@@ -1562,19 +1554,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void tableMultiRowText(
-            object writer,
-            eRptFileFmt rptFileFmt,
-            int colCt,
-            string[][] arrData,
-            int[] colSizes,
-            bool blankBefore,
-            bool blankAfter,
-            bool blankAfterMultiRow)
+        public static void TableMultiRowText(object writer,
+                                            RptFileFmt rptFileFmt,
+                                            int colCt,
+                                            string[][] arrData,
+                                            int[] colSizes,
+                                            bool blankBefore,
+                                            bool blankAfter,
+                                            bool blankAfterMultiRow)
         {
-            if (rptFileFmt == eRptFileFmt.text)
+            if (rptFileFmt == RptFileFmt.text)
             {
-                tableMultiRowTextText(
+                TableMultiRowTextText(
                     (StreamWriter)writer, colCt, arrData, colSizes,
                     blankBefore, blankAfter, blankAfterMultiRow);
             }
@@ -1590,7 +1581,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableMultiRowTextText(
+        private static void TableMultiRowTextText(
             StreamWriter txtWriter,
             int colCt,
             string[][] arrData,
@@ -1654,21 +1645,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void tableRowData(object writer,
-                                         eRptFileFmt rptFileFmt,
-                                         eRptChkMarks rptChkMarks,
+        public static void TableRowData(object writer,
+                                         RptFileFmt rptFileFmt,
+                                         RptChkMarks rptChkMarks,
                                          int colCt,
                                          string rowType,
                                          DataRow row,
                                          string[] colNames,
                                          int[] colSizes)
         {
-            if (rptFileFmt == eRptFileFmt.html)
-                tableRowDataHtml((HtmlTextWriter)writer, rptChkMarks, colCt, rowType, row, colNames);
-            else if (rptFileFmt == eRptFileFmt.xml)
-                tableRowDataXml((XmlWriter)writer, rptChkMarks, colCt, rowType, row, colNames);
+            if (rptFileFmt == RptFileFmt.html)
+                TableRowDataHtml((HtmlTextWriter)writer, rptChkMarks, colCt, rowType, row, colNames);
+            else if (rptFileFmt == RptFileFmt.xml)
+                TableRowDataXml((XmlWriter)writer, rptChkMarks, colCt, rowType, row, colNames);
             else
-                tableRowDataText((StreamWriter)writer, rptChkMarks, colCt, rowType, row, colNames, colSizes);
+                TableRowDataText((StreamWriter)writer, rptChkMarks, colCt, rowType, row, colNames, colSizes);
         }
 
         //--------------------------------------------------------------------//
@@ -1681,8 +1672,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableRowDataHtml(HtmlTextWriter htmlWriter,
-                                              eRptChkMarks rptChkMarks,
+        private static void TableRowDataHtml(HtmlTextWriter htmlWriter,
+                                              RptChkMarks rptChkMarks,
                                               int colCt,
                                               string rowType,
                                               DataRow row,
@@ -1703,18 +1694,18 @@ namespace PCLParaphernalia
                 {
                     if ((bool)row[colNames[i]])
                     {
-                        if (rptChkMarks == eRptChkMarks.boxsym)
+                        if (rptChkMarks == RptChkMarks.boxsym)
                             htmlWriter.Write(_chkMarkBoxSymTrue);
-                        else if (rptChkMarks == eRptChkMarks.txtsym)
+                        else if (rptChkMarks == RptChkMarks.txtsym)
                             htmlWriter.Write(_chkMarkTxtSymTrue);
                         else
                             htmlWriter.Write(_chkMarkTextTrue);
                     }
                     else
                     {
-                        if (rptChkMarks == eRptChkMarks.boxsym)
+                        if (rptChkMarks == RptChkMarks.boxsym)
                             htmlWriter.Write(_chkMarkBoxSymFalse);
-                        else if (rptChkMarks == eRptChkMarks.txtsym)
+                        else if (rptChkMarks == RptChkMarks.txtsym)
                             htmlWriter.Write(_chkMarkTxtSymFalse);
                         else
                             htmlWriter.Write(_chkMarkTextFalse);
@@ -1749,8 +1740,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableRowDataText(StreamWriter txtWriter,
-                                              eRptChkMarks rptChkMarks,
+        private static void TableRowDataText(StreamWriter txtWriter,
+                                              RptChkMarks rptChkMarks,
                                               int colCt,
                                               string rowType,
                                               DataRow row,
@@ -1771,18 +1762,18 @@ namespace PCLParaphernalia
                 {
                     if ((bool)row[colNames[i]])
                     {
-                        if (rptChkMarks == eRptChkMarks.boxsym)
+                        if (rptChkMarks == RptChkMarks.boxsym)
                             itemData = _chkMarkBoxSymTrue;
-                        else if (rptChkMarks == eRptChkMarks.txtsym)
+                        else if (rptChkMarks == RptChkMarks.txtsym)
                             itemData = _chkMarkTxtSymTrue;
                         else
                             itemData = _chkMarkTextTrue;
                     }
                     else
                     {
-                        if (rptChkMarks == eRptChkMarks.boxsym)
+                        if (rptChkMarks == RptChkMarks.boxsym)
                             itemData = _chkMarkBoxSymFalse;
-                        else if (rptChkMarks == eRptChkMarks.txtsym)
+                        else if (rptChkMarks == RptChkMarks.txtsym)
                             itemData = _chkMarkTxtSymFalse;
                         else
                             itemData = _chkMarkTextFalse;
@@ -1812,8 +1803,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableRowDataXml(XmlWriter xmlWriter,
-                                              eRptChkMarks rptChkMarks,
+        private static void TableRowDataXml(XmlWriter xmlWriter,
+                                              RptChkMarks rptChkMarks,
                                              int colCt,
                                              string rowType,
                                              DataRow row,
@@ -1834,18 +1825,18 @@ namespace PCLParaphernalia
                 {
                     if ((bool)row[colNames[i]])
                     {
-                        if (rptChkMarks == eRptChkMarks.boxsym)
+                        if (rptChkMarks == RptChkMarks.boxsym)
                             xmlWriter.WriteString(_chkMarkBoxSymTrue);
-                        else if (rptChkMarks == eRptChkMarks.txtsym)
+                        else if (rptChkMarks == RptChkMarks.txtsym)
                             xmlWriter.WriteString(_chkMarkTxtSymTrue);
                         else
                             xmlWriter.WriteString(_chkMarkTextTrue);
                     }
                     else
                     {
-                        if (rptChkMarks == eRptChkMarks.boxsym)
+                        if (rptChkMarks == RptChkMarks.boxsym)
                             xmlWriter.WriteString(_chkMarkBoxSymFalse);
-                        else if (rptChkMarks == eRptChkMarks.txtsym)
+                        else if (rptChkMarks == RptChkMarks.txtsym)
                             xmlWriter.WriteString(_chkMarkTxtSymFalse);
                         else
                             xmlWriter.WriteString(_chkMarkTextFalse);
@@ -1874,8 +1865,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void tableRowPair(object writer,
-                                         eRptFileFmt rptFileFmt,
+        public static void TableRowPair(object writer,
+                                         RptFileFmt rptFileFmt,
                                          string txtName,
                                          string txtVal,
                                          int colSpanName,
@@ -1886,12 +1877,12 @@ namespace PCLParaphernalia
                                          bool blankAfter,
                                          bool nameAsHddr)
         {
-            if (rptFileFmt == eRptFileFmt.html)
-                tableRowPairHtml((HtmlTextWriter)writer, txtName, txtVal, colSpanName, colSpanVal, blankBefore, blankAfter, nameAsHddr);
-            else if (rptFileFmt == eRptFileFmt.xml)
-                tableRowPairXml((XmlWriter)writer, txtName, txtVal, colSpanName, colSpanVal, blankBefore, blankAfter, nameAsHddr);
+            if (rptFileFmt == RptFileFmt.html)
+                TableRowPairHtml((HtmlTextWriter)writer, txtName, txtVal, colSpanName, colSpanVal, blankBefore, blankAfter, nameAsHddr);
+            else if (rptFileFmt == RptFileFmt.xml)
+                TableRowPairXml((XmlWriter)writer, txtName, txtVal, colSpanName, colSpanVal, blankBefore, blankAfter, nameAsHddr);
             else
-                tableRowPairText((StreamWriter)writer, txtName, txtVal, sizeName, sizeVal, blankBefore);
+                TableRowPairText((StreamWriter)writer, txtName, txtVal, sizeName, sizeVal, blankBefore);
         }
 
         //--------------------------------------------------------------------//
@@ -1904,7 +1895,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableRowPairHtml(HtmlTextWriter htmlWriter,
+        private static void TableRowPairHtml(HtmlTextWriter htmlWriter,
                                               string txtName,
                                               string txtVal,
                                               int colSpanName,
@@ -1980,7 +1971,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableRowPairText(StreamWriter txtWriter,
+        private static void TableRowPairText(StreamWriter txtWriter,
                                               string txtName,
                                               string txtVal,
                                               int maxSizeName,
@@ -2040,7 +2031,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableRowPairXml(XmlWriter xmlWriter,
+        private static void TableRowPairXml(XmlWriter xmlWriter,
                                              string txtName,
                                              string txtVal,
                                              int colSpanName,
@@ -2094,19 +2085,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void tableRowText(object writer,
-                                         eRptFileFmt rptFileFmt,
+        public static void TableRowText(object writer,
+                                         RptFileFmt rptFileFmt,
                                          int colCt,
                                          string[] data,
                                          string[] colNames,
                                          int[] colSizes)
         {
-            if (rptFileFmt == eRptFileFmt.html)
-                tableRowTextHtml((HtmlTextWriter)writer, colCt, data);
-            else if (rptFileFmt == eRptFileFmt.xml)
-                tableRowTextXml((XmlWriter)writer, colCt, data, colNames);
+            if (rptFileFmt == RptFileFmt.html)
+                TableRowTextHtml((HtmlTextWriter)writer, colCt, data);
+            else if (rptFileFmt == RptFileFmt.xml)
+                TableRowTextXml((XmlWriter)writer, colCt, data, colNames);
             else
-                tableRowTextText((StreamWriter)writer, colCt, data, colSizes);
+                TableRowTextText((StreamWriter)writer, colCt, data, colSizes);
         }
 
         //--------------------------------------------------------------------//
@@ -2119,7 +2110,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableRowTextHtml(HtmlTextWriter htmlWriter,
+        private static void TableRowTextHtml(HtmlTextWriter htmlWriter,
                                               int colCt,
                                               string[] data)
         {
@@ -2154,7 +2145,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableRowTextText(StreamWriter txtWriter,
+        private static void TableRowTextText(StreamWriter txtWriter,
                                               int colCt,
                                               string[] data,
                                               int[] colSizes)
@@ -2186,7 +2177,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void tableRowTextXml(XmlWriter xmlWriter,
+        private static void TableRowTextXml(XmlWriter xmlWriter,
                                              int colCt,
                                              string[] data,
                                              string[] colNames)

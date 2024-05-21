@@ -51,7 +51,7 @@ namespace PCLParaphernalia
             bool ovlXL = linkData.MakeOvlXL;
             bool encapsulate = linkData.MakeOvlEncapsulate;
 
-            PrnParseConstants.eOvlAct action = linkData.MakeOvlAct;
+            PrnParseConstants.OvlAct action = linkData.MakeOvlAct;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -59,27 +59,27 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            if (action == PrnParseConstants.eOvlAct.Terminate)
+            if (action == PrnParseConstants.OvlAct.Terminate)
             {
                 terminate = true;
             }
-            else if (action == PrnParseConstants.eOvlAct.EndOfFile)
+            else if (action == PrnParseConstants.OvlAct.EndOfFile)
             {
                 update = true;
             }
-            else if ((action == PrnParseConstants.eOvlAct.Download)
+            else if ((action == PrnParseConstants.OvlAct.Download)
                                           ||
-                     (action == PrnParseConstants.eOvlAct.DownloadDelete)
+                     (action == PrnParseConstants.OvlAct.DownloadDelete)
                                           ||
-                     (action == PrnParseConstants.eOvlAct.IdFont)
+                     (action == PrnParseConstants.OvlAct.IdFont)
                                           ||
-                     (action == PrnParseConstants.eOvlAct.IdPalette)
+                     (action == PrnParseConstants.OvlAct.IdPalette)
                                           ||
-                     (action == PrnParseConstants.eOvlAct.IdPattern)
+                     (action == PrnParseConstants.OvlAct.IdPattern)
                                           ||
-                     (action == PrnParseConstants.eOvlAct.IdSymSet)
+                     (action == PrnParseConstants.OvlAct.IdSymSet)
                                           ||
-                     (action == PrnParseConstants.eOvlAct.IdMacro))
+                     (action == PrnParseConstants.OvlAct.IdMacro))
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -87,7 +87,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
             }
-            else if (action != PrnParseConstants.eOvlAct.None)
+            else if (action != PrnParseConstants.OvlAct.None)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -183,7 +183,7 @@ namespace PCLParaphernalia
                         fragLen = 0;
                     }
                 }
-                else if (action == PrnParseConstants.eOvlAct.EndOfFile)
+                else if (action == PrnParseConstants.OvlAct.EndOfFile)
                 {
                     syncLen = linkData.FileSize - crntPos;
                     fragLen = -1;
@@ -340,42 +340,42 @@ namespace PCLParaphernalia
 
                 linkData.MakeOvlOffset = skipEnd;
 
-                if (action == PrnParseConstants.eOvlAct.PageBoundary)
+                if (action == PrnParseConstants.OvlAct.PageBoundary)
                 {
                     linkData.MakeOvlSkipBegin = skipEnd;
                 }
-                else if (action == PrnParseConstants.eOvlAct.PageBegin)
+                else if (action == PrnParseConstants.OvlAct.PageBegin)
                 {
                     // keep current SkipBegin position
                 }
-                else if (action == PrnParseConstants.eOvlAct.PageEnd)
+                else if (action == PrnParseConstants.OvlAct.PageEnd)
                 {
                     // keep current SkipBegin position
                 }
-                else if (action == PrnParseConstants.eOvlAct.Reset)
+                else if (action == PrnParseConstants.OvlAct.Reset)
                 {
                     // keep current SkipBegin position
                 }
                 else
                 {
                     linkData.MakeOvlSkipBegin =
-                        (int)PrnParseConstants.eOffsetPosition.Unknown;
+                        (int)PrnParseConstants.OffsetPosition.Unknown;
                 }
 
-                if (action == PrnParseConstants.eOvlAct.Replace_0x77)
+                if (action == PrnParseConstants.OvlAct.Replace_0x77)
                 {
                     PCLXLWriter.WriteOperator(binWriter,
-                                               PCLXLOperators.eTag.SetPageScale,
+                                               PCLXLOperators.Tag.SetPageScale,
                                                encapsulate);
                 }
-                else if (action == PrnParseConstants.eOvlAct.PushGS)
+                else if (action == PrnParseConstants.OvlAct.PushGS)
                 {
                     PCLXLWriter.WriteOperator(binWriter,
-                                               PCLXLOperators.eTag.PushGS,
+                                               PCLXLOperators.Tag.PushGS,
                                                encapsulate);
                 }
 
-                action = PrnParseConstants.eOvlAct.None;
+                action = PrnParseConstants.OvlAct.None;
             }
 
             linkData.MakeOvlAct = action;
@@ -402,7 +402,7 @@ namespace PCLParaphernalia
             long fileOffset,
             PrnParseLinkData linkData,
             DataTable table,
-            PrnParseConstants.eOptOffsetFormats indxOffsetFormat)
+            PrnParseConstants.OptOffsetFormats indxOffsetFormat)
         {
             bool breakpoint = false;
             bool comboModified;
@@ -412,13 +412,13 @@ namespace PCLParaphernalia
             long seqBegin,
                   seqEnd;
 
-            PrnParseConstants.eOvlPos makeOvlPosCrnt = linkData.MakeOvlPos;
-            PrnParseConstants.eOvlAct makeOvlActCrnt = linkData.MakeOvlAct;
-            PrnParseConstants.eOvlShow makeOvlShowCrnt = linkData.MakeOvlShow;
+            PrnParseConstants.OvlPos makeOvlPosCrnt = linkData.MakeOvlPos;
+            PrnParseConstants.OvlAct makeOvlActCrnt = linkData.MakeOvlAct;
+            PrnParseConstants.OvlShow makeOvlShowCrnt = linkData.MakeOvlShow;
 
-            PrnParseConstants.eOvlPos makeOvlPosNew = linkData.MakeOvlPos;
-            PrnParseConstants.eOvlAct makeOvlActNew = linkData.MakeOvlAct;
-            PrnParseConstants.eOvlShow makeOvlShowNew = linkData.MakeOvlShow;
+            PrnParseConstants.OvlPos makeOvlPosNew = linkData.MakeOvlPos;
+            PrnParseConstants.OvlAct makeOvlActNew = linkData.MakeOvlAct;
+            PrnParseConstants.OvlShow makeOvlShowNew = linkData.MakeOvlShow;
 
             analysisLevel = linkData.AnalysisLevel;
 
@@ -427,7 +427,7 @@ namespace PCLParaphernalia
             seqBegin = fileOffset + seqStart;
             seqEnd = seqBegin + fragLen;
 
-            if (makeOvlPosCrnt == PrnParseConstants.eOvlPos.BeforeFirstPage)
+            if (makeOvlPosCrnt == PrnParseConstants.OvlPos.BeforeFirstPage)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -435,52 +435,52 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if ((makeOvlActCrnt == PrnParseConstants.eOvlAct.IdMacro) &&
+                if ((makeOvlActCrnt == PrnParseConstants.OvlAct.IdMacro) &&
                          (vInt == linkData.MakeOvlMacroId))
                 {
                     breakpoint = true;
 
-                    makeOvlActNew = PrnParseConstants.eOvlAct.Terminate;
-                    makeOvlShowNew = PrnParseConstants.eOvlShow.Terminate;
+                    makeOvlActNew = PrnParseConstants.OvlAct.Terminate;
+                    makeOvlShowNew = PrnParseConstants.OvlShow.Terminate;
 
                     checkActionPCLMacroClash(vInt, table);
                 }
-                else if (makeOvlActCrnt == PrnParseConstants.eOvlAct.PageChange)
+                else if (makeOvlActCrnt == PrnParseConstants.OvlAct.PageChange)
                 {
                     breakpoint = true;
 
-                    makeOvlActNew = PrnParseConstants.eOvlAct.Remove;
-                    makeOvlShowNew = PrnParseConstants.eOvlShow.Remove;
+                    makeOvlActNew = PrnParseConstants.OvlAct.Remove;
+                    makeOvlShowNew = PrnParseConstants.OvlShow.Remove;
                 }
-                else if (makeOvlActCrnt == PrnParseConstants.eOvlAct.PageMark)
+                else if (makeOvlActCrnt == PrnParseConstants.OvlAct.PageMark)
                 {
-                    makeOvlPosNew = PrnParseConstants.eOvlPos.WithinFirstPage;
+                    makeOvlPosNew = PrnParseConstants.OvlPos.WithinFirstPage;
                 }
-                else if (makeOvlActCrnt == PrnParseConstants.eOvlAct.Remove)
+                else if (makeOvlActCrnt == PrnParseConstants.OvlAct.Remove)
                 {
                     breakpoint = true;
-                    makeOvlShowNew = PrnParseConstants.eOvlShow.Remove;
+                    makeOvlShowNew = PrnParseConstants.OvlShow.Remove;
                 }
-                else if (makeOvlActCrnt == PrnParseConstants.eOvlAct.Reset)
+                else if (makeOvlActCrnt == PrnParseConstants.OvlAct.Reset)
                 {
                     breakpoint = true;
 
-                    makeOvlActNew = PrnParseConstants.eOvlAct.Remove;
-                    makeOvlShowNew = PrnParseConstants.eOvlShow.Remove;
+                    makeOvlActNew = PrnParseConstants.OvlAct.Remove;
+                    makeOvlShowNew = PrnParseConstants.OvlShow.Remove;
                 }
                 else if (comboSeq && comboModified)
                 {
                     breakpoint = true;
 
-                    makeOvlActNew = PrnParseConstants.eOvlAct.Adjust;
-                    makeOvlShowNew = PrnParseConstants.eOvlShow.None;
+                    makeOvlActNew = PrnParseConstants.OvlAct.Adjust;
+                    makeOvlShowNew = PrnParseConstants.OvlShow.None;
                 }
                 else
                 {
-                    makeOvlShowNew = PrnParseConstants.eOvlShow.None;
+                    makeOvlShowNew = PrnParseConstants.OvlShow.None;
                 }
             }
-            else if (makeOvlPosCrnt == PrnParseConstants.eOvlPos.WithinFirstPage)
+            else if (makeOvlPosCrnt == PrnParseConstants.OvlPos.WithinFirstPage)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -488,49 +488,49 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if ((makeOvlActCrnt == PrnParseConstants.eOvlAct.IdMacro) &&
+                if ((makeOvlActCrnt == PrnParseConstants.OvlAct.IdMacro) &&
                          (vInt == linkData.MakeOvlMacroId))
                 {
                     breakpoint = true;
 
-                    makeOvlActNew = PrnParseConstants.eOvlAct.Terminate;
-                    makeOvlShowNew = PrnParseConstants.eOvlShow.Terminate;
+                    makeOvlActNew = PrnParseConstants.OvlAct.Terminate;
+                    makeOvlShowNew = PrnParseConstants.OvlShow.Terminate;
 
                     checkActionPCLMacroClash(vInt, table);
                 }
-                else if (makeOvlActCrnt == PrnParseConstants.eOvlAct.PageChange)
+                else if (makeOvlActCrnt == PrnParseConstants.OvlAct.PageChange)
                 {
                     breakpoint = true;
 
-                    makeOvlActNew = PrnParseConstants.eOvlAct.PageBegin;
-                    makeOvlPosNew = PrnParseConstants.eOvlPos.WithinOtherPages;
-                    makeOvlShowNew = PrnParseConstants.eOvlShow.None;
+                    makeOvlActNew = PrnParseConstants.OvlAct.PageBegin;
+                    makeOvlPosNew = PrnParseConstants.OvlPos.WithinOtherPages;
+                    makeOvlShowNew = PrnParseConstants.OvlShow.None;
                 }
-                else if (makeOvlActCrnt == PrnParseConstants.eOvlAct.Remove)
+                else if (makeOvlActCrnt == PrnParseConstants.OvlAct.Remove)
                 {
                     breakpoint = true;
-                    makeOvlShowNew = PrnParseConstants.eOvlShow.Remove;
+                    makeOvlShowNew = PrnParseConstants.OvlShow.Remove;
                 }
-                else if (makeOvlActCrnt == PrnParseConstants.eOvlAct.Reset)
+                else if (makeOvlActCrnt == PrnParseConstants.OvlAct.Reset)
                 {
                     breakpoint = true;
 
-                    makeOvlPosNew = PrnParseConstants.eOvlPos.AfterPages;
-                    makeOvlShowNew = PrnParseConstants.eOvlShow.Remove;
+                    makeOvlPosNew = PrnParseConstants.OvlPos.AfterPages;
+                    makeOvlShowNew = PrnParseConstants.OvlShow.Remove;
                 }
                 else if (comboSeq && comboModified)
                 {
                     breakpoint = true;
 
-                    makeOvlActNew = PrnParseConstants.eOvlAct.Adjust;
-                    makeOvlShowNew = PrnParseConstants.eOvlShow.None;
+                    makeOvlActNew = PrnParseConstants.OvlAct.Adjust;
+                    makeOvlShowNew = PrnParseConstants.OvlShow.None;
                 }
                 else
                 {
-                    makeOvlShowNew = PrnParseConstants.eOvlShow.None;
+                    makeOvlShowNew = PrnParseConstants.OvlShow.None;
                 }
             }
-            else if (makeOvlPosCrnt == PrnParseConstants.eOvlPos.WithinOtherPages)
+            else if (makeOvlPosCrnt == PrnParseConstants.OvlPos.WithinOtherPages)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -538,12 +538,12 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if (makeOvlActCrnt == PrnParseConstants.eOvlAct.PageChange)
+                if (makeOvlActCrnt == PrnParseConstants.OvlAct.PageChange)
                 {
                     breakpoint = true;
 
-                    makeOvlActNew = PrnParseConstants.eOvlAct.PageBoundary;
-                    makeOvlShowNew = PrnParseConstants.eOvlShow.None;
+                    makeOvlActNew = PrnParseConstants.OvlAct.PageBoundary;
+                    makeOvlShowNew = PrnParseConstants.OvlShow.None;
 
                     if (linkData.MakeOvlSkipBegin > 0)
                     {
@@ -551,9 +551,9 @@ namespace PCLParaphernalia
                         long pageLen = seqBegin - pageStart;
 
                         PrnParseCommon.addDataRow(
-                            PrnParseRowTypes.eType.MsgComment,
+                            PrnParseRowTypes.Type.MsgComment,
                             table,
-                            PrnParseConstants.eOvlShow.Remove,
+                            PrnParseConstants.OvlShow.Remove,
                             indxOffsetFormat,
                             (int)pageStart,
                             analysisLevel,
@@ -562,12 +562,12 @@ namespace PCLParaphernalia
                             "Subsequent page");
                     }
                 }
-                else if (makeOvlActCrnt == PrnParseConstants.eOvlAct.Reset)
+                else if (makeOvlActCrnt == PrnParseConstants.OvlAct.Reset)
                 {
                     breakpoint = true;
 
-                    makeOvlPosNew = PrnParseConstants.eOvlPos.AfterPages;
-                    makeOvlShowNew = PrnParseConstants.eOvlShow.Remove;
+                    makeOvlPosNew = PrnParseConstants.OvlPos.AfterPages;
+                    makeOvlShowNew = PrnParseConstants.OvlShow.Remove;
 
                     if (linkData.MakeOvlSkipBegin > 0)
                     {
@@ -575,9 +575,9 @@ namespace PCLParaphernalia
                         long pageLen = seqBegin - pageStart;
 
                         PrnParseCommon.addDataRow(
-                            PrnParseRowTypes.eType.MsgComment,
+                            PrnParseRowTypes.Type.MsgComment,
                             table,
-                            PrnParseConstants.eOvlShow.Remove,
+                            PrnParseConstants.OvlShow.Remove,
                             indxOffsetFormat,
                             (int)pageStart,
                             analysisLevel,
@@ -595,19 +595,19 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if (makeOvlActCrnt == PrnParseConstants.eOvlAct.Reset)
+                if (makeOvlActCrnt == PrnParseConstants.OvlAct.Reset)
                 {
                     breakpoint = true;
 
-                    makeOvlActNew = PrnParseConstants.eOvlAct.Remove;
-                    makeOvlShowNew = PrnParseConstants.eOvlShow.Remove;
+                    makeOvlActNew = PrnParseConstants.OvlAct.Remove;
+                    makeOvlShowNew = PrnParseConstants.OvlShow.Remove;
                 }
-                else if (makeOvlActCrnt != PrnParseConstants.eOvlAct.None)
+                else if (makeOvlActCrnt != PrnParseConstants.OvlAct.None)
                 {
                     breakpoint = true;
 
-                    makeOvlActNew = PrnParseConstants.eOvlAct.Terminate;
-                    makeOvlShowNew = PrnParseConstants.eOvlShow.Terminate;
+                    makeOvlActNew = PrnParseConstants.OvlAct.Terminate;
+                    makeOvlShowNew = PrnParseConstants.OvlShow.Terminate;
                 }
             }
 
@@ -621,7 +621,7 @@ namespace PCLParaphernalia
 
             if (breakpoint)
             {
-                PrnParseConstants.eContType contType;
+                PrnParseConstants.ContType contType;
                 byte iChar = 0x20,
                      gChar = 0x20;
 
@@ -635,9 +635,9 @@ namespace PCLParaphernalia
                     comboModified = true;
 
                 if (seqComplete)
-                    contType = PrnParseConstants.eContType.Reset;
+                    contType = PrnParseConstants.ContType.Reset;
                 else
-                    contType = PrnParseConstants.eContType.PCLComplex;
+                    contType = PrnParseConstants.ContType.PCLComplex;
 
                 linkData.PclComboModified = comboModified;
 
@@ -652,20 +652,20 @@ namespace PCLParaphernalia
                 linkData.MakeOvlAct = makeOvlActNew;
                 linkData.MakeOvlShow = makeOvlShowNew;
 
-                if (makeOvlActNew == PrnParseConstants.eOvlAct.PageBegin)
+                if (makeOvlActNew == PrnParseConstants.OvlAct.PageBegin)
                 {
                     linkData.MakeOvlSkipBegin = seqBegin;
                     linkData.MakeOvlSkipEnd = seqBegin;
                 }
-                else if (makeOvlActNew == PrnParseConstants.eOvlAct.PageBoundary)
+                else if (makeOvlActNew == PrnParseConstants.OvlAct.PageBoundary)
                 {
                     linkData.MakeOvlSkipEnd = seqBegin;
                 }
-                else if (makeOvlActNew == PrnParseConstants.eOvlAct.PageEnd)
+                else if (makeOvlActNew == PrnParseConstants.OvlAct.PageEnd)
                 {
                     linkData.MakeOvlSkipEnd = seqBegin;
                 }
-                else if (makeOvlActNew == PrnParseConstants.eOvlAct.Adjust)
+                else if (makeOvlActNew == PrnParseConstants.OvlAct.Adjust)
                 {
                     linkData.MakeOvlSkipBegin = seqEnd;
                     linkData.MakeOvlSkipEnd = seqEnd;
@@ -704,9 +704,9 @@ namespace PCLParaphernalia
             DataTable table)
         {
             PrnParseCommon.addTextRow(
-                PrnParseRowTypes.eType.MsgError,
+                PrnParseRowTypes.Type.MsgError,
                 table,
-                PrnParseConstants.eOvlShow.Terminate,
+                PrnParseConstants.OvlShow.Terminate,
                 string.Empty,
                 "Error",
                 string.Empty,
@@ -714,9 +714,9 @@ namespace PCLParaphernalia
                 " is the specified overlay identifier");
 
             PrnParseCommon.addTextRow(
-                PrnParseRowTypes.eType.MsgError,
+                PrnParseRowTypes.Type.MsgError,
                 table,
-                PrnParseConstants.eOvlShow.Terminate,
+                PrnParseConstants.OvlShow.Terminate,
                 string.Empty,
                 "Error",
                 string.Empty,
@@ -746,14 +746,14 @@ namespace PCLParaphernalia
 
         public static bool checkActionPCLXLAttr(
             bool firstPass,
-            PrnParseConstants.eOvlAct attrOvlAct,
-            PrnParseConstants.eOvlShow operOvlShow,
+            PrnParseConstants.OvlAct attrOvlAct,
+            PrnParseConstants.OvlShow operOvlShow,
             int attrDataStart,
             int attrPos,
             long fileOffset,
             PrnParseLinkData linkData,
             DataTable table,
-            PrnParseConstants.eOptOffsetFormats indxOffsetFormat)
+            PrnParseConstants.OptOffsetFormats indxOffsetFormat)
         {
             bool breakpoint = false;
 
@@ -762,15 +762,15 @@ namespace PCLParaphernalia
             long seqBegin,
                   seqEnd;
 
-            PrnParseConstants.eOvlPos makeOvlPos = linkData.MakeOvlPos;
-            PrnParseConstants.eOvlAct makeOvlAct = linkData.MakeOvlAct;
+            PrnParseConstants.OvlPos makeOvlPos = linkData.MakeOvlPos;
+            PrnParseConstants.OvlAct makeOvlAct = linkData.MakeOvlAct;
 
             analysisLevel = linkData.AnalysisLevel;
 
             seqBegin = fileOffset + attrDataStart;
             seqEnd = fileOffset + attrPos + 2;    // what about 2-byte tags?
 
-            if (makeOvlPos == PrnParseConstants.eOvlPos.WithinOtherPages)
+            if (makeOvlPos == PrnParseConstants.OvlPos.WithinOtherPages)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -779,7 +779,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                linkData.MakeOvlShow = PrnParseConstants.eOvlShow.None;
+                linkData.MakeOvlShow = PrnParseConstants.OvlShow.None;
             }
             else
             {
@@ -792,11 +792,11 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if (attrOvlAct == PrnParseConstants.eOvlAct.Remove)
+                if (attrOvlAct == PrnParseConstants.OvlAct.Remove)
                 {
                     breakpoint = true;
 
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.Remove;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.Remove;
 
                     linkData.MakeOvlAct = attrOvlAct;
                     linkData.MakeOvlSkipBegin = fileOffset + attrDataStart;
@@ -818,9 +818,9 @@ namespace PCLParaphernalia
                     if (copyLen > 0)
                     {
                         PrnParseCommon.addDataRow(
-                            PrnParseRowTypes.eType.MsgComment,
+                            PrnParseRowTypes.Type.MsgComment,
                             table,
-                            PrnParseConstants.eOvlShow.Modify,
+                            PrnParseConstants.OvlShow.Modify,
                             indxOffsetFormat,
                             (int)offset,
                             analysisLevel,
@@ -856,13 +856,13 @@ namespace PCLParaphernalia
         public static bool checkActionPCLXLOper(
             bool firstPass,
             bool operHasAttrList,
-            PrnParseConstants.eOvlAct operOvlAct,
+            PrnParseConstants.OvlAct operOvlAct,
             int operDataStart,
             int operPos,
             long fileOffset,
             PrnParseLinkData linkData,
             DataTable table,
-            PrnParseConstants.eOptOffsetFormats indxOffsetFormat)
+            PrnParseConstants.OptOffsetFormats indxOffsetFormat)
         {
             bool breakpoint = false;
 
@@ -871,15 +871,15 @@ namespace PCLParaphernalia
             long seqBegin,
                   seqEnd;
 
-            PrnParseConstants.eOvlPos makeOvlPos = linkData.MakeOvlPos;
-            PrnParseConstants.eOvlAct makeOvlAct = linkData.MakeOvlAct;
+            PrnParseConstants.OvlPos makeOvlPos = linkData.MakeOvlPos;
+            PrnParseConstants.OvlAct makeOvlAct = linkData.MakeOvlAct;
 
             analysisLevel = linkData.AnalysisLevel;
 
             seqBegin = fileOffset + operDataStart;
             seqEnd = fileOffset + operPos + 1;
 
-            if (makeOvlPos == PrnParseConstants.eOvlPos.BeforeFirstPage)
+            if (makeOvlPos == PrnParseConstants.OvlPos.BeforeFirstPage)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -887,61 +887,61 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if (operOvlAct == PrnParseConstants.eOvlAct.Illegal)
+                if (operOvlAct == PrnParseConstants.OvlAct.Illegal)
                 {
                     breakpoint = true;
 
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.Illegal;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.Illegal;
 
-                    linkData.MakeOvlAct = PrnParseConstants.eOvlAct.Terminate;
+                    linkData.MakeOvlAct = PrnParseConstants.OvlAct.Terminate;
                     linkData.MakeOvlSkipBegin = seqEnd - 1;
                     linkData.MakeOvlSkipEnd = seqEnd;
                 }
-                else if (operOvlAct == PrnParseConstants.eOvlAct.PageBegin)
+                else if (operOvlAct == PrnParseConstants.OvlAct.PageBegin)
                 {
                     breakpoint = true;
 
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.Remove;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.Remove;
 
-                    linkData.MakeOvlAct = PrnParseConstants.eOvlAct.Remove;
+                    linkData.MakeOvlAct = PrnParseConstants.OvlAct.Remove;
                     linkData.MakeOvlSkipBegin = seqBegin;
                     linkData.MakeOvlSkipEnd = seqEnd;
 
                     if (firstPass)
-                        linkData.MakeOvlPos = PrnParseConstants.eOvlPos.WithinFirstPage;
+                        linkData.MakeOvlPos = PrnParseConstants.OvlPos.WithinFirstPage;
                 }
-                else if (operOvlAct == PrnParseConstants.eOvlAct.PageEnd)
+                else if (operOvlAct == PrnParseConstants.OvlAct.PageEnd)
                 {
                     breakpoint = true;
 
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.Illegal;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.Illegal;
 
-                    linkData.MakeOvlPos = PrnParseConstants.eOvlPos.BetweenPages;
-                    linkData.MakeOvlAct = PrnParseConstants.eOvlAct.Remove;
+                    linkData.MakeOvlPos = PrnParseConstants.OvlPos.BetweenPages;
+                    linkData.MakeOvlAct = PrnParseConstants.OvlAct.Remove;
                     linkData.MakeOvlSkipBegin = seqBegin;
                     linkData.MakeOvlSkipEnd = seqEnd;
                 }
-                else if (operOvlAct == PrnParseConstants.eOvlAct.Remove)
+                else if (operOvlAct == PrnParseConstants.OvlAct.Remove)
                 {
                     breakpoint = true;
 
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.Remove;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.Remove;
 
                     linkData.MakeOvlAct = operOvlAct;
                     linkData.MakeOvlSkipBegin = seqBegin;
                     linkData.MakeOvlSkipEnd = seqEnd;
                 }
-                else if (operOvlAct == PrnParseConstants.eOvlAct.Replace_0x77)
+                else if (operOvlAct == PrnParseConstants.OvlAct.Replace_0x77)
                 {
                     if (firstPass)
                     {
                         breakpoint = false;
-                        linkData.MakeOvlShow = PrnParseConstants.eOvlShow.None;
+                        linkData.MakeOvlShow = PrnParseConstants.OvlShow.None;
                     }
                     else
                     {
                         breakpoint = true;
-                        linkData.MakeOvlShow = PrnParseConstants.eOvlShow.Remove;
+                        linkData.MakeOvlShow = PrnParseConstants.OvlShow.Remove;
                     }
 
                     linkData.MakeOvlAct = operOvlAct;
@@ -950,10 +950,10 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.None;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.None;
                 }
             }
-            else if (makeOvlPos == PrnParseConstants.eOvlPos.WithinFirstPage)
+            else if (makeOvlPos == PrnParseConstants.OvlPos.WithinFirstPage)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -961,73 +961,73 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if (operOvlAct == PrnParseConstants.eOvlAct.Illegal)
+                if (operOvlAct == PrnParseConstants.OvlAct.Illegal)
                 {
                     breakpoint = true;
 
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.Illegal;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.Illegal;
 
-                    linkData.MakeOvlAct = PrnParseConstants.eOvlAct.Terminate;
+                    linkData.MakeOvlAct = PrnParseConstants.OvlAct.Terminate;
                     linkData.MakeOvlSkipBegin = seqEnd - 1;
                     linkData.MakeOvlSkipEnd = seqEnd;
                 }
-                else if (operOvlAct == PrnParseConstants.eOvlAct.PageBegin)
+                else if (operOvlAct == PrnParseConstants.OvlAct.PageBegin)
                 {
                     breakpoint = true;
 
                     if (firstPass)
                     {
-                        linkData.MakeOvlShow = PrnParseConstants.eOvlShow.None;
-                        linkData.MakeOvlPos = PrnParseConstants.eOvlPos.WithinOtherPages;
+                        linkData.MakeOvlShow = PrnParseConstants.OvlShow.None;
+                        linkData.MakeOvlPos = PrnParseConstants.OvlPos.WithinOtherPages;
                     }
                     else
                     {
-                        linkData.MakeOvlShow = PrnParseConstants.eOvlShow.Remove;
+                        linkData.MakeOvlShow = PrnParseConstants.OvlShow.Remove;
                     }
 
-                    linkData.MakeOvlAct = PrnParseConstants.eOvlAct.Remove;
+                    linkData.MakeOvlAct = PrnParseConstants.OvlAct.Remove;
                     linkData.MakeOvlSkipBegin = seqBegin;
                     linkData.MakeOvlSkipEnd = seqEnd;
                 }
-                else if (operOvlAct == PrnParseConstants.eOvlAct.PageEnd)
+                else if (operOvlAct == PrnParseConstants.OvlAct.PageEnd)
                 {
                     breakpoint = true;
 
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.Remove;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.Remove;
 
                     if (!firstPass)
-                        linkData.MakeOvlPos = PrnParseConstants.eOvlPos.BetweenPages;
+                        linkData.MakeOvlPos = PrnParseConstants.OvlPos.BetweenPages;
 
-                    linkData.MakeOvlAct = PrnParseConstants.eOvlAct.Remove;
+                    linkData.MakeOvlAct = PrnParseConstants.OvlAct.Remove;
                     linkData.MakeOvlSkipBegin = seqBegin;
                     linkData.MakeOvlSkipEnd = seqEnd;
                 }
-                else if (operOvlAct == PrnParseConstants.eOvlAct.Remove)
+                else if (operOvlAct == PrnParseConstants.OvlAct.Remove)
                 {
                     breakpoint = true;
 
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.Remove;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.Remove;
 
                     linkData.MakeOvlAct = operOvlAct;
                     linkData.MakeOvlSkipBegin = seqBegin;
                     linkData.MakeOvlSkipEnd = seqEnd;
                 }
-                else if (operOvlAct == PrnParseConstants.eOvlAct.Replace_0x77)
+                else if (operOvlAct == PrnParseConstants.OvlAct.Replace_0x77)
                 {
                     breakpoint = true;
 
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.Illegal;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.Illegal;
 
-                    linkData.MakeOvlAct = PrnParseConstants.eOvlAct.Terminate;
+                    linkData.MakeOvlAct = PrnParseConstants.OvlAct.Terminate;
                     linkData.MakeOvlSkipBegin = seqEnd - 1;
                     linkData.MakeOvlSkipEnd = seqEnd;
                 }
                 else
                 {
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.None;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.None;
                 }
             }
-            else if (makeOvlPos == PrnParseConstants.eOvlPos.BetweenPages)
+            else if (makeOvlPos == PrnParseConstants.OvlPos.BetweenPages)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1037,47 +1037,47 @@ namespace PCLParaphernalia
 
                 if (firstPass)
                 {
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.None;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.None;
                 }
-                else if (operOvlAct == PrnParseConstants.eOvlAct.Illegal)
+                else if (operOvlAct == PrnParseConstants.OvlAct.Illegal)
                 {
                     breakpoint = true;
 
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.Illegal;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.Illegal;
 
-                    linkData.MakeOvlAct = PrnParseConstants.eOvlAct.Terminate;
+                    linkData.MakeOvlAct = PrnParseConstants.OvlAct.Terminate;
                     linkData.MakeOvlSkipBegin = seqEnd - 1;
                     linkData.MakeOvlSkipEnd = seqEnd;
                 }
-                else if (operOvlAct == PrnParseConstants.eOvlAct.PageBegin)
+                else if (operOvlAct == PrnParseConstants.OvlAct.PageBegin)
                 {
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.None;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.None;
 
-                    linkData.MakeOvlPos = PrnParseConstants.eOvlPos.WithinOtherPages;
+                    linkData.MakeOvlPos = PrnParseConstants.OvlPos.WithinOtherPages;
                     linkData.MakeOvlSkipBegin = seqBegin;
                 }
-                else if (operOvlAct == PrnParseConstants.eOvlAct.Remove)
+                else if (operOvlAct == PrnParseConstants.OvlAct.Remove)
                 {
                     breakpoint = true;
 
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.Remove;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.Remove;
 
                     linkData.MakeOvlAct = operOvlAct;
                     linkData.MakeOvlSkipBegin = seqBegin;
                     linkData.MakeOvlSkipEnd = seqEnd;
                 }
-                else if (operOvlAct == PrnParseConstants.eOvlAct.Replace_0x77)
+                else if (operOvlAct == PrnParseConstants.OvlAct.Replace_0x77)
                 {
                     breakpoint = true;
 
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.Illegal;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.Illegal;
 
-                    linkData.MakeOvlAct = PrnParseConstants.eOvlAct.Terminate;
+                    linkData.MakeOvlAct = PrnParseConstants.OvlAct.Terminate;
                     linkData.MakeOvlSkipBegin = seqEnd - 1;
                     linkData.MakeOvlSkipEnd = seqEnd;
                 }
             }
-            else if (makeOvlPos == PrnParseConstants.eOvlPos.WithinOtherPages)
+            else if (makeOvlPos == PrnParseConstants.OvlPos.WithinOtherPages)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1087,35 +1087,35 @@ namespace PCLParaphernalia
 
                 if (firstPass)
                 {
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.None;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.None;
                 }
-                else if (operOvlAct == PrnParseConstants.eOvlAct.Illegal)
+                else if (operOvlAct == PrnParseConstants.OvlAct.Illegal)
                 {
                     breakpoint = true;
 
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.Illegal;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.Illegal;
 
-                    linkData.MakeOvlAct = PrnParseConstants.eOvlAct.Terminate;
+                    linkData.MakeOvlAct = PrnParseConstants.OvlAct.Terminate;
                     linkData.MakeOvlSkipBegin = seqEnd - 1;
                     linkData.MakeOvlSkipEnd = seqEnd;
                 }
-                else if (operOvlAct == PrnParseConstants.eOvlAct.PageEnd)
+                else if (operOvlAct == PrnParseConstants.OvlAct.PageEnd)
                 {
                     long pageStart = linkData.MakeOvlSkipBegin;
                     long pageLen = seqEnd - pageStart;
 
                     breakpoint = true;
 
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.None;
-                    linkData.MakeOvlPos = PrnParseConstants.eOvlPos.BetweenPages;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.None;
+                    linkData.MakeOvlPos = PrnParseConstants.OvlPos.BetweenPages;
 
-                    linkData.MakeOvlAct = PrnParseConstants.eOvlAct.Remove;
+                    linkData.MakeOvlAct = PrnParseConstants.OvlAct.Remove;
                     linkData.MakeOvlSkipEnd = seqEnd;
 
                     PrnParseCommon.addDataRow(
-                        PrnParseRowTypes.eType.MsgComment,
+                        PrnParseRowTypes.Type.MsgComment,
                         table,
-                        PrnParseConstants.eOvlShow.Remove,
+                        PrnParseConstants.OvlShow.Remove,
                         indxOffsetFormat,
                         (int)linkData.MakeOvlSkipBegin,
                         analysisLevel,
@@ -1135,54 +1135,54 @@ namespace PCLParaphernalia
 
                 if (firstPass)
                 {
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.None;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.None;
                 }
-                else if (operOvlAct == PrnParseConstants.eOvlAct.Illegal)
+                else if (operOvlAct == PrnParseConstants.OvlAct.Illegal)
                 {
                     breakpoint = true;
 
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.Illegal;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.Illegal;
 
-                    linkData.MakeOvlAct = PrnParseConstants.eOvlAct.Terminate;
+                    linkData.MakeOvlAct = PrnParseConstants.OvlAct.Terminate;
                     linkData.MakeOvlSkipBegin = seqEnd - 1;
                     linkData.MakeOvlSkipEnd = seqEnd;
                 }
-                else if (operOvlAct == PrnParseConstants.eOvlAct.PageBegin)
+                else if (operOvlAct == PrnParseConstants.OvlAct.PageBegin)
                 {
                     breakpoint = true;
 
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.Remove;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.Remove;
 
-                    linkData.MakeOvlAct = PrnParseConstants.eOvlAct.Remove;
+                    linkData.MakeOvlAct = PrnParseConstants.OvlAct.Remove;
                     linkData.MakeOvlSkipBegin = seqBegin;
                     linkData.MakeOvlSkipEnd = seqEnd;
                 }
-                else if (operOvlAct == PrnParseConstants.eOvlAct.PageEnd)
+                else if (operOvlAct == PrnParseConstants.OvlAct.PageEnd)
                 {
                     breakpoint = true;
 
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.Remove;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.Remove;
 
-                    linkData.MakeOvlPos = PrnParseConstants.eOvlPos.BetweenPages;
-                    linkData.MakeOvlAct = PrnParseConstants.eOvlAct.Remove;
+                    linkData.MakeOvlPos = PrnParseConstants.OvlPos.BetweenPages;
+                    linkData.MakeOvlAct = PrnParseConstants.OvlAct.Remove;
                     linkData.MakeOvlSkipBegin = seqBegin;
                     linkData.MakeOvlSkipEnd = seqEnd;
                 }
-                else if (operOvlAct == PrnParseConstants.eOvlAct.Remove)
+                else if (operOvlAct == PrnParseConstants.OvlAct.Remove)
                 {
                     breakpoint = true;
 
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.Remove;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.Remove;
 
                     linkData.MakeOvlAct = operOvlAct;
                     linkData.MakeOvlSkipBegin = seqBegin;
                     linkData.MakeOvlSkipEnd = seqEnd;
                 }
-                else if (operOvlAct == PrnParseConstants.eOvlAct.Replace_0x77)
+                else if (operOvlAct == PrnParseConstants.OvlAct.Replace_0x77)
                 {
                     breakpoint = true;
 
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.Remove;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.Remove;
 
                     linkData.MakeOvlAct = operOvlAct;
                     linkData.MakeOvlSkipBegin = seqEnd - 1;
@@ -1190,7 +1190,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    linkData.MakeOvlShow = PrnParseConstants.eOvlShow.None;
+                    linkData.MakeOvlShow = PrnParseConstants.OvlShow.None;
                 }
             }
 
@@ -1205,9 +1205,9 @@ namespace PCLParaphernalia
                     if (copyLen > 0)
                     {
                         PrnParseCommon.addDataRow(
-                            PrnParseRowTypes.eType.MsgComment,
+                            PrnParseRowTypes.Type.MsgComment,
                             table,
-                            PrnParseConstants.eOvlShow.Modify,
+                            PrnParseConstants.OvlShow.Modify,
                             indxOffsetFormat,
                             (int)offset,
                             analysisLevel,
@@ -1236,7 +1236,7 @@ namespace PCLParaphernalia
             long fileOffset,
             PrnParseLinkData linkData,
             DataTable table,
-            PrnParseConstants.eOptOffsetFormats indxOffsetFormat)
+            PrnParseConstants.OptOffsetFormats indxOffsetFormat)
         {
             bool breakpoint = false;
 
@@ -1247,8 +1247,8 @@ namespace PCLParaphernalia
             long seqBegin,
                   seqEnd;
 
-            PrnParseConstants.eOvlPos makeOvlPos = linkData.MakeOvlPos;
-            PrnParseConstants.eOvlAct makeOvlAct = linkData.MakeOvlAct;
+            PrnParseConstants.OvlPos makeOvlPos = linkData.MakeOvlPos;
+            PrnParseConstants.OvlAct makeOvlAct = linkData.MakeOvlAct;
 
             analysisLevel = linkData.AnalysisLevel;
 
@@ -1269,9 +1269,9 @@ namespace PCLParaphernalia
                     if (copyLen > 0)
                     {
                         PrnParseCommon.addDataRow(
-                            PrnParseRowTypes.eType.MsgComment,
+                            PrnParseRowTypes.Type.MsgComment,
                             table,
-                            PrnParseConstants.eOvlShow.Modify,
+                            PrnParseConstants.OvlShow.Modify,
                             indxOffsetFormat,
                             (int)offset,
                             analysisLevel,
@@ -1281,7 +1281,7 @@ namespace PCLParaphernalia
                     }
                 }
 
-                linkData.MakeOvlAct = PrnParseConstants.eOvlAct.PushGS;
+                linkData.MakeOvlAct = PrnParseConstants.OvlAct.PushGS;
                 linkData.MakeOvlSkipBegin = seqEnd;
                 linkData.MakeOvlSkipEnd = seqEnd;
 
@@ -1296,9 +1296,9 @@ namespace PCLParaphernalia
                 }
 
                 PrnParseCommon.addDataRow(
-                    PrnParseRowTypes.eType.PCLXLOperator,
+                    PrnParseRowTypes.Type.PCLXLOperator,
                     table,
-                    PrnParseConstants.eOvlShow.Insert,
+                    PrnParseConstants.OvlShow.Insert,
                     indxOffsetFormat,
                     (int)seqEnd,
                     analysisLevel,
@@ -1326,11 +1326,11 @@ namespace PCLParaphernalia
                                            bool restoreCursor,
                                            int macroId)
         {
-            PrnParseConstants.eOffsetPosition crntPos;
+            PrnParseConstants.OffsetPosition crntPos;
 
             parserPCL.setTable(table);
 
-            crntPos = PrnParseConstants.eOffsetPosition.StartOfFile;
+            crntPos = PrnParseConstants.OffsetPosition.StartOfFile;
 
             if (encapsulate)
             {
@@ -1343,7 +1343,7 @@ namespace PCLParaphernalia
                     macroId.ToString(),
                     crntPos);
 
-                crntPos = PrnParseConstants.eOffsetPosition.CrntPosition;
+                crntPos = PrnParseConstants.OffsetPosition.CrntPosition;
 
                 insertSequencePCL(
                     parserPCL,
@@ -1384,13 +1384,13 @@ namespace PCLParaphernalia
             byte gChar,
             byte tChar,
             string value,
-            PrnParseConstants.eOffsetPosition position)
+            PrnParseConstants.OffsetPosition position)
         {
-            PrnParseConstants.eActPCL actType =
-                PrnParseConstants.eActPCL.None;
+            PrnParseConstants.ActPCL actType =
+                PrnParseConstants.ActPCL.None;
 
-            PrnParseConstants.eOvlAct makeOvlAct =
-                PrnParseConstants.eOvlAct.None;
+            PrnParseConstants.OvlAct makeOvlAct =
+                PrnParseConstants.OvlAct.None;
 
             bool seqKnown;
 
@@ -1474,7 +1474,7 @@ namespace PCLParaphernalia
                 (int)position,
                 prefixLen,
                 true,
-                PrnParseConstants.eOvlShow.Insert,
+                PrnParseConstants.OvlShow.Insert,
                 typeText,
                 seq,
                 descComplex,
@@ -1522,11 +1522,11 @@ namespace PCLParaphernalia
                                             bool encapsulate,
                                             bool restoreCursor)
         {
-            PrnParseConstants.eOffsetPosition crntPos;
+            PrnParseConstants.OffsetPosition crntPos;
 
             parserPCL.setTable(table);
 
-            crntPos = PrnParseConstants.eOffsetPosition.EndOfFile;
+            crntPos = PrnParseConstants.OffsetPosition.EndOfFile;
 
             if (restoreCursor)
             {
@@ -1539,7 +1539,7 @@ namespace PCLParaphernalia
                     "1",
                     crntPos);
 
-                crntPos = PrnParseConstants.eOffsetPosition.CrntPosition;
+                crntPos = PrnParseConstants.OffsetPosition.CrntPosition;
             }
 
             if (encapsulate)

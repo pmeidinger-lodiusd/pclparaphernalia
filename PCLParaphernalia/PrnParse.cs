@@ -22,7 +22,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public enum eParseType
+        public enum ParseType
         {
             Analyse = 0,
             MakeOverlay,
@@ -43,11 +43,11 @@ namespace PCLParaphernalia
         private BinaryWriter _binWriter = null;
         private BinaryWriter _subWriter = null;
 
-        private readonly eParseType _parseType;
+        private readonly ParseType _parseType;
         private PrnParseOptions _options;
         private DataTable _table;
 
-        private ToolCommonData.ePrintLang _crntPDL;
+        private ToolCommonData.PrintLang _crntPDL;
         //   private Int32 _perCentMax;
 
         private long _fileSize = 0;
@@ -76,7 +76,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParse(eParseType parseType,
+        public PrnParse(ParseType parseType,
                         int analysisLevel)
         {
             _parseType = parseType;
@@ -90,13 +90,13 @@ namespace PCLParaphernalia
             _parsePrescribe = new PrnParsePrescribe();
 
             PrnParseCommon.initialiseRunType(_parseType);
-            PrnParseData.initialiseRunType(_parseType);
+            PrnParseData.InitialiseRunType(_parseType);
 
             _linkData = new PrnParseLinkData(
                                 this,
                                 analysisLevel,
                                 0,
-                                PCLXLOperators.eEmbedDataType.None);
+                                PCLXLOperators.EmbedDataType.None);
 
             _PCLXLFirstCall = true;
             _subFileCreated = false;
@@ -112,7 +112,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool analyse(string prnFilename,
+        public bool Analyse(string prnFilename,
                                PrnParseOptions options,
                                DataTable table)
         //                 ToolPrnAnalyse   owner,
@@ -130,7 +130,7 @@ namespace PCLParaphernalia
 
             //  _perCentMax = 0;
 
-            ipOpen = prnFileOpen(prnFilename, ref _fileSize);
+            ipOpen = PrnFileOpen(prnFilename, ref _fileSize);
 
             if (!ipOpen)
             {
@@ -142,9 +142,9 @@ namespace PCLParaphernalia
 
                 _linkData.FileSize = _fileSize;
 
-                analyseAction(PCLXLOperators.eEmbedDataType.None);
+                AnalyseAction(PCLXLOperators.EmbedDataType.None);
 
-                prnFileClose();
+                PrnFileClose();
             }
 
             return OK;
@@ -159,8 +159,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void analyseAction(
-            PCLXLOperators.eEmbedDataType pclxlEmbedType)
+        private void AnalyseAction(PCLXLOperators.EmbedDataType pclxlEmbedType)
         {
             int blockLen,
                   contDataLen = 0,
@@ -171,11 +170,11 @@ namespace PCLParaphernalia
 
             //   Int32 perCent = 0;
 
-            ToolCommonData.ePrintLang newPDL;
+            ToolCommonData.PrintLang newPDL;
 
-            PrnParseConstants.eOptCharSetSubActs indxCharSetSubAct = 0;
-            PrnParseConstants.eOptCharSets indxCharSetName = 0;
-            PrnParseConstants.eOptOffsetFormats indxOffsetFormat = 0;
+            PrnParseConstants.OptCharSetSubActs indxCharSetSubAct = 0;
+            PrnParseConstants.OptCharSets indxCharSetName = 0;
+            PrnParseConstants.OptOffsetFormats indxOffsetFormat = 0;
 
             int valCharSetSubCode = 0;
 
@@ -199,7 +198,7 @@ namespace PCLParaphernalia
                                     ref indxCharSetSubAct,
                                     ref valCharSetSubCode);
 
-            if (_parseType == eParseType.Analyse)
+            if (_parseType == ParseType.Analyse)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -210,7 +209,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                blockStart = analyseActionStart();
+                blockStart = AnalyseActionStart();
             }
 
             if (_fileSize == 0)
@@ -264,7 +263,7 @@ namespace PCLParaphernalia
 
                         switch (_crntPDL)
                         {
-                            case ToolCommonData.ePrintLang.PCL:
+                            case ToolCommonData.PrintLang.PCL:
 
                                 badSeq = _parsePCL.parseBuffer(
                                     buf,
@@ -278,7 +277,7 @@ namespace PCLParaphernalia
                                     _table);
                                 break;
 
-                            case ToolCommonData.ePrintLang.PCL3GUI:
+                            case ToolCommonData.PrintLang.PCL3GUI:
 
                                 badSeq = _parsePCL.parseBuffer(
                                     buf,
@@ -292,7 +291,7 @@ namespace PCLParaphernalia
                                     _table);
                                 break;
 
-                            case ToolCommonData.ePrintLang.HPGL2:
+                            case ToolCommonData.PrintLang.HPGL2:
 
                                 badSeq = _parseHPGL2.parseBuffer(
                                     buf,
@@ -306,7 +305,7 @@ namespace PCLParaphernalia
                                     _table);
                                 break;
 
-                            case ToolCommonData.ePrintLang.PJL:
+                            case ToolCommonData.PrintLang.PJL:
 
                                 badSeq = _parsePJL.parseBuffer(
                                     buf,
@@ -320,7 +319,7 @@ namespace PCLParaphernalia
                                     _table);
                                 break;
 
-                            case ToolCommonData.ePrintLang.PCLXL:
+                            case ToolCommonData.PrintLang.PCLXL:
 
                                 badSeq = _parsePCLXL.parseBuffer(
                                     buf,
@@ -338,7 +337,7 @@ namespace PCLParaphernalia
 
                                 break;
 
-                            case ToolCommonData.ePrintLang.XL2HB:
+                            case ToolCommonData.PrintLang.XL2HB:
 
                                 badSeq = _parsePCLXL.parseBuffer(
                                     buf,
@@ -356,7 +355,7 @@ namespace PCLParaphernalia
 
                                 break;
 
-                            case ToolCommonData.ePrintLang.Prescribe:
+                            case ToolCommonData.PrintLang.Prescribe:
 
                                 badSeq = _parsePrescribe.parseBuffer(
                                     buf,
@@ -376,15 +375,15 @@ namespace PCLParaphernalia
                                 badSeq = true;
 
                                 PrnParseCommon.addTextRow(
-                                    PrnParseRowTypes.eType.MsgWarning,
+                                    PrnParseRowTypes.Type.MsgWarning,
                                     _table,
-                                    PrnParseConstants.eOvlShow.None,
+                                    PrnParseConstants.OvlShow.None,
                                     string.Empty,
                                     "*** Warning ***",
                                     string.Empty,
                                     "Unknown language; revert to PCL");
 
-                                newPDL = ToolCommonData.ePrintLang.PCL;
+                                newPDL = ToolCommonData.PrintLang.PCL;
                                 endReached = true;      // TEMP ??????????
                                 break;
                         }
@@ -402,55 +401,55 @@ namespace PCLParaphernalia
 
                             string langName;
 
-                            makeMacroScan = _parseType == eParseType.ScanForPDL;
-                            makeMacroRun = _parseType == eParseType.MakeOverlay;
+                            makeMacroScan = _parseType == ParseType.ScanForPDL;
+                            makeMacroRun = _parseType == ParseType.MakeOverlay;
 
                             if (makeMacroScan)
                                 endReached = true;
 
                             switch (newPDL)
                             {
-                                case ToolCommonData.ePrintLang.PCL:
+                                case ToolCommonData.PrintLang.PCL:
                                     langName = "PCL";
 
                                     if (makeMacroScan || makeMacroRun)
                                     {
-                                        if (_crntPDL == ToolCommonData.ePrintLang.Prescribe)
+                                        if (_crntPDL == ToolCommonData.PrintLang.Prescribe)
                                             endReached = false;
                                     }
 
                                     break;
 
-                                case ToolCommonData.ePrintLang.PCL3GUI:
+                                case ToolCommonData.PrintLang.PCL3GUI:
                                     langName = "PCL3GUI";
                                     break;
 
-                                case ToolCommonData.ePrintLang.PCLXL:
+                                case ToolCommonData.PrintLang.PCLXL:
                                     langName = "PCLXL";
                                     break;
 
-                                case ToolCommonData.ePrintLang.HPGL2:
+                                case ToolCommonData.PrintLang.HPGL2:
                                     langName = "HP-GL/2";
                                     break;
 
-                                case ToolCommonData.ePrintLang.PJL:
+                                case ToolCommonData.PrintLang.PJL:
                                     langName = "PJL";
 
                                     if (makeMacroScan || makeMacroRun)
                                     {
                                         if (_linkData.IsEofSet && (bufRem == 0))
-                                            newPDL = ToolCommonData.ePrintLang.PCL;
+                                            newPDL = ToolCommonData.PrintLang.PCL;
                                         else
                                             endReached = false;
                                     }
 
                                     break;
 
-                                case ToolCommonData.ePrintLang.PostScript:
+                                case ToolCommonData.PrintLang.PostScript:
                                     langName = "PostScript";
                                     break;
 
-                                case ToolCommonData.ePrintLang.Prescribe:
+                                case ToolCommonData.PrintLang.Prescribe:
                                     langName = "Prescribe";
 
                                     if (makeMacroScan || makeMacroRun)
@@ -461,7 +460,7 @@ namespace PCLParaphernalia
 
                                     break;
 
-                                case ToolCommonData.ePrintLang.XL2HB:
+                                case ToolCommonData.PrintLang.XL2HB:
                                     langName = "XL2HB (Brother GDI (PCL XL based))";
                                     break;
 
@@ -471,9 +470,9 @@ namespace PCLParaphernalia
                             }
 
                             PrnParseCommon.addTextRow(
-                                PrnParseRowTypes.eType.MsgComment,
+                                PrnParseRowTypes.Type.MsgComment,
                                 _table,
-                                PrnParseConstants.eOvlShow.None,
+                                PrnParseConstants.OvlShow.None,
                                 string.Empty,
                                 "Comment",
                                 string.Empty,
@@ -494,10 +493,10 @@ namespace PCLParaphernalia
 
                         backTrack = false;
 
-                        if ((_parseType == eParseType.MakeOverlay)
+                        if ((_parseType == ParseType.MakeOverlay)
                                       &&
                             (_linkData.MakeOvlAct !=
-                                PrnParseConstants.eOvlAct.None))
+                                PrnParseConstants.OvlAct.None))
                         {
                             //------------------------------------------------//
                             //                                                //
@@ -521,21 +520,21 @@ namespace PCLParaphernalia
                         if (_linkData.isContinuation())
                         {
                             if (_linkData.getContType() ==
-                                PrnParseConstants.eContType.Abort)
+                                PrnParseConstants.ContType.Abort)
                             {
                                 endReached = true;
 
                                 PrnParseCommon.addTextRow(
-                                    PrnParseRowTypes.eType.MsgError,
+                                    PrnParseRowTypes.Type.MsgError,
                                     _table,
-                                    PrnParseConstants.eOvlShow.Terminate,
+                                    PrnParseConstants.OvlShow.Terminate,
                                     string.Empty,
                                     "*** Error ***",
                                     string.Empty,
                                     "Invalid sequences force abort");
 
                                 _linkData.setContinuation(
-                                    PrnParseConstants.eContType.None);
+                                    PrnParseConstants.ContType.None);
                             }
                             else
                             {
@@ -608,7 +607,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if (endReached && (_parseType == eParseType.Analyse))
+                if (endReached && (_parseType == ParseType.Analyse))
                 {
                     if (_linkData.isContinuation())
                     {
@@ -617,9 +616,9 @@ namespace PCLParaphernalia
                         invalidSeqFound = true;
 
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.MsgWarning,
+                            PrnParseRowTypes.Type.MsgWarning,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "*** Warning ***",
                             string.Empty,
@@ -631,9 +630,9 @@ namespace PCLParaphernalia
 
                         while (bufRem > 0)
                         {
-                            PrnParseData.processLines(
+                            PrnParseData.ProcessLines(
                                 _table,
-                                PrnParseConstants.eOvlShow.None,
+                                PrnParseConstants.OvlShow.None,
                                 _linkData,
                                 _crntPDL,
                                 buf,
@@ -657,7 +656,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        if (_crntPDL == ToolCommonData.ePrintLang.PCLXL)
+                        if (_crntPDL == ToolCommonData.PrintLang.PCLXL)
                         {
                             _parsePCLXL.processStoredEmbeddedData(true);
                         }
@@ -684,7 +683,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            if (_parseType == eParseType.MakeOverlay)
+            if (_parseType == ParseType.MakeOverlay)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -693,7 +692,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                _linkData.MakeOvlAct = PrnParseConstants.eOvlAct.EndOfFile;
+                _linkData.MakeOvlAct = PrnParseConstants.OvlAct.EndOfFile;
 
                 PrnParseMakeOvl.breakpoint(_linkData,
                                             _ipStream,
@@ -729,13 +728,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private int analyseActionStart()
+        private int AnalyseActionStart()
         {
             int offsetStart = 0,
                   offsetEnd = -1;
 
-            PrnParseConstants.ePCLXLBinding indxXLBinding =
-                PrnParseConstants.ePCLXLBinding.Unknown;
+            PrnParseConstants.PCLXLBinding indxXLBinding =
+                PrnParseConstants.PCLXLBinding.Unknown;
 
             //----------------------------------------------------------------//
 
@@ -746,40 +745,40 @@ namespace PCLParaphernalia
 
             if (_analysisLevel == 0)
             {
-                if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+                if (_crntPDL == ToolCommonData.PrintLang.PCL)
                 {
                     // do nothing
                 }
-                else if (_crntPDL == ToolCommonData.ePrintLang.PCLXL)
+                else if (_crntPDL == ToolCommonData.PrintLang.PCLXL)
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.MsgComment,
+                        PrnParseRowTypes.Type.MsgComment,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Comment",
                         string.Empty,
                         "Start Language = PCLXL requested");
 
                     if (indxXLBinding ==
-                        PrnParseConstants.ePCLXLBinding.Unknown)
+                        PrnParseConstants.PCLXLBinding.Unknown)
                     {
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.MsgComment,
+                            PrnParseRowTypes.Type.MsgComment,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "Comment",
                             string.Empty,
                             "Stream Header not yet read");
                     }
                     else if (indxXLBinding ==
-                        PrnParseConstants.ePCLXLBinding.BinaryLSFirst)
+                        PrnParseConstants.PCLXLBinding.BinaryLSFirst)
                     {
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.MsgComment,
+                            PrnParseRowTypes.Type.MsgComment,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "Comment",
                             string.Empty,
@@ -787,12 +786,12 @@ namespace PCLParaphernalia
                             "binary low-byte first");
                     }
                     else if (indxXLBinding ==
-                        PrnParseConstants.ePCLXLBinding.BinaryMSFirst)
+                        PrnParseConstants.PCLXLBinding.BinaryMSFirst)
                     {
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.MsgComment,
+                            PrnParseRowTypes.Type.MsgComment,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "Comment",
                             string.Empty,
@@ -800,34 +799,34 @@ namespace PCLParaphernalia
                             "binary high-byte first");
                     }
                 }
-                else if (_crntPDL == ToolCommonData.ePrintLang.HPGL2)
+                else if (_crntPDL == ToolCommonData.PrintLang.HPGL2)
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.MsgComment,
+                        PrnParseRowTypes.Type.MsgComment,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Comment",
                         string.Empty,
                         "Start Language = HP-GL/2 requested");
                 }
-                else if (_crntPDL == ToolCommonData.ePrintLang.PJL)
+                else if (_crntPDL == ToolCommonData.PrintLang.PJL)
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.MsgComment,
+                        PrnParseRowTypes.Type.MsgComment,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Comment",
                         string.Empty,
                         "Start Language = PJL requested");
                 }
-                else if (_crntPDL == ToolCommonData.ePrintLang.PCLXL)
+                else if (_crntPDL == ToolCommonData.PrintLang.PCLXL)
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.MsgComment,
+                        PrnParseRowTypes.Type.MsgComment,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Comment",
                         string.Empty,
@@ -836,9 +835,9 @@ namespace PCLParaphernalia
                 else
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.MsgComment,
+                        PrnParseRowTypes.Type.MsgComment,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Comment",
                         string.Empty,
@@ -848,9 +847,9 @@ namespace PCLParaphernalia
                 if (offsetStart != 0)
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.MsgComment,
+                        PrnParseRowTypes.Type.MsgComment,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Comment",
                         string.Empty,
@@ -862,9 +861,9 @@ namespace PCLParaphernalia
                 if (offsetEnd != -1)
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.MsgComment,
+                        PrnParseRowTypes.Type.MsgComment,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Comment",
                         string.Empty,
@@ -877,9 +876,9 @@ namespace PCLParaphernalia
             if (_fileSize == 0)
             {
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.MsgComment,
+                    PrnParseRowTypes.Type.MsgComment,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "Comment",
                     string.Empty,
@@ -901,12 +900,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool analyseEmbeddedPCLXL(
-            string prnFilename,
-            ToolCommonData.ePrintLang newPDL,
-            PCLXLOperators.eEmbedDataType type,
-            PrnParseOptions options,
-            DataTable table)
+        public bool AnalyseEmbeddedPCLXL(string prnFilename,
+                                        ToolCommonData.PrintLang newPDL,
+                                        PCLXLOperators.EmbedDataType type,
+                                        PrnParseOptions options,
+                                        DataTable table)
         {
             bool OK = true;
 
@@ -918,7 +916,7 @@ namespace PCLParaphernalia
 
             _flagDiagFileAccess = _options.FlagGenDiagFileAccess;
 
-            ipOpen = prnFileOpen(prnFilename, ref _fileSize);
+            ipOpen = PrnFileOpen(prnFilename, ref _fileSize);
 
             if (!ipOpen)
             {
@@ -929,13 +927,13 @@ namespace PCLParaphernalia
                 string typeText;
                 string detailTextA;
 
-                if (type == PCLXLOperators.eEmbedDataType.PassThrough)
+                if (type == PCLXLOperators.EmbedDataType.PassThrough)
                     typeText = "PCL PassThrough";
-                else if (type == PCLXLOperators.eEmbedDataType.Stream)
+                else if (type == PCLXLOperators.EmbedDataType.Stream)
                     typeText = "User-Defined Stream";
-                else if (type == PCLXLOperators.eEmbedDataType.FontHeader)
+                else if (type == PCLXLOperators.EmbedDataType.FontHeader)
                     typeText = "Font Header";
-                else if (type == PCLXLOperators.eEmbedDataType.FontChar)
+                else if (type == PCLXLOperators.EmbedDataType.FontChar)
                     typeText = "Font Character";
                 else
                     typeText = "unknown entity";
@@ -943,52 +941,52 @@ namespace PCLParaphernalia
                 detailTextA = "Embedding level = " + _analysisLevel +
                               "; size = " + _fileSize + " bytes";
 
-                if (type == PCLXLOperators.eEmbedDataType.FontHeader)
+                if (type == PCLXLOperators.EmbedDataType.FontHeader)
                 {
                     _linkData.setBacktrack(  // not really Backtrack but works!
-                        PrnParseConstants.eContType.PCLXLFontHddr,
+                        PrnParseConstants.ContType.PCLXLFontHddr,
                         (int)_fileSize);
                 }
-                else if (type == PCLXLOperators.eEmbedDataType.FontChar)
+                else if (type == PCLXLOperators.EmbedDataType.FontChar)
                 {
                     _linkData.setBacktrack(  // not really Backtrack but works!
-                        PrnParseConstants.eContType.PCLXLFontChar,
+                        PrnParseConstants.ContType.PCLXLFontChar,
                         (int)_fileSize);
                 }
 
                 //------------------------------------------------------------//
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.MsgComment,
+                    PrnParseRowTypes.Type.MsgComment,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     string.Empty,
                     string.Empty,
                     string.Empty);
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.MsgComment,
+                    PrnParseRowTypes.Type.MsgComment,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     ">>>>>>>>>>>>>>>>>>>>",
                     string.Empty,
                     ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.MsgComment,
+                    PrnParseRowTypes.Type.MsgComment,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "Comment",
                     string.Empty,
                     "Start analysis of embedded " + typeText);
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.MsgComment,
+                    PrnParseRowTypes.Type.MsgComment,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "Comment",
                     string.Empty,
@@ -996,41 +994,41 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                analyseAction(type);
+                AnalyseAction(type);
 
                 //------------------------------------------------------------//
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.MsgComment,
+                    PrnParseRowTypes.Type.MsgComment,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "Comment",
                     string.Empty,
                     "End analysis of embedded " + typeText);
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.MsgComment,
+                    PrnParseRowTypes.Type.MsgComment,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "Comment",
                     string.Empty,
                     detailTextA);
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.MsgComment,
+                    PrnParseRowTypes.Type.MsgComment,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "<<<<<<<<<<<<<<<<<<<<",
                     string.Empty,
                     "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.MsgComment,
+                    PrnParseRowTypes.Type.MsgComment,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     string.Empty,
                     string.Empty,
@@ -1038,7 +1036,7 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                prnFileClose();
+                PrnFileClose();
             }
 
             return OK;
@@ -1052,9 +1050,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void embeddedDataStore(byte[] buf,
-                                       int seqOffset,
-                                       int seqLen)
+        public void EmbeddedDataStore(byte[] buf, int seqOffset, int seqLen)
         {
             if (!_subFileCreated)
             {
@@ -1083,18 +1079,18 @@ namespace PCLParaphernalia
                 catch (IOException e)
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.MsgError,
+                        PrnParseRowTypes.Type.MsgError,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Error",
                         string.Empty,
                         "Failed to create embedded data store file:");
 
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.MsgError,
+                        PrnParseRowTypes.Type.MsgError,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         string.Empty,
                         string.Empty,
@@ -1120,18 +1116,18 @@ namespace PCLParaphernalia
                     if (_flagDiagFileAccess)
                     {
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.MsgDiag,
+                            PrnParseRowTypes.Type.MsgDiag,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "Diagnostic",
                             string.Empty,
                             "Create file:");
 
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.MsgDiag,
+                            PrnParseRowTypes.Type.MsgDiag,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             string.Empty,
                             string.Empty,
@@ -1155,19 +1151,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool embeddedPCLAnalyse(
-            byte[] buf,
-            ref int fileOffset,
-            ref int bufRem,
-            ref int bufOffset,
-            PrnParseLinkData linkData,
-            PrnParseOptions options,
-            DataTable table)
+        public bool EmbeddedPCLAnalyse(byte[] buf,
+                                        ref int fileOffset,
+                                        ref int bufRem,
+                                        ref int bufOffset,
+                                        PrnParseLinkData linkData,
+                                        PrnParseOptions options,
+                                        DataTable table)
         {
             bool badSeq;
 
-            ToolCommonData.ePrintLang crntPDL =
-                ToolCommonData.ePrintLang.PCL;
+            ToolCommonData.PrintLang crntPDL =
+                ToolCommonData.PrintLang.PCL;
 
             bool endReached = false;
 
@@ -1198,11 +1193,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void embeddedPCLXLAnalyse(
-            ToolCommonData.ePrintLang newPDL,
-            PCLXLOperators.eEmbedDataType type)
+        public void EmbeddedPCLXLAnalyse(ToolCommonData.PrintLang newPDL, PCLXLOperators.EmbedDataType type)
         {
-            if (_subFileOpen && (_parseType == eParseType.Analyse))
+            if (_subFileOpen && (_parseType == ParseType.Analyse))
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1220,18 +1213,18 @@ namespace PCLParaphernalia
                 if (_flagDiagFileAccess)
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.MsgDiag,
+                        PrnParseRowTypes.Type.MsgDiag,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Diagnostic",
                         string.Empty,
                         "Close file:");
 
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.MsgDiag,
+                        PrnParseRowTypes.Type.MsgDiag,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         string.Empty,
                         string.Empty,
@@ -1248,15 +1241,15 @@ namespace PCLParaphernalia
 
                 options.setOptCurF(
                     newPDL,
-                    PrnParseConstants.ePCLXLBinding.Unknown,
-                    PrnParseConstants.eOptOffsetFormats.Decimal,
+                    PrnParseConstants.PCLXLBinding.Unknown,
+                    PrnParseConstants.OptOffsetFormats.Decimal,
                     0,
                     -1);
 
                 PrnParse subParse = new PrnParse(_parseType,
                                                   _analysisLevel + 1);
 
-                subParse.analyseEmbeddedPCLXL(_subFilename,
+                subParse.AnalyseEmbeddedPCLXL(_subFilename,
                                                newPDL,
                                                type,
                                                options,
@@ -1279,18 +1272,18 @@ namespace PCLParaphernalia
                 if (_flagDiagFileAccess)
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.MsgDiag,
+                        PrnParseRowTypes.Type.MsgDiag,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Diagnostic",
                         string.Empty,
                         "Delete file:");
 
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.MsgDiag,
+                        PrnParseRowTypes.Type.MsgDiag,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         string.Empty,
                         string.Empty,
@@ -1310,7 +1303,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool makeOverlayPCL(string prnFilename,
+        public bool MakeOverlayPCL(string prnFilename,
                                        ref string ovlFilename,
                                        PrnParseOptions options,
                                        DataTable table,
@@ -1325,7 +1318,7 @@ namespace PCLParaphernalia
             _options = options;
             _table = table;
 
-            ipOpen = prnFileOpen(prnFilename, ref _fileSize);
+            ipOpen = PrnFileOpen(prnFilename, ref _fileSize);
 
             if (!ipOpen)
             {
@@ -1338,7 +1331,7 @@ namespace PCLParaphernalia
 
                 _linkData.FileSize = _fileSize;
 
-                ovlFileOpen(false, ref ovlFilename);
+                OvlFileOpen(false, ref ovlFilename);
 
                 if (encapsulate)
                     _linkData.MakeOvlMacroId = macroId;
@@ -1352,9 +1345,9 @@ namespace PCLParaphernalia
                                                  restoreCursor,
                                                  macroId);
 
-                analyseAction(PCLXLOperators.eEmbedDataType.None);
+                AnalyseAction(PCLXLOperators.EmbedDataType.None);
 
-                if (_linkData.MakeOvlAct != PrnParseConstants.eOvlAct.Terminate)
+                if (_linkData.MakeOvlAct != PrnParseConstants.OvlAct.Terminate)
                 {
                     PrnParseMakeOvl.insertTrailerPCL(_parsePCL,
                                                       _table,
@@ -1363,8 +1356,8 @@ namespace PCLParaphernalia
                                                       restoreCursor);
                 }
 
-                prnFileClose();
-                ovlFileClose();
+                PrnFileClose();
+                OvlFileClose();
             }
 
             return OK;
@@ -1379,7 +1372,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool makeOverlayPCLXL(string prnFilename,
+        public bool MakeOverlayPCLXL(string prnFilename,
                                          ref string ovlFilename,
                                          PrnParseOptions options,
                                          DataTable table,
@@ -1394,7 +1387,7 @@ namespace PCLParaphernalia
             _options = options;
             _table = table;
 
-            ipOpen = prnFileOpen(prnFilename, ref _fileSize);
+            ipOpen = PrnFileOpen(prnFilename, ref _fileSize);
 
             if (!ipOpen)
             {
@@ -1408,7 +1401,7 @@ namespace PCLParaphernalia
 
                 _linkData.FileSize = _fileSize;
 
-                ovlFileOpen(true, ref ovlFilename);
+                OvlFileOpen(true, ref ovlFilename);
 
                 if (encapsulate)
                     _linkData.MakeOvlStreamName = streamName;
@@ -1420,9 +1413,9 @@ namespace PCLParaphernalia
                                                      streamName,
                                                      _table);
 
-                analyseAction(PCLXLOperators.eEmbedDataType.None);
+                AnalyseAction(PCLXLOperators.EmbedDataType.None);
 
-                if (_linkData.MakeOvlAct != PrnParseConstants.eOvlAct.Terminate)
+                if (_linkData.MakeOvlAct != PrnParseConstants.OvlAct.Terminate)
                 {
                     _parsePCLXL.makeOverlayInsertTrailer(_binWriter,
                                                           restoreGS,
@@ -1430,8 +1423,8 @@ namespace PCLParaphernalia
                                                           _table);
                 }
 
-                prnFileClose();
-                ovlFileClose();
+                PrnFileClose();
+                OvlFileClose();
             }
 
             return OK;
@@ -1446,9 +1439,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool makeOverlayScan(string prnFilename,
-                                       PrnParseOptions options,
-                                       ref ToolCommonData.ePrintLang pdl)
+        public bool MakeOverlayScan(string prnFilename, PrnParseOptions options, ref ToolCommonData.PrintLang pdl)
         {
             bool OK = true;
 
@@ -1456,23 +1447,23 @@ namespace PCLParaphernalia
 
             _options = options;
 
-            ipOpen = prnFileOpen(prnFilename, ref _fileSize);
+            ipOpen = PrnFileOpen(prnFilename, ref _fileSize);
 
             if (!ipOpen)
             {
                 OK = false;
 
-                pdl = ToolCommonData.ePrintLang.Unknown;
+                pdl = ToolCommonData.PrintLang.Unknown;
             }
             else
             {
                 _linkData.FileSize = _fileSize;
 
-                analyseAction(PCLXLOperators.eEmbedDataType.None);
+                AnalyseAction(PCLXLOperators.EmbedDataType.None);
 
                 pdl = _crntPDL;
 
-                prnFileClose();
+                PrnFileClose();
             }
 
             return OK;
@@ -1487,7 +1478,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void ovlFileClose()
+        private void OvlFileClose()
         {
             string fName = ((FileStream)_opStream).Name;
 
@@ -1497,18 +1488,18 @@ namespace PCLParaphernalia
             if (_flagDiagFileAccess)
             {
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.MsgDiag,
+                    PrnParseRowTypes.Type.MsgDiag,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "Diagnostic",
                     string.Empty,
                     "Close file:");
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.MsgDiag,
+                    PrnParseRowTypes.Type.MsgDiag,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     string.Empty,
                     string.Empty,
@@ -1525,8 +1516,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void ovlFileOpen(bool makeOvlXL,
-                                 ref string ovlFilename)
+        private void OvlFileOpen(bool makeOvlXL, ref string ovlFilename)
         {
             SaveFileDialog saveDialog;
 
@@ -1591,18 +1581,18 @@ namespace PCLParaphernalia
             catch (IOException e)
             {
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.MsgError,
+                    PrnParseRowTypes.Type.MsgError,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "Error",
                     string.Empty,
                     "Create/open overlay file:");
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.MsgError,
+                    PrnParseRowTypes.Type.MsgError,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     string.Empty,
                     string.Empty,
@@ -1624,18 +1614,18 @@ namespace PCLParaphernalia
                 if (_flagDiagFileAccess)
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.MsgDiag,
+                        PrnParseRowTypes.Type.MsgDiag,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Diagnostic",
                         string.Empty,
                         "Create file:");
 
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.MsgDiag,
+                        PrnParseRowTypes.Type.MsgDiag,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         string.Empty,
                         string.Empty,
@@ -1653,7 +1643,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void prnFileClose()
+        private void PrnFileClose()
         {
             string fName = ((FileStream)_ipStream).Name;
 
@@ -1676,18 +1666,18 @@ namespace PCLParaphernalia
             if (_flagDiagFileAccess)
             {
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.MsgDiag,
+                    PrnParseRowTypes.Type.MsgDiag,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "Diagnostic",
                     string.Empty,
                     "Close file:");
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.MsgDiag,
+                    PrnParseRowTypes.Type.MsgDiag,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     string.Empty,
                     string.Empty,
@@ -1704,8 +1694,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool prnFileOpen(string filename,
-                                    ref long fileSize)
+        private bool PrnFileOpen(string filename, ref long fileSize)
         {
             bool open = false;
 
@@ -1763,18 +1752,18 @@ namespace PCLParaphernalia
                     if (_flagDiagFileAccess)
                     {
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.MsgDiag,
+                            PrnParseRowTypes.Type.MsgDiag,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "Diagnostic",
                             string.Empty,
                             "Open (Read) file:");
 
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.MsgDiag,
+                            PrnParseRowTypes.Type.MsgDiag,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             string.Empty,
                             string.Empty,

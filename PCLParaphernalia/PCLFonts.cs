@@ -18,7 +18,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public enum eFontType
+        public enum FontType
         {
             PresetTypeface,     // standard typeface
             PresetFamily,       // base typeface value or font with >1 versions
@@ -28,7 +28,7 @@ namespace PCLParaphernalia
             PrnDisk             // <printer disk store>
         }
 
-        public enum eVariant
+        public enum Variant
         {
             Regular,
             Italic,
@@ -36,7 +36,7 @@ namespace PCLParaphernalia
             BoldItalic
         }
 
-        public enum eWidthType : sbyte
+        public enum WidthType : sbyte
         {
             UltraCompressed = -5,
             ExtraCompressed = -4,
@@ -47,7 +47,7 @@ namespace PCLParaphernalia
             ExtraExpanded = 3
         }
 
-        public enum eStrokeWeight : sbyte
+        public enum StrokeWeight : sbyte
         {
             UltraThin = -7,
             ExtraThin = -6,
@@ -66,7 +66,7 @@ namespace PCLParaphernalia
             UltraBlack
         }
 
-        public enum eStylePosture : byte
+        public enum StylePosture : byte
         {
             Upright = 0,
             Italic,
@@ -74,7 +74,7 @@ namespace PCLParaphernalia
             Reserved
         }
 
-        public enum eStyleWidth : byte
+        public enum StyleWidth : byte
         {
             Normal = 0,
             Condensed,
@@ -86,7 +86,7 @@ namespace PCLParaphernalia
             ExtraExpanded
         }
 
-        public enum eStyleStructure : ushort
+        public enum StyleStructure : ushort
         {
             Solid = 0,
             Outline,
@@ -257,7 +257,7 @@ namespace PCLParaphernalia
 
         static PCLFonts()
         {
-            populateTable();
+            PopulateTable();
         }
 
         //--------------------------------------------------------------------//
@@ -283,14 +283,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int displayFontList(DataGrid grid)
+        public static int DisplayFontList(DataGrid grid)
         {
             int count = 0;
 
             foreach (PCLFont v in _fonts)
             {
-                if ((v.Type == eFontType.PresetTypeface) ||
-                    (v.Type == eFontType.PresetFamilyMember))
+                if ((v.Type == FontType.PresetTypeface) || (v.Type == FontType.PresetFamilyMember))
                 {
                     count++;
                     grid.Items.Add(v);
@@ -309,7 +308,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCount()
+        public static int GetCount()
         {
             return _fontsCount;
         }
@@ -344,7 +343,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCountUnique()
+        public static int GetCountUnique()
         {
             return _fontsCountCustom +
                     _fontsCountDownload +
@@ -365,8 +364,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getHPGL2FontDef(int indxFont,
-                                              eVariant variant,
+        public static string GetHPGL2FontDef(int indxFont,
+                                              Variant variant,
                                               ushort symbolSet,
                                               double height,
                                               double pitch)
@@ -384,7 +383,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short getIndexForFontArial()
+        public static short GetIndexForFontArial()
         {
             return _indxFontArial;
         }
@@ -398,7 +397,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short getIndexForFontCourier()
+        public static short GetIndexForFontCourier()
         {
             return _indxFontCourier;
         }
@@ -412,7 +411,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short getIndexForName(string fontName)
+        public static short GetIndexForName(string fontName)
         {
             bool fontNameKnown = false;
 
@@ -420,9 +419,9 @@ namespace PCLParaphernalia
 
             foreach (PCLFont v in _fonts)
             {
-                if (((v.Type == eFontType.PresetTypeface)
+                if (((v.Type == FontType.PresetTypeface)
                                   ||
-                     (v.Type == eFontType.PresetFamily))
+                     (v.Type == FontType.PresetFamily))
                                   &&
                     (v.Name == fontName))
                 {
@@ -447,7 +446,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getName(int indxFont)
+        public static string GetName(int indxFont)
         {
             return _fonts[indxFont].Name;
         }
@@ -462,16 +461,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool getNameForIdPCL(ushort typefaceId,
-                                               ref string name)
+        public static bool GetNameForIdPCL(ushort typefaceId, ref string name)
         {
             bool typefaceKnown = false;
 
             foreach (PCLFont v in _fonts)
             {
-                if (((v.Type == eFontType.PresetTypeface)
+                if (((v.Type == FontType.PresetTypeface)
                                   ||
-                     (v.Type == eFontType.PresetFamily))
+                     (v.Type == FontType.PresetFamily))
                                   &&
                     (v.Typeface == typefaceId))
                 {
@@ -496,7 +494,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte getPCLContourRatio(int indxFont)
+        public static byte GetPCLContourRatio(int indxFont)
         {
             return _fonts[indxFont].getPCLContourRatio();
         }
@@ -513,8 +511,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getPCLFontSelect(int indxFont,
-                                               eVariant variant,
+        public static string GetPCLFontSelect(int indxFont,
+                                               Variant variant,
                                                double height,
                                                double pitch)
         {
@@ -530,7 +528,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static double getPCLHeight(int indxFont)
+        public static double GetPCLHeight(int indxFont)
         {
             return _fonts[indxFont].getPCLHeight();
         }
@@ -544,7 +542,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static double getPCLPitch(int indxFont)
+        public static double GetPCLPitch(int indxFont)
         {
             return _fonts[indxFont].getPCLPitch();
         }
@@ -559,8 +557,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static double getPCLPitch(int indxFont,
-                                          double ptSize)
+        public static double GetPCLPitch(int indxFont, double ptSize)
         {
             return _fonts[indxFont].getPCLPitch(ptSize);
         }
@@ -574,7 +571,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte getPCLSpacing(int indxFont)
+        public static byte GetPCLSpacing(int indxFont)
         {
             return _fonts[indxFont].getPCLSpacing();
         }
@@ -588,8 +585,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort getPCLStyle(int indxFont,
-                                          eVariant variant)
+        public static ushort GetPCLStyle(int indxFont,
+                                          Variant variant)
         {
             return _fonts[indxFont].getPCLStyle(variant);
         }
@@ -603,7 +600,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort getPCLTypeface(int indxFont)
+        public static ushort GetPCLTypeface(int indxFont)
         {
             return _fonts[indxFont].Typeface;
         }
@@ -617,8 +614,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short getPCLWeight(int indxFont,
-                                          eVariant variant)
+        public static short GetPCLWeight(int indxFont,
+                                          Variant variant)
         {
             return _fonts[indxFont].getPCLWeight(variant);
         }
@@ -632,7 +629,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static double getPCLXLHeight(int indxFont)
+        public static double GetPCLXLHeight(int indxFont)
         {
             return _fonts[indxFont].getPCLXLHeight();
         }
@@ -646,8 +643,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getPCLXLName(int indxFont,
-                                           eVariant variant)
+        public static string GetPCLXLName(int indxFont,
+                                           Variant variant)
         {
             return _fonts[indxFont].getPCLXLName(variant);
         }
@@ -662,7 +659,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool getPresetFontData(int indxFont,
+        public static bool GetPresetFontData(int indxFont,
                                                 ref ushort typeface,
                                                 ref string fontName)
         {
@@ -681,7 +678,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort getSymbolSetNumber(int indxFont)
+        public static ushort GetSymbolSetNumber(int indxFont)
         {
             return _fonts[indxFont].getSymbolSetNumber();
         }
@@ -695,7 +692,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eFontType getType(int indxFont)
+        public static FontType GetType(int indxFont)
         {
             return _fonts[indxFont].Type;
         }
@@ -710,7 +707,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool isBoundFont(int indxFont)
+        public static bool IsBoundFont(int indxFont)
         {
             return _fonts[indxFont].isBoundFont();
         }
@@ -725,7 +722,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool isPresetFont(int indxFont)
+        public static bool IsPresetFont(int indxFont)
         {
             return _fonts[indxFont].isPresetFont();
         }
@@ -740,7 +737,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool isProportionalFont(int indxFont)
+        public static bool IsProportionalFont(int indxFont)
         {
             return _fonts[indxFont].isProportionalFont();
         }
@@ -755,7 +752,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool isScalableFont(int indxFont)
+        public static bool IsScalableFont(int indxFont)
         {
             return _fonts[indxFont].Scalable;
         }
@@ -771,7 +768,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool isSymSetInList(int indxFont,
+        public static bool IsSymSetInList(int indxFont,
                                               ushort symSetNo)
         {
             return _fonts[indxFont].isSymSetInList(symSetNo);
@@ -832,13 +829,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void populateTable()
+        private static void PopulateTable()
         {
             short fontIndex = 0;
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.Custom,
+                FontType.Custom,
                 "<select by characteristics>",
                 false, false, false,
                     0, 0, 0, 0, 0,
@@ -850,7 +847,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.Download,
+                FontType.Download,
                 "<download soft font>",
                 false, false, false,
                     0, 0, 0, 0, 0,
@@ -862,7 +859,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PrnDisk,
+                FontType.PrnDisk,
                 "<load from printer storage>",
                 false, false, false,
                     0, 0, 0, 0, 0,
@@ -874,7 +871,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Albertus (base value)",
                 false, true, true,
                     0, 266, 0, 0, 0,
@@ -887,7 +884,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Albertus",
                 false, true, true,
                     0, 4362, 0, 0, 0,
@@ -899,7 +896,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Antique Olive (base value)",
                 false, true, true,
                     0, 72, 0, 0, 0,
@@ -912,7 +909,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Antique Olive",
                 false, true, true,
                     0, 4168, 0, 0, 0,
@@ -926,7 +923,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Andale Mono WT J",
                 true, true, true,
                   590, 17004, 0, 0, 0,
@@ -938,7 +935,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Andale Mono WT K",
                 true, true, true,
                   590, 17005, 0, 0, 0,
@@ -950,7 +947,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Andale Mono WT S",
                 true, true, true,
                   590, 17007, 0, 0, 0,
@@ -962,7 +959,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Andale Mono WT T",
                 true, true, true,
                   590, 17006, 0, 0, 0,
@@ -974,7 +971,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Arial (base value)",
                 false, true, true,
                     0, 218, 0, 0, 0,
@@ -987,7 +984,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Arial",
                  false, true, true,
                      0, 16602, 0, 0, 0,
@@ -999,7 +996,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Calibri",
                 false, true, true,
                     0, 17329, 0, 0, 0,
@@ -1011,7 +1008,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Cambria",
                 false, true, true,
                     0, 17328, 0, 0, 0,
@@ -1023,7 +1020,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Caslon (base value)",
                 false, true, true,
                     0, 9, 0, 0, 0,
@@ -1036,7 +1033,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "CG Omega",
                 false, true, true,
                     0, 4113, 0, 0, 0,
@@ -1048,7 +1045,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "CG Times",
                 false, true, true,
                     0, 4101, 0, 0, 0,
@@ -1060,7 +1057,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Clarendon (base value)",
                 false, true, true,
                     0, 44, 0, 0, 0,
@@ -1073,7 +1070,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Clarendon Condensed",
                 false, true, true,
                     0, 4140, 0, 0, 0,
@@ -1085,7 +1082,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Coronet (base value)",
                 false, true, true,
                     0, 20, 0, 0, 0,
@@ -1098,7 +1095,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Coronet",
                 false, true, true,
                     0, 4116, 0, 0, 0,
@@ -1110,7 +1107,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Courier (base value)",
                 false, false, true,
                     0, 3, 0, 0, 0,
@@ -1125,7 +1122,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Courier",
                 false, false, true,
                     0, 4099, 60, 0, 0,
@@ -1137,7 +1134,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Courier PS",
                 false, false, true,
                     0, 24579, 60, 0, 0,
@@ -1149,7 +1146,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Elite (base value)",
                 false, false, true,
                     0, 2, 0, 0, 0,
@@ -1162,7 +1159,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Garamond (base value)",
                 false, true, true,
                     0, 101, 0, 0, 0,
@@ -1175,7 +1172,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Garamond",
                 false, true, true,
                     0, 4197, 0, 0, 0,
@@ -1187,7 +1184,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "GW-Kai",
                 false, true, true,
                     0, 37357, 0, 0, 0,
@@ -1200,7 +1197,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Helvetica (base value)",
                 false, true, true,
                     0, 4, 0, 0, 0,
@@ -1213,7 +1210,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Helvetica",
                 false, true, true,
                     0, 24580, 0, 0, 0,
@@ -1226,7 +1223,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamilyMember,
+                FontType.PresetFamilyMember,
                 "Helvetica",
                 false, true, true,
                     0, 24580, 0, 0, 0,
@@ -1238,7 +1235,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamilyMember,
+                FontType.PresetFamilyMember,
                 "Helvetica Narrow",
                 false, true, true,
                     0, 24580, 0, 0, 0,
@@ -1250,7 +1247,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "HP David",
                 false, true, true,
                     0, 16585, 0, 0, 0,
@@ -1262,7 +1259,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "HP Miryam",
                 false, true, true,
                     0, 16584, 0, 0, 0,
@@ -1274,7 +1271,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "HP Narkis Tam",
                 false, true, true,
                     0, 16587, 0, 0, 0,
@@ -1286,7 +1283,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "ITC Avant Garde (base value)",
                 false, true, true,
                     0, 31, 0, 0, 0,
@@ -1299,7 +1296,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "ITC Avant Garde",
                 false, true, true,
                     0, 24607, 0, 0, 0,
@@ -1311,7 +1308,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "ITC Bookman (base value)",
                 false, true, true,
                     0, 47, 0, 0, 0,
@@ -1324,7 +1321,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "ITC Bookman",
                 false, true, true,
                     0, 24623, 0, 0, 0,
@@ -1336,7 +1333,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Koufi (base value)",
                 false, true, true,
                     0, 168, 0, 0, 0,
@@ -1349,7 +1346,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Koufi",
                 false, false, true,
                     0, 4264, 60, 0, 0,
@@ -1361,7 +1358,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Letter Gothic (base value)",
                 false, true, true,
                     0, 6, 0, 0, 0,
@@ -1374,7 +1371,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Letter Gothic",
                 false, false, true,
                     0, 4102, 50, 0, 0,
@@ -1386,7 +1383,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Line Printer",
                 true, false, false,
                    14, 0, 0, 16.67, 8.5,
@@ -1399,7 +1396,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamilyMember,
+                FontType.PresetFamilyMember,
                 "Line Printer (0N)",
                 true, false, false,
                    14, 0, 0, 16.67, 8.5,
@@ -1411,7 +1408,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamilyMember,
+                FontType.PresetFamilyMember,
                 "Line Printer (1U)",
                 true, false, false,
                    53, 0, 0, 16.67, 8.5,
@@ -1423,7 +1420,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamilyMember,
+                FontType.PresetFamilyMember,
                 "Line Printer (2N)",
                 true, false, false,
                    78, 0, 0, 16.67, 8.5,
@@ -1435,7 +1432,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamilyMember,
+                FontType.PresetFamilyMember,
                 "Line Printer (5N)",
                 true, false, false,
                   174, 0, 0, 16.67, 8.5,
@@ -1447,7 +1444,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamilyMember,
+                FontType.PresetFamilyMember,
                 "Line Printer (6N)",
                 true, false, false,
                   206, 0, 0, 16.67, 8.5,
@@ -1459,7 +1456,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamilyMember,
+                FontType.PresetFamilyMember,
                 "Line Printer (8U)",
                 true, false, false,
                   277, 0, 0, 16.67, 8.5,
@@ -1471,7 +1468,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamilyMember,
+                FontType.PresetFamilyMember,
                 "Line Printer (9N)",
                 true, false, false,
                   302, 0, 0, 16.67, 8.5,
@@ -1483,7 +1480,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamilyMember,
+                FontType.PresetFamilyMember,
                 "Line Printer (10N)",
                 true, false, false,
                   334, 0, 0, 16.67, 8.5,
@@ -1495,7 +1492,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamilyMember,
+                FontType.PresetFamilyMember,
                 "Line Printer (10U)",
                 true, false, false,
                   341, 0, 0, 16.67, 8.5,
@@ -1507,7 +1504,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamilyMember,
+                FontType.PresetFamilyMember,
                 "Line Printer (11U)",
                 true, false, false,
                  373, 0, 0, 16.67, 8.5,
@@ -1519,7 +1516,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamilyMember,
+                FontType.PresetFamilyMember,
                 "Line Printer (12U)",
                 true, false, false,
                   405, 0, 0, 16.67, 8.5,
@@ -1531,7 +1528,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Marigold (base value)",
                 false, true, true,
                     0, 201, 0, 0, 0,
@@ -1544,7 +1541,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Marigold",
                 false, true, true,
                     0, 4297, 0, 0, 0,
@@ -1556,7 +1553,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "MS Gothic",
                 false, true, true,
                     0, 28825, 0, 0, 0,
@@ -1569,7 +1566,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "MS Mincho",
                 false, true, true,
                     0, 28752, 0, 0, 0,
@@ -1582,7 +1579,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Naskh (base value)",
                 false, true, true,
                     0, 28, 0, 0, 0,
@@ -1595,7 +1592,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Naskh",
                 false, false, true,
                     0, 4124, 60, 0, 0,
@@ -1607,7 +1604,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "New Century Schoolbook (base value)",
                 false, true, true,
                     0, 127, 0, 0, 0,
@@ -1620,7 +1617,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "New Century Schoolbook",
                 false, true, true,
                     0, 24703, 0, 0, 0,
@@ -1632,7 +1629,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "OCR-A",
                 true, false, true,
                     15, 104, 0, 0, 0,
@@ -1644,7 +1641,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "OCR-B",
                 true, false, true,
                     47, 110, 0, 0, 0,
@@ -1656,7 +1653,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Orator (base value)",
                 false, true, true,
                     0, 10, 0, 0, 0,
@@ -1669,7 +1666,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Palatino (base value)",
                 false, true, true,
                     0, 15, 0, 0, 0,
@@ -1682,7 +1679,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Palatino",
                 false, true, true,
                     0, 24591, 0, 0, 0,
@@ -1694,7 +1691,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Presentation (base value)",
                 false, true, true,
                     0, 11, 0, 0, 0,
@@ -1707,7 +1704,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Prestige (base value)",
                 false, true, true,
                     0, 8, 0, 0, 0,
@@ -1720,7 +1717,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Ryadh (base value)",
                 false, true, true,
                     0, 763, 0, 0, 0,
@@ -1733,7 +1730,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Ryadh",
                 false, true, true,
                     0, 4859, 0, 0, 0,
@@ -1745,7 +1742,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "SimHei",
                 false, true, true,
                     0, 37110, 0, 0, 0,
@@ -1758,7 +1755,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "SimSun",
                 false, true, true,
                     0, 37058, 0, 0, 0,
@@ -1771,7 +1768,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Symbol (base value)",
                 false, true, true,
                     0, 302, 0, 0, 0,
@@ -1784,7 +1781,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Symbol",
                 true, true, true,
                   621, 16686, 0, 0, 0,
@@ -1796,7 +1793,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Symbol PS",
                 true, true, true,
                   621, 45358, 0, 0, 0,
@@ -1808,7 +1805,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Times (base value)",
                 false, true, true,
                     0, 517, 0, 0, 0,
@@ -1821,7 +1818,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Times",
                 false, true, true,
                     0, 25093, 0, 0, 0,
@@ -1833,7 +1830,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Times Roman (base value)",
                 false, true, true,
                     0, 5, 0, 0, 0,
@@ -1846,7 +1843,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Times New",
                 false, true, true,
                     0, 16901, 0, 0, 0,
@@ -1858,7 +1855,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Univers (base value)",
                 false, true, true,
                     0, 52, 0, 0, 0,
@@ -1871,7 +1868,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Univers",
                 false, true, true,
                     0, 4148, 0, 0, 0,
@@ -1884,7 +1881,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamilyMember,
+                FontType.PresetFamilyMember,
                 "Univers",
                 false, true, true,
                     0, 4148, 0, 0, 0,
@@ -1896,7 +1893,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamilyMember,
+                FontType.PresetFamilyMember,
                 "Univers Condensed",
                 false, true, true,
                     0, 4148, 0, 0, 0,
@@ -1908,7 +1905,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Wingdings (base value)",
                 false, true, true,
                     0, 2730, 0, 0, 0,
@@ -1921,7 +1918,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Wingdings",
                 true, true, true,
                 18540, 31402, 0, 0, 0,
@@ -1933,7 +1930,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Zapf Chancery (base value)",
                 false, true, true,
                     0, 43, 0, 0, 0,
@@ -1946,7 +1943,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Zapf Chancery",
                 false, true, true,
                     0, 45099, 0, 0, 0,
@@ -1958,7 +1955,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetFamily,
+                FontType.PresetFamily,
                 "Zapf Dingbats (base value)",
                 false, true, true,
                     0, 45, 0, 0, 0,
@@ -1971,7 +1968,7 @@ namespace PCLParaphernalia
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
-                eFontType.PresetTypeface,
+                FontType.PresetTypeface,
                 "Zapf Dingbats",
                 true, true, true,
                   460, 45101, 0, 0, 0,
@@ -1990,21 +1987,21 @@ namespace PCLParaphernalia
 
             foreach (PCLFont v in _fonts)
             {
-                if ((v.Type == eFontType.PresetTypeface)
+                if ((v.Type == FontType.PresetTypeface)
                                   ||
-                     (v.Type == eFontType.PresetFamilyMember))
+                     (v.Type == FontType.PresetFamilyMember))
                 {
                     _fontsCountPreset++;
                 }
-                else if (v.Type == eFontType.Custom)
+                else if (v.Type == FontType.Custom)
                 {
                     _fontsCountCustom++;
                 }
-                else if (v.Type == eFontType.Download)
+                else if (v.Type == FontType.Download)
                 {
                     _fontsCountDownload++;
                 }
-                else if (v.Type == eFontType.PrnDisk)
+                else if (v.Type == FontType.PrnDisk)
                 {
                     _fontsCountPrnDisk++;
                 }
@@ -2023,7 +2020,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void translateTypeface(ushort typeface,
+        public static void TranslateTypeface(ushort typeface,
                                              ref ushort vendor,
                                              ref ushort basecode)
         {
@@ -2043,8 +2040,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool variantExists(int indxFont,
-                                            eVariant variant)
+        public static bool VariantExists(int indxFont,
+                                            Variant variant)
         {
             return _fonts[indxFont].variantAvailable(variant);
         }

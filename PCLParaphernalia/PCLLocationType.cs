@@ -16,7 +16,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private readonly PCLLocationTypes.eType _locationType;
+        private readonly PCLLocationTypes.Type _locationType;
         private readonly string _locationName;
         private readonly string _locationIdPCL;
 
@@ -26,7 +26,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLLocationType(PCLLocationTypes.eType type,
+        public PCLLocationType(PCLLocationTypes.Type type,
                                string id,
                                string name)
         {
@@ -72,7 +72,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLLocationTypes.eType getType()
+        public PCLLocationTypes.Type getType()
         {
             return _locationType;
         }

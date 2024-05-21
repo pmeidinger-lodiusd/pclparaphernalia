@@ -85,7 +85,7 @@ namespace PCLParaphernalia
         const int _defaultSymSetNo = 14;
         const int _defaultSoftFontIdPCL = 101;
         const int _defaultSoftFontIdMacroPCL = 201;
-        const int _defaultIndxVariant = (int)PCLFonts.eVariant.Regular;
+        const int _defaultIndxVariant = (int)PCLFonts.Variant.Regular;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -96,7 +96,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCapture(ToolCommonData.ePrintLang crntPDL,
+        public static void loadDataCapture(ToolCommonData.PrintLang crntPDL,
                                             ref string captureFile)
         {
             RegistryKey keyMain =
@@ -150,7 +150,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if (crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 const string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
                                             "\\" + _subKeyPCL;
@@ -162,7 +162,7 @@ namespace PCLParaphernalia
                         defWorkFolder + "\\" + _defaultCaptureFilePCL);
                 }
             }
-            else if (crntPDL == ToolCommonData.ePrintLang.PCLXL)
+            else if (crntPDL == ToolCommonData.PrintLang.PCLXL)
             {
                 const string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
                                             "\\" + _subKeyPCLXL;
@@ -199,16 +199,16 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                if (Helper_RegKey.keyExists(subKey, _subKeyPCL5))
+                if (Helper_RegKey.KeyExists(subKey, _subKeyPCL5))
                 {
                     // update from v2_5_0_0
-                    Helper_RegKey.renameKey(subKey, _subKeyPCL5, _subKeyPCL);
+                    Helper_RegKey.RenameKey(subKey, _subKeyPCL5, _subKeyPCL);
                 }
 
-                if (Helper_RegKey.keyExists(subKey, _subKeyPCL6))
+                if (Helper_RegKey.KeyExists(subKey, _subKeyPCL6))
                 {
                     // update from v2_5_0_0
-                    Helper_RegKey.renameKey(subKey, _subKeyPCL6, _subKeyPCLXL);
+                    Helper_RegKey.RenameKey(subKey, _subKeyPCL6, _subKeyPCLXL);
                 }
 
                 indxPDL = (int)subKey.GetValue(_nameIndxPDL,
@@ -484,7 +484,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void loadDataPCLPreset(ref int indxFont,
-                                               ref PCLFonts.eVariant variant,
+                                               ref PCLFonts.Variant variant,
                                                ref double height,
                                                ref double pitch,
                                                ref int indxSymSet,
@@ -513,7 +513,7 @@ namespace PCLParaphernalia
 
                 tmpInt = (int)subKey.GetValue(_nameIndxVariant,
                                                       _defaultIndxVariant);
-                variant = (PCLFonts.eVariant)tmpInt;
+                variant = (PCLFonts.Variant)tmpInt;
 
                 tmpInt = (int)subKey.GetValue(_nameHeight,
                                                       _defaultHeightPtsK);
@@ -794,7 +794,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void loadDataPCLXLPreset(ref int indxFont,
-                                                ref PCLFonts.eVariant variant,
+                                                ref PCLFonts.Variant variant,
                                                 ref double height,
                                                 ref int indxSymSet,
                                                 ref ushort symSetCustom,
@@ -820,7 +820,7 @@ namespace PCLParaphernalia
 
                 tmpInt = (int)subKey.GetValue(_nameIndxVariant,
                                                       _defaultIndxVariant);
-                variant = (PCLFonts.eVariant)tmpInt;
+                variant = (PCLFonts.Variant)tmpInt;
 
                 tmpInt = (int)subKey.GetValue(_nameHeight,
                                                       _defaultHeightPtsK);
@@ -848,13 +848,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCapture(ToolCommonData.ePrintLang crntPDL,
+        public static void saveDataCapture(ToolCommonData.PrintLang crntPDL,
                                             string captureFile)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            if (crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 const string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
                                             "\\" + _subKeyPCL;
@@ -869,7 +869,7 @@ namespace PCLParaphernalia
                     }
                 }
             }
-            else if (crntPDL == ToolCommonData.ePrintLang.PCLXL)
+            else if (crntPDL == ToolCommonData.PrintLang.PCLXL)
             {
                 const string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
                                             "\\" + _subKeyPCLXL;
@@ -1244,7 +1244,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void saveDataPCLPreset(int indxFont,
-                                              PCLFonts.eVariant variant,
+                                              PCLFonts.Variant variant,
                                               double height,
                                               double pitch,
                                               int indxSymSet,
@@ -1601,7 +1601,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void saveDataPCLXLPreset(int indxFont,
-                                                PCLFonts.eVariant variant,
+                                                PCLFonts.Variant variant,
                                                 double height,
                                                 int indxSymSet,
                                                 ushort symSetCustom,

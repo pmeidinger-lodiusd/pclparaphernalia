@@ -181,7 +181,7 @@ namespace PCLParaphernalia
 
                 firstBlock = false;
 
-                PCLWriter.rasterTransferRow(prnWriter, bytesPerRow, bufSub);
+                PCLWriter.RasterTransferRow(prnWriter, bytesPerRow, bufSub);
             }
         }
 
@@ -226,9 +226,9 @@ namespace PCLParaphernalia
             coordX = (short)(destPosX * 600);
             coordY = (short)(destPosY * 600);
 
-            PCLWriter.palettePushPop(prnWriter, PCLWriter.ePushPop.Push);
+            PCLWriter.PalettePushPop(prnWriter, PCLWriter.PushPop.Push);
 
-            PCLWriter.cursorPosition(prnWriter, coordX, coordY);
+            PCLWriter.CursorPosition(prnWriter, coordX, coordY);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -305,13 +305,13 @@ namespace PCLParaphernalia
 
             if (srcBlackWhite)
             {
-                PCLWriter.paletteSimple(prnWriter, PCLWriter.eSimplePalette.K);
+                PCLWriter.PaletteSimple(prnWriter, PCLWriter.SimplePalette.K);
             }
             else
             {
                 if (indexed)
                 {
-                    PCLWriter.configureImageData(prnWriter,
+                    PCLWriter.ConfigureImageData(prnWriter,
                                             0x02,   // ColourSpace = sRGB
                                             0x01,   // PEM = Indexed by Pixel
                                             bitsPerIndex,
@@ -321,7 +321,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    PCLWriter.configureImageData(prnWriter,
+                    PCLWriter.ConfigureImageData(prnWriter,
                                             0x02,   // ColourSpace = sRGB
                                             0x03,   // PEM = Direct by Pixel
                                             0x00,   // Not used
@@ -343,7 +343,7 @@ namespace PCLParaphernalia
                                                                ref green,
                                                                ref blue);
 
-                        PCLWriter.paletteEntry(prnWriter, i, red, green, blue);
+                        PCLWriter.PaletteEntry(prnWriter, i, red, green, blue);
                     }
                 }
             }
@@ -354,11 +354,11 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLWriter.rasterResolution(prnWriter,
+            PCLWriter.RasterResolution(prnWriter,
                                         rasterResolution,
                                         true);
 
-            PCLWriter.rasterBegin(prnWriter,
+            PCLWriter.RasterBegin(prnWriter,
                                   srcWidth,
                                   srcHeight,
                                   srcResX,
@@ -379,9 +379,9 @@ namespace PCLParaphernalia
 
         private static void generateImageTrailer(BinaryWriter prnWriter)
         {
-            PCLWriter.rasterEnd(prnWriter);
+            PCLWriter.RasterEnd(prnWriter);
 
-            PCLWriter.palettePushPop(prnWriter, PCLWriter.ePushPop.Pop);
+            PCLWriter.PalettePushPop(prnWriter, PCLWriter.PushPop.Pop);
         }
 
         //--------------------------------------------------------------------//
@@ -432,9 +432,9 @@ namespace PCLParaphernalia
                                               int paperType,
                                               int orientation)
         {
-            PCLWriter.stdJobHeader(prnWriter, string.Empty);
+            PCLWriter.StdJobHeader(prnWriter, string.Empty);
 
-            PCLWriter.pageHeader(prnWriter,
+            PCLWriter.PageHeader(prnWriter,
                                  paperSize,
                                  paperType,
                                  orientation,
@@ -452,7 +452,7 @@ namespace PCLParaphernalia
 
         private static void generateJobTrailer(BinaryWriter prnWriter)
         {
-            PCLWriter.stdJobTrailer(prnWriter, false, 0);
+            PCLWriter.StdJobTrailer(prnWriter, false, 0);
         }
     }
 }

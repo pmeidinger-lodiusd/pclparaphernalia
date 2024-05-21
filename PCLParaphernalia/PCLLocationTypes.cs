@@ -16,7 +16,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public enum eType : byte
+        public enum Type : byte
         {
             Current,
             All,
@@ -28,17 +28,17 @@ namespace PCLParaphernalia
 
         private static readonly PCLLocationType[] _locationTypes =
         {
-            new PCLLocationType(eType.All,            "2",
+            new PCLLocationType(Type.All,            "2",
                                 "All locations"),
-            new PCLLocationType(eType.Current,        "1",
+            new PCLLocationType(Type.Current,        "1",
                                 "Currently selected"),
-            new PCLLocationType(eType.Internal,       "3",
+            new PCLLocationType(Type.Internal,       "3",
                                 "Internal"),
-            new PCLLocationType(eType.Downloaded,     "4",
+            new PCLLocationType(Type.Downloaded,     "4",
                                 "Downloaded entities"),
-            new PCLLocationType(eType.Cartridge,      "5",
+            new PCLLocationType(Type.Cartridge,      "5",
                                 "Cartridge"),
-            new PCLLocationType(eType.ROMDevice,      "7",
+            new PCLLocationType(Type.ROMDevice,      "7",
                                 "SIMMs/DIMMs")
         };
 
@@ -54,7 +54,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCount()
+        public static int GetCount()
         {
             return _locationTypeCount;
         }
@@ -68,7 +68,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getIdPCL(int selection)
+        public static string GetIdPCL(int selection)
         {
             return _locationTypes[selection].getIdPCL();
         }
@@ -82,7 +82,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getName(int selection)
+        public static string GetName(int selection)
         {
             return _locationTypes[selection].getName();
         }
@@ -96,7 +96,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eType getType(int selection)
+        public static Type GetType(int selection)
         {
             return _locationTypes[selection].getType();
         }

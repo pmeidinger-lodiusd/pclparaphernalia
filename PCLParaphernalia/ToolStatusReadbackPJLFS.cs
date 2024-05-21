@@ -213,7 +213,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void generateRequest(BinaryWriter prnWriter,
-                                            PJLCommands.eCmdIndex cmdIndx,
+                                            PJLCommands.CmdIndex cmdIndx,
                                             bool secJob,
                                             string password,
                                             string pathname,
@@ -225,14 +225,14 @@ namespace PCLParaphernalia
             string jobHddr;
             string jobEnd;
 
-            if (cmdIndx != PJLCommands.eCmdIndex.Unknown)
+            if (cmdIndx != PJLCommands.CmdIndex.Unknown)
             {
-                PJLCommands.eRequestType reqType;
+                PJLCommands.RequestType reqType;
 
                 string cmdName;
 
-                reqType = PJLCommands.getType(cmdIndx);
-                cmdName = PJLCommands.getName(cmdIndx);
+                reqType = PJLCommands.GetType(cmdIndx);
+                cmdName = PJLCommands.GetName(cmdIndx);
 
                 if (secJob)
                 {
@@ -250,7 +250,7 @@ namespace PCLParaphernalia
                     jobEnd = "\x1b" + "%-12345X";
                 }
 
-                if (reqType == PJLCommands.eRequestType.FSBinSrc)
+                if (reqType == PJLCommands.RequestType.FSBinSrc)
                 {
                     bool OK = true;
 
@@ -278,7 +278,7 @@ namespace PCLParaphernalia
                         prnWriter.Write(jobEnd.ToCharArray(), 0, jobEnd.Length);
                     }
                 }
-                else if (reqType == PJLCommands.eRequestType.FSDirList)
+                else if (reqType == PJLCommands.RequestType.FSDirList)
                 {
                     seq = jobHddr +
                           "@PJL " + cmdName +
@@ -290,7 +290,7 @@ namespace PCLParaphernalia
 
                     prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
                 }
-                else if (reqType == PJLCommands.eRequestType.FSInit)
+                else if (reqType == PJLCommands.RequestType.FSInit)
                 {
                     seq = jobHddr +
                           "@PJL " + cmdName +
@@ -300,7 +300,7 @@ namespace PCLParaphernalia
 
                     prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
                 }
-                else if (reqType == PJLCommands.eRequestType.FSUpload)
+                else if (reqType == PJLCommands.RequestType.FSUpload)
                 {
                     seq = jobHddr +
                           "@PJL " +
@@ -336,13 +336,13 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static string readResponse(
-            PJLCommands.eCmdIndex cmdIndx,
+            PJLCommands.CmdIndex cmdIndx,
             string binTgtFilenamePJLFS)
         {
-            PJLCommands.eRequestType reqType = PJLCommands.getType(cmdIndx);
+            PJLCommands.RequestType reqType = PJLCommands.GetType(cmdIndx);
 
-            if ((reqType == PJLCommands.eRequestType.FSDirList) ||
-                (reqType == PJLCommands.eRequestType.FSQuery))
+            if ((reqType == PJLCommands.RequestType.FSDirList) ||
+                (reqType == PJLCommands.RequestType.FSQuery))
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -355,7 +355,7 @@ namespace PCLParaphernalia
 
                 return readResponseQuery();
             }
-            else if (reqType == PJLCommands.eRequestType.FSUpload)
+            else if (reqType == PJLCommands.RequestType.FSUpload)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -381,7 +381,7 @@ namespace PCLParaphernalia
                 //------------------------------------------------------------//
 
                 return "No response is expected from the " +
-                        PJLCommands.getName(cmdIndx) +
+                        PJLCommands.GetName(cmdIndx) +
                         " action command";
             }
         }
@@ -416,7 +416,7 @@ namespace PCLParaphernalia
 
             while (!replyComplete)
             {
-                OK = TargetCore.responseReadBlock(offset,
+                OK = TargetCore.ResponseReadBlock(offset,
                                                    bufRem,
                                                    ref replyData,
                                                    ref blockLen);
@@ -483,7 +483,7 @@ namespace PCLParaphernalia
 
             replyLen = endOffset;
 
-            TargetCore.responseCloseConnection();
+            TargetCore.ResponseCloseConnection();
 
             return System.Text.Encoding.ASCII.GetString(replyData,
                                                          0,
@@ -548,7 +548,7 @@ namespace PCLParaphernalia
 
                 while (OK && !replyComplete)
                 {
-                    OK = TargetCore.responseReadBlock(offset,
+                    OK = TargetCore.ResponseReadBlock(offset,
                                                        bufRem,
                                                        ref replyBlock,
                                                        ref blockLen);
@@ -770,7 +770,7 @@ namespace PCLParaphernalia
                 //                                                        //
                 //--------------------------------------------------------//
 
-                TargetCore.responseCloseConnection();
+                TargetCore.ResponseCloseConnection();
 
                 binTgtFileClose();
 
@@ -956,13 +956,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void sendRequest(PJLCommands.eCmdIndex cmdIndx)
+        public static void sendRequest(PJLCommands.CmdIndex cmdIndx)
         {
-            PJLCommands.eRequestType reqType =
-                PJLCommands.getType(cmdIndx);
+            PJLCommands.RequestType reqType =
+                PJLCommands.GetType(cmdIndx);
 
-            if ((reqType == PJLCommands.eRequestType.FSDirList) ||
-                (reqType == PJLCommands.eRequestType.FSQuery))
+            if ((reqType == PJLCommands.RequestType.FSDirList) ||
+                (reqType == PJLCommands.RequestType.FSQuery))
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -973,9 +973,9 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                TargetCore.requestStreamWrite(true);
+                TargetCore.RequestStreamWrite(true);
             }
-            else if (reqType == PJLCommands.eRequestType.FSUpload)
+            else if (reqType == PJLCommands.RequestType.FSUpload)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -987,7 +987,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                TargetCore.requestStreamWrite(true);
+                TargetCore.RequestStreamWrite(true);
             }
             else
             {
@@ -1003,7 +1003,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                TargetCore.requestStreamWrite(false);
+                TargetCore.RequestStreamWrite(false);
             }
         }
     }

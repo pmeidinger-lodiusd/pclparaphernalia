@@ -42,8 +42,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static readonly int _indxFontArial = PCLFonts.getIndexForName("Arial");
-        static readonly int _indxFontCourier = PCLFonts.getIndexForName("Courier");
+        static readonly int _indxFontArial = PCLFonts.GetIndexForName("Arial");
+        static readonly int _indxFontCourier = PCLFonts.GetIndexForName("Courier");
 
         static int _logPageWidth;
         static int _logPageHeight;
@@ -64,56 +64,56 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generateJob(BinaryWriter prnWriter,
+        public static void GenerateJob(BinaryWriter prnWriter,
                                        int indxPaperSize,
                                        int indxPaperType,
                                        int indxOrientation,
                                        bool formAsMacro)
         {
-            PCLOrientations.eAspect aspect;
+            PCLOrientations.Aspect aspect;
 
             ushort logXOffset;
 
             //----------------------------------------------------------------//
 
-            aspect = PCLOrientations.getAspect(indxOrientation);
+            aspect = PCLOrientations.GetAspect(indxOrientation);
 
-            logXOffset = PCLPaperSizes.getLogicalOffset(indxPaperSize,
+            logXOffset = PCLPaperSizes.GetLogicalOffset(indxPaperSize,
                                                         _unitsPerInch, aspect);
 
-            _logPageWidth = PCLPaperSizes.getLogPageWidth(indxPaperSize,
+            _logPageWidth = PCLPaperSizes.GetLogPageWidth(indxPaperSize,
                                                            _unitsPerInch,
                                                            aspect);
 
-            _logPageHeight = PCLPaperSizes.getLogPageLength(indxPaperSize,
+            _logPageHeight = PCLPaperSizes.GetLogPageLength(indxPaperSize,
                                                           _unitsPerInch,
                                                           aspect);
 
-            _paperWidth = PCLPaperSizes.getPaperWidth(indxPaperSize,
+            _paperWidth = PCLPaperSizes.GetPaperWidth(indxPaperSize,
                                                        _unitsPerInch,
                                                        aspect);
 
-            _paperHeight = PCLPaperSizes.getPaperLength(indxPaperSize,
+            _paperHeight = PCLPaperSizes.GetPaperLength(indxPaperSize,
                                                          _unitsPerInch,
                                                          aspect);
 
             //----------------------------------------------------------------//
 
-            generateJobHeader(prnWriter,
+            GenerateJobHeader(prnWriter,
                               indxPaperSize,
                               indxPaperType,
                               indxOrientation,
                               formAsMacro,
                               logXOffset);
 
-            generatePage(prnWriter,
+            GeneratePage(prnWriter,
                          indxPaperSize,
                          indxPaperType,
                          indxOrientation,
                          formAsMacro,
                          logXOffset);
 
-            generateJobTrailer(prnWriter, formAsMacro);
+            GenerateJobTrailer(prnWriter, formAsMacro);
         }
 
         //--------------------------------------------------------------------//
@@ -125,22 +125,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateJobHeader(BinaryWriter prnWriter,
+        private static void GenerateJobHeader(BinaryWriter prnWriter,
                                               int indxPaperSize,
                                               int indxPaperType,
                                               int indxOrientation,
                                               bool formAsMacro,
                                               ushort logXOffset)
         {
-            PCLWriter.stdJobHeader(prnWriter, string.Empty);
+            PCLWriter.StdJobHeader(prnWriter, string.Empty);
 
             if (formAsMacro)
             {
-                generateOverlay(prnWriter, true, logXOffset,
+                GenerateOverlay(prnWriter, true, logXOffset,
                                 indxPaperSize, indxOrientation);
             }
 
-            PCLWriter.pageHeader(prnWriter,
+            PCLWriter.PageHeader(prnWriter,
                                  indxPaperSize,
                                  indxPaperType,
                                  indxOrientation,
@@ -156,10 +156,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateJobTrailer(BinaryWriter prnWriter,
-                                               bool formAsMacro)
+        private static void GenerateJobTrailer(BinaryWriter prnWriter, bool formAsMacro)
         {
-            PCLWriter.stdJobTrailer(prnWriter, formAsMacro, _macroId);
+            PCLWriter.StdJobTrailer(prnWriter, formAsMacro, _macroId);
         }
 
         //--------------------------------------------------------------------//
@@ -173,7 +172,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateOverlay(BinaryWriter prnWriter,
+        private static void GenerateOverlay(BinaryWriter prnWriter,
                                             bool formAsMacro,
                                             ushort logXOffset,
                                             int indxPaperSize,
@@ -199,8 +198,8 @@ namespace PCLParaphernalia
 
             if (formAsMacro)
             {
-                PCLWriter.macroControl(prnWriter, _macroId,
-                                  PCLWriter.eMacroControl.StartDef);
+                PCLWriter.WriteMacroControl(prnWriter, _macroId,
+                                  PCLWriter.MacroControl.StartDef);
             }
 
             //----------------------------------------------------------------//
@@ -209,8 +208,8 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLWriter.patternSet(prnWriter,
-                                  PCLWriter.ePatternType.Shading,
+            PCLWriter.PatternSet(prnWriter,
+                                  PCLWriter.PatternType.Shading,
                                   60);
 
             boxX = (short)((_unitsPerInch / 2) - logXOffset);
@@ -219,7 +218,7 @@ namespace PCLParaphernalia
             boxWidth = (short)(_paperWidth - _unitsPerInch);
             boxHeight = (short)(_paperHeight - _unitsPerInch);
 
-            PCLWriter.rectangleOutline(prnWriter, boxX, boxY,
+            PCLWriter.RectangleOutline(prnWriter, boxX, boxY,
                                         boxHeight, boxWidth, stroke,
                                         false, false);
 
@@ -229,54 +228,54 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLWriter.patternSet(prnWriter,
-                                  PCLWriter.ePatternType.SolidBlack,
+            PCLWriter.PatternSet(prnWriter,
+                                  PCLWriter.PatternType.SolidBlack,
                                   0);
 
             ptSize = 15;
 
-            PCLWriter.font(prnWriter, true, "19U",
-                           PCLFonts.getPCLFontSelect(_indxFontCourier,
-                                                      PCLFonts.eVariant.Bold,
+            PCLWriter.Font(prnWriter, true, "19U",
+                           PCLFonts.GetPCLFontSelect(_indxFontCourier,
+                                                      PCLFonts.Variant.Bold,
                                                       ptSize, 0));
 
             posX = (short)(_posXDesc - logXOffset);
             posY = _posYDesc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0,
+            PCLWriter.Text(prnWriter, posX, posY, 0,
                       "PCL & HP-GL/2 Font Embellishments:");
 
             ptSize = 12;
 
-            PCLWriter.font(prnWriter, true, "19U",
-                           PCLFonts.getPCLFontSelect(_indxFontCourier,
-                                                      PCLFonts.eVariant.Regular,
+            PCLWriter.Font(prnWriter, true, "19U",
+                           PCLFonts.GetPCLFontSelect(_indxFontCourier,
+                                                      PCLFonts.Variant.Regular,
                                                       ptSize, 0));
 
             posY += _lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0,
+            PCLWriter.Text(prnWriter, posX, posY, 0,
                       "Font:");
 
             posY += _lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0,
+            PCLWriter.Text(prnWriter, posX, posY, 0,
                       "Size X:");
 
             posY += _lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0,
+            PCLWriter.Text(prnWriter, posX, posY, 0,
                       "Size Y:");
 
             posY += _lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0,
+            PCLWriter.Text(prnWriter, posX, posY, 0,
                       "Slant X:");
 
             posY += _lineInc;
             posY += _lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0,
+            PCLWriter.Text(prnWriter, posX, posY, 0,
                       "Extra space:");
 
             //----------------------------------------------------------------//
@@ -285,14 +284,14 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLWriter.patternSet(prnWriter,
-                                  PCLWriter.ePatternType.SolidBlack,
+            PCLWriter.PatternSet(prnWriter,
+                                  PCLWriter.PatternType.SolidBlack,
                                   0);
 
             if (formAsMacro)
             {
-                PCLWriter.macroControl(prnWriter, 0,
-                                       PCLWriter.eMacroControl.StopDef);
+                PCLWriter.WriteMacroControl(prnWriter, 0,
+                                       PCLWriter.MacroControl.StopDef);
             }
         }
 
@@ -305,7 +304,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generatePage(BinaryWriter prnWriter,
+        private static void GeneratePage(BinaryWriter prnWriter,
                                          int indxPaperSize,
                                          int indxPaperType,
                                          int indxOrientation,
@@ -336,12 +335,12 @@ namespace PCLParaphernalia
 
             if (formAsMacro)
             {
-                PCLWriter.macroControl(prnWriter, _macroId,
-                                                   PCLWriter.eMacroControl.Call);
+                PCLWriter.WriteMacroControl(prnWriter, _macroId,
+                                                   PCLWriter.MacroControl.Call);
             }
             else
             {
-                generateOverlay(prnWriter, false, logXOffset,
+                GenerateOverlay(prnWriter, false, logXOffset,
                                             indxPaperSize, indxOrientation);
             }
 
@@ -380,28 +379,28 @@ namespace PCLParaphernalia
             boxWidth = (short)_logPageWidth;
             boxHeight = (short)_logPageHeight;
 
-            PCLWriter.pictureFrame(prnWriter,
+            PCLWriter.PictureFrame(prnWriter,
                                     boxX,
                                     boxY,
                                     boxHeight,
                                     boxWidth);
 
-            PCLWriter.modeHPGL2(prnWriter, false, false);
+            PCLWriter.ModeHPGL2(prnWriter, false, false);
 
-            PCLWriter.cmdHPGL2(prnWriter, "IN", string.Empty, false);
-            PCLWriter.cmdHPGL2(prnWriter, "SP", "1", true);
-            PCLWriter.cmdHPGL2(prnWriter, "DT", "~", false);
+            PCLWriter.CmdHPGL2(prnWriter, "IN", string.Empty, false);
+            PCLWriter.CmdHPGL2(prnWriter, "SP", "1", true);
+            PCLWriter.CmdHPGL2(prnWriter, "DT", "~", false);
 
-            PCLWriter.cmdHPGL2(prnWriter, "SC",
+            PCLWriter.CmdHPGL2(prnWriter, "SC",
                                 "0," + scaleX.ToString("F4") +
                                 ",0," + (-scaleY).ToString("F4") +
                                 ",2",
                                 false);
 
-            PCLWriter.cmdHPGL2(prnWriter, "IR", "0,100,100,0", false);
-            PCLWriter.cmdHPGL2(prnWriter, "PU", "0,0", true);
+            PCLWriter.CmdHPGL2(prnWriter, "IR", "0,100,100,0", false);
+            PCLWriter.CmdHPGL2(prnWriter, "PU", "0,0", true);
 
-            PCLWriter.modePCL(prnWriter, true);
+            PCLWriter.ModePCL(prnWriter, true);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -411,9 +410,9 @@ namespace PCLParaphernalia
 
             ptSize = 18;
 
-            PCLWriter.font(prnWriter, true, "19U",
-                           PCLFonts.getPCLFontSelect(_indxFontCourier,
-                                                      PCLFonts.eVariant.Regular,
+            PCLWriter.Font(prnWriter, true, "19U",
+                           PCLFonts.GetPCLFontSelect(_indxFontCourier,
+                                                      PCLFonts.Variant.Regular,
                                                       ptSize, 0));
 
             posX = (short)(_posXData1 - logXOffset);
@@ -421,37 +420,37 @@ namespace PCLParaphernalia
 
             posY += _lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0,
+            PCLWriter.Text(prnWriter, posX, posY, 0,
                       "Arial");
 
             posY += _lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0,
+            PCLWriter.Text(prnWriter, posX, posY, 0,
                       string.Empty);
 
             posY += _lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0,
+            PCLWriter.Text(prnWriter, posX, posY, 0,
                       string.Empty);
 
             posY += _lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0,
+            PCLWriter.Text(prnWriter, posX, posY, 0,
                       "+30");
 
             posY += _lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0,
+            PCLWriter.Text(prnWriter, posX, posY, 0,
                       "-45");
 
             posY += _lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0,
+            PCLWriter.Text(prnWriter, posX, posY, 0,
                       "+ve");
 
             posY += _lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0,
+            PCLWriter.Text(prnWriter, posX, posY, 0,
                       "-ve");
 
             //----------------------------------------------------------------//
@@ -471,19 +470,19 @@ namespace PCLParaphernalia
 
             posY += _lineInc;
 
-            PCLWriter.modeHPGL2(prnWriter, false, false);
+            PCLWriter.ModeHPGL2(prnWriter, false, false);
 
-            PCLWriter.cmdHPGL2(prnWriter, "SD",
-                                PCLFonts.getHPGL2FontDef(_indxFontArial,
-                                       PCLFonts.eVariant.Regular,
+            PCLWriter.CmdHPGL2(prnWriter, "SD",
+                                PCLFonts.GetHPGL2FontDef(_indxFontArial,
+                                       PCLFonts.Variant.Regular,
                                        14, ptSize, 0),
                                 true);
 
-            PCLWriter.cmdHPGL2(prnWriter, "PA",
+            PCLWriter.CmdHPGL2(prnWriter, "PA",
                                 posX.ToString() + "," +
                                 posY.ToString(), false);
 
-            PCLWriter.cmdHPGL2(prnWriter, "LB", sampleText + lbTerm, true);
+            PCLWriter.CmdHPGL2(prnWriter, "LB", sampleText + lbTerm, true);
 
             //----------------------------------------------------------------//
             // size X                                                         //
@@ -491,21 +490,21 @@ namespace PCLParaphernalia
 
             posY += _lineInc;
 
-            PCLWriter.cmdHPGL2(prnWriter, "SD",
-                                PCLFonts.getHPGL2FontDef(_indxFontArial,
-                                       PCLFonts.eVariant.Regular,
+            PCLWriter.CmdHPGL2(prnWriter, "SD",
+                                PCLFonts.GetHPGL2FontDef(_indxFontArial,
+                                       PCLFonts.Variant.Regular,
                                        14, ptSize, 0),
                                 true);
 
-            PCLWriter.cmdHPGL2(prnWriter, "PA",
+            PCLWriter.CmdHPGL2(prnWriter, "PA",
                                 posX.ToString() + "," +
                                 posY.ToString(), false);
 
-            PCLWriter.cmdHPGL2(prnWriter, "SR", "4,-3", true);
+            PCLWriter.CmdHPGL2(prnWriter, "SR", "4,-3", true);
 
-            PCLWriter.cmdHPGL2(prnWriter, "LB", sampleText + lbTerm, true);
+            PCLWriter.CmdHPGL2(prnWriter, "LB", sampleText + lbTerm, true);
 
-            PCLWriter.cmdHPGL2(prnWriter, "SR", string.Empty, true);
+            PCLWriter.CmdHPGL2(prnWriter, "SR", string.Empty, true);
 
             //----------------------------------------------------------------//
             // size Y                                                         //
@@ -513,21 +512,21 @@ namespace PCLParaphernalia
 
             posY += _lineInc;
 
-            PCLWriter.cmdHPGL2(prnWriter, "SD",
-                                PCLFonts.getHPGL2FontDef(_indxFontArial,
-                                       PCLFonts.eVariant.Regular,
+            PCLWriter.CmdHPGL2(prnWriter, "SD",
+                                PCLFonts.GetHPGL2FontDef(_indxFontArial,
+                                       PCLFonts.Variant.Regular,
                                        14, ptSize, 0),
                                 true);
 
-            PCLWriter.cmdHPGL2(prnWriter, "PA",
+            PCLWriter.CmdHPGL2(prnWriter, "PA",
                                 posX.ToString() + "," +
                                 posY.ToString(), false);
 
-            PCLWriter.cmdHPGL2(prnWriter, "SR", "3.2,-6", true);
+            PCLWriter.CmdHPGL2(prnWriter, "SR", "3.2,-6", true);
 
-            PCLWriter.cmdHPGL2(prnWriter, "LB", sampleText + lbTerm, true);
+            PCLWriter.CmdHPGL2(prnWriter, "LB", sampleText + lbTerm, true);
 
-            PCLWriter.cmdHPGL2(prnWriter, "SI", string.Empty, true);
+            PCLWriter.CmdHPGL2(prnWriter, "SI", string.Empty, true);
 
             //----------------------------------------------------------------//
             // slant X positive                                               //
@@ -535,13 +534,13 @@ namespace PCLParaphernalia
 
             posY += _lineInc;
 
-            PCLWriter.cmdHPGL2(prnWriter, "SD",
-                                PCLFonts.getHPGL2FontDef(_indxFontArial,
-                                       PCLFonts.eVariant.Regular,
+            PCLWriter.CmdHPGL2(prnWriter, "SD",
+                                PCLFonts.GetHPGL2FontDef(_indxFontArial,
+                                       PCLFonts.Variant.Regular,
                                        14, ptSize, 0),
                                 true);
 
-            PCLWriter.cmdHPGL2(prnWriter, "PA",
+            PCLWriter.CmdHPGL2(prnWriter, "PA",
                                 posX.ToString() + "," +
                                 posY.ToString(), false);
 
@@ -549,10 +548,10 @@ namespace PCLParaphernalia
             angle = Math.PI * degrees / 180.0;
             tanAngle = Math.Tan(angle);
 
-            PCLWriter.cmdHPGL2(prnWriter, "SL",
+            PCLWriter.CmdHPGL2(prnWriter, "SL",
                                 tanAngle.ToString(), false);
 
-            PCLWriter.cmdHPGL2(prnWriter, "LB", sampleText + lbTerm, true);
+            PCLWriter.CmdHPGL2(prnWriter, "LB", sampleText + lbTerm, true);
 
             //----------------------------------------------------------------//
             // slant X negative                                               //
@@ -560,13 +559,13 @@ namespace PCLParaphernalia
 
             posY += _lineInc;
 
-            PCLWriter.cmdHPGL2(prnWriter, "SD",
-                                PCLFonts.getHPGL2FontDef(_indxFontArial,
-                                       PCLFonts.eVariant.Regular,
+            PCLWriter.CmdHPGL2(prnWriter, "SD",
+                                PCLFonts.GetHPGL2FontDef(_indxFontArial,
+                                       PCLFonts.Variant.Regular,
                                        14, ptSize, 0),
                                 true);
 
-            PCLWriter.cmdHPGL2(prnWriter, "PA",
+            PCLWriter.CmdHPGL2(prnWriter, "PA",
                                 posX.ToString() + "," +
                                 posY.ToString(), false);
 
@@ -574,12 +573,12 @@ namespace PCLParaphernalia
             angle = Math.PI * degrees / 180.0;
             tanAngle = Math.Tan(angle);
 
-            PCLWriter.cmdHPGL2(prnWriter, "SL",
+            PCLWriter.CmdHPGL2(prnWriter, "SL",
                                 "-" + tanAngle.ToString(), false);
 
-            PCLWriter.cmdHPGL2(prnWriter, "LB", sampleText + lbTerm, true);
+            PCLWriter.CmdHPGL2(prnWriter, "LB", sampleText + lbTerm, true);
 
-            PCLWriter.cmdHPGL2(prnWriter, "SL", "0", false);
+            PCLWriter.CmdHPGL2(prnWriter, "SL", "0", false);
 
             //----------------------------------------------------------------//
             // extra space X positive                                         //
@@ -587,19 +586,19 @@ namespace PCLParaphernalia
 
             posY += _lineInc;
 
-            PCLWriter.cmdHPGL2(prnWriter, "SD",
-                                PCLFonts.getHPGL2FontDef(_indxFontArial,
-                                       PCLFonts.eVariant.Regular,
+            PCLWriter.CmdHPGL2(prnWriter, "SD",
+                                PCLFonts.GetHPGL2FontDef(_indxFontArial,
+                                       PCLFonts.Variant.Regular,
                                        14, ptSize, 0),
                                 true);
 
-            PCLWriter.cmdHPGL2(prnWriter, "PA",
+            PCLWriter.CmdHPGL2(prnWriter, "PA",
                                 posX.ToString() + "," +
                                 posY.ToString(), false);
 
-            PCLWriter.cmdHPGL2(prnWriter, "ES", ".2,0", false);
+            PCLWriter.CmdHPGL2(prnWriter, "ES", ".2,0", false);
 
-            PCLWriter.cmdHPGL2(prnWriter, "LB", sampleText + lbTerm, true);
+            PCLWriter.CmdHPGL2(prnWriter, "LB", sampleText + lbTerm, true);
 
             //----------------------------------------------------------------//
             // extra space X negative                                         //
@@ -607,25 +606,25 @@ namespace PCLParaphernalia
 
             posY += _lineInc;
 
-            PCLWriter.cmdHPGL2(prnWriter, "SD",
-                                PCLFonts.getHPGL2FontDef(_indxFontArial,
-                                       PCLFonts.eVariant.Regular,
+            PCLWriter.CmdHPGL2(prnWriter, "SD",
+                                PCLFonts.GetHPGL2FontDef(_indxFontArial,
+                                       PCLFonts.Variant.Regular,
                                        14, ptSize, 0),
                                 true);
 
-            PCLWriter.cmdHPGL2(prnWriter, "PA",
+            PCLWriter.CmdHPGL2(prnWriter, "PA",
                                 posX.ToString() + "," +
                                 posY.ToString(), false);
 
-            PCLWriter.cmdHPGL2(prnWriter, "ES", "-.1,0", false);
+            PCLWriter.CmdHPGL2(prnWriter, "ES", "-.1,0", false);
 
-            PCLWriter.cmdHPGL2(prnWriter, "LB", sampleText + lbTerm, true);
+            PCLWriter.CmdHPGL2(prnWriter, "LB", sampleText + lbTerm, true);
 
             //----------------------------------------------------------------//
 
-            PCLWriter.modePCL(prnWriter, true);
+            PCLWriter.ModePCL(prnWriter, true);
 
-            PCLWriter.formFeed(prnWriter);
+            PCLWriter.FormFeed(prnWriter);
         }
     }
 }

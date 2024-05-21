@@ -16,7 +16,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private readonly PCLPaperTypes.eEntryType _entryType;
+        private readonly PCLPaperTypes.EntryType _entryType;
 
         private readonly string _paperTypeName;
 
@@ -26,7 +26,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLPaperType(PCLPaperTypes.eEntryType entryType,
+        public PCLPaperType(PCLPaperTypes.EntryType entryType,
                             string name)
         {
             _entryType     = entryType;
@@ -56,7 +56,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLPaperTypes.eEntryType getType()
+        public PCLPaperTypes.EntryType getType()
         {
             return _entryType;
         }

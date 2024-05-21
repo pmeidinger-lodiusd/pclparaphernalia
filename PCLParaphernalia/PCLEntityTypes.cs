@@ -16,7 +16,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public enum eType : byte
+        public enum Type : byte
         {
             Memory,
             Font,
@@ -28,17 +28,17 @@ namespace PCLParaphernalia
 
         private static readonly PCLEntityType[] _entityTypes =
         {
-            new PCLEntityType(eType.Memory,         "1",
+            new PCLEntityType(Type.Memory,         "1",
                               "Memory"),
-            new PCLEntityType(eType.Font,           "0",
+            new PCLEntityType(Type.Font,           "0",
                               "Font"),
-            new PCLEntityType(eType.Macro,          "1",
+            new PCLEntityType(Type.Macro,          "1",
                               "Macro"),
-            new PCLEntityType(eType.Pattern,        "2",
+            new PCLEntityType(Type.Pattern,        "2",
                               "User-defined pattern"),
-            new PCLEntityType(eType.SymbolSet,      "3",
+            new PCLEntityType(Type.SymbolSet,      "3",
                               "Symbol Set"),
-            new PCLEntityType(eType.FontExtended,   "4",
+            new PCLEntityType(Type.FontExtended,   "4",
                               "Font Extended")
         };
 
@@ -53,7 +53,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCount()
+        public static int GetCount()
         {
             return _entityTypeCount;
         }
@@ -67,7 +67,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getIdPCL(int selection)
+        public static string GetIdPCL(int selection)
         {
             return _entityTypes[selection].getIdPCL();
         }
@@ -81,7 +81,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getName(int selection)
+        public static string GetName(int selection)
         {
             return _entityTypes[selection].getName();
         }
@@ -95,7 +95,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eType getType(int selection)
+        public static Type GetType(int selection)
         {
             return _entityTypes[selection].getType();
         }

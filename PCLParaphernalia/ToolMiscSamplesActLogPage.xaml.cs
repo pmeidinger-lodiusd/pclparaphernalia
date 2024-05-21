@@ -98,7 +98,7 @@ namespace PCLParaphernalia
             lbOrientation.Visibility = Visibility.Visible;
             cbOrientation.Visibility = Visibility.Visible;
 
-            if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 txtLogPageDesc.Text =
                     "The standard PCL logical page is smaller than the" +
@@ -189,9 +189,9 @@ namespace PCLParaphernalia
 
         private void setFlagLogPageFormAsMacro(
             bool setFlag,
-            ToolCommonData.ePrintLang crntPDL)
+            ToolCommonData.PrintLang crntPDL)
         {
-            if (crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 _flagLogPageFormAsMacroPCL = setFlag;
             }

@@ -19,7 +19,7 @@ namespace PCLParaphernalia
 
         const int _symSet_19U = 629;
 
-        public enum eStreamMethod : byte
+        public enum StreamMethod : byte
         {
             ExecuteBegin,
             ExecuteEnd,
@@ -53,7 +53,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generateJob(
+        public static void GenerateJob(
             BinaryWriter prnWriter,
             int indxPaperSize,
             int indxPaperType,
@@ -71,13 +71,13 @@ namespace PCLParaphernalia
             bool flagPrintDescText,
             string formFileMain,
             string formFileRear,
-            eStreamMethod indxMethod,
+            StreamMethod indxMethod,
             string formNameMain,
             string formNameRear)
         {
-            bool flagSimplexJob = PCLPlexModes.isSimplex(indxPlexMode);
+            bool flagSimplexJob = PCLPlexModes.IsSimplex(indxPlexMode);
 
-            generateJobHeader(prnWriter,
+            GenerateJobHeader(prnWriter,
                               indxPaperSize,
                               indxPaperType,
                               indxOrientation,
@@ -94,7 +94,7 @@ namespace PCLParaphernalia
                               formNameMain,
                               formNameRear);
 
-            generatePageSet(prnWriter,
+            GeneratePageSet(prnWriter,
                              testPageCount,
                              indxPaperSize,
                              indxPaperType,
@@ -113,7 +113,7 @@ namespace PCLParaphernalia
                              formNameMain,
                              formNameRear);
 
-            generateJobTrailer(prnWriter,
+            GenerateJobTrailer(prnWriter,
                                 flagStreamRemove,
                                 flagMainForm,
                                 flagRearForm,
@@ -130,7 +130,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateJobHeader(
+        private static void GenerateJobHeader(
             BinaryWriter prnWriter,
             int indxPaperSize,
             int indxPaperType,
@@ -144,7 +144,7 @@ namespace PCLParaphernalia
             bool flagRearForm,
             string formFileMain,
             string formFileRear,
-            eStreamMethod indxMethod,
+            StreamMethod indxMethod,
             string formNameMain,
             string formNameRear)
         {
@@ -193,7 +193,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateJobTrailer(BinaryWriter prnWriter,
+        private static void GenerateJobTrailer(BinaryWriter prnWriter,
                                                bool flagStreamRemove,
                                                bool flagMainForm,
                                                bool flagRearForm,
@@ -227,7 +227,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generatePage(BinaryWriter prnWriter,
+        private static void GeneratePage(BinaryWriter prnWriter,
                                          int pageNo,
                                          int pageCount,
                                          int indxPaperSize,
@@ -244,7 +244,7 @@ namespace PCLParaphernalia
                                          bool flagPrintDescText,
                                          string formFileMain,
                                          string formFileRear,
-                                         eStreamMethod indxMethod,
+                                         StreamMethod indxMethod,
                                          string formNameMain,
                                          string formNameRear)
         {
@@ -309,14 +309,14 @@ namespace PCLParaphernalia
 
             if (pageUsesForm)
             {
-                if (indxMethod == eStreamMethod.ExecuteBegin)
+                if (indxMethod == StreamMethod.ExecuteBegin)
                 {
                     if (flagGSPushPop)
                     {
                         PCLXLWriter.AddOperator(
                            ref buffer,
                            ref indBuf,
-                           PCLXLOperators.eTag.PushGS);
+                           PCLXLOperators.Tag.PushGS);
 
                         prnWriter.Write(buffer, 0, indBuf);
                         indBuf = 0;
@@ -329,7 +329,7 @@ namespace PCLParaphernalia
                         PCLXLWriter.AddOperator(
                             ref buffer,
                             ref indBuf,
-                            PCLXLOperators.eTag.PopGS);
+                            PCLXLOperators.Tag.PopGS);
 
                         prnWriter.Write(buffer, 0, indBuf);
                         indBuf = 0;
@@ -355,21 +355,21 @@ namespace PCLParaphernalia
 
                 PCLXLWriter.AddAttrUbyte(ref buffer,
                                          ref indBuf,
-                                         PCLXLAttributes.eTag.ColorSpace,
+                                         PCLXLAttributes.Tag.ColorSpace,
                                          (byte)PCLXLAttrEnums.Val.eGray);
 
                 PCLXLWriter.AddOperator(ref buffer,
                                         ref indBuf,
-                                        PCLXLOperators.eTag.SetColorSpace);
+                                        PCLXLOperators.Tag.SetColorSpace);
 
                 PCLXLWriter.AddAttrUbyte(ref buffer,
                                          ref indBuf,
-                                         PCLXLAttributes.eTag.GrayLevel,
+                                         PCLXLAttributes.Tag.GrayLevel,
                                          0);
 
                 PCLXLWriter.AddOperator(ref buffer,
                                         ref indBuf,
-                                        PCLXLOperators.eTag.SetBrushSource);
+                                        PCLXLOperators.Tag.SetBrushSource);
 
                 prnWriter.Write(buffer, 0, indBuf);
                 indBuf = 0;
@@ -459,12 +459,12 @@ namespace PCLParaphernalia
 
                 PCLXLWriter.AddAttrUbyte(ref buffer,
                                          ref indBuf,
-                                         PCLXLAttributes.eTag.GrayLevel,
+                                         PCLXLAttributes.Tag.GrayLevel,
                                          0);
 
                 PCLXLWriter.AddOperator(ref buffer,
                                         ref indBuf,
-                                        PCLXLOperators.eTag.SetBrushSource);
+                                        PCLXLOperators.Tag.SetBrushSource);
 
                 prnWriter.Write(buffer, 0, indBuf);
                 indBuf = 0;
@@ -489,21 +489,21 @@ namespace PCLParaphernalia
                     PCLXLWriter.Text(prnWriter, false, false,
                                       PCLXLWriter.advances_Courier, crntPtSize,
                                       posX, posY,
-                                      PCLPaperSizes.getName(indxPaperSize));
+                                      PCLPaperSizes.GetName(indxPaperSize));
 
                     posY += incPosY;
 
                     PCLXLWriter.Text(prnWriter, false, false,
                                       PCLXLWriter.advances_Courier, crntPtSize,
                                       posX, posY,
-                                      PCLPaperTypes.getName(indxPaperType));
+                                      PCLPaperTypes.GetName(indxPaperType));
 
                     posY += incPosY;
 
                     PCLXLWriter.Text(prnWriter, false, false,
                                       PCLXLWriter.advances_Courier, crntPtSize,
                                       posX, posY,
-                                      PCLPlexModes.getName(indxPlexMode));
+                                      PCLPlexModes.GetName(indxPlexMode));
 
                     posY += incPosY;
 
@@ -517,12 +517,12 @@ namespace PCLParaphernalia
                     PCLXLWriter.Text(prnWriter, false, false,
                                       PCLXLWriter.advances_Courier, crntPtSize,
                                       posX, posY,
-                                      PCLOrientations.getName(indxOrientation));
+                                      PCLOrientations.GetName(indxOrientation));
 
                     if (flagSimplexJob)
                         textOrientRear = "<not applicable>";
                     else
-                        textOrientRear = PCLOrientations.getName(indxOrientRear);
+                        textOrientRear = PCLOrientations.GetName(indxOrientRear);
 
                     posY += incPosY;
 
@@ -596,14 +596,14 @@ namespace PCLParaphernalia
 
             if (pageUsesForm)
             {
-                if (indxMethod == eStreamMethod.ExecuteEnd)
+                if (indxMethod == StreamMethod.ExecuteEnd)
                 {
                     if (flagGSPushPop)
                     {
                         PCLXLWriter.AddOperator(
                            ref buffer,
                            ref indBuf,
-                           PCLXLOperators.eTag.PushGS);
+                           PCLXLOperators.Tag.PushGS);
 
                         prnWriter.Write(buffer, 0, indBuf);
                         indBuf = 0;
@@ -616,7 +616,7 @@ namespace PCLParaphernalia
                         PCLXLWriter.AddOperator(
                             ref buffer,
                             ref indBuf,
-                            PCLXLOperators.eTag.PopGS);
+                            PCLXLOperators.Tag.PopGS);
 
                         prnWriter.Write(buffer, 0, indBuf);
                         indBuf = 0;
@@ -664,7 +664,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generatePageSet(BinaryWriter prnWriter,
+        private static void GeneratePageSet(BinaryWriter prnWriter,
                                             int pageCount,
                                             int indxPaperSize,
                                             int indxPaperType,
@@ -679,7 +679,7 @@ namespace PCLParaphernalia
                                             bool flagPrintDescText,
                                             string formFileMain,
                                             string formFileRear,
-                                            eStreamMethod indxMethod,
+                                            StreamMethod indxMethod,
                                             string formNameMain,
                                             string formNameRear)
         {
@@ -693,7 +693,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                generatePage(prnWriter,
+                GeneratePage(prnWriter,
                               pageNo,
                               pageCount,
                               indxPaperSize,

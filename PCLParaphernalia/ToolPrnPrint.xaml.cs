@@ -36,13 +36,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ToolPrnPrint(ref ToolCommonData.ePrintLang crntPDL)
+        public ToolPrnPrint(ref ToolCommonData.PrintLang crntPDL)
         {
             InitializeComponent();
 
             initialise();
 
-            crntPDL = ToolCommonData.ePrintLang.Unknown;
+            crntPDL = ToolCommonData.PrintLang.Unknown;
         }
 
         //--------------------------------------------------------------------//
@@ -82,15 +82,15 @@ namespace PCLParaphernalia
         {
             BinaryWriter binWriter = null;
 
-            TargetCore.requestStreamOpen(
+            TargetCore.RequestStreamOpen(
                 ref binWriter,
-                ToolCommonData.eToolIds.PrnPrint,
-                ToolCommonData.eToolSubIds.None,
-                ToolCommonData.ePrintLang.Unknown);
+                ToolCommonData.ToolIds.PrnPrint,
+                ToolCommonData.ToolSubIds.None,
+                ToolCommonData.PrintLang.Unknown);
 
             copyPrnFile(_prnFilename, binWriter);
 
-            TargetCore.requestStreamWrite(false);
+            TargetCore.RequestStreamWrite(false);
         }
 
         //--------------------------------------------------------------------//
@@ -146,9 +146,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void giveCrntPDL(ref ToolCommonData.ePrintLang crntPDL)
+        public void giveCrntPDL(ref ToolCommonData.PrintLang crntPDL)
         {
-            crntPDL = ToolCommonData.ePrintLang.Unknown;
+            crntPDL = ToolCommonData.PrintLang.Unknown;
         }
 
         //--------------------------------------------------------------------//
@@ -289,13 +289,13 @@ namespace PCLParaphernalia
 
         public void resetTarget()
         {
-            TargetCore.eTarget targetType = TargetCore.getType();
+            TargetCore.Target targetType = TargetCore.GetType();
 
-            if (targetType == TargetCore.eTarget.File)
+            if (targetType == TargetCore.Target.File)
             {
                 btnGenerate.Content = "Copy PRN file contents to file";
             }
-            else if (targetType == TargetCore.eTarget.NetPrinter)
+            else if (targetType == TargetCore.Target.NetPrinter)
             {
                 string netPrnAddress = string.Empty;
                 int netPrnPort = 0;
@@ -303,7 +303,7 @@ namespace PCLParaphernalia
                 int netTimeoutSend = 0;
                 int netTimeoutReceive = 0;
 
-                TargetCore.metricsLoadNetPrinter(ref netPrnAddress,
+                TargetCore.MetricsLoadNetPrinter(ref netPrnAddress,
                                                   ref netPrnPort,
                                                   ref netTimeoutSend,
                                                   ref netTimeoutReceive);
@@ -313,11 +313,11 @@ namespace PCLParaphernalia
                                       netPrnAddress + " : " +
                                       netPrnPort.ToString();
             }
-            else if (targetType == TargetCore.eTarget.WinPrinter)
+            else if (targetType == TargetCore.Target.WinPrinter)
             {
                 string winPrintername = string.Empty;
 
-                TargetCore.metricsLoadWinPrinter(ref winPrintername);
+                TargetCore.MetricsLoadWinPrinter(ref winPrintername);
 
                 btnGenerate.Content = "Send PRN file contents to printer " +
                                       "\r\n" +

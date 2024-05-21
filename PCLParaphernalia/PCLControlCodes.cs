@@ -55,7 +55,7 @@ namespace PCLParaphernalia
             byte tagVal,
             ref bool flagLineTerm,
             ref string mnemonic,
-            ref PrnParseConstants.eOvlAct makeOvlAct,
+            ref PrnParseConstants.OvlAct makeOvlAct,
             ref string description)
         {
             bool tagKnown;
@@ -235,64 +235,64 @@ namespace PCLParaphernalia
             _tagUnknown =
                 new PCLControlCode(codeVal, false,
                                    string.Empty,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    string.Empty);
 
             codeVal = 0x08;                                       // 0x08: BS //
             _tags.Add(codeVal,
                 new PCLControlCode(codeVal, false,
                                    "<BS>",
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.CursorPositioning,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.CursorPositioning,
                                    "Backspace"));
 
             codeVal = 0x09;                                       // 0x09: HT //
             _tags.Add(codeVal,
                 new PCLControlCode(codeVal, false,
                                    "<HT>",
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.CursorPositioning,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.CursorPositioning,
                                    "Horizontal Tab"));
 
             codeVal = 0x0a;                                       // 0x0a: LF //
             _tags.Add(codeVal,
                 new PCLControlCode(codeVal, true,
                                    "<LF>",
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.CursorPositioning,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.CursorPositioning,
                                    "Line Feed"));
 
             codeVal = 0x0c;                                       // 0x0c: FF //
             _tags.Add(codeVal,
                 new PCLControlCode(codeVal, false,
                                    "<FF>",
-                                   PrnParseConstants.eOvlAct.PageChange,
-                                   PrnParseConstants.eSeqGrp.CursorPositioning,
+                                   PrnParseConstants.OvlAct.PageChange,
+                                   PrnParseConstants.SeqGrp.CursorPositioning,
                                    "Form Feed"));
 
             codeVal = 0x0d;                                       // 0x0d: CR //
             _tags.Add(codeVal,
                 new PCLControlCode(codeVal, true,
                                    "<CR>",
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.CursorPositioning,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.CursorPositioning,
                                    "Carriage Return"));
 
             codeVal = 0x0e;                                       // 0x0e: SO //
             _tags.Add(codeVal,
                 new PCLControlCode(codeVal, false,
                                    "<SO>",
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Shift Out - select Secondary font"));
 
             codeVal = 0x0f;                                       // 0x0f: SI //
             _tags.Add(codeVal,
                 new PCLControlCode(codeVal, false,
                                    "<SI>",
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Shift In - select Primary font"));
 
             /*

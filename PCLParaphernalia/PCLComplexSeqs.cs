@@ -75,8 +75,8 @@ namespace PCLParaphernalia
             ref bool optNilValue,
             ref bool optValIsLen,
             ref bool optDisplayHexVal,
-            ref PrnParseConstants.eActPCL actType,
-            ref PrnParseConstants.eOvlAct makeOvlAct,
+            ref PrnParseConstants.ActPCL actType,
+            ref PrnParseConstants.OvlAct makeOvlAct,
             ref string description)
         {
             bool seqKnown;
@@ -155,7 +155,7 @@ namespace PCLParaphernalia
                 }
             }
 
-            if ((actType == PrnParseConstants.eActPCL.MacroStop) && (macroLevel > 0))
+            if ((actType == PrnParseConstants.ActPCL.MacroStop) && (macroLevel > 0))
                 seq.incrementStatisticsCount(macroLevel - 1);
             else
                 seq.incrementStatisticsCount(macroLevel);
@@ -427,9 +427,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "*** Unknown sequence ***");
 
             iChar = 0x25;   // % //
@@ -443,27 +443,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PictureFrame,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PictureFrame,
                                    "Enter PCL Mode (# = discrete value)"));
             value = 0;                                           // %0A       //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PictureFrame,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PictureFrame,
                                    "Enter PCL Mode: Cursor = PCL"));
             value = 1;                                           // %1A       //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PictureFrame,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PictureFrame,
                                    "Enter PCL Mode: Cursor = HP-GL/2"));
 
             iChar = 0x25;   // % //
@@ -477,54 +477,54 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.SwitchToHPGL2,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PictureFrame,
+                                   PrnParseConstants.ActPCL.SwitchToHPGL2,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PictureFrame,
                                    "Enter HP-GL/2 Mode (# = discrete value)"));
             value = -1;                                          // %-1B      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.SwitchToHPGL2,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PictureFrame,
+                                   PrnParseConstants.ActPCL.SwitchToHPGL2,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PictureFrame,
                                    "Enter HP-GL/2 Mode: Single Context"));
             value = 0;                                           // %0B       //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.SwitchToHPGL2,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PictureFrame,
+                                   PrnParseConstants.ActPCL.SwitchToHPGL2,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PictureFrame,
                                    "Enter HP-GL/2 Mode: Pen = HP-GL/2"));
             value = 1;                                           // %1B       //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.SwitchToHPGL2,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PictureFrame,
+                                   PrnParseConstants.ActPCL.SwitchToHPGL2,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PictureFrame,
                                    "Enter HP-GL/2 Mode: Pen = PCL"));
             value = 2;                                           // %2B       //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.SwitchToHPGL2,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PictureFrame,
+                                   PrnParseConstants.ActPCL.SwitchToHPGL2,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PictureFrame,
                                    "Enter HP-GL/2 Mode: Pen = HP-GL/2; Cursor = PCL"));
             value = 3;                                           // %3B       //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.SwitchToHPGL2,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PictureFrame,
+                                   PrnParseConstants.ActPCL.SwitchToHPGL2,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PictureFrame,
                                    "Enter HP-GL/2 Mode: Pen = PCL; Cursor = PCL"));
 
             iChar = 0x25;   // % //
@@ -538,18 +538,18 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.SwitchToPJL,
-                                   PrnParseConstants.eOvlAct.Reset,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.SwitchToPJL,
+                                   PrnParseConstants.OvlAct.Reset,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Universal Exit Language (# = -12345)"));
             value = -12345;                                      // %-12345X  //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.SwitchToPJL,
-                                   PrnParseConstants.eOvlAct.Reset,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.SwitchToPJL,
+                                   PrnParseConstants.OvlAct.Reset,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Universal Exit Language (UEL)"));
 
             iChar = 0x26;   // & //
@@ -563,9 +563,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.CursorPositioning,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.CursorPositioning,
                                    "Cursor Position Horizontal (column #)"));
 
             iChar = 0x26;   // & //
@@ -579,36 +579,36 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageChange,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageChange,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Duplex Page Side Selection (# = discrete value)"));
             value = 0;                                           // &a0G      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageChange,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageChange,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Duplex Page Side Selection: Next Side"));
             value = 1;                                           // &a1G      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageChange,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageChange,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Duplex Page Side Selection: Front Side"));
             value = 2;                                           // &a2G      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageChange,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageChange,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Duplex Page Side Selection: Back Side"));
 
             iChar = 0x26;   // & //
@@ -622,9 +622,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.CursorPositioning,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.CursorPositioning,
                                    "Cursor Position Horizontal (# decipoints)"));
 
             iChar = 0x26;   // & //
@@ -638,9 +638,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Left Margin (column #)"));
 
             iChar = 0x26;   // & //
@@ -654,9 +654,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Right Margin (column #)"));
 
             iChar = 0x26;   // & //
@@ -670,27 +670,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Negative Motion (# = discrete value)"));
             value = 0;                                           // &a0N      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Negative Motion: Present"));
             value = 1;                                           // &a1N      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Negative Motion: Not Present"));
 
             iChar = 0x26;   // & //
@@ -704,45 +704,45 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Print Direction (# = discrete value)"));
             value = 0;                                           // &a0P      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Print Direction: 0 degree rotation"));
             value = 90;                                          // &a90P     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Print Direction: 90 degree ccw rotation"));
             value = 180;                                         // &a180P    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Print Direction: 180 degree ccw rotation"));
             value = 270;                                         // &a270P    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Print Direction: 270 degree ccw rotation"));
 
             iChar = 0x26;   // & //
@@ -756,9 +756,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.CursorPositioning,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.CursorPositioning,
                                    "Cursor Position Vertical   (row #)"));
 
             iChar = 0x26;   // & //
@@ -772,9 +772,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Set Horizontal Tab (column #)"));
 
             iChar = 0x26;   // & //
@@ -788,9 +788,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Clear Horizontal Tab (column #)"));
 
             iChar = 0x26;   // & //
@@ -804,9 +804,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.CursorPositioning,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.CursorPositioning,
                                    "Cursor Position Vertical   (# decipoints)"));
 
             iChar = 0x26;   // & //
@@ -820,9 +820,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagValIsLen,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.LogicalPageData,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.LogicalPageData,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Define Logical Page (data length = #)"));
 
             iChar = 0x26;   // & //
@@ -836,27 +836,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Finish Mode (# = discrete value)"));
             value = 0;                                           // &b0F      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Finish Mode: Matte"));
             value = 1;                                           // &b1F      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Finish Mode: Glossy"));
 
             iChar = 0x26;   // & //
@@ -870,27 +870,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Monochrome Print Mode (# = discrete value)"));
             value = 0;                                           // &b0M      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Monochrome Print Mode: Mixed Rendering"));
             value = 1;                                           // &b1M      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Monochrome Print Mode: Grey Equivalent"));
 
             iChar = 0x26;   // & //
@@ -904,9 +904,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Dry Timer (# seconds)"));
 
             iChar = 0x26;   // & //
@@ -920,9 +920,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagValIsLen,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.ConfigurationIO,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.ConfigurationIO,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Configuration (I/O) (data length = #)"));
 
             iChar = 0x26;   // & //
@@ -936,27 +936,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Text Path Direction (# = discrete value)"));
             value = -1;                                          // &c-1T     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Text Path Direction: Vertical Rotated"));
             value = 0;                                           // &c0T      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Text Path Direction: Horizontal"));
 
             iChar = 0x26;   // & //
@@ -970,9 +970,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagValIsLen,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Cluster Printing (data length = #)"));
 
             iChar = 0x26;   // & //
@@ -986,9 +986,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNilValue, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Underline Disable"));
 
             iChar = 0x26;   // & //
@@ -1002,54 +1002,54 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Underline Enable (# = discrete value)"));
             value = 0;                                           // &d0D      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Underline Enable: default"));
             value = 1;                                           // &d1D      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Underline Enable: single"));
             value = 2;                                           // &d2D      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Underline Enable: double"));
             value = 3;                                           // &d3D      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Underline Enable: Floating"));
             value = 4;                                           // &d4D      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Underline Enable: floating double"));
 
             iChar = 0x26;   // & //
@@ -1063,9 +1063,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Media Eject Length (# decipoints)"));
 
             iChar = 0x26;   // & //
@@ -1079,9 +1079,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Page Width (# decipoints)"));
 
             iChar = 0x26;   // & //
@@ -1095,9 +1095,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Custom Paper Width  (# decipoints)"));
 
             iChar = 0x26;   // & //
@@ -1111,9 +1111,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Custom Paper Length (# decipoints)"));
 
             iChar = 0x26;   // & //
@@ -1127,27 +1127,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.CursorPositioning,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.CursorPositioning,
                                    "Cursor Position Stack (# = discrete value)"));
             value = 0;                                           // &f0S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.CursorPositioning,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.CursorPositioning,
                                    "Cursor Position Stack: Push (Store)"));
             value = 1;                                           // &f1S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.CursorPositioning,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.CursorPositioning,
                                    "Cursor Position Stack: Pop (Recall) "));
 
             iChar = 0x26;   // & //
@@ -1161,117 +1161,117 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Macros,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Macros,
                                    "Macro Control (# = discrete value)"));
             value = 0;                                           // &f0X      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.MacroStart,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Macros,
+                                   PrnParseConstants.ActPCL.MacroStart,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Macros,
                                    "Macro Control: Start Macro Definition"));
             value = 1;                                           // &f1X      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.MacroStop,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Macros,
+                                   PrnParseConstants.ActPCL.MacroStop,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Macros,
                                    "Macro Control: Stop Macro Definition"));
             value = 2;                                           // &f2X      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Macros,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Macros,
                                    "Macro Control: Execute Macro"));
             value = 3;                                           // &f3X      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Macros,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Macros,
                                    "Macro Control: Call Macro"));
             value = 4;                                           // &f4X      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.Macros,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.Macros,
                                    "Macro Control: Enable Macro For Overlay"));
             value = 5;                                           // &f5X      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.Macros,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.Macros,
                                    "Macro Control: Disable Overlay"));
             value = 6;                                           // &f6X      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.Macros,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.Macros,
                                    "Macro Control: Delete All Macros"));
             value = 7;                                           // &f7X      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.Macros,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.Macros,
                                    "Macro Control: Delete Temporary Macros"));
             value = 8;                                           // &f8X      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.DownloadDelete,
-                                   PrnParseConstants.eSeqGrp.Macros,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.DownloadDelete,
+                                   PrnParseConstants.SeqGrp.Macros,
                                    "Macro Control: Delete Macro"));
             value = 9;                                           // &f9X      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Macros,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Macros,
                                    "Macro Control: Make Macro Temporary"));
             value = 10;                                          // &f10X     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Macros,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Macros,
                                    "Macro Control: Make Macro Permanent"));
             value = 11;                                          // &f11X     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Macros,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Macros,
                                    "Macro Control: Create Bitmap of Macro"));
 
             iChar = 0x26;   // & //
@@ -1285,9 +1285,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.IdMacro,
-                                   PrnParseConstants.eSeqGrp.Macros,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.IdMacro,
+                                   PrnParseConstants.SeqGrp.Macros,
                                    "Macro Control ID (identifer = #)"));
 
             iChar = 0x26;   // & //
@@ -1301,9 +1301,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagValIsLen,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Underware Function Configuration (data length = #)"));
 
             root = "&kE";
@@ -1318,27 +1318,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Underline Enhancement (# = discrete value)"));
             value = 0;                                           // &k0E      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Underline Enhancement: Line-By-Line"));
             value = 1;                                           // &k1E      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "UnderLine Enhancement: Modal"));
 
             root = "&kF";
@@ -1353,27 +1353,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Shift In/Out Control (# = discrete value)"));
             value = 0;                                           // &k0F      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Shift In/Out Control: Line-By-Line"));
             value = 1;                                           // &k1F      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Shift In/Out Control: Modal"));
 
             iChar = 0x26;   // & //
@@ -1387,45 +1387,45 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.CursorPositioning,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.CursorPositioning,
                                    "Line Termination (# = discrete value)"));
             value = 0;                                           // &k0G      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.CursorPositioning,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.CursorPositioning,
                                    "Line Termination: CR=CR, LF=LF, FF=FF"));
             value = 1;                                           // &k1G      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.CursorPositioning,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.CursorPositioning,
                                    "Line Termination: CR=CR+LF, LF=LF, FF=FF"));
             value = 2;                                           // &k2G      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.CursorPositioning,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.CursorPositioning,
                                    "Line Termination: CR=CR, LF=CR+LF, FF=CR+FF"));
             value = 3;                                           // &k3G      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.CursorPositioning,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.CursorPositioning,
                                    "Line Termination: CR=CR+LF, LF=CR+LF, FF=CR+FF"));
 
             iChar = 0x26;   // & //
@@ -1439,9 +1439,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Horizontal Motion Index (#/120 inches)"));
 
             root = "&kI";
@@ -1456,27 +1456,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Character Set Selection Control (# = discrete value)"));
             value = 0;                                           // &k0I      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Character Set Selection Control: SI/SO"));
             value = 1;                                           // &k1I      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Character Set Selection Control: bit 8"));
 
             iChar = 0x26;   // & //
@@ -1490,63 +1490,63 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Pitch Mode (# = discrete value)"));
             value = 0;                                           // &k0S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Pitch Mode: Pica (10 cpi)"));
             value = 1;                                           // &k1S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Pitch Mode: Double Wide (5 cpi)"));
             value = 2;                                           // &k2S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Pitch Mode: Compressed (16.6 cpi)"));
             value = 3;                                           // &k3S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Pitch Mode: Double Wide Comp. (8.3 cpi)"));
             value = 4;                                           // &k4S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Pitch Mode: Elite (12 cpi)"));
             value = 8;                                           // &k8S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Pitch Mode: Double Width/Height"));
 
             iChar = 0x26;   // & //
@@ -1560,27 +1560,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Head View Mode (# = discrete value)"));
             value = 0;                                           // &k0V      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Head View Mode: Enable"));
             value = 1;                                           // &k1V      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Head View Mode: Disable"));
 
             iChar = 0x26;   // & //
@@ -1594,72 +1594,72 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Print Mode (Text) (# = discrete value)"));
             value = 0;                                           // &k0W      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Print Mode (Text): Unidirectional (L->R)"));
             value = 1;                                           // &k1W      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Print Mode (Text): Bidirectional"));
             value = 2;                                           // &k2W      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Print Mode (Text): Unidirectional (R->L)"));
             value = 3;                                           // &k3W      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Print Mode (Text): High Intensity"));
             value = 5;                                           // &k5W      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Print Mode (Text): Text Scale Off"));
             value = 6;                                           // &k6W      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Print Mode (Text): Text Scale On"));
             value = 7;                                           // &k7W      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Print Mode (Text): Fast High Intensity"));
 
             iChar = 0x26;   // & //
@@ -1673,9 +1673,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageChange,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageChange,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Page Size (# = discrete value)"));
 
             populateTableAddPaperSizes(iChar, gChar, tChar, root);
@@ -1691,9 +1691,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Vertical Motion Index (#/48 inches)"));
 
             iChar = 0x26;   // & //
@@ -1707,108 +1707,108 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Line Spacing (# = lines-per-inch discrete value)"));
             value = 0;                                           // &l0D      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Line Spacing (0 lines-per-inch)"));
             value = 1;                                           // &l1D      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Line Spacing (1 line-per-inch)"));
             value = 2;                                           // &l2D      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Line Spacing (2 lines-per-inch)"));
             value = 3;                                           // &l3D      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Line Spacing (3 lines-per-inch)"));
             value = 4;                                           // &l4D      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Line Spacing (4 lines-per-inch)"));
             value = 6;                                           // &l6D      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Line Spacing (6 lines-per-inch)"));
             value = 8;                                           // &l8D      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Line Spacing (8 lines-per-inch)"));
             value = 12;                                          // &l12D     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Line Spacing (12 lines-per-inch)"));
             value = 16;                                          // &l16D     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Line Spacing (16 lines-per-inch)"));
             value = 24;                                          // &l24D     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Line Spacing (24 lines-per-inch)"));
             value = 48;                                          // &l48D     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Line Spacing (48 lines-per-inch)"));
 
             iChar = 0x26;   // & //
@@ -1822,9 +1822,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Top Margin (# lines)"));
 
             iChar = 0x26;   // & //
@@ -1838,9 +1838,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Text Length (# lines)"));
 
             iChar = 0x26;   // & //
@@ -1854,18 +1854,18 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Output Bin: id # is Printer Dependent"));
             value = 0;                                           // &l0G      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Output Bin: Automatic Selection"));
 
             iChar = 0x26;   // & //
@@ -1879,27 +1879,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageChange,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageChange,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Paper Source: id # is Printer Dependent"));
             value = 0;                                           // &l0H      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageChange,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageChange,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Paper Source: Unchanged (eject page)"));
             value = 7;                                           // &l7H      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageChange,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageChange,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Paper Source: Automatic Selection"));
 
             root = "&lJ";
@@ -1914,45 +1914,45 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Auto Justification (# = discrete value)"));
             value = 0;                                           // &l0J      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Auto Justification: None"));
             value = 1;                                           // &l1J      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Auto Justification: Right Flush"));
             value = 2;                                           // &l2J      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Auto Justification: Centred"));
             value = 3;                                           // &l3J      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Auto Justification: Justified"));
 
             iChar = 0x26;   // & //
@@ -1966,27 +1966,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Perforation Skip (# = discrete value)"));
             value = 0;                                           // &l0L      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Perforation Skip: Disable"));
             value = 1;                                           // &l1L      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Perforation Skip: Enable"));
 
             iChar = 0x26;   // & //
@@ -2000,54 +2000,54 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageChange,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageChange,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Media Type (# = discrete value)"));
             value = 0;                                           // &l0M      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageChange,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageChange,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Media Type: Plain Paper"));
             value = 1;                                           // &l1M      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageChange,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageChange,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Media Type: Bond Paper"));
             value = 2;                                           // &l2M      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageChange,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageChange,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Media Type: Special Paper"));
             value = 3;                                           // &l3M      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageChange,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageChange,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Media Type: Glossy Film"));
             value = 4;                                           // &l4M      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageChange,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageChange,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Media Type: Transparency Film"));
 
             root = "&lO";
@@ -2062,28 +2062,28 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageChange,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageChange,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Orientation (# = discrete value)"));
 
-            count = PCLOrientations.getCount();
+            count = PCLOrientations.GetCount();
 
             if (count > 0)
             {
                 for (int i = 0; i < count; i++)
                 {
-                    value = PCLOrientations.getIdPCL(i);
+                    value = PCLOrientations.GetIdPCL(i);
 
                     _seqs.Add(root + ":" + value.ToString("X4"),
                          new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                             flagNone, flagNone, flagNone,
                                             flagNone, flagNone, flagNone,
-                                            PrnParseConstants.eActPCL.None,
-                                            PrnParseConstants.eOvlAct.PageChange,
-                                            PrnParseConstants.eSeqGrp.PageControl,
+                                            PrnParseConstants.ActPCL.None,
+                                            PrnParseConstants.OvlAct.PageChange,
+                                            PrnParseConstants.SeqGrp.PageControl,
                                             "Orientation: " +
-                                            PCLOrientations.getName(i)));
+                                            PCLOrientations.GetName(i)));
                 }
             }
 
@@ -2098,9 +2098,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageChange,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageChange,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Page Length (# lines)"));
 
             iChar = 0x26;   // & //
@@ -2114,9 +2114,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Clear Vertical Tab Absolute (line #)"));
 
             iChar = 0x26;   // & //
@@ -2130,36 +2130,36 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageChange,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageChange,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Simplex/Duplex (# = discrete value)"));
             value = 0;                                           // &l0S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageChange,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageChange,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Simplex/Duplex: Simplex"));
             value = 1;                                           // &l1S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageChange,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageChange,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Simplex/Duplex: Duplex Long-Edge Bind"));
             value = 2;                                           // &l2S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageChange,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageChange,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Simplex/Duplex: Duplex Short-Edge Bind"));
 
             iChar = 0x26;   // & //
@@ -2173,18 +2173,18 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Job Separation (# = discrete value)"));
             value = 1;                                           // &l1T      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Job Separation: On"));
 
             iChar = 0x26;   // & //
@@ -2198,9 +2198,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Left (Long-Edge) Offset (# decipoints)"));
 
             iChar = 0x26;   // & //
@@ -2214,9 +2214,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.CursorPositioning,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.CursorPositioning,
                                    "Vertical Position Via VFC (channel #)"));
 
             iChar = 0x26;   // & //
@@ -2230,9 +2230,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagValIsLen,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.CursorPositioning,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.CursorPositioning,
                                    "Define VFC Table (data length = #)"));
 
             iChar = 0x26;   // & //
@@ -2246,9 +2246,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Number of Copies (#)"));
 
             iChar = 0x26;   // & //
@@ -2262,9 +2262,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Set Vertical Tab Absolute (line #)"));
 
             iChar = 0x26;   // & //
@@ -2278,9 +2278,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Top (Short-Edge) Offset (# decipoints)"));
 
             iChar = 0x26;   // & //
@@ -2294,9 +2294,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagValIsLen,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.AlphaNumericID,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.AlphaNumericID,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Alphanumeric ID (data length = #)"));
 
             iChar = 0x26;   // & //
@@ -2310,45 +2310,45 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Palette Control (# = discrete value)"));
             value = 0;                                           // &p0C      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Palette Control: Delete All in Store"));
             value = 1;                                           // &p1C      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Palette Control: Delete All in Stack"));
             value = 2;                                           // &p2C      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.DownloadDelete,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.DownloadDelete,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Palette Control: Delete Palette"));
             value = 6;                                           // &p6C      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Palette Control: Copy Palette"));
 
             iChar = 0x26;   // & //
@@ -2362,9 +2362,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.IdPalette,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.IdPalette,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Palette Control ID (identifier = #)"));
 
             iChar = 0x26;   // & //
@@ -2378,9 +2378,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Select Palette (identifier = #)"));
 
             root = "&pW";
@@ -2395,9 +2395,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagValIsLen,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.EscEncText,
-                                   PrnParseConstants.eOvlAct.PageMark,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.EscEncText,
+                                   PrnParseConstants.OvlAct.PageMark,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Escapement Encapsulated Text (data length = #)"));
 
             iChar = 0x26;   // & //
@@ -2411,9 +2411,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagValIsLen,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.EmbeddedData,
-                                   PrnParseConstants.eOvlAct.PageMark,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.EmbeddedData,
+                                   PrnParseConstants.OvlAct.PageMark,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Transparent Print (data length = #)"));
 
             iChar = 0x26;   // & //
@@ -2427,27 +2427,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageChange,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageChange,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Flush (# = discrete value)"));
             value = 0;                                           // &r0F      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageChange,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageChange,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Flush: All Complete Pages"));
             value = 1;                                           // &r1F      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageChange,
-                                   PrnParseConstants.eSeqGrp.PageControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageChange,
+                                   PrnParseConstants.SeqGrp.PageControl,
                                    "Flush: All Pages"));
 
             root = "&sC";
@@ -2462,27 +2462,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.CursorPositioning,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.CursorPositioning,
                                    "End-of-Line Wrap (# = discrete value)"));
             value = 0;                                           // &s0C      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.CursorPositioning,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.CursorPositioning,
                                    "End-of-Line Wrap: Enable"));
             value = 1;                                           // &s1C      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.CursorPositioning,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.CursorPositioning,
                                    "End-of-Line Wrap: Disable"));
 
             root = "&sI";
@@ -2497,27 +2497,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Character Set Default Control (# = discrete value)"));
             value = 0;                                           // &s0I      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Character Set Default Control: Blank"));
             value = 1;                                           // &s1I      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Character Set Default Control: Ignore"));
 
             root = "&tP";
@@ -2532,9 +2532,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.TextParsing,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.TextParsing,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Text Parsing Method (# = discrete value)"));
 
             count = PCLTextParsingMethods.GetCount();
@@ -2551,9 +2551,9 @@ namespace PCLParaphernalia
                              new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                                 flagNone, flagNone, flagNone,
                                                 flagNone, flagNone, flagNone,
-                                                PrnParseConstants.eActPCL.TextParsing,
-                                                PrnParseConstants.eOvlAct.None,
-                                                PrnParseConstants.eSeqGrp.FontSelection,
+                                                PrnParseConstants.ActPCL.TextParsing,
+                                                PrnParseConstants.OvlAct.None,
+                                                PrnParseConstants.SeqGrp.FontSelection,
                                                 "Text Parsing Method: " +
                                                 PCLTextParsingMethods.GetDesc(i)));
                     }
@@ -2572,243 +2572,243 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (# PCL units per inch discrete value)"));
             value = 96;                                          // &u96D     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (96 PCL units per inch)"));
             value = 100;                                         // &u100D    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (100 PCL units per inch)"));
             value = 120;                                         // &u120D    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (120 PCL units per inch)"));
             value = 144;                                         // &u144D    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (144 PCL units per inch)"));
             value = 150;                                         // &u150D    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (150 PCL units per inch)"));
             value = 160;                                         // &u160D    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (160 PCL units per inch)"));
             value = 180;                                         // &u180D    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (180 PCL units per inch)"));
             value = 200;                                         // &u200D    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (200 PCL units per inch)"));
             value = 225;                                         // &u225D    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (225 PCL units per inch)"));
             value = 240;                                         // &u240D    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (240 PCL units per inch)"));
             value = 288;                                         // &u288D    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (288 PCL units per inch)"));
             value = 300;                                         // &u300D    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (300 PCL units per inch)"));
             value = 360;                                         // &u360D    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (360 PCL units per inch)"));
             value = 400;                                         // &u400D    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (400 PCL units per inch)"));
             value = 450;                                         // &u450D    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (450 PCL units per inch)"));
             value = 480;                                         // &u480D    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (480 PCL units per inch)"));
             value = 600;                                         // &u600D    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (600 PCL units per inch)"));
             value = 720;                                         // &u720D    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (720 PCL units per inch)"));
             value = 800;                                         // &u800D    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (800 PCL units per inch)"));
             value = 900;                                         // &u900D    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (900 PCL units per inch)"));
             value = 1200;                                        // &u1200D   //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (1200 PCL units per inch)"));
             value = 1440;                                        // &u1440D   //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (1440 PCL units per inch)"));
             value = 1800;                                        // &u1800D   //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (1800 PCL units per inch)"));
             value = 2400;                                        // &u2400D   //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (2400 PCL units per inch)"));
             value = 3600;                                        // &u3600D   //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (3600 PCL units per inch)"));
             value = 7200;                                        // &u7200D   //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (7200 PCL units per inch)"));
 
             root = "&vS";
@@ -2823,81 +2823,81 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Text Colour (# = discrete value)"));
             value = 0;                                           // &v0S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Text Colour: Black"));
             value = 1;                                           // &v1S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Text Colour: Red"));
             value = 2;                                           // &v2S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Text Colour: Green"));
             value = 3;                                           // &v3S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Text Colour: Yellow"));
             value = 4;                                           // &v4S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Text Colour: Blue"));
             value = 5;                                           // &v5S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Text Colour: Magenta"));
             value = 6;                                           // &v6S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Text Colour: Cyan"));
             value = 7;                                           // &v7S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Text Colour: White"));
 
             iChar = 0x28;   // ( //
@@ -2911,36 +2911,36 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Select Default (# = discrete value)"));
             value = 0;                                           // (0@       //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNilGChar, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Select Default Character Set"));
             value = 2;                                           // (2@       //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNilGChar, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Select Current Character Set"));
             value = 3;                                           // (3@       //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Select Default font"));
 
             iChar = 0x28;   // ( //
@@ -2954,9 +2954,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #A)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -2972,9 +2972,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #B)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -2990,9 +2990,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #C)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3008,9 +3008,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #D)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3026,9 +3026,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #E)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3044,9 +3044,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #F)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3062,9 +3062,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #G)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3080,9 +3080,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #H)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3098,9 +3098,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #I)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3116,9 +3116,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #J)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3134,9 +3134,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #K)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3152,9 +3152,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #L)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3170,9 +3170,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #M)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3188,9 +3188,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #N)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3206,9 +3206,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #O)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3224,9 +3224,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #P)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3242,9 +3242,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #Q)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3260,9 +3260,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #R)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3278,9 +3278,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #S)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3296,9 +3296,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #T)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3314,9 +3314,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #U)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3332,9 +3332,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #V)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3350,9 +3350,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #W)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3368,9 +3368,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Select by ID (identifier = #)"));
 
             iChar = 0x28;   // ( //
@@ -3384,9 +3384,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #Y)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3402,9 +3402,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #Z)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3420,9 +3420,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagValIsLen,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.DefineSymbolSet,
-                                   PrnParseConstants.eOvlAct.Download,
-                                   PrnParseConstants.eSeqGrp.FontManagement,
+                                   PrnParseConstants.ActPCL.DefineSymbolSet,
+                                   PrnParseConstants.OvlAct.Download,
+                                   PrnParseConstants.SeqGrp.FontManagement,
                                    "Define Symbol Set (data length = #)"));
 
             iChar = 0x28;   // ( //
@@ -3436,144 +3436,144 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Stroke Weight (# = discrete value)"));
             value = -7;                                          // (s-7B     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Stroke Weight: Ultra Thin"));
             value = -6;                                          // (s-6B     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Stroke Weight: Extra Thin"));
             value = -5;                                          // (s-5B     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Stroke Weight: Thin"));
             value = -4;                                          // (s-4B     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Stroke Weight: Extra Light"));
             value = -3;                                          // (s-3B     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Stroke Weight: Light"));
             value = -2;                                          // (s-2B     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Stroke Weight: Demi Light"));
             value = -1;                                          // (s-1B     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Stroke Weight: Semi Light"));
             value = 0;                                           // (s0B      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Stroke Weight: Medium"));
             value = 1;                                           // (s1B      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Stroke Weight: Semi Bold"));
             value = 2;                                           // (s2B      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Stroke Weight: Demi Bold"));
             value = 3;                                           // (s3B      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Stroke Weight: Bold"));
             value = 4;                                           // (s4B      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Stroke Weight: Extra Bold"));
             value = 5;                                           // (s5B      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Stroke Weight: Black"));
             value = 6;                                           // (s6B      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Stroke Weight: Extra Black"));
             value = 7;                                           // (s7B      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Stroke Weight: Ultra Black"));
 
             iChar = 0x28;   // ( //
@@ -3587,9 +3587,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Pitch (# characters per inch)"));
 
             iChar = 0x28;   // ( //
@@ -3603,27 +3603,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Spacing (# = discrete value)"));
             value = 0;                                           // (s0P      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Spacing: Fixed"));
             value = 1;                                           // (s1P      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Spacing: Proportional"));
 
             iChar = 0x28;   // ( //
@@ -3637,36 +3637,36 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Quality (# = discrete value)"));
             value = 0;                                           // (s0Q      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Quality: Data Processing"));
             value = 1;                                           // (s1Q      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Quality: Near Letter"));
             value = 2;                                           // (s2Q      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Quality: Letter"));
 
             iChar = 0x28;   // ( //
@@ -3680,99 +3680,99 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.StyleData,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.StyleData,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Style (identifier = #)"));
             value = 0;                                           // (s0S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.StyleData,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.StyleData,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Style (Upright, solid)"));
             value = 1;                                           // (s1S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.StyleData,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.StyleData,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Style (Italic)"));
             value = 4;                                           // (s4S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.StyleData,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.StyleData,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Style (Condensed)"));
             value = 5;                                           // (s5S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.StyleData,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.StyleData,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Style (Condensed Italic)"));
             value = 8;                                           // (s8S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.StyleData,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.StyleData,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Style (Compressed)"));
             value = 24;                                          // (s24S     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.StyleData,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.StyleData,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Style (Expanded)"));
             value = 32;                                          // (s32S     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.StyleData,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.StyleData,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Style (Outline)"));
             value = 64;                                          // (s64S     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.StyleData,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.StyleData,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Style (Inline)"));
             value = 128;                                         // (s128S    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.StyleData,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.StyleData,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Style (Shadowed)"));
             value = 160;                                         // (s160S    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.StyleData,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.StyleData,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Style (Outline Shadowed)"));
 
             iChar = 0x28;   // ( //
@@ -3786,9 +3786,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Typeface (identifier = #)"));
 
             populateTableAddFonts(iChar, gChar, tChar, root);
@@ -3804,36 +3804,36 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Placement (# = discrete value)"));
             value = -1;                                          // (s-1U     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Placement: Superior"));
             value = 0;                                           // (s0U      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Placement: Normal"));
             value = 1;                                           // (s1U      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Placement: Inferior"));
 
             iChar = 0x28;   // ( //
@@ -3847,9 +3847,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Primary Font: Height (# points)"));
 
             iChar = 0x28;   // ( //
@@ -3863,9 +3863,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagValIsLen,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.FontChar,
-                                   PrnParseConstants.eOvlAct.Download,
-                                   PrnParseConstants.eSeqGrp.SoftFontCreation,
+                                   PrnParseConstants.ActPCL.FontChar,
+                                   PrnParseConstants.OvlAct.Download,
+                                   PrnParseConstants.SeqGrp.SoftFontCreation,
                                    "Download Character (data length = #)"));
 
             iChar = 0x29;   // ) //
@@ -3879,45 +3879,45 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Select Default"));
             value = 0;                                           // )0@       //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNilGChar, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Select Default Character Set"));
             value = 1;                                           // )1@       //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNilGChar, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Select Default Primary Character Set"));
             value = 2;                                           // )2@       //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNilGChar, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Select Current Primary Character Set"));
             value = 3;                                           // )3@       //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Select Default font"));
 
             iChar = 0x29;   // ) //
@@ -3931,9 +3931,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #A)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3949,9 +3949,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #B)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3967,9 +3967,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #C)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -3985,9 +3985,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #D)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -4003,9 +4003,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #E)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -4021,9 +4021,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #F)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -4039,9 +4039,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #G)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -4057,9 +4057,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #H)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -4075,9 +4075,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #I)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -4093,9 +4093,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #J)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -4111,9 +4111,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #K)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -4129,9 +4129,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #L)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -4147,9 +4147,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #M)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -4165,9 +4165,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #N)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -4183,9 +4183,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #O)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -4201,9 +4201,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #P)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -4219,9 +4219,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #Q)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -4237,9 +4237,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #R)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -4255,9 +4255,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #S)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -4273,9 +4273,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #T)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -4291,9 +4291,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #U)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -4309,9 +4309,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #V)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -4327,9 +4327,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #W)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -4345,9 +4345,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Select by ID (identifier = #)"));
 
             iChar = 0x29;   // ) //
@@ -4361,9 +4361,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #Y)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -4379,9 +4379,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNilGChar, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #Z)"));
 
             populateTableAddSymsets(iChar, gChar, tChar, root);
@@ -4397,144 +4397,144 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Stroke Weight (# = discrete value)"));
             value = -7;                                          // )s-7B     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Stroke Weight: Ultra Thin"));
             value = -6;                                          // )s-6B     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Stroke Weight: Extra Thin"));
             value = -5;                                          // )s-5B     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Stroke Weight: Thin"));
             value = -4;                                          // )s-4B     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Stroke Weight: Extra Light"));
             value = -3;                                          // )s-3B     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Stroke Weight: Light"));
             value = -2;                                          // )s-2B     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Stroke Weight: Demi Light"));
             value = -1;                                          // )s-1B     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Stroke Weight: Semi Light"));
             value = 0;                                           // )s0B      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Stroke Weight: Medium"));
             value = 1;                                           // )s1B      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Stroke Weight: Semi Bold"));
             value = 2;                                           // )s2B      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Stroke Weight: Demi Bold"));
             value = 3;                                           // )s3B      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Stroke Weight: Bold"));
             value = 4;                                           // )s4B      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Stroke Weight: Extra Bold"));
             value = 5;                                           // )s5B      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Stroke Weight: Black"));
             value = 6;                                           // )s6B      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Stroke Weight: Extra Black"));
             value = 7;                                           // )s7B      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Stroke Weight: Ultra Black"));
 
             root = ")sH";
@@ -4549,9 +4549,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Pitch (# characters per inch)"));
 
             root = ")sP";
@@ -4566,27 +4566,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Spacing (# = discrete value)"));
             value = 0;                                           // )s0P      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Spacing: Fixed"));
             value = 1;                                           // )s1P      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Spacing: Proportional"));
 
             root = ")sQ";
@@ -4601,36 +4601,36 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Quality (#=discrete value)"));
             value = 0;                                           // )s0Q      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Quality: Data Processing"));
             value = 1;                                           // )s1Q      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Quality: Near Letter"));
             value = 2;                                           // )s2Q      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Quality: Letter"));
 
             root = ")sS";
@@ -4645,99 +4645,99 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.StyleData,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.StyleData,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Style (identifier = #)"));
             value = 0;                                           // )s0S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.StyleData,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.StyleData,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Style (Upright, solid)"));
             value = 1;                                           // )s1S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.StyleData,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.StyleData,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Style (Italic)"));
             value = 4;                                           // )s4S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.StyleData,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.StyleData,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Style (Condensed)"));
             value = 5;                                           // )s5S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.StyleData,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.StyleData,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Style (Condensed Italic)"));
             value = 8;                                           // )s8S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.StyleData,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.StyleData,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Style (Compressed)"));
             value = 24;                                          // )s24S     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.StyleData,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.StyleData,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Style (Expanded)"));
             value = 32;                                          // )s32S     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.StyleData,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.StyleData,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Style (Outline)"));
             value = 64;                                          // )s64S     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.StyleData,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.StyleData,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Style (Inline)"));
             value = 128;                                         // )s128S    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.StyleData,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.StyleData,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Style (Shadowed)"));
             value = 160;                                         // )s160S    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.StyleData,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.StyleData,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Style (Outline Shadowed)"));
 
             root = ")sT";
@@ -4752,9 +4752,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Typeface (identifier = #)"));
 
             populateTableAddFonts(iChar, gChar, tChar, root);
@@ -4771,36 +4771,36 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Placement (# = discrete value)"));
             value = -1;                                          // )s-1U     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Placement: Superior"));
             value = 0;                                           // )s0U      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Placement: Normal"));
             value = 1;                                           // )s1U      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Placement: Inferior"));
 
             root = ")sV";
@@ -4815,9 +4815,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Height (# points)"));
 
             root = ")sW";
@@ -4832,9 +4832,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagValIsLen,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.FontHddr,
-                                   PrnParseConstants.eOvlAct.Download,
-                                   PrnParseConstants.eSeqGrp.SoftFontCreation,
+                                   PrnParseConstants.ActPCL.FontHddr,
+                                   PrnParseConstants.OvlAct.Download,
+                                   PrnParseConstants.SeqGrp.SoftFontCreation,
                                    "Download Font Header (data length = #)"));
 
             iChar = 0x2a;   // * //
@@ -4848,27 +4848,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Grey Balancing (# = discrete value)"));
             value = 1;                                           // *b1B      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Grey Balancing: Enable"));
             value = 2;                                           // *b2B      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Grey Balancing: Disable"));
 
             iChar = 0x2a;   // * //
@@ -4882,27 +4882,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Line Path (# = discrete value)"));
             value = 0;                                           // *b0L      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Line Path: rows increment +Y"));
             value = 1;                                           // *b1L      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Line Path: rows increment -Y"));
 
             iChar = 0x2a;   // * //
@@ -4916,99 +4916,99 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Set Compression Mode (# = discrete value)"));
             value = 0;                                           // *b0M      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Set Compression Mode: Unencoded"));
             value = 1;                                           // *b1M      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Set Compression Mode: Run-Length Encoded"));
             value = 2;                                           // *b2M      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Set Compression Mode: TIFF"));
             value = 3;                                           // *b3M      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Set Compression Mode: Delta Row"));
             value = 4;                                           // *b4M      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Set Compression Mode: Block Data"));
             value = 5;                                           // *b5M      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Set Compression Mode: Adaptive"));
             value = 6;                                           // *b6M      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Set Compression Mode: CCITT G3 1-D (MH)"));
             value = 7;                                           // *b7M      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Set Compression Mode: CCITT G3 2-D (MR)"));
             value = 8;                                           // *b8M      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Set Compression Mode: CCITT G4 2-D (MMR)"));
             value = 9;                                           // *b9M      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Set Compression Mode: Replaced Delta Row"));
 
             iChar = 0x2a;   // * //
@@ -5022,45 +5022,45 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Seed Row Source (# = discrete value)"));
             value = 0;                                           // *b0S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Seed Row Source: same plane as previous row"));
             value = 1;                                           // *b1S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Seed Row Source: previous plane"));
             value = 2;                                           // *b2S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Seed Row Source: 2nd previous plane"));
             value = 3;                                           // *b3S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Seed Row Source: 3rd previous plane"));
 
             iChar = 0x2a;   // * //
@@ -5074,9 +5074,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagValIsLen,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageMark,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageMark,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Transfer Raster Data By Plane {data length = #)"));
 
             iChar = 0x2a;   // * //
@@ -5090,9 +5090,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagValIsLen,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageMark,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageMark,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Transfer Raster Data By Row/Block (data length = #)"));
 
             iChar = 0x2a;   // * //
@@ -5106,9 +5106,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Line X Offset (# pixels)"));
 
             iChar = 0x2a;   // * //
@@ -5122,9 +5122,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Y Offset (# raster lines)"));
 
             iChar = 0x2a;   // * //
@@ -5138,9 +5138,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RectangularAreaFill,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RectangularAreaFill,
                                    "Rectangle Size Horizontal (# PCL units)"));
 
             iChar = 0x2a;   // * //
@@ -5154,9 +5154,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RectangularAreaFill,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RectangularAreaFill,
                                    "Rectangle Size Vertical   (# PCL units)"));
 
             iChar = 0x2a;   // * //
@@ -5170,9 +5170,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Large Character Placement (column #)"));
 
             iChar = 0x2a;   // * //
@@ -5186,9 +5186,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.IdFont,
-                                   PrnParseConstants.eSeqGrp.FontManagement,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.IdFont,
+                                   PrnParseConstants.SeqGrp.FontManagement,
                                    "Assign Font ID Number (identifier = #)"));
 
             iChar = 0x2a;   // * //
@@ -5202,9 +5202,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagDisplayHexVal,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.SoftFontCreation,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.SoftFontCreation,
                                    "Character Code (code-point = #)"));
 
             iChar = 0x2a;   // * //
@@ -5218,72 +5218,72 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.FontManagement,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.FontManagement,
                                    "Font Control (# = discrete value)"));
             value = 0;                                           // *c0F      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.FontManagement,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.FontManagement,
                                    "Font Control: Delete All Soft Fonts"));
             value = 1;                                           // *c1F      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.FontManagement,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.FontManagement,
                                    "Font Control: Delete All Temporary Fonts"));
             value = 2;                                           // *c2F      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.DownloadDelete,
-                                   PrnParseConstants.eSeqGrp.FontManagement,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.DownloadDelete,
+                                   PrnParseConstants.SeqGrp.FontManagement,
                                    "Font Control: Delete Soft Font"));
             value = 3;                                           // *c3F      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontManagement,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontManagement,
                                    "Font Control: Delete Character Code"));
             value = 4;                                           // *c4F      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontManagement,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontManagement,
                                    "Font Control: Make Soft Font Temporary"));
             value = 5;                                           // *c5F      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontManagement,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontManagement,
                                    "Font Control: Make Soft Font Permanent"));
             value = 6;                                           // *c6F      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontManagement,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontManagement,
                                    "Font Control: Copy/Assign Font As Temp."));
 
             iChar = 0x2a;   // * //
@@ -5297,9 +5297,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.IdPattern,
-                                   PrnParseConstants.eSeqGrp.UserPattern,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.IdPattern,
+                                   PrnParseConstants.SeqGrp.UserPattern,
                                    "Assign Pattern ID (identifier = #)"));
 
             iChar = 0x2a;   // * //
@@ -5313,9 +5313,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RectangularAreaFill,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RectangularAreaFill,
                                    "Rectangle Size Horizontal (# decipoints)"));
 
             iChar = 0x2a;   // * //
@@ -5329,9 +5329,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PictureFrame,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PictureFrame,
                                    "HP-GL/2 Plot Size Horizontal (# inches)"));
 
             iChar = 0x2a;   // * //
@@ -5345,9 +5345,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PictureFrame,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PictureFrame,
                                    "HP-GL/2 Plot Size Vertical   (# inches)"));
 
             iChar = 0x2a;   // * //
@@ -5361,9 +5361,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Large Character Size (magnification = #)"));
 
             iChar = 0x2a;   // * //
@@ -5377,9 +5377,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Large Character Tab #"));
 
             iChar = 0x2a;   // * //
@@ -5393,63 +5393,63 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageMark,
-                                   PrnParseConstants.eSeqGrp.RectangularAreaFill,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageMark,
+                                   PrnParseConstants.SeqGrp.RectangularAreaFill,
                                    "Fill Rectangular Area (# = discrete value)"));
             value = 0;                                           // *c0P      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageMark,
-                                   PrnParseConstants.eSeqGrp.RectangularAreaFill,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageMark,
+                                   PrnParseConstants.SeqGrp.RectangularAreaFill,
                                    "Fill Rectangular Area: Solid Area"));
             value = 1;                                           // *c1P      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageMark,
-                                   PrnParseConstants.eSeqGrp.RectangularAreaFill,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageMark,
+                                   PrnParseConstants.SeqGrp.RectangularAreaFill,
                                    "Fill Rectangular Area: Solid White Areas"));
             value = 2;                                           // *c2P      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageMark,
-                                   PrnParseConstants.eSeqGrp.RectangularAreaFill,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageMark,
+                                   PrnParseConstants.SeqGrp.RectangularAreaFill,
                                    "Fill Rectangular Area: Shading"));
             value = 3;                                           // *c3P      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageMark,
-                                   PrnParseConstants.eSeqGrp.RectangularAreaFill,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageMark,
+                                   PrnParseConstants.SeqGrp.RectangularAreaFill,
                                    "Fill Rectangular Area: Cross-Hatch"));
             value = 4;                                           // *c4P      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageMark,
-                                   PrnParseConstants.eSeqGrp.RectangularAreaFill,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageMark,
+                                   PrnParseConstants.SeqGrp.RectangularAreaFill,
                                    "Fill Rectangular Area: User Pattern"));
             value = 5;                                           // *c5P      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageMark,
-                                   PrnParseConstants.eSeqGrp.RectangularAreaFill,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageMark,
+                                   PrnParseConstants.SeqGrp.RectangularAreaFill,
                                    "Fill Rectangular Area: Current Pattern"));
 
             iChar = 0x2a;   // * //
@@ -5463,63 +5463,63 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.UserPattern,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.UserPattern,
                                    "Pattern Control (# = discrete value)"));
             value = 0;                                           // *c0Q      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.UserPattern,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.UserPattern,
                                    "Pattern Control: Delete All Patterns"));
             value = 1;                                           // *c1Q      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.UserPattern,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.UserPattern,
                                    "Pattern Control: Delete Temporary Patterns"));
             value = 2;                                           // *c2Q      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.DownloadDelete,
-                                   PrnParseConstants.eSeqGrp.UserPattern,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.DownloadDelete,
+                                   PrnParseConstants.SeqGrp.UserPattern,
                                    "Pattern Control: Delete Pattern"));
             value = 3;                                           // *c3Q      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.UserPattern,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.UserPattern,
                                    "Pattern Control: Reserved"));
             value = 4;                                           // *c4Q      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.UserPattern,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.UserPattern,
                                    "Pattern Control: Make Pattern Temporary"));
             value = 5;                                           // *c5Q      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.UserPattern,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.UserPattern,
                                    "Pattern Control: Make Pattern Permanent"));
 
             iChar = 0x2a;   // * //
@@ -5533,9 +5533,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.IdSymSet,
-                                   PrnParseConstants.eSeqGrp.FontManagement,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.IdSymSet,
+                                   PrnParseConstants.SeqGrp.FontManagement,
                                    "Assign Symbol Set ID (identifier = #)"));
 
             iChar = 0x2a;   // * //
@@ -5549,54 +5549,54 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.FontManagement,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.FontManagement,
                                    "Symbol Set Control (# = discrete value)"));
             value = 0;                                           // *c0S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.FontManagement,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.FontManagement,
                                    "Symbol Set Control: Delete User-Defined"));
             value = 1;                                           // *c1S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.FontManagement,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.FontManagement,
                                    "Symbol Set Control: Delete All Temporary"));
             value = 2;                                           // *c2S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.DownloadDelete,
-                                   PrnParseConstants.eSeqGrp.FontManagement,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.DownloadDelete,
+                                   PrnParseConstants.SeqGrp.FontManagement,
                                    "Symbol Set Control: Delete Symbol Set"));
             value = 4;                                           // *c4S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontManagement,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontManagement,
                                    "Symbol Set Control: Make Temporary"));
             value = 5;                                           // *c5S      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.FontManagement,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.FontManagement,
                                    "Symbol Set Control: Make Permanent"));
 
             iChar = 0x2a;   // * //
@@ -5610,18 +5610,18 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PictureFrame,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PictureFrame,
                                    "Set Picture Frame Anchor Point (# = discrete value)"));
             value = 0;                                           // *c0T      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PictureFrame,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PictureFrame,
                                    "Set Picture Frame Anchor Point"));
 
             iChar = 0x2a;   // * //
@@ -5635,9 +5635,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RectangularAreaFill,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RectangularAreaFill,
                                    "Rectangle Size Vertical   (# decipoints)"));
 
             iChar = 0x2a;   // * //
@@ -5651,9 +5651,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagValIsLen,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.UserDefinedPattern,
-                                   PrnParseConstants.eOvlAct.Download,
-                                   PrnParseConstants.eSeqGrp.UserPattern,
+                                   PrnParseConstants.ActPCL.UserDefinedPattern,
+                                   PrnParseConstants.OvlAct.Download,
+                                   PrnParseConstants.SeqGrp.UserPattern,
                                    "Download User-Defined Pattern (data length = #)"));
 
             iChar = 0x2a;   // * //
@@ -5667,9 +5667,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PictureFrame,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PictureFrame,
                                    "Picture Frame Size Width  (# decipoints)"));
 
             iChar = 0x2a;   // * //
@@ -5683,9 +5683,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PictureFrame,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PictureFrame,
                                    "Picture Frame Size Height (# decipoints)"));
 
             iChar = 0x2a;   // * //
@@ -5699,9 +5699,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageMark,
-                                   PrnParseConstants.eSeqGrp.FontSelection,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageMark,
+                                   PrnParseConstants.SeqGrp.FontSelection,
                                    "Large Character Print Data (<encapsulated text>)"));
 
             iChar = 0x2a;   // * //
@@ -5715,9 +5715,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagValIsLen,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.PaletteConfiguration,
-                                   PrnParseConstants.eOvlAct.Download,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.PaletteConfiguration,
+                                   PrnParseConstants.OvlAct.Download,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Palette Configuration (data length = #)"));
 
             iChar = 0x2a;   // * //
@@ -5731,9 +5731,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagValIsLen,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.ConfigureRasterData,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.ConfigureRasterData,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Configure Raster Data (data length = #)"));
 
             iChar = 0x2a;   // * //
@@ -5747,9 +5747,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagValIsLen,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.ViewIlluminant,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.ViewIlluminant,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Viewing Illuminant (data length = #)"));
 
             root = "*lO";
@@ -5764,9 +5764,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PrintModel,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PrintModel,
                                    "Logical Operation (ROP3) (# = discrete value)"));
 
             count = PCLLogicalOperations.getCount();
@@ -5781,9 +5781,9 @@ namespace PCLParaphernalia
                          new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                            flagNone, flagNone, flagNone,
                                            flagNone, flagNone, flagNone,
-                                           PrnParseConstants.eActPCL.None,
-                                           PrnParseConstants.eOvlAct.None,
-                                           PrnParseConstants.eSeqGrp.PrintModel,
+                                           PrnParseConstants.ActPCL.None,
+                                           PrnParseConstants.OvlAct.None,
+                                           PrnParseConstants.SeqGrp.PrintModel,
                                            "Logical Op. " +
                                            PCLLogicalOperations.getDescLong(i)));
                 }
@@ -5800,45 +5800,45 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PrintModel,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PrintModel,
                                    "Clip Mask (# = discrete value)"));
             value = 0;                                           // *l0P      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PrintModel,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PrintModel,
                                    "Clip Mask: Turn Off / Delete"));
             value = 1;                                           // *l1P      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PrintModel,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PrintModel,
                                    "Clip Mask: Start Define"));
             value = 2;                                           // *l2P      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PrintModel,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PrintModel,
                                    "Clip Mask: End Define (Inclusive Clip)"));
             value = 3;                                           // *l3P      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PrintModel,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PrintModel,
                                    "Clip Mask: End Define (Exclusive Clip)"));
 
             iChar = 0x2a;   // * //
@@ -5852,27 +5852,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PrintModel,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PrintModel,
                                    "Pixel Placement (# = discrete value)"));
             value = 0;                                           // *l0R      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PrintModel,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PrintModel,
                                    "Pixel Placement: Grid Intersection"));
             value = 1;                                           // *l1R      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PrintModel,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PrintModel,
                                    "Pixel Placement: Grid Centred"));
 
             iChar = 0x2a;   // * //
@@ -5886,9 +5886,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagValIsLen,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.ColourLookup,
-                                   PrnParseConstants.eOvlAct.Download,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.ColourLookup,
+                                   PrnParseConstants.OvlAct.Download,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Colour Lookup Tables (data length = #)"));
 
             root = "*mW";
@@ -5903,9 +5903,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagValIsLen,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.DitherMatrix,
-                                   PrnParseConstants.eOvlAct.Download,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.DitherMatrix,
+                                   PrnParseConstants.OvlAct.Download,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Download Dither Matrix (data length = #)"));
 
             root = "*oD";
@@ -5920,54 +5920,54 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Colour Raster Depletion (# = discrete value)"));
             value = 1;                                           // *o1D      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Colour Raster Depletion: None"));
             value = 2;                                           // *o2D      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Colour Raster Depletion: 25%"));
             value = 3;                                           // *o3D      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Colour Raster Depletion: 50%"));
             value = 4;                                           // *o4D      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Colour Raster Depletion: 25% compensated"));
             value = 5;                                           // *o5D      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Colour Raster Depletion: 50% compensated"));
 
             root = "*oM";
@@ -5982,36 +5982,36 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Print Quality (# = discrete value)"));
             value = -1;                                          // *o-1M     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Print Quality: Draft"));
             value = 0;                                           // *o0M      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Print Quality: Normal"));
             value = 1;                                           // *o1M      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Print Quality: Presentation"));
 
             iChar = 0x2a;   // * //
@@ -6025,36 +6025,36 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Mechanical Print Quality (# = discrete value)"));
             value = -1;                                          // *o-1Q     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Mechanical Print Quality: EconoFast"));
             value = 0;                                           // *o0Q      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Mechanical Print Quality: Normal"));
             value = 1;                                           // *o1Q      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Mechanical Print Quality: Presentation"));
 
             iChar = 0x2a;   // * //
@@ -6068,9 +6068,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagValIsLen,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.DriverConfiguration,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.DriverConfiguration,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Driver Configuration (data length = #)"));
 
             iChar = 0x2a;   // * //
@@ -6084,54 +6084,54 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Print Mode (Graphics) (# = discrete value)"));
             value = 0;                                           // *p0N      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Print Mode (Graphics): Default"));
             value = 1;                                           // *p1N      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Print Mode (Graphics): Bidirectional"));
             value = 2;                                           // *p2N      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Print Mode (Graphics): Left-To-Right"));
             value = 3;                                           // *p3N      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Print Mode (Graphics): Right-To-Left"));
             value = 4;                                           // *p4N      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Print Mode (Graphics): Conditional"));
 
             root = "*pP";
@@ -6146,27 +6146,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Palette Stack (# = discrete value)"));
             value = 0;                                           // *p0P      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Palette Stack: Push (Store)"));
             value = 1;                                           // *p1P      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Palette Stack: Pop (Recall)"));
 
             iChar = 0x2a;   // * //
@@ -6180,27 +6180,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.UserPattern,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.UserPattern,
                                    "Set Pattern Reference Point (# = discrete value)"));
             value = 0;                                           // *p0R      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.UserPattern,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.UserPattern,
                                    "Set Pattern Reference Point: Logical"));
             value = 1;                                           // *p1R      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.UserPattern,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.UserPattern,
                                    "Set Pattern Reference Point: Physical"));
 
             iChar = 0x2a;   // * //
@@ -6214,9 +6214,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.CursorPositioning,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.CursorPositioning,
                                    "Cursor Position Horizontal (# PCL units)"));
 
             iChar = 0x2a;   // * //
@@ -6230,9 +6230,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.CursorPositioning,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.CursorPositioning,
                                    "Cursor Position Vertical   (# PCL units)"));
 
             iChar = 0x2a;   // * //
@@ -6246,45 +6246,45 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Start Raster Graphics (# = discrete value)"));
             value = 0;                                           // *r0A      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Start Raster Graphics: Left Margin at 0"));
             value = 1;                                           // *r1A      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Start Raster Graphics: Left Margin at X"));
             value = 2;                                           // *r2A      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Start Raster Graphics: Scale Mode"));
             value = 3;                                           // *r3A      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Start Raster Graphics: Scale Mode at CAP"));
 
             iChar = 0x2a;   // * //
@@ -6298,9 +6298,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNilValue, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "End Raster Graphics (PCL4)"));
 
             iChar = 0x2a;   // * //
@@ -6314,9 +6314,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNilValue, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "End Raster Graphics"));
 
             iChar = 0x2a;   // * //
@@ -6330,27 +6330,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Graphics Presentation (# = discrete value)"));
             value = 0;                                           // *r0F      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Graphics Presentation: Logical"));
             value = 3;                                           // *r3F      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Graphics Presentation: Physical"));
 
             root = "*rL";
@@ -6365,9 +6365,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Resolution Horizontal (# dots per inch)"));
 
             iChar = 0x2a;   // * //
@@ -6381,36 +6381,36 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Graphics Quality (# = discrete value)"));
             value = 0;                                           // *r0Q      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Graphics Quality: User-Selected"));
             value = 1;                                           // *r1Q      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Graphics Quality: Draft"));
             value = 2;                                           // *r2Q      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Graphics Quality: High"));
 
             iChar = 0x2a;   // * //
@@ -6424,9 +6424,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Width: Source (# pixels)"));
 
             root = "*rT";
@@ -6441,9 +6441,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Height: Source (# raster rows)"));
 
             root = "*rU";
@@ -6458,45 +6458,45 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Simple Colour (# = discrete value)"));
             value = -4;                                          // *r-4U     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Simple Colour: 4-Plane KCMY Palette"));
             value = -3;                                          // *r-3U     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Simple Colour: 3-Plane CMY Palette"));
             value = 1;                                           // *r1U      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Simple Colour: 1-Plane K Palette"));
             value = 3;                                           // *r3U      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Simple Colour: 3-Plane RGB Palette"));
 
             root = "*rV";
@@ -6511,9 +6511,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Resolution Vertical   (# dots per inch)"));
 
             iChar = 0x2a;   // * //
@@ -6527,54 +6527,54 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.StatusReadback,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.StatusReadback,
                                    "Status Readback Entity (# = discrete value)"));
             value = 0;                                           // *s0I      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.StatusReadback,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.StatusReadback,
                                    "Status Readback Entity: Font"));
             value = 1;                                           // *s1I      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.StatusReadback,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.StatusReadback,
                                    "Status Readback Entity: Macro"));
             value = 2;                                           // *s2I      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.StatusReadback,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.StatusReadback,
                                    "Status Readback Entity: User Pattern"));
             value = 3;                                           // *s3I      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.StatusReadback,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.StatusReadback,
                                    "Status Readback Entity: Symbol Set"));
             value = 4;                                           // *s4I      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.StatusReadback,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.StatusReadback,
                                    "Status Readback Entity: Font Extended"));
 
             root = "*sM";
@@ -6589,18 +6589,18 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.StatusReadback,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.StatusReadback,
                                    "Status Readback Free Space (# = discrete value)"));
             value = 1;                                           // *s1M      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.StatusReadback,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.StatusReadback,
                                    "Status Readback Free Space"));
 
             root = "*sT";
@@ -6615,72 +6615,72 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.StatusReadback,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.StatusReadback,
                                    "Status Readback Loc. Type (# = discrete value)"));
             value = 0;                                           // *s0T      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.StatusReadback,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.StatusReadback,
                                    "Status Readback Loc. Type: Invalid"));
             value = 1;                                           // *s1T      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.StatusReadback,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.StatusReadback,
                                    "Status Readback Loc. Type: Current"));
             value = 2;                                           // *s2T      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.StatusReadback,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.StatusReadback,
                                    "Status Readback Loc. Type: All"));
             value = 3;                                           // *s3T      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.StatusReadback,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.StatusReadback,
                                    "Status Readback Loc. Type: Internal"));
             value = 4;                                           // *s4T      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.StatusReadback,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.StatusReadback,
                                    "Status Readback Loc. Type: Download"));
             value = 5;                                           // *s5T      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.StatusReadback,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.StatusReadback,
                                    "Status Readback Loc. Type: Cartridge"));
             value = 7;                                           // *s7T      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.StatusReadback,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.StatusReadback,
                                    "Status Readback Loc. Type: SIMMs"));
 
             iChar = 0x2a;   // * //
@@ -6694,54 +6694,54 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.StatusReadback,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.StatusReadback,
                                    "Status Readback Loc. Unit (# = discrete value)"));
             value = 0;                                           // *s0U      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.StatusReadback,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.StatusReadback,
                                    "Status Readback Loc. Unit: All"));
             value = 1;                                           // *s1U      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.StatusReadback,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.StatusReadback,
                                    "Status Readback Loc. Unit: Temp./Hi-Priority"));
             value = 2;                                           // *s2U      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.StatusReadback,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.StatusReadback,
                                    "Status Readback Loc. Unit: Perm./Lo-Priority"));
             value = 3;                                           // *s3U      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.StatusReadback,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.StatusReadback,
                                    "Status Readback Loc. Unit: Entity 3"));
             value = 4;                                           // *s4U      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.StatusReadback,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.StatusReadback,
                                    "Status Readback Loc. Unit: Entity 4"));
 
             iChar = 0x2a;   // * //
@@ -6755,9 +6755,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
-                                   PrnParseConstants.eSeqGrp.StatusReadback,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.Remove,
+                                   PrnParseConstants.SeqGrp.StatusReadback,
                                    "Echo (identifier = #)"));
 
             iChar = 0x2a;   // * //
@@ -6771,9 +6771,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.StatusReadback,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.StatusReadback,
                                    "Return Model Number"));
 
             iChar = 0x2a;   // * //
@@ -6787,27 +6787,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "QMS Magnum-5 Interpreter (# = discrete value)"));
             value = 0;                                           // *t0F      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "QMS Magnum-5 Interpreter: Disable"));
             value = 1;                                           // *t1F      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "QMS Magnum-5 Interpreter: Enable"));
 
             root = "*tG";
@@ -6822,45 +6822,45 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "GPIS Data Binding (# = discrete value)"));
             value = 0;                                           // *t0G      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "GPIS Data Binding: Exit Vector Graphics"));
             value = 1;                                           // *t1G      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "GPIS Data Binding: 16-bit binary"));
             value = 2;                                           // *t2G      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "GPIS Data Binding: 8-bit binary"));
             value = 3;                                           // *t3G      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "GPIS Data Binding: Character-Encoded"));
 
             root = "*tH";
@@ -6875,9 +6875,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Width: Destination (# decipoints)"));
 
             iChar = 0x2a;   // * //
@@ -6891,9 +6891,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Gamma Correction (gamma number = #)"));
 
             iChar = 0x2a;   // * //
@@ -6907,189 +6907,189 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Render Algorithm (# = discrete value)"));
             value = 0;                                           // *t0J      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Render Algorithm: Continuous Tone"));
             value = 1;                                           // *t1J      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Render Algorithm: Snap To Primaries"));
             value = 2;                                           // *t2J      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Render Algorithm: Snap B/W; Colour>Black"));
             value = 3;                                           // *t3J      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Render Algorithm: Device Best Dither"));
             value = 4;                                           // *t4J      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Render Algorithm: Error Diffusion"));
             value = 5;                                           // *t5J      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Render Algorithm: Mono Best Dither"));
             value = 6;                                           // *t6J      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Render Algorithm: Mono Error Diffusion"));
             value = 7;                                           // *t7J      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Render Algorithm: Cluster Ordered Dither"));
             value = 8;                                           // *t8J      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Render Algorithm: Mono Cluster Ordered"));
             value = 9;                                           // *t9J      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Render Algorithm: User-Defined Dither"));
             value = 10;                                          // *t10J     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Render Algorithm: Mono User-Def. Dither"));
             value = 11;                                          // *t11J     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Render Algorithm: Ordered Dither"));
             value = 12;                                          // *t12J     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Render Algorithm: Mono Ordered Dither"));
             value = 13;                                          // *t13J     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Render Algorithm: Noise Ordered Dither"));
             value = 14;                                          // *t14J     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Render Algorithm: Mono Noise Ordered"));
             value = 15;                                          // *t15J     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Render Algorithm: Continuous Tone Smooth"));
             value = 16;                                          // *t16J     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Render Algorithm: Mono Cont. Tone Detail"));
             value = 17;                                          // *t17J     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Render Algorithm: Mono Cont. Tone Smooth"));
             value = 18;                                          // *t18J     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Render Algorithm: Continuous Tone Basic"));
             value = 19;                                          // *t19J     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Render Algorithm: Mono Cont. Tone Basic"));
 
             root = "*tK";
@@ -7104,27 +7104,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Scale Algorithm (# = discrete value)"));
             value = 0;                                           // *t0K      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Scale Algorithm: Source/Light Background"));
             value = 1;                                           // *t1K      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Scale Algorithm: Source/Dark Background"));
 
             root = "*tM";
@@ -7139,27 +7139,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Vector Graphics Operating Mode (# = discrete value)"));
             value = 0;                                           // *t0M      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Vector Graphics Operating Mode: Plotter"));
             value = 1;                                           // *t1M      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Vector Graphics Operating Mode: Printer"));
 
             iChar = 0x2a;   // * //
@@ -7173,36 +7173,36 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Vector Graphics Mapping Mode (# = discrete value)"));
             value = 0;                                           // *t0N      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Vector Graphics Mapping Mode: Default"));
             value = 1;                                           // *t1N      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Vector Graphics Mapping Mode: Normal"));
             value = 2;                                           // *t2N      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Vector Graphics Mapping Mode: Distorted"));
 
             iChar = 0x2a;   // * //
@@ -7216,27 +7216,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Vector Graphics Print Control (# = discrete value)"));
             value = 0;                                           // *t0P      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Vector Graphics Print Control: Retain"));
             value = 1;                                           // *t1P      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.JobControl,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.JobControl,
                                    "Vector Graphics Print Control: Clear"));
 
             iChar = 0x2a;   // * //
@@ -7250,63 +7250,63 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Graphics Resolution (# = dots-per-inch discrete value)"));
             value = 75;                                          // *t75P     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Graphics Resolution (75 dots-per-inch)"));
             value = 100;                                         // *t100P    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Graphics Resolution (100 dots-per-inch)"));
             value = 150;                                         // *t150P    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Graphics Resolution (150 dots-per-inch)"));
             value = 200;                                         // *t200P    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Graphics Resolution (200 dots-per-inch)"));
             value = 300;                                         // *t300P    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Graphics Resolution (300 dots-per-inch)"));
             value = 600;                                         // *t600P    //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Graphics Resolution (600 dots-per-inch)"));
 
             iChar = 0x2a;   // * //
@@ -7320,9 +7320,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.RasterGraphics,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Height: Destination (# decipoints)"));
 
             iChar = 0x2a;   // * //
@@ -7336,9 +7336,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagValIsLen,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageMark,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageMark,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "GPIS Data Transfer (data length = #)"));
 
             iChar = 0x2a;   // * //
@@ -7352,9 +7352,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Colour Component 1 (primary value = #)"));
 
             iChar = 0x2a;   // * //
@@ -7368,9 +7368,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Colour Component 2 (primary value = #)"));
 
             iChar = 0x2a;   // * //
@@ -7384,9 +7384,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Colour Component 3 (primary value = #)"));
 
             iChar = 0x2a;   // * //
@@ -7400,9 +7400,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Assign Colour Index (index = #)"));
 
             iChar = 0x2a;   // * //
@@ -7416,27 +7416,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PrintModel,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PrintModel,
                                    "Source Transparency Mode (# = discrete value)"));
             value = 0;                                           // *v0N      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PrintModel,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PrintModel,
                                    "Source Transparency Mode: Transparent"));
             value = 1;                                           // *v1N      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PrintModel,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PrintModel,
                                    "Source Transparency Mode: Opaque"));
 
             iChar = 0x2a;   // * //
@@ -7450,27 +7450,27 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PrintModel,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PrintModel,
                                    "Pattern Transparency Mode (# = discrete value)"));
             value = 0;                                           // *v0O      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PrintModel,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PrintModel,
                                    "Pattern Transparency Mode: Transparent"));
             value = 1;                                           // *v1O      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.PrintModel,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.PrintModel,
                                    "Pattern Transparency Mode: Opaque"));
 
             iChar = 0x2a;   // * //
@@ -7484,9 +7484,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Foreground Colour (index = #)"));
 
             iChar = 0x2a;   // * //
@@ -7500,54 +7500,54 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.UserPattern,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.UserPattern,
                                    "Select Current Pattern (# = discrete value)"));
             value = 0;                                           // *v0T      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.UserPattern,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.UserPattern,
                                    "Select Current Pattern: Solid Black"));
             value = 1;                                           // *v1T      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.UserPattern,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.UserPattern,
                                    "Select Current Pattern: Solid White"));
             value = 2;                                           // *v2T      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.UserPattern,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.UserPattern,
                                    "Select Current Pattern: Shading"));
             value = 3;                                           // *v3T      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.UserPattern,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.UserPattern,
                                    "Select Current Pattern: Cross-Hatch"));
             value = 4;                                           // *v4T      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.UserPattern,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.UserPattern,
                                    "Select Current Pattern: User-Defined"));
 
             iChar = 0x2a;   // * //
@@ -7561,9 +7561,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagValIsLen,
                                    flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.ConfigureImageData,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Colour,
+                                   PrnParseConstants.ActPCL.ConfigureImageData,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Colour,
                                    "Configure Image Data (data length = #)"));
 
             root = "*zC";
@@ -7578,9 +7578,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Label Placement (column #)"));
 
             root = "*zH";
@@ -7595,9 +7595,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Label Height (#/10 inches)"));
 
             root = "*zQ";
@@ -7612,36 +7612,36 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Header Control (# = discrete value)"));
             value = 0;                                           // *z0Q      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Header Control: Disable Print"));
             value = 1;                                           // *z1Q      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Header Control: Print Above"));
             value = 2;                                           // *z2Q      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Header Control: Print Below"));
 
             root = "*zR";
@@ -7656,9 +7656,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Wide Bar Width (# dots)"));
 
             root = "*zS";
@@ -7673,9 +7673,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Narrow Bar Width (# dots)"));
 
             root = "*zT";
@@ -7690,9 +7690,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Wide Space Width (# dots)"));
 
             root = "*zU";
@@ -7707,9 +7707,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Narrow Space Width (# dots)"));
 
             root = "*zV";
@@ -7724,135 +7724,135 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Selection (# = discrete value)"));
             value = 0;                                           // *z0V      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Selection: Code 3 of 9"));
             value = 1;                                           // *z1V      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Selection: Industrial 2 of 5"));
             value = 2;                                           // *z2V      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Selection: Matrix 2 of 5"));
             value = 3;                                           // *z3V      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Selection: User-Defined"));
             value = 4;                                           // *z4V      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Selection: 2 of 5 Interleaved"));
             value = 5;                                           // *z5V      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Selection: Codabar"));
             value = 6;                                           // *z6V      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Selection: MSI/Plessey"));
             value = 8;                                           // *z8V      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Selection: UPC A"));
             value = 9;                                           // *z9V      //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Selection: UPC E"));
             value = 10;                                          // *z10V     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Selection: EAN 8"));
             value = 11;                                          // *z11V     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Selection: EAN 13"));
             value = 12;                                          // *z12V     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Selection: Code 128"));
             value = 13;                                          // *z13V     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Selection: Code 93"));
             value = 14;                                          // *z14V     //
             _seqs.Add(root + ":" + value.ToString("X4"),
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Selection: Extended Code 3 of 9"));
 
             iChar = 0x2a;   // * //
@@ -7866,9 +7866,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.None,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.None,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Label X Offset (# dots)"));
 
             iChar = 0x2a;   // * //
@@ -7882,9 +7882,9 @@ namespace PCLParaphernalia
                  new PCLComplexSeq(iChar, gChar, tChar, value, flagNone,
                                    flagNone, flagNone, flagNone,
                                    flagObsolete, flagNone, flagNone,
-                                   PrnParseConstants.eActPCL.None,
-                                   PrnParseConstants.eOvlAct.PageMark,
-                                   PrnParseConstants.eSeqGrp.Unknown,
+                                   PrnParseConstants.ActPCL.None,
+                                   PrnParseConstants.OvlAct.PageMark,
+                                   PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Label"));
 
             _seqsCount = _seqs.Count;
@@ -7907,7 +7907,7 @@ namespace PCLParaphernalia
             const bool flagNone = false;
             const bool flagDiscrete = true;
 
-            int ctFonts = PCLFonts.getCount();
+            int ctFonts = PCLFonts.GetCount();
 
             if (ctFonts > 0)
             {
@@ -7926,7 +7926,7 @@ namespace PCLParaphernalia
 
                 for (int i = 0; i < ctFonts; i++)
                 {
-                    presetFont = PCLFonts.getPresetFontData(i,
+                    presetFont = PCLFonts.GetPresetFontData(i,
                                                              ref typeface,
                                                              ref fontName);
 
@@ -7938,9 +7938,9 @@ namespace PCLParaphernalia
                              new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                                flagNone, flagNone, flagNone,
                                                flagNone, flagNone, flagNone,
-                                               PrnParseConstants.eActPCL.None,
-                                               PrnParseConstants.eOvlAct.None,
-                                               PrnParseConstants.eSeqGrp.FontSelection,
+                                               PrnParseConstants.ActPCL.None,
+                                               PrnParseConstants.OvlAct.None,
+                                               PrnParseConstants.SeqGrp.FontSelection,
                                                type + " Font: Typeface (" +
                                                value + " = " + fontName + ")"));
                     }
@@ -7966,7 +7966,7 @@ namespace PCLParaphernalia
             const bool flagNone = false;
             const bool flagDiscrete = true;
 
-            int count = PCLPaperSizes.getCount();
+            int count = PCLPaperSizes.GetCount();
 
             if (count > 0)
             {
@@ -7976,17 +7976,17 @@ namespace PCLParaphernalia
                 {
                     if (!PCLPaperSizes.IsIdUnknownPCL(i))
                     {
-                        value = PCLPaperSizes.getIdPCL(i);
+                        value = PCLPaperSizes.GetIdPCL(i);
 
                         _seqs.Add(root + ":" + value.ToString("X4"),
                              new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                                 flagNone, flagNone, flagNone,
                                                 flagNone, flagNone, flagNone,
-                                                PrnParseConstants.eActPCL.None,
-                                                PrnParseConstants.eOvlAct.PageChange,
-                                                PrnParseConstants.eSeqGrp.PageControl,
+                                                PrnParseConstants.ActPCL.None,
+                                                PrnParseConstants.OvlAct.PageChange,
+                                                PrnParseConstants.SeqGrp.PageControl,
                                                 "Page Size: " +
-                                                PCLPaperSizes.getNameAndDesc(i)));
+                                                PCLPaperSizes.GetNameAndDesc(i)));
                     }
                 }
             }
@@ -8050,9 +8050,9 @@ namespace PCLParaphernalia
                              new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                                flagNilGChar, flagNone, flagNone,
                                                flagNone, flagNone, flagNone,
-                                               PrnParseConstants.eActPCL.None,
-                                               PrnParseConstants.eOvlAct.None,
-                                               PrnParseConstants.eSeqGrp.FontSelection,
+                                               PrnParseConstants.ActPCL.None,
+                                               PrnParseConstants.OvlAct.None,
+                                               PrnParseConstants.SeqGrp.FontSelection,
                                                type + " Font: Symbol Set (" +
                                                id + " = " + name + ")"));
                     }

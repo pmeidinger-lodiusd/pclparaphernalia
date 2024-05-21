@@ -23,9 +23,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private string _saveFilename;
-        private readonly ToolCommonData.eToolIds _crntToolId;
-        private readonly ToolCommonData.eToolSubIds _crntSubId;
-        private readonly ToolCommonData.ePrintLang _crntPDL;
+        private readonly ToolCommonData.ToolIds _crntToolId;
+        private readonly ToolCommonData.ToolSubIds _crntSubId;
+        private readonly ToolCommonData.PrintLang _crntPDL;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -33,9 +33,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public TargetFile(ToolCommonData.eToolIds crntToolId,
-                           ToolCommonData.eToolSubIds crntSubId,
-                           ToolCommonData.ePrintLang crntPDL)
+        public TargetFile(ToolCommonData.ToolIds crntToolId,
+                           ToolCommonData.ToolSubIds crntSubId,
+                           ToolCommonData.PrintLang crntPDL)
         {
             InitializeComponent();
 
@@ -120,19 +120,19 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            if (_crntSubId == ToolCommonData.eToolSubIds.None)
+            if (_crntSubId == ToolCommonData.ToolSubIds.None)
             {
                 txtCrntTool.Text =
-                    Enum.GetName(typeof(ToolCommonData.eToolIds),
+                    Enum.GetName(typeof(ToolCommonData.ToolIds),
                                   _crntToolId);
             }
             else
             {
                 txtCrntTool.Text =
-                    Enum.GetName(typeof(ToolCommonData.eToolIds),
+                    Enum.GetName(typeof(ToolCommonData.ToolIds),
                                   _crntToolId) +
                     "|" +
-                    Enum.GetName(typeof(ToolCommonData.eToolSubIds),
+                    Enum.GetName(typeof(ToolCommonData.ToolSubIds),
                                   _crntSubId);
             }
 
@@ -144,27 +144,27 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            if ((_crntToolId == ToolCommonData.eToolIds.FontSample)
+            if ((_crntToolId == ToolCommonData.ToolIds.FontSample)
                                           ||
-                (_crntToolId == ToolCommonData.eToolIds.FormSample)
+                (_crntToolId == ToolCommonData.ToolIds.FormSample)
                                           ||
-                (_crntToolId == ToolCommonData.eToolIds.ImageBitmap)
+                (_crntToolId == ToolCommonData.ToolIds.ImageBitmap)
                                           ||
-                (_crntToolId == ToolCommonData.eToolIds.MiscSamples)
+                (_crntToolId == ToolCommonData.ToolIds.MiscSamples)
                                           ||
-                (_crntToolId == ToolCommonData.eToolIds.PrintArea)
+                (_crntToolId == ToolCommonData.ToolIds.PrintArea)
                                           ||
-                (_crntToolId == ToolCommonData.eToolIds.PrnPrint)
+                (_crntToolId == ToolCommonData.ToolIds.PrnPrint)
                                           ||
-                (_crntToolId == ToolCommonData.eToolIds.StatusReadback)
+                (_crntToolId == ToolCommonData.ToolIds.StatusReadback)
                                           ||
-                (_crntToolId == ToolCommonData.eToolIds.TrayMap))
+                (_crntToolId == ToolCommonData.ToolIds.TrayMap))
             {
                 grpOpFile.Visibility = Visibility.Visible;
                 lbFileNA.Visibility = Visibility.Hidden;
                 btnOK.Visibility = Visibility.Visible;
 
-                TargetCore.metricsReturnFileCapt(_crntToolId,
+                TargetCore.MetricsReturnFileCapt(_crntToolId,
                                                   _crntSubId,
                                                   _crntPDL,
                                                   ref _saveFilename);
@@ -216,7 +216,7 @@ namespace PCLParaphernalia
 
         private void metricsSave()
         {
-            TargetCore.metricsSaveFileCapt(_crntToolId, _crntSubId, _crntPDL,
+            TargetCore.MetricsSaveFileCapt(_crntToolId, _crntSubId, _crntPDL,
                                             _saveFilename);
         }
 

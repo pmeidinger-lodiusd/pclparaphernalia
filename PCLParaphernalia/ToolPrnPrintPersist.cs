@@ -38,7 +38,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCapture(ToolCommonData.ePrintLang crntPDL,
+        public static void loadDataCapture(ToolCommonData.PrintLang crntPDL,
                                             ref string captureFile)
         {
             RegistryKey keyMain =
@@ -93,7 +93,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCapture(ToolCommonData.ePrintLang crntPDL,
+        public static void saveDataCapture(ToolCommonData.PrintLang crntPDL,
                                             string captureFile)
         {
             RegistryKey keyMain =

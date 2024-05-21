@@ -20,7 +20,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public enum eUTF8Result
+        public enum UTF8Result
         {
             success = 0,
             incompleteSeq = 1,
@@ -253,7 +253,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eUTF8Result checkUTF8Seq(byte[] seq,
+        public static UTF8Result CheckUTF8Seq(byte[] seq,
                                                 int seqLen,
                                                 ref int codepointUCS)
         {
@@ -282,7 +282,7 @@ namespace PCLParaphernalia
                     trailByte = seq[--ptrRev];
 
                     if ((trailByte < 0x80) || (trailByte > 0xBF))
-                        return eUTF8Result.invalidTrailByteMark;
+                        return UTF8Result.invalidTrailByteMark;
 
                     codepoint += seq[ptrFwd++];
                     codepoint <<= 6;
@@ -293,7 +293,7 @@ namespace PCLParaphernalia
                     trailByte = seq[--ptrRev];
 
                     if ((trailByte < 0x80) || (trailByte > 0xBF))
-                        return eUTF8Result.invalidTrailByteMark;
+                        return UTF8Result.invalidTrailByteMark;
 
                     codepoint += seq[ptrFwd++];
                     codepoint <<= 6;
@@ -304,7 +304,7 @@ namespace PCLParaphernalia
                     trailByte = seq[--ptrRev];
 
                     if ((trailByte < 0x80) || (trailByte > 0xBF))
-                        return eUTF8Result.invalidTrailByteMark;
+                        return UTF8Result.invalidTrailByteMark;
 
                     codepoint += seq[ptrFwd++];
                     codepoint <<= 6;
@@ -315,7 +315,7 @@ namespace PCLParaphernalia
                     trailByte = seq[--ptrRev];
 
                     if ((trailByte < 0x80) || (trailByte > 0xBF))
-                        return eUTF8Result.invalidTrailByteMark;
+                        return UTF8Result.invalidTrailByteMark;
 
                     codepoint += seq[ptrFwd++];
                     codepoint <<= 6;
@@ -326,7 +326,7 @@ namespace PCLParaphernalia
                     trailByte = seq[--ptrRev];
 
                     if ((trailByte < 0x80) || (trailByte > 0xBF))
-                        return eUTF8Result.invalidTrailByteMark;
+                        return UTF8Result.invalidTrailByteMark;
 
                     //  leadByte = seq[--ptrRev];
 
@@ -344,7 +344,7 @@ namespace PCLParaphernalia
                             //------------------------------------------------//
 
                             if (trailByte < 0xA0)
-                                return eUTF8Result.overlongThreeByteSeq;
+                                return UTF8Result.overlongThreeByteSeq;
                             break;
 
                         case 0xED:
@@ -359,7 +359,7 @@ namespace PCLParaphernalia
                             //------------------------------------------------//
 
                             if (trailByte > 0x9F)
-                                return eUTF8Result.surrogateCodepointUTF8;
+                                return UTF8Result.surrogateCodepointUTF8;
                             break;
 
                         case 0xF0:
@@ -374,7 +374,7 @@ namespace PCLParaphernalia
                             //------------------------------------------------//
 
                             if (trailByte < 0x90)
-                                return eUTF8Result.overlongFourByteSeq;
+                                return UTF8Result.overlongFourByteSeq;
                             break;
 
                         case 0xF4:
@@ -388,7 +388,7 @@ namespace PCLParaphernalia
                             //------------------------------------------------//
 
                             if (trailByte > 0x8F)
-                                return eUTF8Result.overvalueFourByteSeq;
+                                return UTF8Result.overvalueFourByteSeq;
                             break;
                     }
 
@@ -408,9 +408,9 @@ namespace PCLParaphernalia
                     // leadByte = seq[--ptrRev];
 
                     if (leadByte >= 0x80 && leadByte < 0xC0)
-                        return eUTF8Result.invalidLeadByteMark;
+                        return UTF8Result.invalidLeadByteMark;
                     else if (leadByte >= 0xC0 && leadByte < 0xC2)
-                        return eUTF8Result.overlongTwoByteSeq;
+                        return UTF8Result.overlongTwoByteSeq;
 
                     codepoint += seq[ptrFwd++];
 
@@ -424,7 +424,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    return eUTF8Result.invalidLength;
+                    return UTF8Result.invalidLength;
             }
 
             // leadByte = seq[--ptrRev];
@@ -438,20 +438,20 @@ namespace PCLParaphernalia
                 //------------------------------------------------------------//
 
                 if (leadByte > 0xFD)
-                    return eUTF8Result.invalidLeadByteMark;
+                    return UTF8Result.invalidLeadByteMark;
                 else if (leadByte > 0xFB)
-                    return eUTF8Result.illegalSixByteSeq;
+                    return UTF8Result.illegalSixByteSeq;
                 else if (leadByte > 0xF7)
-                    return eUTF8Result.illegalFiveByteSeq;
+                    return UTF8Result.illegalFiveByteSeq;
                 else
-                    return eUTF8Result.overvalueFourByteSeq;
+                    return UTF8Result.overvalueFourByteSeq;
             }
 
             codepoint -= cOffsetsUTF8[seqLen - 1];
 
             codepointUCS = (int)codepoint;
 
-            return eUTF8Result.success;
+            return UTF8Result.success;
         }
 
         //--------------------------------------------------------------------//
@@ -464,17 +464,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eUTF8Result convertUTF32ToUTF8Bytes(
+        public static UTF8Result ConvertUTF32ToUTF8Bytes(
             uint utf32Value,
             ref int utf8SeqLen,
             ref byte[] utf8Seq)
         {
-            eUTF8Result result;
+            UTF8Result result;
             int seqPos;
 
             uint codepoint;
 
-            result = eUTF8Result.success;
+            result = UTF8Result.success;
 
             codepoint = utf32Value;
 
@@ -487,7 +487,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                return eUTF8Result.surrogateCodepointUTF32;
+                return UTF8Result.surrogateCodepointUTF32;
             }
 
             //----------------------------------------------------------------//
@@ -519,7 +519,7 @@ namespace PCLParaphernalia
                 utf8SeqLen = 3;
 
                 codepoint = cReplacementChar;
-                result = eUTF8Result.exceedsLegalMaximum;
+                result = UTF8Result.exceedsLegalMaximum;
             }
 
             seqPos = utf8SeqLen - 1;
@@ -566,12 +566,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eUTF8Result convertUTF32ToUTF8HexString(
+        public static UTF8Result ConvertUTF32ToUTF8HexString(
             uint utf32Value,
             bool flag_0x_Prefix,
             ref string utf8Hex)
         {
-            eUTF8Result result;
+            UTF8Result result;
             int seqPos;
             int utf8SeqLen = 0;
 
@@ -581,7 +581,7 @@ namespace PCLParaphernalia
 
             StringBuilder utf8HexVal = new StringBuilder();
 
-            result = eUTF8Result.success;
+            result = UTF8Result.success;
 
             codepoint = utf32Value;
 
@@ -594,7 +594,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                return eUTF8Result.surrogateCodepointUTF32;
+                return UTF8Result.surrogateCodepointUTF32;
             }
 
             //----------------------------------------------------------------//
@@ -626,7 +626,7 @@ namespace PCLParaphernalia
                 utf8SeqLen = 3;
 
                 codepoint = cReplacementChar;
-                result = eUTF8Result.exceedsLegalMaximum;
+                result = UTF8Result.exceedsLegalMaximum;
             }
 
             seqPos = utf8SeqLen - 1;
@@ -687,7 +687,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void convertUTF8ToUTF32(
+        public static void ConvertUTF8ToUTF32(
             byte[] utf8Seq,
             int utf8SeqLen,
             ref uint utf32Value)

@@ -69,16 +69,16 @@ namespace PCLParaphernalia
 
             while (OK && !beginFound)
             {
-                if (buf[pos] == (byte)PCLXLDataTypes.eTag.UbyteArray)
+                if (buf[pos] == (byte)PCLXLDataTypes.Tag.UbyteArray)
                 {
                     // start of ubyte array for StreamName attribute;
 
-                    if (buf[pos + 1] == (byte)PCLXLDataTypes.eTag.Uint16)
+                    if (buf[pos + 1] == (byte)PCLXLDataTypes.Tag.Uint16)
                     {
                         dataLen = (buf[pos + 3] * 256) + buf[pos + 2];
                         pos += 4;
                     }
-                    else if (buf[pos + 1] == (byte)PCLXLDataTypes.eTag.Ubyte)
+                    else if (buf[pos + 1] == (byte)PCLXLDataTypes.Tag.Ubyte)
                     {
                         dataLen = buf[pos + 2];
                         pos += 3;
@@ -107,7 +107,7 @@ namespace PCLParaphernalia
                         pos += 2;
                     }
                 }
-                else if (buf[pos] == (byte)PCLXLOperators.eTag.BeginStream)
+                else if (buf[pos] == (byte)PCLXLOperators.Tag.BeginStream)
                 {
                     beginFound = true;
                     pos += 1;

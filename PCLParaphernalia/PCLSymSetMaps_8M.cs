@@ -26,9 +26,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void unicodeMap_8M()
+        private static void UnicodeMap_8M()
         {
-            const eSymSetMapId mapId = eSymSetMapId.map_8M;
+            const SymSetMapId mapId = SymSetMapId.map_8M;
 
             const int rangeCt = 2;
 

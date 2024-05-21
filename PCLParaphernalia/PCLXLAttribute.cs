@@ -29,7 +29,7 @@ namespace PCLParaphernalia
         private readonly bool _flagValIsLen;
         private readonly bool _flagValIsPCL;
 
-        private readonly PrnParseConstants.eActPCLXL _actionType;
+        private readonly PrnParseConstants.ActPCLXL _actionType;
 
         private int _statsCtParent;
         private int _statsCtChild;
@@ -50,8 +50,8 @@ namespace PCLParaphernalia
                               bool flagUintTxt,
                               bool flagValIsLen,
                               bool flagValIsPCL,
-                              PrnParseConstants.eActPCLXL actionType,
-                              PrnParseConstants.eOvlAct makeOvlAct,
+                              PrnParseConstants.ActPCLXL actionType,
+                              PrnParseConstants.OvlAct makeOvlAct,
                               string description)
         {
             _tagLen = tagLen;
@@ -86,8 +86,8 @@ namespace PCLParaphernalia
             ref bool flagUintTxt,
             ref bool flagValIsLen,
             ref bool flagValIsPCL,
-            ref PrnParseConstants.eActPCLXL actionType,
-            ref PrnParseConstants.eOvlAct makeOvlAct,
+            ref PrnParseConstants.ActPCLXL actionType,
+            ref PrnParseConstants.OvlAct makeOvlAct,
             ref string description)
         {
             flagReserved = FlagReserved;
@@ -156,7 +156,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.eOvlAct makeOvlAct { get; }
+        public PrnParseConstants.OvlAct makeOvlAct { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

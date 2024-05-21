@@ -26,7 +26,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public enum eInfoType : byte
+        public enum InfoType : byte
         {
             Content,
             Analysis,
@@ -72,13 +72,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ToolPrnAnalyse(ref ToolCommonData.ePrintLang crntPDL)
+        public ToolPrnAnalyse(ref ToolCommonData.PrintLang crntPDL)
         {
             InitializeComponent();
 
-            initialise();
+            Initialise();
 
-            crntPDL = ToolCommonData.ePrintLang.Unknown;
+            crntPDL = ToolCommonData.PrintLang.Unknown;
         }
 
         //--------------------------------------------------------------------//
@@ -106,15 +106,15 @@ namespace PCLParaphernalia
                 this._bkWk.RunWorkerAsync (); // Then move following code to DoWork  
                 */
 
-                PrnParse parseFile = new PrnParse(PrnParse.eParseType.Analyse,
+                PrnParse parseFile = new PrnParse(PrnParse.ParseType.Analyse,
                                                    0);
 
                 _tableAnalysis.Clear();
                 _tableStatistics.Clear();
 
-                initialiseGridAnalysis();
+                InitialiseGridAnalysis();
 
-                parseFile.analyse(_prnFilename,
+                parseFile.Analyse(_prnFilename,
                                    _options,
                                    _tableAnalysis);
 
@@ -159,7 +159,7 @@ namespace PCLParaphernalia
 
                 _tableContent.Clear();
 
-                initialiseGridContent();
+                InitialiseGridContent();
 
                 viewFile.viewFile(_prnFilename,
                                    _options,
@@ -202,7 +202,7 @@ namespace PCLParaphernalia
             bool selected;
             string filename = _prnFilename;
 
-            selected = prnFileSelect(ref filename);
+            selected = PrnFileSelect(ref filename);
 
             if (selected)
             {
@@ -225,7 +225,7 @@ namespace PCLParaphernalia
                 _redoContent = true;
                 _redoStatistics = true;
 
-                prnFileProcess(filename);
+                PrnFileProcess(filename);
             }
         }
 
@@ -253,7 +253,7 @@ namespace PCLParaphernalia
 
                 btnSaveReport.IsEnabled = false;
 
-                resetStatistics();
+                ResetStatistics();
 
                 _options.getOptClrMap(ref _flagClrMapUseClr,
                                        ref _indxClrMapBack,
@@ -277,20 +277,20 @@ namespace PCLParaphernalia
             bool flagOffsetHex,
                     flagOptRptWrap = false;
 
-            ReportCore.eRptFileFmt rptFileFmt = ReportCore.eRptFileFmt.NA;
-            ReportCore.eRptChkMarks rptChkMarks = ReportCore.eRptChkMarks.NA;
+            ReportCore.RptFileFmt rptFileFmt = ReportCore.RptFileFmt.NA;
+            ReportCore.RptChkMarks rptChkMarks = ReportCore.RptChkMarks.NA;
 
             flagOffsetHex = _options.IndxGenOffsetFormat !=
-                PrnParseConstants.eOptOffsetFormats.Decimal;
+                PrnParseConstants.OptOffsetFormats.Decimal;
 
-            TargetCore.metricsReturnFileRpt(ToolCommonData.eToolIds.PrnAnalyse,
+            TargetCore.MetricsReturnFileRpt(ToolCommonData.ToolIds.PrnAnalyse,
                                              ref rptFileFmt,
                                              ref rptChkMarks,
                                              ref flagOptRptWrap);
 
             if (tabCtrl.SelectedItem == tabStatistics)
             {
-                ToolPrnAnalyseReport.generate(eInfoType.Statistics,
+                ToolPrnAnalyseReport.generate(InfoType.Statistics,
                                                rptFileFmt,
                                                _tableStatistics,
                                                _prnFilename,
@@ -300,7 +300,7 @@ namespace PCLParaphernalia
             }
             else if (tabCtrl.SelectedItem == tabContent)
             {
-                ToolPrnAnalyseReport.generate(eInfoType.Content,
+                ToolPrnAnalyseReport.generate(InfoType.Content,
                                                rptFileFmt,
                                                _tableContent,
                                                _prnFilename,
@@ -310,7 +310,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                ToolPrnAnalyseReport.generate(eInfoType.Analysis,
+                ToolPrnAnalyseReport.generate(InfoType.Analysis,
                                                rptFileFmt,
                                                _tableAnalysis,
                                                _prnFilename,
@@ -333,8 +333,8 @@ namespace PCLParaphernalia
         {
             if (_redoStatistics)
             {
-                PrnParseConstants.eOptStatsLevel level =
-                    PrnParseConstants.eOptStatsLevel.ReferencedOnly;
+                PrnParseConstants.OptStatsLevel level =
+                    PrnParseConstants.OptStatsLevel.ReferencedOnly;
 
                 bool incUsedSeqsOnly = false;
                 bool excUnusedObsPCLSeqs = false;
@@ -347,12 +347,12 @@ namespace PCLParaphernalia
                 _tableStatistics.Clear();
 
                 incUsedSeqsOnly = level ==
-                    PrnParseConstants.eOptStatsLevel.ReferencedOnly;
+                    PrnParseConstants.OptStatsLevel.ReferencedOnly;
 
                 PrescribeCommands.displayStatsCounts(_tableStatistics,
                                                       incUsedSeqsOnly);
 
-                PJLCommands.displayStatsCounts(_tableStatistics,
+                PJLCommands.DisplayStatsCounts(_tableStatistics,
                                                 incUsedSeqsOnly);
 
                 PCLControlCodes.displayStatsCounts(_tableStatistics,
@@ -372,7 +372,7 @@ namespace PCLParaphernalia
                 HPGL2ControlCodes.displayStatsCounts(_tableStatistics,
                                                      incUsedSeqsOnly);
 
-                PCLXLDataTypes.displayStatsCounts(_tableStatistics,
+                PCLXLDataTypes.DisplayStatsCounts(_tableStatistics,
                                                   incUsedSeqsOnly,
                                                   excUnusedResPCLXLTags);
 
@@ -380,11 +380,11 @@ namespace PCLParaphernalia
                                                    incUsedSeqsOnly,
                                                    excUnusedResPCLXLTags);
 
-                PCLXLAttributes.displayStatsCounts(_tableStatistics,
+                PCLXLAttributes.DisplayStatsCounts(_tableStatistics,
                                                     incUsedSeqsOnly,
                                                     excUnusedResPCLXLTags);
 
-                PCLXLOperators.displayStatsCounts(_tableStatistics,
+                PCLXLOperators.DisplayStatsCounts(_tableStatistics,
                                                    incUsedSeqsOnly,
                                                    excUnusedResPCLXLTags);
 
@@ -392,7 +392,7 @@ namespace PCLParaphernalia
                                                      incUsedSeqsOnly,
                                                      excUnusedResPCLXLTags);
 
-                PMLDataTypes.displayStatsCounts(_tableStatistics,
+                PMLDataTypes.DisplayStatsCounts(_tableStatistics,
                                                  incUsedSeqsOnly);
 
                 PMLActions.displayStatsCounts(_tableStatistics,
@@ -449,7 +449,7 @@ namespace PCLParaphernalia
             else if (headername == PrnParseConstants.cRptA_colName_Offset)
             {
                 if (_options.IndxGenOffsetFormat ==
-                    PrnParseConstants.eOptOffsetFormats.Decimal)
+                    PrnParseConstants.OptOffsetFormats.Decimal)
                 {
                     e.Column.Header = headername + ": dec";
                 }
@@ -533,7 +533,7 @@ namespace PCLParaphernalia
             if (headername == PrnParseConstants.cRptC_colName_Offset)
             {
                 if (_options.IndxGenOffsetFormat ==
-                    PrnParseConstants.eOptOffsetFormats.Decimal)
+                    PrnParseConstants.OptOffsetFormats.Decimal)
                 {
                     e.Column.Header = headername + ": dec";
                 }
@@ -566,9 +566,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void giveCrntPDL(ref ToolCommonData.ePrintLang crntPDL)
+        public void GiveCrntPDL(ref ToolCommonData.PrintLang crntPDL)
         {
-            crntPDL = ToolCommonData.ePrintLang.Unknown;
+            crntPDL = ToolCommonData.PrintLang.Unknown;
         }
 
         //--------------------------------------------------------------------//
@@ -580,7 +580,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialise()
+        private void Initialise()
         {
             //    _initialised = false;
 
@@ -637,11 +637,11 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            metricsLoad();
+            MetricsLoad();
 
             _fileSize = -1;
 
-            int ctRowTypes = PrnParseRowTypes.getCount();
+            int ctRowTypes = PrnParseRowTypes.GetCount();
 
             _indxClrMapBack = new int[ctRowTypes];
             _indxClrMapFore = new int[ctRowTypes];
@@ -670,9 +670,9 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            initialiseGridAnalysis();
-            initialiseGridContent();
-            initialiseGridStatistics();
+            InitialiseGridAnalysis();
+            InitialiseGridContent();
+            InitialiseGridStatistics();
 
             //----------------------------------------------------------------//
 
@@ -688,7 +688,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseGridAnalysis()
+        private void InitialiseGridAnalysis()
         {
             _tableAnalysis = new DataTable("Analysis");
 
@@ -723,7 +723,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseGridContent()
+        private void InitialiseGridContent()
         {
             _tableContent = new DataTable("Content");
 
@@ -754,7 +754,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseGridStatistics()
+        private void InitialiseGridStatistics()
         {
             _tableStatistics = new DataTable("Statistics");
 
@@ -789,7 +789,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsLoad()
+        private void MetricsLoad()
         {
             ToolPrnAnalysePersist.loadData(ref _prnFilename);
 
@@ -805,7 +805,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsSave()
+        public void MetricsSave()
         {
             ToolPrnAnalysePersist.saveData(_prnFilename);
 
@@ -821,7 +821,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private long prnFileGetSize(string filename)
+        private long PrnFileGetSize(string filename)
         {
             Stream ipStream = null;
 
@@ -883,11 +883,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void prnFileProcess(string filename)
+        public void PrnFileProcess(string filename)
         {
             _prnFilename = filename;
 
-            _fileSize = prnFileGetSize(_prnFilename);
+            _fileSize = PrnFileGetSize(_prnFilename);
 
             txtFileName.Text = _prnFilename;
             txtFileSize.Text = _fileSize.ToString();
@@ -904,7 +904,7 @@ namespace PCLParaphernalia
 
             _tableAnalysis.Clear();
 
-            resetStatistics();
+            ResetStatistics();
 
             _options.resetOptCurF(_fileSize);
 
@@ -921,7 +921,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool prnFileSelect(ref string prnFilename)
+        private bool PrnFileSelect(ref string prnFilename)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(prnFilename);
 
@@ -954,7 +954,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetStatistics()
+        public void ResetStatistics()
         {
             btnStatistics.IsEnabled = false;
             txtRptSizeStatistics.Text = "0";
@@ -962,18 +962,18 @@ namespace PCLParaphernalia
             _tableStatistics.Clear();
 
             PrescribeCommands.resetStatsCounts();
-            PJLCommands.resetStatsCounts();
+            PJLCommands.ResetStatsCounts();
             PCLComplexSeqs.resetStatsCounts();
             PCLSimpleSeqs.resetStatsCounts();
             PCLControlCodes.resetStatsCounts();
             HPGL2Commands.resetStatsCounts();
             HPGL2ControlCodes.resetStatsCounts();
-            PCLXLDataTypes.resetStatsCounts();
+            PCLXLDataTypes.ResetStatsCounts();
             //   PCLXLAttrDefiners.resetStatsCounts ();
-            PCLXLAttributes.resetStatsCounts();
+            PCLXLAttributes.ResetStatsCounts();
             PCLXLAttrEnums.ResetStatsCounts();
             //   PCLXLEmbedDataDefs.resetStatsCounts ();
-            PCLXLOperators.resetStatsCounts();
+            PCLXLOperators.ResetStatsCounts();
             PCLXLWhitespaces.resetStatsCounts();
         }
 
@@ -986,7 +986,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetTarget()
+        public void ResetTarget()
         {
             // dummy method
         }

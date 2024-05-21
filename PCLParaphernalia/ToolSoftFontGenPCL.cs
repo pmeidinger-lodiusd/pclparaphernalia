@@ -139,9 +139,9 @@ namespace PCLParaphernalia
 
                 bool glyphZeroExists = false;
 
-                _ttfHandler.glyphReferencedUnmarkAll();
+                _ttfHandler.GlyphReferencedUnmarkAll();
 
-                _ttfHandler.getBasicMetrics(ref numChars,
+                _ttfHandler.GetBasicMetrics(ref numChars,
                                              ref firstCode,
                                              ref lastCode,
                                              ref maxGlyphId,
@@ -197,7 +197,7 @@ namespace PCLParaphernalia
                     _binWriter.Close();
                     _opStream.Close();
 
-                    _ttfHandler.fontFileClose();
+                    _ttfHandler.FontFileClose();
                 }
                 catch (Exception exc)
                 {
@@ -324,7 +324,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            _ttfHandler.glyphReferencedMark(glyphId);
+            _ttfHandler.GlyphReferencedMark(glyphId);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -335,7 +335,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            _ttfHandler.getGlyphData(glyphId,
+            _ttfHandler.GetGlyphData(glyphId,
                                       ref glyphWidth,
                                       ref glyphHeight,  // not used here
                                       ref glyphLSB,
@@ -376,9 +376,9 @@ namespace PCLParaphernalia
             charBlockSize = (ushort)(cSizeCharHddr + cSizeCharGlyphHddr +
                                       glyphLength + cSizeCharTrail);
 
-            PCLWriter.charDownloadCode(_binWriter, charCode);
+            PCLWriter.CharDownloadCode(_binWriter, charCode);
 
-            PCLWriter.charDownloadDesc(_binWriter, charBlockSize);
+            PCLWriter.CharDownloadDesc(_binWriter, charBlockSize);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -432,7 +432,7 @@ namespace PCLParaphernalia
 
                 glyphData = new byte[glyphLength];
 
-                flagOK = _ttfHandler.readByteArray((int)glyphOffset,
+                flagOK = _ttfHandler.ReadByteArray((int)glyphOffset,
                                                     (int)glyphLength,
                                                     ref glyphData);
                 // TODO: what if flagOK = true (i.e. read fails?
@@ -490,12 +490,12 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        if (_ttfHandler.glyphReferencedCheck(glyphCompId))
+                        if (_ttfHandler.GlyphReferencedCheck(glyphCompId))
                         {
                             ToolSoftFontGenLog.logCharDetails(
                                 _tableLog,
                                 true,
-                                _ttfHandler.glyphCompositeCheck(glyphCompId),
+                                _ttfHandler.GlyphCompositeCheck(glyphCompId),
                                 0,
                                 0,
                                 glyphCompId,
@@ -587,7 +587,7 @@ namespace PCLParaphernalia
             {
                 ushort charCode = (ushort)i;
 
-                glyphExists = _ttfHandler.getCharData(charCode,
+                glyphExists = _ttfHandler.GetCharData(charCode,
                                                        ref codepoint,
                                                        ref glyphId);
 
@@ -713,7 +713,7 @@ namespace PCLParaphernalia
 
             monoSpaced = false;
 
-            _ttfHandler.getPCLFontHeaderData(usePCLT,
+            _ttfHandler.GetPCLFontHeaderData(usePCLT,
                                               ref monoSpaced,
                                               ref cellWidth,
                                               ref cellHeight,
@@ -788,7 +788,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                PCLWriter.fontDownloadHddr(_binWriter, (uint)hddrLen);
+                PCLWriter.FontDownloadHddr(_binWriter, (uint)hddrLen);
 
                 //------------------------------------------------------------//
                 //                                                            //

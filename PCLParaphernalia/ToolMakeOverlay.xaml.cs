@@ -35,7 +35,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private ToolCommonData.ePrintLang _crntPDL;
+        private ToolCommonData.PrintLang _crntPDL;
 
         private string _prnFilename;
         private string _ovlFilenamePCL;
@@ -70,11 +70,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ToolMakeOverlay(ref ToolCommonData.ePrintLang crntPDL)
+        public ToolMakeOverlay(ref ToolCommonData.PrintLang crntPDL)
         {
             InitializeComponent();
 
-            initialise();
+            Initialise();
 
             crntPDL = _crntPDL;
         }
@@ -90,14 +90,14 @@ namespace PCLParaphernalia
 
         private void btnGenerate_Click(object sender, RoutedEventArgs e)
         {
-            PrnParse parseFile = new PrnParse(PrnParse.eParseType.MakeOverlay,
+            PrnParse parseFile = new PrnParse(PrnParse.ParseType.MakeOverlay,
                                                0);
 
             _tableProgress.Clear();
 
-            if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
-                parseFile.makeOverlayPCL(_prnFilename,
+                parseFile.MakeOverlayPCL(_prnFilename,
                                            ref _ovlFilenamePCL,
                                            _options,
                                            _tableProgress,
@@ -107,9 +107,9 @@ namespace PCLParaphernalia
 
                 txtPCLOvlFilename.Text = _ovlFilenamePCL;
             }
-            else if (_crntPDL == ToolCommonData.ePrintLang.PCLXL)
+            else if (_crntPDL == ToolCommonData.PrintLang.PCLXL)
             {
-                parseFile.makeOverlayPCLXL(_prnFilename,
+                parseFile.MakeOverlayPCLXL(_prnFilename,
                                            ref _ovlFilenamePCLXL,
                                            _options,
                                            _tableProgress,
@@ -141,7 +141,7 @@ namespace PCLParaphernalia
 
             string filename = _ovlFilenamePCL;
 
-            selected = selectOvlFilePCL(ref filename);
+            selected = SelectOvlFilePCL(ref filename);
 
             if (selected)
             {
@@ -167,7 +167,7 @@ namespace PCLParaphernalia
 
             string filename = _ovlFilenamePCLXL;
 
-            selected = selectOvlFilePCLXL(ref filename);
+            selected = SelectOvlFilePCLXL(ref filename);
 
             if (selected)
             {
@@ -192,7 +192,7 @@ namespace PCLParaphernalia
 
             string filename = _prnFilename;
 
-            selected = selectPrnFile(ref filename);
+            selected = SelectPrnFile(ref filename);
 
             if (selected)
             {
@@ -221,18 +221,18 @@ namespace PCLParaphernalia
             bool flagOffsetHex,
                     flagOptRptWrap = false;
 
-            ReportCore.eRptFileFmt rptFileFmt = ReportCore.eRptFileFmt.NA;
-            ReportCore.eRptChkMarks rptChkMarks = ReportCore.eRptChkMarks.NA;
+            ReportCore.RptFileFmt rptFileFmt = ReportCore.RptFileFmt.NA;
+            ReportCore.RptChkMarks rptChkMarks = ReportCore.RptChkMarks.NA;
 
             flagOffsetHex = _options.IndxGenOffsetFormat !=
-                PrnParseConstants.eOptOffsetFormats.Decimal;
+                PrnParseConstants.OptOffsetFormats.Decimal;
 
-            TargetCore.metricsReturnFileRpt(ToolCommonData.eToolIds.MakeOverlay,
+            TargetCore.MetricsReturnFileRpt(ToolCommonData.ToolIds.MakeOverlay,
                                              ref rptFileFmt,
                                              ref rptChkMarks,
                                              ref flagOptRptWrap);
 
-            if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 ToolMakeOverlayReport.generate(rptFileFmt,
                                                            _tableProgress,
@@ -269,16 +269,16 @@ namespace PCLParaphernalia
 
             int ptr;
 
-            ToolCommonData.ePrintLang scanPDL;
+            ToolCommonData.PrintLang scanPDL;
 
-            PrnParse parseFile = new PrnParse(PrnParse.eParseType.ScanForPDL,
+            PrnParse parseFile = new PrnParse(PrnParse.ParseType.ScanForPDL,
                                                0);
 
             _tableProgress.Clear();
 
-            scanPDL = ToolCommonData.ePrintLang.Unknown;
+            scanPDL = ToolCommonData.PrintLang.Unknown;
 
-            parseFile.makeOverlayScan(_prnFilename,
+            parseFile.MakeOverlayScan(_prnFilename,
                                        _options,
                                        ref scanPDL);
 
@@ -287,12 +287,12 @@ namespace PCLParaphernalia
             if (ptr <= 0)
                 ptr = _prnFilename.Length;
 
-            if ((scanPDL == ToolCommonData.ePrintLang.PCL)
+            if ((scanPDL == ToolCommonData.PrintLang.PCL)
                                   ||
-                (scanPDL == ToolCommonData.ePrintLang.HPGL2))
+                (scanPDL == ToolCommonData.PrintLang.HPGL2))
             {
                 validPDL = true;
-                _crntPDL = ToolCommonData.ePrintLang.PCL;
+                _crntPDL = ToolCommonData.PrintLang.PCL;
 
                 tabPCL.IsEnabled = true;
                 tabPCL.IsSelected = true;
@@ -303,12 +303,12 @@ namespace PCLParaphernalia
 
                 txtPCLOvlFilename.Text = _ovlFilenamePCL;
             }
-            else if ((scanPDL == ToolCommonData.ePrintLang.PCLXL)
+            else if ((scanPDL == ToolCommonData.PrintLang.PCLXL)
                                   ||
-                (scanPDL == ToolCommonData.ePrintLang.XL2HB))
+                (scanPDL == ToolCommonData.PrintLang.XL2HB))
             {
                 validPDL = true;
-                _crntPDL = ToolCommonData.ePrintLang.PCLXL;
+                _crntPDL = ToolCommonData.PrintLang.PCLXL;
 
                 tabPCLXL.IsEnabled = true;
                 tabPCLXL.IsSelected = true;
@@ -421,7 +421,7 @@ namespace PCLParaphernalia
             }
             else if (headername == PrnParseConstants.cRptA_colName_Offset)
             {
-                if (_options.IndxGenOffsetFormat == PrnParseConstants.eOptOffsetFormats.Decimal)
+                if (_options.IndxGenOffsetFormat == PrnParseConstants.OptOffsetFormats.Decimal)
                     e.Column.Header = headername + ": dec";
                 else
                     e.Column.Header = headername + ": hex";
@@ -489,7 +489,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void giveCrntPDL(ref ToolCommonData.ePrintLang crntPDL)
+        public void GiveCrntPDL(ref ToolCommonData.PrintLang crntPDL)
         {
             crntPDL = _crntPDL;
         }
@@ -503,7 +503,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialise()
+        private void Initialise()
         {
             //----------------------------------------------------------------//
             //                                                                //
@@ -527,7 +527,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            metricsLoad();
+            MetricsLoad();
 
             txtPrnFilename.Text = _prnFilename;
 
@@ -569,7 +569,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            int ctRowTypes = PrnParseRowTypes.getCount();
+            int ctRowTypes = PrnParseRowTypes.GetCount();
 
             _indxClrMapBack = new int[ctRowTypes];
             _indxClrMapFore = new int[ctRowTypes];
@@ -583,7 +583,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            initialiseGridProgress();
+            InitialiseGridProgress();
         }
 
         //--------------------------------------------------------------------//
@@ -595,7 +595,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseGridProgress()
+        private void InitialiseGridProgress()
         {
             _tableProgress = new DataTable("Progress");
 
@@ -624,16 +624,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsLoad()
+        private void MetricsLoad()
         {
-            ToolMakeOverlayPersist.loadDataCommon(ref _prnFilename);
+            ToolMakeOverlayPersist.LoadDataCommon(ref _prnFilename);
 
-            ToolMakeOverlayPersist.loadDataPCL(ref _ovlFilenamePCL,
+            ToolMakeOverlayPersist.LoadDataPCL(ref _ovlFilenamePCL,
                                                  ref _flagRestoreCursorPCL,
                                                  ref _flagOvlEncPCL,
                                                  ref _macroIdPCL);
 
-            ToolMakeOverlayPersist.loadDataPCLXL(ref _ovlFilenamePCLXL,
+            ToolMakeOverlayPersist.LoadDataPCLXL(ref _ovlFilenamePCLXL,
                                                  ref _flagRestoreGSPCLXL,
                                                  ref _flagOvlEncPCLXL,
                                                  ref _streamNamePCLXL);
@@ -648,16 +648,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsSave()
+        public void MetricsSave()
         {
-            ToolMakeOverlayPersist.saveDataCommon(_prnFilename);
+            ToolMakeOverlayPersist.SaveDataCommon(_prnFilename);
 
-            ToolMakeOverlayPersist.saveDataPCL(_ovlFilenamePCL,
+            ToolMakeOverlayPersist.SaveDataPCL(_ovlFilenamePCL,
                                                  _flagRestoreCursorPCL,
                                                  _flagOvlEncPCL,
                                                  _macroIdPCL);
 
-            ToolMakeOverlayPersist.saveDataPCLXL(_ovlFilenamePCLXL,
+            ToolMakeOverlayPersist.SaveDataPCLXL(_ovlFilenamePCLXL,
                                                  _flagRestoreGSPCLXL,
                                                  _flagOvlEncPCLXL,
                                                  _streamNamePCLXL);
@@ -742,7 +742,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetTarget()
+        public void ResetTarget()
         {
             // Dummy method
         }
@@ -756,7 +756,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool selectOvlFilePCL(ref string selectedName)
+        private bool SelectOvlFilePCL(ref string selectedName)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(selectedName);
 
@@ -781,7 +781,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool selectOvlFilePCLXL(ref string selectedName)
+        private bool SelectOvlFilePCLXL(ref string selectedName)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(selectedName);
 
@@ -806,7 +806,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool selectPrnFile(ref string selectedName)
+        private bool SelectPrnFile(ref string selectedName)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(selectedName);
 
@@ -833,7 +833,7 @@ namespace PCLParaphernalia
         private void txtPCLMacroId_LostFocus(object sender,
                                               RoutedEventArgs e)
         {
-            validatePCLMacroId(true, ref _macroIdPCL);
+            ValidatePCLMacroId(true, ref _macroIdPCL);
         }
 
         //--------------------------------------------------------------------//
@@ -848,7 +848,7 @@ namespace PCLParaphernalia
         private void txtPCLMacroId_TextChanged(object sender,
                                                 TextChangedEventArgs e)
         {
-            validatePCLMacroId(false, ref _macroIdPCL);
+            ValidatePCLMacroId(false, ref _macroIdPCL);
         }
 
         //--------------------------------------------------------------------//
@@ -941,7 +941,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool validatePCLMacroId(bool lostFocusEvent,
+        private bool ValidatePCLMacroId(bool lostFocusEvent,
                                             ref int macroId)
         {
             const ushort minVal = 0;

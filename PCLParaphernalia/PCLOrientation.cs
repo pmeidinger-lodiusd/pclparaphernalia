@@ -16,7 +16,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private readonly PCLOrientations.eAspect _orientationAspect;
+        private readonly PCLOrientations.Aspect _orientationAspect;
         private readonly string _orientationName;
         private readonly byte _orientationIdPCL;
         private readonly byte _orientationIdPCLXL;
@@ -27,7 +27,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLOrientation(PCLOrientations.eAspect aspect,
+        public PCLOrientation(PCLOrientations.Aspect aspect,
                               string name,
                               byte idPCL,
                               byte idPCLXL)
@@ -47,7 +47,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLOrientations.eAspect getAspect()
+        public PCLOrientations.Aspect getAspect()
         {
             return _orientationAspect;
         }

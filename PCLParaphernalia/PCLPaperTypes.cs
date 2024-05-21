@@ -19,13 +19,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public enum eEntryType
+        public enum EntryType
         {
             Standard,
             NotSet
         }
 
-        public enum eIndex
+        public enum Index
         {
             NotSet,
             Plain,
@@ -48,17 +48,17 @@ namespace PCLParaphernalia
 
         private static readonly PCLPaperType[] _paperTypes =
         {
-            new PCLPaperType(eEntryType.NotSet,  "<not set>"),
-            new PCLPaperType(eEntryType.Standard,"Plain"),
-            new PCLPaperType(eEntryType.Standard,"Preprinted"),
-            new PCLPaperType(eEntryType.Standard,"Letterhead"),
-            new PCLPaperType(eEntryType.Standard,"Transparency"),
-            new PCLPaperType(eEntryType.Standard,"Prepunched"),
-            new PCLPaperType(eEntryType.Standard,"Labels"),
-            new PCLPaperType(eEntryType.Standard,"Bond"),
-            new PCLPaperType(eEntryType.Standard,"Recycled"),
-            new PCLPaperType(eEntryType.Standard,"Color"),
-            new PCLPaperType(eEntryType.Standard,"Rough")
+            new PCLPaperType(EntryType.NotSet,  "<not set>"),
+            new PCLPaperType(EntryType.Standard,"Plain"),
+            new PCLPaperType(EntryType.Standard,"Preprinted"),
+            new PCLPaperType(EntryType.Standard,"Letterhead"),
+            new PCLPaperType(EntryType.Standard,"Transparency"),
+            new PCLPaperType(EntryType.Standard,"Prepunched"),
+            new PCLPaperType(EntryType.Standard,"Labels"),
+            new PCLPaperType(EntryType.Standard,"Bond"),
+            new PCLPaperType(EntryType.Standard,"Recycled"),
+            new PCLPaperType(EntryType.Standard,"Color"),
+            new PCLPaperType(EntryType.Standard,"Rough")
         };
 
         private static readonly int _paperTypeCount = _paperTypes.GetUpperBound(0) + 1;
@@ -72,7 +72,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCount()
+        public static int GetCount()
         {
             return _paperTypeCount;
         }
@@ -86,7 +86,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getName(int index)
+        public static string GetName(int index)
         {
             return _paperTypes[index].getName();
         }
@@ -100,7 +100,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eEntryType getType(int index)
+        public static EntryType GetType(int index)
         {
             return _paperTypes[index].getType();
         }

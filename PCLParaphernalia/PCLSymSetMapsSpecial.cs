@@ -24,7 +24,7 @@ namespace PCLParaphernalia
 
         private static void unicodeMapNull()
         {
-            const eSymSetMapId mapId = eSymSetMapId.mapNull;
+            const SymSetMapId mapId = SymSetMapId.mapNull;
 
             const int rangeCt = 1;
 
@@ -106,7 +106,7 @@ namespace PCLParaphernalia
 
         private static void unicodeMapSymbol()
         {
-            const eSymSetMapId mapId = eSymSetMapId.mapSymbol;
+            const SymSetMapId mapId = SymSetMapId.mapSymbol;
 
             const int rangeCt = 1;
 
@@ -169,7 +169,7 @@ namespace PCLParaphernalia
 
         private static void unicodeMapUserSet()
         {
-            const eSymSetMapId mapId = eSymSetMapId.mapUserSet;
+            const SymSetMapId mapId = SymSetMapId.mapUserSet;
 
             const int rangeCt = 1;
 

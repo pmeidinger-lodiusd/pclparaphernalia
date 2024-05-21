@@ -26,7 +26,7 @@ namespace PCLParaphernalia
 
         private PrnParseLinkData _linkData;
 
-        private PrnParseConstants.eContType _contType;
+        private PrnParseConstants.ContType _contType;
 
         private DataTable _table;
 
@@ -41,8 +41,8 @@ namespace PCLParaphernalia
         private bool _PCL;
         private PrnParseOptions _options;
 
-        private PrnParseConstants.eOptOffsetFormats _indxOffsetFormat;
-        private PrnParseRowTypes.eType _rowType;
+        private PrnParseConstants.OptOffsetFormats _indxOffsetFormat;
+        private PrnParseRowTypes.Type _rowType;
 
         private readonly ASCIIEncoding _ascii = new ASCIIEncoding();
 
@@ -73,7 +73,7 @@ namespace PCLParaphernalia
             const int arrayBits = arrayBytes * bitsPerByte;
 
             PCLCharCollections.BitType bitType;
-            PrnParseRowTypes.eType rowType;
+            PrnParseRowTypes.Type rowType;
 
             const bool dataOK = true;
 
@@ -95,7 +95,7 @@ namespace PCLParaphernalia
 
             bool showBinData;
 
-            PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
+            PrnParseConstants.OptOffsetFormats indxOffsetFormat;
 
             analysisLevel = linkData.AnalysisLevel;
             showBinData = options.FlagPCLMiscBinData;
@@ -110,9 +110,9 @@ namespace PCLParaphernalia
                 textDesc = "Char. Requirements";
 
             if (PCL)
-                rowType = PrnParseRowTypes.eType.PCLFontHddr;
+                rowType = PrnParseRowTypes.Type.PCLFontHddr;
             else
-                rowType = PrnParseRowTypes.eType.PCLXLFontHddr;
+                rowType = PrnParseRowTypes.Type.PCLXLFontHddr;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -184,7 +184,7 @@ namespace PCLParaphernalia
             PrnParseCommon.addTextRow(
                 rowType,
                 table,
-                PrnParseConstants.eOvlShow.None,
+                PrnParseConstants.OvlShow.None,
                 string.Empty,
                 textDesc,
                 "Symbol index",
@@ -206,7 +206,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addTextRow(
                     rowType,
                     table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     textDesc,
                     "Collection",
@@ -239,7 +239,7 @@ namespace PCLParaphernalia
                         PrnParseCommon.addTextRow(
                             rowType,
                             table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             textDesc,
                             "Collection",
@@ -292,7 +292,7 @@ namespace PCLParaphernalia
                                       PrnParseOptions options,
                                       DataTable table)
         {
-            PrnParseConstants.eContType contType;
+            PrnParseConstants.ContType contType;
 
             bool continuation = false;
 
@@ -312,14 +312,14 @@ namespace PCLParaphernalia
 
             if (PCL)
             {
-                _contType = PrnParseConstants.eContType.PCLFontHddr;
-                _rowType = PrnParseRowTypes.eType.PCLFontHddr;
+                _contType = PrnParseConstants.ContType.PCLFontHddr;
+                _rowType = PrnParseRowTypes.Type.PCLFontHddr;
                 _showBinData = options.FlagPCLMiscBinData;
             }
             else
             {
-                _contType = PrnParseConstants.eContType.PCLXLFontHddr;
-                _rowType = PrnParseRowTypes.eType.PCLXLFontHddr;
+                _contType = PrnParseConstants.ContType.PCLXLFontHddr;
+                _rowType = PrnParseRowTypes.Type.PCLXLFontHddr;
                 _showBinData = options.FlagPCLXLMiscBinData;
             }
 
@@ -336,7 +336,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            contType = PrnParseConstants.eContType.None;
+            contType = PrnParseConstants.ContType.None;
 
             _linkData.resetContData();
 
@@ -360,9 +360,9 @@ namespace PCLParaphernalia
                     text = "PCL XL Binary";
 
                 PrnParseCommon.addDataRow(
-                    PrnParseRowTypes.eType.DataBinary,
+                    PrnParseRowTypes.Type.DataBinary,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     _fileOffset + bufOffset,
                     _analysisLevel,
@@ -372,7 +372,7 @@ namespace PCLParaphernalia
             }
 
             while ((hddrDataRem != 0) &&
-                   (contType == PrnParseConstants.eContType.None) &&
+                   (contType == PrnParseConstants.ContType.None) &&
                    _validSegs)
             {
                 if (_segRem == 0)
@@ -620,7 +620,7 @@ namespace PCLParaphernalia
 
                         contType = _linkData.getContType();
 
-                        if (contType != PrnParseConstants.eContType.None)
+                        if (contType != PrnParseConstants.ContType.None)
                             continuation = true;
                     }
                 }
@@ -668,9 +668,9 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    PrnParseData.processBinary(
+                    PrnParseData.ProcessBinary(
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         _buf,
                         _fileOffset,
                         bufOffset,
@@ -728,7 +728,7 @@ namespace PCLParaphernalia
         {
             const string segTypeDesc = "Null";
 
-            PrnParseConstants.eContType contType;
+            PrnParseConstants.ContType contType;
 
             int baseOffset,
                   dataOffset,
@@ -757,9 +757,9 @@ namespace PCLParaphernalia
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary(
+                    PrnParseData.ProcessBinary(
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         _buf,
                         _fileOffset,
                         bufOffset,
@@ -793,7 +793,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset,
                     _analysisLevel,
@@ -804,7 +804,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 2,
                     _analysisLevel,
@@ -876,7 +876,7 @@ namespace PCLParaphernalia
         {
             string segTypeDesc = "0x" + segType.ToString("X4") + ": Unknown";
 
-            PrnParseConstants.eContType contType;
+            PrnParseConstants.ContType contType;
 
             int baseOffset,
                   dataOffset,
@@ -905,9 +905,9 @@ namespace PCLParaphernalia
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary(
+                    PrnParseData.ProcessBinary(
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         _buf,
                         _fileOffset,
                         bufOffset,
@@ -941,7 +941,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset,
                     _analysisLevel,
@@ -952,7 +952,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 2,
                     _analysisLevel,
@@ -1018,7 +1018,7 @@ namespace PCLParaphernalia
         {
             const string segTypeDesc = "AP: Application Support";
 
-            PrnParseConstants.eContType contType;
+            PrnParseConstants.ContType contType;
 
             int baseOffset,
                   dataOffset,
@@ -1047,9 +1047,9 @@ namespace PCLParaphernalia
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary(
+                    PrnParseData.ProcessBinary(
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         _buf,
                         _fileOffset,
                         bufOffset,
@@ -1083,7 +1083,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset,
                     _analysisLevel,
@@ -1094,7 +1094,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 2,
                     _analysisLevel,
@@ -1164,7 +1164,7 @@ namespace PCLParaphernalia
         {
             const string segTypeDesc = "BR: Bitmap Resolution";
 
-            PrnParseConstants.eContType contType;
+            PrnParseConstants.ContType contType;
 
             int baseOffset,
                   dataOffset,
@@ -1195,9 +1195,9 @@ namespace PCLParaphernalia
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary(
+                    PrnParseData.ProcessBinary(
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         _buf,
                         _fileOffset,
                         bufOffset,
@@ -1231,7 +1231,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset,
                     _analysisLevel,
@@ -1242,7 +1242,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 2,
                     _analysisLevel,
@@ -1267,7 +1267,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset,
                     _analysisLevel,
@@ -1281,7 +1281,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 2,
                     _analysisLevel,
@@ -1348,7 +1348,7 @@ namespace PCLParaphernalia
         {
             const string segTypeDesc = "CC: Character Complement";
 
-            PrnParseConstants.eContType contType;
+            PrnParseConstants.ContType contType;
 
             int baseOffset,
                   dataOffset,
@@ -1377,9 +1377,9 @@ namespace PCLParaphernalia
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary(
+                    PrnParseData.ProcessBinary(
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         _buf,
                         _fileOffset,
                         bufOffset,
@@ -1413,7 +1413,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset,
                     _analysisLevel,
@@ -1424,7 +1424,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 2,
                     _analysisLevel,
@@ -1505,7 +1505,7 @@ namespace PCLParaphernalia
         {
             const string segTypeDesc = "CE: Character Enhancement";
 
-            PrnParseConstants.eContType contType;
+            PrnParseConstants.ContType contType;
 
             int baseOffset,
                   dataOffset,
@@ -1534,9 +1534,9 @@ namespace PCLParaphernalia
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary(
+                    PrnParseData.ProcessBinary(
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         _buf,
                         _fileOffset,
                         bufOffset,
@@ -1570,7 +1570,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset,
                     _analysisLevel,
@@ -1581,7 +1581,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 2,
                     _analysisLevel,
@@ -1653,7 +1653,7 @@ namespace PCLParaphernalia
 
             const int sliceMax = 50;
 
-            PrnParseConstants.eContType contType;
+            PrnParseConstants.ContType contType;
 
             bool firstLine;
 
@@ -1691,9 +1691,9 @@ namespace PCLParaphernalia
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary(
+                    PrnParseData.ProcessBinary(
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         _buf,
                         _fileOffset,
                         bufOffset,
@@ -1727,7 +1727,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset,
                     _analysisLevel,
@@ -1738,7 +1738,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 2,
                     _analysisLevel,
@@ -1782,7 +1782,7 @@ namespace PCLParaphernalia
                     PrnParseCommon.addDataRow(
                         _rowType,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         _indxOffsetFormat,
                         baseOffset + cpyOffset,
                         _analysisLevel,
@@ -1849,7 +1849,7 @@ namespace PCLParaphernalia
         {
             const string segTypeDesc = "GC: Galley Character";
 
-            PrnParseConstants.eContType contType;
+            PrnParseConstants.ContType contType;
 
             int baseOffset,
                   dataOffset,
@@ -1924,9 +1924,9 @@ namespace PCLParaphernalia
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary(
+                    PrnParseData.ProcessBinary(
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         _buf,
                         _fileOffset,
                         bufOffset,
@@ -1960,7 +1960,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset,
                     _analysisLevel,
@@ -1971,7 +1971,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 2,
                     _analysisLevel,
@@ -1995,7 +1995,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset,
                     _analysisLevel,
@@ -2015,7 +2015,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 2,
                     _analysisLevel,
@@ -2032,7 +2032,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 4,
                     _analysisLevel,
@@ -2062,7 +2062,7 @@ namespace PCLParaphernalia
                         PrnParseCommon.addDataRow(
                             _rowType,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             _indxOffsetFormat,
                             baseOffset + 6 + j,
                             _analysisLevel,
@@ -2076,7 +2076,7 @@ namespace PCLParaphernalia
                         PrnParseCommon.addDataRow(
                             _rowType,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             _indxOffsetFormat,
                             baseOffset + 8 + j,
                             _analysisLevel,
@@ -2090,7 +2090,7 @@ namespace PCLParaphernalia
                         PrnParseCommon.addDataRow(
                             _rowType,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             _indxOffsetFormat,
                             baseOffset + 10 + j,
                             _analysisLevel,
@@ -2168,7 +2168,7 @@ namespace PCLParaphernalia
         {
             const string segTypeDesc = "GI: Global Intellifont";
 
-            PrnParseConstants.eContType contType;
+            PrnParseConstants.ContType contType;
 
             int baseOffset,
                   dataOffset,
@@ -2197,9 +2197,9 @@ namespace PCLParaphernalia
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary(
+                    PrnParseData.ProcessBinary(
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         _buf,
                         _fileOffset,
                         bufOffset,
@@ -2233,7 +2233,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset,
                     _analysisLevel,
@@ -2244,7 +2244,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 2,
                     _analysisLevel,
@@ -2310,7 +2310,7 @@ namespace PCLParaphernalia
         {
             const string segTypeDesc = "GT: Global TrueType";
 
-            PrnParseConstants.eContType contType;
+            PrnParseConstants.ContType contType;
 
             int baseOffset,
                   dataOffset,
@@ -2395,9 +2395,9 @@ namespace PCLParaphernalia
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary(
+                    PrnParseData.ProcessBinary(
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         _buf,
                         _fileOffset,
                         bufOffset,
@@ -2431,7 +2431,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset,
                     _analysisLevel,
@@ -2442,7 +2442,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 2,
                     _analysisLevel,
@@ -2471,7 +2471,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset,
                     _analysisLevel,
@@ -2488,7 +2488,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 4,
                     _analysisLevel,
@@ -2510,7 +2510,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 6,
                     _analysisLevel,
@@ -2532,7 +2532,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 8,
                     _analysisLevel,
@@ -2554,7 +2554,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 10,
                     _analysisLevel,
@@ -2588,7 +2588,7 @@ namespace PCLParaphernalia
                         PrnParseCommon.addDataRow(
                             _rowType,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             _indxOffsetFormat,
                             baseOffset + 12 + j,
                             _analysisLevel,
@@ -2610,7 +2610,7 @@ namespace PCLParaphernalia
                         PrnParseCommon.addDataRow(
                             _rowType,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             _indxOffsetFormat,
                             baseOffset + 16 + j,
                             _analysisLevel,
@@ -2636,7 +2636,7 @@ namespace PCLParaphernalia
                             PrnParseCommon.addDataRow(
                                                         _rowType,
                                                         _table,
-                                                        PrnParseConstants.eOvlShow.None,
+                                                        PrnParseConstants.OvlShow.None,
                                                         _indxOffsetFormat,
                                                         baseOffset + 20 + j,
                                                         _analysisLevel,
@@ -2649,7 +2649,7 @@ namespace PCLParaphernalia
                             PrnParseCommon.addDataRow(
                                 _rowType,
                                 _table,
-                                PrnParseConstants.eOvlShow.None,
+                                PrnParseConstants.OvlShow.None,
                                 _indxOffsetFormat,
                                 baseOffset + 20 + j,
                                 _analysisLevel,
@@ -2679,7 +2679,7 @@ namespace PCLParaphernalia
                             PrnParseCommon.addDataRow(
                                 _rowType,
                                 _table,
-                                PrnParseConstants.eOvlShow.None,
+                                PrnParseConstants.OvlShow.None,
                                 _indxOffsetFormat,
                                 baseOffset + 24 + j,
                                 _analysisLevel,
@@ -2695,7 +2695,7 @@ namespace PCLParaphernalia
                             PrnParseCommon.addDataRow(
                                 _rowType,
                                 _table,
-                                PrnParseConstants.eOvlShow.None,
+                                PrnParseConstants.OvlShow.None,
                                 _indxOffsetFormat,
                                 baseOffset + 24 + j,
                                 _analysisLevel,
@@ -2776,7 +2776,7 @@ namespace PCLParaphernalia
         {
             const string segTypeDesc = "IF: Intellifont Face";
 
-            PrnParseConstants.eContType contType;
+            PrnParseConstants.ContType contType;
 
             int baseOffset,
                   dataOffset,
@@ -2805,9 +2805,9 @@ namespace PCLParaphernalia
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary(
+                    PrnParseData.ProcessBinary(
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         _buf,
                         _fileOffset,
                         bufOffset,
@@ -2841,7 +2841,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset,
                     _analysisLevel,
@@ -2852,7 +2852,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 2,
                     _analysisLevel,
@@ -2918,7 +2918,7 @@ namespace PCLParaphernalia
         {
             const string segTypeDesc = "PA: Panose Description";
 
-            PrnParseConstants.eContType contType;
+            PrnParseConstants.ContType contType;
 
             byte b;
 
@@ -2951,9 +2951,9 @@ namespace PCLParaphernalia
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary(
+                    PrnParseData.ProcessBinary(
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         _buf,
                         _fileOffset,
                         bufOffset,
@@ -2987,7 +2987,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset,
                     _analysisLevel,
@@ -2998,7 +2998,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 2,
                     _analysisLevel,
@@ -3031,7 +3031,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset,
                     _analysisLevel,
@@ -3091,7 +3091,7 @@ namespace PCLParaphernalia
         {
             const string segTypeDesc = "PF: PostScript Font";
 
-            PrnParseConstants.eContType contType;
+            PrnParseConstants.ContType contType;
 
             int baseOffset,
                   dataOffset,
@@ -3120,9 +3120,9 @@ namespace PCLParaphernalia
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary(
+                    PrnParseData.ProcessBinary(
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         _buf,
                         _fileOffset,
                         bufOffset,
@@ -3156,7 +3156,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset,
                     _analysisLevel,
@@ -3167,7 +3167,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 2,
                     _analysisLevel,
@@ -3233,7 +3233,7 @@ namespace PCLParaphernalia
         {
             const string segTypeDesc = "TF: Type Face String";
 
-            PrnParseConstants.eContType contType;
+            PrnParseConstants.ContType contType;
 
             int baseOffset,
                   dataOffset,
@@ -3262,9 +3262,9 @@ namespace PCLParaphernalia
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary(
+                    PrnParseData.ProcessBinary(
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         _buf,
                         _fileOffset,
                         bufOffset,
@@ -3298,7 +3298,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset,
                     _analysisLevel,
@@ -3309,7 +3309,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 2,
                     _analysisLevel,
@@ -3375,7 +3375,7 @@ namespace PCLParaphernalia
         {
             const string segTypeDesc = "VE: Vertical Exclude";
 
-            PrnParseConstants.eContType contType;
+            PrnParseConstants.ContType contType;
 
             int baseOffset,
                   dataOffset,
@@ -3449,9 +3449,9 @@ namespace PCLParaphernalia
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary(
+                    PrnParseData.ProcessBinary(
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         _buf,
                         _fileOffset,
                         bufOffset,
@@ -3485,7 +3485,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset,
                     _analysisLevel,
@@ -3496,7 +3496,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 2,
                     _analysisLevel,
@@ -3519,7 +3519,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 6,
                     _analysisLevel,
@@ -3536,7 +3536,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 7,
                     _analysisLevel,
@@ -3565,7 +3565,7 @@ namespace PCLParaphernalia
                         PrnParseCommon.addDataRow(
                             _rowType,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             _indxOffsetFormat,
                             baseOffset + 8 + j,
                             _analysisLevel,
@@ -3581,7 +3581,7 @@ namespace PCLParaphernalia
                         PrnParseCommon.addDataRow(
                             _rowType,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             _indxOffsetFormat,
                             baseOffset + 8 + j,
                             _analysisLevel,
@@ -3661,7 +3661,7 @@ namespace PCLParaphernalia
 
             const int sliceMax = 50;
 
-            PrnParseConstants.eContType contType;
+            PrnParseConstants.ContType contType;
 
             bool firstLine;
 
@@ -3699,9 +3699,9 @@ namespace PCLParaphernalia
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary(
+                    PrnParseData.ProcessBinary(
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         _buf,
                         _fileOffset,
                         bufOffset,
@@ -3735,7 +3735,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset,
                     _analysisLevel,
@@ -3746,7 +3746,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 2,
                     _analysisLevel,
@@ -3790,7 +3790,7 @@ namespace PCLParaphernalia
                     PrnParseCommon.addDataRow(
                         _rowType,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         _indxOffsetFormat,
                         baseOffset + infOffset,
                         _analysisLevel,
@@ -3857,7 +3857,7 @@ namespace PCLParaphernalia
         {
             const string segTypeDesc = "VR: Vertical Rotation";
 
-            PrnParseConstants.eContType contType;
+            PrnParseConstants.ContType contType;
 
             int baseOffset,
                   dataOffset,
@@ -3890,9 +3890,9 @@ namespace PCLParaphernalia
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary(
+                    PrnParseData.ProcessBinary(
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         _buf,
                         _fileOffset,
                         bufOffset,
@@ -3926,7 +3926,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset,
                     _analysisLevel,
@@ -3937,7 +3937,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 2,
                     _analysisLevel,
@@ -3961,7 +3961,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset,
                     _analysisLevel,
@@ -3981,7 +3981,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 2,
                     _analysisLevel,
@@ -4048,7 +4048,7 @@ namespace PCLParaphernalia
         {
             const string segTypeDesc = "VT: Vertical Transformation";
 
-            PrnParseConstants.eContType contType;
+            PrnParseConstants.ContType contType;
 
             int baseOffset,
                   dataOffset,
@@ -4082,9 +4082,9 @@ namespace PCLParaphernalia
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary(
+                    PrnParseData.ProcessBinary(
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         _buf,
                         _fileOffset,
                         bufOffset,
@@ -4118,7 +4118,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset,
                     _analysisLevel,
@@ -4129,7 +4129,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 2,
                     _analysisLevel,
@@ -4168,7 +4168,7 @@ namespace PCLParaphernalia
                     PrnParseCommon.addDataRow(
                         _rowType,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         _indxOffsetFormat,
                         baseOffset + j,
                         _analysisLevel,
@@ -4182,7 +4182,7 @@ namespace PCLParaphernalia
                     PrnParseCommon.addDataRow(
                         _rowType,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         _indxOffsetFormat,
                         baseOffset + j + 2,
                         _analysisLevel,
@@ -4207,7 +4207,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + eoTMOffset,
                     _analysisLevel,
@@ -4221,7 +4221,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + eoTMOffset + 2,
                     _analysisLevel,
@@ -4288,7 +4288,7 @@ namespace PCLParaphernalia
         {
             const string segTypeDesc = "XW: X-Window Font";
 
-            PrnParseConstants.eContType contType;
+            PrnParseConstants.ContType contType;
 
             int baseOffset,
                   dataOffset,
@@ -4317,9 +4317,9 @@ namespace PCLParaphernalia
             {
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary(
+                    PrnParseData.ProcessBinary(
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         _buf,
                         _fileOffset,
                         bufOffset,
@@ -4353,7 +4353,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset,
                     _analysisLevel,
@@ -4364,7 +4364,7 @@ namespace PCLParaphernalia
                 PrnParseCommon.addDataRow(
                     _rowType,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     baseOffset + 2,
                     _analysisLevel,
@@ -4427,9 +4427,9 @@ namespace PCLParaphernalia
             _validSegs = false;
 
             PrnParseCommon.addTextRow(
-                PrnParseRowTypes.eType.MsgWarning,
+                PrnParseRowTypes.Type.MsgWarning,
                 _table,
-                PrnParseConstants.eOvlShow.None,
+                PrnParseConstants.OvlShow.None,
                 string.Empty,
                 "*** Warning ***",
                 string.Empty,
@@ -4438,9 +4438,9 @@ namespace PCLParaphernalia
             if (line2 != string.Empty)
             {
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.MsgWarning,
+                    PrnParseRowTypes.Type.MsgWarning,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     string.Empty,
                     string.Empty,
@@ -4450,9 +4450,9 @@ namespace PCLParaphernalia
             if (line3 != string.Empty)
             {
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.MsgWarning,
+                    PrnParseRowTypes.Type.MsgWarning,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     string.Empty,
                     string.Empty,

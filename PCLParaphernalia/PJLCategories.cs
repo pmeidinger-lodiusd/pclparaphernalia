@@ -16,7 +16,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public enum eCategoryType
+        public enum CategoryType
         {
             Custom,
             Std
@@ -24,30 +24,18 @@ namespace PCLParaphernalia
 
         private static readonly PJLCategory[] _categories =
         {
-            new PJLCategory(eCategoryType.Custom,
-                            "<specify value>"),
-            new PJLCategory(eCategoryType.Std,
-                            "ID"),
-            new PJLCategory(eCategoryType.Std,
-                            "CONFIG"),
-            new PJLCategory(eCategoryType.Std,
-                            "FILESYS"),
-            new PJLCategory(eCategoryType.Std,
-                            "LOG"),
-            new PJLCategory(eCategoryType.Std,
-                            "MEMORY"),
-            new PJLCategory(eCategoryType.Std,
-                            "PAGECOUNT"),
-            new PJLCategory(eCategoryType.Std,
-                            "PRODINFO"),
-            new PJLCategory(eCategoryType.Std,
-                            "STATUS"),
-            new PJLCategory(eCategoryType.Std,
-                            "SUPPLIES"),
-            new PJLCategory(eCategoryType.Std,
-                            "VARIABLES"),
-            new PJLCategory(eCategoryType.Std,
-                            "USTATUS")
+            new PJLCategory(CategoryType.Custom, "<specify value>"),
+            new PJLCategory(CategoryType.Std, "ID"),
+            new PJLCategory(CategoryType.Std, "CONFIG"),
+            new PJLCategory(CategoryType.Std, "FILESYS"),
+            new PJLCategory(CategoryType.Std, "LOG"),
+            new PJLCategory(CategoryType.Std, "MEMORY"),
+            new PJLCategory(CategoryType.Std, "PAGECOUNT"),
+            new PJLCategory(CategoryType.Std, "PRODINFO"),
+            new PJLCategory(CategoryType.Std, "STATUS"),
+            new PJLCategory(CategoryType.Std, "SUPPLIES"),
+            new PJLCategory(CategoryType.Std, "VARIABLES"),
+            new PJLCategory(CategoryType.Std, "USTATUS")
         };
 
         private static readonly int _categoryCount = _categories.GetUpperBound(0) + 1;
@@ -61,7 +49,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCount()
+        public static int GetCount()
         {
             return _categoryCount;
         }
@@ -75,7 +63,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getName(int selection)
+        public static string GetName(int selection)
         {
             return _categories[selection].getName();
         }
@@ -89,7 +77,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eCategoryType getType(int selection)
+        public static CategoryType GetType(int selection)
         {
             return _categories[selection].getType();
         }

@@ -30,7 +30,7 @@ namespace PCLParaphernalia
         private int _statsCtParent;
         private int _statsCtChild;
 
-        private readonly PCLXLDataTypes.eBaseType _baseType;
+        private readonly PCLXLDataTypes.BaseType _baseType;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -43,7 +43,7 @@ namespace PCLParaphernalia
                              bool flagArray,
                              int groupSize,
                              int unitSize,
-                             PCLXLDataTypes.eBaseType baseType,
+                             PCLXLDataTypes.BaseType baseType,
                              string description)
         {
             _tag = tag;
@@ -68,7 +68,7 @@ namespace PCLParaphernalia
                                 ref bool flagArray,
                                 ref int groupSize,
                                 ref int unitSize,
-                                ref PCLXLDataTypes.eBaseType baseType,
+                                ref PCLXLDataTypes.BaseType baseType,
                                 ref string description)
         {
             flagReserved = FlagReserved;

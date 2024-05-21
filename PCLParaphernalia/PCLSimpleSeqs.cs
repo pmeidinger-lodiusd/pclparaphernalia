@@ -55,7 +55,7 @@ namespace PCLParaphernalia
             byte iChar,
             ref bool optObsolete,
             ref bool optResetHPGL2,
-            ref PrnParseConstants.eOvlAct makeOvlAct,
+            ref PrnParseConstants.OvlAct makeOvlAct,
             ref string description)
         {
             bool seqKnown;
@@ -283,136 +283,136 @@ namespace PCLParaphernalia
             _seqUnknown =
                new PCLSimpleSeq(sChar,
                                 flagNone, flagNone,
-                                PrnParseConstants.eOvlAct.None,
-                                PrnParseConstants.eSeqGrp.Unknown,
+                                PrnParseConstants.OvlAct.None,
+                                PrnParseConstants.SeqGrp.Unknown,
                                 "*** Unknown sequence ***");
 
             sChar = 0x31;                                                // 1 //
             _seqs.Add(sChar,
                  new PCLSimpleSeq(sChar,
                                   flagObsolete, flagNone,
-                                 PrnParseConstants.eOvlAct.None,
-                                 PrnParseConstants.eSeqGrp.PageControl,
+                                 PrnParseConstants.OvlAct.None,
+                                 PrnParseConstants.SeqGrp.PageControl,
                                   "Set Horizontal Tab At Current Column"));
 
             sChar = 0x32;                                                // 2 //
             _seqs.Add(sChar,
                 new PCLSimpleSeq(sChar,
                                  flagObsolete, flagNone,
-                                 PrnParseConstants.eOvlAct.None,
-                                 PrnParseConstants.eSeqGrp.PageControl,
+                                 PrnParseConstants.OvlAct.None,
+                                 PrnParseConstants.SeqGrp.PageControl,
                                  "Clear Horizontal Tab At Current Column"));
 
             sChar = 0x33;                                                // 3 //
             _seqs.Add(sChar,
                 new PCLSimpleSeq(sChar,
                                  flagObsolete, flagNone,
-                                 PrnParseConstants.eOvlAct.None,
-                                 PrnParseConstants.eSeqGrp.PageControl,
+                                 PrnParseConstants.OvlAct.None,
+                                 PrnParseConstants.SeqGrp.PageControl,
                                  "Clear All Horizontal Tabs"));
 
             sChar = 0x34;                                                // 4 //
             _seqs.Add(sChar,
                 new PCLSimpleSeq(sChar,
                                  flagObsolete, flagNone,
-                                 PrnParseConstants.eOvlAct.None,
-                                 PrnParseConstants.eSeqGrp.PageControl,
+                                 PrnParseConstants.OvlAct.None,
+                                 PrnParseConstants.SeqGrp.PageControl,
                                  "Set Left Margin At Current Position"));
 
             sChar = 0x35;                                                // 5 //
             _seqs.Add(sChar,
                 new PCLSimpleSeq(sChar,
                                  flagObsolete, flagNone,
-                                 PrnParseConstants.eOvlAct.None,
-                                 PrnParseConstants.eSeqGrp.PageControl,
+                                 PrnParseConstants.OvlAct.None,
+                                 PrnParseConstants.SeqGrp.PageControl,
                                  "Set Right Margin At Current Position"));
 
             sChar = 0x39;                                                // 9 //
             _seqs.Add(sChar,
                 new PCLSimpleSeq(sChar,
                                  flagNone, flagNone,
-                                 PrnParseConstants.eOvlAct.None,
-                                 PrnParseConstants.eSeqGrp.PageControl,
+                                 PrnParseConstants.OvlAct.None,
+                                 PrnParseConstants.SeqGrp.PageControl,
                                  "Clear Horizontal Margins"));
 
             sChar = 0x3d;                                                // = //
             _seqs.Add(sChar,
                 new PCLSimpleSeq(sChar,
                                  flagObsolete, flagNone,
-                                 PrnParseConstants.eOvlAct.None,
-                                 PrnParseConstants.eSeqGrp.CursorPositioning,
+                                 PrnParseConstants.OvlAct.None,
+                                 PrnParseConstants.SeqGrp.CursorPositioning,
                                  "Half Line Feed"));
 
             sChar = 0x3f;                                                // ? //
             _seqs.Add(sChar,
                 new PCLSimpleSeq(sChar,
                                  flagObsolete, flagNone,
-                                 PrnParseConstants.eOvlAct.None,
-                                 PrnParseConstants.eSeqGrp.StatusReadback,
+                                 PrnParseConstants.OvlAct.None,
+                                 PrnParseConstants.SeqGrp.StatusReadback,
                                  "I/O Status Request"));
 
             sChar = 0x45;                                                // E //
             _seqs.Add(sChar,
                 new PCLSimpleSeq(sChar,
                                  flagNone, flagResetGL2,
-                                 PrnParseConstants.eOvlAct.Reset,
-                                 PrnParseConstants.eSeqGrp.JobControl,
+                                 PrnParseConstants.OvlAct.Reset,
+                                 PrnParseConstants.SeqGrp.JobControl,
                                  "Printer Reset"));
 
             sChar = 0x49;                                                // I //
             _seqs.Add(sChar,
                 new PCLSimpleSeq(sChar,
                                  flagObsolete, flagNone,
-                                 PrnParseConstants.eOvlAct.None,
-                                 PrnParseConstants.eSeqGrp.PageControl,
+                                 PrnParseConstants.OvlAct.None,
+                                 PrnParseConstants.SeqGrp.PageControl,
                                  "Horizontal Tabulation"));
 
             sChar = 0x59;                                                // Y //
             _seqs.Add(sChar,
                 new PCLSimpleSeq(sChar,
                                  flagNone, flagNone,
-                                 PrnParseConstants.eOvlAct.Remove,
-                                 PrnParseConstants.eSeqGrp.JobControl,
+                                 PrnParseConstants.OvlAct.Remove,
+                                 PrnParseConstants.SeqGrp.JobControl,
                                  "Display Functions - Enable"));
 
             sChar = 0x5a;                                                // Z //
             _seqs.Add(sChar,
                 new PCLSimpleSeq(sChar,
                                  flagNone, flagNone,
-                                 PrnParseConstants.eOvlAct.Remove,
-                                 PrnParseConstants.eSeqGrp.JobControl,
+                                 PrnParseConstants.OvlAct.Remove,
+                                 PrnParseConstants.SeqGrp.JobControl,
                                  "Display Functions - Disable"));
 
             sChar = 0x5e;                                                // ^ //
             _seqs.Add(sChar,
                 new PCLSimpleSeq(sChar,
                                  flagObsolete, flagNone,
-                                 PrnParseConstants.eOvlAct.None,
-                                 PrnParseConstants.eSeqGrp.StatusReadback,
+                                 PrnParseConstants.OvlAct.None,
+                                 PrnParseConstants.SeqGrp.StatusReadback,
                                  "Primary Status Request"));
 
             sChar = 0x6e;                                                // n //
             _seqs.Add(sChar,
                 new PCLSimpleSeq(sChar,
                                  flagObsolete, flagNone,
-                                 PrnParseConstants.eOvlAct.None,
-                                 PrnParseConstants.eSeqGrp.JobControl,
+                                 PrnParseConstants.OvlAct.None,
+                                 PrnParseConstants.SeqGrp.JobControl,
                                  "Transfer To On-Line State"));
 
             sChar = 0x6f;                                                // o //
             _seqs.Add(sChar,
                 new PCLSimpleSeq(sChar,
                                  flagObsolete, flagNone,
-                                 PrnParseConstants.eOvlAct.None,
-                                 PrnParseConstants.eSeqGrp.JobControl,
+                                 PrnParseConstants.OvlAct.None,
+                                 PrnParseConstants.SeqGrp.JobControl,
                                  "Transfer To Off-Line State"));
 
             sChar = 0x7a;                                                // z //
             _seqs.Add(sChar,
                 new PCLSimpleSeq(sChar,
                                  flagNone, flagNone,
-                                 PrnParseConstants.eOvlAct.Remove,
-                                 PrnParseConstants.eSeqGrp.JobControl,
+                                 PrnParseConstants.OvlAct.Remove,
+                                 PrnParseConstants.SeqGrp.JobControl,
                                  "Self Test"));
 
             _seqsCount = _seqs.Count;

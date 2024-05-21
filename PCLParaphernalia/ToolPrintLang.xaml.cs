@@ -62,16 +62,16 @@ namespace PCLParaphernalia
         {
             // must be in same order as eInfoType enumeration
 
-            (int) ToolCommonData.eToolSubIds.PCL,
-            (int) ToolCommonData.eToolSubIds.HPGL2,
-            (int) ToolCommonData.eToolSubIds.PCLXLTags,
-            (int) ToolCommonData.eToolSubIds.PCLXLEnums,
-            (int) ToolCommonData.eToolSubIds.PJLCmds,
-            (int) ToolCommonData.eToolSubIds.PMLTags,
-            (int) ToolCommonData.eToolSubIds.SymbolSets,
-            (int) ToolCommonData.eToolSubIds.Fonts,
-            (int) ToolCommonData.eToolSubIds.PaperSizes,
-            (int) ToolCommonData.eToolSubIds.PrescribeCmds
+            (int) ToolCommonData.ToolSubIds.PCL,
+            (int) ToolCommonData.ToolSubIds.HPGL2,
+            (int) ToolCommonData.ToolSubIds.PCLXLTags,
+            (int) ToolCommonData.ToolSubIds.PCLXLEnums,
+            (int) ToolCommonData.ToolSubIds.PJLCmds,
+            (int) ToolCommonData.ToolSubIds.PMLTags,
+            (int) ToolCommonData.ToolSubIds.SymbolSets,
+            (int) ToolCommonData.ToolSubIds.Fonts,
+            (int) ToolCommonData.ToolSubIds.PaperSizes,
+            (int) ToolCommonData.ToolSubIds.PrescribeCmds
         };
 
         private int _ctItems = 0;
@@ -112,13 +112,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ToolPrintLang(ref ToolCommonData.ePrintLang crntPDL)
+        public ToolPrintLang(ref ToolCommonData.PrintLang crntPDL)
         {
             InitializeComponent();
 
             initialise();
 
-            crntPDL = ToolCommonData.ePrintLang.Unknown;
+            crntPDL = ToolCommonData.PrintLang.Unknown;
         }
 
         //--------------------------------------------------------------------//
@@ -171,10 +171,10 @@ namespace PCLParaphernalia
         {
             bool flagOptRptWrap = false;
 
-            ReportCore.eRptFileFmt rptFileFmt = ReportCore.eRptFileFmt.NA;
-            ReportCore.eRptChkMarks rptChkMarks = ReportCore.eRptChkMarks.NA;
+            ReportCore.RptFileFmt rptFileFmt = ReportCore.RptFileFmt.NA;
+            ReportCore.RptChkMarks rptChkMarks = ReportCore.RptChkMarks.NA;
 
-            TargetCore.metricsReturnFileRpt(ToolCommonData.eToolIds.PrintLang,
+            TargetCore.MetricsReturnFileRpt(ToolCommonData.ToolIds.PrintLang,
                                              ref rptFileFmt,
                                              ref rptChkMarks,
                                              ref flagOptRptWrap);
@@ -837,7 +837,7 @@ namespace PCLParaphernalia
 
             dgSeq.Items.Clear();
 
-            _ctItems = PCLFonts.displayFontList(dgSeq);
+            _ctItems = PCLFonts.DisplayFontList(dgSeq);
 
             txtCount.Text = _ctItems.ToString();
         }
@@ -877,7 +877,7 @@ namespace PCLParaphernalia
 
             dgSeq.Items.Clear();
 
-            _ctItems = PCLPaperSizes.displayPaperSizeList(dgSeq);
+            _ctItems = PCLPaperSizes.DisplayPaperSizeList(dgSeq);
 
             txtCount.Text = _ctItems.ToString();
         }
@@ -975,19 +975,19 @@ namespace PCLParaphernalia
                 _ctItems = 0;
 
                 if (_flagPCLXLTagAttrDef)
-                    _ctItems += PCLXLAttrDefiners.displayTags(dgSeq, _flagPCLXLOptReserved);
+                    _ctItems += PCLXLAttrDefiners.DisplayTags(dgSeq, _flagPCLXLOptReserved);
 
                 if (_flagPCLXLTagEmbedDataLen)
-                    _ctItems += PCLXLEmbedDataDefs.displayTags(dgSeq, _flagPCLXLOptReserved);
+                    _ctItems += PCLXLEmbedDataDefs.DisplayTags(dgSeq, _flagPCLXLOptReserved);
 
                 if (_flagPCLXLTagAttribute)
-                    _ctItems += PCLXLAttributes.displayTags(dgSeq, _flagPCLXLOptReserved);
+                    _ctItems += PCLXLAttributes.DisplayTags(dgSeq, _flagPCLXLOptReserved);
 
                 if (_flagPCLXLTagDataType)
-                    _ctItems += PCLXLDataTypes.displayTags(dgSeq, _flagPCLXLOptReserved);
+                    _ctItems += PCLXLDataTypes.DisplayTags(dgSeq, _flagPCLXLOptReserved);
 
                 if (_flagPCLXLTagOperator)
-                    _ctItems += PCLXLOperators.displayTags(dgSeq, _flagPCLXLOptReserved);
+                    _ctItems += PCLXLOperators.DisplayTags(dgSeq, _flagPCLXLOptReserved);
 
                 if (_flagPCLXLTagWhitespace)
                     _ctItems += PCLXLWhitespaces.displayTags(dgSeq);
@@ -1011,7 +1011,7 @@ namespace PCLParaphernalia
 
             dgSeq.Items.Clear();
 
-            _ctItems = PJLCommands.displayCmds(dgSeq);
+            _ctItems = PJLCommands.DisplayCmds(dgSeq);
 
             txtCount.Text = _ctItems.ToString();
         }
@@ -1045,7 +1045,7 @@ namespace PCLParaphernalia
                 _ctItems = 0;
 
                 if (_flagPMLTagDataType)
-                    _ctItems += PMLDataTypes.displayTags(dgSeq);
+                    _ctItems += PMLDataTypes.DisplayTags(dgSeq);
 
                 if (_flagPMLTagAction)
                     _ctItems += PMLActions.displayTags(dgSeq);
@@ -1103,9 +1103,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void giveCrntPDL(ref ToolCommonData.ePrintLang crntPDL)
+        public void giveCrntPDL(ref ToolCommonData.PrintLang crntPDL)
         {
-            crntPDL = ToolCommonData.ePrintLang.Unknown;
+            crntPDL = ToolCommonData.PrintLang.Unknown;
         }
 
         //--------------------------------------------------------------------//

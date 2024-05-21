@@ -28,7 +28,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static readonly int _ctUnicodeFonts = PCLFonts.getCountUnique();
+        private static readonly int _ctUnicodeFonts = PCLFonts.GetCountUnique();
 
         private static readonly int[] _subsetUnicodeFonts = new int[_ctUnicodeFonts];
 
@@ -38,8 +38,8 @@ namespace PCLParaphernalia
         private static int _indxUnicodeFontPCL;
         private static int _indxUnicodeFontPCLXL;
 
-        private static PCLFonts.eVariant _unicodeFontVarPCL;
-        private static PCLFonts.eVariant _unicodeFontVarPCLXL;
+        private static PCLFonts.Variant _unicodeFontVarPCL;
+        private static PCLFonts.Variant _unicodeFontVarPCLXL;
 
         private bool _flagUnicodeFormAsMacroPCL;
         private bool _flagUnicodeFormAsMacroPCLXL;
@@ -68,12 +68,12 @@ namespace PCLParaphernalia
                 UnicodeCategory unicodeCat =
                     CharUnicodeInfo.GetUnicodeCategory((char)unicodeUCS2);
 
-                if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+                if (_crntPDL == ToolCommonData.PrintLang.PCL)
                     _unicodeUCS2PCL = unicodeUCS2;
                 else
                     _unicodeUCS2PCLXL = unicodeUCS2;
 
-                PrnParseDataUTF8.convertUTF32ToUTF8HexString(unicodeUCS2,
+                PrnParseDataUTF8.ConvertUTF32ToUTF8HexString(unicodeUCS2,
                                                               true,
                                                               ref utf8HexVal);
 
@@ -101,7 +101,7 @@ namespace PCLParaphernalia
                 int indxFont = cbUnicodeFont.SelectedIndex;
                 bool samePreset = false;
 
-                if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+                if (_crntPDL == ToolCommonData.PrintLang.PCL)
                 {
                     if (indxFont == _indxUnicodeFontPCL)
                         samePreset = true;
@@ -149,19 +149,19 @@ namespace PCLParaphernalia
 
             cbUnicodeFont.Items.Clear();
 
-            ctr = PCLFonts.getCount();
+            ctr = PCLFonts.GetCount();
             index = 0;
 
             for (int i = 0; i < ctr; i++)
             {
-                if ((!PCLFonts.isBoundFont(i)) &&
-                    ((PCLFonts.getType(i) ==
-                     PCLFonts.eFontType.PresetTypeface) ||
-                    (PCLFonts.getType(i) ==
-                     PCLFonts.eFontType.PresetFamilyMember)))
+                if ((!PCLFonts.IsBoundFont(i)) &&
+                    ((PCLFonts.GetType(i) ==
+                     PCLFonts.FontType.PresetTypeface) ||
+                    (PCLFonts.GetType(i) ==
+                     PCLFonts.FontType.PresetFamilyMember)))
                 {
                     _subsetUnicodeFonts[index++] = i;
-                    cbUnicodeFont.Items.Add(PCLFonts.getName(i));
+                    cbUnicodeFont.Items.Add(PCLFonts.GetName(i));
                 }
             }
 
@@ -183,7 +183,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 if ((_indxUnicodeFontPCL < 0) ||
                     (_indxUnicodeFontPCL >= _ctUnicodeFonts))
@@ -240,7 +240,7 @@ namespace PCLParaphernalia
 
         private void initialiseDescUnicode()
         {
-            if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 txtUnicodeDesc.Text =
                     "Most printer-resident fonts are unbound, which means" +
@@ -375,10 +375,10 @@ namespace PCLParaphernalia
 
         private void rbUnicodeFontVarB_Click(object sender, RoutedEventArgs e)
         {
-            if (_crntPDL == ToolCommonData.ePrintLang.PCL)
-                _unicodeFontVarPCL = PCLFonts.eVariant.Bold;
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
+                _unicodeFontVarPCL = PCLFonts.Variant.Bold;
             else
-                _unicodeFontVarPCLXL = PCLFonts.eVariant.Bold;
+                _unicodeFontVarPCLXL = PCLFonts.Variant.Bold;
         }
 
         //--------------------------------------------------------------------//
@@ -393,10 +393,10 @@ namespace PCLParaphernalia
 
         private void rbUnicodeFontVarBI_Click(object sender, RoutedEventArgs e)
         {
-            if (_crntPDL == ToolCommonData.ePrintLang.PCL)
-                _unicodeFontVarPCL = PCLFonts.eVariant.BoldItalic;
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
+                _unicodeFontVarPCL = PCLFonts.Variant.BoldItalic;
             else
-                _unicodeFontVarPCLXL = PCLFonts.eVariant.BoldItalic;
+                _unicodeFontVarPCLXL = PCLFonts.Variant.BoldItalic;
         }
 
         //--------------------------------------------------------------------//
@@ -410,10 +410,10 @@ namespace PCLParaphernalia
 
         private void rbUnicodeFontVarI_Click(object sender, RoutedEventArgs e)
         {
-            if (_crntPDL == ToolCommonData.ePrintLang.PCL)
-                _unicodeFontVarPCL = PCLFonts.eVariant.Italic;
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
+                _unicodeFontVarPCL = PCLFonts.Variant.Italic;
             else
-                _unicodeFontVarPCLXL = PCLFonts.eVariant.Italic;
+                _unicodeFontVarPCLXL = PCLFonts.Variant.Italic;
         }
 
         //--------------------------------------------------------------------//
@@ -427,10 +427,10 @@ namespace PCLParaphernalia
 
         private void rbUnicodeFontVarR_Click(object sender, RoutedEventArgs e)
         {
-            if (_crntPDL == ToolCommonData.ePrintLang.PCL)
-                _unicodeFontVarPCL = PCLFonts.eVariant.Regular;
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
+                _unicodeFontVarPCL = PCLFonts.Variant.Regular;
             else
-                _unicodeFontVarPCLXL = PCLFonts.eVariant.Regular;
+                _unicodeFontVarPCLXL = PCLFonts.Variant.Regular;
         }
 
         //--------------------------------------------------------------------//
@@ -444,13 +444,13 @@ namespace PCLParaphernalia
 
         private void setFlagUnicodeFormAsMacro(
             bool setFlag,
-            ToolCommonData.ePrintLang crntPDL)
+            ToolCommonData.PrintLang crntPDL)
         {
-            if (crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 _flagUnicodeFormAsMacroPCL = setFlag;
             }
-            else if (crntPDL == ToolCommonData.ePrintLang.PCLXL)
+            else if (crntPDL == ToolCommonData.PrintLang.PCLXL)
             {
                 _flagUnicodeFormAsMacroPCLXL = setFlag;
             }
@@ -469,7 +469,7 @@ namespace PCLParaphernalia
 
         private void setFontOptionsVariants(int indxFont,
                                              bool samePreset,
-                                             ref PCLFonts.eVariant fontVar)
+                                             ref PCLFonts.Variant fontVar)
         {
             bool varB,
                     varBI,
@@ -495,17 +495,17 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            varR = PCLFonts.variantExists(fontIndx,
-                                           PCLFonts.eVariant.Regular);
+            varR = PCLFonts.VariantExists(fontIndx,
+                                           PCLFonts.Variant.Regular);
 
-            varI = PCLFonts.variantExists(fontIndx,
-                                           PCLFonts.eVariant.Italic);
+            varI = PCLFonts.VariantExists(fontIndx,
+                                           PCLFonts.Variant.Italic);
 
-            varB = PCLFonts.variantExists(fontIndx,
-                                           PCLFonts.eVariant.Bold);
+            varB = PCLFonts.VariantExists(fontIndx,
+                                           PCLFonts.Variant.Bold);
 
-            varBI = PCLFonts.variantExists(fontIndx,
-                                            PCLFonts.eVariant.BoldItalic);
+            varBI = PCLFonts.VariantExists(fontIndx,
+                                            PCLFonts.Variant.BoldItalic);
 
             //----------------------------------------------------------------//
 
@@ -525,25 +525,25 @@ namespace PCLParaphernalia
 
             if (samePreset)
             {
-                if (varR && (fontVar == PCLFonts.eVariant.Regular))
+                if (varR && (fontVar == PCLFonts.Variant.Regular))
                 {
                     rbUnicodeFontVarR.IsChecked = true;
                     varSet = true;
                 }
 
-                if (varI && (fontVar == PCLFonts.eVariant.Italic))
+                if (varI && (fontVar == PCLFonts.Variant.Italic))
                 {
                     rbUnicodeFontVarI.IsChecked = true;
                     varSet = true;
                 }
 
-                if (varB && (fontVar == PCLFonts.eVariant.Bold))
+                if (varB && (fontVar == PCLFonts.Variant.Bold))
                 {
                     rbUnicodeFontVarB.IsChecked = true;
                     varSet = true;
                 }
 
-                if (varBI && (fontVar == PCLFonts.eVariant.BoldItalic))
+                if (varBI && (fontVar == PCLFonts.Variant.BoldItalic))
                 {
                     rbUnicodeFontVarBI.IsChecked = true;
                     varSet = true;
@@ -557,22 +557,22 @@ namespace PCLParaphernalia
                 if (varR)
                 {
                     rbUnicodeFontVarR.IsChecked = true;
-                    fontVar = PCLFonts.eVariant.Regular;
+                    fontVar = PCLFonts.Variant.Regular;
                 }
                 else if (varI)
                 {
                     rbUnicodeFontVarI.IsChecked = true;
-                    fontVar = PCLFonts.eVariant.Italic;
+                    fontVar = PCLFonts.Variant.Italic;
                 }
                 else if (varB)
                 {
                     rbUnicodeFontVarB.IsChecked = true;
-                    fontVar = PCLFonts.eVariant.Bold;
+                    fontVar = PCLFonts.Variant.Bold;
                 }
                 else if (varBI)
                 {
                     rbUnicodeFontVarBI.IsChecked = true;
-                    fontVar = PCLFonts.eVariant.BoldItalic;
+                    fontVar = PCLFonts.Variant.BoldItalic;
                 }
             }
         }

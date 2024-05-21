@@ -21,7 +21,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void generateRequest(BinaryWriter prnWriter,
-                                            PJLCommands.eCmdIndex cmdIndx,
+                                            PJLCommands.CmdIndex cmdIndx,
                                             int indexCategory,
                                             int indexVariable,
                                             string customCat,
@@ -29,21 +29,21 @@ namespace PCLParaphernalia
         {
             string seq;
 
-            if (cmdIndx != PJLCommands.eCmdIndex.Unknown)
+            if (cmdIndx != PJLCommands.CmdIndex.Unknown)
             {
-                PJLCommands.eRequestType reqType;
+                PJLCommands.RequestType reqType;
 
                 string cmdName;
 
-                reqType = PJLCommands.getType(cmdIndx);
-                cmdName = PJLCommands.getName(cmdIndx);
+                reqType = PJLCommands.GetType(cmdIndx);
+                cmdName = PJLCommands.GetName(cmdIndx);
 
-                if (reqType == PJLCommands.eRequestType.Category)
+                if (reqType == PJLCommands.RequestType.Category)
                 {
-                    if (indexCategory < PJLCategories.getCount())
+                    if (indexCategory < PJLCategories.GetCount())
                     {
-                        if (PJLCategories.getType(indexCategory) ==
-                            PJLCategories.eCategoryType.Custom)
+                        if (PJLCategories.GetType(indexCategory) ==
+                            PJLCategories.CategoryType.Custom)
                         {
                             seq = "\x1b" + "%-12345X" +
                                            "@PJL ECHO PCLParaphernalia" + "\x0d\x0a" +
@@ -54,7 +54,7 @@ namespace PCLParaphernalia
                         }
                         else
                         {
-                            string categoryName = PJLCategories.getName(indexCategory);
+                            string categoryName = PJLCategories.GetName(indexCategory);
 
                             seq = "\x1b" + "%-12345X" +
                                            "@PJL ECHO PCLParaphernalia" + "\x0d\x0a" +
@@ -69,11 +69,11 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    if (indexVariable < PJLVariables.getCount())
+                    if (indexVariable < PJLVariables.GetCount())
                     {
-                        PJLVariables.eVarType varType = PJLVariables.getType(indexVariable);
+                        PJLVariables.VarType varType = PJLVariables.GetType(indexVariable);
 
-                        if (varType == PJLVariables.eVarType.Custom)
+                        if (varType == PJLVariables.VarType.Custom)
                         {
                             seq = "\x1b" + "%-12345X" +
                                            "@PJL ECHO PCLParaphernalia" + "\x0d\x0a" +
@@ -87,13 +87,13 @@ namespace PCLParaphernalia
                             string variableName;
                             string personality;
 
-                            variableName = PJLVariables.getName(indexVariable);
+                            variableName = PJLVariables.GetName(indexVariable);
 
-                            if (varType == PJLVariables.eVarType.PCL)
+                            if (varType == PJLVariables.VarType.PCL)
                                 personality = "LPARM : PCL ";
-                            else if (varType == PJLVariables.eVarType.PDF)
+                            else if (varType == PJLVariables.VarType.PDF)
                                 personality = "LPARM : PDF ";
-                            else if (varType == PJLVariables.eVarType.PS)
+                            else if (varType == PJLVariables.VarType.PS)
                                 personality = "LPARM : POSTSCRIPT ";
                             else
                                 personality = string.Empty;
@@ -163,7 +163,7 @@ namespace PCLParaphernalia
 
             while (!replyComplete)
             {
-                OK = TargetCore.responseReadBlock(offset,
+                OK = TargetCore.ResponseReadBlock(offset,
                                                    bufRem,
                                                    ref replyData,
                                                    ref blockLen);
@@ -229,7 +229,7 @@ namespace PCLParaphernalia
 
             replyLen = endOffset;
 
-            TargetCore.responseCloseConnection();
+            TargetCore.ResponseCloseConnection();
 
             return System.Text.Encoding.ASCII.GetString(replyData,
                                                          0,
@@ -247,7 +247,7 @@ namespace PCLParaphernalia
 
         public static void sendRequest()
         {
-            TargetCore.requestStreamWrite(true);
+            TargetCore.RequestStreamWrite(true);
         }
     }
 }

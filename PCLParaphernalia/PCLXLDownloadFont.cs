@@ -22,7 +22,7 @@ namespace PCLParaphernalia
 
         private const ushort _defaultPCLDotRes = 600;
 
-        private enum ePCLXLFontTechnology : byte
+        private enum PCLXLFontTechnology : byte
         {
             TrueType = 1,
             Bitmap = 254,
@@ -46,7 +46,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void fontFileClose()
+        private static void FontFileClose()
         {
             _binReader.Close();
             _ipStream.Close();
@@ -61,8 +61,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool fontFileCopy(BinaryWriter prnWriter,
-                                           string fontFilename)
+        public static bool FontFileCopy(BinaryWriter prnWriter, string fontFilename)
         {
             bool fileOpen = false;
 
@@ -70,7 +69,7 @@ namespace PCLParaphernalia
 
             long fileSize = 0;
 
-            fileOpen = fontFileOpen(fontFilename, ref fileSize);
+            fileOpen = FontFileOpen(fontFilename, ref fileSize);
 
             if (!fileOpen)
             {
@@ -97,7 +96,7 @@ namespace PCLParaphernalia
                         prnWriter.Write(buf, 0, readSize);
                 }
 
-                fontFileClose();
+                FontFileClose();
             }
 
             return OK;
@@ -112,7 +111,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool fontFileOpen(string fileName,
+        private static bool FontFileOpen(string fileName,
                                             ref long fileSize)
         {
             bool open = false;
@@ -180,7 +179,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool getFontCharacteristics(string fontFilename,
+        public static bool GetFontCharacteristics(string fontFilename,
                                                      ref string fontName,
                                                      ref bool scalable,
                                                      ref bool bound,
@@ -199,7 +198,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            fileOpen = fontFileOpen(fontFilename, ref fileSize);
+            fileOpen = FontFileOpen(fontFilename, ref fileSize);
 
             if (!fileOpen)
             {
@@ -207,20 +206,20 @@ namespace PCLParaphernalia
             }
             else
             {
-                OK = readHddrIntro(fontFilename,
+                OK = ReadHddrIntro(fontFilename,
                                     fileSize,
                                     ref fontName,
                                     ref hddrOffset);
 
                 if (OK)
                 {
-                    OK = readHddrDescriptor(hddrOffset,
+                    OK = ReadHddrDescriptor(hddrOffset,
                                              ref scalable,
                                              ref bound,
                                              ref symSetNo);
                 }
 
-                fontFileClose();
+                FontFileClose();
             }
 
             return OK;
@@ -236,7 +235,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool readHddrDescriptor(ushort hddrOffset,
+        private static bool ReadHddrDescriptor(ushort hddrOffset,
                                                   ref bool scalable,
                                                   ref bool bound,
                                                   ref ushort symSetNo)
@@ -298,7 +297,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool readHddrIntro(string fileName,
+        private static bool ReadHddrIntro(string fileName,
                                              long fileSize,
                                              ref string fontName,
                                              ref ushort hddrOffset)
@@ -339,16 +338,16 @@ namespace PCLParaphernalia
 
             while (OK && !beginFound)
             {
-                if (buf[pos] == (byte)PCLXLDataTypes.eTag.UbyteArray)
+                if (buf[pos] == (byte)PCLXLDataTypes.Tag.UbyteArray)
                 {
                     // start of ubyte array for FontName attribute;
 
-                    if (buf[pos + 1] == (byte)PCLXLDataTypes.eTag.Uint16)
+                    if (buf[pos + 1] == (byte)PCLXLDataTypes.Tag.Uint16)
                     {
                         dataLen = (buf[pos + 3] * 256) + buf[pos + 2];
                         pos += 4;
                     }
-                    else if (buf[pos + 1] == (byte)PCLXLDataTypes.eTag.Ubyte)
+                    else if (buf[pos + 1] == (byte)PCLXLDataTypes.Tag.Ubyte)
                     {
                         dataLen = buf[pos + 2];
                         pos += 3;
@@ -375,8 +374,8 @@ namespace PCLParaphernalia
 
                         pos += dataLen;
 
-                        if ((buf[pos] != (byte)PCLXLAttrDefiners.eTag.Ubyte) ||
-                            (buf[pos + 1] != (byte)PCLXLAttributes.eTag.FontName))
+                        if ((buf[pos] != (byte)PCLXLAttrDefiners.Tag.Ubyte) ||
+                            (buf[pos + 1] != (byte)PCLXLAttributes.Tag.FontName))
                         {
                             OK = false;
                         }
@@ -386,13 +385,13 @@ namespace PCLParaphernalia
                         }
                     }
                 }
-                else if (buf[pos] == (byte)PCLXLDataTypes.eTag.Ubyte)
+                else if (buf[pos] == (byte)PCLXLDataTypes.Tag.Ubyte)
                 {
                     // start of FontFormat attribute.
 
                     if ((buf[pos + 1] != 0) ||
-                        (buf[pos + 2] != (byte)PCLXLAttrDefiners.eTag.Ubyte) ||
-                        (buf[pos + 3] != (byte)PCLXLAttributes.eTag.FontFormat))
+                        (buf[pos + 2] != (byte)PCLXLAttrDefiners.Tag.Ubyte) ||
+                        (buf[pos + 3] != (byte)PCLXLAttributes.Tag.FontFormat))
                     {
                         OK = false;
                     }
@@ -401,7 +400,7 @@ namespace PCLParaphernalia
                         pos += 4;
                     }
                 }
-                else if (buf[pos] == (byte)PCLXLOperators.eTag.BeginFontHeader)
+                else if (buf[pos] == (byte)PCLXLOperators.Tag.BeginFontHeader)
                 {
                     beginFound = true;
                     pos += 1;
@@ -414,15 +413,15 @@ namespace PCLParaphernalia
 
             if (OK)
             {
-                if (buf[pos] == (byte)PCLXLDataTypes.eTag.Uint16)
+                if (buf[pos] == (byte)PCLXLDataTypes.Tag.Uint16)
                 {
                     dataLen = (ushort)((buf[pos + 2] * 256) + buf[pos + 1]);
 
                     if ((dataLen < _minHddrDescLen) ||
-                        (buf[pos + 3] != (byte)PCLXLAttrDefiners.eTag.Ubyte) ||
+                        (buf[pos + 3] != (byte)PCLXLAttrDefiners.Tag.Ubyte) ||
                         (buf[pos + 4] !=
-                            (byte)PCLXLAttributes.eTag.FontHeaderLength) ||
-                        (buf[pos + 5] != (byte)PCLXLOperators.eTag.ReadFontHeader))
+                            (byte)PCLXLAttributes.Tag.FontHeaderLength) ||
+                        (buf[pos + 5] != (byte)PCLXLOperators.Tag.ReadFontHeader))
                     {
                         OK = false;
                     }
@@ -430,13 +429,13 @@ namespace PCLParaphernalia
                     {
                         pos += 6;
 
-                        if (buf[pos] == (byte)PCLXLEmbedDataDefs.eTag.Byte)
+                        if (buf[pos] == (byte)PCLXLEmbedDataDefs.Tag.Byte)
                         {
                             hddrDescLen = buf[pos + 1];
 
                             pos += 2;
                         }
-                        else if (buf[pos] == (byte)PCLXLEmbedDataDefs.eTag.Int)
+                        else if (buf[pos] == (byte)PCLXLEmbedDataDefs.Tag.Int)
                         {
                             hddrDescLen = (buf[pos + 4] * 256 * 256 * 256) +
                                           (buf[pos + 5] * 256 * 256) +

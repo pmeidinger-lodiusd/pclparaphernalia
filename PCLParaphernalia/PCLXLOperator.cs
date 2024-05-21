@@ -35,8 +35,8 @@ namespace PCLParaphernalia
         public PCLXLOperator(byte tag,
                              bool flagEndSession,
                              bool flagReserved,
-                             PCLXLOperators.eEmbedDataType embedDataType,
-                             PrnParseConstants.eOvlAct makeOvlAct,
+                             PCLXLOperators.EmbedDataType embedDataType,
+                             PrnParseConstants.OvlAct makeOvlAct,
                              string description)
         {
             _tag = tag;
@@ -59,8 +59,8 @@ namespace PCLParaphernalia
         public void getDetails(
             ref bool flagEndSession,
             ref bool flagReserved,
-            ref PCLXLOperators.eEmbedDataType embedDataType,
-            ref PrnParseConstants.eOvlAct makeOvlAct,
+            ref PCLXLOperators.EmbedDataType embedDataType,
+            ref PrnParseConstants.OvlAct makeOvlAct,
             ref string description)
         {
             flagEndSession = FlagEndSession;
@@ -84,7 +84,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLXLOperators.eEmbedDataType EmbedDataType { get; }
+        public PCLXLOperators.EmbedDataType EmbedDataType { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -125,7 +125,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.eOvlAct makeOvlAct { get; }
+        public PrnParseConstants.OvlAct makeOvlAct { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

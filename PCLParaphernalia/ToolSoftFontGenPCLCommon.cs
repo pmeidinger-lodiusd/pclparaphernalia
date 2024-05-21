@@ -142,11 +142,11 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            numGTTables = _ttfHandler.getOutputNumTables(pdlIsPCLXL,
+            numGTTables = _ttfHandler.GetOutputNumTables(pdlIsPCLXL,
                                                           symSetUnbound,
                                                           flagVMetrics);
 
-            sizeGTTables = (int)_ttfHandler.getSegGTTablesSize(
+            sizeGTTables = (int)_ttfHandler.GetSegGTTablesSize(
                                         pdlIsPCLXL,
                                         symSetUnbound,
                                         flagVMetrics);
@@ -232,7 +232,7 @@ namespace PCLParaphernalia
 
             _ttfHandler = ttfHandler;
 
-            _ttfHandler.getTableMetrics(ref _metrics_cvt,
+            _ttfHandler.GetTableMetrics(ref _metrics_cvt,
                                          ref _metrics_gdir,
                                          ref _metrics_fpgm,
                                          ref _metrics_head,
@@ -243,7 +243,7 @@ namespace PCLParaphernalia
                                          ref _metrics_vhea,
                                          ref _metrics_vmtx);
 
-            flagOK = _ttfHandler.fontFileReOpen();
+            flagOK = _ttfHandler.FontFileReOpen();
 
             // if (!flagOK) ... failed to re-open ...
         }
@@ -670,11 +670,11 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            numTables = _ttfHandler.getOutputNumTables(pdlIsPCLXL,
+            numTables = _ttfHandler.GetOutputNumTables(pdlIsPCLXL,
                                                         symSetUnbound,
                                                         flagVMetrics);
 
-            sizeTables = _ttfHandler.getSegGTTablesSize(pdlIsPCLXL,
+            sizeTables = _ttfHandler.GetSegGTTablesSize(pdlIsPCLXL,
                                                          symSetUnbound,
                                                          flagVMetrics);
 
@@ -1200,7 +1200,7 @@ namespace PCLParaphernalia
                     readRem = 0;
                 }
 
-                _ttfHandler.readByteArray(readStart,
+                _ttfHandler.ReadByteArray(readStart,
                                            readLen,
                                            ref _dataBuf);
 
@@ -1354,7 +1354,7 @@ namespace PCLParaphernalia
 
             byte[] segData = new byte[cSizeSegVR];
 
-            vDescender = (ushort)_ttfHandler.getOS2sTypoDescender();
+            vDescender = (ushort)_ttfHandler.GetOS2sTypoDescender();
 
             segData[0] = 0;                    // format MSB
             segData[1] = 0;                    // format LSB

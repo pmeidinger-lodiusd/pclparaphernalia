@@ -113,13 +113,13 @@ namespace PCLParaphernalia
         {
             if (_initialised)
             {
-                if ((_crntPDL == ToolCommonData.ePrintLang.PCL) &&
+                if ((_crntPDL == ToolCommonData.PrintLang.PCL) &&
                      cbLogOperClrD1PCL.HasItems)
                 {
                     _indxLogOperClrD1PCL =
                         (byte)cbLogOperClrD1PCL.SelectedIndex;
                 }
-                else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
+                else if ((_crntPDL == ToolCommonData.PrintLang.PCLXL) &&
                      cbLogOperClrD1PCLXL.HasItems)
                 {
                     _indxLogOperClrD1PCLXL =
@@ -143,13 +143,13 @@ namespace PCLParaphernalia
         {
             if (_initialised)
             {
-                if ((_crntPDL == ToolCommonData.ePrintLang.PCL) &&
+                if ((_crntPDL == ToolCommonData.PrintLang.PCL) &&
                      cbLogOperClrD2PCL.HasItems)
                 {
                     _indxLogOperClrD2PCL =
                         (byte)cbLogOperClrD2PCL.SelectedIndex;
                 }
-                else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
+                else if ((_crntPDL == ToolCommonData.PrintLang.PCLXL) &&
                      cbLogOperClrD2PCLXL.HasItems)
                 {
                     _indxLogOperClrD2PCLXL =
@@ -173,13 +173,13 @@ namespace PCLParaphernalia
         {
             if (_initialised)
             {
-                if ((_crntPDL == ToolCommonData.ePrintLang.PCL) &&
+                if ((_crntPDL == ToolCommonData.PrintLang.PCL) &&
                      cbLogOperClrS1PCL.HasItems)
                 {
                     _indxLogOperClrS1PCL =
                         (byte)cbLogOperClrS1PCL.SelectedIndex;
                 }
-                else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
+                else if ((_crntPDL == ToolCommonData.PrintLang.PCLXL) &&
                      cbLogOperClrS1PCLXL.HasItems)
                 {
                     _indxLogOperClrS1PCLXL =
@@ -203,13 +203,13 @@ namespace PCLParaphernalia
         {
             if (_initialised)
             {
-                if ((_crntPDL == ToolCommonData.ePrintLang.PCL) &&
+                if ((_crntPDL == ToolCommonData.PrintLang.PCL) &&
                      cbLogOperClrS2PCL.HasItems)
                 {
                     _indxLogOperClrS2PCL =
                         (byte)cbLogOperClrS2PCL.SelectedIndex;
                 }
-                else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
+                else if ((_crntPDL == ToolCommonData.PrintLang.PCLXL) &&
                      cbLogOperClrS2PCLXL.HasItems)
                 {
                     _indxLogOperClrS2PCLXL =
@@ -233,13 +233,13 @@ namespace PCLParaphernalia
         {
             if (_initialised)
             {
-                if ((_crntPDL == ToolCommonData.ePrintLang.PCL) &&
+                if ((_crntPDL == ToolCommonData.PrintLang.PCL) &&
                      cbLogOperClrT1PCL.HasItems)
                 {
                     _indxLogOperClrT1PCL =
                         (byte)cbLogOperClrT1PCL.SelectedIndex;
                 }
-                else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
+                else if ((_crntPDL == ToolCommonData.PrintLang.PCLXL) &&
                      cbLogOperClrT1PCLXL.HasItems)
                 {
                     _indxLogOperClrT1PCLXL =
@@ -264,13 +264,13 @@ namespace PCLParaphernalia
         {
             if (_initialised)
             {
-                if ((_crntPDL == ToolCommonData.ePrintLang.PCL) &&
+                if ((_crntPDL == ToolCommonData.PrintLang.PCL) &&
                      cbLogOperClrT2PCL.HasItems)
                 {
                     _indxLogOperClrT2PCL =
                         (byte)cbLogOperClrT2PCL.SelectedIndex;
                 }
-                else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
+                else if ((_crntPDL == ToolCommonData.PrintLang.PCLXL) &&
                      cbLogOperClrT2PCLXL.HasItems)
                 {
                     _indxLogOperClrT2PCLXL =
@@ -294,13 +294,13 @@ namespace PCLParaphernalia
         {
             if (_initialised)
             {
-                if ((_crntPDL == ToolCommonData.ePrintLang.PCL) &&
+                if ((_crntPDL == ToolCommonData.PrintLang.PCL) &&
                      cbLogOperMonoD1PCL.HasItems)
                 {
                     _indxLogOperMonoD1PCL =
                         (byte)cbLogOperMonoD1PCL.SelectedIndex;
                 }
-                else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
+                else if ((_crntPDL == ToolCommonData.PrintLang.PCLXL) &&
                      cbLogOperGrayD1PCLXL.HasItems)
                 {
                     _indxLogOperGrayD1PCLXL =
@@ -324,13 +324,13 @@ namespace PCLParaphernalia
         {
             if (_initialised)
             {
-                if ((_crntPDL == ToolCommonData.ePrintLang.PCL) &&
+                if ((_crntPDL == ToolCommonData.PrintLang.PCL) &&
                     cbLogOperMonoD2PCL.HasItems)
                 {
                     _indxLogOperMonoD2PCL =
                         (byte)cbLogOperMonoD2PCL.SelectedIndex;
                 }
-                else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
+                else if ((_crntPDL == ToolCommonData.PrintLang.PCLXL) &&
                      cbLogOperGrayD2PCLXL.HasItems)
                 {
                     _indxLogOperGrayD2PCLXL =
@@ -354,13 +354,13 @@ namespace PCLParaphernalia
         {
             if (_initialised)
             {
-                if ((_crntPDL == ToolCommonData.ePrintLang.PCL) &&
+                if ((_crntPDL == ToolCommonData.PrintLang.PCL) &&
                     cbLogOperMonoS1PCL.HasItems)
                 {
                     _indxLogOperMonoS1PCL =
                         (byte)cbLogOperMonoS1PCL.SelectedIndex;
                 }
-                else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
+                else if ((_crntPDL == ToolCommonData.PrintLang.PCLXL) &&
                      cbLogOperGrayS1PCLXL.HasItems)
                 {
                     _indxLogOperGrayS1PCLXL =
@@ -384,13 +384,13 @@ namespace PCLParaphernalia
         {
             if (_initialised)
             {
-                if ((_crntPDL == ToolCommonData.ePrintLang.PCL) &&
+                if ((_crntPDL == ToolCommonData.PrintLang.PCL) &&
                     cbLogOperMonoS2PCL.HasItems)
                 {
                     _indxLogOperMonoS2PCL =
                         (byte)cbLogOperMonoS2PCL.SelectedIndex;
                 }
-                else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
+                else if ((_crntPDL == ToolCommonData.PrintLang.PCLXL) &&
                      cbLogOperGrayS2PCLXL.HasItems)
                 {
                     _indxLogOperGrayS2PCLXL =
@@ -414,13 +414,13 @@ namespace PCLParaphernalia
         {
             if (_initialised)
             {
-                if ((_crntPDL == ToolCommonData.ePrintLang.PCL) &&
+                if ((_crntPDL == ToolCommonData.PrintLang.PCL) &&
                     cbLogOperMonoT1PCL.HasItems)
                 {
                     _indxLogOperMonoT1PCL =
                         (byte)cbLogOperMonoT1PCL.SelectedIndex;
                 }
-                else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
+                else if ((_crntPDL == ToolCommonData.PrintLang.PCLXL) &&
                      cbLogOperGrayT1PCLXL.HasItems)
                 {
                     _indxLogOperGrayT1PCLXL =
@@ -444,13 +444,13 @@ namespace PCLParaphernalia
         {
             if (_initialised)
             {
-                if ((_crntPDL == ToolCommonData.ePrintLang.PCL) &&
+                if ((_crntPDL == ToolCommonData.PrintLang.PCL) &&
                     cbLogOperMonoT2PCL.HasItems)
                 {
                     _indxLogOperMonoT2PCL =
                         (byte)cbLogOperMonoT2PCL.SelectedIndex;
                 }
-                else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
+                else if ((_crntPDL == ToolCommonData.PrintLang.PCLXL) &&
                      cbLogOperGrayT2PCLXL.HasItems)
                 {
                     _indxLogOperGrayT2PCLXL =
@@ -474,7 +474,7 @@ namespace PCLParaphernalia
         {
             if (_initialised)
             {
-                if ((_crntPDL == ToolCommonData.ePrintLang.PCL) &&
+                if ((_crntPDL == ToolCommonData.PrintLang.PCL) &&
                     cbLogOperModePCL.HasItems)
                 {
                     _indxLogOperModePCL = (byte)cbLogOperModePCL.SelectedIndex;
@@ -492,7 +492,7 @@ namespace PCLParaphernalia
                         initialiseDataLogOperClrsPCL();
                     }
                 }
-                else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
+                else if ((_crntPDL == ToolCommonData.PrintLang.PCLXL) &&
                     cbLogOperModePCLXL.HasItems)
                 {
                     _indxLogOperModePCLXL = (byte)cbLogOperModePCLXL.SelectedIndex;
@@ -528,7 +528,7 @@ namespace PCLParaphernalia
         {
             if (_initialised)
             {
-                if ((_crntPDL == ToolCommonData.ePrintLang.PCL) &&
+                if ((_crntPDL == ToolCommonData.PrintLang.PCL) &&
                     cbLogOperROPFromPCL.HasItems)
                 {
                     int temp = cbLogOperROPFromPCL.SelectedIndex;
@@ -557,7 +557,7 @@ namespace PCLParaphernalia
                             _indxLogOperROPToPCL;
                     }
                 }
-                else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
+                else if ((_crntPDL == ToolCommonData.PrintLang.PCLXL) &&
                     cbLogOperROPFromPCLXL.HasItems)
                 {
                     int temp = cbLogOperROPFromPCLXL.SelectedIndex;
@@ -604,7 +604,7 @@ namespace PCLParaphernalia
         {
             if (_initialised)
             {
-                if ((_crntPDL == ToolCommonData.ePrintLang.PCL) &&
+                if ((_crntPDL == ToolCommonData.PrintLang.PCL) &&
                     cbLogOperROPToPCL.HasItems)
                 {
                     int temp = cbLogOperROPToPCL.SelectedIndex;
@@ -632,7 +632,7 @@ namespace PCLParaphernalia
                             _indxLogOperROPFromPCL;
                     }
                 }
-                else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
+                else if ((_crntPDL == ToolCommonData.PrintLang.PCLXL) &&
                     cbLogOperROPToPCLXL.HasItems)
                 {
                     int temp = cbLogOperROPToPCLXL.SelectedIndex;
@@ -870,7 +870,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 tabLogOperDataPCL.IsSelected = true;
 
@@ -1362,7 +1362,7 @@ namespace PCLParaphernalia
 
         private void initialiseDescLogOper()
         {
-            if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 txtLogOperDesc.Text =
                     "Shows effect of the 256 different raster (logical)" +
@@ -1529,13 +1529,13 @@ namespace PCLParaphernalia
 
         private void setFlagLogOperFormAsMacro(
             bool setFlag,
-            ToolCommonData.ePrintLang crntPDL)
+            ToolCommonData.PrintLang crntPDL)
         {
-            if (crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 _flagLogOperUseMacrosPCL = setFlag;
             }
-            else if (crntPDL == ToolCommonData.ePrintLang.PCLXL)
+            else if (crntPDL == ToolCommonData.PrintLang.PCLXL)
             {
                 _flagLogOperUseMacrosPCLXL = setFlag;
             }

@@ -19,7 +19,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public enum eRequestType
+        public enum RequestType
         {
             None,
             Variable,
@@ -33,7 +33,7 @@ namespace PCLParaphernalia
             FSUpload
         }
 
-        public enum eCmdFormat
+        public enum CmdFormat
         {
             None,
             Standard,
@@ -42,7 +42,7 @@ namespace PCLParaphernalia
 
         [System.Reflection.Obfuscation(Exclude = true)]
 
-        public enum eCmdIndex
+        public enum CmdIndex
         {
             Unknown,
             Null,
@@ -99,7 +99,7 @@ namespace PCLParaphernalia
 
         static PJLCommands()
         {
-            populateTable();
+            PopulateTable();
         }
 
         //--------------------------------------------------------------------//
@@ -111,9 +111,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkCmd(string name,
-                                        ref string description,
-                                        int level)
+        public static bool CheckCmd(string name, ref string description, int level)
         {
             bool seqKnown = true;
 
@@ -146,7 +144,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int displayCmds(DataGrid grid)
+        public static int DisplayCmds(DataGrid grid)
         {
             int count = 0;
 
@@ -169,8 +167,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCounts(DataTable table,
-                                               bool incUsedSeqsOnly)
+        public static void DisplayStatsCounts(DataTable table, bool incUsedSeqsOnly)
         {
             int count = 0;
 
@@ -194,7 +191,7 @@ namespace PCLParaphernalia
             {
                 if (!hddrWritten)
                 {
-                    displayStatsCountsHddr(table);
+                    DisplayStatsCountsHddr(table);
                     hddrWritten = true;
                 }
 
@@ -228,7 +225,7 @@ namespace PCLParaphernalia
                 {
                     if (!hddrWritten)
                     {
-                        displayStatsCountsHddr(table);
+                        DisplayStatsCountsHddr(table);
                         hddrWritten = true;
                     }
 
@@ -254,7 +251,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCountsHddr(DataTable table)
+        public static void DisplayStatsCountsHddr(DataTable table)
         {
             //----------------------------------------------------------------//
 
@@ -298,7 +295,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCount()
+        public static int GetCount()
         {
             return _cmdCount;
         }
@@ -312,7 +309,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getDesc(eCmdIndex key)
+        public static string GetDesc(CmdIndex key)
         {
             return _cmds[key.ToString()].Description;
         }
@@ -326,7 +323,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eCmdFormat getFormat(eCmdIndex key)
+        public static CmdFormat GetFormat(CmdIndex key)
         {
             return _cmds[key.ToString()].Format;
         }
@@ -340,7 +337,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getName(eCmdIndex key)
+        public static string GetName(CmdIndex key)
         {
             return _cmds[key.ToString()].Name;
         }
@@ -354,7 +351,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eRequestType getType(eCmdIndex key)
+        public static RequestType GetType(CmdIndex key)
         {
             return _cmds[key.ToString()].Type;
         }
@@ -368,216 +365,216 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void populateTable()
+        public static void PopulateTable()
         {
-            eCmdIndex indx = eCmdIndex.Unknown;
+            CmdIndex indx = CmdIndex.Unknown;
             _cmdUnknown =
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.None,
+                                CmdFormat.Standard,
+                                RequestType.None,
                                 "*** Unknown command ***");
 
-            indx = eCmdIndex.Null;
+            indx = CmdIndex.Null;
             _cmds.Add(nullCmdKey,
                 new PJLCommand(indx,
-                                eCmdFormat.None,
-                                eRequestType.None,
+                                CmdFormat.None,
+                                RequestType.None,
                                 "Null (no command)"));
 
-            indx = eCmdIndex.COMMENT;
+            indx = CmdIndex.COMMENT;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Words,
-                                eRequestType.None,
+                                CmdFormat.Words,
+                                RequestType.None,
                                 "Comment"));
 
-            indx = eCmdIndex.DEFAULT;
+            indx = CmdIndex.DEFAULT;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.None,
+                                CmdFormat.Standard,
+                                RequestType.None,
                                 "Set environment variable default"));
 
-            indx = eCmdIndex.DINQUIRE;
+            indx = CmdIndex.DINQUIRE;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.Variable,
+                                CmdFormat.Standard,
+                                RequestType.Variable,
                                 "Request default value of environment variable"));
 
-            indx = eCmdIndex.DMCMD;
+            indx = CmdIndex.DMCMD;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.None,
+                                CmdFormat.Standard,
+                                RequestType.None,
                                 "Process PML request"));
 
-            indx = eCmdIndex.DMINFO;
+            indx = CmdIndex.DMINFO;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.None,
+                                CmdFormat.Standard,
+                                RequestType.None,
                                 "Process PML request & read response"));
 
-            indx = eCmdIndex.ECHO;
+            indx = CmdIndex.ECHO;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Words,
-                                eRequestType.None,
+                                CmdFormat.Words,
+                                RequestType.None,
                                 "Echo value to host"));
 
-            indx = eCmdIndex.ENTER;
+            indx = CmdIndex.ENTER;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.None,
+                                CmdFormat.Standard,
+                                RequestType.None,
                                 "Enter language"));
 
-            indx = eCmdIndex.EOJ;
+            indx = CmdIndex.EOJ;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.None,
+                                CmdFormat.Standard,
+                                RequestType.None,
                                 "Job end"));
 
-            indx = eCmdIndex.FSAPPEND;
+            indx = CmdIndex.FSAPPEND;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.FSBinSrc,
+                                CmdFormat.Standard,
+                                RequestType.FSBinSrc,
                                 "File System: file append"));
 
-            indx = eCmdIndex.FSDELETE;
+            indx = CmdIndex.FSDELETE;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.FSDelete,
+                                CmdFormat.Standard,
+                                RequestType.FSDelete,
                                 "File System: file delete"));
 
-            indx = eCmdIndex.FSDIRLIST;
+            indx = CmdIndex.FSDIRLIST;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.FSDirList,
+                                CmdFormat.Standard,
+                                RequestType.FSDirList,
                                 "File System: return directory list"));
 
-            indx = eCmdIndex.FSDOWNLOAD;
+            indx = CmdIndex.FSDOWNLOAD;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.FSBinSrc,
+                                CmdFormat.Standard,
+                                RequestType.FSBinSrc,
                                 "File System: download file to printer"));
 
-            indx = eCmdIndex.FSINIT;
+            indx = CmdIndex.FSINIT;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.FSInit,
+                                CmdFormat.Standard,
+                                RequestType.FSInit,
                                 "File System: initialise"));
 
-            indx = eCmdIndex.FSMKDIR;
+            indx = CmdIndex.FSMKDIR;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.FSMkDir,
+                                CmdFormat.Standard,
+                                RequestType.FSMkDir,
                                 "File System: create directory"));
 
-            indx = eCmdIndex.FSQUERY;
+            indx = CmdIndex.FSQUERY;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.FSQuery,
+                                CmdFormat.Standard,
+                                RequestType.FSQuery,
                                 "File System: query"));
 
-            indx = eCmdIndex.FSUPLOAD;
+            indx = CmdIndex.FSUPLOAD;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.FSUpload,
+                                CmdFormat.Standard,
+                                RequestType.FSUpload,
                                 "File System: upload file to host"));
 
-            indx = eCmdIndex.INFO;
+            indx = CmdIndex.INFO;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.Category,
+                                CmdFormat.Standard,
+                                RequestType.Category,
                                 "Request information category details"));
 
-            indx = eCmdIndex.INITIALIZE;
+            indx = CmdIndex.INITIALIZE;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.None,
+                                CmdFormat.Standard,
+                                RequestType.None,
                                 "Reset environment variables to factory defaults"));
 
-            indx = eCmdIndex.INQUIRE;
+            indx = CmdIndex.INQUIRE;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.Variable,
+                                CmdFormat.Standard,
+                                RequestType.Variable,
                                 "Request value of environment variable"));
 
-            indx = eCmdIndex.JOB;
+            indx = CmdIndex.JOB;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.None,
+                                CmdFormat.Standard,
+                                RequestType.None,
                                 "Job start"));
 
-            indx = eCmdIndex.OPMSG;
+            indx = CmdIndex.OPMSG;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.None,
+                                CmdFormat.Standard,
+                                RequestType.None,
                                 "Display Operator message"));
 
-            indx = eCmdIndex.RDYMSG;
+            indx = CmdIndex.RDYMSG;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.None,
+                                CmdFormat.Standard,
+                                RequestType.None,
                                 "Display Ready message"));
 
-            indx = eCmdIndex.RESET;
+            indx = CmdIndex.RESET;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.None,
+                                CmdFormat.Standard,
+                                RequestType.None,
                                 "Reset environment variables to defaults"));
 
-            indx = eCmdIndex.SET;
+            indx = CmdIndex.SET;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.None,
+                                CmdFormat.Standard,
+                                RequestType.None,
                                 "Set environment variable"));
 
-            indx = eCmdIndex.STMSG;
+            indx = CmdIndex.STMSG;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.None,
+                                CmdFormat.Standard,
+                                RequestType.None,
                                 "Display Status message"));
 
-            indx = eCmdIndex.USAGE;
+            indx = CmdIndex.USAGE;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.None,
+                                CmdFormat.Standard,
+                                RequestType.None,
                                 "Usage (proprietary extension)"));
 
-            indx = eCmdIndex.USTATUS;
+            indx = CmdIndex.USTATUS;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.None,
+                                CmdFormat.Standard,
+                                RequestType.None,
                                 "Allow printer to send unsolicited messages"));
 
-            indx = eCmdIndex.USTATUSOFF;
+            indx = CmdIndex.USTATUSOFF;
             _cmds.Add(indx.ToString(),
                 new PJLCommand(indx,
-                                eCmdFormat.Standard,
-                                eRequestType.None,
+                                CmdFormat.Standard,
+                                RequestType.None,
                                 "Stop printer sending unsolicited messages"));
 
             _cmdCount = _cmds.Count;
@@ -592,7 +589,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void resetStatsCounts()
+        public static void ResetStatsCounts()
         {
             PJLCommand cmd;
 

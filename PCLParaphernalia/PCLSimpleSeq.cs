@@ -26,7 +26,7 @@ namespace PCLParaphernalia
         private int _statsCtParent;
         private int _statsCtChild;
 
-        private readonly PrnParseConstants.eSeqGrp _seqGrp;
+        private readonly PrnParseConstants.SeqGrp _seqGrp;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -38,8 +38,8 @@ namespace PCLParaphernalia
             byte keySChar,
             bool flagObsolete,
             bool flagResetHPGL2,
-            PrnParseConstants.eOvlAct makeOvlAct,
-            PrnParseConstants.eSeqGrp seqGrp,
+            PrnParseConstants.OvlAct makeOvlAct,
+            PrnParseConstants.SeqGrp seqGrp,
             string description)
         {
             _keySChar = keySChar;
@@ -113,7 +113,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.eOvlAct makeOvlAct { get; }
+        public PrnParseConstants.OvlAct makeOvlAct { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

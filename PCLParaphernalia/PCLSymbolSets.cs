@@ -570,7 +570,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "<unbound>",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _indxUnbound = _sets.Count - 1;
 
@@ -581,7 +581,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "<symbol>",
                                          false,                // special map //
-                                         PCLSymSetMaps.eSymSetMapId.mapSymbol));
+                                         PCLSymSetMaps.SymSetMapId.mapSymbol));
 
             _indxSymbol = _sets.Count - 1;
 
@@ -592,7 +592,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "<specify identifier>",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
@@ -601,7 +601,7 @@ namespace PCLParaphernalia
                                          "ARABIC8",
                                          "Arabic-8",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_8V));
+                                         PCLSymSetMaps.SymSetMapId.map_8V));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
@@ -610,7 +610,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Barcode: 2 of 5 Industrial",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
@@ -619,7 +619,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Barcode: 2 of 5 Interleaved",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
@@ -628,7 +628,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Barcode: 2 of 5 Matrix",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
@@ -637,7 +637,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Barcode: 3 of 9",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
@@ -646,7 +646,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Barcode: CODABAR",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
@@ -655,7 +655,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Barcode: Code 11",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
@@ -664,7 +664,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Barcode: MSI/Plessey",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
@@ -673,7 +673,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Barcode: UPC/EAN",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
@@ -682,7 +682,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Barcode: USPS ZIP",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
@@ -691,7 +691,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Big5 Traditional Chinese",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.NonStd,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
@@ -700,7 +700,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Big5 Traditional Chinese",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_x1018T));
+                                         PCLSymSetMaps.SymSetMapId.map_x1018T));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
@@ -709,7 +709,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Chinese CNS 11643-86",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
@@ -718,7 +718,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Chinese TCA encoding",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
@@ -727,7 +727,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Cyrillic",
                                          false,
-                                        PCLSymSetMaps.eSymSetMapId.mapNull));
+                                        PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
@@ -736,7 +736,7 @@ namespace PCLParaphernalia
                                          "DESKTOP",
                                          "DeskTop",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_7J));
+                                         PCLSymSetMaps.SymSetMapId.map_7J));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
@@ -745,7 +745,7 @@ namespace PCLParaphernalia
                                          "GREEK8",
                                          "Greek-8",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_8G));
+                                         PCLSymSetMaps.SymSetMapId.map_8G));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
@@ -754,7 +754,7 @@ namespace PCLParaphernalia
                                          "HEBREW7",
                                          "Hebrew-7",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_0H));
+                                         PCLSymSetMaps.SymSetMapId.map_0H));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
@@ -763,7 +763,7 @@ namespace PCLParaphernalia
                                          "HEBREW8",
                                          "Hebrew-8",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_8H));
+                                         PCLSymSetMaps.SymSetMapId.map_8H));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
@@ -772,7 +772,7 @@ namespace PCLParaphernalia
                                          "ISO4",
                                          "ISO 4: United Kingdom",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_1E));
+                                         PCLSymSetMaps.SymSetMapId.map_1E));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
@@ -781,7 +781,7 @@ namespace PCLParaphernalia
                                          "ISO6",
                                          "ISO 6: ASCII",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_0U));
+                                         PCLSymSetMaps.SymSetMapId.map_0U));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
@@ -790,7 +790,7 @@ namespace PCLParaphernalia
                                          "ISO11",
                                          "ISO 11: Swedish",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_0S));
+                                         PCLSymSetMaps.SymSetMapId.map_0S));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
@@ -799,7 +799,7 @@ namespace PCLParaphernalia
                                          "ISO15",
                                          "ISO 15: Italian",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_0I));
+                                         PCLSymSetMaps.SymSetMapId.map_0I));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
@@ -808,7 +808,7 @@ namespace PCLParaphernalia
                                          "ISO17",
                                          "ISO 17: Spanish",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_2S));
+                                         PCLSymSetMaps.SymSetMapId.map_2S));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
@@ -817,7 +817,7 @@ namespace PCLParaphernalia
                                          "ISO21",
                                          "ISO 21: German",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_1G));
+                                         PCLSymSetMaps.SymSetMapId.map_1G));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
@@ -826,7 +826,7 @@ namespace PCLParaphernalia
                                          "ISO60",
                                          "ISO 60: Danish/Norwegian",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_0D));
+                                         PCLSymSetMaps.SymSetMapId.map_0D));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
@@ -835,7 +835,7 @@ namespace PCLParaphernalia
                                          "ISO69",
                                          "ISO 69: French",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_1F));
+                                         PCLSymSetMaps.SymSetMapId.map_1F));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
@@ -844,7 +844,7 @@ namespace PCLParaphernalia
                                          "ISOL1",
                                          "ISO 8859-1 Latin 1",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_0N));
+                                         PCLSymSetMaps.SymSetMapId.map_0N));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
@@ -853,7 +853,7 @@ namespace PCLParaphernalia
                                          "ISOL2",
                                          "ISO 8859-2 Latin 2",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_2N));
+                                         PCLSymSetMaps.SymSetMapId.map_2N));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
@@ -862,7 +862,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "ISO 8859-3 Latin 3",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_3N));
+                                         PCLSymSetMaps.SymSetMapId.map_3N));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
@@ -871,7 +871,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "ISO 8859-4 Latin 4",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_4N));
+                                         PCLSymSetMaps.SymSetMapId.map_4N));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
@@ -880,7 +880,7 @@ namespace PCLParaphernalia
                                          "ISOCYR",
                                          "ISO 8859-5 Latin/Cyrillic",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_10N));
+                                         PCLSymSetMaps.SymSetMapId.map_10N));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
@@ -889,7 +889,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "ISO 8859-6 Latin/Arabic",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_11N));
+                                         PCLSymSetMaps.SymSetMapId.map_11N));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
@@ -898,7 +898,7 @@ namespace PCLParaphernalia
                                          "ISOGRK",
                                          "ISO 8859-7 Latin/Greek",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_12N));
+                                         PCLSymSetMaps.SymSetMapId.map_12N));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
@@ -907,7 +907,7 @@ namespace PCLParaphernalia
                                          "ISOHEB",
                                          "ISO 8859-8 Latin/Hebrew",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_7H));
+                                         PCLSymSetMaps.SymSetMapId.map_7H));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
@@ -916,7 +916,7 @@ namespace PCLParaphernalia
                                          "ISOL5",
                                          "ISO 8859-9 Latin 5",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_5N));
+                                         PCLSymSetMaps.SymSetMapId.map_5N));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
@@ -925,7 +925,7 @@ namespace PCLParaphernalia
                                          "ISOL6",
                                          "ISO 8859-10 Latin 6",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_6N));
+                                         PCLSymSetMaps.SymSetMapId.map_6N));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.NonStd,
                                          PCLSymSetTypes.Index.Bound_8bit,
@@ -934,7 +934,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "ISO 8859-11 Latin/Thai",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_x1001T));
+                                         PCLSymSetMaps.SymSetMapId.map_x1001T));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
@@ -943,7 +943,7 @@ namespace PCLParaphernalia
                                          "ISOL9",
                                          "ISO 8859-15 Latin 9",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_9N));
+                                         PCLSymSetMaps.SymSetMapId.map_9N));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
@@ -952,7 +952,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Japanese JIS",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
@@ -961,7 +961,7 @@ namespace PCLParaphernalia
                                          "WIN31J",
                                          "Japanese Shift-JIS (CP 932)",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.NonStd,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
@@ -970,7 +970,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Japanese Shift-JIS",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_x1019K));
+                                         PCLSymSetMaps.SymSetMapId.map_x1019K));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
@@ -979,7 +979,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Korean KSC5601-87",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
@@ -988,7 +988,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Korean KSC5601-93",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
@@ -997,7 +997,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Korean KSX1001",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
@@ -1006,7 +1006,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Korean Unified Hangeul",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
@@ -1015,7 +1015,7 @@ namespace PCLParaphernalia
                                          "LEGAL",
                                          "Legal",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_1U));
+                                         PCLSymSetMaps.SymSetMapId.map_1U));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
@@ -1024,7 +1024,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Math-8",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_8M));
+                                         PCLSymSetMaps.SymSetMapId.map_8M));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
@@ -1033,7 +1033,7 @@ namespace PCLParaphernalia
                                          "MCTEXT",
                                          "MC Text",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_12J));
+                                         PCLSymSetMaps.SymSetMapId.map_12J));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
@@ -1042,7 +1042,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "MICR (CMC-7)",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
@@ -1051,7 +1051,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "MICR (E13B)",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
@@ -1060,7 +1060,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Microsoft Publishing",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_6J));
+                                         PCLSymSetMaps.SymSetMapId.map_6J));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
@@ -1069,7 +1069,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "OCR-A",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
@@ -1078,7 +1078,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "OCR-B",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
@@ -1087,7 +1087,7 @@ namespace PCLParaphernalia
                                          "PC8",
                                          "PC-8 CP 437",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_10U));
+                                         PCLSymSetMaps.SymSetMapId.map_10U));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
@@ -1096,7 +1096,7 @@ namespace PCLParaphernalia
                                          "PC8DN",
                                          "PC-8 Danish/Norwegian",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_11U));
+                                         PCLSymSetMaps.SymSetMapId.map_11U));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
@@ -1105,7 +1105,7 @@ namespace PCLParaphernalia
                                          "PC8GRK",
                                          "PC-8 Latin/Greek",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_12G));
+                                         PCLSymSetMaps.SymSetMapId.map_12G));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
@@ -1114,7 +1114,7 @@ namespace PCLParaphernalia
                                          "PC8TK",
                                          "PC-8 Turkish",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_9T));
+                                         PCLSymSetMaps.SymSetMapId.map_9T));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
@@ -1123,7 +1123,7 @@ namespace PCLParaphernalia
                                          "PC775",
                                          "PC-775 Baltic",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_26U));
+                                         PCLSymSetMaps.SymSetMapId.map_26U));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
@@ -1132,7 +1132,7 @@ namespace PCLParaphernalia
                                          "PC850",
                                          "PC-850 Multilingual",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_12U));
+                                         PCLSymSetMaps.SymSetMapId.map_12U));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
@@ -1141,7 +1141,7 @@ namespace PCLParaphernalia
                                          "PC851GRK",
                                          "PC-851 Latin/Greek",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_10G));
+                                         PCLSymSetMaps.SymSetMapId.map_10G));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
@@ -1150,7 +1150,7 @@ namespace PCLParaphernalia
                                          "PC852",
                                          "PC-852 Latin 2",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_17U));
+                                         PCLSymSetMaps.SymSetMapId.map_17U));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
@@ -1159,7 +1159,7 @@ namespace PCLParaphernalia
                                          "PC858",
                                          "PC-858 Multilingual + Euro",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_13U));
+                                         PCLSymSetMaps.SymSetMapId.map_13U));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
@@ -1168,7 +1168,7 @@ namespace PCLParaphernalia
                                          "PC862HEB",
                                          "PC-862 Latin/Hebrew",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_15H));
+                                         PCLSymSetMaps.SymSetMapId.map_15H));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
@@ -1177,7 +1177,7 @@ namespace PCLParaphernalia
                                          "PC864ARA",
                                          "PC-864 Latin/Arabic",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_10V));
+                                         PCLSymSetMaps.SymSetMapId.map_10V));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
@@ -1186,7 +1186,7 @@ namespace PCLParaphernalia
                                          "PC866CYR",
                                          "PC-866 Cyrillic",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_3R));
+                                         PCLSymSetMaps.SymSetMapId.map_3R));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,
@@ -1195,7 +1195,7 @@ namespace PCLParaphernalia
                                          "PC866UKR",
                                          "PC-866 Ukrainian",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_14R));
+                                         PCLSymSetMaps.SymSetMapId.map_14R));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
@@ -1204,7 +1204,7 @@ namespace PCLParaphernalia
                                          "PC1004",
                                          "PC-1004 Windows Extended",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_9J));
+                                         PCLSymSetMaps.SymSetMapId.map_9J));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_7bit,
@@ -1213,7 +1213,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Pi Font",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_15U));
+                                         PCLSymSetMaps.SymSetMapId.map_15U));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
@@ -1222,7 +1222,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "PS Math",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_5M));
+                                         PCLSymSetMaps.SymSetMapId.map_5M));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
@@ -1231,7 +1231,7 @@ namespace PCLParaphernalia
                                          "PSTEXT",
                                          "PS Text",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_10J));
+                                         PCLSymSetMaps.SymSetMapId.map_10J));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
@@ -1240,7 +1240,7 @@ namespace PCLParaphernalia
                                          "ROMAN8",
                                          "Roman-8",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_8U));
+                                         PCLSymSetMaps.SymSetMapId.map_8U));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
@@ -1249,7 +1249,7 @@ namespace PCLParaphernalia
                                          "ROMAN9",
                                          "Roman-9",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_4U));
+                                         PCLSymSetMaps.SymSetMapId.map_4U));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
@@ -1258,7 +1258,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Simplified Chinese GB2312-80",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.NonStd,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
@@ -1267,7 +1267,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Simplified Chinese GB2312-80",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_x1018C));
+                                         PCLSymSetMaps.SymSetMapId.map_x1018C));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
@@ -1276,7 +1276,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Simplified Chinese GBK",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.NonStd,
                                          PCLSymSetTypes.Index.Bound_16bit,    // 1 or 2-byte //
@@ -1285,7 +1285,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Simplified Chinese GBK (CP 936)",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_x1020C));
+                                         PCLSymSetMaps.SymSetMapId.map_x1020C));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
@@ -1294,7 +1294,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Symbol",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                           PCLSymSetTypes.Index.Bound_8bit,
@@ -1303,7 +1303,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "TIS 620-2533 (Thai)",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_1T));
+                                         PCLSymSetMaps.SymSetMapId.map_1T));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
@@ -1312,7 +1312,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Turkish-8",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Unicode,
                                          PCLSymSetTypes.Index.Bound_16bit,
@@ -1321,7 +1321,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Unicode",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _indxUnicode = _sets.Count - 1;
 
@@ -1332,7 +1332,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Ventura International",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
@@ -1341,7 +1341,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Ventura Math",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_8bit,
@@ -1350,7 +1350,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Ventura US",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
@@ -1359,7 +1359,7 @@ namespace PCLParaphernalia
                                          "WIN30",
                                          "Windows 3.0 Latin 1 (obsolete)",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_9U));
+                                         PCLSymSetMaps.SymSetMapId.map_9U));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
@@ -1368,7 +1368,7 @@ namespace PCLParaphernalia
                                          "WINBALT",
                                          "Windows Baltic (CP 1257)",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_19L));
+                                         PCLSymSetMaps.SymSetMapId.map_19L));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
@@ -1377,7 +1377,7 @@ namespace PCLParaphernalia
                                          "WINL1",
                                          "Windows Latin 1 (CP 1252)",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_19U));
+                                         PCLSymSetMaps.SymSetMapId.map_19U));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
@@ -1386,7 +1386,7 @@ namespace PCLParaphernalia
                                          "WINL2",
                                          "Windows Latin 2 (CP 1250)",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_9E));
+                                         PCLSymSetMaps.SymSetMapId.map_9E));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
@@ -1395,7 +1395,7 @@ namespace PCLParaphernalia
                                          "WINL5",
                                          "Windows Latin 5 (CP 1254)",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_5T));
+                                         PCLSymSetMaps.SymSetMapId.map_5T));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
@@ -1404,7 +1404,7 @@ namespace PCLParaphernalia
                                          "HPWARA",
                                          "Windows Latin/Arabic",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_9V));
+                                         PCLSymSetMaps.SymSetMapId.map_9V));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
@@ -1413,7 +1413,7 @@ namespace PCLParaphernalia
                                          "WINCYR",
                                          "Windows Latin/Cyrillic (CP 1251)",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_9R));
+                                         PCLSymSetMaps.SymSetMapId.map_9R));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
@@ -1422,7 +1422,7 @@ namespace PCLParaphernalia
                                          "WINGRK",
                                          "Windows Latin/Greek (CP 1253)",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_9G));
+                                         PCLSymSetMaps.SymSetMapId.map_9G));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.NonStd,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
@@ -1431,7 +1431,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Windows Latin/Thai (CP 874)",
                                          true,
-                                         PCLSymSetMaps.eSymSetMapId.map_x901T));
+                                         PCLSymSetMaps.SymSetMapId.map_x901T));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
@@ -1440,7 +1440,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "Wingdings",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
                                          PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
@@ -1449,7 +1449,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "ZapfDingBats",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapNull));
+                                         PCLSymSetMaps.SymSetMapId.mapNull));
 
             _sets.Add(new PCLSymbolSet(SymSetGroup.UserSet,
                                          PCLSymSetTypes.Index.Bound_PC8,
@@ -1458,7 +1458,7 @@ namespace PCLParaphernalia
                                          string.Empty,
                                          "<user-defined via file>",
                                          false,
-                                         PCLSymSetMaps.eSymSetMapId.mapUserSet));
+                                         PCLSymSetMaps.SymSetMapId.mapUserSet));
 
             _indxUserSet = _sets.Count - 1;
 
@@ -1557,7 +1557,7 @@ namespace PCLParaphernalia
             index = GetIndexForId(symSetNo);
 
             if (index == -1)
-                mapArray = PCLSymSetMaps.getMapArrayUserSet();
+                mapArray = PCLSymSetMaps.GetMapArrayUserSet();
             else
                 mapArray = GetMapArray(index, false);
 

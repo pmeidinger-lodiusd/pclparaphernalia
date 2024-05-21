@@ -30,7 +30,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private readonly PCLPaperSizes.eIndex _paperSizeIndex;
+        private readonly PCLPaperSizes.Index _paperSizeIndex;
         private string _paperSizeDesc;
         private readonly byte _paperSizeIdPCL;
         private readonly byte _paperSizeIdPCLXL;
@@ -48,7 +48,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLPaperSize(PCLPaperSizes.eIndex sizeIndex,
+        public PCLPaperSize(PCLPaperSizes.Index sizeIndex,
                             string name,
                             string desc,
                             byte idPCL,
@@ -206,10 +206,10 @@ namespace PCLParaphernalia
             {
                 string size;
 
-                if ((_paperSizeIndex == PCLPaperSizes.eIndex.Custom) ||
-                    (_paperSizeIndex == PCLPaperSizes.eIndex.Default) ||
-                    (_paperSizeIndex == PCLPaperSizes.eIndex.Card_Custom) ||
-                    (_paperSizeIndex == PCLPaperSizes.eIndex.Env_Custom))
+                if ((_paperSizeIndex == PCLPaperSizes.Index.Custom) ||
+                    (_paperSizeIndex == PCLPaperSizes.Index.Default) ||
+                    (_paperSizeIndex == PCLPaperSizes.Index.Card_Custom) ||
+                    (_paperSizeIndex == PCLPaperSizes.Index.Env_Custom))
                 {
                     size = "?";
                 }
@@ -248,10 +248,10 @@ namespace PCLParaphernalia
             {
                 string size;
 
-                if ((_paperSizeIndex == PCLPaperSizes.eIndex.Custom) ||
-                    (_paperSizeIndex == PCLPaperSizes.eIndex.Default) ||
-                    (_paperSizeIndex == PCLPaperSizes.eIndex.Card_Custom) ||
-                    (_paperSizeIndex == PCLPaperSizes.eIndex.Env_Custom))
+                if ((_paperSizeIndex == PCLPaperSizes.Index.Custom) ||
+                    (_paperSizeIndex == PCLPaperSizes.Index.Default) ||
+                    (_paperSizeIndex == PCLPaperSizes.Index.Card_Custom) ||
+                    (_paperSizeIndex == PCLPaperSizes.Index.Env_Custom))
                 {
                     size = "?";
                 }
@@ -289,7 +289,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                return _paperSizeIndex == PCLPaperSizes.eIndex.Custom;
+                return _paperSizeIndex == PCLPaperSizes.Index.Custom;
             }
         }
 
@@ -345,9 +345,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public ushort getLogicalOffset(ushort sessionUPI,
-                                       PCLOrientations.eAspect aspect)
+                                       PCLOrientations.Aspect aspect)
         {
-            if (aspect == PCLOrientations.eAspect.Portrait)
+            if (aspect == PCLOrientations.Aspect.Portrait)
                 return (ushort)((_marginsLogicalPort * sessionUPI) / _sizeUnitsPerInch);
             else
                 return (ushort)((_marginsLogicalLand * sessionUPI) / _sizeUnitsPerInch);
@@ -363,9 +363,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public ushort getLogPageLength(ushort sessionUPI,
-                                        PCLOrientations.eAspect aspect)
+                                        PCLOrientations.Aspect aspect)
         {
-            if (aspect == PCLOrientations.eAspect.Portrait)
+            if (aspect == PCLOrientations.Aspect.Portrait)
             {
                 return (ushort)((CustomLongEdge *
                                  sessionUPI) /
@@ -389,9 +389,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public ushort getLogPageWidth(ushort sessionUPI,
-                                       PCLOrientations.eAspect aspect)
+                                       PCLOrientations.Aspect aspect)
         {
-            if (aspect == PCLOrientations.eAspect.Portrait)
+            if (aspect == PCLOrientations.Aspect.Portrait)
             {
                 return (ushort)(((CustomShortEdge - (_marginsLogicalPort * 2)) *
                                  sessionUPI) /
@@ -489,9 +489,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public ushort getPaperLength(ushort sessionUPI,
-                                     PCLOrientations.eAspect aspect)
+                                     PCLOrientations.Aspect aspect)
         {
-            if (aspect == PCLOrientations.eAspect.Portrait)
+            if (aspect == PCLOrientations.Aspect.Portrait)
                 return (ushort)((CustomLongEdge * sessionUPI) / _sizeUnitsPerInch);
             else
                 return (ushort)((CustomShortEdge * sessionUPI) / _sizeUnitsPerInch);
@@ -507,9 +507,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public ushort getPaperWidth(ushort sessionUPI,
-                                    PCLOrientations.eAspect aspect)
+                                    PCLOrientations.Aspect aspect)
         {
-            if (aspect == PCLOrientations.eAspect.Portrait)
+            if (aspect == PCLOrientations.Aspect.Portrait)
                 return (ushort)((CustomShortEdge * sessionUPI) / _sizeUnitsPerInch);
             else
                 return (ushort)((CustomLongEdge * sessionUPI) / _sizeUnitsPerInch);

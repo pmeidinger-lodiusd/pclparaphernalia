@@ -19,13 +19,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public enum eAspect
+        public enum Aspect
         {
             Portrait,
             Landscape
         }
 
-        public enum eIndex
+        public enum Index
         {
             Portrait,
             Landscape,
@@ -41,19 +41,19 @@ namespace PCLParaphernalia
 
         private static readonly PCLOrientation[] _orientations =
         {
-            new PCLOrientation(eAspect.Portrait,
+            new PCLOrientation(Aspect.Portrait,
                                "Portrait",
                                0x00,
                                (byte)PCLXLAttrEnums.Val.ePortraitOrientation),
-            new PCLOrientation(eAspect.Landscape,
+            new PCLOrientation(Aspect.Landscape,
                                "Landscape",
                                0x01,
                                (byte)PCLXLAttrEnums.Val.eLandscapeOrientation),
-            new PCLOrientation(eAspect.Portrait,
+            new PCLOrientation(Aspect.Portrait,
                                "Reverse Portrait",
                                0x02,
                                (byte)PCLXLAttrEnums.Val.eReversePortrait),
-            new PCLOrientation(eAspect.Landscape,
+            new PCLOrientation(Aspect.Landscape,
                                "Reverse Landscape",
                                0x03,
                                (byte)PCLXLAttrEnums.Val.eReverseLandscape)
@@ -71,7 +71,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eAspect getAspect(int index)
+        public static Aspect GetAspect(int index)
         {
             return _orientations[index].getAspect();
         }
@@ -85,7 +85,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCount()
+        public static int GetCount()
         {
             return _orientationCount;
         }
@@ -99,7 +99,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte getIdPCL(int index)
+        public static byte GetIdPCL(int index)
         {
             return _orientations[index].getIdPCL();
         }
@@ -113,7 +113,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte getIdPCLXL(int index)
+        public static byte GetIdPCLXL(int index)
         {
             return _orientations[index].getIdPCLXL();
         }
@@ -127,7 +127,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getName(int index)
+        public static string GetName(int index)
         {
             return _orientations[index].getName();
         }
@@ -142,9 +142,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool isLandscape(int index)
+        public static bool IsLandscape(int index)
         {
-            return _orientations[index].getAspect() == eAspect.Landscape;
+            return _orientations[index].getAspect() == Aspect.Landscape;
         }
     }
 }

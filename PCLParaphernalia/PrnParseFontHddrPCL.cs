@@ -18,7 +18,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private enum ePCLFontFormat : byte
+        private enum PCLFontFormat : byte
         {
             Bitmap = 0,
             IntellifontBound = 10,
@@ -28,7 +28,7 @@ namespace PCLParaphernalia
             BitmapResSpec = 20
         }
 
-        private enum eStage
+        private enum Stage
         {
             Start = 0,
             ShowDesc,
@@ -51,8 +51,8 @@ namespace PCLParaphernalia
 
         private DataTable _table;
 
-        private eStage _nextStage;
-        private ePCLFontFormat _hddrFormat;
+        private Stage _nextStage;
+        private PCLFontFormat _hddrFormat;
 
         private byte[] _buf;
 
@@ -90,7 +90,7 @@ namespace PCLParaphernalia
 
         private bool _showBinData;
 
-        private PrnParseConstants.eOptOffsetFormats _indxOffsetFormat;
+        private PrnParseConstants.OptOffsetFormats _indxOffsetFormat;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -113,7 +113,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool analyseFontHddr(int hddrLen,
+        public bool AnalyseFontHddr(int hddrLen,
                                        int fileOffset,
                                        byte[] buf,
                                        ref int bufRem,
@@ -128,7 +128,7 @@ namespace PCLParaphernalia
             bool largeSegs;
             bool validSegs = false;
 
-            PrnParseConstants.eContType contType;
+            PrnParseConstants.ContType contType;
 
             bool continuation = false;
 
@@ -153,9 +153,9 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if (contType == PrnParseConstants.eContType.None)
+            if (contType == PrnParseConstants.ContType.None)
             {
-                _nextStage = eStage.Start;
+                _nextStage = Stage.Start;
                 _validHddr = true;
                 _firstSeg = true;
 
@@ -167,13 +167,13 @@ namespace PCLParaphernalia
             }
             else
             {
-                contType = PrnParseConstants.eContType.None;
+                contType = PrnParseConstants.ContType.None;
                 linkData.resetContData();
             }
 
             //----------------------------------------------------------------//
 
-            if (_nextStage == eStage.Start)
+            if (_nextStage == Stage.Start)
             {
                 if (bufRem < 2)
                 {
@@ -184,7 +184,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    contType = PrnParseConstants.eContType.PCLFontHddr;
+                    contType = PrnParseConstants.ContType.PCLFontHddr;
 
                     linkData.setBacktrack(contType, -bufRem);
                 }
@@ -196,12 +196,12 @@ namespace PCLParaphernalia
                     if (_hddrDescLen > _hddrLen)
                     {
                         _validHddr = false;
-                        _nextStage = eStage.BadSeqA;
+                        _nextStage = Stage.BadSeqA;
 
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.MsgWarning,
+                            PrnParseRowTypes.Type.MsgWarning,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "*** Warning ***",
                             string.Empty,
@@ -211,12 +211,12 @@ namespace PCLParaphernalia
                     else if (_hddrDescLen < minHddrDescLen)
                     {
                         _validHddr = false;
-                        _nextStage = eStage.BadSeqA;
+                        _nextStage = Stage.BadSeqA;
 
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.MsgWarning,
+                            PrnParseRowTypes.Type.MsgWarning,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "*** Warning ***",
                             string.Empty,
@@ -232,18 +232,18 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        contType = PrnParseConstants.eContType.PCLFontHddr;
+                        contType = PrnParseConstants.ContType.PCLFontHddr;
 
                         linkData.setBacktrack(contType, -bufRem);
                     }
                     else
                     {
-                        _nextStage = eStage.ShowDesc;
+                        _nextStage = Stage.ShowDesc;
                     }
                 }
             }
 
-            if (_nextStage == eStage.ShowDesc)
+            if (_nextStage == Stage.ShowDesc)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -251,7 +251,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                processDescriptor(ref bufRem,
+                ProcessDescriptor(ref bufRem,
                                   ref bufOffset);
 
                 bufRem -= _hddrDescLen;
@@ -259,12 +259,12 @@ namespace PCLParaphernalia
                 bufOffset += _hddrDescLen;
 
                 if (_validHddr)
-                    _nextStage = eStage.ShowData;
+                    _nextStage = Stage.ShowData;
                 else
-                    _nextStage = eStage.BadSeqA;
+                    _nextStage = Stage.BadSeqA;
             }
 
-            if (_nextStage == eStage.ShowData)
+            if (_nextStage == Stage.ShowData)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -280,18 +280,18 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if ((_hddrFormat == ePCLFontFormat.IntellifontBound)
+                if ((_hddrFormat == PCLFontFormat.IntellifontBound)
                                          ||
-                    (_hddrFormat == ePCLFontFormat.IntellifontUnbound))
+                    (_hddrFormat == PCLFontFormat.IntellifontUnbound))
                 {
-                    processGlobalData(ref bufRem,
+                    ProcessGlobalData(ref bufRem,
                                       ref bufOffset);
                 }
-                else if ((_hddrFormat == ePCLFontFormat.TrueType)
+                else if ((_hddrFormat == PCLFontFormat.TrueType)
                                         ||
-                         (_hddrFormat == ePCLFontFormat.Universal))
+                         (_hddrFormat == PCLFontFormat.Universal))
                 {
-                    largeSegs = _hddrFormat == ePCLFontFormat.Universal;
+                    largeSegs = _hddrFormat == PCLFontFormat.Universal;
 
                     continuation = ParseSegs.processSegData(_buf,
                                                               _fileOffset,
@@ -313,18 +313,18 @@ namespace PCLParaphernalia
                     if (!continuation)
                     {
                         if (validSegs)
-                            _nextStage = eStage.ShowCopyright;
+                            _nextStage = Stage.ShowCopyright;
                         else
-                            _nextStage = eStage.BadSeqA;
+                            _nextStage = Stage.BadSeqA;
                     }
                 }
                 else
                 {
-                    _nextStage = eStage.ShowCopyright;
+                    _nextStage = Stage.ShowCopyright;
                 }
             }
 
-            if (_nextStage == eStage.ShowCopyright)
+            if (_nextStage == Stage.ShowCopyright)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -334,22 +334,22 @@ namespace PCLParaphernalia
 
                 if (_hddrCpyrLen == 0)
                 {
-                    _nextStage = eStage.ShowChecksum;
+                    _nextStage = Stage.ShowChecksum;
                 }
                 else
                 {
-                    processCopyrightData(ref bufRem,
+                    ProcessCopyrightData(ref bufRem,
                                          ref bufOffset);
                 }
             }
 
-            if (_nextStage == eStage.ShowChecksum)
+            if (_nextStage == Stage.ShowChecksum)
             {
-                processChecksum(ref bufRem,
+                ProcessChecksum(ref bufRem,
                                  ref bufOffset);
             }
 
-            if (_nextStage == eStage.EndOK)
+            if (_nextStage == Stage.EndOK)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -360,7 +360,7 @@ namespace PCLParaphernalia
                 return _validHddr;
             }
 
-            if (_nextStage == eStage.BadSeqA)
+            if (_nextStage == Stage.BadSeqA)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -368,19 +368,19 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                _nextStage = eStage.BadSeqB;
+                _nextStage = Stage.BadSeqB;
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.MsgError,
+                    PrnParseRowTypes.Type.MsgError,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     string.Empty,
                     string.Empty,
                     "Processing of header abandoned!");
             }
 
-            if ((_nextStage == eStage.BadSeqB) && (_hddrRem != 0))
+            if ((_nextStage == Stage.BadSeqB) && (_hddrRem != 0))
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -401,7 +401,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    contType = PrnParseConstants.eContType.PCLFontHddr;
+                    contType = PrnParseConstants.ContType.PCLFontHddr;
 
                     binDataLen = bufRem;
                     _hddrRem -= bufRem;
@@ -410,7 +410,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    contType = PrnParseConstants.eContType.None;
+                    contType = PrnParseConstants.ContType.None;
                     linkData.resetContData();
 
                     binDataLen = _hddrRem;
@@ -426,9 +426,9 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    PrnParseData.processBinary(
+                    PrnParseData.ProcessBinary(
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         buf,
                         fileOffset,
                         bufOffset,
@@ -467,22 +467,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processChecksum(ref int bufRem,
+        private void ProcessChecksum(ref int bufRem,
                                       ref int bufOffset)
         {
-            PrnParseConstants.eContType contType;
+            PrnParseConstants.ContType contType;
 
             if (_hddrChksLen == 0)
             {
                 if (_hddrRem != 0)
                 {
                     _validHddr = false;
-                    _nextStage = eStage.BadSeqA;
+                    _nextStage = Stage.BadSeqA;
 
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.MsgWarning,
+                        PrnParseRowTypes.Type.MsgWarning,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "*** Warning ***",
                         string.Empty,
@@ -494,12 +494,12 @@ namespace PCLParaphernalia
                 if (_hddrRem != (_hddrResvLen + _hddrChksLen))
                 {
                     _validHddr = false;
-                    _nextStage = eStage.BadSeqA;
+                    _nextStage = Stage.BadSeqA;
 
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.MsgWarning,
+                        PrnParseRowTypes.Type.MsgWarning,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "*** Warning ***",
                         string.Empty,
@@ -516,7 +516,7 @@ namespace PCLParaphernalia
                         //                                                //
                         //------------------------------------------------//
 
-                        contType = PrnParseConstants.eContType.PCLFontHddr;
+                        contType = PrnParseConstants.ContType.PCLFontHddr;
 
                         _linkData.setBacktrack(contType, -_hddrRem);
                     }
@@ -524,7 +524,7 @@ namespace PCLParaphernalia
                     {
                         byte crntByte;
 
-                        contType = PrnParseConstants.eContType.None;
+                        contType = PrnParseConstants.ContType.None;
                         _linkData.resetContData();
 
                         //------------------------------------------------//
@@ -537,9 +537,9 @@ namespace PCLParaphernalia
                         crntByte = _buf[bufOffset];
 
                         PrnParseCommon.addDataRow(
-                            PrnParseRowTypes.eType.PCLFontHddr,
+                            PrnParseRowTypes.Type.PCLFontHddr,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             _indxOffsetFormat,
                             _fileOffset + bufOffset,
                             _analysisLevel,
@@ -560,9 +560,9 @@ namespace PCLParaphernalia
                         crntByte = _buf[bufOffset + 1];
 
                         PrnParseCommon.addDataRow(
-                            PrnParseRowTypes.eType.PCLFontHddr,
+                            PrnParseRowTypes.Type.PCLFontHddr,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             _indxOffsetFormat,
                             _fileOffset + bufOffset + 1,
                             _analysisLevel,
@@ -578,9 +578,9 @@ namespace PCLParaphernalia
                             crntByte = (byte)_hddrChksVal;
 
                             PrnParseCommon.addTextRow(
-                                PrnParseRowTypes.eType.MsgWarning,
+                                PrnParseRowTypes.Type.MsgWarning,
                                 _table,
-                                PrnParseConstants.eOvlShow.None,
+                                PrnParseConstants.OvlShow.None,
                                 string.Empty,
                                 "*** Warning ***",
                                 string.Empty,
@@ -600,7 +600,7 @@ namespace PCLParaphernalia
                         bufOffset += _hddrRem;
 
                         _hddrRem = 0;
-                        _nextStage = eStage.EndOK;
+                        _nextStage = Stage.EndOK;
                     }
                 }
             }
@@ -615,14 +615,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processCopyrightData(ref int bufRem,
+        private void ProcessCopyrightData(ref int bufRem,
                                           ref int bufOffset)
         {
             const int sliceMax = 50;
 
             ASCIIEncoding ascii = new ASCIIEncoding();
 
-            PrnParseConstants.eContType contType;
+            PrnParseConstants.ContType contType;
 
             int sliceLen;
 
@@ -643,7 +643,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                contType = PrnParseConstants.eContType.PCLFontHddr;
+                contType = PrnParseConstants.ContType.PCLFontHddr;
 
                 dataLen = bufRem;
                 _hddrCpyrRem -= bufRem;
@@ -653,14 +653,14 @@ namespace PCLParaphernalia
             }
             else
             {
-                contType = PrnParseConstants.eContType.None;
+                contType = PrnParseConstants.ContType.None;
 
                 _linkData.resetContData();
 
                 dataLen = _hddrCpyrRem;
                 _hddrCpyrRem = 0;
                 _hddrRem -= dataLen;
-                _nextStage = eStage.ShowChecksum;
+                _nextStage = Stage.ShowChecksum;
             }
 
             firstLine = true;
@@ -669,9 +669,9 @@ namespace PCLParaphernalia
 
             if (_showBinData)
             {
-                PrnParseData.processBinary(
+                PrnParseData.ProcessBinary(
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _buf,
                     _fileOffset,
                     bufOffset,
@@ -702,9 +702,9 @@ namespace PCLParaphernalia
                     typeText = string.Empty;
 
                 PrnParseCommon.addDataRow(
-                    PrnParseRowTypes.eType.PCLFontHddr,
+                    PrnParseRowTypes.Type.PCLFontHddr,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     _fileOffset + offset,
                     _analysisLevel,
@@ -731,8 +731,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processDescriptor(ref int bufLen,
-                                       ref int bufOffset)
+        private void ProcessDescriptor(ref int bufLen, ref int bufOffset)
         {
             ASCIIEncoding ascii = new ASCIIEncoding();
 
@@ -758,9 +757,9 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             PrnParseCommon.addDataRow(
-                PrnParseRowTypes.eType.DataBinary,
+                PrnParseRowTypes.Type.DataBinary,
                 _table,
-                PrnParseConstants.eOvlShow.None,
+                PrnParseConstants.OvlShow.None,
                 _indxOffsetFormat,
                 _fileOffset + bufOffset,
                 _analysisLevel,
@@ -770,9 +769,9 @@ namespace PCLParaphernalia
 
             if (_showBinData)
             {
-                PrnParseData.processBinary(
+                PrnParseData.ProcessBinary(
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _buf,
                     _fileOffset,
                     bufOffset,
@@ -814,11 +813,11 @@ namespace PCLParaphernalia
             _hddrDataRem = 0;
             _hddrCpyrRem = 0;
 
-            _hddrFormat = (ePCLFontFormat)_buf[bufOffset + 2];
+            _hddrFormat = (PCLFontFormat)_buf[bufOffset + 2];
 
-            if ((_hddrFormat == ePCLFontFormat.Bitmap)
+            if ((_hddrFormat == PCLFontFormat.Bitmap)
                                ||
-                (_hddrFormat == ePCLFontFormat.BitmapResSpec))
+                (_hddrFormat == PCLFontFormat.BitmapResSpec))
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -835,9 +834,9 @@ namespace PCLParaphernalia
                     _hddrCpyrRem = _hddrCpyrLen;
                 }
             }
-            else if ((_hddrFormat == ePCLFontFormat.IntellifontBound)
+            else if ((_hddrFormat == PCLFontFormat.IntellifontBound)
                                    ||
-                     (_hddrFormat == ePCLFontFormat.IntellifontUnbound))
+                     (_hddrFormat == PCLFontFormat.IntellifontUnbound))
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -861,9 +860,9 @@ namespace PCLParaphernalia
                     _validHddr = false;
 
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.MsgWarning,
+                        PrnParseRowTypes.Type.MsgWarning,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "*** Warning ***",
                         string.Empty,
@@ -889,9 +888,9 @@ namespace PCLParaphernalia
                         _validHddr = false;
 
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.MsgWarning,
+                            PrnParseRowTypes.Type.MsgWarning,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "*** Warning ***",
                             string.Empty,
@@ -899,9 +898,9 @@ namespace PCLParaphernalia
                     }
                 }
             }
-            else if ((_hddrFormat == ePCLFontFormat.TrueType)
+            else if ((_hddrFormat == PCLFontFormat.TrueType)
                                 ||
-                     (_hddrFormat == ePCLFontFormat.Universal))
+                     (_hddrFormat == PCLFontFormat.Universal))
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -931,9 +930,9 @@ namespace PCLParaphernalia
                 _validHddr = false;
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.MsgWarning,
+                    PrnParseRowTypes.Type.MsgWarning,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "*** Warning ***",
                     string.Empty,
@@ -943,9 +942,9 @@ namespace PCLParaphernalia
             if (!_validHddr)
             {
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.MsgWarning,
+                    PrnParseRowTypes.Type.MsgWarning,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "*** Warning ***",
                     string.Empty,
@@ -967,9 +966,9 @@ namespace PCLParaphernalia
                 //------------------------------------------------------------//
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.PCLFontHddr,
+                    PrnParseRowTypes.Type.PCLFontHddr,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "Descriptor Size:",
                     string.Empty,
@@ -983,31 +982,31 @@ namespace PCLParaphernalia
 
                 switch (_hddrFormat)
                 {
-                    case ePCLFontFormat.Bitmap:
+                    case PCLFontFormat.Bitmap:
                         itemDesc = "0: PCL Bitmap";
                         _bitmapFont = true;
                         break;
 
-                    case ePCLFontFormat.IntellifontBound:
+                    case PCLFontFormat.IntellifontBound:
                         itemDesc = "10: Intellifont Scalable (Bound)";
                         _intelliFont = true;
                         break;
 
-                    case ePCLFontFormat.IntellifontUnbound:
+                    case PCLFontFormat.IntellifontUnbound:
                         itemDesc = "11: Intellifont Scalable (Unbound)";
                         _intelliFont = true;
                         break;
 
-                    case ePCLFontFormat.TrueType:
+                    case PCLFontFormat.TrueType:
                         itemDesc = "15: Truetype Scalable";
                         _truetypeFont = true;
                         break;
 
-                    case ePCLFontFormat.Universal:
+                    case PCLFontFormat.Universal:
                         itemDesc = "16: Universal";
                         break;
 
-                    case ePCLFontFormat.BitmapResSpec:
+                    case PCLFontFormat.BitmapResSpec:
                         itemDesc = "20: Resolution-Specified Bitmap";
                         _bitmapFont = true;
                         break;
@@ -1018,9 +1017,9 @@ namespace PCLParaphernalia
                 }
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.PCLFontHddr,
+                    PrnParseRowTypes.Type.PCLFontHddr,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "Header Format:",
                     string.Empty,
@@ -1039,9 +1038,9 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if (((_hddrFormat == ePCLFontFormat.IntellifontBound)
+                if (((_hddrFormat == PCLFontFormat.IntellifontBound)
                                   ||
-                     (_hddrFormat == ePCLFontFormat.IntellifontUnbound))
+                     (_hddrFormat == PCLFontFormat.IntellifontUnbound))
                                   &&
                     (_hddrDescLen > 67))
                 {
@@ -1050,15 +1049,15 @@ namespace PCLParaphernalia
                     _pclDotResX = ix1;
 
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "X-resolution:",
                         string.Empty,
                         ix1 + " design units per inch");
                 }
-                else if ((_hddrFormat == ePCLFontFormat.BitmapResSpec)
+                else if ((_hddrFormat == PCLFontFormat.BitmapResSpec)
                                             &&
                          (_hddrDescLen > 65))
                 {
@@ -1067,9 +1066,9 @@ namespace PCLParaphernalia
                     _pclDotResX = ix1;
 
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "X-resolution:",
                         string.Empty,
@@ -1089,9 +1088,9 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if (((_hddrFormat == ePCLFontFormat.IntellifontBound)
+                if (((_hddrFormat == PCLFontFormat.IntellifontBound)
                                           ||
-                     (_hddrFormat == ePCLFontFormat.IntellifontUnbound))
+                     (_hddrFormat == PCLFontFormat.IntellifontUnbound))
                                           &&
                     (_hddrDescLen > 69))
                 {
@@ -1100,15 +1099,15 @@ namespace PCLParaphernalia
                     _pclDotResY = ix1;
 
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Y-resolution:",
                         string.Empty,
                         ix1 + " design units per inch");
                 }
-                else if ((_hddrFormat == ePCLFontFormat.BitmapResSpec)
+                else if ((_hddrFormat == PCLFontFormat.BitmapResSpec)
                                             &&
                          (_hddrDescLen > 67))
                 {
@@ -1117,9 +1116,9 @@ namespace PCLParaphernalia
                     _pclDotResY = ix1;
 
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Y-resolution:",
                         string.Empty,
@@ -1175,9 +1174,9 @@ namespace PCLParaphernalia
                 }
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.PCLFontHddr,
+                    PrnParseRowTypes.Type.PCLFontHddr,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "Font Type:",
                     string.Empty,
@@ -1201,9 +1200,9 @@ namespace PCLParaphernalia
                     if (_boundFont)
                     {
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.PCLFontHddr,
+                            PrnParseRowTypes.Type.PCLFontHddr,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "First Code:",
                             string.Empty,
@@ -1211,9 +1210,9 @@ namespace PCLParaphernalia
                             " (0x" + ix1.ToString("x") + ")");
 
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.PCLFontHddr,
+                            PrnParseRowTypes.Type.PCLFontHddr,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "Last Code:",
                             string.Empty,
@@ -1225,9 +1224,9 @@ namespace PCLParaphernalia
                         if (ix1 != 0)
                         {
                             PrnParseCommon.addTextRow(
-                                PrnParseRowTypes.eType.MsgComment,
+                                PrnParseRowTypes.Type.MsgComment,
                                 _table,
-                                PrnParseConstants.eOvlShow.None,
+                                PrnParseConstants.OvlShow.None,
                                 string.Empty,
                                 "Comment",
                                 string.Empty,
@@ -1236,9 +1235,9 @@ namespace PCLParaphernalia
                         }
 
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.PCLFontHddr,
+                            PrnParseRowTypes.Type.PCLFontHddr,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "Character Count:",
                             string.Empty,
@@ -1274,9 +1273,9 @@ namespace PCLParaphernalia
                     PCLSymbolSets.GetIndexForId((ushort)ix1);
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.PCLFontHddr,
+                    PrnParseRowTypes.Type.PCLFontHddr,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "Symbol Set:",
                     "Kind1 value:",
@@ -1285,9 +1284,9 @@ namespace PCLParaphernalia
                 if (indxSymSet == -1)
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "     ---->",
                         "Identifier:",
@@ -1296,9 +1295,9 @@ namespace PCLParaphernalia
                 else
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "     ---->",
                         "Identifier:",
@@ -1330,9 +1329,9 @@ namespace PCLParaphernalia
                 }
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.PCLFontHddr,
+                    PrnParseRowTypes.Type.PCLFontHddr,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "Spacing:",
                     string.Empty,
@@ -1346,9 +1345,9 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if (((_hddrFormat == ePCLFontFormat.TrueType)
+                if (((_hddrFormat == PCLFontFormat.TrueType)
                                        ||
-                     (_hddrFormat == ePCLFontFormat.Universal))
+                     (_hddrFormat == PCLFontFormat.Universal))
                                        &&
                     (_hddrDescLen > 71))
                 {
@@ -1378,18 +1377,18 @@ namespace PCLParaphernalia
                     }
 
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Scaling:",
                         "Technology:",
                         itemDesc);
 
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         string.Empty,
                         "Variety:",
@@ -1414,9 +1413,9 @@ namespace PCLParaphernalia
                     _fontScaleFactor = ix1;
 
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Scale Factor:",
                         string.Empty,
@@ -1450,9 +1449,9 @@ namespace PCLParaphernalia
                     fx1 = ((float)(1024 * _pclDotResX)) / ix3;
 
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Pitch:",
                         string.Empty,
@@ -1461,9 +1460,9 @@ namespace PCLParaphernalia
                     if (!pitchSet)
                     {
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.MsgComment,
+                            PrnParseRowTypes.Type.MsgComment,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "Comment",
                             string.Empty,
@@ -1473,9 +1472,9 @@ namespace PCLParaphernalia
                 else
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Master Design:",
                         "Space Width:",
@@ -1484,9 +1483,9 @@ namespace PCLParaphernalia
                     if (ix1 == 0)
                     {
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.MsgComment,
+                            PrnParseRowTypes.Type.MsgComment,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "Comment",
                             string.Empty,
@@ -1496,9 +1495,9 @@ namespace PCLParaphernalia
                     if (ix2 != 0)
                     {
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.MsgComment,
+                            PrnParseRowTypes.Type.MsgComment,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "Comment",
                             string.Empty,
@@ -1532,9 +1531,9 @@ namespace PCLParaphernalia
                                    (1024 * _pclDotResY);
 
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Height:",
                         string.Empty,
@@ -1547,9 +1546,9 @@ namespace PCLParaphernalia
                     if (pitchSet)
                     {
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.PCLFontHddr,
+                            PrnParseRowTypes.Type.PCLFontHddr,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "Height:",
                             string.Empty,
@@ -1558,9 +1557,9 @@ namespace PCLParaphernalia
                     else
                     {
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.PCLFontHddr,
+                            PrnParseRowTypes.Type.PCLFontHddr,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             "Master Design:",
                             "Height:",
                             string.Empty,
@@ -1585,9 +1584,9 @@ namespace PCLParaphernalia
                 ix1 = (_buf[bufOffset + 4] * 256) + _buf[bufOffset + 23];
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.PCLFontHddr,
+                    PrnParseRowTypes.Type.PCLFontHddr,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "Style:",
                     "Value:",
@@ -1675,9 +1674,9 @@ namespace PCLParaphernalia
                 }
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.PCLFontHddr,
+                    PrnParseRowTypes.Type.PCLFontHddr,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     string.Empty,
                     "Structure:",
@@ -1725,9 +1724,9 @@ namespace PCLParaphernalia
                 }
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.PCLFontHddr,
+                    PrnParseRowTypes.Type.PCLFontHddr,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     string.Empty,
                     "Width:",
@@ -1759,9 +1758,9 @@ namespace PCLParaphernalia
                 }
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.PCLFontHddr,
+                    PrnParseRowTypes.Type.PCLFontHddr,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     string.Empty,
                     "Posture:",
@@ -1852,9 +1851,9 @@ namespace PCLParaphernalia
                 }
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.PCLFontHddr,
+                    PrnParseRowTypes.Type.PCLFontHddr,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "Stroke Weight:",
                     string.Empty,
@@ -1877,9 +1876,9 @@ namespace PCLParaphernalia
                 ix2 = ix1 & 0x0fff;
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.PCLFontHddr,
+                    PrnParseRowTypes.Type.PCLFontHddr,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "Typeface:",
                     "Family Code:",
@@ -1925,18 +1924,18 @@ namespace PCLParaphernalia
                     }
 
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         string.Empty,
                         "Vendor Code:",
                         itemDesc);
 
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         string.Empty,
                         "Identifier:",
@@ -1986,9 +1985,9 @@ namespace PCLParaphernalia
                     }
 
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Font Number:",
                         "Format:",
@@ -2026,18 +2025,18 @@ namespace PCLParaphernalia
                     }
 
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         string.Empty,
                         "Vendor Code:",
                         itemDesc);
 
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         string.Empty,
                         "Vendor Font No.:",
@@ -2055,9 +2054,9 @@ namespace PCLParaphernalia
                 itemDesc = ascii.GetString(_buf, bufOffset + 48, 16);
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.PCLFontHddr,
+                    PrnParseRowTypes.Type.PCLFontHddr,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "Font Name:",
                     string.Empty,
@@ -2100,9 +2099,9 @@ namespace PCLParaphernalia
                 }
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.PCLFontHddr,
+                    PrnParseRowTypes.Type.PCLFontHddr,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "Orientation:",
                     string.Empty,
@@ -2150,9 +2149,9 @@ namespace PCLParaphernalia
                     }
 
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Serif Type:",
                         string.Empty,
@@ -2221,9 +2220,9 @@ namespace PCLParaphernalia
                 if (ix3 == 0)
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Serif Style:",
                         string.Empty,
@@ -2232,9 +2231,9 @@ namespace PCLParaphernalia
                 else
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "      Style:",
                         string.Empty,
@@ -2309,9 +2308,9 @@ namespace PCLParaphernalia
                 }
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.PCLFontHddr,
+                    PrnParseRowTypes.Type.PCLFontHddr,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "Width Type:",
                     string.Empty,
@@ -2345,9 +2344,9 @@ namespace PCLParaphernalia
                 }
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.PCLFontHddr,
+                    PrnParseRowTypes.Type.PCLFontHddr,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "Quality:",
                     string.Empty,
@@ -2381,9 +2380,9 @@ namespace PCLParaphernalia
                 }
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.PCLFontHddr,
+                    PrnParseRowTypes.Type.PCLFontHddr,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "Placement:",
                     string.Empty,
@@ -2404,9 +2403,9 @@ namespace PCLParaphernalia
                 if (_bitmapFont)
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Cell Width:",
                         string.Empty,
@@ -2415,9 +2414,9 @@ namespace PCLParaphernalia
                 else
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Cell Width:",
                         string.Empty,
@@ -2440,9 +2439,9 @@ namespace PCLParaphernalia
                     if (_bitmapFont)
                     {
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.PCLFontHddr,
+                            PrnParseRowTypes.Type.PCLFontHddr,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "Text Width:",
                             string.Empty,
@@ -2451,9 +2450,9 @@ namespace PCLParaphernalia
                         fx1 = ((float)(4 * _pclDotResX)) / ix1;
 
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.PCLFontHddr,
+                            PrnParseRowTypes.Type.PCLFontHddr,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "     ---->",
                             "Average Spacing:",
@@ -2462,9 +2461,9 @@ namespace PCLParaphernalia
                     else
                     {
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.PCLFontHddr,
+                            PrnParseRowTypes.Type.PCLFontHddr,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "Text Width:",
                             string.Empty,
@@ -2487,9 +2486,9 @@ namespace PCLParaphernalia
                 if (_bitmapFont)
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Cell Height:",
                         string.Empty,
@@ -2498,9 +2497,9 @@ namespace PCLParaphernalia
                 else
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Cell Height:",
                         string.Empty,
@@ -2522,9 +2521,9 @@ namespace PCLParaphernalia
                     if (_bitmapFont)
                     {
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.PCLFontHddr,
+                            PrnParseRowTypes.Type.PCLFontHddr,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "Text Height:",
                             string.Empty,
@@ -2533,9 +2532,9 @@ namespace PCLParaphernalia
                         fx1 = ((float)(4 * _pclDotResY)) / ix1;
 
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.PCLFontHddr,
+                            PrnParseRowTypes.Type.PCLFontHddr,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "     ---->",
                             "Optimum Spacing:",
@@ -2544,9 +2543,9 @@ namespace PCLParaphernalia
                     else
                     {
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.PCLFontHddr,
+                            PrnParseRowTypes.Type.PCLFontHddr,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "Text Height:",
                             string.Empty,
@@ -2574,9 +2573,9 @@ namespace PCLParaphernalia
                     if (_bitmapFont)
                     {
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.PCLFontHddr,
+                            PrnParseRowTypes.Type.PCLFontHddr,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "x-Height:",
                             string.Empty,
@@ -2585,9 +2584,9 @@ namespace PCLParaphernalia
                     else
                     {
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.PCLFontHddr,
+                            PrnParseRowTypes.Type.PCLFontHddr,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "x-Height:",
                             string.Empty,
@@ -2622,9 +2621,9 @@ namespace PCLParaphernalia
                     if (ix1 == 0)
                     {
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.PCLFontHddr,
+                            PrnParseRowTypes.Type.PCLFontHddr,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "Cap Height:",
                             string.Empty,
@@ -2635,9 +2634,9 @@ namespace PCLParaphernalia
                         fx1 = ((float)(ix1 * 100)) / 65535;
 
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.PCLFontHddr,
+                            PrnParseRowTypes.Type.PCLFontHddr,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "Cap Height:",
                             string.Empty,
@@ -2647,9 +2646,9 @@ namespace PCLParaphernalia
                 else if (ix1 != 0)
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Cap Height:",
                         string.Empty,
@@ -2676,9 +2675,9 @@ namespace PCLParaphernalia
                 if (_bitmapFont)
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Baseline:",
                         string.Empty,
@@ -2687,9 +2686,9 @@ namespace PCLParaphernalia
                 else if (_intelliFont)
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Baseline:",
                         string.Empty,
@@ -2698,9 +2697,9 @@ namespace PCLParaphernalia
                 else if (_truetypeFont && (ix1 != 0))
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Baseline:",
                         string.Empty,
@@ -2739,9 +2738,9 @@ namespace PCLParaphernalia
                     if (_bitmapFont)
                     {
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.PCLFontHddr,
+                            PrnParseRowTypes.Type.PCLFontHddr,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "Underline:",
                             "Thickness:",
@@ -2750,9 +2749,9 @@ namespace PCLParaphernalia
                     else
                     {
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.PCLFontHddr,
+                            PrnParseRowTypes.Type.PCLFontHddr,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "Underline:",
                             "Thickness:",
@@ -2792,9 +2791,9 @@ namespace PCLParaphernalia
                         }
 
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.PCLFontHddr,
+                            PrnParseRowTypes.Type.PCLFontHddr,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             text1,
                             "Position:",
@@ -2805,9 +2804,9 @@ namespace PCLParaphernalia
                         if (ix1 == 0)
                         {
                             PrnParseCommon.addTextRow(
-                                PrnParseRowTypes.eType.PCLFontHddr,
+                                PrnParseRowTypes.Type.PCLFontHddr,
                                 _table,
-                                PrnParseConstants.eOvlShow.None,
+                                PrnParseConstants.OvlShow.None,
                                 string.Empty,
                                 "Underline:",
                                 "Position:",
@@ -2816,9 +2815,9 @@ namespace PCLParaphernalia
                         else
                         {
                             PrnParseCommon.addTextRow(
-                                PrnParseRowTypes.eType.PCLFontHddr,
+                                PrnParseRowTypes.Type.PCLFontHddr,
                                 _table,
-                                PrnParseConstants.eOvlShow.None,
+                                PrnParseConstants.OvlShow.None,
                                 string.Empty,
                                 string.Empty,
                                 "Position:",
@@ -2869,9 +2868,9 @@ namespace PCLParaphernalia
                 if (valOK && (ix1 != 0))
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Underline:",
                         "Thickness:",
@@ -2883,9 +2882,9 @@ namespace PCLParaphernalia
                     if (ix2 == 0)
                     {
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.PCLFontHddr,
+                            PrnParseRowTypes.Type.PCLFontHddr,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             string.Empty,
                             "Position:",
@@ -2896,9 +2895,9 @@ namespace PCLParaphernalia
                         ix2 = -ix2;
 
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.PCLFontHddr,
+                            PrnParseRowTypes.Type.PCLFontHddr,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             string.Empty,
                             "Position:",
@@ -2907,9 +2906,9 @@ namespace PCLParaphernalia
                     else
                     {
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.PCLFontHddr,
+                            PrnParseRowTypes.Type.PCLFontHddr,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             string.Empty,
                             "Position:",
@@ -2934,9 +2933,9 @@ namespace PCLParaphernalia
                     ix1 = _buf[bufOffset + 74];
 
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "OR Threshold:",
                         string.Empty,
@@ -2961,9 +2960,9 @@ namespace PCLParaphernalia
                     fx1 = ((float)ix1) / 32768;
 
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.PCLFontHddr,
+                        PrnParseRowTypes.Type.PCLFontHddr,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Italic Angle:",
                         "Tangent:",
@@ -2983,7 +2982,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if ((_hddrFormat == ePCLFontFormat.IntellifontUnbound)
+                if ((_hddrFormat == PCLFontFormat.IntellifontUnbound)
                                         &&
                     (_hddrDescLen > 85))
                 {
@@ -3010,10 +3009,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processGlobalData(ref int bufRem,
-                                       ref int bufOffset)
+        private void ProcessGlobalData(ref int bufRem, ref int bufOffset)
         {
-            PrnParseConstants.eContType contType;
+            PrnParseConstants.ContType contType;
 
             int binDataLen;
 
@@ -3026,7 +3024,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                contType = PrnParseConstants.eContType.PCLFontHddr;
+                contType = PrnParseConstants.ContType.PCLFontHddr;
 
                 binDataLen = bufRem;
                 _hddrDataRem -= bufRem;
@@ -3036,14 +3034,14 @@ namespace PCLParaphernalia
             }
             else
             {
-                contType = PrnParseConstants.eContType.None;
+                contType = PrnParseConstants.ContType.None;
 
                 _linkData.resetContData();
 
                 binDataLen = _hddrDataRem;
                 _hddrDataRem = 0;
                 _hddrRem -= binDataLen;
-                _nextStage = eStage.ShowCopyright;
+                _nextStage = Stage.ShowCopyright;
             }
 
             if (binDataLen != 0)
@@ -3056,9 +3054,9 @@ namespace PCLParaphernalia
                 //------------------------------------------------------------//
 
                 PrnParseCommon.addDataRow(
-                    PrnParseRowTypes.eType.DataBinary,
+                    PrnParseRowTypes.Type.DataBinary,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     _indxOffsetFormat,
                     _fileOffset + bufOffset,
                     _analysisLevel,
@@ -3068,9 +3066,9 @@ namespace PCLParaphernalia
 
                 if (_showBinData)
                 {
-                    PrnParseData.processBinary(
+                    PrnParseData.ProcessBinary(
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         _buf,
                         _fileOffset,
                         bufOffset,

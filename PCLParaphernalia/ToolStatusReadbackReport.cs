@@ -28,7 +28,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generate(ReportCore.eRptFileFmt rptFileFmt,
+        public static void generate(ReportCore.RptFileFmt rptFileFmt,
                                      TextBox txtReply,
                                      ref string saveFilename)
         {
@@ -43,33 +43,33 @@ namespace PCLParaphernalia
             ToolCommonFunctions.getFolderName(saveFilename,
                                                ref saveFolder);
 
-            if (rptFileFmt == ReportCore.eRptFileFmt.html)
+            if (rptFileFmt == ReportCore.RptFileFmt.html)
                 fileExt = "html";
-            else if (rptFileFmt == ReportCore.eRptFileFmt.xml)
+            else if (rptFileFmt == ReportCore.RptFileFmt.xml)
                 fileExt = "xml";
             else
                 fileExt = "txt";
 
             saveFilename = saveFolder + "\\SR_Resp." + fileExt;
 
-            OK = ReportCore.docOpen(rptFileFmt,
+            OK = ReportCore.DocOpen(rptFileFmt,
                                      ref saveFilename,
                                      ref stream,
                                      ref writer);
             if (OK)
             {
-                ReportCore.docInitialise(rptFileFmt, writer, false, true,
+                ReportCore.DocInitialise(rptFileFmt, writer, false, true,
                                           0, null,
                                           null, null);
 
-                ReportCore.hddrTitle(writer, rptFileFmt, false,
+                ReportCore.HddrTitle(writer, rptFileFmt, false,
                                       "*** Status Readback response data ***");
 
                 reportBody(rptFileFmt, writer, txtReply);
 
-                ReportCore.docFinalise(rptFileFmt, writer);
+                ReportCore.DocFinalise(rptFileFmt, writer);
 
-                ReportCore.docClose(rptFileFmt, stream, writer);
+                ReportCore.DocClose(rptFileFmt, stream, writer);
             }
         }
 
@@ -83,7 +83,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void reportBody(
-            ReportCore.eRptFileFmt rptFileFmt,
+            ReportCore.RptFileFmt rptFileFmt,
             object writer,
             TextBox txtReply)
         {
@@ -91,7 +91,7 @@ namespace PCLParaphernalia
 
             int ct;
 
-            ReportCore.lineBlockOpen(writer, rptFileFmt);
+            ReportCore.LineBlockOpen(writer, rptFileFmt);
 
             ct = txtReply.LineCount;
 
@@ -105,11 +105,11 @@ namespace PCLParaphernalia
                                        .Replace("\f", "<FF>")
                                        .Replace("\x1b", "<Esc>");
 
-                ReportCore.lineItem(writer, rptFileFmt, removedCC, maxLineLen,
+                ReportCore.LineItem(writer, rptFileFmt, removedCC, maxLineLen,
                                      false);
             }
 
-            ReportCore.lineBlockClose(writer, rptFileFmt);
+            ReportCore.LineBlockClose(writer, rptFileFmt);
         }
     }
 }

@@ -19,20 +19,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public enum ePlexType
+        public enum PlexType
         {
             Simplex,
             Duplex
         }
 
-        public enum eIndex
+        public enum Index
         {
             Simplex,
             DuplexLongEdge,
             DuplexShortEdge
         }
 
-        public const int eSimplex = (int)eIndex.Simplex;
+        public const int eSimplex = (int)Index.Simplex;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -42,17 +42,17 @@ namespace PCLParaphernalia
 
         private static readonly PCLPlexMode[] _plexModes =
         {
-            new PCLPlexMode (ePlexType.Simplex,
+            new PCLPlexMode (PlexType.Simplex,
                              "Simplex",
                              0x00,
                              0x00,
                              0x00),
-            new PCLPlexMode (ePlexType.Duplex,
+            new PCLPlexMode (PlexType.Duplex,
                              "Duplex Long-edge binding",
                              0x01,
                              (byte) PCLXLAttrEnums.Val.eDuplexHorizontalBinding,
                              (byte) PCLXLAttrEnums.Val.eDuplexVerticalBinding),
-            new PCLPlexMode (ePlexType.Duplex,
+            new PCLPlexMode (PlexType.Duplex,
                              "Duplex Short-edge binding",
                              0x02,
                              (byte) PCLXLAttrEnums.Val.eDuplexVerticalBinding,
@@ -71,7 +71,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCount()
+        public static int GetCount()
         {
             return _plexModeCount;
         }
@@ -85,7 +85,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte getIdPCL(int index)
+        public static byte GetIdPCL(int index)
         {
             return _plexModes[index].getIdPCL();
         }
@@ -99,7 +99,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte getIdPCLXL(int index, bool flagLandscape)
+        public static byte GetIdPCLXL(int index, bool flagLandscape)
         {
             return _plexModes[index].getIdPCLXL(flagLandscape);
         }
@@ -113,7 +113,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getName(int index)
+        public static string GetName(int index)
         {
             return _plexModes[index].getName();
         }
@@ -127,7 +127,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ePlexType getPlexType(int index)
+        public static PlexType GetPlexType(int index)
         {
             return _plexModes[index].getPlexType();
         }
@@ -141,9 +141,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool isSimplex(int index)
+        public static bool IsSimplex(int index)
         {
-            return _plexModes[index].getPlexType() == ePlexType.Simplex;
+            return _plexModes[index].getPlexType() == PlexType.Simplex;
         }
     }
 }

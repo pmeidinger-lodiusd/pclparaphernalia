@@ -68,7 +68,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCapture(ToolCommonData.ePrintLang crntPDL,
+        public static void loadDataCapture(ToolCommonData.PrintLang crntPDL,
                                             ref string captureFile)
         {
             RegistryKey keyMain =
@@ -118,7 +118,7 @@ namespace PCLParaphernalia
                 }
             }
 
-            if (crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 const string key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
                                             "\\" + _subKeyPCL;
@@ -130,7 +130,7 @@ namespace PCLParaphernalia
                         defWorkFolder + "\\" + _defaultCaptureFilePCL);
                 }
             }
-            else if (crntPDL == ToolCommonData.ePrintLang.PJL)
+            else if (crntPDL == ToolCommonData.PrintLang.PJL)
             {
                 const string key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
                                             "\\" + _subKeyPJL;
@@ -423,13 +423,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCapture(ToolCommonData.ePrintLang crntPDL,
+        public static void saveDataCapture(ToolCommonData.PrintLang crntPDL,
                                             string captureFile)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            if (crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 const string key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
                                             "\\" + _subKeyPCL;
@@ -444,7 +444,7 @@ namespace PCLParaphernalia
                     }
                 }
             }
-            else if (crntPDL == ToolCommonData.ePrintLang.PJL)
+            else if (crntPDL == ToolCommonData.PrintLang.PJL)
             {
                 const string key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
                                             "\\" + _subKeyPJL;

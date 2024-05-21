@@ -35,8 +35,8 @@ namespace PCLParaphernalia
 
         private readonly bool _splitSlices = false;
 
-        PrnParseConstants.eOptCharSetSubActs _indxCharSetSubAct = 0;
-        PrnParseConstants.eOptCharSets _indxCharSetName = 0;
+        PrnParseConstants.OptCharSetSubActs _indxCharSetSubAct = 0;
+        PrnParseConstants.OptCharSets _indxCharSetName = 0;
         int _valCharSetSubCode = 0;
 
         //--------------------------------------------------------------------//
@@ -223,7 +223,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (options.IndxGenOffsetFormat ==
-                PrnParseConstants.eOptOffsetFormats.Hexadecimal)
+                PrnParseConstants.OptOffsetFormats.Hexadecimal)
             {
                 offsetFormat = "{0:x8}";
             }
@@ -408,22 +408,22 @@ namespace PCLParaphernalia
 
                 if ((crntByte < 32) || (crntByte == 0x7f) ||
                     ((_indxCharSetName ==
-                        PrnParseConstants.eOptCharSets.ASCII)
+                        PrnParseConstants.OptCharSets.ASCII)
                                            &&
                      (crntByte >= 0x80)) ||
                     ((_indxCharSetName ==
-                        PrnParseConstants.eOptCharSets.ISO_8859_1)
+                        PrnParseConstants.OptCharSets.ISO_8859_1)
                                            &&
                      (crntByte >= 0x80) && (crntByte <= 0x9f)))
                 {
                     switch (_indxCharSetSubAct)
                     {
-                        case PrnParseConstants.eOptCharSetSubActs.Spaces:
+                        case PrnParseConstants.OptCharSetSubActs.Spaces:
 
                             strBuf.Append(' ');
                             break;
 
-                        case PrnParseConstants.eOptCharSetSubActs.Substitute:
+                        case PrnParseConstants.OptCharSetSubActs.Substitute:
 
                             strBuf.Append((char)_valCharSetSubCode);
                             break;

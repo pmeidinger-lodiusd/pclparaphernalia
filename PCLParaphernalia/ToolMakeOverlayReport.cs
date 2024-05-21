@@ -40,7 +40,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void generate(
-            ReportCore.eRptFileFmt rptFileFmt,
+            ReportCore.RptFileFmt rptFileFmt,
             DataTable table,
             string prnFilename,
             string ovlFilename,
@@ -55,23 +55,23 @@ namespace PCLParaphernalia
             string fileExt;
             string saveFilename = null;
 
-            if (rptFileFmt == ReportCore.eRptFileFmt.html)
+            if (rptFileFmt == ReportCore.RptFileFmt.html)
                 fileExt = "html";
-            else if (rptFileFmt == ReportCore.eRptFileFmt.xml)
+            else if (rptFileFmt == ReportCore.RptFileFmt.xml)
                 fileExt = "xml";
             else
                 fileExt = "txt";
 
             saveFilename = ovlFilename + "_report." + fileExt;
 
-            OK = ReportCore.docOpen(rptFileFmt,
+            OK = ReportCore.DocOpen(rptFileFmt,
                                      ref saveFilename,
                                      ref stream,
                                      ref writer);
 
             if (OK)
             {
-                int ctClrMapRowTypes = PrnParseRowTypes.getCount();
+                int ctClrMapRowTypes = PrnParseRowTypes.GetCount();
 
                 bool useClr = options.FlagClrMapUseClr;
 
@@ -86,13 +86,13 @@ namespace PCLParaphernalia
                                            ref rowClrBack,
                                            ref rowClrFore);
 
-                    ReportCore.docInitialise(rptFileFmt, writer, true, false,
+                    ReportCore.DocInitialise(rptFileFmt, writer, true, false,
                                               ctClrMapRowTypes, rowClasses,
                                               rowClrBack, rowClrFore);
                 }
                 else
                 {
-                    ReportCore.docInitialise(rptFileFmt, writer, true, false,
+                    ReportCore.DocInitialise(rptFileFmt, writer, true, false,
                                               0, null,
                                               null, null);
                 }
@@ -103,9 +103,9 @@ namespace PCLParaphernalia
                 reportBody(rptFileFmt, writer,
                             table, flagOffsetHex);
 
-                ReportCore.docFinalise(rptFileFmt, writer);
+                ReportCore.DocFinalise(rptFileFmt, writer);
 
-                ReportCore.docClose(rptFileFmt, stream, writer);
+                ReportCore.DocClose(rptFileFmt, stream, writer);
             }
         }
 
@@ -134,7 +134,7 @@ namespace PCLParaphernalia
             PropertyInfo pInfoBack,
                          pInfoFore;
 
-            int ctClrMapRowTypes = PrnParseRowTypes.getCount();
+            int ctClrMapRowTypes = PrnParseRowTypes.GetCount();
             int ctClrMapStdClrs = 0;
 
             int[] indxClrMapBack = new int[ctClrMapRowTypes];
@@ -152,7 +152,7 @@ namespace PCLParaphernalia
             for (int i = 0; i < ctClrMapRowTypes; i++)
             {
                 string rowType =
-                    Enum.GetName(typeof(PrnParseRowTypes.eType), i);
+                    Enum.GetName(typeof(PrnParseRowTypes.Type), i);
 
                 indxClrBack = indxClrMapBack[i];
                 indxClrFore = indxClrMapFore[i];
@@ -175,7 +175,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void reportBody(ReportCore.eRptFileFmt rptFileFmt,
+        private static void reportBody(ReportCore.RptFileFmt rptFileFmt,
                                         object writer,
                                         DataTable table,
                                         bool flagOffsetHex)
@@ -219,7 +219,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableHddrData(writer, rptFileFmt, false,
+            ReportCore.TableHddrData(writer, rptFileFmt, false,
                                   colCt, colHddrs, colSizes);
 
             //----------------------------------------------------------------//
@@ -235,12 +235,12 @@ namespace PCLParaphernalia
                 int indxRowType = (int)row[rtName];
 
                 string rowType = Enum.GetName
-                                    (typeof(PrnParseRowTypes.eType),
+                                    (typeof(PrnParseRowTypes.Type),
                                      indxRowType);
 
-                ReportCore.tableRowData(
+                ReportCore.TableRowData(
                     writer, rptFileFmt,
-                    ReportCore.eRptChkMarks.text,   // not used by this tool //
+                    ReportCore.RptChkMarks.text,   // not used by this tool //
                     colCt, rowType,
                     row, colNames, colSizes);
             }
@@ -251,7 +251,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableClose(writer, rptFileFmt);
+            ReportCore.TableClose(writer, rptFileFmt);
         }
 
         //--------------------------------------------------------------------//
@@ -264,7 +264,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void reportHeader(
-            ReportCore.eRptFileFmt rptFileFmt,
+            ReportCore.RptFileFmt rptFileFmt,
             object writer,
             string prnFilename,
             string ovlFilename)
@@ -288,7 +288,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.hddrTitle(writer, rptFileFmt, false, title);
+            ReportCore.HddrTitle(writer, rptFileFmt, false, title);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -297,27 +297,27 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableHddrPair(writer, rptFileFmt);
+            ReportCore.TableHddrPair(writer, rptFileFmt);
 
-            ReportCore.tableRowPair(writer, rptFileFmt,
+            ReportCore.TableRowPair(writer, rptFileFmt,
                                  "Date_time", DateTime.Now.ToString(),
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
-            ReportCore.tableRowPair(writer, rptFileFmt,
+            ReportCore.TableRowPair(writer, rptFileFmt,
                                  "Print_file", prnFilename,
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
-            ReportCore.tableRowPair(writer, rptFileFmt,
+            ReportCore.TableRowPair(writer, rptFileFmt,
                                  "Overlay_file", ovlFilename,
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
-            ReportCore.tableClose(writer, rptFileFmt);
+            ReportCore.TableClose(writer, rptFileFmt);
         }
     }
 }

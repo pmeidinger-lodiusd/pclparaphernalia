@@ -55,7 +55,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCommon(ref string prnFilename)
+        public static void LoadDataCommon(ref string prnFilename)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -66,16 +66,16 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                if (Helper_RegKey.keyExists(subKey, _subKeyPCL5))
+                if (Helper_RegKey.KeyExists(subKey, _subKeyPCL5))
                 {
                     // update from v2_5_0_0
-                    Helper_RegKey.renameKey(subKey, _subKeyPCL5, _subKeyPCL);
+                    Helper_RegKey.RenameKey(subKey, _subKeyPCL5, _subKeyPCL);
                 }
 
-                if (Helper_RegKey.keyExists(subKey, _subKeyPCL6))
+                if (Helper_RegKey.KeyExists(subKey, _subKeyPCL6))
                 {
                     // update from v2_5_0_0
-                    Helper_RegKey.renameKey(subKey, _subKeyPCL6, _subKeyPCLXL);
+                    Helper_RegKey.RenameKey(subKey, _subKeyPCL6, _subKeyPCLXL);
                 }
 
                 prnFilename = (string)subKey.GetValue(_namePrnFilename,
@@ -93,7 +93,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCL(ref string ovlFilename,
+        public static void LoadDataPCL(ref string ovlFilename,
                                         ref bool flagRestoreCursor,
                                         ref bool flagEncapsulated,
                                         ref int macroId)
@@ -139,7 +139,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCLXL(ref string ovlFilename,
+        public static void LoadDataPCLXL(ref string ovlFilename,
                                         ref bool flagRestoreGS,
                                         ref bool flagEncapsulated,
                                         ref string streamName)
@@ -185,7 +185,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataRpt(ref int indxRptFileFmt)
+        public static void LoadDataRpt(ref int indxRptFileFmt)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -208,7 +208,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCommon(string prnFilename)
+        public static void SaveDataCommon(string prnFilename)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -235,7 +235,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCL(string ovlFilename,
+        public static void SaveDataPCL(string ovlFilename,
                                         bool flagRestoreCursor,
                                         bool flagEncapsulated,
                                         int macroId)
@@ -296,7 +296,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCLXL(string ovlFilename,
+        public static void SaveDataPCLXL(string ovlFilename,
                                         bool flagRestoreGS,
                                         bool flagEncapsulated,
                                         string streamName)
@@ -360,7 +360,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataRpt(int indxRptFileFmt)
+        public static void SaveDataRpt(int indxRptFileFmt)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);

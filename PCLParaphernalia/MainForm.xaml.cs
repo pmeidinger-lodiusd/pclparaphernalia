@@ -44,14 +44,14 @@ namespace PCLParaphernalia
         private ToolTrayMap _subFormToolTrayMap = null;
         private ToolXXXDiags _subFormToolXXXDiags = null;
 
-        private ToolCommonData.eToolIds _crntToolId =
-            ToolCommonData.eToolIds.Min;
+        private ToolCommonData.ToolIds _crntToolId =
+            ToolCommonData.ToolIds.Min;
 
-        private ToolCommonData.ePrintLang _crntPDL =
-            ToolCommonData.ePrintLang.Unknown;
+        private ToolCommonData.PrintLang _crntPDL =
+            ToolCommonData.PrintLang.Unknown;
 
-        private ToolCommonData.eToolSubIds _crntSubId =
-            ToolCommonData.eToolSubIds.None;
+        private ToolCommonData.ToolSubIds _crntSubId =
+            ToolCommonData.ToolSubIds.None;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -175,7 +175,7 @@ namespace PCLParaphernalia
                                              versionBuildCrnt,
                                              versionRevisionCrnt);
 
-            ToolCommonData.loadWorkFoldername();
+            ToolCommonData.LoadWorkFoldername();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -183,21 +183,21 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            TargetCore.initialiseSettings();
+            TargetCore.InitialiseSettings();
 
-            if (TargetCore.getType() == TargetCore.eTarget.File)
+            if (TargetCore.GetType() == TargetCore.Target.File)
             {
                 menuItemTargetFile.IsChecked = true;
                 menuItemTargetNetPrinter.IsChecked = false;
                 menuItemTargetWinPrinter.IsChecked = false;
             }
-            else if (TargetCore.getType() == TargetCore.eTarget.NetPrinter)
+            else if (TargetCore.GetType() == TargetCore.Target.NetPrinter)
             {
                 menuItemTargetFile.IsChecked = false;
                 menuItemTargetNetPrinter.IsChecked = true;
                 menuItemTargetWinPrinter.IsChecked = false;
             }
-            else if (TargetCore.getType() == TargetCore.eTarget.WinPrinter)
+            else if (TargetCore.GetType() == TargetCore.Target.WinPrinter)
             {
                 menuItemTargetFile.IsChecked = false;
                 menuItemTargetNetPrinter.IsChecked = false;
@@ -215,9 +215,9 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ToolCommonData.eToolIds startToolId;
+            ToolCommonData.ToolIds startToolId;
 
-            _crntToolId = ToolCommonData.eToolIds.Min;
+            _crntToolId = ToolCommonData.ToolIds.Min;
 
             if (_runXXXDiags)
             {
@@ -239,12 +239,12 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                startToolId = ToolCommonData.eToolIds.PrnAnalyse;
+                startToolId = ToolCommonData.ToolIds.PrnAnalyse;
 
                 toolPrnAnalyse_Selected(this, null);
 
                 if (filename != string.Empty)
-                    _subFormToolPrnAnalyse.prnFileProcess(filename);
+                    _subFormToolPrnAnalyse.PrnFileProcess(filename);
             }
             else
             {
@@ -258,38 +258,38 @@ namespace PCLParaphernalia
 
                 ToolCommonPersist.loadData(ref crntToolIndex);
 
-                if ((crntToolIndex > (int)ToolCommonData.eToolIds.Min) && (crntToolIndex < (int)ToolCommonData.eToolIds.Max))
-                    startToolId = (ToolCommonData.eToolIds)crntToolIndex;
+                if ((crntToolIndex > (int)ToolCommonData.ToolIds.Min) && (crntToolIndex < (int)ToolCommonData.ToolIds.Max))
+                    startToolId = (ToolCommonData.ToolIds)crntToolIndex;
                 else
-                    startToolId = ToolCommonData.eToolIds.PrintLang;
+                    startToolId = ToolCommonData.ToolIds.PrintLang;
 
-                if (startToolId == ToolCommonData.eToolIds.FontSample)
+                if (startToolId == ToolCommonData.ToolIds.FontSample)
                     toolFontSample_Selected(this, null);
-                else if (startToolId == ToolCommonData.eToolIds.FormSample)
+                else if (startToolId == ToolCommonData.ToolIds.FormSample)
                     toolFormSample_Selected(this, null);
-                else if (startToolId == ToolCommonData.eToolIds.ImageBitmap)
+                else if (startToolId == ToolCommonData.ToolIds.ImageBitmap)
                     toolImageBitmap_Selected(this, null);
-                else if (startToolId == ToolCommonData.eToolIds.MakeOverlay)
+                else if (startToolId == ToolCommonData.ToolIds.MakeOverlay)
                     toolMakeOverlay_Selected(this, null);
-                else if (startToolId == ToolCommonData.eToolIds.MiscSamples)
+                else if (startToolId == ToolCommonData.ToolIds.MiscSamples)
                     toolMiscSamples_Selected(this, null);
                 //      else if (startToolId == ToolCommonData.eToolIds.PatternGenerate)
                 //          toolPatternGenerate_Selected(this, null);
-                else if (startToolId == ToolCommonData.eToolIds.PrintArea)
+                else if (startToolId == ToolCommonData.ToolIds.PrintArea)
                     toolPrintArea_Selected(this, null);
-                else if (startToolId == ToolCommonData.eToolIds.PrintLang)
+                else if (startToolId == ToolCommonData.ToolIds.PrintLang)
                     toolPrintLang_Selected(this, null);
-                else if (startToolId == ToolCommonData.eToolIds.PrnAnalyse)
+                else if (startToolId == ToolCommonData.ToolIds.PrnAnalyse)
                     toolPrnAnalyse_Selected(this, null);
-                else if (startToolId == ToolCommonData.eToolIds.PrnPrint)
+                else if (startToolId == ToolCommonData.ToolIds.PrnPrint)
                     toolPrnPrint_Selected(this, null);
-                else if (startToolId == ToolCommonData.eToolIds.SoftFontGenerate)
+                else if (startToolId == ToolCommonData.ToolIds.SoftFontGenerate)
                     toolSoftFontGenerate_Selected(this, null);
-                else if (startToolId == ToolCommonData.eToolIds.StatusReadback)
+                else if (startToolId == ToolCommonData.ToolIds.StatusReadback)
                     toolStatusReadback_Selected(this, null);
-                else if (startToolId == ToolCommonData.eToolIds.SymbolSetGenerate)
+                else if (startToolId == ToolCommonData.ToolIds.SymbolSetGenerate)
                     toolSymbolSetGenerate_Selected(this, null);
-                else if (startToolId == ToolCommonData.eToolIds.TrayMap)
+                else if (startToolId == ToolCommonData.ToolIds.TrayMap)
                     toolTrayMap_Selected(this, null);
             }
         }
@@ -307,36 +307,36 @@ namespace PCLParaphernalia
 
         private void crntToolResetPDL()
         {
-            if (_crntToolId == ToolCommonData.eToolIds.FontSample)
-                _subFormToolFontSample.giveCrntPDL(ref _crntPDL);
-            else if (_crntToolId == ToolCommonData.eToolIds.FormSample)
-                _subFormToolFormSample.giveCrntPDL(ref _crntPDL);
-            else if (_crntToolId == ToolCommonData.eToolIds.ImageBitmap)
+            if (_crntToolId == ToolCommonData.ToolIds.FontSample)
+                _subFormToolFontSample.GiveCrntPDL(ref _crntPDL);
+            else if (_crntToolId == ToolCommonData.ToolIds.FormSample)
+                _subFormToolFormSample.GiveCrntPDL(ref _crntPDL);
+            else if (_crntToolId == ToolCommonData.ToolIds.ImageBitmap)
                 _subFormToolImageBitmap.giveCrntPDL(ref _crntPDL);
-            else if (_crntToolId == ToolCommonData.eToolIds.MakeOverlay)
-                _subFormToolMakeOverlay.giveCrntPDL(ref _crntPDL);
-            else if (_crntToolId == ToolCommonData.eToolIds.MiscSamples)
-                _subFormToolMiscSamples.giveCrntPDL(ref _crntPDL);
+            else if (_crntToolId == ToolCommonData.ToolIds.MakeOverlay)
+                _subFormToolMakeOverlay.GiveCrntPDL(ref _crntPDL);
+            else if (_crntToolId == ToolCommonData.ToolIds.MiscSamples)
+                _subFormToolMiscSamples.GiveCrntPDL(ref _crntPDL);
             //     else if (_crntToolId == ToolCommonData.eToolIds.PatternGenerate)
             //         _subFormToolPatternGenerate.giveCrntPDL(ref _crntPDL);
-            else if (_crntToolId == ToolCommonData.eToolIds.PrintArea)
-                _subFormToolPrintArea.giveCrntPDL(ref _crntPDL);
-            else if (_crntToolId == ToolCommonData.eToolIds.PrintLang)
+            else if (_crntToolId == ToolCommonData.ToolIds.PrintArea)
+                _subFormToolPrintArea.GiveCrntPDL(ref _crntPDL);
+            else if (_crntToolId == ToolCommonData.ToolIds.PrintLang)
                 _subFormToolPrintLang.giveCrntPDL(ref _crntPDL);
-            else if (_crntToolId == ToolCommonData.eToolIds.PrnAnalyse)
-                _subFormToolPrnAnalyse.giveCrntPDL(ref _crntPDL);
-            else if (_crntToolId == ToolCommonData.eToolIds.PrnPrint)
+            else if (_crntToolId == ToolCommonData.ToolIds.PrnAnalyse)
+                _subFormToolPrnAnalyse.GiveCrntPDL(ref _crntPDL);
+            else if (_crntToolId == ToolCommonData.ToolIds.PrnPrint)
                 _subFormToolPrnPrint.giveCrntPDL(ref _crntPDL);
-            else if (_crntToolId == ToolCommonData.eToolIds.SoftFontGenerate)
-                _subFormToolSoftFontGenerate.giveCrntPDL(ref _crntPDL);
-            else if (_crntToolId == ToolCommonData.eToolIds.StatusReadback)
+            else if (_crntToolId == ToolCommonData.ToolIds.SoftFontGenerate)
+                _subFormToolSoftFontGenerate.GiveCrntPDL(ref _crntPDL);
+            else if (_crntToolId == ToolCommonData.ToolIds.StatusReadback)
                 _subFormToolStatusReadback.giveCrntPDL(ref _crntPDL);
-            else if (_crntToolId == ToolCommonData.eToolIds.SymbolSetGenerate)
+            else if (_crntToolId == ToolCommonData.ToolIds.SymbolSetGenerate)
                 _subFormToolSymbolSetGenerate.giveCrntPDL(ref _crntPDL);
-            else if (_crntToolId == ToolCommonData.eToolIds.TrayMap)
-                _subFormToolTrayMap.giveCrntPDL(ref _crntPDL);
-            else if (_crntToolId == ToolCommonData.eToolIds.XXXDiags)
-                _subFormToolXXXDiags.giveCrntPDL(ref _crntPDL);
+            else if (_crntToolId == ToolCommonData.ToolIds.TrayMap)
+                _subFormToolTrayMap.GiveCrntPDL(ref _crntPDL);
+            else if (_crntToolId == ToolCommonData.ToolIds.XXXDiags)
+                _subFormToolXXXDiags.GiveCrntPDL(ref _crntPDL);
         }
 
         //--------------------------------------------------------------------//
@@ -353,10 +353,10 @@ namespace PCLParaphernalia
 
         private void crntToolResetSubId()
         {
-            _crntSubId = ToolCommonData.eToolSubIds.None;
+            _crntSubId = ToolCommonData.ToolSubIds.None;
 
-            if (_crntToolId == ToolCommonData.eToolIds.MiscSamples)
-                _subFormToolMiscSamples.giveCrntType(ref _crntSubId);
+            if (_crntToolId == ToolCommonData.ToolIds.MiscSamples)
+                _subFormToolMiscSamples.GiveCrntType(ref _crntSubId);
         }
 
         //--------------------------------------------------------------------//
@@ -371,36 +371,36 @@ namespace PCLParaphernalia
 
         private void crntToolResetTarget()
         {
-            if (_crntToolId == ToolCommonData.eToolIds.FontSample)
-                _subFormToolFontSample.resetTarget();
-            else if (_crntToolId == ToolCommonData.eToolIds.FormSample)
-                _subFormToolFormSample.resetTarget();
-            else if (_crntToolId == ToolCommonData.eToolIds.ImageBitmap)
+            if (_crntToolId == ToolCommonData.ToolIds.FontSample)
+                _subFormToolFontSample.ResetTarget();
+            else if (_crntToolId == ToolCommonData.ToolIds.FormSample)
+                _subFormToolFormSample.ResetTarget();
+            else if (_crntToolId == ToolCommonData.ToolIds.ImageBitmap)
                 _subFormToolImageBitmap.resetTarget();
-            else if (_crntToolId == ToolCommonData.eToolIds.MakeOverlay)
-                _subFormToolMakeOverlay.resetTarget();
-            else if (_crntToolId == ToolCommonData.eToolIds.MiscSamples)
-                _subFormToolMiscSamples.resetTarget();
+            else if (_crntToolId == ToolCommonData.ToolIds.MakeOverlay)
+                _subFormToolMakeOverlay.ResetTarget();
+            else if (_crntToolId == ToolCommonData.ToolIds.MiscSamples)
+                _subFormToolMiscSamples.ResetTarget();
             //      else if (_crntToolId == ToolCommonData.eToolIds.PatternGenerate)
             //          _subFormToolPatternGenerate.resetTarget();
-            else if (_crntToolId == ToolCommonData.eToolIds.PrintArea)
-                _subFormToolPrintArea.resetTarget();
-            else if (_crntToolId == ToolCommonData.eToolIds.PrintLang)
+            else if (_crntToolId == ToolCommonData.ToolIds.PrintArea)
+                _subFormToolPrintArea.ResetTarget();
+            else if (_crntToolId == ToolCommonData.ToolIds.PrintLang)
                 _subFormToolPrintLang.resetTarget();
-            else if (_crntToolId == ToolCommonData.eToolIds.PrnAnalyse)
-                _subFormToolPrnAnalyse.resetTarget();
-            else if (_crntToolId == ToolCommonData.eToolIds.PrnPrint)
+            else if (_crntToolId == ToolCommonData.ToolIds.PrnAnalyse)
+                _subFormToolPrnAnalyse.ResetTarget();
+            else if (_crntToolId == ToolCommonData.ToolIds.PrnPrint)
                 _subFormToolPrnPrint.resetTarget();
-            else if (_crntToolId == ToolCommonData.eToolIds.SoftFontGenerate)
-                _subFormToolSoftFontGenerate.resetTarget();
-            else if (_crntToolId == ToolCommonData.eToolIds.StatusReadback)
+            else if (_crntToolId == ToolCommonData.ToolIds.SoftFontGenerate)
+                _subFormToolSoftFontGenerate.ResetTarget();
+            else if (_crntToolId == ToolCommonData.ToolIds.StatusReadback)
                 _subFormToolStatusReadback.resetTarget();
-            else if (_crntToolId == ToolCommonData.eToolIds.SymbolSetGenerate)
+            else if (_crntToolId == ToolCommonData.ToolIds.SymbolSetGenerate)
                 _subFormToolSymbolSetGenerate.resetTarget();
-            else if (_crntToolId == ToolCommonData.eToolIds.TrayMap)
-                _subFormToolTrayMap.resetTarget();
-            else if (_crntToolId == ToolCommonData.eToolIds.XXXDiags)
-                _subFormToolXXXDiags.resetTarget();
+            else if (_crntToolId == ToolCommonData.ToolIds.TrayMap)
+                _subFormToolTrayMap.ResetTarget();
+            else if (_crntToolId == ToolCommonData.ToolIds.XXXDiags)
+                _subFormToolXXXDiags.ResetTarget();
         }
 
         //--------------------------------------------------------------------//
@@ -414,39 +414,39 @@ namespace PCLParaphernalia
 
         private void crntToolSaveMetrics()
         {
-            if (_crntToolId != ToolCommonData.eToolIds.Min)
+            if (_crntToolId != ToolCommonData.ToolIds.Min)
                 ToolCommonPersist.saveData((int)_crntToolId);
 
-            if (_crntToolId == ToolCommonData.eToolIds.FontSample)
-                _subFormToolFontSample.metricsSave();
-            else if (_crntToolId == ToolCommonData.eToolIds.FormSample)
-                _subFormToolFormSample.metricsSave();
-            else if (_crntToolId == ToolCommonData.eToolIds.ImageBitmap)
+            if (_crntToolId == ToolCommonData.ToolIds.FontSample)
+                _subFormToolFontSample.MetricsSave();
+            else if (_crntToolId == ToolCommonData.ToolIds.FormSample)
+                _subFormToolFormSample.MetricsSave();
+            else if (_crntToolId == ToolCommonData.ToolIds.ImageBitmap)
                 _subFormToolImageBitmap.metricsSave();
-            else if (_crntToolId == ToolCommonData.eToolIds.MakeOverlay)
-                _subFormToolMakeOverlay.metricsSave();
-            else if (_crntToolId == ToolCommonData.eToolIds.MiscSamples)
-                _subFormToolMiscSamples.metricsSave();
+            else if (_crntToolId == ToolCommonData.ToolIds.MakeOverlay)
+                _subFormToolMakeOverlay.MetricsSave();
+            else if (_crntToolId == ToolCommonData.ToolIds.MiscSamples)
+                _subFormToolMiscSamples.MetricsSave();
             //     else if (_crntToolId == ToolCommonData.eToolIds.PatternGenerate)
             //         _subFormToolPatternGenerate.metricsSave();
-            else if (_crntToolId == ToolCommonData.eToolIds.PrintArea)
-                _subFormToolPrintArea.metricsSave();
-            else if (_crntToolId == ToolCommonData.eToolIds.PrintLang)
+            else if (_crntToolId == ToolCommonData.ToolIds.PrintArea)
+                _subFormToolPrintArea.MetricsSave();
+            else if (_crntToolId == ToolCommonData.ToolIds.PrintLang)
                 _subFormToolPrintLang.metricsSave();
-            else if (_crntToolId == ToolCommonData.eToolIds.PrnAnalyse)
-                _subFormToolPrnAnalyse.metricsSave();
-            else if (_crntToolId == ToolCommonData.eToolIds.PrnPrint)
+            else if (_crntToolId == ToolCommonData.ToolIds.PrnAnalyse)
+                _subFormToolPrnAnalyse.MetricsSave();
+            else if (_crntToolId == ToolCommonData.ToolIds.PrnPrint)
                 _subFormToolPrnPrint.metricsSave();
-            else if (_crntToolId == ToolCommonData.eToolIds.SoftFontGenerate)
-                _subFormToolSoftFontGenerate.metricsSave();
-            else if (_crntToolId == ToolCommonData.eToolIds.StatusReadback)
+            else if (_crntToolId == ToolCommonData.ToolIds.SoftFontGenerate)
+                _subFormToolSoftFontGenerate.MetricsSave();
+            else if (_crntToolId == ToolCommonData.ToolIds.StatusReadback)
                 _subFormToolStatusReadback.metricsSave();
-            else if (_crntToolId == ToolCommonData.eToolIds.SymbolSetGenerate)
+            else if (_crntToolId == ToolCommonData.ToolIds.SymbolSetGenerate)
                 _subFormToolSymbolSetGenerate.metricsSave();
-            else if (_crntToolId == ToolCommonData.eToolIds.TrayMap)
-                _subFormToolTrayMap.metricsSave();
-            else if (_crntToolId == ToolCommonData.eToolIds.XXXDiags)
-                _subFormToolXXXDiags.metricsSave();
+            else if (_crntToolId == ToolCommonData.ToolIds.TrayMap)
+                _subFormToolTrayMap.MetricsSave();
+            else if (_crntToolId == ToolCommonData.ToolIds.XXXDiags)
+                _subFormToolXXXDiags.MetricsSave();
         }
 
         //--------------------------------------------------------------------//
@@ -576,7 +576,7 @@ namespace PCLParaphernalia
             menuItemTargetNetPrinter.IsChecked = false;
             menuItemTargetWinPrinter.IsChecked = false;
 
-            TargetCore.metricsSaveType(TargetCore.eTarget.File);
+            TargetCore.MetricsSaveType(TargetCore.Target.File);
 
             crntToolResetTarget();
         }
@@ -608,7 +608,7 @@ namespace PCLParaphernalia
                 menuItemTargetNetPrinter.IsChecked = false;
                 menuItemTargetWinPrinter.IsChecked = false;
 
-                TargetCore.metricsSaveType(TargetCore.eTarget.File);
+                TargetCore.MetricsSaveType(TargetCore.Target.File);
 
                 crntToolResetTarget();
             }
@@ -631,7 +631,7 @@ namespace PCLParaphernalia
             menuItemTargetNetPrinter.IsChecked = true;
             menuItemTargetWinPrinter.IsChecked = false;
 
-            TargetCore.metricsSaveType(TargetCore.eTarget.NetPrinter);
+            TargetCore.MetricsSaveType(TargetCore.Target.NetPrinter);
 
             crntToolResetTarget();
         }
@@ -660,7 +660,7 @@ namespace PCLParaphernalia
                 menuItemTargetNetPrinter.IsChecked = true;
                 menuItemTargetWinPrinter.IsChecked = false;
 
-                TargetCore.metricsSaveType(TargetCore.eTarget.NetPrinter);
+                TargetCore.MetricsSaveType(TargetCore.Target.NetPrinter);
 
                 crntToolResetTarget();
             }
@@ -707,7 +707,7 @@ namespace PCLParaphernalia
             menuItemTargetNetPrinter.IsChecked = false;
             menuItemTargetWinPrinter.IsChecked = true;
 
-            TargetCore.metricsSaveType(TargetCore.eTarget.WinPrinter);
+            TargetCore.MetricsSaveType(TargetCore.Target.WinPrinter);
 
             crntToolResetTarget();
         }
@@ -735,7 +735,7 @@ namespace PCLParaphernalia
                 menuItemTargetNetPrinter.IsChecked = false;
                 menuItemTargetWinPrinter.IsChecked = true;
 
-                TargetCore.metricsSaveType(TargetCore.eTarget.WinPrinter);
+                TargetCore.MetricsSaveType(TargetCore.Target.WinPrinter);
 
                 crntToolResetTarget();
             }
@@ -757,11 +757,11 @@ namespace PCLParaphernalia
 
             menuItemToolFontSample.IsChecked = true;
 
-            _crntToolId = ToolCommonData.eToolIds.FontSample;
+            _crntToolId = ToolCommonData.ToolIds.FontSample;
 
             _subFormToolFontSample = new ToolFontSample(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.MetricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolFontSample.Content;
 
@@ -788,11 +788,11 @@ namespace PCLParaphernalia
 
             menuItemToolFormSample.IsChecked = true;
 
-            _crntToolId = ToolCommonData.eToolIds.FormSample;
+            _crntToolId = ToolCommonData.ToolIds.FormSample;
 
             _subFormToolFormSample = new ToolFormSample(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.MetricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolFormSample.Content;
 
@@ -820,11 +820,11 @@ namespace PCLParaphernalia
 
             menuItemToolImageBitmap.IsChecked = true;
 
-            _crntToolId = ToolCommonData.eToolIds.ImageBitmap;
+            _crntToolId = ToolCommonData.ToolIds.ImageBitmap;
 
             _subFormToolImageBitmap = new ToolImageBitmap(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.MetricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolImageBitmap.Content;
 
@@ -852,11 +852,11 @@ namespace PCLParaphernalia
 
             menuItemToolMakeOverlay.IsChecked = true;
 
-            _crntToolId = ToolCommonData.eToolIds.MakeOverlay;
+            _crntToolId = ToolCommonData.ToolIds.MakeOverlay;
 
             _subFormToolMakeOverlay = new ToolMakeOverlay(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.MetricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolMakeOverlay.Content;
 
@@ -884,12 +884,12 @@ namespace PCLParaphernalia
 
             menuItemToolMiscSamples.IsChecked = true;
 
-            _crntToolId = ToolCommonData.eToolIds.MiscSamples;
+            _crntToolId = ToolCommonData.ToolIds.MiscSamples;
 
             _subFormToolMiscSamples = new ToolMiscSamples(ref _crntPDL,
                                                           ref _crntSubId);
 
-            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.MetricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolMiscSamples.Content;
 
@@ -949,11 +949,11 @@ namespace PCLParaphernalia
 
             menuItemToolPrintArea.IsChecked = true;
 
-            _crntToolId = ToolCommonData.eToolIds.PrintArea;
+            _crntToolId = ToolCommonData.ToolIds.PrintArea;
 
             _subFormToolPrintArea = new ToolPrintArea(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.MetricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolPrintArea.Content;
 
@@ -981,11 +981,11 @@ namespace PCLParaphernalia
 
             menuItemToolPrintLang.IsChecked = true;
 
-            _crntToolId = ToolCommonData.eToolIds.PrintLang;
+            _crntToolId = ToolCommonData.ToolIds.PrintLang;
 
             _subFormToolPrintLang = new ToolPrintLang(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.MetricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolPrintLang.Content;
 
@@ -1013,11 +1013,11 @@ namespace PCLParaphernalia
 
             menuItemToolPrnAnalyse.IsChecked = true;
 
-            _crntToolId = ToolCommonData.eToolIds.PrnAnalyse;
+            _crntToolId = ToolCommonData.ToolIds.PrnAnalyse;
 
             _subFormToolPrnAnalyse = new ToolPrnAnalyse(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.MetricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolPrnAnalyse.Content;
 
@@ -1044,11 +1044,11 @@ namespace PCLParaphernalia
 
             menuItemToolPrnPrint.IsChecked = true;
 
-            _crntToolId = ToolCommonData.eToolIds.PrnPrint;
+            _crntToolId = ToolCommonData.ToolIds.PrnPrint;
 
             _subFormToolPrnPrint = new ToolPrnPrint(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.MetricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolPrnPrint.Content;
 
@@ -1076,12 +1076,12 @@ namespace PCLParaphernalia
 
             menuItemToolSoftFontGenerate.IsChecked = true;
 
-            _crntToolId = ToolCommonData.eToolIds.SoftFontGenerate;
+            _crntToolId = ToolCommonData.ToolIds.SoftFontGenerate;
 
             _subFormToolSoftFontGenerate =
                 new ToolSoftFontGenerate(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.MetricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolSoftFontGenerate.Content;
 
@@ -1109,11 +1109,11 @@ namespace PCLParaphernalia
 
             menuItemToolStatusReadback.IsChecked = true;
 
-            _crntToolId = ToolCommonData.eToolIds.StatusReadback;
+            _crntToolId = ToolCommonData.ToolIds.StatusReadback;
 
             _subFormToolStatusReadback = new ToolStatusReadback(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.MetricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolStatusReadback.Content;
 
@@ -1141,12 +1141,12 @@ namespace PCLParaphernalia
 
             menuItemToolSymbolSetGenerate.IsChecked = true;
 
-            _crntToolId = ToolCommonData.eToolIds.SymbolSetGenerate;
+            _crntToolId = ToolCommonData.ToolIds.SymbolSetGenerate;
 
             _subFormToolSymbolSetGenerate =
                 new ToolSymbolSetGenerate(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.MetricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolSymbolSetGenerate.Content;
 
@@ -1173,11 +1173,11 @@ namespace PCLParaphernalia
 
             menuItemToolTrayMap.IsChecked = true;
 
-            _crntToolId = ToolCommonData.eToolIds.TrayMap;
+            _crntToolId = ToolCommonData.ToolIds.TrayMap;
 
             _subFormToolTrayMap = new ToolTrayMap(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.MetricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolTrayMap.Content;
 
@@ -1204,11 +1204,11 @@ namespace PCLParaphernalia
 
             menuItemToolTrayMap.IsChecked = true;
 
-            _crntToolId = ToolCommonData.eToolIds.XXXDiags;
+            _crntToolId = ToolCommonData.ToolIds.XXXDiags;
 
             _subFormToolXXXDiags = new ToolXXXDiags(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.MetricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolXXXDiags.Content;
 

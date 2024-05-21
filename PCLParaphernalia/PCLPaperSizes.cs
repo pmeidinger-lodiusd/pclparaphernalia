@@ -27,7 +27,7 @@ namespace PCLParaphernalia
         private const byte _unknownID = 0xff;
         private const byte _unknownEnum = 0xff;
 
-        public enum eIndex
+        public enum Index
         {
             Custom,
             Default,
@@ -124,7 +124,7 @@ namespace PCLParaphernalia
             USGovt_Letter
         }
 
-        private static readonly int _eIndexCt = Enum.GetNames(typeof(eIndex)).Length;
+        private static readonly int _eIndexCt = Enum.GetNames(typeof(Index)).Length;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -144,7 +144,7 @@ namespace PCLParaphernalia
 
         static PCLPaperSizes()
         {
-            populateTable();
+            PopulateTable();
         }
 
         //--------------------------------------------------------------------//
@@ -156,10 +156,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void customDataCopy(int index)
+        public static void CustomDataCopy(int index)
         {
-            _paperSizes[index].customDataCopy(
-                _paperSizes[(int)eIndex.Custom]);
+            _paperSizes[index].customDataCopy(_paperSizes[(int)Index.Custom]);
         }
 
         //--------------------------------------------------------------------//
@@ -171,7 +170,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int displayPaperSizeList(DataGrid grid)
+        public static int DisplayPaperSizeList(DataGrid grid)
         {
             int count = 0;
 
@@ -193,7 +192,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCount()
+        public static int GetCount()
         {
             return _paperSizeCount;
         }
@@ -207,7 +206,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getDesc(int index)
+        public static string GetDesc(int index)
         {
             return _paperSizes[index].getDesc();
         }
@@ -221,7 +220,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte getIdPCL(int index)
+        public static byte GetIdPCL(int index)
         {
             return _paperSizes[index].getIdPCL();
         }
@@ -235,7 +234,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte getIdPCLXL(int index)
+        public static byte GetIdPCLXL(int index)
         {
             return _paperSizes[index].getIdPCLXL();
         }
@@ -250,9 +249,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort getLogicalOffset(int index,
+        public static ushort GetLogicalOffset(int index,
                                               ushort sessionUPI,
-                                              PCLOrientations.eAspect aspect)
+                                              PCLOrientations.Aspect aspect)
         {
             return _paperSizes[index].getLogicalOffset(sessionUPI, aspect);
         }
@@ -267,9 +266,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort getLogPageLength(int index,
+        public static ushort GetLogPageLength(int index,
                                                ushort sessionUPI,
-                                               PCLOrientations.eAspect aspect)
+                                               PCLOrientations.Aspect aspect)
         {
             return _paperSizes[index].getLogPageLength(sessionUPI, aspect);
         }
@@ -284,9 +283,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort getLogPageWidth(int index,
+        public static ushort GetLogPageWidth(int index,
                                               ushort sessionUPI,
-                                              PCLOrientations.eAspect aspect)
+                                              PCLOrientations.Aspect aspect)
         {
             return _paperSizes[index].getLogPageWidth(sessionUPI, aspect);
         }
@@ -301,7 +300,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort getMarginsLogicalLand(int index,
+        public static ushort GetMarginsLogicalLand(int index,
                                                    ushort sessionUPI)
         {
             return _paperSizes[index].getMarginsLogicalLand(sessionUPI);
@@ -317,7 +316,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort getMarginsLogicalPort(int index,
+        public static ushort GetMarginsLogicalPort(int index,
                                                    ushort sessionUPI)
         {
             return _paperSizes[index].getMarginsLogicalPort(sessionUPI);
@@ -334,7 +333,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort getMarginsUnprintable(int index,
+        public static ushort GetMarginsUnprintable(int index,
                                                    ushort sessionUPI)
         {
             return _paperSizes[index].getMarginsUnprintable(sessionUPI);
@@ -349,7 +348,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getName(int index)
+        public static string GetName(int index)
         {
             return _paperSizes[index].getName();
         }
@@ -364,7 +363,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getNameAndDesc(int index)
+        public static string GetNameAndDesc(int index)
         {
             string name = _paperSizes[index].getName();
             string desc = _paperSizes[index].getDesc();
@@ -385,7 +384,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getNamePCLXL(int index)
+        public static string GetNamePCLXL(int index)
         {
             return _paperSizes[index].getNamePCLXL();
         }
@@ -400,9 +399,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort getPaperLength(int index,
+        public static ushort GetPaperLength(int index,
                                             ushort sessionUPI,
-                                            PCLOrientations.eAspect aspect)
+                                            PCLOrientations.Aspect aspect)
         {
             return _paperSizes[index].getPaperLength(sessionUPI, aspect);
         }
@@ -417,9 +416,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort getPaperWidth(int index,
+        public static ushort GetPaperWidth(int index,
                                            ushort sessionUPI,
-                                           PCLOrientations.eAspect aspect)
+                                           PCLOrientations.Aspect aspect)
         {
             return _paperSizes[index].getPaperWidth(sessionUPI, aspect);
         }
@@ -434,7 +433,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort getSizeLongEdge(int index,
+        public static ushort GetSizeLongEdge(int index,
                                              ushort sessionUPI)
         {
             return _paperSizes[index].getSizeLongEdge(sessionUPI);
@@ -450,7 +449,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort getSizeShortEdge(int index,
+        public static ushort GetSizeShortEdge(int index,
                                               ushort sessionUPI)
         {
             return _paperSizes[index].getSizeShortEdge(sessionUPI);
@@ -465,7 +464,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool isCustomSize(int index)
+        public static bool IsCustomSize(int index)
         {
             return _paperSizes[index].FlagCustomSize;
         }
@@ -508,7 +507,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool isRareSize(int index)
+        public static bool IsRareSize(int index)
         {
             return _paperSizes[index].IsRareSize;
         }
@@ -522,7 +521,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void populateTable()
+        private static void PopulateTable()
         {
             const bool sizeIsMetric = true;
             const bool sizeIsImperial = false;
@@ -532,7 +531,7 @@ namespace PCLParaphernalia
 
             _paperSizes = new PCLPaperSize[]
             {
-                new PCLPaperSize(eIndex.Custom, // Custom - sizes can be overridden
+                new PCLPaperSize(Index.Custom, // Custom - sizes can be overridden
                                  "<Custom>",    // name
                                  string.Empty,            // description
                                  101,           // PCL identifier
@@ -547,7 +546,7 @@ namespace PCLParaphernalia
                                  236,           // logical margins landscape
                                  200),          // unprintable margins
 
-                new PCLPaperSize(eIndex.Default,
+                new PCLPaperSize(Index.Default,
                                  "<Default>",
                                  string.Empty,
                                  0xff,
@@ -562,7 +561,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.ANSI_A_Letter,
+                new PCLPaperSize(Index.ANSI_A_Letter,
                                  "Letter",
                                  "(ANSI A): 8.5\" x 11\"",
                                  2,
@@ -577,7 +576,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.ANSI_B_Ledger_Tabloid,
+                new PCLPaperSize(Index.ANSI_B_Ledger_Tabloid,
                                  "Ledger",
                                  "(ANSI B, Tabloid): 11\" x 17\"",
                                  6,
@@ -592,7 +591,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.ANSI_C,
+                new PCLPaperSize(Index.ANSI_C,
                                  "ANSI C",
                                  "17\" x 22\"",
                                  12,
@@ -607,7 +606,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.ANSI_D,
+                new PCLPaperSize(Index.ANSI_D,
                                  "ANSI D",
                                  "22\" x 34\"",
                                  13,
@@ -622,7 +621,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.ANSI_E,
+                new PCLPaperSize(Index.ANSI_E,
                                  "ANSI E",
                                  "34\" x 44\"",
                                  14,
@@ -637,7 +636,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.Card_10x15cm,
+                new PCLPaperSize(Index.Card_10x15cm,
                                  "Card: 10 x 15 cm",
                                  "100 mm x 150 mm",
                                  _unknownID,
@@ -652,7 +651,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.Card_3x5,
+                new PCLPaperSize(Index.Card_3x5,
                                  "Card: 3\" x 5\"",
                                  string.Empty,
                                  78,
@@ -667,7 +666,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.Card_4x6,
+                new PCLPaperSize(Index.Card_4x6,
                                  "Card: 4\" x 6\"",
                                  string.Empty,
                                  74,
@@ -682,7 +681,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.Card_5x7,
+                new PCLPaperSize(Index.Card_5x7,
                                  "Card: 5\" x 7\"",
                                  string.Empty,
                                  _unknownID,
@@ -697,7 +696,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.Card_5x8,
+                new PCLPaperSize(Index.Card_5x8,
                                  "Card: 5\" x 8\"",
                                  string.Empty,
                                  75,
@@ -712,7 +711,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.Card_A6,
+                new PCLPaperSize(Index.Card_A6,
                                  "Card A6",
                                  "105 mm x 148 mm",
                                  73,
@@ -727,7 +726,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.Card_Custom,
+                new PCLPaperSize(Index.Card_Custom,
                                  "Card Custom",
                                  "variable size",
                                  108,
@@ -742,7 +741,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.CN_8K,
+                new PCLPaperSize(Index.CN_8K,
                                  "8K",
                                  "10.75\" x 15.50\"",
                                  19,
@@ -757,7 +756,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.CN_8K_260x368,
+                new PCLPaperSize(Index.CN_8K_260x368,
                                  "8K_260x368",
                                  "260 mm x 368 mm",
                                  _unknownID,
@@ -772,7 +771,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.CN_8K_270x390,
+                new PCLPaperSize(Index.CN_8K_270x390,
                                  "8K_270x390",
                                  "270 mm x 390 mm",
                                  _unknownID,
@@ -787,7 +786,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.CN_16K,
+                new PCLPaperSize(Index.CN_16K,
                                  "16K",
                                  "7.75\" x 10.75\"",
                                  17,
@@ -802,7 +801,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.CN_16K_184x260,
+                new PCLPaperSize(Index.CN_16K_184x260,
                                  "16K_184x260",
                                  "184 mm x 260 mm",
                                  _unknownID,
@@ -817,7 +816,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.CN_16K_195x270,
+                new PCLPaperSize(Index.CN_16K_195x270,
                                  "16K_195x270",
                                  "195 mm x 270 mm",
                                  _unknownID,
@@ -832,7 +831,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.EDP_Europe,
+                new PCLPaperSize(Index.EDP_Europe,
                                  "EDP Europe",
                                  "12\" x 14\"",
                                  5,
@@ -847,7 +846,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.EDP_US,
+                new PCLPaperSize(Index.EDP_US,
                                  "EDP US",
                                  "11\" x 14\"",
                                  4,
@@ -862,7 +861,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.Env_Baronial_5_5,
+                new PCLPaperSize(Index.Env_Baronial_5_5,
                                  "Envelope Baronial 5.5",
                                  "4.375\" x 5.75\"",
                                  109,
@@ -877,7 +876,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.Env_Cat1,
+                new PCLPaperSize(Index.Env_Cat1,
                                  "Envelope Catalog 1",
                                  "6\" x 9\"",
                                  82,
@@ -892,7 +891,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.Env_Com9,
+                new PCLPaperSize(Index.Env_Com9,
                                  "Envelope Commercial 9",
                                  "3.875\" x 8.875\"",
                                  102,
@@ -907,7 +906,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.Env_Com10,
+                new PCLPaperSize(Index.Env_Com10,
                                  "Envelope Commercial 10",
                                  "4.125\" x 9.5\"",
                                  81,
@@ -922,7 +921,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.Env_Com11,
+                new PCLPaperSize(Index.Env_Com11,
                                  "Envelope Commercial 11",
                                  "4.5\" x 10.375\"",
                                  103,
@@ -937,7 +936,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.Env_Custom,
+                new PCLPaperSize(Index.Env_Custom,
                                  "Envelope Custom",
                                  "variable size",
                                  107,
@@ -952,7 +951,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.Env_Intl_B5,
+                new PCLPaperSize(Index.Env_Intl_B5,
                                  "Envelope B5",
                                  "176 mm x 250 mm",
                                  100,
@@ -967,7 +966,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.Env_Intl_C4,
+                new PCLPaperSize(Index.Env_Intl_C4,
                                  "Envelope C4",
                                  "229 mm x 324 mm",
                                  93,
@@ -982,7 +981,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.Env_Intl_C5,
+                new PCLPaperSize(Index.Env_Intl_C5,
                                  "Envelope C5",
                                  "162 mm x 229 mm",
                                  91,
@@ -997,7 +996,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.Env_Intl_C6,
+                new PCLPaperSize(Index.Env_Intl_C6,
                                  "Envelope C6",
                                  "114 mm x 162 mm",
                                  92,
@@ -1012,7 +1011,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.Env_Intl_DL,
+                new PCLPaperSize(Index.Env_Intl_DL,
                                  "Envelope DL",
                                  "110 mm x 220 mm",
                                  90,
@@ -1027,7 +1026,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.Env_JP_Long_3,
+                new PCLPaperSize(Index.Env_JP_Long_3,
                                  "Envelope Japanese Long 3",
                                  "120 mm x 235 mm",
                                  110,
@@ -1042,7 +1041,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.Env_JP_Long_4,
+                new PCLPaperSize(Index.Env_JP_Long_4,
                                  "Envelope Japanese Long 4",
                                  "90 mm x 205 mm",
                                  111,
@@ -1057,7 +1056,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.Env_Letter,
+                new PCLPaperSize(Index.Env_Letter,
                                  "Envelope Letter",
                                  "8.5\" x 11\"",
                                  104,
@@ -1072,7 +1071,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.Env_Monarch,
+                new PCLPaperSize(Index.Env_Monarch,
                                  "Envelope Monarch",
                                  "3.875\" x 7.5\"",
                                  80,
@@ -1087,7 +1086,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.Env_Postfix,
+                new PCLPaperSize(Index.Env_Postfix,
                                  "Envelope Postfix",
                                  "114 mm x 229 mm",
                                  106,
@@ -1102,7 +1101,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.Env_US_C5,
+                new PCLPaperSize(Index.Env_US_C5,
                                  "Envelope US C5",
                                  "6.5\" x 9.5\"",
                                  105,
@@ -1117,7 +1116,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.Executive,
+                new PCLPaperSize(Index.Executive,
                                  "Executive",
                                  "7.25\" x 10.5\"",
                                  1,
@@ -1132,7 +1131,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.Folio,
+                new PCLPaperSize(Index.Folio,
                                  "Folio",
                                  "8.3\" x 13\"",
                                  9,
@@ -1147,7 +1146,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.Foolscap,
+                new PCLPaperSize(Index.Foolscap,
                                  "Foolscap",
                                  "8.5\" x 13\"",
                                  10,
@@ -1162,7 +1161,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.ISO_2A0,
+                new PCLPaperSize(Index.ISO_2A0,
                                  "2A0",
                                  "1189 mm x 1682 mm",
                                  31,
@@ -1177,7 +1176,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.ISO_4A0,
+                new PCLPaperSize(Index.ISO_4A0,
                                  "4A0",
                                  "1682 mm x 2378 mm",
                                  32,
@@ -1192,7 +1191,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.ISO_A0,
+                new PCLPaperSize(Index.ISO_A0,
                                  "A0",
                                  "841 mm x 1189 mm",
                                  30,
@@ -1207,7 +1206,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.ISO_A1,
+                new PCLPaperSize(Index.ISO_A1,
                                  "A1",
                                  "594 mm x 841 mm",
                                  29,
@@ -1222,7 +1221,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.ISO_A2,
+                new PCLPaperSize(Index.ISO_A2,
                                  "A2",
                                  "420 mm x 594 mm",
                                  28,
@@ -1237,7 +1236,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.ISO_A3,
+                new PCLPaperSize(Index.ISO_A3,
                                  "A3",
                                  "297 mm x 420 mm",
                                  27,
@@ -1252,7 +1251,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.ISO_A4,
+                new PCLPaperSize(Index.ISO_A4,
                                  "A4",
                                  "210 mm x 297 mm",
                                  26,
@@ -1267,7 +1266,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.ISO_A5,
+                new PCLPaperSize(Index.ISO_A5,
                                  "A5",
                                  "148 mm x 210 mm",
                                  25,
@@ -1282,7 +1281,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.ISO_A6,
+                new PCLPaperSize(Index.ISO_A6,
                                  "A6",
                                  "105 mm x 148 mm",
                                  24,
@@ -1297,7 +1296,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.ISO_A7,
+                new PCLPaperSize(Index.ISO_A7,
                                  "A7",
                                  "74 mm x 105 mm",
                                  23,
@@ -1312,7 +1311,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.ISO_A8,
+                new PCLPaperSize(Index.ISO_A8,
                                  "A8",
                                  "52 mm x 74 mm",
                                  22,
@@ -1327,7 +1326,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.ISO_A9,
+                new PCLPaperSize(Index.ISO_A9,
                                  "A9",
                                  "37 mm x 52 mm",
                                  21,
@@ -1342,7 +1341,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.ISO_A10,
+                new PCLPaperSize(Index.ISO_A10,
                                  "A10",
                                  "26 mm x 37 mm",
                                  20,
@@ -1357,7 +1356,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.ISO_B0,
+                new PCLPaperSize(Index.ISO_B0,
                                  "ISO B0",
                                  "1000 mm x 1414 mm",
                                  70,
@@ -1372,7 +1371,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.ISO_B1,
+                new PCLPaperSize(Index.ISO_B1,
                                  "ISO B1",
                                  "707 mm x 1000 mm",
                                  69,
@@ -1387,7 +1386,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.ISO_B2,
+                new PCLPaperSize(Index.ISO_B2,
                                  "ISO B2",
                                  "500 mm x 707 mm",
                                  68,
@@ -1402,7 +1401,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.ISO_B3,
+                new PCLPaperSize(Index.ISO_B3,
                                  "ISO B3",
                                  "353 mm x 500 mm",
                                  67,
@@ -1417,7 +1416,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.ISO_B4,
+                new PCLPaperSize(Index.ISO_B4,
                                  "ISO B4",
                                  "250 mm x 353 mm",
                                  66,
@@ -1432,7 +1431,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.ISO_B5,
+                new PCLPaperSize(Index.ISO_B5,
                                  "ISO B5",
                                  "176 mm x 250 mm",
                                  65,
@@ -1447,7 +1446,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.ISO_B6,
+                new PCLPaperSize(Index.ISO_B6,
                                  "ISO B6",
                                  "125 mm x 176 mm",
                                  64,
@@ -1462,7 +1461,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.ISO_B7,
+                new PCLPaperSize(Index.ISO_B7,
                                  "ISO B7",
                                  "88 mm x 125 mm",
                                  63,
@@ -1477,7 +1476,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.ISO_B8,
+                new PCLPaperSize(Index.ISO_B8,
                                  "ISO B8",
                                  "62 mm x 88 mm",
                                  62,
@@ -1492,7 +1491,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.ISO_B9,
+                new PCLPaperSize(Index.ISO_B9,
                                  "ISO B9",
                                  "44 mm x 62 mm",
                                  61,
@@ -1507,7 +1506,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.ISO_B10,
+                new PCLPaperSize(Index.ISO_B10,
                                  "ISO B10",
                                  "31 mm x 44 mm",
                                  60,
@@ -1522,7 +1521,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.JIS_B0,
+                new PCLPaperSize(Index.JIS_B0,
                                  "JIS B0",
                                  "1030 mm x 1456 mm",
                                  50,
@@ -1537,7 +1536,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.JIS_B1,
+                new PCLPaperSize(Index.JIS_B1,
                                  "JIS B1",
                                  "728 mm x 1030 mm",
                                  49,
@@ -1552,7 +1551,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.JIS_B2,
+                new PCLPaperSize(Index.JIS_B2,
                                  "JIS B2",
                                  "515 mm x 728 mm",
                                  48,
@@ -1567,7 +1566,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.JIS_B3,
+                new PCLPaperSize(Index.JIS_B3,
                                  "JIS B3",
                                  "364 mm x 515 mm",
                                  47,
@@ -1582,7 +1581,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.JIS_B4,
+                new PCLPaperSize(Index.JIS_B4,
                                  "JIS B4",
                                  "257 mm x 364 mm",
                                  46,
@@ -1597,7 +1596,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.JIS_B5,
+                new PCLPaperSize(Index.JIS_B5,
                                  "JIS B5",
                                  "182 mm x 257 mm",
                                  45,
@@ -1612,7 +1611,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.JIS_B6,
+                new PCLPaperSize(Index.JIS_B6,
                                  "JIS B6",
                                  "128 mm x 182 mm",
                                  44,
@@ -1627,7 +1626,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.JIS_B7,
+                new PCLPaperSize(Index.JIS_B7,
                                  "JIS B7",
                                  "91 mm x 128 mm",
                                  43,
@@ -1642,7 +1641,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.JIS_B8,
+                new PCLPaperSize(Index.JIS_B8,
                                  "JIS B8",
                                  "64 mm x 91 mm",
                                  42,
@@ -1657,7 +1656,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.JIS_B9,
+                new PCLPaperSize(Index.JIS_B9,
                                  "JIS B9",
                                  "45 mm x 64 mm",
                                  41,
@@ -1672,7 +1671,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.JIS_B10,
+                new PCLPaperSize(Index.JIS_B10,
                                  "JIS B10",
                                  "32 mm x 45 mm",
                                  40,
@@ -1687,7 +1686,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.JIS_Executive,
+                new PCLPaperSize(Index.JIS_Executive,
                                  "JIS Executive",
                                  "216 mm x 330 mm",
                                  18,
@@ -1702,7 +1701,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.JP_Postcard,
+                new PCLPaperSize(Index.JP_Postcard,
                                  "Japanese Postcard",
                                  "(Hagaki): 100 mm x 148 mm",
                                  71,
@@ -1717,7 +1716,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.JP_PostcardDouble,
+                new PCLPaperSize(Index.JP_PostcardDouble,
                                  "Japanese Double Postcard",
                                  "(Oufuku-Hagaki): 148 mm x 200 mm",
                                  72,
@@ -1732,7 +1731,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.Ledger_Alt,
+                new PCLPaperSize(Index.Ledger_Alt,
                                  "Ledger (alternative)",
                                  "11\" x 17\"",
                                  11,
@@ -1747,7 +1746,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.Legal,
+                new PCLPaperSize(Index.Legal,
                                  "Legal",
                                  "8.5\" x 14\"",
                                  3,
@@ -1762,7 +1761,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.Oficio_8p5x13,
+                new PCLPaperSize(Index.Oficio_8p5x13,
                                  "Oficio 8.5x13",
                                  "8.5\" x 13\"",
                                  _unknownID,
@@ -1777,7 +1776,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.Oficio_216x340,
+                new PCLPaperSize(Index.Oficio_216x340,
                                  "Oficio 216x340",
                                  "216 mm x 340 mm",
                                  _unknownID,
@@ -1792,7 +1791,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.Oficio_216x343,
+                new PCLPaperSize(Index.Oficio_216x343,
                                  "Oficio 216x343",
                                  "216 mm x 343 mm",
                                  _unknownID,
@@ -1807,7 +1806,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.Oficio_216x347,
+                new PCLPaperSize(Index.Oficio_216x347,
                                  "Oficio 216x347",
                                  "216 mm x 347 mm",
                                  _unknownID,
@@ -1822,7 +1821,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.RA3,
+                new PCLPaperSize(Index.RA3,
                                  "RA3",
                                  "Raw format A3: 305 mm x 430 mm",
                                  _unknownID,
@@ -1837,7 +1836,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.RA4,
+                new PCLPaperSize(Index.RA4,
                                  "RA4",
                                  "Raw format A4: 215 mm x 305 mm",
                                  _unknownID,
@@ -1852,7 +1851,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.SRA3,
+                new PCLPaperSize(Index.SRA3,
                                  "SRA3",
                                  "Supplmentary raw format A3: 320 mm x 450 mm",
                                  _unknownID,
@@ -1867,7 +1866,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.SRA4,
+                new PCLPaperSize(Index.SRA4,
                                  "SRA4",
                                  "Supplementary raw format A4: 225 mm x 320 mm",
                                  _unknownID,
@@ -1882,7 +1881,7 @@ namespace PCLParaphernalia
                                  236,
                                  200),
 
-                new PCLPaperSize(eIndex.Statement,
+                new PCLPaperSize(Index.Statement,
                                  "Statement",
                                  "(Memo, Half-Letter): 5.5\" x 8.5\"",
                                  15,
@@ -1897,7 +1896,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.USGovt_Legal,
+                new PCLPaperSize(Index.USGovt_Legal,
                                  "US Government Legal",
                                  "8.5\" x 13\"",
                                  8,
@@ -1912,7 +1911,7 @@ namespace PCLParaphernalia
                                  240,
                                  200),
 
-                new PCLPaperSize(eIndex.USGovt_Letter,
+                new PCLPaperSize(Index.USGovt_Letter,
                                  "US Government Letter",
                                  "8\" x 10.5\"",
                                  7,
@@ -1955,9 +1954,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void resetCustomDesc()
+        public static void ResetCustomDesc()
         {
-            _paperSizes[(int)eIndex.Custom].CustomDesc = string.Empty;
+            _paperSizes[(int)Index.Custom].CustomDesc = string.Empty;
         }
 
         //--------------------------------------------------------------------//
@@ -1970,10 +1969,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setCustomLongEdge(ushort size,
+        public static void SetCustomLongEdge(ushort size,
                                               ushort sessionUPI)
         {
-            _paperSizes[(int)eIndex.Custom].CustomLongEdge =
+            _paperSizes[(int)Index.Custom].CustomLongEdge =
                 (uint)((size * _paperSizeUPI) / sessionUPI);
         }
 
@@ -1987,10 +1986,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setCustomShortEdge(ushort size,
+        public static void SetCustomShortEdge(ushort size,
                                                ushort sessionUPI)
         {
-            _paperSizes[(int)eIndex.Custom].CustomShortEdge =
+            _paperSizes[(int)Index.Custom].CustomShortEdge =
                 (uint)((size * _paperSizeUPI) / sessionUPI);
         }
     }

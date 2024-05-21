@@ -89,7 +89,7 @@ namespace PCLParaphernalia
         const int _defaultShade_2 = 0x80;
         const int _defaultShade_3 = 0xc0;
         const int _defaultCodePoint = 0x20ac;
-        const int _defaultIndxVariant = (int)PCLFonts.eVariant.Regular;
+        const int _defaultIndxVariant = (int)PCLFonts.Variant.Regular;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -101,8 +101,8 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void loadDataCapture(
-            ToolCommonData.eToolSubIds crntToolSubId,
-            ToolCommonData.ePrintLang crntPDL,
+            ToolCommonData.ToolSubIds crntToolSubId,
+            ToolCommonData.PrintLang crntPDL,
             ref string captureFile)
         {
             RegistryKey keyMain =
@@ -113,38 +113,38 @@ namespace PCLParaphernalia
 
             string defWorkFolder = ToolCommonData.DefWorkFolder;
 
-            if (crntToolSubId == ToolCommonData.eToolSubIds.Colour)
+            if (crntToolSubId == ToolCommonData.ToolSubIds.Colour)
             {
                 subKeyType = "\\" + _subKeyColour;
                 defFileBase = _defaultCaptureFileRoot + _subKeyColour;
             }
-            else if (crntToolSubId == ToolCommonData.eToolSubIds.LogOper)
+            else if (crntToolSubId == ToolCommonData.ToolSubIds.LogOper)
             {
                 subKeyType = "\\" + _subKeyLogOper;
                 defFileBase = _defaultCaptureFileRoot + _subKeyLogOper;
             }
-            else if (crntToolSubId == ToolCommonData.eToolSubIds.LogPage)
+            else if (crntToolSubId == ToolCommonData.ToolSubIds.LogPage)
             {
                 subKeyType = "\\" + _subKeyLogPage;
                 defFileBase = _defaultCaptureFileRoot + _subKeyLogPage;
             }
-            else if (crntToolSubId == ToolCommonData.eToolSubIds.Pattern)
+            else if (crntToolSubId == ToolCommonData.ToolSubIds.Pattern)
             {
                 subKeyType = "\\" + _subKeyPattern;
                 defFileBase = _defaultCaptureFileRoot + _subKeyPattern;
             }
-            else if (crntToolSubId == ToolCommonData.eToolSubIds.TxtMod)
+            else if (crntToolSubId == ToolCommonData.ToolSubIds.TxtMod)
             {
                 subKeyType = "\\" + _subKeyTxtMod;
                 defFileBase = _defaultCaptureFileRoot + _subKeyTxtMod;
             }
-            else if (crntToolSubId == ToolCommonData.eToolSubIds.Unicode)
+            else if (crntToolSubId == ToolCommonData.ToolSubIds.Unicode)
             {
                 subKeyType = "\\" + _subKeyUnicode;
                 defFileBase = _defaultCaptureFileRoot + _subKeyUnicode;
             }
 
-            if (crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                             "\\" + subKeyType +
@@ -157,7 +157,7 @@ namespace PCLParaphernalia
                         defWorkFolder + "\\" + defFileBase + _subKeyPCL + ".prn");
                 }
             }
-            else if (crntPDL == ToolCommonData.ePrintLang.PCLXL)
+            else if (crntPDL == ToolCommonData.PrintLang.PCLXL)
             {
                 string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                             "\\" + subKeyType +
@@ -615,7 +615,7 @@ namespace PCLParaphernalia
 
         public static void loadDataTypeUnicode(string pdlName,
                                                ref int indxFont,
-                                               ref PCLFonts.eVariant variant,
+                                               ref PCLFonts.Variant variant,
                                                ref int codePoint,
                                                ref bool flagFormAsMacro)
         {
@@ -637,7 +637,7 @@ namespace PCLParaphernalia
 
                 tmpInt = (int)subKey.GetValue(_nameIndxVariant,
                                                       _defaultIndxVariant);
-                variant = (PCLFonts.eVariant)tmpInt;
+                variant = (PCLFonts.Variant)tmpInt;
 
                 codePoint = (int)subKey.GetValue(_nameCodePoint,
                                                    _defaultCodePoint);
@@ -659,8 +659,8 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void saveDataCapture(
-            ToolCommonData.eToolSubIds crntToolSubId,
-            ToolCommonData.ePrintLang crntPDL,
+            ToolCommonData.ToolSubIds crntToolSubId,
+            ToolCommonData.PrintLang crntPDL,
             string captureFile)
         {
             RegistryKey keyMain =
@@ -668,20 +668,20 @@ namespace PCLParaphernalia
 
             string subKeyType = string.Empty;
 
-            if (crntToolSubId == ToolCommonData.eToolSubIds.Colour)
+            if (crntToolSubId == ToolCommonData.ToolSubIds.Colour)
                 subKeyType = "\\" + _subKeyColour;
-            else if (crntToolSubId == ToolCommonData.eToolSubIds.LogOper)
+            else if (crntToolSubId == ToolCommonData.ToolSubIds.LogOper)
                 subKeyType = "\\" + _subKeyLogOper;
-            else if (crntToolSubId == ToolCommonData.eToolSubIds.LogPage)
+            else if (crntToolSubId == ToolCommonData.ToolSubIds.LogPage)
                 subKeyType = "\\" + _subKeyLogPage;
-            else if (crntToolSubId == ToolCommonData.eToolSubIds.Pattern)
+            else if (crntToolSubId == ToolCommonData.ToolSubIds.Pattern)
                 subKeyType = "\\" + _subKeyPattern;
-            else if (crntToolSubId == ToolCommonData.eToolSubIds.TxtMod)
+            else if (crntToolSubId == ToolCommonData.ToolSubIds.TxtMod)
                 subKeyType = "\\" + _subKeyTxtMod;
-            else if (crntToolSubId == ToolCommonData.eToolSubIds.Unicode)
+            else if (crntToolSubId == ToolCommonData.ToolSubIds.Unicode)
                 subKeyType = "\\" + _subKeyUnicode;
 
-            if (crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                             "\\" + subKeyType +
@@ -697,7 +697,7 @@ namespace PCLParaphernalia
                     }
                 }
             }
-            else if (crntPDL == ToolCommonData.ePrintLang.PCLXL)
+            else if (crntPDL == ToolCommonData.PrintLang.PCLXL)
             {
                 string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                             "\\" + subKeyType +
@@ -1095,7 +1095,7 @@ namespace PCLParaphernalia
 
         public static void saveDataTypeUnicode(string pdlName,
                                                int indxFont,
-                                               PCLFonts.eVariant variant,
+                                               PCLFonts.Variant variant,
                                                int codePoint,
                                                bool flagFormAsMacro)
         {

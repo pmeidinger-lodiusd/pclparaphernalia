@@ -67,7 +67,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                return PCLXLAttributes.getDesc(_attrTagA,
+                return PCLXLAttributes.GetDesc(_attrTagA,
                                                _attrTagB,
                                                _attrTagLen);
             }
@@ -132,7 +132,7 @@ namespace PCLParaphernalia
                 if (_operTag == 0x00)
                     return "--";
                 else
-                    return PCLXLOperators.getDesc(_operTag);
+                    return PCLXLOperators.GetDesc(_operTag);
             }
         }
 

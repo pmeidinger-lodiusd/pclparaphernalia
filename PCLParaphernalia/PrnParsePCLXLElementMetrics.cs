@@ -30,7 +30,7 @@ namespace PCLParaphernalia
               _groupSize,
               _unitSize;
 
-        PCLXLDataTypes.eBaseType _baseDataType;
+        PCLXLDataTypes.BaseType _baseDataType;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -45,7 +45,7 @@ namespace PCLParaphernalia
             int decodeIndent,
             int groupSize,
             int unitSize,
-            PCLXLDataTypes.eBaseType baseDataType)
+            PCLXLDataTypes.BaseType baseDataType)
         {
             _flagUbyteAsAscii = flagUbyteAsAscii;
             _flagUint16AsUnicode = flagUint16AsUnicode;
@@ -80,7 +80,7 @@ namespace PCLParaphernalia
             ref int decodeIndent,
             ref int groupSize,
             ref int unitSize,
-            ref PCLXLDataTypes.eBaseType baseDataType)
+            ref PCLXLDataTypes.BaseType baseDataType)
         {
             flagUbyteAsAscii = _flagUbyteAsAscii;
             flagUint16AsUnicode = _flagUint16AsUnicode;
@@ -104,7 +104,7 @@ namespace PCLParaphernalia
             int decodeIndent,
             int groupSize,
             int unitSize,
-            PCLXLDataTypes.eBaseType baseDataType)
+            PCLXLDataTypes.BaseType baseDataType)
         {
             _flagUbyteAsAscii = flagUbyteAsAscii;
             _flagUint16AsUnicode = flagUint16AsUnicode;

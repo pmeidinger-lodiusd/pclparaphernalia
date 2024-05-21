@@ -22,7 +22,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private PrnParseConstants.eContType _contType;
+        private PrnParseConstants.ContType _contType;
 
         private long _pclComboStart;
 
@@ -45,14 +45,14 @@ namespace PCLParaphernalia
             PrnParse analysisOwner,
             int analysisLevel,
             int macroLevel,
-            PCLXLOperators.eEmbedDataType pclxlEmbedType)
+            PCLXLOperators.EmbedDataType pclxlEmbedType)
         {
             AnalysisOwner = analysisOwner;
             AnalysisLevel = analysisLevel;
             MacroLevel = macroLevel;
             PclxlEmbedType = pclxlEmbedType;
 
-            _contType = PrnParseConstants.eContType.None;
+            _contType = PrnParseConstants.ContType.None;
             _prefixLen = 0;
             DataLen = 0;
             _downloadRem = 0;
@@ -74,9 +74,9 @@ namespace PCLParaphernalia
             MakeOvlOffset = 0;
             MakeOvlSkipBegin = -1;
             MakeOvlSkipEnd = -1;
-            MakeOvlAct = PrnParseConstants.eOvlAct.None;
-            MakeOvlPos = PrnParseConstants.eOvlPos.BeforeFirstPage;
-            MakeOvlShow = PrnParseConstants.eOvlShow.None;
+            MakeOvlAct = PrnParseConstants.OvlAct.None;
+            MakeOvlPos = PrnParseConstants.OvlPos.BeforeFirstPage;
+            MakeOvlShow = PrnParseConstants.OvlShow.None;
             MakeOvlMacroId = -1;
             MakeOvlStreamName = string.Empty;
             MakeOvlPageMark = false;
@@ -188,7 +188,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getContData(ref PrnParseConstants.eContType contType,
+        public void getContData(ref PrnParseConstants.ContType contType,
                                 ref int prefixLen,
                                 ref int dataLen,
                                 ref int downloadRem,
@@ -214,7 +214,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.eContType getContType()
+        public PrnParseConstants.ContType getContType()
         {
             return _contType;
         }
@@ -270,7 +270,7 @@ namespace PCLParaphernalia
 
         public bool isContinuation()
         {
-            return _contType != PrnParseConstants.eContType.None;
+            return _contType != PrnParseConstants.ContType.None;
         }
 
         //--------------------------------------------------------------------//
@@ -315,7 +315,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.eOvlAct MakeOvlAct { get; set; }
+        public PrnParseConstants.OvlAct MakeOvlAct { get; set; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -355,7 +355,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.eOvlPos MakeOvlPos { get; set; }
+        public PrnParseConstants.OvlPos MakeOvlPos { get; set; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -371,7 +371,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.eOvlShow MakeOvlShow { get; set; }
+        public PrnParseConstants.OvlShow MakeOvlShow { get; set; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -443,7 +443,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLXLOperators.eEmbedDataType PclxlEmbedType { get; set; }
+        public PCLXLOperators.EmbedDataType PclxlEmbedType { get; set; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -451,7 +451,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ToolCommonData.ePrintLang PrescribeCallerPDL { get; set; }
+        public ToolCommonData.PrintLang PrescribeCallerPDL { get; set; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -480,7 +480,7 @@ namespace PCLParaphernalia
 
         public void resetContData()
         {
-            _contType = PrnParseConstants.eContType.None;
+            _contType = PrnParseConstants.ContType.None;
             _prefixLen = 0;
             DataLen = 0;
             _downloadRem = 0;
@@ -516,7 +516,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setBacktrack(PrnParseConstants.eContType contType,
+        public void setBacktrack(PrnParseConstants.ContType contType,
                                   int dataLen)
         {
             _contType = contType;
@@ -537,7 +537,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setContData(PrnParseConstants.eContType contType,
+        public void setContData(PrnParseConstants.ContType contType,
                                 int prefixLen,
                                 int dataLen,
                                 int downloadRem,
@@ -563,7 +563,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setContinuation(PrnParseConstants.eContType contType)
+        public void setContinuation(PrnParseConstants.ContType contType)
         {
             _contType = contType;
             _prefixLen = 0;

@@ -34,7 +34,7 @@ namespace PCLParaphernalia
 
         private static void unicodeMap_8G()
         {
-            const eSymSetMapId mapId = eSymSetMapId.map_8G;
+            const SymSetMapId mapId = SymSetMapId.map_8G;
 
             const int rangeCt = 2;
 

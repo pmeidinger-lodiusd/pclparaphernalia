@@ -16,7 +16,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private readonly PrnParseRowTypes.eType _rowType;
+        private readonly PrnParseRowTypes.Type _rowType;
         private readonly string _rowTypeDesc;
 
         //--------------------------------------------------------------------//
@@ -25,7 +25,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseRowType(PrnParseRowTypes.eType type,
+        public PrnParseRowType(PrnParseRowTypes.Type type,
                                 string desc)
         {
             _rowType = type;
@@ -55,7 +55,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseRowTypes.eType getType()
+        public PrnParseRowTypes.Type getType()
         {
             return _rowType;
         }

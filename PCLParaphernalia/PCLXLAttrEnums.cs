@@ -413,7 +413,7 @@ namespace PCLParaphernalia
 
             operTag = 0x00;                                           // ---- //
 
-            attrTagA = (byte)PCLXLAttributes.eTag.PaletteDepth;      // 0x02 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.PaletteDepth;      // 0x02 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -437,7 +437,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "e8Bit"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.ColorSpace;        // 0x03 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.ColorSpace;        // 0x03 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -473,7 +473,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eGraySub"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.DeviceMatrix;      // 0x21 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.DeviceMatrix;      // 0x21 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -485,7 +485,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eDeviceBest"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.DitherMatrixDataType; // 0x22 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.DitherMatrixDataType; // 0x22 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -515,7 +515,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eSint16"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.MediaDestination;  // 0x24 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.MediaDestination;  // 0x24 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -605,7 +605,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eExternalBin_10"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.MediaSize;         // 0x25 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.MediaSize;         // 0x25 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -749,7 +749,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eDefaultPapersize"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.MediaSource;       // 0x26 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.MediaSource;       // 0x26 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -863,7 +863,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eExternalTray_10"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.Orientation;       // 0x28 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.Orientation;       // 0x28 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -899,7 +899,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eDefaultOrientation"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.ROP3;              // 0x2c // 
+            attrTagA = (byte)PCLXLAttributes.Tag.ROP3;              // 0x2c // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -2441,7 +2441,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eROP_1"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.TxMode;            // 0x2d // 
+            attrTagA = (byte)PCLXLAttributes.Tag.TxMode;            // 0x2d // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -2459,7 +2459,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eTransparent"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.CustomMediaSizeUnits; // 0x30 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.CustomMediaSizeUnits; // 0x30 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -2483,7 +2483,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eTenthsOfAMillimeter"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.DitherMatrixDepth; // 0x33 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.DitherMatrixDepth; // 0x33 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -2507,7 +2507,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "e8Bit"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.SimplexPageMode;   // 0x34 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.SimplexPageMode;   // 0x34 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -2519,7 +2519,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eSimplexFrontSide"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.DuplexPageMode;    // 0x35 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.DuplexPageMode;    // 0x35 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -2537,7 +2537,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eDuplexVerticalBinding"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.DuplexPageSide;    // 0x36 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.DuplexPageSide;    // 0x36 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -2555,7 +2555,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eBackMediaSide"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.ArcDirection;      // 0x41 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.ArcDirection;      // 0x41 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -2573,7 +2573,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eCounterClockWise"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.FillMode;          // 0x46 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.FillMode;          // 0x46 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -2591,7 +2591,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eEvenOdd"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.LineCapStyle;      // 0x47 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.LineCapStyle;      // 0x47 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -2621,7 +2621,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eTriangleCap"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.LineJoinStyle;     // 0x48 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.LineJoinStyle;     // 0x48 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -2651,7 +2651,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eNoJoin"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.PointType;         // 0x50 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.PointType;         // 0x50 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -2681,7 +2681,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eSint16"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.ClipRegion;        // 0x53 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.ClipRegion;        // 0x53 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -2699,7 +2699,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eExterior"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.ClipMode;          // 0x54 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.ClipMode;          // 0x54 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -2717,7 +2717,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eEvenOdd"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.ColorDepth;        // 0x62 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.ColorDepth;        // 0x62 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -2741,7 +2741,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "e8Bit"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.ColorMapping;      // 0x64 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.ColorMapping;      // 0x64 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -2765,7 +2765,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eDirectPlane"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.CompressMode;      // 0x65 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.CompressMode;      // 0x65 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -2801,7 +2801,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eFXCompression"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.PatternPersistence;// 0x68 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.PatternPersistence;// 0x68 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -2825,7 +2825,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eSessionPattern"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.TumbleMode;        // 0x75 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.TumbleMode;        // 0x75 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -2843,7 +2843,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eAdd180Degrees"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.ContentOrientation;// 0x76 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.ContentOrientation;// 0x76 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -2879,7 +2879,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eDefaultOrientation"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.FeedOrientation;   // 0x77 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.FeedOrientation;   // 0x77 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -2915,7 +2915,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eDontCare"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.ColorTreatment;    // 0x78 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.ColorTreatment;    // 0x78 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -2939,7 +2939,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eVivid"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.DataOrg;           // 0x82 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.DataOrg;           // 0x82 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -2957,7 +2957,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eBinaryLowByteFirst"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.Measure;           // 0x86 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.Measure;           // 0x86 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -2981,7 +2981,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eTenthsOfAMillimeter"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.SourceType;        // 0x88 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.SourceType;        // 0x88 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -2993,7 +2993,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eDefaultDataSource"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.ErrorReport;       // 0x8f // 
+            attrTagA = (byte)PCLXLAttributes.Tag.ErrorReport;       // 0x8f // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -3041,7 +3041,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eNWBackChAndErrPage"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.VUExtension;       // 0x91 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.VUExtension;       // 0x91 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -3107,7 +3107,7 @@ namespace PCLParaphernalia
                                   flagValIsTxt,
                                   "JR3ExecStream"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.EnableDiagnostics; // 0xa0 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.EnableDiagnostics; // 0xa0 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -3137,7 +3137,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "ePageDiag"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.SymbolSet;        // 0xaa // 
+            attrTagA = (byte)PCLXLAttributes.Tag.SymbolSet;        // 0xaa // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -3146,7 +3146,7 @@ namespace PCLParaphernalia
             PopulateTableAddSymsets(operTag, attrTagA, attrTagB,
                                      attrLen, root);
 
-            attrTagA = (byte)PCLXLAttributes.eTag.CharSubModeArray;  // 0xac // 
+            attrTagA = (byte)PCLXLAttributes.Tag.CharSubModeArray;  // 0xac // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -3164,7 +3164,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eVerticalSubstitution"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.WritingMode;       // 0xad // 
+            attrTagA = (byte)PCLXLAttributes.Tag.WritingMode;       // 0xad // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -3188,9 +3188,9 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eVerticalRotated"));
 
-            operTag = (byte)PCLXLOperators.eTag.SetColorTreatment;  // 0x58 //
+            operTag = (byte)PCLXLOperators.Tag.SetColorTreatment;  // 0x58 //
 
-            attrTagA = (byte)PCLXLAttributes.eTag.AllObjectTypes;    // 0x1d // 
+            attrTagA = (byte)PCLXLAttributes.Tag.AllObjectTypes;    // 0x1d // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -3214,7 +3214,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eVivid"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.TextObjects;       // 0x1e // 
+            attrTagA = (byte)PCLXLAttributes.Tag.TextObjects;       // 0x1e // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -3238,7 +3238,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eVivid"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.VectorObjects;     // 0x1f // 
+            attrTagA = (byte)PCLXLAttributes.Tag.VectorObjects;     // 0x1f // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -3262,7 +3262,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eVivid"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.RasterObjects;     // 0x20 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.RasterObjects;     // 0x20 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -3286,9 +3286,9 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eVivid"));
 
-            operTag = (byte)PCLXLOperators.eTag.SetHalftoneMethod;  // 0x6d //
+            operTag = (byte)PCLXLOperators.Tag.SetHalftoneMethod;  // 0x6d //
 
-            attrTagA = (byte)PCLXLAttributes.eTag.AllObjectTypes;    // 0x1d // 
+            attrTagA = (byte)PCLXLAttributes.Tag.AllObjectTypes;    // 0x1d // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -3312,7 +3312,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eLowLPI"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.TextObjects;       // 0x1e // 
+            attrTagA = (byte)PCLXLAttributes.Tag.TextObjects;       // 0x1e // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -3336,7 +3336,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eLowLPI"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.VectorObjects;     // 0x1f // 
+            attrTagA = (byte)PCLXLAttributes.Tag.VectorObjects;     // 0x1f // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -3360,7 +3360,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eLowLPI"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.RasterObjects;     // 0x20 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.RasterObjects;     // 0x20 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -3384,9 +3384,9 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eLowLPI"));
 
-            operTag = (byte)PCLXLOperators.eTag.SetNeutralAxis;     // 0x7e //
+            operTag = (byte)PCLXLOperators.Tag.SetNeutralAxis;     // 0x7e //
 
-            attrTagA = (byte)PCLXLAttributes.eTag.AllObjectTypes;    // 0x1d // 
+            attrTagA = (byte)PCLXLAttributes.Tag.AllObjectTypes;    // 0x1d // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -3404,7 +3404,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eProcessBlack"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.TextObjects;       // 0x1e // 
+            attrTagA = (byte)PCLXLAttributes.Tag.TextObjects;       // 0x1e // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -3422,7 +3422,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eProcessBlack"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.VectorObjects;     // 0x1f // 
+            attrTagA = (byte)PCLXLAttributes.Tag.VectorObjects;     // 0x1f // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -3440,7 +3440,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eProcessBlack"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.RasterObjects;     // 0x20 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.RasterObjects;     // 0x20 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -3458,9 +3458,9 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eProcessBlack"));
 
-            operTag = (byte)PCLXLOperators.eTag.SetColorTrapping;   // 0x92 //
+            operTag = (byte)PCLXLOperators.Tag.SetColorTrapping;   // 0x92 //
 
-            attrTagA = (byte)PCLXLAttributes.eTag.AllObjectTypes;    // 0x1d // 
+            attrTagA = (byte)PCLXLAttributes.Tag.AllObjectTypes;    // 0x1d // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -3490,7 +3490,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eLight"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.TextObjects;       // 0x1e // 
+            attrTagA = (byte)PCLXLAttributes.Tag.TextObjects;       // 0x1e // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -3520,7 +3520,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eLight"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.VectorObjects;     // 0x1f // 
+            attrTagA = (byte)PCLXLAttributes.Tag.VectorObjects;     // 0x1f // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -3550,7 +3550,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eLight"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.RasterObjects;     // 0x20 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.RasterObjects;     // 0x20 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -3580,9 +3580,9 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eLight"));
 
-            operTag = (byte)PCLXLOperators.eTag.SetAdaptiveHalftoning; // 0x94 //
+            operTag = (byte)PCLXLOperators.Tag.SetAdaptiveHalftoning; // 0x94 //
 
-            attrTagA = (byte)PCLXLAttributes.eTag.AllObjectTypes;    // 0x1d // 
+            attrTagA = (byte)PCLXLAttributes.Tag.AllObjectTypes;    // 0x1d // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -3600,7 +3600,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eEnable"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.TextObjects;       // 0x1e // 
+            attrTagA = (byte)PCLXLAttributes.Tag.TextObjects;       // 0x1e // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -3618,7 +3618,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eEnable"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.VectorObjects;     // 0x1f // 
+            attrTagA = (byte)PCLXLAttributes.Tag.VectorObjects;     // 0x1f // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +
@@ -3636,7 +3636,7 @@ namespace PCLParaphernalia
                                   flagNone,
                                   "eEnable"));
 
-            attrTagA = (byte)PCLXLAttributes.eTag.RasterObjects;     // 0x20 // 
+            attrTagA = (byte)PCLXLAttributes.Tag.RasterObjects;     // 0x20 // 
             root = operTag.ToString("X2") +
                    attrLen.ToString("X2") +
                    attrTagA.ToString("X2") +

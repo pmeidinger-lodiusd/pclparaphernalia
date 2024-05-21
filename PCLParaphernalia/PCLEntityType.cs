@@ -16,7 +16,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private readonly PCLEntityTypes.eType _entityType;
+        private readonly PCLEntityTypes.Type _entityType;
         private readonly string _entityName;
         private readonly string _entityIdPCL;
 
@@ -26,7 +26,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLEntityType(PCLEntityTypes.eType type,
+        public PCLEntityType(PCLEntityTypes.Type type,
                              string id,
                              string name)
         {
@@ -72,7 +72,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLEntityTypes.eType getType()
+        public PCLEntityTypes.Type getType()
         {
             return _entityType;
         }

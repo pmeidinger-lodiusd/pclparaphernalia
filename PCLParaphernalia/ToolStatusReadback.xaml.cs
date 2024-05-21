@@ -34,23 +34,23 @@ namespace PCLParaphernalia
         private const string _defaultPJLFSObjPath = "0:\\pcl\\macros\\macro1";
         private const string _defaultPJLFSVolume = "0:";
 
-        private static readonly PJLCommands.eCmdIndex[] _subsetPJLCommands =
+        private static readonly PJLCommands.CmdIndex[] _subsetPJLCommands =
         {
-            PJLCommands.eCmdIndex.DINQUIRE,
-            PJLCommands.eCmdIndex.INFO,
-            PJLCommands.eCmdIndex.INQUIRE
+            PJLCommands.CmdIndex.DINQUIRE,
+            PJLCommands.CmdIndex.INFO,
+            PJLCommands.CmdIndex.INQUIRE
         };
 
-        private static readonly PJLCommands.eCmdIndex[] _subsetPJLFSCommands =
+        private static readonly PJLCommands.CmdIndex[] _subsetPJLFSCommands =
         {
-            PJLCommands.eCmdIndex.FSAPPEND,
-            PJLCommands.eCmdIndex.FSDELETE,
-            PJLCommands.eCmdIndex.FSDIRLIST,
-            PJLCommands.eCmdIndex.FSDOWNLOAD,
-            PJLCommands.eCmdIndex.FSINIT,
-            PJLCommands.eCmdIndex.FSMKDIR,
-            PJLCommands.eCmdIndex.FSQUERY,
-            PJLCommands.eCmdIndex.FSUPLOAD
+            PJLCommands.CmdIndex.FSAPPEND,
+            PJLCommands.CmdIndex.FSDELETE,
+            PJLCommands.CmdIndex.FSDIRLIST,
+            PJLCommands.CmdIndex.FSDOWNLOAD,
+            PJLCommands.CmdIndex.FSINIT,
+            PJLCommands.CmdIndex.FSMKDIR,
+            PJLCommands.CmdIndex.FSQUERY,
+            PJLCommands.CmdIndex.FSUPLOAD
         };
 
         //--------------------------------------------------------------------//
@@ -59,14 +59,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private TargetCore.eTarget _targetType;
+        private TargetCore.Target _targetType;
 
-        private ToolCommonData.ePrintLang _crntPDL;
+        private ToolCommonData.PrintLang _crntPDL;
 
-        PJLCommands.eRequestType _reqTypePJL;
-        PJLCommands.eRequestType _reqTypePJLFS;
-        PJLCommands.eCmdIndex _cmdIndxPJL;
-        PJLCommands.eCmdIndex _cmdIndxPJLFS;
+        PJLCommands.RequestType _reqTypePJL;
+        PJLCommands.RequestType _reqTypePJLFS;
+        PJLCommands.CmdIndex _cmdIndxPJL;
+        PJLCommands.CmdIndex _cmdIndxPJLFS;
 
         private int _ctPCLEntityTypes;
         private int _ctPCLLocTypes;
@@ -108,7 +108,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ToolStatusReadback(ref ToolCommonData.ePrintLang crntPDL)
+        public ToolStatusReadback(ref ToolCommonData.PrintLang crntPDL)
         {
             InitializeComponent();
 
@@ -140,13 +140,13 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                TargetCore.requestStreamOpen(
+                TargetCore.RequestStreamOpen(
                     ref requestWriter,
-                    ToolCommonData.eToolIds.StatusReadback,
-                    ToolCommonData.eToolSubIds.None,
+                    ToolCommonData.ToolIds.StatusReadback,
+                    ToolCommonData.ToolSubIds.None,
                     _crntPDL);
 
-                if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+                if (_crntPDL == ToolCommonData.PrintLang.PCL)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -183,12 +183,12 @@ namespace PCLParaphernalia
 
                     string path;
 
-                    if (_reqTypePJLFS == PJLCommands.eRequestType.FSInit)
+                    if (_reqTypePJLFS == PJLCommands.RequestType.FSInit)
                     {
                         path = _objVolPJLFS;
                     }
-                    else if ((_reqTypePJLFS == PJLCommands.eRequestType.FSDirList) ||
-                                                 (_reqTypePJLFS == PJLCommands.eRequestType.FSMkDir))
+                    else if ((_reqTypePJLFS == PJLCommands.RequestType.FSDirList) ||
+                                                 (_reqTypePJLFS == PJLCommands.RequestType.FSMkDir))
                     {
                         path = _objDirPJLFS;
                     }
@@ -215,20 +215,20 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                _targetType = TargetCore.getType();
+                _targetType = TargetCore.GetType();
 
-                if (_targetType == TargetCore.eTarget.File)
+                if (_targetType == TargetCore.Target.File)
                 {
-                    TargetCore.requestStreamWrite(false);
+                    TargetCore.RequestStreamWrite(false);
 
                     txtReply.Text = "Request sequence has been saved to" +
                                     " file.\n\n" +
                                     "Specified target of 'File' means that" +
                                     " a reply is not meaningful.";
                 }
-                else if (_targetType == TargetCore.eTarget.NetPrinter)
+                else if (_targetType == TargetCore.Target.NetPrinter)
                 {
-                    if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+                    if (_crntPDL == ToolCommonData.PrintLang.PCL)
                     {
                         //----------------------------------------------------//
                         //                                                    //
@@ -271,7 +271,7 @@ namespace PCLParaphernalia
                             _binTgtFilenamePJLFS);
                     }
                 }
-                else if (_targetType == TargetCore.eTarget.WinPrinter)
+                else if (_targetType == TargetCore.Target.WinPrinter)
                 {
                     txtReply.Text = "This application does not support" +
                                     " Status readback via a Windows printer" +
@@ -313,7 +313,7 @@ namespace PCLParaphernalia
 
             string filename;
 
-            if (_reqTypePJLFS == PJLCommands.eRequestType.FSUpload)
+            if (_reqTypePJLFS == PJLCommands.RequestType.FSUpload)
             {
                 upload = true;
                 filename = _binTgtFilenamePJLFS;
@@ -354,22 +354,22 @@ namespace PCLParaphernalia
         {
             bool flagOptRptWrap = false;
 
-            ReportCore.eRptFileFmt rptFileFmt = ReportCore.eRptFileFmt.NA;
-            ReportCore.eRptChkMarks rptChkMarks = ReportCore.eRptChkMarks.NA;
+            ReportCore.RptFileFmt rptFileFmt = ReportCore.RptFileFmt.NA;
+            ReportCore.RptChkMarks rptChkMarks = ReportCore.RptChkMarks.NA;
 
-            TargetCore.metricsReturnFileRpt(
-                ToolCommonData.eToolIds.StatusReadback,
+            TargetCore.MetricsReturnFileRpt(
+                ToolCommonData.ToolIds.StatusReadback,
                 ref rptFileFmt,
                 ref rptChkMarks,
                 ref flagOptRptWrap);
 
-            if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 ToolStatusReadbackReport.generate(rptFileFmt,
                                                               txtReply,
                                                               ref _reportFilenamePCL);
             }
-            else if (_crntPDL == ToolCommonData.ePrintLang.PJL)
+            else if (_crntPDL == ToolCommonData.PrintLang.PJL)
             {
                 ToolStatusReadbackReport.generate(rptFileFmt,
                                                               txtReply,
@@ -429,8 +429,8 @@ namespace PCLParaphernalia
         {
             _indxPJLCategory = cbPJLCategory.SelectedIndex;
 
-            if (PJLCategories.getType(_indxPJLCategory) ==
-                PJLCategories.eCategoryType.Custom)
+            if (PJLCategories.GetType(_indxPJLCategory) ==
+                PJLCategories.CategoryType.Custom)
             {
                 txtPJLCustomCat.Visibility = Visibility.Visible;
             }
@@ -460,20 +460,20 @@ namespace PCLParaphernalia
 
             _cmdIndxPJL = _subsetPJLCommands[_indxPJLCommand];
 
-            _reqTypePJL = PJLCommands.getType(_cmdIndxPJL);
+            _reqTypePJL = PJLCommands.GetType(_cmdIndxPJL);
 
             txtPJLCustomCat.Visibility = Visibility.Hidden;
             txtPJLCustomVar.Visibility = Visibility.Hidden;
 
-            if (_reqTypePJL == PJLCommands.eRequestType.Category)
+            if (_reqTypePJL == PJLCommands.RequestType.Category)
             {
                 lbPJLCategory.Visibility = Visibility.Visible;
                 cbPJLCategory.Visibility = Visibility.Visible;
                 lbPJLVariable.Visibility = Visibility.Hidden;
                 cbPJLVariable.Visibility = Visibility.Hidden;
 
-                if (PJLCategories.getType(_indxPJLCategory) ==
-                    PJLCategories.eCategoryType.Custom)
+                if (PJLCategories.GetType(_indxPJLCategory) ==
+                    PJLCategories.CategoryType.Custom)
                 {
                     txtPJLCustomCat.Visibility = Visibility.Visible;
                 }
@@ -485,8 +485,8 @@ namespace PCLParaphernalia
                 lbPJLVariable.Visibility = Visibility.Visible;
                 cbPJLVariable.Visibility = Visibility.Visible;
 
-                if (PJLVariables.getType(_indxPJLVariable) ==
-                    PJLVariables.eVarType.Custom)
+                if (PJLVariables.GetType(_indxPJLVariable) ==
+                    PJLVariables.VarType.Custom)
                 {
                     txtPJLCustomVar.Visibility = Visibility.Visible;
                 }
@@ -514,7 +514,7 @@ namespace PCLParaphernalia
 
             _cmdIndxPJLFS = _subsetPJLFSCommands[_indxPJLFSCommand];
 
-            _reqTypePJLFS = PJLCommands.getType(_cmdIndxPJLFS);
+            _reqTypePJLFS = PJLCommands.GetType(_cmdIndxPJLFS);
 
             lbPJLFSLocPath.Visibility = Visibility.Hidden;
             txtPJLFSLocPath.Visibility = Visibility.Hidden;
@@ -526,11 +526,11 @@ namespace PCLParaphernalia
             lbPJLFSOpt2.Visibility = Visibility.Hidden;
             txtPJLFSOpt2.Visibility = Visibility.Hidden;
 
-            if (_reqTypePJLFS == PJLCommands.eRequestType.FSInit)
+            if (_reqTypePJLFS == PJLCommands.RequestType.FSInit)
             {
                 txtPJLFSPath.Text = _objVolPJLFS;
             }
-            else if (_reqTypePJLFS == PJLCommands.eRequestType.FSBinSrc)
+            else if (_reqTypePJLFS == PJLCommands.RequestType.FSBinSrc)
             {
                 txtPJLFSPath.Text = _objPathPJLFS;
 
@@ -542,7 +542,7 @@ namespace PCLParaphernalia
 
                 btnPJLFSLocPathBrowse.Visibility = Visibility.Visible;
             }
-            else if (_reqTypePJLFS == PJLCommands.eRequestType.FSUpload)
+            else if (_reqTypePJLFS == PJLCommands.RequestType.FSUpload)
             {
                 txtPJLFSPath.Text = _objPathPJLFS;
 
@@ -568,7 +568,7 @@ namespace PCLParaphernalia
                 _valPJLFSOpt2 = _defaultPJLFSOffset;
                 txtPJLFSOpt2.Text = _valPJLFSOpt2.ToString();
             }
-            else if (_reqTypePJLFS == PJLCommands.eRequestType.FSDirList)
+            else if (_reqTypePJLFS == PJLCommands.RequestType.FSDirList)
             {
                 txtPJLFSPath.Text = _objDirPJLFS;
 
@@ -586,7 +586,7 @@ namespace PCLParaphernalia
                 _valPJLFSOpt2 = _defaultPJLFSEntry;
                 txtPJLFSOpt2.Text = _valPJLFSOpt2.ToString();
             }
-            else if (_reqTypePJLFS == PJLCommands.eRequestType.FSMkDir)
+            else if (_reqTypePJLFS == PJLCommands.RequestType.FSMkDir)
             {
                 txtPJLFSPath.Text = _objDirPJLFS;
             }
@@ -614,8 +614,8 @@ namespace PCLParaphernalia
         {
             _indxPJLVariable = cbPJLVariable.SelectedIndex;
 
-            if (PJLVariables.getType(_indxPJLVariable) ==
-                PJLVariables.eVarType.Custom)
+            if (PJLVariables.GetType(_indxPJLVariable) ==
+                PJLVariables.VarType.Custom)
             {
                 txtPJLCustomVar.Visibility = Visibility.Visible;
             }
@@ -671,7 +671,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void giveCrntPDL(ref ToolCommonData.ePrintLang crntPDL)
+        public void giveCrntPDL(ref ToolCommonData.PrintLang crntPDL)
         {
             crntPDL = _crntPDL;
         }
@@ -687,9 +687,9 @@ namespace PCLParaphernalia
 
         private void initialise()
         {
-            PJLVariables.eVarType varType;
+            PJLVariables.VarType varType;
 
-            PJLCommands.eCmdIndex indxCmd;
+            PJLCommands.CmdIndex indxCmd;
 
             string personality;
 
@@ -701,22 +701,22 @@ namespace PCLParaphernalia
 
             cbPCLEntityType.Items.Clear();
 
-            _ctPCLEntityTypes = PCLEntityTypes.getCount();
+            _ctPCLEntityTypes = PCLEntityTypes.GetCount();
 
             for (int i = 0; i < _ctPCLEntityTypes; i++)
             {
-                cbPCLEntityType.Items.Add(PCLEntityTypes.getName(i));
+                cbPCLEntityType.Items.Add(PCLEntityTypes.GetName(i));
             }
 
             //----------------------------------------------------------------//
 
             cbPCLLocType.Items.Clear();
 
-            _ctPCLLocTypes = PCLLocationTypes.getCount();
+            _ctPCLLocTypes = PCLLocationTypes.GetCount();
 
             for (int i = 0; i < _ctPCLLocTypes; i++)
             {
-                cbPCLLocType.Items.Add(PCLLocationTypes.getName(i));
+                cbPCLLocType.Items.Add(PCLLocationTypes.GetName(i));
             }
 
             //----------------------------------------------------------------//
@@ -729,7 +729,7 @@ namespace PCLParaphernalia
             {
                 indxCmd = _subsetPJLCommands[i];
 
-                cbPJLCommand.Items.Add(PJLCommands.getName(indxCmd));
+                cbPJLCommand.Items.Add(PJLCommands.GetName(indxCmd));
             }
 
             //----------------------------------------------------------------//
@@ -742,40 +742,40 @@ namespace PCLParaphernalia
             {
                 indxCmd = _subsetPJLFSCommands[i];
 
-                cbPJLFSCommand.Items.Add(PJLCommands.getName(indxCmd));
+                cbPJLFSCommand.Items.Add(PJLCommands.GetName(indxCmd));
             }
 
             //----------------------------------------------------------------//
 
             cbPJLCategory.Items.Clear();
 
-            _ctPJLCategories = PJLCategories.getCount();
+            _ctPJLCategories = PJLCategories.GetCount();
 
             for (int i = 0; i < _ctPJLCategories; i++)
             {
-                cbPJLCategory.Items.Add(PJLCategories.getName(i));
+                cbPJLCategory.Items.Add(PJLCategories.GetName(i));
             }
 
             //----------------------------------------------------------------//
 
             cbPJLVariable.Items.Clear();
 
-            _ctPJLVariables = PJLVariables.getCount();
+            _ctPJLVariables = PJLVariables.GetCount();
 
             for (int i = 0; i < _ctPJLVariables; i++)
             {
-                varType = PJLVariables.getType(i);
+                varType = PJLVariables.GetType(i);
 
-                if (varType == PJLVariables.eVarType.PCL)
+                if (varType == PJLVariables.VarType.PCL)
                     personality = "PCL: ";
-                else if (varType == PJLVariables.eVarType.PDF)
+                else if (varType == PJLVariables.VarType.PDF)
                     personality = "PDF: ";
-                else if (varType == PJLVariables.eVarType.PS)
+                else if (varType == PJLVariables.VarType.PS)
                     personality = "POSTSCRIPT: ";
                 else
                     personality = string.Empty;
 
-                cbPJLVariable.Items.Add(personality + PJLVariables.getName(i));
+                cbPJLVariable.Items.Add(personality + PJLVariables.GetName(i));
             }
 
             //----------------------------------------------------------------//
@@ -800,8 +800,8 @@ namespace PCLParaphernalia
             _cmdIndxPJL = _subsetPJLCommands[_indxPJLCommand];
             _cmdIndxPJLFS = _subsetPJLFSCommands[_indxPJLFSCommand];
 
-            _reqTypePJL = PJLCommands.getType(_cmdIndxPJL);
-            _reqTypePJLFS = PJLCommands.getType(_cmdIndxPJLFS);
+            _reqTypePJL = PJLCommands.GetType(_cmdIndxPJL);
+            _reqTypePJLFS = PJLCommands.GetType(_cmdIndxPJLFS);
 
             _passwordPJLFS = _defaultPJLFSPassword;
 
@@ -810,24 +810,24 @@ namespace PCLParaphernalia
                                                ref _objDirPJLFS,
                                                ref _objFilPJLFS);
 
-            if (_crntPDL == ToolCommonData.ePrintLang.PJL)
+            if (_crntPDL == ToolCommonData.PrintLang.PJL)
             {
                 if (_flagPJLFS)
                 {
                     rbSelTypePJLFS.IsChecked = true;
                     tabPDLs.SelectedItem = tabPJLFS;
 
-                    if (_reqTypePJLFS == PJLCommands.eRequestType.FSUpload)
+                    if (_reqTypePJLFS == PJLCommands.RequestType.FSUpload)
                         txtPJLFSLocPath.Text = _binTgtFilenamePJLFS;
                     else
                         txtPJLFSLocPath.Text = _binSrcFilenamePJLFS;
 
-                    if (_reqTypePJLFS == PJLCommands.eRequestType.FSInit)
+                    if (_reqTypePJLFS == PJLCommands.RequestType.FSInit)
                     {
                         txtPJLFSPath.Text = _objVolPJLFS;
                     }
-                    else if ((_reqTypePJLFS == PJLCommands.eRequestType.FSDirList) ||
-                                                 (_reqTypePJLFS == PJLCommands.eRequestType.FSMkDir))
+                    else if ((_reqTypePJLFS == PJLCommands.RequestType.FSDirList) ||
+                                                 (_reqTypePJLFS == PJLCommands.RequestType.FSMkDir))
                     {
                         txtPJLFSPath.Text = _objDirPJLFS;
                     }
@@ -858,18 +858,18 @@ namespace PCLParaphernalia
                     txtPJLCustomCat.Text = _customCatPJL;
                     txtPJLCustomVar.Text = _customVarPJL;
 
-                    if (_reqTypePJL == PJLCommands.eRequestType.Category)
+                    if (_reqTypePJL == PJLCommands.RequestType.Category)
                     {
-                        if (PJLCategories.getType(_indxPJLCategory) ==
-                            PJLCategories.eCategoryType.Custom)
+                        if (PJLCategories.GetType(_indxPJLCategory) ==
+                            PJLCategories.CategoryType.Custom)
                         {
                             txtPJLCustomCat.Visibility = Visibility.Visible;
                         }
                     }
-                    else if (_reqTypePJL == PJLCommands.eRequestType.Variable)
+                    else if (_reqTypePJL == PJLCommands.RequestType.Variable)
                     {
-                        if (PJLVariables.getType(_indxPJLVariable) ==
-                            PJLVariables.eVarType.Custom)
+                        if (PJLVariables.GetType(_indxPJLVariable) ==
+                            PJLVariables.VarType.Custom)
                         {
                             txtPJLCustomVar.Visibility = Visibility.Visible;
                         }
@@ -922,10 +922,10 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if (indxTemp == (int)ToolCommonData.ePrintLang.PJL)
-                _crntPDL = ToolCommonData.ePrintLang.PJL;
+            if (indxTemp == (int)ToolCommonData.PrintLang.PJL)
+                _crntPDL = ToolCommonData.PrintLang.PJL;
             else
-                _crntPDL = ToolCommonData.ePrintLang.PCL;
+                _crntPDL = ToolCommonData.PrintLang.PCL;
 
             //----------------------------------------------------------------//
 
@@ -1011,7 +1011,7 @@ namespace PCLParaphernalia
 
         private void rbSelTypePCL_Click(object sender, RoutedEventArgs e)
         {
-            _crntPDL = ToolCommonData.ePrintLang.PCL;
+            _crntPDL = ToolCommonData.PrintLang.PCL;
 
             tabPDLs.SelectedItem = tabPCL;
 
@@ -1031,7 +1031,7 @@ namespace PCLParaphernalia
 
         private void rbSelTypePJL_Click(object sender, RoutedEventArgs e)
         {
-            _crntPDL = ToolCommonData.ePrintLang.PJL;
+            _crntPDL = ToolCommonData.PrintLang.PJL;
             _flagPJLFS = false;
 
             tabPDLs.SelectedItem = tabPJL;
@@ -1052,7 +1052,7 @@ namespace PCLParaphernalia
 
         private void rbSelTypePJLFS_Click(object sender, RoutedEventArgs e)
         {
-            _crntPDL = ToolCommonData.ePrintLang.PJL;
+            _crntPDL = ToolCommonData.PrintLang.PJL;
             _flagPJLFS = true;
 
             tabPDLs.SelectedItem = tabPJLFS;
@@ -1084,13 +1084,13 @@ namespace PCLParaphernalia
 
         public void resetTarget()
         {
-            TargetCore.eTarget targetType = TargetCore.getType();
+            TargetCore.Target targetType = TargetCore.GetType();
 
-            if (targetType == TargetCore.eTarget.File)
+            if (targetType == TargetCore.Target.File)
             {
                 btnGenerate.Content = "Generate request & save to file";
             }
-            else if (targetType == TargetCore.eTarget.NetPrinter)
+            else if (targetType == TargetCore.Target.NetPrinter)
             {
                 string netPrnAddress = string.Empty;
                 int netPrnPort = 0;
@@ -1098,7 +1098,7 @@ namespace PCLParaphernalia
                 int netTimeoutSend = 0;
                 int netTimeoutReceive = 0;
 
-                TargetCore.metricsLoadNetPrinter(ref netPrnAddress,
+                TargetCore.MetricsLoadNetPrinter(ref netPrnAddress,
                                                   ref netPrnPort,
                                                   ref netTimeoutSend,
                                                   ref netTimeoutReceive);
@@ -1108,11 +1108,11 @@ namespace PCLParaphernalia
                                       netPrnAddress + " : " +
                                       netPrnPort.ToString();
             }
-            else if (targetType == TargetCore.eTarget.WinPrinter)
+            else if (targetType == TargetCore.Target.WinPrinter)
             {
                 string winPrintername = string.Empty;
 
-                TargetCore.metricsLoadWinPrinter(ref winPrintername);
+                TargetCore.MetricsLoadWinPrinter(ref winPrintername);
 
                 btnGenerate.Content = "Generate & send test data to printer " +
                                       "\r\n" +
@@ -1310,7 +1310,7 @@ namespace PCLParaphernalia
         private void txtPJLFSLocPath_LostFocus(object sender,
                                                 RoutedEventArgs e)
         {
-            if (_reqTypePJLFS == PJLCommands.eRequestType.FSUpload)
+            if (_reqTypePJLFS == PJLCommands.RequestType.FSUpload)
                 _binTgtFilenamePJLFS = txtPJLFSLocPath.Text;
             else
                 _binSrcFilenamePJLFS = txtPJLFSLocPath.Text;
@@ -1417,12 +1417,12 @@ namespace PCLParaphernalia
         private void txtPJLFSPath_LostFocus(object sender,
                                              RoutedEventArgs e)
         {
-            if (_reqTypePJLFS == PJLCommands.eRequestType.FSInit)
+            if (_reqTypePJLFS == PJLCommands.RequestType.FSInit)
             {
                 _objVolPJLFS = txtPJLFSPath.Text;
             }
-            else if ((_reqTypePJLFS == PJLCommands.eRequestType.FSDirList) ||
-                                 (_reqTypePJLFS == PJLCommands.eRequestType.FSMkDir))
+            else if ((_reqTypePJLFS == PJLCommands.RequestType.FSDirList) ||
+                                 (_reqTypePJLFS == PJLCommands.RequestType.FSMkDir))
             {
                 _objDirPJLFS = txtPJLFSPath.Text;
             }
@@ -1482,7 +1482,7 @@ namespace PCLParaphernalia
 
             bool OK = true;
 
-            if (_reqTypePJLFS == PJLCommands.eRequestType.FSDirList)
+            if (_reqTypePJLFS == PJLCommands.RequestType.FSDirList)
             {
                 boxName = "Count";
                 defVal = _defaultPJLFSCount;
@@ -1558,7 +1558,7 @@ namespace PCLParaphernalia
 
             bool OK = true;
 
-            if (_reqTypePJLFS == PJLCommands.eRequestType.FSDirList)
+            if (_reqTypePJLFS == PJLCommands.RequestType.FSDirList)
             {
                 boxName = "Entry";
                 defVal = _defaultPJLFSEntry;

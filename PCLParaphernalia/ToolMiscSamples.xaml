@@ -114,7 +114,7 @@
                           HorizontalAlignment="Left"
                           Checked="chkOptFormAsMacro_Checked"
                           Content="Render fixed text as overlay"
-                          Unchecked="chkOptFormAsMacro_Unchecked" />
+                          Unchecked="ChkOptFormAsMacro_Unchecked" />
             </Grid>
         </GroupBox>
 
@@ -1929,7 +1929,7 @@
                                                  Margin="5,15,0,0"
                                                  HorizontalAlignment="Left"
                                                  VerticalAlignment="Top"
-                                                 Click="rbPatternTypeShading_Click"
+                                                 Click="RbPatternTypeShading_Click"
                                                  Content="Shading"
                                                  GroupName="SelPattern" />
                                     <RadioButton Name="rbPatternTypeXHatch"
@@ -1937,7 +1937,7 @@
                                                  Margin="5,35,0,0"
                                                  HorizontalAlignment="Left"
                                                  VerticalAlignment="Top"
-                                                 Click="rbPatternTypeXHatch_Click"
+                                                 Click="RbPatternTypeXHatch_Click"
                                                  Content="Cross-hatch"
                                                  GroupName="SelPattern" />
                                 </Grid>

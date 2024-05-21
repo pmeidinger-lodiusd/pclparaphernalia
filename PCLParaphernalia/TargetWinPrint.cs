@@ -176,7 +176,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool isDriverXPS(IntPtr hPrinter)
+        private static bool IsDriverXPS(IntPtr hPrinter)
         {
             const uint PRINTER_DRIVER_XPS_FLAG = 0x00000002;
             const uint ERROR_INSUFFICIENT_BUFFER = 0x0000007a;
@@ -233,122 +233,6 @@ namespace PCLParaphernalia
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
-        // s e n d B y t e s T o P r i n t e r                                //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // The function is given a printer name and an unmanaged array of     //
-        // bytes; the function sends those bytes to the print queue.          //
-        // Returns true on success, false on failure.                         //
-        //                                                                    //
-        // ***** Not used at present *****                                    //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private static bool sendBytesToPrinter(string szPrinterName,
-                                                   IntPtr pBytes,
-                                                   int dwCount)
-        {
-            int dwError = 0,
-                  dwWritten = 0;
-
-            IntPtr hPrinter = new IntPtr(0);
-
-            DOCINFOA di = new DOCINFOA();
-
-            bool bSuccess = false;
-
-            di.pDocName = "PCLParaphernalia RAW Document";
-
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Open the printer.                                              //
-            //                                                                //
-            //----------------------------------------------------------------//
-
-            if (OpenPrinter(szPrinterName.Normalize(),
-                out hPrinter,
-                IntPtr.Zero))
-            {
-                //------------------------------------------------------------//
-                //                                                            //
-                // Check if XPS printer driver or not                         //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                if (isDriverXPS(hPrinter))
-                    di.pDataType = "XPS_PASS";
-                else
-                    di.pDataType = "RAW";
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // Start a document.                                          //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                if (StartDocPrinter(hPrinter, 1, di))
-                {
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // Start a page.                                          //
-                    //                                                        //
-                    //--------------------------------------------------------//
-
-                    if (StartPagePrinter(hPrinter))
-                    {
-                        //----------------------------------------------------//
-                        //                                                    //
-                        // Write supplied bytes.                              //
-                        //                                                    //
-                        //----------------------------------------------------//
-
-                        bSuccess = WritePrinter(hPrinter, pBytes, dwCount,
-                                                 out dwWritten);
-
-                        //----------------------------------------------------//
-                        //                                                    //
-                        // End page.                                          //
-                        //                                                    //
-                        //----------------------------------------------------//
-
-                        EndPagePrinter(hPrinter);
-                    }
-
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // End document.                                          //
-                    //                                                        //
-                    //--------------------------------------------------------//
-
-                    EndDocPrinter(hPrinter);
-                }
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // Close the printer.                                         //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                ClosePrinter(hPrinter);
-            }
-
-            if (!bSuccess)
-            {
-                //------------------------------------------------------------//
-                //                                                            //
-                // If write did not succeed, GetLastError may give more       //
-                // information about the failure.                             //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                dwError = Marshal.GetLastWin32Error();
-            }
-
-            return bSuccess;
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
         // s e n d D a t a                                                    //
         //--------------------------------------------------------------------//
         //                                                                    //
@@ -356,7 +240,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int sendData(BinaryReader prnReader,
+        public static int SendData(BinaryReader prnReader,
                                       string printerName)
         {
             const int result = 0;
@@ -387,7 +271,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if (isDriverXPS(hPrinter))
+                if (IsDriverXPS(hPrinter))
                     di.pDataType = "XPS_PASS";
                 else
                     di.pDataType = "RAW";

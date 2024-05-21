@@ -16,7 +16,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private readonly PJLCategories.eCategoryType _categoryType;
+        private readonly PJLCategories.CategoryType _categoryType;
         private readonly string _categoryName;
 
         //--------------------------------------------------------------------//
@@ -25,7 +25,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PJLCategory(PJLCategories.eCategoryType type,
+        public PJLCategory(PJLCategories.CategoryType type,
                            string name)
         {
             _categoryType = type;
@@ -55,7 +55,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PJLCategories.eCategoryType getType()
+        public PJLCategories.CategoryType getType()
         {
             return _categoryType;
         }

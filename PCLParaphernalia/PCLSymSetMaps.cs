@@ -25,7 +25,7 @@ namespace PCLParaphernalia
         private const int _hex00e0 = 224;
         private const int _hex0100 = 256;
 
-        public enum eSymSetMapId
+        public enum SymSetMapId
         {
             mapNull,        // special sets
             mapSymbol,
@@ -111,7 +111,7 @@ namespace PCLParaphernalia
 
         static PCLSymSetMaps()
         {
-            populateUnicodeMaps();
+            PopulateUnicodeMaps();
         }
 
         //--------------------------------------------------------------------//
@@ -124,7 +124,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort getCodepointMax(int selection)
+        public static ushort GetCodepointMax(int selection)
         {
             return _sets[selection].CodepointMax;
         }
@@ -138,7 +138,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort getCodepointMin(int selection)
+        public static ushort GetCodepointMin(int selection)
         {
             return _sets[selection].CodepointMin;
         }
@@ -153,7 +153,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort[] getMapArray(int selection,
+        public static ushort[] GetMapArray(int selection,
                                              bool flagMapPCL)
         {
             if (flagMapPCL)
@@ -172,9 +172,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort[] getMapArraySymbol()
+        public static ushort[] GetMapArraySymbol()
         {
-            return _sets[(int)eSymSetMapId.mapSymbol].MapDataStd;
+            return _sets[(int)SymSetMapId.mapSymbol].MapDataStd;
         }
 
         //--------------------------------------------------------------------//
@@ -186,9 +186,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort[] getMapArrayUserSet()
+        public static ushort[] GetMapArrayUserSet()
         {
-            return _sets[(int)eSymSetMapId.mapUserSet].MapDataUserSet;
+            return _sets[(int)SymSetMapId.mapUserSet].MapDataUserSet;
         }
 
         //--------------------------------------------------------------------//
@@ -202,7 +202,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string mapping(int selection,
+        public static string Mapping(int selection,
                                       bool flagMapPCL,
                                       bool differentOnly)
         {
@@ -231,7 +231,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string mappingDiff(int selection)
+        public static string MappingDiff(int selection)
         {
             return _sets[selection].MappingDiff;
         }
@@ -247,9 +247,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string[] mapRows(int selection,
-                                         bool flagMapPCL,
-                                         bool differentOnly)
+        public static string[] MapRows(int selection, bool flagMapPCL, bool differentOnly)
         {
             if (flagMapPCL)
             {
@@ -276,7 +274,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string[] mapRowsDiff(int selection)
+        public static string[] MapRowsDiff(int selection)
         {
             return _sets[selection].MapRowsDiff;
         }
@@ -291,7 +289,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool nullMapPCL(int selection)
+        public static bool NullMapPCL(int selection)
         {
             return _sets[selection].NullMapPCL;
         }
@@ -306,7 +304,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool nullMapStd(int selection)
+        public static bool NullMapStd(int selection)
         {
             return _sets[selection].NullMapStd;
         }
@@ -320,208 +318,208 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void populateUnicodeMaps()
+        private static void PopulateUnicodeMaps()
         {
-            foreach (eSymSetMapId x in Enum.GetValues(typeof(eSymSetMapId)))
+            foreach (SymSetMapId x in Enum.GetValues(typeof(SymSetMapId)))
             {
                 switch (x)
                 {
                     // Must be in same order as eSymSetMap enum and all of    //
                     // the values must be present.                            //
 
-                    case eSymSetMapId.mapNull:
+                    case SymSetMapId.mapNull:
                         unicodeMapNull();
                         break;
-                    case eSymSetMapId.mapSymbol:
+                    case SymSetMapId.mapSymbol:
                         unicodeMapSymbol();
                         break;
-                    case eSymSetMapId.mapUserSet:
+                    case SymSetMapId.mapUserSet:
                         unicodeMapUserSet();
                         break;
-                    case eSymSetMapId.map_0D:
+                    case SymSetMapId.map_0D:
                         unicodeMap_0D();
                         break;
-                    case eSymSetMapId.map_0H:
+                    case SymSetMapId.map_0H:
                         unicodeMap_0H();
                         break;
-                    case eSymSetMapId.map_0I:
+                    case SymSetMapId.map_0I:
                         unicodeMap_0I();
                         break;
-                    case eSymSetMapId.map_0N:
+                    case SymSetMapId.map_0N:
                         unicodeMap_0N();
                         break;
-                    case eSymSetMapId.map_0S:
+                    case SymSetMapId.map_0S:
                         unicodeMap_0S();
                         break;
-                    case eSymSetMapId.map_0U:
+                    case SymSetMapId.map_0U:
                         unicodeMap_0U();
                         break;
-                    case eSymSetMapId.map_1E:
+                    case SymSetMapId.map_1E:
                         unicodeMap_1E();
                         break;
-                    case eSymSetMapId.map_1F:
+                    case SymSetMapId.map_1F:
                         unicodeMap_1F();
                         break;
-                    case eSymSetMapId.map_1G:
+                    case SymSetMapId.map_1G:
                         unicodeMap_1G();
                         break;
-                    case eSymSetMapId.map_1T:
+                    case SymSetMapId.map_1T:
                         unicodeMap_1T();
                         break;
-                    case eSymSetMapId.map_1U:
+                    case SymSetMapId.map_1U:
                         unicodeMap_1U();
                         break;
-                    case eSymSetMapId.map_2N:
+                    case SymSetMapId.map_2N:
                         unicodeMap_2N();
                         break;
-                    case eSymSetMapId.map_2S:
+                    case SymSetMapId.map_2S:
                         unicodeMap_2S();
                         break;
-                    case eSymSetMapId.map_3N:
+                    case SymSetMapId.map_3N:
                         unicodeMap_3N();
                         break;
-                    case eSymSetMapId.map_3R:
+                    case SymSetMapId.map_3R:
                         unicodeMap_3R();
                         break;
-                    case eSymSetMapId.map_4N:
+                    case SymSetMapId.map_4N:
                         unicodeMap_4N();
                         break;
-                    case eSymSetMapId.map_4U:
+                    case SymSetMapId.map_4U:
                         unicodeMap_4U();
                         break;
-                    case eSymSetMapId.map_5M:
+                    case SymSetMapId.map_5M:
                         unicodeMap_5M();
                         break;
-                    case eSymSetMapId.map_5N:
+                    case SymSetMapId.map_5N:
                         unicodeMap_5N();
                         break;
-                    case eSymSetMapId.map_5T:
+                    case SymSetMapId.map_5T:
                         unicodeMap_5T();
                         break;
-                    case eSymSetMapId.map_6J:
+                    case SymSetMapId.map_6J:
                         unicodeMap_6J();
                         break;
-                    case eSymSetMapId.map_6N:
+                    case SymSetMapId.map_6N:
                         unicodeMap_6N();
                         break;
-                    case eSymSetMapId.map_7H:
+                    case SymSetMapId.map_7H:
                         unicodeMap_7H();
                         break;
-                    case eSymSetMapId.map_7J:
+                    case SymSetMapId.map_7J:
                         unicodeMap_7J();
                         break;
-                    case eSymSetMapId.map_8G:
+                    case SymSetMapId.map_8G:
                         unicodeMap_8G();
                         break;
-                    case eSymSetMapId.map_8H:
-                        unicodeMap_8H();
+                    case SymSetMapId.map_8H:
+                        UnicodeMap_8H();
                         break;
-                    case eSymSetMapId.map_8M:
-                        unicodeMap_8M();
+                    case SymSetMapId.map_8M:
+                        UnicodeMap_8M();
                         break;
-                    case eSymSetMapId.map_8U:
-                        unicodeMap_8U();
+                    case SymSetMapId.map_8U:
+                        UnicodeMap_8U();
                         break;
-                    case eSymSetMapId.map_8V:
+                    case SymSetMapId.map_8V:
                         unicodeMap_8V();
                         break;
-                    case eSymSetMapId.map_9E:
+                    case SymSetMapId.map_9E:
                         unicodeMap_9E();
                         break;
-                    case eSymSetMapId.map_9G:
+                    case SymSetMapId.map_9G:
                         unicodeMap_9G();
                         break;
-                    case eSymSetMapId.map_9J:
+                    case SymSetMapId.map_9J:
                         unicodeMap_9J();
                         break;
-                    case eSymSetMapId.map_9N:
+                    case SymSetMapId.map_9N:
                         unicodeMap_9N();
                         break;
-                    case eSymSetMapId.map_9R:
+                    case SymSetMapId.map_9R:
                         unicodeMap_9R();
                         break;
-                    case eSymSetMapId.map_9T:
+                    case SymSetMapId.map_9T:
                         unicodeMap_9T();
                         break;
-                    case eSymSetMapId.map_9U:
+                    case SymSetMapId.map_9U:
                         unicodeMap_9U();
                         break;
-                    case eSymSetMapId.map_9V:
+                    case SymSetMapId.map_9V:
                         unicodeMap_9V();
                         break;
-                    case eSymSetMapId.map_10G:
+                    case SymSetMapId.map_10G:
                         unicodeMap_10G();
                         break;
-                    case eSymSetMapId.map_10J:
+                    case SymSetMapId.map_10J:
                         unicodeMap_10J();
                         break;
-                    case eSymSetMapId.map_10N:
+                    case SymSetMapId.map_10N:
                         unicodeMap_10N();
                         break;
-                    case eSymSetMapId.map_10U:
+                    case SymSetMapId.map_10U:
                         unicodeMap_10U();
                         break;
-                    case eSymSetMapId.map_10V:
+                    case SymSetMapId.map_10V:
                         unicodeMap_10V();
                         break;
-                    case eSymSetMapId.map_11N:
+                    case SymSetMapId.map_11N:
                         unicodeMap_11N();
                         break;
-                    case eSymSetMapId.map_11U:
+                    case SymSetMapId.map_11U:
                         unicodeMap_11U();
                         break;
-                    case eSymSetMapId.map_12G:
+                    case SymSetMapId.map_12G:
                         unicodeMap_12G();
                         break;
-                    case eSymSetMapId.map_12J:
+                    case SymSetMapId.map_12J:
                         unicodeMap_12J();
                         break;
-                    case eSymSetMapId.map_12N:
+                    case SymSetMapId.map_12N:
                         unicodeMap_12N();
                         break;
-                    case eSymSetMapId.map_12U:
+                    case SymSetMapId.map_12U:
                         unicodeMap_12U();
                         break;
-                    case eSymSetMapId.map_13U:
+                    case SymSetMapId.map_13U:
                         unicodeMap_13U();
                         break;
-                    case eSymSetMapId.map_14R:
+                    case SymSetMapId.map_14R:
                         unicodeMap_14R();
                         break;
-                    case eSymSetMapId.map_15H:
+                    case SymSetMapId.map_15H:
                         unicodeMap_15H();
                         break;
-                    case eSymSetMapId.map_15U:
+                    case SymSetMapId.map_15U:
                         unicodeMap_15U();
                         break;
-                    case eSymSetMapId.map_17U:
+                    case SymSetMapId.map_17U:
                         unicodeMap_17U();
                         break;
-                    case eSymSetMapId.map_19L:
+                    case SymSetMapId.map_19L:
                         unicodeMap_19L();
                         break;
-                    case eSymSetMapId.map_19U:
+                    case SymSetMapId.map_19U:
                         unicodeMap_19U();
                         break;
-                    case eSymSetMapId.map_26U:
+                    case SymSetMapId.map_26U:
                         unicodeMap_26U();
                         break;
-                    case eSymSetMapId.map_x901T:
+                    case SymSetMapId.map_x901T:
                         unicodeMap_x901T();
                         break;
-                    case eSymSetMapId.map_x1001T:
+                    case SymSetMapId.map_x1001T:
                         unicodeMap_x1001T();
                         break;
-                    case eSymSetMapId.map_x1018C:
+                    case SymSetMapId.map_x1018C:
                         unicodeMap_x1018C();
                         break;
-                    case eSymSetMapId.map_x1018T:
+                    case SymSetMapId.map_x1018T:
                         unicodeMap_x1018T();
                         break;
-                    case eSymSetMapId.map_x1019K:
+                    case SymSetMapId.map_x1019K:
                         unicodeMap_x1019K();
                         break;
-                    case eSymSetMapId.map_x1020C:
+                    case SymSetMapId.map_x1020C:
                         unicodeMap_x1020C();
                         break;
                     default:
@@ -540,9 +538,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setMapArrayUserSet(ushort[] map)
+        public static void SetMapArrayUserSet(ushort[] map)
         {
-            _sets[(int)eSymSetMapId.mapUserSet].MapDataUserSet = map;
+            _sets[(int)SymSetMapId.mapUserSet].MapDataUserSet = map;
         }
     }
 }

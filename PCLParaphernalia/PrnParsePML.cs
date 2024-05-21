@@ -35,12 +35,12 @@ namespace PCLParaphernalia
 
         private int _analysisLevel;
 
-        private PrnParseConstants.eOptOffsetFormats _indxOffsetFormat;
+        private PrnParseConstants.OptOffsetFormats _indxOffsetFormat;
 
         private bool _verboseMode;
 
-        private PrnParseConstants.eOptCharSetSubActs _indxCharSetSubAct;
-        private PrnParseConstants.eOptCharSets _indxCharSetName;
+        private PrnParseConstants.OptCharSetSubActs _indxCharSetSubAct;
+        private PrnParseConstants.OptCharSets _indxCharSetName;
         private int _valCharSetSubCode;
 
         private readonly ASCIIEncoding _ascii = new ASCIIEncoding();
@@ -106,27 +106,27 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             PrnParseCommon.addTextRow(
-                PrnParseRowTypes.eType.MsgComment,
+                PrnParseRowTypes.Type.MsgComment,
                 _table,
-                PrnParseConstants.eOvlShow.None,
+                PrnParseConstants.OvlShow.None,
                 string.Empty,
                 ">>>>>>>>>>>>>>>>>>>>",
                 string.Empty,
                 ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
             PrnParseCommon.addTextRow(
-                PrnParseRowTypes.eType.MsgComment,
+                PrnParseRowTypes.Type.MsgComment,
                 _table,
-                PrnParseConstants.eOvlShow.None,
+                PrnParseConstants.OvlShow.None,
                 string.Empty,
                 "Comment",
                 string.Empty,
                 "Start analysis of embedded PML string");
 
             PrnParseCommon.addTextRow(
-                PrnParseRowTypes.eType.MsgComment,
+                PrnParseRowTypes.Type.MsgComment,
                 _table,
-                PrnParseConstants.eOvlShow.None,
+                PrnParseConstants.OvlShow.None,
                 string.Empty,
                 "Comment",
                 string.Empty,
@@ -140,9 +140,9 @@ namespace PCLParaphernalia
                 invalidSeqFound = true;
 
                 PrnParseCommon.addTextRow(
-                    PrnParseRowTypes.eType.MsgWarning,
+                    PrnParseRowTypes.Type.MsgWarning,
                     _table,
-                    PrnParseConstants.eOvlShow.None,
+                    PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "*** Warning ***",
                     string.Empty,
@@ -197,9 +197,9 @@ namespace PCLParaphernalia
                 if (invalidSeqFound)
                 {
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.MsgWarning,
+                        PrnParseRowTypes.Type.MsgWarning,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "*** Warning ***",
                         string.Empty,
@@ -214,18 +214,18 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             PrnParseCommon.addTextRow(
-                PrnParseRowTypes.eType.MsgComment,
+                PrnParseRowTypes.Type.MsgComment,
                 _table,
-                PrnParseConstants.eOvlShow.None,
+                PrnParseConstants.OvlShow.None,
                 string.Empty,
                 "Comment",
                 string.Empty,
                 "End analysis of embedded PML string");
 
             PrnParseCommon.addTextRow(
-                PrnParseRowTypes.eType.MsgComment,
+                PrnParseRowTypes.Type.MsgComment,
                 _table,
-                PrnParseConstants.eOvlShow.None,
+                PrnParseConstants.OvlShow.None,
                 string.Empty,
                 "Comment",
                 string.Empty,
@@ -233,9 +233,9 @@ namespace PCLParaphernalia
                              seqLen + " bytes)");
 
             PrnParseCommon.addTextRow(
-                PrnParseRowTypes.eType.MsgComment,
+                PrnParseRowTypes.Type.MsgComment,
                 _table,
-                PrnParseConstants.eOvlShow.None,
+                PrnParseConstants.OvlShow.None,
                 string.Empty,
                 "<<<<<<<<<<<<<<<<<<<<",
                 string.Empty,
@@ -283,27 +283,27 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             PrnParseCommon.addTextRow(
-                PrnParseRowTypes.eType.MsgComment,
+                PrnParseRowTypes.Type.MsgComment,
                 _table,
-                PrnParseConstants.eOvlShow.None,
+                PrnParseConstants.OvlShow.None,
                 string.Empty,
                 ">>>>>>>>>>>>>>>>>>>>",
                 string.Empty,
                 ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
             PrnParseCommon.addTextRow(
-                PrnParseRowTypes.eType.MsgComment,
+                PrnParseRowTypes.Type.MsgComment,
                 _table,
-                PrnParseConstants.eOvlShow.None,
+                PrnParseConstants.OvlShow.None,
                 string.Empty,
                 "Comment",
                 string.Empty,
                 "Start analysis of embedded PML string");
 
             PrnParseCommon.addTextRow(
-                PrnParseRowTypes.eType.MsgComment,
+                PrnParseRowTypes.Type.MsgComment,
                 _table,
-                PrnParseConstants.eOvlShow.None,
+                PrnParseConstants.OvlShow.None,
                 string.Empty,
                 "Comment",
                 string.Empty,
@@ -316,27 +316,27 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             PrnParseCommon.addTextRow(
-                PrnParseRowTypes.eType.MsgComment,
+                PrnParseRowTypes.Type.MsgComment,
                 _table,
-                PrnParseConstants.eOvlShow.None,
+                PrnParseConstants.OvlShow.None,
                 string.Empty,
                 "Comment",
                 string.Empty,
                 "End analysis of embedded PML string");
 
             PrnParseCommon.addTextRow(
-                PrnParseRowTypes.eType.MsgComment,
+                PrnParseRowTypes.Type.MsgComment,
                 _table,
-                PrnParseConstants.eOvlShow.None,
+                PrnParseConstants.OvlShow.None,
                 string.Empty,
                 "Comment",
                 string.Empty,
                 "of size " + dataLen + " bytes");
 
             PrnParseCommon.addTextRow(
-                PrnParseRowTypes.eType.MsgComment,
+                PrnParseRowTypes.Type.MsgComment,
                 _table,
-                PrnParseConstants.eOvlShow.None,
+                PrnParseConstants.OvlShow.None,
                 string.Empty,
                 "<<<<<<<<<<<<<<<<<<<<",
                 string.Empty,
@@ -386,8 +386,8 @@ namespace PCLParaphernalia
             {
                 partLen = 4;
 
-                showElement(PrnParseConstants.ePMLSeqType.Hddr,
-                             PMLDataTypes.eTag.String,
+                showElement(PrnParseConstants.PMLSeqType.Hddr,
+                             PMLDataTypes.Tag.String,
                              seqOffset + partOffset,
                              partLen,
                              "PML Intro",
@@ -423,8 +423,8 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                showElement(PrnParseConstants.ePMLSeqType.RequestAction,
-                             PMLDataTypes.eTag.Unknown,
+                showElement(PrnParseConstants.PMLSeqType.RequestAction,
+                             PMLDataTypes.Tag.Unknown,
                              seqOffset + partOffset,
                              partLen,
                              "PML Request",
@@ -450,12 +450,12 @@ namespace PCLParaphernalia
                         dataLen = ((crntByte & 0x03) * 256) +
                                     _buf[seqOffset + partOffset + 1];
 
-                        PMLDataTypes.checkTag(dataType, ref tagDesc);
+                        PMLDataTypes.CheckTag(dataType, ref tagDesc);
 
                         tagDesc = tagDesc + " / " + dataLen;
 
-                        showElement(PrnParseConstants.ePMLSeqType.RequestTypeLen,
-                                     PMLDataTypes.eTag.Unknown,
+                        showElement(PrnParseConstants.PMLSeqType.RequestTypeLen,
+                                     PMLDataTypes.Tag.Unknown,
                                      seqOffset + partOffset,
                                      partLen,
                                      "PML Data Type/Length",
@@ -470,12 +470,12 @@ namespace PCLParaphernalia
                         }
                         else
                         {
-                            if (dataType == (byte)PMLDataTypes.eTag.String)
+                            if (dataType == (byte)PMLDataTypes.Tag.String)
                             {
                                 partLen = 2;
 
-                                showElement(PrnParseConstants.ePMLSeqType.RequestData,
-                                             PMLDataTypes.eTag.StringHddr,
+                                showElement(PrnParseConstants.PMLSeqType.RequestData,
+                                             PMLDataTypes.Tag.StringHddr,
                                              seqOffset + partOffset,
                                              partLen,
                                              "         Symbol Set",
@@ -487,8 +487,8 @@ namespace PCLParaphernalia
 
                             partLen = dataLen;
 
-                            showElement(PrnParseConstants.ePMLSeqType.RequestData,
-                                         (PMLDataTypes.eTag)dataType,
+                            showElement(PrnParseConstants.PMLSeqType.RequestData,
+                                         (PMLDataTypes.Tag)dataType,
                                          seqOffset + partOffset,
                                          partLen,
                                          "         Value",
@@ -503,9 +503,9 @@ namespace PCLParaphernalia
                         partOffset = seqLen + 1;
 
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.MsgWarning,
+                            PrnParseRowTypes.Type.MsgWarning,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "*** Warning ***",
                             string.Empty,
@@ -532,8 +532,8 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                showElement(PrnParseConstants.ePMLSeqType.ReplyAction,
-                             PMLDataTypes.eTag.Unknown,
+                showElement(PrnParseConstants.PMLSeqType.ReplyAction,
+                             PMLDataTypes.Tag.Unknown,
                              seqOffset + partOffset,
                              partLen,
                              "PML Reply",
@@ -556,8 +556,8 @@ namespace PCLParaphernalia
 
                     PMLOutcomes.checkTag(crntByte, ref tagDesc);
 
-                    showElement(PrnParseConstants.ePMLSeqType.ReplyOutcome,
-                                 PMLDataTypes.eTag.Unknown,
+                    showElement(PrnParseConstants.PMLSeqType.ReplyOutcome,
+                                 PMLDataTypes.Tag.Unknown,
                                  seqOffset + partOffset,
                                  partLen,
                                  "PML Outcome",
@@ -584,12 +584,12 @@ namespace PCLParaphernalia
                         dataLen = ((crntByte & 0x03) * 256) +
                                     _buf[seqOffset + partOffset + 1];
 
-                        PMLDataTypes.checkTag(dataType, ref tagDesc);
+                        PMLDataTypes.CheckTag(dataType, ref tagDesc);
 
                         tagDesc = tagDesc + " / " + dataLen;
 
-                        showElement(PrnParseConstants.ePMLSeqType.RequestTypeLen,
-                                     PMLDataTypes.eTag.Unknown,
+                        showElement(PrnParseConstants.PMLSeqType.RequestTypeLen,
+                                     PMLDataTypes.Tag.Unknown,
                                      seqOffset + partOffset,
                                      partLen,
                                      "PML Data Type/Length",
@@ -604,12 +604,12 @@ namespace PCLParaphernalia
                         }
                         else if (dataLen != 0)
                         {
-                            if (dataType == (byte)PMLDataTypes.eTag.String)
+                            if (dataType == (byte)PMLDataTypes.Tag.String)
                             {
                                 partLen = 2;
 
-                                showElement(PrnParseConstants.ePMLSeqType.RequestData,
-                                             PMLDataTypes.eTag.StringHddr,
+                                showElement(PrnParseConstants.PMLSeqType.RequestData,
+                                             PMLDataTypes.Tag.StringHddr,
                                              seqOffset + partOffset,
                                              partLen,
                                              "         Symbol Set",
@@ -621,8 +621,8 @@ namespace PCLParaphernalia
 
                             partLen = dataLen;
 
-                            showElement(PrnParseConstants.ePMLSeqType.RequestData,
-                                         (PMLDataTypes.eTag)dataType,
+                            showElement(PrnParseConstants.PMLSeqType.RequestData,
+                                         (PMLDataTypes.Tag)dataType,
                                          seqOffset + partOffset,
                                          partLen,
                                          "         Value",
@@ -637,9 +637,9 @@ namespace PCLParaphernalia
                         partOffset = seqLen + 1;
 
                         PrnParseCommon.addTextRow(
-                            PrnParseRowTypes.eType.MsgWarning,
+                            PrnParseRowTypes.Type.MsgWarning,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "*** Warning ***",
                             string.Empty,
@@ -671,8 +671,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void showElement(PrnParseConstants.ePMLSeqType seqType,
-                                  PMLDataTypes.eTag dataType,
+        private void showElement(PrnParseConstants.PMLSeqType seqType,
+                                  PMLDataTypes.Tag dataType,
                                   int seqOffset,
                                   int seqLen,
                                   string typeText,
@@ -720,15 +720,15 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            if (seqType == PrnParseConstants.ePMLSeqType.RequestAction)
+            if (seqType == PrnParseConstants.PMLSeqType.RequestAction)
                 sliceLen = 1;           // PML Request action type
-            else if (seqType == PrnParseConstants.ePMLSeqType.RequestTypeLen)
+            else if (seqType == PrnParseConstants.PMLSeqType.RequestTypeLen)
                 sliceLen = 2;           // PML Request data type/length bytes
-            else if (seqType == PrnParseConstants.ePMLSeqType.RequestData)
+            else if (seqType == PrnParseConstants.PMLSeqType.RequestData)
                 sliceLen = maxSlice;    // PML Request data
-            else if (seqType == PrnParseConstants.ePMLSeqType.ReplyAction)
+            else if (seqType == PrnParseConstants.PMLSeqType.ReplyAction)
                 sliceLen = 1;           // PML Reply action type
-            else if (seqType == PrnParseConstants.ePMLSeqType.Hddr)
+            else if (seqType == PrnParseConstants.PMLSeqType.Hddr)
                 sliceLen = 4;           // PML Header (within embedded PCL)
             else
                 sliceLen = 1;
@@ -775,10 +775,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if ((seqType == PrnParseConstants.ePMLSeqType.RequestAction) ||
-                    (seqType == PrnParseConstants.ePMLSeqType.RequestTypeLen) ||
-                    (seqType == PrnParseConstants.ePMLSeqType.ReplyAction) ||
-                    (seqType == PrnParseConstants.ePMLSeqType.ReplyOutcome))
+                if ((seqType == PrnParseConstants.PMLSeqType.RequestAction) ||
+                    (seqType == PrnParseConstants.PMLSeqType.RequestTypeLen) ||
+                    (seqType == PrnParseConstants.PMLSeqType.ReplyAction) ||
+                    (seqType == PrnParseConstants.PMLSeqType.ReplyOutcome))
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -847,9 +847,9 @@ namespace PCLParaphernalia
                     if (firstLine)
                     {
                         PrnParseCommon.addDataRow(
-                            PrnParseRowTypes.eType.PMLSeq,
+                            PrnParseRowTypes.Type.PMLSeq,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             _indxOffsetFormat,
                             _fileOffset + chunkOffset,
                             _analysisLevel,
@@ -860,9 +860,9 @@ namespace PCLParaphernalia
                     else
                     {
                         PrnParseCommon.addDataRow(
-                            PrnParseRowTypes.eType.PMLSeq,
+                            PrnParseRowTypes.Type.PMLSeq,
                             _table,
-                            PrnParseConstants.eOvlShow.None,
+                            PrnParseConstants.OvlShow.None,
                             _indxOffsetFormat,
                             _fileOffset + chunkOffset,
                             _analysisLevel,
@@ -920,7 +920,7 @@ namespace PCLParaphernalia
             bool firstLine,
             bool firstSlice,
             bool lastSlice,
-            PMLDataTypes.eTag dataType)
+            PMLDataTypes.Tag dataType)
         {
             StringBuilder decode = new StringBuilder();
 
@@ -928,7 +928,7 @@ namespace PCLParaphernalia
 
             int itemLen = 0;
 
-            if (dataType == PMLDataTypes.eTag.ObjectID)
+            if (dataType == PMLDataTypes.Tag.ObjectID)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1000,7 +1000,7 @@ namespace PCLParaphernalia
 
                 heldItemLen = itemLen;
             }
-            else if (dataType == PMLDataTypes.eTag.Enumeration)
+            else if (dataType == PMLDataTypes.Tag.Enumeration)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1051,7 +1051,7 @@ namespace PCLParaphernalia
                     chunkOp.Append(tempStr);
                 }
             }
-            else if (dataType == PMLDataTypes.eTag.Sint)
+            else if (dataType == PMLDataTypes.Tag.Sint)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1105,7 +1105,7 @@ namespace PCLParaphernalia
                     chunkOp.Append(tempStr);
                 }
             }
-            else if (dataType == PMLDataTypes.eTag.Real)
+            else if (dataType == PMLDataTypes.Tag.Real)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1159,7 +1159,7 @@ namespace PCLParaphernalia
                     chunkOp.Append(tempStr);
                 }
             }
-            else if (dataType == PMLDataTypes.eTag.StringHddr)
+            else if (dataType == PMLDataTypes.Tag.StringHddr)
             {
                 //--------------------------------------------------------//
                 //                                                        //
@@ -1197,7 +1197,7 @@ namespace PCLParaphernalia
                                          ix2.ToString() +
                                          (char)ix3 + ")");
             }
-            else if (dataType == PMLDataTypes.eTag.String)
+            else if (dataType == PMLDataTypes.Tag.String)
             {
                 //--------------------------------------------------------//
                 //                                                        //
@@ -1216,14 +1216,14 @@ namespace PCLParaphernalia
                 {
                     k = chunkOffset + chunkIpLen + j;
 
-                    chunkOp.Append(PrnParseData.processByte(
+                    chunkOp.Append(PrnParseData.ProcessByte(
                         _buf[k],
                         _indxCharSetSubAct,
                         (byte)_valCharSetSubCode,
                         _indxCharSetName));
                 }
             }
-            else if (dataType == PMLDataTypes.eTag.Binary)
+            else if (dataType == PMLDataTypes.Tag.Binary)
             {
                 //--------------------------------------------------------//
                 //                                                        //
@@ -1244,7 +1244,7 @@ namespace PCLParaphernalia
 
                 chunkOp.Append(seq);
             }
-            else if (dataType == PMLDataTypes.eTag.ErrorCode)
+            else if (dataType == PMLDataTypes.Tag.ErrorCode)
             {
                 //--------------------------------------------------------//
                 //                                                        //
@@ -1269,7 +1269,7 @@ namespace PCLParaphernalia
                     chunkOp.Append(tempStr);
                 }
             }
-            else if (dataType == PMLDataTypes.eTag.NullValue)
+            else if (dataType == PMLDataTypes.Tag.NullValue)
             {
                 //--------------------------------------------------------//
                 //                                                        //
@@ -1282,7 +1282,7 @@ namespace PCLParaphernalia
                 seqError = true;
                 chunkOp.Append("*** non-zero-length Null Value ***");
             }
-            else if (dataType == PMLDataTypes.eTag.Collection)
+            else if (dataType == PMLDataTypes.Tag.Collection)
             {
                 //--------------------------------------------------------//
                 //                                                        //
@@ -1323,8 +1323,8 @@ namespace PCLParaphernalia
             {
                 chunkComplete = true;
 
-                if ((dataType == PMLDataTypes.eTag.Binary) ||
-                    (dataType == PMLDataTypes.eTag.Collection))
+                if ((dataType == PMLDataTypes.Tag.Binary) ||
+                    (dataType == PMLDataTypes.Tag.Collection))
                 {
                     chunkOp.Append("]");
                 }

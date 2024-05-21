@@ -23,7 +23,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private enum eTxtModType : byte
+        private enum TxtModType : byte
         {
             Chr,
             Pat,
@@ -36,8 +36,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private eTxtModType _indxTxtModTypePCL;
-        private eTxtModType _indxTxtModTypePCLXL;
+        private TxtModType _indxTxtModTypePCL;
+        private TxtModType _indxTxtModTypePCLXL;
 
         private bool _flagTxtModFormAsMacroPCL;
         private bool _flagTxtModFormAsMacroPCLXL;
@@ -51,28 +51,28 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseDataTxtMod()
+        private void InitialiseDataTxtMod()
         {
             lbOrientation.Visibility = Visibility.Hidden;
             cbOrientation.Visibility = Visibility.Hidden;
 
-            if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
-                if (_indxTxtModTypePCL == eTxtModType.Chr)
+                if (_indxTxtModTypePCL == TxtModType.Chr)
                 {
                     rbTxtModTypeChr.IsChecked = true;
                 }
-                else if (_indxTxtModTypePCL == eTxtModType.Pat)
+                else if (_indxTxtModTypePCL == TxtModType.Pat)
                 {
                     rbTxtModTypePat.IsChecked = true;
                 }
-                else if (_indxTxtModTypePCL == eTxtModType.Rot)
+                else if (_indxTxtModTypePCL == TxtModType.Rot)
                 {
                     rbTxtModTypeRot.IsChecked = true;
                 }
                 else
                 {
-                    _indxTxtModTypePCL = eTxtModType.Chr;
+                    _indxTxtModTypePCL = TxtModType.Chr;
 
                     rbTxtModTypeChr.IsChecked = true;
                 }
@@ -81,21 +81,21 @@ namespace PCLParaphernalia
             }
             else
             {
-                if (_indxTxtModTypePCLXL == eTxtModType.Chr)
+                if (_indxTxtModTypePCLXL == TxtModType.Chr)
                 {
                     rbTxtModTypeChr.IsChecked = true;
                 }
-                else if (_indxTxtModTypePCLXL == eTxtModType.Pat)
+                else if (_indxTxtModTypePCLXL == TxtModType.Pat)
                 {
                     rbTxtModTypePat.IsChecked = true;
                 }
-                else if (_indxTxtModTypePCLXL == eTxtModType.Rot)
+                else if (_indxTxtModTypePCLXL == TxtModType.Rot)
                 {
                     rbTxtModTypeRot.IsChecked = true;
                 }
                 else
                 {
-                    _indxTxtModTypePCLXL = eTxtModType.Chr;
+                    _indxTxtModTypePCLXL = TxtModType.Chr;
 
                     rbTxtModTypeChr.IsChecked = true;
                 }
@@ -103,7 +103,7 @@ namespace PCLParaphernalia
                 chkOptFormAsMacro.IsChecked = _flagTxtModFormAsMacroPCL;
             }
 
-            initialiseDescTxtMod();
+            InitialiseDescTxtMod();
         }
 
         //--------------------------------------------------------------------//
@@ -115,11 +115,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseDescTxtMod()
+        private void InitialiseDescTxtMod()
         {
-            if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
-                if (_indxTxtModTypePCL == eTxtModType.Chr)
+                if (_indxTxtModTypePCL == TxtModType.Chr)
                 {
                     txtTxtModDesc.Text =
                         "Most font embellishments, apart from the standard" +
@@ -141,7 +141,7 @@ namespace PCLParaphernalia
                         "\r\n" +
                         "These pseudo-enhancements are not demonstrated here";
                 }
-                else if (_indxTxtModTypePCL == eTxtModType.Pat)
+                else if (_indxTxtModTypePCL == TxtModType.Pat)
                 {
                     txtTxtModDesc.Text =
                         "Shows samples of Black, White and Patterned text," +
@@ -159,7 +159,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                if (_indxTxtModTypePCLXL == eTxtModType.Chr)
+                if (_indxTxtModTypePCLXL == TxtModType.Chr)
                 {
                     txtTxtModDesc.Text =
                         "PCL XL supports several different character" +
@@ -169,7 +169,7 @@ namespace PCLParaphernalia
                         " - Scale (separate X and Y values)\r\n" +
                         " - Shear (separate X and Y values)";
                 }
-                else if (_indxTxtModTypePCLXL == eTxtModType.Pat)
+                else if (_indxTxtModTypePCLXL == TxtModType.Pat)
                 {
                     txtTxtModDesc.Text =
                         "Shows samples of Black, White and Patterned text," +
@@ -198,7 +198,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsLoadDataTxtMod()
+        public void MetricsLoadDataTxtMod()
         {
             int tmpInt = 0;
 
@@ -207,24 +207,24 @@ namespace PCLParaphernalia
                 ref tmpInt,
                 ref _flagTxtModFormAsMacroPCL);
 
-            if (tmpInt == (int)eTxtModType.Pat)
-                _indxTxtModTypePCL = eTxtModType.Pat;
-            else if (tmpInt == (int)eTxtModType.Rot)
-                _indxTxtModTypePCL = eTxtModType.Rot;
+            if (tmpInt == (int)TxtModType.Pat)
+                _indxTxtModTypePCL = TxtModType.Pat;
+            else if (tmpInt == (int)TxtModType.Rot)
+                _indxTxtModTypePCL = TxtModType.Rot;
             else
-                _indxTxtModTypePCL = eTxtModType.Chr;
+                _indxTxtModTypePCL = TxtModType.Chr;
 
             ToolMiscSamplesPersist.loadDataTypeTxtMod(
                 "PCLXL",
                 ref tmpInt,
                 ref _flagTxtModFormAsMacroPCLXL);
 
-            if (tmpInt == (int)eTxtModType.Pat)
-                _indxTxtModTypePCLXL = eTxtModType.Pat;
-            else if (tmpInt == (int)eTxtModType.Rot)
-                _indxTxtModTypePCLXL = eTxtModType.Rot;
+            if (tmpInt == (int)TxtModType.Pat)
+                _indxTxtModTypePCLXL = TxtModType.Pat;
+            else if (tmpInt == (int)TxtModType.Rot)
+                _indxTxtModTypePCLXL = TxtModType.Rot;
             else
-                _indxTxtModTypePCLXL = eTxtModType.Chr;
+                _indxTxtModTypePCLXL = TxtModType.Chr;
         }
 
         //--------------------------------------------------------------------//
@@ -236,7 +236,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsSaveDataTxtMod()
+        public void MetricsSaveDataTxtMod()
         {
             ToolMiscSamplesPersist.saveDataTypeTxtMod(
                 "PCL",
@@ -261,12 +261,12 @@ namespace PCLParaphernalia
         private void rbTxtModTypeChr_Click(object sender,
                                             RoutedEventArgs e)
         {
-            if (_crntPDL == ToolCommonData.ePrintLang.PCL)
-                _indxTxtModTypePCL = eTxtModType.Chr;
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
+                _indxTxtModTypePCL = TxtModType.Chr;
             else
-                _indxTxtModTypePCLXL = eTxtModType.Chr;
+                _indxTxtModTypePCLXL = TxtModType.Chr;
 
-            initialiseDescTxtMod();
+            InitialiseDescTxtMod();
         }
 
         //--------------------------------------------------------------------//
@@ -281,12 +281,12 @@ namespace PCLParaphernalia
         private void rbTxtModTypePat_Click(object sender,
                                             RoutedEventArgs e)
         {
-            if (_crntPDL == ToolCommonData.ePrintLang.PCL)
-                _indxTxtModTypePCL = eTxtModType.Pat;
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
+                _indxTxtModTypePCL = TxtModType.Pat;
             else
-                _indxTxtModTypePCLXL = eTxtModType.Pat;
+                _indxTxtModTypePCLXL = TxtModType.Pat;
 
-            initialiseDescTxtMod();
+            InitialiseDescTxtMod();
         }
 
         //--------------------------------------------------------------------//
@@ -301,12 +301,12 @@ namespace PCLParaphernalia
         private void rbTxtModTypeRot_Click(object sender,
                                             RoutedEventArgs e)
         {
-            if (_crntPDL == ToolCommonData.ePrintLang.PCL)
-                _indxTxtModTypePCL = eTxtModType.Rot;
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
+                _indxTxtModTypePCL = TxtModType.Rot;
             else
-                _indxTxtModTypePCLXL = eTxtModType.Rot;
+                _indxTxtModTypePCLXL = TxtModType.Rot;
 
-            initialiseDescTxtMod();
+            InitialiseDescTxtMod();
         }
 
         //--------------------------------------------------------------------//
@@ -318,15 +318,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setFlagTxtModFormAsMacro(
-            bool setFlag,
-            ToolCommonData.ePrintLang crntPDL)
+        private void SetFlagTxtModFormAsMacro(bool setFlag, ToolCommonData.PrintLang crntPDL)
         {
-            if (crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 _flagTxtModFormAsMacroPCL = setFlag;
             }
-            else if (crntPDL == ToolCommonData.ePrintLang.PCLXL)
+            else if (crntPDL == ToolCommonData.PrintLang.PCLXL)
             {
                 _flagTxtModFormAsMacroPCLXL = setFlag;
             }

@@ -51,7 +51,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PCLFont(short fontIndex,
-                        PCLFonts.eFontType fontType,
+                        PCLFonts.FontType fontType,
                         string fontName,
                         bool bound,
                         bool proportional,
@@ -149,7 +149,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getHPGL2FontDef(PCLFonts.eVariant variant,
+        public string getHPGL2FontDef(PCLFonts.Variant variant,
                                        ushort symbolSet,
                                        double height,
                                        double pitch)
@@ -199,17 +199,17 @@ namespace PCLParaphernalia
                 cmd.Append(",4,").Append(_pointSize);
             }
 
-            if (variant == PCLFonts.eVariant.Italic)
+            if (variant == PCLFonts.Variant.Italic)
             {
                 cmd.Append(",5,").Append(_styleItalic);
                 cmd.Append(",6,").Append(_weightItalic);
             }
-            else if (variant == PCLFonts.eVariant.Bold)
+            else if (variant == PCLFonts.Variant.Bold)
             {
                 cmd.Append(",5,").Append(_styleBold);
                 cmd.Append(",6,").Append(_weightBold);
             }
-            else if (variant == PCLFonts.eVariant.BoldItalic)
+            else if (variant == PCLFonts.Variant.BoldItalic)
             {
                 cmd.Append(",5,").Append(_styleBoldItalic);
                 cmd.Append(",6,").Append(_weightBoldItalic);
@@ -254,8 +254,8 @@ namespace PCLParaphernalia
         {
             bool presetFont = false;
 
-            if ((Type == PCLFonts.eFontType.PresetTypeface) ||
-                (Type == PCLFonts.eFontType.PresetFamily))
+            if ((Type == PCLFonts.FontType.PresetTypeface) ||
+                (Type == PCLFonts.FontType.PresetFamily))
             {
                 presetFont = true;
                 typeface = Typeface;
@@ -279,7 +279,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getPCLFontSelect(PCLFonts.eVariant variant,
+        public string getPCLFontSelect(PCLFonts.Variant variant,
                                         double height,
                                         double pitch)
         {
@@ -330,17 +330,17 @@ namespace PCLParaphernalia
                 }
             }
 
-            if (variant == PCLFonts.eVariant.Italic)
+            if (variant == PCLFonts.Variant.Italic)
             {
                 seq += _styleItalic.ToString() + "s" +
                        _weightItalic.ToString() + "b";
             }
-            else if (variant == PCLFonts.eVariant.Bold)
+            else if (variant == PCLFonts.Variant.Bold)
             {
                 seq += _styleBold.ToString() + "s" +
                        _weightBold.ToString() + "b";
             }
-            else if (variant == PCLFonts.eVariant.BoldItalic)
+            else if (variant == PCLFonts.Variant.BoldItalic)
             {
                 seq += _styleBoldItalic.ToString() + "s" +
                        _weightBoldItalic.ToString() + "b";
@@ -425,13 +425,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort getPCLStyle(PCLFonts.eVariant variant)
+        public ushort getPCLStyle(PCLFonts.Variant variant)
         {
-            if (variant == PCLFonts.eVariant.Italic)
+            if (variant == PCLFonts.Variant.Italic)
                 return _styleItalic;
-            else if (variant == PCLFonts.eVariant.Bold)
+            else if (variant == PCLFonts.Variant.Bold)
                 return _styleBold;
-            else if (variant == PCLFonts.eVariant.BoldItalic)
+            else if (variant == PCLFonts.Variant.BoldItalic)
                 return _styleBoldItalic;
             else
                 return _styleRegular;
@@ -446,13 +446,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public short getPCLWeight(PCLFonts.eVariant variant)
+        public short getPCLWeight(PCLFonts.Variant variant)
         {
-            if (variant == PCLFonts.eVariant.Italic)
+            if (variant == PCLFonts.Variant.Italic)
                 return _weightItalic;
-            else if (variant == PCLFonts.eVariant.Bold)
+            else if (variant == PCLFonts.Variant.Bold)
                 return _weightBold;
-            else if (variant == PCLFonts.eVariant.BoldItalic)
+            else if (variant == PCLFonts.Variant.BoldItalic)
                 return _weightBoldItalic;
             else
                 return _weightRegular;
@@ -480,13 +480,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getPCLXLName(PCLFonts.eVariant variant)
+        public string getPCLXLName(PCLFonts.Variant variant)
         {
-            if (variant == PCLFonts.eVariant.Italic)
+            if (variant == PCLFonts.Variant.Italic)
                 return _nameItalic;
-            else if (variant == PCLFonts.eVariant.Bold)
+            else if (variant == PCLFonts.Variant.Bold)
                 return _nameBold;
-            else if (variant == PCLFonts.eVariant.BoldItalic)
+            else if (variant == PCLFonts.Variant.BoldItalic)
                 return _nameBoldItalic;
             else
                 return _nameRegular;
@@ -568,9 +568,9 @@ namespace PCLParaphernalia
 
         public bool isPresetFont()
         {
-            return (Type != PCLFonts.eFontType.Custom) &&
-                (Type != PCLFonts.eFontType.Download) &&
-                (Type != PCLFonts.eFontType.PrnDisk);
+            return (Type != PCLFonts.FontType.Custom) &&
+                (Type != PCLFonts.FontType.Download) &&
+                (Type != PCLFonts.FontType.PrnDisk);
         }
 
         //--------------------------------------------------------------------//
@@ -854,7 +854,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLFonts.eFontType Type { get; }
+        public PCLFonts.FontType Type { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -920,13 +920,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool variantAvailable(PCLFonts.eVariant variant)
+        public bool variantAvailable(PCLFonts.Variant variant)
         {
-            if (variant == PCLFonts.eVariant.Italic)
+            if (variant == PCLFonts.Variant.Italic)
                 return Var_Italic;
-            else if (variant == PCLFonts.eVariant.Bold)
+            else if (variant == PCLFonts.Variant.Bold)
                 return Var_Bold;
-            else if (variant == PCLFonts.eVariant.BoldItalic)
+            else if (variant == PCLFonts.Variant.BoldItalic)
                 return Var_BoldItalic;
             else
                 return Var_Regular;

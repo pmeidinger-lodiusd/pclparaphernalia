@@ -116,13 +116,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ToolSymbolSetGenerate(ref ToolCommonData.ePrintLang crntPDL)
+        public ToolSymbolSetGenerate(ref ToolCommonData.PrintLang crntPDL)
         {
             InitializeComponent();
 
             initialise();
 
-            crntPDL = ToolCommonData.ePrintLang.PCL;
+            crntPDL = ToolCommonData.PrintLang.PCL;
         }
 
         //--------------------------------------------------------------------//
@@ -316,11 +316,11 @@ namespace PCLParaphernalia
         {
             bool flagOptRptWrap = false;
 
-            ReportCore.eRptFileFmt rptFileFmt = ReportCore.eRptFileFmt.NA;
-            ReportCore.eRptChkMarks rptChkMarks = ReportCore.eRptChkMarks.NA;
+            ReportCore.RptFileFmt rptFileFmt = ReportCore.RptFileFmt.NA;
+            ReportCore.RptChkMarks rptChkMarks = ReportCore.RptChkMarks.NA;
 
-            TargetCore.metricsReturnFileRpt(
-                ToolCommonData.eToolIds.SymbolSetGenerate,
+            TargetCore.MetricsReturnFileRpt(
+                ToolCommonData.ToolIds.SymbolSetGenerate,
                 ref rptFileFmt,
                 ref rptChkMarks,    // not used by this tool //
                 ref flagOptRptWrap);
@@ -676,9 +676,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void giveCrntPDL(ref ToolCommonData.ePrintLang crntPDL)
+        public void giveCrntPDL(ref ToolCommonData.PrintLang crntPDL)
         {
-            crntPDL = ToolCommonData.ePrintLang.PCL;
+            crntPDL = ToolCommonData.PrintLang.PCL;
         }
 
         //--------------------------------------------------------------------//

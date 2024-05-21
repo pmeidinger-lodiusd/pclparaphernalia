@@ -32,7 +32,7 @@ namespace PCLParaphernalia
 
         private static void unicodeMap_10V()
         {
-            const eSymSetMapId mapId = eSymSetMapId.map_10V;
+            const SymSetMapId mapId = SymSetMapId.map_10V;
 
             const int rangeCt = 3;
 

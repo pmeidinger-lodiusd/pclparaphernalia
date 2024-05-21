@@ -25,7 +25,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public enum eTag : byte
+        public enum Tag : byte
         {
             AllObjectTypes = 0x1d,
             ArcDirection = 0x41,
@@ -170,7 +170,7 @@ namespace PCLParaphernalia
 
         static PCLXLAttributes()
         {
-            populateTable();
+            PopulateTable();
         }
 
         //--------------------------------------------------------------------//
@@ -182,7 +182,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkTag(
+        public static bool CheckTag(
             int tagLen1,
             byte tagA,
             byte tagB,
@@ -193,8 +193,8 @@ namespace PCLParaphernalia
             ref bool flagUintTxt,
             ref bool flagValIsLen,
             ref bool flagValIsPCL,
-            ref PrnParseConstants.eActPCLXL actionType,
-            ref PrnParseConstants.eOvlAct makeOvlAct,
+            ref PrnParseConstants.ActPCLXL actionType,
+            ref PrnParseConstants.OvlAct makeOvlAct,
             ref string description)
         {
             bool seqKnown;
@@ -237,9 +237,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCounts(DataTable table,
-                                               bool incUsedSeqsOnly,
-                                               bool excUnusedResTags)
+        public static void DisplayStatsCounts(DataTable table, bool incUsedSeqsOnly, bool excUnusedResTags)
         {
             int count = 0;
 
@@ -263,7 +261,7 @@ namespace PCLParaphernalia
             {
                 if (!hddrWritten)
                 {
-                    displayStatsCountsHddr(table);
+                    DisplayStatsCountsHddr(table);
                     hddrWritten = true;
                 }
 
@@ -303,7 +301,7 @@ namespace PCLParaphernalia
                 {
                     if (!hddrWritten)
                     {
-                        displayStatsCountsHddr(table);
+                        DisplayStatsCountsHddr(table);
                         hddrWritten = true;
                     }
 
@@ -329,7 +327,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCountsHddr(DataTable table)
+        public static void DisplayStatsCountsHddr(DataTable table)
         {
             //----------------------------------------------------------------//
 
@@ -373,8 +371,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int displayTags(DataGrid grid,
-                                        bool incResTags)
+        public static int DisplayTags(DataGrid grid, bool incResTags)
         {
             int count = 0;
 
@@ -405,9 +402,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getDesc(byte tagA,
-                                     byte tagB,
-                                     int tagLen)
+        public static string GetDesc(byte tagA, byte tagB, int tagLen)
         {
             int key = (((tagLen * 256) + tagA) * 256) + tagB;
 
@@ -423,10 +418,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void incrementStatsCount(int tagLen,
-                                                byte tagByteA,
-                                                byte tagByteB,
-                                                int level)
+        public static void IncrementStatsCount(int tagLen, byte tagByteA, byte tagByteB, int level)
         {
             PCLXLAttribute tag;
 
@@ -452,7 +444,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void populateTable()
+        private static void PopulateTable()
         {
             const bool flagNone = false;
             const bool flagReserved = true;
@@ -477,1028 +469,1028 @@ namespace PCLParaphernalia
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "*** Unknown tag ***");
 
-            tagA = (byte)eTag.PaletteDepth;                          // 0x02 //
+            tagA = (byte)Tag.PaletteDepth;                          // 0x02 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "PaletteDepth"));
 
-            tagA = (byte)eTag.ColorSpace;                            // 0x03 //
+            tagA = (byte)Tag.ColorSpace;                            // 0x03 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "ColorSpace"));
 
-            tagA = (byte)eTag.NullBrush;                             // 0x04 //
+            tagA = (byte)Tag.NullBrush;                             // 0x04 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "NullBrush"));
 
-            tagA = (byte)eTag.NullPen;                               // 0x05 //
+            tagA = (byte)Tag.NullPen;                               // 0x05 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "NullPen"));
 
-            tagA = (byte)eTag.PaletteData;                           // 0x06 //
+            tagA = (byte)Tag.PaletteData;                           // 0x06 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "PaletteData"));
 
-            tagA = (byte)eTag.PaletteIndex;                          // 0x07 //
+            tagA = (byte)Tag.PaletteIndex;                          // 0x07 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "PaletteIndex"));
 
-            tagA = (byte)eTag.PatternSelectID;                       // 0x08 //
+            tagA = (byte)Tag.PatternSelectID;                       // 0x08 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "PatternSelectID"));
 
-            tagA = (byte)eTag.GrayLevel;                             // 0x09 //
+            tagA = (byte)Tag.GrayLevel;                             // 0x09 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "GrayLevel"));
 
-            tagA = (byte)eTag.RGBColor;                              // 0x0b //
+            tagA = (byte)Tag.RGBColor;                              // 0x0b //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "RGBColor"));
 
-            tagA = (byte)eTag.PatternOrigin;                         // 0x0c //
+            tagA = (byte)Tag.PatternOrigin;                         // 0x0c //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "PatternOrigin"));
 
-            tagA = (byte)eTag.NewDestinationSize;                    // 0x0d //
+            tagA = (byte)Tag.NewDestinationSize;                    // 0x0d //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "NewDestinationSize"));
 
-            tagA = (byte)eTag.PrimaryArray;                          // 0x0e //
+            tagA = (byte)Tag.PrimaryArray;                          // 0x0e //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "PrimaryArray"));
 
-            tagA = (byte)eTag.PrimaryDepth;                          // 0x0f //
+            tagA = (byte)Tag.PrimaryDepth;                          // 0x0f //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "PrimaryDepth"));
 
-            tagA = (byte)eTag.AllObjectTypes;                        // 0x1d //
+            tagA = (byte)Tag.AllObjectTypes;                        // 0x1d //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagOperEnum,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "AllObjectTypes"));
 
-            tagA = (byte)eTag.TextObjects;                           // 0x1e //
+            tagA = (byte)Tag.TextObjects;                           // 0x1e //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagOperEnum,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "TextObjects"));
 
-            tagA = (byte)eTag.VectorObjects;                         // 0x1f //
+            tagA = (byte)Tag.VectorObjects;                         // 0x1f //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagOperEnum,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "VectorObjects"));
 
-            tagA = (byte)eTag.RasterObjects;                         // 0x20 //
+            tagA = (byte)Tag.RasterObjects;                         // 0x20 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagOperEnum,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "RasterObjects"));
 
-            tagA = (byte)eTag.DeviceMatrix;                          // 0x21 //
+            tagA = (byte)Tag.DeviceMatrix;                          // 0x21 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "DeviceMatrix"));
 
-            tagA = (byte)eTag.DitherMatrixDataType;                  // 0x22 //
+            tagA = (byte)Tag.DitherMatrixDataType;                  // 0x22 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "DitherMatrixDataType"));
 
-            tagA = (byte)eTag.DitherOrigin;                          // 0x23 //
+            tagA = (byte)Tag.DitherOrigin;                          // 0x23 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "DitherOrigin"));
 
-            tagA = (byte)eTag.MediaDestination;                      // 0x24 //
+            tagA = (byte)Tag.MediaDestination;                      // 0x24 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "MediaDestination"));
 
-            tagA = (byte)eTag.MediaSize;                             // 0x25 //
+            tagA = (byte)Tag.MediaSize;                             // 0x25 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagUbyteTxt, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "MediaSize"));
 
-            tagA = (byte)eTag.MediaSource;                           // 0x26 //
+            tagA = (byte)Tag.MediaSource;                           // 0x26 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "MediaSource"));
 
-            tagA = (byte)eTag.MediaType;                             // 0x27 //
+            tagA = (byte)Tag.MediaType;                             // 0x27 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagUbyteTxt, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "MediaType"));
 
-            tagA = (byte)eTag.Orientation;                           // 0x28 //
+            tagA = (byte)Tag.Orientation;                           // 0x28 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "Orientation"));
 
-            tagA = (byte)eTag.PageAngle;                             // 0x29 //
+            tagA = (byte)Tag.PageAngle;                             // 0x29 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "PageAngle"));
 
-            tagA = (byte)eTag.PageOrigin;                            // 0x2a //
+            tagA = (byte)Tag.PageOrigin;                            // 0x2a //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "PageOrigin"));
 
-            tagA = (byte)eTag.PageScale;                             // 0x2b //
+            tagA = (byte)Tag.PageScale;                             // 0x2b //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "PageScale"));
 
-            tagA = (byte)eTag.ROP3;                                  // 0x2c //
+            tagA = (byte)Tag.ROP3;                                  // 0x2c //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "ROP3"));
 
-            tagA = (byte)eTag.TxMode;                                // 0x2d //
+            tagA = (byte)Tag.TxMode;                                // 0x2d //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "TxMode"));
 
-            tagA = (byte)eTag.CustomMediaSize;                       // 0x2f //
+            tagA = (byte)Tag.CustomMediaSize;                       // 0x2f //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "CustomMediaSize"));
 
-            tagA = (byte)eTag.CustomMediaSizeUnits;                  // 0x30 //
+            tagA = (byte)Tag.CustomMediaSizeUnits;                  // 0x30 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "CustomMediaSizeUnits"));
 
-            tagA = (byte)eTag.PageCopies;                            // 0x31 //
+            tagA = (byte)Tag.PageCopies;                            // 0x31 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "PageCopies"));
 
-            tagA = (byte)eTag.DitherMatrixSize;                      // 0x32 //
+            tagA = (byte)Tag.DitherMatrixSize;                      // 0x32 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "DitherMatrixSize"));
 
-            tagA = (byte)eTag.DitherMatrixDepth;                     // 0x33 //
+            tagA = (byte)Tag.DitherMatrixDepth;                     // 0x33 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "DitherMatrixDepth"));
 
-            tagA = (byte)eTag.SimplexPageMode;                       // 0x34 //
+            tagA = (byte)Tag.SimplexPageMode;                       // 0x34 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "SimplexPageMode"));
 
-            tagA = (byte)eTag.DuplexPageMode;                        // 0x35 //
+            tagA = (byte)Tag.DuplexPageMode;                        // 0x35 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "DuplexPageMode"));
 
-            tagA = (byte)eTag.DuplexPageSide;                        // 0x36 //
+            tagA = (byte)Tag.DuplexPageSide;                        // 0x36 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "DuplexPageSide"));
 
-            tagA = (byte)eTag.ArcDirection;                          // 0x41 //
+            tagA = (byte)Tag.ArcDirection;                          // 0x41 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "ArcDirection"));
 
-            tagA = (byte)eTag.BoundingBox;                           // 0x42 //
+            tagA = (byte)Tag.BoundingBox;                           // 0x42 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "BoundingBox"));
 
-            tagA = (byte)eTag.DashOffset;                            // 0x43 //
+            tagA = (byte)Tag.DashOffset;                            // 0x43 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "DashOffset"));
 
-            tagA = (byte)eTag.EllipseDimension;                      // 0x44 //
+            tagA = (byte)Tag.EllipseDimension;                      // 0x44 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "EllipseDimension"));
 
-            tagA = (byte)eTag.EndPoint;                              // 0x45 //
+            tagA = (byte)Tag.EndPoint;                              // 0x45 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "EndPoint"));
 
-            tagA = (byte)eTag.FillMode;                              // 0x46 //
+            tagA = (byte)Tag.FillMode;                              // 0x46 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "FillMode"));
 
-            tagA = (byte)eTag.LineCapStyle;                          // 0x47 //
+            tagA = (byte)Tag.LineCapStyle;                          // 0x47 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "LineCapStyle"));
 
-            tagA = (byte)eTag.LineJoinStyle;                         // 0x48 //
+            tagA = (byte)Tag.LineJoinStyle;                         // 0x48 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "LineJoinStyle"));
 
-            tagA = (byte)eTag.MiterLength;                           // 0x49 //
+            tagA = (byte)Tag.MiterLength;                           // 0x49 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "MiterLength"));
 
-            tagA = (byte)eTag.LineDashStyle;                         // 0x4a //
+            tagA = (byte)Tag.LineDashStyle;                         // 0x4a //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "LineDashStyle"));
 
-            tagA = (byte)eTag.PenWidth;                              // 0x4b //
+            tagA = (byte)Tag.PenWidth;                              // 0x4b //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "PenWidth"));
 
-            tagA = (byte)eTag.Point;                                 // 0x4c //
+            tagA = (byte)Tag.Point;                                 // 0x4c //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "Point"));
 
-            tagA = (byte)eTag.NumberOfPoints;                        // 0x4d //
+            tagA = (byte)Tag.NumberOfPoints;                        // 0x4d //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "NumberOfPoints"));
 
-            tagA = (byte)eTag.SolidLine;                             // 0x4e //
+            tagA = (byte)Tag.SolidLine;                             // 0x4e //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "SolidLine"));
 
-            tagA = (byte)eTag.StartPoint;                            // 0x4f //
+            tagA = (byte)Tag.StartPoint;                            // 0x4f //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "StartPoint"));
 
-            tagA = (byte)eTag.PointType;                             // 0x50 //
+            tagA = (byte)Tag.PointType;                             // 0x50 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "PointType"));
 
-            tagA = (byte)eTag.ControlPoint1;                         // 0x51 //
+            tagA = (byte)Tag.ControlPoint1;                         // 0x51 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "ControlPoint1"));
 
-            tagA = (byte)eTag.ControlPoint2;                         // 0x52 //
+            tagA = (byte)Tag.ControlPoint2;                         // 0x52 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "ControlPoint2"));
 
-            tagA = (byte)eTag.ClipRegion;                            // 0x53 //
+            tagA = (byte)Tag.ClipRegion;                            // 0x53 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "ClipRegion"));
 
-            tagA = (byte)eTag.ClipMode;                              // 0x54 //
+            tagA = (byte)Tag.ClipMode;                              // 0x54 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "ClipMode"));
 
-            tagA = (byte)eTag.ColorDepthArray;                       // 0x61 //
+            tagA = (byte)Tag.ColorDepthArray;                       // 0x61 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "ColorDepthArray"));
 
-            tagA = (byte)eTag.ColorDepth;                            // 0x62 //
+            tagA = (byte)Tag.ColorDepth;                            // 0x62 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "ColorDepth"));
 
-            tagA = (byte)eTag.BlockHeight;                           // 0x63 //
+            tagA = (byte)Tag.BlockHeight;                           // 0x63 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "BlockHeight"));
 
-            tagA = (byte)eTag.ColorMapping;                          // 0x64 //
+            tagA = (byte)Tag.ColorMapping;                          // 0x64 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "ColorMapping"));
 
-            tagA = (byte)eTag.CompressMode;                          // 0x65 //
+            tagA = (byte)Tag.CompressMode;                          // 0x65 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "CompressMode"));
 
-            tagA = (byte)eTag.DestinationBox;                        // 0x66 //
+            tagA = (byte)Tag.DestinationBox;                        // 0x66 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "DestinationBox"));
 
-            tagA = (byte)eTag.DestinationSize;                       // 0x67 //
+            tagA = (byte)Tag.DestinationSize;                       // 0x67 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "DestinationSize"));
 
-            tagA = (byte)eTag.PatternPersistence;                    // 0x68 //
+            tagA = (byte)Tag.PatternPersistence;                    // 0x68 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "PatternPersistence"));
 
-            tagA = (byte)eTag.PatternDefineID;                       // 0x69 //
+            tagA = (byte)Tag.PatternDefineID;                       // 0x69 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "PatternDefineID"));
 
-            tagA = (byte)eTag.SourceHeight;                          // 0x6b //
+            tagA = (byte)Tag.SourceHeight;                          // 0x6b //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "SourceHeight"));
 
-            tagA = (byte)eTag.SourceWidth;                           // 0x6c //
+            tagA = (byte)Tag.SourceWidth;                           // 0x6c //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "SourceWidth"));
 
-            tagA = (byte)eTag.StartLine;                             // 0x6d //
+            tagA = (byte)Tag.StartLine;                             // 0x6d //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "StartLine"));
 
-            tagA = (byte)eTag.PadBytesMultiple;                      // 0x6e //
+            tagA = (byte)Tag.PadBytesMultiple;                      // 0x6e //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "PadBytesMultiple"));
 
-            tagA = (byte)eTag.BlockByteLength;                       // 0x6f //
+            tagA = (byte)Tag.BlockByteLength;                       // 0x6f //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "BlockByteLength"));
 
-            tagA = (byte)eTag.NumberOfScanLines;                     // 0x73 //
+            tagA = (byte)Tag.NumberOfScanLines;                     // 0x73 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "NumberOfScanLines"));
 
-            tagA = (byte)eTag.PrintableArea;                         // 0x74 //
+            tagA = (byte)Tag.PrintableArea;                         // 0x74 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "PrintableArea"));
 
-            tagA = (byte)eTag.TumbleMode;                            // 0x75 //
+            tagA = (byte)Tag.TumbleMode;                            // 0x75 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "TumbleMode"));
 
-            tagA = (byte)eTag.ContentOrientation;                    // 0x76 //
+            tagA = (byte)Tag.ContentOrientation;                    // 0x76 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "ContentOrientation"));
 
-            tagA = (byte)eTag.FeedOrientation;                       // 0x77 //
+            tagA = (byte)Tag.FeedOrientation;                       // 0x77 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "FeedOrientation"));
 
-            tagA = (byte)eTag.ColorTreatment;                        // 0x78 //
+            tagA = (byte)Tag.ColorTreatment;                        // 0x78 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "ColorTreatment"));
 
-            tagA = (byte)eTag.CommentData;                           // 0x81 //
+            tagA = (byte)Tag.CommentData;                           // 0x81 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagUbyteTxt, flagUintTxt, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "CommentData"));
 
-            tagA = (byte)eTag.DataOrg;                               // 0x82 //
+            tagA = (byte)Tag.DataOrg;                               // 0x82 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "DataOrg"));
 
-            tagA = (byte)eTag.Measure;                               // 0x86 //
+            tagA = (byte)Tag.Measure;                               // 0x86 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.Measure,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.Measure,
+                                   PrnParseConstants.OvlAct.None,
                                    "Measure"));
 
-            tagA = (byte)eTag.SourceType;                            // 0x88 //
+            tagA = (byte)Tag.SourceType;                            // 0x88 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "SourceType"));
 
-            tagA = (byte)eTag.UnitsPerMeasure;                       // 0x89 //
+            tagA = (byte)Tag.UnitsPerMeasure;                       // 0x89 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.UnitsPerMeasure,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.UnitsPerMeasure,
+                                   PrnParseConstants.OvlAct.None,
                                    "UnitsPerMeasure"));
 
-            tagA = (byte)eTag.QueryKey;                              // 0x8a //
+            tagA = (byte)Tag.QueryKey;                              // 0x8a //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "QueryKey"));
 
-            tagA = (byte)eTag.StreamName;                            // 0x8b //
+            tagA = (byte)Tag.StreamName;                            // 0x8b //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagUbyteTxt, flagUintTxt, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "StreamName"));
 
-            tagA = (byte)eTag.StreamDataLength;                      // 0x8c //
+            tagA = (byte)Tag.StreamDataLength;                      // 0x8c //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "StreamDataLength"));
 
-            tagA = (byte)eTag.PCLSelectFont;                         // 0x8d //
+            tagA = (byte)Tag.PCLSelectFont;                         // 0x8d //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagUbyteTxt, flagNone, flagNone, flagValIsPCL,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "PCLSelectFont"));
 
-            tagA = (byte)eTag.ErrorReport;                           // 0x8f //
+            tagA = (byte)Tag.ErrorReport;                           // 0x8f //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.Remove,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.Remove,
                                    "ErrorReport"));
 
-            tagA = (byte)eTag.VUExtension;                           // 0x91 //
+            tagA = (byte)Tag.VUExtension;                           // 0x91 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "VUExtension"));
 
-            tagA = (byte)eTag.VUDataLength;                          // 0x92 //
+            tagA = (byte)Tag.VUDataLength;                          // 0x92 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagValIsLen, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "VUDataLength"));
 
-            tagA = (byte)eTag.VUAttr1;                               // 0x93 //
+            tagA = (byte)Tag.VUAttr1;                               // 0x93 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "VUAttr1"));
 
-            tagA = (byte)eTag.VUAttr2;                               // 0x94 //
+            tagA = (byte)Tag.VUAttr2;                               // 0x94 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "VUAttr2"));
 
-            tagA = (byte)eTag.VUAttr3;                               // 0x95 //
+            tagA = (byte)Tag.VUAttr3;                               // 0x95 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "VUAttr3"));
 
-            tagA = (byte)eTag.VUAttr4;                               // 0x96 //
+            tagA = (byte)Tag.VUAttr4;                               // 0x96 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "VUAttr4"));
 
-            tagA = (byte)eTag.VUAttr5;                               // 0x97 //
+            tagA = (byte)Tag.VUAttr5;                               // 0x97 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "VUAttr5"));
 
-            tagA = (byte)eTag.VUAttr6;                               // 0x98 //
+            tagA = (byte)Tag.VUAttr6;                               // 0x98 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "VUAttr6"));
 
-            tagA = (byte)eTag.VUAttr7;                               // 0x99 //
+            tagA = (byte)Tag.VUAttr7;                               // 0x99 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "VUAttr7"));
 
-            tagA = (byte)eTag.VUAttr8;                               // 0x9a //
+            tagA = (byte)Tag.VUAttr8;                               // 0x9a //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "VUAttr8"));
 
-            tagA = (byte)eTag.VUAttr9;                               // 0x9b //
+            tagA = (byte)Tag.VUAttr9;                               // 0x9b //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "VUAttr9"));
 
-            tagA = (byte)eTag.VUAttr10;                              // 0x9c //
+            tagA = (byte)Tag.VUAttr10;                              // 0x9c //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "VUAttr10"));
 
-            tagA = (byte)eTag.VUAttr11;                              // 0x9d //
+            tagA = (byte)Tag.VUAttr11;                              // 0x9d //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "VUAttr11"));
 
-            tagA = (byte)eTag.VUAttr12;                              // 0x9e //
+            tagA = (byte)Tag.VUAttr12;                              // 0x9e //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "VUAttr12"));
 
             tagA = 0x9f;                                               // 0x9f //
@@ -1507,188 +1499,188 @@ namespace PCLParaphernalia
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagReserved, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "* Reserved *"));
 
-            tagA = (byte)eTag.EnableDiagnostics;                     // 0xa0 //
+            tagA = (byte)Tag.EnableDiagnostics;                     // 0xa0 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "EnableDiagnostics"));
 
-            tagA = (byte)eTag.CharAngle;                             // 0xa1 //
+            tagA = (byte)Tag.CharAngle;                             // 0xa1 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "CharAngle"));
 
-            tagA = (byte)eTag.CharCode;                              // 0xa2 //
+            tagA = (byte)Tag.CharCode;                              // 0xa2 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "CharCode"));
 
-            tagA = (byte)eTag.CharDataSize;                          // 0xa3 //
+            tagA = (byte)Tag.CharDataSize;                          // 0xa3 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "CharDataSize"));
 
-            tagA = (byte)eTag.CharScale;                             // 0xa4 //
+            tagA = (byte)Tag.CharScale;                             // 0xa4 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "CharScale"));
 
-            tagA = (byte)eTag.CharShear;                             // 0xa5 //
+            tagA = (byte)Tag.CharShear;                             // 0xa5 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "CharShear"));
 
-            tagA = (byte)eTag.CharSize;                              // 0xa6 //
+            tagA = (byte)Tag.CharSize;                              // 0xa6 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.CharSize,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.CharSize,
+                                   PrnParseConstants.OvlAct.None,
                                    "CharSize"));
 
-            tagA = (byte)eTag.FontHeaderLength;                      // 0xa7 //
+            tagA = (byte)Tag.FontHeaderLength;                      // 0xa7 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "FontHeaderLength"));
 
-            tagA = (byte)eTag.FontName;                              // 0xa8 //
+            tagA = (byte)Tag.FontName;                              // 0xa8 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagUbyteTxt, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "FontName"));
 
-            tagA = (byte)eTag.FontFormat;                            // 0xa9 //
+            tagA = (byte)Tag.FontFormat;                            // 0xa9 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "FontFormat"));
 
-            tagA = (byte)eTag.SymbolSet;                             // 0xaa //
+            tagA = (byte)Tag.SymbolSet;                             // 0xaa //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "SymbolSet"));
 
-            tagA = (byte)eTag.TextData;                              // 0xab //
+            tagA = (byte)Tag.TextData;                              // 0xab //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagUbyteTxt, flagUintTxt, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "TextData"));
 
-            tagA = (byte)eTag.CharSubModeArray;                      // 0xac //
+            tagA = (byte)Tag.CharSubModeArray;                      // 0xac //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "CharSubModeArray"));
 
-            tagA = (byte)eTag.WritingMode;                           // 0xad //
+            tagA = (byte)Tag.WritingMode;                           // 0xad //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagAttrEnum, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "WritingMode"));
 
-            tagA = (byte)eTag.BitmapCharScaling;                     // 0xae //
+            tagA = (byte)Tag.BitmapCharScaling;                     // 0xae //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "BitmapCharScaling"));
 
-            tagA = (byte)eTag.XSpacingData;                          // 0xaf //
+            tagA = (byte)Tag.XSpacingData;                          // 0xaf //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "XSpacingData"));
 
-            tagA = (byte)eTag.YSpacingData;                          // 0xb0 //
+            tagA = (byte)Tag.YSpacingData;                          // 0xb0 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "YSpacingData"));
 
-            tagA = (byte)eTag.CharBoldValue;                         // 0xb1 //
+            tagA = (byte)Tag.CharBoldValue;                         // 0xb1 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tags.Add(key,
                 new PCLXLAttribute(tagLen1, tagA, tagB,
                                    flagNone, flagNone, flagNone,
                                    flagNone, flagNone, flagNone, flagNone,
-                                   PrnParseConstants.eActPCLXL.None,
-                                   PrnParseConstants.eOvlAct.None,
+                                   PrnParseConstants.ActPCLXL.None,
+                                   PrnParseConstants.OvlAct.None,
                                    "CharBoldValue"));
 
             _tagCount = _tags.Count;
@@ -1703,7 +1695,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void resetStatsCounts()
+        public static void ResetStatsCounts()
         {
             PCLXLAttribute tag;
 

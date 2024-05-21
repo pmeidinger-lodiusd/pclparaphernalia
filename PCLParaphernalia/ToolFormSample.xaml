@@ -785,7 +785,7 @@
                 Margin="440,150,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Click="btnGenerate_Click"
+                Click="BtnGenerate_Click"
                 Content="Generate print data"
                 Style="{StaticResource PrimaryButton}" />
     </Grid>

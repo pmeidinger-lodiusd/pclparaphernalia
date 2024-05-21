@@ -223,7 +223,7 @@ namespace PCLParaphernalia
 
             int tmpInt;
 
-            int ctIndx = PrnParseRowTypes.getCount();
+            int ctIndx = PrnParseRowTypes.GetCount();
 
             //----------------------------------------------------------------//
 
@@ -274,7 +274,7 @@ namespace PCLParaphernalia
 
             int tmpInt;
 
-            int ctIndx = PrnParseRowTypes.getCount();
+            int ctIndx = PrnParseRowTypes.GetCount();
 
             //----------------------------------------------------------------//
 

@@ -37,7 +37,7 @@ namespace PCLParaphernalia
         {
             InitializeComponent();
 
-            initialise();
+            Initialise();
         }
 
         //--------------------------------------------------------------------//
@@ -65,7 +65,7 @@ namespace PCLParaphernalia
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            metricsSave();
+            MetricsSave();
 
             DialogResult = true;
         }
@@ -79,9 +79,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialise()
+        private void Initialise()
         {
-            TargetCore.metricsLoadNetPrinter(ref _printerAddress,
+            TargetCore.MetricsLoadNetPrinter(ref _printerAddress,
                                               ref _printerPort,
                                               ref _timeoutSend,
                                               ref _timeoutReceive);
@@ -135,9 +135,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsSave()
+        public void MetricsSave()
         {
-            TargetCore.metricsSaveNetPrinter(_printerAddress,
+            TargetCore.MetricsSaveNetPrinter(_printerAddress,
                                               _printerPort,
                                               _timeoutSend,
                                               _timeoutReceive);

@@ -19,7 +19,7 @@ namespace PCLParaphernalia
 
         const int _logPageOffset = 142;
 
-        public enum eMacroMethod : byte
+        public enum MacroMethod : byte
         {
             CallBegin,
             CallEnd,
@@ -59,7 +59,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generateJob(
+        public static void GenerateJob(
             BinaryWriter prnWriter,
             int indxPaperSize,
             int indxPaperType,
@@ -78,13 +78,13 @@ namespace PCLParaphernalia
             bool flagPrintDescText,
             string formFileMain,
             string formFileRear,
-            eMacroMethod indxMethod,
+            MacroMethod indxMethod,
             int macroIdMain,
             int macroIdRear)
         {
-            bool flagSimplexJob = PCLPlexModes.isSimplex(indxPlexMode);
+            bool flagSimplexJob = PCLPlexModes.IsSimplex(indxPlexMode);
 
-            generateJobHeader(prnWriter,
+            GenerateJobHeader(prnWriter,
                               indxPaperSize,
                               indxPaperType,
                               indxOrientation,
@@ -103,7 +103,7 @@ namespace PCLParaphernalia
                               macroIdMain,
                               macroIdRear);
 
-            generatePageSet(prnWriter,
+            GeneratePageSet(prnWriter,
                              testPageCount,
                              indxPaperSize,
                              indxPaperType,
@@ -123,7 +123,7 @@ namespace PCLParaphernalia
                              macroIdMain,
                              macroIdRear);
 
-            generateJobTrailer(prnWriter,
+            GenerateJobTrailer(prnWriter,
                                 flagMacroRemove,
                                 flagMainForm,
                                 flagRearForm,
@@ -140,7 +140,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateJobHeader(
+        private static void GenerateJobHeader(
             BinaryWriter prnWriter,
             int indxPaperSize,
             int indxPaperType,
@@ -156,11 +156,11 @@ namespace PCLParaphernalia
             bool flagRearOnPrnDisk,
             string formFileMain,
             string formFileRear,
-            eMacroMethod indxMethod,
+            MacroMethod indxMethod,
             int macroIdMain,
             int macroIdRear)
         {
-            PCLWriter.stdJobHeader(prnWriter, string.Empty);
+            PCLWriter.StdJobHeader(prnWriter, string.Empty);
 
             if (flagMainForm)
             {
@@ -184,16 +184,16 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    PCLWriter.macroFileIdAssociate(prnWriter,
+                    PCLWriter.MacroFileIdAssociate(prnWriter,
                                                     (ushort)macroIdMain,
                                                     formFileMain);
 
                     if (!flagMacroRemove)
                     {
-                        PCLWriter.macroControl(
+                        PCLWriter.WriteMacroControl(
                             prnWriter,
                             (short)macroIdMain,
-                            PCLWriter.eMacroControl.MakePermanent);
+                            PCLWriter.MacroControl.MakePermanent);
                     }
                 }
                 else
@@ -206,26 +206,26 @@ namespace PCLParaphernalia
 
                     if (!flagMainEncapsulated)
                     {
-                        PCLWriter.macroControl(prnWriter,
+                        PCLWriter.WriteMacroControl(prnWriter,
                                                 (short)macroIdMain,
-                                                PCLWriter.eMacroControl.StartDef);
+                                                PCLWriter.MacroControl.StartDef);
                     }
 
                     PCLDownloadMacro.macroFileCopy(prnWriter, formFileMain);
 
                     if (!flagMainEncapsulated)
                     {
-                        PCLWriter.macroControl(prnWriter,
+                        PCLWriter.WriteMacroControl(prnWriter,
                                                 (short)macroIdMain,
-                                                PCLWriter.eMacroControl.StopDef);
+                                                PCLWriter.MacroControl.StopDef);
                     }
 
                     if (!flagMacroRemove)
                     {
-                        PCLWriter.macroControl(
+                        PCLWriter.WriteMacroControl(
                             prnWriter,
                             (short)macroIdMain,
-                            PCLWriter.eMacroControl.MakePermanent);
+                            PCLWriter.MacroControl.MakePermanent);
                     }
                 }
             }
@@ -256,16 +256,16 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        PCLWriter.macroFileIdAssociate(prnWriter,
+                        PCLWriter.MacroFileIdAssociate(prnWriter,
                                                         (ushort)macroIdRear,
                                                         formFileRear);
 
                         if (!flagMacroRemove)
                         {
-                            PCLWriter.macroControl(
+                            PCLWriter.WriteMacroControl(
                                 prnWriter,
                                 (short)macroIdRear,
-                                PCLWriter.eMacroControl.MakePermanent);
+                                PCLWriter.MacroControl.MakePermanent);
                         }
                     }
                     else
@@ -278,28 +278,28 @@ namespace PCLParaphernalia
 
                         if (!flagRearEncapsulated)
                         {
-                            PCLWriter.macroControl(
+                            PCLWriter.WriteMacroControl(
                                 prnWriter,
                                 (short)macroIdRear,
-                                PCLWriter.eMacroControl.StartDef);
+                                PCLWriter.MacroControl.StartDef);
                         }
 
                         PCLDownloadMacro.macroFileCopy(prnWriter, formFileRear);
 
                         if (!flagRearEncapsulated)
                         {
-                            PCLWriter.macroControl(
+                            PCLWriter.WriteMacroControl(
                                 prnWriter,
                                 (short)macroIdRear,
-                                PCLWriter.eMacroControl.StopDef);
+                                PCLWriter.MacroControl.StopDef);
                         }
 
                         if (!flagMacroRemove)
                         {
-                            PCLWriter.macroControl(
+                            PCLWriter.WriteMacroControl(
                                 prnWriter,
                                 (short)macroIdRear,
-                                PCLWriter.eMacroControl.MakePermanent);
+                                PCLWriter.MacroControl.MakePermanent);
                         }
                     }
                 }
@@ -315,7 +315,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateJobTrailer(BinaryWriter prnWriter,
+        private static void GenerateJobTrailer(BinaryWriter prnWriter,
                                                bool flagMacroRemove,
                                                bool flagMainForm,
                                                bool flagRearForm,
@@ -326,22 +326,22 @@ namespace PCLParaphernalia
             {
                 if (flagMainForm)
                 {
-                    PCLWriter.macroControl(
+                    PCLWriter.WriteMacroControl(
                         prnWriter,
                         (short)macroIdMain,
-                        PCLWriter.eMacroControl.Delete);
+                        PCLWriter.MacroControl.Delete);
                 }
 
                 if (flagRearForm)
                 {
-                    PCLWriter.macroControl(
+                    PCLWriter.WriteMacroControl(
                         prnWriter,
                         (short)macroIdRear,
-                        PCLWriter.eMacroControl.Delete);
+                        PCLWriter.MacroControl.Delete);
                 }
             }
 
-            PCLWriter.stdJobTrailer(prnWriter, false, -1);
+            PCLWriter.StdJobTrailer(prnWriter, false, -1);
         }
 
         //--------------------------------------------------------------------//
@@ -353,7 +353,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generatePage(BinaryWriter prnWriter,
+        private static void GeneratePage(BinaryWriter prnWriter,
                                          int pageNo,
                                          int pageCount,
                                          int indxPaperSize,
@@ -371,7 +371,7 @@ namespace PCLParaphernalia
                                          bool flagPrintDescText,
                                          string formFileMain,
                                          string formFileRear,
-                                         eMacroMethod indxMethod,
+                                         MacroMethod indxMethod,
                                          int macroIdMain,
                                          int macroIdRear)
         {
@@ -420,17 +420,17 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PCLWriter.pageHeader(prnWriter,
+                PCLWriter.PageHeader(prnWriter,
                                       indxPaperSize,
                                       indxPaperType,
                                       indxOrientation,
                                       indxPlexMode);
 
-                if (indxMethod == eMacroMethod.Overlay)
+                if (indxMethod == MacroMethod.Overlay)
                 {
-                    PCLWriter.macroControl(prnWriter,
+                    PCLWriter.WriteMacroControl(prnWriter,
                                             (short)macroIdMain,
-                                            PCLWriter.eMacroControl.Overlay);
+                                            PCLWriter.MacroControl.Overlay);
                 }
             }
             else
@@ -449,17 +449,17 @@ namespace PCLParaphernalia
 
                 if (flagSimplexJob)
                 {
-                    PCLWriter.formFeed(prnWriter);
+                    PCLWriter.FormFeed(prnWriter);
                 }
                 else
                 {
-                    PCLWriter.pageFace(prnWriter, flagFrontFace);
+                    PCLWriter.PageFace(prnWriter, flagFrontFace);
 
                     if (altOrient)
                     {
-                        PCLWriter.pageOrientation(
+                        PCLWriter.PageOrientation(
                             prnWriter,
-                            PCLOrientations.getIdPCL(indxOrient).ToString());
+                            PCLOrientations.GetIdPCL(indxOrient).ToString());
                     }
                 }
             }
@@ -473,17 +473,17 @@ namespace PCLParaphernalia
 
             if (pageUsesForm)
             {
-                if (indxMethod == eMacroMethod.CallBegin)
+                if (indxMethod == MacroMethod.CallBegin)
                 {
-                    PCLWriter.macroControl(prnWriter,
+                    PCLWriter.WriteMacroControl(prnWriter,
                                             (short)macroId,
-                                            PCLWriter.eMacroControl.Call);
+                                            PCLWriter.MacroControl.Call);
                 }
-                else if (indxMethod == eMacroMethod.ExecuteBegin)
+                else if (indxMethod == MacroMethod.ExecuteBegin)
                 {
-                    PCLWriter.macroControl(prnWriter,
+                    PCLWriter.WriteMacroControl(prnWriter,
                                             (short)macroId,
-                                            PCLWriter.eMacroControl.Execute);
+                                            PCLWriter.MacroControl.Execute);
                 }
             }
 
@@ -501,49 +501,49 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PCLWriter.font(prnWriter, true, "19U", "s0p12h0s0b4099T");
+                PCLWriter.Font(prnWriter, true, "19U", "s0p12h0s0b4099T");
 
                 posX = 600 - _logPageOffset;
                 posY = 1350;
 
-                PCLWriter.text(prnWriter, posX, posY, 0, "Page:");
+                PCLWriter.Text(prnWriter, posX, posY, 0, "Page:");
 
                 if (firstPage)
                 {
                     posY += incPosY;
 
-                    PCLWriter.text(prnWriter, posX, posY, 0, "Paper size:");
+                    PCLWriter.Text(prnWriter, posX, posY, 0, "Paper size:");
 
                     posY += incPosY;
 
-                    PCLWriter.text(prnWriter, posX, posY, 0, "Paper type:");
+                    PCLWriter.Text(prnWriter, posX, posY, 0, "Paper type:");
 
                     posY += incPosY;
 
-                    PCLWriter.text(prnWriter, posX, posY, 0, "Plex mode:");
+                    PCLWriter.Text(prnWriter, posX, posY, 0, "Plex mode:");
 
                     posY += incPosY;
 
-                    PCLWriter.text(prnWriter, posX, posY, 0, "Method:");
+                    PCLWriter.Text(prnWriter, posX, posY, 0, "Method:");
 
                     posY += incPosY;
 
-                    PCLWriter.text(prnWriter, posX, posY, 0, "Orientation:");
+                    PCLWriter.Text(prnWriter, posX, posY, 0, "Orientation:");
 
                     posY += incPosY;
 
-                    PCLWriter.text(prnWriter, posX, posY, 0, "Rear orientation:");
+                    PCLWriter.Text(prnWriter, posX, posY, 0, "Rear orientation:");
 
                     posY += incPosY;
 
                     if (flagMainOnPrnDisk)
                     {
-                        PCLWriter.text(prnWriter, posX, posY, 0,
+                        PCLWriter.Text(prnWriter, posX, posY, 0,
                                                             "Main form printer file:");
                     }
                     else
                     {
-                        PCLWriter.text(prnWriter, posX, posY, 0,
+                        PCLWriter.Text(prnWriter, posX, posY, 0,
                                                             "Main form download file:");
                     }
 
@@ -551,12 +551,12 @@ namespace PCLParaphernalia
 
                     if (flagRearOnPrnDisk)
                     {
-                        PCLWriter.text(prnWriter, posX, posY, 0,
+                        PCLWriter.Text(prnWriter, posX, posY, 0,
                                                             "Rear form printer file:");
                     }
                     else
                     {
-                        PCLWriter.text(prnWriter, posX, posY, 0,
+                        PCLWriter.Text(prnWriter, posX, posY, 0,
                                                             "Rear form download file:");
                     }
 
@@ -564,7 +564,7 @@ namespace PCLParaphernalia
 
                     if (flagRearForm && flagRearBPlate)
                     {
-                        PCLWriter.text(prnWriter, posX, posY, 0,
+                        PCLWriter.Text(prnWriter, posX, posY, 0,
                                 "Rear Form is boilerplate");
                     }
                 }
@@ -575,12 +575,12 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PCLWriter.font(prnWriter, true, "19U", "s0p12h0s3b4099T");
+                PCLWriter.Font(prnWriter, true, "19U", "s0p12h0s3b4099T");
 
                 posX = 1920 - _logPageOffset;
                 posY = 1350;
 
-                PCLWriter.text(prnWriter, posX, posY, 0,
+                PCLWriter.Text(prnWriter, posX, posY, 0,
                                 pageNo.ToString() + " of " +
                                 pageCount.ToString());
 
@@ -590,39 +590,39 @@ namespace PCLParaphernalia
 
                     posY += incPosY;
 
-                    PCLWriter.text(prnWriter, posX, posY, 0,
-                                    PCLPaperSizes.getName(indxPaperSize));
+                    PCLWriter.Text(prnWriter, posX, posY, 0,
+                                    PCLPaperSizes.GetName(indxPaperSize));
 
                     posY += incPosY;
 
-                    PCLWriter.text(prnWriter, posX, posY, 0,
-                                    PCLPaperTypes.getName(indxPaperType));
+                    PCLWriter.Text(prnWriter, posX, posY, 0,
+                                    PCLPaperTypes.GetName(indxPaperType));
 
                     posY += incPosY;
 
-                    PCLWriter.text(prnWriter, posX, posY, 0,
-                                    PCLPlexModes.getName(indxPlexMode));
+                    PCLWriter.Text(prnWriter, posX, posY, 0,
+                                    PCLPlexModes.GetName(indxPlexMode));
 
                     posY += incPosY;
 
-                    PCLWriter.text(prnWriter, posX, posY, 0,
+                    PCLWriter.Text(prnWriter, posX, posY, 0,
                                     macroMethodNames[(int)indxMethod]);
 
                     posY += incPosY;
 
-                    PCLWriter.text(prnWriter, posX, posY, 0,
-                                    PCLOrientations.getName(indxOrientation));
+                    PCLWriter.Text(prnWriter, posX, posY, 0,
+                                    PCLOrientations.GetName(indxOrientation));
 
                     if (flagSimplexJob)
                         textOrientRear = "<not applicable>";
                     else if (altOrient)
-                        textOrientRear = PCLOrientations.getName(indxOrientRear);
+                        textOrientRear = PCLOrientations.GetName(indxOrientRear);
                     else
                         textOrientRear = "<not set>";
 
                     posY += incPosY;
 
-                    PCLWriter.text(prnWriter, posX, posY, 0,
+                    PCLWriter.Text(prnWriter, posX, posY, 0,
                                     textOrientRear);
 
                     posY += incPosY;
@@ -636,11 +636,11 @@ namespace PCLParaphernalia
 
                         if (len < maxLen)
                         {
-                            PCLWriter.text(prnWriter, posX, posY, 0, formFileMain);
+                            PCLWriter.Text(prnWriter, posX, posY, 0, formFileMain);
                         }
                         else
                         {
-                            PCLWriter.text(prnWriter, posX, posY, 0,
+                            PCLWriter.Text(prnWriter, posX, posY, 0,
                                                                    formFileMain.Substring(0, halfLen) +
                                                                    " ... " +
                                                                    formFileMain.Substring(len - halfLen,
@@ -659,11 +659,11 @@ namespace PCLParaphernalia
 
                         if (len < maxLen)
                         {
-                            PCLWriter.text(prnWriter, posX, posY, 0, formFileRear);
+                            PCLWriter.Text(prnWriter, posX, posY, 0, formFileRear);
                         }
                         else
                         {
-                            PCLWriter.text(prnWriter, posX, posY, 0,
+                            PCLWriter.Text(prnWriter, posX, posY, 0,
                                                                    formFileRear.Substring(0, halfLen) +
                                                                    " ... " +
                                                                    formFileRear.Substring(len - halfLen,
@@ -682,17 +682,17 @@ namespace PCLParaphernalia
 
             if (pageUsesForm)
             {
-                if (indxMethod == eMacroMethod.CallEnd)
+                if (indxMethod == MacroMethod.CallEnd)
                 {
-                    PCLWriter.macroControl(prnWriter,
+                    PCLWriter.WriteMacroControl(prnWriter,
                                             (short)macroId,
-                                            PCLWriter.eMacroControl.Call);
+                                            PCLWriter.MacroControl.Call);
                 }
-                else if (indxMethod == eMacroMethod.ExecuteEnd)
+                else if (indxMethod == MacroMethod.ExecuteEnd)
                 {
-                    PCLWriter.macroControl(prnWriter,
+                    PCLWriter.WriteMacroControl(prnWriter,
                                             (short)macroId,
-                                            PCLWriter.eMacroControl.Execute);
+                                            PCLWriter.MacroControl.Execute);
                 }
             }
 
@@ -704,28 +704,28 @@ namespace PCLParaphernalia
 
             if (flagRearForm && flagRearBPlate)
             {
-                PCLWriter.pageFace(prnWriter, false);
+                PCLWriter.PageFace(prnWriter, false);
 
                 if (altOrient)
                 {
-                    PCLWriter.pageOrientation(
+                    PCLWriter.PageOrientation(
                         prnWriter,
-                        PCLOrientations.getIdPCL(indxOrientRear).ToString());
+                        PCLOrientations.GetIdPCL(indxOrientRear).ToString());
                 }
 
-                if ((indxMethod == eMacroMethod.CallBegin) ||
-                    (indxMethod == eMacroMethod.CallEnd))
+                if ((indxMethod == MacroMethod.CallBegin) ||
+                    (indxMethod == MacroMethod.CallEnd))
                 {
-                    PCLWriter.macroControl(prnWriter,
+                    PCLWriter.WriteMacroControl(prnWriter,
                                             (short)macroIdRear,
-                                            PCLWriter.eMacroControl.Call);
+                                            PCLWriter.MacroControl.Call);
                 }
-                else if ((indxMethod == eMacroMethod.ExecuteBegin) ||
-                         (indxMethod == eMacroMethod.ExecuteEnd))
+                else if ((indxMethod == MacroMethod.ExecuteBegin) ||
+                         (indxMethod == MacroMethod.ExecuteEnd))
                 {
-                    PCLWriter.macroControl(prnWriter,
+                    PCLWriter.WriteMacroControl(prnWriter,
                                             (short)macroIdRear,
-                                            PCLWriter.eMacroControl.Execute);
+                                            PCLWriter.MacroControl.Execute);
                 }
             }
         }
@@ -739,7 +739,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generatePageSet(BinaryWriter prnWriter,
+        private static void GeneratePageSet(BinaryWriter prnWriter,
                                             int pageCount,
                                             int indxPaperSize,
                                             int indxPaperType,
@@ -755,7 +755,7 @@ namespace PCLParaphernalia
                                             bool flagPrintDescText,
                                             string formFileMain,
                                             string formFileRear,
-                                            eMacroMethod indxMethod,
+                                            MacroMethod indxMethod,
                                             int macroIdMain,
                                             int macroIdRear)
         {
@@ -769,7 +769,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                generatePage(prnWriter,
+                GeneratePage(prnWriter,
                               pageNo,
                               pageCount,
                               indxPaperSize,
@@ -810,8 +810,8 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            if (indxMethod == eMacroMethod.Overlay)
-                PCLWriter.formFeed(prnWriter);
+            if (indxMethod == MacroMethod.Overlay)
+                PCLWriter.FormFeed(prnWriter);
         }
     }
 }

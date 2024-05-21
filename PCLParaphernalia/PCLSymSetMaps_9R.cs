@@ -29,7 +29,7 @@ namespace PCLParaphernalia
 
         private static void unicodeMap_9R()
         {
-            const eSymSetMapId mapId = eSymSetMapId.map_9R;
+            const SymSetMapId mapId = SymSetMapId.map_9R;
 
             const int rangeCt = 3;
 

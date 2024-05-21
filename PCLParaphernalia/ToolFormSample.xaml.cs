@@ -33,41 +33,41 @@ namespace PCLParaphernalia
 
         private static readonly int[] _subsetPDLs =
         {
-            (int) ToolCommonData.ePrintLang.PCL,
-            (int) ToolCommonData.ePrintLang.PCLXL,
+            (int) ToolCommonData.PrintLang.PCL,
+            (int) ToolCommonData.PrintLang.PCLXL,
         };
 
         private static readonly int[] _subsetOrientations =
         {
-            (int) PCLOrientations.eIndex.Portrait,
-            (int) PCLOrientations.eIndex.Landscape,
-            (int) PCLOrientations.eIndex.ReversePortrait,
-            (int) PCLOrientations.eIndex.ReverseLandscape
+            (int) PCLOrientations.Index.Portrait,
+            (int) PCLOrientations.Index.Landscape,
+            (int) PCLOrientations.Index.ReversePortrait,
+            (int) PCLOrientations.Index.ReverseLandscape
         };
 
         private static readonly int[] _subsetPaperSizes =
         {
-            (int) PCLPaperSizes.eIndex.ISO_A4,
-            (int) PCLPaperSizes.eIndex.ISO_A3,
-            (int) PCLPaperSizes.eIndex.ISO_A5,
-            (int) PCLPaperSizes.eIndex.ISO_A6,
-            (int) PCLPaperSizes.eIndex.ANSI_A_Letter,
-            (int) PCLPaperSizes.eIndex.ANSI_B_Ledger_Tabloid,
-            (int) PCLPaperSizes.eIndex.Legal,
-            (int) PCLPaperSizes.eIndex.Executive
+            (int) PCLPaperSizes.Index.ISO_A4,
+            (int) PCLPaperSizes.Index.ISO_A3,
+            (int) PCLPaperSizes.Index.ISO_A5,
+            (int) PCLPaperSizes.Index.ISO_A6,
+            (int) PCLPaperSizes.Index.ANSI_A_Letter,
+            (int) PCLPaperSizes.Index.ANSI_B_Ledger_Tabloid,
+            (int) PCLPaperSizes.Index.Legal,
+            (int) PCLPaperSizes.Index.Executive
         };
 
         private static readonly int[] _subsetPlexModes =
         {
-            (int) PCLPlexModes.eIndex.Simplex,
-            (int) PCLPlexModes.eIndex.DuplexLongEdge,
-            (int) PCLPlexModes.eIndex.DuplexShortEdge
+            (int) PCLPlexModes.Index.Simplex,
+            (int) PCLPlexModes.Index.DuplexLongEdge,
+            (int) PCLPlexModes.Index.DuplexShortEdge
         };
 
         private static readonly int[] _subsetPaperTypes =
         {
-            (int) PCLPaperTypes.eIndex.NotSet,
-            (int) PCLPaperTypes.eIndex.Plain
+            (int) PCLPaperTypes.Index.NotSet,
+            (int) PCLPaperTypes.Index.Plain
         };
 
         //--------------------------------------------------------------------//
@@ -79,10 +79,10 @@ namespace PCLParaphernalia
         private int _macroIdMainPCL = _defaultMacroIdMainPCL;
         private int _macroIdRearPCL = _defaultMacroIdRearPCL;
 
-        private ToolCommonData.ePrintLang _crntPDL;
+        private ToolCommonData.PrintLang _crntPDL;
 
-        private ToolFormSamplePCL.eMacroMethod _indxMethodPCL;
-        private ToolFormSamplePCLX.eStreamMethod _indxMethodPCLXL;
+        private ToolFormSamplePCL.MacroMethod _indxMethodPCL;
+        private ToolFormSamplePCLX.StreamMethod _indxMethodPCLXL;
 
         private int _ctPDLs;
         private int _ctOrientations;
@@ -151,11 +151,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ToolFormSample(ref ToolCommonData.ePrintLang crntPDL)
+        public ToolFormSample(ref ToolCommonData.PrintLang crntPDL)
         {
             InitializeComponent();
 
-            initialise();
+            Initialise();
 
             crntPDL = _crntPDL;
         }
@@ -169,12 +169,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void btnGenerate_Click(object sender, EventArgs e)
+        private void BtnGenerate_Click(object sender, EventArgs e)
         {
             bool OK;
 
             _indxPDL = cbPDL.SelectedIndex;
-            _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
+            _crntPDL = (ToolCommonData.PrintLang)_subsetPDLs[_indxPDL];
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -188,9 +188,9 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+                if (_crntPDL == ToolCommonData.PrintLang.PCL)
                 {
-                    OK = validatePCLSelectionCombo();
+                    OK = ValidatePCLSelectionCombo();
 
                     if (OK)
                     {
@@ -199,10 +199,10 @@ namespace PCLParaphernalia
                         string formFileMain,
                                formFileRear;
 
-                        TargetCore.requestStreamOpen(
+                        TargetCore.RequestStreamOpen(
                             ref binWriter,
-                            ToolCommonData.eToolIds.FormSample,
-                            ToolCommonData.eToolSubIds.None,
+                            ToolCommonData.ToolIds.FormSample,
+                            ToolCommonData.ToolSubIds.None,
                             _crntPDL);
 
                         if (_flagRearFormPCL)
@@ -220,7 +220,7 @@ namespace PCLParaphernalia
                         else
                             formFileRear = _formFileRearPCL;
 
-                        ToolFormSamplePCL.generateJob(
+                        ToolFormSamplePCL.GenerateJob(
                             binWriter,
                             _subsetPaperSizes[_indxPaperSizePCL],
                             _subsetPaperTypes[_indxPaperTypePCL],
@@ -243,22 +243,22 @@ namespace PCLParaphernalia
                             _macroIdMainPCL,
                             _macroIdRearPCL);
 
-                        TargetCore.requestStreamWrite(false);
+                        TargetCore.RequestStreamWrite(false);
                     }
                 }
                 else    // if (_crntPDL == ToolCommonData.ePrintLang.PCLXL)
                 {
-                    OK = validatePCLXLSelectionCombo();
+                    OK = ValidatePCLXLSelectionCombo();
 
                     if (OK)
                     {
-                        TargetCore.requestStreamOpen(
+                        TargetCore.RequestStreamOpen(
                             ref binWriter,
-                            ToolCommonData.eToolIds.FormSample,
-                            ToolCommonData.eToolSubIds.None,
+                            ToolCommonData.ToolIds.FormSample,
+                            ToolCommonData.ToolSubIds.None,
                             _crntPDL);
 
-                        ToolFormSamplePCLX.generateJob(
+                        ToolFormSamplePCLX.GenerateJob(
                                 binWriter,
                                 _subsetPaperSizes[_indxPaperSizePCLXL],
                                 _subsetPaperTypes[_indxPaperTypePCLXL],
@@ -280,7 +280,7 @@ namespace PCLParaphernalia
                                 _formNameMainPCLXL,
                                 _formNameRearPCLXL);
 
-                        TargetCore.requestStreamWrite(false);
+                        TargetCore.RequestStreamWrite(false);
                     }
                 }
             }
@@ -316,14 +316,14 @@ namespace PCLParaphernalia
 
             string filename = _formFileMainPCL;
 
-            selected = selectPCLFormFile(ref filename);
+            selected = SelectPCLFormFile(ref filename);
 
             if (selected)
             {
                 _formFileMainPCL = filename;
                 txtPCLFormFileMain.Text = _formFileMainPCL;
 
-                checkPCLFormFile(true, _formFileMainPCL);
+                CheckPCLFormFile(true, _formFileMainPCL);
             }
         }
 
@@ -343,14 +343,14 @@ namespace PCLParaphernalia
 
             string filename = _formFileRearPCL;
 
-            selected = selectPCLFormFile(ref filename);
+            selected = SelectPCLFormFile(ref filename);
 
             if (selected)
             {
                 _formFileRearPCL = filename;
                 txtPCLFormFileRear.Text = _formFileRearPCL;
 
-                checkPCLFormFile(false, _formFileRearPCL);
+                CheckPCLFormFile(false, _formFileRearPCL);
             }
         }
 
@@ -370,14 +370,14 @@ namespace PCLParaphernalia
 
             string filename = _formFileMainPCLXL;
 
-            selected = selectPCLXLFormFile(ref filename);
+            selected = SelectPCLXLFormFile(ref filename);
 
             if (selected)
             {
                 _formFileMainPCLXL = filename;
                 txtPCLXLFormFileMain.Text = _formFileMainPCLXL;
 
-                checkPCLXLFormFile(true, _formFileMainPCLXL);
+                CheckPCLXLFormFile(true, _formFileMainPCLXL);
             }
         }
 
@@ -397,14 +397,14 @@ namespace PCLParaphernalia
 
             string filename = _formFileRearPCLXL;
 
-            selected = selectPCLXLFormFile(ref filename);
+            selected = SelectPCLXLFormFile(ref filename);
 
             if (selected)
             {
                 _formFileRearPCLXL = filename;
                 txtPCLXLFormFileRear.Text = _formFileRearPCLXL;
 
-                checkPCLXLFormFile(false, _formFileRearPCLXL);
+                CheckPCLXLFormFile(false, _formFileRearPCLXL);
             }
         }
 
@@ -422,7 +422,7 @@ namespace PCLParaphernalia
         {
             if (_initialised && cbOrientation.HasItems)
             {
-                if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+                if (_crntPDL == ToolCommonData.PrintLang.PCL)
                     _indxOrientationPCL = cbOrientation.SelectedIndex;
                 else
                     _indxOrientationPCLXL = cbOrientation.SelectedIndex;
@@ -443,7 +443,7 @@ namespace PCLParaphernalia
         {
             if (_initialised && cbPaperSize.HasItems)
             {
-                if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+                if (_crntPDL == ToolCommonData.PrintLang.PCL)
                     _indxPaperSizePCL = cbPaperSize.SelectedIndex;
                 else
                     _indxPaperSizePCLXL = cbPaperSize.SelectedIndex;
@@ -464,7 +464,7 @@ namespace PCLParaphernalia
         {
             if (_initialised && cbPaperType.HasItems)
             {
-                if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+                if (_crntPDL == ToolCommonData.PrintLang.PCL)
                     _indxPaperTypePCL = cbPaperType.SelectedIndex;
                 else
                     _indxPaperTypePCLXL = cbPaperType.SelectedIndex;
@@ -485,12 +485,12 @@ namespace PCLParaphernalia
         {
             if (_initialised)
             {
-                pdlOptionsStore();
+                PdlOptionsStore();
 
                 _indxPDL = cbPDL.SelectedIndex;
-                _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
+                _crntPDL = (ToolCommonData.PrintLang)_subsetPDLs[_indxPDL];
 
-                pdlOptionsRestore();
+                PdlOptionsRestore();
             }
         }
 
@@ -510,12 +510,12 @@ namespace PCLParaphernalia
             {
                 int plexMode = cbPlexMode.SelectedIndex;
 
-                if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+                if (_crntPDL == ToolCommonData.PrintLang.PCL)
                     _indxPlexModePCL = plexMode;
                 else
                     _indxPlexModePCLXL = plexMode;
 
-                pdlOptionsRestore();
+                PdlOptionsRestore();
             }
         }
 
@@ -534,7 +534,7 @@ namespace PCLParaphernalia
         {
             if (_initialised && cbRearOrientation.HasItems)
             {
-                if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+                if (_crntPDL == ToolCommonData.PrintLang.PCL)
                     _indxOrientRearPCL = cbRearOrientation.SelectedIndex;
                 else
                     _indxOrientRearPCLXL = cbRearOrientation.SelectedIndex;
@@ -551,8 +551,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void checkPCLFormFile(bool main,
-                                        string filename)
+        private void CheckPCLFormFile(bool main, string filename)
         {
             bool idPresent;
 
@@ -613,8 +612,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void checkPCLXLFormFile(bool main,
-                                        string filename)
+        private void CheckPCLXLFormFile(bool main, string filename)
         {
             bool idPresent;
 
@@ -881,7 +879,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void giveCrntPDL(ref ToolCommonData.ePrintLang crntPDL)
+        public void GiveCrntPDL(ref ToolCommonData.PrintLang crntPDL)
         {
             crntPDL = _crntPDL;
         }
@@ -895,7 +893,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialise()
+        private void Initialise()
         {
             int index;
 
@@ -916,7 +914,7 @@ namespace PCLParaphernalia
                 index = _subsetPDLs[i];
 
                 cbPDL.Items.Add(Enum.GetName(
-                    typeof(ToolCommonData.ePrintLang), i));
+                    typeof(ToolCommonData.PrintLang), i));
             }
 
             //----------------------------------------------------------------//
@@ -930,7 +928,7 @@ namespace PCLParaphernalia
             {
                 index = _subsetOrientations[i];
 
-                string name = PCLOrientations.getName(index);
+                string name = PCLOrientations.GetName(index);
 
                 cbOrientation.Items.Add(name);
                 cbRearOrientation.Items.Add(name);
@@ -946,7 +944,7 @@ namespace PCLParaphernalia
             {
                 index = _subsetPaperSizes[i];
 
-                cbPaperSize.Items.Add(PCLPaperSizes.getName(index));
+                cbPaperSize.Items.Add(PCLPaperSizes.GetName(index));
             }
 
             //----------------------------------------------------------------//
@@ -959,7 +957,7 @@ namespace PCLParaphernalia
             {
                 index = _subsetPaperTypes[i];
 
-                cbPaperType.Items.Add(PCLPaperTypes.getName(index));
+                cbPaperType.Items.Add(PCLPaperTypes.GetName(index));
             }
 
             //----------------------------------------------------------------//
@@ -972,12 +970,12 @@ namespace PCLParaphernalia
             {
                 index = _subsetPlexModes[i];
 
-                cbPlexMode.Items.Add(PCLPlexModes.getName(index));
+                cbPlexMode.Items.Add(PCLPlexModes.GetName(index));
             }
 
             //----------------------------------------------------------------//
 
-            resetTarget();
+            ResetTarget();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -985,9 +983,9 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            metricsLoad();
+            MetricsLoad();
 
-            pdlOptionsRestore();
+            PdlOptionsRestore();
 
             cbPDL.SelectedIndex = (byte)_indxPDL;
 
@@ -1003,7 +1001,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsLoad()
+        private void MetricsLoad()
         {
             int indxMethodTemp = 0;
 
@@ -1023,10 +1021,10 @@ namespace PCLParaphernalia
                                                    ref _flagRearBPlatePCL,
                                                    ref _flagPrintDescTextPCL);
 
-            if (indxMethodTemp < (int)ToolFormSamplePCL.eMacroMethod.Max)
-                _indxMethodPCL = (ToolFormSamplePCL.eMacroMethod)indxMethodTemp;
+            if (indxMethodTemp < (int)ToolFormSamplePCL.MacroMethod.Max)
+                _indxMethodPCL = (ToolFormSamplePCL.MacroMethod)indxMethodTemp;
             else
-                _indxMethodPCL = ToolFormSamplePCL.eMacroMethod.CallBegin;
+                _indxMethodPCL = ToolFormSamplePCL.MacroMethod.CallBegin;
 
             ToolFormSamplePersist.loadDataGeneral("PCLXL",
                                                    ref _indxPaperTypePCLXL,
@@ -1042,10 +1040,10 @@ namespace PCLParaphernalia
                                                    ref _flagRearBPlatePCLXL,
                                                    ref _flagPrintDescTextPCLXL);
 
-            if (indxMethodTemp < (int)ToolFormSamplePCLX.eStreamMethod.Max)
-                _indxMethodPCLXL = (ToolFormSamplePCLX.eStreamMethod)indxMethodTemp;
+            if (indxMethodTemp < (int)ToolFormSamplePCLX.StreamMethod.Max)
+                _indxMethodPCLXL = (ToolFormSamplePCLX.StreamMethod)indxMethodTemp;
             else
-                _indxMethodPCLXL = ToolFormSamplePCLX.eStreamMethod.ExecuteBegin;
+                _indxMethodPCLXL = ToolFormSamplePCLX.StreamMethod.ExecuteBegin;
 
             ToolFormSamplePersist.loadDataPCL(ref _flagMainOnPrnDiskPCL,
                                                ref _flagRearOnPrnDiskPCL,
@@ -1067,7 +1065,7 @@ namespace PCLParaphernalia
             if ((_indxPDL < 0) || (_indxPDL >= _ctPDLs))
                 _indxPDL = 0;
 
-            _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
+            _crntPDL = (ToolCommonData.PrintLang)_subsetPDLs[_indxPDL];
 
             //----------------------------------------------------------------//
 
@@ -1113,9 +1111,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsSave()
+        public void MetricsSave()
         {
-            pdlOptionsStore();
+            PdlOptionsStore();
 
             ToolFormSamplePersist.saveDataCommon(_indxPDL);
 
@@ -1174,9 +1172,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void pdlOptionsRestore()
+        private void PdlOptionsRestore()
         {
-            if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 cbOrientation.SelectedIndex = _indxOrientationPCL;
                 cbPaperSize.SelectedIndex = _indxPaperSizePCL;
@@ -1186,8 +1184,8 @@ namespace PCLParaphernalia
 
                 //----------------------------------------------------------------//
 
-                if (PCLPlexModes.getPlexType(_indxPlexModePCL) ==
-                    PCLPlexModes.ePlexType.Simplex)
+                if (PCLPlexModes.GetPlexType(_indxPlexModePCL) ==
+                    PCLPlexModes.PlexType.Simplex)
                 {
                     cbRearOrientation.Visibility = Visibility.Hidden;
                     lbRearOrientation.Visibility = Visibility.Hidden;
@@ -1263,10 +1261,10 @@ namespace PCLParaphernalia
                     rbPCLMethodOverlay.Visibility = Visibility.Hidden;
 
                     if (_indxMethodPCL ==
-                        ToolFormSamplePCL.eMacroMethod.Overlay)
+                        ToolFormSamplePCL.MacroMethod.Overlay)
                     {
                         _indxMethodPCL =
-                            ToolFormSamplePCL.eMacroMethod.CallBegin;
+                            ToolFormSamplePCL.MacroMethod.CallBegin;
 
                         rbPCLMethodCallBegin.IsChecked = true;
                     }
@@ -1293,22 +1291,22 @@ namespace PCLParaphernalia
                     grpPCLRearFormData.Visibility = Visibility.Hidden;
                 }
 
-                if (_indxMethodPCL == ToolFormSamplePCL.eMacroMethod.CallEnd)
+                if (_indxMethodPCL == ToolFormSamplePCL.MacroMethod.CallEnd)
                     rbPCLMethodCallEnd.IsChecked = true;
-                else if (_indxMethodPCL == ToolFormSamplePCL.eMacroMethod.ExecuteBegin)
+                else if (_indxMethodPCL == ToolFormSamplePCL.MacroMethod.ExecuteBegin)
                     rbPCLMethodExecuteBegin.IsChecked = true;
-                else if (_indxMethodPCL == ToolFormSamplePCL.eMacroMethod.ExecuteEnd)
+                else if (_indxMethodPCL == ToolFormSamplePCL.MacroMethod.ExecuteEnd)
                     rbPCLMethodExecuteEnd.IsChecked = true;
-                else if (_indxMethodPCL == ToolFormSamplePCL.eMacroMethod.Overlay)
+                else if (_indxMethodPCL == ToolFormSamplePCL.MacroMethod.Overlay)
                     rbPCLMethodOverlay.IsChecked = true;
                 else
                     rbPCLMethodCallBegin.IsChecked = true;
 
                 if (_flagMainFormPCL && (!_flagMainOnPrnDiskPCL) && File.Exists(_formFileMainPCL))
-                    checkPCLFormFile(true, _formFileMainPCL);
+                    CheckPCLFormFile(true, _formFileMainPCL);
 
                 if (_flagRearFormPCL && (!_flagRearOnPrnDiskPCL) && File.Exists(_formFileRearPCL))
-                    checkPCLFormFile(false, _formFileRearPCL);
+                    CheckPCLFormFile(false, _formFileRearPCL);
             }
             else
             {
@@ -1320,8 +1318,8 @@ namespace PCLParaphernalia
 
                 //----------------------------------------------------------------//
 
-                if (PCLPlexModes.getPlexType(_indxPlexModePCLXL) ==
-                    PCLPlexModes.ePlexType.Simplex)
+                if (PCLPlexModes.GetPlexType(_indxPlexModePCLXL) ==
+                    PCLPlexModes.PlexType.Simplex)
                 {
                     cbRearOrientation.Visibility = Visibility.Hidden;
                     lbRearOrientation.Visibility = Visibility.Hidden;
@@ -1386,16 +1384,16 @@ namespace PCLParaphernalia
                     grpPCLXLRearFormData.Visibility = Visibility.Hidden;
                 }
 
-                if (_indxMethodPCLXL == ToolFormSamplePCLX.eStreamMethod.ExecuteEnd)
+                if (_indxMethodPCLXL == ToolFormSamplePCLX.StreamMethod.ExecuteEnd)
                     rbPCLXLMethodExecuteEnd.IsChecked = true;
                 else
                     rbPCLXLMethodExecuteBegin.IsChecked = true;
 
                 if (_flagMainFormPCLXL && File.Exists(_formFileMainPCLXL))
-                    checkPCLXLFormFile(true, _formFileMainPCLXL);
+                    CheckPCLXLFormFile(true, _formFileMainPCLXL);
 
                 if (_flagRearFormPCLXL && File.Exists(_formFileRearPCLXL))
-                    checkPCLXLFormFile(false, _formFileRearPCLXL);
+                    CheckPCLXLFormFile(false, _formFileRearPCLXL);
             }
         }
 
@@ -1408,9 +1406,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void pdlOptionsStore()
+        private void PdlOptionsStore()
         {
-            if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 _indxOrientationPCL = cbOrientation.SelectedIndex;
                 _indxPaperSizePCL = cbPaperSize.SelectedIndex;
@@ -1447,7 +1445,7 @@ namespace PCLParaphernalia
             btnPCLFormFileMainBrowse.Visibility = Visibility.Visible;
 
             if (File.Exists(_formFileMainPCL))
-                checkPCLFormFile(true, _formFileMainPCL);
+                CheckPCLFormFile(true, _formFileMainPCL);
         }
 
         //--------------------------------------------------------------------//
@@ -1492,7 +1490,7 @@ namespace PCLParaphernalia
             btnPCLFormFileRearBrowse.Visibility = Visibility.Visible;
 
             if (File.Exists(_formFileRearPCL))
-                checkPCLFormFile(false, _formFileRearPCL);
+                CheckPCLFormFile(false, _formFileRearPCL);
         }
 
         //--------------------------------------------------------------------//
@@ -1531,7 +1529,7 @@ namespace PCLParaphernalia
         private void rbPCLMethodCallBegin_Click(object sender,
                                                   RoutedEventArgs e)
         {
-            _indxMethodPCL = ToolFormSamplePCL.eMacroMethod.CallBegin;
+            _indxMethodPCL = ToolFormSamplePCL.MacroMethod.CallBegin;
         }
 
         //--------------------------------------------------------------------//
@@ -1547,7 +1545,7 @@ namespace PCLParaphernalia
         private void rbPCLMethodCallEnd_Click(object sender,
                                                 RoutedEventArgs e)
         {
-            _indxMethodPCL = ToolFormSamplePCL.eMacroMethod.CallEnd;
+            _indxMethodPCL = ToolFormSamplePCL.MacroMethod.CallEnd;
         }
 
         //--------------------------------------------------------------------//
@@ -1563,7 +1561,7 @@ namespace PCLParaphernalia
         private void rbPCLMethodExecuteBegin_Click(object sender,
                                                      RoutedEventArgs e)
         {
-            _indxMethodPCL = ToolFormSamplePCL.eMacroMethod.ExecuteBegin;
+            _indxMethodPCL = ToolFormSamplePCL.MacroMethod.ExecuteBegin;
         }
 
         //--------------------------------------------------------------------//
@@ -1579,7 +1577,7 @@ namespace PCLParaphernalia
         private void rbPCLMethodExecuteEnd_Click(object sender,
                                                    RoutedEventArgs e)
         {
-            _indxMethodPCL = ToolFormSamplePCL.eMacroMethod.ExecuteEnd;
+            _indxMethodPCL = ToolFormSamplePCL.MacroMethod.ExecuteEnd;
         }
 
         //--------------------------------------------------------------------//
@@ -1594,7 +1592,7 @@ namespace PCLParaphernalia
         private void rbPCLMethodOverlay_Click(object sender,
                                                 RoutedEventArgs e)
         {
-            _indxMethodPCL = ToolFormSamplePCL.eMacroMethod.Overlay;
+            _indxMethodPCL = ToolFormSamplePCL.MacroMethod.Overlay;
         }
 
         //--------------------------------------------------------------------//
@@ -1618,9 +1616,9 @@ namespace PCLParaphernalia
             grpPCLRearFormData.Visibility = Visibility.Visible;
             rbPCLMethodOverlay.Visibility = Visibility.Hidden;
 
-            if (_indxMethodPCL == ToolFormSamplePCL.eMacroMethod.Overlay)
+            if (_indxMethodPCL == ToolFormSamplePCL.MacroMethod.Overlay)
             {
-                _indxMethodPCL = ToolFormSamplePCL.eMacroMethod.CallBegin;
+                _indxMethodPCL = ToolFormSamplePCL.MacroMethod.CallBegin;
 
                 rbPCLMethodCallBegin.IsChecked = true;
             }
@@ -1669,9 +1667,9 @@ namespace PCLParaphernalia
             grpPCLRearFormData.Visibility = Visibility.Visible;
             rbPCLMethodOverlay.Visibility = Visibility.Hidden;
 
-            if (_indxMethodPCL == ToolFormSamplePCL.eMacroMethod.Overlay)
+            if (_indxMethodPCL == ToolFormSamplePCL.MacroMethod.Overlay)
             {
-                _indxMethodPCL = ToolFormSamplePCL.eMacroMethod.CallBegin;
+                _indxMethodPCL = ToolFormSamplePCL.MacroMethod.CallBegin;
 
                 rbPCLMethodCallBegin.IsChecked = true;
             }
@@ -1690,7 +1688,7 @@ namespace PCLParaphernalia
         private void rbPCLXLMethodExecuteBegin_Click(object sender,
                                                      RoutedEventArgs e)
         {
-            _indxMethodPCLXL = ToolFormSamplePCLX.eStreamMethod.ExecuteBegin;
+            _indxMethodPCLXL = ToolFormSamplePCLX.StreamMethod.ExecuteBegin;
         }
 
         //--------------------------------------------------------------------//
@@ -1706,7 +1704,7 @@ namespace PCLParaphernalia
         private void rbPCLXLMethodExecuteEnd_Click(object sender,
                                                    RoutedEventArgs e)
         {
-            _indxMethodPCLXL = ToolFormSamplePCLX.eStreamMethod.ExecuteEnd;
+            _indxMethodPCLXL = ToolFormSamplePCLX.StreamMethod.ExecuteEnd;
         }
 
         //--------------------------------------------------------------------//
@@ -1781,15 +1779,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetTarget()
+        public void ResetTarget()
         {
-            TargetCore.eTarget targetType = TargetCore.getType();
+            TargetCore.Target targetType = TargetCore.GetType();
 
-            if (targetType == TargetCore.eTarget.File)
+            if (targetType == TargetCore.Target.File)
             {
                 btnGenerate.Content = "Generate & send test data to file";
             }
-            else if (targetType == TargetCore.eTarget.NetPrinter)
+            else if (targetType == TargetCore.Target.NetPrinter)
             {
                 string netPrnAddress = string.Empty;
                 int netPrnPort = 0;
@@ -1797,7 +1795,7 @@ namespace PCLParaphernalia
                 int netTimeoutSend = 0;
                 int netTimeoutReceive = 0;
 
-                TargetCore.metricsLoadNetPrinter(ref netPrnAddress,
+                TargetCore.MetricsLoadNetPrinter(ref netPrnAddress,
                                                   ref netPrnPort,
                                                   ref netTimeoutSend,
                                                   ref netTimeoutReceive);
@@ -1807,11 +1805,11 @@ namespace PCLParaphernalia
                                       netPrnAddress + " : " +
                                       netPrnPort.ToString();
             }
-            else if (targetType == TargetCore.eTarget.WinPrinter)
+            else if (targetType == TargetCore.Target.WinPrinter)
             {
                 string winPrintername = string.Empty;
 
-                TargetCore.metricsLoadWinPrinter(ref winPrintername);
+                TargetCore.MetricsLoadWinPrinter(ref winPrintername);
 
                 btnGenerate.Content = "Generate & send test data to printer " +
                                       "\r\n" +
@@ -1828,7 +1826,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool selectPCLFormFile(ref string selectedName)
+        private bool SelectPCLFormFile(ref string selectedName)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(selectedName);
 
@@ -1852,7 +1850,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool selectPCLXLFormFile(ref string selectedName)
+        private bool SelectPCLXLFormFile(ref string selectedName)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(selectedName);
 
@@ -1900,7 +1898,7 @@ namespace PCLParaphernalia
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
 
-                    selected = selectPCLFormFile(ref filename);
+                    selected = SelectPCLFormFile(ref filename);
 
                     if (selected)
                     {
@@ -1911,7 +1909,7 @@ namespace PCLParaphernalia
 
                 if (selected)
                 {
-                    checkPCLFormFile(true, _formFileMainPCL);
+                    CheckPCLFormFile(true, _formFileMainPCL);
                 }
             }
         }
@@ -1949,7 +1947,7 @@ namespace PCLParaphernalia
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
 
-                    selected = selectPCLFormFile(ref filename);
+                    selected = SelectPCLFormFile(ref filename);
 
                     if (selected)
                     {
@@ -1960,7 +1958,7 @@ namespace PCLParaphernalia
 
                 if (selected)
                 {
-                    checkPCLFormFile(false, _formFileRearPCL);
+                    CheckPCLFormFile(false, _formFileRearPCL);
                 }
             }
         }
@@ -1978,7 +1976,7 @@ namespace PCLParaphernalia
                                                    RoutedEventArgs e)
         {
             if (_initialised)
-                validatePCLMacroId(false, true);
+                ValidatePCLMacroId(false, true);
         }
 
         //--------------------------------------------------------------------//
@@ -1994,7 +1992,7 @@ namespace PCLParaphernalia
                                                      TextChangedEventArgs e)
         {
             if (_initialised)
-                validatePCLMacroId(false, false);
+                ValidatePCLMacroId(false, false);
         }
 
         //--------------------------------------------------------------------//
@@ -2010,7 +2008,7 @@ namespace PCLParaphernalia
                                                    RoutedEventArgs e)
         {
             if (_initialised)
-                validatePCLMacroId(true, true);
+                ValidatePCLMacroId(true, true);
         }
 
         //--------------------------------------------------------------------//
@@ -2026,7 +2024,7 @@ namespace PCLParaphernalia
                                                      TextChangedEventArgs e)
         {
             if (_initialised)
-                validatePCLMacroId(true, false);
+                ValidatePCLMacroId(true, false);
         }
 
         //--------------------------------------------------------------------//
@@ -2042,7 +2040,7 @@ namespace PCLParaphernalia
                                                      RoutedEventArgs e)
         {
             if (_initialised)
-                validatePCLTestPageCount(true);
+                ValidatePCLTestPageCount(true);
         }
 
         //--------------------------------------------------------------------//
@@ -2058,7 +2056,7 @@ namespace PCLParaphernalia
                                                        TextChangedEventArgs e)
         {
             if (_initialised)
-                validatePCLTestPageCount(false);
+                ValidatePCLTestPageCount(false);
         }
 
         //--------------------------------------------------------------------//
@@ -2088,7 +2086,7 @@ namespace PCLParaphernalia
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
 
-                selected = selectPCLXLFormFile(ref filename);
+                selected = SelectPCLXLFormFile(ref filename);
 
                 if (selected)
                 {
@@ -2099,7 +2097,7 @@ namespace PCLParaphernalia
 
             if (selected)
             {
-                checkPCLXLFormFile(true, _formFileMainPCLXL);
+                CheckPCLXLFormFile(true, _formFileMainPCLXL);
             }
         }
 
@@ -2130,7 +2128,7 @@ namespace PCLParaphernalia
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
 
-                selected = selectPCLXLFormFile(ref filename);
+                selected = SelectPCLXLFormFile(ref filename);
 
                 if (selected)
                 {
@@ -2141,7 +2139,7 @@ namespace PCLParaphernalia
 
             if (selected)
             {
-                checkPCLXLFormFile(false, _formFileRearPCLXL);
+                CheckPCLXLFormFile(false, _formFileRearPCLXL);
             }
         }
 
@@ -2157,7 +2155,7 @@ namespace PCLParaphernalia
         private void txtPCLXLFormNameMain_LostFocus(object sender,
                                                    RoutedEventArgs e)
         {
-            if (validatePCLXLFormName(false, true))
+            if (ValidatePCLXLFormName(false, true))
                 _formNameMainPCLXL = txtPCLXLFormNameMain.Text;
         }
 
@@ -2188,7 +2186,7 @@ namespace PCLParaphernalia
         private void txtPCLXLFormNameRear_LostFocus(object sender,
                                                    RoutedEventArgs e)
         {
-            if (validatePCLXLFormName(true, true))
+            if (ValidatePCLXLFormName(true, true))
                 _formNameRearPCLXL = txtPCLXLFormNameRear.Text;
         }
 
@@ -2220,7 +2218,7 @@ namespace PCLParaphernalia
                                                      RoutedEventArgs e)
         {
             if (_initialised)
-                validatePCLXLTestPageCount(true);
+                ValidatePCLXLTestPageCount(true);
         }
 
         //--------------------------------------------------------------------//
@@ -2236,7 +2234,7 @@ namespace PCLParaphernalia
                                                        TextChangedEventArgs e)
         {
             if (_initialised)
-                validatePCLXLTestPageCount(false);
+                ValidatePCLXLTestPageCount(false);
         }
 
         //--------------------------------------------------------------------//
@@ -2248,8 +2246,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool validatePCLMacroId(bool rearForm,
-                                             bool lostFocusEvent)
+        private bool ValidatePCLMacroId(bool rearForm, bool lostFocusEvent)
         {
             const ushort minVal = 0;
             const ushort maxVal = 32767;
@@ -2350,7 +2347,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool validatePCLSelectionCombo()
+        private bool ValidatePCLSelectionCombo()
         {
             bool OK = true;
 
@@ -2434,7 +2431,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool validatePCLTestPageCount(bool lostFocusEvent)
+        private bool ValidatePCLTestPageCount(bool lostFocusEvent)
         {
             const ushort minVal = 1;
             const ushort maxVal = 20;
@@ -2501,8 +2498,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool validatePCLXLFormName(bool rearForm,
-                                              bool lostFocusEvent)
+        private bool ValidatePCLXLFormName(bool rearForm, bool lostFocusEvent)
         {
             //          const Int32 minLen = 14;
             const int maxLen = 20;
@@ -2598,7 +2594,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool validatePCLXLSelectionCombo()
+        private bool ValidatePCLXLSelectionCombo()
         {
             bool OK = true;
 
@@ -2674,7 +2670,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool validatePCLXLTestPageCount(bool lostFocusEvent)
+        private bool ValidatePCLXLTestPageCount(bool lostFocusEvent)
         {
             const ushort minVal = 1;
             const ushort maxVal = 20;

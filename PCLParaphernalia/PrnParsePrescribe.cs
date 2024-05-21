@@ -42,10 +42,10 @@ namespace PCLParaphernalia
         private int _fileOffset;
         private int _endOffset;
 
-        private PrnParseConstants.eOptOffsetFormats _indxOffsetFormat;
+        private PrnParseConstants.OptOffsetFormats _indxOffsetFormat;
 
-        private PrnParseConstants.eOptCharSetSubActs _indxCharSetSubAct;
-        private PrnParseConstants.eOptCharSets _indxCharSetName;
+        private PrnParseConstants.OptCharSetSubActs _indxCharSetSubAct;
+        private PrnParseConstants.OptCharSets _indxCharSetName;
         private int _valCharSetSubCode;
 
         private readonly ASCIIEncoding _ascii = new ASCIIEncoding();
@@ -87,8 +87,8 @@ namespace PCLParaphernalia
             ref int commandLen,
             ref bool continuation)
         {
-            PrnParseConstants.eContType contType =
-                PrnParseConstants.eContType.None;
+            PrnParseConstants.ContType contType =
+                PrnParseConstants.ContType.None;
 
             byte crntByte;
 
@@ -149,7 +149,7 @@ namespace PCLParaphernalia
 
                 continuation = true;
 
-                contType = PrnParseConstants.eContType.Prescribe;
+                contType = PrnParseConstants.ContType.Prescribe;
 
                 _linkData.setBacktrack(contType, -bufRem);
 
@@ -178,7 +178,7 @@ namespace PCLParaphernalia
             ref int fileOffset,
             ref int bufRem,
             ref int bufOffset,
-            ref ToolCommonData.ePrintLang crntPDL,
+            ref ToolCommonData.PrintLang crntPDL,
             ref bool endReached,
             PrnParseLinkData linkData,
             PrnParseOptions options,
@@ -249,10 +249,10 @@ namespace PCLParaphernalia
         private bool parseContinuation(
             ref int bufRem,
             ref int bufOffset,
-            ref ToolCommonData.ePrintLang crntPDL,
+            ref ToolCommonData.PrintLang crntPDL,
             ref bool endReached)
         {
-            PrnParseConstants.eContType contType = PrnParseConstants.eContType.None;
+            PrnParseConstants.ContType contType = PrnParseConstants.ContType.None;
 
             int prefixLen = 0,
                   contDataLen = 0,
@@ -273,9 +273,9 @@ namespace PCLParaphernalia
                                    ref prefixA,
                                    ref prefixB);
 
-            if ((contType == PrnParseConstants.eContType.Prescribe)
+            if ((contType == PrnParseConstants.ContType.Prescribe)
                              ||
-                (contType == PrnParseConstants.eContType.Reset))
+                (contType == PrnParseConstants.ContType.Reset))
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -308,7 +308,7 @@ namespace PCLParaphernalia
         private bool parseSequences(
             ref int bufRem,
             ref int bufOffset,
-            ref ToolCommonData.ePrintLang crntPDL,
+            ref ToolCommonData.PrintLang crntPDL,
             ref bool endReached)
         {
             long startPos;
@@ -339,9 +339,9 @@ namespace PCLParaphernalia
                                                      _analysisLevel);
 
                     PrnParseCommon.addDataRow(
-                        PrnParseRowTypes.eType.PrescribeCommand,
+                        PrnParseRowTypes.Type.PrescribeCommand,
                         _table,
-                        PrnParseConstants.eOvlShow.Remove,
+                        PrnParseConstants.OvlShow.Remove,
                         _indxOffsetFormat,
                         _fileOffset + bufOffset,
                         _analysisLevel,
@@ -393,7 +393,7 @@ namespace PCLParaphernalia
 
                     langSwitch = true;
 
-                    crntPDL = ToolCommonData.ePrintLang.PCL;
+                    crntPDL = ToolCommonData.PrintLang.PCL;
                 }
                 else
                 {
@@ -415,7 +415,7 @@ namespace PCLParaphernalia
                 }
             }
 
-            _linkData.MakeOvlAct = PrnParseConstants.eOvlAct.Remove;
+            _linkData.MakeOvlAct = PrnParseConstants.OvlAct.Remove;
             _linkData.MakeOvlSkipBegin = startPos;
             _linkData.MakeOvlSkipEnd = _fileOffset + bufOffset;
 
@@ -439,10 +439,10 @@ namespace PCLParaphernalia
             ref int bufOffset,
             ref bool continuation,
             ref bool langSwitch,
-            ref ToolCommonData.ePrintLang crntPDL)
+            ref ToolCommonData.PrintLang crntPDL)
         {
-            PrnParseConstants.eContType contType =
-                PrnParseConstants.eContType.None;
+            PrnParseConstants.ContType contType =
+                PrnParseConstants.ContType.None;
 
             byte crntByte,
                  cmdParaByte1 = 0x3f;
@@ -580,7 +580,7 @@ namespace PCLParaphernalia
 
                 continuation = true;
 
-                contType = PrnParseConstants.eContType.Prescribe;
+                contType = PrnParseConstants.ContType.Prescribe;
 
                 _linkData.setBacktrack(contType, -bufRem);
             }
@@ -774,9 +774,9 @@ namespace PCLParaphernalia
                         seq = command.Substring(sliceOffset, sliceLen);
 
                         PrnParseCommon.addDataRow(
-                            PrnParseRowTypes.eType.PrescribeCommand,
+                            PrnParseRowTypes.Type.PrescribeCommand,
                             _table,
-                            PrnParseConstants.eOvlShow.Remove,
+                            PrnParseConstants.OvlShow.Remove,
                             _indxOffsetFormat,
                             _fileOffset + bufOffset + sliceOffset,
                             _analysisLevel,
@@ -790,9 +790,9 @@ namespace PCLParaphernalia
                               command.Substring(sliceOffset, sliceLen);
 
                         PrnParseCommon.addDataRow(
-                            PrnParseRowTypes.eType.PrescribeCommand,
+                            PrnParseRowTypes.Type.PrescribeCommand,
                             _table,
-                            PrnParseConstants.eOvlShow.Remove,
+                            PrnParseConstants.OvlShow.Remove,
                             _indxOffsetFormat,
                             _fileOffset + bufOffset + sliceOffset,
                             _analysisLevel,
@@ -825,9 +825,9 @@ namespace PCLParaphernalia
                         seq = command.Substring(sliceOffset, sliceLen);
 
                         PrnParseCommon.addDataRow(
-                            PrnParseRowTypes.eType.PrescribeCommand,
+                            PrnParseRowTypes.Type.PrescribeCommand,
                             _table,
-                            PrnParseConstants.eOvlShow.Remove,
+                            PrnParseConstants.OvlShow.Remove,
                             _indxOffsetFormat,
                             _fileOffset + bufOffset + sliceOffset,
                             _analysisLevel,
@@ -841,9 +841,9 @@ namespace PCLParaphernalia
                               command.Substring(sliceOffset, sliceLen);
 
                         PrnParseCommon.addDataRow(
-                            PrnParseRowTypes.eType.PrescribeCommand,
+                            PrnParseRowTypes.Type.PrescribeCommand,
                             _table,
-                            PrnParseConstants.eOvlShow.Remove,
+                            PrnParseConstants.OvlShow.Remove,
                             _indxOffsetFormat,
                             _fileOffset + bufOffset + sliceOffset,
                             _analysisLevel,
@@ -887,9 +887,9 @@ namespace PCLParaphernalia
                     _linkData.PrescribeSCRC = cmdParaByte1;
 
                     PrnParseCommon.addTextRow(
-                        PrnParseRowTypes.eType.MsgComment,
+                        PrnParseRowTypes.Type.MsgComment,
                         _table,
-                        PrnParseConstants.eOvlShow.None,
+                        PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "Comment",
                         string.Empty,

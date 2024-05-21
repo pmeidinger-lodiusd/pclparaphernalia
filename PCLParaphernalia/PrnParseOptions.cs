@@ -28,19 +28,19 @@ namespace PCLParaphernalia
 
         private PropertyInfo[] _stdClrsPropertyInfo;
 
-        private PrnParseConstants.eOptCharSets _indxCharSetName;
-        private PrnParseConstants.eOptCharSetSubActs _indxCharSetSubAct;
+        private PrnParseConstants.OptCharSets _indxCharSetName;
+        private PrnParseConstants.OptCharSetSubActs _indxCharSetSubAct;
         private int _valCharSetSubCode;
 
-        private PrnParseConstants.eOptOffsetFormats _indxGenOffsetFormat;
+        private PrnParseConstants.OptOffsetFormats _indxGenOffsetFormat;
 
-        private PrnParseConstants.eOptOffsetFormats _indxCurFOffsetFormat;
+        private PrnParseConstants.OptOffsetFormats _indxCurFOffsetFormat;
 
-        private PrnParseConstants.eOptStatsLevel _indxStatsLevel;
+        private PrnParseConstants.OptStatsLevel _indxStatsLevel;
 
-        private ToolCommonData.ePrintLang _indxCurFInitLang;
+        private ToolCommonData.PrintLang _indxCurFInitLang;
 
-        private PrnParseConstants.ePCLXLBinding _indxCurFXLBinding;
+        private PrnParseConstants.PCLXLBinding _indxCurFXLBinding;
 
         private int _ctClrMapStdClrs;
 
@@ -110,7 +110,7 @@ namespace PCLParaphernalia
 
         public PrnParseOptions()
         {
-            int ctRowTypes = PrnParseRowTypes.getCount();
+            int ctRowTypes = PrnParseRowTypes.GetCount();
 
             _indxClrMapBack = new int[ctRowTypes];
             _indxClrMapFore = new int[ctRowTypes];
@@ -126,7 +126,7 @@ namespace PCLParaphernalia
 
         public PrnParseOptions(PrnParseOptions parent)
         {
-            int ctRowTypes = PrnParseRowTypes.getCount();
+            int ctRowTypes = PrnParseRowTypes.GetCount();
 
             _indxClrMapBack = new int[ctRowTypes];
             _indxClrMapFore = new int[ctRowTypes];
@@ -296,8 +296,8 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public void getOptCharSet(
-            ref PrnParseConstants.eOptCharSets indxName,
-            ref PrnParseConstants.eOptCharSetSubActs indxSubAct,
+            ref PrnParseConstants.OptCharSets indxName,
+            ref PrnParseConstants.OptCharSetSubActs indxSubAct,
             ref int valSubCode)
         {
             indxName = _indxCharSetName;
@@ -318,7 +318,7 @@ namespace PCLParaphernalia
                                   ref int[] indxClrMapBack,
                                   ref int[] indxClrMapFore)
         {
-            int ctRowTypes = PrnParseRowTypes.getCount();
+            int ctRowTypes = PrnParseRowTypes.GetCount();
 
             flagClrMapUseClr = _flagClrMapUseClr;
 
@@ -356,9 +356,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public void getOptCurF(
-            ref ToolCommonData.ePrintLang indxInitLang,
-            ref PrnParseConstants.ePCLXLBinding indxXLBinding,
-            ref PrnParseConstants.eOptOffsetFormats indxOffsetFormat,
+            ref ToolCommonData.PrintLang indxInitLang,
+            ref PrnParseConstants.PCLXLBinding indxXLBinding,
+            ref PrnParseConstants.OptOffsetFormats indxOffsetFormat,
             ref int valOffsetStart,
             ref int valOffsetEnd,
             ref int valOffsetMax)
@@ -381,8 +381,8 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public void getOptCurFBasic(
-            ref ToolCommonData.ePrintLang indxInitLang,
-            ref PrnParseConstants.ePCLXLBinding indxXLBinding,
+            ref ToolCommonData.PrintLang indxInitLang,
+            ref PrnParseConstants.PCLXLBinding indxXLBinding,
             ref int valOffsetStart,
             ref int valOffsetEnd)
         {
@@ -419,7 +419,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public void getOptGeneral(
-            ref PrnParseConstants.eOptOffsetFormats indxOffsetFormat,
+            ref PrnParseConstants.OptOffsetFormats indxOffsetFormat,
             ref bool flagAutoAnalyse,
             ref bool flagDiagFileAccess)
         {
@@ -684,7 +684,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public void getOptStats(
-            ref PrnParseConstants.eOptStatsLevel indxLevel,
+            ref PrnParseConstants.OptStatsLevel indxLevel,
             ref bool flagExcUnusedPCLObs,
             ref bool flagExcUnusedPCLXLRes)
         {
@@ -699,7 +699,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.eOptOffsetFormats IndxGenOffsetFormat
+        public PrnParseConstants.OptOffsetFormats IndxGenOffsetFormat
         {
             get { return _indxGenOffsetFormat; }
         }
@@ -710,7 +710,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.ePCLXLBinding IndxCurFXLBinding
+        public PrnParseConstants.PCLXLBinding IndxCurFXLBinding
         {
             get { return _indxCurFXLBinding; }
         }
@@ -721,7 +721,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.eOptStatsLevel IndxStatsLevel
+        public PrnParseConstants.OptStatsLevel IndxStatsLevel
         {
             get { return _indxStatsLevel; }
         }
@@ -773,19 +773,19 @@ namespace PCLParaphernalia
                                                  ref i2,
                                                  ref i3);
 
-            max = (int)PrnParseConstants.eOptCharSets.Max;
+            max = (int)PrnParseConstants.OptCharSets.Max;
 
             if ((i1 < 0) || (i1 >= max))
-                i1 = (int)PrnParseConstants.eOptCharSets.ISO_8859_1;
+                i1 = (int)PrnParseConstants.OptCharSets.ISO_8859_1;
 
-            _indxCharSetName = (PrnParseConstants.eOptCharSets)i1;
+            _indxCharSetName = (PrnParseConstants.OptCharSets)i1;
 
-            max = (int)PrnParseConstants.eOptCharSetSubActs.Max;
+            max = (int)PrnParseConstants.OptCharSetSubActs.Max;
 
             if ((i2 < 0) || (i2 >= max))
-                i2 = (int)PrnParseConstants.eOptCharSetSubActs.Hex;
+                i2 = (int)PrnParseConstants.OptCharSetSubActs.Hex;
 
-            _indxCharSetSubAct = (PrnParseConstants.eOptCharSetSubActs)i2;
+            _indxCharSetSubAct = (PrnParseConstants.OptCharSetSubActs)i2;
 
             if ((i3 < PrnParseConstants.asciiSpace) ||
                 (i3 == PrnParseConstants.asciiDEL) ||
@@ -814,7 +814,7 @@ namespace PCLParaphernalia
 
         private void metricsLoadClrMap()
         {
-            PrnParseRowTypes.setDefaultClrs(ref _indxClrMapBack,
+            PrnParseRowTypes.SetDefaultClrs(ref _indxClrMapBack,
                                              ref _indxClrMapFore);
 
             ToolPrnAnalysePersist.loadOptClrMap(ref _flagClrMapUseClr);
@@ -874,12 +874,12 @@ namespace PCLParaphernalia
                                                   ref _flagGenMiscAutoAnalyse,
                                                   ref _flagGenDiagFileAccess);
 
-            max = (int)PrnParseConstants.eOptOffsetFormats.Max;
+            max = (int)PrnParseConstants.OptOffsetFormats.Max;
 
             if ((i1 < 0) || (i1 >= max))
-                i1 = (int)PrnParseConstants.eOptOffsetFormats.Decimal;
+                i1 = (int)PrnParseConstants.OptOffsetFormats.Decimal;
 
-            _indxGenOffsetFormat = (PrnParseConstants.eOptOffsetFormats)i1;
+            _indxGenOffsetFormat = (PrnParseConstants.OptOffsetFormats)i1;
         }
 
         //--------------------------------------------------------------------//
@@ -991,12 +991,12 @@ namespace PCLParaphernalia
                 ref _flagStatsExcUnusedPCLObs,
                 ref _flagStatsExcUnusedPCLXLRes);
 
-            max = (int)PrnParseConstants.eOptStatsLevel.Max;
+            max = (int)PrnParseConstants.OptStatsLevel.Max;
 
             if ((i1 < 0) || (i1 >= max))
-                i1 = (int)PrnParseConstants.eOptStatsLevel.ReferencedOnly;
+                i1 = (int)PrnParseConstants.OptStatsLevel.ReferencedOnly;
 
-            _indxStatsLevel = (PrnParseConstants.eOptStatsLevel)i1;
+            _indxStatsLevel = (PrnParseConstants.OptStatsLevel)i1;
         }
 
         //--------------------------------------------------------------------//
@@ -1095,8 +1095,8 @@ namespace PCLParaphernalia
 
         public void resetOptCurF(long fileSize)
         {
-            _indxCurFInitLang = ToolCommonData.ePrintLang.PCL;
-            _indxCurFXLBinding = PrnParseConstants.ePCLXLBinding.Unknown;
+            _indxCurFInitLang = ToolCommonData.PrintLang.PCL;
+            _indxCurFXLBinding = PrnParseConstants.PCLXLBinding.Unknown;
             _indxCurFOffsetFormat = _indxGenOffsetFormat;
 
             _valCurFOffsetMax = (int)fileSize;
@@ -1115,8 +1115,8 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public void setOptCharSet(
-            PrnParseConstants.eOptCharSets indxName,
-            PrnParseConstants.eOptCharSetSubActs indxSubAct,
+            PrnParseConstants.OptCharSets indxName,
+            PrnParseConstants.OptCharSetSubActs indxSubAct,
             int valSubCode)
         {
             _indxCharSetName = indxName;
@@ -1152,9 +1152,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public void setOptCurF(
-            ToolCommonData.ePrintLang indxInitLang,
-            PrnParseConstants.ePCLXLBinding indxXLBinding,
-            PrnParseConstants.eOptOffsetFormats indxOffsetFormat,
+            ToolCommonData.PrintLang indxInitLang,
+            PrnParseConstants.PCLXLBinding indxXLBinding,
+            PrnParseConstants.OptOffsetFormats indxOffsetFormat,
             int valOffsetStart,
             int valOffsetEnd)
         {
@@ -1175,7 +1175,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public void setOptGeneral(
-            PrnParseConstants.eOptOffsetFormats indxOffsetFormat,
+            PrnParseConstants.OptOffsetFormats indxOffsetFormat,
             bool flagMiscAutoAnalyse,
             bool flagDiagFileAccess)
         {
@@ -1321,7 +1321,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public void setOptStats(
-            PrnParseConstants.eOptStatsLevel indxLevel,
+            PrnParseConstants.OptStatsLevel indxLevel,
             bool flagExcUnusedPCLObs,
             bool flagExcUnusedPCLXLRes)
         {

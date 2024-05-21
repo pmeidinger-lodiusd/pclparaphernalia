@@ -22,12 +22,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PJLCommand(PJLCommands.eCmdIndex indx,
-                          PJLCommands.eCmdFormat format,
-                          PJLCommands.eRequestType type,
+        public PJLCommand(PJLCommands.CmdIndex indx,
+                          PJLCommands.CmdFormat format,
+                          PJLCommands.RequestType type,
                           string desc)
         {
-            if (indx == PJLCommands.eCmdIndex.Null)
+            if (indx == PJLCommands.CmdIndex.Null)
                 Name = PJLCommands.nullCmdKey;
             else
                 Name = indx.ToString();
@@ -54,7 +54,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PJLCommands.eCmdFormat Format { get; }
+        public PJLCommands.CmdFormat Format { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -135,6 +135,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PJLCommands.eRequestType Type { get; }
+        public PJLCommands.RequestType Type { get; }
     }
 }

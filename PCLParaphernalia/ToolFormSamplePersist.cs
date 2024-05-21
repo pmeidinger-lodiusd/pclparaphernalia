@@ -79,7 +79,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCapture(ToolCommonData.ePrintLang crntPDL,
+        public static void loadDataCapture(ToolCommonData.PrintLang crntPDL,
                                             ref string captureFile)
         {
             RegistryKey keyMain =
@@ -133,7 +133,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if (crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 const string key = _subKeyTools + "\\" + _subKeyToolsFormSample +
                                             "\\" + _subKeyPCL;
@@ -145,7 +145,7 @@ namespace PCLParaphernalia
                         defWorkFolder + "\\" + _defaultCaptureFilePCL);
                 }
             }
-            else if (crntPDL == ToolCommonData.ePrintLang.PCLXL)
+            else if (crntPDL == ToolCommonData.PrintLang.PCLXL)
             {
                 const string key = _subKeyTools + "\\" + _subKeyToolsFormSample +
                                             "\\" + _subKeyPCLXL;
@@ -177,16 +177,16 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                if (Helper_RegKey.keyExists(subKey, _subKeyPCL5))
+                if (Helper_RegKey.KeyExists(subKey, _subKeyPCL5))
                 {
                     // update from v2_5_0_0
-                    Helper_RegKey.renameKey(subKey, _subKeyPCL5, _subKeyPCL);
+                    Helper_RegKey.RenameKey(subKey, _subKeyPCL5, _subKeyPCL);
                 }
 
-                if (Helper_RegKey.keyExists(subKey, _subKeyPCL6))
+                if (Helper_RegKey.KeyExists(subKey, _subKeyPCL6))
                 {
                     // update from v2_5_0_0
-                    Helper_RegKey.renameKey(subKey, _subKeyPCL6, _subKeyPCLXL);
+                    Helper_RegKey.RenameKey(subKey, _subKeyPCL6, _subKeyPCLXL);
                 }
 
                 indxPDL = (int)subKey.GetValue(_nameIndxPDL,
@@ -389,13 +389,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCapture(ToolCommonData.ePrintLang crntPDL,
+        public static void saveDataCapture(ToolCommonData.PrintLang crntPDL,
                                             string captureFile)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            if (crntPDL == ToolCommonData.ePrintLang.PCL)
+            if (crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 const string key = _subKeyTools + "\\" + _subKeyToolsFormSample +
                                             "\\" + _subKeyPCL;
@@ -410,7 +410,7 @@ namespace PCLParaphernalia
                     }
                 }
             }
-            else if (crntPDL == ToolCommonData.ePrintLang.PCLXL)
+            else if (crntPDL == ToolCommonData.PrintLang.PCLXL)
             {
                 const string key = _subKeyTools + "\\" + _subKeyToolsFormSample +
                                             "\\" + _subKeyPCLXL;

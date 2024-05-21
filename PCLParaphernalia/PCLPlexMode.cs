@@ -16,7 +16,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private readonly PCLPlexModes.ePlexType _plexType;
+        private readonly PCLPlexModes.PlexType _plexType;
 
         private readonly string _plexModeName;
         private readonly byte _plexModeIdPCL;
@@ -29,7 +29,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLPlexMode(PCLPlexModes.ePlexType plexType,
+        public PCLPlexMode(PCLPlexModes.PlexType plexType,
                             string name,
                             byte idPCL,
                             byte idPCLXLLand,
@@ -97,7 +97,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLPlexModes.ePlexType getPlexType()
+        public PCLPlexModes.PlexType getPlexType()
         {
             return _plexType;
         }
