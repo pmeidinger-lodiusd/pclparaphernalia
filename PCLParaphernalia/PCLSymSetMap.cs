@@ -890,7 +890,7 @@ namespace PCLParaphernalia
 
                         if (i < rangeLastIndx)
                         {
-                            mapRows[rowIndx] = ""; // inter-range gap //
+                            mapRows[rowIndx] = string.Empty; // inter-range gap //
                             rowIndx++;
                         }
                     }
@@ -1038,7 +1038,7 @@ namespace PCLParaphernalia
 
                         if (i < rangeLastIndx)
                         {
-                            mapRows[rowIndx] = ""; // inter-range gap //
+                            mapRows[rowIndx] = string.Empty; // inter-range gap //
                             rowIndx++;
                         }
                     }
@@ -1212,7 +1212,7 @@ namespace PCLParaphernalia
 
                         if (i < rangeLastIndx)
                         {
-                            mapRows[rowIndx] = ""; // inter-range gap //
+                            mapRows[rowIndx] = string.Empty; // inter-range gap //
                             rowIndx++;
                         }
                     }

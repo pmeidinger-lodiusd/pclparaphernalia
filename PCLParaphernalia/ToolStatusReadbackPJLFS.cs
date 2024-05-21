@@ -517,7 +517,7 @@ namespace PCLParaphernalia
         {
             const int replyBufLen = 32768;
 
-            string reply = "";
+            string reply = string.Empty;
 
             bool binFileOpen = binTgtFileOpen (binTgtFilename);
 

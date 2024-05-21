@@ -430,7 +430,7 @@ namespace PCLParaphernalia
             {
                 if (!_mapped)
                 {
-                    return "";
+                    return string.Empty;
                 }
                 else
                 {
@@ -456,7 +456,7 @@ namespace PCLParaphernalia
             {
                 if (!_mapped)
                 {
-                    return "";
+                    return string.Empty;
                 }
                 else
                 {
@@ -484,7 +484,7 @@ namespace PCLParaphernalia
             {
                 if (!_mapped)
                 {
-                    return "";
+                    return string.Empty;
                 }
                 else
                 {
@@ -510,7 +510,7 @@ namespace PCLParaphernalia
             {
                 if (!_mapped)
                 {
-                    return "";
+                    return string.Empty;
                 }
                 else
                 {
@@ -538,7 +538,7 @@ namespace PCLParaphernalia
             {
                 if (!_mapped)
                 {
-                    string[] noMap = new string[1] { "" };
+                    string[] noMap = new string[1] { string.Empty };
 
                     return noMap;
                 }
@@ -567,7 +567,7 @@ namespace PCLParaphernalia
             {
                 if (!_mapped)
                 {
-                    string[] noMap = new string[1] { "" };
+                    string[] noMap = new string[1] { string.Empty };
 
                     return noMap;
                 }
@@ -598,7 +598,7 @@ namespace PCLParaphernalia
             {
                 if (!_mapped)
                 {
-                    string[] noMap = new string[1] { "" };
+                    string[] noMap = new string[1] { string.Empty };
 
                     return noMap;
                 }
@@ -627,7 +627,7 @@ namespace PCLParaphernalia
             {
                 if (!_mapped)
                 {
-                    string[] noMap = new string[1] { "" };
+                    string[] noMap = new string[1] { string.Empty };
 
                     return noMap;
                 }

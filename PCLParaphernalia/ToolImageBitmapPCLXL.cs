@@ -585,7 +585,7 @@ namespace PCLParaphernalia
 
             int indStd;
 
-            PCLXLWriter.stdJobHeader(prnWriter, "");
+            PCLXLWriter.stdJobHeader(prnWriter, string.Empty);
 
             indStd = 0;
 
@@ -682,7 +682,7 @@ namespace PCLParaphernalia
 
             prnWriter.Write(bufStd, 0, indStd);
 
-            PCLXLWriter.stdJobTrailer(prnWriter, false, "");
+            PCLXLWriter.stdJobTrailer(prnWriter, false, string.Empty);
         }
     }
 }

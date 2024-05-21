@@ -108,8 +108,8 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string subKeyType = "";
-            string defFileBase = "";
+            string subKeyType = string.Empty;
+            string defFileBase = string.Empty;
 
             string defWorkFolder = ToolCommonData.DefWorkFolder;
 
@@ -666,7 +666,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string subKeyType = "";
+            string subKeyType = string.Empty;
 
             if (crntToolSubId == ToolCommonData.eToolSubIds.Colour)
                 subKeyType = "\\" + _subKeyColour;

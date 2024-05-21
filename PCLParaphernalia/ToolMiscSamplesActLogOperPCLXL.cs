@@ -242,7 +242,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            generateJobHeader (prnWriter, "");
+            generateJobHeader (prnWriter, string.Empty);
 
             //----------------------------------------------------------------//
 

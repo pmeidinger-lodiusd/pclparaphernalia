@@ -184,8 +184,8 @@ namespace PCLParaphernalia
                         knownCC;
                 ;
 
-                string seq = "",
-                       ccDesc = "";
+                string seq = string.Empty,
+                       ccDesc = string.Empty;
 
                 byte[] seqBuf = new byte[PrnParseConstants.cRptA_colMax_Seq];
                 byte seqByte,
@@ -260,7 +260,7 @@ namespace PCLParaphernalia
                             _analysisLevel,
                             "HP-GL/2 Command",
                             seq,
-                            "");
+                            string.Empty);
                     }
                     else if (firstSliceAfterCC)
                     {
@@ -273,7 +273,7 @@ namespace PCLParaphernalia
                             _analysisLevel,
                             "HP-GL/2 Command cont.",
                             seq,
-                            "");
+                            string.Empty);
                     }
                     else
                     {
@@ -284,9 +284,9 @@ namespace PCLParaphernalia
                             _indxOffsetFormat,
                             _fileOffset + bufOffset + sliceOffset,
                             _analysisLevel,
-                            "",
+                            string.Empty,
                             seq,
-                            "");
+                            string.Empty);
                     }
 
                     len = len - sliceLen - ccAdjust;
@@ -380,7 +380,7 @@ namespace PCLParaphernalia
                             _analysisLevel,
                             "HP-GL/2 Command",
                             seq,
-                            len == 0 ? desc : "");
+                            len == 0 ? desc : string.Empty);
                     }
                     else if (firstSliceAfterCC)
                     {
@@ -393,7 +393,7 @@ namespace PCLParaphernalia
                             _analysisLevel,
                             "HP-GL/2 Command cont.",
                             seq,
-                            len == 0 ? desc : "");
+                            len == 0 ? desc : string.Empty);
                     }
                     else
                     {
@@ -404,9 +404,9 @@ namespace PCLParaphernalia
                             _indxOffsetFormat,
                             _fileOffset + bufOffset + sliceOffset,
                             _analysisLevel,
-                            "",
+                            string.Empty,
                             seq,
-                            len == 0 ? desc : "");
+                            len == 0 ? desc : string.Empty);
                     }
 
                     sliceStart += sliceLen + ccAdjust;
@@ -595,7 +595,7 @@ namespace PCLParaphernalia
                                         true,
                                         true,
                                         true,
-                                        "");
+                                        string.Empty);
 
                     bufRem = 0;
                 }
@@ -617,7 +617,7 @@ namespace PCLParaphernalia
                                         true,
                                         false,
                                         true,
-                                        "");
+                                        string.Empty);
 
                     bufRem -= seqLen;
                     bufOffset += seqLen;
@@ -761,9 +761,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgComment,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "Comment",
-                            "",
+                            string.Empty,
                             "Previous sequence not " +
                             "terminated by semi-colon");
                     }
@@ -878,7 +878,7 @@ namespace PCLParaphernalia
 
                         bool knownWS = false;
 
-                        string desc = "";
+                        string desc = string.Empty;
 
                         byte c1 = _buf [bufOffset];
 
@@ -921,9 +921,9 @@ namespace PCLParaphernalia
                                 PrnParseRowTypes.eType.MsgWarning,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
-                                "",
+                                string.Empty,
                                 "*** Warning ***",
-                                "",
+                                string.Empty,
                                 "Unexpected sequence found");
 
                             PrnParseData.processLines (
@@ -1010,7 +1010,7 @@ namespace PCLParaphernalia
 
             bool invalidSeqFound;
 
-            string desc = "",
+            string desc = string.Empty,
                    command,
                    showChar;
 
@@ -1285,9 +1285,9 @@ namespace PCLParaphernalia
                                 PrnParseRowTypes.eType.MsgWarning,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
-                                "",
+                                string.Empty,
                                 "*** Warning ***",
-                                "",
+                                string.Empty,
                                 "Invalid character prior to " +
                                 "opening quote character");
                         }
@@ -1532,9 +1532,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgWarning,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "*** Warning ***",
-                            "",
+                            string.Empty,
                             "Invalid Label terminator");
 
                          _labelTerm = PrnParseConstants.asciiETX;
@@ -1554,9 +1554,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgComment,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Comment",
-                        "",
+                        string.Empty,
                         "Label terminator is now " + showChar);
                 }
                 else if (seqKnown && optToggleTransparency)
@@ -1595,9 +1595,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgWarning,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "*** Warning ***",
-                            "",
+                            string.Empty,
                             "Invalid Transparency value");
 
                         _labelTrans = false;
@@ -1612,9 +1612,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgComment,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Comment",
-                        "",
+                        string.Empty,
                         "Label transparency is now " + showChar);
                 }
             }

@@ -154,7 +154,7 @@ namespace PCLParaphernalia
                 //     Tool SymbolSetGen
                 //     Tool XXXDiags
 
-                _saveFilename = "";
+                _saveFilename = string.Empty;
         }
 
         //--------------------------------------------------------------------//
@@ -490,7 +490,7 @@ namespace PCLParaphernalia
 
                 if (ptr <= 0)
                 {
-                    saveDirectory = "";
+                    saveDirectory = string.Empty;
                     _crntFilename = _saveFilename;
                 }
                 else

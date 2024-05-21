@@ -1343,9 +1343,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgWarning,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "*** Warning ***",
-                            "",
+                            string.Empty,
                             "Unexpected sequence found:");
 
                         PrnParseData.processLines(
@@ -1495,7 +1495,7 @@ namespace PCLParaphernalia
                     vQuotedEnd,
                     vNumberStarted;
 
-            string descComplex = "",
+            string descComplex = string.Empty,
                    typeText,
                    vendorName;
 
@@ -1665,7 +1665,7 @@ namespace PCLParaphernalia
                         _fileOffset + i,
                         _analysisLevel,
                         "*** Warning ***",
-                        "",
+                        string.Empty,
                         "<Esc> found before termination of " + text);
 
                     p_or_TChar = PrnParseConstants.asciiSUB;    // will not match any table entries //
@@ -2023,9 +2023,9 @@ namespace PCLParaphernalia
                                 PrnParseRowTypes.eType.MsgWarning,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
-                                "",
+                                string.Empty,
                                 "*** Warning ***",
-                                "",
+                                string.Empty,
                                 "Unexpected value field in next sequence");
                         }
 
@@ -2046,9 +2046,9 @@ namespace PCLParaphernalia
                                 PrnParseRowTypes.eType.MsgError,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
-                                "",
+                                string.Empty,
                                 "*** Error ***",
-                                "",
+                                string.Empty,
                                 "Unexpected nil-G sequence match");
                         }
                         else if (!optNilGChar && (prefixLen != 2))
@@ -2069,9 +2069,9 @@ namespace PCLParaphernalia
                                 PrnParseRowTypes.eType.MsgError,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
-                                "",
+                                string.Empty,
                                 "*** Error ***",
-                                "",
+                                string.Empty,
                                 "Unexpected sequence match");
                         }
 
@@ -2140,9 +2140,9 @@ namespace PCLParaphernalia
                                 PrnParseRowTypes.eType.MsgComment,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
-                                "",
+                                string.Empty,
                                 "Comment",
-                                "",
+                                string.Empty,
                                 "The following sequence is considered to be" +
                                 " obsolete:");
                         }
@@ -2187,7 +2187,7 @@ namespace PCLParaphernalia
                         seqLen = vtLen;
                         seqStart = vPosCrnt;
 
-                        typeText = "";
+                        typeText = string.Empty;
                     }
 
                     //--------------------------------------------------------//
@@ -2272,9 +2272,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgComment,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "Comment",
-                            "",
+                            string.Empty,
                             "The following sequence is proprietary to " +
                             vendorName + ":");
                     }
@@ -2290,13 +2290,13 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        val = "";
+                        val = string.Empty;
                     }
 
                     if (seqLen > 0)
                         seq = _ascii.GetString (_buf, seqPos, seqLen);
                     else
-                        seq = "";
+                        seq = string.Empty;
 
                     if (seqProprietary)
                     {
@@ -2393,9 +2393,9 @@ namespace PCLParaphernalia
                                 PrnParseRowTypes.eType.MsgComment,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
-                                "",
+                                string.Empty,
                                 "Comment",
-                                "",
+                                string.Empty,
                                 "Preference options inhibit display of " +
                                 "macro contents");
                         }
@@ -2439,18 +2439,18 @@ namespace PCLParaphernalia
                                 PrnParseRowTypes.eType.MsgWarning,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
-                                "",
+                                string.Empty,
                                 "*** Warning ***",
-                                "",
+                                string.Empty,
                                 "Invalid bytecount in previous sequence");
 
                             PrnParseCommon.addTextRow (
                                 PrnParseRowTypes.eType.MsgWarning,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
-                                "",
+                                string.Empty,
                                 "*** Warning ***",
-                                "",
+                                string.Empty,
                                 "Processing of current sequence abandoned");
                         }
                         else
@@ -2701,7 +2701,7 @@ namespace PCLParaphernalia
             firstSlice = true;
             sliceOffset = 0;
             opSeqFixLen = escText.Length;
-            descText = "";
+            descText = string.Empty;
 
             if (firstPart)
             {
@@ -2770,7 +2770,7 @@ namespace PCLParaphernalia
                 else
                 {
                     crntOffset = offset + sliceOffset + 1;  // WHY ????????????????//
-                    typeText = "";
+                    typeText = string.Empty;
                 }
 
                 PrnParseCommon.addDataRow (
@@ -3517,7 +3517,7 @@ namespace PCLParaphernalia
             PrnParseConstants.eOvlShow makeOvlShow =
                 PrnParseConstants.eOvlShow.None;
 
-            string descSimple = "";
+            string descSimple = string.Empty;
 
             iChar = _buf[bufOffset + 1];
 
@@ -3554,9 +3554,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgComment,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Comment",
-                        "",
+                        string.Empty,
                         "The following sequence is considered to be obsolete:");
                 }
 
@@ -3716,9 +3716,9 @@ namespace PCLParaphernalia
                 PrnParseRowTypes.eType.PCLDecode,
                 _table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 "     ----> Structure",
-                "",
+                string.Empty,
                 itemDesc);
 
             index = (style >> 2) & 0x07;
@@ -3766,9 +3766,9 @@ namespace PCLParaphernalia
                 PrnParseRowTypes.eType.PCLDecode,
                 _table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 "     ----> Width",
-                "",
+                string.Empty,
                 itemDesc);
 
             index = style & 0x03;
@@ -3800,9 +3800,9 @@ namespace PCLParaphernalia
                 PrnParseRowTypes.eType.PCLDecode,
                 _table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 "     ----> Posture",
-                "",
+                string.Empty,
                 itemDesc);
         }
 

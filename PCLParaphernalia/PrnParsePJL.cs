@@ -415,9 +415,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgWarning,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "*** Warning ***",
-                            "",
+                            string.Empty,
                             "Unexpected sequence found");
 
                         PrnParseData.processLines (
@@ -555,7 +555,7 @@ namespace PCLParaphernalia
                    commandParams,
                    line,
                    showChar,
-                   desc = "";
+                   desc = string.Empty;
 
             StringBuilder seq = new StringBuilder ();
 
@@ -865,9 +865,9 @@ namespace PCLParaphernalia
                                 PrnParseRowTypes.eType.MsgWarning,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
-                                "",
+                                string.Empty,
                                 "*** Warning ***",
-                                "",
+                                string.Empty,
                                 "Following PJL commmand name not recognised:");
                         }
 
@@ -877,9 +877,9 @@ namespace PCLParaphernalia
                                 PrnParseRowTypes.eType.MsgWarning,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
-                                "",
+                                string.Empty,
                                 "*** Warning ***",
-                                "",
+                                string.Empty,
                                 "Following PJL command name not terminated" +
                                 " by space or tab character:");
                         }
@@ -901,9 +901,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PJLCommand,
                             _table,
                             PrnParseConstants.eOvlShow.Remove,
-                            "",
-                            "",
-                            "",
+                            string.Empty,
+                            string.Empty,
+                            string.Empty,
                             line);
                     }
                 }

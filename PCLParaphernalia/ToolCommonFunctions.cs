@@ -95,10 +95,10 @@ namespace PCLParaphernalia
 
             if (pathName == null)
             {
-                volName    = "";
-                folderName = "";
-                lastName   = "";
-                extension  = "";
+                volName    = string.Empty;
+                folderName = string.Empty;
+                lastName   = string.Empty;
+                extension  = string.Empty;
             }
             else
             {
@@ -114,7 +114,7 @@ namespace PCLParaphernalia
 
                 if (indxA == -1)
                 {
-                    volName = "";
+                    volName = string.Empty;
                 }
                 else
                 {
@@ -131,7 +131,7 @@ namespace PCLParaphernalia
 
                 if (indxA == -1)
                 {
-                    folderName = "";
+                    folderName = string.Empty;
                 }
                 else
                 {
@@ -153,7 +153,7 @@ namespace PCLParaphernalia
                 if (indxB == -1)
                 {
                     lastName  = pathName.Substring (indxA + 1, lenB);
-                    extension = "";
+                    extension = string.Empty;
                 }
                 else
                 {
@@ -176,9 +176,9 @@ namespace PCLParaphernalia
         public static void getFolderName (string pathName,
                                           ref string folderName)
         {
-            string tmpVol   = "",
-                   tmpTname = "",
-                   tmpExt   = "";
+            string tmpVol   = string.Empty,
+                   tmpTname = string.Empty,
+                   tmpExt   = string.Empty;
 
             decomposePathName (pathName, ref tmpVol,
                                ref folderName, ref tmpTname, ref tmpExt);

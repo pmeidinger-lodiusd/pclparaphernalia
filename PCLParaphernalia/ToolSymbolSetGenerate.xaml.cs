@@ -178,8 +178,8 @@ namespace PCLParaphernalia
         {
             const ushort offsetFactor = 100 * 32;
 
-            string idAlpha = "",
-                   idNum = "";
+            string idAlpha = string.Empty,
+                   idNum = string.Empty;
 
             int targetOffset = (_symSetNoTargetMax - _donorSymSetNo) /
                                  offsetFactor * offsetFactor;
@@ -982,7 +982,7 @@ bitVal;
             }
             else
             {
-                format = "";
+                format = string.Empty;
 
                 lbMap0x_0.Content = "+ 0";
                 lbMap0x_1.Content = "+ 1";
@@ -1742,7 +1742,7 @@ bitVal;
                 _flagDonorSymSetMapPCL,
                 _donorSymSetFile);
 
-            if ((_targetSymSetFile != "") && (_targetSymSetFile != null))
+            if ((_targetSymSetFile != string.Empty) && (_targetSymSetFile != null))
             {
                 ToolCommonFunctions.getFolderName (_targetSymSetFile,
                                                    ref _targetSymSetFolder);
@@ -2235,8 +2235,8 @@ bitVal;
 
         private void setDonorSymSetAttributes ()
         {
-            string idNum = "",
-                   idAlpha = "";
+            string idNum = string.Empty,
+                   idAlpha = string.Empty;
 
             grpTargetSymSetDetails.Visibility = Visibility.Hidden;
 
@@ -2636,7 +2636,7 @@ bitVal;
                     if (_flagMapHex)
                         format = "x4";
                     else
-                        format = "";
+                        format = string.Empty;
 
                     mapMetrics (_flagIgnoreC0, _flagIgnoreC1, _sizeCharSet,
                                 ref codeMin, ref codeMax, ref codeCt,
@@ -2831,7 +2831,7 @@ bitVal;
                 }
                 else
                 {
-                    format     = "";
+                    format     = string.Empty;
                     formatDesc = "decimal";
                 }
 

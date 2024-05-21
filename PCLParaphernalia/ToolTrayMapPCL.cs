@@ -171,7 +171,7 @@ namespace PCLParaphernalia
 
         private static void generateJobHeader(BinaryWriter prnWriter)
         {
-            PCLWriter.stdJobHeader(prnWriter, "");
+            PCLWriter.stdJobHeader(prnWriter, string.Empty);
         }
 
         //--------------------------------------------------------------------//
@@ -262,7 +262,7 @@ namespace PCLParaphernalia
 
             posY = (short) (scaleFactor * _posYDesc);
 
-            PCLWriter.font(prnWriter, true, "", "s" + ptSizeMain + "V");
+            PCLWriter.font(prnWriter, true, string.Empty, "s" + ptSizeMain + "V");
 
             PCLWriter.text(prnWriter, posX, posY, 0, "Page Number:");
 
@@ -354,7 +354,7 @@ namespace PCLParaphernalia
 
             posY = (short)(scaleFactor * _posYDesc);
 
-            PCLWriter.font(prnWriter, true, "", "s" + ptSizeMain + "V");
+            PCLWriter.font(prnWriter, true, string.Empty, "s" + ptSizeMain + "V");
 
             PCLWriter.text(prnWriter, posX, posY, 0, "Page Number:");
 

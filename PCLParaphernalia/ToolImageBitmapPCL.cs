@@ -432,7 +432,7 @@ namespace PCLParaphernalia
                                               int paperType,
                                               int orientation)
         {
-            PCLWriter.stdJobHeader(prnWriter, "");
+            PCLWriter.stdJobHeader(prnWriter, string.Empty);
 
             PCLWriter.pageHeader(prnWriter,
                                  paperSize,

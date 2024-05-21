@@ -150,7 +150,7 @@ namespace PCLParaphernalia
 
         public static void docFinaliseText (StreamWriter txtWriter)
         {
-            txtWriter.WriteLine ("");
+            txtWriter.WriteLine (string.Empty);
             txtWriter.WriteLine ("*** End of Report ***");
         }
 
@@ -242,7 +242,7 @@ namespace PCLParaphernalia
             htmlWriter.AddAttribute ("charset", "utf-8");
             htmlWriter.RenderBeginTag ("meta");
             htmlWriter.RenderEndTag ();
-            htmlWriter.WriteLine ("");
+            htmlWriter.WriteLine (string.Empty);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -265,7 +265,7 @@ namespace PCLParaphernalia
             htmlWriter.RenderEndTag ();    // </style>
 
             htmlWriter.RenderEndTag ();    // </head>
-            htmlWriter.WriteLine ("");
+            htmlWriter.WriteLine (string.Empty);
 
             htmlWriter.RenderBeginTag ("body");
         }
@@ -764,7 +764,7 @@ namespace PCLParaphernalia
 
             if (ctRowClrStyles > 0)
             {
-                htmlWriter.WriteLine ("");
+                htmlWriter.WriteLine (string.Empty);
 
                 for (int i = 0; i < ctRowClrStyles; i++)
                 {
@@ -1003,7 +1003,7 @@ namespace PCLParaphernalia
             htmlWriter.RenderBeginTag ("p");
             htmlWriter.WriteEncodedText (txtVal);
             htmlWriter.RenderEndTag ();
-            htmlWriter.WriteLine ("");
+            htmlWriter.WriteLine (string.Empty);
         }
 
         //--------------------------------------------------------------------//
@@ -1020,7 +1020,7 @@ namespace PCLParaphernalia
                                            string txtVal)
         {
             if (subHddr)
-                txtWriter.WriteLine ("");
+                txtWriter.WriteLine (string.Empty);
 
             txtWriter.WriteLine (txtVal);
 
@@ -1085,7 +1085,7 @@ namespace PCLParaphernalia
         private static void lineBlockCloseHtml (HtmlTextWriter htmlWriter)
         {
             htmlWriter.RenderEndTag ();
-            htmlWriter.WriteLine ("");
+            htmlWriter.WriteLine (string.Empty);
         }
 
         //--------------------------------------------------------------------//
@@ -1202,7 +1202,7 @@ namespace PCLParaphernalia
                 htmlWriter.RenderBeginTag ("p");
                 htmlWriter.Write ("&nbsp;");
                 htmlWriter.RenderEndTag ();
-                htmlWriter.WriteLine ("");
+                htmlWriter.WriteLine (string.Empty);
             }
 
             while (valPos + maxSizeVal < valLen)
@@ -1211,7 +1211,7 @@ namespace PCLParaphernalia
                 htmlWriter.WriteEncodedText (
                         txtVal.Substring (valPos, maxSizeVal));
                 htmlWriter.RenderEndTag ();
-                htmlWriter.WriteLine ("");
+                htmlWriter.WriteLine (string.Empty);
 
                 valPos += maxSizeVal;
             }
@@ -1222,7 +1222,7 @@ namespace PCLParaphernalia
                 htmlWriter.WriteEncodedText (
                         txtVal.Substring (valPos, valLen - valPos));
                 htmlWriter.RenderEndTag ();
-                htmlWriter.WriteLine ("");
+                htmlWriter.WriteLine (string.Empty);
             }
         }
 
@@ -1332,7 +1332,7 @@ namespace PCLParaphernalia
         private static void tableCloseHtml (HtmlTextWriter htmlWriter)
         {
             htmlWriter.RenderEndTag ();
-            htmlWriter.WriteLine ("");
+            htmlWriter.WriteLine (string.Empty);
         }
 
         //--------------------------------------------------------------------//
@@ -1391,7 +1391,7 @@ namespace PCLParaphernalia
         {
             int lastCol = colCt - 1;
 
-            htmlWriter.WriteLine ("");
+            htmlWriter.WriteLine (string.Empty);
             htmlWriter.RenderBeginTag ("table");
 
             if (colCt > 0)
@@ -1409,11 +1409,11 @@ namespace PCLParaphernalia
                     htmlWriter.RenderEndTag ();    // </td>
 
                     if (i != lastCol)
-                        htmlWriter.WriteLine ("");
+                        htmlWriter.WriteLine (string.Empty);
                 }
 
                 htmlWriter.RenderEndTag ();    // </tr>
-                htmlWriter.WriteLine ("");
+                htmlWriter.WriteLine (string.Empty);
             }
         }
 
@@ -1439,7 +1439,7 @@ namespace PCLParaphernalia
 
                 StringBuilder line = new StringBuilder ();
 
-                txtWriter.WriteLine ("");
+                txtWriter.WriteLine (string.Empty);
 
                 for (int i = 0; i < colCt; i++)
                 {
@@ -1536,9 +1536,9 @@ namespace PCLParaphernalia
 
         private static void tableHddrPairHtml (HtmlTextWriter htmlWriter)
         {
-            htmlWriter.WriteLine ("");
+            htmlWriter.WriteLine (string.Empty);
             htmlWriter.RenderBeginTag ("table");
-            htmlWriter.WriteLine ("");
+            htmlWriter.WriteLine (string.Empty);
         }
 
         //--------------------------------------------------------------------//
@@ -1552,7 +1552,7 @@ namespace PCLParaphernalia
 
         private static void tableHddrPairText (StreamWriter txtWriter)
         {
-            txtWriter.WriteLine ("");
+            txtWriter.WriteLine (string.Empty);
         }
 
         //--------------------------------------------------------------------//
@@ -1637,7 +1637,7 @@ namespace PCLParaphernalia
 
             if (blankBefore)
             {
-                txtWriter.WriteLine ("");
+                txtWriter.WriteLine (string.Empty);
             }
 
             for (int i = 0; i < maxRows; i++)
@@ -1659,7 +1659,7 @@ namespace PCLParaphernalia
 
             if (blankAfter || (blankAfterMultiRow && (maxRows > 1)))
             {
-                txtWriter.WriteLine ("");
+                txtWriter.WriteLine (string.Empty);
             }
         }
 
@@ -1753,11 +1753,11 @@ namespace PCLParaphernalia
                 htmlWriter.RenderEndTag ();    // </td>
 
                 if (i != lastCol)
-                    htmlWriter.WriteLine ("");
+                    htmlWriter.WriteLine (string.Empty);
             }
 
             htmlWriter.RenderEndTag ();    // </tr>
-            htmlWriter.WriteLine ("");
+            htmlWriter.WriteLine (string.Empty);
         }
 
         //--------------------------------------------------------------------//
@@ -1940,7 +1940,7 @@ namespace PCLParaphernalia
                                               bool blankAfter,
                                               bool nameAsHddr)
         {
-            string padClass = "";
+            string padClass = string.Empty;
 
             htmlWriter.RenderBeginTag ("tr");
 
@@ -1955,7 +1955,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if (padClass != "")
+            if (padClass != string.Empty)
                 if (nameAsHddr)
                     htmlWriter.AddAttribute ("class",
                                              padClass + " " + "fmtAdorn");
@@ -1972,11 +1972,11 @@ namespace PCLParaphernalia
             htmlWriter.WriteEncodedText (txtName);
             htmlWriter.RenderEndTag ();    // </td>
 
-            htmlWriter.WriteLine ("");
+            htmlWriter.WriteLine (string.Empty);
 
             //----------------------------------------------------------------//
 
-            if (padClass != "")
+            if (padClass != string.Empty)
                 htmlWriter.AddAttribute ("class", padClass);
 
             if (colSpanName != -1)
@@ -1991,7 +1991,7 @@ namespace PCLParaphernalia
 
             htmlWriter.RenderEndTag ();    // </tr>
 
-            htmlWriter.WriteLine ("");
+            htmlWriter.WriteLine (string.Empty);
         }
 
         //--------------------------------------------------------------------//
@@ -2073,7 +2073,7 @@ namespace PCLParaphernalia
                                              bool blankAfter,
                                              bool nameAsHddr)
         {
-            string padClass = "";
+            string padClass = string.Empty;
 
             //----------------------------------------------------------------//
 
@@ -2088,7 +2088,7 @@ namespace PCLParaphernalia
 
             xmlWriter.WriteStartElement ("item");
 
-            if (padClass != "")
+            if (padClass != string.Empty)
                 xmlWriter.WriteAttributeString ("padType", padClass);
 
             xmlWriter.WriteStartElement ("name");
@@ -2165,11 +2165,11 @@ namespace PCLParaphernalia
                 htmlWriter.RenderEndTag ();    // </td>
 
                 if (i != lastCol)
-                    htmlWriter.WriteLine ("");
+                    htmlWriter.WriteLine (string.Empty);
             }
 
             htmlWriter.RenderEndTag ();    // </tr>
-            htmlWriter.WriteLine ("");
+            htmlWriter.WriteLine (string.Empty);
         }
 
         //--------------------------------------------------------------------//

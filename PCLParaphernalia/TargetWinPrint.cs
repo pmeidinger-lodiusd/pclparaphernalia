@@ -209,14 +209,14 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            bSuccess = GetPrinterDriver (hPrinter, "", 8,
+            bSuccess = GetPrinterDriver (hPrinter, string.Empty, 8,
                                          driverInfo, 0, out int buf_len);
 
             if (GetLastError () == ERROR_INSUFFICIENT_BUFFER)
             {
                 driverInfo = Marshal.AllocHGlobal (buf_len);
 
-                bSuccess = GetPrinterDriver (hPrinter, "", 8,
+                bSuccess = GetPrinterDriver (hPrinter, string.Empty, 8,
                                              driverInfo, buf_len, out buf_len);
 
                 var info = (DRIVER_INFO_8)Marshal.PtrToStructure (

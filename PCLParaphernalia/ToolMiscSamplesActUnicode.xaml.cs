@@ -58,7 +58,7 @@ namespace PCLParaphernalia
         {
             if (_initialised)
             {
-                string utf8HexVal = "";
+                string utf8HexVal = string.Empty;
                 uint unicodeUCS2 = (uint) ((cbUnicodeCp01.SelectedIndex * 256) +
                                          cbUnicodeCp02.SelectedIndex);
 

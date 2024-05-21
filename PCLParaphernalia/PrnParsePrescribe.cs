@@ -329,7 +329,7 @@ namespace PCLParaphernalia
                 {
                     string seq = _ascii.GetString(_buf, bufOffset, 3);
                     //  String desc = PrescribeCommands.getDescCmdIntro();
-                    string desc = "";
+                    string desc = string.Empty;
 
                     PrescribeCommands.checkCmdIntro (ref desc,
                                                      _analysisLevel);
@@ -470,7 +470,7 @@ namespace PCLParaphernalia
 
             string command,
                    commandName,
-                   commandDesc = "";
+                   commandDesc = string.Empty;
 
             StringBuilder cmd = new StringBuilder();
 
@@ -740,7 +740,7 @@ namespace PCLParaphernalia
 
                 bool firstSlice;
 
-                string seq = "";
+                string seq = string.Empty;
 
                 byte[] seqBuf = new byte[PrnParseConstants.cRptA_colMax_Seq];
 
@@ -778,7 +778,7 @@ namespace PCLParaphernalia
                             _analysisLevel,
                             "Prescribe command",
                             seq,
-                            "");
+                            string.Empty);
                     }
                     else
                     {
@@ -792,9 +792,9 @@ namespace PCLParaphernalia
                             _indxOffsetFormat,
                             _fileOffset + bufOffset + sliceOffset,
                             _analysisLevel,
-                            "",
+                            string.Empty,
                             seq,
-                            "");
+                            string.Empty);
                     }
 
                     len = len - sliceLen - ccAdjust;
@@ -843,7 +843,7 @@ namespace PCLParaphernalia
                             _indxOffsetFormat,
                             _fileOffset + bufOffset + sliceOffset,
                             _analysisLevel,
-                            "",
+                            string.Empty,
                             seq,
                             commandDesc);
                     }
@@ -886,9 +886,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgComment,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Comment",
-                        "",
+                        string.Empty,
                         "Set Prescribe CRC = " + (char) cmdParaByte1);
                 }
             }

@@ -592,13 +592,13 @@ namespace PCLParaphernalia
                 {
                     _flagMainEncapsulatedPCL = false;
                     txtPCLMacroIdMain.IsEnabled = true;
-                    lbPCLMacroIdMainComment.Content = "";
+                    lbPCLMacroIdMainComment.Content = string.Empty;
                 }
                 else
                 {
                     _flagRearEncapsulatedPCL = false;
                     txtPCLMacroIdRear.IsEnabled = true;
-                    lbPCLMacroIdRearComment.Content = "";
+                    lbPCLMacroIdRearComment.Content = string.Empty;
                 }
             }
         }
@@ -618,7 +618,7 @@ namespace PCLParaphernalia
         {
             bool idPresent;
 
-            string streamName = "";
+            string streamName = string.Empty;
 
             if (!File.Exists(filename))
                 idPresent = false;
@@ -654,13 +654,13 @@ namespace PCLParaphernalia
                 {
                     _flagMainEncapsulatedPCLXL = false;
                     txtPCLXLFormNameMain.IsEnabled = true;
-                    lbPCLXLFormNameMainComment.Content = "";
+                    lbPCLXLFormNameMainComment.Content = string.Empty;
                 }
                 else
                 {
                     _flagRearEncapsulatedPCLXL = false;
                     txtPCLXLFormNameRear.IsEnabled = true;
-                    lbPCLXLFormNameRearComment.Content = "";
+                    lbPCLXLFormNameRearComment.Content = string.Empty;
                 }
             }
         }
@@ -1218,7 +1218,7 @@ namespace PCLParaphernalia
                     txtPCLFormFileMain.Text = _prnDiskFileMainPCL;
                     btnPCLFormFileMainBrowse.Visibility = Visibility.Hidden;
 
-                    lbPCLMacroIdMainComment.Content = "";
+                    lbPCLMacroIdMainComment.Content = string.Empty;
                 }
                 else
                 {
@@ -1235,7 +1235,7 @@ namespace PCLParaphernalia
                     txtPCLFormFileRear.Text = _prnDiskFileRearPCL;
                     btnPCLFormFileRearBrowse.Visibility = Visibility.Hidden;
 
-                    lbPCLMacroIdRearComment.Content = "";
+                    lbPCLMacroIdRearComment.Content = string.Empty;
                 }
                 else
                 {
@@ -1464,7 +1464,7 @@ namespace PCLParaphernalia
             txtPCLFormFileMain.Text = _prnDiskFileMainPCL;
             btnPCLFormFileMainBrowse.Visibility = Visibility.Hidden;
 
-            lbPCLMacroIdMainComment.Content = "";
+            lbPCLMacroIdMainComment.Content = string.Empty;
 
             txtPCLMacroIdMain.IsEnabled = true;
         }
@@ -1509,7 +1509,7 @@ namespace PCLParaphernalia
             txtPCLFormFileRear.Text = _prnDiskFileRearPCL;
             btnPCLFormFileRearBrowse.Visibility = Visibility.Hidden;
 
-            lbPCLMacroIdRearComment.Content = "";
+            lbPCLMacroIdRearComment.Content = string.Empty;
 
             txtPCLMacroIdRear.IsEnabled = true;
         }
@@ -1787,7 +1787,7 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.eTarget.NetPrinter)
             {
-                string netPrnAddress = "";
+                string netPrnAddress = string.Empty;
                 int netPrnPort = 0;
 
                 int netTimeoutSend = 0;
@@ -1805,7 +1805,7 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.eTarget.WinPrinter)
             {
-                string winPrintername = "";
+                string winPrintername = string.Empty;
 
                 TargetCore.metricsLoadWinPrinter (ref winPrintername);
 

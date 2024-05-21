@@ -147,7 +147,7 @@ namespace PCLParaphernalia
 
         private static void generateJobHeader(BinaryWriter prnWriter)
         {
-            PCLXLWriter.stdJobHeader(prnWriter, "");
+            PCLXLWriter.stdJobHeader(prnWriter, string.Empty);
         }
 
         //--------------------------------------------------------------------//
@@ -161,7 +161,7 @@ namespace PCLParaphernalia
 
         private static void generateJobTrailer(BinaryWriter prnWriter)
         {
-            PCLXLWriter.stdJobTrailer(prnWriter, false, "");
+            PCLXLWriter.stdJobTrailer(prnWriter, false, string.Empty);
         }
 
         //--------------------------------------------------------------------//
@@ -787,7 +787,7 @@ namespace PCLParaphernalia
                 indStd = 0;
 
                 generateOverlayFront (prnWriter, false,
-                                      "", scaleFactor);
+                                      string.Empty, scaleFactor);
             }
 
             //----------------------------------------------------------------//
@@ -964,7 +964,7 @@ namespace PCLParaphernalia
                     indStd = 0;
 
                     generateOverlayRear (prnWriter, false,
-                                         "", scaleFactor);
+                                         string.Empty, scaleFactor);
                 }
 
                 //----------------------------------------------------------------//
@@ -1083,14 +1083,14 @@ namespace PCLParaphernalia
                     index = indxFormsRear[i];
 
                     if (index == _noForm)
-                        formNameRear = "";
+                        formNameRear = string.Empty;
                     else
                         formNameRear = formNamesRear[index];
                 }
                 else
                 {
-                    formNameFront = "";
-                    formNameRear  = "";
+                    formNameFront = string.Empty;
+                    formNameRear  = string.Empty;
                 }
 
                 generatePage (prnWriter,

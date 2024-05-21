@@ -379,9 +379,9 @@ namespace PCLParaphernalia
                                     PrnParseRowTypes.eType.MsgWarning,
                                     _table,
                                     PrnParseConstants.eOvlShow.None,
-                                    "",
+                                    string.Empty,
                                     "*** Warning ***",
-                                    "",
+                                    string.Empty,
                                     "Unknown language; revert to PCL");
 
                                 newPDL = ToolCommonData.ePrintLang.PCL;
@@ -467,9 +467,9 @@ namespace PCLParaphernalia
                                 PrnParseRowTypes.eType.MsgComment,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
-                                "",
+                                string.Empty,
                                 "Comment",
-                                "",
+                                string.Empty,
                                 "Switch language to " + langName);
 
                             _crntPDL = newPDL;
@@ -522,9 +522,9 @@ namespace PCLParaphernalia
                                     PrnParseRowTypes.eType.MsgError,
                                     _table,
                                     PrnParseConstants.eOvlShow.Terminate,
-                                    "",
+                                    string.Empty,
                                     "*** Error ***",
-                                    "",
+                                    string.Empty,
                                     "Invalid sequences force abort");
 
                                 _linkData.setContinuation (
@@ -609,9 +609,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgWarning,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "*** Warning ***",
-                            "",
+                            string.Empty,
                             "Continuation signalled, but end-of-file");
 
                         bufRem = contDataLen;
@@ -745,9 +745,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgComment,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Comment",
-                        "",
+                        string.Empty,
                         "Start Language = PCLXL requested");
 
                     if (indxXLBinding ==
@@ -757,9 +757,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgComment,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "Comment",
-                            "",
+                            string.Empty,
                             "Stream Header not yet read");
                     }
                     else if (indxXLBinding ==
@@ -769,9 +769,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgComment,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "Comment",
-                            "",
+                            string.Empty,
                             "Stream Header assumed: " +
                             "binary low-byte first");
                     }
@@ -782,9 +782,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgComment,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "Comment",
-                            "",
+                            string.Empty,
                             "Stream Header assumed: " +
                             "binary high-byte first");
                     }
@@ -795,9 +795,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgComment,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Comment",
-                        "",
+                        string.Empty,
                         "Start Language = HP-GL/2 requested");
                 }
                 else if (_crntPDL == ToolCommonData.ePrintLang.PJL)
@@ -806,9 +806,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgComment,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Comment",
-                        "",
+                        string.Empty,
                         "Start Language = PJL requested");
                 }
                 else if (_crntPDL == ToolCommonData.ePrintLang.PCLXL)
@@ -817,9 +817,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgComment,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Comment",
-                        "",
+                        string.Empty,
                         "Start Language = PostScript requested");
                 }
                 else
@@ -828,9 +828,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgComment,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Comment",
-                        "",
+                        string.Empty,
                         "Unknown Start Language requested");
                 }
 
@@ -839,9 +839,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgComment,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Comment",
-                        "",
+                        string.Empty,
                         "Start Offset   = " + offsetStart +
                         " (0x" + offsetStart.ToString ("X8") +
                         ") requested");
@@ -851,9 +851,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgComment,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Comment",
-                        "",
+                        string.Empty,
                         "End   Offset   = " + offsetEnd +
                         " (0x" + offsetEnd.ToString ("X8") +
                         ") requested");
@@ -865,9 +865,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgComment,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Comment",
-                    "",
+                    string.Empty,
                     "File is zero size");
             }
 
@@ -947,36 +947,36 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgComment,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
-                    "",
-                    "",
-                    "");
+                    string.Empty,
+                    string.Empty,
+                    string.Empty,
+                    string.Empty);
 
                 PrnParseCommon.addTextRow (
                     PrnParseRowTypes.eType.MsgComment,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     ">>>>>>>>>>>>>>>>>>>>",
-                    "",
+                    string.Empty,
                     ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
                 PrnParseCommon.addTextRow (
                     PrnParseRowTypes.eType.MsgComment,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Comment",
-                    "",
+                    string.Empty,
                     "Start analysis of embedded " + typeText);
 
                 PrnParseCommon.addTextRow (
                     PrnParseRowTypes.eType.MsgComment,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Comment",
-                    "",
+                    string.Empty,
                     detailTextA);
 
                 //------------------------------------------------------------//
@@ -989,37 +989,37 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgComment,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Comment",
-                    "",
+                    string.Empty,
                     "End analysis of embedded " + typeText);
 
                 PrnParseCommon.addTextRow (
                     PrnParseRowTypes.eType.MsgComment,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Comment",
-                    "",
+                    string.Empty,
                     detailTextA);
 
                 PrnParseCommon.addTextRow (
                     PrnParseRowTypes.eType.MsgComment,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "<<<<<<<<<<<<<<<<<<<<",
-                    "",
+                    string.Empty,
                     "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 
                 PrnParseCommon.addTextRow (
                     PrnParseRowTypes.eType.MsgComment,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
-                    "",
-                    "",
-                    "");
+                    string.Empty,
+                    string.Empty,
+                    string.Empty,
+                    string.Empty);
 
                 //------------------------------------------------------------//
 
@@ -1071,18 +1071,18 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgError,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Error",
-                        "",
+                        string.Empty,
                         "Failed to create embedded data store file:");
 
                     PrnParseCommon.addTextRow (
                         PrnParseRowTypes.eType.MsgError,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
-                        "",
-                        "",
+                        string.Empty,
+                        string.Empty,
+                        string.Empty,
                         _subFilename);
 
                     MessageBox.Show ("IO Exception:\r\n" +
@@ -1108,18 +1108,18 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgDiag,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "Diagnostic",
-                            "",
+                            string.Empty,
                             "Create file:");
 
                         PrnParseCommon.addTextRow (
                             PrnParseRowTypes.eType.MsgDiag,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
-                            "",
-                            "",
+                            string.Empty,
+                            string.Empty,
+                            string.Empty,
                             _subFilename);
                     }
                 }
@@ -1208,18 +1208,18 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgDiag,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Diagnostic",
-                        "",
+                        string.Empty,
                         "Close file:");
 
                     PrnParseCommon.addTextRow (
                         PrnParseRowTypes.eType.MsgDiag,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
-                        "",
-                        "",
+                        string.Empty,
+                        string.Empty,
+                        string.Empty,
                         fName);
                 }
 
@@ -1267,18 +1267,18 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgDiag,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Diagnostic",
-                        "",
+                        string.Empty,
                         "Delete file:");
 
                     PrnParseCommon.addTextRow (
                         PrnParseRowTypes.eType.MsgDiag,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
-                        "",
-                        "",
+                        string.Empty,
+                        string.Empty,
+                        string.Empty,
                         _subFilename);
                 }
 
@@ -1398,7 +1398,7 @@ namespace PCLParaphernalia
                 if (encapsulate)
                     _linkData.MakeOvlStreamName = streamName;
                 else
-                    _linkData.MakeOvlStreamName = "";
+                    _linkData.MakeOvlStreamName = string.Empty;
 
                 _parsePCLXL.makeOverlayInsertHeader (_binWriter,
                                                      encapsulate,
@@ -1485,18 +1485,18 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgDiag,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Diagnostic",
-                    "",
+                    string.Empty,
                     "Close file:");
 
                 PrnParseCommon.addTextRow (
                     PrnParseRowTypes.eType.MsgDiag,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
-                    "",
-                    "",
+                    string.Empty,
+                    string.Empty,
+                    string.Empty,
                     fName);
             }
         }
@@ -1531,7 +1531,7 @@ namespace PCLParaphernalia
 
             if (ptr <= 0)
             {
-                saveDirectory = "";
+                saveDirectory = string.Empty;
                 tmpFilename = ovlFilename;
             }
             else
@@ -1579,18 +1579,18 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgError,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Error",
-                        "",
+                        string.Empty,
                         "Create/open overlay file:");
 
                     PrnParseCommon.addTextRow (
                         PrnParseRowTypes.eType.MsgError,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
-                        "",
-                        "",
+                        string.Empty,
+                        string.Empty,
+                        string.Empty,
                         tmpFilename);
 
                 MessageBox.Show ("IO Exception:\r\n" +
@@ -1612,18 +1612,18 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgDiag,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Diagnostic",
-                        "",
+                        string.Empty,
                         "Create file:");
 
                     PrnParseCommon.addTextRow (
                         PrnParseRowTypes.eType.MsgDiag,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
-                        "",
-                        "",
+                        string.Empty,
+                        string.Empty,
+                        string.Empty,
                         tmpFilename);
                 }
             }
@@ -1664,18 +1664,18 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgDiag,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Diagnostic",
-                    "",
+                    string.Empty,
                     "Close file:");
 
                 PrnParseCommon.addTextRow (
                     PrnParseRowTypes.eType.MsgDiag,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
-                    "",
-                    "",
+                    string.Empty,
+                    string.Empty,
+                    string.Empty,
                     fName);
             }
         }
@@ -1751,18 +1751,18 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgDiag,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "Diagnostic",
-                            "",
+                            string.Empty,
                             "Open (Read) file:");
 
                         PrnParseCommon.addTextRow (
                             PrnParseRowTypes.eType.MsgDiag,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
-                            "",
-                            "",
+                            string.Empty,
+                            string.Empty,
+                            string.Empty,
                             filename);
                     }
                 }

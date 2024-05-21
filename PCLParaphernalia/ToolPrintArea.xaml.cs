@@ -200,7 +200,7 @@ namespace PCLParaphernalia
                 if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                 {
                     if (_indxPJLCommandPCL == 0)
-                        pjlCommand = "";
+                        pjlCommand = string.Empty;
                     else
                         pjlCommand = cbPJLCommand.Text;
 
@@ -225,7 +225,7 @@ namespace PCLParaphernalia
                 else
                 {
                     if (_indxPJLCommandPCLXL == 0)
-                        pjlCommand = "";
+                        pjlCommand = string.Empty;
                     else
                         pjlCommand = cbPJLCommand.Text;
 
@@ -877,7 +877,7 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.eTarget.NetPrinter)
             {
-                string netPrnAddress = "";
+                string netPrnAddress = string.Empty;
                 int netPrnPort = 0;
 
                 int netTimeoutSend = 0;
@@ -895,7 +895,7 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.eTarget.WinPrinter)
             {
-                string winPrintername = "";
+                string winPrintername = string.Empty;
 
                 TargetCore.metricsLoadWinPrinter (ref winPrintername);
 
@@ -1025,7 +1025,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                string idName = "";
+                string idName = string.Empty;
 
                 indxPaperSize = _subsetPaperSizes[_indxPaperSizePCLXL];
 
@@ -1596,8 +1596,7 @@ namespace PCLParaphernalia
             const double defValLong  = 297;
 
             double minVal,
-                   maxVal,
-                   value = 0;
+                   maxVal;
 
             ushort valueDots = 0;
 

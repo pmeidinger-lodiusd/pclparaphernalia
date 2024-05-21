@@ -1969,7 +1969,7 @@ namespace PCLParaphernalia
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
 
-            if (pjlCommand != "")
+            if (pjlCommand != string.Empty)
             {
                 seq = pjlCommand + "\x0d" + "\x0a";
 

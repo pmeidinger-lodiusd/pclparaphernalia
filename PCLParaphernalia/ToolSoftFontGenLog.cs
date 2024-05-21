@@ -89,7 +89,7 @@ namespace PCLParaphernalia
                 row[colHexCode] = "0x" + charCode.ToString ("x4");
 
                 if ((codepoint == 0) && (charCode == 0xffff))           // ??????????????????????? //
-                    row[colUniCode] = "";
+                    row[colUniCode] = string.Empty;
                 else
                     row[colUniCode] = "U+" + codepoint.ToString ("x4");
 
@@ -222,8 +222,8 @@ namespace PCLParaphernalia
             {
                 row = table.NewRow ();
 
-                row[colName]  = "";
-                row[colValue] = "";
+                row[colName]  = string.Empty;
+                row[colValue] = string.Empty;
 
                 table.Rows.Add (row);
             }
@@ -233,7 +233,7 @@ namespace PCLParaphernalia
                 row = table.NewRow ();
 
                 row[colName]  = name;
-                row[colValue] = "";
+                row[colValue] = string.Empty;
 
                 table.Rows.Add (row);
             }
@@ -249,7 +249,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        row[colName] = "";
+                        row[colName] = string.Empty;
                     }
 
                     //----------------------------------------------------//
@@ -366,8 +366,8 @@ namespace PCLParaphernalia
             {
                 row = table.NewRow ();
 
-                row[colName] = "";
-                row[colValue] = "";
+                row[colName] = string.Empty;
+                row[colValue] = string.Empty;
 
                 table.Rows.Add (row);
             }

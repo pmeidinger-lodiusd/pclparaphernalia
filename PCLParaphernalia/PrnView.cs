@@ -251,7 +251,7 @@ namespace PCLParaphernalia
                         "Start Offset   = " + offsetStart +
                         " (0x" + offsetStart.ToString ("X8") +
                         ") requested",
-                        "");
+                        string.Empty);
 
             if (offsetEnd != -1)
                 addRow (table,
@@ -259,7 +259,7 @@ namespace PCLParaphernalia
                         "End   Offset   = " + offsetEnd +
                         " (0x" + offsetEnd.ToString ("X8") +
                         ") requested",
-                        "");
+                        string.Empty);
 
             //----------------------------------------------------------------//
 

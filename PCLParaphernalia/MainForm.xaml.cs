@@ -231,7 +231,7 @@ namespace PCLParaphernalia
 
                 toolXXXDiags_Selected (this, null);
             }
-            else if (filename != "")
+            else if (filename != string.Empty)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -243,7 +243,7 @@ namespace PCLParaphernalia
 
                 toolPrnAnalyse_Selected(this, null);
 
-                if (filename != "")
+                if (filename != string.Empty)
                     _subFormToolPrnAnalyse.prnFileProcess(filename);
             }
             else
@@ -501,9 +501,9 @@ namespace PCLParaphernalia
 
         private void helpAbout_Click(object sender, RoutedEventArgs e)
         {
-            string deploymentVersion = "";
-            string assemblyVersion = "";
-            string crntVersion = "";
+            string deploymentVersion = string.Empty;
+            string assemblyVersion = string.Empty;
+            string crntVersion = string.Empty;
 
             if (ApplicationDeployment.IsNetworkDeployed)
                 deploymentVersion = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();

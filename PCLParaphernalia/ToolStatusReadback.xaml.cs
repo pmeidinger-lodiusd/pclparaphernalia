@@ -751,7 +751,7 @@ namespace PCLParaphernalia
                 else if (varType == PJLVariables.eVarType.PS)
                     personality = "POSTSCRIPT: ";
                 else
-                    personality = "";
+                    personality = string.Empty;
 
                 cbPJLVariable.Items.Add(personality + PJLVariables.getName(i));
             }
@@ -1048,7 +1048,7 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.eTarget.NetPrinter)
             {
-                string netPrnAddress = "";
+                string netPrnAddress = string.Empty;
                 int netPrnPort = 0;
 
                 int netTimeoutSend = 0;
@@ -1066,7 +1066,7 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.eTarget.WinPrinter)
             {
-                string winPrintername = "";
+                string winPrintername = string.Empty;
 
                 TargetCore.metricsLoadWinPrinter (ref winPrintername);
 

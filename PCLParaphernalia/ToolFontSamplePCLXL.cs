@@ -149,7 +149,7 @@ namespace PCLParaphernalia
 
         private static void generateJobHeader(BinaryWriter prnWriter)
         {
-            PCLXLWriter.stdJobHeader(prnWriter, "");
+            PCLXLWriter.stdJobHeader(prnWriter, string.Empty);
         }
 
         //--------------------------------------------------------------------//

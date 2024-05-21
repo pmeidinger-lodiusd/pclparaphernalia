@@ -557,7 +557,7 @@ namespace PCLParaphernalia
                             indxOffsetFormat,
                             (int) pageStart,
                             analysisLevel,
-                            "",
+                            string.Empty,
                             "[" + pageLen + " bytes]",
                             "Subsequent page");
                     }
@@ -581,7 +581,7 @@ namespace PCLParaphernalia
                             indxOffsetFormat,
                             (int) pageStart,
                             analysisLevel,
-                            "",
+                            string.Empty,
                             "[" + pageLen + " bytes]",
                             "Subsequent page");
                     }
@@ -707,9 +707,9 @@ namespace PCLParaphernalia
                 PrnParseRowTypes.eType.MsgError,
                 table,
                 PrnParseConstants.eOvlShow.Terminate,
-                "",
+                string.Empty,
                 "Error",
-                "",
+                string.Empty,
                 "Macro identifier " + vInt +
                 " is the specified overlay identifier");
 
@@ -717,9 +717,9 @@ namespace PCLParaphernalia
                 PrnParseRowTypes.eType.MsgError,
                 table,
                 PrnParseConstants.eOvlShow.Terminate,
-                "",
+                string.Empty,
                 "Error",
-                "",
+                string.Empty,
                "Run aborted");
 
             MessageBox.Show (
@@ -1119,7 +1119,7 @@ namespace PCLParaphernalia
                         indxOffsetFormat,
                         (int) linkData.MakeOvlSkipBegin,
                         analysisLevel,
-                        "",
+                        string.Empty,
                         "[" + pageLen + " bytes]",
                         "Subsequent page");
                 }
@@ -1403,10 +1403,10 @@ namespace PCLParaphernalia
 
             bool vCheck = false;
 
-            string descComplex = "",
-                   typeText = "";
+            string descComplex = string.Empty,
+                   typeText = string.Empty;
 
-            string seq = "";
+            string seq = string.Empty;
 
             //----------------------------------------------------------------//
             //                                                                //

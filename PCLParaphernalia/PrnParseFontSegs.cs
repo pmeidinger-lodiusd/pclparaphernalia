@@ -187,7 +187,7 @@ namespace PCLParaphernalia
                 rowType,
                 table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 textDesc,
                 "Symbol index",
                 codeDesc);
@@ -211,7 +211,7 @@ namespace PCLParaphernalia
                     rowType,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     textDesc,
                     "Collection",
                     codeDesc);
@@ -246,7 +246,7 @@ namespace PCLParaphernalia
                             rowType,
                             table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             textDesc,
                             "Collection",
                             codeDesc);
@@ -804,7 +804,7 @@ namespace PCLParaphernalia
                     baseOffset,
                     _analysisLevel,
                     "Segment type:",
-                    "",
+                    string.Empty,
                     segTypeDesc);
 
                 PrnParseCommon.addDataRow (
@@ -815,7 +815,7 @@ namespace PCLParaphernalia
                     baseOffset + 2,
                     _analysisLevel,
                     "        size:",
-                    "",
+                    string.Empty,
                     segSize + " (" +
                     (segSize + segHddrLen) +
                     " including type & size fields))");
@@ -856,7 +856,7 @@ namespace PCLParaphernalia
                     {
                         reportError (
                             "Segment remainder " + _segRem + " non-zero",
-                            "", "");
+                            string.Empty, string.Empty);
                     }
                 }
             }
@@ -952,7 +952,7 @@ namespace PCLParaphernalia
                     baseOffset,
                     _analysisLevel,
                     "Segment type:",
-                    "",
+                    string.Empty,
                     segTypeDesc);
 
                 PrnParseCommon.addDataRow (
@@ -963,7 +963,7 @@ namespace PCLParaphernalia
                     baseOffset + 2,
                     _analysisLevel,
                     "        size:",
-                    "",
+                    string.Empty,
                     segSize + " (" +
                     (segSize + segHddrLen) +
                     " including type & size fields)");
@@ -1094,7 +1094,7 @@ namespace PCLParaphernalia
                     baseOffset,
                     _analysisLevel,
                     "Segment type:",
-                    "",
+                    string.Empty,
                     segTypeDesc);
 
                 PrnParseCommon.addDataRow (
@@ -1105,7 +1105,7 @@ namespace PCLParaphernalia
                     baseOffset + 2,
                     _analysisLevel,
                     "        size:",
-                    "",
+                    string.Empty,
                     segSize + " (" +
                     (segSize + segHddrLen) +
                     " including type & size fields)");
@@ -1242,7 +1242,7 @@ namespace PCLParaphernalia
                     baseOffset,
                     _analysisLevel,
                     "Segment type:",
-                    "",
+                    string.Empty,
                     segTypeDesc);
 
                 PrnParseCommon.addDataRow (
@@ -1253,7 +1253,7 @@ namespace PCLParaphernalia
                     baseOffset + 2,
                     _analysisLevel,
                     "        size:",
-                    "",
+                    string.Empty,
                     segSize + " (" +
                     (segSize + segHddrLen) +
                     " including type & size fields)");
@@ -1329,7 +1329,7 @@ namespace PCLParaphernalia
                     {
                         reportError (
                             "Segment remainder " + _segRem + " non-zero",
-                            "", "");
+                            string.Empty, string.Empty);
                     }
                 }
             }
@@ -1424,7 +1424,7 @@ namespace PCLParaphernalia
                     baseOffset,
                     _analysisLevel,
                     "Segment type:",
-                    "",
+                    string.Empty,
                     segTypeDesc);
 
                 PrnParseCommon.addDataRow (
@@ -1435,7 +1435,7 @@ namespace PCLParaphernalia
                     baseOffset + 2,
                     _analysisLevel,
                     "        size:",
-                    "",
+                    string.Empty,
                     segSize + " (" +
                     (segSize + segHddrLen) +
                     " including type & size fields)");
@@ -1581,7 +1581,7 @@ namespace PCLParaphernalia
                     baseOffset,
                     _analysisLevel,
                     "Segment type:",
-                    "",
+                    string.Empty,
                     segTypeDesc);
 
                 PrnParseCommon.addDataRow (
@@ -1592,7 +1592,7 @@ namespace PCLParaphernalia
                     baseOffset + 2,
                     _analysisLevel,
                     "        size:",
-                    "",
+                    string.Empty,
                     segSize + " (" +
                     (segSize + segHddrLen) +
                     " including type & size fields)");
@@ -1738,7 +1738,7 @@ namespace PCLParaphernalia
                     baseOffset,
                     _analysisLevel,
                     "Segment type:",
-                    "",
+                    string.Empty,
                     segTypeDesc);
 
                 PrnParseCommon.addDataRow (
@@ -1749,7 +1749,7 @@ namespace PCLParaphernalia
                     baseOffset + 2,
                     _analysisLevel,
                     "        size:",
-                    "",
+                    string.Empty,
                     segSize + " (" +
                     (segSize + segHddrLen) +
                     " including type & size fields)");
@@ -1781,8 +1781,8 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        textA = "";
-                        textB = "";
+                        textA = string.Empty;
+                        textB = string.Empty;
                     }
 
                     PrnParseCommon.addDataRow (
@@ -1971,7 +1971,7 @@ namespace PCLParaphernalia
                     baseOffset,
                     _analysisLevel,
                     "Segment type:",
-                    "",
+                    string.Empty,
                     segTypeDesc);
 
                 PrnParseCommon.addDataRow (
@@ -1982,7 +1982,7 @@ namespace PCLParaphernalia
                     baseOffset + 2,
                     _analysisLevel,
                     "        size:",
-                    "",
+                    string.Empty,
                     segSize + " (" +
                     (segSize + segHddrLen) +
                     " including type & size fields)");
@@ -2149,7 +2149,7 @@ namespace PCLParaphernalia
                     {
                         reportError (
                             "Segment remainder " + _segRem + " non-zero",
-                            "", "");
+                            string.Empty, string.Empty);
                     }
                 }
             }
@@ -2244,7 +2244,7 @@ namespace PCLParaphernalia
                     baseOffset,
                     _analysisLevel,
                     "Segment type:",
-                    "",
+                    string.Empty,
                     segTypeDesc);
 
                 PrnParseCommon.addDataRow (
@@ -2255,7 +2255,7 @@ namespace PCLParaphernalia
                     baseOffset + 2,
                     _analysisLevel,
                     "        size:",
-                    "",
+                    string.Empty,
                     segSize + " (" +
                     (segSize + segHddrLen) +
                     " including type & size fields)");
@@ -2442,7 +2442,7 @@ namespace PCLParaphernalia
                     baseOffset,
                     _analysisLevel,
                     "Segment type:",
-                    "",
+                    string.Empty,
                     segTypeDesc);
 
                 PrnParseCommon.addDataRow (
@@ -2453,7 +2453,7 @@ namespace PCLParaphernalia
                     baseOffset + 2,
                     _analysisLevel,
                     "        size:",
-                    "",
+                    string.Empty,
                     segSize + " (" +
                     (segSize + segHddrLen) +
                     " including type & size fields)");
@@ -2714,7 +2714,7 @@ namespace PCLParaphernalia
                             reportError (
                                 "Offset and/or size incompatible with" +
                                     " segment size",
-                                "", "");
+                                string.Empty, string.Empty);
                         }
                     }
                 }
@@ -2850,7 +2850,7 @@ namespace PCLParaphernalia
                     baseOffset,
                     _analysisLevel,
                     "Segment type:",
-                    "",
+                    string.Empty,
                     segTypeDesc);
 
                 PrnParseCommon.addDataRow (
@@ -2861,7 +2861,7 @@ namespace PCLParaphernalia
                     baseOffset + 2,
                     _analysisLevel,
                     "        size:",
-                    "",
+                    string.Empty,
                     segSize + " (" +
                     (segSize + segHddrLen) +
                     " including type & size fields)");
@@ -2996,7 +2996,7 @@ namespace PCLParaphernalia
                     baseOffset,
                     _analysisLevel,
                     "Segment type:",
-                    "",
+                    string.Empty,
                     segTypeDesc);
 
                 PrnParseCommon.addDataRow (
@@ -3007,7 +3007,7 @@ namespace PCLParaphernalia
                     baseOffset + 2,
                     _analysisLevel,
                     "        size:",
-                    "",
+                    string.Empty,
                     segSize + " (" +
                     (segSize + segHddrLen) +
                     " including type & size fields)");
@@ -3020,7 +3020,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                panoseSet = "";
+                panoseSet = string.Empty;
 
                 for (int i = 0; i < 10; i++)
                 {
@@ -3165,7 +3165,7 @@ namespace PCLParaphernalia
                     baseOffset,
                     _analysisLevel,
                     "Segment type:",
-                    "",
+                    string.Empty,
                     segTypeDesc);
 
                 PrnParseCommon.addDataRow (
@@ -3176,7 +3176,7 @@ namespace PCLParaphernalia
                     baseOffset + 2,
                     _analysisLevel,
                     "        size:",
-                    "",
+                    string.Empty,
                     segSize + " (" +
                     (segSize + segHddrLen) +
                     " including type & size fields)");
@@ -3307,7 +3307,7 @@ namespace PCLParaphernalia
                     baseOffset,
                     _analysisLevel,
                     "Segment type:",
-                    "",
+                    string.Empty,
                     segTypeDesc);
 
                 PrnParseCommon.addDataRow (
@@ -3318,7 +3318,7 @@ namespace PCLParaphernalia
                     baseOffset + 2,
                     _analysisLevel,
                     "        size:",
-                    "",
+                    string.Empty,
                     segSize + " (" +
                     (segSize + segHddrLen) +
                     " including type & size fields)");
@@ -3494,7 +3494,7 @@ namespace PCLParaphernalia
                     baseOffset,
                     _analysisLevel,
                     "Segment type:",
-                    "",
+                    string.Empty,
                     segTypeDesc);
 
                 PrnParseCommon.addDataRow (
@@ -3505,7 +3505,7 @@ namespace PCLParaphernalia
                     baseOffset + 2,
                     _analysisLevel,
                     "        size:",
-                    "",
+                    string.Empty,
                     segSize + " (" +
                     (segSize + segHddrLen) +
                     " including type & size fields)");
@@ -3638,7 +3638,7 @@ namespace PCLParaphernalia
                     {
                         reportError (
                             "Segment remainder " + _segRem + " non-zero",
-                            "", "");
+                            string.Empty, string.Empty);
                     }
                 }
             }
@@ -3744,7 +3744,7 @@ namespace PCLParaphernalia
                     baseOffset,
                     _analysisLevel,
                     "Segment type:",
-                    "",
+                    string.Empty,
                     segTypeDesc);
 
                 PrnParseCommon.addDataRow (
@@ -3755,7 +3755,7 @@ namespace PCLParaphernalia
                     baseOffset + 2,
                     _analysisLevel,
                     "        size:",
-                    "",
+                    string.Empty,
                     segSize + " (" +
                     (segSize + segHddrLen) +
                     " including type & size fields)");
@@ -3787,8 +3787,8 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        textA = "";
-                        textB = "";
+                        textA = string.Empty;
+                        textB = string.Empty;
                     }
 
                     PrnParseCommon.addDataRow (
@@ -3935,7 +3935,7 @@ namespace PCLParaphernalia
                     baseOffset,
                     _analysisLevel,
                     "Segment type:",
-                    "",
+                    string.Empty,
                     segTypeDesc);
 
                 PrnParseCommon.addDataRow (
@@ -3946,7 +3946,7 @@ namespace PCLParaphernalia
                     baseOffset + 2,
                     _analysisLevel,
                     "        size:",
-                    "",
+                    string.Empty,
                     segSize + " (" +
                     (segSize + segHddrLen) +
                     " including type & size fields)");
@@ -4027,7 +4027,7 @@ namespace PCLParaphernalia
                     {
                         reportError (
                             "Segment remainder " + _segRem + " non-zero",
-                            "", "");
+                            string.Empty, string.Empty);
                     }
                 }
             }
@@ -4127,7 +4127,7 @@ namespace PCLParaphernalia
                     baseOffset,
                     _analysisLevel,
                     "Segment type:",
-                    "",
+                    string.Empty,
                     segTypeDesc);
 
                 PrnParseCommon.addDataRow (
@@ -4138,7 +4138,7 @@ namespace PCLParaphernalia
                     baseOffset + 2,
                     _analysisLevel,
                     "        size:",
-                    "",
+                    string.Empty,
                     segSize + " (" +
                     (segSize + segHddrLen) +
                     " including type & size fields)");
@@ -4267,7 +4267,7 @@ namespace PCLParaphernalia
                     {
                         reportError (
                             "Segment remainder " + _segRem + " non-zero",
-                            "", "");
+                            string.Empty, string.Empty);
                     }
                 }
             }
@@ -4362,7 +4362,7 @@ namespace PCLParaphernalia
                     baseOffset,
                     _analysisLevel,
                     "Segment type:",
-                    "",
+                    string.Empty,
                     segTypeDesc);
 
                 PrnParseCommon.addDataRow (
@@ -4373,7 +4373,7 @@ namespace PCLParaphernalia
                     baseOffset + 2,
                     _analysisLevel,
                     "        size:",
-                    "",
+                    string.Empty,
                     segSize + " (" +
                     (segSize + segHddrLen) +
                     " including type & size fields)");
@@ -4434,29 +4434,29 @@ namespace PCLParaphernalia
                 PrnParseRowTypes.eType.MsgWarning,
                 _table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 "*** Warning ***",
-                "",
+                string.Empty,
                 line1);
 
-            if (line2 != "")
+            if (line2 != string.Empty)
                 PrnParseCommon.addTextRow (
                     PrnParseRowTypes.eType.MsgWarning,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
-                    "",
-                    "",
+                    string.Empty,
+                    string.Empty,
+                    string.Empty,
                     line2);
 
-            if (line3 != "")
+            if (line3 != string.Empty)
                 PrnParseCommon.addTextRow (
                     PrnParseRowTypes.eType.MsgWarning,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
-                    "",
-                    "",
+                    string.Empty,
+                    string.Empty,
+                    string.Empty,
                     line3);
         }
     }

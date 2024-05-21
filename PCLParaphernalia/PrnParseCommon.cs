@@ -104,7 +104,7 @@ namespace PCLParaphernalia
                         (int) PrnParseConstants.eOffsetPosition.EndOfFile)
                         offsetText = "<End>";
                     else
-                        offsetText = "";
+                        offsetText = string.Empty;
                 }
                 else
                 {
@@ -199,7 +199,7 @@ namespace PCLParaphernalia
                     if (makeOvlShow == PrnParseConstants.eOvlShow.Insert)
                         row[_colName_Action] = "Insert";
                     else
-                        row[_colName_Action] = "";
+                        row[_colName_Action] = string.Empty;
                 }
 
                 row[_colName_RowType] = (int) rowType;
