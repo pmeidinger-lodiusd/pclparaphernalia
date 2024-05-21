@@ -2731,7 +2731,7 @@ namespace PCLParaphernalia
 
         private bool validateCharSet()
         {
-            bool OK = true;  // or validateCharSetSubCode ();
+            const bool OK = true;  // or validateCharSetSubCode ();
 
             return OK;
         }
@@ -2903,7 +2903,7 @@ namespace PCLParaphernalia
 
         private bool validateGeneral()
         {
-            bool OK = true;
+            const bool OK = true;
 
             return OK;
         }

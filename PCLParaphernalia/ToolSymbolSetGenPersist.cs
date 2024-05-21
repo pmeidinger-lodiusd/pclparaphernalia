@@ -208,7 +208,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key = _subKeyTools + "\\" + _subKeyToolsSymSetGen +
+            const string key = _subKeyTools + "\\" + _subKeyToolsSymSetGen +
                                  "\\" + _subKeyDonor;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))

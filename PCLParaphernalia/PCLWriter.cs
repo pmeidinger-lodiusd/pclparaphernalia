@@ -1372,7 +1372,7 @@ namespace PCLParaphernalia
 
         public static void rasterEnd(BinaryWriter prnWriter)
         {
-            string seq = "\x1b" + "*rC";               // End Raster Graphics
+            const string seq = "\x1b" + "*rC";               // End Raster Graphics
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
