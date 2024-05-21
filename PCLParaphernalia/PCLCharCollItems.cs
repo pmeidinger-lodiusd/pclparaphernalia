@@ -51,8 +51,8 @@ namespace PCLParaphernalia
             ObservableCollection<PCLCharCollItem> objColEmp =
                 new ObservableCollection<PCLCharCollItem>();
 
-            PCLCharCollections.eBitType bitType;
-            int collsCt = PCLCharCollections.getCollsCount();
+            PCLCharCollections.BitType bitType;
+            int collsCt = PCLCharCollections.GetCollsCount();
 
             int bitNo;
             string desc;
@@ -62,21 +62,21 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < collsCt; i++)
             {
-                bitNo = PCLCharCollections.getBitNo(i);
-                bitType = PCLCharCollections.getBitType(i);
-                desc = PCLCharCollections.getDescUnicode(i);
+                bitNo = PCLCharCollections.GetBitNo(i);
+                bitType = PCLCharCollections.GetBitType(i);
+                desc = PCLCharCollections.GetDescUnicode(i);
 
-                if (bitType == PCLCharCollections.eBitType.Index_0)
+                if (bitType == PCLCharCollections.BitType.Index_0)
                 {
                     itemEnabled = false;
                     itemChecked = true;
                 }
-                else if (bitType == PCLCharCollections.eBitType.Index_1)
+                else if (bitType == PCLCharCollections.BitType.Index_1)
                 {
                     itemEnabled = false;
                     itemChecked = false;
                 }
-                else if (bitType == PCLCharCollections.eBitType.Index_2)
+                else if (bitType == PCLCharCollections.BitType.Index_2)
                 {
                     itemEnabled = false;
                     itemChecked = false;
@@ -118,8 +118,8 @@ namespace PCLParaphernalia
             ObservableCollection<PCLCharCollItem> objColEmp =
                 new ObservableCollection<PCLCharCollItem>();
 
-            PCLCharCollections.eBitType bitType;
-            int collsCt = PCLCharCollections.getCollsCount();
+            PCLCharCollections.BitType bitType;
+            int collsCt = PCLCharCollections.GetCollsCount();
 
             int bitNo;
             string desc;
@@ -129,11 +129,11 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < collsCt; i++)
             {
-                bitNo = PCLCharCollections.getBitNo(i);
-                bitType = PCLCharCollections.getBitType(i);
-                desc = PCLCharCollections.getDescMSL(i);
+                bitNo = PCLCharCollections.GetBitNo(i);
+                bitType = PCLCharCollections.GetBitType(i);
+                desc = PCLCharCollections.GetDescMSL(i);
 
-                if (bitType == PCLCharCollections.eBitType.Collection)
+                if (bitType == PCLCharCollections.BitType.Collection)
                 {
                     itemEnabled = true;
                     itemChecked = false;
@@ -175,8 +175,8 @@ namespace PCLParaphernalia
             ObservableCollection<PCLCharCollItem> objColEmp =
                 new ObservableCollection<PCLCharCollItem>();
 
-            PCLCharCollections.eBitType bitType;
-            int collsCt = PCLCharCollections.getCollsCount();
+            PCLCharCollections.BitType bitType;
+            int collsCt = PCLCharCollections.GetCollsCount();
 
             int bitNo;
             string desc;
@@ -186,16 +186,16 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < collsCt; i++)
             {
-                bitNo = PCLCharCollections.getBitNo(i);
-                bitType = PCLCharCollections.getBitType(i);
-                desc = PCLCharCollections.getDescUnicode(i);
+                bitNo = PCLCharCollections.GetBitNo(i);
+                bitType = PCLCharCollections.GetBitType(i);
+                desc = PCLCharCollections.GetDescUnicode(i);
 
-                if (bitType == PCLCharCollections.eBitType.Collection)
+                if (bitType == PCLCharCollections.BitType.Collection)
                 {
                     itemEnabled = true;
                     itemChecked = false;
                 }
-                else if (bitType == PCLCharCollections.eBitType.Index_0)
+                else if (bitType == PCLCharCollections.BitType.Index_0)
                 {
                     itemEnabled = false;
                     itemChecked = true;

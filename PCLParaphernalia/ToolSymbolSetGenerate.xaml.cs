@@ -815,7 +815,7 @@ namespace PCLParaphernalia
 
             bool bitSet;
 
-            PCLCharCollections.eBitType bitType;
+            PCLCharCollections.BitType bitType;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -840,7 +840,7 @@ namespace PCLParaphernalia
             {
                 bitType = item.BitType;
 
-                if (bitType != PCLCharCollections.eBitType.Collection)
+                if (bitType != PCLCharCollections.BitType.Collection)
                 {
                     bitSet = item.IsChecked;
 
@@ -861,7 +861,7 @@ bitVal;
             {
                 bitType = item.BitType;
 
-                if (bitType != PCLCharCollections.eBitType.Collection)
+                if (bitType != PCLCharCollections.BitType.Collection)
                 {
                     bitSet = item.IsChecked;
 
@@ -1795,7 +1795,7 @@ bitVal;
 
             int bitNo;
 
-            PCLCharCollections.eBitType bitType;
+            PCLCharCollections.BitType bitType;
 
             _flagCharCollReqInhibit = true;
 
@@ -1809,7 +1809,7 @@ bitVal;
                     bitVal = ((ulong)0x01) << bitNo;
                     bitType = item.BitType;
 
-                    if (bitType == PCLCharCollections.eBitType.Collection)
+                    if (bitType == PCLCharCollections.BitType.Collection)
                     {
                         item.IsChecked = (_targetCharCollReqUnicode & bitVal) != 0;
                     }
@@ -1831,7 +1831,7 @@ bitVal;
                     bitVal = ((ulong)1) << bitNo;
                     bitType = item.BitType;
 
-                    if (bitType == PCLCharCollections.eBitType.Collection)
+                    if (bitType == PCLCharCollections.BitType.Collection)
                     {
                         item.IsChecked = (_targetCharCollReqMSL & bitVal) != 0;
                     }

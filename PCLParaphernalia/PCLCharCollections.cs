@@ -25,7 +25,7 @@ namespace PCLParaphernalia
 
         public const int itemsCt = 64;
 
-        public enum eBitType
+        public enum BitType
         {
             Index_0,
             Index_1,
@@ -52,7 +52,7 @@ namespace PCLParaphernalia
 
         static PCLCharCollections()
         {
-            populateTable();
+            PopulateTable();
         }
 
         //--------------------------------------------------------------------//
@@ -64,7 +64,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCollsCount()
+        public static int GetCollsCount()
         {
             return _collsCount;
         }
@@ -78,7 +78,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getBitNo(int index)
+        public static int GetBitNo(int index)
         {
             return _collsList[index].getBitNo();
         }
@@ -92,7 +92,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eBitType getBitType(int index)
+        public static BitType GetBitType(int index)
         {
             return _collsList[index].getBitType();
         }
@@ -106,7 +106,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getDescMSL(int index)
+        public static string GetDescMSL(int index)
         {
             return _collsList[index].getDescMSL();
         }
@@ -121,7 +121,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getDescUnicode(int index)
+        public static string GetDescUnicode(int index)
         {
             return _collsList[index].getDescUnicode();
         }
@@ -135,7 +135,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getindexForKey(int bitNo)
+        public static int GetindexForKey(int bitNo)
         {
             return _collsList.IndexOfKey(bitNo);
         }
@@ -149,13 +149,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void populateTable()
+        private static void PopulateTable()
         {
             int bitNo = 0;                                                  //  0 //
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Index_0,
+                    BitType.Index_0,
                     bitNo,
                     "Bit  0: Symbol Index id 2^0",
                     "Bit  0: Symbol Index id 2^0"));
@@ -164,7 +164,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Index_1,
+                    BitType.Index_1,
                     bitNo,
                     "Bit  1: Symbol Index id 2^1",
                     "Bit  1: Symbol Index id 2^1"));
@@ -173,7 +173,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Index_2,
+                    BitType.Index_2,
                     bitNo,
                     "Bit  2: Symbol Index id 2^2",
                     "Bit  2: Symbol Index id 2^2"));
@@ -182,7 +182,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit  3: Miscellaneous: reserved",
                     "Bit  3: Cyrillic, Arabic, Greek, Hebrew: reserved"));
@@ -191,7 +191,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit  4: Miscellaneous: reserved",
                     "Bit  4: Cyrillic, Arabic, Greek, Hebrew: reserved"));
@@ -200,7 +200,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit  5: Miscellaneous: reserved",
                     "Bit  5: Cyrillic, Arabic, Greek, Hebrew: reserved"));
@@ -209,7 +209,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit  6: Miscellaneous: reserved",
                     "Bit  6: Cyrillic, Arabic, Greek, Hebrew: reserved"));
@@ -218,7 +218,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit  7: Miscellaneous: reserved",
                     "Bit  7: Cyrillic, Arabic, Greek, Hebrew: reserved"));
@@ -227,7 +227,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit  8: Miscellaneous: reserved",
                     "Bit  8: Cyrillic, Arabic, Greek, Hebrew: reserved"));
@@ -236,7 +236,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit  9: Miscellaneous: reserved",
                     "Bit  9: Cyrillic, Arabic, Greek, Hebrew: reserved"));
@@ -245,7 +245,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 10: Miscellaneous: reserved",
                     "Bit 10: Cyrillic, Arabic, Greek, Hebrew: reserved"));
@@ -254,7 +254,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 11: Miscellaneous: reserved",
                     "Bit 11: Cyrillic, Arabic, Greek, Hebrew: reserved"));
@@ -263,7 +263,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 12: Miscellaneous: reserved",
                     "Bit 12: Cyrillic, Arabic, Greek, Hebrew: reserved"));
@@ -272,7 +272,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 13: Miscellaneous: reserved",
                     "Bit 13: Cyrillic, Arabic, Greek, Hebrew: reserved"));
@@ -281,7 +281,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 14: Miscellaneous: reserved",
                     "Bit 14: Cyrillic, Arabic, Greek, Hebrew: reserved"));
@@ -290,7 +290,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 15: Miscellaneous: reserved",
                     "Bit 15: Cyrillic, Arabic, Greek, Hebrew: reserved"));
@@ -299,7 +299,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 16: Miscellaneous: reserved",
                     "Bit 16: Cyrillic, Arabic, Greek, Hebrew: reserved"));
@@ -308,7 +308,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 17: Miscellaneous: reserved",
                     "Bit 17: Cyrillic, Arabic, Greek, Hebrew: reserved"));
@@ -317,7 +317,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 18: Miscellaneous: reserved",
                     "Bit 18: Cyrillic, Arabic, Greek, Hebrew: reserved"));
@@ -326,7 +326,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 19: Miscellaneous: reserved",
                     "Bit 19: Cyrillic, Arabic, Greek, Hebrew: reserved"));
@@ -335,7 +335,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 20: Miscellaneous: reserved",
                     "Bit 20: Cyrillic, Arabic, Greek, Hebrew: reserved"));
@@ -344,7 +344,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 21: Miscellaneous: reserved",
                     "Bit 21: Cyrillic, Arabic, Greek, Hebrew: reserved"));
@@ -353,7 +353,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 22: Miscellaneous: reserved",
                     "Bit 22: Variants: PC Code Pages"));
@@ -362,7 +362,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 23: Miscellaneous: reserved",
                     "Bit 23: Variants: PostScript"));
@@ -371,7 +371,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 24: Miscellaneous: reserved",
                     "Bit 24: Variants: Macintosh"));
@@ -380,7 +380,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 25: Miscellaneous: reserved",
                     "Bit 25: Variants: PCL"));
@@ -389,7 +389,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 26: Miscellaneous: reserved",
                     "Bit 26: Variants: Accents"));
@@ -398,7 +398,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 27: Miscellaneous: reserved",
                     "Bit 27: Variants: Desktop Publishing"));
@@ -407,7 +407,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 28: Miscellaneous: reserved",
                     "Bit 28: Latin 5: Turkish"));
@@ -416,7 +416,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 29: Miscellaneous: reserved",
                     "Bit 29: Latin 2: East European"));
@@ -425,7 +425,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 30: Miscellaneous: reserved",
                     "Bit 30: Latin 1: West European"));
@@ -434,7 +434,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 31: Miscellaneous: reserved",
                     "Bit 31: ASCII"));
@@ -443,7 +443,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 32: Miscellaneous: Dingbats",
                     "Bit 32: Miscellaneous: reserved"));
@@ -452,7 +452,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 33: Miscellaneous: Semi-graphic",
                     "Bit 33: Miscellaneous: reserved"));
@@ -461,7 +461,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 34: Miscellaneous: Math",
                     "Bit 34: Miscellaneous: reserved"));
@@ -470,7 +470,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 35: Miscellaneous: reserved",
                     "Bit 35: Miscellaneous: reserved"));
@@ -479,7 +479,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 36: Miscellaneous: reserved",
                     "Bit 36: Miscellaneous: reserved"));
@@ -488,7 +488,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 37: Miscellaneous: reserved",
                     "Bit 37: Miscellaneous: reserved"));
@@ -497,7 +497,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 38: Miscellaneous: reserved",
                     "Bit 38: Miscellaneous: reserved"));
@@ -506,7 +506,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 39: Miscellaneous: reserved",
                     "Bit 39: Miscellaneous: reserved"));
@@ -515,7 +515,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 40: Miscellaneous: reserved",
                     "Bit 40: Miscellaneous: reserved"));
@@ -524,7 +524,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 41: Miscellaneous: reserved",
                     "Bit 41: Miscellaneous: reserved"));
@@ -533,7 +533,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 42: Miscellaneous: reserved",
                     "Bit 42: Miscellaneous: reserved"));
@@ -542,7 +542,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 43: Miscellaneous: reserved",
                     "Bit 43: Miscellaneous: reserved"));
@@ -551,7 +551,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 44: Miscellaneous: reserved",
                     "Bit 44: Miscellaneous: reserved"));
@@ -560,7 +560,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 45: Miscellaneous: reserved",
                     "Bit 45: Miscellaneous: reserved"));
@@ -569,7 +569,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 46: Miscellaneous: reserved",
                     "Bit 46: Miscellaneous: reserved"));
@@ -578,7 +578,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 47: Miscellaneous: reserved",
                     "Bit 47: Miscellaneous: reserved"));
@@ -587,7 +587,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 48: Hebrew: reserved",
                     "Bit 48: Miscellaneous: reserved"));
@@ -596,7 +596,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 49: Hebrew: reserved",
                     "Bit 49: Miscellaneous: reserved"));
@@ -605,7 +605,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 50: Greek: reserved",
                     "Bit 50: Miscellaneous: reserved"));
@@ -614,7 +614,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 51: Greek: reserved",
                     "Bit 51: Miscellaneous: reserved"));
@@ -623,7 +623,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 52: Arabic: reserved",
                     "Bit 52: Miscellaneous: reserved"));
@@ -632,7 +632,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 53: Arabic: reserved",
                     "Bit 53: Miscellaneous: reserved"));
@@ -641,7 +641,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 54: Arabic: reserved",
                     "Bit 54: Miscellaneous: reserved"));
@@ -650,7 +650,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 55: Cyrillic: reserved",
                     "Bit 55: Miscellaneous: reserved"));
@@ -659,7 +659,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 56: Cyrillic: reserved",
                     "Bit 56: Miscellaneous: reserved"));
@@ -668,7 +668,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 57: Cyrillic: reserved",
                     "Bit 57: Miscellaneous: reserved"));
@@ -677,7 +677,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 58: Latin: reserved",
                     "Bit 58: Miscellaneous: reserved"));
@@ -686,7 +686,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 59: Latin: reserved",
                     "Bit 59: Miscellaneous: reserved"));
@@ -695,7 +695,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 60: Latin: reserved",
                     "Bit 60: Miscellaneous: reserved"));
@@ -704,7 +704,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 61: Latin: Turkish",
                     "Bit 61: Miscellaneous: reserved"));
@@ -713,7 +713,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 62: Latin: East European",
                     "Bit 62: Miscellaneous: reserved"));
@@ -722,7 +722,7 @@ namespace PCLParaphernalia
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
-                    eBitType.Collection,
+                    BitType.Collection,
                     bitNo,
                     "Bit 63: Latin: Standard",
                     "Bit 63: Miscellaneous: reserved"));

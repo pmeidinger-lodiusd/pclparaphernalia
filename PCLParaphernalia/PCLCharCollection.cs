@@ -19,7 +19,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private readonly PCLCharCollections.eBitType _bitType;
+        private readonly PCLCharCollections.BitType _bitType;
         private readonly int _bitNo;
         private readonly string _descMSL;
         private readonly string _descUnicode;
@@ -31,7 +31,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PCLCharCollection(
-            PCLCharCollections.eBitType bitType,
+            PCLCharCollections.BitType bitType,
             int bitNo,
             string descMSL,
             string descUnicode)
@@ -65,7 +65,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLCharCollections.eBitType getBitType()
+        public PCLCharCollections.BitType getBitType()
         {
             return _bitType;
         }

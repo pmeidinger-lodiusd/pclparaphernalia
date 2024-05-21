@@ -72,7 +72,7 @@ namespace PCLParaphernalia
             const int bitsPerByte = 8;
             const int arrayBits = arrayBytes * bitsPerByte;
 
-            PCLCharCollections.eBitType bitType;
+            PCLCharCollections.BitType bitType;
             PrnParseRowTypes.eType rowType;
 
             const bool dataOK = true;
@@ -145,11 +145,11 @@ namespace PCLParaphernalia
                 {
                     // bit is set //
 
-                    listIndex = PCLCharCollections.getindexForKey(i);
+                    listIndex = PCLCharCollections.GetindexForKey(i);
 
-                    bitType = PCLCharCollections.getBitType(listIndex);
+                    bitType = PCLCharCollections.GetBitType(listIndex);
 
-                    if (bitType == PCLCharCollections.eBitType.Collection)
+                    if (bitType == PCLCharCollections.BitType.Collection)
                         charCollVal += bitVal;
                     else
                         charCollIndex += bitVal;
@@ -229,12 +229,12 @@ namespace PCLParaphernalia
 
                     if (bitSig)
                     {
-                        listIndex = PCLCharCollections.getindexForKey(i);
+                        listIndex = PCLCharCollections.GetindexForKey(i);
 
                         if (format_MSL)
-                            codeDesc = PCLCharCollections.getDescMSL(listIndex);
+                            codeDesc = PCLCharCollections.GetDescMSL(listIndex);
                         else
-                            codeDesc = PCLCharCollections.getDescUnicode(listIndex);
+                            codeDesc = PCLCharCollections.GetDescUnicode(listIndex);
 
                         PrnParseCommon.addTextRow(
                             rowType,

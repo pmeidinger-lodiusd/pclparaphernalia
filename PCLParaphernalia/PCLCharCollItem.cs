@@ -18,7 +18,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PCLCharCollItem(int bitNo,
-                                PCLCharCollections.eBitType bitType,
+                                PCLCharCollections.BitType bitType,
                                 string desc,
                                 bool isEnabled,
                                 bool isChecked)
@@ -44,7 +44,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLCharCollections.eBitType BitType { get; set; }
+        public PCLCharCollections.BitType BitType { get; set; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
