@@ -912,6 +912,7 @@ namespace PCLParaphernalia
 
             int indBuf = 0;
 
+            // TODO: Why is this assigned here?
             if (hddrLen > 256)
                 lenBuf = 5;
             else
@@ -2420,13 +2421,7 @@ namespace PCLParaphernalia
             short[] advanceArray = { 0x00 };
             ushort[] codePointArray = { 0x00 };
 
-            int indBuf;
-
-            float scaleFactor;
-
-            indBuf = 0;
-
-            scaleFactor = pointSize / cAdvanceTablePPI;
+            int indBuf = 0;
 
             //----------------------------------------------------------------//
 

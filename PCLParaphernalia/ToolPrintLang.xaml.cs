@@ -2270,19 +2270,13 @@ namespace PCLParaphernalia
             Binding bindName = new Binding ("Name");
             bindName.Mode = BindingMode.OneWay;
 
-            Binding bindMapStd = null;
-            Binding bindMapPCL = null;
-            Binding bindMapDiff = null;
-            Binding bindFlagMapStd = null;
-            Binding bindFlagMapPCL = null;
-
             if (showMaps)
             {
                 if (_symSetMapType == eSymSetMapType.Both)
                 {
-                    bindMapStd = new Binding ("MappingStd");
-                    bindMapPCL = new Binding ("MappingPCL");
-                    bindMapDiff = new Binding ("MappingDiff");
+                    var bindMapStd = new Binding ("MappingStd");
+                    var bindMapPCL = new Binding ("MappingPCL");
+                    var bindMapDiff = new Binding ("MappingDiff");
 
                     bindMapStd.Mode = BindingMode.OneWay;
                     bindMapPCL.Mode = BindingMode.OneWay;
@@ -2294,24 +2288,24 @@ namespace PCLParaphernalia
                 }
                 else if (_symSetMapType == eSymSetMapType.PCL)
                 {
-                    bindMapPCL = new Binding ("MappingPCL");
+                    var bindMapPCL = new Binding ("MappingPCL");
                     bindMapPCL.Mode = BindingMode.OneWay;
                     colMapPCL.Binding = bindMapPCL;
                 }
                 else
                 {
-                    bindMapStd = new Binding ("MappingStd");
+                    var bindMapStd = new Binding ("MappingStd");
                     bindMapStd.Mode = BindingMode.OneWay;
                     colMapStd.Binding = bindMapStd;
                 }
             }
             else
             {
-                bindFlagMapStd = new Binding ("FlagMapStd");
+                var bindFlagMapStd = new Binding ("FlagMapStd");
                 bindFlagMapStd.Mode = BindingMode.OneWay;
                 colFlagMapStd.Binding = bindFlagMapStd;
 
-                bindFlagMapPCL = new Binding ("FlagMapPCL");
+                var bindFlagMapPCL = new Binding ("FlagMapPCL");
                 bindFlagMapPCL.Mode = BindingMode.OneWay;
                 colFlagMapPCL.Binding = bindFlagMapPCL;
             }

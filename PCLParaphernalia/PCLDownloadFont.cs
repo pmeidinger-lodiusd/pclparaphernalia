@@ -69,12 +69,9 @@ namespace PCLParaphernalia
                                            string fontFilename)
         {
             bool OK = true;
-
-            bool fileOpen = false;
-
             long fileSize = 0;
 
-            fileOpen = fontFileOpen (fontFilename, ref fileSize);
+            bool fileOpen = fontFileOpen(fontFilename, ref fileSize);
 
             if (!fileOpen)
             {
@@ -259,9 +256,6 @@ namespace PCLParaphernalia
             ref PCLSymSetTypes.eIndex symSetType)
         {
             bool OK = true;
-
-            bool fileOpen = false;
-
             ushort hddrLen = 0;
 
             int fileOffset = 0;
@@ -276,7 +270,7 @@ namespace PCLParaphernalia
 
             //      _fontFileName = fontFilename;
 
-            fileOpen = fontFileOpen (fontFilename, ref fontFileSize);
+            bool fileOpen = fontFileOpen(fontFilename, ref fontFileSize);
 
             if (!fileOpen)
             {
@@ -496,13 +490,9 @@ namespace PCLParaphernalia
 
             if (bitmapFont)
             {
-                ushort dotsQtr = 0;
-                ushort dotsExt = 0;
-                double dotsK = 0.0;
-
-                dotsQtr = (ushort)((hddr[16] << 8) + hddr[17]);
-                dotsExt = hddr[40];
-                dotsK = (dotsQtr << 8) + dotsExt;
+                ushort dotsQtr = (ushort)((hddr[16] << 8) + hddr[17]);
+                ushort dotsExt = hddr[40];
+                double dotsK = (dotsQtr << 8) + dotsExt;
 
                 if ((dotsQtr == 0) && (dotsExt == 0))
                 {

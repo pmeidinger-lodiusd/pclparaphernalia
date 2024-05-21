@@ -243,8 +243,6 @@ namespace PCLParaphernalia
                                                bool incUsedSeqsOnly,
                                                bool excUnusedResTags)
         {
-            int count = 0;
-
             bool displaySeq,
                     hddrWritten;
 
@@ -256,7 +254,7 @@ namespace PCLParaphernalia
 
             displaySeq = true;
 
-            count = _tagUnknown.StatsCtTotal;
+            int count = _tagUnknown.StatsCtTotal;
 
             if (count == 0)
                 displaySeq = false;
@@ -3686,21 +3684,17 @@ namespace PCLParaphernalia
                 ushort idNum = 0;
 
                 string name = string.Empty;
-                string id = string.Empty;
-
-                bool presetType = false;
 
                 for (int i = 0; i < ctSymsets; i++)
                 {
-                    presetType =
-                        PCLSymbolSets.getSymsetData (i,
-                                                     ref kind1,
-                                                     ref idNum,
-                                                     ref name);
-
+                    bool presetType =
+                        PCLSymbolSets.getSymsetData(i,
+                                     ref kind1,
+                                     ref idNum,
+                                     ref name);
                     if (presetType)
                     {
-                        id = PCLSymbolSets.translateKind1ToId (kind1);
+                        string id = PCLSymbolSets.translateKind1ToId(kind1);
 
                         enumVal = kind1;           // ---- 0xaa     n //
                         _tags.Add (root + ":" + enumVal.ToString ("X8"),

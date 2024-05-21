@@ -255,9 +255,7 @@ namespace PCLParaphernalia
         public static void getNameForId(ushort kind1,
                                         ref string name)
         {
-            int index = -1;
-
-            index = getIndexForId (kind1);
+            int index = getIndexForId(kind1);
 
             if (index == -1)
                 name =  "unknown";
@@ -1706,18 +1704,14 @@ namespace PCLParaphernalia
 
         public static string translateKind1ToId(ushort kind1)
         {
-            ushort kind1Num = 0,
-                   kind1Alpha = 0;
-
             if ((kind1 < 1) || (kind1 > 65530))
             {
                 return string.Empty;
             }
             else
             {
-                kind1Num = (ushort)(kind1 / 32);
-
-                kind1Alpha = (ushort)((kind1 - (kind1Num * 32)) + 64);
+                ushort kind1Num = (ushort)(kind1 / 32);
+                ushort kind1Alpha = (ushort)((kind1 - (kind1Num * 32)) + 64);
 
                 return kind1Num.ToString() + Convert.ToChar(kind1Alpha);
             }
@@ -1752,9 +1746,6 @@ namespace PCLParaphernalia
                                               ref string idNum,
                                               ref string idAlpha)
         {
-            ushort kind1Num = 0,
-                   kind1Alpha = 0;
-
             if ((kind1 < 1) || (kind1 > 65530))
             {
                 idNum   = string.Empty;
@@ -1764,8 +1755,8 @@ namespace PCLParaphernalia
             }
             else
             {
-                kind1Num   = (ushort) (kind1 / 32);
-                kind1Alpha = (ushort) ((kind1 - (kind1Num * 32)) + 64);
+                ushort kind1Num = (ushort)(kind1 / 32);
+                ushort kind1Alpha = (ushort)((kind1 - (kind1Num * 32)) + 64);
 
                 idNum   = kind1Num.ToString ();
                 idAlpha = Convert.ToChar (kind1Alpha).ToString();

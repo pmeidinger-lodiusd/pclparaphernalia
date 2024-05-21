@@ -70,7 +70,6 @@ namespace PCLParaphernalia
             bool OK = false;
 
             string fileExt;
-            string saveFilename = null;
 
             if (rptFileFmt == ReportCore.eRptFileFmt.html)
                 fileExt = "html";
@@ -79,7 +78,7 @@ namespace PCLParaphernalia
             else
                 fileExt = "txt";
 
-            saveFilename = symSetFilename + "_report." + fileExt;
+            string saveFilename = symSetFilename + "_report." + fileExt;
 
             OK = ReportCore.docOpen (rptFileFmt,
                                      ref saveFilename,
@@ -252,8 +251,6 @@ namespace PCLParaphernalia
             string[] colHddrs = new string[colCt];
             string[] colNames = new string[colCt];
             int[] colSizes = new int[colCt];
-
-            int ctItems = symSetMap.Length;
 
             //----------------------------------------------------------------//
             //                                                                //
