@@ -502,9 +502,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
+            string key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
                                  "\\" + _subKeyPCL;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
@@ -545,9 +543,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
+            string key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
                                  "\\" + _subKeyPJL;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
@@ -606,9 +602,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
+            string key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
                                  "\\" + _subKeyPJLFS;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))

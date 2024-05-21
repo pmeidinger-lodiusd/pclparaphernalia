@@ -37,9 +37,7 @@ namespace PCLParaphernalia
         public static bool checkIPAddress(string ipString,
                                              ref IPAddress ipAddress)
         {
-            bool OK;
-
-            OK = IPAddress.TryParse(ipString, out ipAddress);
+            bool OK = IPAddress.TryParse(ipString, out ipAddress);
 
             return OK;
         }

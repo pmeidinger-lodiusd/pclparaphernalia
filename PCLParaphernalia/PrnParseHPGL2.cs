@@ -86,9 +86,7 @@ namespace PCLParaphernalia
                                          bool continuation,
                                          string desc)
         {
-            int len;
-
-            len = seqLen;
+            int len = seqLen;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -537,9 +535,7 @@ namespace PCLParaphernalia
         //  ref ToolCommonData.ePrintLang    xcrntPDL,
             ref bool endReached)
         {
-            PrnParseConstants.eContType contType;
-
-            contType = PrnParseConstants.eContType.None;
+            PrnParseConstants.eContType contType = PrnParseConstants.eContType.None;
 
             int prefixLen = 0,
                   contDataLen = 0,
@@ -638,9 +634,7 @@ namespace PCLParaphernalia
                 //                                                                   //
                 //-------------------------------------------------------------------//
 
-                bool termFound;
-
-                termFound = PrnParseData.processLines (
+                bool termFound = PrnParseData.processLines (
                     _table,
                     PrnParseConstants.eOvlShow.None,
                     _linkData,

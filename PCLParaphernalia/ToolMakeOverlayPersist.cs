@@ -240,9 +240,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey (_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsMakeOverlay +
+            string key = _subKeyTools + "\\" + _subKeyToolsMakeOverlay +
                                  "\\" + _subKeyPCL;
 
             using (RegistryKey subKey = keyMain.CreateSubKey (key))
@@ -295,9 +293,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey (_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsMakeOverlay +
+            string key = _subKeyTools + "\\" + _subKeyToolsMakeOverlay +
                                  "\\" + _subKeyPCLXL;
 
             using (RegistryKey subKey = keyMain.CreateSubKey (key))

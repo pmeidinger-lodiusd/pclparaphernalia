@@ -174,11 +174,10 @@ namespace PCLParaphernalia
 
         public static void displayStatsCountsHddr(DataTable table)
         {
-            DataRow row;
-
+            
             //----------------------------------------------------------------//
 
-            row = table.NewRow ();
+            DataRow row = table.NewRow ();
 
             row[0] = "";
             row[1] = "__________________";
@@ -234,9 +233,7 @@ namespace PCLParaphernalia
 
         private static void populateTable()
         {
-            byte codeVal;
-
-            codeVal = 0xff;                                       // 0xff:    //
+            byte codeVal = 0xff;                                       // 0xff:    //
             _tagUnknown =
                 new PCLControlCode (codeVal, false,
                                    "",

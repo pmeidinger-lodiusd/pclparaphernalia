@@ -326,15 +326,14 @@ namespace PCLParaphernalia
 
             int binDataRem;
 
-            bool dataOK;
-
+            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
             //                                                                //
             //----------------------------------------------------------------//
 
-            dataOK = true;
+            bool dataOK = true;
 
             binDataRem = binDataLen;
 
@@ -594,15 +593,14 @@ namespace PCLParaphernalia
 
             int binDataRem;
 
-            bool dataOK;
-
+            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
             //                                                                //
             //----------------------------------------------------------------//
 
-            dataOK = true;
+            bool dataOK = true;
 
             binDataRem = binDataLen;
 
@@ -845,15 +843,14 @@ namespace PCLParaphernalia
 
             int binDataRem;
 
-            bool dataOK;
-
+            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
             //                                                                //
             //----------------------------------------------------------------//
 
-            dataOK = true;
+            bool dataOK = true;
 
             binDataRem = binDataLen;
 
@@ -1736,15 +1733,14 @@ namespace PCLParaphernalia
 
             int binDataRem;
 
-            bool dataOK;
-
+            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
             //                                                                //
             //----------------------------------------------------------------//
 
-            dataOK = true;
+            bool dataOK = true;
 
             binDataRem = binDataLen;
 
@@ -1798,9 +1794,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                byte format;
-
-                format = buf[bufOffset];
+                byte format = buf[bufOffset];
 
                 switch (format)
                 {
@@ -3759,15 +3753,14 @@ namespace PCLParaphernalia
 
             PrnParseConstants.eContType contType;
 
-            bool dataOK;
-
+            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
             //                                                                //
             //----------------------------------------------------------------//
 
-            dataOK = true;
+            bool dataOK = true;
 
             if ((binDataLen != lenShort) && (binDataLen != lenLong))
             {
@@ -4045,15 +4038,14 @@ namespace PCLParaphernalia
 
             int binDataRem;
 
-            bool dataOK;
-
+            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
             //                                                                //
             //----------------------------------------------------------------//
 
-            dataOK = true;
+            bool dataOK = true;
 
             binDataRem = binDataLen;
 
@@ -4618,15 +4610,14 @@ namespace PCLParaphernalia
 
             int binDataRem;
 
-            bool dataOK;
-
+            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
             //                                                                //
             //----------------------------------------------------------------//
 
-            dataOK = true;
+            bool dataOK = true;
 
             binDataRem = binDataLen;
 
@@ -4847,15 +4838,14 @@ namespace PCLParaphernalia
 
             int binDataRem;
 
-            bool dataOK;
-
+            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
             //                                                                //
             //----------------------------------------------------------------//
 
-            dataOK = true;
+            bool dataOK = true;
 
             binDataRem = binDataLen;
 
@@ -5229,15 +5219,14 @@ namespace PCLParaphernalia
 
             int binDataRem;
 
-            bool dataOK;
-
+            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
             //                                                                //
             //----------------------------------------------------------------//
 
-            dataOK = true;
+            bool dataOK = true;
 
             binDataRem = binDataLen;
 
@@ -5506,15 +5495,14 @@ namespace PCLParaphernalia
 
             bool dataOK = true;
 
-            int binDataRem;
-
+            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
             //                                                                //
             //----------------------------------------------------------------//
 
-            binDataRem = binDataLen;
+            int binDataRem = binDataLen;
 
             if ((binDataLen < lenMin) || (binDataLen > lenMax))
             {
@@ -5645,15 +5633,14 @@ namespace PCLParaphernalia
 
             int binDataRem;
 
-            bool dataOK;
-
+            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
             //                                                                //
             //----------------------------------------------------------------//
 
-            dataOK = true;
+            bool dataOK = true;
 
             binDataRem = binDataLen;
 
@@ -6982,15 +6969,14 @@ namespace PCLParaphernalia
 
             int binDataRem;
 
-            bool dataOK;
-
+            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
             //                                                                //
             //----------------------------------------------------------------//
 
-            dataOK = true;
+            bool dataOK = true;
 
             binDataRem = binDataLen;
 
@@ -7168,9 +7154,7 @@ namespace PCLParaphernalia
                 msByte = false;
             }
 
-            tempStr = iTot.ToString();
-
-            return tempStr;
+            return iTot.ToString();
         }
 
         //--------------------------------------------------------------------//
@@ -7223,9 +7207,7 @@ namespace PCLParaphernalia
 
             f = BitConverter.ToSingle(byteArray, 0);
 
-            tempStr = f.ToString("F6");
-
-            return tempStr;
+            return f.ToString("F6");
         }
     }
 }

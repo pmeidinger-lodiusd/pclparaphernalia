@@ -61,9 +61,7 @@ namespace PCLParaphernalia
             if (_initialised)
             {
                 string utf8HexVal = "";
-                uint unicodeUCS2;
-
-                unicodeUCS2 = (uint) ((cbUnicodeCp01.SelectedIndex * 256) +
+                uint unicodeUCS2 = (uint) ((cbUnicodeCp01.SelectedIndex * 256) +
                                          cbUnicodeCp02.SelectedIndex);
 
                 string unicodeBlock =
@@ -477,9 +475,7 @@ namespace PCLParaphernalia
                     varR,
                     varSet;
 
-            int fontIndx;
-
-            fontIndx = _subsetUnicodeFonts[indxFont];
+            int fontIndx = _subsetUnicodeFonts[indxFont];
 
             varSet = false;
 

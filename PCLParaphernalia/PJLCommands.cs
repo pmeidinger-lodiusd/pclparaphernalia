@@ -257,11 +257,10 @@ namespace PCLParaphernalia
 
         public static void displayStatsCountsHddr(DataTable table)
         {
-            DataRow row;
-
+            
             //----------------------------------------------------------------//
 
-            row = table.NewRow ();
+            DataRow row = table.NewRow ();
 
             row[0] = "";
             row[1] = "_____________";
@@ -373,9 +372,7 @@ namespace PCLParaphernalia
 
         public static void populateTable ()
         {
-            eCmdIndex indx;
-
-            indx = eCmdIndex.Unknown;
+            eCmdIndex indx = eCmdIndex.Unknown;
             _cmdUnknown =
                 new PJLCommand (indx,
                                 eCmdFormat.Standard,

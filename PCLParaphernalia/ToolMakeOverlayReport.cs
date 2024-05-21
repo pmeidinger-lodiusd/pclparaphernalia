@@ -203,9 +203,7 @@ namespace PCLParaphernalia
             string[] colNames;
             int[] colSizes;
 
-            int ctItems;
-
-            ctItems = table.Rows.Count;
+            int ctItems = table.Rows.Count;
 
             if (flagOffsetHex)
                 c1Hddr = c1Name + ": hex";

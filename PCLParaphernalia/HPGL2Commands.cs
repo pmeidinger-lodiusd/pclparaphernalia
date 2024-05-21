@@ -211,11 +211,10 @@ namespace PCLParaphernalia
 
         public static void displayStatsCountsHddr(DataTable table)
         {
-            DataRow row;
-
+            
             //----------------------------------------------------------------//
 
-            row = table.NewRow ();
+            DataRow row = table.NewRow ();
 
             row[0] = "";
             row[1] = "_________________";
@@ -281,9 +280,7 @@ namespace PCLParaphernalia
             const bool flagQuotedData = true;
             const bool flagSymbolMode = true;
 
-            string command;
-
-            command = "??";                                             // ?? //
+            string command = "??";                                             // ?? //
             _cmdUnknown =
                 new HPGL2Command(command,
                                  flagNone, flagNone,

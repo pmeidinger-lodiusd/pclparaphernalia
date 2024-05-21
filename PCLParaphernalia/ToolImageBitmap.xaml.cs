@@ -263,9 +263,7 @@ namespace PCLParaphernalia
 
             bool srcBlackWhite = false;
 
-            bool bitmapOpen = false;
-
-            bitmapOpen = ToolImageBitmapCore.bitmapOpen(_bitmapFilename);
+            bool bitmapOpen = ToolImageBitmapCore.bitmapOpen(_bitmapFilename);
 
             if (!bitmapOpen)
             {

@@ -2511,9 +2511,7 @@ bitVal;
 
         private void setPCLFontFileAttributes()
         {
-            int indx;
-
-            indx = _fontFilenamePCL.LastIndexOf ("\\");
+            int indx = _fontFilenamePCL.LastIndexOf ("\\");
 
             if (indx == 0)
                 _fontFolderPCL = "";
@@ -2532,9 +2530,7 @@ bitVal;
 
         private void setPCLXLFontFileAttributes()
         {
-            int indx;
-
-            indx = _fontFilenamePCLXL.LastIndexOf ("\\");
+            int indx = _fontFilenamePCLXL.LastIndexOf ("\\");
 
             if (indx == 0)
                 _fontFolderPCLXL = "";

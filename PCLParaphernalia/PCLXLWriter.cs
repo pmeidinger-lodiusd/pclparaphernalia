@@ -710,9 +710,7 @@ namespace PCLParaphernalia
                                              ref int bufIndex,
                                              int dataLen)
         {
-            byte[] tempArray;
-
-            tempArray = BitConverter.GetBytes(dataLen);
+            byte[] tempArray = BitConverter.GetBytes(dataLen);
 
             if (dataLen < 256)
             {
@@ -761,9 +759,7 @@ namespace PCLParaphernalia
         {
             int lenBuf;
 
-            int indBuf;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             lenBuf = cSizeAttrSint16 +
                      cSizeOperator;
@@ -800,9 +796,7 @@ namespace PCLParaphernalia
         {
             int lenBuf;
 
-            int indBuf;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             lenBuf = cSizeAttrReal32 +
                      cSizeOperator;
@@ -840,9 +834,7 @@ namespace PCLParaphernalia
         {
             int lenBuf;
 
-            int indBuf;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             lenBuf = cSizeAttrReal32XY +
                      cSizeOperator;
@@ -881,9 +873,7 @@ namespace PCLParaphernalia
         {
             int lenBuf;
 
-            int indBuf;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             lenBuf = cSizeAttrReal32XY +
                      cSizeOperator;
@@ -921,9 +911,7 @@ namespace PCLParaphernalia
         {
             int lenBuf;
 
-            int indBuf;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             if (hddrLen > 256) lenBuf = 5; else lenBuf = 2;
 
@@ -1026,9 +1014,7 @@ namespace PCLParaphernalia
         {
             int lenBuf;
 
-            int indBuf;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             lenBuf = cSizeAttrUbyteArrayBase +
                      (cSizeAttrUbyteArrayUnit * fontNameLen) +
@@ -1066,9 +1052,7 @@ namespace PCLParaphernalia
         {
             int lenBuf;
 
-            int indBuf;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             lenBuf = cSizeOperator;
 
@@ -1100,9 +1084,7 @@ namespace PCLParaphernalia
         {
             int lenBuf;
 
-            int indBuf;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             lenBuf = cSizeAttrUint16 + cSizeAttrUint16 + cSizeOperator;
             byte[] buffer = new byte[lenBuf];
@@ -1144,9 +1126,7 @@ namespace PCLParaphernalia
         {
             int lenBuf;
 
-            int indBuf;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             lenBuf = cSizeAttrUbyteArrayBase +
                      (cSizeAttrUbyteArrayUnit * fontNameLen) +
@@ -1190,9 +1170,7 @@ namespace PCLParaphernalia
         {
             int lenBuf;
 
-            int indBuf;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             lenBuf = cSizeOperator;
 
@@ -1223,9 +1201,7 @@ namespace PCLParaphernalia
         {
             int lenBuf;
 
-            int indBuf;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             lenBuf = cSizeAttrUint16 + cSizeOperator;
 
@@ -1336,9 +1312,7 @@ namespace PCLParaphernalia
 
             byte[] buffer = new byte[lenBuf];
 
-            int indBuf;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             PCLXLWriter.addAttrUbyte(ref buffer,
                                      ref indBuf,
@@ -1389,9 +1363,7 @@ namespace PCLParaphernalia
 
             byte[] buffer = new byte[lenBuf];
 
-            int indBuf;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             PCLXLWriter.addOperator(ref buffer,
                                     ref indBuf,
@@ -1621,9 +1593,7 @@ namespace PCLParaphernalia
 
             byte[] buffer = new byte[lenBuf];
 
-            int indBuf;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             addAttrUint16 (ref buffer,
                            ref indBuf,
@@ -1662,9 +1632,7 @@ namespace PCLParaphernalia
 
             byte[] buffer = new byte[lenBuf];
 
-            int indBuf;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             PCLXLWriter.addAttrUbyte (ref buffer,
                                      ref indBuf,
@@ -1851,9 +1819,7 @@ namespace PCLParaphernalia
 
             byte[] buffer = new byte[lenBuf];
 
-            int indBuf;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             //----------------------------------------------------------------//
 
@@ -1955,9 +1921,7 @@ namespace PCLParaphernalia
         {
             int lenBuf;
 
-            int indBuf;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             lenBuf = cSizeAttrUint16Box +
                      cSizeOperator;
@@ -2127,9 +2091,7 @@ namespace PCLParaphernalia
 
             byte[] buffer = new byte[lenBuf];
 
-            int indBuf;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             addAttrUbyteArray (ref buffer,
                                ref indBuf,
@@ -2158,9 +2120,7 @@ namespace PCLParaphernalia
 
             byte[] buffer = new byte[lenBuf];
 
-            int indBuf;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             addOperator (ref buffer,
                          ref indBuf,
@@ -2193,9 +2153,7 @@ namespace PCLParaphernalia
 
             byte[] buffer = new byte[lenBuf];
 
-            int indBuf;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             PCLXLWriter.addAttrUbyteArray (ref buffer,
                                           ref indBuf,
@@ -2227,9 +2185,7 @@ namespace PCLParaphernalia
 
             byte[] buffer = new byte[lenBuf];
 
-            int indBuf;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             if (embeddedStream)
             {
@@ -2308,9 +2264,7 @@ namespace PCLParaphernalia
 
             byte[] buffer = new byte[lenBuf];
 
-            int indBuf;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             //----------------------------------------------------------------//
 
@@ -2623,9 +2577,7 @@ namespace PCLParaphernalia
 
             byte[] buffer = new byte[lenBuf];
 
-            int indBuf;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             addOperator (ref buffer,
                          ref indBuf,
@@ -2653,9 +2605,7 @@ namespace PCLParaphernalia
             if (embeddedStream)
             {
                 int lenTemp;
-                int indTemp;
-
-                indTemp = 0;
+                int indTemp = 0;
 
                 lenTemp = cSizeAttrUint32 + cSizeOperator;
 

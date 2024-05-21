@@ -208,9 +208,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                int sizeDonorSet;
-
-                sizeDonorSet = PCLSymbolSets.getMapArrayMax (
+                int sizeDonorSet = PCLSymbolSets.getMapArrayMax (
                     _subsetSymSets [_indxDonorSymSetSubset]) + 1;
 
                 _symSetMapDonor = PCLSymbolSets.getMapArray (
@@ -525,9 +523,7 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    int sizeDonorSet;
-
-                    sizeDonorSet = lastCode + 1;
+                    int sizeDonorSet = lastCode + 1;
 
                     _flagMultiByteSet = sizeDonorSet > cSizeCharSet_8bit;
 
@@ -2596,8 +2592,7 @@ bitVal;
 
             TextBox source = e.Source as TextBox;
 
-            string txtBoxName;
-
+            
             //----------------------------------------------------------------//
             //                                                                //
             // Work out which (mapping) text box has just lost focus.         //
@@ -2607,7 +2602,7 @@ bitVal;
             //                                                                //
             //----------------------------------------------------------------//
 
-            txtBoxName = source.Name; // should be in format txtMap0xpq
+            string txtBoxName = source.Name; // should be in format txtMap0xpq
 
             flagOK = ushort.TryParse (txtBoxName.Substring (8, 2),
                                       NumberStyles.HexNumber,

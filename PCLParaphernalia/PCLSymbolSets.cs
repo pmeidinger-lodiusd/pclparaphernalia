@@ -414,9 +414,7 @@ namespace PCLParaphernalia
                                             ref ushort idNum,
                                             ref string name)
         {
-            bool symsetPresent;
-
-            symsetPresent = _sets[selection].getSymsetData (ref kind1,
+            bool symsetPresent = _sets[selection].getSymsetData (ref kind1,
                                                             ref idNum,
                                                             ref name);
 
@@ -440,9 +438,7 @@ namespace PCLParaphernalia
                                                       ref ushort idNum,
                                                       ref string name)
         {
-            bool symsetPresent;
-
-            symsetPresent = _sets[selection].getSymsetDataForIdAlpha (idAlpha,
+            bool symsetPresent = _sets[selection].getSymsetDataForIdAlpha (idAlpha,
                                                                       ref kind1,
                                                                       ref idNum,
                                                                       ref name);
@@ -1585,15 +1581,14 @@ namespace PCLParaphernalia
             ushort kind1Num = 0,
                    kind1Alpha = 0;
 
-            int len;
-
+            
             //----------------------------------------------------------------//
             //                                                                //
             // Check that field length is within limits.                      //
             //                                                                //
             //----------------------------------------------------------------//
 
-            len = symbolSetId.Length;
+            int len = symbolSetId.Length;
 
             if ((len < 2) || (len > 5))
                 dataValid = false;

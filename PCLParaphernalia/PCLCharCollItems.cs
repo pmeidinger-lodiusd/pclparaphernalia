@@ -49,9 +49,7 @@ namespace PCLParaphernalia
                 new ObservableCollection<PCLCharCollItem> ();
 
             PCLCharCollections.eBitType bitType;
-            int collsCt;
-
-            collsCt = PCLCharCollections.getCollsCount ();
+            int collsCt = PCLCharCollections.getCollsCount ();
 
             int bitNo;
             string desc;
@@ -118,9 +116,7 @@ namespace PCLParaphernalia
                 new ObservableCollection<PCLCharCollItem>();
 
             PCLCharCollections.eBitType bitType;
-            int collsCt;
-
-            collsCt = PCLCharCollections.getCollsCount ();
+            int collsCt = PCLCharCollections.getCollsCount ();
 
             int bitNo;
             string desc;
@@ -177,9 +173,7 @@ namespace PCLParaphernalia
                 new ObservableCollection<PCLCharCollItem>();
 
             PCLCharCollections.eBitType bitType;
-            int collsCt;
-
-            collsCt = PCLCharCollections.getCollsCount ();
+            int collsCt = PCLCharCollections.getCollsCount ();
 
             int bitNo;
             string desc;

@@ -521,9 +521,7 @@ namespace PCLParaphernalia
 
             byte[] bufStd = new byte[sizeStd];
 
-            int indStd;
-
-            indStd = 0;
+            int indStd = 0;
 
             PCLXLWriter.addOperator(ref bufStd,
                               ref indStd,
@@ -672,9 +670,7 @@ namespace PCLParaphernalia
 
             byte[] bufStd = new byte[sizeStd];
 
-            int indStd;
-
-            indStd = 0;
+            int indStd = 0;
 
             PCLXLWriter.addAttrUint16(ref bufStd,
                                 ref indStd,

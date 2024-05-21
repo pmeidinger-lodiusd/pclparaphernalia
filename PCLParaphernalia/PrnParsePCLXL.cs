@@ -432,9 +432,7 @@ namespace PCLParaphernalia
             ref bool endReached,
             bool firstCall)
         {
-            PrnParseConstants.eContType contType;
-
-            contType = PrnParseConstants.eContType.None;
+            PrnParseConstants.eContType contType = PrnParseConstants.eContType.None;
 
             int prefixLen = 0,
                   contDataLen = 0,
@@ -1245,9 +1243,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    int tempLen;
-
-                    tempLen = bufOffset - _attrDataStart;
+                    int tempLen = bufOffset - _attrDataStart;
                     bufRem += tempLen;
                     bufOffset = _attrDataStart;
 
@@ -2407,15 +2403,14 @@ namespace PCLParaphernalia
 
             int dataLenSize;
 
-            bool invalidSeqFound;
-
+            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
             //                                                                //
             //----------------------------------------------------------------//
 
-            invalidSeqFound = false;
+            bool invalidSeqFound = false;
 
             makeOvlShow = _linkData.MakeOvlShow;
 
@@ -3136,9 +3131,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    bool operHasAttrList;
-
-                    operHasAttrList = bufOffset != _attrDataStart;
+                    bool operHasAttrList = bufOffset != _attrDataStart;
 
                     _breakpoint = PrnParseMakeOvl.checkActionPCLXLOper (
                                     false,

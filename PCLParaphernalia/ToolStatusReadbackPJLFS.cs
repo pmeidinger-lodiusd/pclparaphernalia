@@ -520,9 +520,7 @@ namespace PCLParaphernalia
 
             string reply = "";
 
-            bool binFileOpen = false;
-
-            binFileOpen = binTgtFileOpen (binTgtFilename);
+            bool binFileOpen = binTgtFileOpen (binTgtFilename);
 
             if (! binFileOpen)
             {

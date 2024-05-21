@@ -2300,9 +2300,7 @@ namespace PCLParaphernalia
 
             byte[] buffer = new byte[lenBuf];
 
-            int indBuf;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             PCLXLWriter.addOperator (ref buffer,
                                      ref indBuf,
@@ -2371,9 +2369,7 @@ namespace PCLParaphernalia
 
             byte[] buffer = new byte[lenBuf];
 
-            int indBuf;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             //----------------------------------------------------------------//
             //                                                                //

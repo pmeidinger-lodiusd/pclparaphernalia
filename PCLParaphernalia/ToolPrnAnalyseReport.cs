@@ -264,9 +264,7 @@ namespace PCLParaphernalia
             string[] colNames;
             int[] colSizes;
 
-            int ctItems;
-
-            ctItems = table.Rows.Count;
+            int ctItems = table.Rows.Count;
 
             if (flagOffsetHex)
                 c0Hddr = c0Name + ": hex";
@@ -349,9 +347,7 @@ namespace PCLParaphernalia
             string[] colNames;
             int[] colSizes;
 
-            int ctItems;
-
-            ctItems = table.Rows.Count;
+            int ctItems = table.Rows.Count;
 
             if (flagOffsetHex)
                 c0Hddr = c0Name + ": hex";
@@ -435,9 +431,7 @@ namespace PCLParaphernalia
             string[] colNames;
             int[] colSizes;
 
-            int ctItems;
-
-            ctItems = table.Rows.Count;
+            int ctItems = table.Rows.Count;
 
             colNames = new string[colCt] { c0Name, c1Name, c2Name, c3Name, c4Name };
             colSizes = new int[colCt] { lc0, lc1, lc2, lc3, lc4 };

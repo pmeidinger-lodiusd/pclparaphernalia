@@ -95,11 +95,10 @@ namespace PCLParaphernalia
 
         static PCLPalettes ()
         {
-            int crntIndex;
-
+            
             //----------------------------------------------------------------//
 
-            crntIndex = (int) eIndex.PCLMonochrome;
+            int crntIndex = (int) eIndex.PCLMonochrome;
 
             _palettes[crntIndex].addColour ("Black", (byte) eSimpleMono.Black);
             _palettes[crntIndex].setClrItemBlack ();

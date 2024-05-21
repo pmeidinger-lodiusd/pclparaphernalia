@@ -716,8 +716,7 @@ namespace PCLParaphernalia
         {
             bool flagOK = true;
 
-            string txtBoxName;
-
+            
             //----------------------------------------------------------------//
             //                                                                //
             // Work out which of the (mapping) text boxes has just lost       //
@@ -730,7 +729,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            txtBoxName = source.Name;
+            string txtBoxName = source.Name;
 
             flagOK = ushort.TryParse (txtBoxName.Substring (nameRootLen, 2),
                                       NumberStyles.Integer,
@@ -803,9 +802,7 @@ namespace PCLParaphernalia
 
             TextBox source = e.Source as TextBox;
 
-            bool flagOK = false;
-
-            flagOK = txtColourCheckBoxId (source, nameRootLen, sampleCt, planeCt,
+            bool flagOK = txtColourCheckBoxId (source, nameRootLen, sampleCt, planeCt,
                                           ref sampleNo, ref planeNo,
                                           ref planeSig);
 
@@ -846,9 +843,7 @@ namespace PCLParaphernalia
 
             TextBox source = e.Source as TextBox;
 
-            bool flagOK = false;
-
-            flagOK = txtColourCheckBoxId (source, nameRootLen, sampleCt, planeCt,
+            bool flagOK = txtColourCheckBoxId (source, nameRootLen, sampleCt, planeCt,
                                           ref sampleNo, ref planeNo,
                                           ref planeSig);
 
@@ -889,9 +884,7 @@ namespace PCLParaphernalia
 
             TextBox source = e.Source as TextBox;
 
-            bool flagOK = false;
-
-            flagOK = txtColourCheckBoxId (source, nameRootLen, sampleCt, planeCt,
+            bool flagOK = txtColourCheckBoxId (source, nameRootLen, sampleCt, planeCt,
                                           ref sampleNo, ref planeNo,
                                           ref planeSig);
 

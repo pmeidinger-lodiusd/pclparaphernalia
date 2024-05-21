@@ -1040,12 +1040,10 @@ namespace PCLParaphernalia
                         string parseMethodText = "",
                                fontFilename;
 
-                        PCLTextParsingMethods.eIndex parseMethod;
-
+                        
                         //----------------------------------------------------//
 
-                        parseMethod =
-                            (PCLTextParsingMethods.eIndex) _indxParseMethod;
+                        PCLTextParsingMethods.eIndex parseMethod = (PCLTextParsingMethods.eIndex) _indxParseMethod;
 
                         if (parseMethod != PCLTextParsingMethods.eIndex.not_specified)
                         {
@@ -1135,9 +1133,7 @@ namespace PCLParaphernalia
                     }
                     else    // if (_crntPDL == ToolCommonData.ePrintLang.PCLXL)
                     {
-                        bool symSetUserSet;
-
-                        symSetUserSet = _symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet;
+                        bool symSetUserSet = _symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet;
 
                         if (validatePCLXLFontCharacteristics ())
                             setFontSelectData ();
@@ -1431,9 +1427,7 @@ namespace PCLParaphernalia
         {
             if (_initialised && cbParseMethod.HasItems)
             {
-                int index;
-
-                index = cbParseMethod.SelectedIndex;
+                int index = cbParseMethod.SelectedIndex;
 
                 _indxParseMethod = _subsetParseMethods[index];
 
@@ -2092,9 +2086,7 @@ namespace PCLParaphernalia
         {
             bool samePreset = false;
 
-            int indxFont   = 0;
-
-            indxFont = cbFont.SelectedIndex;
+            int indxFont   = cbFont.SelectedIndex;
 
             _fontType = PCLFonts.getType(_subsetFonts[indxFont]);
 

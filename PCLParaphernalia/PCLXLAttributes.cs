@@ -202,9 +202,7 @@ namespace PCLParaphernalia
 
             PCLXLAttribute tag;
 
-            int key;
-
-            key = key = (((tagLen1 * 256) + tagA) * 256) + tagB;
+            int key = key = (((tagLen1 * 256) + tagA) * 256) + tagB;
 
             if (_tags.IndexOfKey (key) != -1)
             {
@@ -330,11 +328,10 @@ namespace PCLParaphernalia
 
         public static void displayStatsCountsHddr(DataTable table)
         {
-            DataRow row;
-
+            
             //----------------------------------------------------------------//
 
-            row = table.NewRow ();
+            DataRow row = table.NewRow ();
 
             row[0] = "";
             row[1] = "______________________";
@@ -431,9 +428,7 @@ namespace PCLParaphernalia
         {
             PCLXLAttribute tag;
 
-            int key;
-
-            key = key = (((tagLen * 256) + tagByteA) * 256) + tagByteB;
+            int key = key = (((tagLen * 256) + tagByteA) * 256) + tagByteB;
 
             if (_tags.IndexOfKey (key) != -1)
                 tag = _tags[key];

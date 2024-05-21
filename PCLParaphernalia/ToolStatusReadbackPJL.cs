@@ -55,9 +55,7 @@ namespace PCLParaphernalia
                         }
                         else
                         {
-                            string categoryName;
-
-                            categoryName = PJLCategories.getName (indexCategory);
+                            string categoryName = PJLCategories.getName (indexCategory);
 
                             seq = "\x1b" + "%-12345X" +
                                            "@PJL ECHO PCLParaphernalia" + "\x0d\x0a" +
@@ -74,9 +72,7 @@ namespace PCLParaphernalia
                 {
                     if (indexVariable < PJLVariables.getCount())
                     {
-                        PJLVariables.eVarType varType;
-
-                        varType = PJLVariables.getType(indexVariable);
+                        PJLVariables.eVarType varType = PJLVariables.getType(indexVariable);
 
                         if (varType == PJLVariables.eVarType.Custom)
                         {

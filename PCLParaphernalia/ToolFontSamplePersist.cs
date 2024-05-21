@@ -940,9 +940,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsFontSample +
+            string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
                                  "\\" + pdlName;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
@@ -1037,9 +1035,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsFontSample +
+            string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
                                  "\\" + _subKeyPCL +
                                  "\\" + _subKeyCustom;
 
@@ -1131,9 +1127,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsFontSample +
+            string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
                                  "\\" + _subKeyPCL +
                                  "\\" + _subKeyDownload;
 
@@ -1213,9 +1207,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsFontSample +
+            string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
                                  "\\" + _subKeyPCL +
                                  "\\" + _subKeyPreset;
 
@@ -1285,9 +1277,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsFontSample +
+            string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
                                  "\\" + _subKeyPCL +
                                  "\\" + _subKeyPrnDisk;
 
@@ -1426,9 +1416,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsFontSample +
+            string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
                                  "\\" + _subKeyPCLXL +
                                  "\\" + _subKeyCustom;
 
@@ -1481,9 +1469,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsFontSample +
+            string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
                                  "\\" + _subKeyPCLXL +
                                  "\\" + _subKeyDownload;
 
@@ -1545,9 +1531,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsFontSample +
+            string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
                                  "\\" + _subKeyPCLXL +
                                  "\\" + _subKeyPreset;
 

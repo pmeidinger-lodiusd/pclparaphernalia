@@ -372,9 +372,7 @@ namespace PCLParaphernalia
                 fontFilename = saveDialog.FileName;
 
                 BinaryWriter writer = null;
-                Stream stream = null;
-
-                stream = File.Create(fontFilename);
+                Stream stream = File.Create(fontFilename);
 
                 if (stream != null)
                 {
@@ -512,9 +510,7 @@ namespace PCLParaphernalia
             byte[] segData = new byte[cSizeSegCC];
 
             ushort valUInt16;
-            uint valUInt32;
-
-            valUInt32 = msUInt32 (charCollComp);
+            uint valUInt32 = msUInt32 (charCollComp);
             valUInt16 = msUInt16 (valUInt32);
             segData [0] = msByte (valUInt16);
             segData [1] = lsByte (valUInt16);
@@ -1246,13 +1242,11 @@ namespace PCLParaphernalia
 
             byte[] segId = new byte[2] { 0xff, 0xff };
 
-            flagOK = writeHddrSegHddr (pdlIsPCLXL,
+            return writeHddrSegHddr(pdlIsPCLXL,
                                        fmt16,
                                        0,
                                        segId,
                                        ref sumMod256);
-
-            return flagOK;
         }
 
         //--------------------------------------------------------------------//

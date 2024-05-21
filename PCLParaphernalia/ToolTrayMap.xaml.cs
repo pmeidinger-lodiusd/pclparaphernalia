@@ -329,8 +329,7 @@ namespace PCLParaphernalia
 
             ComboBox source = e.Source as ComboBox;
 
-            string cbName;
-
+            
             //----------------------------------------------------------------//
             //                                                                //
             // Work out which combo box has just changed.                     //
@@ -340,7 +339,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            cbName = source.Name; // should be in format cbnn_xyz
+            string cbName = source.Name; // should be in format cbnn_xyz
 
             flagOK = ushort.TryParse(cbName.Substring(2, 2),
                                       NumberStyles.HexNumber,
@@ -389,8 +388,7 @@ namespace PCLParaphernalia
 
             ComboBox source = e.Source as ComboBox;
 
-            string cbName;
-
+            
             //----------------------------------------------------------------//
             //                                                                //
             // Work out which combo box has just changed.                     //
@@ -400,7 +398,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            cbName = source.Name; // should be in format cbnn_xyz
+            string cbName = source.Name; // should be in format cbnn_xyz
 
             flagOK = ushort.TryParse(cbName.Substring(2, 2),
                                       NumberStyles.HexNumber,
@@ -450,8 +448,7 @@ namespace PCLParaphernalia
 
             ComboBox source = e.Source as ComboBox;
 
-            string cbName;
-
+            
             //----------------------------------------------------------------//
             //                                                                //
             // Work out which combo box has just changed.                     //
@@ -461,7 +458,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            cbName = source.Name; // should be in format cbnn_xyz
+            string cbName = source.Name; // should be in format cbnn_xyz
 
             flagOK = ushort.TryParse(cbName.Substring(2, 2),
                                       NumberStyles.HexNumber,
@@ -513,8 +510,7 @@ namespace PCLParaphernalia
 
                 ComboBox source = e.Source as ComboBox;
 
-                string cbName;
-
+                
                 //------------------------------------------------------------//
                 //                                                            //
                 // Work out which combo box has just changed.                 //
@@ -524,7 +520,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                cbName = source.Name; // should be in format cbnn_xyz
+                string cbName = source.Name; // should be in format cbnn_xyz
 
                 flagOK = ushort.TryParse(cbName.Substring(2, 2),
                                           NumberStyles.HexNumber,
@@ -575,8 +571,7 @@ namespace PCLParaphernalia
 
             ComboBox source = e.Source as ComboBox;
 
-            string cbName;
-
+            
             //----------------------------------------------------------------//
             //                                                                //
             // Work out which combo box has just changed.                     //
@@ -586,7 +581,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            cbName = source.Name; // should be in format cbnn_xyz
+            string cbName = source.Name; // should be in format cbnn_xyz
 
             flagOK = ushort.TryParse(cbName.Substring(2, 2),
                                       NumberStyles.HexNumber,
@@ -659,8 +654,7 @@ namespace PCLParaphernalia
 
             ComboBox source = e.Source as ComboBox;
 
-            string cbName;
-
+            
             //----------------------------------------------------------------//
             //                                                                //
             // Work out which combo box has just changed.                     //
@@ -670,7 +664,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            cbName = source.Name; // should be in format cbnn_xyz
+            string cbName = source.Name; // should be in format cbnn_xyz
 
             flagOK = ushort.TryParse(cbName.Substring(2, 2),
                                       NumberStyles.HexNumber,
@@ -1343,9 +1337,7 @@ namespace PCLParaphernalia
 
         private void sheetDataResetVisibility ()
         {
-            int sheetCt;
-
-            sheetCt = cbSheetCt.SelectedIndex + 1;
+            int sheetCt = cbSheetCt.SelectedIndex + 1;
 
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                 _sheetCtPCL = sheetCt;

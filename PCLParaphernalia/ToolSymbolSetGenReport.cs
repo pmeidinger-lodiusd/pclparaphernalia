@@ -254,9 +254,7 @@ namespace PCLParaphernalia
             string[] colNames = new string[colCt];
             int[] colSizes = new int[colCt];
 
-            int ctItems;
-
-            ctItems = symSetMap.Length;
+            int ctItems = symSetMap.Length;
 
             //----------------------------------------------------------------//
             //                                                                //

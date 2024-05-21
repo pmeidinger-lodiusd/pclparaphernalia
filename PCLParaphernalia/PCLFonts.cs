@@ -667,9 +667,7 @@ namespace PCLParaphernalia
                                                 ref ushort typeface,
                                                 ref string fontName)
         {
-            bool typefacePreset;
-
-            typefacePreset = _fonts[indxFont].getPCLFontIdData (ref typeface,
+            bool typefacePreset = _fonts[indxFont].getPCLFontIdData (ref typeface,
                                                                 ref fontName);
 
             return typefacePreset;

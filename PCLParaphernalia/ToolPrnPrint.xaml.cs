@@ -109,9 +109,7 @@ namespace PCLParaphernalia
         {
             bool OK = true;
 
-            bool fileOpen = false;
-
-            fileOpen = prnOpen(prnFilename);
+            bool fileOpen = prnOpen(prnFilename);
 
             if (!fileOpen)
             {

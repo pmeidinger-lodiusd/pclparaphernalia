@@ -362,9 +362,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            ePCLFontFormat hddrFormat;
-
-            hddrFormat = (ePCLFontFormat)hddr[2];
+            ePCLFontFormat hddrFormat = (ePCLFontFormat)hddr[2];
 
             switch (hddrFormat)
             {

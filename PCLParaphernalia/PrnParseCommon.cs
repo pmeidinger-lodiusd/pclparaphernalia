@@ -191,9 +191,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                DataRow row;
-
-                row = table.NewRow ();
+                DataRow row = table.NewRow ();
 
                 if (_parseType == PrnParse.eParseType.MakeOverlay)
                 {

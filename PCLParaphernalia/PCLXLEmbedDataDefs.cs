@@ -91,9 +91,7 @@ namespace PCLParaphernalia
         {
             const bool flagNone     = false;
 
-            byte tag;
-
-            tag = (byte) eTag.Int;                                   // 0xfa //
+            byte tag = (byte) eTag.Int;                                   // 0xfa //
             _tags.Add(tag,
                 new PCLXLEmbedDataDef(tag,
                                          flagNone,

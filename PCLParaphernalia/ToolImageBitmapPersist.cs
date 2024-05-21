@@ -210,9 +210,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsImageBitmap +
+            string key = _subKeyTools + "\\" + _subKeyToolsImageBitmap +
                                  "\\" + pdlName;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
@@ -347,9 +345,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsImageBitmap +
+            string key = _subKeyTools + "\\" + _subKeyToolsImageBitmap +
                                  "\\" + pdlName;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))

@@ -1236,9 +1236,7 @@ namespace PCLParaphernalia
                 //                                                        //
                 //--------------------------------------------------------//
 
-                string seq;
-
-                seq = PrnParseCommon.byteArrayToHexString (_buf,
+                string seq = PrnParseCommon.byteArrayToHexString (_buf,
                                                            sliceOffset,
                                                            sliceLen);
 
@@ -1297,9 +1295,7 @@ namespace PCLParaphernalia
                 //                                                        //
                 //--------------------------------------------------------//
 
-                string seq;
-
-                seq = PrnParseCommon.byteArrayToHexString (_buf,
+                string seq = PrnParseCommon.byteArrayToHexString (_buf,
                                                            sliceOffset,
                                                            sliceLen);
 

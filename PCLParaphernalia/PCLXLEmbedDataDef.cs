@@ -81,9 +81,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                string tag;
-
-                tag = "0x" + _tag.ToString("x2");
+                string tag = "0x" + _tag.ToString("x2");
 
                 return tag;
             }

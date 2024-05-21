@@ -150,9 +150,7 @@ namespace PCLParaphernalia
 
         private static void populateTable()
         {
-            int bitNo;
-
-            bitNo = 0;                                                  //  0 //
+            int bitNo = 0;                                                  //  0 //
             _collsList.Add (
                 bitNo,
                 new PCLCharCollection (

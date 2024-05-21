@@ -92,9 +92,7 @@ namespace PCLParaphernalia
             const bool flagNone     = false;
             const bool flagReserved = true;
 
-            byte tag;
-
-            tag = (byte) eTag.Ubyte;                                 // 0xf8 //
+            byte tag = (byte) eTag.Ubyte;                                 // 0xf8 //
             _tags.Add(tag,
                 new PCLXLAttrDefiner(tag,
                                      flagNone,

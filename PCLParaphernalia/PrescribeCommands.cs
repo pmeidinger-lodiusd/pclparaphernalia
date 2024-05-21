@@ -240,11 +240,10 @@ namespace PCLParaphernalia
 
         public static void displayStatsCountsHddr(DataTable table)
         {
-            DataRow row;
-
+            
             //----------------------------------------------------------------//
 
-            row = table.NewRow ();
+            DataRow row = table.NewRow ();
 
             row[0] = "";
             row[1] = "___________________";
@@ -342,9 +341,7 @@ namespace PCLParaphernalia
 
         public static void populateTable ()
         {
-            string command;
-
-            command = "?";
+            string command = "?";
             _cmdUnknown =
                 new PrescribeCommand(
                     command,

@@ -214,11 +214,10 @@ namespace PCLParaphernalia
 
         public static void displayStatsCountsHddr (DataTable table)
         {
-            DataRow row;
-
+            
             //----------------------------------------------------------------//
 
-            row = table.NewRow ();
+            DataRow row = table.NewRow ();
 
             row[0] = "";
             row[1] = "_____________________";
@@ -278,9 +277,7 @@ namespace PCLParaphernalia
             const bool flagObsolete = true;
             const bool flagResetGL2 = true;
 
-            byte sChar;
-
-            sChar = 0x20;                                                // ? //
+            byte sChar = 0x20;                                                // ? //
              _seqUnknown =
                 new PCLSimpleSeq(sChar,
                                  flagNone, flagNone,

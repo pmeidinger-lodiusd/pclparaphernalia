@@ -319,11 +319,10 @@ namespace PCLParaphernalia
 
         public static void displayStatsCountsHddr(DataTable table)
         {
-            DataRow row;
-
+            
             //----------------------------------------------------------------//
 
-            row = table.NewRow ();
+            DataRow row = table.NewRow ();
 
             row[0] = "";
             row[1] = "____________________________";
@@ -7902,9 +7901,7 @@ namespace PCLParaphernalia
             const bool flagNone = false;
             const bool flagDiscrete = true;
 
-            int ctFonts;
-
-            ctFonts = PCLFonts.getCount ();
+            int ctFonts = PCLFonts.getCount ();
 
             if (ctFonts > 0)
             {
@@ -7963,9 +7960,7 @@ namespace PCLParaphernalia
             const bool flagNone = false;
             const bool flagDiscrete = true;
 
-            int count;
-
-            count = PCLPaperSizes.getCount();
+            int count = PCLPaperSizes.getCount();
 
             if (count > 0)
             {
@@ -8010,9 +8005,7 @@ namespace PCLParaphernalia
             const bool flagDiscrete = true;
             const bool flagNilGChar = true;
 
-            int ctSymsets;
-
-            ctSymsets = PCLSymbolSets.getCount ();
+            int ctSymsets = PCLSymbolSets.getCount ();
 
             if (ctSymsets > 0)
             {

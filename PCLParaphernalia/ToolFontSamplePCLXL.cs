@@ -1309,9 +1309,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                string offsetText;
-
-                offsetText = ": Range offset 0x" +
+                string offsetText = ": Range offset 0x" +
                              sampleRangeOffset.ToString ("X4");
 
                 PCLXLWriter.text(prnWriter, false, false,

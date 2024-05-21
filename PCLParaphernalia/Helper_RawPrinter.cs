@@ -232,9 +232,7 @@ namespace PCLParaphernalia
 
             IntPtr pUnmanagedBytes = new IntPtr(0);
 
-            int nLength;
-
-            nLength = Convert.ToInt32(fs.Length);
+            int nLength = Convert.ToInt32(fs.Length);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -287,9 +285,7 @@ namespace PCLParaphernalia
             string szString)
         {
             IntPtr pBytes;
-            int dwCount;
-
-            dwCount = szString.Length; // How many characters are in the string?
+            int dwCount = szString.Length; // How many characters are in the string?
 
             //----------------------------------------------------------------//
             //                                                                //

@@ -164,9 +164,7 @@ namespace PCLParaphernalia
             string[] colNames;
             int[] colSizes;
 
-            int ctItems;
-
-            ctItems = table.Rows.Count;
+            int ctItems = table.Rows.Count;
 
             colHddrs = new string[colCt] { c0Hddr, c1Hddr, c2Hddr, c3Hddr,
                                            c4Hddr, c5Hddr, c6Hddr, c7Hddr,
@@ -241,9 +239,7 @@ namespace PCLParaphernalia
             string[] colNames;
             int[] colSizes;
 
-            int ctItems;
-
-            ctItems = table.Rows.Count;
+            int ctItems = table.Rows.Count;
 
             colHddrs = new string[colCt] { c0Name, c1Name };
             colNames = new string[colCt] { c0Name, c1Name };

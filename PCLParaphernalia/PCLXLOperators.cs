@@ -300,11 +300,10 @@ namespace PCLParaphernalia
 
         public static void displayStatsCountsHddr(DataTable table)
         {
-            DataRow row;
-
+            
             //----------------------------------------------------------------//
 
-            row = table.NewRow ();
+            DataRow row = table.NewRow ();
 
             row[0] = "";
             row[1] = "_____________________";
@@ -417,9 +416,7 @@ namespace PCLParaphernalia
             const bool flagReserved   = true;
             const bool flagEndSession = true;
 
-            byte tag;
-
-            tag = 0x20;                                              // ?    //
+            byte tag = 0x20;                                              // ?    //
             _tagUnknown =
                 new PCLXLOperator(tag, flagNone, flagNone,
                                      eEmbedDataType.None,

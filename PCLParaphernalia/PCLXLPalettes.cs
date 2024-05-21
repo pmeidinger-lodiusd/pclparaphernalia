@@ -83,11 +83,10 @@ namespace PCLParaphernalia
 
         static PCLXLPalettes ()
         {
-            int crntIndex;
-
+            
             //----------------------------------------------------------------//
 
-            crntIndex = (int) eIndex.PCLXLGray;
+            int crntIndex = (int) eIndex.PCLXLGray;
 
             _palettes [crntIndex].addColour ("Black", 0x00000000,
                                              (byte) eMono_2.Black);

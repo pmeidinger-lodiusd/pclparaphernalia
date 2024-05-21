@@ -89,9 +89,7 @@ namespace PCLParaphernalia
         public static void charDownloadCode(BinaryWriter prnWriter,
                                             ushort codepoint)
         {
-            string seq;
-
-            seq = "\x1b" + "*c" + codepoint + "E";
+            string seq = "\x1b" + "*c" + codepoint + "E";
 
             prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
         }
@@ -109,9 +107,7 @@ namespace PCLParaphernalia
         public static void charDownloadDesc(BinaryWriter prnWriter,
                                             ushort hddrLen)
         {
-            string seq;
-
-            seq = "\x1b" + "(s" + hddrLen + "W";
+            string seq = "\x1b" + "(s" + hddrLen + "W";
 
             prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
         }
@@ -193,9 +189,7 @@ namespace PCLParaphernalia
                                           short coordX,
                                           short coordY)
         {
-            string seq;
-
-            seq = "\x1b" + "*p" +
+            string seq = "\x1b" + "*p" +
                            coordX +
                            "x" +                // Position: Horizontal
                            coordY +
@@ -386,9 +380,7 @@ namespace PCLParaphernalia
         public static void fontDownloadHddr (BinaryWriter prnWriter,
                                              uint hddrLen)
         {
-            string seq;
-
-            seq = "\x1b" + ")s" + hddrLen + "W";
+            string seq = "\x1b" + ")s" + hddrLen + "W";
 
             prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
         }
@@ -405,9 +397,7 @@ namespace PCLParaphernalia
         public static void fontDownloadID(BinaryWriter prnWriter,
                                           ushort downloadID)
         {
-            string seq;
-
-            seq = "\x1b" + "*c" + downloadID + "D";
+            string seq = "\x1b" + "*c" + downloadID + "D";
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
@@ -424,9 +414,7 @@ namespace PCLParaphernalia
         public static void fontDownloadRemove(BinaryWriter prnWriter,
                                               ushort downloadID)
         {
-            string seq;
-
-            seq = "\x1b" + "*c" + downloadID + "d2F";
+            string seq = "\x1b" + "*c" + downloadID + "d2F";
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
@@ -538,9 +526,7 @@ namespace PCLParaphernalia
                                           short length,
                                           short stroke)
         {
-            string seq;
-
-            seq = "\x1b" + "*p" +
+            string seq = "\x1b" + "*p" +
                            coordX + "x" +       // Position: Horizontal
                            coordY + "Y" +       // Position: Vertical
                   "\x1b" + "*c" +
@@ -568,9 +554,7 @@ namespace PCLParaphernalia
                                         short length,
                                         short stroke)
         {
-            string seq;
-
-            seq = "\x1b" + "*p" +
+            string seq = "\x1b" + "*p" +
                            coordX + "x" +       // Position: Horizontal
                            coordY + "Y" +       // Position: Vertical
                   "\x1b" + "*c" +
@@ -642,9 +626,7 @@ namespace PCLParaphernalia
         public static void macroDownloadId (BinaryWriter prnWriter,
                                             ushort downloadId)
         {
-            string seq;
-
-            seq = "\x1b" + "&f" + downloadId + "Y";
+            string seq = "\x1b" + "&f" + downloadId + "Y";
 
             prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
         }
@@ -687,9 +669,7 @@ namespace PCLParaphernalia
         public static void marginLeft (BinaryWriter prnWriter,
                                        short columns)
         {
-            string seq;
-
-            seq = "\x1b" + "&a" +               // left margin
+            string seq = "\x1b" + "&a" +               // left margin
                            columns +
                            "L";
 
@@ -710,9 +690,7 @@ namespace PCLParaphernalia
         public static void marginTop (BinaryWriter prnWriter,
                                       short lines)
         {
-            string seq;
-
-            seq = "\x1b" + "&l" +               // top margin
+            string seq = "\x1b" + "&l" +               // top margin
                            lines +
                            "E";
 
@@ -933,9 +911,7 @@ namespace PCLParaphernalia
         public static void pageOrientation(BinaryWriter prnWriter,
                                            string orientId)
         {
-            string seq;
-
-            seq = "\x1b" + "&l" +               // page orientation
+            string seq = "\x1b" + "&l" +               // page orientation
                            orientId +
                            "o"  +
                            "0E" +               // Top Margin (lines)
@@ -961,9 +937,7 @@ namespace PCLParaphernalia
                                         short colour2,
                                         short colour3)
         {
-            string seq;
-
-            seq = "\x1b" + "*v" +
+            string seq = "\x1b" + "*v" +
                            colour1 + "a" +      // Colour Component 1
                            colour2 + "b" +      // Colour Component 2
                            colour3 + "c" +      // Colour Component 3
@@ -1031,9 +1005,7 @@ namespace PCLParaphernalia
         public static void paletteSimple (BinaryWriter prnWriter,
                                           short palette)
         {
-            string seq;
-
-            seq = "\x1b" + "*r" + palette + "U";
+            string seq = "\x1b" + "*r" + palette + "U";
 
             prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
         }
@@ -1050,9 +1022,7 @@ namespace PCLParaphernalia
         public static void paperSource(BinaryWriter prnWriter,
                                        short trayId)
         {
-            string seq;
-
-            seq = "\x1b" + "&l" +               // tray identifier
+            string seq = "\x1b" + "&l" +               // tray identifier
                            trayId +
                            "H";
 
@@ -1259,9 +1229,7 @@ namespace PCLParaphernalia
         public static void printDirection(BinaryWriter prnWriter,
                                           short ccwAngle)
         {
-            string seq;
-
-            seq = "\x1b" + "&a" +               // print direction
+            string seq = "\x1b" + "&a" +               // print direction
                            ccwAngle +
                            "P";
 
@@ -1283,9 +1251,7 @@ namespace PCLParaphernalia
                                        int srcHeight,
                                        int compressMode)
         {
-            string seq;
-
-            seq = "\x1b" + "*r0f" +             // Raster Presentation: Logical
+            string seq = "\x1b" + "*r0f" +             // Raster Presentation: Logical
                            srcWidth + "s" +     // Source Width
                            srcHeight + "t" +    // Source Height
                            "1A" +               // Start Raster Graphics: at X
@@ -1391,9 +1357,7 @@ namespace PCLParaphernalia
         public static void rasterCompressionMode(BinaryWriter prnWriter,
                                                  int compressMode)
         {
-            string seq;
-
-            seq = "\x1b" + "*b" +
+            string seq = "\x1b" + "*b" +
                            compressMode + "M";  // Compression mode
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
@@ -1410,9 +1374,7 @@ namespace PCLParaphernalia
 
         public static void rasterEnd(BinaryWriter prnWriter)
         {
-            string seq;
-
-            seq = "\x1b" + "*rC";               // End Raster Graphics
+            string seq = "\x1b" + "*rC";               // End Raster Graphics
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
@@ -1464,9 +1426,7 @@ namespace PCLParaphernalia
                                                 int rowLength,
                                                 byte[]       buffer)
         {
-            string seq;
-
-            seq = "\x1b" + "*b" +
+            string seq = "\x1b" + "*b" +
                            rowLength +
                            "V";                 // Transfer Raster Data: Plane
 
@@ -1489,9 +1449,7 @@ namespace PCLParaphernalia
                                              int rowLength,
                                              byte[] buffer)
         {
-            string seq;
-
-            seq = "\x1b" + "*b" +
+            string seq = "\x1b" + "*b" +
                            rowLength +
                            "W";                 // Transfer Raster Data: Row
 
@@ -1746,9 +1704,7 @@ namespace PCLParaphernalia
                                            short width,
                                            short hatch_id)
         {
-            string seq;
-
-            seq = "\x1b" + "*p" +
+            string seq = "\x1b" + "*p" +
                            coordX + "x" +       // Position: Horizontal
                            coordY + "Y" +       // Position: Vertical
                   "\x1b" + "*c" +
@@ -1774,9 +1730,7 @@ namespace PCLParaphernalia
         public static void setForegroundColour (BinaryWriter prnWriter,
                                                 byte colourIndex)
         {
-            string seq;
-
-            seq = "\x1b" + "*v" + colourIndex + "S";
+            string seq = "\x1b" + "*v" + colourIndex + "S";
 
             prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
         }
@@ -1793,9 +1747,7 @@ namespace PCLParaphernalia
         public static void setROP (BinaryWriter prnWriter,
                                    int operation)
         {
-            string seq;
-
-            seq = "\x1b" + "*l" + operation + "O";
+            string seq = "\x1b" + "*l" + operation + "O";
 
             prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
         }
@@ -1813,9 +1765,7 @@ namespace PCLParaphernalia
         public static void setTextLength(BinaryWriter prnWriter,
                                          short lines)
         {
-            string seq;
-
-            seq = "\x1b" + "&l"  +              // tray identifier
+            string seq = "\x1b" + "&l"  +              // tray identifier
                            lines +              // number of lines
                            "F";
 
@@ -1834,9 +1784,7 @@ namespace PCLParaphernalia
         public static void setVMI(BinaryWriter prnWriter,
                                   float increment)
         {
-            string seq;
-
-            seq = "\x1b" + "&l"   +             // set VMI
+            string seq = "\x1b" + "&l"   +             // set VMI
                            increment +          // 1/48 inch increments 
                            "C";
 
@@ -1881,9 +1829,7 @@ namespace PCLParaphernalia
         public static void stdJobHeader(BinaryWriter prnWriter,
                                         string pjlCommand)
         {
-            string seq;
-
-            seq = "\x1b" + "%-12345X";          // Universal Exit Language
+            string seq = "\x1b" + "%-12345X";          // Universal Exit Language
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
 
@@ -1940,9 +1886,7 @@ namespace PCLParaphernalia
         public static void symSetDownloadCode (BinaryWriter prnWriter,
                                                ushort symSetNo)
         {
-            string seq;
-
-            seq = "\x1b" + "*c" + symSetNo + "R";
+            string seq = "\x1b" + "*c" + symSetNo + "R";
 
             prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
         }
@@ -1959,9 +1903,7 @@ namespace PCLParaphernalia
         public static void symSetDownloadDesc (BinaryWriter prnWriter,
                                                uint descLen)
         {
-            string seq;
-
-            seq = "\x1b" + "(f" + descLen + "W";
+            string seq = "\x1b" + "(f" + descLen + "W";
 
             prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
         }
@@ -1978,9 +1920,7 @@ namespace PCLParaphernalia
         public static void symSetDownloadRemove (BinaryWriter prnWriter,
                                                  ushort symSetNo)
         {
-            string seq;
-
-            seq = "\x1b" + "*c" + symSetNo + "r2S";
+            string seq = "\x1b" + "*c" + symSetNo + "r2S";
 
             prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
         }
@@ -2023,9 +1963,7 @@ namespace PCLParaphernalia
                                 short spacing,
                                 string text)
         {
-            string seq;
-
-            seq = "\x1b" + "*p" +
+            string seq = "\x1b" + "*p" +
                            coordX + "x" +       // Position: Horizontal
                            coordY + "Y";        // Position: Vertical
 
@@ -2073,9 +2011,7 @@ namespace PCLParaphernalia
                                         bool resetRotation,
                                         string text)
         {
-            string seq;
-
-            seq = "\x1b" + "*p" +
+            string seq = "\x1b" + "*p" +
                            coordX + "x" +       // Position: Horizontal
                            coordY + "Y";        // Position: Vertical
 
@@ -2146,9 +2082,7 @@ namespace PCLParaphernalia
         public static void textParsingMethod(BinaryWriter prnWriter,
                                              int parseMethod)
         {
-            string seq;
-
-            seq = "\x1b" + "&t" + parseMethod.ToString () + "P";
+            string seq = "\x1b" + "&t" + parseMethod.ToString () + "P";
 
             prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
         }
@@ -2165,9 +2099,7 @@ namespace PCLParaphernalia
         public static void transparentPrint(BinaryWriter prnWriter,
                                             short byteCount)
         {
-            string seq;
-
-            seq = "\x1b" + "&p" +               // transparent print
+            string seq = "\x1b" + "&p" +               // transparent print
                            byteCount +
                            "X";
 

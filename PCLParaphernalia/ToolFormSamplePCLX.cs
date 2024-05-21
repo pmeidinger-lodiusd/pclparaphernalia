@@ -666,9 +666,7 @@ namespace PCLParaphernalia
                                             string formNameMain,
                                             string formNameRear)
         {
-            bool flagFrontFace;
-
-            flagFrontFace = true;
+            bool flagFrontFace = true;
 
             for (int pageNo = 1; pageNo <= pageCount; pageNo++)
             {

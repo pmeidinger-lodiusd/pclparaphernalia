@@ -326,11 +326,10 @@ namespace PCLParaphernalia
 
         public static void displayStatsCountsHddr(DataTable table)
         {
-            DataRow row;
-
+            
             //----------------------------------------------------------------//
 
-            row = table.NewRow ();
+            DataRow row = table.NewRow ();
 
             row[0] = "";
             row[1] = "______________________________";
@@ -3678,9 +3677,7 @@ namespace PCLParaphernalia
         {
             const bool flagNone = false;
 
-            int ctSymsets;
-
-            ctSymsets = PCLSymbolSets.getCount ();
+            int ctSymsets = PCLSymbolSets.getCount ();
 
             if (ctSymsets > 0)
             {

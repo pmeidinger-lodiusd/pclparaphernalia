@@ -71,9 +71,7 @@ namespace PCLParaphernalia
             const int colTSB        = 11;
             const int colLength     = 12;
 
-            DataRow row;
-
-            row = table.NewRow ();
+            DataRow row = table.NewRow ();
 
             if (glyphAlreadyPresent)
             {
@@ -173,9 +171,7 @@ namespace PCLParaphernalia
             const int colPrevious  = 5;
             const int colComposite = 6;
 
-            DataRow row;
-
-            row = table.NewRow ();
+            DataRow row = table.NewRow ();
 
             row[colDecCode]    = charCode;
             row[colHexCode]    = "0x" + charCode.ToString ("x4");
@@ -219,9 +215,7 @@ namespace PCLParaphernalia
             char lastChar,
                  nextChar;
 
-            bool firstLine;
-
-            firstLine = true;
+            bool firstLine = true;
             vLen = value.Length;
             vStart = 0;
 

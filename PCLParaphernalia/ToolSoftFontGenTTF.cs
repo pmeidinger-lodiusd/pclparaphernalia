@@ -877,9 +877,7 @@ namespace PCLParaphernalia
         {
             bool flagOK = true;
 
-            flagOK = fontFileOpen (_filenameTTF, ref _fontFileSize);
-
-            return flagOK;
+            return fontFileOpen(_filenameTTF, ref _fontFileSize);
         }
 
         //--------------------------------------------------------------------//
@@ -2192,9 +2190,7 @@ namespace PCLParaphernalia
         {
             int readLen = 0;
 
-            bool flagOK;
-
-            flagOK = true;
+            bool flagOK = true;
 
             if (offset != -1)
                 flagOK = fontFileSeek (offset);

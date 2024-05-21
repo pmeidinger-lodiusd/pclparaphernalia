@@ -247,9 +247,7 @@ namespace PCLParaphernalia
             ref ToolCommonData.ePrintLang crntPDL,
             ref bool endReached)
         {
-            PrnParseConstants.eContType contType;
-
-            contType = PrnParseConstants.eContType.None;
+            PrnParseConstants.eContType contType = PrnParseConstants.eContType.None;
 
             int prefixLen = 0,
                   contDataLen = 0,

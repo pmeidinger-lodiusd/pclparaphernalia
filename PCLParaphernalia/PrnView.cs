@@ -68,11 +68,10 @@ namespace PCLParaphernalia
             const int colHex = 1;
             const int colText = 2;
 
-            DataRow row;
-
+            
             //  Int32 rowNo = _fixedRows + _rowCt;
 
-            row = table.NewRow ();
+            DataRow row = table.NewRow ();
 
             row[colOffset] = offset;
             row[colHex]    = hexVal;
@@ -179,9 +178,7 @@ namespace PCLParaphernalia
         {
             bool OK = true;
 
-            bool ipOpen = false;
-
-            ipOpen = openInputPrn (prnFilename, ref _fileSize);
+            bool ipOpen = openInputPrn (prnFilename, ref _fileSize);
 
             if (!ipOpen)
             {

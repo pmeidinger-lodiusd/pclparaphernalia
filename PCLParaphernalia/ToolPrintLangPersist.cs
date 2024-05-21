@@ -404,9 +404,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsPrintLang +
+            string key = _subKeyTools + "\\" + _subKeyToolsPrintLang +
                                  "\\" + _subKeyFonts;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
@@ -440,9 +438,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsPrintLang +
+            string key = _subKeyTools + "\\" + _subKeyToolsPrintLang +
                                  "\\" + _subKeyPCL;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
@@ -514,9 +510,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsPrintLang +
+            string key = _subKeyTools + "\\" + _subKeyToolsPrintLang +
                                  "\\" + _subKeyPCLXL;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
@@ -602,9 +596,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey (_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsPrintLang +
+            string key = _subKeyTools + "\\" + _subKeyToolsPrintLang +
                                  "\\" + _subKeyPML;
 
             using (RegistryKey subKey = keyMain.CreateSubKey (key))
@@ -692,9 +684,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey (_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsPrintLang +
+            string key = _subKeyTools + "\\" + _subKeyToolsPrintLang +
                                  "\\" + _subKeySymSets;
 
             using (RegistryKey subKey = keyMain.CreateSubKey (key))

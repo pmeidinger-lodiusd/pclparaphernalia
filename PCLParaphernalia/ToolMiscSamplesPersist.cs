@@ -217,9 +217,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
+            string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyCommon +
                                  "\\" + pdlName;
 
@@ -296,9 +294,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey (_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
+            string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyColour +
                                  "\\" + pdlName;
 
@@ -766,9 +762,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
+            string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyCommon +
                                  "\\" + pdlName;
 
@@ -805,9 +799,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
+            string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyColour +
                                  "\\" + pdlName;
 
@@ -846,9 +838,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
+            string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyColour +
                                  "\\" + pdlName;
 
@@ -894,9 +884,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey (_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
+            string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyLogOper +
                                  "\\" + pdlName;
 
@@ -997,9 +985,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
+            string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyLogPage +
                                  "\\" + pdlName;
 
@@ -1049,9 +1035,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
+            string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyPattern +
                                  "\\" + pdlName;
 
@@ -1084,9 +1068,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
+            string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyTxtMod +
                                  "\\" + pdlName;
 
@@ -1121,9 +1103,7 @@ namespace PCLParaphernalia
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key;
-
-            key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
+            string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyUnicode +
                                  "\\" + pdlName;
 
