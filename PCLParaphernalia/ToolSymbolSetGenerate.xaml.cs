@@ -2590,7 +2590,6 @@ bitVal;
 
             TextBox source = e.Source as TextBox;
 
-            
             //----------------------------------------------------------------//
             //                                                                //
             // Work out which (mapping) text box has just lost focus.         //

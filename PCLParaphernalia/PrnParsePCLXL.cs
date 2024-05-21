@@ -2402,7 +2402,6 @@ namespace PCLParaphernalia
 
             int dataLenSize;
 
-            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //

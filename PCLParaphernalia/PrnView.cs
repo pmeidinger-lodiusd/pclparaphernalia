@@ -67,7 +67,6 @@ namespace PCLParaphernalia
             const int colHex = 1;
             const int colText = 2;
 
-            
             //  Int32 rowNo = _fixedRows + _rowCt;
 
             DataRow row = table.NewRow ();

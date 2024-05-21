@@ -1580,7 +1580,6 @@ namespace PCLParaphernalia
             ushort kind1Num = 0,
                    kind1Alpha = 0;
 
-            
             //----------------------------------------------------------------//
             //                                                                //
             // Check that field length is within limits.                      //

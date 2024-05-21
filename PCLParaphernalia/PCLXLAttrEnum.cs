@@ -254,7 +254,7 @@ namespace PCLParaphernalia
 
                     if (_value < 0x00ffff)
                         text = oper + " " + attr + " " + _value.ToString ();
-                    else 
+                    else
                         text = oper + " " + attr + " 0x" + _value.ToString ("x8");
                 }
 

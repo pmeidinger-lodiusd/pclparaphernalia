@@ -912,9 +912,9 @@ namespace PCLParaphernalia
 
             int indBuf = 0;
 
-            if (hddrLen > 256) 
-                lenBuf = 5; 
-            else 
+            if (hddrLen > 256)
+                lenBuf = 5;
+            else
                 lenBuf = 2;
 
             lenBuf = cSizeAttrUint16 + cSizeOperator;

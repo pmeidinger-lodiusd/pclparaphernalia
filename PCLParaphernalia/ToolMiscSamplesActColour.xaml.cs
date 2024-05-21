@@ -714,7 +714,6 @@ namespace PCLParaphernalia
         {
             bool flagOK = true;
 
-            
             //----------------------------------------------------------------//
             //                                                                //
             // Work out which of the (mapping) text boxes has just lost       //

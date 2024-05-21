@@ -327,7 +327,6 @@ namespace PCLParaphernalia
 
             int binDataRem;
 
-            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
@@ -594,7 +593,6 @@ namespace PCLParaphernalia
 
             int binDataRem;
 
-            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
@@ -844,7 +842,6 @@ namespace PCLParaphernalia
 
             int binDataRem;
 
-            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
@@ -1734,7 +1731,6 @@ namespace PCLParaphernalia
 
             int binDataRem;
 
-            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
@@ -3754,7 +3750,6 @@ namespace PCLParaphernalia
 
             PrnParseConstants.eContType contType;
 
-            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
@@ -4039,7 +4034,6 @@ namespace PCLParaphernalia
 
             int binDataRem;
 
-            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
@@ -4611,7 +4605,6 @@ namespace PCLParaphernalia
 
             int binDataRem;
 
-            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
@@ -4839,7 +4832,6 @@ namespace PCLParaphernalia
 
             int binDataRem;
 
-            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
@@ -5220,7 +5212,6 @@ namespace PCLParaphernalia
 
             int binDataRem;
 
-            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
@@ -5496,7 +5487,6 @@ namespace PCLParaphernalia
 
             bool dataOK = true;
 
-            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
@@ -5634,7 +5624,6 @@ namespace PCLParaphernalia
 
             int binDataRem;
 
-            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
@@ -6970,7 +6959,6 @@ namespace PCLParaphernalia
 
             int binDataRem;
 
-            
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //

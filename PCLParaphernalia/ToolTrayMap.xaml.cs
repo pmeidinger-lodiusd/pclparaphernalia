@@ -327,7 +327,6 @@ namespace PCLParaphernalia
 
             ComboBox source = e.Source as ComboBox;
 
-            
             //----------------------------------------------------------------//
             //                                                                //
             // Work out which combo box has just changed.                     //
@@ -386,7 +385,6 @@ namespace PCLParaphernalia
 
             ComboBox source = e.Source as ComboBox;
 
-            
             //----------------------------------------------------------------//
             //                                                                //
             // Work out which combo box has just changed.                     //
@@ -446,7 +444,6 @@ namespace PCLParaphernalia
 
             ComboBox source = e.Source as ComboBox;
 
-            
             //----------------------------------------------------------------//
             //                                                                //
             // Work out which combo box has just changed.                     //
@@ -508,7 +505,6 @@ namespace PCLParaphernalia
 
                 ComboBox source = e.Source as ComboBox;
 
-                
                 //------------------------------------------------------------//
                 //                                                            //
                 // Work out which combo box has just changed.                 //
@@ -569,7 +565,6 @@ namespace PCLParaphernalia
 
             ComboBox source = e.Source as ComboBox;
 
-            
             //----------------------------------------------------------------//
             //                                                                //
             // Work out which combo box has just changed.                     //
@@ -652,7 +647,6 @@ namespace PCLParaphernalia
 
             ComboBox source = e.Source as ComboBox;
 
-            
             //----------------------------------------------------------------//
             //                                                                //
             // Work out which combo box has just changed.                     //

@@ -1038,7 +1038,6 @@ namespace PCLParaphernalia
                         string parseMethodText = string.Empty,
                                fontFilename;
 
-                        
                         //----------------------------------------------------//
 
                         PCLTextParsingMethods.eIndex parseMethod = (PCLTextParsingMethods.eIndex) _indxParseMethod;
