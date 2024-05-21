@@ -51,7 +51,7 @@ namespace PCLParaphernalia
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = false;
+            DialogResult = false;
         }
 
         //--------------------------------------------------------------------//
@@ -92,7 +92,7 @@ namespace PCLParaphernalia
         {
             metricsSave ();
 
-            this.DialogResult = true;
+            DialogResult = true;
         }
 
         //--------------------------------------------------------------------//
@@ -134,8 +134,8 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            this.Height = 300 * windowScale;
-            this.Width = 720 * windowScale;
+            Height = 300 * windowScale;
+            Width = 720 * windowScale;
         }
 
         //--------------------------------------------------------------------//
