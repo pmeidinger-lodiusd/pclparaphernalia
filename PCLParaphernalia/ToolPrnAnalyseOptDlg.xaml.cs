@@ -517,7 +517,7 @@ namespace PCLParaphernalia
         private void cbClrMapBack_SelectionChanged (object sender,
                                                     SelectionChangedEventArgs e)
         {
-            if (_initialised && (cbClrMapBack.HasItems & !_inhibitChecks))
+            if (_initialised && (cbClrMapBack.HasItems && !_inhibitChecks))
             {
                 PropertyInfo pInfoBack =
                     cbClrMapBack.SelectedItem as PropertyInfo;
@@ -567,7 +567,7 @@ namespace PCLParaphernalia
         private void cbClrMapFore_SelectionChanged (object sender,
                                                     SelectionChangedEventArgs e)
         {
-            if (_initialised && (cbClrMapFore.HasItems & !_inhibitChecks))
+            if (_initialised && (cbClrMapFore.HasItems && !_inhibitChecks))
             {
                 PropertyInfo pInfoBack =
                     cbClrMapBack.SelectedItem as PropertyInfo;
@@ -644,7 +644,7 @@ namespace PCLParaphernalia
         private void cbClrMapTheme_SelectionChanged (object sender,
                                                      SelectionChangedEventArgs e)
         {
-            if (_initialised && (cbClrMapTheme.HasItems &!_inhibitChecks))
+            if (_initialised && (cbClrMapTheme.HasItems &&!_inhibitChecks))
             {
                 string name = "";
 

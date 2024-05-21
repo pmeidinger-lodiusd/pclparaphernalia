@@ -226,7 +226,7 @@ namespace PCLParaphernalia
 
                     if (bitSet && (!complement))
                         bitSig = true;
-                    else if ((!bitSet) & complement)
+                    else if ((!bitSet) && complement)
                         bitSig = true;
                     else
                         bitSig = false;
