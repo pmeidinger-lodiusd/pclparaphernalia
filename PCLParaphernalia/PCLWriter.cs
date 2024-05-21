@@ -2055,14 +2055,14 @@ namespace PCLParaphernalia
 
         public static void textParsingMethod (
             BinaryWriter                 prnWriter,
-            PCLTextParsingMethods.eIndex eMethod)
+            PCLTextParsingMethods.Index eMethod)
         {
             string seq;
 
             byte indx = (byte) eMethod;
 
             seq = "\x1b" + "&t" +
-                  PCLTextParsingMethods.getValue (indx).ToString () +
+                  PCLTextParsingMethods.GetValue (indx).ToString () +
                   "P";
 
             prnWriter.Write (seq.ToCharArray (), 0, seq.Length);

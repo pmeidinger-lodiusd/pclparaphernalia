@@ -64,7 +64,7 @@ namespace PCLParaphernalia
                                        ushort codeMax,
                                        ulong charCollReq,
                                        ushort[] symSetMap,
-                                       PCLSymSetTypes.eIndex symSetType)
+                                       PCLSymSetTypes.Index symSetType)
         {
             bool flagOK = true;
 
@@ -116,7 +116,7 @@ namespace PCLParaphernalia
                     //--------------------------------------------------------//
 
                     writeHddr (symSetNo, codeMin, codeMax, charCollReq,
-                               PCLSymSetTypes.getIdPCL((int) symSetType));
+                               PCLSymSetTypes.GetIdPCL((int) symSetType));
 
                     //--------------------------------------------------------//
                     //                                                        //

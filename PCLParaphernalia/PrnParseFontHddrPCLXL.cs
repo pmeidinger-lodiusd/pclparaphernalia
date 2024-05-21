@@ -533,7 +533,7 @@ namespace PCLParaphernalia
                 c = (char) ix3;
 
                 indxSymSet =
-                    PCLSymbolSets.getIndexForId ((ushort)ix1);
+                    PCLSymbolSets.GetIndexForId ((ushort)ix1);
 
                 PrnParseCommon.addTextRow (
                     PrnParseRowTypes.eType.PCLXLFontHddr,
@@ -565,7 +565,7 @@ namespace PCLParaphernalia
                         "     ---->",
                         "Identifier:",
                         ix2.ToString () + c +
-                        " (" + PCLSymbolSets.getName (indxSymSet) + ")");
+                        " (" + PCLSymbolSets.GetName (indxSymSet) + ")");
                 }
 
                 //------------------------------------------------------------//

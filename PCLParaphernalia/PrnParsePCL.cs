@@ -91,7 +91,7 @@ namespace PCLParaphernalia
             _parseHPGL2 = parseHPGL2;
 
             _textParsingMethod =
-                (int) PCLTextParsingMethods.ePCLVal.m0_1_byte_default;
+                (int) PCLTextParsingMethods.PCLVal.m0_1_byte_default;
 
             _parseFontHddrPCL = new PrnParseFontHddrPCL ();
             _parseFontCharPCL = new PrnParseFontCharPCL ();
@@ -878,9 +878,9 @@ namespace PCLParaphernalia
                 string typeText;
 
                 if ((_textParsingMethod ==
-                    (int) PCLTextParsingMethods.ePCLVal.m83_UTF8) ||
+                    (int) PCLTextParsingMethods.PCLVal.m83_UTF8) ||
                     (_textParsingMethod ==
-                    (int) PCLTextParsingMethods.ePCLVal.m1008_UTF8_alt))
+                    (int) PCLTextParsingMethods.PCLVal.m1008_UTF8_alt))
                     typeText = "UTF-8 data";
                 else
                     typeText = "Data";
@@ -1117,9 +1117,9 @@ namespace PCLParaphernalia
                         string typeText;
 
                         if ((_textParsingMethod ==
-                            (int)PCLTextParsingMethods.ePCLVal.m83_UTF8) ||
+                            (int)PCLTextParsingMethods.PCLVal.m83_UTF8) ||
                             (_textParsingMethod ==
-                            (int)PCLTextParsingMethods.ePCLVal.m1008_UTF8_alt))
+                            (int)PCLTextParsingMethods.PCLVal.m1008_UTF8_alt))
                             typeText = "UTF-8 data";
                         else
                             typeText = "Data";
@@ -3819,7 +3819,7 @@ namespace PCLParaphernalia
 
         {
            _textParsingMethod =
-                (int) PCLTextParsingMethods.ePCLVal.m0_1_byte_default;
+                (int) PCLTextParsingMethods.PCLVal.m0_1_byte_default;
            _macroLevel        = 0;
         }
 

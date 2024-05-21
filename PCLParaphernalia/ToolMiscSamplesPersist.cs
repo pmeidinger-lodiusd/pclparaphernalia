@@ -389,24 +389,24 @@ namespace PCLParaphernalia
             if (pdlName == _subKeyPCL)
             {
                 const byte indxPalCMY =
-                    (byte) PCLPalettes.eIndex.PCLSimpleColourCMY;
+                    (byte) PCLPalettes.Index.PCLSimpleColourCMY;
 
-                indxClrBlack = PCLPalettes.getClrItemBlack (indxPalCMY);
-                indxClrWhite = PCLPalettes.getClrItemWhite (indxPalCMY);
+                indxClrBlack = PCLPalettes.GetClrItemBlack (indxPalCMY);
+                indxClrWhite = PCLPalettes.GetClrItemWhite (indxPalCMY);
 
                 const byte indxPalMono =
-                    (byte) PCLPalettes.eIndex.PCLMonochrome;
+                    (byte) PCLPalettes.Index.PCLMonochrome;
 
-                indxMonoBlack = PCLPalettes.getClrItemBlack (indxPalMono);
-                indxMonoWhite = PCLPalettes.getClrItemWhite (indxPalMono);
+                indxMonoBlack = PCLPalettes.GetClrItemBlack (indxPalMono);
+                indxMonoWhite = PCLPalettes.GetClrItemWhite (indxPalMono);
             }
             else // if (pdlName == _subKeyPCLXL)
             {
                 const byte indxPalRGB =
-                    (byte) PCLXLPalettes.eIndex.PCLXLRGB;
+                    (byte) PCLXLPalettes.Index.PCLXLRGB;
 
-                indxClrBlack = PCLXLPalettes.getClrItemBlack (indxPalRGB);
-                indxClrWhite = PCLXLPalettes.getClrItemWhite (indxPalRGB);
+                indxClrBlack = PCLXLPalettes.GetClrItemBlack (indxPalRGB);
+                indxClrWhite = PCLXLPalettes.GetClrItemWhite (indxPalRGB);
 
                 indxMonoBlack = 0;
                 indxMonoWhite = 255;

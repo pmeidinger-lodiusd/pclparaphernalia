@@ -128,8 +128,8 @@ namespace PCLParaphernalia
         private ulong _charCollCompPCLAll;
         private ulong _charCollCompPCLSpecific;
 
-        private PCLSymbolSets.eSymSetGroup _symSetGroup;
-        private PCLSymSetTypes.eIndex _symSetType;
+        private PCLSymbolSets.SymSetGroup _symSetGroup;
+        private PCLSymSetTypes.Index _symSetType;
 
         private string _fontNameBase;
         private string _fontNamePCLXL;
@@ -300,7 +300,7 @@ namespace PCLParaphernalia
 
             byte[] conversionText;
 
-            PCLSymSetTypes.eIndex symSetType;
+            PCLSymSetTypes.Index symSetType;
 
             ToolSoftFontGenTTF.eLicenceType licenceType;
 
@@ -354,8 +354,8 @@ namespace PCLParaphernalia
                 _tableLogTarget.Clear ();
                 _tableLogChars.Clear ();
 
-                symSetType = PCLSymbolSets.getType (_indxSymSetTarget);
-                symSetTypeID = PCLSymSetTypes.getIdPCL((int) symSetType);
+                symSetType = PCLSymbolSets.GetType (_indxSymSetTarget);
+                symSetTypeID = PCLSymSetTypes.GetIdPCL((int) symSetType);
 
                 if (tabDetails.SelectedItem.Equals (tabPCL))
                 {
@@ -571,10 +571,10 @@ namespace PCLParaphernalia
                     _sizeCharSet = cSizeCharSet_UCS_2;
                 else if (_symSetUserSet)
                     _sizeCharSet =
-                        PCLSymbolSets.getMapArrayMax (_indxSymSetTarget) + 1;
+                        PCLSymbolSets.GetMapArrayMax (_indxSymSetTarget) + 1;
                 else
                     _sizeCharSet =
-                        PCLSymbolSets.getMapArrayMax (_indxSymSetTarget) + 1;
+                        PCLSymbolSets.GetMapArrayMax (_indxSymSetTarget) + 1;
 
                 _ttfHandler = new ToolSoftFontGenTTF (_tableLogDonor,
                                                       _tableLogMapping,
@@ -698,9 +698,9 @@ namespace PCLParaphernalia
                 }
 
                 symSetIdTargetPCL =
-                    PCLSymbolSets.translateKind1ToId (symSetNoTargetPCL);
+                    PCLSymbolSets.TranslateKind1ToId (symSetNoTargetPCL);
                 symSetIdTargetPCLXL =
-                   PCLSymbolSets.translateKind1ToId (symSetNoTargetPCLXL);
+                   PCLSymbolSets.TranslateKind1ToId (symSetNoTargetPCLXL);
 
                 //--------------------------------------------------------//
                 //                                                        //
@@ -1038,8 +1038,8 @@ namespace PCLParaphernalia
                 ushort firstCode = 0,
                        lastCode = 0;
 
-                PCLSymSetTypes.eIndex symSetType =
-                    PCLSymSetTypes.eIndex.Unknown;
+                PCLSymSetTypes.Index symSetType =
+                    PCLSymSetTypes.Index.Unknown;
 
                 flagOK = PCLDownloadSymSet.checkSymSetFile (
                     _symSetUserFile,
@@ -1056,7 +1056,7 @@ namespace PCLParaphernalia
             else
             {
                 _symSetNoUserSet = _defaultSymSetNo;
-                PCLSymbolSets.setDataUserSetDefault (_defaultSymSetNo);
+                PCLSymbolSets.SetDataUserSetDefault (_defaultSymSetNo);
 
                 txtSymSetFile.Text = "***** Invalid symbol set file *****";
             }
@@ -1769,19 +1769,19 @@ bitVal;
 
             cbSymSet.Items.Clear();
 
-            _ctMappedSymSets = PCLSymbolSets.getCountMapped ();
+            _ctMappedSymSets = PCLSymbolSets.GetCountMapped ();
 
             _subsetSymSets = new int[_ctMappedSymSets];
 
-            PCLSymbolSets.getIndicesMapped (0, ref _subsetSymSets);
+            PCLSymbolSets.GetIndicesMapped (0, ref _subsetSymSets);
 
             for (int i = 0; i < _ctMappedSymSets; i++)
             {
                 index = _subsetSymSets[i];
-                cbSymSet.Items.Add (PCLSymbolSets.getName(index));
+                cbSymSet.Items.Add (PCLSymbolSets.GetName(index));
             }
 
-            _indxSymSetDefault = PCLSymbolSets.getIndexForId (_defaultSymSetNo);
+            _indxSymSetDefault = PCLSymbolSets.GetIndexForId (_defaultSymSetNo);
         }
 
         //--------------------------------------------------------------------//
@@ -2572,7 +2572,7 @@ bitVal;
 
                 txtPCLSymSetNo.Text = _symSetNoUnbound.ToString ();
 
-                PCLSymbolSets.translateKind1ToId (_symSetNoUnbound,
+                PCLSymbolSets.TranslateKind1ToId (_symSetNoUnbound,
                                           ref idNum,
                                           ref idAlpha);
 
@@ -2581,7 +2581,7 @@ bitVal;
 
                 txtPCLXLSymSetNo.Text = _symSetNoUnicode.ToString ();
 
-                PCLSymbolSets.translateKind1ToId (_symSetNoUnicode,
+                PCLSymbolSets.TranslateKind1ToId (_symSetNoUnicode,
                                           ref idNum,
                                           ref idAlpha);
 
@@ -2609,7 +2609,7 @@ bitVal;
                 _symSetNoTargetPCL   = _symSetNoUserSet;
                 _symSetNoTargetPCLXL = _symSetNoUserSet;
 
-                PCLSymbolSets.translateKind1ToId (_symSetNoUserSet,
+                PCLSymbolSets.TranslateKind1ToId (_symSetNoUserSet,
                                                   ref idNum,
                                                   ref idAlpha);
 
@@ -2618,10 +2618,10 @@ bitVal;
                 txtSymSetIdNum.Text = idNum;
                 txtSymSetIdAlpha.Text = idAlpha;
 
-                _symSetType = PCLSymbolSets.getType (_indxSymSetTarget);
+                _symSetType = PCLSymbolSets.GetType (_indxSymSetTarget);
 
                 txtSymSetType.Text =
-                    PCLSymSetTypes.getDescShort ((int) _symSetType);
+                    PCLSymSetTypes.GetDescShort ((int) _symSetType);
 
                 txtPCLSymSetNo.Text = _symSetNoUserSet.ToString ();
 
@@ -2641,14 +2641,14 @@ bitVal;
 
                 indxSymSet = _subsetSymSets [_indxSymSetSubset];
 
-                _symSetGroup = PCLSymbolSets.getGroup (indxSymSet);
-                _symSetType = PCLSymbolSets.getType (indxSymSet);
+                _symSetGroup = PCLSymbolSets.GetGroup (indxSymSet);
+                _symSetType = PCLSymbolSets.GetType (indxSymSet);
 
-                _flagSymSetNullMapPCL = PCLSymbolSets.nullMapPCL (indxSymSet);
-                _flagSymSetNullMapStd = PCLSymbolSets.nullMapStd (indxSymSet);
+                _flagSymSetNullMapPCL = PCLSymbolSets.NullMapPCL (indxSymSet);
+                _flagSymSetNullMapStd = PCLSymbolSets.NullMapStd (indxSymSet);
 
-                if ((_symSetGroup == PCLSymbolSets.eSymSetGroup.Preset) ||
-                    (_symSetGroup == PCLSymbolSets.eSymSetGroup.NonStd))
+                if ((_symSetGroup == PCLSymbolSets.SymSetGroup.Preset) ||
+                    (_symSetGroup == PCLSymbolSets.SymSetGroup.NonStd))
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -2671,10 +2671,10 @@ bitVal;
                     //--------------------------------------------------------//
 
                     txtSymSetType.Text =
-                        PCLSymSetTypes.getDescShort ((int) _symSetType);
+                        PCLSymSetTypes.GetDescShort ((int) _symSetType);
 
                     _indxSymSetTarget = indxSymSet;
-                    _symSetNoTargetPCL = PCLSymbolSets.getKind1 (indxSymSet);
+                    _symSetNoTargetPCL = PCLSymbolSets.GetKind1 (indxSymSet);
                     _symSetNoTargetPCLXL = _symSetNoTargetPCL;
 
                     txtSymSetNo.Text = _symSetNoTargetPCL.ToString ();
@@ -2684,7 +2684,7 @@ bitVal;
 
                     //--------------------------------------------------------//
 
-                    PCLSymbolSets.translateKind1ToId (_symSetNoTargetPCL,
+                    PCLSymbolSets.TranslateKind1ToId (_symSetNoTargetPCL,
                                               ref idNum,
                                               ref idAlpha);
 
@@ -3141,11 +3141,11 @@ bitVal;
             if (validatePCLSymSetNo (true, ref _symSetNoPCL))
             {
                 {
-                    PCLSymbolSets.translateKind1ToId (_symSetNoPCL,
+                    PCLSymbolSets.TranslateKind1ToId (_symSetNoPCL,
                                                      ref idNum,
                                                      ref idAlpha);
 
-                    PCLSymbolSets.getNameForId (_symSetNoPCL,
+                    PCLSymbolSets.GetNameForId (_symSetNoPCL,
                                                 ref name);
                 }
             }
@@ -3174,11 +3174,11 @@ bitVal;
 
             if (validatePCLSymSetNo (false, ref _symSetNoPCL))
             {
-                PCLSymbolSets.translateKind1ToId (_symSetNoPCL,
+                PCLSymbolSets.TranslateKind1ToId (_symSetNoPCL,
                                                  ref idNum,
                                                  ref idAlpha);
 
-                PCLSymbolSets.getNameForId (_symSetNoPCL,
+                PCLSymbolSets.GetNameForId (_symSetNoPCL,
                                             ref name);
             }
 
@@ -3346,11 +3346,11 @@ bitVal;
             if (validatePCLXLSymSetNo (true, ref _symSetNoPCLXL))
             {
                 {
-                    PCLSymbolSets.translateKind1ToId (_symSetNoPCLXL,
+                    PCLSymbolSets.TranslateKind1ToId (_symSetNoPCLXL,
                                                      ref idNum,
                                                      ref idAlpha);
 
-                    PCLSymbolSets.getNameForId (_symSetNoPCLXL,
+                    PCLSymbolSets.GetNameForId (_symSetNoPCLXL,
                                                 ref name);
                 }
             }
@@ -3379,11 +3379,11 @@ bitVal;
 
             if (validatePCLXLSymSetNo (false, ref _symSetNoPCLXL))
             {
-                PCLSymbolSets.translateKind1ToId (_symSetNoPCLXL,
+                PCLSymbolSets.TranslateKind1ToId (_symSetNoPCLXL,
                                                  ref idNum,
                                                  ref idAlpha);
 
-                PCLSymbolSets.getNameForId (_symSetNoPCLXL,
+                PCLSymbolSets.GetNameForId (_symSetNoPCLXL,
                                             ref name);
             }
 

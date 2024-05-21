@@ -44,19 +44,19 @@ namespace PCLParaphernalia
             new PCLOrientation(eAspect.Portrait,
                                "Portrait",
                                0x00,
-                               (byte)PCLXLAttrEnums.eVal.ePortraitOrientation),
+                               (byte)PCLXLAttrEnums.Val.ePortraitOrientation),
             new PCLOrientation(eAspect.Landscape,
                                "Landscape",
                                0x01,
-                               (byte)PCLXLAttrEnums.eVal.eLandscapeOrientation),
+                               (byte)PCLXLAttrEnums.Val.eLandscapeOrientation),
             new PCLOrientation(eAspect.Portrait,
                                "Reverse Portrait",
                                0x02,
-                               (byte)PCLXLAttrEnums.eVal.eReversePortrait),
+                               (byte)PCLXLAttrEnums.Val.eReversePortrait),
             new PCLOrientation(eAspect.Landscape,
                                "Reverse Landscape",
                                0x03,
-                               (byte)PCLXLAttrEnums.eVal.eReverseLandscape)
+                               (byte)PCLXLAttrEnums.Val.eReverseLandscape)
         };
 
         private static readonly int _orientationCount =

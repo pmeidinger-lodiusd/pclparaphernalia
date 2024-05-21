@@ -113,121 +113,121 @@ namespace PCLParaphernalia
             { 0xffff };
 
         private static readonly ushort[] symSets_Unicode = new ushort[]
-            { PCLSymbolSets.translateIdToKind1("18N") };
+            { PCLSymbolSets.TranslateIdToKind1("18N") };
 
         private static readonly ushort[] symSets_Europe = new ushort[]
-            { PCLSymbolSets.translateIdToKind1("0D"),
-              PCLSymbolSets.translateIdToKind1("0H"),
-              PCLSymbolSets.translateIdToKind1("0I"),
-              PCLSymbolSets.translateIdToKind1("0N"),
-              PCLSymbolSets.translateIdToKind1("0S"),
-              PCLSymbolSets.translateIdToKind1("0U"),
-              PCLSymbolSets.translateIdToKind1("1E"),
-              PCLSymbolSets.translateIdToKind1("1F"),
-              PCLSymbolSets.translateIdToKind1("1G"),
-              PCLSymbolSets.translateIdToKind1("1U"),
-              PCLSymbolSets.translateIdToKind1("2N"),
-              PCLSymbolSets.translateIdToKind1("2S"),
-              PCLSymbolSets.translateIdToKind1("3R"),
-              PCLSymbolSets.translateIdToKind1("4N"),
-              PCLSymbolSets.translateIdToKind1("4U"),
-              PCLSymbolSets.translateIdToKind1("5M"),
-              PCLSymbolSets.translateIdToKind1("5N"),
-              PCLSymbolSets.translateIdToKind1("5T"),
-              PCLSymbolSets.translateIdToKind1("6J"),
-              PCLSymbolSets.translateIdToKind1("6N"),
-              PCLSymbolSets.translateIdToKind1("7H"),
-              PCLSymbolSets.translateIdToKind1("7J"),
-              PCLSymbolSets.translateIdToKind1("8G"),
-              PCLSymbolSets.translateIdToKind1("8H"),
-              PCLSymbolSets.translateIdToKind1("8M"),
-              PCLSymbolSets.translateIdToKind1("8U"),
-              PCLSymbolSets.translateIdToKind1("9E"),
-              PCLSymbolSets.translateIdToKind1("9G"),
-              PCLSymbolSets.translateIdToKind1("9J"),
-              PCLSymbolSets.translateIdToKind1("9N"),
-              PCLSymbolSets.translateIdToKind1("9R"),
-              PCLSymbolSets.translateIdToKind1("9T"),
-              PCLSymbolSets.translateIdToKind1("9U"),
-              PCLSymbolSets.translateIdToKind1("10G"),
-              PCLSymbolSets.translateIdToKind1("10J"),
-              PCLSymbolSets.translateIdToKind1("10N"),
-              PCLSymbolSets.translateIdToKind1("10U"),
-              PCLSymbolSets.translateIdToKind1("11U"),
-              PCLSymbolSets.translateIdToKind1("12G"),
-              PCLSymbolSets.translateIdToKind1("12J"),
-              PCLSymbolSets.translateIdToKind1("12N"),
-              PCLSymbolSets.translateIdToKind1("12U"),
-              PCLSymbolSets.translateIdToKind1("13U"),
-              PCLSymbolSets.translateIdToKind1("14R"),
-              PCLSymbolSets.translateIdToKind1("15H"),
+            { PCLSymbolSets.TranslateIdToKind1("0D"),
+              PCLSymbolSets.TranslateIdToKind1("0H"),
+              PCLSymbolSets.TranslateIdToKind1("0I"),
+              PCLSymbolSets.TranslateIdToKind1("0N"),
+              PCLSymbolSets.TranslateIdToKind1("0S"),
+              PCLSymbolSets.TranslateIdToKind1("0U"),
+              PCLSymbolSets.TranslateIdToKind1("1E"),
+              PCLSymbolSets.TranslateIdToKind1("1F"),
+              PCLSymbolSets.TranslateIdToKind1("1G"),
+              PCLSymbolSets.TranslateIdToKind1("1U"),
+              PCLSymbolSets.TranslateIdToKind1("2N"),
+              PCLSymbolSets.TranslateIdToKind1("2S"),
+              PCLSymbolSets.TranslateIdToKind1("3R"),
+              PCLSymbolSets.TranslateIdToKind1("4N"),
+              PCLSymbolSets.TranslateIdToKind1("4U"),
+              PCLSymbolSets.TranslateIdToKind1("5M"),
+              PCLSymbolSets.TranslateIdToKind1("5N"),
+              PCLSymbolSets.TranslateIdToKind1("5T"),
+              PCLSymbolSets.TranslateIdToKind1("6J"),
+              PCLSymbolSets.TranslateIdToKind1("6N"),
+              PCLSymbolSets.TranslateIdToKind1("7H"),
+              PCLSymbolSets.TranslateIdToKind1("7J"),
+              PCLSymbolSets.TranslateIdToKind1("8G"),
+              PCLSymbolSets.TranslateIdToKind1("8H"),
+              PCLSymbolSets.TranslateIdToKind1("8M"),
+              PCLSymbolSets.TranslateIdToKind1("8U"),
+              PCLSymbolSets.TranslateIdToKind1("9E"),
+              PCLSymbolSets.TranslateIdToKind1("9G"),
+              PCLSymbolSets.TranslateIdToKind1("9J"),
+              PCLSymbolSets.TranslateIdToKind1("9N"),
+              PCLSymbolSets.TranslateIdToKind1("9R"),
+              PCLSymbolSets.TranslateIdToKind1("9T"),
+              PCLSymbolSets.TranslateIdToKind1("9U"),
+              PCLSymbolSets.TranslateIdToKind1("10G"),
+              PCLSymbolSets.TranslateIdToKind1("10J"),
+              PCLSymbolSets.TranslateIdToKind1("10N"),
+              PCLSymbolSets.TranslateIdToKind1("10U"),
+              PCLSymbolSets.TranslateIdToKind1("11U"),
+              PCLSymbolSets.TranslateIdToKind1("12G"),
+              PCLSymbolSets.TranslateIdToKind1("12J"),
+              PCLSymbolSets.TranslateIdToKind1("12N"),
+              PCLSymbolSets.TranslateIdToKind1("12U"),
+              PCLSymbolSets.TranslateIdToKind1("13U"),
+              PCLSymbolSets.TranslateIdToKind1("14R"),
+              PCLSymbolSets.TranslateIdToKind1("15H"),
   //          PCLSymbolSets.translateIdToKind1("15Q"), // special: M553x / M475dn
-              PCLSymbolSets.translateIdToKind1("15U"),
-              PCLSymbolSets.translateIdToKind1("17U"),
-              PCLSymbolSets.translateIdToKind1("19L"),
-              PCLSymbolSets.translateIdToKind1("19U"),
-              PCLSymbolSets.translateIdToKind1("26U")
+              PCLSymbolSets.TranslateIdToKind1("15U"),
+              PCLSymbolSets.TranslateIdToKind1("17U"),
+              PCLSymbolSets.TranslateIdToKind1("19L"),
+              PCLSymbolSets.TranslateIdToKind1("19U"),
+              PCLSymbolSets.TranslateIdToKind1("26U")
             };
 
         private static readonly ushort[] symSets_Europe_Not_Hebrew_Greek_Cyrillic = new ushort[]
-            { PCLSymbolSets.translateIdToKind1("0D"),
-              PCLSymbolSets.translateIdToKind1("0I"),
-              PCLSymbolSets.translateIdToKind1("0N"),
-              PCLSymbolSets.translateIdToKind1("0S"),
-              PCLSymbolSets.translateIdToKind1("0U"),
-              PCLSymbolSets.translateIdToKind1("1E"),
-              PCLSymbolSets.translateIdToKind1("1F"),
-              PCLSymbolSets.translateIdToKind1("1G"),
-              PCLSymbolSets.translateIdToKind1("1U"),
-              PCLSymbolSets.translateIdToKind1("2N"),
-              PCLSymbolSets.translateIdToKind1("2S"),
-              PCLSymbolSets.translateIdToKind1("4N"),
-              PCLSymbolSets.translateIdToKind1("4U"),
-              PCLSymbolSets.translateIdToKind1("5M"),
-              PCLSymbolSets.translateIdToKind1("5N"),
-              PCLSymbolSets.translateIdToKind1("5T"),
-              PCLSymbolSets.translateIdToKind1("6J"),
-              PCLSymbolSets.translateIdToKind1("6N"),
-              PCLSymbolSets.translateIdToKind1("7H"),
-              PCLSymbolSets.translateIdToKind1("7J"),
-              PCLSymbolSets.translateIdToKind1("8M"),
-              PCLSymbolSets.translateIdToKind1("8U"),
-              PCLSymbolSets.translateIdToKind1("9E"),
-              PCLSymbolSets.translateIdToKind1("9J"),
-              PCLSymbolSets.translateIdToKind1("9N"),
-              PCLSymbolSets.translateIdToKind1("9T"),
-              PCLSymbolSets.translateIdToKind1("9U"),
-              PCLSymbolSets.translateIdToKind1("10J"),
-              PCLSymbolSets.translateIdToKind1("10U"),
-              PCLSymbolSets.translateIdToKind1("11U"),
-              PCLSymbolSets.translateIdToKind1("12J"),
-              PCLSymbolSets.translateIdToKind1("12U"),
-              PCLSymbolSets.translateIdToKind1("13U"),
-              PCLSymbolSets.translateIdToKind1("15U"),
-              PCLSymbolSets.translateIdToKind1("17U"),
-              PCLSymbolSets.translateIdToKind1("19L"),
-              PCLSymbolSets.translateIdToKind1("19U"),
-              PCLSymbolSets.translateIdToKind1("26U")
+            { PCLSymbolSets.TranslateIdToKind1("0D"),
+              PCLSymbolSets.TranslateIdToKind1("0I"),
+              PCLSymbolSets.TranslateIdToKind1("0N"),
+              PCLSymbolSets.TranslateIdToKind1("0S"),
+              PCLSymbolSets.TranslateIdToKind1("0U"),
+              PCLSymbolSets.TranslateIdToKind1("1E"),
+              PCLSymbolSets.TranslateIdToKind1("1F"),
+              PCLSymbolSets.TranslateIdToKind1("1G"),
+              PCLSymbolSets.TranslateIdToKind1("1U"),
+              PCLSymbolSets.TranslateIdToKind1("2N"),
+              PCLSymbolSets.TranslateIdToKind1("2S"),
+              PCLSymbolSets.TranslateIdToKind1("4N"),
+              PCLSymbolSets.TranslateIdToKind1("4U"),
+              PCLSymbolSets.TranslateIdToKind1("5M"),
+              PCLSymbolSets.TranslateIdToKind1("5N"),
+              PCLSymbolSets.TranslateIdToKind1("5T"),
+              PCLSymbolSets.TranslateIdToKind1("6J"),
+              PCLSymbolSets.TranslateIdToKind1("6N"),
+              PCLSymbolSets.TranslateIdToKind1("7H"),
+              PCLSymbolSets.TranslateIdToKind1("7J"),
+              PCLSymbolSets.TranslateIdToKind1("8M"),
+              PCLSymbolSets.TranslateIdToKind1("8U"),
+              PCLSymbolSets.TranslateIdToKind1("9E"),
+              PCLSymbolSets.TranslateIdToKind1("9J"),
+              PCLSymbolSets.TranslateIdToKind1("9N"),
+              PCLSymbolSets.TranslateIdToKind1("9T"),
+              PCLSymbolSets.TranslateIdToKind1("9U"),
+              PCLSymbolSets.TranslateIdToKind1("10J"),
+              PCLSymbolSets.TranslateIdToKind1("10U"),
+              PCLSymbolSets.TranslateIdToKind1("11U"),
+              PCLSymbolSets.TranslateIdToKind1("12J"),
+              PCLSymbolSets.TranslateIdToKind1("12U"),
+              PCLSymbolSets.TranslateIdToKind1("13U"),
+              PCLSymbolSets.TranslateIdToKind1("15U"),
+              PCLSymbolSets.TranslateIdToKind1("17U"),
+              PCLSymbolSets.TranslateIdToKind1("19L"),
+              PCLSymbolSets.TranslateIdToKind1("19U"),
+              PCLSymbolSets.TranslateIdToKind1("26U")
             };
 
         private static readonly ushort[] symSets_Arabic = new ushort[]
-            { PCLSymbolSets.translateIdToKind1("0U"),
-              PCLSymbolSets.translateIdToKind1("5M"),
-              PCLSymbolSets.translateIdToKind1("8M"),
-              PCLSymbolSets.translateIdToKind1("8V"),
-              PCLSymbolSets.translateIdToKind1("9V"),
-              PCLSymbolSets.translateIdToKind1("10V"),
-              PCLSymbolSets.translateIdToKind1("11N")
+            { PCLSymbolSets.TranslateIdToKind1("0U"),
+              PCLSymbolSets.TranslateIdToKind1("5M"),
+              PCLSymbolSets.TranslateIdToKind1("8M"),
+              PCLSymbolSets.TranslateIdToKind1("8V"),
+              PCLSymbolSets.TranslateIdToKind1("9V"),
+              PCLSymbolSets.TranslateIdToKind1("10V"),
+              PCLSymbolSets.TranslateIdToKind1("11N")
             };
 
         private static readonly ushort[] symSets_Hebrew = new ushort[]
-            { PCLSymbolSets.translateIdToKind1("0H"),
-              PCLSymbolSets.translateIdToKind1("0U"),
-              PCLSymbolSets.translateIdToKind1("5M"),
-              PCLSymbolSets.translateIdToKind1("7H"),
-              PCLSymbolSets.translateIdToKind1("8H"),
-              PCLSymbolSets.translateIdToKind1("8M"),
-              PCLSymbolSets.translateIdToKind1("15H")
+            { PCLSymbolSets.TranslateIdToKind1("0H"),
+              PCLSymbolSets.TranslateIdToKind1("0U"),
+              PCLSymbolSets.TranslateIdToKind1("5M"),
+              PCLSymbolSets.TranslateIdToKind1("7H"),
+              PCLSymbolSets.TranslateIdToKind1("8H"),
+              PCLSymbolSets.TranslateIdToKind1("8M"),
+              PCLSymbolSets.TranslateIdToKind1("15H")
   //          PCLSymbolSets.translateIdToKind1("15Q"), // special: M553x / M475dn
             };
 
@@ -1407,7 +1407,7 @@ namespace PCLParaphernalia
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
-                new ushort[] { PCLSymbolSets.translateIdToKind1("0N") }));
+                new ushort[] { PCLSymbolSets.TranslateIdToKind1("0N") }));
 
             _fonts.Add (new PCLFont(
                 fontIndex++,
@@ -1419,7 +1419,7 @@ namespace PCLParaphernalia
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
-                new ushort[] { PCLSymbolSets.translateIdToKind1("1U") }));
+                new ushort[] { PCLSymbolSets.TranslateIdToKind1("1U") }));
 
             _fonts.Add (new PCLFont(
                 fontIndex++,
@@ -1431,7 +1431,7 @@ namespace PCLParaphernalia
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
-                new ushort[] { PCLSymbolSets.translateIdToKind1("2N") }));
+                new ushort[] { PCLSymbolSets.TranslateIdToKind1("2N") }));
 
             _fonts.Add (new PCLFont(
                 fontIndex++,
@@ -1443,7 +1443,7 @@ namespace PCLParaphernalia
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
-                new ushort[] { PCLSymbolSets.translateIdToKind1("5N") }));
+                new ushort[] { PCLSymbolSets.TranslateIdToKind1("5N") }));
 
             _fonts.Add (new PCLFont(
                 fontIndex++,
@@ -1455,7 +1455,7 @@ namespace PCLParaphernalia
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
-                new ushort[] { PCLSymbolSets.translateIdToKind1("6N") }));
+                new ushort[] { PCLSymbolSets.TranslateIdToKind1("6N") }));
 
             _fonts.Add (new PCLFont(
                 fontIndex++,
@@ -1467,7 +1467,7 @@ namespace PCLParaphernalia
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
-                new ushort[] { PCLSymbolSets.translateIdToKind1("8U") }));
+                new ushort[] { PCLSymbolSets.TranslateIdToKind1("8U") }));
 
             _fonts.Add (new PCLFont(
                 fontIndex++,
@@ -1479,7 +1479,7 @@ namespace PCLParaphernalia
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
-                new ushort[] { PCLSymbolSets.translateIdToKind1("9N") }));
+                new ushort[] { PCLSymbolSets.TranslateIdToKind1("9N") }));
 
             _fonts.Add (new PCLFont(
                 fontIndex++,
@@ -1491,7 +1491,7 @@ namespace PCLParaphernalia
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
-                new ushort[] { PCLSymbolSets.translateIdToKind1("10N") }));
+                new ushort[] { PCLSymbolSets.TranslateIdToKind1("10N") }));
 
             _fonts.Add (new PCLFont(
                 fontIndex++,
@@ -1503,7 +1503,7 @@ namespace PCLParaphernalia
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
-                new ushort[] { PCLSymbolSets.translateIdToKind1("10U") }));
+                new ushort[] { PCLSymbolSets.TranslateIdToKind1("10U") }));
 
             _fonts.Add (new PCLFont(
                 fontIndex++,
@@ -1515,7 +1515,7 @@ namespace PCLParaphernalia
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
-                new ushort[] { PCLSymbolSets.translateIdToKind1("11U") }));
+                new ushort[] { PCLSymbolSets.TranslateIdToKind1("11U") }));
 
             _fonts.Add (new PCLFont(
                 fontIndex++,
@@ -1527,7 +1527,7 @@ namespace PCLParaphernalia
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
-                new ushort[] { PCLSymbolSets.translateIdToKind1("12U") }));
+                new ushort[] { PCLSymbolSets.TranslateIdToKind1("12U") }));
 
             _fonts.Add (new PCLFont (
                 fontIndex++,
@@ -1640,7 +1640,7 @@ namespace PCLParaphernalia
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
-                new ushort[] { PCLSymbolSets.translateIdToKind1("0O") }));
+                new ushort[] { PCLSymbolSets.TranslateIdToKind1("0O") }));
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
@@ -1652,7 +1652,7 @@ namespace PCLParaphernalia
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
-                new ushort[] { PCLSymbolSets.translateIdToKind1("1O") }));
+                new ushort[] { PCLSymbolSets.TranslateIdToKind1("1O") }));
 
             _fonts.Add (new PCLFont (
                 fontIndex++,
@@ -1792,7 +1792,7 @@ namespace PCLParaphernalia
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
-                new ushort[] { PCLSymbolSets.translateIdToKind1("19M") }));
+                new ushort[] { PCLSymbolSets.TranslateIdToKind1("19M") }));
 
             _fonts.Add (new PCLFont(
                 fontIndex++,
@@ -1804,7 +1804,7 @@ namespace PCLParaphernalia
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
-                new ushort[] { PCLSymbolSets.translateIdToKind1("19M") }));
+                new ushort[] { PCLSymbolSets.TranslateIdToKind1("19M") }));
 
             _fonts.Add (new PCLFont (
                 fontIndex++,
@@ -1929,7 +1929,7 @@ namespace PCLParaphernalia
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
-                new ushort[] { PCLSymbolSets.translateIdToKind1("579L") }));
+                new ushort[] { PCLSymbolSets.TranslateIdToKind1("579L") }));
 
             _fonts.Add (new PCLFont (
                 fontIndex++,
@@ -1979,7 +1979,7 @@ namespace PCLParaphernalia
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
                 false,     0,     0,     "                ",
-                new ushort[] { PCLSymbolSets.translateIdToKind1("14L") }));
+                new ushort[] { PCLSymbolSets.TranslateIdToKind1("14L") }));
 
             _fontsCount = _fonts.Count;
 

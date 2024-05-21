@@ -396,7 +396,7 @@ namespace PCLParaphernalia
 
             PCLWriter.textParsingMethod (
                 prnWriter,
-                PCLTextParsingMethods.eIndex.m83_UTF8);
+                PCLTextParsingMethods.Index.m83_UTF8);
 
             PCLWriter.cursorPosition(prnWriter, posX, posY);
 

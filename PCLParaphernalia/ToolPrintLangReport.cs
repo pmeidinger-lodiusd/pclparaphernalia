@@ -64,7 +64,7 @@ namespace PCLParaphernalia
             bool flagSymSetList,
             bool flagSymSetMap,
             bool flagOptRptWrap,
-            ToolPrintLang.eSymSetMapType symSetMapType)
+            ToolPrintLang.SymSetMapType symSetMapType)
         {
             object stream = null;
             object writer = null;
@@ -1366,7 +1366,7 @@ namespace PCLParaphernalia
             DataGrid dgSeq,
             bool flagSymSetMap,
             bool flagOptRptWrap,
-            ToolPrintLang.eSymSetMapType symSetMapType)
+            ToolPrintLang.SymSetMapType symSetMapType)
         {
             const int colCtNoMap   = 8;
             const int colCtMapWrap = 6;
@@ -1483,7 +1483,7 @@ namespace PCLParaphernalia
                     colSizes = new int[colCtMapWrap] { lc0, lc1, lc2,
                                                          lc3, lc4, lc5 };
                 }
-                else if (symSetMapType == ToolPrintLang.eSymSetMapType.Std)
+                else if (symSetMapType == ToolPrintLang.SymSetMapType.Std)
                 {
                     colCt = colCtMapOne;
 
@@ -1497,7 +1497,7 @@ namespace PCLParaphernalia
                                                         lc3, lc4, lc5,
                                                         lc6b };
                 }
-                else if (symSetMapType == ToolPrintLang.eSymSetMapType.PCL)
+                else if (symSetMapType == ToolPrintLang.SymSetMapType.PCL)
                 {
                     colCt = colCtMapOne;
 
@@ -1604,7 +1604,7 @@ namespace PCLParaphernalia
                             //                                                //
                             //------------------------------------------------//
 
-                            if (symSetMapType == ToolPrintLang.eSymSetMapType.Std)
+                            if (symSetMapType == ToolPrintLang.SymSetMapType.Std)
                             {
                                 if (mapStd)
                                     ReportCore.tableRowPair (
@@ -1621,7 +1621,7 @@ namespace PCLParaphernalia
                                         _maxSizeNameTag, maxLineLen,
                                         _flagBlankBefore, _flagBlankAfter, _flagNameAsHddr);
                             }
-                            else if (symSetMapType == ToolPrintLang.eSymSetMapType.PCL)
+                            else if (symSetMapType == ToolPrintLang.SymSetMapType.PCL)
                             {
                                 if (mapPCL)
                                     ReportCore.tableRowPair (
@@ -1704,7 +1704,7 @@ namespace PCLParaphernalia
 
                             arrData[0][0] = data[0];
 
-                            if (symSetMapType == ToolPrintLang.eSymSetMapType.Std)
+                            if (symSetMapType == ToolPrintLang.SymSetMapType.Std)
                             {
                                 arrData[0][0] = c6bHddr;
                                 arrData[1] = symbolSet.MapRowsStd;
@@ -1713,7 +1713,7 @@ namespace PCLParaphernalia
                                     writer, rptFileFmt, colCtPair,
                                     arrData, colSizesPair, true, true, true);
                             }
-                            else if (symSetMapType == ToolPrintLang.eSymSetMapType.PCL)
+                            else if (symSetMapType == ToolPrintLang.SymSetMapType.PCL)
                             {
                                 arrData[0][0] = c7bHddr;
                                 arrData[1] = symbolSet.MapRowsPCL;
@@ -1764,11 +1764,11 @@ namespace PCLParaphernalia
                         //                                                        //
                         //--------------------------------------------------------//
 
-                        if (symSetMapType == ToolPrintLang.eSymSetMapType.Std)
+                        if (symSetMapType == ToolPrintLang.SymSetMapType.Std)
                         {
                             data[6] = symbolSet.MappingStd;
                         }
-                        else if (symSetMapType == ToolPrintLang.eSymSetMapType.PCL)
+                        else if (symSetMapType == ToolPrintLang.SymSetMapType.PCL)
                         {
                             data[6] = symbolSet.MappingPCL;
                         }
@@ -1806,11 +1806,11 @@ namespace PCLParaphernalia
                         arrData[4][0] = data[4];
                         arrData[5][0] = data[5];
 
-                        if (symSetMapType == ToolPrintLang.eSymSetMapType.Std)
+                        if (symSetMapType == ToolPrintLang.SymSetMapType.Std)
                         {
                             arrData[6] = symbolSet.MapRowsStd;
                         }
-                        else if (symSetMapType == ToolPrintLang.eSymSetMapType.PCL)
+                        else if (symSetMapType == ToolPrintLang.SymSetMapType.PCL)
                         {
                             arrData[6] = symbolSet.MapRowsPCL;
                         }

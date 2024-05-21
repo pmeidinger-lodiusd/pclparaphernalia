@@ -178,7 +178,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    PCLXLWriter.fontCharBegin (_binWriter,
+                    PCLXLWriter.FontCharBegin (_binWriter,
                                                false,
                                                cSizeFontname,
                                                fontNameXL);
@@ -208,7 +208,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    PCLXLWriter.fontCharEnd (_binWriter, false);
+                    PCLXLWriter.FontCharEnd (_binWriter, false);
 
                     //--------------------------------------------------------//
                     //                                                        //
@@ -414,10 +414,10 @@ namespace PCLParaphernalia
             charDataSize = (ushort) (hddrSize + glyphLength);
             charSize     = (ushort) (charDataSize - 2);
 
-            PCLXLWriter.fontCharRead (_binWriter, false,
+            PCLXLWriter.FontCharRead (_binWriter, false,
                                       charCode, charDataSize);
 
-            PCLXLWriter.embedDataIntro (_binWriter,
+            PCLXLWriter.EmbedDataIntro (_binWriter,
                                         false,
                                         charDataSize);
             if (charClass == 0)
@@ -712,7 +712,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLXLWriter.fontHddrBegin (_binWriter,
+            PCLXLWriter.FontHddrBegin (_binWriter,
                                        false,
                                        cSizeFontname,
                                        fontNameXL,
@@ -725,7 +725,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             hddrDesc[0] = 0;                    // Format
-            hddrDesc[1] = (byte) PCLXLAttrEnums.eVal.ePortraitOrientation;
+            hddrDesc[1] = (byte) PCLXLAttrEnums.Val.ePortraitOrientation;
             hddrDesc[2] = msByte (symSet);      // Symbol set MSB
             hddrDesc[3] = lsByte (symSet);      // Symbol Set LSB
             hddrDesc[4] = 1;                    // Scaling = TrueType
@@ -766,7 +766,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLXLWriter.fontHddrEnd (_binWriter,
+            PCLXLWriter.FontHddrEnd (_binWriter,
                                      false);
         }
     }

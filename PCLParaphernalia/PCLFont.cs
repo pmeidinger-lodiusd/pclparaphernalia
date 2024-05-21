@@ -134,7 +134,7 @@ namespace PCLParaphernalia
             get
             {
                 if (_bound)
-                    return PCLSymbolSets.translateKind1ToId (_symSetNumber);
+                    return PCLSymbolSets.TranslateKind1ToId (_symSetNumber);
                 else
                     return string.Empty;
             }
@@ -624,7 +624,7 @@ namespace PCLParaphernalia
 
             if ((!symSetFound) && (!_bound))
             {
-                if (PCLSymbolSets.getKind1 (PCLSymbolSets.IndexUnicode) ==
+                if (PCLSymbolSets.GetKind1 (PCLSymbolSets.IndexUnicode) ==
                     symSetNo)
                 {
                     symSetFound = true;
@@ -779,7 +779,7 @@ namespace PCLParaphernalia
                 for (int i = 0; i < symSetCt; i++)
                 {
                     string symSetId =
-                        PCLSymbolSets.translateKind1ToId (_symSets[i]);
+                        PCLSymbolSets.TranslateKind1ToId (_symSets[i]);
 
                     crntRow.Append (symSetId);
 
@@ -825,7 +825,7 @@ namespace PCLParaphernalia
                 for (int i = 0; i < symSetCt; i++)
                 {
                     string symSetId =
-                        PCLSymbolSets.translateKind1ToId(_symSets[i]);
+                        PCLSymbolSets.TranslateKind1ToId(_symSets[i]);
 
                     symSetList.Append(symSetId);
 

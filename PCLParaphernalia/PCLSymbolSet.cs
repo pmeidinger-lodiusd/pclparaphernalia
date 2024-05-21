@@ -24,9 +24,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLSymbolSet (PCLSymbolSets.eSymSetGroup group,
-                             PCLSymSetTypes.eIndex   indxType,
-                             PCLTextParsingMethods.eIndex parsingMethod,
+        public PCLSymbolSet (PCLSymbolSets.SymSetGroup group,
+                             PCLSymSetTypes.Index   indxType,
+                             PCLTextParsingMethods.Index parsingMethod,
                              ushort kind1,
                              string alias,
                              string name,
@@ -144,8 +144,8 @@ namespace PCLParaphernalia
         {
             bool matches = false;
 
-            if ((Group == PCLSymbolSets.eSymSetGroup.Preset) ||
-                (Group == PCLSymbolSets.eSymSetGroup.Unicode))
+            if ((Group == PCLSymbolSets.SymSetGroup.Preset) ||
+                (Group == PCLSymbolSets.SymSetGroup.Unicode))
             {
                 matches = true;
                 kind1 = Kind1;
@@ -179,9 +179,9 @@ namespace PCLParaphernalia
         {
             bool matches = false;
 
-            if ((Group != PCLSymbolSets.eSymSetGroup.Preset) &&
-                (Group != PCLSymbolSets.eSymSetGroup.Unbound) &&
-                (Group != PCLSymbolSets.eSymSetGroup.Unicode))
+            if ((Group != PCLSymbolSets.SymSetGroup.Preset) &&
+                (Group != PCLSymbolSets.SymSetGroup.Unbound) &&
+                (Group != PCLSymbolSets.SymSetGroup.Unicode))
             {
                 matches = false;
             }
@@ -209,7 +209,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLSymbolSets.eSymSetGroup Group { get; }
+        public PCLSymbolSets.SymSetGroup Group { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -640,7 +640,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLTextParsingMethods.eIndex ParsingMethod { get; set; }
+        public PCLTextParsingMethods.Index ParsingMethod { get; set; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -651,7 +651,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLSymSetTypes.eIndex Type { get; set; }
+        public PCLSymSetTypes.Index Type { get; set; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -666,7 +666,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                return PCLSymSetTypes.getDescShort ((int)Type);
+                return PCLSymSetTypes.GetDescShort ((int)Type);
             }
         }
     }

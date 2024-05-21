@@ -51,7 +51,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generate (ReportCore.eRptFileFmt rptFileFmt,
+        public static void Generate (ReportCore.eRptFileFmt rptFileFmt,
                                      string symSetFilename,
                                      ushort symSetNo,
                                      ushort[] symSetMap,
@@ -62,7 +62,7 @@ namespace PCLParaphernalia
                                      bool flagIgnoreC0,
                                      bool flagIgnoreC1,
                                      bool flagMapHex,
-                                     PCLSymSetTypes.eIndex symSetType)
+                                     PCLSymSetTypes.Index symSetType)
         {
             object stream = null;
             object writer = null;
@@ -91,14 +91,14 @@ namespace PCLParaphernalia
                                           0, null,
                                           null, null);
 
-                reportHddr (rptFileFmt, writer, symSetFilename);
+                ReportHddr (rptFileFmt, writer, symSetFilename);
 
-                reportBodyMain (rptFileFmt, writer, symSetNo,
+                ReportBodyMain (rptFileFmt, writer, symSetNo,
                                 codeMin, codeMax, codeCt, charCollReq,
                                 flagIgnoreC0, flagIgnoreC1, flagMapHex,
                                 symSetType);
 
-                reportBodyMap (rptFileFmt, writer, symSetMap,
+                ReportBodyMap (rptFileFmt, writer, symSetMap,
                                codeMin, codeMax,
                                flagIgnoreC0, flagIgnoreC1, flagMapHex);
 
@@ -117,7 +117,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void reportBodyMain (
+        private static void ReportBodyMain (
             ReportCore.eRptFileFmt rptFileFmt,
             object writer,
         //  String symSetFilename,
@@ -129,7 +129,7 @@ namespace PCLParaphernalia
             bool flagIgnoreC0,
             bool flagIgnoreC1,
             bool flagMapHex,
-            PCLSymSetTypes.eIndex symSetType)
+            PCLSymSetTypes.Index symSetType)
         {
             const int maxLineLen = 80;        // ***************** constant elsewhere ???????????????
 
@@ -158,7 +158,7 @@ namespace PCLParaphernalia
 
             ReportCore.tableRowPair (writer, rptFileFmt,
                                  "SymSetId",
-                                 PCLSymbolSets.translateKind1ToId(symSetNo),
+                                 PCLSymbolSets.TranslateKind1ToId(symSetNo),
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
@@ -220,7 +220,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void reportBodyMap (
+        private static void ReportBodyMap (
             ReportCore.eRptFileFmt rptFileFmt,
             object writer,
             ushort[] symSetMap,
@@ -397,7 +397,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void reportHddr (ReportCore.eRptFileFmt rptFileFmt,
+        private static void ReportHddr (ReportCore.eRptFileFmt rptFileFmt,
                                         object writer,
                                         string symSetFilename)
         {

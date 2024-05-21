@@ -79,7 +79,7 @@ namespace PCLParaphernalia
             string fontSelSeq,
             string symbolSetName,
             ushort[]                    sampleRangeOffsets,
-            PCLTextParsingMethods.eIndex indxTextParseMethod,
+            PCLTextParsingMethods.Index indxTextParseMethod,
             double pointSize,
             bool sizeIsHeight,
             bool downloadFontRemove,
@@ -116,7 +116,7 @@ namespace PCLParaphernalia
 
             if (symSetUserSet)
             {
-                symSetKind1 = PCLSymbolSets.translateIdToKind1(symbolSet);
+                symSetKind1 = PCLSymbolSets.TranslateIdToKind1(symbolSet);
 
                 if ((!symSetUserActEmbed) ||
                     showMapCodesUCS2    || showMapCodesUTF8)
@@ -136,12 +136,12 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    _symSetUserMapMax = PCLSymbolSets.getMapArrayMax(
+                    _symSetUserMapMax = PCLSymbolSets.GetMapArrayMax(
                                           PCLSymbolSets.IndexUserSet);
 
                     _symSetUserMap = new ushort[_symSetUserMapMax + 1];
 
-                    _symSetUserMap = PCLSymbolSets.getMapArrayUserSet();
+                    _symSetUserMap = PCLSymbolSets.GetMapArrayUserSet();
                 }
             }
 
@@ -252,7 +252,7 @@ namespace PCLParaphernalia
             {
                 PCLWriter.fontDownloadID (prnWriter, fontIdNo);
 
-                PCLDownloadFont.fontFileCopy (prnWriter, fontFilename);
+                PCLDownloadFont.FontFileCopy (prnWriter, fontFilename);
 
                 PCLWriter.fontDownloadSave (prnWriter, true);
             }
@@ -731,7 +731,7 @@ namespace PCLParaphernalia
             string fontSelSeq,
             string symbolSetName,
             ushort sampleRangeOffset,
-            PCLTextParsingMethods.eIndex indxTextParseMethod,
+            PCLTextParsingMethods.Index indxTextParseMethod,
             double fontSize,
             bool sizeIsHeight,
             ushort logXOffset,
@@ -932,29 +932,29 @@ namespace PCLParaphernalia
             twoByteMethod = false;
 
             if ((indxTextParseMethod ==
-                    PCLTextParsingMethods.eIndex.m83_UTF8) ||
+                    PCLTextParsingMethods.Index.m83_UTF8) ||
                 (indxTextParseMethod ==
-                    PCLTextParsingMethods.eIndex.m1008_UTF8_alt))
+                    PCLTextParsingMethods.Index.m1008_UTF8_alt))
                 utf8 = true;
             else if (indxTextParseMethod ==
-                      PCLTextParsingMethods.eIndex.m2_2_byte)
+                      PCLTextParsingMethods.Index.m2_2_byte)
                 twoByteMethod = true;
 
             //----------------------------------------------------------------//
 
             if (indxTextParseMethod !=
-                PCLTextParsingMethods.eIndex.not_specified)
+                PCLTextParsingMethods.Index.not_specified)
             {
                 PCLWriter.textParsingMethod(
                     prnWriter,
-                    PCLTextParsingMethods.getValue((int)indxTextParseMethod));
+                    PCLTextParsingMethods.GetValue((int)indxTextParseMethod));
 
                 //------------------------------------------------------------//
 
                 if ((indxTextParseMethod ==
-                        PCLTextParsingMethods.eIndex.m83_UTF8) ||
+                        PCLTextParsingMethods.Index.m83_UTF8) ||
                     (indxTextParseMethod ==
-                        PCLTextParsingMethods.eIndex.m1008_UTF8_alt))
+                        PCLTextParsingMethods.Index.m1008_UTF8_alt))
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -974,7 +974,7 @@ namespace PCLParaphernalia
                     checkSingleByteCodes = false;
                 }
                 else if (indxTextParseMethod ==
-                            PCLTextParsingMethods.eIndex.m2_2_byte)
+                            PCLTextParsingMethods.Index.m2_2_byte)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -1009,7 +1009,7 @@ namespace PCLParaphernalia
                           blockMax;
 
                     ushort[] rangesSingle =
-                        PCLTextParsingMethods.getRangeDataSingle(
+                        PCLTextParsingMethods.GetRangeDataSingle(
                                                 (int)indxTextParseMethod);
 
                     int ctRangeData = 0;
@@ -1238,11 +1238,11 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (indxTextParseMethod !=
-                PCLTextParsingMethods.eIndex.not_specified)
+                PCLTextParsingMethods.Index.not_specified)
             {
                 PCLWriter.textParsingMethod (
                     prnWriter,
-                    PCLTextParsingMethods.eIndex.m0_1_byte_default);
+                    PCLTextParsingMethods.Index.m0_1_byte_default);
             }
 
             //----------------------------------------------------------------//

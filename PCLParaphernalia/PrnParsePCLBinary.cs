@@ -4193,7 +4193,7 @@ namespace PCLParaphernalia
                 codeDesc = uint16Val.ToString() +
                             " (0x" + uint16Val.ToString ("x") + ")" +
                            " : ID = " +
-                           PCLSymbolSets.translateKind1ToId(uint16Val);
+                           PCLSymbolSets.TranslateKind1ToId(uint16Val);
 
                 PrnParseCommon.addTextRow (
                     PrnParseRowTypes.eType.PCLDecode,
@@ -4215,7 +4215,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         "ID Code > maximum value of " +
                         kind1Max + " (ID = " +
-                        PCLSymbolSets.translateKind1ToId (kind1Max) + ")");
+                        PCLSymbolSets.TranslateKind1ToId (kind1Max) + ")");
 
                     dataOK = false;
                 }
@@ -4259,23 +4259,23 @@ namespace PCLParaphernalia
                 switch (byteVal)
                 {
                     case 0:
-                        codeDesc = PCLSymSetTypes.getDescStd (
-                                       (int) PCLSymSetTypes.eIndex.Bound_7bit);
+                        codeDesc = PCLSymSetTypes.GetDescStd (
+                                       (int) PCLSymSetTypes.Index.Bound_7bit);
                         break;
 
                     case 1:
-                        codeDesc = PCLSymSetTypes.getDescStd (
-                                       (int) PCLSymSetTypes.eIndex.Bound_8bit);
+                        codeDesc = PCLSymSetTypes.GetDescStd (
+                                       (int) PCLSymSetTypes.Index.Bound_8bit);
                         break;
 
                     case 2:
-                        codeDesc = PCLSymSetTypes.getDescStd (
-                                       (int) PCLSymSetTypes.eIndex.Bound_PC8);
+                        codeDesc = PCLSymSetTypes.GetDescStd (
+                                       (int) PCLSymSetTypes.Index.Bound_PC8);
                         break;
 
                     case 3:
-                        codeDesc = PCLSymSetTypes.getDescStd (
-                                       (int) PCLSymSetTypes.eIndex.Bound_16bit);
+                        codeDesc = PCLSymSetTypes.GetDescStd (
+                                       (int) PCLSymSetTypes.Index.Bound_16bit);
                         break;
 
                     default:

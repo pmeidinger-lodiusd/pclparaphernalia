@@ -107,7 +107,7 @@ namespace PCLParaphernalia
 
         private static void generateJobHeader(BinaryWriter prnWriter)
         {
-            PCLXLWriter.stdJobHeader(prnWriter, string.Empty);
+            PCLXLWriter.StdJobHeader(prnWriter, string.Empty);
         }
 
         //--------------------------------------------------------------------//
@@ -122,7 +122,7 @@ namespace PCLParaphernalia
         private static void generateJobTrailer(BinaryWriter prnWriter,
                                                bool formAsMacro)
         {
-            PCLXLWriter.stdJobTrailer(prnWriter, formAsMacro, _formName);
+            PCLXLWriter.StdJobTrailer(prnWriter, formAsMacro, _formName);
         }
 
         //--------------------------------------------------------------------//
@@ -178,10 +178,10 @@ namespace PCLParaphernalia
 
             if (formAsMacro)
             {
-                PCLXLWriter.streamHeader(prnWriter, true, _formName);
+                PCLXLWriter.StreamHeader(prnWriter, true, _formName);
             }
 
-            PCLXLWriter.addOperator(ref buffer,
+            PCLXLWriter.AddOperator(ref buffer,
                               ref indBuf,
                               PCLXLOperators.eTag.PushGS);
 
@@ -191,54 +191,54 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLXLWriter.addAttrUbyte (ref buffer,
+            PCLXLWriter.AddAttrUbyte (ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.eTag.ColorSpace,
-                                     (byte) PCLXLAttrEnums.eVal.eGray);
+                                     (byte) PCLXLAttrEnums.Val.eGray);
 
-            PCLXLWriter.addAttrUbyte (ref buffer,
+            PCLXLWriter.AddAttrUbyte (ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.eTag.PaletteDepth,
-                                     (byte) PCLXLAttrEnums.eVal.e8Bit);
+                                     (byte) PCLXLAttrEnums.Val.e8Bit);
 
-            PCLXLWriter.addAttrUbyteArray (ref buffer,
+            PCLXLWriter.AddAttrUbyteArray (ref buffer,
                                           ref indBuf,
                                           PCLXLAttributes.eTag.PaletteData,
                                           2,
                                           PCLXLWriter.monoPalette);
 
-            PCLXLWriter.addOperator (ref buffer,
+            PCLXLWriter.AddOperator (ref buffer,
                                     ref indBuf,
                                     PCLXLOperators.eTag.SetColorSpace);
 
-            PCLXLWriter.addAttrUbyte(ref buffer,
+            PCLXLWriter.AddAttrUbyte(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.eTag.NullBrush,
                                0);
 
-            PCLXLWriter.addOperator(ref buffer,
+            PCLXLWriter.AddOperator(ref buffer,
                               ref indBuf,
                               PCLXLOperators.eTag.SetBrushSource);
 
-            PCLXLWriter.addAttrUbyte(ref buffer,
+            PCLXLWriter.AddAttrUbyte(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.eTag.GrayLevel,
                                0);
 
-            PCLXLWriter.addOperator(ref buffer,
+            PCLXLWriter.AddOperator(ref buffer,
                               ref indBuf,
                               PCLXLOperators.eTag.SetPenSource);
 
-            PCLXLWriter.addAttrUbyte(ref buffer,
+            PCLXLWriter.AddAttrUbyte(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.eTag.PenWidth,
                                stroke);
 
-            PCLXLWriter.addOperator(ref buffer,
+            PCLXLWriter.AddOperator(ref buffer,
                               ref indBuf,
                               PCLXLOperators.eTag.SetPenWidth);
 
-            PCLXLWriter.writeStreamBlock(prnWriter, formAsMacro,
+            PCLXLWriter.WriteStreamBlock(prnWriter, formAsMacro,
                                    buffer, ref indBuf);
 
             //----------------------------------------------------------------//
@@ -260,66 +260,66 @@ namespace PCLParaphernalia
                                     PCLOrientations.eAspect.Portrait) -
                               boxY1);
 
-            PCLXLWriter.addAttrUbyte(ref buffer,
+            PCLXLWriter.AddAttrUbyte(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.eTag.TxMode,
-                               (byte)PCLXLAttrEnums.eVal.eTransparent);
+                               (byte)PCLXLAttrEnums.Val.eTransparent);
 
-            PCLXLWriter.addOperator(ref buffer,
+            PCLXLWriter.AddOperator(ref buffer,
                               ref indBuf,
                               PCLXLOperators.eTag.SetPatternTxMode);
 
-            PCLXLWriter.addAttrUbyte(ref buffer,
+            PCLXLWriter.AddAttrUbyte(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.eTag.TxMode,
-                               (byte)PCLXLAttrEnums.eVal.eTransparent);
+                               (byte)PCLXLAttrEnums.Val.eTransparent);
 
-            PCLXLWriter.addOperator(ref buffer,
+            PCLXLWriter.AddOperator(ref buffer,
                               ref indBuf,
                               PCLXLOperators.eTag.SetSourceTxMode);
 
-            PCLXLWriter.addAttrUbyte(ref buffer,
+            PCLXLWriter.AddAttrUbyte(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.eTag.GrayLevel,
                                100);
 
-            PCLXLWriter.addOperator(ref buffer,
+            PCLXLWriter.AddOperator(ref buffer,
                               ref indBuf,
                               PCLXLOperators.eTag.SetPenSource);
 
-            PCLXLWriter.addAttrUbyte(ref buffer,
+            PCLXLWriter.AddAttrUbyte(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.eTag.PenWidth,
                                5);
 
-            PCLXLWriter.addOperator(ref buffer,
+            PCLXLWriter.AddOperator(ref buffer,
                               ref indBuf,
                               PCLXLOperators.eTag.SetPenWidth);
 
-            PCLXLWriter.addAttrUbyte(ref buffer,
+            PCLXLWriter.AddAttrUbyte(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.eTag.NullBrush,
                                0);
 
-            PCLXLWriter.addOperator(ref buffer,
+            PCLXLWriter.AddOperator(ref buffer,
                               ref indBuf,
                               PCLXLOperators.eTag.SetBrushSource);
 
-            PCLXLWriter.addAttrUint16XY(ref buffer,
+            PCLXLWriter.AddAttrUint16XY(ref buffer,
                                   ref indBuf,
                                   PCLXLAttributes.eTag.EllipseDimension,
                                   100, 100);
 
-            PCLXLWriter.addAttrUint16Box(ref buffer,
+            PCLXLWriter.AddAttrUint16Box(ref buffer,
                                    ref indBuf,
                                    PCLXLAttributes.eTag.BoundingBox,
                                    boxX1, boxY1, boxX2, boxY2);
 
-            PCLXLWriter.addOperator(ref buffer,
+            PCLXLWriter.AddOperator(ref buffer,
                               ref indBuf,
                               PCLXLOperators.eTag.RoundRectangle);
 
-            PCLXLWriter.writeStreamBlock(prnWriter, formAsMacro,
+            PCLXLWriter.WriteStreamBlock(prnWriter, formAsMacro,
                                    buffer, ref indBuf);
 
             //----------------------------------------------------------------//
@@ -328,69 +328,69 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLXLWriter.addAttrUbyte(ref buffer,
+            PCLXLWriter.AddAttrUbyte(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.eTag.GrayLevel,
                                100);
 
-            PCLXLWriter.addOperator(ref buffer,
+            PCLXLWriter.AddOperator(ref buffer,
                               ref indBuf,
                               PCLXLOperators.eTag.SetBrushSource);
 
-            PCLXLWriter.addAttrUbyte(ref buffer,
+            PCLXLWriter.AddAttrUbyte(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.eTag.NullPen,
                                0);
 
-            PCLXLWriter.addOperator(ref buffer,
+            PCLXLWriter.AddOperator(ref buffer,
                               ref indBuf,
                               PCLXLOperators.eTag.SetPenSource);
 
-            PCLXLWriter.writeStreamBlock(prnWriter, formAsMacro,
+            PCLXLWriter.WriteStreamBlock(prnWriter, formAsMacro,
                                    buffer, ref indBuf);
 
             ptSize  = 15;
 
-            PCLXLWriter.font(prnWriter, formAsMacro, ptSize,
+            PCLXLWriter.Font(prnWriter, formAsMacro, ptSize,
                              _symSet_19U, _fontNameCourierBold);
 
             posX = _posXDesc;
             posY = _posYHddr;
 
-            PCLXLWriter.text(prnWriter, formAsMacro, false,
+            PCLXLWriter.Text(prnWriter, formAsMacro, false,
                        PCLXLWriter.advances_Courier, ptSize,
                        posX, posY,
                        "PCL XL Text & Background:");
 
             ptSize  = 12;
 
-            PCLXLWriter.font(prnWriter, formAsMacro, ptSize,
+            PCLXLWriter.Font(prnWriter, formAsMacro, ptSize,
                              _symSet_19U, _fontNameCourier);
 
             posY = _posYDesc;
 
-            PCLXLWriter.text(prnWriter, formAsMacro, false,
+            PCLXLWriter.Text(prnWriter, formAsMacro, false,
                        PCLXLWriter.advances_Courier, ptSize,
                        posX, posY,
                       "Black:");
 
             posY += _lineInc;
 
-            PCLXLWriter.text(prnWriter, formAsMacro, false,
+            PCLXLWriter.Text(prnWriter, formAsMacro, false,
                        PCLXLWriter.advances_Courier, ptSize,
                        posX, posY,
                        "Shade = " + "Dark Gray:");
 
             posY += _lineInc;
 
-            PCLXLWriter.text(prnWriter, formAsMacro, false,
+            PCLXLWriter.Text(prnWriter, formAsMacro, false,
                        PCLXLWriter.advances_Courier, ptSize,
                        posX, posY,
                       "Shade = " + "Light Gray:");
 
             posY += _lineInc;
 
-            PCLXLWriter.text(prnWriter, formAsMacro, false,
+            PCLXLWriter.Text(prnWriter, formAsMacro, false,
                        PCLXLWriter.advances_Courier, ptSize,
                        posX, posY,
                       "White:");
@@ -411,12 +411,12 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            PCLXLWriter.addAttrUbyte (ref buffer,
+            PCLXLWriter.AddAttrUbyte (ref buffer,
                                ref indBuf,
                                PCLXLAttributes.eTag.GrayLevel,
                                0);
 
-            PCLXLWriter.addOperator (ref buffer,
+            PCLXLWriter.AddOperator (ref buffer,
                                      ref indBuf,
                                      PCLXLOperators.eTag.SetBrushSource);
 
@@ -425,7 +425,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < 4; i++)
             {
-                PCLXLWriter.addAttrUint16Box (ref buffer,
+                PCLXLWriter.AddAttrUint16Box (ref buffer,
                                              ref indBuf,
                                              PCLXLAttributes.eTag.BoundingBox,
                                              (ushort) rectX,
@@ -433,29 +433,29 @@ namespace PCLParaphernalia
                                              (ushort) (rectX + rectWidth),
                                              (ushort) (rectY + rectHeight));
 
-                PCLXLWriter.addOperator (ref buffer,
+                PCLXLWriter.AddOperator (ref buffer,
                                         ref indBuf,
                                         PCLXLOperators.eTag.Rectangle);
 
                 rectY += _lineInc;
             }
 
-            PCLXLWriter.writeStreamBlock (prnWriter, formAsMacro,
+            PCLXLWriter.WriteStreamBlock (prnWriter, formAsMacro,
                                    buffer, ref indBuf);
 
             //----------------------------------------------------------------//
 
-            PCLXLWriter.addAttrSint16 (ref buffer,
+            PCLXLWriter.AddAttrSint16 (ref buffer,
                                        ref indBuf,
                                        PCLXLAttributes.eTag.PatternSelectID,
                                        _patternId_DarkGrey);
 
-            PCLXLWriter.addAttrSint16XY (ref buffer,
+            PCLXLWriter.AddAttrSint16XY (ref buffer,
                                          ref indBuf,
                                          PCLXLAttributes.eTag.PatternOrigin,
                                          0, 0);
 
-            PCLXLWriter.addOperator (ref buffer,
+            PCLXLWriter.AddOperator (ref buffer,
                                      ref indBuf,
                                      PCLXLOperators.eTag.SetBrushSource);
 
@@ -464,7 +464,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < 4; i++)
             {
-                PCLXLWriter.addAttrUint16Box (ref buffer,
+                PCLXLWriter.AddAttrUint16Box (ref buffer,
                                              ref indBuf,
                                              PCLXLAttributes.eTag.BoundingBox,
                                              (ushort) rectX,
@@ -472,29 +472,29 @@ namespace PCLParaphernalia
                                              (ushort) (rectX + rectWidth),
                                              (ushort) (rectY + rectHeight));
 
-                PCLXLWriter.addOperator (ref buffer,
+                PCLXLWriter.AddOperator (ref buffer,
                                         ref indBuf,
                                         PCLXLOperators.eTag.Rectangle);
 
                 rectY += _lineInc;
             }
 
-            PCLXLWriter.writeStreamBlock (prnWriter, formAsMacro,
+            PCLXLWriter.WriteStreamBlock (prnWriter, formAsMacro,
                                    buffer, ref indBuf);
 
             //----------------------------------------------------------------//
 
-            PCLXLWriter.addAttrSint16 (ref buffer,
+            PCLXLWriter.AddAttrSint16 (ref buffer,
                                        ref indBuf,
                                        PCLXLAttributes.eTag.PatternSelectID,
                                        _patternId_LightGrey);
 
-            PCLXLWriter.addAttrSint16XY (ref buffer,
+            PCLXLWriter.AddAttrSint16XY (ref buffer,
                                          ref indBuf,
                                          PCLXLAttributes.eTag.PatternOrigin,
                                          0, 0);
 
-            PCLXLWriter.addOperator (ref buffer,
+            PCLXLWriter.AddOperator (ref buffer,
                                      ref indBuf,
                                      PCLXLOperators.eTag.SetBrushSource);
 
@@ -503,7 +503,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < 4; i++)
             {
-                PCLXLWriter.addAttrUint16Box (ref buffer,
+                PCLXLWriter.AddAttrUint16Box (ref buffer,
                                              ref indBuf,
                                              PCLXLAttributes.eTag.BoundingBox,
                                              (ushort) rectX,
@@ -511,14 +511,14 @@ namespace PCLParaphernalia
                                              (ushort) (rectX + rectWidth),
                                              (ushort) (rectY + rectHeight));
 
-                PCLXLWriter.addOperator (ref buffer,
+                PCLXLWriter.AddOperator (ref buffer,
                                         ref indBuf,
                                         PCLXLOperators.eTag.Rectangle);
 
                 rectY += _lineInc;
             }
 
-            PCLXLWriter.writeStreamBlock (prnWriter, formAsMacro,
+            PCLXLWriter.WriteStreamBlock (prnWriter, formAsMacro,
                                    buffer, ref indBuf);
 
             //----------------------------------------------------------------//
@@ -527,16 +527,16 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLXLWriter.addOperator(ref buffer,
+            PCLXLWriter.AddOperator(ref buffer,
                               ref indBuf,
                               PCLXLOperators.eTag.PopGS);
 
-            PCLXLWriter.writeStreamBlock(prnWriter, formAsMacro,
+            PCLXLWriter.WriteStreamBlock(prnWriter, formAsMacro,
                                    buffer, ref indBuf);
 
             if (formAsMacro)
             {
-                PCLXLWriter.addOperator(ref buffer,
+                PCLXLWriter.AddOperator(ref buffer,
                                   ref indBuf,
                                   PCLXLOperators.eTag.EndStream);
 
@@ -578,7 +578,7 @@ namespace PCLParaphernalia
 
             if (indxOrientation < PCLOrientations.getCount())
             {
-                PCLXLWriter.addAttrUbyte(ref bufStd,
+                PCLXLWriter.AddAttrUbyte(ref bufStd,
                                    ref indStd,
                                    PCLXLAttributes.eTag.Orientation,
                                    PCLOrientations.getIdPCLXL(indxOrientation));
@@ -586,7 +586,7 @@ namespace PCLParaphernalia
 
             if (indxPaperSize < PCLPaperSizes.getCount())
             {
-                PCLXLWriter.addAttrUbyte(ref bufStd,
+                PCLXLWriter.AddAttrUbyte(ref bufStd,
                                    ref indStd,
                                    PCLXLAttributes.eTag.MediaSize,
                                    PCLPaperSizes.getIdPCLXL(indxPaperSize));
@@ -596,36 +596,36 @@ namespace PCLParaphernalia
                 (PCLPaperTypes.getType(indxPaperType) !=
                     PCLPaperTypes.eEntryType.NotSet))
             {
-                PCLXLWriter.addAttrUbyteArray(ref bufStd,
+                PCLXLWriter.AddAttrUbyteArray(ref bufStd,
                                         ref indStd,
                                         PCLXLAttributes.eTag.MediaType,
                                         PCLPaperTypes.getName(indxPaperType));
             }
 
-            PCLXLWriter.addAttrUbyte(ref bufStd,
+            PCLXLWriter.AddAttrUbyte(ref bufStd,
                                ref indStd,
                                PCLXLAttributes.eTag.SimplexPageMode,
-                               (byte)PCLXLAttrEnums.eVal.eSimplexFrontSide);
+                               (byte)PCLXLAttrEnums.Val.eSimplexFrontSide);
 
-            PCLXLWriter.addOperator(ref bufStd,
+            PCLXLWriter.AddOperator(ref bufStd,
                               ref indStd,
                               PCLXLOperators.eTag.BeginPage);
 
-            PCLXLWriter.addAttrUint16XY(ref bufStd,
+            PCLXLWriter.AddAttrUint16XY(ref bufStd,
                                   ref indStd,
                                   PCLXLAttributes.eTag.PageOrigin,
                                   0, 0);
 
-            PCLXLWriter.addOperator(ref bufStd,
+            PCLXLWriter.AddOperator(ref bufStd,
                               ref indStd,
                               PCLXLOperators.eTag.SetPageOrigin);
 
-            PCLXLWriter.addAttrUbyte(ref bufStd,
+            PCLXLWriter.AddAttrUbyte(ref bufStd,
                                ref indStd,
                                PCLXLAttributes.eTag.ColorSpace,
-                               (byte)PCLXLAttrEnums.eVal.eGray);
+                               (byte)PCLXLAttrEnums.Val.eGray);
 
-            PCLXLWriter.addOperator(ref bufStd,
+            PCLXLWriter.AddOperator(ref bufStd,
                               ref indStd,
                               PCLXLOperators.eTag.SetColorSpace);
 
@@ -636,12 +636,12 @@ namespace PCLParaphernalia
 
             if (formAsMacro)
             {
-                PCLXLWriter.addAttrUbyteArray(ref bufStd,
+                PCLXLWriter.AddAttrUbyteArray(ref bufStd,
                                         ref indStd,
                                         PCLXLAttributes.eTag.StreamName,
                                         _formName);
 
-                PCLXLWriter.addOperator(ref bufStd,
+                PCLXLWriter.AddOperator(ref bufStd,
                                   ref indStd,
                                   PCLXLOperators.eTag.ExecStream);
 
@@ -662,15 +662,15 @@ namespace PCLParaphernalia
 
             ptSize = 34;
 
-            PCLXLWriter.font (prnWriter, false, ptSize,
+            PCLXLWriter.Font (prnWriter, false, ptSize,
                              _symSet_19U, _fontNameArial);
 
-            PCLXLWriter.addAttrUbyte (ref bufStd,
+            PCLXLWriter.AddAttrUbyte (ref bufStd,
                                ref indStd,
                                PCLXLAttributes.eTag.NullPen,
                                0);
 
-            PCLXLWriter.addOperator (ref bufStd,
+            PCLXLWriter.AddOperator (ref bufStd,
                               ref indStd,
                               PCLXLOperators.eTag.SetPenSource);
 
@@ -681,19 +681,19 @@ namespace PCLParaphernalia
             posX = _posXData;
             posY = _posYData;
 
-            PCLXLWriter.addAttrUbyte (ref bufStd,
+            PCLXLWriter.AddAttrUbyte (ref bufStd,
                                ref indStd,
                                PCLXLAttributes.eTag.GrayLevel,
                                0);
 
-            PCLXLWriter.addOperator (ref bufStd,
+            PCLXLWriter.AddOperator (ref bufStd,
                               ref indStd,
                               PCLXLOperators.eTag.SetBrushSource);
 
             prnWriter.Write (bufStd, 0, indStd);
             indStd = 0;
 
-            PCLXLWriter.text (prnWriter, false, false,
+            PCLXLWriter.Text (prnWriter, false, false,
                        PCLXLWriter.advances_Courier, ptSize,
                        posX, posY,
                        sampleText);
@@ -704,24 +704,24 @@ namespace PCLParaphernalia
 
             posY += _lineInc;
 
-            PCLXLWriter.addAttrSint16 (ref bufStd,
+            PCLXLWriter.AddAttrSint16 (ref bufStd,
                                        ref indStd,
                                        PCLXLAttributes.eTag.PatternSelectID,
                                        _patternId_DarkGrey);
 
-            PCLXLWriter.addAttrSint16XY (ref bufStd,
+            PCLXLWriter.AddAttrSint16XY (ref bufStd,
                                          ref indStd,
                                          PCLXLAttributes.eTag.PatternOrigin,
                                          0, 0);
 
-            PCLXLWriter.addOperator (ref bufStd,
+            PCLXLWriter.AddOperator (ref bufStd,
                                      ref indStd,
                                      PCLXLOperators.eTag.SetBrushSource);
 
             prnWriter.Write (bufStd, 0, indStd);
             indStd = 0;
 
-            PCLXLWriter.text (prnWriter, false, false,
+            PCLXLWriter.Text (prnWriter, false, false,
                        PCLXLWriter.advances_Courier, ptSize,
                        posX, posY,
                        sampleText);
@@ -732,24 +732,24 @@ namespace PCLParaphernalia
 
             posY += _lineInc;
 
-            PCLXLWriter.addAttrSint16 (ref bufStd,
+            PCLXLWriter.AddAttrSint16 (ref bufStd,
                                        ref indStd,
                                        PCLXLAttributes.eTag.PatternSelectID,
                                        _patternId_LightGrey);
 
-            PCLXLWriter.addAttrSint16XY (ref bufStd,
+            PCLXLWriter.AddAttrSint16XY (ref bufStd,
                                          ref indStd,
                                          PCLXLAttributes.eTag.PatternOrigin,
                                          0, 0);
 
-            PCLXLWriter.addOperator (ref bufStd,
+            PCLXLWriter.AddOperator (ref bufStd,
                                      ref indStd,
                                      PCLXLOperators.eTag.SetBrushSource);
 
             prnWriter.Write (bufStd, 0, indStd);
             indStd = 0;
 
-            PCLXLWriter.text (prnWriter, false, false,
+            PCLXLWriter.Text (prnWriter, false, false,
                        PCLXLWriter.advances_Courier, ptSize,
                        posX, posY,
                        sampleText);
@@ -760,31 +760,31 @@ namespace PCLParaphernalia
 
             posY += _lineInc;
 
-            PCLXLWriter.addAttrUbyte (ref bufStd,
+            PCLXLWriter.AddAttrUbyte (ref bufStd,
                                ref indStd,
                                PCLXLAttributes.eTag.GrayLevel,
                                255);
 
-            PCLXLWriter.addOperator (ref bufStd,
+            PCLXLWriter.AddOperator (ref bufStd,
                               ref indStd,
                               PCLXLOperators.eTag.SetBrushSource);
 
             prnWriter.Write (bufStd, 0, indStd);
             indStd = 0;
 
-            PCLXLWriter.text (prnWriter, false, false,
+            PCLXLWriter.Text (prnWriter, false, false,
                        PCLXLWriter.advances_Courier, ptSize,
                        posX, posY,
                        sampleText);
 
             //----------------------------------------------------------------//
 
-            PCLXLWriter.addAttrUint16(ref bufStd,
+            PCLXLWriter.AddAttrUint16(ref bufStd,
                                 ref indStd,
                                 PCLXLAttributes.eTag.PageCopies,
                                 1);
 
-            PCLXLWriter.addOperator(ref bufStd,
+            PCLXLWriter.AddOperator(ref bufStd,
                               ref indStd,
                               PCLXLOperators.eTag.EndPage);
 
@@ -831,30 +831,30 @@ namespace PCLParaphernalia
                                  0x1C, 0x1C, 0xBE, 0xBE,
                                  0x1C, 0x1C, 0x88, 0x88 };
 
-            PCLXLWriter.patternDefine (prnWriter,
+            PCLXLWriter.PatternDefine (prnWriter,
                                        formAsMacro,
                                        _patternId_LightGrey,
                                        patWidth,
                                        patHeight,
                                        destWidth,
                                        destHeight,
-                                       PCLXLAttrEnums.eVal.eIndexedPixel,
-                                       PCLXLAttrEnums.eVal.e1Bit,
-                                       PCLXLAttrEnums.eVal.ePagePattern,
-                                       PCLXLAttrEnums.eVal.eNoCompression,
+                                       PCLXLAttrEnums.Val.eIndexedPixel,
+                                       PCLXLAttrEnums.Val.e1Bit,
+                                       PCLXLAttrEnums.Val.ePagePattern,
+                                       PCLXLAttrEnums.Val.eNoCompression,
                                        pattern_LightGrey);
 
-            PCLXLWriter.patternDefine (prnWriter,
+            PCLXLWriter.PatternDefine (prnWriter,
                                        formAsMacro,
                                        _patternId_DarkGrey,
                                        patWidth,
                                        patHeight,
                                        destWidth,
                                        destHeight,
-                                       PCLXLAttrEnums.eVal.eIndexedPixel,
-                                       PCLXLAttrEnums.eVal.e1Bit,
-                                       PCLXLAttrEnums.eVal.ePagePattern,
-                                       PCLXLAttrEnums.eVal.eNoCompression,
+                                       PCLXLAttrEnums.Val.eIndexedPixel,
+                                       PCLXLAttrEnums.Val.e1Bit,
+                                       PCLXLAttrEnums.Val.ePagePattern,
+                                       PCLXLAttrEnums.Val.eNoCompression,
                                        pattern_DarkGrey);
         }
     }

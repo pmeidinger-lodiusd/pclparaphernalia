@@ -687,7 +687,7 @@ namespace PCLParaphernalia
 
             posY += posYInc;
 
-            if (indxPaperTray == PCLTrayDatas.getIdNotSetPCL())
+            if (indxPaperTray == PCLTrayDatas.GetIdNotSetPCL())
                 PCLWriter.text(prnWriter, posX, posY, 0, "<not set>");
             else if (indxPaperTray == _trayIdAutoSelectPCL)
                 PCLWriter.text(prnWriter, posX, posY, 0,

@@ -48,7 +48,7 @@ namespace PCLParaphernalia
             ref ushort symSetNo,
             ref ushort firstCode,
             ref ushort lastCode,
-            ref PCLSymSetTypes.eIndex symSetType)
+            ref PCLSymSetTypes.Index symSetType)
         {
             bool flagOK = true;
 
@@ -134,7 +134,7 @@ namespace PCLParaphernalia
                         }
                         else
                         {
-                            symSetType = PCLSymSetTypes.getIndexForIdPCL(symSetTypeId);
+                            symSetType = PCLSymSetTypes.GetIndexForIdPCL(symSetTypeId);
                         }
                     }
                 }
@@ -482,7 +482,7 @@ namespace PCLParaphernalia
 
             bool usesC1Range = false;
 
-            PCLSymSetTypes.eIndex symSetType;
+            PCLSymSetTypes.Index symSetType;
 
             ushort mapCode;
 
@@ -528,17 +528,17 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (lastCode > 0xff)
-                symSetType = PCLSymSetTypes.eIndex.Bound_16bit;
+                symSetType = PCLSymSetTypes.Index.Bound_16bit;
             else if ((firstCode >= 0x20) && (lastCode <= 0x7f))
-                symSetType = PCLSymSetTypes.eIndex.Bound_7bit;
+                symSetType = PCLSymSetTypes.Index.Bound_7bit;
             else if ((firstCode >= 0x20) || usesC1Range)
-                symSetType = PCLSymSetTypes.eIndex.Bound_PC8;
+                symSetType = PCLSymSetTypes.Index.Bound_PC8;
             else
-                symSetType = PCLSymSetTypes.eIndex.Bound_8bit;
+                symSetType = PCLSymSetTypes.Index.Bound_8bit;
 
             //----------------------------------------------------------------//
 
-            PCLSymbolSets.setDataUserSet (symSetNo, symSetType, map);
+            PCLSymbolSets.SetDataUserSet (symSetNo, symSetType, map);
 
             return OK;
         }

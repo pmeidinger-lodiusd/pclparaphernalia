@@ -463,11 +463,11 @@ namespace PCLParaphernalia
 
             if (pdlIsPCLXL)
             {
-                PCLXLWriter.fontHddrRead (_binWriter,
+                PCLXLWriter.FontHddrRead (_binWriter,
                                           false,
                                           (ushort) fragLen);
 
-                PCLXLWriter.embedDataIntro (_binWriter,
+                PCLXLWriter.EmbedDataIntro (_binWriter,
                                             false,
                                             (ushort) fragLen);
             }

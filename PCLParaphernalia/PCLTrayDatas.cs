@@ -16,7 +16,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private enum ePDL
+        private enum PDL
         {
             // must be in same order as _trayDatas array 
             PCL,
@@ -41,9 +41,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short getIdAutoSelectPCL()
+        public static short GetIdAutoSelectPCL()
         {
-            return _trayDatas[(int)ePDL.PCL].getIdAutoSelect();
+            return _trayDatas[(int)PDL.PCL].getIdAutoSelect();
         }
 
         //--------------------------------------------------------------------//
@@ -55,9 +55,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short getIdAutoSelectPCLXL()
+        public static short GetIdAutoSelectPCLXL()
         {
-            return _trayDatas[(int)ePDL.PCLXL].getIdAutoSelect();
+            return _trayDatas[(int)PDL.PCLXL].getIdAutoSelect();
         }
 
         //--------------------------------------------------------------------//
@@ -69,9 +69,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short getIdDefaultPCL()
+        public static short GetIdDefaultPCL()
         {
-            return _trayDatas[(int)ePDL.PCL].getIdDefault();
+            return _trayDatas[(int)PDL.PCL].getIdDefault();
         }
 
         //--------------------------------------------------------------------//
@@ -83,9 +83,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short getIdDefaultPCLXL()
+        public static short GetIdDefaultPCLXL()
         {
-            return _trayDatas[(int)ePDL.PCLXL].getIdDefault();
+            return _trayDatas[(int)PDL.PCLXL].getIdDefault();
         }
 
         //--------------------------------------------------------------------//
@@ -97,9 +97,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short getIdMaximumPCL()
+        public static short GetIdMaximumPCL()
         {
-            return _trayDatas[(int)ePDL.PCL].getIdMaximum();
+            return _trayDatas[(int)PDL.PCL].getIdMaximum();
         }
 
         //--------------------------------------------------------------------//
@@ -111,9 +111,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short getIdMaximumPCLXL()
+        public static short GetIdMaximumPCLXL()
         {
-            return _trayDatas[(int)ePDL.PCLXL].getIdMaximum();
+            return _trayDatas[(int)PDL.PCLXL].getIdMaximum();
         }
 
         //--------------------------------------------------------------------//
@@ -125,9 +125,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short getIdNotSetPCL()
+        public static short GetIdNotSetPCL()
         {
-            return _trayDatas[(int)ePDL.PCL].getIdNotSet();
+            return _trayDatas[(int)PDL.PCL].getIdNotSet();
         }
 
         //--------------------------------------------------------------------//
@@ -139,9 +139,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short getIdNotSetPCLXL()
+        public static short GetIdNotSetPCLXL()
         {
-            return _trayDatas[(int)ePDL.PCLXL].getIdNotSet();
+            return _trayDatas[(int)PDL.PCLXL].getIdNotSet();
         }
     }
 }

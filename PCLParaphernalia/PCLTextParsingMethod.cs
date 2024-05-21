@@ -16,7 +16,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private readonly PCLTextParsingMethods.eIndex _indxMethod;
+        private readonly PCLTextParsingMethods.Index _indxMethod;
 
         private readonly short _value;
 
@@ -32,7 +32,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PCLTextParsingMethod (
-            PCLTextParsingMethods.eIndex indxMethod,
+            PCLTextParsingMethods.Index indxMethod,
             short value,
             string desc,
             ushort[]                     rangeDataSingle,
@@ -87,7 +87,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLTextParsingMethods.eIndex getMethodType ()
+        public PCLTextParsingMethods.Index getMethodType ()
         {
             return _indxMethod;
         }

@@ -238,7 +238,7 @@ namespace PCLParaphernalia
         {
             if (encapsulate)
             {
-                PCLXLWriter.streamBegin (binWriter, streamName);
+                PCLXLWriter.StreamBegin (binWriter, streamName);
 
                 PrnParseCommon.addDataRow (
                     PrnParseRowTypes.eType.MsgComment,
@@ -271,7 +271,7 @@ namespace PCLParaphernalia
             {
                 string descText;
 
-                PCLXLWriter.writeOperator (binWriter,
+                PCLXLWriter.WriteOperator (binWriter,
                                            PCLXLOperators.eTag.PopGS,
                                            encapsulate);
 
@@ -293,7 +293,7 @@ namespace PCLParaphernalia
 
             if (encapsulate)
             {
-                PCLXLWriter.streamEnd (binWriter);
+                PCLXLWriter.StreamEnd (binWriter);
 
                 PrnParseCommon.addDataRow (
                     PrnParseRowTypes.eType.PCLXLOperator,
@@ -2002,7 +2002,7 @@ namespace PCLParaphernalia
 
                     bool flagValIsTxt = false;
 
-                    valKnown = PCLXLAttrEnums.checkValue (_analysisLevel,
+                    valKnown = PCLXLAttrEnums.CheckValue (_analysisLevel,
                                                           _crntOperID,
                                                           _attrIDLen,
                                                           _attrID1,

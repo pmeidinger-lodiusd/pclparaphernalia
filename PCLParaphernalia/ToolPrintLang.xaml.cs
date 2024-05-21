@@ -16,6 +16,7 @@ namespace PCLParaphernalia
                                             ApplyToMembers = true)]
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0017:Simplify object initialization", Justification = "<Pending>")]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public partial class ToolPrintLang : Window
     {
         //--------------------------------------------------------------------//
@@ -24,7 +25,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private enum eInfoType : byte
+        private enum InfoType : byte
         {
             // must be in same order as _subsetTypes array
 
@@ -40,7 +41,7 @@ namespace PCLParaphernalia
             PrescribeCmds
         }
 
-        public enum eSymSetMapType : byte
+        public enum SymSetMapType : byte
         {
             Std,
             PCL,
@@ -99,7 +100,7 @@ namespace PCLParaphernalia
 
         private bool _flagSymSetMap = false;
 
-        private eSymSetMapType _symSetMapType = eSymSetMapType.Std;
+        private SymSetMapType _symSetMapType = SymSetMapType.Std;
 
         private bool _initialised = false;
 
@@ -131,27 +132,27 @@ namespace PCLParaphernalia
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            eInfoType infoType = (eInfoType)_indxType;
+            InfoType infoType = (InfoType)_indxType;
 
-            if (infoType == eInfoType.PCL)
+            if (infoType == InfoType.PCL)
                 displayPCLSeqs ();
-            else if (infoType == eInfoType.HPGL2)
+            else if (infoType == InfoType.HPGL2)
                 displayHPGL2Commands ();
-            else if (infoType == eInfoType.PCLXLTags)
+            else if (infoType == InfoType.PCLXLTags)
                 displayPCLXLTags ();
-            else if (infoType == eInfoType.PCLXLEnums)
+            else if (infoType == InfoType.PCLXLEnums)
                 displayPCLXLEnums ();
-            else if (infoType == eInfoType.PJLCmds)
+            else if (infoType == InfoType.PJLCmds)
                 displayPJLCmds ();
-            else if (infoType == eInfoType.PMLTags)
+            else if (infoType == InfoType.PMLTags)
                 displayPMLTags ();
-            else if (infoType == eInfoType.SymbolSets)
+            else if (infoType == InfoType.SymbolSets)
                 displaySymbolSetData ();
-            else if (infoType == eInfoType.Fonts)
+            else if (infoType == InfoType.Fonts)
                 displayFontData ();
-            else if (infoType == eInfoType.PaperSizes)
+            else if (infoType == InfoType.PaperSizes)
                 displayPaperSizeData ();
-            else if (infoType == eInfoType.PrescribeCmds)
+            else if (infoType == InfoType.PrescribeCmds)
                 displayPrescribeCmds();
 
             btnSaveReport.Visibility = Visibility.Visible;
@@ -937,7 +938,7 @@ namespace PCLParaphernalia
 
             dgSeq.Items.Clear ();
 
-            _ctItems = PCLXLAttrEnums.displayTags(dgSeq);
+            _ctItems = PCLXLAttrEnums.DisplayTags(dgSeq);
 
             txtCount.Text = _ctItems.ToString();
         }
@@ -1091,7 +1092,7 @@ namespace PCLParaphernalia
 
             dgSeq.Items.Clear ();
 
-            _ctItems = PCLSymbolSets.displaySeqList (dgSeq);
+            _ctItems = PCLSymbolSets.DisplaySeqList (dgSeq);
 
             txtCount.Text = _ctItems.ToString ();
         }
@@ -1118,7 +1119,7 @@ namespace PCLParaphernalia
 
         private void initialise()
         {
-            eInfoType infoType;
+            InfoType infoType;
 
             _initialised = false;
 
@@ -1148,57 +1149,57 @@ namespace PCLParaphernalia
 
             metricsLoad();
 
-            infoType = (eInfoType)_indxType;
+            infoType = (InfoType)_indxType;
 
-            if (infoType == eInfoType.HPGL2)
+            if (infoType == InfoType.HPGL2)
             {
                 rbSelTypeHPGL2.IsChecked = true;
                 tabInfoType.SelectedItem = tabHPGL2;
                 setColsHPGL2();
             }
-            else if (infoType == eInfoType.PCL)
+            else if (infoType == InfoType.PCL)
             {
                 rbSelTypePCL.IsChecked = true;
                 tabInfoType.SelectedItem = tabPCL;
                 setColsPCL();
             }
-            else if (infoType == eInfoType.PCLXLEnums)
+            else if (infoType == InfoType.PCLXLEnums)
             {
                 rbSelTypePCLXLEnums.IsChecked = true;
                 tabInfoType.SelectedItem = tabPCLXLEnums;
                 setColsPCLXLEnums();
             }
-            else if (infoType == eInfoType.PCLXLTags)
+            else if (infoType == InfoType.PCLXLTags)
             {
                 rbSelTypePCLXLTags.IsChecked = true;
                 tabInfoType.SelectedItem = tabPCLXLTags;
                 setColsPCLXLTags();
             }
-            else if (infoType == eInfoType.PJLCmds)
+            else if (infoType == InfoType.PJLCmds)
             {
                 rbSelTypePJLCmds.IsChecked = true;
                 tabInfoType.SelectedItem = tabPJLCmds;
                 setColsPJLCmds();
             }
-            else if (infoType == eInfoType.PMLTags)
+            else if (infoType == InfoType.PMLTags)
             {
                 rbSelTypePMLTags.IsChecked = true;
                 tabInfoType.SelectedItem = tabPMLTags;
                 setColsPMLTags();
             }
-            else if (infoType == eInfoType.SymbolSets)
+            else if (infoType == InfoType.SymbolSets)
             {
                 rbSelTypeSymbolSets.IsChecked = true;
                 tabInfoType.SelectedItem = tabSymbolSets;
                 setColsSymbolSets();
             }
-            else if (infoType == eInfoType.Fonts)
+            else if (infoType == InfoType.Fonts)
             {
                 rbSelTypeFonts.IsChecked = true;
                 tabInfoType.SelectedItem = tabFonts;
                 setColsFonts();
             }
-            else if (infoType == eInfoType.PaperSizes)
+            else if (infoType == InfoType.PaperSizes)
             {
                 rbSelTypePaperSizes.IsChecked = true;
                 tabInfoType.SelectedItem = tabPaperSizes;
@@ -1256,12 +1257,12 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if ((_indxType < 0) || (_indxType >= _ctTypes))
-                _indxType = (int) eInfoType.PCL;
+                _indxType = (int) InfoType.PCL;
 
-            if ((tmpInt < 0) || (tmpInt >= (int) eSymSetMapType.Max))
-                _symSetMapType = eSymSetMapType.Both;
+            if ((tmpInt < 0) || (tmpInt >= (int) SymSetMapType.Max))
+                _symSetMapType = SymSetMapType.Both;
             else
-                _symSetMapType = (eSymSetMapType) tmpInt;
+                _symSetMapType = (SymSetMapType) tmpInt;
 
             //----------------------------------------------------------------//
 
@@ -1293,9 +1294,9 @@ namespace PCLParaphernalia
 
             chkSymSetOptMap.IsChecked = _flagSymSetMap;
 
-            if (_symSetMapType == eSymSetMapType.Std)
+            if (_symSetMapType == SymSetMapType.Std)
                 rbSymSetMapStd.IsChecked = true;
-            else if (_symSetMapType == eSymSetMapType.PCL)
+            else if (_symSetMapType == SymSetMapType.PCL)
                 rbSymSetMapPCL.IsChecked = true;
             else
                 rbSymSetMapBoth.IsChecked = true;
@@ -1376,7 +1377,7 @@ namespace PCLParaphernalia
 
         private void rbSelTypeFonts_Click(object sender, RoutedEventArgs e)
         {
-            _indxType = (int)eInfoType.Fonts;
+            _indxType = (int)InfoType.Fonts;
 
             tabInfoType.SelectedItem = tabFonts;
 
@@ -1396,7 +1397,7 @@ namespace PCLParaphernalia
 
         private void rbSelTypeHPGL2_Click(object sender, RoutedEventArgs e)
         {
-            _indxType = (int)eInfoType.HPGL2;
+            _indxType = (int)InfoType.HPGL2;
 
             tabInfoType.SelectedItem = tabHPGL2;
 
@@ -1417,7 +1418,7 @@ namespace PCLParaphernalia
         private void rbSelTypePaperSizes_Click(object sender,
                                                RoutedEventArgs e)
         {
-            _indxType = (int)eInfoType.PaperSizes;
+            _indxType = (int)InfoType.PaperSizes;
 
             tabInfoType.SelectedItem = tabPaperSizes;
 
@@ -1437,7 +1438,7 @@ namespace PCLParaphernalia
 
         private void rbSelTypePCL_Click(object sender, RoutedEventArgs e)
         {
-            _indxType = (int)eInfoType.PCL;
+            _indxType = (int)InfoType.PCL;
 
             tabInfoType.SelectedItem = tabPCL;
 
@@ -1457,7 +1458,7 @@ namespace PCLParaphernalia
 
         private void rbSelTypePCLXLEnums_Click(object sender, RoutedEventArgs e)
         {
-            _indxType = (int)eInfoType.PCLXLEnums;
+            _indxType = (int)InfoType.PCLXLEnums;
 
             tabInfoType.SelectedItem = tabPCLXLEnums;
 
@@ -1477,7 +1478,7 @@ namespace PCLParaphernalia
 
         private void rbSelTypePCLXLTags_Click(object sender, RoutedEventArgs e)
         {
-            _indxType = (int)eInfoType.PCLXLTags;
+            _indxType = (int)InfoType.PCLXLTags;
 
             tabInfoType.SelectedItem = tabPCLXLTags;
 
@@ -1497,7 +1498,7 @@ namespace PCLParaphernalia
 
         private void rbSelTypePJLCmds_Click(object sender, RoutedEventArgs e)
         {
-            _indxType = (int)eInfoType.PJLCmds;
+            _indxType = (int)InfoType.PJLCmds;
 
             tabInfoType.SelectedItem = tabPJLCmds;
 
@@ -1517,7 +1518,7 @@ namespace PCLParaphernalia
 
         private void rbSelTypePMLTags_Click(object sender, RoutedEventArgs e)
         {
-            _indxType = (int)eInfoType.PMLTags;
+            _indxType = (int)InfoType.PMLTags;
 
             tabInfoType.SelectedItem = tabPMLTags;
 
@@ -1538,7 +1539,7 @@ namespace PCLParaphernalia
         private void rbSelTypePrescribeCmds_Click (object sender,
                                                    RoutedEventArgs e)
         {
-            _indxType = (int)eInfoType.PrescribeCmds;
+            _indxType = (int)InfoType.PrescribeCmds;
 
             tabInfoType.SelectedItem = tabPrescribeCmds;
 
@@ -1558,7 +1559,7 @@ namespace PCLParaphernalia
 
         private void rbSelTypeSymbolSets_Click(object sender, RoutedEventArgs e)
         {
-            _indxType = (int)eInfoType.SymbolSets;
+            _indxType = (int)InfoType.SymbolSets;
 
             tabInfoType.SelectedItem = tabSymbolSets;
 
@@ -1578,7 +1579,7 @@ namespace PCLParaphernalia
 
         private void rbSymSetMapBoth_Click (object sender, RoutedEventArgs e)
         {
-            _symSetMapType = eSymSetMapType.Both;
+            _symSetMapType = SymSetMapType.Both;
 
             clearDetails ();
         }
@@ -1594,7 +1595,7 @@ namespace PCLParaphernalia
 
         private void rbSymSetMapPCL_Click (object sender, RoutedEventArgs e)
         {
-            _symSetMapType = eSymSetMapType.PCL;
+            _symSetMapType = SymSetMapType.PCL;
 
             clearDetails ();
         }
@@ -1610,7 +1611,7 @@ namespace PCLParaphernalia
 
         private void rbSymSetMapStd_Click (object sender, RoutedEventArgs e)
         {
-            _symSetMapType = eSymSetMapType.Std;
+            _symSetMapType = SymSetMapType.Std;
 
             clearDetails ();
         }
@@ -2184,7 +2185,7 @@ namespace PCLParaphernalia
 
             if (showMaps)
             {
-                if (_symSetMapType == eSymSetMapType.Both)
+                if (_symSetMapType == SymSetMapType.Both)
                 {
                     colMapStd = new DataGridTextColumn ();
                     colMapStd.Header = "Mapping (Strict)";
@@ -2195,7 +2196,7 @@ namespace PCLParaphernalia
                     colMapDiff = new DataGridTextColumn ();
                     colMapDiff.Header = "Mapping (difference)";
                 }
-                else if (_symSetMapType == eSymSetMapType.PCL)
+                else if (_symSetMapType == SymSetMapType.PCL)
                 {
                     colMapPCL = new DataGridTextColumn ();
                     colMapPCL.Header = "Mapping (LaserJet)";
@@ -2231,13 +2232,13 @@ namespace PCLParaphernalia
 
             if (showMaps)
             {
-                if (_symSetMapType == eSymSetMapType.Both)
+                if (_symSetMapType == SymSetMapType.Both)
                 {
                     dgSeq.Columns.Add (colMapStd);
                     dgSeq.Columns.Add (colMapPCL);
                     dgSeq.Columns.Add (colMapDiff);
                 }
-                else if (_symSetMapType == eSymSetMapType.PCL)
+                else if (_symSetMapType == SymSetMapType.PCL)
                 {
                     dgSeq.Columns.Add (colMapPCL);
                 }
@@ -2272,7 +2273,7 @@ namespace PCLParaphernalia
 
             if (showMaps)
             {
-                if (_symSetMapType == eSymSetMapType.Both)
+                if (_symSetMapType == SymSetMapType.Both)
                 {
                     var bindMapStd = new Binding ("MappingStd");
                     var bindMapPCL = new Binding ("MappingPCL");
@@ -2286,7 +2287,7 @@ namespace PCLParaphernalia
                     colMapPCL.Binding = bindMapPCL;
                     colMapDiff.Binding = bindMapDiff;
                 }
-                else if (_symSetMapType == eSymSetMapType.PCL)
+                else if (_symSetMapType == SymSetMapType.PCL)
                 {
                     var bindMapPCL = new Binding ("MappingPCL");
                     bindMapPCL.Mode = BindingMode.OneWay;
@@ -2326,13 +2327,13 @@ namespace PCLParaphernalia
 
             if (showMaps)
             {
-                if (_symSetMapType == eSymSetMapType.Both)
+                if (_symSetMapType == SymSetMapType.Both)
                 {
                     colMapStd.FontFamily = _fontFixed;
                     colMapPCL.FontFamily = _fontFixed;
                     colMapDiff.FontFamily = _fontFixed;
                 }
-                else if (_symSetMapType == eSymSetMapType.PCL)
+                else if (_symSetMapType == SymSetMapType.PCL)
                 {
                     colMapPCL.FontFamily = _fontFixed;
                 }

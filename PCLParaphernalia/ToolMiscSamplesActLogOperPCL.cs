@@ -153,29 +153,29 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            idClrBlack = PCLPalettes.getColourId(
+            idClrBlack = PCLPalettes.GetColourId(
                             indxPalette,
-                            PCLPalettes.getClrItemBlack(indxPalette));
-            idClrWhite = PCLPalettes.getColourId(
+                            PCLPalettes.GetClrItemBlack(indxPalette));
+            idClrWhite = PCLPalettes.GetColourId(
                             indxPalette,
-                            PCLPalettes.getClrItemWhite(indxPalette));
+                            PCLPalettes.GetClrItemWhite(indxPalette));
 
-            idClrD1 = PCLPalettes.getColourId(indxPalette, indxClrD1);
-            idClrS1 = PCLPalettes.getColourId(indxPalette, indxClrS1);
-            idClrT1 = PCLPalettes.getColourId(indxPalette, indxClrT1);
+            idClrD1 = PCLPalettes.GetColourId(indxPalette, indxClrD1);
+            idClrS1 = PCLPalettes.GetColourId(indxPalette, indxClrS1);
+            idClrT1 = PCLPalettes.GetColourId(indxPalette, indxClrT1);
 
-            idClrD2 = PCLPalettes.getColourId(indxPalette, indxClrD2);
-            idClrS2 = PCLPalettes.getColourId(indxPalette, indxClrS2);
-            idClrT2 = PCLPalettes.getColourId(indxPalette, indxClrT2);
+            idClrD2 = PCLPalettes.GetColourId(indxPalette, indxClrD2);
+            idClrS2 = PCLPalettes.GetColourId(indxPalette, indxClrS2);
+            idClrT2 = PCLPalettes.GetColourId(indxPalette, indxClrT2);
 
-            nameClrD1 = PCLPalettes.getColourName(indxPalette, indxClrD1);
-            nameClrD2 = PCLPalettes.getColourName(indxPalette, indxClrD2);
-            nameClrS1 = PCLPalettes.getColourName(indxPalette, indxClrS1);
-            nameClrS2 = PCLPalettes.getColourName(indxPalette, indxClrS2);
-            nameClrT1 = PCLPalettes.getColourName(indxPalette, indxClrT1);
-            nameClrT2 = PCLPalettes.getColourName(indxPalette, indxClrT2);
+            nameClrD1 = PCLPalettes.GetColourName(indxPalette, indxClrD1);
+            nameClrD2 = PCLPalettes.GetColourName(indxPalette, indxClrD2);
+            nameClrS1 = PCLPalettes.GetColourName(indxPalette, indxClrS1);
+            nameClrS2 = PCLPalettes.GetColourName(indxPalette, indxClrS2);
+            nameClrT1 = PCLPalettes.GetColourName(indxPalette, indxClrT1);
+            nameClrT2 = PCLPalettes.GetColourName(indxPalette, indxClrT2);
 
-            flagOptColour = !PCLPalettes.isMonochrome(indxPalette);
+            flagOptColour = !PCLPalettes.IsMonochrome(indxPalette);
 
             //----------------------------------------------------------------//
 
@@ -188,7 +188,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             PCLWriter.paletteSimple (prnWriter,
-                                     PCLPalettes.getPaletteId (indxPalette));
+                                     PCLPalettes.GetPaletteId (indxPalette));
 
             PCLWriter.rasterResolution (prnWriter, _rasterRes, false);
 
@@ -380,7 +380,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            nameClrSpace = PCLPalettes.getPaletteName(indxPalette);
+            nameClrSpace = PCLPalettes.GetPaletteName(indxPalette);
 
             if (flagOptColour)
                 PCLWriter.setForegroundColour (prnWriter, idClrBlack);

@@ -376,7 +376,7 @@ namespace PCLParaphernalia
                                                   incUsedSeqsOnly,
                                                   excUnusedResPCLXLTags);
 
-                PCLXLAttrEnums.displayStatsCounts(_tableStatistics,
+                PCLXLAttrEnums.DisplayStatsCounts(_tableStatistics,
                                                    incUsedSeqsOnly,
                                                    excUnusedResPCLXLTags);
 
@@ -963,7 +963,7 @@ namespace PCLParaphernalia
             PCLXLDataTypes.resetStatsCounts();
             //   PCLXLAttrDefiners.resetStatsCounts ();
             PCLXLAttributes.resetStatsCounts();
-            PCLXLAttrEnums.resetStatsCounts();
+            PCLXLAttrEnums.ResetStatsCounts();
             //   PCLXLEmbedDataDefs.resetStatsCounts ();
             PCLXLOperators.resetStatsCounts();
             PCLXLWhitespaces.resetStatsCounts();

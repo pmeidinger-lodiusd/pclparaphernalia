@@ -29,15 +29,15 @@ namespace PCLParaphernalia
 
         private static readonly short[] _subsetLogOperModesPCL =
         {
-            (int) PCLPalettes.eIndex.PCLMonochrome,
-            (int) PCLPalettes.eIndex.PCLSimpleColourCMY,
-            (int) PCLPalettes.eIndex.PCLSimpleColourRGB
+            (int) PCLPalettes.Index.PCLMonochrome,
+            (int) PCLPalettes.Index.PCLSimpleColourCMY,
+            (int) PCLPalettes.Index.PCLSimpleColourRGB
         };
 
         private static readonly short[] _subsetLogOperModesPCLXL =
         {
-            (int) PCLXLPalettes.eIndex.PCLXLGray,
-            (int) PCLXLPalettes.eIndex.PCLXLRGB
+            (int) PCLXLPalettes.Index.PCLXLGray,
+            (int) PCLXLPalettes.Index.PCLXLRGB
         };
 
         //--------------------------------------------------------------------//
@@ -479,7 +479,7 @@ namespace PCLParaphernalia
                 {
                     _indxLogOperModePCL = (byte) cbLogOperModePCL.SelectedIndex;
 
-                    if (PCLPalettes.isMonochrome (_indxLogOperModePCL))
+                    if (PCLPalettes.IsMonochrome (_indxLogOperModePCL))
                     {
                         tabLogOperClrMonoPCL.IsSelected = true;
 
@@ -497,7 +497,7 @@ namespace PCLParaphernalia
                 {
                     _indxLogOperModePCLXL = (byte) cbLogOperModePCLXL.SelectedIndex;
 
-                    if (PCLXLPalettes.isMonochrome (_indxLogOperModePCLXL))
+                    if (PCLXLPalettes.IsMonochrome (_indxLogOperModePCLXL))
                     {
                         tabLogOperClrGrayPCLXL.IsSelected = true;
 
@@ -708,9 +708,9 @@ namespace PCLParaphernalia
                 {
                     index = _subsetLogOperModesPCL[i];
 
-                    cbLogOperModePCL.Items.Add (PCLPalettes.getPaletteName (index));
+                    cbLogOperModePCL.Items.Add (PCLPalettes.GetPaletteName (index));
 
-                    tempCt = PCLPalettes.getCtClrItems (index);
+                    tempCt = PCLPalettes.GetCtClrItems (index);
 
                     if (tempCt > _maxLogOperClrItemsPCL)
                         _maxLogOperClrItemsPCL = tempCt;
@@ -733,13 +733,13 @@ namespace PCLParaphernalia
                 {
                     index = _subsetLogOperModesPCL[i];
 
-                    tempCt = PCLPalettes.getCtClrItems (index);
+                    tempCt = PCLPalettes.GetCtClrItems (index);
                     _ctLogOperClrsPCL[i] = tempCt;
 
                     for (short j = 0; j < tempCt; j++)
                     {
                         _clrsLogOperPCL[i, j] =
-                            PCLPalettes.getColourName (index, j);
+                            PCLPalettes.GetColourName (index, j);
                     }
                 }
 
@@ -793,9 +793,9 @@ namespace PCLParaphernalia
                     index = _subsetLogOperModesPCLXL[i];
 
                     cbLogOperModePCLXL.Items.Add (
-                        PCLXLPalettes.getPaletteName (index));
+                        PCLXLPalettes.GetPaletteName (index));
 
-                    tempCt = PCLXLPalettes.getCtClrItems (index);
+                    tempCt = PCLXLPalettes.GetCtClrItems (index);
 
                     if (tempCt > _maxLogOperClrItemsPCLXL)
                         _maxLogOperClrItemsPCLXL = tempCt;
@@ -818,13 +818,13 @@ namespace PCLParaphernalia
                 {
                     index = _subsetLogOperModesPCLXL[i];
 
-                    tempCt = PCLXLPalettes.getCtClrItems (index);
+                    tempCt = PCLXLPalettes.GetCtClrItems (index);
                     _ctLogOperClrsPCLXL [i] = tempCt;
 
                     for (short j = 0; j < tempCt; j++)
                     {
                         _clrsLogOperPCLXL[i, j] =
-                            PCLXLPalettes.getColourName (index, j);
+                            PCLXLPalettes.GetColourName (index, j);
                     }
                 }
 
@@ -874,7 +874,7 @@ namespace PCLParaphernalia
             {
                 tabLogOperDataPCL.IsSelected = true;
 
-                if (PCLPalettes.isMonochrome (_indxLogOperModePCL))
+                if (PCLPalettes.IsMonochrome (_indxLogOperModePCL))
                 {
                     tabLogOperClrMonoPCL.IsSelected = true;
 
@@ -893,7 +893,7 @@ namespace PCLParaphernalia
             {
                 tabLogOperDataPCLXL.IsSelected = true;
 
-                if (PCLXLPalettes.isMonochrome (_indxLogOperModePCLXL))
+                if (PCLXLPalettes.IsMonochrome (_indxLogOperModePCLXL))
                 {
                     tabLogOperClrGrayPCLXL.IsSelected = true;
 
@@ -1154,7 +1154,7 @@ namespace PCLParaphernalia
             const byte maxLevel = 255;
 
             const int grayPalette =
-                (int) PCLXLPalettes.eIndex.PCLXLGray;
+                (int) PCLXLPalettes.Index.PCLXLGray;
 
             //------------------------------------------------------------//
             //                                                            //
@@ -1172,7 +1172,7 @@ namespace PCLParaphernalia
 
             for (int i = minLevel; i <= maxLevel; i++)
             {
-                string name = PCLXLPalettes.getGrayLevel (grayPalette,
+                string name = PCLXLPalettes.GetGrayLevel (grayPalette,
                                                           (byte) i);
 
                 cbLogOperGrayD1PCLXL.Items.Add(name);

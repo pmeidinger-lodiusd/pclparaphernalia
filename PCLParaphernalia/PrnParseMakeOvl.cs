@@ -238,7 +238,7 @@ namespace PCLParaphernalia
 
                                 if (ovlXL)
                                 {
-                                    PCLXLWriter.writeStreamBlock (binWriter,
+                                    PCLXLWriter.WriteStreamBlock (binWriter,
                                                                   encapsulate,
                                                                   buf,
                                                                   ref readLen);
@@ -364,13 +364,13 @@ namespace PCLParaphernalia
 
                 if (action == PrnParseConstants.eOvlAct.Replace_0x77)
                 {
-                    PCLXLWriter.writeOperator (binWriter,
+                    PCLXLWriter.WriteOperator (binWriter,
                                                PCLXLOperators.eTag.SetPageScale,
                                                encapsulate);
                 }
                 else if (action == PrnParseConstants.eOvlAct.PushGS)
                 {
-                    PCLXLWriter.writeOperator (binWriter,
+                    PCLXLWriter.WriteOperator (binWriter,
                                                PCLXLOperators.eTag.PushGS,
                                                encapsulate);
                 }

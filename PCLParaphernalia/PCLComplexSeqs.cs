@@ -2529,15 +2529,15 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Text Parsing Method (# = discrete value)"));
 
-            count = PCLTextParsingMethods.getCount ();
+            count = PCLTextParsingMethods.GetCount ();
 
             if (count > 0)
             {
                 for (int i = 0; i < count; i++)
                 {
-                    if (i != (byte) PCLTextParsingMethods.eIndex.not_specified)
+                    if (i != (byte) PCLTextParsingMethods.Index.not_specified)
                     {
-                        value = PCLTextParsingMethods.getValue(i);
+                        value = PCLTextParsingMethods.GetValue(i);
 
                         _seqs.Add(root + ":" + value.ToString("X4"),
                              new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
@@ -2547,7 +2547,7 @@ namespace PCLParaphernalia
                                                 PrnParseConstants.eOvlAct.None,
                                                 PrnParseConstants.eSeqGrp.FontSelection,
                                                 "Text Parsing Method: " +
-                                                PCLTextParsingMethods.getDesc(i)));
+                                                PCLTextParsingMethods.GetDesc(i)));
                     }
                 }
             }
@@ -8003,7 +8003,7 @@ namespace PCLParaphernalia
             const bool flagDiscrete = true;
             const bool flagNilGChar = true;
 
-            int ctSymsets = PCLSymbolSets.getCount ();
+            int ctSymsets = PCLSymbolSets.GetCount ();
 
             if (ctSymsets > 0)
             {
@@ -8019,7 +8019,7 @@ namespace PCLParaphernalia
                 for (int i = 0; i < ctSymsets; i++)
                 {
                     matchFound =
-                        PCLSymbolSets.getSymsetDataForIdAlpha (i,
+                        PCLSymbolSets.GetSymsetDataForIdAlpha (i,
                                                                tChar,
                                                                ref kind1,
                                                                ref idNum,
@@ -8036,7 +8036,7 @@ namespace PCLParaphernalia
                         else
                             type = "Secondary";
 
-                        id    = PCLSymbolSets.translateKind1ToId (kind1);
+                        id    = PCLSymbolSets.TranslateKind1ToId (kind1);
 
                         _seqs.Add (root + ":" + value.ToString ("X4"),
                              new PCLComplexSeq (iChar, gChar, tChar, value, flagDiscrete,

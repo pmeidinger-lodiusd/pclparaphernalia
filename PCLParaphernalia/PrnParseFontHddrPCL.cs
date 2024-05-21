@@ -1138,34 +1138,34 @@ namespace PCLParaphernalia
                 switch (_fontType)
                 {
                     case 0:
-                        itemDesc = PCLSymSetTypes.getDescStd (
-                                       (int) PCLSymSetTypes.eIndex.Bound_7bit);
+                        itemDesc = PCLSymSetTypes.GetDescStd (
+                                       (int) PCLSymSetTypes.Index.Bound_7bit);
                         break;
 
                     case 1:
-                        itemDesc = PCLSymSetTypes.getDescStd (
-                                       (int) PCLSymSetTypes.eIndex.Bound_8bit);
+                        itemDesc = PCLSymSetTypes.GetDescStd (
+                                       (int) PCLSymSetTypes.Index.Bound_8bit);
                         break;
 
                     case 2:
-                        itemDesc = PCLSymSetTypes.getDescStd (
-                                       (int) PCLSymSetTypes.eIndex.Bound_PC8);
+                        itemDesc = PCLSymSetTypes.GetDescStd (
+                                       (int) PCLSymSetTypes.Index.Bound_PC8);
                         break;
 
                     case 3:
-                        itemDesc = PCLSymSetTypes.getDescStd (
-                                       (int) PCLSymSetTypes.eIndex.Bound_16bit);
+                        itemDesc = PCLSymSetTypes.GetDescStd (
+                                       (int) PCLSymSetTypes.Index.Bound_16bit);
                         break;
 
                     case 10:
-                        itemDesc = PCLSymSetTypes.getDescStd (
-                                       (int) PCLSymSetTypes.eIndex.Unbound_MSL);
+                        itemDesc = PCLSymSetTypes.GetDescStd (
+                                       (int) PCLSymSetTypes.Index.Unbound_MSL);
                         _boundFont = false;
                         break;
 
                     case 11:
-                        itemDesc = PCLSymSetTypes.getDescStd (
-                                       (int) PCLSymSetTypes.eIndex.Unbound_Unicode);
+                        itemDesc = PCLSymSetTypes.GetDescStd (
+                                       (int) PCLSymSetTypes.Index.Unbound_Unicode);
                         _boundFont = false;
                         break;
 
@@ -1271,7 +1271,7 @@ namespace PCLParaphernalia
                 c   = (char) ix3;
 
                 indxSymSet =
-                    PCLSymbolSets.getIndexForId ((ushort) ix1);
+                    PCLSymbolSets.GetIndexForId ((ushort) ix1);
 
                 PrnParseCommon.addTextRow (
                     PrnParseRowTypes.eType.PCLFontHddr,
@@ -1303,7 +1303,7 @@ namespace PCLParaphernalia
                         "     ---->",
                         "Identifier:",
                         ix2.ToString () + c +
-                        " (" + PCLSymbolSets.getName (indxSymSet) + ")");
+                        " (" + PCLSymbolSets.GetName (indxSymSet) + ")");
                 }
 
                 //------------------------------------------------------------//

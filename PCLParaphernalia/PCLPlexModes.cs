@@ -50,13 +50,13 @@ namespace PCLParaphernalia
             new PCLPlexMode (ePlexType.Duplex,
                              "Duplex Long-edge binding",
                              0x01,
-                             (byte) PCLXLAttrEnums.eVal.eDuplexHorizontalBinding,
-                             (byte) PCLXLAttrEnums.eVal.eDuplexVerticalBinding),
+                             (byte) PCLXLAttrEnums.Val.eDuplexHorizontalBinding,
+                             (byte) PCLXLAttrEnums.Val.eDuplexVerticalBinding),
             new PCLPlexMode (ePlexType.Duplex,
                              "Duplex Short-edge binding",
                              0x02,
-                             (byte) PCLXLAttrEnums.eVal.eDuplexVerticalBinding,
-                             (byte) PCLXLAttrEnums.eVal.eDuplexHorizontalBinding)
+                             (byte) PCLXLAttrEnums.Val.eDuplexVerticalBinding,
+                             (byte) PCLXLAttrEnums.Val.eDuplexHorizontalBinding)
         };
 
         private static readonly int _plexModeCount =

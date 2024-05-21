@@ -2792,7 +2792,7 @@ namespace PCLParaphernalia
                             subTabNo       = i;
 
                             _mappingTable =
-                                PCLSymbolSets.getMapArraySymbol();
+                                PCLSymbolSets.GetMapArraySymbol();
 
                             mapSymSet = "Symbol";
                             mapSymSetType = "Fixed";
@@ -2804,7 +2804,7 @@ namespace PCLParaphernalia
                             subTabNo        = i;
 
                             _mappingTable =
-                                PCLSymbolSets.getMapArray (symSetIndx,
+                                PCLSymbolSets.GetMapArray (symSetIndx,
                                                            symSetMapPCL);
 
                             if (symSetUnbound)
@@ -2816,11 +2816,11 @@ namespace PCLParaphernalia
                             else
                                 mapSymSetType = "Strict (standard))";
 
-                            mapSymSet = PCLSymbolSets.getId (symSetIndx) +
+                            mapSymSet = PCLSymbolSets.GetId (symSetIndx) +
                                         " (Kind1 = "    +
-                                        PCLSymbolSets.getKind1 (symSetIndx) +
+                                        PCLSymbolSets.GetKind1 (symSetIndx) +
                                         "): " +
-                                        PCLSymbolSets.getName (symSetIndx);
+                                        PCLSymbolSets.GetName (symSetIndx);
                         }
                     }
                     else
@@ -5274,7 +5274,7 @@ namespace PCLParaphernalia
                         "DIAG: table = " + tabName + ":",
                         "symbol set = " + _PCLT_symSet.ToString () +
                         " (= " +
-                        PCLSymbolSets.translateKind1ToId(_PCLT_symSet) +
+                        PCLSymbolSets.TranslateKind1ToId(_PCLT_symSet) +
                         " )");
 
                     ToolSoftFontGenLog.logNameAndValue (

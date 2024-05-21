@@ -229,7 +229,7 @@ namespace PCLParaphernalia
                 endLoop = false;
 
                 if (! encapsulated)
-                    PCLXLWriter.streamBegin (prnWriter, streamName);
+                    PCLXLWriter.StreamBegin (prnWriter, streamName);
 
                 while (!endLoop)
                 {
@@ -238,13 +238,13 @@ namespace PCLParaphernalia
                     if (readSize == 0)
                         endLoop = true;
                     else
-                        PCLXLWriter.writeStreamBlock (prnWriter,
+                        PCLXLWriter.WriteStreamBlock (prnWriter,
                                                       ! encapsulated,
                                                       buffer, ref readSize);
                 }
 
                 if (! encapsulated)
-                    PCLXLWriter.streamEnd (prnWriter);
+                    PCLXLWriter.StreamEnd (prnWriter);
 
                 streamFileClose ();
             }

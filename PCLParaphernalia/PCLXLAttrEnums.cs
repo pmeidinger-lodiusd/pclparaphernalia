@@ -20,7 +20,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Roslynator", "RCS1234:Duplicate enum value", Justification = "<Pending>")]
-        public enum eVal : byte
+        public enum Val : byte
         {
             e1Bit                     = 0x00,  // Attr 0x33, 0x62 //
             e4Bit                     = 0x01,  // Attr 0x33, 0x62 //
@@ -168,7 +168,7 @@ namespace PCLParaphernalia
 
         static PCLXLAttrEnums()
         {
-            populateTable();
+            PopulateTable();
         }
 
         //--------------------------------------------------------------------//
@@ -181,7 +181,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkValue (int level,
+        public static bool CheckValue(int level,
                                           byte crntOperTag,
                                           int attrTagLen,
                                           byte attrTagA,
@@ -239,7 +239,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCounts (DataTable table,
+        public static void DisplayStatsCounts (DataTable table,
                                                bool incUsedSeqsOnly,
                                                bool excUnusedResTags)
         {
@@ -263,7 +263,7 @@ namespace PCLParaphernalia
             {
                 if (!hddrWritten)
                 {
-                    displayStatsCountsHddr (table);
+                    DisplayStatsCountsHddr (table);
                     hddrWritten = true;
                 }
 
@@ -296,7 +296,7 @@ namespace PCLParaphernalia
                 {
                     if (!hddrWritten)
                     {
-                        displayStatsCountsHddr (table);
+                        DisplayStatsCountsHddr (table);
                         hddrWritten = true;
                     }
 
@@ -322,7 +322,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCountsHddr(DataTable table)
+        public static void DisplayStatsCountsHddr(DataTable table)
         {
             //----------------------------------------------------------------//
 
@@ -366,7 +366,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int displayTags(DataGrid grid)
+        public static int DisplayTags(DataGrid grid)
         {
             int count = 0;
 
@@ -388,7 +388,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void populateTable()
+        private static void PopulateTable()
         {
             const bool flagNone     = false;
             const bool flagValIsTxt = true;
@@ -419,19 +419,19 @@ namespace PCLParaphernalia
                    attrTagA.ToString("X2") +
                    attrTagB.ToString("X2");
 
-            enumVal = (int) eVal.e1Bit;                 // ---- 0x02     0 //
+            enumVal = (int) Val.e1Bit;                 // ---- 0x02     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "e1Bit"));
 
-            enumVal = (int) eVal.e4Bit;                 // ---- 0x02     1 //
+            enumVal = (int) Val.e4Bit;                 // ---- 0x02     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "e4Bit"));
 
-            enumVal = (int) eVal.e8Bit;                 // ---- 0x02     2 //
+            enumVal = (int) Val.e8Bit;                 // ---- 0x02     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -443,31 +443,31 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eBiLevel;              // ---- 0x03     0 //
+            enumVal = (int) Val.eBiLevel;              // ---- 0x03     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eBiLevel"));
 
-            enumVal = (int) eVal.eGray;                 // ---- 0x03     1 //
+            enumVal = (int) Val.eGray;                 // ---- 0x03     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eGray"));
 
-            enumVal = (int) eVal.eRGB;                  // ---- 0x03     2 //
+            enumVal = (int) Val.eRGB;                  // ---- 0x03     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eRGB"));
 
-            enumVal = (int) eVal.eSRGB;                 // ---- 0x03     6 //
+            enumVal = (int) Val.eSRGB;                 // ---- 0x03     6 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eSRGB"));
 
-            enumVal = (int) eVal.eGraySub;              // ---- 0x03     7 //
+            enumVal = (int) Val.eGraySub;              // ---- 0x03     7 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -479,7 +479,7 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eDeviceBest;           // ---- 0x21     0 //
+            enumVal = (int) Val.eDeviceBest;           // ---- 0x21     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -491,25 +491,25 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eUByte;                // ---- 0x22     0 //
+            enumVal = (int) Val.eUByte;                // ---- 0x22     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eUByte"));
 
-            enumVal = (int) eVal.eSByte;                // ---- 0x22     1 //
+            enumVal = (int) Val.eSByte;                // ---- 0x22     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eSByte"));
 
-            enumVal = (int) eVal.eUint16;               // ---- 0x22     2 //
+            enumVal = (int) Val.eUint16;               // ---- 0x22     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eUint16"));
 
-            enumVal = (int) eVal.eSint16;               // ---- 0x22     3 //
+            enumVal = (int) Val.eSint16;               // ---- 0x22     3 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -521,25 +521,25 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eDefaultDestination;   // ---- 0x24     0 //
+            enumVal = (int) Val.eDefaultDestination;   // ---- 0x24     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eDefaultDestination"));
 
-            enumVal = (int) eVal.eFaceDownBin;          // ---- 0x24     1 //
+            enumVal = (int) Val.eFaceDownBin;          // ---- 0x24     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eFaceDownBin"));
 
-            enumVal = (int) eVal.eFaceUpBin;            // ---- 0x24     2 //
+            enumVal = (int) Val.eFaceUpBin;            // ---- 0x24     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eFaceUpBin"));
 
-            enumVal = (int) eVal.eJobOffsetBin;         // ---- 0x24     3 //
+            enumVal = (int) Val.eJobOffsetBin;         // ---- 0x24     3 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -611,139 +611,139 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eLetterPaper;          // ---- 0x25     0 //
+            enumVal = (int) Val.eLetterPaper;          // ---- 0x25     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eLetterPaper"));
 
-            enumVal = (int) eVal.eLegalPaper;           // ---- 0x25     1 //
+            enumVal = (int) Val.eLegalPaper;           // ---- 0x25     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eLegalPaper"));
 
-            enumVal = (int) eVal.eA4Paper;              // ---- 0x25     2 //
+            enumVal = (int) Val.eA4Paper;              // ---- 0x25     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eA4Paper"));
 
-            enumVal = (int) eVal.eExecPaper;            // ---- 0x25     3 //
+            enumVal = (int) Val.eExecPaper;            // ---- 0x25     3 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eExecPaper"));
 
-            enumVal = (int) eVal.eLedgerPaper;          // ---- 0x25     4 //
+            enumVal = (int) Val.eLedgerPaper;          // ---- 0x25     4 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eLedgerPaper"));
 
-            enumVal = (int) eVal.eA3Paper;              // ---- 0x25     5 //
+            enumVal = (int) Val.eA3Paper;              // ---- 0x25     5 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eA3Paper"));
 
-            enumVal = (int) eVal.eCOM10Envelope;        // ---- 0x25     6 //
+            enumVal = (int) Val.eCOM10Envelope;        // ---- 0x25     6 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eCOM10Envelope"));
 
-            enumVal = (int) eVal.eMonarchEnvelope;      // ---- 0x25     7 //
+            enumVal = (int) Val.eMonarchEnvelope;      // ---- 0x25     7 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eMonarchEnvelope"));
 
-            enumVal = (int) eVal.eC5Envelope;           // ---- 0x25     8 //
+            enumVal = (int) Val.eC5Envelope;           // ---- 0x25     8 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eC5Envelope"));
 
-            enumVal = (int) eVal.eDLEnvelope;           // ---- 0x25     9 //
+            enumVal = (int) Val.eDLEnvelope;           // ---- 0x25     9 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eDLEnvelope"));
 
-            enumVal = (int) eVal.eJB4Paper;             // ---- 0x25    10 //
+            enumVal = (int) Val.eJB4Paper;             // ---- 0x25    10 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eJB4Paper"));
 
-            enumVal = (int) eVal.eJB5Paper;             // ---- 0x25    11 //
+            enumVal = (int) Val.eJB5Paper;             // ---- 0x25    11 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eJB5Paper"));
 
-            enumVal = (int) eVal.eB5Envelope;           // ---- 0x25    12 //
+            enumVal = (int) Val.eB5Envelope;           // ---- 0x25    12 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eB5Envelope"));
 
-            enumVal = (int) eVal.eB5Paper;              // ---- 0x25    13 //
+            enumVal = (int) Val.eB5Paper;              // ---- 0x25    13 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eB5Paper"));
 
-            enumVal = (int) eVal.eJPostcard;            // ---- 0x25    14 //
+            enumVal = (int) Val.eJPostcard;            // ---- 0x25    14 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eJPostcard"));
 
-            enumVal = (int) eVal.eJDoublePostcard;      // ---- 0x25    15 //
+            enumVal = (int) Val.eJDoublePostcard;      // ---- 0x25    15 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eJDoublePostcard"));
 
-            enumVal = (int) eVal.eA5Paper;              // ---- 0x25    16 //
+            enumVal = (int) Val.eA5Paper;              // ---- 0x25    16 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eA5Paper"));
 
-            enumVal = (int) eVal.eA6Paper;              // ---- 0x25    17 //
+            enumVal = (int) Val.eA6Paper;              // ---- 0x25    17 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eA6Paper"));
 
-            enumVal = (int) eVal.eJB6Paper;             // ---- 0x25    18 //
+            enumVal = (int) Val.eJB6Paper;             // ---- 0x25    18 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eJB6Paper"));
 
-            enumVal = (int) eVal.eJIS8KPaper;           // ---- 0x25    19 //
+            enumVal = (int) Val.eJIS8KPaper;           // ---- 0x25    19 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eJIS8KPaper"));
 
-            enumVal = (int) eVal.eJIS16KPaper;          // ---- 0x25    20 //
+            enumVal = (int) Val.eJIS16KPaper;          // ---- 0x25    20 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eJIS16KPaper"));
 
-            enumVal = (int) eVal.eJISExecPaper;         // ---- 0x25    21 //
+            enumVal = (int) Val.eJISExecPaper;         // ---- 0x25    21 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eJISExecPaper"));
 
-            enumVal = (int) eVal.eDefaultPapersize;     // ---- 0x25    96 //
+            enumVal = (int) Val.eDefaultPapersize;     // ---- 0x25    96 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -755,49 +755,49 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eDefaultSource;        // ---- 0x26     0 //
+            enumVal = (int) Val.eDefaultSource;        // ---- 0x26     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eDefaultSource"));
 
-            enumVal = (int) eVal.eAutoSelect;           // ---- 0x26     1 //
+            enumVal = (int) Val.eAutoSelect;           // ---- 0x26     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eAutoSelect"));
 
-            enumVal = (int) eVal.eManualFeed;           // ---- 0x26     2 //
+            enumVal = (int) Val.eManualFeed;           // ---- 0x26     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eManualFeed"));
 
-            enumVal = (int) eVal.eMultiPurposeTray;     // ---- 0x26     3 //
+            enumVal = (int) Val.eMultiPurposeTray;     // ---- 0x26     3 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eMultiPurposeTray"));
 
-            enumVal = (int) eVal.eUpperCassette;        // ---- 0x26     4 //
+            enumVal = (int) Val.eUpperCassette;        // ---- 0x26     4 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eUpperCassette"));
 
-            enumVal = (int) eVal.eLowerCassette;        // ---- 0x26     5 //
+            enumVal = (int) Val.eLowerCassette;        // ---- 0x26     5 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eLowerCassette"));
 
-            enumVal = (int) eVal.eEnvelopeTray;         // ---- 0x26     6 //
+            enumVal = (int) Val.eEnvelopeTray;         // ---- 0x26     6 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eEnvelopeTray"));
 
-            enumVal = (int) eVal.eThirdCassette;        // ---- 0x26     7 //
+            enumVal = (int) Val.eThirdCassette;        // ---- 0x26     7 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -869,31 +869,31 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.ePortraitOrientation;  // ---- 0x28     0 //
+            enumVal = (int) Val.ePortraitOrientation;  // ---- 0x28     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "ePortraitOrientation"));
 
-            enumVal = (int) eVal.eLandscapeOrientation; // ---- 0x28     1 //
+            enumVal = (int) Val.eLandscapeOrientation; // ---- 0x28     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eLandscapeOrientation"));
 
-            enumVal = (int) eVal.eReversePortrait;      // ---- 0x28     2 //
+            enumVal = (int) Val.eReversePortrait;      // ---- 0x28     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eReversePortrait"));
 
-            enumVal = (int) eVal.eReverseLandscape;     // ---- 0x28     3 //
+            enumVal = (int) Val.eReverseLandscape;     // ---- 0x28     3 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eReverseLandscape"));
 
-            enumVal = (int) eVal.eDefaultOrientation;   // ---- 0x28     4 //
+            enumVal = (int) Val.eDefaultOrientation;   // ---- 0x28     4 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -2447,13 +2447,13 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eOpaque;               // ---- 0x2d     0 //
+            enumVal = (int) Val.eOpaque;               // ---- 0x2d     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eOpaque"));
 
-            enumVal = (int) eVal.eTransparent;          // ---- 0x2d     1 //
+            enumVal = (int) Val.eTransparent;          // ---- 0x2d     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -2465,19 +2465,19 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eInch;                 // ---- 0x30     0 //
+            enumVal = (int) Val.eInch;                 // ---- 0x30     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eInch"));
 
-            enumVal = (int) eVal.eMillimeter;           // ---- 0x30     1 //
+            enumVal = (int) Val.eMillimeter;           // ---- 0x30     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eMillimeter"));
 
-            enumVal = (int) eVal.eTenthsOfAMillimeter;  // ---- 0x30     2 //
+            enumVal = (int) Val.eTenthsOfAMillimeter;  // ---- 0x30     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -2489,19 +2489,19 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.e1Bit;                 // ---- 0x33     0 //
+            enumVal = (int) Val.e1Bit;                 // ---- 0x33     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "e1Bit"));
 
-            enumVal = (int) eVal.e4Bit;                 // ---- 0x33     1 //
+            enumVal = (int) Val.e4Bit;                 // ---- 0x33     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "e4Bit"));
 
-            enumVal = (int) eVal.e8Bit;                 // ---- 0x33     2 //
+            enumVal = (int) Val.e8Bit;                 // ---- 0x33     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -2513,7 +2513,7 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eSimplexFrontSide;     // ---- 0x34     0 //
+            enumVal = (int) Val.eSimplexFrontSide;     // ---- 0x34     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -2525,13 +2525,13 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eDuplexHorizontalBinding;// ---- 0x35     0 //
+            enumVal = (int) Val.eDuplexHorizontalBinding;// ---- 0x35     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eDuplexHorizontalBinding"));
 
-            enumVal = (int) eVal.eDuplexVerticalBinding; // ---- 0x35     1 //
+            enumVal = (int) Val.eDuplexVerticalBinding; // ---- 0x35     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -2543,13 +2543,13 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eFrontMediaSide;       // ---- 0x36     0 //
+            enumVal = (int) Val.eFrontMediaSide;       // ---- 0x36     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eFrontMediaSide"));
 
-            enumVal = (int) eVal.eBackMediaSide;        // ---- 0x36     1 //
+            enumVal = (int) Val.eBackMediaSide;        // ---- 0x36     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -2561,13 +2561,13 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eClockWise;            // ---- 0x41     0 //
+            enumVal = (int) Val.eClockWise;            // ---- 0x41     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eClockWise"));
 
-            enumVal = (int) eVal.eCounterClockWise;     // ---- 0x41     1 //
+            enumVal = (int) Val.eCounterClockWise;     // ---- 0x41     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -2579,13 +2579,13 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eNonZeroWinding;       // ---- 0x46     0 //
+            enumVal = (int) Val.eNonZeroWinding;       // ---- 0x46     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eNonZeroWinding"));
 
-            enumVal = (int) eVal.eEvenOdd;              // ---- 0x46     1 //
+            enumVal = (int) Val.eEvenOdd;              // ---- 0x46     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -2597,25 +2597,25 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eButtCap;              // ---- 0x47     0 //
+            enumVal = (int) Val.eButtCap;              // ---- 0x47     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eButtCap"));
 
-            enumVal = (int) eVal.eRoundCap;             // ---- 0x47     1 //
+            enumVal = (int) Val.eRoundCap;             // ---- 0x47     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eRoundCap"));
 
-            enumVal = (int) eVal.eSquareCap;            // ---- 0x47     2 //
+            enumVal = (int) Val.eSquareCap;            // ---- 0x47     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eSquareCap"));
 
-            enumVal = (int) eVal.eTriangleCap;          // ---- 0x47     3 //
+            enumVal = (int) Val.eTriangleCap;          // ---- 0x47     3 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -2627,25 +2627,25 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eMiterJoin;            // ---- 0x48     0 //
+            enumVal = (int) Val.eMiterJoin;            // ---- 0x48     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eMiterJoin"));
 
-            enumVal = (int) eVal.eRoundJoin;            // ---- 0x48     1 //
+            enumVal = (int) Val.eRoundJoin;            // ---- 0x48     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eRoundJoin"));
 
-            enumVal = (int) eVal.eBevelJoin;            // ---- 0x48     2 //
+            enumVal = (int) Val.eBevelJoin;            // ---- 0x48     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eBevelJoin"));
 
-            enumVal = (int) eVal.eNoJoin;               // ---- 0x48     3 //
+            enumVal = (int) Val.eNoJoin;               // ---- 0x48     3 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -2657,25 +2657,25 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eUByte;                // ---- 0x50     0 //
+            enumVal = (int) Val.eUByte;                // ---- 0x50     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eUByte"));
 
-            enumVal = (int) eVal.eSByte;                // ---- 0x50     1 //
+            enumVal = (int) Val.eSByte;                // ---- 0x50     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eSByte"));
 
-            enumVal = (int) eVal.eUint16;               // ---- 0x50     2 //
+            enumVal = (int) Val.eUint16;               // ---- 0x50     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eUint16"));
 
-            enumVal = (int) eVal.eSint16;               // ---- 0x50     3 //
+            enumVal = (int) Val.eSint16;               // ---- 0x50     3 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -2687,13 +2687,13 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eInterior;             // ---- 0x53     0 //
+            enumVal = (int) Val.eInterior;             // ---- 0x53     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eInterior"));
 
-            enumVal = (int) eVal.eExterior;             // ---- 0x53     1 //
+            enumVal = (int) Val.eExterior;             // ---- 0x53     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -2705,13 +2705,13 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eNonZeroWinding;       // ---- 0x54     0 //
+            enumVal = (int) Val.eNonZeroWinding;       // ---- 0x54     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eNonZeroWinding"));
 
-            enumVal = (int) eVal.eEvenOdd;              // ---- 0x54     1 //
+            enumVal = (int) Val.eEvenOdd;              // ---- 0x54     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -2723,19 +2723,19 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.e1Bit;                 // ---- 0x62     0 //
+            enumVal = (int) Val.e1Bit;                 // ---- 0x62     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "e1Bit"));
 
-            enumVal = (int) eVal.e4Bit;                 // ---- 0x62     1 //
+            enumVal = (int) Val.e4Bit;                 // ---- 0x62     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "e4Bit"));
 
-            enumVal = (int) eVal.e8Bit;                 // ---- 0x62     2 //
+            enumVal = (int) Val.e8Bit;                 // ---- 0x62     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -2747,19 +2747,19 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eDirectPixel;          // ---- 0x64     0 //
+            enumVal = (int) Val.eDirectPixel;          // ---- 0x64     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eDirectPixel"));
 
-            enumVal = (int) eVal.eIndexedPixel;         // ---- 0x64     1 //
+            enumVal = (int) Val.eIndexedPixel;         // ---- 0x64     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eIndexedPixel"));
 
-            enumVal = (int) eVal.eDirectPlane;          // ---- 0x64     2 //
+            enumVal = (int) Val.eDirectPlane;          // ---- 0x64     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -2771,31 +2771,31 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eNoCompression;        // ---- 0x65     0 //
+            enumVal = (int) Val.eNoCompression;        // ---- 0x65     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eNoCompression"));
 
-            enumVal = (int) eVal.eRLECompression;       // ---- 0x65     1 //
+            enumVal = (int) Val.eRLECompression;       // ---- 0x65     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eRLECompression"));
 
-            enumVal = (int) eVal.eJPEGCompression;      // ---- 0x65     2 //
+            enumVal = (int) Val.eJPEGCompression;      // ---- 0x65     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eJPEGCompression"));
 
-            enumVal = (int) eVal.eDeltaRowCompression;  // ---- 0x65     3 //
+            enumVal = (int) Val.eDeltaRowCompression;  // ---- 0x65     3 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eDeltaRowCompression"));
 
-            enumVal = (int) eVal.eFXCompression;        // ---- 0x65     6 //
+            enumVal = (int) Val.eFXCompression;        // ---- 0x65     6 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -2807,19 +2807,19 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eTempPattern;          // ---- 0x68     0 //
+            enumVal = (int) Val.eTempPattern;          // ---- 0x68     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eTempPattern"));
 
-            enumVal = (int) eVal.ePagePattern;          // ---- 0x68     1 //
+            enumVal = (int) Val.ePagePattern;          // ---- 0x68     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "ePagePattern"));
 
-            enumVal = (int) eVal.eSessionPattern;       // ---- 0x68     2 //
+            enumVal = (int) Val.eSessionPattern;       // ---- 0x68     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -2831,13 +2831,13 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eAdd0Degrees;          // ---- 0x75     0 //
+            enumVal = (int) Val.eAdd0Degrees;          // ---- 0x75     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eAdd0Degrees"));
 
-            enumVal = (int) eVal.eAdd180Degrees;        // ---- 0x75     1 //
+            enumVal = (int) Val.eAdd180Degrees;        // ---- 0x75     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -2849,31 +2849,31 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.ePortraitOrientation;  // ---- 0x76     0 //
+            enumVal = (int) Val.ePortraitOrientation;  // ---- 0x76     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "ePortraitOrientation"));
 
-            enumVal = (int) eVal.eLandscapeOrientation; // ---- 0x76     1 //
+            enumVal = (int) Val.eLandscapeOrientation; // ---- 0x76     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eLandscapeOrientation"));
 
-            enumVal = (int) eVal.eReversePortrait;      // ---- 0x76     2 //
+            enumVal = (int) Val.eReversePortrait;      // ---- 0x76     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eReversePortrait"));
 
-            enumVal = (int) eVal.eReverseLandscape;     // ---- 0x76     3 //
+            enumVal = (int) Val.eReverseLandscape;     // ---- 0x76     3 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eReverseLandscape"));
 
-            enumVal = (int) eVal.eDefaultOrientation;   // ---- 0x76     4 //
+            enumVal = (int) Val.eDefaultOrientation;   // ---- 0x76     4 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -2885,31 +2885,31 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.ePortraitOrientation;  // ---- 0x77     0 //
+            enumVal = (int) Val.ePortraitOrientation;  // ---- 0x77     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "ePortraitOrientation"));
 
-            enumVal = (int) eVal.eLandscapeOrientation; // ---- 0x77     1 //
+            enumVal = (int) Val.eLandscapeOrientation; // ---- 0x77     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eLandscapeOrientation"));
 
-            enumVal = (int) eVal.eReversePortrait;      // ---- 0x77     2 //
+            enumVal = (int) Val.eReversePortrait;      // ---- 0x77     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eReversePortrait"));
 
-            enumVal = (int) eVal.eReverseLandscape;     // ---- 0x77     3 //
+            enumVal = (int) Val.eReverseLandscape;     // ---- 0x77     3 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eReverseLandscape"));
 
-            enumVal = (int) eVal.eDontCare;             // ---- 0x77     4 //
+            enumVal = (int) Val.eDontCare;             // ---- 0x77     4 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -2921,19 +2921,19 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eNoTreatment;          // ---- 0x78     0 //
+            enumVal = (int) Val.eNoTreatment;          // ---- 0x78     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eNoTreatment"));
 
-            enumVal = (int) eVal.eScreenMatch;          // ---- 0x78     1 //
+            enumVal = (int) Val.eScreenMatch;          // ---- 0x78     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eScreenMatch"));
 
-            enumVal = (int) eVal.eVivid;                // ---- 0x78     2 //
+            enumVal = (int) Val.eVivid;                // ---- 0x78     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -2945,13 +2945,13 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eBinaryHighByteFirst;  // ---- 0x82     0 //
+            enumVal = (int) Val.eBinaryHighByteFirst;  // ---- 0x82     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eBinaryHighByteFirst"));
 
-            enumVal = (int) eVal.eBinaryLowByteFirst;   // ---- 0x82     1 //
+            enumVal = (int) Val.eBinaryLowByteFirst;   // ---- 0x82     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -2963,19 +2963,19 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eInch;                 // ---- 0x86     0 //
+            enumVal = (int) Val.eInch;                 // ---- 0x86     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eInch"));
 
-            enumVal = (int) eVal.eMillimeter;           // ---- 0x86     1 //
+            enumVal = (int) Val.eMillimeter;           // ---- 0x86     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eMillimeter"));
 
-            enumVal = (int) eVal.eTenthsOfAMillimeter;  // ---- 0x86     2 //
+            enumVal = (int) Val.eTenthsOfAMillimeter;  // ---- 0x86     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -2987,7 +2987,7 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eDefaultDataSource;    // ---- 0x88     0 //
+            enumVal = (int) Val.eDefaultDataSource;    // ---- 0x88     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -2999,43 +2999,43 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eNoReporting;          // ---- 0x8f     0 //
+            enumVal = (int) Val.eNoReporting;          // ---- 0x8f     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eNoReporting"));
 
-            enumVal = (int) eVal.eBackChannel;          // ---- 0x8f     1 //
+            enumVal = (int) Val.eBackChannel;          // ---- 0x8f     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eBackChannel"));
 
-            enumVal = (int) eVal.eErrorPage;            // ---- 0x8f     2 //
+            enumVal = (int) Val.eErrorPage;            // ---- 0x8f     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eErrorPage"));
 
-            enumVal = (int) eVal.eBackChAndErrPage;     // ---- 0x8f     3 //
+            enumVal = (int) Val.eBackChAndErrPage;     // ---- 0x8f     3 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eBackChAndErrPage"));
 
-            enumVal = (int) eVal.eNWBackChannel;        // ---- 0x8f     4 //
+            enumVal = (int) Val.eNWBackChannel;        // ---- 0x8f     4 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eNWBackChannel"));
 
-            enumVal = (int) eVal.eNWErrorPage;          // ---- 0x8f     5 //
+            enumVal = (int) Val.eNWErrorPage;          // ---- 0x8f     5 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eNWErrorPage"));
 
-            enumVal = (int) eVal.eNWBackChAndErrPage;   // ---- 0x8f     6 //
+            enumVal = (int) Val.eNWBackChAndErrPage;   // ---- 0x8f     6 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -3113,25 +3113,25 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eFilterDiag;           // ---- 0xa0     1 //
+            enumVal = (int) Val.eFilterDiag;           // ---- 0xa0     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eFilterDiag"));
 
-            enumVal = (int) eVal.eCommandsDiag;         // ---- 0xa0     2 //
+            enumVal = (int) Val.eCommandsDiag;         // ---- 0xa0     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eCommandsDiag"));
 
-            enumVal = (int) eVal.ePersonalityDiag;      // ---- 0xa0     3 //
+            enumVal = (int) Val.ePersonalityDiag;      // ---- 0xa0     3 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "ePersonalityDiag"));
 
-            enumVal = (int) eVal.ePageDiag;             // ---- 0xa0     4 //
+            enumVal = (int) Val.ePageDiag;             // ---- 0xa0     4 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -3143,7 +3143,7 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            populateTableAddSymsets (operTag, attrTagA, attrTagB,
+            PopulateTableAddSymsets (operTag, attrTagA, attrTagB,
                                      attrLen, root);
 
             attrTagA = (byte) PCLXLAttributes.eTag.CharSubModeArray;  // 0xac // 
@@ -3152,13 +3152,13 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eNoSubstitution;       // ---- 0xac     0 //
+            enumVal = (int) Val.eNoSubstitution;       // ---- 0xac     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eNoSubstitution"));
 
-            enumVal = (int) eVal.eVerticalSubstitution; // ---- 0xac     1 //
+            enumVal = (int) Val.eVerticalSubstitution; // ---- 0xac     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -3170,19 +3170,19 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eHorizontal;           // ---- 0xad     0 //
+            enumVal = (int) Val.eHorizontal;           // ---- 0xad     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eHorizontal"));
 
-            enumVal = (int) eVal.eVertical;             // ---- 0xad     1 //
+            enumVal = (int) Val.eVertical;             // ---- 0xad     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eVertical"));
 
-            enumVal = (int) eVal.eVerticalRotated;      // ---- 0xad     2 //
+            enumVal = (int) Val.eVerticalRotated;      // ---- 0xad     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -3196,19 +3196,19 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eNoTreatment;          // 0x58 0x1d     0 //
+            enumVal = (int) Val.eNoTreatment;          // 0x58 0x1d     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eNoTreatment"));
 
-            enumVal = (int) eVal.eScreenMatch;          // 0x58 0x1d     1 //
+            enumVal = (int) Val.eScreenMatch;          // 0x58 0x1d     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eScreenMatch"));
 
-            enumVal = (int) eVal.eVivid;                // 0x58 0x1d     2 //
+            enumVal = (int) Val.eVivid;                // 0x58 0x1d     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -3220,19 +3220,19 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eNoTreatment;          // 0x58 0x1e     0 //
+            enumVal = (int) Val.eNoTreatment;          // 0x58 0x1e     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eNoTreatment"));
 
-            enumVal = (int) eVal.eScreenMatch;          // 0x58 0x1e     1 //
+            enumVal = (int) Val.eScreenMatch;          // 0x58 0x1e     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eScreenMatch"));
 
-            enumVal = (int) eVal.eVivid;                // 0x58 0x1e     2 //
+            enumVal = (int) Val.eVivid;                // 0x58 0x1e     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -3244,19 +3244,19 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eNoTreatment;          // 0x58 0x1f     0 //
+            enumVal = (int) Val.eNoTreatment;          // 0x58 0x1f     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eNoTreatment"));
 
-            enumVal = (int) eVal.eScreenMatch;          // 0x58 0x1f     1 //
+            enumVal = (int) Val.eScreenMatch;          // 0x58 0x1f     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eScreenMatch"));
 
-            enumVal = (int) eVal.eVivid;                // 0x58 0x1f     2 //
+            enumVal = (int) Val.eVivid;                // 0x58 0x1f     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -3268,19 +3268,19 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eNoTreatment;          // 0x58 0x20     0 //
+            enumVal = (int) Val.eNoTreatment;          // 0x58 0x20     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eNoTreatment"));
 
-            enumVal = (int) eVal.eScreenMatch;          // 0x58 0x20     1 //
+            enumVal = (int) Val.eScreenMatch;          // 0x58 0x20     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eScreenMatch"));
 
-            enumVal = (int) eVal.eVivid;                // 0x58 0x20     2 //
+            enumVal = (int) Val.eVivid;                // 0x58 0x20     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -3294,19 +3294,19 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eHighLPI;              // 0x6d 0x1d     0 //
+            enumVal = (int) Val.eHighLPI;              // 0x6d 0x1d     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eHighLPI"));
 
-            enumVal = (int) eVal.eMediumLPI;            // 0x6d 0x1d     1 //
+            enumVal = (int) Val.eMediumLPI;            // 0x6d 0x1d     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eMediumLPI"));
 
-            enumVal = (int) eVal.eLowLPI;               // 0x6d 0x1d     2 //
+            enumVal = (int) Val.eLowLPI;               // 0x6d 0x1d     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -3318,19 +3318,19 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eHighLPI;              // 0x6d 0x1e     0 //
+            enumVal = (int) Val.eHighLPI;              // 0x6d 0x1e     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eHighLPI"));
 
-            enumVal = (int) eVal.eMediumLPI;            // 0x6d 0x1e     1 //
+            enumVal = (int) Val.eMediumLPI;            // 0x6d 0x1e     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eMediumLPI"));
 
-            enumVal = (int) eVal.eLowLPI;               // 0x6d 0x1e     2 //
+            enumVal = (int) Val.eLowLPI;               // 0x6d 0x1e     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -3342,19 +3342,19 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eHighLPI;              // 0x6d 0x1f     0 //
+            enumVal = (int) Val.eHighLPI;              // 0x6d 0x1f     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eHighLPI"));
 
-            enumVal = (int) eVal.eMediumLPI;            // 0x6d 0x1f     1 //
+            enumVal = (int) Val.eMediumLPI;            // 0x6d 0x1f     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eMediumLPI"));
 
-            enumVal = (int) eVal.eLowLPI;               // 0x6d 0x1f     2 //
+            enumVal = (int) Val.eLowLPI;               // 0x6d 0x1f     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -3366,19 +3366,19 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eHighLPI;              // 0x6d 0x20     0 //
+            enumVal = (int) Val.eHighLPI;              // 0x6d 0x20     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eHighLPI"));
 
-            enumVal = (int) eVal.eMediumLPI;            // 0x6d 0x20     1 //
+            enumVal = (int) Val.eMediumLPI;            // 0x6d 0x20     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eMediumLPI"));
 
-            enumVal = (int) eVal.eLowLPI;               // 0x6d 0x20     2 //
+            enumVal = (int) Val.eLowLPI;               // 0x6d 0x20     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -3392,13 +3392,13 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eTonerBlack;           // 0x7e 0x1d     0 //
+            enumVal = (int) Val.eTonerBlack;           // 0x7e 0x1d     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eTonerBlack"));
 
-            enumVal = (int) eVal.eProcessBlack;         // 0x7e 0x1d     1 //
+            enumVal = (int) Val.eProcessBlack;         // 0x7e 0x1d     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -3410,13 +3410,13 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eTonerBlack;           // 0x7e 0x1e     0 //
+            enumVal = (int) Val.eTonerBlack;           // 0x7e 0x1e     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eTonerBlack"));
 
-            enumVal = (int) eVal.eProcessBlack;         // 0x7e 0x1e     1 //
+            enumVal = (int) Val.eProcessBlack;         // 0x7e 0x1e     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -3428,13 +3428,13 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eTonerBlack;           // 0x7e 0x1f     0 //
+            enumVal = (int) Val.eTonerBlack;           // 0x7e 0x1f     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eTonerBlack"));
 
-            enumVal = (int) eVal.eProcessBlack;         // 0x7e 0x1f     1 //
+            enumVal = (int) Val.eProcessBlack;         // 0x7e 0x1f     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -3446,13 +3446,13 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eTonerBlack;           // 0x7e 0x20     0 //
+            enumVal = (int) Val.eTonerBlack;           // 0x7e 0x20     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eTonerBlack"));
 
-            enumVal = (int) eVal.eProcessBlack;         // 0x7e 0x20     1 //
+            enumVal = (int) Val.eProcessBlack;         // 0x7e 0x20     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -3466,25 +3466,25 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eDisable;              // 0x92 0x1d     0 //
+            enumVal = (int) Val.eDisable;              // 0x92 0x1d     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eDisable"));
 
-            enumVal = (int) eVal.eMax;                  // 0x92 0x1d     1 //
+            enumVal = (int) Val.eMax;                  // 0x92 0x1d     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eMax"));
 
-            enumVal = (int) eVal.eNormal;               // 0x92 0x1d     2 //
+            enumVal = (int) Val.eNormal;               // 0x92 0x1d     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eNormal"));
 
-            enumVal = (int) eVal.eLight;                // 0x92 0x1d     3 //
+            enumVal = (int) Val.eLight;                // 0x92 0x1d     3 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -3496,25 +3496,25 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eDisable;              // 0x92 0x1e     0 //
+            enumVal = (int) Val.eDisable;              // 0x92 0x1e     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eDisable"));
 
-            enumVal = (int) eVal.eMax;                  // 0x92 0x1e     1 //
+            enumVal = (int) Val.eMax;                  // 0x92 0x1e     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eMax"));
 
-            enumVal = (int) eVal.eNormal;               // 0x92 0x1e     2 //
+            enumVal = (int) Val.eNormal;               // 0x92 0x1e     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eNormal"));
 
-            enumVal = (int) eVal.eLight;                // 0x92 0x1e     3 //
+            enumVal = (int) Val.eLight;                // 0x92 0x1e     3 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -3526,25 +3526,25 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eDisable;              // 0x92 0x1f     0 //
+            enumVal = (int) Val.eDisable;              // 0x92 0x1f     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eDisable"));
 
-            enumVal = (int) eVal.eMax;                  // 0x92 0x1f     1 //
+            enumVal = (int) Val.eMax;                  // 0x92 0x1f     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eMax"));
 
-            enumVal = (int) eVal.eNormal;               // 0x92 0x1f     2 //
+            enumVal = (int) Val.eNormal;               // 0x92 0x1f     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eNormal"));
 
-            enumVal = (int) eVal.eLight;                // 0x92 0x1f     3 //
+            enumVal = (int) Val.eLight;                // 0x92 0x1f     3 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -3556,25 +3556,25 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eDisable;              // 0x92 0x20     0 //
+            enumVal = (int) Val.eDisable;              // 0x92 0x20     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eDisable"));
 
-            enumVal = (int) eVal.eMax;                  // 0x92 0x20     1 //
+            enumVal = (int) Val.eMax;                  // 0x92 0x20     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eMax"));
 
-            enumVal = (int) eVal.eNormal;               // 0x92 0x20     2 //
+            enumVal = (int) Val.eNormal;               // 0x92 0x20     2 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eNormal"));
 
-            enumVal = (int) eVal.eLight;                // 0x92 0x20     3 //
+            enumVal = (int) Val.eLight;                // 0x92 0x20     3 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -3588,13 +3588,13 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eDisable;              // 0x94 0x1d     0 //
+            enumVal = (int) Val.eDisable;              // 0x94 0x1d     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eDisable"));
 
-            enumVal = (int) eVal.eEnable;               // 0x94 0x1d     1 //
+            enumVal = (int) Val.eEnable;               // 0x94 0x1d     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -3606,13 +3606,13 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eDisable;              // 0x94 0x1e     0 //
+            enumVal = (int) Val.eDisable;              // 0x94 0x1e     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eDisable"));
 
-            enumVal = (int) eVal.eEnable;               // 0x94 0x1e     1 //
+            enumVal = (int) Val.eEnable;               // 0x94 0x1e     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -3624,13 +3624,13 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eDisable;              // 0x94 0x1f     0 //
+            enumVal = (int) Val.eDisable;              // 0x94 0x1f     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eDisable"));
 
-            enumVal = (int) eVal.eEnable;               // 0x94 0x1f     1 //
+            enumVal = (int) Val.eEnable;               // 0x94 0x1f     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -3642,13 +3642,13 @@ namespace PCLParaphernalia
                    attrTagA.ToString ("X2") +
                    attrTagB.ToString ("X2");
 
-            enumVal = (int) eVal.eDisable;              // 0x94 0x20     0 //
+            enumVal = (int) Val.eDisable;              // 0x94 0x20     0 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
                                   "eDisable"));
 
-            enumVal = (int) eVal.eEnable;               // 0x94 0x20     1 //
+            enumVal = (int) Val.eEnable;               // 0x94 0x20     1 //
             _tags.Add(root + ":" + enumVal.ToString("X8"),
                 new PCLXLAttrEnum(operTag, attrTagA, attrTagB, attrLen, enumVal,
                                   flagNone,
@@ -3666,7 +3666,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void populateTableAddSymsets(byte operTag,
+        public static void PopulateTableAddSymsets(byte operTag,
                                                    byte attrTagA,
                                                    byte attrTagB,
                                                    int attrLen,
@@ -3674,7 +3674,7 @@ namespace PCLParaphernalia
         {
             const bool flagNone = false;
 
-            int ctSymsets = PCLSymbolSets.getCount ();
+            int ctSymsets = PCLSymbolSets.GetCount ();
 
             if (ctSymsets > 0)
             {
@@ -3688,13 +3688,13 @@ namespace PCLParaphernalia
                 for (int i = 0; i < ctSymsets; i++)
                 {
                     bool presetType =
-                        PCLSymbolSets.getSymsetData(i,
+                        PCLSymbolSets.GetSymsetData(i,
                                      ref kind1,
                                      ref idNum,
                                      ref name);
                     if (presetType)
                     {
-                        string id = PCLSymbolSets.translateKind1ToId(kind1);
+                        string id = PCLSymbolSets.TranslateKind1ToId(kind1);
 
                         enumVal = kind1;           // ---- 0xaa     n //
                         _tags.Add (root + ":" + enumVal.ToString ("X8"),
@@ -3717,7 +3717,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void resetStatsCounts()
+        public static void ResetStatsCounts()
         {
             PCLXLAttrEnum tag;
 

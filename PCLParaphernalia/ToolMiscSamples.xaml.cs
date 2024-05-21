@@ -243,7 +243,7 @@ namespace PCLParaphernalia
                             int indxMode =
                                 _subsetLogOperModesPCL[_indxLogOperModePCL];
 
-                            if (PCLPalettes.isMonochrome(indxMode))
+                            if (PCLPalettes.IsMonochrome(indxMode))
                             {
                                 ToolMiscSamplesActLogOperPCL.generateJob(
                                     binWriter,
@@ -398,7 +398,7 @@ namespace PCLParaphernalia
                             int indxMode =
                                 _subsetLogOperModesPCLXL[_indxLogOperModePCLXL];
 
-                            if (PCLXLPalettes.isMonochrome(indxMode))
+                            if (PCLXLPalettes.IsMonochrome(indxMode))
                             {
                                 ToolMiscSamplesActLogOperPCLXL.generateJob(
                                     binWriter,

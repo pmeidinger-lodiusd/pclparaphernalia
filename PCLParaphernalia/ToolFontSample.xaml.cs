@@ -68,43 +68,43 @@ namespace PCLParaphernalia
 
         private static readonly int[] _subsetParseMethodsPCLAll =
         {
-            (int) PCLTextParsingMethods.eIndex.not_specified,
-            (int) PCLTextParsingMethods.eIndex.m0_1_byte_default,
-            (int) PCLTextParsingMethods.eIndex.m1_1_byte_alt,
-            (int) PCLTextParsingMethods.eIndex.m2_2_byte,
-            (int) PCLTextParsingMethods.eIndex.m21_1_or_2_byte_Asian7bit,
-            (int) PCLTextParsingMethods.eIndex.m31_1_or_2_byte_ShiftJIS,
-            (int) PCLTextParsingMethods.eIndex.m38_1_or_2_byte_Asian8bit,
-            (int) PCLTextParsingMethods.eIndex.m83_UTF8,
-            (int) PCLTextParsingMethods.eIndex.m1008_UTF8_alt
+            (int) PCLTextParsingMethods.Index.not_specified,
+            (int) PCLTextParsingMethods.Index.m0_1_byte_default,
+            (int) PCLTextParsingMethods.Index.m1_1_byte_alt,
+            (int) PCLTextParsingMethods.Index.m2_2_byte,
+            (int) PCLTextParsingMethods.Index.m21_1_or_2_byte_Asian7bit,
+            (int) PCLTextParsingMethods.Index.m31_1_or_2_byte_ShiftJIS,
+            (int) PCLTextParsingMethods.Index.m38_1_or_2_byte_Asian8bit,
+            (int) PCLTextParsingMethods.Index.m83_UTF8,
+            (int) PCLTextParsingMethods.Index.m1008_UTF8_alt
         };
 
         private static readonly int[] _subsetParseMethodsPCLDirect =
         {
-            (int) PCLTextParsingMethods.eIndex.m83_UTF8,
-            (int) PCLTextParsingMethods.eIndex.m1008_UTF8_alt
+            (int) PCLTextParsingMethods.Index.m83_UTF8,
+            (int) PCLTextParsingMethods.Index.m1008_UTF8_alt
         };
 
         private static readonly int[] _subsetParseMethodsPCLXLAll =
         {
-            (int) PCLTextParsingMethods.eIndex.m0_1_byte_default,
-            (int) PCLTextParsingMethods.eIndex.m2_2_byte,
-            (int) PCLTextParsingMethods.eIndex.m21_1_or_2_byte_Asian7bit,
-            (int) PCLTextParsingMethods.eIndex.m31_1_or_2_byte_ShiftJIS,
-            (int) PCLTextParsingMethods.eIndex.m38_1_or_2_byte_Asian8bit
+            (int) PCLTextParsingMethods.Index.m0_1_byte_default,
+            (int) PCLTextParsingMethods.Index.m2_2_byte,
+            (int) PCLTextParsingMethods.Index.m21_1_or_2_byte_Asian7bit,
+            (int) PCLTextParsingMethods.Index.m31_1_or_2_byte_ShiftJIS,
+            (int) PCLTextParsingMethods.Index.m38_1_or_2_byte_Asian8bit
         };
 
         private static readonly int[] _subsetParseMethodsPCLXLDirect =
         {
-            (int) PCLTextParsingMethods.eIndex.m2_2_byte,
+            (int) PCLTextParsingMethods.Index.m2_2_byte,
         };
 
         private static readonly int _ctFonts = PCLFonts.getCountUnique();
 
         private static readonly int[] _subsetFonts = new int[_ctFonts];
 
-        private static readonly int _ctSymSets = PCLSymbolSets.getCountStd () +
-                                          PCLSymbolSets.getCountUserSet ();
+        private static readonly int _ctSymSets = PCLSymbolSets.GetCountStd () +
+                                          PCLSymbolSets.GetCountUserSet ();
 
         private static readonly int[] _subsetSymSets = new int[_ctSymSets];
 
@@ -225,9 +225,9 @@ namespace PCLParaphernalia
         private PCLFonts.eVariant _fontVar;
         private PCLFonts.eFontType _fontType;
 
-        private PCLSymbolSets.eSymSetGroup _symSetGroup;
-        private PCLSymSetTypes.eIndex   _symSetType;
-        private PCLSymSetTypes.eIndex   _fontSymSetTypePCL;
+        private PCLSymbolSets.SymSetGroup _symSetGroup;
+        private PCLSymSetTypes.Index   _symSetType;
+        private PCLSymSetTypes.Index   _fontSymSetTypePCL;
 
         //--------------------------------------------------------------------//
         //                                                  S t r u c t u r e //
@@ -889,7 +889,7 @@ namespace PCLParaphernalia
             _indxPDL = cbPDL.SelectedIndex;
             _crntPDL = (ToolCommonData.ePrintLang) _subsetPDLs[_indxPDL];
 
-            if ((_symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet) &&
+            if ((_symSetGroup == PCLSymbolSets.SymSetGroup.UserSet) &&
                (!_symSetUserFileValid))
             {
                 flagOK = checkPCLSymSetFile();
@@ -969,8 +969,8 @@ namespace PCLParaphernalia
 
                     //--------------------------------------------------------//
 
-                    if ((_symSetGroup == PCLSymbolSets.eSymSetGroup.Preset) ||
-                        (_symSetGroup == PCLSymbolSets.eSymSetGroup.Unicode))
+                    if ((_symSetGroup == PCLSymbolSets.SymSetGroup.Preset) ||
+                        (_symSetGroup == PCLSymbolSets.SymSetGroup.Unicode))
                     {
                         int index;
 
@@ -979,9 +979,9 @@ namespace PCLParaphernalia
                         else
                             index = _subsetSymSets[_indxSymSetPCLXL];
 
-                        _symSetName = PCLSymbolSets.getName(index);
+                        _symSetName = PCLSymbolSets.GetName(index);
                     }
-                    else if (_symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet)
+                    else if (_symSetGroup == PCLSymbolSets.SymSetGroup.UserSet)
                     {
                         if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                         {
@@ -993,7 +993,7 @@ namespace PCLParaphernalia
                             {
                                 _symSetName = "<Unicode-indexed via file>";
 
-                                _symSetId = PCLSymbolSets.getId(
+                                _symSetId = PCLSymbolSets.GetId(
                                     PCLSymbolSets.IndexUnicode);
                             }
                         }
@@ -1008,12 +1008,12 @@ namespace PCLParaphernalia
                             {
                                 _symSetName = "<Unicode-indexed via file>";
 
-                                _symSetId = PCLSymbolSets.getId(
+                                _symSetId = PCLSymbolSets.GetId(
                                     PCLSymbolSets.IndexUnicode);
                             }
                         }
                     }
-                    else if (_symSetGroup == PCLSymbolSets.eSymSetGroup.Custom)
+                    else if (_symSetGroup == PCLSymbolSets.SymSetGroup.Custom)
                     {
                         _symSetName = "<custom>";
                     }
@@ -1040,18 +1040,18 @@ namespace PCLParaphernalia
 
                         //----------------------------------------------------//
 
-                        PCLTextParsingMethods.eIndex parseMethod = (PCLTextParsingMethods.eIndex) _indxParseMethod;
+                        PCLTextParsingMethods.Index parseMethod = (PCLTextParsingMethods.Index) _indxParseMethod;
 
-                        if (parseMethod != PCLTextParsingMethods.eIndex.not_specified)
+                        if (parseMethod != PCLTextParsingMethods.Index.not_specified)
                         {
                             parseMethodText =
                                 "; parse method " +
-                                PCLTextParsingMethods.getValue (_indxParseMethod);
+                                PCLTextParsingMethods.GetValue (_indxParseMethod);
                         }
 
                         //----------------------------------------------------//
 
-                        symSetUserSet = _symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet;
+                        symSetUserSet = _symSetGroup == PCLSymbolSets.SymSetGroup.UserSet;
 
                         //----------------------------------------------------//
 
@@ -1130,7 +1130,7 @@ namespace PCLParaphernalia
                     }
                     else    // if (_crntPDL == ToolCommonData.ePrintLang.PCLXL)
                     {
-                        bool symSetUserSet = _symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet;
+                        bool symSetUserSet = _symSetGroup == PCLSymbolSets.SymSetGroup.UserSet;
 
                         if (validatePCLXLFontCharacteristics ())
                             setFontSelectData ();
@@ -1516,7 +1516,7 @@ namespace PCLParaphernalia
                     (!PCLFonts.isSymSetInList(_subsetFonts[indxFont],
                                              _symSetNo)))
                 {
-                    int symSetIndx = PCLSymbolSets.getIndexForId(_symSetNo);
+                    int symSetIndx = PCLSymbolSets.GetIndexForId(_symSetNo);
 
                     string symSetName,
                            symSetId;
@@ -1524,9 +1524,9 @@ namespace PCLParaphernalia
                     if (symSetIndx == -1)
                         symSetName = "(<unknown>)";
                     else
-                        symSetName = "(" + PCLSymbolSets.getName(symSetIndx) + ")";
+                        symSetName = "(" + PCLSymbolSets.GetName(symSetIndx) + ")";
 
-                    symSetId = PCLSymbolSets.translateKind1ToId(_symSetNo);
+                    symSetId = PCLSymbolSets.TranslateKind1ToId(_symSetNo);
 
                     MessageBox.Show("Symbol set '" +
                                      symSetId + " " + symSetName +
@@ -1575,7 +1575,7 @@ namespace PCLParaphernalia
                 _fontFilenamePCL = filename;
                 txtPCLSoftFontFile.Text = _fontFilenamePCL;
 
-                flagOK = PCLDownloadFont.getFontCharacteristics(
+                flagOK = PCLDownloadFont.GetFontCharacteristics(
                             _fontFilenamePCL,
                             ref _fontProportional,
                             ref _fontScalable,
@@ -1658,7 +1658,7 @@ namespace PCLParaphernalia
                 {
                     _symSetUserFileValid = false;
 
-                    PCLSymbolSets.setDataUserSetDefault (_defaultSymSetNo);
+                    PCLSymbolSets.SetDataUserSetDefault (_defaultSymSetNo);
 
                     _symSetNoUserSet = _defaultSymSetNo;
 
@@ -1765,9 +1765,9 @@ namespace PCLParaphernalia
             {
                 int indxList = _subsetSymSets[indxSymSet];
 
-                _symSetGroup = PCLSymbolSets.getGroup (indxList);
+                _symSetGroup = PCLSymbolSets.GetGroup (indxList);
 
-                if (_symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet)
+                if (_symSetGroup == PCLSymbolSets.SymSetGroup.UserSet)
                 {
                     bool flagOK;
 
@@ -2378,7 +2378,7 @@ namespace PCLParaphernalia
             int index,
                   ctr;
 
-            PCLSymbolSets.eSymSetGroup symSetGroup;
+            PCLSymbolSets.SymSetGroup symSetGroup;
 
             _initialised = false;
 
@@ -2459,20 +2459,20 @@ namespace PCLParaphernalia
 
             cbSymSet.Items.Clear ();
 
-            ctr = PCLSymbolSets.getCount();
+            ctr = PCLSymbolSets.GetCount();
             index = 0;
 
             for (int i = 0; i < ctr; i++)
             {
-                symSetGroup = PCLSymbolSets.getGroup (i);
+                symSetGroup = PCLSymbolSets.GetGroup (i);
 
-                if ((symSetGroup == PCLSymbolSets.eSymSetGroup.Custom)  ||
-                    (symSetGroup == PCLSymbolSets.eSymSetGroup.Preset)  ||
-                    (symSetGroup == PCLSymbolSets.eSymSetGroup.Unicode) ||
-                    (symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet))
+                if ((symSetGroup == PCLSymbolSets.SymSetGroup.Custom)  ||
+                    (symSetGroup == PCLSymbolSets.SymSetGroup.Preset)  ||
+                    (symSetGroup == PCLSymbolSets.SymSetGroup.Unicode) ||
+                    (symSetGroup == PCLSymbolSets.SymSetGroup.UserSet))
                 {
                     _subsetSymSets [index++] = i;
-                    cbSymSet.Items.Add (PCLSymbolSets.getName (i));
+                    cbSymSet.Items.Add (PCLSymbolSets.GetName (i));
                 }
             }
 
@@ -3701,11 +3701,11 @@ namespace PCLParaphernalia
                 string idNum = string.Empty,
                        idAlpha = string.Empty;
 
-                PCLSymbolSets.translateKind1ToId (_symSetNo,
+                PCLSymbolSets.TranslateKind1ToId (_symSetNo,
                                                   ref idNum,
                                                   ref idAlpha);
 
-                index = PCLSymbolSets.getIndexForId (_symSetNo);
+                index = PCLSymbolSets.GetIndexForId (_symSetNo);
                 indxSymSet = 0;
 
                 for (int i = 0; i < _ctSymSets; i++)
@@ -4521,8 +4521,8 @@ namespace PCLParaphernalia
             else
                 selSeqAttr = "<Esc>(" + _fontSelSeqPCL;
 
-            if ((_symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet) && (! _symSetUserActEmbedPCL))
-                symSetId = PCLSymbolSets.getId(PCLSymbolSets.IndexUnicode);
+            if ((_symSetGroup == PCLSymbolSets.SymSetGroup.UserSet) && (! _symSetUserActEmbedPCL))
+                symSetId = PCLSymbolSets.GetId(PCLSymbolSets.IndexUnicode);
             else
                 symSetId = _symSetId;
 
@@ -4618,10 +4618,10 @@ namespace PCLParaphernalia
 
         private void setFontSelectDataPCLXL(int indxFont)
         {
-            if ((_symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet) &&
+            if ((_symSetGroup == PCLSymbolSets.SymSetGroup.UserSet) &&
                 (!_symSetUserActEmbedPCLXL)) // this should always be true
             {
-                _symSetNo = PCLSymbolSets.getKind1(
+                _symSetNo = PCLSymbolSets.GetKind1(
                                     PCLSymbolSets.IndexUnicode);
             }
 
@@ -4850,7 +4850,7 @@ namespace PCLParaphernalia
 
             grpSample.Visibility = Visibility.Hidden;
 
-            if ((_symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet) &&
+            if ((_symSetGroup == PCLSymbolSets.SymSetGroup.UserSet) &&
                      (((_crntPDL == ToolCommonData.ePrintLang.PCL) &&
                        (!_symSetUserActEmbedPCL)) ||
                       ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
@@ -4870,12 +4870,12 @@ namespace PCLParaphernalia
                 if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                 {
                     _subsetParseMethods = _subsetParseMethodsPCLDirect;
-                    _indxParseMethod = (int)PCLTextParsingMethods.eIndex.m83_UTF8;
+                    _indxParseMethod = (int)PCLTextParsingMethods.Index.m83_UTF8;
                 }
                 else // if (_crntPDL == ToolCommonData.ePrintLang.PCLXL)
                 {
                     _subsetParseMethods = _subsetParseMethodsPCLXLDirect;
-                    _indxParseMethod = (int)PCLTextParsingMethods.eIndex.m2_2_byte;
+                    _indxParseMethod = (int)PCLTextParsingMethods.Index.m2_2_byte;
                 }
 
                 _ctParseMethods = _subsetParseMethods.Length;
@@ -4886,7 +4886,7 @@ namespace PCLParaphernalia
                 {
                     tmpIndex = _subsetParseMethods[i];
 
-                    cbParseMethod.Items.Add(PCLTextParsingMethods.getDescLong(tmpIndex));
+                    cbParseMethod.Items.Add(PCLTextParsingMethods.GetDescLong(tmpIndex));
                 }
 
                 //------------------------------------------------------------//
@@ -4913,9 +4913,9 @@ namespace PCLParaphernalia
                 setSymSetOffsetRanges(_symSetGroup, _symSetType,
                                       _indxParseMethod);
             }
-            else if ((_symSetGroup == PCLSymbolSets.eSymSetGroup.Unicode) ||
-                     (_symSetType == PCLSymSetTypes.eIndex.Bound_16bit) ||
-                     (_symSetType == PCLSymSetTypes.eIndex.Unknown))
+            else if ((_symSetGroup == PCLSymbolSets.SymSetGroup.Unicode) ||
+                     (_symSetType == PCLSymSetTypes.Index.Bound_16bit) ||
+                     (_symSetType == PCLSymSetTypes.Index.Unknown))
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -4929,7 +4929,7 @@ namespace PCLParaphernalia
                 grpSample.Visibility = Visibility.Visible;
 
                 _indxParseMethod =
-                    (int)PCLSymbolSets.getParsingMethod(indxSymSetEntry);
+                    (int)PCLSymbolSets.GetParsingMethod(indxSymSetEntry);
 
                 if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                 {
@@ -4948,7 +4948,7 @@ namespace PCLParaphernalia
                 {
                     tmpIndex = _subsetParseMethods[i];
 
-                    cbParseMethod.Items.Add(PCLTextParsingMethods.getDescLong(tmpIndex));
+                    cbParseMethod.Items.Add(PCLTextParsingMethods.GetDescLong(tmpIndex));
                 }
 
                 //------------------------------------------------------------//
@@ -4982,8 +4982,8 @@ namespace PCLParaphernalia
                 grpSample.Visibility = Visibility.Hidden;
             }
 
-            if ((_symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet) &&
-                (_symSetType == PCLSymSetTypes.eIndex.Bound_16bit) &&
+            if ((_symSetGroup == PCLSymbolSets.SymSetGroup.UserSet) &&
+                (_symSetType == PCLSymSetTypes.Index.Bound_16bit) &&
                 (_crntPDL == ToolCommonData.ePrintLang.PCL)     &&
                 _symSetUserActEmbedPCL)
             {
@@ -5011,14 +5011,14 @@ namespace PCLParaphernalia
 
             _mapCodesRelevant = false;
 
-            if (_symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet)
+            if (_symSetGroup == PCLSymbolSets.SymSetGroup.UserSet)
             {
                 chkOptShowMapCodesUCS2.Visibility = Visibility.Visible;
                 chkOptShowMapCodesUTF8.Visibility = Visibility.Visible;
 
                 _mapCodesRelevant = true;
             }
-            else if (_symSetGroup == PCLSymbolSets.eSymSetGroup.Unicode)
+            else if (_symSetGroup == PCLSymbolSets.SymSetGroup.Unicode)
             {
                 chkOptShowMapCodesUCS2.Visibility = Visibility.Visible;
                 chkOptShowMapCodesUTF8.Visibility = Visibility.Visible;
@@ -5051,13 +5051,13 @@ namespace PCLParaphernalia
             {
                 indxSymSetEntry = _subsetSymSets[indxSymSet];
 
-                _symSetGroup = PCLSymbolSets.getGroup (indxSymSetEntry);
-                _symSetType = PCLSymbolSets.getType (indxSymSetEntry);
+                _symSetGroup = PCLSymbolSets.GetGroup (indxSymSetEntry);
+                _symSetType = PCLSymbolSets.GetType (indxSymSetEntry);
 
                 _indxParseMethod =
-                    (int)PCLTextParsingMethods.eIndex.not_specified;
+                    (int)PCLTextParsingMethods.Index.not_specified;
 
-                if (_symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet)
+                if (_symSetGroup == PCLSymbolSets.SymSetGroup.UserSet)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -5074,7 +5074,7 @@ namespace PCLParaphernalia
                     txtSymSetIdNum.IsEnabled = false;
                     txtSymSetIdAlpha.IsEnabled = false;
 
-                    _symSetNo = PCLSymbolSets.getKind1 (indxSymSetEntry);
+                    _symSetNo = PCLSymbolSets.GetKind1 (indxSymSetEntry);
 
                     txtSymSetNo.Text = _symSetNo.ToString ();
 
@@ -5083,12 +5083,12 @@ namespace PCLParaphernalia
                     txtSymSetUserLastCode.Text =
                         _symSetUserLastCode.ToString ("x4");
 
-                    _symSetId = PCLSymbolSets.getId (indxSymSetEntry);
+                    _symSetId = PCLSymbolSets.GetId (indxSymSetEntry);
 
                     setIdText = true;
                 }
-                else if ((_symSetGroup == PCLSymbolSets.eSymSetGroup.Preset) ||
-                         (_symSetGroup == PCLSymbolSets.eSymSetGroup.Unicode))
+                else if ((_symSetGroup == PCLSymbolSets.SymSetGroup.Preset) ||
+                         (_symSetGroup == PCLSymbolSets.SymSetGroup.Unicode))
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -5103,11 +5103,11 @@ namespace PCLParaphernalia
                     txtSymSetIdNum.IsEnabled = false;
                     txtSymSetIdAlpha.IsEnabled = false;
 
-                    _symSetNo = PCLSymbolSets.getKind1 (indxSymSetEntry);
+                    _symSetNo = PCLSymbolSets.GetKind1 (indxSymSetEntry);
 
                     txtSymSetNo.Text = _symSetNo.ToString ();
 
-                    _symSetId = PCLSymbolSets.getId (indxSymSetEntry);
+                    _symSetId = PCLSymbolSets.GetId (indxSymSetEntry);
 
                     setIdText = true;
                 }
@@ -5128,7 +5128,7 @@ namespace PCLParaphernalia
 
                     txtSymSetNo.Text = _symSetNo.ToString ();
 
-                    _symSetId = PCLSymbolSets.translateKind1ToId (_symSetNo);
+                    _symSetId = PCLSymbolSets.TranslateKind1ToId (_symSetNo);
 
                     if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                         _symSetType = _fontSymSetTypePCL;
@@ -5155,14 +5155,14 @@ namespace PCLParaphernalia
                     if (_initialised)
                     {
                         _symSetId = txtSymSetIdNum.Text + txtSymSetIdAlpha.Text;
-                        _symSetNo = PCLSymbolSets.translateIdToKind1 (_symSetId);
+                        _symSetNo = PCLSymbolSets.TranslateIdToKind1 (_symSetId);
                     }
                     else
                     {
                         string idNum = _defaultSymSetIdNum.ToString (),
                                idAlpha = _defaultSymSetIdAlpha.ToString ();
 
-                        PCLSymbolSets.translateKind1ToId (_symSetNo, ref idNum, ref idAlpha);
+                        PCLSymbolSets.TranslateKind1ToId (_symSetNo, ref idNum, ref idAlpha);
 
                         txtSymSetIdNum.Text = idNum;
                         txtSymSetIdAlpha.Text = idAlpha;
@@ -5172,10 +5172,10 @@ namespace PCLParaphernalia
 
                     txtSymSetNo.Text = _symSetNo.ToString ();
 
-                    indxTemp = PCLSymbolSets.getIndexForId (_symSetNo);
+                    indxTemp = PCLSymbolSets.GetIndexForId (_symSetNo);
 
                     if (indxTemp != -1)
-                        _symSetType = PCLSymbolSets.getType (indxTemp);
+                        _symSetType = PCLSymbolSets.GetType (indxTemp);
                 }
 
                 if (setIdText)
@@ -5197,7 +5197,7 @@ namespace PCLParaphernalia
                 }
 
                 txtSymSetType.Text =
-                    PCLSymSetTypes.getDescShort ((int)_symSetType);
+                    PCLSymSetTypes.GetDescShort ((int)_symSetType);
 
                 setSampleAttributes (indxSymSetEntry);
 
@@ -5220,8 +5220,8 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private void setSymSetOffsetRanges (
-            PCLSymbolSets.eSymSetGroup symSetGroup,
-            PCLSymSetTypes.eIndex symSetType,
+            PCLSymbolSets.SymSetGroup symSetGroup,
+            PCLSymSetTypes.Index symSetType,
             int indxParseMethod)
         {
             ushort[] rangesStd;
@@ -5244,16 +5244,16 @@ namespace PCLParaphernalia
 
             rangesDouble = null;
 
-            if (symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet)
+            if (symSetGroup == PCLSymbolSets.SymSetGroup.UserSet)
             {
                 rangesStd = new ushort[2];
 
                 rangesStd[0] = _symSetUserFirstCode;
                 rangesStd[1] = _symSetUserLastCode;
             }
-            else if ((symSetType == PCLSymSetTypes.eIndex.Bound_7bit) ||
-                     (symSetType == PCLSymSetTypes.eIndex.Bound_8bit) ||
-                     (symSetType == PCLSymSetTypes.eIndex.Bound_PC8))
+            else if ((symSetType == PCLSymSetTypes.Index.Bound_7bit) ||
+                     (symSetType == PCLSymSetTypes.Index.Bound_8bit) ||
+                     (symSetType == PCLSymSetTypes.Index.Bound_PC8))
             {
                 rangesStd = new ushort[2];
 
@@ -5263,7 +5263,7 @@ namespace PCLParaphernalia
             else
             {
                 rangesSingle =
-                    PCLTextParsingMethods.getRangeDataSingle (indxParseMethod);
+                    PCLTextParsingMethods.GetRangeDataSingle (indxParseMethod);
 
                 if (rangesSingle == null)
                 {
@@ -5278,7 +5278,7 @@ namespace PCLParaphernalia
                 }
 
                 rangesDouble =
-                    PCLTextParsingMethods.getRangeDataDouble (indxParseMethod);
+                    PCLTextParsingMethods.GetRangeDataDouble (indxParseMethod);
             }
 
             //----------------------------------------------------------------//

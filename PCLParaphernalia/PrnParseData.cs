@@ -477,19 +477,19 @@ namespace PCLParaphernalia
                 utf8Char      = false;
 
                 if (textMode ==
-                    (int) PCLTextParsingMethods.ePCLVal.m21_1_or_2_byte_Asian7bit)
+                    (int) PCLTextParsingMethods.PCLVal.m21_1_or_2_byte_Asian7bit)
                 {
                     if (c1 >= 0x21)
                         multiByteChar = true;
                 }
                 else if (textMode ==
-                    (int) PCLTextParsingMethods.ePCLVal.m2_2_byte)
+                    (int) PCLTextParsingMethods.PCLVal.m2_2_byte)
                 {
                     if (c1 != 0x1b)
                         multiByteChar = true;
                 }
                 else if (textMode ==
-                    (int) PCLTextParsingMethods.ePCLVal.m31_1_or_2_byte_ShiftJIS)
+                    (int) PCLTextParsingMethods.PCLVal.m31_1_or_2_byte_ShiftJIS)
                 {
                     if ((c1 >= 0x81) && (c1 <= 0x9f))
                         multiByteChar = true;
@@ -497,19 +497,19 @@ namespace PCLParaphernalia
                         multiByteChar = true;
                 }
                 else if (textMode ==
-                    (int) PCLTextParsingMethods.ePCLVal.m38_1_or_2_byte_Asian8bit)
+                    (int) PCLTextParsingMethods.PCLVal.m38_1_or_2_byte_Asian8bit)
                 {
                     if (c1 >= 0x80)
                         multiByteChar = true;
                 }
                 else if (textMode ==
-                    (int) PCLTextParsingMethods.ePCLVal.m83_UTF8)
+                    (int) PCLTextParsingMethods.PCLVal.m83_UTF8)
                 {
                     if (c1 >= 0x80)
                         utf8Char = true;
                 }
                 else if (textMode ==
-                    (int) PCLTextParsingMethods.ePCLVal.m1008_UTF8_alt)
+                    (int) PCLTextParsingMethods.PCLVal.m1008_UTF8_alt)
                 {
                     if (c1 >= 0x80)
                         utf8Char = true;

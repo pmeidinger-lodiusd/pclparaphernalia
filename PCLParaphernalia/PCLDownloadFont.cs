@@ -22,7 +22,7 @@ namespace PCLParaphernalia
 
         const ushort _defaultPCLDotRes = 300;
 
-        private enum ePCLFontFormat : byte
+        private enum PCLFontFormat : byte
         {
             Bitmap             = 0,
             IntellifontBound   = 10,
@@ -50,7 +50,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void fontFileClose()
+        private static void FontFileClose()
         {
             _binReader.Close();
             _ipStream.Close();
@@ -65,13 +65,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool fontFileCopy(BinaryWriter prnWriter,
+        public static bool FontFileCopy(BinaryWriter prnWriter,
                                            string fontFilename)
         {
             bool OK = true;
             long fileSize = 0;
 
-            bool fileOpen = fontFileOpen(fontFilename, ref fileSize);
+            bool fileOpen = FontFileOpen(fontFilename, ref fileSize);
 
             if (!fileOpen)
             {
@@ -98,7 +98,7 @@ namespace PCLParaphernalia
                        prnWriter.Write(buf, 0, readSize);
                 }
 
-                fontFileClose ();
+                FontFileClose ();
             }
 
             return OK;
@@ -113,7 +113,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool fontFileOpen(string fileName,
+        private static bool FontFileOpen(string fileName,
                                             ref long fileSize)
         {
             bool open = false;
@@ -242,7 +242,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool getFontCharacteristics (
+        public static bool GetFontCharacteristics (
             string fontFilename,
             ref bool proportional,
             ref bool scalable,
@@ -253,7 +253,7 @@ namespace PCLParaphernalia
             ref short weight,
             ref ushort typeface,
             ref ushort symSetNo,
-            ref PCLSymSetTypes.eIndex symSetType)
+            ref PCLSymSetTypes.Index symSetType)
         {
             bool OK = true;
             ushort hddrLen = 0;
@@ -270,7 +270,7 @@ namespace PCLParaphernalia
 
             //      _fontFileName = fontFilename;
 
-            bool fileOpen = fontFileOpen(fontFilename, ref fontFileSize);
+            bool fileOpen = FontFileOpen(fontFilename, ref fontFileSize);
 
             if (!fileOpen)
             {
@@ -278,14 +278,14 @@ namespace PCLParaphernalia
             }
             else
             {
-                OK = readHddrIntro (fontFilename,
+                OK = ReadHddrIntro (fontFilename,
                                     fontFileSize,
                                     ref fileOffset,
                                     ref hddrLen);
 
                 if (OK)
                 {
-                    OK = getFontSelectionData (fileOffset,
+                    OK = GetFontSelectionData (fileOffset,
                                                hddrLen,
                                                ref proportional,
                                                ref scalable,
@@ -299,7 +299,7 @@ namespace PCLParaphernalia
                                                ref symSetType);
                 }
 
-                fontFileClose ();
+                FontFileClose ();
             }
 
             return OK;
@@ -314,7 +314,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool getFontSelectionData (
+        private static bool GetFontSelectionData (
             int hddrOffset,
             int hddrLen,
             ref bool proportional,
@@ -326,7 +326,7 @@ namespace PCLParaphernalia
             ref short weight,
             ref ushort typeface,
             ref ushort symSetNo,
-            ref PCLSymSetTypes.eIndex symSetType)
+            ref PCLSymSetTypes.Index symSetType)
         {
             const bool OK = true;
 
@@ -355,31 +355,31 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            ePCLFontFormat hddrFormat = (ePCLFontFormat)hddr[2];
+            PCLFontFormat hddrFormat = (PCLFontFormat)hddr[2];
 
             switch (hddrFormat)
             {
-                case ePCLFontFormat.Bitmap:
+                case PCLFontFormat.Bitmap:
                     bitmapFont = true;
                     break;
 
-                case ePCLFontFormat.BitmapResSpec:
+                case PCLFontFormat.BitmapResSpec:
                     bitmapFont = true;
                     break;
 
-                case ePCLFontFormat.IntellifontBound:
+                case PCLFontFormat.IntellifontBound:
                     //  intelliFont = true;
                     break;
 
-                case ePCLFontFormat.IntellifontUnbound:
+                case PCLFontFormat.IntellifontUnbound:
                     //  intelliFont = true;
                     break;
 
-                case ePCLFontFormat.TrueType:
+                case PCLFontFormat.TrueType:
                     //  truetypeFont = true;
                     break;
 
-                case ePCLFontFormat.Universal:
+                case PCLFontFormat.Universal:
                     //  universalFont = true;
                     if (hddr[70] == 254)    // scaling technology
                         bitmapFont = true;
@@ -395,7 +395,7 @@ namespace PCLParaphernalia
             dotResX = _defaultPCLDotRes;
             dotResY = _defaultPCLDotRes;
 
-            if (hddrFormat == ePCLFontFormat.Universal)
+            if (hddrFormat == PCLFontFormat.Universal)
             {
                 if (bitmapFont)     // scaling technology = 254
                 {
@@ -461,7 +461,7 @@ namespace PCLParaphernalia
                     }
                 }
             }
-            else if (hddrFormat == ePCLFontFormat.BitmapResSpec)
+            else if (hddrFormat == PCLFontFormat.BitmapResSpec)
             {
                 dotResX = (ushort)((hddr[64] << 8) + hddr[65]);
                 dotResY = (ushort)((hddr[66] << 8) + hddr[67]);
@@ -474,9 +474,9 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            symSetType = PCLSymSetTypes.getIndexForIdPCL (hddr[3]);
+            symSetType = PCLSymSetTypes.GetIndexForIdPCL (hddr[3]);
 
-            bound = PCLSymSetTypes.isBound ((int)symSetType);
+            bound = PCLSymSetTypes.IsBound ((int)symSetType);
 
             //----------------------------------------------------------------//
 
@@ -544,7 +544,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool readHddrIntro (
+        private static bool ReadHddrIntro (
             string fileName,
             long fontFileSize,
             ref int fileOffset,
