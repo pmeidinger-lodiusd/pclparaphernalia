@@ -330,7 +330,6 @@ namespace PCLParaphernalia
         {
             bool flagOK = false;
 
-
             ComboBox source = e.Source as ComboBox;
 
             string cbName;
@@ -390,7 +389,6 @@ namespace PCLParaphernalia
             SelectionChangedEventArgs e)
         {
             bool flagOK = false;
-
 
             ComboBox source = e.Source as ComboBox;
 
@@ -452,7 +450,6 @@ namespace PCLParaphernalia
             SelectionChangedEventArgs e)
         {
             bool flagOK = false;
-
 
             ComboBox source = e.Source as ComboBox;
 
@@ -517,7 +514,6 @@ namespace PCLParaphernalia
             {
                 bool flagOK = false;
 
-
                 ComboBox source = e.Source as ComboBox;
 
                 string cbName;
@@ -579,7 +575,6 @@ namespace PCLParaphernalia
             SelectionChangedEventArgs e)
         {
             bool flagOK = false;
-
 
             ComboBox source = e.Source as ComboBox;
 
@@ -664,7 +659,6 @@ namespace PCLParaphernalia
             SelectionChangedEventArgs e)
         {
             bool flagOK = false;
-
 
             ComboBox source = e.Source as ComboBox;
 

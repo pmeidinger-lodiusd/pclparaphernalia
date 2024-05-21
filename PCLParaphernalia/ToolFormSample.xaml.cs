@@ -2256,7 +2256,6 @@ namespace PCLParaphernalia
             const ushort maxVal = 32767;
             ushort defVal;
 
-
             bool OK = true;
 
             string crntText;
@@ -2439,7 +2438,6 @@ namespace PCLParaphernalia
             const ushort minVal = 1;
             const ushort maxVal = 20;
             const ushort defVal = _defaultPageCount;
-
 
             bool OK = true;
 
@@ -2678,7 +2676,6 @@ namespace PCLParaphernalia
             const ushort minVal = 1;
             const ushort maxVal = 20;
             const ushort defVal = _defaultPageCount;
-
 
             bool OK = true;
 

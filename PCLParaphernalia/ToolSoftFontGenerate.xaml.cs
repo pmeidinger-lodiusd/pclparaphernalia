@@ -3483,7 +3483,6 @@ bitVal;
             const ushort maxVal = 1023;
             const ushort defVal = _defaultPCLStyleNo;
 
-
             bool OK = true;
 
             string crntText = txtPCLStyleNo.Text;
@@ -3555,7 +3554,6 @@ bitVal;
             const ushort minVal = 1;
             const ushort maxVal = 65530;
             const ushort defVal = _defaultSymSetNo;
-
 
             bool OK = true;
 
@@ -3641,7 +3639,6 @@ bitVal;
             const ushort maxVal = 65535;
             const ushort defVal = _defaultPCLTypefaceNo;
 
-
             bool OK = true;
 
             string crntText = txtPCLTypefaceNo.Text;
@@ -3712,7 +3709,6 @@ bitVal;
             const sbyte maxVal = 7;
             const sbyte defVal = _defaultPCLWeightNo;
 
-
             bool OK = true;
 
             string crntText = txtPCLWeightNo.Text;
@@ -3782,7 +3778,6 @@ bitVal;
             const ushort minVal = 0;
             const ushort maxVal = 65530;
             const ushort defVal = _defaultSymSetNo;
-
 
             bool OK = true;
 

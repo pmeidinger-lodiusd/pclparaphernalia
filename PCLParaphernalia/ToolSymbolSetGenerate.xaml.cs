@@ -2637,7 +2637,6 @@ bitVal;
         {
             bool flagOK = false;
 
-
             TextBox source = e.Source as TextBox;
 
             string txtBoxName;
@@ -2999,7 +2998,6 @@ bitVal;
             const ushort minVal = 0;
             const ushort maxVal = 1023;
             const ushort defVal = _defaultSymSetIdNum;
-
 
             bool OK = true;
 

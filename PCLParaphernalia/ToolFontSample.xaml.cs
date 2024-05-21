@@ -6183,7 +6183,6 @@ namespace PCLParaphernalia
             const ushort maxVal = 32767;
             const ushort defVal = _defaultFontStylePCL;
 
-
             bool OK = true;
 
             string crntText = txtPCLStyle.Text;
@@ -6250,7 +6249,6 @@ namespace PCLParaphernalia
             const ushort minVal = 0;
             const ushort maxVal = 65535;
             const ushort defVal = _defaultFontTypefacePCL;
-
 
             bool OK = true;
 
@@ -6319,7 +6317,6 @@ namespace PCLParaphernalia
             const short maxVal = 7;
             const short defVal = _defaultFontWeightPCL;
 
-
             bool OK = true;
 
             string crntText = txtPCLWeight.Text;
@@ -6386,7 +6383,6 @@ namespace PCLParaphernalia
             const ushort minVal = 0;
             const ushort maxVal = 32767;
             const ushort defVal = _defaultSoftFontIdPCL;
-
 
             bool OK = true;
 
@@ -6460,7 +6456,6 @@ namespace PCLParaphernalia
             const ushort minVal = 0;
             const ushort maxVal = 32767;
             const ushort defVal = _defaultSoftFontIdMacroPCL;
-
 
             bool OK = true;
 
@@ -6766,7 +6761,6 @@ namespace PCLParaphernalia
             const ushort minVal = 0;
             const ushort maxVal = 2047;
             const ushort defVal = _defaultSymSetIdNum;
-
 
             bool OK = true;
 

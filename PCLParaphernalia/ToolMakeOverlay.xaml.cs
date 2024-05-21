@@ -953,7 +953,6 @@ namespace PCLParaphernalia
             const ushort maxVal = 32767;
             const ushort defVal = _defaultPCLMacroId;
 
-
             bool OK = true;
 
             string crntText = txtPCLMacroId.Text;

@@ -729,7 +729,6 @@ namespace PCLParaphernalia
         {
             bool flagOK = true;
 
-
             string txtBoxName;
 
             //----------------------------------------------------------------//
