@@ -92,7 +92,7 @@ namespace PCLParaphernalia
             {
                 _isChecked = value;
 
-                onPropertyChanged ("IsChecked");
+                onPropertyChanged (nameof(IsChecked));
             }
         }
 
