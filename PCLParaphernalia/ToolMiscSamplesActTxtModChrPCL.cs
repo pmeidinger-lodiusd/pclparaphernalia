@@ -274,7 +274,6 @@ namespace PCLParaphernalia
             PCLWriter.text(prnWriter, posX, posY, 0,
                       "Extra space:");
 
-
             //----------------------------------------------------------------//
             //                                                                //
             // Overlay end.                                                   //

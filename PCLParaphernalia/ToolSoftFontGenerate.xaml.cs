@@ -19,7 +19,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2011
     ///
     /// </summary>
-
     [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 

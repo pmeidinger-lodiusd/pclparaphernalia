@@ -261,7 +261,6 @@ namespace PCLParaphernalia
             PCLWriter.text(prnWriter, posX, posY, 0,
                       "Non-orthogonal:");
 
-
             //----------------------------------------------------------------//
             //                                                                //
             // Overlay end.                                                   //

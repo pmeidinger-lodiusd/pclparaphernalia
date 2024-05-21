@@ -3912,7 +3912,6 @@ namespace PCLParaphernalia
                     tabLength + " < " + reqLength);
             }
 
-
             if (flagOK)
             {
                 byte[] hMetricsArray = new byte[hMetricsArraySize];

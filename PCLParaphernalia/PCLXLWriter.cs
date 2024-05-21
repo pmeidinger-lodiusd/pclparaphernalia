@@ -50,7 +50,6 @@ namespace PCLParaphernalia
         public const ushort _sessionUPI      = 600;
         public const ushort _pointsPerInch   = 72;
 
-
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
         // Class variables.                                                   //

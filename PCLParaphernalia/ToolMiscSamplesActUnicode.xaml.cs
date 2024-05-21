@@ -13,7 +13,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2015
     ///
     /// </summary>
-
     [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 

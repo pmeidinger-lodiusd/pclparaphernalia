@@ -16,7 +16,6 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2010-2017
     ///
     /// </summary>
-
     [Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
