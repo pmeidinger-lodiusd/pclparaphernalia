@@ -790,7 +790,9 @@ namespace PCLParaphernalia
             if ((i3  < PrnParseConstants.asciiSpace)    ||
                 (i3 == PrnParseConstants.asciiDEL)      ||
                 (i3  > PrnParseConstants.asciiMax8bit))
+            {
                 i3 = PrnParseConstants.asciiSubDefault;
+            }
 
             _valCharSetSubCode = i3;
         }

@@ -245,20 +245,24 @@ namespace PCLParaphernalia
             _ipStream.Seek (offsetStart, SeekOrigin.Begin);
 
             if (offsetStart != 0)
+            {
                 addRow (table,
                         "Comment",
                         "Start Offset   = " + offsetStart +
                         " (0x" + offsetStart.ToString ("X8") +
                         ") requested",
                         string.Empty);
+            }
 
             if (offsetEnd != -1)
+            {
                 addRow (table,
                         "Comment",
                         "End   Offset   = " + offsetEnd +
                         " (0x" + offsetEnd.ToString ("X8") +
                         ") requested",
                         string.Empty);
+            }
 
             //----------------------------------------------------------------//
 

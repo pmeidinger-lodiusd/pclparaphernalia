@@ -366,8 +366,10 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (formAsMacro)
+            {
                 PCLWriter.macroControl(prnWriter, _macroId,
                                        PCLWriter.eMacroControl.StartDef);
+            }
 
             PCLWriter.font(prnWriter, true, "19U", "s1p24v0s3b16602T");
 
@@ -698,8 +700,10 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (formAsMacro)
+            {
                 PCLWriter.macroControl(prnWriter, _macroId,
                                        PCLWriter.eMacroControl.StopDef);
+            }
         }
 
         //--------------------------------------------------------------------//

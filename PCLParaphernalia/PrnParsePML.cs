@@ -1325,7 +1325,9 @@ namespace PCLParaphernalia
 
                 if ((dataType == PMLDataTypes.eTag.Binary) ||
                     (dataType == PMLDataTypes.eTag.Collection))
+                {
                     chunkOp.Append ("]");
+                }
 
                 decode.Append (chunkOp);
             }

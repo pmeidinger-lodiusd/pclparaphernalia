@@ -152,12 +152,16 @@ namespace PCLParaphernalia
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 if (Helper_RegKey.keyExists(subKey, _subKeyPCL5))
+                {
                     // update from v2_5_0_0
                     Helper_RegKey.renameKey(subKey, _subKeyPCL5, _subKeyPCL);
+                }
 
                 if (Helper_RegKey.keyExists(subKey, _subKeyPCL6))
+                {
                     // update from v2_5_0_0
                     Helper_RegKey.renameKey(subKey, _subKeyPCL6, _subKeyPCLXL);
+                }
 
                 indxPDL = (int)subKey.GetValue(_nameIndxPDL,
                                                  _indexZero);

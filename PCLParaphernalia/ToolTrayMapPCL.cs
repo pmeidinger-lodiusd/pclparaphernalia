@@ -125,6 +125,7 @@ namespace PCLParaphernalia
             generateJobHeader(prnWriter);
 
             if (formAsMacro)
+            {
                 generateOverlaySet(prnWriter,
                                    pageCount,
                                    indxPaperSize,
@@ -136,6 +137,7 @@ namespace PCLParaphernalia
                                    ref indxFormsRear,
                                    ref macroIdsFront,
                                    ref macroIdsRear);
+            }
 
             generatePageSet(prnWriter,
                             pageCount,
@@ -153,9 +155,11 @@ namespace PCLParaphernalia
                             formAsMacro);
 
             if (formAsMacro)
+            {
                 generateOverlayDeletes (prnWriter,
                                         formCountFront, formCountRear,
                                         macroIdsFront, macroIdsRear);
+            }
 
             generateJobTrailer(prnWriter);
         }
@@ -244,8 +248,10 @@ namespace PCLParaphernalia
                   posYInc;
 
             if (formAsMacro)
+            {
                 PCLWriter.macroControl(prnWriter, macroId,
                                        PCLWriter.eMacroControl.StartDef);
+            }
 
             //----------------------------------------------------------------//
 
@@ -308,8 +314,10 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (formAsMacro)
+            {
                 PCLWriter.macroControl(prnWriter, macroId,
                                        PCLWriter.eMacroControl.StopDef);
+            }
         }
 
         //--------------------------------------------------------------------//
@@ -335,8 +343,10 @@ namespace PCLParaphernalia
                   ptSizeMain = (int)(scaleFactor * 18);
 
             if (formAsMacro)
+            {
                 PCLWriter.macroControl(prnWriter, macroId,
                                        PCLWriter.eMacroControl.StartDef);
+            }
 
             //----------------------------------------------------------------//
 
@@ -365,8 +375,10 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (formAsMacro)
+            {
                 PCLWriter.macroControl(prnWriter, macroId,
                                        PCLWriter.eMacroControl.StopDef);
+            }
         }
 
         //--------------------------------------------------------------------//

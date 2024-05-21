@@ -3353,9 +3353,11 @@ namespace PCLParaphernalia
                                         glyphIndex = byteArrayToUInt16 (ba2);
 
                                         if (glyphIndex != 0)
+                                        {
                                             glyphIndex =
                                                 (ushort)((idDelta + glyphIndex)
                                                           % 65536);
+                                        }
 
                                         if (_logVerbose)
                                         {
@@ -4814,8 +4816,10 @@ namespace PCLParaphernalia
                     _OS_2_sxHeight = 0;
 
                     if (tabLength >= 88)
+                    {
                         flagOK = readBytesAsInt16 ((int) (tabOffset + 86),
                                                    ref _OS_2_sxHeight);
+                    }
                 }
 
                 if (!flagOK)

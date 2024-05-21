@@ -570,8 +570,10 @@ namespace PCLParaphernalia
             _flagIgnoreC0 = true;
 
             if (_initialised)
+            {
                 mapDisplay (_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
                             _offsetMin);
+            }
         }
 
         //--------------------------------------------------------------------//
@@ -588,8 +590,10 @@ namespace PCLParaphernalia
             _flagIgnoreC0 = false;
 
             if (_initialised)
+            {
                 mapDisplay (_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
                             _offsetMin);
+            }
         }
 
         //--------------------------------------------------------------------//
@@ -606,8 +610,10 @@ namespace PCLParaphernalia
             _flagIgnoreC1 = true;
 
             if (_initialised)
+            {
                 mapDisplay (_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
                             _offsetMin);
+            }
         }
 
         //--------------------------------------------------------------------//
@@ -624,8 +630,10 @@ namespace PCLParaphernalia
             _flagIgnoreC1 = false;
 
             if (_initialised)
+            {
                 mapDisplay (_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
                             _offsetMin);
+            }
         }
 
         //--------------------------------------------------------------------//
@@ -1722,7 +1730,9 @@ bitVal;
 
             if ((_indxDonorSymSetSubset < 0) ||
                 (_indxDonorSymSetSubset >= _ctMappedSymSets))
+            {
                 _indxDonorSymSetSubset = 0;
+            }
         }
 
         //--------------------------------------------------------------------//
@@ -2955,8 +2965,10 @@ bitVal;
             OK = ushort.TryParse (crntText, out ushort value);
 
             if (OK)
+            {
                 if ((value < minVal) || (value > maxVal))
                     OK = false;
+            }
 
             if (!OK)
             {

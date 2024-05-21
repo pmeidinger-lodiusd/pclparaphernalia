@@ -104,8 +104,10 @@ namespace PCLParaphernalia
             generateJobHeader(prnWriter, pjlCommand);
 
             if (formAsMacro)
+            {
                 generateOverlay(prnWriter, true, paperWidth, paperLength,
                                 scaleText);
+            }
 
             generatePage(prnWriter,
                          indxPaperSize,

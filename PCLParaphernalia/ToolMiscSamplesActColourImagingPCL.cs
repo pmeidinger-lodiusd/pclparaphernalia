@@ -145,8 +145,10 @@ namespace PCLParaphernalia
             PCLWriter.stdJobHeader(prnWriter, string.Empty);
 
             if (formAsMacro)
+            {
                 generateOverlay(prnWriter, true, logXOffset,
                                 indxPaperSize, indxOrientation);
+            }
 
             PCLWriter.pageHeader(prnWriter,
                                  indxPaperSize,
@@ -211,8 +213,10 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (formAsMacro)
+            {
                 PCLWriter.macroControl(prnWriter, _macroId,
                                   PCLWriter.eMacroControl.StartDef);
+            }
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -356,8 +360,10 @@ namespace PCLParaphernalia
                                   0);
 
             if (formAsMacro)
+            {
                 PCLWriter.macroControl(prnWriter, 0,
                                        PCLWriter.eMacroControl.StopDef);
+            }
         }
 
         //--------------------------------------------------------------------//

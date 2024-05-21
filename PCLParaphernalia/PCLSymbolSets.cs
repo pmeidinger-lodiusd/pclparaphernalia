@@ -233,7 +233,9 @@ namespace PCLParaphernalia
             {
                 if ((getKind1 (i) == kind1) &&
                     (getGroup (i) != eSymSetGroup.UserSet))
+                {
                     return i;
+                }
             }
 
             return -1;

@@ -4434,6 +4434,7 @@ namespace PCLParaphernalia
                 line1);
 
             if (line2 != string.Empty)
+            {
                 PrnParseCommon.addTextRow (
                     PrnParseRowTypes.eType.MsgWarning,
                     _table,
@@ -4442,8 +4443,10 @@ namespace PCLParaphernalia
                     string.Empty,
                     string.Empty,
                     line2);
+            }
 
             if (line3 != string.Empty)
+            {
                 PrnParseCommon.addTextRow (
                     PrnParseRowTypes.eType.MsgWarning,
                     _table,
@@ -4452,6 +4455,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     string.Empty,
                     line3);
+            }
         }
     }
 }

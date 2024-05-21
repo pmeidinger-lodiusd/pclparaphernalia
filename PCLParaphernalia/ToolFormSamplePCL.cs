@@ -189,10 +189,12 @@ namespace PCLParaphernalia
                                                     formFileMain);
 
                     if (!flagMacroRemove)
+                    {
                         PCLWriter.macroControl(
                             prnWriter,
                             (short)macroIdMain,
                             PCLWriter.eMacroControl.MakePermanent);
+                    }
                 }
                 else
                 {
@@ -203,22 +205,28 @@ namespace PCLParaphernalia
                     //--------------------------------------------------------//
 
                     if (!flagMainEncapsulated)
+                    {
                         PCLWriter.macroControl(prnWriter,
                                                 (short)macroIdMain,
                                                 PCLWriter.eMacroControl.StartDef);
+                    }
 
                     PCLDownloadMacro.macroFileCopy(prnWriter, formFileMain);
 
                     if (!flagMainEncapsulated)
+                    {
                         PCLWriter.macroControl(prnWriter,
                                                 (short)macroIdMain,
                                                 PCLWriter.eMacroControl.StopDef);
+                    }
 
                     if (!flagMacroRemove)
+                    {
                         PCLWriter.macroControl(
                             prnWriter,
                             (short)macroIdMain,
                             PCLWriter.eMacroControl.MakePermanent);
+                    }
                 }
             }
 
@@ -253,10 +261,12 @@ namespace PCLParaphernalia
                                                         formFileRear);
 
                         if (!flagMacroRemove)
+                        {
                             PCLWriter.macroControl(
                                 prnWriter,
                                 (short)macroIdRear,
                                 PCLWriter.eMacroControl.MakePermanent);
+                        }
                     }
                     else
                     {
@@ -267,24 +277,30 @@ namespace PCLParaphernalia
                         //----------------------------------------------------//
 
                         if (!flagRearEncapsulated)
+                        {
                             PCLWriter.macroControl(
                                 prnWriter,
                                 (short)macroIdRear,
                                 PCLWriter.eMacroControl.StartDef);
+                        }
 
                         PCLDownloadMacro.macroFileCopy(prnWriter, formFileRear);
 
                         if (!flagRearEncapsulated)
+                        {
                             PCLWriter.macroControl(
                                 prnWriter,
                                 (short)macroIdRear,
                                 PCLWriter.eMacroControl.StopDef);
+                        }
 
                         if (!flagMacroRemove)
+                        {
                             PCLWriter.macroControl(
                                 prnWriter,
                                 (short)macroIdRear,
                                 PCLWriter.eMacroControl.MakePermanent);
+                        }
                     }
                 }
             }
@@ -309,16 +325,20 @@ namespace PCLParaphernalia
             if (flagMacroRemove)
             {
                 if (flagMainForm)
+                {
                     PCLWriter.macroControl (
                         prnWriter,
                         (short) macroIdMain,
                         PCLWriter.eMacroControl.Delete);
+                }
 
                 if (flagRearForm)
+                {
                     PCLWriter.macroControl (
                         prnWriter,
                         (short) macroIdRear,
                         PCLWriter.eMacroControl.Delete);
+                }
             }
 
             PCLWriter.stdJobTrailer (prnWriter, false, -1);
@@ -535,8 +555,10 @@ namespace PCLParaphernalia
                     posY += incPosY;
 
                     if (flagRearForm && flagRearBPlate)
-                            PCLWriter.text (prnWriter, posX, posY, 0,
+                    {
+                        PCLWriter.text (prnWriter, posX, posY, 0,
                                 "Rear Form is boilerplate");
+                    }
                 }
 
                 //------------------------------------------------------------//

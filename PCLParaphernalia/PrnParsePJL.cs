@@ -994,6 +994,7 @@ namespace PCLParaphernalia
                         seqLen = quoteEnd - quoteStart - 1;
 
                         if (seqLen > 0)
+                        {
                             invalidSeqFound =
                                 parsePML.processPMLASCIIHex (_buf,
                                                             _fileOffset,
@@ -1002,6 +1003,7 @@ namespace PCLParaphernalia
                                                             _linkData,
                                                             _options,
                                                             _table);
+                        }
                     }
                 }
 

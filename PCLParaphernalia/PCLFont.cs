@@ -333,11 +333,15 @@ namespace PCLParaphernalia
                 // Bitmap; the size is pre-defined.
 
                 if (_proportional)
+                {
                     // Bitmap; proportionally-spaced
                     seq += _pointSize.ToString() + "v";
+                }
                 else
+                {
                     // Bitmap; fixed-pitch
-                    seq += _pointSize.ToString() + "v" + _pitch.ToString()     + "h";
+                    seq += _pointSize.ToString() + "v" + _pitch.ToString() + "h";
+                }
             }
 
             if (variant == PCLFonts.eVariant.Italic)

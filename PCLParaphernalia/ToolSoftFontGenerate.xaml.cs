@@ -1942,7 +1942,9 @@ bitVal;
 
             if ((_indxSymSetSubset < 0) ||
                 (_indxSymSetSubset >= _ctMappedSymSets))
+            {
                 _indxSymSetSubset = 0;
+            }
 
             ToolSoftFontGenPersist.loadDataPCL (
                 ref _fontFolderPCL,

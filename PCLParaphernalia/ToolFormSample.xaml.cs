@@ -2272,8 +2272,10 @@ namespace PCLParaphernalia
             OK = ushort.TryParse(crntText, out ushort value);
 
             if (OK)
+            {
                 if ((value < minVal) || (value > maxVal))
                     OK = false;
+            }
 
             if (OK)
             {
@@ -2441,8 +2443,10 @@ namespace PCLParaphernalia
             OK = ushort.TryParse (crntText, out ushort value);
 
             if (OK)
+            {
                 if ((value < minVal) || (value > maxVal))
                     OK = false;
+            }
 
             if (OK)
             {
@@ -2679,8 +2683,10 @@ namespace PCLParaphernalia
             OK = ushort.TryParse (crntText, out ushort value);
 
             if (OK)
+            {
                 if ((value < minVal) || (value > maxVal))
                     OK = false;
+            }
 
             if (OK)
             {

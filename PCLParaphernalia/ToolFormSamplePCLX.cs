@@ -203,12 +203,16 @@ namespace PCLParaphernalia
             if (flagStreamRemove)
             {
                 if (flagMainForm)
+                {
                     PCLXLWriter.streamRemove (prnWriter,
                                              formNameMain);
+                }
 
                 if (flagRearForm)
+                {
                     PCLXLWriter.streamRemove (prnWriter,
                                              formNameRear);
+                }
             }
 
             PCLXLWriter.stdJobTrailer (prnWriter, false, string.Empty);
@@ -427,6 +431,7 @@ namespace PCLParaphernalia
                     posY += incPosY;
 
                     if (flagRearForm)
+                    {
                         if (flagRearBPlate)
                             PCLXLWriter.text(prnWriter, false, false,
                                               PCLXLWriter.advances_Courier,
@@ -437,6 +442,7 @@ namespace PCLParaphernalia
                                               PCLXLWriter.advances_Courier,
                                               crntPtSize, posX, posY,
                                               "Rear Form:");
+                    }
                 }
 
                 //------------------------------------------------------------//
@@ -703,10 +709,12 @@ namespace PCLParaphernalia
                 //------------------------------------------------------------//
 
                 if (!flagSimplexJob)
+                {
                     if (!flagRearForm)
                         flagFrontFace = !flagFrontFace;
                     else if (!flagRearBPlate)
                         flagFrontFace = !flagFrontFace;
+                }
             }
         }
     }

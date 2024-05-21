@@ -184,8 +184,10 @@ namespace PCLParaphernalia
             PCLWriter.stdJobHeader(prnWriter, pjlCommand);
 
             if (formAsMacro)
+            {
                 generateOverlay(prnWriter, true,
                                 paperWidth, paperLength, logXOffset, scaleText);
+            }
 
             if (customPaperSize)
                 PCLWriter.pageHeaderCustom (prnWriter,
@@ -263,8 +265,10 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (formAsMacro)
+            {
                 PCLWriter.macroControl(prnWriter, _macroId,
                                   PCLWriter.eMacroControl.StartDef);
+            }
 
             //----------------------------------------------------------------//
             //                                                                //

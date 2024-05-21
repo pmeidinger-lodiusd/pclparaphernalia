@@ -424,8 +424,10 @@ namespace PCLParaphernalia
             if (_initialised && cbResolution.HasItems)
             {
                 if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+                {
                     _indxRasterResolutionPCL =
                         (ushort)cbResolution.SelectedIndex;
+                }
             }
         }
 
@@ -598,15 +600,21 @@ namespace PCLParaphernalia
 
             if ((_indxOrientationPCL < 0) ||
                 (_indxOrientationPCL >= _ctOrientations))
+            {
                 _indxOrientationPCL = 0;
+            }
 
             if ((_indxPaperSizePCL < 0) ||
                 (_indxPaperSizePCL >= _ctPaperSizes))
+            {
                 _indxPaperSizePCL = 0;
+            }
 
             if ((_indxPaperTypePCL < 0) ||
                 (_indxPaperTypePCL >= _ctPaperTypes))
+            {
                 _indxPaperTypePCL = 0;
+            }
 
             ToolImageBitmapPersist.loadDataPCL("PCLXL",
                                                ref _indxOrientationPCLXL,
@@ -615,15 +623,21 @@ namespace PCLParaphernalia
 
             if ((_indxOrientationPCLXL < 0) ||
                 (_indxOrientationPCLXL >= _ctOrientations))
+            {
                 _indxOrientationPCLXL = 0;
+            }
 
             if ((_indxPaperSizePCLXL  < 0) ||
                 (_indxPaperSizePCLXL >= _ctPaperSizes))
+            {
                 _indxPaperSizePCLXL = 0;
+            }
 
             if ((_indxPaperTypePCLXL < 0) ||
                 (_indxPaperTypePCLXL >= _ctPaperTypes))
+            {
                 _indxPaperTypePCLXL = 0;
+            }
         }
 
         //--------------------------------------------------------------------//

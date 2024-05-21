@@ -518,7 +518,9 @@ namespace PCLParaphernalia
 
                 if ((mapIndx >= rangeC1Min) && (mapIndx <= rangeC1Max) &&
                     (mapCode != 0xffff))
+                {
                     usesC1Range = true;
+                }
 
                 map [mapIndx] = mapCode;
             }

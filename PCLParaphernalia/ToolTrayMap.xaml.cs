@@ -1102,27 +1102,39 @@ namespace PCLParaphernalia
 
                 if ((_indxPaperSizePCL[i] < 0) ||
                     (_indxPaperSizePCL[i] >= _ctPaperSizes))
+                {
                     _indxPaperSizePCL[i] = 0;
+                }
 
                 if ((_indxPaperTypePCL[i] < 0) ||
                     (_indxPaperTypePCL[i] >= _ctPaperTypes))
+                {
                     _indxPaperTypePCL[i] = 0;
+                }
 
                 if ((_indxPaperTrayPCL[i] < 0) ||
                     (_indxPaperTrayPCL[i] >= (_maxPaperTray+1)))
+                {
                     _indxPaperTrayPCL[i] = 0;
+                }
 
                 if ((_indxPlexModePCL[i] < 0) ||
                     (_indxPlexModePCL[i] >= _ctPlexModes))
+                {
                     _indxPlexModePCL[i] = 0;
+                }
 
                 if ((_indxOrientFrontPCL[i] < 0) ||
                     (_indxOrientFrontPCL[i] >= _ctOrientations))
+                {
                     _indxOrientFrontPCL[i] = 0;
+                }
 
                 if ((_indxOrientRearPCL[i] < 0) ||
                     (_indxOrientRearPCL[i] >= _ctOrientations))
+                {
                     _indxOrientRearPCL[i] = 0;
+                }
             }
             //----------------------------------------------------------------//
 
@@ -1140,27 +1152,39 @@ namespace PCLParaphernalia
 
                 if ((_indxPaperSizePCLXL[i] < 0) ||
                     (_indxPaperSizePCLXL[i] >= _ctPaperSizes))
+                {
                     _indxPaperSizePCLXL[i] = 0;
+                }
 
                 if ((_indxPaperTypePCLXL[i] < 0) ||
                     (_indxPaperTypePCLXL[i] >= _ctPaperTypes))
+                {
                     _indxPaperTypePCLXL[i] = 0;
+                }
 
                 if ((_indxPaperTrayPCLXL[i] < 0) ||
                     (_indxPaperTrayPCLXL[i] >= (_maxPaperTray + 1)))
+                {
                     _indxPaperTrayPCLXL[i] = 0;
+                }
 
                 if ((_indxPlexModePCLXL[i] < 0) ||
                     (_indxPlexModePCLXL[i] >= _ctPlexModes))
+                {
                     _indxPlexModePCLXL[i] = 0;
+                }
 
                 if ((_indxOrientFrontPCLXL[i] < 0) ||
                     (_indxOrientFrontPCLXL[i] >= _ctOrientations))
+                {
                     _indxOrientFrontPCLXL[i] = 0;
+                }
 
                 if ((_indxOrientRearPCLXL[i] < 0) ||
                     (_indxOrientRearPCLXL[i] >= _ctOrientations))
+                {
                     _indxOrientRearPCLXL[i] = 0;
+                }
             }
         }
 

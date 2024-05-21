@@ -718,7 +718,9 @@ namespace PCLParaphernalia
 
                 if ((_indxLogOperModePCL < 0) ||
                     (_indxLogOperModePCL >= _ctLogOperModesPCL))
+                {
                     _indxLogOperModePCL = 0;
+                }
 
                 //------------------------------------------------------------//
 
@@ -761,13 +763,17 @@ namespace PCLParaphernalia
 
                 if ((_indxLogOperROPFromPCL < _logOperROPMin) ||
                     (_indxLogOperROPFromPCL > tempCt))
+                {
                     _indxLogOperROPFromPCL = 0;
+                }
 
                 cbLogOperROPFromPCL.SelectedIndex = _indxLogOperROPFromPCL;
 
                 if ((_indxLogOperROPToPCL < _indxLogOperROPFromPCL) ||
                     (_indxLogOperROPToPCL > tempCt))
+                {
                     _indxLogOperROPToPCL = tempCt;
+                }
 
                 cbLogOperROPToPCL.SelectedIndex = _indxLogOperROPToPCL;
 
@@ -797,7 +803,9 @@ namespace PCLParaphernalia
 
                 if ((_indxLogOperModePCLXL < 0) ||
                     (_indxLogOperModePCLXL >= _ctLogOperModesPCLXL))
+                {
                     _indxLogOperModePCLXL = 0;
+                }
 
                 //------------------------------------------------------------//
 
@@ -840,13 +848,17 @@ namespace PCLParaphernalia
 
                 if ((_indxLogOperROPFromPCLXL < _logOperROPMin) ||
                     (_indxLogOperROPFromPCLXL > tempCt))
+                {
                     _indxLogOperROPFromPCLXL = 0;
+                }
 
                 cbLogOperROPFromPCLXL.SelectedIndex = _indxLogOperROPFromPCLXL;
 
                 if ((_indxLogOperROPToPCLXL < _indxLogOperROPFromPCLXL) ||
                     (_indxLogOperROPToPCLXL > tempCt))
+                {
                     _indxLogOperROPToPCLXL = tempCt;
+                }
 
                 cbLogOperROPToPCLXL.SelectedIndex = _indxLogOperROPToPCLXL;
 
@@ -948,15 +960,21 @@ namespace PCLParaphernalia
 
             if ((_indxLogOperClrD1PCL < 0) ||
                 (_indxLogOperClrD1PCL > tempCt))
+            {
                 _indxLogOperClrD1PCL = 0;
+            }
 
             if ((_indxLogOperClrS1PCL < 0) ||
                 (_indxLogOperClrS1PCL > tempCt))
+            {
                 _indxLogOperClrS1PCL = 0;
+            }
 
             if ((_indxLogOperClrT1PCL < 0) ||
                 (_indxLogOperClrT1PCL > tempCt))
+            {
                 _indxLogOperClrT1PCL = 0;
+            }
 
             cbLogOperClrD1PCL.SelectedIndex = _indxLogOperClrD1PCL;
             cbLogOperClrS1PCL.SelectedIndex = _indxLogOperClrS1PCL;
@@ -990,15 +1008,21 @@ namespace PCLParaphernalia
 
             if ((_indxLogOperClrD2PCL < 0) ||
                 (_indxLogOperClrD2PCL > tempCt))
+            {
                 _indxLogOperClrD2PCL = 0;
+            }
 
             if ((_indxLogOperClrS2PCL < 0) ||
                 (_indxLogOperClrS2PCL > tempCt))
+            {
                 _indxLogOperClrS2PCL = 0;
+            }
 
             if ((_indxLogOperClrT2PCL < 0) ||
                 (_indxLogOperClrT2PCL > tempCt))
+            {
                 _indxLogOperClrT2PCL = 0;
+            }
 
             cbLogOperClrD2PCL.SelectedIndex = _indxLogOperClrD2PCL;
             cbLogOperClrS2PCL.SelectedIndex = _indxLogOperClrS2PCL;
@@ -1046,15 +1070,21 @@ namespace PCLParaphernalia
 
             if ((_indxLogOperClrD1PCLXL < 0) ||
                 (_indxLogOperClrD1PCLXL > tempCt))
+            {
                 _indxLogOperClrD1PCLXL = 0;
+            }
 
             if ((_indxLogOperClrS1PCLXL < 0) ||
                 (_indxLogOperClrS1PCLXL > tempCt))
+            {
                 _indxLogOperClrS1PCLXL = 0;
+            }
 
             if ((_indxLogOperClrT1PCLXL < 0) ||
                 (_indxLogOperClrT1PCLXL > tempCt))
+            {
                 _indxLogOperClrT1PCLXL = 0;
+            }
 
             cbLogOperClrD1PCLXL.SelectedIndex = _indxLogOperClrD1PCLXL;
             cbLogOperClrS1PCLXL.SelectedIndex = _indxLogOperClrS1PCLXL;
@@ -1088,15 +1118,21 @@ namespace PCLParaphernalia
 
             if ((_indxLogOperClrD2PCLXL < 0) ||
                 (_indxLogOperClrD2PCLXL > tempCt))
+            {
                 _indxLogOperClrD2PCLXL = 0;
+            }
 
             if ((_indxLogOperClrS2PCLXL < 0) ||
                 (_indxLogOperClrS2PCLXL > tempCt))
+            {
                 _indxLogOperClrS2PCLXL = 0;
+            }
 
             if ((_indxLogOperClrT2PCLXL < 0) ||
                 (_indxLogOperClrT2PCLXL > tempCt))
+            {
                 _indxLogOperClrT2PCLXL = 0;
+            }
 
             cbLogOperClrD2PCLXL.SelectedIndex = _indxLogOperClrD2PCLXL;
             cbLogOperClrS2PCLXL.SelectedIndex = _indxLogOperClrS2PCLXL;
@@ -1156,15 +1192,21 @@ namespace PCLParaphernalia
 
             if ((_indxLogOperGrayD1PCLXL < minLevel) ||
                 (_indxLogOperGrayD1PCLXL > maxLevel))
+            {
                 _indxLogOperGrayD1PCLXL = minLevel;
+            }
 
             if ((_indxLogOperGrayS1PCLXL < minLevel) ||
                 (_indxLogOperGrayS1PCLXL > maxLevel))
+            {
                 _indxLogOperGrayS1PCLXL = minLevel;
+            }
 
             if ((_indxLogOperGrayT1PCLXL < minLevel) ||
                 (_indxLogOperGrayT1PCLXL > maxLevel))
+            {
                 _indxLogOperGrayT1PCLXL = minLevel;
+            }
 
             cbLogOperGrayD1PCLXL.SelectedIndex = _indxLogOperGrayD1PCLXL;
             cbLogOperGrayS1PCLXL.SelectedIndex = _indxLogOperGrayS1PCLXL;
@@ -1178,15 +1220,21 @@ namespace PCLParaphernalia
 
             if ((_indxLogOperGrayD2PCLXL < minLevel) ||
                 (_indxLogOperGrayD2PCLXL > maxLevel))
+            {
                 _indxLogOperGrayD2PCLXL = 0;
+            }
 
             if ((_indxLogOperGrayS2PCLXL < minLevel) ||
                 (_indxLogOperGrayS2PCLXL > maxLevel))
+            {
                 _indxLogOperGrayS2PCLXL = 0;
+            }
 
             if ((_indxLogOperGrayT2PCLXL < minLevel) ||
                 (_indxLogOperGrayT2PCLXL > maxLevel))
+            {
                 _indxLogOperGrayT2PCLXL = 0;
+            }
 
             cbLogOperGrayD2PCLXL.SelectedIndex = _indxLogOperGrayD2PCLXL;
             cbLogOperGrayS2PCLXL.SelectedIndex = _indxLogOperGrayS2PCLXL;
@@ -1234,15 +1282,21 @@ namespace PCLParaphernalia
 
             if ((_indxLogOperMonoD1PCL < 0) ||
                 (_indxLogOperMonoD1PCL > tempCt))
+            {
                 _indxLogOperMonoD1PCL = 0;
+            }
 
             if ((_indxLogOperMonoS1PCL < 0) ||
                 (_indxLogOperMonoS1PCL > tempCt))
+            {
                 _indxLogOperMonoS1PCL = 0;
+            }
 
             if ((_indxLogOperMonoT1PCL < 0) ||
                 (_indxLogOperMonoT1PCL > tempCt))
+            {
                 _indxLogOperMonoT1PCL = 0;
+            }
 
             cbLogOperMonoD1PCL.SelectedIndex = _indxLogOperMonoD1PCL;
             cbLogOperMonoS1PCL.SelectedIndex = _indxLogOperMonoS1PCL;
@@ -1276,15 +1330,21 @@ namespace PCLParaphernalia
 
             if ((_indxLogOperMonoD2PCL < 0) ||
                 (_indxLogOperMonoD2PCL > tempCt))
+            {
                 _indxLogOperMonoD2PCL = 0;
+            }
 
             if ((_indxLogOperMonoS2PCL < 0) ||
                 (_indxLogOperMonoS2PCL > tempCt))
+            {
                 _indxLogOperMonoS2PCL = 0;
+            }
 
             if ((_indxLogOperMonoS2PCL < 0) ||
                 (_indxLogOperMonoS2PCL > tempCt))
+            {
                 _indxLogOperMonoT2PCL = 0;
+            }
 
             cbLogOperMonoD2PCL.SelectedIndex = _indxLogOperMonoD2PCL;
             cbLogOperMonoS2PCL.SelectedIndex = _indxLogOperMonoS2PCL;

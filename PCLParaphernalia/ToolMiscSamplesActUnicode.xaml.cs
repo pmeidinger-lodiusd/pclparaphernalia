@@ -187,7 +187,9 @@ namespace PCLParaphernalia
             {
                 if ((_indxUnicodeFontPCL < 0) ||
                     (_indxUnicodeFontPCL >= _ctUnicodeFonts))
+                {
                     _indxUnicodeFontPCL = 0;
+                }
 
                 cbUnicodeFont.SelectedIndex = _indxUnicodeFontPCL;
 
@@ -204,7 +206,9 @@ namespace PCLParaphernalia
             {
                 if ((_indxUnicodeFontPCLXL < 0) ||
                     (_indxUnicodeFontPCLXL >= _ctUnicodeFonts))
+                {
                     _indxUnicodeFontPCLXL = 0;
+                }
 
                 cbUnicodeFont.SelectedIndex = _indxUnicodeFontPCLXL;
 

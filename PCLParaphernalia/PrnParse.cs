@@ -414,8 +414,10 @@ namespace PCLParaphernalia
                                     langName = "PCL";
 
                                     if (makeMacroScan || makeMacroRun)
+                                    {
                                         if (_crntPDL == ToolCommonData.ePrintLang.Prescribe)
                                             endReached = false;
+                                    }
 
                                     break;
 
@@ -435,10 +437,13 @@ namespace PCLParaphernalia
                                     langName = "PJL";
 
                                     if (makeMacroScan || makeMacroRun)
+                                    {
                                         if (_linkData.IsEofSet && (bufRem == 0))
                                             newPDL = ToolCommonData.ePrintLang.PCL;
                                         else
                                             endReached = false;
+                                    }
+
                                     break;
 
                                 case ToolCommonData.ePrintLang.PostScript:
@@ -449,8 +454,10 @@ namespace PCLParaphernalia
                                     langName = "Prescribe";
 
                                     if (makeMacroScan || makeMacroRun)
+                                    {
                                         if (bufOffset== 0)
                                             endReached = false;
+                                    }
 
                                     break;
 
@@ -835,6 +842,7 @@ namespace PCLParaphernalia
                 }
 
                 if (offsetStart != 0)
+                {
                     PrnParseCommon.addTextRow (
                         PrnParseRowTypes.eType.MsgComment,
                         _table,
@@ -845,8 +853,10 @@ namespace PCLParaphernalia
                         "Start Offset   = " + offsetStart +
                         " (0x" + offsetStart.ToString ("X8") +
                         ") requested");
+                }
 
                 if (offsetEnd != -1)
+                {
                     PrnParseCommon.addTextRow (
                         PrnParseRowTypes.eType.MsgComment,
                         _table,
@@ -857,6 +867,7 @@ namespace PCLParaphernalia
                         "End   Offset   = " + offsetEnd +
                         " (0x" + offsetEnd.ToString ("X8") +
                         ") requested");
+                }
             }
 
             if (_fileSize == 0)

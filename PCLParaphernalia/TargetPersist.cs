@@ -94,10 +94,12 @@ namespace PCLParaphernalia
             using (RegistryKey subKey = keyMain.CreateSubKey (_subKeyTarget))
             {
                 if (Helper_RegKey.keyExists (subKey, _subKeyTargetPrinter))
+                {
                     // update from v2_5_0_0
                     Helper_RegKey.renameKey (subKey,
                                            _subKeyTargetPrinter,
                                            _subKeyTargetNetPrinter);
+                }
             }
 
             //----------------------------------------------------------------//

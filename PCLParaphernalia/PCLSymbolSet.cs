@@ -153,9 +153,7 @@ namespace PCLParaphernalia
             get
             {
                 if (! _mapped)
-                {
                     return false;
-                }
                 else if (PCLSymSetMaps.nullMapStd((int)_mapId))
                     return false;
                 else

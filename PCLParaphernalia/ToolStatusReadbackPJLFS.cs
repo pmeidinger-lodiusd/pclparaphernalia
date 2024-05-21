@@ -845,7 +845,9 @@ namespace PCLParaphernalia
                 {
                     if ((indxText + i >= cmdLen) ||
                         (textSize[i] != replyBlock[indxText + i]))
+                    {
                         sizeTextFound = false;
+                    }
                 }
             }
 

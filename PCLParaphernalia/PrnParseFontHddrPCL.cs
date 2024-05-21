@@ -313,10 +313,12 @@ namespace PCLParaphernalia
                     _firstSeg = false;
 
                     if (!continuation)
+                    {
                         if (validSegs)
                             _nextStage = eStage.ShowCopyright;
                         else
                             _nextStage = eStage.BadSeqA;
+                    }
                 }
                 else
                 {

@@ -79,10 +79,12 @@ namespace PCLParaphernalia
             using (RegistryKey subKey = keyMain.CreateSubKey(_subKeyTools))
             {
                 if (Helper_RegKey.keyExists(subKey, _subKeyToolsPDLData))
+                {
                     // update from v2_5_0_0
                     Helper_RegKey.renameKey(subKey,
                                            _subKeyToolsPDLData,
                                            _subKeyToolsPrintLang);
+                }
             }
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))

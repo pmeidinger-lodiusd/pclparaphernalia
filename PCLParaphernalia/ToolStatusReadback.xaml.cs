@@ -460,7 +460,9 @@ namespace PCLParaphernalia
 
                 if (PJLCategories.getType (_indxPJLCategory) ==
                     PJLCategories.eCategoryType.Custom)
+                {
                     txtPJLCustomCat.Visibility = Visibility.Visible;
+                }
             }
             else
             {
@@ -471,7 +473,9 @@ namespace PCLParaphernalia
 
                 if (PJLVariables.getType (_indxPJLVariable) ==
                     PJLVariables.eVarType.Custom)
+                {
                     txtPJLCustomVar.Visibility = Visibility.Visible;
+                }
             }
 
             txtReply.Clear();
@@ -834,13 +838,17 @@ namespace PCLParaphernalia
                     {
                         if (PJLCategories.getType (_indxPJLCategory) ==
                             PJLCategories.eCategoryType.Custom)
+                        {
                             txtPJLCustomCat.Visibility = Visibility.Visible;
+                        }
                     }
                     else if (_reqTypePJL == PJLCommands.eRequestType.Variable)
                     {
                         if (PJLVariables.getType (_indxPJLVariable) ==
                             PJLVariables.eVarType.Custom)
+                        {
                             txtPJLCustomVar.Visibility = Visibility.Visible;
+                        }
                     }
                 }
             }
@@ -899,29 +907,41 @@ namespace PCLParaphernalia
 
             if ((_indxPCLEntityType < 0) ||
                 (_indxPCLEntityType >= _ctPCLEntityTypes))
+            {
                 _indxPCLEntityType = 0;
+            }
 
             if ((_indxPCLLocType < 0) ||
                 (_indxPCLLocType >= _ctPCLLocTypes))
+            {
                 _indxPCLLocType = 0;
+            }
 
             //----------------------------------------------------------------//
 
             if ((_indxPJLCategory < 0) ||
                 (_indxPJLCategory >= _ctPJLCategories))
+            {
                 _indxPJLCategory = 0;
+            }
 
             if ((_indxPJLCommand < 0) ||
                 (_indxPJLCommand >= _ctPJLCommands))
+            {
                 _indxPJLCommand = 0;
+            }
 
             if ((_indxPJLVariable < 0) ||
                 (_indxPJLVariable >= _ctPJLVariables))
+            {
                 _indxPJLVariable = 0;
+            }
 
             if ((_indxPJLFSCommand < 0) ||
                 (_indxPJLFSCommand >= _ctPJLFSCommands))
+            {
                 _indxPJLFSCommand = 0;
+            }
         }
 
         //--------------------------------------------------------------------//
@@ -1448,8 +1468,10 @@ namespace PCLParaphernalia
             OK = int.TryParse (crntText, out int value);
 
             if (OK)
+            {
                 if (value < 0)
                     OK = false;
+            }
 
             if (OK)
             {
@@ -1522,8 +1544,10 @@ namespace PCLParaphernalia
             OK = int.TryParse (crntText, out int value);
 
             if (OK)
+            {
                 if (value < 0)
                     OK = false;
+            }
 
             if (OK)
             {

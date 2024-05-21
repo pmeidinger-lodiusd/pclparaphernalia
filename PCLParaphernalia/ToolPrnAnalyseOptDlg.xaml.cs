@@ -2811,8 +2811,10 @@ namespace PCLParaphernalia
             OK = int.TryParse (crntText, out int value);
 
             if (OK && (value != -1))
+            {
                 if ((value > _fileSize) || (value < _valCurFOffsetStart))
                     OK = false;
+            }
 
             if (OK)
             {
@@ -2859,8 +2861,10 @@ namespace PCLParaphernalia
             OK = int.TryParse (crntText, out int value);
 
             if (OK)
+            {
                 if ((value < 0) || (value > _fileSize))
                     OK = false;
+            }
 
             if (OK)
             {

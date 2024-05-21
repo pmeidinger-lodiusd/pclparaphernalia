@@ -101,6 +101,7 @@ namespace PCLParaphernalia
             generateJobHeader(prnWriter);
 
             if (formAsMacro)
+            {
                 generateOverlaySet (prnWriter,
                                    pageCount,
                                    indxPaperSize,
@@ -112,6 +113,7 @@ namespace PCLParaphernalia
                                    ref indxFormsRear,
                                    ref formNamesFront,
                                    ref formNamesRear);
+            }
 
             generatePageSet(prnWriter,
                             pageCount,
@@ -129,9 +131,11 @@ namespace PCLParaphernalia
                             formAsMacro);
 
             if (formAsMacro)
+            {
                 generateOverlayDeletes (prnWriter,
                                         formCountFront, formCountRear,
                                         formNamesFront, formNamesRear);
+            }
 
             generateJobTrailer(prnWriter);
         }

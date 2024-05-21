@@ -1477,23 +1477,29 @@ namespace PCLParaphernalia
                 }
 
                 if (flagOK)
+                {
                     flagOK = writeHddrSegDataPA (pdlIsPCLXL, fmt16,
                                                  panoseData,
                                                  ref sumMod256);
+                }
             }
 
             if (flagOK && (!segGTLast))
+            {
                 flagOK = writeHddrSegDataGT (pdlIsPCLXL, fmt16,
                                              symSetUnbound,
                                              tabvmtxPresent,
                                              flagVMetrics,
                                              ref sumMod256);
+            }
 
             if (flagOK)
             {
                 if (glyphZeroExists)
+                {
                     flagOK = writeHddrSegDataGC (pdlIsPCLXL, fmt16,
                                                  ref sumMod256);
+                }
 
                 if (flagOK)
                 {
@@ -1518,15 +1524,19 @@ namespace PCLParaphernalia
             }
 
             if (flagOK && segGTLast)
+            {
                 flagOK = writeHddrSegDataGT(pdlIsPCLXL, fmt16,
                                              symSetUnbound,
                                              tabvmtxPresent,
                                              flagVMetrics,
                                              ref sumMod256);
+            }
 
             if (flagOK)
+            {
                 flagOK = writeHddrSegDataNull (pdlIsPCLXL, fmt16,
                                                ref sumMod256);
+            }
 
             return flagOK;
         }
