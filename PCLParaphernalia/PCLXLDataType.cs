@@ -22,10 +22,6 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private readonly byte _tag;
-
-        private readonly string _description;
-
-        private readonly bool _flagReserved;
         private readonly bool _flagArray;
 
         private readonly int _groupSize;
@@ -51,12 +47,12 @@ namespace PCLParaphernalia
                              string description)
 	    {
             _tag           = tag;
-            _flagReserved  = flagReserved;
+            FlagReserved = flagReserved;
             _flagArray     = flagArray;
             _groupSize     = groupSize;
             _unitSize      = unitSize;
             _baseType      = baseType;
-	        _description   = description;
+            Description = description;
 
             _statsCtParent = 0;
             _statsCtChild = 0;
@@ -75,12 +71,12 @@ namespace PCLParaphernalia
                                 ref PCLXLDataTypes.eBaseType baseType,
                                 ref string description)
         {
-            flagReserved  = _flagReserved;
+            flagReserved  = FlagReserved;
             flagArray     = _flagArray;
             groupSize     = _groupSize;
             unitSize      = _unitSize;
             baseType      = _baseType;
-	        description   = _description;
+	        description   = Description;
         }
 
         //--------------------------------------------------------------------//
@@ -89,10 +85,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Description
-        {
-            get { return _description; }
-        }
+        public string Description { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -100,10 +93,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagReserved
-        {
-            get { return _flagReserved; }
-        }
+        public bool FlagReserved { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

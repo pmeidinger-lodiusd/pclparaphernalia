@@ -10,18 +10,6 @@ namespace PCLParaphernalia
     /// </summary>
     class PCLPalette
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Class variables.                                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private readonly string _name;
-
-        private readonly bool _flagMonochrome;
-
-        private readonly short _paletteId;
-        private readonly byte _ctClrItems;
         private byte _crntClrItem;
 
         private byte _clrItemWhite;
@@ -41,10 +29,10 @@ namespace PCLParaphernalia
                            short paletteId,
                            byte ctClrItems)
         {
-            _name           = name;
-            _flagMonochrome = flagMonochrome;
-            _paletteId      = paletteId;
-            _ctClrItems     = ctClrItems;
+            PaletteName = name;
+            Monochrome = flagMonochrome;
+            PaletteId = paletteId;
+            CtClrItems = ctClrItems;
 
             _colourIds   = new byte[ctClrItems];
             _colourNames = new string[ctClrItems];
@@ -103,10 +91,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte CtClrItems
-        {
-            get { return _ctClrItems; }
-        }
+        public byte CtClrItems { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -142,10 +127,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool Monochrome
-        {
-            get { return _flagMonochrome; }
-        }
+        public bool Monochrome { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -156,10 +138,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public short PaletteId
-        {
-            get { return _paletteId; }
-        }
+        public short PaletteId { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -170,10 +149,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string PaletteName
-        {
-            get { return _name; }
-        }
+        public string PaletteName { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

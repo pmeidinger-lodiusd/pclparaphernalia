@@ -22,15 +22,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private readonly byte _value;
-        private readonly string _mnemonic;
-        private readonly string _description;
-
-        private readonly bool _flagLineTerm;
 
         private int _statsCtParent;
         private int _statsCtChild;
-
-        private readonly PrnParseConstants.eOvlAct _makeOvlAct;
 
         private readonly PrnParseConstants.eSeqGrp _seqGrp;
 
@@ -49,10 +43,10 @@ namespace PCLParaphernalia
             string description)
         {
             _value             = value;
-            _mnemonic          = mnemonic;
-            _description       = description;
-            _flagLineTerm      = flagLineTerm;
-            _makeOvlAct        = makeOvlAct;
+            Mnemonic = mnemonic;
+            DescExcMnemonic = description;
+            FlagLineTerm = flagLineTerm;
+            this.makeOvlAct        = makeOvlAct;
             _seqGrp            = seqGrp;
 
             _statsCtParent = 0;
@@ -65,10 +59,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string DescExcMnemonic
-        {
-            get { return _description; }
-        }
+        public string DescExcMnemonic { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -78,7 +69,7 @@ namespace PCLParaphernalia
 
         public string Description
         {
-            get { return _mnemonic + ": " + _description; }
+            get { return Mnemonic + ": " + DescExcMnemonic; }
         }
 
         //--------------------------------------------------------------------//
@@ -87,10 +78,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagLineTerm
-        {
-            get { return _flagLineTerm; }
-        }
+        public bool FlagLineTerm { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -137,10 +125,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.eOvlAct makeOvlAct
-        {
-            get { return _makeOvlAct; }
-        }
+        public PrnParseConstants.eOvlAct makeOvlAct { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -148,10 +133,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Mnemonic
-        {
-            get { return _mnemonic; }
-        }
+        public string Mnemonic { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

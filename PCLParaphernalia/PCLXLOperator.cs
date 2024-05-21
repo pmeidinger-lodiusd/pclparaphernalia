@@ -23,15 +23,6 @@ namespace PCLParaphernalia
 
         private readonly byte _tag;
 
-        private readonly string _description;
-
-        private readonly bool _flagReserved;
-        private readonly bool _flagEndSession;
-
-        private readonly PCLXLOperators.eEmbedDataType _embedDataType;
-
-        private readonly PrnParseConstants.eOvlAct _makeOvlAct;
-
         private int _statsCtParent;
         private int _statsCtChild;
 
@@ -49,11 +40,11 @@ namespace PCLParaphernalia
                              string description)
 	    {
             _tag               = tag;
-            _flagEndSession    = flagEndSession;
-            _flagReserved      = flagReserved;
-	        _embedDataType     = embedDataType;
-	        _description       = description;
-            _makeOvlAct = makeOvlAct;
+            FlagEndSession = flagEndSession;
+            FlagReserved = flagReserved;
+            EmbedDataType = embedDataType;
+            Description = description;
+            this.makeOvlAct = makeOvlAct;
 
             _statsCtParent  = 0;
             _statsCtChild   = 0;
@@ -72,11 +63,11 @@ namespace PCLParaphernalia
             ref PrnParseConstants.eOvlAct makeOvlAct,
             ref string description)
         {
-            flagEndSession    = _flagEndSession;
-            flagReserved      = _flagReserved;
-            embedDataType     = _embedDataType;
-            makeOvlAct = _makeOvlAct;
-            description       = _description;
+            flagEndSession    = FlagEndSession;
+            flagReserved      = FlagReserved;
+            embedDataType     = EmbedDataType;
+            makeOvlAct = this.makeOvlAct;
+            description       = Description;
         }
 
         //--------------------------------------------------------------------//
@@ -85,10 +76,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Description
-        {
-            get { return _description; }
-        }
+        public string Description { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -96,10 +84,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLXLOperators.eEmbedDataType EmbedDataType
-        {
-            get { return _embedDataType; }
-        }
+        public PCLXLOperators.eEmbedDataType EmbedDataType { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -107,10 +92,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagReserved
-        {
-            get { return _flagReserved; }
-        }
+        public bool FlagReserved { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -118,10 +100,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagEndSession
-        {
-            get { return _flagEndSession; }
-        }
+        public bool FlagEndSession { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -146,10 +125,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.eOvlAct makeOvlAct
-        {
-            get { return _makeOvlAct; }
-        }
+        public PrnParseConstants.eOvlAct makeOvlAct { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

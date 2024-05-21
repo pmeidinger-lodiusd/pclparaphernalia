@@ -31,19 +31,13 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private readonly PCLPaperSizes.eIndex _paperSizeIndex;
-
-        private readonly string _paperSizeName;
         private string _paperSizeDesc;
         private readonly byte _paperSizeIdPCL;
         private readonly byte _paperSizeIdPCLXL;
         private readonly string _paperSizeNamePCLXL;
-
-        private bool _paperSizeIsMetric;
         private bool _paperSizeIsRare;
 
         private ushort _sizeUnitsPerInch;
-        private uint _sizeShortEdge;
-        private uint _sizeLongEdge;
         private ushort _marginsLogicalPort;
         private ushort _marginsLogicalLand;
         private ushort _marginsUnprintable;
@@ -70,17 +64,17 @@ namespace PCLParaphernalia
                             ushort marginsUnprintable)
         {
             _paperSizeIndex     = sizeIndex;
-            _paperSizeName      = name;
+            Name = name;
             _paperSizeDesc      = desc;
             _paperSizeIdPCL     = idPCL;
             _paperSizeIdPCLXL   = idPCLXL;
             _paperSizeNamePCLXL = namePCLXL;
-            _paperSizeIsMetric  = isMetricSize;
+            IsMetricSize = isMetricSize;
             _paperSizeIsRare    = isRareSize;
 
             _sizeUnitsPerInch   = sizeUnitsPerInch;
-            _sizeShortEdge      = sizeShortEdge;
-            _sizeLongEdge       = sizeLongEdge;
+            CustomShortEdge = sizeShortEdge;
+            CustomLongEdge = sizeLongEdge;
             _marginsLogicalPort = marginsLogicalPort;
             _marginsLogicalLand = marginsLogicalLand;
             _marginsUnprintable = marginsUnprintable;
@@ -97,12 +91,12 @@ namespace PCLParaphernalia
 
         public void customDataCopy(PCLPaperSize customEntry)
         {
-            customEntry.customDataPaste (_paperSizeName,
-                                         _paperSizeIsMetric,
+            customEntry.customDataPaste (Name,
+                                         IsMetricSize,
                                          _paperSizeIsRare,
                                          _sizeUnitsPerInch,
-                                         _sizeShortEdge,
-                                         _sizeLongEdge,
+                                         CustomShortEdge,
+                                         CustomLongEdge,
                                          _marginsLogicalPort,
                                          _marginsLogicalLand,
                                          _marginsUnprintable);
@@ -133,12 +127,12 @@ namespace PCLParaphernalia
         {
             _paperSizeDesc = donorName;
 
-            _paperSizeIsMetric  = isMetricSize;
+            IsMetricSize = isMetricSize;
             _paperSizeIsRare    = isRareSize;
 
             _sizeUnitsPerInch   = sizeUnitsPerInch;
-            _sizeShortEdge      = sizeShortEdge;
-            _sizeLongEdge       = sizeLongEdge;
+            CustomShortEdge = sizeShortEdge;
+            CustomLongEdge = sizeLongEdge;
             _marginsLogicalPort = marginsLogicalPort;
             _marginsLogicalLand = marginsLogicalLand;
             _marginsUnprintable = marginsUnprintable;
@@ -169,11 +163,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public uint CustomLongEdge
-        {
-            get { return _sizeLongEdge; }
-            set { _sizeLongEdge = value; }
-        }
+        public uint CustomLongEdge { get; set; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -185,11 +175,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public uint CustomShortEdge
-        {
-            get { return _sizeShortEdge; }
-            set { _sizeShortEdge = value; }
-        }
+        public uint CustomShortEdge { get; set; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -229,15 +215,15 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    if (_paperSizeIsMetric)
+                    if (IsMetricSize)
                     {
-                        size = (Math.Round(_sizeLongEdge *
+                        size = (Math.Round(CustomLongEdge *
                                             _unitsToMilliMetres, 3)).ToString("F0") +
                                             " mm";
                     }
                     else
                     {
-                        size = (Math.Round(_sizeLongEdge *
+                        size = (Math.Round(CustomLongEdge *
                                             _unitsToInches, 3)).ToString("F3") +
                                             "\"";
                     }
@@ -271,15 +257,15 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    if (_paperSizeIsMetric)
+                    if (IsMetricSize)
                     {
-                        size = (Math.Round(_sizeShortEdge *
+                        size = (Math.Round(CustomShortEdge *
                                             _unitsToMilliMetres, 3)).ToString("F0") +
                                             " mm";
                     }
                     else
                     {
-                        size = (Math.Round(_sizeShortEdge *
+                        size = (Math.Round(CustomShortEdge *
                                             _unitsToInches, 3)).ToString("F3") +
                                             "\"";
                     }
@@ -381,13 +367,13 @@ namespace PCLParaphernalia
         {
             if (aspect == PCLOrientations.eAspect.Portrait)
             {
-                return (ushort)((_sizeLongEdge *
+                return (ushort)((CustomLongEdge *
                                  sessionUPI) /
                                 _sizeUnitsPerInch);
             }
             else
             {
-                return (ushort)((_sizeShortEdge *
+                return (ushort)((CustomShortEdge *
                                  sessionUPI) /
                                 _sizeUnitsPerInch);
             }
@@ -407,13 +393,13 @@ namespace PCLParaphernalia
         {
             if (aspect == PCLOrientations.eAspect.Portrait)
             {
-                return (ushort)(((_sizeShortEdge - (_marginsLogicalPort * 2)) *
+                return (ushort)(((CustomShortEdge - (_marginsLogicalPort * 2)) *
                                  sessionUPI) /
                                 _sizeUnitsPerInch);
             }
             else
             {
-                return (ushort)(((_sizeLongEdge - (_marginsLogicalPort * 2)) *
+                return (ushort)(((CustomLongEdge - (_marginsLogicalPort * 2)) *
                                  sessionUPI) /
                                 _sizeUnitsPerInch);
             }
@@ -476,7 +462,7 @@ namespace PCLParaphernalia
 
         public string getName()
         {
-            return _paperSizeName;
+            return Name;
         }
 
         //--------------------------------------------------------------------//
@@ -506,9 +492,9 @@ namespace PCLParaphernalia
                                      PCLOrientations.eAspect aspect)
         {
             if (aspect == PCLOrientations.eAspect.Portrait)
-                return (ushort)((_sizeLongEdge * sessionUPI) / _sizeUnitsPerInch);
+                return (ushort)((CustomLongEdge * sessionUPI) / _sizeUnitsPerInch);
             else
-                return (ushort)((_sizeShortEdge * sessionUPI) / _sizeUnitsPerInch);
+                return (ushort)((CustomShortEdge * sessionUPI) / _sizeUnitsPerInch);
         }
 
         //--------------------------------------------------------------------//
@@ -524,9 +510,9 @@ namespace PCLParaphernalia
                                     PCLOrientations.eAspect aspect)
         {
             if (aspect == PCLOrientations.eAspect.Portrait)
-                return (ushort)((_sizeShortEdge * sessionUPI) / _sizeUnitsPerInch);
+                return (ushort)((CustomShortEdge * sessionUPI) / _sizeUnitsPerInch);
             else
-                return (ushort)((_sizeLongEdge * sessionUPI) / _sizeUnitsPerInch);
+                return (ushort)((CustomLongEdge * sessionUPI) / _sizeUnitsPerInch);
         }
 
         //--------------------------------------------------------------------//
@@ -540,7 +526,7 @@ namespace PCLParaphernalia
 
         public ushort getSizeLongEdge(ushort sessionUPI)
         {
-            return (ushort)((_sizeLongEdge * sessionUPI) / _sizeUnitsPerInch);
+            return (ushort)((CustomLongEdge * sessionUPI) / _sizeUnitsPerInch);
         }
 
         //--------------------------------------------------------------------//
@@ -554,7 +540,7 @@ namespace PCLParaphernalia
 
         public ushort getSizeShortEdge(ushort sessionUPI)
         {
-            return (ushort)((_sizeShortEdge * sessionUPI) / _sizeUnitsPerInch);
+            return (ushort)((CustomShortEdge * sessionUPI) / _sizeUnitsPerInch);
         }
 
         //--------------------------------------------------------------------//
@@ -639,11 +625,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool IsMetricSize
-        {
-            get { return _paperSizeIsMetric; }
-            set { _paperSizeIsMetric = value; }
-        }
+        public bool IsMetricSize { get; set; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -668,9 +650,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Name
-        {
-            get { return _paperSizeName; }
-        }
+        public string Name { get; }
     }
 }

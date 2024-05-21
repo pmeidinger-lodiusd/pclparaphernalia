@@ -17,31 +17,12 @@ namespace PCLParaphernalia
 
     class PCLSymSetMap
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Constants and enumerations.                                        //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Class variables.                                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private readonly ushort[] [] _rangeData;
 
         private readonly ushort[] [] _mapDataStd;
         private readonly ushort[] [] _mapDataPCL;
-
-        private readonly ushort _rangeCt;
-
-        private readonly ushort _codepointMin;
         private ushort _codepointMax;
 
         private readonly bool _flagMapDiff;
-        private readonly bool _flagNullMapPCL;
-        private readonly bool _flagNullMapStd;
 
         private readonly PCLSymSetMaps.eSymSetMapId _mapId;
 
@@ -58,21 +39,21 @@ namespace PCLParaphernalia
                              ushort[][]                 mapDataPCL)
         {
             _mapId       = mapId;
-            _rangeCt     = rangeCt;
-            _rangeData   = rangeData;
+            RangeCt = rangeCt;
+            RangeData = rangeData;
             _mapDataStd  = mapDataStd;
             _mapDataPCL  = mapDataPCL;
 
-            _codepointMin = _rangeData[0][0];
-            _codepointMax = _rangeData[_rangeCt - 1][1];
+            CodepointMin = RangeData[0][0];
+            _codepointMax = RangeData[RangeCt - 1][1];
 
-            _flagNullMapStd = false;
-            _flagNullMapPCL = false;
+            NullMapStd = false;
+            NullMapPCL = false;
             _flagMapDiff    = false;
 
             if (mapDataStd == null)
             {
-                _flagNullMapStd = true;
+                NullMapStd = true;
 
                 if (mapDataPCL == null)
                 {
@@ -89,7 +70,7 @@ namespace PCLParaphernalia
             }
             else if (mapDataPCL == null)
             {
-                _flagNullMapPCL = true;
+                NullMapPCL = true;
             }
             else
             {
@@ -151,10 +132,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort CodepointMin
-        {
-            get { return _codepointMin; }
-        }
+        public ushort CodepointMin { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -180,13 +158,13 @@ namespace PCLParaphernalia
                     mapData [i] = 0xffff;
                 }
 
-                for (int i = 0; i < _rangeCt; i++)
+                for (int i = 0; i < RangeCt; i++)
                 {
-                    rangeMin = _rangeData [i] [0];
-                    rangeMax = _rangeData [i] [1];
+                    rangeMin = RangeData[i] [0];
+                    rangeMax = RangeData[i] [1];
                     rangeSize = (ushort) (rangeMax - rangeMin + 1);
 
-                    if (! _flagNullMapPCL)
+                    if (!NullMapPCL)
                     {
                         for (int j = 0; j < rangeSize; j++)
                         {
@@ -230,13 +208,13 @@ namespace PCLParaphernalia
                     mapData [i] = 0xffff;
                 }
 
-                for (int i = 0; i < _rangeCt; i++)
+                for (int i = 0; i < RangeCt; i++)
                 {
-                    rangeMin = _rangeData [i] [0];
-                    rangeMax = _rangeData [i] [1];
+                    rangeMin = RangeData[i] [0];
+                    rangeMax = RangeData[i] [1];
                     rangeSize = (ushort) (rangeMax - rangeMin + 1);
 
-                    if (! _flagNullMapStd)
+                    if (!NullMapStd)
                     {
                         for (int j = 0; j < rangeSize; j++)
                         {
@@ -281,7 +259,7 @@ namespace PCLParaphernalia
                     mapData [i] = 0xffff;
                 }
 
-                rangeMin = _rangeData [0] [0];
+                rangeMin = RangeData[0] [0];
           //    rangeMax = _rangeData [0] [1];
           //    rangeSize = (UInt16) (rangeMax - rangeMin + 1);
 
@@ -323,7 +301,7 @@ namespace PCLParaphernalia
             {
                 if (! _flagMapDiff)
                 {
-                    if (_flagNullMapStd || _flagNullMapPCL)
+                    if (NullMapStd || NullMapPCL)
                         return "Not applicable (only one set defined)";
                     else
                         return "None";
@@ -359,12 +337,12 @@ namespace PCLParaphernalia
                     //--------------------------------------------------------//
 
                     rowTot = 0;
-                    rangeLastIndx = _rangeCt - 1;
+                    rangeLastIndx = RangeCt - 1;
 
-                    for (int i = 0; i < _rangeCt; i++)
+                    for (int i = 0; i < RangeCt; i++)
                     {
-                        rowTot += (_rangeData[i][1] >> 4) -
-                                  (_rangeData[i][0] >> 4) + 1;
+                        rowTot += (RangeData[i][1] >> 4) -
+                                  (RangeData[i][0] >> 4) + 1;
 
                         if (i < rangeLastIndx)
                             rowTot += 1;    // for inter-range gap //
@@ -380,10 +358,10 @@ namespace PCLParaphernalia
 
                     map.Clear ();
 
-                    for (int i = 0; i < _rangeCt; i++)
+                    for (int i = 0; i < RangeCt; i++)
                     {
-                        rangeMin = _rangeData [i] [0];
-                        rangeMax = _rangeData [i] [1];
+                        rangeMin = RangeData[i] [0];
+                        rangeMax = RangeData[i] [1];
 
                         rowId = rangeMin >> 4;
                         rowCt = (rangeMax >> 4) - rowId + 1;
@@ -468,7 +446,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                if (_flagNullMapPCL)
+                if (NullMapPCL)
                 {
                     return "Not defined" +
                            " - see Standard (Strict) mapping definition";
@@ -501,12 +479,12 @@ namespace PCLParaphernalia
                     //--------------------------------------------------------//
 
                     rowTot = 0;
-                    rangeLastIndx = _rangeCt - 1;
+                    rangeLastIndx = RangeCt - 1;
 
-                    for (int i = 0; i < _rangeCt; i++)
+                    for (int i = 0; i < RangeCt; i++)
                     {
-                        rowTot += (_rangeData[i][1] >> 4) -
-                                  (_rangeData[i][0] >> 4) + 1;
+                        rowTot += (RangeData[i][1] >> 4) -
+                                  (RangeData[i][0] >> 4) + 1;
 
                         if (i < rangeLastIndx)
                             rowTot += 1;    // for inter-range gap //
@@ -522,10 +500,10 @@ namespace PCLParaphernalia
 
                     map.Clear();
 
-                    for (int i = 0; i < _rangeCt; i++)
+                    for (int i = 0; i < RangeCt; i++)
                     {
-                        rangeMin = _rangeData[i][0];
-                        rangeMax = _rangeData[i][1];
+                        rangeMin = RangeData[i][0];
+                        rangeMax = RangeData[i][1];
 
                         rowId = rangeMin >> 4;
                         rowCt = (rangeMax >> 4) - rowId + 1;
@@ -604,7 +582,7 @@ namespace PCLParaphernalia
             {
                 if (_flagMapDiff)
                     return MappingPCL;
-                else if (_flagNullMapStd)
+                else if (NullMapStd)
                     return MappingPCL;
                 else
                     return "Not defined" +
@@ -626,7 +604,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                if (_flagNullMapStd)
+                if (NullMapStd)
                 {
                     return "Not defined" +
                            " - see LaserJet mapping definition";
@@ -659,12 +637,12 @@ namespace PCLParaphernalia
                     //--------------------------------------------------------//
 
                     rowTot = 0;
-                    rangeLastIndx = _rangeCt - 1;
+                    rangeLastIndx = RangeCt - 1;
 
-                    for (int i = 0; i < _rangeCt; i++)
+                    for (int i = 0; i < RangeCt; i++)
                     {
-                        rowTot += (_rangeData[i][1] >> 4) -
-                                  (_rangeData[i][0] >> 4) + 1;
+                        rowTot += (RangeData[i][1] >> 4) -
+                                  (RangeData[i][0] >> 4) + 1;
 
                         if (i < rangeLastIndx)
                             rowTot += 1;    // for inter-range gap //
@@ -680,10 +658,10 @@ namespace PCLParaphernalia
 
                     map.Clear();
 
-                    for (int i = 0; i < _rangeCt; i++)
+                    for (int i = 0; i < RangeCt; i++)
                     {
-                        rangeMin = _rangeData[i][0];
-                        rangeMax = _rangeData[i][1];
+                        rangeMin = RangeData[i][0];
+                        rangeMax = RangeData[i][1];
 
                         rowId = rangeMin >> 4;
                         rowCt = (rangeMax >> 4) - rowId + 1;
@@ -770,7 +748,7 @@ namespace PCLParaphernalia
                 {
                     mapRows = new string[1];
 
-                    if (_flagNullMapStd || _flagNullMapPCL)
+                    if (NullMapStd || NullMapPCL)
                         mapRows[0] = "Not applicable (only one set defined)";
                     else
                         mapRows[0] = "None";
@@ -804,12 +782,12 @@ namespace PCLParaphernalia
                     //--------------------------------------------------------//
 
                     rowTot = 0;
-                    rangeLastIndx = _rangeCt - 1;
+                    rangeLastIndx = RangeCt - 1;
 
-                    for (int i = 0; i < _rangeCt; i++)
+                    for (int i = 0; i < RangeCt; i++)
                     {
-                        rowTot += (_rangeData[i][1] >> 4) -
-                                  (_rangeData[i][0] >> 4) + 1;
+                        rowTot += (RangeData[i][1] >> 4) -
+                                  (RangeData[i][0] >> 4) + 1;
 
                         if (i < rangeLastIndx)
                             rowTot += 1;    // for inter-range gap //
@@ -829,10 +807,10 @@ namespace PCLParaphernalia
 
                     rowIndx = 0;
 
-                    for (int i = 0; i < _rangeCt; i++)
+                    for (int i = 0; i < RangeCt; i++)
                     {
-                        rangeMin = _rangeData[i][0];
-                        rangeMax = _rangeData[i][1];
+                        rangeMin = RangeData[i][0];
+                        rangeMax = RangeData[i][1];
 
                         rowId = rangeMin >> 4;
                         rowCt = (rangeMax >> 4) - rowId + 1;
@@ -923,7 +901,7 @@ namespace PCLParaphernalia
             {
                 string[] mapRows;
 
-                if (_flagNullMapPCL)
+                if (NullMapPCL)
                 {
                     mapRows = new string[1];
                     mapRows[0] = "Not defined - see Standard (Strict)" +
@@ -957,12 +935,12 @@ namespace PCLParaphernalia
                     //--------------------------------------------------------//
 
                     rowTot = 0;
-                    rangeLastIndx = _rangeCt - 1;
+                    rangeLastIndx = RangeCt - 1;
 
-                    for (int i = 0; i < _rangeCt; i++)
+                    for (int i = 0; i < RangeCt; i++)
                     {
-                        rowTot += (_rangeData[i][1] >> 4) -
-                                  (_rangeData[i][0] >> 4) + 1;
+                        rowTot += (RangeData[i][1] >> 4) -
+                                  (RangeData[i][0] >> 4) + 1;
 
                         if (i < rangeLastIndx)
                             rowTot += 1;    // for inter-range gap //
@@ -982,10 +960,10 @@ namespace PCLParaphernalia
 
                     rowIndx = 0;
 
-                    for (int i = 0; i < _rangeCt; i++)
+                    for (int i = 0; i < RangeCt; i++)
                     {
-                        rangeMin = _rangeData[i][0];
-                        rangeMax = _rangeData[i][1];
+                        rangeMin = RangeData[i][0];
+                        rangeMax = RangeData[i][1];
 
                         rowId = rangeMin >> 4;
                         rowCt = (rangeMax >> 4) - rowId + 1;
@@ -1067,7 +1045,7 @@ namespace PCLParaphernalia
             {
                 if (_flagMapDiff)
                     return MapRowsPCL;
-                else if (_flagNullMapStd)
+                else if (NullMapStd)
                     return MapRowsPCL;
                 else
                 {
@@ -1097,7 +1075,7 @@ namespace PCLParaphernalia
             {
                 string[] mapRows;
 
-                if (_flagNullMapStd)
+                if (NullMapStd)
                 {
                     mapRows = new string[1];
                     mapRows[0] = "Not defined - see LaserJet " +
@@ -1131,12 +1109,12 @@ namespace PCLParaphernalia
                     //--------------------------------------------------------//
 
                     rowTot = 0;
-                    rangeLastIndx = _rangeCt - 1;
+                    rangeLastIndx = RangeCt - 1;
 
-                    for (int i = 0; i < _rangeCt; i++)
+                    for (int i = 0; i < RangeCt; i++)
                     {
-                        rowTot += (_rangeData[i][1] >> 4) -
-                                  (_rangeData[i][0] >> 4) + 1;
+                        rowTot += (RangeData[i][1] >> 4) -
+                                  (RangeData[i][0] >> 4) + 1;
 
                         if (i < rangeLastIndx)
                             rowTot += 1;    // for inter-range gap //
@@ -1156,10 +1134,10 @@ namespace PCLParaphernalia
 
                     rowIndx = 0;
 
-                    for (int i = 0; i < _rangeCt; i++)
+                    for (int i = 0; i < RangeCt; i++)
                     {
-                        rangeMin = _rangeData[i][0];
-                        rangeMax = _rangeData[i][1];
+                        rangeMin = RangeData[i][0];
+                        rangeMax = RangeData[i][1];
 
                         rowId = rangeMin >> 4;
                         rowCt = (rangeMax >> 4) - rowId + 1;
@@ -1232,10 +1210,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool NullMapPCL
-        {
-            get { return _flagNullMapPCL; }
-        }
+        public bool NullMapPCL { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -1247,10 +1222,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool NullMapStd
-        {
-            get { return _flagNullMapStd; }
-        }
+        public bool NullMapStd { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -1261,10 +1233,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort RangeCt
-        {
-            get { return _rangeCt; }
-        }
+        public ushort RangeCt { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -1275,9 +1244,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort[] [] RangeData
-        {
-            get { return _rangeData; }
-        }
+        public ushort[][] RangeData { get; }
     }
 }

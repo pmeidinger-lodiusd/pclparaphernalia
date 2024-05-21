@@ -22,7 +22,6 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private readonly byte _tag;
-        private readonly string _description;
 
         private int _statsCtParent;
         private int _statsCtChild;
@@ -37,7 +36,7 @@ namespace PCLParaphernalia
                               string description)
         {
             _tag         = tag;
-            _description = description;
+            Description = description;
         }
 
         //--------------------------------------------------------------------//
@@ -46,10 +45,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Description
-        {
-            get { return _description; }
-        }
+        public string Description { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -62,7 +58,7 @@ namespace PCLParaphernalia
 
         public string getDesc()
         {
-            return _description;
+            return Description;
         }
 
         //--------------------------------------------------------------------//

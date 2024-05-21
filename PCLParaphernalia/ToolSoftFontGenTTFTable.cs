@@ -10,19 +10,6 @@ namespace PCLParaphernalia
     /// </summary>
     class ToolSoftFontGenTTFTable
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Constants and enumerations.                                        //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Class variables.                                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private readonly uint _tag;
         private uint _checksum;
         private uint _offset;
         private uint _length;
@@ -36,7 +23,7 @@ namespace PCLParaphernalia
 
         public ToolSoftFontGenTTFTable(uint tag)
         {
-            _tag      = tag;
+            TableTag = tag;
             _checksum = 0;
             _offset   = 0;
             _length   = 0;
@@ -123,10 +110,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public uint TableTag
-        {
-            get { return _tag; }
-        }
+        public uint TableTag { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

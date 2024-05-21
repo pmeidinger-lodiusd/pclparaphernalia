@@ -24,19 +24,12 @@ namespace PCLParaphernalia
         private readonly int _tagLen;
         private readonly byte _tagA;
         private readonly byte _tagB;
-
-        private readonly string _description;
-
-        private readonly bool _flagReserved;
-        private readonly bool _flagAttrEnum;
-        private readonly bool _flagOperEnum;
         private readonly bool _flagUbyteTxt;
         private readonly bool _flagUintTxt;
         private readonly bool _flagValIsLen;
         private readonly bool _flagValIsPCL;
 
         private readonly PrnParseConstants.eActPCLXL _actionType;
-        private readonly PrnParseConstants.eOvlAct _makeOvlAct;
 
         private int _statsCtParent;
         private int _statsCtChild;
@@ -64,16 +57,16 @@ namespace PCLParaphernalia
             _tagLen            = tagLen;
             _tagA              = tagA;
             _tagB              = tagB;
-            _flagReserved      = flagReserved;
-            _flagAttrEnum      = flagAttrEnum;
-            _flagOperEnum      = flagOperEnum;
+            FlagReserved = flagReserved;
+            FlagAttrEnum = flagAttrEnum;
+            FlagOperEnum = flagOperEnum;
             _flagUbyteTxt      = flagUbyteTxt;
             _flagUintTxt       = flagUintTxt;
             _flagValIsLen      = flagValIsLen;
             _flagValIsPCL      = flagValIsPCL;
             _actionType        = actionType;
-            _makeOvlAct        = makeOvlAct;
-            _description       = description;
+            this.makeOvlAct        = makeOvlAct;
+            Description = description;
 
             _statsCtParent = 0;
             _statsCtChild  = 0;
@@ -97,15 +90,15 @@ namespace PCLParaphernalia
             ref PrnParseConstants.eOvlAct makeOvlAct,
             ref string description)
         {
-            flagReserved      = _flagReserved;
-            flagAttrEnum      = _flagAttrEnum;
-            flagOperEnum      = _flagOperEnum;
+            flagReserved      = FlagReserved;
+            flagAttrEnum      = FlagAttrEnum;
+            flagOperEnum      = FlagOperEnum;
             flagUbyteTxt      = _flagUbyteTxt;
             flagUintTxt       = _flagUintTxt;
             flagValIsLen      = _flagValIsLen;
             flagValIsPCL      = _flagValIsPCL;
-            makeOvlAct = _makeOvlAct;
-            description       = _description;
+            makeOvlAct = this.makeOvlAct;
+            description       = Description;
         }
 
         //--------------------------------------------------------------------//
@@ -114,10 +107,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Description
-        {
-            get { return _description; }
-        }
+        public string Description { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -125,10 +115,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagAttrEnum
-        {
-            get { return _flagAttrEnum; }
-        }
+        public bool FlagAttrEnum { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -136,10 +123,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagOperEnum
-        {
-            get { return _flagOperEnum; }
-        }
+        public bool FlagOperEnum { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -147,10 +131,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagReserved
-        {
-            get { return _flagReserved; }
-        }
+        public bool FlagReserved { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -175,10 +156,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.eOvlAct makeOvlAct
-        {
-            get { return _makeOvlAct; }
-        }
+        public PrnParseConstants.eOvlAct makeOvlAct { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

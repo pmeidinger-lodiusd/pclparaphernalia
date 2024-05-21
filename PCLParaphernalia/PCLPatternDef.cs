@@ -10,21 +10,7 @@ namespace PCLParaphernalia
     /// </summary>
     class PCLPatternDef
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Class variables.                                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private readonly string _desc;
 		private readonly PCLPatternDefs.eType _type;
-
-        private readonly ushort _id;
-        private readonly ushort _idSec;
-        private readonly ushort _height;
-        private readonly ushort _width;
-
-        private readonly byte[] _pattern;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -40,13 +26,13 @@ namespace PCLParaphernalia
                               ushort width,
                               byte[]   pattern)
         {
-            _desc           = desc;
+            Desc = desc;
 			_type           = type;
-            _id             = id;
-            _idSec          = idSec;
-            _height         = height;
-            _width          = width;
-			_pattern        = pattern;
+            Id = id;
+            IdSec = idSec;
+            Height = height;
+            Width = width;
+            Pattern = pattern;
         }
 
         //--------------------------------------------------------------------//
@@ -58,10 +44,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Desc
-        {
-            get { return _desc; }
-        }
+        public string Desc { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -72,10 +55,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort Height
-        {
-            get { return _height; }
-        }
+        public ushort Height { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -86,10 +66,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort Id
-        {
-            get { return _id; }
-        }
+        public ushort Id { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -100,10 +77,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort IdSec
-        {
-            get { return _idSec; }
-        }
+        public ushort IdSec { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -114,10 +88,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte[] Pattern
-        {
-            get { return _pattern; }
-        }
+        public byte[] Pattern { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -128,9 +99,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort Width
-        {
-            get { return _width; }
-        }
+        public ushort Width { get; }
     }
 }

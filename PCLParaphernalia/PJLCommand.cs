@@ -12,16 +12,6 @@ namespace PCLParaphernalia
 
     class PJLCommand
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Class variables.                                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private readonly PJLCommands.eRequestType _reqType;
-        private readonly PJLCommands.eCmdFormat   _cmdFormat;
-        private readonly string _cmdName;
-        private readonly string _cmdDesc;
 
         private int _statsCtParent;
         private int _statsCtChild;
@@ -38,13 +28,13 @@ namespace PCLParaphernalia
                           string desc)
         {
             if (indx == PJLCommands.eCmdIndex.Null)
-                _cmdName = PJLCommands.nullCmdKey;
+                Name = PJLCommands.nullCmdKey;
             else
-                _cmdName   = indx.ToString ();
+                Name = indx.ToString ();
 
-            _cmdDesc   = desc;
-            _cmdFormat = format;
-            _reqType   = type;
+            Description = desc;
+            Format = format;
+            Type = type;
 
             _statsCtParent = 0;
             _statsCtChild = 0;
@@ -56,10 +46,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Description
-        {
-            get { return _cmdDesc; }
-        }
+        public string Description { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -67,10 +54,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PJLCommands.eCmdFormat Format
-        {
-            get { return _cmdFormat; }
-        }
+        public PJLCommands.eCmdFormat Format { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -95,10 +79,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Name
-        {
-            get { return _cmdName; }
-        }
+        public string Name { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -154,9 +135,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PJLCommands.eRequestType Type
-        {
-            get { return _reqType; }
-        }
+        public PJLCommands.eRequestType Type { get; }
     }
 }

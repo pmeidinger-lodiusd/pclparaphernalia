@@ -16,34 +16,7 @@ namespace PCLParaphernalia
 
     class PCLSymbolSet
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Constants and enumerations.                                        //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Class variables.                                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private readonly PCLSymbolSets.eSymSetGroup _group;
-        private PCLSymSetTypes.eIndex   _indxType;
         private readonly PCLSymSetMaps.eSymSetMapId _mapId;
-
-        private PCLTextParsingMethods.eIndex _parsingMethod;
-
-        private readonly string _name;
-        private readonly string _alias;
-
-        private ushort _kind1;
-
-        private string _id;
-        private readonly ushort _idNum;
-        private readonly byte _idAlpha;
-
-        private readonly bool _mapped = false;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -60,29 +33,29 @@ namespace PCLParaphernalia
                              bool mapped,
                              PCLSymSetMaps.eSymSetMapId mapId)
         {
-            _group         = group;
-            _indxType      = indxType;
-            _parsingMethod = parsingMethod;
-            _kind1         = kind1;
-            _alias         = alias;
-            _name          = name;
+            Group = group;
+            Type = indxType;
+            ParsingMethod = parsingMethod;
+            Kind1 = kind1;
+            Alias = alias;
+            Name = name;
 
             if ((kind1 < 1)         // 1        = 0A    //
                     ||
                 (kind1 > 65530))    // 65530    = 2047Z //
             {
-                _idNum   = 0;
-                _idAlpha = 0x3f;    // ? //
+                IdNum = 0;
+                IdAlpha = 0x3f;    // ? //
             }
             else
             {
-                _idNum   = (ushort)(kind1 / 32);
-                _idAlpha = (byte)(kind1 - (_idNum * 32) + 64);
+                IdNum = (ushort)(kind1 / 32);
+                IdAlpha = (byte)(kind1 - (IdNum * 32) + 64);
             }
 
-            _id = _idNum.ToString() + Convert.ToChar(_idAlpha);
+            Id = IdNum.ToString() + Convert.ToChar(IdAlpha);
 
-            _mapped  = mapped;
+            FlagMapped = mapped;
             _mapId   = mapId;
         }
 
@@ -95,10 +68,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Alias
-        {
-            get { return _alias; }
-        }
+        public string Alias { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -114,7 +84,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                if (! _mapped)
+                if (!FlagMapped)
                     return false;
                 else if (PCLSymSetMaps.nullMapPCL((int)_mapId))
                     return false;
@@ -133,10 +103,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagMapped
-        {
-            get { return _mapped; }
-        }
+        public bool FlagMapped { get; } = false;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -152,7 +119,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                if (! _mapped)
+                if (!FlagMapped)
                     return false;
                 else if (PCLSymSetMaps.nullMapStd((int)_mapId))
                     return false;
@@ -177,13 +144,13 @@ namespace PCLParaphernalia
         {
             bool matches = false;
 
-            if ((_group == PCLSymbolSets.eSymSetGroup.Preset) ||
-                (_group == PCLSymbolSets.eSymSetGroup.Unicode))
+            if ((Group == PCLSymbolSets.eSymSetGroup.Preset) ||
+                (Group == PCLSymbolSets.eSymSetGroup.Unicode))
             {
                 matches = true;
-                kind1 = _kind1;
-                idNum = _idNum;
-                name = _name;
+                kind1 = Kind1;
+                idNum = IdNum;
+                name = Name;
             }
 
             return matches;
@@ -212,18 +179,18 @@ namespace PCLParaphernalia
         {
             bool matches = false;
 
-            if ((_group != PCLSymbolSets.eSymSetGroup.Preset) &&
-                (_group != PCLSymbolSets.eSymSetGroup.Unbound) &&
-                (_group != PCLSymbolSets.eSymSetGroup.Unicode))
+            if ((Group != PCLSymbolSets.eSymSetGroup.Preset) &&
+                (Group != PCLSymbolSets.eSymSetGroup.Unbound) &&
+                (Group != PCLSymbolSets.eSymSetGroup.Unicode))
             {
                 matches = false;
             }
-            else if (idAlpha == _idAlpha)
+            else if (idAlpha == IdAlpha)
             {
                 matches    = true;
-                kind1      = _kind1;
-                idNum      = _idNum;
-                name       = _name;
+                kind1      = Kind1;
+                idNum      = IdNum;
+                name       = Name;
             }
             else
             {
@@ -242,10 +209,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLSymbolSets.eSymSetGroup Group
-        {
-            get { return _group; }
-        }
+        public PCLSymbolSets.eSymSetGroup Group { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -258,7 +222,7 @@ namespace PCLParaphernalia
 
         public string Groupname
         {
-            get { return _group.ToString (); }
+            get { return Group.ToString (); }
         }
 
         //--------------------------------------------------------------------//
@@ -270,11 +234,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
+        public string Id { get; set; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -285,10 +245,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte IdAlpha
-        {
-            get { return _idAlpha; }
-        }
+        public byte IdAlpha { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -299,10 +256,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort IdNum
-        {
-            get { return _idNum; }
-        }
+        public ushort IdNum { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -313,11 +267,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort Kind1
-        {
-            get { return _kind1; }
-            set { _kind1 = value; }
-        }
+        public ushort Kind1 { get; set; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -330,7 +280,7 @@ namespace PCLParaphernalia
 
         public string Kind1JustR
         {
-            get { return _kind1.ToString().PadLeft(5); }
+            get { return Kind1.ToString().PadLeft(5); }
         }
 
         //--------------------------------------------------------------------//
@@ -424,7 +374,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                if (!_mapped)
+                if (!FlagMapped)
                 {
                     return string.Empty;
                 }
@@ -450,7 +400,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                if (!_mapped)
+                if (!FlagMapped)
                 {
                     return string.Empty;
                 }
@@ -478,7 +428,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                if (!_mapped)
+                if (!FlagMapped)
                 {
                     return string.Empty;
                 }
@@ -504,7 +454,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                if (!_mapped)
+                if (!FlagMapped)
                 {
                     return string.Empty;
                 }
@@ -532,7 +482,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                if (!_mapped)
+                if (!FlagMapped)
                 {
                     string[] noMap = new string[1] { string.Empty };
 
@@ -561,7 +511,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                if (!_mapped)
+                if (!FlagMapped)
                 {
                     string[] noMap = new string[1] { string.Empty };
 
@@ -592,7 +542,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                if (!_mapped)
+                if (!FlagMapped)
                 {
                     string[] noMap = new string[1] { string.Empty };
 
@@ -621,7 +571,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                if (!_mapped)
+                if (!FlagMapped)
                 {
                     string[] noMap = new string[1] { string.Empty };
 
@@ -643,10 +593,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Name
-        {
-            get { return _name; }
-        }
+        public string Name { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -693,12 +640,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLTextParsingMethods.eIndex ParsingMethod
-        {
-            get { return _parsingMethod; }
-
-            set { _parsingMethod = value; }
-        }
+        public PCLTextParsingMethods.eIndex ParsingMethod { get; set; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -709,12 +651,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLSymSetTypes.eIndex Type
-        {
-            get { return _indxType; }
-
-            set { _indxType = value; }
-        }
+        public PCLSymSetTypes.eIndex Type { get; set; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -729,7 +666,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                return PCLSymSetTypes.getDescShort ((int) _indxType);
+                return PCLSymSetTypes.getDescShort ((int)Type);
             }
         }
     }

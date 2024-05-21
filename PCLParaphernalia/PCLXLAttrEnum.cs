@@ -28,10 +28,6 @@ namespace PCLParaphernalia
         private readonly int _value;
         private readonly int _attrTagLen;
 
-        private readonly string _description;
-
-        private readonly bool _flagValIsTxt;
-
         private int _statsCtParent;
         private int _statsCtChild;
 
@@ -54,8 +50,8 @@ namespace PCLParaphernalia
             _attrTagB      = attrTagB;
             _attrTagLen    = attrTagLen;
             _value         = value;
-            _flagValIsTxt  = flagValIsTxt;
-	        _description   = description;
+            FlagValIsTxt = flagValIsTxt;
+            Description = description;
 
             _statsCtParent = 0;
             _statsCtChild = 0;
@@ -83,10 +79,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Description
-        {
-            get { return _description; }
-        }
+        public string Description { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -94,10 +87,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagValIsTxt
-        {
-            get { return _flagValIsTxt; }
-        }
+        public bool FlagValIsTxt { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -108,8 +98,8 @@ namespace PCLParaphernalia
         public void getDetails (ref bool flagValIsTxt,
                                 ref string description)
         {
-            flagValIsTxt = _flagValIsTxt;
-            description  = _description;
+            flagValIsTxt = FlagValIsTxt;
+            description  = Description;
         }
 
         //--------------------------------------------------------------------//
@@ -215,7 +205,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                if (_flagValIsTxt)
+                if (FlagValIsTxt)
                       return "0x" + _value.ToString("X");
                   else
                       return _value.ToString();

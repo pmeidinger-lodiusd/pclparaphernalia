@@ -49,8 +49,6 @@ namespace PCLParaphernalia
         private PrnParseLinkData _linkData;
         private PrnParseOptions _options;
 
-        private readonly PrnParseFontSegs _parseSegs;
-
         private DataTable _table;
 
         private eStage _nextStage;
@@ -102,7 +100,7 @@ namespace PCLParaphernalia
 
         public PrnParseFontHddrPCL()
         {
-            _parseSegs = new PrnParseFontSegs();
+            ParseSegs = new PrnParseFontSegs();
         }
 
         //--------------------------------------------------------------------//
@@ -295,7 +293,7 @@ namespace PCLParaphernalia
                 {
                     largeSegs = _hddrFormat == ePCLFontFormat.Universal;
 
-                    continuation = _parseSegs.processSegData (_buf,
+                    continuation = ParseSegs.processSegData (_buf,
                                                               _fileOffset,
                                                               true,
                                                               _firstSeg,
@@ -456,10 +454,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseFontSegs ParseSegs
-        {
-            get { return _parseSegs; }
-        }
+        public PrnParseFontSegs ParseSegs { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -2990,7 +2985,7 @@ namespace PCLParaphernalia
                                         &&
                     (_hddrDescLen > 85))
                 {
-                    _parseSegs.decodeCharCompReq(
+                    ParseSegs.decodeCharCompReq(
                         true,
                         true,
                         true,

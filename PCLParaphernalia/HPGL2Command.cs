@@ -12,23 +12,6 @@ namespace PCLParaphernalia
 
     class HPGL2Command
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Class variables.                                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private readonly string _mnemonic;
-        private readonly string _description;
-
-        private readonly bool _flagResetHPGL2;
-        private readonly bool _flagBinaryData;
-        private readonly bool _flagFlipTransp;
-        private readonly bool _flagSetLblTerm;
-        private readonly bool _flagUseLblTerm;
-        private readonly bool _flagUseStdTerm;
-        private readonly bool _flagQuotedData;
-        private readonly bool _flagSymbolMode;
 
         private int _statsCtParent;
         private int _statsCtChild;
@@ -50,17 +33,17 @@ namespace PCLParaphernalia
                             bool flagSymbolMode,
                             string description)
         {
-            _mnemonic       = mnemonic;
-            _description    = description;
+            Mnemonic = mnemonic;
+            Description = description;
 
-            _flagResetHPGL2 = flagResetHPGL2;
-            _flagBinaryData = flagBinaryData;
-            _flagFlipTransp = flagFlipTransp;
-            _flagSetLblTerm = flagSetLblTerm;
-            _flagUseLblTerm = flagUseLblTerm;
-            _flagUseStdTerm = flagUseStdTerm;
-            _flagQuotedData = flagQuotedData;
-            _flagSymbolMode = flagSymbolMode;
+            FlagResetHPGL2 = flagResetHPGL2;
+            FlagBinaryData = flagBinaryData;
+            FlagFlipTransp = flagFlipTransp;
+            FlagSetLblTerm = flagSetLblTerm;
+            FlagUseLblTerm = flagUseLblTerm;
+            FlagUseStdTerm = flagUseStdTerm;
+            FlagQuotedData = flagQuotedData;
+            FlagSymbolMode = flagSymbolMode;
 
             _statsCtParent = 0;
             _statsCtChild  = 0;
@@ -72,10 +55,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Description
-        {
-            get { return _description; }
-        }
+        public string Description { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -83,10 +63,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagBinaryData
-        {
-            get { return _flagBinaryData; }
-        }
+        public bool FlagBinaryData { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -94,10 +71,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagFlipTransp
-        {
-            get { return _flagFlipTransp; }
-        }
+        public bool FlagFlipTransp { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -105,10 +79,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagQuotedData
-        {
-            get { return _flagQuotedData; }
-        }
+        public bool FlagQuotedData { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -116,10 +87,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagResetHPGL2
-        {
-            get { return _flagResetHPGL2; }
-        }
+        public bool FlagResetHPGL2 { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -127,10 +95,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagSetLblTerm
-        {
-            get { return _flagSetLblTerm; }
-        }
+        public bool FlagSetLblTerm { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -138,10 +103,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagSymbolMode
-        {
-            get { return _flagSymbolMode; }
-        }
+        public bool FlagSymbolMode { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -149,10 +111,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagUseLblTerm
-        {
-            get { return _flagUseLblTerm; }
-        }
+        public bool FlagUseLblTerm { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -160,10 +119,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagUseStdTerm
-        {
-            get { return _flagUseStdTerm; }
-        }
+        public bool FlagUseStdTerm { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -188,10 +144,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Mnemonic
-        {
-            get { return _mnemonic; }
-        }
+        public string Mnemonic { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

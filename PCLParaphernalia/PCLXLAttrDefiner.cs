@@ -23,10 +23,6 @@ namespace PCLParaphernalia
 
         private readonly byte _tag;
 
-        private readonly string _description;
-
-        private readonly bool _flagReserved;
-
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L X L A t t r D e f i n e r                                    //
@@ -38,8 +34,8 @@ namespace PCLParaphernalia
                                 string description)
 	    {
             _tag          = tag;
-            _flagReserved = flagReserved;
-            _description = description;
+            FlagReserved = flagReserved;
+            Description = description;
 	    }
 
         //--------------------------------------------------------------------//
@@ -48,10 +44,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Description
-        {
-            get { return _description; }
-        }
+        public string Description { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -59,10 +52,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagReserved
-        {
-            get { return _flagReserved; }
-        }
+        public bool FlagReserved { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //

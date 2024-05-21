@@ -16,24 +16,6 @@ namespace PCLParaphernalia
 
     class PCLSymSetType
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Constants and enumerations.                                        //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Class variables.                                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private readonly string _descStd;
-        private readonly string _descShort;
-
-        private readonly byte _idPCL;
-
-        private readonly bool _flagBound;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -46,10 +28,10 @@ namespace PCLParaphernalia
                                  string descStd,
                                  string descShort)
         {
-            _idPCL         = idPCL;
-            _flagBound     = flagBound;
-            _descStd       = descStd;
-            _descShort     = descShort;
+            IdPCL = idPCL;
+            IsBound = flagBound;
+            DescStd = descStd;
+            DescShort = descShort;
         }
 
         //--------------------------------------------------------------------//
@@ -61,10 +43,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string DescShort
-        {
-            get { return _descShort; }
-        }
+        public string DescShort { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -75,10 +54,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string DescStd
-        {
-            get { return _descStd; }
-        }
+        public string DescStd { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -89,10 +65,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte IdPCL
-        {
-            get { return _idPCL; }
-        }
+        public byte IdPCL { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -104,9 +77,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool IsBound
-        {
-            get { return _flagBound; }
-        }
+        public bool IsBound { get; }
     }
 }

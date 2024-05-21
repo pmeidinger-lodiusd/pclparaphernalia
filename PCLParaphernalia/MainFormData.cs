@@ -10,15 +10,6 @@ namespace PCLParaphernalia
     /// </summary>
     static class MainFormData
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Fields (class variables).                                          //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private static double _windowScale = 1.0;
-
-        private static bool _versionChange = false;
 
         private static int _versionMajorOld = -1;
         private static int _versionMinorOld = -1;
@@ -135,14 +126,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool VersionChange
-        {
-            get { return _versionChange; }
-            set
-            {
-                _versionChange = value;
-            }
-        }
+        public static bool VersionChange { get; set; } = false;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -150,13 +134,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static double WindowScale
-        {
-            get { return _windowScale; }
-            set
-            {
-                _windowScale = value;
-            }
-        }
+        public static double WindowScale { get; set; } = 1.0;
     }
 }

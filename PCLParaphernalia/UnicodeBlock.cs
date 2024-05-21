@@ -10,15 +10,6 @@ namespace PCLParaphernalia
     /// </summary>
     class UnicodeBlock
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Class variables.                                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private readonly uint _rangeStart;
-        private readonly uint _rangeEnd;
-        private readonly string _name;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -31,9 +22,9 @@ namespace PCLParaphernalia
             uint rangeEnd,
             string name)
         {
-            _rangeStart = rangeStart;
-            _rangeEnd   = rangeEnd;
-            _name       = name;
+            RangeStart = rangeStart;
+            RangeEnd = rangeEnd;
+            Name = name;
         }
 
         //--------------------------------------------------------------------//
@@ -42,10 +33,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Name
-        {
-            get { return _name; }
-        }
+        public string Name { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -53,10 +41,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public uint RangeEnd
-        {
-            get { return _rangeEnd; }
-        }
+        public uint RangeEnd { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -64,9 +49,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public uint RangeStart
-        {
-            get { return _rangeStart; }
-        }
+        public uint RangeStart { get; }
     }
 }

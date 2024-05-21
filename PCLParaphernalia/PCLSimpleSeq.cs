@@ -22,15 +22,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private readonly byte _keySChar;
-        private readonly string _description;
-
-        private readonly bool _flagObsolete;
-        private readonly bool _flagResetHPGL2;
 
         private int _statsCtParent;
         private int _statsCtChild;
-
-        private readonly PrnParseConstants.eOvlAct _makeOvlAct;
 
         private readonly PrnParseConstants.eSeqGrp _seqGrp;
 
@@ -49,12 +43,12 @@ namespace PCLParaphernalia
             string description)
         {
             _keySChar        = keySChar;
-            _description     = description;
+            Description = description;
 
-            _flagObsolete    = flagObsolete;
-            _flagResetHPGL2  = flagResetHPGL2;
+            FlagObsolete = flagObsolete;
+            FlagResetHPGL2 = flagResetHPGL2;
 
-            _makeOvlAct      = makeOvlAct;
+            this.makeOvlAct      = makeOvlAct;
             _seqGrp          = seqGrp;
 
             _statsCtParent   = 0;
@@ -67,10 +61,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Description
-        {
-            get { return _description; }
-        }
+        public string Description { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -78,10 +69,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagObsolete
-        {
-            get { return _flagObsolete; }
-        }
+        public bool FlagObsolete { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -89,10 +77,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagResetHPGL2
-        {
-            get { return _flagResetHPGL2; }
-        }
+        public bool FlagResetHPGL2 { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -128,10 +113,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.eOvlAct makeOvlAct
-        {
-            get { return _makeOvlAct; }
-        }
+        public PrnParseConstants.eOvlAct makeOvlAct { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

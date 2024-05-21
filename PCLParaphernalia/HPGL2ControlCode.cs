@@ -23,11 +23,6 @@ namespace PCLParaphernalia
 
         private readonly byte _tag;
 
-        private readonly string _description;
-        private readonly string _mnemonic;
-
-        private readonly bool _noOp;
-
         private int _statsCtParent;
         private int _statsCtChild;
 
@@ -43,9 +38,9 @@ namespace PCLParaphernalia
                                  string description)
 	    {
             _tag           = tag;
-            _noOp          = noOp;
-            _mnemonic      = mnemonic;
-            _description   = description;
+            NoOp = noOp;
+            Mnemonic = mnemonic;
+            DescExcMnemonic = description;
 
             _statsCtParent = 0;
             _statsCtChild = 0;
@@ -57,10 +52,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string DescExcMnemonic
-        {
-            get { return _description; }
-        }
+        public string DescExcMnemonic { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -70,7 +62,7 @@ namespace PCLParaphernalia
 
         public string Description
         {
-            get { return _mnemonic + ": " + _description; }
+            get { return Mnemonic + ": " + DescExcMnemonic; }
         }
 
         //--------------------------------------------------------------------//
@@ -79,10 +71,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Mnemonic
-        {
-            get { return _mnemonic; }
-        }
+        public string Mnemonic { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -90,10 +79,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool NoOp
-        {
-            get { return _noOp; }
-        }
+        public bool NoOp { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

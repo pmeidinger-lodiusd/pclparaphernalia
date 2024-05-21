@@ -16,22 +16,9 @@ namespace PCLParaphernalia
 
     class PCLFont
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Class variables.                                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private readonly PCLFonts.eFontType _fontType;
-
-        private readonly string _fontName;
-
-        private readonly short _fontIndex;
 
         private readonly ushort _symSetNumber;
         private readonly ushort _symSetDefault;
-
-        private readonly ushort _typeface;
 
         private readonly double _pitch;
         private readonly double _pointSize;
@@ -39,12 +26,6 @@ namespace PCLParaphernalia
 
         private readonly bool _bound;
         private readonly bool _proportional;
-        private readonly bool _scalable;
-
-        private readonly bool _varRegular;
-        private readonly bool _varItalic;
-        private readonly bool _varBold;
-        private readonly bool _varBoldItalic;
 
         private readonly ushort _styleRegular;
         private readonly ushort _styleItalic;
@@ -98,25 +79,25 @@ namespace PCLParaphernalia
                         string nameBoldItalic,
                         ushort[]          symSets)
         {
-            _fontIndex          = fontIndex;
-            _fontType           = fontType;
-            _fontName           = fontName;
+            IndexNo = fontIndex;
+            Type = fontType;
+            Name = fontName;
 
             _bound              = bound;
             _proportional       = proportional;
-            _scalable           = scalable;
+            Scalable = scalable;
 
             _symSetNumber       = symbolSet;
-            _typeface           = typeface;
+            Typeface = typeface;
 
             _contourRatio       = contourRatio;
             _pitch              = pitch;
             _pointSize          = pointSize;
 
-            _varRegular         = varRegular;
-            _varItalic          = varItalic;
-            _varBold            = varBold;
-            _varBoldItalic      = varBoldItalic;
+            Var_Regular = varRegular;
+            Var_Italic = varItalic;
+            Var_Bold = varBold;
+            Var_BoldItalic = varBoldItalic;
 
             _styleRegular       = styleRegular;
             _styleItalic        = styleItalic;
@@ -185,7 +166,7 @@ namespace PCLParaphernalia
             else
                 cmd.Append (",2,0");
 
-            if (_scalable)
+            if (Scalable)
             {
                 // Scalable; the size parameter defines the required size.
 
@@ -234,7 +215,7 @@ namespace PCLParaphernalia
                 cmd.Append (",6,").Append (_weightRegular);
             }
 
-            cmd.Append (",7,").Append (_typeface);
+            cmd.Append (",7,").Append (Typeface);
 
             return cmd.ToString ();
         }
@@ -268,12 +249,12 @@ namespace PCLParaphernalia
         {
             bool presetFont = false;
 
-            if ((_fontType == PCLFonts.eFontType.PresetTypeface) ||
-                (_fontType == PCLFonts.eFontType.PresetFamily))
+            if ((Type == PCLFonts.eFontType.PresetTypeface) ||
+                (Type == PCLFonts.eFontType.PresetFamily))
             {
                 presetFont = true;
-                typeface   = _typeface;
-                fontName   = _fontName;
+                typeface   = Typeface;
+                fontName   = Name;
             }
             else
             {
@@ -304,7 +285,7 @@ namespace PCLParaphernalia
             else
                 seq = "s0p";
 
-            if (_scalable)
+            if (Scalable)
             {
                 // Scalable; the size parameter defines the required size.
 
@@ -365,7 +346,7 @@ namespace PCLParaphernalia
                        _weightRegular.ToString() + "b";
             }
 
-            seq += _typeface + "T";
+            seq += Typeface + "T";
 
             return seq;
         }
@@ -553,13 +534,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public short IndexNo
-        {
-            get
-            {
-                return _fontIndex;
-            }
-        }
+        public short IndexNo { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -588,9 +563,9 @@ namespace PCLParaphernalia
 
         public bool isPresetFont()
         {
-            return (_fontType != PCLFonts.eFontType.Custom) &&
-                (_fontType != PCLFonts.eFontType.Download) &&
-                (_fontType != PCLFonts.eFontType.PrnDisk);
+            return (Type != PCLFonts.eFontType.Custom) &&
+                (Type != PCLFonts.eFontType.Download) &&
+                (Type != PCLFonts.eFontType.PrnDisk);
         }
 
         //--------------------------------------------------------------------//
@@ -668,10 +643,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Name
-        {
-            get { return _fontName; }
-        }
+        public string Name { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -704,13 +676,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool Scalable
-        {
-            get
-            {
-                return _scalable;
-            }
-        }
+        public bool Scalable { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -883,10 +849,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLFonts.eFontType Type
-        {
-            get { return _fontType; }
-        }
+        public PCLFonts.eFontType Type { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -897,10 +860,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort Typeface
-        {
-            get { return _typeface; }
-        }
+        public ushort Typeface { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -911,10 +871,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool Var_Bold
-        {
-            get { return _varBold; }
-        }
+        public bool Var_Bold { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -925,10 +882,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool Var_BoldItalic
-        {
-            get { return _varBoldItalic; }
-        }
+        public bool Var_BoldItalic { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -939,10 +893,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool Var_Italic
-        {
-            get { return _varItalic; }
-        }
+        public bool Var_Italic { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -953,10 +904,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool Var_Regular
-        {
-            get { return _varRegular; }
-        }
+        public bool Var_Regular { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -970,13 +918,13 @@ namespace PCLParaphernalia
         public bool variantAvailable(PCLFonts.eVariant variant)
         {
             if (variant == PCLFonts.eVariant.Italic)
-                return _varItalic;
+                return Var_Italic;
             else if (variant == PCLFonts.eVariant.Bold)
-                return _varBold;
+                return Var_Bold;
             else if (variant == PCLFonts.eVariant.BoldItalic)
-                return _varBoldItalic;
+                return Var_BoldItalic;
             else
-                return _varRegular;
+                return Var_Regular;
         }
     }
 }

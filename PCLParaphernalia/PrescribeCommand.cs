@@ -12,17 +12,6 @@ namespace PCLParaphernalia
 
     class PrescribeCommand
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Class variables.                                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private readonly string _cmdName;
-        private readonly string _cmdDesc;
-        private readonly bool _flagCmdIntro;
-        private readonly bool _flagCmdExit;
-        private readonly bool _flagCmdSetCRC;
 
         private int _statsCtParent;
         private int _statsCtChild;
@@ -39,11 +28,11 @@ namespace PCLParaphernalia
                                  bool flagCmdExit,
                                  bool flagCmdSetCRC)
         {
-            _cmdName   = name;
-            _cmdDesc   = desc;
-            _flagCmdIntro  = flagCmdIntro;
-            _flagCmdExit   = flagCmdExit;
-            _flagCmdSetCRC = flagCmdSetCRC;
+            Name = name;
+            Description = desc;
+            IsCmdIntro = flagCmdIntro;
+            IsCmdExit = flagCmdExit;
+            IsCmdSetCRC = flagCmdSetCRC;
 
             _statsCtParent = 0;
             _statsCtChild = 0;
@@ -55,10 +44,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Description
-        {
-            get { return _cmdDesc; }
-        }
+        public string Description { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -86,10 +72,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool IsCmdExit
-        {
-            get { return _flagCmdExit; }
-        }
+        public bool IsCmdExit { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -100,10 +83,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool IsCmdIntro
-        {
-            get { return _flagCmdIntro; }
-        }
+        public bool IsCmdIntro { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -114,10 +94,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool IsCmdSetCRC
-        {
-            get { return _flagCmdSetCRC; }
-        }
+        public bool IsCmdSetCRC { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -125,10 +102,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Name
-        {
-            get { return _cmdName; }
-        }
+        public string Name { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

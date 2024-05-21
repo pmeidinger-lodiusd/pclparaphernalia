@@ -6,20 +6,8 @@ namespace PCLParaphernalia
 {
     class PCLCharCollItem : INotifyPropertyChanged
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Fields (class variables).                                          //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private PCLCharCollections.eBitType _bitType;
-
-        private int _bitNo;
-
-        private string _desc;
 
         private bool _isChecked;
-        private bool _isEnabled;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -35,10 +23,10 @@ namespace PCLParaphernalia
                                 bool isEnabled,
                                 bool isChecked)
         {
-            _bitNo     = bitNo;
-            _bitType   = bitType;
-            _desc      = desc;
-            _isEnabled = isEnabled;
+            BitNo = bitNo;
+            BitType = bitType;
+            Desc = desc;
+            IsEnabled = isEnabled;
             _isChecked = isChecked;
         }
 
@@ -48,11 +36,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int BitNo
-        {
-            get { return _bitNo; }
-            set { _bitNo = value; }
-        }
+        public int BitNo { get; set; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -60,11 +44,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLCharCollections.eBitType BitType
-        {
-            get { return _bitType; }
-            set { _bitType = value; }
-        }
+        public PCLCharCollections.eBitType BitType { get; set; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -72,11 +52,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Desc
-        {
-            get { return _desc; }
-            set { _desc = value; }
-        }
+        public string Desc { get; set; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -102,12 +78,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool IsEnabled
-        {
-            get { return _isEnabled; }
-
-            set { _isEnabled = value; }
-        }
+        public bool IsEnabled { get; set; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

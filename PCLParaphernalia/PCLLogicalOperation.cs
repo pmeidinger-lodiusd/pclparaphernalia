@@ -22,7 +22,6 @@ namespace PCLParaphernalia
         readonly short _opCode;
 
         private readonly string _actPostfix;
-        private readonly string _actInfix;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -39,7 +38,7 @@ namespace PCLParaphernalia
             _opCode = opCode;       // not used at present //
 
             _actPostfix  = actPostfix;
-            _actInfix    = actInfix;
+            ActInfix = actInfix;
         }
 
         //--------------------------------------------------------------------//
@@ -52,10 +51,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string ActInfix
-        {
-            get { return _actInfix; }
-        }
+        public string ActInfix { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -82,7 +78,7 @@ namespace PCLParaphernalia
 
             return prefix + _opId.ToString () +
                    ": " + _actPostfix.PadRight (_maxPFLen) +
-                   " = " + _actInfix;
+                   " = " + ActInfix;
         }
 
         //--------------------------------------------------------------------//
