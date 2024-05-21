@@ -2,6 +2,8 @@
 using System.IO;
 using System.Runtime.InteropServices;
 
+// https://web.archive.org/web/20150403064935/http://support.microsoft.com/en-us/kb/322091
+
 namespace PCLParaphernalia
 {
     /// <summary>
@@ -32,69 +34,39 @@ namespace PCLParaphernalia
 
         //--------------------------------------------------------------------//
 
-        [DllImport("winspool.Drv", EntryPoint = "OpenPrinterA",
-                   SetLastError = true, CharSet = CharSet.Ansi,
-                   ExactSpelling = true,
-                   CallingConvention = CallingConvention.StdCall)]
-
-        private static extern bool OpenPrinter(
-            [MarshalAs(UnmanagedType.LPStr)] string szPrinter,
-            out IntPtr hPrinter,
-            IntPtr pd);
+        [DllImport("winspool.Drv", EntryPoint = "OpenPrinterA", SetLastError = true, CharSet = CharSet.Ansi, ExactSpelling = true, CallingConvention = CallingConvention.StdCall)]
+        private static extern bool OpenPrinter( [MarshalAs(UnmanagedType.LPStr)] string szPrinter, out IntPtr hPrinter, IntPtr pd);
 
         //--------------------------------------------------------------------//
 
-        [DllImport("winspool.Drv", EntryPoint = "ClosePrinter",
-                   SetLastError = true,
-                   ExactSpelling = true,
-                   CallingConvention = CallingConvention.StdCall)]
-
+        [DllImport("winspool.Drv", EntryPoint = "ClosePrinter", SetLastError = true, ExactSpelling = true, CallingConvention = CallingConvention.StdCall)]
         private static extern bool ClosePrinter(IntPtr hPrinter);
 
         //--------------------------------------------------------------------//
 
-        [DllImport("winspool.Drv", EntryPoint = "StartDocPrinterA",
-                   SetLastError = true, CharSet = CharSet.Ansi,
-                   ExactSpelling = true,
-                   CallingConvention = CallingConvention.StdCall)]
-
-        private static extern bool StartDocPrinter(
-            IntPtr hPrinter, int level,
-            [In, MarshalAs(UnmanagedType.LPStruct)] DOCINFOA di);
+        [DllImport("winspool.Drv", EntryPoint = "StartDocPrinterA", SetLastError = true, CharSet = CharSet.Ansi, ExactSpelling = true, CallingConvention = CallingConvention.StdCall)]
+        private static extern bool StartDocPrinter(IntPtr hPrinter, int level, [In, MarshalAs(UnmanagedType.LPStruct)] DOCINFOA di);
 
         //--------------------------------------------------------------------//
 
-        [DllImport("winspool.Drv", EntryPoint = "EndDocPrinter",
-            SetLastError = true, ExactSpelling = true,
-            CallingConvention = CallingConvention.StdCall)]
-
+        [DllImport("winspool.Drv", EntryPoint = "EndDocPrinter", SetLastError = true, ExactSpelling = true, CallingConvention = CallingConvention.StdCall)]
         private static extern bool EndDocPrinter(IntPtr hPrinter);
 
         //--------------------------------------------------------------------//
 
-        [DllImport("winspool.Drv", EntryPoint = "StartPagePrinter",
-            SetLastError = true, ExactSpelling = true,
-            CallingConvention = CallingConvention.StdCall)]
-
+        [DllImport("winspool.Drv", EntryPoint = "StartPagePrinter", SetLastError = true, ExactSpelling = true, CallingConvention = CallingConvention.StdCall)]
         private static extern bool StartPagePrinter(IntPtr hPrinter);
 
         //--------------------------------------------------------------------//
 
-        [DllImport("winspool.Drv", EntryPoint = "EndPagePrinter",
-            SetLastError = true, ExactSpelling = true,
-            CallingConvention = CallingConvention.StdCall)]
-
+        [DllImport("winspool.Drv", EntryPoint = "EndPagePrinter", SetLastError = true, ExactSpelling = true, CallingConvention = CallingConvention.StdCall)]
         private static extern bool EndPagePrinter(IntPtr hPrinter);
 
         //--------------------------------------------------------------------//
 
-        [DllImport("winspool.Drv", EntryPoint = "WritePrinter",
-            SetLastError = true, ExactSpelling = true,
-            CallingConvention = CallingConvention.StdCall)]
+        [DllImport("winspool.Drv", EntryPoint = "WritePrinter", SetLastError = true, ExactSpelling = true, CallingConvention = CallingConvention.StdCall)]
 
-        private static extern bool WritePrinter(
-            IntPtr hPrinter, IntPtr pBytes,
-            int dwCount, out int dwWritten);
+        private static extern bool WritePrinter(IntPtr hPrinter, IntPtr pBytes, int dwCount, out int dwWritten);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -107,9 +79,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool SendBytesToPrinter(string szPrinterName,
-                                               IntPtr pBytes,
-                                               int dwCount)
+        public static bool SendBytesToPrinter(string szPrinterName, IntPtr pBytes, int dwCount)
         {
             int dwError = 0, dwWritten = 0;
             IntPtr hPrinter = new IntPtr(0);
@@ -121,74 +91,33 @@ namespace PCLParaphernalia
             di.pDocName = "My C#.NET RAW Document";
             di.pDataType = "RAW";
 
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Open the printer.                                              //
-            //                                                                //
-            //----------------------------------------------------------------//
-
+            // Open the printer.
             if (OpenPrinter(szPrinterName.Normalize(), out hPrinter, IntPtr.Zero))
             {
-                //------------------------------------------------------------//
-                //                                                            //
-                // Start a document.                                          //
-                //                                                            //
-                //------------------------------------------------------------//
-
+                // Start a document.
                 if (StartDocPrinter(hPrinter, 1, di))
                 {
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // Start a page.                                          //
-                    //                                                        //
-                    //--------------------------------------------------------//
-
+                    // Start a page.
                     if (StartPagePrinter(hPrinter))
                     {
-                        //----------------------------------------------------//
-                        //                                                    //
-                        // Write supplied bytes.                              //
-                        //                                                    //
-                        //----------------------------------------------------//
+                        // Write supplied bytes.
+                        bSuccess = WritePrinter(hPrinter, pBytes, dwCount, out dwWritten);
 
-                        bSuccess = WritePrinter(hPrinter, pBytes, dwCount,
-                                                out dwWritten);
-
-                        //----------------------------------------------------//
-                        //                                                    //
-                        // End page.                                          //
-                        //                                                    //
-                        //----------------------------------------------------//
-
+                        // End page.
                         EndPagePrinter(hPrinter);
                     }
 
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // End document.                                          //
-                    //                                                        //
-                    //--------------------------------------------------------//
-
+                    // End document
                     EndDocPrinter(hPrinter);
                 }
 
-                //------------------------------------------------------------//
-                //                                                            //
-                // Close the printer.                                         //
-                //                                                            //
-                //------------------------------------------------------------//
-
+                // Close the printer
                 ClosePrinter(hPrinter);
             }
             if (!bSuccess)
             {
-                //------------------------------------------------------------//
-                //                                                            //
-                // If write did not succeed, GetLastError may give more       //
-                // information about the failure.                             //
-                //                                                            //
-                //------------------------------------------------------------//
-
+                // If write did not succeed, GetLastError may give more
+                // information about the failure.
                 dwError = Marshal.GetLastWin32Error();
             }
 
@@ -209,23 +138,13 @@ namespace PCLParaphernalia
         public static bool SendFileToPrinter(string szPrinterName,
                                               string szFileName)
         {
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Open the specified file.                                       //
-            // Create a BinaryReader on the file.                             // 
-            //                                                                //
-            //----------------------------------------------------------------//
+            // Open the specified file.
+            // Create a BinaryReader on the file.
 
             FileStream fs = new FileStream(szFileName, FileMode.Open);
-
             BinaryReader br = new BinaryReader(fs);
 
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Open the specified file.                                       //
-            // Create an array of bytes big enough to hold the file contents. //
-            //                                                                //
-            //----------------------------------------------------------------//
+            // Create an array of bytes big enough to hold the file contents.
 
             byte[] bytes = new byte[fs.Length];
 
@@ -249,22 +168,10 @@ namespace PCLParaphernalia
 
             Marshal.Copy(bytes, 0, pUnmanagedBytes, nLength);
 
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Send the unmanaged bytes to the printer.                       //
-            //                                                                //
-            //----------------------------------------------------------------//
+            // Send the unmanaged bytes to the printer.
+            bSuccess = SendBytesToPrinter(szPrinterName, pUnmanagedBytes, nLength);
 
-            bSuccess = SendBytesToPrinter(szPrinterName,
-                                           pUnmanagedBytes,
-                                           nLength);
-
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Free the unmanaged memory and exit.                            //
-            //                                                                //
-            //----------------------------------------------------------------//
-
+            // Free the unmanaged memory and exit.
             Marshal.FreeCoTaskMem(pUnmanagedBytes);
 
             return bSuccess;
