@@ -622,8 +622,6 @@ namespace PCLParaphernalia
         public bool CheckForTTC(string fileName, ref bool typeTTC, ref uint numFonts)
         {
             const string tabName = "ttcf";
-
-            bool flagOK = false;
             bool fileOpen;
 
             _fontFileSize = 0;
@@ -632,6 +630,8 @@ namespace PCLParaphernalia
 
             fileOpen = FontFileOpen(fileName, ref _fontFileSize);
 
+
+            bool flagOK;
             if (!fileOpen)
             {
                 flagOK = false;
@@ -1072,13 +1072,9 @@ namespace PCLParaphernalia
                                           ref byte[] fontName,
                                           ref byte[] panoseData)
         {
-            sbyte defPCLWidthType = 0;
-
             byte panoseFamily,
                  panoseProportion;
-
-            ushort defPCLPitch = 0,
-                   advWidthThis = 0,
+            ushort advWidthThis = 0,
                    advWidthCommon = 0,
                    glyphId = 0;
 
@@ -1100,14 +1096,12 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            defPCLWidthType = 0;
-            defPCLPitch = 0;
 
             textWidth = (ushort)_OS_2_xAvgCharWidth;
             xHeight = (ushort)_OS_2_sxHeight;
 
             glyphPresent = _charData[cSpaceCodePoint].GetGlyphId(ref glyphId);
-
+            ushort defPCLPitch;
             if (glyphPresent)
             {
                 _glyphData[glyphId].GetAdvance(ref advWidthThis);
@@ -1121,6 +1115,7 @@ namespace PCLParaphernalia
                 defPCLPitch = (ushort)_OS_2_xAvgCharWidth;
             }
 
+            sbyte defPCLWidthType;
             //------------------------------------------------------------//
 
             switch (_OS_2_usWidthClass)
@@ -1323,8 +1318,6 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             glyphWidthSet = false;
-            glyphPresent = false;
-
             monoSpaced_glyphs = true;
 
             for (int i = _cmap_firstCode; i <= _cmap_lastCode; i++)
@@ -1465,9 +1458,6 @@ namespace PCLParaphernalia
                                           ref string typefacePCLT,
                                           ref ulong charCompPCLT)
         {
-            byte stylePosture = 0,
-                 styleWidth = 0;
-
             ushort styleStructure;
 
             //----------------------------------------------------------------//
@@ -1495,6 +1485,7 @@ namespace PCLParaphernalia
                 typefacePCLT = null;
             }
 
+            byte stylePosture;
             //----------------------------------------------------------------//
             //                                                                //
             // Get values from other tables (for style and strokeweight).     //
@@ -1514,7 +1505,7 @@ namespace PCLParaphernalia
                 styleStructure = (ushort)PCLFonts.StyleStructure.Outline;
             else
                 styleStructure = (ushort)PCLFonts.StyleStructure.Solid;
-
+            byte styleWidth;
             //------------------------------------------------------------//
             //                                                            //
             // Map the nine OS_2_usWidth Class values to the eight PCL    //
@@ -1666,14 +1657,11 @@ namespace PCLParaphernalia
 
         public uint GetSegGTTablesSize(bool pdlIsPCLXL, bool symSetUnbound, bool flagVMetrics)
         {
-            uint sizeTables = 0;
-
-            sizeTables = _tab_cvt.TablePadLen +
-                         _tab_fpgm.TablePadLen +
-                         _tab_head.TablePadLen +
-                         _tab_maxp.TablePadLen +
-                         _tab_prep.TablePadLen;
-
+            uint sizeTables = _tab_cvt.TablePadLen +
+             _tab_fpgm.TablePadLen +
+             _tab_head.TablePadLen +
+             _tab_maxp.TablePadLen +
+             _tab_prep.TablePadLen;
             if ((!pdlIsPCLXL) || symSetUnbound)
             {
                 sizeTables = sizeTables + _tab_hhea.TablePadLen + _tab_hmtx.TablePadLen;
@@ -1736,14 +1724,14 @@ namespace PCLParaphernalia
         public bool GetTTCData(string fileName, uint numFonts, ref uint[] fontOffsets, ref string[] fontNames)
         {
             const string tabName = "ttcf";
-
-            bool flagOK = true;
             bool fileOpen;
 
             int offset;
 
             fileOpen = FontFileOpen(fileName, ref _fontFileSize);
 
+
+            bool flagOK;
             if (!fileOpen)
             {
                 flagOK = false;
@@ -1898,8 +1886,6 @@ namespace PCLParaphernalia
                                           bool symSetUserSet,
                                           bool symSetMapPCL)
         {
-            bool flagOK = false;
-
             bool fileOpen;
 
             _fontFileSize = 0;
@@ -1909,6 +1895,7 @@ namespace PCLParaphernalia
 
             fileOpen = FontFileOpen(fileName, ref _fontFileSize);
 
+            bool flagOK;
             if (!fileOpen)
             {
                 flagOK = false;
@@ -2121,8 +2108,6 @@ namespace PCLParaphernalia
 
         public bool ReadByteArray(int offset, int length, ref byte[] target)
         {
-            int readLen = 0;
-
             bool flagOK = true;
 
             if (offset != -1)
@@ -2132,8 +2117,7 @@ namespace PCLParaphernalia
             {
                 try
                 {
-                    readLen = _binReader.Read(target, 0, length);
-
+                    int readLen = _binReader.Read(target, 0, length);
                     if (readLen != length)
                         flagOK = false;
                 }
@@ -2160,9 +2144,6 @@ namespace PCLParaphernalia
         private bool ReadByteAsSByte(int offset, ref sbyte target)
         {
             const int sliceSize = 1;
-
-            int readLen = 0;
-
             bool flagOK;
 
             byte[] slice = new byte[sliceSize];
@@ -2176,8 +2157,7 @@ namespace PCLParaphernalia
             {
                 try
                 {
-                    readLen = _binReader.Read(slice, 0, sliceSize);
-
+                    int readLen = _binReader.Read(slice, 0, sliceSize);
                     if (readLen != sliceSize)
                         flagOK = false;
                 }
@@ -2209,9 +2189,6 @@ namespace PCLParaphernalia
         private bool ReadByteAsUByte(int offset, ref byte target)
         {
             const int sliceSize = 1;
-
-            int readLen = 0;
-
             bool flagOK;
 
             byte[] slice = new byte[sliceSize];
@@ -2225,8 +2202,7 @@ namespace PCLParaphernalia
             {
                 try
                 {
-                    readLen = _binReader.Read(slice, 0, sliceSize);
-
+                    int readLen = _binReader.Read(slice, 0, sliceSize);
                     if (readLen != sliceSize)
                         flagOK = false;
                 }
@@ -2259,9 +2235,6 @@ namespace PCLParaphernalia
         private bool ReadBytesAsInt16(int offset, ref short target)
         {
             const int sliceSize = 2;
-
-            int readLen = 0;
-
             bool flagOK;
 
             byte[] slice = new byte[sliceSize];
@@ -2275,8 +2248,7 @@ namespace PCLParaphernalia
             {
                 try
                 {
-                    readLen = _binReader.Read(slice, 0, sliceSize);
-
+                    int readLen = _binReader.Read(slice, 0, sliceSize);
                     if (readLen != sliceSize)
                         flagOK = false;
                 }
@@ -2309,9 +2281,6 @@ namespace PCLParaphernalia
         private bool ReadBytesAsUInt16(int offset, ref ushort target)
         {
             const int sliceSize = 2;
-
-            int readLen = 0;
-
             bool flagOK;
 
             byte[] slice = new byte[sliceSize];
@@ -2325,8 +2294,7 @@ namespace PCLParaphernalia
             {
                 try
                 {
-                    readLen = _binReader.Read(slice, 0, sliceSize);
-
+                    int readLen = _binReader.Read(slice, 0, sliceSize);
                     if (readLen != sliceSize)
                         flagOK = false;
                 }
@@ -2359,9 +2327,6 @@ namespace PCLParaphernalia
         private bool ReadBytesAsUInt32(int offset, ref uint target)
         {
             const int sliceSize = 4;
-
-            int readLen = 0;
-
             bool flagOK;
 
             byte[] slice = new byte[sliceSize];
@@ -2375,8 +2340,7 @@ namespace PCLParaphernalia
             {
                 try
                 {
-                    readLen = _binReader.Read(slice, 0, sliceSize);
-
+                    int readLen = _binReader.Read(slice, 0, sliceSize);
                     if (readLen != sliceSize)
                         flagOK = false;
                 }
@@ -2409,9 +2373,6 @@ namespace PCLParaphernalia
         private bool ReadBytesAsUInt64(int offset, ref ulong target)
         {
             const int sliceSize = 8;
-
-            int readLen = 0;
-
             bool flagOK;
 
             byte[] slice = new byte[sliceSize];
@@ -2425,8 +2386,7 @@ namespace PCLParaphernalia
             {
                 try
                 {
-                    readLen = _binReader.Read(slice, 0, sliceSize);
-
+                    int readLen = _binReader.Read(slice, 0, sliceSize);
                     if (readLen != sliceSize)
                         flagOK = false;
                 }
@@ -2466,9 +2426,6 @@ namespace PCLParaphernalia
                                        bool symSetMapPCL)
         {
             const string tabName = "cmap";
-
-            bool flagOK = true;
-
             uint tabOffset = 0,
                    tabLength = 0,
                    reqLength;
@@ -2506,8 +2463,7 @@ namespace PCLParaphernalia
             string mapSymSet = string.Empty;
             string mapSymSetType = string.Empty;
 
-            flagOK = true;
-
+            bool flagOK = true;
             encodingSymbol = false;
             encodingUnicode = false;
 
@@ -3351,9 +3307,6 @@ namespace PCLParaphernalia
 
                     ushort codepoint = 0,
                            glyphId = 0;
-
-                    string hexCt = string.Empty;
-
                     bool glyphPresent = false,
                          firstFound = false,
                          firstMissing = true;
@@ -3363,6 +3316,8 @@ namespace PCLParaphernalia
                     _cmap_firstCode = 0;
                     _cmap_lastCode = 0;
 
+
+                    string hexCt;
                     if (_sizeCharSet < 257)
                         hexCt = "x2";
                     else
@@ -3488,17 +3443,13 @@ namespace PCLParaphernalia
         private bool ReadData_head()
         {
             const string tabName = "head";
-
-            bool flagOK = true;
-
             uint tabOffset = 0,
                    tabLength = 0,
                    reqLength;
 
             uint tabVersion = 0;
 
-            flagOK = true;
-
+            bool flagOK = true;
             _tab_head.GetByteRange(ref tabOffset, ref tabLength);
             reqLength = 54;
 
@@ -3623,17 +3574,13 @@ namespace PCLParaphernalia
         private bool ReadData_hhea()
         {
             const string tabName = "hhea";
-
-            bool flagOK = true;
-
             uint tabOffset = 0,
                    tabLength = 0,
                    reqLength;
 
             uint tabVersion = 0;
 
-            flagOK = true;
-
+            bool flagOK = true;
             _tab_hhea.GetByteRange(ref tabOffset, ref tabLength);
             reqLength = 36;
 
@@ -3736,28 +3683,16 @@ namespace PCLParaphernalia
         private bool ReadData_hmtx()
         {
             const string tabName = "hmtx";
-
-            bool flagOK = true;
-
             uint tabOffset = 0,
                    tabLength = 0,
                    reqLength;
-
-            int hMetricsArrayLen = 0,
-                  lsbArrayLen = 0;
-            int hMetricsArraySize = 0,
-                  lsbArraySize = 0;
-
-            flagOK = true;
-
+            bool flagOK = true;
             _tab_hmtx.GetByteRange(ref tabOffset, ref tabLength);
 
-            hMetricsArrayLen = _hhea_numHMetrics;
-            lsbArrayLen = _maxp_numGlyphs - _hhea_numHMetrics;
-
-            hMetricsArraySize = 4 * hMetricsArrayLen;
-            lsbArraySize = 2 * lsbArrayLen;
-
+            int hMetricsArrayLen = _hhea_numHMetrics;
+            int lsbArrayLen = _maxp_numGlyphs - _hhea_numHMetrics;
+            int hMetricsArraySize = 4 * hMetricsArrayLen;
+            int lsbArraySize = 2 * lsbArrayLen;
             reqLength = (uint)(hMetricsArraySize + lsbArraySize);
 
             if (_hhea_numHMetrics < 1)
@@ -3801,8 +3736,7 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    ushort glyphId = 0,
-                           advance = 0;
+                    ushort advance = 0;
 
                     short lsb;
 
@@ -3827,7 +3761,7 @@ namespace PCLParaphernalia
 
                         lsb = (short)((lsbArray[lsbOffset] << 8) + lsbArray[lsbOffset + 1]);
 
-                        glyphId = (ushort)(hMetricsArrayLen + indx);
+                        ushort glyphId = (ushort)(hMetricsArrayLen + indx);
 
                         _glyphData[glyphId].SetMetricsH(advance, lsb);
                     }
@@ -3852,7 +3786,6 @@ namespace PCLParaphernalia
 
         private bool ReadData_loca_glyf()
         {
-            bool flagOK = true;
             bool composite = false;
 
             uint locaOffset = 0,
@@ -3869,7 +3802,7 @@ namespace PCLParaphernalia
 
             short numContours = 0;
 
-            flagOK = true;
+            bool flagOK = true;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -4028,17 +3961,13 @@ namespace PCLParaphernalia
         private bool ReadData_maxp()
         {
             const string tabName = "maxp";
-
-            bool flagOK = true;
-
             uint tabOffset = 0,
                    tabLength = 0,
                    reqLength;
 
             uint tabVersion = 0;
 
-            flagOK = true;
-
+            bool flagOK = true;
             _tab_maxp.GetByteRange(ref tabOffset, ref tabLength);
             reqLength = 32;
 
@@ -4124,9 +4053,6 @@ namespace PCLParaphernalia
         private bool ReadData_name(bool getTTCData, ref string fullFontName)
         {
             const string tabName = "name";
-
-            bool flagOK = true;
-
             uint tabOffset = 0,
                    tabLength = 0,
                    reqLength;
@@ -4142,8 +4068,7 @@ namespace PCLParaphernalia
             ushort tabFormat = 0,
                    stringsOffset = 0;
 
-            flagOK = true;
-
+            bool flagOK = true;
             _tab_name.GetByteRange(ref tabOffset, ref tabLength);
 
             //----------------------------------------------------------------//
@@ -4605,20 +4530,16 @@ namespace PCLParaphernalia
         private bool ReadData_OS_2()
         {
             const string tabName = "OS/2";
-
-            bool flagOK = true;
-
             uint tabOffset = 0,
                    tabLength = 0,
                    minLength;
 
             ushort tabVersion = 0;
-
-            flagOK = true;
-
             _tab_OS_2.GetByteRange(ref tabOffset, ref tabLength);
             minLength = 78;         // for version 0
 
+
+            bool flagOK;
             if (tabLength < minLength)
             {
                 //------------------------------------------------------------//
@@ -4701,12 +4622,10 @@ namespace PCLParaphernalia
 
                 if (_logVerbose)
                 {
-                    string usWeightClassDesc = string.Empty;
-                    string usWidthClassDesc = string.Empty;
-
                     StringBuilder fsTypeDesc = new StringBuilder();
                     StringBuilder fsSelDesc = new StringBuilder();
 
+                    string usWeightClassDesc;
                     //------------------------------------------------------------//
 
                     if (_OS_2_usWeightClass == mask_OS_2_usWeightClass_FW_THIN)
@@ -4729,7 +4648,7 @@ namespace PCLParaphernalia
                         usWeightClassDesc = "BLACK";
                     else
                         usWeightClassDesc = "unknown";
-
+                    string usWidthClassDesc;
                     //------------------------------------------------------------//
 
                     if (_OS_2_usWidthClass == mask_OS_2_usWidthClass_FWIDTH_ULTRA_CONDENSED)
@@ -4938,15 +4857,11 @@ namespace PCLParaphernalia
         private bool ReadData_PCLT()
         {
             const string tabName = "PCLT";
-
-            bool flagOK = true;
-
             uint tabOffset = 0,
                    tabLength = 0,
                    reqLength;
 
-            flagOK = true;
-
+            bool flagOK = true;
             _tab_PCLT.GetByteRange(ref tabOffset, ref tabLength);
             reqLength = 54;
 
@@ -5182,20 +5097,16 @@ namespace PCLParaphernalia
         private bool ReadData_post()
         {
             const string tabName = "post";
-
-            bool flagOK = true;
-
             uint tabOffset = 0,
                    tabLength = 0,
                    minLength;
 
             ushort tabVersion = 0;
-
-            flagOK = true;
-
             _tab_post.GetByteRange(ref tabOffset, ref tabLength);
             minLength = 32;         // for versions 0 and 3
 
+
+            bool flagOK;
             if (tabLength < minLength)
             {
                 //------------------------------------------------------------//
@@ -5270,8 +5181,6 @@ namespace PCLParaphernalia
         {
             const string tabName = "ttcf";
 
-            bool flagOK = true;
-
             //    UInt32 tabOffset = 0,
             //           tabLength = 0,
             //           reqLength;
@@ -5281,7 +5190,7 @@ namespace PCLParaphernalia
 
             typeTTC = false;
 
-            flagOK = ReadBytesAsUInt32(0, ref tabId);
+            bool flagOK = ReadBytesAsUInt32(0, ref tabId);
 
             if (!flagOK)
             {
@@ -5373,17 +5282,13 @@ namespace PCLParaphernalia
         private bool ReadData_vhea()
         {
             const string tabName = "vhea";
-
-            bool flagOK = true;
-
             uint tabOffset = 0,
                    tabLength = 0,
                    reqLength;
 
             uint tabVersion = 0;
 
-            flagOK = true;
-
+            bool flagOK = true;
             _tab_vhea.GetByteRange(ref tabOffset, ref tabLength);
             reqLength = 36;
 
@@ -5458,30 +5363,18 @@ namespace PCLParaphernalia
         private bool ReadData_vmtx()
         {
             const string tabName = "vmtx";
-
-            bool flagOK = true;
-
             uint tabOffset = 0,
                    tabLength = 0,
                    reqLength;
-
-            int vMetricsArrayLen = 0,
-                  tsbArrayLen = 0;
-            int vMetricsArraySize = 0,
-                  tsbArraySize = 0;
-
-            flagOK = true;
-
+            bool flagOK = true;
             _tabvmtxPresent = false;
 
             _tab_vmtx.GetByteRange(ref tabOffset, ref tabLength);
 
-            vMetricsArrayLen = _vhea_numVMetrics;
-            tsbArrayLen = _maxp_numGlyphs - _vhea_numVMetrics;
-
-            vMetricsArraySize = 4 * vMetricsArrayLen;
-            tsbArraySize = 2 * tsbArrayLen;
-
+            int vMetricsArrayLen = _vhea_numVMetrics;
+            int tsbArrayLen = _maxp_numGlyphs - _vhea_numVMetrics;
+            int vMetricsArraySize = 4 * vMetricsArrayLen;
+            int tsbArraySize = 2 * tsbArrayLen;
             reqLength = (uint)(vMetricsArraySize + tsbArraySize);
 
             if (_vhea_numVMetrics < 1)
@@ -5531,8 +5424,7 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    ushort glyphId = 0,
-                           advance = 0;
+                    ushort advance = 0;
 
                     short tsb;
 
@@ -5560,7 +5452,7 @@ namespace PCLParaphernalia
                         tsb = (short)((tsbArray[tsbOffset] << 8) +
                                         tsbArray[tsbOffset + 1]);
 
-                        glyphId = (ushort)(vMetricsArrayLen + indx);
+                        ushort glyphId = (ushort)(vMetricsArrayLen + indx);
 
                         _glyphData[glyphId].SetMetricsV(advance, tsb);
                     }
@@ -5590,7 +5482,6 @@ namespace PCLParaphernalia
                    tabChecksum = 0;
             uint tabOffset = 0,
                    tabLength = 0;
-            int padBytes = 0;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -5691,7 +5582,7 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        padBytes = (int)(tabLength % 4);
+                        int padBytes = (int)(tabLength % 4);
 
                         if (padBytes != 0)
                             padBytes = 4 - padBytes;

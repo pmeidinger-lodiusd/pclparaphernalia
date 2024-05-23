@@ -346,7 +346,6 @@ namespace PCLParaphernalia
             _analysisLevel = _linkData.AnalysisLevel;
             _crntEmbedType = _linkData.PclxlEmbedType;
 
-            seqInvalid = false;
 
             //----------------------------------------------------------------//
 
@@ -419,15 +418,9 @@ namespace PCLParaphernalia
             bool firstCall)
         {
             PrnParseConstants.ContType contType = PrnParseConstants.ContType.None;
-
             int prefixLen = 0,
                   contDataLen = 0,
-                  binDataLen = 0,
                   downloadRem = 0;
-
-            bool hddrOK = false,
-                    charOK = false;
-
             bool backTrack = false;
 
             bool invalidSeqFound = false;
@@ -458,6 +451,7 @@ namespace PCLParaphernalia
             }
             else if (contType == PrnParseConstants.ContType.PCLXLEmbed)
             {
+                int binDataLen;
                 //------------------------------------------------------------//
                 //                                                            //
                 // Previous 'block' ended with incomplete PCLXL embedded data //
@@ -554,14 +548,14 @@ namespace PCLParaphernalia
                     _linkData.ResetContData();
                 }
 
-                hddrOK = _parseFontHddrPCLXL.AnalyseFontHddr(contDataLen,
-                                                              _buf,
-                                                              _fileOffset,
-                                                              ref bufRem,
-                                                              ref bufOffset,
-                                                              _linkData,
-                                                              _options,
-                                                              _table);
+                bool hddrOK = _parseFontHddrPCLXL.AnalyseFontHddr(contDataLen,
+                                                  _buf,
+                                                  _fileOffset,
+                                                  ref bufRem,
+                                                  ref bufOffset,
+                                                  _linkData,
+                                                  _options,
+                                                  _table);
 
                 if (!hddrOK)
                     invalidSeqFound = true;
@@ -581,15 +575,14 @@ namespace PCLParaphernalia
                     _linkData.ResetContData();
                 }
 
-                charOK = _parseFontCharPCLXL.AnalyseFontChar(contDataLen,
-                                                              _buf,
-                                                              _fileOffset,
-                                                              ref bufRem,
-                                                              ref bufOffset,
-                                                              _linkData,
-                                                              _options,
-                                                              _table);
-
+                bool charOK = _parseFontCharPCLXL.AnalyseFontChar(contDataLen,
+                                                  _buf,
+                                                  _fileOffset,
+                                                  ref bufRem,
+                                                  ref bufOffset,
+                                                  _linkData,
+                                                  _options,
+                                                  _table);
                 if (!charOK)
                     invalidSeqFound = true;
             }
@@ -635,12 +628,9 @@ namespace PCLParaphernalia
             ref bool endReached,
             bool firstCall)
         {
-            PrnParseConstants.ContType contType = PrnParseConstants.ContType.None;
-
             byte crntByte;
 
             bool langSwitch = false;
-            bool badSeq = false;
             bool invalidSeqFound = false;
 
             _continuation = false;
@@ -651,6 +641,8 @@ namespace PCLParaphernalia
             {
                 crntByte = _buf[bufOffset];
 
+                PrnParseConstants.ContType contType;
+                bool badSeq;
                 //------------------------------------------------------------//
                 //                                                            //
                 // Process data until language-switch or end of buffer, or    //
@@ -1420,12 +1412,10 @@ namespace PCLParaphernalia
                   arraySize = 1,
                   seqHddrLen = 0,
                   opSeqLen = 0;
-
             bool seqKnown,
                     arrayType = false,
                     invalidArray,
-                    flagReserved = false,
-                    invalidSeqFound = false;
+                    flagReserved = false;
 
             const string descPrefix = "    ";
             string desc = string.Empty;
@@ -1436,7 +1426,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            invalidSeqFound = false;
+            bool invalidSeqFound = false;
             invalidArray = false;
 
             makeOvlShow = _linkData.MakeOvlShow;
@@ -1888,23 +1878,11 @@ namespace PCLParaphernalia
                           (baseType == PCLXLDataTypes.BaseType.Uint16) ||
                           (baseType == PCLXLDataTypes.BaseType.Uint32)))
                 {
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // An integer (but not array) value can be an enumeration //
-                    // value (rather than an analogue quantity), depending on //
-                    // the associated Attribute identifier.                   //
-                    // Search the enumerated value table.                     //
-                    //                                                        //
-                    //--------------------------------------------------------//
-
-                    bool valKnown = false;
-
                     string enumDesc = string.Empty;
 
                     uint uiVal;
 
-                    int valLen = 0;
-
+                    int valLen;
                     if (baseType == PCLXLDataTypes.BaseType.Ubyte)
                     {
                         uiVal = _buf[bufOffset + seqHddrLen];
@@ -1965,16 +1943,24 @@ namespace PCLParaphernalia
 
                     bool flagValIsTxt = false;
 
-                    valKnown = PCLXLAttrEnums.CheckValue(_analysisLevel,
-                                                          _crntOperID,
-                                                          _attrIDLen,
-                                                          _attrID1,
-                                                          _attrID2,
-                                                          uiVal,
-                                                          _attrOperEnumeration,
-                                                          ref flagValIsTxt,
-                                                          ref enumDesc);
+                    //--------------------------------------------------------//
+                    //                                                        //
+                    // An integer (but not array) value can be an enumeration //
+                    // value (rather than an analogue quantity), depending on //
+                    // the associated Attribute identifier.                   //
+                    // Search the enumerated value table.                     //
+                    //                                                        //
+                    //--------------------------------------------------------//
 
+                    bool valKnown = PCLXLAttrEnums.CheckValue(_analysisLevel,
+                                      _crntOperID,
+                                      _attrIDLen,
+                                      _attrID1,
+                                      _attrID2,
+                                      uiVal,
+                                      _attrOperEnumeration,
+                                      ref flagValIsTxt,
+                                      ref enumDesc);
                     if (valKnown)
                     {
                         ShowElement(bufOffset + seqHddrLen,
@@ -2683,9 +2669,7 @@ namespace PCLParaphernalia
             PrnParseConstants.OvlShow makeOvlShow;
 
             byte crntByte;
-
-            int hddrLen = 0,
-                  termPos = 0;
+            int termPos = 0;
 
             for (int i = 0; i < bufRem; i++)
             {
@@ -2783,8 +2767,7 @@ namespace PCLParaphernalia
                 //------------------------------------------------------------//
 
                 _hddrRead = true;
-                hddrLen = termPos + 1;  // include <LF> byte
-
+                int hddrLen = termPos + 1;
                 if (hddrLen < 9)
                 {
                     //--------------------------------------------------------//
@@ -3361,7 +3344,6 @@ namespace PCLParaphernalia
                                   PrnParseRowTypes.Type rowType)
         {
             PCLXLDataTypes.BaseType baseType = PCLXLDataTypes.BaseType.Unknown;
-
             int sliceLen,
                   chunkIpLen,
                   chunkOpLen,
@@ -3370,24 +3352,11 @@ namespace PCLParaphernalia
                   groupSize = 0,
                   unitSize = 0,
                   decodeIndent = 0,
-                  decodeMax = 0,
                   ipPtr;
-
-            bool firstLine = false,
-                    firstSlice = false,
-                    lastSlice = false,
-                    chunkComplete = false,
-                    deferItem = false,
+            bool deferItem = false,
                     arrayType = false,
                     treatUbyteAsAscii = false,
-                    treatUint16AsUnicode = false,
-                    stringAscii = false,
-                    stringUnicode = false,
-                    seqError = false;
-
-            string seq = string.Empty,
-                   decode = string.Empty;
-
+                    treatUint16AsUnicode = false;
             StringBuilder chunkOp = new StringBuilder();
 
             //----------------------------------------------------------------//
@@ -3396,14 +3365,13 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            firstLine = true;
-            firstSlice = true;
-            lastSlice = false;
-            chunkComplete = false;
-            stringAscii = false;
-            stringUnicode = false;
-            seqError = false;
-
+            bool firstLine = true;
+            bool firstSlice = true;
+            bool lastSlice = false;
+            bool chunkComplete = false;
+            bool stringAscii = false;
+            bool stringUnicode = false;
+            bool seqError = false;
             sliceOffset = bufOffset;
 
             if (useDesc)
@@ -3414,8 +3382,6 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                groupSize = 1;
-                unitSize = 1;
                 sliceLen = _decodeSliceMax;
                 arrayType = false;
                 baseType = PCLXLDataTypes.BaseType.Unknown;
@@ -3438,8 +3404,7 @@ namespace PCLParaphernalia
                                  ref baseType);
 
                 sliceLen = unitSize;
-                decodeMax = _decodeAreaMax - decodeIndent;
-
+                int decodeMax = _decodeAreaMax - decodeIndent;
                 if ((baseType == PCLXLDataTypes.BaseType.Ubyte) &&
                     treatUbyteAsAscii)
                 {
@@ -3486,7 +3451,7 @@ namespace PCLParaphernalia
 
             while (ipPtr < dataLen)
             {
-                decode = string.Empty;
+                string decode = string.Empty;
                 deferItem = false;
 
                 //------------------------------------------------------------//
@@ -3560,7 +3525,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                seq = ShowElementSeqData(sliceLen,
+                string seq = ShowElementSeqData(sliceLen,
                                           sliceOffset,
                                           chunkIpLen,
                                           chunkOffset,

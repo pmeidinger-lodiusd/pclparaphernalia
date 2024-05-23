@@ -115,8 +115,6 @@ namespace PCLParaphernalia
 
         public static void DisplayStatsCounts(DataTable table, bool incUsedSeqsOnly)
         {
-            int count = 0;
-
             bool displaySeq,
                     hddrWritten;
 
@@ -130,8 +128,7 @@ namespace PCLParaphernalia
             {
                 displaySeq = true;
 
-                count = kvp.Value.StatsCtTotal;
-
+                int count = kvp.Value.StatsCtTotal;
                 if (count == 0)
                 {
                     if (incUsedSeqsOnly)

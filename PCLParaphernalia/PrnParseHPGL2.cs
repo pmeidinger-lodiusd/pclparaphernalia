@@ -179,9 +179,7 @@ namespace PCLParaphernalia
                         firstSliceAfterCC,
                         nonGraphics,
                         knownCC;
-
-                string seq = string.Empty,
-                       ccDesc = string.Empty;
+                string ccDesc = string.Empty;
 
                 byte[] seqBuf = new byte[PrnParseConstants.cRptA_colMax_Seq];
                 byte seqByte,
@@ -208,7 +206,7 @@ namespace PCLParaphernalia
                 }
 
                 sliceStart = bufOffset + sliceOffset;
-
+                string seq;
                 while (len > sliceLenMax)
                 {
                     //--------------------------------------------------------//
@@ -321,7 +319,6 @@ namespace PCLParaphernalia
 
                         firstSliceAfterCC = true;
                         nonGraphics = false;
-                        ccAdjust = 0;
                     }
                 }
 
@@ -480,7 +477,6 @@ namespace PCLParaphernalia
             _fileOffset = fileOffset;
 
             //      langSwitch = false;
-            seqInvalid = false;
 
             //      _textParsingMethod = 0;                             // TEMP
 
@@ -525,9 +521,7 @@ namespace PCLParaphernalia
                   contDataLen = 0,
                   downloadRem = 0,
                   termPos;
-
-            bool badSeq = false,
-                    continuation = false,
+            bool continuation = false,
                     backTrack = false;
 
             bool invalidSeqFound = false;
@@ -657,8 +651,7 @@ namespace PCLParaphernalia
 
                 continuation = true;
 
-                badSeq = ProcessHPGL2Command(ref bufRem, ref bufOffset, ref continuation);
-
+                bool badSeq = ProcessHPGL2Command(ref bufRem, ref bufOffset, ref continuation);
                 if (badSeq)
                     invalidSeqFound = true;
 
@@ -702,16 +695,11 @@ namespace PCLParaphernalia
             ref ToolCommonData.PrintLang crntPDL,
             ref bool endReached)
         {
-            PrnParseConstants.ContType contType =
-                PrnParseConstants.ContType.None;
-
-            bool continuation = false;
             bool langSwitch = false;
-            bool badSeq = false;
             bool invalidSeqFound = false;
             bool dummyBool = false;
 
-            continuation = false;
+            bool continuation = false;
             _finalByte = PrnParseConstants.asciiSemiColon;
 
             while (!continuation && !langSwitch &&
@@ -800,8 +788,7 @@ namespace PCLParaphernalia
 
                         continuation = true;
 
-                        contType = PrnParseConstants.ContType.HPGL2;
-
+                        PrnParseConstants.ContType contType = PrnParseConstants.ContType.HPGL2;
                         _linkData.SetBacktrack(contType, -bufRem);
                     }
                     else if (PrnParseCommon.IsAlphabetic(_buf[bufOffset])
@@ -818,7 +805,7 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        badSeq = ProcessHPGL2Command(ref bufRem,
+                        bool badSeq = ProcessHPGL2Command(ref bufRem,
                                                       ref bufOffset,
                                                       ref continuation);
 
@@ -850,6 +837,10 @@ namespace PCLParaphernalia
                     }
                     else
                     {
+                        string desc = string.Empty;
+
+                        byte c1 = _buf[bufOffset];
+
                         //----------------------------------------------------//
                         //                                                    //
                         // Not a HP-GL/2 command.                             //
@@ -858,14 +849,7 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        bool knownWS = false;
-
-                        string desc = string.Empty;
-
-                        byte c1 = _buf[bufOffset];
-
-                        knownWS = HPGL2ControlCodes.CheckTag(c1, ref desc);
-
+                        bool knownWS = HPGL2ControlCodes.CheckTag(c1, ref desc);
                         if (knownWS)
                         {
                             HPGL2ControlCodes.IncrementStatsCount(c1, _analysisLevel);
@@ -1118,34 +1102,6 @@ namespace PCLParaphernalia
             }
             else if (seqKnown && optSymbolMode)
             {
-                //------------------------------------------------------------//
-                //                                                            //
-                // This command is the SM (Symbol Mode) command, which        //
-                // defines a single symbol (character) to be output at each   //
-                // X,Y coordinate point using the PA, PD, PE, PR, and PU      //
-                // commands.                                                  //
-                //                                                            //
-                // The command mnemonic may be followed immediately by the    //
-                // standard ";" terminator character, which indicates         //
-                // termination of symbol mode; otherwise, the next character  //
-                // is assumed to define the desired symbol.                   //
-                //                                                            //
-                // It is unclear what characters are allowed; the             //
-                // specification indicates that valid characters are those    //
-                // with codes:                                                //
-                //  decimal  33 -  58 (0x21-3a),                              //
-                //           60 - 126 (0x3c-7e)                               //
-                //          161       (0xa1)                                  //
-                //      and 254       (0xfe)                                  //
-                // but perhaps it should be:                                  //  
-                //          161 - 254 (0xa1-fe)  ???                          //
-                //                                                            //
-                // We'll just allow any character except ";".                 // 
-                //                                                            //
-                //------------------------------------------------------------//
-
-                byte paraByte2 = 0x20;
-
                 termFound = false;
                 inclusiveTerm = false;
 
@@ -1160,8 +1116,33 @@ namespace PCLParaphernalia
                 {
                     seqLen = HPGL2MnemonicLen + 1;
 
-                    paraByte2 = _buf[bufOffset + 3];
+                    //------------------------------------------------------------//
+                    //                                                            //
+                    // This command is the SM (Symbol Mode) command, which        //
+                    // defines a single symbol (character) to be output at each   //
+                    // X,Y coordinate point using the PA, PD, PE, PR, and PU      //
+                    // commands.                                                  //
+                    //                                                            //
+                    // The command mnemonic may be followed immediately by the    //
+                    // standard ";" terminator character, which indicates         //
+                    // termination of symbol mode; otherwise, the next character  //
+                    // is assumed to define the desired symbol.                   //
+                    //                                                            //
+                    // It is unclear what characters are allowed; the             //
+                    // specification indicates that valid characters are those    //
+                    // with codes:                                                //
+                    //  decimal  33 -  58 (0x21-3a),                              //
+                    //           60 - 126 (0x3c-7e)                               //
+                    //          161       (0xa1)                                  //
+                    //      and 254       (0xfe)                                  //
+                    // but perhaps it should be:                                  //  
+                    //          161 - 254 (0xa1-fe)  ???                          //
+                    //                                                            //
+                    // We'll just allow any character except ";".                 // 
+                    //                                                            //
+                    //------------------------------------------------------------//
 
+                    byte paraByte2 = _buf[bufOffset + 3];
                     if (paraByte2 == PrnParseConstants.asciiSemiColon)
                     {
                         termFound = true;

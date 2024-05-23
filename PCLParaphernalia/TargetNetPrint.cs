@@ -64,14 +64,11 @@ namespace PCLParaphernalia
 
         public static bool ReadResponseBlock(int offset, int bufRem, ref byte[] replyData, ref int blockLen)
         {
-            int readLen = 0;
-
             bool OK = true;
 
             try
             {
-                readLen = _socket.Receive(replyData, offset, bufRem, SocketFlags.None);
-
+                int readLen = _socket.Receive(replyData, offset, bufRem, SocketFlags.None);
                 blockLen = readLen;
             }
 

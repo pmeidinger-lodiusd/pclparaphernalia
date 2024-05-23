@@ -86,7 +86,6 @@ namespace PCLParaphernalia
                                      ulong charCollComp,
                                      byte[] conversionText)
         {
-            bool flagOK = true;
             bool useVMetrics;
 
             if (fmt16)
@@ -98,6 +97,7 @@ namespace PCLParaphernalia
 
             _symbolMapping = symbolMapping;
 
+            bool flagOK;
             //----------------------------------------------------------------//
             //                                                                //
             // Open print file and stream.                                    //
@@ -297,9 +297,7 @@ namespace PCLParaphernalia
                                 ushort maxGlyphId)
         {
             ushort glyphWidth = 0,
-                   glyphHeight = 0,
-                   charBlockSize = 0,
-                   charDataSize = 0;
+                   glyphHeight = 0;
 
             short glyphLSB = 0,
                   glyphTSB = 0;
@@ -372,7 +370,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            charBlockSize = (ushort)(cSizeCharHddr + cSizeCharGlyphHddr + glyphLength + cSizeCharTrail);
+            ushort charBlockSize = (ushort)(cSizeCharHddr + cSizeCharGlyphHddr + glyphLength + cSizeCharTrail);
 
             PCLWriter.CharDownloadCode(_binWriter, charCode);
 
@@ -401,8 +399,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             checksumMod256 = 0;
-
-            charDataSize = (ushort)(cSizeCharGlyphHddr + glyphLength);
+            ushort charDataSize = (ushort)(cSizeCharGlyphHddr + glyphLength);
 
             charGlyphHddr[0] = MsByte(charDataSize);
             charGlyphHddr[1] = LsByte(charDataSize);
@@ -424,11 +421,9 @@ namespace PCLParaphernalia
 
             if (glyphLength > 0)
             {
-                bool flagOK = true;
-
                 glyphData = new byte[glyphLength];
 
-                flagOK = _ttfHandler.ReadByteArray((int)glyphOffset, (int)glyphLength, ref glyphData);
+                bool flagOK = _ttfHandler.ReadByteArray((int)glyphOffset, (int)glyphLength, ref glyphData);
                 // TODO: what if flagOK = true (i.e. read fails?
 
                 _baseHandler.WriteCharFragment((int)glyphLength, glyphData, ref checksumMod256);
@@ -552,8 +547,6 @@ namespace PCLParaphernalia
 
         private void WriteCharSet(ushort maxGlyphId, int sizeCharSet, bool symSetUnbound)
         {
-            bool glyphExists = false;
-
             ushort startCode,
                    endCode,
                    glyphId = 0,
@@ -572,8 +565,7 @@ namespace PCLParaphernalia
             {
                 ushort charCode = (ushort)i;
 
-                glyphExists = _ttfHandler.GetCharData(charCode, ref codepoint, ref glyphId);
-
+                bool glyphExists = _ttfHandler.GetCharData(charCode, ref codepoint, ref glyphId);
                 if (glyphExists)
                 {
                     WriteChar(charCode, codepoint, glyphId, 0, maxGlyphId);
@@ -653,8 +645,6 @@ namespace PCLParaphernalia
                                    ulong charCollComp,
                                    byte[] conversionText)
         {
-            bool flagOK = true;
-
             ushort cellWidth = 0,
                    cellHeight = 0,
                    textWidth = 0,
@@ -662,7 +652,6 @@ namespace PCLParaphernalia
                    pitch = 0,
                    xHeight = 0,
                    capHeight = 0,
-                   mUlinePosU = 0,
                    mUlineDep = 0;
 
             short mUlinePos = 0;
@@ -709,8 +698,7 @@ namespace PCLParaphernalia
                                               ref widthType,
                                               ref fontNamePCLT,
                                               ref panoseData);
-
-            mUlinePosU = (ushort)mUlinePos;
+            ushort mUlinePosU = (ushort)mUlinePos;
 
             //----------------------------------------------------------------//
 
@@ -755,6 +743,7 @@ namespace PCLParaphernalia
                             convTextLen) +
                       cSizeHddrTrail;
 
+            bool flagOK;
             if ((hddrLen > cSizeHddrFmt15Max) && (!fmt16))
             {
                 flagOK = false;

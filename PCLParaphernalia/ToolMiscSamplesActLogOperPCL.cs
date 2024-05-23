@@ -108,16 +108,6 @@ namespace PCLParaphernalia
                    logXOffset;
 
             bool flagOptColour;
-
-            byte idClrD1 = 0,
-                 idClrD2 = 0,
-                 idClrS1 = 0,
-                 idClrS2 = 0,
-                 idClrT1 = 0,
-                 idClrT2 = 0,
-                 idClrBlack = 0,
-                 idClrWhite = 0;
-
             string nameClrD1,
                    nameClrD2,
                    nameClrS1,
@@ -145,16 +135,14 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            idClrBlack = PCLPalettes.GetColourId(indxPalette, PCLPalettes.GetClrItemBlack(indxPalette));
-            idClrWhite = PCLPalettes.GetColourId(indxPalette, PCLPalettes.GetClrItemWhite(indxPalette));
-
-            idClrD1 = PCLPalettes.GetColourId(indxPalette, indxClrD1);
-            idClrS1 = PCLPalettes.GetColourId(indxPalette, indxClrS1);
-            idClrT1 = PCLPalettes.GetColourId(indxPalette, indxClrT1);
-
-            idClrD2 = PCLPalettes.GetColourId(indxPalette, indxClrD2);
-            idClrS2 = PCLPalettes.GetColourId(indxPalette, indxClrS2);
-            idClrT2 = PCLPalettes.GetColourId(indxPalette, indxClrT2);
+            byte idClrBlack = PCLPalettes.GetColourId(indxPalette, PCLPalettes.GetClrItemBlack(indxPalette));
+            byte idClrWhite = PCLPalettes.GetColourId(indxPalette, PCLPalettes.GetClrItemWhite(indxPalette));
+            byte idClrD1 = PCLPalettes.GetColourId(indxPalette, indxClrD1);
+            byte idClrS1 = PCLPalettes.GetColourId(indxPalette, indxClrS1);
+            byte idClrT1 = PCLPalettes.GetColourId(indxPalette, indxClrT1);
+            byte idClrD2 = PCLPalettes.GetColourId(indxPalette, indxClrD2);
+            byte idClrS2 = PCLPalettes.GetColourId(indxPalette, indxClrS2);
+            byte idClrT2 = PCLPalettes.GetColourId(indxPalette, indxClrT2);
 
             nameClrD1 = PCLPalettes.GetColourName(indxPalette, indxClrD1);
             nameClrD2 = PCLPalettes.GetColourName(indxPalette, indxClrD2);

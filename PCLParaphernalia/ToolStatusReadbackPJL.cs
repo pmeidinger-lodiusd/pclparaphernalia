@@ -147,11 +147,7 @@ namespace PCLParaphernalia
             const int replyBufLen = 32768;
 
             byte[] replyData = new byte[replyBufLen];
-
-            int replyLen = 0;
-
             bool readFF_A = false;            // two <FF>s expected //
-            bool OK = false;
             bool replyComplete = false;
 
             int offset = 0;
@@ -161,7 +157,7 @@ namespace PCLParaphernalia
 
             while (!replyComplete)
             {
-                OK = TargetCore.ResponseReadBlock(offset, bufRem, ref replyData, ref blockLen);
+                bool OK = TargetCore.ResponseReadBlock(offset, bufRem, ref replyData, ref blockLen);
 
                 endOffset = offset + blockLen;
 
@@ -222,8 +218,7 @@ namespace PCLParaphernalia
                     replyComplete = true;
             }
 
-            replyLen = endOffset;
-
+            int replyLen = endOffset;
             TargetCore.ResponseCloseConnection();
 
             return System.Text.Encoding.ASCII.GetString(replyData, 0, replyLen);

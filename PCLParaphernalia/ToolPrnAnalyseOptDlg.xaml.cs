@@ -1704,10 +1704,6 @@ namespace PCLParaphernalia
 
                 int crntRow = i / ctSampleCols;
                 int crntCol = i % ctSampleCols;
-
-                PrnParseRowTypes.Type rowType =
-                    (PrnParseRowTypes.Type)i;
-
                 _txtClrMapSamples[i] = new TextBox
                 {
                     Margin = thk1,
@@ -2705,12 +2701,9 @@ namespace PCLParaphernalia
 
         private bool ValidateCurFOffsetEnd()
         {
-            bool OK = true;
-
             string crntText = txtCurFOffsetEnd.Text;
 
-            OK = int.TryParse(crntText, out int value);
-
+            bool OK = int.TryParse(crntText, out int value);
             if (OK && (value != -1))
             {
                 if ((value > _fileSize) || (value < _valCurFOffsetStart))
@@ -2755,12 +2748,9 @@ namespace PCLParaphernalia
 
         private bool ValidateCurFOffsetStart()
         {
-            bool OK = true;
-
             string crntText = txtCurFOffsetStart.Text;
 
-            OK = int.TryParse(crntText, out int value);
-
+            bool OK = int.TryParse(crntText, out int value);
             if (OK)
             {
                 if ((value < 0) || (value > _fileSize))

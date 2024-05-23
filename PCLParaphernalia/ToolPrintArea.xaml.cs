@@ -1000,8 +1000,6 @@ namespace PCLParaphernalia
             }
             else
             {
-                string idName = string.Empty;
-
                 indxPaperSize = _subsetPaperSizes[_indxPaperSizePCLXL];
 
                 txtIdPaperName.Text = PCLPaperSizes.GetName(indxPaperSize);
@@ -1028,8 +1026,7 @@ namespace PCLParaphernalia
                         _flagTrayIdUnknown = false;
                     }
 
-                    idName = PCLPaperSizes.GetNamePCLXL(indxPaperSize);
-
+                    string idName = PCLPaperSizes.GetNamePCLXL(indxPaperSize);
                     txtIdName.Text = idName;
 
                     lbIdEnum.Content = "PCL XL enum.:";
@@ -1087,13 +1084,11 @@ namespace PCLParaphernalia
             {
                 indxOrientation = _subsetOrientations[_indxOrientationPCL];
                 indxPaperSize = _subsetPaperSizes[_indxPaperSizePCL];
-                indxPaperType = _indxPaperTypePCL;
             }
             else
             {
                 indxOrientation = _subsetOrientations[_indxOrientationPCLXL];
                 indxPaperSize = _subsetPaperSizes[_indxPaperSizePCLXL];
-                indxPaperType = _indxPaperTypePCLXL;
             }
 
             aspect = PCLOrientations.GetAspect(indxOrientation);
@@ -1344,9 +1339,6 @@ namespace PCLParaphernalia
                    maxVal;
 
             ushort valueDots = 0;
-
-            bool OK = true;
-
             string crntText;
             string edgeThis;
             string edgeOther;
@@ -1371,8 +1363,7 @@ namespace PCLParaphernalia
                 crntText = txtLongEdgeImperial.Text;
             }
 
-            OK = double.TryParse(crntText, out double value);
-
+            bool OK = double.TryParse(crntText, out double value);
             if ((value < minVal) || (value > maxVal))
             {
                 OK = false;
@@ -1505,9 +1496,6 @@ namespace PCLParaphernalia
                    maxVal;
 
             ushort valueDots = 0;
-
-            bool OK = true;
-
             string crntText;
             string edgeThis;
             string edgeOther;
@@ -1532,8 +1520,7 @@ namespace PCLParaphernalia
                 crntText = txtLongEdgeMetric.Text;
             }
 
-            OK = double.TryParse(crntText, out double value);
-
+            bool OK = double.TryParse(crntText, out double value);
             if ((value < minVal) || (value > maxVal))
             {
                 OK = false;

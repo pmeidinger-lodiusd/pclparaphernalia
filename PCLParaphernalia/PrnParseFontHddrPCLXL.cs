@@ -114,8 +114,6 @@ namespace PCLParaphernalia
 
             PrnParseConstants.ContType contType;
 
-            bool continuation = false;
-
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
@@ -150,7 +148,6 @@ namespace PCLParaphernalia
             }
             else
             {
-                contType = PrnParseConstants.ContType.None;
                 linkData.ResetContData();
             }
 
@@ -208,20 +205,20 @@ namespace PCLParaphernalia
 
                 int dummy = 0;
 
-                continuation = _parseSegs.ProcessSegData(_buf,
-                                                          _fileOffset,
-                                                          false,
-                                                          _firstSeg,
-                                                          true,
-                                                          ref bufRem,
-                                                          ref bufOffset,
-                                                          ref _hddrDataRem,
-                                                          ref _hddrRem,
-                                                          ref dummy,
-                                                          ref validSegs,
-                                                          linkData,
-                                                          _options,
-                                                          _table);
+                bool continuation = _parseSegs.ProcessSegData(_buf,
+                                              _fileOffset,
+                                              false,
+                                              _firstSeg,
+                                              true,
+                                              ref bufRem,
+                                              ref bufOffset,
+                                              ref _hddrDataRem,
+                                              ref _hddrRem,
+                                              ref dummy,
+                                              ref validSegs,
+                                              linkData,
+                                              _options,
+                                              _table);
 
                 _firstSeg = false;
             }
@@ -287,7 +284,6 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    contType = PrnParseConstants.ContType.None;
                     linkData.ResetContData();
 
                     binDataLen = _hddrRem;

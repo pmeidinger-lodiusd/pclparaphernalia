@@ -484,8 +484,6 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             posX = (short)(_posXData2 - logXOffset);
-            posY += ((_lineInc * 1) / 2);
-
             PCLWriter.CmdHPGL2(prnWriter, "DI", "1,0", false);
 
             //----------------------------------------------------------------//

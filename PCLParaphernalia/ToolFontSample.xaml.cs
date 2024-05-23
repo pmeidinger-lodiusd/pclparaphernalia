@@ -1293,8 +1293,6 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             bool selected;
-            bool flagOK = true;
-
             string filename = _symSetUserFile;
 
             selected = SelectSymSetFile(ref filename);
@@ -1304,8 +1302,7 @@ namespace PCLParaphernalia
                 _symSetUserFile = filename;
                 txtSymSetFile.Text = _symSetUserFile;
 
-                flagOK = CheckPCLSymSetFile();
-
+                bool flagOK = CheckPCLSymSetFile();
                 SetSymSetAttributes();
             }
         }
@@ -1535,8 +1532,6 @@ namespace PCLParaphernalia
 
             if (!File.Exists(filename))
             {
-                selected = false;
-
                 MessageBox.Show("File '" + filename + "' does not exist",
                     "PCL soft font download file",
                     MessageBoxButton.OK,
@@ -1599,8 +1594,6 @@ namespace PCLParaphernalia
 
             if (!File.Exists(filename))
             {
-                selected = false;
-
                 MessageBox.Show("File '" + filename + "' does not exist",
                     "Symbol Set definition file",
                     MessageBoxButton.OK,
@@ -1674,8 +1667,6 @@ namespace PCLParaphernalia
 
             if (!File.Exists(filename))
             {
-                selected = false;
-
                 MessageBox.Show("File '" + filename + "' does not exist",
                     "PCLXL soft font download file",
                      MessageBoxButton.OK,
@@ -2502,8 +2493,6 @@ namespace PCLParaphernalia
         private void MetricsLoad()
         {
             int indxFontTemp = 0;
-            int indxFont = 0;
-
             ToolFontSamplePersist.LoadDataCommon(ref _indxPDL, ref _optGridVertical);
 
             ToolFontSamplePersist.LoadDataGeneral("PCL",
@@ -2607,8 +2596,7 @@ namespace PCLParaphernalia
                                                      ref _symSetNo,
                                                      ref _symSetUserFile);
 
-            indxFont = _subsetFonts[_indxFontPCL];
-
+            int indxFont = _subsetFonts[_indxFontPCL];
             _fontBound = PCLFonts.IsBoundFont(indxFont);
             _fontScalable = PCLFonts.IsScalableFont(indxFont);
             _fontProportional = PCLFonts.IsProportionalFont(indxFont);
@@ -4412,8 +4400,7 @@ namespace PCLParaphernalia
 
         private void SetFontSelectDataPCL(int indxFont)
         {
-            string symSetId,
-                   selSeqAttr = string.Empty;
+            string symSetId;
 
             bool selById = false;
 
@@ -4435,7 +4422,7 @@ namespace PCLParaphernalia
                                                    _fontStylePCL,
                                                    _fontWeightPCL,
                                                    _fontTypefacePCL);
-
+            string selSeqAttr;
             //--------------------------------------------------------------------//
 
             if (_fontSelSeqPCL?.Length == 0)
@@ -5359,8 +5346,6 @@ namespace PCLParaphernalia
 
                 if (!File.Exists(filename))
                 {
-                    selected = false;
-
                     MessageBox.Show("Font file '" + filename + "' does not exist.\r\n\r\n" + "Please select an appropriate file",
                                      "PCL font file invalid",
                                      MessageBoxButton.OK,
@@ -5568,8 +5553,6 @@ namespace PCLParaphernalia
 
             if (!File.Exists(filename))
             {
-                selected = false;
-
                 MessageBox.Show("Font file '" + filename + "' does not exist.\r\n\r\n" + "Please select an appropriate file",
                                  "PCLXL font file invalid",
                                  MessageBoxButton.OK,
@@ -5637,8 +5620,6 @@ namespace PCLParaphernalia
 
             if (!File.Exists(filename))
             {
-                selected = false;
-
                 MessageBox.Show("Symbol Set file '" + filename + "' does not exist.\r\n\r\n" + "Please select an appropriate file",
                                  "Symbol Set file invalid",
                                  MessageBoxButton.OK,
@@ -5785,10 +5766,7 @@ namespace PCLParaphernalia
 
         private bool ValidatePCLFontCharacteristics()
         {
-            bool OK = true;
-
-            OK = ValidatePCLFontHeight(false);
-
+            bool OK = ValidatePCLFontHeight(false);
             if (OK)
                 OK = ValidatePCLFontPitch(false);
 
@@ -5962,13 +5940,9 @@ namespace PCLParaphernalia
             const ushort minVal = 0;
             const ushort maxVal = 32767;
             const ushort defVal = _defaultFontStylePCL;
-
-            bool OK = true;
-
             string crntText = txtPCLStyle.Text;
 
-            OK = ushort.TryParse(crntText, out ushort value);
-
+            bool OK = ushort.TryParse(crntText, out ushort value);
             if (OK)
             {
                 if ((value < minVal) || (value > maxVal))
@@ -6023,13 +5997,9 @@ namespace PCLParaphernalia
             const ushort minVal = 0;
             const ushort maxVal = 65535;
             const ushort defVal = _defaultFontTypefacePCL;
-
-            bool OK = true;
-
             string crntText = txtPCLTypeface.Text;
 
-            OK = ushort.TryParse(crntText, out ushort value);
-
+            bool OK = ushort.TryParse(crntText, out ushort value);
             if (OK)
             {
                 if ((value < minVal) || (value > maxVal))
@@ -6084,13 +6054,9 @@ namespace PCLParaphernalia
             const short minVal = -7;
             const short maxVal = 7;
             const short defVal = _defaultFontWeightPCL;
-
-            bool OK = true;
-
             string crntText = txtPCLWeight.Text;
 
-            OK = short.TryParse(crntText, out short value);
-
+            bool OK = short.TryParse(crntText, out short value);
             if (OK)
             {
                 if ((value < minVal) || (value > maxVal))
@@ -6145,13 +6111,9 @@ namespace PCLParaphernalia
             const ushort minVal = 0;
             const ushort maxVal = 32767;
             const ushort defVal = _defaultSoftFontIdPCL;
-
-            bool OK = true;
-
             string crntText = txtPCLSoftFontId.Text;
 
-            OK = ushort.TryParse(crntText, out ushort value);
-
+            bool OK = ushort.TryParse(crntText, out ushort value);
             if (OK)
             {
                 if ((value < minVal) || (value > maxVal))
@@ -6212,13 +6174,9 @@ namespace PCLParaphernalia
             const ushort minVal = 0;
             const ushort maxVal = 32767;
             const ushort defVal = _defaultSoftFontIdMacroPCL;
-
-            bool OK = true;
-
             string crntText = txtPCLSoftFontMacroId.Text;
 
-            OK = ushort.TryParse(crntText, out ushort value);
-
+            bool OK = ushort.TryParse(crntText, out ushort value);
             if (OK)
             {
                 if ((value < minVal) || (value > maxVal))
@@ -6270,10 +6228,7 @@ namespace PCLParaphernalia
 
         private bool ValidatePCLXLFontCharacteristics()
         {
-            bool OK = true;
-
-            OK = ValidatePCLXLFontName(false);
-
+            bool OK = ValidatePCLXLFontName(false);
             if (OK)
                 OK = ValidatePCLXLFontHeight(false);
 
@@ -6362,15 +6317,11 @@ namespace PCLParaphernalia
             //          const Int32 minLen = 14;
             const int maxLen = 20;
             const string defVal = _defaultFontNamePCLXL;
-
-            int len = 0;
-
             bool OK = true;
 
             string crntText = txtPCLXLFontName.Text;
 
-            len = crntText.Length;
-
+            int len = crntText.Length;
             if (crntText?.Length == 0)
             {
                 OK = false;
@@ -6424,9 +6375,7 @@ namespace PCLParaphernalia
             const char maxVal = 'Z';
             const char badVal = 'X';
             const char defVal = _defaultSymSetIdAlpha;
-
-            int value = 0,
-                  len;
+            int len;
 
             bool OK = true;
 
@@ -6440,8 +6389,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                value = char.ConvertToUtf32(crntText, 0);
-
+                int value = char.ConvertToUtf32(crntText, 0);
                 if ((value < minVal) || (value > maxVal) || (value == badVal))
                     OK = false;
             }
@@ -6491,13 +6439,9 @@ namespace PCLParaphernalia
             const ushort minVal = 0;
             const ushort maxVal = 2047;
             const ushort defVal = _defaultSymSetIdNum;
-
-            bool OK = true;
-
             string crntText = txtSymSetIdNum.Text;
 
-            OK = ushort.TryParse(crntText, out ushort value);
-
+            bool OK = ushort.TryParse(crntText, out ushort value);
             if (OK)
             {
                 if ((value < minVal) || (value > maxVal))

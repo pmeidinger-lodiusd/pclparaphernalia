@@ -49,10 +49,6 @@ namespace PCLParaphernalia
             ref ushort lastCode,
             ref PCLSymSetTypes.Index symSetType)
         {
-            bool flagOK = true;
-
-            bool fileOpen = false;
-
             long fileSize = 0,
                    offset = 0;
 
@@ -62,8 +58,8 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            fileOpen = SymSetFileOpen(filename, ref fileSize);
-
+            bool fileOpen = SymSetFileOpen(filename, ref fileSize);
+            bool flagOK;
             if (!fileOpen)
             {
                 flagOK = false;
@@ -555,13 +551,9 @@ namespace PCLParaphernalia
         public static bool SymSetFileCopy(BinaryWriter prnWriter, string filename)
         {
             bool OK = true;
-
-            bool fileOpen = false;
-
             long fileSize = 0;
 
-            fileOpen = SymSetFileOpen(filename, ref fileSize);
-
+            bool fileOpen = SymSetFileOpen(filename, ref fileSize);
             if (!fileOpen)
             {
                 OK = false;

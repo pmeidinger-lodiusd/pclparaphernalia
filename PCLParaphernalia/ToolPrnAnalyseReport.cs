@@ -49,9 +49,6 @@ namespace PCLParaphernalia
         {
             object stream = null;
             object writer = null;
-
-            bool OK = false;
-
             int reportSize;
 
             string fileExt;
@@ -64,6 +61,8 @@ namespace PCLParaphernalia
             else
                 fileExt = "txt";
 
+
+            bool OK;
             if (indxInfoType == ToolPrnAnalyse.InfoType.Analysis)
             {
                 saveFilename = prnFilename + "_analysis." + fileExt;

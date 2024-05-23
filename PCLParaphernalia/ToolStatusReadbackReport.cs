@@ -29,9 +29,6 @@ namespace PCLParaphernalia
         {
             object stream = null;
             object writer = null;
-
-            bool OK = false;
-
             string saveFolder = null,
                    fileExt;
 
@@ -46,10 +43,10 @@ namespace PCLParaphernalia
 
             saveFilename = saveFolder + "\\SR_Resp." + fileExt;
 
-            OK = ReportCore.DocOpen(rptFileFmt,
-                                     ref saveFilename,
-                                     ref stream,
-                                     ref writer);
+            bool OK = ReportCore.DocOpen(rptFileFmt,
+                         ref saveFilename,
+                         ref stream,
+                         ref writer);
             if (OK)
             {
                 ReportCore.DocInitialise(rptFileFmt, writer, false, true,

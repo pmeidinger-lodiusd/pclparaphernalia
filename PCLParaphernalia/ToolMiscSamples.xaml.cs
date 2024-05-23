@@ -1158,13 +1158,11 @@ namespace PCLParaphernalia
             {
                 indxOrientation = _subsetOrientations[_indxOrientationPCL];
                 indxPaperSize = _subsetPaperSizes[_indxPaperSizePCL];
-                indxPaperType = _indxPaperTypePCL;
             }
             else
             {
                 indxOrientation = _subsetOrientations[_indxOrientationPCLXL];
                 indxPaperSize = _subsetPaperSizes[_indxPaperSizePCLXL];
-                indxPaperType = _indxPaperTypePCLXL;
             }
 
             aspect = PCLOrientations.GetAspect(indxOrientation);

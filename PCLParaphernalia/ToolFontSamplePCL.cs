@@ -879,8 +879,6 @@ namespace PCLParaphernalia
             bool checkSingleByteCodes = false;
             bool utf8;
             bool twoByteMethod;
-            bool validCodePoint = true;
-
             bool[] validSingleByteCodes = new bool[sizeSingleByteSet];
 
             //----------------------------------------------------------------//
@@ -1038,8 +1036,7 @@ namespace PCLParaphernalia
 
                     ushort codeVal = (ushort)(sampleRangeOffset + (indxMajor * _gridDim) + indxMinor);
 
-                    validCodePoint = true;
-
+                    bool validCodePoint = true;
                     if (checkSingleByteCodes && (codeVal <= singleByteMax))
                     {
                         //------------------------------------------------//
@@ -1336,12 +1333,9 @@ namespace PCLParaphernalia
                         if (mapVal != 0xffff)
                         {
                             string utf8Hex = null;
-                            int utf8HexLen = 0;
-
                             PrnParseDataUTF8.ConvertUTF32ToUTF8HexString(mapVal, true, ref utf8Hex);
 
-                            utf8HexLen = utf8Hex.Length;
-
+                            int utf8HexLen = utf8Hex.Length;
                             prnWriter.Write(utf8Hex.ToCharArray(), 0, utf8HexLen);
                         }
                     }

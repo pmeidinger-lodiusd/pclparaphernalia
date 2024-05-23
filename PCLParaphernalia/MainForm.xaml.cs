@@ -69,13 +69,6 @@ namespace PCLParaphernalia
             int versionBuildOld = -1;
             int versionRevisionOld = -1;
 
-            int versionMajorCrnt = -1;
-            int versionMinorCrnt = -1;
-            int versionBuildCrnt = -1;
-            int versionRevisionCrnt = -1;
-
-            double windowScale = 1.0;
-
             //----------------------------------------------------------------//
             //                                                                //
             // Load window state values from registry.                        //
@@ -110,7 +103,7 @@ namespace PCLParaphernalia
                 mwScale = 100;
             }
 
-            windowScale = (double)mwScale / 100;
+            double windowScale = (double)mwScale / 100;
 
             MainFormData.WindowScale = windowScale;
 
@@ -126,11 +119,10 @@ namespace PCLParaphernalia
 
             AssemblyName assemblyName = assembly.GetName();
 
-            versionMajorCrnt = assemblyName.Version.Major;
-            versionMinorCrnt = assemblyName.Version.Minor;
-            versionBuildCrnt = assemblyName.Version.Build;
-            versionRevisionCrnt = assemblyName.Version.Revision;
-
+            int versionMajorCrnt = assemblyName.Version.Major;
+            int versionMinorCrnt = assemblyName.Version.Minor;
+            int versionBuildCrnt = assemblyName.Version.Build;
+            int versionRevisionCrnt = assemblyName.Version.Revision;
             MainFormData.SetVersionData(true, versionMajorCrnt,
                                                versionMinorCrnt,
                                                versionBuildCrnt,
@@ -234,7 +226,6 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                startToolId = ToolCommonData.ToolIds.PrnAnalyse;
 
                 toolPrnAnalyse_Selected(this, null);
 
@@ -496,10 +487,7 @@ namespace PCLParaphernalia
 
         private void helpAbout_Click(object sender, RoutedEventArgs e)
         {
-            string deploymentVersion = string.Empty;
-            string assemblyVersion = string.Empty;
-            string crntVersion = string.Empty;
-
+            string deploymentVersion;
             if (ApplicationDeployment.IsNetworkDeployed)
                 deploymentVersion = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
             else
@@ -507,8 +495,8 @@ namespace PCLParaphernalia
 
             Assembly assembly = Assembly.GetExecutingAssembly();
             AssemblyName assemblyName = assembly.GetName();
-            assemblyVersion = assemblyName.Version.ToString();
-
+            string assemblyVersion = assemblyName.Version.ToString();
+            string crntVersion;
             if (deploymentVersion == assemblyVersion)
                 crntVersion = "Version " + deploymentVersion;
             else

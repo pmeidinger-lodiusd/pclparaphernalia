@@ -667,8 +667,6 @@ namespace PCLParaphernalia
             PCLXLWriter.Font(prnWriter, false, ptSize,
                              _symSet_19U, _fontNameCourier);
 
-            posX = _posXDesc;
-            posY = _posYHddr;
 
             //----------------------------------------------------------------//
 

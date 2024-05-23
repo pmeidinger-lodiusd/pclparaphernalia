@@ -520,9 +520,6 @@ namespace PCLParaphernalia
                        PCLXLWriter.advances_Courier, ptSize,
                        posX, posY,
                        "Arial");
-
-            posY += _lineInc;
-
             prnWriter.Write(bufStd, 0, indStd);
             indStd = 0;
 

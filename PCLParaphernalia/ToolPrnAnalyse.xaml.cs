@@ -326,8 +326,6 @@ namespace PCLParaphernalia
             if (_redoStatistics)
             {
                 PrnParseConstants.OptStatsLevel level = PrnParseConstants.OptStatsLevel.ReferencedOnly;
-
-                bool incUsedSeqsOnly = false;
                 bool excUnusedObsPCLSeqs = false;
                 bool excUnusedResPCLXLTags = false;
 
@@ -337,8 +335,8 @@ namespace PCLParaphernalia
 
                 _tableStatistics.Clear();
 
-                incUsedSeqsOnly = level ==
-                    PrnParseConstants.OptStatsLevel.ReferencedOnly;
+                bool incUsedSeqsOnly = level ==
+    PrnParseConstants.OptStatsLevel.ReferencedOnly;
 
                 PrescribeCommands.DisplayStatsCounts(_tableStatistics, incUsedSeqsOnly);
 

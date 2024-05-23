@@ -117,9 +117,6 @@ namespace PCLParaphernalia
 
         public static bool CheckMacroFile(string filename, ref int macroId)
         {
-            bool fileOpen = false;
-            bool macroIdPresent = false;
-
             long fileSize = 0;
 
             //----------------------------------------------------------------//
@@ -128,8 +125,8 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            fileOpen = MacroFileOpen(filename, ref fileSize);
-
+            bool fileOpen = MacroFileOpen(filename, ref fileSize);
+            bool macroIdPresent;
             if (!fileOpen)
             {
                 macroIdPresent = false;
@@ -171,13 +168,9 @@ namespace PCLParaphernalia
         public static bool MacroFileCopy(BinaryWriter prnWriter, string filename)
         {
             bool OK = true;
-
-            bool fileOpen = false;
-
             long fileSize = 0;
 
-            fileOpen = MacroFileOpen(filename, ref fileSize);
-
+            bool fileOpen = MacroFileOpen(filename, ref fileSize);
             if (!fileOpen)
             {
                 OK = false;

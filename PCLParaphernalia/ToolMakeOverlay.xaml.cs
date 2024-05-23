@@ -910,13 +910,9 @@ namespace PCLParaphernalia
             const ushort minVal = 0;
             const ushort maxVal = 32767;
             const ushort defVal = _defaultPCLMacroId;
-
-            bool OK = true;
-
             string crntText = txtPCLMacroId.Text;
 
-            OK = ushort.TryParse(crntText, out ushort value);
-
+            bool OK = ushort.TryParse(crntText, out ushort value);
             if (OK)
             {
                 if ((value < minVal) || (value > maxVal))

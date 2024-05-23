@@ -62,14 +62,11 @@ namespace PCLParaphernalia
 
         public static bool FontFileCopy(BinaryWriter prnWriter, string fontFilename)
         {
-            bool fileOpen = false;
-
             bool OK = true;
 
             long fileSize = 0;
 
-            fileOpen = FontFileOpen(fontFilename, ref fileSize);
-
+            bool fileOpen = FontFileOpen(fontFilename, ref fileSize);
             if (!fileOpen)
             {
                 OK = false;
@@ -183,10 +180,6 @@ namespace PCLParaphernalia
                                                      ref bool bound,
                                                      ref ushort symSetNo)
         {
-            bool fileOpen = false;
-
-            bool OK = true;
-
             ushort hddrOffset = 0;
             long fileSize = 0;
 
@@ -196,8 +189,8 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            fileOpen = FontFileOpen(fontFilename, ref fileSize);
-
+            bool fileOpen = FontFileOpen(fontFilename, ref fileSize);
+            bool OK;
             if (!fileOpen)
             {
                 OK = false;
@@ -309,9 +302,7 @@ namespace PCLParaphernalia
 
             bool OK = true;
             bool beginFound = false;
-
-            int hddrDescLen = 0,
-                  dataLen,
+            int dataLen,
                   pos;
 
             if (fileSize < minFileSize)
@@ -426,7 +417,7 @@ namespace PCLParaphernalia
                     else
                     {
                         pos += 6;
-
+                        int hddrDescLen;
                         if (buf[pos] == (byte)PCLXLEmbedDataDefs.Tag.Byte)
                         {
                             hddrDescLen = buf[pos + 1];

@@ -1419,9 +1419,6 @@ namespace PCLParaphernalia
             int defVal;
 
             string boxName;
-
-            bool OK = true;
-
             if (_reqTypePJLFS == PJLCommands.RequestType.FSDirList)
             {
                 boxName = "Count";
@@ -1435,8 +1432,7 @@ namespace PCLParaphernalia
 
             string crntText = txtPJLFSOpt1.Text;
 
-            OK = int.TryParse(crntText, out int value);
-
+            bool OK = int.TryParse(crntText, out int value);
             if (OK)
             {
                 if (value < 0)
@@ -1492,9 +1488,6 @@ namespace PCLParaphernalia
             int defVal;
 
             string boxName;
-
-            bool OK = true;
-
             if (_reqTypePJLFS == PJLCommands.RequestType.FSDirList)
             {
                 boxName = "Entry";
@@ -1508,8 +1501,7 @@ namespace PCLParaphernalia
 
             string crntText = txtPJLFSOpt2.Text;
 
-            OK = int.TryParse(crntText, out int value);
-
+            bool OK = int.TryParse(crntText, out int value);
             if (OK)
             {
                 if (value < 0)

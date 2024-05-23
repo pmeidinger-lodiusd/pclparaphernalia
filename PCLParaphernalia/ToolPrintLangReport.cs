@@ -1813,20 +1813,16 @@ namespace PCLParaphernalia
             int ctCols;
 
             string sort = string.Empty;
-            string colHddr = string.Empty;
-            string colSort = string.Empty;
-
             bool selHddrStarted = false;
 
             ctCols = dgSeq.Columns.Count;
 
             for (int i = 0; i < ctCols; i++)
             {
-                colSort = dgSeq.ColumnFromDisplayIndex(i).SortDirection.ToString();
-
+                string colSort = dgSeq.ColumnFromDisplayIndex(i).SortDirection.ToString();
                 if (colSort != string.Empty)
                 {
-                    colHddr = dgSeq.ColumnFromDisplayIndex(i).Header.ToString();
+                    string colHddr = dgSeq.ColumnFromDisplayIndex(i).Header.ToString();
 
                     if (sort != string.Empty)
                         sort += "; ";

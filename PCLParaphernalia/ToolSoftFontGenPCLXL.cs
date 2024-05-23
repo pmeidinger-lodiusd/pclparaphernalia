@@ -78,12 +78,11 @@ namespace PCLParaphernalia
                                      ushort symSet,
                                      byte[] conversionText)
         {
-            bool flagOK = true;
-
             _baseHandler.Initialise(_ttfHandler);
 
             _symbolMapping = symbolMapping;
 
+            bool flagOK;
             //----------------------------------------------------------------//
             //                                                                //
             // Open print file and stream.                                    //
@@ -290,7 +289,6 @@ namespace PCLParaphernalia
         {
             ushort glyphWidth = 0,
                    glyphHeight = 0,
-                   charDataSize = 0,
                    charSize,
                    hddrSize;
 
@@ -373,7 +371,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            charDataSize = (ushort)(hddrSize + glyphLength);
+            ushort charDataSize = (ushort)(hddrSize + glyphLength);
             charSize = (ushort)(charDataSize - 2);
 
             PCLXLWriter.FontCharRead(_binWriter, false, charCode, charDataSize);
@@ -451,11 +449,9 @@ namespace PCLParaphernalia
 
             if (glyphLength > 0)
             {
-                bool flagOK = true;
-
                 glyphData = new byte[glyphLength];
 
-                flagOK = _ttfHandler.ReadByteArray((int)glyphOffset, (int)glyphLength, ref glyphData);
+                bool flagOK = _ttfHandler.ReadByteArray((int)glyphOffset, (int)glyphLength, ref glyphData);
                 // TODO: what if flagOK = true (i.e. read fails?
 
                 _baseHandler.WriteCharFragment((int)glyphLength, glyphData, ref checksumMod256);
@@ -561,8 +557,6 @@ namespace PCLParaphernalia
                                    int charClass,
                                    bool symSetUnbound)
         {
-            bool glyphExists = false;
-
             ushort startCode,
                    endCode,
                    glyphId = 0,
@@ -581,10 +575,9 @@ namespace PCLParaphernalia
             {
                 ushort charCode = (ushort)i;
 
-                glyphExists = _ttfHandler.GetCharData(charCode,
-                                                       ref codepoint,
-                                                       ref glyphId);
-
+                bool glyphExists = _ttfHandler.GetCharData(charCode,
+                                           ref codepoint,
+                                           ref glyphId);
                 if (glyphExists)
                 {
                     WriteChar(charClass, charCode, codepoint,

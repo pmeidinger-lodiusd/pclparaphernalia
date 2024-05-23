@@ -115,9 +115,6 @@ namespace PCLParaphernalia
         //                 BackgroundWorker bkWk)
         {
             bool OK = true;
-
-            bool ipOpen = false;
-
             _options = options;
             _table = table;
             _prnFilename = prnFilename;
@@ -126,8 +123,7 @@ namespace PCLParaphernalia
 
             //  _perCentMax = 0;
 
-            ipOpen = PrnFileOpen(prnFilename, ref _fileSize);
-
+            bool ipOpen = PrnFileOpen(prnFilename, ref _fileSize);
             if (!ipOpen)
             {
                 OK = false;
@@ -170,14 +166,11 @@ namespace PCLParaphernalia
 
             PrnParseConstants.OptCharSetSubActs indxCharSetSubAct = 0;
             PrnParseConstants.OptCharSets indxCharSetName = 0;
-            PrnParseConstants.OptOffsetFormats indxOffsetFormat = 0;
-
             int valCharSetSubCode = 0;
 
             bool backTrack = false;
             const bool rowLimitReached = false;
             bool endReached = false;
-            bool badSeq = false;
             bool invalidSeqFound = false;
 
             byte[] buf = new byte[PrnParseConstants.bufSize];
@@ -188,8 +181,7 @@ namespace PCLParaphernalia
 
             _linkData.PclxlEmbedType = pclxlEmbedType;
 
-            indxOffsetFormat = _options.IndxGenOffsetFormat;
-
+            PrnParseConstants.OptOffsetFormats indxOffsetFormat = _options.IndxGenOffsetFormat;
             _options.GetOptCharSet(ref indxCharSetName, ref indxCharSetSubAct, ref valCharSetSubCode);
 
             if (_parseType == ParseType.Analyse)
@@ -255,6 +247,7 @@ namespace PCLParaphernalia
                     {
                         newPDL = _crntPDL;
 
+                        bool badSeq;
                         switch (_crntPDL)
                         {
                             case ToolCommonData.PrintLang.PCL:
@@ -886,17 +879,13 @@ namespace PCLParaphernalia
                                         DataTable table)
         {
             bool OK = true;
-
-            bool ipOpen = false;
-
             _options = options;
             _table = table;
             _prnFilename = prnFilename;
 
             _flagDiagFileAccess = _options.FlagGenDiagFileAccess;
 
-            ipOpen = PrnFileOpen(prnFilename, ref _fileSize);
-
+            bool ipOpen = PrnFileOpen(prnFilename, ref _fileSize);
             if (!ipOpen)
             {
                 OK = false;
@@ -1291,14 +1280,10 @@ namespace PCLParaphernalia
                                        int macroId)
         {
             bool OK = true;
-
-            bool ipOpen = false;
-
             _options = options;
             _table = table;
 
-            ipOpen = PrnFileOpen(prnFilename, ref _fileSize);
-
+            bool ipOpen = PrnFileOpen(prnFilename, ref _fileSize);
             if (!ipOpen)
             {
                 OK = false;
@@ -1360,14 +1345,10 @@ namespace PCLParaphernalia
                                          string streamName)
         {
             bool OK = true;
-
-            bool ipOpen = false;
-
             _options = options;
             _table = table;
 
-            ipOpen = PrnFileOpen(prnFilename, ref _fileSize);
-
+            bool ipOpen = PrnFileOpen(prnFilename, ref _fileSize);
             if (!ipOpen)
             {
                 OK = false;
@@ -1421,13 +1402,9 @@ namespace PCLParaphernalia
         public bool MakeOverlayScan(string prnFilename, PrnParseOptions options, ref ToolCommonData.PrintLang pdl)
         {
             bool OK = true;
-
-            bool ipOpen = false;
-
             _options = options;
 
-            ipOpen = PrnFileOpen(prnFilename, ref _fileSize);
-
+            bool ipOpen = PrnFileOpen(prnFilename, ref _fileSize);
             if (!ipOpen)
             {
                 OK = false;

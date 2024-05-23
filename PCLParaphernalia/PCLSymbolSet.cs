@@ -169,8 +169,7 @@ namespace PCLParaphernalia
 
         public bool GetSymsetDataForIdAlpha(byte idAlpha, ref ushort kind1, ref ushort idNum, ref string name)
         {
-            bool matches = false;
-
+            bool matches;
             if ((Group != PCLSymbolSets.SymSetGroup.Preset) &&
                 (Group != PCLSymbolSets.SymSetGroup.Unbound) &&
                 (Group != PCLSymbolSets.SymSetGroup.Unicode))

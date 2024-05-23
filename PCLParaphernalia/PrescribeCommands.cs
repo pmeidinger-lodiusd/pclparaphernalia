@@ -47,10 +47,9 @@ namespace PCLParaphernalia
 
         public static bool CheckCmd(string name, ref string description, ref bool flagCmdExit, ref bool flagCmdSetCRC, int level)
         {
-            bool seqKnown = true;
-
             PrescribeCommand cmd;
 
+            bool seqKnown;
             if (_cmds.IndexOfKey(name) != -1)
             {
                 seqKnown = true;
@@ -120,8 +119,6 @@ namespace PCLParaphernalia
 
         public static void DisplayStatsCounts(DataTable table, bool incUsedSeqsOnly)
         {
-            int count = 0;
-
             bool displaySeq,
                     hddrWritten;
 
@@ -133,8 +130,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            count = _cmdIntro.StatsCtTotal;
-
+            int count = _cmdIntro.StatsCtTotal;
             if (count == 0)
                 displaySeq = false;
 

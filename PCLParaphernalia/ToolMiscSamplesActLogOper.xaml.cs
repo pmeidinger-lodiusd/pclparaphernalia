@@ -634,8 +634,6 @@ namespace PCLParaphernalia
                 cbLogOperModePCL.Items.Clear();
 
                 _ctLogOperModesPCL = _subsetLogOperModesPCL.Length;
-                tempCt = 0;
-
                 for (int i = 0; i < _ctLogOperModesPCL; i++)
                 {
                     index = _subsetLogOperModesPCL[i];
@@ -715,8 +713,6 @@ namespace PCLParaphernalia
                 cbLogOperModePCLXL.Items.Clear();
 
                 _ctLogOperModesPCLXL = _subsetLogOperModesPCLXL.Length;
-                tempCt = 0;
-
                 for (int i = 0; i < _ctLogOperModesPCLXL; i++)
                 {
                     index = _subsetLogOperModesPCLXL[i];

@@ -50,12 +50,7 @@ namespace PCLParaphernalia
         {
             object stream = null;
             object writer = null;
-
-            bool OK = false;
-
             string fileExt;
-            string saveFilename = null;
-
             if (rptFileFmt == ReportCore.RptFileFmt.html)
                 fileExt = "html";
             else if (rptFileFmt == ReportCore.RptFileFmt.xml)
@@ -63,9 +58,8 @@ namespace PCLParaphernalia
             else
                 fileExt = "txt";
 
-            saveFilename = fontFilenamePCL + "_report." + fileExt;
-
-            OK = ReportCore.DocOpen(rptFileFmt, ref saveFilename, ref stream, ref writer);
+            string saveFilename = fontFilenamePCL + "_report." + fileExt;
+            bool OK = ReportCore.DocOpen(rptFileFmt, ref saveFilename, ref stream, ref writer);
             if (OK)
             {
                 ReportCore.DocInitialise(rptFileFmt, writer, true, false,

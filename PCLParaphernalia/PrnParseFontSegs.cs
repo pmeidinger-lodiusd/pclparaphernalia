@@ -348,8 +348,6 @@ namespace PCLParaphernalia
                 //------------------------------------------------------------//
 
                 string text;
-
-                segSize = 0;
                 _segRem = 0;
                 _validSegs = true;
 
@@ -811,7 +809,6 @@ namespace PCLParaphernalia
                     string.Empty,
                     segSize + " (" + (segSize + segHddrLen) + " including type & size fields))");
 
-                baseOffset += segHddrLen;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -959,7 +956,6 @@ namespace PCLParaphernalia
                     (segSize + segHddrLen) +
                     " including type & size fields)");
 
-                baseOffset += segHddrLen;
 
                 //------------------------------------------------------------//
 
@@ -1099,7 +1095,6 @@ namespace PCLParaphernalia
                     string.Empty,
                     segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
 
-                baseOffset += segHddrLen;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1425,7 +1420,6 @@ namespace PCLParaphernalia
                     string.Empty,
                     segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
 
-                baseOffset += segHddrLen;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1580,7 +1574,6 @@ namespace PCLParaphernalia
                     string.Empty,
                     segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
 
-                baseOffset += segHddrLen;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -2237,7 +2230,6 @@ namespace PCLParaphernalia
                     (segSize + segHddrLen) +
                     " including type & size fields)");
 
-                baseOffset += segHddrLen;
 
                 //------------------------------------------------------------//
 
@@ -2840,7 +2832,6 @@ namespace PCLParaphernalia
                     (segSize + segHddrLen) +
                     " including type & size fields)");
 
-                baseOffset += segHddrLen;
 
                 //------------------------------------------------------------//
 
@@ -3153,7 +3144,6 @@ namespace PCLParaphernalia
                     string.Empty,
                     segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
 
-                baseOffset += segHddrLen;
 
                 //------------------------------------------------------------//
 
@@ -3293,7 +3283,6 @@ namespace PCLParaphernalia
                     string.Empty,
                     segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
 
-                baseOffset += segHddrLen;
 
                 //------------------------------------------------------------//
 
@@ -4336,7 +4325,6 @@ namespace PCLParaphernalia
                     string.Empty,
                     segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
 
-                baseOffset += segHddrLen;
 
                 //------------------------------------------------------------//
 

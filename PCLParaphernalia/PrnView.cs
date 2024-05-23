@@ -193,8 +193,7 @@ namespace PCLParaphernalia
         private void ViewFileAction(PrnParseOptions options, DataTable table)
         {
             int blockLen,
-                  sliceLen,
-                  blockStart = 0;
+                  sliceLen;
 
             int offsetStart = 0,
                   offsetEnd = -1,
@@ -230,7 +229,7 @@ namespace PCLParaphernalia
             options.GetOptCurFOffsets(ref offsetStart,
                                        ref offsetEnd);
 
-            blockStart = offsetStart;
+            int blockStart = offsetStart;
             _ipStream.Seek(offsetStart, SeekOrigin.Begin);
 
             if (offsetStart != 0)
@@ -279,7 +278,6 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    sliceLen = PrnParseConstants.viewBytesPerLine;
 
                     for (int i = 0; (i < blockLen) && (!endReached); i += sliceLen)
                     {

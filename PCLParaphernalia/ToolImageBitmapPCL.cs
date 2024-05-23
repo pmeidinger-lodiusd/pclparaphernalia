@@ -113,13 +113,12 @@ namespace PCLParaphernalia
                                               int srcWidth,
                                               int srcHeight)
         {
-            bool firstBlock = true,
-                    indexed = true;
+            bool firstBlock = true;
 
             int bytesPerRow,
                   bytesPerRowPadded,
                   padBytes;
-
+            bool indexed;
             //------------------------------------------------------------//
 
             if (srcBitsPerPixel == 1)

@@ -96,7 +96,6 @@ namespace PCLParaphernalia
 
             _analysisLevel = _linkData.AnalysisLevel;
 
-            seqInvalid = false;
 
             //----------------------------------------------------------------//
 
@@ -196,13 +195,10 @@ namespace PCLParaphernalia
             ref bool endReached)
         {
             long startPos;
-
-            bool continuation = false;
             bool langSwitch = false;
-            bool badSeq = false;
             bool invalidSeqFound = false;
 
-            continuation = false;
+            bool continuation = false;
             startPos = _fileOffset + bufOffset;
 
             if (!_linkData.PrescribeIntroRead)
@@ -285,7 +281,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    badSeq = ProcessCommand(ref bufRem,
+                    bool badSeq = ProcessCommand(ref bufRem,
                                              ref bufOffset,
                                              ref continuation,
                                              ref langSwitch,
@@ -322,8 +318,6 @@ namespace PCLParaphernalia
             ref bool langSwitch,
             ref ToolCommonData.PrintLang crntPDL)
         {
-            PrnParseConstants.ContType contType = PrnParseConstants.ContType.None;
-
             byte crntByte,
                  cmdParaByte1 = 0x3f;
 
@@ -336,10 +330,6 @@ namespace PCLParaphernalia
                   cmdStart,
                   offset,
                   lineStart;
-
-            int quoteStart = 0,
-                  quoteEnd = 0;
-
             bool invalidSeqFound,
                     cmdParaByte1Found,
                     endLoop,
@@ -348,7 +338,6 @@ namespace PCLParaphernalia
             //  Boolean flagWithinQuote;
             bool flagWithinQuoteDouble;
             bool flagWithinQuoteSingle;
-            bool cmdKnown = false;
             bool flagCmdExit = false;
             bool flagCmdSetCRC = false;
 
@@ -359,13 +348,7 @@ namespace PCLParaphernalia
             StringBuilder cmd = new StringBuilder();
 
             invalidSeqFound = false;
-            foundTerm = false;
             langSwitch = false;
-
-            lineStart = bufOffset;
-            foundTerm = false;
-
-            len = bufRem;
             offset = bufOffset;
 
             continuation = false;
@@ -413,7 +396,6 @@ namespace PCLParaphernalia
                         {
                             flagWithinQuoteDouble = false;
                             //  flagWithinQuote = false;
-                            quoteEnd = offset;
                         }
                     }
                     else if (flagWithinQuoteSingle)
@@ -422,20 +404,17 @@ namespace PCLParaphernalia
                         {
                             flagWithinQuoteSingle = false;
                             //  flagWithinQuote = false;
-                            quoteEnd = offset;
                         }
                     }
                     else if (crntByte == PrnParseConstants.asciiQuote)
                     {
                         flagWithinQuoteDouble = true;
                         //  flagWithinQuote = true;
-                        quoteStart = offset;
                     }
                     else if (crntByte == PrnParseConstants.asciiApostrophe)
                     {
                         flagWithinQuoteSingle = true;
                         //  flagWithinQuote = true;
-                        quoteStart = offset;
                     }
                     else if (crntByte == PrnParseConstants.asciiSemiColon)
                     {
@@ -460,8 +439,7 @@ namespace PCLParaphernalia
 
                 continuation = true;
 
-                contType = PrnParseConstants.ContType.Prescribe;
-
+                PrnParseConstants.ContType contType = PrnParseConstants.ContType.Prescribe;
                 _linkData.SetBacktrack(contType, -bufRem);
             }
             else
@@ -562,11 +540,11 @@ namespace PCLParaphernalia
 
                 commandName = cmd.ToString();
 
-                cmdKnown = PrescribeCommands.CheckCmd(cmd.ToString(),
-                                                       ref commandDesc,
-                                                       ref flagCmdExit,
-                                                       ref flagCmdSetCRC,
-                                                       _analysisLevel);
+                bool cmdKnown = PrescribeCommands.CheckCmd(cmd.ToString(),
+                                           ref commandDesc,
+                                           ref flagCmdExit,
+                                           ref flagCmdSetCRC,
+                                           _analysisLevel);
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -607,8 +585,6 @@ namespace PCLParaphernalia
                 command = Encoding.ASCII.GetString(_buf, cmdStart, cmdLen);
 
                 const int indent = 2;
-
-                lineStart = 0;
                 len = cmdLen;       // or length of string? //
 
                 int sliceLen,
@@ -618,9 +594,6 @@ namespace PCLParaphernalia
                       ccAdjust;
 
                 bool firstSlice;
-
-                string seq = string.Empty;
-
                 byte[] seqBuf = new byte[PrnParseConstants.cRptA_colMax_Seq];
 
                 firstSlice = true;
@@ -633,6 +606,8 @@ namespace PCLParaphernalia
 
                 sliceStart = bufOffset + sliceOffset;
 
+
+                string seq;
                 while (len > sliceLenMax)
                 {
                     //--------------------------------------------------------//
@@ -691,8 +666,6 @@ namespace PCLParaphernalia
                 //------------------------------------------------------------//
 
                 sliceLen = len;
-                ccAdjust = 0;
-
                 if (len > 0)
                 {
                     if (firstSlice)

@@ -82,9 +82,7 @@ namespace PCLParaphernalia
             const byte lowerF = 0x66;
 
             bool invalidSeqFound = false;
-
-            int seqLen = 0,
-                  offset;
+            int offset;
 
             //----------------------------------------------------------------//
 
@@ -99,7 +97,7 @@ namespace PCLParaphernalia
 
             options.GetOptCharSet(ref _indxCharSetName, ref _indxCharSetSubAct, ref _valCharSetSubCode);
 
-            seqLen = seqDataLen / 2;
+            int seqLen = seqDataLen / 2;
 
             //----------------------------------------------------------------//
 
@@ -258,8 +256,6 @@ namespace PCLParaphernalia
                                           PrnParseOptions options,
                                           DataTable table)
         {
-            bool seqOK = true;
-
             _table = table;
             _buf = buf;
             _fileOffset = fileOffset;
@@ -307,7 +303,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            seqOK = !ProcessPMLSeq(dataLen, bufOffset, true);
+            bool seqOK = !ProcessPMLSeq(dataLen, bufOffset, true);
 
             //----------------------------------------------------------------//
 
@@ -353,10 +349,6 @@ namespace PCLParaphernalia
         private bool ProcessPMLSeq(int seqLen, int seqOffset, bool hddrExpected)
         {
             const byte cPMLReplyTypeMin = 0x80;
-            //  const Byte cPMLErrorTypeMin = 0x80;
-
-            bool invalidSeqFound = false;
-
             int partOffset,
                   partLen,
                   dataLen,
@@ -367,7 +359,9 @@ namespace PCLParaphernalia
 
             string tagDesc = string.Empty;
 
-            invalidSeqFound = false;
+            //  const Byte cPMLErrorTypeMin = 0x80;
+
+            bool invalidSeqFound = false;
             partOffset = 0;
 
             //----------------------------------------------------------------//
@@ -917,9 +911,6 @@ namespace PCLParaphernalia
             StringBuilder decode = new StringBuilder();
 
             const int decodeMax = _decodeAreaMax;
-
-            int itemLen = 0;
-
             if (dataType == PMLDataTypes.Tag.ObjectID)
             {
                 //------------------------------------------------------------//
@@ -949,8 +940,7 @@ namespace PCLParaphernalia
                       item;
 
                 item = heldItem;
-                itemLen = heldItemLen;
-
+                int itemLen = heldItemLen;
                 for (j = 0; j < sliceLen; j++)
                 {
                     k = chunkOffset + chunkIpLen + j;

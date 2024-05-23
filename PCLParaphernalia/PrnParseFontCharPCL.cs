@@ -163,7 +163,6 @@ namespace PCLParaphernalia
             }
             else
             {
-                contType = PrnParseConstants.ContType.None;
                 _linkData.ResetContData();
             }
 
@@ -443,7 +442,6 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    contType = PrnParseConstants.ContType.None;
                     _linkData.ResetContData();
 
                     binDataLen = _charRem;
@@ -670,8 +668,6 @@ namespace PCLParaphernalia
                     else
                     {
                         byte crntByte;
-
-                        contType = PrnParseConstants.ContType.None;
                         _linkData.ResetContData();
 
                         //----------------------------------------------------//
@@ -1195,8 +1191,6 @@ namespace PCLParaphernalia
             }
             else
             {
-                contType = PrnParseConstants.ContType.None;
-
                 _linkData.ResetContData();
 
                 binDataLen = _charDataBlockRem;
@@ -1477,7 +1471,6 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                contType = PrnParseConstants.ContType.None;
                 _linkData.ResetContData();
 
                 _charRem -= hddrLen;
@@ -1570,7 +1563,6 @@ namespace PCLParaphernalia
             }
             else
             {
-                contType = PrnParseConstants.ContType.None;
                 _linkData.ResetContData();
 
                 binDataLen = _charRem;
@@ -1665,7 +1657,6 @@ namespace PCLParaphernalia
             }
             else
             {
-                contType = PrnParseConstants.ContType.None;
                 _linkData.ResetContData();
 
                 binDataLen = _charRem;
@@ -1758,7 +1749,6 @@ namespace PCLParaphernalia
             }
             else
             {
-                contType = PrnParseConstants.ContType.None;
                 _linkData.ResetContData();
 
                 binDataLen = _charDataBlockRem;
@@ -1936,7 +1926,6 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                contType = PrnParseConstants.ContType.None;
                 _linkData.ResetContData();
 
                 _charRem -= hddrLen;

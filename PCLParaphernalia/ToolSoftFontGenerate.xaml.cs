@@ -515,9 +515,7 @@ namespace PCLParaphernalia
             string filename,
                    symSetIdTargetPCL,
                    symSetIdTargetPCLXL;
-
-            bool typeTTC = false,
-                    usePCLT = false;
+            bool typeTTC = false;
 
             if (_fontWithinTTC)
             {
@@ -721,6 +719,7 @@ namespace PCLParaphernalia
 
                 grpPCLTTreatment.IsEnabled = false; // re-enabled when another font or Reset
 
+                bool usePCLT;
                 if (_tabPCLTPresent)
                 {
                     lbPCLTNotPresent.Visibility = Visibility.Hidden;
@@ -3405,13 +3404,9 @@ bitVal;
             const ushort minVal = 0;
             const ushort maxVal = 1023;
             const ushort defVal = _defaultPCLStyleNo;
-
-            bool OK = true;
-
             string crntText = txtPCLStyleNo.Text;
 
-            OK = ushort.TryParse(crntText, out ushort value);
-
+            bool OK = ushort.TryParse(crntText, out ushort value);
             if (OK)
             {
                 if ((value < minVal) || (value > maxVal))
@@ -3476,13 +3471,9 @@ bitVal;
             const ushort minVal = 1;
             const ushort maxVal = 65530;
             const ushort defVal = _defaultSymSetNo;
-
-            bool OK = true;
-
             string crntText = txtPCLSymSetNo.Text;
 
-            OK = ushort.TryParse(crntText, out ushort value);
-
+            bool OK = ushort.TryParse(crntText, out ushort value);
             if (OK)
             {
                 if ((value < minVal) || (value > maxVal))
@@ -3559,13 +3550,9 @@ bitVal;
             const ushort minVal = 0;
             const ushort maxVal = 65535;
             const ushort defVal = _defaultPCLTypefaceNo;
-
-            bool OK = true;
-
             string crntText = txtPCLTypefaceNo.Text;
 
-            OK = ushort.TryParse(crntText, out ushort value);
-
+            bool OK = ushort.TryParse(crntText, out ushort value);
             if (OK)
             {
                 if ((value < minVal) || (value > maxVal))
@@ -3628,13 +3615,9 @@ bitVal;
             const sbyte minVal = -7;
             const sbyte maxVal = 7;
             const sbyte defVal = _defaultPCLWeightNo;
-
-            bool OK = true;
-
             string crntText = txtPCLWeightNo.Text;
 
-            OK = sbyte.TryParse(crntText, out sbyte value);
-
+            bool OK = sbyte.TryParse(crntText, out sbyte value);
             if (OK)
             {
                 if ((value < minVal) || (value > maxVal))
@@ -3697,13 +3680,9 @@ bitVal;
             const ushort minVal = 0;
             const ushort maxVal = 65530;
             const ushort defVal = _defaultSymSetNo;
-
-            bool OK = true;
-
             string crntText = txtPCLXLSymSetNo.Text;
 
-            OK = ushort.TryParse(crntText, out ushort value);
-
+            bool OK = ushort.TryParse(crntText, out ushort value);
             if (OK)
             {
                 if ((value < minVal) || (value > maxVal))

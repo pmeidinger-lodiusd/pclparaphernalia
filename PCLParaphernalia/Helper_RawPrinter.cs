@@ -81,7 +81,6 @@ namespace PCLParaphernalia
 
         public static bool SendBytesToPrinter(string szPrinterName, IntPtr pBytes, int dwCount)
         {
-            int dwError = 0, dwWritten = 0;
             IntPtr hPrinter = new IntPtr(0);
 
             DOCINFOA di = new DOCINFOA();
@@ -100,6 +99,7 @@ namespace PCLParaphernalia
                     // Start a page.
                     if (StartPagePrinter(hPrinter))
                     {
+                        int dwWritten;
                         // Write supplied bytes.
                         bSuccess = WritePrinter(hPrinter, pBytes, dwCount, out dwWritten);
 
@@ -118,7 +118,7 @@ namespace PCLParaphernalia
             {
                 // If write did not succeed, GetLastError may give more
                 // information about the failure.
-                dwError = Marshal.GetLastWin32Error();
+                int dwError = Marshal.GetLastWin32Error();
             }
 
             return bSuccess;
@@ -147,9 +147,6 @@ namespace PCLParaphernalia
             // Create an array of bytes big enough to hold the file contents.
 
             byte[] bytes = new byte[fs.Length];
-
-            bool bSuccess = false;
-
             IntPtr pUnmanagedBytes = new IntPtr(0);
 
             int nLength = Convert.ToInt32(fs.Length);
@@ -169,7 +166,7 @@ namespace PCLParaphernalia
             Marshal.Copy(bytes, 0, pUnmanagedBytes, nLength);
 
             // Send the unmanaged bytes to the printer.
-            bSuccess = SendBytesToPrinter(szPrinterName, pUnmanagedBytes, nLength);
+            bool bSuccess = SendBytesToPrinter(szPrinterName, pUnmanagedBytes, nLength);
 
             // Free the unmanaged memory and exit.
             Marshal.FreeCoTaskMem(pUnmanagedBytes);

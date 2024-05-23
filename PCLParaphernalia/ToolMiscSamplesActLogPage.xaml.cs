@@ -467,13 +467,12 @@ namespace PCLParaphernalia
             const int minVal = -32767;
             const int maxVal = 32767;
             const int defVal = _defLogPageOffLeftDPt;
-
-            int value = 0;
-
             bool OK = true;
 
             string crntText = txtLogPageOffLeftDPt.Text;
 
+
+            int value;
             if (crntText?.Length == 0)
             {
                 value = 0;
@@ -534,13 +533,12 @@ namespace PCLParaphernalia
             const int minVal = -32767;
             const int maxVal = 32767;
             const int defVal = _defLogPageOffTopDPt;
-
-            int value = 0;
-
             bool OK = true;
 
             string crntText = txtLogPageOffTopDPt.Text;
 
+
+            int value;
             if (crntText?.Length == 0)
             {
                 value = 0;
@@ -601,13 +599,12 @@ namespace PCLParaphernalia
             const int minVal = 1;
             const int maxVal = 65535;
             int defVal = (int)(_paperLengthLogical * _unitsToDPts);
-
-            int value = 0;
-
             bool OK = true;
 
             string crntText = txtLogPageHeightDPt.Text;
 
+
+            int value;
             if (crntText?.Length == 0)
             {
                 value = 0;
@@ -668,13 +665,12 @@ namespace PCLParaphernalia
             const int minVal = 1;
             const int maxVal = 65535;
             int defVal = (int)(_paperWidthLogical * _unitsToDPts);
-
-            int value = 0;
-
             bool OK = true;
 
             string crntText = txtLogPageWidthDPt.Text;
 
+
+            int value;
             if (crntText?.Length == 0)
             {
                 value = 0;

@@ -133,8 +133,6 @@ namespace PCLParaphernalia
         {
             int result = 0;
 
-            bool bitmapOpen = false;
-
             //----------------------------------------------------------------//
             //                                                                //
             // Get current test metrics.                                      //
@@ -156,7 +154,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            bitmapOpen = ToolImageBitmapCore.bitmapOpen(_bitmapFilename);
+            bool bitmapOpen = ToolImageBitmapCore.bitmapOpen(_bitmapFilename);
 
             if (!bitmapOpen)
             {

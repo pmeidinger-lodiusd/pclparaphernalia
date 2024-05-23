@@ -310,8 +310,6 @@ namespace PCLParaphernalia
 
         private void cbOrientFront_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            bool flagOK = false;
-
             ComboBox source = e.Source as ComboBox;
 
             //----------------------------------------------------------------//
@@ -325,11 +323,10 @@ namespace PCLParaphernalia
 
             string cbName = source.Name; // should be in format cbnn_xyz
 
-            flagOK = ushort.TryParse(cbName.Substring(2, 2),
-                                      NumberStyles.HexNumber,
-                                      CultureInfo.InvariantCulture,
-                                      out ushort sheetIndx);
-
+            bool flagOK = ushort.TryParse(cbName.Substring(2, 2),
+                          NumberStyles.HexNumber,
+                          CultureInfo.InvariantCulture,
+                          out ushort sheetIndx);
             if (flagOK)
             {
                 if (sheetIndx > _maxSheetNo)
@@ -365,8 +362,6 @@ namespace PCLParaphernalia
 
         private void cbOrientRear_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            bool flagOK = false;
-
             ComboBox source = e.Source as ComboBox;
 
             //----------------------------------------------------------------//
@@ -380,11 +375,10 @@ namespace PCLParaphernalia
 
             string cbName = source.Name; // should be in format cbnn_xyz
 
-            flagOK = ushort.TryParse(cbName.Substring(2, 2),
-                                      NumberStyles.HexNumber,
-                                      CultureInfo.InvariantCulture,
-                                      out ushort sheetIndx);
-
+            bool flagOK = ushort.TryParse(cbName.Substring(2, 2),
+                          NumberStyles.HexNumber,
+                          CultureInfo.InvariantCulture,
+                          out ushort sheetIndx);
             if (flagOK)
             {
                 if (sheetIndx > _maxSheetNo)
@@ -421,8 +415,6 @@ namespace PCLParaphernalia
 
         private void cbPaperSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            bool flagOK = false;
-
             ComboBox source = e.Source as ComboBox;
 
             //----------------------------------------------------------------//
@@ -436,11 +428,10 @@ namespace PCLParaphernalia
 
             string cbName = source.Name; // should be in format cbnn_xyz
 
-            flagOK = ushort.TryParse(cbName.Substring(2, 2),
-                                      NumberStyles.HexNumber,
-                                      CultureInfo.InvariantCulture,
-                                      out ushort sheetIndx);
-
+            bool flagOK = ushort.TryParse(cbName.Substring(2, 2),
+                          NumberStyles.HexNumber,
+                          CultureInfo.InvariantCulture,
+                          out ushort sheetIndx);
             if (flagOK)
             {
                 if (sheetIndx > _maxSheetNo)
@@ -479,8 +470,6 @@ namespace PCLParaphernalia
         {
             if (!_inhibitTrayIdChange)
             {
-                bool flagOK = false;
-
                 ComboBox source = e.Source as ComboBox;
 
                 //------------------------------------------------------------//
@@ -494,11 +483,10 @@ namespace PCLParaphernalia
 
                 string cbName = source.Name; // should be in format cbnn_xyz
 
-                flagOK = ushort.TryParse(cbName.Substring(2, 2),
-                                          NumberStyles.HexNumber,
-                                          CultureInfo.InvariantCulture,
-                                          out ushort sheetIndx);
-
+                bool flagOK = ushort.TryParse(cbName.Substring(2, 2),
+                          NumberStyles.HexNumber,
+                          CultureInfo.InvariantCulture,
+                          out ushort sheetIndx);
                 if (flagOK)
                 {
                     if (sheetIndx > _maxSheetNo)
@@ -536,8 +524,6 @@ namespace PCLParaphernalia
 
         private void cbPaperType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            bool flagOK = false;
-
             ComboBox source = e.Source as ComboBox;
 
             //----------------------------------------------------------------//
@@ -551,11 +537,10 @@ namespace PCLParaphernalia
 
             string cbName = source.Name; // should be in format cbnn_xyz
 
-            flagOK = ushort.TryParse(cbName.Substring(2, 2),
-                                      NumberStyles.HexNumber,
-                                      CultureInfo.InvariantCulture,
-                                      out ushort sheetIndx);
-
+            bool flagOK = ushort.TryParse(cbName.Substring(2, 2),
+                          NumberStyles.HexNumber,
+                          CultureInfo.InvariantCulture,
+                          out ushort sheetIndx);
             if (flagOK)
             {
                 if (sheetIndx > _maxSheetNo)
@@ -614,8 +599,6 @@ namespace PCLParaphernalia
 
         private void cbPlexMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            bool flagOK = false;
-
             ComboBox source = e.Source as ComboBox;
 
             //----------------------------------------------------------------//
@@ -629,11 +612,10 @@ namespace PCLParaphernalia
 
             string cbName = source.Name; // should be in format cbnn_xyz
 
-            flagOK = ushort.TryParse(cbName.Substring(2, 2),
-                                      NumberStyles.HexNumber,
-                                      CultureInfo.InvariantCulture,
-                                      out ushort sheetIndx);
-
+            bool flagOK = ushort.TryParse(cbName.Substring(2, 2),
+                          NumberStyles.HexNumber,
+                          CultureInfo.InvariantCulture,
+                          out ushort sheetIndx);
             if (flagOK)
             {
                 if (sheetIndx > _maxSheetNo)

@@ -162,14 +162,13 @@ namespace PCLParaphernalia
 
         private bool SelectDefWorkFolder(ref string targetFolder)
         {
-            bool selected = false;
-
             FolderBrowserDialog folderDialog = new FolderBrowserDialog();
 
             folderDialog.SelectedPath = _tmpFolder;
 
             DialogResult dlgResult = folderDialog.ShowDialog();
 
+            bool selected;
             if (dlgResult.ToString() == "OK")
             {
                 selected = true;

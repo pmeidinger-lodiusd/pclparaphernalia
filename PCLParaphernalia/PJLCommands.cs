@@ -111,10 +111,9 @@ namespace PCLParaphernalia
 
         public static bool CheckCmd(string name, ref string description, int level)
         {
-            bool seqKnown = true;
-
             PJLCommand cmd;
 
+            bool seqKnown;
             if (_cmds.IndexOfKey(name) != -1)
             {
                 seqKnown = true;
@@ -167,8 +166,6 @@ namespace PCLParaphernalia
 
         public static void DisplayStatsCounts(DataTable table, bool incUsedSeqsOnly)
         {
-            int count = 0;
-
             bool displaySeq,
                     hddrWritten;
 
@@ -180,8 +177,7 @@ namespace PCLParaphernalia
 
             displaySeq = true;
 
-            count = _cmdUnknown.StatsCtTotal;
-
+            int count = _cmdUnknown.StatsCtTotal;
             if (count == 0)
                 displaySeq = false;
 

@@ -1530,8 +1530,6 @@ namespace PCLParaphernalia
                                  ref ushort codeCt,
                                  ref PCLSymSetTypes.Index symSetType)
         {
-            bool usesC1Range = false;
-            bool codePointSig = false;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1540,7 +1538,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             codeMin = 0;
-
+            bool codePointSig;
             for (int i = 0; i < setSize; i++)
             {
                 if ((i >= cCodePointC0Min) && (i <= cCodePointC0Max))
@@ -1630,7 +1628,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            usesC1Range = false;
+            bool usesC1Range = false;
 
             if (!ignoreC1)
             {
@@ -2533,8 +2531,6 @@ namespace PCLParaphernalia
 
         private void txtMap_LostFocus(object sender, RoutedEventArgs e)
         {
-            bool flagOK = false;
-
             TextBox source = e.Source as TextBox;
 
             //----------------------------------------------------------------//
@@ -2548,11 +2544,10 @@ namespace PCLParaphernalia
 
             string txtBoxName = source.Name; // should be in format txtMap0xpq
 
-            flagOK = ushort.TryParse(txtBoxName.Substring(8, 2),
-                                      NumberStyles.HexNumber,
-                                      CultureInfo.InvariantCulture,
-                                      out ushort mapIndx);
-
+            bool flagOK = ushort.TryParse(txtBoxName.Substring(8, 2),
+                          NumberStyles.HexNumber,
+                          CultureInfo.InvariantCulture,
+                          out ushort mapIndx);
             if (flagOK)
             {
                 if (mapIndx > _sizeCharSet)
@@ -2735,12 +2730,11 @@ namespace PCLParaphernalia
 
         private bool ValidateMapEntry(TextBox source, ushort mapIndx)
         {
-            bool OK = true;
-
             ushort value;
 
             string txtCodepoint = source.Text;
 
+            bool OK;
             if (_flagMapHex)
             {
                 OK = ushort.TryParse(txtCodepoint, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out value);
@@ -2801,9 +2795,7 @@ namespace PCLParaphernalia
             const char maxVal = 'Z';
             const char badVal = 'X';
             const char defVal = _defaultSymSetIdAlpha;
-
-            int value = 0,
-                  len;
+            int len;
 
             bool OK = true;
 
@@ -2817,8 +2809,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                value = char.ConvertToUtf32(crntText, 0);
-
+                int value = char.ConvertToUtf32(crntText, 0);
                 if ((value < minVal) || (value > maxVal) || (value == badVal))
                     OK = false;
             }
@@ -2873,13 +2864,9 @@ namespace PCLParaphernalia
             const ushort minVal = 0;
             const ushort maxVal = 1023;
             const ushort defVal = _defaultSymSetIdNum;
-
-            bool OK = true;
-
             string crntText = txtTargetSymSetIdNum.Text;
 
-            OK = ushort.TryParse(crntText, out ushort value);
-
+            bool OK = ushort.TryParse(crntText, out ushort value);
             if (OK)
             {
                 if ((value < minVal) || (value > maxVal))

@@ -68,11 +68,6 @@ namespace PCLParaphernalia
             const int replyBufLen = 32768;
 
             byte[] replyData = new byte[replyBufLen];
-
-            int replyLen = 0;
-
-            //  Boolean readFF_A = true;            // only one <FF> expected //
-            bool OK = false;
             bool replyComplete = false;
 
             int offset = 0;
@@ -82,7 +77,8 @@ namespace PCLParaphernalia
 
             while (!replyComplete)
             {
-                OK = TargetCore.ResponseReadBlock(offset, bufRem, ref replyData, ref blockLen);
+                //  Boolean readFF_A = true;            // only one <FF> expected //
+                bool OK = TargetCore.ResponseReadBlock(offset, bufRem, ref replyData, ref blockLen);
 
                 endOffset = offset + blockLen;
 
@@ -144,7 +140,7 @@ namespace PCLParaphernalia
                     replyComplete = true;
             }
 
-            replyLen = endOffset;
+            int replyLen = endOffset;
 
             TargetCore.ResponseCloseConnection();
 

@@ -245,12 +245,9 @@ namespace PCLParaphernalia
 
                 if (reqType == PJLCommands.RequestType.FSBinSrc)
                 {
-                    bool OK = true;
-
                     long fileSize = 0;
 
-                    OK = BinSrcFileOpen(binSrcFilename, ref fileSize);
-
+                    bool OK = BinSrcFileOpen(binSrcFilename, ref fileSize);
                     if (OK)
                     {
                         seq = jobHddr +
@@ -391,11 +388,6 @@ namespace PCLParaphernalia
             const int replyBufLen = 32768;
 
             byte[] replyData = new byte[replyBufLen];
-
-            int replyLen = 0;
-
-            //  Boolean readFF_A = true;    // only one <FF> expected //
-            bool OK = false;
             bool replyComplete = false;
 
             int offset = 0;
@@ -405,7 +397,8 @@ namespace PCLParaphernalia
 
             while (!replyComplete)
             {
-                OK = TargetCore.ResponseReadBlock(offset, bufRem, ref replyData, ref blockLen);
+                //  Boolean readFF_A = true;    // only one <FF> expected //
+                bool OK = TargetCore.ResponseReadBlock(offset, bufRem, ref replyData, ref blockLen);
 
                 endOffset = offset + blockLen;
 
@@ -467,7 +460,7 @@ namespace PCLParaphernalia
                     replyComplete = true;
             }
 
-            replyLen = endOffset;
+            int replyLen = endOffset;
 
             TargetCore.ResponseCloseConnection();
 
@@ -521,7 +514,6 @@ namespace PCLParaphernalia
                 bool supDataWritten = false;
 
                 const int offset = 0;
-                int endOffset = 0;
                 const int bufRem = replyBufLen;
                 int blockLen = 0;
                 int binLen = 0;
@@ -533,7 +525,7 @@ namespace PCLParaphernalia
                 {
                     OK = TargetCore.ResponseReadBlock(offset, bufRem, ref replyBlock, ref blockLen);
 
-                    endOffset = offset + blockLen;
+                    int endOffset = offset + blockLen;
 
                     if (!OK)
                     {
@@ -790,12 +782,9 @@ namespace PCLParaphernalia
 
             int cmdRem = cmdLen - 1;
             int cmdOffset = cmdLen - 1;
-            int indxText = -1;
-
             bool sizeTextFound = false;
 
-            indxText = Array.LastIndexOf(replyBlock, firstByte, cmdOffset, cmdRem);
-
+            int indxText = Array.LastIndexOf(replyBlock, firstByte, cmdOffset, cmdRem);
             if (indxText >= 0)
             {
                 sizeTextFound = true;

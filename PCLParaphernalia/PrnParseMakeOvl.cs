@@ -1397,15 +1397,8 @@ namespace PCLParaphernalia
                     optDisplayHexVal = false;
 
             short vInt16;
+            string descComplex = string.Empty;
 
-            int prefixLen = 0;
-
-            bool vCheck = false;
-
-            string descComplex = string.Empty,
-                   typeText = string.Empty;
-
-            string seq = string.Empty;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1414,11 +1407,8 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            typeText = "PCL Parameterised";
-
-            vInt16 = 0;
-
-            vCheck = short.TryParse(value, out vInt16);
+            string typeText = "PCL Parameterised";
+            bool vCheck = short.TryParse(value, out vInt16);
 
             seqKnown = PCLComplexSeqs.CheckComplexSeq(
                             0,
@@ -1450,6 +1440,9 @@ namespace PCLParaphernalia
             seqBuf[2] = gChar;
             seqBuf[3] = tChar;
 
+
+            int prefixLen;
+            string seq;
             if (gChar == 0x20)
             {
                 prefixLen = 1;

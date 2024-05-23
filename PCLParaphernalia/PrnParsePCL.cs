@@ -133,7 +133,6 @@ namespace PCLParaphernalia
 
             _analysisLevel = linkData.AnalysisLevel;
 
-            seqInvalid = false;
 
             //----------------------------------------------------------------//
 
@@ -201,11 +200,9 @@ namespace PCLParaphernalia
                   contDataLen = 0,
                   downloadRem = 0,
                   binDataLen;
-
             bool hddrOK,
                     charOK,
                     dataOK,
-                    badSeq = false,
                     continuation = false,
                     breakpoint = false,
                     backTrack = false,
@@ -225,7 +222,7 @@ namespace PCLParaphernalia
                                    ref backTrack,
                                    ref prefixA,
                                    ref prefixB);
-
+            bool badSeq;
             if (contType == PrnParseConstants.ContType.Reset)
             {
                 //------------------------------------------------------------//
@@ -310,7 +307,6 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        continuation = false;
                         _linkData.ResetContData();
                     }
                 }
@@ -391,8 +387,6 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
-
-                continuation = false;
                 _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.ContType.PCLColourLookup)
@@ -416,8 +410,6 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
-
-                continuation = false;
                 _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.ContType.PCLConfigurationIO)
@@ -441,8 +433,6 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
-
-                continuation = false;
                 _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.ContType.PCLConfigureImageData)
@@ -466,8 +456,6 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
-
-                continuation = false;
                 _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.ContType.PCLConfigureRasterData)
@@ -491,8 +479,6 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
-
-                continuation = false;
                 _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.ContType.PCLLogicalPageData)
@@ -516,8 +502,6 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
-
-                continuation = false;
                 _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.ContType.PCLDefineSymbolSet)
@@ -541,8 +525,6 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
-
-                continuation = false;
                 _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.ContType.PCLDefineSymbolSetMap)
@@ -598,7 +580,6 @@ namespace PCLParaphernalia
 
                 if (_linkData.GetContType() == PrnParseConstants.ContType.None)
                 {
-                    continuation = false;
                     _linkData.ResetContData();
                 }
             }
@@ -626,7 +607,6 @@ namespace PCLParaphernalia
 
                 if (_linkData.GetContType() == PrnParseConstants.ContType.None)
                 {
-                    continuation = false;
                     _linkData.ResetContData();
                 }
             }
@@ -654,7 +634,6 @@ namespace PCLParaphernalia
 
                 if (_linkData.GetContType() == PrnParseConstants.ContType.None)
                 {
-                    continuation = false;
                     _linkData.ResetContData();
                 }
             }
@@ -679,8 +658,6 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
-
-                continuation = false;
                 _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.ContType.PCLEscEncText)
@@ -704,8 +681,6 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
-
-                continuation = false;
                 _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.ContType.PCLEscEncTextData)
@@ -729,8 +704,6 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
-
-                continuation = false;
                 _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.ContType.PCLPaletteConfiguration)
@@ -754,8 +727,6 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
-
-                continuation = false;
                 _linkData.ResetContData();
             }
             else if (contType ==
@@ -780,8 +751,6 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
-
-                continuation = false;
                 _linkData.ResetContData();
             }
             else if (contType ==
@@ -809,7 +778,6 @@ namespace PCLParaphernalia
 
                 if (_linkData.GetContType() == PrnParseConstants.ContType.None)
                 {
-                    continuation = false;
                     _linkData.ResetContData();
                 }
             }
@@ -834,8 +802,6 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
-
-                continuation = false;
                 _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.ContType.PCLEmbeddedPML)
@@ -858,8 +824,6 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
-
-                continuation = false;
                 _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.ContType.PCLMultiByteData)
@@ -1038,9 +1002,7 @@ namespace PCLParaphernalia
             bool breakpoint = false;
             bool continuation = false;
             bool langSwitch = false;
-            bool badSeq = false;
             bool invalidSeqFound = false;
-            bool seqKnown = false;
             bool dummyBool = false;
 
             while (!continuation && !breakpoint && !langSwitch &&
@@ -1191,6 +1153,7 @@ namespace PCLParaphernalia
 
                     _linkData.ResetPCLComboData();
 
+                    bool badSeq;
                     if ((bufRem >= 2) &&
                         (_buf[bufOffset + 1] >= PrnParseConstants.pclSimpleICharLow)
                                     &&
@@ -1241,7 +1204,7 @@ namespace PCLParaphernalia
                         }
                         else
                         {
-                            seqKnown = ParseSequenceSimple(ref bufRem, ref bufOffset, ref breakpoint);
+                            bool seqKnown = ParseSequenceSimple(ref bufRem, ref bufOffset, ref breakpoint);
 
                             if (!seqKnown)
                             {
@@ -1419,8 +1382,6 @@ namespace PCLParaphernalia
             //  Boolean CheckExtensionTable,
             bool CheckStandardTable)
         {
-            bool invalidSeq = true;
-
             PrnParseConstants.ContType contType = PrnParseConstants.ContType.None;
 
             PrnParseConstants.ActPCL actType = PrnParseConstants.ActPCL.None;
@@ -1433,9 +1394,7 @@ namespace PCLParaphernalia
                  iChar = 0x20,
                  p_or_TChar,
                  crntByte;
-
-            int vLen = 0,
-                  vtLen = 0,
+            int vtLen = 0,
                   processedLen,
                   seqLen,
                   seqOffset,
@@ -1487,7 +1446,7 @@ namespace PCLParaphernalia
                    typeText,
                    vendorName;
 
-            invalidSeq = false;
+            bool invalidSeq = false;
             seqComplete = false;
             continuation = false;
             vInvalid = false;
@@ -1925,7 +1884,7 @@ namespace PCLParaphernalia
                         vInt = -vInt;
                     }
 
-                    vLen = i - vPosCrnt;
+                    int vLen = i - vPosCrnt;
                     vtLen = vLen + 1;
 
                     vCheck = !vInvalid && !vFractional;
@@ -2518,7 +2477,6 @@ namespace PCLParaphernalia
                         vNumberStarted = false;
                         vInt = 0;
                         binDataLen = 0;
-                        vLen = 0;
                         vtLen = 0;
                     }
                 }  // end of 'if termination character found'
@@ -2812,9 +2770,6 @@ namespace PCLParaphernalia
             bool dummyBool = false;
 
             bool analyseRun;
-
-            int downloadRem = 0;
-
             continuation = false;
             invalidSeqFound = false;
 
@@ -3395,7 +3350,7 @@ namespace PCLParaphernalia
 
                         continuation = true;
 
-                        downloadRem = binDataLen;
+                        int downloadRem = binDataLen;
                         binDataLen = endPos - startPos;
                         downloadRem -= binDataLen;
 
@@ -3490,8 +3445,6 @@ namespace PCLParaphernalia
             ref bool breakpoint)
         {
             byte iChar;
-
-            bool seqKnown = false;
             bool optObsolete = false;
             bool optResetHPGL2 = false;
 
@@ -3505,13 +3458,13 @@ namespace PCLParaphernalia
 
             iChar = _buf[bufOffset + 1];
 
-            seqKnown = PCLSimpleSeqs.CheckSimpleSeq(
-                _analysisLevel + _macroLevel,
-                iChar,
-                ref optObsolete,
-                ref optResetHPGL2,
-                ref makeOvlAct,
-                ref descSimple);
+            bool seqKnown = PCLSimpleSeqs.CheckSimpleSeq(
+    _analysisLevel + _macroLevel,
+    iChar,
+    ref optObsolete,
+    ref optResetHPGL2,
+    ref makeOvlAct,
+    ref descSimple);
 
             if (seqKnown)
             {

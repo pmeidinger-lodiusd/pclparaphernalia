@@ -103,8 +103,6 @@ namespace PCLParaphernalia
         private void Initialise()
         {
             int indxPrinter = 0;
-            int ctPrinters = 0;
-
             string printerName;
 
             //----------------------------------------------------------------//
@@ -117,8 +115,7 @@ namespace PCLParaphernalia
 
             cbPrinters.Items.Clear();
 
-            ctPrinters = PrinterSettings.InstalledPrinters.Count;
-
+            int ctPrinters = PrinterSettings.InstalledPrinters.Count;
             for (int i = 0; i < ctPrinters; i++)
             {
                 printerName = PrinterSettings.InstalledPrinters[i];

@@ -66,9 +66,6 @@ namespace PCLParaphernalia
         {
             object stream = null;
             object writer = null;
-
-            bool OK = false;
-
             string fileExt;
 
             if (rptFileFmt == ReportCore.RptFileFmt.html)
@@ -80,11 +77,10 @@ namespace PCLParaphernalia
 
             string saveFilename = symSetFilename + "_report." + fileExt;
 
-            OK = ReportCore.DocOpen(rptFileFmt,
-                                     ref saveFilename,
-                                     ref stream,
-                                     ref writer);
-
+            bool OK = ReportCore.DocOpen(rptFileFmt,
+                         ref saveFilename,
+                         ref stream,
+                         ref writer);
             if (OK)
             {
                 ReportCore.DocInitialise(rptFileFmt, writer, true, false,

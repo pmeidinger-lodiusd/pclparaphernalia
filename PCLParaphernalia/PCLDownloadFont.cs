@@ -253,7 +253,6 @@ namespace PCLParaphernalia
             ref ushort symSetNo,
             ref PCLSymSetTypes.Index symSetType)
         {
-            bool OK = true;
             ushort hddrLen = 0;
 
             int fileOffset = 0;
@@ -270,6 +269,7 @@ namespace PCLParaphernalia
 
             bool fileOpen = FontFileOpen(fontFilename, ref fontFileSize);
 
+            bool OK;
             if (!fileOpen)
             {
                 OK = false;

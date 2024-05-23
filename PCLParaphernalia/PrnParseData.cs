@@ -346,12 +346,8 @@ namespace PCLParaphernalia
             PrnParseConstants.OptOffsetFormats indxOffsetFormat,
             int level)
         {
-            bool foundTerm = true;
-
             byte c1,
                  c2;
-
-            string showChar = string.Empty;
             string line;
 
             int len,
@@ -374,8 +370,6 @@ namespace PCLParaphernalia
             bool pageMarked = false;
 
             PrnParseConstants.OvlAct makeOvlAct;
-            PrnParseConstants.OvlShow crntOvlShow;
-
             string descCC = string.Empty;
             string mnemonicCC = string.Empty;
 
@@ -386,11 +380,9 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             makeOvlAct = PrnParseConstants.OvlAct.None;
-            crntOvlShow = makeOvlShow;
-
             foundEsc = false;
             foundLF = false;
-            foundTerm = false;
+            bool foundTerm = false;
             firstChar = true;
             continuation = false;
             contLine = false;
@@ -486,6 +478,8 @@ namespace PCLParaphernalia
                 if (multiByteChar || utf8Char)
                     multiByteData = true;
 
+
+                string showChar;
                 //------------------------------------------------------------//
                 //                                                            //
                 // Now check the character, or characters, depending on the   //
@@ -1224,10 +1218,7 @@ namespace PCLParaphernalia
             StringBuilder seq = new StringBuilder();
 
             byte crntByte;
-
             int hexPtr,
-                  hexStart = 0,
-                  hexEnd = 0,
                   sub;
 
             bool useEllipsis;
@@ -1235,7 +1226,8 @@ namespace PCLParaphernalia
             char[] hexBuf = new char[(_decodeSliceMax * 2) + 1];
 
             useEllipsis = false;
-
+            int hexStart;
+            int hexEnd;
             //-----------------------------------------------------------------//
             //                                                                 //
             // Convert first few characters of slice.                          //

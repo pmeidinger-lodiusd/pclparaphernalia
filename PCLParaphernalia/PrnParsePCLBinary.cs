@@ -613,7 +613,6 @@ namespace PCLParaphernalia
                 //------------------------------------------------------------//
 
                 int lenKey = -1,
-                      lenVal = -1,
                       dataStart;
 
                 bool dummyBool = false;
@@ -681,6 +680,7 @@ namespace PCLParaphernalia
                     }
                 }
 
+                int lenVal;
                 if (lenKey > 0)
                 {
                     lenVal = binDataRem - lenKey - 1;
@@ -1971,9 +1971,6 @@ namespace PCLParaphernalia
             else
             {
                 ushort uint16Val;
-
-                offset++;
-
                 switch (itemCt)
                 {
                     case 1:
@@ -2207,9 +2204,6 @@ namespace PCLParaphernalia
             else
             {
                 ushort uint16Val;
-
-                offset++;
-
                 switch (itemCt)
                 {
                     case 1:
@@ -3105,7 +3099,6 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                offset++;
 
                 PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
@@ -4230,8 +4223,6 @@ namespace PCLParaphernalia
 
                 if (binDataRem > 0)
                 {
-                    offset = bufOffset;
-
                     if (mapLen != mapLenCalc)
                     {
                         PrnParseCommon.AddTextRow(
@@ -4924,7 +4915,6 @@ namespace PCLParaphernalia
 
             matrixRem = linkData.EntryRem;
 
-            offset = bufOffset;
 
             //----------------------------------------------------------------//
 
@@ -5568,8 +5558,6 @@ namespace PCLParaphernalia
 
                 if (binDataRem > 0)
                 {
-                    offset = bufOffset;
-
                     tripletCt = binDataRem / 3;
 
                     if (binDataRem - (tripletCt * 3) != 0)
@@ -5657,7 +5645,6 @@ namespace PCLParaphernalia
 
             options.GetOptCharSet(ref indxCharSetName, ref indxCharSetSubAct, ref valCharSetSubCode);
 
-            offset = bufOffset;
 
             //----------------------------------------------------------------//
 
@@ -5772,15 +5759,13 @@ namespace PCLParaphernalia
 
             PrnParseConstants.ContType contType;
 
-            bool dataOK = true;
-
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
             //                                                                //
             //----------------------------------------------------------------//
 
-            dataOK = true;
+            bool dataOK = true;
 
             if ((binDataLen < lenMin) || (binDataLen > lenMax))
             {
@@ -6132,7 +6117,6 @@ namespace PCLParaphernalia
             PrnParseOptions options,
             DataTable table)
         {
-            int lenMin = 6;
             const int lenMax = 32767;
 
             PrnParseConstants.ContType contType;
@@ -6141,6 +6125,7 @@ namespace PCLParaphernalia
 
             bool dataOK;
 
+            int lenMin;
             //----------------------------------------------------------------//
             //                                                                //
             // Initialise.                                                    //
@@ -6585,7 +6570,6 @@ namespace PCLParaphernalia
 
             indxOffsetFormat = options.IndxGenOffsetFormat;
 
-            offset = bufOffset;
 
             //----------------------------------------------------------------//
 

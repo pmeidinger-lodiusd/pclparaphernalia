@@ -224,8 +224,6 @@ namespace PCLParaphernalia
 
         public static void DisplayStatsCounts(DataTable table, bool incUsedSeqsOnly, bool excUnusedObsSeqs)
         {
-            int count = 0;
-
             bool displaySeq,
                     hddrWritten;
 
@@ -237,8 +235,7 @@ namespace PCLParaphernalia
 
             displaySeq = true;
 
-            count = _seqUnknown.StatsCtTotal;
-
+            int count = _seqUnknown.StatsCtTotal;
             if (count == 0)
                 displaySeq = false;
 
@@ -1288,8 +1285,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.JobControl,
                                    "Underware Function Configuration (data length = #)"));
-
-            root = "&kE";
             iChar = 0x26;   // & //
             gChar = 0x6b;   // k //
             tChar = 0x45;   // E //
@@ -1323,8 +1318,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.FontSelection,
                                    "UnderLine Enhancement: Modal"));
-
-            root = "&kF";
             iChar = 0x26;   // & //
             gChar = 0x6b;   // k //
             tChar = 0x46;   // F //
@@ -1426,8 +1419,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.PageControl,
                                    "Horizontal Motion Index (#/120 inches)"));
-
-            root = "&kI";
             iChar = 0x26;   // & //
             gChar = 0x6b;   // k //
             tChar = 0x49;   // I //
@@ -1884,8 +1875,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.PageChange,
                                    PrnParseConstants.SeqGrp.PageControl,
                                    "Paper Source: Automatic Selection"));
-
-            root = "&lJ";
             iChar = 0x26;   // & //
             gChar = 0x6c;   // l //
             tChar = 0x4a;   // J //
@@ -2032,8 +2021,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.PageChange,
                                    PrnParseConstants.SeqGrp.PageControl,
                                    "Media Type: Transparency Film"));
-
-            root = "&lO";
             iChar = 0x26;   // & //
             gChar = 0x6c;   // l //
             tChar = 0x4f;   // O //
@@ -2365,8 +2352,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.Colour,
                                    "Select Palette (identifier = #)"));
-
-            root = "&pW";
             iChar = 0x26;   // & //
             gChar = 0x70;   // p //
             tChar = 0x57;   // W //
@@ -2432,8 +2417,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.PageChange,
                                    PrnParseConstants.SeqGrp.PageControl,
                                    "Flush: All Pages"));
-
-            root = "&sC";
             iChar = 0x26;   // & //
             gChar = 0x73;   // s //
             tChar = 0x43;   // C //
@@ -2467,8 +2450,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.CursorPositioning,
                                    "End-of-Line Wrap: Disable"));
-
-            root = "&sI";
             iChar = 0x26;   // & //
             gChar = 0x73;   // s //
             tChar = 0x49;   // I //
@@ -2502,8 +2483,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.FontSelection,
                                    "Character Set Default Control: Ignore"));
-
-            root = "&tP";
             iChar = 0x26;   // & //
             gChar = 0x74;   // t //
             tChar = 0x50;   // P //
@@ -2543,7 +2522,6 @@ namespace PCLParaphernalia
                 }
             }
 
-            root = "&uD";
             iChar = 0x26;   // & //
             gChar = 0x75;   // u //
             tChar = 0x44;   // D //
@@ -2793,8 +2771,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.JobControl,
                                    "Unit-of-Measure (7200 PCL units per inch)"));
-
-            root = "&vS";
             iChar = 0x26;   // & //
             gChar = 0x76;   // v //
             tChar = 0x53;   // S //
@@ -4519,8 +4495,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Stroke Weight: Ultra Black"));
-
-            root = ")sH";
             iChar = 0x29;   // ) //
             gChar = 0x73;   // s //
             tChar = 0x48;   // H //
@@ -4536,8 +4510,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Pitch (# characters per inch)"));
-
-            root = ")sP";
             iChar = 0x29;   // ) //
             gChar = 0x73;   // s //
             tChar = 0x50;   // P //
@@ -4571,8 +4543,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Spacing: Proportional"));
-
-            root = ")sQ";
             iChar = 0x29;   // ) //
             gChar = 0x73;   // s //
             tChar = 0x51;   // Q //
@@ -4615,8 +4585,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Quality: Letter"));
-
-            root = ")sS";
             iChar = 0x29;   // ) //
             gChar = 0x73;   // s //
             tChar = 0x53;   // S //
@@ -4722,8 +4690,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Style (Outline Shadowed)"));
-
-            root = ")sT";
             iChar = 0x29;   // ) //
             gChar = 0x73;   // s //
             tChar = 0x54;   // T //
@@ -4741,8 +4707,6 @@ namespace PCLParaphernalia
                                    "Secondary Font: Typeface (identifier = #)"));
 
             PopulateTableAddFonts(iChar, gChar, tChar, root);
-
-            root = ")sU";
             iChar = 0x29;   // ) //
             gChar = 0x73;   // s //
             tChar = 0x55;   // U //
@@ -4785,8 +4749,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Placement: Inferior"));
-
-            root = ")sV";
             iChar = 0x29;   // ) //
             gChar = 0x73;   // s //
             tChar = 0x56;   // V //
@@ -4802,8 +4764,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.FontSelection,
                                    "Secondary Font: Height (# points)"));
-
-            root = ")sW";
             iChar = 0x29;   // ) //
             gChar = 0x73;   // s //
             tChar = 0x57;   // W //
@@ -5734,8 +5694,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.Colour,
                                    "Viewing Illuminant (data length = #)"));
-
-            root = "*lO";
             iChar = 0x2a;   // * //
             gChar = 0x6c;   // l //
             tChar = 0x4f;   // O //
@@ -5873,8 +5831,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.Download,
                                    PrnParseConstants.SeqGrp.Colour,
                                    "Colour Lookup Tables (data length = #)"));
-
-            root = "*mW";
             iChar = 0x2a;   // * //
             gChar = 0x6d;   // m //
             tChar = 0x57;   // W //
@@ -5890,8 +5846,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.Download,
                                    PrnParseConstants.SeqGrp.Colour,
                                    "Download Dither Matrix (data length = #)"));
-
-            root = "*oD";
             iChar = 0x2a;   // * //
             gChar = 0x6f;   // o //
             tChar = 0x44;   // D //
@@ -5952,8 +5906,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.Colour,
                                    "Colour Raster Depletion: 50% compensated"));
-
-            root = "*oM";
             iChar = 0x2a;   // * //
             gChar = 0x6f;   // o //
             tChar = 0x4d;   // M //
@@ -6116,8 +6068,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.JobControl,
                                    "Print Mode (Graphics): Conditional"));
-
-            root = "*pP";
             iChar = 0x2a;   // * //
             gChar = 0x70;   // p //
             tChar = 0x50;   // P //
@@ -6335,8 +6285,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Graphics Presentation: Physical"));
-
-            root = "*rL";
             iChar = 0x2a;   // * //
             gChar = 0x72;   // r //
             tChar = 0x4c;   // L //
@@ -6411,8 +6359,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Width: Source (# pixels)"));
-
-            root = "*rT";
             iChar = 0x2a;   // * //
             gChar = 0x72;   // r //
             tChar = 0x54;   // T //
@@ -6428,8 +6374,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.RasterGraphics,
                                    "Raster Height: Source (# raster rows)"));
-
-            root = "*rU";
             iChar = 0x2a;   // * //
             gChar = 0x72;   // r //
             tChar = 0x55;   // U //
@@ -6481,8 +6425,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.Colour,
                                    "Simple Colour: 3-Plane RGB Palette"));
-
-            root = "*rV";
             iChar = 0x2a;   // * //
             gChar = 0x72;   // r //
             tChar = 0x56;   // V //
@@ -6559,8 +6501,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.Remove,
                                    PrnParseConstants.SeqGrp.StatusReadback,
                                    "Status Readback Entity: Font Extended"));
-
-            root = "*sM";
             iChar = 0x2a;   // * //
             gChar = 0x73;   // s //
             tChar = 0x4d;   // M //
@@ -6585,8 +6525,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.Remove,
                                    PrnParseConstants.SeqGrp.StatusReadback,
                                    "Status Readback Free Space"));
-
-            root = "*sT";
             iChar = 0x2a;   // * //
             gChar = 0x73;   // s //
             tChar = 0x54;   // T //
@@ -6792,8 +6730,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.Unknown,
                                    "QMS Magnum-5 Interpreter: Enable"));
-
-            root = "*tG";
             iChar = 0x2a;   // * //
             gChar = 0x74;   // t //
             tChar = 0x47;   // G //
@@ -6845,8 +6781,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.Unknown,
                                    "GPIS Data Binding: Character-Encoded"));
-
-            root = "*tH";
             iChar = 0x2a;   // * //
             gChar = 0x74;   // t //
             tChar = 0x48;   // H //
@@ -7074,8 +7008,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.Colour,
                                    "Render Algorithm: Mono Cont. Tone Basic"));
-
-            root = "*tK";
             iChar = 0x2a;   // * //
             gChar = 0x74;   // t //
             tChar = 0x4b;   // K //
@@ -7109,8 +7041,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.Colour,
                                    "Scale Algorithm: Source/Dark Background"));
-
-            root = "*tM";
             iChar = 0x2a;   // * //
             gChar = 0x74;   // t //
             tChar = 0x4d;   // M //
@@ -7548,8 +7478,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.Colour,
                                    "Configure Image Data (data length = #)"));
-
-            root = "*zC";
             iChar = 0x2a;   // * //
             gChar = 0x7a;   // z //
             tChar = 0x43;   // C //
@@ -7565,8 +7493,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Label Placement (column #)"));
-
-            root = "*zH";
             iChar = 0x2a;   // * //
             gChar = 0x7a;   // z //
             tChar = 0x48;   // H //
@@ -7582,8 +7508,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Label Height (#/10 inches)"));
-
-            root = "*zQ";
             iChar = 0x2a;   // * //
             gChar = 0x7a;   // z //
             tChar = 0x51;   // Q //
@@ -7626,8 +7550,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Header Control: Print Below"));
-
-            root = "*zR";
             iChar = 0x2a;   // * //
             gChar = 0x7a;   // z //
             tChar = 0x52;   // R //
@@ -7643,8 +7565,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Wide Bar Width (# dots)"));
-
-            root = "*zS";
             iChar = 0x2a;   // * //
             gChar = 0x7a;   // z //
             tChar = 0x53;   // S //
@@ -7660,8 +7580,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Narrow Bar Width (# dots)"));
-
-            root = "*zT";
             iChar = 0x2a;   // * //
             gChar = 0x7a;   // z //
             tChar = 0x54;   // T //
@@ -7677,8 +7595,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Wide Space Width (# dots)"));
-
-            root = "*zU";
             iChar = 0x2a;   // * //
             gChar = 0x7a;   // z //
             tChar = 0x55;   // U //
@@ -7694,8 +7610,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.None,
                                    PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Narrow Space Width (# dots)"));
-
-            root = "*zV";
             iChar = 0x2a;   // * //
             gChar = 0x7a;   // z //
             tChar = 0x56;   // V //
@@ -7896,9 +7810,6 @@ namespace PCLParaphernalia
 
                 int value;
                 ushort typeface = 0;
-
-                bool presetFont = false;
-
                 if (iChar == 0x28)
                     type = "Primary";
                 else
@@ -7906,8 +7817,7 @@ namespace PCLParaphernalia
 
                 for (int i = 0; i < ctFonts; i++)
                 {
-                    presetFont = PCLFonts.GetPresetFontData(i, ref typeface, ref fontName);
-
+                    bool presetFont = PCLFonts.GetPresetFontData(i, ref typeface, ref fontName);
                     if (presetFont)
                     {
                         value = typeface;
@@ -7992,14 +7902,9 @@ namespace PCLParaphernalia
                 ushort idNum = 0;
 
                 string name = string.Empty;
-                string id = string.Empty;
-
-                bool matchFound = false;
-
                 for (int i = 0; i < ctSymsets; i++)
                 {
-                    matchFound = PCLSymbolSets.GetSymsetDataForIdAlpha(i, tChar, ref kind1, ref idNum, ref name);
-
+                    bool matchFound = PCLSymbolSets.GetSymsetDataForIdAlpha(i, tChar, ref kind1, ref idNum, ref name);
                     if (matchFound)
                     {
                         string type;
@@ -8011,8 +7916,7 @@ namespace PCLParaphernalia
                         else
                             type = "Secondary";
 
-                        id = PCLSymbolSets.TranslateKind1ToId(kind1);
-
+                        string id = PCLSymbolSets.TranslateKind1ToId(kind1);
                         _seqs.Add(root + ":" + value.ToString("X4"),
                              new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
                                                flagNilGChar, flagNone, flagNone,

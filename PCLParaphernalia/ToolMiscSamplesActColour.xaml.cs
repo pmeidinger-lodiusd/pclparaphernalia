@@ -698,7 +698,6 @@ namespace PCLParaphernalia
                                              ref int planeNo,
                                              ref int planeSig)
         {
-            bool flagOK = true;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -714,10 +713,10 @@ namespace PCLParaphernalia
 
             string txtBoxName = source.Name;
 
-            flagOK = ushort.TryParse(txtBoxName.Substring(nameRootLen, 2),
-                                      NumberStyles.Integer,
-                                      CultureInfo.InvariantCulture,
-                                      out ushort mapIndx);
+            bool flagOK = ushort.TryParse(txtBoxName.Substring(nameRootLen, 2),
+                          NumberStyles.Integer,
+                          CultureInfo.InvariantCulture,
+                          out ushort mapIndx);
 
             if (flagOK)
             {
@@ -926,12 +925,11 @@ namespace PCLParaphernalia
                                           bool hexFormat,
                                           ref int[] sampleDef)
         {
-            bool OK = true;
-
             byte value;
 
             string txtNewVal = source.Text;
 
+            bool OK;
             if (hexFormat)
                 OK = byte.TryParse(txtNewVal, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out value);
             else

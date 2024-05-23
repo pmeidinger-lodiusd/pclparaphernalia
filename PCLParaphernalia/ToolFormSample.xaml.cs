@@ -2176,9 +2176,6 @@ namespace PCLParaphernalia
             const ushort minVal = 0;
             const ushort maxVal = 32767;
             ushort defVal;
-
-            bool OK = true;
-
             string crntText;
             string side;
 
@@ -2195,8 +2192,7 @@ namespace PCLParaphernalia
                 crntText = txtPCLMacroIdMain.Text;
             }
 
-            OK = ushort.TryParse(crntText, out ushort value);
-
+            bool OK = ushort.TryParse(crntText, out ushort value);
             if (OK)
             {
                 if ((value < minVal) || (value > maxVal))
@@ -2349,13 +2345,9 @@ namespace PCLParaphernalia
             const ushort minVal = 1;
             const ushort maxVal = 20;
             const ushort defVal = _defaultPageCount;
-
-            bool OK = true;
-
             string crntText = txtPCLTestPageCount.Text;
 
-            OK = ushort.TryParse(crntText, out ushort value);
-
+            bool OK = ushort.TryParse(crntText, out ushort value);
             if (OK)
             {
                 if ((value < minVal) || (value > maxVal))
@@ -2413,9 +2405,6 @@ namespace PCLParaphernalia
             string defVal;
             string crntText;
             string side;
-
-            int len = 0;
-
             bool OK = true;
 
             if (rearForm)
@@ -2431,8 +2420,7 @@ namespace PCLParaphernalia
                 crntText = txtPCLXLFormNameMain.Text;
             }
 
-            len = crntText.Length;
-
+            int len = crntText.Length;
             if (crntText?.Length == 0)
             {
                 OK = false;
@@ -2573,13 +2561,9 @@ namespace PCLParaphernalia
             const ushort minVal = 1;
             const ushort maxVal = 20;
             const ushort defVal = _defaultPageCount;
-
-            bool OK = true;
-
             string crntText = txtPCLXLTestPageCount.Text;
 
-            OK = ushort.TryParse(crntText, out ushort value);
-
+            bool OK = ushort.TryParse(crntText, out ushort value);
             if (OK)
             {
                 if ((value < minVal) || (value > maxVal))

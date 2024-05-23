@@ -97,7 +97,6 @@ namespace PCLParaphernalia
 
             _analysisLevel = _linkData.AnalysisLevel;
 
-            seqInvalid = false;
 
             //----------------------------------------------------------------//
 
@@ -202,16 +201,11 @@ namespace PCLParaphernalia
             ref bool endReached)
         {
             long startPos;
-
-            PrnParseConstants.ContType contType = PrnParseConstants.ContType.None;
-
-            bool continuation = false;
             bool langSwitch = false;
-            bool badSeq = false;
             bool invalidSeqFound = false;
             bool dummyBool = false;
 
-            continuation = false;
+            bool continuation = false;
             startPos = _fileOffset + bufOffset;
 
             while (!continuation && !langSwitch &&
@@ -286,8 +280,7 @@ namespace PCLParaphernalia
 
                         continuation = true;
 
-                        contType = PrnParseConstants.ContType.PJL;
-
+                        PrnParseConstants.ContType contType = PrnParseConstants.ContType.PJL;
                         _linkData.SetBacktrack(contType, -bufRem);
                     }
                     else if (_ascii.GetString(_buf, bufOffset, _lenPJLIntro) != "@PJL")
@@ -342,7 +335,7 @@ namespace PCLParaphernalia
                         //                                                             //
                         //-------------------------------------------------------------//
 
-                        badSeq = ProcessPJLCommand(ref bufRem, ref bufOffset, ref continuation, ref langSwitch, ref crntPDL);
+                        bool badSeq = ProcessPJLCommand(ref bufRem, ref bufOffset, ref continuation, ref langSwitch, ref crntPDL);
 
                         if (badSeq)
                             invalidSeqFound = true;
@@ -409,20 +402,16 @@ namespace PCLParaphernalia
             ref bool langSwitch,
             ref ToolCommonData.PrintLang crntPDL)
         {
-            PrnParseConstants.ContType contType = PrnParseConstants.ContType.None;
-
             byte crntByte;
 
             char crntChar,
                  normChar;
-
             int len,
                   cmdLen,
                   cmdRem,
                   langLen,
                   offset,
-                  lineStart,
-                  seqLen = 0;
+                  lineStart;
 
             int quoteStart = 0,
                   quoteEnd = 0;
@@ -433,7 +422,6 @@ namespace PCLParaphernalia
                     firstLine;
 
             bool foundStartQuote;
-            bool seqKnown = false;
             bool noWhitespace = false;
 
             string lang,
@@ -454,16 +442,8 @@ namespace PCLParaphernalia
 
             invalidSeqFound = false;
             foundStartQuote = false;
-            foundTerm = false;
             firstLine = true;
             langSwitch = false;
-
-            lineStart = bufOffset;
-            foundTerm = false;
-
-            len = bufRem;
-            offset = bufOffset;
-
             continuation = false;
             foundTerm = false;
 
@@ -523,8 +503,7 @@ namespace PCLParaphernalia
 
                 continuation = true;
 
-                contType = PrnParseConstants.ContType.PJL;
-
+                PrnParseConstants.ContType contType = PrnParseConstants.ContType.PJL;
                 _linkData.SetBacktrack(contType, -bufRem);
             }
             else
@@ -648,6 +627,7 @@ namespace PCLParaphernalia
 
                 commandName = cmd.ToString();
 
+                bool seqKnown;
                 if (commandName?.Length == 0)
                 {
                     seqKnown = PJLCommands.CheckCmd(PJLCommands.nullCmdKey, ref desc, _analysisLevel);
@@ -798,14 +778,14 @@ namespace PCLParaphernalia
                 //--------------------------------------------------------//
 
                 commandParams = seq.ToString();
-
+                int seqLen;
                 if ((commandName.Length == 5)
-                            &&
-                    (commandName.Substring(0, 5) == "ENTER")
-        &&
-                    (commandParams.Length > 9)
-                            &&
-                    (commandParams.Substring(0, 9) == "LANGUAGE="))
+                                            &&
+                                    (commandName.Substring(0, 5) == "ENTER")
+                        &&
+                                    (commandParams.Length > 9)
+                                            &&
+                                    (commandParams.Substring(0, 9) == "LANGUAGE="))
                 {
                     //--------------------------------------------------------//
                     //                                                        //

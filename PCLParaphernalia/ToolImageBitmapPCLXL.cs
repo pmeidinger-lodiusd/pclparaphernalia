@@ -120,9 +120,7 @@ namespace PCLParaphernalia
             byte[] bufStd = new byte[sizeStd];
 
             int indStd = 0;
-
-            bool firstBlock = true,
-                    indexed = true;
+            bool firstBlock = true;
 
             int bytesPerRow,
                   padBytes;
@@ -132,7 +130,7 @@ namespace PCLParaphernalia
                   imageRowMult,
                   imageBlockHeight,
                   imageBlockSize;
-
+            bool indexed;
             //------------------------------------------------------------//
 
             if (srcBitsPerPixel == 1)
@@ -276,10 +274,6 @@ namespace PCLParaphernalia
             byte[] bufStd = new byte[sizeStd];
 
             int indStd = 0;
-
-            int destWidth = 0,
-                  destHeight = 0;
-
             uint paletteEntries = 0,
                    paletteSize = 0;
 
@@ -303,10 +297,10 @@ namespace PCLParaphernalia
             else
                 srcResY = (int)(srcResY / 39.37);
 
-            destWidth = srcWidth * PCLXLWriter._sessionUPI / srcResX *
-                          (destScalePercentX / 100);
-            destHeight = srcHeight * PCLXLWriter._sessionUPI / srcResY *
-                          (destScalePercentY / 100);
+            int destWidth = srcWidth * PCLXLWriter._sessionUPI / srcResX *
+              (destScalePercentX / 100);
+            int destHeight = srcHeight * PCLXLWriter._sessionUPI / srcResY *
+              (destScalePercentY / 100);
 
             //----------------------------------------------------------------//
             //                                                                //

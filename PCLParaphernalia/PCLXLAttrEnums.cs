@@ -189,8 +189,6 @@ namespace PCLParaphernalia
                                           ref bool flagValIsTxt,
                                           ref string desc)
         {
-            bool seqKnown = false;
-
             PCLXLAttrEnum tag;
 
             string key;
@@ -209,6 +207,7 @@ namespace PCLParaphernalia
                   ":" +
                   enumVal.ToString("X8");
 
+            bool seqKnown;
             if (_tags.IndexOfKey(key) != -1)
             {
                 seqKnown = true;

@@ -1402,7 +1402,6 @@ namespace PCLParaphernalia
 
             int startIndxMajor;
             int startRow;
-            int startCol;
             short rowSize;
 
             if (showC0Chars || (sampleRangeOffset != 0))
@@ -1415,8 +1414,6 @@ namespace PCLParaphernalia
             if (optGridVertical)
             {
                 startRow = 0;
-                startCol = startIndxMajor;
-
                 rowSize = (short)(_gridDim - startIndxMajor);
 
                 posX = (short)(_marginX + (_cellWidth * (startIndxMajor + 1)) + (_cellWidth / 3));
@@ -1425,8 +1422,6 @@ namespace PCLParaphernalia
             else
             {
                 startRow = startIndxMajor;
-                startCol = 0;
-
                 rowSize = _gridDim;
 
                 posX = _marginX + _cellWidth + (_cellWidth / 3);

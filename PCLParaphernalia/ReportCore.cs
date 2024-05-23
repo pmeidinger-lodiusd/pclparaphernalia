@@ -70,30 +70,23 @@ namespace PCLParaphernalia
             {
                 HtmlTextWriter htmlWriter = (HtmlTextWriter)writer;
                 htmlWriter.Close();
-                writer = null;
-
                 StreamWriter htmlStream = (StreamWriter)stream;
 
                 htmlStream.Close();
-                stream = null;
             }
             else if (rptFileFmt == RptFileFmt.xml)
             {
                 XmlWriter xmlWriter = (XmlWriter)writer;
                 xmlWriter.Close();
-                writer = null;
-
                 StreamWriter xmlStream = (StreamWriter)stream;
 
                 xmlStream.Close();
-                stream = null;
             }
             else
             {
                 StreamWriter txtWriter = (StreamWriter)writer;
 
                 txtWriter.Close();
-                writer = null;
             }
         }
 

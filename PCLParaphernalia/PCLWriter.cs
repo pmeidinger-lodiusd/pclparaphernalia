@@ -1036,17 +1036,13 @@ namespace PCLParaphernalia
             int headerLen,
                   patternLen,
                   dataLen;
-
-            string seq = string.Empty;
-
             headerLen = header.Length;
             patternLen = pattern.Length;
             dataLen = headerLen + patternLen;
 
-            seq = "\x1b" + "*c" +
-                  patternID + "g" +    // Pattern ID
-                  dataLen + "W";
-
+            string seq = "\x1b" + "*c" +
+      patternID + "g" +    // Pattern ID
+      dataLen + "W";
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
 
             prnWriter.Write(header, 0, headerLen);
@@ -1065,12 +1061,9 @@ namespace PCLParaphernalia
 
         public static void PatternDelete(BinaryWriter prnWriter, short patternID)
         {
-            string seq = string.Empty;
-
-            seq = "\x1b" + "*c" +
-                  patternID + "g" +    // Pattern ID
-                  "2Q";                // Pattern Delete
-
+            string seq = "\x1b" + "*c" +
+      patternID + "g" +    // Pattern ID
+      "2Q";
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
 
@@ -1128,8 +1121,7 @@ namespace PCLParaphernalia
 
         public static void PatternTransparency(BinaryWriter prnWriter, bool opaque)
         {
-            string seq = string.Empty;
-
+            string seq;
             if (opaque)
             {
                 seq = "\x1b" + "*v1O";
@@ -1277,10 +1269,6 @@ namespace PCLParaphernalia
                                        int compressionMode)
         {
             string seq;
-
-            int destWidth = 0,
-                  destHeight = 0;
-
             seq = "\x1b" + "*r0f" +             // Raster Presentation: Logical
                            srcWidth + "s" +     // Source Width
                            srcHeight + "T";     // Source Height
@@ -1311,11 +1299,10 @@ namespace PCLParaphernalia
                 else
                     srcResY = (int)(srcResY / 39.37);
 
-                destWidth = srcWidth * 720 / srcResX *
-                              (destScalePercentX / 100);
-                destHeight = srcHeight * 720 / srcResY *
-                              (destScalePercentY / 100);
-
+                int destWidth = srcWidth * 720 / srcResX *
+                  (destScalePercentX / 100);
+                int destHeight = srcHeight * 720 / srcResY *
+                  (destScalePercentY / 100);
                 seq = "\x1b" + "*t" +
                                destWidth +
                                "h" +            // Raster Width: Destinatation
@@ -1799,8 +1786,7 @@ namespace PCLParaphernalia
 
         public static void SourceTransparency(BinaryWriter prnWriter, bool opaque)
         {
-            string seq = string.Empty;
-
+            string seq;
             if (opaque)
             {
                 seq = "\x1b" + "*v1N";

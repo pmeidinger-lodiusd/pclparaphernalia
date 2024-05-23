@@ -138,16 +138,6 @@ namespace PCLParaphernalia
                                        bool flagSrcTextPat)
         {
             bool flagOptColour;
-
-            int rgbClrD1 = 0,
-                  rgbClrD2 = 0,
-                  rgbClrS1 = 0,
-                  rgbClrS2 = 0,
-                  rgbClrT1 = 0,
-                  rgbClrT2 = 0,
-                  rgbClrBlack = 0,
-                  rgbClrWhite = 0;
-
             byte idClrS1,
                  idClrS2,
                  idClrT1,
@@ -169,9 +159,14 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            rgbClrBlack = PCLXLPalettes.GetColourRGB(indxPalette, PCLXLPalettes.GetClrItemBlack(indxPalette));
-            rgbClrWhite = PCLXLPalettes.GetColourRGB(indxPalette, PCLXLPalettes.GetClrItemWhite(indxPalette));
-
+            int rgbClrBlack = PCLXLPalettes.GetColourRGB(indxPalette, PCLXLPalettes.GetClrItemBlack(indxPalette));
+            int rgbClrWhite = PCLXLPalettes.GetColourRGB(indxPalette, PCLXLPalettes.GetClrItemWhite(indxPalette));
+            int rgbClrD1;
+            int rgbClrD2;
+            int rgbClrS1;
+            int rgbClrS2;
+            int rgbClrT1;
+            int rgbClrT2;
             if (PCLXLPalettes.IsMonochrome(indxPalette))
             {
                 flagOptColour = false;
@@ -1440,10 +1435,6 @@ namespace PCLParaphernalia
             byte[] buffer = new byte[lenBuf];
 
             int indBuf;
-
-            ushort posX = 0;
-            ushort posY = 0;
-
             indBuf = 0;
 
             //----------------------------------------------------------------//
@@ -1492,9 +1483,8 @@ namespace PCLParaphernalia
             PCLXLWriter.WriteStreamBlock(prnWriter, flagUseMacros,
                                    buffer, ref indBuf);
 
-            posX = 0; // relative to current origin
-            posY = 0; // relative to current origin
-
+            ushort posX = 0;
+            ushort posY = 0;
             PCLXLWriter.Rectangle(prnWriter, flagUseMacros, posX, posY, halfBox, halfBox);
 
             posX += halfBox;
@@ -1579,10 +1569,6 @@ namespace PCLParaphernalia
             byte[] buffer = new byte[lenBuf];
 
             int indBuf;
-
-            short posX = 0;
-            short posY = 0;
-
             indBuf = 0;
 
             //----------------------------------------------------------------//
@@ -1602,9 +1588,8 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            posX = _posXPage_n_Hddr;
-            posY = _posYPage_n_Hddr;
-
+            short posX = _posXPage_n_Hddr;
+            short posY = _posYPage_n_Hddr;
             PCLXLWriter.AddOperator(ref buffer, ref indBuf,
                                     PCLXLOperators.Tag.PushGS);
 
@@ -1707,10 +1692,6 @@ namespace PCLParaphernalia
             byte[] buffer = new byte[lenBuf];
 
             int indBuf;
-
-            short posX = 0;
-            short posY = 0;
-
             indBuf = 0;
 
             //----------------------------------------------------------------//
@@ -1719,9 +1700,8 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            posX = _colInc;
-            posY = 0;
-
+            short posX = _colInc;
+            short posY = 0;
             for (int i = 0; i < 4; i++)
             {
                 WriteDestBox(prnWriter, rgbClrD1, rgbClrD2, rgbClrBlack,
@@ -1753,9 +1733,6 @@ namespace PCLParaphernalia
         {
             short ptSize;
 
-            short posX = 0;
-            short posY = 0;
-
             //----------------------------------------------------------------//
             //                                                                //
             // Main headings.                                                 //
@@ -1768,8 +1745,8 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            posX = 0;   // relative to current origin
-            posY = 0;   // relative to current origin
+            short posX = 0;
+            short posY = 0;
 
             PCLXLWriter.Text(prnWriter, flagUseMacros, false,
                        PCLXLWriter.advances_ArialRegular, ptSize,
@@ -1867,11 +1844,7 @@ namespace PCLParaphernalia
                 0x00, 0x07,     //     14
                 0x80, 0x03      //     15
             };
-
-            ushort startLine = 0;
             ushort blockHeight;
-
-            int blockSize = 0;
             int bitsPerPixel;
 
             //----------------------------------------------------------------//
@@ -1920,12 +1893,12 @@ namespace PCLParaphernalia
 
             //------------------------------------------------------------//
 
-            startLine = 0;
+            ushort startLine = 0;
 
             byte[] block;
 
             blockHeight = rowCt;
-            blockSize = rowBytes * bitsPerPixel * rowCt;
+            int blockSize = rowBytes * bitsPerPixel * rowCt;
             block = new byte[blockSize];
 
             for (int row = 0; row < rowCt; row++)
@@ -2057,11 +2030,7 @@ namespace PCLParaphernalia
 
             const ushort destWidth = (colCt * 8 * _unitsPerInch) / 600;
             const ushort destHeight = (rowCt * 8 * _unitsPerInch) / 600;
-
-            ushort startLine = 0;
             ushort blockHeight;
-
-            int blockSize = 0;
             int bitsPerPixel;
 
             short rowCtCrnt;
@@ -2121,7 +2090,7 @@ namespace PCLParaphernalia
 
             //------------------------------------------------------------//
 
-            startLine = 0;
+            ushort startLine = 0;
 
             for (int blockNo = 0; blockNo < blockCt; blockNo++)
             {
@@ -2167,7 +2136,7 @@ namespace PCLParaphernalia
                 maskLen = maskRowCrnt.Length;
                 blockHeight = (ushort)rowCtCrnt;
 
-                blockSize = maskLen * bitsPerPixel * blockHeight;
+                int blockSize = maskLen * bitsPerPixel * blockHeight;
                 block = new byte[blockSize];
 
                 for (int row = 0; row < rowCtCrnt; row++)
@@ -2481,9 +2450,6 @@ namespace PCLParaphernalia
 
             int indBuf;
             short ptSize;
-
-            short posX = 0;
-
             indBuf = 0;
 
             PCLXLWriter.AddOperator(ref buffer,
@@ -2588,10 +2554,9 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            posX = PCLXLWriter.TextAdvance(PCLXLWriter.advances_ArialRegular,
+            short posX = PCLXLWriter.TextAdvance(PCLXLWriter.advances_ArialRegular,
                                             ptSize,
                                             "O");
-
             PCLXLWriter.Text(prnWriter, flagUseMacros, true,
                               PCLXLWriter.advances_ArialRegular, ptSize,
                               (short)(-posX), (_destBoxSide * 5) / 8,

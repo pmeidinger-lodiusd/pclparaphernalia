@@ -244,8 +244,7 @@ namespace PCLParaphernalia
 
         public bool GetPCLFontIdData(ref ushort typeface, ref string fontName)
         {
-            bool presetFont = false;
-
+            bool presetFont;
             if ((Type == PCLFonts.FontType.PresetTypeface) || (Type == PCLFonts.FontType.PresetFamily))
             {
                 presetFont = true;

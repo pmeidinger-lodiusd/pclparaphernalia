@@ -145,7 +145,6 @@ namespace PCLParaphernalia
             }
             else
             {
-                contType = PrnParseConstants.ContType.None;
                 _linkData.ResetContData();
             }
 
@@ -308,7 +307,6 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    contType = PrnParseConstants.ContType.None;
                     _linkData.ResetContData();
 
                     binDataLen = _charRem;
@@ -967,7 +965,6 @@ namespace PCLParaphernalia
             }
             else
             {
-                contType = PrnParseConstants.ContType.None;
                 _linkData.ResetContData();
 
                 binDataLen = _charRem;
@@ -1062,7 +1059,6 @@ namespace PCLParaphernalia
             }
             else
             {
-                contType = PrnParseConstants.ContType.None;
                 _linkData.ResetContData();
 
                 binDataLen = _charRem;
@@ -1152,7 +1148,6 @@ namespace PCLParaphernalia
             }
             else
             {
-                contType = PrnParseConstants.ContType.None;
                 _linkData.ResetContData();
 
                 binDataLen = _charRem;

@@ -565,8 +565,6 @@ namespace PCLParaphernalia
         {
             UTF8Result result;
             int seqPos;
-            int utf8SeqLen = 0;
-
             byte[] utf8Seq = new byte[4];
 
             uint codepoint;
@@ -589,6 +587,7 @@ namespace PCLParaphernalia
                 return UTF8Result.surrogateCodepointUTF32;
             }
 
+            int utf8SeqLen;
             //----------------------------------------------------------------//
             //                                                                //
             // Calculate how many bytes the result will require.              //

@@ -122,8 +122,6 @@ namespace PCLParaphernalia
 
         public static void DisplayStatsCounts(DataTable table, bool incUsedSeqsOnly, bool excUnusedObsSeqs)
         {
-            int count = 0;
-
             bool displaySeq,
                     hddrWritten;
 
@@ -135,8 +133,7 @@ namespace PCLParaphernalia
 
             displaySeq = true;
 
-            count = _seqUnknown.StatsCtTotal;
-
+            int count = _seqUnknown.StatsCtTotal;
             if (count == 0)
                 displaySeq = false;
 

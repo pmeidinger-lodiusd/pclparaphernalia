@@ -49,12 +49,7 @@ namespace PCLParaphernalia
         {
             object stream = null;
             object writer = null;
-
-            bool OK = false;
-
             string fileExt;
-            string saveFilename = null;
-
             if (rptFileFmt == ReportCore.RptFileFmt.html)
                 fileExt = "html";
             else if (rptFileFmt == ReportCore.RptFileFmt.xml)
@@ -62,10 +57,8 @@ namespace PCLParaphernalia
             else
                 fileExt = "txt";
 
-            saveFilename = ovlFilename + "_report." + fileExt;
-
-            OK = ReportCore.DocOpen(rptFileFmt, ref saveFilename, ref stream, ref writer);
-
+            string saveFilename = ovlFilename + "_report." + fileExt;
+            bool OK = ReportCore.DocOpen(rptFileFmt, ref saveFilename, ref stream, ref writer);
             if (OK)
             {
                 int ctClrMapRowTypes = PrnParseRowTypes.GetCount();
@@ -249,18 +242,13 @@ namespace PCLParaphernalia
             string prnFilename,
             string ovlFilename)
         {
-            int maxLineLen = 0;
-
-            string title = string.Empty;
-
-            title = "*** Make Overlay report ***:";
-
-            maxLineLen = PrnParseConstants.cRptA_colMax_Action +
-                         PrnParseConstants.cRptA_colMax_Offset +
-                         PrnParseConstants.cRptA_colMax_Type +
-                         PrnParseConstants.cRptA_colMax_Seq +
-                         PrnParseConstants.cRptA_colMax_Desc +
-                         (PrnParseConstants.cColSeparatorLen * 4) - 15;
+            string title = "*** Make Overlay report ***:";
+            int maxLineLen = PrnParseConstants.cRptA_colMax_Action +
+             PrnParseConstants.cRptA_colMax_Offset +
+             PrnParseConstants.cRptA_colMax_Type +
+             PrnParseConstants.cRptA_colMax_Seq +
+             PrnParseConstants.cRptA_colMax_Desc +
+             PrnParseConstants.cColSeparatorLen * 4 - 15;
 
             //----------------------------------------------------------------//
             //                                                                //

@@ -53,16 +53,15 @@ namespace PCLParaphernalia
 
             int bitNo;
             string desc;
-
-            bool itemEnabled = true;
-            bool itemChecked = false;
-
             for (int i = 0; i < collsCt; i++)
             {
                 bitNo = PCLCharCollections.GetBitNo(i);
                 bitType = PCLCharCollections.GetBitType(i);
                 desc = PCLCharCollections.GetDescUnicode(i);
 
+
+                bool itemEnabled;
+                bool itemChecked;
                 if (bitType == PCLCharCollections.BitType.Index_0)
                 {
                     itemEnabled = false;
@@ -119,16 +118,15 @@ namespace PCLParaphernalia
 
             int bitNo;
             string desc;
-
-            bool itemEnabled = true;
-            bool itemChecked = false;
-
             for (int i = 0; i < collsCt; i++)
             {
                 bitNo = PCLCharCollections.GetBitNo(i);
                 bitType = PCLCharCollections.GetBitType(i);
                 desc = PCLCharCollections.GetDescMSL(i);
 
+
+                bool itemEnabled;
+                bool itemChecked;
                 if (bitType == PCLCharCollections.BitType.Collection)
                 {
                     itemEnabled = true;
@@ -175,16 +173,15 @@ namespace PCLParaphernalia
 
             int bitNo;
             string desc;
-
-            bool itemEnabled = true;
-            bool itemChecked = false;
-
             for (int i = 0; i < collsCt; i++)
             {
                 bitNo = PCLCharCollections.GetBitNo(i);
                 bitType = PCLCharCollections.GetBitType(i);
                 desc = PCLCharCollections.GetDescUnicode(i);
 
+
+                bool itemEnabled;
+                bool itemChecked;
                 if (bitType == PCLCharCollections.BitType.Collection)
                 {
                     itemEnabled = true;

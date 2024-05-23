@@ -176,8 +176,6 @@ namespace PCLParaphernalia
         {
             const uint PRINTER_DRIVER_XPS_FLAG = 0x00000002;
             const uint ERROR_INSUFFICIENT_BUFFER = 0x0000007a;
-
-            bool bSuccess = false;
             bool bDriverXPS = false;
 
             IntPtr driverInfo = new IntPtr();
@@ -205,7 +203,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            bSuccess = GetPrinterDriver(hPrinter, string.Empty, 8, driverInfo, 0, out int buf_len);
+            bool bSuccess = GetPrinterDriver(hPrinter, string.Empty, 8, driverInfo, 0, out int buf_len);
 
             if (GetLastError() == ERROR_INSUFFICIENT_BUFFER)
             {
@@ -237,9 +235,6 @@ namespace PCLParaphernalia
         public static int SendData(BinaryReader prnReader, string printerName)
         {
             const int result = 0;
-            int dwError = 0,
-                  dwWritten = 0;
-
             IntPtr hPrinter = new IntPtr(0);
 
             DOCINFOA di = new DOCINFOA();
@@ -306,7 +301,7 @@ namespace PCLParaphernalia
                             pUnmanagedBytes = Marshal.AllocCoTaskMem(readLen);
 
                             Marshal.Copy(prnData, 0, pUnmanagedBytes, readLen);
-
+                            int dwWritten;
                             //------------------------------------------------//
                             //                                                //
                             // Send the unmanaged bytes to the printer.       //
@@ -363,7 +358,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                dwError = Marshal.GetLastWin32Error();
+                int dwError = Marshal.GetLastWin32Error();
             }
 
             return result;

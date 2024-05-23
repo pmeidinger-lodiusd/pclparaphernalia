@@ -133,9 +133,6 @@ namespace PCLParaphernalia
 
         public static bool CheckStreamFile(string filename, ref string streamName)
         {
-            bool fileOpen = false;
-            bool streamNamePresent = false;
-
             long fileSize = 0;
 
             //----------------------------------------------------------------//
@@ -144,8 +141,8 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            fileOpen = StreamFileOpen(filename, ref fileSize);
-
+            bool fileOpen = StreamFileOpen(filename, ref fileSize);
+            bool streamNamePresent;
             if (!fileOpen)
             {
                 streamNamePresent = false;
@@ -200,14 +197,11 @@ namespace PCLParaphernalia
 
         public static bool StreamFileEmbed(BinaryWriter prnWriter, string filename, string streamName, bool encapsulated)
         {
-            bool fileOpen = false;
-
             bool OK = true;
 
             long fileSize = 0;
 
-            fileOpen = StreamFileOpen(filename, ref fileSize);
-
+            bool fileOpen = StreamFileOpen(filename, ref fileSize);
             if (!fileOpen)
             {
                 OK = false;
