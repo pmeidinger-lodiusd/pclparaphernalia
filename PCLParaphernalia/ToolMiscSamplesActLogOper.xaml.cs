@@ -19,9 +19,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static readonly int _logOperROPMin = 0;
-        private static readonly int _logOperROPMax = 255;
-        private static readonly int _logOperROPInc = 8;
+        private const int _logOperROPMin = 0;
+        private const int _logOperROPMax = 255;
+        private const int _logOperROPInc = 8;
 
         private static readonly short[] _subsetLogOperModesPCL =
         {
