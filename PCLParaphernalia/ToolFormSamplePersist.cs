@@ -55,7 +55,7 @@ namespace PCLParaphernalia
         const int _flagTrue = 1;
         const int _indexZero = 0;
 
-        const string _defaultCaptureFile = "Capture_FormSample.prn";
+        //const string _defaultCaptureFile = "Capture_FormSample.prn";
         const string _defaultCaptureFilePCL = "CaptureFile_FormSamplePCL.prn";
         const string _defaultCaptureFilePCLXL = "CaptureFile_FormSamplePCLXL.prn";
         const string _defaultFilePCLMain = "DefaultFilePCLMain.ovl";

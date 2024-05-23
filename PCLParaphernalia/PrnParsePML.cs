@@ -43,7 +43,7 @@ namespace PCLParaphernalia
         private PrnParseConstants.OptCharSets _indxCharSetName;
         private int _valCharSetSubCode;
 
-        private readonly ASCIIEncoding _ascii = new ASCIIEncoding();
+        //private readonly ASCIIEncoding _ascii = new ASCIIEncoding();
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

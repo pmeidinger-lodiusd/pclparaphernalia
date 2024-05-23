@@ -3752,11 +3752,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void ResetPCL()
-        {
-            _textParsingMethod = (int)PCLTextParsingMethods.PCLVal.m0_1_byte_default;
-            _macroLevel = 0;
-        }
+        //private void ResetPCL()
+        //{
+        //    _textParsingMethod = (int)PCLTextParsingMethods.PCLVal.m0_1_byte_default;
+        //    _macroLevel = 0;
+        //}
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

@@ -44,7 +44,7 @@ namespace PCLParaphernalia
         }
 
         const int _cHddrDescLen = 8; // Format 0 header
-        const int _cSegHddrLen = 6; // type (2) + size (4)
+        //const int _cSegHddrLen = 6; // type (2) + size (4)
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

@@ -22,7 +22,7 @@ namespace PCLParaphernalia
         const int _symSet_19U = 629;
         const ushort _unitsPerInch = PCLXLWriter._sessionUPI;
 
-        const short _rasterRes = 600;
+        //const short _rasterRes = 600;
         const int _compCtRGB = 3;
 
         const string _streamIdDestBoxPage = "LogOperDestBoxPage";

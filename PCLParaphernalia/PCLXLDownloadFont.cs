@@ -19,7 +19,7 @@ namespace PCLParaphernalia
 
         private const int _minHddrDescLen = 8;
 
-        private const ushort _defaultPCLDotRes = 600;
+        //private const ushort _defaultPCLDotRes = 600;
 
         private enum PCLXLFontTechnology : byte
         {

@@ -29,16 +29,16 @@ namespace PCLParaphernalia
         const short _pageOriginY = (_unitsPerInch * 1);
         const short _incInch = (_unitsPerInch * 1);
         const short _lineInc = (_unitsPerInch * 5) / 6;
-        const short _colInc = (_unitsPerInch * 3) / 2;
+        //const short _colInc = (_unitsPerInch * 3) / 2;
 
         const short _posXDesc = _pageOriginX;
-        const short _posXDesc1 = _posXDesc + ((_incInch * 15) / 4);
+        //const short _posXDesc1 = _posXDesc + ((_incInch * 15) / 4);
         const short _posXDesc2 = _posXDesc + ((_incInch * 5) / 2);
         const short _posXDesc3 = _posXDesc;
         const short _posXDesc4 = _posXDesc;
 
         const short _posYHddr = _pageOriginY;
-        const short _posYDesc1 = _pageOriginY + _incInch;
+        //const short _posYDesc1 = _pageOriginY + _incInch;
         const short _posYDesc2 = _pageOriginY + ((_incInch * 5) / 4);
         const short _posYDesc3 = _pageOriginY + ((_incInch * 7) / 4);
         const short _posYDesc4 = _pageOriginY + (_incInch * 2);
@@ -52,10 +52,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static readonly short _fontIndexArial = PCLFonts.GetIndexForName("Arial");
+        //static readonly short _fontIndexArial = PCLFonts.GetIndexForName("Arial");
         static readonly short _fontIndexCourier = PCLFonts.GetIndexForName("Courier");
 
-        static readonly string _fontNameArial = PCLFonts.GetPCLXLName(_fontIndexArial, PCLFonts.Variant.Regular);
+        //static readonly string _fontNameArial = PCLFonts.GetPCLXLName(_fontIndexArial, PCLFonts.Variant.Regular);
         static readonly string _fontNameCourier = PCLFonts.GetPCLXLName(_fontIndexCourier, PCLFonts.Variant.Regular);
         static readonly string _fontNameCourierBold = PCLFonts.GetPCLXLName(_fontIndexCourier, PCLFonts.Variant.Bold);
 

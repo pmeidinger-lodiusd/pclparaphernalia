@@ -18,11 +18,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private const int _hex0080 = 128;
-        private const int _hex00a0 = 160;
-        private const int _hex00c0 = 192;
-        private const int _hex00e0 = 224;
-        private const int _hex0100 = 256;
+        //private const int _hex0080 = 128;
+        //private const int _hex00a0 = 160;
+        //private const int _hex00c0 = 192;
+        //private const int _hex00e0 = 224;
+        //private const int _hex0100 = 256;
 
         [System.Reflection.Obfuscation(Exclude = true)]
 

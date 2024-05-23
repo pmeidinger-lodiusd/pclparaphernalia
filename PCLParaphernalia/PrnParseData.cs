@@ -33,11 +33,12 @@ namespace PCLParaphernalia
             TwoByte
         }
 
-        const string cCcName_0x07 = "<BEL>",
-                     cCcName_0x0a = "<LF>",
-                     cCcName_0x0c = "<FF>",
-                     cCcName_0x0d = "<CR>",
-                     cCcName_0x1b = "<Esc>",
+        const string 
+                     //cCcName_0x07 = "<BEL>",
+                     //cCcName_0x0a = "<LF>",
+                     //cCcName_0x0c = "<FF>",
+                     //cCcName_0x0d = "<CR>",
+                     //cCcName_0x1b = "<Esc>",
                      cCcName_0x7f = "<DEL>",
                      cCcName_Extended = "<ext>",
                      cCcName_Unicode = "<U+x>";

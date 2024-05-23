@@ -31,7 +31,7 @@ namespace PCLParaphernalia
         const string _nameReportFile = "ReportFile";
         const string _nameFlagOptDiscrete = "FlagOptDiscrete";
         const string _nameFlagOptMapping = "FlagOptMapping";
-        const string _nameFlagOptMapDuo = "FlagOptMapDuo";
+        //const string _nameFlagOptMapDuo = "FlagOptMapDuo";
         const string _nameFlagOptObsolete = "FlagOptObsolete";
         const string _nameFlagOptReserved = "FlagOptReserved";
         const string _nameFlagOptRptWrap = "FlagOptRptWrap";

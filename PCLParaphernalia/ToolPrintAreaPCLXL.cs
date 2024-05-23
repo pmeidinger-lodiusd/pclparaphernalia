@@ -18,7 +18,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         const string _formName = "FontSampleForm";
-        const string _hexChars = "0123456789ABCDEF";
+        //const string _hexChars = "0123456789ABCDEF";
 
         const int _symSet_19U = 629;
         const ushort _sessionUPI = PCLXLWriter._sessionUPI;

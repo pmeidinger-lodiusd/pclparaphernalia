@@ -21,20 +21,20 @@ namespace PCLParaphernalia
         private const int cSizeAttrReal32XY = 11;
 
         private const int cSizeAttrSint16 = 5;
-        private const int cSizeAttrSint16ArrayBase = 6;
-        private const int cSizeAttrSint16ArrayUnit = 2;
-        private const int cSizeAttrSint16Box = 11;
-        private const int cSizeAttrSint16XY = 7;
+        //private const int cSizeAttrSint16ArrayBase = 6;
+        //private const int cSizeAttrSint16ArrayUnit = 2;
+        //private const int cSizeAttrSint16Box = 11;
+        //private const int cSizeAttrSint16XY = 7;
 
         private const int cSizeAttrUbyte = 4;
         private const int cSizeAttrUbyteArrayBase = 6;
         private const int cSizeAttrUbyteArrayUnit = 1;
 
         private const int cSizeAttrUint16 = 5;
-        private const int cSizeAttrUint16ArrayBase = 6;
-        private const int cSizeAttrUint16ArrayUnit = 2;
+        //private const int cSizeAttrUint16ArrayBase = 6;
+        //private const int cSizeAttrUint16ArrayUnit = 2;
         private const int cSizeAttrUint16Box = 11;
-        private const int cSizeAttrUint16XY = 7;
+        //private const int cSizeAttrUint16XY = 7;
 
         private const int cSizeAttrUint32 = 7;
 

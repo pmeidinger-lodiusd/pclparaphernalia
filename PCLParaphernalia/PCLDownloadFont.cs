@@ -17,7 +17,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int _minHddrDescLen = 64;
+        //const int _minHddrDescLen = 64;
 
         const ushort _defaultPCLDotRes = 300;
 

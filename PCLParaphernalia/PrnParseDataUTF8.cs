@@ -40,17 +40,18 @@ namespace PCLParaphernalia
         const byte cTrailByteMask = 0xBF;
         const byte cTrailByteMark = 0x80;
 
-        const int cMaxBMP = 0x0000FFFF,
-                    cMaxUCS2 = 0x0000FFFF,
-                    cMaxUCS4 = 0x7FFFFFFF,
-                    cMaxUTF16 = 0x0010FFFF,
+        const int 
+                    //cMaxBMP = 0x0000FFFF,
+                    //cMaxUCS2 = 0x0000FFFF,
+                    //cMaxUCS4 = 0x7FFFFFFF,
+                    //cMaxUTF16 = 0x0010FFFF,
                     cMaxUTF32 = 0x0010FFFF,
                     cSurrogateHiLo = 0x0000D800,
-                    cSurrogateHiHi = 0x0000DBFF,
-                    cSurrogateLoLo = 0x0000DC00,
+                    //cSurrogateHiHi = 0x0000DBFF,
+                    //cSurrogateLoLo = 0x0000DC00,
                     cSurrogateLoHi = 0x0000DFFF,
-                    cUTF32HalfBase = 0x00010000,
-                    cUTF32HalfMask = 0x000003FF,
+                    //cUTF32HalfBase = 0x00010000,
+                    //cUTF32HalfMask = 0x000003FF,
                     cReplacementChar = 0x0000FFFD;
 
         //--------------------------------------------------------------------//

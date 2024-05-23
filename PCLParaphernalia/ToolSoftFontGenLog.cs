@@ -17,9 +17,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int cGridMain_Col_0_Max = 18;
+        //const int cGridMain_Col_0_Max = 18;
         const int cGridMain_Col_1_Max = 80;
-        const int cColSeparatorLen = 2;
+        //const int cColSeparatorLen = 2;
 
         const byte cASCII_Space = 0x20;
         const byte cASCII_LineFeed = 0x0a;

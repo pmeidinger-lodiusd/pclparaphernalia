@@ -34,7 +34,7 @@ namespace PCLParaphernalia
 
         private readonly ToolSoftFontGenPCLCommon _baseHandler;
 
-        private readonly ASCIIEncoding _ascii = new ASCIIEncoding();
+        //private readonly ASCIIEncoding _ascii = new ASCIIEncoding();
 
         private Stream _opStream = null;
         private BinaryWriter _binWriter = null;

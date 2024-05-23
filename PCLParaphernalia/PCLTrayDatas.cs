@@ -28,7 +28,7 @@
             new PCLTrayData(1, 0, 255, -1)
         };
 
-        private static readonly int _trayDataCount = _trayDatas.GetUpperBound(0) + 1;
+        //private static readonly int _trayDataCount = _trayDatas.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

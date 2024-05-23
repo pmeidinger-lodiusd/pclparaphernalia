@@ -22,7 +22,7 @@ namespace PCLParaphernalia
         const int _colSpanNone = -1;
 
         const bool _flagNone = false;
-        const bool _flagBlankBefore = true;
+        //const bool _flagBlankBefore = true;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

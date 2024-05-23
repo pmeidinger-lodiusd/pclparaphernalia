@@ -39,22 +39,22 @@ namespace PCLParaphernalia
         const short _posYDesc2 = _pageOriginY + (3 * _incInch / 2);
         const short _posYData = _pageOriginY + (2 * _incInch);
 
-        const short _shade_1_id = 1;
-        const short _shade_2_id = 2;
-        const short _shade_3_id = 3;
-        const short _shade_4_id = 4;
-        const short _shade_5_id = 5;
-        const short _shade_6_id = 6;
-        const short _shade_7_id = 7;
+        //const short _shade_1_id = 1;
+        //const short _shade_2_id = 2;
+        //const short _shade_3_id = 3;
+        //const short _shade_4_id = 4;
+        //const short _shade_5_id = 5;
+        //const short _shade_6_id = 6;
+        //const short _shade_7_id = 7;
 
-        const short _shade_1_minVal = 1;
-        const short _shade_2_minVal = 3;
-        const short _shade_3_minVal = 11;
-        const short _shade_4_minVal = 21;
-        const short _shade_5_minVal = 36;
-        const short _shade_6_minVal = 56;
-        const short _shade_7_minVal = 81;
-        const short _shade_7_maxVal = 99;
+        //const short _shade_1_minVal = 1;
+        //const short _shade_2_minVal = 3;
+        //const short _shade_3_minVal = 11;
+        //const short _shade_4_minVal = 21;
+        //const short _shade_5_minVal = 36;
+        //const short _shade_6_minVal = 56;
+        //const short _shade_7_minVal = 81;
+        //const short _shade_7_maxVal = 99;
 
         const short _patternBase_300 = 300;
         const short _patternBase_600 = 600;

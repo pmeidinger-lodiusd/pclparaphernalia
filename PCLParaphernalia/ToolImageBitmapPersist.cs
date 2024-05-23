@@ -39,7 +39,7 @@ namespace PCLParaphernalia
 
         const int _indexZero = 0;
 
-        const string _defaultCaptureFile = "CaptureFile_ImageBitmap.prn";
+        //const string _defaultCaptureFile = "CaptureFile_ImageBitmap.prn";
         const string _defaultCaptureFilePCL = "CaptureFile_ImageBitmapPCL.prn";
         const string _defaultCaptureFilePCLXL = "CaptureFile_ImageBitmapPCLXL.prn";
         const string _defaultFilename = "DefaultImageFile.bmp";

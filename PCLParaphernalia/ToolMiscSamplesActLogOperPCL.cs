@@ -30,7 +30,7 @@ namespace PCLParaphernalia
         const int _macroIdDestBoxPage = 121;
         const int _macroIdSrcBoxRasterPos = 201;
         const int _macroIdSrcBoxRasterNeg = 202;
-        const int _macroIdSrcBoxRasters = 211;
+        //const int _macroIdSrcBoxRasters = 211;
         const int _macroIdSrcBoxText = 212;
         const int _macroIdSrcBox = 221;
         const int _macroIdSrcBoxRow = 231;

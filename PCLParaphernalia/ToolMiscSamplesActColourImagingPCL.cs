@@ -49,7 +49,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static readonly int _indxFontArial = PCLFonts.GetIndexForName("Arial");
+        //static readonly int _indxFontArial = PCLFonts.GetIndexForName("Arial");
         static readonly int _indxFontCourier = PCLFonts.GetIndexForName("Courier");
 
         static int _logPageWidth;

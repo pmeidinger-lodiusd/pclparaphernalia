@@ -21,7 +21,7 @@ namespace PCLParaphernalia
 
         const int _macroId = 1;
         const ushort _unitsPerInch = PCLWriter.sessionUPI;
-        const ushort _plotUnitsPerInch = PCLWriter.plotterUnitsPerInchHPGL2;
+        //const ushort _plotUnitsPerInch = PCLWriter.plotterUnitsPerInchHPGL2;
 
         const short _pageOriginX = (_unitsPerInch * 1);
         const short _pageOriginY = (_unitsPerInch * 1);
@@ -47,7 +47,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static readonly int _indxFontArial = PCLFonts.GetIndexForName("Arial");
+        //static readonly int _indxFontArial = PCLFonts.GetIndexForName("Arial");
         static readonly int _indxFontCourier = PCLFonts.GetIndexForName("Courier");
 
         static int _logPageWidth;

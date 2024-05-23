@@ -19,7 +19,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _hexChars = "0123456789ABCDEF";
+        //const string _hexChars = "0123456789ABCDEF";
 
         const int _macroId = 1;
         const ushort _unitsPerInch = PCLWriter.sessionUPI;

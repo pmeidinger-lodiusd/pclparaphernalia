@@ -20,14 +20,14 @@ namespace PCLParaphernalia
         const string _mainKey = MainForm._regMainKey;
 
         const string _subKeyTarget = "Target";
-        const string _subKeyTargetFile = "File";
+        //const string _subKeyTargetFile = "File";
         const string _subKeyTargetPrinter = "Printer";
         const string _subKeyTargetNetPrinter = "NetPrinter";
         const string _subKeyTargetWinPrinter = "WinPrinter";
         const string _subKeyWorkFolder = "WorkFolder";
 
         const string _nameIndxTargetType = "IndxTargetType";
-        const string _nameFilename = "Filename";
+        //const string _nameFilename = "Filename";
         const string _nameFoldername = "Foldername";
         const string _namePrintername = "Printername";
         const string _nameIPAddress = "IPAddress";
@@ -35,7 +35,7 @@ namespace PCLParaphernalia
         const string _nameTimeoutSend = "TimeoutMsecsSend";
         const string _nameTimeoutReceive = "TimeoutMsecsReceive";
 
-        const string _defaultFilename = "ItemNoLongerUsed";
+        //const string _defaultFilename = "ItemNoLongerUsed";
         const string _defaultPrintername = "<None>";
         const string _defaultIPAddress = "192.168.0.98";
 

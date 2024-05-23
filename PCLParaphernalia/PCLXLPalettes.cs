@@ -63,8 +63,7 @@
                               16)   // include 8 'pure' colours + 8 grays
         };
 
-        private static readonly int _paletteCount =
-            _palettes.GetUpperBound(0) + 1;
+        //private static readonly int _paletteCount =_palettes.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

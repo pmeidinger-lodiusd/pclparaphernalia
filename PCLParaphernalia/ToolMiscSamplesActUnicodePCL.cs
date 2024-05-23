@@ -35,8 +35,8 @@ namespace PCLParaphernalia
         const short _posYDesc = _pageOriginY + (2 * _incInch);
         const short _posYData = _pageOriginY + (2 * _incInch);
 
-        const short _shade_1 = 40;
-        const short _shade_2 = 20;
+        //const short _shade_1 = 40;
+        //const short _shade_2 = 20;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
