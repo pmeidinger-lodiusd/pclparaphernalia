@@ -226,7 +226,7 @@
 
                 if ((_attrTagLen == 1) && (_attrTagA == 0x00))
                 {
-                    text = oper + " " + "----  " + " " + "-";
+                    text = oper + " ----   -";
                 }
                 else
                 {

@@ -316,7 +316,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                MessageBox.Show("Source print file appears to be a '" + scanPDL.ToString() + "' printfile.\n\n" + "This tool does not support the generation of an " + "overlay from such a print file.",
+                MessageBox.Show("Source print file appears to be a '" + scanPDL.ToString() + "' printfile.\n\nThis tool does not support the generation of an overlay from such a print file.",
                                 "Page Description Language not supported",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Warning);
@@ -931,7 +931,7 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show("Macro identifier '" + crntText + "' is invalid.\n\n" + "Value will be reset to default '" + newText + "'",
+                    MessageBox.Show("Macro identifier '" + crntText + "' is invalid.\n\nValue will be reset to default '" + newText + "'",
                                     "PCL macro identifier invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
@@ -942,7 +942,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show("Macro identifier '" + crntText + "' is invalid.\n\n" + "Valid range is :\n\t" + minVal + " <= value <= " + maxVal,
+                    MessageBox.Show("Macro identifier '" + crntText + "' is invalid.\n\nValid range is :\n\t" + minVal + " <= value <= " + maxVal,
                                     "PCL macro identifier invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);

@@ -2771,7 +2771,7 @@ namespace PCLParaphernalia
 
                 source.Text = valText;
 
-                MessageBox.Show("Map point " + formatDesc + " '" + indxText + "':\n\nTarget code-point value " + formatDesc + " '" + txtCodepoint + "' is invalid.\n\n" + "Reset to original value " + formatDesc + " '" + valText + "'",
+                MessageBox.Show("Map point " + formatDesc + " '" + indxText + "':\n\nTarget code-point value " + formatDesc + " '" + txtCodepoint + "' is invalid.\n\nReset to original value " + formatDesc + " '" + valText + "'",
                                  "Target code point mapping",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
@@ -2818,7 +2818,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    MessageBox.Show("Alphabetic part '" + crntText + "' of identifier is invalid.\n\n" + "Value will be reset to default '" + defVal + "'",
+                    MessageBox.Show("Alphabetic part '" + crntText + "' of identifier is invalid.\n\nValue will be reset to default '" + defVal + "'",
                                     "Symbol Set identifier invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);

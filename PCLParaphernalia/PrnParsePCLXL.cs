@@ -248,7 +248,7 @@ namespace PCLParaphernalia
                     (int)PrnParseConstants.OffsetPosition.StartOfFile,
                     _analysisLevel,
                     "PCLXL structure",
-                    "0x" + "c8c1....",
+                    "0xc8c1....",
                     "BeginStream structure for stream '" + streamName + "'");
             }
         }

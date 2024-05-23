@@ -601,93 +601,93 @@ namespace PCLParaphernalia
             {
                 "p",
                 "{",
-                "\t" + "font-family: Courier; ",
-                "\t" + "font - size: 100 %; ",
-                "\t" + "margin-top: 0em;",
-                "\t" + "margin-bottom: 0em;",
-                "\t" + "white-space: pre;",
+                "\tfont-family: Courier; ",
+                "\tfont - size: 100 %; ",
+                "\tmargin-top: 0em;",
+                "\tmargin-bottom: 0em;",
+                "\twhite-space: pre;",
                 "}",
 
                 "p.title",
                 "{",
-                "\t" + "font-weight: bold;",
+                "\tfont-weight: bold;",
                 "}",
 
                 "table",
                 "{",
-                "\t" + "font-family: Courier;",
-                "\t" + "font-size: 100 %;",
-                "\t" + "margin-left: 0em;",
-                "\t" + "margin-top: 1em;",
-                "\t" + "margin-bottom: 1em;",
-                "\t" + "white-space: pre;",
+                "\tfont-family: Courier;",
+                "\tfont-size: 100 %;",
+                "\tmargin-left: 0em;",
+                "\tmargin-top: 1em;",
+                "\tmargin-bottom: 1em;",
+                "\twhite-space: pre;",
                 "}",
 
                 "th",
                 "{",
-                "\t" + "font-style: italic;",
-                "\t" + "font-weight: normal;",
-                "\t" + "text-align: left;",
-                "\t" + "text-decoration: underline;",
-                "\t" + "padding-top: 0em;",
-                "\t" + "padding-bottom: 0em;",
-                "\t" + "vertical-align: top;",
+                "\tfont-style: italic;",
+                "\tfont-weight: normal;",
+                "\ttext-align: left;",
+                "\ttext-decoration: underline;",
+                "\tpadding-top: 0em;",
+                "\tpadding-bottom: 0em;",
+                "\tvertical-align: top;",
                 "}",
 
                 "th.plain",
                 "{",
-                "\t" + "font-style: normal;",
-                "\t" + "font-weight: normal;",
-                "\t" + "text-align: left;",
-                "\t" + "text-decoration: none;",
-                "\t" + "padding-top: 0em;",
-                "\t" + "padding-bottom: 0em;",
-                "\t" + "vertical-align: top;",
+                "\tfont-style: normal;",
+                "\tfont-weight: normal;",
+                "\ttext-align: left;",
+                "\ttext-decoration: none;",
+                "\tpadding-top: 0em;",
+                "\tpadding-bottom: 0em;",
+                "\tvertical-align: top;",
                 "}",
 
                 "td",
                 "{",
-                "\t" + "padding-right: 1em;",
-                "\t" + "padding-top: 0em;",
-                "\t" + "padding-bottom: 0em;",
-                "\t" + "vertical-align: top;",
+                "\tpadding-right: 1em;",
+                "\tpadding-top: 0em;",
+                "\tpadding-bottom: 0em;",
+                "\tvertical-align: top;",
                 "}",
 
                 ".fmtAdorn",
                 "{",
-                "\t" + "font-style: italic;",
-                "\t" + "font-weight: normal;",
-                "\t" + "text-align: left;",
-                "\t" + "text-decoration: underline;",
+                "\tfont-style: italic;",
+                "\tfont-weight: normal;",
+                "\ttext-align: left;",
+                "\ttext-decoration: underline;",
                 "}",
 
                 ".fmtPlain",
                 "{",
-                "\t" + "font-style: normal;",
-                "\t" + "font-weight: normal;",
-                "\t" + "text-align: left;",
-                "\t" + "text-decoration: none;",
+                "\tfont-style: normal;",
+                "\tfont-weight: normal;",
+                "\ttext-align: left;",
+                "\ttext-decoration: none;",
                 "}",
 
                 ".padAnte",
                 "{",
-                "\t" + "padding-top: 1em;",
-                "\t" + "padding-bottom: 0em;",
-                "\t" + "vertical-align: top;",
+                "\tpadding-top: 1em;",
+                "\tpadding-bottom: 0em;",
+                "\tvertical-align: top;",
                 "}",
 
                 ".padAntePost",
                 "{",
-                "\t" + "padding-top: 1em;",
-                "\t" + "padding-bottom: 1em;",
-                "\t" + "vertical-align: top;",
+                "\tpadding-top: 1em;",
+                "\tpadding-bottom: 1em;",
+                "\tvertical-align: top;",
                 "}",
 
                 ".padPost",
                 "{",
-                "\t" + "padding-top: 0em;",
-                "\t" + "padding-bottom: 1em;",
-                "\t" + "vertical-align: top;",
+                "\tpadding-top: 0em;",
+                "\tpadding-bottom: 1em;",
+                "\tvertical-align: top;",
                 "}"
             };
 
@@ -795,7 +795,7 @@ namespace PCLParaphernalia
             {
                 for (int i = 0; i < ctRowClrStyles; i++)
                 {
-                    xmlWriter.WriteString("\t\t\t" + "tr." + rowClasses[i] + " {");
+                    xmlWriter.WriteString("\t\t\ttr." + rowClasses[i] + " {");
                     xmlWriter.WriteString(" background-color: " + rowClrBack[i] + ";");
                     xmlWriter.WriteString(" color: " + rowClrFore[i] + ";");
                     xmlWriter.WriteString(" }\r\n");
@@ -1890,7 +1890,7 @@ namespace PCLParaphernalia
             if (padClass != string.Empty)
             {
                 if (nameAsHddr)
-                    htmlWriter.AddAttribute("class", padClass + " " + "fmtAdorn");
+                    htmlWriter.AddAttribute("class", padClass + " fmtAdorn");
                 else
                     htmlWriter.AddAttribute("class", padClass);
             }

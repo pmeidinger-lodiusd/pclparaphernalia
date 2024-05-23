@@ -448,7 +448,7 @@ namespace PCLParaphernalia
             int fnLen = filename.Length + 1;
 
             seq = "\x1b" + "*c" + fontID + "D" +
-                  "\x1b" + "&n" + fnLen + "W" + "\x01" + filename;
+                  "\x1b" + "&n" + fnLen + "W\x01" + filename;
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
@@ -470,7 +470,7 @@ namespace PCLParaphernalia
 
             seq = "\x1b" + "*c" + fontID + "D" +
                   "\x1b" + "&f" + fontMacroId + "Y" +
-                  "\x1b" + "&n" + fnLen + "W" + "\x05" + filename +
+                  "\x1b" + "&n" + fnLen + "W\x05" + filename +
                   "\x1b" + "&f3X";
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
@@ -649,7 +649,7 @@ namespace PCLParaphernalia
             int fnLen = filename.Length + 1;
 
             seq = "\x1b" + "&f" + downloadID + "Y" +
-                  "\x1b" + "&n" + fnLen + "W" + "\x05" + filename;
+                  "\x1b" + "&n" + fnLen + "W\x05" + filename;
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }

@@ -500,7 +500,7 @@ namespace PCLParaphernalia
             if (deploymentVersion == assemblyVersion)
                 crntVersion = "Version " + deploymentVersion;
             else
-                crntVersion = "Deployment Version: " + deploymentVersion + "\r\n" + "Assembly Version: " + assemblyVersion;
+                crntVersion = "Deployment Version: " + deploymentVersion + "\r\nAssembly Version: " + assemblyVersion;
 
             MessageBox.Show("PCL Paraphernalia\r\n\r\n" +
                              crntVersion + "\r\n\r\n" +

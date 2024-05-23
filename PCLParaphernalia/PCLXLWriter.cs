@@ -1980,8 +1980,8 @@ namespace PCLParaphernalia
                 prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
             }
 
-            seq = "@PJL Enter Language = PCLXL" + "\x0d" + "\x0a" +
-                  ") HP-PCL XL;2;0;" + "PCL Paraphernalia" + "\x0a";
+            seq = "@PJL Enter Language = PCLXL\x0d" + "\x0a" +
+                  ") HP-PCL XL;2;0;PCL Paraphernalia\x0a";
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
 

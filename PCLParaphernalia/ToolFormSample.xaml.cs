@@ -1754,7 +1754,7 @@ namespace PCLParaphernalia
                                                   ref netTimeoutSend,
                                                   ref netTimeoutReceive);
 
-                btnGenerate.Content = "Generate & send test data to " + "\r\n" + netPrnAddress + " : " + netPrnPort.ToString();
+                btnGenerate.Content = "Generate & send test data to \r\n" + netPrnAddress + " : " + netPrnPort.ToString();
             }
             else if (targetType == TargetCore.Target.WinPrinter)
             {
@@ -1762,7 +1762,7 @@ namespace PCLParaphernalia
 
                 TargetCore.MetricsLoadWinPrinter(ref winPrintername);
 
-                btnGenerate.Content = "Generate & send test data to printer " + "\r\n" + winPrintername;
+                btnGenerate.Content = "Generate & send test data to printer \r\n" + winPrintername;
             }
         }
 
@@ -1837,7 +1837,7 @@ namespace PCLParaphernalia
 
                 if (!File.Exists(filename))
                 {
-                    MessageBox.Show("Main form file '" + filename + "' does not exist.\r\n\r\n" + "Please select an appropriate file",
+                    MessageBox.Show("Main form file '" + filename + "' does not exist.\r\n\r\nPlease select an appropriate file",
                                      "PCL form file invalid",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
@@ -1883,7 +1883,7 @@ namespace PCLParaphernalia
 
                 if (!File.Exists(filename))
                 {
-                    MessageBox.Show("Rear form file '" + filename + "' does not exist.\r\n\r\n" + "Please select an appropriate file",
+                    MessageBox.Show("Rear form file '" + filename + "' does not exist.\r\n\r\nPlease select an appropriate file",
                                      "PCL form file invalid",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
@@ -2013,7 +2013,7 @@ namespace PCLParaphernalia
 
             if (!File.Exists(filename))
             {
-                MessageBox.Show("Main form file '" + filename + "' does not exist.\r\n\r\n" + "Please select an appropriate file",
+                MessageBox.Show("Main form file '" + filename + "' does not exist.\r\n\r\nPlease select an appropriate file",
                                  "PCLXL form file invalid",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
@@ -2212,7 +2212,7 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show(side + " macro Id value '" + crntText + "' is invalid.\n\n" + "Value will be reset to default '" + newText + "'",
+                    MessageBox.Show(side + " macro Id value '" + crntText + "' is invalid.\n\nValue will be reset to default '" + newText + "'",
                                     "PCL macro identifier invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
@@ -2230,7 +2230,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show(side + " macro Id value '" + crntText + "' is invalid.\n\n" + "Valid range is :\n\t" + minVal + " <= value <= " + maxVal + "\n" + "or\n" + "\t<null> to represent <not applicable>",
+                    MessageBox.Show(side + " macro Id value '" + crntText + "' is invalid.\n\nValid range is :\n\t" + minVal + " <= value <= " + maxVal + "\nor\n\t<null> to represent <not applicable>",
                                     "PCL macro identifier invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
@@ -2310,7 +2310,7 @@ namespace PCLParaphernalia
                 {
                     OK = false;
 
-                    MessageBox.Show("Macro identifiers '" + _macroIdMainPCL + "' for Main and Rear forms " + " are both the same.\n\n",
+                    MessageBox.Show("Macro identifiers '" + _macroIdMainPCL + "' for Main and Rear forms  are both the same.\n\n",
                                      "PCL selection combination",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
@@ -2364,7 +2364,7 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show("Test page count value '" + crntText + "' is invalid.\n\n" + "Value will be reset to default '" + newText + "'",
+                    MessageBox.Show("Test page count value '" + crntText + "' is invalid.\n\nValue will be reset to default '" + newText + "'",
                                     "PCL test page count invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
@@ -2375,7 +2375,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show("Test page count value '" + crntText + "' is invalid.\n\n" + "Valid range is :\n\t" + minVal + " <= value <= " + maxVal + "\n",
+                    MessageBox.Show("Test page count value '" + crntText + "' is invalid.\n\nValid range is :\n\t" + minVal + " <= value <= " + maxVal + "\n",
                                     "PCL test page count invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
@@ -2434,7 +2434,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    MessageBox.Show(side + " form name value '" + crntText + "' is invalid.\n\n" + "Value will be reset to default '" + defVal + "'",
+                    MessageBox.Show(side + " form name value '" + crntText + "' is invalid.\n\nValue will be reset to default '" + defVal + "'",
                                     "PCLXL form name invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
@@ -2452,7 +2452,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show(side + " form name value '" + crntText + "' is invalid.\n\n" + "Valid length is <= " + maxLen,
+                    MessageBox.Show(side + " form name value '" + crntText + "' is invalid.\n\nValid length is <= " + maxLen,
                                     "PCLXL form name invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
@@ -2526,7 +2526,7 @@ namespace PCLParaphernalia
                 {
                     OK = false;
 
-                    MessageBox.Show("Form names '" + _formNameMainPCLXL + "' for Main and Rear forms " + " are both the same.\n\n",
+                    MessageBox.Show("Form names '" + _formNameMainPCLXL + "' for Main and Rear forms  are both the same.\n\n",
                                      "PCLXL selection combination",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
@@ -2580,7 +2580,7 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show("Test page count value '" + crntText + "' is invalid.\n\n" + "Value will be reset to default '" + newText + "'",
+                    MessageBox.Show("Test page count value '" + crntText + "' is invalid.\n\nValue will be reset to default '" + newText + "'",
                                     "PCLXL test page count invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
@@ -2591,7 +2591,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show("Test page count value '" + crntText + "' is invalid.\n\n" + "Valid range is :\n\t" + minVal + " <= value <= " + maxVal + "\n",
+                    MessageBox.Show("Test page count value '" + crntText + "' is invalid.\n\nValid range is :\n\t" + minVal + " <= value <= " + maxVal + "\n",
                                     "PCLXL test page count invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);

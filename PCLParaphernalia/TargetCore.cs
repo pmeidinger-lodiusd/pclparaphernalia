@@ -535,7 +535,7 @@ namespace PCLParaphernalia
             }
             catch (IOException e)
             {
-                MessageBox.Show("IO Exception:\r\n" + e.Message + "\r\n" + "Creating file '" + _crntFilename,
+                MessageBox.Show("IO Exception:\r\n" + e.Message + "\r\nCreating file '" + _crntFilename,
                                  "Target file",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
@@ -635,7 +635,7 @@ namespace PCLParaphernalia
                 }
                 catch (IOException e)
                 {
-                    MessageBox.Show("IO Exception:\r\n" + e.Message + "\r\n" + "Deleting file '" + _crntFilename,
+                    MessageBox.Show("IO Exception:\r\n" + e.Message + "\r\nDeleting file '" + _crntFilename,
                                      "Target stream",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);

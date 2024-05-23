@@ -432,7 +432,7 @@ namespace PCLParaphernalia
             PCLWriter.CmdHPGL2(prnWriter, "LB", "angle +30" + lbCRTerm, true);
 
             PCLWriter.CmdHPGL2(prnWriter, "DI",
-                                "-" + cosAngle.ToString() + "," + "-" + sinAngle.ToString(),
+                                "-" + cosAngle.ToString() + ",-" + sinAngle.ToString(),
                                 false);
 
             PCLWriter.CmdHPGL2(prnWriter, "LB", "angle +210" + lbCRTerm, true);
@@ -474,7 +474,7 @@ namespace PCLParaphernalia
                                 false);
 
             PCLWriter.CmdHPGL2(prnWriter, "DI",
-                                cosAngle.ToString() + "," + "-" + sinAngle.ToString(),
+                                cosAngle.ToString() + ",-" + sinAngle.ToString(),
                                 false);
 
             PCLWriter.CmdHPGL2(prnWriter, "LB", "angle +315" + lbCRTerm, true);

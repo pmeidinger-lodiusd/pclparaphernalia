@@ -371,14 +371,14 @@ namespace PCLParaphernalia
             PCLXLWriter.Text(prnWriter, formAsMacro, false,
                        PCLXLWriter.advances_Courier, ptSize,
                        posX, posY,
-                       "Shade = " + "Dark Gray:");
+                       "Shade = Dark Gray:");
 
             posY += _lineInc;
 
             PCLXLWriter.Text(prnWriter, formAsMacro, false,
                        PCLXLWriter.advances_Courier, ptSize,
                        posX, posY,
-                      "Shade = " + "Light Gray:");
+                      "Shade = Light Gray:");
 
             posY += _lineInc;
 

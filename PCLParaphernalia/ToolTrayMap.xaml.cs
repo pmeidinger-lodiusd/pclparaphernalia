@@ -387,7 +387,7 @@ namespace PCLParaphernalia
 
             if (!flagOK)
             {
-                MessageBox.Show("Unable to detemine which Orientation (R)" + " item has just been changed!",
+                MessageBox.Show("Unable to detemine which Orientation (R) item has just been changed!",
                                 "***** Internal error *****",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Warning);

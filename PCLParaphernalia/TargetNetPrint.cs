@@ -76,7 +76,7 @@ namespace PCLParaphernalia
 
             catch (SocketException e)
             {
-                MessageBox.Show("SocketException" + "Message: " + e.Message + "\n\n" + "ErrorCode: " + e.ErrorCode + "\n\n" + "SocketErrorCode: " + e.SocketErrorCode,
+                MessageBox.Show("SocketExceptionMessage: " + e.Message + "\n\nErrorCode: " + e.ErrorCode + "\n\nSocketErrorCode: " + e.SocketErrorCode,
                                  "Printer output",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Exclamation);
@@ -185,7 +185,7 @@ namespace PCLParaphernalia
 
                 catch (SocketException e)
                 {
-                    MessageBox.Show("SocketException:\n\n" + "Message: " + e.Message + "\n\n" + "ErrorCode: " + e.ErrorCode + "\n\n" + "SocketErrorCode: " + e.SocketErrorCode,
+                    MessageBox.Show("SocketException:\n\nMessage: " + e.Message + "\n\nErrorCode: " + e.ErrorCode + "\n\nSocketErrorCode: " + e.SocketErrorCode,
                                      "Printer output",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Exclamation);
