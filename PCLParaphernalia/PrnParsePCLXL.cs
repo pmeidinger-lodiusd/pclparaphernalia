@@ -352,7 +352,7 @@ namespace PCLParaphernalia
 
             _indxOffsetFormat = _options.IndxGenOffsetFormat;
 
-            _options.getOptCharSet(ref _indxCharSetName,
+            _options.GetOptCharSet(ref _indxCharSetName,
                                     ref _indxCharSetSubAct,
                                     ref _valCharSetSubCode);
 

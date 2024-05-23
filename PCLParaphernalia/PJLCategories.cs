@@ -63,7 +63,7 @@
 
         public static string GetName(int selection)
         {
-            return _categories[selection].getName();
+            return _categories[selection].GetName();
         }
 
         //--------------------------------------------------------------------//
@@ -77,7 +77,7 @@
 
         public static CategoryType GetType(int selection)
         {
-            return _categories[selection].getType();
+            return _categories[selection].GetCategoryType();
         }
     }
 }

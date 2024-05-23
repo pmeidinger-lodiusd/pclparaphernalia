@@ -176,7 +176,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int displayTags(DataGrid grid)
+        public static int DisplayTags(DataGrid grid)
         {
             int count = 0;
 

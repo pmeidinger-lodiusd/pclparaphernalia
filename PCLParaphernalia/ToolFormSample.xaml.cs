@@ -977,9 +977,9 @@ namespace PCLParaphernalia
         {
             int indxMethodTemp = 0;
 
-            ToolFormSamplePersist.loadDataCommon(ref _indxPDL);
+            ToolFormSamplePersist.LoadDataCommon(ref _indxPDL);
 
-            ToolFormSamplePersist.loadDataGeneral("PCL",
+            ToolFormSamplePersist.LoadDataGeneral("PCL",
                                                    ref _indxPaperTypePCL,
                                                    ref _indxPaperSizePCL,
                                                    ref _indxOrientationPCL,
@@ -998,7 +998,7 @@ namespace PCLParaphernalia
             else
                 _indxMethodPCL = ToolFormSamplePCL.MacroMethod.CallBegin;
 
-            ToolFormSamplePersist.loadDataGeneral("PCLXL",
+            ToolFormSamplePersist.LoadDataGeneral("PCLXL",
                                                    ref _indxPaperTypePCLXL,
                                                    ref _indxPaperSizePCLXL,
                                                    ref _indxOrientationPCLXL,
@@ -1017,7 +1017,7 @@ namespace PCLParaphernalia
             else
                 _indxMethodPCLXL = ToolFormSamplePCLX.StreamMethod.ExecuteBegin;
 
-            ToolFormSamplePersist.loadDataPCL(ref _flagMainOnPrnDiskPCL,
+            ToolFormSamplePersist.LoadDataPCL(ref _flagMainOnPrnDiskPCL,
                                                ref _flagRearOnPrnDiskPCL,
                                                ref _formFileMainPCL,
                                                ref _formFileRearPCL,
@@ -1026,7 +1026,7 @@ namespace PCLParaphernalia
                                                ref _macroIdMainPCL,
                                                ref _macroIdRearPCL);
 
-            ToolFormSamplePersist.loadDataPCLXL(ref _formFileMainPCLXL,
+            ToolFormSamplePersist.LoadDataPCLXL(ref _formFileMainPCLXL,
                                                  ref _formFileRearPCLXL,
                                                  ref _formNameMainPCLXL,
                                                  ref _formNameRearPCLXL,
@@ -1087,9 +1087,9 @@ namespace PCLParaphernalia
         {
             PdlOptionsStore();
 
-            ToolFormSamplePersist.saveDataCommon(_indxPDL);
+            ToolFormSamplePersist.SaveDataCommon(_indxPDL);
 
-            ToolFormSamplePersist.saveDataGeneral(
+            ToolFormSamplePersist.SaveDataGeneral(
                 "PCL",
                 _indxPaperTypePCL,
                 _indxPaperSizePCL,
@@ -1104,7 +1104,7 @@ namespace PCLParaphernalia
                 _flagRearBPlatePCL,
                 _flagPrintDescTextPCL);
 
-            ToolFormSamplePersist.saveDataGeneral(
+            ToolFormSamplePersist.SaveDataGeneral(
                 "PCLXL",
                 _indxPaperTypePCLXL,
                 _indxPaperSizePCLXL,
@@ -1119,7 +1119,7 @@ namespace PCLParaphernalia
                 _flagRearBPlatePCLXL,
                 _flagPrintDescTextPCLXL);
 
-            ToolFormSamplePersist.saveDataPCL(_flagMainOnPrnDiskPCL,
+            ToolFormSamplePersist.SaveDataPCL(_flagMainOnPrnDiskPCL,
                                                _flagRearOnPrnDiskPCL,
                                                _formFileMainPCL,
                                                _formFileRearPCL,
@@ -1128,7 +1128,7 @@ namespace PCLParaphernalia
                                                _macroIdMainPCL,
                                                _macroIdRearPCL);
 
-            ToolFormSamplePersist.saveDataPCLXL(_formFileMainPCLXL,
+            ToolFormSamplePersist.SaveDataPCLXL(_formFileMainPCLXL,
                                                 _formFileRearPCLXL,
                                                 _formNameMainPCLXL,
                                                 _formNameRearPCLXL,

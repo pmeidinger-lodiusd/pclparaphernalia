@@ -144,7 +144,7 @@ namespace PCLParaphernalia
             _linkData = linkData;
             _options = options;
 
-            contType = _linkData.getContType();
+            contType = _linkData.GetContType();
             _analysisLevel = _linkData.AnalysisLevel;
 
             _indxOffsetFormat = _options.IndxGenOffsetFormat;

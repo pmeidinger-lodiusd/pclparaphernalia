@@ -106,7 +106,7 @@ namespace PCLParaphernalia
             {
                 ushort rangeOffset = sampleRangeOffsets[i];
 
-                generatePage(prnWriter,
+                GeneratePage(prnWriter,
                          indxPaperSize,
                          indxPaperType,
                          indxOrientation,
@@ -1105,7 +1105,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generatePage(BinaryWriter prnWriter,
+        private static void GeneratePage(BinaryWriter prnWriter,
                                          int indxPaperSize,
                                          int indxPaperType,
                                          int indxOrientation,

@@ -346,11 +346,11 @@ namespace PCLParaphernalia
 
                 PCLControlCodes.DisplayStatsCounts(_tableStatistics, incUsedSeqsOnly);
 
-                PCLSimpleSeqs.displayStatsCounts(_tableStatistics, incUsedSeqsOnly, excUnusedObsPCLSeqs);
+                PCLSimpleSeqs.DisplayStatsCounts(_tableStatistics, incUsedSeqsOnly, excUnusedObsPCLSeqs);
 
                 PCLComplexSeqs.DisplayStatsCounts(_tableStatistics, incUsedSeqsOnly, excUnusedObsPCLSeqs);
 
-                HPGL2Commands.displayStatsCounts(_tableStatistics, incUsedSeqsOnly);
+                HPGL2Commands.DisplayStatsCounts(_tableStatistics, incUsedSeqsOnly);
 
                 HPGL2ControlCodes.DisplayStatsCounts(_tableStatistics, incUsedSeqsOnly);
 
@@ -909,7 +909,7 @@ namespace PCLParaphernalia
             PCLComplexSeqs.ResetStatsCounts();
             PCLSimpleSeqs.ResetStatsCounts();
             PCLControlCodes.ResetStatsCounts();
-            HPGL2Commands.resetStatsCounts();
+            HPGL2Commands.ResetStatsCounts();
             HPGL2ControlCodes.ResetStatsCounts();
             PCLXLDataTypes.ResetStatsCounts();
             //   PCLXLAttrDefiners.resetStatsCounts ();

@@ -87,7 +87,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getDescShort()
+        public string GetDescShort()
         {
             string prefix;
 

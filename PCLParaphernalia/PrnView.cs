@@ -219,7 +219,7 @@ namespace PCLParaphernalia
                 offsetFormat = "{0:d10}";
             }
 
-            options.getOptCharSet(ref _indxCharSetName, ref _indxCharSetSubAct, ref _valCharSetSubCode);
+            options.GetOptCharSet(ref _indxCharSetName, ref _indxCharSetSubAct, ref _valCharSetSubCode);
 
             //----------------------------------------------------------------//
             //                                                                //

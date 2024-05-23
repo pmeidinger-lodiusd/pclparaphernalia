@@ -130,7 +130,7 @@ namespace PCLParaphernalia
 
             _options = options;
 
-            contType = linkData.getContType();
+            contType = linkData.GetContType();
 
             _indxOffsetFormat = _options.IndxGenOffsetFormat;
 

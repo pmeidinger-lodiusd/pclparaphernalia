@@ -37,7 +37,7 @@ namespace PCLParaphernalia
 
         static UnicodeBlocks()
         {
-            populateTable();
+            PopulateTable();
         }
 
         //--------------------------------------------------------------------//
@@ -49,7 +49,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getBlocksCount()
+        public static int GetBlocksCount()
         {
             return _blocksCount;
         }
@@ -63,7 +63,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static uint getRangeEnd(uint index)
+        public static uint GetRangeEnd(uint index)
         {
             return _blocksList[index].RangeEnd;
         }
@@ -77,7 +77,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static uint getRangeStart(uint index)
+        public static uint GetRangeStart(uint index)
         {
             return _blocksList[index].RangeStart;
         }
@@ -91,7 +91,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getName(uint index)
+        public static string GetName(uint index)
         {
             return _blocksList[index].Name;
         }
@@ -105,7 +105,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static uint getIndexForCodepoint(uint codepoint)
+        public static uint GetIndexForCodepoint(uint codepoint)
         {
             bool found = false;
 
@@ -140,7 +140,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getBlocknameForCodepoint(uint codepoint)
+        public static string GetBlocknameForCodepoint(uint codepoint)
         {
             bool found = false;
 
@@ -176,7 +176,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void populateTable()
+        private static void PopulateTable()
         {
             _blocksList.Add(                              //   0000     007F //
                 0x0000,

@@ -356,7 +356,7 @@
 
                                             <ComboBox.ItemsPanel>
                                                 <ItemsPanelTemplate>
-                                                    <Grid Loaded="initialiseClrMapPickerGrid" />
+                                                    <Grid Loaded="InitialiseClrMapPickerGrid" />
                                                 </ItemsPanelTemplate>
                                             </ComboBox.ItemsPanel>
                                             <ComboBox.ItemTemplate>
@@ -385,7 +385,7 @@
 
                                             <ComboBox.ItemsPanel>
                                                 <ItemsPanelTemplate>
-                                                    <Grid Loaded="initialiseClrMapPickerGrid" />
+                                                    <Grid Loaded="InitialiseClrMapPickerGrid" />
                                                 </ItemsPanelTemplate>
                                             </ComboBox.ItemsPanel>
                                             <ComboBox.ItemTemplate>

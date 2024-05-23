@@ -75,9 +75,9 @@ namespace PCLParaphernalia
             mnemonic = tag.Mnemonic;
             description = tag.DescExcMnemonic;
 
-            makeOvlAct = tag.makeOvlAct;
+            makeOvlAct = tag.MakeOvlAct;
 
-            tag.incrementStatisticsCount(macroLevel);   // Statistical data
+            tag.IncrementStatisticsCount(macroLevel);   // Statistical data
 
             return tagKnown;
         }
@@ -327,7 +327,7 @@ namespace PCLParaphernalia
             {
                 tag = kvp.Value;
 
-                tag.resetStatistics();
+                tag.ResetStatistics();
             }
         }
     }

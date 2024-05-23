@@ -77,7 +77,7 @@ namespace PCLParaphernalia
 
         public static int GetBitNo(int index)
         {
-            return _collsList[index].getBitNo();
+            return _collsList[index].GetBitNo();
         }
 
         //--------------------------------------------------------------------//
@@ -91,7 +91,7 @@ namespace PCLParaphernalia
 
         public static BitType GetBitType(int index)
         {
-            return _collsList[index].getBitType();
+            return _collsList[index].GetBitType();
         }
 
         //--------------------------------------------------------------------//
@@ -105,7 +105,7 @@ namespace PCLParaphernalia
 
         public static string GetDescMSL(int index)
         {
-            return _collsList[index].getDescMSL();
+            return _collsList[index].GetDescMSL();
         }
 
         //--------------------------------------------------------------------//
@@ -120,7 +120,7 @@ namespace PCLParaphernalia
 
         public static string GetDescUnicode(int index)
         {
-            return _collsList[index].getDescUnicode();
+            return _collsList[index].GetDescUnicode();
         }
 
         //--------------------------------------------------------------------//

@@ -307,7 +307,7 @@ namespace PCLParaphernalia
             else if (_crntToolId == ToolCommonData.ToolIds.FormSample)
                 _subFormToolFormSample.GiveCrntPDL(ref _crntPDL);
             else if (_crntToolId == ToolCommonData.ToolIds.ImageBitmap)
-                _subFormToolImageBitmap.giveCrntPDL(ref _crntPDL);
+                _subFormToolImageBitmap.GiveCrntPDL(ref _crntPDL);
             else if (_crntToolId == ToolCommonData.ToolIds.MakeOverlay)
                 _subFormToolMakeOverlay.GiveCrntPDL(ref _crntPDL);
             else if (_crntToolId == ToolCommonData.ToolIds.MiscSamples)
@@ -371,7 +371,7 @@ namespace PCLParaphernalia
             else if (_crntToolId == ToolCommonData.ToolIds.FormSample)
                 _subFormToolFormSample.ResetTarget();
             else if (_crntToolId == ToolCommonData.ToolIds.ImageBitmap)
-                _subFormToolImageBitmap.resetTarget();
+                _subFormToolImageBitmap.ResetTarget();
             else if (_crntToolId == ToolCommonData.ToolIds.MakeOverlay)
                 _subFormToolMakeOverlay.ResetTarget();
             else if (_crntToolId == ToolCommonData.ToolIds.MiscSamples)
@@ -417,7 +417,7 @@ namespace PCLParaphernalia
             else if (_crntToolId == ToolCommonData.ToolIds.FormSample)
                 _subFormToolFormSample.MetricsSave();
             else if (_crntToolId == ToolCommonData.ToolIds.ImageBitmap)
-                _subFormToolImageBitmap.metricsSave();
+                _subFormToolImageBitmap.MetricsSave();
             else if (_crntToolId == ToolCommonData.ToolIds.MakeOverlay)
                 _subFormToolMakeOverlay.MetricsSave();
             else if (_crntToolId == ToolCommonData.ToolIds.MiscSamples)

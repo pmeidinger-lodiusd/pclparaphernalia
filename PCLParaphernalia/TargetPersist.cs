@@ -254,7 +254,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataWorkFolder(string saveFoldername)
+        public static void SaveDataWorkFolder(string saveFoldername)
         {
             RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 

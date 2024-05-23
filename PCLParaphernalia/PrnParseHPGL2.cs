@@ -488,7 +488,7 @@ namespace PCLParaphernalia
 
             _indxOffsetFormat = _options.IndxGenOffsetFormat;
 
-            _options.getOptCharSet(ref _indxCharSetName, ref _indxCharSetSubAct, ref _valCharSetSubCode);
+            _options.GetOptCharSet(ref _indxCharSetName, ref _indxCharSetSubAct, ref _valCharSetSubCode);
 
             _options.GetOptHPGL2(ref _flagMiscBinData);
 
@@ -1045,7 +1045,7 @@ namespace PCLParaphernalia
             command = ((char)cmdByteA).ToString() +           // need to convert these to UPPER for check
                       ((char)cmdByteB).ToString();
 
-            seqKnown = HPGL2Commands.checkCmd(_analysisLevel + _macroLevel,
+            seqKnown = HPGL2Commands.CheckCmd(_analysisLevel + _macroLevel,
                                                command,
                                                ref optReset,
                                                ref optBinarySeq,

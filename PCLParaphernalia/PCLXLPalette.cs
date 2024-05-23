@@ -112,7 +112,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte getColourId(int item)
+        public byte GetColourId(int item)
         {
             return _colourIds[item];
         }

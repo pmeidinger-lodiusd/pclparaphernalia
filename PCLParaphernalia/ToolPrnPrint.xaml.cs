@@ -85,7 +85,7 @@ namespace PCLParaphernalia
                 ToolCommonData.ToolSubIds.None,
                 ToolCommonData.PrintLang.Unknown);
 
-            copyPrnFile(_prnFilename, binWriter);
+            CopyPrnFile(_prnFilename, binWriter);
 
             TargetCore.RequestStreamWrite(false);
         }
@@ -99,7 +99,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool copyPrnFile(string prnFilename, BinaryWriter prnWriter)
+        public static bool CopyPrnFile(string prnFilename, BinaryWriter prnWriter)
         {
             bool OK = true;
 

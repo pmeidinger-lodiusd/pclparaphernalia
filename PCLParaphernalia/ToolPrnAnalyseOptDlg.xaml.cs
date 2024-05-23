@@ -1404,11 +1404,11 @@ namespace PCLParaphernalia
             PrepareTabCharSet(options);
             PrepareTabGen(options);
             PrepareTabClrMap(options);
-            prepareTabHPGL2(options);
+            PrepareTabHPGL2(options);
             PrepareTabPCL(options);
-            prepareTabPCLXL(options);
-            prepareTabPML(options);
-            prepareTabStats(options);
+            PrepareTabPCLXL(options);
+            PrepareTabPML(options);
+            PrepareTabStats(options);
 
             PrepareTabCurF(options, fileSize);
 
@@ -1443,7 +1443,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseClrMapPickerGrid(object sender, RoutedEventArgs e)
+        private void InitialiseClrMapPickerGrid(object sender, RoutedEventArgs e)
         {
             const int reqCols = 10;
 
@@ -1527,7 +1527,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            options.getOptCharSet(ref _indxCharSetName,
+            options.GetOptCharSet(ref _indxCharSetName,
                                    ref _indxCharSetSubAct,
                                    ref _valCharSetSubCode);
 
@@ -1919,7 +1919,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            options.getOptGeneral(ref _indxGenOffsetFormat, ref _flagGenMiscAutoAnalyse, ref _flagGenDiagFileAccess);
+            options.GetOptGeneral(ref _indxGenOffsetFormat, ref _flagGenMiscAutoAnalyse, ref _flagGenDiagFileAccess);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1950,7 +1950,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void prepareTabHPGL2(PrnParseOptions options)
+        private void PrepareTabHPGL2(PrnParseOptions options)
         {
             //----------------------------------------------------------------//
             //                                                                //
@@ -2071,7 +2071,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void prepareTabPCLXL(PrnParseOptions options)
+        private void PrepareTabPCLXL(PrnParseOptions options)
         {
             //----------------------------------------------------------------//
             //                                                                //
@@ -2141,7 +2141,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void prepareTabPML(PrnParseOptions options)
+        private void PrepareTabPML(PrnParseOptions options)
         {
             //----------------------------------------------------------------//
             //                                                                //
@@ -2171,7 +2171,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void prepareTabStats(PrnParseOptions options)
+        private void PrepareTabStats(PrnParseOptions options)
         {
             //----------------------------------------------------------------//
             //                                                                //
@@ -2618,7 +2618,7 @@ namespace PCLParaphernalia
 
         private void txtCurFOffsetStart_LostFocus(object sender, RoutedEventArgs e)
         {
-            validateCurFOffsetStart();
+            ValidateCurFOffsetStart();
         }
 
         //--------------------------------------------------------------------//
@@ -2753,7 +2753,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool validateCurFOffsetStart()
+        private bool ValidateCurFOffsetStart()
         {
             bool OK = true;
 

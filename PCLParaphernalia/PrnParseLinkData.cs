@@ -212,7 +212,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.ContType getContType()
+        public PrnParseConstants.ContType GetContType()
         {
             return _contType;
         }

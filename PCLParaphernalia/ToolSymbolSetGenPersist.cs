@@ -57,7 +57,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataDonor(ref int indxSymSet,
+        public static void LoadDataDonor(ref int indxSymSet,
                                           ref bool flagSymSetUserSet,
                                           ref bool flagSymSetMapPCL,
                                           ref string symSetFile)

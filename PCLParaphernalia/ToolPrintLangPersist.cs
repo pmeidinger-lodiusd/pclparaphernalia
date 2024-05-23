@@ -177,7 +177,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCLXL(ref bool flagTagDataType,
+        public static void LoadDataPCLXL(ref bool flagTagDataType,
                                          ref bool flagTagAttribute,
                                          ref bool flagTagOperator,
                                          ref bool flagTagAttrDefiner,
@@ -359,7 +359,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataFonts(bool flagOptMap)
+        public static void SaveDataFonts(bool flagOptMap)
         {
             RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 

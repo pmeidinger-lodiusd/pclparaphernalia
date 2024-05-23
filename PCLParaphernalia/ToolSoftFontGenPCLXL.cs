@@ -237,24 +237,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private byte lsByte(ushort value)
+        private byte LsByte(ushort value)
         {
             return (byte)(value & 0x00ff);
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // l s U I n t 1 6                                                    //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return low (least-significant) unsigned 16-bit integer from        //
-        // supplied unsigned 32-bit integer.                                  //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private ushort lsUInt16(uint value)
-        {
-            return (ushort)(value & 0x0000ffff);
         }
 
         //--------------------------------------------------------------------//
@@ -267,24 +252,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private byte msByte(ushort value)
+        private byte MsByte(ushort value)
         {
             return (byte)((value & 0xff00) >> 8);
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // m s U I n t 1 6                                                    //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return high (most-significant) unsigned 16-bit integer from        //
-        // supplied unsigned 32-bit integer.                                  //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private ushort msUInt16(uint value)
-        {
-            return (ushort)((value & 0xffff0000) >> 16);
         }
 
         //--------------------------------------------------------------------//
@@ -380,7 +350,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ToolSoftFontGenLog.logCharDetails(_tableLog,
+            ToolSoftFontGenLog.LogCharDetails(_tableLog,
                                                false,
                                                glyphComposite,
                                                charCode,
@@ -420,10 +390,10 @@ namespace PCLParaphernalia
 
                 charHddr[0] = 1;                    // Format
                 charHddr[1] = 0;                    // Class
-                charHddr[2] = msByte(charSize);     // CharSize MSB
-                charHddr[3] = lsByte(charSize);     // CharSize LSB
-                charHddr[4] = msByte(glyphId);      // Glyph Id MSB
-                charHddr[5] = lsByte(glyphId);      // Glyph Id LSB
+                charHddr[2] = MsByte(charSize);     // CharSize MSB
+                charHddr[3] = LsByte(charSize);     // CharSize LSB
+                charHddr[4] = MsByte(glyphId);      // Glyph Id MSB
+                charHddr[5] = LsByte(glyphId);      // Glyph Id LSB
             }
             else if (charClass == 1)
             {
@@ -435,14 +405,14 @@ namespace PCLParaphernalia
 
                 charHddr[0] = 1;                    // Format
                 charHddr[1] = 1;                    // Class
-                charHddr[2] = msByte(charSize);     // CharSize MSB
-                charHddr[3] = lsByte(charSize);     // CharSize LSB
-                charHddr[4] = msByte((ushort)glyphLSB);// Glyph Left Side Bearing
-                charHddr[5] = lsByte((ushort)glyphLSB);// Glyph Left Side Bearing
-                charHddr[6] = msByte(glyphWidth);   // Glyph Width MSB
-                charHddr[7] = lsByte(glyphWidth);   // Glyph Width LSB
-                charHddr[8] = msByte(glyphId);      // Glyph Id MSB
-                charHddr[9] = lsByte(glyphId);      // Glyph Id LSB
+                charHddr[2] = MsByte(charSize);     // CharSize MSB
+                charHddr[3] = LsByte(charSize);     // CharSize LSB
+                charHddr[4] = MsByte((ushort)glyphLSB);// Glyph Left Side Bearing
+                charHddr[5] = LsByte((ushort)glyphLSB);// Glyph Left Side Bearing
+                charHddr[6] = MsByte(glyphWidth);   // Glyph Width MSB
+                charHddr[7] = LsByte(glyphWidth);   // Glyph Width LSB
+                charHddr[8] = MsByte(glyphId);      // Glyph Id MSB
+                charHddr[9] = LsByte(glyphId);      // Glyph Id LSB
             }
             else // charClass == 2
             {
@@ -454,16 +424,16 @@ namespace PCLParaphernalia
 
                 charHddr[0] = 1;                    // Format
                 charHddr[1] = 2;                    // Class
-                charHddr[2] = msByte(charSize);     // CharSize MSB
-                charHddr[3] = lsByte(charSize);     // CharSize LSB
-                charHddr[4] = msByte((ushort)glyphLSB);// Glyph Left Side Bearing
-                charHddr[5] = lsByte((ushort)glyphLSB);// Glyph Left Side Bearing
-                charHddr[6] = msByte(glyphWidth);   // Glyph Width MSB
-                charHddr[7] = lsByte(glyphWidth);   // Glyph Width LSB
-                charHddr[8] = msByte((ushort)glyphTSB);// Glyph Top Side Bearing
-                charHddr[9] = lsByte((ushort)glyphTSB);// Glyph Top Side Bearing
-                charHddr[10] = msByte(glyphId);     // Glyph Id MSB
-                charHddr[11] = lsByte(glyphId);     // Glyph Id LSB
+                charHddr[2] = MsByte(charSize);     // CharSize MSB
+                charHddr[3] = LsByte(charSize);     // CharSize LSB
+                charHddr[4] = MsByte((ushort)glyphLSB);// Glyph Left Side Bearing
+                charHddr[5] = LsByte((ushort)glyphLSB);// Glyph Left Side Bearing
+                charHddr[6] = MsByte(glyphWidth);   // Glyph Width MSB
+                charHddr[7] = LsByte(glyphWidth);   // Glyph Width LSB
+                charHddr[8] = MsByte((ushort)glyphTSB);// Glyph Top Side Bearing
+                charHddr[9] = LsByte((ushort)glyphTSB);// Glyph Top Side Bearing
+                charHddr[10] = MsByte(glyphId);     // Glyph Id MSB
+                charHddr[11] = LsByte(glyphId);     // Glyph Id LSB
             }
 
             _baseHandler.WriteBuffer(hddrSize, charHddr);
@@ -524,7 +494,7 @@ namespace PCLParaphernalia
                     {
                         if (_ttfHandler.GlyphReferencedCheck(glyphCompId))
                         {
-                            ToolSoftFontGenLog.logCharDetails(
+                            ToolSoftFontGenLog.LogCharDetails(
                                 _tableLog,
                                 true,
                                 _ttfHandler.GlyphCompositeCheck(glyphCompId),
@@ -708,12 +678,12 @@ namespace PCLParaphernalia
 
             hddrDesc[0] = 0;                    // Format
             hddrDesc[1] = (byte)PCLXLAttrEnums.Val.ePortraitOrientation;
-            hddrDesc[2] = msByte(symSet);      // Symbol set MSB
-            hddrDesc[3] = lsByte(symSet);      // Symbol Set LSB
+            hddrDesc[2] = MsByte(symSet);      // Symbol set MSB
+            hddrDesc[3] = LsByte(symSet);      // Symbol Set LSB
             hddrDesc[4] = 1;                    // Scaling = TrueType
             hddrDesc[5] = 0;                    // Variety
-            hddrDesc[6] = msByte(numChars);    // NumChars MSB
-            hddrDesc[7] = lsByte(numChars);    // NumChars LSB
+            hddrDesc[6] = MsByte(numChars);    // NumChars MSB
+            hddrDesc[7] = LsByte(numChars);    // NumChars LSB
 
             _baseHandler.WriteHddrFragment(true, cSizeHddrDesc, hddrDesc, ref mod256);
 

@@ -617,7 +617,7 @@ namespace PCLParaphernalia
                                 break;
                         }
 
-                        contType = _linkData.getContType();
+                        contType = _linkData.GetContType();
 
                         if (contType != PrnParseConstants.ContType.None)
                             continuation = true;

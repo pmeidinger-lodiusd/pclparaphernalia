@@ -570,9 +570,9 @@ namespace PCLParaphernalia
 
         private void MetricsLoad()
         {
-            ToolPrintAreaPersist.loadDataCommon(ref _indxPDL);
+            ToolPrintAreaPersist.LoadDataCommon(ref _indxPDL);
 
-            ToolPrintAreaPersist.loadDataPCL("PCL",
+            ToolPrintAreaPersist.LoadDataPCL("PCL",
                                              ref _indxOrientationPCL,
                                              ref _indxPaperSizePCL,
                                              ref _indxPaperTypePCL,
@@ -583,7 +583,7 @@ namespace PCLParaphernalia
                                              ref _customShortEdgeDotsPCL,
                                              ref _customLongEdgeDotsPCL);
 
-            ToolPrintAreaPersist.loadDataPCL("PCLXL",
+            ToolPrintAreaPersist.LoadDataPCL("PCLXL",
                                              ref _indxOrientationPCLXL,
                                              ref _indxPaperSizePCLXL,
                                              ref _indxPaperTypePCLXL,
@@ -645,7 +645,7 @@ namespace PCLParaphernalia
 
             ToolPrintAreaPersist.SaveDataCommon(_indxPDL);
 
-            ToolPrintAreaPersist.saveDataPCL("PCL",
+            ToolPrintAreaPersist.SaveDataPCL("PCL",
                                              _indxOrientationPCL,
                                              _indxPaperSizePCL,
                                              _indxPaperTypePCL,
@@ -656,7 +656,7 @@ namespace PCLParaphernalia
                                              _customShortEdgeDotsPCL,
                                              _customLongEdgeDotsPCL);
 
-            ToolPrintAreaPersist.saveDataPCL("PCLXL",
+            ToolPrintAreaPersist.SaveDataPCL("PCLXL",
                                              _indxOrientationPCLXL,
                                              _indxPaperSizePCLXL,
                                              _indxPaperTypePCLXL,

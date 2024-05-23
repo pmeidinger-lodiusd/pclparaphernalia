@@ -904,7 +904,7 @@ namespace PCLParaphernalia
             prnWriter.Write(bufStd, 0, indStd);
             indStd = 0;
 
-            writeDestBoxRow(prnWriter, rgbClrD1, rgbClrD2, rgbClrBlack,
+            WriteDestBoxRow(prnWriter, rgbClrD1, rgbClrD2, rgbClrBlack,
                              flagOptColour, false);
 
             PCLXLWriter.AddOperator(ref bufStd,
@@ -1645,7 +1645,7 @@ namespace PCLParaphernalia
                 PCLXLWriter.WriteStreamBlock(prnWriter, flagUseMacros,
                                        buffer, ref indBuf);
 
-                writeDestBoxRow(prnWriter, rgbClrD1, rgbClrD2, rgbClrBlack,
+                WriteDestBoxRow(prnWriter, rgbClrD1, rgbClrD2, rgbClrBlack,
                                  flagOptColour, flagUseMacros);
 
                 PCLXLWriter.AddOperator(ref buffer, ref indBuf,
@@ -1695,7 +1695,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void writeDestBoxRow(BinaryWriter prnWriter,
+        private static void WriteDestBoxRow(BinaryWriter prnWriter,
                                              int rgbClrD1,
                                              int rgbClrD2,
                                              int rgbClrBlack,

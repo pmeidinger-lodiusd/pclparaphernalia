@@ -118,7 +118,7 @@ namespace PCLParaphernalia
                 tag = _tagUnknown;
             }
 
-            tag.getDetails(ref flagReserved,
+            tag.GetDetails(ref flagReserved,
                             ref flagArray,
                             ref groupSize,
                             ref unitSize,

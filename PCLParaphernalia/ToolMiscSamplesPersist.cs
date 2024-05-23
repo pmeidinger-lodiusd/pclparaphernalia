@@ -99,7 +99,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCapture(ToolCommonData.ToolSubIds crntToolSubId, ToolCommonData.PrintLang crntPDL, ref string captureFile)
+        public static void LoadDataCapture(ToolCommonData.ToolSubIds crntToolSubId, ToolCommonData.PrintLang crntPDL, ref string captureFile)
         {
             RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
@@ -263,7 +263,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataTypeColourSample(string pdlName,
+        public static void LoadDataTypeColourSample(string pdlName,
                                                      string sampleName,
                                                      int sampleCt,
                                                      ref int[] values,
@@ -520,7 +520,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataTypeTxtMod(string pdlName, ref int indxTxtModType, ref bool flagFormAsMacro)
+        public static void LoadDataTypeTxtMod(string pdlName, ref int indxTxtModType, ref bool flagFormAsMacro)
         {
             RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
@@ -943,7 +943,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataTypeUnicode(string pdlName,
+        public static void SaveDataTypeUnicode(string pdlName,
                                                int indxFont,
                                                PCLFonts.Variant variant,
                                                int codePoint,

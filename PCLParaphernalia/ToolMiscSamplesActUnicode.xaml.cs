@@ -58,7 +58,7 @@ namespace PCLParaphernalia
                 string utf8HexVal = string.Empty;
                 uint unicodeUCS2 = (uint)((cbUnicodeCp01.SelectedIndex * 256) + cbUnicodeCp02.SelectedIndex);
 
-                string unicodeBlock = UnicodeBlocks.getBlocknameForCodepoint(unicodeUCS2);
+                string unicodeBlock = UnicodeBlocks.GetBlocknameForCodepoint(unicodeUCS2);
 
                 UnicodeCategory unicodeCat = CharUnicodeInfo.GetUnicodeCategory((char)unicodeUCS2);
 
@@ -334,14 +334,14 @@ namespace PCLParaphernalia
 
         public void MetricsSaveDataUnicode()
         {
-            ToolMiscSamplesPersist.saveDataTypeUnicode(
+            ToolMiscSamplesPersist.SaveDataTypeUnicode(
                 "PCL",
                 _indxUnicodeFontPCL,
                 _unicodeFontVarPCL,
                 (int)_unicodeUCS2PCL,
                 _flagUnicodeFormAsMacroPCL);
 
-            ToolMiscSamplesPersist.saveDataTypeUnicode(
+            ToolMiscSamplesPersist.SaveDataTypeUnicode(
                 "PCLXL",
                 _indxUnicodeFontPCLXL,
                 _unicodeFontVarPCLXL,

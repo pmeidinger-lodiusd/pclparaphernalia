@@ -130,7 +130,7 @@ namespace PCLParaphernalia
             _indxClrMapBack = new int[ctRowTypes];
             _indxClrMapFore = new int[ctRowTypes];
 
-            parent.getOptCharSet(ref _indxCharSetName,
+            parent.GetOptCharSet(ref _indxCharSetName,
                                   ref _indxCharSetSubAct,
                                   ref _valCharSetSubCode);
 
@@ -148,7 +148,7 @@ namespace PCLParaphernalia
                                ref _valCurFOffsetEnd,
                                ref _valCurFOffsetMax);
 
-            parent.getOptGeneral(ref _indxGenOffsetFormat,
+            parent.GetOptGeneral(ref _indxGenOffsetFormat,
                                   ref _flagGenMiscAutoAnalyse,
                                   ref _flagGenDiagFileAccess);
 
@@ -294,7 +294,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getOptCharSet(
+        public void GetOptCharSet(
             ref PrnParseConstants.OptCharSets indxName,
             ref PrnParseConstants.OptCharSetSubActs indxSubAct,
             ref int valSubCode)
@@ -417,7 +417,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getOptGeneral(
+        public void GetOptGeneral(
             ref PrnParseConstants.OptOffsetFormats indxOffsetFormat,
             ref bool flagAutoAnalyse,
             ref bool flagDiagFileAccess)

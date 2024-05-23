@@ -143,7 +143,7 @@ namespace PCLParaphernalia
                 indxOffsetFormat = options.IndxGenOffsetFormat;
                 showBinData = options.FlagPCLMiscBinData;
 
-                options.getOptCharSet(ref indxCharSetName, ref indxCharSetSubAct, ref valCharSetSubCode);
+                options.GetOptCharSet(ref indxCharSetName, ref indxCharSetSubAct, ref valCharSetSubCode);
 
                 PrnParseCommon.AddDataRow(
                     PrnParseRowTypes.Type.DataBinary,
@@ -638,7 +638,7 @@ namespace PCLParaphernalia
                 indxOffsetFormat = options.IndxGenOffsetFormat;
                 showBinData = options.FlagPCLMiscBinData;
 
-                options.getOptCharSet(ref indxCharSetName, ref indxCharSetSubAct, ref valCharSetSubCode);
+                options.GetOptCharSet(ref indxCharSetName, ref indxCharSetSubAct, ref valCharSetSubCode);
 
                 PrnParseCommon.AddDataRow(
                     PrnParseRowTypes.Type.DataBinary,
@@ -4454,7 +4454,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool decodeDitherMatrix(
+        public bool DecodeDitherMatrix(
             int binDataLen,
             int fileOffset,
             byte[] buf,
@@ -4915,7 +4915,7 @@ namespace PCLParaphernalia
             indxOffsetFormat = options.IndxGenOffsetFormat;
             showBinData = options.FlagPCLMiscBinData;
 
-            options.getOptCharSet(ref indxCharSetName, ref indxCharSetSubAct, ref valCharSetSubCode);
+            options.GetOptCharSet(ref indxCharSetName, ref indxCharSetSubAct, ref valCharSetSubCode);
 
             planeNo = linkData.EntryNo;
 
@@ -5655,7 +5655,7 @@ namespace PCLParaphernalia
             indxOffsetFormat = options.IndxGenOffsetFormat;
             showBinData = options.FlagPCLMiscBinData;
 
-            options.getOptCharSet(ref indxCharSetName, ref indxCharSetSubAct, ref valCharSetSubCode);
+            options.GetOptCharSet(ref indxCharSetName, ref indxCharSetSubAct, ref valCharSetSubCode);
 
             offset = bufOffset;
 
@@ -6665,7 +6665,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool decodeViewIlluminant(
+        public bool DecodeViewIlluminant(
             int binDataLen,
             int fileOffset,
             byte[] buf,

@@ -62,108 +62,6 @@ namespace PCLParaphernalia
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
-        // f i n d P J L T e r m i n a t o r                                  //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Search for PJL terminator character.                               //
-        // This should be a LineFeed (<LF>, 0x0a) character, but may be an    //
-        // Escape character (<Esc>, 0x1b) signalling return to PCL.           //
-        //                                                                    //
-        // This is to make sure that the termination character is in the      //
-        // buffer before processing the command, so that we don't have to     //
-        // cater for doing a 'continuation' read part way through processing  //
-        // the command.                                                       //
-        //                                                                    //
-        // Initiate continuation action if terminator is not found in buffer, //
-        // subject to a maximum command length (to prevent recursive          //
-        // continuation actions).                                             //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private bool findPJLTerminator(
-            int bufRem,
-            int bufOffset,
-            ref int commandLen,
-            ref bool continuation)
-        {
-            PrnParseConstants.ContType contType =
-                PrnParseConstants.ContType.None;
-
-            byte crntByte;
-
-            int cmdLen,
-                  rem,
-                  offset;
-
-            bool foundTerm,
-                    foundLF;
-
-            continuation = false;
-            foundTerm = false;
-            foundLF = false;
-
-            rem = bufRem - _lenPJLIntro;
-            offset = bufOffset + _lenPJLIntro;
-            cmdLen = _lenPJLIntro;
-
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Search for termination character.                              //
-            //                                                                //
-            //----------------------------------------------------------------//
-
-            while ((!foundTerm) && (rem > 0) && (cmdLen < _maxPJLCmdLen))
-            {
-                crntByte = _buf[offset];
-
-                if (crntByte == PrnParseConstants.asciiLF)
-                {
-                    foundLF = true;
-                    foundTerm = true;
-                    offset++;
-                    cmdLen++;
-                    rem--;
-                }
-                else if (crntByte == PrnParseConstants.asciiEsc)
-                {
-                    foundTerm = true;
-                }
-                else
-                {
-                    offset++;
-                    cmdLen++;
-                    rem--;
-                }
-            }
-
-            if ((!foundTerm) && (cmdLen != _maxPJLCmdLen))
-            {
-                //------------------------------------------------------------//
-                //                                                            //
-                // Termination character not found before buffer exhausted,   //
-                // or maximum command length exceeded.                        //
-                // Initiate (backtracking) continuation action.               //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                continuation = true;
-
-                contType = PrnParseConstants.ContType.PJL;
-
-                _linkData.SetBacktrack(contType, -bufRem);
-
-                commandLen = 0;
-            }
-            else
-            {
-                commandLen = cmdLen;
-            }
-
-            return foundLF;
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
         // p a r s e B u f f e r                                              //
         //--------------------------------------------------------------------//
         //                                                                    //
@@ -205,7 +103,7 @@ namespace PCLParaphernalia
 
             _indxOffsetFormat = _options.IndxGenOffsetFormat;
 
-            _options.getOptCharSet(ref _indxCharSetName, ref _indxCharSetSubAct, ref _valCharSetSubCode);
+            _options.GetOptCharSet(ref _indxCharSetName, ref _indxCharSetSubAct, ref _valCharSetSubCode);
 
             _endOffset = _options.ValCurFOffsetEnd;
 

@@ -125,7 +125,7 @@
 
         public static byte GetColourId(int paletteIndex, int colourIndex)
         {
-            return _palettes[paletteIndex].getColourId(colourIndex);
+            return _palettes[paletteIndex].GetColourId(colourIndex);
         }
 
         //--------------------------------------------------------------------//

@@ -454,7 +454,7 @@ namespace PCLParaphernalia
                             }
                             else if (_indxPatternTypePCLXL == PatternType.XHatch)
                             {
-                                ToolMiscSamplesActPatternXHatchPCLXL.generateJob(
+                                ToolMiscSamplesActPatternXHatchPCLXL.GenerateJob(
                                     binWriter,
                                     _subsetPaperSizes[_indxPaperSizePCLXL],
                                     _subsetPaperTypes[_indxPaperTypePCLXL],
@@ -981,7 +981,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             MetricsLoadDataColour();
-            metricsLoadDataLogOper();
+            MetricsLoadDataLogOper();
             MetricsLoadDataLogPage();
             MetricsLoadDataPattern();
             MetricsLoadDataTxtMod();

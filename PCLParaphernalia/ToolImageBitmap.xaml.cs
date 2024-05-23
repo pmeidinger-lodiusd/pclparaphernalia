@@ -91,7 +91,7 @@ namespace PCLParaphernalia
         {
             InitializeComponent();
 
-            initialise();
+            Initialise();
 
             crntPDL = _crntPDL;
         }
@@ -111,7 +111,7 @@ namespace PCLParaphernalia
 
             string filename = _bitmapFilename;
 
-            selected = selectImageFile(ref filename);
+            selected = SelectImageFile(ref filename);
 
             if (selected)
             {
@@ -148,7 +148,7 @@ namespace PCLParaphernalia
             _indxPDL = cbPDL.SelectedIndex;
             _crntPDL = (ToolCommonData.PrintLang)_subsetPDLs[_indxPDL];
 
-            pdlOptionsStore();
+            PdlOptionsStore();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -198,7 +198,7 @@ namespace PCLParaphernalia
 
                     if (_crntPDL == ToolCommonData.PrintLang.PCL)
                     {
-                        ToolImageBitmapPCL.generateJob(
+                        ToolImageBitmapPCL.GenerateJob(
                             binWriter,
                             _subsetPaperSizes[_indxPaperSizePCL],
                             _subsetPaperTypes[_indxPaperTypePCL],
@@ -382,12 +382,12 @@ namespace PCLParaphernalia
         {
             if (_initialised)
             {
-                pdlOptionsStore();
+                PdlOptionsStore();
 
                 _indxPDL = cbPDL.SelectedIndex;
                 _crntPDL = (ToolCommonData.PrintLang)_subsetPDLs[_indxPDL];
 
-                pdlOptionsRestore();
+                PdlOptionsRestore();
 
                 if (_crntPDL == ToolCommonData.PrintLang.PCL)
                 {
@@ -431,7 +431,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void giveCrntPDL(ref ToolCommonData.PrintLang crntPDL)
+        public void GiveCrntPDL(ref ToolCommonData.PrintLang crntPDL)
         {
             crntPDL = _crntPDL;
         }
@@ -445,7 +445,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialise()
+        private void Initialise()
         {
             int index;
 
@@ -522,7 +522,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            resetTarget();
+            ResetTarget();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -530,7 +530,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            metricsLoad();
+            MetricsLoad();
 
             grpProps.Visibility = Visibility.Hidden;
 
@@ -542,7 +542,7 @@ namespace PCLParaphernalia
 
             txtFilename.Text = _bitmapFilename;
 
-            pdlOptionsRestore();
+            PdlOptionsRestore();
 
             cbPDL.SelectedIndex = (byte)_indxPDL;
 
@@ -558,7 +558,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsLoad()
+        private void MetricsLoad()
         {
             int tempPosX = 100,
                   tempPosY = 100;
@@ -647,7 +647,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsSave()
+        public void MetricsSave()
         {
             ToolImageBitmapPersist.SaveDataCommon(_indxPDL,
                                                   _bitmapFilename,
@@ -677,7 +677,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void pdlOptionsRestore()
+        private void PdlOptionsRestore()
         {
             if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
@@ -703,7 +703,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void pdlOptionsStore()
+        private void PdlOptionsStore()
         {
             if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
@@ -733,7 +733,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetTarget()
+        public void ResetTarget()
         {
             TargetCore.Target targetType = TargetCore.GetTargetType();
 
@@ -754,10 +754,7 @@ namespace PCLParaphernalia
                                                   ref netTimeoutSend,
                                                   ref netTimeoutReceive);
 
-                btnGenerate.Content = "Generate & send test data to " +
-                                      "\r\n" +
-                                      netPrnAddress + " : " +
-                                      netPrnPort.ToString();
+                btnGenerate.Content = "Generate & send test data to\r\n" + netPrnAddress + " : " + netPrnPort.ToString();
             }
             else if (targetType == TargetCore.Target.WinPrinter)
             {
@@ -765,9 +762,7 @@ namespace PCLParaphernalia
 
                 TargetCore.MetricsLoadWinPrinter(ref winPrintername);
 
-                btnGenerate.Content = "Generate & send test data to printer " +
-                                      "\r\n" +
-                                      winPrintername;
+                btnGenerate.Content = "Generate & send test data to printer \r\n" + winPrintername;
             }
         }
 
@@ -780,7 +775,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool selectImageFile(ref string selectedName)
+        private bool SelectImageFile(ref string selectedName)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(selectedName);
 

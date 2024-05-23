@@ -42,7 +42,7 @@
             Mnemonic = mnemonic;
             DescExcMnemonic = description;
             FlagLineTerm = flagLineTerm;
-            this.makeOvlAct = makeOvlAct;
+            this.MakeOvlAct = makeOvlAct;
             _seqGrp = seqGrp;
 
             _statsCtParent = 0;
@@ -107,7 +107,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void incrementStatisticsCount(int level)
+        public void IncrementStatisticsCount(int level)
         {
             if (level == 0)
                 _statsCtParent++;
@@ -121,7 +121,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.OvlAct makeOvlAct { get; }
+        public PrnParseConstants.OvlAct MakeOvlAct { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -140,7 +140,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetStatistics()
+        public void ResetStatistics()
         {
             _statsCtParent = 0;
             _statsCtChild = 0;

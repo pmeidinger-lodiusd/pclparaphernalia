@@ -133,7 +133,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCommon(ref int indxPDL)
+        public static void LoadDataCommon(ref int indxPDL)
         {
             RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
@@ -166,7 +166,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCL(string pdlName,
+        public static void LoadDataPCL(string pdlName,
                                        ref int indxOrientation,
                                        ref int indxPaperSize,
                                        ref int indxPaperType,
@@ -291,7 +291,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCL(string pdlName,
+        public static void SaveDataPCL(string pdlName,
                                        int indxOrientation,
                                        int indxPaperSize,
                                        int indxPaperType,

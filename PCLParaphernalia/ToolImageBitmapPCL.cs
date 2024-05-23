@@ -20,7 +20,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateImage(BinaryWriter prnWriter,
+        private static void GenerateImage(BinaryWriter prnWriter,
                                           float destPosX,
                                           float destPosY,
                                           int destScalePercentX,
@@ -77,7 +77,7 @@ namespace PCLParaphernalia
                 return;
             }
 
-            generateImageHeader(prnWriter,
+            GenerateImageHeader(prnWriter,
                                 srcBitsPerPixel,
                                 srcWidth,
                                 srcHeight,
@@ -91,12 +91,12 @@ namespace PCLParaphernalia
                                 srcPaletteEntries,
                                 srcBlackWhite);
 
-            generateImageData(prnWriter,
+            GenerateImageData(prnWriter,
                               srcBitsPerPixel,
                               srcWidth,
                               srcHeight);
 
-            generateImageTrailer(prnWriter);
+            GenerateImageTrailer(prnWriter);
         }
 
         //--------------------------------------------------------------------//
@@ -108,7 +108,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateImageData(BinaryWriter prnWriter,
+        private static void GenerateImageData(BinaryWriter prnWriter,
                                               ushort srcBitsPerPixel,
                                               int srcWidth,
                                               int srcHeight)
@@ -193,7 +193,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateImageHeader(BinaryWriter prnWriter,
+        private static void GenerateImageHeader(BinaryWriter prnWriter,
                                                 ushort srcBitsPerPixel,
                                                 int srcWidth,
                                                 int srcHeight,
@@ -376,7 +376,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateImageTrailer(BinaryWriter prnWriter)
+        private static void GenerateImageTrailer(BinaryWriter prnWriter)
         {
             PCLWriter.RasterEnd(prnWriter);
 
@@ -392,7 +392,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generateJob(BinaryWriter prnWriter,
+        public static void GenerateJob(BinaryWriter prnWriter,
                                        int paperSize,
                                        int paperType,
                                        int orientation,
@@ -402,19 +402,19 @@ namespace PCLParaphernalia
                                        int destScalePercentY,
                                        int rasterResolution)
         {
-            generateJobHeader(prnWriter,
+            GenerateJobHeader(prnWriter,
                               paperSize,
                               paperType,
                               orientation);
 
-            generateImage(prnWriter,
+            GenerateImage(prnWriter,
                           destPosX,
                           destPosY,
                           destScalePercentX,
                           destScalePercentY,
                           rasterResolution);
 
-            generateJobTrailer(prnWriter);
+            GenerateJobTrailer(prnWriter);
         }
 
         //--------------------------------------------------------------------//
@@ -426,7 +426,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateJobHeader(BinaryWriter prnWriter,
+        private static void GenerateJobHeader(BinaryWriter prnWriter,
                                               int paperSize,
                                               int paperType,
                                               int orientation)
@@ -449,7 +449,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateJobTrailer(BinaryWriter prnWriter)
+        private static void GenerateJobTrailer(BinaryWriter prnWriter)
         {
             PCLWriter.StdJobTrailer(prnWriter, false, 0);
         }

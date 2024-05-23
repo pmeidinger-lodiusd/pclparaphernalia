@@ -60,7 +60,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getDetails(ref bool flagReserved,
+        public void GetDetails(ref bool flagReserved,
                                 ref bool flagArray,
                                 ref int groupSize,
                                 ref int unitSize,

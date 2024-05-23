@@ -32,7 +32,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkIPAddress(string ipString, ref IPAddress ipAddress)
+        public static bool CheckIPAddress(string ipString, ref IPAddress ipAddress)
         {
             bool OK = IPAddress.TryParse(ipString, out ipAddress);
 
@@ -48,7 +48,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void closeResponseConnection()
+        public static void CloseResponseConnection()
         {
             _socket.Close();
         }
@@ -119,7 +119,7 @@ namespace PCLParaphernalia
 
             IPAddress ipAddress = new IPAddress(0x00);
 
-            if (checkIPAddress(ipString, ref ipAddress))
+            if (CheckIPAddress(ipString, ref ipAddress))
             {
                 //------------------------------------------------------------//
                 //                                                            //

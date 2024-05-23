@@ -58,7 +58,7 @@ namespace PCLParaphernalia
 
                 ReportCore.HddrTitle(writer, rptFileFmt, false, "*** Status Readback response data ***");
 
-                reportBody(rptFileFmt, writer, txtReply);
+                ReportBody(rptFileFmt, writer, txtReply);
 
                 ReportCore.DocFinalise(rptFileFmt, writer);
 
@@ -75,10 +75,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void reportBody(
-            ReportCore.RptFileFmt rptFileFmt,
-            object writer,
-            TextBox txtReply)
+        private static void ReportBody(ReportCore.RptFileFmt rptFileFmt, object writer, TextBox txtReply)
         {
             const int maxLineLen = 127;
 

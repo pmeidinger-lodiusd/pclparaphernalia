@@ -453,7 +453,7 @@ namespace PCLParaphernalia
                     {
                         tabLogOperClrRGBPCLXL.IsSelected = true;
 
-                        initialiseDataLogOperClrsPCLXL();
+                        InitialiseDataLogOperClrsPCLXL();
                     }
                 }
             }
@@ -827,7 +827,7 @@ namespace PCLParaphernalia
                 {
                     tabLogOperClrRGBPCLXL.IsSelected = true;
 
-                    initialiseDataLogOperClrsPCLXL();
+                    InitialiseDataLogOperClrsPCLXL();
                 }
 
                 chkOptFormAsMacro.IsChecked = _flagLogOperUseMacrosPCLXL;
@@ -956,7 +956,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseDataLogOperClrsPCLXL()
+        private void InitialiseDataLogOperClrsPCLXL()
         {
             short tempCt;
 
@@ -1286,7 +1286,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsLoadDataLogOper()
+        public void MetricsLoadDataLogOper()
         {
             bool dummyBool = false;
 

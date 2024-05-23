@@ -157,7 +157,7 @@ namespace PCLParaphernalia
 
         public static void CustomDataCopy(int index)
         {
-            _paperSizes[index].customDataCopy(_paperSizes[(int)Index.Custom]);
+            _paperSizes[index].CustomDataCopy(_paperSizes[(int)Index.Custom]);
         }
 
         //--------------------------------------------------------------------//

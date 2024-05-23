@@ -61,7 +61,7 @@
             _flagValIsLen = flagValIsLen;
             _flagValIsPCL = flagValIsPCL;
             _actionType = actionType;
-            this.makeOvlAct = makeOvlAct;
+            this.MakeOvlAct = makeOvlAct;
             Description = description;
 
             _statsCtParent = 0;
@@ -93,7 +93,7 @@
             flagUintTxt = _flagUintTxt;
             flagValIsLen = _flagValIsLen;
             flagValIsPCL = _flagValIsPCL;
-            makeOvlAct = this.makeOvlAct;
+            makeOvlAct = this.MakeOvlAct;
             description = Description;
         }
 
@@ -152,7 +152,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.OvlAct makeOvlAct { get; }
+        public PrnParseConstants.OvlAct MakeOvlAct { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

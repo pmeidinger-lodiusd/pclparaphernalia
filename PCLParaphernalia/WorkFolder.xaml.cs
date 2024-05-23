@@ -146,7 +146,7 @@ namespace PCLParaphernalia
 
         private void MetricsSave()
         {
-            TargetPersist.saveDataWorkFolder(_workFoldername);
+            TargetPersist.SaveDataWorkFolder(_workFoldername);
         }
 
         //--------------------------------------------------------------------//

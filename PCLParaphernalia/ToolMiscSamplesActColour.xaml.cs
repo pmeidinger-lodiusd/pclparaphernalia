@@ -401,7 +401,7 @@ namespace PCLParaphernalia
 
             _samplesPCL_CID = new int[_sampleCtPCL_CID];
 
-            ToolMiscSamplesPersist.loadDataTypeColourSample(
+            ToolMiscSamplesPersist.LoadDataTypeColourSample(
                 "PCL",
                 "Imaging",
                 _sampleCtPCL_CID,
@@ -423,7 +423,7 @@ namespace PCLParaphernalia
 
             _samplesPCLXL_Gray = new int[_sampleCtPCLXL_Gray];
 
-            ToolMiscSamplesPersist.loadDataTypeColourSample(
+            ToolMiscSamplesPersist.LoadDataTypeColourSample(
                 "PCLXL",
                 "Gray",
                 _sampleCtPCLXL_Gray,
@@ -432,7 +432,7 @@ namespace PCLParaphernalia
 
             _samplesPCLXL_RGB = new int[_sampleCtPCLXL_RGB];
 
-            ToolMiscSamplesPersist.loadDataTypeColourSample(
+            ToolMiscSamplesPersist.LoadDataTypeColourSample(
                 "PCLXL",
                 "RGB",
                 _sampleCtPCLXL_RGB,

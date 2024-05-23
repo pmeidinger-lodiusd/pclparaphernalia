@@ -41,7 +41,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void logCharDetails(DataTable table,
+        public static void LogCharDetails(DataTable table,
                                            bool glyphAlreadyPresent,
                                            bool composite,
                                            ushort charCode,

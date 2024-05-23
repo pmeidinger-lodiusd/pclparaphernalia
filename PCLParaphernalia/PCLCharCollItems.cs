@@ -44,7 +44,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ObservableCollection<PCLCharCollItem> loadCompListUnicode()
+        public ObservableCollection<PCLCharCollItem> LoadCompListUnicode()
         {
             ObservableCollection<PCLCharCollItem> objColEmp = new ObservableCollection<PCLCharCollItem>();
 

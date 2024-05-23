@@ -454,7 +454,7 @@ namespace PCLParaphernalia
                 _symSetUserFile = filename;
                 txtSymSetFile.Text = _symSetUserFile;
 
-                checkPCLSymSetFile();
+                CheckPCLSymSetFile();
 
                 SetSymSetAttributesTarget();
             }
@@ -989,7 +989,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void checkPCLSymSetFile()
+        private void CheckPCLSymSetFile()
         {
             bool flagOK = true;
 
@@ -1249,7 +1249,7 @@ namespace PCLParaphernalia
                 grpPCLCharComp.Visibility = Visibility.Hidden;
                 grpSymSetMapType.Visibility = Visibility.Hidden;
 
-                checkPCLSymSetFile();
+                CheckPCLSymSetFile();
 
                 SetSymSetAttributesTarget();
             }
@@ -1694,7 +1694,7 @@ namespace PCLParaphernalia
 
             PCLCharCollItems items = new PCLCharCollItems();
 
-            _charCollCompListUnicode = items.loadCompListUnicode();
+            _charCollCompListUnicode = items.LoadCompListUnicode();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -2240,7 +2240,7 @@ bitVal;
             _symSetUnbound = false;
             _symSetUserSet = true;
 
-            checkPCLSymSetFile();
+            CheckPCLSymSetFile();
 
             SetSymSetAttributesTarget();
 
@@ -3365,7 +3365,7 @@ bitVal;
             {
                 _symSetUserFile = txtSymSetFile.Text;
 
-                checkPCLSymSetFile();
+                CheckPCLSymSetFile();
 
                 SetSymSetAttributesTarget();
             }

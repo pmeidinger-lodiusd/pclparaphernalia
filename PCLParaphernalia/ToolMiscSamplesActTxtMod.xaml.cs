@@ -189,7 +189,7 @@ namespace PCLParaphernalia
         {
             int tmpInt = 0;
 
-            ToolMiscSamplesPersist.loadDataTypeTxtMod("PCL", ref tmpInt, ref _flagTxtModFormAsMacroPCL);
+            ToolMiscSamplesPersist.LoadDataTypeTxtMod("PCL", ref tmpInt, ref _flagTxtModFormAsMacroPCL);
 
             if (tmpInt == (int)TxtModType.Pat)
                 _indxTxtModTypePCL = TxtModType.Pat;
@@ -198,7 +198,7 @@ namespace PCLParaphernalia
             else
                 _indxTxtModTypePCL = TxtModType.Chr;
 
-            ToolMiscSamplesPersist.loadDataTypeTxtMod("PCLXL", ref tmpInt, ref _flagTxtModFormAsMacroPCLXL);
+            ToolMiscSamplesPersist.LoadDataTypeTxtMod("PCLXL", ref tmpInt, ref _flagTxtModFormAsMacroPCLXL);
 
             if (tmpInt == (int)TxtModType.Pat)
                 _indxTxtModTypePCLXL = TxtModType.Pat;

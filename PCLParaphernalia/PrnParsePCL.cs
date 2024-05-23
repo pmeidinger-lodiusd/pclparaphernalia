@@ -139,7 +139,7 @@ namespace PCLParaphernalia
 
             _indxOffsetFormat = options.IndxGenOffsetFormat;
 
-            _options.getOptCharSet(ref _indxCharSetName,
+            _options.GetOptCharSet(ref _indxCharSetName,
                                     ref _indxCharSetSubAct,
                                     ref _valCharSetSubCode);
 
@@ -583,7 +583,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                dataOK = _parsePCLBinary.decodeDitherMatrix(
+                dataOK = _parsePCLBinary.DecodeDitherMatrix(
                     downloadRem,
                     _fileOffset,
                     _buf,
@@ -596,7 +596,7 @@ namespace PCLParaphernalia
                 if (!dataOK)
                     invalidSeqFound = true;
 
-                if (_linkData.getContType() == PrnParseConstants.ContType.None)
+                if (_linkData.GetContType() == PrnParseConstants.ContType.None)
                 {
                     continuation = false;
                     _linkData.ResetContData();
@@ -624,7 +624,7 @@ namespace PCLParaphernalia
                 if (!dataOK)
                     invalidSeqFound = true;
 
-                if (_linkData.getContType() == PrnParseConstants.ContType.None)
+                if (_linkData.GetContType() == PrnParseConstants.ContType.None)
                 {
                     continuation = false;
                     _linkData.ResetContData();
@@ -652,7 +652,7 @@ namespace PCLParaphernalia
                 if (!dataOK)
                     invalidSeqFound = true;
 
-                if (_linkData.getContType() == PrnParseConstants.ContType.None)
+                if (_linkData.GetContType() == PrnParseConstants.ContType.None)
                 {
                     continuation = false;
                     _linkData.ResetContData();
@@ -807,7 +807,7 @@ namespace PCLParaphernalia
                 if (!dataOK)
                     invalidSeqFound = true;
 
-                if (_linkData.getContType() == PrnParseConstants.ContType.None)
+                if (_linkData.GetContType() == PrnParseConstants.ContType.None)
                 {
                     continuation = false;
                     _linkData.ResetContData();
@@ -822,7 +822,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                dataOK = _parsePCLBinary.decodeViewIlluminant(
+                dataOK = _parsePCLBinary.DecodeViewIlluminant(
                     downloadRem,
                     _fileOffset,
                     _buf,
@@ -2212,7 +2212,7 @@ namespace PCLParaphernalia
 
                         if (breakpoint)
                         {
-                            contType = _linkData.getContType();
+                            contType = _linkData.GetContType();
 
                             comboModified = _linkData.PclComboModified;
 
@@ -3116,7 +3116,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    dataOK = _parsePCLBinary.decodeDitherMatrix(
+                    dataOK = _parsePCLBinary.DecodeDitherMatrix(
                         binDataLen,
                         _fileOffset,
                         _buf,
@@ -3257,7 +3257,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    dataOK = _parsePCLBinary.decodeViewIlluminant(
+                    dataOK = _parsePCLBinary.DecodeViewIlluminant(
                         binDataLen,
                         _fileOffset,
                         _buf,

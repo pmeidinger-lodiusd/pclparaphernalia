@@ -120,7 +120,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCounts(DataTable table, bool incUsedSeqsOnly, bool excUnusedObsSeqs)
+        public static void DisplayStatsCounts(DataTable table, bool incUsedSeqsOnly, bool excUnusedObsSeqs)
         {
             int count = 0;
 

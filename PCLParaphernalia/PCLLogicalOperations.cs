@@ -343,7 +343,7 @@
 
         public static string GetDescShort(int index)
         {
-            return _rops[index].getDescShort();
+            return _rops[index].GetDescShort();
         }
 
         //--------------------------------------------------------------------//

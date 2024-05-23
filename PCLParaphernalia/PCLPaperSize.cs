@@ -87,9 +87,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void customDataCopy(PCLPaperSize customEntry)
+        public void CustomDataCopy(PCLPaperSize customEntry)
         {
-            customEntry.customDataPaste(Name,
+            customEntry.CustomDataPaste(Name,
                                          IsMetricSize,
                                          _paperSizeIsRare,
                                          _sizeUnitsPerInch,
@@ -113,7 +113,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void customDataPaste(string donorName,
+        private void CustomDataPaste(string donorName,
                                       bool isMetricSize,
                                       bool isRareSize,
                                       ushort sizeUnitsPerInch,

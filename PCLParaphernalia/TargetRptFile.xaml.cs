@@ -43,7 +43,7 @@ namespace PCLParaphernalia
             _crntSubId = crntSubId;
             _crntPDL = crntPDL;
 
-            initialise();
+            Initialise();
         }
 
         //--------------------------------------------------------------------//
@@ -113,7 +113,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialise()
+        private void Initialise()
         {
             btnOK.Visibility = Visibility.Hidden;
 

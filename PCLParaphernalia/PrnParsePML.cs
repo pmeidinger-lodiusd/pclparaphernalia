@@ -97,7 +97,7 @@ namespace PCLParaphernalia
 
             _indxOffsetFormat = options.IndxGenOffsetFormat;
 
-            options.getOptCharSet(ref _indxCharSetName, ref _indxCharSetSubAct, ref _valCharSetSubCode);
+            options.GetOptCharSet(ref _indxCharSetName, ref _indxCharSetSubAct, ref _valCharSetSubCode);
 
             seqLen = seqDataLen / 2;
 
@@ -272,7 +272,7 @@ namespace PCLParaphernalia
 
             _indxOffsetFormat = options.IndxGenOffsetFormat;
 
-            options.getOptCharSet(ref _indxCharSetName,
+            options.GetOptCharSet(ref _indxCharSetName,
                                    ref _indxCharSetSubAct,
                                    ref _valCharSetSubCode);
 

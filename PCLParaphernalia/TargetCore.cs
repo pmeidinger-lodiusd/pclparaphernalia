@@ -119,7 +119,7 @@ namespace PCLParaphernalia
             }
             else if (crntToolId == ToolCommonData.ToolIds.FormSample)
             {
-                ToolFormSamplePersist.loadDataCapture(crntPDL, ref _saveFilename);
+                ToolFormSamplePersist.LoadDataCapture(crntPDL, ref _saveFilename);
             }
             else if (crntToolId == ToolCommonData.ToolIds.ImageBitmap)
             {
@@ -146,7 +146,7 @@ namespace PCLParaphernalia
 
             else if (crntToolId == ToolCommonData.ToolIds.MiscSamples)
             {
-                ToolMiscSamplesPersist.loadDataCapture(
+                ToolMiscSamplesPersist.LoadDataCapture(
                                          crntToolSubId,
                                          crntPDL,
                                          ref _saveFilename);
@@ -322,7 +322,7 @@ namespace PCLParaphernalia
             if (crntToolId == ToolCommonData.ToolIds.FontSample)
                 ToolFontSamplePersist.SaveDataCapture(crntPDL, saveFilename);
             else if (crntToolId == ToolCommonData.ToolIds.FormSample)
-                ToolFormSamplePersist.saveDataCapture(crntPDL, saveFilename);
+                ToolFormSamplePersist.SaveDataCapture(crntPDL, saveFilename);
             else if (crntToolId == ToolCommonData.ToolIds.ImageBitmap)
                 ToolImageBitmapPersist.SaveDataCapture(crntPDL, saveFilename);
             else if (crntToolId == ToolCommonData.ToolIds.PrintArea)
@@ -572,7 +572,7 @@ namespace PCLParaphernalia
 
                 IPAddress ipAddress = new IPAddress(0x00);
 
-                OK = TargetNetPrint.checkIPAddress(_netPrinterAddress, ref ipAddress);
+                OK = TargetNetPrint.CheckIPAddress(_netPrinterAddress, ref ipAddress);
 
                 if (!OK)
                 {
@@ -657,7 +657,7 @@ namespace PCLParaphernalia
             if ((_targetType == Target.NetPrinter) &&
                 (_binWriter != null))
             {
-                TargetNetPrint.closeResponseConnection();
+                TargetNetPrint.CloseResponseConnection();
             }
         }
 

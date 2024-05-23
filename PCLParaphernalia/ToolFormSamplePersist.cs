@@ -78,8 +78,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCapture(ToolCommonData.PrintLang crntPDL,
-                                            ref string captureFile)
+        public static void LoadDataCapture(ToolCommonData.PrintLang crntPDL, ref string captureFile)
         {
             RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
@@ -166,7 +165,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCommon(ref int indxPDL)
+        public static void LoadDataCommon(ref int indxPDL)
         {
             RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
@@ -186,8 +185,7 @@ namespace PCLParaphernalia
                     Helper_RegKey.RenameKey(subKey, _subKeyPCL6, _subKeyPCLXL);
                 }
 
-                indxPDL = (int)subKey.GetValue(_nameIndxPDL,
-                                                 _indexZero);
+                indxPDL = (int)subKey.GetValue(_nameIndxPDL, _indexZero);
             }
         }
 
@@ -200,7 +198,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataGeneral(
+        public static void LoadDataGeneral(
             string pdlName,
             ref int indxPaperType,
             ref int indxPaperSize,
@@ -226,43 +224,31 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxPaperType = (int)subKey.GetValue(_nameIndxPaperType,
-                                                         _indexZero);
-                indxPaperSize = (int)subKey.GetValue(_nameIndxPaperSize,
-                                                         _indexZero);
-                indxOrientation = (int)subKey.GetValue(_nameIndxOrientation,
-                                                         _indexZero);
-                indxPlexMode = (int)subKey.GetValue(_nameIndxPlexMode,
-                                                         _indexZero);
-                indxOrientRear = (int)subKey.GetValue(_nameIndxOrientRear,
-                                                         _indexZero);
-                indxMethod = (int)subKey.GetValue(_nameIndxMethod,
-                                                         _indexZero);
-                testPageCount = (int)subKey.GetValue(_nameTestPageCount,
-                                                         _defaultTestPageCount);
+                indxPaperType = (int)subKey.GetValue(_nameIndxPaperType, _indexZero);
+                indxPaperSize = (int)subKey.GetValue(_nameIndxPaperSize, _indexZero);
+                indxOrientation = (int)subKey.GetValue(_nameIndxOrientation, _indexZero);
+                indxPlexMode = (int)subKey.GetValue(_nameIndxPlexMode, _indexZero);
+                indxOrientRear = (int)subKey.GetValue(_nameIndxOrientRear, _indexZero);
+                indxMethod = (int)subKey.GetValue(_nameIndxMethod, _indexZero);
+                testPageCount = (int)subKey.GetValue(_nameTestPageCount, _defaultTestPageCount);
 
-                tmpInt = (int)subKey.GetValue(_nameFlagMacroRemove,
-                                                  _flagTrue);
+                tmpInt = (int)subKey.GetValue(_nameFlagMacroRemove, _flagTrue);
 
                 flagMacroRemove = tmpInt != _flagFalse;
 
-                tmpInt = (int)subKey.GetValue(_nameFlagMainForm,
-                                                  _flagTrue);
+                tmpInt = (int)subKey.GetValue(_nameFlagMainForm, _flagTrue);
 
                 flagMainForm = tmpInt != _flagFalse;
 
-                tmpInt = (int)subKey.GetValue(_nameFlagRearForm,
-                                                  _flagTrue);
+                tmpInt = (int)subKey.GetValue(_nameFlagRearForm, _flagTrue);
 
                 flagRearForm = tmpInt != _flagFalse;
 
-                tmpInt = (int)subKey.GetValue(_nameFlagRearBPlate,
-                                                  _flagTrue);
+                tmpInt = (int)subKey.GetValue(_nameFlagRearBPlate, _flagTrue);
 
                 flagRearBPlate = tmpInt != _flagFalse;
 
-                tmpInt = (int)subKey.GetValue(_nameFlagPrintDescText,
-                                                  _flagTrue);
+                tmpInt = (int)subKey.GetValue(_nameFlagPrintDescText, _flagTrue);
 
                 flagPrintDescText = tmpInt != _flagFalse;
             }
@@ -277,7 +263,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCL(ref bool flagMainOnPrnDisk,
+        public static void LoadDataPCL(ref bool flagMainOnPrnDisk,
                                         ref bool flagRearOnPrnDisk,
                                         ref string formFileMain,
                                         ref string formFileRear,
@@ -299,32 +285,22 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                tmpInt = (int)subKey.GetValue(_nameFlagMainOnPrnDisk,
-                                                _flagFalse);
+                tmpInt = (int)subKey.GetValue(_nameFlagMainOnPrnDisk, _flagFalse);
 
                 flagMainOnPrnDisk = tmpInt != _flagFalse;
 
-                tmpInt = (int)subKey.GetValue(_nameFlagRearOnPrnDisk,
-                                                _flagFalse);
+                tmpInt = (int)subKey.GetValue(_nameFlagRearOnPrnDisk, _flagFalse);
 
                 flagRearOnPrnDisk = tmpInt != _flagFalse;
 
-                formFileMain = (string)subKey.GetValue(_nameFormFileMain,
-                                                          defWorkFolder + "\\" +
-                                                          _defaultFilePCLMain);
-                formFileRear = (string)subKey.GetValue(_nameFormFileRear,
-                                                          defWorkFolder + "\\" +
-                                                          _defaultFilePCLRear);
+                formFileMain = (string)subKey.GetValue(_nameFormFileMain, defWorkFolder + "\\" + _defaultFilePCLMain);
+                formFileRear = (string)subKey.GetValue(_nameFormFileRear, defWorkFolder + "\\" + _defaultFilePCLRear);
 
-                prnDiskFileMain = (string)subKey.GetValue(_namePrnDiskFileMain,
-                                                            _defaultFilePCLMain);
-                prnDiskFileRear = (string)subKey.GetValue(_namePrnDiskFileRear,
-                                                            _defaultFilePCLRear);
+                prnDiskFileMain = (string)subKey.GetValue(_namePrnDiskFileMain, _defaultFilePCLMain);
+                prnDiskFileRear = (string)subKey.GetValue(_namePrnDiskFileRear, _defaultFilePCLRear);
 
-                macroIdMain = (int)subKey.GetValue(_nameMacroIdMain,
-                                                         _defaultMacroIdMain);
-                macroIdRear = (int)subKey.GetValue(_nameMacroIdRear,
-                                                         _defaultMacroIdRear);
+                macroIdMain = (int)subKey.GetValue(_nameMacroIdMain, _defaultMacroIdMain);
+                macroIdRear = (int)subKey.GetValue(_nameMacroIdRear, _defaultMacroIdRear);
             }
         }
 
@@ -337,7 +313,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCLXL(ref string formFileMain,
+        public static void LoadDataPCLXL(ref string formFileMain,
                                           ref string formFileRear,
                                           ref string formNameMain,
                                           ref string formNameRear,
@@ -356,19 +332,12 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                formFileMain = (string)subKey.GetValue(_nameFormFileMain,
-                                                         defWorkFolder + "\\" +
-                                                         _defaultFilePCLXLMain);
-                formFileRear = (string)subKey.GetValue(_nameFormFileRear,
-                                                         defWorkFolder + "\\" +
-                                                         _defaultFilePCLXLRear);
-                formNameMain = (string)subKey.GetValue(_nameFormNameMain,
-                                                         _defaultFormNameMain);
-                formNameRear = (string)subKey.GetValue(_nameFormNameRear,
-                                                         _defaultFormNameRear);
+                formFileMain = (string)subKey.GetValue(_nameFormFileMain, defWorkFolder + "\\" + _defaultFilePCLXLMain);
+                formFileRear = (string)subKey.GetValue(_nameFormFileRear, defWorkFolder + "\\" + _defaultFilePCLXLRear);
+                formNameMain = (string)subKey.GetValue(_nameFormNameMain, _defaultFormNameMain);
+                formNameRear = (string)subKey.GetValue(_nameFormNameRear, _defaultFormNameRear);
 
-                tmpInt = (int)subKey.GetValue(_nameFlagGSPushPop,
-                                                  _flagTrue);
+                tmpInt = (int)subKey.GetValue(_nameFlagGSPushPop, _flagTrue);
 
                 flagGSPushPop = tmpInt != _flagFalse;
             }
@@ -383,8 +352,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCapture(ToolCommonData.PrintLang crntPDL,
-                                            string captureFile)
+        public static void SaveDataCapture(ToolCommonData.PrintLang crntPDL, string captureFile)
         {
             RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
@@ -397,9 +365,7 @@ namespace PCLParaphernalia
                 {
                     if (captureFile != null)
                     {
-                        subKey.SetValue(_nameCaptureFile,
-                                         captureFile,
-                                         RegistryValueKind.String);
+                        subKey.SetValue(_nameCaptureFile, captureFile, RegistryValueKind.String);
                     }
                 }
             }
@@ -412,9 +378,7 @@ namespace PCLParaphernalia
                 {
                     if (captureFile != null)
                     {
-                        subKey.SetValue(_nameCaptureFile,
-                                         captureFile,
-                                         RegistryValueKind.String);
+                        subKey.SetValue(_nameCaptureFile, captureFile, RegistryValueKind.String);
                     }
                 }
             }
@@ -429,7 +393,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCommon(int indxPDL)
+        public static void SaveDataCommon(int indxPDL)
         {
             RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
@@ -437,9 +401,7 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                subKey.SetValue(_nameIndxPDL,
-                                indxPDL,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameIndxPDL, indxPDL, RegistryValueKind.DWord);
             }
         }
 
@@ -452,7 +414,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataGeneral(string pdlName,
+        public static void SaveDataGeneral(string pdlName,
                                             int indxPaperType,
                                             int indxPaperSize,
                                             int indxOrientation,
@@ -473,97 +435,63 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                subKey.SetValue(_nameIndxPaperType,
-                                indxPaperType,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameIndxPaperType, indxPaperType, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameIndxPaperSize,
-                                indxPaperSize,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameIndxPaperSize, indxPaperSize, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameIndxOrientation,
-                                indxOrientation,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameIndxOrientation, indxOrientation, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameIndxPlexMode,
-                                indxPlexMode,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameIndxPlexMode, indxPlexMode, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameIndxOrientRear,
-                                indxOrientRear,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameIndxOrientRear, indxOrientRear, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameIndxMethod,
-                                indxMethod,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameIndxMethod, indxMethod, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameTestPageCount,
-                                testPageCount,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameTestPageCount, testPageCount, RegistryValueKind.DWord);
 
                 if (flagMacroRemove)
                 {
-                    subKey.SetValue(_nameFlagMacroRemove,
-                                                    _flagTrue,
-                                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagMacroRemove, _flagTrue, RegistryValueKind.DWord);
                 }
                 else
                 {
-                    subKey.SetValue(_nameFlagMacroRemove,
-                                                    _flagFalse,
-                                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagMacroRemove, _flagFalse, RegistryValueKind.DWord);
                 }
 
                 if (flagMainForm)
                 {
-                    subKey.SetValue(_nameFlagMainForm,
-                                                    _flagTrue,
-                                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagMainForm, _flagTrue, RegistryValueKind.DWord);
                 }
                 else
                 {
-                    subKey.SetValue(_nameFlagMainForm,
-                                                    _flagFalse,
-                                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagMainForm, _flagFalse, RegistryValueKind.DWord);
                 }
 
                 if (flagRearForm)
                 {
-                    subKey.SetValue(_nameFlagRearForm,
-                                                    _flagTrue,
-                                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagRearForm, _flagTrue, RegistryValueKind.DWord);
                 }
                 else
                 {
-                    subKey.SetValue(_nameFlagRearForm,
-                                                    _flagFalse,
-                                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagRearForm, _flagFalse, RegistryValueKind.DWord);
                 }
 
                 if (flagRearBPlate)
                 {
-                    subKey.SetValue(_nameFlagRearBPlate,
-                                                    _flagTrue,
-                                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagRearBPlate, _flagTrue, RegistryValueKind.DWord);
                 }
                 else
                 {
-                    subKey.SetValue(_nameFlagRearBPlate,
-                                                    _flagFalse,
-                                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagRearBPlate, _flagFalse, RegistryValueKind.DWord);
                 }
 
                 if (flagPrintDescText)
                 {
-                    subKey.SetValue(_nameFlagPrintDescText,
-                                                    _flagTrue,
-                                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagPrintDescText, _flagTrue, RegistryValueKind.DWord);
                 }
                 else
                 {
-                    subKey.SetValue(_nameFlagPrintDescText,
-                                                    _flagFalse,
-                                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagPrintDescText, _flagFalse, RegistryValueKind.DWord);
                 }
             }
         }
@@ -577,7 +505,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCL(bool flagMainOnPrnDisk,
+        public static void SaveDataPCL(bool flagMainOnPrnDisk,
                                         bool flagRearOnPrnDisk,
                                         string formFileMain,
                                         string formFileRear,
@@ -595,65 +523,45 @@ namespace PCLParaphernalia
             {
                 if (flagMainOnPrnDisk)
                 {
-                    subKey.SetValue(_nameFlagMainOnPrnDisk,
-                                                    _flagTrue,
-                                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagMainOnPrnDisk, _flagTrue, RegistryValueKind.DWord);
                 }
                 else
                 {
-                    subKey.SetValue(_nameFlagMainOnPrnDisk,
-                                                    _flagFalse,
-                                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagMainOnPrnDisk, _flagFalse, RegistryValueKind.DWord);
                 }
 
                 if (flagRearOnPrnDisk)
                 {
-                    subKey.SetValue(_nameFlagRearOnPrnDisk,
-                                                    _flagTrue,
-                                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagRearOnPrnDisk, _flagTrue, RegistryValueKind.DWord);
                 }
                 else
                 {
-                    subKey.SetValue(_nameFlagRearOnPrnDisk,
-                                                    _flagFalse,
-                                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagRearOnPrnDisk, _flagFalse, RegistryValueKind.DWord);
                 }
 
                 if (formFileMain != null)
                 {
-                    subKey.SetValue(_nameFormFileMain,
-                                    formFileMain,
-                                    RegistryValueKind.String);
+                    subKey.SetValue(_nameFormFileMain, formFileMain, RegistryValueKind.String);
                 }
 
                 if (formFileRear != null)
                 {
-                    subKey.SetValue(_nameFormFileRear,
-                                    formFileRear,
-                                    RegistryValueKind.String);
+                    subKey.SetValue(_nameFormFileRear, formFileRear, RegistryValueKind.String);
                 }
 
                 if (prnDiskFileMain != null)
                 {
-                    subKey.SetValue(_namePrnDiskFileMain,
-                                     prnDiskFileMain,
-                                     RegistryValueKind.String);
+                    subKey.SetValue(_namePrnDiskFileMain, prnDiskFileMain, RegistryValueKind.String);
                 }
 
                 if (prnDiskFileRear != null)
                 {
-                    subKey.SetValue(_namePrnDiskFileRear,
-                                     prnDiskFileRear,
-                                     RegistryValueKind.String);
+                    subKey.SetValue(_namePrnDiskFileRear, prnDiskFileRear, RegistryValueKind.String);
                 }
 
-                subKey.SetValue(_nameMacroIdMain,
-                                macroIdMain,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameMacroIdMain, macroIdMain, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameMacroIdRear,
-                                macroIdRear,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameMacroIdRear, macroIdRear, RegistryValueKind.DWord);
             }
         }
 
@@ -666,7 +574,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCLXL(string formFileMain,
+        public static void SaveDataPCLXL(string formFileMain,
                                           string formFileRear,
                                           string formNameMain,
                                           string formNameRear,
@@ -681,43 +589,31 @@ namespace PCLParaphernalia
             {
                 if (formFileMain != null)
                 {
-                    subKey.SetValue(_nameFormFileMain,
-                                    formFileMain,
-                                    RegistryValueKind.String);
+                    subKey.SetValue(_nameFormFileMain, formFileMain, RegistryValueKind.String);
                 }
 
                 if (formFileRear != null)
                 {
-                    subKey.SetValue(_nameFormFileRear,
-                                    formFileRear,
-                                    RegistryValueKind.String);
+                    subKey.SetValue(_nameFormFileRear, formFileRear, RegistryValueKind.String);
                 }
 
                 if (formNameMain != null)
                 {
-                    subKey.SetValue(_nameFormNameMain,
-                                    formNameMain,
-                                    RegistryValueKind.String);
+                    subKey.SetValue(_nameFormNameMain, formNameMain, RegistryValueKind.String);
                 }
 
                 if (formNameRear != null)
                 {
-                    subKey.SetValue(_nameFormNameRear,
-                                    formNameRear,
-                                    RegistryValueKind.String);
+                    subKey.SetValue(_nameFormNameRear, formNameRear, RegistryValueKind.String);
                 }
 
                 if (flagGSPushPop)
                 {
-                    subKey.SetValue(_nameFlagGSPushPop,
-                                                    _flagTrue,
-                                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagGSPushPop, _flagTrue, RegistryValueKind.DWord);
                 }
                 else
                 {
-                    subKey.SetValue(_nameFlagGSPushPop,
-                                                    _flagFalse,
-                                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagGSPushPop, _flagFalse, RegistryValueKind.DWord);
                 }
             }
         }

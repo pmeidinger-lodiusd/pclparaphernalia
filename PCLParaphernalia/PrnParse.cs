@@ -190,7 +190,7 @@ namespace PCLParaphernalia
 
             indxOffsetFormat = _options.IndxGenOffsetFormat;
 
-            _options.getOptCharSet(ref indxCharSetName, ref indxCharSetSubAct, ref valCharSetSubCode);
+            _options.GetOptCharSet(ref indxCharSetName, ref indxCharSetSubAct, ref valCharSetSubCode);
 
             if (_parseType == ParseType.Analyse)
             {
@@ -512,7 +512,7 @@ namespace PCLParaphernalia
 
                         if (_linkData.IsContinuation())
                         {
-                            if (_linkData.getContType() ==
+                            if (_linkData.GetContType() ==
                                 PrnParseConstants.ContType.Abort)
                             {
                                 endReached = true;

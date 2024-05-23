@@ -679,7 +679,7 @@ namespace PCLParaphernalia
 
             _sizeCharSet = cSizeCharSet_8bit;
 
-            initialiseSymSetList();
+            InitialiseSymSetList();
 
             btnDefineSymSet.IsEnabled = true;
             btnGenerateSymSet.IsEnabled = false;
@@ -751,7 +751,7 @@ namespace PCLParaphernalia
                 cbCharColls.Visibility = Visibility.Visible;
                 tblkCharCollsText.Visibility = Visibility.Visible;
 
-                populateCharCollReq(_flagIndexUnicode);
+                PopulateCharCollReq(_flagIndexUnicode);
 
                 if (_flagIndexUnicode)
                     _targetCharCollReq = _targetCharCollReqUnicode;
@@ -878,7 +878,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseSymSetList()
+        private void InitialiseSymSetList()
         {
             int index;
 
@@ -1677,7 +1677,7 @@ namespace PCLParaphernalia
 
         private void MetricsLoad()
         {
-            ToolSymbolSetGenPersist.loadDataDonor(
+            ToolSymbolSetGenPersist.LoadDataDonor(
                 ref _indxDonorSymSetSubset,
                 ref _flagDonorSymSetUserSet,
                 ref _flagDonorSymSetMapPCL,
@@ -1754,7 +1754,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void populateCharCollReq(bool flagIndexUnicode)
+        private void PopulateCharCollReq(bool flagIndexUnicode)
         {
             ulong bitVal;
 
@@ -1851,7 +1851,7 @@ namespace PCLParaphernalia
         {
             _flagCharCollReqSpecific = true;
 
-            populateCharCollReq(_flagIndexUnicode);
+            PopulateCharCollReq(_flagIndexUnicode);
 
             cbCharColls.Visibility = Visibility.Visible;
             tblkCharCollsText.Visibility = Visibility.Visible;
@@ -1966,7 +1966,7 @@ namespace PCLParaphernalia
 
             if (_flagCharCollReqSpecific)
             {
-                populateCharCollReq(_flagIndexUnicode);
+                PopulateCharCollReq(_flagIndexUnicode);
 
                 MessageBox.Show("Specific 'Character collection requirements' settings need to be reviewed as the 'Symbol index' type has been changed.",
                                  "Symbol index type changed",
@@ -1996,7 +1996,7 @@ namespace PCLParaphernalia
 
             if (_flagCharCollReqSpecific)
             {
-                populateCharCollReq(_flagIndexUnicode);
+                PopulateCharCollReq(_flagIndexUnicode);
 
                 MessageBox.Show("Specific 'Character collection requirements' settings need to be  reviewed as the 'Symbol index' type has been changed.",
                                  "Symbol index type changed",
