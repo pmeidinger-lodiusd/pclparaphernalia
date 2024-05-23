@@ -1,12 +1,7 @@
-﻿using Microsoft.Win32;
-using System;
-using System.Collections;
-using System.IO;
-using System.Net.Sockets;
+﻿using System.Collections;
 using System.Printing;
 using System.Printing.IndexedProperties;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace PCLParaphernalia
 {

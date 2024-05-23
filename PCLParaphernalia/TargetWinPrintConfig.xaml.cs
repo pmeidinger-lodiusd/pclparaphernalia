@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing.Printing;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace PCLParaphernalia
 {

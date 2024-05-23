@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text;
-
-namespace PCLParaphernalia
+﻿namespace PCLParaphernalia
 {
     /// <summary>
     ///
