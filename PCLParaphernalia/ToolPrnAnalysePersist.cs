@@ -1195,7 +1195,7 @@ namespace PCLParaphernalia
         {
             RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            string key = _subKeyTools +
+            const string key = _subKeyTools +
                             "\\" + _subKeyToolsAnalyse +
                             "\\" + _subKeyOptPCLXL;
 
