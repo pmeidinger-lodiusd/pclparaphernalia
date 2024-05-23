@@ -1467,7 +1467,6 @@ namespace PCLParaphernalia
                 0x03, 0xff
             };
 
-
             byte[] maskRowDPos =
             {
                 0x01, 0xff,
