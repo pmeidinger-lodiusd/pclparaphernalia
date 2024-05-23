@@ -860,12 +860,12 @@ namespace PCLParaphernalia
 
             foreach (PCLCharCollItem item in _charCollReqListMSL)
             {
-                item.PropertyChanged += new PropertyChangedEventHandler(cbCharCollsItem_PropertyChanged);
+                item.PropertyChanged += cbCharCollsItem_PropertyChanged;
             }
 
             foreach (PCLCharCollItem item in _charCollReqListUnicode)
             {
-                item.PropertyChanged += new PropertyChangedEventHandler(cbCharCollsItem_PropertyChanged);
+                item.PropertyChanged += cbCharCollsItem_PropertyChanged;
             }
         }
 

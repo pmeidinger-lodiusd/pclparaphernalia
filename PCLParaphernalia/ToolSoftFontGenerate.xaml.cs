@@ -1733,8 +1733,8 @@ bitVal;
             foreach (PCLCharCollItem item in _charCollCompListUnicode)
             {
                 item.PropertyChanged +=
-                    new PropertyChangedEventHandler(
-                        cbPCLCharCollItem_PropertyChanged);
+
+                        cbPCLCharCollItem_PropertyChanged;
             }
         }
 

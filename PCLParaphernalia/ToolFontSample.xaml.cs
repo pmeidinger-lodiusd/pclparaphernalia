@@ -5235,8 +5235,8 @@ namespace PCLParaphernalia
                     lstSampleOffsets.Items.Add(chkOffset);
 
                     chkOffset.IsChecked = false;
-                    chkOffset.Checked += new RoutedEventHandler(chkOffset_Checked);
-                    chkOffset.Unchecked += new RoutedEventHandler(chkOffset_Unchecked);
+                    chkOffset.Checked += chkOffset_Checked;
+                    chkOffset.Unchecked += chkOffset_Unchecked;
 
                     _sampleOffsetBlocks[_ctSampleOffsetBlocks++] = (ushort)(j << 8);
                 }
@@ -5259,8 +5259,8 @@ namespace PCLParaphernalia
                     lstSampleOffsets.Items.Add(chkOffset);
 
                     chkOffset.IsChecked = false;
-                    chkOffset.Checked += new RoutedEventHandler(chkOffset_Checked);
-                    chkOffset.Unchecked += new RoutedEventHandler(chkOffset_Unchecked);
+                    chkOffset.Checked += chkOffset_Checked;
+                    chkOffset.Unchecked += chkOffset_Unchecked;
 
                     _sampleOffsetBlocks[_ctSampleOffsetBlocks++] = (ushort)(j << 8);
                 }
