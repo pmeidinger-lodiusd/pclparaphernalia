@@ -42,8 +42,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static readonly SortedList<byte, PMLDataType> _tags =
-            new SortedList<byte, PMLDataType>();
+        private static readonly SortedList<byte, PMLDataType> _tags = new SortedList<byte, PMLDataType>();
 
         private static PMLDataType _unknownTag;
 
@@ -86,9 +85,9 @@ namespace PCLParaphernalia
                 tag = _unknownTag;
             }
 
-            description = tag.getDesc();
+            description = tag.GetDesc();
 
-            tag.incrementStatisticsCount(1);   // Statistical data
+            tag.IncrementStatisticsCount(1);   // Statistical data
 
             return seqKnown;
         }
@@ -102,8 +101,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void DisplayStatsCounts(DataTable table,
-                                               bool incUsedSeqsOnly)
+        public static void DisplayStatsCounts(DataTable table, bool incUsedSeqsOnly)
         {
             int count = 0;
 
@@ -240,7 +238,7 @@ namespace PCLParaphernalia
 
         public static string GetDesc(byte selection)
         {
-            return _tags[selection].getDesc();
+            return _tags[selection].GetDesc();
         }
 
         //--------------------------------------------------------------------//

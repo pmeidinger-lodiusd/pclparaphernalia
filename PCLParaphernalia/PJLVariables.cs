@@ -171,7 +171,7 @@ namespace PCLParaphernalia
 
         public static string GetName(int selection)
         {
-            return _vars[selection].getName();
+            return _vars[selection].GetName();
         }
 
         //--------------------------------------------------------------------//
@@ -185,7 +185,7 @@ namespace PCLParaphernalia
 
         public static VarType GetType(int selection)
         {
-            return _vars[selection].getType();
+            return _vars[selection].GetVariableType();
         }
     }
 }

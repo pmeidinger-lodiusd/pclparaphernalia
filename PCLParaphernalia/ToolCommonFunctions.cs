@@ -20,14 +20,12 @@ namespace PCLParaphernalia
         // Creates a OpenFileDialog.                                          //
         //                                                                    //
         //--------------------------------------------------------------------//
-        public static OpenFileDialog createOpenFileDialog(string initialPath)
+        public static OpenFileDialog CreateOpenFileDialog(string initialPath)
         {
             string folderName = null;
             string fileName = null;
 
-            ToolCommonFunctions.splitPathName(initialPath,
-                                               ref folderName,
-                                               ref fileName);
+            ToolCommonFunctions.SplitPathName(initialPath, ref folderName, ref fileName);
 
             OpenFileDialog openDialog = new OpenFileDialog
             {
@@ -48,14 +46,12 @@ namespace PCLParaphernalia
         // Creates a SaveFileDialog.                                          //
         //                                                                    //
         //--------------------------------------------------------------------//
-        public static SaveFileDialog createSaveFileDialog(string initialPath)
+        public static SaveFileDialog CreateSaveFileDialog(string initialPath)
         {
             string folderName = null;
             string fileName = null;
 
-            ToolCommonFunctions.splitPathName(initialPath,
-                                               ref folderName,
-                                               ref fileName);
+            ToolCommonFunctions.SplitPathName(initialPath, ref folderName, ref fileName);
 
             SaveFileDialog saveDialog = new SaveFileDialog
             {
@@ -81,11 +77,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void decomposePathName(string pathName,
-                                               ref string volName,
-                                               ref string folderName,
-                                               ref string lastName,
-                                               ref string extension)
+        private static void DecomposePathName(string pathName, ref string volName, ref string folderName, ref string lastName, ref string extension)
         {
             int indxA,
                   indxB,
@@ -157,8 +149,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    lastName = pathName.Substring(indxA + 1,
-                                                    lenB - lenC - 1);
+                    lastName = pathName.Substring(indxA + 1, lenB - lenC - 1);
                     extension = pathName.Substring(indxB + 1, lenC);
                 }
             }
@@ -173,15 +164,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void getFolderName(string pathName,
-                                          ref string folderName)
+        public static void GetFolderName(string pathName, ref string folderName)
         {
             string tmpVol = string.Empty,
                    tmpTname = string.Empty,
                    tmpExt = string.Empty;
 
-            decomposePathName(pathName, ref tmpVol,
-                               ref folderName, ref tmpTname, ref tmpExt);
+            DecomposePathName(pathName, ref tmpVol, ref folderName, ref tmpTname, ref tmpExt);
         }
 
         //--------------------------------------------------------------------//
@@ -194,16 +183,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void getTerminalName(string pathName,
-                                            ref string fileName)
+        public static void GetTerminalName(string pathName, ref string fileName)
         {
             string tmpVol = null,
                    tmpFolder = null,
                    tmpTname = null,
                    tmpExt = null;
 
-            decomposePathName(pathName, ref tmpVol,
-                               ref tmpFolder, ref tmpTname, ref tmpExt);
+            DecomposePathName(pathName, ref tmpVol, ref tmpFolder, ref tmpTname, ref tmpExt);
 
             fileName = tmpTname + "." + tmpExt;
         }
@@ -217,16 +204,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void splitPathName(string pathName,
-                                          ref string folderName,
-                                          ref string fileName)
+        private static void SplitPathName(string pathName, ref string folderName, ref string fileName)
         {
             string tmpVol = null,
                    tmpTname = null,
                    tmpExt = null;
 
-            decomposePathName(pathName, ref tmpVol,
-                               ref folderName, ref tmpTname, ref tmpExt);
+            DecomposePathName(pathName, ref tmpVol, ref folderName, ref tmpTname, ref tmpExt);
 
             fileName = tmpTname + "." + tmpExt;
         }
@@ -240,16 +224,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void splitPathName(string pathName,
-                                          ref string volName,
-                                          ref string folderName,
-                                          ref string fileName)
+        public static void SplitPathName(string pathName, ref string volName, ref string folderName, ref string fileName)
         {
             string tmpTname = null,
                    tmpExt = null;
 
-            decomposePathName(pathName, ref volName,
-                               ref folderName, ref tmpTname, ref tmpExt);
+            DecomposePathName(pathName, ref volName, ref folderName, ref tmpTname, ref tmpExt);
 
             fileName = tmpTname + "." + tmpExt;
         }

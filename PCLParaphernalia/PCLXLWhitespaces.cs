@@ -19,8 +19,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static readonly SortedList<byte, PCLXLWhitespace> _tags =
-            new SortedList<byte, PCLXLWhitespace>();
+        private static readonly SortedList<byte, PCLXLWhitespace> _tags = new SortedList<byte, PCLXLWhitespace>();
 
         private static PCLXLWhitespace _tagUnknown;
 
@@ -34,7 +33,7 @@ namespace PCLParaphernalia
 
         static PCLXLWhitespaces()
         {
-            populateTable();
+            PopulateTable();
         }
 
         //--------------------------------------------------------------------//
@@ -46,9 +45,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkTag(byte tagToCheck,
-                                        ref string mnemonic,
-                                        ref string description)
+        public static bool CheckTag(byte tagToCheck, ref string mnemonic, ref string description)
         {
             bool seqKnown;
 
@@ -65,7 +62,7 @@ namespace PCLParaphernalia
                 tag = _tagUnknown;
             }
 
-            mnemonic    = tag.Mnemonic;
+            mnemonic = tag.Mnemonic;
             description = tag.Description;
 
             return seqKnown;
@@ -80,9 +77,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCounts(DataTable table,
-                                               bool incUsedSeqsOnly,
-                                               bool excUnusedResTags)
+        public static void DisplayStatsCounts(DataTable table, bool incUsedSeqsOnly, bool excUnusedResTags)
         {
             int count = 0;
 
@@ -106,7 +101,7 @@ namespace PCLParaphernalia
             {
                 if (!hddrWritten)
                 {
-                    displayStatsCountsHddr(table);
+                    DisplayStatsCountsHddr(table);
                     hddrWritten = true;
                 }
 
@@ -139,7 +134,7 @@ namespace PCLParaphernalia
                 {
                     if (!hddrWritten)
                     {
-                        displayStatsCountsHddr(table);
+                        DisplayStatsCountsHddr(table);
                         hddrWritten = true;
                     }
 
@@ -165,7 +160,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCountsHddr(DataTable table)
+        public static void DisplayStatsCountsHddr(DataTable table)
         {
             //----------------------------------------------------------------//
 
@@ -209,7 +204,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int displayTags(DataGrid grid)
+        public static int DisplayTags(DataGrid grid)
         {
             int count = 0;
 
@@ -231,8 +226,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void incrementStatsCount(byte tagByte,
-                                                int level)
+        public static void IncrementStatsCount(byte tagByte, int level)
         {
             PCLXLWhitespace tag;
 
@@ -241,7 +235,7 @@ namespace PCLParaphernalia
             else
                 tag = _tagUnknown;
 
-            tag.incrementStatisticsCount(level);
+            tag.IncrementStatisticsCount(level);
         }
 
         //--------------------------------------------------------------------//
@@ -253,7 +247,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool isKnownTag(byte tagToCheck)
+        public static bool IsKnownTag(byte tagToCheck)
         {
             return _tags.IndexOfKey(tagToCheck) != -1;
         }
@@ -267,7 +261,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void populateTable()
+        private static void PopulateTable()
         {
             byte tag = 0x20;                                              // ?    //
             _tagUnknown =
@@ -329,17 +323,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void resetStatsCounts()
+        public static void ResetStatsCounts()
         {
             PCLXLWhitespace tag;
 
-            _tagUnknown.resetStatistics();
+            _tagUnknown.ResetStatistics();
 
             foreach (KeyValuePair<byte, PCLXLWhitespace> kvp in _tags)
             {
                 tag = kvp.Value;
 
-                tag.resetStatistics();
+                tag.ResetStatistics();
             }
         }
     }

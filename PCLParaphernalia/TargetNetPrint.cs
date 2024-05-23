@@ -33,8 +33,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkIPAddress(string ipString,
-                                             ref IPAddress ipAddress)
+        public static bool checkIPAddress(string ipString, ref IPAddress ipAddress)
         {
             bool OK = IPAddress.TryParse(ipString, out ipAddress);
 
@@ -64,10 +63,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool readResponseBlock(int offset,
-                                                 int bufRem,
-                                                 ref byte[] replyData,
-                                                 ref int blockLen)
+        public static bool ReadResponseBlock(int offset, int bufRem, ref byte[] replyData, ref int blockLen)
         {
             int readLen = 0;
 
@@ -75,10 +71,7 @@ namespace PCLParaphernalia
 
             try
             {
-                readLen = _socket.Receive(replyData,
-                                           offset,
-                                           bufRem,
-                                           SocketFlags.None);
+                readLen = _socket.Receive(replyData, offset, bufRem, SocketFlags.None);
 
                 blockLen = readLen;
             }
@@ -87,10 +80,7 @@ namespace PCLParaphernalia
 
             catch (SocketException e)
             {
-                MessageBox.Show("SocketException" +
-                                 "Message: " + e.Message + "\n\n" +
-                                 "ErrorCode: " + e.ErrorCode + "\n\n" +
-                                 "SocketErrorCode: " + e.SocketErrorCode,
+                MessageBox.Show("SocketException" + "Message: " + e.Message + "\n\n" + "ErrorCode: " + e.ErrorCode + "\n\n" + "SocketErrorCode: " + e.SocketErrorCode,
                                  "Printer output",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Exclamation);
@@ -119,7 +109,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int sendData(BinaryReader prnReader,
+        public static int SendData(BinaryReader prnReader,
                                      string ipString,
                                      int port,
                                      int timeoutSend,
@@ -151,12 +141,9 @@ namespace PCLParaphernalia
                     int readLen;
                     int sockRes;
 
-                    ipEndPoint = new IPEndPoint(ipAddress,
-                                                port);
+                    ipEndPoint = new IPEndPoint(ipAddress, port);
 
-                    _socket = new Socket(ipAddress.AddressFamily,
-                                          SocketType.Stream,
-                                          ProtocolType.Tcp)
+                    _socket = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp)
                     {
                         SendTimeout = timeoutSend,
                         ReceiveTimeout = timeoutReceive
@@ -202,10 +189,7 @@ namespace PCLParaphernalia
 
                 catch (SocketException e)
                 {
-                    MessageBox.Show("SocketException:\n\n" +
-                                     "Message: " + e.Message + "\n\n" +
-                                     "ErrorCode: " + e.ErrorCode + "\n\n" +
-                                     "SocketErrorCode: " + e.SocketErrorCode,
+                    MessageBox.Show("SocketException:\n\n" + "Message: " + e.Message + "\n\n" + "ErrorCode: " + e.ErrorCode + "\n\n" + "SocketErrorCode: " + e.SocketErrorCode,
                                      "Printer output",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Exclamation);

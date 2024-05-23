@@ -13,8 +13,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
-    [System.Reflection.Obfuscation(Feature = "renaming",
-                                            ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     public partial class ToolFormSample : Window
     {
@@ -309,8 +308,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void btnPCLFormFileMainBrowse_Click(object sender,
-                                                     RoutedEventArgs e)
+        private void btnPCLFormFileMainBrowse_Click(object sender, RoutedEventArgs e)
         {
             bool selected;
 
@@ -336,8 +334,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void btnPCLFormFileRearBrowse_Click(object sender,
-                                                     RoutedEventArgs e)
+        private void btnPCLFormFileRearBrowse_Click(object sender, RoutedEventArgs e)
         {
             bool selected;
 
@@ -363,8 +360,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void btnPCLXLFormFileMainBrowse_Click(object sender,
-                                                     RoutedEventArgs e)
+        private void btnPCLXLFormFileMainBrowse_Click(object sender, RoutedEventArgs e)
         {
             bool selected;
 
@@ -390,8 +386,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void btnPCLXLFormFileRearBrowse_Click(object sender,
-                                                     RoutedEventArgs e)
+        private void btnPCLXLFormFileRearBrowse_Click(object sender, RoutedEventArgs e)
         {
             bool selected;
 
@@ -417,8 +412,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbOrientation_SelectionChanged(object sender,
-                                                    SelectionChangedEventArgs e)
+        private void cbOrientation_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_initialised && cbOrientation.HasItems)
             {
@@ -438,8 +432,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbPaperSize_SelectionChanged(object sender,
-                                                  SelectionChangedEventArgs e)
+        private void cbPaperSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_initialised && cbPaperSize.HasItems)
             {
@@ -459,8 +452,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbPaperType_SelectionChanged(object sender,
-                                                  SelectionChangedEventArgs e)
+        private void cbPaperType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_initialised && cbPaperType.HasItems)
             {
@@ -480,8 +472,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbPDL_SelectionChanged(object sender,
-                                            SelectionChangedEventArgs e)
+        private void cbPDL_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_initialised)
             {
@@ -503,8 +494,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbPlexMode_SelectionChanged(object sender,
-                                                SelectionChangedEventArgs e)
+        private void cbPlexMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_initialised && cbPlexMode.HasItems)
             {
@@ -560,7 +550,7 @@ namespace PCLParaphernalia
             if (!File.Exists(filename))
                 idPresent = false;
             else
-                idPresent = PCLDownloadMacro.checkMacroFile(filename, ref macroId);
+                idPresent = PCLDownloadMacro.CheckMacroFile(filename, ref macroId);
 
             if (idPresent)
             {
@@ -571,8 +561,7 @@ namespace PCLParaphernalia
 
                     txtPCLMacroIdMain.Text = macroId.ToString();
                     txtPCLMacroIdMain.IsEnabled = false;
-                    lbPCLMacroIdMainComment.Content =
-                        "macro identifier defined in download file";
+                    lbPCLMacroIdMainComment.Content = "macro identifier defined in download file";
                 }
                 else
                 {
@@ -581,8 +570,7 @@ namespace PCLParaphernalia
 
                     txtPCLMacroIdRear.Text = macroId.ToString();
                     txtPCLMacroIdRear.IsEnabled = false;
-                    lbPCLMacroIdRearComment.Content =
-                        "macro identifier defined in download file";
+                    lbPCLMacroIdRearComment.Content = "macro identifier defined in download file";
                 }
             }
             else
@@ -621,7 +609,7 @@ namespace PCLParaphernalia
             if (!File.Exists(filename))
                 idPresent = false;
             else
-                idPresent = PCLXLDownloadStream.checkStreamFile(filename, ref streamName);
+                idPresent = PCLXLDownloadStream.CheckStreamFile(filename, ref streamName);
 
             if (idPresent)
             {
@@ -632,8 +620,7 @@ namespace PCLParaphernalia
 
                     txtPCLXLFormNameMain.Text = streamName;
                     txtPCLXLFormNameMain.IsEnabled = false;
-                    lbPCLXLFormNameMainComment.Content =
-                        "form (stream) name defined in download file";
+                    lbPCLXLFormNameMainComment.Content = "form (stream) name defined in download file";
                 }
                 else
                 {
@@ -642,8 +629,7 @@ namespace PCLParaphernalia
 
                     txtPCLXLFormNameRear.Text = streamName;
                     txtPCLXLFormNameRear.IsEnabled = false;
-                    lbPCLXLFormNameRearComment.Content =
-                        "form (stream) name defined in download file";
+                    lbPCLXLFormNameRearComment.Content = "form (stream) name defined in download file";
                 }
             }
             else
@@ -672,8 +658,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLFormRemove_Checked(object sender,
-                                                   RoutedEventArgs e)
+        private void chkPCLFormRemove_Checked(object sender, RoutedEventArgs e)
         {
             _flagMacroRemovePCL = true;
         }
@@ -687,8 +672,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLFormRemove_Unchecked(object sender,
-                                                     RoutedEventArgs e)
+        private void chkPCLFormRemove_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagMacroRemovePCL = false;
         }
@@ -702,8 +686,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLPrintDescText_Checked(object sender,
-                                                  RoutedEventArgs e)
+        private void chkPCLPrintDescText_Checked(object sender, RoutedEventArgs e)
         {
             _flagPrintDescTextPCL = true;
         }
@@ -717,8 +700,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLPrintDescText_Unchecked(object sender,
-                                                    RoutedEventArgs e)
+        private void chkPCLPrintDescText_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagPrintDescTextPCL = false;
         }
@@ -732,8 +714,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLRearBplate_Checked(object sender,
-                                                RoutedEventArgs e)
+        private void chkPCLRearBplate_Checked(object sender, RoutedEventArgs e)
         {
             _flagRearBPlatePCL = true;
         }
@@ -747,8 +728,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLRearBPlate_Unchecked(object sender,
-                                                  RoutedEventArgs e)
+        private void chkPCLRearBPlate_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagRearBPlatePCL = false;
         }
@@ -762,8 +742,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLXLFormRemove_Checked(object sender,
-                                                   RoutedEventArgs e)
+        private void chkPCLXLFormRemove_Checked(object sender, RoutedEventArgs e)
         {
             _flagMacroRemovePCLXL = true;
         }
@@ -777,8 +756,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLXLFormRemove_Unchecked(object sender,
-                                                     RoutedEventArgs e)
+        private void chkPCLXLFormRemove_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagMacroRemovePCLXL = false;
         }
@@ -792,8 +770,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLXLGSPushPop_Checked(object sender,
-                                              RoutedEventArgs e)
+        private void chkPCLXLGSPushPop_Checked(object sender, RoutedEventArgs e)
         {
             _flagGSPushPopPCLXL = true;
         }
@@ -807,8 +784,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLXLGSPushPop_Unchecked(object sender,
-                                                RoutedEventArgs e)
+        private void chkPCLXLGSPushPop_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagGSPushPopPCLXL = false;
         }
@@ -822,8 +798,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLXLPrintDescText_Checked(object sender,
-                                                  RoutedEventArgs e)
+        private void chkPCLXLPrintDescText_Checked(object sender, RoutedEventArgs e)
         {
             _flagPrintDescTextPCLXL = true;
         }
@@ -837,8 +812,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLXLPrintDescText_Unchecked(object sender,
-                                                    RoutedEventArgs e)
+        private void chkPCLXLPrintDescText_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagPrintDescTextPCLXL = false;
         }
@@ -852,8 +826,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLXLRearBplate_Checked(object sender,
-                                                RoutedEventArgs e)
+        private void chkPCLXLRearBplate_Checked(object sender, RoutedEventArgs e)
         {
             _flagRearBPlatePCLXL = true;
         }
@@ -867,8 +840,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLXLRearBPlate_Unchecked(object sender,
-                                                  RoutedEventArgs e)
+        private void chkPCLXLRearBPlate_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagRearBPlatePCLXL = false;
         }
@@ -1184,8 +1156,7 @@ namespace PCLParaphernalia
 
                 //----------------------------------------------------------------//
 
-                if (PCLPlexModes.GetPlexType(_indxPlexModePCL) ==
-                    PCLPlexModes.PlexType.Simplex)
+                if (PCLPlexModes.GetPlexType(_indxPlexModePCL) == PCLPlexModes.PlexType.Simplex)
                 {
                     cbRearOrientation.Visibility = Visibility.Hidden;
                     lbRearOrientation.Visibility = Visibility.Hidden;
@@ -1436,8 +1407,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbPCLMacroSrcMainHost_Click(object sender,
-                                                  RoutedEventArgs e)
+        private void rbPCLMacroSrcMainHost_Click(object sender, RoutedEventArgs e)
         {
             _flagMainOnPrnDiskPCL = false;
 
@@ -1458,8 +1428,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbPCLMacroSrcMainPrnDisk_Click(object sender,
-                                                     RoutedEventArgs e)
+        private void rbPCLMacroSrcMainPrnDisk_Click(object sender, RoutedEventArgs e)
         {
             _flagMainOnPrnDiskPCL = true;
 
@@ -1481,8 +1450,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbPCLMacroSrcRearHost_Click(object sender,
-                                                  RoutedEventArgs e)
+        private void rbPCLMacroSrcRearHost_Click(object sender, RoutedEventArgs e)
         {
             _flagRearOnPrnDiskPCL = false;
 
@@ -1503,8 +1471,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbPCLMacroSrcRearPrnDisk_Click(object sender,
-                                                     RoutedEventArgs e)
+        private void rbPCLMacroSrcRearPrnDisk_Click(object sender, RoutedEventArgs e)
         {
             _flagRearOnPrnDiskPCL = true;
 
@@ -1526,8 +1493,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbPCLMethodCallBegin_Click(object sender,
-                                                  RoutedEventArgs e)
+        private void rbPCLMethodCallBegin_Click(object sender, RoutedEventArgs e)
         {
             _indxMethodPCL = ToolFormSamplePCL.MacroMethod.CallBegin;
         }
@@ -1542,8 +1508,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbPCLMethodCallEnd_Click(object sender,
-                                                RoutedEventArgs e)
+        private void rbPCLMethodCallEnd_Click(object sender, RoutedEventArgs e)
         {
             _indxMethodPCL = ToolFormSamplePCL.MacroMethod.CallEnd;
         }
@@ -1558,8 +1523,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbPCLMethodExecuteBegin_Click(object sender,
-                                                     RoutedEventArgs e)
+        private void rbPCLMethodExecuteBegin_Click(object sender, RoutedEventArgs e)
         {
             _indxMethodPCL = ToolFormSamplePCL.MacroMethod.ExecuteBegin;
         }
@@ -1574,8 +1538,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbPCLMethodExecuteEnd_Click(object sender,
-                                                   RoutedEventArgs e)
+        private void rbPCLMethodExecuteEnd_Click(object sender, RoutedEventArgs e)
         {
             _indxMethodPCL = ToolFormSamplePCL.MacroMethod.ExecuteEnd;
         }
@@ -1589,8 +1552,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbPCLMethodOverlay_Click(object sender,
-                                                RoutedEventArgs e)
+        private void rbPCLMethodOverlay_Click(object sender, RoutedEventArgs e)
         {
             _indxMethodPCL = ToolFormSamplePCL.MacroMethod.Overlay;
         }
@@ -1605,8 +1567,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbPCLOptFormBoth_Click(object sender,
-                                             RoutedEventArgs e)
+        private void rbPCLOptFormBoth_Click(object sender, RoutedEventArgs e)
         {
             _flagMainFormPCL = true;
             _flagRearFormPCL = true;
@@ -1634,8 +1595,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbPCLOptFormMain_Click(object sender,
-                                             RoutedEventArgs e)
+        private void rbPCLOptFormMain_Click(object sender, RoutedEventArgs e)
         {
             _flagMainFormPCL = true;
             _flagRearFormPCL = false;
@@ -1656,8 +1616,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbPCLOptFormRear_Click(object sender,
-                                             RoutedEventArgs e)
+        private void rbPCLOptFormRear_Click(object sender, RoutedEventArgs e)
         {
             _flagMainFormPCL = false;
             _flagRearFormPCL = true;
@@ -1685,8 +1644,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbPCLXLMethodExecuteBegin_Click(object sender,
-                                                     RoutedEventArgs e)
+        private void rbPCLXLMethodExecuteBegin_Click(object sender, RoutedEventArgs e)
         {
             _indxMethodPCLXL = ToolFormSamplePCLX.StreamMethod.ExecuteBegin;
         }
@@ -1701,8 +1659,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbPCLXLMethodExecuteEnd_Click(object sender,
-                                                   RoutedEventArgs e)
+        private void rbPCLXLMethodExecuteEnd_Click(object sender, RoutedEventArgs e)
         {
             _indxMethodPCLXL = ToolFormSamplePCLX.StreamMethod.ExecuteEnd;
         }
@@ -1717,8 +1674,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbPCLXLOptFormBoth_Click(object sender,
-                                             RoutedEventArgs e)
+        private void rbPCLXLOptFormBoth_Click(object sender, RoutedEventArgs e)
         {
             _flagMainFormPCLXL = true;
             _flagRearFormPCLXL = true;
@@ -1738,8 +1694,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbPCLXLOptFormMain_Click(object sender,
-                                             RoutedEventArgs e)
+        private void rbPCLXLOptFormMain_Click(object sender, RoutedEventArgs e)
         {
             _flagMainFormPCLXL = true;
             _flagRearFormPCLXL = false;
@@ -1759,8 +1714,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbPCLXLOptFormRear_Click(object sender,
-                                             RoutedEventArgs e)
+        private void rbPCLXLOptFormRear_Click(object sender, RoutedEventArgs e)
         {
             _flagMainFormPCLXL = false;
             _flagRearFormPCLXL = true;
@@ -1800,10 +1754,7 @@ namespace PCLParaphernalia
                                                   ref netTimeoutSend,
                                                   ref netTimeoutReceive);
 
-                btnGenerate.Content = "Generate & send test data to " +
-                                      "\r\n" +
-                                      netPrnAddress + " : " +
-                                      netPrnPort.ToString();
+                btnGenerate.Content = "Generate & send test data to " + "\r\n" + netPrnAddress + " : " + netPrnPort.ToString();
             }
             else if (targetType == TargetCore.Target.WinPrinter)
             {
@@ -1811,9 +1762,7 @@ namespace PCLParaphernalia
 
                 TargetCore.MetricsLoadWinPrinter(ref winPrintername);
 
-                btnGenerate.Content = "Generate & send test data to printer " +
-                                      "\r\n" +
-                                      winPrintername;
+                btnGenerate.Content = "Generate & send test data to printer " + "\r\n" + winPrintername;
             }
         }
 
@@ -1828,10 +1777,9 @@ namespace PCLParaphernalia
 
         private bool SelectPCLFormFile(ref string selectedName)
         {
-            OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(selectedName);
+            OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(selectedName);
 
-            openDialog.Filter = "PCL Overlay files|*.ovl; *.OVL" +
-                                "|All files|*.*";
+            openDialog.Filter = "PCL Overlay files|*.ovl; *.OVL|All files|*.*";
 
             bool? dialogResult = openDialog.ShowDialog();
 
@@ -1852,10 +1800,9 @@ namespace PCLParaphernalia
 
         private bool SelectPCLXLFormFile(ref string selectedName)
         {
-            OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(selectedName);
+            OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(selectedName);
 
-            openDialog.Filter = "PCLXL Overlay files|*.ovx; *.OVX" +
-                                "|All files|*.*";
+            openDialog.Filter = "PCLXL Overlay files|*.ovx; *.OVX|All files|*.*";
 
             bool? dialogResult = openDialog.ShowDialog();
 
@@ -1874,8 +1821,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPCLFormFileMain_LostFocus(object sender,
-                                                    RoutedEventArgs e)
+        private void txtPCLFormFileMain_LostFocus(object sender, RoutedEventArgs e)
         {
             string filename = txtPCLFormFileMain.Text;
 
@@ -1891,9 +1837,7 @@ namespace PCLParaphernalia
 
                 if (!File.Exists(filename))
                 {
-                    MessageBox.Show("Main form file '" + filename +
-                                     "' does not exist.\r\n\r\n" +
-                                     "Please select an appropriate file",
+                    MessageBox.Show("Main form file '" + filename + "' does not exist.\r\n\r\n" + "Please select an appropriate file",
                                      "PCL form file invalid",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
@@ -1923,8 +1867,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPCLFormFileRear_LostFocus(object sender,
-                                                    RoutedEventArgs e)
+        private void txtPCLFormFileRear_LostFocus(object sender, RoutedEventArgs e)
         {
             string filename = txtPCLFormFileRear.Text;
 
@@ -1940,9 +1883,7 @@ namespace PCLParaphernalia
 
                 if (!File.Exists(filename))
                 {
-                    MessageBox.Show("Rear form file '" + filename +
-                                     "' does not exist.\r\n\r\n" +
-                                     "Please select an appropriate file",
+                    MessageBox.Show("Rear form file '" + filename + "' does not exist.\r\n\r\n" + "Please select an appropriate file",
                                      "PCL form file invalid",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
@@ -1972,8 +1913,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPCLMacroIdMain_LostFocus(object sender,
-                                                   RoutedEventArgs e)
+        private void txtPCLMacroIdMain_LostFocus(object sender, RoutedEventArgs e)
         {
             if (_initialised)
                 ValidatePCLMacroId(false, true);
@@ -1988,8 +1928,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPCLMacroIdMain_TextChanged(object sender,
-                                                     TextChangedEventArgs e)
+        private void txtPCLMacroIdMain_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (_initialised)
                 ValidatePCLMacroId(false, false);
@@ -2004,8 +1943,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPCLMacroIdRear_LostFocus(object sender,
-                                                   RoutedEventArgs e)
+        private void txtPCLMacroIdRear_LostFocus(object sender, RoutedEventArgs e)
         {
             if (_initialised)
                 ValidatePCLMacroId(true, true);
@@ -2020,8 +1958,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPCLMacroIdRear_TextChanged(object sender,
-                                                     TextChangedEventArgs e)
+        private void txtPCLMacroIdRear_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (_initialised)
                 ValidatePCLMacroId(true, false);
@@ -2036,8 +1973,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPCLTestPageCount_LostFocus(object sender,
-                                                     RoutedEventArgs e)
+        private void txtPCLTestPageCount_LostFocus(object sender, RoutedEventArgs e)
         {
             if (_initialised)
                 ValidatePCLTestPageCount(true);
@@ -2052,8 +1988,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPCLTestPageCount_TextChanged(object sender,
-                                                       TextChangedEventArgs e)
+        private void txtPCLTestPageCount_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (_initialised)
                 ValidatePCLTestPageCount(false);
@@ -2068,8 +2003,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPCLXLFormFileMain_LostFocus(object sender,
-                                                   RoutedEventArgs e)
+        private void txtPCLXLFormFileMain_LostFocus(object sender, RoutedEventArgs e)
         {
             bool selected = true;
 
@@ -2079,9 +2013,7 @@ namespace PCLParaphernalia
 
             if (!File.Exists(filename))
             {
-                MessageBox.Show("Main form file '" + filename +
-                                 "' does not exist.\r\n\r\n" +
-                                 "Please select an appropriate file",
+                MessageBox.Show("Main form file '" + filename + "' does not exist.\r\n\r\n" + "Please select an appropriate file",
                                  "PCLXL form file invalid",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
@@ -2110,8 +2042,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPCLXLFormFileRear_LostFocus(object sender,
-                                                   RoutedEventArgs e)
+        private void txtPCLXLFormFileRear_LostFocus(object sender, RoutedEventArgs e)
         {
             bool selected = true;
 
@@ -2152,8 +2083,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPCLXLFormNameMain_LostFocus(object sender,
-                                                   RoutedEventArgs e)
+        private void txtPCLXLFormNameMain_LostFocus(object sender, RoutedEventArgs e)
         {
             if (ValidatePCLXLFormName(false, true))
                 _formNameMainPCLXL = txtPCLXLFormNameMain.Text;
@@ -2168,8 +2098,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPCLXLFormNameMain_TextChanged(object sender,
-                                                     TextChangedEventArgs e)
+        private void txtPCLXLFormNameMain_TextChanged(object sender, TextChangedEventArgs e)
         {
             _formNameMainPCLXL = txtPCLXLFormNameMain.Text;
         }
@@ -2183,8 +2112,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPCLXLFormNameRear_LostFocus(object sender,
-                                                   RoutedEventArgs e)
+        private void txtPCLXLFormNameRear_LostFocus(object sender, RoutedEventArgs e)
         {
             if (ValidatePCLXLFormName(true, true))
                 _formNameRearPCLXL = txtPCLXLFormNameRear.Text;
@@ -2199,8 +2127,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPCLXLFormNameRear_TextChanged(object sender,
-                                                     TextChangedEventArgs e)
+        private void txtPCLXLFormNameRear_TextChanged(object sender, TextChangedEventArgs e)
         {
             _formNameRearPCLXL = txtPCLXLFormNameRear.Text;
         }
@@ -2214,8 +2141,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPCLXLTestPageCount_LostFocus(object sender,
-                                                     RoutedEventArgs e)
+        private void txtPCLXLTestPageCount_LostFocus(object sender, RoutedEventArgs e)
         {
             if (_initialised)
                 ValidatePCLXLTestPageCount(true);
@@ -2230,8 +2156,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPCLXLTestPageCount_TextChanged(object sender,
-                                                       TextChangedEventArgs e)
+        private void txtPCLXLTestPageCount_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (_initialised)
                 ValidatePCLXLTestPageCount(false);
@@ -2291,10 +2216,7 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show(side + " macro Id value '" + crntText +
-                                    "' is invalid.\n\n" +
-                                    "Value will be reset to default '" +
-                                    newText + "'",
+                    MessageBox.Show(side + " macro Id value '" + crntText + "' is invalid.\n\n" + "Value will be reset to default '" + newText + "'",
                                     "PCL macro identifier invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
@@ -2312,12 +2234,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show(side + " macro Id value '" + crntText +
-                                    "' is invalid.\n\n" +
-                                    "Valid range is :\n\t" +
-                                    minVal + " <= value <= " + maxVal + "\n" +
-                                    "or\n" +
-                                    "\t<null> to represent <not applicable>",
+                    MessageBox.Show(side + " macro Id value '" + crntText + "' is invalid.\n\n" + "Valid range is :\n\t" + minVal + " <= value <= " + maxVal + "\n" + "or\n" + "\t<null> to represent <not applicable>",
                                     "PCL macro identifier invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
@@ -2360,8 +2277,7 @@ namespace PCLParaphernalia
                 {
                     OK = false;
 
-                    MessageBox.Show("Form file '" + _formFileMainPCL +
-                                     "' does not exist or is inaccesible",
+                    MessageBox.Show("Form file '" + _formFileMainPCL + "' does not exist or is inaccesible",
                                      "PCL main form",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
@@ -2380,8 +2296,7 @@ namespace PCLParaphernalia
                 {
                     OK = false;
 
-                    MessageBox.Show("Form file '" + _formFileRearPCL +
-                                     "' does not exist or is inaccesible",
+                    MessageBox.Show("Form file '" + _formFileRearPCL + "' does not exist or is inaccesible",
                                      "PCL main form",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
@@ -2399,9 +2314,7 @@ namespace PCLParaphernalia
                 {
                     OK = false;
 
-                    MessageBox.Show("Macro identifiers '" + _macroIdMainPCL +
-                                     "' for Main and Rear forms " +
-                                     " are both the same.\n\n",
+                    MessageBox.Show("Macro identifiers '" + _macroIdMainPCL + "' for Main and Rear forms " + " are both the same.\n\n",
                                      "PCL selection combination",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
@@ -2459,10 +2372,7 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show("Test page count value '" + crntText +
-                                    "' is invalid.\n\n" +
-                                    "Value will be reset to default '" +
-                                    newText + "'",
+                    MessageBox.Show("Test page count value '" + crntText + "' is invalid.\n\n" + "Value will be reset to default '" + newText + "'",
                                     "PCL test page count invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
@@ -2473,10 +2383,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show("Test page count value '" + crntText +
-                                    "' is invalid.\n\n" +
-                                    "Valid range is :\n\t" +
-                                    minVal + " <= value <= " + maxVal + "\n",
+                    MessageBox.Show("Test page count value '" + crntText + "' is invalid.\n\n" + "Valid range is :\n\t" + minVal + " <= value <= " + maxVal + "\n",
                                     "PCL test page count invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
@@ -2539,10 +2446,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    MessageBox.Show(side + " form name value '" + crntText +
-                                    "' is invalid.\n\n" +
-                                    "Value will be reset to default '" +
-                                    defVal + "'",
+                    MessageBox.Show(side + " form name value '" + crntText + "' is invalid.\n\n" + "Value will be reset to default '" + defVal + "'",
                                     "PCLXL form name invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
@@ -2560,9 +2464,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show(side + " form name value '" + crntText +
-                                    "' is invalid.\n\n" +
-                                    "Valid length is <= " + maxLen,
+                    MessageBox.Show(side + " form name value '" + crntText + "' is invalid.\n\n" + "Valid length is <= " + maxLen,
                                     "PCLXL form name invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
@@ -2604,8 +2506,7 @@ namespace PCLParaphernalia
                 {
                     OK = false;
 
-                    MessageBox.Show("Form file '" + _formFileMainPCLXL +
-                                     "' does not exist or is inaccesible",
+                    MessageBox.Show("Form file '" + _formFileMainPCLXL + "' does not exist or is inaccesible",
                                      "PCLXL main form",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
@@ -2621,8 +2522,7 @@ namespace PCLParaphernalia
                 {
                     OK = false;
 
-                    MessageBox.Show("Form file '" + _formFileRearPCLXL +
-                                     "' does not exist or is inaccesible",
+                    MessageBox.Show("Form file '" + _formFileRearPCLXL + "' does not exist or is inaccesible",
                                      "PCLXL main form",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
@@ -2638,9 +2538,7 @@ namespace PCLParaphernalia
                 {
                     OK = false;
 
-                    MessageBox.Show("Form names '" + _formNameMainPCLXL +
-                                     "' for Main and Rear forms " +
-                                     " are both the same.\n\n",
+                    MessageBox.Show("Form names '" + _formNameMainPCLXL + "' for Main and Rear forms " + " are both the same.\n\n",
                                      "PCLXL selection combination",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
@@ -2698,10 +2596,7 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show("Test page count value '" + crntText +
-                                    "' is invalid.\n\n" +
-                                    "Value will be reset to default '" +
-                                    newText + "'",
+                    MessageBox.Show("Test page count value '" + crntText + "' is invalid.\n\n" + "Value will be reset to default '" + newText + "'",
                                     "PCLXL test page count invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
@@ -2712,10 +2607,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show("Test page count value '" + crntText +
-                                    "' is invalid.\n\n" +
-                                    "Valid range is :\n\t" +
-                                    minVal + " <= value <= " + maxVal + "\n",
+                    MessageBox.Show("Test page count value '" + crntText + "' is invalid.\n\n" + "Valid range is :\n\t" + minVal + " <= value <= " + maxVal + "\n",
                                     "PCLXL test page count invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);

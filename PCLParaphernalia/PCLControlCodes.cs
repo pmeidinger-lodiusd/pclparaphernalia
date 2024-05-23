@@ -19,8 +19,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static readonly SortedList<byte, PCLControlCode> _tags =
-            new SortedList<byte, PCLControlCode>();
+        private static readonly SortedList<byte, PCLControlCode> _tags = new SortedList<byte, PCLControlCode>();
 
         private static PCLControlCode _tagUnknown;
 
@@ -34,7 +33,7 @@ namespace PCLParaphernalia
 
         static PCLControlCodes()
         {
-            populateTable();
+            PopulateTable();
         }
 
         //--------------------------------------------------------------------//
@@ -50,7 +49,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkControlCode(
+        public static bool CheckControlCode(
             int macroLevel,
             byte tagVal,
             ref bool flagLineTerm,
@@ -93,7 +92,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int displaySeqList(DataGrid grid)
+        public static int DisplaySeqList(DataGrid grid)
         {
             int count = 0;
 
@@ -115,8 +114,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCounts(DataTable table,
-                                               bool incUsedSeqsOnly)
+        public static void DisplayStatsCounts(DataTable table, bool incUsedSeqsOnly)
         {
             int count = 0;
 
@@ -145,7 +143,7 @@ namespace PCLParaphernalia
                 {
                     if (!hddrWritten)
                     {
-                        displayStatsCountsHddr(table);
+                        DisplayStatsCountsHddr(table);
                         hddrWritten = true;
                     }
 
@@ -171,7 +169,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCountsHddr(DataTable table)
+        public static void DisplayStatsCountsHddr(DataTable table)
         {
             //----------------------------------------------------------------//
 
@@ -215,7 +213,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getTagCount()
+        public static int GetTagCount()
         {
             return _tagsCount;
         }
@@ -229,7 +227,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void populateTable()
+        private static void PopulateTable()
         {
             byte codeVal = 0xff;                                       // 0xff:    //
             _tagUnknown =
@@ -322,7 +320,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void resetStatsCounts()
+        public static void ResetStatsCounts()
         {
             PCLControlCode tag;
 

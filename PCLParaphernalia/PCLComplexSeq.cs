@@ -9,9 +9,7 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.Obfuscation(
-        Feature = "renaming",
-        ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     class PCLComplexSeq
     {
@@ -72,7 +70,7 @@ namespace PCLParaphernalia
 
             FlagDisplayHexVal = flagDisplayHexVal;
 
-            this.makeOvlAct = makeOvlAct;
+            this.MakeOvlAct = makeOvlAct;
             _seqGrp = seqGrp;
 
             FlagValGeneric = value == PCLComplexSeqs._valueGeneric;
@@ -180,7 +178,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void incrementStatisticsCount(int level)
+        public void IncrementStatisticsCount(int level)
         {
             if (level == 0)
                 _statsCtParent++;
@@ -194,7 +192,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.OvlAct makeOvlAct { get; }
+        public PrnParseConstants.OvlAct MakeOvlAct { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -205,7 +203,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetStatistics()
+        public void ResetStatistics()
         {
             _statsCtParent = 0;
             _statsCtChild = 0;
@@ -228,32 +226,25 @@ namespace PCLParaphernalia
                     value = " (#=" + _value.ToString() + ")";
                 else
                     value = string.Empty;
+
                 if (FlagNilValue)
                 {
                     if (FlagNilGChar)
                     {
-                        seq = "<Esc>" + (char)_keyPChar +
-                                                            (char)_keyTChar;
+                        seq = "<Esc>" + (char)_keyPChar + (char)_keyTChar;
                     }
                     else
                     {
-                        seq = "<Esc>" + (char)_keyPChar +
-                                                            (char)_keyGChar +
-                                                            (char)_keyTChar;
+                        seq = "<Esc>" + (char)_keyPChar + (char)_keyGChar + (char)_keyTChar;
                     }
                 }
                 else if (FlagNilGChar)
                 {
-                    seq = "<Esc>" + (char)_keyPChar + "#" +
-                                    (char)_keyTChar +
-                                    value;
+                    seq = "<Esc>" + (char)_keyPChar + "#" + (char)_keyTChar + value;
                 }
                 else
                 {
-                    seq = "<Esc>" + (char)_keyPChar +
-                                    (char)_keyGChar + "#" +
-                                    (char)_keyTChar +
-                                    value;
+                    seq = "<Esc>" + (char)_keyPChar + (char)_keyGChar + "#" + (char)_keyTChar + value;
                 }
 
                 return seq;

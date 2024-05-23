@@ -141,8 +141,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static readonly SortedList<byte, PCLXLOperator> _tags =
-            new SortedList<byte, PCLXLOperator>();
+        private static readonly SortedList<byte, PCLXLOperator> _tags = new SortedList<byte, PCLXLOperator>();
 
         private static PCLXLOperator _tagUnknown;
 
@@ -190,7 +189,7 @@ namespace PCLParaphernalia
                 tag = _tagUnknown;
             }
 
-            tag.getDetails(ref flagEndSession,
+            tag.GetDetails(ref flagEndSession,
                             ref flagReserved,
                             ref embedDataType,
                             ref makeOvlAct,
@@ -395,7 +394,7 @@ namespace PCLParaphernalia
             else
                 tag = _tagUnknown;
 
-            tag.incrementStatisticsCount(level);
+            tag.IncrementStatisticsCount(level);
         }
 
         //--------------------------------------------------------------------//
@@ -1290,13 +1289,13 @@ namespace PCLParaphernalia
         {
             PCLXLOperator tag;
 
-            _tagUnknown.resetStatistics();
+            _tagUnknown.ResetStatistics();
 
             foreach (KeyValuePair<byte, PCLXLOperator> kvp in _tags)
             {
                 tag = kvp.Value;
 
-                tag.resetStatistics();
+                tag.ResetStatistics();
             }
         }
     }

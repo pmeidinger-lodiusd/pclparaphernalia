@@ -26,10 +26,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLPaperType(PCLPaperTypes.EntryType entryType,
-                            string name)
+        public PCLPaperType(PCLPaperTypes.EntryType entryType, string name)
         {
-            _entryType     = entryType;
+            _entryType = entryType;
             _paperTypeName = name;
         }
 
@@ -42,7 +41,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getName()
+        public string GetName()
         {
             return _paperTypeName;
         }
@@ -56,7 +55,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLPaperTypes.EntryType getType()
+        public PCLPaperTypes.EntryType GetPaperType()
         {
             return _entryType;
         }

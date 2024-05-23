@@ -10,8 +10,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    [System.Reflection.Obfuscation(Feature = "renaming",
-                                            ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     public partial class TargetNetPrintConfig : Window
     {
@@ -152,8 +151,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPrinterAddress_TextChanged(object sender,
-                                                   TextChangedEventArgs e)
+        private void txtPrinterAddress_TextChanged(object sender, TextChangedEventArgs e)
         {
             _printerAddress = txtPrinterAddress.Text;
         }
@@ -167,8 +165,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPrinterPort_TextChanged(object sender,
-                                                TextChangedEventArgs e)
+        private void txtPrinterPort_TextChanged(object sender, TextChangedEventArgs e)
         {
             _printerPort = int.Parse(txtPrinterPort.Text);
         }
@@ -182,8 +179,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtTimeoutReceive_TextChanged(object sender,
-                                                    TextChangedEventArgs e)
+        private void txtTimeoutReceive_TextChanged(object sender, TextChangedEventArgs e)
         {
             _timeoutReceive = int.Parse(txtTimeoutReceive.Text);
         }
@@ -197,8 +193,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtTimeoutSend_TextChanged(object sender,
-                                                 TextChangedEventArgs e)
+        private void txtTimeoutSend_TextChanged(object sender, TextChangedEventArgs e)
         {
             _timeoutSend = int.Parse(txtTimeoutSend.Text);
         }

@@ -48,8 +48,7 @@ namespace PCLParaphernalia
 
         public ObservableCollection<PCLCharCollItem> loadCompListUnicode()
         {
-            ObservableCollection<PCLCharCollItem> objColEmp =
-                new ObservableCollection<PCLCharCollItem>();
+            ObservableCollection<PCLCharCollItem> objColEmp = new ObservableCollection<PCLCharCollItem>();
 
             PCLCharCollections.BitType bitType;
             int collsCt = PCLCharCollections.GetCollsCount();
@@ -113,10 +112,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ObservableCollection<PCLCharCollItem> loadReqListMSL()
+        public ObservableCollection<PCLCharCollItem> LoadReqListMSL()
         {
-            ObservableCollection<PCLCharCollItem> objColEmp =
-                new ObservableCollection<PCLCharCollItem>();
+            ObservableCollection<PCLCharCollItem> objColEmp = new ObservableCollection<PCLCharCollItem>();
 
             PCLCharCollections.BitType bitType;
             int collsCt = PCLCharCollections.GetCollsCount();
@@ -170,10 +168,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ObservableCollection<PCLCharCollItem> loadReqListUnicode()
+        public ObservableCollection<PCLCharCollItem> LoadReqListUnicode()
         {
-            ObservableCollection<PCLCharCollItem> objColEmp =
-                new ObservableCollection<PCLCharCollItem>();
+            ObservableCollection<PCLCharCollItem> objColEmp = new ObservableCollection<PCLCharCollItem>();
 
             PCLCharCollections.BitType bitType;
             int collsCt = PCLCharCollections.GetCollsCount();

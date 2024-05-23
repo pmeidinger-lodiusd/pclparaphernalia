@@ -464,10 +464,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UTF8Result ConvertUTF32ToUTF8Bytes(
-            uint utf32Value,
-            ref int utf8SeqLen,
-            ref byte[] utf8Seq)
+        public static UTF8Result ConvertUTF32ToUTF8Bytes(uint utf32Value, ref int utf8SeqLen, ref byte[] utf8Seq)
         {
             UTF8Result result;
             int seqPos;
@@ -530,26 +527,22 @@ namespace PCLParaphernalia
                 //       C# does not support fall through.                      // 
 
                 case 4:
-                    utf8Seq[seqPos--] =
-                        (byte)((codepoint | cTrailByteMark) & cTrailByteMask);
+                    utf8Seq[seqPos--] = (byte)((codepoint | cTrailByteMark) & cTrailByteMask);
                     codepoint >>= 6;
                     goto case 3;
 
                 case 3:
-                    utf8Seq[seqPos--] =
-                        (byte)((codepoint | cTrailByteMark) & cTrailByteMask);
+                    utf8Seq[seqPos--] = (byte)((codepoint | cTrailByteMark) & cTrailByteMask);
                     codepoint >>= 6;
                     goto case 2;
 
                 case 2:
-                    utf8Seq[seqPos--] =
-                        (byte)((codepoint | cTrailByteMark) & cTrailByteMask);
+                    utf8Seq[seqPos--] = (byte)((codepoint | cTrailByteMark) & cTrailByteMask);
                     codepoint >>= 6;
                     goto case 1;
 
                 case 1:
-                    utf8Seq[seqPos--] =
-                        (byte)(codepoint | cLeadByteMarksUTF8[utf8SeqLen - 1]);
+                    utf8Seq[seqPos--] = (byte)(codepoint | cLeadByteMarksUTF8[utf8SeqLen - 1]);
                     break;
             }
 
@@ -637,26 +630,22 @@ namespace PCLParaphernalia
                 //       C# does not support fall through.                      // 
 
                 case 4:
-                    utf8Seq[seqPos--] =
-                        (byte)((codepoint | cTrailByteMark) & cTrailByteMask);
+                    utf8Seq[seqPos--] = (byte)((codepoint | cTrailByteMark) & cTrailByteMask);
                     codepoint >>= 6;
                     goto case 3;
 
                 case 3:
-                    utf8Seq[seqPos--] =
-                        (byte)((codepoint | cTrailByteMark) & cTrailByteMask);
+                    utf8Seq[seqPos--] = (byte)((codepoint | cTrailByteMark) & cTrailByteMask);
                     codepoint >>= 6;
                     goto case 2;
 
                 case 2:
-                    utf8Seq[seqPos--] =
-                        (byte)((codepoint | cTrailByteMark) & cTrailByteMask);
+                    utf8Seq[seqPos--] = (byte)((codepoint | cTrailByteMark) & cTrailByteMask);
                     codepoint >>= 6;
                     goto case 1;
 
                 case 1:
-                    utf8Seq[seqPos--] =
-                        (byte)(codepoint | cLeadByteMarksUTF8[utf8SeqLen - 1]);
+                    utf8Seq[seqPos--] = (byte)(codepoint | cLeadByteMarksUTF8[utf8SeqLen - 1]);
                     break;
             }
 
@@ -687,14 +676,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void ConvertUTF8ToUTF32(
-            byte[] utf8Seq,
-            int utf8SeqLen,
-            ref uint utf32Value)
+        public static void ConvertUTF8ToUTF32(byte[] utf8Seq, int utf8SeqLen, ref uint utf32Value)
         {
             long codepoint = 0;
             int seqPos = 0;
 
+            // note: everything falls through hence use of GOTO (!!) as     //
+            //       C# does not support fall through.                      // 
             switch (utf8SeqLen)
             {
                 case 6:

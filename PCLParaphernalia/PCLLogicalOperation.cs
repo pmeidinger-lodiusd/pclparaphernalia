@@ -29,10 +29,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLLogicalOperation(short opId,
-                                    short opCode,
-                                    string actPostfix,
-                                    string actInfix)
+        public PCLLogicalOperation(short opId, short opCode, string actPostfix, string actInfix)
         {
             _opId = opId;
             _opCode = opCode;       // not used at present //
@@ -65,7 +62,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getDescLong()
+        public string GetDescLong()
         {
             string prefix;
 
@@ -116,7 +113,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public short getROPId()
+        public short GetROPId()
         {
             return _opId;
         }

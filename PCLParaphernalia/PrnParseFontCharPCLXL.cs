@@ -130,9 +130,7 @@ namespace PCLParaphernalia
             _indxOffsetFormat = _options.IndxGenOffsetFormat;
             _showBinData = _options.FlagPCLXLMiscBinData;
 
-            _options.getOptPCLXLDraw(ref _drawCharShape,
-                                      ref _drawCharMaxHeight,
-                                      ref _drawCharMaxWidth);
+            _options.GetOptPCLXLDraw(ref _drawCharShape, ref _drawCharMaxHeight, ref _drawCharMaxWidth);
 
             if (contType == PrnParseConstants.ContType.None)
             {
@@ -149,7 +147,7 @@ namespace PCLParaphernalia
             else
             {
                 contType = PrnParseConstants.ContType.None;
-                _linkData.resetContData();
+                _linkData.ResetContData();
             }
 
             if (_nextStage == Stage.Start)
@@ -165,12 +163,11 @@ namespace PCLParaphernalia
 
                     contType = PrnParseConstants.ContType.PCLXLFontChar;
 
-                    _linkData.setBacktrack(contType, -bufRem);
+                    _linkData.SetBacktrack(contType, -bufRem);
                 }
                 else
                 {
-                    ProcessBlockHeader(ref bufRem,
-                                        ref bufOffset);
+                    ProcessBlockHeader(ref bufRem, ref bufOffset);
                 }
             }
 
@@ -187,7 +184,7 @@ namespace PCLParaphernalia
 
                     contType = PrnParseConstants.ContType.PCLXLFontChar;
 
-                    _linkData.setBacktrack(contType, -bufRem);
+                    _linkData.SetBacktrack(contType, -bufRem);
                 }
                 else
                 {
@@ -217,13 +214,11 @@ namespace PCLParaphernalia
 
                 if (_charFormat == PCLXLCharFormat.Bitmap)
                 {
-                    ProcessRasterDataBody(ref bufRem,
-                                           ref bufOffset);
+                    ProcessRasterDataBody(ref bufRem, ref bufOffset);
                 }
                 else if (_charFormat == PCLXLCharFormat.TrueType)
                 {
-                    ProcessTrueTypeDataBody(ref bufRem,
-                                             ref bufOffset);
+                    ProcessTrueTypeDataBody(ref bufRem, ref bufOffset);
                 }
                 else
                 {
@@ -241,13 +236,11 @@ namespace PCLParaphernalia
 
                 if (_charFormat == PCLXLCharFormat.Bitmap)
                 {
-                    ProcessRasterDataRem(ref bufRem,
-                                          ref bufOffset);
+                    ProcessRasterDataRem(ref bufRem, ref bufOffset);
                 }
                 else if (_charFormat == PCLXLCharFormat.TrueType)
                 {
-                    ProcessTrueTypeDataBody(ref bufRem,
-                                             ref bufOffset);
+                    ProcessTrueTypeDataBody(ref bufRem, ref bufOffset);
                 }
                 else
                 {
@@ -276,7 +269,7 @@ namespace PCLParaphernalia
 
                 _nextStage = Stage.BadSeqB;
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.MsgError,
                     _table,
                     PrnParseConstants.OvlShow.None,
@@ -312,12 +305,12 @@ namespace PCLParaphernalia
                     binDataLen = bufRem;
                     _charRem -= bufRem;
 
-                    _linkData.setContinuation(contType);
+                    _linkData.SetContinuation(contType);
                 }
                 else
                 {
                     contType = PrnParseConstants.ContType.None;
-                    _linkData.resetContData();
+                    _linkData.ResetContData();
 
                     binDataLen = _charRem;
                     _charRem = 0;
@@ -332,7 +325,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    PrnParseCommon.addDataRow(
+                    PrnParseCommon.AddDataRow(
                         PrnParseRowTypes.Type.DataBinary,
                         _table,
                         PrnParseConstants.OvlShow.None,
@@ -374,7 +367,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PrnParseCommon.addDataRow(
+            PrnParseCommon.AddDataRow(
                 PrnParseRowTypes.Type.DataBinary,
                 _table,
                 PrnParseConstants.OvlShow.None,
@@ -436,7 +429,7 @@ namespace PCLParaphernalia
                     break;
             }
 
-            PrnParseCommon.addTextRow(
+            PrnParseCommon.AddTextRow(
                 PrnParseRowTypes.Type.PCLXLFontChar,
                 _table,
                 PrnParseConstants.OvlShow.None,
@@ -488,7 +481,7 @@ namespace PCLParaphernalia
                 }
             }
 
-            PrnParseCommon.addTextRow(
+            PrnParseCommon.AddTextRow(
                 PrnParseRowTypes.Type.PCLXLFontChar,
                 _table,
                 PrnParseConstants.OvlShow.None,
@@ -515,7 +508,7 @@ namespace PCLParaphernalia
             {
                 _nextStage = Stage.BadSeqA;
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.MsgWarning,
                     _table,
                     PrnParseConstants.OvlShow.None,
@@ -554,7 +547,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PrnParseCommon.addDataRow(
+            PrnParseCommon.AddDataRow(
                 PrnParseRowTypes.Type.DataBinary,
                 _table,
                 PrnParseConstants.OvlShow.None,
@@ -601,7 +594,7 @@ namespace PCLParaphernalia
                 si16a = (short)((_buf[bufOffset] * 256) +
                                   _buf[bufOffset + 1]);
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLXLFontChar,
                     _table,
                     PrnParseConstants.OvlShow.None,
@@ -622,7 +615,7 @@ namespace PCLParaphernalia
                 si16a = (short)((_buf[bufOffset + 2] * 256) +
                                   _buf[bufOffset + 3]);
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLXLFontChar,
                     _table,
                     PrnParseConstants.OvlShow.None,
@@ -645,7 +638,7 @@ namespace PCLParaphernalia
                 if ((_charWidth % 8) != 0)
                     bytesPerRow++;
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLXLFontChar,
                     _table,
                     PrnParseConstants.OvlShow.None,
@@ -664,7 +657,7 @@ namespace PCLParaphernalia
                 _charHeight = (ushort)((_buf[bufOffset + 6] * 256) +
                                          _buf[bufOffset + 7]);
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLXLFontChar,
                     _table,
                     PrnParseConstants.OvlShow.None,
@@ -682,7 +675,7 @@ namespace PCLParaphernalia
 
                 ui32a = (uint)(bytesPerRow * _charHeight);
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLXLFontChar,
                     _table,
                     PrnParseConstants.OvlShow.None,
@@ -699,7 +692,7 @@ namespace PCLParaphernalia
 
                     _nextStage = Stage.BadSeqA;
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.MsgWarning,
                         _table,
                         PrnParseConstants.OvlShow.None,
@@ -709,7 +702,7 @@ namespace PCLParaphernalia
                         "Estimated data size (" + ui32a + " bytes)" +
                         " inconsistent with");
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.MsgWarning,
                         _table,
                         PrnParseConstants.OvlShow.None,
@@ -719,7 +712,7 @@ namespace PCLParaphernalia
                         "download size = " + _charLen +
                         ", block header = " + _blockHddrLen + " and ");
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.MsgWarning,
                         _table,
                         PrnParseConstants.OvlShow.None,
@@ -749,7 +742,7 @@ namespace PCLParaphernalia
 
                 ui16a = (ushort)(_charDataSize - _charHddrLen);
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLXLFontChar,
                     _table,
                     PrnParseConstants.OvlShow.None,
@@ -764,7 +757,7 @@ namespace PCLParaphernalia
                 {
                     _validChar = false;
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.MsgWarning,
                         _table,
                         PrnParseConstants.OvlShow.None,
@@ -774,7 +767,7 @@ namespace PCLParaphernalia
                         "Character Data Size (" + _charDataSize + " bytes)" +
                         " inconsistent with");
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.MsgWarning,
                         _table,
                         PrnParseConstants.OvlShow.None,
@@ -801,7 +794,7 @@ namespace PCLParaphernalia
                         si16a = (short)((_buf[bufOffset + 2] * 256) +
                                           _buf[bufOffset + 3]);
 
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.Type.PCLXLFontChar,
                             _table,
                             PrnParseConstants.OvlShow.None,
@@ -826,7 +819,7 @@ namespace PCLParaphernalia
                         si16a = (short)((_buf[bufOffset + 4] * 256) +
                                           _buf[bufOffset + 5]);
 
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.Type.PCLXLFontChar,
                             _table,
                             PrnParseConstants.OvlShow.None,
@@ -850,7 +843,7 @@ namespace PCLParaphernalia
                         si16a = (short)((_buf[bufOffset + 6] * 256) +
                                           _buf[bufOffset + 7]);
 
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.Type.PCLXLFontChar,
                             _table,
                             PrnParseConstants.OvlShow.None,
@@ -887,7 +880,7 @@ namespace PCLParaphernalia
                                            _buf[bufOffset + 9]);
                     }
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLXLFontChar,
                         _table,
                         PrnParseConstants.OvlShow.None,
@@ -924,8 +917,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void ProcessRasterDataBody(ref int bufRem,
-                                            ref int bufOffset)
+        private void ProcessRasterDataBody(ref int bufRem, ref int bufOffset)
         {
             PrnParseConstants.ContType contType;
 
@@ -956,7 +948,7 @@ namespace PCLParaphernalia
                 {
                     contType = PrnParseConstants.ContType.PCLFontChar;
 
-                    _linkData.setBacktrack(contType, -bufRem);
+                    _linkData.SetBacktrack(contType, -bufRem);
 
                     bufOffset += bufRem;
                     bufRem = 0;
@@ -971,13 +963,13 @@ namespace PCLParaphernalia
                     binDataLen = bufRem;
                     _charRem -= bufRem;
 
-                    _linkData.setContinuation(contType);
+                    _linkData.SetContinuation(contType);
                 }
             }
             else
             {
                 contType = PrnParseConstants.ContType.None;
-                _linkData.resetContData();
+                _linkData.ResetContData();
 
                 binDataLen = _charRem;
                 _charRem = 0;
@@ -994,7 +986,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow(
+                PrnParseCommon.AddDataRow(
                     PrnParseRowTypes.Type.DataBinary,
                     _table,
                     PrnParseConstants.OvlShow.None,
@@ -1047,8 +1039,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void ProcessRasterDataRem(ref int bufRem,
-                                          ref int bufOffset)
+        private void ProcessRasterDataRem(ref int bufRem, ref int bufOffset)
         {
             PrnParseConstants.ContType contType;
 
@@ -1068,12 +1059,12 @@ namespace PCLParaphernalia
                 binDataLen = bufRem;
                 _charRem -= bufRem;
 
-                _linkData.setContinuation(contType);
+                _linkData.SetContinuation(contType);
             }
             else
             {
                 contType = PrnParseConstants.ContType.None;
-                _linkData.resetContData();
+                _linkData.ResetContData();
 
                 binDataLen = _charRem;
                 _charRem = 0;
@@ -1090,7 +1081,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow(
+                PrnParseCommon.AddDataRow(
                     PrnParseRowTypes.Type.DataBinary,
                     _table,
                     PrnParseConstants.OvlShow.None,
@@ -1138,8 +1129,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void ProcessTrueTypeDataBody(ref int bufRem,
-                                              ref int bufOffset)
+        private void ProcessTrueTypeDataBody(ref int bufRem, ref int bufOffset)
         {
             PrnParseConstants.ContType contType;
 
@@ -1159,12 +1149,12 @@ namespace PCLParaphernalia
                 binDataLen = bufRem;
                 _charRem -= bufRem;
 
-                _linkData.setContinuation(contType);
+                _linkData.SetContinuation(contType);
             }
             else
             {
                 contType = PrnParseConstants.ContType.None;
-                _linkData.resetContData();
+                _linkData.ResetContData();
 
                 binDataLen = _charRem;
                 _charRem = 0;
@@ -1179,7 +1169,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow(
+                PrnParseCommon.AddDataRow(
                     PrnParseRowTypes.Type.DataBinary,
                     _table,
                     PrnParseConstants.OvlShow.None,
@@ -1221,9 +1211,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void RasterDraw(int bufOffset,
-                                 int dataLen,
-                                 bool shapeTooLarge)
+        private void RasterDraw(int bufOffset, int dataLen, bool shapeTooLarge)
         {
             if (shapeTooLarge)
             {
@@ -1233,7 +1221,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.MsgComment,
                     _table,
                     PrnParseConstants.OvlShow.None,
@@ -1244,7 +1232,7 @@ namespace PCLParaphernalia
 
                 if (_charHeight > _drawCharMaxHeight)
                 {
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.MsgComment,
                         _table,
                         PrnParseConstants.OvlShow.None,
@@ -1258,7 +1246,7 @@ namespace PCLParaphernalia
 
                 if (_charWidth > _drawCharMaxWidth)
                 {
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.MsgComment,
                         _table,
                         PrnParseConstants.OvlShow.None,
@@ -1272,7 +1260,7 @@ namespace PCLParaphernalia
 
                 if (_charDataLen > PrnParseConstants.bufSize)
                 {
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.MsgComment,
                         _table,
                         PrnParseConstants.OvlShow.None,
@@ -1332,9 +1320,7 @@ namespace PCLParaphernalia
 
                     rowImage = string.Empty;
 
-                    for (int j = crntOffset;
-                         j < (crntOffset + sliceLen);
-                         j++)
+                    for (int j = crntOffset; j < (crntOffset + sliceLen); j++)
                     {
                         sub = _buf[j];
 
@@ -1357,7 +1343,7 @@ namespace PCLParaphernalia
 
                     if (firstLine)
                     {
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.Type.PCLXLFontChar,
                             _table,
                             PrnParseConstants.OvlShow.None,
@@ -1368,7 +1354,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.Type.PCLXLFontChar,
                             _table,
                             PrnParseConstants.OvlShow.None,

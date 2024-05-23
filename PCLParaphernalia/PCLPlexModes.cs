@@ -87,7 +87,7 @@ namespace PCLParaphernalia
 
         public static byte GetIdPCL(int index)
         {
-            return _plexModes[index].getIdPCL();
+            return _plexModes[index].GetIdPCL();
         }
 
         //--------------------------------------------------------------------//
@@ -101,7 +101,7 @@ namespace PCLParaphernalia
 
         public static byte GetIdPCLXL(int index, bool flagLandscape)
         {
-            return _plexModes[index].getIdPCLXL(flagLandscape);
+            return _plexModes[index].GetIdPCLXL(flagLandscape);
         }
 
         //--------------------------------------------------------------------//
@@ -115,7 +115,7 @@ namespace PCLParaphernalia
 
         public static string GetName(int index)
         {
-            return _plexModes[index].getName();
+            return _plexModes[index].GetName();
         }
 
         //--------------------------------------------------------------------//
@@ -129,7 +129,7 @@ namespace PCLParaphernalia
 
         public static PlexType GetPlexType(int index)
         {
-            return _plexModes[index].getPlexType();
+            return _plexModes[index].GetPlexType();
         }
 
         //--------------------------------------------------------------------//
@@ -143,7 +143,7 @@ namespace PCLParaphernalia
 
         public static bool IsSimplex(int index)
         {
-            return _plexModes[index].getPlexType() == PlexType.Simplex;
+            return _plexModes[index].GetPlexType() == PlexType.Simplex;
         }
     }
 }

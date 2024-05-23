@@ -17,13 +17,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _mainKey             = MainForm._regMainKey;
+        const string _mainKey = MainForm._regMainKey;
 
-        const string _subKeyTools         = "Tools";
+        const string _subKeyTools = "Tools";
 
-        const string _nameIndxToolType    = "IndxToolType";
+        const string _nameIndxToolType = "IndxToolType";
 
-        const int _indexZero            = 0;
+        const int _indexZero = 0;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -35,17 +35,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadData(ref int indxToolType)
+        public static void LoadData(ref int indxToolType)
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
             const string key = _subKeyTools;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxToolType = (int)subKey.GetValue(_nameIndxToolType,
-                                                      _indexZero);
+                indxToolType = (int)subKey.GetValue(_nameIndxToolType, _indexZero);
             }
         }
 
@@ -58,18 +56,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveData(int indxToolType)
+        public static void SaveData(int indxToolType)
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
             const string key = _subKeyTools;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                subKey.SetValue(_nameIndxToolType,
-                                indxToolType,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameIndxToolType, indxToolType, RegistryValueKind.DWord);
             }
         }
     }

@@ -8,8 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
-    [System.Reflection.Obfuscation(Feature = "renaming",
-                                            ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     public static class ToolCommonData
     {
@@ -110,7 +109,7 @@ namespace PCLParaphernalia
 
         public static void LoadWorkFoldername()
         {
-            TargetPersist.loadDataWorkFolder(ref _defWorkFolder);
+            TargetPersist.LoadDataWorkFolder(ref _defWorkFolder);
         }
     }
 }

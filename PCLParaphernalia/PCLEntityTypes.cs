@@ -28,18 +28,12 @@ namespace PCLParaphernalia
 
         private static readonly PCLEntityType[] _entityTypes =
         {
-            new PCLEntityType(Type.Memory,         "1",
-                              "Memory"),
-            new PCLEntityType(Type.Font,           "0",
-                              "Font"),
-            new PCLEntityType(Type.Macro,          "1",
-                              "Macro"),
-            new PCLEntityType(Type.Pattern,        "2",
-                              "User-defined pattern"),
-            new PCLEntityType(Type.SymbolSet,      "3",
-                              "Symbol Set"),
-            new PCLEntityType(Type.FontExtended,   "4",
-                              "Font Extended")
+            new PCLEntityType(Type.Memory,       "1", "Memory"),
+            new PCLEntityType(Type.Font,         "0", "Font"),
+            new PCLEntityType(Type.Macro,        "1", "Macro"),
+            new PCLEntityType(Type.Pattern,      "2", "User-defined pattern"),
+            new PCLEntityType(Type.SymbolSet,    "3", "Symbol Set"),
+            new PCLEntityType(Type.FontExtended, "4", "Font Extended")
         };
 
         private static readonly int _entityTypeCount = _entityTypes.GetUpperBound(0) + 1;
@@ -69,7 +63,7 @@ namespace PCLParaphernalia
 
         public static string GetIdPCL(int selection)
         {
-            return _entityTypes[selection].getIdPCL();
+            return _entityTypes[selection].GetIdPCL();
         }
 
         //--------------------------------------------------------------------//
@@ -83,7 +77,7 @@ namespace PCLParaphernalia
 
         public static string GetName(int selection)
         {
-            return _entityTypes[selection].getName();
+            return _entityTypes[selection].GetName();
         }
 
         //--------------------------------------------------------------------//
@@ -97,7 +91,7 @@ namespace PCLParaphernalia
 
         public static Type GetType(int selection)
         {
-            return _entityTypes[selection].getType();
+            return _entityTypes[selection].GetEntityType();
         }
     }
 }

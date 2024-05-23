@@ -121,8 +121,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getByteRange(ref uint offset,
-                                 ref uint length)
+        public void GetByteRange(ref uint offset, ref uint length)
         {
             offset = _offset;
             length = _length;
@@ -137,7 +136,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void initialise()
+        public void Initialise()
         {
             _checksum = 0;
             _offset = 0;
@@ -154,7 +153,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setMetrics(uint checksum,
+        public void SetMetrics(uint checksum,
                                uint offset,
                                uint length,
                                int padBytes)
@@ -175,7 +174,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool zeroLength()
+        public bool ZeroLength()
         {
             return _length == 0;
         }

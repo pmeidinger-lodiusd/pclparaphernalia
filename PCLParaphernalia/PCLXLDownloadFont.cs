@@ -111,8 +111,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool FontFileOpen(string fileName,
-                                            ref long fileSize)
+        private static bool FontFileOpen(string fileName, ref long fileSize)
         {
             bool open = false;
 

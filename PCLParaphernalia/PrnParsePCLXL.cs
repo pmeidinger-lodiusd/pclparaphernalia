@@ -217,9 +217,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool isWhitespaceTag(byte crntByte)
+        private bool IsWhitespaceTag(byte crntByte)
         {
-            return PCLXLWhitespaces.isKnownTag(crntByte);
+            return PCLXLWhitespaces.IsKnownTag(crntByte);
         }
 
         //--------------------------------------------------------------------//
@@ -231,7 +231,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void makeOverlayInsertHeader(BinaryWriter binWriter,
+        public void MakeOverlayInsertHeader(BinaryWriter binWriter,
                                             bool encapsulate,
                                             string streamName,
                                             DataTable table)
@@ -240,7 +240,7 @@ namespace PCLParaphernalia
             {
                 PCLXLWriter.StreamBegin(binWriter, streamName);
 
-                PrnParseCommon.addDataRow(
+                PrnParseCommon.AddDataRow(
                     PrnParseRowTypes.Type.MsgComment,
                     table,
                     PrnParseConstants.OvlShow.Insert,
@@ -262,7 +262,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void makeOverlayInsertTrailer(BinaryWriter binWriter,
+        public void MakeOverlayInsertTrailer(BinaryWriter binWriter,
                                              bool flagRestoreGS,
                                              bool encapsulate,
                                              DataTable table)
@@ -271,21 +271,14 @@ namespace PCLParaphernalia
             {
                 string descText;
 
-                PCLXLWriter.WriteOperator(binWriter,
-                                           PCLXLOperators.Tag.PopGS,
-                                           encapsulate);
+                PCLXLWriter.WriteOperator(binWriter, PCLXLOperators.Tag.PopGS, encapsulate);
 
                 if (encapsulate)
-                {
-                    descText = "PopGS (encapsulated within" +
-                                               " ReadStream structure)";
-                }
+                    descText = "PopGS (encapsulated within ReadStream structure)";
                 else
-                {
                     descText = "PopGS";
-                }
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLXLOperator,
                      table,
                      PrnParseConstants.OvlShow.Insert,
@@ -299,7 +292,7 @@ namespace PCLParaphernalia
             {
                 PCLXLWriter.StreamEnd(binWriter);
 
-                PrnParseCommon.addDataRow(
+                PrnParseCommon.AddDataRow(
                     PrnParseRowTypes.Type.PCLXLOperator,
                     table,
                     PrnParseConstants.OvlShow.Insert,
@@ -322,7 +315,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool parseBuffer(
+        public bool ParseBuffer(
             byte[] buf,
             ref int fileOffset,
             ref int bufRem,
@@ -365,7 +358,7 @@ namespace PCLParaphernalia
 
             _endOffset = _options.ValCurFOffsetEnd;
 
-            _options.getOptPCLXLBasic(ref _analyseFontHddr,
+            _options.GetOptPCLXLBasic(ref _analyseFontHddr,
                                        ref _analyseFontChar,
                                        ref _analyseStreams,
                                        ref _analysePassThrough,
@@ -391,10 +384,8 @@ namespace PCLParaphernalia
                 _linkData.MakeOvlPos =
                     PrnParseConstants.OvlPos.BeforeFirstPage;
 
-                if ((_startMode ==
-                        PrnParseConstants.PCLXLBinding.BinaryLSFirst) ||
-                    (_startMode ==
-                        PrnParseConstants.PCLXLBinding.BinaryMSFirst))
+                if ((_startMode == PrnParseConstants.PCLXLBinding.BinaryLSFirst) ||
+                    (_startMode == PrnParseConstants.PCLXLBinding.BinaryMSFirst))
                 {
                     _hddrRead = true;
                     _bindType = _startMode;
@@ -403,22 +394,10 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if (linkData.isContinuation())
-            {
-                seqInvalid = parseContinuation(ref bufRem,
-                                                            ref bufOffset,
-                                                            ref crntPDL,
-                                                            ref endReached,
-                                                            firstCall);
-            }
+            if (linkData.IsContinuation())
+                seqInvalid = ParseContinuation(ref bufRem, ref bufOffset, ref crntPDL, ref endReached, firstCall);
             else
-            {
-                seqInvalid = parseSequences(ref bufRem,
-                                                         ref bufOffset,
-                                                         ref crntPDL,
-                                                         ref endReached,
-                                                         firstCall);
-            }
+                seqInvalid = ParseSequences(ref bufRem, ref bufOffset, ref crntPDL, ref endReached, firstCall);
 
             return seqInvalid;
         }
@@ -432,7 +411,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool parseContinuation(
+        private bool ParseContinuation(
             ref int bufRem,
             ref int bufOffset,
             ref ToolCommonData.PrintLang crntPDL,
@@ -456,7 +435,7 @@ namespace PCLParaphernalia
             byte prefixA = 0x00,
                  prefixB = 0x00;
 
-            _linkData.getContData(ref contType,
+            _linkData.GetContData(ref contType,
                                    ref prefixLen,
                                    ref contDataLen,
                                    ref downloadRem,
@@ -475,7 +454,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                _linkData.resetContData();
+                _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.ContType.PCLXLEmbed)
             {
@@ -513,20 +492,16 @@ namespace PCLParaphernalia
 
                 if (_crntOperEmbedType != PCLXLOperators.EmbedDataType.None)
                 {
-                    if (((_crntOperEmbedType ==
-                            PCLXLOperators.EmbedDataType.PassThrough) &&
+                    if (((_crntOperEmbedType == PCLXLOperators.EmbedDataType.PassThrough) &&
                          _analysePassThrough)
                                                  ||
-                        ((_crntOperEmbedType ==
-                            PCLXLOperators.EmbedDataType.Stream) &&
+                        ((_crntOperEmbedType == PCLXLOperators.EmbedDataType.Stream) &&
                          _analyseStreams)
                                                  ||
-                        ((_crntOperEmbedType ==
-                            PCLXLOperators.EmbedDataType.FontHeader) &&
+                        ((_crntOperEmbedType == PCLXLOperators.EmbedDataType.FontHeader) &&
                          _analyseFontHddr)
                                                  ||
-                        ((_crntOperEmbedType ==
-                            PCLXLOperators.EmbedDataType.FontChar) &&
+                        ((_crntOperEmbedType == PCLXLOperators.EmbedDataType.FontChar) &&
                          _analyseFontChar))
                     {
                         _analysisOwner.EmbeddedDataStore(_buf,
@@ -558,7 +533,7 @@ namespace PCLParaphernalia
                 if (_embedDataRem == 0)
                 {
                     _continuation = false;
-                    _linkData.resetContData();
+                    _linkData.ResetContData();
                 }
 
                 bufRem -= binDataLen;
@@ -576,7 +551,7 @@ namespace PCLParaphernalia
                 if (firstCall)
                 {
                     contType = PrnParseConstants.ContType.None;
-                    _linkData.resetContData();
+                    _linkData.ResetContData();
                 }
 
                 hddrOK = _parseFontHddrPCLXL.AnalyseFontHddr(contDataLen,
@@ -603,7 +578,7 @@ namespace PCLParaphernalia
                 if (firstCall)
                 {
                     contType = PrnParseConstants.ContType.None;
-                    _linkData.resetContData();
+                    _linkData.ResetContData();
                 }
 
                 charOK = _parseFontCharPCLXL.AnalyseFontChar(contDataLen,
@@ -635,7 +610,7 @@ namespace PCLParaphernalia
                 //------------------------------------------------------------//
 
                 _continuation = false;
-                _linkData.resetContData();
+                _linkData.ResetContData();
             }
 
             if ((_endOffset != -1) && ((_fileOffset + bufOffset) > _endOffset))
@@ -653,15 +628,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool parseSequences(
+        private bool ParseSequences(
             ref int bufRem,
             ref int bufOffset,
             ref ToolCommonData.PrintLang crntPDL,
             ref bool endReached,
             bool firstCall)
         {
-            PrnParseConstants.ContType contType =
-                PrnParseConstants.ContType.None;
+            PrnParseConstants.ContType contType = PrnParseConstants.ContType.None;
 
             byte crntByte;
 
@@ -701,7 +675,7 @@ namespace PCLParaphernalia
                     {
                         invalidSeqFound = true;
 
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.Type.MsgWarning,
                             _table,
                             PrnParseConstants.OvlShow.Illegal,
@@ -741,22 +715,19 @@ namespace PCLParaphernalia
 
                             contType = PrnParseConstants.ContType.PCLXL;
 
-                            _linkData.setBacktrack(contType, -bufRem);
+                            _linkData.SetBacktrack(contType, -bufRem);
                         }
                         else
                         {
-                            if ((_buf[bufOffset + 1]
-                                == _linkData.PrescribeSCRC)
+                            if ((_buf[bufOffset + 1] == _linkData.PrescribeSCRC)
                                                   &&
-                                (_buf[bufOffset + 2] ==
-                                PrnParseConstants.prescribeSCRCDelimiter))
+                                (_buf[bufOffset + 2] == PrnParseConstants.prescribeSCRCDelimiter))
                             {
                                 langSwitch = true;
                                 crntPDL = ToolCommonData.PrintLang.Prescribe;
                                 //  _linkData.MakeOvlPos =
                                 //      PrnParseConstants.eOvlPos.AfterPages;
-                                _linkData.PrescribeCallerPDL =
-                                    ToolCommonData.PrintLang.PCLXL;
+                                _linkData.PrescribeCallerPDL = ToolCommonData.PrintLang.PCLXL;
                             }
                         }
                     }
@@ -769,18 +740,17 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        badSeq = processHeader(ref bufRem,
-                                                ref bufOffset);
+                        badSeq = ProcessHeader(ref bufRem, ref bufOffset);
 
                         if (badSeq)
                         {
                             invalidSeqFound = true;
                         }
                         else if (_hddrRead &&
-                                                         (_parseType == PrnParse.ParseType.MakeOverlay))
+                                (_parseType == PrnParse.ParseType.MakeOverlay))
                         {
                             _breakpoint =
-                                PrnParseMakeOvl.checkActionPCLXLPushGS(
+                                PrnParseMakeOvl.CheckActionPCLXLPushGS(
                                             bufOffset,
                                             _fileOffset,
                                             _linkData,
@@ -799,7 +769,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    processAttributeTag(ref bufRem,
+                    ProcessAttributeTag(ref bufRem,
                                          ref bufOffset);
                 }
                 else if ((crntByte >= PrnParseConstants.pclxlDataTypeLow)
@@ -812,13 +782,12 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    badSeq = processDataTypeTag(ref bufRem,
-                                                 ref bufOffset);
+                    badSeq = ProcessDataTypeTag(ref bufRem, ref bufOffset);
 
                     if (badSeq)
                         invalidSeqFound = true;
                 }
-                else if (isWhitespaceTag(crntByte))
+                else if (IsWhitespaceTag(crntByte))
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -844,8 +813,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        processWhiteSpaceTag(ref bufRem,
-                                              ref bufOffset);
+                        ProcessWhiteSpaceTag(ref bufRem, ref bufOffset);
                     }
                 }
                 else if (_attrDataStarted)
@@ -863,7 +831,7 @@ namespace PCLParaphernalia
 
                     invalidSeqFound = true;
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.MsgWarning,
                         _table,
                         PrnParseConstants.OvlShow.Illegal,
@@ -894,7 +862,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    processOperatorTag(ref bufRem,
+                    ProcessOperatorTag(ref bufRem,
                                         ref bufOffset);
 
                     if (_rawDataAfterOpTag)
@@ -918,7 +886,7 @@ namespace PCLParaphernalia
                             //                                                //
                             //------------------------------------------------//
 
-                            PrnParseCommon.addTextRow(
+                            PrnParseCommon.AddTextRow(
                                 PrnParseRowTypes.Type.MsgWarning,
                                 _table,
                                 PrnParseConstants.OvlShow.Illegal,
@@ -946,10 +914,9 @@ namespace PCLParaphernalia
                             _embedDataRem -= bufRem;
                             _embedDataLen = bufRem;
 
-                            contType =
-                                PrnParseConstants.ContType.PCLXLEmbed;
+                            contType = PrnParseConstants.ContType.PCLXLEmbed;
 
-                            _linkData.setContinuation(contType);
+                            _linkData.SetContinuation(contType);
                         }
                         else
                         {
@@ -998,7 +965,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    badSeq = processEmbeddedDataTag(ref bufRem,
+                    badSeq = ProcessEmbeddedDataTag(ref bufRem,
                                                      ref bufOffset);
                     if (badSeq)
                         invalidSeqFound = true;
@@ -1013,7 +980,7 @@ namespace PCLParaphernalia
 
                     invalidSeqFound = true;
 
-                    showElement(bufOffset,
+                    ShowElement(bufOffset,
                                  1,
                                  "PCLXL",
                                  "*** Unidentified data ***",
@@ -1046,13 +1013,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processAttributeTag(ref int bufRem,
-                                          ref int bufOffset)
+        private void ProcessAttributeTag(ref int bufRem, ref int bufOffset)
         {
             PrnParseConstants.ContType contType;
 
-            PrnParseConstants.OvlAct attrOvlAct =
-                PrnParseConstants.OvlAct.None;
+            PrnParseConstants.OvlAct attrOvlAct = PrnParseConstants.OvlAct.None;
 
             byte crntByte;
 
@@ -1155,7 +1120,7 @@ namespace PCLParaphernalia
                     backLen = bufRem;
                 }
 
-                _linkData.setBacktrack(contType, -backLen);
+                _linkData.SetBacktrack(contType, -backLen);
             }
             else
             {
@@ -1266,7 +1231,7 @@ namespace PCLParaphernalia
                         //                                                        //
                         //--------------------------------------------------------//
 
-                        PrnParseMakeOvl.checkActionPCLXLAttr(
+                        PrnParseMakeOvl.CheckActionPCLXLAttr(
                             true,
                             attrOvlAct,
                             _operOvlShow,
@@ -1297,7 +1262,7 @@ namespace PCLParaphernalia
                         //                                                        //
                         //--------------------------------------------------------//
 
-                        _breakpoint = PrnParseMakeOvl.checkActionPCLXLAttr(
+                        _breakpoint = PrnParseMakeOvl.CheckActionPCLXLAttr(
                             false,
                             attrOvlAct,
                             _operOvlShow,
@@ -1325,7 +1290,7 @@ namespace PCLParaphernalia
 
                         if (crntByte == PrnParseConstants.pclxlAttrUbyte)
                         {
-                            showElement(bufOffset,
+                            ShowElement(bufOffset,
                                          1,
                                          "PCLXL Attribute Def.",
                                          "  attr_ubyte",
@@ -1336,7 +1301,7 @@ namespace PCLParaphernalia
                         }
                         else
                         {
-                            showElement(bufOffset,
+                            ShowElement(bufOffset,
                                          1,
                                          "PCLXL Attribute Def.",
                                          "  attr_uint16",
@@ -1352,7 +1317,7 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        showElement(bufOffset + 1,
+                        ShowElement(bufOffset + 1,
                                      _attrIDLen,
                                      "                Name",
                                      descPrefix + desc,
@@ -1370,7 +1335,7 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        showElement(bufOffset,
+                        ShowElement(bufOffset,
                                      _attrIDLen + 1,
                                      "PCLXL Attribute",
                                      descPrefix + desc,
@@ -1440,13 +1405,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool processDataTypeTag(ref int bufRem,
-                                            ref int bufOffset)
+        private bool ProcessDataTypeTag(ref int bufRem, ref int bufOffset)
         {
             PrnParseConstants.ContType contType;
 
-            PCLXLDataTypes.BaseType baseType =
-                PCLXLDataTypes.BaseType.Unknown;
+            PCLXLDataTypes.BaseType baseType = PCLXLDataTypes.BaseType.Unknown;
 
             PrnParseConstants.OvlShow makeOvlShow;
 
@@ -1501,13 +1464,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            seqKnown = PCLXLDataTypes.CheckTag(crntByte,
-                                                ref flagReserved,
-                                                ref arrayType,
-                                                ref groupSize,
-                                                ref unitSize,
-                                                ref baseType,
-                                                ref desc);
+            seqKnown = PCLXLDataTypes.CheckTag(crntByte, ref flagReserved, ref arrayType, ref groupSize, ref unitSize, ref baseType, ref desc);
 
             if (!seqKnown)
             {
@@ -1566,8 +1523,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        if (_buf[bufOffset + 1] ==
-                            PrnParseConstants.pclxlDataTypeUbyte)
+                        if (_buf[bufOffset + 1] == PrnParseConstants.pclxlDataTypeUbyte)
                         {
                             //------------------------------------------------//
                             //                                                //
@@ -1583,8 +1539,7 @@ namespace PCLParaphernalia
                             else
                                 arraySize = _buf[bufOffset + 2];
                         }
-                        else if (_buf[bufOffset + 1] ==
-                            PrnParseConstants.pclxlDataTypeUint16)
+                        else if (_buf[bufOffset + 1] == PrnParseConstants.pclxlDataTypeUint16)
                         {
                             //------------------------------------------------//
                             //                                                //
@@ -1601,8 +1556,7 @@ namespace PCLParaphernalia
                             }
                             else
                             {
-                                if (_bindType ==
-                                    PrnParseConstants.PCLXLBinding.BinaryMSFirst)
+                                if (_bindType == PrnParseConstants.PCLXLBinding.BinaryMSFirst)
                                 {
                                     arraySize = (_buf[bufOffset + 2] * 256) +
                                                  _buf[bufOffset + 3];
@@ -1634,7 +1588,7 @@ namespace PCLParaphernalia
 
                         if (arraySize < 0)
                         {
-                            PrnParseCommon.addTextRow(
+                            PrnParseCommon.AddTextRow(
                                 PrnParseRowTypes.Type.MsgWarning,
                                 _table,
                                 PrnParseConstants.OvlShow.Illegal,
@@ -1646,8 +1600,7 @@ namespace PCLParaphernalia
                             arraySize = 0;
                         }
 
-                        opSeqLen = seqHddrLen +
-                                   (arraySize * groupSize * unitSize);
+                        opSeqLen = seqHddrLen + (arraySize * groupSize * unitSize);
 
                         if (bufRem < opSeqLen)
                             _continuation = true;
@@ -1700,7 +1653,7 @@ namespace PCLParaphernalia
 
                 _attrDataStarted = false;
 
-                _displayMetricsCrnt.setData(_attrUbyteAsAscii,
+                _displayMetricsCrnt.SetData(_attrUbyteAsAscii,
                                              _attrUint16AsUnicode,
                                              arrayType,
                                              _decodeIndentStd,
@@ -1723,7 +1676,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    showElement(bufOffset,
+                    ShowElement(bufOffset,
                                  1,
                                  "PCLXL Data Type",
                                  descPrefix + desc,
@@ -1750,8 +1703,7 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        if (_buf[bufOffset + 1] ==
-                            PrnParseConstants.pclxlDataTypeUbyte)
+                        if (_buf[bufOffset + 1] == PrnParseConstants.pclxlDataTypeUbyte)
                         {
                             //------------------------------------------------//
                             //                                                //
@@ -1759,7 +1711,7 @@ namespace PCLParaphernalia
                             //                                                //
                             //------------------------------------------------//
 
-                            showElement(bufOffset,
+                            ShowElement(bufOffset,
                                          3,
                                          "PCLXL Data Type",
                                          descPrefix + desc,
@@ -1777,7 +1729,7 @@ namespace PCLParaphernalia
                             //                                                //
                             //------------------------------------------------//
 
-                            showElement(bufOffset,
+                            ShowElement(bufOffset,
                                          4,
                                          "PCLXL Data Type",
                                          descPrefix + desc,
@@ -1794,7 +1746,7 @@ namespace PCLParaphernalia
                             //                                                //
                             //------------------------------------------------//
 
-                            showElement(bufOffset,
+                            ShowElement(bufOffset,
                                          2,
                                          "PCLXL Data Type",
                                          descPrefix + desc,
@@ -1803,7 +1755,7 @@ namespace PCLParaphernalia
                                          PrnParseConstants.OvlShow.Illegal,
                                          PrnParseRowTypes.Type.PCLXLDataType);
 
-                            PrnParseCommon.addTextRow(
+                            PrnParseCommon.AddTextRow(
                                 PrnParseRowTypes.Type.MsgWarning,
                                 _table,
                                 PrnParseConstants.OvlShow.Illegal,
@@ -1822,7 +1774,7 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        showElement(bufOffset,
+                        ShowElement(bufOffset,
                                      1,
                                      "PCLXL Data Type",
                                      descPrefix + desc,
@@ -1831,8 +1783,7 @@ namespace PCLParaphernalia
                                      makeOvlShow,
                                      PrnParseRowTypes.Type.PCLXLDataType);
 
-                        if (_buf[bufOffset + 1] ==
-                            PrnParseConstants.pclxlDataTypeUbyte)
+                        if (_buf[bufOffset + 1] == PrnParseConstants.pclxlDataTypeUbyte)
                         {
                             //------------------------------------------------//
                             //                                                //
@@ -1840,7 +1791,7 @@ namespace PCLParaphernalia
                             //                                                //
                             //------------------------------------------------//
 
-                            showElement(bufOffset + 1,
+                            ShowElement(bufOffset + 1,
                                          1,
                                          "PCLXL Data Type",
                                          "    ubyte",
@@ -1849,7 +1800,7 @@ namespace PCLParaphernalia
                                          makeOvlShow,
                                          PrnParseRowTypes.Type.PCLXLDataType);
 
-                            showElement(bufOffset + 2,
+                            ShowElement(bufOffset + 2,
                                          1,
                                          "           Elements",
                                          string.Empty,
@@ -1858,8 +1809,7 @@ namespace PCLParaphernalia
                                          makeOvlShow,
                                          PrnParseRowTypes.Type.PCLXLDataType);
                         }
-                        else if (_buf[bufOffset + 1] ==
-                            PrnParseConstants.pclxlDataTypeUint16)
+                        else if (_buf[bufOffset + 1] == PrnParseConstants.pclxlDataTypeUint16)
                         {
                             //------------------------------------------------//
                             //                                                //
@@ -1867,7 +1817,7 @@ namespace PCLParaphernalia
                             //                                                //
                             //------------------------------------------------//
 
-                            showElement(bufOffset + 1,
+                            ShowElement(bufOffset + 1,
                                          1,
                                          "PCLXL Data Type",
                                          "    uint16",
@@ -1876,7 +1826,7 @@ namespace PCLParaphernalia
                                          makeOvlShow,
                                          PrnParseRowTypes.Type.PCLXLDataType);
 
-                            showElement(bufOffset + 2,
+                            ShowElement(bufOffset + 2,
                                          2,
                                          "           Elements",
                                          string.Empty,
@@ -1893,7 +1843,7 @@ namespace PCLParaphernalia
                             //                                                //
                             //------------------------------------------------//
 
-                            showElement(bufOffset + 1,
+                            ShowElement(bufOffset + 1,
                                          1,
                                          "PCLXL Data Type",
                                          "    invalid",
@@ -1902,7 +1852,7 @@ namespace PCLParaphernalia
                                          PrnParseConstants.OvlShow.Illegal,
                                          PrnParseRowTypes.Type.PCLXLDataType);
 
-                            PrnParseCommon.addTextRow(
+                            PrnParseCommon.AddTextRow(
                                 PrnParseRowTypes.Type.MsgWarning,
                                 _table,
                                 PrnParseConstants.OvlShow.Illegal,
@@ -1986,8 +1936,7 @@ namespace PCLParaphernalia
                             valLen = 4;
                         }
 
-                        if (_bindType ==
-                            PrnParseConstants.PCLXLBinding.BinaryMSFirst)
+                        if (_bindType == PrnParseConstants.PCLXLBinding.BinaryMSFirst)
                         {
                             for (int j = 0; j < valLen; j++)
                             {
@@ -2028,7 +1977,7 @@ namespace PCLParaphernalia
 
                     if (valKnown)
                     {
-                        showElement(bufOffset + seqHddrLen,
+                        ShowElement(bufOffset + seqHddrLen,
                                      valLen,
                                      "           Value",
                                      descPrefix + enumDesc,
@@ -2042,7 +1991,7 @@ namespace PCLParaphernalia
                         int decodeIndent = _displayMetricsCrnt.DecodeIndent;
                         string text;
 
-                        showElement(bufOffset + seqHddrLen,
+                        ShowElement(bufOffset + seqHddrLen,
                                      valLen,
                                      "           Value",
                                      string.Empty,
@@ -2053,15 +2002,14 @@ namespace PCLParaphernalia
 
                         if (decodeIndent != 0)
                         {
-                            text = new string(' ', decodeIndent) +
-                                                           "Enumerated value not recognised";
+                            text = new string(' ', decodeIndent) + "Enumerated value not recognised";
                         }
                         else
                         {
                             text = "Enumerated value not recognised";
                         }
 
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.Type.MsgWarning,
                             _table,
                             PrnParseConstants.OvlShow.None,
@@ -2098,7 +2046,7 @@ namespace PCLParaphernalia
                             //                                                //
                             //------------------------------------------------//
 
-                            showElement(bufOffset + seqHddrLen,
+                            ShowElement(bufOffset + seqHddrLen,
                                          1,
                                          "           Value",
                                          string.Empty,
@@ -2117,7 +2065,7 @@ namespace PCLParaphernalia
 
                             if (!_attrValueIsPCLArray)
                             {
-                                showElement(bufOffset + seqHddrLen,
+                                ShowElement(bufOffset + seqHddrLen,
                                              arraySize * groupSize,
                                              "           Value",
                                              string.Empty,
@@ -2147,7 +2095,7 @@ namespace PCLParaphernalia
 
                                 if (!_analysePCLFontData)
                                 {
-                                    showElement(tempOffset,
+                                    ShowElement(tempOffset,
                                                  tempLen,
                                                  "           Value",
                                                  string.Empty,
@@ -2174,27 +2122,25 @@ namespace PCLParaphernalia
                                         _indxOffsetFormat,
                                         _analysisLevel);
 
-                                    PrnParseCommon.addTextRow(
+                                    PrnParseCommon.AddTextRow(
                                         PrnParseRowTypes.Type.MsgComment,
                                         _table,
                                         PrnParseConstants.OvlShow.None,
                                         string.Empty,
                                         ">>>>>>>>>>>>>>>>>>>>",
                                         string.Empty,
-                                        ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" +
-                                        ">>>>>>>>>>>>>>>>>>>>");
+                                        ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
-                                    PrnParseCommon.addTextRow(
+                                    PrnParseCommon.AddTextRow(
                                         PrnParseRowTypes.Type.MsgComment,
                                         _table,
                                         PrnParseConstants.OvlShow.None,
                                         string.Empty,
                                         "Comment",
                                         string.Empty,
-                                        "Start analysis of " +
-                                        "embedded PCL string");
+                                        "Start analysis of embedded PCL string");
 
-                                    PrnParseCommon.addTextRow(
+                                    PrnParseCommon.AddTextRow(
                                         PrnParseRowTypes.Type.MsgComment,
                                         _table,
                                         PrnParseConstants.OvlShow.None,
@@ -2215,7 +2161,7 @@ namespace PCLParaphernalia
                                     if (badSeq)
                                         invalidSeqFound = true;
 
-                                    PrnParseCommon.addTextRow(
+                                    PrnParseCommon.AddTextRow(
                                         PrnParseRowTypes.Type.MsgComment,
                                         _table,
                                         PrnParseConstants.OvlShow.None,
@@ -2225,7 +2171,7 @@ namespace PCLParaphernalia
                                         "End analysis of " +
                                         "embedded PCL string");
 
-                                    PrnParseCommon.addTextRow(
+                                    PrnParseCommon.AddTextRow(
                                         PrnParseRowTypes.Type.MsgComment,
                                         _table,
                                         PrnParseConstants.OvlShow.None,
@@ -2234,15 +2180,14 @@ namespace PCLParaphernalia
                                         string.Empty,
                                         tempText);
 
-                                    PrnParseCommon.addTextRow(
+                                    PrnParseCommon.AddTextRow(
                                         PrnParseRowTypes.Type.MsgComment,
                                         _table,
                                         PrnParseConstants.OvlShow.None,
                                         string.Empty,
                                         "<<<<<<<<<<<<<<<<<<<<",
                                         string.Empty,
-                                        "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" +
-                                        "<<<<<<<<<<<<<<<<<<<<");
+                                        "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
                                 }
                             }
                         }
@@ -2260,7 +2205,7 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        showElement(bufOffset + seqHddrLen,
+                        ShowElement(bufOffset + seqHddrLen,
                                      arraySize * groupSize,
                                      "           Value",
                                      string.Empty,
@@ -2283,7 +2228,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    showElement(bufOffset + seqHddrLen,
+                    ShowElement(bufOffset + seqHddrLen,
                                  arraySize * unitSize,
                                  "           Value (U+)",
                                  string.Empty,
@@ -2303,7 +2248,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    showElement(bufOffset + seqHddrLen,
+                    ShowElement(bufOffset + seqHddrLen,
                                  arraySize * groupSize * unitSize,
                                  "           Value",
                                  string.Empty,
@@ -2394,7 +2339,7 @@ namespace PCLParaphernalia
                     backLen = bufRem;
                 }
 
-                _linkData.setBacktrack(contType, -backLen);
+                _linkData.SetBacktrack(contType, -backLen);
             }
 
             return invalidSeqFound;
@@ -2409,8 +2354,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool processEmbeddedDataTag(ref int bufRem,
-                                                ref int bufOffset)
+        private bool ProcessEmbeddedDataTag(ref int bufRem, ref int bufOffset)
         {
             PrnParseConstants.ContType contType;
 
@@ -2449,7 +2393,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.ContType.PCLXL;
 
-                _linkData.setBacktrack(contType, -bufRem);
+                _linkData.SetBacktrack(contType, -bufRem);
             }
             else
             {
@@ -2497,8 +2441,7 @@ namespace PCLParaphernalia
                             _embedDataRem = (_embedDataRem * 256) + x;
                         }
                     }
-                    else if (_bindType ==
-                        PrnParseConstants.PCLXLBinding.BinaryLSFirst)
+                    else if (_bindType == PrnParseConstants.PCLXLBinding.BinaryLSFirst)
                     {
                         //----------------------------------------------------//
                         //                                                    //
@@ -2526,7 +2469,7 @@ namespace PCLParaphernalia
 
                         invalidSeqFound = true;
 
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.Type.MsgWarning,
                             _table,
                             PrnParseConstants.OvlShow.Illegal,
@@ -2553,7 +2496,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    showElement(bufOffset,
+                    ShowElement(bufOffset,
                                  1,
                                  "PCLXL Data Type",
                                  "    embedded_data_byte",
@@ -2562,7 +2505,7 @@ namespace PCLParaphernalia
                                  makeOvlShow,
                                  PrnParseRowTypes.Type.PCLXLDataType);
 
-                    showElement(bufOffset + 1,
+                    ShowElement(bufOffset + 1,
                                  1,
                                  "PCLXL Embedded Len.",
                                  string.Empty,
@@ -2579,7 +2522,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    showElement(bufOffset,
+                    ShowElement(bufOffset,
                                  1,
                                  "PCLXL Data Type",
                                  "    embedded_data",
@@ -2588,7 +2531,7 @@ namespace PCLParaphernalia
                                  makeOvlShow,
                                  PrnParseRowTypes.Type.PCLXLDataType);
 
-                    showElement(bufOffset + 1,
+                    ShowElement(bufOffset + 1,
                                  4,
                                  "PCLXL Embedded Len.",
                                  string.Empty,
@@ -2617,7 +2560,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.MsgWarning,
                         _table,
                         PrnParseConstants.OvlShow.Illegal,
@@ -2646,7 +2589,7 @@ namespace PCLParaphernalia
 
                     contType = PrnParseConstants.ContType.PCLXLEmbed;
 
-                    _linkData.setContinuation(contType);
+                    _linkData.SetContinuation(contType);
                 }
                 else
                 {
@@ -2671,25 +2614,15 @@ namespace PCLParaphernalia
 
                 if (_crntOperEmbedType != PCLXLOperators.EmbedDataType.None)
                 {
-                    if (((_crntOperEmbedType ==
-                            PCLXLOperators.EmbedDataType.PassThrough) &&
-                         _analysePassThrough)
+                    if (((_crntOperEmbedType == PCLXLOperators.EmbedDataType.PassThrough) && _analysePassThrough)
                                                  ||
-                        ((_crntOperEmbedType ==
-                            PCLXLOperators.EmbedDataType.Stream) &&
-                         _analyseStreams)
+                        ((_crntOperEmbedType == PCLXLOperators.EmbedDataType.Stream) && _analyseStreams)
                                                  ||
-                        ((_crntOperEmbedType ==
-                            PCLXLOperators.EmbedDataType.FontHeader) &&
-                         _analyseFontHddr)
+                        ((_crntOperEmbedType == PCLXLOperators.EmbedDataType.FontHeader) && _analyseFontHddr)
                                                  ||
-                        ((_crntOperEmbedType ==
-                            PCLXLOperators.EmbedDataType.FontChar) &&
-                         _analyseFontChar))
+                        ((_crntOperEmbedType == PCLXLOperators.EmbedDataType.FontChar) && _analyseFontChar))
                     {
-                        _analysisOwner.EmbeddedDataStore(_buf,
-                                                          bufOffset,
-                                                          _embedDataLen);
+                        _analysisOwner.EmbeddedDataStore(_buf, bufOffset, _embedDataLen);
                     }
                 }
 
@@ -2741,8 +2674,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool processHeader(ref int bufRem,
-                                       ref int bufOffset)
+        private bool ProcessHeader(ref int bufRem, ref int bufOffset)
         {
             bool invalidSeqFound = false;
 
@@ -2785,7 +2717,7 @@ namespace PCLParaphernalia
 
                     invalidSeqFound = true;
 
-                    PrnParseCommon.addDataRow(
+                    PrnParseCommon.AddDataRow(
                         PrnParseRowTypes.Type.MsgWarning,
                          _table,
                          PrnParseConstants.OvlShow.Illegal,
@@ -2796,7 +2728,7 @@ namespace PCLParaphernalia
                          string.Empty,
                          "Invalid data length value");
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.MsgWarning,
                          _table,
                          PrnParseConstants.OvlShow.Illegal,
@@ -2805,7 +2737,7 @@ namespace PCLParaphernalia
                          string.Empty,
                          "Header terminator not found within 200 bytes");
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.MsgWarning,
                          _table,
                          PrnParseConstants.OvlShow.Illegal,
@@ -2814,7 +2746,7 @@ namespace PCLParaphernalia
                          string.Empty,
                          "Assume fragment with no header");
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.MsgWarning,
                          _table,
                          PrnParseConstants.OvlShow.Illegal,
@@ -2839,7 +2771,7 @@ namespace PCLParaphernalia
 
                     contType = PrnParseConstants.ContType.PCLXL;
 
-                    _linkData.setBacktrack(contType, -bufRem);
+                    _linkData.SetBacktrack(contType, -bufRem);
                 }
             }
             else
@@ -2869,7 +2801,7 @@ namespace PCLParaphernalia
 
                     invalidSeqFound = true;
 
-                    PrnParseCommon.addDataRow(
+                    PrnParseCommon.AddDataRow(
                         PrnParseRowTypes.Type.MsgWarning,
                          _table,
                          PrnParseConstants.OvlShow.Illegal,
@@ -2895,16 +2827,14 @@ namespace PCLParaphernalia
 
                     if (_buf[bufOffset] == 0x27)
                     {
-                        _bindType =
-                            PrnParseConstants.PCLXLBinding.ASCII;
+                        _bindType = PrnParseConstants.PCLXLBinding.ASCII;
                         bindText = "' = ASCII (not supported by analyser)";
 
                         invalidSeqFound = true;
                     }
                     else if (_buf[bufOffset] == 0x28)
                     {
-                        _bindType =
-                            PrnParseConstants.PCLXLBinding.BinaryMSFirst;
+                        _bindType = PrnParseConstants.PCLXLBinding.BinaryMSFirst;
                         bindText = "( = binary: most significant byte first";
 
                         if (_parseType == PrnParse.ParseType.MakeOverlay)
@@ -2914,14 +2844,12 @@ namespace PCLParaphernalia
                     }
                     else if (_buf[bufOffset] == 0x29)
                     {
-                        _bindType =
-                            PrnParseConstants.PCLXLBinding.BinaryLSFirst;
+                        _bindType = PrnParseConstants.PCLXLBinding.BinaryLSFirst;
                         bindText = ") = binary: least significant byte first";
                     }
                     else
                     {
-                        _bindType =
-                            PrnParseConstants.PCLXLBinding.Unknown;
+                        _bindType = PrnParseConstants.PCLXLBinding.Unknown;
                         bindText = "*** unknown ***";
 
                         invalidSeqFound = true;
@@ -2929,7 +2857,7 @@ namespace PCLParaphernalia
 
                     if (!_verboseMode && !invalidSeqFound)
                     {
-                        showElement(bufOffset,
+                        ShowElement(bufOffset,
                                      hddrLen,
                                      "PCLXL Stream Header",
                                      string.Empty,
@@ -2945,7 +2873,7 @@ namespace PCLParaphernalia
                         else
                             makeOvlShow = PrnParseConstants.OvlShow.None;
 
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.Type.PCLXLStreamHddr,
                              _table,
                              PrnParseConstants.OvlShow.None,
@@ -2956,7 +2884,7 @@ namespace PCLParaphernalia
                              string.Empty,
                              string.Empty);
 
-                        showElement(bufOffset,
+                        ShowElement(bufOffset,
                                      1,
                                      "      Binding",
                                      bindText,
@@ -2965,7 +2893,7 @@ namespace PCLParaphernalia
                                      makeOvlShow,
                                      PrnParseRowTypes.Type.PCLXLStreamHddr);
 
-                        showElement(bufOffset + 1,
+                        ShowElement(bufOffset + 1,
                                      1,
                                      "      Reserved",
                                      string.Empty,
@@ -2974,7 +2902,7 @@ namespace PCLParaphernalia
                                      PrnParseConstants.OvlShow.None,
                                      PrnParseRowTypes.Type.PCLXLStreamHddr);
 
-                        showElement(bufOffset + 2,
+                        ShowElement(bufOffset + 2,
                                      hddrLen - 2,
                                      "      Descriptor",
                                      string.Empty,
@@ -2988,7 +2916,7 @@ namespace PCLParaphernalia
                                               ||
                         (_bindType == PrnParseConstants.PCLXLBinding.ASCII))
                     {
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.Type.MsgComment,
                              _table,
                              PrnParseConstants.OvlShow.Illegal,
@@ -2997,8 +2925,7 @@ namespace PCLParaphernalia
                              string.Empty,
                              "Assume binding is binary (low-byte first)");
 
-                        _bindType =
-                            PrnParseConstants.PCLXLBinding.BinaryLSFirst;
+                        _bindType = PrnParseConstants.PCLXLBinding.BinaryLSFirst;
                     }
                 }
 
@@ -3007,7 +2934,7 @@ namespace PCLParaphernalia
             }
 
             if (invalidSeqFound)
-                _linkData.setContinuation(PrnParseConstants.ContType.Abort);
+                _linkData.SetContinuation(PrnParseConstants.ContType.Abort);
 
             return invalidSeqFound;
         }
@@ -3021,8 +2948,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processOperatorTag(ref int bufRem,
-                                         ref int bufOffset)
+        private void ProcessOperatorTag(ref int bufRem, ref int bufOffset)
         {
             bool seqKnown,
                     dummyBool = false,
@@ -3074,7 +3000,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                processStoredEmbeddedData(false);
+                ProcessStoredEmbeddedData(false);
             }
 
             if (_operDataStarted)
@@ -3115,7 +3041,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    PrnParseMakeOvl.checkActionPCLXLOper(
+                    PrnParseMakeOvl.CheckActionPCLXLOper(
                         true,
                         true,
                         operOvlAct,
@@ -3149,7 +3075,7 @@ namespace PCLParaphernalia
 
                     bool operHasAttrList = bufOffset != _attrDataStart;
 
-                    _breakpoint = PrnParseMakeOvl.checkActionPCLXLOper(
+                    _breakpoint = PrnParseMakeOvl.CheckActionPCLXLOper(
                                     false,
                                     operHasAttrList,
                                     operOvlAct,
@@ -3174,7 +3100,7 @@ namespace PCLParaphernalia
                 {
                     string descText;
 
-                    showElement(bufOffset,
+                    ShowElement(bufOffset,
                                  1,
                                  "PCLXL Operator",
                                  desc,
@@ -3185,15 +3111,14 @@ namespace PCLParaphernalia
 
                     if (_linkData.MakeOvlEncapsulate)
                     {
-                        descText = "SetPageScale (encapsulated within" +
-                                                       " ReadStream structure)";
+                        descText = "SetPageScale (encapsulated within ReadStream structure)";
                     }
                     else
                     {
                         descText = "SetPageScale";
                     }
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLXLOperator,
                          _table,
                          PrnParseConstants.OvlShow.Insert,
@@ -3204,7 +3129,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    showElement(bufOffset,
+                    ShowElement(bufOffset,
                                  1,
                                  "PCLXL Operator",
                                  desc,
@@ -3232,13 +3157,11 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        text = _operNum.ToString() +
-                               " (within embedded " +
-                               _crntEmbedType.ToString() + ")";
+                        text = _operNum.ToString() + " (within embedded " + _crntEmbedType.ToString() + ")";
                         //   " at level " +_analysisLevel.ToString ();
                     }
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.MsgComment,
                          _table,
                          PrnParseConstants.OvlShow.None,
@@ -3254,8 +3177,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PCLXLOperators.IncrementStatsCount(_crntOperID,
-                                                    _analysisLevel);
+                PCLXLOperators.IncrementStatsCount(_crntOperID, _analysisLevel);
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -3297,7 +3219,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void processStoredEmbeddedData(bool endReached)
+        public void ProcessStoredEmbeddedData(bool endReached)
         {
             if (endReached)
             {
@@ -3307,8 +3229,7 @@ namespace PCLParaphernalia
 
             if (_prevOperEmbedType == _crntOperEmbedType)
             {
-                if ((_prevOperEmbedType ==
-                    PCLXLOperators.EmbedDataType.FontChar) &&
+                if ((_prevOperEmbedType == PCLXLOperators.EmbedDataType.FontChar) &&
                     _analyseFontChar)
                 {
                     _analysisOwner.EmbeddedPCLXLAnalyse(
@@ -3318,32 +3239,28 @@ namespace PCLParaphernalia
             }
             else
             {
-                if ((_prevOperEmbedType ==
-                    PCLXLOperators.EmbedDataType.PassThrough) &&
+                if ((_prevOperEmbedType == PCLXLOperators.EmbedDataType.PassThrough) &&
                     _analysePassThrough)
                 {
                     _analysisOwner.EmbeddedPCLXLAnalyse(
                         ToolCommonData.PrintLang.PCL,
                         PCLXLOperators.EmbedDataType.PassThrough);
                 }
-                else if ((_prevOperEmbedType ==
-                            PCLXLOperators.EmbedDataType.Stream) &&
+                else if ((_prevOperEmbedType == PCLXLOperators.EmbedDataType.Stream) &&
                     _analyseStreams)
                 {
                     _analysisOwner.EmbeddedPCLXLAnalyse(
                         ToolCommonData.PrintLang.PCLXL,
                         PCLXLOperators.EmbedDataType.Stream);
                 }
-                else if ((_prevOperEmbedType ==
-                            PCLXLOperators.EmbedDataType.FontHeader) &&
+                else if ((_prevOperEmbedType == PCLXLOperators.EmbedDataType.FontHeader) &&
                     _analyseFontHddr)
                 {
                     _analysisOwner.EmbeddedPCLXLAnalyse(
                         ToolCommonData.PrintLang.PCLXL,
                         PCLXLOperators.EmbedDataType.FontHeader);
                 }
-                else if ((_prevOperEmbedType ==
-                    PCLXLOperators.EmbedDataType.FontChar) &&
+                else if ((_prevOperEmbedType == PCLXLOperators.EmbedDataType.FontChar) &&
                     _analyseFontChar)
                 {
                     _analysisOwner.EmbeddedPCLXLAnalyse(
@@ -3362,8 +3279,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processWhiteSpaceTag(ref int bufRem,
-                                           ref int bufOffset)
+        private void ProcessWhiteSpaceTag(ref int bufRem, ref int bufOffset)
         {
             byte crntByte;
 
@@ -3386,7 +3302,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            seqKnown = PCLXLWhitespaces.checkTag(crntByte,
+            seqKnown = PCLXLWhitespaces.CheckTag(crntByte,
                                                   ref mnemonic,
                                                   ref desc);
             if (seqKnown)
@@ -3397,7 +3313,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PCLXLWhitespaces.incrementStatsCount(crntByte,
+                PCLXLWhitespaces.IncrementStatsCount(crntByte,
                                                       _analysisLevel);
 
                 //------------------------------------------------------------//
@@ -3406,7 +3322,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                showElement(bufOffset,
+                ShowElement(bufOffset,
                              1,
                              "PCLXL Whitespace",
                              mnemonic + ": " + desc,
@@ -3435,7 +3351,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void showElement(int bufOffset,
+        private void ShowElement(int bufOffset,
                                   int dataLen,
                                   string typeText,
                                   string descText,
@@ -3444,8 +3360,7 @@ namespace PCLParaphernalia
                                   PrnParseConstants.OvlShow makeOvlShow,
                                   PrnParseRowTypes.Type rowType)
         {
-            PCLXLDataTypes.BaseType baseType =
-                PCLXLDataTypes.BaseType.Unknown;
+            PCLXLDataTypes.BaseType baseType = PCLXLDataTypes.BaseType.Unknown;
 
             int sliceLen,
                   chunkIpLen,
@@ -3514,7 +3429,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                metrics.getData(ref treatUbyteAsAscii,
+                metrics.GetData(ref treatUbyteAsAscii,
                                  ref treatUint16AsUnicode,
                                  ref arrayType,
                                  ref decodeIndent,
@@ -3617,7 +3532,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    decode = showElementDecodeData(ref chunkOp,
+                    decode = ShowElementDecodeData(ref chunkOp,
                                                     ref chunkIpLen,
                                                     ref chunkOpLen,
                                                     ref chunkComplete,
@@ -3645,7 +3560,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                seq = showElementSeqData(sliceLen,
+                seq = ShowElementSeqData(sliceLen,
                                           sliceOffset,
                                           chunkIpLen,
                                           chunkOffset,
@@ -3671,7 +3586,7 @@ namespace PCLParaphernalia
                 {
                     if (firstLine)
                     {
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             rowType,
                             _table,
                             makeOvlShow,
@@ -3684,7 +3599,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             rowType,
                             _table,
                             makeOvlShow,
@@ -3734,7 +3649,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private string showElementDecodeData(
+        private string ShowElementDecodeData(
             ref StringBuilder chunkOp,
             ref int chunkIpLen,
             ref int chunkOpLen,
@@ -4114,8 +4029,7 @@ namespace PCLParaphernalia
 
                         uiTot = 0;
 
-                        if (_bindType ==
-                            PrnParseConstants.PCLXLBinding.BinaryMSFirst)
+                        if (_bindType == PrnParseConstants.PCLXLBinding.BinaryMSFirst)
                         {
                             for (int j = 0; j < sliceLen; j++)
                             {
@@ -4171,8 +4085,7 @@ namespace PCLParaphernalia
 
                         uiTot = 0;
 
-                        if (_bindType ==
-                            PrnParseConstants.PCLXLBinding.BinaryMSFirst)
+                        if (_bindType == PrnParseConstants.PCLXLBinding.BinaryMSFirst)
                         {
                             for (int j = 0; j < sliceLen; j++)
                             {
@@ -4240,8 +4153,7 @@ namespace PCLParaphernalia
                         iTot = 0;
                         msByte = true;
 
-                        if (_bindType ==
-                            PrnParseConstants.PCLXLBinding.BinaryMSFirst)
+                        if (_bindType == PrnParseConstants.PCLXLBinding.BinaryMSFirst)
                         {
                             for (int j = 0; j < sliceLen; j++)
                             {
@@ -4390,7 +4302,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private string showElementSeqData(int sliceLen,
+        private string ShowElementSeqData(int sliceLen,
                                            int sliceOffset,
                                            int chunkIpLen,
                                            int chunkOffset,

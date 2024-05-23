@@ -19,8 +19,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static readonly SortedList<byte, PCLSimpleSeq> _seqs =
-            new SortedList<byte, PCLSimpleSeq>();
+        private static readonly SortedList<byte, PCLSimpleSeq> _seqs = new SortedList<byte, PCLSimpleSeq>();
 
         private static PCLSimpleSeq _seqUnknown;
 
@@ -34,7 +33,7 @@ namespace PCLParaphernalia
 
         static PCLSimpleSeqs()
         {
-            populateTable();
+            PopulateTable();
         }
 
         //--------------------------------------------------------------------//
@@ -50,7 +49,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkSimpleSeq(
+        public static bool CheckSimpleSeq(
             int macroLevel,
             byte iChar,
             ref bool optObsolete,
@@ -76,9 +75,9 @@ namespace PCLParaphernalia
             optObsolete = seq.FlagObsolete;
             optResetHPGL2 = seq.FlagResetHPGL2;
             description = seq.Description;
-            makeOvlAct = seq.makeOvlAct;
+            makeOvlAct = seq.MakeOvlAct;
 
-            seq.incrementStatisticsCount(macroLevel);   // Statistical data
+            seq.IncrementStatisticsCount(macroLevel);   // Statistical data
 
             return seqKnown;
         }
@@ -92,8 +91,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int displaySeqList(DataGrid grid,
-                                           bool incObsSeqs)
+        public static int DisplaySeqList(DataGrid grid, bool incObsSeqs)
         {
             int count = 0;
 
@@ -123,9 +121,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCounts(DataTable table,
-                                               bool incUsedSeqsOnly,
-                                               bool excUnusedObsSeqs)
+        public static void displayStatsCounts(DataTable table, bool incUsedSeqsOnly, bool excUnusedObsSeqs)
         {
             int count = 0;
 
@@ -149,7 +145,7 @@ namespace PCLParaphernalia
             {
                 if (!hddrWritten)
                 {
-                    displayStatsCountsHddr(table);
+                    DisplayStatsCountsHddr(table);
                     hddrWritten = true;
                 }
 
@@ -189,7 +185,7 @@ namespace PCLParaphernalia
                 {
                     if (!hddrWritten)
                     {
-                        displayStatsCountsHddr(table);
+                        DisplayStatsCountsHddr(table);
                         hddrWritten = true;
                     }
 
@@ -215,7 +211,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCountsHddr(DataTable table)
+        public static void DisplayStatsCountsHddr(DataTable table)
         {
             //----------------------------------------------------------------//
 
@@ -259,7 +255,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getSeqCount()
+        public static int GetSeqCount()
         {
             return _seqsCount;
         }
@@ -273,7 +269,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void populateTable()
+        private static void PopulateTable()
         {
             const bool flagNone = false;
             const bool flagObsolete = true;
@@ -427,17 +423,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void resetStatsCounts()
+        public static void ResetStatsCounts()
         {
             PCLSimpleSeq seq;
 
-            _seqUnknown.resetStatistics();
+            _seqUnknown.ResetStatistics();
 
             foreach (KeyValuePair<byte, PCLSimpleSeq> kvp in _seqs)
             {
                 seq = kvp.Value;
 
-                seq.resetStatistics();
+                seq.ResetStatistics();
             }
         }
     }

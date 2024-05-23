@@ -9,9 +9,7 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.Obfuscation(
-        Feature = "renaming",
-        ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     class PCLXLWhitespace
     {
@@ -32,9 +30,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLXLWhitespace(byte tag,
-                                string mnemonic,
-                                string description)
+        public PCLXLWhitespace(byte tag, string mnemonic, string description)
         {
             _tag = tag;
             Mnemonic = mnemonic;
@@ -72,7 +68,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void incrementStatisticsCount(int level)
+        public void IncrementStatisticsCount(int level)
         {
             if (level == 0)
                 _statsCtParent++;
@@ -97,7 +93,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetStatistics()
+        public void ResetStatistics()
         {
             _statsCtParent = 0;
             _statsCtChild = 0;

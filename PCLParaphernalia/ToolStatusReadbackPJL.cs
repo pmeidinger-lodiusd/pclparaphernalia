@@ -20,7 +20,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generateRequest(BinaryWriter prnWriter,
+        public static void GenerateRequest(BinaryWriter prnWriter,
                                             PJLCommands.CmdIndex cmdIndx,
                                             int indexCategory,
                                             int indexVariable,
@@ -42,8 +42,7 @@ namespace PCLParaphernalia
                 {
                     if (indexCategory < PJLCategories.GetCount())
                     {
-                        if (PJLCategories.GetType(indexCategory) ==
-                            PJLCategories.CategoryType.Custom)
+                        if (PJLCategories.GetType(indexCategory) == PJLCategories.CategoryType.Custom)
                         {
                             seq = "\x1b" + "%-12345X" +
                                            "@PJL ECHO PCLParaphernalia" + "\x0d\x0a" +
@@ -144,7 +143,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string readResponse()
+        public static string ReadResponse()
         {
             const int replyBufLen = 32768;
 
@@ -163,10 +162,7 @@ namespace PCLParaphernalia
 
             while (!replyComplete)
             {
-                OK = TargetCore.ResponseReadBlock(offset,
-                                                   bufRem,
-                                                   ref replyData,
-                                                   ref blockLen);
+                OK = TargetCore.ResponseReadBlock(offset, bufRem, ref replyData, ref blockLen);
 
                 endOffset = offset + blockLen;
 
@@ -231,9 +227,7 @@ namespace PCLParaphernalia
 
             TargetCore.ResponseCloseConnection();
 
-            return System.Text.Encoding.ASCII.GetString(replyData,
-                                                         0,
-                                                         replyLen);
+            return System.Text.Encoding.ASCII.GetString(replyData, 0, replyLen);
         }
 
         //--------------------------------------------------------------------//
@@ -245,7 +239,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void sendRequest()
+        public static void SendRequest()
         {
             TargetCore.RequestStreamWrite(true);
         }

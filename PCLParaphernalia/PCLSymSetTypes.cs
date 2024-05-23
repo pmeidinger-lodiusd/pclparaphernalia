@@ -52,8 +52,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static readonly List<PCLSymSetType> _sets =
-            new List<PCLSymSetType>();
+        private static readonly List<PCLSymSetType> _sets = new List<PCLSymSetType>();
 
         private static int _setsCountBound;
         private static int _setsCountTotal;
@@ -242,7 +241,7 @@ namespace PCLParaphernalia
                             (byte)IdPCL.Unbound_Unicode,
                             _flagUnbound,
                             "11: Unbound; uses Unicode code points",
-                             "11: index U+"));
+                            "11: index U+"));
 
             _setsCountTotal = _sets.Count;
             _setsCountBound = 0;

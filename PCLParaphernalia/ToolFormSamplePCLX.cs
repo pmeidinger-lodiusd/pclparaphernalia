@@ -28,9 +28,9 @@ namespace PCLParaphernalia
 
         private static readonly string[] streamMethodNames =
         {
-          "Execute stream (@ start of page)",
-          "Execute stream (@ end of page)",
-          "Max - invalid"
+            "Execute stream (@ start of page)",
+            "Execute stream (@ end of page)",
+            "Max - invalid"
         };
 
         //--------------------------------------------------------------------//
@@ -159,7 +159,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PCLXLDownloadStream.streamFileEmbed(prnWriter,
+                PCLXLDownloadStream.StreamFileEmbed(prnWriter,
                                                     formFileMain,
                                                     formNameMain,
                                                     flagMainEncapsulated);
@@ -176,7 +176,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    PCLXLDownloadStream.streamFileEmbed(prnWriter,
+                    PCLXLDownloadStream.StreamFileEmbed(prnWriter,
                                                         formFileRear,
                                                         formNameRear,
                                                         flagRearEncapsulated);
@@ -204,14 +204,12 @@ namespace PCLParaphernalia
             {
                 if (flagMainForm)
                 {
-                    PCLXLWriter.StreamRemove(prnWriter,
-                                             formNameMain);
+                    PCLXLWriter.StreamRemove(prnWriter, formNameMain);
                 }
 
                 if (flagRearForm)
                 {
-                    PCLXLWriter.StreamRemove(prnWriter,
-                                             formNameRear);
+                    PCLXLWriter.StreamRemove(prnWriter, formNameRear);
                 }
             }
 
@@ -374,8 +372,7 @@ namespace PCLParaphernalia
                 prnWriter.Write(buffer, 0, indBuf);
                 indBuf = 0;
 
-                PCLXLWriter.Font(prnWriter, false, crntPtSize,
-                                 _symSet_19U, "Courier         ");
+                PCLXLWriter.Font(prnWriter, false, crntPtSize, _symSet_19U, "Courier         ");
 
                 posX = 600;
                 posY = 1350;
@@ -469,8 +466,7 @@ namespace PCLParaphernalia
                 prnWriter.Write(buffer, 0, indBuf);
                 indBuf = 0;
 
-                PCLXLWriter.Font(prnWriter, false, crntPtSize,
-                                 _symSet_19U, "Courier       Bd");
+                PCLXLWriter.Font(prnWriter, false, crntPtSize, _symSet_19U, "Courier       Bd");
 
                 posX = 1800;
                 posY = 1350;

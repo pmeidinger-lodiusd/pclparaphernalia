@@ -11,8 +11,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    [System.Reflection.Obfuscation(Feature = "renaming",
-                                            ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     public partial class TargetFile : Window
     {
@@ -43,7 +42,7 @@ namespace PCLParaphernalia
             _crntSubId = crntSubId;
             _crntPDL = crntPDL;
 
-            initialise();
+            Initialise();
         }
 
         //--------------------------------------------------------------------//
@@ -71,7 +70,7 @@ namespace PCLParaphernalia
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            metricsSave();
+            MetricsSave();
 
             DialogResult = true;
         }
@@ -92,7 +91,7 @@ namespace PCLParaphernalia
 
             string filename = _saveFilename;
 
-            selected = selectTargetFile(ref filename);
+            selected = SelectTargetFile(ref filename);
 
             if (selected)
             {
@@ -110,7 +109,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialise()
+        private void Initialise()
         {
             btnOK.Visibility = Visibility.Hidden;
 
@@ -122,18 +121,13 @@ namespace PCLParaphernalia
 
             if (_crntSubId == ToolCommonData.ToolSubIds.None)
             {
-                txtCrntTool.Text =
-                    Enum.GetName(typeof(ToolCommonData.ToolIds),
-                                  _crntToolId);
+                txtCrntTool.Text = Enum.GetName(typeof(ToolCommonData.ToolIds), _crntToolId);
             }
             else
             {
-                txtCrntTool.Text =
-                    Enum.GetName(typeof(ToolCommonData.ToolIds),
-                                  _crntToolId) +
-                    "|" +
-                    Enum.GetName(typeof(ToolCommonData.ToolSubIds),
-                                  _crntSubId);
+                txtCrntTool.Text = Enum.GetName(typeof(ToolCommonData.ToolIds), _crntToolId) +
+                                    "|" +
+                                    Enum.GetName(typeof(ToolCommonData.ToolSubIds), _crntSubId);
             }
 
             txtCrntPDL.Text = _crntPDL.ToString();
@@ -164,10 +158,7 @@ namespace PCLParaphernalia
                 lbFileNA.Visibility = Visibility.Hidden;
                 btnOK.Visibility = Visibility.Visible;
 
-                TargetCore.MetricsReturnFileCapt(_crntToolId,
-                                                  _crntSubId,
-                                                  _crntPDL,
-                                                  ref _saveFilename);
+                TargetCore.MetricsReturnFileCapt(_crntToolId, _crntSubId, _crntPDL, ref _saveFilename);
 
                 txtOpFilename.Text = _saveFilename;
             }
@@ -214,10 +205,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsSave()
+        private void MetricsSave()
         {
-            TargetCore.MetricsSaveFileCapt(_crntToolId, _crntSubId, _crntPDL,
-                                            _saveFilename);
+            TargetCore.MetricsSaveFileCapt(_crntToolId, _crntSubId, _crntPDL, _saveFilename);
         }
 
         //--------------------------------------------------------------------//
@@ -230,9 +220,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool selectTargetFile(ref string targetFile)
+        private bool SelectTargetFile(ref string targetFile)
         {
-            SaveFileDialog saveDialog = ToolCommonFunctions.createSaveFileDialog(targetFile);
+            SaveFileDialog saveDialog = ToolCommonFunctions.CreateSaveFileDialog(targetFile);
 
             bool? dialogResult = saveDialog.ShowDialog();
 
@@ -251,8 +241,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtOpFilename_LostFocus(object sender,
-                                              RoutedEventArgs e)
+        private void txtOpFilename_LostFocus(object sender, RoutedEventArgs e)
         {
             _saveFilename = txtOpFilename.Text;
         }

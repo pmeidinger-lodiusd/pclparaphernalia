@@ -9,9 +9,7 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.Obfuscation(
-        Feature = "renaming",
-        ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     class PCLSimpleSeq
     {
@@ -48,7 +46,7 @@ namespace PCLParaphernalia
             FlagObsolete = flagObsolete;
             FlagResetHPGL2 = flagResetHPGL2;
 
-            this.makeOvlAct = makeOvlAct;
+            this.MakeOvlAct = makeOvlAct;
             _seqGrp = seqGrp;
 
             _statsCtParent = 0;
@@ -99,7 +97,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void incrementStatisticsCount(int level)
+        public void IncrementStatisticsCount(int level)
         {
             if (level == 0)
                 _statsCtParent++;
@@ -113,7 +111,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.OvlAct makeOvlAct { get; }
+        public PrnParseConstants.OvlAct MakeOvlAct { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -124,7 +122,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetStatistics()
+        public void ResetStatistics()
         {
             _statsCtParent = 0;
             _statsCtChild = 0;

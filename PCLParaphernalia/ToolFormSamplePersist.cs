@@ -82,8 +82,7 @@ namespace PCLParaphernalia
         public static void loadDataCapture(ToolCommonData.PrintLang crntPDL,
                                             ref string captureFile)
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
             const string oldKey = _subKeyTools + "\\" + _subKeyToolsFormSample;
             string oldFile;
@@ -170,8 +169,7 @@ namespace PCLParaphernalia
 
         public static void loadDataCommon(ref int indxPDL)
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
             const string key = _subKeyTools + "\\" + _subKeyToolsFormSample;
 
@@ -218,8 +216,7 @@ namespace PCLParaphernalia
             ref bool flagRearBPlate,
             ref bool flagPrintDescText)
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
             string key;
 
@@ -290,8 +287,7 @@ namespace PCLParaphernalia
                                         ref int macroIdMain,
                                         ref int macroIdRear)
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
             string key;
 
@@ -348,8 +344,7 @@ namespace PCLParaphernalia
                                           ref string formNameRear,
                                           ref bool flagGSPushPop)
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
             int tmpInt;
 
@@ -392,8 +387,7 @@ namespace PCLParaphernalia
         public static void saveDataCapture(ToolCommonData.PrintLang crntPDL,
                                             string captureFile)
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
             if (crntPDL == ToolCommonData.PrintLang.PCL)
             {
@@ -438,8 +432,7 @@ namespace PCLParaphernalia
 
         public static void saveDataCommon(int indxPDL)
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
             const string key = _subKeyTools + "\\" + _subKeyToolsFormSample;
 
@@ -474,8 +467,7 @@ namespace PCLParaphernalia
                                             bool flagRearBPlate,
                                             bool flagPrintDescText)
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
             string key = _subKeyTools + "\\" + _subKeyToolsFormSample +
                                  "\\" + pdlName;
@@ -595,8 +587,7 @@ namespace PCLParaphernalia
                                         int macroIdMain,
                                         int macroIdRear)
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
             const string key = _subKeyTools + "\\" + _subKeyToolsFormSample +
                                  "\\" + _subKeyPCL;
@@ -682,8 +673,7 @@ namespace PCLParaphernalia
                                           string formNameRear,
                                           bool flagGSPushPop)
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
             const string key = _subKeyTools + "\\" + _subKeyToolsFormSample +
                                  "\\" + _subKeyPCLXL;

@@ -26,8 +26,7 @@ namespace PCLParaphernalia
             new PCLRasterResolution(600)
         };
 
-        private static readonly int _rasterResolutionCount =
-            _rasterResolutions.GetUpperBound(0) + 1;
+        private static readonly int _rasterResolutionCount = _rasterResolutions.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -38,7 +37,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCount()
+        public static int GetCount()
         {
             return _rasterResolutionCount;
         }
@@ -52,9 +51,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort getValue(int selection)
+        public static ushort GetValue(int selection)
         {
-            return _rasterResolutions[selection].getValue();
+            return _rasterResolutions[selection].GetValue();
         }
     }
 }

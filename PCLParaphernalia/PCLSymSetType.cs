@@ -10,9 +10,7 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.Obfuscation(
-        Feature = "renaming",
-        ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     class PCLSymSetType
     {
@@ -22,10 +20,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLSymSetType(byte idPCL,
-                                 bool flagBound,
-                                 string descStd,
-                                 string descShort)
+        public PCLSymSetType(byte idPCL, bool flagBound, string descStd, string descShort)
         {
             IdPCL = idPCL;
             IsBound = flagBound;

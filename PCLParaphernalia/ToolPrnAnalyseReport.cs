@@ -39,14 +39,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generate(
-            ToolPrnAnalyse.InfoType indxInfoType,
-            ReportCore.RptFileFmt rptFileFmt,
-            DataTable table,
-            string prnFilename,
-            long fileSize,
-            bool flagOffsetHex,
-            PrnParseOptions options)
+        public static void Generate(ToolPrnAnalyse.InfoType indxInfoType,
+                                    ReportCore.RptFileFmt rptFileFmt,
+                                    DataTable table,
+                                    string prnFilename,
+                                    long fileSize,
+                                    bool flagOffsetHex,
+                                    PrnParseOptions options)
         {
             object stream = null;
             object writer = null;
@@ -69,10 +68,7 @@ namespace PCLParaphernalia
             {
                 saveFilename = prnFilename + "_analysis." + fileExt;
 
-                OK = ReportCore.DocOpen(rptFileFmt,
-                                         ref saveFilename,
-                                         ref stream,
-                                         ref writer);
+                OK = ReportCore.DocOpen(rptFileFmt, ref saveFilename, ref stream, ref writer);
 
                 if (OK)
                 {
@@ -88,10 +84,7 @@ namespace PCLParaphernalia
                         string[] rowClrBack = new string[ctClrMapRowTypes];
                         string[] rowClrFore = new string[ctClrMapRowTypes];
 
-                        getRowColourStyleData(options,
-                                               ref rowClasses,
-                                               ref rowClrBack,
-                                               ref rowClrFore);
+                        GetRowColourStyleData(options, ref rowClasses, ref rowClrBack, ref rowClrFore);
 
                         ReportCore.DocInitialise(rptFileFmt, writer, true, false,
                                                   ctClrMapRowTypes, rowClasses,
@@ -104,11 +97,9 @@ namespace PCLParaphernalia
                                                   null, null);
                     }
 
-                    reportHeader(indxInfoType, rptFileFmt, writer,
-                                  prnFilename, fileSize, reportSize);
+                    ReportHeader(indxInfoType, rptFileFmt, writer, prnFilename, fileSize, reportSize);
 
-                    reportBodyAnalysis(rptFileFmt, writer,
-                                        table, flagOffsetHex);
+                    ReportBodyAnalysis(rptFileFmt, writer, table, flagOffsetHex);
 
                     ReportCore.DocFinalise(rptFileFmt, writer);
 
@@ -131,11 +122,9 @@ namespace PCLParaphernalia
                                               0, null,
                                               null, null);
 
-                    reportHeader(indxInfoType, rptFileFmt, writer,
-                                  prnFilename, fileSize, reportSize);
+                    ReportHeader(indxInfoType, rptFileFmt, writer, prnFilename, fileSize, reportSize);
 
-                    reportBodyContent(rptFileFmt, writer,
-                                       table, flagOffsetHex);
+                    ReportBodyContent(rptFileFmt, writer, table, flagOffsetHex);
 
                     ReportCore.DocFinalise(rptFileFmt, writer);
 
@@ -146,10 +135,7 @@ namespace PCLParaphernalia
             {
                 saveFilename = prnFilename + "_statistics." + fileExt;
 
-                OK = ReportCore.DocOpen(rptFileFmt,
-                                         ref saveFilename,
-                                         ref stream,
-                                         ref writer);
+                OK = ReportCore.DocOpen(rptFileFmt, ref saveFilename, ref stream, ref writer);
                 if (OK)
                 {
                     reportSize = table.Rows.Count;
@@ -158,11 +144,9 @@ namespace PCLParaphernalia
                                               0, null,
                                               null, null);
 
-                    reportHeader(indxInfoType, rptFileFmt, writer,
-                                  prnFilename, fileSize, reportSize);
+                    ReportHeader(indxInfoType, rptFileFmt, writer, prnFilename, fileSize, reportSize);
 
-                    reportBodyStatistics(rptFileFmt, writer,
-                                          table);
+                    ReportBodyStatistics(rptFileFmt, writer, table);
 
                     ReportCore.DocFinalise(rptFileFmt, writer);
 
@@ -180,11 +164,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void getRowColourStyleData(
-            PrnParseOptions options,
-            ref string[] classes,
-            ref string[] clrBack,
-            ref string[] clrFore)
+        private static void GetRowColourStyleData(PrnParseOptions options,
+                            ref string[] classes,
+                            ref string[] clrBack,
+                            ref string[] clrFore)
         {
             int indxClrBack;
             int indxClrFore;
@@ -202,19 +185,15 @@ namespace PCLParaphernalia
             int[] indxClrMapBack = new int[ctClrMapRowTypes];
             int[] indxClrMapFore = new int[ctClrMapRowTypes];
 
-            options.getOptClrMap(ref flagClrMapUseClr,
-                                  ref indxClrMapBack,
-                                  ref indxClrMapFore);
+            options.GetOptClrMap(ref flagClrMapUseClr, ref indxClrMapBack, ref indxClrMapFore);
 
-            options.getOptClrMapStdClrs(ref ctClrMapStdClrs,
-                                         ref stdClrsPropertyInfo);
+            options.GetOptClrMapStdClrs(ref ctClrMapStdClrs, ref stdClrsPropertyInfo);
 
             //----------------------------------------------------------------//
 
             for (int i = 0; i < ctClrMapRowTypes; i++)
             {
-                string rowType =
-                    Enum.GetName(typeof(PrnParseRowTypes.Type), i);
+                string rowType = Enum.GetName(typeof(PrnParseRowTypes.Type), i);
 
                 indxClrBack = indxClrMapBack[i];
                 indxClrFore = indxClrMapFore[i];
@@ -237,11 +216,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void reportBodyAnalysis(
-            ReportCore.RptFileFmt rptFileFmt,
-            object writer,
-            DataTable table,
-            bool flagOffsetHex)
+        private static void ReportBodyAnalysis(ReportCore.RptFileFmt rptFileFmt,
+                                                object writer,
+                                                DataTable table,
+                                                bool flagOffsetHex)
         {
             const int colCt = 4;
 
@@ -280,8 +258,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.TableHddrData(writer, rptFileFmt, false,
-                                  colCt, colHddrs, colSizes);
+            ReportCore.TableHddrData(writer, rptFileFmt, false, colCt, colHddrs, colSizes);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -295,9 +272,7 @@ namespace PCLParaphernalia
 
                 int indxRowType = (int)row[rtName];
 
-                string rowType = Enum.GetName
-                                    (typeof(PrnParseRowTypes.Type),
-                                     indxRowType);
+                string rowType = Enum.GetName(typeof(PrnParseRowTypes.Type), indxRowType);
 
                 ReportCore.TableRowData(
                     writer, rptFileFmt,
@@ -324,11 +299,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void reportBodyContent(
-            ReportCore.RptFileFmt rptFileFmt,
-            object writer,
-            DataTable table,
-            bool flagOffsetHex)
+        private static void ReportBodyContent(ReportCore.RptFileFmt rptFileFmt,
+                                                object writer,
+                                                DataTable table,
+                                                bool flagOffsetHex)
         {
             const int colCt = 3;
 
@@ -370,8 +344,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.TableHddrData(writer, rptFileFmt, false,
-                                  colCt, colHddrs, colSizes);
+            ReportCore.TableHddrData(writer, rptFileFmt, false, colCt, colHddrs, colSizes);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -408,10 +381,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void reportBodyStatistics(
-            ReportCore.RptFileFmt rptFileFmt,
-            object writer,
-            DataTable table)
+        private static void ReportBodyStatistics(ReportCore.RptFileFmt rptFileFmt,
+                                object writer,
+                                DataTable table)
         {
             const int colCt = 5;
 
@@ -441,8 +413,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.TableHddrData(writer, rptFileFmt, false,
-                                  colCt, colNames, colSizes);
+            ReportCore.TableHddrData(writer, rptFileFmt, false, colCt, colNames, colSizes);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -479,13 +450,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void reportHeader(
-            ToolPrnAnalyse.InfoType indxInfoType,
-            ReportCore.RptFileFmt rptFileFmt,
-            object writer,
-            string prnFilename,
-            long fileSize,
-            int reportSize)
+        private static void ReportHeader(ToolPrnAnalyse.InfoType indxInfoType,
+                                            ReportCore.RptFileFmt rptFileFmt,
+                                            object writer,
+                                            string prnFilename,
+                                            long fileSize,
+                                            int reportSize)
         {
             int maxLineLen = 0;
 

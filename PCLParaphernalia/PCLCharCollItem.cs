@@ -67,7 +67,7 @@ namespace PCLParaphernalia
             {
                 _isChecked = value;
 
-                onPropertyChanged(nameof(IsChecked));
+                OnPropertyChanged(nameof(IsChecked));
             }
         }
 
@@ -85,13 +85,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void onPropertyChanged(string propertyName)
+        private void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
             {
-                PropertyChanged(
-                    this,
-                    new PropertyChangedEventArgs(propertyName));
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
     }

@@ -109,127 +109,129 @@ namespace PCLParaphernalia
             Unknown = 31
         }
 
-        private static readonly ushort[] symSets_Dummy = new ushort[]
-            { 0xffff };
+        private static readonly ushort[] symSets_Dummy = new ushort[] { 0xffff };
 
-        private static readonly ushort[] symSets_Unicode = new ushort[]
-            { PCLSymbolSets.TranslateIdToKind1("18N") };
+        private static readonly ushort[] symSets_Unicode = new ushort[] { PCLSymbolSets.TranslateIdToKind1("18N") };
 
         private static readonly ushort[] symSets_Europe = new ushort[]
-            { PCLSymbolSets.TranslateIdToKind1("0D"),
-              PCLSymbolSets.TranslateIdToKind1("0H"),
-              PCLSymbolSets.TranslateIdToKind1("0I"),
-              PCLSymbolSets.TranslateIdToKind1("0N"),
-              PCLSymbolSets.TranslateIdToKind1("0S"),
-              PCLSymbolSets.TranslateIdToKind1("0U"),
-              PCLSymbolSets.TranslateIdToKind1("1E"),
-              PCLSymbolSets.TranslateIdToKind1("1F"),
-              PCLSymbolSets.TranslateIdToKind1("1G"),
-              PCLSymbolSets.TranslateIdToKind1("1U"),
-              PCLSymbolSets.TranslateIdToKind1("2N"),
-              PCLSymbolSets.TranslateIdToKind1("2S"),
-              PCLSymbolSets.TranslateIdToKind1("3R"),
-              PCLSymbolSets.TranslateIdToKind1("4N"),
-              PCLSymbolSets.TranslateIdToKind1("4U"),
-              PCLSymbolSets.TranslateIdToKind1("5M"),
-              PCLSymbolSets.TranslateIdToKind1("5N"),
-              PCLSymbolSets.TranslateIdToKind1("5T"),
-              PCLSymbolSets.TranslateIdToKind1("6J"),
-              PCLSymbolSets.TranslateIdToKind1("6N"),
-              PCLSymbolSets.TranslateIdToKind1("7H"),
-              PCLSymbolSets.TranslateIdToKind1("7J"),
-              PCLSymbolSets.TranslateIdToKind1("8G"),
-              PCLSymbolSets.TranslateIdToKind1("8H"),
-              PCLSymbolSets.TranslateIdToKind1("8M"),
-              PCLSymbolSets.TranslateIdToKind1("8U"),
-              PCLSymbolSets.TranslateIdToKind1("9E"),
-              PCLSymbolSets.TranslateIdToKind1("9G"),
-              PCLSymbolSets.TranslateIdToKind1("9J"),
-              PCLSymbolSets.TranslateIdToKind1("9N"),
-              PCLSymbolSets.TranslateIdToKind1("9R"),
-              PCLSymbolSets.TranslateIdToKind1("9T"),
-              PCLSymbolSets.TranslateIdToKind1("9U"),
-              PCLSymbolSets.TranslateIdToKind1("10G"),
-              PCLSymbolSets.TranslateIdToKind1("10J"),
-              PCLSymbolSets.TranslateIdToKind1("10N"),
-              PCLSymbolSets.TranslateIdToKind1("10U"),
-              PCLSymbolSets.TranslateIdToKind1("11U"),
-              PCLSymbolSets.TranslateIdToKind1("12G"),
-              PCLSymbolSets.TranslateIdToKind1("12J"),
-              PCLSymbolSets.TranslateIdToKind1("12N"),
-              PCLSymbolSets.TranslateIdToKind1("12U"),
-              PCLSymbolSets.TranslateIdToKind1("13U"),
-              PCLSymbolSets.TranslateIdToKind1("14R"),
-              PCLSymbolSets.TranslateIdToKind1("15H"),
-  //          PCLSymbolSets.translateIdToKind1("15Q"), // special: M553x / M475dn
-              PCLSymbolSets.TranslateIdToKind1("15U"),
-              PCLSymbolSets.TranslateIdToKind1("17U"),
-              PCLSymbolSets.TranslateIdToKind1("19L"),
-              PCLSymbolSets.TranslateIdToKind1("19U"),
-              PCLSymbolSets.TranslateIdToKind1("26U")
-            };
+        {
+            PCLSymbolSets.TranslateIdToKind1("0D"),
+            PCLSymbolSets.TranslateIdToKind1("0H"),
+            PCLSymbolSets.TranslateIdToKind1("0I"),
+            PCLSymbolSets.TranslateIdToKind1("0N"),
+            PCLSymbolSets.TranslateIdToKind1("0S"),
+            PCLSymbolSets.TranslateIdToKind1("0U"),
+            PCLSymbolSets.TranslateIdToKind1("1E"),
+            PCLSymbolSets.TranslateIdToKind1("1F"),
+            PCLSymbolSets.TranslateIdToKind1("1G"),
+            PCLSymbolSets.TranslateIdToKind1("1U"),
+            PCLSymbolSets.TranslateIdToKind1("2N"),
+            PCLSymbolSets.TranslateIdToKind1("2S"),
+            PCLSymbolSets.TranslateIdToKind1("3R"),
+            PCLSymbolSets.TranslateIdToKind1("4N"),
+            PCLSymbolSets.TranslateIdToKind1("4U"),
+            PCLSymbolSets.TranslateIdToKind1("5M"),
+            PCLSymbolSets.TranslateIdToKind1("5N"),
+            PCLSymbolSets.TranslateIdToKind1("5T"),
+            PCLSymbolSets.TranslateIdToKind1("6J"),
+            PCLSymbolSets.TranslateIdToKind1("6N"),
+            PCLSymbolSets.TranslateIdToKind1("7H"),
+            PCLSymbolSets.TranslateIdToKind1("7J"),
+            PCLSymbolSets.TranslateIdToKind1("8G"),
+            PCLSymbolSets.TranslateIdToKind1("8H"),
+            PCLSymbolSets.TranslateIdToKind1("8M"),
+            PCLSymbolSets.TranslateIdToKind1("8U"),
+            PCLSymbolSets.TranslateIdToKind1("9E"),
+            PCLSymbolSets.TranslateIdToKind1("9G"),
+            PCLSymbolSets.TranslateIdToKind1("9J"),
+            PCLSymbolSets.TranslateIdToKind1("9N"),
+            PCLSymbolSets.TranslateIdToKind1("9R"),
+            PCLSymbolSets.TranslateIdToKind1("9T"),
+            PCLSymbolSets.TranslateIdToKind1("9U"),
+            PCLSymbolSets.TranslateIdToKind1("10G"),
+            PCLSymbolSets.TranslateIdToKind1("10J"),
+            PCLSymbolSets.TranslateIdToKind1("10N"),
+            PCLSymbolSets.TranslateIdToKind1("10U"),
+            PCLSymbolSets.TranslateIdToKind1("11U"),
+            PCLSymbolSets.TranslateIdToKind1("12G"),
+            PCLSymbolSets.TranslateIdToKind1("12J"),
+            PCLSymbolSets.TranslateIdToKind1("12N"),
+            PCLSymbolSets.TranslateIdToKind1("12U"),
+            PCLSymbolSets.TranslateIdToKind1("13U"),
+            PCLSymbolSets.TranslateIdToKind1("14R"),
+            PCLSymbolSets.TranslateIdToKind1("15H"),
+            // PCLSymbolSets.translateIdToKind1("15Q"), // special: M553x / M475dn
+            PCLSymbolSets.TranslateIdToKind1("15U"),
+            PCLSymbolSets.TranslateIdToKind1("17U"),
+            PCLSymbolSets.TranslateIdToKind1("19L"),
+            PCLSymbolSets.TranslateIdToKind1("19U"),
+            PCLSymbolSets.TranslateIdToKind1("26U")
+        };
 
         private static readonly ushort[] symSets_Europe_Not_Hebrew_Greek_Cyrillic = new ushort[]
-            { PCLSymbolSets.TranslateIdToKind1("0D"),
-              PCLSymbolSets.TranslateIdToKind1("0I"),
-              PCLSymbolSets.TranslateIdToKind1("0N"),
-              PCLSymbolSets.TranslateIdToKind1("0S"),
-              PCLSymbolSets.TranslateIdToKind1("0U"),
-              PCLSymbolSets.TranslateIdToKind1("1E"),
-              PCLSymbolSets.TranslateIdToKind1("1F"),
-              PCLSymbolSets.TranslateIdToKind1("1G"),
-              PCLSymbolSets.TranslateIdToKind1("1U"),
-              PCLSymbolSets.TranslateIdToKind1("2N"),
-              PCLSymbolSets.TranslateIdToKind1("2S"),
-              PCLSymbolSets.TranslateIdToKind1("4N"),
-              PCLSymbolSets.TranslateIdToKind1("4U"),
-              PCLSymbolSets.TranslateIdToKind1("5M"),
-              PCLSymbolSets.TranslateIdToKind1("5N"),
-              PCLSymbolSets.TranslateIdToKind1("5T"),
-              PCLSymbolSets.TranslateIdToKind1("6J"),
-              PCLSymbolSets.TranslateIdToKind1("6N"),
-              PCLSymbolSets.TranslateIdToKind1("7H"),
-              PCLSymbolSets.TranslateIdToKind1("7J"),
-              PCLSymbolSets.TranslateIdToKind1("8M"),
-              PCLSymbolSets.TranslateIdToKind1("8U"),
-              PCLSymbolSets.TranslateIdToKind1("9E"),
-              PCLSymbolSets.TranslateIdToKind1("9J"),
-              PCLSymbolSets.TranslateIdToKind1("9N"),
-              PCLSymbolSets.TranslateIdToKind1("9T"),
-              PCLSymbolSets.TranslateIdToKind1("9U"),
-              PCLSymbolSets.TranslateIdToKind1("10J"),
-              PCLSymbolSets.TranslateIdToKind1("10U"),
-              PCLSymbolSets.TranslateIdToKind1("11U"),
-              PCLSymbolSets.TranslateIdToKind1("12J"),
-              PCLSymbolSets.TranslateIdToKind1("12U"),
-              PCLSymbolSets.TranslateIdToKind1("13U"),
-              PCLSymbolSets.TranslateIdToKind1("15U"),
-              PCLSymbolSets.TranslateIdToKind1("17U"),
-              PCLSymbolSets.TranslateIdToKind1("19L"),
-              PCLSymbolSets.TranslateIdToKind1("19U"),
-              PCLSymbolSets.TranslateIdToKind1("26U")
-            };
+        {
+            PCLSymbolSets.TranslateIdToKind1("0D"),
+            PCLSymbolSets.TranslateIdToKind1("0I"),
+            PCLSymbolSets.TranslateIdToKind1("0N"),
+            PCLSymbolSets.TranslateIdToKind1("0S"),
+            PCLSymbolSets.TranslateIdToKind1("0U"),
+            PCLSymbolSets.TranslateIdToKind1("1E"),
+            PCLSymbolSets.TranslateIdToKind1("1F"),
+            PCLSymbolSets.TranslateIdToKind1("1G"),
+            PCLSymbolSets.TranslateIdToKind1("1U"),
+            PCLSymbolSets.TranslateIdToKind1("2N"),
+            PCLSymbolSets.TranslateIdToKind1("2S"),
+            PCLSymbolSets.TranslateIdToKind1("4N"),
+            PCLSymbolSets.TranslateIdToKind1("4U"),
+            PCLSymbolSets.TranslateIdToKind1("5M"),
+            PCLSymbolSets.TranslateIdToKind1("5N"),
+            PCLSymbolSets.TranslateIdToKind1("5T"),
+            PCLSymbolSets.TranslateIdToKind1("6J"),
+            PCLSymbolSets.TranslateIdToKind1("6N"),
+            PCLSymbolSets.TranslateIdToKind1("7H"),
+            PCLSymbolSets.TranslateIdToKind1("7J"),
+            PCLSymbolSets.TranslateIdToKind1("8M"),
+            PCLSymbolSets.TranslateIdToKind1("8U"),
+            PCLSymbolSets.TranslateIdToKind1("9E"),
+            PCLSymbolSets.TranslateIdToKind1("9J"),
+            PCLSymbolSets.TranslateIdToKind1("9N"),
+            PCLSymbolSets.TranslateIdToKind1("9T"),
+            PCLSymbolSets.TranslateIdToKind1("9U"),
+            PCLSymbolSets.TranslateIdToKind1("10J"),
+            PCLSymbolSets.TranslateIdToKind1("10U"),
+            PCLSymbolSets.TranslateIdToKind1("11U"),
+            PCLSymbolSets.TranslateIdToKind1("12J"),
+            PCLSymbolSets.TranslateIdToKind1("12U"),
+            PCLSymbolSets.TranslateIdToKind1("13U"),
+            PCLSymbolSets.TranslateIdToKind1("15U"),
+            PCLSymbolSets.TranslateIdToKind1("17U"),
+            PCLSymbolSets.TranslateIdToKind1("19L"),
+            PCLSymbolSets.TranslateIdToKind1("19U"),
+            PCLSymbolSets.TranslateIdToKind1("26U")
+        };
 
         private static readonly ushort[] symSets_Arabic = new ushort[]
-            { PCLSymbolSets.TranslateIdToKind1("0U"),
-              PCLSymbolSets.TranslateIdToKind1("5M"),
-              PCLSymbolSets.TranslateIdToKind1("8M"),
-              PCLSymbolSets.TranslateIdToKind1("8V"),
-              PCLSymbolSets.TranslateIdToKind1("9V"),
-              PCLSymbolSets.TranslateIdToKind1("10V"),
-              PCLSymbolSets.TranslateIdToKind1("11N")
-            };
+        {
+            PCLSymbolSets.TranslateIdToKind1("0U"),
+            PCLSymbolSets.TranslateIdToKind1("5M"),
+            PCLSymbolSets.TranslateIdToKind1("8M"),
+            PCLSymbolSets.TranslateIdToKind1("8V"),
+            PCLSymbolSets.TranslateIdToKind1("9V"),
+            PCLSymbolSets.TranslateIdToKind1("10V"),
+            PCLSymbolSets.TranslateIdToKind1("11N")
+        };
 
         private static readonly ushort[] symSets_Hebrew = new ushort[]
-            { PCLSymbolSets.TranslateIdToKind1("0H"),
-              PCLSymbolSets.TranslateIdToKind1("0U"),
-              PCLSymbolSets.TranslateIdToKind1("5M"),
-              PCLSymbolSets.TranslateIdToKind1("7H"),
-              PCLSymbolSets.TranslateIdToKind1("8H"),
-              PCLSymbolSets.TranslateIdToKind1("8M"),
-              PCLSymbolSets.TranslateIdToKind1("15H")
-  //          PCLSymbolSets.translateIdToKind1("15Q"), // special: M553x / M475dn
-            };
+        {
+            PCLSymbolSets.TranslateIdToKind1("0H"),
+            PCLSymbolSets.TranslateIdToKind1("0U"),
+            PCLSymbolSets.TranslateIdToKind1("5M"),
+            PCLSymbolSets.TranslateIdToKind1("7H"),
+            PCLSymbolSets.TranslateIdToKind1("8H"),
+            PCLSymbolSets.TranslateIdToKind1("8M"),
+            PCLSymbolSets.TranslateIdToKind1("15H")
+            // PCLSymbolSets.translateIdToKind1("15Q"), // special: M553x / M475dn
+        };
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -237,8 +239,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static readonly List<PCLFont> _fonts =
-            new List<PCLFont>();
+        private static readonly List<PCLFont> _fonts = new List<PCLFont>();
 
         private static int _fontsCount;
         private static int _fontsCountCustom;
@@ -370,8 +371,7 @@ namespace PCLParaphernalia
                                               double height,
                                               double pitch)
         {
-            return _fonts[indxFont].getHPGL2FontDef(variant, symbolSet,
-                                                      height, pitch);
+            return _fonts[indxFont].GetHPGL2FontDef(variant, symbolSet, height, pitch);
         }
 
         //--------------------------------------------------------------------//
@@ -496,7 +496,7 @@ namespace PCLParaphernalia
 
         public static byte GetPCLContourRatio(int indxFont)
         {
-            return _fonts[indxFont].getPCLContourRatio();
+            return _fonts[indxFont].GetPCLContourRatio();
         }
 
         //--------------------------------------------------------------------//
@@ -516,7 +516,7 @@ namespace PCLParaphernalia
                                                double height,
                                                double pitch)
         {
-            return _fonts[indxFont].getPCLFontSelect(variant, height, pitch);
+            return _fonts[indxFont].GetPCLFontSelect(variant, height, pitch);
         }
 
         //--------------------------------------------------------------------//
@@ -530,7 +530,7 @@ namespace PCLParaphernalia
 
         public static double GetPCLHeight(int indxFont)
         {
-            return _fonts[indxFont].getPCLHeight();
+            return _fonts[indxFont].GetPCLHeight();
         }
 
         //--------------------------------------------------------------------//
@@ -544,7 +544,7 @@ namespace PCLParaphernalia
 
         public static double GetPCLPitch(int indxFont)
         {
-            return _fonts[indxFont].getPCLPitch();
+            return _fonts[indxFont].GetPCLPitch();
         }
 
         //--------------------------------------------------------------------//
@@ -559,7 +559,7 @@ namespace PCLParaphernalia
 
         public static double GetPCLPitch(int indxFont, double ptSize)
         {
-            return _fonts[indxFont].getPCLPitch(ptSize);
+            return _fonts[indxFont].GetPCLPitch(ptSize);
         }
 
         //--------------------------------------------------------------------//
@@ -573,7 +573,7 @@ namespace PCLParaphernalia
 
         public static byte GetPCLSpacing(int indxFont)
         {
-            return _fonts[indxFont].getPCLSpacing();
+            return _fonts[indxFont].GetPCLSpacing();
         }
 
         //--------------------------------------------------------------------//
@@ -588,7 +588,7 @@ namespace PCLParaphernalia
         public static ushort GetPCLStyle(int indxFont,
                                           Variant variant)
         {
-            return _fonts[indxFont].getPCLStyle(variant);
+            return _fonts[indxFont].GetPCLStyle(variant);
         }
 
         //--------------------------------------------------------------------//
@@ -614,10 +614,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short GetPCLWeight(int indxFont,
-                                          Variant variant)
+        public static short GetPCLWeight(int indxFont, Variant variant)
         {
-            return _fonts[indxFont].getPCLWeight(variant);
+            return _fonts[indxFont].GetPCLWeight(variant);
         }
 
         //--------------------------------------------------------------------//
@@ -631,7 +630,7 @@ namespace PCLParaphernalia
 
         public static double GetPCLXLHeight(int indxFont)
         {
-            return _fonts[indxFont].getPCLXLHeight();
+            return _fonts[indxFont].GetPCLXLHeight();
         }
 
         //--------------------------------------------------------------------//
@@ -643,10 +642,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetPCLXLName(int indxFont,
-                                           Variant variant)
+        public static string GetPCLXLName(int indxFont, Variant variant)
         {
-            return _fonts[indxFont].getPCLXLName(variant);
+            return _fonts[indxFont].GetPCLXLName(variant);
         }
 
         //--------------------------------------------------------------------//
@@ -659,14 +657,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool GetPresetFontData(int indxFont,
-                                                ref ushort typeface,
-                                                ref string fontName)
+        public static bool GetPresetFontData(int indxFont, ref ushort typeface, ref string fontName)
         {
-            bool typefacePreset = _fonts[indxFont].getPCLFontIdData(ref typeface,
-                                                                ref fontName);
-
-            return typefacePreset;
+            return _fonts[indxFont].GetPCLFontIdData(ref typeface, ref fontName);
         }
 
         //--------------------------------------------------------------------//
@@ -680,7 +673,7 @@ namespace PCLParaphernalia
 
         public static ushort GetSymbolSetNumber(int indxFont)
         {
-            return _fonts[indxFont].getSymbolSetNumber();
+            return _fonts[indxFont].GetSymbolSetNumber();
         }
 
         //--------------------------------------------------------------------//
@@ -709,7 +702,7 @@ namespace PCLParaphernalia
 
         public static bool IsBoundFont(int indxFont)
         {
-            return _fonts[indxFont].isBoundFont();
+            return _fonts[indxFont].IsBoundFont();
         }
 
         //--------------------------------------------------------------------//
@@ -724,7 +717,7 @@ namespace PCLParaphernalia
 
         public static bool IsPresetFont(int indxFont)
         {
-            return _fonts[indxFont].isPresetFont();
+            return _fonts[indxFont].IsPresetFont();
         }
 
         //--------------------------------------------------------------------//
@@ -739,7 +732,7 @@ namespace PCLParaphernalia
 
         public static bool IsProportionalFont(int indxFont)
         {
-            return _fonts[indxFont].isProportionalFont();
+            return _fonts[indxFont].IsProportionalFont();
         }
 
         //--------------------------------------------------------------------//
@@ -768,10 +761,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool IsSymSetInList(int indxFont,
-                                              ushort symSetNo)
+        public static bool IsSymSetInList(int indxFont, ushort symSetNo)
         {
-            return _fonts[indxFont].isSymSetInList(symSetNo);
+            return _fonts[indxFont].IsSymSetInList(symSetNo);
         }
 
         //--------------------------------------------------------------------//
@@ -2020,9 +2012,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void TranslateTypeface(ushort typeface,
-                                             ref ushort vendor,
-                                             ref ushort basecode)
+        public static void TranslateTypeface(ushort typeface, ref ushort vendor, ref ushort basecode)
         {
             vendor = (ushort)(typeface >> 12);
             basecode = (ushort)(typeface & 0xfff);
@@ -2040,10 +2030,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool VariantExists(int indxFont,
-                                            Variant variant)
+        public static bool VariantExists(int indxFont, Variant variant)
         {
-            return _fonts[indxFont].variantAvailable(variant);
+            return _fonts[indxFont].VariantAvailable(variant);
         }
     }
 }

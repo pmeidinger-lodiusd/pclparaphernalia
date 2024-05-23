@@ -77,8 +77,7 @@ namespace PCLParaphernalia
                             8)
         };
 
-        private static readonly int _paletteCount =
-            _palettes.GetUpperBound(0) + 1;
+        private static readonly int _paletteCount = _palettes.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -98,56 +97,40 @@ namespace PCLParaphernalia
 
             int crntIndex = (int)Index.PCLMonochrome;
 
-            _palettes[crntIndex].addColour("Black", (byte)SimpleMono.Black);
-            _palettes[crntIndex].setClrItemBlack();
-            _palettes[crntIndex].addColour("White", (byte)SimpleMono.White);
-            _palettes[crntIndex].setClrItemWhite();
+            _palettes[crntIndex].AddColour("Black", (byte)SimpleMono.Black);
+            _palettes[crntIndex].SetClrItemBlack();
+            _palettes[crntIndex].AddColour("White", (byte)SimpleMono.White);
+            _palettes[crntIndex].SetClrItemWhite();
 
             //----------------------------------------------------------------//
 
             crntIndex = (int)Index.PCLSimpleColourCMY;
 
-            _palettes[crntIndex].addColour("Black",
-                                            (byte)SimpleCMY.Black);
-            _palettes[crntIndex].setClrItemBlack();
-            _palettes[crntIndex].addColour("Blue",
-                                            (byte)SimpleCMY.Blue);
-            _palettes[crntIndex].addColour("Cyan",
-                                            (byte)SimpleCMY.Cyan);
-            _palettes[crntIndex].addColour("Green",
-                                            (byte)SimpleCMY.Green);
-            _palettes[crntIndex].addColour("Magenta",
-                                            (byte)SimpleCMY.Magenta);
-            _palettes[crntIndex].addColour("Red",
-                                            (byte)SimpleCMY.Red);
-            _palettes[crntIndex].addColour("White",
-                                            (byte)SimpleCMY.White);
-            _palettes[crntIndex].setClrItemWhite();
-            _palettes[crntIndex].addColour("Yellow",
-                                            (byte)SimpleCMY.Yellow);
+            _palettes[crntIndex].AddColour("Black", (byte)SimpleCMY.Black);
+            _palettes[crntIndex].SetClrItemBlack();
+            _palettes[crntIndex].AddColour("Blue", (byte)SimpleCMY.Blue);
+            _palettes[crntIndex].AddColour("Cyan", (byte)SimpleCMY.Cyan);
+            _palettes[crntIndex].AddColour("Green", (byte)SimpleCMY.Green);
+            _palettes[crntIndex].AddColour("Magenta", (byte)SimpleCMY.Magenta);
+            _palettes[crntIndex].AddColour("Red", (byte)SimpleCMY.Red);
+            _palettes[crntIndex].AddColour("White", (byte)SimpleCMY.White);
+            _palettes[crntIndex].SetClrItemWhite();
+            _palettes[crntIndex].AddColour("Yellow", (byte)SimpleCMY.Yellow);
 
             //----------------------------------------------------------------//
 
             crntIndex = (int)Index.PCLSimpleColourRGB;
 
-            _palettes[crntIndex].addColour("Black",
-                                            (byte)SimpleRGB.Black);
-            _palettes[crntIndex].setClrItemBlack();
-            _palettes[crntIndex].addColour("Blue",
-                                            (byte)SimpleRGB.Blue);
-            _palettes[crntIndex].addColour("Cyan",
-                                            (byte)SimpleRGB.Cyan);
-            _palettes[crntIndex].addColour("Green",
-                                            (byte)SimpleRGB.Green);
-            _palettes[crntIndex].addColour("Magenta",
-                                            (byte)SimpleRGB.Magenta);
-            _palettes[crntIndex].addColour("Red",
-                                            (byte)SimpleRGB.Red);
-            _palettes[crntIndex].addColour("White",
-                                            (byte)SimpleRGB.White);
-            _palettes[crntIndex].setClrItemWhite();
-            _palettes[crntIndex].addColour("Yellow",
-                                            (byte)SimpleRGB.Yellow);
+            _palettes[crntIndex].AddColour("Black", (byte)SimpleRGB.Black);
+            _palettes[crntIndex].SetClrItemBlack();
+            _palettes[crntIndex].AddColour("Blue", (byte)SimpleRGB.Blue);
+            _palettes[crntIndex].AddColour("Cyan", (byte)SimpleRGB.Cyan);
+            _palettes[crntIndex].AddColour("Green", (byte)SimpleRGB.Green);
+            _palettes[crntIndex].AddColour("Magenta", (byte)SimpleRGB.Magenta);
+            _palettes[crntIndex].AddColour("Red", (byte)SimpleRGB.Red);
+            _palettes[crntIndex].AddColour("White", (byte)SimpleRGB.White);
+            _palettes[crntIndex].SetClrItemWhite();
+            _palettes[crntIndex].AddColour("Yellow", (byte)SimpleRGB.Yellow);
         }
 
         //--------------------------------------------------------------------//
@@ -159,10 +142,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte GetColourId(int paletteIndex,
-                                        int colourIndex)
+        public static byte GetColourId(int paletteIndex, int colourIndex)
         {
-            return _palettes[paletteIndex].getColourId(colourIndex);
+            return _palettes[paletteIndex].GetColourId(colourIndex);
         }
 
         //--------------------------------------------------------------------//
@@ -174,10 +156,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetColourName(int paletteIndex,
-                                            int colourIndex)
+        public static string GetColourName(int paletteIndex, int colourIndex)
         {
-            return _palettes[paletteIndex].getColourName(colourIndex);
+            return _palettes[paletteIndex].GetColourName(colourIndex);
         }
 
         //--------------------------------------------------------------------//

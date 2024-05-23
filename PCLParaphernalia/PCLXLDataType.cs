@@ -9,9 +9,7 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.Obfuscation(
-        Feature = "renaming",
-        ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     class PCLXLDataType
     {
@@ -104,7 +102,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void incrementStatisticsCount(int level)
+        public void IncrementStatisticsCount(int level)
         {
             if (level == 0)
                 _statsCtParent++;
@@ -121,7 +119,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetStatistics()
+        public void ResetStatistics()
         {
             _statsCtParent = 0;
             _statsCtChild = 0;

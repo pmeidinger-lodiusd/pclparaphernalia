@@ -38,11 +38,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCapture(ToolCommonData.PrintLang crntPDL,
-                                            ref string captureFile)
+        public static void LoadDataCapture(ToolCommonData.PrintLang crntPDL, ref string captureFile)
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
             const string key = _subKeyTools + "\\" + _subKeyToolsPrnPrint;
 
@@ -50,9 +48,7 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                captureFile = (string)subKey.GetValue(_nameCaptureFile,
-                                                       defWorkFolder + "\\" +
-                                                       _defaultCaptureFile);
+                captureFile = (string)subKey.GetValue(_nameCaptureFile, defWorkFolder + "\\" + _defaultCaptureFile);
             }
         }
 
@@ -66,10 +62,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataGeneral(ref string filename)
+        public static void LoadDataGeneral(ref string filename)
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
             const string key = _subKeyTools + "\\" + _subKeyToolsPrnPrint;
 
@@ -77,9 +72,7 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                filename = (string)subKey.GetValue(_nameFilename,
-                                                        defWorkFolder + "\\" +
-                                                        _defaultFilename);
+                filename = (string)subKey.GetValue(_nameFilename, defWorkFolder + "\\" + _defaultFilename);
             }
         }
 
@@ -93,11 +86,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCapture(ToolCommonData.PrintLang crntPDL,
-                                            string captureFile)
+        public static void SaveDataCapture(ToolCommonData.PrintLang crntPDL, string captureFile)
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
             const string key = _subKeyTools + "\\" + _subKeyToolsPrnPrint;
 
@@ -105,9 +96,7 @@ namespace PCLParaphernalia
             {
                 if (captureFile != null)
                 {
-                    subKey.SetValue(_nameCaptureFile,
-                                     captureFile,
-                                     RegistryValueKind.String);
+                    subKey.SetValue(_nameCaptureFile, captureFile, RegistryValueKind.String);
                 }
             }
         }
@@ -121,10 +110,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataGeneral(string filename)
+        public static void SaveDataGeneral(string filename)
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
             const string key = _subKeyTools + "\\" + _subKeyToolsPrnPrint;
 
@@ -132,9 +120,7 @@ namespace PCLParaphernalia
             {
                 if (filename != null)
                 {
-                    subKey.SetValue(_nameFilename,
-                                    filename,
-                                    RegistryValueKind.String);
+                    subKey.SetValue(_nameFilename, filename, RegistryValueKind.String);
                 }
             }
         }

@@ -1929,7 +1929,7 @@
                                                  Margin="5,15,0,0"
                                                  HorizontalAlignment="Left"
                                                  VerticalAlignment="Top"
-                                                 Click="RbPatternTypeShading_Click"
+                                                 Click="rbPatternTypeShading_Click"
                                                  Content="Shading"
                                                  GroupName="SelPattern" />
                                     <RadioButton Name="rbPatternTypeXHatch"
@@ -1937,7 +1937,7 @@
                                                  Margin="5,35,0,0"
                                                  HorizontalAlignment="Left"
                                                  VerticalAlignment="Top"
-                                                 Click="RbPatternTypeXHatch_Click"
+                                                 Click="rbPatternTypeXHatch_Click"
                                                  Content="Cross-hatch"
                                                  GroupName="SelPattern" />
                                 </Grid>

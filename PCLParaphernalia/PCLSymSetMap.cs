@@ -11,9 +11,7 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.Obfuscation(
-        Feature = "renaming",
-        ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     class PCLSymSetMap
     {
@@ -371,28 +369,18 @@ namespace PCLParaphernalia
                         for (int j = 0; j < rowCt; j++)
                         {
                             if (rowId < 0x10)
-                            {
-                                map.Append("0x" + rowId.ToString("X1") +
-                                                                        "0->   ");
-                            }
+                                map.Append("0x" + rowId.ToString("X1") + "0->   ");
                             else
-                            {
-                                map.Append("0x" + rowId.ToString("X3") +
-                                                                        "0-> ");
-                            }
+                                map.Append("0x" + rowId.ToString("X3") + "0-> ");
 
                             cell = rowId * rowLen;
 
                             for (int k = 0; k < rowLen; k++)
                             {
                                 if (cell < rangeMin)
-                                {
                                     map.Append("---- ");
-                                }
                                 else if (cell > rangeMax)
-                                {
                                     map.Append("---- ");
-                                }
                                 else
                                 {
                                     mapValPCL = _mapDataPCL[i][mapIndx];
@@ -453,8 +441,7 @@ namespace PCLParaphernalia
             {
                 if (NullMapPCL)
                 {
-                    return "Not defined" +
-                           " - see Standard (Strict) mapping definition";
+                    return "Not defined - see Standard (Strict) mapping definition";
                 }
                 else
                 {
@@ -528,13 +515,9 @@ namespace PCLParaphernalia
                             for (int k = 0; k < rowLen; k++)
                             {
                                 if (cell < rangeMin)
-                                {
                                     map.Append("---- ");
-                                }
                                 else if (cell > rangeMax)
-                                {
                                     map.Append("---- ");
-                                }
                                 else
                                 {
                                     mapVal = _mapDataPCL[i][mapIndx];
@@ -595,8 +578,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    return "Not defined" +
-                                           " - see Standard (Strict) mapping definition";
+                    return "Not defined - see Standard (Strict) mapping definition";
                 }
             }
         }
@@ -617,8 +599,7 @@ namespace PCLParaphernalia
             {
                 if (NullMapStd)
                 {
-                    return "Not defined" +
-                           " - see LaserJet mapping definition";
+                    return "Not defined - see LaserJet mapping definition";
                 }
                 else
                 {
@@ -683,28 +664,18 @@ namespace PCLParaphernalia
                         for (int j = 0; j < rowCt; j++)
                         {
                             if (rowId < 0x10)
-                            {
-                                map.Append("0x" + rowId.ToString("X1") +
-                                                                       "0->   ");
-                            }
+                                map.Append("0x" + rowId.ToString("X1") + "0->   ");
                             else
-                            {
-                                map.Append("0x" + rowId.ToString("X3") +
-                                                                       "0-> ");
-                            }
+                                map.Append("0x" + rowId.ToString("X3") + "0-> ");
 
                             cell = rowId * rowLen;
 
                             for (int k = 0; k < rowLen; k++)
                             {
                                 if (cell < rangeMin)
-                                {
                                     map.Append("---- ");
-                                }
                                 else if (cell > rangeMax)
-                                {
                                     map.Append("---- ");
-                                }
                                 else
                                 {
                                     mapVal = _mapDataStd[i][mapIndx];
@@ -835,15 +806,9 @@ namespace PCLParaphernalia
                         for (int j = 0; j < rowCt; j++)
                         {
                             if (rowId < 0x10)
-                            {
-                                crntRow.Append("0x" + rowId.ToString("X1") +
-                                                                            "0->   ");
-                            }
+                                crntRow.Append("0x" + rowId.ToString("X1") + "0->   ");
                             else
-                            {
-                                crntRow.Append("0x" + rowId.ToString("X3") +
-                                                                            "0-> ");
-                            }
+                                crntRow.Append("0x" + rowId.ToString("X3") + "0-> ");
 
                             cell = rowId * rowLen;
 
@@ -927,8 +892,7 @@ namespace PCLParaphernalia
                 if (NullMapPCL)
                 {
                     mapRows = new string[1];
-                    mapRows[0] = "Not defined - see Standard (Strict)" +
-                                  " mapping definition";
+                    mapRows[0] = "Not defined - see Standard (Strict) mapping definition";
                 }
                 else
                 {
@@ -962,8 +926,7 @@ namespace PCLParaphernalia
 
                     for (int i = 0; i < RangeCt; i++)
                     {
-                        rowTot += (RangeData[i][1] >> 4) -
-                                  (RangeData[i][0] >> 4) + 1;
+                        rowTot += (RangeData[i][1] >> 4) - (RangeData[i][0] >> 4) + 1;
 
                         if (i < rangeLastIndx)
                             rowTot++;    // for inter-range gap //
@@ -996,15 +959,9 @@ namespace PCLParaphernalia
                         for (int j = 0; j < rowCt; j++)
                         {
                             if (rowId < 0x10)
-                            {
-                                crntRow.Append("0x" + rowId.ToString("X1") +
-                                                                            "0->   ");
-                            }
+                                crntRow.Append("0x" + rowId.ToString("X1") + "0->   ");
                             else
-                            {
-                                crntRow.Append("0x" + rowId.ToString("X3") +
-                                                                            "0-> ");
-                            }
+                                crntRow.Append("0x" + rowId.ToString("X3") + "0-> ");
 
                             cell = rowId * rowLen;
 
@@ -1080,9 +1037,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    string[] noDiff = new string[1] {
-                        "Not defined" +
-                        " - see Standard (Strict) mapping definition"};
+                    string[] noDiff = new string[1] { "Not defined - see Standard (Strict) mapping definition" };
 
                     return noDiff;
                 }
@@ -1109,8 +1064,7 @@ namespace PCLParaphernalia
                 if (NullMapStd)
                 {
                     mapRows = new string[1];
-                    mapRows[0] = "Not defined - see LaserJet " +
-                                  " mapping definition";
+                    mapRows[0] = "Not defined - see LaserJet mapping definition";
                 }
                 else
                 {
@@ -1178,15 +1132,9 @@ namespace PCLParaphernalia
                         for (int j = 0; j < rowCt; j++)
                         {
                             if (rowId < 0x10)
-                            {
-                                crntRow.Append("0x" + rowId.ToString("X1") +
-                                                                            "0->   ");
-                            }
+                                crntRow.Append("0x" + rowId.ToString("X1") + "0->   ");
                             else
-                            {
-                                crntRow.Append("0x" + rowId.ToString("X3") +
-                                                                            "0-> ");
-                            }
+                                crntRow.Append("0x" + rowId.ToString("X3") + "0-> ");
 
                             cell = rowId * rowLen;
 

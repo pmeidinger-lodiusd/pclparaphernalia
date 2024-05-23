@@ -61,8 +61,7 @@ namespace PCLParaphernalia
                                        bool formAsMacro,
                                        bool incStdPage)
         {
-            const PCLOrientations.Aspect aspectPort
-                    = PCLOrientations.Aspect.Portrait;
+            const PCLOrientations.Aspect aspectPort = PCLOrientations.Aspect.Portrait;
 
             PCLOrientations.Aspect aspect;
 
@@ -75,25 +74,19 @@ namespace PCLParaphernalia
 
             aspect = PCLOrientations.GetAspect(indxOrientation);
 
-            paperLength = PCLPaperSizes.GetPaperLength(indxPaperSize,
-                                                       _unitsPerInch, aspect);
+            paperLength = PCLPaperSizes.GetPaperLength(indxPaperSize, _unitsPerInch, aspect);
 
-            paperWidth = PCLPaperSizes.GetPaperWidth(indxPaperSize,
-                                                     _unitsPerInch, aspect);
+            paperWidth = PCLPaperSizes.GetPaperWidth(indxPaperSize, _unitsPerInch, aspect);
 
-            logXOffset = PCLPaperSizes.GetLogicalOffset(indxPaperSize,
-                                                        _unitsPerInch, aspect);
+            logXOffset = PCLPaperSizes.GetLogicalOffset(indxPaperSize, _unitsPerInch, aspect);
 
-            paperLengthPort = PCLPaperSizes.GetPaperLength(indxPaperSize,
-                                                           _unitsPerInch,
-                                                           aspectPort);
+            paperLengthPort = PCLPaperSizes.GetPaperLength(indxPaperSize, _unitsPerInch, aspectPort);
 
             //----------------------------------------------------------------//
 
             aspect = PCLOrientations.GetAspect(indxOrientation);
 
-            logXOffset = PCLPaperSizes.GetLogicalOffset(indxPaperSize,
-                                                        _unitsPerInch, aspect);
+            logXOffset = PCLPaperSizes.GetLogicalOffset(indxPaperSize, _unitsPerInch, aspect);
 
             //----------------------------------------------------------------//
 
@@ -145,8 +138,7 @@ namespace PCLParaphernalia
 
             if (formAsMacro)
             {
-                GenerateOverlay(prnWriter, true,
-                                paperWidth, paperLength, logXOffset);
+                GenerateOverlay(prnWriter, true, paperWidth, paperLength, logXOffset);
             }
 
             PCLWriter.PageHeader(prnWriter,
@@ -165,8 +157,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void GenerateJobTrailer(BinaryWriter prnWriter,
-                                               bool formAsMacro)
+        private static void GenerateJobTrailer(BinaryWriter prnWriter, bool formAsMacro)
         {
             PCLWriter.StdJobTrailer(prnWriter, formAsMacro, _macroId);
         }
@@ -217,8 +208,7 @@ namespace PCLParaphernalia
 
             if (formAsMacro)
             {
-                PCLWriter.WriteMacroControl(prnWriter, _macroId,
-                                  PCLWriter.MacroControl.StartDef);
+                PCLWriter.WriteMacroControl(prnWriter, _macroId, PCLWriter.MacroControl.StartDef);
             }
 
             //----------------------------------------------------------------//
@@ -236,15 +226,13 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < rulerCellsX; i++)
             {
-                PCLWriter.LineVertical(prnWriter, posX, posY,
-                                       _rulerDiv * 2, stroke);
+                PCLWriter.LineVertical(prnWriter, posX, posY, _rulerDiv * 2, stroke);
 
                 posX += _rulerDiv;
 
                 for (int j = 1; j < _rulerDivPerCell; j++)
                 {
-                    PCLWriter.LineVertical(prnWriter, posX, posY,
-                                           _rulerDiv, stroke);
+                    PCLWriter.LineVertical(prnWriter, posX, posY, _rulerDiv, stroke);
 
                     posX += _rulerDiv;
                 }
@@ -265,15 +253,13 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < rulerCellsY; i++)
             {
-                PCLWriter.LineHorizontal(prnWriter, posX, posY,
-                                         _rulerDiv * 2, stroke);
+                PCLWriter.LineHorizontal(prnWriter, posX, posY, _rulerDiv * 2, stroke);
 
                 posY += _rulerDiv;
 
                 for (int j = 1; j < _rulerDivPerCell; j++)
                 {
-                    PCLWriter.LineHorizontal(prnWriter, posX, posY,
-                                             _rulerDiv, stroke);
+                    PCLWriter.LineHorizontal(prnWriter, posX, posY, _rulerDiv, stroke);
 
                     posY += _rulerDiv;
                 }
@@ -297,49 +283,40 @@ namespace PCLParaphernalia
             ptSize = 10;
             lineInc = (_rulerDiv * 2);
 
-            PCLWriter.Font(prnWriter, true, "19U",
-                      "s1p" + ptSize + "v0s0b16602T");
+            PCLWriter.Font(prnWriter, true, "19U", "s1p" + ptSize + "v0s0b16602T");
 
             posX = (short)(_posXDesc - logXOffset);
             posY = _posYDesc;
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      "Paper size:");
+            PCLWriter.Text(prnWriter, posX, posY, 0, "Paper size:");
 
             posY += lineInc;
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      "Orientation:");
+            PCLWriter.Text(prnWriter, posX, posY, 0, "Orientation:");
 
             posY += lineInc;
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      "Paper width:");
+            PCLWriter.Text(prnWriter, posX, posY, 0, "Paper width:");
 
             posY += lineInc;
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      "Paper length:");
+            PCLWriter.Text(prnWriter, posX, posY, 0, "Paper length:");
 
             posY += lineInc;
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      "Logical page left offset:");
+            PCLWriter.Text(prnWriter, posX, posY, 0, "Logical page left offset:");
 
             posY += lineInc;
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      "Logical page top offset:");
+            PCLWriter.Text(prnWriter, posX, posY, 0, "Logical page top offset:");
 
             posY += lineInc;
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      "Logical page width:");
+            PCLWriter.Text(prnWriter, posX, posY, 0, "Logical page width:");
 
             posY += lineInc;
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      "Logical page height:");
+            PCLWriter.Text(prnWriter, posX, posY, 0, "Logical page height:");
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -392,13 +369,11 @@ namespace PCLParaphernalia
 
             if (formAsMacro)
             {
-                PCLWriter.WriteMacroControl(prnWriter, _macroId,
-                                                   PCLWriter.MacroControl.Call);
+                PCLWriter.WriteMacroControl(prnWriter, _macroId, PCLWriter.MacroControl.Call);
             }
             else
             {
-                GenerateOverlay(prnWriter, false,
-                                            paperWidth, paperLength, logXOffset);
+                GenerateOverlay(prnWriter, false, paperWidth, paperLength, logXOffset);
             }
 
             //----------------------------------------------------------------//
@@ -409,21 +384,18 @@ namespace PCLParaphernalia
 
             ptSize = 15;
 
-            PCLWriter.Font(prnWriter, true, "19U",
-                      "s1p" + ptSize + "v0s0b16602T");
+            PCLWriter.Font(prnWriter, true, "19U", "s1p" + ptSize + "v0s0b16602T");
 
             posX = (short)(_posXDesc - logXOffset);
             posY = _posYHddr;
 
             if (stdPage)
             {
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                          "PCL Standard Logical Page sample");
+                PCLWriter.Text(prnWriter, posX, posY, 0, "PCL Standard Logical Page sample");
             }
             else
             {
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                          "PCL Define Logical Page sample");
+                PCLWriter.Text(prnWriter, posX, posY, 0, "PCL Define Logical Page sample");
             }
 
             //----------------------------------------------------------------//
@@ -435,57 +407,44 @@ namespace PCLParaphernalia
             ptSize = 10;
             lineInc = _rulerDiv * 2;
 
-            PCLWriter.Font(prnWriter, true, "19U",
-                      "s0p" + (120 / ptSize) + "h0s3b4099T");
+            PCLWriter.Font(prnWriter, true, "19U", "s0p" + (120 / ptSize) + "h0s3b4099T");
 
             posX = (short)((_posXDesc + (_rulerCell * 2)) - logXOffset);
             posY = _posYDesc;
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      PCLPaperSizes.GetName(indxPaperSize));
+            PCLWriter.Text(prnWriter, posX, posY, 0, PCLPaperSizes.GetName(indxPaperSize));
+
+            posY += lineInc;
+
+            PCLWriter.Text(prnWriter, posX, posY, 0, PCLOrientations.GetName(indxOrientation));
 
             posY += lineInc;
 
             PCLWriter.Text(prnWriter, posX, posY, 0,
-                      PCLOrientations.GetName(indxOrientation));
+                      (paperWidth * unitsToMilliMetres).ToString("F0") + "mm = " + (paperWidth * unitsToInches).ToString("F2") + "\"");
 
             posY += lineInc;
 
             PCLWriter.Text(prnWriter, posX, posY, 0,
-                      (paperWidth * unitsToMilliMetres).ToString("F0") +
-                      "mm = " +
-                      (paperWidth * unitsToInches).ToString("F2") +
-                      "\"");
-
-            posY += lineInc;
-
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      (paperLength * unitsToMilliMetres).ToString("F0") +
-                      "mm = " +
-                      (paperLength * unitsToInches).ToString("F2") +
-                      "\"");
+                      (paperLength * unitsToMilliMetres).ToString("F0") + "mm = " + (paperLength * unitsToInches).ToString("F2") + "\"");
 
             if (stdPage)
             {
                 posY += lineInc;
 
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                          "standard");
+                PCLWriter.Text(prnWriter, posX, posY, 0, "standard");
 
                 posY += lineInc;
 
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                          "standard");
+                PCLWriter.Text(prnWriter, posX, posY, 0, "standard");
 
                 posY += lineInc;
 
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                          "standard");
+                PCLWriter.Text(prnWriter, posX, posY, 0, "standard");
 
                 posY += lineInc;
 
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                          "standard");
+                PCLWriter.Text(prnWriter, posX, posY, 0, "standard");
 
                 PCLWriter.FormFeed(prnWriter);
             }

@@ -57,8 +57,7 @@ namespace PCLParaphernalia
 
         public static void LoadDataCommon(ref string prnFilename)
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
             const string key = _subKeyTools + "\\" + _subKeyToolsMakeOverlay;
 
@@ -78,9 +77,7 @@ namespace PCLParaphernalia
                     Helper_RegKey.RenameKey(subKey, _subKeyPCL6, _subKeyPCLXL);
                 }
 
-                prnFilename = (string)subKey.GetValue(_namePrnFilename,
-                                                      defWorkFolder + "\\" +
-                                                      _defaultPrnFilename);
+                prnFilename = (string)subKey.GetValue(_namePrnFilename, defWorkFolder + "\\" + _defaultPrnFilename);
             }
         }
 
@@ -98,8 +95,7 @@ namespace PCLParaphernalia
                                         ref bool flagEncapsulated,
                                         ref int macroId)
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
             int tmpInt;
 
@@ -107,24 +103,19 @@ namespace PCLParaphernalia
 
             string defWorkFolder = ToolCommonData.DefWorkFolder;
 
-            key = _subKeyTools + "\\" + _subKeyToolsMakeOverlay +
-                                 "\\" + _subKeyPCL;
+            key = _subKeyTools + "\\" + _subKeyToolsMakeOverlay + "\\" + _subKeyPCL;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                ovlFilename = (string)subKey.GetValue(_nameOvlFilename,
-                                                         defWorkFolder + "\\" +
-                                                         _defaultOvlFilename + ".ovl");
-                macroId = (int)subKey.GetValue(_nameMacroId,
-                                                        _defaultMacroId);
+                ovlFilename = (string)subKey.GetValue(_nameOvlFilename, defWorkFolder + "\\" + _defaultOvlFilename + ".ovl");
 
-                tmpInt = (int)subKey.GetValue(_nameFlagEncapsulated,
-                                                  _flagTrue);
+                macroId = (int)subKey.GetValue(_nameMacroId, _defaultMacroId);
+
+                tmpInt = (int)subKey.GetValue(_nameFlagEncapsulated, _flagTrue);
 
                 flagEncapsulated = tmpInt != _flagFalse;
 
-                tmpInt = (int)subKey.GetValue(_nameFlagRestoreCursor,
-                                                  _flagTrue);
+                tmpInt = (int)subKey.GetValue(_nameFlagRestoreCursor, _flagTrue);
 
                 flagRestoreCursor = tmpInt != _flagFalse;
             }
@@ -144,8 +135,7 @@ namespace PCLParaphernalia
                                         ref bool flagEncapsulated,
                                         ref string streamName)
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
             int tmpInt;
 
@@ -153,24 +143,19 @@ namespace PCLParaphernalia
 
             string defWorkFolder = ToolCommonData.DefWorkFolder;
 
-            key = _subKeyTools + "\\" + _subKeyToolsMakeOverlay +
-                                 "\\" + _subKeyPCLXL;
+            key = _subKeyTools + "\\" + _subKeyToolsMakeOverlay + "\\" + _subKeyPCLXL;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                ovlFilename = (string)subKey.GetValue(_nameOvlFilename,
-                                                        defWorkFolder + "\\" +
-                                                        _defaultOvlFilename + ".ovx");
-                streamName = (string)subKey.GetValue(_nameStreamName,
-                                                        _defaultStreamName);
+                ovlFilename = (string)subKey.GetValue(_nameOvlFilename, defWorkFolder + "\\" + _defaultOvlFilename + ".ovx");
 
-                tmpInt = (int)subKey.GetValue(_nameFlagEncapsulated,
-                                                  _flagTrue);
+                streamName = (string)subKey.GetValue(_nameStreamName, _defaultStreamName);
+
+                tmpInt = (int)subKey.GetValue(_nameFlagEncapsulated, _flagTrue);
 
                 flagEncapsulated = tmpInt != _flagFalse;
 
-                tmpInt = (int)subKey.GetValue(_nameFlagRestoreGS,
-                                                  _flagTrue);
+                tmpInt = (int)subKey.GetValue(_nameFlagRestoreGS, _flagTrue);
 
                 flagRestoreGS = tmpInt != _flagFalse;
             }
@@ -187,15 +172,13 @@ namespace PCLParaphernalia
 
         public static void LoadDataRpt(ref int indxRptFileFmt)
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
             const string key = _subKeyTools + "\\" + _subKeyToolsMakeOverlay;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxRptFileFmt = (int)subKey.GetValue(_nameIndxRptFileFmt,
-                                                         _indexZero);
+                indxRptFileFmt = (int)subKey.GetValue(_nameIndxRptFileFmt, _indexZero);
             }
         }
 
@@ -210,8 +193,7 @@ namespace PCLParaphernalia
 
         public static void SaveDataCommon(string prnFilename)
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
             const string key = _subKeyTools + "\\" + _subKeyToolsMakeOverlay;
 
@@ -219,9 +201,7 @@ namespace PCLParaphernalia
             {
                 if (prnFilename != null)
                 {
-                    subKey.SetValue(_namePrnFilename,
-                                    prnFilename,
-                                    RegistryValueKind.String);
+                    subKey.SetValue(_namePrnFilename, prnFilename, RegistryValueKind.String);
                 }
             }
         }
@@ -240,49 +220,35 @@ namespace PCLParaphernalia
                                         bool flagEncapsulated,
                                         int macroId)
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            const string key = _subKeyTools + "\\" + _subKeyToolsMakeOverlay +
-                                 "\\" + _subKeyPCL;
+            const string key = _subKeyTools + "\\" + _subKeyToolsMakeOverlay + "\\" + _subKeyPCL;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 if (ovlFilename != null)
                 {
-                    subKey.SetValue(_nameOvlFilename,
-                                    ovlFilename,
-                                    RegistryValueKind.String);
+                    subKey.SetValue(_nameOvlFilename, ovlFilename, RegistryValueKind.String);
                 }
 
-                subKey.SetValue(_nameMacroId,
-                                macroId,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameMacroId, macroId, RegistryValueKind.DWord);
 
                 if (flagEncapsulated)
                 {
-                    subKey.SetValue(_nameFlagEncapsulated,
-                                                    _flagTrue,
-                                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagEncapsulated, _flagTrue, RegistryValueKind.DWord);
                 }
                 else
                 {
-                    subKey.SetValue(_nameFlagEncapsulated,
-                                                    _flagFalse,
-                                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagEncapsulated, _flagFalse, RegistryValueKind.DWord);
                 }
 
                 if (flagRestoreCursor)
                 {
-                    subKey.SetValue(_nameFlagRestoreCursor,
-                                                    _flagTrue,
-                                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagRestoreCursor, _flagTrue, RegistryValueKind.DWord);
                 }
                 else
                 {
-                    subKey.SetValue(_nameFlagRestoreCursor,
-                                                    _flagFalse,
-                                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagRestoreCursor, _flagFalse, RegistryValueKind.DWord);
                 }
             }
         }
@@ -301,52 +267,38 @@ namespace PCLParaphernalia
                                         bool flagEncapsulated,
                                         string streamName)
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            const string key = _subKeyTools + "\\" + _subKeyToolsMakeOverlay +
-                                 "\\" + _subKeyPCLXL;
+            const string key = _subKeyTools + "\\" + _subKeyToolsMakeOverlay + "\\" + _subKeyPCLXL;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 if (ovlFilename != null)
                 {
-                    subKey.SetValue(_nameOvlFilename,
-                                    ovlFilename,
-                                    RegistryValueKind.String);
+                    subKey.SetValue(_nameOvlFilename, ovlFilename, RegistryValueKind.String);
                 }
 
                 if (flagEncapsulated)
                 {
-                    subKey.SetValue(_nameFlagEncapsulated,
-                                                    _flagTrue,
-                                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagEncapsulated, _flagTrue, RegistryValueKind.DWord);
                 }
                 else
                 {
-                    subKey.SetValue(_nameFlagEncapsulated,
-                                                    _flagFalse,
-                                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagEncapsulated, _flagFalse, RegistryValueKind.DWord);
                 }
 
                 if (flagRestoreGS)
                 {
-                    subKey.SetValue(_nameFlagRestoreGS,
-                                                    _flagTrue,
-                                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagRestoreGS, _flagTrue, RegistryValueKind.DWord);
                 }
                 else
                 {
-                    subKey.SetValue(_nameFlagRestoreGS,
-                                                    _flagFalse,
-                                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagRestoreGS, _flagFalse, RegistryValueKind.DWord);
                 }
 
                 if (streamName != null)
                 {
-                    subKey.SetValue(_nameStreamName,
-                                     streamName,
-                                     RegistryValueKind.String);
+                    subKey.SetValue(_nameStreamName, streamName, RegistryValueKind.String);
                 }
             }
         }
@@ -362,16 +314,13 @@ namespace PCLParaphernalia
 
         public static void SaveDataRpt(int indxRptFileFmt)
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
 
             const string key = _subKeyTools + "\\" + _subKeyToolsMakeOverlay;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                subKey.SetValue(_nameIndxRptFileFmt,
-                                indxRptFileFmt,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameIndxRptFileFmt, indxRptFileFmt, RegistryValueKind.DWord);
             }
         }
     }

@@ -9,9 +9,7 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.Obfuscation(
-        Feature = "renaming",
-        ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     class PCLPaperSize
     {
@@ -216,17 +214,9 @@ namespace PCLParaphernalia
                 else
                 {
                     if (IsMetricSize)
-                    {
-                        size = (Math.Round(CustomLongEdge *
-                                            _unitsToMilliMetres, 3)).ToString("F0") +
-                                            " mm";
-                    }
+                        size = (Math.Round(CustomLongEdge * _unitsToMilliMetres, 3)).ToString("F0") + " mm";
                     else
-                    {
-                        size = (Math.Round(CustomLongEdge *
-                                            _unitsToInches, 3)).ToString("F3") +
-                                            "\"";
-                    }
+                        size = (Math.Round(CustomLongEdge * _unitsToInches, 3)).ToString("F3") + "\"";
                 }
 
                 return size;
@@ -258,17 +248,9 @@ namespace PCLParaphernalia
                 else
                 {
                     if (IsMetricSize)
-                    {
-                        size = (Math.Round(CustomShortEdge *
-                                            _unitsToMilliMetres, 3)).ToString("F0") +
-                                            " mm";
-                    }
+                        size = (Math.Round(CustomShortEdge * _unitsToMilliMetres, 3)).ToString("F0") + " mm";
                     else
-                    {
-                        size = (Math.Round(CustomShortEdge *
-                                            _unitsToInches, 3)).ToString("F3") +
-                                            "\"";
-                    }
+                        size = (Math.Round(CustomShortEdge * _unitsToInches, 3)).ToString("F3") + "\"";
                 }
 
                 return size;
@@ -302,7 +284,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getDesc()
+        public string GetDesc()
         {
             return _paperSizeDesc;
         }
@@ -316,7 +298,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte getIdPCL()
+        public byte GetIdPCL()
         {
             return _paperSizeIdPCL;
         }
@@ -330,7 +312,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte getIdPCLXL()
+        public byte GetIdPCLXL()
         {
             return _paperSizeIdPCLXL;
         }
@@ -344,8 +326,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort getLogicalOffset(ushort sessionUPI,
-                                       PCLOrientations.Aspect aspect)
+        public ushort GetLogicalOffset(ushort sessionUPI, PCLOrientations.Aspect aspect)
         {
             if (aspect == PCLOrientations.Aspect.Portrait)
                 return (ushort)((_marginsLogicalPort * sessionUPI) / _sizeUnitsPerInch);
@@ -362,21 +343,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort getLogPageLength(ushort sessionUPI,
-                                        PCLOrientations.Aspect aspect)
+        public ushort GetLogPageLength(ushort sessionUPI, PCLOrientations.Aspect aspect)
         {
             if (aspect == PCLOrientations.Aspect.Portrait)
-            {
-                return (ushort)((CustomLongEdge *
-                                 sessionUPI) /
-                                _sizeUnitsPerInch);
-            }
+                return (ushort)((CustomLongEdge * sessionUPI) / _sizeUnitsPerInch);
             else
-            {
-                return (ushort)((CustomShortEdge *
-                                 sessionUPI) /
-                                _sizeUnitsPerInch);
-            }
+                return (ushort)((CustomShortEdge * sessionUPI) / _sizeUnitsPerInch);
         }
 
         //--------------------------------------------------------------------//
@@ -388,20 +360,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort getLogPageWidth(ushort sessionUPI,
-                                       PCLOrientations.Aspect aspect)
+        public ushort GetLogPageWidth(ushort sessionUPI, PCLOrientations.Aspect aspect)
         {
             if (aspect == PCLOrientations.Aspect.Portrait)
             {
-                return (ushort)(((CustomShortEdge - (_marginsLogicalPort * 2)) *
-                                 sessionUPI) /
-                                _sizeUnitsPerInch);
+                return (ushort)(((CustomShortEdge - (_marginsLogicalPort * 2)) * sessionUPI) / _sizeUnitsPerInch);
             }
             else
             {
-                return (ushort)(((CustomLongEdge - (_marginsLogicalPort * 2)) *
-                                 sessionUPI) /
-                                _sizeUnitsPerInch);
+                return (ushort)(((CustomLongEdge - (_marginsLogicalPort * 2)) * sessionUPI) / _sizeUnitsPerInch);
             }
         }
 
@@ -414,10 +381,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort getMarginsLogicalLand(ushort sessionUPI)
+        public ushort GetMarginsLogicalLand(ushort sessionUPI)
         {
-            return (ushort)((_marginsLogicalLand * sessionUPI) /
-                            _sizeUnitsPerInch);
+            return (ushort)((_marginsLogicalLand * sessionUPI) / _sizeUnitsPerInch);
         }
 
         //--------------------------------------------------------------------//
@@ -429,10 +395,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort getMarginsLogicalPort(ushort sessionUPI)
+        public ushort GetMarginsLogicalPort(ushort sessionUPI)
         {
-            return (ushort)((_marginsLogicalPort * sessionUPI) /
-                            _sizeUnitsPerInch);
+            return (ushort)((_marginsLogicalPort * sessionUPI) / _sizeUnitsPerInch);
         }
 
         //--------------------------------------------------------------------//
@@ -445,10 +410,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort getMarginsUnprintable(ushort sessionUPI)
+        public ushort GetMarginsUnprintable(ushort sessionUPI)
         {
-            return (ushort)((_marginsUnprintable * sessionUPI) /
-                            _sizeUnitsPerInch);
+            return (ushort)((_marginsUnprintable * sessionUPI) / _sizeUnitsPerInch);
         }
 
         //--------------------------------------------------------------------//
@@ -460,7 +424,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getName()
+        public string GetName()
         {
             return Name;
         }
@@ -474,7 +438,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getNamePCLXL()
+        public string GetNamePCLXL()
         {
             return _paperSizeNamePCLXL;
         }
@@ -488,8 +452,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort getPaperLength(ushort sessionUPI,
-                                     PCLOrientations.Aspect aspect)
+        public ushort GetPaperLength(ushort sessionUPI, PCLOrientations.Aspect aspect)
         {
             if (aspect == PCLOrientations.Aspect.Portrait)
                 return (ushort)((CustomLongEdge * sessionUPI) / _sizeUnitsPerInch);
@@ -506,8 +469,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort getPaperWidth(ushort sessionUPI,
-                                    PCLOrientations.Aspect aspect)
+        public ushort GetPaperWidth(ushort sessionUPI, PCLOrientations.Aspect aspect)
         {
             if (aspect == PCLOrientations.Aspect.Portrait)
                 return (ushort)((CustomShortEdge * sessionUPI) / _sizeUnitsPerInch);
@@ -524,7 +486,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort getSizeLongEdge(ushort sessionUPI)
+        public ushort GetSizeLongEdge(ushort sessionUPI)
         {
             return (ushort)((CustomLongEdge * sessionUPI) / _sizeUnitsPerInch);
         }
@@ -538,7 +500,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort getSizeShortEdge(ushort sessionUPI)
+        public ushort GetSizeShortEdge(ushort sessionUPI)
         {
             return (ushort)((CustomShortEdge * sessionUPI) / _sizeUnitsPerInch);
         }

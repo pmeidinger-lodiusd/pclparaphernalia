@@ -30,8 +30,7 @@ namespace PCLParaphernalia
 
         private static int _blocksCount;
 
-        private static readonly SortedList<uint, UnicodeBlock> _blocksList =
-              new SortedList<uint, UnicodeBlock>();
+        private static readonly SortedList<uint, UnicodeBlock> _blocksList = new SortedList<uint, UnicodeBlock>();
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

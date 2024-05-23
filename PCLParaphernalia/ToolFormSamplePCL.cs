@@ -31,12 +31,12 @@ namespace PCLParaphernalia
 
         private static readonly string[] macroMethodNames =
         {
-          "Call macro (@ start of page)",
-          "Call macro (@ end of page)",
-          "Execute macro (@ start of page)",
-          "Execute macro (@ end of page)",
-          "Overlay macro (automatic @ end of page)",
-          "Max - invalid"
+            "Call macro (@ start of page)",
+            "Call macro (@ end of page)",
+            "Execute macro (@ start of page)",
+            "Execute macro (@ end of page)",
+            "Overlay macro (automatic @ end of page)",
+            "Max - invalid"
         };
 
         //--------------------------------------------------------------------//
@@ -211,7 +211,7 @@ namespace PCLParaphernalia
                                                 PCLWriter.MacroControl.StartDef);
                     }
 
-                    PCLDownloadMacro.macroFileCopy(prnWriter, formFileMain);
+                    PCLDownloadMacro.MacroFileCopy(prnWriter, formFileMain);
 
                     if (!flagMainEncapsulated)
                     {
@@ -284,7 +284,7 @@ namespace PCLParaphernalia
                                 PCLWriter.MacroControl.StartDef);
                         }
 
-                        PCLDownloadMacro.macroFileCopy(prnWriter, formFileRear);
+                        PCLDownloadMacro.MacroFileCopy(prnWriter, formFileRear);
 
                         if (!flagRearEncapsulated)
                         {
@@ -538,34 +538,29 @@ namespace PCLParaphernalia
 
                     if (flagMainOnPrnDisk)
                     {
-                        PCLWriter.Text(prnWriter, posX, posY, 0,
-                                                            "Main form printer file:");
+                        PCLWriter.Text(prnWriter, posX, posY, 0, "Main form printer file:");
                     }
                     else
                     {
-                        PCLWriter.Text(prnWriter, posX, posY, 0,
-                                                            "Main form download file:");
+                        PCLWriter.Text(prnWriter, posX, posY, 0, "Main form download file:");
                     }
 
                     posY += incPosY;
 
                     if (flagRearOnPrnDisk)
                     {
-                        PCLWriter.Text(prnWriter, posX, posY, 0,
-                                                            "Rear form printer file:");
+                        PCLWriter.Text(prnWriter, posX, posY, 0, "Rear form printer file:");
                     }
                     else
                     {
-                        PCLWriter.Text(prnWriter, posX, posY, 0,
-                                                            "Rear form download file:");
+                        PCLWriter.Text(prnWriter, posX, posY, 0, "Rear form download file:");
                     }
 
                     posY += incPosY;
 
                     if (flagRearForm && flagRearBPlate)
                     {
-                        PCLWriter.Text(prnWriter, posX, posY, 0,
-                                "Rear Form is boilerplate");
+                        PCLWriter.Text(prnWriter, posX, posY, 0, "Rear Form is boilerplate");
                     }
                 }
 
@@ -580,9 +575,7 @@ namespace PCLParaphernalia
                 posX = 1920 - _logPageOffset;
                 posY = 1350;
 
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                                pageNo.ToString() + " of " +
-                                pageCount.ToString());
+                PCLWriter.Text(prnWriter, posX, posY, 0, pageNo.ToString() + " of " + pageCount.ToString());
 
                 if (firstPage)
                 {
@@ -590,28 +583,23 @@ namespace PCLParaphernalia
 
                     posY += incPosY;
 
-                    PCLWriter.Text(prnWriter, posX, posY, 0,
-                                    PCLPaperSizes.GetName(indxPaperSize));
+                    PCLWriter.Text(prnWriter, posX, posY, 0, PCLPaperSizes.GetName(indxPaperSize));
 
                     posY += incPosY;
 
-                    PCLWriter.Text(prnWriter, posX, posY, 0,
-                                    PCLPaperTypes.GetName(indxPaperType));
+                    PCLWriter.Text(prnWriter, posX, posY, 0, PCLPaperTypes.GetName(indxPaperType));
 
                     posY += incPosY;
 
-                    PCLWriter.Text(prnWriter, posX, posY, 0,
-                                    PCLPlexModes.GetName(indxPlexMode));
+                    PCLWriter.Text(prnWriter, posX, posY, 0, PCLPlexModes.GetName(indxPlexMode));
 
                     posY += incPosY;
 
-                    PCLWriter.Text(prnWriter, posX, posY, 0,
-                                    macroMethodNames[(int)indxMethod]);
+                    PCLWriter.Text(prnWriter, posX, posY, 0, macroMethodNames[(int)indxMethod]);
 
                     posY += incPosY;
 
-                    PCLWriter.Text(prnWriter, posX, posY, 0,
-                                    PCLOrientations.GetName(indxOrientation));
+                    PCLWriter.Text(prnWriter, posX, posY, 0, PCLOrientations.GetName(indxOrientation));
 
                     if (flagSimplexJob)
                         textOrientRear = "<not applicable>";
@@ -622,8 +610,7 @@ namespace PCLParaphernalia
 
                     posY += incPosY;
 
-                    PCLWriter.Text(prnWriter, posX, posY, 0,
-                                    textOrientRear);
+                    PCLWriter.Text(prnWriter, posX, posY, 0, textOrientRear);
 
                     posY += incPosY;
 
@@ -640,11 +627,7 @@ namespace PCLParaphernalia
                         }
                         else
                         {
-                            PCLWriter.Text(prnWriter, posX, posY, 0,
-                                                                   formFileMain.Substring(0, halfLen) +
-                                                                   " ... " +
-                                                                   formFileMain.Substring(len - halfLen,
-                                                                                          halfLen));
+                            PCLWriter.Text(prnWriter, posX, posY, 0, formFileMain.Substring(0, halfLen) + " ... " + formFileMain.Substring(len - halfLen, halfLen));
                         }
                     }
 
@@ -663,11 +646,7 @@ namespace PCLParaphernalia
                         }
                         else
                         {
-                            PCLWriter.Text(prnWriter, posX, posY, 0,
-                                                                   formFileRear.Substring(0, halfLen) +
-                                                                   " ... " +
-                                                                   formFileRear.Substring(len - halfLen,
-                                                                                          halfLen));
+                            PCLWriter.Text(prnWriter, posX, posY, 0, formFileRear.Substring(0, halfLen) + " ... " + formFileRear.Substring(len - halfLen, halfLen));
                         }
                     }
                 }

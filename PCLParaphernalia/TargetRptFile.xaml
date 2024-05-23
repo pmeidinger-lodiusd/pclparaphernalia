@@ -128,7 +128,7 @@
                                             Margin="10,35,0,0"
                                             HorizontalAlignment="Left"
                                             VerticalAlignment="Top"
-                                            Click="rbRptFmtHtml_Click"
+                                            Click="RbRptFmtHtml_Click"
                                             Content="html"
                                             GroupName="rptFileFmt" />
 

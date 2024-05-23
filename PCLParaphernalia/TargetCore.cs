@@ -83,19 +83,19 @@ namespace PCLParaphernalia
         {
             int temp = 0;
 
-            TargetPersist.loadDataCommon(ref temp);
+            TargetPersist.LoadDataCommon(ref temp);
 
             if (temp < (int)Target.Max)
                 _targetType = (Target)temp;
             else
                 _targetType = Target.NetPrinter;
 
-            TargetPersist.loadDataNetPrinter(ref _netPrinterAddress,
+            TargetPersist.LoadDataNetPrinter(ref _netPrinterAddress,
                                               ref _netPrinterPort,
                                               ref _netPrinterTimeoutSend,
                                               ref _netPrinterTimeoutReceive);
 
-            TargetPersist.loadDataWinPrinter(ref _winPrinterName);
+            TargetPersist.LoadDataWinPrinter(ref _winPrinterName);
         }
 
         //--------------------------------------------------------------------//
@@ -115,7 +115,7 @@ namespace PCLParaphernalia
 
             if (crntToolId == ToolCommonData.ToolIds.FontSample)
             {
-                ToolFontSamplePersist.loadDataCapture(crntPDL, ref _saveFilename);
+                ToolFontSamplePersist.LoadDataCapture(crntPDL, ref _saveFilename);
             }
             else if (crntToolId == ToolCommonData.ToolIds.FormSample)
             {
@@ -123,23 +123,23 @@ namespace PCLParaphernalia
             }
             else if (crntToolId == ToolCommonData.ToolIds.ImageBitmap)
             {
-                ToolImageBitmapPersist.loadDataCapture(crntPDL, ref _saveFilename);
+                ToolImageBitmapPersist.LoadDataCapture(crntPDL, ref _saveFilename);
             }
             else if (crntToolId == ToolCommonData.ToolIds.PrintArea)
             {
-                ToolPrintAreaPersist.loadDataCapture(crntPDL, ref _saveFilename);
+                ToolPrintAreaPersist.LoadDataCapture(crntPDL, ref _saveFilename);
             }
             else if (crntToolId == ToolCommonData.ToolIds.PrnPrint)
             {
-                ToolPrnPrintPersist.loadDataCapture(crntPDL, ref _saveFilename);
+                ToolPrnPrintPersist.LoadDataCapture(crntPDL, ref _saveFilename);
             }
             else if (crntToolId == ToolCommonData.ToolIds.StatusReadback)
             {
-                ToolStatusReadbackPersist.loadDataCapture(crntPDL, ref _saveFilename);
+                ToolStatusReadbackPersist.LoadDataCapture(crntPDL, ref _saveFilename);
             }
             else if (crntToolId == ToolCommonData.ToolIds.TrayMap)
             {
-                ToolTrayMapPersist.loadDataCapture(crntPDL, ref _saveFilename);
+                ToolTrayMapPersist.LoadDataCapture(crntPDL, ref _saveFilename);
             }
 
             //----------------------------------------------------------------//
@@ -191,15 +191,15 @@ namespace PCLParaphernalia
             if (crntToolId == ToolCommonData.ToolIds.MakeOverlay)
                 ToolMakeOverlayPersist.LoadDataRpt(ref tmpFmt);
             else if (crntToolId == ToolCommonData.ToolIds.PrintLang)
-                ToolPrintLangPersist.loadDataRpt(ref tmpFmt, ref tmpChkMarks, ref _flagOptRptWrap);
+                ToolPrintLangPersist.LoadDataRpt(ref tmpFmt, ref tmpChkMarks, ref _flagOptRptWrap);
             else if (crntToolId == ToolCommonData.ToolIds.PrnAnalyse)
-                ToolPrnAnalysePersist.loadDataRpt(ref tmpFmt);
+                ToolPrnAnalysePersist.LoadDataRpt(ref tmpFmt);
             else if (crntToolId == ToolCommonData.ToolIds.SoftFontGenerate)
                 ToolSoftFontGenPersist.LoadDataRpt(ref tmpFmt, ref tmpChkMarks);
             else if (crntToolId == ToolCommonData.ToolIds.StatusReadback)
-                ToolStatusReadbackPersist.loadDataRpt(ref tmpFmt);
+                ToolStatusReadbackPersist.LoadDataRpt(ref tmpFmt);
             else if (crntToolId == ToolCommonData.ToolIds.SymbolSetGenerate)
-                ToolSymbolSetGenPersist.loadDataRpt(ref tmpFmt);
+                ToolSymbolSetGenPersist.LoadDataRpt(ref tmpFmt);
             else
                 flagNA = true;
 
@@ -315,29 +315,29 @@ namespace PCLParaphernalia
 
             _saveFilename = saveFilename;
 
-            TargetPersist.saveDataCommon((int)_targetType);
+            TargetPersist.SaveDataCommon((int)_targetType);
 
             //----------------------------------------------------------------//
 
             if (crntToolId == ToolCommonData.ToolIds.FontSample)
-                ToolFontSamplePersist.saveDataCapture(crntPDL, saveFilename);
+                ToolFontSamplePersist.SaveDataCapture(crntPDL, saveFilename);
             else if (crntToolId == ToolCommonData.ToolIds.FormSample)
                 ToolFormSamplePersist.saveDataCapture(crntPDL, saveFilename);
             else if (crntToolId == ToolCommonData.ToolIds.ImageBitmap)
-                ToolImageBitmapPersist.saveDataCapture(crntPDL, saveFilename);
+                ToolImageBitmapPersist.SaveDataCapture(crntPDL, saveFilename);
             else if (crntToolId == ToolCommonData.ToolIds.PrintArea)
-                ToolPrintAreaPersist.saveDataCapture(crntPDL, saveFilename);
+                ToolPrintAreaPersist.SaveDataCapture(crntPDL, saveFilename);
             else if (crntToolId == ToolCommonData.ToolIds.PrnPrint)
-                ToolPrnPrintPersist.saveDataCapture(crntPDL, saveFilename);
+                ToolPrnPrintPersist.SaveDataCapture(crntPDL, saveFilename);
             else if (crntToolId == ToolCommonData.ToolIds.StatusReadback)
-                ToolStatusReadbackPersist.saveDataCapture(crntPDL, saveFilename);
+                ToolStatusReadbackPersist.SaveDataCapture(crntPDL, saveFilename);
             else if (crntToolId == ToolCommonData.ToolIds.TrayMap)
-                ToolTrayMapPersist.saveDataCapture(crntPDL, saveFilename);
+                ToolTrayMapPersist.SaveDataCapture(crntPDL, saveFilename);
 
             //----------------------------------------------------------------//
 
             else if (crntToolId == ToolCommonData.ToolIds.MiscSamples)
-                ToolMiscSamplesPersist.saveDataCapture(crntToolSubId, crntPDL, saveFilename);
+                ToolMiscSamplesPersist.SaveDataCapture(crntToolSubId, crntPDL, saveFilename);
 
             //----------------------------------------------------------------//
 
@@ -370,15 +370,15 @@ namespace PCLParaphernalia
             if (crntToolId == ToolCommonData.ToolIds.MakeOverlay)
                 ToolMakeOverlayPersist.SaveDataRpt(tmpFmt);
             else if (crntToolId == ToolCommonData.ToolIds.PrintLang)
-                ToolPrintLangPersist.saveDataRpt(tmpFmt, tmpChkMarks, flagOptRptWrap);
+                ToolPrintLangPersist.SaveDataRpt(tmpFmt, tmpChkMarks, flagOptRptWrap);
             else if (crntToolId == ToolCommonData.ToolIds.PrnAnalyse)
-                ToolPrnAnalysePersist.saveDataRpt(tmpFmt);
+                ToolPrnAnalysePersist.SaveDataRpt(tmpFmt);
             else if (crntToolId == ToolCommonData.ToolIds.SoftFontGenerate)
                 ToolSoftFontGenPersist.SaveDataRpt(tmpFmt, tmpChkMarks);
             else if (crntToolId == ToolCommonData.ToolIds.StatusReadback)
-                ToolStatusReadbackPersist.saveDataRpt(tmpFmt);
+                ToolStatusReadbackPersist.SaveDataRpt(tmpFmt);
             else if (crntToolId == ToolCommonData.ToolIds.SymbolSetGenerate)
-                ToolSymbolSetGenPersist.saveDataRpt(tmpFmt);
+                ToolSymbolSetGenPersist.SaveDataRpt(tmpFmt);
         }
 
         //--------------------------------------------------------------------//
@@ -402,7 +402,7 @@ namespace PCLParaphernalia
             _netPrinterTimeoutSend = netPrinterTimeoutSend;
             _netPrinterTimeoutReceive = netPrinterTimeoutReceive;
 
-            TargetPersist.saveDataNetPrinter((int)_targetType,
+            TargetPersist.SaveDataNetPrinter((int)_targetType,
                                               _netPrinterAddress,
                                               _netPrinterPort,
                                               _netPrinterTimeoutSend,
@@ -424,7 +424,7 @@ namespace PCLParaphernalia
 
             _winPrinterName = printerName;
 
-            TargetPersist.saveDataWinPrinter((int)_targetType,
+            TargetPersist.SaveDataWinPrinter((int)_targetType,
                                               _winPrinterName);
         }
 
@@ -441,7 +441,7 @@ namespace PCLParaphernalia
         {
             _targetType = type;
 
-            TargetPersist.saveDataCommon((int)_targetType);
+            TargetPersist.SaveDataCommon((int)_targetType);
         }
 
         //--------------------------------------------------------------------//
@@ -491,8 +491,7 @@ namespace PCLParaphernalia
                     len = _saveFilename.Length;
 
                     saveDirectory = _saveFilename.Substring(0, ptr);
-                    _crntFilename = _saveFilename.Substring(ptr + 1,
-                                                           len - ptr - 1);
+                    _crntFilename = _saveFilename.Substring(ptr + 1, len - ptr - 1);
                 }
 
                 saveDialog = new SaveFileDialog
@@ -512,8 +511,7 @@ namespace PCLParaphernalia
                     _saveFilename = saveDialog.FileName;
                     _crntFilename = _saveFilename;
 
-                    MetricsSaveFileCapt(crntToolId, crntToolSubId, crntPDL,
-                                         _saveFilename);
+                    MetricsSaveFileCapt(crntToolId, crntToolSubId, crntPDL, _saveFilename);
                 }
             }
             else
@@ -537,9 +535,7 @@ namespace PCLParaphernalia
             }
             catch (IOException e)
             {
-                MessageBox.Show("IO Exception:\r\n" +
-                                 e.Message + "\r\n" +
-                                 "Creating file '" + _crntFilename,
+                MessageBox.Show("IO Exception:\r\n" + e.Message + "\r\n" + "Creating file '" + _crntFilename,
                                  "Target file",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
@@ -576,8 +572,7 @@ namespace PCLParaphernalia
 
                 IPAddress ipAddress = new IPAddress(0x00);
 
-                OK = TargetNetPrint.checkIPAddress(_netPrinterAddress,
-                                                   ref ipAddress);
+                OK = TargetNetPrint.checkIPAddress(_netPrinterAddress, ref ipAddress);
 
                 if (!OK)
                 {
@@ -599,10 +594,9 @@ namespace PCLParaphernalia
                     //                                                    //
                     //----------------------------------------------------//
 
-                    BinaryReader binReader =
-                        new BinaryReader(_binWriter.BaseStream);
+                    BinaryReader binReader = new BinaryReader(_binWriter.BaseStream);
 
-                    TargetNetPrint.sendData(binReader,
+                    TargetNetPrint.SendData(binReader,
                                             _netPrinterAddress,
                                             _netPrinterPort,
                                             _netPrinterTimeoutSend,
@@ -641,9 +635,7 @@ namespace PCLParaphernalia
                 }
                 catch (IOException e)
                 {
-                    MessageBox.Show("IO Exception:\r\n" +
-                                     e.Message + "\r\n" +
-                                     "Deleting file '" + _crntFilename,
+                    MessageBox.Show("IO Exception:\r\n" + e.Message + "\r\n" + "Deleting file '" + _crntFilename,
                                      "Target stream",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
@@ -691,14 +683,8 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            if ((_targetType == Target.NetPrinter) &&
-                (_binWriter != null))
-            {
-                OK = TargetNetPrint.readResponseBlock(offset,
-                                                       bufRem,
-                                                       ref replyData,
-                                                       ref blockLen);
-            }
+            if ((_targetType == Target.NetPrinter) && (_binWriter != null))
+                OK = TargetNetPrint.ReadResponseBlock(offset, bufRem, ref replyData, ref blockLen);
 
             return OK;
         }

@@ -27,10 +27,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLTrayData(short idAutoSelect,
-                           short idDefault,
-                           short idMaximum,
-                           short idNotSet)
+        public PCLTrayData(short idAutoSelect, short idDefault, short idMaximum, short idNotSet)
         {
             _idDefault = idDefault;
             _idAutoSelect = idAutoSelect;
@@ -47,7 +44,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public short getIdAutoSelect()
+        public short GetIdAutoSelect()
         {
             return _idAutoSelect;
         }
@@ -61,7 +58,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public short getIdDefault()
+        public short GetIdDefault()
         {
             return _idDefault;
         }
@@ -75,7 +72,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public short getIdMaximum()
+        public short GetIdMaximum()
         {
             return _idMaximum;
         }
@@ -89,7 +86,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public short getIdNotSet()
+        public short GetIdNotSet()
         {
             return _idNotSet;
         }

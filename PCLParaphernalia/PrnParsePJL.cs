@@ -151,7 +151,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.ContType.PJL;
 
-                _linkData.setBacktrack(contType, -bufRem);
+                _linkData.SetBacktrack(contType, -bufRem);
 
                 commandLen = 0;
             }
@@ -173,7 +173,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool parseBuffer(
+        public bool ParseBuffer(
             byte[] buf,
             ref int fileOffset,
             ref int bufRem,
@@ -206,9 +206,7 @@ namespace PCLParaphernalia
 
             _indxOffsetFormat = _options.IndxGenOffsetFormat;
 
-            _options.getOptCharSet(ref _indxCharSetName,
-                                    ref _indxCharSetSubAct,
-                                    ref _valCharSetSubCode);
+            _options.getOptCharSet(ref _indxCharSetName, ref _indxCharSetSubAct, ref _valCharSetSubCode);
 
             _endOffset = _options.ValCurFOffsetEnd;
 
@@ -216,19 +214,13 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if (linkData.isContinuation())
+            if (linkData.IsContinuation())
             {
-                seqInvalid = parseContinuation(ref bufRem,
-                                                            ref bufOffset,
-                                                            ref crntPDL,
-                                                            ref endReached);
+                seqInvalid = ParseContinuation(ref bufRem, ref bufOffset, ref crntPDL, ref endReached);
             }
             else
             {
-                seqInvalid = parseSequences(ref bufRem,
-                                                         ref bufOffset,
-                                                         ref crntPDL,
-                                                         ref endReached);
+                seqInvalid = ParseSequences(ref bufRem, ref bufOffset, ref crntPDL, ref endReached);
             }
 
             return seqInvalid;
@@ -243,7 +235,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool parseContinuation(
+        private bool ParseContinuation(
             ref int bufRem,
             ref int bufOffset,
             ref ToolCommonData.PrintLang crntPDL,
@@ -262,7 +254,7 @@ namespace PCLParaphernalia
             byte prefixA = 0x00,
                  prefixB = 0x00;
 
-            _linkData.getContData(ref contType,
+            _linkData.GetContData(ref contType,
                                    ref prefixLen,
                                    ref contDataLen,
                                    ref downloadRem,
@@ -288,7 +280,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                _linkData.resetContData();
+                _linkData.ResetContData();
             }
 
             if ((_endOffset != -1) && ((_fileOffset + bufOffset) > _endOffset))
@@ -306,7 +298,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool parseSequences(
+        private bool ParseSequences(
             ref int bufRem,
             ref int bufOffset,
             ref ToolCommonData.PrintLang crntPDL,
@@ -314,8 +306,7 @@ namespace PCLParaphernalia
         {
             long startPos;
 
-            PrnParseConstants.ContType contType =
-                PrnParseConstants.ContType.None;
+            PrnParseConstants.ContType contType = PrnParseConstants.ContType.None;
 
             bool continuation = false;
             bool langSwitch = false;
@@ -400,10 +391,9 @@ namespace PCLParaphernalia
 
                         contType = PrnParseConstants.ContType.PJL;
 
-                        _linkData.setBacktrack(contType, -bufRem);
+                        _linkData.SetBacktrack(contType, -bufRem);
                     }
-                    else if (_ascii.GetString(_buf, bufOffset, _lenPJLIntro)
-                             != "@PJL")
+                    else if (_ascii.GetString(_buf, bufOffset, _lenPJLIntro) != "@PJL")
                     {
                         //----------------------------------------------------//
                         //                                                    //
@@ -415,7 +405,7 @@ namespace PCLParaphernalia
 
                         invalidSeqFound = true;
 
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.Type.MsgWarning,
                             _table,
                             PrnParseConstants.OvlShow.None,
@@ -455,11 +445,7 @@ namespace PCLParaphernalia
                         //                                                             //
                         //-------------------------------------------------------------//
 
-                        badSeq = processPJLCommand(ref bufRem,
-                                                    ref bufOffset,
-                                                    ref continuation,
-                                                    ref langSwitch,
-                                                    ref crntPDL);
+                        badSeq = ProcessPJLCommand(ref bufRem, ref bufOffset, ref continuation, ref langSwitch, ref crntPDL);
 
                         if (badSeq)
                             invalidSeqFound = true;
@@ -519,15 +505,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool processPJLCommand(
+        private bool ProcessPJLCommand(
             ref int bufRem,
             ref int bufOffset,
             ref bool continuation,
             ref bool langSwitch,
             ref ToolCommonData.PrintLang crntPDL)
         {
-            PrnParseConstants.ContType contType =
-                PrnParseConstants.ContType.None;
+            PrnParseConstants.ContType contType = PrnParseConstants.ContType.None;
 
             byte crntByte;
 
@@ -643,7 +628,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.ContType.PJL;
 
-                _linkData.setBacktrack(contType, -bufRem);
+                _linkData.SetBacktrack(contType, -bufRem);
             }
             else
             {
@@ -768,15 +753,11 @@ namespace PCLParaphernalia
 
                 if (commandName?.Length == 0)
                 {
-                    seqKnown = PJLCommands.CheckCmd(PJLCommands.nullCmdKey,
-                                                                     ref desc,
-                                                                     _analysisLevel);
+                    seqKnown = PJLCommands.CheckCmd(PJLCommands.nullCmdKey, ref desc, _analysisLevel);
                 }
                 else
                 {
-                    seqKnown = PJLCommands.CheckCmd(cmd.ToString(),
-                                                                     ref desc,
-                                                                     _analysisLevel);
+                    seqKnown = PJLCommands.CheckCmd(cmd.ToString(), ref desc, _analysisLevel);
                 }
 
                 //------------------------------------------------------------//
@@ -851,15 +832,13 @@ namespace PCLParaphernalia
                 {
                     if (len > _maxPJLLineLen)
                     {
-                        line = commandParams.Substring(lineStart,
-                                                       _maxPJLLineLen);
+                        line = commandParams.Substring(lineStart, _maxPJLLineLen);
                         len -= _maxPJLLineLen;
                         lineStart += _maxPJLLineLen;
                     }
                     else
                     {
-                        line = commandParams.Substring(lineStart,
-                                                       len);
+                        line = commandParams.Substring(lineStart, len);
                         len = 0;
                     }
 
@@ -869,7 +848,7 @@ namespace PCLParaphernalia
 
                         if (!seqKnown)
                         {
-                            PrnParseCommon.addTextRow(
+                            PrnParseCommon.AddTextRow(
                                 PrnParseRowTypes.Type.MsgWarning,
                                 _table,
                                 PrnParseConstants.OvlShow.None,
@@ -881,18 +860,17 @@ namespace PCLParaphernalia
 
                         if (noWhitespace)
                         {
-                            PrnParseCommon.addTextRow(
+                            PrnParseCommon.AddTextRow(
                                 PrnParseRowTypes.Type.MsgWarning,
                                 _table,
                                 PrnParseConstants.OvlShow.None,
                                 string.Empty,
                                 "*** Warning ***",
                                 string.Empty,
-                                "Following PJL command name not terminated" +
-                                " by space or tab character:");
+                                "Following PJL command name not terminated by space or tab character:");
                         }
 
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.Type.PJLCommand,
                             _table,
                             PrnParseConstants.OvlShow.Remove,
@@ -905,7 +883,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.Type.PJLCommand,
                             _table,
                             PrnParseConstants.OvlShow.Remove,
@@ -927,7 +905,7 @@ namespace PCLParaphernalia
                 if ((commandName.Length == 5)
                             &&
                     (commandName.Substring(0, 5) == "ENTER")
-                            &&
+        &&
                     (commandParams.Length > 9)
                             &&
                     (commandParams.Substring(0, 9) == "LANGUAGE="))
@@ -952,27 +930,27 @@ namespace PCLParaphernalia
                         crntPDL = ToolCommonData.PrintLang.PCLXL;
                     }
                     else if ((langLen >= 7) &&
-                                                 (lang.Substring(0, 7) == "PCL3GUI"))
+                             (lang.Substring(0, 7) == "PCL3GUI"))
                     {
                         crntPDL = ToolCommonData.PrintLang.PCL3GUI;
                     }
                     else if ((langLen >= 3) &&
-                                                 (lang.Substring(0, 3) == "PCL"))
+                             (lang.Substring(0, 3) == "PCL"))
                     {
                         crntPDL = ToolCommonData.PrintLang.PCL;
                     }
                     else if ((langLen >= 10) &&
-                                                 (lang.Substring(0, 10) == "POSTSCRIPT"))
+                             (lang.Substring(0, 10) == "POSTSCRIPT"))
                     {
                         crntPDL = ToolCommonData.PrintLang.PostScript;
                     }
                     else if ((langLen >= 4) &&
-                                                 (lang.Substring(0, 4) == "HPGL"))
+                             (lang.Substring(0, 4) == "HPGL"))
                     {
                         crntPDL = ToolCommonData.PrintLang.HPGL2;
                     }
                     else if ((langLen >= 5) &&
-                                                 (lang.Substring(0, 5) == "XL2HB"))
+                             (lang.Substring(0, 5) == "XL2HB"))
                     {
                         crntPDL = ToolCommonData.PrintLang.XL2HB;
                     }
@@ -982,13 +960,9 @@ namespace PCLParaphernalia
                     }
                 }
                 else if (_showPML &&
-                         (((commandName.Length == 5)
-                            &&
-                           (commandName.Substring(0, 5) == "DMCMD"))
+                         (((commandName.Length == 5) && (commandName.Substring(0, 5) == "DMCMD"))
                             ||
-                          ((commandName.Length == 6)
-                            &&
-                           (commandName.Substring(0, 6) == "DMINFO"))))
+                          ((commandName.Length == 6) && (commandName.Substring(0, 6) == "DMINFO"))))
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -996,9 +970,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    if ((commandParams.Length > 9)
-                            &&
-                        (commandParams.Substring(0, 9) == "ASCIIHEX="))
+                    if ((commandParams.Length > 9) && (commandParams.Substring(0, 9) == "ASCIIHEX="))
                     {
                         //----------------------------------------------------//
                         //                                                    //
@@ -1018,7 +990,7 @@ namespace PCLParaphernalia
                         if (seqLen > 0)
                         {
                             invalidSeqFound =
-                                parsePML.processPMLASCIIHex(_buf,
+                                parsePML.ProcessPMLASCIIHex(_buf,
                                                             _fileOffset,
                                                             seqLen,
                                                             quoteStart + 1,

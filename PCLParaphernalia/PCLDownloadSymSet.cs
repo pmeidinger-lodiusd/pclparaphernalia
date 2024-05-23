@@ -43,7 +43,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkSymSetFile(
+        public static bool CheckSymSetFile(
             string filename,
             ref ushort symSetNo,
             ref ushort firstCode,
@@ -63,14 +63,13 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            fileOpen = symSetFileOpen(filename, ref fileSize);
+            fileOpen = SymSetFileOpen(filename, ref fileSize);
 
             if (!fileOpen)
             {
                 flagOK = false;
 
-                MessageBox.Show("Unable to open symbol set definition" +
-                                 " file '" + filename + "'",
+                MessageBox.Show("Unable to open symbol set definition file '" + filename + "'",
                                  "Symbol Set file invalid",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
@@ -80,9 +79,7 @@ namespace PCLParaphernalia
                 firstCode = 0;
                 lastCode = 0;
 
-                flagOK = readSymSetId(fileSize,
-                                       ref offset,
-                                       ref symSetNo);
+                flagOK = ReadSymSetId(fileSize, ref offset, ref symSetNo);
                 if (!flagOK)
                 {
                     MessageBox.Show("Symbol set definition" +
@@ -98,7 +95,7 @@ namespace PCLParaphernalia
                     byte symSetFormat = 0;
                     byte symSetTypeId = 0;
 
-                    flagOK = readSymSetHddr(filename,
+                    flagOK = ReadSymSetHddr(filename,
                                              fileSize,
                                              symSetNo,
                                              ref symSetFormat,
@@ -118,7 +115,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        flagOK = readAndStoreSymSetMap(offset,
+                        flagOK = ReadAndStoreSymSetMap(offset,
                                                         symSetNo,
                                                         firstCode,
                                                         lastCode);
@@ -139,7 +136,7 @@ namespace PCLParaphernalia
                     }
                 }
 
-                symSetFileClose();
+                SymSetFileClose();
             }
 
             return flagOK;
@@ -156,9 +153,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool readSymSetId(long fileSize,
-                                             ref long fileOffset,
-                                             ref ushort symSetId)
+        private static bool ReadSymSetId(long fileSize, ref long fileOffset, ref ushort symSetId)
         {
             const int prefixLen = 3;
 
@@ -195,9 +190,7 @@ namespace PCLParaphernalia
                 if (fileSize <= maxPos)
                     maxPos = (int)(fileSize - 1);
 
-                for (pos = offset;
-                     flagOK && (!foundTerm) && (pos < maxPos);
-                     pos++)
+                for (pos = offset; flagOK && (!foundTerm) && (pos < maxPos); pos++)
                 {
                     x = _binReader.ReadByte();
 
@@ -231,7 +224,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool readSymSetHddr(string fileName,
+        private static bool ReadSymSetHddr(string fileName,
                                                long fileSize,
                                                ushort symSetNo,
                                                ref byte format,
@@ -282,9 +275,7 @@ namespace PCLParaphernalia
                 if (fileSize <= maxPos)
                     maxPos = (int)(fileSize - 1);
 
-                for (pos = offset;
-                     flagOK && (!foundTerm) && (pos < maxPos);
-                     pos++)
+                for (pos = offset; flagOK && (!foundTerm) && (pos < maxPos); pos++)
                 {
                     x = _binReader.ReadByte();
 
@@ -318,9 +309,7 @@ namespace PCLParaphernalia
             if (!flagOK)
             {
                 MessageBox.Show(messHeader +
-                                "File does not start with a valid escape" +
-                                " sequence in the format <esc>(f#W" +
-                                " (where # is a numeric value)." +
+                                "File does not start with a valid escape sequence in the format <esc>(f#W (where # is a numeric value)." +
                                 messTrailer,
                                 "PCL symbol set file",
                                 MessageBoxButton.OK,
@@ -470,10 +459,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool readAndStoreSymSetMap(long mapOffset,
-                                                      ushort symSetNo,
-                                                      ushort firstCode,
-                                                      ushort lastCode)
+        private static bool ReadAndStoreSymSetMap(long mapOffset, ushort symSetNo, ushort firstCode, ushort lastCode)
         {
             const int rangeC1Min = 0x80;
             const int rangeC1Max = 0x9f;
@@ -552,7 +538,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void symSetFileClose()
+        private static void SymSetFileClose()
         {
             _binReader.Close();
             _ipStream.Close();
@@ -567,8 +553,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool symSetFileCopy(BinaryWriter prnWriter,
-                                             string filename)
+        public static bool SymSetFileCopy(BinaryWriter prnWriter, string filename)
         {
             bool OK = true;
 
@@ -576,7 +561,7 @@ namespace PCLParaphernalia
 
             long fileSize = 0;
 
-            fileOpen = symSetFileOpen(filename, ref fileSize);
+            fileOpen = SymSetFileOpen(filename, ref fileSize);
 
             if (!fileOpen)
             {
@@ -603,7 +588,7 @@ namespace PCLParaphernalia
                         prnWriter.Write(buf, 0, readSize);
                 }
 
-                symSetFileClose();
+                SymSetFileClose();
             }
 
             return OK;
@@ -618,8 +603,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool symSetFileOpen(string fileName,
-                                              ref long fileSize)
+        private static bool SymSetFileOpen(string fileName, ref long fileSize)
         {
             bool open = false;
 
@@ -644,10 +628,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                _ipStream = File.Open(fileName,
-                                      FileMode.Open,
-                                      FileAccess.Read,
-                                      FileShare.None);
+                _ipStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.None);
 
                 if (_ipStream != null)
                 {

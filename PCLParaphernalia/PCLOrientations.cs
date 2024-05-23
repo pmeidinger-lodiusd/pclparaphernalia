@@ -59,8 +59,7 @@ namespace PCLParaphernalia
                                (byte)PCLXLAttrEnums.Val.eReverseLandscape)
         };
 
-        private static readonly int _orientationCount =
-            _orientations.GetUpperBound(0) + 1;
+        private static readonly int _orientationCount = _orientations.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -73,7 +72,7 @@ namespace PCLParaphernalia
 
         public static Aspect GetAspect(int index)
         {
-            return _orientations[index].getAspect();
+            return _orientations[index].GetAspect();
         }
 
         //--------------------------------------------------------------------//
@@ -101,7 +100,7 @@ namespace PCLParaphernalia
 
         public static byte GetIdPCL(int index)
         {
-            return _orientations[index].getIdPCL();
+            return _orientations[index].GetIdPCL();
         }
 
         //--------------------------------------------------------------------//
@@ -115,7 +114,7 @@ namespace PCLParaphernalia
 
         public static byte GetIdPCLXL(int index)
         {
-            return _orientations[index].getIdPCLXL();
+            return _orientations[index].GetIdPCLXL();
         }
 
         //--------------------------------------------------------------------//
@@ -129,7 +128,7 @@ namespace PCLParaphernalia
 
         public static string GetName(int index)
         {
-            return _orientations[index].getName();
+            return _orientations[index].GetName();
         }
 
         //--------------------------------------------------------------------//
@@ -144,7 +143,7 @@ namespace PCLParaphernalia
 
         public static bool IsLandscape(int index)
         {
-            return _orientations[index].getAspect() == Aspect.Landscape;
+            return _orientations[index].GetAspect() == Aspect.Landscape;
         }
     }
 }

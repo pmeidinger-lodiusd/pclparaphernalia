@@ -16,8 +16,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2013</para>
     ///
     /// </summary>
-    [System.Reflection.Obfuscation(Feature = "renaming",
-                                            ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     public partial class ToolXXXDiags : Window
     {

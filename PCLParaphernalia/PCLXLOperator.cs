@@ -9,9 +9,7 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.Obfuscation(
-        Feature = "renaming",
-        ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     class PCLXLOperator
     {
@@ -44,7 +42,7 @@ namespace PCLParaphernalia
             FlagReserved = flagReserved;
             EmbedDataType = embedDataType;
             Description = description;
-            this.makeOvlAct = makeOvlAct;
+            this.MakeOvlAct = makeOvlAct;
 
             _statsCtParent = 0;
             _statsCtChild = 0;
@@ -56,17 +54,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getDetails(
-            ref bool flagEndSession,
-            ref bool flagReserved,
-            ref PCLXLOperators.EmbedDataType embedDataType,
-            ref PrnParseConstants.OvlAct makeOvlAct,
-            ref string description)
+        public void GetDetails(ref bool flagEndSession,
+                                ref bool flagReserved,
+                                ref PCLXLOperators.EmbedDataType embedDataType,
+                                ref PrnParseConstants.OvlAct makeOvlAct,
+                                ref string description)
         {
             flagEndSession = FlagEndSession;
             flagReserved = FlagReserved;
             embedDataType = EmbedDataType;
-            makeOvlAct = this.makeOvlAct;
+            makeOvlAct = this.MakeOvlAct;
             description = Description;
         }
 
@@ -111,7 +108,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void incrementStatisticsCount(int level)
+        public void IncrementStatisticsCount(int level)
         {
             if (level == 0)
                 _statsCtParent++;
@@ -125,7 +122,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.OvlAct makeOvlAct { get; }
+        public PrnParseConstants.OvlAct MakeOvlAct { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -136,7 +133,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetStatistics()
+        public void ResetStatistics()
         {
             _statsCtParent = 0;
             _statsCtChild = 0;

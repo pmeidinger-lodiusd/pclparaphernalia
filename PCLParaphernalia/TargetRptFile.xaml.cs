@@ -11,8 +11,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2017</para>
     ///
     /// </summary>
-    [System.Reflection.Obfuscation(Feature = "renaming",
-                                            ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     public partial class TargetRptFile : Window
     {
@@ -74,7 +73,7 @@ namespace PCLParaphernalia
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            metricsSave();
+            MetricsSave();
 
             DialogResult = true;
         }
@@ -88,8 +87,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkRptOptWrap_Checked(object sender,
-                                            RoutedEventArgs e)
+        private void chkRptOptWrap_Checked(object sender, RoutedEventArgs e)
         {
             _flagOptRptWrap = true;
         }
@@ -103,8 +101,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkRptOptWrap_Unchecked(object sender,
-                                              RoutedEventArgs e)
+        private void chkRptOptWrap_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagOptRptWrap = false;
         }
@@ -258,10 +255,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsSave()
+        private void MetricsSave()
         {
-            TargetCore.MetricsSaveFileRpt(_crntToolId, _rptFileFmt,
-                                           _rptChkMarks, _flagOptRptWrap);
+            TargetCore.MetricsSaveFileRpt(_crntToolId, _rptFileFmt, _rptChkMarks, _flagOptRptWrap);
         }
 
         //--------------------------------------------------------------------//
@@ -273,8 +269,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbRptFmtHtml_Click(object sender,
-                                         RoutedEventArgs e)
+        private void RbRptFmtHtml_Click(object sender, RoutedEventArgs e)
         {
             _rptFileFmt = ReportCore.RptFileFmt.html;
         }
@@ -288,8 +283,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbRptFmtText_Click(object sender,
-                                         RoutedEventArgs e)
+        private void rbRptFmtText_Click(object sender, RoutedEventArgs e)
         {
             _rptFileFmt = ReportCore.RptFileFmt.text;
         }
@@ -303,8 +297,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbRptFmtXml_Click(object sender,
-                                        RoutedEventArgs e)
+        private void rbRptFmtXml_Click(object sender, RoutedEventArgs e)
         {
             _rptFileFmt = ReportCore.RptFileFmt.xml;
         }
@@ -319,8 +312,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbRptChkMarksBoxSym_Click(object sender,
-                                                RoutedEventArgs e)
+        private void rbRptChkMarksBoxSym_Click(object sender, RoutedEventArgs e)
         {
             _rptChkMarks = ReportCore.RptChkMarks.boxsym;
         }
@@ -335,8 +327,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbRptChkMarksText_Click(object sender,
-                                              RoutedEventArgs e)
+        private void rbRptChkMarksText_Click(object sender, RoutedEventArgs e)
         {
             _rptChkMarks = ReportCore.RptChkMarks.text;
         }
@@ -351,8 +342,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbRptChkMarksTxtSym_Click(object sender,
-                                                RoutedEventArgs e)
+        private void rbRptChkMarksTxtSym_Click(object sender, RoutedEventArgs e)
         {
             _rptChkMarks = ReportCore.RptChkMarks.txtsym;
         }

@@ -50,8 +50,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ToolSoftFontGenPCL(DataTable tableLog,
-                                   ToolSoftFontGenTTF ttfHandler)
+        public ToolSoftFontGenPCL(DataTable tableLog, ToolSoftFontGenTTF ttfHandler)
         {
             _baseHandler = new ToolSoftFontGenPCLCommon();
 
@@ -69,7 +68,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool generateFont(ref string pclFilename,
+        public bool GenerateFont(ref string pclFilename,
                                      ref bool monoSpaced,
                                      bool symbolMapping,
                                      bool fmt16,
@@ -95,7 +94,7 @@ namespace PCLParaphernalia
             else
                 useVMetrics = false;
 
-            _baseHandler.initialise(_ttfHandler);
+            _baseHandler.Initialise(_ttfHandler);
 
             _symbolMapping = symbolMapping;
 
@@ -107,7 +106,7 @@ namespace PCLParaphernalia
 
             try
             {
-                flagOK = _baseHandler.streamOpen(ref pclFilename,
+                flagOK = _baseHandler.StreamOpen(ref pclFilename,
                                          false,
                                          ref _binWriter,
                                          ref _opStream);
@@ -184,9 +183,9 @@ namespace PCLParaphernalia
                     //--------------------------------------------------------//
 
                     if (glyphZeroExists)
-                        writeChar(0xffff, 0, 0, 0, maxGlyphId);
+                        WriteChar(0xffff, 0, 0, 0, maxGlyphId);
 
-                    writeCharSet(maxGlyphId, sizeCharSet, symSetUnbound);
+                    WriteCharSet(maxGlyphId, sizeCharSet, symSetUnbound);
 
                     //--------------------------------------------------------//
                     //                                                        //
@@ -223,7 +222,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private byte lsByte(ushort value)
+        private byte LsByte(ushort value)
         {
             return (byte)(value & 0x00ff);
         }
@@ -238,7 +237,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private ushort lsUInt16(uint value)
+        private ushort LsUInt16(uint value)
         {
             return (ushort)(value & 0x0000ffff);
         }
@@ -268,7 +267,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private ushort msUInt16(uint value)
+        private ushort MsUInt16(uint value)
         {
             return (ushort)((value & 0xffff0000) >> 16);
         }
@@ -291,7 +290,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void writeChar(ushort charCode,
+        private void WriteChar(ushort charCode,
                                 ushort codepoint,
                                 ushort glyphId,
                                 ushort depth,
@@ -373,8 +372,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            charBlockSize = (ushort)(cSizeCharHddr + cSizeCharGlyphHddr +
-                                      glyphLength + cSizeCharTrail);
+            charBlockSize = (ushort)(cSizeCharHddr + cSizeCharGlyphHddr + glyphLength + cSizeCharTrail);
 
             PCLWriter.CharDownloadCode(_binWriter, charCode);
 
@@ -393,7 +391,7 @@ namespace PCLParaphernalia
             charHddr[2] = 2;                   // Descriptor size
             charHddr[3] = 15;                  // Class = 15
 
-            _baseHandler.writeBuffer(cSizeCharHddr, charHddr);
+            _baseHandler.WriteBuffer(cSizeCharHddr, charHddr);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -407,13 +405,11 @@ namespace PCLParaphernalia
             charDataSize = (ushort)(cSizeCharGlyphHddr + glyphLength);
 
             charGlyphHddr[0] = msByte(charDataSize);
-            charGlyphHddr[1] = lsByte(charDataSize);
+            charGlyphHddr[1] = LsByte(charDataSize);
             charGlyphHddr[2] = msByte(glyphId);
-            charGlyphHddr[3] = lsByte(glyphId);
+            charGlyphHddr[3] = LsByte(glyphId);
 
-            _baseHandler.writeCharFragment(cSizeCharGlyphHddr,
-                                            charGlyphHddr,
-                                            ref checksumMod256);
+            _baseHandler.WriteCharFragment(cSizeCharGlyphHddr, charGlyphHddr, ref checksumMod256);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -432,14 +428,10 @@ namespace PCLParaphernalia
 
                 glyphData = new byte[glyphLength];
 
-                flagOK = _ttfHandler.ReadByteArray((int)glyphOffset,
-                                                    (int)glyphLength,
-                                                    ref glyphData);
+                flagOK = _ttfHandler.ReadByteArray((int)glyphOffset, (int)glyphLength, ref glyphData);
                 // TODO: what if flagOK = true (i.e. read fails?
 
-                _baseHandler.writeCharFragment((int)glyphLength,
-                                                glyphData,
-                                                ref checksumMod256);
+                _baseHandler.WriteCharFragment((int)glyphLength, glyphData, ref checksumMod256);
             }
 
             //----------------------------------------------------------------//
@@ -453,7 +445,7 @@ namespace PCLParaphernalia
             charTrail[0] = 0;                  // Reserved byte
             charTrail[1] = checksumMod256;     // Checksum byte
 
-            _baseHandler.writeBuffer(cSizeCharTrail, charTrail);
+            _baseHandler.WriteBuffer(cSizeCharTrail, charTrail);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -483,7 +475,7 @@ namespace PCLParaphernalia
                     {
                         // flagOK = false;
 
-                        ToolSoftFontGenLog.logError(
+                        ToolSoftFontGenLog.LogError(
                             _tableLog, MessageBoxImage.Error,
                             "Composite glyph identifier " + glyphCompId +
                             " > maximum of " + maxGlyphId);
@@ -510,7 +502,7 @@ namespace PCLParaphernalia
                         else
                         {
                             // flagOK = 
-                            writeChar(0xffff, 0, glyphCompId,
+                            WriteChar(0xffff, 0, glyphCompId,
                                        (ushort)(depth + 1), maxGlyphId);
                         }
                     }
@@ -519,8 +511,7 @@ namespace PCLParaphernalia
                     {
                         indBuf += 4;
 
-                        if ((glyphCompFlags &
-                            ToolSoftFontGenTTF.mask_glyf_compFlag_ARG_1_AND_2_ARE_WORDS) != 0)
+                        if ((glyphCompFlags & ToolSoftFontGenTTF.mask_glyf_compFlag_ARG_1_AND_2_ARE_WORDS) != 0)
                         {
                             indBuf += 4;
                         }
@@ -529,24 +520,20 @@ namespace PCLParaphernalia
                             indBuf += 2;
                         }
 
-                        if ((glyphCompFlags &
-                            ToolSoftFontGenTTF.mask_glyf_compFlag_WE_HAVE_A_TWO_BY_TWO) != 0)
+                        if ((glyphCompFlags & ToolSoftFontGenTTF.mask_glyf_compFlag_WE_HAVE_A_TWO_BY_TWO) != 0)
                         {
                             indBuf += 8;
                         }
-                        else if ((glyphCompFlags &
-                                                    ToolSoftFontGenTTF.mask_glyf_compFlag_WE_HAVE_AN_X_AND_Y_SCALE) != 0)
+                        else if ((glyphCompFlags & ToolSoftFontGenTTF.mask_glyf_compFlag_WE_HAVE_AN_X_AND_Y_SCALE) != 0)
                         {
                             indBuf += 4;
                         }
-                        else if ((glyphCompFlags &
-                                                    ToolSoftFontGenTTF.mask_glyf_compFlag_WE_HAVE_A_SCALE) != 0)
+                        else if ((glyphCompFlags & ToolSoftFontGenTTF.mask_glyf_compFlag_WE_HAVE_A_SCALE) != 0)
                         {
                             indBuf += 2;
                         }
                     }
-                } while ((glyphCompFlags &
-                            ToolSoftFontGenTTF.mask_glyf_compFlag_MORE_COMPONENTS) != 0);
+                } while ((glyphCompFlags & ToolSoftFontGenTTF.mask_glyf_compFlag_MORE_COMPONENTS) != 0);
             }
         }
 
@@ -563,9 +550,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void writeCharSet(ushort maxGlyphId,
-                                   int sizeCharSet,
-                                   bool symSetUnbound)
+        private void WriteCharSet(ushort maxGlyphId, int sizeCharSet, bool symSetUnbound)
         {
             bool glyphExists = false;
 
@@ -587,13 +572,11 @@ namespace PCLParaphernalia
             {
                 ushort charCode = (ushort)i;
 
-                glyphExists = _ttfHandler.GetCharData(charCode,
-                                                       ref codepoint,
-                                                       ref glyphId);
+                glyphExists = _ttfHandler.GetCharData(charCode, ref codepoint, ref glyphId);
 
                 if (glyphExists)
                 {
-                    writeChar(charCode, codepoint, glyphId, 0, maxGlyphId);
+                    WriteChar(charCode, codepoint, glyphId, 0, maxGlyphId);
                 }
                 else if (!symSetUnbound)
                 {
@@ -635,10 +618,7 @@ namespace PCLParaphernalia
                     */
                     else
                     {
-                        ToolSoftFontGenLog.logMissingChar(
-                            _tableLog,
-                            charCode,
-                            codepoint);
+                        ToolSoftFontGenLog.LogMissingChar(_tableLog, charCode, codepoint);
                     }
                 }
             }
@@ -765,7 +745,7 @@ namespace PCLParaphernalia
             convTextLen = conversionText.Length;
 
             hddrLen = cSizeHddrDesc +
-                      _baseHandler.getHddrSegmentsLen(
+                      _baseHandler.GetHddrSegmentsLen(
                             false,
                             fmt16,
                             glyphZeroExists,
@@ -797,7 +777,7 @@ namespace PCLParaphernalia
                 //------------------------------------------------------------//
 
                 hddrDesc[0] = msByte(cSizeHddrDesc);
-                hddrDesc[1] = lsByte(cSizeHddrDesc);
+                hddrDesc[1] = LsByte(cSizeHddrDesc);
 
                 hddrDesc[2] = fontFormat;          // Font Format
                 hddrDesc[3] = fontType;            // Font Type
@@ -806,23 +786,23 @@ namespace PCLParaphernalia
                 hddrDesc[6] = 0;                   // Baseline Position MSB
                 hddrDesc[7] = 0;                   // Baseline Position LSB
                 hddrDesc[8] = msByte(cellWidth);  // Cell width MSB
-                hddrDesc[9] = lsByte(cellWidth);  // Cell Width LSB
+                hddrDesc[9] = LsByte(cellWidth);  // Cell Width LSB
                 hddrDesc[10] = msByte(cellHeight); // Cell Height MSB
-                hddrDesc[11] = lsByte(cellHeight); // Cell Height LSB
+                hddrDesc[11] = LsByte(cellHeight); // Cell Height LSB
                 hddrDesc[12] = 0;                   // Orientation
                 hddrDesc[13] = fontSpacing;         // Spacing
                 hddrDesc[14] = msByte(symSet);     // Symbol Set MSB
-                hddrDesc[15] = lsByte(symSet);     // Symbol Set LSB
+                hddrDesc[15] = LsByte(symSet);     // Symbol Set LSB
                 hddrDesc[16] = msByte(pitch);      // Pitch MSB
-                hddrDesc[17] = lsByte(pitch);      // Pitch LSB
+                hddrDesc[17] = LsByte(pitch);      // Pitch LSB
                 hddrDesc[18] = 0;                   // Height MSB
                 hddrDesc[19] = 0;                   // Height LSB
                 hddrDesc[20] = msByte(xHeight);    // xHeight MSB
                 hddrDesc[21] = msByte(xHeight);    // xHeight LSB
                 hddrDesc[22] = (byte)widthType;    // Width Type
-                hddrDesc[23] = lsByte(style);      // Style LSB
+                hddrDesc[23] = LsByte(style);      // Style LSB
                 hddrDesc[24] = (byte)strokeWeight; // Stroke Weight
-                hddrDesc[25] = lsByte(typeface);   // Typeface LSB
+                hddrDesc[25] = LsByte(typeface);   // Typeface LSB
                 hddrDesc[26] = msByte(typeface);   // Typeface MSB
                 hddrDesc[27] = serifStyle;          // Serif Style
                 hddrDesc[28] = 2;                   // Quality = Letter
@@ -830,21 +810,21 @@ namespace PCLParaphernalia
                 hddrDesc[30] = 0;                   // Underline Position
                 hddrDesc[31] = 0;                   // Underline Thickness
                 hddrDesc[32] = msByte(textHeight); // Text Height MSB
-                hddrDesc[33] = lsByte(textHeight); // Text Height LSB
+                hddrDesc[33] = LsByte(textHeight); // Text Height LSB
                 hddrDesc[34] = msByte(textWidth);  // Text Width MSB
-                hddrDesc[35] = lsByte(textWidth);  // Text Width LSB
+                hddrDesc[35] = LsByte(textWidth);  // Text Width LSB
                 hddrDesc[36] = msByte(firstCode);  // First Code MSB
-                hddrDesc[37] = lsByte(firstCode);  // First Code LSB
+                hddrDesc[37] = LsByte(firstCode);  // First Code LSB
                 hddrDesc[38] = msByte(lastCode);   // Last Code MSB
-                hddrDesc[39] = lsByte(lastCode);   // Last Code LSB
+                hddrDesc[39] = LsByte(lastCode);   // Last Code LSB
                 hddrDesc[40] = 0;                   // Pitch Extended
                 hddrDesc[41] = 0;                   // Height Extended
                 hddrDesc[42] = msByte(capHeight);  // Cap Height MSB
-                hddrDesc[43] = lsByte(capHeight);  // Cap Height LSB
-                hddrDesc[44] = msByte(msUInt16(fontNo));  // Font No. byte 0
-                hddrDesc[45] = lsByte(msUInt16(fontNo));  // Font No. byte 1
-                hddrDesc[46] = msByte(lsUInt16(fontNo));  // Font No. byte 2
-                hddrDesc[47] = lsByte(lsUInt16(fontNo));  // Font No. byte 3
+                hddrDesc[43] = LsByte(capHeight);  // Cap Height LSB
+                hddrDesc[44] = msByte(MsUInt16(fontNo));  // Font No. byte 0
+                hddrDesc[45] = LsByte(MsUInt16(fontNo));  // Font No. byte 1
+                hddrDesc[46] = msByte(LsUInt16(fontNo));  // Font No. byte 2
+                hddrDesc[47] = LsByte(LsUInt16(fontNo));  // Font No. byte 3
                 hddrDesc[48] = fontNamePCLT[0];     // Font Name byte 0
                 hddrDesc[49] = fontNamePCLT[1];     // Font Name byte 1
                 hddrDesc[50] = fontNamePCLT[2];     // Font Name byte 2
@@ -862,15 +842,15 @@ namespace PCLParaphernalia
                 hddrDesc[62] = fontNamePCLT[14];    // Font Name byte 14
                 hddrDesc[63] = fontNamePCLT[15];    // Font Name byte 15
                 hddrDesc[64] = msByte(unitsPerEm); // Scale Factor MSB
-                hddrDesc[65] = lsByte(unitsPerEm); // Scale Factor LSB
+                hddrDesc[65] = LsByte(unitsPerEm); // Scale Factor LSB
                 hddrDesc[66] = msByte(mUlinePosU); // Master U-line Pos. MSB
-                hddrDesc[67] = lsByte(mUlinePosU); // Master U-line Pos. LSB
+                hddrDesc[67] = LsByte(mUlinePosU); // Master U-line Pos. LSB
                 hddrDesc[68] = msByte(mUlineDep);  // Master U-line Dep. MSB
-                hddrDesc[69] = lsByte(mUlineDep);  // Master U-line Dep. LSB
+                hddrDesc[69] = LsByte(mUlineDep);  // Master U-line Dep. LSB
                 hddrDesc[70] = 1;                   // Scaling Tech. = TrueType
                 hddrDesc[71] = 0;                   // Variety
 
-                _baseHandler.writeBuffer(cSizeHddrDesc, hddrDesc);
+                _baseHandler.WriteBuffer(cSizeHddrDesc, hddrDesc);
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -894,7 +874,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                flagOK = _baseHandler.writeHddrSegments(false,
+                flagOK = _baseHandler.WriteHddrSegments(false,
                                                          fmt16,
                                                          segGTLast,
                                                          glyphZeroExists,
@@ -921,7 +901,7 @@ namespace PCLParaphernalia
                     trailer[0] = 0;
                     trailer[1] = mod256;
 
-                    _baseHandler.writeBuffer(cSizeHddrTrail, trailer);
+                    _baseHandler.WriteBuffer(cSizeHddrTrail, trailer);
                 }
             }
 

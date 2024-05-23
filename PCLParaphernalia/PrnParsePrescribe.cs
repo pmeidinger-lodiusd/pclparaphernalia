@@ -62,109 +62,6 @@ namespace PCLParaphernalia
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
-        // f i n d C o m m a n d T e r m i n a t o r                          //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Search for Prescribe command terminator character.                 //
-        // This is a semi-colon (0x3b) character.                             //
-        // But we may encounter an Escape character (<Esc>, 0x1b) signalling  //
-        // return to PCL.                                                     //
-        //                                                                    //
-        // This is to make sure that the termination character is in the      //
-        // buffer before processing the command, so that we don't have to     //
-        // cater for doing a 'continuation' read part way through processing  //
-        // the command.                                                       //
-        //                                                                    //
-        // Initiate continuation action if terminator is not found in buffer, //
-        // subject to a maximum command length (to prevent recursive          //
-        // continuation actions).                                             //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private bool findCommandTerminator(
-            int bufRem,
-            int bufOffset,
-            ref int commandLen,
-            ref bool continuation)
-        {
-            PrnParseConstants.ContType contType =
-                PrnParseConstants.ContType.None;
-
-            byte crntByte;
-
-            int cmdLen,
-                  rem,
-                  offset;
-
-            bool foundEnd,
-                    foundTerm;
-
-            continuation = false;
-            foundEnd = false;
-            foundTerm = false;
-
-            rem = bufRem;
-            offset = bufOffset;
-            cmdLen = 0;
-
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Search for termination character.                              //
-            //                                                                //
-            //----------------------------------------------------------------//
-
-            while ((!foundEnd) && (rem > 0) && (cmdLen < _maxCmdLen))
-            {
-                crntByte = _buf[offset];
-
-                if (crntByte == PrnParseConstants.asciiSemiColon)
-                {
-                    foundTerm = true;
-                    foundEnd = true;
-                    offset++;
-                    cmdLen++;
-                    rem--;
-                }
-                else if (crntByte == PrnParseConstants.asciiEsc)
-                {
-                    foundEnd = true;
-                }
-                else
-                {
-                    offset++;
-                    cmdLen++;
-                    rem--;
-                }
-            }
-
-            if ((!foundEnd) && (cmdLen < _maxCmdLen))
-            {
-                //------------------------------------------------------------//
-                //                                                            //
-                // Termination character not found before buffer exhausted,   //
-                // or maximum command length exceeded.                        //
-                // Initiate (backtracking) continuation action.               //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                continuation = true;
-
-                contType = PrnParseConstants.ContType.Prescribe;
-
-                _linkData.setBacktrack(contType, -bufRem);
-
-                commandLen = 0;
-            }
-            else
-            {
-                commandLen = cmdLen;
-            }
-
-            return foundTerm;
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
         // p a r s e B u f f e r                                              //
         //--------------------------------------------------------------------//
         //                                                                    //
@@ -173,7 +70,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool parseBuffer(
+        public bool ParseBuffer(
             byte[] buf,
             ref int fileOffset,
             ref int bufRem,
@@ -206,28 +103,16 @@ namespace PCLParaphernalia
 
             _indxOffsetFormat = _options.IndxGenOffsetFormat;
 
-            _options.getOptCharSet(ref _indxCharSetName,
-                                    ref _indxCharSetSubAct,
-                                    ref _valCharSetSubCode);
+            _options.getOptCharSet(ref _indxCharSetName, ref _indxCharSetSubAct, ref _valCharSetSubCode);
 
             _endOffset = _options.ValCurFOffsetEnd;
 
             //----------------------------------------------------------------//
 
-            if (linkData.isContinuation())
-            {
-                seqInvalid = parseContinuation(ref bufRem,
-                                                            ref bufOffset,
-                                                            ref crntPDL,
-                                                            ref endReached);
-            }
+            if (linkData.IsContinuation())
+                seqInvalid = ParseContinuation(ref bufRem, ref bufOffset, ref crntPDL, ref endReached);
             else
-            {
-                seqInvalid = parseSequences(ref bufRem,
-                                                         ref bufOffset,
-                                                         ref crntPDL,
-                                                         ref endReached);
-            }
+                seqInvalid = ParseSequences(ref bufRem, ref bufOffset, ref crntPDL, ref endReached);
 
             if (endReached)
             {
@@ -246,7 +131,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool parseContinuation(
+        private bool ParseContinuation(
             ref int bufRem,
             ref int bufOffset,
             ref ToolCommonData.PrintLang crntPDL,
@@ -265,7 +150,7 @@ namespace PCLParaphernalia
             byte prefixA = 0x00,
                  prefixB = 0x00;
 
-            _linkData.getContData(ref contType,
+            _linkData.GetContData(ref contType,
                                    ref prefixLen,
                                    ref contDataLen,
                                    ref downloadRem,
@@ -287,7 +172,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                _linkData.resetContData();
+                _linkData.ResetContData();
             }
 
             if ((_endOffset != -1) && ((_fileOffset + bufOffset) > _endOffset))
@@ -305,7 +190,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool parseSequences(
+        private bool ParseSequences(
             ref int bufRem,
             ref int bufOffset,
             ref ToolCommonData.PrintLang crntPDL,
@@ -323,22 +208,19 @@ namespace PCLParaphernalia
 
             if (!_linkData.PrescribeIntroRead)
             {
-                if ((_buf[bufOffset] ==
-                        PrnParseConstants.prescribeSCRCDelimiter)
+                if ((_buf[bufOffset] == PrnParseConstants.prescribeSCRCDelimiter)
                                       &&
                     (_buf[bufOffset + 1] == _linkData.PrescribeSCRC)
                                       &&
-                    (_buf[bufOffset + 2] ==
-                        PrnParseConstants.prescribeSCRCDelimiter))
+                    (_buf[bufOffset + 2] == PrnParseConstants.prescribeSCRCDelimiter))
                 {
                     string seq = _ascii.GetString(_buf, bufOffset, 3);
                     //  String desc = PrescribeCommands.getDescCmdIntro();
                     string desc = string.Empty;
 
-                    PrescribeCommands.checkCmdIntro(ref desc,
-                                                     _analysisLevel);
+                    PrescribeCommands.CheckCmdIntro(ref desc, _analysisLevel);
 
-                    PrnParseCommon.addDataRow(
+                    PrnParseCommon.AddDataRow(
                         PrnParseRowTypes.Type.PrescribeCommand,
                         _table,
                         PrnParseConstants.OvlShow.Remove,
@@ -404,7 +286,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    badSeq = processCommand(ref bufRem,
+                    badSeq = ProcessCommand(ref bufRem,
                                              ref bufOffset,
                                              ref continuation,
                                              ref langSwitch,
@@ -434,15 +316,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool processCommand(
+        private bool ProcessCommand(
             ref int bufRem,
             ref int bufOffset,
             ref bool continuation,
             ref bool langSwitch,
             ref ToolCommonData.PrintLang crntPDL)
         {
-            PrnParseConstants.ContType contType =
-                PrnParseConstants.ContType.None;
+            PrnParseConstants.ContType contType = PrnParseConstants.ContType.None;
 
             byte crntByte,
                  cmdParaByte1 = 0x3f;
@@ -582,7 +463,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.ContType.Prescribe;
 
-                _linkData.setBacktrack(contType, -bufRem);
+                _linkData.SetBacktrack(contType, -bufRem);
             }
             else
             {
@@ -650,20 +531,15 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    if ((cmdRem == 1) &&
-                             (crntByte == PrnParseConstants.asciiSemiColon))
+                    if ((cmdRem == 1) && (crntByte == PrnParseConstants.asciiSemiColon))
 
                     {
                         // nextstage = Parameters or Terminator;
                         endLoop = true;
                     }
-                    else if (((crntByte >= PrnParseConstants.asciiAlphaUCMin)
-                                                &&
-                              (crntByte <= PrnParseConstants.asciiAlphaUCMax))
+                    else if (((crntByte >= PrnParseConstants.asciiAlphaUCMin) && (crntByte <= PrnParseConstants.asciiAlphaUCMax))
                                                 ||
-                             ((crntByte >= PrnParseConstants.asciiAlphaLCMin)
-                                                &&
-                              (crntByte <= PrnParseConstants.asciiAlphaLCMax)))
+                             ((crntByte >= PrnParseConstants.asciiAlphaLCMin) && (crntByte <= PrnParseConstants.asciiAlphaLCMax)))
                     {
                         crntChar = (char)crntByte;
                         normChar = char.ToUpper(crntChar);
@@ -687,7 +563,7 @@ namespace PCLParaphernalia
 
                 commandName = cmd.ToString();
 
-                cmdKnown = PrescribeCommands.checkCmd(cmd.ToString(),
+                cmdKnown = PrescribeCommands.CheckCmd(cmd.ToString(),
                                                        ref commandDesc,
                                                        ref flagCmdExit,
                                                        ref flagCmdSetCRC,
@@ -773,7 +649,7 @@ namespace PCLParaphernalia
                     {
                         seq = command.Substring(sliceOffset, sliceLen);
 
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.Type.PrescribeCommand,
                             _table,
                             PrnParseConstants.OvlShow.Remove,
@@ -789,7 +665,7 @@ namespace PCLParaphernalia
                         seq = "  " + // indent number of spaces
                               command.Substring(sliceOffset, sliceLen);
 
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.Type.PrescribeCommand,
                             _table,
                             PrnParseConstants.OvlShow.Remove,
@@ -824,7 +700,7 @@ namespace PCLParaphernalia
                     {
                         seq = command.Substring(sliceOffset, sliceLen);
 
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.Type.PrescribeCommand,
                             _table,
                             PrnParseConstants.OvlShow.Remove,
@@ -840,7 +716,7 @@ namespace PCLParaphernalia
                         seq = "  " + // indent number of spaces
                               command.Substring(sliceOffset, sliceLen);
 
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.Type.PrescribeCommand,
                             _table,
                             PrnParseConstants.OvlShow.Remove,
@@ -886,7 +762,7 @@ namespace PCLParaphernalia
 
                     _linkData.PrescribeSCRC = cmdParaByte1;
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.MsgComment,
                         _table,
                         PrnParseConstants.OvlShow.None,

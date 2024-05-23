@@ -13,8 +13,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    [System.Reflection.Obfuscation(Feature = "renaming",
-                                            ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     public partial class ToolStatusReadback : Window
     {
@@ -112,7 +111,7 @@ namespace PCLParaphernalia
         {
             InitializeComponent();
 
-            initialise();
+            Initialise();
 
             crntPDL = _crntPDL;
         }
@@ -140,11 +139,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                TargetCore.RequestStreamOpen(
-                    ref requestWriter,
-                    ToolCommonData.ToolIds.StatusReadback,
-                    ToolCommonData.ToolSubIds.None,
-                    _crntPDL);
+                TargetCore.RequestStreamOpen(ref requestWriter, ToolCommonData.ToolIds.StatusReadback, ToolCommonData.ToolSubIds.None, _crntPDL);
 
                 if (_crntPDL == ToolCommonData.PrintLang.PCL)
                 {
@@ -154,9 +149,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    ToolStatusReadbackPCL.generateRequest(requestWriter,
-                                                           _indxPCLEntityType,
-                                                           _indxPCLLocType);
+                    ToolStatusReadbackPCL.GenerateRequest(requestWriter, _indxPCLEntityType, _indxPCLLocType);
                 }
                 else if (!_flagPJLFS)
                 {
@@ -166,7 +159,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    ToolStatusReadbackPJL.generateRequest(requestWriter,
+                    ToolStatusReadbackPJL.GenerateRequest(requestWriter,
                                                            _cmdIndxPJL,
                                                            _indxPJLCategory,
                                                            _indxPJLVariable,
@@ -221,10 +214,7 @@ namespace PCLParaphernalia
                 {
                     TargetCore.RequestStreamWrite(false);
 
-                    txtReply.Text = "Request sequence has been saved to" +
-                                    " file.\n\n" +
-                                    "Specified target of 'File' means that" +
-                                    " a reply is not meaningful.";
+                    txtReply.Text = "Request sequence has been saved to file.\n\nSpecified target of 'File' means that a reply is not meaningful.";
                 }
                 else if (_targetType == TargetCore.Target.NetPrinter)
                 {
@@ -237,9 +227,9 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        ToolStatusReadbackPCL.sendRequest();
+                        ToolStatusReadbackPCL.SendRequest();
 
-                        txtReply.Text = ToolStatusReadbackPCL.readResponse();
+                        txtReply.Text = ToolStatusReadbackPCL.ReadResponse();
                     }
                     else if (!_flagPJLFS)
                     {
@@ -250,9 +240,9 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        ToolStatusReadbackPJL.sendRequest();
+                        ToolStatusReadbackPJL.SendRequest();
 
-                        txtReply.Text = ToolStatusReadbackPJL.readResponse();
+                        txtReply.Text = ToolStatusReadbackPJL.ReadResponse();
                     }
                     else
                     {
@@ -266,17 +256,12 @@ namespace PCLParaphernalia
 
                         ToolStatusReadbackPJLFS.SendRequest(_cmdIndxPJLFS);
 
-                        txtReply.Text = ToolStatusReadbackPJLFS.ReadResponse(
-                            _cmdIndxPJLFS,
-                            _binTgtFilenamePJLFS);
+                        txtReply.Text = ToolStatusReadbackPJLFS.ReadResponse(_cmdIndxPJLFS, _binTgtFilenamePJLFS);
                     }
                 }
                 else if (_targetType == TargetCore.Target.WinPrinter)
                 {
-                    txtReply.Text = "This application does not support" +
-                                    " Status readback via a Windows printer" +
-                                    " instance.\n\n" +
-                                    "Choose a network printer Target instead.";
+                    txtReply.Text = "This application does not support Status readback via a Windows printer instance.\n\nChoose a network printer Target instead.";
                 }
             }
             catch (SocketException sockExc)
@@ -324,7 +309,7 @@ namespace PCLParaphernalia
                 filename = _binSrcFilenamePJLFS;
             }
 
-            selected = selectLocBinFile(upload, ref filename);
+            selected = SelectLocBinFile(upload, ref filename);
 
             if (selected)
             {
@@ -365,15 +350,11 @@ namespace PCLParaphernalia
 
             if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
-                ToolStatusReadbackReport.generate(rptFileFmt,
-                                                              txtReply,
-                                                              ref _reportFilenamePCL);
+                ToolStatusReadbackReport.Generate(rptFileFmt, txtReply, ref _reportFilenamePCL);
             }
             else if (_crntPDL == ToolCommonData.PrintLang.PJL)
             {
-                ToolStatusReadbackReport.generate(rptFileFmt,
-                                                              txtReply,
-                                                              ref _reportFilenamePJL);
+                ToolStatusReadbackReport.Generate(rptFileFmt, txtReply, ref _reportFilenamePJL);
             }
         }
 
@@ -386,8 +367,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbPCLEntity_SelectionChanged(object sender,
-                                                  SelectionChangedEventArgs e)
+        private void cbPCLEntity_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             _indxPCLEntityType = cbPCLEntityType.SelectedIndex;
 
@@ -405,8 +385,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbPCLLocType_SelectionChanged(object sender,
-                                                   SelectionChangedEventArgs e)
+        private void cbPCLLocType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             _indxPCLLocType = cbPCLLocType.SelectedIndex;
 
@@ -424,13 +403,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbPJLCategory_SelectionChanged(object sender,
-                                                    SelectionChangedEventArgs e)
+        private void cbPJLCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             _indxPJLCategory = cbPJLCategory.SelectedIndex;
 
-            if (PJLCategories.GetType(_indxPJLCategory) ==
-                PJLCategories.CategoryType.Custom)
+            if (PJLCategories.GetType(_indxPJLCategory) == PJLCategories.CategoryType.Custom)
             {
                 txtPJLCustomCat.Visibility = Visibility.Visible;
             }
@@ -453,8 +430,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbPJLCommand_SelectionChanged(object sender,
-                                                   SelectionChangedEventArgs e)
+        private void cbPJLCommand_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             _indxPJLCommand = cbPJLCommand.SelectedIndex;
 
@@ -472,8 +448,7 @@ namespace PCLParaphernalia
                 lbPJLVariable.Visibility = Visibility.Hidden;
                 cbPJLVariable.Visibility = Visibility.Hidden;
 
-                if (PJLCategories.GetType(_indxPJLCategory) ==
-                    PJLCategories.CategoryType.Custom)
+                if (PJLCategories.GetType(_indxPJLCategory) == PJLCategories.CategoryType.Custom)
                 {
                     txtPJLCustomCat.Visibility = Visibility.Visible;
                 }
@@ -485,8 +460,7 @@ namespace PCLParaphernalia
                 lbPJLVariable.Visibility = Visibility.Visible;
                 cbPJLVariable.Visibility = Visibility.Visible;
 
-                if (PJLVariables.GetType(_indxPJLVariable) ==
-                    PJLVariables.VarType.Custom)
+                if (PJLVariables.GetType(_indxPJLVariable) == PJLVariables.VarType.Custom)
                 {
                     txtPJLCustomVar.Visibility = Visibility.Visible;
                 }
@@ -506,9 +480,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbPJLFSCommand_SelectionChanged(
-            object sender,
-            SelectionChangedEventArgs e)
+        private void cbPJLFSCommand_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             _indxPJLFSCommand = cbPJLFSCommand.SelectedIndex;
 
@@ -609,13 +581,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbPJLVariable_SelectionChanged(object sender,
-                                                    SelectionChangedEventArgs e)
+        private void cbPJLVariable_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             _indxPJLVariable = cbPJLVariable.SelectedIndex;
 
-            if (PJLVariables.GetType(_indxPJLVariable) ==
-                PJLVariables.VarType.Custom)
+            if (PJLVariables.GetType(_indxPJLVariable) == PJLVariables.VarType.Custom)
             {
                 txtPJLCustomVar.Visibility = Visibility.Visible;
             }
@@ -671,7 +641,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void giveCrntPDL(ref ToolCommonData.PrintLang crntPDL)
+        public void GiveCrntPDL(ref ToolCommonData.PrintLang crntPDL)
         {
             crntPDL = _crntPDL;
         }
@@ -685,7 +655,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialise()
+        private void Initialise()
         {
             PJLVariables.VarType varType;
 
@@ -780,7 +750,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            resetTarget();
+            ResetTarget();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -788,7 +758,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            metricsLoad();
+            MetricsLoad();
 
             cbPCLEntityType.SelectedIndex = _indxPCLEntityType;
             cbPCLLocType.SelectedIndex = _indxPCLLocType;
@@ -805,7 +775,7 @@ namespace PCLParaphernalia
 
             _passwordPJLFS = _defaultPJLFSPassword;
 
-            ToolCommonFunctions.splitPathName(_objPathPJLFS,
+            ToolCommonFunctions.SplitPathName(_objPathPJLFS,
                                                ref _objVolPJLFS,
                                                ref _objDirPJLFS,
                                                ref _objFilPJLFS);
@@ -826,8 +796,7 @@ namespace PCLParaphernalia
                     {
                         txtPJLFSPath.Text = _objVolPJLFS;
                     }
-                    else if ((_reqTypePJLFS == PJLCommands.RequestType.FSDirList) ||
-                                                 (_reqTypePJLFS == PJLCommands.RequestType.FSMkDir))
+                    else if ((_reqTypePJLFS == PJLCommands.RequestType.FSDirList) || (_reqTypePJLFS == PJLCommands.RequestType.FSMkDir))
                     {
                         txtPJLFSPath.Text = _objDirPJLFS;
                     }
@@ -860,16 +829,14 @@ namespace PCLParaphernalia
 
                     if (_reqTypePJL == PJLCommands.RequestType.Category)
                     {
-                        if (PJLCategories.GetType(_indxPJLCategory) ==
-                            PJLCategories.CategoryType.Custom)
+                        if (PJLCategories.GetType(_indxPJLCategory) == PJLCategories.CategoryType.Custom)
                         {
                             txtPJLCustomCat.Visibility = Visibility.Visible;
                         }
                     }
                     else if (_reqTypePJL == PJLCommands.RequestType.Variable)
                     {
-                        if (PJLVariables.GetType(_indxPJLVariable) ==
-                            PJLVariables.VarType.Custom)
+                        if (PJLVariables.GetType(_indxPJLVariable) == PJLVariables.VarType.Custom)
                         {
                             txtPJLCustomVar.Visibility = Visibility.Visible;
                         }
@@ -896,24 +863,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsLoad()
+        private void MetricsLoad()
         {
             int indxTemp = 0;
 
-            ToolStatusReadbackPersist.loadDataCommon(ref indxTemp);
+            ToolStatusReadbackPersist.LoadDataCommon(ref indxTemp);
 
-            ToolStatusReadbackPersist.loadDataPCL(ref _indxPCLEntityType,
+            ToolStatusReadbackPersist.LoadDataPCL(ref _indxPCLEntityType,
                                                    ref _indxPCLLocType,
                                                    ref _reportFilenamePCL);
 
-            ToolStatusReadbackPersist.loadDataPJL(ref _indxPJLCategory,
+            ToolStatusReadbackPersist.LoadDataPJL(ref _indxPJLCategory,
                                                    ref _indxPJLCommand,
                                                    ref _indxPJLVariable,
                                                    ref _customCatPJL,
                                                    ref _customVarPJL,
                                                    ref _reportFilenamePJL);
 
-            ToolStatusReadbackPersist.loadDataPJLFS(ref _indxPJLFSCommand,
+            ToolStatusReadbackPersist.LoadDataPJLFS(ref _indxPJLFSCommand,
                                                      ref _objPathPJLFS,
                                                      ref _binSrcFilenamePJLFS,
                                                      ref _binTgtFilenamePJLFS,
@@ -929,40 +896,34 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if ((_indxPCLEntityType < 0) ||
-                (_indxPCLEntityType >= _ctPCLEntityTypes))
+            if ((_indxPCLEntityType < 0) || (_indxPCLEntityType >= _ctPCLEntityTypes))
             {
                 _indxPCLEntityType = 0;
             }
 
-            if ((_indxPCLLocType < 0) ||
-                (_indxPCLLocType >= _ctPCLLocTypes))
+            if ((_indxPCLLocType < 0) || (_indxPCLLocType >= _ctPCLLocTypes))
             {
                 _indxPCLLocType = 0;
             }
 
             //----------------------------------------------------------------//
 
-            if ((_indxPJLCategory < 0) ||
-                (_indxPJLCategory >= _ctPJLCategories))
+            if ((_indxPJLCategory < 0) || (_indxPJLCategory >= _ctPJLCategories))
             {
                 _indxPJLCategory = 0;
             }
 
-            if ((_indxPJLCommand < 0) ||
-                (_indxPJLCommand >= _ctPJLCommands))
+            if ((_indxPJLCommand < 0) || (_indxPJLCommand >= _ctPJLCommands))
             {
                 _indxPJLCommand = 0;
             }
 
-            if ((_indxPJLVariable < 0) ||
-                (_indxPJLVariable >= _ctPJLVariables))
+            if ((_indxPJLVariable < 0) || (_indxPJLVariable >= _ctPJLVariables))
             {
                 _indxPJLVariable = 0;
             }
 
-            if ((_indxPJLFSCommand < 0) ||
-                (_indxPJLFSCommand >= _ctPJLFSCommands))
+            if ((_indxPJLFSCommand < 0) || (_indxPJLFSCommand >= _ctPJLFSCommands))
             {
                 _indxPJLFSCommand = 0;
             }
@@ -977,22 +938,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsSave()
+        public void MetricsSave()
         {
-            ToolStatusReadbackPersist.saveDataCommon((int)_crntPDL);
+            ToolStatusReadbackPersist.SaveDataCommon((int)_crntPDL);
 
-            ToolStatusReadbackPersist.saveDataPCL(_indxPCLEntityType,
+            ToolStatusReadbackPersist.SaveDataPCL(_indxPCLEntityType,
                                                _indxPCLLocType,
                                                _reportFilenamePCL);
 
-            ToolStatusReadbackPersist.saveDataPJL(_indxPJLCategory,
+            ToolStatusReadbackPersist.SaveDataPJL(_indxPJLCategory,
                                                _indxPJLCommand,
                                                _indxPJLVariable,
                                                _customCatPJL,
                                                _customVarPJL,
                                                _reportFilenamePJL);
 
-            ToolStatusReadbackPersist.saveDataPJLFS(_indxPJLFSCommand,
+            ToolStatusReadbackPersist.SaveDataPJLFS(_indxPJLFSCommand,
                                                      _objPathPJLFS,
                                                      _binSrcFilenamePJLFS,
                                                      _binTgtFilenamePJLFS,
@@ -1082,7 +1043,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetTarget()
+        public void ResetTarget()
         {
             TargetCore.Target targetType = TargetCore.GetTargetType();
 
@@ -1103,10 +1064,7 @@ namespace PCLParaphernalia
                                                   ref netTimeoutSend,
                                                   ref netTimeoutReceive);
 
-                btnGenerate.Content = "Generate request & read reply from " +
-                                      "\r\n" +
-                                      netPrnAddress + " : " +
-                                      netPrnPort.ToString();
+                btnGenerate.Content = "Generate request & read reply from \r\n" + netPrnAddress + " : " + netPrnPort.ToString();
             }
             else if (targetType == TargetCore.Target.WinPrinter)
             {
@@ -1114,9 +1072,7 @@ namespace PCLParaphernalia
 
                 TargetCore.MetricsLoadWinPrinter(ref winPrintername);
 
-                btnGenerate.Content = "Generate & send test data to printer " +
-                                      "\r\n" +
-                                      winPrintername;
+                btnGenerate.Content = "Generate & send test data to printer \r\n" + winPrintername;
             }
         }
 
@@ -1132,15 +1088,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool selectLocBinFile(bool upload,
-                                          ref string locBinFilename)
+        private bool SelectLocBinFile(bool upload, ref string locBinFilename)
         {
             bool selected;
 
             if (upload)
-                selected = selectLocBinTgtFile(ref locBinFilename);
+                selected = SelectLocBinTgtFile(ref locBinFilename);
             else
-                selected = selectLocBinSrcFile(ref locBinFilename);
+                selected = SelectLocBinSrcFile(ref locBinFilename);
 
             return selected;
         }
@@ -1156,9 +1111,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool selectLocBinSrcFile(ref string locBinFilename)
+        private bool SelectLocBinSrcFile(ref string locBinFilename)
         {
-            OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(locBinFilename);
+            OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(locBinFilename);
 
             openDialog.Filter = "Print Files|" +
                                 "*.prn; *.pcl; *.dia;" +
@@ -1190,9 +1145,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool selectLocBinTgtFile(ref string locBinFilename)
+        private bool SelectLocBinTgtFile(ref string locBinFilename)
         {
-            SaveFileDialog saveDialog = ToolCommonFunctions.createSaveFileDialog(locBinFilename);
+            SaveFileDialog saveDialog = ToolCommonFunctions.CreateSaveFileDialog(locBinFilename);
 
             saveDialog.Filter = "Print Files|" +
                                 "*.prn; *.pcl; *.dia;" +
@@ -1227,8 +1182,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPJLCustomCat_GotFocus(object sender,
-                                           RoutedEventArgs e)
+        private void txtPJLCustomCat_GotFocus(object sender, RoutedEventArgs e)
         {
             txtPJLCustomCat.SelectAll();
         }
@@ -1242,8 +1196,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPJLCustomCat_LostFocus(object sender,
-                                            RoutedEventArgs e)
+        private void txtPJLCustomCat_LostFocus(object sender, RoutedEventArgs e)
         {
             _customCatPJL = txtPJLCustomCat.Text;
         }
@@ -1259,8 +1212,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPJLCustomVar_GotFocus(object sender,
-                                           RoutedEventArgs e)
+        private void txtPJLCustomVar_GotFocus(object sender, RoutedEventArgs e)
         {
             txtPJLCustomVar.SelectAll();
         }
@@ -1274,8 +1226,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPJLCustomVar_LostFocus(object sender,
-                                            RoutedEventArgs e)
+        private void txtPJLCustomVar_LostFocus(object sender, RoutedEventArgs e)
         {
             _customVarPJL = txtPJLCustomVar.Text;
         }
@@ -1291,8 +1242,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPJLFSLocPath_GotFocus(object sender,
-                                               RoutedEventArgs e)
+        private void txtPJLFSLocPath_GotFocus(object sender, RoutedEventArgs e)
         {
             txtPJLFSLocPath.SelectAll();
         }
@@ -1307,8 +1257,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPJLFSLocPath_LostFocus(object sender,
-                                                RoutedEventArgs e)
+        private void txtPJLFSLocPath_LostFocus(object sender, RoutedEventArgs e)
         {
             if (_reqTypePJLFS == PJLCommands.RequestType.FSUpload)
                 _binTgtFilenamePJLFS = txtPJLFSLocPath.Text;
@@ -1327,8 +1276,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPJLFSOpt1_GotFocus(object sender,
-                                            RoutedEventArgs e)
+        private void txtPJLFSOpt1_GotFocus(object sender, RoutedEventArgs e)
         {
             txtPJLFSOpt1.SelectAll();
         }
@@ -1342,10 +1290,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPJLFSOpt1_LostFocus(object sender,
-                                             RoutedEventArgs e)
+        private void txtPJLFSOpt1_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (!validatePJLFSOpt1(true, ref _valPJLFSOpt1))
+            if (!ValidatePJLFSOpt1(true, ref _valPJLFSOpt1))
             {
                 txtPJLFSOpt1.Focus();
                 txtPJLFSOpt1.SelectAll();
@@ -1363,8 +1310,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPJLFSOpt2_GotFocus(object sender,
-                                            RoutedEventArgs e)
+        private void txtPJLFSOpt2_GotFocus(object sender, RoutedEventArgs e)
         {
             txtPJLFSOpt2.SelectAll();
         }
@@ -1378,10 +1324,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPJLFSOpt2_LostFocus(object sender,
-                                             RoutedEventArgs e)
+        private void txtPJLFSOpt2_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (!validatePJLFSOpt2(true, ref _valPJLFSOpt2))
+            if (!ValidatePJLFSOpt2(true, ref _valPJLFSOpt2))
             {
                 txtPJLFSOpt2.Focus();
                 txtPJLFSOpt2.SelectAll();
@@ -1399,8 +1344,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPJLFSPath_GotFocus(object sender,
-                                            RoutedEventArgs e)
+        private void txtPJLFSPath_GotFocus(object sender, RoutedEventArgs e)
         {
             txtPJLFSPath.SelectAll();
         }
@@ -1414,15 +1358,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPJLFSPath_LostFocus(object sender,
-                                             RoutedEventArgs e)
+        private void txtPJLFSPath_LostFocus(object sender, RoutedEventArgs e)
         {
             if (_reqTypePJLFS == PJLCommands.RequestType.FSInit)
             {
                 _objVolPJLFS = txtPJLFSPath.Text;
             }
-            else if ((_reqTypePJLFS == PJLCommands.RequestType.FSDirList) ||
-                                 (_reqTypePJLFS == PJLCommands.RequestType.FSMkDir))
+            else if ((_reqTypePJLFS == PJLCommands.RequestType.FSDirList) || (_reqTypePJLFS == PJLCommands.RequestType.FSMkDir))
             {
                 _objDirPJLFS = txtPJLFSPath.Text;
             }
@@ -1443,8 +1385,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPJLFSPwd_GotFocus(object sender,
-                                           RoutedEventArgs e)
+        private void txtPJLFSPwd_GotFocus(object sender, RoutedEventArgs e)
         {
             txtPJLFSPwd.SelectAll();
         }
@@ -1458,8 +1399,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPJLFSPwd_LostFocus(object sender,
-                                            RoutedEventArgs e)
+        private void txtPJLFSPwd_LostFocus(object sender, RoutedEventArgs e)
         {
             _passwordPJLFS = txtPJLFSPwd.Text;
         }
@@ -1473,7 +1413,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool validatePJLFSOpt1(bool lostFocusEvent,
+        private bool ValidatePJLFSOpt1(bool lostFocusEvent,
                                            ref int newValue)
         {
             int defVal;
@@ -1513,9 +1453,7 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show(boxName + " value is invalid.\n\n" +
-                                     "Value will be reset to default '" +
-                                     newText + "'",
+                    MessageBox.Show(boxName + " value is invalid.\n\nValue will be reset to default '" + newText + "'",
                                      "Option value invalid",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Warning);
@@ -1549,8 +1487,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool validatePJLFSOpt2(bool lostFocusEvent,
-                                           ref int newValue)
+        private bool ValidatePJLFSOpt2(bool lostFocusEvent, ref int newValue)
         {
             int defVal;
 
@@ -1589,9 +1526,7 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show(boxName + " value is invalid.\n\n" +
-                                     "Value will be reset to default '" +
-                                     newText + "'",
+                    MessageBox.Show(boxName + " value is invalid.\n\nValue will be reset to default '" + newText + "'",
                                      "Option value invalid",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Warning);
@@ -1604,7 +1539,7 @@ namespace PCLParaphernalia
                 else
                 {
                     MessageBox.Show(boxName + " value is invalid.\n\n",
-                                     "Option value invalid",
+                                    "Option value invalid",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Warning);
 

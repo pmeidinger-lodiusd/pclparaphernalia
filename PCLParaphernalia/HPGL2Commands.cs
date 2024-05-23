@@ -19,8 +19,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static readonly SortedList<string, HPGL2Command> _cmds =
-            new SortedList<string, HPGL2Command>();
+        private static readonly SortedList<string, HPGL2Command> _cmds = new SortedList<string, HPGL2Command>();
 
         private static HPGL2Command _cmdUnknown;
 
@@ -124,8 +123,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCounts(DataTable table,
-                                               bool incUsedSeqsOnly)
+        public static void displayStatsCounts(DataTable table, bool incUsedSeqsOnly)
         {
             int count = 0;
 

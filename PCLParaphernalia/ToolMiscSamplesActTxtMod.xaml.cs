@@ -12,8 +12,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2015</para>
     ///
     /// </summary>
-    [System.Reflection.Obfuscation(Feature = "renaming",
-                                            ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     public partial class ToolMiscSamples : Window
     {
@@ -143,18 +142,13 @@ namespace PCLParaphernalia
                 }
                 else if (_indxTxtModTypePCL == TxtModType.Pat)
                 {
-                    txtTxtModDesc.Text =
-                        "Shows samples of Black, White and Patterned text," +
-                        " each printed on Black, White and Patterned" +
-                        " backgrounds.";
+                    txtTxtModDesc.Text = "Shows samples of Black, White and Patterned text, each printed on Black, White and Patterned backgrounds.";
                 }
                 else
                 {
                     txtTxtModDesc.Text =
                         "Shows samples of Rotated text.\r\n" +
-                        "Text rotated by other than 0, 90, 180  or 270" +
-                        " degrees in PCL is achieved via use of HP-GL/2" +
-                        " commands.";
+                        "Text rotated by other than 0, 90, 180  or 270 degrees in PCL is achieved via use of HP-GL/2 commands.";
                 }
             }
             else
@@ -171,10 +165,7 @@ namespace PCLParaphernalia
                 }
                 else if (_indxTxtModTypePCLXL == TxtModType.Pat)
                 {
-                    txtTxtModDesc.Text =
-                        "Shows samples of Black, White and Patterned text," +
-                        " each printed on Black, White and Patterned" +
-                        " backgrounds.";
+                    txtTxtModDesc.Text = "Shows samples of Black, White and Patterned text, each printed on Black, White and Patterned backgrounds.";
                 }
                 else
                 {
@@ -202,10 +193,7 @@ namespace PCLParaphernalia
         {
             int tmpInt = 0;
 
-            ToolMiscSamplesPersist.loadDataTypeTxtMod(
-                "PCL",
-                ref tmpInt,
-                ref _flagTxtModFormAsMacroPCL);
+            ToolMiscSamplesPersist.loadDataTypeTxtMod("PCL", ref tmpInt, ref _flagTxtModFormAsMacroPCL);
 
             if (tmpInt == (int)TxtModType.Pat)
                 _indxTxtModTypePCL = TxtModType.Pat;
@@ -214,10 +202,7 @@ namespace PCLParaphernalia
             else
                 _indxTxtModTypePCL = TxtModType.Chr;
 
-            ToolMiscSamplesPersist.loadDataTypeTxtMod(
-                "PCLXL",
-                ref tmpInt,
-                ref _flagTxtModFormAsMacroPCLXL);
+            ToolMiscSamplesPersist.loadDataTypeTxtMod("PCLXL", ref tmpInt, ref _flagTxtModFormAsMacroPCLXL);
 
             if (tmpInt == (int)TxtModType.Pat)
                 _indxTxtModTypePCLXL = TxtModType.Pat;
@@ -238,15 +223,9 @@ namespace PCLParaphernalia
 
         public void MetricsSaveDataTxtMod()
         {
-            ToolMiscSamplesPersist.saveDataTypeTxtMod(
-                "PCL",
-                (int)_indxTxtModTypePCL,
-                _flagTxtModFormAsMacroPCL);
+            ToolMiscSamplesPersist.SaveDataTypeTxtMod("PCL", (int)_indxTxtModTypePCL, _flagTxtModFormAsMacroPCL);
 
-            ToolMiscSamplesPersist.saveDataTypeTxtMod(
-                "PCLXL",
-                (int)_indxPatternTypePCLXL,
-                _flagTxtModFormAsMacroPCLXL);
+            ToolMiscSamplesPersist.SaveDataTypeTxtMod("PCLXL", (int)_indxPatternTypePCLXL, _flagTxtModFormAsMacroPCLXL);
         }
 
         //--------------------------------------------------------------------//
@@ -258,8 +237,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbTxtModTypeChr_Click(object sender,
-                                            RoutedEventArgs e)
+        private void rbTxtModTypeChr_Click(object sender, RoutedEventArgs e)
         {
             if (_crntPDL == ToolCommonData.PrintLang.PCL)
                 _indxTxtModTypePCL = TxtModType.Chr;
@@ -278,8 +256,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbTxtModTypePat_Click(object sender,
-                                            RoutedEventArgs e)
+        private void rbTxtModTypePat_Click(object sender, RoutedEventArgs e)
         {
             if (_crntPDL == ToolCommonData.PrintLang.PCL)
                 _indxTxtModTypePCL = TxtModType.Pat;
@@ -298,8 +275,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbTxtModTypeRot_Click(object sender,
-                                            RoutedEventArgs e)
+        private void rbTxtModTypeRot_Click(object sender, RoutedEventArgs e)
         {
             if (_crntPDL == ToolCommonData.PrintLang.PCL)
                 _indxTxtModTypePCL = TxtModType.Rot;

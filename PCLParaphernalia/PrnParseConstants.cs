@@ -427,53 +427,53 @@ namespace PCLParaphernalia
         public const byte pclComplexTCharLow = 0x40;
         public const byte pclComplexTCharHigh = 0x5e;
 
-        public const byte pclxlAttrUbyte      = 0xf8;
-        public const byte pclxlAttrUint16     = 0xf9;
-        public const byte pclxlEmbedData      = 0xfa;
-        public const byte pclxlEmbedDataByte  = 0xfb;
-        public const byte pclxlDataTypeLow    = 0xc0;
-        public const byte pclxlDataTypeHigh   = 0xef;
-        public const byte pclxlDataTypeUbyte  = 0xc0;
+        public const byte pclxlAttrUbyte = 0xf8;
+        public const byte pclxlAttrUint16 = 0xf9;
+        public const byte pclxlEmbedData = 0xfa;
+        public const byte pclxlEmbedDataByte = 0xfb;
+        public const byte pclxlDataTypeLow = 0xc0;
+        public const byte pclxlDataTypeHigh = 0xef;
+        public const byte pclxlDataTypeUbyte = 0xc0;
         public const byte pclxlDataTypeUint16 = 0xc1;
-        public const byte pclxlOperatorLow    = 0x41;
-        public const byte pclxlOperatorHigh   = 0xbf;
+        public const byte pclxlOperatorLow = 0x41;
+        public const byte pclxlOperatorHigh = 0xbf;
 
-        public const byte prescribeSCRCDefault   = 0x52;  // R //
+        public const byte prescribeSCRCDefault = 0x52;  // R //
         public const byte prescribeSCRCDelimiter = 0x21;  // ! //
 
         public const string cRptA_colName_RowType = "RowType";  // not displayed
-        public const string cRptA_colName_Action  = "Action";   // MakeOverlay only
-        public const string cRptA_colName_Offset  = "Offset";
-        public const string cRptA_colName_Type    = "Type";
-        public const string cRptA_colName_Seq     = "Sequence";
-        public const string cRptA_colName_Desc    = "Description";
+        public const string cRptA_colName_Action = "Action";   // MakeOverlay only
+        public const string cRptA_colName_Offset = "Offset";
+        public const string cRptA_colName_Type = "Type";
+        public const string cRptA_colName_Seq = "Sequence";
+        public const string cRptA_colName_Desc = "Description";
 
-        public const string cRptC_colName_Offset  = "Offset";
-        public const string cRptC_colName_Hex     = "Hexadecimal";
-        public const string cRptC_colName_Text    = "Text";
+        public const string cRptC_colName_Offset = "Offset";
+        public const string cRptC_colName_Hex = "Hexadecimal";
+        public const string cRptC_colName_Text = "Text";
 
-        public const string cRptS_colName_Seq     = "Sequence";
-        public const string cRptS_colName_Desc    = "Description";
-        public const string cRptS_colName_CtP     = "Parent";
-        public const string cRptS_colName_CtE     = "Embedded";
-        public const string cRptS_colName_CtT     = "Total";
+        public const string cRptS_colName_Seq = "Sequence";
+        public const string cRptS_colName_Desc = "Description";
+        public const string cRptS_colName_CtP = "Parent";
+        public const string cRptS_colName_CtE = "Embedded";
+        public const string cRptS_colName_CtT = "Total";
 
         public const int cRptA_colMax_RowType = -1;   // not displayed
-        public const int cRptA_colMax_Action  = 10;   // MakeOverlay only
-        public const int cRptA_colMax_Offset  = 13;
-        public const int cRptA_colMax_Type    = 21;
-        public const int cRptA_colMax_Seq     = 16;
-        public const int cRptA_colMax_Desc    = 52;
+        public const int cRptA_colMax_Action = 10;   // MakeOverlay only
+        public const int cRptA_colMax_Offset = 13;
+        public const int cRptA_colMax_Type = 21;
+        public const int cRptA_colMax_Seq = 16;
+        public const int cRptA_colMax_Desc = 52;
 
-        public const int cRptC_colMax_Offset  = 13;
-        public const int cRptC_colMax_Hex     = 48;
-        public const int cRptC_colMax_Text    = 16;
+        public const int cRptC_colMax_Offset = 13;
+        public const int cRptC_colMax_Hex = 48;
+        public const int cRptC_colMax_Text = 16;
 
-        public const int cRptS_colMax_Seq     = 19;
-        public const int cRptS_colMax_Desc    = 52;
-        public const int cRptS_colMax_CtP     = 8;
-        public const int cRptS_colMax_CtE     = 8;
-        public const int cRptS_colMax_CtT     = 8;
+        public const int cRptS_colMax_Seq = 19;
+        public const int cRptS_colMax_Desc = 52;
+        public const int cRptS_colMax_CtP = 8;
+        public const int cRptS_colMax_CtE = 8;
+        public const int cRptS_colMax_CtT = 8;
 
         public const int cColSeparatorLen = 2;
 

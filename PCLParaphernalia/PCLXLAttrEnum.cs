@@ -9,9 +9,7 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.Obfuscation(
-        Feature = "renaming",
-        ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     class PCLXLAttrEnum
     {
@@ -67,9 +65,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                return PCLXLAttributes.GetDesc(_attrTagA,
-                                               _attrTagB,
-                                               _attrTagLen);
+                return PCLXLAttributes.GetDesc(_attrTagA, _attrTagB, _attrTagLen);
             }
         }
 
@@ -95,8 +91,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getDetails(ref bool flagValIsTxt,
-                                ref string description)
+        public void GetDetails(ref bool flagValIsTxt, ref string description)
         {
             flagValIsTxt = FlagValIsTxt;
             description = Description;
@@ -111,7 +106,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void incrementStatisticsCount(int level)
+        public void IncrementStatisticsCount(int level)
         {
             if (level == 0)
                 _statsCtParent++;
@@ -145,7 +140,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetStatistics()
+        public void ResetStatistics()
         {
             _statsCtParent = 0;
             _statsCtChild = 0;

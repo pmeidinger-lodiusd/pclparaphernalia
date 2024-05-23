@@ -13,8 +13,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2015</para>
     ///
     /// </summary>
-    [System.Reflection.Obfuscation(Feature = "renaming",
-                                            ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     public partial class ToolMiscSamples : Window
     {
@@ -143,8 +142,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ToolMiscSamples(ref ToolCommonData.PrintLang crntPDL,
-                                ref ToolCommonData.ToolSubIds crntType)
+        public ToolMiscSamples(ref ToolCommonData.PrintLang crntPDL, ref ToolCommonData.ToolSubIds crntType)
         {
             InitializeComponent();
 
@@ -155,8 +153,7 @@ namespace PCLParaphernalia
             _initialised = true;
 
             crntPDL = _crntPDL;
-            crntType =
-                (ToolCommonData.ToolSubIds)_subsetSampleTypes[_indxSampleType];
+            crntType = (ToolCommonData.ToolSubIds)_subsetSampleTypes[_indxSampleType];
         }
 
         //--------------------------------------------------------------------//
@@ -197,8 +194,7 @@ namespace PCLParaphernalia
             {
                 BinaryWriter binWriter = null;
 
-                ToolCommonData.ToolSubIds sampleType =
-                    (ToolCommonData.ToolSubIds)_subsetSampleTypes[_indxSampleType];
+                ToolCommonData.ToolSubIds sampleType = (ToolCommonData.ToolSubIds)_subsetSampleTypes[_indxSampleType];
 
                 TargetCore.MetricsLoadFileCapt(
                     ToolCommonData.ToolIds.MiscSamples,
@@ -373,7 +369,7 @@ namespace PCLParaphernalia
 
                             if (_indxColourTypePCLXL == ColourType.PCLXL_Gray)
                             {
-                                ToolMiscSamplesActColourGrayPCLXL.generateJob(
+                                ToolMiscSamplesActColourGrayPCLXL.GenerateJob(
                                     binWriter,
                                     _subsetPaperSizes[_indxPaperSizePCLXL],
                                     _subsetPaperTypes[_indxPaperTypePCLXL],
@@ -383,7 +379,7 @@ namespace PCLParaphernalia
                             }
                             else if (_indxColourTypePCLXL == ColourType.PCLXL_RGB)
                             {
-                                ToolMiscSamplesActColourRGBPCLXL.generateJob(
+                                ToolMiscSamplesActColourRGBPCLXL.GenerateJob(
                                     binWriter,
                                     _subsetPaperSizes[_indxPaperSizePCLXL],
                                     _subsetPaperTypes[_indxPaperTypePCLXL],
@@ -400,7 +396,7 @@ namespace PCLParaphernalia
 
                             if (PCLXLPalettes.IsMonochrome(indxMode))
                             {
-                                ToolMiscSamplesActLogOperPCLXL.generateJob(
+                                ToolMiscSamplesActLogOperPCLXL.GenerateJob(
                                     binWriter,
                                     _subsetPaperSizes[_indxPaperSizePCLXL],
                                     _subsetPaperTypes[_indxPaperTypePCLXL],
@@ -419,7 +415,7 @@ namespace PCLParaphernalia
                             }
                             else
                             {
-                                ToolMiscSamplesActLogOperPCLXL.generateJob(
+                                ToolMiscSamplesActLogOperPCLXL.GenerateJob(
                                     binWriter,
                                     _subsetPaperSizes[_indxPaperSizePCLXL],
                                     _subsetPaperTypes[_indxPaperTypePCLXL],
@@ -449,7 +445,7 @@ namespace PCLParaphernalia
 
                             if (_indxPatternTypePCLXL == PatternType.Shading)
                             {
-                                ToolMiscSamplesActPatternShadePCLXL.generateJob(
+                                ToolMiscSamplesActPatternShadePCLXL.GenerateJob(
                                     binWriter,
                                     _subsetPaperSizes[_indxPaperSizePCLXL],
                                     _subsetPaperTypes[_indxPaperTypePCLXL],
@@ -471,7 +467,7 @@ namespace PCLParaphernalia
 
                             if (_indxTxtModTypePCLXL == TxtModType.Chr)
                             {
-                                ToolMiscSamplesActTxtModChrPCLXL.generateJob(
+                                ToolMiscSamplesActTxtModChrPCLXL.GenerateJob(
                                     binWriter,
                                     _subsetPaperSizes[_indxPaperSizePCLXL],
                                     _subsetPaperTypes[_indxPaperTypePCLXL],
@@ -480,7 +476,7 @@ namespace PCLParaphernalia
                             }
                             else if (_indxTxtModTypePCLXL == TxtModType.Pat)
                             {
-                                ToolMiscSamplesActTxtModPatPCLXL.generateJob(
+                                ToolMiscSamplesActTxtModPatPCLXL.GenerateJob(
                                     binWriter,
                                     _subsetPaperSizes[_indxPaperSizePCLXL],
                                     _subsetPaperTypes[_indxPaperTypePCLXL],
@@ -489,7 +485,7 @@ namespace PCLParaphernalia
                             }
                             else if (_indxTxtModTypePCLXL == TxtModType.Rot)
                             {
-                                ToolMiscSamplesActTxtModRotPCLXL.generateJob(
+                                ToolMiscSamplesActTxtModRotPCLXL.GenerateJob(
                                     binWriter,
                                     _subsetPaperSizes[_indxPaperSizePCLXL],
                                     _subsetPaperTypes[_indxPaperTypePCLXL],
@@ -501,7 +497,7 @@ namespace PCLParaphernalia
 
                         case (int)SampleType.Unicode:
 
-                            ToolMiscSamplesActUnicodePCLXL.generateJob(
+                            ToolMiscSamplesActUnicodePCLXL.GenerateJob(
                                 binWriter,
                                 _subsetPaperSizes[_indxPaperSizePCLXL],
                                 _subsetPaperTypes[_indxPaperTypePCLXL],
@@ -543,8 +539,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbOrientation_SelectionChanged(object sender,
-                                                    SelectionChangedEventArgs e)
+        private void cbOrientation_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_initialised && cbOrientation.HasItems)
             {
@@ -554,7 +549,7 @@ namespace PCLParaphernalia
                     _indxOrientationPCLXL = cbOrientation.SelectedIndex;
 
                 SetPaperMetrics();
-                setPaperMetricsLogPage();
+                SetPaperMetricsLogPage();
             }
         }
 
@@ -567,8 +562,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbPaperSize_SelectionChanged(object sender,
-                                                  SelectionChangedEventArgs e)
+        private void cbPaperSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_initialised && cbPaperSize.HasItems)
             {
@@ -578,7 +572,7 @@ namespace PCLParaphernalia
                     _indxPaperSizePCLXL = cbPaperSize.SelectedIndex;
 
                 SetPaperMetrics();
-                setPaperMetricsLogPage();
+                SetPaperMetricsLogPage();
             }
         }
 
@@ -591,8 +585,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbPaperType_SelectionChanged(object sender,
-                                                  SelectionChangedEventArgs e)
+        private void cbPaperType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_initialised && cbPaperType.HasItems)
             {
@@ -612,8 +605,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbPDL_SelectionChanged(object sender,
-                                            SelectionChangedEventArgs e)
+        private void cbPDL_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_initialised)
             {
@@ -637,8 +629,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbSampleType_SelectionChanged(object sender,
-                                                    SelectionChangedEventArgs e)
+        private void cbSampleType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_initialised && cbSampleType.HasItems)
             {
@@ -657,24 +648,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkOptFormAsMacro_Checked(object sender,
-                                                RoutedEventArgs e)
+        private void chkOptFormAsMacro_Checked(object sender, RoutedEventArgs e)
         {
             switch (_indxSampleType)
             {
                 case (int)SampleType.Colour:
 
-                    setFlagColourFormAsMacro(true, _crntPDL);
+                    SetFlagColourFormAsMacro(true, _crntPDL);
                     break;
 
                 case (int)SampleType.LogOper:
 
-                    setFlagLogOperFormAsMacro(true, _crntPDL);
+                    SetFlagLogOperFormAsMacro(true, _crntPDL);
                     break;
 
                 case (int)SampleType.LogPage:
 
-                    setFlagLogPageFormAsMacro(true, _crntPDL);
+                    SetFlagLogPageFormAsMacro(true, _crntPDL);
                     break;
 
                 case (int)SampleType.Pattern:
@@ -689,7 +679,7 @@ namespace PCLParaphernalia
 
                 case (int)SampleType.Unicode:
 
-                    setFlagUnicodeFormAsMacro(true, _crntPDL);
+                    SetFlagUnicodeFormAsMacro(true, _crntPDL);
                     break;
             }
         }
@@ -703,24 +693,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void ChkOptFormAsMacro_Unchecked(object sender,
-                                                  RoutedEventArgs e)
+        private void ChkOptFormAsMacro_Unchecked(object sender, RoutedEventArgs e)
         {
             switch (_indxSampleType)
             {
                 case (int)SampleType.Colour:
 
-                    setFlagColourFormAsMacro(false, _crntPDL);
+                    SetFlagColourFormAsMacro(false, _crntPDL);
                     break;
 
                 case (int)SampleType.LogOper:
 
-                    setFlagLogOperFormAsMacro(false, _crntPDL);
+                    SetFlagLogOperFormAsMacro(false, _crntPDL);
                     break;
 
                 case (int)SampleType.LogPage:
 
-                    setFlagLogPageFormAsMacro(false, _crntPDL);
+                    SetFlagLogPageFormAsMacro(false, _crntPDL);
                     break;
 
                 case (int)SampleType.Pattern:
@@ -735,7 +724,7 @@ namespace PCLParaphernalia
 
                 case (int)SampleType.Unicode:
 
-                    setFlagUnicodeFormAsMacro(false, _crntPDL);
+                    SetFlagUnicodeFormAsMacro(false, _crntPDL);
                     break;
             }
         }
@@ -899,7 +888,7 @@ namespace PCLParaphernalia
                 else if (_crntPDL == ToolCommonData.PrintLang.PCLXL)
                     chkOptFormAsMacro.Content = "Use user-defined streams";
 
-                initialiseDataLogOper(typeChange);
+                InitialiseDataLogOper(typeChange);
 
                 cbSampleType.SelectedIndex = (int)SampleType.LogOper;
 
@@ -910,7 +899,7 @@ namespace PCLParaphernalia
                 if (_crntPDL == ToolCommonData.PrintLang.PCLXL)
                     chkOptFormAsMacro.Visibility = Visibility.Hidden;
 
-                initialiseDataLogPage();
+                InitialiseDataLogPage();
 
                 cbSampleType.SelectedIndex = (int)SampleType.LogPage;
 
@@ -934,7 +923,7 @@ namespace PCLParaphernalia
             }
             else if (_indxSampleType == (int)SampleType.Unicode)
             {
-                initialiseDataUnicode();
+                InitialiseDataUnicode();
 
                 cbSampleType.SelectedIndex = (int)SampleType.Unicode;
 
@@ -963,16 +952,15 @@ namespace PCLParaphernalia
 
         private void MetricsLoad()
         {
-            ToolMiscSamplesPersist.loadDataCommon(ref _indxPDL,
-                                                  ref _indxSampleType);
+            ToolMiscSamplesPersist.LoadDataCommon(ref _indxPDL, ref _indxSampleType);
 
-            ToolMiscSamplesPersist.loadDataCommonPDL(
+            ToolMiscSamplesPersist.LoadDataCommonPDL(
                 "PCL",
                 ref _indxOrientationPCL,
                 ref _indxPaperSizePCL,
                 ref _indxPaperTypePCL);
 
-            ToolMiscSamplesPersist.loadDataCommonPDL(
+            ToolMiscSamplesPersist.LoadDataCommonPDL(
                 "PCLXL",
                 ref _indxOrientationPCLXL,
                 ref _indxPaperSizePCLXL,
@@ -994,10 +982,10 @@ namespace PCLParaphernalia
 
             MetricsLoadDataColour();
             metricsLoadDataLogOper();
-            metricsLoadDataLogPage();
+            MetricsLoadDataLogPage();
             MetricsLoadDataPattern();
             MetricsLoadDataTxtMod();
-            metricsLoadDataUnicode();
+            MetricsLoadDataUnicode();
 
             //----------------------------------------------------------------//
 
@@ -1035,27 +1023,26 @@ namespace PCLParaphernalia
         {
             PdlOptionsStore();
 
-            ToolMiscSamplesPersist.saveDataCommon(_indxPDL,
-                                                  _indxSampleType);
+            ToolMiscSamplesPersist.SaveDataCommon(_indxPDL, _indxSampleType);
 
-            ToolMiscSamplesPersist.saveDataCommonPDL(
+            ToolMiscSamplesPersist.SaveDataCommonPDL(
                 "PCL",
                 _indxOrientationPCL,
                 _indxPaperSizePCL,
                 _indxPaperTypePCL);
 
-            ToolMiscSamplesPersist.saveDataCommonPDL(
+            ToolMiscSamplesPersist.SaveDataCommonPDL(
                 "PCLXL",
                 _indxOrientationPCLXL,
                 _indxPaperSizePCLXL,
                 _indxPaperTypePCLXL);
 
             MetricsSaveDataColour();
-            metricsSaveDataLogOper();
-            metricsSaveDataLogPage();
+            MetricsSaveDataLogOper();
+            MetricsSaveDataLogPage();
             MetricsSaveDataPattern();
             MetricsSaveDataTxtMod();
-            metricsSaveDataUnicode();
+            MetricsSaveDataUnicode();
         }
 
         //--------------------------------------------------------------------//
@@ -1138,10 +1125,7 @@ namespace PCLParaphernalia
                                                   ref netTimeoutSend,
                                                   ref netTimeoutReceive);
 
-                btnGenerate.Content = "Generate & send test data to " +
-                                      "\r\n" +
-                                      netPrnAddress + " : " +
-                                      netPrnPort.ToString();
+                btnGenerate.Content = "Generate & send test data to " + "\r\n" + netPrnAddress + " : " + netPrnPort.ToString();
             }
             else if (targetType == TargetCore.Target.WinPrinter)
             {
@@ -1149,9 +1133,7 @@ namespace PCLParaphernalia
 
                 TargetCore.MetricsLoadWinPrinter(ref winPrintername);
 
-                btnGenerate.Content = "Generate & send test data to printer " +
-                                      "\r\n" +
-                                      winPrintername;
+                btnGenerate.Content = "Generate & send test data to printer " + "\r\n" + winPrintername;
             }
         }
 
@@ -1187,77 +1169,49 @@ namespace PCLParaphernalia
 
             aspect = PCLOrientations.GetAspect(indxOrientation);
 
-            _paperSizeLongEdge =
-                PCLPaperSizes.GetSizeLongEdge(indxPaperSize,
-                                              _unitsPerInch);
+            _paperSizeLongEdge = PCLPaperSizes.GetSizeLongEdge(indxPaperSize, _unitsPerInch);
 
-            _paperSizeShortEdge =
-                PCLPaperSizes.GetSizeShortEdge(indxPaperSize,
-                                               _unitsPerInch);
+            _paperSizeShortEdge = PCLPaperSizes.GetSizeShortEdge(indxPaperSize, _unitsPerInch);
 
-            _paperMarginsUnprintable =
-                PCLPaperSizes.GetMarginsUnprintable(indxPaperSize,
-                                                    _unitsPerInch);
+            _paperMarginsUnprintable = PCLPaperSizes.GetMarginsUnprintable(indxPaperSize, _unitsPerInch);
 
-            _paperMarginsLogicalLand =
-                PCLPaperSizes.GetMarginsLogicalLand(indxPaperSize,
-                                                    _unitsPerInch);
+            _paperMarginsLogicalLand = PCLPaperSizes.GetMarginsLogicalLand(indxPaperSize, _unitsPerInch);
 
-            _paperMarginsLogicalPort =
-                PCLPaperSizes.GetMarginsLogicalPort(indxPaperSize,
-                                                    _unitsPerInch);
+            _paperMarginsLogicalPort = PCLPaperSizes.GetMarginsLogicalPort(indxPaperSize, _unitsPerInch);
 
             if (aspect == PCLOrientations.Aspect.Portrait)
             {
                 _paperMarginsLogicalLeft = _paperMarginsLogicalPort;
                 _paperMarginsLogicalTop = 0;
 
-                _paperWidthPhysical =
-                    _paperSizeShortEdge;
+                _paperWidthPhysical = _paperSizeShortEdge;
 
-                _paperLengthPhysical =
-                    _paperSizeLongEdge;
+                _paperLengthPhysical = _paperSizeLongEdge;
 
-                _paperWidthPrintable =
-                    (ushort)(_paperSizeShortEdge -
-                             (_paperMarginsUnprintable * 2));
+                _paperWidthPrintable = (ushort)(_paperSizeShortEdge - (_paperMarginsUnprintable * 2));
 
-                _paperLengthPrintable =
-                    (ushort)(_paperSizeLongEdge -
-                             (_paperMarginsUnprintable * 2));
+                _paperLengthPrintable = (ushort)(_paperSizeLongEdge - (_paperMarginsUnprintable * 2));
 
-                _paperWidthLogical =
-                    (ushort)(_paperSizeShortEdge -
-                             (_paperMarginsLogicalPort * 2));
+                _paperWidthLogical = (ushort)(_paperSizeShortEdge - (_paperMarginsLogicalPort * 2));
 
-                _paperLengthLogical =
-                    _paperSizeLongEdge;
+                _paperLengthLogical = _paperSizeLongEdge;
             }
             else
             {
                 _paperMarginsLogicalLeft = _paperMarginsLogicalLand;
                 _paperMarginsLogicalTop = 0;
 
-                _paperWidthPhysical =
-                    _paperSizeLongEdge;
+                _paperWidthPhysical = _paperSizeLongEdge;
 
-                _paperLengthPhysical =
-                    _paperSizeShortEdge;
+                _paperLengthPhysical = _paperSizeShortEdge;
 
-                _paperWidthPrintable =
-                    (ushort)(_paperSizeLongEdge -
-                             (_paperMarginsUnprintable * 2));
+                _paperWidthPrintable = (ushort)(_paperSizeLongEdge - (_paperMarginsUnprintable * 2));
 
-                _paperLengthPrintable =
-                    (ushort)(_paperSizeShortEdge -
-                             (_paperMarginsUnprintable * 2));
+                _paperLengthPrintable = (ushort)(_paperSizeShortEdge - (_paperMarginsUnprintable * 2));
 
-                _paperWidthLogical =
-                    (ushort)(_paperSizeLongEdge -
-                             (_paperMarginsLogicalLand * 2));
+                _paperWidthLogical = (ushort)(_paperSizeLongEdge - (_paperMarginsLogicalLand * 2));
 
-                _paperLengthLogical =
-                    _paperSizeShortEdge;
+                _paperLengthLogical = _paperSizeShortEdge;
             }
         }
     }

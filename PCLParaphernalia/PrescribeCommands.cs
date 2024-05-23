@@ -19,8 +19,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static readonly SortedList<string, PrescribeCommand> _cmds =
-            new SortedList<string, PrescribeCommand>();
+        private static readonly SortedList<string, PrescribeCommand> _cmds = new SortedList<string, PrescribeCommand>();
 
         private static PrescribeCommand _cmdUnknown;
         private static PrescribeCommand _cmdIntro;
@@ -35,7 +34,7 @@ namespace PCLParaphernalia
 
         static PrescribeCommands()
         {
-            populateTable();
+            PopulateTable();
         }
 
         //--------------------------------------------------------------------//
@@ -47,11 +46,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkCmd(string name,
-                                        ref string description,
-                                        ref bool flagCmdExit,
-                                        ref bool flagCmdSetCRC,
-                                        int level)
+        public static bool CheckCmd(string name, ref string description, ref bool flagCmdExit, ref bool flagCmdSetCRC, int level)
         {
             bool seqKnown = true;
 
@@ -72,7 +67,7 @@ namespace PCLParaphernalia
             flagCmdExit = cmd.IsCmdExit;
             flagCmdSetCRC = cmd.IsCmdSetCRC;
 
-            cmd.incrementStatisticsCount(level);
+            cmd.IncrementStatisticsCount(level);
 
             return seqKnown;
         }
@@ -86,12 +81,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void checkCmdIntro(ref string description,
-                                          int level)
+        public static void CheckCmdIntro(ref string description, int level)
         {
             description = _cmdIntro.Description;
 
-            _cmdIntro.incrementStatisticsCount(level);
+            _cmdIntro.IncrementStatisticsCount(level);
         }
 
         //--------------------------------------------------------------------//
@@ -103,12 +97,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int displayCmds(DataGrid grid)
+        public static int DisplayCmds(DataGrid grid)
         {
             int count = 0;
 
-            foreach (KeyValuePair<string, PrescribeCommand> kvp
-                in _cmds)
+            foreach (KeyValuePair<string, PrescribeCommand> kvp in _cmds)
             {
                 count++;
                 grid.Items.Add(kvp.Value);
@@ -126,8 +119,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCounts(DataTable table,
-                                               bool incUsedSeqsOnly)
+        public static void DisplayStatsCounts(DataTable table, bool incUsedSeqsOnly)
         {
             int count = 0;
 
@@ -151,7 +143,7 @@ namespace PCLParaphernalia
             {
                 if (!hddrWritten)
                 {
-                    displayStatsCountsHddr(table);
+                    DisplayStatsCountsHddr(table);
                     hddrWritten = true;
                 }
 
@@ -177,7 +169,7 @@ namespace PCLParaphernalia
             {
                 if (!hddrWritten)
                 {
-                    displayStatsCountsHddr(table);
+                    DisplayStatsCountsHddr(table);
                     hddrWritten = true;
                 }
 
@@ -194,8 +186,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            foreach (KeyValuePair<string, PrescribeCommand> kvp
-                in _cmds)
+            foreach (KeyValuePair<string, PrescribeCommand> kvp in _cmds)
             {
                 displaySeq = true;
 
@@ -211,7 +202,7 @@ namespace PCLParaphernalia
                 {
                     if (!hddrWritten)
                     {
-                        displayStatsCountsHddr(table);
+                        DisplayStatsCountsHddr(table);
                         hddrWritten = true;
                     }
 
@@ -237,7 +228,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCountsHddr(DataTable table)
+        public static void DisplayStatsCountsHddr(DataTable table)
         {
             //----------------------------------------------------------------//
 
@@ -281,7 +272,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCount()
+        public static int GetCount()
         {
             return _cmdCount;
         }
@@ -295,7 +286,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getDesc(string name)
+        public static string GetDesc(string name)
         {
             return _cmds[name].Description;
         }
@@ -309,7 +300,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getDescCmdIntro()
+        public static string GetDescCmdIntro()
         {
             return _cmdIntro.Description;
         }
@@ -337,7 +328,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void populateTable()
+        public static void PopulateTable()
         {
             string command = "?";
             _cmdUnknown =
@@ -1981,18 +1972,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void resetStatsCounts()
+        public static void ResetStatsCounts()
         {
             PrescribeCommand cmd;
 
-            _cmdUnknown.resetStatistics();
-            _cmdIntro.resetStatistics();
+            _cmdUnknown.ResetStatistics();
+            _cmdIntro.ResetStatistics();
 
             foreach (KeyValuePair<string, PrescribeCommand> kvp in _cmds)
             {
                 cmd = kvp.Value;
 
-                cmd.resetStatistics();
+                cmd.ResetStatistics();
             }
         }
     }

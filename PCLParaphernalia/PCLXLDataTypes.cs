@@ -70,8 +70,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static readonly SortedList<byte, PCLXLDataType> _tags =
-            new SortedList<byte, PCLXLDataType>();
+        private static readonly SortedList<byte, PCLXLDataType> _tags = new SortedList<byte, PCLXLDataType>();
 
         private static PCLXLDataType _tagUnknown;
 
@@ -298,8 +297,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void IncrementStatsCount(byte tagByte,
-                                                int level)
+        public static void IncrementStatsCount(byte tagByte, int level)
         {
             PCLXLDataType tag;
 
@@ -308,7 +306,7 @@ namespace PCLParaphernalia
             else
                 tag = _tagUnknown;
 
-            tag.incrementStatisticsCount(level);
+            tag.IncrementStatisticsCount(level);
         }
 
         //--------------------------------------------------------------------//
@@ -738,13 +736,13 @@ namespace PCLParaphernalia
         {
             PCLXLDataType tag;
 
-            _tagUnknown.resetStatistics();
+            _tagUnknown.ResetStatistics();
 
             foreach (KeyValuePair<byte, PCLXLDataType> kvp in _tags)
             {
                 tag = kvp.Value;
 
-                tag.resetStatistics();
+                tag.ResetStatistics();
             }
         }
     }

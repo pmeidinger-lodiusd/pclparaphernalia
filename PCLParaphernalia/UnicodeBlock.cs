@@ -16,10 +16,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UnicodeBlock(
-            uint rangeStart,
-            uint rangeEnd,
-            string name)
+        public UnicodeBlock(uint rangeStart, uint rangeEnd, string name)
         {
             RangeStart = rangeStart;
             RangeEnd = rangeEnd;

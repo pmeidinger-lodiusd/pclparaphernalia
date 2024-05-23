@@ -28,22 +28,15 @@ namespace PCLParaphernalia
 
         private static readonly PCLLocationType[] _locationTypes =
         {
-            new PCLLocationType(Type.All,            "2",
-                                "All locations"),
-            new PCLLocationType(Type.Current,        "1",
-                                "Currently selected"),
-            new PCLLocationType(Type.Internal,       "3",
-                                "Internal"),
-            new PCLLocationType(Type.Downloaded,     "4",
-                                "Downloaded entities"),
-            new PCLLocationType(Type.Cartridge,      "5",
-                                "Cartridge"),
-            new PCLLocationType(Type.ROMDevice,      "7",
-                                "SIMMs/DIMMs")
+            new PCLLocationType(Type.All,        "2", "All locations"),
+            new PCLLocationType(Type.Current,    "1", "Currently selected"),
+            new PCLLocationType(Type.Internal,   "3", "Internal"),
+            new PCLLocationType(Type.Downloaded, "4", "Downloaded entities"),
+            new PCLLocationType(Type.Cartridge,  "5", "Cartridge"),
+            new PCLLocationType(Type.ROMDevice,  "7", "SIMMs/DIMMs")
         };
 
-        private static readonly int _locationTypeCount =
-            _locationTypes.GetUpperBound(0) + 1;
+        private static readonly int _locationTypeCount = _locationTypes.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -70,7 +63,7 @@ namespace PCLParaphernalia
 
         public static string GetIdPCL(int selection)
         {
-            return _locationTypes[selection].getIdPCL();
+            return _locationTypes[selection].GetIdPCL();
         }
 
         //--------------------------------------------------------------------//
@@ -84,7 +77,7 @@ namespace PCLParaphernalia
 
         public static string GetName(int selection)
         {
-            return _locationTypes[selection].getName();
+            return _locationTypes[selection].GetName();
         }
 
         //--------------------------------------------------------------------//
@@ -98,7 +91,7 @@ namespace PCLParaphernalia
 
         public static Type GetType(int selection)
         {
-            return _locationTypes[selection].getType();
+            return _locationTypes[selection].GetLocationType();
         }
     }
 }

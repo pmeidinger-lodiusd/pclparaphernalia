@@ -27,10 +27,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLOrientation(PCLOrientations.Aspect aspect,
-                              string name,
-                              byte idPCL,
-                              byte idPCLXL)
+        public PCLOrientation(PCLOrientations.Aspect aspect, string name, byte idPCL, byte idPCLXL)
         {
             _orientationAspect = aspect;
             _orientationName = name;
@@ -47,7 +44,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLOrientations.Aspect getAspect()
+        public PCLOrientations.Aspect GetAspect()
         {
             return _orientationAspect;
         }
@@ -61,7 +58,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte getIdPCL()
+        public byte GetIdPCL()
         {
             return _orientationIdPCL;
         }
@@ -75,7 +72,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte getIdPCLXL()
+        public byte GetIdPCLXL()
         {
             return _orientationIdPCLXL;
         }
@@ -89,7 +86,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getName()
+        public string GetName()
         {
             return _orientationName;
         }

@@ -20,9 +20,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generateRequest(BinaryWriter prnWriter,
-                                           int indexEntity,
-                                           int indexLocType)
+        public static void GenerateRequest(BinaryWriter prnWriter, int indexEntity, int indexLocType)
         {
             string seq;
 
@@ -66,7 +64,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string readResponse()
+        public static string ReadResponse()
         {
             const int replyBufLen = 32768;
 
@@ -85,10 +83,7 @@ namespace PCLParaphernalia
 
             while (!replyComplete)
             {
-                OK = TargetCore.ResponseReadBlock(offset,
-                                                   bufRem,
-                                                   ref replyData,
-                                                   ref blockLen);
+                OK = TargetCore.ResponseReadBlock(offset, bufRem, ref replyData, ref blockLen);
 
                 endOffset = offset + blockLen;
 
@@ -154,9 +149,7 @@ namespace PCLParaphernalia
 
             TargetCore.ResponseCloseConnection();
 
-            return System.Text.Encoding.ASCII.GetString(replyData,
-                                                         0,
-                                                         replyLen);
+            return System.Text.Encoding.ASCII.GetString(replyData, 0, replyLen);
         }
 
         //--------------------------------------------------------------------//
@@ -168,7 +161,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void sendRequest()
+        public static void SendRequest()
         {
             TargetCore.RequestStreamWrite(true);
         }

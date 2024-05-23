@@ -39,7 +39,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generate(
+        public static void Generate(
             ReportCore.RptFileFmt rptFileFmt,
             DataTable table,
             string prnFilename,
@@ -64,10 +64,7 @@ namespace PCLParaphernalia
 
             saveFilename = ovlFilename + "_report." + fileExt;
 
-            OK = ReportCore.DocOpen(rptFileFmt,
-                                     ref saveFilename,
-                                     ref stream,
-                                     ref writer);
+            OK = ReportCore.DocOpen(rptFileFmt, ref saveFilename, ref stream, ref writer);
 
             if (OK)
             {
@@ -81,27 +78,18 @@ namespace PCLParaphernalia
                     string[] rowClrBack = new string[ctClrMapRowTypes];
                     string[] rowClrFore = new string[ctClrMapRowTypes];
 
-                    getRowColourStyleData(options,
-                                           ref rowClasses,
-                                           ref rowClrBack,
-                                           ref rowClrFore);
+                    GetRowColourStyleData(options, ref rowClasses, ref rowClrBack, ref rowClrFore);
 
-                    ReportCore.DocInitialise(rptFileFmt, writer, true, false,
-                                              ctClrMapRowTypes, rowClasses,
-                                              rowClrBack, rowClrFore);
+                    ReportCore.DocInitialise(rptFileFmt, writer, true, false, ctClrMapRowTypes, rowClasses, rowClrBack, rowClrFore);
                 }
                 else
                 {
-                    ReportCore.DocInitialise(rptFileFmt, writer, true, false,
-                                              0, null,
-                                              null, null);
+                    ReportCore.DocInitialise(rptFileFmt, writer, true, false, 0, null, null, null);
                 }
 
-                reportHeader(rptFileFmt, writer,
-                              prnFilename, ovlFilename);
+                ReportHeader(rptFileFmt, writer, prnFilename, ovlFilename);
 
-                reportBody(rptFileFmt, writer,
-                            table, flagOffsetHex);
+                ReportBody(rptFileFmt, writer, table, flagOffsetHex);
 
                 ReportCore.DocFinalise(rptFileFmt, writer);
 
@@ -118,7 +106,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void getRowColourStyleData(
+        private static void GetRowColourStyleData(
             PrnParseOptions options,
             ref string[] classes,
             ref string[] clrBack,
@@ -140,12 +128,9 @@ namespace PCLParaphernalia
             int[] indxClrMapBack = new int[ctClrMapRowTypes];
             int[] indxClrMapFore = new int[ctClrMapRowTypes];
 
-            options.getOptClrMap(ref flagClrMapUseClr,
-                                  ref indxClrMapBack,
-                                  ref indxClrMapFore);
+            options.GetOptClrMap(ref flagClrMapUseClr, ref indxClrMapBack, ref indxClrMapFore);
 
-            options.getOptClrMapStdClrs(ref ctClrMapStdClrs,
-                                         ref stdClrsPropertyInfo);
+            options.GetOptClrMapStdClrs(ref ctClrMapStdClrs, ref stdClrsPropertyInfo);
 
             //----------------------------------------------------------------//
 
@@ -175,10 +160,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void reportBody(ReportCore.RptFileFmt rptFileFmt,
-                                        object writer,
-                                        DataTable table,
-                                        bool flagOffsetHex)
+        private static void ReportBody(ReportCore.RptFileFmt rptFileFmt, object writer, DataTable table, bool flagOffsetHex)
         {
             const int colCt = 5;
 
@@ -234,9 +216,7 @@ namespace PCLParaphernalia
 
                 int indxRowType = (int)row[rtName];
 
-                string rowType = Enum.GetName
-                                    (typeof(PrnParseRowTypes.Type),
-                                     indxRowType);
+                string rowType = Enum.GetName(typeof(PrnParseRowTypes.Type), indxRowType);
 
                 ReportCore.TableRowData(
                     writer, rptFileFmt,
@@ -263,7 +243,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void reportHeader(
+        private static void ReportHeader(
             ReportCore.RptFileFmt rptFileFmt,
             object writer,
             string prnFilename,

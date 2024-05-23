@@ -11,8 +11,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
-    [System.Reflection.Obfuscation(Feature = "renaming",
-                                            ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     public partial class ToolMiscSamples : Window
     {
@@ -78,8 +77,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkColourOptFormAsMacro_Checked (object sender,
-                                                      RoutedEventArgs e)
+        private void chkColourOptFormAsMacro_Checked (object sender, RoutedEventArgs e)
         {
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                 _flagColourFormAsMacroPCL = true;
@@ -96,8 +94,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkColourOptFormAsMacro_Unchecked (object sender,
-                                                        RoutedEventArgs e)
+        private void chkColourOptFormAsMacro_Unchecked (object sender, RoutedEventArgs e)
         {
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                 _flagColourFormAsMacroPCL = false;
@@ -327,7 +324,7 @@ namespace PCLParaphernalia
             InitialiseDescColour();
         }
 
-        //--------------------------------------------------------------------//
+        //--------------------------------------------------------------------// 
         //                                                        M e t h o d //
         // i n i t i a l i s e D e s c C o l o u r                            //
         //--------------------------------------------------------------------//
@@ -370,13 +367,11 @@ namespace PCLParaphernalia
             {
                 if (_indxColourTypePCLXL == ColourType.PCLXL_Gray)
                 {
-                    txtColourDesc.Text =
-                        "Shows samples of PCL XL colour space Gray.";
+                    txtColourDesc.Text = "Shows samples of PCL XL colour space Gray.";
                 }
                 else
                 {
-                    txtColourDesc.Text =
-                        "Shows samples of PCL XL colour space RGB.";
+                    txtColourDesc.Text = "Shows samples of PCL XL colour space RGB.";
                 }
             }
         }
@@ -394,7 +389,7 @@ namespace PCLParaphernalia
         {
             int tmpInt = 0;
 
-            ToolMiscSamplesPersist.loadDataTypeColour(
+            ToolMiscSamplesPersist.LoadDataTypeColour(
                 "PCL",
                 ref tmpInt,
                 ref _flagColourFormAsMacroPCL,
@@ -416,7 +411,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            ToolMiscSamplesPersist.loadDataTypeColour(
+            ToolMiscSamplesPersist.LoadDataTypeColour(
                 "PCLXL",
                 ref tmpInt,
                 ref _flagColourFormAsMacroPCLXL,
@@ -457,31 +452,31 @@ namespace PCLParaphernalia
 
         public void MetricsSaveDataColour()
         {
-            ToolMiscSamplesPersist.saveDataTypeColour(
+            ToolMiscSamplesPersist.SaveDataTypeColour(
                 "PCL",
                 (int)_indxColourTypePCL,
                 _flagColourFormAsMacroPCL,
                 _flagColourFmtHexPCL);
 
-            ToolMiscSamplesPersist.saveDataTypeColourSample(
+            ToolMiscSamplesPersist.SaveDataTypeColourSample(
                 "PCL",
                 "Imaging",
                 _sampleCtPCL_CID,
                 _samplesPCL_CID);
 
-            ToolMiscSamplesPersist.saveDataTypeColour(
+            ToolMiscSamplesPersist.SaveDataTypeColour(
                 "PCLXL",
                 (int)_indxColourTypePCLXL,
                 _flagColourFormAsMacroPCLXL,
                 _flagColourFmtHexPCLXL);
 
-            ToolMiscSamplesPersist.saveDataTypeColourSample(
+            ToolMiscSamplesPersist.SaveDataTypeColourSample(
                 "PCLXL",
                 "Gray",
                 _sampleCtPCLXL_RGB,
                 _samplesPCLXL_Gray);
 
-            ToolMiscSamplesPersist.saveDataTypeColourSample(
+            ToolMiscSamplesPersist.SaveDataTypeColourSample(
                 "PCLXL",
                 "RGB",
                 _sampleCtPCLXL_RGB,
@@ -497,8 +492,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbColourModePCL_Imaging_Click(object sender,
-                                                    RoutedEventArgs e)
+        private void rbColourModePCL_Imaging_Click(object sender, RoutedEventArgs e)
         {
             if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
@@ -577,8 +571,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbColourModePCLXL_RGB_Click(object sender,
-                                                  RoutedEventArgs e)
+        private void rbColourModePCLXL_RGB_Click(object sender, RoutedEventArgs e)
         {
             if (_crntPDL == ToolCommonData.PrintLang.PCLXL)
                 _indxColourTypePCLXL = ColourType.PCLXL_RGB;
@@ -604,8 +597,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbColourOptPCLFmtDec_Click(object sender,
-                                                 RoutedEventArgs e)
+        private void rbColourOptPCLFmtDec_Click(object sender, RoutedEventArgs e)
         {
             _flagColourFmtHexPCL = false;
 
@@ -621,8 +613,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbColourOptPCLFmtHex_Click(object sender,
-                                                 RoutedEventArgs e)
+        private void rbColourOptPCLFmtHex_Click(object sender, RoutedEventArgs e)
         {
             _flagColourFmtHexPCL = true;
 
@@ -638,8 +629,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbColourOptPCLXLFmtDec_Click(object sender,
-                                                   RoutedEventArgs e)
+        private void rbColourOptPCLXLFmtDec_Click(object sender, RoutedEventArgs e)
         {
             _flagColourFmtHexPCLXL = false;
 
@@ -658,8 +648,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbColourOptPCLXLFmtHex_Click(object sender,
-                                                    RoutedEventArgs e)
+        private void rbColourOptPCLXLFmtHex_Click(object sender, RoutedEventArgs e)
         {
             _flagColourFmtHexPCLXL = true;
 
@@ -678,7 +667,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setFlagColourFormAsMacro(
+        private void SetFlagColourFormAsMacro(
             bool setFlag,
             ToolCommonData.PrintLang crntPDL)
         {
@@ -747,8 +736,7 @@ namespace PCLParaphernalia
 
             if (!flagOK)
             {
-                MessageBox.Show("Unable to detemine which mapping text box" +
-                                 " has just lost focus!",
+                MessageBox.Show("Unable to detemine which mapping text box has just lost focus!",
                                  "***** Internal error *****",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Warning);
@@ -766,8 +754,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtColourPCL_CID_GotFocus(object sender,
-                                                RoutedEventArgs e)
+        private void txtColourPCL_CID_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox source = e.Source as TextBox;
 
@@ -783,8 +770,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtColourPCL_CID_LostFocus(object sender,
-                                                 RoutedEventArgs e)
+        private void txtColourPCL_CID_LostFocus(object sender, RoutedEventArgs e)
         {
             int nameRootLen = _txtBoxRootNamePCL_CID.Length;
 
@@ -824,8 +810,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtColourPCLXL_Gray_GotFocus(object sender,
-                                                   RoutedEventArgs e)
+        private void txtColourPCLXL_Gray_GotFocus(object sender, RoutedEventArgs e)
         {
             int nameRootLen = _txtBoxRootNamePCLXL_Gray.Length;
 
@@ -865,8 +850,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtColourPCLXL_Gray_LostFocus(object sender,
-                                                    RoutedEventArgs e)
+        private void txtColourPCLXL_Gray_LostFocus(object sender, RoutedEventArgs e)
         {
             int nameRootLen = _txtBoxRootNamePCLXL_RGB.Length;
 
@@ -906,8 +890,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtColourPCLXL_RGB_GotFocus(object sender,
-                                                  RoutedEventArgs e)
+        private void txtColourPCLXL_RGB_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox source = e.Source as TextBox;
 
@@ -923,8 +906,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtColourPCLXL_RGB_LostFocus(object sender,
-                                                   RoutedEventArgs e)
+        private void txtColourPCLXL_RGB_LostFocus(object sender, RoutedEventArgs e)
         {
             //
         }

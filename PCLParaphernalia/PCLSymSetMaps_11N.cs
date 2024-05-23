@@ -26,7 +26,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void unicodeMap_11N()
+        private static void UnicodeMap_11N()
         {
             const SymSetMapId mapId = SymSetMapId.map_11N;
 

@@ -12,11 +12,11 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    [System.Reflection.Obfuscation(Feature = "renaming",
-                                            ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0017:Simplify object initialization", Justification = "<Pending>")]
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+
     public partial class ToolPrintLang : Window
     {
         //--------------------------------------------------------------------//
@@ -116,7 +116,7 @@ namespace PCLParaphernalia
         {
             InitializeComponent();
 
-            initialise();
+            Initialise();
 
             crntPDL = ToolCommonData.PrintLang.Unknown;
         }
@@ -135,25 +135,25 @@ namespace PCLParaphernalia
             InfoType infoType = (InfoType)_indxType;
 
             if (infoType == InfoType.PCL)
-                displayPCLSeqs();
+                DisplayPCLSeqs();
             else if (infoType == InfoType.HPGL2)
-                displayHPGL2Commands();
+                DisplayHPGL2Commands();
             else if (infoType == InfoType.PCLXLTags)
-                displayPCLXLTags();
+                DisplayPCLXLTags();
             else if (infoType == InfoType.PCLXLEnums)
-                displayPCLXLEnums();
+                DisplayPCLXLEnums();
             else if (infoType == InfoType.PJLCmds)
-                displayPJLCmds();
+                DisplayPJLCmds();
             else if (infoType == InfoType.PMLTags)
-                displayPMLTags();
+                DisplayPMLTags();
             else if (infoType == InfoType.SymbolSets)
-                displaySymbolSetData();
+                DisplaySymbolSetData();
             else if (infoType == InfoType.Fonts)
-                displayFontData();
+                DisplayFontData();
             else if (infoType == InfoType.PaperSizes)
-                displayPaperSizeData();
+                DisplayPaperSizeData();
             else if (infoType == InfoType.PrescribeCmds)
-                displayPrescribeCmds();
+                DisplayPrescribeCmds();
 
             btnSaveReport.Visibility = Visibility.Visible;
         }
@@ -179,7 +179,7 @@ namespace PCLParaphernalia
                                              ref rptChkMarks,
                                              ref flagOptRptWrap);
 
-            ToolPrintLangReport.generate(_subsetTypes[_indxType],
+            ToolPrintLangReport.Generate(_subsetTypes[_indxType],
                                           rptFileFmt,
                                           rptChkMarks,
                                           dgSeq,
@@ -215,8 +215,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkFontOptMap_Checked(object sender,
-                                           RoutedEventArgs e)
+        private void chkFontOptMap_Checked(object sender, RoutedEventArgs e)
         {
             _flagSymSetList = true;
 
@@ -224,7 +223,7 @@ namespace PCLParaphernalia
             lbFontMapComment2.Visibility = Visibility.Visible;
             lbFontMapComment3.Visibility = Visibility.Visible;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -237,8 +236,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkFontOptMap_Unchecked(object sender,
-                                             RoutedEventArgs e)
+        private void chkFontOptMap_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagSymSetList = false;
 
@@ -246,7 +244,7 @@ namespace PCLParaphernalia
             lbFontMapComment2.Visibility = Visibility.Hidden;
             lbFontMapComment3.Visibility = Visibility.Hidden;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -258,12 +256,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLOptDiscrete_Checked(object sender,
-                                               RoutedEventArgs e)
+        private void chkPCLOptDiscrete_Checked(object sender, RoutedEventArgs e)
         {
             _flagPCLOptDiscrete = true;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -275,12 +272,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLOptDiscrete_Unchecked(object sender,
-                                                 RoutedEventArgs e)
+        private void chkPCLOptDiscrete_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagPCLOptDiscrete = false;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -292,12 +288,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLOptObsolete_Checked(object sender,
-                                               RoutedEventArgs e)
+        private void chkPCLOptObsolete_Checked(object sender, RoutedEventArgs e)
         {
             _flagPCLOptObsolete = true;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -309,12 +304,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLOptObsolete_Unchecked(object sender,
-                                                 RoutedEventArgs e)
+        private void chkPCLOptObsolete_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagPCLOptObsolete = false;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -326,12 +320,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLSeqComplex_Checked(object sender,
-                                              RoutedEventArgs e)
+        private void chkPCLSeqComplex_Checked(object sender, RoutedEventArgs e)
         {
             _flagPCLSeqComplex = true;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -343,12 +336,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLSeqComplex_Unchecked(object sender,
-                                                RoutedEventArgs e)
+        private void chkPCLSeqComplex_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagPCLSeqComplex = false;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -360,12 +352,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLSeqControl_Checked(object sender,
-                                              RoutedEventArgs e)
+        private void chkPCLSeqControl_Checked(object sender, RoutedEventArgs e)
         {
             _flagPCLSeqControl = true;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -377,12 +368,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLSeqControl_Unchecked(object sender,
-                                                RoutedEventArgs e)
+        private void chkPCLSeqControl_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagPCLSeqControl = false;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -394,12 +384,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLSeqSimple_Checked(object sender,
-                                             RoutedEventArgs e)
+        private void chkPCLSeqSimple_Checked(object sender, RoutedEventArgs e)
         {
             _flagPCLSeqSimple = true;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -411,12 +400,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLSeqSimple_Unchecked(object sender,
-                                               RoutedEventArgs e)
+        private void chkPCLSeqSimple_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagPCLSeqSimple = false;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -428,12 +416,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLXLOptReserved_Checked(object sender,
-                                                 RoutedEventArgs e)
+        private void chkPCLXLOptReserved_Checked(object sender, RoutedEventArgs e)
         {
             _flagPCLXLOptReserved = true;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -445,12 +432,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLXLOptReserved_Unchecked(object sender,
-                                                   RoutedEventArgs e)
+        private void chkPCLXLOptReserved_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagPCLXLOptReserved = false;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -462,12 +448,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLXLTagAttrDefiner_Checked(object sender,
-                                                    RoutedEventArgs e)
+        private void chkPCLXLTagAttrDefiner_Checked(object sender, RoutedEventArgs e)
         {
             _flagPCLXLTagAttrDef = true;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -479,12 +464,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLXLTagAttrDefiner_Unchecked(object sender,
-                                                      RoutedEventArgs e)
+        private void chkPCLXLTagAttrDefiner_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagPCLXLTagAttrDef = false;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -496,12 +480,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLXLTagAttribute_Checked(object sender,
-                                                  RoutedEventArgs e)
+        private void chkPCLXLTagAttribute_Checked(object sender, RoutedEventArgs e)
         {
             _flagPCLXLTagAttribute = true;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -513,12 +496,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLXLTagAttribute_Unchecked(object sender,
-                                                    RoutedEventArgs e)
+        private void chkPCLXLTagAttribute_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagPCLXLTagAttribute = false;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -530,12 +512,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLXLTagDataType_Checked(object sender,
-                                                 RoutedEventArgs e)
+        private void chkPCLXLTagDataType_Checked(object sender, RoutedEventArgs e)
         {
             _flagPCLXLTagDataType = true;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -547,12 +528,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLXLTagDataType_Unchecked(object sender,
-                                                   RoutedEventArgs e)
+        private void chkPCLXLTagDataType_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagPCLXLTagDataType = false;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -564,12 +544,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLXLTagEmbedDataLen_Checked(object sender,
-                                                     RoutedEventArgs e)
+        private void chkPCLXLTagEmbedDataLen_Checked(object sender, RoutedEventArgs e)
         {
             _flagPCLXLTagEmbedDataLen = true;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -581,12 +560,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLXLTagEmbedDataLen_Unchecked(object sender,
-                                                       RoutedEventArgs e)
+        private void chkPCLXLTagEmbedDataLen_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagPCLXLTagEmbedDataLen = false;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -598,12 +576,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLXLTagOperator_Checked(object sender,
-                                                 RoutedEventArgs e)
+        private void chkPCLXLTagOperator_Checked(object sender, RoutedEventArgs e)
         {
             _flagPCLXLTagOperator = true;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -615,12 +592,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLXLTagOperator_Unchecked(object sender,
-                                                   RoutedEventArgs e)
+        private void chkPCLXLTagOperator_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagPCLXLTagOperator = false;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -632,12 +608,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLXLTagWhitespace_Checked(object sender,
-                                                   RoutedEventArgs e)
+        private void chkPCLXLTagWhitespace_Checked(object sender, RoutedEventArgs e)
         {
             _flagPCLXLTagWhitespace = true;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -649,12 +624,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLXLTagWhitespace_Unchecked(object sender,
-                                                     RoutedEventArgs e)
+        private void chkPCLXLTagWhitespace_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagPCLXLTagWhitespace = false;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -666,12 +640,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPMLTagAction_Checked(object sender,
-                                             RoutedEventArgs e)
+        private void chkPMLTagAction_Checked(object sender, RoutedEventArgs e)
         {
             _flagPMLTagAction = true;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -683,12 +656,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPMLTagAction_Unchecked(object sender,
-                                               RoutedEventArgs e)
+        private void chkPMLTagAction_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagPMLTagAction = false;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -700,12 +672,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPMLTagDataType_Checked(object sender,
-                                               RoutedEventArgs e)
+        private void chkPMLTagDataType_Checked(object sender, RoutedEventArgs e)
         {
             _flagPMLTagDataType = true;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -717,12 +688,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPMLTagDataType_Unchecked(object sender,
-                                                 RoutedEventArgs e)
+        private void chkPMLTagDataType_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagPMLTagDataType = false;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -734,12 +704,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPMLTagOutcome_Checked(object sender,
-                                              RoutedEventArgs e)
+        private void chkPMLTagOutcome_Checked(object sender, RoutedEventArgs e)
         {
             _flagPMLTagOutcome = true;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -751,12 +720,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPMLTagOutcome_Unchecked(object sender,
-                                                RoutedEventArgs e)
+        private void chkPMLTagOutcome_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagPMLTagOutcome = false;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -769,15 +737,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkSymSetOptMap_Checked(object sender,
-                                              RoutedEventArgs e)
+        private void chkSymSetOptMap_Checked(object sender, RoutedEventArgs e)
         {
             _flagSymSetMap = true;
 
             //  grpSymSetMapSet.Visibility = Visibility.Visible;
             grpSymSetMapType.Visibility = Visibility.Visible;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -790,15 +757,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkSymSetOptMap_Unchecked(object sender,
-                                                RoutedEventArgs e)
+        private void chkSymSetOptMap_Unchecked(object sender, RoutedEventArgs e)
         {
             _flagSymSetMap = false;
 
             //   grpSymSetMapSet.Visibility = Visibility.Hidden;
             grpSymSetMapType.Visibility = Visibility.Hidden;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -810,7 +776,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void clearDetails()
+        private void ClearDetails()
         {
             if (_initialised)
             {
@@ -831,9 +797,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void displayFontData()
+        private void DisplayFontData()
         {
-            setColsFonts();
+            SetColsFonts();
 
             dgSeq.Items.Clear();
 
@@ -851,9 +817,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void displayHPGL2Commands()
+        private void DisplayHPGL2Commands()
         {
-            setColsHPGL2();
+            SetColsHPGL2();
 
             dgSeq.Items.Clear();
 
@@ -871,9 +837,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void displayPaperSizeData()
+        private void DisplayPaperSizeData()
         {
-            setColsPaperSizes();
+            SetColsPaperSizes();
 
             dgSeq.Items.Clear();
 
@@ -891,7 +857,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void displayPCLSeqs()
+        private void DisplayPCLSeqs()
         {
             if ((!_flagPCLSeqSimple) &&
                 (!_flagPCLSeqComplex) &&
@@ -904,20 +870,20 @@ namespace PCLParaphernalia
             }
             else
             {
-                setColsPCL();
+                SetColsPCL();
 
                 dgSeq.Items.Clear();
 
                 _ctItems = 0;
 
                 if (chkPCLSeqControl.IsChecked == true)
-                    _ctItems += PCLControlCodes.displaySeqList(dgSeq);
+                    _ctItems += PCLControlCodes.DisplaySeqList(dgSeq);
 
                 if (chkPCLSeqSimple.IsChecked == true)
-                    _ctItems += PCLSimpleSeqs.displaySeqList(dgSeq, _flagPCLOptObsolete);
+                    _ctItems += PCLSimpleSeqs.DisplaySeqList(dgSeq, _flagPCLOptObsolete);
 
                 if (chkPCLSeqComplex.IsChecked == true)
-                    _ctItems += PCLComplexSeqs.displaySeqList(dgSeq, _flagPCLOptObsolete, _flagPCLOptDiscrete);
+                    _ctItems += PCLComplexSeqs.DisplaySeqList(dgSeq, _flagPCLOptObsolete, _flagPCLOptDiscrete);
 
                 txtCount.Text = _ctItems.ToString();
             }
@@ -932,9 +898,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void displayPCLXLEnums()
+        private void DisplayPCLXLEnums()
         {
-            setColsPCLXLEnums();
+            SetColsPCLXLEnums();
 
             dgSeq.Items.Clear();
 
@@ -952,7 +918,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void displayPCLXLTags()
+        private void DisplayPCLXLTags()
         {
             if ((!_flagPCLXLTagDataType) &&
                 (!_flagPCLXLTagAttribute) &&
@@ -968,7 +934,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                setColsPCLXLTags();
+                SetColsPCLXLTags();
 
                 dgSeq.Items.Clear();
 
@@ -990,7 +956,7 @@ namespace PCLParaphernalia
                     _ctItems += PCLXLOperators.DisplayTags(dgSeq, _flagPCLXLOptReserved);
 
                 if (_flagPCLXLTagWhitespace)
-                    _ctItems += PCLXLWhitespaces.displayTags(dgSeq);
+                    _ctItems += PCLXLWhitespaces.DisplayTags(dgSeq);
 
                 txtCount.Text = _ctItems.ToString();
             }
@@ -1005,9 +971,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void displayPJLCmds()
+        private void DisplayPJLCmds()
         {
-            setColsPJLCmds();
+            SetColsPJLCmds();
 
             dgSeq.Items.Clear();
 
@@ -1025,7 +991,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void displayPMLTags()
+        private void DisplayPMLTags()
         {
             if ((!_flagPMLTagDataType) &&
                 (!_flagPMLTagAction) &&
@@ -1038,7 +1004,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                setColsPMLTags();
+                SetColsPMLTags();
 
                 dgSeq.Items.Clear();
 
@@ -1048,7 +1014,7 @@ namespace PCLParaphernalia
                     _ctItems += PMLDataTypes.DisplayTags(dgSeq);
 
                 if (_flagPMLTagAction)
-                    _ctItems += PMLActions.displayTags(dgSeq);
+                    _ctItems += PMLActions.DisplayTags(dgSeq);
 
                 if (_flagPMLTagOutcome)
                     _ctItems += PMLOutcomes.displayTags(dgSeq);
@@ -1066,13 +1032,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void displayPrescribeCmds()
+        private void DisplayPrescribeCmds()
         {
-            setColsPrescribeCmds();
+            SetColsPrescribeCmds();
 
             dgSeq.Items.Clear();
 
-            _ctItems = PrescribeCommands.displayCmds(dgSeq);
+            _ctItems = PrescribeCommands.DisplayCmds(dgSeq);
 
             txtCount.Text = _ctItems.ToString();
         }
@@ -1086,9 +1052,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void displaySymbolSetData()
+        private void DisplaySymbolSetData()
         {
-            setColsSymbolSets();
+            SetColsSymbolSets();
 
             dgSeq.Items.Clear();
 
@@ -1103,7 +1069,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void giveCrntPDL(ref ToolCommonData.PrintLang crntPDL)
+        public void GiveCrntPDL(ref ToolCommonData.PrintLang crntPDL)
         {
             crntPDL = ToolCommonData.PrintLang.Unknown;
         }
@@ -1117,7 +1083,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialise()
+        private void Initialise()
         {
             InfoType infoType;
 
@@ -1139,7 +1105,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            resetTarget();
+            ResetTarget();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1147,7 +1113,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            metricsLoad();
+            MetricsLoad();
 
             infoType = (InfoType)_indxType;
 
@@ -1155,61 +1121,61 @@ namespace PCLParaphernalia
             {
                 rbSelTypeHPGL2.IsChecked = true;
                 tabInfoType.SelectedItem = tabHPGL2;
-                setColsHPGL2();
+                SetColsHPGL2();
             }
             else if (infoType == InfoType.PCL)
             {
                 rbSelTypePCL.IsChecked = true;
                 tabInfoType.SelectedItem = tabPCL;
-                setColsPCL();
+                SetColsPCL();
             }
             else if (infoType == InfoType.PCLXLEnums)
             {
                 rbSelTypePCLXLEnums.IsChecked = true;
                 tabInfoType.SelectedItem = tabPCLXLEnums;
-                setColsPCLXLEnums();
+                SetColsPCLXLEnums();
             }
             else if (infoType == InfoType.PCLXLTags)
             {
                 rbSelTypePCLXLTags.IsChecked = true;
                 tabInfoType.SelectedItem = tabPCLXLTags;
-                setColsPCLXLTags();
+                SetColsPCLXLTags();
             }
             else if (infoType == InfoType.PJLCmds)
             {
                 rbSelTypePJLCmds.IsChecked = true;
                 tabInfoType.SelectedItem = tabPJLCmds;
-                setColsPJLCmds();
+                SetColsPJLCmds();
             }
             else if (infoType == InfoType.PMLTags)
             {
                 rbSelTypePMLTags.IsChecked = true;
                 tabInfoType.SelectedItem = tabPMLTags;
-                setColsPMLTags();
+                SetColsPMLTags();
             }
             else if (infoType == InfoType.SymbolSets)
             {
                 rbSelTypeSymbolSets.IsChecked = true;
                 tabInfoType.SelectedItem = tabSymbolSets;
-                setColsSymbolSets();
+                SetColsSymbolSets();
             }
             else if (infoType == InfoType.Fonts)
             {
                 rbSelTypeFonts.IsChecked = true;
                 tabInfoType.SelectedItem = tabFonts;
-                setColsFonts();
+                SetColsFonts();
             }
             else if (infoType == InfoType.PaperSizes)
             {
                 rbSelTypePaperSizes.IsChecked = true;
                 tabInfoType.SelectedItem = tabPaperSizes;
-                setColsPaperSizes();
+                SetColsPaperSizes();
             }
             else
             {
                 rbSelTypePCL.IsChecked = true;
                 tabInfoType.SelectedItem = tabPCL;
-                setColsPCL();
+                SetColsPCL();
             }
 
             _initialised = true;
@@ -1224,14 +1190,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsLoad()
+        private void MetricsLoad()
         {
             int tmpInt = 0;
 
-            ToolPrintLangPersist.loadDataCommon(ref _indxType,
+            ToolPrintLangPersist.LoadDataCommon(ref _indxType,
                                                  ref _saveFilename);
 
-            ToolPrintLangPersist.loadDataPCL(ref _flagPCLSeqControl,
+            ToolPrintLangPersist.LoadDataPCL(ref _flagPCLSeqControl,
                                               ref _flagPCLSeqSimple,
                                               ref _flagPCLSeqComplex,
                                               ref _flagPCLOptObsolete,
@@ -1245,13 +1211,13 @@ namespace PCLParaphernalia
                                                 ref _flagPCLXLTagWhitespace,
                                                 ref _flagPCLXLOptReserved);
 
-            ToolPrintLangPersist.loadDataPML(ref _flagPMLTagDataType,
+            ToolPrintLangPersist.LoadDataPML(ref _flagPMLTagDataType,
                                               ref _flagPMLTagAction,
                                               ref _flagPMLTagOutcome);
 
-            ToolPrintLangPersist.loadDataFonts(ref _flagSymSetList);
+            ToolPrintLangPersist.LoadDataFonts(ref _flagSymSetList);
 
-            ToolPrintLangPersist.loadDataSymSets(ref _flagSymSetMap,
+            ToolPrintLangPersist.LoadDataSymSets(ref _flagSymSetMap,
                                                   ref tmpInt);
 
             //----------------------------------------------------------------//
@@ -1337,18 +1303,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsSave()
+        public void MetricsSave()
         {
-            ToolPrintLangPersist.saveDataCommon(_indxType,
+            ToolPrintLangPersist.SaveDataCommon(_indxType,
                                                  _saveFilename);
 
-            ToolPrintLangPersist.saveDataPCL(_flagPCLSeqControl,
+            ToolPrintLangPersist.SaveDataPCL(_flagPCLSeqControl,
                                               _flagPCLSeqSimple,
                                               _flagPCLSeqComplex,
                                               _flagPCLOptObsolete,
                                               _flagPCLOptDiscrete);
 
-            ToolPrintLangPersist.saveDataPCLXL(_flagPCLXLTagDataType,
+            ToolPrintLangPersist.SaveDataPCLXL(_flagPCLXLTagDataType,
                                                 _flagPCLXLTagAttribute,
                                                 _flagPCLXLTagOperator,
                                                 _flagPCLXLTagAttrDef,
@@ -1356,13 +1322,13 @@ namespace PCLParaphernalia
                                                 _flagPCLXLTagWhitespace,
                                                 _flagPCLXLOptReserved);
 
-            ToolPrintLangPersist.saveDataPML(_flagPMLTagDataType,
+            ToolPrintLangPersist.SaveDataPML(_flagPMLTagDataType,
                                               _flagPMLTagAction,
                                               _flagPMLTagOutcome);
 
             ToolPrintLangPersist.saveDataFonts(_flagSymSetList);
 
-            ToolPrintLangPersist.saveDataSymSets(_flagSymSetMap,
+            ToolPrintLangPersist.SaveDataSymSets(_flagSymSetMap,
                                                   (int)_symSetMapType);
         }
 
@@ -1381,9 +1347,9 @@ namespace PCLParaphernalia
 
             tabInfoType.SelectedItem = tabFonts;
 
-            clearDetails();
+            ClearDetails();
 
-            setColsFonts();
+            SetColsFonts();
         }
 
         //--------------------------------------------------------------------//
@@ -1401,9 +1367,9 @@ namespace PCLParaphernalia
 
             tabInfoType.SelectedItem = tabHPGL2;
 
-            clearDetails();
+            ClearDetails();
 
-            setColsHPGL2();
+            SetColsHPGL2();
         }
 
         //--------------------------------------------------------------------//
@@ -1415,16 +1381,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbSelTypePaperSizes_Click(object sender,
-                                               RoutedEventArgs e)
+        private void rbSelTypePaperSizes_Click(object sender, RoutedEventArgs e)
         {
             _indxType = (int)InfoType.PaperSizes;
 
             tabInfoType.SelectedItem = tabPaperSizes;
 
-            clearDetails();
+            ClearDetails();
 
-            setColsPaperSizes();
+            SetColsPaperSizes();
         }
 
         //--------------------------------------------------------------------//
@@ -1442,9 +1407,9 @@ namespace PCLParaphernalia
 
             tabInfoType.SelectedItem = tabPCL;
 
-            clearDetails();
+            ClearDetails();
 
-            setColsPCL();
+            SetColsPCL();
         }
 
         //--------------------------------------------------------------------//
@@ -1462,9 +1427,9 @@ namespace PCLParaphernalia
 
             tabInfoType.SelectedItem = tabPCLXLEnums;
 
-            clearDetails();
+            ClearDetails();
 
-            setColsPCLXLEnums();
+            SetColsPCLXLEnums();
         }
 
         //--------------------------------------------------------------------//
@@ -1482,9 +1447,9 @@ namespace PCLParaphernalia
 
             tabInfoType.SelectedItem = tabPCLXLTags;
 
-            clearDetails();
+            ClearDetails();
 
-            setColsPCLXLTags();
+            SetColsPCLXLTags();
         }
 
         //--------------------------------------------------------------------//
@@ -1502,9 +1467,9 @@ namespace PCLParaphernalia
 
             tabInfoType.SelectedItem = tabPJLCmds;
 
-            clearDetails();
+            ClearDetails();
 
-            setColsPJLCmds();
+            SetColsPJLCmds();
         }
 
         //--------------------------------------------------------------------//
@@ -1522,9 +1487,9 @@ namespace PCLParaphernalia
 
             tabInfoType.SelectedItem = tabPMLTags;
 
-            clearDetails();
+            ClearDetails();
 
-            setColsPMLTags();
+            SetColsPMLTags();
         }
 
         //--------------------------------------------------------------------//
@@ -1536,16 +1501,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbSelTypePrescribeCmds_Click(object sender,
-                                                   RoutedEventArgs e)
+        private void rbSelTypePrescribeCmds_Click(object sender, RoutedEventArgs e)
         {
             _indxType = (int)InfoType.PrescribeCmds;
 
             tabInfoType.SelectedItem = tabPrescribeCmds;
 
-            clearDetails();
+            ClearDetails();
 
-            setColsPrescribeCmds();
+            SetColsPrescribeCmds();
         }
 
         //--------------------------------------------------------------------//
@@ -1563,9 +1527,9 @@ namespace PCLParaphernalia
 
             tabInfoType.SelectedItem = tabSymbolSets;
 
-            clearDetails();
+            ClearDetails();
 
-            setColsSymbolSets();
+            SetColsSymbolSets();
         }
 
         //--------------------------------------------------------------------//
@@ -1581,7 +1545,7 @@ namespace PCLParaphernalia
         {
             _symSetMapType = SymSetMapType.Both;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -1597,7 +1561,7 @@ namespace PCLParaphernalia
         {
             _symSetMapType = SymSetMapType.PCL;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -1613,7 +1577,7 @@ namespace PCLParaphernalia
         {
             _symSetMapType = SymSetMapType.Std;
 
-            clearDetails();
+            ClearDetails();
         }
 
         //--------------------------------------------------------------------//
@@ -1625,7 +1589,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetTarget()
+        public void ResetTarget()
         {
             btnGenerate.Content = "Display requested data";
         }
@@ -1639,24 +1603,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setColsFonts()
+        private void SetColsFonts()
         {
             DataGridTextColumn colTypeface = new DataGridTextColumn();
             DataGridTextColumn colName = new DataGridTextColumn();
             DataGridTextColumn colSpacing = new DataGridTextColumn();
-            DataGridCheckBoxColumn colFlagScalable =
-                new DataGridCheckBoxColumn();
+            DataGridCheckBoxColumn colFlagScalable = new DataGridCheckBoxColumn();
             DataGridTextColumn colBound = new DataGridTextColumn();
             DataGridTextColumn colPitch = new DataGridTextColumn();
             DataGridTextColumn colHeight = new DataGridTextColumn();
-            DataGridCheckBoxColumn colFlagVar_R =
-                new DataGridCheckBoxColumn();
-            DataGridCheckBoxColumn colFlagVar_I =
-                new DataGridCheckBoxColumn();
-            DataGridCheckBoxColumn colFlagVar_B =
-                new DataGridCheckBoxColumn();
-            DataGridCheckBoxColumn colFlagVar_BI =
-                new DataGridCheckBoxColumn();
+            DataGridCheckBoxColumn colFlagVar_R = new DataGridCheckBoxColumn();
+            DataGridCheckBoxColumn colFlagVar_I = new DataGridCheckBoxColumn();
+            DataGridCheckBoxColumn colFlagVar_B = new DataGridCheckBoxColumn();
+            DataGridCheckBoxColumn colFlagVar_BI = new DataGridCheckBoxColumn();
             DataGridTextColumn colSymbolSets = null;
 
             if (_flagSymSetList)
@@ -1771,7 +1730,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setColsHPGL2()
+        private void SetColsHPGL2()
         {
             DataGridTextColumn colMnemonic = new DataGridTextColumn();
             DataGridTextColumn colDescription = new DataGridTextColumn();
@@ -1805,7 +1764,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setColsPaperSizes()
+        private void SetColsPaperSizes()
         {
             DataGridTextColumn colName = new DataGridTextColumn();
             DataGridTextColumn colDesc = new DataGridTextColumn();
@@ -1869,15 +1828,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setColsPCL()
+        private void SetColsPCL()
         {
             DataGridTextColumn colSequence = new DataGridTextColumn();
             DataGridTextColumn colType = new DataGridTextColumn();
             DataGridTextColumn colDescription = new DataGridTextColumn();
-            DataGridCheckBoxColumn colFlagObsolete =
-                new DataGridCheckBoxColumn();
-            DataGridCheckBoxColumn colFlagValIsLen =
-                new DataGridCheckBoxColumn();
+            DataGridCheckBoxColumn colFlagObsolete = new DataGridCheckBoxColumn();
+            DataGridCheckBoxColumn colFlagValIsLen = new DataGridCheckBoxColumn();
 
             colSequence.Header = "Sequence";
             colType.Header = "Type";
@@ -1928,7 +1885,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setColsPCLXLEnums()
+        private void SetColsPCLXLEnums()
         {
             DataGridTextColumn colTagOper = new DataGridTextColumn();
             DataGridTextColumn colTagAttr = new DataGridTextColumn();
@@ -1977,13 +1934,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setColsPCLXLTags()
+        private void SetColsPCLXLTags()
         {
             DataGridTextColumn colTag = new DataGridTextColumn();
             DataGridTextColumn colType = new DataGridTextColumn();
             DataGridTextColumn colDescription = new DataGridTextColumn();
-            DataGridCheckBoxColumn colFlagReserved =
-                new DataGridCheckBoxColumn();
+            DataGridCheckBoxColumn colFlagReserved = new DataGridCheckBoxColumn();
 
             colTag.Header = "Tag value";
             colType.Header = "Type";
@@ -2059,7 +2015,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setColsPJLCmds()
+        private void SetColsPJLCmds()
         {
             DataGridTextColumn colCmd = new DataGridTextColumn();
             DataGridTextColumn colDescription = new DataGridTextColumn();
@@ -2093,7 +2049,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setColsPMLTags()
+        private void SetColsPMLTags()
         {
             DataGridTextColumn colTag = new DataGridTextColumn();
             DataGridTextColumn colType = new DataGridTextColumn();
@@ -2134,7 +2090,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setColsPrescribeCmds()
+        private void SetColsPrescribeCmds()
         {
             DataGridTextColumn colCmd = new DataGridTextColumn();
             DataGridTextColumn colDescription = new DataGridTextColumn();
@@ -2168,7 +2124,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setColsSymbolSets()
+        private void SetColsSymbolSets()
         {
             DataGridTextColumn colGroup = new DataGridTextColumn();
             DataGridTextColumn colType = new DataGridTextColumn();

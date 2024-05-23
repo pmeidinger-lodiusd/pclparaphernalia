@@ -65,8 +65,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool FontFileCopy(BinaryWriter prnWriter,
-                                           string fontFilename)
+        public static bool FontFileCopy(BinaryWriter prnWriter, string fontFilename)
         {
             bool OK = true;
             long fileSize = 0;
@@ -113,8 +112,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool FontFileOpen(string fileName,
-                                            ref long fileSize)
+        private static bool FontFileOpen(string fileName, ref long fileSize)
         {
             bool open = false;
 
@@ -158,6 +156,7 @@ namespace PCLParaphernalia
 
             return open;
         }
+
         /*
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -638,6 +637,7 @@ namespace PCLParaphernalia
 
             return true;
         }
+
         /*
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

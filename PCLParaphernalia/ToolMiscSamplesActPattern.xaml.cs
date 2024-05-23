@@ -12,8 +12,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2015</para>
     ///
     /// </summary>
-    [System.Reflection.Obfuscation(Feature = "renaming",
-                                            ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     public partial class ToolMiscSamples : Window
     {
@@ -112,28 +111,22 @@ namespace PCLParaphernalia
             {
                 if (_indxPatternTypePCL == PatternType.Shading)
                 {
-                    txtPatternDesc.Text =
-                        "Shows samples of built-in and user-defined" +
-                        " Shading patterns.";
+                    txtPatternDesc.Text = "Shows samples of built-in and user-defined Shading patterns.";
                 }
                 else
                 {
-                    txtPatternDesc.Text =
-                        "Shows samples of built-in and user-defined" +
-                        " Cross-Hatch patterns.";
+                    txtPatternDesc.Text = "Shows samples of built-in and user-defined Cross-Hatch patterns.";
                 }
             }
             else
             {
                 if (_indxPatternTypePCLXL == PatternType.Shading)
                 {
-                    txtPatternDesc.Text =
-                        "Shows samples of user-defined Shading patterns.";
+                    txtPatternDesc.Text = "Shows samples of user-defined Shading patterns.";
                 }
                 else
                 {
-                    txtPatternDesc.Text =
-                        "Shows samples of user-defined Cross-hatch patterns.";
+                    txtPatternDesc.Text = "Shows samples of user-defined Cross-hatch patterns.";
                 }
             }
         }
@@ -151,20 +144,14 @@ namespace PCLParaphernalia
         {
             int tmpInt = 0;
 
-            ToolMiscSamplesPersist.loadDataTypePattern(
-                "PCL",
-                ref tmpInt,
-                ref _flagPatternFormAsMacroPCL);
+            ToolMiscSamplesPersist.LoadDataTypePattern("PCL", ref tmpInt, ref _flagPatternFormAsMacroPCL);
 
             if (tmpInt == (int)PatternType.XHatch)
                 _indxPatternTypePCL = PatternType.XHatch;
             else
                 _indxPatternTypePCL = PatternType.Shading;
 
-            ToolMiscSamplesPersist.loadDataTypePattern(
-                "PCLXL",
-                ref tmpInt,
-                ref _flagPatternFormAsMacroPCLXL);
+            ToolMiscSamplesPersist.LoadDataTypePattern("PCLXL", ref tmpInt, ref _flagPatternFormAsMacroPCLXL);
 
             if (tmpInt == (int)PatternType.XHatch)
                 _indxPatternTypePCLXL = PatternType.XHatch;
@@ -183,15 +170,9 @@ namespace PCLParaphernalia
 
         public void MetricsSaveDataPattern()
         {
-            ToolMiscSamplesPersist.saveDataTypePattern(
-                "PCL",
-                (int)_indxPatternTypePCL,
-                _flagPatternFormAsMacroPCL);
+            ToolMiscSamplesPersist.SaveDataTypePattern("PCL", (int)_indxPatternTypePCL, _flagPatternFormAsMacroPCL);
 
-            ToolMiscSamplesPersist.saveDataTypePattern(
-                "PCLXL",
-                (int)_indxPatternTypePCLXL,
-                _flagPatternFormAsMacroPCLXL);
+            ToolMiscSamplesPersist.SaveDataTypePattern("PCLXL", (int)_indxPatternTypePCLXL, _flagPatternFormAsMacroPCLXL);
         }
 
         //--------------------------------------------------------------------//
@@ -203,8 +184,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void RbPatternTypeShading_Click(object sender,
-                                                 RoutedEventArgs e)
+        private void rbPatternTypeShading_Click(object sender, RoutedEventArgs e)
         {
             if (_crntPDL == ToolCommonData.PrintLang.PCL)
                 _indxPatternTypePCL = PatternType.Shading;
@@ -223,8 +203,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void RbPatternTypeXHatch_Click(object sender,
-                                                RoutedEventArgs e)
+        private void rbPatternTypeXHatch_Click(object sender, RoutedEventArgs e)
         {
             if (_crntPDL == ToolCommonData.PrintLang.PCL)
                 _indxPatternTypePCL = PatternType.XHatch;
@@ -243,9 +222,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void SetFlagPatternFormAsMacro(
-            bool setFlag,
-            ToolCommonData.PrintLang crntPDL)
+        private void SetFlagPatternFormAsMacro(bool setFlag, ToolCommonData.PrintLang crntPDL)
         {
             if (crntPDL == ToolCommonData.PrintLang.PCL)
             {

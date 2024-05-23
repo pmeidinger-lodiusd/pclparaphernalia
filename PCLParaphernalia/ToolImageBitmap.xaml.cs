@@ -12,8 +12,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    [System.Reflection.Obfuscation(Feature = "renaming",
-                                            ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     public partial class ToolImageBitmap : Window
     {
@@ -319,8 +318,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbOrientation_SelectionChanged(object sender,
-                                                    SelectionChangedEventArgs e)
+        private void cbOrientation_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_initialised && cbOrientation.HasItems)
             {
@@ -340,8 +338,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbPaperSize_SelectionChanged(object sender,
-                                                  SelectionChangedEventArgs e)
+        private void cbPaperSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_initialised && cbPaperSize.HasItems)
             {
@@ -361,8 +358,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbPaperType_SelectionChanged(object sender,
-                                                  SelectionChangedEventArgs e)
+        private void cbPaperType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_initialised && cbPaperType.HasItems)
             {
@@ -382,8 +378,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbPDL_SelectionChanged(object sender,
-                                            SelectionChangedEventArgs e)
+        private void cbPDL_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_initialised)
             {
@@ -418,8 +413,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbResolution_SelectionChanged(object sender,
-                                                   SelectionChangedEventArgs e)
+        private void cbResolution_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_initialised && cbResolution.HasItems)
             {
@@ -518,12 +512,12 @@ namespace PCLParaphernalia
 
             cbResolution.Items.Clear();
 
-            _ctRasterResolutions = PCLRasterResolutions.getCount();
+            _ctRasterResolutions = PCLRasterResolutions.GetCount();
 
             for (int i = 0; i < _ctRasterResolutions; i++)
             {
                 cbResolution.Items.Add(
-                    PCLRasterResolutions.getValue(i).ToString());
+                    PCLRasterResolutions.GetValue(i).ToString());
             }
 
             //----------------------------------------------------------------//
@@ -571,7 +565,7 @@ namespace PCLParaphernalia
 
             int tempRasterRes = 0;
 
-            ToolImageBitmapPersist.loadDataCommon(ref _indxPDL,
+            ToolImageBitmapPersist.LoadDataCommon(ref _indxPDL,
                                                   ref _bitmapFilename,
                                                   ref tempPosX,
                                                   ref tempPosY,
@@ -597,7 +591,7 @@ namespace PCLParaphernalia
                 _indxRasterResolutionPCL = tempRasterRes;
             }
 
-            ToolImageBitmapPersist.loadDataPCL("PCL",
+            ToolImageBitmapPersist.LoadDataPCL("PCL",
                                                ref _indxOrientationPCL,
                                                ref _indxPaperSizePCL,
                                                ref _indxPaperTypePCL);
@@ -620,7 +614,7 @@ namespace PCLParaphernalia
                 _indxPaperTypePCL = 0;
             }
 
-            ToolImageBitmapPersist.loadDataPCL("PCLXL",
+            ToolImageBitmapPersist.LoadDataPCL("PCLXL",
                                                ref _indxOrientationPCLXL,
                                                ref _indxPaperSizePCLXL,
                                                ref _indxPaperTypePCLXL);
@@ -655,7 +649,7 @@ namespace PCLParaphernalia
 
         public void metricsSave()
         {
-            ToolImageBitmapPersist.saveDataCommon(_indxPDL,
+            ToolImageBitmapPersist.SaveDataCommon(_indxPDL,
                                                   _bitmapFilename,
                                                   (int)(_destPosX * 100),
                                                   (int)(_destPosY * 100),
@@ -663,12 +657,12 @@ namespace PCLParaphernalia
                                                   _destScalePercentY,
                                                   _indxRasterResolutionPCL);
 
-            ToolImageBitmapPersist.saveDataPCL("PCL",
+            ToolImageBitmapPersist.SaveDataPCL("PCL",
                                                _indxOrientationPCL,
                                                _indxPaperSizePCL,
                                                _indxPaperTypePCL);
 
-            ToolImageBitmapPersist.saveDataPCL("PCLXL",
+            ToolImageBitmapPersist.SaveDataPCL("PCLXL",
                                                _indxOrientationPCLXL,
                                                _indxPaperSizePCLXL,
                                                _indxPaperTypePCLXL);
@@ -788,7 +782,7 @@ namespace PCLParaphernalia
 
         private bool selectImageFile(ref string selectedName)
         {
-            OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(selectedName);
+            OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(selectedName);
 
             openDialog.Filter = "Bitmap Files|*.bmp; *.BMP";
 
@@ -809,8 +803,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtFilename_LostFocus(object sender,
-                                           RoutedEventArgs e)
+        private void txtFilename_LostFocus(object sender, RoutedEventArgs e)
         {
             if (_initialised)
             {

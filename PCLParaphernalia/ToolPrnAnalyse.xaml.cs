@@ -15,8 +15,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    [Obfuscation(Feature = "renaming",
-                                            ApplyToMembers = true)]
+    [Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     public partial class ToolPrnAnalyse : Window
     {
@@ -106,17 +105,14 @@ namespace PCLParaphernalia
                 this._bkWk.RunWorkerAsync (); // Then move following code to DoWork  
                 */
 
-                PrnParse parseFile = new PrnParse(PrnParse.ParseType.Analyse,
-                                                   0);
+                PrnParse parseFile = new PrnParse(PrnParse.ParseType.Analyse, 0);
 
                 _tableAnalysis.Clear();
                 _tableStatistics.Clear();
 
                 InitialiseGridAnalysis();
 
-                parseFile.Analyse(_prnFilename,
-                                   _options,
-                                   _tableAnalysis);
+                parseFile.Analyse(_prnFilename, _options, _tableAnalysis);
 
                 _redoAnalysis = false;
             }
@@ -161,9 +157,7 @@ namespace PCLParaphernalia
 
                 InitialiseGridContent();
 
-                viewFile.viewFile(_prnFilename,
-                                   _options,
-                                   _tableContent);
+                viewFile.ViewFile(_prnFilename, _options, _tableContent);
 
                 _redoContent = false;
             }
@@ -240,8 +234,7 @@ namespace PCLParaphernalia
 
         private void btnOptions_Click(object sender, RoutedEventArgs e)
         {
-            ToolPrnAnalyseOptDlg optDialog =
-                new ToolPrnAnalyseOptDlg(_options, _fileSize);
+            ToolPrnAnalyseOptDlg optDialog = new ToolPrnAnalyseOptDlg(_options, _fileSize);
 
             bool? dialogResult = optDialog.ShowDialog();
 
@@ -255,11 +248,11 @@ namespace PCLParaphernalia
 
                 ResetStatistics();
 
-                _options.getOptClrMap(ref _flagClrMapUseClr,
+                _options.GetOptClrMap(ref _flagClrMapUseClr,
                                        ref _indxClrMapBack,
                                        ref _indxClrMapFore);
 
-                _options.metricsSave();
+                _options.MetricsSave();
             }
         }
 
@@ -290,7 +283,7 @@ namespace PCLParaphernalia
 
             if (tabCtrl.SelectedItem == tabStatistics)
             {
-                ToolPrnAnalyseReport.generate(InfoType.Statistics,
+                ToolPrnAnalyseReport.Generate(InfoType.Statistics,
                                                rptFileFmt,
                                                _tableStatistics,
                                                _prnFilename,
@@ -300,7 +293,7 @@ namespace PCLParaphernalia
             }
             else if (tabCtrl.SelectedItem == tabContent)
             {
-                ToolPrnAnalyseReport.generate(InfoType.Content,
+                ToolPrnAnalyseReport.Generate(InfoType.Content,
                                                rptFileFmt,
                                                _tableContent,
                                                _prnFilename,
@@ -310,7 +303,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                ToolPrnAnalyseReport.generate(InfoType.Analysis,
+                ToolPrnAnalyseReport.Generate(InfoType.Analysis,
                                                rptFileFmt,
                                                _tableAnalysis,
                                                _prnFilename,
@@ -333,14 +326,13 @@ namespace PCLParaphernalia
         {
             if (_redoStatistics)
             {
-                PrnParseConstants.OptStatsLevel level =
-                    PrnParseConstants.OptStatsLevel.ReferencedOnly;
+                PrnParseConstants.OptStatsLevel level = PrnParseConstants.OptStatsLevel.ReferencedOnly;
 
                 bool incUsedSeqsOnly = false;
                 bool excUnusedObsPCLSeqs = false;
                 bool excUnusedResPCLXLTags = false;
 
-                _options.getOptStats(ref level,
+                _options.GetOptStats(ref level,
                                       ref excUnusedObsPCLSeqs,
                                       ref excUnusedResPCLXLTags);
 
@@ -349,57 +341,35 @@ namespace PCLParaphernalia
                 incUsedSeqsOnly = level ==
                     PrnParseConstants.OptStatsLevel.ReferencedOnly;
 
-                PrescribeCommands.displayStatsCounts(_tableStatistics,
-                                                      incUsedSeqsOnly);
+                PrescribeCommands.DisplayStatsCounts(_tableStatistics, incUsedSeqsOnly);
 
-                PJLCommands.DisplayStatsCounts(_tableStatistics,
-                                                incUsedSeqsOnly);
+                PJLCommands.DisplayStatsCounts(_tableStatistics, incUsedSeqsOnly);
 
-                PCLControlCodes.displayStatsCounts(_tableStatistics,
-                                                    incUsedSeqsOnly);
+                PCLControlCodes.DisplayStatsCounts(_tableStatistics, incUsedSeqsOnly);
 
-                PCLSimpleSeqs.displayStatsCounts(_tableStatistics,
-                                                  incUsedSeqsOnly,
-                                                  excUnusedObsPCLSeqs);
+                PCLSimpleSeqs.displayStatsCounts(_tableStatistics, incUsedSeqsOnly, excUnusedObsPCLSeqs);
 
-                PCLComplexSeqs.displayStatsCounts(_tableStatistics,
-                                                  incUsedSeqsOnly,
-                                                  excUnusedObsPCLSeqs);
+                PCLComplexSeqs.DisplayStatsCounts(_tableStatistics, incUsedSeqsOnly, excUnusedObsPCLSeqs);
 
-                HPGL2Commands.displayStatsCounts(_tableStatistics,
-                                                  incUsedSeqsOnly);
+                HPGL2Commands.displayStatsCounts(_tableStatistics, incUsedSeqsOnly);
 
-                HPGL2ControlCodes.displayStatsCounts(_tableStatistics,
-                                                     incUsedSeqsOnly);
+                HPGL2ControlCodes.DisplayStatsCounts(_tableStatistics, incUsedSeqsOnly);
 
-                PCLXLDataTypes.DisplayStatsCounts(_tableStatistics,
-                                                  incUsedSeqsOnly,
-                                                  excUnusedResPCLXLTags);
+                PCLXLDataTypes.DisplayStatsCounts(_tableStatistics, incUsedSeqsOnly, excUnusedResPCLXLTags);
 
-                PCLXLAttrEnums.DisplayStatsCounts(_tableStatistics,
-                                                   incUsedSeqsOnly,
-                                                   excUnusedResPCLXLTags);
+                PCLXLAttrEnums.DisplayStatsCounts(_tableStatistics, incUsedSeqsOnly, excUnusedResPCLXLTags);
 
-                PCLXLAttributes.DisplayStatsCounts(_tableStatistics,
-                                                    incUsedSeqsOnly,
-                                                    excUnusedResPCLXLTags);
+                PCLXLAttributes.DisplayStatsCounts(_tableStatistics, incUsedSeqsOnly, excUnusedResPCLXLTags);
 
-                PCLXLOperators.DisplayStatsCounts(_tableStatistics,
-                                                   incUsedSeqsOnly,
-                                                   excUnusedResPCLXLTags);
+                PCLXLOperators.DisplayStatsCounts(_tableStatistics, incUsedSeqsOnly, excUnusedResPCLXLTags);
 
-                PCLXLWhitespaces.displayStatsCounts(_tableStatistics,
-                                                     incUsedSeqsOnly,
-                                                     excUnusedResPCLXLTags);
+                PCLXLWhitespaces.DisplayStatsCounts(_tableStatistics, incUsedSeqsOnly, excUnusedResPCLXLTags);
 
-                PMLDataTypes.DisplayStatsCounts(_tableStatistics,
-                                                 incUsedSeqsOnly);
+                PMLDataTypes.DisplayStatsCounts(_tableStatistics, incUsedSeqsOnly);
 
-                PMLActions.displayStatsCounts(_tableStatistics,
-                                               incUsedSeqsOnly);
+                PMLActions.DisplayStatsCounts(_tableStatistics, incUsedSeqsOnly);
 
-                PMLOutcomes.displayStatsCounts(_tableStatistics,
-                                                incUsedSeqsOnly);
+                PMLOutcomes.DisplayStatsCounts(_tableStatistics, incUsedSeqsOnly);
 
                 // TODO = remaining types
                 // PCL XL Attribute Definers ??
@@ -436,9 +406,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void dgAnalysis_AutoGeneratingColumn(
-            object sender,
-            DataGridAutoGeneratingColumnEventArgs e)
+        private void dgAnalysis_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             string headername = e.Column.Header.ToString();
 
@@ -448,8 +416,7 @@ namespace PCLParaphernalia
             }
             else if (headername == PrnParseConstants.cRptA_colName_Offset)
             {
-                if (_options.IndxGenOffsetFormat ==
-                    PrnParseConstants.OptOffsetFormats.Decimal)
+                if (_options.IndxGenOffsetFormat == PrnParseConstants.OptOffsetFormats.Decimal)
                 {
                     e.Column.Header = headername + ": dec";
                 }
@@ -469,14 +436,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void dgAnalysis_LoadingRow(object sender,
-                                            DataGridRowEventArgs e)
+        private void dgAnalysis_LoadingRow(object sender, DataGridRowEventArgs e)
         {
             DataRowView rowView = (DataRowView)e.Row.Item;
             DataRow row = rowView.Row;
 
-            bool nullRow =
-                row.IsNull(PrnParseConstants.cRptA_colName_RowType);
+            bool nullRow = row.IsNull(PrnParseConstants.cRptA_colName_RowType);
 
             if (!nullRow)
             {
@@ -524,16 +489,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void dgContent_AutoGeneratingColumn(
-            object sender,
-            DataGridAutoGeneratingColumnEventArgs e)
+        private void dgContent_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             string headername = e.Column.Header.ToString();
 
             if (headername == PrnParseConstants.cRptC_colName_Offset)
             {
-                if (_options.IndxGenOffsetFormat ==
-                    PrnParseConstants.OptOffsetFormats.Decimal)
+                if (_options.IndxGenOffsetFormat == PrnParseConstants.OptOffsetFormats.Decimal)
                 {
                     e.Column.Header = headername + ": dec";
                 }
@@ -553,9 +515,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void dgStatistics_AutoGeneratingColumn(
-            object sender,
-            DataGridAutoGeneratingColumnEventArgs e)
+        private void dgStatistics_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             // none required //
         }
@@ -646,12 +606,9 @@ namespace PCLParaphernalia
             _indxClrMapBack = new int[ctRowTypes];
             _indxClrMapFore = new int[ctRowTypes];
 
-            _options.getOptClrMap(ref _flagClrMapUseClr,
-                                   ref _indxClrMapBack,
-                                   ref _indxClrMapFore);
+            _options.GetOptClrMap(ref _flagClrMapUseClr, ref _indxClrMapBack, ref _indxClrMapFore);
 
-            _options.getOptClrMapStdClrs(ref _ctClrMapStdClrs,
-                                          ref _stdClrsPropertyInfo);
+            _options.GetOptClrMapStdClrs(ref _ctClrMapStdClrs, ref _stdClrsPropertyInfo);
 
             /*
             //----------------------------------------------------------------//
@@ -692,16 +649,11 @@ namespace PCLParaphernalia
         {
             _tableAnalysis = new DataTable("Analysis");
 
-            _tableAnalysis.Columns.Add(PrnParseConstants.cRptA_colName_RowType,
-                                        typeof(int));
-            _tableAnalysis.Columns.Add(PrnParseConstants.cRptA_colName_Offset,
-                                        typeof(string));
-            _tableAnalysis.Columns.Add(PrnParseConstants.cRptA_colName_Type,
-                                        typeof(string));
-            _tableAnalysis.Columns.Add(PrnParseConstants.cRptA_colName_Seq,
-                                        typeof(string));
-            _tableAnalysis.Columns.Add(PrnParseConstants.cRptA_colName_Desc,
-                                        typeof(string));
+            _tableAnalysis.Columns.Add(PrnParseConstants.cRptA_colName_RowType, typeof(int));
+            _tableAnalysis.Columns.Add(PrnParseConstants.cRptA_colName_Offset, typeof(string));
+            _tableAnalysis.Columns.Add(PrnParseConstants.cRptA_colName_Type, typeof(string));
+            _tableAnalysis.Columns.Add(PrnParseConstants.cRptA_colName_Seq, typeof(string));
+            _tableAnalysis.Columns.Add(PrnParseConstants.cRptA_colName_Desc, typeof(string));
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -727,12 +679,9 @@ namespace PCLParaphernalia
         {
             _tableContent = new DataTable("Content");
 
-            _tableContent.Columns.Add(PrnParseConstants.cRptC_colName_Offset,
-                                       typeof(string));
-            _tableContent.Columns.Add(PrnParseConstants.cRptC_colName_Hex,
-                                       typeof(string));
-            _tableContent.Columns.Add(PrnParseConstants.cRptC_colName_Text,
-                                       typeof(string));
+            _tableContent.Columns.Add(PrnParseConstants.cRptC_colName_Offset, typeof(string));
+            _tableContent.Columns.Add(PrnParseConstants.cRptC_colName_Hex, typeof(string));
+            _tableContent.Columns.Add(PrnParseConstants.cRptC_colName_Text, typeof(string));
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -758,16 +707,11 @@ namespace PCLParaphernalia
         {
             _tableStatistics = new DataTable("Statistics");
 
-            _tableStatistics.Columns.Add(PrnParseConstants.cRptS_colName_Seq,
-                                          typeof(string));
-            _tableStatistics.Columns.Add(PrnParseConstants.cRptS_colName_Desc,
-                                          typeof(string));
-            _tableStatistics.Columns.Add(PrnParseConstants.cRptS_colName_CtP,
-                                          typeof(string));
-            _tableStatistics.Columns.Add(PrnParseConstants.cRptS_colName_CtE,
-                                          typeof(string));
-            _tableStatistics.Columns.Add(PrnParseConstants.cRptS_colName_CtT,
-                                          typeof(string));
+            _tableStatistics.Columns.Add(PrnParseConstants.cRptS_colName_Seq, typeof(string));
+            _tableStatistics.Columns.Add(PrnParseConstants.cRptS_colName_Desc, typeof(string));
+            _tableStatistics.Columns.Add(PrnParseConstants.cRptS_colName_CtP, typeof(string));
+            _tableStatistics.Columns.Add(PrnParseConstants.cRptS_colName_CtE, typeof(string));
+            _tableStatistics.Columns.Add(PrnParseConstants.cRptS_colName_CtT, typeof(string));
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -791,9 +735,9 @@ namespace PCLParaphernalia
 
         private void MetricsLoad()
         {
-            ToolPrnAnalysePersist.loadData(ref _prnFilename);
+            ToolPrnAnalysePersist.LoadData(ref _prnFilename);
 
-            _options.metricsLoad();
+            _options.MetricsLoad();
         }
 
         //--------------------------------------------------------------------//
@@ -807,9 +751,9 @@ namespace PCLParaphernalia
 
         public void MetricsSave()
         {
-            ToolPrnAnalysePersist.saveData(_prnFilename);
+            ToolPrnAnalysePersist.SaveData(_prnFilename);
 
-            _options.metricsSave();
+            _options.MetricsSave();
         }
 
         //--------------------------------------------------------------------//
@@ -906,7 +850,7 @@ namespace PCLParaphernalia
 
             ResetStatistics();
 
-            _options.resetOptCurF(_fileSize);
+            _options.ResetOptCurF(_fileSize);
 
             if (_options.FlagGenMiscAutoAnalyse)
                 btnAnalysis_Click(this, null);
@@ -923,7 +867,7 @@ namespace PCLParaphernalia
 
         private bool PrnFileSelect(ref string prnFilename)
         {
-            OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(prnFilename);
+            OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(prnFilename);
 
             openDialog.Filter = "Print Files|" +
                                 "*.prn; *.pcl; *.dia;" +
@@ -961,20 +905,20 @@ namespace PCLParaphernalia
 
             _tableStatistics.Clear();
 
-            PrescribeCommands.resetStatsCounts();
+            PrescribeCommands.ResetStatsCounts();
             PJLCommands.ResetStatsCounts();
-            PCLComplexSeqs.resetStatsCounts();
-            PCLSimpleSeqs.resetStatsCounts();
-            PCLControlCodes.resetStatsCounts();
+            PCLComplexSeqs.ResetStatsCounts();
+            PCLSimpleSeqs.ResetStatsCounts();
+            PCLControlCodes.ResetStatsCounts();
             HPGL2Commands.resetStatsCounts();
-            HPGL2ControlCodes.resetStatsCounts();
+            HPGL2ControlCodes.ResetStatsCounts();
             PCLXLDataTypes.ResetStatsCounts();
             //   PCLXLAttrDefiners.resetStatsCounts ();
             PCLXLAttributes.ResetStatsCounts();
             PCLXLAttrEnums.ResetStatsCounts();
             //   PCLXLEmbedDataDefs.resetStatsCounts ();
             PCLXLOperators.ResetStatsCounts();
-            PCLXLWhitespaces.resetStatsCounts();
+            PCLXLWhitespaces.ResetStatsCounts();
         }
 
         //--------------------------------------------------------------------//
@@ -1000,8 +944,7 @@ namespace PCLParaphernalia
 //                                                                    //
 //--------------------------------------------------------------------//
 
-private void bkWk_Completed(object sender,
-         RunWorkerCompletedEventArgs e)
+private void bkWk_Completed(object sender, RunWorkerCompletedEventArgs e)
 {
 progressBar1.Value = 100;
 
@@ -1031,8 +974,7 @@ MessageBox.Show ("Failure",
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void bkWk_DoWork(object sender,
-                                 DoWorkEventArgs e)
+        private void bkWk_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
 
@@ -1061,8 +1003,7 @@ MessageBox.Show ("Failure",
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void bkWk_Progress(object sender,
-                                   ProgressChangedEventArgs e)
+        private void bkWk_Progress(object sender, ProgressChangedEventArgs e)
         {
             progressBar1.Value = e.ProgressPercentage;
         }

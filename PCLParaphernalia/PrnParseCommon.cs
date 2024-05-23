@@ -48,16 +48,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void addDataRow(
-            PrnParseRowTypes.Type rowType,
-            DataTable table,
-            PrnParseConstants.OvlShow makeOvlShow,
-            PrnParseConstants.OptOffsetFormats indxOffsetFormat,
-            int offset,
-            int level,
-            string type,
-            string seq,
-            string desc)
+        public static void AddDataRow(PrnParseRowTypes.Type rowType,
+                                        DataTable table,
+                                        PrnParseConstants.OvlShow makeOvlShow,
+                                        PrnParseConstants.OptOffsetFormats indxOffsetFormat,
+                                        int offset,
+                                        int level,
+                                        string type,
+                                        string seq,
+                                        string desc)
         {
             if (_parseType == PrnParse.ParseType.ScanForPDL)
             {
@@ -69,8 +68,7 @@ namespace PCLParaphernalia
             }
             else if ((_parseType == PrnParse.ParseType.MakeOverlay)
                                            &&
-                     (makeOvlShow ==
-                        PrnParseConstants.OvlShow.None))
+                     (makeOvlShow == PrnParseConstants.OvlShow.None))
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -97,47 +95,28 @@ namespace PCLParaphernalia
 
                 if (offset < 0)
                 {
-                    if (offset ==
-                        (int)PrnParseConstants.OffsetPosition.StartOfFile)
-                    {
+                    if (offset == (int)PrnParseConstants.OffsetPosition.StartOfFile)
                         offsetText = "<Start>";
-                    }
-                    else if (offset ==
-                                            (int)PrnParseConstants.OffsetPosition.EndOfFile)
-                    {
+                    else if (offset == (int)PrnParseConstants.OffsetPosition.EndOfFile)
                         offsetText = "<End>";
-                    }
                     else
-                    {
                         offsetText = string.Empty;
-                    }
                 }
                 else
                 {
-                    if (indxOffsetFormat ==
-                        PrnParseConstants.OptOffsetFormats.Decimal)
+                    if (indxOffsetFormat == PrnParseConstants.OptOffsetFormats.Decimal)
                     {
                         if (level == 0)
-                        {
                             offsetText = string.Format("{0:d10}", offset);
-                        }
                         else
-                        {
-                            offsetText = string.Format("{0:d2}", level) + ":" +
-                                                                 string.Format("{0:d10}", offset);
-                        }
+                            offsetText = string.Format("{0:d2}", level) + ":" + string.Format("{0:d10}", offset);
                     }
                     else
                     {
                         if (level == 0)
-                        {
                             offsetText = string.Format("{0:x8}", offset);
-                        }
                         else
-                        {
-                            offsetText = string.Format("{0:x2}", level) + ":" +
-                                                                 string.Format("{0:x8}", offset);
-                        }
+                            offsetText = string.Format("{0:x2}", level) + ":" + string.Format("{0:x8}", offset);
                     }
                 }
 
@@ -167,14 +146,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void addTextRow(
-            PrnParseRowTypes.Type rowType,
-            DataTable table,
-            PrnParseConstants.OvlShow makeOvlShow,
-            string offsetText,
-            string type,
-            string seq,
-            string desc)
+        public static void AddTextRow(PrnParseRowTypes.Type rowType,
+                                        DataTable table,
+                                        PrnParseConstants.OvlShow makeOvlShow,
+                                        string offsetText,
+                                        string type,
+                                        string seq,
+                                        string desc)
         {
             if (_parseType == PrnParse.ParseType.ScanForPDL)
             {
@@ -186,8 +164,7 @@ namespace PCLParaphernalia
             }
             else if ((_parseType == PrnParse.ParseType.MakeOverlay)
                                            &&
-                     (makeOvlShow ==
-                        PrnParseConstants.OvlShow.None))
+                     (makeOvlShow == PrnParseConstants.OvlShow.None))
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -232,9 +209,7 @@ namespace PCLParaphernalia
         // b y t e A r r a y T o H e x S t r i n g                            //
         //--------------------------------------------------------------------//
 
-        public static string byteArrayToHexString(byte[] byteArray,
-                                                  int startByte,
-                                                  int byteCt)
+        public static string ByteArrayToHexString(byte[] byteArray, int startByte, int byteCt)
         {
             const int triplet = 3;
 
@@ -260,10 +235,7 @@ namespace PCLParaphernalia
         // b y t e A r r a y P a i r T o H e x S t r i n g                    //
         //--------------------------------------------------------------------//
 
-        public static bool byteArrayPairToHexString(byte[] byteArray,
-                                                        int startByte,
-                                                        int byteCt,
-                                                        ref string hexData)
+        public static bool ByteArrayPairToHexString(byte[] byteArray, int startByte, int byteCt, ref string hexData)
         {
             const int quintet = 5;
 
@@ -271,11 +243,9 @@ namespace PCLParaphernalia
 
             int pairCt = byteCt / 2;
 
-            int b,
-                  c;
+            int b, c;
 
-            int j,
-                  k;
+            int j, k;
 
             char[] chars = new char[pairCt * quintet];
 
@@ -309,7 +279,7 @@ namespace PCLParaphernalia
         // b y t e T o H e x S t r i n g                                      //
         //--------------------------------------------------------------------//
 
-        public static string byteToHexString(byte byteVal)
+        public static string ByteToHexString(byte byteVal)
         {
             char[] chars = new char[2];
 
@@ -326,7 +296,7 @@ namespace PCLParaphernalia
         // b y t e T o S t r i n g                                            //
         //--------------------------------------------------------------------//
 
-        public static string byteToString(byte byteVal)
+        public static string ByteToString(byte byteVal)
         {
             return ((char)byteVal).ToString();
         }
@@ -340,7 +310,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void initialiseRunType(PrnParse.ParseType parseType)
+        public static void InitialiseRunType(PrnParse.ParseType parseType)
         {
             _parseType = parseType;
         }
@@ -350,7 +320,7 @@ namespace PCLParaphernalia
         // i s A l p h a b e t i c                                            //
         //--------------------------------------------------------------------//
 
-        public static bool isAlphabetic(byte byteVal)
+        public static bool IsAlphabetic(byte byteVal)
         {
             return ((byteVal >= PrnParseConstants.asciiAlphaLCMin)
                                    &&
@@ -384,8 +354,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setDisplayCriteria(bool showMacroData,
-                                              int macroLevel)
+        public static void SetDisplayCriteria(bool showMacroData, int macroLevel)
         {
             _showMacroData = showMacroData;
             _macroLevel = macroLevel;

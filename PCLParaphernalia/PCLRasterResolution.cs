@@ -38,7 +38,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort getValue()
+        public ushort GetValue()
         {
             return _resolution;
         }

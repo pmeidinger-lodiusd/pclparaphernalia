@@ -42,9 +42,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool checkForStreamName(string fileName,
-                                                  long fileSize,
-                                                  ref string streamName)
+        private static bool CheckForStreamName(string fileName, long fileSize, ref string streamName)
         {
             const ushort minFileSize = 128; // enough to read initial operators
             const byte minStreamNameLen = 1;
@@ -134,8 +132,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkStreamFile(string filename,
-                                              ref string streamName)
+        public static bool CheckStreamFile(string filename, ref string streamName)
         {
             bool fileOpen = false;
             bool streamNamePresent = false;
@@ -148,7 +145,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            fileOpen = streamFileOpen(filename, ref fileSize);
+            fileOpen = StreamFileOpen(filename, ref fileSize);
 
             if (!fileOpen)
             {
@@ -156,10 +153,10 @@ namespace PCLParaphernalia
             }
             else
             {
-                streamNamePresent = checkForStreamName(filename, fileSize,
+                streamNamePresent = CheckForStreamName(filename, fileSize,
                                                         ref streamName);
 
-                streamFileClose();
+                StreamFileClose();
             }
 
             return streamNamePresent;
@@ -174,7 +171,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void streamFileClose()
+        private static void StreamFileClose()
         {
             _binReader.Close();
 
@@ -202,10 +199,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool streamFileEmbed(BinaryWriter prnWriter,
-                                              string filename,
-                                              string streamName,
-                                              bool encapsulated)
+        public static bool StreamFileEmbed(BinaryWriter prnWriter, string filename, string streamName, bool encapsulated)
         {
             bool fileOpen = false;
 
@@ -213,7 +207,7 @@ namespace PCLParaphernalia
 
             long fileSize = 0;
 
-            fileOpen = streamFileOpen(filename, ref fileSize);
+            fileOpen = StreamFileOpen(filename, ref fileSize);
 
             if (!fileOpen)
             {
@@ -252,7 +246,7 @@ namespace PCLParaphernalia
                 if (!encapsulated)
                     PCLXLWriter.StreamEnd(prnWriter);
 
-                streamFileClose();
+                StreamFileClose();
             }
 
             return OK;
@@ -267,8 +261,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool streamFileOpen(string fileName,
-                                              ref long fileSize)
+        private static bool StreamFileOpen(string fileName, ref long fileSize)
         {
             bool open = false;
 

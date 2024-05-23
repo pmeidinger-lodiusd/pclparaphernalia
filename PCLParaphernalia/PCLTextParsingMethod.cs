@@ -55,7 +55,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getDesc()
+        public string GetDesc()
         {
             return _desc;
         }
@@ -70,7 +70,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getDescLong()
+        public string GetDescLong()
         {
             if (_value < 0)
                 return _desc;
@@ -87,7 +87,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLTextParsingMethods.Index getMethodType()
+        public PCLTextParsingMethods.Index GetMethodType()
         {
             return _indxMethod;
         }
@@ -101,7 +101,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort[] getRangeDataDouble()
+        public ushort[] GetRangeDataDouble()
         {
             return _rangeDataDouble;
         }
@@ -115,7 +115,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int getRangeDataDoubleCt()
+        public int GetRangeDataDoubleCt()
         {
             if (_rangeDataDouble == null)
                 return 0;
@@ -132,7 +132,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort[] getRangeDataSingle()
+        public ushort[] GetRangeDataSingle()
         {
             return _rangeDataSingle;
         }
@@ -146,7 +146,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int getRangeDataSingleCt()
+        public int GetRangeDataSingleCt()
         {
             if (_rangeDataSingle == null)
                 return 0;
@@ -163,7 +163,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int getValue()
+        public int GetValue()
         {
             return _value;
         }

@@ -84,8 +84,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static readonly SortedList<string, PJLCommand> _cmds =
-            new SortedList<string, PJLCommand>();
+        private static readonly SortedList<string, PJLCommand> _cmds = new SortedList<string, PJLCommand>();
 
         private static PJLCommand _cmdUnknown;
 
@@ -130,7 +129,7 @@ namespace PCLParaphernalia
 
             description = cmd.Description;
 
-            cmd.incrementStatisticsCount(level);
+            cmd.IncrementStatisticsCount(level);
 
             return seqKnown;
         }
@@ -593,13 +592,13 @@ namespace PCLParaphernalia
         {
             PJLCommand cmd;
 
-            _cmdUnknown.resetStatistics();
+            _cmdUnknown.ResetStatistics();
 
             foreach (KeyValuePair<string, PJLCommand> kvp in _cmds)
             {
                 cmd = kvp.Value;
 
-                cmd.resetStatistics();
+                cmd.ResetStatistics();
             }
         }
     }

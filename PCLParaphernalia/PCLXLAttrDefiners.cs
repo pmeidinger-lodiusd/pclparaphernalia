@@ -30,8 +30,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static readonly SortedList<byte, PCLXLAttrDefiner> _tags =
-            new SortedList<byte, PCLXLAttrDefiner>();
+        private static readonly SortedList<byte, PCLXLAttrDefiner> _tags = new SortedList<byte, PCLXLAttrDefiner>();
 
         private static int _tagCount;
 

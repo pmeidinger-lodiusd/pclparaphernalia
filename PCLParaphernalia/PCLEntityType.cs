@@ -26,9 +26,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLEntityType(PCLEntityTypes.Type type,
-                             string id,
-                             string name)
+        public PCLEntityType(PCLEntityTypes.Type type, string id, string name)
         {
             _entityType = type;
             _entityIdPCL = id;
@@ -44,7 +42,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getIdPCL()
+        public string GetIdPCL()
         {
             return _entityIdPCL;
         }
@@ -58,7 +56,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getName()
+        public string GetName()
         {
             return _entityName;
         }
@@ -72,7 +70,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLEntityTypes.Type getType()
+        public PCLEntityTypes.Type GetEntityType()
         {
             return _entityType;
         }

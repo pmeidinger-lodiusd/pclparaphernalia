@@ -90,24 +90,15 @@ namespace PCLParaphernalia
 
             aspect = PCLOrientations.GetAspect(indxOrientation);
 
-            logXOffset = PCLPaperSizes.GetLogicalOffset(indxPaperSize,
-                                                        _unitsPerInch, aspect);
+            logXOffset = PCLPaperSizes.GetLogicalOffset(indxPaperSize, _unitsPerInch, aspect);
 
-            _logPageWidth = PCLPaperSizes.GetLogPageWidth(indxPaperSize,
-                                                           _unitsPerInch,
-                                                           aspect);
+            _logPageWidth = PCLPaperSizes.GetLogPageWidth(indxPaperSize, _unitsPerInch, aspect);
 
-            _logPageHeight = PCLPaperSizes.GetLogPageLength(indxPaperSize,
-                                                          _unitsPerInch,
-                                                          aspect);
+            _logPageHeight = PCLPaperSizes.GetLogPageLength(indxPaperSize, _unitsPerInch, aspect);
 
-            _paperWidth = PCLPaperSizes.GetPaperWidth(indxPaperSize,
-                                                       _unitsPerInch,
-                                                       aspect);
+            _paperWidth = PCLPaperSizes.GetPaperWidth(indxPaperSize, _unitsPerInch, aspect);
 
-            _paperHeight = PCLPaperSizes.GetPaperLength(indxPaperSize,
-                                                         _unitsPerInch,
-                                                         aspect);
+            _paperHeight = PCLPaperSizes.GetPaperLength(indxPaperSize, _unitsPerInch, aspect);
 
             //----------------------------------------------------------------//
 
@@ -158,8 +149,7 @@ namespace PCLParaphernalia
 
             if (formAsMacro)
             {
-                GenerateOverlay(prnWriter, true, logXOffset,
-                                indxPaperSize, indxOrientation);
+                GenerateOverlay(prnWriter, true, logXOffset, indxPaperSize, indxOrientation);
             }
 
             PCLWriter.PageHeader(prnWriter,
@@ -178,8 +168,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void GenerateJobTrailer(BinaryWriter prnWriter,
-                                               bool formAsMacro)
+        private static void GenerateJobTrailer(BinaryWriter prnWriter, bool formAsMacro)
         {
             PCLWriter.StdJobTrailer(prnWriter, formAsMacro, _macroId);
         }
@@ -221,8 +210,7 @@ namespace PCLParaphernalia
 
             if (formAsMacro)
             {
-                PCLWriter.WriteMacroControl(prnWriter, _macroId,
-                                  PCLWriter.MacroControl.StartDef);
+                PCLWriter.WriteMacroControl(prnWriter, _macroId, PCLWriter.MacroControl.StartDef);
             }
 
             //----------------------------------------------------------------//
@@ -231,9 +219,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLWriter.PatternSet(prnWriter,
-                                  PCLWriter.PatternType.Shading,
-                                  60);
+            PCLWriter.PatternSet(prnWriter, PCLWriter.PatternType.Shading, 60);
 
             boxX = (short)((_unitsPerInch / 2) - logXOffset);
             boxY = _unitsPerInch / 2;
@@ -241,9 +227,7 @@ namespace PCLParaphernalia
             boxWidth = (short)(_paperWidth - _unitsPerInch);
             boxHeight = (short)(_paperHeight - _unitsPerInch);
 
-            PCLWriter.RectangleOutline(prnWriter, boxX, boxY,
-                                        boxHeight, boxWidth, stroke,
-                                        false, false);
+            PCLWriter.RectangleOutline(prnWriter, boxX, boxY, boxHeight, boxWidth, stroke, false, false);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -251,9 +235,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLWriter.PatternSet(prnWriter,
-                                  PCLWriter.PatternType.SolidBlack,
-                                  0);
+            PCLWriter.PatternSet(prnWriter, PCLWriter.PatternType.SolidBlack, 0);
 
             ptSize = 15;
 
@@ -265,8 +247,7 @@ namespace PCLParaphernalia
             posX = (short)(_posXDesc - logXOffset);
             posY = _posYHddr;
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      "PCL shading patterns:");
+            PCLWriter.Text(prnWriter, posX, posY, 0, "PCL shading patterns:");
 
             //----------------------------------------------------------------//
 
@@ -283,8 +264,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < _patternsCt; i++)
             {
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                               "#" + (i + 1).ToString() + ": ");
+                PCLWriter.Text(prnWriter, posX, posY, 0, "#" + (i + 1).ToString() + ": ");
 
                 posY += _lineInc;
             }
@@ -304,8 +284,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < _patternsCt; i++)
             {
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                               _patternDescs[i] + ":");
+                PCLWriter.Text(prnWriter, posX, posY, 0, _patternDescs[i] + ":");
 
                 posY += _lineInc;
             }
@@ -324,18 +303,15 @@ namespace PCLParaphernalia
             posY = _posYDesc2;
             posX = (short)(_posXData1 - logXOffset);
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      "Predefined");
+            PCLWriter.Text(prnWriter, posX, posY, 0, "Predefined");
 
             posX = (short)(_posXData2 - logXOffset);
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      "User-defined 300 dpi");
+            PCLWriter.Text(prnWriter, posX, posY, 0, "User-defined 300 dpi");
 
             posX = (short)(_posXData3 - logXOffset);
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      "User-defined 600 dpi");
+            PCLWriter.Text(prnWriter, posX, posY, 0, "User-defined 600 dpi");
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -343,14 +319,11 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLWriter.PatternSet(prnWriter,
-                                  PCLWriter.PatternType.SolidBlack,
-                                  0);
+            PCLWriter.PatternSet(prnWriter, PCLWriter.PatternType.SolidBlack, 0);
 
             if (formAsMacro)
             {
-                PCLWriter.WriteMacroControl(prnWriter, 0,
-                                       PCLWriter.MacroControl.StopDef);
+                PCLWriter.WriteMacroControl(prnWriter, 0, PCLWriter.MacroControl.StopDef);
             }
         }
 
@@ -381,13 +354,11 @@ namespace PCLParaphernalia
 
             if (formAsMacro)
             {
-                PCLWriter.WriteMacroControl(prnWriter, _macroId,
-                                                   PCLWriter.MacroControl.Call);
+                PCLWriter.WriteMacroControl(prnWriter, _macroId, PCLWriter.MacroControl.Call);
             }
             else
             {
-                GenerateOverlay(prnWriter, false, logXOffset,
-                                            indxPaperSize, indxOrientation);
+                GenerateOverlay(prnWriter, false, logXOffset, indxPaperSize, indxOrientation);
             }
 
             rectHeight = _lineInc / 2;
@@ -477,8 +448,7 @@ namespace PCLParaphernalia
 
         private static void GetPatternData()
         {
-            _patternsCt = PCLPatternDefs.GetCount(
-                PCLPatternDefs.Type.Shading);
+            _patternsCt = PCLPatternDefs.GetCount(PCLPatternDefs.Type.Shading);
 
             _patternIds = new ushort[_patternsCt];
             _patternHeights = new ushort[_patternsCt];
@@ -487,14 +457,10 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < _patternsCt; i++)
             {
-                _patternIds[i] = PCLPatternDefs.GetId(
-                    PCLPatternDefs.Type.Shading, i);
-                _patternHeights[i] = PCLPatternDefs.GetHeight(
-                    PCLPatternDefs.Type.Shading, i);
-                _patternWidths[i] = PCLPatternDefs.GetWidth(
-                    PCLPatternDefs.Type.Shading, i);
-                _patternDescs[i] = PCLPatternDefs.GetDesc(
-                    PCLPatternDefs.Type.Shading, i);
+                _patternIds[i] = PCLPatternDefs.GetId(PCLPatternDefs.Type.Shading, i);
+                _patternHeights[i] = PCLPatternDefs.GetHeight(PCLPatternDefs.Type.Shading, i);
+                _patternWidths[i] = PCLPatternDefs.GetWidth(PCLPatternDefs.Type.Shading, i);
+                _patternDescs[i] = PCLPatternDefs.GetDesc(PCLPatternDefs.Type.Shading, i);
             }
         }
 
@@ -544,12 +510,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void PatternDefineDpi600(BinaryWriter prnWriter,
-                                                int baseID)
+        private static void PatternDefineDpi600(BinaryWriter prnWriter, int baseID)
         {
-            byte[] hddrFmt_20 = { 0x14, 0x00, 0x01, 0x00,
-                                  0x00, 0x10, 0x00, 0x10,
-                                  0x02, 0x58, 0x02, 0x58 };
+            byte[] hddrFmt_20 =
+            {
+                0x14, 0x00, 0x01, 0x00,
+                0x00, 0x10, 0x00, 0x10,
+                0x02, 0x58, 0x02, 0x58
+            };
 
             for (int i = 0; i < _patternsCt; i++)
             {
@@ -576,13 +544,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void PatternDeleteSet(BinaryWriter prnWriter,
-                                             int baseID)
+        private static void PatternDeleteSet(BinaryWriter prnWriter, int baseID)
         {
             for (int i = 0; i < _patternsCt; i++)
             {
-                PCLWriter.PatternDelete(
-                    prnWriter, (short)(baseID + _patternIds[i]));
+                PCLWriter.PatternDelete(prnWriter, (short)(baseID + _patternIds[i]));
             }
         }
     }

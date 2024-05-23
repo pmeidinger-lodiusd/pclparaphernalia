@@ -345,8 +345,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    rowData[0] = rowIndx.ToString(fmtHddr).
-                                    PadLeft(lrHddr, ' ');
+                    rowData[0] = rowIndx.ToString(fmtHddr).PadLeft(lrHddr, ' ');
                 }
 
                 for (int j = 0; j < colCtData; j++)
@@ -363,13 +362,11 @@ namespace PCLParaphernalia
                              (mapIndx >= cCodePointC1Min) &&
                               (mapIndx <= cCodePointC1Max))
                     {
-                        val = cCodePointUnused.
-                                ToString(fmtVal).PadLeft(lcCol, ' ');
+                        val = cCodePointUnused.ToString(fmtVal).PadLeft(lcCol, ' ');
                     }
                     else
                     {
-                        val = symSetMap[mapIndx].
-                                ToString(fmtVal).PadLeft(lcCol, ' ');
+                        val = symSetMap[mapIndx].ToString(fmtVal).PadLeft(lcCol, ' ');
                     }
 
                     rowData[j + 1] = val;

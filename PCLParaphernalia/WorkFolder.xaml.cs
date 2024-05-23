@@ -12,8 +12,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
-    [System.Reflection.Obfuscation(Feature = "renaming",
-                                            ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     public partial class WorkFolder : Window
     {
@@ -37,7 +36,7 @@ namespace PCLParaphernalia
         {
             InitializeComponent();
 
-            initialise();
+            Initialise();
         }
 
         //--------------------------------------------------------------------//
@@ -70,7 +69,7 @@ namespace PCLParaphernalia
 
             string filename = _workFoldername;
 
-            selected = selectDefWorkFolder(ref filename);
+            selected = SelectDefWorkFolder(ref filename);
 
             if (selected)
             {
@@ -90,7 +89,7 @@ namespace PCLParaphernalia
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            metricsSave();
+            MetricsSave();
 
             DialogResult = true;
         }
@@ -104,7 +103,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialise()
+        private void Initialise()
         {
             _workFoldername = _tmpFolder;
 
@@ -147,7 +146,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsSave()
+        private void MetricsSave()
         {
             TargetPersist.saveDataWorkFolder(_workFoldername);
         }
@@ -163,7 +162,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool selectDefWorkFolder(ref string targetFolder)
+        private bool SelectDefWorkFolder(ref string targetFolder)
         {
             bool selected = false;
 
@@ -194,8 +193,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtFoldername_LostFocus(object sender,
-                                            RoutedEventArgs e)
+        private void txtFoldername_LostFocus(object sender, RoutedEventArgs e)
         {
             _workFoldername = txtFoldername.Text;
         }

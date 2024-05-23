@@ -110,8 +110,7 @@ namespace PCLParaphernalia
                                       new ushort [] {0x0100, 0xffff})
         };
 
-        private static readonly int _methodCount =
-            _methods.GetUpperBound(0) + 1;
+        private static readonly int _methodCount = _methods.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -139,7 +138,7 @@ namespace PCLParaphernalia
 
         public static string GetDesc(int index)
         {
-            return _methods[index].getDesc();
+            return _methods[index].GetDesc();
         }
 
         //--------------------------------------------------------------------//
@@ -154,7 +153,7 @@ namespace PCLParaphernalia
 
         public static string GetDescLong(int index)
         {
-            return _methods[index].getDescLong();
+            return _methods[index].GetDescLong();
         }
 
         //--------------------------------------------------------------------//
@@ -169,7 +168,7 @@ namespace PCLParaphernalia
 
         public static Index GetMethodType(int index)
         {
-            return _methods[index].getMethodType();
+            return _methods[index].GetMethodType();
         }
 
         //--------------------------------------------------------------------//
@@ -184,7 +183,7 @@ namespace PCLParaphernalia
 
         public static ushort[] GetRangeDataDouble(int index)
         {
-            return _methods[index].getRangeDataDouble();
+            return _methods[index].GetRangeDataDouble();
         }
 
         //--------------------------------------------------------------------//
@@ -199,7 +198,7 @@ namespace PCLParaphernalia
 
         public static int GetRangeDataDoubleCt(int index)
         {
-            return _methods[index].getRangeDataDoubleCt();
+            return _methods[index].GetRangeDataDoubleCt();
         }
 
         //--------------------------------------------------------------------//
@@ -214,7 +213,7 @@ namespace PCLParaphernalia
 
         public static ushort[] GetRangeDataSingle(int index)
         {
-            return _methods[index].getRangeDataSingle();
+            return _methods[index].GetRangeDataSingle();
         }
 
         //--------------------------------------------------------------------//
@@ -229,7 +228,7 @@ namespace PCLParaphernalia
 
         public static int GetRangeDataSingleCt(int index)
         {
-            return _methods[index].getRangeDataSingleCt();
+            return _methods[index].GetRangeDataSingleCt();
         }
 
         //--------------------------------------------------------------------//
@@ -244,7 +243,7 @@ namespace PCLParaphernalia
 
         public static int GetValue(int index)
         {
-            return _methods[index].getValue();
+            return _methods[index].GetValue();
         }
     }
 }

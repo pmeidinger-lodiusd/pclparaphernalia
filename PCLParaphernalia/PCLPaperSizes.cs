@@ -208,7 +208,7 @@ namespace PCLParaphernalia
 
         public static string GetDesc(int index)
         {
-            return _paperSizes[index].getDesc();
+            return _paperSizes[index].GetDesc();
         }
 
         //--------------------------------------------------------------------//
@@ -222,7 +222,7 @@ namespace PCLParaphernalia
 
         public static byte GetIdPCL(int index)
         {
-            return _paperSizes[index].getIdPCL();
+            return _paperSizes[index].GetIdPCL();
         }
 
         //--------------------------------------------------------------------//
@@ -236,7 +236,7 @@ namespace PCLParaphernalia
 
         public static byte GetIdPCLXL(int index)
         {
-            return _paperSizes[index].getIdPCLXL();
+            return _paperSizes[index].GetIdPCLXL();
         }
 
         //--------------------------------------------------------------------//
@@ -249,11 +249,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort GetLogicalOffset(int index,
-                                              ushort sessionUPI,
-                                              PCLOrientations.Aspect aspect)
+        public static ushort GetLogicalOffset(int index, ushort sessionUPI, PCLOrientations.Aspect aspect)
         {
-            return _paperSizes[index].getLogicalOffset(sessionUPI, aspect);
+            return _paperSizes[index].GetLogicalOffset(sessionUPI, aspect);
         }
 
         //--------------------------------------------------------------------//
@@ -266,11 +264,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort GetLogPageLength(int index,
-                                               ushort sessionUPI,
-                                               PCLOrientations.Aspect aspect)
+        public static ushort GetLogPageLength(int index, ushort sessionUPI, PCLOrientations.Aspect aspect)
         {
-            return _paperSizes[index].getLogPageLength(sessionUPI, aspect);
+            return _paperSizes[index].GetLogPageLength(sessionUPI, aspect);
         }
 
         //--------------------------------------------------------------------//
@@ -283,11 +279,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort GetLogPageWidth(int index,
-                                              ushort sessionUPI,
-                                              PCLOrientations.Aspect aspect)
+        public static ushort GetLogPageWidth(int index, ushort sessionUPI, PCLOrientations.Aspect aspect)
         {
-            return _paperSizes[index].getLogPageWidth(sessionUPI, aspect);
+            return _paperSizes[index].GetLogPageWidth(sessionUPI, aspect);
         }
 
         //--------------------------------------------------------------------//
@@ -300,10 +294,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort GetMarginsLogicalLand(int index,
-                                                   ushort sessionUPI)
+        public static ushort GetMarginsLogicalLand(int index, ushort sessionUPI)
         {
-            return _paperSizes[index].getMarginsLogicalLand(sessionUPI);
+            return _paperSizes[index].GetMarginsLogicalLand(sessionUPI);
         }
 
         //--------------------------------------------------------------------//
@@ -316,10 +309,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort GetMarginsLogicalPort(int index,
-                                                   ushort sessionUPI)
+        public static ushort GetMarginsLogicalPort(int index, ushort sessionUPI)
         {
-            return _paperSizes[index].getMarginsLogicalPort(sessionUPI);
+            return _paperSizes[index].GetMarginsLogicalPort(sessionUPI);
         }
 
         //--------------------------------------------------------------------//
@@ -333,10 +325,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort GetMarginsUnprintable(int index,
-                                                   ushort sessionUPI)
+        public static ushort GetMarginsUnprintable(int index, ushort sessionUPI)
         {
-            return _paperSizes[index].getMarginsUnprintable(sessionUPI);
+            return _paperSizes[index].GetMarginsUnprintable(sessionUPI);
         }
 
         //--------------------------------------------------------------------//
@@ -350,7 +341,7 @@ namespace PCLParaphernalia
 
         public static string GetName(int index)
         {
-            return _paperSizes[index].getName();
+            return _paperSizes[index].GetName();
         }
 
         //--------------------------------------------------------------------//
@@ -365,8 +356,8 @@ namespace PCLParaphernalia
 
         public static string GetNameAndDesc(int index)
         {
-            string name = _paperSizes[index].getName();
-            string desc = _paperSizes[index].getDesc();
+            string name = _paperSizes[index].GetName();
+            string desc = _paperSizes[index].GetDesc();
 
             if (desc?.Length == 0)
                 return name;
@@ -386,7 +377,7 @@ namespace PCLParaphernalia
 
         public static string GetNamePCLXL(int index)
         {
-            return _paperSizes[index].getNamePCLXL();
+            return _paperSizes[index].GetNamePCLXL();
         }
 
         //--------------------------------------------------------------------//
@@ -399,11 +390,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort GetPaperLength(int index,
-                                            ushort sessionUPI,
-                                            PCLOrientations.Aspect aspect)
+        public static ushort GetPaperLength(int index, ushort sessionUPI, PCLOrientations.Aspect aspect)
         {
-            return _paperSizes[index].getPaperLength(sessionUPI, aspect);
+            return _paperSizes[index].GetPaperLength(sessionUPI, aspect);
         }
 
         //--------------------------------------------------------------------//
@@ -416,11 +405,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort GetPaperWidth(int index,
-                                           ushort sessionUPI,
-                                           PCLOrientations.Aspect aspect)
+        public static ushort GetPaperWidth(int index, ushort sessionUPI, PCLOrientations.Aspect aspect)
         {
-            return _paperSizes[index].getPaperWidth(sessionUPI, aspect);
+            return _paperSizes[index].GetPaperWidth(sessionUPI, aspect);
         }
 
         //--------------------------------------------------------------------//
@@ -433,10 +420,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort GetSizeLongEdge(int index,
-                                             ushort sessionUPI)
+        public static ushort GetSizeLongEdge(int index, ushort sessionUPI)
         {
-            return _paperSizes[index].getSizeLongEdge(sessionUPI);
+            return _paperSizes[index].GetSizeLongEdge(sessionUPI);
         }
 
         //--------------------------------------------------------------------//
@@ -449,10 +435,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort GetSizeShortEdge(int index,
-                                              ushort sessionUPI)
+        public static ushort GetSizeShortEdge(int index, ushort sessionUPI)
         {
-            return _paperSizes[index].getSizeShortEdge(sessionUPI);
+            return _paperSizes[index].GetSizeShortEdge(sessionUPI);
         }
 
         //--------------------------------------------------------------------//
@@ -480,7 +465,7 @@ namespace PCLParaphernalia
 
         public static bool IsEnumUnknownPCLXL(int index)
         {
-            return _paperSizes[index].getIdPCLXL() == _unknownEnum;
+            return _paperSizes[index].GetIdPCLXL() == _unknownEnum;
         }
 
         //--------------------------------------------------------------------//
@@ -494,7 +479,7 @@ namespace PCLParaphernalia
 
         public static bool IsIdUnknownPCL(int index)
         {
-            return _paperSizes[index].getIdPCL() == _unknownID;
+            return _paperSizes[index].GetIdPCL() == _unknownID;
         }
 
         //--------------------------------------------------------------------//
@@ -531,12 +516,12 @@ namespace PCLParaphernalia
 
             _paperSizes = new PCLPaperSize[]
             {
-                new PCLPaperSize(Index.Custom, // Custom - sizes can be overridden
+                new PCLPaperSize(Index.Custom,  // Custom - sizes can be overridden
                                  "<Custom>",    // name
-                                 string.Empty,            // description
+                                 string.Empty,  // description
                                  101,           // PCL identifier
                                  _unknownEnum,  // PCLXL paper size enumeration,
-                                 string.Empty,            // PCLXL paper size name
+                                 string.Empty,  // PCLXL paper size name
                                  sizeIsMetric,  // is metric or imperial size?  
                                  sizeIsCommon,  // is common or rare size?  
                                  _paperSizeUPI, // sizes are in these units
@@ -1969,11 +1954,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void SetCustomLongEdge(ushort size,
-                                              ushort sessionUPI)
+        public static void SetCustomLongEdge(ushort size, ushort sessionUPI)
         {
-            _paperSizes[(int)Index.Custom].CustomLongEdge =
-                (uint)((size * _paperSizeUPI) / sessionUPI);
+            _paperSizes[(int)Index.Custom].CustomLongEdge = (uint)((size * _paperSizeUPI) / sessionUPI);
         }
 
         //--------------------------------------------------------------------//
@@ -1986,11 +1969,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void SetCustomShortEdge(ushort size,
-                                               ushort sessionUPI)
+        public static void SetCustomShortEdge(ushort size, ushort sessionUPI)
         {
-            _paperSizes[(int)Index.Custom].CustomShortEdge =
-                (uint)((size * _paperSizeUPI) / sessionUPI);
+            _paperSizes[(int)Index.Custom].CustomShortEdge = (uint)((size * _paperSizeUPI) / sessionUPI);
         }
     }
 }

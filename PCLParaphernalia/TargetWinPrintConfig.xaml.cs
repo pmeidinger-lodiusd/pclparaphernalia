@@ -11,8 +11,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
-    [System.Reflection.Obfuscation(Feature = "renaming",
-                                            ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     public partial class TargetWinPrintConfig : Window
     {
@@ -82,8 +81,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbPrinters_SelectionChanged(object sender,
-                                                  EventArgs e)
+        private void cbPrinters_SelectionChanged(object sender, EventArgs e)
         {
             if (_initialised)
             {

@@ -53,57 +53,32 @@ namespace PCLParaphernalia
 
         private static readonly PrnParseRowType[] _rowTypes =
         {
-            new PrnParseRowType(Type.MsgError,
-                                "Error message"),
-            new PrnParseRowType(Type.MsgWarning,
-                                 "Warning message"),
-            new PrnParseRowType(Type.MsgComment,
-                                "Comment"),
-            new PrnParseRowType(Type.MsgDiag,
-                                "Diagnostic"),
-            new PrnParseRowType(Type.DataBinary,
-                                "Binary data"),
-            new PrnParseRowType(Type.DataText,
-                                "Text data"),
-            new PrnParseRowType(Type.PCLSeqComplex,
-                                "PCL complex sequence"),
-            new PrnParseRowType(Type.PCLSeqSimple,
-                                "PCL simple sequence"),
-            new PrnParseRowType(Type.PCLControlCode,
-                                "PCL control code"),
-            new PrnParseRowType(Type.PCLDecode,
-                                "PCL binary data decode"),
-            new PrnParseRowType(Type.PCLFontHddr,
-                                "PCL soft font header"),
-            new PrnParseRowType(Type.PCLFontChar,
-                                "PCL soft font character"),
-            new PrnParseRowType(Type.HPGL2Command,
-                                "HP-GL/2 command"),
-            new PrnParseRowType(Type.HPGL2ControlCode,
-                                "HP-GL/2 control code"),
-            new PrnParseRowType(Type.PCLXLStreamHddr,
-                                "PCL XL stream header"),
-            new PrnParseRowType(Type.PCLXLWhiteSpace,
-                                "PCL XL whitespace"),
-            new PrnParseRowType(Type.PCLXLOperator,
-                                "PCL XL operator"),
-            new PrnParseRowType(Type.PCLXLAttribute,
-                                "PCL XL attribute"),
-            new PrnParseRowType(Type.PCLXLDataType,
-                                "PCL XL data type"),
-            new PrnParseRowType(Type.PCLXLDataValue,
-                                "PCL XL data value"),
-            new PrnParseRowType(Type.PCLXLFontHddr,
-                                "PCL XL soft font header"),
-            new PrnParseRowType(Type.PCLXLFontChar,
-                                "PCL XL soft font character"),
-            new PrnParseRowType(Type.PJLCommand,
-                                "PJL command"),
-            new PrnParseRowType(Type.PMLSeq,
-                                "PML sequence"),
-            new PrnParseRowType(Type.PrescribeCommand,
-                                "Prescribe command")
-       };
+            new PrnParseRowType(Type.MsgError, "Error message"),
+            new PrnParseRowType(Type.MsgWarning, "Warning message"),
+            new PrnParseRowType(Type.MsgComment, "Comment"),
+            new PrnParseRowType(Type.MsgDiag, "Diagnostic"),
+            new PrnParseRowType(Type.DataBinary, "Binary data"),
+            new PrnParseRowType(Type.DataText, "Text data"),
+            new PrnParseRowType(Type.PCLSeqComplex, "PCL complex sequence"),
+            new PrnParseRowType(Type.PCLSeqSimple, "PCL simple sequence"),
+            new PrnParseRowType(Type.PCLControlCode, "PCL control code"),
+            new PrnParseRowType(Type.PCLDecode, "PCL binary data decode"),
+            new PrnParseRowType(Type.PCLFontHddr, "PCL soft font header"),
+            new PrnParseRowType(Type.PCLFontChar, "PCL soft font character"),
+            new PrnParseRowType(Type.HPGL2Command, "HP-GL/2 command"),
+            new PrnParseRowType(Type.HPGL2ControlCode, "HP-GL/2 control code"),
+            new PrnParseRowType(Type.PCLXLStreamHddr, "PCL XL stream header"),
+            new PrnParseRowType(Type.PCLXLWhiteSpace, "PCL XL whitespace"),
+            new PrnParseRowType(Type.PCLXLOperator, "PCL XL operator"),
+            new PrnParseRowType(Type.PCLXLAttribute, "PCL XL attribute"),
+            new PrnParseRowType(Type.PCLXLDataType, "PCL XL data type"),
+            new PrnParseRowType(Type.PCLXLDataValue, "PCL XL data value"),
+            new PrnParseRowType(Type.PCLXLFontHddr, "PCL XL soft font header"),
+            new PrnParseRowType(Type.PCLXLFontChar, "PCL XL soft font character"),
+            new PrnParseRowType(Type.PJLCommand, "PJL command"),
+            new PrnParseRowType(Type.PMLSeq, "PML sequence"),
+            new PrnParseRowType(Type.PrescribeCommand, "Prescribe command")
+        };
 
         private static readonly int _rowTypeCount = _rowTypes.GetUpperBound(0) + 1;
 
@@ -132,7 +107,7 @@ namespace PCLParaphernalia
 
         public static string GetDesc(int selection)
         {
-            return _rowTypes[selection].getDesc();
+            return _rowTypes[selection].GetDesc();
         }
 
         //--------------------------------------------------------------------//
@@ -146,7 +121,7 @@ namespace PCLParaphernalia
 
         public static Type GetType(int selection)
         {
-            return _rowTypes[selection].getType();
+            return _rowTypes[selection].GetRowType();
         }
 
         //--------------------------------------------------------------------//
@@ -165,9 +140,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void SetDefaultClrs(
-            ref int[] indxClrMapBack,
-            ref int[] indxClrMapFore)
+        public static void SetDefaultClrs(ref int[] indxClrMapBack, ref int[] indxClrMapFore)
         {
             Type rowType;
 

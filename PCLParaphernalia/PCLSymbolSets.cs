@@ -43,8 +43,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static readonly List<PCLSymbolSet> _sets =
-            new List<PCLSymbolSet>();
+        private static readonly List<PCLSymbolSet> _sets = new List<PCLSymbolSet>();
 
         private static int _indxSymbol;
         private static int _indxUnbound;
@@ -252,8 +251,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void GetNameForId(ushort kind1,
-                                        ref string name)
+        public static void GetNameForId(ushort kind1, ref string name)
         {
             int index = GetIndexForId(kind1);
 
@@ -272,8 +270,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void GetIndicesMapped(int firstIndex,
-                                             ref int[] subset)
+        public static void GetIndicesMapped(int firstIndex, ref int[] subset)
         {
             int index = firstIndex;
 
@@ -328,8 +325,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort[] GetMapArray(int selection,
-                                             bool flagMapPCL)
+        public static ushort[] GetMapArray(int selection, bool flagMapPCL)
         {
             if (_sets[selection].Group == SymSetGroup.UserSet)
                 return _sets[selection].MapArrayUserSet;
@@ -408,14 +404,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool GetSymsetData(int selection,
-                                            ref ushort kind1,
-                                            ref ushort idNum,
-                                            ref string name)
+        public static bool GetSymsetData(int selection, ref ushort kind1, ref ushort idNum, ref string name)
         {
-            bool symsetPresent = _sets[selection].getSymsetData(ref kind1,
-                                                            ref idNum,
-                                                            ref name);
+            bool symsetPresent = _sets[selection].GetSymsetData(ref kind1, ref idNum, ref name);
 
             return symsetPresent;
         }
@@ -431,16 +422,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool GetSymsetDataForIdAlpha(int selection,
-                                                      byte idAlpha,
-                                                      ref ushort kind1,
-                                                      ref ushort idNum,
-                                                      ref string name)
+        public static bool GetSymsetDataForIdAlpha(int selection, byte idAlpha, ref ushort kind1, ref ushort idNum, ref string name)
         {
-            bool symsetPresent = _sets[selection].getSymsetDataForIdAlpha(idAlpha,
-                                                                      ref kind1,
-                                                                      ref idNum,
-                                                                      ref name);
+            bool symsetPresent = _sets[selection].GetSymsetDataForIdAlpha(idAlpha, ref kind1, ref idNum, ref name);
 
             return symsetPresent;
         }
@@ -1668,8 +1652,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort TranslateIdToKind1(ushort idNum,
-                                                byte idAlpha)
+        public static ushort TranslateIdToKind1(ushort idNum, byte idAlpha)
         {
             const ushort badValue = 0;
 
@@ -1746,9 +1729,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void TranslateKind1ToId(ushort kind1,
-                                              ref string idNum,
-                                              ref string idAlpha)
+        public static void TranslateKind1ToId(ushort kind1, ref string idNum, ref string idAlpha)
         {
             if ((kind1 < 1) || (kind1 > 65530))
             {

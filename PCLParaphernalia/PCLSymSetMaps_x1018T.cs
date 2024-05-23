@@ -32,7 +32,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void unicodeMap_x1018T()
+        private static void UnicodeMap_x1018T()
         {
             const SymSetMapId mapId = SymSetMapId.map_x1018T;
 

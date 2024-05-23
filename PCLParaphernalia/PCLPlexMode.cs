@@ -51,7 +51,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte getIdPCL()
+        public byte GetIdPCL()
         {
             return _plexModeIdPCL;
         }
@@ -66,7 +66,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte getIdPCLXL(bool landscape)
+        public byte GetIdPCLXL(bool landscape)
         {
             if (landscape)
                 return _plexModeIdPCLXLLand;
@@ -83,7 +83,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getName()
+        public string GetName()
         {
             return _plexModeName;
         }
@@ -97,7 +97,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLPlexModes.PlexType getPlexType()
+        public PCLPlexModes.PlexType GetPlexType()
         {
             return _plexType;
         }

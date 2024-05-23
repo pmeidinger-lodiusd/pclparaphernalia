@@ -130,30 +130,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void logError(DataTable table,
+        public static void LogError(DataTable table,
                                     MessageBoxImage type,
                                     string message)
         {
             if (type == MessageBoxImage.Information)
             {
-                logNameAndValue(
-                                table, true, true, "*** COMMENT ***", message);
+                LogNameAndValue(table, true, true, "*** COMMENT ***", message);
             }
             else if (type == MessageBoxImage.Warning)
             {
-                logNameAndValue(
-                                table, true, true, "*** WARNING ***", message);
+                LogNameAndValue(table, true, true, "*** WARNING ***", message);
             }
             else
             {
-                logNameAndValue(
-                                table, true, true, "*** ERROR ***", message);
+                LogNameAndValue(table, true, true, "*** ERROR ***", message);
             }
 
-            MessageBox.Show(message,
-                             "Processing font",
-                             MessageBoxButton.OK,
-                             type);
+            MessageBox.Show(message, "Processing font", MessageBoxButton.OK, type);
         }
 
         //--------------------------------------------------------------------//
@@ -165,9 +159,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void logMissingChar(DataTable table,
-                                           ushort charCode,
-                                           ushort codepoint)
+        public static void LogMissingChar(DataTable table, ushort charCode, ushort codepoint)
         {
             const int colDecCode = 0;
             const int colHexCode = 1;
@@ -197,7 +189,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void logNameAndValue(DataTable table,
+        public static void LogNameAndValue(DataTable table,
                                            bool blankBefore,
                                            bool blankAfter,
                                            string name,
@@ -264,8 +256,7 @@ namespace PCLParaphernalia
                     //                                                    //
                     //----------------------------------------------------//
 
-                    while ((vStart < vLen) &&
-                           (value[vStart] == cASCII_Space))
+                    while ((vStart < vLen) && (value[vStart] == cASCII_Space))
                     {
                         vStart++;
                     }
@@ -301,13 +292,11 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        logData = tempStr.Replace((char)cASCII_CarriageReturn,
-                                                   (char)cASCII_Space);
+                        logData = tempStr.Replace((char)cASCII_CarriageReturn, (char)cASCII_Space);
 
                         tempStr = logData;
 
-                        logData = tempStr.Replace((char)cASCII_HorizontalTab,
-                                                   (char)cASCII_Space);
+                        logData = tempStr.Replace((char)cASCII_HorizontalTab, (char)cASCII_Space);
 
                         vPos = logData.IndexOf((char)cASCII_LineFeed);
 

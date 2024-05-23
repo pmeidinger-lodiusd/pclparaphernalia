@@ -63,18 +63,10 @@ namespace PCLParaphernalia
         static readonly short _indxFontArial = PCLFonts.GetIndexForFontArial();
         static readonly short _indxFontCourier = PCLFonts.GetIndexForFontCourier();
 
-        static readonly string _nameFontArialBold =
-            PCLFonts.GetPCLXLName(_indxFontArial,
-                                   PCLFonts.Variant.Bold);
-        static readonly string _nameFontArialRegular =
-            PCLFonts.GetPCLXLName(_indxFontArial,
-                                   PCLFonts.Variant.Regular);
-        static readonly string _nameFontCourierBold =
-            PCLFonts.GetPCLXLName(_indxFontCourier,
-                                   PCLFonts.Variant.Bold);
-        static readonly string _nameFontCourierRegular =
-            PCLFonts.GetPCLXLName(_indxFontCourier,
-                                   PCLFonts.Variant.Regular);
+        static readonly string _nameFontArialBold = PCLFonts.GetPCLXLName(_indxFontArial, PCLFonts.Variant.Bold);
+        static readonly string _nameFontArialRegular = PCLFonts.GetPCLXLName(_indxFontArial, PCLFonts.Variant.Regular);
+        static readonly string _nameFontCourierBold = PCLFonts.GetPCLXLName(_indxFontCourier, PCLFonts.Variant.Bold);
+        static readonly string _nameFontCourierRegular = PCLFonts.GetPCLXLName(_indxFontCourier, PCLFonts.Variant.Regular);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -85,9 +77,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void defineRGBPalette(int indxPalette,
-                                              int paletteDepth,
-                                              ref byte[] paletteData)
+        private static void DefineRGBPalette(int indxPalette, int paletteDepth, ref byte[] paletteData)
         {
             int indx,
                   rgbVal,
@@ -132,7 +122,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generateJob(BinaryWriter prnWriter,
+        public static void GenerateJob(BinaryWriter prnWriter,
                                        int indxPaperSize,
                                        int indxPaperType,
                                        int indxOrientation,
@@ -180,12 +170,8 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            rgbClrBlack = PCLXLPalettes.GetColourRGB(
-                             indxPalette,
-                             PCLXLPalettes.GetClrItemBlack(indxPalette));
-            rgbClrWhite = PCLXLPalettes.GetColourRGB(
-                             indxPalette,
-                             PCLXLPalettes.GetClrItemWhite(indxPalette));
+            rgbClrBlack = PCLXLPalettes.GetColourRGB(indxPalette, PCLXLPalettes.GetClrItemBlack(indxPalette));
+            rgbClrWhite = PCLXLPalettes.GetColourRGB(indxPalette, PCLXLPalettes.GetClrItemWhite(indxPalette));
 
             if (PCLXLPalettes.IsMonochrome(indxPalette))
             {
@@ -203,18 +189,12 @@ namespace PCLParaphernalia
                 idClrT1 = (byte)indxClrT1;
                 idClrT2 = (byte)indxClrT2;
 
-                nameClrD1 = PCLXLPalettes.GetGrayLevel(indxPalette,
-                                                       (byte)indxClrD1);
-                nameClrD2 = PCLXLPalettes.GetGrayLevel(indxPalette,
-                                                       (byte)indxClrD2);
-                nameClrS1 = PCLXLPalettes.GetGrayLevel(indxPalette,
-                                                       (byte)indxClrS1);
-                nameClrS2 = PCLXLPalettes.GetGrayLevel(indxPalette,
-                                                       (byte)indxClrS2);
-                nameClrT1 = PCLXLPalettes.GetGrayLevel(indxPalette,
-                                                       (byte)indxClrT1);
-                nameClrT2 = PCLXLPalettes.GetGrayLevel(indxPalette,
-                                                       (byte)indxClrT2);
+                nameClrD1 = PCLXLPalettes.GetGrayLevel(indxPalette, (byte)indxClrD1);
+                nameClrD2 = PCLXLPalettes.GetGrayLevel(indxPalette, (byte)indxClrD2);
+                nameClrS1 = PCLXLPalettes.GetGrayLevel(indxPalette, (byte)indxClrS1);
+                nameClrS2 = PCLXLPalettes.GetGrayLevel(indxPalette, (byte)indxClrS2);
+                nameClrT1 = PCLXLPalettes.GetGrayLevel(indxPalette, (byte)indxClrT1);
+                nameClrT2 = PCLXLPalettes.GetGrayLevel(indxPalette, (byte)indxClrT2);
             }
             else
             {
@@ -242,21 +222,18 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            generateJobHeader(prnWriter, string.Empty);
+            GenerateJobHeader(prnWriter, string.Empty);
 
             //----------------------------------------------------------------//
 
             if (flagUseMacros)
             {
-                writeDestBoxPage(prnWriter, rgbClrD1, rgbClrD2, rgbClrBlack,
-                                  flagOptColour, true);
+                WriteDestBoxPage(prnWriter, rgbClrD1, rgbClrD2, rgbClrBlack, flagOptColour, true);
 
-                writeSrcBoxRow(prnWriter, rgbClrS1, rgbClrS2, rgbClrBlack,
-                                idClrS1, idClrS2,
-                                flagOptColour, true, flagSrcTextPat);
+                WriteSrcBoxRow(prnWriter, rgbClrS1, rgbClrS2, rgbClrBlack, idClrS1, idClrS2, flagOptColour, true, flagSrcTextPat);
             }
 
-            generatePageSet(prnWriter,
+            GeneratePageSet(prnWriter,
                              indxPaperSize,
                              indxPaperType,
                              indxOrientation,
@@ -293,7 +270,7 @@ namespace PCLParaphernalia
                 PCLXLWriter.StreamRemove(prnWriter, _streamIdSrcBoxRow);
             }
 
-            generateJobTrailer(prnWriter, flagUseMacros);
+            GenerateJobTrailer(prnWriter, flagUseMacros);
         }
 
         //--------------------------------------------------------------------//
@@ -305,8 +282,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateJobHeader(BinaryWriter prnWriter,
-                                              string pjlCommand)
+        private static void GenerateJobHeader(BinaryWriter prnWriter, string pjlCommand)
         {
             PCLXLWriter.StdJobHeader(prnWriter, pjlCommand);
         }
@@ -320,8 +296,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateJobTrailer(BinaryWriter prnWriter,
-                                               bool formAsMacro)
+        private static void GenerateJobTrailer(BinaryWriter prnWriter, bool formAsMacro)
         {
             PCLXLWriter.StdJobTrailer(prnWriter, false, null);
         }
@@ -335,7 +310,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generatePage_1(BinaryWriter prnWriter,
+        private static void GeneratePage_1(BinaryWriter prnWriter,
                                             int indxPaperSize,
                                             int indxPaperType,
                                             int indxOrientation,
@@ -389,10 +364,8 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            srcOffsetX = ((_destBoxSide / 2) -
-                                    _sourceImagePixelsWidth) / 2;
-            srcOffsetY = (_destBoxSide -
-                                   _sourceImagePixelsHeight) / 2;
+            srcOffsetX = ((_destBoxSide / 2) - _sourceImagePixelsWidth) / 2;
+            srcOffsetY = (_destBoxSide - _sourceImagePixelsHeight) / 2;
 
             indStd = 0;
 
@@ -419,8 +392,7 @@ namespace PCLParaphernalia
             }
 
             if ((indxPaperType < PCLPaperTypes.GetCount()) &&
-                (PCLPaperTypes.GetType(indxPaperType) !=
-                    PCLPaperTypes.EntryType.NotSet))
+                (PCLPaperTypes.GetType(indxPaperType) != PCLPaperTypes.EntryType.NotSet))
             {
                 PCLXLWriter.AddAttrUbyteArray(ref bufStd,
                                         ref indStd,
@@ -510,13 +482,11 @@ namespace PCLParaphernalia
 
             if (flagOptColour)
             {
-                writePattern(prnWriter, _patternId, idClrT1, idClrT2,
-                              true);
+                WritePattern(prnWriter, _patternId, idClrT1, idClrT2, true);
             }
             else
             {
-                writePattern(prnWriter, _patternId, idClrT1, idClrT2,
-                              false);
+                WritePattern(prnWriter, _patternId, idClrT1, idClrT2, false);
             }
 
             prnWriter.Write(bufStd, 0, indStd);
@@ -565,8 +535,7 @@ namespace PCLParaphernalia
 
             posY += (_lineInc * 3);
 
-            PCLXLWriter.Font(prnWriter, false, ptSize, _symSet_19U,
-                              _nameFontArialRegular);
+            PCLXLWriter.Font(prnWriter, false, ptSize, _symSet_19U, _nameFontArialRegular);
 
             PCLXLWriter.Text(prnWriter, false, false,
                        PCLXLWriter.advances_ArialRegular, ptSize,
@@ -660,7 +629,7 @@ namespace PCLParaphernalia
             prnWriter.Write(bufStd, 0, indStd);
             indStd = 0;
 
-            writeDestBox(prnWriter, rgbClrD1, rgbClrD2, rgbClrBlack,
+            WriteDestBox(prnWriter, rgbClrD1, rgbClrD2, rgbClrBlack,
                           flagOptColour, false);
 
             PCLXLWriter.AddOperator(ref bufStd,
@@ -695,7 +664,7 @@ namespace PCLParaphernalia
             PCLXLWriter.Font(prnWriter, false, ptSize, _symSet_19U,
                               _nameFontArialRegular);
 
-            writeSrcBox(prnWriter, indxClrS1, indxClrS2, rgbClrBlack,
+            WriteSrcBox(prnWriter, indxClrS1, indxClrS2, rgbClrBlack,
                          idClrS1, idClrS2,
                          flagOptColour, false, flagSrcTextPat);
 
@@ -793,8 +762,7 @@ namespace PCLParaphernalia
 
             ptSize = 8;
 
-            PCLXLWriter.Font(prnWriter, false, ptSize, _symSet_19U,
-                              _nameFontCourierRegular);
+            PCLXLWriter.Font(prnWriter, false, ptSize, _symSet_19U, _nameFontCourierRegular);
 
             PCLXLWriter.Text(prnWriter, false, false,
                        PCLXLWriter.advances_Courier, ptSize,
@@ -883,13 +851,12 @@ namespace PCLParaphernalia
 
             ptSize = 10;
 
-            PCLXLWriter.Font(prnWriter, false, ptSize, _symSet_19U,
-                              _nameFontCourierRegular);
+            PCLXLWriter.Font(prnWriter, false, ptSize, _symSet_19U, _nameFontCourierRegular);
 
             PCLXLWriter.Text(prnWriter, false, false,
                        PCLXLWriter.advances_Courier, ptSize,
                        posX, posY,
-                       PCLLogicalOperations.getDescShort(defaultROP));
+                       PCLLogicalOperations.GetDescShort(defaultROP));
 
             //----------------------------------------------------------------//
 
@@ -911,7 +878,7 @@ namespace PCLParaphernalia
             prnWriter.Write(bufStd, 0, indStd);
             indStd = 0;
 
-            writeDestBoxRowHddr(prnWriter, false);
+            WriteDestBoxRowHddr(prnWriter, false);
 
             PCLXLWriter.AddOperator(ref bufStd,
                               ref indStd,
@@ -952,8 +919,7 @@ namespace PCLParaphernalia
 
             ptSize = 28;
 
-            PCLXLWriter.Font(prnWriter, false, ptSize, _symSet_19U,
-                              _nameFontArialRegular);
+            PCLXLWriter.Font(prnWriter, false, ptSize, _symSet_19U, _nameFontArialRegular);
 
             //----------------------------------------------------------------//
 
@@ -995,7 +961,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                writeSrcBoxRow(prnWriter, indxClrS1, indxClrS2, rgbClrBlack,
+                WriteSrcBoxRow(prnWriter, indxClrS1, indxClrS2, rgbClrBlack,
                                             idClrS1, idClrS2,
                                             flagOptColour, false, flagSrcTextPat);
             }
@@ -1042,8 +1008,7 @@ namespace PCLParaphernalia
             PCLXLWriter.Text(prnWriter, false, false,
                        PCLXLWriter.advances_ArialBold, ptSize,
                        posX, posY,
-                      "The following pages show the effects of the various" +
-                      " Logical Operation (ROP)");
+                      "The following pages show the effects of the various Logical Operation (ROP)");
 
             posY += _lineInc;
 
@@ -1051,9 +1016,9 @@ namespace PCLParaphernalia
                        PCLXLWriter.advances_ArialBold, ptSize,
                        posX, posY,
                       "values (in the range " +
-                      PCLLogicalOperations.getDescShort(minROP) +
+                      PCLLogicalOperations.GetDescShort(minROP) +
                       " - " +
-                      PCLLogicalOperations.getDescShort(maxROP) +
+                      PCLLogicalOperations.GetDescShort(maxROP) +
                       "), when combined with");
 
             posY += _lineInc;
@@ -1061,8 +1026,7 @@ namespace PCLParaphernalia
             PCLXLWriter.Text(prnWriter, false, false,
                        PCLXLWriter.advances_ArialBold, ptSize,
                        posX, posY,
-                      "different Source and Texture (pattern) transparency" +
-                      " settings:");
+                      "different Source and Texture (pattern) transparency settings:");
 
             //----------------------------------------------------------------//
 
@@ -1087,7 +1051,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generatePage_n(BinaryWriter prnWriter,
+        private static void GeneratePage_n(BinaryWriter prnWriter,
                                             int indxPaperSize,
                                             int indxOrientation,
                                             byte startROP,
@@ -1126,10 +1090,8 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            srcOffsetX = ((_destBoxSide / 2) -
-                                    _sourceImagePixelsWidth) / 2;
-            srcOffsetY = (_destBoxSide -
-                                   _sourceImagePixelsHeight) / 2;
+            srcOffsetX = ((_destBoxSide / 2) - _sourceImagePixelsWidth) / 2;
+            srcOffsetY = (_destBoxSide - _sourceImagePixelsHeight) / 2;
 
             indStd = 0;
 
@@ -1231,8 +1193,7 @@ namespace PCLParaphernalia
 
             ptSize = 10;
 
-            PCLXLWriter.Font(prnWriter, false, ptSize, _symSet_19U,
-                              _nameFontCourierRegular);
+            PCLXLWriter.Font(prnWriter, false, ptSize, _symSet_19U, _nameFontCourierRegular);
 
             //----------------------------------------------------------------//
 
@@ -1244,7 +1205,7 @@ namespace PCLParaphernalia
                 PCLXLWriter.Text(prnWriter, false, false,
                        PCLXLWriter.advances_Courier, ptSize,
                        posX, posY,
-                       PCLLogicalOperations.getDescShort(startROP + i));
+                       PCLLogicalOperations.GetDescShort(startROP + i));
 
                 posY += _rowInc;
             }
@@ -1257,7 +1218,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                writeDestBoxPage(prnWriter, rgbClrD1, rgbClrD2, rgbClrBlack,
+                WriteDestBoxPage(prnWriter, rgbClrD1, rgbClrD2, rgbClrBlack,
                                               flagOptColour, false);
             }
 
@@ -1309,12 +1270,11 @@ namespace PCLParaphernalia
 
                 if (flagUseMacros)
                 {
-                    PCLXLWriter.StreamExec(prnWriter, false,
-                                                            _streamIdSrcBoxRow);
+                    PCLXLWriter.StreamExec(prnWriter, false, _streamIdSrcBoxRow);
                 }
                 else
                 {
-                    writeSrcBoxRow(prnWriter, rgbClrS1, rgbClrS2,
+                    WriteSrcBoxRow(prnWriter, rgbClrS1, rgbClrS2,
                                                     rgbClrBlack, idClrS1, idClrS2,
                                                     flagOptColour, false, flagSrcTextPat);
                 }
@@ -1357,7 +1317,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generatePageSet(BinaryWriter prnWriter,
+        private static void GeneratePageSet(BinaryWriter prnWriter,
                                              int indxPaperSize,
                                              int indxPaperType,
                                              int indxOrientation,
@@ -1395,9 +1355,9 @@ namespace PCLParaphernalia
             byte[] paletteRGB = new byte[paletteSize];
 
             if (flagOptColour)
-                defineRGBPalette(indxPalette, paletteDepth, ref paletteRGB);
+                DefineRGBPalette(indxPalette, paletteDepth, ref paletteRGB);
 
-            generatePage_1(prnWriter,
+            GeneratePage_1(prnWriter,
                             indxPaperSize,
                             indxPaperType,
                             indxOrientation,
@@ -1430,7 +1390,7 @@ namespace PCLParaphernalia
 
             for (int i = minROP; i < maxROP; i += 8)
             {
-                generatePage_n(prnWriter,
+                GeneratePage_n(prnWriter,
                                 indxPaperSize,
                                 indxOrientation,
                                 (byte)i,
@@ -1467,7 +1427,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void writeDestBox(BinaryWriter prnWriter,
+        private static void WriteDestBox(BinaryWriter prnWriter,
                                           int rgbClrD1,
                                           int rgbClrD2,
                                           int rgbClrBlack,
@@ -1536,14 +1496,12 @@ namespace PCLParaphernalia
             posX = 0; // relative to current origin
             posY = 0; // relative to current origin
 
-            PCLXLWriter.Rectangle(prnWriter, flagUseMacros, posX, posY,
-                                   halfBox, halfBox);
+            PCLXLWriter.Rectangle(prnWriter, flagUseMacros, posX, posY, halfBox, halfBox);
 
             posX += halfBox;
             posY += halfBox;
 
-            PCLXLWriter.Rectangle(prnWriter, flagUseMacros, posX, posY,
-                                   halfBox, halfBox);
+            PCLXLWriter.Rectangle(prnWriter, flagUseMacros, posX, posY, halfBox, halfBox);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1585,14 +1543,12 @@ namespace PCLParaphernalia
             posX = 0;       // relative to current origin
             posY = halfBox; // relative to current origin
 
-            PCLXLWriter.Rectangle(prnWriter, flagUseMacros, posX, posY,
-                                   halfBox, halfBox);
+            PCLXLWriter.Rectangle(prnWriter, flagUseMacros, posX, posY, halfBox, halfBox);
 
             posX += halfBox;
             posY -= halfBox;
 
-            PCLXLWriter.Rectangle(prnWriter, flagUseMacros, posX, posY,
-                                   halfBox, halfBox);
+            PCLXLWriter.Rectangle(prnWriter, flagUseMacros, posX, posY, halfBox, halfBox);
         }
 
         //--------------------------------------------------------------------//
@@ -1611,7 +1567,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void writeDestBoxPage(BinaryWriter prnWriter,
+        private static void WriteDestBoxPage(BinaryWriter prnWriter,
                                               int rgbClrD1,
                                               int rgbClrD2,
                                               int rgbClrBlack,
@@ -1663,7 +1619,7 @@ namespace PCLParaphernalia
             PCLXLWriter.WriteStreamBlock(prnWriter, flagUseMacros,
                                           buffer, ref indBuf);
 
-            writeDestBoxRowHddr(prnWriter, flagUseMacros);
+            WriteDestBoxRowHddr(prnWriter, flagUseMacros);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1769,7 +1725,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < 4; i++)
             {
-                writeDestBox(prnWriter, rgbClrD1, rgbClrD2, rgbClrBlack,
+                WriteDestBox(prnWriter, rgbClrD1, rgbClrD2, rgbClrBlack,
                               flagOptColour, flagUseMacros);
 
                 PCLXLWriter.AddAttrSint16XY(ref buffer, ref indBuf,
@@ -1794,8 +1750,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void writeDestBoxRowHddr(BinaryWriter prnWriter,
-                                                 bool flagUseMacros)
+        private static void WriteDestBoxRowHddr(BinaryWriter prnWriter, bool flagUseMacros)
         {
             short ptSize;
 
@@ -1810,8 +1765,7 @@ namespace PCLParaphernalia
 
             ptSize = 10;
 
-            PCLXLWriter.Font(prnWriter, flagUseMacros, ptSize, _symSet_19U,
-                              _nameFontArialRegular);
+            PCLXLWriter.Font(prnWriter, flagUseMacros, ptSize, _symSet_19U, _nameFontArialRegular);
 
             //----------------------------------------------------------------//
 
@@ -1845,8 +1799,7 @@ namespace PCLParaphernalia
 
             ptSize = 8;
 
-            PCLXLWriter.Font(prnWriter, flagUseMacros, ptSize, _symSet_19U,
-                              _nameFontArialRegular);
+            PCLXLWriter.Font(prnWriter, flagUseMacros, ptSize, _symSet_19U, _nameFontArialRegular);
 
             //----------------------------------------------------------------//
 
@@ -1880,7 +1833,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void writePattern(BinaryWriter prnWriter,
+        private static void WritePattern(BinaryWriter prnWriter,
                                           short patternId,
                                           byte idClrT1,
                                           byte idClrT2,
@@ -1893,27 +1846,28 @@ namespace PCLParaphernalia
             const int rowBytes = patWidth / 8;
             const int rowCt = patHeight;
 
-            const ushort destWidth =
-                 (patWidth * _unitsPerInch) / 300;
-            const ushort destHeight =
-                 (patHeight * _unitsPerInch) / 300;
+            const ushort destWidth = (patWidth * _unitsPerInch) / 300;
+            const ushort destHeight = (patHeight * _unitsPerInch) / 300;
 
-            byte[] mask = { 0xC0, 0x01,      // row 00
-                             0xE0, 0x00,      //     01
-                             0x70, 0x00,      //     02
-                             0x38, 0x00,      //     03
-                             0x1C, 0x00,      //     04
-                             0x0E, 0x00,      //     05
-                             0x07, 0x00,      //     06
-                             0x03, 0x80,      //     07
-                             0x01, 0xC0,      //     08
-                             0x00, 0xE0,      //     09
-                             0x00, 0x70,      //     10
-                             0x00, 0x38,      //     11
-                             0x00, 0x1C,      //     12
-                             0x00, 0x0E,      //     13
-                             0x00, 0x07,      //     14
-                             0x80, 0x03 };    //     15
+            byte[] mask =
+            {
+                0xC0, 0x01,     // row 00
+                0xE0, 0x00,     //     01
+                0x70, 0x00,     //     02
+                0x38, 0x00,     //     03
+                0x1C, 0x00,     //     04
+                0x0E, 0x00,     //     05
+                0x07, 0x00,     //     06
+                0x03, 0x80,     //     07
+                0x01, 0xC0,     //     08
+                0x00, 0xE0,     //     09
+                0x00, 0x70,     //     10
+                0x00, 0x38,     //     11
+                0x00, 0x1C,     //     12
+                0x00, 0x0E,     //     13
+                0x00, 0x07,     //     14
+                0x80, 0x03      //     15
+            };
 
             ushort startLine = 0;
             ushort blockHeight;
@@ -1985,9 +1939,7 @@ namespace PCLParaphernalia
                 int offsetA,
                       offsetB;
 
-                for (int maskByteNo = 0;
-                           maskByteNo < rowBytes;
-                           maskByteNo++)
+                for (int maskByteNo = 0; maskByteNo < rowBytes; maskByteNo++)
                 {
                     //----------------------------------------------------//
                     //                                                    //
@@ -2061,7 +2013,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void writeSrcBox(BinaryWriter prnWriter,
+        private static void WriteSrcBox(BinaryWriter prnWriter,
                                          int rgbClrS1,
                                          int rgbClrS2,
                                          int rgbClrBlack,
@@ -2071,11 +2023,9 @@ namespace PCLParaphernalia
                                          bool flagUseMacros,
                                          bool flagSrcTextPat)
         {
-            writeSrcBoxText(prnWriter, rgbClrS1, rgbClrS2, rgbClrBlack,
-                             flagOptColour, flagUseMacros, flagSrcTextPat);
+            WriteSrcBoxText(prnWriter, rgbClrS1, rgbClrS2, rgbClrBlack, flagOptColour, flagUseMacros, flagSrcTextPat);
 
-            writeSrcBoxRasters(prnWriter, idClrS1, idClrS2,
-                                flagOptColour, flagUseMacros);
+            WriteSrcBoxRasters(prnWriter, idClrS1, idClrS2, flagOptColour, flagUseMacros);
         }
 
         //--------------------------------------------------------------------//
@@ -2088,7 +2038,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void writeSrcBoxRaster(BinaryWriter prnWriter,
+        private static void WriteSrcBoxRaster(BinaryWriter prnWriter,
                                                byte idClrS1,
                                                byte idClrS2,
                                                bool inverse,
@@ -2103,8 +2053,7 @@ namespace PCLParaphernalia
             const short rowCtC = 4;
             const short rowCtD = 8;
 
-            const ushort rowCt = rowCtA + rowCtB + rowCtC + rowCtD +
-                                  rowCtC + rowCtB + rowCtA;
+            const ushort rowCt = rowCtA + rowCtB + rowCtC + rowCtD + rowCtC + rowCtB + rowCtA;
             const ushort colCt = 24;
 
             const ushort destWidth = (colCt * 8 * _unitsPerInch) / 600;
@@ -2231,9 +2180,7 @@ namespace PCLParaphernalia
                     int offsetA,
                           offsetB;
 
-                    for (int maskByteNo = 0;
-                               maskByteNo < maskLen;
-                               maskByteNo++)
+                    for (int maskByteNo = 0; maskByteNo < maskLen; maskByteNo++)
                     {
                         //----------------------------------------------------//
                         //                                                    //
@@ -2303,7 +2250,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void writeSrcBoxRasters(BinaryWriter prnWriter,
+        private static void WriteSrcBoxRasters(BinaryWriter prnWriter,
                                                 byte idClrS1,
                                                 byte idClrS2,
                                                 bool flagOptColour,
@@ -2322,7 +2269,7 @@ namespace PCLParaphernalia
             PCLXLWriter.WriteStreamBlock(prnWriter, flagUseMacros,
                                           buffer, ref indBuf);
 
-            writeSrcBoxRaster(prnWriter, idClrS1, idClrS2,
+            WriteSrcBoxRaster(prnWriter, idClrS1, idClrS2,
                                false, flagOptColour, flagUseMacros);
 
             PCLXLWriter.AddAttrSint16XY(ref buffer,
@@ -2337,7 +2284,7 @@ namespace PCLParaphernalia
             PCLXLWriter.WriteStreamBlock(prnWriter, flagUseMacros,
                                           buffer, ref indBuf);
 
-            writeSrcBoxRaster(prnWriter, idClrS1, idClrS2,
+            WriteSrcBoxRaster(prnWriter, idClrS1, idClrS2,
                                true, flagOptColour, flagUseMacros);
 
             //----------------------------------------------------------------//
@@ -2367,7 +2314,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void writeSrcBoxRow(BinaryWriter prnWriter,
+        private static void WriteSrcBoxRow(BinaryWriter prnWriter,
                                             int rgbClrS1,
                                             int rgbClrS2,
                                             int rgbClrBlack,
@@ -2418,7 +2365,7 @@ namespace PCLParaphernalia
             PCLXLWriter.WriteStreamBlock(prnWriter, flagUseMacros,
                                           buffer, ref indBuf);
 
-            writeSrcBox(prnWriter, rgbClrS1, rgbClrS2, rgbClrBlack,
+            WriteSrcBox(prnWriter, rgbClrS1, rgbClrS2, rgbClrBlack,
                          idClrS1, idClrS2,
                          flagOptColour, flagUseMacros, flagSrcTextPat);
 
@@ -2441,7 +2388,7 @@ namespace PCLParaphernalia
             PCLXLWriter.WriteStreamBlock(prnWriter, flagUseMacros,
                                           buffer, ref indBuf);
 
-            writeSrcBox(prnWriter, rgbClrS1, rgbClrS2, rgbClrBlack,
+            WriteSrcBox(prnWriter, rgbClrS1, rgbClrS2, rgbClrBlack,
                          idClrS1, idClrS2,
                          flagOptColour, flagUseMacros, flagSrcTextPat);
 
@@ -2471,7 +2418,7 @@ namespace PCLParaphernalia
             PCLXLWriter.WriteStreamBlock(prnWriter, flagUseMacros,
                                           buffer, ref indBuf);
 
-            writeSrcBox(prnWriter, rgbClrS1, rgbClrS2, rgbClrBlack,
+            WriteSrcBox(prnWriter, rgbClrS1, rgbClrS2, rgbClrBlack,
                          idClrS1, idClrS2,
                          flagOptColour, flagUseMacros, flagSrcTextPat);
 
@@ -2494,7 +2441,7 @@ namespace PCLParaphernalia
             PCLXLWriter.WriteStreamBlock(prnWriter, flagUseMacros,
                                           buffer, ref indBuf);
 
-            writeSrcBox(prnWriter, rgbClrS1, rgbClrS2, rgbClrBlack,
+            WriteSrcBox(prnWriter, rgbClrS1, rgbClrS2, rgbClrBlack,
                          idClrS1, idClrS2,
                          flagOptColour, flagUseMacros, flagSrcTextPat);
 
@@ -2520,7 +2467,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void writeSrcBoxText(BinaryWriter prnWriter,
+        private static void WriteSrcBoxText(BinaryWriter prnWriter,
                                              int rgbClrS1,
                                              int rgbClrS2,
                                              int rgbClrBlack,

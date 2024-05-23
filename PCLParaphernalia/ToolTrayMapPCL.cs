@@ -209,14 +209,12 @@ namespace PCLParaphernalia
         {
             for (int i = 0; i < formCountFront; i++)
             {
-                PCLWriter.WriteMacroControl(prnWriter, macroIdsFront[i],
-                                        PCLWriter.MacroControl.Delete);
+                PCLWriter.WriteMacroControl(prnWriter, macroIdsFront[i], PCLWriter.MacroControl.Delete);
             }
 
             for (int i = 0; i < formCountRear; i++)
             {
-                PCLWriter.WriteMacroControl(prnWriter, macroIdsRear[i],
-                                        PCLWriter.MacroControl.Delete);
+                PCLWriter.WriteMacroControl(prnWriter, macroIdsRear[i], PCLWriter.MacroControl.Delete);
             }
         }
 
@@ -249,8 +247,7 @@ namespace PCLParaphernalia
 
             if (formAsMacro)
             {
-                PCLWriter.WriteMacroControl(prnWriter, macroId,
-                                       PCLWriter.MacroControl.StartDef);
+                PCLWriter.WriteMacroControl(prnWriter, macroId, PCLWriter.MacroControl.StartDef);
             }
 
             //----------------------------------------------------------------//
@@ -259,8 +256,7 @@ namespace PCLParaphernalia
             posX = (short)((scaleFactor * _posXName) - _logPageOffset);
             posY = (short)(scaleFactor * _posYHddr);
 
-            PCLWriter.Font(prnWriter, true,
-                            "19U", "s1p" + ptSizeHddr + "v0s3b16602T");
+            PCLWriter.Font(prnWriter, true, "19U", "s1p" + ptSizeHddr + "v0s3b16602T");
 
             PCLWriter.Text(prnWriter, posX, posY, 0, "Tray map test (PCL)");
 
@@ -296,11 +292,9 @@ namespace PCLParaphernalia
                              _logPageOffset);
             posY += (short)(scaleFactor * _posYIncSub);
 
-            PCLWriter.Font(prnWriter, true,
-                           "19U", "s1p" + ptSizeSub + "v0s3b16602T");
+            PCLWriter.Font(prnWriter, true, "19U", "s1p" + ptSizeSub + "v0s3b16602T");
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      "record the tray name/number used in this box");
+            PCLWriter.Text(prnWriter, posX, posY, 0, "record the tray name/number used in this box");
 
             //----------------------------------------------------------------//
 
@@ -315,8 +309,7 @@ namespace PCLParaphernalia
 
             if (formAsMacro)
             {
-                PCLWriter.WriteMacroControl(prnWriter, macroId,
-                                       PCLWriter.MacroControl.StopDef);
+                PCLWriter.WriteMacroControl(prnWriter, macroId, PCLWriter.MacroControl.StopDef);
             }
         }
 
@@ -344,8 +337,7 @@ namespace PCLParaphernalia
 
             if (formAsMacro)
             {
-                PCLWriter.WriteMacroControl(prnWriter, macroId,
-                                       PCLWriter.MacroControl.StartDef);
+                PCLWriter.WriteMacroControl(prnWriter, macroId, PCLWriter.MacroControl.StartDef);
             }
 
             //----------------------------------------------------------------//
@@ -355,8 +347,7 @@ namespace PCLParaphernalia
             posX = (short)((scaleFactor * _posXName) - _logPageOffset);
             posY = (short)(scaleFactor * _posYHddr);
 
-            PCLWriter.Font(prnWriter, true,
-                            "19U", "s1p" + ptSizeHddr + "v0s3b16602T");
+            PCLWriter.Font(prnWriter, true, "19U", "s1p" + ptSizeHddr + "v0s3b16602T");
 
             PCLWriter.Text(prnWriter, posX, posY, 0, "Tray map test (PCL)");
 
@@ -376,8 +367,7 @@ namespace PCLParaphernalia
 
             if (formAsMacro)
             {
-                PCLWriter.WriteMacroControl(prnWriter, macroId,
-                                       PCLWriter.MacroControl.StopDef);
+                PCLWriter.WriteMacroControl(prnWriter, macroId, PCLWriter.MacroControl.StopDef);
             }
         }
 
@@ -437,9 +427,7 @@ namespace PCLParaphernalia
             macroIdsFront[crntFormFront] =
                 (short)(_macroIdBaseFront + crntFormFront);
 
-            GenerateOverlayFront(prnWriter, true,
-                                 macroIdsFront[crntFormFront],
-                                  scaleFactors[0]);
+            GenerateOverlayFront(prnWriter, true, macroIdsFront[crntFormFront], scaleFactors[0]);
 
             indxFormsFront[0] = crntFormFront++;
 
@@ -476,9 +464,7 @@ namespace PCLParaphernalia
                     macroIdsFront[crntFormFront] =
                         (short)(_macroIdBaseFront + crntFormFront);
 
-                    GenerateOverlayFront(prnWriter, true,
-                                          macroIdsFront[crntFormFront],
-                                          scaleFactors[i]);
+                    GenerateOverlayFront(prnWriter, true, macroIdsFront[crntFormFront], scaleFactors[i]);
 
                     indxFormsFront[i] = crntFormFront++;
                 }
@@ -501,9 +487,7 @@ namespace PCLParaphernalia
                 macroIdsRear[crntFormRear] =
                     (short)(_macroIdBaseRear + crntFormRear);
 
-                GenerateOverlayRear(prnWriter, true,
-                                     macroIdsRear[crntFormRear],
-                                     scaleFactors[0]);
+                GenerateOverlayRear(prnWriter, true, macroIdsRear[crntFormRear], scaleFactors[0]);
 
                 indxFormsRear[0] = crntFormRear++;
             }
@@ -552,9 +536,7 @@ namespace PCLParaphernalia
                         macroIdsRear[crntFormRear] =
                             (short)(_macroIdBaseRear + crntFormRear);
 
-                        GenerateOverlayRear(prnWriter, true,
-                                             macroIdsRear[crntFormRear],
-                                             scaleFactors[i]);
+                        GenerateOverlayRear(prnWriter, true, macroIdsRear[crntFormRear], scaleFactors[i]);
 
                         indxFormsRear[i] = crntFormRear++;
                     }
@@ -612,13 +594,11 @@ namespace PCLParaphernalia
 
             if (formAsMacro)
             {
-                PCLWriter.WriteMacroControl(prnWriter, macroIdFront,
-                                                   PCLWriter.MacroControl.Call);
+                PCLWriter.WriteMacroControl(prnWriter, macroIdFront, PCLWriter.MacroControl.Call);
             }
             else
             {
-                GenerateOverlayFront(prnWriter, false,
-                                                  _noForm, scaleFactor);
+                GenerateOverlayFront(prnWriter, false, _noForm, scaleFactor);
             }
 
             //----------------------------------------------------------------//
@@ -628,20 +608,15 @@ namespace PCLParaphernalia
             posX = (short)((scaleFactor * _posXValue) - _logPageOffset);
             posY = (short)(scaleFactor * _posYDesc);
 
-            PCLWriter.Font(prnWriter, true,
-                            "19U", "s0p" + pitchMain + "h0s3b4099T");
+            PCLWriter.Font(prnWriter, true, "19U", "s0p" + pitchMain + "h0s3b4099T");
 
             if (simplex)
             {
-                PCLWriter.Text(prnWriter, posX, posY, 0, pageNo.ToString() +
-                                                    " of " +
-                                                    pageCount.ToString());
+                PCLWriter.Text(prnWriter, posX, posY, 0, pageNo.ToString() + " of " + pageCount.ToString());
             }
             else
             {
-                PCLWriter.Text(prnWriter, posX, posY, 0, pageNo.ToString() +
-                                                    " of " +
-                                                    pageCount.ToString());
+                PCLWriter.Text(prnWriter, posX, posY, 0, pageNo.ToString() + " of " + pageCount.ToString());
             }
 
             //----------------------------------------------------------------//
@@ -654,8 +629,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                                      PCLPaperSizes.GetName(indxPaperSize));
+                PCLWriter.Text(prnWriter, posX, posY, 0, PCLPaperSizes.GetName(indxPaperSize));
             }
 
             //----------------------------------------------------------------//
@@ -666,15 +640,13 @@ namespace PCLParaphernalia
             {
                 PCLWriter.Text(prnWriter, posX, posY, 0, "*** unknown ***");
             }
-            else if (PCLPaperTypes.GetType(indxPaperType) ==
-                                PCLPaperTypes.EntryType.NotSet)
+            else if (PCLPaperTypes.GetType(indxPaperType) == PCLPaperTypes.EntryType.NotSet)
             {
                 PCLWriter.Text(prnWriter, posX, posY, 0, "<not set>");
             }
             else
             {
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                                      PCLPaperTypes.GetName(indxPaperType));
+                PCLWriter.Text(prnWriter, posX, posY, 0, PCLPaperTypes.GetName(indxPaperType));
             }
 
             //----------------------------------------------------------------//
@@ -687,8 +659,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                                      PCLPlexModes.GetName(indxPlexMode));
+                PCLWriter.Text(prnWriter, posX, posY, 0, PCLPlexModes.GetName(indxPlexMode));
             }
 
             //----------------------------------------------------------------//
@@ -701,8 +672,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                                      PCLOrientations.GetName(indxOrientFront));
+                PCLWriter.Text(prnWriter, posX, posY, 0, PCLOrientations.GetName(indxOrientFront));
             }
 
             //----------------------------------------------------------------//
@@ -715,13 +685,11 @@ namespace PCLParaphernalia
             }
             else if (indxPaperTray == _trayIdAutoSelectPCL)
             {
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                                           indxPaperTray.ToString() + " (auto-select)");
+                PCLWriter.Text(prnWriter, posX, posY, 0, indxPaperTray.ToString() + " (auto-select)");
             }
             else
             {
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                                           indxPaperTray.ToString());
+                PCLWriter.Text(prnWriter, posX, posY, 0, indxPaperTray.ToString());
             }
 
             //----------------------------------------------------------------//
@@ -734,22 +702,18 @@ namespace PCLParaphernalia
             {
                 if (indxOrientRear != indxOrientFront)
                 {
-                    PCLWriter.PageOrientation(
-                        prnWriter,
-                        PCLOrientations.GetIdPCL(indxOrientRear).ToString());
+                    PCLWriter.PageOrientation(prnWriter, PCLOrientations.GetIdPCL(indxOrientRear).ToString());
                 }
 
                 PCLWriter.PageFace(prnWriter, false);
 
                 if (formAsMacro)
                 {
-                    PCLWriter.WriteMacroControl(prnWriter, macroIdRear,
-                                                           PCLWriter.MacroControl.Call);
+                    PCLWriter.WriteMacroControl(prnWriter, macroIdRear, PCLWriter.MacroControl.Call);
                 }
                 else
                 {
-                    GenerateOverlayRear(prnWriter, false,
-                                                         _noForm, scaleFactor);
+                    GenerateOverlayRear(prnWriter, false, _noForm, scaleFactor);
                 }
 
                 //----------------------------------------------------------------//
@@ -757,12 +721,9 @@ namespace PCLParaphernalia
                 posX = (short)((scaleFactor * _posXValue) - _logPageOffset);
                 posY = (short)(scaleFactor * _posYDesc);
 
-                PCLWriter.Font(prnWriter, true,
-                                "19U", "s0p" + pitchMain + "h0s3b4099T");
+                PCLWriter.Font(prnWriter, true, "19U", "s0p" + pitchMain + "h0s3b4099T");
 
-                PCLWriter.Text(prnWriter, posX, posY, 0, pageNo.ToString() +
-                                                    " (rear) of " +
-                                                    pageCount.ToString());
+                PCLWriter.Text(prnWriter, posX, posY, 0, pageNo.ToString() + " (rear) of " + pageCount.ToString());
 
                 //----------------------------------------------------------------//
 
@@ -774,8 +735,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    PCLWriter.Text(prnWriter, posX, posY, 0,
-                                              PCLOrientations.GetName(indxOrientRear));
+                    PCLWriter.Text(prnWriter, posX, posY, 0, PCLOrientations.GetName(indxOrientRear));
                 }
             }
 

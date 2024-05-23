@@ -109,8 +109,7 @@ namespace PCLParaphernalia
 
             aspect = PCLOrientations.GetAspect(indxOrientation);
 
-            logXOffset = PCLPaperSizes.GetLogicalOffset(indxPaperSize,
-                                                        _unitsPerInch, aspect);
+            logXOffset = PCLPaperSizes.GetLogicalOffset(indxPaperSize, _unitsPerInch, aspect);
 
             //----------------------------------------------------------------//
 
@@ -136,8 +135,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    _symSetUserMapMax = PCLSymbolSets.GetMapArrayMax(
-                                          PCLSymbolSets.IndexUserSet);
+                    _symSetUserMapMax = PCLSymbolSets.GetMapArrayMax(PCLSymbolSets.IndexUserSet);
 
                     _symSetUserMap = new ushort[_symSetUserMapMax + 1];
 
@@ -245,7 +243,7 @@ namespace PCLParaphernalia
 
             if (symSetUserSet && symSetUserActEmbed)
             {
-                PCLDownloadSymSet.symSetFileCopy(prnWriter, symSetUserFile);
+                PCLDownloadSymSet.SymSetFileCopy(prnWriter, symSetUserFile);
             }
 
             if (fontType == PCLFonts.FontType.Download)
@@ -260,16 +258,11 @@ namespace PCLParaphernalia
             {
                 if (prnDiskFontLoadViaMacro)
                 {
-                    PCLWriter.FontFileIdAssociate(prnWriter,
-                                                   fontIdNo,
-                                                   fontMacroIdNo,
-                                                   fontFilename);
+                    PCLWriter.FontFileIdAssociate(prnWriter, fontIdNo, fontMacroIdNo, fontFilename);
                 }
                 else
                 {
-                    PCLWriter.FontFileIdAssociate(prnWriter,
-                                                   fontIdNo,
-                                                   fontFilename);
+                    PCLWriter.FontFileIdAssociate(prnWriter, fontIdNo, fontFilename);
                 }
 
                 PCLWriter.FontDownloadSave(prnWriter, true);
@@ -280,11 +273,7 @@ namespace PCLParaphernalia
                 GenerateOverlay(prnWriter, true, optGridVertical, logXOffset);
             }
 
-            PCLWriter.PageHeader(prnWriter,
-                                  indxPaperSize,
-                                  indxPaperType,
-                                  indxOrientation,
-                                  PCLPlexModes.eSimplex);
+            PCLWriter.PageHeader(prnWriter, indxPaperSize, indxPaperType, indxOrientation, PCLPlexModes.eSimplex);
         }
 
         //--------------------------------------------------------------------//
@@ -314,9 +303,7 @@ namespace PCLParaphernalia
 
             if (fontMacroRemove)
             {
-                PCLWriter.WriteMacroControl(prnWriter,
-                                        (short)fontMacroIdNo,
-                                        PCLWriter.MacroControl.Delete);
+                PCLWriter.WriteMacroControl(prnWriter, (short)fontMacroIdNo, PCLWriter.MacroControl.Delete);
             }
 
             if (symSetUserSet && symSetUserActEmbed)
@@ -367,8 +354,7 @@ namespace PCLParaphernalia
 
             if (formAsMacro)
             {
-                PCLWriter.WriteMacroControl(prnWriter, _macroId,
-                                       PCLWriter.MacroControl.StartDef);
+                PCLWriter.WriteMacroControl(prnWriter, _macroId, PCLWriter.MacroControl.StartDef);
             }
 
             PCLWriter.Font(prnWriter, true, "19U", "s1p24v0s3b16602T");
@@ -385,9 +371,7 @@ namespace PCLParaphernalia
             posX = marginX;
             posY = _posYGrid + _cellHeight;
 
-            PCLWriter.RectangleOutline(prnWriter, posX, posY,
-                                       gridHeightInner, gridWidthOuter, stroke,
-                                       false, false);
+            PCLWriter.RectangleOutline(prnWriter, posX, posY, gridHeightInner, gridWidthOuter, stroke, false, false);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -398,9 +382,7 @@ namespace PCLParaphernalia
             posX = (short)(marginX + _cellWidth);
             posY = _posYGrid;
 
-            PCLWriter.RectangleOutline(prnWriter, posX, posY,
-                                       gridHeightOuter, gridWidthInner, stroke,
-                                       false, false);
+            PCLWriter.RectangleOutline(prnWriter, posX, posY, gridHeightOuter, gridWidthInner, stroke, false, false);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -413,24 +395,16 @@ namespace PCLParaphernalia
             posX = marginX;
             posY = _posYGrid;
 
-            PCLWriter.RectangleOutline(prnWriter, posX, posY,
-                                       _cellHeight, _cellWidth, stroke,
-                                       false, false);
+            PCLWriter.RectangleOutline(prnWriter, posX, posY, _cellHeight, _cellWidth, stroke, false, false);
 
-            PCLWriter.RectangleShaded(prnWriter, posX, posY,
-                                      _cellHeight, _cellWidth, shade,
-                                      false, false);
+            PCLWriter.RectangleShaded(prnWriter, posX, posY, _cellHeight, _cellWidth, shade, false, false);
 
             posX = (short)(marginX + gridWidthInner + _cellWidth);
             posY = _posYGrid + gridHeightInner + _cellHeight;
 
-            PCLWriter.RectangleOutline(prnWriter, posX, posY,
-                                       _cellHeight, _cellWidth, stroke,
-                                       false, false);
+            PCLWriter.RectangleOutline(prnWriter, posX, posY, _cellHeight, _cellWidth, stroke, false, false);
 
-            PCLWriter.RectangleShaded(prnWriter, posX, posY,
-                                      _cellHeight, _cellWidth, shade,
-                                      false, false);
+            PCLWriter.RectangleShaded(prnWriter, posX, posY, _cellHeight, _cellWidth, shade, false, false);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -445,8 +419,7 @@ namespace PCLParaphernalia
 
             for (int i = 1; i < _gridRows; i++)
             {
-                PCLWriter.LineHorizontal(prnWriter, posX, posY, gridWidthOuter,
-                                         stroke);
+                PCLWriter.LineHorizontal(prnWriter, posX, posY, gridWidthOuter, stroke);
 
                 posY += _cellHeight;
             }
@@ -462,8 +435,7 @@ namespace PCLParaphernalia
 
             for (int i = 1; i < _gridCols; i++)
             {
-                PCLWriter.LineVertical(prnWriter, posX, posY, gridHeightOuter,
-                                       stroke);
+                PCLWriter.LineVertical(prnWriter, posX, posY, gridHeightOuter, stroke);
 
                 posX += _cellWidth;
             }
@@ -483,27 +455,19 @@ namespace PCLParaphernalia
 
             if (optGridVertical)
             {
-                PCLWriter.RectangleShaded(prnWriter, posX, posY,
-                                          gridHeightInner, twoCellWidth, shade,
-                                          false, false);
+                PCLWriter.RectangleShaded(prnWriter, posX, posY, gridHeightInner, twoCellWidth, shade, false, false);
 
                 posX += _gridDimHalf * _cellWidth;
 
-                PCLWriter.RectangleShaded(prnWriter, posX, posY,
-                                          gridHeightInner, twoCellWidth, shade,
-                                          false, false);
+                PCLWriter.RectangleShaded(prnWriter, posX, posY, gridHeightInner, twoCellWidth, shade, false, false);
             }
             else
             {
-                PCLWriter.RectangleShaded(prnWriter, posX, posY,
-                                          twoCellHeight, gridWidthInner, shade,
-                                          false, false);
+                PCLWriter.RectangleShaded(prnWriter, posX, posY, twoCellHeight, gridWidthInner, shade, false, false);
 
                 posY += _gridDimHalf * _cellHeight;
 
-                PCLWriter.RectangleShaded(prnWriter, posX, posY,
-                                          twoCellHeight, gridWidthInner, shade,
-                                          false, false);
+                PCLWriter.RectangleShaded(prnWriter, posX, posY, twoCellHeight, gridWidthInner, shade, false, false);
             }
 
             //----------------------------------------------------------------//
@@ -521,8 +485,7 @@ namespace PCLParaphernalia
 
             PCLWriter.Text(prnWriter, posX, posY, 0, "hex");
 
-            posX = (short)(marginX + gridWidthInner +
-                           _cellWidth + (_cellWidth / 5));
+            posX = (short)(marginX + gridWidthInner + _cellWidth + (_cellWidth / 5));
 
             posY = _posYGrid + gridHeightInner + _cellHeight + _lineSpacing;
 
@@ -615,8 +578,7 @@ namespace PCLParaphernalia
                 }
             }
 
-            posX = (short)(marginX + gridWidthInner + _cellWidth +
-                                                      (_cellWidth / 8));
+            posX = (short)(marginX + gridWidthInner + _cellWidth + (_cellWidth / 8));
             posY = _posYGrid + _cellHeight + _lineSpacing;
 
             if (optGridVertical)
@@ -680,8 +642,7 @@ namespace PCLParaphernalia
 
             posY = _posYSelData;
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                           "PCL font selection sequence:");
+            PCLWriter.Text(prnWriter, posX, posY, 0, "PCL font selection sequence:");
 
             //----------------------------------------------------------------//
 
@@ -689,9 +650,7 @@ namespace PCLParaphernalia
 
             posX = (short)(marginX + (_cellWidth * _gridDimHalf));
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                           "(the content of the grid is undefined if no" +
-                           " font with these characteristics is available)");
+            PCLWriter.Text(prnWriter, posX, posY, 0, "(the content of the grid is undefined if no font with these characteristics is available)");
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -701,8 +660,7 @@ namespace PCLParaphernalia
 
             if (formAsMacro)
             {
-                PCLWriter.WriteMacroControl(prnWriter, _macroId,
-                                       PCLWriter.MacroControl.StopDef);
+                PCLWriter.WriteMacroControl(prnWriter, _macroId, PCLWriter.MacroControl.StopDef);
             }
         }
 
@@ -765,8 +723,7 @@ namespace PCLParaphernalia
 
             if (formAsMacro)
             {
-                PCLWriter.WriteMacroControl(prnWriter, _macroId,
-                                                   PCLWriter.MacroControl.Call);
+                PCLWriter.WriteMacroControl(prnWriter, _macroId, PCLWriter.MacroControl.Call);
             }
             else
             {
@@ -798,11 +755,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    PCLWriter.Text(prnWriter, posX, posY, 0,
-                                                   fontFilename.Substring(0, halfLen) +
-                                                   " ... " +
-                                                   fontFilename.Substring(len - halfLen,
-                                                                          halfLen));
+                    PCLWriter.Text(prnWriter, posX, posY, 0, fontFilename.Substring(0, halfLen) + " ... " + fontFilename.Substring(len - halfLen, halfLen));
                 }
             }
             else
@@ -817,19 +770,15 @@ namespace PCLParaphernalia
             if ((fontType == PCLFonts.FontType.PrnDisk) &&
                 (!prnDiskFontDataKnown))
             {
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                                           "characteristics not known");
+                PCLWriter.Text(prnWriter, posX, posY, 0, "characteristics not known");
             }
             else if (sizeIsHeight)
             {
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                                           fontSize.ToString("F2") + " point");
+                PCLWriter.Text(prnWriter, posX, posY, 0, fontSize.ToString("F2") + " point");
             }
             else
             {
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                                           fontSize.ToString("F2") +
-                                           " characters-per-inch");
+                PCLWriter.Text(prnWriter, posX, posY, 0, fontSize.ToString("F2") + " characters-per-inch");
             }
 
             //----------------------------------------------------------------//
@@ -839,22 +788,17 @@ namespace PCLParaphernalia
             if ((fontType == PCLFonts.FontType.PrnDisk) &&
                 (!prnDiskFontDataKnown))
             {
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                               "characteristics not known");
+                PCLWriter.Text(prnWriter, posX, posY, 0, "characteristics not known");
             }
             else if (sampleRangeOffset == 0)
             {
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                                symSetId + " (" + symbolSetName + ")");
+                PCLWriter.Text(prnWriter, posX, posY, 0, symSetId + " (" + symbolSetName + ")");
             }
             else
             {
-                string offsetText = ": Range offset 0x" +
-                             sampleRangeOffset.ToString("X4");
+                string offsetText = ": Range offset 0x" + sampleRangeOffset.ToString("X4");
 
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                                symSetId + " (" + symbolSetName + ")" +
-                                offsetText);
+                PCLWriter.Text(prnWriter, posX, posY, 0, symSetId + " (" + symbolSetName + ")" + offsetText);
             }
 
             //----------------------------------------------------------------//
@@ -878,17 +822,11 @@ namespace PCLParaphernalia
 
                 if (len < maxLen)
                 {
-                    PCLWriter.Text(prnWriter, posX, posY, 0,
-                                                   "Symbol set file: " + symSetUserFile);
+                    PCLWriter.Text(prnWriter, posX, posY, 0, "Symbol set file: " + symSetUserFile);
                 }
                 else
                 {
-                    PCLWriter.Text(prnWriter, posX, posY, 0,
-                                                   "Symbol set file: " +
-                                                   symSetUserFile.Substring(0, halfLen) +
-                                                   " ... " +
-                                                   symSetUserFile.Substring(len - halfLen,
-                                                                            halfLen));
+                    PCLWriter.Text(prnWriter, posX, posY, 0, "Symbol set file: " + symSetUserFile.Substring(0, halfLen) + " ... " + symSetUserFile.Substring(len - halfLen, halfLen));
                 }
             }
 
@@ -901,14 +839,12 @@ namespace PCLParaphernalia
 
             if (fontLoadDesc != string.Empty)
             {
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                                fontLoadDesc);
+                PCLWriter.Text(prnWriter, posX, posY, 0, fontLoadDesc);
 
                 posY += _lineSpacing;
             }
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                            fontSelDesc);
+            PCLWriter.Text(prnWriter, posX, posY, 0, fontSelDesc);
 
             //----------------------------------------------------------------//
 
@@ -918,13 +854,11 @@ namespace PCLParaphernalia
             {
                 if (fontBound)
                 {
-                    PCLWriter.Font(prnWriter, true, string.Empty,
-                                                   fontIdNo + "X");
+                    PCLWriter.Font(prnWriter, true, string.Empty, fontIdNo + "X");
                 }
                 else
                 {
-                    PCLWriter.Font(prnWriter, true, symSetId,
-                                                   fontIdNo + "X");
+                    PCLWriter.Font(prnWriter, true, symSetId, fontIdNo + "X");
                 }
 
                 if (fontSelSeq != string.Empty)
@@ -955,15 +889,12 @@ namespace PCLParaphernalia
             utf8 = false;
             twoByteMethod = false;
 
-            if ((indxTextParseMethod ==
-                    PCLTextParsingMethods.Index.m83_UTF8) ||
-                (indxTextParseMethod ==
-                    PCLTextParsingMethods.Index.m1008_UTF8_alt))
+            if ((indxTextParseMethod == PCLTextParsingMethods.Index.m83_UTF8) ||
+                (indxTextParseMethod == PCLTextParsingMethods.Index.m1008_UTF8_alt))
             {
                 utf8 = true;
             }
-            else if (indxTextParseMethod ==
-                                  PCLTextParsingMethods.Index.m2_2_byte)
+            else if (indxTextParseMethod == PCLTextParsingMethods.Index.m2_2_byte)
             {
                 twoByteMethod = true;
             }
@@ -979,10 +910,8 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                if ((indxTextParseMethod ==
-                        PCLTextParsingMethods.Index.m83_UTF8) ||
-                    (indxTextParseMethod ==
-                        PCLTextParsingMethods.Index.m1008_UTF8_alt))
+                if ((indxTextParseMethod == PCLTextParsingMethods.Index.m83_UTF8) ||
+                    (indxTextParseMethod == PCLTextParsingMethods.Index.m1008_UTF8_alt))
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -1001,8 +930,7 @@ namespace PCLParaphernalia
 
                     checkSingleByteCodes = false;
                 }
-                else if (indxTextParseMethod ==
-                            PCLTextParsingMethods.Index.m2_2_byte)
+                else if (indxTextParseMethod == PCLTextParsingMethods.Index.m2_2_byte)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -1036,9 +964,7 @@ namespace PCLParaphernalia
                     int blockMin,
                           blockMax;
 
-                    ushort[] rangesSingle =
-                        PCLTextParsingMethods.GetRangeDataSingle(
-                                                (int)indxTextParseMethod);
+                    ushort[] rangesSingle = PCLTextParsingMethods.GetRangeDataSingle((int)indxTextParseMethod);
 
                     int ctRangeData = 0;
 
@@ -1078,15 +1004,13 @@ namespace PCLParaphernalia
 
             if (optGridVertical)
             {
-                posX = (short)(marginX + (_cellWidth * (startIndxMajor + 1)) +
-                                          (_cellWidth / 3));
+                posX = (short)(marginX + (_cellWidth * (startIndxMajor + 1)) + (_cellWidth / 3));
                 posY = _posYGrid + (_cellHeight * 2 / 3);
             }
             else
             {
                 posX = (short)(marginX + (_cellWidth / 3));
-                posY = (short)(_posYGrid + (_cellHeight * (startIndxMajor + 1)) +
-                                            (_cellHeight * 2 / 3));
+                posY = (short)(_posYGrid + (_cellHeight * (startIndxMajor + 1)) + (_cellHeight * 2 / 3));
             }
 
             posXStart = posX;
@@ -1113,14 +1037,11 @@ namespace PCLParaphernalia
 
                     PCLWriter.CursorPushPop(prnWriter, PCLWriter.PushPop.Push);
 
-                    ushort codeVal = (ushort)(sampleRangeOffset +
-                                               (indxMajor * _gridDim) +
-                                               indxMinor);
+                    ushort codeVal = (ushort)(sampleRangeOffset + (indxMajor * _gridDim) + indxMinor);
 
                     validCodePoint = true;
 
-                    if (checkSingleByteCodes &&
-                        (codeVal <= singleByteMax))
+                    if (checkSingleByteCodes && (codeVal <= singleByteMax))
                     {
                         //------------------------------------------------//
                         //                                                //
@@ -1250,8 +1171,7 @@ namespace PCLParaphernalia
                     }
                 }
 
-                PCLWriter.CursorPushPop(prnWriter,
-                         PCLWriter.PushPop.Pop);
+                PCLWriter.CursorPushPop(prnWriter, PCLWriter.PushPop.Pop);
 
                 if (optGridVertical)
                     posX += _cellWidth;
@@ -1268,9 +1188,7 @@ namespace PCLParaphernalia
             if (indxTextParseMethod !=
                 PCLTextParsingMethods.Index.not_specified)
             {
-                PCLWriter.TextParsingMethod(
-                    prnWriter,
-                    PCLTextParsingMethods.Index.m0_1_byte_default);
+                PCLWriter.TextParsingMethod(prnWriter, PCLTextParsingMethods.Index.m0_1_byte_default);
             }
 
             //----------------------------------------------------------------//
@@ -1300,9 +1218,7 @@ namespace PCLParaphernalia
 
                 PCLWriter.Font(prnWriter, true, "19U", "s1p6v0s0b16602T");
 
-                for (int indxMajor = startIndxMajor;
-                           indxMajor < _gridDim;
-                           indxMajor++)
+                for (int indxMajor = startIndxMajor; indxMajor < _gridDim; indxMajor++)
                 {
                     ushort codeVal,
                            mapVal;
@@ -1322,8 +1238,7 @@ namespace PCLParaphernalia
 
                         PCLWriter.CursorPushPop(prnWriter, PCLWriter.PushPop.Push);
 
-                        codeVal = (ushort)((indxMajor * _gridDim) +
-                                             indxMinor + sampleRangeOffset);
+                        codeVal = (ushort)((indxMajor * _gridDim) + indxMinor + sampleRangeOffset);
 
                         if (symSetUserSet)
                         {
@@ -1346,8 +1261,7 @@ namespace PCLParaphernalia
                             string seq = mapVal.ToString("X4");
                             int seqLen = seq.Length;
 
-                            prnWriter.Write(("U+" + seq).ToCharArray(),
-                                            0, seqLen + 2);
+                            prnWriter.Write(("U+" + seq).ToCharArray(), 0, seqLen + 2);
                         }
                     }
 
@@ -1402,8 +1316,7 @@ namespace PCLParaphernalia
 
                         PCLWriter.CursorPushPop(prnWriter, PCLWriter.PushPop.Push);
 
-                        codeVal = (ushort)((indxMajor * _gridDim) +
-                                             indxMinor + sampleRangeOffset);
+                        codeVal = (ushort)((indxMajor * _gridDim) + indxMinor + sampleRangeOffset);
 
                         if (symSetUserSet)
                         {
@@ -1426,20 +1339,15 @@ namespace PCLParaphernalia
                             string utf8Hex = null;
                             int utf8HexLen = 0;
 
-                            PrnParseDataUTF8.ConvertUTF32ToUTF8HexString(
-                                mapVal,
-                                true,
-                                ref utf8Hex);
+                            PrnParseDataUTF8.ConvertUTF32ToUTF8HexString(mapVal, true, ref utf8Hex);
 
                             utf8HexLen = utf8Hex.Length;
 
-                            prnWriter.Write(utf8Hex.ToCharArray(),
-                                             0, utf8HexLen);
+                            prnWriter.Write(utf8Hex.ToCharArray(), 0, utf8HexLen);
                         }
                     }
 
-                    PCLWriter.CursorPushPop(prnWriter,
-                         PCLWriter.PushPop.Pop);
+                    PCLWriter.CursorPushPop(prnWriter, PCLWriter.PushPop.Pop);
 
                     if (optGridVertical)
                         posX += _cellWidth;

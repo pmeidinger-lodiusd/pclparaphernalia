@@ -26,9 +26,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLLocationType(PCLLocationTypes.Type type,
-                               string id,
-                               string name)
+        public PCLLocationType(PCLLocationTypes.Type type, string id, string name)
         {
             _locationType = type;
             _locationIdPCL = id;
@@ -44,7 +42,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getIdPCL()
+        public string GetIdPCL()
         {
             return _locationIdPCL;
         }
@@ -58,7 +56,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getName()
+        public string GetName()
         {
             return _locationName;
         }
@@ -72,7 +70,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLLocationTypes.Type getType()
+        public PCLLocationTypes.Type GetLocationType()
         {
             return _locationType;
         }

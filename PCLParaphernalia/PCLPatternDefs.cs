@@ -286,11 +286,9 @@ namespace PCLParaphernalia
 
         //--------------------------------------------------------------------//
 
-        private static readonly int _patternsCtShade =
-            _patternsShade.GetUpperBound(0) + 1;
+        private static readonly int _patternsCtShade = _patternsShade.GetUpperBound(0) + 1;
 
-        private static readonly int _patternsCtHatch =
-            _patternsHatch.GetUpperBound(0) + 1;
+        private static readonly int _patternsCtHatch = _patternsHatch.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

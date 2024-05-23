@@ -155,8 +155,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static readonly SortedList<int, PCLXLAttribute> _tags =
-            new SortedList<int, PCLXLAttribute>();
+        private static readonly SortedList<int, PCLXLAttribute> _tags = new SortedList<int, PCLXLAttribute>();
 
         private static PCLXLAttribute _tagUnknown;
 
@@ -214,7 +213,7 @@ namespace PCLParaphernalia
                 tag = _tagUnknown;
             }
 
-            tag.getDetails(ref flagReserved,
+            tag.GetDetails(ref flagReserved,
                             ref flagAttrEnum,
                             ref flagOperEnum,
                             ref flagUbyteTxt,
@@ -422,14 +421,14 @@ namespace PCLParaphernalia
         {
             PCLXLAttribute tag;
 
-            int key = key = (((tagLen * 256) + tagByteA) * 256) + tagByteB;
+            int key = (((tagLen * 256) + tagByteA) * 256) + tagByteB;
 
             if (_tags.IndexOfKey(key) != -1)
                 tag = _tags[key];
             else
                 tag = _tagUnknown;
 
-            tag.incrementStatisticsCount(level);
+            tag.IncrementStatisticsCount(level);
         }
 
         //--------------------------------------------------------------------//
@@ -1699,13 +1698,13 @@ namespace PCLParaphernalia
         {
             PCLXLAttribute tag;
 
-            _tagUnknown.resetStatistics();
+            _tagUnknown.ResetStatistics();
 
             foreach (KeyValuePair<int, PCLXLAttribute> kvp in _tags)
             {
                 tag = kvp.Value;
 
-                tag.resetStatistics();
+                tag.ResetStatistics();
             }
         }
     }

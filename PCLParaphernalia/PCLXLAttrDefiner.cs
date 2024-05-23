@@ -9,9 +9,7 @@ namespace PCLParaphernalia
     ///
     /// </summary>
  // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.Obfuscation(
-        Feature = "renaming",
-        ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     class PCLXLAttrDefiner
     {
@@ -29,9 +27,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLXLAttrDefiner(byte tag,
-                                bool flagReserved,
-                                string description)
+        public PCLXLAttrDefiner(byte tag, bool flagReserved, string description)
         {
             _tag = tag;
             FlagReserved = flagReserved;

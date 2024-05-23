@@ -20,24 +20,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _formName           = "MiscTxtModPatForm";
+        const string _formName = "MiscTxtModPatForm";
 
-        const int _symSet_19U          = 629;
-        const ushort _unitsPerInch       = PCLXLWriter._sessionUPI;
+        const int _symSet_19U = 629;
+        const ushort _unitsPerInch = PCLXLWriter._sessionUPI;
 
-        const short _pageOriginX         = (_unitsPerInch * 1);
-        const short _pageOriginY         = (_unitsPerInch * 1);
-        const short _incInch             = (_unitsPerInch * 1);
-        const short _lineInc             = (_unitsPerInch * 5) / 6;
+        const short _pageOriginX = (_unitsPerInch * 1);
+        const short _pageOriginY = (_unitsPerInch * 1);
+        const short _incInch = (_unitsPerInch * 1);
+        const short _lineInc = (_unitsPerInch * 5) / 6;
 
-        const short _posXDesc            = _pageOriginX;
-        const short _posXData            = _pageOriginX + (2 * _incInch);
+        const short _posXDesc = _pageOriginX;
+        const short _posXData = _pageOriginX + (2 * _incInch);
 
-        const short _posYHddr            = _pageOriginY;
-        const short _posYDesc            = _pageOriginY + (2 * _incInch);
-        const short _posYData            = _pageOriginY + (2 * _incInch);
+        const short _posYHddr = _pageOriginY;
+        const short _posYDesc = _pageOriginY + (2 * _incInch);
+        const short _posYData = _pageOriginY + (2 * _incInch);
 
-        const short _patternId_DarkGrey  = 301;
+        const short _patternId_DarkGrey = 301;
         const short _patternId_LightGrey = 302;
 
         //--------------------------------------------------------------------//
@@ -49,15 +49,9 @@ namespace PCLParaphernalia
         static readonly short _fontIndexArial = PCLFonts.GetIndexForName("Arial");
         static readonly short _fontIndexCourier = PCLFonts.GetIndexForName("Courier");
 
-        static readonly string _fontNameArial =
-            PCLFonts.GetPCLXLName(_fontIndexArial,
-                                  PCLFonts.Variant.Regular);
-        static readonly string _fontNameCourier =
-            PCLFonts.GetPCLXLName(_fontIndexCourier,
-                                  PCLFonts.Variant.Regular);
-        static readonly string _fontNameCourierBold =
-            PCLFonts.GetPCLXLName(_fontIndexCourier,
-                                  PCLFonts.Variant.Bold);
+        static readonly string _fontNameArial = PCLFonts.GetPCLXLName(_fontIndexArial, PCLFonts.Variant.Regular);
+        static readonly string _fontNameCourier = PCLFonts.GetPCLXLName(_fontIndexCourier, PCLFonts.Variant.Regular);
+        static readonly string _fontNameCourierBold = PCLFonts.GetPCLXLName(_fontIndexCourier, PCLFonts.Variant.Bold);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -73,27 +67,27 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generateJob(BinaryWriter prnWriter,
+        public static void GenerateJob(BinaryWriter prnWriter,
                                        int indxPaperSize,
                                        int indxPaperType,
                                        int indxOrientation,
                                        bool formAsMacro)
         {
-            generateJobHeader(prnWriter);
+            GenerateJobHeader(prnWriter);
 
             if (formAsMacro)
             {
-                generateOverlay(prnWriter, true,
+                GenerateOverlay(prnWriter, true,
                                 indxPaperSize, indxOrientation);
             }
 
-            generatePage(prnWriter,
+            GeneratePage(prnWriter,
                          indxPaperSize,
                          indxPaperType,
                          indxOrientation,
                          formAsMacro);
 
-            generateJobTrailer(prnWriter, formAsMacro);
+            GenerateJobTrailer(prnWriter, formAsMacro);
         }
 
         //--------------------------------------------------------------------//
@@ -105,7 +99,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateJobHeader(BinaryWriter prnWriter)
+        private static void GenerateJobHeader(BinaryWriter prnWriter)
         {
             PCLXLWriter.StdJobHeader(prnWriter, string.Empty);
         }
@@ -119,7 +113,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateJobTrailer(BinaryWriter prnWriter,
+        private static void GenerateJobTrailer(BinaryWriter prnWriter,
                                                bool formAsMacro)
         {
             PCLXLWriter.StdJobTrailer(prnWriter, formAsMacro, _formName);
@@ -136,7 +130,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateOverlay(BinaryWriter prnWriter,
+        private static void GenerateOverlay(BinaryWriter prnWriter,
                                             bool formAsMacro,
                                             int indxPaperSize,
                                             int indxOrientation)
@@ -319,8 +313,7 @@ namespace PCLParaphernalia
                               ref indBuf,
                               PCLXLOperators.Tag.RoundRectangle);
 
-            PCLXLWriter.WriteStreamBlock(prnWriter, formAsMacro,
-                                   buffer, ref indBuf);
+            PCLXLWriter.WriteStreamBlock(prnWriter, formAsMacro, buffer, ref indBuf);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -401,7 +394,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            patternDefineDpi300(prnWriter, formAsMacro);
+            PatternDefineDpi300(prnWriter, formAsMacro);
 
             rectHeight = (_lineInc * 3) / 5;
             rectWidth = (_unitsPerInch * 9) / 10;
@@ -440,8 +433,7 @@ namespace PCLParaphernalia
                 rectY += _lineInc;
             }
 
-            PCLXLWriter.WriteStreamBlock(prnWriter, formAsMacro,
-                                   buffer, ref indBuf);
+            PCLXLWriter.WriteStreamBlock(prnWriter, formAsMacro, buffer, ref indBuf);
 
             //----------------------------------------------------------------//
 
@@ -479,8 +471,7 @@ namespace PCLParaphernalia
                 rectY += _lineInc;
             }
 
-            PCLXLWriter.WriteStreamBlock(prnWriter, formAsMacro,
-                                   buffer, ref indBuf);
+            PCLXLWriter.WriteStreamBlock(prnWriter, formAsMacro, buffer, ref indBuf);
 
             //----------------------------------------------------------------//
 
@@ -531,8 +522,7 @@ namespace PCLParaphernalia
                               ref indBuf,
                               PCLXLOperators.Tag.PopGS);
 
-            PCLXLWriter.WriteStreamBlock(prnWriter, formAsMacro,
-                                   buffer, ref indBuf);
+            PCLXLWriter.WriteStreamBlock(prnWriter, formAsMacro, buffer, ref indBuf);
 
             if (formAsMacro)
             {
@@ -553,7 +543,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generatePage(BinaryWriter prnWriter,
+        private static void GeneratePage(BinaryWriter prnWriter,
                                          int indxPaperSize,
                                          int indxPaperType,
                                          int indxOrientation,
@@ -650,8 +640,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                generateOverlay(prnWriter, false,
-                                indxPaperSize, indxOrientation);
+                GenerateOverlay(prnWriter, false, indxPaperSize, indxOrientation);
             }
 
             //----------------------------------------------------------------//
@@ -662,8 +651,7 @@ namespace PCLParaphernalia
 
             ptSize = 34;
 
-            PCLXLWriter.Font(prnWriter, false, ptSize,
-                             _symSet_19U, _fontNameArial);
+            PCLXLWriter.Font(prnWriter, false, ptSize, _symSet_19U, _fontNameArial);
 
             PCLXLWriter.AddAttrUbyte(ref bufStd,
                                ref indStd,
@@ -800,36 +788,37 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void patternDefineDpi300(BinaryWriter prnWriter,
-                                                 bool formAsMacro)
+        private static void PatternDefineDpi300(BinaryWriter prnWriter, bool formAsMacro)
         {
             const ushort patWidth = 16;
             const ushort patHeight = 16;
 
-            const ushort destWidth =
-                 (patWidth * _unitsPerInch) / 300;
-            const ushort destHeight =
-                 (patHeight * _unitsPerInch) / 300;
+            const ushort destWidth = (patWidth * _unitsPerInch) / 300;
+            const ushort destHeight = (patHeight * _unitsPerInch) / 300;
 
             byte[] pattern_LightGrey =
-                               { 0x00, 0x00, 0x60, 0x60,
-                                 0x60, 0x60, 0x00, 0x00,
-                                 0x00, 0x00, 0x06, 0x06,
-                                 0x06, 0x06, 0x00, 0x00,
-                                 0x00, 0x00, 0x60, 0x60,
-                                 0x60, 0x60, 0x00, 0x00,
-                                 0x00, 0x00, 0x06, 0x06,
-                                 0x06, 0x06, 0x00, 0x00 };
+            {
+                0x00, 0x00, 0x60, 0x60,
+                0x60, 0x60, 0x00, 0x00,
+                0x00, 0x00, 0x06, 0x06,
+                0x06, 0x06, 0x00, 0x00,
+                0x00, 0x00, 0x60, 0x60,
+                0x60, 0x60, 0x00, 0x00,
+                0x00, 0x00, 0x06, 0x06,
+                0x06, 0x06, 0x00, 0x00
+            };
 
             byte[] pattern_DarkGrey =
-                               { 0xC1, 0xC1, 0xEB, 0xEB,
-                                 0xC1, 0xC1, 0x88, 0x88,
-                                 0x1C, 0x1C, 0xBE, 0xBE,
-                                 0x1C, 0x1C, 0x88, 0x88,
-                                 0xC1, 0xC1, 0xEB, 0xEB,
-                                 0xC1, 0xC1, 0x88, 0x88,
-                                 0x1C, 0x1C, 0xBE, 0xBE,
-                                 0x1C, 0x1C, 0x88, 0x88 };
+            {
+                0xC1, 0xC1, 0xEB, 0xEB,
+                0xC1, 0xC1, 0x88, 0x88,
+                0x1C, 0x1C, 0xBE, 0xBE,
+                0x1C, 0x1C, 0x88, 0x88,
+                0xC1, 0xC1, 0xEB, 0xEB,
+                0xC1, 0xC1, 0x88, 0x88,
+                0x1C, 0x1C, 0xBE, 0xBE,
+                0x1C, 0x1C, 0x88, 0x88
+            };
 
             PCLXLWriter.PatternDefine(prnWriter,
                                        formAsMacro,

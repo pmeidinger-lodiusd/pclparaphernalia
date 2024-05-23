@@ -115,7 +115,7 @@ namespace PCLParaphernalia
             _indxClrMapBack = new int[ctRowTypes];
             _indxClrMapFore = new int[ctRowTypes];
 
-            metricsLoad();
+            MetricsLoad();
         }
 
         //--------------------------------------------------------------------//
@@ -135,14 +135,14 @@ namespace PCLParaphernalia
                                   ref _indxCharSetSubAct,
                                   ref _valCharSetSubCode);
 
-            parent.getOptClrMap(ref _flagClrMapUseClr,
+            parent.GetOptClrMap(ref _flagClrMapUseClr,
                                  ref _indxClrMapBack,
                                  ref _indxClrMapFore);
 
-            parent.getOptClrMapStdClrs(ref _ctClrMapStdClrs,
+            parent.GetOptClrMapStdClrs(ref _ctClrMapStdClrs,
                                         ref _stdClrsPropertyInfo);
 
-            parent.getOptCurF(ref _indxCurFInitLang,
+            parent.GetOptCurF(ref _indxCurFInitLang,
                                ref _indxCurFXLBinding,
                                ref _indxCurFOffsetFormat,
                                ref _valCurFOffsetStart,
@@ -153,9 +153,9 @@ namespace PCLParaphernalia
                                   ref _flagGenMiscAutoAnalyse,
                                   ref _flagGenDiagFileAccess);
 
-            parent.getOptHPGL2(ref _flagHPGL2MiscBinData);
+            parent.GetOptHPGL2(ref _flagHPGL2MiscBinData);
 
-            parent.getOptPCL(ref _flagPCLFontHddr,
+            parent.GetOptPCL(ref _flagPCLFontHddr,
                               ref _flagPCLFontChar,
                               ref _flagPCLFontDraw,
                               ref _valPCLFontDrawHeight,
@@ -177,7 +177,7 @@ namespace PCLParaphernalia
                               ref _flagPCLTransUserPattern,
                               ref _flagPCLTransViewIlluminant);
 
-            parent.getOptPCLXL(ref _flagPCLXLFontHddr,
+            parent.GetOptPCLXL(ref _flagPCLXLFontHddr,
                                 ref _flagPCLXLFontChar,
                                 ref _flagPCLXLFontDraw,
                                 ref _valPCLXLFontDrawHeight,
@@ -189,11 +189,11 @@ namespace PCLParaphernalia
                                 ref _flagPCLXLMiscBinData,
                                 ref _flagPCLXLMiscVerbose);
 
-            parent.getOptPML(ref _flagPMLWithinPCL,
+            parent.GetOptPML(ref _flagPMLWithinPCL,
                               ref _flagPMLWithinPJL,
                               ref _flagPMLMiscVerbose);
 
-            parent.getOptStats(ref _indxStatsLevel,
+            parent.GetOptStats(ref _indxStatsLevel,
                                 ref _flagStatsExcUnusedPCLObs,
                                 ref _flagStatsExcUnusedPCLXLRes);
         }
@@ -314,7 +314,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getOptClrMap(ref bool flagClrMapUseClr,
+        public void GetOptClrMap(ref bool flagClrMapUseClr,
                                   ref int[] indxClrMapBack,
                                   ref int[] indxClrMapFore)
         {
@@ -338,7 +338,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getOptClrMapStdClrs(
+        public void GetOptClrMapStdClrs(
             ref int ctClrMapStdClrs,
             ref PropertyInfo[] stdClrsPropertyInfo)
         {
@@ -355,7 +355,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getOptCurF(
+        public void GetOptCurF(
             ref ToolCommonData.PrintLang indxInitLang,
             ref PrnParseConstants.PCLXLBinding indxXLBinding,
             ref PrnParseConstants.OptOffsetFormats indxOffsetFormat,
@@ -380,7 +380,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getOptCurFBasic(
+        public void GetOptCurFBasic(
             ref ToolCommonData.PrintLang indxInitLang,
             ref PrnParseConstants.PCLXLBinding indxXLBinding,
             ref int valOffsetStart,
@@ -401,7 +401,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getOptCurFOffsets(
+        public void GetOptCurFOffsets(
             ref int valOffsetStart,
             ref int valOffsetEnd)
         {
@@ -437,7 +437,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getOptHPGL2(ref bool flagMiscBinData)
+        public void GetOptHPGL2(ref bool flagMiscBinData)
         {
             flagMiscBinData = _flagHPGL2MiscBinData;
         }
@@ -451,7 +451,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getOptPCL(ref bool flagFontHddr,
+        public void GetOptPCL(ref bool flagFontHddr,
                               ref bool flagFontChar,
                               ref bool flagFontDraw,
                               ref int valFontDrawHeight,
@@ -509,7 +509,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getOptPCLBasic(ref bool flagFontHddr,
+        public void GetOptPCLBasic(ref bool flagFontHddr,
                                    ref bool flagFontChar,
                                    ref bool flagMacroDisplay,
                                    ref bool flagMiscStyleData,
@@ -560,7 +560,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getOptPCLDraw(ref bool flagFontDraw,
+        public void GetOptPCLDraw(ref bool flagFontDraw,
                                   ref int valFontDrawHeight,
                                   ref int valFontDrawWidth)
         {
@@ -579,7 +579,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getOptPCLXL(ref bool flagFontHddr,
+        public void GetOptPCLXL(ref bool flagFontHddr,
                                 ref bool flagFontChar,
                                 ref bool flagFontDraw,
                                 ref int valFontDrawHeight,
@@ -616,7 +616,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getOptPCLXLBasic(ref bool flagFontHddr,
+        public void GetOptPCLXLBasic(ref bool flagFontHddr,
                                      ref bool flagFontChar,
                                      ref bool flagEncUserStream,
                                      ref bool flagEncPCLPassThrough,
@@ -646,7 +646,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getOptPCLXLDraw(ref bool flagFontDraw,
+        public void GetOptPCLXLDraw(ref bool flagFontDraw,
                                      ref int valFontDrawHeight,
                                      ref int valFontDrawWidth)
         {
@@ -665,7 +665,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getOptPML(ref bool flagWithinPCL,
+        public void GetOptPML(ref bool flagWithinPCL,
                               ref bool flagWithinPJL,
                               ref bool flagMiscVerbose)
         {
@@ -683,7 +683,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getOptStats(
+        public void GetOptStats(
             ref PrnParseConstants.OptStatsLevel indxLevel,
             ref bool flagExcUnusedPCLObs,
             ref bool flagExcUnusedPCLXLRes)
@@ -735,20 +735,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsLoad()
+        public void MetricsLoad()
         {
-            ToolPrnAnalysePersist.loadData(ref _prnFilename);
+            ToolPrnAnalysePersist.LoadData(ref _prnFilename);
 
-            metricsLoadCharSet();
-            metricsLoadClrMap();
-            metricsLoadGen();
-            metricsLoadHPGL2();
-            metricsLoadPCL();
-            metricsLoadPCLXL();
-            metricsLoadPML();
-            metricsLoadStats();
+            MetricsLoadCharSet();
+            MetricsLoadClrMap();
+            MetricsLoadGen();
+            MetricsLoadHPGL2();
+            MetricsLoadPCL();
+            MetricsLoadPCLXL();
+            MetricsLoadPML();
+            MetricsLoadStats();
 
-            metricsLoadCurF();
+            MetricsLoadCurF();
         }
 
         //--------------------------------------------------------------------//
@@ -760,7 +760,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsLoadCharSet()
+        private void MetricsLoadCharSet()
         {
             int i1 = 0,
                   i2 = 0,
@@ -769,7 +769,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            ToolPrnAnalysePersist.loadOptCharSet(ref i1,
+            ToolPrnAnalysePersist.LoadOptCharSet(ref i1,
                                                  ref i2,
                                                  ref i3);
 
@@ -812,15 +812,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsLoadClrMap()
+        private void MetricsLoadClrMap()
         {
-            PrnParseRowTypes.SetDefaultClrs(ref _indxClrMapBack,
-                                             ref _indxClrMapFore);
+            PrnParseRowTypes.SetDefaultClrs(ref _indxClrMapBack, ref _indxClrMapFore);
 
-            ToolPrnAnalysePersist.loadOptClrMap(ref _flagClrMapUseClr);
+            ToolPrnAnalysePersist.LoadOptClrMap(ref _flagClrMapUseClr);
 
-            ToolPrnAnalysePersist.loadOptClrMapCrnt(ref _indxClrMapBack,
-                                                     ref _indxClrMapFore);
+            ToolPrnAnalysePersist.LoadOptClrMapCrnt(ref _indxClrMapBack, ref _indxClrMapFore);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -849,9 +847,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsLoadCurF()
+        private void MetricsLoadCurF()
         {
-            resetOptCurF(-1);
+            ResetOptCurF(-1);
         }
 
         //--------------------------------------------------------------------//
@@ -863,16 +861,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsLoadGen()
+        private void MetricsLoadGen()
         {
             int i1 = 0,
                   max;
 
             //----------------------------------------------------------------//
 
-            ToolPrnAnalysePersist.loadOptGeneral(ref i1,
-                                                  ref _flagGenMiscAutoAnalyse,
-                                                  ref _flagGenDiagFileAccess);
+            ToolPrnAnalysePersist.LoadOptGeneral(ref i1, ref _flagGenMiscAutoAnalyse, ref _flagGenDiagFileAccess);
 
             max = (int)PrnParseConstants.OptOffsetFormats.Max;
 
@@ -891,9 +887,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsLoadHPGL2()
+        private void MetricsLoadHPGL2()
         {
-            ToolPrnAnalysePersist.loadOptHPGL2(ref _flagHPGL2MiscBinData);
+            ToolPrnAnalysePersist.LoadOptHPGL2(ref _flagHPGL2MiscBinData);
         }
 
         //--------------------------------------------------------------------//
@@ -905,9 +901,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsLoadPCL()
+        private void MetricsLoadPCL()
         {
-            ToolPrnAnalysePersist.loadOptPCL(ref _flagPCLFontHddr,
+            ToolPrnAnalysePersist.LoadOptPCL(ref _flagPCLFontHddr,
                                               ref _flagPCLFontChar,
                                               ref _flagPCLFontDraw,
                                               ref _valPCLFontDrawHeight,
@@ -939,9 +935,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsLoadPCLXL()
+        private void MetricsLoadPCLXL()
         {
-            ToolPrnAnalysePersist.loadOptPCLXL(ref _flagPCLXLFontHddr,
+            ToolPrnAnalysePersist.LoadOptPCLXL(ref _flagPCLXLFontHddr,
                                                 ref _flagPCLXLFontChar,
                                                 ref _flagPCLXLFontDraw,
                                                 ref _valPCLXLFontDrawHeight,
@@ -963,9 +959,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsLoadPML()
+        private void MetricsLoadPML()
         {
-            ToolPrnAnalysePersist.loadOptPML(ref _flagPMLWithinPCL,
+            ToolPrnAnalysePersist.LoadOptPML(ref _flagPMLWithinPCL,
                                               ref _flagPMLWithinPJL,
                                               ref _flagPMLMiscVerbose);
         }
@@ -979,14 +975,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsLoadStats()
+        private void MetricsLoadStats()
         {
             int i1 = 0,
                   max;
 
             //----------------------------------------------------------------//
 
-            ToolPrnAnalysePersist.loadOptStats(
+            ToolPrnAnalysePersist.LoadOptStats(
                 ref i1,
                 ref _flagStatsExcUnusedPCLObs,
                 ref _flagStatsExcUnusedPCLXLRes);
@@ -1008,34 +1004,33 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsSave()
+        public void MetricsSave()
         {
-            ToolPrnAnalysePersist.saveOptCharSet(
+            ToolPrnAnalysePersist.SaveOptCharSet(
                 (int)_indxCharSetName,
                 (int)_indxCharSetSubAct,
-                        _valCharSetSubCode);
+                _valCharSetSubCode);
 
             //----------------------------------------------------------------//
 
-            ToolPrnAnalysePersist.saveOptClrMap(_flagClrMapUseClr);
+            ToolPrnAnalysePersist.SaveOptClrMap(_flagClrMapUseClr);
 
-            ToolPrnAnalysePersist.saveOptClrMapCrnt(_indxClrMapBack,
-                                                     _indxClrMapFore);
+            ToolPrnAnalysePersist.SaveOptClrMapCrnt(_indxClrMapBack, _indxClrMapFore);
 
             //----------------------------------------------------------------//
 
-            ToolPrnAnalysePersist.saveOptGeneral(
+            ToolPrnAnalysePersist.SaveOptGeneral(
                 (int)_indxGenOffsetFormat,
-                        _flagGenMiscAutoAnalyse,
-                        _flagGenDiagFileAccess);
+                _flagGenMiscAutoAnalyse,
+                _flagGenDiagFileAccess);
 
             //----------------------------------------------------------------//
 
-            ToolPrnAnalysePersist.saveOptHPGL2(_flagHPGL2MiscBinData);
+            ToolPrnAnalysePersist.SaveOptHPGL2(_flagHPGL2MiscBinData);
 
             //----------------------------------------------------------------//
 
-            ToolPrnAnalysePersist.saveOptPCL(_flagPCLFontHddr,
+            ToolPrnAnalysePersist.SaveOptPCL(_flagPCLFontHddr,
                                               _flagPCLFontChar,
                                               _flagPCLFontDraw,
                                               _valPCLFontDrawHeight,
@@ -1059,7 +1054,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            ToolPrnAnalysePersist.saveOptPCLXL(_flagPCLXLFontHddr,
+            ToolPrnAnalysePersist.SaveOptPCLXL(_flagPCLXLFontHddr,
                                                 _flagPCLXLFontChar,
                                                 _flagPCLXLFontDraw,
                                                 _valPCLXLFontDrawHeight,
@@ -1073,13 +1068,13 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            ToolPrnAnalysePersist.saveOptPML(_flagPMLWithinPCL,
+            ToolPrnAnalysePersist.SaveOptPML(_flagPMLWithinPCL,
                                               _flagPMLWithinPJL,
                                               _flagPMLMiscVerbose);
 
             //----------------------------------------------------------------//
 
-            ToolPrnAnalysePersist.saveOptStats((int)_indxStatsLevel,
+            ToolPrnAnalysePersist.SaveOptStats((int)_indxStatsLevel,
                                                 _flagStatsExcUnusedPCLObs,
                                                 _flagStatsExcUnusedPCLXLRes);
         }
@@ -1093,7 +1088,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetOptCurF(long fileSize)
+        public void ResetOptCurF(long fileSize)
         {
             _indxCurFInitLang = ToolCommonData.PrintLang.PCL;
             _indxCurFXLBinding = PrnParseConstants.PCLXLBinding.Unknown;
@@ -1114,7 +1109,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setOptCharSet(
+        public void SetOptCharSet(
             PrnParseConstants.OptCharSets indxName,
             PrnParseConstants.OptCharSetSubActs indxSubAct,
             int valSubCode)
@@ -1133,7 +1128,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setOptClrMap(bool flagClrMapUseClr,
+        public void SetOptClrMap(bool flagClrMapUseClr,
                                   int[] indxClrMapBack,
                                   int[] indxClrMapFore)
         {
@@ -1151,7 +1146,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setOptCurF(
+        public void SetOptCurF(
             ToolCommonData.PrintLang indxInitLang,
             PrnParseConstants.PCLXLBinding indxXLBinding,
             PrnParseConstants.OptOffsetFormats indxOffsetFormat,
@@ -1174,7 +1169,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setOptGeneral(
+        public void SetOptGeneral(
             PrnParseConstants.OptOffsetFormats indxOffsetFormat,
             bool flagMiscAutoAnalyse,
             bool flagDiagFileAccess)
@@ -1193,7 +1188,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setOptHPGL2(bool flagMiscBinData)
+        public void SetOptHPGL2(bool flagMiscBinData)
         {
             _flagHPGL2MiscBinData = flagMiscBinData;
         }
@@ -1207,7 +1202,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setOptPCL(bool flagFontHddr,
+        public void SetOptPCL(bool flagFontHddr,
                               bool flagFontChar,
                               bool flagFontDraw,
                               int valFontDrawHeight,
@@ -1265,7 +1260,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setOptPCLXL(bool flagFontHddr,
+        public void SetOptPCLXL(bool flagFontHddr,
                                 bool flagFontChar,
                                 bool flagFontDraw,
                                 int valFontDrawHeight,
@@ -1302,7 +1297,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setOptPML(bool flagWithinPCL,
+        public void SetOptPML(bool flagWithinPCL,
                               bool flagWithinPJL,
                               bool flagMiscVerbose)
         {
@@ -1320,7 +1315,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setOptStats(
+        public void SetOptStats(
             PrnParseConstants.OptStatsLevel indxLevel,
             bool flagExcUnusedPCLObs,
             bool flagExcUnusedPCLXLRes)

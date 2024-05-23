@@ -10,9 +10,7 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.Obfuscation(
-        Feature = "renaming",
-        ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     class PCLSymbolSet
     {
@@ -138,9 +136,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool getSymsetData(ref ushort kind1,
-                                     ref ushort idNum,
-                                     ref string name)
+        public bool GetSymsetData(ref ushort kind1, ref ushort idNum, ref string name)
         {
             bool matches = false;
 
@@ -172,10 +168,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool getSymsetDataForIdAlpha(byte idAlpha,
-                                               ref ushort kind1,
-                                               ref ushort idNum,
-                                               ref string name)
+        public bool GetSymsetDataForIdAlpha(byte idAlpha, ref ushort kind1, ref ushort idNum, ref string name)
         {
             bool matches = false;
 

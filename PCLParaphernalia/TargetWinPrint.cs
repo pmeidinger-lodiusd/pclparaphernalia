@@ -81,8 +81,7 @@ namespace PCLParaphernalia
                    ExactSpelling = true,
                    CallingConvention = CallingConvention.StdCall)]
 
-        public static extern bool ClosePrinter(
-            IntPtr hPrinter);
+        public static extern bool ClosePrinter(IntPtr hPrinter);
 
         //--------------------------------------------------------------------//
 
@@ -103,8 +102,7 @@ namespace PCLParaphernalia
                     ExactSpelling = true,
                     CallingConvention = CallingConvention.StdCall)]
 
-        public static extern bool EndDocPrinter(
-            IntPtr hPrinter);
+        public static extern bool EndDocPrinter(IntPtr hPrinter);
 
         //--------------------------------------------------------------------//
 
@@ -113,8 +111,7 @@ namespace PCLParaphernalia
                     ExactSpelling = true,
                     CallingConvention = CallingConvention.StdCall)]
 
-        public static extern bool StartPagePrinter(
-            IntPtr hPrinter);
+        public static extern bool StartPagePrinter(IntPtr hPrinter);
 
         //--------------------------------------------------------------------//
 
@@ -123,8 +120,7 @@ namespace PCLParaphernalia
                     ExactSpelling = true,
                     CallingConvention = CallingConvention.StdCall)]
 
-        public static extern bool EndPagePrinter(
-            IntPtr hPrinter);
+        public static extern bool EndPagePrinter(IntPtr hPrinter);
 
         //--------------------------------------------------------------------//
 
@@ -209,15 +205,13 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            bSuccess = GetPrinterDriver(hPrinter, string.Empty, 8,
-                                         driverInfo, 0, out int buf_len);
+            bSuccess = GetPrinterDriver(hPrinter, string.Empty, 8, driverInfo, 0, out int buf_len);
 
             if (GetLastError() == ERROR_INSUFFICIENT_BUFFER)
             {
                 driverInfo = Marshal.AllocHGlobal(buf_len);
 
-                bSuccess = GetPrinterDriver(hPrinter, string.Empty, 8,
-                                             driverInfo, buf_len, out buf_len);
+                bSuccess = GetPrinterDriver(hPrinter, string.Empty, 8, driverInfo, buf_len, out buf_len);
 
                 var info = (DRIVER_INFO_8)Marshal.PtrToStructure(
                     driverInfo, typeof(DRIVER_INFO_8));
@@ -240,8 +234,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int SendData(BinaryReader prnReader,
-                                      string printerName)
+        public static int SendData(BinaryReader prnReader, string printerName)
         {
             const int result = 0;
             int dwError = 0,
@@ -261,9 +254,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            if (OpenPrinter(printerName.Normalize(),
-                out hPrinter,
-                IntPtr.Zero))
+            if (OpenPrinter(printerName.Normalize(), out hPrinter, IntPtr.Zero))
             {
                 //------------------------------------------------------------//
                 //                                                            //

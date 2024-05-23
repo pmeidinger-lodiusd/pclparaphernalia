@@ -49,7 +49,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generateJob(BinaryWriter prnWriter,
+        public static void GenerateJob(BinaryWriter prnWriter,
                                        int indxPaperSize,
                                        int indxPaperType,
                                        int indxOrientation,
@@ -85,11 +85,9 @@ namespace PCLParaphernalia
                             _sessionUPI,
                             aspect);
 
-            paperLength = PCLPaperSizes.GetPaperLength(indxPaperSize,
-                                                       _sessionUPI, aspect);
+            paperLength = PCLPaperSizes.GetPaperLength(indxPaperSize, _sessionUPI, aspect);
 
-            paperWidth = PCLPaperSizes.GetPaperWidth(indxPaperSize,
-                                                      _sessionUPI, aspect);
+            paperWidth = PCLPaperSizes.GetPaperWidth(indxPaperSize, _sessionUPI, aspect);
 
             scaleTextLength = (float)paperLength / A4Length;
             scaleTextWidth = (float)paperWidth / A4Width;
@@ -101,15 +99,15 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            generateJobHeader(prnWriter, pjlCommand);
+            GenerateJobHeader(prnWriter, pjlCommand);
 
             if (formAsMacro)
             {
-                generateOverlay(prnWriter, true, paperWidth, paperLength,
+                GenerateOverlay(prnWriter, true, paperWidth, paperLength,
                                 scaleText);
             }
 
-            generatePage(prnWriter,
+            GeneratePage(prnWriter,
                          indxPaperSize,
                          indxPaperType,
                          indxOrientation,
@@ -126,7 +124,7 @@ namespace PCLParaphernalia
             if (PCLPlexModes.GetPlexType(indxPlexMode) !=
                 PCLPlexModes.PlexType.Simplex)
             {
-                generatePage(prnWriter,
+                GeneratePage(prnWriter,
                              indxPaperSize,
                              indxPaperType,
                              indxOrientation,
@@ -141,7 +139,7 @@ namespace PCLParaphernalia
                              scaleText);
             }
 
-            generateJobTrailer(prnWriter, formAsMacro);
+            GenerateJobTrailer(prnWriter, formAsMacro);
         }
 
         //--------------------------------------------------------------------//
@@ -153,8 +151,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateJobHeader(BinaryWriter prnWriter,
-                                              string pjlCommand)
+        private static void GenerateJobHeader(BinaryWriter prnWriter, string pjlCommand)
         {
             PCLXLWriter.StdJobHeader(prnWriter, pjlCommand);
         }
@@ -168,8 +165,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateJobTrailer(BinaryWriter prnWriter,
-                                               bool formAsMacro)
+        private static void GenerateJobTrailer(BinaryWriter prnWriter, bool formAsMacro)
         {
             PCLXLWriter.StdJobTrailer(prnWriter, formAsMacro, _formName);
         }
@@ -185,7 +181,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateOverlay(BinaryWriter prnWriter,
+        private static void GenerateOverlay(BinaryWriter prnWriter,
                                             bool formAsMacro,
                                             ushort paperWidth,
                                             ushort paperLength,
@@ -367,8 +363,7 @@ namespace PCLParaphernalia
                               ref indBuf,
                               PCLXLOperators.Tag.PaintPath);
 
-            PCLXLWriter.WriteStreamBlock(prnWriter, formAsMacro,
-                                   buffer, ref indBuf);
+            PCLXLWriter.WriteStreamBlock(prnWriter, formAsMacro, buffer, ref indBuf);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -457,8 +452,7 @@ namespace PCLParaphernalia
                               ref indBuf,
                               PCLXLOperators.Tag.PaintPath);
 
-            PCLXLWriter.WriteStreamBlock(prnWriter, formAsMacro,
-                                   buffer, ref indBuf);
+            PCLXLWriter.WriteStreamBlock(prnWriter, formAsMacro, buffer, ref indBuf);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -471,7 +465,7 @@ namespace PCLParaphernalia
             posX1 = (short)(_rulerCell * 5.5 * scaleText);
             posY1 = (short)(_posYDesc - lineInc);
 
-            generateSquare(prnWriter, posX1, posY1, true, formAsMacro);
+            GenerateSquare(prnWriter, posX1, posY1, true, formAsMacro);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -502,8 +496,7 @@ namespace PCLParaphernalia
             PCLXLWriter.WriteStreamBlock(prnWriter, formAsMacro,
                                    buffer, ref indBuf);
 
-            PCLXLWriter.Font(prnWriter, formAsMacro, ptSize,
-                       _symSet_19U, "Arial           ");
+            PCLXLWriter.Font(prnWriter, formAsMacro, ptSize, _symSet_19U, "Arial           ");
 
             posX1 = _posXHddr;
             posY1 = _posYHddr;
@@ -516,8 +509,7 @@ namespace PCLParaphernalia
             ptSize = (short)(10 * scaleText);
             lineInc = (short)((_sessionUPI * scaleText) / 8);
 
-            PCLXLWriter.Font(prnWriter, formAsMacro, ptSize,
-                       _symSet_19U, "Arial           ");
+            PCLXLWriter.Font(prnWriter, formAsMacro, ptSize, _symSet_19U, "Arial           ");
 
             posX1 = _posXDesc;
             posY1 = _posYDesc;
@@ -576,24 +568,21 @@ namespace PCLParaphernalia
             PCLXLWriter.Text(prnWriter, formAsMacro, false,
                        PCLXLWriter.advances_ArialRegular, ptSize,
                        posX1, posY1,
-                       "Black squares of side 3 units, each containing a" +
-                       " central white square of side one");
+                       "Black squares of side 3 units, each containing a central white square of side one");
 
             posY1 += lineInc;
 
             PCLXLWriter.Text(prnWriter, formAsMacro, false,
                        PCLXLWriter.advances_ArialRegular, ptSize,
                        posX1, posY1,
-                       "unit, and some directional markers, as per the" +
-                       " half-size sample above,");
+                       "unit, and some directional markers, as per the half-size sample above,");
 
             posY1 += lineInc;
 
             PCLXLWriter.Text(prnWriter, formAsMacro, false,
                        PCLXLWriter.advances_ArialRegular, ptSize,
                        posX1, posY1,
-                       "demonstrate how objects are clipped by the" +
-                       " boundaries of the printable area.");
+                       "demonstrate how objects are clipped by the boundaries of the printable area.");
 
             posY1 += lineInc;
             posY1 += lineInc;
@@ -601,8 +590,7 @@ namespace PCLParaphernalia
             PCLXLWriter.Text(prnWriter, formAsMacro, false,
                        PCLXLWriter.advances_ArialRegular, ptSize,
                        posX1, posY1,
-                      "The four corner squares are (theoretically) positioned" +
-                      " in the corners of the");
+                      "The four corner squares are (theoretically) positioned in the corners of the");
 
             posY1 += lineInc;
 
@@ -686,7 +674,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generatePage(BinaryWriter prnWriter,
+        private static void GeneratePage(BinaryWriter prnWriter,
                                          int indxPaperSize,
                                          int indxPaperType,
                                          int indxOrientation,
@@ -908,8 +896,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                generateOverlay(prnWriter, false, paperWidth, paperLength,
-                                scaleText);
+                GenerateOverlay(prnWriter, false, paperWidth, paperLength, scaleText);
             }
 
             //----------------------------------------------------------------//
@@ -926,28 +913,28 @@ namespace PCLParaphernalia
             posX = 0;
             posY = 0;
 
-            generateSquare(prnWriter, posX, posY, false, false);
+            GenerateSquare(prnWriter, posX, posY, false, false);
 
             // Top-right.                                                     //
 
             posX = squareRightX;
             posY = 0;
 
-            generateSquare(prnWriter, posX, posY, false, false);
+            GenerateSquare(prnWriter, posX, posY, false, false);
 
             // Bottom-left.                                                   //
 
             posX = 0;
             posY = squareBottomY;
 
-            generateSquare(prnWriter, posX, posY, false, false);
+            GenerateSquare(prnWriter, posX, posY, false, false);
 
             // Bottom-right.                                                  //
 
             posX = squareRightX;
             posY = squareBottomY;
 
-            generateSquare(prnWriter, posX, posY, false, false);
+            GenerateSquare(prnWriter, posX, posY, false, false);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1028,11 +1015,9 @@ namespace PCLParaphernalia
             PCLXLWriter.Text(prnWriter, false, false,
                        PCLXLWriter.advances_Courier, ptSize,
                        posX, posY,
-                      (Math.Round(paperWidth *
-                                   unitsToMilliMetres, 2)).ToString("F1") +
+                      (Math.Round(paperWidth * unitsToMilliMetres, 2)).ToString("F1") +
                       " mm = " +
-                      (Math.Round(paperWidth *
-                                   unitsToInches, 3)).ToString("F3") +
+                      (Math.Round(paperWidth * unitsToInches, 3)).ToString("F3") +
                       "\"");
 
             posY += lineInc;
@@ -1040,11 +1025,9 @@ namespace PCLParaphernalia
             PCLXLWriter.Text(prnWriter, false, false,
                        PCLXLWriter.advances_Courier, ptSize,
                        posX, posY,
-                      (Math.Round(paperLength *
-                                   unitsToMilliMetres, 2)).ToString("F1") +
+                      (Math.Round(paperLength * unitsToMilliMetres, 2)).ToString("F1") +
                       " mm = " +
-                      (Math.Round(paperLength *
-                                   unitsToInches, 3)).ToString("F3") +
+                      (Math.Round(paperLength * unitsToInches, 3)).ToString("F3") +
                       "\"");
 
             posY += lineInc;
@@ -1070,8 +1053,7 @@ namespace PCLParaphernalia
 
             ptSize = 12;     // = 10 cpi for Courier
 
-            PCLXLWriter.Font(prnWriter, false, ptSize,
-                       _symSet_19U, "Courier         ");
+            PCLXLWriter.Font(prnWriter, false, ptSize, _symSet_19U, "Courier         ");
 
             posY = _posYText;
 
@@ -1144,7 +1126,7 @@ namespace PCLParaphernalia
             posX = squareRightX;
             posY = (short)((paperLength - _boxOuterEdge) / 2);
 
-            generateSquare(prnWriter, posX, posY, false, false);
+            GenerateSquare(prnWriter, posX, posY, false, false);
 
             //----------------------------------------------------------------//
 
@@ -1169,7 +1151,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateSquare(BinaryWriter prnWriter,
+        private static void GenerateSquare(BinaryWriter prnWriter,
                                            short startX,
                                            short startY,
                                            bool halfSize,
@@ -1204,8 +1186,7 @@ namespace PCLParaphernalia
             boxInnerEdge = (short)(_boxOuterEdge / 3 / scaler);
             boxInnerOffset = (short)(_boxOuterEdge / 3 / scaler);
             boxMarkerEdge = (short)(_boxOuterEdge / 15 / scaler);
-            boxMarkerOffset = (short)((_boxOuterEdge -
-                                        boxMarkerEdge) / 2 / scaler);
+            boxMarkerOffset = (short)((_boxOuterEdge - boxMarkerEdge) / 2 / scaler);
 
             //----------------------------------------------------------------//
 
@@ -1343,8 +1324,7 @@ namespace PCLParaphernalia
                               ref indStd,
                               PCLXLOperators.Tag.PopGS);
 
-            PCLXLWriter.WriteStreamBlock(prnWriter, formAsMacro,
-                                   bufStd, ref indStd);
+            PCLXLWriter.WriteStreamBlock(prnWriter, formAsMacro, bufStd, ref indStd);
         }
     }
 }

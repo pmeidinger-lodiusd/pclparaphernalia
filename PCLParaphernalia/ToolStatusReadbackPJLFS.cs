@@ -101,8 +101,7 @@ namespace PCLParaphernalia
             }
             else if (!File.Exists(fileName))
             {
-                MessageBox.Show("Binary source file '" + fileName +
-                                "' does not exist.",
+                MessageBox.Show("Binary source file '" + fileName + "' does not exist.",
                                 "PJL FS file invalid",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
@@ -111,10 +110,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                _ipStream = File.Open(fileName,
-                                      FileMode.Open,
-                                      FileAccess.Read,
-                                      FileShare.None);
+                _ipStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.None);
 
                 if (_ipStream != null)
                 {
@@ -375,9 +371,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                return "No response is expected from the " +
-                        PJLCommands.GetName(cmdIndx) +
-                        " action command";
+                return "No response is expected from the " + PJLCommands.GetName(cmdIndx) + " action command";
             }
         }
 
@@ -411,10 +405,7 @@ namespace PCLParaphernalia
 
             while (!replyComplete)
             {
-                OK = TargetCore.ResponseReadBlock(offset,
-                                                   bufRem,
-                                                   ref replyData,
-                                                   ref blockLen);
+                OK = TargetCore.ResponseReadBlock(offset, bufRem, ref replyData, ref blockLen);
 
                 endOffset = offset + blockLen;
 
@@ -480,9 +471,7 @@ namespace PCLParaphernalia
 
             TargetCore.ResponseCloseConnection();
 
-            return System.Text.Encoding.ASCII.GetString(replyData,
-                                                         0,
-                                                         replyLen);
+            return System.Text.Encoding.ASCII.GetString(replyData, 0, replyLen);
         }
 
         //--------------------------------------------------------------------//
@@ -518,8 +507,7 @@ namespace PCLParaphernalia
 
             if (!binFileOpen)
             {
-                reply = "Failed to open target binary file:\r\n\r\n" +
-                        binTgtFilename;
+                reply = "Failed to open target binary file:\r\n\r\n" + binTgtFilename;
             }
             else
             {
@@ -543,10 +531,7 @@ namespace PCLParaphernalia
 
                 while (OK && !replyComplete)
                 {
-                    OK = TargetCore.ResponseReadBlock(offset,
-                                                       bufRem,
-                                                       ref replyBlock,
-                                                       ref blockLen);
+                    OK = TargetCore.ResponseReadBlock(offset, bufRem, ref replyBlock, ref blockLen);
 
                     endOffset = offset + blockLen;
 
@@ -615,9 +600,7 @@ namespace PCLParaphernalia
 
                         firstBlock = false;
 
-                        cmdLen = Array.IndexOf(replyBlock,
-                                                PrnParseConstants.asciiLF,
-                                                0, blockLen);
+                        cmdLen = Array.IndexOf(replyBlock, PrnParseConstants.asciiLF, 0, blockLen);
 
                         if (cmdLen != -1)
                         {
@@ -633,9 +616,7 @@ namespace PCLParaphernalia
 
                             binSize = ReadResponseUploadSize(replyBlock, cmdLen);
 
-                            reply = Encoding.ASCII.GetString(replyBlock,
-                                                              0,
-                                                              cmdLen) +
+                            reply = Encoding.ASCII.GetString(replyBlock, 0, cmdLen) +
                                     "\r\n" +
                                     binSize + " bytes will be written to the" +
                                     " target file:" + "\r\n\r\n" +
@@ -682,11 +663,7 @@ namespace PCLParaphernalia
                             //                                                    //
                             //----------------------------------------------------//
 
-                            reply = "SIZE data not found at start of response" +
-                                    "\r\n\r\n" +
-                                    "All response data will be written to the" +
-                                    " target file:" + "\r\n\r\n" +
-                                    binTgtFilename;
+                            reply = "SIZE data not found at start of response\r\n\r\nAll response data will be written to the target file:\r\n\r\n" + binTgtFilename;
 
                             binSize = -1;
                             binRem = 0;
@@ -742,19 +719,11 @@ namespace PCLParaphernalia
                     {
                         supDataWritten = true;
 
-                        reply += "\r\n\r\n" +
-                                 "Response from device contains extra" +
-                                 " bytes after the binary data of size " +
-                                 binSize + " bytes.\r\n" +
+                        reply += "\r\n\r\nResponse from device contains extra bytes after the binary data of size " + binSize + " bytes.\r\n" +
                                  "Here are the first " + supLen +
-                                 " such bytes:\r\n\r\n" +
-                                 ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" +
-                                 "\r\n" +
-                                 Encoding.ASCII.GetString(replyBlock,
-                                                           binLen,
-                                                           supLen) +
-                                 "\r\n" +
-                                 "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
+                                 " such bytes:\r\n\r\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\r\n" +
+                                 Encoding.ASCII.GetString(replyBlock, binLen, supLen) +
+                                 "\r\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
                     }
                 }
 
@@ -778,17 +747,14 @@ namespace PCLParaphernalia
 
                 if (binTot < binSize)
                 {
-                    reply += "\r\n\r\n" +
-                             "Response contains only " + binTot +
+                    reply += "\r\n\r\nResponse contains only " + binTot +
                              " bytes of binary data, but " + binSize +
                              " bytes were expected!";
                 }
 
                 if (supLen != 0)
                 {
-                    reply += "\r\n\r\n" +
-                             "Response from device contains an extra " +
-                             supLen + " bytes after the binary data!";
+                    reply += "\r\n\r\nResponse from device contains an extra " + supLen + " bytes after the binary data!";
                 }
             }
 
@@ -814,8 +780,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static int ReadResponseUploadSize(byte[] replyBlock,
-                                                     int cmdLen)
+        private static int ReadResponseUploadSize(byte[] replyBlock, int cmdLen)
         {
             int binSize = 0;
 
@@ -829,8 +794,7 @@ namespace PCLParaphernalia
 
             bool sizeTextFound = false;
 
-            indxText = Array.LastIndexOf(replyBlock, firstByte,
-                                          cmdOffset, cmdRem);
+            indxText = Array.LastIndexOf(replyBlock, firstByte, cmdOffset, cmdRem);
 
             if (indxText >= 0)
             {
@@ -879,16 +843,11 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        if ((crntByte >= PrnParseConstants.asciiDigit0)
-                                         &&
-                                 (crntByte <= PrnParseConstants.asciiDigit9))
+                        if ((crntByte >= PrnParseConstants.asciiDigit0) && (crntByte <= PrnParseConstants.asciiDigit9))
                         {
-                            binSize = (binSize * 10) +
-                                   (crntByte - PrnParseConstants.asciiDigit0);
+                            binSize = (binSize * 10) + (crntByte - PrnParseConstants.asciiDigit0);
                         }
-                        else if ((crntByte == PrnParseConstants.asciiCR)
-                                         ||
-                                 (crntByte == PrnParseConstants.asciiLF))
+                        else if ((crntByte == PrnParseConstants.asciiCR) || (crntByte == PrnParseConstants.asciiLF))
                         {
                             valComplete = true;
                         }
@@ -914,9 +873,7 @@ namespace PCLParaphernalia
                         {
                             // do nothing //
                         }
-                        else if ((crntByte >= PrnParseConstants.asciiDigit0)
-                                        &&
-                                 (crntByte <= PrnParseConstants.asciiDigit9))
+                        else if ((crntByte >= PrnParseConstants.asciiDigit0) && (crntByte <= PrnParseConstants.asciiDigit9))
                         {
                             valStarted = true;
                             binSize = crntByte - PrnParseConstants.asciiDigit0;
@@ -953,8 +910,7 @@ namespace PCLParaphernalia
 
         public static void SendRequest(PJLCommands.CmdIndex cmdIndx)
         {
-            PJLCommands.RequestType reqType =
-                PJLCommands.GetType(cmdIndx);
+            PJLCommands.RequestType reqType = PJLCommands.GetType(cmdIndx);
 
             if ((reqType == PJLCommands.RequestType.FSDirList) ||
                 (reqType == PJLCommands.RequestType.FSQuery))

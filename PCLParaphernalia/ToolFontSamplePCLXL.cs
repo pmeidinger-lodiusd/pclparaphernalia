@@ -34,9 +34,7 @@ namespace PCLParaphernalia
         const short _marginX = (_unitsPerInch * 7) / 6;
         const short _posYDesc = (_unitsPerInch * 3) / 4;
         const short _posYGrid = _posYDesc + (_lineSpacing * 4);
-        const short _posYSelData = _posYGrid +
-                                          (_cellHeight * (_gridRows + 2)) +
-                                          (_lineSpacing * 2);
+        const short _posYSelData = _posYGrid + (_cellHeight * (_gridRows + 2)) + (_lineSpacing * 2);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -52,7 +50,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generateJob(BinaryWriter prnWriter,
+        public static void GenerateJob(BinaryWriter prnWriter,
                                        int indxPaperSize,
                                        int indxPaperType,
                                        int indxOrientation,
@@ -82,10 +80,10 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            generateJobHeader(prnWriter);
+            GenerateJobHeader(prnWriter);
 
             if (formAsMacro)
-                generateOverlay(prnWriter, true, optGridVertical);
+                GenerateOverlay(prnWriter, true, optGridVertical);
 
             if (downloadFont)
             {
@@ -96,8 +94,7 @@ namespace PCLParaphernalia
 
             if (symSetUserSet)
             {
-                symSetUserMapMax = PCLSymbolSets.GetMapArrayMax(
-                          PCLSymbolSets.IndexUserSet);
+                symSetUserMapMax = PCLSymbolSets.GetMapArrayMax(PCLSymbolSets.IndexUserSet);
 
                 symSetUserMap = new ushort[symSetUserMapMax + 1];
 
@@ -134,7 +131,7 @@ namespace PCLParaphernalia
                          symSetUserMap);
             }
 
-            generateJobTrailer(prnWriter, formAsMacro,
+            GenerateJobTrailer(prnWriter, formAsMacro,
                                downloadFont, downloadFontRemove, fontName);
         }
 
@@ -147,7 +144,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateJobHeader(BinaryWriter prnWriter)
+        private static void GenerateJobHeader(BinaryWriter prnWriter)
         {
             PCLXLWriter.StdJobHeader(prnWriter, string.Empty);
         }
@@ -161,7 +158,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateJobTrailer(BinaryWriter prnWriter,
+        private static void GenerateJobTrailer(BinaryWriter prnWriter,
                                                bool formAsMacro,
                                                bool downloadFont,
                                                bool downloadFontRemove,
@@ -186,7 +183,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateOverlay(BinaryWriter prnWriter,
+        private static void GenerateOverlay(BinaryWriter prnWriter,
                                             bool formAsMacro,
                                             bool optGridVertical)
         {
@@ -868,8 +865,7 @@ namespace PCLParaphernalia
 
             crntPtSize = 6;
 
-            PCLXLWriter.Font(prnWriter, formAsMacro, 6,
-                             _symSet_19U, "Courier       Bd");
+            PCLXLWriter.Font(prnWriter, formAsMacro, 6, _symSet_19U, "Courier       Bd");
 
             posX1 = _marginX + (_cellWidth / 3);
             posY1 = _posYGrid + _lineSpacing;
@@ -889,8 +885,7 @@ namespace PCLParaphernalia
 
             crntPtSize = 10;
 
-            PCLXLWriter.Font(prnWriter, formAsMacro, crntPtSize,
-                             _symSet_19U, "Courier       Bd");
+            PCLXLWriter.Font(prnWriter, formAsMacro, crntPtSize, _symSet_19U, "Courier       Bd");
 
             posX1 = _marginX + ((_cellWidth * 17) / 20);
             posY1 = _posYGrid + _lineSpacing;
@@ -1012,8 +1007,7 @@ namespace PCLParaphernalia
 
             crntPtSize = 12;
 
-            PCLXLWriter.Font(prnWriter, formAsMacro, crntPtSize,
-                             _symSet_19U, "Arial         Bd");
+            PCLXLWriter.Font(prnWriter, formAsMacro, crntPtSize, _symSet_19U, "Arial         Bd");
 
             posX1 = _marginX;
             posY1 = _posYDesc;
@@ -1076,8 +1070,7 @@ namespace PCLParaphernalia
 
             crntPtSize = 6;
 
-            PCLXLWriter.Font(prnWriter, formAsMacro, crntPtSize,
-                             _symSet_19U, "Arial         Bd");
+            PCLXLWriter.Font(prnWriter, formAsMacro, crntPtSize, _symSet_19U, "Arial         Bd");
 
             posX1 = _marginX + (_cellWidth * _gridDimHalf);
             posY1 = _posYSelData;
@@ -1236,7 +1229,7 @@ namespace PCLParaphernalia
                 prnWriter.Write(buffer, 0, indBuf);
                 indBuf = 0;
 
-                generateOverlay(prnWriter, false, optGridVertical);
+                GenerateOverlay(prnWriter, false, optGridVertical);
             }
 
             //----------------------------------------------------------------//
@@ -1259,8 +1252,7 @@ namespace PCLParaphernalia
             prnWriter.Write(buffer, 0, indBuf);
             indBuf = 0;
 
-            PCLXLWriter.Font(prnWriter, false, crntPtSize,
-                             _symSet_19U, "Courier       Bd");
+            PCLXLWriter.Font(prnWriter, false, crntPtSize, _symSet_19U, "Courier       Bd");
 
             posX = _marginX + ((_cellWidth * 7) / 2);
             posY = _posYDesc;
@@ -1280,8 +1272,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    tempId = fontFilename.Substring(0, halfLen) + " ... " +
-                                             fontFilename.Substring(len - halfLen, halfLen);
+                    tempId = fontFilename.Substring(0, halfLen) + " ... " + fontFilename.Substring(len - halfLen, halfLen);
                 }
 
                 PCLXLWriter.Text(prnWriter, false, false,
@@ -1307,8 +1298,7 @@ namespace PCLParaphernalia
             {
                 PCLXLWriter.Text(prnWriter, false, false,
                                  PCLXLWriter.advances_Courier, crntPtSize,
-                                 posX, posY, symSetId +
-                                             " (" + symbolSetName + ")");
+                                 posX, posY, symSetId + " (" + symbolSetName + ")");
             }
             else
             {
@@ -1317,15 +1307,12 @@ namespace PCLParaphernalia
 
                 PCLXLWriter.Text(prnWriter, false, false,
                                  PCLXLWriter.advances_Courier, crntPtSize,
-                                 posX, posY, symSetId +
-                                             " (" + symbolSetName + ")" +
-                                             offsetText);
+                                 posX, posY, symSetId + " (" + symbolSetName + ")" + offsetText);
             }
 
             crntPtSize = 8;
 
-            PCLXLWriter.Font(prnWriter, false, crntPtSize,
-                             _symSet_19U, "Courier       Bd");
+            PCLXLWriter.Font(prnWriter, false, crntPtSize, _symSet_19U, "Courier       Bd");
 
             posY += _lineSpacing;
 
@@ -1368,8 +1355,7 @@ namespace PCLParaphernalia
 
             crntPtSize = 12;
 
-            PCLXLWriter.Font(prnWriter, false, crntPtSize,
-                             _symSet_19U, "Courier       Bd");
+            PCLXLWriter.Font(prnWriter, false, crntPtSize, _symSet_19U, "Courier       Bd");
 
             posX = _marginX + (_cellWidth * 6);
             posY = _posYSelData + _cellHeight;
@@ -1434,10 +1420,8 @@ namespace PCLParaphernalia
 
                 rowSize = (short)(_gridDim - startIndxMajor);
 
-                posX = (short)(_marginX + (_cellWidth * (startIndxMajor + 1)) +
-                                          (_cellWidth / 3));
-                posY = _posYGrid + _cellHeight +
-                                          (_cellHeight * 2 / 3);
+                posX = (short)(_marginX + (_cellWidth * (startIndxMajor + 1)) + (_cellWidth / 3));
+                posY = _posYGrid + _cellHeight + (_cellHeight * 2 / 3);
             }
             else
             {
@@ -1447,8 +1431,7 @@ namespace PCLParaphernalia
                 rowSize = _gridDim;
 
                 posX = _marginX + _cellWidth + (_cellWidth / 3);
-                posY = (short)(_posYGrid + (_cellHeight * (startIndxMajor + 1)) +
-                                           (_cellHeight * 2 / 3));
+                posY = (short)(_posYGrid + (_cellHeight * (startIndxMajor + 1)) + (_cellHeight * 2 / 3));
             }
 
             posXStart = posX;
@@ -1461,9 +1444,7 @@ namespace PCLParaphernalia
                 tmpAdvance[i] = _cellWidth;
             }
 
-            for (int row = startRow;
-                       row < _gridDim;
-                       row++)
+            for (int row = startRow; row < _gridDim; row++)
             {
                 int indxMajor;
 
@@ -1490,23 +1471,16 @@ namespace PCLParaphernalia
 
                     if (optGridVertical)
                     {
-                        for (int col = 0;
-                                   col < rowSize;
-                                   col++)
+                        for (int col = 0; col < rowSize; col++)
                         {
-                            codes8Bit[col] =
-                                (byte)(((startIndxMajor + col) * _gridDim) +
-                                       row);
+                            codes8Bit[col] = (byte)(((startIndxMajor + col) * _gridDim) + row);
                         }
                     }
                     else
                     {
-                        for (int col = 0;
-                                   col < rowSize;
-                                   col++)
+                        for (int col = 0; col < rowSize; col++)
                         {
-                            codes8Bit[col] = (byte)((indxMajor * _gridDim) +
-                                                    col);
+                            codes8Bit[col] = (byte)((indxMajor * _gridDim) + col);
                         }
                     }
 
@@ -1535,25 +1509,17 @@ namespace PCLParaphernalia
 
                     if (optGridVertical)
                     {
-                        for (int col = 0;
-                                   col < rowSize;
-                                   col++)
+                        for (int col = 0; col < rowSize; col++)
                         {
-                            codes16Bit[col] =
-                                (ushort)(sampleRangeOffset +
-                                          ((startIndxMajor + col) * _gridDim) +
-                                           row);
+                            codes16Bit[col] = (ushort)(sampleRangeOffset + ((startIndxMajor + col) * _gridDim) + row);
                         }
                     }
                     else
                     {
-                        for (int col = 0;
-                                   col < rowSize;
-                                   col++)
+                        for (int col = 0; col < rowSize; col++)
                         {
                             codes16Bit[col] =
-                                (ushort)(sampleRangeOffset +
-                                          (indxMajor * _gridDim) + col);
+                                (ushort)(sampleRangeOffset + (indxMajor * _gridDim) + col);
                         }
                     }
 
@@ -1636,12 +1602,9 @@ namespace PCLParaphernalia
                 posX = posXStart;
                 posY = posYStart;
 
-                PCLXLWriter.Font(prnWriter, false, crntPtSize,
-                                 _symSet_19U, "Arial           ");
+                PCLXLWriter.Font(prnWriter, false, crntPtSize, _symSet_19U, "Arial           ");
 
-                for (int indxMajor = startIndxMajor;
-                           indxMajor < _gridDim;
-                           indxMajor++)
+                for (int indxMajor = startIndxMajor; indxMajor < _gridDim; indxMajor++)
                 {
                     ushort codeVal,
                            mapVal;
@@ -1712,20 +1675,16 @@ namespace PCLParaphernalia
                 posX = posXStart;
                 posY = posYStart;
 
-                PCLXLWriter.Font(prnWriter, false, crntPtSize,
-                                 _symSet_19U, "Arial           ");
+                PCLXLWriter.Font(prnWriter, false, crntPtSize, _symSet_19U, "Arial           ");
 
-                for (int indxMajor = startIndxMajor;
-                           indxMajor < _gridDim;
-                           indxMajor++)
+                for (int indxMajor = startIndxMajor; indxMajor < _gridDim; indxMajor++)
                 {
                     ushort codeVal,
                            mapVal;
 
                     for (int indxMinor = 0; indxMinor < _gridDim; indxMinor++)
                     {
-                        codeVal = (ushort)((indxMajor * _gridDim) +
-                                             indxMinor + sampleRangeOffset);
+                        codeVal = (ushort)((indxMajor * _gridDim) + indxMinor + sampleRangeOffset);
 
                         if (symSetUserSet)
                         {

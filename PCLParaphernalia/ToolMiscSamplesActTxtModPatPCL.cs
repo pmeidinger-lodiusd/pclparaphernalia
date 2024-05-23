@@ -80,24 +80,15 @@ namespace PCLParaphernalia
 
             aspect = PCLOrientations.GetAspect(indxOrientation);
 
-            logXOffset = PCLPaperSizes.GetLogicalOffset(indxPaperSize,
-                                                        _unitsPerInch, aspect);
+            logXOffset = PCLPaperSizes.GetLogicalOffset(indxPaperSize, _unitsPerInch, aspect);
 
-            _logPageWidth = PCLPaperSizes.GetLogPageWidth(indxPaperSize,
-                                                           _unitsPerInch,
-                                                           aspect);
+            _logPageWidth = PCLPaperSizes.GetLogPageWidth(indxPaperSize, _unitsPerInch, aspect);
 
-            _logPageHeight = PCLPaperSizes.GetLogPageLength(indxPaperSize,
-                                                          _unitsPerInch,
-                                                          aspect);
+            _logPageHeight = PCLPaperSizes.GetLogPageLength(indxPaperSize, _unitsPerInch, aspect);
 
-            _paperWidth = PCLPaperSizes.GetPaperWidth(indxPaperSize,
-                                                       _unitsPerInch,
-                                                       aspect);
+            _paperWidth = PCLPaperSizes.GetPaperWidth(indxPaperSize, _unitsPerInch, aspect);
 
-            _paperHeight = PCLPaperSizes.GetPaperLength(indxPaperSize,
-                                                         _unitsPerInch,
-                                                         aspect);
+            _paperHeight = PCLPaperSizes.GetPaperLength(indxPaperSize, _unitsPerInch, aspect);
 
             //----------------------------------------------------------------//
 
@@ -204,8 +195,7 @@ namespace PCLParaphernalia
 
             if (formAsMacro)
             {
-                PCLWriter.WriteMacroControl(prnWriter, _macroId,
-                                  PCLWriter.MacroControl.StartDef);
+                PCLWriter.WriteMacroControl(prnWriter, _macroId, PCLWriter.MacroControl.StartDef);
             }
 
             //----------------------------------------------------------------//
@@ -214,9 +204,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLWriter.PatternSet(prnWriter,
-                                  PCLWriter.PatternType.Shading,
-                                  60);
+            PCLWriter.PatternSet(prnWriter, PCLWriter.PatternType.Shading, 60);
 
             boxX = (short)((_unitsPerInch / 2) - logXOffset);
             boxY = _unitsPerInch / 2;
@@ -234,9 +222,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLWriter.PatternSet(prnWriter,
-                                  PCLWriter.PatternType.SolidBlack,
-                                  0);
+            PCLWriter.PatternSet(prnWriter, PCLWriter.PatternType.SolidBlack, 0);
 
             ptSize = 15;
 
@@ -248,8 +234,7 @@ namespace PCLParaphernalia
             posX = (short)(_posXDesc - logXOffset);
             posY = _posYHddr;
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      "PCL text & background:");
+            PCLWriter.Text(prnWriter, posX, posY, 0, "PCL text & background:");
 
             ptSize = 12;
 
@@ -260,23 +245,19 @@ namespace PCLParaphernalia
 
             posY = _posYDesc;
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      "Black:");
+            PCLWriter.Text(prnWriter, posX, posY, 0, "Black:");
 
             posY += _lineInc;
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      "Shade " + _shade_1 + "%:");
+            PCLWriter.Text(prnWriter, posX, posY, 0, "Shade " + _shade_1 + "%:");
 
             posY += _lineInc;
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      "Shade " + _shade_2 + "%:");
+            PCLWriter.Text(prnWriter, posX, posY, 0, "Shade " + _shade_2 + "%:");
 
             posY += _lineInc;
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      "White:");
+            PCLWriter.Text(prnWriter, posX, posY, 0, "White:");
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -416,13 +397,11 @@ namespace PCLParaphernalia
 
             if (formAsMacro)
             {
-                PCLWriter.WriteMacroControl(prnWriter, _macroId,
-                                                   PCLWriter.MacroControl.Call);
+                PCLWriter.WriteMacroControl(prnWriter, _macroId, PCLWriter.MacroControl.Call);
             }
             else
             {
-                GenerateOverlay(prnWriter, false, logXOffset,
-                                            indxPaperSize, indxOrientation);
+                GenerateOverlay(prnWriter, false, logXOffset, indxPaperSize, indxOrientation);
             }
 
             //----------------------------------------------------------------//

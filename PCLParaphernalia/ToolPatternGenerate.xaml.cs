@@ -15,8 +15,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2017</para>
     ///
     /// </summary>
-    [System.Reflection.Obfuscation(Feature = "renaming",
-                                            ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     public partial class ToolPatternGenerate : Window
     {
@@ -100,7 +99,7 @@ namespace PCLParaphernalia
         {
             InitializeComponent();
 
-            initialise();
+            Initialise();
 
             crntPDL = _crntPDL;
         }
@@ -120,7 +119,7 @@ namespace PCLParaphernalia
 
             string filename = _bitmapFilename;
 
-            selected = selectImageFile(ref filename);
+            selected = SelectImageFile(ref filename);
 
             if (selected)
             {
@@ -333,8 +332,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbDonorPattern_SelectionChanged(object sender,
-                                                     SelectionChangedEventArgs e)
+        private void cbDonorPattern_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_initialised && cbDonorPattern.HasItems)
             {
@@ -351,8 +349,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbOrientation_SelectionChanged(object sender,
-                                                    SelectionChangedEventArgs e)
+        private void cbOrientation_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_initialised && cbOrientation.HasItems)
             {
@@ -372,8 +369,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbPaperSize_SelectionChanged(object sender,
-                                                  SelectionChangedEventArgs e)
+        private void cbPaperSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_initialised && cbPaperSize.HasItems)
             {
@@ -393,8 +389,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbPaperType_SelectionChanged(object sender,
-                                                  SelectionChangedEventArgs e)
+        private void cbPaperType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_initialised && cbPaperType.HasItems)
             {
@@ -414,17 +409,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbPDL_SelectionChanged(object sender,
-                                            SelectionChangedEventArgs e)
+        private void cbPDL_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_initialised)
             {
-                pdlOptionsStore();
+                PdlOptionsStore();
 
                 _indxPDL = cbPDL.SelectedIndex;
                 _crntPDL = (ToolCommonData.PrintLang)_subsetPDLs[_indxPDL];
 
-                pdlOptionsRestore();
+                PdlOptionsRestore();
 
                 /*
                 if (_crntPDL == ToolCommonData.ePrintLang.PCL)
@@ -452,8 +446,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbResolution_SelectionChanged(object sender,
-                                                   SelectionChangedEventArgs e)
+        private void cbResolution_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             /*
             if (_initialised && cbResolution.HasItems)
@@ -471,7 +464,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void giveCrntPDL(ref ToolCommonData.PrintLang crntPDL)
+        public void GiveCrntPDL(ref ToolCommonData.PrintLang crntPDL)
         {
             crntPDL = _crntPDL;
         }
@@ -485,7 +478,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialise()
+        private void Initialise()
         {
             int index;
 
@@ -563,14 +556,14 @@ namespace PCLParaphernalia
             */
             //----------------------------------------------------------------//
 
-            resetTarget();
+            ResetTarget();
 
             //----------------------------------------------------------------//
             //                                                                //
             // Reinstate settings from persistent storage.                    //
             //                                                                //
             //----------------------------------------------------------------//
-            metricsLoad();
+            MetricsLoad();
 
             /*
             grpProps.Visibility = Visibility.Hidden;
@@ -584,7 +577,7 @@ namespace PCLParaphernalia
             txtFilename.Text = _bitmapFilename;
             */
 
-            pdlOptionsRestore();
+            PdlOptionsRestore();
 
             cbPDL.SelectedIndex = (byte)_indxPDL;
 
@@ -629,7 +622,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsLoad()
+        private void MetricsLoad()
         {
             /*
             Int32 tempPosX = 100,
@@ -704,7 +697,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsSave()
+        public void MetricsSave()
         {
             /*
             ToolImageBitmapPersist.saveDataCommon(_indxPDL,
@@ -736,7 +729,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void pdlOptionsRestore()
+        private void PdlOptionsRestore()
         {
             if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
@@ -761,7 +754,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void pdlOptionsStore()
+        private void PdlOptionsStore()
         {
             if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
@@ -786,7 +779,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetTarget()
+        public void ResetTarget()
         {
             TargetCore.Target targetType = TargetCore.GetTargetType();
 
@@ -833,7 +826,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool selectImageFile(ref string selectedName)
+        private bool SelectImageFile(ref string selectedName)
         {
             const bool selected = false;
             /*
@@ -877,8 +870,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtFilename_LostFocus(object sender,
-                                           RoutedEventArgs e)
+        private void txtFilename_LostFocus(object sender, RoutedEventArgs e)
         {
             if (_initialised)
             {

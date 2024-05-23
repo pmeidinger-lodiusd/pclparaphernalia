@@ -25,8 +25,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PJLCategory(PJLCategories.CategoryType type,
-                           string name)
+        public PJLCategory(PJLCategories.CategoryType type, string name)
         {
             _categoryType = type;
             _categoryName = name;

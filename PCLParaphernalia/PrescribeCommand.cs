@@ -21,11 +21,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrescribeCommand(string name,
-                                 string desc,
-                                 bool flagCmdIntro,
-                                 bool flagCmdExit,
-                                 bool flagCmdSetCRC)
+        public PrescribeCommand(string name, string desc, bool flagCmdIntro, bool flagCmdExit, bool flagCmdSetCRC)
         {
             Name = name;
             Description = desc;
@@ -54,7 +50,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void incrementStatisticsCount(int level)
+        public void IncrementStatisticsCount(int level)
         {
             if (level == 0)
                 _statsCtParent++;
@@ -112,7 +108,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetStatistics()
+        public void ResetStatistics()
         {
             _statsCtParent = 0;
             _statsCtChild = 0;

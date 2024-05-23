@@ -12,8 +12,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    [System.Reflection.Obfuscation(Feature = "renaming",
-                                            ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     public partial class ToolPrnPrint : Window
     {
@@ -40,7 +39,7 @@ namespace PCLParaphernalia
         {
             InitializeComponent();
 
-            initialise();
+            Initialise();
 
             crntPDL = ToolCommonData.PrintLang.Unknown;
         }
@@ -60,7 +59,7 @@ namespace PCLParaphernalia
 
             string filename = _prnFilename;
 
-            selected = selectPrnFile(ref filename);
+            selected = SelectPrnFile(ref filename);
 
             if (selected)
             {
@@ -102,12 +101,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool copyPrnFile(string prnFilename,
-                                          BinaryWriter prnWriter)
+        public static bool copyPrnFile(string prnFilename, BinaryWriter prnWriter)
         {
             bool OK = true;
 
-            bool fileOpen = prnOpen(prnFilename);
+            bool fileOpen = PrnOpen(prnFilename);
 
             if (!fileOpen)
             {
@@ -134,7 +132,7 @@ namespace PCLParaphernalia
                         prnWriter.Write(buf, 0, readSize);
                 }
 
-                prnClose();
+                PrnClose();
             }
 
             return OK;
@@ -146,7 +144,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void giveCrntPDL(ref ToolCommonData.PrintLang crntPDL)
+        public void GiveCrntPDL(ref ToolCommonData.PrintLang crntPDL)
         {
             crntPDL = ToolCommonData.PrintLang.Unknown;
         }
@@ -160,7 +158,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialise()
+        private void Initialise()
         {
             //  _initialised = false;
 
@@ -170,7 +168,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            resetTarget();
+            ResetTarget();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -178,7 +176,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            metricsLoad();
+            MetricsLoad();
 
             txtFilename.Text = _prnFilename;
 
@@ -194,9 +192,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsLoad()
+        private void MetricsLoad()
         {
-            ToolPrnPrintPersist.loadDataGeneral(ref _prnFilename);
+            ToolPrnPrintPersist.LoadDataGeneral(ref _prnFilename);
         }
 
         //--------------------------------------------------------------------//
@@ -208,9 +206,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsSave()
+        public void MetricsSave()
         {
-            ToolPrnPrintPersist.saveDataGeneral(_prnFilename);
+            ToolPrnPrintPersist.SaveDataGeneral(_prnFilename);
         }
 
         //--------------------------------------------------------------------//
@@ -222,7 +220,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void prnClose()
+        public static void PrnClose()
         {
             _binReader.Close();
             _ipStream.Close();
@@ -237,7 +235,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool prnOpen(string filename)
+        public static bool PrnOpen(string filename)
         {
             bool open = false;
 
@@ -252,8 +250,7 @@ namespace PCLParaphernalia
             }
             else if (!File.Exists(filename))
             {
-                MessageBox.Show("Print file '" + filename +
-                                "' does not exist.",
+                MessageBox.Show("Print file '" + filename + "' does not exist.",
                                 "Print file selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
@@ -262,10 +259,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                _ipStream = File.Open(filename,
-                                      FileMode.Open,
-                                      FileAccess.Read,
-                                      FileShare.None);
+                _ipStream = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.None);
 
                 if (_ipStream != null)
                 {
@@ -287,7 +281,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetTarget()
+        public void ResetTarget()
         {
             TargetCore.Target targetType = TargetCore.GetTargetType();
 
@@ -334,9 +328,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool selectPrnFile(ref string prnFilename)
+        private bool SelectPrnFile(ref string prnFilename)
         {
-            OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(prnFilename);
+            OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(prnFilename);
 
             openDialog.Filter = "Print Files|" +
                                 "*.prn; *.pcl; *.dia;" +
@@ -361,8 +355,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtFilename_LostFocus(object sender,
-                                           RoutedEventArgs e)
+        private void txtFilename_LostFocus(object sender, RoutedEventArgs e)
         {
             _prnFilename = txtFilename.Text;
         }

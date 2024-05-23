@@ -188,7 +188,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getContData(ref PrnParseConstants.ContType contType,
+        public void GetContData(ref PrnParseConstants.ContType contType,
                                 ref int prefixLen,
                                 ref int dataLen,
                                 ref int downloadRem,
@@ -228,7 +228,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getPCLComboData(ref bool pclComboSeq,
+        public void GetPCLComboData(ref bool pclComboSeq,
                                     ref bool pclComboFirst,
                                     ref bool pclComboLast,
                                     ref bool pclComboModified,
@@ -250,7 +250,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getPrefixData(ref int prefixLen,
+        public void GetPrefixData(ref int prefixLen,
                                   ref byte prefixA,
                                   ref byte prefixB)
         {
@@ -268,7 +268,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool isContinuation()
+        public bool IsContinuation()
         {
             return _contType != PrnParseConstants.ContType.None;
         }
@@ -301,7 +301,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void macroLevelAdjust(bool increment)
+        public void MacroLevelAdjust(bool increment)
         {
             if (increment)
                 MacroLevel++;
@@ -478,7 +478,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetContData()
+        public void ResetContData()
         {
             _contType = PrnParseConstants.ContType.None;
             _prefixLen = 0;
@@ -498,7 +498,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetPCLComboData()
+        public void ResetPCLComboData()
         {
             PclComboSeq = false;
             PclComboFirst = false;
@@ -516,7 +516,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setBacktrack(PrnParseConstants.ContType contType,
+        public void SetBacktrack(PrnParseConstants.ContType contType,
                                   int dataLen)
         {
             _contType = contType;
@@ -537,7 +537,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setContData(PrnParseConstants.ContType contType,
+        public void SetContData(PrnParseConstants.ContType contType,
                                 int prefixLen,
                                 int dataLen,
                                 int downloadRem,
@@ -563,7 +563,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setContinuation(PrnParseConstants.ContType contType)
+        public void SetContinuation(PrnParseConstants.ContType contType)
         {
             _contType = contType;
             _prefixLen = 0;
@@ -583,7 +583,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setEof(bool eofSet)
+        public void SetEof(bool eofSet)
         {
             _eof = eofSet;
         }
@@ -597,7 +597,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setPCLComboData(bool pclComboSeq,
+        public void SetPCLComboData(bool pclComboSeq,
                                     bool pclComboFirst,
                                     bool pclComboLast,
                                     bool pclComboModified,
@@ -619,7 +619,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setPrefixData(int prefixLen,
+        public void SetPrefixData(int prefixLen,
                                   byte prefixA,
                                   byte prefixB)
         {

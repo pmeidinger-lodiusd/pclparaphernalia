@@ -25,8 +25,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PJLVariable(PJLVariables.VarType type,
-                           string name)
+        public PJLVariable(PJLVariables.VarType type, string name)
         {
             _varType = type;
             _varName = name;
@@ -41,7 +40,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getName()
+        public string GetName()
         {
             return _varName;
         }
@@ -55,7 +54,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PJLVariables.VarType getType()
+        public PJLVariables.VarType GetVariableType()
         {
             return _varType;
         }

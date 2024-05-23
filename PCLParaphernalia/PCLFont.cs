@@ -10,9 +10,7 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.Obfuscation(
-        Feature = "renaming",
-        ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     class PCLFont
     {
@@ -148,10 +146,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getHPGL2FontDef(PCLFonts.Variant variant,
-                                       ushort symbolSet,
-                                       double height,
-                                       double pitch)
+        public string GetHPGL2FontDef(PCLFonts.Variant variant, ushort symbolSet, double height, double pitch)
         {
             StringBuilder cmd = new StringBuilder(255);
 
@@ -233,7 +228,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte getPCLContourRatio()
+        public byte GetPCLContourRatio()
         {
             return _contourRatio;
         }
@@ -248,13 +243,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool getPCLFontIdData(ref ushort typeface,
-                                         ref string fontName)
+        public bool GetPCLFontIdData(ref ushort typeface, ref string fontName)
         {
             bool presetFont = false;
 
-            if ((Type == PCLFonts.FontType.PresetTypeface) ||
-                (Type == PCLFonts.FontType.PresetFamily))
+            if ((Type == PCLFonts.FontType.PresetTypeface) || (Type == PCLFonts.FontType.PresetFamily))
             {
                 presetFont = true;
                 typeface = Typeface;
@@ -278,9 +271,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getPCLFontSelect(PCLFonts.Variant variant,
-                                        double height,
-                                        double pitch)
+        public string GetPCLFontSelect(PCLFonts.Variant variant, double height, double pitch)
         {
             string seq;
 
@@ -364,7 +355,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public double getPCLHeight()
+        public double GetPCLHeight()
         {
             return _pointSize;
         }
@@ -378,7 +369,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public double getPCLPitch()
+        public double GetPCLPitch()
         {
             return _pitch;
         }
@@ -393,7 +384,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public double getPCLPitch(double ptSize)
+        public double GetPCLPitch(double ptSize)
         {
             return (double)(7200 / (ptSize * _contourRatio));
         }
@@ -407,7 +398,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte getPCLSpacing()
+        public byte GetPCLSpacing()
         {
             if (_proportional)
                 return 1;
@@ -424,7 +415,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort getPCLStyle(PCLFonts.Variant variant)
+        public ushort GetPCLStyle(PCLFonts.Variant variant)
         {
             if (variant == PCLFonts.Variant.Italic)
                 return _styleItalic;
@@ -445,7 +436,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public short getPCLWeight(PCLFonts.Variant variant)
+        public short GetPCLWeight(PCLFonts.Variant variant)
         {
             if (variant == PCLFonts.Variant.Italic)
                 return _weightItalic;
@@ -465,7 +456,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public double getPCLXLHeight()
+        public double GetPCLXLHeight()
         {
             return _pointSize;
         }
@@ -479,7 +470,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getPCLXLName(PCLFonts.Variant variant)
+        public string GetPCLXLName(PCLFonts.Variant variant)
         {
             if (variant == PCLFonts.Variant.Italic)
                 return _nameItalic;
@@ -500,7 +491,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort getSymbolSetNumber()
+        public ushort GetSymbolSetNumber()
         {
             if (_bound)
                 return _symSetNumber;
@@ -550,7 +541,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool isBoundFont()
+        public bool IsBoundFont()
         {
             return _bound;
         }
@@ -565,7 +556,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool isPresetFont()
+        public bool IsPresetFont()
         {
             return (Type != PCLFonts.FontType.Custom) &&
                 (Type != PCLFonts.FontType.Download) &&
@@ -582,7 +573,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool isProportionalFont()
+        public bool IsProportionalFont()
         {
             return _proportional;
         }
@@ -598,7 +589,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool isSymSetInList(ushort symSetNo)
+        public bool IsSymSetInList(ushort symSetNo)
         {
             int symSetCt = _symSets.Length;
 
@@ -782,8 +773,7 @@ namespace PCLParaphernalia
 
                 for (int i = 0; i < symSetCt; i++)
                 {
-                    string symSetId =
-                        PCLSymbolSets.TranslateKind1ToId(_symSets[i]);
+                    string symSetId = PCLSymbolSets.TranslateKind1ToId(_symSets[i]);
 
                     crntRow.Append(symSetId);
 
@@ -828,8 +818,7 @@ namespace PCLParaphernalia
 
                 for (int i = 0; i < symSetCt; i++)
                 {
-                    string symSetId =
-                        PCLSymbolSets.TranslateKind1ToId(_symSets[i]);
+                    string symSetId = PCLSymbolSets.TranslateKind1ToId(_symSets[i]);
 
                     symSetList.Append(symSetId);
 
@@ -919,7 +908,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool variantAvailable(PCLFonts.Variant variant)
+        public bool VariantAvailable(PCLFonts.Variant variant)
         {
             if (variant == PCLFonts.Variant.Italic)
                 return Var_Italic;

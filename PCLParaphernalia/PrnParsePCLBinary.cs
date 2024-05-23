@@ -52,7 +52,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool decodeAlphaNumericID(
+        public bool DecodeAlphaNumericID(
             int binDataLen,
             int fileOffset,
             byte[] buf,
@@ -84,7 +84,7 @@ namespace PCLParaphernalia
 
             if ((binDataLen < lenMin) || (binDataLen > lenMax))
             {
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.MsgWarning,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -97,13 +97,7 @@ namespace PCLParaphernalia
                 dataOK = false;
                 contType = PrnParseConstants.ContType.PCLDownload;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataLen,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataLen, true, 0x00, 0x00);
             }
             else if (binDataLen > bufRem)
             {
@@ -116,13 +110,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.ContType.PCLAlphaNumericID;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataLen,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataLen, true, 0x00, 0x00);
             }
             else
             {
@@ -141,10 +129,8 @@ namespace PCLParaphernalia
 
                 PrnParseConstants.OptOffsetFormats indxOffsetFormat;
 
-                PrnParseConstants.OptCharSetSubActs indxCharSetSubAct =
-                    PrnParseConstants.OptCharSetSubActs.Hex;
-                PrnParseConstants.OptCharSets indxCharSetName =
-                    PrnParseConstants.OptCharSets.ASCII;
+                PrnParseConstants.OptCharSetSubActs indxCharSetSubAct = PrnParseConstants.OptCharSetSubActs.Hex;
+                PrnParseConstants.OptCharSets indxCharSetName = PrnParseConstants.OptCharSets.ASCII;
                 int valCharSetSubCode = 0x20;
 
                 analysisLevel = linkData.AnalysisLevel;
@@ -157,11 +143,9 @@ namespace PCLParaphernalia
                 indxOffsetFormat = options.IndxGenOffsetFormat;
                 showBinData = options.FlagPCLMiscBinData;
 
-                options.getOptCharSet(ref indxCharSetName,
-                                       ref indxCharSetSubAct,
-                                       ref valCharSetSubCode);
+                options.getOptCharSet(ref indxCharSetName, ref indxCharSetSubAct, ref valCharSetSubCode);
 
-                PrnParseCommon.addDataRow(
+                PrnParseCommon.AddDataRow(
                     PrnParseRowTypes.Type.DataBinary,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -251,7 +235,7 @@ namespace PCLParaphernalia
                         break;
                 }
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -311,7 +295,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool decodeColourLookup(
+        public bool DecodeColourLookup(
             int binDataLen,
             int fileOffset,
             byte[] buf,
@@ -339,7 +323,7 @@ namespace PCLParaphernalia
 
             if (binDataLen != lenStd)
             {
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.MsgWarning,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -351,13 +335,7 @@ namespace PCLParaphernalia
                 dataOK = false;
                 contType = PrnParseConstants.ContType.PCLDownload;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataRem,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
             }
             else if (binDataRem > bufRem)
             {
@@ -370,13 +348,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.ContType.PCLColourLookup;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataRem,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
             }
             else
             {
@@ -418,7 +390,7 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow(
+                PrnParseCommon.AddDataRow(
                     PrnParseRowTypes.Type.DataBinary,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -479,7 +451,7 @@ namespace PCLParaphernalia
                         break;
                 }
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -505,7 +477,7 @@ namespace PCLParaphernalia
                         break;
                 }
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -529,12 +501,12 @@ namespace PCLParaphernalia
                         textDesc = "0x" + lineBegin.ToString("x2") +
                                    "->" + lineEnd.ToString("x2");
 
-                        codeDesc = PrnParseCommon.byteArrayToHexString(
+                        codeDesc = PrnParseCommon.ByteArrayToHexString(
                                                     buf,
                                                     offset + j,
                                                     lineLen);
 
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.Type.PCLDecode,
                             table,
                             PrnParseConstants.OvlShow.None,
@@ -576,7 +548,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool decodeConfigurationIO(
+        public bool DecodeConfigurationIO(
             int binDataLen,
             int fileOffset,
             byte[] buf,
@@ -605,26 +577,19 @@ namespace PCLParaphernalia
 
             if ((binDataLen < lenMin) || (binDataLen > lenMax))
             {
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.MsgWarning,
                     table,
                     PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "*** Warning ***",
                     string.Empty,
-                    "Configuration (I/O) length < " + lenMin +
-                    " or > " + lenMax);
+                    "Configuration (I/O) length < " + lenMin + " or > " + lenMax);
 
                 dataOK = false;
                 contType = PrnParseConstants.ContType.PCLDownload;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataRem,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
             }
             else if (binDataRem > bufRem)
             {
@@ -637,13 +602,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.ContType.PCLConfigurationIO;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataRem,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
             }
             else
             {
@@ -665,10 +624,8 @@ namespace PCLParaphernalia
 
                 PrnParseConstants.OptOffsetFormats indxOffsetFormat;
 
-                PrnParseConstants.OptCharSetSubActs indxCharSetSubAct =
-                    PrnParseConstants.OptCharSetSubActs.Hex;
-                PrnParseConstants.OptCharSets indxCharSetName =
-                    PrnParseConstants.OptCharSets.ASCII;
+                PrnParseConstants.OptCharSetSubActs indxCharSetSubAct = PrnParseConstants.OptCharSetSubActs.Hex;
+                PrnParseConstants.OptCharSets indxCharSetName = PrnParseConstants.OptCharSets.ASCII;
                 int valCharSetSubCode = 0x20;
 
                 analysisLevel = linkData.AnalysisLevel;
@@ -681,11 +638,9 @@ namespace PCLParaphernalia
                 indxOffsetFormat = options.IndxGenOffsetFormat;
                 showBinData = options.FlagPCLMiscBinData;
 
-                options.getOptCharSet(ref indxCharSetName,
-                                       ref indxCharSetSubAct,
-                                       ref valCharSetSubCode);
+                options.getOptCharSet(ref indxCharSetName, ref indxCharSetSubAct, ref valCharSetSubCode);
 
-                PrnParseCommon.addDataRow(
+                PrnParseCommon.AddDataRow(
                     PrnParseRowTypes.Type.DataBinary,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -798,7 +753,7 @@ namespace PCLParaphernalia
                     {
                         PrnParsePML parsePML = new PrnParsePML();
 
-                        dataOK = parsePML.processPMLEmbedded(buf,
+                        dataOK = parsePML.ProcessPMLEmbedded(buf,
                                                              fileOffset,
                                                              binDataLen,
                                                              dataStart,
@@ -825,7 +780,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool decodeConfigureImageData(
+        public bool DecodeConfigureImageData(
             int binDataLen,
             int fileOffset,
             byte[] buf,
@@ -854,7 +809,7 @@ namespace PCLParaphernalia
 
             if ((binDataLen < lenMin) || (binDataLen > lenMax))
             {
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.MsgWarning,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -867,13 +822,7 @@ namespace PCLParaphernalia
                 dataOK = false;
                 contType = PrnParseConstants.ContType.PCLDownload;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataRem,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
             }
             else if (binDataRem > bufRem)
             {
@@ -886,13 +835,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.ContType.PCLConfigureImageData;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataRem,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
             }
             else
             {
@@ -927,7 +870,7 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow(
+                PrnParseCommon.AddDataRow(
                     PrnParseRowTypes.Type.DataBinary,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -988,7 +931,7 @@ namespace PCLParaphernalia
                         break;
                 }
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -1026,7 +969,7 @@ namespace PCLParaphernalia
                         break;
                 }
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -1045,7 +988,7 @@ namespace PCLParaphernalia
                            ": palette size = " +
                            (1 << bitsPerIndex).ToString();
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -1062,7 +1005,7 @@ namespace PCLParaphernalia
 
                 codeDesc = bitsPerPrimary1.ToString();
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -1079,7 +1022,7 @@ namespace PCLParaphernalia
 
                 codeDesc = bitsPerPrimary2.ToString();
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -1096,7 +1039,7 @@ namespace PCLParaphernalia
 
                 codeDesc = bitsPerPrimary3.ToString();
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -1121,7 +1064,7 @@ namespace PCLParaphernalia
 
                 if (binDataRem > 0)
                 {
-                    PrnParseCommon.addDataRow(
+                    PrnParseCommon.AddDataRow(
                         PrnParseRowTypes.Type.DataBinary,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -1152,7 +1095,7 @@ namespace PCLParaphernalia
                     switch (colourSpace)
                     {
                         case 0:
-                            dataOK = decodeConfigureImageData_0_and_1(
+                            dataOK = DecodeConfigureImageData_0_and_1(
                                         binDataRem,
                                         buf,
                                         ref bufRem,
@@ -1161,7 +1104,7 @@ namespace PCLParaphernalia
                             break;
 
                         case 1:
-                            dataOK = decodeConfigureImageData_0_and_1(
+                            dataOK = DecodeConfigureImageData_0_and_1(
                                         binDataRem,
                                         buf,
                                         ref bufRem,
@@ -1170,7 +1113,7 @@ namespace PCLParaphernalia
                             break;
 
                         case 2:
-                            dataOK = decodeConfigureImageData_2(
+                            dataOK = DecodeConfigureImageData_2(
                                         binDataRem,
                                         buf,
                                         ref bufRem,
@@ -1179,7 +1122,7 @@ namespace PCLParaphernalia
                             break;
 
                         case 3:
-                            dataOK = decodeConfigureImageData_3(
+                            dataOK = DecodeConfigureImageData_3(
                                         binDataRem,
                                         buf,
                                         ref bufRem,
@@ -1188,7 +1131,7 @@ namespace PCLParaphernalia
                             break;
 
                         case 4:
-                            dataOK = decodeConfigureImageData_4(
+                            dataOK = DecodeConfigureImageData_4(
                                         binDataRem,
                                         buf,
                                         ref bufRem,
@@ -1218,7 +1161,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool decodeConfigureImageData_0_and_1(
+        private bool DecodeConfigureImageData_0_and_1(
             int binDataLen,
             byte[] buf,
             ref int bufRem,
@@ -1251,7 +1194,7 @@ namespace PCLParaphernalia
                     {
                         sint16Val = (short)((buf[offset] * 256) + buf[offset + 1]);
 
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.Type.PCLDecode,
                             table,
                             PrnParseConstants.OvlShow.None,
@@ -1286,7 +1229,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool decodeConfigureImageData_2(
+        private bool DecodeConfigureImageData_2(
             int binDataLen,
             byte[] buf,
             ref int bufRem,
@@ -1321,9 +1264,9 @@ namespace PCLParaphernalia
                     else
                         textDesc = "White-point";
 
-                    codeDesc = processReal32(buf, offset);
+                    codeDesc = ProcessReal32(buf, offset);
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -1334,9 +1277,9 @@ namespace PCLParaphernalia
 
                     offset += 4;
 
-                    codeDesc = processReal32(buf, offset);
+                    codeDesc = ProcessReal32(buf, offset);
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -1357,9 +1300,9 @@ namespace PCLParaphernalia
                     else
                         textDesc = "Blue";
 
-                    codeDesc = processReal32(buf, offset);
+                    codeDesc = ProcessReal32(buf, offset);
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -1370,9 +1313,9 @@ namespace PCLParaphernalia
 
                     offset += 4;
 
-                    codeDesc = processReal32(buf, offset);
+                    codeDesc = ProcessReal32(buf, offset);
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -1393,9 +1336,9 @@ namespace PCLParaphernalia
                     else
                         textDesc = "Blue";
 
-                    codeDesc = processReal32(buf, offset);
+                    codeDesc = ProcessReal32(buf, offset);
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -1406,9 +1349,9 @@ namespace PCLParaphernalia
 
                     offset += 4;
 
-                    codeDesc = processReal32(buf, offset);
+                    codeDesc = ProcessReal32(buf, offset);
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -1440,7 +1383,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool decodeConfigureImageData_3(
+        private bool DecodeConfigureImageData_3(
             int binDataLen,
             byte[] buf,
             ref int bufRem,
@@ -1473,9 +1416,9 @@ namespace PCLParaphernalia
                     else
                         textDesc = "b*";
 
-                    codeDesc = processReal32(buf, offset);
+                    codeDesc = ProcessReal32(buf, offset);
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -1486,9 +1429,9 @@ namespace PCLParaphernalia
 
                     offset += 4;
 
-                    codeDesc = processReal32(buf, offset);
+                    codeDesc = ProcessReal32(buf, offset);
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -1520,7 +1463,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool decodeConfigureImageData_4(
+        private bool DecodeConfigureImageData_4(
             int binDataLen,
             byte[] buf,
             ref int bufRem,
@@ -1548,9 +1491,9 @@ namespace PCLParaphernalia
                 {
                     textDesc = "Encoding: Primary " + (i + 1);
 
-                    codeDesc = processReal32(buf, offset);
+                    codeDesc = ProcessReal32(buf, offset);
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -1561,9 +1504,9 @@ namespace PCLParaphernalia
 
                     offset += 4;
 
-                    codeDesc = processReal32(buf, offset);
+                    codeDesc = ProcessReal32(buf, offset);
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -1574,9 +1517,9 @@ namespace PCLParaphernalia
 
                     offset += 4;
 
-                    codeDesc = processReal32(buf, offset);
+                    codeDesc = ProcessReal32(buf, offset);
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -1592,9 +1535,9 @@ namespace PCLParaphernalia
                 {
                     textDesc = "Primary " + (i + 1);
 
-                    codeDesc = processReal32(buf, offset);
+                    codeDesc = ProcessReal32(buf, offset);
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -1605,9 +1548,9 @@ namespace PCLParaphernalia
 
                     offset += 4;
 
-                    codeDesc = processReal32(buf, offset);
+                    codeDesc = ProcessReal32(buf, offset);
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -1630,9 +1573,9 @@ namespace PCLParaphernalia
                     else
                         textDesc = "White-point";
 
-                    codeDesc = processReal32(buf, offset);
+                    codeDesc = ProcessReal32(buf, offset);
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -1643,9 +1586,9 @@ namespace PCLParaphernalia
 
                     offset += 4;
 
-                    codeDesc = processReal32(buf, offset);
+                    codeDesc = ProcessReal32(buf, offset);
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -1666,9 +1609,9 @@ namespace PCLParaphernalia
                     else
                         textDesc = "Blue";
 
-                    codeDesc = processReal32(buf, offset);
+                    codeDesc = ProcessReal32(buf, offset);
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -1679,9 +1622,9 @@ namespace PCLParaphernalia
 
                     offset += 4;
 
-                    codeDesc = processReal32(buf, offset);
+                    codeDesc = ProcessReal32(buf, offset);
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -1714,7 +1657,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool decodeConfigureRasterData(
+        public bool DecodeConfigureRasterData(
             int binDataLen,
             int fileOffset,
             byte[] buf,
@@ -1743,7 +1686,7 @@ namespace PCLParaphernalia
 
             if ((binDataLen < lenMin) || (binDataLen > lenMax))
             {
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.MsgWarning,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -1756,13 +1699,7 @@ namespace PCLParaphernalia
                 dataOK = false;
                 contType = PrnParseConstants.ContType.PCLDownload;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataRem,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
             }
             else if (binDataRem > bufRem)
             {
@@ -1775,13 +1712,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.ContType.PCLConfigureRasterData;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataRem,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
             }
             else
             {
@@ -1796,7 +1727,7 @@ namespace PCLParaphernalia
                 switch (format)
                 {
                     case 1:
-                        dataOK = decodeConfigureRasterData_1(
+                        dataOK = DecodeConfigureRasterData_1(
                                     binDataLen,
                                     fileOffset,
                                     buf,
@@ -1808,7 +1739,7 @@ namespace PCLParaphernalia
                         break;
 
                     case 2:
-                        dataOK = decodeConfigureRasterData_2(
+                        dataOK = DecodeConfigureRasterData_2(
                                     binDataLen,
                                     fileOffset,
                                     buf,
@@ -1820,7 +1751,7 @@ namespace PCLParaphernalia
                         break;
 
                     case 3:
-                        dataOK = decodeConfigureRasterData_3(
+                        dataOK = DecodeConfigureRasterData_3(
                                     binDataLen,
                                     fileOffset,
                                     buf,
@@ -1832,7 +1763,7 @@ namespace PCLParaphernalia
                         break;
 
                     case 4:
-                        dataOK = decodeConfigureRasterData_4(
+                        dataOK = DecodeConfigureRasterData_4(
                                     binDataLen,
                                     fileOffset,
                                     buf,
@@ -1844,7 +1775,7 @@ namespace PCLParaphernalia
                         break;
 
                     case 5:
-                        dataOK = decodeConfigureRasterData_5(
+                        dataOK = DecodeConfigureRasterData_5(
                                     binDataLen,
                                     fileOffset,
                                     buf,
@@ -1856,7 +1787,7 @@ namespace PCLParaphernalia
                         break;
 
                     case 6:
-                        dataOK = decodeConfigureRasterData_6(
+                        dataOK = DecodeConfigureRasterData_6(
                                     binDataLen,
                                     fileOffset,
                                     buf,
@@ -1868,7 +1799,7 @@ namespace PCLParaphernalia
                         break;
 
                     case 7:
-                        dataOK = decodeConfigureRasterData_7(
+                        dataOK = DecodeConfigureRasterData_7(
                                     binDataLen,
                                     fileOffset,
                                     buf,
@@ -1880,20 +1811,19 @@ namespace PCLParaphernalia
                         break;
 
                     default:
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.Type.MsgWarning,
                             table,
                             PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "*** Warning ***",
                             string.Empty,
-                            "Configure Raster Data format " + format +
-                            " not known");
+                            "Configure Raster Data format " + format + " not known");
 
                         dataOK = false;
                         contType = PrnParseConstants.ContType.PCLDownload;
 
-                        linkData.setContData(contType,
+                        linkData.SetContData(contType,
                                               0,
                                               -bufRem,
                                               binDataLen,
@@ -1919,7 +1849,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool decodeConfigureRasterData_1(
+        private bool DecodeConfigureRasterData_1(
             int binDataLen,
             int fileOffset,
             byte[] buf,
@@ -1966,7 +1896,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            PrnParseCommon.addDataRow(
+            PrnParseCommon.AddDataRow(
                 PrnParseRowTypes.Type.DataBinary,
                 table,
                 PrnParseConstants.OvlShow.None,
@@ -2000,7 +1930,7 @@ namespace PCLParaphernalia
 
             format = buf[offset];
 
-            PrnParseCommon.addTextRow(
+            PrnParseCommon.AddTextRow(
                 PrnParseRowTypes.Type.PCLDecode,
                 table,
                 PrnParseConstants.OvlShow.None,
@@ -2017,7 +1947,7 @@ namespace PCLParaphernalia
 
             if (calcLen != binDataLen)
             {
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.MsgError,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -2030,7 +1960,7 @@ namespace PCLParaphernalia
                 dataOK = false;
                 contType = PrnParseConstants.ContType.PCLDownload;
 
-                linkData.setContData(contType,
+                linkData.SetContData(contType,
                                       0,
                                       -bufRem,
                                       binDataLen,
@@ -2063,7 +1993,7 @@ namespace PCLParaphernalia
                         break;
                 }
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -2086,7 +2016,7 @@ namespace PCLParaphernalia
 
                     codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -2103,7 +2033,7 @@ namespace PCLParaphernalia
 
                     codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -2120,7 +2050,7 @@ namespace PCLParaphernalia
 
                     codeDesc = uint16Val.ToString();
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -2155,7 +2085,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool decodeConfigureRasterData_2(
+        private bool DecodeConfigureRasterData_2(
             int binDataLen,
             int fileOffset,
             byte[] buf,
@@ -2202,7 +2132,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            PrnParseCommon.addDataRow(
+            PrnParseCommon.AddDataRow(
                 PrnParseRowTypes.Type.DataBinary,
                 table,
                 PrnParseConstants.OvlShow.None,
@@ -2236,7 +2166,7 @@ namespace PCLParaphernalia
 
             format = buf[offset];
 
-            PrnParseCommon.addTextRow(
+            PrnParseCommon.AddTextRow(
                 PrnParseRowTypes.Type.PCLDecode,
                 table,
                 PrnParseConstants.OvlShow.None,
@@ -2253,7 +2183,7 @@ namespace PCLParaphernalia
 
             if (calcLen != binDataLen)
             {
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.MsgError,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -2266,7 +2196,7 @@ namespace PCLParaphernalia
                 dataOK = false;
                 contType = PrnParseConstants.ContType.PCLDownload;
 
-                linkData.setContData(contType,
+                linkData.SetContData(contType,
                                       0,
                                       -bufRem,
                                       binDataLen,
@@ -2299,7 +2229,7 @@ namespace PCLParaphernalia
                         break;
                 }
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -2322,7 +2252,7 @@ namespace PCLParaphernalia
 
                     codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -2339,7 +2269,7 @@ namespace PCLParaphernalia
 
                     codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -2356,7 +2286,7 @@ namespace PCLParaphernalia
 
                     codeDesc = uint16Val.ToString();
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -2391,7 +2321,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool decodeConfigureRasterData_3(
+        private bool DecodeConfigureRasterData_3(
             int binDataLen,
             int fileOffset,
             byte[] buf,
@@ -2435,7 +2365,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            PrnParseCommon.addDataRow(
+            PrnParseCommon.AddDataRow(
                 PrnParseRowTypes.Type.DataBinary,
                 table,
                 PrnParseConstants.OvlShow.None,
@@ -2469,7 +2399,7 @@ namespace PCLParaphernalia
 
             format = buf[offset];
 
-            PrnParseCommon.addTextRow(
+            PrnParseCommon.AddTextRow(
                 PrnParseRowTypes.Type.PCLDecode,
                 table,
                 PrnParseConstants.OvlShow.None,
@@ -2484,7 +2414,7 @@ namespace PCLParaphernalia
 
             if (calcLen != binDataLen)
             {
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.MsgError,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -2497,13 +2427,7 @@ namespace PCLParaphernalia
                 dataOK = false;
                 contType = PrnParseConstants.ContType.PCLDownload;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataLen,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataLen, true, 0x00, 0x00);
             }
             else
             {
@@ -2514,7 +2438,7 @@ namespace PCLParaphernalia
 
                 byteVal = buf[offset];
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -2529,7 +2453,7 @@ namespace PCLParaphernalia
 
                 byteVal = buf[offset];
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -2544,7 +2468,7 @@ namespace PCLParaphernalia
 
                 byteVal = buf[offset];
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -2561,7 +2485,7 @@ namespace PCLParaphernalia
 
                 codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -2578,7 +2502,7 @@ namespace PCLParaphernalia
 
                 codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -2608,7 +2532,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool decodeConfigureRasterData_4(
+        private bool DecodeConfigureRasterData_4(
             int binDataLen,
             int fileOffset,
             byte[] buf,
@@ -2652,7 +2576,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            PrnParseCommon.addDataRow(
+            PrnParseCommon.AddDataRow(
                 PrnParseRowTypes.Type.DataBinary,
                 table,
                 PrnParseConstants.OvlShow.None,
@@ -2686,7 +2610,7 @@ namespace PCLParaphernalia
 
             format = buf[offset];
 
-            PrnParseCommon.addTextRow(
+            PrnParseCommon.AddTextRow(
                 PrnParseRowTypes.Type.PCLDecode,
                 table,
                 PrnParseConstants.OvlShow.None,
@@ -2701,7 +2625,7 @@ namespace PCLParaphernalia
 
             if (calcLen != binDataLen)
             {
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.MsgError,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -2714,13 +2638,7 @@ namespace PCLParaphernalia
                 dataOK = false;
                 contType = PrnParseConstants.ContType.PCLDownload;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataLen,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataLen, true, 0x00, 0x00);
             }
             else
             {
@@ -2731,7 +2649,7 @@ namespace PCLParaphernalia
 
                 byteVal = buf[offset];
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -2748,7 +2666,7 @@ namespace PCLParaphernalia
 
                 codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -2765,7 +2683,7 @@ namespace PCLParaphernalia
 
                 codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -2795,7 +2713,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool decodeConfigureRasterData_5(
+        private bool DecodeConfigureRasterData_5(
             int binDataLen,
             int fileOffset,
             byte[] buf,
@@ -2839,7 +2757,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            PrnParseCommon.addDataRow(
+            PrnParseCommon.AddDataRow(
                 PrnParseRowTypes.Type.DataBinary,
                 table,
                 PrnParseConstants.OvlShow.None,
@@ -2873,7 +2791,7 @@ namespace PCLParaphernalia
 
             format = buf[offset];
 
-            PrnParseCommon.addTextRow(
+            PrnParseCommon.AddTextRow(
                 PrnParseRowTypes.Type.PCLDecode,
                 table,
                 PrnParseConstants.OvlShow.None,
@@ -2888,7 +2806,7 @@ namespace PCLParaphernalia
 
             if (calcLen != binDataLen)
             {
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.MsgError,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -2901,7 +2819,7 @@ namespace PCLParaphernalia
                 dataOK = false;
                 contType = PrnParseConstants.ContType.PCLDownload;
 
-                linkData.setContData(contType,
+                linkData.SetContData(contType,
                                       0,
                                       -bufRem,
                                       binDataLen,
@@ -2918,7 +2836,7 @@ namespace PCLParaphernalia
 
                 byteVal = buf[offset];
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -2935,7 +2853,7 @@ namespace PCLParaphernalia
 
                 codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -2952,7 +2870,7 @@ namespace PCLParaphernalia
 
                 codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -2969,7 +2887,7 @@ namespace PCLParaphernalia
 
                 codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -2986,7 +2904,7 @@ namespace PCLParaphernalia
 
                 codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -3024,7 +2942,7 @@ namespace PCLParaphernalia
                         break;
                 }
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -3054,7 +2972,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool decodeConfigureRasterData_6(
+        private bool DecodeConfigureRasterData_6(
             int binDataLen,
             int fileOffset,
             byte[] buf,
@@ -3101,7 +3019,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            PrnParseCommon.addDataRow(
+            PrnParseCommon.AddDataRow(
                 PrnParseRowTypes.Type.DataBinary,
                 table,
                 PrnParseConstants.OvlShow.None,
@@ -3135,7 +3053,7 @@ namespace PCLParaphernalia
 
             format = buf[offset];
 
-            PrnParseCommon.addTextRow(
+            PrnParseCommon.AddTextRow(
                 PrnParseRowTypes.Type.PCLDecode,
                 table,
                 PrnParseConstants.OvlShow.None,
@@ -3152,7 +3070,7 @@ namespace PCLParaphernalia
 
             if (calcLen != binDataLen)
             {
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.MsgError,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -3165,13 +3083,7 @@ namespace PCLParaphernalia
                 dataOK = false;
                 contType = PrnParseConstants.ContType.PCLDownload;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataLen,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataLen, true, 0x00, 0x00);
             }
             else
             {
@@ -3182,7 +3094,7 @@ namespace PCLParaphernalia
 
                 byteVal = buf[offset];
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -3195,7 +3107,7 @@ namespace PCLParaphernalia
 
                 offset++;
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -3220,7 +3132,7 @@ namespace PCLParaphernalia
 
                     codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -3237,7 +3149,7 @@ namespace PCLParaphernalia
 
                     codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -3252,7 +3164,7 @@ namespace PCLParaphernalia
 
                     byteVal = buf[offset];
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -3290,7 +3202,7 @@ namespace PCLParaphernalia
                             break;
                     }
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -3305,7 +3217,7 @@ namespace PCLParaphernalia
 
                     byteVal = buf[offset];
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -3320,7 +3232,7 @@ namespace PCLParaphernalia
 
                     byteVal = buf[offset];
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -3355,7 +3267,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool decodeConfigureRasterData_7(
+        private bool DecodeConfigureRasterData_7(
             int binDataLen,
             int fileOffset,
             byte[] buf,
@@ -3365,8 +3277,7 @@ namespace PCLParaphernalia
             PrnParseOptions options,
             DataTable table)
         {
-            const string formatName =
-                "7: Complex Direct - Major-Specification Channel-ID";
+            const string formatName = "7: Complex Direct - Major-Specification Channel-ID";
             const string itemName = "Pen";
 
             const int fixedLen = 4;
@@ -3403,7 +3314,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            PrnParseCommon.addDataRow(
+            PrnParseCommon.AddDataRow(
                 PrnParseRowTypes.Type.DataBinary,
                 table,
                 PrnParseConstants.OvlShow.None,
@@ -3437,7 +3348,7 @@ namespace PCLParaphernalia
 
             format = buf[offset];
 
-            PrnParseCommon.addTextRow(
+            PrnParseCommon.AddTextRow(
                 PrnParseRowTypes.Type.PCLDecode,
                 table,
                 PrnParseConstants.OvlShow.None,
@@ -3454,7 +3365,7 @@ namespace PCLParaphernalia
 
             if (calcLen != binDataLen)
             {
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.MsgError,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -3467,13 +3378,7 @@ namespace PCLParaphernalia
                 dataOK = false;
                 contType = PrnParseConstants.ContType.PCLDownload;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataLen,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataLen, true, 0x00, 0x00);
             }
             else
             {
@@ -3484,7 +3389,7 @@ namespace PCLParaphernalia
 
                 byteVal = buf[offset];
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -3514,7 +3419,7 @@ namespace PCLParaphernalia
                         break;
                 }
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -3536,12 +3441,11 @@ namespace PCLParaphernalia
                         break;
 
                     default:
-                        codeDesc = byteVal.ToString() +
-                                   ": should be zero";
+                        codeDesc = byteVal.ToString() + ": should be zero";
                         break;
                 }
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -3564,7 +3468,7 @@ namespace PCLParaphernalia
 
                     codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -3581,7 +3485,7 @@ namespace PCLParaphernalia
 
                     codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -3600,7 +3504,7 @@ namespace PCLParaphernalia
                                Math.Ceiling(Math.Log(uint16Val, 2)).ToString() +
                                ")";
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -3609,7 +3513,7 @@ namespace PCLParaphernalia
                         "Intensity Levels",
                         codeDesc);
 
-                    //------------------------------------------------------------//
+                    //--------------------------------------------------------//
 
                     offset += 2;
 
@@ -3630,7 +3534,7 @@ namespace PCLParaphernalia
                             break;
                     }
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -3700,7 +3604,7 @@ namespace PCLParaphernalia
                             break;
                     }
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -3735,7 +3639,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool decodeDefineLogicalPage(
+        public bool DecodeDefineLogicalPage(
             int binDataLen,
             int fileOffset,
             byte[] buf,
@@ -3760,7 +3664,7 @@ namespace PCLParaphernalia
 
             if ((binDataLen != lenShort) && (binDataLen != lenLong))
             {
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.MsgWarning,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -3773,13 +3677,7 @@ namespace PCLParaphernalia
                 dataOK = false;
                 contType = PrnParseConstants.ContType.PCLDownload;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataLen,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataLen, true, 0x00, 0x00);
             }
             else if (binDataLen > bufRem)
             {
@@ -3792,13 +3690,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.ContType.PCLLogicalPageData;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataLen,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataLen, true, 0x00, 0x00);
             }
             else
             {
@@ -3830,7 +3722,7 @@ namespace PCLParaphernalia
 
                 indxOffsetFormat = options.IndxGenOffsetFormat;
 
-                PrnParseCommon.addDataRow(
+                PrnParseCommon.AddDataRow(
                     PrnParseRowTypes.Type.DataBinary,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -3866,7 +3758,7 @@ namespace PCLParaphernalia
 
                 codeDesc = pageOffset.ToString() + " decipoints";
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -3883,7 +3775,7 @@ namespace PCLParaphernalia
 
                 codeDesc = pageOffset.ToString() + " decipoints";
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -3923,7 +3815,7 @@ namespace PCLParaphernalia
                             break;
                     }
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -3945,12 +3837,11 @@ namespace PCLParaphernalia
                             break;
 
                         default:
-                            codeDesc = reservedByte.ToString() +
-                                       ": should be zero";
+                            codeDesc = reservedByte.ToString() + ": should be zero";
                             break;
                     }
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -3968,7 +3859,7 @@ namespace PCLParaphernalia
 
                     codeDesc = pageSize.ToString() + " decipoints";
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -3986,7 +3877,7 @@ namespace PCLParaphernalia
 
                     codeDesc = pageSize.ToString() + " decipoints";
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -4016,7 +3907,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool decodeDefineSymbolSet(
+        public bool DecodeDefineSymbolSet(
             int binDataLen,
             int fileOffset,
             byte[] buf,
@@ -4046,7 +3937,7 @@ namespace PCLParaphernalia
 
             if ((binDataLen < lenMin) || (binDataLen > lenMax))
             {
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.MsgWarning,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -4059,13 +3950,7 @@ namespace PCLParaphernalia
                 dataOK = false;
                 contType = PrnParseConstants.ContType.PCLDownload;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataRem,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
             }
             else if (lenMin > bufRem)
             {
@@ -4078,13 +3963,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.ContType.PCLDefineSymbolSet;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataRem,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
             }
             else
             {
@@ -4125,7 +4004,7 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow(
+                PrnParseCommon.AddDataRow(
                     PrnParseRowTypes.Type.DataBinary,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -4159,7 +4038,7 @@ namespace PCLParaphernalia
 
                 uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -4172,7 +4051,7 @@ namespace PCLParaphernalia
 
                 if (uint16Val != lenMin)
                 {
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.MsgWarning,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -4195,7 +4074,7 @@ namespace PCLParaphernalia
                            " : ID = " +
                            PCLSymbolSets.TranslateKind1ToId(uint16Val);
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -4206,15 +4085,14 @@ namespace PCLParaphernalia
 
                 if (uint16Val > kind1Max)
                 {
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.MsgWarning,
                         table,
                         PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "*** Warning ***",
                         string.Empty,
-                        "ID Code > maximum value of " +
-                        kind1Max + " (ID = " +
+                        "ID Code > maximum value of " + kind1Max + " (ID = " +
                         PCLSymbolSets.TranslateKind1ToId(kind1Max) + ")");
 
                     dataOK = false;
@@ -4241,7 +4119,7 @@ namespace PCLParaphernalia
                         break;
                 }
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -4259,23 +4137,19 @@ namespace PCLParaphernalia
                 switch (byteVal)
                 {
                     case 0:
-                        codeDesc = PCLSymSetTypes.GetDescStd(
-                                       (int)PCLSymSetTypes.Index.Bound_7bit);
+                        codeDesc = PCLSymSetTypes.GetDescStd((int)PCLSymSetTypes.Index.Bound_7bit);
                         break;
 
                     case 1:
-                        codeDesc = PCLSymSetTypes.GetDescStd(
-                                       (int)PCLSymSetTypes.Index.Bound_8bit);
+                        codeDesc = PCLSymSetTypes.GetDescStd((int)PCLSymSetTypes.Index.Bound_8bit);
                         break;
 
                     case 2:
-                        codeDesc = PCLSymSetTypes.GetDescStd(
-                                       (int)PCLSymSetTypes.Index.Bound_PC8);
+                        codeDesc = PCLSymSetTypes.GetDescStd((int)PCLSymSetTypes.Index.Bound_PC8);
                         break;
 
                     case 3:
-                        codeDesc = PCLSymSetTypes.GetDescStd(
-                                       (int)PCLSymSetTypes.Index.Bound_16bit);
+                        codeDesc = PCLSymSetTypes.GetDescStd((int)PCLSymSetTypes.Index.Bound_16bit);
                         break;
 
                     default:
@@ -4283,7 +4157,7 @@ namespace PCLParaphernalia
                         break;
                 }
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -4298,7 +4172,7 @@ namespace PCLParaphernalia
 
                 firstCode = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -4314,7 +4188,7 @@ namespace PCLParaphernalia
 
                 lastCode = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -4331,7 +4205,7 @@ namespace PCLParaphernalia
 
                 offset += 2;
 
-                _parseFontHddrPCL.ParseSegs.decodeCharCompReq(
+                _parseFontHddrPCL.ParseSegs.DecodeCharCompReq(
                     false,
                     format == format_MSL,
                     true,
@@ -4360,42 +4234,34 @@ namespace PCLParaphernalia
 
                     if (mapLen != mapLenCalc)
                     {
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.Type.MsgWarning,
                             table,
                             PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "*** Warning ***",
                             string.Empty,
-                            "Symbol Map size of " + mapLen +
-                            " inconsistent with");
+                            "Symbol Map size of " + mapLen + " inconsistent with");
 
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.Type.MsgWarning,
                             table,
                             PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "*** Warning ***",
                             string.Empty,
-                            "calculated size " + mapLenCalc +
-                            " for " + codeCt + " code-points");
+                            "calculated size " + mapLenCalc + " for " + codeCt + " code-points");
 
                         dataOK = false;
                         contType = PrnParseConstants.ContType.PCLDownload;
 
-                        linkData.setContData(contType,
-                                              0,
-                                              -bufRem,
-                                              binDataRem,
-                                              true,
-                                              0x00,
-                                              0x00);
+                        linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
                     }
                     else
                     {
                         linkData.EntryNo = firstCode;
 
-                        decodeDefineSymbolSetMap(binDataRem,
+                        DecodeDefineSymbolSetMap(binDataRem,
                                                   fileOffset,
                                                   buf,
                                                   ref bufRem,
@@ -4426,7 +4292,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool decodeDefineSymbolSetMap(
+        public bool DecodeDefineSymbolSetMap(
             int binDataLen,
             int fileOffset,
             byte[] buf,
@@ -4484,7 +4350,7 @@ namespace PCLParaphernalia
             codeCount = mapSize >> 1;    // make sure we process byte pairs
             mapSize = codeCount << 1;
 
-            PrnParseCommon.addDataRow(
+            PrnParseCommon.AddDataRow(
                 PrnParseRowTypes.Type.DataBinary,
                 table,
                 PrnParseConstants.OvlShow.None,
@@ -4527,7 +4393,7 @@ namespace PCLParaphernalia
                 textDesc = "0x" + mapBegin.ToString("x4") +
                            "->" + mapEnd.ToString("x4");
 
-                all_ffs = PrnParseCommon.byteArrayPairToHexString(
+                all_ffs = PrnParseCommon.ByteArrayPairToHexString(
                               buf,
                               offset + i,
                               lineLen,
@@ -4535,7 +4401,7 @@ namespace PCLParaphernalia
 
                 if (!all_ffs)
                 {
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -4561,7 +4427,7 @@ namespace PCLParaphernalia
 
                 linkData.EntryNo = codeStart;
 
-                linkData.setContData(contType,
+                linkData.SetContData(contType,
                                       0,
                                       -bufRem,
                                       binDataRem,
@@ -4571,7 +4437,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                linkData.resetContData();
+                linkData.ResetContData();
             }
 
             return dataOK;
@@ -4617,26 +4483,19 @@ namespace PCLParaphernalia
 
             if ((binDataLen < lenMin) || (binDataLen > lenMax))
             {
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.MsgWarning,
                     table,
                     PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "*** Warning ***",
                     string.Empty,
-                    "Download Dither Matrix length < " + lenMin +
-                    " or > " + lenMax);
+                    "Download Dither Matrix length < " + lenMin + " or > " + lenMax);
 
                 dataOK = false;
                 contType = PrnParseConstants.ContType.PCLDownload;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataRem,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
             }
             else if (lenMin > bufRem)
             {
@@ -4649,13 +4508,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.ContType.PCLDitherMatrix;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataRem,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
             }
             else
             {
@@ -4686,7 +4539,7 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow(
+                PrnParseCommon.AddDataRow(
                     PrnParseRowTypes.Type.DataBinary,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -4731,7 +4584,7 @@ namespace PCLParaphernalia
                         break;
                 }
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -4761,7 +4614,7 @@ namespace PCLParaphernalia
                         break;
                 }
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -4788,7 +4641,7 @@ namespace PCLParaphernalia
 
                 if (binDataRem > 0)
                 {
-                    decodeDitherMatrixPlane(binDataRem,
+                    DecodeDitherMatrixPlane(binDataRem,
                                              fileOffset,
                                              buf,
                                              ref bufRem,
@@ -4816,7 +4669,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool decodeDitherMatrixPlane(
+        public bool DecodeDitherMatrixPlane(
             int binDataLen,
             int fileOffset,
             byte[] buf,
@@ -4853,7 +4706,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.ContType.PCLDitherMatrixPlane;
 
-                linkData.setContData(contType,
+                linkData.SetContData(contType,
                                       0,
                                       -bufRem,
                                       binDataRem,
@@ -4893,7 +4746,7 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow(
+                PrnParseCommon.AddDataRow(
                     PrnParseRowTypes.Type.DataBinary,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -4927,7 +4780,7 @@ namespace PCLParaphernalia
 
                 height = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -4942,7 +4795,7 @@ namespace PCLParaphernalia
 
                 width = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -4968,20 +4821,19 @@ namespace PCLParaphernalia
 
                 if (planeLen > binDataRem)
                 {
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.MsgWarning,
                         table,
                         PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "*** Warning ***",
                         string.Empty,
-                        "Download Dither Matrix " + planeNo + " length " +
-                        planeLen + " > remainder size " + binDataRem);
+                        "Download Dither Matrix " + planeNo + " length " + planeLen + " > remainder size " + binDataRem);
 
                     dataOK = false;
                     contType = PrnParseConstants.ContType.PCLDownload;
 
-                    linkData.setContData(contType,
+                    linkData.SetContData(contType,
                                           0,
                                           -bufRem,
                                           binDataRem,
@@ -4995,7 +4847,7 @@ namespace PCLParaphernalia
                     linkData.EntrySz2 = width;
                     linkData.EntryRem = height * width;
 
-                    decodeDitherMatrixPlaneData(binDataRem,
+                    DecodeDitherMatrixPlaneData(binDataRem,
                                                  fileOffset,
                                                  buf,
                                                  ref bufRem,
@@ -5019,7 +4871,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool decodeDitherMatrixPlaneData(
+        public bool DecodeDitherMatrixPlaneData(
             int binDataLen,
             int fileOffset,
             byte[] buf,
@@ -5049,10 +4901,8 @@ namespace PCLParaphernalia
 
             PrnParseConstants.OptOffsetFormats indxOffsetFormat;
 
-            PrnParseConstants.OptCharSetSubActs indxCharSetSubAct =
-                PrnParseConstants.OptCharSetSubActs.Hex;
-            PrnParseConstants.OptCharSets indxCharSetName =
-                PrnParseConstants.OptCharSets.ASCII;
+            PrnParseConstants.OptCharSetSubActs indxCharSetSubAct = PrnParseConstants.OptCharSetSubActs.Hex;
+            PrnParseConstants.OptCharSets indxCharSetName = PrnParseConstants.OptCharSets.ASCII;
             int valCharSetSubCode = 0x20;
 
             analysisLevel = linkData.AnalysisLevel;
@@ -5065,9 +4915,7 @@ namespace PCLParaphernalia
             indxOffsetFormat = options.IndxGenOffsetFormat;
             showBinData = options.FlagPCLMiscBinData;
 
-            options.getOptCharSet(ref indxCharSetName,
-                                   ref indxCharSetSubAct,
-                                   ref valCharSetSubCode);
+            options.getOptCharSet(ref indxCharSetName, ref indxCharSetSubAct, ref valCharSetSubCode);
 
             planeNo = linkData.EntryNo;
 
@@ -5089,7 +4937,7 @@ namespace PCLParaphernalia
 
             rows = dataSize / matrixWidth;
 
-            PrnParseCommon.addDataRow(
+            PrnParseCommon.AddDataRow(
                 PrnParseRowTypes.Type.DataBinary,
                 table,
                 PrnParseConstants.OvlShow.None,
@@ -5117,7 +4965,7 @@ namespace PCLParaphernalia
                     analysisLevel);
             }
 
-            //------------------------------------------------------------//
+            //----------------------------------------------------------------//
 
             for (int i = 0; i < rows; i++)
             {
@@ -5136,7 +4984,7 @@ namespace PCLParaphernalia
                     analysisLevel);
             }
 
-            //----------------------------------------------------//
+            //----------------------------------------------------------------//
 
             bufRem -= dataSize;
             bufOffset += dataSize;
@@ -5148,35 +4996,21 @@ namespace PCLParaphernalia
             {
                 linkData.EntryRem = matrixRem;
 
-                contType =
-                    PrnParseConstants.ContType.PCLDitherMatrixPlaneData;
+                contType = PrnParseConstants.ContType.PCLDitherMatrixPlaneData;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataRem,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
             }
             else if (binDataRem > 0)
             {
                 linkData.EntryNo++;
 
-                contType =
-                    PrnParseConstants.ContType.PCLDitherMatrixPlane;
+                contType = PrnParseConstants.ContType.PCLDitherMatrixPlane;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataRem,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
             }
             else
             {
-                linkData.resetContData();
+                linkData.ResetContData();
             }
 
             return dataOK;
@@ -5195,7 +5029,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool decodeDriverConfiguration(
+        public bool DecodeDriverConfiguration(
             int binDataLen,
             int fileOffset,
             byte[] buf,
@@ -5224,26 +5058,19 @@ namespace PCLParaphernalia
 
             if ((binDataLen < lenMin) || (binDataLen > lenMax))
             {
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.MsgWarning,
                     table,
                     PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "*** Warning ***",
                     string.Empty,
-                    "Driver Configuration length < " + lenMin +
-                    " or > " + lenMax);
+                    "Driver Configuration length < " + lenMin + " or > " + lenMax);
 
                 dataOK = false;
                 contType = PrnParseConstants.ContType.PCLDownload;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataRem,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
             }
             else if (binDataRem > bufRem)
             {
@@ -5256,13 +5083,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.ContType.PCLDriverConfiguration;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataRem,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
             }
             else
             {
@@ -5295,7 +5116,7 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow(
+                PrnParseCommon.AddDataRow(
                     PrnParseRowTypes.Type.DataBinary,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -5344,7 +5165,7 @@ namespace PCLParaphernalia
                         break;
                 }
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -5370,7 +5191,7 @@ namespace PCLParaphernalia
                         break;
                 }
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -5392,7 +5213,7 @@ namespace PCLParaphernalia
 
                 if (argLen > 0)
                 {
-                    PrnParseCommon.addDataRow(
+                    PrnParseCommon.AddDataRow(
                         PrnParseRowTypes.Type.DataBinary,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -5441,7 +5262,7 @@ namespace PCLParaphernalia
                                 break;
                         }
 
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.Type.PCLDecode,
                             table,
                             PrnParseConstants.OvlShow.None,
@@ -5471,7 +5292,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool decodeEmbeddedPML(int binDataLen,
+        public bool DecodeEmbeddedPML(int binDataLen,
                                          int fileOffset,
                                          byte[] buf,
                                          ref int bufRem,
@@ -5497,26 +5318,19 @@ namespace PCLParaphernalia
 
             if ((binDataLen < lenMin) || (binDataLen > lenMax))
             {
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.MsgWarning,
                     table,
                     PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "*** Warning ***",
                     string.Empty,
-                    "Embedded PML data length < " + lenMin +
-                    " or > " + lenMax);
+                    "Embedded PML data length < " + lenMin + " or > " + lenMax);
 
                 dataOK = false;
                 contType = PrnParseConstants.ContType.PCLDownload;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataRem,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
             }
             else if (binDataRem > bufRem)
             {
@@ -5529,14 +5343,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.ContType.PCLEmbeddedPML;
 
-                linkData.setContData(
-                    contType,
-                    0,
-                    -bufRem,
-                    binDataRem,
-                    true,
-                    0x20,
-                    0x20);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x20, 0x20);
             }
             else
             {
@@ -5580,7 +5387,7 @@ namespace PCLParaphernalia
                 {
                     PrnParsePML parsePML = new PrnParsePML();
 
-                    dataOK = parsePML.processPMLEmbedded(buf,
+                    dataOK = parsePML.ProcessPMLEmbedded(buf,
                                                          fileOffset,
                                                          binDataLen,
                                                          bufOffset,
@@ -5607,7 +5414,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool decodeEscEncText(
+        public bool DecodeEscEncText(
             int binDataLen,
             int fileOffset,
             byte[] buf,
@@ -5636,26 +5443,19 @@ namespace PCLParaphernalia
 
             if ((binDataLen < lenMin) || (binDataLen > lenMax))
             {
-                PrnParseCommon.addTextRow
+                PrnParseCommon.AddTextRow
                     (PrnParseRowTypes.Type.MsgWarning,
                     table,
                     PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "*** Warning ***",
                     string.Empty,
-                    "Escapement Encapsulated Text length < " + lenMin +
-                    " or > " + lenMax);
+                    "Escapement Encapsulated Text length < " + lenMin + " or > " + lenMax);
 
                 dataOK = false;
                 contType = PrnParseConstants.ContType.PCLDownload;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataRem,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
             }
             else if (lenMin > bufRem)
             {
@@ -5668,13 +5468,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.ContType.PCLDefineSymbolSet;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataRem,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
             }
             else
             {
@@ -5705,7 +5499,7 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow(
+                PrnParseCommon.AddDataRow(
                     PrnParseRowTypes.Type.DataBinary,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -5750,7 +5544,7 @@ namespace PCLParaphernalia
                         break;
                 }
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -5780,37 +5574,23 @@ namespace PCLParaphernalia
 
                     if (binDataRem - (tripletCt * 3) != 0)
                     {
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.Type.MsgWarning,
                             table,
                             PrnParseConstants.OvlShow.None,
                             string.Empty,
                             "*** Warning ***",
                             string.Empty,
-                            "Encapsulated data size " + binDataRem +
-                            " is not a multiple of 3");
+                            "Encapsulated data size " + binDataRem + " is not a multiple of 3");
 
                         dataOK = false;
                         contType = PrnParseConstants.ContType.PCLDownload;
 
-                        linkData.setContData(contType,
-                                              0,
-                                              -bufRem,
-                                              binDataRem,
-                                              true,
-                                              0x00,
-                                              0x00);
+                        linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
                     }
                     else
                     {
-                        decodeEscEncTextData(binDataRem,
-                                              fileOffset,
-                                              buf,
-                                              ref bufRem,
-                                              ref bufOffset,
-                                              linkData,
-                                              options,
-                                              table);
+                        DecodeEscEncTextData(binDataRem, fileOffset, buf, ref bufRem, ref bufOffset, linkData, options, table);
                     }
                 }
             }
@@ -5832,7 +5612,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool decodeEscEncTextData(
+        public bool DecodeEscEncTextData(
             int binDataLen,
             int fileOffset,
             byte[] buf,
@@ -5861,10 +5641,8 @@ namespace PCLParaphernalia
 
             PrnParseConstants.OptOffsetFormats indxOffsetFormat;
 
-            PrnParseConstants.OptCharSetSubActs indxCharSetSubAct =
-                PrnParseConstants.OptCharSetSubActs.Hex;
-            PrnParseConstants.OptCharSets indxCharSetName =
-                PrnParseConstants.OptCharSets.ASCII;
+            PrnParseConstants.OptCharSetSubActs indxCharSetSubAct = PrnParseConstants.OptCharSetSubActs.Hex;
+            PrnParseConstants.OptCharSets indxCharSetName = PrnParseConstants.OptCharSets.ASCII;
             int valCharSetSubCode = 0x20;
 
             analysisLevel = linkData.AnalysisLevel;
@@ -5877,9 +5655,7 @@ namespace PCLParaphernalia
             indxOffsetFormat = options.IndxGenOffsetFormat;
             showBinData = options.FlagPCLMiscBinData;
 
-            options.getOptCharSet(ref indxCharSetName,
-                                   ref indxCharSetSubAct,
-                                   ref valCharSetSubCode);
+            options.getOptCharSet(ref indxCharSetName, ref indxCharSetSubAct, ref valCharSetSubCode);
 
             offset = bufOffset;
 
@@ -5894,7 +5670,7 @@ namespace PCLParaphernalia
 
             tripletCt = dataSize / 3;
 
-            PrnParseCommon.addDataRow(
+            PrnParseCommon.AddDataRow(
                 PrnParseRowTypes.Type.DataBinary,
                 table,
                 PrnParseConstants.OvlShow.None,
@@ -5933,10 +5709,10 @@ namespace PCLParaphernalia
                                                     (byte)valCharSetSubCode,
                                                     indxCharSetName) +
                            " --> " +
-                           processSint16(buf, offset + 1) +
+                           ProcessSint16(buf, offset + 1) +
                            " PCL units";
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -5957,13 +5733,7 @@ namespace PCLParaphernalia
                 contType =
                     PrnParseConstants.ContType.PCLEscEncTextData;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataRem,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
             }
 
             return dataOK;
@@ -5982,7 +5752,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool decodePaletteConfiguration(
+        public bool DecodePaletteConfiguration(
             int binDataLen,
             int fileOffset,
             byte[] buf,
@@ -6014,26 +5784,19 @@ namespace PCLParaphernalia
 
             if ((binDataLen < lenMin) || (binDataLen > lenMax))
             {
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.MsgWarning,
                     table,
                     PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "*** Warning ***",
                     string.Empty,
-                    "Palette Configuration length < " + lenMin +
-                    " or > " + lenMax);
+                    "Palette Configuration length < " + lenMin + " or > " + lenMax);
 
                 dataOK = false;
                 contType = PrnParseConstants.ContType.PCLDownload;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataLen,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataLen, true, 0x00, 0x00);
             }
             else if (binDataLen > bufRem)
             {
@@ -6046,13 +5809,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.ContType.PCLPaletteConfiguration;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataLen,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataLen, true, 0x00, 0x00);
             }
             else
             {
@@ -6078,7 +5835,7 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow(
+                PrnParseCommon.AddDataRow(
                     PrnParseRowTypes.Type.DataBinary,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -6123,7 +5880,7 @@ namespace PCLParaphernalia
                         break;
                 }
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -6149,7 +5906,7 @@ namespace PCLParaphernalia
                         break;
                 }
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -6166,7 +5923,7 @@ namespace PCLParaphernalia
 
                 itemCt = byteVal + 1;
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -6181,7 +5938,7 @@ namespace PCLParaphernalia
 
                 byteVal = buf[offset];
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -6196,7 +5953,7 @@ namespace PCLParaphernalia
 
                 byteVal = buf[offset];
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -6211,7 +5968,7 @@ namespace PCLParaphernalia
 
                 byteVal = buf[offset];
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -6226,7 +5983,7 @@ namespace PCLParaphernalia
 
                 byteVal = buf[offset];
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -6241,7 +5998,7 @@ namespace PCLParaphernalia
 
                 byteVal = buf[offset];
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -6256,7 +6013,7 @@ namespace PCLParaphernalia
 
                 byteVal = buf[offset];
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -6271,7 +6028,7 @@ namespace PCLParaphernalia
 
                 if (calcLen != binDataLen)
                 {
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.MsgError,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -6284,13 +6041,7 @@ namespace PCLParaphernalia
                     dataOK = false;
                     contType = PrnParseConstants.ContType.PCLDownload;
 
-                    linkData.setContData(contType,
-                                          0,
-                                          -bufRem,
-                                          binDataLen,
-                                          true,
-                                          0x00,
-                                          0x00);
+                    linkData.SetContData(contType, 0, -bufRem, binDataLen, true, 0x00, 0x00);
                 }
                 else
                 {
@@ -6306,7 +6057,7 @@ namespace PCLParaphernalia
                     {
                         byteVal = buf[offset];
 
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.Type.PCLDecode,
                             table,
                             PrnParseConstants.OvlShow.None,
@@ -6321,7 +6072,7 @@ namespace PCLParaphernalia
 
                         byteVal = buf[offset];
 
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.Type.PCLDecode,
                             table,
                             PrnParseConstants.OvlShow.None,
@@ -6336,7 +6087,7 @@ namespace PCLParaphernalia
 
                         byteVal = buf[offset];
 
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.Type.PCLDecode,
                             table,
                             PrnParseConstants.OvlShow.None,
@@ -6371,7 +6122,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool decodeUserDefinedPattern(
+        public bool DecodeUserDefinedPattern(
             int binDataLen,
             int fileOffset,
             byte[] buf,
@@ -6407,7 +6158,7 @@ namespace PCLParaphernalia
 
             if ((binDataLen < lenMin) || (binDataLen > lenMax))
             {
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.MsgWarning,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -6420,13 +6171,7 @@ namespace PCLParaphernalia
                 dataOK = false;
                 contType = PrnParseConstants.ContType.PCLDownload;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataRem,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
             }
             else if (lenMin > bufRem)
             {
@@ -6439,13 +6184,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.ContType.PCLUserDefPatternHddr;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataRem,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
             }
             else
             {
@@ -6485,7 +6224,7 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow(
+                PrnParseCommon.AddDataRow(
                     PrnParseRowTypes.Type.DataBinary,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -6538,7 +6277,7 @@ namespace PCLParaphernalia
                         break;
                 }
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -6564,7 +6303,7 @@ namespace PCLParaphernalia
                         break;
                 }
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -6594,7 +6333,7 @@ namespace PCLParaphernalia
                         break;
                 }
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -6606,15 +6345,14 @@ namespace PCLParaphernalia
                 if (((format == 0) || (format == 20)) &&
                     (pixelEncoding != 1))
                 {
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.MsgWarning,
                         table,
                         PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "*** Warning ***",
                         string.Empty,
-                        "Pixel encoding value " + pixelEncoding +
-                        " incompatible with format " + format);
+                        "Pixel encoding value " + pixelEncoding + " incompatible with format " + format);
                 }
 
                 //------------------------------------------------------------//
@@ -6634,7 +6372,7 @@ namespace PCLParaphernalia
                         break;
                 }
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -6651,7 +6389,7 @@ namespace PCLParaphernalia
 
                 codeDesc = patternHeight.ToString() + " pixels";
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -6668,7 +6406,7 @@ namespace PCLParaphernalia
 
                 codeDesc = patternWidth.ToString() + " pixels";
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -6687,7 +6425,7 @@ namespace PCLParaphernalia
 
                     codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -6704,7 +6442,7 @@ namespace PCLParaphernalia
 
                     codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.PCLDecode,
                         table,
                         PrnParseConstants.OvlShow.None,
@@ -6754,37 +6492,28 @@ namespace PCLParaphernalia
 
                 if (badPattern)
                 {
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.MsgWarning,
                         table,
                         PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "*** Warning ***",
                         string.Empty,
-                        "Pattern data size of " + binDataRem +
-                        " bytes inconsistent with");
+                        "Pattern data size of " + binDataRem + " bytes inconsistent with");
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.MsgWarning,
                         table,
                         PrnParseConstants.OvlShow.None,
                         string.Empty,
                         "*** Warning ***",
                         string.Empty,
-                        "height = " + patternHeight +
-                        " and width = " + patternWidth +
-                        " with pixel encoding = " + pixelEncoding);
+                        "height = " + patternHeight + " and width = " + patternWidth + " with pixel encoding = " + pixelEncoding);
 
                     dataOK = false;
                     contType = PrnParseConstants.ContType.PCLDownload;
 
-                    linkData.setContData(contType,
-                                          0,
-                                          -bufRem,
-                                          binDataRem,
-                                          true,
-                                          0x00,
-                                          0x00);
+                    linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
                 }
                 else
                 {
@@ -6792,7 +6521,7 @@ namespace PCLParaphernalia
                     linkData.EntrySz1 = rowBytes;
                     linkData.EntryNo = 0;
 
-                    decodeUserDefinedPatternData(binDataRem,
+                    DecodeUserDefinedPatternData(binDataRem,
                                                   fileOffset,
                                                   buf,
                                                   ref bufRem,
@@ -6815,7 +6544,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool decodeUserDefinedPatternData(
+        public bool DecodeUserDefinedPatternData(
             int binDataLen,
             int fileOffset,
             byte[] buf,
@@ -6871,7 +6600,7 @@ namespace PCLParaphernalia
             {
                 offset = bufOffset + (i * rowBytes);
 
-                PrnParseCommon.addDataRow(
+                PrnParseCommon.AddDataRow(
                     PrnParseRowTypes.Type.DataBinary,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -6911,22 +6640,15 @@ namespace PCLParaphernalia
 
             if (binDataRem > 0)
             {
-                contType =
-                    PrnParseConstants.ContType.PCLUserDefPatternData;
+                contType = PrnParseConstants.ContType.PCLUserDefPatternData;
 
                 linkData.EntryNo = rowNo;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataRem,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
             }
             else
             {
-                linkData.resetContData();
+                linkData.ResetContData();
             }
 
             return dataOK;
@@ -6971,7 +6693,7 @@ namespace PCLParaphernalia
 
             if (binDataLen != lenStd)
             {
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.MsgWarning,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -6983,13 +6705,7 @@ namespace PCLParaphernalia
                 dataOK = false;
                 contType = PrnParseConstants.ContType.PCLDownload;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataRem,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
             }
             else if (binDataRem > bufRem)
             {
@@ -7002,13 +6718,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.ContType.PCLViewIlluminant;
 
-                linkData.setContData(contType,
-                                      0,
-                                      -bufRem,
-                                      binDataRem,
-                                      true,
-                                      0x00,
-                                      0x00);
+                linkData.SetContData(contType, 0, -bufRem, binDataRem, true, 0x00, 0x00);
             }
             else
             {
@@ -7034,7 +6744,7 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                PrnParseCommon.addDataRow(
+                PrnParseCommon.AddDataRow(
                     PrnParseRowTypes.Type.DataBinary,
                     table,
                     PrnParseConstants.OvlShow.None,
@@ -7066,27 +6776,27 @@ namespace PCLParaphernalia
 
                 offset = bufOffset;
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "X Chromaticity",
                     "White point",
-                    processReal32(buf, offset));
+                    ProcessReal32(buf, offset));
 
                 //------------------------------------------------------------//
 
                 offset += 4;
 
-                PrnParseCommon.addTextRow(
+                PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
                     PrnParseConstants.OvlShow.None,
                     string.Empty,
                     "Y Chromaticity",
                     "White point",
-                    processReal32(buf, offset));
+                    ProcessReal32(buf, offset));
 
                 //------------------------------------------------------------//
 
@@ -7116,8 +6826,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private string processSint16(byte[] buf,
-                                     int bufOffset)
+        private string ProcessSint16(byte[] buf, int bufOffset)
         {
             const int sliceLen = 2;
 
@@ -7168,8 +6877,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private string processReal32(byte[] buf,
-                                     int bufOffset)
+        private string ProcessReal32(byte[] buf, int bufOffset)
         {
             const int sliceLen = 4;
 

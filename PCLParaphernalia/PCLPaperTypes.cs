@@ -88,7 +88,7 @@ namespace PCLParaphernalia
 
         public static string GetName(int index)
         {
-            return _paperTypes[index].getName();
+            return _paperTypes[index].GetName();
         }
 
         //--------------------------------------------------------------------//
@@ -102,7 +102,7 @@ namespace PCLParaphernalia
 
         public static EntryType GetType(int index)
         {
-            return _paperTypes[index].getType();
+            return _paperTypes[index].GetPaperType();
         }
     }
 }

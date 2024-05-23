@@ -25,9 +25,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLXLPalette(string name,
-                             bool flagMonochrome,
-                             byte ctClrItems)
+        public PCLXLPalette(string name, bool flagMonochrome, byte ctClrItems)
         {
             PaletteName = name;
             Monochrome = flagMonochrome;
@@ -51,9 +49,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void addColour(string name,
-                               int RGB,
-                               byte id)
+        public void AddColour(string name, int RGB, byte id)
         {
             _colourNames[_crntClrItem] = name;
             _colourRGBs[_crntClrItem] = RGB;
@@ -104,7 +100,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getColourName(int item)
+        public string GetColourName(int item)
         {
             return _colourNames[item];
         }
@@ -132,7 +128,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int getColourRGB(int item)
+        public int GetColourRGB(int item)
         {
             return _colourRGBs[item];
         }
@@ -147,7 +143,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getGrayLevel(byte item)
+        public string GetGrayLevel(byte item)
         {
             if (item == 0)
             {
@@ -193,7 +189,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setClrItemBlack()
+        public void SetClrItemBlack()
         {
             _clrItemBlack = (byte)(_crntClrItem - 1);
         }
@@ -207,7 +203,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setClrItemWhite()
+        public void SetClrItemWhite()
         {
             _clrItemWhite = (byte)(_crntClrItem - 1);
         }

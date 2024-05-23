@@ -11,8 +11,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2015</para>
     ///
     /// </summary>
-    [System.Reflection.Obfuscation(Feature = "renaming",
-                                            ApplyToMembers = true)]
+    [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
 
     public partial class ToolMiscSamples : Window
     {
@@ -53,29 +52,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbUnicodeCp_SelectionChanged(object sender,
-                                                   SelectionChangedEventArgs e)
+        private void cbUnicodeCp_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_initialised)
             {
                 string utf8HexVal = string.Empty;
-                uint unicodeUCS2 = (uint)((cbUnicodeCp01.SelectedIndex * 256) +
-                                         cbUnicodeCp02.SelectedIndex);
+                uint unicodeUCS2 = (uint)((cbUnicodeCp01.SelectedIndex * 256) + cbUnicodeCp02.SelectedIndex);
 
-                string unicodeBlock =
-                    UnicodeBlocks.getBlocknameForCodepoint(unicodeUCS2);
+                string unicodeBlock = UnicodeBlocks.getBlocknameForCodepoint(unicodeUCS2);
 
-                UnicodeCategory unicodeCat =
-                    CharUnicodeInfo.GetUnicodeCategory((char)unicodeUCS2);
+                UnicodeCategory unicodeCat = CharUnicodeInfo.GetUnicodeCategory((char)unicodeUCS2);
 
                 if (_crntPDL == ToolCommonData.PrintLang.PCL)
                     _unicodeUCS2PCL = unicodeUCS2;
                 else
                     _unicodeUCS2PCLXL = unicodeUCS2;
 
-                PrnParseDataUTF8.ConvertUTF32ToUTF8HexString(unicodeUCS2,
-                                                              true,
-                                                              ref utf8HexVal);
+                PrnParseDataUTF8.ConvertUTF32ToUTF8HexString(unicodeUCS2, true, ref utf8HexVal);
 
                 txtUnicodeUTF8.Text = utf8HexVal;
 
@@ -93,8 +86,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbUnicodeFont_SelectionChanged(object sender,
-                                                    SelectionChangedEventArgs e)
+        private void cbUnicodeFont_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_initialised && cbUnicodeFont.HasItems)
             {
@@ -108,9 +100,7 @@ namespace PCLParaphernalia
                     else
                         _indxUnicodeFontPCL = indxFont;
 
-                    setFontOptionsVariants(_indxUnicodeFontPCL,
-                                            samePreset,
-                                            ref _unicodeFontVarPCL);
+                    SetFontOptionsVariants(_indxUnicodeFontPCL, samePreset, ref _unicodeFontVarPCL);
                 }
                 else
                 {
@@ -119,9 +109,7 @@ namespace PCLParaphernalia
                     else
                         _indxUnicodeFontPCLXL = indxFont;
 
-                    setFontOptionsVariants(_indxUnicodeFontPCLXL,
-                                            samePreset,
-                                            ref _unicodeFontVarPCLXL);
+                    SetFontOptionsVariants(_indxUnicodeFontPCLXL, samePreset, ref _unicodeFontVarPCLXL);
                 }
             }
         }
@@ -135,7 +123,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseDataUnicode()
+        private void InitialiseDataUnicode()
         {
             int index,
                   ctr;
@@ -155,10 +143,8 @@ namespace PCLParaphernalia
             for (int i = 0; i < ctr; i++)
             {
                 if ((!PCLFonts.IsBoundFont(i)) &&
-                    ((PCLFonts.GetType(i) ==
-                     PCLFonts.FontType.PresetTypeface) ||
-                    (PCLFonts.GetType(i) ==
-                     PCLFonts.FontType.PresetFamilyMember)))
+                    ((PCLFonts.GetType(i) == PCLFonts.FontType.PresetTypeface) ||
+                    (PCLFonts.GetType(i) == PCLFonts.FontType.PresetFamilyMember)))
                 {
                     _subsetUnicodeFonts[index++] = i;
                     cbUnicodeFont.Items.Add(PCLFonts.GetName(i));
@@ -193,7 +179,7 @@ namespace PCLParaphernalia
 
                 cbUnicodeFont.SelectedIndex = _indxUnicodeFontPCL;
 
-                setFontOptionsVariants(_indxUnicodeFontPCL,
+                SetFontOptionsVariants(_indxUnicodeFontPCL,
                                         true,
                                         ref _unicodeFontVarPCL);
 
@@ -212,7 +198,7 @@ namespace PCLParaphernalia
 
                 cbUnicodeFont.SelectedIndex = _indxUnicodeFontPCLXL;
 
-                setFontOptionsVariants(_indxUnicodeFontPCLXL,
+                SetFontOptionsVariants(_indxUnicodeFontPCLXL,
                                         true,
                                         ref _unicodeFontVarPCLXL);
 
@@ -224,7 +210,7 @@ namespace PCLParaphernalia
 
             _initialised = true;
 
-            initialiseDescUnicode();
+            InitialiseDescUnicode();
 
             cbUnicodeCp_SelectionChanged(this, null);
         }
@@ -238,7 +224,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseDescUnicode()
+        private void InitialiseDescUnicode()
         {
             if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
@@ -314,11 +300,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsLoadDataUnicode()
+        public void MetricsLoadDataUnicode()
         {
             int tmpInt = 0;
 
-            ToolMiscSamplesPersist.loadDataTypeUnicode(
+            ToolMiscSamplesPersist.LoadDataTypeUnicode(
                 "PCL",
                 ref _indxUnicodeFontPCL,
                 ref _unicodeFontVarPCL,
@@ -327,7 +313,7 @@ namespace PCLParaphernalia
 
             _unicodeUCS2PCL = (uint)tmpInt;
 
-            ToolMiscSamplesPersist.loadDataTypeUnicode(
+            ToolMiscSamplesPersist.LoadDataTypeUnicode(
                 "PCLXL",
                 ref _indxUnicodeFontPCLXL,
                 ref _unicodeFontVarPCLXL,
@@ -347,7 +333,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsSaveDataUnicode()
+        public void MetricsSaveDataUnicode()
         {
             ToolMiscSamplesPersist.saveDataTypeUnicode(
                 "PCL",
@@ -442,9 +428,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setFlagUnicodeFormAsMacro(
-            bool setFlag,
-            ToolCommonData.PrintLang crntPDL)
+        private void SetFlagUnicodeFormAsMacro(bool setFlag, ToolCommonData.PrintLang crntPDL)
         {
             if (crntPDL == ToolCommonData.PrintLang.PCL)
             {
@@ -467,9 +451,7 @@ namespace PCLParaphernalia
         //                                                                    // 
         //--------------------------------------------------------------------//
 
-        private void setFontOptionsVariants(int indxFont,
-                                             bool samePreset,
-                                             ref PCLFonts.Variant fontVar)
+        private void SetFontOptionsVariants(int indxFont, bool samePreset, ref PCLFonts.Variant fontVar)
         {
             bool varB,
                     varBI,
@@ -495,17 +477,13 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            varR = PCLFonts.VariantExists(fontIndx,
-                                           PCLFonts.Variant.Regular);
+            varR = PCLFonts.VariantExists(fontIndx, PCLFonts.Variant.Regular);
 
-            varI = PCLFonts.VariantExists(fontIndx,
-                                           PCLFonts.Variant.Italic);
+            varI = PCLFonts.VariantExists(fontIndx, PCLFonts.Variant.Italic);
 
-            varB = PCLFonts.VariantExists(fontIndx,
-                                           PCLFonts.Variant.Bold);
+            varB = PCLFonts.VariantExists(fontIndx, PCLFonts.Variant.Bold);
 
-            varBI = PCLFonts.VariantExists(fontIndx,
-                                            PCLFonts.Variant.BoldItalic);
+            varBI = PCLFonts.VariantExists(fontIndx, PCLFonts.Variant.BoldItalic);
 
             //----------------------------------------------------------------//
 
