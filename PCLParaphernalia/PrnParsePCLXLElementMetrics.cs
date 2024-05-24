@@ -60,10 +60,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int DecodeIndent
-        {
-            get { return _decodeIndent; }
-        }
+        public int DecodeIndent => _decodeIndent;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

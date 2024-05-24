@@ -888,13 +888,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string FontFullname
-        {
-            get
-            {
-                return _name_fullFontnameStr;
-            }
-        }
+        public string FontFullname => _name_fullFontnameStr;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -2087,13 +2081,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte[] PanoseData
-        {
-            get
-            {
-                return _OS_2_panose;
-            }
-        }
+        public byte[] PanoseData => _OS_2_panose;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -5801,10 +5789,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool TablevmtxPresent
-        {
-            get { return _tabvmtxPresent; }
-        }
+        public bool TablevmtxPresent => _tabvmtxPresent;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -5816,12 +5801,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte[] TypefaceName
-        {
-            get
-            {
-                return _PCLT_typeface;
-            }
-        }
+        public byte[] TypefaceName => _PCLT_typeface;
     }
 }

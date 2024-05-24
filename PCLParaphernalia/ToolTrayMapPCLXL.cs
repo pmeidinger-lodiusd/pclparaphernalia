@@ -1125,12 +1125,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int TrayIdAutoSelect
-        {
-            get
-            {
-                return _trayIdAutoSelectPCLXL;
-            }
-        }
+        public static int TrayIdAutoSelect => _trayIdAutoSelectPCLXL;
     }
 }

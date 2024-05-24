@@ -118,10 +118,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int StatsCtChild
-        {
-            get { return _statsCtChild; }
-        }
+        public int StatsCtChild => _statsCtChild;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -129,10 +126,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int StatsCtParent
-        {
-            get { return _statsCtParent; }
-        }
+        public int StatsCtParent => _statsCtParent;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -140,9 +134,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int StatsCtTotal
-        {
-            get { return _statsCtParent + _statsCtChild; }
-        }
+        public int StatsCtTotal => _statsCtParent + _statsCtChild;
     }
 }

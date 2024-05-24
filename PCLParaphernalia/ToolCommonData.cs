@@ -93,10 +93,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string DefWorkFolder
-        {
-            get { return _defWorkFolder; }
-        }
+        public static string DefWorkFolder => _defWorkFolder;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

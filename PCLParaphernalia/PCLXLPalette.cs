@@ -62,10 +62,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte ClrItemBlack
-        {
-            get { return _clrItemBlack; }
-        }
+        public byte ClrItemBlack => _clrItemBlack;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -73,10 +70,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte ClrItemWhite
-        {
-            get { return _clrItemWhite; }
-        }
+        public byte ClrItemWhite => _clrItemWhite;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //

@@ -452,11 +452,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int IndexSymbol
-        {
-            get { return _indxSymbol; }
-            //    set { _indxSymbol = value; }
-        }
+        public static int IndexSymbol => _indxSymbol;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -467,11 +463,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int IndexUnicode
-        {
-            get { return _indxUnicode; }
-            //    set { _indxUnicode = value; }
-        }
+        public static int IndexUnicode => _indxUnicode;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -482,11 +474,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int IndexUserSet
-        {
-            get { return _indxUserSet; }
-            //    set { _indxUserSet = value; }
-        }
+        public static int IndexUserSet => _indxUserSet;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -497,11 +485,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int IndexUnbound
-        {
-            get { return _indxUnbound; }
-            //    set { _indxUnbound = value; }
-        }
+        public static int IndexUnbound => _indxUnbound;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

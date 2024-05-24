@@ -52,10 +52,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagReserved
-        {
-            get { return false; }
-        }
+        public bool FlagReserved => false;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -103,10 +100,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int StatsCtChild
-        {
-            get { return _statsCtChild; }
-        }
+        public int StatsCtChild => _statsCtChild;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -114,10 +108,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int StatsCtParent
-        {
-            get { return _statsCtParent; }
-        }
+        public int StatsCtParent => _statsCtParent;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -125,10 +116,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int StatsCtTotal
-        {
-            get { return _statsCtParent + _statsCtChild; }
-        }
+        public int StatsCtTotal => _statsCtParent + _statsCtChild;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -136,10 +124,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Tag
-        {
-            get { return "0x" + _tag.ToString("x2"); }
-        }
+        public string Tag => "0x" + _tag.ToString("x2");
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -147,9 +132,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Type
-        {
-            get { return "Whitespace"; }
-        }
+        public string Type => "Whitespace";
     }
 }

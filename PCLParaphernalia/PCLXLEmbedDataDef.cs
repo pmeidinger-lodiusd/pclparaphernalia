@@ -70,12 +70,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Type
-        {
-            get
-            {
-                return "Embed Data Definer";
-            }
-        }
+        public string Type => "Embed Data Definer";
     }
 }

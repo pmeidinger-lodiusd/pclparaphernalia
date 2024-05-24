@@ -184,10 +184,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Desc
-        {
-            get { return _paperSizeDesc; }
-        }
+        public string Desc => _paperSizeDesc;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -267,13 +264,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagCustomSize
-        {
-            get
-            {
-                return _paperSizeIndex == PCLPaperSizes.Index.Custom;
-            }
-        }
+        public bool FlagCustomSize => _paperSizeIndex == PCLPaperSizes.Index.Custom;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -598,10 +589,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool IsRareSize
-        {
-            get { return _paperSizeIsRare; }
-        }
+        public bool IsRareSize => _paperSizeIsRare;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //

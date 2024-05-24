@@ -722,13 +722,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int SymbolSetCt
-        {
-            get
-            {
-                return _symSets.Length;
-            }
-        }
+        public int SymbolSetCt => _symSets.Length;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //

@@ -203,10 +203,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagClrMapUseClr
-        {
-            get { return _flagClrMapUseClr; }
-        }
+        public bool FlagClrMapUseClr => _flagClrMapUseClr;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -214,10 +211,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagGenDiagFileAccess
-        {
-            get { return _flagGenDiagFileAccess; }
-        }
+        public bool FlagGenDiagFileAccess => _flagGenDiagFileAccess;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -225,10 +219,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagGenMiscAutoAnalyse
-        {
-            get { return _flagGenMiscAutoAnalyse; }
-        }
+        public bool FlagGenMiscAutoAnalyse => _flagGenMiscAutoAnalyse;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -236,10 +227,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagPCLMiscBinData
-        {
-            get { return _flagPCLMiscBinData; }
-        }
+        public bool FlagPCLMiscBinData => _flagPCLMiscBinData;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -247,10 +235,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagPCLXLMiscBinData
-        {
-            get { return _flagPCLXLMiscBinData; }
-        }
+        public bool FlagPCLXLMiscBinData => _flagPCLXLMiscBinData;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -258,10 +243,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagPMLWithinPCL
-        {
-            get { return _flagPMLWithinPCL; }
-        }
+        public bool FlagPMLWithinPCL => _flagPMLWithinPCL;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -269,10 +251,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagPMLWithinPJL
-        {
-            get { return _flagPMLWithinPJL; }
-        }
+        public bool FlagPMLWithinPJL => _flagPMLWithinPJL;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -280,10 +259,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagPMLVerbose
-        {
-            get { return _flagPMLMiscVerbose; }
-        }
+        public bool FlagPMLVerbose => _flagPMLMiscVerbose;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -698,10 +674,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.OptOffsetFormats IndxGenOffsetFormat
-        {
-            get { return _indxGenOffsetFormat; }
-        }
+        public PrnParseConstants.OptOffsetFormats IndxGenOffsetFormat => _indxGenOffsetFormat;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -709,10 +682,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.PCLXLBinding IndxCurFXLBinding
-        {
-            get { return _indxCurFXLBinding; }
-        }
+        public PrnParseConstants.PCLXLBinding IndxCurFXLBinding => _indxCurFXLBinding;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -720,10 +690,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.OptStatsLevel IndxStatsLevel
-        {
-            get { return _indxStatsLevel; }
-        }
+        public PrnParseConstants.OptStatsLevel IndxStatsLevel => _indxStatsLevel;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -1330,9 +1297,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int ValCurFOffsetEnd
-        {
-            get { return _valCurFOffsetEnd; }
-        }
+        public int ValCurFOffsetEnd => _valCurFOffsetEnd;
     }
 }

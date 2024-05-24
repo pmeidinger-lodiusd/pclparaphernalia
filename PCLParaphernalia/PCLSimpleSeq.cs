@@ -81,10 +81,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagValIsLen
-        {
-            get { return false; }
-        }
+        public bool FlagValIsLen => false;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -132,10 +129,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Sequence
-        {
-            get { return "<Esc>" + (char)_keySChar; }
-        }
+        public string Sequence => "<Esc>" + (char)_keySChar;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -143,10 +137,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int StatsCtChild
-        {
-            get { return _statsCtChild; }
-        }
+        public int StatsCtChild => _statsCtChild;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -154,10 +145,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int StatsCtParent
-        {
-            get { return _statsCtParent; }
-        }
+        public int StatsCtParent => _statsCtParent;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -165,10 +153,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int StatsCtTotal
-        {
-            get { return _statsCtParent + _statsCtChild; }
-        }
+        public int StatsCtTotal => _statsCtParent + _statsCtChild;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -176,9 +161,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Type
-        {
-            get { return "Simple"; }
-        }
+        public string Type => "Simple";
     }
 }

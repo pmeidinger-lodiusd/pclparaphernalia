@@ -63,10 +63,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Description
-        {
-            get { return Mnemonic + ": " + DescExcMnemonic; }
-        }
+        public string Description => Mnemonic + ": " + DescExcMnemonic;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -82,10 +79,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagObsolete
-        {
-            get { return false; }
-        }
+        public bool FlagObsolete => false;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -93,10 +87,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagValIsLen
-        {
-            get { return false; }
-        }
+        public bool FlagValIsLen => false;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -152,10 +143,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Sequence
-        {
-            get { return "0x" + _value.ToString("x2"); }
-        }
+        public string Sequence => "0x" + _value.ToString("x2");
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -163,10 +151,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int StatsCtChild
-        {
-            get { return _statsCtChild; }
-        }
+        public int StatsCtChild => _statsCtChild;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -174,10 +159,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int StatsCtParent
-        {
-            get { return _statsCtParent; }
-        }
+        public int StatsCtParent => _statsCtParent;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -185,10 +167,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int StatsCtTotal
-        {
-            get { return _statsCtParent + _statsCtChild; }
-        }
+        public int StatsCtTotal => _statsCtParent + _statsCtChild;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -196,9 +175,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Type
-        {
-            get { return "Control"; }
-        }
+        public string Type => "Control";
     }
 }

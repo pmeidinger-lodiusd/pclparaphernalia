@@ -54,10 +54,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Tag
-        {
-            get { return "0x" + _tag.ToString("x2"); }
-        }
+        public string Tag => "0x" + _tag.ToString("x2");
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -65,9 +62,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Type
-        {
-            get { return "Attribute Definer"; }
-        }
+        public string Type => "Attribute Definer";
     }
 }

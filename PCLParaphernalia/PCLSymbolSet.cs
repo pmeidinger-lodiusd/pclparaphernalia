@@ -211,10 +211,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Groupname
-        {
-            get { return Group.ToString(); }
-        }
+        public string Groupname => Group.ToString();
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -269,10 +266,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Kind1JustR
-        {
-            get { return Kind1.ToString().PadLeft(5); }
-        }
+        public string Kind1JustR => Kind1.ToString().PadLeft(5);
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -284,13 +278,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort MapArrayMax
-        {
-            get
-            {
-                return PCLSymSetMaps.GetCodepointMax((int)_mapId);
-            }
-        }
+        public ushort MapArrayMax => PCLSymSetMaps.GetCodepointMax((int)_mapId);
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -301,13 +289,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort[] MapArrayPCL
-        {
-            get
-            {
-                return PCLSymSetMaps.GetMapArray((int)_mapId, true);
-            }
-        }
+        public ushort[] MapArrayPCL => PCLSymSetMaps.GetMapArray((int)_mapId, true);
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -318,13 +300,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort[] MapArrayStd
-        {
-            get
-            {
-                return PCLSymSetMaps.GetMapArray((int)_mapId, false);
-            }
-        }
+        public ushort[] MapArrayStd => PCLSymSetMaps.GetMapArray((int)_mapId, false);
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -596,13 +572,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool NullMapPCL
-        {
-            get
-            {
-                return PCLSymSetMaps.NullMapPCL((int)_mapId);
-            }
-        }
+        public bool NullMapPCL => PCLSymSetMaps.NullMapPCL((int)_mapId);
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -614,13 +584,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool NullMapStd
-        {
-            get
-            {
-                return PCLSymSetMaps.NullMapStd((int)_mapId);
-            }
-        }
+        public bool NullMapStd => PCLSymSetMaps.NullMapStd((int)_mapId);
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -653,12 +617,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string TypeDescShort
-        {
-            get
-            {
-                return PCLSymSetTypes.GetDescShort((int)Type);
-            }
-        }
+        public string TypeDescShort => PCLSymSetTypes.GetDescShort((int)Type);
     }
 }

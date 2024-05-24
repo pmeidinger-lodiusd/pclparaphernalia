@@ -114,10 +114,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort CodepointMax
-        {
-            get { return _codepointMax; }
-        }
+        public ushort CodepointMax => _codepointMax;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
