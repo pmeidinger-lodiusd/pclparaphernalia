@@ -174,8 +174,6 @@ namespace PCLParaphernalia
 
         public static bool bitmapOpen(string filename)
         {
-            bool open = false;
-
             if ((filename == null) || (filename?.Length == 0))
             {
                 MessageBox.Show("Bitmap file name is null.",
@@ -185,32 +183,39 @@ namespace PCLParaphernalia
 
                 return false;
             }
-            else if (!File.Exists(filename))
+            
+            if (!File.Exists(filename))
             {
-                MessageBox.Show("Bitmap file '" + filename +
-                                "' does not exist.",
+                MessageBox.Show("Bitmap file '" + filename + "' does not exist.",
                                 "Bitmap file selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
                 return false;
             }
-            else
+
+            try
             {
-                _ipStream = File.Open(filename,
-                                      FileMode.Open,
-                                      FileAccess.Read,
-                                      FileShare.None);
+                _ipStream = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.None);
+            }
+            catch (IOException e)
+            {
+                MessageBox.Show("IO Exception:\r\n" +
+                                e.Message + "\r\n" +
+                                "Opening file '" + filename + "'",
+                                "Bitmap file selection",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
 
-                if (_ipStream != null)
-                {
-                    open = true;
-
-                    _binReader = new BinaryReader(_ipStream);
-                }
+                return false;
             }
 
-            return open;
+            if (_ipStream == null)
+                return false;
+
+            _binReader = new BinaryReader(_ipStream);
+
+            return true;
         }
 
         //--------------------------------------------------------------------//

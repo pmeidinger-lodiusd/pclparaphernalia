@@ -62,40 +62,33 @@ namespace PCLParaphernalia
 
         public static bool FontFileCopy(BinaryWriter prnWriter, string fontFilename)
         {
-            bool OK = true;
-
             long fileSize = 0;
 
-            bool fileOpen = FontFileOpen(fontFilename, ref fileSize);
-            if (!fileOpen)
+            if (!FontFileOpen(fontFilename, ref fileSize))
+                return false;
+
+            const int bufSize = 2048;
+            int readSize;
+
+            bool endLoop;
+
+            byte[] buf = new byte[bufSize];
+
+            endLoop = false;
+
+            while (!endLoop)
             {
-                OK = false;
-            }
-            else
-            {
-                const int bufSize = 2048;
-                int readSize;
+                readSize = _binReader.Read(buf, 0, bufSize);
 
-                bool endLoop;
-
-                byte[] buf = new byte[bufSize];
-
-                endLoop = false;
-
-                while (!endLoop)
-                {
-                    readSize = _binReader.Read(buf, 0, bufSize);
-
-                    if (readSize == 0)
-                        endLoop = true;
-                    else
-                        prnWriter.Write(buf, 0, readSize);
-                }
-
-                FontFileClose();
+                if (readSize == 0)
+                    endLoop = true;
+                else
+                    prnWriter.Write(buf, 0, readSize);
             }
 
-            return OK;
+            FontFileClose();
+
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -109,8 +102,6 @@ namespace PCLParaphernalia
 
         private static bool FontFileOpen(string fileName, ref long fileSize)
         {
-            bool open = false;
-
             if ((fileName == null) || (fileName?.Length == 0))
             {
                 MessageBox.Show("Download font file name is null.",
@@ -120,49 +111,43 @@ namespace PCLParaphernalia
 
                 return false;
             }
-            else if (!File.Exists(fileName))
+            
+            if (!File.Exists(fileName))
             {
-                MessageBox.Show("Download font file '" + fileName +
-                                "' does not exist.",
+                MessageBox.Show("Download font file '" + fileName + "' does not exist.",
                                 "PCL XL font selection attribute invalid",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
                 return false;
             }
-            else
+
+            try
             {
-                try
-                {
-                    _ipStream = File.Open(fileName,
-                                           FileMode.Open,
-                                           FileAccess.Read,
-                                           FileShare.None);
-                }
-                catch (IOException e)
-                {
-                    MessageBox.Show("IO Exception:\r\n" +
-                                     e.Message + "\r\n" +
-                                     "Opening soft font file '" +
-                                     fileName + "'",
-                                     "PCL XL soft font analysis",
-                                     MessageBoxButton.OK,
-                                     MessageBoxImage.Error);
-                }
-
-                if (_ipStream != null)
-                {
-                    open = true;
-
-                    FileInfo fi = new FileInfo(fileName);
-
-                    fileSize = fi.Length;
-
-                    _binReader = new BinaryReader(_ipStream);
-                }
+                _ipStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.None);
+            }
+            catch (IOException e)
+            {
+                MessageBox.Show("IO Exception:\r\n" +
+                                e.Message + "\r\n" +
+                                "Opening soft font file '" + fileName + "'",
+                                "PCL XL soft font analysis",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+                
+                return false;
             }
 
-            return open;
+            if (_ipStream == null)
+                return false;
+
+            FileInfo fi = new FileInfo(fileName);
+
+            fileSize = fi.Length;
+
+            _binReader = new BinaryReader(_ipStream);
+
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -189,29 +174,23 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            bool fileOpen = FontFileOpen(fontFilename, ref fileSize);
-            bool OK;
-            if (!fileOpen)
-            {
-                OK = false;
-            }
-            else
-            {
-                OK = ReadHddrIntro(fontFilename,
-                                    fileSize,
-                                    ref fontName,
-                                    ref hddrOffset);
+            if (!FontFileOpen(fontFilename, ref fileSize))
+                return false;
 
-                if (OK)
-                {
-                    OK = ReadHddrDescriptor(hddrOffset,
-                                             ref scalable,
-                                             ref bound,
-                                             ref symSetNo);
-                }
+            bool OK = ReadHddrIntro(fontFilename,
+                                fileSize,
+                                ref fontName,
+                                ref hddrOffset);
 
-                FontFileClose();
+            if (OK)
+            {
+                OK = ReadHddrDescriptor(hddrOffset,
+                                            ref scalable,
+                                            ref bound,
+                                            ref symSetNo);
             }
+
+            FontFileClose();
 
             return OK;
         }

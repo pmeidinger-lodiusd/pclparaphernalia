@@ -114,7 +114,6 @@ namespace PCLParaphernalia
         //                 ToolPrnAnalyse   owner,
         //                 BackgroundWorker bkWk)
         {
-            bool OK = true;
             _options = options;
             _table = table;
             _prnFilename = prnFilename;
@@ -123,23 +122,18 @@ namespace PCLParaphernalia
 
             //  _perCentMax = 0;
 
-            bool ipOpen = PrnFileOpen(prnFilename, ref _fileSize);
-            if (!ipOpen)
-            {
-                OK = false;
-            }
-            else
-            {
-                //  analyseAction (bkWk);
+            if (!PrnFileOpen(prnFilename, ref _fileSize))
+                return false;
 
-                _linkData.FileSize = _fileSize;
+            //  analyseAction (bkWk);
 
-                AnalyseAction(PCLXLOperators.EmbedDataType.None);
+            _linkData.FileSize = _fileSize;
 
-                PrnFileClose();
-            }
+            AnalyseAction(PCLXLOperators.EmbedDataType.None);
 
-            return OK;
+            PrnFileClose();
+
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -1071,36 +1065,38 @@ namespace PCLParaphernalia
                                      "Embedded data store",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
+
+                    return;
                 }
 
-                if (_subStream != null)
+                if (_subStream == null)
+                    return;
+
+                _subFileCreated = true;
+
+                _subWriter = new BinaryWriter(_subStream);
+
+                _subFileOpen = true;
+
+                if (_flagDiagFileAccess)
                 {
-                    _subFileCreated = true;
+                    PrnParseCommon.AddTextRow(
+                        PrnParseRowTypes.Type.MsgDiag,
+                        _table,
+                        PrnParseConstants.OvlShow.None,
+                        string.Empty,
+                        "Diagnostic",
+                        string.Empty,
+                        "Create file:");
 
-                    _subWriter = new BinaryWriter(_subStream);
-
-                    _subFileOpen = true;
-
-                    if (_flagDiagFileAccess)
-                    {
-                        PrnParseCommon.AddTextRow(
-                            PrnParseRowTypes.Type.MsgDiag,
-                            _table,
-                            PrnParseConstants.OvlShow.None,
-                            string.Empty,
-                            "Diagnostic",
-                            string.Empty,
-                            "Create file:");
-
-                        PrnParseCommon.AddTextRow(
-                            PrnParseRowTypes.Type.MsgDiag,
-                            _table,
-                            PrnParseConstants.OvlShow.None,
-                            string.Empty,
-                            string.Empty,
-                            string.Empty,
-                            _subFilename);
-                    }
+                    PrnParseCommon.AddTextRow(
+                        PrnParseRowTypes.Type.MsgDiag,
+                        _table,
+                        PrnParseConstants.OvlShow.None,
+                        string.Empty,
+                        string.Empty,
+                        string.Empty,
+                        _subFilename);
                 }
             }
 
@@ -1560,32 +1556,34 @@ namespace PCLParaphernalia
                                  "Open overlay file",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
+
+                return;
             }
 
-            if (_opStream != null)
+            if (_opStream == null)
+                return;
+
+            _binWriter = new BinaryWriter(_opStream);
+
+            if (_flagDiagFileAccess)
             {
-                _binWriter = new BinaryWriter(_opStream);
+                PrnParseCommon.AddTextRow(
+                    PrnParseRowTypes.Type.MsgDiag,
+                    _table,
+                    PrnParseConstants.OvlShow.None,
+                    string.Empty,
+                    "Diagnostic",
+                    string.Empty,
+                    "Create file:");
 
-                if (_flagDiagFileAccess)
-                {
-                    PrnParseCommon.AddTextRow(
-                        PrnParseRowTypes.Type.MsgDiag,
-                        _table,
-                        PrnParseConstants.OvlShow.None,
-                        string.Empty,
-                        "Diagnostic",
-                        string.Empty,
-                        "Create file:");
-
-                    PrnParseCommon.AddTextRow(
-                        PrnParseRowTypes.Type.MsgDiag,
-                        _table,
-                        PrnParseConstants.OvlShow.None,
-                        string.Empty,
-                        string.Empty,
-                        string.Empty,
-                        tmpFilename);
-                }
+                PrnParseCommon.AddTextRow(
+                    PrnParseRowTypes.Type.MsgDiag,
+                    _table,
+                    PrnParseConstants.OvlShow.None,
+                    string.Empty,
+                    string.Empty,
+                    string.Empty,
+                    tmpFilename);
             }
         }
 
@@ -1651,8 +1649,6 @@ namespace PCLParaphernalia
 
         private bool PrnFileOpen(string filename, ref long fileSize)
         {
-            bool open = false;
-
             if ((filename == null) || (filename?.Length == 0))
             {
                 MessageBox.Show("Print file name is null.",
@@ -1662,72 +1658,65 @@ namespace PCLParaphernalia
 
                 return false;
             }
-            else if (!File.Exists(filename))
+            
+            if (!File.Exists(filename))
             {
-                MessageBox.Show("Print file '" + filename +
-                                "' does not exist.",
+                MessageBox.Show("Print file '" + filename + "' does not exist.",
                                 "Print file selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
                 return false;
             }
-            else
+
+            try
             {
-                try
-                {
-                    _ipStream = File.Open(filename,
-                                          FileMode.Open,
-                                          FileAccess.Read,
-                                          FileShare.None);
-                }
-                catch (IOException e)
-                {
-                    MessageBox.Show("IO Exception:\r\n" +
-                                     e.Message +
-                                     "Opening print file '" +
-                                     filename + "'",
-                                     "Print file selection",
-                                     MessageBoxButton.OK,
-                                     MessageBoxImage.Error);
+                _ipStream = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.None);
+            }
+            catch (IOException e)
+            {
+                MessageBox.Show("IO Exception:\r\n" +
+                                    e.Message +
+                                    "Opening print file '" +
+                                    filename + "'",
+                                    "Print file selection",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Error);
 
-                    return false;
-                }
-
-                if (_ipStream != null)
-                {
-                    FileInfo fi = new FileInfo(filename);
-
-                    fileSize = fi.Length;
-
-                    open = true;
-
-                    _binReader = new BinaryReader(_ipStream);
-
-                    if (_flagDiagFileAccess)
-                    {
-                        PrnParseCommon.AddTextRow(
-                            PrnParseRowTypes.Type.MsgDiag,
-                            _table,
-                            PrnParseConstants.OvlShow.None,
-                            string.Empty,
-                            "Diagnostic",
-                            string.Empty,
-                            "Open (Read) file:");
-
-                        PrnParseCommon.AddTextRow(
-                            PrnParseRowTypes.Type.MsgDiag,
-                            _table,
-                            PrnParseConstants.OvlShow.None,
-                            string.Empty,
-                            string.Empty,
-                            string.Empty,
-                            filename);
-                    }
-                }
+                return false;
             }
 
-            return open;
+            if (_ipStream == null)
+                return false;
+
+            FileInfo fi = new FileInfo(filename);
+
+            fileSize = fi.Length;
+
+            _binReader = new BinaryReader(_ipStream);
+
+            if (_flagDiagFileAccess)
+            {
+                PrnParseCommon.AddTextRow(
+                    PrnParseRowTypes.Type.MsgDiag,
+                    _table,
+                    PrnParseConstants.OvlShow.None,
+                    string.Empty,
+                    "Diagnostic",
+                    string.Empty,
+                    "Open (Read) file:");
+
+                PrnParseCommon.AddTextRow(
+                    PrnParseRowTypes.Type.MsgDiag,
+                    _table,
+                    PrnParseConstants.OvlShow.None,
+                    string.Empty,
+                    string.Empty,
+                    string.Empty,
+                    filename);
+            }
+
+            return true;
         }
     }
 }

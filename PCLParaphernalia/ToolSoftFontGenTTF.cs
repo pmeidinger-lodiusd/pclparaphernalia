@@ -793,8 +793,6 @@ namespace PCLParaphernalia
 
         public bool FontFileOpen(string filename, ref long fileSize)
         {
-            bool open = false;
-
             _filenameTTF = filename;
 
             if ((filename == null) || (filename?.Length == 0))
@@ -803,41 +801,42 @@ namespace PCLParaphernalia
                                 "Source (TrueType) font file selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
+
+                return false;
             }
-            else if (!File.Exists(filename))
+            
+            if (!File.Exists(filename))
             {
                 MessageBox.Show("Font file '" + filename + "' does not exist.",
                                 "Source (TrueType) font file selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
+                
+                return false;
             }
-            else
+
+            try
             {
-                try
-                {
-                    _ipStream = File.Open(filename,
-                                           FileMode.Open,
-                                           FileAccess.Read,
-                                           FileShare.None);
+                _ipStream = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.None);
 
-                    if (_ipStream != null)
-                    {
-                        FileInfo fi = new FileInfo(filename);
+            }
+            catch
+            {
+                ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, "Error opening font file " + filename);
 
-                        fileSize = fi.Length;
-
-                        open = true;
-
-                        _binReader = new BinaryReader(_ipStream);
-                    }
-                }
-                catch
-                {
-                    ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, "Error opening font file " + filename);
-                }
+                return false;
             }
 
-            return open;
+            if (_ipStream == null)
+                return false;
+
+            FileInfo fi = new FileInfo(filename);
+
+            fileSize = fi.Length;
+
+            _binReader = new BinaryReader(_ipStream);
+
+            return true;
         }
 
         //--------------------------------------------------------------------//

@@ -98,11 +98,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool OpenInputPrn(string filename, ref long fileSize)
+        private bool OpenInputPrn(string fileName, ref long fileSize)
         {
-            bool open = false;
-
-            if ((filename == null) || (filename?.Length == 0))
+            if ((fileName == null) || (fileName?.Length == 0))
             {
                 MessageBox.Show("Print file name is null.",
                                 "Print file selection",
@@ -111,45 +109,43 @@ namespace PCLParaphernalia
 
                 return false;
             }
-            else if (!File.Exists(filename))
+            
+            if (!File.Exists(fileName))
             {
-                MessageBox.Show("Print file '" + filename + "' does not exist.",
+                MessageBox.Show("Print file '" + fileName + "' does not exist.",
                                 "Print file selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
                 return false;
             }
-            else
+
+            try
             {
-                try
-                {
-                    _ipStream = File.Open(filename,
-                                           FileMode.Open,
-                                           FileAccess.Read,
-                                           FileShare.None);
-                }
-                catch (IOException e)
-                {
-                    MessageBox.Show("IO Exception:\r\n" + e.Message + "\r\nOpening file '" + filename + "'",
-                                     "Print file content",
-                                     MessageBoxButton.OK,
-                                     MessageBoxImage.Error);
-                }
+                _ipStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.None);
+            }
+            catch (IOException e)
+            {
+                MessageBox.Show("IO Exception:\r\n" +
+                                e.Message + "\r\n" +
+                                "Opening file '" + fileName + "'",
+                                "Print file content",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
 
-                if (_ipStream != null)
-                {
-                    FileInfo fi = new FileInfo(filename);
-
-                    fileSize = fi.Length;
-
-                    open = true;
-
-                    _binReader = new BinaryReader(_ipStream);
-                }
+                return false;
             }
 
-            return open;
+            if (_ipStream == null)
+                return false;
+
+            FileInfo fi = new FileInfo(fileName);
+
+            fileSize = fi.Length;
+
+            _binReader = new BinaryReader(_ipStream);
+            
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -163,22 +159,14 @@ namespace PCLParaphernalia
 
         public bool ViewFile(string prnFilename, PrnParseOptions options, DataTable table)
         {
-            bool OK = true;
+            if (!OpenInputPrn(prnFilename, ref _fileSize))
+                return false;
 
-            bool ipOpen = OpenInputPrn(prnFilename, ref _fileSize);
+            ViewFileAction(options, table);
 
-            if (!ipOpen)
-            {
-                OK = false;
-            }
-            else
-            {
-                ViewFileAction(options, table);
+            CloseInputPrn();
 
-                CloseInputPrn();
-            }
-
-            return OK;
+            return true;
         }
 
         //--------------------------------------------------------------------//

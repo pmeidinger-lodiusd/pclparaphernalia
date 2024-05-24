@@ -88,8 +88,6 @@ namespace PCLParaphernalia
 
         private static bool BinSrcFileOpen(string fileName, ref long fileSize)
         {
-            bool open = false;
-
             if ((fileName == null) || (fileName?.Length == 0))
             {
                 MessageBox.Show("Binary source filename is null.",
@@ -99,7 +97,8 @@ namespace PCLParaphernalia
 
                 return false;
             }
-            else if (!File.Exists(fileName))
+            
+            if (!File.Exists(fileName))
             {
                 MessageBox.Show("Binary source file '" + fileName + "' does not exist.",
                                 "PJL FS file invalid",
@@ -108,23 +107,34 @@ namespace PCLParaphernalia
 
                 return false;
             }
-            else
+
+            try
             {
                 _ipStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.None);
 
-                if (_ipStream != null)
-                {
-                    open = true;
+            }
+            catch (IOException e)
+            {
+                MessageBox.Show("IO Exception:\r\n" +
+                                e.Message + "\r\n" +
+                                "Opening PJL FS file '" + fileName + "'",
+                                "PJL FS file error",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
 
-                    FileInfo fi = new FileInfo(fileName);
-
-                    fileSize = fi.Length;
-
-                    _binReader = new BinaryReader(_ipStream);
-                }
+                return false;
             }
 
-            return open;
+            if (_ipStream == null)
+                return false;
+
+            FileInfo fi = new FileInfo(fileName);
+
+            fileSize = fi.Length;
+
+            _binReader = new BinaryReader(_ipStream);
+
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -153,8 +163,6 @@ namespace PCLParaphernalia
 
         private static bool BinTgtFileOpen(string fileName)
         {
-            bool open = false;
-
             if ((fileName == null) || (fileName?.Length == 0))
             {
                 MessageBox.Show("Target filename is null.",
@@ -164,22 +172,27 @@ namespace PCLParaphernalia
 
                 return false;
             }
-            else
+
+            try
             {
-                _opStream = File.Open(fileName,
-                                      FileMode.OpenOrCreate,
-                                      FileAccess.Write,
-                                      FileShare.None);
+                _opStream = File.Open(fileName, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None);
+            }
+            catch (IOException e)
+            {
+                MessageBox.Show("IO Exception:\r\n" + e.Message + "\r\n" + "Opening print file '" + fileName,
+                                "Print file selection",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
 
-                if (_opStream != null)
-                {
-                    open = true;
-
-                    _binWriter = new BinaryWriter(_opStream);
-                }
+                return false;
             }
 
-            return open;
+            if (_opStream == null)
+                return false;
+
+            _binWriter = new BinaryWriter(_opStream);
+
+            return true;
         }
 
         //--------------------------------------------------------------------//

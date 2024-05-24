@@ -66,40 +66,33 @@ namespace PCLParaphernalia
 
         public static bool FontFileCopy(BinaryWriter prnWriter, string fontFilename)
         {
-            bool OK = true;
             long fileSize = 0;
 
-            bool fileOpen = FontFileOpen(fontFilename, ref fileSize);
+            if (!FontFileOpen(fontFilename, ref fileSize))
+                return false;
 
-            if (!fileOpen)
+            const int bufSize = 2048;
+            int readSize;
+
+            bool endLoop;
+
+            byte[] buf = new byte[bufSize];
+
+            endLoop = false;
+
+            while (!endLoop)
             {
-                OK = false;
-            }
-            else
-            {
-                const int bufSize = 2048;
-                int readSize;
+                readSize = _binReader.Read(buf, 0, bufSize);
 
-                bool endLoop;
-
-                byte[] buf = new byte[bufSize];
-
-                endLoop = false;
-
-                while (!endLoop)
-                {
-                    readSize = _binReader.Read(buf, 0, bufSize);
-
-                    if (readSize == 0)
-                        endLoop = true;
-                    else
-                        prnWriter.Write(buf, 0, readSize);
-                }
-
-                FontFileClose();
+                if (readSize == 0)
+                    endLoop = true;
+                else
+                    prnWriter.Write(buf, 0, readSize);
             }
 
-            return OK;
+            FontFileClose();
+
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -113,8 +106,6 @@ namespace PCLParaphernalia
 
         private static bool FontFileOpen(string fileName, ref long fileSize)
         {
-            bool open = false;
-
             if ((fileName == null) || (fileName?.Length == 0))
             {
                 MessageBox.Show("Download font file name is null.",
@@ -124,36 +115,44 @@ namespace PCLParaphernalia
 
                 return false;
             }
-            else if (!File.Exists(fileName))
+            
+            if (!File.Exists(fileName))
             {
-                MessageBox.Show("Download font file '" + fileName +
-                                "' does not exist.",
+                MessageBox.Show("Download font file '" + fileName + "' does not exist.",
                                 "PCL font selection attribute invalid",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
                 return false;
             }
-            else
+
+            try
             {
-                _ipStream = File.Open(fileName,
-                                      FileMode.Open,
-                                      FileAccess.Read,
-                                      FileShare.None);
+                _ipStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.None);
+            }
+            catch (IOException e)
+            {
+                MessageBox.Show("IO Exception:\r\n" +
+                                    e.Message + "\r\n" +
+                                    "Opening soft font file '" +
+                                    fileName + "'",
+                                    "PCL soft font analysis",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Error);
 
-                if (_ipStream != null)
-                {
-                    open = true;
-
-                    FileInfo fi = new FileInfo(fileName);
-
-                    fileSize = fi.Length;
-
-                    _binReader = new BinaryReader(_ipStream);
-                }
+                return false;
             }
 
-            return open;
+            if (_ipStream == null)
+                return false;
+
+            FileInfo fi = new FileInfo(fileName);
+
+            fileSize = fi.Length;
+
+            _binReader = new BinaryReader(_ipStream);
+
+            return true;
         }
 
         /*
@@ -257,7 +256,7 @@ namespace PCLParaphernalia
 
             int fileOffset = 0;
 
-            long fontFileSize = 0;
+            long fileSize = 0;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -267,38 +266,31 @@ namespace PCLParaphernalia
 
             //      _fontFileName = fontFilename;
 
-            bool fileOpen = FontFileOpen(fontFilename, ref fontFileSize);
+            if (!FontFileOpen(fontFilename, ref fileSize))
+                return false;
 
-            bool OK;
-            if (!fileOpen)
+            bool OK = ReadHddrIntro(fontFilename,
+                                fileSize,
+                                ref fileOffset,
+                                ref hddrLen);
+
+            if (OK)
             {
-                OK = false;
+                OK = GetFontSelectionData(fileOffset,
+                                            hddrLen,
+                                            ref proportional,
+                                            ref scalable,
+                                            ref bound,
+                                            ref pitch,
+                                            ref height,
+                                            ref style,
+                                            ref weight,
+                                            ref typeface,
+                                            ref symSetNo,
+                                            ref symSetType);
             }
-            else
-            {
-                OK = ReadHddrIntro(fontFilename,
-                                    fontFileSize,
-                                    ref fileOffset,
-                                    ref hddrLen);
 
-                if (OK)
-                {
-                    OK = GetFontSelectionData(fileOffset,
-                                               hddrLen,
-                                               ref proportional,
-                                               ref scalable,
-                                               ref bound,
-                                               ref pitch,
-                                               ref height,
-                                               ref style,
-                                               ref weight,
-                                               ref typeface,
-                                               ref symSetNo,
-                                               ref symSetType);
-                }
-
-                FontFileClose();
-            }
+            FontFileClose();
 
             return OK;
         }
@@ -565,36 +557,34 @@ namespace PCLParaphernalia
                 (buf[1] != ')') ||
                 (buf[2] != 's'))
             {
-                OK = false;
+                return false;
             }
-            else
+
+            byte x;
+
+            for (int i = 0; i < 12; i++)
             {
-                byte x;
+                x = _binReader.ReadByte();
 
-                for (int i = 0; i < 12; i++)
+                if (x == 'W')
                 {
-                    x = _binReader.ReadByte();
+                    OK = true;
 
-                    if (x == 'W')
-                    {
-                        OK = true;
+                    seqLen = (ushort)(i + 4);
 
-                        seqLen = (ushort)(i + 4);
-
-                        i = 12;
-                    }
-                    else if (x < '\x30')
-                    {
-                        OK = false;
-                    }
-                    else if (x > '\x39')
-                    {
-                        OK = false;
-                    }
-                    else
-                    {
-                        value = (ushort)((value * 10) + (x - '\x30'));
-                    }
+                    i = 12;
+                }
+                else if (x < '\x30')
+                {
+                    OK = false;
+                }
+                else if (x > '\x39')
+                {
+                    OK = false;
+                }
+                else
+                {
+                    value = (ushort)((value * 10) + (x - '\x30'));
                 }
             }
 

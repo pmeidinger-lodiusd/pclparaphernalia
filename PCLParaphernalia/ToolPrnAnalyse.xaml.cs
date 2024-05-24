@@ -774,43 +774,43 @@ namespace PCLParaphernalia
                                 "Print file selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
+
+                return -1;
             }
-            else if (!File.Exists(filename))
+            
+            if (!File.Exists(filename))
             {
-                MessageBox.Show("Print file '" + filename +
-                                "' does not exist.",
+                MessageBox.Show("Print file '" + filename + "' does not exist.",
                                 "Print file selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
+
+                return -1;
             }
-            else
+            try
             {
-                try
-                {
-                    ipStream = File.Open(filename,
-                                      FileMode.Open,
-                                      FileAccess.Read,
-                                      FileShare.None);
-                }
-                catch (IOException e)
-                {
-                    MessageBox.Show("IO Exception:\r\n" +
-                                    e.Message + "\r\n" +
-                                    "Opening print file '" + filename,
-                                    "Print file selection",
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Error);
-                }
-
-                if (ipStream != null)
-                {
-                    FileInfo fi = new FileInfo(filename);
-
-                    fileSize = fi.Length;
-
-                    ipStream.Close();
-                }
+                ipStream = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.None);
             }
+            catch (IOException e)
+            {
+                MessageBox.Show("IO Exception:\r\n" +
+                                e.Message + "\r\n" +
+                                "Opening print file '" + filename,
+                                "Print file selection",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+
+                return -1;
+            }
+
+            if (ipStream == null)
+                return -1;
+
+            FileInfo fi = new FileInfo(filename);
+
+            fileSize = fi.Length;
+
+            ipStream.Close();
 
             return fileSize;
         }

@@ -167,39 +167,33 @@ namespace PCLParaphernalia
 
         public static bool MacroFileCopy(BinaryWriter prnWriter, string filename)
         {
-            bool OK = true;
             long fileSize = 0;
 
-            bool fileOpen = MacroFileOpen(filename, ref fileSize);
-            if (!fileOpen)
+            if (!MacroFileOpen(filename, ref fileSize))
+                return false;
+
+            const int bufSize = 2048;
+            int readSize;
+
+            bool endLoop;
+
+            byte[] buf = new byte[bufSize];
+
+            endLoop = false;
+
+            while (!endLoop)
             {
-                OK = false;
-            }
-            else
-            {
-                const int bufSize = 2048;
-                int readSize;
+                readSize = _binReader.Read(buf, 0, bufSize);
 
-                bool endLoop;
-
-                byte[] buf = new byte[bufSize];
-
-                endLoop = false;
-
-                while (!endLoop)
-                {
-                    readSize = _binReader.Read(buf, 0, bufSize);
-
-                    if (readSize == 0)
-                        endLoop = true;
-                    else
-                        prnWriter.Write(buf, 0, readSize);
-                }
-
-                MacroFileClose();
+                if (readSize == 0)
+                    endLoop = true;
+                else
+                    prnWriter.Write(buf, 0, readSize);
             }
 
-            return OK;
+            MacroFileClose();
+            
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -213,8 +207,6 @@ namespace PCLParaphernalia
 
         private static bool MacroFileOpen(string fileName, ref long fileSize)
         {
-            bool open = false;
-
             if ((fileName == null) || (fileName?.Length == 0))
             {
                 MessageBox.Show("Download macro file name is null.",
@@ -224,7 +216,8 @@ namespace PCLParaphernalia
 
                 return false;
             }
-            else if (!File.Exists(fileName))
+            
+            if (!File.Exists(fileName))
             {
                 MessageBox.Show("Download macro file '" + fileName + "' does not exist.",
                                 "PCL macro file name invalid",
@@ -233,23 +226,34 @@ namespace PCLParaphernalia
 
                 return false;
             }
-            else
+
+            try
             {
                 _ipStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.None);
+            }
+            catch (IOException e)
+            {
+                MessageBox.Show("IO Exception:\r\n" +
+                                    e.Message + "\r\n" +
+                                    "Opening file '" +
+                                    fileName + "'",
+                                    "PCL macro file analysis",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Error);
 
-                if (_ipStream != null)
-                {
-                    open = true;
-
-                    FileInfo fi = new FileInfo(fileName);
-
-                    fileSize = fi.Length;
-
-                    _binReader = new BinaryReader(_ipStream);
-                }
+                return false;
             }
 
-            return open;
+            if (_ipStream == null)
+                return false;
+
+            FileInfo fi = new FileInfo(fileName);
+
+            fileSize = fi.Length;
+
+            _binReader = new BinaryReader(_ipStream);
+
+            return true;
         }
     }
 }
