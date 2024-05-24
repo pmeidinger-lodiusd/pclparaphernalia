@@ -112,7 +112,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool VersionChange { get; set; } = false;
+        public static bool VersionChange { get; set; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //

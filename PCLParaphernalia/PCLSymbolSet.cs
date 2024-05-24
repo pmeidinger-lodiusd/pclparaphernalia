@@ -100,7 +100,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagMapped { get; } = false;
+        public bool FlagMapped { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
