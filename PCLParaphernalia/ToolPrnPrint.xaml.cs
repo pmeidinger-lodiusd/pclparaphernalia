@@ -320,9 +320,7 @@ namespace PCLParaphernalia
 
                 TargetCore.MetricsLoadWinPrinter(ref winPrintername);
 
-                btnGenerate.Content = "Send PRN file contents to printer " +
-                                      "\r\n" +
-                                      winPrintername;
+                btnGenerate.Content = "Send PRN file contents to printer\r\n" +winPrintername;
             }
         }
 
@@ -345,12 +343,12 @@ namespace PCLParaphernalia
                                 "|All files|" +
                                 "*.*";
 
-            bool? dialogResult = openDialog.ShowDialog();
+            if (openDialog.ShowDialog() == false)
+                return false;
 
-            if (dialogResult == true)
-                prnFilename = openDialog.FileName;
+            prnFilename = openDialog.FileName;
 
-            return dialogResult == true;
+            return true;
         }
 
         //--------------------------------------------------------------------//

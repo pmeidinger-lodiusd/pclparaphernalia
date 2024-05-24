@@ -779,12 +779,12 @@ namespace PCLParaphernalia
 
             openDialog.Filter = "Bitmap Files|*.bmp; *.BMP";
 
-            bool? dialogResult = openDialog.ShowDialog();
+            if (openDialog.ShowDialog() == false)
+                return false;
 
-            if (dialogResult == true)
-                selectedName = openDialog.FileName;
+            selectedName = openDialog.FileName;
 
-            return dialogResult == true;
+            return true;
         }
 
         //--------------------------------------------------------------------//

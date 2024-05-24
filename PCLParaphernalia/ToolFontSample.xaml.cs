@@ -3437,12 +3437,12 @@ namespace PCLParaphernalia
 
             openDialog.Filter = "PCL Font files|*.sfp; *.sfs; *.sft; *.SFP; *.SFS; *.SFT;|All files|*.*";
 
-            bool? dialogResult = openDialog.ShowDialog();
+            if (openDialog.ShowDialog() == false)
+                return false;
+            
+            fontFilename = openDialog.FileName;
 
-            if (dialogResult == true)
-                fontFilename = openDialog.FileName;
-
-            return dialogResult == true;
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -3460,12 +3460,12 @@ namespace PCLParaphernalia
 
             openDialog.Filter = "PCLXL Font files|*.sfx; *.SFX|All files|*.*";
 
-            bool? dialogResult = openDialog.ShowDialog();
+            if (openDialog.ShowDialog() == false)
+                return false;
 
-            if (dialogResult == true)
-                fontFilename = openDialog.FileName;
+            fontFilename = openDialog.FileName;
 
-            return dialogResult == true;
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -3481,15 +3481,14 @@ namespace PCLParaphernalia
         {
             OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(symSetFile);
 
-            openDialog.Filter = "PCL files|*.pcl; *.PCL;" +
-                                "|All files|*.*";
+            openDialog.Filter = "PCL files|*.pcl; *.PCL;|All files|*.*";
 
-            bool? dialogResult = openDialog.ShowDialog();
+            if (openDialog.ShowDialog() == false)
+                return false;
 
-            if (dialogResult == true)
-                symSetFile = openDialog.FileName;
+            symSetFile = openDialog.FileName;
 
-            return dialogResult == true;
+            return true;
         }
 
         //--------------------------------------------------------------------//

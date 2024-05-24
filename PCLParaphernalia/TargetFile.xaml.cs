@@ -223,12 +223,12 @@ namespace PCLParaphernalia
         {
             SaveFileDialog saveDialog = ToolCommonFunctions.CreateSaveFileDialog(targetFile);
 
-            bool? dialogResult = saveDialog.ShowDialog();
+            if (saveDialog.ShowDialog() == false)
+                return false;
 
-            if (dialogResult == true)
-                targetFile = saveDialog.FileName;
+            targetFile = saveDialog.FileName;
 
-            return dialogResult == true;
+            return true;
         }
 
         //--------------------------------------------------------------------//

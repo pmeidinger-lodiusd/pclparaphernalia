@@ -733,15 +733,14 @@ namespace PCLParaphernalia
             OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(selectedName);
 
             openDialog.CheckFileExists = false;
-            openDialog.Filter = "Overlay Files|*.ovl; *.OVL" +
-                                "|All files|*.*";
+            openDialog.Filter = "Overlay Files|*.ovl; *.OVL" + "|All files|*.*";
 
-            bool? dialogResult = openDialog.ShowDialog();
+            if (openDialog.ShowDialog() == false)
+                return false;
 
-            if (dialogResult == true)
-                selectedName = openDialog.FileName;
+            selectedName = openDialog.FileName;
 
-            return dialogResult == true;
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -760,12 +759,12 @@ namespace PCLParaphernalia
             openDialog.CheckFileExists = false;
             openDialog.Filter = "Overlay Files|*.ovx; *.OVX|All files|*.*";
 
-            bool? dialogResult = openDialog.ShowDialog();
+            if (openDialog.ShowDialog() == false)
+                return false;
 
-            if (dialogResult == true)
-                selectedName = openDialog.FileName;
+            selectedName = openDialog.FileName;
 
-            return dialogResult == true;
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -781,15 +780,14 @@ namespace PCLParaphernalia
         {
             OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(selectedName);
 
-            openDialog.Filter = "Print Files|*.prn; *.PRN" +
-                                "|All files|*.*";
+            openDialog.Filter = "Print Files|*.prn; *.PRN|All files|*.*";
 
-            bool? dialogResult = openDialog.ShowDialog();
+            if (openDialog.ShowDialog() == false)
+                return false;
 
-            if (dialogResult == true)
-                selectedName = openDialog.FileName;
+            selectedName = openDialog.FileName;
 
-            return dialogResult == true;
+            return true;
         }
 
         //--------------------------------------------------------------------//

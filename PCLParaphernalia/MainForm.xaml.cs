@@ -579,18 +579,16 @@ namespace PCLParaphernalia
 
             TargetFile targetFile = new TargetFile(_crntToolId, _crntSubId, _crntPDL);
 
-            bool? dialogResult = targetFile.ShowDialog();
+            if (targetFile.ShowDialog() == false)
+                return;
 
-            if (dialogResult == true)
-            {
-                menuItemTargetFile.IsChecked = true;
-                menuItemTargetNetPrinter.IsChecked = false;
-                menuItemTargetWinPrinter.IsChecked = false;
+            menuItemTargetFile.IsChecked = true;
+            menuItemTargetNetPrinter.IsChecked = false;
+            menuItemTargetWinPrinter.IsChecked = false;
 
-                TargetCore.MetricsSaveType(TargetCore.Target.File);
+            TargetCore.MetricsSaveType(TargetCore.Target.File);
 
-                CrntToolResetTarget();
-            }
+            CrntToolResetTarget();
         }
 
         //--------------------------------------------------------------------//
@@ -628,18 +626,16 @@ namespace PCLParaphernalia
         {
             TargetNetPrintConfig targetNetPrintConfig = new TargetNetPrintConfig();
 
-            bool? dialogResult = targetNetPrintConfig.ShowDialog();
+            if (targetNetPrintConfig.ShowDialog() == false)
+                return;
 
-            if (dialogResult == true)
-            {
-                menuItemTargetFile.IsChecked = false;
-                menuItemTargetNetPrinter.IsChecked = true;
-                menuItemTargetWinPrinter.IsChecked = false;
+            menuItemTargetFile.IsChecked = false;
+            menuItemTargetNetPrinter.IsChecked = true;
+            menuItemTargetWinPrinter.IsChecked = false;
 
-                TargetCore.MetricsSaveType(TargetCore.Target.NetPrinter);
+            TargetCore.MetricsSaveType(TargetCore.Target.NetPrinter);
 
-                CrntToolResetTarget();
-            }
+            CrntToolResetTarget();
         }
 
         //--------------------------------------------------------------------//
@@ -697,18 +693,16 @@ namespace PCLParaphernalia
         {
             TargetWinPrintConfig targetWinPrintConfig = new TargetWinPrintConfig();
 
-            bool? dialogResult = targetWinPrintConfig.ShowDialog();
+            if (targetWinPrintConfig.ShowDialog() == false)
+                return;
 
-            if (dialogResult == true)
-            {
-                menuItemTargetFile.IsChecked = false;
-                menuItemTargetNetPrinter.IsChecked = false;
-                menuItemTargetWinPrinter.IsChecked = true;
+            menuItemTargetFile.IsChecked = false;
+            menuItemTargetNetPrinter.IsChecked = false;
+            menuItemTargetWinPrinter.IsChecked = true;
 
-                TargetCore.MetricsSaveType(TargetCore.Target.WinPrinter);
+            TargetCore.MetricsSaveType(TargetCore.Target.WinPrinter);
 
-                CrntToolResetTarget();
-            }
+            CrntToolResetTarget();
         }
 
         //--------------------------------------------------------------------//

@@ -283,9 +283,7 @@ namespace PCLParaphernalia
                 FileName = tmpFilename
             };
 
-            bool? dialogResult = saveDialog.ShowDialog();
-
-            if (dialogResult == true)
+            if (saveDialog.ShowDialog() == true)
             {
                 symSetFilename = saveDialog.FileName;
                 tmpFilename = symSetFilename;

@@ -1127,12 +1127,12 @@ namespace PCLParaphernalia
                                 "|All files|" +
                                 "*.*";
 
-            bool? dialogResult = openDialog.ShowDialog();
+            if (openDialog.ShowDialog() == false)
+                return false;
 
-            if (dialogResult == true)
-                locBinFilename = openDialog.FileName;
+            locBinFilename = openDialog.FileName;
 
-            return dialogResult == true;
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -1163,12 +1163,12 @@ namespace PCLParaphernalia
 
             saveDialog.DefaultExt = "pcl";
 
-            bool? dialogResult = saveDialog.ShowDialog();
+            if (saveDialog.ShowDialog() == false)
+                return false;
 
-            if (dialogResult == true)
-                locBinFilename = saveDialog.FileName;
+            locBinFilename = saveDialog.FileName;
 
-            return dialogResult == true;
+            return true;
         }
 
         //--------------------------------------------------------------------//

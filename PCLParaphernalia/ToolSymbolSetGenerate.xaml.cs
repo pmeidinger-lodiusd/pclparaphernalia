@@ -2139,15 +2139,14 @@ namespace PCLParaphernalia
         {
             OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(symSetFilename);
 
-            openDialog.Filter = "PCL files|*.pcl; *.PCL;" +
-                                "|All files|*.*";
+            openDialog.Filter = "PCL files|*.pcl; *.PCL;|All files|*.*";
 
-            bool? dialogResult = openDialog.ShowDialog();
+            if (openDialog.ShowDialog() == false)
+                return false;
 
-            if (dialogResult == true)
-                symSetFilename = openDialog.FileName;
+            symSetFilename = openDialog.FileName;
 
-            return dialogResult == true;
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -2165,15 +2164,14 @@ namespace PCLParaphernalia
             OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(symSetFilename);
 
             openDialog.CheckFileExists = false;
-            openDialog.Filter = "PCL files|*.pcl; *.PCL;" +
-                                "|All files|*.*";
+            openDialog.Filter = "PCL files|*.pcl; *.PCL;|All files|*.*";
 
-            bool? dialogResult = openDialog.ShowDialog();
+            if (openDialog.ShowDialog() == false)
+                return false;
 
-            if (dialogResult == true)
-                symSetFilename = openDialog.FileName;
+            symSetFilename = openDialog.FileName;
 
-            return dialogResult == true;
+            return true;
         }
 
         //--------------------------------------------------------------------//

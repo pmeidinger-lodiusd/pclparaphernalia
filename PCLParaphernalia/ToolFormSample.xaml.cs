@@ -1781,12 +1781,12 @@ namespace PCLParaphernalia
 
             openDialog.Filter = "PCL Overlay files|*.ovl; *.OVL|All files|*.*";
 
-            bool? dialogResult = openDialog.ShowDialog();
+            if (openDialog.ShowDialog() == false)
+                return false;
 
-            if (dialogResult == true)
-                selectedName = openDialog.FileName;
+            selectedName = openDialog.FileName;
 
-            return dialogResult == true;
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -1804,12 +1804,12 @@ namespace PCLParaphernalia
 
             openDialog.Filter = "PCLXL Overlay files|*.ovx; *.OVX|All files|*.*";
 
-            bool? dialogResult = openDialog.ShowDialog();
+            if (openDialog.ShowDialog() == false)
+                return false;
 
-            if (dialogResult == true)
-                selectedName = openDialog.FileName;
+            selectedName = openDialog.FileName;
 
-            return dialogResult == true;
+            return true;
         }
 
         //--------------------------------------------------------------------//

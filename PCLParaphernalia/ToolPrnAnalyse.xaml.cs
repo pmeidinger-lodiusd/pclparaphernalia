@@ -235,24 +235,22 @@ namespace PCLParaphernalia
         {
             ToolPrnAnalyseOptDlg optDialog = new ToolPrnAnalyseOptDlg(_options, _fileSize);
 
-            bool? dialogResult = optDialog.ShowDialog();
+            if (optDialog.ShowDialog() == false)
+                return;
 
-            if (dialogResult == true)
-            {
-                _redoAnalysis = true;     // TODO : be more discerning
-                _redoContent = true;     // TODO : be more discerning
-                _redoStatistics = true;     // TODO : be more discerning
+            _redoAnalysis = true;     // TODO : be more discerning
+            _redoContent = true;     // TODO : be more discerning
+            _redoStatistics = true;     // TODO : be more discerning
 
-                btnSaveReport.IsEnabled = false;
+            btnSaveReport.IsEnabled = false;
 
-                ResetStatistics();
+            ResetStatistics();
 
-                _options.GetOptClrMap(ref _flagClrMapUseClr,
-                                       ref _indxClrMapBack,
-                                       ref _indxClrMapFore);
+            _options.GetOptClrMap(ref _flagClrMapUseClr,
+                                    ref _indxClrMapBack,
+                                    ref _indxClrMapFore);
 
-                _options.MetricsSave();
-            }
+            _options.MetricsSave();
         }
 
         //--------------------------------------------------------------------//
@@ -882,12 +880,12 @@ namespace PCLParaphernalia
                                 "|All files|" +
                                 "*.*";
 
-            bool? dialogResult = openDialog.ShowDialog();
+            if (openDialog.ShowDialog() == false)
+                return false;
 
-            if (dialogResult == true)
-                prnFilename = openDialog.FileName;
+            prnFilename = openDialog.FileName;
 
-            return dialogResult == true;
+            return true;
         }
 
         //--------------------------------------------------------------------//

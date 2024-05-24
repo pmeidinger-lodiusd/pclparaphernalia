@@ -342,33 +342,28 @@ namespace PCLParaphernalia
                 saveDialog.DefaultExt = "sft";
             }
 
-            bool? dialogResult = saveDialog.ShowDialog();
+            if (saveDialog.ShowDialog() == false)
+                return false;
 
-            if (dialogResult == true)
+            fontFilename = saveDialog.FileName;
+            Stream stream = File.Create(fontFilename);
+
+            if (stream == null)
+                return false;
+
+            BinaryWriter writer = new BinaryWriter(stream);
+
+            if (writer == null)
             {
-                fontFilename = saveDialog.FileName;
-                Stream stream = File.Create(fontFilename);
-
-                if (stream != null)
-                {
-                    BinaryWriter writer = new BinaryWriter(stream);
-
-                    if (writer != null)
-                    {
-                        opStream = stream;
-                        _binWriter = writer;
-                        binWriter = writer;
-
-                        return true;
-                    }
-                    else
-                    {
-                        stream.Close();
-                    }
-                }
+                stream.Close();
+                return false;
             }
 
-            return false;
+            opStream = stream;
+            _binWriter = writer;
+            binWriter = writer;
+            
+            return true;
         }
 
         //--------------------------------------------------------------------//

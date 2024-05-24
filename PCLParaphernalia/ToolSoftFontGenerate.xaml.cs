@@ -2340,12 +2340,12 @@ bitVal;
             openDialog.CheckFileExists = false;
             openDialog.Filter = "PCLETTO font files|*.sft; *.SFT";
 
-            bool? dialogResult = openDialog.ShowDialog();
+            if (openDialog.ShowDialog() == false)
+                return false;
 
-            if (dialogResult == true)
-                fontFilename = openDialog.FileName;
+            fontFilename = openDialog.FileName;
 
-            return dialogResult == true;
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -2364,12 +2364,12 @@ bitVal;
             openDialog.CheckFileExists = false;
             openDialog.Filter = "PCLXLETTO font files|*.sfx; *.SFX";
 
-            bool? dialogResult = openDialog.ShowDialog();
+            if (openDialog.ShowDialog() == false)
+                return false;
 
-            if (dialogResult == true)
-                fontFilename = openDialog.FileName;
+            fontFilename = openDialog.FileName;
 
-            return dialogResult == true;
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -2385,15 +2385,14 @@ bitVal;
         {
             OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(symSetFile);
 
-            openDialog.Filter = "PCL files|*.pcl; *.PCL;" +
-                                "|All files|*.*";
+            openDialog.Filter = "PCL files|*.pcl; *.PCL;|All files|*.*";
 
-            bool? dialogResult = openDialog.ShowDialog();
+            if (openDialog.ShowDialog() == false)
+                return false;
 
-            if (dialogResult == true)
-                symSetFile = openDialog.FileName;
+            symSetFile = openDialog.FileName;
 
-            return dialogResult == true;
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -2410,16 +2409,14 @@ bitVal;
             OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(fontFilenameTTF);
 
             openDialog.CheckFileExists = false;
-            openDialog.Filter = "TrueType font files|" +
-                                "*.ttf; *.otf; *.ttc" +
-                                "*.TTF; *.OTF; *.TTC";
+            openDialog.Filter = "TrueType font files|*.ttf; *.otf; *.ttc*.TTF; *.OTF; *.TTC";
 
-            bool? dialogResult = openDialog.ShowDialog();
+            if (openDialog.ShowDialog() == false)
+                return false;
 
-            if (dialogResult == true)
-                fontFilenameTTF = openDialog.FileName;
+            fontFilenameTTF = openDialog.FileName;
 
-            return dialogResult == true;
+            return true;
         }
 
         //--------------------------------------------------------------------//

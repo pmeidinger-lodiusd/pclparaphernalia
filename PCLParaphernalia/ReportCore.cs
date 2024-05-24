@@ -837,48 +837,47 @@ namespace PCLParaphernalia
                 saveDialog.DefaultExt = "txt";
             }
 
-            bool? dialogResult = saveDialog.ShowDialog();
+            if (saveDialog.ShowDialog() == false)
+                return false;
+
             bool fileOpen = false;
 
-            if (dialogResult == true)
+            saveFilename = saveDialog.FileName;
+
+            if (rptFileFmt == RptFileFmt.html)
             {
-                saveFilename = saveDialog.FileName;
+                stream = new StreamWriter(saveFilename);
 
-                if (rptFileFmt == RptFileFmt.html)
+                if (stream != null)
                 {
-                    stream = new StreamWriter(saveFilename);
-
-                    if (stream != null)
-                    {
-                        writer = new HtmlTextWriter((StreamWriter)stream);
-                        fileOpen = true;
-                    }
+                    writer = new HtmlTextWriter((StreamWriter)stream);
+                    fileOpen = true;
                 }
-                else if (rptFileFmt == RptFileFmt.xml)
+            }
+            else if (rptFileFmt == RptFileFmt.xml)
+            {
+                stream = new StreamWriter(saveFilename);
+
+                if (stream != null)
                 {
-                    stream = new StreamWriter(saveFilename);
-
-                    if (stream != null)
+                    XmlWriterSettings settings = new XmlWriterSettings
                     {
-                        XmlWriterSettings settings = new XmlWriterSettings
-                        {
-                            Encoding = Encoding.UTF8,
-                            Indent = true
-                        };
+                        Encoding = Encoding.UTF8,
+                        Indent = true
+                    };
 
-                        writer = XmlWriter.Create((StreamWriter)stream, settings);
-                        fileOpen = true;
-                    }
+                    writer = XmlWriter.Create((StreamWriter)stream, settings);
+                    fileOpen = true;
                 }
-                else
-                {
-                    stream = null;
-                    writer = new StreamWriter(saveFilename);
+            }
+            else
+            {
+                stream = null;
+                writer = new StreamWriter(saveFilename);
 
-                    if (writer != null)
-                    {
-                        fileOpen = true;
-                    }
+                if (writer != null)
+                {
+                    fileOpen = true;
                 }
             }
 
