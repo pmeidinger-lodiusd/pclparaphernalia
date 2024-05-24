@@ -61,7 +61,7 @@
             _flagValIsLen = flagValIsLen;
             _flagValIsPCL = flagValIsPCL;
             _actionType = actionType;
-            this.MakeOvlAct = makeOvlAct;
+            MakeOvlAct = makeOvlAct;
             Description = description;
 
             _statsCtParent = 0;
@@ -93,7 +93,7 @@
             flagUintTxt = _flagUintTxt;
             flagValIsLen = _flagValIsLen;
             flagValIsPCL = _flagValIsPCL;
-            makeOvlAct = this.MakeOvlAct;
+            makeOvlAct = MakeOvlAct;
             description = Description;
         }
 

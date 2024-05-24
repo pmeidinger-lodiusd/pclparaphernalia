@@ -44,7 +44,7 @@
             FlagObsolete = flagObsolete;
             FlagResetHPGL2 = flagResetHPGL2;
 
-            this.MakeOvlAct = makeOvlAct;
+            MakeOvlAct = makeOvlAct;
             _seqGrp = seqGrp;
 
             _statsCtParent = 0;

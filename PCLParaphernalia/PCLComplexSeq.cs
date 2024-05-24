@@ -68,7 +68,7 @@
 
             FlagDisplayHexVal = flagDisplayHexVal;
 
-            this.MakeOvlAct = makeOvlAct;
+            MakeOvlAct = makeOvlAct;
             _seqGrp = seqGrp;
 
             FlagValGeneric = value == PCLComplexSeqs._valueGeneric;

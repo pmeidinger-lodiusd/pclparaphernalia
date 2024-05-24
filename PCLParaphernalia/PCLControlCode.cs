@@ -42,7 +42,7 @@
             Mnemonic = mnemonic;
             DescExcMnemonic = description;
             FlagLineTerm = flagLineTerm;
-            this.MakeOvlAct = makeOvlAct;
+            MakeOvlAct = makeOvlAct;
             _seqGrp = seqGrp;
 
             _statsCtParent = 0;

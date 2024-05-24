@@ -40,7 +40,7 @@
             FlagReserved = flagReserved;
             EmbedDataType = embedDataType;
             Description = description;
-            this.MakeOvlAct = makeOvlAct;
+            MakeOvlAct = makeOvlAct;
 
             _statsCtParent = 0;
             _statsCtChild = 0;
@@ -61,7 +61,7 @@
             flagEndSession = FlagEndSession;
             flagReserved = FlagReserved;
             embedDataType = EmbedDataType;
-            makeOvlAct = this.MakeOvlAct;
+            makeOvlAct = MakeOvlAct;
             description = Description;
         }
 
