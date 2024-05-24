@@ -85,14 +85,10 @@ namespace PCLParaphernalia
 
             foreach (PCLSymbolSet v in _sets)
             {
-                if ((v.Group == SymSetGroup.Preset) ||
-                    (v.Group == SymSetGroup.Unicode) ||
-                    (v.Group == SymSetGroup.Unbound))
-                {
-                    count++;
-                    grid.Items.Add(v);
-                }
-                else if (v.Group == SymSetGroup.NonStd)
+                if (v.Group == SymSetGroup.Preset ||
+                    v.Group == SymSetGroup.Unicode ||
+                    v.Group == SymSetGroup.Unbound ||
+                    v.Group == SymSetGroup.NonStd)
                 {
                     count++;
                     grid.Items.Add(v);
@@ -1492,13 +1488,11 @@ namespace PCLParaphernalia
 
             if (symSetType == PCLSymSetTypes.Index.Bound_16bit)
             {
-                _sets[_indxUserSet].ParsingMethod =
-                                PCLTextParsingMethods.Index.m83_UTF8;
+                _sets[_indxUserSet].ParsingMethod = PCLTextParsingMethods.Index.m83_UTF8;
             }
             else
             {
-                _sets[_indxUserSet].ParsingMethod =
-                                PCLTextParsingMethods.Index.not_specified;
+                _sets[_indxUserSet].ParsingMethod = PCLTextParsingMethods.Index.not_specified;
             }
         }
 
@@ -1636,9 +1630,8 @@ namespace PCLParaphernalia
         {
             const ushort badValue = 0;
 
-            if ((idNum < 1) || (idNum > 2047))
-                return badValue;
-            else if ((idAlpha < 0x40) || (idAlpha > 0x5a))
+            if ((idNum < 1) || (idNum > 2047) || 
+                (idAlpha < 0x40) || (idAlpha > 0x5a))
                 return badValue;
             else
                 return (ushort)((idNum * 32) + (idAlpha - 64));
