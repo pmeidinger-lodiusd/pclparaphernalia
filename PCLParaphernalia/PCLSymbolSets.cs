@@ -1735,8 +1735,6 @@ namespace PCLParaphernalia
             {
                 idNum = string.Empty;
                 idAlpha = string.Empty;
-
-                return;
             }
             else
             {
@@ -1745,8 +1743,6 @@ namespace PCLParaphernalia
 
                 idNum = kind1Num.ToString();
                 idAlpha = Convert.ToChar(kind1Alpha).ToString();
-
-                return;
             }
         }
     }

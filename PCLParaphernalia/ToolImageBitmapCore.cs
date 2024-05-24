@@ -242,8 +242,6 @@ namespace PCLParaphernalia
             ResY = _infoHeader.yPelsPerMetre;
             PaletteSize = _paletteSize;
             MonoBW = _monochromeBlackWhite;
-
-            return;
         }
 
         //--------------------------------------------------------------------//

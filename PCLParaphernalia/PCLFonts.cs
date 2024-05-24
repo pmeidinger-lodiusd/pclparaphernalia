@@ -2015,8 +2015,6 @@ namespace PCLParaphernalia
         {
             vendor = (ushort)(typeface >> 12);
             basecode = (ushort)(typeface & 0xfff);
-
-            return;
         }
 
         //--------------------------------------------------------------------//
