@@ -154,7 +154,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            bool bitmapOpen = ToolImageBitmapCore.bitmapOpen(_bitmapFilename);
+            bool bitmapOpen = ToolImageBitmapCore.BitmapOpen(_bitmapFilename);
 
             if (!bitmapOpen)
             {
@@ -163,17 +163,17 @@ namespace PCLParaphernalia
 
             if (result == 0)
             {
-                result = ToolImageBitmapCore.readBmpFileHeader();
+                result = ToolImageBitmapCore.ReadBmpFileHeader();
             }
 
             if (result == 0)
             {
-                result = ToolImageBitmapCore.readBmpInfoHeader();
+                result = ToolImageBitmapCore.ReadBmpInfoHeader();
             }
 
             if (result == 0)
             {
-                result = ToolImageBitmapCore.readBmpPalette();
+                result = ToolImageBitmapCore.ReadBmpPalette();
             }
 
             if (result == 0)
@@ -229,7 +229,7 @@ namespace PCLParaphernalia
 
             if (bitmapOpen)
             {
-                ToolImageBitmapCore.bitmapClose();
+                ToolImageBitmapCore.BitmapClose();
             }
         }
 
@@ -258,7 +258,7 @@ namespace PCLParaphernalia
 
             bool srcBlackWhite = false;
 
-            bool bitmapOpen = ToolImageBitmapCore.bitmapOpen(_bitmapFilename);
+            bool bitmapOpen = ToolImageBitmapCore.BitmapOpen(_bitmapFilename);
 
             if (!bitmapOpen)
             {
@@ -267,20 +267,20 @@ namespace PCLParaphernalia
 
             if (result == 0)
             {
-                result = ToolImageBitmapCore.readBmpFileHeader();
+                result = ToolImageBitmapCore.ReadBmpFileHeader();
             }
 
             if (result == 0)
             {
-                result = ToolImageBitmapCore.readBmpInfoHeader();
+                result = ToolImageBitmapCore.ReadBmpInfoHeader();
             }
 
             if (result == 0)
             {
-                result = ToolImageBitmapCore.readBmpPalette();
+                result = ToolImageBitmapCore.ReadBmpPalette();
             }
 
-            ToolImageBitmapCore.getBmpInfo(ref srcWidth,
+            ToolImageBitmapCore.GetBmpInfo(ref srcWidth,
                                            ref srcHeight,
                                            ref srcBitsPerPixel,
                                            ref srcCompression,
@@ -303,7 +303,7 @@ namespace PCLParaphernalia
 
             if (bitmapOpen)
             {
-                ToolImageBitmapCore.bitmapClose();
+                ToolImageBitmapCore.BitmapClose();
             }
         }
 

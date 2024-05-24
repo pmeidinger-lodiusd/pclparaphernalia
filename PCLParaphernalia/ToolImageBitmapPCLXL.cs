@@ -43,7 +43,7 @@ namespace PCLParaphernalia
 
             bool srcBlackWhite = false;
 
-            ToolImageBitmapCore.getBmpInfo(ref srcWidth,
+            ToolImageBitmapCore.GetBmpInfo(ref srcWidth,
                                            ref srcHeight,
                                            ref srcBitsPerPixel,
                                            ref srcCompression,
@@ -214,7 +214,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        ToolImageBitmapCore.getNextImageBlock(ref bufSub,
+                        ToolImageBitmapCore.GetNextImageBlock(ref bufSub,
                                                               bytesPerRow,
                                                               firstBlock);
 
@@ -440,7 +440,7 @@ namespace PCLParaphernalia
                     {
                         offset = i * 3;
 
-                        ToolImageBitmapCore.getBmpPaletteEntry(i,
+                        ToolImageBitmapCore.GetBmpPaletteEntry(i,
                                                                ref red,
                                                                ref green,
                                                                ref blue);
