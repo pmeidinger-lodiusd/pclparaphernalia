@@ -59,20 +59,11 @@
 
         private static readonly PCLPalette[] _palettes =
         {
-            new PCLPalette ("Monochrome",
-                            true,
-                            1,
-                            2),
+            new PCLPalette ("Monochrome", true, 1, 2),
 
-            new PCLPalette ("Simple Colour CMY",
-                            false,
-                            -3,
-                            8),
+            new PCLPalette ("Simple Colour CMY", false, -3, 8),
 
-            new PCLPalette ("Simple Colour RGB",
-                            false,
-                            3,
-                            8)
+            new PCLPalette ("Simple Colour RGB", false, 3, 8)
         };
 
         //private static readonly int _paletteCount = _palettes.GetUpperBound(0) + 1;
