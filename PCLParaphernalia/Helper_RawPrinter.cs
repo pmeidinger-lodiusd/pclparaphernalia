@@ -135,43 +135,46 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool SendFileToPrinter(string szPrinterName,
-                                              string szFileName)
+        public static bool SendFileToPrinter(string szPrinterName, string szFileName)
         {
             // Open the specified file.
             // Create a BinaryReader on the file.
 
-            FileStream fs = new FileStream(szFileName, FileMode.Open);
-            BinaryReader br = new BinaryReader(fs);
+            using (FileStream fs = new FileStream(szFileName, FileMode.Open))
+            {
+                using (BinaryReader br = new BinaryReader(fs))
+                {
+                    // Create an array of bytes big enough to hold the file contents.
 
-            // Create an array of bytes big enough to hold the file contents.
+                    byte[] bytes = new byte[fs.Length];
+                    IntPtr pUnmanagedBytes = new IntPtr(0);
 
-            byte[] bytes = new byte[fs.Length];
-            IntPtr pUnmanagedBytes = new IntPtr(0);
+                    int nLength = Convert.ToInt32(fs.Length);
 
-            int nLength = Convert.ToInt32(fs.Length);
+                    //----------------------------------------------------------------//
+                    //                                                                //
+                    // Read the contents of the file into the array.                  //
+                    // Allocate some unmanaged memory for those bytes.                //
+                    // Copy the managed byte array into the unmanaged array.          //
+                    //                                                                //
+                    //----------------------------------------------------------------//
 
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Read the contents of the file into the array.                  //
-            // Allocate some unmanaged memory for those bytes.                //
-            // Copy the managed byte array into the unmanaged array.          //
-            //                                                                //
-            //----------------------------------------------------------------//
+                    bytes = br.ReadBytes(nLength);
 
-            bytes = br.ReadBytes(nLength);
+                    pUnmanagedBytes = Marshal.AllocCoTaskMem(nLength);
 
-            pUnmanagedBytes = Marshal.AllocCoTaskMem(nLength);
+                    Marshal.Copy(bytes, 0, pUnmanagedBytes, nLength);
 
-            Marshal.Copy(bytes, 0, pUnmanagedBytes, nLength);
+                    // Send the unmanaged bytes to the printer.
+                    bool bSuccess = SendBytesToPrinter(szPrinterName, pUnmanagedBytes, nLength);
 
-            // Send the unmanaged bytes to the printer.
-            bool bSuccess = SendBytesToPrinter(szPrinterName, pUnmanagedBytes, nLength);
+                    // Free the unmanaged memory and exit.
+                    Marshal.FreeCoTaskMem(pUnmanagedBytes);
 
-            // Free the unmanaged memory and exit.
-            Marshal.FreeCoTaskMem(pUnmanagedBytes);
+                    return bSuccess;
 
-            return bSuccess;
+                }
+            }
         }
 
         //--------------------------------------------------------------------//
@@ -185,9 +188,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool SendStringToPrinter(
-            string szPrinterName,
-            string szString)
+        public static bool SendStringToPrinter(string szPrinterName, string szString)
         {
             IntPtr pBytes;
             int dwCount = szString.Length; // How many characters are in the string?
