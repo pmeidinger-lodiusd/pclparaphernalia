@@ -761,7 +761,7 @@ namespace PCLParaphernalia
         // Obtain size of current PRN file.                                   //
         //                                                                    //
         //--------------------------------------------------------------------//
-
+        /*
         private long PrnFileGetSize(string filename)
         {
             Stream ipStream = null;
@@ -814,6 +814,7 @@ namespace PCLParaphernalia
 
             return fileSize;
         }
+        */
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -828,7 +829,10 @@ namespace PCLParaphernalia
         {
             _prnFilename = filename;
 
-            _fileSize = PrnFileGetSize(_prnFilename);
+
+            // Why not just use FileInfo?
+            _fileSize = new FileInfo(_prnFilename).Length;
+            //_fileSize = PrnFileGetSize(_prnFilename);
 
             txtFileName.Text = _prnFilename;
             txtFileSize.Text = _fileSize.ToString();
