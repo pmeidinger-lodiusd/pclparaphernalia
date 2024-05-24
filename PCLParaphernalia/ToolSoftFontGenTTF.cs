@@ -628,76 +628,69 @@ namespace PCLParaphernalia
 
             typeTTC = false;
 
-            fileOpen = FontFileOpen(fileName, ref _fontFileSize);
+            if (!FontFileOpen(fileName, ref _fontFileSize))
+            {
+                ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, "Error opening TrueType Font file " + fileName);
 
+                return false;
+            }
 
-            bool flagOK;
-            if (!fileOpen)
+            //------------------------------------------------------------//
+            //                                                            //
+            // File successfully opened.                                  //
+            // Read and check first four bytes to determine if this is a  //
+            // TrueType Collection file.                                  //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            uint tabId = 0,
+                    tabVersion = 0;
+
+            typeTTC = false;
+
+            bool flagOK = ReadBytesAsUInt32(0, ref tabId);
+
+            if (!flagOK)
             {
                 flagOK = false;
 
-                ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, "Error opening TrueType Font file " + fileName);
+                ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, "Error reading first four bytes of font file");
             }
-            else
+            else if (tabId == cTabID_ttcf)
             {
-                //------------------------------------------------------------//
-                //                                                            //
-                // File successfully opened.                                  //
-                // Read and check first four bytes to determine if this is a  //
-                // TrueType Collection file.                                  //
-                //                                                            //
-                //------------------------------------------------------------//
+                typeTTC = true;
 
-                uint tabId = 0,
-                       tabVersion = 0;
+                flagOK = ReadBytesAsUInt32(-1, ref tabVersion);
 
-                typeTTC = false;
-
-                flagOK = ReadBytesAsUInt32(0, ref tabId);
+                if (flagOK)
+                {
+                    flagOK = ReadBytesAsUInt32(-1, ref numFonts);
+                }
 
                 if (!flagOK)
-                {
-                    flagOK = false;
-
-                    ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, "Error reading first four bytes of font file");
-                }
-                else if (tabId == cTabID_ttcf)
-                {
-                    typeTTC = true;
-
-                    flagOK = ReadBytesAsUInt32(-1, ref tabVersion);
-
-                    if (flagOK)
-                    {
-                        flagOK = ReadBytesAsUInt32(-1, ref numFonts);
-                    }
-
-                    if (!flagOK)
-                        numFonts = 0;
-                }
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // Diagnostics.                                               //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                if (_logVerbose && typeTTC)
-                {
-                    ToolSoftFontGenLog.LogNameAndValue(
-                        _tableDonor, false, false,
-                        "DIAG: table = " + tabName + ":",
-                        "version  = 0x" + tabVersion.ToString("x8"));
-
-                    ToolSoftFontGenLog.LogNameAndValue(
-                        _tableDonor, false, false,
-                        "DIAG: table = " + tabName + ":",
-                        "numfonts = " + numFonts.ToString());
-                }
-
-                if (fileOpen)
-                    FontFileClose();
+                    numFonts = 0;
             }
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // Diagnostics.                                               //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            if (_logVerbose && typeTTC)
+            {
+                ToolSoftFontGenLog.LogNameAndValue(
+                    _tableDonor, false, false,
+                    "DIAG: table = " + tabName + ":",
+                    "version  = 0x" + tabVersion.ToString("x8"));
+
+                ToolSoftFontGenLog.LogNameAndValue(
+                    _tableDonor, false, false,
+                    "DIAG: table = " + tabName + ":",
+                    "numfonts = " + numFonts.ToString());
+            }
+
+            FontFileClose();
 
             return flagOK;
         }
@@ -1717,83 +1710,74 @@ namespace PCLParaphernalia
         public bool GetTTCData(string fileName, uint numFonts, ref uint[] fontOffsets, ref string[] fontNames)
         {
             const string tabName = "ttcf";
-            bool fileOpen;
 
             int offset;
 
-            fileOpen = FontFileOpen(fileName, ref _fontFileSize);
-
-
-            bool flagOK;
-            if (!fileOpen)
+            if (!FontFileOpen(fileName, ref _fontFileSize))
             {
-                flagOK = false;
-
                 ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, "Error opening TrueType Font file " + fileName);
+
+                return false;
             }
-            else
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // File successfully opened.                                  //
+            // Read and check first four bytes to determine if this is a  //
+            // TrueType Collection file.                                  //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            uint checkNumFonts = 0;
+
+            offset = 8;
+
+            bool flagOK = ReadBytesAsUInt32(offset, ref checkNumFonts);
+
+            if (checkNumFonts != numFonts)
             {
-                //------------------------------------------------------------//
-                //                                                            //
-                // File successfully opened.                                  //
-                // Read and check first four bytes to determine if this is a  //
-                // TrueType Collection file.                                  //
-                //                                                            //
-                //------------------------------------------------------------//
+                FontFileClose();
+                return false;
+            }
 
-                uint checkNumFonts = 0;
+            offset += 4;
 
-                offset = 8;
+            for (int i = 0; i < numFonts; i++)
+            {
+                flagOK = ReadBytesAsUInt32(offset, ref fontOffsets[i]);
 
-                flagOK = ReadBytesAsUInt32(offset, ref checkNumFonts);
-
-                if (checkNumFonts != numFonts)
+                if (!flagOK)
                 {
-                    flagOK = false;
+                    i = (int)numFonts;
                 }
                 else
                 {
                     offset += 4;
 
-                    for (int i = 0; i < numFonts; i++)
+                    //------------------------------------------------//
+                    //                                                //
+                    // Diagnostics.                                   //
+                    //                                                //
+                    //------------------------------------------------//
+
+                    if (_logVerbose)
                     {
-                        flagOK = ReadBytesAsUInt32(offset, ref fontOffsets[i]);
+                        ToolSoftFontGenLog.LogNameAndValue(
+                            _tableDonor, true, false,
+                            "DIAG: " + tabName + " subTab " + i + ":",
+                            "offset = " + fontOffsets[i].ToString());
+                    }
 
-                        if (!flagOK)
-                        {
-                            i = (int)numFonts;
-                        }
-                        else
-                        {
-                            offset += 4;
+                    flagOK = ReadTableDirectory((int)fontOffsets[i], true);
 
-                            //------------------------------------------------//
-                            //                                                //
-                            // Diagnostics.                                   //
-                            //                                                //
-                            //------------------------------------------------//
-
-                            if (_logVerbose)
-                            {
-                                ToolSoftFontGenLog.LogNameAndValue(
-                                    _tableDonor, true, false,
-                                    "DIAG: " + tabName + " subTab " + i + ":",
-                                    "offset = " + fontOffsets[i].ToString());
-                            }
-
-                            flagOK = ReadTableDirectory((int)fontOffsets[i], true);
-
-                            if (flagOK)
-                            {
-                                flagOK = ReadData_name(true, ref fontNames[i]);
-                            }
-                        }
+                    if (flagOK)
+                    {
+                        flagOK = ReadData_name(true, ref fontNames[i]);
                     }
                 }
-
-                if (fileOpen)
-                    FontFileClose();
             }
+
+            FontFileClose();
 
             return flagOK;
         }

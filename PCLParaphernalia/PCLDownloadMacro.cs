@@ -54,49 +54,43 @@ namespace PCLParaphernalia
                 (buf[1] != '&') ||
                 (buf[2] != 'f'))
             {
-                flagOK = false;
+                return false;
+            }
+            
+            const int maxRead = 12;
+            bool foundTerm = false;
+
+            int pos,
+                    maxPos;
+
+            byte x;
+
+            offset += prefixLen;
+
+            maxPos = offset + maxRead;
+
+            if (fileSize <= maxPos)
+                maxPos = (int)(fileSize - 1);
+
+            for (pos = offset; flagOK && (!foundTerm) && (pos < maxPos); pos++)
+            {
+                x = _binReader.ReadByte();
+
+                if (x == 'y' || x == 'Y')
+                    foundTerm = true;
+                else if (x < '\x30' || x > '\x39')
+                    flagOK = false;
+                else
+                    value = ((value * 10) + (x - '\x30'));
+            }
+
+            if (foundTerm)
+            {
+                macroId = value;
             }
             else
             {
-                const int maxRead = 12;
-                bool foundTerm = false;
-
-                int pos,
-                      maxPos;
-
-                byte x;
-
-                offset += prefixLen;
-
-                maxPos = offset + maxRead;
-
-                if (fileSize <= maxPos)
-                    maxPos = (int)(fileSize - 1);
-
-                for (pos = offset; flagOK && (!foundTerm) && (pos < maxPos); pos++)
-                {
-                    x = _binReader.ReadByte();
-
-                    if (x == 'y')
-                        foundTerm = true;
-                    else if (x == 'Y')
-                        foundTerm = true;
-                    else if (x < '\x30')
-                        flagOK = false;
-                    else if (x > '\x39')
-                        flagOK = false;
-                    else
-                        value = ((value * 10) + (x - '\x30'));
-                }
-
-                if (foundTerm)
-                {
-                    macroId = value;
-                }
-                else
-                {
-                    flagOK = false;
-                }
+                flagOK = false;
             }
 
             return flagOK;

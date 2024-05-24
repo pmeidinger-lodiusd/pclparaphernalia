@@ -911,264 +911,264 @@ namespace PCLParaphernalia
                 }
             }
 
-            if (flagOK)
+            if (!flagOK)
+                return;
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // Generate test print file.                                  //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            try
             {
-                //------------------------------------------------------------//
-                //                                                            //
-                // Generate test print file.                                  //
-                //                                                            //
-                //------------------------------------------------------------//
+                bool downloadFont = false;
 
-                try
+                BinaryWriter binWriter = null;
+
+                ushort[] sampleBlocks;
+
+                TargetCore.RequestStreamOpen(
+                    ref binWriter,
+                    ToolCommonData.ToolIds.FontSample,
+                    ToolCommonData.ToolSubIds.None,
+                    _crntPDL);
+
+                //--------------------------------------------------------//
+
+                if ((_ctSamplePages == 0) || (!_useSampleBlocks))
                 {
-                    bool downloadFont = false;
+                    sampleBlocks = new ushort[1];
 
-                    BinaryWriter binWriter = null;
+                    sampleBlocks[0] = 0;
+                }
+                else
+                {
+                    CheckBox chk;
 
-                    ushort[] sampleBlocks;
+                    int pageNo = 0;
 
-                    TargetCore.RequestStreamOpen(
-                        ref binWriter,
-                        ToolCommonData.ToolIds.FontSample,
-                        ToolCommonData.ToolSubIds.None,
-                        _crntPDL);
+                    sampleBlocks = new ushort[_ctSamplePages];
 
-                    //--------------------------------------------------------//
-
-                    if ((_ctSamplePages == 0) || (!_useSampleBlocks))
+                    for (int i = 0; i < _ctSampleOffsetBlocks; i++)
                     {
-                        sampleBlocks = new ushort[1];
+                        chk = (CheckBox)lstSampleOffsets.Items[i];
 
-                        sampleBlocks[0] = 0;
+                        if (chk.IsChecked == true)
+                        {
+                            sampleBlocks[pageNo++] = _sampleOffsetBlocks[i];
+                        }
+                    }
+                }
+
+                //--------------------------------------------------------//
+
+                if (_fontType == PCLFonts.FontType.Download)
+                    downloadFont = true;
+
+                //--------------------------------------------------------//
+
+                if ((_symSetGroup == PCLSymbolSets.SymSetGroup.Preset) ||
+                    (_symSetGroup == PCLSymbolSets.SymSetGroup.Unicode))
+                {
+                    int index;
+
+                    if (_crntPDL == ToolCommonData.PrintLang.PCL)
+                        index = _subsetSymSets[_indxSymSetPCL];
+                    else
+                        index = _subsetSymSets[_indxSymSetPCLXL];
+
+                    _symSetName = PCLSymbolSets.GetName(index);
+                }
+                else if (_symSetGroup == PCLSymbolSets.SymSetGroup.UserSet)
+                {
+                    if (_crntPDL == ToolCommonData.PrintLang.PCL)
+                    {
+                        if (_symSetUserActEmbedPCL)
+                        {
+                            _symSetName = "<user-defined via file>";
+                        }
+                        else
+                        {
+                            _symSetName = "<Unicode-indexed via file>";
+
+                            _symSetId = PCLSymbolSets.GetId(PCLSymbolSets.IndexUnicode);
+                        }
+                    }
+                    else if (_crntPDL == ToolCommonData.PrintLang.PCLXL)
+                    {
+                        if (_symSetUserActEmbedPCLXL)
+                        {
+                            //never true!!
+                            _symSetName = "<user-defined via file>";
+                        }
+                        else
+                        {
+                            _symSetName = "<Unicode-indexed via file>";
+
+                            _symSetId = PCLSymbolSets.GetId(PCLSymbolSets.IndexUnicode);
+                        }
+                    }
+                }
+                else if (_symSetGroup == PCLSymbolSets.SymSetGroup.Custom)
+                {
+                    _symSetName = "<custom>";
+                }
+
+                //--------------------------------------------------------//
+
+                if (_crntPDL == ToolCommonData.PrintLang.PCL)
+                {
+                    //----------------------------------------------------//
+                    //                                                    //
+                    // PCL                                                //
+                    //                                                    //
+                    //----------------------------------------------------//
+
+                    bool symSetUserSet,
+                            fontSelById;
+
+                    double fontSize;
+
+                    ushort fontIdNo;
+
+                    string parseMethodText = string.Empty,
+                            fontFilename;
+
+                    //----------------------------------------------------//
+
+                    PCLTextParsingMethods.Index parseMethod = (PCLTextParsingMethods.Index)_indxParseMethod;
+
+                    if (parseMethod != PCLTextParsingMethods.Index.not_specified)
+                    {
+                        parseMethodText = "; parse method " + PCLTextParsingMethods.GetValue(_indxParseMethod);
+                    }
+
+                    //----------------------------------------------------//
+
+                    symSetUserSet = _symSetGroup == PCLSymbolSets.SymSetGroup.UserSet;
+
+                    //----------------------------------------------------//
+
+                    if (_fontType == PCLFonts.FontType.Download)
+                    {
+                        fontFilename = _fontFilenamePCL;
+                        fontIdNo = _fontDownloadIdPCL;
+                        fontSelById = _downloadSelByIdPCL;
+                    }
+                    else if (_fontType == PCLFonts.FontType.PrnDisk)
+                    {
+                        fontFilename = _fontPrnDiskNamePCL;
+                        fontIdNo = _fontPrnDiskIdPCL;
+                        fontSelById = true;
                     }
                     else
                     {
-                        CheckBox chk;
-
-                        int pageNo = 0;
-
-                        sampleBlocks = new ushort[_ctSamplePages];
-
-                        for (int i = 0; i < _ctSampleOffsetBlocks; i++)
-                        {
-                            chk = (CheckBox)lstSampleOffsets.Items[i];
-
-                            if (chk.IsChecked == true)
-                            {
-                                sampleBlocks[pageNo++] = _sampleOffsetBlocks[i];
-                            }
-                        }
+                        fontFilename = string.Empty;
+                        fontIdNo = 0;
+                        fontSelById = false;
                     }
 
-                    //--------------------------------------------------------//
+                    //----------------------------------------------------//
 
-                    if (_fontType == PCLFonts.FontType.Download)
-                        downloadFont = true;
-
-                    //--------------------------------------------------------//
-
-                    if ((_symSetGroup == PCLSymbolSets.SymSetGroup.Preset) ||
-                        (_symSetGroup == PCLSymbolSets.SymSetGroup.Unicode))
+                    if (_fontType != PCLFonts.FontType.PrnDisk)
                     {
-                        int index;
-
-                        if (_crntPDL == ToolCommonData.PrintLang.PCL)
-                            index = _subsetSymSets[_indxSymSetPCL];
-                        else
-                            index = _subsetSymSets[_indxSymSetPCLXL];
-
-                        _symSetName = PCLSymbolSets.GetName(index);
-                    }
-                    else if (_symSetGroup == PCLSymbolSets.SymSetGroup.UserSet)
-                    {
-                        if (_crntPDL == ToolCommonData.PrintLang.PCL)
-                        {
-                            if (_symSetUserActEmbedPCL)
-                            {
-                                _symSetName = "<user-defined via file>";
-                            }
-                            else
-                            {
-                                _symSetName = "<Unicode-indexed via file>";
-
-                                _symSetId = PCLSymbolSets.GetId(PCLSymbolSets.IndexUnicode);
-                            }
-                        }
-                        else if (_crntPDL == ToolCommonData.PrintLang.PCLXL)
-                        {
-                            if (_symSetUserActEmbedPCLXL)
-                            {
-                                //never true!!
-                                _symSetName = "<user-defined via file>";
-                            }
-                            else
-                            {
-                                _symSetName = "<Unicode-indexed via file>";
-
-                                _symSetId = PCLSymbolSets.GetId(PCLSymbolSets.IndexUnicode);
-                            }
-                        }
-                    }
-                    else if (_symSetGroup == PCLSymbolSets.SymSetGroup.Custom)
-                    {
-                        _symSetName = "<custom>";
-                    }
-
-                    //--------------------------------------------------------//
-
-                    if (_crntPDL == ToolCommonData.PrintLang.PCL)
-                    {
-                        //----------------------------------------------------//
-                        //                                                    //
-                        // PCL                                                //
-                        //                                                    //
-                        //----------------------------------------------------//
-
-                        bool symSetUserSet,
-                                fontSelById;
-
-                        double fontSize;
-
-                        ushort fontIdNo;
-
-                        string parseMethodText = string.Empty,
-                               fontFilename;
-
-                        //----------------------------------------------------//
-
-                        PCLTextParsingMethods.Index parseMethod = (PCLTextParsingMethods.Index)_indxParseMethod;
-
-                        if (parseMethod != PCLTextParsingMethods.Index.not_specified)
-                        {
-                            parseMethodText = "; parse method " + PCLTextParsingMethods.GetValue(_indxParseMethod);
-                        }
-
-                        //----------------------------------------------------//
-
-                        symSetUserSet = _symSetGroup == PCLSymbolSets.SymSetGroup.UserSet;
-
-                        //----------------------------------------------------//
-
-                        if (_fontType == PCLFonts.FontType.Download)
-                        {
-                            fontFilename = _fontFilenamePCL;
-                            fontIdNo = _fontDownloadIdPCL;
-                            fontSelById = _downloadSelByIdPCL;
-                        }
-                        else if (_fontType == PCLFonts.FontType.PrnDisk)
-                        {
-                            fontFilename = _fontPrnDiskNamePCL;
-                            fontIdNo = _fontPrnDiskIdPCL;
-                            fontSelById = true;
-                        }
-                        else
-                        {
-                            fontFilename = string.Empty;
-                            fontIdNo = 0;
-                            fontSelById = false;
-                        }
-
-                        //----------------------------------------------------//
-
-                        if (_fontType != PCLFonts.FontType.PrnDisk)
-                        {
-                            if (ValidatePCLFontCharacteristics())
-                                SetFontSelectData();
-                        }
-                        else if (!_prnDiskSelByIdPCL)
-                        {
-                            if (ValidatePCLFontCharacteristics())
-                                SetFontSelectData();
-                        }
-
-                        if (_fontProportional)
-                            fontSize = _fontHeightPCL;
-                        else
-                            fontSize = _fontPitchPCL;
-
-                        //----------------------------------------------------//
-
-                        ToolFontSamplePCL.GenerateJob(
-                            binWriter,
-                            _fontType,
-                            _subsetPaperSizes[_indxPaperSizePCL],
-                            _subsetPaperTypes[_indxPaperTypePCL],
-                            _subsetOrientations[_indxOrientationPCL],
-                            _formAsMacroPCL,
-                            _showC0CharsPCL,
-                            _optGridVertical,
-                            _fontBound,
-                            SetFontTitle(_indxFontPCL),
-                            _fontDesc + parseMethodText,
-                            _symSetId,
-                            _fontLoadDescPCL,
-                            _fontSelDescPCL,
-                            _fontSelSeqPCL,
-                            _symSetName,
-                            sampleBlocks,
-                            parseMethod,
-                            fontSize,
-                            _fontProportional,
-                            _downloadRemovePCL,
-                            fontSelById,
-                            _prnDiskFontDataKnownPCL,
-                            _prnDiskLoadViaMacro,
-                            fontIdNo,
-                            _fontPrnDiskMacroIdPCL,
-                            fontFilename,
-                            symSetUserSet,
-                            (_mapCodesRelevant) ? _showMapCodesUCS2PCL : false,
-                            (_mapCodesRelevant) ? _showMapCodesUTF8PCL : false,
-                            _symSetUserActEmbedPCL,
-                            _symSetUserFile);
-                    }
-                    else    // if (_crntPDL == ToolCommonData.ePrintLang.PCLXL)
-                    {
-                        bool symSetUserSet = _symSetGroup == PCLSymbolSets.SymSetGroup.UserSet;
-
-                        if (ValidatePCLXLFontCharacteristics())
+                        if (ValidatePCLFontCharacteristics())
                             SetFontSelectData();
-
-                        ToolFontSamplePCLXL.GenerateJob(
-                            binWriter,
-                            _subsetPaperSizes[_indxPaperSizePCLXL],
-                            _subsetPaperTypes[_indxPaperTypePCLXL],
-                            _subsetOrientations[_indxOrientationPCLXL],
-                            _formAsMacroPCLXL,
-                            _showC0CharsPCLXL,
-                            _optGridVertical,
-                            SetFontTitle(_indxFontPCLXL),
-                            _fontDesc,
-                            _symSetNo,
-                            _fontNamePCLXL,
-                            _symSetName,
-                            sampleBlocks,
-                            _fontHeightPCLXL,
-                            downloadFont,
-                            _downloadRemovePCLXL,
-                            _fontFilenamePCLXL,
-                            symSetUserSet,
-                            (_mapCodesRelevant) ? _showMapCodesUCS2PCLXL : false,
-                            (_mapCodesRelevant) ? _showMapCodesUTF8PCLXL : false,
-                            _symSetUserFile);
+                    }
+                    else if (!_prnDiskSelByIdPCL)
+                    {
+                        if (ValidatePCLFontCharacteristics())
+                            SetFontSelectData();
                     }
 
-                    TargetCore.RequestStreamWrite(false);
+                    if (_fontProportional)
+                        fontSize = _fontHeightPCL;
+                    else
+                        fontSize = _fontPitchPCL;
+
+                    //----------------------------------------------------//
+
+                    ToolFontSamplePCL.GenerateJob(
+                        binWriter,
+                        _fontType,
+                        _subsetPaperSizes[_indxPaperSizePCL],
+                        _subsetPaperTypes[_indxPaperTypePCL],
+                        _subsetOrientations[_indxOrientationPCL],
+                        _formAsMacroPCL,
+                        _showC0CharsPCL,
+                        _optGridVertical,
+                        _fontBound,
+                        SetFontTitle(_indxFontPCL),
+                        _fontDesc + parseMethodText,
+                        _symSetId,
+                        _fontLoadDescPCL,
+                        _fontSelDescPCL,
+                        _fontSelSeqPCL,
+                        _symSetName,
+                        sampleBlocks,
+                        parseMethod,
+                        fontSize,
+                        _fontProportional,
+                        _downloadRemovePCL,
+                        fontSelById,
+                        _prnDiskFontDataKnownPCL,
+                        _prnDiskLoadViaMacro,
+                        fontIdNo,
+                        _fontPrnDiskMacroIdPCL,
+                        fontFilename,
+                        symSetUserSet,
+                        (_mapCodesRelevant) ? _showMapCodesUCS2PCL : false,
+                        (_mapCodesRelevant) ? _showMapCodesUTF8PCL : false,
+                        _symSetUserActEmbedPCL,
+                        _symSetUserFile);
                 }
-                catch (SocketException sockExc)
+                else    // if (_crntPDL == ToolCommonData.ePrintLang.PCLXL)
                 {
-                    MessageBox.Show(sockExc.ToString(),
-                                    "Socket exception",
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Error);
+                    bool symSetUserSet = _symSetGroup == PCLSymbolSets.SymSetGroup.UserSet;
+
+                    if (ValidatePCLXLFontCharacteristics())
+                        SetFontSelectData();
+
+                    ToolFontSamplePCLXL.GenerateJob(
+                        binWriter,
+                        _subsetPaperSizes[_indxPaperSizePCLXL],
+                        _subsetPaperTypes[_indxPaperTypePCLXL],
+                        _subsetOrientations[_indxOrientationPCLXL],
+                        _formAsMacroPCLXL,
+                        _showC0CharsPCLXL,
+                        _optGridVertical,
+                        SetFontTitle(_indxFontPCLXL),
+                        _fontDesc,
+                        _symSetNo,
+                        _fontNamePCLXL,
+                        _symSetName,
+                        sampleBlocks,
+                        _fontHeightPCLXL,
+                        downloadFont,
+                        _downloadRemovePCLXL,
+                        _fontFilenamePCLXL,
+                        symSetUserSet,
+                        (_mapCodesRelevant) ? _showMapCodesUCS2PCLXL : false,
+                        (_mapCodesRelevant) ? _showMapCodesUTF8PCLXL : false,
+                        _symSetUserFile);
                 }
-                catch (Exception exc)
-                {
-                    MessageBox.Show(exc.ToString(),
-                                    "Unknown exception",
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Error);
-                }
+
+                TargetCore.RequestStreamWrite(false);
+            }
+            catch (SocketException sockExc)
+            {
+                MessageBox.Show(sockExc.ToString(),
+                                "Socket exception",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString(),
+                                "Unknown exception",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
             }
         }
 

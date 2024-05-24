@@ -103,124 +103,124 @@ namespace PCLParaphernalia
                                 MessageBoxImage.Error);
             }
 
-            if (flagOK)
+            if (!flagOK)
+                return false;
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // Generate font file contents.                               //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            int len,
+                    charClass;
+
+            ushort numChars = 0,
+                    firstCode = 0,
+                    lastCode = 0,
+                    maxGlyphId = 0,
+                    maxComponentDepth = 0,
+                    unitsPerEm = 0;
+
+            bool glyphZeroExists = false;
+
+            byte[] fontNameXL = new byte[cSizeFontname];
+
+            _ttfHandler.GlyphReferencedUnmarkAll();
+
+            _ttfHandler.GetBasicMetrics(ref numChars,
+                                            ref firstCode,
+                                            ref lastCode,
+                                            ref maxGlyphId,
+                                            ref maxComponentDepth,
+                                            ref unitsPerEm,
+                                            ref glyphZeroExists);
+
+            len = fontName.Length;
+
+            if (len > cSizeFontname)
+                len = cSizeFontname;
+
+            for (int j = 0; j < len; j++)
             {
-                //------------------------------------------------------------//
-                //                                                            //
-                // Generate font file contents.                               //
-                //                                                            //
-                //------------------------------------------------------------//
+                fontNameXL[j] = fontName[j];
+            }
 
-                int len,
-                      charClass;
+            for (int j = len; j < cSizeFontname; j++)
+            {
+                fontNameXL[j] = 0x20;
+            }
 
-                ushort numChars = 0,
-                       firstCode = 0,
-                       lastCode = 0,
-                       maxGlyphId = 0,
-                       maxComponentDepth = 0,
-                       unitsPerEm = 0;
+            try
+            {
+                //--------------------------------------------------------//
+                //                                                        //
+                // Write font header.                                     //
+                //                                                        //
+                //--------------------------------------------------------//
 
-                bool glyphZeroExists = false;
+                WriteHddr(glyphZeroExists,
+                            symSetUnbound,
+                            tabvmtxPresent,
+                            flagVMetrics,
+                            numChars,
+                            symSet,
+                            fontNameXL,
+                            conversionText);
 
-                byte[] fontNameXL = new byte[cSizeFontname];
+                //--------------------------------------------------------//
+                //                                                        //
+                // Write BeginChar operator and associated Attribute List.//
+                //                                                        //
+                //--------------------------------------------------------//
 
-                _ttfHandler.GlyphReferencedUnmarkAll();
+                PCLXLWriter.FontCharBegin(_binWriter, false, cSizeFontname, fontNameXL);
 
-                _ttfHandler.GetBasicMetrics(ref numChars,
-                                             ref firstCode,
-                                             ref lastCode,
-                                             ref maxGlyphId,
-                                             ref maxComponentDepth,
-                                             ref unitsPerEm,
-                                             ref glyphZeroExists);
+                //--------------------------------------------------------//
+                //                                                        //
+                // Write Galley Character and font characters.            //
+                //                                                        //
+                //--------------------------------------------------------//
 
-                len = fontName.Length;
+                if (symSetUnbound)
+                    charClass = 0;
+                else if (tabvmtxPresent && flagVMetrics)
+                    charClass = 2;
+                else
+                    charClass = 1;
 
-                if (len > cSizeFontname)
-                    len = cSizeFontname;
+                if (glyphZeroExists)
+                    WriteChar(charClass, 0xffff, 0, 0, 0, maxGlyphId);
 
-                for (int j = 0; j < len; j++)
-                {
-                    fontNameXL[j] = fontName[j];
-                }
+                WriteCharSet(maxGlyphId, sizeCharSet, charClass, symSetUnbound);
 
-                for (int j = len; j < cSizeFontname; j++)
-                {
-                    fontNameXL[j] = 0x20;
-                }
+                //--------------------------------------------------------//
+                //                                                        //
+                // Write EndChar operator.                                //
+                //                                                        //
+                //--------------------------------------------------------//
 
-                try
-                {
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // Write font header.                                     //
-                    //                                                        //
-                    //--------------------------------------------------------//
+                PCLXLWriter.FontCharEnd(_binWriter, false);
 
-                    WriteHddr(glyphZeroExists,
-                               symSetUnbound,
-                               tabvmtxPresent,
-                               flagVMetrics,
-                               numChars,
-                               symSet,
-                               fontNameXL,
-                               conversionText);
+                //--------------------------------------------------------//
+                //                                                        //
+                // Close streams and files.                               //
+                //                                                        //
+                //--------------------------------------------------------//
 
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // Write BeginChar operator and associated Attribute List.//
-                    //                                                        //
-                    //--------------------------------------------------------//
+                _binWriter.Close();
+                _opStream.Close();
 
-                    PCLXLWriter.FontCharBegin(_binWriter, false, cSizeFontname, fontNameXL);
+                _ttfHandler.FontFileClose();
+            }
+            catch (Exception exc)
+            {
+                flagOK = false;
 
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // Write Galley Character and font characters.            //
-                    //                                                        //
-                    //--------------------------------------------------------//
-
-                    if (symSetUnbound)
-                        charClass = 0;
-                    else if (tabvmtxPresent && flagVMetrics)
-                        charClass = 2;
-                    else
-                        charClass = 1;
-
-                    if (glyphZeroExists)
-                        WriteChar(charClass, 0xffff, 0, 0, 0, maxGlyphId);
-
-                    WriteCharSet(maxGlyphId, sizeCharSet, charClass, symSetUnbound);
-
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // Write EndChar operator.                                //
-                    //                                                        //
-                    //--------------------------------------------------------//
-
-                    PCLXLWriter.FontCharEnd(_binWriter, false);
-
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // Close streams and files.                               //
-                    //                                                        //
-                    //--------------------------------------------------------//
-
-                    _binWriter.Close();
-                    _opStream.Close();
-
-                    _ttfHandler.FontFileClose();
-                }
-                catch (Exception exc)
-                {
-                    flagOK = false;
-
-                    MessageBox.Show(exc.ToString(),
-                                    "Failure to write font file",
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Error);
-                }
+                MessageBox.Show(exc.ToString(),
+                                "Failure to write font file",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
             }
 
             return flagOK;

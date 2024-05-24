@@ -80,74 +80,71 @@ namespace PCLParaphernalia
             }
             catch (Exception exc)
             {
-                flagOK = false;
-
                 MessageBox.Show(exc.ToString(),
                                 "Failure to open symbol set file",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
+
+                return false;
             }
 
-            if (flagOK)
+            //------------------------------------------------------------//
+            //                                                            //
+            // Generate symbol set file contents.                         //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            try
             {
-                //------------------------------------------------------------//
-                //                                                            //
-                // Generate symbol set file contents.                         //
-                //                                                            //
-                //------------------------------------------------------------//
+                //--------------------------------------------------------//
+                //                                                        //
+                // Write symbol set identifier sequence.                  //
+                //                                                        //
+                //--------------------------------------------------------//
 
-                try
-                {
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // Write symbol set identifier sequence.                  //
-                    //                                                        //
-                    //--------------------------------------------------------//
+                PCLWriter.SymSetDownloadCode(_binWriter, symSetNo);
 
-                    PCLWriter.SymSetDownloadCode(_binWriter, symSetNo);
+                //--------------------------------------------------------//
+                //                                                        //
+                // Write symbol set descriptor header.                    //
+                //                                                        //
+                //--------------------------------------------------------//
 
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // Write symbol set descriptor header.                    //
-                    //                                                        //
-                    //--------------------------------------------------------//
+                WriteHddr(symSetNo, codeMin, codeMax, charCollReq, PCLSymSetTypes.GetIdPCL((int)symSetType));
 
-                    WriteHddr(symSetNo, codeMin, codeMax, charCollReq, PCLSymSetTypes.GetIdPCL((int)symSetType));
+                //--------------------------------------------------------//
+                //                                                        //
+                // Write symbol set map data.                             //
+                //                                                        //
+                //--------------------------------------------------------//
 
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // Write symbol set map data.                             //
-                    //                                                        //
-                    //--------------------------------------------------------//
+                WriteMapData(flagIgnoreC1, codeMin, codeMax, symSetMap);
 
-                    WriteMapData(flagIgnoreC1, codeMin, codeMax, symSetMap);
+                //--------------------------------------------------------//
+                //                                                        //
+                // Write symbol set save sequence.                        //
+                //                                                        //
+                //--------------------------------------------------------//
 
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // Write symbol set save sequence.                        //
-                    //                                                        //
-                    //--------------------------------------------------------//
+                PCLWriter.SymSetDownloadSave(_binWriter, true);
 
-                    PCLWriter.SymSetDownloadSave(_binWriter, true);
+                //--------------------------------------------------------//
+                //                                                        //
+                // Close streams and files.                               //
+                //                                                        //
+                //--------------------------------------------------------//
 
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // Close streams and files.                               //
-                    //                                                        //
-                    //--------------------------------------------------------//
+                _binWriter.Close();
+                _opStream.Close();
+            }
+            catch (Exception exc)
+            {
+                flagOK = false;
 
-                    _binWriter.Close();
-                    _opStream.Close();
-                }
-                catch (Exception exc)
-                {
-                    flagOK = false;
-
-                    MessageBox.Show(exc.ToString(),
-                                    "Failure to write symbol set file",
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Error);
-                }
+                MessageBox.Show(exc.ToString(),
+                                "Failure to write symbol set file",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
             }
 
             return flagOK;

@@ -58,81 +58,77 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            bool fileOpen = SymSetFileOpen(filename, ref fileSize);
             bool flagOK;
-            if (!fileOpen)
+            if (!SymSetFileOpen(filename, ref fileSize))
             {
-                flagOK = false;
-
                 MessageBox.Show("Unable to open symbol set definition file '" + filename + "'",
                                  "Symbol Set file invalid",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
+
+                return false;
             }
-            else
+
+            firstCode = 0;
+            lastCode = 0;
+
+            if (!ReadSymSetId(fileSize, ref offset, ref symSetNo))
             {
-                firstCode = 0;
-                lastCode = 0;
-
-                flagOK = ReadSymSetId(fileSize, ref offset, ref symSetNo);
-                if (!flagOK)
-                {
-                    MessageBox.Show("Symbol set definition" +
-                                     " file '" + filename + "':\r\n\r\n" +
-                                     "File does not start with" +
-                                     " 'symbol set Id' escape sequence",
-                                     "Symbol Set file invalid",
-                                     MessageBoxButton.OK,
-                                     MessageBoxImage.Error);
-                }
-                else
-                {
-                    byte symSetFormat = 0;
-                    byte symSetTypeId = 0;
-
-                    flagOK = ReadSymSetHddr(filename,
-                                             fileSize,
-                                             symSetNo,
-                                             ref symSetFormat,
-                                             ref symSetTypeId,
-                                             ref offset,
-                                             ref firstCode,
-                                             ref lastCode);
-
-                    if (!flagOK)
-                    {
-                        MessageBox.Show("Symbol set definition" +
-                                         " file '" + filename + "':\r\n\r\n" +
-                                         "Header is invalid",
-                                         "Symbol Set file invalid",
-                                         MessageBoxButton.OK,
-                                         MessageBoxImage.Error);
-                    }
-                    else
-                    {
-                        flagOK = ReadAndStoreSymSetMap(offset,
-                                                        symSetNo,
-                                                        firstCode,
-                                                        lastCode);
-
-                        if (!flagOK)
-                        {
-                            MessageBox.Show("Symbol set definition" +
-                                             " file '" + filename + "':\r\n\r\n" +
-                                             "Mapping data is invalid",
-                                             "Symbol Set file invalid",
-                                             MessageBoxButton.OK,
-                                             MessageBoxImage.Error);
-                        }
-                        else
-                        {
-                            symSetType = PCLSymSetTypes.GetIndexForIdPCL(symSetTypeId);
-                        }
-                    }
-                }
+                MessageBox.Show("Symbol set definition" +
+                                    " file '" + filename + "':\r\n\r\n" +
+                                    "File does not start with" +
+                                    " 'symbol set Id' escape sequence",
+                                    "Symbol Set file invalid",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Error);
 
                 SymSetFileClose();
+                return false;
             }
+
+            byte symSetFormat = 0;
+            byte symSetTypeId = 0;
+
+            flagOK = ReadSymSetHddr(filename,
+                                        fileSize,
+                                        symSetNo,
+                                        ref symSetFormat,
+                                        ref symSetTypeId,
+                                        ref offset,
+                                        ref firstCode,
+                                        ref lastCode);
+
+            if (!flagOK)
+            {
+                MessageBox.Show("Symbol set definition" +
+                                    " file '" + filename + "':\r\n\r\n" +
+                                    "Header is invalid",
+                                    "Symbol Set file invalid",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Error);
+
+                SymSetFileClose();
+                return false;
+            }
+            
+            flagOK = ReadAndStoreSymSetMap(offset, symSetNo, firstCode, lastCode);
+
+            if (!flagOK)
+            {
+                MessageBox.Show("Symbol set definition" +
+                                    " file '" + filename + "':\r\n\r\n" +
+                                    "Mapping data is invalid",
+                                    "Symbol Set file invalid",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Error);
+
+                SymSetFileClose();
+                return false;
+            }
+
+            symSetType = PCLSymSetTypes.GetIndexForIdPCL(symSetTypeId);
+
+            SymSetFileClose();
 
             return flagOK;
         }
@@ -166,44 +162,40 @@ namespace PCLParaphernalia
                 (buf[1] != '*') ||
                 (buf[2] != 'c'))
             {
-                flagOK = false;
+                return false;
             }
-            else
+
+            const int maxRead = 12;
+            bool foundTerm = false;
+
+            int pos,
+                    maxPos;
+
+            byte x;
+
+            offset += prefixLen;
+
+            maxPos = offset + maxRead;
+
+            if (fileSize <= maxPos)
+                maxPos = (int)(fileSize - 1);
+
+            for (pos = offset; flagOK && (!foundTerm) && (pos < maxPos); pos++)
             {
-                const int maxRead = 12;
-                bool foundTerm = false;
+                x = _binReader.ReadByte();
 
-                int pos,
-                      maxPos;
+                if (x == 'R')
+                    foundTerm = true;
+                else if (x < '\x30' || x > '\x39')
+                    flagOK = false;
+                else
+                    value = ((value * 10) + (x - '\x30'));
+            }
 
-                byte x;
-
-                offset += prefixLen;
-
-                maxPos = offset + maxRead;
-
-                if (fileSize <= maxPos)
-                    maxPos = (int)(fileSize - 1);
-
-                for (pos = offset; flagOK && (!foundTerm) && (pos < maxPos); pos++)
-                {
-                    x = _binReader.ReadByte();
-
-                    if (x == 'R')
-                        foundTerm = true;
-                    else if (x < '\x30')
-                        flagOK = false;
-                    else if (x > '\x39')
-                        flagOK = false;
-                    else
-                        value = ((value * 10) + (x - '\x30'));
-                }
-
-                if (foundTerm)
-                {
-                    symSetId = (ushort)value;
-                    fileOffset = pos;
-                }
+            if (foundTerm)
+            {
+                symSetId = (ushort)value;
+                fileOffset = pos;
             }
 
             return flagOK;
@@ -251,48 +243,46 @@ namespace PCLParaphernalia
                 (buf[1] != '(') ||
                 (buf[2] != 'f'))
             {
-                flagOK = false;
+                return false;
+            }
+
+            const int maxRead = 12;
+            bool foundTerm = false;
+
+            int pos,
+                    maxPos;
+
+            byte x;
+
+            offset += prefixLen;
+
+            maxPos = offset + maxRead;
+
+            if (fileSize <= maxPos)
+                maxPos = (int)(fileSize - 1);
+
+            for (pos = offset; flagOK && (!foundTerm) && (pos < maxPos); pos++)
+            {
+                x = _binReader.ReadByte();
+
+                if (x == 'W')
+                    foundTerm = true;
+                else if (x < '\x30')
+                    flagOK = false;
+                else if (x > '\x39')
+                    flagOK = false;
+                else
+                    value = ((value * 10) + (x - '\x30'));
+            }
+
+            if (foundTerm)
+            {
+                hddrOffset = pos;
+                hddrLen = value;
             }
             else
             {
-                const int maxRead = 12;
-                bool foundTerm = false;
-
-                int pos,
-                      maxPos;
-
-                byte x;
-
-                offset += prefixLen;
-
-                maxPos = offset + maxRead;
-
-                if (fileSize <= maxPos)
-                    maxPos = (int)(fileSize - 1);
-
-                for (pos = offset; flagOK && (!foundTerm) && (pos < maxPos); pos++)
-                {
-                    x = _binReader.ReadByte();
-
-                    if (x == 'W')
-                        foundTerm = true;
-                    else if (x < '\x30')
-                        flagOK = false;
-                    else if (x > '\x39')
-                        flagOK = false;
-                    else
-                        value = ((value * 10) + (x - '\x30'));
-                }
-
-                if (foundTerm)
-                {
-                    hddrOffset = pos;
-                    hddrLen = value;
-                }
-                else
-                {
-                    flagOK = false;
-                }
+                flagOK = false;
             }
 
             //----------------------------------------------------------------//
@@ -309,11 +299,12 @@ namespace PCLParaphernalia
                                 "PCL symbol set file",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
-            }
-            else if ((hddrLen + hddrOffset) > fileSize)
-            {
-                flagOK = false;
 
+                return false;
+            }
+            
+            if ((hddrLen + hddrOffset) > fileSize)
+            {
                 MessageBox.Show(messHeader +
                                 "Header (offset = '" + hddrOffset + "') of" +
                                 "length '" + hddrLen + "' is inconsistent" +
@@ -322,124 +313,105 @@ namespace PCLParaphernalia
                                 "PCL symbol set file",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
+
+                return false;
             }
 
-            if (flagOK)
+            //------------------------------------------------------------//
+            //                                                            //
+            // Read header base data.                                     //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            _binReader.Read(buf, 0, hddrDescLen);
+
+            hddrSize = (ushort)((buf[0] * 256) + buf[1]);
+
+            if (hddrSize > hddrLen)
             {
-                //------------------------------------------------------------//
-                //                                                            //
-                // Read header base data.                                     //
-                //                                                            //
-                //------------------------------------------------------------//
+                MessageBox.Show(messHeader +
+                                "Header size '" + hddrSize + "' is" +
+                                " inconsistent with sequence data size of '" +
+                                hddrLen + "'." +
+                                messTrailer,
+                                "PCL symbol set file",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
 
-                _binReader.Read(buf, 0, hddrDescLen);
-
-                hddrSize = (ushort)((buf[0] * 256) + buf[1]);
-
-                if (hddrSize > hddrLen)
-                {
-                    flagOK = false;
-
-                    MessageBox.Show(messHeader +
-                                    "Header size '" + hddrSize + "' is" +
-                                    " inconsistent with sequence data size of '" +
-                                    hddrLen + "'." +
-                                    messTrailer,
-                                    "PCL symbol set file",
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Error);
-                }
-                else if (hddrSize != hddrDescLen)
-                {
-                    flagOK = false;
-
-                    MessageBox.Show(messHeader +
-                                    "Header size '" + hddrSize +
-                                    "' != expected size of '" +
-                                    hddrDescLen + "'." +
-                                    messTrailer,
-                                    "PCL symbol set file",
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Error);
-                }
+                return false;
             }
-
-            if (flagOK)
+                
+            if (hddrSize != hddrDescLen)
             {
-                //------------------------------------------------------------//
-                //                                                            //
-                // Read & check remaining header base items.                  //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                ushort symSetDes;
-
-                int codeCt;
-
-                symSetDes = (ushort)((buf[2] * 256) + buf[3]);
-
-                format = buf[4];
-                type = buf[5];
-
-                firstCode = (ushort)((buf[6] * 256) + buf[7]);
-                lastCode = (ushort)((buf[8] * 256) + buf[9]);
-
-                codeCt = lastCode - firstCode + 1;
-
-                fileOffset = (hddrOffset + hddrSize);
-
-                if (symSetDes != symSetNo)
-                {
-                    flagOK = false;
-
-                    MessageBox.Show(messHeader +
-                                     "Symbol set designator '" + symSetDes + "' is" +
-                                     " != number '" + symSetNo + "' from Assign sequence" +
-                                     messTrailer,
-                                     "PCL symbol set font file",
-                                     MessageBoxButton.OK,
-                                     MessageBoxImage.Error);
-                }
-                else if (format != 3)            // 3 = Unicode
-                {
-                    flagOK = false;
-
-                    MessageBox.Show(messHeader +
-                                     "Format '" + format + "' is" +
-                                     " != required value (3 = Unicode)" +
-                                     messTrailer,
-                                     "PCL symbol set file",
-                                     MessageBoxButton.OK,
-                                     MessageBoxImage.Error);
-                }
-                else if (firstCode > lastCode)
-                {
-                    flagOK = false;
-
-                    MessageBox.Show(messHeader +
-                                     "First code '" + firstCode +
-                                     " > Last Code ' " + lastCode + "'" +
-                                     messTrailer,
-                                     "PCL symbol set file",
-                                     MessageBoxButton.OK,
-                                     MessageBoxImage.Error);
-                }
-                else if (hddrLen != (hddrDescLen + (codeCt * 2)))
-                {
-                    flagOK = false;
-
-                    MessageBox.Show(messHeader +
-                                    "Data length '" + hddrLen + "' is" +
-                                    " inconsistent with mapping for " +
-                                    codeCt + " characters." +
-                                    messTrailer,
-                                    "PCL symbol set file",
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Error);
-                }
+                MessageBox.Show(messHeader +
+                                "Header size '" + hddrSize +
+                                "' != expected size of '" +
+                                hddrDescLen + "'." +
+                                messTrailer,
+                                "PCL symbol set file",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+                    
+                return false;
             }
 
-            return flagOK;
+            //------------------------------------------------------------//
+            //                                                            //
+            // Read & check remaining header base items.                  //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            ushort symSetDes;
+
+            int codeCt;
+
+            symSetDes = (ushort)((buf[2] * 256) + buf[3]);
+
+            format = buf[4];
+            type = buf[5];
+
+            firstCode = (ushort)((buf[6] * 256) + buf[7]);
+            lastCode = (ushort)((buf[8] * 256) + buf[9]);
+
+            codeCt = lastCode - firstCode + 1;
+
+            fileOffset = (hddrOffset + hddrSize);
+
+            var message = string.Empty;
+
+            if (symSetDes != symSetNo)
+            {
+                flagOK = false;
+                message = "Symbol set designator '" + symSetDes + "' is != number '" + symSetNo + "' from Assign sequence";
+
+            }
+            else if (format != 3)            // 3 = Unicode
+            {
+                flagOK = false;
+                message = "Format '" + format + "' is != required value (3 = Unicode)";
+            }
+            else if (firstCode > lastCode)
+            {
+                flagOK = false;
+                message = "First code '" + firstCode + " > Last Code ' " + lastCode + "'";
+            }
+            else if (hddrLen != (hddrDescLen + (codeCt * 2)))
+            {
+                flagOK = false;
+                message = "Data length '" + hddrLen + "' is inconsistent with mapping for ";
+            }
+
+            if (!flagOK)
+            {
+                MessageBox.Show(messHeader + message + messTrailer,
+                    "PCL symbol set file",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+
+                return false;
+            }
+
+            return true;
         }
 
         //--------------------------------------------------------------------//

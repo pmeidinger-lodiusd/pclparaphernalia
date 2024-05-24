@@ -642,6 +642,7 @@ namespace PCLParaphernalia
             else
             {
                 btnDefineSymSet.IsEnabled = false;
+                // TODO: Should these be same as in the if?
                 btnGenerateSymSet.IsEnabled = false;
                 btnLogSave.IsEnabled = false;
             }
@@ -2545,13 +2546,13 @@ namespace PCLParaphernalia
             string txtBoxName = source.Name; // should be in format txtMap0xpq
 
             bool flagOK = ushort.TryParse(txtBoxName.Substring(8, 2),
-                          NumberStyles.HexNumber,
-                          CultureInfo.InvariantCulture,
-                          out ushort mapIndx);
-            if (flagOK)
+                              NumberStyles.HexNumber,
+                              CultureInfo.InvariantCulture,
+                              out ushort mapIndx);
+
+            if (flagOK && mapIndx > _sizeCharSet)
             {
-                if (mapIndx > _sizeCharSet)
-                    flagOK = false;
+                flagOK = false;
             }
 
             if (!flagOK)
@@ -2560,36 +2561,36 @@ namespace PCLParaphernalia
                                 "***** Internal error *****",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Warning);
+
+                return;
+            }
+
+            flagOK = ValidateMapEntry(source, (ushort)(_offsetMin + mapIndx));
+
+            if (flagOK)
+            {
+                ushort codeMin = 0,
+                        codeMax = 0,
+                        codeCt = 0;
+
+                string format;
+
+                if (_flagMapHex)
+                    format = "x4";
+                else
+                    format = string.Empty;
+
+                MapMetrics(_flagIgnoreC0, _flagIgnoreC1, _sizeCharSet,
+                            ref codeMin, ref codeMax, ref codeCt,
+                            ref _targetSymSetType);
+
+                txtCodeMin.Text = codeMin.ToString(format);
+                txtCodeMax.Text = codeMax.ToString(format);
+                txtCodeCt.Text = codeCt.ToString(format);
             }
             else
             {
-                flagOK = ValidateMapEntry(source, (ushort)(_offsetMin + mapIndx));
-
-                if (flagOK)
-                {
-                    ushort codeMin = 0,
-                           codeMax = 0,
-                           codeCt = 0;
-
-                    string format;
-
-                    if (_flagMapHex)
-                        format = "x4";
-                    else
-                        format = string.Empty;
-
-                    MapMetrics(_flagIgnoreC0, _flagIgnoreC1, _sizeCharSet,
-                                ref codeMin, ref codeMax, ref codeCt,
-                                ref _targetSymSetType);
-
-                    txtCodeMin.Text = codeMin.ToString(format);
-                    txtCodeMax.Text = codeMax.ToString(format);
-                    txtCodeCt.Text = codeCt.ToString(format);
-                }
-                else
-                {
-                    Helper_WPFFocusFix.Focus(source);   // need this to focus
-                }
+                Helper_WPFFocusFix.Focus(source);   // need this to focus
             }
         }
 

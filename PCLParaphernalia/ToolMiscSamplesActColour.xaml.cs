@@ -724,12 +724,12 @@ namespace PCLParaphernalia
                 planeNo = mapIndx - (sampleNo * 10);
                 planeSig = planeCt - planeNo;
 
-                if ((sampleNo < 0) || (sampleNo > (sampleCt - 1)))
+                if ((sampleNo < 0) || (sampleNo > (sampleCt - 1)) ||
+                    (planeNo < 1) || (planeNo > planeCt) ||
+                    (planeSig < 0) || (planeSig >= planeCt))
+                {
                     flagOK = false;
-                else if ((planeNo < 1) || (planeNo > planeCt))
-                    flagOK = false;
-                else if ((planeSig < 0) || (planeSig >= planeCt))
-                    flagOK = false;
+                }
             }
 
             if (!flagOK)
@@ -785,17 +785,17 @@ namespace PCLParaphernalia
                                           ref sampleNo, ref planeNo,
                                           ref planeSig);
 
-            if (flagOK)
-            {
-                flagOK = ValidateMapEntry(source,
-                                           sampleNo, planeNo, planeSig,
-                                           _flagColourFmtHexPCL,
-                                           ref _samplesPCL_CID);
+            if (!flagOK)
+                return;
 
-                if (!flagOK)
-                {
-                    Helper_WPFFocusFix.Focus(source);   // need this to focus
-                }
+            flagOK = ValidateMapEntry(source,
+                                        sampleNo, planeNo, planeSig,
+                                        _flagColourFmtHexPCL,
+                                        ref _samplesPCL_CID);
+
+            if (!flagOK)
+            {
+                Helper_WPFFocusFix.Focus(source);   // need this to focus
             }
         }
 
@@ -825,18 +825,18 @@ namespace PCLParaphernalia
                                           ref sampleNo, ref planeNo,
                                           ref planeSig);
 
-            if (flagOK)
-            {
-                flagOK = ValidateMapEntry(source,
-                                           sampleNo, planeNo, planeSig,
-                                           _flagColourFmtHexPCLXL,
-                                           ref _samplesPCLXL_Gray);
+            if (!flagOK)
+                return;
 
-                if (!flagOK)
-                {
-                    Helper_WPFFocusFix.Focus(source);   // need this to focus
-                }
-            }
+            flagOK = ValidateMapEntry(source,
+                                        sampleNo, planeNo, planeSig,
+                                        _flagColourFmtHexPCLXL,
+                                        ref _samplesPCLXL_Gray);
+
+            if (!flagOK)
+            {
+                Helper_WPFFocusFix.Focus(source);   // need this to focus
+            }            
         }
 
         //--------------------------------------------------------------------//
@@ -865,17 +865,17 @@ namespace PCLParaphernalia
                                           ref sampleNo, ref planeNo,
                                           ref planeSig);
 
-            if (flagOK)
-            {
-                flagOK = ValidateMapEntry(source,
-                                           sampleNo, planeNo, planeSig,
-                                           _flagColourFmtHexPCLXL,
-                                           ref _samplesPCLXL_RGB);
+            if (!flagOK)
+                return;
 
-                if (!flagOK)
-                {
-                    Helper_WPFFocusFix.Focus(source);   // need this to focus
-                }
+            flagOK = ValidateMapEntry(source,
+                                        sampleNo, planeNo, planeSig,
+                                        _flagColourFmtHexPCLXL,
+                                        ref _samplesPCLXL_RGB);
+
+            if (!flagOK)
+            {
+                Helper_WPFFocusFix.Focus(source);   // need this to focus
             }
         }
 

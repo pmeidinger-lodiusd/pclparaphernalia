@@ -492,12 +492,13 @@ namespace PCLParaphernalia
             segData[7] = LsByte(valUInt16);
 
             bool flagOK = WriteHddrSegHddr(pdlIsPCLXL, fmt16, cSizeSegCC, segId, ref sumMod256);
-            if (flagOK)
-            {
-                WriteHddrFragment(pdlIsPCLXL, cSizeSegCC, segData, ref sumMod256);
-            }
 
-            return flagOK;
+            if (!flagOK)
+                return false;
+
+            WriteHddrFragment(pdlIsPCLXL, cSizeSegCC, segData, ref sumMod256);
+
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -516,15 +517,13 @@ namespace PCLParaphernalia
             int convTextLen = conversionText.Length;
 
             bool flagOK = WriteHddrSegHddr(pdlIsPCLXL, fmt16, (uint)convTextLen, segId, ref sumMod256);
-            if (flagOK)
-            {
-                WriteHddrFragment(pdlIsPCLXL,
-                                   convTextLen,
-                                   conversionText,
-                                   ref sumMod256);
-            }
 
-            return flagOK;
+            if (!flagOK)
+                return false;
+
+            WriteHddrFragment(pdlIsPCLXL, convTextLen, conversionText, ref sumMod256);
+
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -557,12 +556,13 @@ namespace PCLParaphernalia
             segData[5] = LsByte(MsUInt16(numRegions));
 
             bool flagOK = WriteHddrSegHddr(pdlIsPCLXL, fmt16, cSizeSegGC, segId, ref sumMod256);
-            if (flagOK)
-            {
-                WriteHddrFragment(pdlIsPCLXL, cSizeSegGC, segData, ref sumMod256);
-            }
 
-            return flagOK;
+            if (!flagOK)
+                return false;
+
+            WriteHddrFragment(pdlIsPCLXL, cSizeSegGC, segData, ref sumMod256);
+
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -607,383 +607,383 @@ namespace PCLParaphernalia
                             segLenGT,
                             segId,
                             ref sumMod256);
-            if (flagOK)
+            if (!flagOK)
+                return false;
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // Write table directory header, and directory entries for    //
+            // the tables which will be written (including the zero-size  //
+            // 'gdir' table).                                             //
+            //                                                            //
+            // If the donor font has vhea and vmtx tables, this indicates //
+            // that the font supports vertical rotated characters.        //
+            // If we supported these tables (valid in GT segment for both //
+            // PCL and PCL XL fonts), we'd also need to consider writing  //
+            // segments VE, VR and VT (but perhaps only for PCL XL).      //
+            // Difficulty would be in working out the contents of those   //
+            // segments (especially VE and VT), as there doesn't appear   //
+            // to be any definitive guidance for this.                    //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            WriteHddrSegDataGTDirHddr(pdlIsPCLXL, (ushort)numTables, ref sumMod256);
+
+            uint crntOffset = cSizeSegGTDirHddr + sizeDirectory;
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // cvt                                                        //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            tabLen = _metrics_cvt.TableLength;
+
+            if (tabLen != 0)
             {
-                //------------------------------------------------------------//
-                //                                                            //
-                // Write table directory header, and directory entries for    //
-                // the tables which will be written (including the zero-size  //
-                // 'gdir' table).                                             //
-                //                                                            //
-                // If the donor font has vhea and vmtx tables, this indicates //
-                // that the font supports vertical rotated characters.        //
-                // If we supported these tables (valid in GT segment for both //
-                // PCL and PCL XL fonts), we'd also need to consider writing  //
-                // segments VE, VR and VT (but perhaps only for PCL XL).      //
-                // Difficulty would be in working out the contents of those   //
-                // segments (especially VE and VT), as there doesn't appear   //
-                // to be any definitive guidance for this.                    //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                WriteHddrSegDataGTDirHddr(pdlIsPCLXL, (ushort)numTables, ref sumMod256);
-
-                uint crntOffset = cSizeSegGTDirHddr + sizeDirectory;
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // cvt                                                        //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                tabLen = _metrics_cvt.TableLength;
-
-                if (tabLen != 0)
-                {
-                    WriteHddrSegDataGTDirEntry(pdlIsPCLXL,
-                                                _metrics_cvt.TableTag,
-                                                tabLen,
-                                                _metrics_cvt.TableChecksum,
-                                                crntOffset,
-                                                ref sumMod256);
-
-                    crntOffset += _metrics_cvt.TablePadLen;
-                }
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // fpgm                                                       //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                tabLen = _metrics_fpgm.TableLength;
-
-                if (tabLen != 0)
-                {
-                    WriteHddrSegDataGTDirEntry(pdlIsPCLXL,
-                                                _metrics_fpgm.TableTag,
-                                                tabLen,
-                                                _metrics_fpgm.TableChecksum,
-                                                crntOffset,
-                                                ref sumMod256);
-
-                    crntOffset += _metrics_fpgm.TablePadLen;
-                }
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // gdir                                                       //
-                // empty table                                                //
-                //                                                            //
-                //------------------------------------------------------------//
-
                 WriteHddrSegDataGTDirEntry(pdlIsPCLXL,
-                                            _metrics_gdir.TableTag,
-                                            0,
-                                            0,
-                                            0,
-                                            ref sumMod256);
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // head                                                       //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                WriteHddrSegDataGTDirEntry(pdlIsPCLXL,
-                                            _metrics_head.TableTag,
-                                            _metrics_head.TableLength,
-                                            _metrics_head.TableChecksum,
+                                            _metrics_cvt.TableTag,
+                                            tabLen,
+                                            _metrics_cvt.TableChecksum,
                                             crntOffset,
                                             ref sumMod256);
 
-                crntOffset += _metrics_head.TablePadLen;
+                crntOffset += _metrics_cvt.TablePadLen;
+            }
 
-                //------------------------------------------------------------//
-                //                                                            //
-                // hhea                                                       //
-                //                                                            //
-                //------------------------------------------------------------//
+            //------------------------------------------------------------//
+            //                                                            //
+            // fpgm                                                       //
+            //                                                            //
+            //------------------------------------------------------------//
 
-                if ((!pdlIsPCLXL) || symSetUnbound)
-                {
-                    WriteHddrSegDataGTDirEntry(pdlIsPCLXL,
-                                                _metrics_hhea.TableTag,
-                                                _metrics_hhea.TableLength,
-                                                _metrics_hhea.TableChecksum,
-                                                crntOffset,
-                                                ref sumMod256);
+            tabLen = _metrics_fpgm.TableLength;
 
-                    crntOffset += _metrics_hhea.TablePadLen;
-                }
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // hmtx                                                       //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                if ((!pdlIsPCLXL) || symSetUnbound)
-                {
-                    WriteHddrSegDataGTDirEntry(pdlIsPCLXL,
-                                                _metrics_hmtx.TableTag,
-                                                _metrics_hmtx.TableLength,
-                                                _metrics_hmtx.TableChecksum,
-                                                crntOffset,
-                                                ref sumMod256);
-
-                    crntOffset += _metrics_hmtx.TablePadLen;
-                }
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // maxp                                                       //
-                //                                                            //
-                //------------------------------------------------------------//
-
+            if (tabLen != 0)
+            {
                 WriteHddrSegDataGTDirEntry(pdlIsPCLXL,
-                                            _metrics_maxp.TableTag,
-                                            _metrics_maxp.TableLength,
-                                            _metrics_maxp.TableChecksum,
+                                            _metrics_fpgm.TableTag,
+                                            tabLen,
+                                            _metrics_fpgm.TableChecksum,
                                             crntOffset,
                                             ref sumMod256);
 
-                crntOffset += _metrics_maxp.TablePadLen;
+                crntOffset += _metrics_fpgm.TablePadLen;
+            }
 
-                //------------------------------------------------------------//
-                //                                                            //
-                // prep                                                       //
-                //                                                            //
-                //------------------------------------------------------------//
+            //------------------------------------------------------------//
+            //                                                            //
+            // gdir                                                       //
+            // empty table                                                //
+            //                                                            //
+            //------------------------------------------------------------//
 
-                tabLen = _metrics_prep.TableLength;
+            WriteHddrSegDataGTDirEntry(pdlIsPCLXL,
+                                        _metrics_gdir.TableTag,
+                                        0,
+                                        0,
+                                        0,
+                                        ref sumMod256);
 
-                if (tabLen != 0)
-                {
-                    WriteHddrSegDataGTDirEntry(pdlIsPCLXL,
-                                                _metrics_prep.TableTag,
-                                                tabLen,
-                                                _metrics_prep.TableChecksum,
-                                                crntOffset,
-                                                ref sumMod256);
+            //------------------------------------------------------------//
+            //                                                            //
+            // head                                                       //
+            //                                                            //
+            //------------------------------------------------------------//
 
-                    crntOffset += _metrics_prep.TablePadLen;
-                }
+            WriteHddrSegDataGTDirEntry(pdlIsPCLXL,
+                                        _metrics_head.TableTag,
+                                        _metrics_head.TableLength,
+                                        _metrics_head.TableChecksum,
+                                        crntOffset,
+                                        ref sumMod256);
 
-                if (tabvmtxPresent && flagVMetrics)
-                {
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // vhea                                                   //
-                    // Support for vertical rotated characters                //
-                    //                                                        //
-                    //--------------------------------------------------------//
+            crntOffset += _metrics_head.TablePadLen;
 
-                    tabLen = _metrics_vhea.TableLength;
+            //------------------------------------------------------------//
+            //                                                            //
+            // hhea                                                       //
+            //                                                            //
+            //------------------------------------------------------------//
 
-                    if (tabLen != 0)
-                    {
-                        if ((!pdlIsPCLXL) || symSetUnbound)
-                        {
-                            WriteHddrSegDataGTDirEntry(
-                                pdlIsPCLXL,
-                                _metrics_vhea.TableTag,
-                                tabLen,
-                                _metrics_vhea.TableChecksum,
-                                crntOffset,
-                                ref sumMod256);
-
-                            crntOffset += _metrics_vhea.TablePadLen;
-                        }
-                    }
-
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // vmtx                                                   //
-                    // Support for vertical rotated characters                //
-                    //                                                        //
-                    //--------------------------------------------------------//
-
-                    tabLen = _metrics_vmtx.TableLength;
-
-                    if (tabLen != 0)
-                    {
-                        if ((!pdlIsPCLXL) || symSetUnbound)
-                        {
-                            WriteHddrSegDataGTDirEntry(
-                                pdlIsPCLXL,
-                                _metrics_vmtx.TableTag,
-                                tabLen,
-                                _metrics_vmtx.TableChecksum,
-                                crntOffset,
-                                ref sumMod256);
-
-                            crntOffset += _metrics_vmtx.TablePadLen;
-                        }
-                    }
-                }
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // Write the actual tables; these follow the end of the table //
-                // directory.                                                 //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // cvt                                                        //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                tabLen = _metrics_cvt.TableLength;
-
-                if (tabLen != 0)
-                {
-                    WriteHddrSegDataGTTableData(pdlIsPCLXL,
-                                                tabLen,
-                                                _metrics_cvt.TableOffset,
-                                                _metrics_cvt.TablePadBytes,
-                                                ref sumMod256);
-                }
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // fpgm                                                       //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                tabLen = _metrics_fpgm.TableLength;
-
-                if (tabLen != 0)
-                {
-                    WriteHddrSegDataGTTableData(pdlIsPCLXL,
-                                                tabLen,
-                                                _metrics_fpgm.TableOffset,
-                                                _metrics_fpgm.TablePadBytes,
-                                                ref sumMod256);
-                }
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // head                                                       //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                WriteHddrSegDataGTTableData(pdlIsPCLXL,
-                                            _metrics_head.TableLength,
-                                            _metrics_head.TableOffset,
-                                            _metrics_head.TablePadBytes,
+            if ((!pdlIsPCLXL) || symSetUnbound)
+            {
+                WriteHddrSegDataGTDirEntry(pdlIsPCLXL,
+                                            _metrics_hhea.TableTag,
+                                            _metrics_hhea.TableLength,
+                                            _metrics_hhea.TableChecksum,
+                                            crntOffset,
                                             ref sumMod256);
 
-                //------------------------------------------------------------//
-                //                                                            //
-                // hhea                                                       //
-                //                                                            //
-                //------------------------------------------------------------//
+                crntOffset += _metrics_hhea.TablePadLen;
+            }
 
-                if ((!pdlIsPCLXL) || symSetUnbound)
-                {
-                    WriteHddrSegDataGTTableData(pdlIsPCLXL,
-                                                _metrics_hhea.TableLength,
-                                                _metrics_hhea.TableOffset,
-                                                _metrics_hhea.TablePadBytes,
-                                                ref sumMod256);
-                }
+            //------------------------------------------------------------//
+            //                                                            //
+            // hmtx                                                       //
+            //                                                            //
+            //------------------------------------------------------------//
 
-                //------------------------------------------------------------//
-                //                                                            //
-                // hmtx                                                       //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                if ((!pdlIsPCLXL) || symSetUnbound)
-                {
-                    WriteHddrSegDataGTTableData(pdlIsPCLXL,
-                                                _metrics_hmtx.TableLength,
-                                                _metrics_hmtx.TableOffset,
-                                                _metrics_hmtx.TablePadBytes,
-                                                ref sumMod256);
-                }
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // maxp                                                       //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                WriteHddrSegDataGTTableData(pdlIsPCLXL,
-                                            _metrics_maxp.TableLength,
-                                            _metrics_maxp.TableOffset,
-                                            _metrics_maxp.TablePadBytes,
+            if ((!pdlIsPCLXL) || symSetUnbound)
+            {
+                WriteHddrSegDataGTDirEntry(pdlIsPCLXL,
+                                            _metrics_hmtx.TableTag,
+                                            _metrics_hmtx.TableLength,
+                                            _metrics_hmtx.TableChecksum,
+                                            crntOffset,
                                             ref sumMod256);
 
-                //------------------------------------------------------------//
-                //                                                            //
-                // prep                                                       //
-                //                                                            //
-                //------------------------------------------------------------//
+                crntOffset += _metrics_hmtx.TablePadLen;
+            }
 
-                tabLen = _metrics_prep.TableLength;
+            //------------------------------------------------------------//
+            //                                                            //
+            // maxp                                                       //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            WriteHddrSegDataGTDirEntry(pdlIsPCLXL,
+                                        _metrics_maxp.TableTag,
+                                        _metrics_maxp.TableLength,
+                                        _metrics_maxp.TableChecksum,
+                                        crntOffset,
+                                        ref sumMod256);
+
+            crntOffset += _metrics_maxp.TablePadLen;
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // prep                                                       //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            tabLen = _metrics_prep.TableLength;
+
+            if (tabLen != 0)
+            {
+                WriteHddrSegDataGTDirEntry(pdlIsPCLXL,
+                                            _metrics_prep.TableTag,
+                                            tabLen,
+                                            _metrics_prep.TableChecksum,
+                                            crntOffset,
+                                            ref sumMod256);
+
+                crntOffset += _metrics_prep.TablePadLen;
+            }
+
+            if (tabvmtxPresent && flagVMetrics)
+            {
+                //--------------------------------------------------------//
+                //                                                        //
+                // vhea                                                   //
+                // Support for vertical rotated characters                //
+                //                                                        //
+                //--------------------------------------------------------//
+
+                tabLen = _metrics_vhea.TableLength;
 
                 if (tabLen != 0)
                 {
-                    WriteHddrSegDataGTTableData(pdlIsPCLXL,
-                                                tabLen,
-                                                _metrics_prep.TableOffset,
-                                                _metrics_prep.TablePadBytes,
-                                                ref sumMod256);
+                    if ((!pdlIsPCLXL) || symSetUnbound)
+                    {
+                        WriteHddrSegDataGTDirEntry(
+                            pdlIsPCLXL,
+                            _metrics_vhea.TableTag,
+                            tabLen,
+                            _metrics_vhea.TableChecksum,
+                            crntOffset,
+                            ref sumMod256);
+
+                        crntOffset += _metrics_vhea.TablePadLen;
+                    }
                 }
 
-                if (tabvmtxPresent && flagVMetrics)
+                //--------------------------------------------------------//
+                //                                                        //
+                // vmtx                                                   //
+                // Support for vertical rotated characters                //
+                //                                                        //
+                //--------------------------------------------------------//
+
+                tabLen = _metrics_vmtx.TableLength;
+
+                if (tabLen != 0)
                 {
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // vhea                                                   //
-                    // Support for vertical rotated characters                //
-                    //                                                        //
-                    //--------------------------------------------------------//
-
-                    tabLen = _metrics_vhea.TableLength;
-
-                    if (tabLen != 0)
+                    if ((!pdlIsPCLXL) || symSetUnbound)
                     {
-                        if ((!pdlIsPCLXL) || symSetUnbound)
-                        {
-                            WriteHddrSegDataGTTableData(
-                                pdlIsPCLXL,
-                                tabLen,
-                                _metrics_vhea.TableOffset,
-                                _metrics_vhea.TablePadBytes,
-                                ref sumMod256);
-                        }
-                    }
+                        WriteHddrSegDataGTDirEntry(
+                            pdlIsPCLXL,
+                            _metrics_vmtx.TableTag,
+                            tabLen,
+                            _metrics_vmtx.TableChecksum,
+                            crntOffset,
+                            ref sumMod256);
 
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // vmtx                                                   //
-                    // Support for vertical rotated characters                //
-                    //                                                        //
-                    //--------------------------------------------------------//
-
-                    tabLen = _metrics_vmtx.TableLength;
-
-                    if (tabLen != 0)
-                    {
-                        if ((!pdlIsPCLXL) || symSetUnbound)
-                        {
-                            WriteHddrSegDataGTTableData(
-                                pdlIsPCLXL,
-                                tabLen,
-                                _metrics_vmtx.TableOffset,
-                                _metrics_vmtx.TablePadBytes,
-                                ref sumMod256);
-                        }
+                        crntOffset += _metrics_vmtx.TablePadLen;
                     }
                 }
             }
 
-            return flagOK;
+            //------------------------------------------------------------//
+            //                                                            //
+            // Write the actual tables; these follow the end of the table //
+            // directory.                                                 //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // cvt                                                        //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            tabLen = _metrics_cvt.TableLength;
+
+            if (tabLen != 0)
+            {
+                WriteHddrSegDataGTTableData(pdlIsPCLXL,
+                                            tabLen,
+                                            _metrics_cvt.TableOffset,
+                                            _metrics_cvt.TablePadBytes,
+                                            ref sumMod256);
+            }
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // fpgm                                                       //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            tabLen = _metrics_fpgm.TableLength;
+
+            if (tabLen != 0)
+            {
+                WriteHddrSegDataGTTableData(pdlIsPCLXL,
+                                            tabLen,
+                                            _metrics_fpgm.TableOffset,
+                                            _metrics_fpgm.TablePadBytes,
+                                            ref sumMod256);
+            }
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // head                                                       //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            WriteHddrSegDataGTTableData(pdlIsPCLXL,
+                                        _metrics_head.TableLength,
+                                        _metrics_head.TableOffset,
+                                        _metrics_head.TablePadBytes,
+                                        ref sumMod256);
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // hhea                                                       //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            if ((!pdlIsPCLXL) || symSetUnbound)
+            {
+                WriteHddrSegDataGTTableData(pdlIsPCLXL,
+                                            _metrics_hhea.TableLength,
+                                            _metrics_hhea.TableOffset,
+                                            _metrics_hhea.TablePadBytes,
+                                            ref sumMod256);
+            }
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // hmtx                                                       //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            if ((!pdlIsPCLXL) || symSetUnbound)
+            {
+                WriteHddrSegDataGTTableData(pdlIsPCLXL,
+                                            _metrics_hmtx.TableLength,
+                                            _metrics_hmtx.TableOffset,
+                                            _metrics_hmtx.TablePadBytes,
+                                            ref sumMod256);
+            }
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // maxp                                                       //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            WriteHddrSegDataGTTableData(pdlIsPCLXL,
+                                        _metrics_maxp.TableLength,
+                                        _metrics_maxp.TableOffset,
+                                        _metrics_maxp.TablePadBytes,
+                                        ref sumMod256);
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // prep                                                       //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            tabLen = _metrics_prep.TableLength;
+
+            if (tabLen != 0)
+            {
+                WriteHddrSegDataGTTableData(pdlIsPCLXL,
+                                            tabLen,
+                                            _metrics_prep.TableOffset,
+                                            _metrics_prep.TablePadBytes,
+                                            ref sumMod256);
+            }
+
+            if (tabvmtxPresent && flagVMetrics)
+            {
+                //--------------------------------------------------------//
+                //                                                        //
+                // vhea                                                   //
+                // Support for vertical rotated characters                //
+                //                                                        //
+                //--------------------------------------------------------//
+
+                tabLen = _metrics_vhea.TableLength;
+
+                if (tabLen != 0)
+                {
+                    if ((!pdlIsPCLXL) || symSetUnbound)
+                    {
+                        WriteHddrSegDataGTTableData(
+                            pdlIsPCLXL,
+                            tabLen,
+                            _metrics_vhea.TableOffset,
+                            _metrics_vhea.TablePadBytes,
+                            ref sumMod256);
+                    }
+                }
+
+                //--------------------------------------------------------//
+                //                                                        //
+                // vmtx                                                   //
+                // Support for vertical rotated characters                //
+                //                                                        //
+                //--------------------------------------------------------//
+
+                tabLen = _metrics_vmtx.TableLength;
+
+                if (tabLen != 0)
+                {
+                    if ((!pdlIsPCLXL) || symSetUnbound)
+                    {
+                        WriteHddrSegDataGTTableData(
+                            pdlIsPCLXL,
+                            tabLen,
+                            _metrics_vmtx.TableOffset,
+                            _metrics_vmtx.TablePadBytes,
+                            ref sumMod256);
+                    }
+                }
+            }
+
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -1182,15 +1182,15 @@ namespace PCLParaphernalia
                            cSizeSegPA,
                            segId,
                            ref sumMod256);
-            if (flagOK)
-            {
-                WriteHddrFragment(pdlIsPCLXL,
-                                   cSizeSegPA,
-                                   segData,
-                                   ref sumMod256);
-            }
+            if (!flagOK)
+                return false;
 
-            return flagOK;
+            WriteHddrFragment(pdlIsPCLXL,
+                                cSizeSegPA,
+                                segData,
+                                ref sumMod256);
+
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -1216,15 +1216,15 @@ namespace PCLParaphernalia
                            (uint)convTextLen,
                            segId,
                            ref sumMod256);
-            if (flagOK)
-            {
+            if (!flagOK)
+                return false;
+
                 WriteHddrFragment(pdlIsPCLXL,
                                    convTextLen,
                                    conversionText,
                                    ref sumMod256);
-            }
 
-            return flagOK;
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -1252,12 +1252,13 @@ namespace PCLParaphernalia
             segData[3] = LsByte(vDescender);    // sTypoDescender LSB
 
             bool flagOK = WriteHddrSegHddr(pdlIsPCLXL, fmt16, cSizeSegVR, segId, ref sumMod256);
-            if (flagOK)
-            {
-                WriteHddrFragment(pdlIsPCLXL, cSizeSegVR, segData, ref sumMod256);
-            }
 
-            return flagOK;
+            if (!flagOK)
+                return false;
+
+            WriteHddrFragment(pdlIsPCLXL, cSizeSegVR, segData, ref sumMod256);
+
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -1384,12 +1385,9 @@ namespace PCLParaphernalia
                 }
             }
 
-            if (flagOK)
+            if (flagOK && tabvmtxPresent && flagVMetrics)
             {
-                if (tabvmtxPresent && flagVMetrics)
-                {
-                    flagOK = WriteHddrSegDataVR(pdlIsPCLXL, fmt16, ref sumMod256);
-                }
+                flagOK = WriteHddrSegDataVR(pdlIsPCLXL, fmt16, ref sumMod256);
             }
 
             if (flagOK && segGTLast)

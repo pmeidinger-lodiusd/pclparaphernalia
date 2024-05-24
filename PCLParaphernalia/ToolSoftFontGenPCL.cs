@@ -113,100 +113,97 @@ namespace PCLParaphernalia
             }
             catch (Exception exc)
             {
-                flagOK = false;
-
                 MessageBox.Show(exc.ToString(),
                                 "Failure to open output font file",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
+
+                return false;
             }
 
-            if (flagOK)
+            //------------------------------------------------------------//
+            //                                                            //
+            // Generate font file contents.                               //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            ushort numChars = 0,
+                    firstCode = 0,
+                    lastCode = 0,
+                    maxGlyphId = 0,
+                    maxComponentDepth = 0,
+                    unitsPerEm = 0;
+
+            bool glyphZeroExists = false;
+
+            _ttfHandler.GlyphReferencedUnmarkAll();
+
+            _ttfHandler.GetBasicMetrics(ref numChars,
+                                            ref firstCode,
+                                            ref lastCode,
+                                            ref maxGlyphId,
+                                            ref maxComponentDepth,
+                                            ref unitsPerEm,
+                                            ref glyphZeroExists);
+
+            try
             {
-                //------------------------------------------------------------//
-                //                                                            //
-                // Generate font file contents.                               //
-                //                                                            //
-                //------------------------------------------------------------//
+                //--------------------------------------------------------//
+                //                                                        //
+                // Write font header.                                     //
+                //                                                        //
+                //--------------------------------------------------------//
 
-                ushort numChars = 0,
-                       firstCode = 0,
-                       lastCode = 0,
-                       maxGlyphId = 0,
-                       maxComponentDepth = 0,
-                       unitsPerEm = 0;
+                WriteHddr(ref monoSpaced,
+                            fmt16,
+                            segGTLast,
+                            usePCLT,
+                            glyphZeroExists,
+                            symSetUnbound,
+                            tabvmtxPresent,
+                            useVMetrics,
+                            symSetType,
+                            firstCode,
+                            lastCode,
+                            numChars,
+                            unitsPerEm,
+                            symSet,
+                            style,
+                            strokeWeight,
+                            typeface,
+                            charCollComp,
+                            conversionText);
 
-                bool glyphZeroExists = false;
+                //--------------------------------------------------------//
+                //                                                        //
+                // Write Galley Character and font characters.            //
+                //                                                        //
+                //--------------------------------------------------------//
 
-                _ttfHandler.GlyphReferencedUnmarkAll();
+                if (glyphZeroExists)
+                    WriteChar(0xffff, 0, 0, 0, maxGlyphId);
 
-                _ttfHandler.GetBasicMetrics(ref numChars,
-                                             ref firstCode,
-                                             ref lastCode,
-                                             ref maxGlyphId,
-                                             ref maxComponentDepth,
-                                             ref unitsPerEm,
-                                             ref glyphZeroExists);
+                WriteCharSet(maxGlyphId, sizeCharSet, symSetUnbound);
 
-                try
-                {
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // Write font header.                                     //
-                    //                                                        //
-                    //--------------------------------------------------------//
+                //--------------------------------------------------------//
+                //                                                        //
+                // Close streams and files.                               //
+                //                                                        //
+                //--------------------------------------------------------//
 
-                    WriteHddr(ref monoSpaced,
-                               fmt16,
-                               segGTLast,
-                               usePCLT,
-                               glyphZeroExists,
-                               symSetUnbound,
-                               tabvmtxPresent,
-                               useVMetrics,
-                               symSetType,
-                               firstCode,
-                               lastCode,
-                               numChars,
-                               unitsPerEm,
-                               symSet,
-                               style,
-                               strokeWeight,
-                               typeface,
-                               charCollComp,
-                               conversionText);
+                _binWriter.Close();
+                _opStream.Close();
 
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // Write Galley Character and font characters.            //
-                    //                                                        //
-                    //--------------------------------------------------------//
+                _ttfHandler.FontFileClose();
+            }
+            catch (Exception exc)
+            {
+                flagOK = false;
 
-                    if (glyphZeroExists)
-                        WriteChar(0xffff, 0, 0, 0, maxGlyphId);
-
-                    WriteCharSet(maxGlyphId, sizeCharSet, symSetUnbound);
-
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // Close streams and files.                               //
-                    //                                                        //
-                    //--------------------------------------------------------//
-
-                    _binWriter.Close();
-                    _opStream.Close();
-
-                    _ttfHandler.FontFileClose();
-                }
-                catch (Exception exc)
-                {
-                    flagOK = false;
-
-                    MessageBox.Show(exc.ToString(),
-                                    "Failure to write font file",
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Error);
-                }
+                MessageBox.Show(exc.ToString(),
+                                "Failure to write font file",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
             }
 
             return flagOK;
@@ -743,158 +740,155 @@ namespace PCLParaphernalia
                             convTextLen) +
                       cSizeHddrTrail;
 
-            bool flagOK;
+            
             if ((hddrLen > cSizeHddrFmt15Max) && (!fmt16))
             {
-                flagOK = false;
-
-                MessageBox.Show("Header length of '" + hddrLen +
-                                 "' is incompatible with 'format 15'" +
-                                 " font.",
+                MessageBox.Show("Header length of '" + hddrLen +"' is incompatible with 'format 15' font.",
                                  "Soft font header invalid",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
+
+                return false;
             }
-            else
+
+            PCLWriter.FontDownloadHddr(_binWriter, (uint)hddrLen);
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // Write font header descriptor.                              //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            hddrDesc[0] = MsByte(cSizeHddrDesc);
+            hddrDesc[1] = LsByte(cSizeHddrDesc);
+
+            hddrDesc[2] = fontFormat;          // Font Format
+            hddrDesc[3] = fontType;            // Font Type
+            hddrDesc[4] = MsByte(style);      // Style MSB
+            hddrDesc[5] = 0;                   // Reserved
+            hddrDesc[6] = 0;                   // Baseline Position MSB
+            hddrDesc[7] = 0;                   // Baseline Position LSB
+            hddrDesc[8] = MsByte(cellWidth);  // Cell width MSB
+            hddrDesc[9] = LsByte(cellWidth);  // Cell Width LSB
+            hddrDesc[10] = MsByte(cellHeight); // Cell Height MSB
+            hddrDesc[11] = LsByte(cellHeight); // Cell Height LSB
+            hddrDesc[12] = 0;                   // Orientation
+            hddrDesc[13] = fontSpacing;         // Spacing
+            hddrDesc[14] = MsByte(symSet);     // Symbol Set MSB
+            hddrDesc[15] = LsByte(symSet);     // Symbol Set LSB
+            hddrDesc[16] = MsByte(pitch);      // Pitch MSB
+            hddrDesc[17] = LsByte(pitch);      // Pitch LSB
+            hddrDesc[18] = 0;                   // Height MSB
+            hddrDesc[19] = 0;                   // Height LSB
+            hddrDesc[20] = MsByte(xHeight);    // xHeight MSB
+            hddrDesc[21] = MsByte(xHeight);    // xHeight LSB
+            hddrDesc[22] = (byte)widthType;    // Width Type
+            hddrDesc[23] = LsByte(style);      // Style LSB
+            hddrDesc[24] = (byte)strokeWeight; // Stroke Weight
+            hddrDesc[25] = LsByte(typeface);   // Typeface LSB
+            hddrDesc[26] = MsByte(typeface);   // Typeface MSB
+            hddrDesc[27] = serifStyle;          // Serif Style
+            hddrDesc[28] = 2;                   // Quality = Letter
+            hddrDesc[29] = 0;                   // Placement
+            hddrDesc[30] = 0;                   // Underline Position
+            hddrDesc[31] = 0;                   // Underline Thickness
+            hddrDesc[32] = MsByte(textHeight); // Text Height MSB
+            hddrDesc[33] = LsByte(textHeight); // Text Height LSB
+            hddrDesc[34] = MsByte(textWidth);  // Text Width MSB
+            hddrDesc[35] = LsByte(textWidth);  // Text Width LSB
+            hddrDesc[36] = MsByte(firstCode);  // First Code MSB
+            hddrDesc[37] = LsByte(firstCode);  // First Code LSB
+            hddrDesc[38] = MsByte(lastCode);   // Last Code MSB
+            hddrDesc[39] = LsByte(lastCode);   // Last Code LSB
+            hddrDesc[40] = 0;                   // Pitch Extended
+            hddrDesc[41] = 0;                   // Height Extended
+            hddrDesc[42] = MsByte(capHeight);  // Cap Height MSB
+            hddrDesc[43] = LsByte(capHeight);  // Cap Height LSB
+            hddrDesc[44] = MsByte(MsUInt16(fontNo));  // Font No. byte 0
+            hddrDesc[45] = LsByte(MsUInt16(fontNo));  // Font No. byte 1
+            hddrDesc[46] = MsByte(LsUInt16(fontNo));  // Font No. byte 2
+            hddrDesc[47] = LsByte(LsUInt16(fontNo));  // Font No. byte 3
+            hddrDesc[48] = fontNamePCLT[0];     // Font Name byte 0
+            hddrDesc[49] = fontNamePCLT[1];     // Font Name byte 1
+            hddrDesc[50] = fontNamePCLT[2];     // Font Name byte 2
+            hddrDesc[51] = fontNamePCLT[3];     // Font Name byte 3
+            hddrDesc[52] = fontNamePCLT[4];     // Font Name byte 4
+            hddrDesc[53] = fontNamePCLT[5];     // Font Name byte 5
+            hddrDesc[54] = fontNamePCLT[6];     // Font Name byte 6
+            hddrDesc[55] = fontNamePCLT[7];     // Font Name byte 7
+            hddrDesc[56] = fontNamePCLT[8];     // Font Name byte 8
+            hddrDesc[57] = fontNamePCLT[9];     // Font Name byte 9
+            hddrDesc[58] = fontNamePCLT[10];    // Font Name byte 10
+            hddrDesc[59] = fontNamePCLT[11];    // Font Name byte 11
+            hddrDesc[60] = fontNamePCLT[12];    // Font Name byte 12
+            hddrDesc[61] = fontNamePCLT[13];    // Font Name byte 13
+            hddrDesc[62] = fontNamePCLT[14];    // Font Name byte 14
+            hddrDesc[63] = fontNamePCLT[15];    // Font Name byte 15
+            hddrDesc[64] = MsByte(unitsPerEm); // Scale Factor MSB
+            hddrDesc[65] = LsByte(unitsPerEm); // Scale Factor LSB
+            hddrDesc[66] = MsByte(mUlinePosU); // Master U-line Pos. MSB
+            hddrDesc[67] = LsByte(mUlinePosU); // Master U-line Pos. LSB
+            hddrDesc[68] = MsByte(mUlineDep);  // Master U-line Dep. MSB
+            hddrDesc[69] = LsByte(mUlineDep);  // Master U-line Dep. LSB
+            hddrDesc[70] = 1;                   // Scaling Tech. = TrueType
+            hddrDesc[71] = 0;                   // Variety
+
+            _baseHandler.WriteBuffer(cSizeHddrDesc, hddrDesc);
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // Start calculating checksum byte from byte 64 onwards of    //
+            // header.                                                    //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            sum = 0;
+
+            for (int i = 64; i < cSizeHddrDesc; i++)
             {
-                PCLWriter.FontDownloadHddr(_binWriter, (uint)hddrLen);
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // Write font header descriptor.                              //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                hddrDesc[0] = MsByte(cSizeHddrDesc);
-                hddrDesc[1] = LsByte(cSizeHddrDesc);
-
-                hddrDesc[2] = fontFormat;          // Font Format
-                hddrDesc[3] = fontType;            // Font Type
-                hddrDesc[4] = MsByte(style);      // Style MSB
-                hddrDesc[5] = 0;                   // Reserved
-                hddrDesc[6] = 0;                   // Baseline Position MSB
-                hddrDesc[7] = 0;                   // Baseline Position LSB
-                hddrDesc[8] = MsByte(cellWidth);  // Cell width MSB
-                hddrDesc[9] = LsByte(cellWidth);  // Cell Width LSB
-                hddrDesc[10] = MsByte(cellHeight); // Cell Height MSB
-                hddrDesc[11] = LsByte(cellHeight); // Cell Height LSB
-                hddrDesc[12] = 0;                   // Orientation
-                hddrDesc[13] = fontSpacing;         // Spacing
-                hddrDesc[14] = MsByte(symSet);     // Symbol Set MSB
-                hddrDesc[15] = LsByte(symSet);     // Symbol Set LSB
-                hddrDesc[16] = MsByte(pitch);      // Pitch MSB
-                hddrDesc[17] = LsByte(pitch);      // Pitch LSB
-                hddrDesc[18] = 0;                   // Height MSB
-                hddrDesc[19] = 0;                   // Height LSB
-                hddrDesc[20] = MsByte(xHeight);    // xHeight MSB
-                hddrDesc[21] = MsByte(xHeight);    // xHeight LSB
-                hddrDesc[22] = (byte)widthType;    // Width Type
-                hddrDesc[23] = LsByte(style);      // Style LSB
-                hddrDesc[24] = (byte)strokeWeight; // Stroke Weight
-                hddrDesc[25] = LsByte(typeface);   // Typeface LSB
-                hddrDesc[26] = MsByte(typeface);   // Typeface MSB
-                hddrDesc[27] = serifStyle;          // Serif Style
-                hddrDesc[28] = 2;                   // Quality = Letter
-                hddrDesc[29] = 0;                   // Placement
-                hddrDesc[30] = 0;                   // Underline Position
-                hddrDesc[31] = 0;                   // Underline Thickness
-                hddrDesc[32] = MsByte(textHeight); // Text Height MSB
-                hddrDesc[33] = LsByte(textHeight); // Text Height LSB
-                hddrDesc[34] = MsByte(textWidth);  // Text Width MSB
-                hddrDesc[35] = LsByte(textWidth);  // Text Width LSB
-                hddrDesc[36] = MsByte(firstCode);  // First Code MSB
-                hddrDesc[37] = LsByte(firstCode);  // First Code LSB
-                hddrDesc[38] = MsByte(lastCode);   // Last Code MSB
-                hddrDesc[39] = LsByte(lastCode);   // Last Code LSB
-                hddrDesc[40] = 0;                   // Pitch Extended
-                hddrDesc[41] = 0;                   // Height Extended
-                hddrDesc[42] = MsByte(capHeight);  // Cap Height MSB
-                hddrDesc[43] = LsByte(capHeight);  // Cap Height LSB
-                hddrDesc[44] = MsByte(MsUInt16(fontNo));  // Font No. byte 0
-                hddrDesc[45] = LsByte(MsUInt16(fontNo));  // Font No. byte 1
-                hddrDesc[46] = MsByte(LsUInt16(fontNo));  // Font No. byte 2
-                hddrDesc[47] = LsByte(LsUInt16(fontNo));  // Font No. byte 3
-                hddrDesc[48] = fontNamePCLT[0];     // Font Name byte 0
-                hddrDesc[49] = fontNamePCLT[1];     // Font Name byte 1
-                hddrDesc[50] = fontNamePCLT[2];     // Font Name byte 2
-                hddrDesc[51] = fontNamePCLT[3];     // Font Name byte 3
-                hddrDesc[52] = fontNamePCLT[4];     // Font Name byte 4
-                hddrDesc[53] = fontNamePCLT[5];     // Font Name byte 5
-                hddrDesc[54] = fontNamePCLT[6];     // Font Name byte 6
-                hddrDesc[55] = fontNamePCLT[7];     // Font Name byte 7
-                hddrDesc[56] = fontNamePCLT[8];     // Font Name byte 8
-                hddrDesc[57] = fontNamePCLT[9];     // Font Name byte 9
-                hddrDesc[58] = fontNamePCLT[10];    // Font Name byte 10
-                hddrDesc[59] = fontNamePCLT[11];    // Font Name byte 11
-                hddrDesc[60] = fontNamePCLT[12];    // Font Name byte 12
-                hddrDesc[61] = fontNamePCLT[13];    // Font Name byte 13
-                hddrDesc[62] = fontNamePCLT[14];    // Font Name byte 14
-                hddrDesc[63] = fontNamePCLT[15];    // Font Name byte 15
-                hddrDesc[64] = MsByte(unitsPerEm); // Scale Factor MSB
-                hddrDesc[65] = LsByte(unitsPerEm); // Scale Factor LSB
-                hddrDesc[66] = MsByte(mUlinePosU); // Master U-line Pos. MSB
-                hddrDesc[67] = LsByte(mUlinePosU); // Master U-line Pos. LSB
-                hddrDesc[68] = MsByte(mUlineDep);  // Master U-line Dep. MSB
-                hddrDesc[69] = LsByte(mUlineDep);  // Master U-line Dep. LSB
-                hddrDesc[70] = 1;                   // Scaling Tech. = TrueType
-                hddrDesc[71] = 0;                   // Variety
-
-                _baseHandler.WriteBuffer(cSizeHddrDesc, hddrDesc);
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // Start calculating checksum byte from byte 64 onwards of    //
-                // header.                                                    //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                sum = 0;
-
-                for (int i = 64; i < cSizeHddrDesc; i++)
-                {
-                    sum += hddrDesc[i];
-                }
-
-                mod256 = (byte)(sum % 256);
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // Write header segmented data.                               //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                flagOK = _baseHandler.WriteHddrSegments(false,
-                                                         fmt16,
-                                                         segGTLast,
-                                                         glyphZeroExists,
-                                                         symSetUnbound,
-                                                         tabvmtxPresent,
-                                                         flagVMetrics,
-                                                         charCollComp,
-                                                         conversionText,
-                                                         panoseData,
-                                                         ref mod256);
-
-                if (flagOK)
-                {
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // Write 'reserved byte' and (calculated) checksum byte.  //
-                    //                                                        //
-                    //--------------------------------------------------------//
-
-                    mod256 = (byte)((256 - mod256) % 256);
-
-                    byte[] trailer = new byte[cSizeHddrTrail];
-
-                    trailer[0] = 0;
-                    trailer[1] = mod256;
-
-                    _baseHandler.WriteBuffer(cSizeHddrTrail, trailer);
-                }
+                sum += hddrDesc[i];
             }
 
-            return flagOK;
+            mod256 = (byte)(sum % 256);
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // Write header segmented data.                               //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            bool flagOK = _baseHandler.WriteHddrSegments(false,
+                                                        fmt16,
+                                                        segGTLast,
+                                                        glyphZeroExists,
+                                                        symSetUnbound,
+                                                        tabvmtxPresent,
+                                                        flagVMetrics,
+                                                        charCollComp,
+                                                        conversionText,
+                                                        panoseData,
+                                                        ref mod256);
+
+            if (!flagOK)
+                return false;
+
+
+            //--------------------------------------------------------//
+            //                                                        //
+            // Write 'reserved byte' and (calculated) checksum byte.  //
+            //                                                        //
+            //--------------------------------------------------------//
+
+            mod256 = (byte)((256 - mod256) % 256);
+
+            byte[] trailer = new byte[cSizeHddrTrail];
+
+            trailer[0] = 0;
+            trailer[1] = mod256;
+
+            _baseHandler.WriteBuffer(cSizeHddrTrail, trailer);
+
+            return true;
         }
     }
 }

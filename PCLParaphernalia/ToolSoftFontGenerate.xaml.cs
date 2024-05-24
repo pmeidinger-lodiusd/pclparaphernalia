@@ -580,43 +580,40 @@ namespace PCLParaphernalia
                 flagOK = _ttfHandler.CheckForTTC(_fontFilenameTTF,
                                                   ref typeTTC,
                                                   ref numFonts);
-                if (flagOK)
+                if (flagOK && typeTTC)
                 {
-                    if (typeTTC)
+                    _fontWithinTTC = true;
+
+                    MessageBox.Show(
+                        "Donor TrueType font is a Collection file\n\n" +
+                        "Select component font & try again",
+                        "Donor font type",
+                         MessageBoxButton.OK,
+                         MessageBoxImage.Information);
+
+                    _fontTTCOffsets = new uint[numFonts];
+                    _fontTTCNames = new string[numFonts];
+
+                    flagOK = _ttfHandler.GetTTCData(_fontFilenameTTF,
+                                                     numFonts,
+                                                     ref _fontTTCOffsets,
+                                                     ref _fontTTCNames);
+
+                    if (flagOK)
                     {
-                        _fontWithinTTC = true;
+                        cbTTCName.Items.Clear();
 
-                        MessageBox.Show(
-                            "Donor TrueType font is a Collection file\n\n" +
-                            "Select component font & try again",
-                            "Donor font type",
-                             MessageBoxButton.OK,
-                             MessageBoxImage.Information);
-
-                        _fontTTCOffsets = new uint[numFonts];
-                        _fontTTCNames = new string[numFonts];
-
-                        flagOK = _ttfHandler.GetTTCData(_fontFilenameTTF,
-                                                         numFonts,
-                                                         ref _fontTTCOffsets,
-                                                         ref _fontTTCNames);
-
-                        if (flagOK)
+                        for (int i = 0; i < numFonts; i++)
                         {
-                            cbTTCName.Items.Clear();
-
-                            for (int i = 0; i < numFonts; i++)
-                            {
-                                cbTTCName.Items.Add(_fontTTCNames[i]);
-                            }
-
-                            cbTTCName.SelectedIndex = 0;
-
-                            lbTTCFont.Visibility = Visibility.Visible;
-                            cbTTCName.Visibility = Visibility.Visible;
-
-                            btnTTFSelect.IsEnabled = true;
+                            cbTTCName.Items.Add(_fontTTCNames[i]);
                         }
+
+                        cbTTCName.SelectedIndex = 0;
+
+                        lbTTCFont.Visibility = Visibility.Visible;
+                        cbTTCName.Visibility = Visibility.Visible;
+
+                        btnTTFSelect.IsEnabled = true;
                     }
                 }
             }
