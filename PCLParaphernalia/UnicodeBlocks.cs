@@ -37,7 +37,7 @@ namespace PCLParaphernalia
 
         static UnicodeBlocks()
         {
-            PopulateTable();
+            populateTable();
         }
 
         //--------------------------------------------------------------------//
@@ -140,7 +140,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetBlocknameForCodepoint(uint codepoint)
+        public static string getBlocknameForCodepoint(uint codepoint)
         {
             bool found = false;
 
@@ -176,7 +176,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void PopulateTable()
+        private static void populateTable()
         {
             _blocksList.Add(                              //   0000     007F //
                 0x0000,

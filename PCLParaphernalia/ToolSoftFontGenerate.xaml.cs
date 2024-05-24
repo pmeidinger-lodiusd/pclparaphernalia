@@ -1581,19 +1581,22 @@ namespace PCLParaphernalia
             _dataSetLogChars = new DataSet();
             _tableLogChars = new DataTable("Log Chars");
 
-            _tableLogChars.Columns.Add("DecCode", typeof(int));
-            _tableLogChars.Columns.Add("HexCode", typeof(string));
-            _tableLogChars.Columns.Add("Unicode", typeof(string));
-            _tableLogChars.Columns.Add("Glyph", typeof(int));
-            _tableLogChars.Columns.Add("Abs", typeof(bool));
-            _tableLogChars.Columns.Add("Prev", typeof(bool));
-            _tableLogChars.Columns.Add("Comp", typeof(bool));
-            _tableLogChars.Columns.Add("Depth", typeof(int));
-            _tableLogChars.Columns.Add("Width", typeof(int));
-            _tableLogChars.Columns.Add("LSB", typeof(int));
-            _tableLogChars.Columns.Add("Height", typeof(int));
-            _tableLogChars.Columns.Add("TSB", typeof(int));
-            _tableLogChars.Columns.Add("Length", typeof(int));
+            _tableLogChars.Columns.AddRange(new DataColumn[]
+            {
+                new DataColumn("DecCode", typeof(int)),
+                new DataColumn("HexCode", typeof(string)),
+                new DataColumn("Unicode", typeof(string)),
+                new DataColumn("Glyph", typeof(int)),
+                new DataColumn("Abs", typeof(bool)),
+                new DataColumn("Prev", typeof(bool)),
+                new DataColumn("Comp", typeof(bool)),
+                new DataColumn("Depth", typeof(int)),
+                new DataColumn("Width", typeof(int)),
+                new DataColumn("LSB", typeof(int)),
+                new DataColumn("Height", typeof(int)),
+                new DataColumn("TSB", typeof(int)),
+                new DataColumn("Length", typeof(int))
+            });
 
             _dataSetLogChars.Tables.Add(_tableLogChars);
 

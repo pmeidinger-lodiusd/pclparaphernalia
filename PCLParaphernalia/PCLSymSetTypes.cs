@@ -196,51 +196,51 @@ namespace PCLParaphernalia
 
         private static void PopulateSymbolSetTypeTable()
         {
-            _sets.Add(new PCLSymSetType(
-                            (byte)IdPCL.Unknown,
-                            _flagBound,
-                            "<unknown>",
-                            "<unknown>"));
+            _sets.AddRange(new PCLSymSetType[]
+            {
+                new PCLSymSetType(
+                                (byte)IdPCL.Unknown,
+                                _flagBound,
+                                "<unknown>",
+                                "<unknown>"),
 
-            _sets.Add(new PCLSymSetType(
-                            (byte)IdPCL.Bound_7bit,
-                            _flagBound,
-                            "0: Bound; 7-bit (96 charset: " +
-                                "0x20-7f printable)",
-                            "0: 7-bit"));
+                new PCLSymSetType(
+                                (byte)IdPCL.Bound_7bit,
+                                _flagBound,
+                                "0: Bound; 7-bit (96 charset: 0x20-7f printable)",
+                                "0: 7-bit"),
 
-            _sets.Add(new PCLSymSetType(
-                            (byte)IdPCL.Bound_8bit,
-                            _flagBound,
-                            "1: Bound; 8-bit (192 charset: " +
-                                "0x20-7f, 0xa0-ff printable)",
-                            "1: 8 bit"));
+                new PCLSymSetType(
+                                (byte)IdPCL.Bound_8bit,
+                                _flagBound,
+                                "1: Bound; 8-bit (192 charset: 0x20-7f, 0xa0-ff printable)",
+                                "1: 8 bit"),
 
-            _sets.Add(new PCLSymSetType(
-                            (byte)IdPCL.Bound_PC8,
-                            _flagBound,
-                            "2: Bound; PC-8 (256 charset: " +
-                                "0x01-06, 0x10-1a, 0x1c-ff printable)",
-                            "2: 8-bit PC8"));
+                new PCLSymSetType(
+                                (byte)IdPCL.Bound_PC8,
+                                _flagBound,
+                                "2: Bound; PC-8 (256 charset: 0x01-06, 0x10-1a, 0x1c-ff printable)",
+                                "2: 8-bit PC8"),
 
-            _sets.Add(new PCLSymSetType(
-                            (byte)IdPCL.Bound_16bit,
-                            _flagBound,
-                            "3: Bound; 16-bit (65535 charset: " +
-                                "(0x01-06, 0x10-1a, 0x1c-fffd printable)",
-                            "3: 16-bit"));
+                new PCLSymSetType(
+                                (byte)IdPCL.Bound_16bit,
+                                _flagBound,
+                                "3: Bound; 16-bit (65535 charset: (0x01-06, 0x10-1a, 0x1c-fffd printable)",
+                                "3: 16-bit"),
 
-            _sets.Add(new PCLSymSetType(
-                            (byte)IdPCL.Unbound_MSL,
-                            _flagUnbound,
-                            "10: Unbound; uses HP MSL numbers",
-                            "10: index MSL"));
+                new PCLSymSetType(
+                                (byte)IdPCL.Unbound_MSL,
+                                _flagUnbound,
+                                "10: Unbound; uses HP MSL numbers",
+                                "10: index MSL"),
 
-            _sets.Add(new PCLSymSetType(
-                            (byte)IdPCL.Unbound_Unicode,
-                            _flagUnbound,
-                            "11: Unbound; uses Unicode code points",
-                            "11: index U+"));
+                new PCLSymSetType(
+                                (byte)IdPCL.Unbound_Unicode,
+                                _flagUnbound,
+                                "11: Unbound; uses Unicode code points",
+                                "11: index U+")
+                }
+            );
 
             _setsCountTotal = _sets.Count;
             _setsCountBound = 0;
