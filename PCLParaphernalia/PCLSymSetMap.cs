@@ -373,10 +373,11 @@ namespace PCLParaphernalia
 
                             for (int k = 0; k < rowLen; k++)
                             {
-                                if (cell < rangeMin)
+                                // TODO: if and else if the same
+                                if (cell < rangeMin || cell > rangeMax)
+                                {
                                     map.Append("---- ");
-                                else if (cell > rangeMax)
-                                    map.Append("---- ");
+                                }
                                 else
                                 {
                                     mapValPCL = _mapDataPCL[i][mapIndx];
@@ -389,8 +390,7 @@ namespace PCLParaphernalia
                                     else
                                     {
                                         difference = true;
-                                        map.Append(mapValPCL.ToString("X4") +
-                                                    " ");
+                                        map.Append(mapValPCL.ToString("X4") + " ");
                                     }
 
                                     mapIndx++;
@@ -399,9 +399,7 @@ namespace PCLParaphernalia
                                 cell++;
                             }
 
-                            if (i < rangeLastIndx)
-                                map.Append("\r\n");
-                            else if (j < rowLastIndx)
+                            if (i < rangeLastIndx || j < rowLastIndx)
                                 map.Append("\r\n");
 
                             rowId++;
@@ -510,9 +508,7 @@ namespace PCLParaphernalia
 
                             for (int k = 0; k < rowLen; k++)
                             {
-                                if (cell < rangeMin)
-                                    map.Append("---- ");
-                                else if (cell > rangeMax)
+                                if (cell < rangeMin || cell > rangeMax)
                                     map.Append("---- ");
                                 else
                                 {
@@ -529,9 +525,7 @@ namespace PCLParaphernalia
                                 cell++;
                             }
 
-                            if (i < rangeLastIndx)
-                                map.Append("\r\n");
-                            else if (j < rowLastIndx)
+                            if (i < rangeLastIndx || j < rowLastIndx)
                                 map.Append("\r\n");
 
                             rowId++;
@@ -564,11 +558,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                if (_flagMapDiff)
-                {
-                    return MappingPCL;
-                }
-                else if (NullMapStd)
+                if (_flagMapDiff || NullMapStd)
                 {
                     return MappingPCL;
                 }
@@ -668,9 +658,7 @@ namespace PCLParaphernalia
 
                             for (int k = 0; k < rowLen; k++)
                             {
-                                if (cell < rangeMin)
-                                    map.Append("---- ");
-                                else if (cell > rangeMax)
+                                if (cell < rangeMin || cell > rangeMax)
                                     map.Append("---- ");
                                 else
                                 {
@@ -687,9 +675,7 @@ namespace PCLParaphernalia
                                 cell++;
                             }
 
-                            if (i < rangeLastIndx)
-                                map.Append("\r\n");
-                            else if (j < rowLastIndx)
+                            if (i < rangeLastIndx || j < rowLastIndx)
                                 map.Append("\r\n");
 
                             rowId++;
@@ -810,11 +796,7 @@ namespace PCLParaphernalia
 
                             for (int k = 0; k < rowLen; k++)
                             {
-                                if (cell < rangeMin)
-                                {
-                                    crntRow.Append("---- ");
-                                }
-                                else if (cell > rangeMax)
+                                if (cell < rangeMin || cell > rangeMax)
                                 {
                                     crntRow.Append("---- ");
                                 }
@@ -830,8 +812,7 @@ namespace PCLParaphernalia
                                     else
                                     {
                                         difference = true;
-                                        crntRow.Append(mapValPCL.ToString("X4") +
-                                                         " ");
+                                        crntRow.Append(mapValPCL.ToString("X4") + " ");
                                     }
 
                                     mapIndx++;
@@ -963,11 +944,7 @@ namespace PCLParaphernalia
 
                             for (int k = 0; k < rowLen; k++)
                             {
-                                if (cell < rangeMin)
-                                {
-                                    crntRow.Append("---- ");
-                                }
-                                else if (cell > rangeMax)
+                                if (cell < rangeMin || cell > rangeMax)
                                 {
                                     crntRow.Append("---- ");
                                 }
@@ -1023,11 +1000,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                if (_flagMapDiff)
-                {
-                    return MapRowsPCL;
-                }
-                else if (NullMapStd)
+                if (_flagMapDiff || NullMapStd)
                 {
                     return MapRowsPCL;
                 }
@@ -1136,11 +1109,7 @@ namespace PCLParaphernalia
 
                             for (int k = 0; k < rowLen; k++)
                             {
-                                if (cell < rangeMin)
-                                {
-                                    crntRow.Append("---- ");
-                                }
-                                else if (cell > rangeMax)
+                                if (cell < rangeMin || cell > rangeMax)
                                 {
                                     crntRow.Append("---- ");
                                 }
