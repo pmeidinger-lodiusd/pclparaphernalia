@@ -58,9 +58,7 @@
         {
             get
             {
-                string tag = "0x" + _tag.ToString("x2");
-
-                return tag;
+                return "0x" + _tag.ToString("x2");
             }
         }
 

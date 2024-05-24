@@ -27,15 +27,13 @@ namespace PCLParaphernalia
 
             ToolCommonFunctions.SplitPathName(initialPath, ref folderName, ref fileName);
 
-            OpenFileDialog openDialog = new OpenFileDialog
+            return new OpenFileDialog
             {
                 InitialDirectory = Directory.Exists(folderName) ? folderName : Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                 FileName = fileName,
                 CheckFileExists = true,
                 Filter = "All files|*.*"
             };
-
-            return openDialog;
         }
 
         //--------------------------------------------------------------------//
@@ -53,7 +51,7 @@ namespace PCLParaphernalia
 
             ToolCommonFunctions.SplitPathName(initialPath, ref folderName, ref fileName);
 
-            SaveFileDialog saveDialog = new SaveFileDialog
+            return new SaveFileDialog
             {
                 InitialDirectory = Directory.Exists(folderName) ? folderName : Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                 FileName = fileName,
@@ -64,8 +62,6 @@ namespace PCLParaphernalia
                 CheckFileExists = false,
                 CheckPathExists = true
             };
-
-            return saveDialog;
         }
 
         //--------------------------------------------------------------------//

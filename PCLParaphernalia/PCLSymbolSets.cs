@@ -406,9 +406,7 @@ namespace PCLParaphernalia
 
         public static bool GetSymsetData(int selection, ref ushort kind1, ref ushort idNum, ref string name)
         {
-            bool symsetPresent = _sets[selection].GetSymsetData(ref kind1, ref idNum, ref name);
-
-            return symsetPresent;
+            return _sets[selection].GetSymsetData(ref kind1, ref idNum, ref name);
         }
 
         //--------------------------------------------------------------------//
@@ -424,9 +422,7 @@ namespace PCLParaphernalia
 
         public static bool GetSymsetDataForIdAlpha(int selection, byte idAlpha, ref ushort kind1, ref ushort idNum, ref string name)
         {
-            bool symsetPresent = _sets[selection].GetSymsetDataForIdAlpha(idAlpha, ref kind1, ref idNum, ref name);
-
-            return symsetPresent;
+            return _sets[selection].GetSymsetDataForIdAlpha(idAlpha, ref kind1, ref idNum, ref name);
         }
 
         //--------------------------------------------------------------------//

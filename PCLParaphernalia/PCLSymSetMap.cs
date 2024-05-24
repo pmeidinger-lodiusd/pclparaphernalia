@@ -843,8 +843,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    string[] mapRowsSame = new string[1] { "none" };
-                    return mapRowsSame;
+                    return new string[1] { "none" };
                 }
             }
         }
@@ -1006,9 +1005,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    string[] noDiff = new string[1] { "Not defined - see Standard (Strict) mapping definition" };
-
-                    return noDiff;
+                    return new string[1] { "Not defined - see Standard (Strict) mapping definition" };
                 }
             }
         }

@@ -451,9 +451,7 @@ namespace PCLParaphernalia
             {
                 if (!FlagMapped)
                 {
-                    string[] noMap = new string[1] { string.Empty };
-
-                    return noMap;
+                    return new string[1] { string.Empty };
                 }
                 else
                 {
@@ -480,9 +478,7 @@ namespace PCLParaphernalia
             {
                 if (!FlagMapped)
                 {
-                    string[] noMap = new string[1] { string.Empty };
-
-                    return noMap;
+                    return new string[1] { string.Empty };
                 }
                 else
                 {
@@ -511,9 +507,7 @@ namespace PCLParaphernalia
             {
                 if (!FlagMapped)
                 {
-                    string[] noMap = new string[1] { string.Empty };
-
-                    return noMap;
+                    return new string[1] { string.Empty };
                 }
                 else
                 {
@@ -540,9 +534,7 @@ namespace PCLParaphernalia
             {
                 if (!FlagMapped)
                 {
-                    string[] noMap = new string[1] { string.Empty };
-
-                    return noMap;
+                    return new string[1] { string.Empty };
                 }
                 else
                 {

@@ -34,9 +34,7 @@ namespace PCLParaphernalia
 
         public static bool CheckIPAddress(string ipString, ref IPAddress ipAddress)
         {
-            bool OK = IPAddress.TryParse(ipString, out ipAddress);
-
-            return OK;
+            return IPAddress.TryParse(ipString, out ipAddress);
         }
 
         //--------------------------------------------------------------------//
@@ -68,8 +66,7 @@ namespace PCLParaphernalia
 
             try
             {
-                int readLen = _socket.Receive(replyData, offset, bufRem, SocketFlags.None);
-                blockLen = readLen;
+                blockLen = _socket.Receive(replyData, offset, bufRem, SocketFlags.None);
             }
 
             //----------------------------------------------------------------//

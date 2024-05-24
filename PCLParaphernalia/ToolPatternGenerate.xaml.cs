@@ -856,7 +856,7 @@ namespace PCLParaphernalia
             }
             */
 
-            return selected;
+            return false;
         }
 
         //--------------------------------------------------------------------//
