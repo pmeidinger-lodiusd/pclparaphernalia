@@ -66,10 +66,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ToolSoftFontGenPCLCommon()
-        {
-        }
-
+        
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // g e t H d d r S e g m e n t s L e n                                //
