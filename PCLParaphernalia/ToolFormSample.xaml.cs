@@ -1754,7 +1754,7 @@ namespace PCLParaphernalia
                                                   ref netTimeoutSend,
                                                   ref netTimeoutReceive);
 
-                btnGenerate.Content = "Generate & send test data to \r\n" + netPrnAddress + " : " + netPrnPort.ToString();
+                btnGenerate.Content = "Generate & send test data to\r\n" + netPrnAddress + " : " + netPrnPort.ToString();
             }
             else if (targetType == TargetCore.Target.WinPrinter)
             {
@@ -1762,7 +1762,7 @@ namespace PCLParaphernalia
 
                 TargetCore.MetricsLoadWinPrinter(ref winPrintername);
 
-                btnGenerate.Content = "Generate & send test data to printer \r\n" + winPrintername;
+                btnGenerate.Content = "Generate & send test data to printer\r\n" + winPrintername;
             }
         }
 
