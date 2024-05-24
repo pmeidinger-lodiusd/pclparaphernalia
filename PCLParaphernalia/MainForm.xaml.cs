@@ -1041,8 +1041,7 @@ namespace PCLParaphernalia
 
             _crntToolId = ToolCommonData.ToolIds.SoftFontGenerate;
 
-            _subFormToolSoftFontGenerate =
-                new ToolSoftFontGenerate(ref _crntPDL);
+            _subFormToolSoftFontGenerate = new ToolSoftFontGenerate(ref _crntPDL);
 
             TargetCore.MetricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
@@ -1104,8 +1103,7 @@ namespace PCLParaphernalia
 
             _crntToolId = ToolCommonData.ToolIds.SymbolSetGenerate;
 
-            _subFormToolSymbolSetGenerate =
-                new ToolSymbolSetGenerate(ref _crntPDL);
+            _subFormToolSymbolSetGenerate = new ToolSymbolSetGenerate(ref _crntPDL);
 
             TargetCore.MetricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
