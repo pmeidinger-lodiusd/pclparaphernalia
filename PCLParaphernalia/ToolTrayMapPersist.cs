@@ -379,10 +379,7 @@ namespace PCLParaphernalia
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
-                    if (flagFormAsMacro)
-                        subKey.SetValue(_nameFlagFormAsMacro, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagFormAsMacro, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagFormAsMacro, flagFormAsMacro ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
                     subKey.SetValue(_nameSheetCt, sheetCt, RegistryValueKind.DWord);
                 }
@@ -405,10 +402,7 @@ namespace PCLParaphernalia
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
-                    if (flagFormAsMacro)
-                        subKey.SetValue(_nameFlagFormAsMacro, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagFormAsMacro, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagFormAsMacro, flagFormAsMacro ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
                     subKey.SetValue(_nameSheetCt, sheetCt, RegistryValueKind.DWord);
                 }

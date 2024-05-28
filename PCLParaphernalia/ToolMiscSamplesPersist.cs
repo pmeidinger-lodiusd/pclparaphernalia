@@ -711,15 +711,9 @@ namespace PCLParaphernalia
                 {
                     subKey.SetValue(_nameIndxColourMode, indxColourMode, RegistryValueKind.DWord);
 
-                    if (flagFormAsMacro)
-                        subKey.SetValue(_nameFlagFormAsMacro, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagFormAsMacro, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagFormAsMacro, flagFormAsMacro ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagMapHex)
-                        subKey.SetValue(_nameFlagMapHex, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagMapHex, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagMapHex, flagMapHex ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
                 }
             }
         }
@@ -817,17 +811,11 @@ namespace PCLParaphernalia
 
                     subKey.SetValue(_nameIndxMonoT2, indxMonoT2, RegistryValueKind.DWord);
 
-                    if (flagUseMacros)
-                        subKey.SetValue(_nameFlagUseMacros, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagUseMacros, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagUseMacros, flagUseMacros ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
                     if (pdlName == _subKeyPCLXL)
                     {
-                        if (flagSrcTextPat)
-                            subKey.SetValue(_nameFlagSrcTextPat, _flagTrue, RegistryValueKind.DWord);
-                        else
-                            subKey.SetValue(_nameFlagSrcTextPat, _flagFalse, RegistryValueKind.DWord);
+                        subKey.SetValue(_nameFlagSrcTextPat, flagSrcTextPat ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
                     }
                 }
             }
@@ -866,15 +854,9 @@ namespace PCLParaphernalia
 
                     subKey.SetValue(_namePageWidth, pageWidth, RegistryValueKind.DWord);
 
-                    if (flagFormAsMacro)
-                        subKey.SetValue(_nameFlagFormAsMacro, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagFormAsMacro, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagFormAsMacro, flagFormAsMacro ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagAddStdPage)
-                        subKey.SetValue(_nameFlagAddStdPage, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagAddStdPage, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagAddStdPage, flagAddStdPage ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
                 }
             }
         }
@@ -900,10 +882,7 @@ namespace PCLParaphernalia
                 {
                     subKey.SetValue(_nameIndxPatternType, indxPatternType, RegistryValueKind.DWord);
 
-                    if (flagFormAsMacro)
-                        subKey.SetValue(_nameFlagFormAsMacro, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagFormAsMacro, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagFormAsMacro, flagFormAsMacro ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
                 }
             }
         }
@@ -929,10 +908,7 @@ namespace PCLParaphernalia
                 {
                     subKey.SetValue(_nameIndxTxtModType, indxTxtModType, RegistryValueKind.DWord);
 
-                    if (flagFormAsMacro)
-                        subKey.SetValue(_nameFlagFormAsMacro, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagFormAsMacro, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagFormAsMacro, flagFormAsMacro ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
                 }
             }
         }
@@ -966,10 +942,7 @@ namespace PCLParaphernalia
 
                     subKey.SetValue(_nameCodePoint, codePoint, RegistryValueKind.DWord);
 
-                    if (flagFormAsMacro)
-                        subKey.SetValue(_nameFlagFormAsMacro, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagFormAsMacro, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagFormAsMacro, flagFormAsMacro ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
                 }
             }
         }

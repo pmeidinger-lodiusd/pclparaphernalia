@@ -347,10 +347,7 @@ namespace PCLParaphernalia
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
-                    if (flagOptMap)
-                        subKey.SetValue(_nameFlagOptMapping, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagOptMapping, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagOptMapping, flagOptMap ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
                 }
             }
         }
@@ -376,30 +373,15 @@ namespace PCLParaphernalia
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
-                    if (flagSeqControl)
-                        subKey.SetValue(_nameFlagSeqControl, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagSeqControl, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagSeqControl, flagSeqControl ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagSeqSimple)
-                        subKey.SetValue(_nameFlagSeqSimple, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagSeqSimple, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagSeqSimple, flagSeqSimple ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagSeqComplex)
-                        subKey.SetValue(_nameFlagSeqComplex, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagSeqComplex, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagSeqComplex, flagSeqComplex ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagOptObsolete)
-                        subKey.SetValue(_nameFlagOptObsolete, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagOptObsolete, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagOptObsolete, flagOptObsolete ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagOptDiscrete)
-                        subKey.SetValue(_nameFlagOptDiscrete, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagOptDiscrete, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagOptDiscrete, flagOptDiscrete ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
                 }
             }
         }
@@ -427,40 +409,19 @@ namespace PCLParaphernalia
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
-                    if (flagTagDataType)
-                        subKey.SetValue(_nameFlagTagDataType, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagTagDataType, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagTagDataType, flagTagDataType ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagTagAttribute)
-                        subKey.SetValue(_nameFlagTagAttribute, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagTagAttribute, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagTagAttribute, flagTagAttribute ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagTagOperator)
-                        subKey.SetValue(_nameFlagTagOperator, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagTagOperator, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagTagOperator, flagTagOperator ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagTagAttrDefiner)
-                        subKey.SetValue(_nameFlagTagAttrDefiner, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagTagAttrDefiner, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagTagAttrDefiner, flagTagAttrDefiner ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagTagEmbedDataDef)
-                        subKey.SetValue(_nameFlagTagEmbedDataDef, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagTagEmbedDataDef, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagTagEmbedDataDef, flagTagEmbedDataDef ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagTagWhitespace)
-                        subKey.SetValue(_nameFlagTagWhitespace, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagTagWhitespace, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagTagWhitespace, flagTagWhitespace ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagOptReserved)
-                        subKey.SetValue(_nameFlagOptReserved, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagOptReserved, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagOptReserved, flagOptReserved ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
                 }
             }
         }
@@ -482,20 +443,11 @@ namespace PCLParaphernalia
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
-                    if (flagTagDataType)
-                        subKey.SetValue(_nameFlagTagDataType, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagTagDataType, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagTagDataType, flagTagDataType ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagTagAction)
-                        subKey.SetValue(_nameFlagTagAction, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagTagAction, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagTagAction, flagTagAction ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagTagOutcome)
-                        subKey.SetValue(_nameFlagTagOutcome, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagTagOutcome, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagTagOutcome, flagTagOutcome ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
                 }
             }
         }
@@ -519,10 +471,7 @@ namespace PCLParaphernalia
 
                     subKey.SetValue(_nameIndxRptChkMarks, indxRptChkMarks, RegistryValueKind.DWord);
 
-                    if (flagOptRptWrap)
-                        subKey.SetValue(_nameFlagOptRptWrap, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagOptRptWrap, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagOptRptWrap, flagOptRptWrap ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
                 }
             }
         }
@@ -544,10 +493,7 @@ namespace PCLParaphernalia
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
-                    if (flagOptMap)
-                        subKey.SetValue(_nameFlagOptMapping, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagOptMapping, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagOptMapping, flagOptMap ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
                     subKey.SetValue(_nameSymSetMapType, mapType, RegistryValueKind.DWord);
                 }

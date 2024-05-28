@@ -421,30 +421,15 @@ namespace PCLParaphernalia
 
                     subKey.SetValue(_nameTestPageCount, testPageCount, RegistryValueKind.DWord);
 
-                    if (flagMacroRemove)
-                        subKey.SetValue(_nameFlagMacroRemove, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagMacroRemove, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagMacroRemove, flagMacroRemove ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagMainForm)
-                        subKey.SetValue(_nameFlagMainForm, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagMainForm, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagMainForm, flagMainForm ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagRearForm)
-                        subKey.SetValue(_nameFlagRearForm, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagRearForm, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagRearForm, flagRearForm ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagRearBPlate)
-                        subKey.SetValue(_nameFlagRearBPlate, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagRearBPlate, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagRearBPlate, flagRearBPlate ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagPrintDescText)
-                        subKey.SetValue(_nameFlagPrintDescText, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagPrintDescText, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagPrintDescText, flagPrintDescText ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
                 }
             }
         }
@@ -473,15 +458,9 @@ namespace PCLParaphernalia
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
-                    if (flagMainOnPrnDisk)
-                        subKey.SetValue(_nameFlagMainOnPrnDisk, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagMainOnPrnDisk, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagMainOnPrnDisk, flagMainOnPrnDisk ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagRearOnPrnDisk)
-                        subKey.SetValue(_nameFlagRearOnPrnDisk, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagRearOnPrnDisk, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagRearOnPrnDisk, flagRearOnPrnDisk ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
                     if (formFileMain != null)
                         subKey.SetValue(_nameFormFileMain, formFileMain, RegistryValueKind.String);
@@ -535,10 +514,7 @@ namespace PCLParaphernalia
                     if (formNameRear != null)
                         subKey.SetValue(_nameFormNameRear, formNameRear, RegistryValueKind.String);
 
-                    if (flagGSPushPop)
-                        subKey.SetValue(_nameFlagGSPushPop, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagGSPushPop, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagGSPushPop, flagGSPushPop ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
                 }
             }
         }

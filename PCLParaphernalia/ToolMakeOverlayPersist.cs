@@ -225,15 +225,9 @@ namespace PCLParaphernalia
 
                     subKey.SetValue(_nameMacroId, macroId, RegistryValueKind.DWord);
 
-                    if (flagEncapsulated)
-                        subKey.SetValue(_nameFlagEncapsulated, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagEncapsulated, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagEncapsulated, flagEncapsulated ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagRestoreCursor)
-                        subKey.SetValue(_nameFlagRestoreCursor, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagRestoreCursor, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagRestoreCursor, flagRestoreCursor ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
                 }
             }
         }
@@ -261,15 +255,9 @@ namespace PCLParaphernalia
                     if (ovlFilename != null)
                         subKey.SetValue(_nameOvlFilename, ovlFilename, RegistryValueKind.String);
 
-                    if (flagEncapsulated)
-                        subKey.SetValue(_nameFlagEncapsulated, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagEncapsulated, _flagFalse, RegistryValueKind.DWord);
-
-                    if (flagRestoreGS)
-                        subKey.SetValue(_nameFlagRestoreGS, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagRestoreGS, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagEncapsulated, flagEncapsulated ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
+                
+                    subKey.SetValue(_nameFlagRestoreGS, flagRestoreGS ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
                     if (streamName != null)
                         subKey.SetValue(_nameStreamName, streamName, RegistryValueKind.String);

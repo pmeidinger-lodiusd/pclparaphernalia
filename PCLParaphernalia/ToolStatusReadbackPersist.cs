@@ -507,15 +507,9 @@ namespace PCLParaphernalia
                     if (binTgtFile != null)
                         subKey.SetValue(_nameBinTgtFile, binTgtFile, RegistryValueKind.String);
 
-                    if (flagPJLFS)
-                        subKey.SetValue(_nameFlagPJLFS, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagPJLFS, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagPJLFS, flagPJLFS ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagPJLFSSecJob)
-                        subKey.SetValue(_nameFlagPJLFSSecJob, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagPJLFSSecJob, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagPJLFSSecJob, flagPJLFSSecJob ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
                 }
             }
         }

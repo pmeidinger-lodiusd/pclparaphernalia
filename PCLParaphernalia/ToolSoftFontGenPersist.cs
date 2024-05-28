@@ -308,10 +308,7 @@ namespace PCLParaphernalia
                 {
                     subKey.SetValue(_nameIndxPDL, indxPDL, RegistryValueKind.DWord);
 
-                    if (flagLogVerbose)
-                        subKey.SetValue(_nameFlagLogVerbose, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagLogVerbose, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagLogVerbose, flagLogVerbose ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
                 }
             }
         }
@@ -339,20 +336,11 @@ namespace PCLParaphernalia
                 {
                     subKey.SetValue(_nameIndxSymSet, indxSymSet, RegistryValueKind.DWord);
 
-                    if (flagSymSetMapPCL)
-                        subKey.SetValue(_nameFlagSymSetMapPCL, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagSymSetMapPCL, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagSymSetMapPCL, flagSymSetMapPCL ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagSymSetUnbound)
-                        subKey.SetValue(_nameFlagSymSetUnbound, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagSymSetUnbound, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagSymSetUnbound, flagSymSetUnbound ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagSymSetUserSet)
-                        subKey.SetValue(_nameFlagSymSetUserSet, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagSymSetUserSet, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagSymSetUserSet, flagSymSetUserSet ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
                     if (symSetUserFile != null)
                         subKey.SetValue(_nameSymSetUserFile, symSetUserFile, RegistryValueKind.String);
@@ -387,25 +375,13 @@ namespace PCLParaphernalia
                     if (targetFolder != null)
                         subKey.SetValue(_nameTargetFolder, targetFolder, RegistryValueKind.String);
 
-                    if (flagFormat16)
-                        subKey.SetValue(_nameFlagFormat16, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagFormat16, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagFormat16, flagFormat16 ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagCharCompSpecific)
-                        subKey.SetValue(_nameFlagCharCompSpecific, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagCharCompSpecific, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagCharCompSpecific, flagCharCompSpecific ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagVMetrics)
-                        subKey.SetValue(_nameFlagVMetrics, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagVMetrics, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagVMetrics, flagVMetrics ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
-                    if (flagSegGTLast)
-                        subKey.SetValue(_nameFlagSegGTLast, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagSegGTLast, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagSegGTLast, flagSegGTLast ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
                     tmpInt64 = (long)charCompUnicode;
 
@@ -434,10 +410,7 @@ namespace PCLParaphernalia
                     if (targetFolder != null)
                         subKey.SetValue(_nameTargetFolder, targetFolder, RegistryValueKind.String);
 
-                    if (flagVMetrics)
-                        subKey.SetValue(_nameFlagVMetrics, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagVMetrics, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagVMetrics, flagVMetrics ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
                 }
             }
         }
@@ -483,10 +456,7 @@ namespace PCLParaphernalia
                 {
                     subKey.SetValue(_nameIndxFont, indxFont, RegistryValueKind.DWord);
 
-                    if (flagUsePCLT)
-                        subKey.SetValue(_nameFlagUsePCLT, _flagTrue, RegistryValueKind.DWord);
-                    else
-                        subKey.SetValue(_nameFlagUsePCLT, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagUsePCLT, flagUsePCLT ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
                     if (adhocFontFile != null)
                         subKey.SetValue(_nameAdhocFontFile, adhocFontFile, RegistryValueKind.String);
