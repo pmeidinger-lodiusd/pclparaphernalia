@@ -38,9 +38,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyTools))
                 {
                     indxToolType = (int)subKey.GetValue(_nameIndxToolType, _indexZero);
                 }
@@ -60,9 +58,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyTools))
                 {
                     subKey.SetValue(_nameIndxToolType, indxToolType, RegistryValueKind.DWord);
                 }

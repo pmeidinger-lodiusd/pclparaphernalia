@@ -19,7 +19,7 @@ namespace PCLParaphernalia
         const string _mainKey = MainForm._regMainKey;
 
         const string _subKeyTools = "Tools";
-        const string _subKeyToolsStatusReadback = "StatusReadback";
+        const string _subKeyToolsStatusReadback = _subKeyTools + @"\StatusReadback";
         const string _subKeyPCL = "PCL";
         const string _subKeyPJL = "PJL";
         const string _subKeyPJLFS = "PJLFS";
@@ -71,14 +71,13 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string oldKey = _subKeyTools + "\\" + _subKeyToolsStatusReadback;
                 string oldFile;
 
                 bool update_from_v2_5_0_0 = false;
 
                 string defWorkFolder = ToolCommonData.DefWorkFolder;
 
-                using (var subKey = keyMain.OpenSubKey(oldKey, true))
+                using (var subKey = keyMain.OpenSubKey(_subKeyToolsStatusReadback, true))
                 {
                     oldFile = (string)subKey.GetValue(_nameCaptureFile);
 
@@ -92,18 +91,14 @@ namespace PCLParaphernalia
 
                 if (update_from_v2_5_0_0)
                 {
-                    const string keyPCL = _subKeyTools +
-                                     "\\" + _subKeyToolsStatusReadback +
-                                     "\\" + _subKeyPCL;
+                    const string keyPCL = _subKeyToolsStatusReadback + "\\" + _subKeyPCL;
 
                     using (var subKey = keyMain.CreateSubKey(keyPCL))
                     {
                         subKey.SetValue(_nameCaptureFile, oldFile, RegistryValueKind.String);
                     }
 
-                    const string keyPJL = _subKeyTools +
-                                     "\\" + _subKeyToolsStatusReadback +
-                                     "\\" + _subKeyPJL;
+                    const string keyPJL = _subKeyToolsStatusReadback + "\\" + _subKeyPJL;
 
                     using (var subKey = keyMain.CreateSubKey(keyPJL))
                     {
@@ -113,9 +108,7 @@ namespace PCLParaphernalia
 
                 if (crntPDL == ToolCommonData.PrintLang.PCL)
                 {
-                    const string key = _subKeyTools +
-                                        "\\" + _subKeyToolsStatusReadback +
-                                        "\\" + _subKeyPCL;
+                    const string key = _subKeyToolsStatusReadback + "\\" + _subKeyPCL;
 
                     using (var subKey = keyMain.CreateSubKey(key))
                     {
@@ -124,9 +117,7 @@ namespace PCLParaphernalia
                 }
                 else if (crntPDL == ToolCommonData.PrintLang.PJL)
                 {
-                    const string key = _subKeyTools +
-                                        "\\" + _subKeyToolsStatusReadback +
-                                        "\\" + _subKeyPJL;
+                    const string key = _subKeyToolsStatusReadback + "\\" + _subKeyPJL;
 
                     using (var subKey = keyMain.CreateSubKey(key))
                     {
@@ -148,10 +139,8 @@ namespace PCLParaphernalia
         public static void LoadDataCommon(ref int indxPDL)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
-            { 
-                const string key = _subKeyTools + "\\" + _subKeyToolsStatusReadback;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+            {
+                using (var subKey = keyMain.CreateSubKey(_subKeyToolsStatusReadback))
                 {
                     indxPDL = (int)subKey.GetValue(_nameIndxPDL, _indexZero);
                 }
@@ -175,14 +164,13 @@ namespace PCLParaphernalia
             {
                 string key;
 
-                const string oldKey = _subKeyTools + "\\" + _subKeyToolsStatusReadback;
                 string oldFile;
 
                 bool update_from_v2_5_0_0 = false;
 
                 string defWorkFolder = ToolCommonData.DefWorkFolder;
 
-                using (var subKey = keyMain.OpenSubKey(oldKey, true))
+                using (var subKey = keyMain.OpenSubKey(_subKeyToolsStatusReadback, true))
                 {
                     oldFile = (string)subKey.GetValue(_nameReportFile);
 
@@ -196,18 +184,14 @@ namespace PCLParaphernalia
 
                 if (update_from_v2_5_0_0)
                 {
-                    const string keyPCL = _subKeyTools +
-                                     "\\" + _subKeyToolsStatusReadback +
-                                     "\\" + _subKeyPCL;
+                    const string keyPCL = _subKeyToolsStatusReadback + "\\" + _subKeyPCL;
 
                     using (var subKey = keyMain.CreateSubKey(keyPCL))
                     {
                         subKey.SetValue(_nameReportFile, oldFile, RegistryValueKind.String);
                     }
 
-                    const string keyPJL = _subKeyTools +
-                                     "\\" + _subKeyToolsStatusReadback +
-                                     "\\" + _subKeyPJL;
+                    const string keyPJL = _subKeyToolsStatusReadback + "\\" + _subKeyPJL;
 
                     using (var subKey = keyMain.CreateSubKey(keyPJL))
                     {
@@ -215,8 +199,7 @@ namespace PCLParaphernalia
                     }
                 }
 
-                key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
-                                     "\\" + _subKeyPCL;
+                key = _subKeyToolsStatusReadback + "\\" + _subKeyPCL;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -249,14 +232,13 @@ namespace PCLParaphernalia
             {
                 string key;
 
-                const string oldKey = _subKeyTools + "\\" + _subKeyToolsStatusReadback;
                 string oldFile;
 
                 bool update_from_v2_5_0_0 = false;
 
                 string defWorkFolder = ToolCommonData.DefWorkFolder;
 
-                using (var subKey = keyMain.OpenSubKey(oldKey, true))
+                using (var subKey = keyMain.OpenSubKey(_subKeyToolsStatusReadback, true))
                 {
                     oldFile = (string)subKey.GetValue(_nameReportFile);
 
@@ -270,18 +252,14 @@ namespace PCLParaphernalia
 
                 if (update_from_v2_5_0_0)
                 {
-                    const string keyPCL = _subKeyTools +
-                                     "\\" + _subKeyToolsStatusReadback +
-                                     "\\" + _subKeyPCL;
+                    const string keyPCL = _subKeyToolsStatusReadback + "\\" + _subKeyPCL;
 
                     using (var subKey = keyMain.CreateSubKey(keyPCL))
                     {
                         subKey.SetValue(_nameReportFile, oldFile, RegistryValueKind.String);
                     }
 
-                    const string keyPJL = _subKeyTools +
-                                     "\\" + _subKeyToolsStatusReadback +
-                                     "\\" + _subKeyPJL;
+                    const string keyPJL = _subKeyToolsStatusReadback + "\\" + _subKeyPJL;
 
                     using (var subKey = keyMain.CreateSubKey(keyPJL))
                     {
@@ -289,9 +267,7 @@ namespace PCLParaphernalia
                     }
                 }
 
-                key = _subKeyTools +
-                        "\\" + _subKeyToolsStatusReadback +
-                        "\\" + _subKeyPJL;
+                key = _subKeyToolsStatusReadback + "\\" + _subKeyPJL;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -328,9 +304,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsStatusReadback +
-                                    "\\" + _subKeyPJLFS;
+                const string key = _subKeyToolsStatusReadback + "\\" + _subKeyPJLFS;
 
                 int tmpInt;
 
@@ -370,9 +344,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools + "\\" + _subKeyToolsStatusReadback;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyToolsStatusReadback))
                 {
                     indxRptFileFmt = (int)subKey.GetValue(_nameIndxRptFileFmt, _indexZero);
                 }
@@ -394,9 +366,7 @@ namespace PCLParaphernalia
             {
                 if (crntPDL == ToolCommonData.PrintLang.PCL)
                 {
-                    const string key = _subKeyTools +
-                                        "\\" + _subKeyToolsStatusReadback +
-                                        "\\" + _subKeyPCL;
+                    const string key = _subKeyToolsStatusReadback + "\\" + _subKeyPCL;
 
                     using (var subKey = keyMain.CreateSubKey(key))
                     {
@@ -406,9 +376,7 @@ namespace PCLParaphernalia
                 }
                 else if (crntPDL == ToolCommonData.PrintLang.PJL)
                 {
-                    const string key = _subKeyTools +
-                                        "\\" + _subKeyToolsStatusReadback +
-                                        "\\" + _subKeyPJL;
+                    const string key = _subKeyToolsStatusReadback + "\\" + _subKeyPJL;
 
                     using (var subKey = keyMain.CreateSubKey(key))
                     {
@@ -432,9 +400,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools + "\\" + _subKeyToolsStatusReadback;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyToolsStatusReadback))
                 {
                     subKey.SetValue(_nameIndxPDL, indxPDL, RegistryValueKind.DWord);
                 }
@@ -454,9 +420,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsStatusReadback +
-                                    "\\" + _subKeyPCL;
+                const string key = _subKeyToolsStatusReadback + "\\" + _subKeyPCL;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -488,9 +452,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsStatusReadback +
-                                    "\\" + _subKeyPJL;
+                const string key = _subKeyToolsStatusReadback + "\\" + _subKeyPJL;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -530,9 +492,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsStatusReadback +
-                                    "\\" + _subKeyPJLFS;
+                const string key = _subKeyToolsStatusReadback + "\\" + _subKeyPJLFS;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -573,9 +533,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools + "\\" + _subKeyToolsStatusReadback;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyToolsStatusReadback))
                 {
                     subKey.SetValue(_nameIndxRptFileFmt, indxRptFileFmt, RegistryValueKind.DWord);
                 }

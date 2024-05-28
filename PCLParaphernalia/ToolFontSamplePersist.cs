@@ -19,7 +19,7 @@ namespace PCLParaphernalia
         const string _mainKey = MainForm._regMainKey;
 
         const string _subKeyTools = "Tools";
-        const string _subKeyToolsFontSample = "FontSample";
+        const string _subKeyToolsFontSample = _subKeyTools + @"\FontSample";
         const string _subKeyPCL5 = "PCL5";
         const string _subKeyPCL6 = "PCL6";
         const string _subKeyPCL = "PCL";
@@ -100,7 +100,8 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string oldKey = _subKeyTools + "\\" + _subKeyToolsFontSample;
+                const string oldKey = _subKeyToolsFontSample;
+
                 string oldFile;
 
                 bool update_from_v2_5_0_0 = false;
@@ -123,14 +124,14 @@ namespace PCLParaphernalia
 
                 if (update_from_v2_5_0_0)
                 {
-                    const string keyPCL = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCL;
+                    const string keyPCL = _subKeyToolsFontSample + "\\" + _subKeyPCL;
 
                     using (var subKey = keyMain.CreateSubKey(keyPCL))
                     {
                         subKey.SetValue(_nameCaptureFile, oldFile, RegistryValueKind.String);
                     }
 
-                    const string keyPCLXL = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCLXL;
+                    const string keyPCLXL = _subKeyToolsFontSample + "\\" + _subKeyPCLXL;
 
                     using (var subKey = keyMain.CreateSubKey(keyPCLXL))
                     {
@@ -142,7 +143,7 @@ namespace PCLParaphernalia
 
                 if (crntPDL == ToolCommonData.PrintLang.PCL)
                 {
-                    const string key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCL;
+                    const string key = _subKeyToolsFontSample + "\\" + _subKeyPCL;
 
                     using (var subKey = keyMain.CreateSubKey(key))
                     {
@@ -151,7 +152,7 @@ namespace PCLParaphernalia
                 }
                 else if (crntPDL == ToolCommonData.PrintLang.PCLXL)
                 {
-                    const string key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCLXL;
+                    const string key = _subKeyToolsFontSample + "\\" + _subKeyPCLXL;
 
                     using (var subKey = keyMain.CreateSubKey(key))
                     {
@@ -176,11 +177,9 @@ namespace PCLParaphernalia
             {
                 int tmpInt;
 
-                const string key = _subKeyTools + "\\" + _subKeyToolsFontSample;
-
                 //----------------------------------------------------------------//
 
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyToolsFontSample))
                 {
                     if (Helper_RegKey.KeyExists(subKey, _subKeyPCL5))
                     {
@@ -225,7 +224,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                string key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + pdlName;
+                string key = _subKeyToolsFontSample + "\\" + pdlName;
 
                 int tmpInt;
 
@@ -308,10 +307,9 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                "\\" + _subKeyToolsFontSample +
-                                "\\" + _subKeyPCL +
-                                "\\" + _subKeyCustom;
+                const string key = _subKeyToolsFontSample +
+                                    "\\" + _subKeyPCL +
+                                    "\\" + _subKeyCustom;
 
                 int tmpInt;
 
@@ -378,8 +376,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsFontSample +
+                const string key = _subKeyToolsFontSample +
                                     "\\" + _subKeyPCL +
                                     "\\" + _subKeyDownload;
 
@@ -437,8 +434,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsFontSample +
+                const string key = _subKeyToolsFontSample +
                                     "\\" + _subKeyPCL +
                                     "\\" + _subKeyPreset;
 
@@ -502,8 +498,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsFontSample +
+                const string key = _subKeyToolsFontSample +
                                     "\\" + _subKeyPCL +
                                     "\\" + _subKeyPrnDisk;
 
@@ -615,13 +610,13 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                string key;
+                const string key = _subKeyToolsFontSample +
+                                    "\\" + _subKeyPCLXL +
+                                    "\\" + _subKeyCustom;
 
                 int tmpInt;
 
                 string defWorkFolder = ToolCommonData.DefWorkFolder;
-
-                key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCLXL + "\\" + _subKeyCustom;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -658,16 +653,13 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsFontSample +
+                const string key = _subKeyToolsFontSample +
                                     "\\" + _subKeyPCLXL +
                                     "\\" + _subKeyDownload;
 
                 int tmpInt;
 
                 string defWorkFolder = ToolCommonData.DefWorkFolder;
-
-                //----------------------------------------------------------------//
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -707,8 +699,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsFontSample +
+                const string key = _subKeyToolsFontSample +
                                     "\\" + _subKeyPCLXL +
                                     "\\" + _subKeyPreset;
 
@@ -751,9 +742,7 @@ namespace PCLParaphernalia
             {
                 if (crntPDL == ToolCommonData.PrintLang.PCL)
                 {
-                    const string key = _subKeyTools +
-                                        "\\" + _subKeyToolsFontSample +
-                                        "\\" + _subKeyPCL;
+                    const string key = _subKeyToolsFontSample + "\\" + _subKeyPCL;
 
                     using (var subKey = keyMain.CreateSubKey(key))
                     {
@@ -763,7 +752,7 @@ namespace PCLParaphernalia
                 }
                 else if (crntPDL == ToolCommonData.PrintLang.PCLXL)
                 {
-                    const string key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCLXL;
+                    const string key = _subKeyToolsFontSample + "\\" + _subKeyPCLXL;
 
                     using (var subKey = keyMain.CreateSubKey(key))
                     {
@@ -787,7 +776,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools + "\\" + _subKeyToolsFontSample;
+                const string key = _subKeyToolsFontSample;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -823,7 +812,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                string key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + pdlName;
+                string key = _subKeyToolsFontSample + "\\" + pdlName;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -889,8 +878,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\"+ _subKeyToolsFontSample +
+                const string key = _subKeyToolsFontSample +
                                     "\\" + _subKeyPCL +
                                     "\\" + _subKeyCustom;
 
@@ -952,8 +940,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsFontSample +
+                const string key = _subKeyToolsFontSample +
                                     "\\" + _subKeyPCL +
                                     "\\" + _subKeyDownload;
 
@@ -1007,8 +994,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsFontSample +
+                const string key = _subKeyToolsFontSample +
                                     "\\" + _subKeyPCL +
                                     "\\" + _subKeyPreset;
 
@@ -1062,8 +1048,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsFontSample +
+                const string key = _subKeyToolsFontSample +
                                     "\\" + _subKeyPCL +
                                     "\\" + _subKeyPrnDisk;
 
@@ -1148,8 +1133,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsFontSample +
+                const string key = _subKeyToolsFontSample +
                                     "\\" + _subKeyPCLXL +
                                     "\\" + _subKeyCustom;
 
@@ -1188,8 +1172,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsFontSample +
+                const string key = _subKeyToolsFontSample +
                                     "\\" + _subKeyPCLXL +
                                     "\\" + _subKeyDownload;
 
@@ -1233,8 +1216,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsFontSample +
+                const string key = _subKeyToolsFontSample +
                                     "\\" + _subKeyPCLXL +
                                     "\\" + _subKeyPreset;
 

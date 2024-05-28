@@ -19,7 +19,7 @@ namespace PCLParaphernalia
         const string _mainKey = MainForm._regMainKey;
 
         const string _subKeyTools = "Tools";
-        const string _subKeyToolsPrnPrint = "PrnPrint";
+        const string _subKeyToolsPrnPrint = _subKeyTools + @"\PrnPrint";
 
         const string _nameCaptureFile = "CaptureFile";
         const string _nameFilename = "Filename";
@@ -41,13 +41,9 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools + "\\" + _subKeyToolsPrnPrint;
-
-                string defWorkFolder = ToolCommonData.DefWorkFolder;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyToolsPrnPrint))
                 {
-                    captureFile = (string)subKey.GetValue(_nameCaptureFile, defWorkFolder + "\\" + _defaultCaptureFile);
+                    captureFile = (string)subKey.GetValue(_nameCaptureFile, ToolCommonData.DefWorkFolder + "\\" + _defaultCaptureFile);
                 }
             }
         }
@@ -66,13 +62,9 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools + "\\" + _subKeyToolsPrnPrint;
-
-                string defWorkFolder = ToolCommonData.DefWorkFolder;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyToolsPrnPrint))
                 {
-                    filename = (string)subKey.GetValue(_nameFilename, defWorkFolder + "\\" + _defaultFilename);
+                    filename = (string)subKey.GetValue(_nameFilename, ToolCommonData.DefWorkFolder + "\\" + _defaultFilename);
                 }
             }
         }
@@ -91,9 +83,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools + "\\" + _subKeyToolsPrnPrint;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyToolsPrnPrint))
                 {
                     if (captureFile != null)
                         subKey.SetValue(_nameCaptureFile, captureFile, RegistryValueKind.String);
@@ -114,9 +104,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools + "\\" + _subKeyToolsPrnPrint;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyToolsPrnPrint))
                 {
                     if (filename != null)
                         subKey.SetValue(_nameFilename, filename, RegistryValueKind.String);

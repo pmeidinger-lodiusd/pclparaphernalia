@@ -19,7 +19,7 @@ namespace PCLParaphernalia
         const string _mainKey = MainForm._regMainKey;
 
         const string _subKeyTools = "Tools";
-        const string _subKeyToolsAnalyse = "PrnAnalyse";
+        const string _subKeyToolsAnalyse = _subKeyTools + @"\PrnAnalyse";
         const string _subKeyOptCharSet = "OptCharSet";
         const string _subKeyOptClrMap = "OptClrMap";
         const string _subKeyOptGeneral = "OptGeneral";
@@ -102,11 +102,9 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools + "\\" + _subKeyToolsAnalyse;
-
                 string defWorkFolder = ToolCommonData.DefWorkFolder;
 
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyToolsAnalyse))
                 {
                     filename = (string)subKey.GetValue(_nameFilename, defWorkFolder + "\\" + _defaultFilename);
                 }
@@ -126,9 +124,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools + "\\" + _subKeyToolsAnalyse;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyToolsAnalyse))
                 {
                     indxRptFileFmt = (int)subKey.GetValue(_nameIndxRptFileFmt, _indexZero);
                 }
@@ -151,9 +147,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsAnalyse +
-                                    "\\" + _subKeyOptCharSet;
+                const string key = _subKeyToolsAnalyse + "\\" + _subKeyOptCharSet;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -178,9 +172,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                        "\\" + _subKeyToolsAnalyse +
-                                        "\\" + _subKeyOptClrMap;
+                const string key = _subKeyToolsAnalyse + "\\" + _subKeyOptClrMap;
 
                 int tmpInt;
 
@@ -209,9 +201,9 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools + "\\" + _subKeyToolsAnalyse +
-                                            "\\" + _subKeyOptClrMap +
-                                            "\\" + _subKeyCrnt;
+                const string key = _subKeyToolsAnalyse +
+                                    "\\" + _subKeyOptClrMap +
+                                    "\\" + _subKeyCrnt;
 
                 int tmpInt;
 
@@ -252,9 +244,9 @@ namespace PCLParaphernalia
             {
                 string themeNo = number.ToString("D2");
 
-                string key = _subKeyTools + "\\" + _subKeyToolsAnalyse +
-                                            "\\" + _subKeyOptClrMap +
-                                            "\\" + _subKeyUserThemeRoot + themeNo;
+                string key = _subKeyToolsAnalyse +
+                                "\\" + _subKeyOptClrMap +
+                                "\\" + _subKeyUserThemeRoot + themeNo;
 
                 int tmpInt;
 
@@ -296,9 +288,9 @@ namespace PCLParaphernalia
             {
                 string themeNo = number.ToString("D2");
 
-                string key = _subKeyTools + "\\" + _subKeyToolsAnalyse +
-                                            "\\" + _subKeyOptClrMap +
-                                            "\\" + _subKeyUserThemeRoot + themeNo;
+                string key = _subKeyToolsAnalyse +
+                                "\\" + _subKeyOptClrMap +
+                                "\\" + _subKeyUserThemeRoot + themeNo;
 
                 //----------------------------------------------------------------//
 
@@ -327,9 +319,7 @@ namespace PCLParaphernalia
             {
                 int tmpInt;
 
-                const string key = _subKeyTools +
-                                        "\\" + _subKeyToolsAnalyse +
-                                        "\\" + _subKeyOptGeneral;
+                const string key = _subKeyToolsAnalyse + "\\" + _subKeyOptGeneral;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -362,9 +352,7 @@ namespace PCLParaphernalia
             {
                 int tmpInt;
 
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsAnalyse +
-                                    "\\" + _subKeyOptHPGL2;
+                const string key = _subKeyToolsAnalyse + "\\" + _subKeyOptHPGL2;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -411,9 +399,7 @@ namespace PCLParaphernalia
             {
                 int tmpInt;
 
-                const string key = _subKeyTools +
-                                        "\\" + _subKeyToolsAnalyse +
-                                        "\\" + _subKeyOptPCL;
+                const string key = _subKeyToolsAnalyse + "\\" + _subKeyOptPCL;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -562,9 +548,7 @@ namespace PCLParaphernalia
             {
                 int tmpInt;
 
-                const string key = _subKeyTools +
-                                        "\\" + _subKeyToolsAnalyse +
-                                        "\\" + _subKeyOptPCLXL;
+                const string key = _subKeyToolsAnalyse + "\\" + _subKeyOptPCLXL;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -651,9 +635,7 @@ namespace PCLParaphernalia
             {
                 int tmpInt;
 
-                const string key = _subKeyTools +
-                                        "\\" + _subKeyToolsAnalyse +
-                                        "\\" + _subKeyOptPML;
+                const string key = _subKeyToolsAnalyse + "\\" + _subKeyOptPML;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -690,9 +672,7 @@ namespace PCLParaphernalia
             {
                 int tmpInt;
 
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsAnalyse +
-                                    "\\" + _subKeyOptStats;
+                const string key = _subKeyToolsAnalyse + "\\" + _subKeyOptStats;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -722,9 +702,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools + "\\" + _subKeyToolsAnalyse;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyToolsAnalyse))
                 {
                     if (filename != null)
                         subKey.SetValue(_nameFilename, filename, RegistryValueKind.String);
@@ -745,9 +723,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools + "\\" + _subKeyToolsAnalyse;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyToolsAnalyse))
                 {
                     subKey.SetValue(_nameIndxRptFileFmt, indxRptFileFmt, RegistryValueKind.DWord);
                 }
@@ -769,9 +745,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsAnalyse +
-                                    "\\" + _subKeyOptCharSet;
+                const string key = _subKeyToolsAnalyse + "\\" + _subKeyOptCharSet;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -797,9 +771,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsAnalyse +
-                                    "\\" + _subKeyOptClrMap;
+                const string key = _subKeyToolsAnalyse + "\\" + _subKeyOptClrMap;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -824,8 +796,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsAnalyse +
+                const string key = _subKeyToolsAnalyse +
                                     "\\" + _subKeyOptClrMap +
                                     "\\" + _subKeyCrnt;
 
@@ -866,8 +837,7 @@ namespace PCLParaphernalia
             {
                 string themeNo = number.ToString("D2");
 
-                string key = _subKeyTools +
-                                "\\" + _subKeyToolsAnalyse +
+                string key = _subKeyToolsAnalyse +
                                 "\\" + _subKeyOptClrMap +
                                 "\\" + _subKeyUserThemeRoot +
                                 themeNo;
@@ -909,9 +879,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsAnalyse +
-                                    "\\" + _subKeyOptGeneral;
+                const string key = _subKeyToolsAnalyse + "\\" + _subKeyOptGeneral;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -943,9 +911,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsAnalyse +
-                                    "\\" + _subKeyOptHPGL2;
+                const string key = _subKeyToolsAnalyse + "\\" + _subKeyOptHPGL2;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -990,9 +956,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsAnalyse +
-                                    "\\" + _subKeyOptPCL;
+                const string key = _subKeyToolsAnalyse + "\\" + _subKeyOptPCL;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -1121,9 +1085,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsAnalyse +
-                                    "\\" + _subKeyOptPCLXL;
+                const string key = _subKeyToolsAnalyse + "\\" + _subKeyOptPCLXL;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -1192,9 +1154,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsAnalyse +
-                                    "\\" + _subKeyOptPML;
+                const string key = _subKeyToolsAnalyse + "\\" + _subKeyOptPML;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -1229,9 +1189,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsAnalyse +
-                                    "\\" + _subKeyOptStats;
+                const string key = _subKeyToolsAnalyse + "\\" + _subKeyOptStats;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {

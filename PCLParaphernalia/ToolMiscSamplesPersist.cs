@@ -19,7 +19,7 @@ namespace PCLParaphernalia
         const string _mainKey = MainForm._regMainKey;
 
         const string _subKeyTools = "Tools";
-        const string _subKeyToolsMiscSamples = "MiscSamples";
+        const string _subKeyToolsMiscSamples = _subKeyTools + @"\MiscSamples";
         const string _subKeyPCL = "PCL";
         const string _subKeyPCLXL = "PCLXL";
 
@@ -141,9 +141,9 @@ namespace PCLParaphernalia
 
                 if (crntPDL == ToolCommonData.PrintLang.PCL)
                 {
-                    string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
-                                                "\\" + subKeyType +
-                                                "\\" + _subKeyPCL;
+                    string key = _subKeyToolsMiscSamples + 
+                                    "\\" + subKeyType +
+                                    "\\" + _subKeyPCL;
 
                     using (var subKey = keyMain.CreateSubKey(key))
                     {
@@ -152,9 +152,9 @@ namespace PCLParaphernalia
                 }
                 else if (crntPDL == ToolCommonData.PrintLang.PCLXL)
                 {
-                    string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
-                                                "\\" + subKeyType +
-                                                "\\" + _subKeyPCLXL;
+                    string key = _subKeyToolsMiscSamples +
+                                    "\\" + subKeyType +
+                                    "\\" + _subKeyPCLXL;
 
                     using (var subKey = keyMain.CreateSubKey(key))
                     {
@@ -177,9 +177,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyToolsMiscSamples))
                 {
                     indxPDL = (int)subKey.GetValue(_nameIndxPDL, _indexZero);
 
@@ -204,9 +202,9 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
-                                     "\\" + _subKeyCommon +
-                                     "\\" + pdlName;
+                string key = _subKeyToolsMiscSamples +
+                                "\\" + _subKeyCommon +
+                                "\\" + pdlName;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -235,14 +233,11 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-
-                string key;
+                string key = _subKeyToolsMiscSamples +
+                                "\\" + _subKeyColour +
+                                "\\" + pdlName;
 
                 int tmpInt;
-
-                key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
-                                     "\\" + _subKeyColour +
-                                     "\\" + pdlName;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -276,9 +271,9 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
-                                     "\\" + _subKeyColour +
-                                     "\\" + pdlName;
+                string key = _subKeyToolsMiscSamples +
+                                "\\" + _subKeyColour +
+                                "\\" + pdlName;
 
                 if (monochrome)
                 {
@@ -355,18 +350,15 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-
-                string key;
+                string key = _subKeyToolsMiscSamples +
+                                "\\" + _subKeyLogOper +
+                                "\\" + pdlName;
 
                 int tmpInt;
                 int indxClrBlack,
                       indxClrWhite,
                       indxMonoBlack,
                       indxMonoWhite;
-
-                key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
-                                     "\\" + _subKeyLogOper +
-                                     "\\" + pdlName;
 
                 if (pdlName == _subKeyPCL)
                 {
@@ -460,14 +452,11 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-
-                string key;
+                string key = _subKeyToolsMiscSamples +
+                                "\\" + _subKeyLogPage +
+                                "\\" + pdlName;
 
                 int tmpInt;
-
-                key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
-                                     "\\" + _subKeyLogPage +
-                                     "\\" + pdlName;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -503,13 +492,11 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                string key;
+                string key = _subKeyToolsMiscSamples +
+                                "\\" + _subKeyPattern +
+                                "\\" + pdlName;
 
                 int tmpInt;
-
-                key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
-                                     "\\" + _subKeyPattern +
-                                     "\\" + pdlName;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -535,14 +522,11 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-
-                string key;
+                string key = _subKeyToolsMiscSamples +
+                                "\\" + _subKeyTxtMod +
+                                "\\" + pdlName;
 
                 int tmpInt;
-
-                key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
-                                     "\\" + _subKeyTxtMod +
-                                     "\\" + pdlName;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -572,14 +556,11 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-
-                string key;
+                string key = _subKeyToolsMiscSamples +
+                                "\\" + _subKeyUnicode +
+                                "\\" + pdlName;
 
                 int tmpInt;
-
-                key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
-                                     "\\" + _subKeyUnicode +
-                                     "\\" + pdlName;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -610,7 +591,6 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-
                 string subKeyType = string.Empty;
 
                 if (crntToolSubId == ToolCommonData.ToolSubIds.Colour)
@@ -628,9 +608,9 @@ namespace PCLParaphernalia
 
                 if (crntPDL == ToolCommonData.PrintLang.PCL)
                 {
-                    string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
-                                                "\\" + subKeyType +
-                                                "\\" + _subKeyPCL;
+                    string key = _subKeyToolsMiscSamples +
+                                    "\\" + subKeyType +
+                                    "\\" + _subKeyPCL;
 
                     using (var subKey = keyMain.CreateSubKey(key))
                     {
@@ -642,9 +622,9 @@ namespace PCLParaphernalia
                 }
                 else if (crntPDL == ToolCommonData.PrintLang.PCLXL)
                 {
-                    string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
-                                                "\\" + subKeyType +
-                                                "\\" + _subKeyPCLXL;
+                    string key = _subKeyToolsMiscSamples +
+                                    "\\" + subKeyType +
+                                    "\\" + _subKeyPCLXL;
 
                     using (var subKey = keyMain.CreateSubKey(key))
                     {
@@ -670,10 +650,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-
-                const string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyToolsMiscSamples))
                 {
                     subKey.SetValue(_nameIndxPDL, indxPDL, RegistryValueKind.DWord);
 
@@ -698,9 +675,9 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
-                                     "\\" + _subKeyCommon +
-                                     "\\" + pdlName;
+                string key = _subKeyToolsMiscSamples +
+                                "\\" + _subKeyCommon +
+                                "\\" + pdlName;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -726,9 +703,9 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
-                                     "\\" + _subKeyColour +
-                                     "\\" + pdlName;
+                string key = _subKeyToolsMiscSamples +
+                                "\\" + _subKeyColour +
+                                "\\" + pdlName;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -760,9 +737,9 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
-                                     "\\" + _subKeyColour +
-                                     "\\" + pdlName;
+                string key = _subKeyToolsMiscSamples +
+                                "\\" + _subKeyColour +
+                                "\\" + pdlName;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -804,10 +781,9 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-
-                string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
-                                     "\\" + _subKeyLogOper +
-                                     "\\" + pdlName;
+                string key = _subKeyToolsMiscSamples +
+                                "\\" + _subKeyLogOper +
+                                "\\" + pdlName;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -876,10 +852,9 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-
-                string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
-                                     "\\" + _subKeyLogPage +
-                                     "\\" + pdlName;
+                string key = _subKeyToolsMiscSamples +
+                                "\\" + _subKeyLogPage +
+                                "\\" + pdlName;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -917,9 +892,9 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
-                                     "\\" + _subKeyPattern +
-                                     "\\" + pdlName;
+                string key = _subKeyToolsMiscSamples +
+                                "\\" + _subKeyPattern +
+                                "\\" + pdlName;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -946,9 +921,9 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
-                                     "\\" + _subKeyTxtMod +
-                                     "\\" + pdlName;
+                string key = _subKeyToolsMiscSamples +
+                                "\\" + _subKeyTxtMod +
+                                "\\" + pdlName;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -979,24 +954,17 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-
-                string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
-                                     "\\" + _subKeyUnicode +
-                                     "\\" + pdlName;
+                string key = _subKeyToolsMiscSamples +
+                                "\\" + _subKeyUnicode +
+                                "\\" + pdlName;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
-                    subKey.SetValue(_nameIndxFont,
-                                    indxFont,
-                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameIndxFont, indxFont, RegistryValueKind.DWord);
 
-                    subKey.SetValue(_nameIndxVariant,
-                                    (int)variant,
-                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameIndxVariant, (int)variant, RegistryValueKind.DWord);
 
-                    subKey.SetValue(_nameCodePoint,
-                                    codePoint,
-                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameCodePoint, codePoint, RegistryValueKind.DWord);
 
                     if (flagFormAsMacro)
                         subKey.SetValue(_nameFlagFormAsMacro, _flagTrue, RegistryValueKind.DWord);

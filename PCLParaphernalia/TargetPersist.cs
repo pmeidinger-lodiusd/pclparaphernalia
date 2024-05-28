@@ -59,9 +59,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTarget;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyTarget))
                 {
                     indxTargetType = (int)subKey.GetValue(_nameIndxTargetType, _indexZero);
                 }
@@ -175,9 +173,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTarget;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyTarget))
                 {
                     subKey.SetValue(_nameIndxTargetType, indxTargetType, RegistryValueKind.DWord);
                 }
@@ -201,14 +197,12 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                string key = _subKeyTarget;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyTarget))
                 {
                     subKey.SetValue(_nameIndxTargetType, indxTargetType, RegistryValueKind.DWord);
                 }
 
-                key = _subKeyTarget + "\\" + _subKeyTargetNetPrinter;
+                const string key = _subKeyTarget + "\\" + _subKeyTargetNetPrinter;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -236,14 +230,12 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                string key = _subKeyTarget;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyTarget))
                 {
                     subKey.SetValue(_nameIndxTargetType, indxTargetType, RegistryValueKind.DWord);
                 }
 
-                key = _subKeyTarget + "\\" + _subKeyTargetWinPrinter;
+                const string key = _subKeyTarget + "\\" + _subKeyTargetWinPrinter;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {

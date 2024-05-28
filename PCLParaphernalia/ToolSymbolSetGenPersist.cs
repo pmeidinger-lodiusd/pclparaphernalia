@@ -23,7 +23,7 @@ namespace PCLParaphernalia
         const string _mainKey = MainForm._regMainKey;
 
         const string _subKeyTools = "Tools";
-        const string _subKeyToolsSymSetGen = "SymSetGen";
+        const string _subKeyToolsSymSetGen = _subKeyTools + @"\SymSetGen";
         const string _subKeyDonor = "Donor";
         const string _subKeyTarget = "Target";
 
@@ -65,9 +65,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsSymSetGen +
-                                    "\\" + _subKeyDonor;
+                const string key = _subKeyToolsSymSetGen + "\\" + _subKeyDonor;
 
                 int tmpInt;
 
@@ -103,9 +101,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools + "\\" + _subKeyToolsSymSetGen;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyToolsSymSetGen))
                 {
                     indxRptFileFmt = (int)subKey.GetValue(_nameIndxRptFileFmt, _indexZero);
                 }
@@ -132,9 +128,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                "\\" + _subKeyToolsSymSetGen +
-                                "\\" + _subKeyTarget;
+                const string key = _subKeyToolsSymSetGen + "\\" + _subKeyTarget;
 
                 int tmpInt;
                 long tmpInt64;
@@ -191,9 +185,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsSymSetGen +
-                                    "\\" + _subKeyDonor;
+                const string key = _subKeyToolsSymSetGen + "\\" + _subKeyDonor;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -228,9 +220,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools + "\\" + _subKeyToolsSymSetGen;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyToolsSymSetGen))
                 {
                     subKey.SetValue(_nameIndxRptFileFmt, indxRptFileFmt, RegistryValueKind.DWord);
                 }
@@ -257,9 +247,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsSymSetGen +
-                                    "\\" + _subKeyTarget;
+                const string key = _subKeyToolsSymSetGen + "\\" + _subKeyTarget;
 
                 long tmpInt64;
 

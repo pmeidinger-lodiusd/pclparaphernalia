@@ -19,7 +19,7 @@ namespace PCLParaphernalia
         const string _mainKey = MainForm._regMainKey;
 
         const string _subKeyTools = "Tools";
-        const string _subKeyToolsImageBitmap = "ImageBitmap";
+        const string _subKeyToolsImageBitmap = _subKeyTools + @"\ImageBitmap";
         const string _subKeyPCL5 = "PCL5";
         const string _subKeyPCL6 = "PCL6";
         const string _subKeyPCL = "PCL";
@@ -56,12 +56,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataCapture(ToolCommonData.PrintLang crntPDL,
-                                            ref string captureFile)
+        public static void LoadDataCapture(ToolCommonData.PrintLang crntPDL, ref string captureFile)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string oldKey = _subKeyTools + "\\" + _subKeyToolsImageBitmap;
+                const string oldKey = _subKeyToolsImageBitmap;
 
                 string oldFile;
 
@@ -83,14 +82,14 @@ namespace PCLParaphernalia
 
                 if (update_from_v2_5_0_0)
                 {
-                    const string keyPCL = _subKeyTools + "\\" + _subKeyToolsImageBitmap + "\\" + _subKeyPCL;
+                    const string keyPCL = _subKeyToolsImageBitmap + "\\" + _subKeyPCL;
 
                     using (var subKey = keyMain.CreateSubKey(keyPCL))
                     {
                         subKey.SetValue(_nameCaptureFile, oldFile, RegistryValueKind.String);
                     }
 
-                    const string keyPCLXL = _subKeyTools + "\\" + _subKeyToolsImageBitmap + "\\" + _subKeyPCLXL;
+                    const string keyPCLXL = _subKeyToolsImageBitmap + "\\" + _subKeyPCLXL;
 
                     using (var subKey = keyMain.CreateSubKey(keyPCLXL))
                     {
@@ -100,7 +99,7 @@ namespace PCLParaphernalia
 
                 if (crntPDL == ToolCommonData.PrintLang.PCL)
                 {
-                    const string key = _subKeyTools + "\\" + _subKeyToolsImageBitmap + "\\" + _subKeyPCL;
+                    const string key = _subKeyToolsImageBitmap + "\\" + _subKeyPCL;
 
                     using (var subKey = keyMain.CreateSubKey(key))
                     {
@@ -109,7 +108,7 @@ namespace PCLParaphernalia
                 }
                 else if (crntPDL == ToolCommonData.PrintLang.PCLXL)
                 {
-                    const string key = _subKeyTools + "\\" + _subKeyToolsImageBitmap + "\\" + _subKeyPCLXL;
+                    const string key = _subKeyToolsImageBitmap + "\\" + _subKeyPCLXL;
 
                     using (var subKey = keyMain.CreateSubKey(key))
                     {
@@ -139,11 +138,9 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools + "\\" + _subKeyToolsImageBitmap;
-
                 string defWorkFolder = ToolCommonData.DefWorkFolder;
 
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyToolsImageBitmap))
                 {
                     if (Helper_RegKey.KeyExists(subKey, _subKeyPCL5))
                     {
@@ -190,9 +187,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                string key = _subKeyTools +
-                                "\\" + _subKeyToolsImageBitmap +
-                                "\\" + pdlName;
+                string key = _subKeyToolsImageBitmap + "\\" + pdlName;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -219,9 +214,7 @@ namespace PCLParaphernalia
 
                 if (crntPDL == ToolCommonData.PrintLang.PCL)
                 {
-                    const string key = _subKeyTools +
-                                        "\\" + _subKeyToolsImageBitmap +
-                                        "\\" + _subKeyPCL;
+                    const string key = _subKeyToolsImageBitmap + "\\" + _subKeyPCL;
 
                     using (var subKey = keyMain.CreateSubKey(key))
                     {
@@ -231,7 +224,7 @@ namespace PCLParaphernalia
                 }
                 else if (crntPDL == ToolCommonData.PrintLang.PCLXL)
                 {
-                    const string key = _subKeyTools + "\\" + _subKeyToolsImageBitmap + "\\" + _subKeyPCLXL;
+                    const string key = _subKeyToolsImageBitmap + "\\" + _subKeyPCLXL;
 
                     using (var subKey = keyMain.CreateSubKey(key))
                     {
@@ -261,10 +254,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-
-                const string key = _subKeyTools + "\\" + _subKeyToolsImageBitmap;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyToolsImageBitmap))
                 {
                     subKey.SetValue(_nameIndxPDL, indxPDL, RegistryValueKind.DWord);
 
@@ -300,9 +290,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                string key = _subKeyTools +
-                            "\\" + _subKeyToolsImageBitmap +
-                            "\\" + pdlName;
+                string key = _subKeyToolsImageBitmap + "\\" + pdlName;
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
