@@ -563,7 +563,7 @@ namespace PCLParaphernalia
 
         public static void WriteMacroControl(BinaryWriter prnWriter, short macroId, MacroControl control)
         {
-            string seq;
+            string seq = string.Empty;
 
             if (control == MacroControl.StartDef)
             {
@@ -607,10 +607,6 @@ namespace PCLParaphernalia
                                            macroId + "y" +  // Macro: ID
                                            "10X";           // Macro: make permanent
             }
-            else
-            {
-                seq = string.Empty;
-            }
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
@@ -646,12 +642,10 @@ namespace PCLParaphernalia
                                                  ushort downloadID,
                                                  string filename)
         {
-            string seq;
-
             int fnLen = filename.Length + 1;
 
-            seq = _escChar + "&f" + downloadID + "Y" +
-                  _escChar + "&n" + fnLen + "W\x05" + filename;
+            string seq = _escChar + "&f" + downloadID + "Y" +
+                          _escChar + "&n" + fnLen + "W\x05" + filename;
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
@@ -709,8 +703,6 @@ namespace PCLParaphernalia
                                       bool cursorPCL,
                                       bool penPCL)
         {
-            string seq;
-
             short mode;
 
             if (penPCL)
@@ -721,7 +713,7 @@ namespace PCLParaphernalia
             if (cursorPCL)
                 mode += 2;
 
-            seq = _escChar + "%" +
+            string seq = _escChar + "%" +
                            mode +
                            "B";                 // Enter HP-GL/2 Mode
 
@@ -766,7 +758,6 @@ namespace PCLParaphernalia
 
         public static void PageFace(BinaryWriter prnWriter, bool frontFace)
         {
-            string seq;
             string faceId;
 
             if (frontFace)
@@ -774,9 +765,9 @@ namespace PCLParaphernalia
             else
                 faceId = "2";
 
-            seq = _escChar + "&a" +               // page face
-                           faceId +
-                           "G";
+            string seq = _escChar + "&a" +               // page face
+                        faceId +
+                        "G";
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
@@ -798,8 +789,7 @@ namespace PCLParaphernalia
         {
             string seq;
 
-            if (PCLPaperTypes.GetType(indxPaperType) !=
-                    PCLPaperTypes.EntryType.NotSet)
+            if (PCLPaperTypes.GetType(indxPaperType) != PCLPaperTypes.EntryType.NotSet)
             {
                 string tmpStr = PCLPaperTypes.GetName(indxPaperType);
                 int len = tmpStr.Length + 1;
@@ -1095,19 +1085,19 @@ namespace PCLParaphernalia
             else if (patternType == PatternType.Shading)
             {
                 seq = _escChar + "*c" +
-                               patternID + "G" +    // Shading percentage
+                      patternID + "G" +    // Shading percentage
                       _escChar + "*v2T";
             }
             else if (patternType == PatternType.CrossHatch)
             {
                 seq = _escChar + "*c" +
-                               patternID + "G" +    // Cross hatch ID
+                      patternID + "G" +    // Cross hatch ID
                       _escChar + "*v3T";
             }
             else if (patternType == PatternType.UserDefined)
             {
                 seq = _escChar + "*c" +
-                               patternID + "G" +    // Pattern ID
+                      patternID + "G" +    // Pattern ID
                       _escChar + "*v4T";
             }
 
@@ -1126,14 +1116,11 @@ namespace PCLParaphernalia
         public static void PatternTransparency(BinaryWriter prnWriter, bool opaque)
         {
             string seq;
+
             if (opaque)
-            {
                 seq = _escChar + "*v1O";
-            }
             else
-            {
                 seq = _escChar + "*v0O";
-            }
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
@@ -1177,20 +1164,13 @@ namespace PCLParaphernalia
                                          short height,
                                          short width)
         {
-            string seq;
+            short dpHeight = (short)(height * pointsPerInch * 10 / sessionUPI);
+            short dpWidth = (short)(width * pointsPerInch * 10 / sessionUPI);
 
-            short dpHeight,
-                  dpWidth;
-
-            dpHeight = (short)(height * pointsPerInch * 10 /
-                                 sessionUPI);
-            dpWidth = (short)(width * pointsPerInch * 10 /
-                                 sessionUPI);
-
-            seq = _escChar + "*p" +
+            string seq = _escChar + "*p" +
                            coordX + "x" +       // Position: Horizontal
                            coordY + "Y" +       // Position: Vertical
-                  _escChar + "*c" +
+                        _escChar + "*c" +
                            dpWidth + "x" +      // Picture Frame: Horizontal
                            dpHeight + "y" +     // Picture Frame: Vertical
                            "0T";                // Set Anchor Point
@@ -1272,8 +1252,7 @@ namespace PCLParaphernalia
                                        int destScalePercentY,
                                        int compressionMode)
         {
-            string seq;
-            seq = _escChar + "*r0f" +             // Raster Presentation: Logical
+            string seq = _escChar + "*r0f" +             // Raster Presentation: Logical
                            srcWidth + "s" +     // Source Width
                            srcHeight + "T";     // Source Height
 
@@ -1303,10 +1282,9 @@ namespace PCLParaphernalia
                 else
                     srcResY = (int)(srcResY / 39.37);
 
-                int destWidth = srcWidth * 720 / srcResX *
-                  (destScalePercentX / 100);
-                int destHeight = srcHeight * 720 / srcResY *
-                  (destScalePercentY / 100);
+                int destWidth = srcWidth * 720 / srcResX * (destScalePercentX / 100);
+                int destHeight = srcHeight * 720 / srcResY * (destScalePercentY / 100);
+
                 seq = _escChar + "*t" +
                                destWidth +
                                "h" +            // Raster Width: Destinatation
@@ -1364,23 +1342,16 @@ namespace PCLParaphernalia
 
         public static void RasterResolution(BinaryWriter prnWriter, int indxRasterResolution, bool valueIsIndex)
         {
-            string seq;
-
             ushort rasterRes;
 
             if (valueIsIndex)
-            {
-                rasterRes =
-                    PCLRasterResolutions.GetValue(indxRasterResolution);
-            }
+                rasterRes = PCLRasterResolutions.GetValue(indxRasterResolution);
             else
-            {
                 rasterRes = (ushort)indxRasterResolution;
-            }
 
-            seq = _escChar + "*t" +
-                           rasterRes +
-                           "R";                 // Raster Resolution
+            string seq = _escChar + "*t" +
+                            rasterRes +
+                            "R";        // Raster Resolution
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
@@ -1448,8 +1419,6 @@ namespace PCLParaphernalia
                                             bool floating,
                                             bool relative)
         {
-            string seq;
-
             string posSeq;
 
             if (floating)
@@ -1459,21 +1428,21 @@ namespace PCLParaphernalia
             else if (relative)
             {
                 posSeq = _escChar + "*p" +
-                                       (coordX > 0 ? "+" : string.Empty) +
-                                       coordX + "x" +       // Position: Horizontal
-                                       (coordY > 0 ? "+" : string.Empty) +
-                                       coordY + "Y";        // Position: Vertical
+                            (coordX > 0 ? "+" : string.Empty) +
+                            coordX + "x" +       // Position: Horizontal
+                            (coordY > 0 ? "+" : string.Empty) +
+                            coordY + "Y";        // Position: Vertical
             }
             else
             {
                 posSeq = _escChar + "*p" +
-                                       coordX + "x" +       // Position: Horizontal
-                                       coordY + "Y";        // Position: Vertical
+                            coordX + "x" +       // Position: Horizontal
+                            coordY + "Y";        // Position: Vertical
             }
 
             //----------------------------------------------------------------//
 
-            seq = posSeq +                      // Position or null
+            string seq = posSeq +                      // Position or null
                   _escChar + "*c" +
                            width + "a" +        // Rectangle Size: Horizontal
                            stroke + "b" +       // Rectangle Size: Vertical
@@ -1521,8 +1490,6 @@ namespace PCLParaphernalia
                                            bool floating,
                                            bool relative)
         {
-            string seq;
-
             string posSeq;
 
             if (floating)
@@ -1532,26 +1499,26 @@ namespace PCLParaphernalia
             else if (relative)
             {
                 posSeq = _escChar + "*p" +
-                                       (coordX > 0 ? "+" : string.Empty) +
-                                       coordX + "x" +       // Position: Horizontal
-                                       (coordY > 0 ? "+" : string.Empty) +
-                                       coordY + "Y";        // Position: Vertical
+                            (coordX > 0 ? "+" : string.Empty) +
+                            coordX + "x" +      // Position: Horizontal
+                            (coordY > 0 ? "+" : string.Empty) +
+                            coordY + "Y";       // Position: Vertical
             }
             else
             {
                 posSeq = _escChar + "*p" +
-                                       coordX + "x" +       // Position: Horizontal
-                                       coordY + "Y";        // Position: Vertical
+                            coordX + "x" +      // Position: Horizontal
+                            coordY + "Y";       // Position: Vertical
             }
 
             //----------------------------------------------------------------//
 
-            seq = posSeq +                      // Position or null
-                  _escChar + "*c" +
-                           shade + "g" +        // Fill Shade
-                           width + "a" +        // Rectangle Size: Horizontal
-                           height + "b" +       // Rectangle Size: Vertical
-                           "2P";                // Fill Rectangle: Shaded area
+            string seq = posSeq +               // Position or null
+                            _escChar + "*c" +
+                            shade + "g" +       // Fill Shade
+                            width + "a" +       // Rectangle Size: Horizontal
+                            height + "b" +      // Rectangle Size: Vertical
+                            "2P";               // Fill Rectangle: Shaded area
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
@@ -1576,8 +1543,6 @@ namespace PCLParaphernalia
                                           bool floating,
                                           bool relative)
         {
-            string seq;
-
             string posSeq;
 
             if (floating)
@@ -1587,35 +1552,36 @@ namespace PCLParaphernalia
             else if (relative)
             {
                 posSeq = _escChar + "*p" +
-                                       (coordX > 0 ? "+" : string.Empty) +
-                                       coordX + "x" +       // Position: Horizontal
-                                       (coordY > 0 ? "+" : string.Empty) +
-                                       coordY + "Y";        // Position: Vertical
+                            (coordX > 0 ? "+" : string.Empty) +
+                            coordX + "x" +       // Position: Horizontal
+                            (coordY > 0 ? "+" : string.Empty) +
+                            coordY + "Y";        // Position: Vertical
             }
             else
             {
                 posSeq = _escChar + "*p" +
-                                       coordX + "x" +       // Position: Horizontal
-                                       coordY + "Y";        // Position: Vertical
+                            coordX + "x" +       // Position: Horizontal
+                            coordY + "Y";        // Position: Vertical
             }
 
+            string seq;
             //----------------------------------------------------------------//
 
             if (white)
             {
                 seq = posSeq +                  // Position or null
-                      _escChar + "*c" +
-                               width + "a" +   // Rectangle Size: Horizontal
-                               height + "b" +   // Rectangle Size: Vertical
-                               "1P";            // Fill Rectangle: Solid white
+                            _escChar + "*c" +
+                            width + "a" +       // Rectangle Size: Horizontal
+                            height + "b" +      // Rectangle Size: Vertical
+                            "1P";               // Fill Rectangle: Solid white
             }
             else
             {
                 seq = posSeq +                  // Position or null
-                      _escChar + "*c" +
-                               width + "a" +   // Rectangle Size: Horizontal
-                               height + "b" +   // Rectangle Size: Vertical
-                               "0P";            // Fill Rectangle: Solid
+                            _escChar + "*c" +
+                            width + "a" +       // Rectangle Size: Horizontal
+                            height + "b" +      // Rectangle Size: Vertical
+                            "0P";               // Fill Rectangle: Solid
             }
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
@@ -1642,8 +1608,6 @@ namespace PCLParaphernalia
                                              bool floating,
                                              bool relative)
         {
-            string seq;
-
             string posSeq;
 
             if (floating)
@@ -1653,26 +1617,26 @@ namespace PCLParaphernalia
             else if (relative)
             {
                 posSeq = _escChar + "*p" +
-                                       (coordX > 0 ? "+" : string.Empty) +
-                                       coordX + "x" +       // Position: Horizontal
-                                       (coordY > 0 ? "+" : string.Empty) +
-                                       coordY + "Y";        // Position: Vertical
+                            (coordX > 0 ? "+" : string.Empty) +
+                            coordX + "x" +      // Position: Horizontal
+                            (coordY > 0 ? "+" : string.Empty) +
+                            coordY + "Y";       // Position: Vertical
             }
             else
             {
                 posSeq = _escChar + "*p" +
-                                       coordX + "x" +       // Position: Horizontal
-                                       coordY + "Y";        // Position: Vertical
+                            coordX + "x" +      // Position: Horizontal
+                            coordY + "Y";       // Position: Vertical
             }
 
             //----------------------------------------------------------------//
 
-            seq = posSeq +                      // Position or null
-                  _escChar + "*c" +
-                           patternID + "g" +    // Pattern ID
-                           width + "a" +        // Rectangle Size: Horizontal
-                           height + "b" +       // Rectangle Size: Vertical
-                           "4P";                // Fill Rectangle: User pattern
+            string seq = posSeq +               // Position or null
+                          _escChar + "*c" +
+                          patternID + "g" +     // Pattern ID
+                          width + "a" +         // Rectangle Size: Horizontal
+                          height + "b" +        // Rectangle Size: Vertical
+                          "4P";
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
@@ -1699,7 +1663,7 @@ namespace PCLParaphernalia
             string seq = _escChar + "*p" +
                            coordX + "x" +       // Position: Horizontal
                            coordY + "Y" +       // Position: Vertical
-                  _escChar + "*c" +
+                        _escChar + "*c" +
                            hatch_id + "g" +     // Cross-hatch id
                            width + "a" +        // Rectangle Size: Horizontal
                            height + "b" +       // Rectangle Size: Vertical
@@ -1754,7 +1718,7 @@ namespace PCLParaphernalia
 
         public static void SetTextLength(BinaryWriter prnWriter, short lines)
         {
-            string seq = _escChar + "&l" +              // tray identifier
+            string seq = _escChar + "&l" +      // tray identifier
                            lines +              // number of lines
                            "F";
 
@@ -1791,6 +1755,7 @@ namespace PCLParaphernalia
         public static void SourceTransparency(BinaryWriter prnWriter, bool opaque)
         {
             string seq;
+
             if (opaque)
             {
                 seq = _escChar + "*v1N";
@@ -1844,15 +1809,13 @@ namespace PCLParaphernalia
 
         public static void StdJobTrailer(BinaryWriter prnWriter, bool formAsMacro, short macroId)
         {
-            string seq;
-
             if (formAsMacro)
             {
                 WriteMacroControl(prnWriter, macroId, MacroControl.Delete);
             }
 
-            seq = _escChar + "E" +                // Printer Reset
-                  _escChar + "%-12345X";          // Universal Exit Language
+            string seq = _escChar + "E" +               // Printer Reset
+                        _escChar + "%-12345X";          // Universal Exit Language
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
@@ -1956,16 +1919,16 @@ namespace PCLParaphernalia
             {
                 int len = text.Length;
 
-                seq = _escChar + "&f0S";          // Cursor position: Push
+                seq = _escChar + "&f0S";        // Cursor position: Push
 
                 for (int i = 0; i < len; i++)
                 {
                     seq += text[i] +
-                           _escChar + "&f1S" +    // Cursor position: Pop
+                           _escChar + "&f1S" +  // Cursor position: Pop
                            _escChar + "*p+" +
                                     spacing +
                                     "X" +       // Position: Horizontal
-                           _escChar + "&f0S";     // Cursor position: Push
+                           _escChar + "&f0S";   // Cursor position: Push
                 }
 
                 prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
@@ -2036,13 +1999,11 @@ namespace PCLParaphernalia
 
         public static void TextParsingMethod(BinaryWriter prnWriter, PCLTextParsingMethods.Index eMethod)
         {
-            string seq;
-
             byte indx = (byte)eMethod;
 
-            seq = _escChar + "&t" +
-                  PCLTextParsingMethods.GetValue(indx).ToString() +
-                  "P";
+            string seq = _escChar + "&t" +
+                          PCLTextParsingMethods.GetValue(indx).ToString() +
+                          "P";
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
@@ -2056,8 +2017,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void TextParsingMethod(BinaryWriter prnWriter,
-                                             int parseMethod)
+        public static void TextParsingMethod(BinaryWriter prnWriter, int parseMethod)
         {
             string seq = _escChar + "&t" + parseMethod.ToString() + "P";
 
