@@ -36,13 +36,14 @@ namespace PCLParaphernalia
 
         public static void LoadData(ref int indxToolType)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            const string key = _subKeyTools;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                indxToolType = (int)subKey.GetValue(_nameIndxToolType, _indexZero);
+                const string key = _subKeyTools;
+
+                using (var subKey = keyMain.CreateSubKey(key))
+                {
+                    indxToolType = (int)subKey.GetValue(_nameIndxToolType, _indexZero);
+                }
             }
         }
 
@@ -57,13 +58,14 @@ namespace PCLParaphernalia
 
         public static void SaveData(int indxToolType)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            const string key = _subKeyTools;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                subKey.SetValue(_nameIndxToolType, indxToolType, RegistryValueKind.DWord);
+                const string key = _subKeyTools;
+
+                using (var subKey = keyMain.CreateSubKey(key))
+                {
+                    subKey.SetValue(_nameIndxToolType, indxToolType, RegistryValueKind.DWord);
+                }
             }
         }
     }

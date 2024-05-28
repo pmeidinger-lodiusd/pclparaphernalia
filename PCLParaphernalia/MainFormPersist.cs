@@ -43,18 +43,18 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void LoadVersionData(ref int major, ref int minor, ref int build, ref int revision)
-
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            const string key = _subKeyVersionData;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                major = (int)subKey.GetValue(_nameVersionMajor, -1);
-                minor = (int)subKey.GetValue(_nameVersionMinor, -1);
-                build = (int)subKey.GetValue(_nameVersionBuild, -1);
-                revision = (int)subKey.GetValue(_nameVersionRevision, -1);
+                const string key = _subKeyVersionData;
+
+                using (var subKey = keyMain.CreateSubKey(key))
+                {
+                    major = (int)subKey.GetValue(_nameVersionMajor, -1);
+                    minor = (int)subKey.GetValue(_nameVersionMinor, -1);
+                    build = (int)subKey.GetValue(_nameVersionBuild, -1);
+                    revision = (int)subKey.GetValue(_nameVersionRevision, -1);
+                }
             }
         }
 
@@ -70,17 +70,18 @@ namespace PCLParaphernalia
 
         public static void LoadWindowData(ref int left, ref int top, ref int height, ref int width, ref int scale)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            const string key = _subKeyWindowState;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                left = (int)subKey.GetValue(_nameMainWindowLeft, -1);
-                top = (int)subKey.GetValue(_nameMainWindowTop, -1);
-                height = (int)subKey.GetValue(_nameMainWindowHeight, -1);
-                width = (int)subKey.GetValue(_nameMainWindowWidth, -1);
-                scale = (int)subKey.GetValue(_nameMainWindowScale, 100);
+                const string key = _subKeyWindowState;
+
+                using (var subKey = keyMain.CreateSubKey(key))
+                {
+                    left = (int)subKey.GetValue(_nameMainWindowLeft, -1);
+                    top = (int)subKey.GetValue(_nameMainWindowTop, -1);
+                    height = (int)subKey.GetValue(_nameMainWindowHeight, -1);
+                    width = (int)subKey.GetValue(_nameMainWindowWidth, -1);
+                    scale = (int)subKey.GetValue(_nameMainWindowScale, 100);
+                }
             }
         }
 
@@ -95,16 +96,17 @@ namespace PCLParaphernalia
 
         public static void SaveVersionData(int major, int minor, int build, int revision)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            const string key = _subKeyVersionData;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                subKey.SetValue(_nameVersionMajor, major, RegistryValueKind.DWord);
-                subKey.SetValue(_nameVersionMinor, minor, RegistryValueKind.DWord);
-                subKey.SetValue(_nameVersionBuild, build, RegistryValueKind.DWord);
-                subKey.SetValue(_nameVersionRevision, revision, RegistryValueKind.DWord);
+                const string key = _subKeyVersionData;
+
+                using (var subKey = keyMain.CreateSubKey(key))
+                {
+                    subKey.SetValue(_nameVersionMajor, major, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameVersionMinor, minor, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameVersionBuild, build, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameVersionRevision, revision, RegistryValueKind.DWord);
+                }
             }
         }
 
@@ -119,17 +121,18 @@ namespace PCLParaphernalia
 
         public static void SaveWindowData(int mwLeft, int mwTop, int mwHeight, int mwWidth, int mwScale)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            const string key = _subKeyWindowState;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                subKey.SetValue(_nameMainWindowLeft, mwLeft, RegistryValueKind.DWord);
-                subKey.SetValue(_nameMainWindowTop, mwTop, RegistryValueKind.DWord);
-                subKey.SetValue(_nameMainWindowHeight, mwHeight, RegistryValueKind.DWord);
-                subKey.SetValue(_nameMainWindowWidth, mwWidth, RegistryValueKind.DWord);
-                subKey.SetValue(_nameMainWindowScale, mwScale, RegistryValueKind.DWord);
+                const string key = _subKeyWindowState;
+
+                using (var subKey = keyMain.CreateSubKey(key))
+                {
+                    subKey.SetValue(_nameMainWindowLeft, mwLeft, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameMainWindowTop, mwTop, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameMainWindowHeight, mwHeight, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameMainWindowWidth, mwWidth, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameMainWindowScale, mwScale, RegistryValueKind.DWord);
+                }
             }
         }
     }

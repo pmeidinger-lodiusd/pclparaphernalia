@@ -60,68 +60,69 @@ namespace PCLParaphernalia
         public static void LoadDataCapture(ToolCommonData.PrintLang crntPDL,
                                             ref string captureFile)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            const string oldKey = _subKeyTools + "\\" + _subKeyToolsTrayMap;
-            string oldFile;
-
-            bool update_from_v2_5_0_0 = false;
-
-            string defWorkFolder = ToolCommonData.DefWorkFolder;
-
-            using (RegistryKey subKey = keyMain.OpenSubKey(oldKey, true))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                oldFile = (string)subKey.GetValue(_nameCaptureFile);
+                const string oldKey = _subKeyTools + "\\" + _subKeyToolsTrayMap;
+                string oldFile;
 
-                if (oldFile != null)
+                bool update_from_v2_5_0_0 = false;
+
+                string defWorkFolder = ToolCommonData.DefWorkFolder;
+
+                using (var subKey = keyMain.OpenSubKey(oldKey, true))
                 {
-                    update_from_v2_5_0_0 = true;
+                    oldFile = (string)subKey.GetValue(_nameCaptureFile);
 
-                    subKey.DeleteValue(_nameCaptureFile);
-                }
-            }
+                    if (oldFile != null)
+                    {
+                        update_from_v2_5_0_0 = true;
 
-            if (update_from_v2_5_0_0)
-            {
-                const string keyPCL = _subKeyTools +
-                                 "\\" + _subKeyToolsTrayMap +
-                                 "\\" + _subKeyPCL;
-
-                using (RegistryKey subKey = keyMain.CreateSubKey(keyPCL))
-                {
-                    subKey.SetValue(_nameCaptureFile, oldFile, RegistryValueKind.String);
+                        subKey.DeleteValue(_nameCaptureFile);
+                    }
                 }
 
-                const string keyPCLXL = _subKeyTools +
-                                 "\\" + _subKeyToolsTrayMap +
-                                 "\\" + _subKeyPCLXL;
-
-                using (RegistryKey subKey = keyMain.CreateSubKey(keyPCLXL))
+                if (update_from_v2_5_0_0)
                 {
-                    subKey.SetValue(_nameCaptureFile, oldFile, RegistryValueKind.String);
+                    const string keyPCL = _subKeyTools +
+                                     "\\" + _subKeyToolsTrayMap +
+                                     "\\" + _subKeyPCL;
+
+                    using (var subKey = keyMain.CreateSubKey(keyPCL))
+                    {
+                        subKey.SetValue(_nameCaptureFile, oldFile, RegistryValueKind.String);
+                    }
+
+                    const string keyPCLXL = _subKeyTools +
+                                     "\\" + _subKeyToolsTrayMap +
+                                     "\\" + _subKeyPCLXL;
+
+                    using (var subKey = keyMain.CreateSubKey(keyPCLXL))
+                    {
+                        subKey.SetValue(_nameCaptureFile, oldFile, RegistryValueKind.String);
+                    }
                 }
-            }
 
-            if (crntPDL == ToolCommonData.PrintLang.PCL)
-            {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsTrayMap +
-                                    "\\" + _subKeyPCL;
-
-                using (RegistryKey subKey = keyMain.CreateSubKey(key))
+                if (crntPDL == ToolCommonData.PrintLang.PCL)
                 {
-                    captureFile = (string)subKey.GetValue(_nameCaptureFile, defWorkFolder + "\\" + _defaultCaptureFilePCL);
+                    const string key = _subKeyTools +
+                                        "\\" + _subKeyToolsTrayMap +
+                                        "\\" + _subKeyPCL;
+
+                    using (var subKey = keyMain.CreateSubKey(key))
+                    {
+                        captureFile = (string)subKey.GetValue(_nameCaptureFile, defWorkFolder + "\\" + _defaultCaptureFilePCL);
+                    }
                 }
-            }
-            else if (crntPDL == ToolCommonData.PrintLang.PCLXL)
-            {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsTrayMap +
-                                    "\\" + _subKeyPCLXL;
-
-                using (RegistryKey subKey = keyMain.CreateSubKey(key))
+                else if (crntPDL == ToolCommonData.PrintLang.PCLXL)
                 {
-                    captureFile = (string)subKey.GetValue(_nameCaptureFile, defWorkFolder + "\\" + _defaultCaptureFilePCLXL);
+                    const string key = _subKeyTools +
+                                        "\\" + _subKeyToolsTrayMap +
+                                        "\\" + _subKeyPCLXL;
+
+                    using (var subKey = keyMain.CreateSubKey(key))
+                    {
+                        captureFile = (string)subKey.GetValue(_nameCaptureFile, defWorkFolder + "\\" + _defaultCaptureFilePCLXL);
+                    }
                 }
             }
         }
@@ -137,25 +138,26 @@ namespace PCLParaphernalia
 
         public static void LoadDataCommon(ref int indxPDL)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            const string key = _subKeyTools + "\\" + _subKeyToolsTrayMap;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                if (Helper_RegKey.KeyExists(subKey, _subKeyPCL5))
-                {
-                    // update from v2_5_0_0
-                    Helper_RegKey.RenameKey(subKey, _subKeyPCL5, _subKeyPCL);
-                }
+                const string key = _subKeyTools + "\\" + _subKeyToolsTrayMap;
 
-                if (Helper_RegKey.KeyExists(subKey, _subKeyPCL6))
+                using (var subKey = keyMain.CreateSubKey(key))
                 {
-                    // update from v2_5_0_0
-                    Helper_RegKey.RenameKey(subKey, _subKeyPCL6, _subKeyPCLXL);
-                }
+                    if (Helper_RegKey.KeyExists(subKey, _subKeyPCL5))
+                    {
+                        // update from v2_5_0_0
+                        Helper_RegKey.RenameKey(subKey, _subKeyPCL5, _subKeyPCL);
+                    }
 
-                indxPDL = (int)subKey.GetValue(_nameIndxPDL, _indexZero);
+                    if (Helper_RegKey.KeyExists(subKey, _subKeyPCL6))
+                    {
+                        // update from v2_5_0_0
+                        Helper_RegKey.RenameKey(subKey, _subKeyPCL6, _subKeyPCLXL);
+                    }
+
+                    indxPDL = (int)subKey.GetValue(_nameIndxPDL, _indexZero);
+                }
             }
         }
 
@@ -170,52 +172,51 @@ namespace PCLParaphernalia
 
         public static void LoadDataPCLOpt(ref bool flagFormAsMacro, ref int sheetCt)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            string key;
-
-            int tmpInt;
-
-            byte[] buffer = { 0x00 };
-
-            key = _subKeyTools +
-                    "\\" + _subKeyToolsTrayMap +
-                    "\\" + _subKeyPCL;
-
-            if (MainFormData.VersionChange)
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                bool update_2_8 = false;
+                const string key = _subKeyTools +
+                                    "\\" + _subKeyToolsTrayMap +
+                                    "\\" + _subKeyPCL;
 
-                int vMaj = -1,
-                      vMin = -1,
-                      vBui = -1,
-                      vRev = -1;
+                int tmpInt;
 
-                MainFormData.GetVersionData(false, ref vMaj, ref vMin, ref vBui, ref vRev);
+                byte[] buffer = { 0x00 };
 
-                if ((vMaj == 2) && (vMin < 8))
-                    update_2_8 = true;
-
-                if (update_2_8)
+                if (MainFormData.VersionChange)
                 {
-                    using (RegistryKey subKey = keyMain.CreateSubKey(key))
+                    bool update_2_8 = false;
+
+                    int vMaj = -1,
+                          vMin = -1,
+                          vBui = -1,
+                          vRev = -1;
+
+                    MainFormData.GetVersionData(false, ref vMaj, ref vMin, ref vBui, ref vRev);
+
+                    if ((vMaj == 2) && (vMin < 8))
+                        update_2_8 = true;
+
+                    if (update_2_8)
                     {
-                        subKey.DeleteValue(_nameIndxOrientation);
-                        subKey.DeleteValue(_nameIndxPaperSize);
-                        subKey.DeleteValue(_nameIndxPaperType);
-                        subKey.DeleteValue(_nameIndxTrayIdOpt);
-                        subKey.DeleteValue(_nameTrayIdList);
+                        using (var subKey = keyMain.CreateSubKey(key))
+                        {
+                            subKey.DeleteValue(_nameIndxOrientation);
+                            subKey.DeleteValue(_nameIndxPaperSize);
+                            subKey.DeleteValue(_nameIndxPaperType);
+                            subKey.DeleteValue(_nameIndxTrayIdOpt);
+                            subKey.DeleteValue(_nameTrayIdList);
+                        }
                     }
                 }
-            }
 
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
-            {
-                tmpInt = (int)subKey.GetValue(_nameFlagFormAsMacro, _flagTrue);
+                using (var subKey = keyMain.CreateSubKey(key))
+                {
+                    tmpInt = (int)subKey.GetValue(_nameFlagFormAsMacro, _flagTrue);
 
-                flagFormAsMacro = tmpInt != _flagFalse;
+                    flagFormAsMacro = tmpInt != _flagFalse;
 
-                sheetCt = (int)subKey.GetValue(_nameSheetCt, _indexOne);
+                    sheetCt = (int)subKey.GetValue(_nameSheetCt, _indexOne);
+                }
             }
         }
 
@@ -231,51 +232,51 @@ namespace PCLParaphernalia
         public static void LoadDataPCLXLOpt(ref bool flagFormAsMacro,
                                              ref int sheetCt)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            string key;
-
-            int tmpInt;
-
-            byte[] buffer = { 0x00 };
-
-            key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
-                                 "\\" + _subKeyPCLXL;
-
-            if (MainFormData.VersionChange)
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                bool update_2_8 = false;
+                const string key = _subKeyTools +
+                                    "\\" + _subKeyToolsTrayMap +
+                                    "\\" + _subKeyPCLXL;
 
-                int vMaj = -1,
-                      vMin = -1,
-                      vBui = -1,
-                      vRev = -1;
+                int tmpInt;
 
-                MainFormData.GetVersionData(false, ref vMaj, ref vMin, ref vBui, ref vRev);
+                byte[] buffer = { 0x00 };
 
-                if ((vMaj == 2) && (vMin < 8))
-                    update_2_8 = true;
-
-                if (update_2_8)
+                if (MainFormData.VersionChange)
                 {
-                    using (RegistryKey subKey = keyMain.CreateSubKey(key))
+                    bool update_2_8 = false;
+
+                    int vMaj = -1,
+                          vMin = -1,
+                          vBui = -1,
+                          vRev = -1;
+
+                    MainFormData.GetVersionData(false, ref vMaj, ref vMin, ref vBui, ref vRev);
+
+                    if ((vMaj == 2) && (vMin < 8))
+                        update_2_8 = true;
+
+                    if (update_2_8)
                     {
-                        subKey.DeleteValue(_nameIndxOrientation);
-                        subKey.DeleteValue(_nameIndxPaperSize);
-                        subKey.DeleteValue(_nameIndxPaperType);
-                        subKey.DeleteValue(_nameIndxTrayIdOpt);
-                        subKey.DeleteValue(_nameTrayIdList);
+                        using (var subKey = keyMain.CreateSubKey(key))
+                        {
+                            subKey.DeleteValue(_nameIndxOrientation);
+                            subKey.DeleteValue(_nameIndxPaperSize);
+                            subKey.DeleteValue(_nameIndxPaperType);
+                            subKey.DeleteValue(_nameIndxTrayIdOpt);
+                            subKey.DeleteValue(_nameTrayIdList);
+                        }
                     }
                 }
-            }
 
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
-            {
-                tmpInt = (int)subKey.GetValue(_nameFlagFormAsMacro, _flagTrue);
+                using (var subKey = keyMain.CreateSubKey(key))
+                {
+                    tmpInt = (int)subKey.GetValue(_nameFlagFormAsMacro, _flagTrue);
 
-                flagFormAsMacro = tmpInt != _flagFalse;
+                    flagFormAsMacro = tmpInt != _flagFalse;
 
-                sheetCt = (int)subKey.GetValue(_nameSheetCt, _indexOne);
+                    sheetCt = (int)subKey.GetValue(_nameSheetCt, _indexOne);
+                }
             }
         }
 
@@ -297,27 +298,28 @@ namespace PCLParaphernalia
                                              ref int indxOrient_F,
                                              ref int indxOrient_R)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            string key = _subKeyTools +
-                            "\\" + _subKeyToolsTrayMap +
-                            "\\" + pdlName +
-                            "\\" + _subKeySheetRoot +
-                             sheetNo.ToString("D2");
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                indxPaperSize = (int)subKey.GetValue(_nameIndxPaperSize, _indexZero);
+                string key = _subKeyTools +
+                                "\\" + _subKeyToolsTrayMap +
+                                "\\" + pdlName +
+                                "\\" + _subKeySheetRoot +
+                                 sheetNo.ToString("D2");
 
-                indxPaperType = (int)subKey.GetValue(_nameIndxPaperType, _indexZero);
+                using (var subKey = keyMain.CreateSubKey(key))
+                {
+                    indxPaperSize = (int)subKey.GetValue(_nameIndxPaperSize, _indexZero);
 
-                indxPaperTray = (int)subKey.GetValue(_nameIndxPaperTray, _indexZero);
+                    indxPaperType = (int)subKey.GetValue(_nameIndxPaperType, _indexZero);
 
-                indxPlexMode = (int)subKey.GetValue(_nameIndxPlexMode, _indexZero);
+                    indxPaperTray = (int)subKey.GetValue(_nameIndxPaperTray, _indexZero);
 
-                indxOrient_F = (int)subKey.GetValue(_nameIndxOrientFront, _indexZero);
+                    indxPlexMode = (int)subKey.GetValue(_nameIndxPlexMode, _indexZero);
 
-                indxOrient_R = (int)subKey.GetValue(_nameIndxOrientRear, _indexZero);
+                    indxOrient_F = (int)subKey.GetValue(_nameIndxOrientFront, _indexZero);
+
+                    indxOrient_R = (int)subKey.GetValue(_nameIndxOrientRear, _indexZero);
+                }
             }
         }
 
@@ -332,33 +334,30 @@ namespace PCLParaphernalia
 
         public static void SaveDataCapture(ToolCommonData.PrintLang crntPDL, string captureFile)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            if (crntPDL == ToolCommonData.PrintLang.PCL)
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsTrayMap +
-                                    "\\" + _subKeyPCL;
-
-                using (RegistryKey subKey = keyMain.CreateSubKey(key))
+                if (crntPDL == ToolCommonData.PrintLang.PCL)
                 {
-                    if (captureFile != null)
+                    const string key = _subKeyTools +
+                                        "\\" + _subKeyToolsTrayMap +
+                                        "\\" + _subKeyPCL;
+
+                    using (var subKey = keyMain.CreateSubKey(key))
                     {
-                        subKey.SetValue(_nameCaptureFile, captureFile, RegistryValueKind.String);
+                        if (captureFile != null)
+                            subKey.SetValue(_nameCaptureFile, captureFile, RegistryValueKind.String);
                     }
                 }
-            }
-            else if (crntPDL == ToolCommonData.PrintLang.PCLXL)
-            {
-                const string key = _subKeyTools +
-                                    "\\" + _subKeyToolsTrayMap +
-                                    "\\" + _subKeyPCLXL;
-
-                using (RegistryKey subKey = keyMain.CreateSubKey(key))
+                else if (crntPDL == ToolCommonData.PrintLang.PCLXL)
                 {
-                    if (captureFile != null)
+                    const string key = _subKeyTools +
+                                        "\\" + _subKeyToolsTrayMap +
+                                        "\\" + _subKeyPCLXL;
+
+                    using (var subKey = keyMain.CreateSubKey(key))
                     {
-                        subKey.SetValue(_nameCaptureFile, captureFile, RegistryValueKind.String);
+                        if (captureFile != null)
+                            subKey.SetValue(_nameCaptureFile, captureFile, RegistryValueKind.String);
                     }
                 }
             }
@@ -375,13 +374,14 @@ namespace PCLParaphernalia
 
         public static void SaveDataCommon(int indxPDL)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            const string key = _subKeyTools + "\\" + _subKeyToolsTrayMap;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                subKey.SetValue(_nameIndxPDL, indxPDL, RegistryValueKind.DWord);
+                const string key = _subKeyTools + "\\" + _subKeyToolsTrayMap;
+
+                using (var subKey = keyMain.CreateSubKey(key))
+                {
+                    subKey.SetValue(_nameIndxPDL, indxPDL, RegistryValueKind.DWord);
+                }
             }
         }
 
@@ -395,24 +395,21 @@ namespace PCLParaphernalia
 
         public static void SaveDataPCLOpt(bool flagFormAsMacro, int sheetCt)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            const string key = _subKeyTools +
-                                "\\" + _subKeyToolsTrayMap +
-                                "\\" + _subKeyPCL;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                if (flagFormAsMacro)
-                {
-                    subKey.SetValue(_nameFlagFormAsMacro, _flagTrue, RegistryValueKind.DWord);
-                }
-                else
-                {
-                    subKey.SetValue(_nameFlagFormAsMacro, _flagFalse, RegistryValueKind.DWord);
-                }
+                const string key = _subKeyTools +
+                                    "\\" + _subKeyToolsTrayMap +
+                                    "\\" + _subKeyPCL;
 
-                subKey.SetValue(_nameSheetCt, sheetCt, RegistryValueKind.DWord);
+                using (var subKey = keyMain.CreateSubKey(key))
+                {
+                    if (flagFormAsMacro)
+                        subKey.SetValue(_nameFlagFormAsMacro, _flagTrue, RegistryValueKind.DWord);
+                    else
+                        subKey.SetValue(_nameFlagFormAsMacro, _flagFalse, RegistryValueKind.DWord);
+
+                    subKey.SetValue(_nameSheetCt, sheetCt, RegistryValueKind.DWord);
+                }
             }
         }
 
@@ -426,24 +423,21 @@ namespace PCLParaphernalia
 
         public static void SaveDataPCLXLOpt(bool flagFormAsMacro, int sheetCt)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            const string key = _subKeyTools +
-                                "\\" + _subKeyToolsTrayMap +
-                                "\\" + _subKeyPCLXL;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                if (flagFormAsMacro)
-                {
-                    subKey.SetValue(_nameFlagFormAsMacro, _flagTrue, RegistryValueKind.DWord);
-                }
-                else
-                {
-                    subKey.SetValue(_nameFlagFormAsMacro, _flagFalse, RegistryValueKind.DWord);
-                }
+                const string key = _subKeyTools +
+                                    "\\" + _subKeyToolsTrayMap +
+                                    "\\" + _subKeyPCLXL;
 
-                subKey.SetValue(_nameSheetCt, sheetCt, RegistryValueKind.DWord);
+                using (var subKey = keyMain.CreateSubKey(key))
+                {
+                    if (flagFormAsMacro)
+                        subKey.SetValue(_nameFlagFormAsMacro, _flagTrue, RegistryValueKind.DWord);
+                    else
+                        subKey.SetValue(_nameFlagFormAsMacro, _flagFalse, RegistryValueKind.DWord);
+
+                    subKey.SetValue(_nameSheetCt, sheetCt, RegistryValueKind.DWord);
+                }
             }
         }
 
@@ -465,27 +459,28 @@ namespace PCLParaphernalia
                                              int indxOrientFront,
                                              int indxOrientRear)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            string key = _subKeyTools +
-                            "\\" + _subKeyToolsTrayMap +
-                            "\\" + pdlName +
-                            "\\" + _subKeySheetRoot +
-                            sheetNo.ToString("D2");
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                subKey.SetValue(_nameIndxPaperSize, indxPaperSize, RegistryValueKind.DWord);
+                string key = _subKeyTools +
+                                "\\" + _subKeyToolsTrayMap +
+                                "\\" + pdlName +
+                                "\\" + _subKeySheetRoot +
+                                sheetNo.ToString("D2");
 
-                subKey.SetValue(_nameIndxPaperType, indxPaperType, RegistryValueKind.DWord);
+                using (var subKey = keyMain.CreateSubKey(key))
+                {
+                    subKey.SetValue(_nameIndxPaperSize, indxPaperSize, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameIndxPaperTray, indxPaperTray, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameIndxPaperType, indxPaperType, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameIndxPlexMode, indxPlexMode, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameIndxPaperTray, indxPaperTray, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameIndxOrientFront, indxOrientFront, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameIndxPlexMode, indxPlexMode, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameIndxOrientRear, indxOrientRear, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameIndxOrientFront, indxOrientFront, RegistryValueKind.DWord);
+
+                    subKey.SetValue(_nameIndxOrientRear, indxOrientRear, RegistryValueKind.DWord);
+                }
             }
         }
     }

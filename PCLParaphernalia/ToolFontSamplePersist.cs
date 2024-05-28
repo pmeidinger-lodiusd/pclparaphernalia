@@ -98,64 +98,65 @@ namespace PCLParaphernalia
         public static void LoadDataCapture(ToolCommonData.PrintLang crntPDL,
                                             ref string captureFile)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            const string oldKey = _subKeyTools + "\\" + _subKeyToolsFontSample;
-            string oldFile;
-
-            bool update_from_v2_5_0_0 = false;
-
-            string defWorkFolder = ToolCommonData.DefWorkFolder;
-
-            //----------------------------------------------------------------//
-
-            using (RegistryKey subKey = keyMain.OpenSubKey(oldKey, true))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                oldFile = (string)subKey.GetValue(_nameCaptureFile);
+                const string oldKey = _subKeyTools + "\\" + _subKeyToolsFontSample;
+                string oldFile;
 
-                if (oldFile != null)
+                bool update_from_v2_5_0_0 = false;
+
+                string defWorkFolder = ToolCommonData.DefWorkFolder;
+
+                //----------------------------------------------------------------//
+
+                using (var subKey = keyMain.OpenSubKey(oldKey, true))
                 {
-                    update_from_v2_5_0_0 = true;
+                    oldFile = (string)subKey.GetValue(_nameCaptureFile);
 
-                    subKey.DeleteValue(_nameCaptureFile);
-                }
-            }
+                    if (oldFile != null)
+                    {
+                        update_from_v2_5_0_0 = true;
 
-            if (update_from_v2_5_0_0)
-            {
-                const string keyPCL = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCL;
-
-                using (RegistryKey subKey = keyMain.CreateSubKey(keyPCL))
-                {
-                    subKey.SetValue(_nameCaptureFile, oldFile, RegistryValueKind.String);
+                        subKey.DeleteValue(_nameCaptureFile);
+                    }
                 }
 
-                const string keyPCLXL = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCLXL;
-
-                using (RegistryKey subKey = keyMain.CreateSubKey(keyPCLXL))
+                if (update_from_v2_5_0_0)
                 {
-                    subKey.SetValue(_nameCaptureFile, oldFile, RegistryValueKind.String);
+                    const string keyPCL = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCL;
+
+                    using (var subKey = keyMain.CreateSubKey(keyPCL))
+                    {
+                        subKey.SetValue(_nameCaptureFile, oldFile, RegistryValueKind.String);
+                    }
+
+                    const string keyPCLXL = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCLXL;
+
+                    using (var subKey = keyMain.CreateSubKey(keyPCLXL))
+                    {
+                        subKey.SetValue(_nameCaptureFile, oldFile, RegistryValueKind.String);
+                    }
                 }
-            }
 
-            //----------------------------------------------------------------//
+                //----------------------------------------------------------------//
 
-            if (crntPDL == ToolCommonData.PrintLang.PCL)
-            {
-                const string key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCL;
-
-                using (RegistryKey subKey = keyMain.CreateSubKey(key))
+                if (crntPDL == ToolCommonData.PrintLang.PCL)
                 {
-                    captureFile = (string)subKey.GetValue(_nameCaptureFile, defWorkFolder + "\\" + _defaultCaptureFilePCL);
+                    const string key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCL;
+
+                    using (var subKey = keyMain.CreateSubKey(key))
+                    {
+                        captureFile = (string)subKey.GetValue(_nameCaptureFile, defWorkFolder + "\\" + _defaultCaptureFilePCL);
+                    }
                 }
-            }
-            else if (crntPDL == ToolCommonData.PrintLang.PCLXL)
-            {
-                const string key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCLXL;
-
-                using (RegistryKey subKey = keyMain.CreateSubKey(key))
+                else if (crntPDL == ToolCommonData.PrintLang.PCLXL)
                 {
-                    captureFile = (string)subKey.GetValue(_nameCaptureFile, defWorkFolder + "\\" + _defaultCaptureFilePCLXL);
+                    const string key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCLXL;
+
+                    using (var subKey = keyMain.CreateSubKey(key))
+                    {
+                        captureFile = (string)subKey.GetValue(_nameCaptureFile, defWorkFolder + "\\" + _defaultCaptureFilePCLXL);
+                    }
                 }
             }
         }
@@ -171,33 +172,34 @@ namespace PCLParaphernalia
 
         public static void LoadDataCommon(ref int indxPDL, ref bool flagOptGridVertical)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            int tmpInt;
-
-            const string key = _subKeyTools + "\\" + _subKeyToolsFontSample;
-
-            //----------------------------------------------------------------//
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                if (Helper_RegKey.KeyExists(subKey, _subKeyPCL5))
+                int tmpInt;
+
+                const string key = _subKeyTools + "\\" + _subKeyToolsFontSample;
+
+                //----------------------------------------------------------------//
+
+                using (var subKey = keyMain.CreateSubKey(key))
                 {
-                    // update from v2_5_0_0
-                    Helper_RegKey.RenameKey(subKey, _subKeyPCL5, _subKeyPCL);
+                    if (Helper_RegKey.KeyExists(subKey, _subKeyPCL5))
+                    {
+                        // update from v2_5_0_0
+                        Helper_RegKey.RenameKey(subKey, _subKeyPCL5, _subKeyPCL);
+                    }
+
+                    if (Helper_RegKey.KeyExists(subKey, _subKeyPCL6))
+                    {
+                        // update from v2_5_0_0
+                        Helper_RegKey.RenameKey(subKey, _subKeyPCL6, _subKeyPCLXL);
+                    }
+
+                    indxPDL = (int)subKey.GetValue(_nameIndxPDL, _indexZero);
+
+                    tmpInt = (int)subKey.GetValue(_nameFlagOptGridVertical, _flagFalse);
+
+                    flagOptGridVertical = tmpInt != _flagFalse;
                 }
-
-                if (Helper_RegKey.KeyExists(subKey, _subKeyPCL6))
-                {
-                    // update from v2_5_0_0
-                    Helper_RegKey.RenameKey(subKey, _subKeyPCL6, _subKeyPCLXL);
-                }
-
-                indxPDL = (int)subKey.GetValue(_nameIndxPDL, _indexZero);
-
-                tmpInt = (int)subKey.GetValue(_nameFlagOptGridVertical, _flagFalse);
-
-                flagOptGridVertical = tmpInt != _flagFalse;
             }
         }
 
@@ -221,65 +223,64 @@ namespace PCLParaphernalia
                                             ref bool flagShowMapCodesUTF8,
                                             ref bool flagSymSetUserActEmbed)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            string key;
-
-            int tmpInt;
-
-            key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + pdlName;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                //------------------------------------------------------------//
-                // update from version 2.8.0 0                                //
-                //------------------------------------------------------------//
+                string key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + pdlName;
 
-                if (subKey.GetValue(_nameFlagShowUserMapCodes) != null)
+                int tmpInt;
+
+                using (var subKey = keyMain.CreateSubKey(key))
                 {
-                    if (subKey.GetValue(_nameFlagShowMapCodesUCS2) == null)
+                    //------------------------------------------------------------//
+                    // update from version 2.8.0 0                                //
+                    //------------------------------------------------------------//
+
+                    if (subKey.GetValue(_nameFlagShowUserMapCodes) != null)
                     {
-                        subKey.SetValue(
-                            _nameFlagShowMapCodesUCS2,
-                            subKey.GetValue(_nameFlagShowUserMapCodes),
-                            RegistryValueKind.DWord);
+                        if (subKey.GetValue(_nameFlagShowMapCodesUCS2) == null)
+                        {
+                            subKey.SetValue(
+                                _nameFlagShowMapCodesUCS2,
+                                subKey.GetValue(_nameFlagShowUserMapCodes),
+                                RegistryValueKind.DWord);
+                        }
+
+                        subKey.DeleteValue(_nameFlagShowUserMapCodes);
                     }
 
-                    subKey.DeleteValue(_nameFlagShowUserMapCodes);
-                }
+                    //------------------------------------------------------------//
 
-                //------------------------------------------------------------//
+                    indxOrientation = (int)subKey.GetValue(_nameIndxOrientation, _indexZero);
+                    indxPaperSize = (int)subKey.GetValue(_nameIndxPaperSize, _indexZero);
+                    indxPaperType = (int)subKey.GetValue(_nameIndxPaperType, _indexZero);
+                    indxFont = (int)subKey.GetValue(_nameIndxFont, _indexZero);
 
-                indxOrientation = (int)subKey.GetValue(_nameIndxOrientation, _indexZero);
-                indxPaperSize = (int)subKey.GetValue(_nameIndxPaperSize, _indexZero);
-                indxPaperType = (int)subKey.GetValue(_nameIndxPaperType, _indexZero);
-                indxFont = (int)subKey.GetValue(_nameIndxFont, _indexZero);
+                    tmpInt = (int)subKey.GetValue(_nameFlagFormAsMacro, _flagTrue);
 
-                tmpInt = (int)subKey.GetValue(_nameFlagFormAsMacro, _flagTrue);
+                    flagFormAsMacro = tmpInt != _flagFalse;
 
-                flagFormAsMacro = tmpInt != _flagFalse;
+                    tmpInt = (int)subKey.GetValue(_nameFlagShowC0Chars, _flagFalse);
 
-                tmpInt = (int)subKey.GetValue(_nameFlagShowC0Chars, _flagFalse);
+                    flagShowC0Chars = tmpInt != _flagFalse;
 
-                flagShowC0Chars = tmpInt != _flagFalse;
+                    tmpInt = (int)subKey.GetValue(_nameFlagShowMapCodesUCS2, _flagFalse);
 
-                tmpInt = (int)subKey.GetValue(_nameFlagShowMapCodesUCS2, _flagFalse);
+                    flagShowMapCodesUCS2 = tmpInt != _flagFalse;
 
-                flagShowMapCodesUCS2 = tmpInt != _flagFalse;
+                    tmpInt = (int)subKey.GetValue(_nameFlagShowMapCodesUTF8, _flagFalse);
 
-                tmpInt = (int)subKey.GetValue(_nameFlagShowMapCodesUTF8, _flagFalse);
+                    flagShowMapCodesUTF8 = tmpInt != _flagFalse;
 
-                flagShowMapCodesUTF8 = tmpInt != _flagFalse;
+                    if (pdlName == _subKeyPCL)
+                    {
+                        tmpInt = (int)subKey.GetValue(_nameFlagSymSetUserActEmbed, _flagTrue);
 
-                if (pdlName == _subKeyPCL)
-                {
-                    tmpInt = (int)subKey.GetValue(_nameFlagSymSetUserActEmbed, _flagTrue);
-
-                    flagSymSetUserActEmbed = tmpInt != _flagFalse;
-                }
-                else
-                {
-                    flagSymSetUserActEmbed = false;
+                        flagSymSetUserActEmbed = tmpInt != _flagFalse;
+                    }
+                    else
+                    {
+                        flagSymSetUserActEmbed = false;
+                    }
                 }
             }
         }
@@ -305,52 +306,54 @@ namespace PCLParaphernalia
                                                ref ushort symSetCustom,
                                                ref string symSetUserFile)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            string key;
-
-            int tmpInt;
-
-            string defWorkFolder = ToolCommonData.DefWorkFolder;
-
-            //----------------------------------------------------------------//
-
-            key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCL + "\\" + _subKeyCustom;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                tmpInt = (int)subKey.GetValue(_nameFlagProportional, _flagTrue);
+                const string key = _subKeyTools +
+                                "\\" + _subKeyToolsFontSample +
+                                "\\" + _subKeyPCL +
+                                "\\" + _subKeyCustom;
 
-                flagProportional = tmpInt != _flagFalse;
+                int tmpInt;
 
-                tmpInt = (int)subKey.GetValue(_nameFlagScalable, _flagTrue);
+                string defWorkFolder = ToolCommonData.DefWorkFolder;
 
-                flagScalable = tmpInt != _flagFalse;
+                //----------------------------------------------------------------//
 
-                tmpInt = (int)subKey.GetValue(_nameFlagBound, _flagTrue);
-                flagBound = tmpInt != _flagFalse;
+                using (var subKey = keyMain.CreateSubKey(key))
+                {
+                    tmpInt = (int)subKey.GetValue(_nameFlagProportional, _flagTrue);
 
-                tmpInt = (int)subKey.GetValue(_nameStyle, 0);
-                style = (ushort)tmpInt;
+                    flagProportional = tmpInt != _flagFalse;
 
-                tmpInt = (int)subKey.GetValue(_nameTypeface, 0);
-                typeface = (ushort)tmpInt;
+                    tmpInt = (int)subKey.GetValue(_nameFlagScalable, _flagTrue);
 
-                tmpInt = (int)subKey.GetValue(_nameWeight, 0);
-                weight = (short)tmpInt;
+                    flagScalable = tmpInt != _flagFalse;
 
-                tmpInt = (int)subKey.GetValue(_nameHeight, _defaultHeightPtsK);
-                height = tmpInt / _sizeFactor;
+                    tmpInt = (int)subKey.GetValue(_nameFlagBound, _flagTrue);
+                    flagBound = tmpInt != _flagFalse;
 
-                tmpInt = (int)subKey.GetValue(_namePitch, _defaultPitchPtsK);
-                pitch = tmpInt / _sizeFactor;
+                    tmpInt = (int)subKey.GetValue(_nameStyle, 0);
+                    style = (ushort)tmpInt;
 
-                indxSymSet = (int)subKey.GetValue(_nameIndxSymSet, _indexZero);
+                    tmpInt = (int)subKey.GetValue(_nameTypeface, 0);
+                    typeface = (ushort)tmpInt;
 
-                tmpInt = (int)subKey.GetValue(_nameSymSetNumber, _defaultSymSetNo);
-                symSetCustom = (ushort)tmpInt;
+                    tmpInt = (int)subKey.GetValue(_nameWeight, 0);
+                    weight = (short)tmpInt;
 
-                symSetUserFile = (string)subKey.GetValue(_nameSymSetUserFile, defWorkFolder + "\\" + _defaultSymSetUserFile);
+                    tmpInt = (int)subKey.GetValue(_nameHeight, _defaultHeightPtsK);
+                    height = tmpInt / _sizeFactor;
+
+                    tmpInt = (int)subKey.GetValue(_namePitch, _defaultPitchPtsK);
+                    pitch = tmpInt / _sizeFactor;
+
+                    indxSymSet = (int)subKey.GetValue(_nameIndxSymSet, _indexZero);
+
+                    tmpInt = (int)subKey.GetValue(_nameSymSetNumber, _defaultSymSetNo);
+                    symSetCustom = (ushort)tmpInt;
+
+                    symSetUserFile = (string)subKey.GetValue(_nameSymSetUserFile, defWorkFolder + "\\" + _defaultSymSetUserFile);
+                }
             }
         }
 
@@ -373,45 +376,45 @@ namespace PCLParaphernalia
                                                  ref ushort symSetCustom,
                                                  ref string symSetUserFile)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            string key;
-
-            int tmpInt;
-
-            string defWorkFolder = ToolCommonData.DefWorkFolder;
-
-            //----------------------------------------------------------------//
-
-            key = _subKeyTools + "\\" + _subKeyToolsFontSample +
-                                 "\\" + _subKeyPCL +
-                                 "\\" + _subKeyDownload;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                downloadFile = (string)subKey.GetValue(_nameDownloadFile, defWorkFolder + "\\" + _defaultFontFilePCL);
+                const string key = _subKeyTools +
+                                    "\\" + _subKeyToolsFontSample +
+                                    "\\" + _subKeyPCL +
+                                    "\\" + _subKeyDownload;
 
-                tmpInt = (int)subKey.GetValue(_nameDownloadId, 1);
-                downloadId = (ushort)tmpInt;
+                int tmpInt;
 
-                tmpInt = (int)subKey.GetValue(_nameFlagSelectById, _flagTrue);
-                flagSelectById = tmpInt != _flagFalse;
+                string defWorkFolder = ToolCommonData.DefWorkFolder;
 
-                tmpInt = (int)subKey.GetValue(_nameFlagDownloadRemove, _flagTrue);
-                flagDownloadRemove = tmpInt != _flagFalse;
+                //----------------------------------------------------------------//
 
-                tmpInt = (int)subKey.GetValue(_nameHeight, _defaultHeightPtsK);
-                height = tmpInt / _sizeFactor;
+                using (var subKey = keyMain.CreateSubKey(key))
+                {
+                    downloadFile = (string)subKey.GetValue(_nameDownloadFile, defWorkFolder + "\\" + _defaultFontFilePCL);
 
-                tmpInt = (int)subKey.GetValue(_namePitch, _defaultPitchPtsK);
-                pitch = tmpInt / _sizeFactor;
+                    tmpInt = (int)subKey.GetValue(_nameDownloadId, 1);
+                    downloadId = (ushort)tmpInt;
 
-                indxSymSet = (int)subKey.GetValue(_nameIndxSymSet, _indexZero);
+                    tmpInt = (int)subKey.GetValue(_nameFlagSelectById, _flagTrue);
+                    flagSelectById = tmpInt != _flagFalse;
 
-                tmpInt = (int)subKey.GetValue(_nameSymSetNumber, _defaultSymSetNo);
-                symSetCustom = (ushort)tmpInt;
+                    tmpInt = (int)subKey.GetValue(_nameFlagDownloadRemove, _flagTrue);
+                    flagDownloadRemove = tmpInt != _flagFalse;
 
-                symSetUserFile = (string)subKey.GetValue(_nameSymSetUserFile, defWorkFolder + "\\" + _defaultSymSetUserFile);
+                    tmpInt = (int)subKey.GetValue(_nameHeight, _defaultHeightPtsK);
+                    height = tmpInt / _sizeFactor;
+
+                    tmpInt = (int)subKey.GetValue(_namePitch, _defaultPitchPtsK);
+                    pitch = tmpInt / _sizeFactor;
+
+                    indxSymSet = (int)subKey.GetValue(_nameIndxSymSet, _indexZero);
+
+                    tmpInt = (int)subKey.GetValue(_nameSymSetNumber, _defaultSymSetNo);
+                    symSetCustom = (ushort)tmpInt;
+
+                    symSetUserFile = (string)subKey.GetValue(_nameSymSetUserFile, defWorkFolder + "\\" + _defaultSymSetUserFile);
+                }
             }
         }
 
@@ -420,7 +423,7 @@ namespace PCLParaphernalia
         // l o a d D a t a P C L P r e s e t                                  //
         //--------------------------------------------------------------------//
         //                                                                    //
-        // Retrieve stored FontSample PCL data for 'preset' font.            //
+        // Retrieve stored FontSample PCL data for 'preset' font.             //
         //                                                                    //
         //--------------------------------------------------------------------//
 
@@ -432,37 +435,39 @@ namespace PCLParaphernalia
                                                ref ushort symSetCustom,
                                                ref string symSetUserFile)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            string key;
-
-            int tmpInt;
-
-            string defWorkFolder = ToolCommonData.DefWorkFolder;
-
-            //----------------------------------------------------------------//
-
-            key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCL + "\\" + _subKeyPreset;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                indxFont = (int)subKey.GetValue(_nameIndxFont, _indexZero);
+                const string key = _subKeyTools +
+                                    "\\" + _subKeyToolsFontSample +
+                                    "\\" + _subKeyPCL +
+                                    "\\" + _subKeyPreset;
 
-                tmpInt = (int)subKey.GetValue(_nameIndxVariant, _defaultIndxVariant);
-                variant = (PCLFonts.Variant)tmpInt;
+                int tmpInt;
 
-                tmpInt = (int)subKey.GetValue(_nameHeight, _defaultHeightPtsK);
-                height = tmpInt / _sizeFactor;
+                string defWorkFolder = ToolCommonData.DefWorkFolder;
 
-                tmpInt = (int)subKey.GetValue(_namePitch, _defaultPitchPtsK);
-                pitch = tmpInt / _sizeFactor;
+                //----------------------------------------------------------------//
 
-                indxSymSet = (int)subKey.GetValue(_nameIndxSymSet, _indexZero);
+                using (var subKey = keyMain.CreateSubKey(key))
+                {
+                    indxFont = (int)subKey.GetValue(_nameIndxFont, _indexZero);
 
-                tmpInt = (int)subKey.GetValue(_nameSymSetNumber, _defaultSymSetNo);
-                symSetCustom = (ushort)tmpInt;
+                    tmpInt = (int)subKey.GetValue(_nameIndxVariant, _defaultIndxVariant);
+                    variant = (PCLFonts.Variant)tmpInt;
 
-                symSetUserFile = (string)subKey.GetValue(_nameSymSetUserFile, defWorkFolder + "\\" + _defaultSymSetUserFile);
+                    tmpInt = (int)subKey.GetValue(_nameHeight, _defaultHeightPtsK);
+                    height = tmpInt / _sizeFactor;
+
+                    tmpInt = (int)subKey.GetValue(_namePitch, _defaultPitchPtsK);
+                    pitch = tmpInt / _sizeFactor;
+
+                    indxSymSet = (int)subKey.GetValue(_nameIndxSymSet, _indexZero);
+
+                    tmpInt = (int)subKey.GetValue(_nameSymSetNumber, _defaultSymSetNo);
+                    symSetCustom = (ushort)tmpInt;
+
+                    symSetUserFile = (string)subKey.GetValue(_nameSymSetUserFile, defWorkFolder + "\\" + _defaultSymSetUserFile);
+                }
             }
         }
 
@@ -495,99 +500,101 @@ namespace PCLParaphernalia
                                                ref ushort symSetCustom,
                                                ref string symSetUserFile)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            string key;
-
-            int tmpInt;
-
-            string defWorkFolder = ToolCommonData.DefWorkFolder;
-
-            //----------------------------------------------------------------//
-
-            key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCL + "\\" + _subKeyPrnDisk;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                fontFilename = (string)subKey.GetValue(_nameMassStoreFontFile, _defaultMassStoreFontFile);
+                const string key = _subKeyTools +
+                                    "\\" + _subKeyToolsFontSample +
+                                    "\\" + _subKeyPCL +
+                                    "\\" + _subKeyPrnDisk;
 
-                //------------------------------------------------------------//
+                int tmpInt;
 
-                tmpInt = (int)subKey.GetValue(_nameMassStoreFontId, _defaultSoftFontIdPCL);
-                fontId = (ushort)tmpInt;
+                string defWorkFolder = ToolCommonData.DefWorkFolder;
 
-                //------------------------------------------------------------//
+                //----------------------------------------------------------------//
 
-                tmpInt = (int)subKey.GetValue(_nameMassStoreMacroId, _defaultSoftFontIdMacroPCL);
-                macroId = (ushort)tmpInt;
+                using (var subKey = keyMain.CreateSubKey(key))
+                {
+                    fontFilename = (string)subKey.GetValue(_nameMassStoreFontFile, _defaultMassStoreFontFile);
 
-                //------------------------------------------------------------//
+                    //------------------------------------------------------------//
 
-                tmpInt = (int)subKey.GetValue(_nameFlagRamDataRemove, _flagFalse);
+                    tmpInt = (int)subKey.GetValue(_nameMassStoreFontId, _defaultSoftFontIdPCL);
+                    fontId = (ushort)tmpInt;
 
-                flagRamDataRemove = tmpInt != _flagFalse;
+                    //------------------------------------------------------------//
 
-                //------------------------------------------------------------//
+                    tmpInt = (int)subKey.GetValue(_nameMassStoreMacroId, _defaultSoftFontIdMacroPCL);
+                    macroId = (ushort)tmpInt;
 
-                tmpInt = (int)subKey.GetValue(_nameFlagSelectById, _flagFalse);
+                    //------------------------------------------------------------//
 
-                flagSelById = tmpInt != _flagFalse;
+                    tmpInt = (int)subKey.GetValue(_nameFlagRamDataRemove, _flagFalse);
 
-                //------------------------------------------------------------//
+                    flagRamDataRemove = tmpInt != _flagFalse;
 
-                tmpInt = (int)subKey.GetValue(_nameFlagMassStoreViaMacro, _flagFalse);
+                    //------------------------------------------------------------//
 
-                flagLoadViaMacro = tmpInt != _flagFalse;
+                    tmpInt = (int)subKey.GetValue(_nameFlagSelectById, _flagFalse);
 
-                //------------------------------------------------------------//
+                    flagSelById = tmpInt != _flagFalse;
 
-                tmpInt = (int)subKey.GetValue(_nameFlagDetailsKnown, _flagFalse);
+                    //------------------------------------------------------------//
 
-                flagDetailsKnown = tmpInt != _flagFalse;
+                    tmpInt = (int)subKey.GetValue(_nameFlagMassStoreViaMacro, _flagFalse);
 
-                //------------------------------------------------------------//
+                    flagLoadViaMacro = tmpInt != _flagFalse;
 
-                tmpInt = (int)subKey.GetValue(_nameFlagProportional, _flagFalse);
+                    //------------------------------------------------------------//
 
-                flagProportional = tmpInt != _flagFalse;
+                    tmpInt = (int)subKey.GetValue(_nameFlagDetailsKnown, _flagFalse);
 
-                //------------------------------------------------------------//
+                    flagDetailsKnown = tmpInt != _flagFalse;
 
-                tmpInt = (int)subKey.GetValue(_nameFlagScalable, _flagFalse);
+                    //------------------------------------------------------------//
 
-                flagScalable = tmpInt != _flagFalse;
+                    tmpInt = (int)subKey.GetValue(_nameFlagProportional, _flagFalse);
 
-                //------------------------------------------------------------//
+                    flagProportional = tmpInt != _flagFalse;
 
-                tmpInt = (int)subKey.GetValue(_nameFlagBound, _flagTrue);
+                    //------------------------------------------------------------//
 
-                flagBound = tmpInt != _flagFalse;
+                    tmpInt = (int)subKey.GetValue(_nameFlagScalable, _flagFalse);
 
-                //------------------------------------------------------------//
+                    flagScalable = tmpInt != _flagFalse;
 
-                tmpInt = (int)subKey.GetValue(_nameStyle, 0);
-                style = (ushort)tmpInt;
+                    //------------------------------------------------------------//
 
-                tmpInt = (int)subKey.GetValue(_nameTypeface, 3);
-                typeface = (ushort)tmpInt;
+                    tmpInt = (int)subKey.GetValue(_nameFlagBound, _flagTrue);
 
-                tmpInt = (int)subKey.GetValue(_nameWeight, 0);
-                weight = (short)tmpInt;
+                    flagBound = tmpInt != _flagFalse;
 
-                tmpInt = (int)subKey.GetValue(_nameHeight, _defaultHeightPtsK);
-                height = tmpInt / _sizeFactor;
+                    //------------------------------------------------------------//
 
-                tmpInt = (int)subKey.GetValue(_namePitch, _defaultPitchPtsK);
-                pitch = tmpInt / _sizeFactor;
+                    tmpInt = (int)subKey.GetValue(_nameStyle, 0);
+                    style = (ushort)tmpInt;
 
-                //------------------------------------------------------------//
+                    tmpInt = (int)subKey.GetValue(_nameTypeface, 3);
+                    typeface = (ushort)tmpInt;
 
-                indxSymSet = (int)subKey.GetValue(_nameIndxSymSet, _indexZero);
+                    tmpInt = (int)subKey.GetValue(_nameWeight, 0);
+                    weight = (short)tmpInt;
 
-                tmpInt = (int)subKey.GetValue(_nameSymSetNumber, _defaultSymSetNo);
-                symSetCustom = (ushort)tmpInt;
+                    tmpInt = (int)subKey.GetValue(_nameHeight, _defaultHeightPtsK);
+                    height = tmpInt / _sizeFactor;
 
-                symSetUserFile = (string)subKey.GetValue(_nameSymSetUserFile, defWorkFolder + "\\" + _defaultSymSetUserFile);
+                    tmpInt = (int)subKey.GetValue(_namePitch, _defaultPitchPtsK);
+                    pitch = tmpInt / _sizeFactor;
+
+                    //------------------------------------------------------------//
+
+                    indxSymSet = (int)subKey.GetValue(_nameIndxSymSet, _indexZero);
+
+                    tmpInt = (int)subKey.GetValue(_nameSymSetNumber, _defaultSymSetNo);
+                    symSetCustom = (ushort)tmpInt;
+
+                    symSetUserFile = (string)subKey.GetValue(_nameSymSetUserFile, defWorkFolder + "\\" + _defaultSymSetUserFile);
+                }
             }
         }
 
@@ -606,29 +613,30 @@ namespace PCLParaphernalia
                                                 ref ushort symSetCustom,
                                                 ref string symSetUserFile)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            string key;
-
-            int tmpInt;
-
-            string defWorkFolder = ToolCommonData.DefWorkFolder;
-
-            key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCLXL + "\\" + _subKeyCustom;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                fontName = (string)subKey.GetValue(_nameFontName, _defaultFontName);
+                string key;
 
-                tmpInt = (int)subKey.GetValue(_nameHeight, _defaultHeightPtsK);
-                height = tmpInt / _sizeFactor;
+                int tmpInt;
 
-                indxSymSet = (int)subKey.GetValue(_nameIndxSymSet, _indexZero);
+                string defWorkFolder = ToolCommonData.DefWorkFolder;
 
-                tmpInt = (int)subKey.GetValue(_nameSymSetNumber, _defaultSymSetNo);
-                symSetCustom = (ushort)tmpInt;
+                key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCLXL + "\\" + _subKeyCustom;
 
-                symSetUserFile = (string)subKey.GetValue(_nameSymSetUserFile, defWorkFolder + "\\" + _defaultSymSetUserFile);
+                using (var subKey = keyMain.CreateSubKey(key))
+                {
+                    fontName = (string)subKey.GetValue(_nameFontName, _defaultFontName);
+
+                    tmpInt = (int)subKey.GetValue(_nameHeight, _defaultHeightPtsK);
+                    height = tmpInt / _sizeFactor;
+
+                    indxSymSet = (int)subKey.GetValue(_nameIndxSymSet, _indexZero);
+
+                    tmpInt = (int)subKey.GetValue(_nameSymSetNumber, _defaultSymSetNo);
+                    symSetCustom = (ushort)tmpInt;
+
+                    symSetUserFile = (string)subKey.GetValue(_nameSymSetUserFile, defWorkFolder + "\\" + _defaultSymSetUserFile);
+                }
             }
         }
 
@@ -648,34 +656,36 @@ namespace PCLParaphernalia
                                                   ref ushort symSetCustom,
                                                   ref string symSetUserFile)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            string key;
-
-            int tmpInt;
-
-            string defWorkFolder = ToolCommonData.DefWorkFolder;
-
-            //----------------------------------------------------------------//
-
-            key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCLXL + "\\" + _subKeyDownload;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                downloadFile = (string)subKey.GetValue(_nameDownloadFile, defWorkFolder + "\\" + _defaultFontFilePCLXL);
+                const string key = _subKeyTools +
+                                    "\\" + _subKeyToolsFontSample +
+                                    "\\" + _subKeyPCLXL +
+                                    "\\" + _subKeyDownload;
 
-                tmpInt = (int)subKey.GetValue(_nameFlagDownloadRemove, _flagTrue);
-                flagDownloadRemove = tmpInt != _flagFalse;
+                int tmpInt;
 
-                tmpInt = (int)subKey.GetValue(_nameHeight, _defaultHeightPtsK);
-                height = tmpInt / _sizeFactor;
+                string defWorkFolder = ToolCommonData.DefWorkFolder;
 
-                indxSymSet = (int)subKey.GetValue(_nameIndxSymSet, _indexZero);
+                //----------------------------------------------------------------//
 
-                tmpInt = (int)subKey.GetValue(_nameSymSetNumber, _defaultSymSetNo);
-                symSetCustom = (ushort)tmpInt;
+                using (var subKey = keyMain.CreateSubKey(key))
+                {
+                    downloadFile = (string)subKey.GetValue(_nameDownloadFile, defWorkFolder + "\\" + _defaultFontFilePCLXL);
 
-                symSetUserFile = (string)subKey.GetValue(_nameSymSetUserFile, defWorkFolder + "\\" + _defaultSymSetUserFile);
+                    tmpInt = (int)subKey.GetValue(_nameFlagDownloadRemove, _flagTrue);
+                    flagDownloadRemove = tmpInt != _flagFalse;
+
+                    tmpInt = (int)subKey.GetValue(_nameHeight, _defaultHeightPtsK);
+                    height = tmpInt / _sizeFactor;
+
+                    indxSymSet = (int)subKey.GetValue(_nameIndxSymSet, _indexZero);
+
+                    tmpInt = (int)subKey.GetValue(_nameSymSetNumber, _defaultSymSetNo);
+                    symSetCustom = (ushort)tmpInt;
+
+                    symSetUserFile = (string)subKey.GetValue(_nameSymSetUserFile, defWorkFolder + "\\" + _defaultSymSetUserFile);
+                }
             }
         }
 
@@ -695,32 +705,34 @@ namespace PCLParaphernalia
                                                 ref ushort symSetCustom,
                                                 ref string symSetUserFile)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            string key;
-
-            int tmpInt;
-
-            string defWorkFolder = ToolCommonData.DefWorkFolder;
-
-            key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCLXL + "\\" + _subKeyPreset;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                indxFont = (int)subKey.GetValue(_nameIndxFont, _indexZero);
+                const string key = _subKeyTools +
+                                    "\\" + _subKeyToolsFontSample +
+                                    "\\" + _subKeyPCLXL +
+                                    "\\" + _subKeyPreset;
 
-                tmpInt = (int)subKey.GetValue(_nameIndxVariant, _defaultIndxVariant);
-                variant = (PCLFonts.Variant)tmpInt;
+                int tmpInt;
 
-                tmpInt = (int)subKey.GetValue(_nameHeight, _defaultHeightPtsK);
-                height = tmpInt / _sizeFactor;
+                string defWorkFolder = ToolCommonData.DefWorkFolder;
 
-                indxSymSet = (int)subKey.GetValue(_nameIndxSymSet, _indexZero);
+                using (var subKey = keyMain.CreateSubKey(key))
+                {
+                    indxFont = (int)subKey.GetValue(_nameIndxFont, _indexZero);
 
-                tmpInt = (int)subKey.GetValue(_nameSymSetNumber, _defaultSymSetNo);
-                symSetCustom = (ushort)tmpInt;
+                    tmpInt = (int)subKey.GetValue(_nameIndxVariant, _defaultIndxVariant);
+                    variant = (PCLFonts.Variant)tmpInt;
 
-                symSetUserFile = (string)subKey.GetValue(_nameSymSetUserFile, defWorkFolder + "\\" + _defaultSymSetUserFile);
+                    tmpInt = (int)subKey.GetValue(_nameHeight, _defaultHeightPtsK);
+                    height = tmpInt / _sizeFactor;
+
+                    indxSymSet = (int)subKey.GetValue(_nameIndxSymSet, _indexZero);
+
+                    tmpInt = (int)subKey.GetValue(_nameSymSetNumber, _defaultSymSetNo);
+                    symSetCustom = (ushort)tmpInt;
+
+                    symSetUserFile = (string)subKey.GetValue(_nameSymSetUserFile, defWorkFolder + "\\" + _defaultSymSetUserFile);
+                }
             }
         }
 
@@ -733,32 +745,30 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void SaveDataCapture(ToolCommonData.PrintLang crntPDL,
-                                            string captureFile)
+        public static void SaveDataCapture(ToolCommonData.PrintLang crntPDL,string captureFile)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            if (crntPDL == ToolCommonData.PrintLang.PCL)
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCL;
-
-                using (RegistryKey subKey = keyMain.CreateSubKey(key))
+                if (crntPDL == ToolCommonData.PrintLang.PCL)
                 {
-                    if (captureFile != null)
+                    const string key = _subKeyTools +
+                                        "\\" + _subKeyToolsFontSample +
+                                        "\\" + _subKeyPCL;
+
+                    using (var subKey = keyMain.CreateSubKey(key))
                     {
-                        subKey.SetValue(_nameCaptureFile, captureFile, RegistryValueKind.String);
+                        if (captureFile != null)
+                            subKey.SetValue(_nameCaptureFile, captureFile, RegistryValueKind.String);
                     }
                 }
-            }
-            else if (crntPDL == ToolCommonData.PrintLang.PCLXL)
-            {
-                const string key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCLXL;
-
-                using (RegistryKey subKey = keyMain.CreateSubKey(key))
+                else if (crntPDL == ToolCommonData.PrintLang.PCLXL)
                 {
-                    if (captureFile != null)
+                    const string key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCLXL;
+
+                    using (var subKey = keyMain.CreateSubKey(key))
                     {
-                        subKey.SetValue(_nameCaptureFile, captureFile, RegistryValueKind.String);
+                        if (captureFile != null)
+                            subKey.SetValue(_nameCaptureFile, captureFile, RegistryValueKind.String);
                     }
                 }
             }
@@ -773,24 +783,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void SaveDataCommon(int indxPDL,
-                                           bool flagOptGridVertical)
+        public static void SaveDataCommon(int indxPDL, bool flagOptGridVertical)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            const string key = _subKeyTools + "\\" + _subKeyToolsFontSample;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                subKey.SetValue(_nameIndxPDL, indxPDL, RegistryValueKind.DWord);
+                const string key = _subKeyTools + "\\" + _subKeyToolsFontSample;
 
-                if (flagOptGridVertical)
+                using (var subKey = keyMain.CreateSubKey(key))
                 {
-                    subKey.SetValue(_nameFlagOptGridVertical, _flagTrue, RegistryValueKind.DWord);
-                }
-                else
-                {
-                    subKey.SetValue(_nameFlagOptGridVertical, _flagFalse, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameIndxPDL, indxPDL, RegistryValueKind.DWord);
+
+                    if (flagOptGridVertical)
+                        subKey.SetValue(_nameFlagOptGridVertical, _flagTrue, RegistryValueKind.DWord);
+                    else
+                        subKey.SetValue(_nameFlagOptGridVertical, _flagFalse, RegistryValueKind.DWord);
                 }
             }
         }
@@ -815,65 +821,46 @@ namespace PCLParaphernalia
                                             bool flagShowMapCodesUTF8,
                                             bool flagSymSetUserActEmbed)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            string key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + pdlName;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                subKey.SetValue(_nameIndxOrientation, indxOrientation, RegistryValueKind.DWord);
+                string key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + pdlName;
 
-                subKey.SetValue(_nameIndxPaperSize, indxPaperSize, RegistryValueKind.DWord);
+                using (var subKey = keyMain.CreateSubKey(key))
+                {
+                    subKey.SetValue(_nameIndxOrientation, indxOrientation, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameIndxPaperType, indxPaperType, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameIndxPaperSize, indxPaperSize, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameIndxFont, indxFont, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameIndxPaperType, indxPaperType, RegistryValueKind.DWord);
 
-                if (flagFormAsMacro)
-                {
-                    subKey.SetValue(_nameFlagFormAsMacro, _flagTrue, RegistryValueKind.DWord);
-                }
-                else
-                {
-                    subKey.SetValue(_nameFlagFormAsMacro, _flagFalse, RegistryValueKind.DWord);
-                }
+                    subKey.SetValue(_nameIndxFont, indxFont, RegistryValueKind.DWord);
 
-                if (flagShowC0Chars)
-                {
-                    subKey.SetValue(_nameFlagShowC0Chars, _flagTrue, RegistryValueKind.DWord);
-                }
-                else
-                {
-                    subKey.SetValue(_nameFlagShowC0Chars, _flagFalse, RegistryValueKind.DWord);
-                }
-
-                if (flagShowMapCodesUCS2)
-                {
-                    subKey.SetValue(_nameFlagShowMapCodesUCS2, _flagTrue, RegistryValueKind.DWord);
-                }
-                else
-                {
-                    subKey.SetValue(_nameFlagShowMapCodesUCS2, _flagFalse, RegistryValueKind.DWord);
-                }
-
-                if (flagShowMapCodesUTF8)
-                {
-                    subKey.SetValue(_nameFlagShowMapCodesUTF8, _flagTrue, RegistryValueKind.DWord);
-                }
-                else
-                {
-                    subKey.SetValue(_nameFlagShowMapCodesUTF8, _flagFalse, RegistryValueKind.DWord);
-                }
-
-                if (pdlName == _subKeyPCL)
-                {
-                    if (flagSymSetUserActEmbed)
-                    {
-                        subKey.SetValue(_nameFlagSymSetUserActEmbed, _flagTrue, RegistryValueKind.DWord);
-                    }
+                    if (flagFormAsMacro)
+                        subKey.SetValue(_nameFlagFormAsMacro, _flagTrue, RegistryValueKind.DWord);
                     else
+                        subKey.SetValue(_nameFlagFormAsMacro, _flagFalse, RegistryValueKind.DWord);
+
+                    if (flagShowC0Chars)
+                        subKey.SetValue(_nameFlagShowC0Chars, _flagTrue, RegistryValueKind.DWord);
+                    else
+                        subKey.SetValue(_nameFlagShowC0Chars, _flagFalse, RegistryValueKind.DWord);
+
+                    if (flagShowMapCodesUCS2)
+                        subKey.SetValue(_nameFlagShowMapCodesUCS2, _flagTrue, RegistryValueKind.DWord);
+                    else
+                        subKey.SetValue(_nameFlagShowMapCodesUCS2, _flagFalse, RegistryValueKind.DWord);
+
+                    if (flagShowMapCodesUTF8)
+                        subKey.SetValue(_nameFlagShowMapCodesUTF8, _flagTrue, RegistryValueKind.DWord);
+                    else
+                        subKey.SetValue(_nameFlagShowMapCodesUTF8, _flagFalse, RegistryValueKind.DWord);
+
+                    if (pdlName == _subKeyPCL)
                     {
-                        subKey.SetValue(_nameFlagSymSetUserActEmbed, _flagFalse, RegistryValueKind.DWord);
+                        if (flagSymSetUserActEmbed)
+                            subKey.SetValue(_nameFlagSymSetUserActEmbed, _flagTrue, RegistryValueKind.DWord);
+                        else
+                            subKey.SetValue(_nameFlagSymSetUserActEmbed, _flagFalse, RegistryValueKind.DWord);
                     }
                 }
             }
@@ -900,56 +887,46 @@ namespace PCLParaphernalia
                                               ushort symSetCustom,
                                               string symSetUserFile)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            const string key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCL + "\\" + _subKeyCustom;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                if (flagProportional)
+                const string key = _subKeyTools +
+                                    "\\"+ _subKeyToolsFontSample +
+                                    "\\" + _subKeyPCL +
+                                    "\\" + _subKeyCustom;
+
+                using (var subKey = keyMain.CreateSubKey(key))
                 {
-                    subKey.SetValue(_nameFlagProportional, _flagTrue, RegistryValueKind.DWord);
-                }
-                else
-                {
-                    subKey.SetValue(_nameFlagProportional, _flagFalse, RegistryValueKind.DWord);
-                }
+                    if (flagProportional)
+                        subKey.SetValue(_nameFlagProportional, _flagTrue, RegistryValueKind.DWord);
+                    else
+                        subKey.SetValue(_nameFlagProportional, _flagFalse, RegistryValueKind.DWord);
 
-                if (flagScalable)
-                {
-                    subKey.SetValue(_nameFlagScalable, _flagTrue, RegistryValueKind.DWord);
-                }
-                else
-                {
-                    subKey.SetValue(_nameFlagScalable, _flagFalse, RegistryValueKind.DWord);
-                }
+                    if (flagScalable)
+                        subKey.SetValue(_nameFlagScalable, _flagTrue, RegistryValueKind.DWord);
+                    else
+                        subKey.SetValue(_nameFlagScalable, _flagFalse, RegistryValueKind.DWord);
 
-                if (flagBound)
-                {
-                    subKey.SetValue(_nameFlagBound, _flagTrue, RegistryValueKind.DWord);
-                }
-                else
-                {
-                    subKey.SetValue(_nameFlagBound, _flagFalse, RegistryValueKind.DWord);
-                }
+                    if (flagBound)
+                        subKey.SetValue(_nameFlagBound, _flagTrue, RegistryValueKind.DWord);
+                    else
+                        subKey.SetValue(_nameFlagBound, _flagFalse, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameStyle, style, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameStyle, style, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameTypeface, typeface, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameTypeface, typeface, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameWeight, weight, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameWeight, weight, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameHeight, height * _sizeFactor, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameHeight, height * _sizeFactor, RegistryValueKind.DWord);
 
-                subKey.SetValue(_namePitch, pitch * _sizeFactor, RegistryValueKind.DWord);
+                    subKey.SetValue(_namePitch, pitch * _sizeFactor, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameIndxSymSet, indxSymSet, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameIndxSymSet, indxSymSet, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameSymSetNumber, symSetCustom, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameSymSetNumber, symSetCustom, RegistryValueKind.DWord);
 
-                if (symSetUserFile != null)
-                {
-                    subKey.SetValue(_nameSymSetUserFile, symSetUserFile, RegistryValueKind.String);
+                    if (symSetUserFile != null)
+                        subKey.SetValue(_nameSymSetUserFile, symSetUserFile, RegistryValueKind.String);
                 }
             }
         }
@@ -973,48 +950,40 @@ namespace PCLParaphernalia
                                                 ushort symSetCustom,
                                                 string symSetUserFile)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            const string key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCL + "\\" + _subKeyDownload;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                if (downloadFile != null)
+                const string key = _subKeyTools +
+                                    "\\" + _subKeyToolsFontSample +
+                                    "\\" + _subKeyPCL +
+                                    "\\" + _subKeyDownload;
+
+                using (var subKey = keyMain.CreateSubKey(key))
                 {
-                    subKey.SetValue(_nameDownloadFile, downloadFile, RegistryValueKind.String);
-                }
+                    if (downloadFile != null)
+                        subKey.SetValue(_nameDownloadFile, downloadFile, RegistryValueKind.String);
 
-                subKey.SetValue(_nameDownloadId, downloadId, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameDownloadId, downloadId, RegistryValueKind.DWord);
 
-                if (flagDownloadRemove)
-                {
-                    subKey.SetValue(_nameFlagDownloadRemove, _flagTrue, RegistryValueKind.DWord);
-                }
-                else
-                {
-                    subKey.SetValue(_nameFlagDownloadRemove, _flagFalse, RegistryValueKind.DWord);
-                }
+                    if (flagDownloadRemove)
+                        subKey.SetValue(_nameFlagDownloadRemove, _flagTrue, RegistryValueKind.DWord);
+                    else
+                        subKey.SetValue(_nameFlagDownloadRemove, _flagFalse, RegistryValueKind.DWord);
 
-                if (flagSelectById)
-                {
-                    subKey.SetValue(_nameFlagSelectById, _flagTrue, RegistryValueKind.DWord);
-                }
-                else
-                {
-                    subKey.SetValue(_nameFlagSelectById, _flagFalse, RegistryValueKind.DWord);
-                }
+                    if (flagSelectById)
+                        subKey.SetValue(_nameFlagSelectById, _flagTrue, RegistryValueKind.DWord);
+                    else
+                        subKey.SetValue(_nameFlagSelectById, _flagFalse, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameHeight, height * _sizeFactor, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameHeight, height * _sizeFactor, RegistryValueKind.DWord);
 
-                subKey.SetValue(_namePitch, pitch * _sizeFactor, RegistryValueKind.DWord);
+                    subKey.SetValue(_namePitch, pitch * _sizeFactor, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameIndxSymSet, indxSymSet, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameIndxSymSet, indxSymSet, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameSymSetNumber, symSetCustom, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameSymSetNumber, symSetCustom, RegistryValueKind.DWord);
 
-                if (symSetUserFile != null)
-                {
-                    subKey.SetValue(_nameSymSetUserFile, symSetUserFile, RegistryValueKind.String);
+                    if (symSetUserFile != null)
+                        subKey.SetValue(_nameSymSetUserFile, symSetUserFile, RegistryValueKind.String);
                 }
             }
         }
@@ -1036,27 +1005,29 @@ namespace PCLParaphernalia
                                               ushort symSetCustom,
                                               string symSetUserFile)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            const string key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCL + "\\" + _subKeyPreset;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                subKey.SetValue(_nameIndxFont, indxFont, RegistryValueKind.DWord);
+                const string key = _subKeyTools +
+                                    "\\" + _subKeyToolsFontSample +
+                                    "\\" + _subKeyPCL +
+                                    "\\" + _subKeyPreset;
 
-                subKey.SetValue(_nameIndxVariant, (int)variant, RegistryValueKind.DWord);
-
-                subKey.SetValue(_nameHeight, height * _sizeFactor, RegistryValueKind.DWord);
-
-                subKey.SetValue(_namePitch, pitch * _sizeFactor, RegistryValueKind.DWord);
-
-                subKey.SetValue(_nameIndxSymSet, indxSymSet, RegistryValueKind.DWord);
-
-                subKey.SetValue(_nameSymSetNumber, symSetCustom, RegistryValueKind.DWord);
-
-                if (symSetUserFile != null)
+                using (var subKey = keyMain.CreateSubKey(key))
                 {
-                    subKey.SetValue(_nameSymSetUserFile, symSetUserFile, RegistryValueKind.String);
+                    subKey.SetValue(_nameIndxFont, indxFont, RegistryValueKind.DWord);
+
+                    subKey.SetValue(_nameIndxVariant, (int)variant, RegistryValueKind.DWord);
+
+                    subKey.SetValue(_nameHeight, height * _sizeFactor, RegistryValueKind.DWord);
+
+                    subKey.SetValue(_namePitch, pitch * _sizeFactor, RegistryValueKind.DWord);
+
+                    subKey.SetValue(_nameIndxSymSet, indxSymSet, RegistryValueKind.DWord);
+
+                    subKey.SetValue(_nameSymSetNumber, symSetCustom, RegistryValueKind.DWord);
+
+                    if (symSetUserFile != null)
+                        subKey.SetValue(_nameSymSetUserFile, symSetUserFile, RegistryValueKind.String);
                 }
             }
         }
@@ -1089,101 +1060,73 @@ namespace PCLParaphernalia
                                                ushort symSetCustom,
                                                string symSetUserFile)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            const string key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCL + "\\" + _subKeyPrnDisk;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                if (fontFilename != null)
+                const string key = _subKeyTools +
+                                    "\\" + _subKeyToolsFontSample +
+                                    "\\" + _subKeyPCL +
+                                    "\\" + _subKeyPrnDisk;
+
+                using (var subKey = keyMain.CreateSubKey(key))
                 {
-                    subKey.SetValue(_nameMassStoreFontFile, fontFilename, RegistryValueKind.String);
-                }
+                    if (fontFilename != null)
+                        subKey.SetValue(_nameMassStoreFontFile, fontFilename, RegistryValueKind.String);
 
-                subKey.SetValue(_nameMassStoreFontId, fontId, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameMassStoreFontId, fontId, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameMassStoreMacroId, macroId, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameMassStoreMacroId, macroId, RegistryValueKind.DWord);
 
-                if (flagRamDataRemove)
-                {
-                    subKey.SetValue(_nameFlagRamDataRemove, _flagTrue, RegistryValueKind.DWord);
-                }
-                else
-                {
-                    subKey.SetValue(_nameFlagRamDataRemove, _flagFalse, RegistryValueKind.DWord);
-                }
+                    if (flagRamDataRemove)
+                        subKey.SetValue(_nameFlagRamDataRemove, _flagTrue, RegistryValueKind.DWord);
+                    else
+                        subKey.SetValue(_nameFlagRamDataRemove, _flagFalse, RegistryValueKind.DWord);
 
-                if (flagSelById)
-                {
-                    subKey.SetValue(_nameFlagSelectById, _flagTrue, RegistryValueKind.DWord);
-                }
-                else
-                {
-                    subKey.SetValue(_nameFlagSelectById, _flagFalse, RegistryValueKind.DWord);
-                }
+                    if (flagSelById)
+                        subKey.SetValue(_nameFlagSelectById, _flagTrue, RegistryValueKind.DWord);
+                    else
+                        subKey.SetValue(_nameFlagSelectById, _flagFalse, RegistryValueKind.DWord);
 
-                if (flagLoadViaMacro)
-                {
-                    subKey.SetValue(_nameFlagMassStoreViaMacro, _flagTrue, RegistryValueKind.DWord);
-                }
-                else
-                {
-                    subKey.SetValue(_nameFlagMassStoreViaMacro, _flagFalse, RegistryValueKind.DWord);
-                }
+                    if (flagLoadViaMacro)
+                        subKey.SetValue(_nameFlagMassStoreViaMacro, _flagTrue, RegistryValueKind.DWord);
+                    else
+                        subKey.SetValue(_nameFlagMassStoreViaMacro, _flagFalse, RegistryValueKind.DWord);
 
-                if (flagDetailsKnown)
-                {
-                    subKey.SetValue(_nameFlagDetailsKnown, _flagTrue, RegistryValueKind.DWord);
-                }
-                else
-                {
-                    subKey.SetValue(_nameFlagDetailsKnown, _flagFalse, RegistryValueKind.DWord);
-                }
+                    if (flagDetailsKnown)
+                        subKey.SetValue(_nameFlagDetailsKnown, _flagTrue, RegistryValueKind.DWord);
+                    else
+                        subKey.SetValue(_nameFlagDetailsKnown, _flagFalse, RegistryValueKind.DWord);
 
-                if (flagProportional)
-                {
-                    subKey.SetValue(_nameFlagProportional, _flagTrue, RegistryValueKind.DWord);
-                }
-                else
-                {
-                    subKey.SetValue(_nameFlagProportional, _flagFalse, RegistryValueKind.DWord);
-                }
+                    if (flagProportional)
+                        subKey.SetValue(_nameFlagProportional, _flagTrue, RegistryValueKind.DWord);
+                    else
+                        subKey.SetValue(_nameFlagProportional, _flagFalse, RegistryValueKind.DWord);
 
-                if (flagScalable)
-                {
-                    subKey.SetValue(_nameFlagScalable, _flagTrue, RegistryValueKind.DWord);
-                }
-                else
-                {
-                    subKey.SetValue(_nameFlagScalable, _flagFalse, RegistryValueKind.DWord);
-                }
+                    if (flagScalable)
+                        subKey.SetValue(_nameFlagScalable, _flagTrue, RegistryValueKind.DWord);
+                    else
+                        subKey.SetValue(_nameFlagScalable, _flagFalse, RegistryValueKind.DWord);
 
-                if (flagBound)
-                {
-                    subKey.SetValue(_nameFlagBound, _flagTrue, RegistryValueKind.DWord);
-                }
-                else
-                {
-                    subKey.SetValue(_nameFlagBound, _flagFalse, RegistryValueKind.DWord);
-                }
+                    if (flagBound)
+                        subKey.SetValue(_nameFlagBound, _flagTrue, RegistryValueKind.DWord);
+                    else
+                        subKey.SetValue(_nameFlagBound, _flagFalse, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameStyle, style, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameStyle, style, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameTypeface, typeface, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameTypeface, typeface, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameWeight, weight, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameWeight, weight, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameHeight, height * _sizeFactor, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameHeight, height * _sizeFactor, RegistryValueKind.DWord);
 
-                subKey.SetValue(_namePitch, pitch * _sizeFactor, RegistryValueKind.DWord);
+                    subKey.SetValue(_namePitch, pitch * _sizeFactor, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameIndxSymSet, indxSymSet, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameIndxSymSet, indxSymSet, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameSymSetNumber, symSetCustom, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameSymSetNumber, symSetCustom, RegistryValueKind.DWord);
 
-                if (symSetUserFile != null)
-                {
-                    subKey.SetValue(_nameSymSetUserFile, symSetUserFile, RegistryValueKind.String);
+                    if (symSetUserFile != null)
+                        subKey.SetValue(_nameSymSetUserFile, symSetUserFile, RegistryValueKind.String);
                 }
             }
         }
@@ -1203,25 +1146,26 @@ namespace PCLParaphernalia
                                                 ushort symSetCustom,
                                                 string symSetUserFile)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            const string key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCLXL + "\\" + _subKeyCustom;
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                if (fontName != null)
+                const string key = _subKeyTools +
+                                    "\\" + _subKeyToolsFontSample +
+                                    "\\" + _subKeyPCLXL +
+                                    "\\" + _subKeyCustom;
+
+                using (var subKey = keyMain.CreateSubKey(key))
                 {
-                    subKey.SetValue(_nameFontName, fontName, RegistryValueKind.String);
-                }
+                    if (fontName != null)
+                        subKey.SetValue(_nameFontName, fontName, RegistryValueKind.String);
 
-                subKey.SetValue(_nameHeight, height * _sizeFactor, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameHeight, height * _sizeFactor, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameIndxSymSet, indxSymSet, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameIndxSymSet, indxSymSet, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameSymSetNumber, symSetCustom, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameSymSetNumber, symSetCustom, RegistryValueKind.DWord);
 
-                if (symSetUserFile != null)
-                {
-                    subKey.SetValue(_nameSymSetUserFile, symSetUserFile, RegistryValueKind.String);
+                    if (symSetUserFile != null)
+                        subKey.SetValue(_nameSymSetUserFile, symSetUserFile, RegistryValueKind.String);
                 }
             }
         }
@@ -1242,35 +1186,31 @@ namespace PCLParaphernalia
                                                   ushort symSetCustom,
                                                   string symSetUserFile)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            const string key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCLXL + "\\" + _subKeyDownload;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                if (downloadFile != null)
+                const string key = _subKeyTools +
+                                    "\\" + _subKeyToolsFontSample +
+                                    "\\" + _subKeyPCLXL +
+                                    "\\" + _subKeyDownload;
+
+                using (var subKey = keyMain.CreateSubKey(key))
                 {
-                    subKey.SetValue(_nameDownloadFile, downloadFile, RegistryValueKind.String);
-                }
+                    if (downloadFile != null)
+                        subKey.SetValue(_nameDownloadFile, downloadFile, RegistryValueKind.String);
 
-                if (flagDownloadRemove)
-                {
-                    subKey.SetValue(_nameFlagDownloadRemove, _flagTrue, RegistryValueKind.DWord);
-                }
-                else
-                {
-                    subKey.SetValue(_nameFlagDownloadRemove, _flagFalse, RegistryValueKind.DWord);
-                }
+                    if (flagDownloadRemove)
+                        subKey.SetValue(_nameFlagDownloadRemove, _flagTrue, RegistryValueKind.DWord);
+                    else
+                        subKey.SetValue(_nameFlagDownloadRemove, _flagFalse, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameHeight, height * _sizeFactor, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameHeight, height * _sizeFactor, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameIndxSymSet, indxSymSet, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameIndxSymSet, indxSymSet, RegistryValueKind.DWord);
 
-                subKey.SetValue(_nameSymSetNumber, symSetCustom, RegistryValueKind.DWord);
+                    subKey.SetValue(_nameSymSetNumber, symSetCustom, RegistryValueKind.DWord);
 
-                if (symSetUserFile != null)
-                {
-                    subKey.SetValue(_nameSymSetUserFile, symSetUserFile, RegistryValueKind.String);
+                    if (symSetUserFile != null)
+                        subKey.SetValue(_nameSymSetUserFile, symSetUserFile, RegistryValueKind.String);
                 }
             }
         }
@@ -1291,25 +1231,27 @@ namespace PCLParaphernalia
                                                 ushort symSetCustom,
                                                 string symSetUserFile)
         {
-            RegistryKey keyMain = Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            const string key = _subKeyTools + "\\" + _subKeyToolsFontSample + "\\" + _subKeyPCLXL + "\\" + _subKeyPreset;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                subKey.SetValue(_nameIndxFont, indxFont, RegistryValueKind.DWord);
+                const string key = _subKeyTools +
+                                    "\\" + _subKeyToolsFontSample +
+                                    "\\" + _subKeyPCLXL +
+                                    "\\" + _subKeyPreset;
 
-                subKey.SetValue(_nameIndxVariant, (int)variant, RegistryValueKind.DWord);
-
-                subKey.SetValue(_nameHeight, height * _sizeFactor, RegistryValueKind.DWord);
-
-                subKey.SetValue(_nameIndxSymSet, indxSymSet, RegistryValueKind.DWord);
-
-                subKey.SetValue(_nameSymSetNumber, symSetCustom, RegistryValueKind.DWord);
-
-                if (symSetUserFile != null)
+                using (var subKey = keyMain.CreateSubKey(key))
                 {
-                    subKey.SetValue(_nameSymSetUserFile, symSetUserFile, RegistryValueKind.String);
+                    subKey.SetValue(_nameIndxFont, indxFont, RegistryValueKind.DWord);
+
+                    subKey.SetValue(_nameIndxVariant, (int)variant, RegistryValueKind.DWord);
+
+                    subKey.SetValue(_nameHeight, height * _sizeFactor, RegistryValueKind.DWord);
+
+                    subKey.SetValue(_nameIndxSymSet, indxSymSet, RegistryValueKind.DWord);
+
+                    subKey.SetValue(_nameSymSetNumber, symSetCustom, RegistryValueKind.DWord);
+
+                    if (symSetUserFile != null)
+                        subKey.SetValue(_nameSymSetUserFile, symSetUserFile, RegistryValueKind.String);
                 }
             }
         }

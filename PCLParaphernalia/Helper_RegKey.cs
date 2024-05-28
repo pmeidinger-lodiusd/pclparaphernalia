@@ -75,7 +75,7 @@ namespace PCLParaphernalia
 
         public static bool KeyExists(RegistryKey parentKeyName, string subKeyName)
         {
-            using (RegistryKey subKey = parentKeyName.OpenSubKey(subKeyName))
+            using (var subKey = parentKeyName.OpenSubKey(subKeyName))
             {
                 return subKey != null;
             }
