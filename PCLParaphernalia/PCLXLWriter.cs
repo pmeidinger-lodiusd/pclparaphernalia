@@ -756,12 +756,9 @@ namespace PCLParaphernalia
                                       bool embeddedStream,
                                       short charAngle)
         {
-            int lenBuf;
-
             int indBuf = 0;
 
-            lenBuf = cSizeAttrSint16 +
-                     cSizeOperator;
+            int lenBuf = cSizeAttrSint16 + cSizeOperator;
 
             byte[] buffer = new byte[lenBuf];
 
@@ -793,12 +790,9 @@ namespace PCLParaphernalia
                                      bool embeddedStream,
                                      float charBoldValue)
         {
-            int lenBuf;
-
             int indBuf = 0;
 
-            lenBuf = cSizeAttrReal32 +
-                     cSizeOperator;
+            int lenBuf = cSizeAttrReal32 + cSizeOperator;
 
             byte[] buffer = new byte[lenBuf];
 
@@ -831,12 +825,9 @@ namespace PCLParaphernalia
                                       float charScaleX,
                                       float charScaleY)
         {
-            int lenBuf;
-
             int indBuf = 0;
 
-            lenBuf = cSizeAttrReal32XY +
-                     cSizeOperator;
+            int lenBuf = cSizeAttrReal32XY + cSizeOperator;
 
             byte[] buffer = new byte[lenBuf];
 
@@ -870,12 +861,9 @@ namespace PCLParaphernalia
                                       float charShearX,
                                       float charShearY)
         {
-            int lenBuf;
-
             int indBuf = 0;
 
-            lenBuf = cSizeAttrReal32XY +
-                     cSizeOperator;
+            int lenBuf = cSizeAttrReal32XY + cSizeOperator;
 
             byte[] buffer = new byte[lenBuf];
 
@@ -953,18 +941,13 @@ namespace PCLParaphernalia
 
             byte[] buffer = new byte[lenBuf];
 
-            int indBuf,
-                  len;
-
-            float charSize;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             //----------------------------------------------------------------//
 
-            charSize = pointSize * _sessionUPI / _pointsPerInch;
+            float charSize = pointSize * _sessionUPI / _pointsPerInch;
 
-            len = fontName.Length;
+            int len = fontName.Length;
 
             if (len < lenHPFontName)
             {
@@ -1015,13 +998,11 @@ namespace PCLParaphernalia
                                           short fontNameLen,
                                           byte[] fontName)
         {
-            int lenBuf;
-
             int indBuf = 0;
 
-            lenBuf = cSizeAttrUbyteArrayBase +
-                     (cSizeAttrUbyteArrayUnit * fontNameLen) +
-                     cSizeOperator;
+            int lenBuf = cSizeAttrUbyteArrayBase +
+                         (cSizeAttrUbyteArrayUnit * fontNameLen) +
+                         cSizeOperator;
 
             byte[] buffer = new byte[lenBuf];
 
@@ -1053,11 +1034,9 @@ namespace PCLParaphernalia
         public static void FontCharEnd(BinaryWriter prnWriter,
                                         bool embeddedStream)
         {
-            int lenBuf;
-
             int indBuf = 0;
 
-            lenBuf = cSizeOperator;
+            int lenBuf = cSizeOperator;
 
             byte[] buffer = new byte[lenBuf];
 
@@ -1085,11 +1064,10 @@ namespace PCLParaphernalia
                                          ushort charCode,
                                          ushort charDataSize)
         {
-            int lenBuf;
-
             int indBuf = 0;
 
-            lenBuf = cSizeAttrUint16 + cSizeAttrUint16 + cSizeOperator;
+            int lenBuf = cSizeAttrUint16 + cSizeAttrUint16 + cSizeOperator;
+         
             byte[] buffer = new byte[lenBuf];
 
             //----------------------------------------------------------------//
@@ -1127,14 +1105,12 @@ namespace PCLParaphernalia
                                           byte[] fontName,
                                           byte fontFormat)
         {
-            int lenBuf;
-
             int indBuf = 0;
 
-            lenBuf = cSizeAttrUbyteArrayBase +
-                     (cSizeAttrUbyteArrayUnit * fontNameLen) +
-                     cSizeAttrUbyte +
-                     cSizeOperator;
+            int lenBuf = cSizeAttrUbyteArrayBase +
+                         (cSizeAttrUbyteArrayUnit * fontNameLen) +
+                         cSizeAttrUbyte +
+                         cSizeOperator;
 
             byte[] buffer = new byte[lenBuf];
 
@@ -1171,11 +1147,9 @@ namespace PCLParaphernalia
         public static void FontHddrEnd(BinaryWriter prnWriter,
                                         bool embeddedStream)
         {
-            int lenBuf;
-
             int indBuf = 0;
 
-            lenBuf = cSizeOperator;
+            int lenBuf = cSizeOperator;
 
             byte[] buffer = new byte[lenBuf];
 
@@ -1202,11 +1176,9 @@ namespace PCLParaphernalia
                                          bool embeddedStream,
                                          ushort hddrLen)
         {
-            int lenBuf;
-
             int indBuf = 0;
 
-            lenBuf = cSizeAttrUint16 + cSizeOperator;
+            int lenBuf = cSizeAttrUint16 + cSizeOperator;
 
             byte[] buffer = new byte[lenBuf];
 
@@ -1244,14 +1216,11 @@ namespace PCLParaphernalia
 
             byte[] buffer = new byte[lenBuf];
 
-            int indBuf,
-                  len;
-
-            indBuf = 0;
+            int indBuf = 0;
 
             //----------------------------------------------------------------//
 
-            len = fontName.Length;
+            int len = fontName.Length;
 
             if (len < lenHPFontName)
             {
@@ -1397,11 +1366,9 @@ namespace PCLParaphernalia
 
             byte[] buffer = new byte[lenBuf];
 
-            int indBuf,
-                  dataLen;
+            int indBuf = 0;
 
-            indBuf = 0;
-            dataLen = data.Length;
+            int dataLen = data.Length;
 
             AddAttrUint16(ref buffer,
                                        ref indBuf,
@@ -1467,11 +1434,9 @@ namespace PCLParaphernalia
 
             byte[] buffer = new byte[lenBuf];
 
-            int indBuf;
-
             bool flagSimplexJob = PCLPlexModes.IsSimplex(indxPlexMode);
 
-            indBuf = 0;
+            int indBuf = 0;
 
             if (indxOrientation < PCLOrientations.GetCount())
             {
@@ -1534,11 +1499,9 @@ namespace PCLParaphernalia
 
             if (!flagSimplexJob)
             {
-                bool flagLandscape =
-                    PCLOrientations.IsLandscape(indxOrientation);
+                bool flagLandscape = PCLOrientations.IsLandscape(indxOrientation);
 
-                byte binding = PCLPlexModes.GetIdPCLXL(indxPlexMode,
-                                                       flagLandscape);
+                byte binding = PCLPlexModes.GetIdPCLXL(indxPlexMode, flagLandscape);
 
                 AddAttrUbyte(
                     ref buffer,
@@ -1708,11 +1671,9 @@ namespace PCLParaphernalia
 
             byte[] buffer = new byte[lenBuf];
 
-            int indBuf,
-                  patLen;
+            int indBuf = 0;
 
-            indBuf = 0;
-            patLen = pattern.Length;
+            int patLen = pattern.Length;
 
             AddAttrUbyte(ref buffer,
                                      ref indBuf,
@@ -1854,11 +1815,9 @@ namespace PCLParaphernalia
 
             byte[] buffer = new byte[lenBuf];
 
-            int indBuf,
-                  patLen;
+            int indBuf = 0;
 
-            indBuf = 0;
-            patLen = pattern.Length;
+            int patLen = pattern.Length;
 
             //----------------------------------------------------------------//
 
@@ -1922,12 +1881,9 @@ namespace PCLParaphernalia
                                       ushort height,
                                       ushort width)
         {
-            int lenBuf;
-
             int indBuf = 0;
 
-            lenBuf = cSizeAttrUint16Box +
-                     cSizeOperator;
+            int lenBuf = cSizeAttrUint16Box + cSizeOperator;
 
             byte[] buffer = new byte[lenBuf];
 
@@ -1965,11 +1921,7 @@ namespace PCLParaphernalia
 
             byte[] bufStd = new byte[lenStd];
 
-            string seq;
-
-            int indStd;
-
-            seq = "\x1b" + "%-12345X";          // Universal Exit Language
+            string seq = "\x1b" + "%-12345X";       // Universal Exit Language
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
 
@@ -1985,7 +1937,7 @@ namespace PCLParaphernalia
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
 
-            indStd = 0;
+            int indStd = 0;
 
             AddAttrUbyte(ref bufStd,
                          ref indStd,
@@ -2307,22 +2259,17 @@ namespace PCLParaphernalia
 
             byte[] buffer = new byte[lenBuf];
 
-            int indBuf;
+            int indBuf = 0;
 
-            short textLen;
-
-            float scaleFactor,
-                   advance;
-
-            indBuf = 0;
-
-            scaleFactor = pointSize / cAdvanceTablePPI;
+            float scaleFactor = pointSize / cAdvanceTablePPI;
 
             //----------------------------------------------------------------//
 
-            textLen = (short)text.Length;
+            short textLen = (short)text.Length;
 
             short[] tmpAdvance = new short[textLen];
+
+            float advance;
 
             for (int i = 0; i < textLen; i++)
             {
@@ -2374,18 +2321,15 @@ namespace PCLParaphernalia
                                          float pointSize,
                                          string text)
         {
-            short textLen;
-
-            float scaleFactor,
-                   advance;
-
             short totalAdvance = 0;
 
-            scaleFactor = pointSize / cAdvanceTablePPI;
+            float scaleFactor = pointSize / cAdvanceTablePPI;
 
             //----------------------------------------------------------------//
 
-            textLen = (short)text.Length;
+            short textLen = (short)text.Length;
+
+            float advance;
 
             for (int i = 0; i < textLen; i++)
             {
@@ -2482,33 +2426,25 @@ namespace PCLParaphernalia
 
             byte[] buffer = new byte[lenBuf];
 
-            int indBuf;
+            int indBuf = 0;
 
-            short textLen;
-
-            float scaleFactor,
-                   advance;
-
-            double radians,
-                   tangent;
-
-            indBuf = 0;
-
-            scaleFactor = pointSize / cAdvanceTablePPI;
+            float scaleFactor = pointSize / cAdvanceTablePPI;
 
             // Calculate the tangent of specified angle (given in degrees).
             // If angle is positive, make tangent negative to cause Y decrement
             // If angle is negative, make tangent positive to cause Y increment
 
-            radians = angle * (Math.PI / 180);
-            tangent = -Math.Tan(radians);
+            double radians = angle * (Math.PI / 180);
+            double tangent = -Math.Tan(radians);
 
             //----------------------------------------------------------------//
 
-            textLen = (short)text.Length;
+            short textLen = (short)text.Length;
 
             short[] tmpAdvanceX = new short[textLen];
             short[] tmpAdvanceY = new short[textLen];
+
+            float advance;
 
             for (int i = 0; i < textLen; i++)
             {
