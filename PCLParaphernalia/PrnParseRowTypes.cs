@@ -148,175 +148,175 @@
 
                 switch (rowType)
                 {
-                    case PrnParseRowTypes.Type.MsgError:
+                    case Type.MsgError:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.StdClrs.Crimson;
                         indxClrMapFore[i] = (int)PrnParseConstants.StdClrs.Yellow;
 
                         break;
 
-                    case PrnParseRowTypes.Type.MsgWarning:
+                    case Type.MsgWarning:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.StdClrs.Red;
                         indxClrMapFore[i] = (int)PrnParseConstants.StdClrs.White;
 
                         break;
 
-                    case PrnParseRowTypes.Type.MsgComment:
+                    case Type.MsgComment:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.StdClrs.Bisque;
                         indxClrMapFore[i] = (int)PrnParseConstants.StdClrs.Blue;
 
                         break;
 
-                    case PrnParseRowTypes.Type.MsgDiag:
+                    case Type.MsgDiag:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.StdClrs.Fuchsia;
                         indxClrMapFore[i] = (int)PrnParseConstants.StdClrs.Yellow;
 
                         break;
 
-                    case PrnParseRowTypes.Type.DataBinary:
+                    case Type.DataBinary:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.StdClrs.Ivory;
                         indxClrMapFore[i] = (int)PrnParseConstants.StdClrs.SlateGray;
 
                         break;
 
-                    case PrnParseRowTypes.Type.DataText:
+                    case Type.DataText:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.StdClrs.Azure;
                         indxClrMapFore[i] = (int)PrnParseConstants.StdClrs.Black;
 
                         break;
 
-                    case PrnParseRowTypes.Type.PCLSeqComplex:
+                    case Type.PCLSeqComplex:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.StdClrs.LightYellow;
                         indxClrMapFore[i] = (int)PrnParseConstants.StdClrs.DarkBlue;
 
                         break;
 
-                    case PrnParseRowTypes.Type.PCLSeqSimple:
+                    case Type.PCLSeqSimple:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.StdClrs.LightYellow;
                         indxClrMapFore[i] = (int)PrnParseConstants.StdClrs.Blue;
 
                         break;
 
-                    case PrnParseRowTypes.Type.PCLControlCode:
+                    case Type.PCLControlCode:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.StdClrs.Honeydew;
                         indxClrMapFore[i] = (int)PrnParseConstants.StdClrs.Black;
 
                         break;
 
-                    case PrnParseRowTypes.Type.PCLDecode:
+                    case Type.PCLDecode:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.StdClrs.White;
                         indxClrMapFore[i] = (int)PrnParseConstants.StdClrs.Black;
 
                         break;
 
-                    case PrnParseRowTypes.Type.PCLFontHddr:
+                    case Type.PCLFontHddr:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.StdClrs.LightCyan;
                         indxClrMapFore[i] = (int)PrnParseConstants.StdClrs.BlueViolet;
 
                         break;
 
-                    case PrnParseRowTypes.Type.PCLFontChar:
+                    case Type.PCLFontChar:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.StdClrs.LightCyan;
                         indxClrMapFore[i] = (int)PrnParseConstants.StdClrs.DarkMagenta;
 
                         break;
 
-                    case PrnParseRowTypes.Type.HPGL2Command:
+                    case Type.HPGL2Command:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.StdClrs.LemonChiffon;
                         indxClrMapFore[i] = (int)PrnParseConstants.StdClrs.Teal;
 
                         break;
 
-                    case PrnParseRowTypes.Type.HPGL2ControlCode:
+                    case Type.HPGL2ControlCode:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.StdClrs.PaleGoldenrod;
                         indxClrMapFore[i] = (int)PrnParseConstants.StdClrs.Teal;
 
                         break;
 
-                    case PrnParseRowTypes.Type.PCLXLStreamHddr:
+                    case Type.PCLXLStreamHddr:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.StdClrs.LightGreen;
                         indxClrMapFore[i] = (int)PrnParseConstants.StdClrs.Blue;
 
                         break;
 
-                    case PrnParseRowTypes.Type.PCLXLWhiteSpace:
+                    case Type.PCLXLWhiteSpace:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.StdClrs.SeaShell;
                         indxClrMapFore[i] = (int)PrnParseConstants.StdClrs.Black;
 
                         break;
 
-                    case PrnParseRowTypes.Type.PCLXLOperator:
+                    case Type.PCLXLOperator:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.StdClrs.LightCyan;
                         indxClrMapFore[i] = (int)PrnParseConstants.StdClrs.Red;
 
                         break;
 
-                    case PrnParseRowTypes.Type.PCLXLAttribute:
+                    case Type.PCLXLAttribute:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.StdClrs.MistyRose;
                         indxClrMapFore[i] = (int)PrnParseConstants.StdClrs.Red;
 
                         break;
 
-                    case PrnParseRowTypes.Type.PCLXLDataType:
+                    case Type.PCLXLDataType:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.StdClrs.FloralWhite;
                         indxClrMapFore[i] = (int)PrnParseConstants.StdClrs.Teal;
 
                         break;
 
-                    case PrnParseRowTypes.Type.PCLXLDataValue:
+                    case Type.PCLXLDataValue:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.StdClrs.FloralWhite;
                         indxClrMapFore[i] = (int)PrnParseConstants.StdClrs.Blue;
 
                         break;
 
-                    case PrnParseRowTypes.Type.PCLXLFontHddr:
+                    case Type.PCLXLFontHddr:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.StdClrs.LightCyan;
                         indxClrMapFore[i] = (int)PrnParseConstants.StdClrs.Blue;
 
                         break;
 
-                    case PrnParseRowTypes.Type.PCLXLFontChar:
+                    case Type.PCLXLFontChar:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.StdClrs.LightCyan;
                         indxClrMapFore[i] = (int)PrnParseConstants.StdClrs.DarkMagenta;
 
                         break;
 
-                    case PrnParseRowTypes.Type.PJLCommand:
+                    case Type.PJLCommand:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.StdClrs.Khaki;
                         indxClrMapFore[i] = (int)PrnParseConstants.StdClrs.Black;
 
                         break;
 
-                    case PrnParseRowTypes.Type.PMLSeq:
+                    case Type.PMLSeq:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.StdClrs.Lavender;
                         indxClrMapFore[i] = (int)PrnParseConstants.StdClrs.Blue;
 
                         break;
 
-                    case PrnParseRowTypes.Type.PrescribeCommand:
+                    case Type.PrescribeCommand:
 
                         indxClrMapBack[i] = (int)PrnParseConstants.StdClrs.PeachPuff;
                         indxClrMapFore[i] = (int)PrnParseConstants.StdClrs.Teal;

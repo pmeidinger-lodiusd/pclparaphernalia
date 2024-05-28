@@ -1317,36 +1317,36 @@ namespace PCLParaphernalia
 
             int indBuf = 0;
 
-            PCLXLWriter.AddAttrUbyte(ref buffer,
+            AddAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.Tag.ColorMapping,
                                      (byte)colorMapping);
 
-            PCLXLWriter.AddAttrUbyte(ref buffer,
+            AddAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.Tag.ColorDepth,
                                      (byte)colorDepth);
 
-            PCLXLWriter.AddAttrUint16(ref buffer,
+            AddAttrUint16(ref buffer,
                                       ref indBuf,
                                       PCLXLAttributes.Tag.SourceWidth,
                                       srcWidth);
 
-            PCLXLWriter.AddAttrUint16(ref buffer,
+            AddAttrUint16(ref buffer,
                                       ref indBuf,
                                       PCLXLAttributes.Tag.SourceHeight,
                                       srcHeight);
 
-            PCLXLWriter.AddAttrUint16XY(ref buffer,
+            AddAttrUint16XY(ref buffer,
                                         ref indBuf,
                                         PCLXLAttributes.Tag.DestinationSize,
                                         destWidth, destHeight);
 
-            PCLXLWriter.AddOperator(ref buffer,
+            AddOperator(ref buffer,
                                     ref indBuf,
                                     PCLXLOperators.Tag.BeginImage);
 
-            PCLXLWriter.WriteStreamBlock(prnWriter, embeddedStream,
+            WriteStreamBlock(prnWriter, embeddedStream,
                                          buffer, ref indBuf);
         }
 
@@ -1368,11 +1368,11 @@ namespace PCLParaphernalia
 
             int indBuf = 0;
 
-            PCLXLWriter.AddOperator(ref buffer,
+            AddOperator(ref buffer,
                                     ref indBuf,
                                     PCLXLOperators.Tag.EndImage);
 
-            PCLXLWriter.WriteStreamBlock(prnWriter, embeddedStream,
+            WriteStreamBlock(prnWriter, embeddedStream,
                                          buffer, ref indBuf);
         }
 
@@ -1403,45 +1403,45 @@ namespace PCLParaphernalia
             indBuf = 0;
             dataLen = data.Length;
 
-            PCLXLWriter.AddAttrUint16(ref buffer,
+            AddAttrUint16(ref buffer,
                                        ref indBuf,
                                        PCLXLAttributes.Tag.StartLine,
                                        startLine);
 
-            PCLXLWriter.AddAttrUint16(ref buffer,
+            AddAttrUint16(ref buffer,
                                        ref indBuf,
                                        PCLXLAttributes.Tag.BlockHeight,
                                        blockHeight);
 
-            PCLXLWriter.AddAttrUbyte(ref buffer,
+            AddAttrUbyte(ref buffer,
                                       ref indBuf,
                                       PCLXLAttributes.Tag.CompressMode,
                                       (byte)compressMode);
 
-            PCLXLWriter.AddAttrUbyte(ref buffer,
+            AddAttrUbyte(ref buffer,
                                       ref indBuf,
                                       PCLXLAttributes.Tag.PadBytesMultiple,
                                       1);
 
-            PCLXLWriter.AddAttrUint32(ref buffer,
+            AddAttrUint32(ref buffer,
                                        ref indBuf,
                                        PCLXLAttributes.Tag.BlockByteLength,
                                        (ushort)dataLen);
 
-            PCLXLWriter.AddOperator(ref buffer,
+            AddOperator(ref buffer,
                                      ref indBuf,
                                      PCLXLOperators.Tag.ReadImage);
 
             //----------------------------------------------------------------//
 
-            PCLXLWriter.AddEmbedDataIntro(ref buffer,
+            AddEmbedDataIntro(ref buffer,
                                           ref indBuf,
                                           dataLen);
 
-            PCLXLWriter.WriteStreamBlock(prnWriter, embeddedStream,
+            WriteStreamBlock(prnWriter, embeddedStream,
                                          buffer, ref indBuf);
 
-            PCLXLWriter.WriteStreamBlock(prnWriter, embeddedStream,
+            WriteStreamBlock(prnWriter, embeddedStream,
                                           data, ref dataLen);
         }
 
@@ -1475,7 +1475,7 @@ namespace PCLParaphernalia
 
             if (indxOrientation < PCLOrientations.GetCount())
             {
-                PCLXLWriter.AddAttrUbyte(
+                AddAttrUbyte(
                     ref buffer,
                     ref indBuf,
                     PCLXLAttributes.Tag.Orientation,
@@ -1484,7 +1484,7 @@ namespace PCLParaphernalia
 
             if (indxPaperSize < PCLPaperSizes.GetCount())
             {
-                PCLXLWriter.AddAttrUbyte(
+                AddAttrUbyte(
                     ref buffer,
                     ref indBuf,
                     PCLXLAttributes.Tag.MediaSize,
@@ -1495,14 +1495,14 @@ namespace PCLParaphernalia
             {
                 if (indxPaperTray < 256)
                 {
-                    PCLXLWriter.AddAttrUbyte(ref buffer,
+                    AddAttrUbyte(ref buffer,
                                        ref indBuf,
                                        PCLXLAttributes.Tag.MediaSource,
                                        (byte)indxPaperTray);
                 }
                 else
                 {
-                    PCLXLWriter.AddAttrUint16(ref buffer,
+                    AddAttrUint16(ref buffer,
                                        ref indBuf,
                                        PCLXLAttributes.Tag.MediaSource,
                                        (ushort)indxPaperTray);
@@ -1515,7 +1515,7 @@ namespace PCLParaphernalia
                     (PCLPaperTypes.GetType(indxPaperType) !=
                         PCLPaperTypes.EntryType.NotSet))
                 {
-                    PCLXLWriter.AddAttrUbyteArray(
+                    AddAttrUbyteArray(
                         ref buffer,
                         ref indBuf,
                         PCLXLAttributes.Tag.MediaType,
@@ -1524,7 +1524,7 @@ namespace PCLParaphernalia
 
                 if (flagSimplexJob)
                 {
-                    PCLXLWriter.AddAttrUbyte(
+                    AddAttrUbyte(
                         ref buffer,
                         ref indBuf,
                         PCLXLAttributes.Tag.SimplexPageMode,
@@ -1540,7 +1540,7 @@ namespace PCLParaphernalia
                 byte binding = PCLPlexModes.GetIdPCLXL(indxPlexMode,
                                                        flagLandscape);
 
-                PCLXLWriter.AddAttrUbyte(
+                AddAttrUbyte(
                     ref buffer,
                     ref indBuf,
                     PCLXLAttributes.Tag.DuplexPageMode,
@@ -1548,7 +1548,7 @@ namespace PCLParaphernalia
 
                 if (flagFrontFace)
                 {
-                    PCLXLWriter.AddAttrUbyte(
+                    AddAttrUbyte(
                         ref buffer,
                         ref indBuf,
                         PCLXLAttributes.Tag.DuplexPageSide,
@@ -1556,7 +1556,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    PCLXLWriter.AddAttrUbyte(
+                    AddAttrUbyte(
                         ref buffer,
                         ref indBuf,
                         PCLXLAttributes.Tag.DuplexPageSide,
@@ -1564,16 +1564,16 @@ namespace PCLParaphernalia
                 }
             }
 
-            PCLXLWriter.AddOperator(ref buffer,
+            AddOperator(ref buffer,
                                     ref indBuf,
                                     PCLXLOperators.Tag.BeginPage);
 
-            PCLXLWriter.AddAttrUint16XY(ref buffer,
+            AddAttrUint16XY(ref buffer,
                                         ref indBuf,
                                         PCLXLAttributes.Tag.PageOrigin,
                                         0, 0);
 
-            PCLXLWriter.AddOperator(ref buffer,
+            AddOperator(ref buffer,
                                     ref indBuf,
                                     PCLXLOperators.Tag.SetPageOrigin);
 
@@ -1637,46 +1637,46 @@ namespace PCLParaphernalia
 
             int indBuf = 0;
 
-            PCLXLWriter.AddAttrUbyte(ref buffer,
+            AddAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.Tag.ColorMapping,
                                      (byte)colorMapping);
 
-            PCLXLWriter.AddAttrUbyte(ref buffer,
+            AddAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.Tag.ColorDepth,
                                      (byte)colorDepth);
 
-            PCLXLWriter.AddAttrUint16(ref buffer,
+            AddAttrUint16(ref buffer,
                                       ref indBuf,
                                       PCLXLAttributes.Tag.SourceWidth,
                                       patWidth);
 
-            PCLXLWriter.AddAttrUint16(ref buffer,
+            AddAttrUint16(ref buffer,
                                       ref indBuf,
                                       PCLXLAttributes.Tag.SourceHeight,
                                       patHeight);
 
-            PCLXLWriter.AddAttrUint16XY(ref buffer,
+            AddAttrUint16XY(ref buffer,
                                         ref indBuf,
                                         PCLXLAttributes.Tag.DestinationSize,
                                         destWidth, destHeight);
 
-            PCLXLWriter.AddAttrSint16(ref buffer,
+            AddAttrSint16(ref buffer,
                                       ref indBuf,
                                       PCLXLAttributes.Tag.PatternDefineID,
                                       patternID);
 
-            PCLXLWriter.AddAttrUbyte(ref buffer,
+            AddAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.Tag.PatternPersistence,
                                      (byte)persistence);
 
-            PCLXLWriter.AddOperator(ref buffer,
+            AddOperator(ref buffer,
                                     ref indBuf,
                                     PCLXLOperators.Tag.BeginRastPattern);
 
-            PCLXLWriter.WriteStreamBlock(prnWriter, embeddedStream,
+            WriteStreamBlock(prnWriter, embeddedStream,
                                          buffer, ref indBuf);
         }
 
@@ -1714,95 +1714,95 @@ namespace PCLParaphernalia
             indBuf = 0;
             patLen = pattern.Length;
 
-            PCLXLWriter.AddAttrUbyte(ref buffer,
+            AddAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.Tag.ColorMapping,
                                      (byte)colorMapping);
 
-            PCLXLWriter.AddAttrUbyte(ref buffer,
+            AddAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.Tag.ColorDepth,
                                      (byte)colorDepth);
 
-            PCLXLWriter.AddAttrUint16(ref buffer,
+            AddAttrUint16(ref buffer,
                                       ref indBuf,
                                       PCLXLAttributes.Tag.SourceWidth,
                                       patWidth);
 
-            PCLXLWriter.AddAttrUint16(ref buffer,
+            AddAttrUint16(ref buffer,
                                       ref indBuf,
                                       PCLXLAttributes.Tag.SourceHeight,
                                       patHeight);
 
-            PCLXLWriter.AddAttrUint16XY(ref buffer,
+            AddAttrUint16XY(ref buffer,
                                         ref indBuf,
                                         PCLXLAttributes.Tag.DestinationSize,
                                         destWidth, destHeight);
 
-            PCLXLWriter.AddAttrSint16(ref buffer,
+            AddAttrSint16(ref buffer,
                                       ref indBuf,
                                       PCLXLAttributes.Tag.PatternDefineID,
                                       patternID);
 
-            PCLXLWriter.AddAttrUbyte(ref buffer,
+            AddAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.Tag.PatternPersistence,
                                      (byte)persistence);
 
-            PCLXLWriter.AddOperator(ref buffer,
+            AddOperator(ref buffer,
                                     ref indBuf,
                                     PCLXLOperators.Tag.BeginRastPattern);
 
             //----------------------------------------------------------------//
 
-            PCLXLWriter.AddAttrUint16(ref buffer,
+            AddAttrUint16(ref buffer,
                                       ref indBuf,
                                       PCLXLAttributes.Tag.StartLine,
                                       0);
 
-            PCLXLWriter.AddAttrUint16(ref buffer,
+            AddAttrUint16(ref buffer,
                                       ref indBuf,
                                       PCLXLAttributes.Tag.BlockHeight,
                                       patHeight);
 
-            PCLXLWriter.AddAttrUbyte(ref buffer,
+            AddAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.Tag.CompressMode,
                                      (byte)compressMode);
 
-            PCLXLWriter.AddAttrUbyte(ref buffer,
+            AddAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.Tag.PadBytesMultiple,
                                      1);
 
-            PCLXLWriter.AddAttrUint32(ref buffer,
+            AddAttrUint32(ref buffer,
                                        ref indBuf,
                                        PCLXLAttributes.Tag.BlockByteLength,
                                        (ushort)patLen);
 
-            PCLXLWriter.AddOperator(ref buffer,
+            AddOperator(ref buffer,
                                     ref indBuf,
                                     PCLXLOperators.Tag.ReadRastPattern);
 
             //----------------------------------------------------------------//
 
-            PCLXLWriter.AddEmbedDataIntro(ref buffer,
+            AddEmbedDataIntro(ref buffer,
                                           ref indBuf,
                                           patLen);
 
-            PCLXLWriter.WriteStreamBlock(prnWriter, embeddedStream,
+            WriteStreamBlock(prnWriter, embeddedStream,
                                          buffer, ref indBuf);
 
-            PCLXLWriter.WriteStreamBlock(prnWriter, embeddedStream,
+            WriteStreamBlock(prnWriter, embeddedStream,
                                           pattern, ref patLen);
 
             //----------------------------------------------------------------//
 
-            PCLXLWriter.AddOperator(ref buffer,
+            AddOperator(ref buffer,
                                     ref indBuf,
                                     PCLXLOperators.Tag.EndRastPattern);
 
-            PCLXLWriter.WriteStreamBlock(prnWriter, embeddedStream,
+            WriteStreamBlock(prnWriter, embeddedStream,
                                          buffer, ref indBuf);
         }
 
@@ -1826,11 +1826,11 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            PCLXLWriter.AddOperator(ref buffer,
+            AddOperator(ref buffer,
                                     ref indBuf,
                                     PCLXLOperators.Tag.EndRastPattern);
 
-            PCLXLWriter.WriteStreamBlock(prnWriter, embeddedStream,
+            WriteStreamBlock(prnWriter, embeddedStream,
                                          buffer, ref indBuf);
         }
 
@@ -1862,45 +1862,45 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            PCLXLWriter.AddAttrUint16(ref buffer,
+            AddAttrUint16(ref buffer,
                                       ref indBuf,
                                       PCLXLAttributes.Tag.StartLine,
                                       startLine);
 
-            PCLXLWriter.AddAttrUint16(ref buffer,
+            AddAttrUint16(ref buffer,
                                       ref indBuf,
                                       PCLXLAttributes.Tag.BlockHeight,
                                       blockHeight);
 
-            PCLXLWriter.AddAttrUbyte(ref buffer,
+            AddAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.Tag.CompressMode,
                                      (byte)compressMode);
 
-            PCLXLWriter.AddAttrUbyte(ref buffer,
+            AddAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.Tag.PadBytesMultiple,
                                      1);
 
-            PCLXLWriter.AddAttrUint32(ref buffer,
+            AddAttrUint32(ref buffer,
                                        ref indBuf,
                                        PCLXLAttributes.Tag.BlockByteLength,
                                        (ushort)patLen);
 
-            PCLXLWriter.AddOperator(ref buffer,
+            AddOperator(ref buffer,
                                     ref indBuf,
                                     PCLXLOperators.Tag.ReadRastPattern);
 
             //----------------------------------------------------------------//
 
-            PCLXLWriter.AddEmbedDataIntro(ref buffer,
+            AddEmbedDataIntro(ref buffer,
                                           ref indBuf,
                                           patLen);
 
-            PCLXLWriter.WriteStreamBlock(prnWriter, embeddedStream,
+            WriteStreamBlock(prnWriter, embeddedStream,
                                          buffer, ref indBuf);
 
-            PCLXLWriter.WriteStreamBlock(prnWriter, embeddedStream,
+            WriteStreamBlock(prnWriter, embeddedStream,
                                           pattern, ref patLen);
         }
 
@@ -2158,12 +2158,12 @@ namespace PCLParaphernalia
 
             int indBuf = 0;
 
-            PCLXLWriter.AddAttrUbyteArray(ref buffer,
+            AddAttrUbyteArray(ref buffer,
                                           ref indBuf,
                                           PCLXLAttributes.Tag.StreamName,
                                           streamName);
 
-            PCLXLWriter.AddOperator(ref buffer,
+            AddOperator(ref buffer,
                                     ref indBuf,
                                     PCLXLOperators.Tag.ExecStream);
 

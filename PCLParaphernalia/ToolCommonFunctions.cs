@@ -25,7 +25,7 @@ namespace PCLParaphernalia
             string folderName = null;
             string fileName = null;
 
-            ToolCommonFunctions.SplitPathName(initialPath, ref folderName, ref fileName);
+            SplitPathName(initialPath, ref folderName, ref fileName);
 
             return new OpenFileDialog
             {
@@ -49,7 +49,7 @@ namespace PCLParaphernalia
             string folderName = null;
             string fileName = null;
 
-            ToolCommonFunctions.SplitPathName(initialPath, ref folderName, ref fileName);
+            SplitPathName(initialPath, ref folderName, ref fileName);
 
             return new SaveFileDialog
             {

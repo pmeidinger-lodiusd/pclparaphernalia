@@ -477,7 +477,7 @@ namespace PCLParaphernalia
 
             TargetCore.ResponseCloseConnection();
 
-            return System.Text.Encoding.ASCII.GetString(replyData, 0, replyLen);
+            return Encoding.ASCII.GetString(replyData, 0, replyLen);
         }
 
         //--------------------------------------------------------------------//

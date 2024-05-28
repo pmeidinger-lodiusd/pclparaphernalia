@@ -1234,7 +1234,7 @@ namespace PCLParaphernalia
             }
             catch
             {
-                byte[] bytes = System.Text.Encoding.UTF8.GetBytes(txtVal);
+                byte[] bytes = Encoding.UTF8.GetBytes(txtVal);
 
                 string base64 = Convert.ToBase64String(bytes);
 
