@@ -1293,8 +1293,8 @@ namespace PCLParaphernalia
             {
                 flagOK = false;
 
-                MessageBox.Show("Header segment length of '" + segDataLen + "' is incompatible with 'format 15' font.",
-                                 "Soft font header invalid",
+                MessageBox.Show($"Header segment length of '{segDataLen}' is incompatible with 'format 15' font.",
+                                 "Soft Font Header Invalid",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
             }

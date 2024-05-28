@@ -201,7 +201,7 @@ namespace PCLParaphernalia
 
         private static bool MacroFileOpen(string fileName, ref long fileSize)
         {
-            if ((fileName == null) || (fileName?.Length == 0))
+            if (string.IsNullOrEmpty(fileName))
             {
                 MessageBox.Show("Download macro file name is null.",
                                 "PCL macro file name invalid",
@@ -213,7 +213,7 @@ namespace PCLParaphernalia
             
             if (!File.Exists(fileName))
             {
-                MessageBox.Show("Download macro file '" + fileName + "' does not exist.",
+                MessageBox.Show($"Download macro file '{fileName}' does not exist.",
                                 "PCL macro file name invalid",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
@@ -227,10 +227,7 @@ namespace PCLParaphernalia
             }
             catch (IOException e)
             {
-                MessageBox.Show("IO Exception:\r\n" +
-                                    e.Message + "\r\n" +
-                                    "Opening file '" +
-                                    fileName + "'",
+                MessageBox.Show($"IO Exception:\r\n{e.Message}\r\n\r\nOpening file '{fileName}'.",
                                     "PCL macro file analysis",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);

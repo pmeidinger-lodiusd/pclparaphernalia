@@ -904,7 +904,7 @@ namespace PCLParaphernalia
             }
 
             MessageBox.Show(setBtns.ToString(),
-                            "Set buttons",
+                            "Set Buttons",
                             MessageBoxButton.OK,
                             MessageBoxImage.Error);
         }

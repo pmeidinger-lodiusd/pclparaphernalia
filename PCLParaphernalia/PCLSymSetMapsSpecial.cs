@@ -86,8 +86,8 @@ namespace PCLParaphernalia
 
         private static void UnicodeMapMissing()
         {
-            MessageBox.Show("missing map array",
-                             "internal error",
+            MessageBox.Show("Missing map array.",
+                             "Internal Error",
                              MessageBoxButton.OK,
                              MessageBoxImage.Error);
         }

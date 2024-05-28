@@ -784,24 +784,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FontFileOpen(string filename, ref long fileSize)
+        public bool FontFileOpen(string fileName, ref long fileSize)
         {
-            _filenameTTF = filename;
+            _filenameTTF = fileName;
 
-            if ((filename == null) || (filename?.Length == 0))
+            if (string.IsNullOrEmpty(fileName))
             {
                 MessageBox.Show("Font file name is null.",
-                                "Source (TrueType) font file selection",
+                                "Source (TrueType) Font File Selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
                 return false;
             }
             
-            if (!File.Exists(filename))
+            if (!File.Exists(fileName))
             {
-                MessageBox.Show("Font file '" + filename + "' does not exist.",
-                                "Source (TrueType) font file selection",
+                MessageBox.Show($"Font file '{fileName}' does not exist.",
+                                "Source (TrueType) Font File Selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
                 
@@ -810,12 +810,12 @@ namespace PCLParaphernalia
 
             try
             {
-                _ipStream = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.None);
+                _ipStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.None);
 
             }
             catch
             {
-                ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, "Error opening font file " + filename);
+                ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, "Error opening font file " + fileName);
 
                 return false;
             }
@@ -823,7 +823,7 @@ namespace PCLParaphernalia
             if (_ipStream == null)
                 return false;
 
-            FileInfo fi = new FileInfo(filename);
+            FileInfo fi = new FileInfo(fileName);
 
             fileSize = fi.Length;
 
@@ -1399,7 +1399,7 @@ namespace PCLParaphernalia
                                 text_OS_2_panose + "\r\n" +
                                 text_post + "\r\n\r\n" +
                                 "Generate PCL font as fixed-pitch?",
-                                "Monospacing inconsistency",
+                                "Monospacing Inconsistency",
                                 MessageBoxButton.YesNo,
                                 MessageBoxImage.Question);
 

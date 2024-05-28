@@ -2670,8 +2670,8 @@ namespace PCLParaphernalia
             }
             else
             {
-                MessageBox.Show ("Value '" + crntText + "' is invalid.\n\n" +
-                                 "Valid range is :\n\t" +
+                MessageBox.Show ("Value '" + crntText + "' is invalid.\r\n" +
+                                 "Valid range is :\r\n\t" +
                                  minVal + " <= value <= " + maxVal + "\n" +
                                  "(excluding " + excVal + ")",
                                  "Character set substitute character code",
@@ -2718,10 +2718,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                MessageBox.Show("Value '" + crntText + "' is invalid.\n\n" +
-                                 "Valid range is :\n\t" +
-                                 0 + " <= value <= " + _fileSize + "\n" +
-                                 "(and > Start value " + _valCurFOffsetStart + ")",
+                MessageBox.Show($"Value '{crntText}' is invalid.\r\nValid range is :\r\n\t{0} <= value <= {_fileSize}\n(and > Start value {_valCurFOffsetStart})",
                                  "Offset End Point",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
@@ -2765,9 +2762,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                MessageBox.Show("Value '" + crntText + "' is invalid.\n\n" +
-                                 "Valid range is :\n\t" +
-                                 0 + " <= value <= " + _fileSize,
+                MessageBox.Show($"Value '{crntText}' is invalid.\r\nValid range is :\r\n\t{0} <= value <= {_fileSize}",
                                  "Offset Start Point",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);

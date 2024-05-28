@@ -859,12 +859,10 @@ namespace PCLParaphernalia
 
         private void DisplayPCLSeqs()
         {
-            if ((!_flagPCLSeqSimple) &&
-                (!_flagPCLSeqComplex) &&
-                (!_flagPCLSeqControl))
+            if (!_flagPCLSeqSimple && !_flagPCLSeqComplex && !_flagPCLSeqControl)
             {
-                MessageBox.Show("At least one sequence type must be selected",
-                                "PCL sequence type selection",
+                MessageBox.Show("At least one sequence type must be selected.",
+                                "PCL Sequence Type Selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
             }
@@ -920,15 +918,15 @@ namespace PCLParaphernalia
 
         private void DisplayPCLXLTags()
         {
-            if ((!_flagPCLXLTagDataType) &&
-                (!_flagPCLXLTagAttribute) &&
-                (!_flagPCLXLTagOperator) &&
-                (!_flagPCLXLTagWhitespace) &&
-                (!_flagPCLXLTagAttrDef) &&
-                (!_flagPCLXLTagEmbedDataLen))
+            if (!_flagPCLXLTagDataType &&
+                !_flagPCLXLTagAttribute &&
+                !_flagPCLXLTagOperator &&
+                !_flagPCLXLTagWhitespace &&
+                !_flagPCLXLTagAttrDef &&
+                !_flagPCLXLTagEmbedDataLen)
             {
-                MessageBox.Show("At least one tag type must be selected",
-                                "PCL XL tag type selection",
+                MessageBox.Show("At least one tag type must be selected.",
+                                "PCL XL Tag Type Selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
             }
@@ -993,12 +991,10 @@ namespace PCLParaphernalia
 
         private void DisplayPMLTags()
         {
-            if ((!_flagPMLTagDataType) &&
-                (!_flagPMLTagAction) &&
-                (!_flagPMLTagOutcome))
+            if (!_flagPMLTagDataType && !_flagPMLTagAction && !_flagPMLTagOutcome)
             {
-                MessageBox.Show("At least one tag type must be selected",
-                                "PML tag type selection",
+                MessageBox.Show("At least one tag type must be selected.",
+                                "PML Tag Type Selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
             }

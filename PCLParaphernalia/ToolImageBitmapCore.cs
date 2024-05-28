@@ -172,22 +172,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool BitmapOpen(string filename)
+        public static bool BitmapOpen(string fileName)
         {
-            if ((filename == null) || (filename?.Length == 0))
+            if (string.IsNullOrEmpty(fileName))
             {
                 MessageBox.Show("Bitmap file name is null.",
-                                "Bitmap file selection",
+                                "Bitmap File Selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
                 return false;
             }
             
-            if (!File.Exists(filename))
+            if (!File.Exists(fileName))
             {
-                MessageBox.Show("Bitmap file '" + filename + "' does not exist.",
-                                "Bitmap file selection",
+                MessageBox.Show($"Bitmap file '{fileName}' does not exist.",
+                                "Bitmap File Selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
@@ -196,14 +196,12 @@ namespace PCLParaphernalia
 
             try
             {
-                _ipStream = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.None);
+                _ipStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.None);
             }
             catch (IOException e)
             {
-                MessageBox.Show("IO Exception:\r\n" +
-                                e.Message + "\r\n" +
-                                "Opening file '" + filename + "'",
-                                "Bitmap file selection",
+                MessageBox.Show($"IO Exception:\r\n{e.Message}\r\nOpening file '{fileName}'.",
+                                "Bitmap File Selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
@@ -309,7 +307,6 @@ namespace PCLParaphernalia
         {
             const int result = 0;
 
-            uint temp;
             byte[] id = new byte[2];
 
             _binReader.Read(id, 0, 2);
@@ -317,7 +314,7 @@ namespace PCLParaphernalia
             if ((id[0] != 'B') || (id[1] != 'M'))
             {
                 MessageBox.Show("Only type BM files supported",
-                                "Bitmap file",
+                                "Bitmap File",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Exclamation);
                 return -1;
@@ -325,7 +322,7 @@ namespace PCLParaphernalia
 
             _fileHeader.fileSize = ReadUInt32LE();
 
-            temp = ReadUInt32LE();
+            uint temp = ReadUInt32LE();
 
             _fileHeader.dataOffset = ReadUInt32LE();
 
@@ -352,8 +349,8 @@ namespace PCLParaphernalia
 
             if (_infoHeader.infoSize != 40)
             {
-                MessageBox.Show("Only Windows V3 files supported",
-                                "Bitmap file",
+                MessageBox.Show("Only Windows V3 files supported.",
+                                "Bitmap File",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Exclamation);
                 return -1;

@@ -316,8 +316,8 @@ namespace PCLParaphernalia
             }
             else
             {
-                MessageBox.Show("Source print file appears to be a '" + scanPDL.ToString() + "' printfile.\n\nThis tool does not support the generation of an overlay from such a print file.",
-                                "Page Description Language not supported",
+                MessageBox.Show($"Source print file appears to be a '{scanPDL}' printfile.\r\nThis tool does not support the generation of an overlay from such a print file.",
+                                "Page Description Language Not Supported",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Warning);
             }
@@ -929,8 +929,8 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show("Macro identifier '" + crntText + "' is invalid.\n\nValue will be reset to default '" + newText + "'",
-                                    "PCL macro identifier invalid",
+                    MessageBox.Show($"Macro identifier '{crntText}' is invalid.\r\nValue will be reset to default '{newText}'.",
+                                    "PCL Macro Identifier Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
 
@@ -940,8 +940,8 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show("Macro identifier '" + crntText + "' is invalid.\n\nValid range is :\n\t" + minVal + " <= value <= " + maxVal,
-                                    "PCL macro identifier invalid",
+                    MessageBox.Show($"Macro identifier '{crntText}' is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal}.",
+                                    "PCL Macro Identifier Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 

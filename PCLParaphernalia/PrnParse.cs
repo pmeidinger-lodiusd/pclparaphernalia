@@ -675,11 +675,8 @@ namespace PCLParaphernalia
 
             if (invalidSeqFound)
             {
-                MessageBox.Show("Invalid sequence(s) detected during " +
-                                 "level " + _analysisLevel + " analysis.\r\n" +
-                                 "File " + _prnFilename + "\r\n" +
-                                 "Size " + _fileSize + " bytes.",
-                                 "Information",
+                MessageBox.Show($"Invalid sequence(s) detected during level {_analysisLevel} analysis.\r\nFile {_prnFilename}\r\nSize {_fileSize} bytes.",
+                                 "Invalid Sequence(s)",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
             }
@@ -1058,11 +1055,8 @@ namespace PCLParaphernalia
                         string.Empty,
                         _subFilename);
 
-                    MessageBox.Show("IO Exception:\r\n" +
-                                     e.Message + "\r\n" +
-                                     "Creating temporary file '" +
-                                     _subFilename + "'",
-                                     "Embedded data store",
+                    MessageBox.Show($"IO Exception:\r\n{e.Message}\r\n\r\nCreating temporary file '{_subFilename}'.",
+                                     "Embedded Data Store",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
 
@@ -1224,11 +1218,8 @@ namespace PCLParaphernalia
                 }
                 catch (IOException e)
                 {
-                    MessageBox.Show("IO Exception:\r\n" +
-                                     e.Message + "\r\n" +
-                                     "Deleting temporary file '" +
-                                     _subFilename + "'",
-                                     "Embedded PCL XL analysis",
+                    MessageBox.Show($"IO Exception:\r\n{e.Message}\r\n\r\nDeleting temporary file '{_subFilename}'.",
+                                     "Embedded PCL XL Analysis",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
                 }
@@ -1547,11 +1538,8 @@ namespace PCLParaphernalia
                     string.Empty,
                     tmpFilename);
 
-                MessageBox.Show("IO Exception:\r\n" +
-                                 e.Message + "\r\n" +
-                                 "Creating temporary file '" +
-                                 tmpFilename + "'",
-                                 "Open overlay file",
+                MessageBox.Show($"IO Exception:\r\n{e.Message}\r\n\r\nCreating temporary file '{tmpFilename}'.",
+                                 "Open Overlay File",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
 
@@ -1606,10 +1594,8 @@ namespace PCLParaphernalia
             }
             catch (IOException e)
             {
-                MessageBox.Show("IO Exception:\r\n" +
-                                 e.Message + "\r\n" +
-                                 "Closing file",
-                                 "input stream/file close",
+                MessageBox.Show($"IO Exception:\r\n{e.Message}\r\n\r\nClosing file.",
+                                 "Input Stream/File Close",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
             }
@@ -1645,22 +1631,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool PrnFileOpen(string filename, ref long fileSize)
+        private bool PrnFileOpen(string fileName, ref long fileSize)
         {
-            if ((filename == null) || (filename?.Length == 0))
+            if (string.IsNullOrEmpty(fileName))
             {
                 MessageBox.Show("Print file name is null.",
-                                "Print file selection",
+                                "Print File Selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
                 return false;
             }
             
-            if (!File.Exists(filename))
+            if (!File.Exists(fileName))
             {
-                MessageBox.Show("Print file '" + filename + "' does not exist.",
-                                "Print file selection",
+                MessageBox.Show($"Print file '{fileName}' does not exist.",
+                                "Print File Selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
@@ -1669,17 +1655,14 @@ namespace PCLParaphernalia
 
             try
             {
-                _ipStream = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.None);
+                _ipStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.None);
             }
             catch (IOException e)
             {
-                MessageBox.Show("IO Exception:\r\n" +
-                                    e.Message +
-                                    "Opening print file '" +
-                                    filename + "'",
-                                    "Print file selection",
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Error);
+                MessageBox.Show($"IO Exception:\r\n{e.Message}\r\n\r\nOpening print file '" + fileName + "'",
+                                "Print File Selection",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
 
                 return false;
             }
@@ -1687,7 +1670,7 @@ namespace PCLParaphernalia
             if (_ipStream == null)
                 return false;
 
-            FileInfo fi = new FileInfo(filename);
+            FileInfo fi = new FileInfo(fileName);
 
             fileSize = fi.Length;
 
@@ -1711,7 +1694,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     string.Empty,
                     string.Empty,
-                    filename);
+                    fileName);
             }
 
             return true;

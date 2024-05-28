@@ -977,13 +977,8 @@ namespace PCLParaphernalia
 
                 txtOldVal = (x & 0xff).ToString(format);
 
-                MessageBox.Show("Sample '" + sampleNo +
-                                 " ' plane '" + planeNo + "':\n\n" +
-                                 "Value " + formatDesc +
-                                 " '" + txtNewVal + "' is invalid.\n\n" +
-                                 "Reset to original value " + formatDesc +
-                                 " '" + txtOldVal + "'",
-                                 "Colour mapping",
+                MessageBox.Show($"Sample '{sampleNo}' plane '{planeNo}':\r\nValue {formatDesc} '{txtNewVal}' is invalid.\r\nReset to original value {formatDesc} '{txtOldVal}'.",
+                                 "Colour Mapping",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
 

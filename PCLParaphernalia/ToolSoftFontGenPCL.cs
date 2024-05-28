@@ -111,9 +111,9 @@ namespace PCLParaphernalia
                                          ref _binWriter,
                                          ref _opStream);
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
-                MessageBox.Show(exc.ToString(),
+                MessageBox.Show(ex.Message,
                                 "Failure to open output font file",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
@@ -196,11 +196,11 @@ namespace PCLParaphernalia
 
                 _ttfHandler.FontFileClose();
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
                 flagOK = false;
 
-                MessageBox.Show(exc.ToString(),
+                MessageBox.Show(ex.Message,
                                 "Failure to write font file",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
@@ -743,10 +743,10 @@ namespace PCLParaphernalia
             
             if ((hddrLen > cSizeHddrFmt15Max) && (!fmt16))
             {
-                MessageBox.Show("Header length of '" + hddrLen +"' is incompatible with 'format 15' font.",
-                                 "Soft font header invalid",
-                                 MessageBoxButton.OK,
-                                 MessageBoxImage.Error);
+                MessageBox.Show($"Header length of '{hddrLen}' is incompatible with 'format 15' font.",
+                                "Soft Font Header Invalid",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
 
                 return false;
             }

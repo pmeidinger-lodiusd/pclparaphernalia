@@ -289,13 +289,7 @@ namespace PCLParaphernalia
 
             DateTime dateTimeNow = DateTime.Now;
 
-            string convTextStr = "Converted from '" + _fontFilenameTTF +
-                                 "' (" + _ttfHandler.FontFullname +
-                                 ") by user '" + Environment.UserName +
-                                 "' (domain user '" +
-                                 Environment.UserDomainName +
-                                 "') using system '" + Environment.MachineName +
-                                 "' on " + dateTimeNow;
+            string convTextStr = $"Converted from '{_fontFilenameTTF}' ({_ttfHandler.FontFullname}) by user '{Environment.UserName}' (domain user '{Environment.UserDomainName}') using system '{Environment.MachineName}' on {dateTimeNow}";
 
             string licenceText = string.Empty;
 
@@ -312,13 +306,8 @@ namespace PCLParaphernalia
             if (licenceType == ToolSoftFontGenTTF.LicenceType.NotAllowed)
             {
                 MessageBoxResult msgBoxResult =
-                        MessageBox.Show(
-                        "Donor TrueType font has a restrictive license:\n\n" +
-                        licenceText +
-                        "\n\nConversion will proceed only if you confirm " +
-                        "that you are allowed to convert the font;" +
-                        "\n\nDid you obtained permission from the legal owner?",
-                        "Donor font licensing rights",
+                        MessageBox.Show($"Donor TrueType font has a restrictive license:\r\n{licenceText}\r\nConversion will proceed only if you confirm that you are allowed to convert the font.\r\nDid you obtain permission from the legal owner?",
+                        "Donor Font Licensing Rights",
                          MessageBoxButton.YesNo,
                          MessageBoxImage.Warning);
 
@@ -328,12 +317,8 @@ namespace PCLParaphernalia
             {
                 MessageBoxResult msgBoxResult =
                     MessageBox.Show(
-                        "Donor TrueType font has a restrictive license:\n\n" +
-                        licenceText +
-                        "\n\nConversion will proceed only if you agree " +
-                        "to use the converted font solely on your own system;" +
-                        "\n\nDo you agree?",
-                        "Donor font licensing rights",
+                        $"Donor TrueType font has a restrictive license:\r\n{licenceText}\r\nConversion will proceed only if you agree to use the converted font solely on your own system.\r\nDo you agree?",
+                        "Donor Font Licensing Rights",
                         MessageBoxButton.YesNo,
                         MessageBoxImage.Warning);
 
@@ -585,12 +570,10 @@ namespace PCLParaphernalia
                 {
                     _fontWithinTTC = true;
 
-                    MessageBox.Show(
-                        "Donor TrueType font is a Collection file\n\n" +
-                        "Select component font & try again",
-                        "Donor font type",
-                         MessageBoxButton.OK,
-                         MessageBoxImage.Information);
+                    MessageBox.Show("Donor TrueType font is a Collection file\r\nSelect component font & try again",
+                        "Donor Font Type",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
 
                     _fontTTCOffsets = new uint[numFonts];
                     _fontTTCNames = new string[numFonts];
@@ -1000,8 +983,8 @@ namespace PCLParaphernalia
 
                 flagOK = false;
 
-                MessageBox.Show("File " + _symSetUserFile + " does not exist",
-                    "Symbol Set definition file",
+                MessageBox.Show($"File {_symSetUserFile} does not exist/",
+                    "Symbol Set Definition File",
                      MessageBoxButton.OK,
                      MessageBoxImage.Information);
 
@@ -1453,7 +1436,7 @@ if (value.EndsWith(".ttf", true, cultureInfo) || value.EndsWith(".otf"))
             }
             catch
             {
-                MessageBox.Show("Unable to retrieve font file data from registry",
+                MessageBox.Show("Unable to retrieve font file data from registry.",
                                  "Soft Font Generate",
                                   MessageBoxButton.OK,
                                   MessageBoxImage.Error);
@@ -3424,14 +3407,10 @@ bitVal;
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show
-                        ("Style number '" + crntText +
-                         "' is invalid.\n\n" +
-                         "Value will be reset to default '" +
-                         newText + "'",
-                         "PCL style number invalid",
-                         MessageBoxButton.OK,
-                         MessageBoxImage.Warning);
+                    MessageBox.Show($"Style number '{crntText}' is invalid.\r\nValue will be reset to default '{newText}'.",
+                        "PCL Style Number Invalid",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
 
                     styleNo = defVal;
 
@@ -3439,14 +3418,10 @@ bitVal;
                 }
                 else
                 {
-                    MessageBox.Show
-                        ("Style number '" + crntText +
-                         "' is invalid.\n\n" +
-                         "Valid range is :\n\t" +
-                         minVal + " <= value <= " + maxVal,
-                         "PCL style number invalid",
-                         MessageBoxButton.OK,
-                         MessageBoxImage.Error);
+                    MessageBox.Show($"Style number '{crntText}' is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal}.",
+                        "PCL Style Number Invalid",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Error);
 
                     txtPCLStyleNo.Focus();
                     txtPCLStyleNo.SelectAll();
@@ -3501,14 +3476,10 @@ bitVal;
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show
-                        ("Symbol Set (kind1) number '" + crntText +
-                         "' is invalid.\n\n" +
-                         "Value will be reset to default '" +
-                         newText + "'",
-                         "PCL symbol set number invalid",
-                         MessageBoxButton.OK,
-                         MessageBoxImage.Warning);
+                    MessageBox.Show($"Symbol Set (kind1) number '{crntText}' is invalid.\r\nValue will be reset to default '{newText}'",
+                        "PCL Symbol Set Number Invalid",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
 
                     symSetNo = defVal;
 
@@ -3516,16 +3487,11 @@ bitVal;
                 }
                 else
                 {
-                    MessageBox.Show
-                        ("Symbol Set (kind1) number '" + crntText +
-                         "' is invalid.\n\n" +
-                         "Valid range is :\n\t" +
-                         minVal + " <= value <= " + maxVal +
-                         "\nand the value modulo 32 must be in the range " +
-                         "1 -> 26, excluding 24",
-                         "PCL symbol set number invalid",
-                         MessageBoxButton.OK,
-                         MessageBoxImage.Error);
+                    MessageBox.Show(
+                        $"Symbol Set (kind1) number '{crntText}' is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal}\r\nand the value modulo 32 must be in the range 1 -> 26, excluding 24.",
+                        "PCL Symbol Set Number Invalid",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Error);
 
                     txtPCLSymSetNo.Focus();
                     txtPCLSymSetNo.SelectAll();
@@ -3570,11 +3536,8 @@ bitVal;
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show("Typeface number '" + crntText +
-                                    "' is invalid.\n\n" +
-                                    "Value will be reset to default '" +
-                                    newText + "'",
-                                    "PCL typeface number invalid",
+                    MessageBox.Show($"Typeface number '{crntText}' is invalid.\r\nValue will be reset to default '{newText}'.",
+                                    "PCL Typeface Number Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
 
@@ -3584,11 +3547,8 @@ bitVal;
                 }
                 else
                 {
-                    MessageBox.Show("Typeface number '" + crntText +
-                                    "' is invalid.\n\n" +
-                                    "Valid range is :\n\t" +
-                                    minVal + " <= value <= " + maxVal,
-                                    "PCL typeface number invalid",
+                    MessageBox.Show($"Typeface number '{crntText}' is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal}.",
+                                    "PCL Typeface Number Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 
@@ -3635,11 +3595,8 @@ bitVal;
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show("Weight number '" + crntText +
-                                    "' is invalid.\n\n" +
-                                    "Value will be reset to default '" +
-                                    newText + "'",
-                                    "PCL weight number invalid",
+                    MessageBox.Show($"Weight number '{crntText}' is invalid.\r\nValue will be reset to default '{newText}'.",
+                                    "PCL Weight Number Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
 
@@ -3649,11 +3606,8 @@ bitVal;
                 }
                 else
                 {
-                    MessageBox.Show("Weight number '" + crntText +
-                                    "' is invalid.\n\n" +
-                                    "Valid range is :\n\t" +
-                                    minVal + " <= value <= " + maxVal,
-                                    "PCL weight number invalid",
+                    MessageBox.Show($"Weight number '{crntText}' is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal}.",
+                                    "PCL Weight Number Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 
@@ -3707,14 +3661,10 @@ bitVal;
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show
-                        ("Symbol Set (kind1) number '" + crntText +
-                         "' is invalid.\n\n" +
-                         "Value will be reset to default '" +
-                         newText + "'",
-                         "PCLXL symbol set number invalid",
-                         MessageBoxButton.OK,
-                         MessageBoxImage.Warning);
+                    MessageBox.Show($"Symbol Set (kind1) number '{crntText}' is invalid.\r\nValue will be reset to default '{newText}'>",
+                        "PCLXL Symbol Set Number Invalid",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
 
                     symSetNo = defVal;
 
@@ -3722,16 +3672,10 @@ bitVal;
                 }
                 else
                 {
-                    MessageBox.Show
-                        ("Symbol Set (kind1) number '" + crntText +
-                         "' is invalid.\n\n" +
-                         "Valid range is :\n\t" +
-                         minVal + " <= value <= " + maxVal +
-                         "\nand the value modulo 32 must be in the range " +
-                         "1 -> 26, excluding 24",
-                         "PCL symbol set number invalid",
-                         MessageBoxButton.OK,
-                         MessageBoxImage.Error);
+                    MessageBox.Show($"Symbol Set (kind1) number '{crntText}' is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal}\nand the value modulo 32 must be in the range 1 -> 26, excluding 24.",
+                        "PCLXL Symbol Set Number Invalid",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Error);
 
                     txtPCLXLSymSetNo.Focus();
                     txtPCLXLSymSetNo.SelectAll();

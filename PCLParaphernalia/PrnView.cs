@@ -97,7 +97,7 @@ namespace PCLParaphernalia
 
         private bool OpenInputPrn(string fileName, ref long fileSize)
         {
-            if ((fileName == null) || (fileName?.Length == 0))
+            if (string.IsNullOrEmpty(fileName))
             {
                 MessageBox.Show("Print file name is null.",
                                 "Print file selection",
@@ -109,7 +109,7 @@ namespace PCLParaphernalia
             
             if (!File.Exists(fileName))
             {
-                MessageBox.Show("Print file '" + fileName + "' does not exist.",
+                MessageBox.Show($"Print file '{fileName}' does not exist.",
                                 "Print file selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
@@ -123,9 +123,7 @@ namespace PCLParaphernalia
             }
             catch (IOException e)
             {
-                MessageBox.Show("IO Exception:\r\n" +
-                                e.Message + "\r\n" +
-                                "Opening file '" + fileName + "'",
+                MessageBox.Show($"IO Exception:\r\n{e.Message}\r\n\r\nOpening file '{fileName}'.",
                                 "Print file content",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);

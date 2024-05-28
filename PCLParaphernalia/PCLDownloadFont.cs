@@ -106,7 +106,7 @@ namespace PCLParaphernalia
 
         private static bool FontFileOpen(string fileName, ref long fileSize)
         {
-            if ((fileName == null) || (fileName?.Length == 0))
+            if (string.IsNullOrEmpty(fileName))
             {
                 MessageBox.Show("Download font file name is null.",
                                 "PCL font selection attribute invalid",
@@ -118,7 +118,7 @@ namespace PCLParaphernalia
             
             if (!File.Exists(fileName))
             {
-                MessageBox.Show("Download font file '" + fileName + "' does not exist.",
+                MessageBox.Show($"Download font file '{fileName}' does not exist.",
                                 "PCL font selection attribute invalid",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
@@ -132,10 +132,7 @@ namespace PCLParaphernalia
             }
             catch (IOException e)
             {
-                MessageBox.Show("IO Exception:\r\n" +
-                                    e.Message + "\r\n" +
-                                    "Opening soft font file '" +
-                                    fileName + "'",
+                MessageBox.Show($"IO Exception:\r\n{e.Message}\r\nOpening soft font file '{fileName}'.",
                                     "PCL soft font analysis",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
@@ -540,7 +537,7 @@ namespace PCLParaphernalia
             ref int fileOffset,
             ref ushort hddrLen)
         {
-            string messHeader = "Download font file '" + fileName + "':\r\n";
+            string messHeader = $"Download font file '{fileName}':\r\n";
             const string messTrailer = "\r\nYou will have to choose another file.";
 
             bool OK = false;
@@ -590,12 +587,7 @@ namespace PCLParaphernalia
 
             if (!OK)
             {
-                MessageBox.Show(
-                    messHeader +
-                    "File does not start with a valid escape" +
-                    " sequence in the format <esc>)s#W" +
-                    " (where # is a numeric value)." +
-                    messTrailer,
+                MessageBox.Show($"{messHeader}File does not start with a valid escape sequence in the format <esc>)s#W (where # is a numeric value).{messTrailer}",
                     "PCL soft font file",
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
@@ -607,12 +599,7 @@ namespace PCLParaphernalia
 
             if ((hddrLen + fileOffset) > fontFileSize)
             {
-                MessageBox.Show(
-                    messHeader +
-                    "Header (offset = '" + fileOffset + "') of" +
-                    "length '" + hddrLen + "' is inconsistent" +
-                    " with a file size of '" + fontFileSize + "'." +
-                    messTrailer,
+                MessageBox.Show($"{messHeader}Header (offset = '{fileOffset}') of length '{hddrLen}' is inconsistent with a file size of '{fontFileSize}'.{messTrailer}",
                     "PCL soft font file",
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);

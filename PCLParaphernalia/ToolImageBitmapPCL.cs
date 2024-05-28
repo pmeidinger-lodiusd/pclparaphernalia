@@ -52,8 +52,8 @@ namespace PCLParaphernalia
 
             if (srcCompression != 0)
             {
-                MessageBox.Show("Bitmaps: compressed formats not supported",
-                                "Bitmap file",
+                MessageBox.Show("Bitmaps: Compressed formats not supported.",
+                                "Bitmap File",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Exclamation);
                 return;
@@ -62,16 +62,16 @@ namespace PCLParaphernalia
                      (srcBitsPerPixel != 4) &&
                      (srcBitsPerPixel != 24))
             {
-                MessageBox.Show("Bitmaps: only 1-, 4- and 24-bit supported",
-                                "Bitmap file",
+                MessageBox.Show("Bitmaps: Only 1-, 4- and 24-bit supported.",
+                                "Bitmap File",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Exclamation);
                 return;
             }
             else if (srcHeight < 0)
             {
-                MessageBox.Show("Bitmaps: top-down DIBs not supported",
-                                "Bitmap file",
+                MessageBox.Show("Bitmaps: Top-down DIBs not supported.",
+                                "Bitmap File",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Exclamation);
                 return;

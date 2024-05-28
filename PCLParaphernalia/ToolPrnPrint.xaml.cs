@@ -233,22 +233,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool PrnOpen(string filename)
+        public static bool PrnOpen(string fileName)
         {
-            if ((filename == null) || (filename?.Length == 0))
+            if (string.IsNullOrEmpty(fileName))
             {
                 MessageBox.Show("Print file name is null.",
-                                "Print file selection",
+                                "Print File Selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
                 return false;
             }
             
-            if (!File.Exists(filename))
+            if (!File.Exists(fileName))
             {
-                MessageBox.Show("Print file '" + filename + "' does not exist.",
-                                "Print file selection",
+                MessageBox.Show($"Print file '{fileName}' does not exist.",
+                                "Print File Selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
@@ -257,14 +257,12 @@ namespace PCLParaphernalia
 
             try
             {
-                _ipStream = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.None);
+                _ipStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.None);
             }
             catch (IOException e)
             {
-                MessageBox.Show("IO Exception:\r\n" +
-                                e.Message + "\r\n" +
-                                "Opening print file '" + filename + "'",
-                                "Print file selection",
+                MessageBox.Show($"IO Exception:\r\n{e.Message}\r\nOpening print file '{fileName}'.",
+                                "Print File Selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
@@ -309,10 +307,7 @@ namespace PCLParaphernalia
                                                   ref netTimeoutSend,
                                                   ref netTimeoutReceive);
 
-                btnGenerate.Content = "Send PRN file contents to " +
-                                      "\r\n" +
-                                      netPrnAddress + " : " +
-                                      netPrnPort.ToString();
+                btnGenerate.Content = $"Send PRN file contents to\r\n{netPrnAddress}: {netPrnPort}";
             }
             else if (targetType == TargetCore.Target.WinPrinter)
             {
@@ -320,7 +315,7 @@ namespace PCLParaphernalia
 
                 TargetCore.MetricsLoadWinPrinter(ref winPrintername);
 
-                btnGenerate.Content = "Send PRN file contents to printer\r\n" +winPrintername;
+                btnGenerate.Content = "Send PRN file contents to printer\r\n" + winPrintername;
             }
         }
 

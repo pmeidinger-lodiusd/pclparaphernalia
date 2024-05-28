@@ -93,11 +93,11 @@ namespace PCLParaphernalia
             {
                 flagOK = _baseHandler.StreamOpen(ref pclFilename, true, ref _binWriter, ref _opStream);
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
                 flagOK = false;
 
-                MessageBox.Show(exc.ToString(),
+                MessageBox.Show(ex.Message,
                                 "Failure to open output font file",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
@@ -213,11 +213,11 @@ namespace PCLParaphernalia
 
                 _ttfHandler.FontFileClose();
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
                 flagOK = false;
 
-                MessageBox.Show(exc.ToString(),
+                MessageBox.Show(ex.Message,
                                 "Failure to write font file",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);

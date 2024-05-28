@@ -766,7 +766,7 @@ namespace PCLParaphernalia
 
             long fileSize = -1;
 
-            if ((filename == null) || (filename?.Length == 0))
+            if (string.IsNullOrEmpty(fileName))
             {
                 MessageBox.Show("Print file name is null.",
                                 "Print file selection",

@@ -251,17 +251,17 @@ namespace PCLParaphernalia
 
                 TargetCore.RequestStreamWrite(false);
             }
-            catch (SocketException sockExc)
+            catch (SocketException ex)
             {
-                MessageBox.Show(sockExc.ToString(),
-                                "Socket exception",
+                MessageBox.Show($"SocketException:\r\n\r\nMessage: {ex.Message}\r\n\r\nErrorCode: {ex.ErrorCode}\r\n\r\nSocketErrorCode: {ex.SocketErrorCode}",
+                                "Generate Test Data",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
-                MessageBox.Show(exc.ToString(),
-                                "Unknown exception",
+                MessageBox.Show("Exception:\r\n" + ex.Message,
+                                "Generate Test Data",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
             }
@@ -866,10 +866,7 @@ namespace PCLParaphernalia
                                                   ref netTimeoutSend,
                                                   ref netTimeoutReceive);
 
-                btnGenerate.Content = "Generate & send test data to " +
-                                      "\r\n" +
-                                      netPrnAddress + " : " +
-                                      netPrnPort.ToString();
+                btnGenerate.Content = $"Generate & send test data to\r\n{netPrnAddress}: {netPrnPort}";
             }
             else if (targetType == TargetCore.Target.WinPrinter)
             {
@@ -877,9 +874,7 @@ namespace PCLParaphernalia
 
                 TargetCore.MetricsLoadWinPrinter(ref winPrintername);
 
-                btnGenerate.Content = "Generate & send test data to printer " +
-                                      "\r\n" +
-                                      winPrintername;
+                btnGenerate.Content = "Generate & send test data to printer\r\n" + winPrintername;
             }
         }
 
@@ -1410,14 +1405,8 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                string errData = edgeThis + " Edge value " + crntText +
-                                 " inch is invalid, or incompatible with " +
-                                 edgeOther + " Edge value.\n\n" +
-                                 "Valid range is :\n\t" +
-                                 minVal.ToString("F3") + " <= value <= " +
-                                 maxVal.ToString("F3") + "\n\n" +
-                                 edgeOther + " Edge value is " + edgeOtherVal +
-                                 " inch.";
+                string errData = $"{edgeThis} Edge value {crntText} inch is invalid, or incompatible with {edgeOther} Edge value.\r\nValid range is :\r\n\t{minVal:F3} <= value <= {maxVal:F3}\r\n{edgeOther} Edge value is {edgeOtherVal} inch.";
+
                 if (lostFocusEvent)
                 {
                     string newText;
@@ -1427,9 +1416,7 @@ namespace PCLParaphernalia
                     else
                         newText = defValLong.ToString("F2");
 
-                    MessageBox.Show(errData + "\n\n" +
-                                    "Value will be reset to default " +
-                                    newText,
+                    MessageBox.Show($"{errData}\r\nValue will be reset to default {newText}.",
                                     "Custom page size data",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
@@ -1567,14 +1554,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                string errData = edgeThis + " Edge value " + crntText +
-                                 " mm is invalid, or incompatible with " +
-                                 edgeOther + " Edge value.\n\n" +
-                                 "Valid range is :\n\t" +
-                                 minVal.ToString("F0") + " <= value <= " +
-                                 maxVal.ToString("F0") + "\n\n" +
-                                 edgeOther + " Edge value is " + edgeOtherVal +
-                                 " mm.";
+                string errData = $"{edgeThis} Edge value {crntText} mm is invalid, or incompatible with {edgeOther} Edge value.\r\nValid range is :\r\n\t{minVal:F0} <= value <= {maxVal:F0}\r\n{edgeOther} Edge value is {edgeOtherVal} mm.";
 
                 if (lostFocusEvent)
                 {
@@ -1585,10 +1565,8 @@ namespace PCLParaphernalia
                     else
                         newText = defValLong.ToString("F0");
 
-                    MessageBox.Show(errData + "\n\n" +
-                                    "Value will be reset to default " +
-                                    newText,
-                                    "Custom page size data",
+                    MessageBox.Show($"{errData}\r\nValue will be reset to default {newText}",
+                                    "Custom Page Size Data",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
 
@@ -1608,7 +1586,7 @@ namespace PCLParaphernalia
                 else
                 {
                     MessageBox.Show(errData,
-                                    "Custom page size data",
+                                    "Custom Page Size Data",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 

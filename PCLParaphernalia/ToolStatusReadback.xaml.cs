@@ -214,7 +214,7 @@ namespace PCLParaphernalia
                 {
                     TargetCore.RequestStreamWrite(false);
 
-                    txtReply.Text = "Request sequence has been saved to file.\n\nSpecified target of 'File' means that a reply is not meaningful.";
+                    txtReply.Text = "Request sequence has been saved to file.\r\nSpecified target of 'File' means that a reply is not meaningful.";
                 }
                 else if (_targetType == TargetCore.Target.NetPrinter)
                 {
@@ -261,20 +261,20 @@ namespace PCLParaphernalia
                 }
                 else if (_targetType == TargetCore.Target.WinPrinter)
                 {
-                    txtReply.Text = "This application does not support Status readback via a Windows printer instance.\n\nChoose a network printer Target instead.";
+                    txtReply.Text = "This application does not support Status readback via a Windows printer instance.\r\nChoose a network printer Target instead.";
                 }
             }
-            catch (SocketException sockExc)
+            catch (SocketException ex)
             {
-                MessageBox.Show(sockExc.ToString(),
-                                "Socket exception",
+                MessageBox.Show($"SocketException:\r\n\r\nMessage: {ex.Message}\r\n\r\nErrorCode: {ex.ErrorCode}\r\n\r\nSocketErrorCode: {ex.SocketErrorCode}",
+                                "Generate Test Data",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
-                MessageBox.Show(exc.ToString(),
-                                "Unknown exception",
+                MessageBox.Show("Exception:\r\n" + ex.Message,
+                                "Generate Test Data",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
             }
@@ -1435,8 +1435,8 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show(boxName + " value is invalid.\n\nValue will be reset to default '" + newText + "'",
-                                     "Option value invalid",
+                    MessageBox.Show($"{boxName} value is invalid.\r\nValue will be reset to default '{newText}'.",
+                                     "Option Value Invalid",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Warning);
 
@@ -1447,8 +1447,8 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show(boxName + " value is invalid.\n\n",
-                                     "Option value invalid",
+                    MessageBox.Show(boxName + " value is invalid.",
+                                     "Option Value Invalid",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Warning);
 
@@ -1504,8 +1504,8 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show(boxName + " value is invalid.\n\nValue will be reset to default '" + newText + "'",
-                                     "Option value invalid",
+                    MessageBox.Show($"{boxName} value is invalid.\r\nValue will be reset to default '{newText}'.",
+                                     "Option Value Invalid",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Warning);
 
@@ -1516,8 +1516,8 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show(boxName + " value is invalid.\n\n",
-                                    "Option value invalid",
+                    MessageBox.Show(boxName + " value is invalid.",
+                                     "Option Value Invalid",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Warning);
 

@@ -56,10 +56,8 @@ namespace PCLParaphernalia
                     // Should not happen                                      //
                     // If this message shown, fix the reason before release!  //
 
-                    MessageBox.Show(
-                        "Standard and PCL maps both null!" +
-                        " for map " + mapId.ToString(),
-                        "Internal error",
+                    MessageBox.Show($"Standard and PCL maps both null for map {mapId}.",
+                        "Internal Error",
                         MessageBoxButton.OK,
                         MessageBoxImage.Error);
                 }

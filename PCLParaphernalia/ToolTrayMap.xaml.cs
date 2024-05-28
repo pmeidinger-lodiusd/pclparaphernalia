@@ -244,17 +244,17 @@ namespace PCLParaphernalia
 
                 TargetCore.RequestStreamWrite(false);
             }
-            catch (SocketException sockExc)
+            catch (SocketException ex)
             {
-                MessageBox.Show(sockExc.ToString(),
-                                "Socket exception",
+                MessageBox.Show($"SocketException:\r\n\r\nMessage: {ex.Message}\r\n\r\nErrorCode: {ex.ErrorCode}\r\n\r\nSocketErrorCode: {ex.SocketErrorCode}",
+                                "Generate Test Data",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
-                MessageBox.Show(exc.ToString(),
-                                "Unknown exception",
+                MessageBox.Show("Exception:\r\n" + ex.Message,
+                                "Generate Test Data",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
             }

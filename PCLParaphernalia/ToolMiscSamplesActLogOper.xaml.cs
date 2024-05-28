@@ -487,11 +487,8 @@ namespace PCLParaphernalia
                               fromVal = (_logOperROPInc * temp),
                               maxVal = (_logOperROPInc * _indxLogOperROPToPCL);
 
-                        MessageBox.Show("'From' value " + fromVal +
-                                         " > 'To' value " + toVal + "\r\n" +
-                                         "Reset to maximum consistent value " +
-                                         maxVal,
-                                        "ROP range",
+                        MessageBox.Show($"'From' value {fromVal} > 'To' value {toVal}\r\nReset to maximum consistent value {maxVal}.",
+                                        "ROP Range",
                                         MessageBoxButton.OK,
                                         MessageBoxImage.Error);
 
@@ -513,11 +510,8 @@ namespace PCLParaphernalia
                               fromVal = (_logOperROPInc * temp),
                               maxVal = (_logOperROPInc * _indxLogOperROPToPCLXL);
 
-                        MessageBox.Show("'From' value " + fromVal +
-                                         " > 'To' value " + toVal + "\r\n" +
-                                         "Reset to maximum consistent value " +
-                                         maxVal,
-                                        "ROP range",
+                        MessageBox.Show($"'From' value {fromVal} > 'To' value {toVal}\r\nReset to maximum consistent value {maxVal}.",
+                                        "ROP Range",
                                         MessageBoxButton.OK,
                                         MessageBoxImage.Error);
 
@@ -555,11 +549,8 @@ namespace PCLParaphernalia
                               fromVal = (_logOperROPInc * _indxLogOperROPFromPCL),
                               minVal = fromVal + (_logOperROPInc - 1);
 
-                        MessageBox.Show("'To' value " + toVal +
-                                         " < 'From' value " + fromVal + "\r\n" +
-                                         "Reset to minimum consistent value " +
-                                         minVal,
-                                        "ROP range",
+                        MessageBox.Show($"'To' value {toVal} < 'From' value {fromVal}\r\nReset to minimum consistent value {minVal}.",
+                                        "ROP Range",
                                         MessageBoxButton.OK,
                                         MessageBoxImage.Error);
 
@@ -581,11 +572,8 @@ namespace PCLParaphernalia
                               fromVal = (_logOperROPInc * _indxLogOperROPFromPCLXL),
                               minVal = fromVal + (_logOperROPInc - 1);
 
-                        MessageBox.Show("'To' value " + toVal +
-                                         " < 'From' value " + fromVal + "\r\n" +
-                                         "Reset to minimum consistent value " +
-                                         minVal,
-                                        "ROP range",
+                        MessageBox.Show($"'To' value {toVal} < 'From' value {fromVal}\r\nReset to minimum consistent value {minVal}.",
+                                        "ROP Range",
                                         MessageBoxButton.OK,
                                         MessageBoxImage.Error);
 

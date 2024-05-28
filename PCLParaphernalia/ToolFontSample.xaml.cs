@@ -1156,17 +1156,17 @@ namespace PCLParaphernalia
 
                 TargetCore.RequestStreamWrite(false);
             }
-            catch (SocketException sockExc)
+            catch (SocketException ex)
             {
-                MessageBox.Show(sockExc.ToString(),
-                                "Socket exception",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Error);
+                MessageBox.Show($"SocketException:\r\n\r\nMessage: {ex.Message}\r\n\r\nErrorCode: {ex.ErrorCode}\r\n\r\nSocketErrorCode: {ex.SocketErrorCode}",
+                                 "Generate Test Data",
+                                 MessageBoxButton.OK,
+                                 MessageBoxImage.Exclamation);
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
-                MessageBox.Show(exc.ToString(),
-                                "Unknown exception",
+                MessageBox.Show("Exception:\r\n" + ex.Message,
+                                "Generate Test Data",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
             }
@@ -1505,8 +1505,8 @@ namespace PCLParaphernalia
 
                     symSetId = PCLSymbolSets.TranslateKind1ToId(_symSetNo);
 
-                    MessageBox.Show("Symbol set '" + symSetId + " " + symSetName + "' may not be supported by the '" + PCLFonts.GetName(_subsetFonts[indxFont]) + "' font",
-                                     "Symbol Set / Font",
+                    MessageBox.Show($"Symbol set '{symSetId} {symSetName}' may not be supported by the '{PCLFonts.GetName(_subsetFonts[indxFont])}' font.",
+                                     "Symbol Set/Font",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Warning);
                 }
@@ -1528,21 +1528,21 @@ namespace PCLParaphernalia
 
             bool selected = true;
 
-            string filename = _fontFilenamePCL;
+            string fileName = _fontFilenamePCL;
 
-            if (!File.Exists(filename))
+            if (!File.Exists(fileName))
             {
-                MessageBox.Show("File '" + filename + "' does not exist",
-                    "PCL soft font download file",
+                MessageBox.Show($"File '{fileName}' does not exist",
+                    "PCL Soft Font Download File",
                     MessageBoxButton.OK,
                     MessageBoxImage.Information);
 
-                selected = SelectPCLFontFile(ref filename);
+                selected = SelectPCLFontFile(ref fileName);
             }
 
             if (selected)
             {
-                _fontFilenamePCL = filename;
+                _fontFilenamePCL = fileName;
                 txtPCLSoftFontFile.Text = _fontFilenamePCL;
 
                 flagOK = PCLDownloadFont.GetFontCharacteristics(
@@ -1564,7 +1564,7 @@ namespace PCLParaphernalia
                 flagOK = false;
 
                 MessageBox.Show("Either select a valid soft font file, or choose a standard font",
-                                "PCL soft font download file",
+                                "PCL Soft Font Download File",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
@@ -1590,21 +1590,21 @@ namespace PCLParaphernalia
 
             bool selected = true;
 
-            string filename = _symSetUserFile;
+            string fileName = _symSetUserFile;
 
-            if (!File.Exists(filename))
+            if (!File.Exists(fileName))
             {
-                MessageBox.Show("File '" + filename + "' does not exist",
-                    "Symbol Set definition file",
+                MessageBox.Show($"File '{fileName}' does not exist.",
+                    "Symbol Set Definition File",
                     MessageBoxButton.OK,
                     MessageBoxImage.Information);
 
-                selected = SelectSymSetFile(ref filename);
+                selected = SelectSymSetFile(ref fileName);
             }
 
             if (selected)
             {
-                _symSetUserFile = filename;
+                _symSetUserFile = fileName;
                 txtSymSetFile.Text = _symSetUserFile;
 
                 flagOK = PCLDownloadSymSet.CheckSymSetFile(
@@ -1637,7 +1637,7 @@ namespace PCLParaphernalia
                 flagOK = false;
 
                 MessageBox.Show("Either select a valid symbol set file, or choose a specific symbol set",
-                                "PCL user-defined symbol set",
+                                "PCL User-Defined Symbol Set",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
@@ -1663,21 +1663,21 @@ namespace PCLParaphernalia
 
             bool selected = true;
 
-            string filename = _fontFilenamePCLXL;
+            string fileName = _fontFilenamePCLXL;
 
-            if (!File.Exists(filename))
+            if (!File.Exists(fileName))
             {
-                MessageBox.Show("File '" + filename + "' does not exist",
-                    "PCLXL soft font download file",
+                MessageBox.Show($"File '{fileName}' does not exist.",
+                    "PCLXL Soft Font Download File",
                      MessageBoxButton.OK,
                      MessageBoxImage.Information);
 
-                selected = SelectPCLXLFontFile(ref filename);
+                selected = SelectPCLXLFontFile(ref fileName);
             }
 
             if (selected)
             {
-                _fontFilenamePCLXL = filename;
+                _fontFilenamePCLXL = fileName;
                 txtPCLXLSoftFontFile.Text = _fontFilenamePCLXL;
 
                 flagOK = PCLXLDownloadFont.GetFontCharacteristics(
@@ -1692,8 +1692,8 @@ namespace PCLParaphernalia
             {
                 flagOK = false;
 
-                MessageBox.Show("Either select a valid soft font file, or choose a standard font",
-                                "PCLXL soft font download file",
+                MessageBox.Show("Either select a valid soft font file, or choose a standard font.",
+                                "PCLXL Soft Font Download File",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
@@ -4180,8 +4180,8 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                MessageBox.Show("Loading the font from a printer mass storage device is not supported with the currently selected printer language",
-                                "Option not supported",
+                MessageBox.Show("Loading the font from a printer mass storage device is not supported with the currently selected printer language/",
+                                "Option Not Supported",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
             }
@@ -4891,8 +4891,8 @@ namespace PCLParaphernalia
                 (_crntPDL == ToolCommonData.PrintLang.PCL) &&
                 _symSetUserActEmbedPCL)
             {
-                MessageBox.Show("Few (if any) printers support user-defined 16-bit symbol sets",
-                                 "Symbol Set type",
+                MessageBox.Show("Few (if any) printers support user-defined 16-bit symbol sets.",
+                                 "Symbol Set Type",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Warning);
             }
@@ -5337,25 +5337,25 @@ namespace PCLParaphernalia
         {
             bool selected = true;
 
-            string filename = txtPCLSoftFontFile.Text;
+            string fileName = txtPCLSoftFontFile.Text;
 
             if (_fontType == PCLFonts.FontType.Download)
             {
-                _fontFilenamePCL = filename;
+                _fontFilenamePCL = fileName;
 
-                if (!File.Exists(filename))
+                if (!File.Exists(fileName))
                 {
-                    MessageBox.Show("Font file '" + filename + "' does not exist.\r\n\r\nPlease select an appropriate file",
-                                     "PCL font file invalid",
+                    MessageBox.Show($"Font file '{fileName}' does not exist.\r\n\r\nPlease select an appropriate file.",
+                                     "PCL Font File Invalid",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
 
-                    selected = SelectPCLFontFile(ref filename);
+                    selected = SelectPCLFontFile(ref fileName);
                 }
 
                 if (selected)
                 {
-                    _fontFilenamePCL = filename;
+                    _fontFilenamePCL = fileName;
                     txtPCLSoftFontFile.Text = _fontFilenamePCL;
 
                     SetFontOptions(_indxFontPCL, false, false);
@@ -5364,7 +5364,7 @@ namespace PCLParaphernalia
             }
             else if (_fontType == PCLFonts.FontType.PrnDisk)
             {
-                _fontPrnDiskNamePCL = filename;
+                _fontPrnDiskNamePCL = fileName;
 
                 SetFontOptions(_indxFontPCL, false, false);
                 SetFontSelectData();
@@ -5546,23 +5546,23 @@ namespace PCLParaphernalia
         {
             bool selected = true;
 
-            string filename = txtPCLXLSoftFontFile.Text;
+            string fileName = txtPCLXLSoftFontFile.Text;
 
-            _fontFilenamePCLXL = filename;
+            _fontFilenamePCLXL = fileName;
 
-            if (!File.Exists(filename))
+            if (!File.Exists(fileName))
             {
-                MessageBox.Show("Font file '" + filename + "' does not exist.\r\n\r\nPlease select an appropriate file",
-                                 "PCLXL font file invalid",
+                MessageBox.Show($"Font file '{fileName}' does not exist.\r\n\r\nPlease select an appropriate file.",
+                                 "PCLXL Font File Invalid",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
 
-                selected = SelectPCLXLFontFile(ref filename);
+                selected = SelectPCLXLFontFile(ref fileName);
             }
 
             if (selected)
             {
-                _fontFilenamePCLXL = filename;
+                _fontFilenamePCLXL = fileName;
                 txtPCLXLSoftFontFile.Text = _fontFilenamePCLXL;
 
                 SetFontOptions(_indxFontPCLXL, false, false);
@@ -5615,21 +5615,21 @@ namespace PCLParaphernalia
         {
             bool selected = true;
 
-            string filename = txtSymSetFile.Text;
+            string fileName = txtSymSetFile.Text;
 
-            if (!File.Exists(filename))
+            if (!File.Exists(fileName))
             {
-                MessageBox.Show("Symbol Set file '" + filename + "' does not exist.\r\n\r\nPlease select an appropriate file",
-                                 "Symbol Set file invalid",
+                MessageBox.Show($"Symbol Set file '{fileName}' does not exist.\r\n\r\nPlease select an appropriate file.",
+                                 "Symbol Set File Invalid",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
 
-                selected = SelectSymSetFile(ref filename);
+                selected = SelectSymSetFile(ref fileName);
             }
 
             if (selected)
             {
-                _symSetUserFile = filename;
+                _symSetUserFile = fileName;
                 txtSymSetFile.Text = _symSetUserFile;
 
                 SetSymSetAttributes();
@@ -5829,8 +5829,8 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString("F2");
 
-                    MessageBox.Show("Height value '" + crntText + "' is invalid.\n\nValue will be reset to default '" + newText + "'",
-                                    "PCL font selection attribute invalid",
+                    MessageBox.Show($"Height value '{crntText} ' is invalid.\n\nValue will be reset to default '{newText}'",
+                                    "PCL Font Selection Attribute Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
 
@@ -5840,8 +5840,8 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show("Height value '" + crntText + "' is invalid.\n\nValid range is :\n\t" + minVal + " <= value <= " + maxVal + "\nor\n\t<null> to represent <not applicable>",
-                                    "PCL font selection attribute invalid",
+                    MessageBox.Show($"Height value '{crntText}' is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal}\r\nor\r\n\t<null> to represent <not applicable>.",
+                                    "PCL Font Selection Attribute Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 
@@ -5901,8 +5901,8 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString("F2");
 
-                    MessageBox.Show("Pitch value '" + crntText + "' is invalid.\n\nValue will be reset to default '" + newText + "'",
-                                    "PCL font selection attribute invalid",
+                    MessageBox.Show($"Pitch value '{crntText}' is invalid.\r\nValue will be reset to default '{newText}'.",
+                                    "PCL Font Selection Attribute Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
 
@@ -5911,9 +5911,9 @@ namespace PCLParaphernalia
                     txtPCLPitch.Text = newText;
                 }
                 else
-                {
-                    MessageBox.Show("Pitch value '" + crntText + "' is invalid.\n\nValid range is :\n\t" + minVal + " <= value <= " + maxVal + "\nor\n\t<null> to represent <not applicable>",
-                                    "PCL font selection attribute invalid",
+            {
+                MessageBox.Show($"Pitch value '{crntText} ' is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal}\r\nnor\r\n\t<null> to represent <not applicable>.",
+                                    "PCL Font Selection Attribute Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 
@@ -5958,8 +5958,8 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show("Style value '" + crntText + "' is invalid.\n\nValue will be reset to default '" + newText + "'",
-                                    "PCL font selection attribute invalid",
+                    MessageBox.Show($"Style value '{crntText}' is invalid.\r\nValue will be reset to default '{newText}'.",
+                                    "PCL Font Selection Attribute Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
 
@@ -5969,8 +5969,8 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show("Style value '" + crntText + "' is invalid.\n\nValid range is :\n\t" + minVal + " <= value <= " + maxVal + "\nor\n\t<null> to represent <not applicable>",
-                                    "PCL font selection attribute invalid",
+                    MessageBox.Show($"Style value '{crntText}' is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal}\r\nor\r\n\t<null> to represent <not applicable>.",
+                                    "PCL Font Selection Attribute Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 
@@ -6015,8 +6015,8 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show("Typeface value '" + crntText + "' is invalid.\n\nValue will be reset to default '" + newText + "'",
-                                    "PCL font selection attribute invalid",
+                    MessageBox.Show($"Typeface value '{crntText}' is invalid.\r\nValue will be reset to default '{newText}'.",
+                                    "PCL Font Selection Attribute Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
 
@@ -6026,8 +6026,8 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show("Typeface value '" + crntText + "' is invalid.\n\nValid range is :\n\t" + minVal + " <= value <= " + maxVal + "\nor\n\t<null> to represent <not applicable>",
-                                    "PCL font selection attribute invalid",
+                    MessageBox.Show($"Typeface value '{crntText} ' is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal}\r\nor\r\n\t<null> to represent <not applicable>.",
+                                    "PCL Font Selection Attribute invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 
@@ -6072,8 +6072,8 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show("Weight value '" + crntText + "' is invalid.\n\nValue will be reset to default '" + newText + "'",
-                                    "PCL font selection attribute invalid",
+                    MessageBox.Show($"Weight value '{crntText}' is invalid.\n\nValue will be reset to default '{newText}'.",
+                                    "PCL Font Selection Attribute Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
 
@@ -6083,8 +6083,8 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show("Weight value '" + crntText + "' is invalid.\n\nValid range is :\n\t" + minVal + " <= value <= " + maxVal + "\nor\n\t<null> to represent <not applicable>",
-                                    "PCL font selection attribute invalid",
+                    MessageBox.Show($"Weight value '{crntText}' is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal}\r\nor\r\n\t<null> to represent <not applicable>",
+                                    "PCL Font Selection Attribute Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 
@@ -6132,8 +6132,8 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show("Font Id value '" + crntText + "' is invalid.\n\nValue will be reset to default '" + newText + "'",
-                                    "PCL soft font (down)load identifier invalid",
+                    MessageBox.Show($"Font Id value '{crntText}' is invalid.\n\nValue will be reset to default '{newText}'.",
+                                    "PCL Soft Font (Down)Load Identifier Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
 
@@ -6146,8 +6146,8 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show("Font Id value '" + crntText + "' is invalid.\n\nValid range is :\n\t" + minVal + " <= value <= " + maxVal + "\nor\n\t<null> to represent <not applicable>",
-                                    "PCL soft font (down)load identifier invalid",
+                    MessageBox.Show($"Font Id value '{crntText}' is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal}\r\nor\r\n\t<null> to represent <not applicable>.",
+                                    "PCL Soft Font (Down)Load Identifier Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 
@@ -6192,8 +6192,8 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show("Macro Id value '" + crntText + "' is invalid.\n\nValue will be reset to default '" + newText + "'",
-                                    "PCL soft font load identifier invalid",
+                    MessageBox.Show($"Macro Id value '{crntText}' is invalid.\n\nValue will be reset to default '{newText}'.",
+                                    "PCL Soft Font Load Identifier Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
 
@@ -6203,8 +6203,8 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show("Macro Id value '" + crntText + "' is invalid.\n\nValid range is :\n\t" + minVal + " <= value <= " + maxVal + "\nor\n\t<null> to represent <not applicable>",
-                                    "PCL soft font load identifier invalid",
+                    MessageBox.Show($"Macro Id value '{crntText}' is invalid.\n\nValid range is :\n\t{minVal} <= value <= {maxVal}\nor\n\t<null> to represent <not applicable>.",
+                                    "PCL Soft Font Load Identifier Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 
@@ -6278,8 +6278,8 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString("F2");
 
-                    MessageBox.Show("Height value '" + crntText + "' is invalid.\n\nValue will be reset to default '" + newText + "'",
-                                    "PCLXL font selection attribute invalid",
+                    MessageBox.Show($"Height value '{crntText}' is invalid.\n\nValue will be reset to default '{newText}'.",
+                                    "PCLXL Font Selection Attribute Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
 
@@ -6289,8 +6289,8 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show("Height value '" + crntText + "' is invalid.\n\nValid range is :\n\t" + minVal + " <= value <= " + maxVal + "\nor\n\t<null> to represent <not applicable>",
-                                    "PCLXL font selection attribute invalid",
+                    MessageBox.Show($"Height value '{crntText}' is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal}\r\nor\r\n\t<null> to represent <not applicable>.",
+                                    "PCLXL Font Selection Attribute Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 
@@ -6334,8 +6334,8 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    MessageBox.Show("Font name value '" + crntText + "' is invalid.\n\nValue will be reset to default '" + defVal + "'",
-                                    "PCLXL font selection attribute invalid",
+                    MessageBox.Show($"Font name value '{crntText}' is invalid.\r\nValue will be reset to default '{defVal}'.",
+                                    "PCLXL Font Selection Attribute Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
 
@@ -6345,8 +6345,8 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show("Font name value '" + crntText + "' is invalid.\n\nValid length is <= " + maxLen,
-                                    "PCLXL font selection attribute invalid",
+                    MessageBox.Show($"Font name value '{crntText}' is invalid.\r\nValid length is <= {maxLen}.",
+                                    "PCLXL Font Selection Attribute Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 
@@ -6397,8 +6397,8 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    MessageBox.Show("Alphabetic part '" + crntText + "' of identifier is invalid.\n\nValue will be reset to default '" + defVal + "'",
-                                    "Symbol Set identifier invalid",
+                    MessageBox.Show($"Alphabetic part '{crntText}' of identifier is invalid.\r\nValue will be reset to default '{defVal}'.",
+                                    "Symbol Set Identifier Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
 
@@ -6408,8 +6408,8 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show("Alphabetic part '" + crntText + "' of identifier is invalid.\n\nValid range is :\n\t" + minVal + " <= value <= " + maxVal + " excluding " + badVal,
-                                    "Symbol Set identifier invalid",
+                    MessageBox.Show($"Alphabetic part '{crntText}' of identifier is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal} excluding {badVal}.",
+                                    "Symbol Set Identifier Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 
@@ -6453,8 +6453,8 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show("Numeric part '" + crntText + "' of identifier is invalid.\n\nValue will be reset to default '" + newText + "'",
-                                    "Symbol Set identifier invalid",
+                    MessageBox.Show($"Numeric part '{crntText}' of identifier is invalid.\n\nValue will be reset to default '{newText}'.",
+                                    "Symbol Set Identifier Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
 
@@ -6464,8 +6464,8 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show("Numeric part '" + crntText + "' of identifier is invalid.\n\nValid range is :\n\t" + minVal + " <= value <= " + maxVal,
-                                    "Symbol Set identifier invalid",
+                    MessageBox.Show($"Numeric part '{crntText}' of identifier is invalid.\n\nValid range is :\n\t{minVal} <= value <= {maxVal}.",
+                                    "Symbol Set Identifier Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 

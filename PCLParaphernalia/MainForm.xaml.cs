@@ -533,7 +533,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                MessageBox.Show("Help file '" + helpFile + "' does not exist.",
+                MessageBox.Show($"Help file '{helpFile}' does not exist.",
                                 "Help file selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);

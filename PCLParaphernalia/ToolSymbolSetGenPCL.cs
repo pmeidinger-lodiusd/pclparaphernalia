@@ -75,9 +75,9 @@ namespace PCLParaphernalia
             {
                 StreamOpen(ref symSetFilename, ref _binWriter, ref _opStream);
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
-                MessageBox.Show(exc.ToString(),
+                MessageBox.Show(ex.Message,
                                 "Failure to open symbol set file",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
@@ -134,11 +134,11 @@ namespace PCLParaphernalia
                 _binWriter.Close();
                 _opStream.Close();
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
                 flagOK = false;
 
-                MessageBox.Show(exc.ToString(),
+                MessageBox.Show(ex.Message,
                                 "Failure to write symbol set file",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);

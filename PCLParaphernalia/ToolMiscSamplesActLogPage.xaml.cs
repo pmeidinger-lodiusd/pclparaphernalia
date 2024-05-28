@@ -495,8 +495,8 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString("F2");
 
-                    MessageBox.Show("Left offset value '" + crntText + "' is invalid.\n\nValue will be reset to default '" + newText + "'",
-                                    "Logical page attribute invalid",
+                    MessageBox.Show($"Left offset value '{crntText}' is invalid.\r\nValue will be reset to default '{newText}'.",
+                                    "Logical Page Attribute Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
 
@@ -506,8 +506,8 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show("Left offset value '" + crntText + "' is invalid.\n\nValid range is :\n\t" + minVal + " <= value <= " + maxVal,
-                                    "Logical Page attribute invalid",
+                    MessageBox.Show($"Left offset value '{crntText}' is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal}.",
+                                    "Logical Page Attribute Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 
@@ -561,8 +561,8 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString("F2");
 
-                    MessageBox.Show("Top offset value '" + crntText + "' is invalid.\n\nValue will be reset to default '" + newText + "'",
-                                    "Logical page attribute invalid",
+                    MessageBox.Show($"Top offset value '{crntText}' is invalid.\r\nValue will be reset to default '{newText}'.",
+                                    "Logical Page Attribute Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
 
@@ -572,8 +572,8 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show("Top offset value '" + crntText + "' is invalid.\n\nValid range is :\n\t" + minVal + " <= value <= " + maxVal,
-                                    "Logical Page attribute invalid",
+                    MessageBox.Show($"Top offset value '{crntText}' is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal}.",
+                                    "Logical Page Attribute Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 
@@ -627,8 +627,8 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString("F2");
 
-                    MessageBox.Show("Logical page height value '" + crntText + "' is invalid.\n\nValue will be reset to default '" + newText + "'",
-                                    "Logical page attribute invalid",
+                    MessageBox.Show($"Logical page height value '{crntText}' is invalid.\r\nValue will be reset to default '{newText}'.",
+                                    "Logical Page Attribute Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
 
@@ -638,8 +638,8 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show("Logical page height value '" + crntText + "' is invalid.\n\nValid range is :\n\t" + minVal + " <= value <= " + maxVal,
-                                    "Logical Page attribute invalid",
+                    MessageBox.Show($"Logical page height value '{crntText}' is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal}.",
+                                    "Logical Page Attribute Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 
@@ -693,8 +693,8 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString("F2");
 
-                    MessageBox.Show("Logical page width value '" + crntText + "' is invalid.\n\nValue will be reset to default '" + newText + "'",
-                                    "Logical page attribute invalid",
+                    MessageBox.Show($"Logical page width value '{crntText}' is invalid.\r\nValue will be reset to default '{newText}'.",
+                                    "Logical Page Attribute Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
 
@@ -704,8 +704,8 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show("Logical page width value '" + crntText + "' is invalid.\n\nValid range is :\n\t" + minVal + " <= value <= " + maxVal,
-                                    "Logical Page attribute invalid",
+                    MessageBox.Show($"Logical page width value '{crntText}' is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal}.",
+                                    "Logical Page Attribute Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 

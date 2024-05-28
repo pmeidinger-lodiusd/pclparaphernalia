@@ -88,10 +88,10 @@ namespace PCLParaphernalia
 
         private static bool BinSrcFileOpen(string fileName, ref long fileSize)
         {
-            if ((fileName == null) || (fileName?.Length == 0))
+            if (string.IsNullOrEmpty(fileName))
             {
                 MessageBox.Show("Binary source filename is null.",
-                                "PJL FS file invalid",
+                                "PJL FS File Invalid",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
@@ -100,8 +100,8 @@ namespace PCLParaphernalia
             
             if (!File.Exists(fileName))
             {
-                MessageBox.Show("Binary source file '" + fileName + "' does not exist.",
-                                "PJL FS file invalid",
+                MessageBox.Show($"Binary source file '{fileName}' does not exist.",
+                                "PJL FS File Invalid",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
@@ -115,10 +115,8 @@ namespace PCLParaphernalia
             }
             catch (IOException e)
             {
-                MessageBox.Show("IO Exception:\r\n" +
-                                e.Message + "\r\n" +
-                                "Opening PJL FS file '" + fileName + "'",
-                                "PJL FS file error",
+                MessageBox.Show($"IO Exception:\r\n{e.Message}\r\n\r\nOpening PJL FS file '{fileName}'",
+                                "PJL FS File Error",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
@@ -163,10 +161,10 @@ namespace PCLParaphernalia
 
         private static bool BinTgtFileOpen(string fileName)
         {
-            if ((fileName == null) || (fileName?.Length == 0))
+            if (string.IsNullOrEmpty(fileName))
             {
                 MessageBox.Show("Target filename is null.",
-                                "PJL FS file invalid",
+                                "PJL FS File Invalid",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
@@ -177,10 +175,10 @@ namespace PCLParaphernalia
             {
                 _opStream = File.Open(fileName, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None);
             }
-            catch (IOException e)
+            catch (IOException ex)
             {
-                MessageBox.Show("IO Exception:\r\n" + e.Message + "\r\n" + "Opening print file '" + fileName,
-                                "Print file selection",
+                MessageBox.Show($"IO Exception:\r\n{ex.Message}\r\nOpening print file '" + fileName,
+                                "Print File Selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 

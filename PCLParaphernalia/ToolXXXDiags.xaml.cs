@@ -225,15 +225,15 @@ namespace PCLParaphernalia
             //Use the enumerationFlags to filter out unwanted print queues
             PrintQueueCollection printQueuesOnLocalServer = printServer.GetPrintQueues(enumerationFlags);
 
-            MessageBox.Show("These are your shared, local print queues:\n\n",
-                            "Windows printer selection",
+            MessageBox.Show("These are your shared, local print queues:",
+                            "Windows Printer Selection",
                             MessageBoxButton.OK,
                             MessageBoxImage.Exclamation);
 
             foreach (PrintQueue printer in printQueuesOnLocalServer)
             {
-                MessageBox.Show("\tThe shared printer " + printer.Name + " is located at " + printer.Location + "\n",
-                            "Windows printer selection",
+                MessageBox.Show($"\tThe shared printer {printer.Name} is located at {printer.Location}\r\n",
+                            "Windows Printer Selection",
                             MessageBoxButton.OK,
                             MessageBoxImage.Exclamation);
             }

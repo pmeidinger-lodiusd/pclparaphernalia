@@ -173,9 +173,7 @@ namespace PCLParaphernalia
             }
             catch (IOException e)
             {
-                MessageBox.Show("IO Exception:\r\n" +
-                                 e.Message + "\r\n" +
-                                 "Closing stream/file",
+                MessageBox.Show($"IO Exception:\r\n{e.Message}\r\n\r\nClosing stream/file.",
                                  "PCL XL user stream analysis",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
@@ -243,7 +241,7 @@ namespace PCLParaphernalia
 
         private static bool StreamFileOpen(string fileName, ref long fileSize)
         {
-            if ((fileName == null) || (fileName?.Length == 0))
+            if (string.IsNullOrEmpty(fileName))
             {
                 MessageBox.Show("Download stream file name is null.",
                                 "PCL XL stream invalid",
@@ -255,7 +253,7 @@ namespace PCLParaphernalia
             
             if (!File.Exists(fileName))
             {
-                MessageBox.Show("Download stream file '" + fileName + "' does not exist.",
+                MessageBox.Show($"Download stream file '{fileName}' does not exist.",
                                 "PCL XL stream invalid",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
@@ -269,13 +267,10 @@ namespace PCLParaphernalia
             }
             catch (IOException e)
             {
-                MessageBox.Show("IO Exception:\r\n" +
-                                    e.Message + "\r\n" +
-                                    "Opening file '" +
-                                    fileName + "'",
-                                    "PCL XL user stream analysis",
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Error);
+                MessageBox.Show($"IO Exception:\r\n{e.Message}\r\nOpening file '{fileName}'.",
+                                "PCL XL user stream analysis",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
 
                 return false;
             }

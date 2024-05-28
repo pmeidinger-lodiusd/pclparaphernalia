@@ -129,9 +129,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LogError(DataTable table,
-                                    MessageBoxImage type,
-                                    string message)
+        public static void LogError(DataTable table, MessageBoxImage type, string message)
         {
             if (type == MessageBoxImage.Information)
             {

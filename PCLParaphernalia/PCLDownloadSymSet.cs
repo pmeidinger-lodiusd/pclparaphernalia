@@ -61,7 +61,7 @@ namespace PCLParaphernalia
             bool flagOK;
             if (!SymSetFileOpen(filename, ref fileSize))
             {
-                MessageBox.Show("Unable to open symbol set definition file '" + filename + "'",
+                MessageBox.Show($"Unable to open symbol set definition file '{filename}'.",
                                  "Symbol Set file invalid",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
@@ -74,13 +74,10 @@ namespace PCLParaphernalia
 
             if (!ReadSymSetId(fileSize, ref offset, ref symSetNo))
             {
-                MessageBox.Show("Symbol set definition" +
-                                    " file '" + filename + "':\r\n\r\n" +
-                                    "File does not start with" +
-                                    " 'symbol set Id' escape sequence",
-                                    "Symbol Set file invalid",
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Error);
+                MessageBox.Show($"Symbol set definition file '{filename}':\r\n\r\nFile does not start with 'symbol set Id' escape sequence.",
+                                "Symbol Set file invalid",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
 
                 SymSetFileClose();
                 return false;
@@ -100,9 +97,7 @@ namespace PCLParaphernalia
 
             if (!flagOK)
             {
-                MessageBox.Show("Symbol set definition" +
-                                    " file '" + filename + "':\r\n\r\n" +
-                                    "Header is invalid",
+                MessageBox.Show($"Symbol set definition file '{filename}':\r\n\r\nHeader is invalid.",
                                     "Symbol Set file invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
@@ -115,9 +110,7 @@ namespace PCLParaphernalia
 
             if (!flagOK)
             {
-                MessageBox.Show("Symbol set definition" +
-                                    " file '" + filename + "':\r\n\r\n" +
-                                    "Mapping data is invalid",
+                MessageBox.Show($"Symbol set definition file '{filename}':\r\n\r\nMapping data is invalid.",
                                     "Symbol Set file invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
@@ -225,7 +218,7 @@ namespace PCLParaphernalia
 
             bool flagOK = true;
 
-            string messHeader = "Download symbol set file '" + fileName + "':\n\n";
+            string messHeader = $"Download symbol set file '{fileName}':\n\n";
             const string messTrailer = "\n\nYou will have to choose another file.";
 
             int offset = (int)fileOffset;
@@ -293,9 +286,7 @@ namespace PCLParaphernalia
 
             if (!flagOK)
             {
-                MessageBox.Show(messHeader +
-                                "File does not start with a valid escape sequence in the format <esc>(f#W (where # is a numeric value)." +
-                                messTrailer,
+                MessageBox.Show($"{messHeader}File does not start with a valid escape sequence in the format <esc>(f#W (where # is a numeric value).{messTrailer}",
                                 "PCL symbol set file",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
@@ -305,11 +296,7 @@ namespace PCLParaphernalia
             
             if ((hddrLen + hddrOffset) > fileSize)
             {
-                MessageBox.Show(messHeader +
-                                "Header (offset = '" + hddrOffset + "') of" +
-                                "length '" + hddrLen + "' is inconsistent" +
-                                " with a file size of '" + fileSize + "'." +
-                                messTrailer,
+                MessageBox.Show($"{messHeader}Header (offset = '{hddrOffset}') of length '{hddrLen} ' is inconsistent with a file size of '{fileSize}'.{messTrailer}",
                                 "PCL symbol set file",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
@@ -329,11 +316,7 @@ namespace PCLParaphernalia
 
             if (hddrSize > hddrLen)
             {
-                MessageBox.Show(messHeader +
-                                "Header size '" + hddrSize + "' is" +
-                                " inconsistent with sequence data size of '" +
-                                hddrLen + "'." +
-                                messTrailer,
+                MessageBox.Show($"{messHeader}Header size '{hddrSize}' is inconsistent with sequence data size of '{hddrLen}'.{messTrailer}",
                                 "PCL symbol set file",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
@@ -343,11 +326,7 @@ namespace PCLParaphernalia
                 
             if (hddrSize != hddrDescLen)
             {
-                MessageBox.Show(messHeader +
-                                "Header size '" + hddrSize +
-                                "' != expected size of '" +
-                                hddrDescLen + "'." +
-                                messTrailer,
+                MessageBox.Show($"{messHeader}Header size '{hddrSize}' does not equal expected size of '{hddrDescLen}'.{messTrailer}",
                                 "PCL symbol set file",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
@@ -562,7 +541,7 @@ namespace PCLParaphernalia
 
         private static bool SymSetFileOpen(string fileName, ref long fileSize)
         {
-            if ((fileName == null) || (fileName?.Length == 0))
+            if (string.IsNullOrEmpty(fileName))
             {
                 MessageBox.Show("Download symbol set file name is null.",
                                 "PCL symbol set file name invalid",
@@ -574,7 +553,7 @@ namespace PCLParaphernalia
             
             if (!File.Exists(fileName))
             {
-                MessageBox.Show("Download symbol set file '" + fileName + "' does not exist.",
+                MessageBox.Show($"Download symbol set file '{fileName}' does not exist.",
                                 "PCL symbol set file name invalid",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
@@ -588,10 +567,7 @@ namespace PCLParaphernalia
             }
             catch (IOException e)
             {
-                MessageBox.Show("IO Exception:\r\n" +
-                                    e.Message + "\r\n" +
-                                    "Opening symbol set file '" +
-                                    fileName + "'",
+                MessageBox.Show($"IO Exception:\r\n{e.Message}\r\nOpening symbol set file '{fileName}'.",
                                     "PCL symbol set file",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);

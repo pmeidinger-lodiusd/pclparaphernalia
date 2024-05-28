@@ -73,16 +73,16 @@ namespace PCLParaphernalia
 
             catch (SocketException e)
             {
-                MessageBox.Show("SocketExceptionMessage: " + e.Message + "\n\nErrorCode: " + e.ErrorCode + "\n\nSocketErrorCode: " + e.SocketErrorCode,
-                                 "Printer output",
-                                 MessageBoxButton.OK,
-                                 MessageBoxImage.Exclamation);
+                MessageBox.Show($"SocketException:\r\n\r\nMessage: {e.Message}\r\n\r\nErrorCode: {e.ErrorCode}\r\n\r\nSocketErrorCode: {e.SocketErrorCode}",
+                                "Printer Output",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Exclamation);
 
                 OK = false;
             }
             catch (Exception e)
             {
-                MessageBox.Show("Exception: " + e,
+                MessageBox.Show("Exception:\r\n\r\n" + e.Message,
                                 "Printer output",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Exclamation);
@@ -182,15 +182,15 @@ namespace PCLParaphernalia
 
                 catch (SocketException e)
                 {
-                    MessageBox.Show("SocketException:\n\nMessage: " + e.Message + "\n\nErrorCode: " + e.ErrorCode + "\n\nSocketErrorCode: " + e.SocketErrorCode,
-                                     "Printer output",
+                    MessageBox.Show($"SocketException:\r\n\r\nMessage: {e.Message}\r\n\r\nErrorCode: {e.ErrorCode}\r\n\r\nSocketErrorCode: {e.SocketErrorCode}",
+                                     "Printer Output",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Exclamation);
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Exception:\n\n" + e,
-                                    "Printer output",
+                    MessageBox.Show("Exception:\r\n" + e.Message,
+                                    "Printer Output",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Exclamation);
                 }

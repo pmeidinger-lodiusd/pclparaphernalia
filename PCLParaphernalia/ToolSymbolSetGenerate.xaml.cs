@@ -457,8 +457,8 @@ namespace PCLParaphernalia
             {
                 string filename = _donorSymSetFile;
 
-                MessageBox.Show("File " + _donorSymSetFile + " does not exist",
-                    "Symbol Set definition file",
+                MessageBox.Show($"File {_donorSymSetFile} does not exist.",
+                    "Symbol Set Definition File",
                     MessageBoxButton.OK,
                     MessageBoxImage.Information);
 
@@ -1968,9 +1968,9 @@ namespace PCLParaphernalia
                 PopulateCharCollReq(_flagIndexUnicode);
 
                 MessageBox.Show("Specific 'Character collection requirements' settings need to be reviewed as the 'Symbol index' type has been changed.",
-                                 "Symbol index type changed",
-                                 MessageBoxButton.OK,
-                                 MessageBoxImage.Warning);
+                                "Symbol Index Type Changed",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Warning);
             }
             else
             {
@@ -1997,10 +1997,10 @@ namespace PCLParaphernalia
             {
                 PopulateCharCollReq(_flagIndexUnicode);
 
-                MessageBox.Show("Specific 'Character collection requirements' settings need to be  reviewed as the 'Symbol index' type has been changed.",
-                                 "Symbol index type changed",
-                                 MessageBoxButton.OK,
-                                 MessageBoxImage.Warning);
+                MessageBox.Show("Specific 'Character collection requirements' settings need to be reviewed as the 'Symbol index' type has been changed.",
+                                "Symbol Index Type Changed",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Warning);
             }
             else
             {
@@ -2770,8 +2770,8 @@ namespace PCLParaphernalia
 
                 source.Text = valText;
 
-                MessageBox.Show("Map point " + formatDesc + " '" + indxText + "':\n\nTarget code-point value " + formatDesc + " '" + txtCodepoint + "' is invalid.\n\nReset to original value " + formatDesc + " '" + valText + "'",
-                                 "Target code point mapping",
+                MessageBox.Show($"Map point {formatDesc} '{indxText}':\r\nTarget code-point value {formatDesc} '{txtCodepoint}' is invalid.\r\nReset to original value {formatDesc} '{valText}'.",
+                                 "Target Code Point Mapping",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
             }
@@ -2817,8 +2817,8 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    MessageBox.Show("Alphabetic part '" + crntText + "' of identifier is invalid.\n\nValue will be reset to default '" + defVal + "'",
-                                    "Symbol Set identifier invalid",
+                    MessageBox.Show($"Alphabetic part '{crntText}' of identifier is invalid.\r\nValue will be reset to default '{defVal}'/",
+                                    "Symbol Set Identifier Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
 
@@ -2828,8 +2828,8 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show("Alphabetic part '" + crntText + "' of identifier is invalid.\n\nValid range is :\n\t" + minVal + " <= value <= " + maxVal + " excluding " + badVal,
-                                    "Symbol Set identifier invalid",
+                    MessageBox.Show($"Alphabetic part '{crntText}' of identifier is invalid.\r\nValid range is :\n\t{minVal} <= value <= {maxVal} excluding {badVal}.",
+                                    "Symbol Set Identifier Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 
@@ -2878,8 +2878,8 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show("Numeric part '" + crntText + "' of identifier is invalid.\n\nValue will be reset to default '" + newText + "'",
-                                    "Symbol Set identifier invalid",
+                    MessageBox.Show($"Numeric part '{crntText}' of identifier is invalid.\r\nValue will be reset to default '{newText}'.",
+                                    "Symbol Set Identifier Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
 
@@ -2889,8 +2889,8 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show("Numeric part '" + crntText + "' of identifier is invalid.\n\nValid range is :\n\t" + minVal + " <= value <= " + maxVal,
-                                    "Symbol Set identifier invalid",
+                    MessageBox.Show($"Numeric part '{crntText}' of identifier is invalid.\r\nValid range is :\n\t{minVal} <= value <= {maxVal}.",
+                                    "Symbol Set Identifier Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 

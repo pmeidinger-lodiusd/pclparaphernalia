@@ -1914,9 +1914,7 @@ namespace PCLParaphernalia
 
             if (_paperSizeCount != _eIndexCt)
             {
-                MessageBox.Show("Count '" + _paperSizeCount + "' of defined" +
-                                " paper sizes is not equal to count '" +
-                                _eIndexCt + "' of index items!",
+                MessageBox.Show($"Count '{_paperSizeCount}' of defined paper sizes is not equal to count '{_eIndexCt}' of index items!",
                                 "Internal design-time logic error",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);

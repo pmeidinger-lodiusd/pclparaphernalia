@@ -533,10 +533,10 @@ namespace PCLParaphernalia
             }
             catch (IOException e)
             {
-                MessageBox.Show("IO Exception:\r\n" + e.Message + "\r\nCreating file '" + _crntFilename,
-                                 "Target file",
-                                 MessageBoxButton.OK,
-                                 MessageBoxImage.Error);
+                MessageBox.Show($"IO Exception:\r\n{e.Message}\r\n\r\nCreating file '{_crntFilename}'.",
+                                "Target file",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
             }
 
             if (_opStream != null)
@@ -574,7 +574,7 @@ namespace PCLParaphernalia
 
                 if (!OK)
                 {
-                    MessageBox.Show("invalid address" + _netPrinterAddress,
+                    MessageBox.Show("Invalid address: " + _netPrinterAddress,
                                     "Printer IP Address",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Exclamation);
@@ -633,8 +633,8 @@ namespace PCLParaphernalia
                 }
                 catch (IOException e)
                 {
-                    MessageBox.Show("IO Exception:\r\n" + e.Message + "\r\nDeleting file '" + _crntFilename,
-                                     "Target stream",
+                    MessageBox.Show($"IO Exception:\r\n{e.Message}\r\nDeleting file '{_crntFilename}'.",
+                                     "Target Stream",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
                 }

@@ -201,9 +201,7 @@ namespace PCLParaphernalia
                     }
                     catch (IOException e)
                     {
-                        MessageBox.Show("' IO Exception:\r\n" +
-                                         e.Message +
-                                         "\r\n\r\nSeeking to offset " + crntPos,
+                        MessageBox.Show($"IO Exception:\r\n{e.Message}\r\n\r\nSeeking to offset {crntPos}.",
                                          "Synchronising",
                                          MessageBoxButton.OK,
                                          MessageBoxImage.Error);
@@ -250,9 +248,7 @@ namespace PCLParaphernalia
                         }
                         catch (IOException e)
                         {
-                            MessageBox.Show("' IO Exception:\r\n" +
-                                             e.Message +
-                                             "\r\n\r\nCopying " + readLen + " bytes",
+                            MessageBox.Show($"IO Exception:\r\n{e.Message}\r\n\r\nCopying " + readLen + " bytes.",
                                              "Synchronising",
                                              MessageBoxButton.OK,
                                              MessageBoxImage.Error);
@@ -321,9 +317,7 @@ namespace PCLParaphernalia
                         }
                         catch (IOException e)
                         {
-                            MessageBox.Show("' IO Exception:\r\n" +
-                                             e.Message +
-                                             "\r\n\r\nCopying " + readLen + " bytes",
+                            MessageBox.Show($"IO Exception:\r\n{e.Message}\r\n\r\nCopying " + readLen + " bytes.",
                                              "Synchronising",
                                              MessageBoxButton.OK,
                                              MessageBoxImage.Error);
@@ -719,11 +713,8 @@ namespace PCLParaphernalia
                 string.Empty,
                "Run aborted");
 
-            MessageBox.Show(
-                "The specified overlay identifier " + vInt +
-                " is already used within the" +
-                " source print file",
-                "Overlay identifier conflict",
+            MessageBox.Show($"The specified overlay identifier {vInt} is already used within the source print file.",
+                "Overlay Identifier Conflict",
                 MessageBoxButton.OK,
                 MessageBoxImage.Error);
         }
@@ -1487,11 +1478,10 @@ namespace PCLParaphernalia
             }
             catch (IOException e)
             {
-                MessageBox.Show("' IO Exception:\r\n" +
-                                 e.Message,
-                                 "Inserting sequences",
-                                 MessageBoxButton.OK,
-                                 MessageBoxImage.Error);
+                MessageBox.Show("IO Exception:\r\n" + e.Message,
+                                "Inserting Sequences",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
             }
         }
 
