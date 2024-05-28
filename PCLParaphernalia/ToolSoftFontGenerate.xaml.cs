@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Windows;
@@ -1378,15 +1379,16 @@ namespace PCLParaphernalia
                 {
                     string value = key.GetValue(valueName).ToString();
 
-                    if (value.EndsWith(".ttf") || value.EndsWith(".TTF")
-                                                  ||
-                        value.EndsWith(".otf") || value.EndsWith(".OTF"))
+                    var cultureInfo = new CultureInfo("en-US");
+
+
+if (value.EndsWith(".ttf", true, cultureInfo) || value.EndsWith(".otf"))
                     {
                         _ctTTFFonts++;
 
                         fontList.Add(valueName, value);
                     }
-                    else if (value.EndsWith(".ttc") || value.EndsWith(".TTC"))
+                    else if (value.EndsWith(".ttc", true, cultureInfo))
                     {
                         _ctTTFFonts++;
 
