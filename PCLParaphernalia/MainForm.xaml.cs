@@ -16,7 +16,7 @@ namespace PCLParaphernalia
 
     public partial class MainForm : Window
     {
-        public const string _regMainKey = "Software\\PCLParaphernalia";
+        public const string _regMainKey = @"Software\PCLParaphernalia";
 
         public bool _runXXXDiags = false;  // ****  design time toggle ****//
 
@@ -81,8 +81,7 @@ namespace PCLParaphernalia
                                            ref mwWidth,
                                            ref mwScale);
 
-            if ((mwLeft == -1) || (mwTop == -1) ||
-                (mwHeight == -1) || (mwWidth == -1))
+            if ((mwLeft == -1) || (mwTop == -1) || (mwHeight == -1) || (mwWidth == -1))
             {
                 WindowStartupLocation = WindowStartupLocation.CenterScreen;
                 Width = 801;
@@ -123,6 +122,7 @@ namespace PCLParaphernalia
             int versionMinorCrnt = assemblyName.Version.Minor;
             int versionBuildCrnt = assemblyName.Version.Build;
             int versionRevisionCrnt = assemblyName.Version.Revision;
+
             MainFormData.SetVersionData(true, versionMajorCrnt,
                                                versionMinorCrnt,
                                                versionBuildCrnt,
@@ -525,9 +525,7 @@ namespace PCLParaphernalia
 
         private void helpContents_Click(object sender, RoutedEventArgs e)
         {
-            string appStartPath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
-
-            string helpFile = appStartPath + @"\PCLParaphernalia.chm";
+            string helpFile = Path.Combine(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName), "PCLParaphernalia.chm");
 
             if (File.Exists(helpFile))
             {
