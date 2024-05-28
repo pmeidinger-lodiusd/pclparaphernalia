@@ -46,9 +46,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyVersionData;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyVersionData))
                 {
                     major = (int)subKey.GetValue(_nameVersionMajor, -1);
                     minor = (int)subKey.GetValue(_nameVersionMinor, -1);
@@ -72,9 +70,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyWindowState;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyWindowState))
                 {
                     left = (int)subKey.GetValue(_nameMainWindowLeft, -1);
                     top = (int)subKey.GetValue(_nameMainWindowTop, -1);
@@ -98,9 +94,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyVersionData;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyVersionData))
                 {
                     subKey.SetValue(_nameVersionMajor, major, RegistryValueKind.DWord);
                     subKey.SetValue(_nameVersionMinor, minor, RegistryValueKind.DWord);
@@ -123,9 +117,7 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-                const string key = _subKeyWindowState;
-
-                using (var subKey = keyMain.CreateSubKey(key))
+                using (var subKey = keyMain.CreateSubKey(_subKeyWindowState))
                 {
                     subKey.SetValue(_nameMainWindowLeft, mwLeft, RegistryValueKind.DWord);
                     subKey.SetValue(_nameMainWindowTop, mwTop, RegistryValueKind.DWord);
