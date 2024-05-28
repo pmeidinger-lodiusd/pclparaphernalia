@@ -733,7 +733,7 @@ namespace PCLParaphernalia
             OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(selectedName);
 
             openDialog.CheckFileExists = false;
-            openDialog.Filter = "Overlay Files|*.ovl; *.OVL" + "|All files|*.*";
+            openDialog.Filter = "PCL Overlay Files|*.ovl;|All Files|*.*";
 
             if (openDialog.ShowDialog() == false)
                 return false;
@@ -757,7 +757,7 @@ namespace PCLParaphernalia
             OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(selectedName);
 
             openDialog.CheckFileExists = false;
-            openDialog.Filter = "Overlay Files|*.ovx; *.OVX|All files|*.*";
+            openDialog.Filter = "PCLXL Overlay Files|*.ovx|All Files|*.*";
 
             if (openDialog.ShowDialog() == false)
                 return false;
@@ -780,7 +780,7 @@ namespace PCLParaphernalia
         {
             OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(selectedName);
 
-            openDialog.Filter = "Print Files|*.prn; *.PRN|All files|*.*";
+            openDialog.Filter = "Print Files|*.prn|All Files|*.*";
 
             if (openDialog.ShowDialog() == false)
                 return false;

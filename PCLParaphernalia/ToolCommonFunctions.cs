@@ -32,7 +32,7 @@ namespace PCLParaphernalia
                 InitialDirectory = Directory.Exists(folderName) ? folderName : Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                 FileName = fileName,
                 CheckFileExists = true,
-                Filter = "All files|*.*"
+                Filter = "All Files|*.*"
             };
         }
 

@@ -1503,12 +1503,12 @@ namespace PCLParaphernalia
 
             if (makeOvlXL)
             {
-                saveDialog.Filter = "Print Overlays | *.ovx; *.OVX";
+                saveDialog.Filter = "PCLXL Overlay File|*.ovx";
                 saveDialog.DefaultExt = "ovx";
             }
             else
             {
-                saveDialog.Filter = "Print Overlays | *.ovl; *.OVL";
+                saveDialog.Filter = "PCL Overlay File|*.ovl";
                 saveDialog.DefaultExt = "ovl";
             }
 

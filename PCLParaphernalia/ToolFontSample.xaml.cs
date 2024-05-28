@@ -3435,7 +3435,7 @@ namespace PCLParaphernalia
         {
             OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(fontFilename);
 
-            openDialog.Filter = "PCL Font files|*.sfp; *.sfs; *.sft; *.SFP; *.SFS; *.SFT;|All files|*.*";
+            openDialog.Filter = "PCL Font Files|*.sfp; *.sfs; *.sft|All Files|*.*";
 
             if (openDialog.ShowDialog() == false)
                 return false;
@@ -3458,7 +3458,7 @@ namespace PCLParaphernalia
         {
             OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(fontFilename);
 
-            openDialog.Filter = "PCLXL Font files|*.sfx; *.SFX|All files|*.*";
+            openDialog.Filter = "PCLXL Font Files|*.sfx|All Files|*.*";
 
             if (openDialog.ShowDialog() == false)
                 return false;
@@ -3481,7 +3481,7 @@ namespace PCLParaphernalia
         {
             OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(symSetFile);
 
-            openDialog.Filter = "PCL files|*.pcl; *.PCL;|All files|*.*";
+            openDialog.Filter = "PCL Files|*.pcl|All Files|*.*";
 
             if (openDialog.ShowDialog() == false)
                 return false;

@@ -2340,7 +2340,7 @@ bitVal;
             OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(fontFilename);
 
             openDialog.CheckFileExists = false;
-            openDialog.Filter = "PCLETTO font files|*.sft; *.SFT";
+            openDialog.Filter = "PCLETTO Font Files|*.sft";
 
             if (openDialog.ShowDialog() == false)
                 return false;
@@ -2364,7 +2364,7 @@ bitVal;
             OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(fontFilename);
 
             openDialog.CheckFileExists = false;
-            openDialog.Filter = "PCLXLETTO font files|*.sfx; *.SFX";
+            openDialog.Filter = "PCLXLETTO Font Files|*.sfx";
 
             if (openDialog.ShowDialog() == false)
                 return false;
@@ -2387,7 +2387,7 @@ bitVal;
         {
             OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(symSetFile);
 
-            openDialog.Filter = "PCL files|*.pcl; *.PCL;|All files|*.*";
+            openDialog.Filter = "PCL Files|*.pcl|All Files|*.*";
 
             if (openDialog.ShowDialog() == false)
                 return false;
@@ -2411,7 +2411,7 @@ bitVal;
             OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(fontFilenameTTF);
 
             openDialog.CheckFileExists = false;
-            openDialog.Filter = "TrueType font files|*.ttf; *.otf; *.ttc*.TTF; *.OTF; *.TTC";
+            openDialog.Filter = "TrueType Font Files|*.ttf; *.otf; *.ttc";
 
             if (openDialog.ShowDialog() == false)
                 return false;

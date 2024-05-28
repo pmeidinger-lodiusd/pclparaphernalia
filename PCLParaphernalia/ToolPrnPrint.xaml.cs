@@ -337,11 +337,8 @@ namespace PCLParaphernalia
         {
             OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(prnFilename);
 
-            openDialog.Filter = "Print Files|" +
-                                "*.prn; *.pcl; *.dia;" +
-                                "*.PRN; *.PCL; *.DIA" +
-                                "|All files|" +
-                                "*.*";
+            openDialog.Filter = "Print Files|*.prn; *.pcl; *.dia" +
+                                "|All Files|*.*";
 
             if (openDialog.ShowDialog() == false)
                 return false;

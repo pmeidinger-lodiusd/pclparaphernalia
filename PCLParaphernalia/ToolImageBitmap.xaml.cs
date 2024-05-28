@@ -777,7 +777,7 @@ namespace PCLParaphernalia
         {
             OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(selectedName);
 
-            openDialog.Filter = "Bitmap Files|*.bmp; *.BMP";
+            openDialog.Filter = "Bitmap Files|*.bmp";
 
             if (openDialog.ShowDialog() == false)
                 return false;

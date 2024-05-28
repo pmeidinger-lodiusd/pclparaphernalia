@@ -823,17 +823,17 @@ namespace PCLParaphernalia
 
             if (rptFileFmt == RptFileFmt.html)
             {
-                saveDialog.Filter = "Html Files | *.html";
+                saveDialog.Filter = "HTML File|*.html";
                 saveDialog.DefaultExt = "html";
             }
             else if (rptFileFmt == RptFileFmt.xml)
             {
-                saveDialog.Filter = "Xml Files | *.xml";
+                saveDialog.Filter = "XML File|*.xml";
                 saveDialog.DefaultExt = "xml";
             }
             else
             {
-                saveDialog.Filter = "Text Files | *.txt";
+                saveDialog.Filter = "Text File|*.txt";
                 saveDialog.DefaultExt = "txt";
             }
 

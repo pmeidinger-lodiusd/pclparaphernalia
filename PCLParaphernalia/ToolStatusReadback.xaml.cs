@@ -1115,17 +1115,10 @@ namespace PCLParaphernalia
         {
             OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(locBinFilename);
 
-            openDialog.Filter = "Print Files|" +
-                                "*.prn; *.pcl; *.dia;" +
-                                "*.PRN; *.PCL; *.DIA" +
-                                "|Font files|" +
-                                "*.sfp; *.sfs; *.sft; *.sfx; " +
-                                "*.SFP; *.SFS; *.SFT, *.SFX" +
-                                "|Overlay files|" +
-                                "*.ovl; *.ovx;" +
-                                "*.OVL; *.OVX" +
-                                "|All files|" +
-                                "*.*";
+            openDialog.Filter = "Print Files|*.prn; *.pcl; *.dia" +
+                                "|Font files|*.sfp; *.sfs; *.sft; *.sfx" +
+                                "|Overlay files|*.ovl; *.ovx" +
+                                "|All files|*.*";
 
             if (openDialog.ShowDialog() == false)
                 return false;
@@ -1149,17 +1142,10 @@ namespace PCLParaphernalia
         {
             SaveFileDialog saveDialog = ToolCommonFunctions.CreateSaveFileDialog(locBinFilename);
 
-            saveDialog.Filter = "Print Files|" +
-                                "*.prn; *.pcl; *.dia;" +
-                                "*.PRN; *.PCL; *.DIA" +
-                                "|Font files|" +
-                                "*.sfp; *.sfs; *.sft; *.sfx; " +
-                                "*.SFP; *.SFS; *.SFT, *.SFX" +
-                                "|Overlay files|" +
-                                "*.ovl; *.ovx;" +
-                                "*.OVL; *.OVX" +
-                                "|All files|" +
-                                "*.*";
+            saveDialog.Filter = "Print Files|*.prn; *.pcl; *.dia;" +
+                                "|Font files|*.sfp; *.sfs; *.sft; *.sfx; " +
+                                "|Overlay files|*.ovl; *.ovx;" +
+                                "|All files|*.*";
 
             saveDialog.DefaultExt = "pcl";
 

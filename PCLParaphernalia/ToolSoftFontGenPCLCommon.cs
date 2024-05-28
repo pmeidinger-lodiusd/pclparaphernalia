@@ -333,12 +333,12 @@ namespace PCLParaphernalia
 
             if (pdlIsPCLXL)
             {
-                saveDialog.Filter = "PCLXLETTO Font Files | *.sfx";
+                saveDialog.Filter = "PCLXLETTO Font File|*.sfx";
                 saveDialog.DefaultExt = "sfx";
             }
             else
             {
-                saveDialog.Filter = "PCLETTO Font Files | *.sft";
+                saveDialog.Filter = "PCLETTO Font File|*.sft";
                 saveDialog.DefaultExt = "sft";
             }
 
