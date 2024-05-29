@@ -28,9 +28,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private const string _fontRegistryRoot = "HKEY_LOCAL_MACHINE";
-        private const string _fontRegistryKey =
-            "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts";
+        private const string _fontRegistryKey = "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts";
 
         private const char _defaultSymSetIdAlpha = 'N';
         private const ushort _defaultSymSetIdNum = 0;
@@ -183,40 +181,40 @@ namespace PCLParaphernalia
 
         private void btnLogSave_Click(object sender, EventArgs e)
         {
-            bool flagOptRptWrap = false;
+            var flagOptRptWrap = false;
 
-            ReportCore.RptFileFmt rptFileFmt = ReportCore.RptFileFmt.NA;
-            ReportCore.RptChkMarks rptChkMarks = ReportCore.RptChkMarks.NA;
+            var rptFileFmt = ReportCore.RptFileFmt.NA;
+            var rptChkMarks = ReportCore.RptChkMarks.NA;
 
             TargetCore.MetricsReturnFileRpt(
                 ToolCommonData.ToolIds.SoftFontGenerate,
-                ref rptFileFmt,
-                ref rptChkMarks,
-                ref flagOptRptWrap);
+                    ref rptFileFmt,
+                    ref rptChkMarks,
+                    ref flagOptRptWrap);
 
             if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 ToolSoftFontGenReport.Generate(rptFileFmt,
-                                                            rptChkMarks,
-                                                            _tableLogDonor,
-                                                            _tableLogMapping,
-                                                            _tableLogTarget,
-                                                            _tableLogChars,
-                                                            _fontNameTTF,
-                                                            _fontFilenameTTF,
-                                                            _fontFilenamePCL);
+                    rptChkMarks,
+                    _tableLogDonor,
+                    _tableLogMapping,
+                    _tableLogTarget,
+                    _tableLogChars,
+                    _fontNameTTF,
+                    _fontFilenameTTF,
+                    _fontFilenamePCL);
             }
             else
             {
                 ToolSoftFontGenReport.Generate(rptFileFmt,
-                                                            rptChkMarks,
-                                                            _tableLogDonor,
-                                                            _tableLogMapping,
-                                                            _tableLogTarget,
-                                                            _tableLogChars,
-                                                            _fontNameTTF,
-                                                            _fontFilenameTTF,
-                                                            _fontFilenamePCLXL);
+                    rptChkMarks,
+                    _tableLogDonor,
+                    _tableLogMapping,
+                    _tableLogTarget,
+                    _tableLogChars,
+                    _fontNameTTF,
+                    _fontFilenameTTF,
+                    _fontFilenamePCLXL);
             }
         }
 
@@ -232,13 +230,9 @@ namespace PCLParaphernalia
 
         private void btnPCLFontFileBrowse_Click(object sender, RoutedEventArgs e)
         {
-            bool selected;
-
             string filename = _fontFilenamePCL;
 
-            selected = SelectPCLFontFile(ref filename);
-
-            if (selected)
+            if (SelectPCLFontFile(ref filename))
             {
                 _fontFilenamePCL = filename;
                 txtPCLFontFile.Text = _fontFilenamePCL;
@@ -259,13 +253,9 @@ namespace PCLParaphernalia
 
         private void btnPCLXLFontFileBrowse_Click(object sender, RoutedEventArgs e)
         {
-            bool selected;
-
             string filename = _fontFilenamePCLXL;
 
-            selected = SelectPCLXLFontFile(ref filename);
-
-            if (selected)
+            if (SelectPCLXLFontFile(ref filename))
             {
                 _fontFilenamePCLXL = filename;
                 txtPCLXLFontFile.Text = _fontFilenamePCLXL;
@@ -285,119 +275,106 @@ namespace PCLParaphernalia
 
         private void btnPCLGenerate_Click(object sender, EventArgs e)
         {
-            bool proceed = true;
+            var proceed = true;
 
-            DateTime dateTimeNow = DateTime.Now;
+            var convTextStr = $"Converted from '{_fontFilenameTTF}' ({_ttfHandler.FontFullname}) by user '{Environment.UserName}' (domain user '{Environment.UserDomainName}') using system '{Environment.MachineName}' on {DateTime.Now}";
 
-            string convTextStr = $"Converted from '{_fontFilenameTTF}' ({_ttfHandler.FontFullname}) by user '{Environment.UserName}' (domain user '{Environment.UserDomainName}') using system '{Environment.MachineName}' on {dateTimeNow}";
+            var conversionText = _ascii.GetBytes(convTextStr);
 
-            byte[] conversionText;
-
-            PCLSymSetTypes.Index symSetType;
-
-            ToolSoftFontGenTTF.LicenceType licenceType;
-
-            conversionText = _ascii.GetBytes(convTextStr);
-
-            licenceType = _ttfHandler.CheckLicence(out string licenceText);
+            ToolSoftFontGenTTF.LicenceType licenceType = _ttfHandler.CheckLicence(out string licenceText);
 
             if (licenceType == ToolSoftFontGenTTF.LicenceType.NotAllowed)
             {
-                MessageBoxResult msgBoxResult =
-                        MessageBox.Show($"Donor TrueType font has a restrictive license:\r\n{licenceText}\r\nConversion will proceed only if you confirm that you are allowed to convert the font.\r\nDid you obtain permission from the legal owner?",
-                        "Donor Font Licensing Rights",
-                         MessageBoxButton.YesNo,
-                         MessageBoxImage.Warning);
+                var msgBoxResult = MessageBox.Show($"Donor TrueType font has a restrictive license:\n\n{licenceText}\n\nConversion will proceed only if you confirm that you are allowed to convert the font.\n\nDid you obtain permission from the legal owner?",
+                    "Donor Font Licensing Rights",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning);
 
                 proceed = msgBoxResult == MessageBoxResult.Yes;
             }
             else if (licenceType == ToolSoftFontGenTTF.LicenceType.OwnerOnly)
             {
-                MessageBoxResult msgBoxResult =
-                    MessageBox.Show(
-                        $"Donor TrueType font has a restrictive license:\r\n{licenceText}\r\nConversion will proceed only if you agree to use the converted font solely on your own system.\r\nDo you agree?",
-                        "Donor Font Licensing Rights",
-                        MessageBoxButton.YesNo,
-                        MessageBoxImage.Warning);
+                var msgBoxResult = MessageBox.Show($"Donor TrueType font has a restrictive license:\n\n{licenceText}\n\nConversion will proceed only if you agree to use the converted font solely on your own system.\n\nDo you agree?",
+                    "Donor Font Licensing Rights",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning);
 
                 proceed = msgBoxResult == MessageBoxResult.Yes;
             }
 
-            if (proceed)
+            if (!proceed)
+                return;
+
+            var monoSpaced = false;
+
+            _tableLogTarget.Clear();
+            _tableLogChars.Clear();
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // Generate soft font.                                        //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            var symSetType = PCLSymbolSets.GetType(_indxSymSetTarget);
+            byte symSetTypeID = PCLSymSetTypes.GetIdPCL((int)symSetType);
+
+
+            if (tabDetails.SelectedItem.Equals(tabPCL))
             {
-                //------------------------------------------------------------//
-                //                                                            //
-                // Generate soft font.                                        //
-                //                                                            //
-                //------------------------------------------------------------//
+                ToolSoftFontGenPCL PCLHandler = new ToolSoftFontGenPCL(_tableLogChars, _ttfHandler);
 
-                byte symSetTypeID;
+                PCLHandler.GenerateFont(ref _fontFilenamePCL,
+                    ref monoSpaced,
+                    _symbolMapping,
+                    _flagFormat16,
+                    _flagSegGTLastPCL,
+                    _flagUsePCLT,
+                    _symSetUnbound,
+                    _tabvmtxPresent,
+                    _flagVMetricsPCL,
+                    symSetTypeID,
+                    _sizeCharSet,
+                    _symSetNoPCL,
+                    _styleNoPCL,
+                    _weightNoPCL,
+                    _typefaceNoPCL,
+                    _charCollCompPCL,
+                    conversionText);
 
-                bool monoSpaced = false;
+                txtPCLFontFile.Text = _fontFilenamePCL;
 
-                _tableLogTarget.Clear();
-                _tableLogChars.Clear();
+                LogFontSelectDataPCL(monoSpaced);
 
-                symSetType = PCLSymbolSets.GetType(_indxSymSetTarget);
-                symSetTypeID = PCLSymSetTypes.GetIdPCL((int)symSetType);
+                SetPCLFontFileAttributes();
+            }
+            else if (tabDetails.SelectedItem.Equals(tabPCLXL))
+            {
+                var PCLXLHandler = new ToolSoftFontGenPCLXL(_tableLogChars, _ttfHandler);
 
-                if (tabDetails.SelectedItem.Equals(tabPCL))
-                {
-                    ToolSoftFontGenPCL PCLHandler = new ToolSoftFontGenPCL(_tableLogChars, _ttfHandler);
+                var fontName = new byte[ToolSoftFontGenTTF.cSizeFontname];
 
-                    PCLHandler.GenerateFont(ref _fontFilenamePCL,
-                                             ref monoSpaced,
-                                             _symbolMapping,
-                                             _flagFormat16,
-                                             _flagSegGTLastPCL,
-                                             _flagUsePCLT,
-                                             _symSetUnbound,
-                                             _tabvmtxPresent,
-                                             _flagVMetricsPCL,
-                                             symSetTypeID,
-                                             _sizeCharSet,
-                                             _symSetNoPCL,
-                                             _styleNoPCL,
-                                             _weightNoPCL,
-                                             _typefaceNoPCL,
-                                             _charCollCompPCL,
-                                             conversionText);
+                // perhaps need to use .GetByteCount and/or .GetMaxByteCount
+                // and different overload of GetBytes to make sure that
+                // Byte [] is not overflowed.
 
-                    txtPCLFontFile.Text = _fontFilenamePCL;
+                fontName = _ascii.GetBytes(_fontNamePCLXL);
 
-                    LogFontSelectDataPCL(monoSpaced);
+                PCLXLHandler.GenerateFont(ref _fontFilenamePCLXL,
+                    _symbolMapping,
+                    _symSetUnbound,
+                    _tabvmtxPresent,
+                    _flagVMetricsPCLXL,
+                    fontName,
+                    _sizeCharSet,
+                    _symSetNoPCLXL,
+                    conversionText);
 
-                    SetPCLFontFileAttributes();
-                }
-                else if (tabDetails.SelectedItem.Equals(tabPCLXL))
-                {
-                    ToolSoftFontGenPCLXL PCLXLHandler = new ToolSoftFontGenPCLXL(_tableLogChars, _ttfHandler);
+                txtPCLXLFontFile.Text = _fontFilenamePCLXL;
 
-                    byte[] fontName =
-                        new byte[ToolSoftFontGenTTF.cSizeFontname];
+                LogFontSelectDataPCLXL();
 
-                    // perhaps need to use .GetByteCount and/or .GetMaxByteCount
-                    // and different overload of GetBytes to make sure that
-                    // Byte [] is not overflowed.
-
-                    fontName = _ascii.GetBytes(_fontNamePCLXL);
-
-                    PCLXLHandler.GenerateFont(ref _fontFilenamePCLXL,
-                                              _symbolMapping,
-                                              _symSetUnbound,
-                                              _tabvmtxPresent,
-                                              _flagVMetricsPCLXL,
-                                              fontName,
-                                              _sizeCharSet,
-                                              _symSetNoPCLXL,
-                                              conversionText);
-
-                    txtPCLXLFontFile.Text = _fontFilenamePCLXL;
-
-                    LogFontSelectDataPCLXL();
-
-                    SetPCLXLFontFileAttributes();
-                }
+                SetPCLXLFontFileAttributes();
             }
         }
 
@@ -427,13 +404,9 @@ namespace PCLParaphernalia
 
         private void btnSymSetFileBrowse_Click(object sender, RoutedEventArgs e)
         {
-            bool selected;
-
             string filename = _symSetUserFile;
 
-            selected = SelectSymSetFile(ref filename);
-
-            if (selected)
+            if (SelectSymSetFile(ref filename))
             {
                 _symSetUserFile = filename;
                 txtSymSetFile.Text = _symSetUserFile;
@@ -460,13 +433,9 @@ namespace PCLParaphernalia
 
         private void btnTTFFontFileBrowse_Click(object sender, RoutedEventArgs e)
         {
-            bool selected;
-
             string filename = _fontFileAdhocTTF;
 
-            selected = SelectTTFFontFile(ref filename);
-
-            if (selected)
+            if (SelectTTFFontFile(ref filename))
             {
                 _fontFileAdhocTTF = filename;
                 _fontFilenameTTF = filename;
@@ -487,7 +456,7 @@ namespace PCLParaphernalia
 
         private void btnTTFSelect_Click(object sender, EventArgs e)
         {
-            bool flagOK = true;
+            var flagOK = true;
 
             int indx;
             int sfntOffset = 0;
@@ -496,10 +465,10 @@ namespace PCLParaphernalia
             ushort symSetNoTargetPCLXL;
             uint numFonts = 0;
 
-            string filename,
-                   symSetIdTargetPCL,
+            string symSetIdTargetPCL,
                    symSetIdTargetPCLXL;
-            bool typeTTC = false;
+
+            var typeTTC = false;
 
             if (_fontWithinTTC)
             {
@@ -510,26 +479,11 @@ namespace PCLParaphernalia
                 ToolSoftFontGenLog.LogNameAndValue(
                     _tableLogDonor, true, true,
                     "Font",
-                    "'" + _fontTTCNames[indx] +
-                    "' selected from '" + _fontFilenameTTF + "' collection");
+                    $"'{_fontTTCNames[indx]}' selected from '{_fontFilenameTTF}' collection");
             }
             else
             {
-                filename = _fontFilenameTTF;
-
-                indx = filename.LastIndexOf("\\");
-
-                if (indx == -1)
-                    _fontNameBase = filename;
-                else
-                    _fontNameBase = filename.Substring(indx + 1);
-
-                indx = _fontNameBase.LastIndexOf(".");
-
-                if (indx != -1)
-                {
-                    _fontNameBase = _fontNameBase.Substring(0, indx);
-                }
+                _fontNameBase = Path.GetFileNameWithoutExtension(_fontFilenameTTF);
 
                 btnTTFSelect.IsEnabled = false;
                 grpBinding.IsEnabled = false;
@@ -544,17 +498,11 @@ namespace PCLParaphernalia
                 _tableLogChars.Clear();
 
                 if (_symSetUnbound)
-                {
                     _sizeCharSet = cSizeCharSet_UCS_2;
-                }
                 else if (_symSetUserSet)
-                {
                     _sizeCharSet = PCLSymbolSets.GetMapArrayMax(_indxSymSetTarget) + 1;
-                }
                 else
-                {
                     _sizeCharSet = PCLSymbolSets.GetMapArrayMax(_indxSymSetTarget) + 1;
-                }
 
                 _ttfHandler = new ToolSoftFontGenTTF(_tableLogDonor,
                                                       _tableLogMapping,
@@ -568,7 +516,7 @@ namespace PCLParaphernalia
                 {
                     _fontWithinTTC = true;
 
-                    MessageBox.Show("Donor TrueType font is a Collection file\r\nSelect component font & try again",
+                    MessageBox.Show("Donor TrueType font is a Collection file\n\nSelect component font & try again",
                         "Donor Font Type",
                         MessageBoxButton.OK,
                         MessageBoxImage.Information);
@@ -699,6 +647,7 @@ namespace PCLParaphernalia
                 grpPCLTTreatment.IsEnabled = false; // re-enabled when another font or Reset
 
                 bool usePCLT;
+
                 if (_tabPCLTPresent)
                 {
                     lbPCLTNotPresent.Visibility = Visibility.Hidden;
@@ -714,6 +663,7 @@ namespace PCLParaphernalia
 
                     rbPCLTIgnore.Visibility = Visibility.Hidden;
                     rbPCLTUse.Visibility = Visibility.Hidden;
+
                     usePCLT = false;
                 }
 
@@ -866,10 +816,9 @@ namespace PCLParaphernalia
 
         void cbPCLCharCollItem_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "IsChecked")
+            if (e.PropertyName == "IsChecked" && !_flagCharCollCompInhibitPCL)
             {
-                if (!_flagCharCollCompInhibitPCL)
-                    SetPCLCharCollCompArray();
+                SetPCLCharCollCompArray();
             }
         }
 
@@ -933,15 +882,11 @@ namespace PCLParaphernalia
             else
             {
                 allowFontFileSelect = false;
+
                 if (_fontFiles[_indxFont].Contains("\\"))
-                {
                     _fontFilenameTTF = _fontFiles[_indxFont];
-                }
                 else
-                {
-                    _fontFilenameTTF = _fontsFolder + "\\" +
-                                                       _fontFiles[_indxFont];
-                }
+                    _fontFilenameTTF = _fontsFolder + "\\" +_fontFiles[_indxFont];
 
                 txtTTFFile.Text = _fontFilenameTTF;
             }
@@ -969,11 +914,9 @@ namespace PCLParaphernalia
 
         private void CheckPCLSymSetFile()
         {
-            bool flagOK = true;
+            var flagOK = true;
 
-            bool selected = true;
-
-            ushort[] symSetMap = new ushort[256];
+            var selected = true;
 
             if (!File.Exists(_symSetUserFile))
             {
@@ -981,7 +924,7 @@ namespace PCLParaphernalia
 
                 flagOK = false;
 
-                MessageBox.Show($"File {_symSetUserFile} does not exist/",
+                MessageBox.Show($"File {_symSetUserFile} does not exist.",
                     "Symbol Set Definition File",
                      MessageBoxButton.OK,
                      MessageBoxImage.Information);
@@ -1006,8 +949,7 @@ namespace PCLParaphernalia
                 ushort firstCode = 0,
                        lastCode = 0;
 
-                PCLSymSetTypes.Index symSetType =
-                    PCLSymSetTypes.Index.Unknown;
+                var symSetType = PCLSymSetTypes.Index.Unknown;
 
                 flagOK = PCLDownloadSymSet.CheckSymSetFile(
                     _symSetUserFile,
@@ -1334,17 +1276,15 @@ namespace PCLParaphernalia
 
             try
             {
-                _fontsFolder =
-                    Environment.GetFolderPath(Environment.SpecialFolder.Fonts);
+                _fontsFolder = Environment.GetFolderPath(Environment.SpecialFolder.Fonts);
 
-                RegistryKey keyMain = Registry.LocalMachine;
+                var keyMain = Registry.LocalMachine;
 
-                RegistryKey key = keyMain.OpenSubKey(_fontRegistryKey);
+                var key = keyMain.OpenSubKey(_fontRegistryKey);
 
                 _ctTTFFonts = 0;
 
-                SortedList<string, string> fontList =
-                    new SortedList<string, string>();
+                var fontList = new SortedList<string, string>();
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1356,14 +1296,14 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                foreach (string valueName in key.GetValueNames())
+                foreach (var valueName in key.GetValueNames())
                 {
-                    string value = key.GetValue(valueName).ToString();
+                    var value = key.GetValue(valueName).ToString();
 
                     var cultureInfo = new CultureInfo("en-US");
 
-
-if (value.EndsWith(".ttf", true, cultureInfo) || value.EndsWith(".otf"))
+                    // TODO: Why are these the same?
+                    if (value.EndsWith(".ttf", true, cultureInfo) || value.EndsWith(".otf"))
                     {
                         _ctTTFFonts++;
 
@@ -1399,9 +1339,9 @@ if (value.EndsWith(".ttf", true, cultureInfo) || value.EndsWith(".otf"))
                 //                                                            //
                 //------------------------------------------------------------//
 
-                foreach (string valueName in fontList.Keys)
+                foreach (var valueName in fontList.Keys)
                 {
-                    string value = key.GetValue(valueName).ToString();
+                    var value = key.GetValue(valueName).ToString();
                     string name;
 
                     int len = valueName.Length;
@@ -1699,8 +1639,7 @@ if (value.EndsWith(".ttf", true, cultureInfo) || value.EndsWith(".otf"))
                         bitNo = item.BitNo;
                         bitVal = ((ulong)0x01) << bitNo;
 
-                        _charCollCompPCLAll |=
-bitVal;
+                        _charCollCompPCLAll |= bitVal;
                     }
                 }
             }
@@ -1714,9 +1653,7 @@ bitVal;
 
             foreach (PCLCharCollItem item in _charCollCompListUnicode)
             {
-                item.PropertyChanged +=
-
-                        cbPCLCharCollItem_PropertyChanged;
+                item.PropertyChanged +=cbPCLCharCollItem_PropertyChanged;
             }
         }
 
@@ -1761,7 +1698,7 @@ bitVal;
 
         private void LogFontSelectDataPCL(bool monoSpaced)
         {
-            string baseName = string.Empty;
+            var baseName = string.Empty;
 
             ToolSoftFontGenLog.LogNameAndValue(
                 _tableLogTarget, false, false,
@@ -1771,16 +1708,16 @@ bitVal;
             if (monoSpaced)
             {
                 ToolSoftFontGenLog.LogNameAndValue(
-                                _tableLogTarget, false, false,
-                                "Spacing:",
-                                "Value:   0 (= fixed-pitch)");
+                    _tableLogTarget, false, false,
+                    "Spacing:",
+                    "Value:   0 (= fixed-pitch)");
             }
             else
             {
                 ToolSoftFontGenLog.LogNameAndValue(
-                                _tableLogTarget, false, false,
-                                "Spacing:",
-                                "Value:   1 (= proportionally-spaced)");
+                    _tableLogTarget, false, false,
+                    "Spacing:",
+                    "Value:   1 (= proportionally-spaced)");
             }
 
             ToolSoftFontGenLog.LogNameAndValue(
@@ -1791,49 +1728,34 @@ bitVal;
             ToolSoftFontGenLog.LogNameAndValue(
                 _tableLogTarget, false, false,
                 string.Empty,
-                "Id:      " + txtPCLSymSetIdNum.Text +
-                              txtPCLSymSetIdAlpha.Text +
-                          " (= " + txtPCLSymSetName.Text + ")");
+                $"Id:      {txtPCLSymSetIdNum.Text}{txtPCLSymSetIdAlpha.Text} (= {txtPCLSymSetName.Text})");
 
             ToolSoftFontGenLog.LogNameAndValue(
                 _tableLogTarget, false, false,
                 "Style:",
-                "Number:  " + _styleNoPCL +
-                              " (= " +
-                                 txtPCLStylePosture.Text + " | " +
-                                 txtPCLStyleWidth.Text + " | " +
-                                 txtPCLStyleStructure.Text +
-                               ")");
+                $"Number:  {_styleNoPCL} (= {txtPCLStylePosture.Text} | {txtPCLStyleWidth.Text} | {txtPCLStyleStructure.Text})");
 
             ToolSoftFontGenLog.LogNameAndValue(
                 _tableLogTarget, false, false,
                 "Stroke Weight:",
-                "Value:   " + _weightNoPCL +
-                              " (= " +
-                                 txtPCLWeightDesc.Text +
-                               ")");
+                $"Value:   {_weightNoPCL} (= {txtPCLWeightDesc.Text})");
 
             ToolSoftFontGenLog.LogNameAndValue(
                 _tableLogTarget, false, false,
                 "Typeface:",
-                "Number:  " + _typefaceNoPCL +
-                              " (= " +
-                                 txtPCLTypefaceName.Text +
-                               ")");
+                $"Number:  {_typefaceNoPCL} (= {txtPCLTypefaceName.Text})");
 
             ToolSoftFontGenLog.LogNameAndValue(
                 _tableLogTarget, false, false,
                 string.Empty,
                 "Vendor:  " + _typefaceVendorPCL);
 
-            PCLFonts.GetNameForIdPCL(_typefaceBasecodePCL,
-                                     ref baseName);
+            PCLFonts.GetNameForIdPCL(_typefaceBasecodePCL, ref baseName);
 
             ToolSoftFontGenLog.LogNameAndValue(
                 _tableLogTarget, false, false,
                 string.Empty,
-                "Base:    " + _typefaceBasecodePCL +
-                              " (= " + baseName + ")");
+                $"Base:    {_typefaceBasecodePCL} (= {baseName})");
         }
 
         //--------------------------------------------------------------------//
@@ -1860,9 +1782,7 @@ bitVal;
             ToolSoftFontGenLog.LogNameAndValue(
                 _tableLogTarget, false, false,
                 string.Empty,
-                "Id:      " + txtPCLSymSetIdNum.Text +
-                              txtPCLSymSetIdAlpha.Text +
-                          " (= " + txtPCLSymSetName.Text + ")");
+                $"Id:      {txtPCLSymSetIdNum.Text}{txtPCLSymSetIdAlpha.Text} (= {txtPCLSymSetName.Text})");
 
             ToolSoftFontGenLog.LogNameAndValue(
                 _tableLogTarget, false, false,
@@ -1883,8 +1803,7 @@ bitVal;
         {
             int indxTemp = 0;
 
-            ToolSoftFontGenPersist.LoadDataCommon(ref indxTemp,
-                                                  ref _flagLogVerbose);
+            ToolSoftFontGenPersist.LoadDataCommon(ref indxTemp, ref _flagLogVerbose);
 
             if (indxTemp == (int)ToolCommonData.PrintLang.PCLXL)
                 _crntPDL = ToolCommonData.PrintLang.PCLXL;
@@ -1910,8 +1829,7 @@ bitVal;
                 ref _symSetUserSet,
                 ref _symSetUserFile);
 
-            if ((_indxSymSetSubset < 0) ||
-                (_indxSymSetSubset >= _ctMappedSymSets))
+            if (_indxSymSetSubset < 0 || _indxSymSetSubset >= _ctMappedSymSets)
             {
                 _indxSymSetSubset = 0;
             }
@@ -2318,7 +2236,7 @@ bitVal;
 
         private bool SelectPCLFontFile(ref string fontFilename)
         {
-            OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(fontFilename);
+            var openDialog = ToolCommonFunctions.CreateOpenFileDialog(fontFilename);
 
             openDialog.CheckFileExists = false;
             openDialog.Filter = "PCLETTO Font Files|*.sft";
@@ -2342,7 +2260,7 @@ bitVal;
 
         private bool SelectPCLXLFontFile(ref string fontFilename)
         {
-            OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(fontFilename);
+            var openDialog = ToolCommonFunctions.CreateOpenFileDialog(fontFilename);
 
             openDialog.CheckFileExists = false;
             openDialog.Filter = "PCLXLETTO Font Files|*.sfx";
@@ -2366,7 +2284,7 @@ bitVal;
 
         private bool SelectSymSetFile(ref string symSetFile)
         {
-            OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(symSetFile);
+            var openDialog = ToolCommonFunctions.CreateOpenFileDialog(symSetFile);
 
             openDialog.Filter = "PCL Files|*.pcl|All Files|*.*";
 
@@ -2389,7 +2307,7 @@ bitVal;
 
         private bool SelectTTFFontFile(ref string fontFilenameTTF)
         {
-            OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(fontFilenameTTF);
+            var openDialog = ToolCommonFunctions.CreateOpenFileDialog(fontFilenameTTF);
 
             openDialog.CheckFileExists = false;
             openDialog.Filter = "TrueType Font Files|*.ttf; *.otf; *.ttc";
@@ -2470,12 +2388,7 @@ bitVal;
 
         private void SetPCLFontFileAttributes()
         {
-            int indx = _fontFilenamePCL.LastIndexOf("\\");
-
-            if (indx == 0)
-                _fontFolderPCL = string.Empty;
-            else
-                _fontFolderPCL = _fontFilenamePCL.Substring(0, indx);
+            _fontFolderPCL = Path.GetDirectoryName(_fontFolderPCL);
         }
 
         //--------------------------------------------------------------------//
@@ -2489,12 +2402,7 @@ bitVal;
 
         private void SetPCLXLFontFileAttributes()
         {
-            int indx = _fontFilenamePCLXL.LastIndexOf("\\");
-
-            if (indx == 0)
-                _fontFolderPCLXL = string.Empty;
-            else
-                _fontFolderPCLXL = _fontFilenamePCLXL.Substring(0, indx);
+            _fontFolderPCLXL = Path.GetDirectoryName(_fontFolderPCLXL);
         }
 
         //--------------------------------------------------------------------//
@@ -2531,18 +2439,14 @@ bitVal;
 
                 txtPCLSymSetNo.Text = _symSetNoUnbound.ToString();
 
-                PCLSymbolSets.TranslateKind1ToId(_symSetNoUnbound,
-                                          ref idNum,
-                                          ref idAlpha);
+                PCLSymbolSets.TranslateKind1ToId(_symSetNoUnbound, ref idNum, ref idAlpha);
 
                 txtPCLSymSetIdNum.Text = idNum;
                 txtPCLSymSetIdAlpha.Text = idAlpha;
 
                 txtPCLXLSymSetNo.Text = _symSetNoUnicode.ToString();
 
-                PCLSymbolSets.TranslateKind1ToId(_symSetNoUnicode,
-                                          ref idNum,
-                                          ref idAlpha);
+                PCLSymbolSets.TranslateKind1ToId(_symSetNoUnicode, ref idNum, ref idAlpha);
 
                 txtPCLXLSymSetIdNum.Text = idNum;
                 txtPCLXLSymSetIdAlpha.Text = idAlpha;
@@ -2568,9 +2472,7 @@ bitVal;
                 _symSetNoTargetPCL = _symSetNoUserSet;
                 _symSetNoTargetPCLXL = _symSetNoUserSet;
 
-                PCLSymbolSets.TranslateKind1ToId(_symSetNoUserSet,
-                                                  ref idNum,
-                                                  ref idAlpha);
+                PCLSymbolSets.TranslateKind1ToId(_symSetNoUserSet, ref idNum, ref idAlpha);
 
                 txtSymSetNo.Text = _symSetNoUserSet.ToString();
 
@@ -2579,8 +2481,7 @@ bitVal;
 
                 _symSetType = PCLSymbolSets.GetType(_indxSymSetTarget);
 
-                txtSymSetType.Text =
-                    PCLSymSetTypes.GetDescShort((int)_symSetType);
+                txtSymSetType.Text = PCLSymSetTypes.GetDescShort((int)_symSetType);
 
                 txtPCLSymSetNo.Text = _symSetNoUserSet.ToString();
 
@@ -2629,8 +2530,7 @@ bitVal;
 
                     //--------------------------------------------------------//
 
-                    txtSymSetType.Text =
-                        PCLSymSetTypes.GetDescShort((int)_symSetType);
+                    txtSymSetType.Text = PCLSymSetTypes.GetDescShort((int)_symSetType);
 
                     _indxSymSetTarget = indxSymSet;
                     _symSetNoTargetPCL = PCLSymbolSets.GetKind1(indxSymSet);
@@ -2643,9 +2543,7 @@ bitVal;
 
                     //--------------------------------------------------------//
 
-                    PCLSymbolSets.TranslateKind1ToId(_symSetNoTargetPCL,
-                                              ref idNum,
-                                              ref idAlpha);
+                    PCLSymbolSets.TranslateKind1ToId(_symSetNoTargetPCL, ref idNum, ref idAlpha);
 
                     txtSymSetIdNum.Text = idNum;
                     txtSymSetIdAlpha.Text = idAlpha;
@@ -2916,15 +2814,11 @@ bitVal;
 
         private string TranslateWeightNo(sbyte weight, bool showSubIds)
         {
-            int subId;
-
-            string desc;
-
             string subIdWeight;
 
             //----------------------------------------------------------------//
 
-            subId = weight;
+            int subId = weight;
 
             if (showSubIds)
                 subIdWeight = subId.ToString() + ": ";
@@ -2934,71 +2828,53 @@ bitVal;
             switch (weight)
             {
                 case (sbyte)PCLFonts.StrokeWeight.UltraThin:
-                    desc = subIdWeight + "Ultra Thin";
-                    break;
+                    return subIdWeight + "Ultra Thin";
 
                 case (sbyte)PCLFonts.StrokeWeight.ExtraThin:
-                    desc = subIdWeight + "Extra Thin";
-                    break;
+                    return subIdWeight + "Extra Thin";
 
                 case (sbyte)PCLFonts.StrokeWeight.Thin:
-                    desc = subIdWeight + "Thin";
-                    break;
+                    return subIdWeight + "Thin";
 
                 case (sbyte)PCLFonts.StrokeWeight.ExtraLight:
-                    desc = subIdWeight + "Extra Light";
-                    break;
+                    return subIdWeight + "Extra Light";
 
                 case (sbyte)PCLFonts.StrokeWeight.Light:
-                    desc = subIdWeight + "Light";
-                    break;
+                    return subIdWeight + "Light";
 
                 case (sbyte)PCLFonts.StrokeWeight.DemiLight:
-                    desc = subIdWeight + "Demi Light";
-                    break;
+                    return subIdWeight + "Demi Light";
 
                 case (sbyte)PCLFonts.StrokeWeight.SemiLight:
-                    desc = subIdWeight + "Semi Light";
-                    break;
+                    return subIdWeight + "Semi Light";
 
                 case (sbyte)PCLFonts.StrokeWeight.Medium:
-                    desc = subIdWeight + "Medium";
-                    break;
+                    return subIdWeight + "Medium";
 
                 case (sbyte)PCLFonts.StrokeWeight.SemiBold:
-                    desc = subIdWeight + "Semi Bold";
-                    break;
+                    return subIdWeight + "Semi Bold";
 
                 case (sbyte)PCLFonts.StrokeWeight.DemiBold:
-                    desc = subIdWeight + "Demi Bold";
-                    break;
+                    return subIdWeight + "Demi Bold";
 
                 case (sbyte)PCLFonts.StrokeWeight.Bold:
-                    desc = subIdWeight + "Bold";
-                    break;
+                    return subIdWeight + "Bold";
 
                 case (sbyte)PCLFonts.StrokeWeight.ExtraBold:
-                    desc = subIdWeight + "Extra Bold";
-                    break;
+                    return subIdWeight + "Extra Bold";
 
                 case (sbyte)PCLFonts.StrokeWeight.Black:
-                    desc = subIdWeight + "Black";
-                    break;
+                    return subIdWeight + "Black";
 
                 case (sbyte)PCLFonts.StrokeWeight.ExtraBlack:
-                    desc = subIdWeight + "Extra Black";
-                    break;
+                    return subIdWeight + "Extra Black";
 
                 case (sbyte)PCLFonts.StrokeWeight.UltraBlack:
-                    desc = subIdWeight + "Ultra Black";
-                    break;
+                    return subIdWeight + "Ultra Black";
 
                 default:
-                    desc = subIdWeight + "Invalid";
-                    break;
+                    return subIdWeight + "Invalid";
             }
-
-            return desc;
         }
 
         //--------------------------------------------------------------------//
@@ -3035,10 +2911,10 @@ bitVal;
             if (ValidatePCLStyleNo(true, ref _styleNoPCL))
             {
                 TranslateStyleNo(_styleNoPCL,
-                                  false,
-                                  ref posture,
-                                  ref width,
-                                  ref structure);
+                    false,
+                    ref posture,
+                    ref width,
+                    ref structure);
             }
 
             txtPCLStylePosture.Text = posture;
@@ -3064,10 +2940,10 @@ bitVal;
             if (ValidatePCLStyleNo(false, ref _styleNoPCL))
             {
                 TranslateStyleNo(_styleNoPCL,
-                                  false,
-                                  ref posture,
-                                  ref width,
-                                  ref structure);
+                    false,
+                    ref posture,
+                    ref width,
+                    ref structure);
             }
 
             txtPCLStylePosture.Text = posture;
@@ -3086,20 +2962,15 @@ bitVal;
 
         private void txtPCLSymSetNo_LostFocus(object sender, RoutedEventArgs e)
         {
-            string idAlpha = string.Empty,
-                   idNum = string.Empty;
-
-            string name = string.Empty;
+            var idAlpha = string.Empty;
+            var idNum = string.Empty;
+            var name = string.Empty;
 
             if (ValidatePCLSymSetNo(true, ref _symSetNoPCL))
             {
-                {
-                    PCLSymbolSets.TranslateKind1ToId(_symSetNoPCL,
-                                                     ref idNum,
-                                                     ref idAlpha);
+                PCLSymbolSets.TranslateKind1ToId(_symSetNoPCL, ref idNum, ref idAlpha);
 
-                    PCLSymbolSets.GetNameForId(_symSetNoPCL, ref name);
-                }
+                PCLSymbolSets.GetNameForId(_symSetNoPCL, ref name);
             }
 
             txtPCLSymSetIdNum.Text = idNum;
@@ -3118,16 +2989,13 @@ bitVal;
 
         private void txtPCLSymSetNo_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string idAlpha = string.Empty,
-                   idNum = string.Empty;
-
-            string name = string.Empty;
+            var idAlpha = string.Empty;
+            var idNum = string.Empty;
+            var name = string.Empty;
 
             if (ValidatePCLSymSetNo(false, ref _symSetNoPCL))
             {
-                PCLSymbolSets.TranslateKind1ToId(_symSetNoPCL,
-                                                 ref idNum,
-                                                 ref idAlpha);
+                PCLSymbolSets.TranslateKind1ToId(_symSetNoPCL, ref idNum, ref idAlpha);
 
                 PCLSymbolSets.GetNameForId(_symSetNoPCL, ref name);
             }
@@ -3151,13 +3019,11 @@ bitVal;
             ushort vendor = 0,
                    basecode = 0;
 
-            string name = string.Empty;
+            var name = string.Empty;
 
             if (ValidatePCLTypefaceNo(true, ref _typefaceNoPCL))
             {
-                PCLFonts.TranslateTypeface(_typefaceNoPCL,
-                                            ref vendor,
-                                            ref basecode);
+                PCLFonts.TranslateTypeface(_typefaceNoPCL, ref vendor, ref basecode);
 
                 PCLFonts.GetNameForIdPCL(_typefaceNoPCL, ref name);
             }
@@ -3178,13 +3044,11 @@ bitVal;
 
         private void txtPCLTypefaceNo_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string name = string.Empty;
+            var name = string.Empty;
 
             if (ValidatePCLTypefaceNo(false, ref _typefaceNoPCL))
             {
-                PCLFonts.TranslateTypeface(_typefaceNoPCL,
-                                            ref _typefaceVendorPCL,
-                                            ref _typefaceBasecodePCL);
+                PCLFonts.TranslateTypeface(_typefaceNoPCL, ref _typefaceVendorPCL, ref _typefaceBasecodePCL);
 
                 PCLFonts.GetNameForIdPCL(_typefaceNoPCL, ref name);
             }
@@ -3205,7 +3069,7 @@ bitVal;
 
         private void txtPCLWeightNo_LostFocus(object sender, RoutedEventArgs e)
         {
-            string weight = string.Empty;
+            var weight = string.Empty;
 
             if (ValidatePCLWeightNo(true, ref _weightNoPCL))
             {
@@ -3226,7 +3090,7 @@ bitVal;
 
         private void txtPCLWeightNo_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string weight = string.Empty;
+            var weight = string.Empty;
 
             if (ValidatePCLWeightNo(false, ref _weightNoPCL))
             {
@@ -3277,21 +3141,15 @@ bitVal;
 
         private void txtPCLXLSymSetNo_LostFocus(object sender, RoutedEventArgs e)
         {
-            string idAlpha = string.Empty,
-                   idNum = string.Empty;
-
-            string name = string.Empty;
+            var idAlpha = string.Empty;
+            var idNum = string.Empty;
+            var name = string.Empty;
 
             if (ValidatePCLXLSymSetNo(true, ref _symSetNoPCLXL))
             {
-                {
-                    PCLSymbolSets.TranslateKind1ToId(_symSetNoPCLXL,
-                                                     ref idNum,
-                                                     ref idAlpha);
+                PCLSymbolSets.TranslateKind1ToId(_symSetNoPCLXL, ref idNum, ref idAlpha);
 
-                    PCLSymbolSets.GetNameForId(_symSetNoPCLXL,
-                                                ref name);
-                }
+                PCLSymbolSets.GetNameForId(_symSetNoPCLXL, ref name);
             }
 
             txtPCLXLSymSetIdNum.Text = idNum;
@@ -3310,16 +3168,13 @@ bitVal;
 
         private void txtPCLXLSymSetNo_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string idAlpha = string.Empty,
-                   idNum = string.Empty;
-
-            string name = string.Empty;
+            var idAlpha = string.Empty;
+            var idNum = string.Empty;
+            var name = string.Empty;
 
             if (ValidatePCLXLSymSetNo(false, ref _symSetNoPCLXL))
             {
-                PCLSymbolSets.TranslateKind1ToId(_symSetNoPCLXL,
-                                                 ref idNum,
-                                                 ref idAlpha);
+                PCLSymbolSets.TranslateKind1ToId(_symSetNoPCLXL, ref idNum, ref idAlpha);
 
                 PCLSymbolSets.GetNameForId(_symSetNoPCLXL, ref name);
             }
@@ -3386,47 +3241,38 @@ bitVal;
             const ushort defVal = _defaultPCLStyleNo;
             string crntText = txtPCLStyleNo.Text;
 
-            bool OK = ushort.TryParse(crntText, out ushort value);
-            if (OK)
-            {
-                if ((value < minVal) || (value > maxVal))
-                {
-                    OK = false;
-                }
-            }
-
-            if (OK)
+            if (ushort.TryParse(crntText, out ushort value) && value >= minVal && value <= maxVal)
             {
                 styleNo = value;
+
+                return true;
+            }
+
+            if (lostFocusEvent)
+            {
+                string newText = defVal.ToString();
+
+                MessageBox.Show($"Style number '{crntText}' is invalid.\n\nValue will be reset to default '{newText}'.",
+                    "PCL Style Number Invalid",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+
+                styleNo = defVal;
+
+                txtPCLStyleNo.Text = newText;
             }
             else
             {
-                if (lostFocusEvent)
-                {
-                    string newText = defVal.ToString();
+                MessageBox.Show($"Style number '{crntText}' is invalid.\n\nValid range is:\n\t{minVal} <= value <= {maxVal}.",
+                    "PCL Style Number Invalid",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
 
-                    MessageBox.Show($"Style number '{crntText}' is invalid.\r\nValue will be reset to default '{newText}'.",
-                        "PCL Style Number Invalid",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning);
-
-                    styleNo = defVal;
-
-                    txtPCLStyleNo.Text = newText;
-                }
-                else
-                {
-                    MessageBox.Show($"Style number '{crntText}' is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal}.",
-                        "PCL Style Number Invalid",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Error);
-
-                    txtPCLStyleNo.Focus();
-                    txtPCLStyleNo.SelectAll();
-                }
+                txtPCLStyleNo.Focus();
+                txtPCLStyleNo.SelectAll();
             }
 
-            return OK;
+            return false;
         }
 
         //--------------------------------------------------------------------//
@@ -3446,6 +3292,7 @@ bitVal;
             string crntText = txtPCLSymSetNo.Text;
 
             bool OK = ushort.TryParse(crntText, out ushort value);
+
             if (OK)
             {
                 if ((value < minVal) || (value > maxVal))
@@ -3474,7 +3321,7 @@ bitVal;
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show($"Symbol Set (kind1) number '{crntText}' is invalid.\r\nValue will be reset to default '{newText}'",
+                    MessageBox.Show($"Symbol Set (kind1) number '{crntText}' is invalid.\n\nValue will be reset to default '{newText}'",
                         "PCL Symbol Set Number Invalid",
                         MessageBoxButton.OK,
                         MessageBoxImage.Warning);
@@ -3486,7 +3333,7 @@ bitVal;
                 else
                 {
                     MessageBox.Show(
-                        $"Symbol Set (kind1) number '{crntText}' is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal}\r\nand the value modulo 32 must be in the range 1 -> 26, excluding 24.",
+                        $"Symbol Set (kind1) number '{crntText}' is invalid.\n\nValid range is :\n\t{minVal} <= value <= {maxVal}\n\nand the value modulo 32 must be in the range 1 -> 26, excluding 24.",
                         "PCL Symbol Set Number Invalid",
                         MessageBoxButton.OK,
                         MessageBoxImage.Error);
@@ -3515,47 +3362,38 @@ bitVal;
             const ushort defVal = _defaultPCLTypefaceNo;
             string crntText = txtPCLTypefaceNo.Text;
 
-            bool OK = ushort.TryParse(crntText, out ushort value);
-            if (OK)
-            {
-                if ((value < minVal) || (value > maxVal))
-                {
-                    OK = false;
-                }
-            }
-
-            if (OK)
+            if (ushort.TryParse(crntText, out ushort value) && value >= minVal && value <= maxVal)
             {
                 typefaceNo = value;
+
+                return true;
+            }
+
+            if (lostFocusEvent)
+            {
+                string newText = defVal.ToString();
+
+                MessageBox.Show($"Typeface number '{crntText}' is invalid.\n\nValue will be reset to default '{newText}'.",
+                                "PCL Typeface Number Invalid",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Warning);
+
+                typefaceNo = defVal;
+
+                txtPCLTypefaceNo.Text = newText;
             }
             else
             {
-                if (lostFocusEvent)
-                {
-                    string newText = defVal.ToString();
+                MessageBox.Show($"Typeface number '{crntText}' is invalid.\n\nValid range is :\n\t{minVal} <= value <= {maxVal}.",
+                                "PCL Typeface Number Invalid",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
 
-                    MessageBox.Show($"Typeface number '{crntText}' is invalid.\r\nValue will be reset to default '{newText}'.",
-                                    "PCL Typeface Number Invalid",
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Warning);
-
-                    typefaceNo = defVal;
-
-                    txtPCLTypefaceNo.Text = newText;
-                }
-                else
-                {
-                    MessageBox.Show($"Typeface number '{crntText}' is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal}.",
-                                    "PCL Typeface Number Invalid",
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Error);
-
-                    txtPCLTypefaceNo.Focus();
-                    txtPCLTypefaceNo.SelectAll();
-                }
+                txtPCLTypefaceNo.Focus();
+                txtPCLTypefaceNo.SelectAll();
             }
 
-            return OK;
+            return false;
         }
 
         //--------------------------------------------------------------------//
@@ -3574,47 +3412,38 @@ bitVal;
             const sbyte defVal = _defaultPCLWeightNo;
             string crntText = txtPCLWeightNo.Text;
 
-            bool OK = sbyte.TryParse(crntText, out sbyte value);
-            if (OK)
-            {
-                if ((value < minVal) || (value > maxVal))
-                {
-                    OK = false;
-                }
-            }
-
-            if (OK)
+            if (sbyte.TryParse(crntText, out sbyte value) && value >= minVal && value <= maxVal)
             {
                 weightNo = value;
+
+                return true;
+            }
+
+            if (lostFocusEvent)
+            {
+                string newText = defVal.ToString();
+
+                MessageBox.Show($"Weight number '{crntText}' is invalid.\n\nValue will be reset to default '{newText}'.",
+                                "PCL Weight Number Invalid",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Warning);
+
+                weightNo = defVal;
+
+                txtPCLWeightNo.Text = newText;
             }
             else
             {
-                if (lostFocusEvent)
-                {
-                    string newText = defVal.ToString();
+                MessageBox.Show($"Weight number '{crntText}' is invalid.\n\nValid range is :\n\t{minVal} <= value <= {maxVal}.",
+                                "PCL Weight Number Invalid",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
 
-                    MessageBox.Show($"Weight number '{crntText}' is invalid.\r\nValue will be reset to default '{newText}'.",
-                                    "PCL Weight Number Invalid",
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Warning);
-
-                    weightNo = defVal;
-
-                    txtPCLWeightNo.Text = newText;
-                }
-                else
-                {
-                    MessageBox.Show($"Weight number '{crntText}' is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal}.",
-                                    "PCL Weight Number Invalid",
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Error);
-
-                    txtPCLWeightNo.Focus();
-                    txtPCLWeightNo.SelectAll();
-                }
+                txtPCLWeightNo.Focus();
+                txtPCLWeightNo.SelectAll();
             }
 
-            return OK;
+            return false;
         }
 
         //--------------------------------------------------------------------//
@@ -3634,6 +3463,7 @@ bitVal;
             string crntText = txtPCLXLSymSetNo.Text;
 
             bool OK = ushort.TryParse(crntText, out ushort value);
+
             if (OK)
             {
                 if ((value < minVal) || (value > maxVal))
@@ -3659,7 +3489,7 @@ bitVal;
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show($"Symbol Set (kind1) number '{crntText}' is invalid.\r\nValue will be reset to default '{newText}'>",
+                    MessageBox.Show($"Symbol Set (kind1) number '{crntText}' is invalid.\n\nValue will be reset to default '{newText}'>",
                         "PCLXL Symbol Set Number Invalid",
                         MessageBoxButton.OK,
                         MessageBoxImage.Warning);
@@ -3670,7 +3500,7 @@ bitVal;
                 }
                 else
                 {
-                    MessageBox.Show($"Symbol Set (kind1) number '{crntText}' is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal}\nand the value modulo 32 must be in the range 1 -> 26, excluding 24.",
+                    MessageBox.Show($"Symbol Set (kind1) number '{crntText}' is invalid.\n\nValid range is :\n\t{minVal} <= value <= {maxVal}\nand the value modulo 32 must be in the range 1 -> 26, excluding 24.",
                         "PCLXL Symbol Set Number Invalid",
                         MessageBoxButton.OK,
                         MessageBoxImage.Error);
