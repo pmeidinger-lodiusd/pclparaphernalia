@@ -291,8 +291,6 @@ namespace PCLParaphernalia
 
             string convTextStr = $"Converted from '{_fontFilenameTTF}' ({_ttfHandler.FontFullname}) by user '{Environment.UserName}' (domain user '{Environment.UserDomainName}') using system '{Environment.MachineName}' on {dateTimeNow}";
 
-            string licenceText = string.Empty;
-
             byte[] conversionText;
 
             PCLSymSetTypes.Index symSetType;
@@ -301,7 +299,7 @@ namespace PCLParaphernalia
 
             conversionText = _ascii.GetBytes(convTextStr);
 
-            licenceType = _ttfHandler.CheckLicence(ref licenceText);
+            licenceType = _ttfHandler.CheckLicence(out string licenceText);
 
             if (licenceType == ToolSoftFontGenTTF.LicenceType.NotAllowed)
             {

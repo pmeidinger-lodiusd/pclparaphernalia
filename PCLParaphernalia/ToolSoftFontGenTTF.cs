@@ -705,9 +705,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public LicenceType CheckLicence(ref string licenceText)
+        public LicenceType CheckLicence(out string licenceText)
         {
-            LicenceType licenceType = LicenceType.NotAllowed;
+            var licenceType = LicenceType.NotAllowed;
+            licenceText = string.Empty;
 
             if (_OS_2_fsType == mask_OS_2_fsType_INSTALLABLE_EMBED)
             {
@@ -757,6 +758,7 @@ namespace PCLParaphernalia
                 licenceText = " | Reserved bit range C";
                 licenceType = LicenceType.NotAllowed;
             }
+
             return licenceType;
         }
 
@@ -4768,9 +4770,7 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    string licenceText = string.Empty;
-
-                    LicenceType licenceType = CheckLicence(ref licenceText);
+                    LicenceType licenceType = CheckLicence(out string licenceText);
 
                     ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
