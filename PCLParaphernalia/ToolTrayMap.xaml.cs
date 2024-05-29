@@ -323,33 +323,22 @@ namespace PCLParaphernalia
 
             string cbName = source.Name; // should be in format cbnn_xyz
 
-            bool flagOK = ushort.TryParse(cbName.Substring(2, 2),
-                          NumberStyles.HexNumber,
-                          CultureInfo.InvariantCulture,
-                          out ushort sheetIndx);
-            if (flagOK)
+            if (!ushort.TryParse(cbName.Substring(2, 2), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out ushort sheetIndx)
+                ||
+                sheetIndx > _maxSheetNo)
             {
-                if (sheetIndx > _maxSheetNo)
-                    flagOK = false;
+                MessageBox.Show("Unable to detemine which Orientation (F) item has just been changed!", "***** Internal error *****", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                return;
             }
 
-            if (!flagOK)
-            {
-                MessageBox.Show("Unable to detemine which Orientation (F) item has just been changed!",
-                                "***** Internal error *****",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Warning);
-            }
+            int srcIndex = source.SelectedIndex;
+            int arrayIndex = sheetIndx - 1;
+
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
+                _indxOrientFrontPCL[arrayIndex] = srcIndex;
             else
-            {
-                int srcIndex = source.SelectedIndex;
-                int arrayIndex = sheetIndx - 1;
-
-                if (_crntPDL == ToolCommonData.PrintLang.PCL)
-                    _indxOrientFrontPCL[arrayIndex] = srcIndex;
-                else
-                    _indxOrientFrontPCLXL[arrayIndex] = srcIndex;
-            }
+                _indxOrientFrontPCLXL[arrayIndex] = srcIndex;
         }
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -375,33 +364,22 @@ namespace PCLParaphernalia
 
             string cbName = source.Name; // should be in format cbnn_xyz
 
-            bool flagOK = ushort.TryParse(cbName.Substring(2, 2),
-                          NumberStyles.HexNumber,
-                          CultureInfo.InvariantCulture,
-                          out ushort sheetIndx);
-            if (flagOK)
+            if (!ushort.TryParse(cbName.Substring(2, 2), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out ushort sheetIndx)
+                ||
+                sheetIndx > _maxSheetNo)
             {
-                if (sheetIndx > _maxSheetNo)
-                    flagOK = false;
+                MessageBox.Show("Unable to detemine which Orientation (R) item has just been changed!", "***** Internal error *****", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                return;
             }
 
-            if (!flagOK)
-            {
-                MessageBox.Show("Unable to detemine which Orientation (R) item has just been changed!",
-                                "***** Internal error *****",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Warning);
-            }
+            int srcIndex = source.SelectedIndex;
+            int arrayIndex = sheetIndx - 1;
+
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
+                _indxOrientRearPCL[arrayIndex] = srcIndex;
             else
-            {
-                int srcIndex = source.SelectedIndex;
-                int arrayIndex = sheetIndx - 1;
-
-                if (_crntPDL == ToolCommonData.PrintLang.PCL)
-                    _indxOrientRearPCL[arrayIndex] = srcIndex;
-                else
-                    _indxOrientRearPCLXL[arrayIndex] = srcIndex;
-            }
+                _indxOrientRearPCLXL[arrayIndex] = srcIndex;
         }
 
         //--------------------------------------------------------------------//
@@ -428,33 +406,22 @@ namespace PCLParaphernalia
 
             string cbName = source.Name; // should be in format cbnn_xyz
 
-            bool flagOK = ushort.TryParse(cbName.Substring(2, 2),
-                          NumberStyles.HexNumber,
-                          CultureInfo.InvariantCulture,
-                          out ushort sheetIndx);
-            if (flagOK)
+            if (!ushort.TryParse(cbName.Substring(2, 2), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out ushort sheetIndx)
+                ||
+                sheetIndx > _maxSheetNo)
             {
-                if (sheetIndx > _maxSheetNo)
-                    flagOK = false;
+                MessageBox.Show("Unable to detemine which Paper Size item has just been changed!", "***** Internal error *****", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                return;
             }
 
-            if (!flagOK)
-            {
-                MessageBox.Show("Unable to detemine which Paper Size item has just been changed!",
-                                "***** Internal error *****",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Warning);
-            }
+            int srcIndex = source.SelectedIndex;
+            int arrayIndex = sheetIndx - 1;
+
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
+                _indxPaperSizePCL[arrayIndex] = srcIndex;
             else
-            {
-                int srcIndex = source.SelectedIndex;
-                int arrayIndex = sheetIndx - 1;
-
-                if (_crntPDL == ToolCommonData.PrintLang.PCL)
-                    _indxPaperSizePCL[arrayIndex] = srcIndex;
-                else
-                    _indxPaperSizePCLXL[arrayIndex] = srcIndex;
-            }
+                _indxPaperSizePCLXL[arrayIndex] = srcIndex;
         }
 
         //--------------------------------------------------------------------//
@@ -483,33 +450,22 @@ namespace PCLParaphernalia
 
                 string cbName = source.Name; // should be in format cbnn_xyz
 
-                bool flagOK = ushort.TryParse(cbName.Substring(2, 2),
-                          NumberStyles.HexNumber,
-                          CultureInfo.InvariantCulture,
-                          out ushort sheetIndx);
-                if (flagOK)
+                if (!ushort.TryParse(cbName.Substring(2, 2), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out ushort sheetIndx)
+                    ||
+                    sheetIndx > _maxSheetNo)
                 {
-                    if (sheetIndx > _maxSheetNo)
-                        flagOK = false;
+                    MessageBox.Show("Unable to detemine which Tray Identifier item has just been changed!", "***** Internal error *****", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                    return;
                 }
 
-                if (!flagOK)
-                {
-                    MessageBox.Show("Unable to detemine which Tray Identifier item has just been changed!",
-                                    "***** Internal error *****",
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Warning);
-                }
+                int srcIndex = source.SelectedIndex;
+                int arrayIndex = sheetIndx - 1;
+
+                if (_crntPDL == ToolCommonData.PrintLang.PCL)
+                    _indxPaperTrayPCL[arrayIndex] = srcIndex;
                 else
-                {
-                    int srcIndex = source.SelectedIndex;
-                    int arrayIndex = sheetIndx - 1;
-
-                    if (_crntPDL == ToolCommonData.PrintLang.PCL)
-                        _indxPaperTrayPCL[arrayIndex] = srcIndex;
-                    else
-                        _indxPaperTrayPCLXL[arrayIndex] = srcIndex;
-                }
+                    _indxPaperTrayPCLXL[arrayIndex] = srcIndex;
             }
         }
 
@@ -537,33 +493,22 @@ namespace PCLParaphernalia
 
             string cbName = source.Name; // should be in format cbnn_xyz
 
-            bool flagOK = ushort.TryParse(cbName.Substring(2, 2),
-                          NumberStyles.HexNumber,
-                          CultureInfo.InvariantCulture,
-                          out ushort sheetIndx);
-            if (flagOK)
+            if (!ushort.TryParse(cbName.Substring(2, 2), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out ushort sheetIndx)
+                ||
+                sheetIndx > _maxSheetNo)
             {
-                if (sheetIndx > _maxSheetNo)
-                    flagOK = false;
+                MessageBox.Show("Unable to detemine which Paper Type item has just been changed!", "***** Internal error *****", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                return;
             }
 
-            if (!flagOK)
-            {
-                MessageBox.Show("Unable to detemine which Paper Type item has just been changed!",
-                                "***** Internal error *****",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Warning);
-            }
+            int srcIndex = source.SelectedIndex;
+            int arrayIndex = sheetIndx - 1;
+
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
+                _indxPaperTypePCL[arrayIndex] = srcIndex;
             else
-            {
-                int srcIndex = source.SelectedIndex;
-                int arrayIndex = sheetIndx - 1;
-
-                if (_crntPDL == ToolCommonData.PrintLang.PCL)
-                    _indxPaperTypePCL[arrayIndex] = srcIndex;
-                else
-                    _indxPaperTypePCLXL[arrayIndex] = srcIndex;
-            }
+                _indxPaperTypePCLXL[arrayIndex] = srcIndex;
         }
 
         //--------------------------------------------------------------------//
@@ -612,66 +557,58 @@ namespace PCLParaphernalia
 
             string cbName = source.Name; // should be in format cbnn_xyz
 
-            bool flagOK = ushort.TryParse(cbName.Substring(2, 2),
-                          NumberStyles.HexNumber,
-                          CultureInfo.InvariantCulture,
-                          out ushort sheetIndx);
-            if (flagOK)
-            {
-                if (sheetIndx > _maxSheetNo)
-                    flagOK = false;
-            }
-
-            if (!flagOK)
+            if (!ushort.TryParse(cbName.Substring(2, 2), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out ushort sheetIndx)
+                ||
+                sheetIndx > _maxSheetNo)
             {
                 MessageBox.Show("Unable to detemine which Plex Mode item has just been changed!",
                                 "***** Internal error *****",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Warning);
+
+                return;
+            }
+
+            int srcIndex = source.SelectedIndex;
+            int arrayIndex = sheetIndx - 1;
+
+            bool simplex =
+                PCLPlexModes.IsSimplex(_subsetPlexModes[srcIndex]);
+
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
+                _indxPlexModePCL[arrayIndex] = srcIndex;
+            else
+                _indxPlexModePCLXL[arrayIndex] = srcIndex;
+
+            if (simplex)
+            {
+                if (sheetIndx == 1)
+                    cb01_OrientRear.Visibility = Visibility.Hidden;
+                else if (sheetIndx == 2)
+                    cb02_OrientRear.Visibility = Visibility.Hidden;
+                else if (sheetIndx == 3)
+                    cb03_OrientRear.Visibility = Visibility.Hidden;
+                else if (sheetIndx == 4)
+                    cb04_OrientRear.Visibility = Visibility.Hidden;
+                else if (sheetIndx == 5)
+                    cb05_OrientRear.Visibility = Visibility.Hidden;
+                else if (sheetIndx == 6)
+                    cb06_OrientRear.Visibility = Visibility.Hidden;
             }
             else
             {
-                int srcIndex = source.SelectedIndex;
-                int arrayIndex = sheetIndx - 1;
-
-                bool simplex =
-                    PCLPlexModes.IsSimplex(_subsetPlexModes[srcIndex]);
-
-                if (_crntPDL == ToolCommonData.PrintLang.PCL)
-                    _indxPlexModePCL[arrayIndex] = srcIndex;
-                else
-                    _indxPlexModePCLXL[arrayIndex] = srcIndex;
-
-                if (simplex)
-                {
-                    if (sheetIndx == 1)
-                        cb01_OrientRear.Visibility = Visibility.Hidden;
-                    else if (sheetIndx == 2)
-                        cb02_OrientRear.Visibility = Visibility.Hidden;
-                    else if (sheetIndx == 3)
-                        cb03_OrientRear.Visibility = Visibility.Hidden;
-                    else if (sheetIndx == 4)
-                        cb04_OrientRear.Visibility = Visibility.Hidden;
-                    else if (sheetIndx == 5)
-                        cb05_OrientRear.Visibility = Visibility.Hidden;
-                    else if (sheetIndx == 6)
-                        cb06_OrientRear.Visibility = Visibility.Hidden;
-                }
-                else
-                {
-                    if (sheetIndx == 1)
-                        cb01_OrientRear.Visibility = Visibility.Visible;
-                    else if (sheetIndx == 2)
-                        cb02_OrientRear.Visibility = Visibility.Visible;
-                    else if (sheetIndx == 3)
-                        cb03_OrientRear.Visibility = Visibility.Visible;
-                    else if (sheetIndx == 4)
-                        cb04_OrientRear.Visibility = Visibility.Visible;
-                    else if (sheetIndx == 5)
-                        cb05_OrientRear.Visibility = Visibility.Visible;
-                    else if (sheetIndx == 6)
-                        cb06_OrientRear.Visibility = Visibility.Visible;
-                }
+                if (sheetIndx == 1)
+                    cb01_OrientRear.Visibility = Visibility.Visible;
+                else if (sheetIndx == 2)
+                    cb02_OrientRear.Visibility = Visibility.Visible;
+                else if (sheetIndx == 3)
+                    cb03_OrientRear.Visibility = Visibility.Visible;
+                else if (sheetIndx == 4)
+                    cb04_OrientRear.Visibility = Visibility.Visible;
+                else if (sheetIndx == 5)
+                    cb05_OrientRear.Visibility = Visibility.Visible;
+                else if (sheetIndx == 6)
+                    cb06_OrientRear.Visibility = Visibility.Visible;
             }
         }
 
@@ -767,6 +704,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < _ctPDLs; i++)
             {
+                // TODO: Why is this assigned here?
                 index = _subsetPDLs[i];
 
                 cbPDL.Items.Add(Enum.GetName(typeof(ToolCommonData.PrintLang), i));
@@ -1046,34 +984,22 @@ namespace PCLParaphernalia
                     ref _indxOrientRearPCL[i]);
 
                 if ((_indxPaperSizePCL[i] < 0) || (_indxPaperSizePCL[i] >= _ctPaperSizes))
-                {
                     _indxPaperSizePCL[i] = 0;
-                }
 
                 if ((_indxPaperTypePCL[i] < 0) || (_indxPaperTypePCL[i] >= _ctPaperTypes))
-                {
                     _indxPaperTypePCL[i] = 0;
-                }
 
                 if ((_indxPaperTrayPCL[i] < 0) || (_indxPaperTrayPCL[i] >= (_maxPaperTray + 1)))
-                {
                     _indxPaperTrayPCL[i] = 0;
-                }
 
                 if ((_indxPlexModePCL[i] < 0) || (_indxPlexModePCL[i] >= _ctPlexModes))
-                {
                     _indxPlexModePCL[i] = 0;
-                }
 
                 if ((_indxOrientFrontPCL[i] < 0) || (_indxOrientFrontPCL[i] >= _ctOrientations))
-                {
                     _indxOrientFrontPCL[i] = 0;
-                }
 
                 if ((_indxOrientRearPCL[i] < 0) || (_indxOrientRearPCL[i] >= _ctOrientations))
-                {
                     _indxOrientRearPCL[i] = 0;
-                }
             }
             //----------------------------------------------------------------//
 
@@ -1090,34 +1016,22 @@ namespace PCLParaphernalia
                     ref _indxOrientRearPCLXL[i]);
 
                 if ((_indxPaperSizePCLXL[i] < 0) || (_indxPaperSizePCLXL[i] >= _ctPaperSizes))
-                {
                     _indxPaperSizePCLXL[i] = 0;
-                }
 
                 if ((_indxPaperTypePCLXL[i] < 0) || (_indxPaperTypePCLXL[i] >= _ctPaperTypes))
-                {
                     _indxPaperTypePCLXL[i] = 0;
-                }
 
                 if ((_indxPaperTrayPCLXL[i] < 0) || (_indxPaperTrayPCLXL[i] >= (_maxPaperTray + 1)))
-                {
                     _indxPaperTrayPCLXL[i] = 0;
-                }
 
                 if ((_indxPlexModePCLXL[i] < 0) || (_indxPlexModePCLXL[i] >= _ctPlexModes))
-                {
                     _indxPlexModePCLXL[i] = 0;
-                }
 
                 if ((_indxOrientFrontPCLXL[i] < 0) || (_indxOrientFrontPCLXL[i] >= _ctOrientations))
-                {
                     _indxOrientFrontPCLXL[i] = 0;
-                }
 
                 if ((_indxOrientRearPCLXL[i] < 0) || (_indxOrientRearPCLXL[i] >= _ctOrientations))
-                {
                     _indxOrientRearPCLXL[i] = 0;
-                }
             }
         }
 
@@ -1253,7 +1167,7 @@ namespace PCLParaphernalia
                                                   ref netTimeoutSend,
                                                   ref netTimeoutReceive);
 
-                btnGenerate.Content = "Generate & send test data to\r\n" + netPrnAddress + " : " + netPrnPort.ToString();
+                btnGenerate.Content = $"Generate & send test data to\r\n{netPrnAddress} : {netPrnPort}";
             }
             else if (targetType == TargetCore.Target.WinPrinter)
             {
@@ -1261,7 +1175,7 @@ namespace PCLParaphernalia
 
                 TargetCore.MetricsLoadWinPrinter(ref winPrintername);
 
-                btnGenerate.Content = "Generate & send test data to printer\r\n" + winPrintername;
+                btnGenerate.Content = $"Generate & send test data to printer\r\n{winPrintername}";
             }
         }
 
