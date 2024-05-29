@@ -869,9 +869,9 @@ namespace PCLParaphernalia
             OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(prnFilename);
 
             openDialog.Filter = "Print Files|*.prn; *.pcl; *.dia;" +
-                                "|Font files|*.sfp; *.sfs; *.sft; *.sfx; " +
-                                "|Overlay files|*.ovl; *.ovx;" +
-                                "|All files|*.*";
+                                "|Font Files|*.sfp; *.sfs; *.sft; *.sfx;" +
+                                "|Overlay Files|*.ovl; *.ovx;" +
+                                "|All Files|*.*";
 
             if (openDialog.ShowDialog() == false)
                 return false;
