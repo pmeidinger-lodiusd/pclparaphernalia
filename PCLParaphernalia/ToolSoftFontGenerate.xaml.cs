@@ -192,6 +192,10 @@ namespace PCLParaphernalia
                     ref rptChkMarks,
                     ref flagOptRptWrap);
 
+
+            // If a file was selected, the font dropdown may not have a font name
+            var fontName = string.IsNullOrEmpty(_fontNameTTF) ? _fontNameBase : _fontNameTTF;
+
             if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 ToolSoftFontGenReport.Generate(rptFileFmt,
@@ -200,7 +204,7 @@ namespace PCLParaphernalia
                     _tableLogMapping,
                     _tableLogTarget,
                     _tableLogChars,
-                    _fontNameTTF,
+                    fontName,
                     _fontFilenameTTF,
                     _fontFilenamePCL);
             }
@@ -212,7 +216,7 @@ namespace PCLParaphernalia
                     _tableLogMapping,
                     _tableLogTarget,
                     _tableLogChars,
-                    _fontNameTTF,
+                    fontName,
                     _fontFilenameTTF,
                     _fontFilenamePCLXL);
             }
