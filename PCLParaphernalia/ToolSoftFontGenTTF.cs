@@ -263,7 +263,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public bool GetGlyphId(ref ushort glyphId)
+            public bool TryGetGlyphId(out ushort glyphId)
             {
                 glyphId = _glyphId;
 
@@ -281,7 +281,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public bool GlyphPresent()
+            public bool GetGlyphPresent()
             {
                 return _glyphPresent;
             }
@@ -482,22 +482,20 @@ namespace PCLParaphernalia
         //               [ BitConverter.IsLittleEndian ]                      //
         //--------------------------------------------------------------------//
 
-        private short ByteArrayToInt16(byte[] Buf)
+        private short ByteArrayToInt16(byte[] buf)
         {
             const int sliceSize = 2;
 
-            uint uiSub,
-                   uiTot;
-
-            uiTot = 0;
+            uint sub;
+            uint tot = 0;
 
             for (int j = 0; j < sliceSize; j++)
             {
-                uiSub = Buf[j];
-                uiTot = (uiTot << 8) | uiSub;
+                sub = buf[j];
+                tot = (tot << 8) | sub;
             }
 
-            return (short)uiTot;
+            return (short)tot;
         }
 
         //--------------------------------------------------------------------//
@@ -511,22 +509,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private ushort ByteArrayToUInt16(byte[] Buf)
+        private ushort ByteArrayToUInt16(byte[] buf)
         {
             const int sliceSize = 2;
 
-            uint uiSub,
-                   uiTot;
-
-            uiTot = 0;
+            uint sub;
+            uint tot = 0;
 
             for (int j = 0; j < sliceSize; j++)
             {
-                uiSub = Buf[j];
-                uiTot = (uiTot << 8) | uiSub;
+                sub = buf[j];
+                tot = (tot << 8) | sub;
             }
 
-            return (ushort)uiTot;
+            return (ushort)tot;
         }
 
         //--------------------------------------------------------------------//
@@ -540,22 +536,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private uint ByteArrayToUInt32(byte[] Buf)
+        private uint ByteArrayToUInt32(byte[] buf)
         {
             const int sliceSize = 4;
 
-            uint uiSub,
-                   uiTot;
-
-            uiTot = 0;
+            uint sub;
+            uint tot = 0;
 
             for (int j = 0; j < sliceSize; j++)
             {
-                uiSub = Buf[j];
-                uiTot = (uiTot << 8) | uiSub;
+                sub = buf[j];
+                tot = (tot << 8) | sub;
             }
 
-            return uiTot;
+            return tot;
         }
 
         //--------------------------------------------------------------------//
@@ -569,22 +563,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private ulong ByteArrayToUInt64(byte[] Buf)
+        private ulong ByteArrayToUInt64(byte[] buf)
         {
             const int sliceSize = 8;
 
-            ulong uiSub,
-                   uiTot;
-
-            uiTot = 0;
+            ulong sub;
+            ulong tot = 0;
 
             for (int j = 0; j < sliceSize; j++)
             {
-                uiSub = Buf[j];
-                uiTot = (uiTot << 8) | uiSub;
+                sub = buf[j];
+                tot = (tot << 8) | sub;
             }
 
-            return uiTot;
+            return tot;
         }
 
         //--------------------------------------------------------------------//
@@ -599,7 +591,7 @@ namespace PCLParaphernalia
 
         public bool CharReferencedCheck(ushort charCode)
         {
-            return _charData[charCode].GlyphPresent();
+            return _charData[charCode].GetGlyphPresent();
         }
 
         //--------------------------------------------------------------------//
@@ -612,13 +604,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool CheckForTTC(string fileName, ref bool typeTTC, ref uint numFonts)
+        public bool TryCheckForTTC(string fileName, out bool typeTTC, out uint numFonts)
         {
             const string tabName = "ttcf";
 
             _fontFileSize = 0;
 
             typeTTC = false;
+            numFonts = default;
 
             if (!TryFontFileOpen(fileName, out _fontFileSize))
                 return false;
@@ -631,31 +624,28 @@ namespace PCLParaphernalia
             //                                                            //
             //------------------------------------------------------------//
 
-            uint tabId = 0,
-                    tabVersion = 0;
+            uint tabVersion = 0;
 
             typeTTC = false;
 
-            bool flagOK = TryReadBytesAsUInt32(0, out tabId);
+            var OK = TryReadBytesAsUInt32(0, out uint tabId);
 
-            if (!flagOK)
+            if (!OK)
             {
-                flagOK = false;
+                OK = false;
 
-                ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, "Error reading first four bytes of font file");
+                ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, "Error reading first four bytes of font file.");
             }
             else if (tabId == cTabID_ttcf)
             {
                 typeTTC = true;
 
-                flagOK = TryReadBytesAsUInt32(-1, out tabVersion);
+                OK = TryReadBytesAsUInt32(-1, out tabVersion);
 
-                if (flagOK)
-                {
-                    flagOK = TryReadBytesAsUInt32(-1, out numFonts);
-                }
+                if (OK)
+                    OK = TryReadBytesAsUInt32(-1, out numFonts);
 
-                if (!flagOK)
+                if (!OK)
                     numFonts = 0;
             }
 
@@ -680,7 +670,7 @@ namespace PCLParaphernalia
 
             FontFileClose();
 
-            return flagOK;
+            return OK;
         }
 
         //--------------------------------------------------------------------//
@@ -795,14 +785,13 @@ namespace PCLParaphernalia
                                 "Source (TrueType) Font File Selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
-                
+
                 return false;
             }
 
             try
             {
                 _ipStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.None);
-
             }
             catch
             {
@@ -813,7 +802,6 @@ namespace PCLParaphernalia
 
             if (_ipStream == null)
                 return false;
-
 
             fileSize = new FileInfo(fileName).Length;
 
@@ -847,7 +835,7 @@ namespace PCLParaphernalia
 
         private bool FontFileSeek(int offset)
         {
-            bool flagOK = true;
+            var OK = true;
 
             try
             {
@@ -855,10 +843,10 @@ namespace PCLParaphernalia
             }
             catch
             {
-                flagOK = false;
+                OK = false;
             }
 
-            return flagOK;
+            return OK;
         }
 
         //--------------------------------------------------------------------//
@@ -1072,11 +1060,10 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-
             textWidth = (ushort)_OS_2_xAvgCharWidth;
             xHeight = (ushort)_OS_2_sxHeight;
 
-            glyphPresent = _charData[cSpaceCodePoint].GetGlyphId(ref glyphId);
+            glyphPresent = _charData[cSpaceCodePoint].TryGetGlyphId(out glyphId);
             ushort defPCLPitch;
             if (glyphPresent)
             {
@@ -1299,7 +1286,7 @@ namespace PCLParaphernalia
 
             for (int i = _cmap_firstCode; i <= _cmap_lastCode; i++)
             {
-                glyphPresent = _charData[i].GetGlyphId(ref glyphId);
+                glyphPresent = _charData[i].TryGetGlyphId(out glyphId);
 
                 if (glyphPresent)
                 {
@@ -1720,7 +1707,7 @@ namespace PCLParaphernalia
 
             offset = 8;
 
-            bool flagOK = TryReadBytesAsUInt32(offset, out checkNumFonts);
+            var OK = TryReadBytesAsUInt32(offset, out checkNumFonts);
 
             if (checkNumFonts != numFonts)
             {
@@ -1732,9 +1719,9 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < numFonts; i++)
             {
-                flagOK = TryReadBytesAsUInt32(offset, out fontOffsets[i]);
+                OK = TryReadBytesAsUInt32(offset, out fontOffsets[i]);
 
-                if (!flagOK)
+                if (!OK)
                 {
                     i = (int)numFonts;
                 }
@@ -1756,18 +1743,18 @@ namespace PCLParaphernalia
                             $"offset = {fontOffsets[i]}");
                     }
 
-                    flagOK = ReadTableDirectory((int)fontOffsets[i], true);
+                    OK = ReadTableDirectory((int)fontOffsets[i], true);
 
-                    if (flagOK)
+                    if (OK)
                     {
-                        flagOK = ReadData_name(true, ref fontNames[i]);
+                        OK = ReadData_name(true, ref fontNames[i]);
                     }
                 }
             }
 
             FontFileClose();
 
-            return flagOK;
+            return OK;
         }
 
         //--------------------------------------------------------------------//
@@ -1859,7 +1846,6 @@ namespace PCLParaphernalia
             tabPCLTPresent = _tabPCLTPresent;
             tabvmtxPresent = _tabvmtxPresent;
 
-
             if (!TryFontFileOpen(fileName, out _fontFileSize))
             {
                 ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Error opening TrueType Font file {fileName}.");
@@ -1898,7 +1884,7 @@ namespace PCLParaphernalia
             //                                                            //
             //------------------------------------------------------------//
 
-            bool flagOK = ReadTableDirectory(sfntOffset, false);
+            var OK = ReadTableDirectory(sfntOffset, false);
 
             //------------------------------------------------------------//
             //                                                            //
@@ -1906,33 +1892,33 @@ namespace PCLParaphernalia
             //                                                            //
             //------------------------------------------------------------//
 
-            if (flagOK)
+            if (OK)
             {
                 string dummyString = string.Empty;
 
-                flagOK = ReadData_name(false, ref dummyString);
+                OK = ReadData_name(false, ref dummyString);
             }
 
-            if (flagOK)
-                flagOK = ReadData_OS_2();
+            if (OK)
+                OK = ReadData_OS_2();
 
-            if (flagOK)
-                flagOK = ReadData_head();
+            if (OK)
+                OK = ReadData_head();
 
-            if (flagOK)
-                flagOK = ReadData_hhea();
+            if (OK)
+                OK = ReadData_hhea();
 
-            if (flagOK && (_tab_vhea.TableLength != 0))
-                flagOK = ReadData_vhea();
+            if (OK && (_tab_vhea.TableLength != 0))
+                OK = ReadData_vhea();
 
-            if (flagOK)
-                flagOK = ReadData_maxp();
+            if (OK)
+                OK = ReadData_maxp();
 
-            if (flagOK)
-                flagOK = ReadData_PCLT();
+            if (OK)
+                OK = ReadData_PCLT();
 
-            if (flagOK)
-                flagOK = ReadData_post();
+            if (OK)
+                OK = ReadData_post();
 
             //------------------------------------------------------------//
             //                                                            //
@@ -1942,8 +1928,8 @@ namespace PCLParaphernalia
             //                                                            //
             //------------------------------------------------------------//
 
-            if (flagOK)
-                flagOK = ReadData_cmap(symSetIndx, ref symbolMapping, symSetUnbound, symSetUserSet, symSetMapPCL);
+            if (OK)
+                OK = ReadData_cmap(symSetIndx, ref symbolMapping, symSetUnbound, symSetUserSet, symSetMapPCL);
 
             //------------------------------------------------------------//
             //                                                            //
@@ -1953,11 +1939,11 @@ namespace PCLParaphernalia
             //                                                            //
             //------------------------------------------------------------//
 
-            if (flagOK)
+            if (OK)
             {
                 _glyphData = new GlyphDataEntry[_maxp_numGlyphs];
 
-                flagOK = ReadData_hmtx();
+                OK = ReadData_hmtx();
             }
 
             //------------------------------------------------------------//
@@ -1968,8 +1954,8 @@ namespace PCLParaphernalia
             //                                                            //
             //------------------------------------------------------------//
 
-            if (flagOK && (_tab_vmtx.TableLength != 0))
-                flagOK = ReadData_vmtx();
+            if (OK && (_tab_vmtx.TableLength != 0))
+                OK = ReadData_vmtx();
 
             //------------------------------------------------------------//
             //                                                            //
@@ -1980,8 +1966,8 @@ namespace PCLParaphernalia
             //                                                            //
             //------------------------------------------------------------//
 
-            if (flagOK)
-                flagOK = ReadData_loca_glyf();
+            if (OK)
+                OK = ReadData_loca_glyf();
 
             //------------------------------------------------------------//
             //                                                            //
@@ -1990,7 +1976,7 @@ namespace PCLParaphernalia
             //                                                            //
             //------------------------------------------------------------//
 
-            if (flagOK)
+            if (OK)
             {
                 uint glyphOffset = 0,
                         glyphLength = 0;
@@ -1999,7 +1985,6 @@ namespace PCLParaphernalia
 
                 _glyphZeroExists = glyphLength != 0;
             }
-
 
             return true;
         }
@@ -2028,26 +2013,26 @@ namespace PCLParaphernalia
 
         public bool TryReadByteArray(int offset, int length, ref byte[] target)
         {
-            bool flagOK = true;
+            var OK = true;
 
             if (offset != -1)
-                flagOK = FontFileSeek(offset);
+                OK = FontFileSeek(offset);
 
-            if (flagOK)
+            if (OK)
             {
                 try
                 {
                     int readLen = _binReader.Read(target, 0, length);
                     if (readLen != length)
-                        flagOK = false;
+                        OK = false;
                 }
                 catch
                 {
-                    flagOK = false;
+                    OK = false;
                 }
             }
 
-            return flagOK;
+            return OK;
         }
 
         //--------------------------------------------------------------------//
@@ -2068,31 +2053,31 @@ namespace PCLParaphernalia
             const int sliceSize = 1;
             var slice = new byte[sliceSize];
 
-            var flagOK = true;
+            var OK = true;
 
             if (offset != -1)
-                flagOK = FontFileSeek(offset);
+                OK = FontFileSeek(offset);
 
-            if (flagOK)
+            if (OK)
             {
                 try
                 {
                     int readLen = _binReader.Read(slice, 0, sliceSize);
                     if (readLen != sliceSize)
-                        flagOK = false;
+                        OK = false;
                 }
                 catch
                 {
-                    flagOK = false;
+                    OK = false;
                 }
             }
 
-            if (flagOK)
+            if (OK)
             {
                 target = (sbyte)slice[0];
             }
 
-            return flagOK;
+            return OK;
         }
 
         //--------------------------------------------------------------------//
@@ -2113,31 +2098,31 @@ namespace PCLParaphernalia
             const int sliceSize = 1;
             var slice = new byte[sliceSize];
 
-            var flagOK = true;
+            var OK = true;
 
             if (offset != -1)
-                flagOK = FontFileSeek(offset);
+                OK = FontFileSeek(offset);
 
-            if (flagOK)
+            if (OK)
             {
                 try
                 {
                     int readLen = _binReader.Read(slice, 0, sliceSize);
                     if (readLen != sliceSize)
-                        flagOK = false;
+                        OK = false;
                 }
                 catch
                 {
-                    flagOK = false;
+                    OK = false;
                 }
             }
 
-            if (flagOK)
+            if (OK)
             {
                 target = slice[0];
             }
 
-            return flagOK;
+            return OK;
         }
 
         //--------------------------------------------------------------------//
@@ -2159,31 +2144,31 @@ namespace PCLParaphernalia
             const int sliceSize = 2;
             var slice = new byte[sliceSize];
 
-            var flagOK = true;
+            var OK = true;
 
             if (offset != -1)
-                flagOK = FontFileSeek(offset);
+                OK = FontFileSeek(offset);
 
-            if (flagOK)
+            if (OK)
             {
                 try
                 {
                     int readLen = _binReader.Read(slice, 0, sliceSize);
                     if (readLen != sliceSize)
-                        flagOK = false;
+                        OK = false;
                 }
                 catch
                 {
-                    flagOK = false;
+                    OK = false;
                 }
             }
 
-            if (flagOK)
+            if (OK)
             {
                 target = ByteArrayToInt16(slice);
             }
 
-            return flagOK;
+            return OK;
         }
 
         //--------------------------------------------------------------------//
@@ -2205,31 +2190,31 @@ namespace PCLParaphernalia
             const int sliceSize = 2;
             var slice = new byte[sliceSize];
 
-            var flagOK = true;
+            var OK = true;
 
             if (offset != -1)
-                flagOK = FontFileSeek(offset);
+                OK = FontFileSeek(offset);
 
-            if (flagOK)
+            if (OK)
             {
                 try
                 {
                     int readLen = _binReader.Read(slice, 0, sliceSize);
                     if (readLen != sliceSize)
-                        flagOK = false;
+                        OK = false;
                 }
                 catch
                 {
-                    flagOK = false;
+                    OK = false;
                 }
             }
 
-            if (flagOK)
+            if (OK)
             {
                 target = ByteArrayToUInt16(slice);
             }
 
-            return flagOK;
+            return OK;
         }
 
         //--------------------------------------------------------------------//
@@ -2251,31 +2236,31 @@ namespace PCLParaphernalia
             const int sliceSize = 4;
             var slice = new byte[sliceSize];
 
-            var flagOK = true;
+            var OK = true;
 
             if (offset != -1)
-                flagOK = FontFileSeek(offset);
+                OK = FontFileSeek(offset);
 
-            if (flagOK)
+            if (OK)
             {
                 try
                 {
                     int readLen = _binReader.Read(slice, 0, sliceSize);
                     if (readLen != sliceSize)
-                        flagOK = false;
+                        OK = false;
                 }
                 catch
                 {
-                    flagOK = false;
+                    OK = false;
                 }
             }
 
-            if (flagOK)
+            if (OK)
             {
                 target = ByteArrayToUInt32(slice);
             }
 
-            return flagOK;
+            return OK;
         }
 
         //--------------------------------------------------------------------//
@@ -2297,31 +2282,31 @@ namespace PCLParaphernalia
             const int sliceSize = 8;
             var slice = new byte[sliceSize];
 
-            var flagOK = true;
+            var OK = true;
 
             if (offset != -1)
-                flagOK = FontFileSeek(offset);
+                OK = FontFileSeek(offset);
 
-            if (flagOK)
+            if (OK)
             {
                 try
                 {
                     int readLen = _binReader.Read(slice, 0, sliceSize);
                     if (readLen != sliceSize)
-                        flagOK = false;
+                        OK = false;
                 }
                 catch
                 {
-                    flagOK = false;
+                    OK = false;
                 }
             }
 
-            if (flagOK)
+            if (OK)
             {
                 target = ByteArrayToUInt64(slice);
             }
 
-            return flagOK;
+            return OK;
         }
 
         //--------------------------------------------------------------------//
@@ -2380,10 +2365,10 @@ namespace PCLParaphernalia
             bool encodingSymbol,
                     encodingUnicode;
 
-            string mapSymSet = string.Empty;
-            string mapSymSetType = string.Empty;
+            var mapSymSet = string.Empty;
+            var mapSymSetType = string.Empty;
 
-            bool flagOK = true;
+            var OK = true;
             encodingSymbol = false;
             encodingUnicode = false;
 
@@ -2402,29 +2387,29 @@ namespace PCLParaphernalia
 
             if (tabLength < reqLength)
             {
-                flagOK = false;
+                OK = false;
 
                 ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Length of '{tabName}' table too small: {tabLength} < {reqLength},");
             }
 
-            if (flagOK)
+            if (OK)
             {
-                flagOK = TryReadBytesAsUInt16((int)tabOffset, out tabVersion);
+                OK = TryReadBytesAsUInt16((int)tabOffset, out tabVersion);
 
-                if (!flagOK)
+                if (!OK)
                 {
                     ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Error reading '{tabName}' table version.");
                 }
                 else
                 {
-                    flagOK = TryReadBytesAsUInt16((int)(tabOffset + 2), out tabNumTables);
-                    if (flagOK)
+                    OK = TryReadBytesAsUInt16((int)(tabOffset + 2), out tabNumTables);
+                    if (OK)
                     {
                         reqLength = 4 + (8 * (uint)tabNumTables);
 
                         if (reqLength > tabLength)
                         {
-                            flagOK = false;
+                            OK = false;
 
                             ToolSoftFontGenLog.LogError(
                                 _tableDonor, MessageBoxImage.Error,
@@ -2445,7 +2430,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            if (flagOK)
+            if (OK)
             {
                 if (_logVerbose)
                 {
@@ -2455,17 +2440,17 @@ namespace PCLParaphernalia
                         $"table has {tabNumTables} sub-tables");
                 }
 
-                for (int i = 0; (i < tabNumTables) && flagOK; i++)
+                for (int i = 0; (i < tabNumTables) && OK; i++)
                 {
-                    flagOK = TryReadBytesAsUInt16(-1, out subTabPlatform);
+                    OK = TryReadBytesAsUInt16(-1, out subTabPlatform);
 
-                    if (flagOK)
-                        flagOK = TryReadBytesAsUInt16(-1, out subTabEncoding);
+                    if (OK)
+                        OK = TryReadBytesAsUInt16(-1, out subTabEncoding);
 
-                    if (flagOK)
-                        flagOK = TryReadBytesAsUInt32(-1, out subTabOffset);
+                    if (OK)
+                        OK = TryReadBytesAsUInt32(-1, out subTabOffset);
 
-                    if (flagOK)
+                    if (OK)
                     {
                         if (_logVerbose)
                         {
@@ -2566,13 +2551,13 @@ namespace PCLParaphernalia
 
                         if (reqLength > tabLength)
                         {
-                            flagOK = false;
+                            OK = false;
 
                             ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"'{tabName}' sub-table header at offset {reqLength} past end of table of length {tabLength}.");
                         }
                     }
 
-                    if (flagOK)
+                    if (OK)
                     {
                         //----------------------------------------------------//
                         //                                                    //
@@ -2620,7 +2605,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        flagOK = false;
+                        OK = false;
 
                         ToolSoftFontGenLog.LogError(
                             _tableDonor, MessageBoxImage.Error,
@@ -2660,7 +2645,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            if (flagOK)
+            if (OK)
             {
                 if (encodingUnicode)
                 {
@@ -2713,15 +2698,15 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    flagOK = false;
+                    OK = false;
 
                     ToolSoftFontGenLog.LogError(
                         _tableDonor, MessageBoxImage.Error,
                         $"No Unicode or Symbol encoding sub-table of format 4 found for Windows platform in '{tabName}' table");
                 }
 
-                //    if (flagOK && _logVerbose && ! symSetUnbound)
-                if (flagOK && !symSetUnbound)
+                //    if (OK && _logVerbose && ! symSetUnbound)
+                if (OK && !symSetUnbound)
                 {
                     //----------------------------------------------------//
                     //                                                    //
@@ -2788,29 +2773,29 @@ namespace PCLParaphernalia
                     }
                 }
 
-                if (flagOK)
+                if (OK)
                 {
-                    flagOK = TryReadBytesAsUInt16((int)subTabOffset, out subTabFormat);
+                    OK = TryReadBytesAsUInt16((int)subTabOffset, out subTabFormat);
                 }
 
-                if (flagOK)
+                if (OK)
                 {
                     if (subTabFormat == 4)
                     {
-                        flagOK = TryReadBytesAsUInt16(-1, out fmt4Length);
+                        OK = TryReadBytesAsUInt16(-1, out fmt4Length);
 
-                        if (flagOK)
+                        if (OK)
                         {
                             if (fmt4Length < 14)
                             {
-                                flagOK = false;
+                                OK = false;
 
                                 ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"'{tabName}' sub-table header not within table.");
                             }
                             else if ((subTabOffset + fmt4Length) >
                                 (tabOffset + tabLength))
                             {
-                                flagOK = false;
+                                OK = false;
 
                                 ToolSoftFontGenLog.LogError(
                                     _tableDonor, MessageBoxImage.Error,
@@ -2818,22 +2803,22 @@ namespace PCLParaphernalia
                             }
                         }
 
-                        if (flagOK)
-                            flagOK = TryReadBytesAsUInt16(-1, out fmt4Lang);
+                        if (OK)
+                            OK = TryReadBytesAsUInt16(-1, out fmt4Lang);
 
-                        if (flagOK)
-                            flagOK = TryReadBytesAsUInt16(-1, out fmt4SegCountx2);
+                        if (OK)
+                            OK = TryReadBytesAsUInt16(-1, out fmt4SegCountx2);
 
-                        if (flagOK)
-                            flagOK = TryReadBytesAsUInt16(-1, out fmt4SearchRange);
+                        if (OK)
+                            OK = TryReadBytesAsUInt16(-1, out fmt4SearchRange);
 
-                        if (flagOK)
-                            flagOK = TryReadBytesAsUInt16(-1, out fmt4EntrySelector);
+                        if (OK)
+                            OK = TryReadBytesAsUInt16(-1, out fmt4EntrySelector);
 
-                        if (flagOK)
-                            flagOK = TryReadBytesAsUInt16(-1, out fmt4RangeShift);
+                        if (OK)
+                            OK = TryReadBytesAsUInt16(-1, out fmt4RangeShift);
 
-                        if (flagOK)
+                        if (OK)
                         {
                             short x;
 
@@ -2843,7 +2828,7 @@ namespace PCLParaphernalia
 
                             if (x > fmt4Length)
                             {
-                                flagOK = false;
+                                OK = false;
 
                                 ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, "'{tabName}' sub-table internally inconsistent.");
                             }
@@ -2886,7 +2871,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        flagOK = false;
+                        OK = false;
 
                         if (encodingUnicode)
                             ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"'{tabName}' sub-table {subTabNo} for Unicode is not format 4.");
@@ -2903,7 +2888,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            if (flagOK)
+            if (OK)
             {
                 int totChars = 0;
 
@@ -2942,20 +2927,20 @@ namespace PCLParaphernalia
                     }
                 }
 
-                flagOK = TryReadByteArray(baseEndCode, fmt4SegCountx2, ref indexEndCode);
-                if (flagOK)
-                    flagOK = TryReadByteArray(baseStartCode, fmt4SegCountx2, ref indexStartCode);
+                OK = TryReadByteArray(baseEndCode, fmt4SegCountx2, ref indexEndCode);
+                if (OK)
+                    OK = TryReadByteArray(baseStartCode, fmt4SegCountx2, ref indexStartCode);
 
-                if (flagOK)
-                    flagOK = TryReadByteArray(baseIdDelta, fmt4SegCountx2, ref indexIdDelta);
+                if (OK)
+                    OK = TryReadByteArray(baseIdDelta, fmt4SegCountx2, ref indexIdDelta);
 
-                if (flagOK)
-                    flagOK = TryReadByteArray(baseIdRangeOffset, fmt4SegCountx2, ref indexIdRangeOffset);
+                if (OK)
+                    OK = TryReadByteArray(baseIdRangeOffset, fmt4SegCountx2, ref indexIdRangeOffset);
 
-                if (flagOK)
-                    flagOK = TryReadByteArray(baseGlyphIdArray, sizeGlyphIdArray, ref glyphIdArray);
+                if (OK)
+                    OK = TryReadByteArray(baseGlyphIdArray, sizeGlyphIdArray, ref glyphIdArray);
 
-                if (flagOK)
+                if (OK)
                 {
                     int segx2;
 
@@ -3107,7 +3092,7 @@ namespace PCLParaphernalia
 
                                     if (j >= sizeGlyphIdArray)
                                     {
-                                        flagOK = false;
+                                        OK = false;
 
                                         ToolSoftFontGenLog.LogError( _tableDonor, MessageBoxImage.Error, $"GlyphId index {j} >= array size {sizeGlyphIdArray}.");
                                     }
@@ -3160,16 +3145,16 @@ namespace PCLParaphernalia
                                 }
                             }                         // end of 'if(reqCode)' //
 
-                            if (!flagOK)
+                            if (!OK)
                                 i = endCode + 1;   // force end loop //
                         }                             // end of inner 'for'   //
 
-                        if (!flagOK)
+                        if (!OK)
                             segx2 = fmt4SegCountx2;// force end loop //
                     }                                 // end of outer 'for'   //
-                }                                     // end of 'if(flagOK)'  //
+                }                                     // end of 'if(OK)'  //
 
-                if (flagOK)
+                if (OK)
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -3188,7 +3173,6 @@ namespace PCLParaphernalia
                     _cmap_missChars = 0;
                     _cmap_firstCode = 0;
                     _cmap_lastCode = 0;
-
 
                     string hexCt;
                     if (_sizeCharSet < 257)
@@ -3277,7 +3261,7 @@ namespace PCLParaphernalia
 
             symbolMapping = encodingSymbol;
 
-            return flagOK;
+            return OK;
         }
 
         //--------------------------------------------------------------------//
@@ -3306,58 +3290,59 @@ namespace PCLParaphernalia
 
             uint tabVersion = 0;
 
-            bool flagOK = true;
+            var OK = true;
+
             _tab_head.GetByteRange(out tabOffset, out tabLength);
             reqLength = 54;
 
             if (tabLength < reqLength)
             {
-                flagOK = false;
+                OK = false;
 
                 ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Length of '{tabName}' table too small: {tabLength} < {reqLength}.");
             }
 
-            if (flagOK)
+            if (OK)
             {
-                flagOK = TryReadBytesAsUInt32((int)tabOffset, out tabVersion);
+                OK = TryReadBytesAsUInt32((int)tabOffset, out tabVersion);
 
-                if (!flagOK)
+                if (!OK)
                 {
                     ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Error reading '{tabName}' table version.");
                 }
                 else if (tabVersion != cTabVer_head)
                 {
-                    flagOK = false;
+                    OK = false;
 
                     ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Wrong '{tabName}' table version = 0x{tabVersion:x8}\r\n\r\nExpected version = 0x{cTabVer_head:x8}");
                 }
                 else
                 {
-                    flagOK = TryReadBytesAsUInt16((int)(tabOffset + 18), out _head_unitsPerEm);
+                    OK = TryReadBytesAsUInt16((int)(tabOffset + 18), out _head_unitsPerEm);
 
-                    if (flagOK)
+                    if (OK)
                     {
-                        flagOK = TryReadBytesAsInt16((int)(tabOffset + 36), out _head_xMin);
+                        OK = TryReadBytesAsInt16((int)(tabOffset + 36), out _head_xMin);
                     }
 
-                    if (flagOK)
+                    if (OK)
                     {
-                        flagOK = TryReadBytesAsInt16(-1, out _head_yMin);
+                        OK = TryReadBytesAsInt16(-1, out _head_yMin);
                     }
 
-                    if (flagOK)
+                    if (OK)
                     {
-                        flagOK = TryReadBytesAsInt16(-1, out _head_xMax);
+                        OK = TryReadBytesAsInt16(-1, out _head_xMax);
                     }
 
-                    if (flagOK)
+                    if (OK)
                     {
-                        flagOK = TryReadBytesAsInt16(-1, out _head_yMax);
+                        OK = TryReadBytesAsInt16(-1, out _head_yMax);
                     }
 
-                    if (flagOK)
+                    if (OK)
                     {
-                        flagOK = TryReadBytesAsInt16((int)(tabOffset + 50), out _head_indxLocFmt);
+                        OK = TryReadBytesAsInt16((int)(tabOffset + 50), out _head_indxLocFmt);
                     }
                 }
             }
@@ -3403,7 +3388,7 @@ namespace PCLParaphernalia
                     $"indexToLocFormat = {_head_indxLocFmt}");
             }
 
-            return flagOK;
+            return OK;
         }
 
         //--------------------------------------------------------------------//
@@ -3429,48 +3414,49 @@ namespace PCLParaphernalia
 
             uint tabVersion = 0;
 
-            bool flagOK = true;
+           var OK = true;
+
             _tab_hhea.GetByteRange(out tabOffset, out tabLength);
             reqLength = 36;
 
             if (tabLength < reqLength)
             {
-                flagOK = false;
+                OK = false;
 
                 ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Length of '{tabName}' table too small: {tabLength} < {reqLength}.");
             }
 
-            if (flagOK)
+            if (OK)
             {
-                flagOK = TryReadBytesAsUInt32((int)tabOffset, out tabVersion);
+                OK = TryReadBytesAsUInt32((int)tabOffset, out tabVersion);
 
-                if (!flagOK)
+                if (!OK)
                 {
                     ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Error reading '{tabName}' table version");
                 }
                 else if (tabVersion != cTabVer_hhea)
                 {
-                    flagOK = false;
+                    OK = false;
 
                     ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Wrong '{tabName}' table version = 0x{tabVersion:x8}\r\n\r\nExpected version = 0x{cTabVer_hhea:x8}");
                 }
                 else
                 {
-                    flagOK = TryReadBytesAsInt16((int)(tabOffset + 4), out _hhea_ascender);
+                    OK = TryReadBytesAsInt16((int)(tabOffset + 4), out _hhea_ascender);
 
-                    if (flagOK)
+                    if (OK)
                     {
-                        flagOK = TryReadBytesAsInt16(-1, out _hhea_descender);
+                        OK = TryReadBytesAsInt16(-1, out _hhea_descender);
                     }
 
-                    if (flagOK)
+                    if (OK)
                     {
-                        flagOK = TryReadBytesAsInt16(-1, out _hhea_lineGap);
+                        OK = TryReadBytesAsInt16(-1, out _hhea_lineGap);
                     }
 
-                    if (flagOK)
+                    if (OK)
                     {
-                        flagOK = TryReadBytesAsUInt16((int)(tabOffset + 34), out _hhea_numHMetrics);
+                        OK = TryReadBytesAsUInt16((int)(tabOffset + 34), out _hhea_numHMetrics);
                     }
                 }
             }
@@ -3506,7 +3492,7 @@ namespace PCLParaphernalia
                     $"numberOfHMetrics = {_hhea_numHMetrics}");
             }
 
-            return flagOK;
+            return OK;
         }
 
         //--------------------------------------------------------------------//
@@ -3524,10 +3510,13 @@ namespace PCLParaphernalia
         private bool ReadData_hmtx()
         {
             const string tabName = "hmtx";
+
             uint tabOffset = 0,
-                   tabLength = 0,
-                   reqLength;
-            bool flagOK = true;
+                    tabLength = 0,
+                    reqLength;
+
+            var OK = true;
+
             _tab_hmtx.GetByteRange(out tabOffset, out tabLength);
 
             int hMetricsArrayLen = _hhea_numHMetrics;
@@ -3538,36 +3527,36 @@ namespace PCLParaphernalia
 
             if (_hhea_numHMetrics < 1)
             {
-                flagOK = false;
+                OK = false;
 
                 ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Number of HMetrics {_hhea_numHMetrics} < 1.");
             }
             else if ((_maxp_numGlyphs - _hhea_numHMetrics) < 0)
             {
-                flagOK = false;
+                OK = false;
 
                 ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Number of glyphs {_maxp_numGlyphs} < number of HMetrics {_hhea_numHMetrics}.");
             }
             else if (tabLength < reqLength)
             {
-                flagOK = false;
+                OK = false;
 
                 ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Length of '{tabName}' table too small: {tabLength} < {reqLength}.");
             }
 
-            if (flagOK)
+            if (OK)
             {
                 byte[] hMetricsArray = new byte[hMetricsArraySize];
                 byte[] lsbArray = new byte[lsbArraySize];
 
-                flagOK = TryReadByteArray((int)tabOffset, hMetricsArraySize, ref hMetricsArray);
+                OK = TryReadByteArray((int)tabOffset, hMetricsArraySize, ref hMetricsArray);
 
-                if (flagOK)
+                if (OK)
                 {
-                    flagOK = TryReadByteArray(-1, lsbArraySize, ref lsbArray);
+                    OK = TryReadByteArray(-1, lsbArraySize, ref lsbArray);
                 }
 
-                if (flagOK)
+                if (OK)
                 {
                     ushort advance = 0;
 
@@ -3601,7 +3590,7 @@ namespace PCLParaphernalia
                 }
             }
 
-            return flagOK;
+            return OK;
         }
 
         //--------------------------------------------------------------------//
@@ -3630,7 +3619,7 @@ namespace PCLParaphernalia
 
             short numContours = 0;
 
-            bool flagOK = true;
+            var OK = true;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -3650,33 +3639,33 @@ namespace PCLParaphernalia
                     "Count = " + _maxp_numGlyphs.ToString());
             }
 
-            for (int glyphId = 0; (glyphId < _maxp_numGlyphs) && flagOK; glyphId++)
+            for (int glyphId = 0; (glyphId < _maxp_numGlyphs) && OK; glyphId++)
             {
                 if (_head_indxLocFmt != 0)
                 {
-                    flagOK = TryReadBytesAsUInt32( (int)(locaOffset + (4 * glyphId)), out offsetThis);
+                    OK = TryReadBytesAsUInt32( (int)(locaOffset + (4 * glyphId)), out offsetThis);
 
-                    if (flagOK)
+                    if (OK)
                     {
-                        flagOK = TryReadBytesAsUInt32(-1, out offsetNext);
+                        OK = TryReadBytesAsUInt32(-1, out offsetNext);
                     }
                 }
                 else
                 {
-                    flagOK = TryReadBytesAsUInt16((int)(locaOffset + (2 * glyphId)), out offsetTemp);
+                    OK = TryReadBytesAsUInt16((int)(locaOffset + (2 * glyphId)), out offsetTemp);
 
-                    if (flagOK)
+                    if (OK)
                     {
                         offsetThis = (uint)(offsetTemp * 2);
 
-                        flagOK = TryReadBytesAsUInt16(-1, out offsetTemp);
+                        OK = TryReadBytesAsUInt16(-1, out offsetTemp);
 
-                        if (flagOK)
+                        if (OK)
                             offsetNext = (uint)(offsetTemp * 2);
                     }
                 }
 
-                if (flagOK)
+                if (OK)
                 {
                     entryOffset = glyfOffset + offsetThis;
                     entryLen = offsetNext - offsetThis;
@@ -3688,7 +3677,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if (flagOK)
+                if (OK)
                 {
                     if (entryLen == 0)
                     {
@@ -3696,7 +3685,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        flagOK = TryReadBytesAsInt16((int)entryOffset, out numContours);
+                        OK = TryReadBytesAsInt16((int)entryOffset, out numContours);
 
                         composite = numContours < 0;
                     }
@@ -3719,7 +3708,6 @@ namespace PCLParaphernalia
 
                 if (_logVerbose)
                 {
-
                     _glyphData[glyphId].GetMetricsH(out ushort advanceWidth, out short leftSideBearing);
 
                     _glyphData[glyphId].GetMetricsV(out ushort advanceHeight, out short topSideBearing);
@@ -3741,7 +3729,7 @@ namespace PCLParaphernalia
                 }
             }
 
-            return flagOK;
+            return OK;
         }
 
         //--------------------------------------------------------------------//
@@ -3765,37 +3753,38 @@ namespace PCLParaphernalia
 
             uint tabVersion = 0;
 
-            bool flagOK = true;
+            var OK = true;
+
             _tab_maxp.GetByteRange(out tabOffset, out tabLength);
             reqLength = 32;
 
             if (tabLength < reqLength)
             {
-                flagOK = false;
+                OK = false;
 
                 ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Length of '{tabName}' table too small: {tabLength} < {reqLength}.");
             }
 
-            if (flagOK)
+            if (OK)
             {
-                flagOK = TryReadBytesAsUInt32((int)tabOffset, out tabVersion);
+                OK = TryReadBytesAsUInt32((int)tabOffset, out tabVersion);
 
-                if (!flagOK)
+                if (!OK)
                 {
                     ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Error reading '{tabName}' table version.");
                 }
                 else if (tabVersion != cTabVer_maxp)
                 {
-                    flagOK = false;
+                    OK = false;
 
                     ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Wrong '{tabName}' table version = 0x{tabVersion:x8}\r\n\r\nExpected version = 0x{cTabVer_maxp:x8}");
                 }
                 else
                 {
-                    flagOK = TryReadBytesAsUInt16((int)(tabOffset + 4), out _maxp_numGlyphs);
-                    if (flagOK)
+                    OK = TryReadBytesAsUInt16((int)(tabOffset + 4), out _maxp_numGlyphs);
+                    if (OK)
                     {
-                        flagOK = TryReadBytesAsUInt16((int)(tabOffset + 30), out _maxp_maxCompDepth);
+                        OK = TryReadBytesAsUInt16((int)(tabOffset + 30), out _maxp_maxCompDepth);
                     }
                 }
             }
@@ -3819,7 +3808,7 @@ namespace PCLParaphernalia
                     $"maxComponentDepth = {_maxp_maxCompDepth}");
             }
 
-            return flagOK;
+            return OK;
         }
 
         //--------------------------------------------------------------------//
@@ -3855,7 +3844,8 @@ namespace PCLParaphernalia
             ushort tabFormat = 0,
                    stringsOffset = 0;
 
-            bool flagOK = true;
+            var OK = true;
+
             _tab_name.GetByteRange(out tabOffset, out tabLength);
 
             //----------------------------------------------------------------//
@@ -3880,46 +3870,46 @@ namespace PCLParaphernalia
 
             if (tabLength < reqLength)
             {
-                flagOK = false;
+                OK = false;
 
                 ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Length of '{tabName}' table too small: {tabLength} < {reqLength}.");
             }
 
-            if (flagOK)
+            if (OK)
             {
-                flagOK = TryReadBytesAsUInt16((int)tabOffset, out tabFormat);
+                OK = TryReadBytesAsUInt16((int)tabOffset, out tabFormat);
 
-                if (!flagOK)
+                if (!OK)
                 {
                     ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Error reading '{tabName}' table format.");
                 }
                 else if ((tabFormat != 0) && (tabFormat != 1))
                 {
-                    flagOK = false;
+                    OK = false;
 
                     ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"'{tabName}' table format {tabFormat:x4} is not 0 or 1.");
                 }
                 else
                 {
-                    flagOK = TryReadBytesAsUInt16((int)(tabOffset + 2), out nameRecCount);
-                    if (flagOK)
+                    OK = TryReadBytesAsUInt16((int)(tabOffset + 2), out nameRecCount);
+                    if (OK)
                     {
-                        flagOK = TryReadBytesAsUInt16((int)(tabOffset + 4), out stringsOffset);
+                        OK = TryReadBytesAsUInt16((int)(tabOffset + 4), out stringsOffset);
                     }
 
-                    if (flagOK)
+                    if (OK)
                     {
                         uint minLen = 6 + (12 * (uint)nameRecCount);
 
                         if (minLen > tabLength)
                         {
-                            flagOK = false;
+                            OK = false;
 
                             ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"'{tabName}' table length {tabLength} too short for {nameRecCount} encoding records.");
                         }
                         else if (stringsOffset > tabLength)
                         {
-                            flagOK = false;
+                            OK = false;
 
                             ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"string storage offset {stringsOffset}incompatible with '{tabName}' table length {tabLength}.");
                         }
@@ -3935,7 +3925,6 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
                 var name = $"DIAG: table = {tabName}:";
-
 
                 ToolSoftFontGenLog.LogNameAndValue(
                     _tableDonor, false, false,
@@ -3987,7 +3976,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            if (flagOK)
+            if (OK)
             {
                 // if (logIdData)
                 // {
@@ -4003,30 +3992,30 @@ namespace PCLParaphernalia
 
                 bool logIdData;
 
-                for (int i = 0; (i < nameRecCount) && flagOK; i++)
+                for (int i = 0; (i < nameRecCount) && OK; i++)
                 {
-                    flagOK = TryReadBytesAsUInt16((int)(tabOffset + 6 + (12 * i)), out nameRecPlatform);
+                    OK = TryReadBytesAsUInt16((int)(tabOffset + 6 + (12 * i)), out nameRecPlatform);
 
-                    if (flagOK)
-                        flagOK = TryReadBytesAsUInt16(-1, out nameRecEncoding);
+                    if (OK)
+                        OK = TryReadBytesAsUInt16(-1, out nameRecEncoding);
 
-                    if (flagOK)
-                        flagOK = TryReadBytesAsUInt16(-1, out nameRecLanguage);
+                    if (OK)
+                        OK = TryReadBytesAsUInt16(-1, out nameRecLanguage);
 
-                    if (flagOK)
-                        flagOK = TryReadBytesAsUInt16(-1, out nameRecNameId);
+                    if (OK)
+                        OK = TryReadBytesAsUInt16(-1, out nameRecNameId);
 
-                    if (flagOK)
-                        flagOK = TryReadBytesAsUInt16(-1, out nameRecLength);
+                    if (OK)
+                        OK = TryReadBytesAsUInt16(-1, out nameRecLength);
 
-                    if (flagOK)
-                        flagOK = TryReadBytesAsUInt16(-1, out nameRecOffset);
+                    if (OK)
+                        OK = TryReadBytesAsUInt16(-1, out nameRecOffset);
 
-                    if (flagOK)
+                    if (OK)
                     {
                         if ((uint)(stringsOffset + nameRecOffset + nameRecLength) > tabLength)
                         {
-                            flagOK = false;
+                            OK = false;
 
                             ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"record of length {nameRecLength} at offset {stringsOffset + nameRecOffset} extends past end of '{tabName}' table of length {tabLength}.");
                         }
@@ -4036,7 +4025,7 @@ namespace PCLParaphernalia
                         ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Error reading '{tabName}' record.");
                     }
 
-                    if (flagOK)
+                    if (OK)
                     {
                         //----------------------------------------------------//
                         //                                                    //
@@ -4173,7 +4162,7 @@ namespace PCLParaphernalia
 
                                 if (nameRecLength < maxNameRecStrLen)
                                 {
-                                    flagOK = TryReadByteArray(textOffset, nameRecLength, ref tempBuf);
+                                    OK = TryReadByteArray(textOffset, nameRecLength, ref tempBuf);
 
                                     if (tempBuf[0] == 0x00)
                                     {
@@ -4264,7 +4253,7 @@ namespace PCLParaphernalia
                 }
             }
 
-            return flagOK;
+            return OK;
         }
 
         //--------------------------------------------------------------------//
@@ -4291,16 +4280,12 @@ namespace PCLParaphernalia
         private bool ReadData_OS_2()
         {
             const string tabName = "OS/2";
-            uint tabOffset = 0,
-                   tabLength = 0,
-                   minLength;
-
             ushort tabVersion = 0;
-            _tab_OS_2.GetByteRange(out tabOffset, out tabLength);
-            minLength = 78;         // for version 0
+            _tab_OS_2.GetByteRange(out uint tabOffset, out uint tabLength);
+            const uint minLength = 78;
 
+            var OK = true;
 
-            bool flagOK;
             if (tabLength < minLength)
             {
                 //------------------------------------------------------------//
@@ -4310,62 +4295,50 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                flagOK = false;
+                OK = false;
 
                 ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Length of '{tabName}' table too small: {tabLength} < {minLength}.");
             }
             else
             {
-                flagOK = TryReadBytesAsUInt16((int)tabOffset, out tabVersion);
+                OK = TryReadBytesAsUInt16((int)tabOffset, out tabVersion);
 
-                if (flagOK)
-                {
-                    flagOK = TryReadBytesAsInt16(-1, out _OS_2_xAvgCharWidth);
-                }
+                if (OK)
+                    OK = TryReadBytesAsInt16(-1, out _OS_2_xAvgCharWidth);
 
-                if (flagOK)
-                {
-                    flagOK = TryReadBytesAsUInt16(-1, out _OS_2_usWeightClass);
-                }
+                if (OK)
+                    OK = TryReadBytesAsUInt16(-1, out _OS_2_usWeightClass);
 
-                if (flagOK)
-                {
-                    flagOK = TryReadBytesAsUInt16(-1, out _OS_2_usWidthClass);
-                }
+                if (OK)
+                    OK = TryReadBytesAsUInt16(-1, out _OS_2_usWidthClass);
 
-                if (flagOK)
-                {
-                    flagOK = TryReadBytesAsUInt16(-1, out _OS_2_fsType);
-                }
+                if (OK)
+                    OK = TryReadBytesAsUInt16(-1, out _OS_2_fsType);
 
-                if (flagOK)
-                {
-                    flagOK = TryReadByteArray((int)(tabOffset + 32), cSizePanose, ref _OS_2_panose);
-                }
+                if (OK)
+                    OK = TryReadByteArray((int)(tabOffset + 32), cSizePanose, ref _OS_2_panose);
 
-                if (flagOK)
-                {
-                    flagOK = TryReadBytesAsUInt16((int)(tabOffset + 62), out _OS_2_fsSelection);
-                }
+                if (OK)
+                    OK = TryReadBytesAsUInt16((int)(tabOffset + 62), out _OS_2_fsSelection);
 
-                if (flagOK)
+                if (OK)
                 {
                     _OS_2_sTypoDescender = 0;
 
-                    flagOK = TryReadBytesAsInt16((int)(tabOffset + 70), out _OS_2_sTypoDescender);
+                    OK = TryReadBytesAsInt16((int)(tabOffset + 70), out _OS_2_sTypoDescender);
                 }
 
-                if (flagOK)
+                if (OK)
                 {
                     _OS_2_sxHeight = 0;
 
                     if (tabLength >= 88)
                     {
-                        flagOK = TryReadBytesAsInt16((int)(tabOffset + 86), out _OS_2_sxHeight);
+                        OK = TryReadBytesAsInt16((int)(tabOffset + 86), out _OS_2_sxHeight);
                     }
                 }
 
-                if (!flagOK)
+                if (!OK)
                 {
                     ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Error reading '{tabName}' table.");
                 }
@@ -4542,7 +4515,7 @@ namespace PCLParaphernalia
                 //                                                                //
                 //----------------------------------------------------------------//
 
-                if (flagOK)
+                if (OK)
                 {
                     LicenceType licenceType = CheckLicence(out string licenceText);
 
@@ -4572,7 +4545,7 @@ namespace PCLParaphernalia
                 }
             }
 
-            return flagOK;
+            return OK;
         }
 
         //--------------------------------------------------------------------//
@@ -4602,13 +4575,10 @@ namespace PCLParaphernalia
         private bool ReadData_PCLT()
         {
             const string tabName = "PCLT";
-            uint tabOffset = 0,
-                   tabLength = 0,
-                   reqLength;
+            _tab_PCLT.GetByteRange(out uint tabOffset, out uint tabLength);
+            uint reqLength = 54;
 
-            bool flagOK = true;
-            _tab_PCLT.GetByteRange(out tabOffset, out tabLength);
-            reqLength = 54;
+            var OK = true;
 
             _tabPCLTPresent = false;
 
@@ -4630,7 +4600,7 @@ namespace PCLParaphernalia
             }
             else if (tabLength < reqLength)
             {
-                flagOK = false;
+                OK = false;
 
                 ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Length of '{tabName}' table too small: {tabLength} < {reqLength}.");
             }
@@ -4643,47 +4613,32 @@ namespace PCLParaphernalia
 
                 _tabPCLTPresent = true;
 
-                flagOK = TryReadBytesAsUInt32((int)tabOffset, out version);
+                OK = TryReadBytesAsUInt32((int)tabOffset, out version);
 
-                if (flagOK)
-                {
-                    flagOK = TryReadBytesAsUInt32(-1, out _PCLT_fontNo);
-                }
+                if (OK)
+                    OK = TryReadBytesAsUInt32(-1, out _PCLT_fontNo);
 
-                if (flagOK)
-                {
-                    flagOK = TryReadBytesAsUInt16(-1, out _PCLT_pitch);
-                }
+                if (OK)
+                    OK = TryReadBytesAsUInt16(-1, out _PCLT_pitch);
 
-                if (flagOK)
-                {
-                    flagOK = TryReadBytesAsUInt16(-1, out _PCLT_xHeight);
-                }
+                if (OK)
+                    OK = TryReadBytesAsUInt16(-1, out _PCLT_xHeight);
 
-                if (flagOK)
-                {
-                    flagOK = TryReadBytesAsUInt16(-1, out _PCLT_style);
-                }
+                if (OK)
+                    OK = TryReadBytesAsUInt16(-1, out _PCLT_style);
 
-                if (flagOK)
-                {
-                    flagOK = TryReadBytesAsUInt16(-1, out _PCLT_typeFamily);
-                }
+                if (OK)
+                    OK = TryReadBytesAsUInt16(-1, out _PCLT_typeFamily);
 
-                if (flagOK)
-                {
-                    flagOK = TryReadBytesAsUInt16(-1, out _PCLT_capHeight);
-                }
+                if (OK)
+                    OK = TryReadBytesAsUInt16(-1, out _PCLT_capHeight);
 
-                if (flagOK)
-                {
-                    flagOK = TryReadBytesAsUInt16(-1, out _PCLT_symSet);
-                }
+                if (OK)
+                    OK = TryReadBytesAsUInt16(-1, out _PCLT_symSet);
 
-                if (flagOK)
-                {
-                    flagOK = TryReadByteArray(-1, 16, ref _PCLT_typeface);
-                }
+                if (OK)
+                    OK = TryReadByteArray(-1, 16, ref _PCLT_typeface);
+
                 /*
                 if (flagOK)
                 {
@@ -4698,32 +4653,22 @@ namespace PCLParaphernalia
                 }
                 */
 
-                if (flagOK)
-                {
-                    flagOK = TryReadBytesAsUInt64(-1, out _PCLT_charComp);
-                }
+                if (OK)
+                    OK = TryReadBytesAsUInt64(-1, out _PCLT_charComp);
 
-                if (flagOK)
-                {
-                    flagOK = TryReadByteArray(-1, 6, ref fileName);
-                }
+                if (OK)
+                    OK = TryReadByteArray(-1, 6, ref fileName);
 
-                if (flagOK)
-                {
-                    flagOK = TryReadByteAsSByte(-1, out _PCLT_strokeWeight);
-                }
+                if (OK)
+                    OK = TryReadByteAsSByte(-1, out _PCLT_strokeWeight);
 
-                if (flagOK)
-                {
-                    flagOK = TryReadByteAsSByte(-1, out _PCLT_widthType);
-                }
+                if (OK)
+                    OK = TryReadByteAsSByte(-1, out _PCLT_widthType);
 
-                if (flagOK)
-                {
-                    flagOK = TryReadByteAsUByte(-1, out _PCLT_serifStyle);
-                }
+                if (OK)
+                    OK = TryReadByteAsUByte(-1, out _PCLT_serifStyle);
 
-                if (!flagOK)
+                if (!OK)
                 {
                     ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Error reading '{tabName}' table");
                 }
@@ -4811,7 +4756,7 @@ namespace PCLParaphernalia
                 }
             }
 
-            return flagOK;
+            return OK;
         }
 
         //--------------------------------------------------------------------//
@@ -4830,16 +4775,12 @@ namespace PCLParaphernalia
         private bool ReadData_post()
         {
             const string tabName = "post";
-            uint tabOffset = 0,
-                   tabLength = 0,
-                   minLength;
-
             ushort tabVersion = 0;
-            _tab_post.GetByteRange(out tabOffset, out tabLength);
-            minLength = 32;         // for versions 0 and 3
+            _tab_post.GetByteRange(out uint tabOffset, out uint tabLength);
+            const uint minLength = 32;
 
+            var OK = true;
 
-            bool flagOK;
             if (tabLength < minLength)
             {
                 //------------------------------------------------------------//
@@ -4849,17 +4790,17 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                flagOK = false;
+                OK = false;
 
                 ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Length of '{tabName}' table too small: {tabLength} < {minLength}.");
             }
             else
             {
-                flagOK = TryReadBytesAsUInt16((int)tabOffset, out tabVersion);
+                OK = TryReadBytesAsUInt16((int)tabOffset, out tabVersion);
 
-                if (flagOK)
+                if (OK)
                 {
-                    flagOK = TryReadBytesAsUInt32((int)(tabOffset + 12), out _post_isFixedPitch);
+                    OK = TryReadBytesAsUInt32((int)(tabOffset + 12), out _post_isFixedPitch);
                 }
 
                 //----------------------------------------------------------------//
@@ -4889,7 +4830,7 @@ namespace PCLParaphernalia
                 }
             }
 
-            return flagOK;
+            return OK;
         }
 
         //--------------------------------------------------------------------//
@@ -4913,20 +4854,15 @@ namespace PCLParaphernalia
             //           tabLength = 0,
             //           reqLength;
 
-            uint tabVersion = 0;
-            uint tabId = 0;
-
             typeTTC = false;
 
-            bool flagOK = TryReadBytesAsUInt32(0, out tabId);
+            var OK = TryReadBytesAsUInt32(0, out uint tabId);
 
-            if (!flagOK)
+            if (!OK)
             {
-                flagOK = false;
+                OK = false;
 
-                ToolSoftFontGenLog.LogError(
-                    _tableDonor, MessageBoxImage.Error,
-                    "Error reading first four bytes of font file");
+                ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, "Error reading first four bytes of font file");
             }
             else if (tabId == cTabID_ttcf)
             {
@@ -4934,20 +4870,18 @@ namespace PCLParaphernalia
 
                 typeTTC = true;
 
-                flagOK = TryReadBytesAsUInt32(-1, out tabVersion);
+                OK = TryReadBytesAsUInt32(-1, out uint tabVersion);
 
-                if (flagOK)
-                {
-                    flagOK = TryReadBytesAsUInt32(-1, out numFonts);
-                }
+                if (OK)
+                    OK = TryReadBytesAsUInt32(-1, out numFonts);
 
-                if (flagOK)
+                if (OK)
                 {
                     offsets = new uint[numFonts];
 
                     for (int i = 0; i < numFonts; i++)
                     {
-                        flagOK = TryReadBytesAsUInt32(-1, out offsets[i]);
+                        OK = TryReadBytesAsUInt32(-1, out offsets[i]);
                     }
                 }
                 else
@@ -4956,10 +4890,8 @@ namespace PCLParaphernalia
                     numFonts = 0;
                 }
 
-                if (!flagOK)
-                {
+                if (!OK)
                     ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Error reading '{tabName}' table.");
-                }
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -4974,7 +4906,7 @@ namespace PCLParaphernalia
                     ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, true, false,
                         name,
-                        $"version  = 0x{tabVersion:x8}");
+                        $"version  = 0x{(uint)0:x8}");
 
                     ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
@@ -4991,7 +4923,7 @@ namespace PCLParaphernalia
                 }
             }
 
-            return flagOK;
+            return OK;
         }
 
         //--------------------------------------------------------------------//
@@ -5008,34 +4940,30 @@ namespace PCLParaphernalia
         private bool ReadData_vhea()
         {
             const string tabName = "vhea";
-            uint tabOffset = 0,
-                   tabLength = 0,
-                   reqLength;
+            const uint reqLength = 36;
 
-            uint tabVersion = 0;
+            var OK = true;
 
-            bool flagOK = true;
-            _tab_vhea.GetByteRange(out tabOffset, out tabLength);
-            reqLength = 36;
+            _tab_vhea.GetByteRange(out uint tabOffset, out uint tabLength);
 
             if (tabLength < reqLength)
             {
-                flagOK = false;
+                OK = false;
 
                 ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Length of '{tabName}' table too small: {tabLength} < {reqLength}.");
             }
 
-            if (flagOK)
+            if (OK)
             {
-                flagOK = TryReadBytesAsUInt32((int)tabOffset, out tabVersion);
+                OK = TryReadBytesAsUInt32((int)tabOffset, out uint tabVersion);
 
-                if (!flagOK)
+                if (!OK)
                 {
                     ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Error reading '{tabName}' table version");
                 }
                 else if ((tabVersion != cTabVer_vhea_1_0) && (tabVersion != cTabVer_vhea_1_1))
                 {
-                    flagOK = false;
+                    OK = false;
 
                     ToolSoftFontGenLog.LogError(
                         _tableDonor, MessageBoxImage.Error,
@@ -5047,7 +4975,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    flagOK = TryReadBytesAsUInt16((int)(tabOffset + 34), out _vhea_numVMetrics);
+                    OK = TryReadBytesAsUInt16((int)(tabOffset + 34), out _vhea_numVMetrics);
                 }
             }
 
@@ -5065,7 +4993,7 @@ namespace PCLParaphernalia
                     $"numberOfVMetrics = {_vhea_numVMetrics}");
             }
 
-            return flagOK;
+            return OK;
         }
 
         //--------------------------------------------------------------------//
@@ -5083,13 +5011,12 @@ namespace PCLParaphernalia
         private bool ReadData_vmtx()
         {
             const string tabName = "vmtx";
-            uint tabOffset = 0,
-                   tabLength = 0,
-                   reqLength;
-            bool flagOK = true;
+            uint reqLength;
+            var OK = true;
+
             _tabvmtxPresent = false;
 
-            _tab_vmtx.GetByteRange(out tabOffset, out tabLength);
+            _tab_vmtx.GetByteRange(out uint tabOffset, out uint tabLength);
 
             int vMetricsArrayLen = _vhea_numVMetrics;
             int tsbArrayLen = _maxp_numGlyphs - _vhea_numVMetrics;
@@ -5099,42 +5026,36 @@ namespace PCLParaphernalia
 
             if (_vhea_numVMetrics < 1)
             {
-                flagOK = false;
+                OK = false;
 
                 ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Number of VMetrics {_vhea_numVMetrics} < 1.");
             }
             else if ((_maxp_numGlyphs - _vhea_numVMetrics) < 0)
             {
-                flagOK = false;
+                OK = false;
 
                 ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Number of glyphs {_maxp_numGlyphs} < number of VMetrics {_vhea_numVMetrics}.");
             }
             else if (tabLength < reqLength)
             {
-                flagOK = false;
+                OK = false;
 
                 ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Length of '{tabName}' table too small: {tabLength} < {reqLength}.");
             }
 
-            if (flagOK)
+            if (OK)
             {
                 byte[] vMetricsArray = new byte[vMetricsArraySize];
                 byte[] tsbArray = new byte[tsbArraySize];
 
-                flagOK = TryReadByteArray((int)tabOffset,
-                                        vMetricsArraySize,
-                                        ref vMetricsArray);
+                OK = TryReadByteArray((int)tabOffset, vMetricsArraySize, ref vMetricsArray);
 
                 _tabvmtxPresent = true;
 
-                if (flagOK)
-                {
-                    flagOK = TryReadByteArray(-1,
-                                            tsbArraySize,
-                                            ref tsbArray);
-                }
+                if (OK)
+                    OK = TryReadByteArray(-1, tsbArraySize, ref tsbArray);
 
-                if (flagOK)
+                if (OK)
                 {
                     ushort advance = 0;
 
@@ -5148,11 +5069,9 @@ namespace PCLParaphernalia
                         advanceOffset = (uint)(indx * 4);
                         tsbOffset = advanceOffset + 2;
 
-                        advance = (ushort)((vMetricsArray[advanceOffset] << 8) +
-                                             vMetricsArray[advanceOffset + 1]);
+                        advance = (ushort)((vMetricsArray[advanceOffset] << 8) + vMetricsArray[advanceOffset + 1]);
 
-                        tsb = (short)((vMetricsArray[tsbOffset] << 8) +
-                                        vMetricsArray[tsbOffset + 1]);
+                        tsb = (short)((vMetricsArray[tsbOffset] << 8) + vMetricsArray[tsbOffset + 1]);
 
                         _glyphData[indx].SetMetricsV(advance, tsb);
                     }
@@ -5161,8 +5080,7 @@ namespace PCLParaphernalia
                     {
                         tsbOffset = (uint)(indx * 2);
 
-                        tsb = (short)((tsbArray[tsbOffset] << 8) +
-                                        tsbArray[tsbOffset + 1]);
+                        tsb = (short)((tsbArray[tsbOffset] << 8) + tsbArray[tsbOffset + 1]);
 
                         ushort glyphId = (ushort)(vMetricsArrayLen + indx);
 
@@ -5171,7 +5089,7 @@ namespace PCLParaphernalia
                 }
             }
 
-            return flagOK;
+            return OK;
         }
 
         //--------------------------------------------------------------------//
@@ -5187,7 +5105,7 @@ namespace PCLParaphernalia
 
         private bool ReadTableDirectory(int dirOffset, bool getTTCData)
         {
-            bool flagOK = true;
+            var OK = true;
 
             ushort numTables = 0;
             uint tabTag = 0,
@@ -5224,14 +5142,12 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            if (flagOK)
+            if (OK)
             {
-                flagOK = TryReadBytesAsUInt16(dirOffset + 4, out numTables);
+                OK = TryReadBytesAsUInt16(dirOffset + 4, out numTables);
 
-                if (!flagOK)
-                {
+                if (!OK)
                     ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, "Error reading number of tables");
-                }
             }
 
             //----------------------------------------------------------------//
@@ -5241,18 +5157,15 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            if (flagOK)
+            if (OK)
             {
-                flagOK = FontFileSeek(dirOffset + 12);
+                OK = FontFileSeek(dirOffset + 12);
 
-                if (!flagOK)
-                {
-                    ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error,
-                        "Error repositioning to start of table directory");
-                }
+                if (!OK)
+                    ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, "Error repositioning to start of table directory");
             }
 
-            if (flagOK)
+            if (OK)
             {
                 byte[] tabName = new byte[4];
 
@@ -5264,28 +5177,24 @@ namespace PCLParaphernalia
                         "Count = " + numTables);
                 }
 
-                for (int i = 0; (i < numTables) && flagOK; i++)
+                for (int i = 0; (i < numTables) && OK; i++)
                 {
-                    flagOK = TryReadByteArray(-1, 4, ref tabName);
+                    OK = TryReadByteArray(-1, 4, ref tabName);
 
-                    if (flagOK)
+                    if (OK)
                     {
                         tabTag = ByteArrayToUInt32(tabName);
 
-                        flagOK = TryReadBytesAsUInt32(-1, out tabChecksum);
+                        OK = TryReadBytesAsUInt32(-1, out tabChecksum);
                     }
 
-                    if (flagOK)
-                    {
-                        flagOK = TryReadBytesAsUInt32(-1, out tabOffset);
-                    }
+                    if (OK)
+                        OK = TryReadBytesAsUInt32(-1, out tabOffset);
 
-                    if (flagOK)
-                    {
-                        flagOK = TryReadBytesAsUInt32(-1, out tabLength);
-                    }
+                    if (OK)
+                        OK = TryReadBytesAsUInt32(-1, out tabLength);
 
-                    if (flagOK)
+                    if (OK)
                     {
                         //----------------------------------------------------//
                         //                                                    //
@@ -5302,115 +5211,67 @@ namespace PCLParaphernalia
                         switch (tabTag)
                         {
                             case cTabID_OS_2:
-                                _tab_OS_2.SetMetrics(tabChecksum,
-                                                      tabOffset,
-                                                      tabLength,
-                                                      padBytes);
+                                _tab_OS_2.SetMetrics(tabChecksum, tabOffset, tabLength, padBytes);
                                 break;
 
                             case cTabID_PCLT:
-                                _tab_PCLT.SetMetrics(tabChecksum,
-                                                      tabOffset,
-                                                      tabLength,
-                                                      padBytes);
+                                _tab_PCLT.SetMetrics(tabChecksum, tabOffset, tabLength, padBytes);
                                 break;
 
                             case cTabID_cmap:
-                                _tab_cmap.SetMetrics(tabChecksum,
-                                                      tabOffset,
-                                                      tabLength,
-                                                      padBytes);
+                                _tab_cmap.SetMetrics(tabChecksum, tabOffset, tabLength, padBytes);
                                 break;
 
                             case cTabID_cvt:
-                                _tab_cvt.SetMetrics(tabChecksum,
-                                                     tabOffset,
-                                                     tabLength,
-                                                     padBytes);
+                                _tab_cvt.SetMetrics(tabChecksum, tabOffset, tabLength, padBytes);
                                 break;
 
                             case cTabID_fpgm:
-                                _tab_fpgm.SetMetrics(tabChecksum,
-                                                      tabOffset,
-                                                      tabLength,
-                                                      padBytes);
+                                _tab_fpgm.SetMetrics(tabChecksum, tabOffset, tabLength, padBytes);
                                 break;
 
                             case cTabID_glyf:
-                                _tab_glyf.SetMetrics(tabChecksum,
-                                                      tabOffset,
-                                                      tabLength,
-                                                      padBytes);
+                                _tab_glyf.SetMetrics(tabChecksum, tabOffset, tabLength, padBytes);
                                 break;
 
                             case cTabID_head:
-                                _tab_head.SetMetrics(tabChecksum,
-                                                      tabOffset,
-                                                      tabLength,
-                                                      padBytes);
+                                _tab_head.SetMetrics(tabChecksum, tabOffset, tabLength, padBytes);
                                 break;
 
                             case cTabID_hhea:
-                                _tab_hhea.SetMetrics(tabChecksum,
-                                                      tabOffset,
-                                                      tabLength,
-                                                      padBytes);
+                                _tab_hhea.SetMetrics(tabChecksum, tabOffset, tabLength, padBytes);
                                 break;
 
                             case cTabID_hmtx:
-                                _tab_hmtx.SetMetrics(tabChecksum,
-                                                      tabOffset,
-                                                      tabLength,
-                                                      padBytes);
+                                _tab_hmtx.SetMetrics(tabChecksum, tabOffset, tabLength, padBytes);
                                 break;
 
                             case cTabID_loca:
-                                _tab_loca.SetMetrics(tabChecksum,
-                                                      tabOffset,
-                                                      tabLength,
-                                                      padBytes);
+                                _tab_loca.SetMetrics(tabChecksum, tabOffset, tabLength, padBytes);
                                 break;
 
                             case cTabID_maxp:
-                                _tab_maxp.SetMetrics(tabChecksum,
-                                                      tabOffset,
-                                                      tabLength,
-                                                      padBytes);
+                                _tab_maxp.SetMetrics(tabChecksum, tabOffset, tabLength, padBytes);
                                 break;
 
                             case cTabID_name:
-                                _tab_name.SetMetrics(tabChecksum,
-                                                      tabOffset,
-                                                      tabLength,
-                                                      padBytes);
+                                _tab_name.SetMetrics(tabChecksum, tabOffset, tabLength, padBytes);
                                 break;
 
                             case cTabID_post:
-                                _tab_post.SetMetrics(tabChecksum,
-                                                      tabOffset,
-                                                      tabLength,
-                                                      padBytes);
+                                _tab_post.SetMetrics(tabChecksum, tabOffset, tabLength, padBytes);
                                 break;
 
                             case cTabID_prep:
-                                _tab_prep.SetMetrics(tabChecksum,
-                                                      tabOffset,
-                                                      tabLength,
-                                                      padBytes);
+                                _tab_prep.SetMetrics(tabChecksum, tabOffset, tabLength, padBytes);
                                 break;
 
                             case cTabID_vhea:
-                                _tab_vhea.SetMetrics(tabChecksum,
-                                                      tabOffset,
-                                                      tabLength,
-                                                      padBytes);
+                                _tab_vhea.SetMetrics(tabChecksum, tabOffset, tabLength, padBytes);
                                 break;
 
                             case cTabID_vmtx:
-                                _tab_vmtx.SetMetrics(tabChecksum,
-                                                      tabOffset,
-                                                      tabLength,
-                                                      padBytes);
+                                _tab_vmtx.SetMetrics(tabChecksum, tabOffset, tabLength, padBytes);
                                 break;
 
                             default:
@@ -5451,14 +5312,12 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            if (flagOK)
+            if (OK)
             {
                 if (getTTCData)
                 {
                     if (_tab_name.IsZeroLength())
-                    {
-                        flagOK = false;
-                    }
+                        OK = false;
                 }
                 else
                 {
@@ -5471,17 +5330,15 @@ namespace PCLParaphernalia
                         _tab_maxp.IsZeroLength() ||
                         _tab_name.IsZeroLength())
                     {
-                        flagOK = false;
+                        OK = false;
                     }
                 }
 
-                if (!flagOK)
-                {
+                if (!OK)
                     ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, "Mandatory TTF table not present");
-                }
             }
 
-            return flagOK;
+            return OK;
         }
 
         //--------------------------------------------------------------------//
