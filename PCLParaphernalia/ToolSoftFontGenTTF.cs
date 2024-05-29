@@ -5471,21 +5471,21 @@ namespace PCLParaphernalia
             {
                 if (getTTCData)
                 {
-                    if (_tab_name.ZeroLength())
+                    if (_tab_name.IsZeroLength())
                     {
                         flagOK = false;
                     }
                 }
                 else
                 {
-                    if (_tab_cmap.ZeroLength() ||
-                        _tab_glyf.ZeroLength() ||
-                        _tab_head.ZeroLength() ||
-                        _tab_hhea.ZeroLength() ||
-                        _tab_hmtx.ZeroLength() ||
-                        _tab_loca.ZeroLength() ||
-                        _tab_maxp.ZeroLength() ||
-                        _tab_name.ZeroLength())
+                    if (_tab_cmap.IsZeroLength() ||
+                        _tab_glyf.IsZeroLength() ||
+                        _tab_head.IsZeroLength() ||
+                        _tab_hhea.IsZeroLength() ||
+                        _tab_hmtx.IsZeroLength() ||
+                        _tab_loca.IsZeroLength() ||
+                        _tab_maxp.IsZeroLength() ||
+                        _tab_name.IsZeroLength())
                     {
                         flagOK = false;
                     }

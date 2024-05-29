@@ -157,7 +157,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool ZeroLength()
+        public bool IsZeroLength()
         {
             return _length == 0;
         }
