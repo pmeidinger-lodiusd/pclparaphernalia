@@ -144,7 +144,7 @@ namespace PCLParaphernalia
                 LogNameAndValue(table, true, true, "*** ERROR ***", message);
             }
 
-            MessageBox.Show(message, "Processing font", MessageBoxButton.OK, type);
+            MessageBox.Show(message, "Processing Font", MessageBoxButton.OK, type);
         }
 
         //--------------------------------------------------------------------//
