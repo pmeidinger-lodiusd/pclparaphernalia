@@ -628,7 +628,7 @@ namespace PCLParaphernalia
 
             typeTTC = false;
 
-            if (!FontFileOpen(fileName, ref _fontFileSize))
+            if (!TryFontFileOpen(fileName, out _fontFileSize))
                 return false;
 
             //------------------------------------------------------------//
@@ -782,9 +782,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FontFileOpen(string fileName, ref long fileSize)
+        public bool TryFontFileOpen(string fileName, out long fileSize)
         {
             _filenameTTF = fileName;
+            fileSize = 0;
 
             if (string.IsNullOrEmpty(fileName))
             {
@@ -841,7 +842,7 @@ namespace PCLParaphernalia
 
         public bool FontFileReOpen()
         {
-            return FontFileOpen(_filenameTTF, ref _fontFileSize);
+            return TryFontFileOpen(_filenameTTF, out _fontFileSize);
         }
 
         //--------------------------------------------------------------------//
@@ -1711,7 +1712,7 @@ namespace PCLParaphernalia
 
             int offset;
 
-            if (!FontFileOpen(fileName, ref _fontFileSize))
+            if (!TryFontFileOpen(fileName, out _fontFileSize))
             {
                 ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, "Error opening TrueType Font file " + fileName);
 
@@ -1861,196 +1862,158 @@ namespace PCLParaphernalia
                                           bool symSetUserSet,
                                           bool symSetMapPCL)
         {
-            bool fileOpen;
-
             _fontFileSize = 0;
             _cmap_numChars = 0;
             _tabPCLTPresent = false;
             _tabvmtxPresent = false;
 
-            fileOpen = FontFileOpen(fileName, ref _fontFileSize);
-
-            bool flagOK;
-            if (!fileOpen)
-            {
-                flagOK = false;
-
-                ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, "Error opening TrueType Font file " + fileName);
-            }
-            else
-            {
-                uint tabVer_sfnt = 0;
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // Read and check TTF 'sfnt' version value.                   //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                flagOK = ReadBytesAsUInt32(sfntOffset, ref tabVer_sfnt);
-
-                if (!flagOK)
-                {
-                    ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, "Error reading sfntVersion");
-                }
-                else if (tabVer_sfnt != cTabVer_sfnt)
-                {
-                    flagOK = false;
-
-                    ToolSoftFontGenLog.LogError(
-                        _tableDonor, MessageBoxImage.Error,
-                        "Wrong sfntVersion = 0x" + tabVer_sfnt.ToString("x8") +
-                        "\r\n\r\n" +
-                        "Expected version = 0x" + cTabVer_sfnt.ToString("x8"));
-                }
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // Read TTF Table Directory entries.                          //
-                // These indicate which tables are present (not all are       //
-                // mandatory) and provide the start offset (from beginning of //
-                // file) and length of those tables which are present.        //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                if (flagOK)
-                {
-                    flagOK = ReadTableDirectory(sfntOffset, false);
-                }
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // Read required entries from the various tables.             //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                if (flagOK)
-                {
-                    string dummyString = string.Empty;
-
-                    flagOK = ReadData_name(false, ref dummyString);
-                }
-
-                if (flagOK)
-                {
-                    flagOK = ReadData_OS_2();
-                }
-
-                if (flagOK)
-                {
-                    flagOK = ReadData_head();
-                }
-
-                if (flagOK)
-                {
-                    flagOK = ReadData_hhea();
-                }
-
-                if (flagOK && (_tab_vhea.TableLength != 0))
-                {
-                    flagOK = ReadData_vhea();
-                }
-
-                if (flagOK)
-                {
-                    flagOK = ReadData_maxp();
-                }
-
-                if (flagOK)
-                {
-                    flagOK = ReadData_PCLT();
-                }
-
-                if (flagOK)
-                {
-                    flagOK = ReadData_post();
-                }
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // Construct a 'character-code to glyph-ID' index (for the    //
-                // chosen symbol set), by reading entries from the 'cmap'     //
-                // (character to glyph index mapping) table.                  //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                if (flagOK)
-                {
-                    flagOK = ReadData_cmap(symSetIndx,
-                                            ref symbolMapping,
-                                            symSetUnbound,
-                                            symSetUserSet,
-                                            symSetMapPCL);
-                }
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // Obtain the advance widths and left-side bearings for the   //
-                // glyphs (and hence characters in the chosen symbol set) by  //
-                // reading entries from the 'hmtx' (horizontal metrics) table.//
-                //                                                            //
-                //------------------------------------------------------------//
-
-                if (flagOK)
-                {
-                    _glyphData = new GlyphDataEntry[_maxp_numGlyphs];
-
-                    flagOK = ReadData_hmtx();
-                }
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // Obtain the advance heights and top-side bearings for the   //
-                // glyphs (and hence characters in the chosen symbol set) by  //
-                // reading entries from the 'vmtx' (vertical metrics) table.  //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                if (flagOK && (_tab_vmtx.TableLength != 0))
-                {
-                    flagOK = ReadData_vmtx();
-                }
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // Obtain the locations and composite flag indicators for the //
-                // glyphs (and hence characters in the chosen symbol set) by  //
-                // reading entries from the 'loca' (index to location) and    //
-                // glypf (glyph data) tables.                                 //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                if (flagOK)
-                {
-                    flagOK = ReadData_loca_glyf();
-                }
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // Check whether glyph zero (the .notdef glyph) exists (it    //
-                // usually does).                                             //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                if (flagOK)
-                {
-                    uint glyphOffset = 0,
-                           glyphLength = 0;
-
-                    _glyphData[0].GetLocation(ref glyphOffset,
-                                               ref glyphLength);
-
-                    _glyphZeroExists = glyphLength != 0;
-                }
-
-                if (fileOpen)
-                    FontFileClose();
-            }
-
             tabPCLTPresent = _tabPCLTPresent;
             tabvmtxPresent = _tabvmtxPresent;
 
-            return flagOK;
+
+            if (!TryFontFileOpen(fileName, out _fontFileSize))
+            {
+                ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, "Error opening TrueType Font file " + fileName);
+
+                return false;
+            }
+
+            uint tabVer_sfnt = 0;
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // Read and check TTF 'sfnt' version value.                   //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            if (!ReadBytesAsUInt32(sfntOffset, ref tabVer_sfnt))
+            {
+                ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, "Error reading sfntVersion");
+
+                return false;
+            }
+            
+            if (tabVer_sfnt != cTabVer_sfnt)
+            {
+                ToolSoftFontGenLog.LogError( _tableDonor, MessageBoxImage.Error, $"Wrong sfntVersion = 0x{tabVer_sfnt:x8}\r\n\r\nExpected version = 0x{cTabVer_sfnt:x8}");
+
+                return false;
+            }
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // Read TTF Table Directory entries.                          //
+            // These indicate which tables are present (not all are       //
+            // mandatory) and provide the start offset (from beginning of //
+            // file) and length of those tables which are present.        //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            bool flagOK = ReadTableDirectory(sfntOffset, false);
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // Read required entries from the various tables.             //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            if (flagOK)
+            {
+                string dummyString = string.Empty;
+
+                flagOK = ReadData_name(false, ref dummyString);
+            }
+
+            if (flagOK)
+                flagOK = ReadData_OS_2();
+
+            if (flagOK)
+                flagOK = ReadData_head();
+
+            if (flagOK)
+                flagOK = ReadData_hhea();
+
+            if (flagOK && (_tab_vhea.TableLength != 0))
+                flagOK = ReadData_vhea();
+
+            if (flagOK)
+                flagOK = ReadData_maxp();
+
+            if (flagOK)
+                flagOK = ReadData_PCLT();
+
+            if (flagOK)
+                flagOK = ReadData_post();
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // Construct a 'character-code to glyph-ID' index (for the    //
+            // chosen symbol set), by reading entries from the 'cmap'     //
+            // (character to glyph index mapping) table.                  //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            if (flagOK)
+                flagOK = ReadData_cmap(symSetIndx, ref symbolMapping, symSetUnbound, symSetUserSet, symSetMapPCL);
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // Obtain the advance widths and left-side bearings for the   //
+            // glyphs (and hence characters in the chosen symbol set) by  //
+            // reading entries from the 'hmtx' (horizontal metrics) table.//
+            //                                                            //
+            //------------------------------------------------------------//
+
+            if (flagOK)
+            {
+                _glyphData = new GlyphDataEntry[_maxp_numGlyphs];
+
+                flagOK = ReadData_hmtx();
+            }
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // Obtain the advance heights and top-side bearings for the   //
+            // glyphs (and hence characters in the chosen symbol set) by  //
+            // reading entries from the 'vmtx' (vertical metrics) table.  //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            if (flagOK && (_tab_vmtx.TableLength != 0))
+                flagOK = ReadData_vmtx();
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // Obtain the locations and composite flag indicators for the //
+            // glyphs (and hence characters in the chosen symbol set) by  //
+            // reading entries from the 'loca' (index to location) and    //
+            // glypf (glyph data) tables.                                 //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            if (flagOK)
+                flagOK = ReadData_loca_glyf();
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // Check whether glyph zero (the .notdef glyph) exists (it    //
+            // usually does).                                             //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            if (flagOK)
+            {
+                uint glyphOffset = 0,
+                        glyphLength = 0;
+
+                _glyphData[0].GetLocation(ref glyphOffset,
+                                            ref glyphLength);
+
+                _glyphZeroExists = glyphLength != 0;
+            }
+
+
+            return true;
         }
 
         //--------------------------------------------------------------------//
