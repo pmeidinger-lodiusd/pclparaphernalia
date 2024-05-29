@@ -643,7 +643,7 @@ namespace PCLParaphernalia
 
             typeTTC = false;
 
-            bool flagOK = ReadBytesAsUInt32(0, ref tabId);
+            bool flagOK = TryReadBytesAsUInt32(0, out tabId);
 
             if (!flagOK)
             {
@@ -655,11 +655,11 @@ namespace PCLParaphernalia
             {
                 typeTTC = true;
 
-                flagOK = ReadBytesAsUInt32(-1, ref tabVersion);
+                flagOK = TryReadBytesAsUInt32(-1, out tabVersion);
 
                 if (flagOK)
                 {
-                    flagOK = ReadBytesAsUInt32(-1, ref numFonts);
+                    flagOK = TryReadBytesAsUInt32(-1, out numFonts);
                 }
 
                 if (!flagOK)
@@ -821,9 +821,8 @@ namespace PCLParaphernalia
             if (_ipStream == null)
                 return false;
 
-            FileInfo fi = new FileInfo(fileName);
 
-            fileSize = fi.Length;
+            fileSize = new FileInfo(fileName).Length;
 
             _binReader = new BinaryReader(_ipStream);
 
@@ -1730,7 +1729,7 @@ namespace PCLParaphernalia
 
             offset = 8;
 
-            bool flagOK = ReadBytesAsUInt32(offset, ref checkNumFonts);
+            bool flagOK = TryReadBytesAsUInt32(offset, out checkNumFonts);
 
             if (checkNumFonts != numFonts)
             {
@@ -1742,7 +1741,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < numFonts; i++)
             {
-                flagOK = ReadBytesAsUInt32(offset, ref fontOffsets[i]);
+                flagOK = TryReadBytesAsUInt32(offset, out fontOffsets[i]);
 
                 if (!flagOK)
                 {
@@ -1885,7 +1884,7 @@ namespace PCLParaphernalia
             //                                                            //
             //------------------------------------------------------------//
 
-            if (!ReadBytesAsUInt32(sfntOffset, ref tabVer_sfnt))
+            if (!TryReadBytesAsUInt32(sfntOffset, out tabVer_sfnt))
             {
                 ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, "Error reading sfntVersion");
 
@@ -2072,14 +2071,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool ReadByteAsSByte(int offset, ref sbyte target)
+        private bool TryReadByteAsSByte(int offset, out sbyte target)
         {
+            target = default;
+
             const int sliceSize = 1;
-            bool flagOK;
+            var slice = new byte[sliceSize];
 
-            byte[] slice = new byte[sliceSize];
-
-            flagOK = true;
+            var flagOK = true;
 
             if (offset != -1)
                 flagOK = FontFileSeek(offset);
@@ -2117,14 +2116,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool ReadByteAsUByte(int offset, ref byte target)
+        private bool TryReadByteAsUByte(int offset, out byte target)
         {
+            target = default;
+
             const int sliceSize = 1;
-            bool flagOK;
+            var slice = new byte[sliceSize];
 
-            byte[] slice = new byte[sliceSize];
-
-            flagOK = true;
+            var flagOK = true;
 
             if (offset != -1)
                 flagOK = FontFileSeek(offset);
@@ -2163,14 +2162,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool ReadBytesAsInt16(int offset, ref short target)
+        private bool TryReadBytesAsInt16(int offset, out short target)
         {
+            target = default;
+
             const int sliceSize = 2;
-            bool flagOK;
+            var slice = new byte[sliceSize];
 
-            byte[] slice = new byte[sliceSize];
-
-            flagOK = true;
+            var flagOK = true;
 
             if (offset != -1)
                 flagOK = FontFileSeek(offset);
@@ -2209,14 +2208,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool ReadBytesAsUInt16(int offset, ref ushort target)
+        private bool TryReadBytesAsUInt16(int offset, out ushort target)
         {
+            target = default;
+
             const int sliceSize = 2;
-            bool flagOK;
+            var slice = new byte[sliceSize];
 
-            byte[] slice = new byte[sliceSize];
-
-            flagOK = true;
+            var flagOK = true;
 
             if (offset != -1)
                 flagOK = FontFileSeek(offset);
@@ -2255,14 +2254,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool ReadBytesAsUInt32(int offset, ref uint target)
+        private bool TryReadBytesAsUInt32(int offset, out uint target)
         {
+            target = default;
+
             const int sliceSize = 4;
-            bool flagOK;
+            var slice = new byte[sliceSize];
 
-            byte[] slice = new byte[sliceSize];
-
-            flagOK = true;
+            var flagOK = true;
 
             if (offset != -1)
                 flagOK = FontFileSeek(offset);
@@ -2301,14 +2300,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool ReadBytesAsUInt64(int offset, ref ulong target)
+        private bool TryReadBytesAsUInt64(int offset, out ulong target)
         {
+            target = default;
+
             const int sliceSize = 8;
-            bool flagOK;
+            var slice = new byte[sliceSize];
 
-            byte[] slice = new byte[sliceSize];
-
-            flagOK = true;
+            var flagOK = true;
 
             if (offset != -1)
                 flagOK = FontFileSeek(offset);
@@ -2420,7 +2419,7 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                flagOK = ReadBytesAsUInt16((int)tabOffset, ref tabVersion);
+                flagOK = TryReadBytesAsUInt16((int)tabOffset, out tabVersion);
 
                 if (!flagOK)
                 {
@@ -2428,8 +2427,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    flagOK = ReadBytesAsUInt16((int)(tabOffset + 2),
-                                                ref tabNumTables);
+                    flagOK = TryReadBytesAsUInt16((int)(tabOffset + 2), out tabNumTables);
                     if (flagOK)
                     {
                         reqLength = 4 + (8 * (uint)tabNumTables);
@@ -2473,13 +2471,13 @@ namespace PCLParaphernalia
 
                 for (int i = 0; (i < tabNumTables) && flagOK; i++)
                 {
-                    flagOK = ReadBytesAsUInt16(-1, ref subTabPlatform);
+                    flagOK = TryReadBytesAsUInt16(-1, out subTabPlatform);
 
                     if (flagOK)
-                        flagOK = ReadBytesAsUInt16(-1, ref subTabEncoding);
+                        flagOK = TryReadBytesAsUInt16(-1, out subTabEncoding);
 
                     if (flagOK)
-                        flagOK = ReadBytesAsUInt32(-1, ref subTabOffset);
+                        flagOK = TryReadBytesAsUInt32(-1, out subTabOffset);
 
                     if (flagOK)
                     {
@@ -2814,15 +2812,14 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    flagOK = ReadBytesAsUInt16((int)subTabOffset,
-                                                ref subTabFormat);
+                    flagOK = TryReadBytesAsUInt16((int)subTabOffset, out subTabFormat);
                 }
 
                 if (flagOK)
                 {
                     if (subTabFormat == 4)
                     {
-                        flagOK = ReadBytesAsUInt16(-1, ref fmt4Length);
+                        flagOK = TryReadBytesAsUInt16(-1, out fmt4Length);
 
                         if (flagOK)
                         {
@@ -2848,19 +2845,19 @@ namespace PCLParaphernalia
                         }
 
                         if (flagOK)
-                            flagOK = ReadBytesAsUInt16(-1, ref fmt4Lang);
+                            flagOK = TryReadBytesAsUInt16(-1, out fmt4Lang);
 
                         if (flagOK)
-                            flagOK = ReadBytesAsUInt16(-1, ref fmt4SegCountx2);
+                            flagOK = TryReadBytesAsUInt16(-1, out fmt4SegCountx2);
 
                         if (flagOK)
-                            flagOK = ReadBytesAsUInt16(-1, ref fmt4SearchRange);
+                            flagOK = TryReadBytesAsUInt16(-1, out fmt4SearchRange);
 
                         if (flagOK)
-                            flagOK = ReadBytesAsUInt16(-1, ref fmt4EntrySelector);
+                            flagOK = TryReadBytesAsUInt16(-1, out fmt4EntrySelector);
 
                         if (flagOK)
-                            flagOK = ReadBytesAsUInt16(-1, ref fmt4RangeShift);
+                            flagOK = TryReadBytesAsUInt16(-1, out fmt4RangeShift);
 
                         if (flagOK)
                         {
@@ -3396,7 +3393,7 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                flagOK = ReadBytesAsUInt32((int)tabOffset, ref tabVersion);
+                flagOK = TryReadBytesAsUInt32((int)tabOffset, out tabVersion);
 
                 if (!flagOK)
                 {
@@ -3417,31 +3414,31 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    flagOK = ReadBytesAsUInt16((int)(tabOffset + 18), ref _head_unitsPerEm);
+                    flagOK = TryReadBytesAsUInt16((int)(tabOffset + 18), out _head_unitsPerEm);
 
                     if (flagOK)
                     {
-                        flagOK = ReadBytesAsInt16((int)(tabOffset + 36), ref _head_xMin);
+                        flagOK = TryReadBytesAsInt16((int)(tabOffset + 36), out _head_xMin);
                     }
 
                     if (flagOK)
                     {
-                        flagOK = ReadBytesAsInt16(-1, ref _head_yMin);
+                        flagOK = TryReadBytesAsInt16(-1, out _head_yMin);
                     }
 
                     if (flagOK)
                     {
-                        flagOK = ReadBytesAsInt16(-1, ref _head_xMax);
+                        flagOK = TryReadBytesAsInt16(-1, out _head_xMax);
                     }
 
                     if (flagOK)
                     {
-                        flagOK = ReadBytesAsInt16(-1, ref _head_yMax);
+                        flagOK = TryReadBytesAsInt16(-1, out _head_yMax);
                     }
 
                     if (flagOK)
                     {
-                        flagOK = ReadBytesAsInt16((int)(tabOffset + 50), ref _head_indxLocFmt);
+                        flagOK = TryReadBytesAsInt16((int)(tabOffset + 50), out _head_indxLocFmt);
                     }
                 }
             }
@@ -3527,7 +3524,7 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                flagOK = ReadBytesAsUInt32((int)tabOffset, ref tabVersion);
+                flagOK = TryReadBytesAsUInt32((int)tabOffset, out tabVersion);
 
                 if (!flagOK)
                 {
@@ -3548,21 +3545,21 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    flagOK = ReadBytesAsInt16((int)(tabOffset + 4), ref _hhea_ascender);
+                    flagOK = TryReadBytesAsInt16((int)(tabOffset + 4), out _hhea_ascender);
 
                     if (flagOK)
                     {
-                        flagOK = ReadBytesAsInt16(-1, ref _hhea_descender);
+                        flagOK = TryReadBytesAsInt16(-1, out _hhea_descender);
                     }
 
                     if (flagOK)
                     {
-                        flagOK = ReadBytesAsInt16(-1, ref _hhea_lineGap);
+                        flagOK = TryReadBytesAsInt16(-1, out _hhea_lineGap);
                     }
 
                     if (flagOK)
                     {
-                        flagOK = ReadBytesAsUInt16((int)(tabOffset + 34), ref _hhea_numHMetrics);
+                        flagOK = TryReadBytesAsUInt16((int)(tabOffset + 34), out _hhea_numHMetrics);
                     }
                 }
             }
@@ -3758,24 +3755,22 @@ namespace PCLParaphernalia
             {
                 if (_head_indxLocFmt != 0)
                 {
-                    flagOK = ReadBytesAsUInt32(
-                        (int)(locaOffset + (4 * glyphId)),
-                        ref offsetThis);
+                    flagOK = TryReadBytesAsUInt32( (int)(locaOffset + (4 * glyphId)), out offsetThis);
 
                     if (flagOK)
                     {
-                        flagOK = ReadBytesAsUInt32(-1, ref offsetNext);
+                        flagOK = TryReadBytesAsUInt32(-1, out offsetNext);
                     }
                 }
                 else
                 {
-                    flagOK = ReadBytesAsUInt16((int)(locaOffset + (2 * glyphId)), ref offsetTemp);
+                    flagOK = TryReadBytesAsUInt16((int)(locaOffset + (2 * glyphId)), out offsetTemp);
 
                     if (flagOK)
                     {
                         offsetThis = (uint)(offsetTemp * 2);
 
-                        flagOK = ReadBytesAsUInt16(-1, ref offsetTemp);
+                        flagOK = TryReadBytesAsUInt16(-1, out offsetTemp);
 
                         if (flagOK)
                             offsetNext = (uint)(offsetTemp * 2);
@@ -3802,7 +3797,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        flagOK = ReadBytesAsInt16((int)entryOffset, ref numContours);
+                        flagOK = TryReadBytesAsInt16((int)entryOffset, out numContours);
 
                         composite = numContours < 0;
                     }
@@ -3914,7 +3909,7 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                flagOK = ReadBytesAsUInt32((int)tabOffset, ref tabVersion);
+                flagOK = TryReadBytesAsUInt32((int)tabOffset, out tabVersion);
 
                 if (!flagOK)
                 {
@@ -3935,10 +3930,10 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    flagOK = ReadBytesAsUInt16((int)(tabOffset + 4), ref _maxp_numGlyphs);
+                    flagOK = TryReadBytesAsUInt16((int)(tabOffset + 4), out _maxp_numGlyphs);
                     if (flagOK)
                     {
-                        flagOK = ReadBytesAsUInt16((int)(tabOffset + 30), ref _maxp_maxCompDepth);
+                        flagOK = TryReadBytesAsUInt16((int)(tabOffset + 30), out _maxp_maxCompDepth);
                     }
                 }
             }
@@ -4034,7 +4029,7 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                flagOK = ReadBytesAsUInt16((int)tabOffset, ref tabFormat);
+                flagOK = TryReadBytesAsUInt16((int)tabOffset, out tabFormat);
 
                 if (!flagOK)
                 {
@@ -4053,10 +4048,10 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    flagOK = ReadBytesAsUInt16((int)(tabOffset + 2), ref nameRecCount);
+                    flagOK = TryReadBytesAsUInt16((int)(tabOffset + 2), out nameRecCount);
                     if (flagOK)
                     {
-                        flagOK = ReadBytesAsUInt16((int)(tabOffset + 4), ref stringsOffset);
+                        flagOK = TryReadBytesAsUInt16((int)(tabOffset + 4), out stringsOffset);
                     }
 
                     if (flagOK)
@@ -4166,24 +4161,22 @@ namespace PCLParaphernalia
 
                 for (int i = 0; (i < nameRecCount) && flagOK; i++)
                 {
-                    flagOK = ReadBytesAsUInt16(
-                        (int)(tabOffset + 6 + (12 * i)),
-                        ref nameRecPlatform);
+                    flagOK = TryReadBytesAsUInt16((int)(tabOffset + 6 + (12 * i)), out nameRecPlatform);
 
                     if (flagOK)
-                        flagOK = ReadBytesAsUInt16(-1, ref nameRecEncoding);
+                        flagOK = TryReadBytesAsUInt16(-1, out nameRecEncoding);
 
                     if (flagOK)
-                        flagOK = ReadBytesAsUInt16(-1, ref nameRecLanguage);
+                        flagOK = TryReadBytesAsUInt16(-1, out nameRecLanguage);
 
                     if (flagOK)
-                        flagOK = ReadBytesAsUInt16(-1, ref nameRecNameId);
+                        flagOK = TryReadBytesAsUInt16(-1, out nameRecNameId);
 
                     if (flagOK)
-                        flagOK = ReadBytesAsUInt16(-1, ref nameRecLength);
+                        flagOK = TryReadBytesAsUInt16(-1, out nameRecLength);
 
                     if (flagOK)
-                        flagOK = ReadBytesAsUInt16(-1, ref nameRecOffset);
+                        flagOK = TryReadBytesAsUInt16(-1, out nameRecOffset);
 
                     if (flagOK)
                     {
@@ -4489,26 +4482,26 @@ namespace PCLParaphernalia
             }
             else
             {
-                flagOK = ReadBytesAsUInt16((int)tabOffset, ref tabVersion);
+                flagOK = TryReadBytesAsUInt16((int)tabOffset, out tabVersion);
 
                 if (flagOK)
                 {
-                    flagOK = ReadBytesAsInt16(-1, ref _OS_2_xAvgCharWidth);
+                    flagOK = TryReadBytesAsInt16(-1, out _OS_2_xAvgCharWidth);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = ReadBytesAsUInt16(-1, ref _OS_2_usWeightClass);
+                    flagOK = TryReadBytesAsUInt16(-1, out _OS_2_usWeightClass);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = ReadBytesAsUInt16(-1, ref _OS_2_usWidthClass);
+                    flagOK = TryReadBytesAsUInt16(-1, out _OS_2_usWidthClass);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = ReadBytesAsUInt16(-1, ref _OS_2_fsType);
+                    flagOK = TryReadBytesAsUInt16(-1, out _OS_2_fsType);
                 }
 
                 if (flagOK)
@@ -4518,14 +4511,14 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    flagOK = ReadBytesAsUInt16((int)(tabOffset + 62), ref _OS_2_fsSelection);
+                    flagOK = TryReadBytesAsUInt16((int)(tabOffset + 62), out _OS_2_fsSelection);
                 }
 
                 if (flagOK)
                 {
                     _OS_2_sTypoDescender = 0;
 
-                    flagOK = ReadBytesAsInt16((int)(tabOffset + 70), ref _OS_2_sTypoDescender);
+                    flagOK = TryReadBytesAsInt16((int)(tabOffset + 70), out _OS_2_sTypoDescender);
                 }
 
                 if (flagOK)
@@ -4534,7 +4527,7 @@ namespace PCLParaphernalia
 
                     if (tabLength >= 88)
                     {
-                        flagOK = ReadBytesAsInt16((int)(tabOffset + 86), ref _OS_2_sxHeight);
+                        flagOK = TryReadBytesAsInt16((int)(tabOffset + 86), out _OS_2_sxHeight);
                     }
                 }
 
@@ -4830,41 +4823,41 @@ namespace PCLParaphernalia
 
                 _tabPCLTPresent = true;
 
-                flagOK = ReadBytesAsUInt32((int)tabOffset, ref version);
+                flagOK = TryReadBytesAsUInt32((int)tabOffset, out version);
 
                 if (flagOK)
                 {
-                    flagOK = ReadBytesAsUInt32(-1, ref _PCLT_fontNo);
+                    flagOK = TryReadBytesAsUInt32(-1, out _PCLT_fontNo);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = ReadBytesAsUInt16(-1, ref _PCLT_pitch);
+                    flagOK = TryReadBytesAsUInt16(-1, out _PCLT_pitch);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = ReadBytesAsUInt16(-1, ref _PCLT_xHeight);
+                    flagOK = TryReadBytesAsUInt16(-1, out _PCLT_xHeight);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = ReadBytesAsUInt16(-1, ref _PCLT_style);
+                    flagOK = TryReadBytesAsUInt16(-1, out _PCLT_style);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = ReadBytesAsUInt16(-1, ref _PCLT_typeFamily);
+                    flagOK = TryReadBytesAsUInt16(-1, out _PCLT_typeFamily);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = ReadBytesAsUInt16(-1, ref _PCLT_capHeight);
+                    flagOK = TryReadBytesAsUInt16(-1, out _PCLT_capHeight);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = ReadBytesAsUInt16(-1, ref _PCLT_symSet);
+                    flagOK = TryReadBytesAsUInt16(-1, out _PCLT_symSet);
                 }
 
                 if (flagOK)
@@ -4887,7 +4880,7 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    flagOK = ReadBytesAsUInt64(-1, ref _PCLT_charComp);
+                    flagOK = TryReadBytesAsUInt64(-1, out _PCLT_charComp);
                 }
 
                 if (flagOK)
@@ -4897,17 +4890,17 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    flagOK = ReadByteAsSByte(-1, ref _PCLT_strokeWeight);
+                    flagOK = TryReadByteAsSByte(-1, out _PCLT_strokeWeight);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = ReadByteAsSByte(-1, ref _PCLT_widthType);
+                    flagOK = TryReadByteAsSByte(-1, out _PCLT_widthType);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = ReadByteAsUByte(-1, ref _PCLT_serifStyle);
+                    flagOK = TryReadByteAsUByte(-1, out _PCLT_serifStyle);
                 }
 
                 if (!flagOK)
@@ -5054,11 +5047,11 @@ namespace PCLParaphernalia
             }
             else
             {
-                flagOK = ReadBytesAsUInt16((int)tabOffset, ref tabVersion);
+                flagOK = TryReadBytesAsUInt16((int)tabOffset, out tabVersion);
 
                 if (flagOK)
                 {
-                    flagOK = ReadBytesAsUInt32((int)(tabOffset + 12), ref _post_isFixedPitch);
+                    flagOK = TryReadBytesAsUInt32((int)(tabOffset + 12), out _post_isFixedPitch);
                 }
 
                 //----------------------------------------------------------------//
@@ -5119,7 +5112,7 @@ namespace PCLParaphernalia
 
             typeTTC = false;
 
-            bool flagOK = ReadBytesAsUInt32(0, ref tabId);
+            bool flagOK = TryReadBytesAsUInt32(0, out tabId);
 
             if (!flagOK)
             {
@@ -5135,11 +5128,11 @@ namespace PCLParaphernalia
 
                 typeTTC = true;
 
-                flagOK = ReadBytesAsUInt32(-1, ref tabVersion);
+                flagOK = TryReadBytesAsUInt32(-1, out tabVersion);
 
                 if (flagOK)
                 {
-                    flagOK = ReadBytesAsUInt32(-1, ref numFonts);
+                    flagOK = TryReadBytesAsUInt32(-1, out numFonts);
                 }
 
                 if (flagOK)
@@ -5148,7 +5141,7 @@ namespace PCLParaphernalia
 
                     for (int i = 0; i < numFonts; i++)
                     {
-                        flagOK = ReadBytesAsUInt32(-1, ref offsets[i]);
+                        flagOK = TryReadBytesAsUInt32(-1, out offsets[i]);
                     }
                 }
                 else
@@ -5233,7 +5226,7 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                flagOK = ReadBytesAsUInt32((int)tabOffset, ref tabVersion);
+                flagOK = TryReadBytesAsUInt32((int)tabOffset, out tabVersion);
 
                 if (!flagOK)
                 {
@@ -5255,8 +5248,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    flagOK = ReadBytesAsUInt16((int)(tabOffset + 34),
-                                               ref _vhea_numVMetrics);
+                    flagOK = TryReadBytesAsUInt16((int)(tabOffset + 34), out _vhea_numVMetrics);
                 }
             }
 
@@ -5443,7 +5435,7 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                flagOK = ReadBytesAsUInt16(dirOffset + 4, ref numTables);
+                flagOK = TryReadBytesAsUInt16(dirOffset + 4, out numTables);
 
                 if (!flagOK)
                 {
@@ -5489,17 +5481,17 @@ namespace PCLParaphernalia
                     {
                         tabTag = ByteArrayToUInt32(tabName);
 
-                        flagOK = ReadBytesAsUInt32(-1, ref tabChecksum);
+                        flagOK = TryReadBytesAsUInt32(-1, out tabChecksum);
                     }
 
                     if (flagOK)
                     {
-                        flagOK = ReadBytesAsUInt32(-1, ref tabOffset);
+                        flagOK = TryReadBytesAsUInt32(-1, out tabOffset);
                     }
 
                     if (flagOK)
                     {
-                        flagOK = ReadBytesAsUInt32(-1, ref tabLength);
+                        flagOK = TryReadBytesAsUInt32(-1, out tabLength);
                     }
 
                     if (flagOK)
