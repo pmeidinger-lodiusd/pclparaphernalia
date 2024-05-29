@@ -2394,7 +2394,7 @@ namespace PCLParaphernalia
             encodingSymbol = false;
             encodingUnicode = false;
 
-            _tab_cmap.GetByteRange(ref tabOffset, ref tabLength);
+            _tab_cmap.GetByteRange(out tabOffset, out tabLength);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -3314,7 +3314,7 @@ namespace PCLParaphernalia
             uint tabVersion = 0;
 
             bool flagOK = true;
-            _tab_head.GetByteRange(ref tabOffset, ref tabLength);
+            _tab_head.GetByteRange(out tabOffset, out tabLength);
             reqLength = 54;
 
             if (tabLength < reqLength)
@@ -3437,7 +3437,7 @@ namespace PCLParaphernalia
             uint tabVersion = 0;
 
             bool flagOK = true;
-            _tab_hhea.GetByteRange(ref tabOffset, ref tabLength);
+            _tab_hhea.GetByteRange(out tabOffset, out tabLength);
             reqLength = 36;
 
             if (tabLength < reqLength)
@@ -3535,7 +3535,7 @@ namespace PCLParaphernalia
                    tabLength = 0,
                    reqLength;
             bool flagOK = true;
-            _tab_hmtx.GetByteRange(ref tabOffset, ref tabLength);
+            _tab_hmtx.GetByteRange(out tabOffset, out tabLength);
 
             int hMetricsArrayLen = _hhea_numHMetrics;
             int lsbArrayLen = _maxp_numGlyphs - _hhea_numHMetrics;
@@ -3628,11 +3628,6 @@ namespace PCLParaphernalia
         {
             bool composite = false;
 
-            uint locaOffset = 0,
-                   locaLength = 0,
-                   glyfOffset = 0,
-                   glyfLength = 0;
-
             uint offsetThis = 0,
                    offsetNext = 0,
                    entryLen = 0,
@@ -3651,8 +3646,8 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            _tab_loca.GetByteRange(ref locaOffset, ref locaLength);
-            _tab_glyf.GetByteRange(ref glyfOffset, ref glyfLength);
+            _tab_loca.GetByteRange(out uint locaOffset, out _);
+            _tab_glyf.GetByteRange(out uint glyfOffset, out _);
 
             if (_logVerbose)
             {
@@ -3782,7 +3777,7 @@ namespace PCLParaphernalia
             uint tabVersion = 0;
 
             bool flagOK = true;
-            _tab_maxp.GetByteRange(ref tabOffset, ref tabLength);
+            _tab_maxp.GetByteRange(out tabOffset, out tabLength);
             reqLength = 32;
 
             if (tabLength < reqLength)
@@ -3872,7 +3867,7 @@ namespace PCLParaphernalia
                    stringsOffset = 0;
 
             bool flagOK = true;
-            _tab_name.GetByteRange(ref tabOffset, ref tabLength);
+            _tab_name.GetByteRange(out tabOffset, out tabLength);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -4312,7 +4307,7 @@ namespace PCLParaphernalia
                    minLength;
 
             ushort tabVersion = 0;
-            _tab_OS_2.GetByteRange(ref tabOffset, ref tabLength);
+            _tab_OS_2.GetByteRange(out tabOffset, out tabLength);
             minLength = 78;         // for version 0
 
 
@@ -4623,7 +4618,7 @@ namespace PCLParaphernalia
                    reqLength;
 
             bool flagOK = true;
-            _tab_PCLT.GetByteRange(ref tabOffset, ref tabLength);
+            _tab_PCLT.GetByteRange(out tabOffset, out tabLength);
             reqLength = 54;
 
             _tabPCLTPresent = false;
@@ -4851,7 +4846,7 @@ namespace PCLParaphernalia
                    minLength;
 
             ushort tabVersion = 0;
-            _tab_post.GetByteRange(ref tabOffset, ref tabLength);
+            _tab_post.GetByteRange(out tabOffset, out tabLength);
             minLength = 32;         // for versions 0 and 3
 
 
@@ -5031,7 +5026,7 @@ namespace PCLParaphernalia
             uint tabVersion = 0;
 
             bool flagOK = true;
-            _tab_vhea.GetByteRange(ref tabOffset, ref tabLength);
+            _tab_vhea.GetByteRange(out tabOffset, out tabLength);
             reqLength = 36;
 
             if (tabLength < reqLength)
@@ -5105,7 +5100,7 @@ namespace PCLParaphernalia
             bool flagOK = true;
             _tabvmtxPresent = false;
 
-            _tab_vmtx.GetByteRange(ref tabOffset, ref tabLength);
+            _tab_vmtx.GetByteRange(out tabOffset, out tabLength);
 
             int vMetricsArrayLen = _vhea_numVMetrics;
             int tsbArrayLen = _maxp_numGlyphs - _vhea_numVMetrics;

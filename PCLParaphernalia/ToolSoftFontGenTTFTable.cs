@@ -104,7 +104,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void GetByteRange(ref uint offset, ref uint length)
+        public void GetByteRange(out uint offset, out uint length)
         {
             offset = _offset;
             length = _length;
