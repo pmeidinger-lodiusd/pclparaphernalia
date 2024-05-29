@@ -102,101 +102,97 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int SendData(BinaryReader prnReader,
+        public static void SendData(BinaryReader prnReader,
                                      string ipString,
                                      int port,
                                      int timeoutSend,
                                      int timeoutReceive,
                                      bool keepConnect)
         {
-            const int result = 0;
-
             IPAddress ipAddress = new IPAddress(0x00);
 
-            if (CheckIPAddress(ipString, ref ipAddress))
+            if (!CheckIPAddress(ipString, ref ipAddress))
+                return;
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // Address format is valid.                                   //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            try
             {
-                //------------------------------------------------------------//
-                //                                                            //
-                // Address format is valid.                                   //
-                //                                                            //
-                //------------------------------------------------------------//
+                //--------------------------------------------------------//
+                //                                                        //
+                // Open and connect socket.                               //
+                //                                                        //
+                //--------------------------------------------------------//
 
-                try
+                IPEndPoint ipEndPoint;
+
+                int readLen;
+                int sockRes;
+
+                ipEndPoint = new IPEndPoint(ipAddress, port);
+
+                _socket = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp)
                 {
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // Open and connect socket.                               //
-                    //                                                        //
-                    //--------------------------------------------------------//
+                    SendTimeout = timeoutSend,
+                    ReceiveTimeout = timeoutReceive
+                };
 
-                    IPEndPoint ipEndPoint;
+                // or   _socket.SetSocketOption (SocketOptionLevel.Socket,
+                //                               SocketOptionName.SendTimeout, 1000);
 
-                    int readLen;
-                    int sockRes;
+                _socket.Connect(ipEndPoint);
 
-                    ipEndPoint = new IPEndPoint(ipAddress, port);
+                //--------------------------------------------------------//
+                //                                                        //
+                // Read contents of supplied stream and send via socket.  //
+                //                                                        //
+                //--------------------------------------------------------//
 
-                    _socket = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp)
-                    {
-                        SendTimeout = timeoutSend,
-                        ReceiveTimeout = timeoutReceive
-                    };
+                const int bufLen = 512;
 
-                    // or   _socket.SetSocketOption (SocketOptionLevel.Socket,
-                    //                               SocketOptionName.SendTimeout, 1000);
+                byte[] prnData = new byte[bufLen];
 
-                    _socket.Connect(ipEndPoint);
+                prnReader.BaseStream.Position = 0;
+                prnData = prnReader.ReadBytes(bufLen);
 
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // Read contents of supplied stream and send via socket.  //
-                    //                                                        //
-                    //--------------------------------------------------------//
+                while ((readLen = prnData.Length) != 0)
+                {
+                    sockRes = _socket.Send(prnData, readLen, 0);
 
-                    const int bufLen = 512;
-
-                    byte[] prnData = new byte[bufLen];
-
-                    prnReader.BaseStream.Position = 0;
                     prnData = prnReader.ReadBytes(bufLen);
-
-                    while ((readLen = prnData.Length) != 0)
-                    {
-                        sockRes = _socket.Send(prnData, readLen, 0);
-
-                        prnData = prnReader.ReadBytes(bufLen);
-                    }
-
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // Terminate connection, unless it is to be kept open     //
-                    // (for subsequent read response action.                  //
-                    //                                                        //
-                    //--------------------------------------------------------//
-
-                    if (!keepConnect)
-                        _socket.Close();
                 }
 
-                //------------------------------------------------------------//
+                //--------------------------------------------------------//
+                //                                                        //
+                // Terminate connection, unless it is to be kept open     //
+                // (for subsequent read response action.                  //
+                //                                                        //
+                //--------------------------------------------------------//
 
-                catch (SocketException e)
-                {
-                    MessageBox.Show($"SocketException:\r\n\r\nMessage: {e.Message}\r\n\r\nErrorCode: {e.ErrorCode}\r\n\r\nSocketErrorCode: {e.SocketErrorCode}",
-                                     "Printer Output",
-                                     MessageBoxButton.OK,
-                                     MessageBoxImage.Exclamation);
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Exception:\r\n" + e.Message,
+                if (!keepConnect)
+                    _socket.Close();
+            }
+
+            //------------------------------------------------------------//
+
+            catch (SocketException e)
+            {
+                MessageBox.Show($"SocketException:\r\n\r\nMessage: {e.Message}\r\n\r\nErrorCode: {e.ErrorCode}\r\n\r\nSocketErrorCode: {e.SocketErrorCode}",
                                     "Printer Output",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Exclamation);
-                }
             }
-
-            return result;
+            catch (Exception e)
+            {
+                MessageBox.Show("Exception:\r\n" + e.Message,
+                                "Printer Output",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Exclamation);
+            }
         }
     }
 }
