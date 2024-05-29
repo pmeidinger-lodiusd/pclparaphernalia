@@ -249,32 +249,12 @@ namespace PCLParaphernalia
 
         public void StreamOpen(ref string symSetFilename, ref BinaryWriter binWriter, ref Stream opStream)
         {
-            SaveFileDialog saveDialog;
+            var saveDirectory = Path.GetDirectoryName(symSetFilename);
+            var tmpFilename = Path.GetFileName(symSetFilename);
 
-            int ptr,
-                  len;
-
-            string saveDirectory;
-            string tmpFilename;
-
-            ptr = symSetFilename.LastIndexOf("\\");
-
-            if (ptr <= 0)
+            var saveDialog = new SaveFileDialog
             {
-                saveDirectory = string.Empty;
-                tmpFilename = symSetFilename;
-            }
-            else
-            {
-                len = symSetFilename.Length;
-
-                saveDirectory = symSetFilename.Substring(0, ptr);
-                tmpFilename = symSetFilename.Substring(ptr + 1, len - ptr - 1);
-            }
-
-            saveDialog = new SaveFileDialog
-            {
-                Filter = "PCL Files | *.pcl",
+                Filter = "PCL Files|*.pcl",
                 DefaultExt = "pcl",
 
                 RestoreDirectory = true,

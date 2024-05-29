@@ -29,10 +29,9 @@ namespace PCLParaphernalia
         {
             object stream = null;
             object writer = null;
-            string saveFolder = null,
-                   fileExt;
+            string fileExt;
 
-            ToolCommonFunctions.GetFolderName(saveFilename, ref saveFolder);
+            var saveFolder = System.IO.Path.GetDirectoryName(saveFilename);
 
             if (rptFileFmt == ReportCore.RptFileFmt.html)
                 fileExt = "html";

@@ -214,7 +214,7 @@ namespace PCLParaphernalia
                 {
                     TargetCore.RequestStreamWrite(false);
 
-                    txtReply.Text = "Request sequence has been saved to file.\r\nSpecified target of 'File' means that a reply is not meaningful.";
+                    txtReply.Text = "Request sequence has been saved to file.\r\n\r\nSpecified target of 'File' means that a reply is not meaningful.";
                 }
                 else if (_targetType == TargetCore.Target.NetPrinter)
                 {
@@ -775,10 +775,9 @@ namespace PCLParaphernalia
 
             _passwordPJLFS = _defaultPJLFSPassword;
 
-            ToolCommonFunctions.SplitPathName(_objPathPJLFS,
-                                               ref _objVolPJLFS,
-                                               ref _objDirPJLFS,
-                                               ref _objFilPJLFS);
+            _objVolPJLFS = Path.GetPathRoot(_objPathPJLFS);
+            _objDirPJLFS = Path.GetDirectoryName(_objPathPJLFS);
+            _objFilPJLFS = Path.GetFileName(_objPathPJLFS);
 
             if (_crntPDL == ToolCommonData.PrintLang.PJL)
             {
@@ -1116,9 +1115,9 @@ namespace PCLParaphernalia
             OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(locBinFilename);
 
             openDialog.Filter = "Print Files|*.prn; *.pcl; *.dia" +
-                                "|Font files|*.sfp; *.sfs; *.sft; *.sfx" +
-                                "|Overlay files|*.ovl; *.ovx" +
-                                "|All files|*.*";
+                                "|Font Files|*.sfp; *.sfs; *.sft; *.sfx" +
+                                "|Overlay Files|*.ovl; *.ovx" +
+                                "|All Files|*.*";
 
             if (openDialog.ShowDialog() == false)
                 return false;
@@ -1142,9 +1141,9 @@ namespace PCLParaphernalia
         {
             SaveFileDialog saveDialog = ToolCommonFunctions.CreateSaveFileDialog(locBinFilename);
 
-            saveDialog.Filter = "Print Files|*.prn; *.pcl; *.dia;" +
-                                "|Font files|*.sfp; *.sfs; *.sft; *.sfx; " +
-                                "|Overlay files|*.ovl; *.ovx;" +
+            saveDialog.Filter = "Print Files|*.prn; *.pcl; *.dia" +
+                                "|Font files|*.sfp; *.sfs; *.sft; *.sfx" +
+                                "|Overlay files|*.ovl; *.ovx" +
                                 "|All files|*.*";
 
             saveDialog.DefaultExt = "pcl";

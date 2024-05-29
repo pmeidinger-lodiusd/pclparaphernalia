@@ -249,7 +249,7 @@ namespace PCLParaphernalia
                 _donorSymSetFile = filename;
                 txtDonorSymSetFile.Text = _donorSymSetFile;
 
-                ToolCommonFunctions.GetFolderName(_donorSymSetFile, ref _donorSymSetFolder);
+                _donorSymSetFolder = Path.GetDirectoryName(_donorSymSetFile);
 
                 DonorSymSetChange();
             }
@@ -284,8 +284,7 @@ namespace PCLParaphernalia
 
             txtTargetSymSetFile.Text = _targetSymSetFile;
 
-            ToolCommonFunctions.GetFolderName(_targetSymSetFile,
-                                               ref _targetSymSetFolder);
+            _targetSymSetFolder = Path.GetDirectoryName(_targetSymSetFile);
 
             btnDefineSymSet.IsEnabled = false;
             btnGenerateSymSet.IsEnabled = true;
@@ -351,7 +350,7 @@ namespace PCLParaphernalia
                 _targetSymSetFile = filename;
                 txtTargetSymSetFile.Text = _targetSymSetFile;
 
-                ToolCommonFunctions.GetFolderName(_targetSymSetFile, ref _targetSymSetFolder);
+                _targetSymSetFolder = Path.GetDirectoryName(_targetSymSetFile);
             }
         }
 
@@ -475,7 +474,7 @@ namespace PCLParaphernalia
                     _donorSymSetFile = filename;
                     txtDonorSymSetFile.Text = _donorSymSetFile;
 
-                    ToolCommonFunctions.GetFolderName(_donorSymSetFile, ref _donorSymSetFolder);
+                    _donorSymSetFolder = Path.GetDirectoryName(_donorSymSetFile);
                 }
                 else
                 {
@@ -1682,7 +1681,7 @@ namespace PCLParaphernalia
                 ref _flagDonorSymSetMapPCL,
                 ref _donorSymSetFile);
 
-            ToolCommonFunctions.GetFolderName(_donorSymSetFile, ref _donorSymSetFolder);
+            _donorSymSetFolder = Path.GetDirectoryName(_donorSymSetFile);
 
             ToolSymbolSetGenPersist.LoadDataTarget(
                 ref _flagMapHex,
@@ -1719,7 +1718,7 @@ namespace PCLParaphernalia
 
             if ((_targetSymSetFile != string.Empty) && (_targetSymSetFile != null))
             {
-                ToolCommonFunctions.GetFolderName(_targetSymSetFile, ref _targetSymSetFolder);
+                _targetSymSetFolder = Path.GetDirectoryName(_targetSymSetFile);
             }
 
             ToolSymbolSetGenPersist.SaveDataTarget(
@@ -2605,7 +2604,7 @@ namespace PCLParaphernalia
         {
             _targetSymSetFile = txtTargetSymSetFile.Text;
 
-            ToolCommonFunctions.GetFolderName(_targetSymSetFile, ref _targetSymSetFolder);
+            _targetSymSetFolder = Path.GetDirectoryName(_targetSymSetFile);
         }
 
         //--------------------------------------------------------------------//

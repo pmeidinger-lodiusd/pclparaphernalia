@@ -70,12 +70,11 @@ namespace PCLParaphernalia
 
             bool OK;
 
-            string saveFolder = null;
             string fileExt;
 
             ToolCommonData.ToolSubIds infoType = (ToolCommonData.ToolSubIds)indxInfoType;
 
-            ToolCommonFunctions.GetFolderName(saveFilename, ref saveFolder);
+            var saveFolder = System.IO.Path.GetDirectoryName(saveFilename);
 
             if (rptFileFmt == ReportCore.RptFileFmt.html)
                 fileExt = "html";
