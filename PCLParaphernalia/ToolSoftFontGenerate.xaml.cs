@@ -513,9 +513,7 @@ namespace PCLParaphernalia
                                                       _flagLogVerbose,
                                                       _sizeCharSet);
 
-                flagOK = _ttfHandler.CheckForTTC(_fontFilenameTTF,
-                                                  ref typeTTC,
-                                                  ref numFonts);
+                flagOK = _ttfHandler.TryCheckForTTC(_fontFilenameTTF, out typeTTC, out numFonts);
                 if (flagOK && typeTTC)
                 {
                     _fontWithinTTC = true;
