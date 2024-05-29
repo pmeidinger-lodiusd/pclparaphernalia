@@ -629,11 +629,7 @@ namespace PCLParaphernalia
             typeTTC = false;
 
             if (!FontFileOpen(fileName, ref _fontFileSize))
-            {
-                ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, "Error opening TrueType Font file " + fileName);
-
                 return false;
-            }
 
             //------------------------------------------------------------//
             //                                                            //
