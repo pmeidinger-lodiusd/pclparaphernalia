@@ -420,7 +420,7 @@ namespace PCLParaphernalia
             {
                 glyphData = new byte[glyphLength];
 
-                bool flagOK = _ttfHandler.ReadByteArray((int)glyphOffset, (int)glyphLength, ref glyphData);
+                bool flagOK = _ttfHandler.TryReadByteArray((int)glyphOffset, (int)glyphLength, ref glyphData);
                 // TODO: what if flagOK = true (i.e. read fails?
 
                 _baseHandler.WriteCharFragment((int)glyphLength, glyphData, ref checksumMod256);

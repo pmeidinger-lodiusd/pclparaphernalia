@@ -1100,7 +1100,7 @@ namespace PCLParaphernalia
                     readRem = 0;
                 }
 
-                _ttfHandler.ReadByteArray(readStart, readLen, ref _dataBuf);
+                _ttfHandler.TryReadByteArray(readStart, readLen, ref _dataBuf);
 
                 WriteHddrFragment(pdlIsPCLXL, readLen, _dataBuf, ref sumMod256);
 

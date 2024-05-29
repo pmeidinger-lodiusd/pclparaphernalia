@@ -622,7 +622,6 @@ namespace PCLParaphernalia
         public bool CheckForTTC(string fileName, ref bool typeTTC, ref uint numFonts)
         {
             const string tabName = "ttcf";
-            bool fileOpen;
 
             _fontFileSize = 0;
 
@@ -2038,7 +2037,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool ReadByteArray(int offset, int length, ref byte[] target)
+        public bool TryReadByteArray(int offset, int length, ref byte[] target)
         {
             bool flagOK = true;
 
@@ -2977,18 +2976,18 @@ namespace PCLParaphernalia
                     }
                 }
 
-                flagOK = ReadByteArray(baseEndCode, fmt4SegCountx2, ref indexEndCode);
+                flagOK = TryReadByteArray(baseEndCode, fmt4SegCountx2, ref indexEndCode);
                 if (flagOK)
-                    flagOK = ReadByteArray(baseStartCode, fmt4SegCountx2, ref indexStartCode);
+                    flagOK = TryReadByteArray(baseStartCode, fmt4SegCountx2, ref indexStartCode);
 
                 if (flagOK)
-                    flagOK = ReadByteArray(baseIdDelta, fmt4SegCountx2, ref indexIdDelta);
+                    flagOK = TryReadByteArray(baseIdDelta, fmt4SegCountx2, ref indexIdDelta);
 
                 if (flagOK)
-                    flagOK = ReadByteArray(baseIdRangeOffset, fmt4SegCountx2, ref indexIdRangeOffset);
+                    flagOK = TryReadByteArray(baseIdRangeOffset, fmt4SegCountx2, ref indexIdRangeOffset);
 
                 if (flagOK)
-                    flagOK = ReadByteArray(baseGlyphIdArray, sizeGlyphIdArray, ref glyphIdArray);
+                    flagOK = TryReadByteArray(baseGlyphIdArray, sizeGlyphIdArray, ref glyphIdArray);
 
                 if (flagOK)
                 {
@@ -3659,11 +3658,11 @@ namespace PCLParaphernalia
                 byte[] hMetricsArray = new byte[hMetricsArraySize];
                 byte[] lsbArray = new byte[lsbArraySize];
 
-                flagOK = ReadByteArray((int)tabOffset, hMetricsArraySize, ref hMetricsArray);
+                flagOK = TryReadByteArray((int)tabOffset, hMetricsArraySize, ref hMetricsArray);
 
                 if (flagOK)
                 {
-                    flagOK = ReadByteArray(-1, lsbArraySize, ref lsbArray);
+                    flagOK = TryReadByteArray(-1, lsbArraySize, ref lsbArray);
                 }
 
                 if (flagOK)
@@ -4344,7 +4343,7 @@ namespace PCLParaphernalia
 
                                 if (nameRecLength < maxNameRecStrLen)
                                 {
-                                    flagOK = ReadByteArray(textOffset, nameRecLength, ref tempBuf);
+                                    flagOK = TryReadByteArray(textOffset, nameRecLength, ref tempBuf);
 
                                     if (tempBuf[0] == 0x00)
                                     {
@@ -4514,7 +4513,7 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    flagOK = ReadByteArray((int)(tabOffset + 32), cSizePanose, ref _OS_2_panose);
+                    flagOK = TryReadByteArray((int)(tabOffset + 32), cSizePanose, ref _OS_2_panose);
                 }
 
                 if (flagOK)
@@ -4870,7 +4869,7 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    flagOK = ReadByteArray(-1, 16, ref _PCLT_typeface);
+                    flagOK = TryReadByteArray(-1, 16, ref _PCLT_typeface);
                 }
                 /*
                 if (flagOK)
@@ -4893,7 +4892,7 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    flagOK = ReadByteArray(-1, 6, ref fileName);
+                    flagOK = TryReadByteArray(-1, 6, ref fileName);
                 }
 
                 if (flagOK)
@@ -5339,7 +5338,7 @@ namespace PCLParaphernalia
                 byte[] vMetricsArray = new byte[vMetricsArraySize];
                 byte[] tsbArray = new byte[tsbArraySize];
 
-                flagOK = ReadByteArray((int)tabOffset,
+                flagOK = TryReadByteArray((int)tabOffset,
                                         vMetricsArraySize,
                                         ref vMetricsArray);
 
@@ -5347,7 +5346,7 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    flagOK = ReadByteArray(-1,
+                    flagOK = TryReadByteArray(-1,
                                             tsbArraySize,
                                             ref tsbArray);
                 }
@@ -5484,7 +5483,7 @@ namespace PCLParaphernalia
 
                 for (int i = 0; (i < numTables) && flagOK; i++)
                 {
-                    flagOK = ReadByteArray(-1, 4, ref tabName);
+                    flagOK = TryReadByteArray(-1, 4, ref tabName);
 
                     if (flagOK)
                     {
