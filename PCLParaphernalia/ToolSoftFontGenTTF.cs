@@ -338,7 +338,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public bool CheckComposite()
+            public bool GetComposite()
             {
                 return _composite;
             }
@@ -352,21 +352,14 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void GetAdvance(ref ushort advance)
+            public ushort GetAdvance()
             {
-                advance = _advanceWidth;
+                return _advanceWidth;
             }
 
             //----------------------------------------------------------------//
 
-            public void GetFlags(ref bool composite)
-            {
-                composite = _composite;
-            }
-
-            //----------------------------------------------------------------//
-
-            public void GetLocation(ref uint offset, ref uint length)
+            public void GetLocation(out uint offset, out uint length)
             {
                 offset = _offset;
                 length = _length;
@@ -374,7 +367,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void GetMetricsH(ref ushort advanceWidth, ref short leftSideBearing)
+            public void GetMetricsH(out ushort advanceWidth, out short leftSideBearing)
             {
                 advanceWidth = _advanceWidth;
                 leftSideBearing = _leftSideBearing;
@@ -382,7 +375,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void GetMetricsV(ref ushort advanceHeight, ref short topSideBearing)
+            public void GetMetricsV(out ushort advanceHeight, out short topSideBearing)
             {
                 advanceHeight = _advanceHeight;
                 topSideBearing = _topSideBearing;
@@ -397,7 +390,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void SetFlags(bool composite)
+            public void SetComposite(bool composite)
             {
                 _composite = composite;
             }
@@ -945,13 +938,13 @@ namespace PCLParaphernalia
                                  ref uint length,
                                  ref bool composite)
         {
-            _glyphData[identifier].GetMetricsH(ref width, ref leftSideBearing);
+            _glyphData[identifier].GetMetricsH(out width, out leftSideBearing);
 
-            _glyphData[identifier].GetMetricsV(ref height, ref topSideBearing);
+            _glyphData[identifier].GetMetricsV(out height, out topSideBearing);
 
-            _glyphData[identifier].GetLocation(ref offset, ref length);
+            _glyphData[identifier].GetLocation(out offset, out length);
 
-            _glyphData[identifier].GetFlags(ref composite);
+            composite = _glyphData[identifier].GetComposite();
         }
 
         //--------------------------------------------------------------------//
@@ -1087,7 +1080,8 @@ namespace PCLParaphernalia
             ushort defPCLPitch;
             if (glyphPresent)
             {
-                _glyphData[glyphId].GetAdvance(ref advWidthThis);
+                advWidthThis = _glyphData[glyphId].GetAdvance();
+
                 if (advWidthThis > 0)
                     defPCLPitch = advWidthThis;
                 else
@@ -1309,7 +1303,7 @@ namespace PCLParaphernalia
 
                 if (glyphPresent)
                 {
-                    _glyphData[glyphId].GetAdvance(ref advWidthThis);
+                    advWidthThis = _glyphData[glyphId].GetAdvance();
 
                     if (glyphWidthSet)
                     {
@@ -1787,7 +1781,7 @@ namespace PCLParaphernalia
 
         public bool GlyphCompositeCheck(ushort glyphId)
         {
-            return _glyphData[glyphId].CheckComposite();
+            return _glyphData[glyphId].GetComposite();
         }
 
         //--------------------------------------------------------------------//
@@ -2001,8 +1995,7 @@ namespace PCLParaphernalia
                 uint glyphOffset = 0,
                         glyphLength = 0;
 
-                _glyphData[0].GetLocation(ref glyphOffset,
-                                            ref glyphLength);
+                _glyphData[0].GetLocation(out glyphOffset, out glyphLength);
 
                 _glyphZeroExists = glyphLength != 0;
             }
@@ -3716,7 +3709,7 @@ namespace PCLParaphernalia
                 //------------------------------------------------------------//
 
                 _glyphData[glyphId].SetLocation(entryOffset, entryLen);
-                _glyphData[glyphId].SetFlags(composite);
+                _glyphData[glyphId].SetComposite(composite);
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -3726,14 +3719,10 @@ namespace PCLParaphernalia
 
                 if (_logVerbose)
                 {
-                    short leftSideBearing = 0,
-                          topSideBearing = 0;
-                    ushort advanceWidth = 0,
-                           advanceHeight = 0;
 
-                    _glyphData[glyphId].GetMetricsH(ref advanceWidth, ref leftSideBearing);
+                    _glyphData[glyphId].GetMetricsH(out ushort advanceWidth, out short leftSideBearing);
 
-                    _glyphData[glyphId].GetMetricsV(ref advanceHeight, ref topSideBearing);
+                    _glyphData[glyphId].GetMetricsV(out ushort advanceHeight, out short topSideBearing);
 
                     if (composite)
                     {
