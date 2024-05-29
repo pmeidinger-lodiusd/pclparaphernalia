@@ -86,11 +86,9 @@ namespace PCLParaphernalia
 
         private void btnOpFilenameBrowse_Click(object sender, RoutedEventArgs e)
         {
-            bool selected;
-
             string filename = _saveFilename;
 
-            selected = SelectTargetFile(ref filename);
+            bool selected = SelectTargetFile(ref filename);
 
             if (selected)
             {
