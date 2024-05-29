@@ -82,12 +82,9 @@ namespace PCLParaphernalia
 
         private void cbPrinters_SelectionChanged(object sender, EventArgs e)
         {
-            if (_initialised)
+            if (_initialised && cbPrinters.SelectedIndex != -1)
             {
-                if (cbPrinters.SelectedIndex != -1)
-                {
-                    _printerName = cbPrinters.SelectedItem.ToString();
-                }
+                _printerName = cbPrinters.SelectedItem.ToString();
             }
         }
 
