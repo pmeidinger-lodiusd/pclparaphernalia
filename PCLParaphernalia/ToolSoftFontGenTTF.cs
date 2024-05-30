@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2011</para>
     ///
     /// </summary>
-    class ToolSoftFontGenTTF
+    internal class ToolSoftFontGenTTF
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -19,109 +19,109 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const uint cTabID_cmap = 0x636D6170;
-        const uint cTabID_head = 0x68656164;
-        const uint cTabID_hhea = 0x68686561;
-        const uint cTabID_hmtx = 0x686D7478;
-        const uint cTabID_maxp = 0x6D617870;
-        const uint cTabID_name = 0x6E616D65;
-        const uint cTabID_OS_2 = 0x4F532F32;
-        const uint cTabID_post = 0x706F7374;
-        const uint cTabID_cvt = 0x63767420;
-        const uint cTabID_fpgm = 0x6670676D;
-        const uint cTabID_gdir = 0x67646972;
-        const uint cTabID_glyf = 0x676C7966;
-        const uint cTabID_loca = 0x6C6F6361;
-        const uint cTabID_prep = 0x70726570;
-        const uint cTabID_ttcf = 0x74746366;
-        const uint cTabID_CFF = 0x43464620;
-        const uint cTabID_VORG = 0x564F5247;
-        const uint cTabID_EBDT = 0x45424454;
-        const uint cTabID_EBLC = 0x45424C43;
-        const uint cTabID_EBSC = 0x45425343;
-        const uint cTabID_BASE = 0x42415345;
-        const uint cTabID_GDEF = 0x47444546;
-        const uint cTabID_GPOS = 0x47504F53;
-        const uint cTabID_GSUB = 0x47535542;
-        const uint cTabID_JSTF = 0x4A535446;
-        const uint cTabID_DSIG = 0x44534947;
-        const uint cTabID_gasp = 0x67617370;
-        const uint cTabID_hdmx = 0x68646D78;
-        const uint cTabID_kern = 0x6B65726E;
-        const uint cTabID_LTSH = 0x4C545348;
-        const uint cTabID_PCLT = 0x50434C54;
-        const uint cTabID_VDMX = 0x56444D58;
-        const uint cTabID_vhea = 0x76686561;
-        const uint cTabID_vmtx = 0x766D7478;
+        private const uint cTabID_cmap = 0x636D6170;
+        private const uint cTabID_head = 0x68656164;
+        private const uint cTabID_hhea = 0x68686561;
+        private const uint cTabID_hmtx = 0x686D7478;
+        private const uint cTabID_maxp = 0x6D617870;
+        private const uint cTabID_name = 0x6E616D65;
+        private const uint cTabID_OS_2 = 0x4F532F32;
+        private const uint cTabID_post = 0x706F7374;
+        private const uint cTabID_cvt = 0x63767420;
+        private const uint cTabID_fpgm = 0x6670676D;
+        private const uint cTabID_gdir = 0x67646972;
+        private const uint cTabID_glyf = 0x676C7966;
+        private const uint cTabID_loca = 0x6C6F6361;
+        private const uint cTabID_prep = 0x70726570;
+        private const uint cTabID_ttcf = 0x74746366;
+        private const uint cTabID_CFF = 0x43464620;
+        private const uint cTabID_VORG = 0x564F5247;
+        private const uint cTabID_EBDT = 0x45424454;
+        private const uint cTabID_EBLC = 0x45424C43;
+        private const uint cTabID_EBSC = 0x45425343;
+        private const uint cTabID_BASE = 0x42415345;
+        private const uint cTabID_GDEF = 0x47444546;
+        private const uint cTabID_GPOS = 0x47504F53;
+        private const uint cTabID_GSUB = 0x47535542;
+        private const uint cTabID_JSTF = 0x4A535446;
+        private const uint cTabID_DSIG = 0x44534947;
+        private const uint cTabID_gasp = 0x67617370;
+        private const uint cTabID_hdmx = 0x68646D78;
+        private const uint cTabID_kern = 0x6B65726E;
+        private const uint cTabID_LTSH = 0x4C545348;
+        private const uint cTabID_PCLT = 0x50434C54;
+        private const uint cTabID_VDMX = 0x56444D58;
+        private const uint cTabID_vhea = 0x76686561;
+        private const uint cTabID_vmtx = 0x766D7478;
 
-        const uint cTabVer_sfnt = 0x00010000;
-        const uint cTabVer_head = 0x00010000;
-        const uint cTabVer_hhea = 0x00010000;
-        const uint cTabVer_maxp = 0x00010000;
-        const uint cTabVer_PCLT = 0x00010000;
-        const uint cTabVer_ttcf_1 = 0x00010000;
-        const uint cTabVer_ttcf_2 = 0x00020000;
-        const uint cTabVer_vhea_1_0 = 0x00010000;
-        const uint cTabVer_vhea_1_1 = 0x00011000;
+        private const uint cTabVer_sfnt = 0x00010000;
+        private const uint cTabVer_head = 0x00010000;
+        private const uint cTabVer_hhea = 0x00010000;
+        private const uint cTabVer_maxp = 0x00010000;
+        private const uint cTabVer_PCLT = 0x00010000;
+        private const uint cTabVer_ttcf_1 = 0x00010000;
+        private const uint cTabVer_ttcf_2 = 0x00020000;
+        private const uint cTabVer_vhea_1_0 = 0x00010000;
+        private const uint cTabVer_vhea_1_1 = 0x00011000;
 
-        const ushort cTabVer_OS_2_3 = 0x0003;
-        const ushort cTabVer_OS_2_4 = 0x0004;
+        private const ushort cTabVer_OS_2_3 = 0x0003;
+        private const ushort cTabVer_OS_2_4 = 0x0004;
 
-        const ushort mask_OS_2_fsSelection_ITALIC = 0x0001;
-        const ushort mask_OS_2_fsSelection_UNDERSCORE = 0x0002;
-        const ushort mask_OS_2_fsSelection_NEGATIVE = 0x0004;
-        const ushort mask_OS_2_fsSelection_OUTLINED = 0x0008;
-        const ushort mask_OS_2_fsSelection_STRIKEOUT = 0x0010;
-        const ushort mask_OS_2_fsSelection_BOLD = 0x0020;
-        const ushort mask_OS_2_fsSelection_REGULAR = 0x0040;
-        const ushort mask_OS_2_fsSelection_USE_TYPO_METRICS = 0x0080;
-        const ushort mask_OS_2_fsSelection_WWS = 0x0100;
-        const ushort mask_OS_2_fsSelection_OBLIQUE = 0x0200;
-        const ushort mask_OS_2_fsSelection_Reserved = 0xFC00;
+        private const ushort mask_OS_2_fsSelection_ITALIC = 0x0001;
+        private const ushort mask_OS_2_fsSelection_UNDERSCORE = 0x0002;
+        private const ushort mask_OS_2_fsSelection_NEGATIVE = 0x0004;
+        private const ushort mask_OS_2_fsSelection_OUTLINED = 0x0008;
+        private const ushort mask_OS_2_fsSelection_STRIKEOUT = 0x0010;
+        private const ushort mask_OS_2_fsSelection_BOLD = 0x0020;
+        private const ushort mask_OS_2_fsSelection_REGULAR = 0x0040;
+        private const ushort mask_OS_2_fsSelection_USE_TYPO_METRICS = 0x0080;
+        private const ushort mask_OS_2_fsSelection_WWS = 0x0100;
+        private const ushort mask_OS_2_fsSelection_OBLIQUE = 0x0200;
+        private const ushort mask_OS_2_fsSelection_Reserved = 0xFC00;
 
-        const ushort mask_OS_2_fsType_INSTALLABLE_EMBED = 0x0000;
-        const ushort mask_OS_2_fsType_Reserved_A = 0x0001;
-        const ushort mask_OS_2_fsType_RESTRICTED_LICENSE_EMBED = 0x0002;
-        const ushort mask_OS_2_fsType_PREVIEW_AND_PRINT_EMBED = 0x0004;
-        const ushort mask_OS_2_fsType_EDITABLE_EMBED = 0x0008;
-        const ushort mask_OS_2_fsType_Reserved_B = 0x00F0;
-        const ushort mask_OS_2_fsType_NO_SUBSETTING = 0x0100;
-        const ushort mask_OS_2_fsType_BITMAP_EMBED_ONLY = 0x0200;
-        const ushort mask_OS_2_fsType_Reserved_C = 0xFC00;
+        private const ushort mask_OS_2_fsType_INSTALLABLE_EMBED = 0x0000;
+        private const ushort mask_OS_2_fsType_Reserved_A = 0x0001;
+        private const ushort mask_OS_2_fsType_RESTRICTED_LICENSE_EMBED = 0x0002;
+        private const ushort mask_OS_2_fsType_PREVIEW_AND_PRINT_EMBED = 0x0004;
+        private const ushort mask_OS_2_fsType_EDITABLE_EMBED = 0x0008;
+        private const ushort mask_OS_2_fsType_Reserved_B = 0x00F0;
+        private const ushort mask_OS_2_fsType_NO_SUBSETTING = 0x0100;
+        private const ushort mask_OS_2_fsType_BITMAP_EMBED_ONLY = 0x0200;
+        private const ushort mask_OS_2_fsType_Reserved_C = 0xFC00;
 
-        const ushort mask_OS_2_usWidthClass_FWIDTH_ULTRA_CONDENSED = 1;
-        const ushort mask_OS_2_usWidthClass_FWIDTH_EXTRA_CONDENSED = 2;
-        const ushort mask_OS_2_usWidthClass_FWIDTH_CONDENSED = 3;
-        const ushort mask_OS_2_usWidthClass_FWIDTH_SEMI_CONDENSED = 4;
-        const ushort mask_OS_2_usWidthClass_FWIDTH_NORMAL = 5;
-        const ushort mask_OS_2_usWidthClass_FWIDTH_SEMI_EXPANDED = 6;
-        const ushort mask_OS_2_usWidthClass_FWIDTH_EXPANDED = 7;
-        const ushort mask_OS_2_usWidthClass_FWIDTH_EXTRA_EXPANDED = 8;
-        const ushort mask_OS_2_usWidthClass_FWIDTH_ULTRA_EXPANDED = 9;
+        private const ushort mask_OS_2_usWidthClass_FWIDTH_ULTRA_CONDENSED = 1;
+        private const ushort mask_OS_2_usWidthClass_FWIDTH_EXTRA_CONDENSED = 2;
+        private const ushort mask_OS_2_usWidthClass_FWIDTH_CONDENSED = 3;
+        private const ushort mask_OS_2_usWidthClass_FWIDTH_SEMI_CONDENSED = 4;
+        private const ushort mask_OS_2_usWidthClass_FWIDTH_NORMAL = 5;
+        private const ushort mask_OS_2_usWidthClass_FWIDTH_SEMI_EXPANDED = 6;
+        private const ushort mask_OS_2_usWidthClass_FWIDTH_EXPANDED = 7;
+        private const ushort mask_OS_2_usWidthClass_FWIDTH_EXTRA_EXPANDED = 8;
+        private const ushort mask_OS_2_usWidthClass_FWIDTH_ULTRA_EXPANDED = 9;
 
-        const ushort mask_OS_2_usWeightClass_FW_THIN = 100;
-        const ushort mask_OS_2_usWeightClass_FW_EXTRALIGHT = 200;
-        const ushort mask_OS_2_usWeightClass_FW_LIGHT = 300;
-        const ushort mask_OS_2_usWeightClass_FW_NORMAL = 400;
-        const ushort mask_OS_2_usWeightClass_FW_MEDIUM = 500;
-        const ushort mask_OS_2_usWeightClass_FW_SEMIBOLD = 600;
-        const ushort mask_OS_2_usWeightClass_FW_BOLD = 700;
-        const ushort mask_OS_2_usWeightClass_FW_EXTRABOLD = 800;
-        const ushort mask_OS_2_usWeightClass_FW_BLACK = 900;
+        private const ushort mask_OS_2_usWeightClass_FW_THIN = 100;
+        private const ushort mask_OS_2_usWeightClass_FW_EXTRALIGHT = 200;
+        private const ushort mask_OS_2_usWeightClass_FW_LIGHT = 300;
+        private const ushort mask_OS_2_usWeightClass_FW_NORMAL = 400;
+        private const ushort mask_OS_2_usWeightClass_FW_MEDIUM = 500;
+        private const ushort mask_OS_2_usWeightClass_FW_SEMIBOLD = 600;
+        private const ushort mask_OS_2_usWeightClass_FW_BOLD = 700;
+        private const ushort mask_OS_2_usWeightClass_FW_EXTRABOLD = 800;
+        private const ushort mask_OS_2_usWeightClass_FW_BLACK = 900;
 
-        const byte cSpaceCodePoint = 0x20;
+        private const byte cSpaceCodePoint = 0x20;
 
-        const byte cPanoseFamilyAny = 0;
-        const byte cPanoseFamilyNoFit = 1;
-        const byte cPanoseFamilyLatinText = 2;
-        const byte cPanoseFamilyLatinHandwritten = 3;
-        const byte cPanoseFamilyLatinDecorative = 4;
-        const byte cPanoseFamilyLatinSymbol = 5;
+        private const byte cPanoseFamilyAny = 0;
+        private const byte cPanoseFamilyNoFit = 1;
+        private const byte cPanoseFamilyLatinText = 2;
+        private const byte cPanoseFamilyLatinHandwritten = 3;
+        private const byte cPanoseFamilyLatinDecorative = 4;
+        private const byte cPanoseFamilyLatinSymbol = 5;
 
-        const byte cPanoseMonoLatinText = 9;
-        const byte cPanoseMonoLatinHandwritten = 3;
-        const byte cPanoseMonoLatinDecorative = 9;
-        const byte cPanoseMonoLatinSymbol = 3;
+        private const byte cPanoseMonoLatinText = 9;
+        private const byte cPanoseMonoLatinHandwritten = 3;
+        private const byte cPanoseMonoLatinDecorative = 9;
+        private const byte cPanoseMonoLatinSymbol = 3;
 
         public const int cSizePanose = 10;
         public const int cSizeFontname = 16;
@@ -248,9 +248,9 @@ namespace PCLParaphernalia
 
         private struct CharCodeEntry
         {
-            ushort _codepoint;     // Unicode codepoint
-            ushort _glyphId;
-            bool _glyphPresent;
+            private ushort _codepoint;     // Unicode codepoint
+            private ushort _glyphId;
+            private bool _glyphPresent;
 
             //----------------------------------------------------------------//
 
@@ -272,7 +272,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void GetValues(ref ushort codepoint, ref ushort glyphId, ref bool glyphPresent)
+            public void GetValues(out ushort codepoint, out ushort glyphId, out bool glyphPresent)
             {
                 codepoint = _codepoint;
                 glyphId = _glyphId;
@@ -304,16 +304,16 @@ namespace PCLParaphernalia
 
         private struct GlyphDataEntry
         {
-            ushort _advanceWidth,
+            private ushort _advanceWidth,
                    _advanceHeight;
 
-            short _leftSideBearing,
+            private short _leftSideBearing,
                    _topSideBearing;
 
-            uint _offset,
+            private uint _offset,
                    _length;
 
-            bool _composite,
+            private bool _composite,
                     _referenced;
 
             //----------------------------------------------------------------//
@@ -778,7 +778,7 @@ namespace PCLParaphernalia
 
                 return false;
             }
-            
+
             if (!File.Exists(fileName))
             {
                 MessageBox.Show($"Font file '{fileName}' does not exist.",
@@ -869,13 +869,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void GetBasicMetrics(ref ushort numChars,
-                                    ref ushort firstCode,
-                                    ref ushort lastCode,
-                                    ref ushort maxGlyphId,
-                                    ref ushort maxComponentDepth,
-                                    ref ushort unitsPerEm,
-                                    ref bool glyphZeroExists)
+        public void GetBasicMetrics(out ushort numChars,
+                                    out ushort firstCode,
+                                    out ushort lastCode,
+                                    out ushort maxGlyphId,
+                                    out ushort maxComponentDepth,
+                                    out ushort unitsPerEm,
+                                    out bool glyphZeroExists)
         {
             numChars = _cmap_numChars;
             firstCode = _cmap_firstCode;
@@ -899,11 +899,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool GetCharData(ushort charCode, ref ushort codepoint, ref ushort glyphId)
+        public bool GetCharData(ushort charCode, out ushort codepoint, out ushort glyphId)
         {
-            bool glyphPresent = false;
-
-            _charData[charCode].GetValues(ref codepoint, ref glyphId, ref glyphPresent);
+            _charData[charCode].GetValues(out codepoint, out glyphId, out bool glyphPresent);
 
             return glyphPresent;
         }
@@ -918,13 +916,13 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public void GetGlyphData(ushort identifier,
-                                 ref ushort width,
-                                 ref ushort height,
-                                 ref short leftSideBearing,
-                                 ref short topSideBearing,
-                                 ref uint offset,
-                                 ref uint length,
-                                 ref bool composite)
+                                 out ushort width,
+                                 out ushort height,
+                                 out short leftSideBearing,
+                                 out short topSideBearing,
+                                 out uint offset,
+                                 out uint length,
+                                 out bool composite)
         {
             _glyphData[identifier].GetMetricsH(out width, out leftSideBearing);
 
@@ -985,7 +983,7 @@ namespace PCLParaphernalia
             }
             else    // PCL
             {
-                numTables = 5;              // gdir, head, hhea, hmtx, maxp 
+                numTables = 5;              // gdir, head, hhea, hmtx, maxp
 
                 if (flagVMetrics)
                 {
@@ -1020,21 +1018,21 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public void GetPCLFontHeaderData(bool usePCLT,
-                                          ref bool monoSpaced,
-                                          ref ushort cellWidth,
-                                          ref ushort cellHeight,
-                                          ref ushort textWidth,
-                                          ref ushort textHeight,
-                                          ref ushort pitch,
-                                          ref ushort xHeight,
-                                          ref ushort capHeight,
-                                          ref short mUlinePos,
-                                          ref ushort mUlineDep,
-                                          ref uint fontNo,
-                                          ref byte serifStyle,
-                                          ref sbyte widthType,
-                                          ref byte[] fontName,
-                                          ref byte[] panoseData)
+                                          out bool monoSpaced,
+                                          out ushort cellWidth,
+                                          out ushort cellHeight,
+                                          out ushort textWidth,
+                                          out ushort textHeight,
+                                          out ushort pitch,
+                                          out ushort xHeight,
+                                          out ushort capHeight,
+                                          out short mUlinePos,
+                                          out ushort mUlineDep,
+                                          out uint fontNo,
+                                          out byte serifStyle,
+                                          out sbyte widthType,
+                                          out byte[] fontName,
+                                          out byte[] panoseData)
         {
             byte panoseFamily,
                  panoseProportion;
@@ -1130,6 +1128,8 @@ namespace PCLParaphernalia
             // Get data from PCLT table (already read, if it exists).         //
             //                                                                //
             //----------------------------------------------------------------//
+
+            fontName = new byte[cSizeFontname];
 
             if ((!_tabPCLTPresent) || (!usePCLT))
             {
@@ -1237,6 +1237,8 @@ namespace PCLParaphernalia
             //    isFixedPitch                                                //
             //                                                                //
             //----------------------------------------------------------------//
+
+            panoseData = new byte[cSizePanose];
 
             for (int i = 0; i < cSizePanose; i++)
             {
@@ -1410,14 +1412,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void GetPCLFontSelectData(ref ushort styleNonPCLT,
-                                          ref sbyte strokeWeightNonPCLT,
-                                          ref ushort symSetPCLT,
-                                          ref ushort stylePCLT,
-                                          ref sbyte strokeWeightPCLT,
-                                          ref ushort typefaceNoPCLT,
-                                          ref string typefacePCLT,
-                                          ref ulong charCompPCLT)
+        public void GetPCLFontSelectData(out ushort styleNonPCLT,
+                                            out sbyte strokeWeightNonPCLT,
+                                            out ushort symSetPCLT,
+                                            out ushort stylePCLT,
+                                            out sbyte strokeWeightPCLT,
+                                            out ushort typefaceNoPCLT,
+                                            out string typefacePCLT,
+                                            out ulong charCompPCLT)
         {
             ushort styleStructure;
 
@@ -1444,6 +1446,7 @@ namespace PCLParaphernalia
                 strokeWeightPCLT = 0;
                 typefaceNoPCLT = 0;
                 typefacePCLT = null;
+                charCompPCLT = 0;
             }
 
             byte stylePosture;
@@ -1524,7 +1527,7 @@ namespace PCLParaphernalia
             //                                                            //
             // The _OS_2_fsSelection.REGULAR or .BOLD flags are not       //
             // examined, but they should be consistent with the           //
-            // _usWeightClass values.                                     // 
+            // _usWeightClass values.                                     //
             //                                                            //
             //------------------------------------------------------------//
 
@@ -1646,16 +1649,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void GetTableMetrics(ref ToolSoftFontGenTTFTable data_cvt,
-                                    ref ToolSoftFontGenTTFTable data_gdir,
-                                    ref ToolSoftFontGenTTFTable data_fpgm,
-                                    ref ToolSoftFontGenTTFTable data_head,
-                                    ref ToolSoftFontGenTTFTable data_hhea,
-                                    ref ToolSoftFontGenTTFTable data_hmtx,
-                                    ref ToolSoftFontGenTTFTable data_maxp,
-                                    ref ToolSoftFontGenTTFTable data_prep,
-                                    ref ToolSoftFontGenTTFTable data_vhea,
-                                    ref ToolSoftFontGenTTFTable data_vmtx)
+        public void GetTableMetrics(out ToolSoftFontGenTTFTable data_cvt,
+                                    out ToolSoftFontGenTTFTable data_gdir,
+                                    out ToolSoftFontGenTTFTable data_fpgm,
+                                    out ToolSoftFontGenTTFTable data_head,
+                                    out ToolSoftFontGenTTFTable data_hhea,
+                                    out ToolSoftFontGenTTFTable data_hmtx,
+                                    out ToolSoftFontGenTTFTable data_maxp,
+                                    out ToolSoftFontGenTTFTable data_prep,
+                                    out ToolSoftFontGenTTFTable data_vhea,
+                                    out ToolSoftFontGenTTFTable data_vmtx)
         {
             data_cvt = _tab_cvt;
             data_gdir = _tab_gdir;
@@ -1867,10 +1870,10 @@ namespace PCLParaphernalia
 
                 return false;
             }
-            
+
             if (tabVer_sfnt != cTabVer_sfnt)
             {
-                ToolSoftFontGenLog.LogError( _tableDonor, MessageBoxImage.Error, $"Wrong sfntVersion = 0x{tabVer_sfnt:x8}\r\n\r\nExpected version = 0x{cTabVer_sfnt:x8}");
+                ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"Wrong sfntVersion = 0x{tabVer_sfnt:x8}\r\n\r\nExpected version = 0x{cTabVer_sfnt:x8}");
 
                 return false;
             }
@@ -1985,6 +1988,8 @@ namespace PCLParaphernalia
 
                 _glyphZeroExists = glyphLength != 0;
             }
+
+            FontFileClose();
 
             return true;
         }
@@ -2436,7 +2441,7 @@ namespace PCLParaphernalia
                 {
                     ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, true, false,
-                        $"DIAG: table = {tabName}:", 
+                        $"DIAG: table = {tabName}:",
                         $"table has {tabNumTables} sub-tables");
                 }
 
@@ -3094,7 +3099,7 @@ namespace PCLParaphernalia
                                     {
                                         OK = false;
 
-                                        ToolSoftFontGenLog.LogError( _tableDonor, MessageBoxImage.Error, $"GlyphId index {j} >= array size {sizeGlyphIdArray}.");
+                                        ToolSoftFontGenLog.LogError(_tableDonor, MessageBoxImage.Error, $"GlyphId index {j} >= array size {sizeGlyphIdArray}.");
                                     }
                                     else
                                     {
@@ -3182,7 +3187,7 @@ namespace PCLParaphernalia
 
                     for (int i = 0; i < _sizeCharSet; i++)
                     {
-                        _charData[i].GetValues(ref codepoint, ref glyphId, ref glyphPresent);
+                        _charData[i].GetValues(out codepoint, out glyphId, out glyphPresent);
 
                         if (glyphPresent)
                         {
@@ -3414,7 +3419,7 @@ namespace PCLParaphernalia
 
             uint tabVersion = 0;
 
-           var OK = true;
+            var OK = true;
 
             _tab_hhea.GetByteRange(out tabOffset, out tabLength);
             reqLength = 36;
@@ -3643,7 +3648,7 @@ namespace PCLParaphernalia
             {
                 if (_head_indxLocFmt != 0)
                 {
-                    OK = TryReadBytesAsUInt32( (int)(locaOffset + (4 * glyphId)), out offsetThis);
+                    OK = TryReadBytesAsUInt32((int)(locaOffset + (4 * glyphId)), out offsetThis);
 
                     if (OK)
                     {
@@ -3856,10 +3861,10 @@ namespace PCLParaphernalia
             //    ushort   count               Number of name records         //
             //    ushort   stringOffset        Offset from start of table to  //
             //                                start of string storage         //
-            //    NameRec  nameRec[count]      Name records array             // 
+            //    NameRec  nameRec[count]      Name records array             //
             //    ushort   langCount           Number of language records     //
             //    LangRec  langRec[langCount]  Language records array         //
-            //    Variable                     Storage for the string data    //                       
+            //    Variable                     Storage for the string data    //
             //                                                                //
             // The language count and language array items are not present in //
             // the format 0 table.                                            //
@@ -3969,8 +3974,8 @@ namespace PCLParaphernalia
             //    ushort   platformID   Platform ID                           //
             //    ushort   encodingID   Platform-specific encoding ID         //
             //    ushort   languageID   Language ID                           //
-            //    ushort   nameID       Name ID                               // 
-            //    ushort   length       String length (in bytes)              // 
+            //    ushort   nameID       Name ID                               //
+            //    ushort   length       String length (in bytes)              //
             //    ushort   offset       String offset from start of storage   //
             //                          area                                  //
             //                                                                //

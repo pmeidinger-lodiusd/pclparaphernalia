@@ -19,7 +19,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class ToolSoftFontGenerate : Window
     {
         //--------------------------------------------------------------------//
@@ -192,7 +191,6 @@ namespace PCLParaphernalia
                     ref rptChkMarks,
                     ref flagOptRptWrap);
 
-
             // If a file was selected, the font dropdown may not have a font name
             var fontName = string.IsNullOrEmpty(_fontNameTTF) ? _fontNameBase : _fontNameTTF;
 
@@ -309,8 +307,6 @@ namespace PCLParaphernalia
             if (!proceed)
                 return;
 
-            var monoSpaced = false;
-
             _tableLogTarget.Clear();
             _tableLogChars.Clear();
 
@@ -323,13 +319,12 @@ namespace PCLParaphernalia
             var symSetType = PCLSymbolSets.GetType(_indxSymSetTarget);
             byte symSetTypeID = PCLSymSetTypes.GetIdPCL((int)symSetType);
 
-
             if (tabDetails.SelectedItem.Equals(tabPCL))
             {
                 ToolSoftFontGenPCL PCLHandler = new ToolSoftFontGenPCL(_tableLogChars, _ttfHandler);
 
                 PCLHandler.GenerateFont(ref _fontFilenamePCL,
-                    ref monoSpaced,
+                    out bool monoSpaced,
                     _symbolMapping,
                     _flagFormat16,
                     _flagSegGTLastPCL,
@@ -669,14 +664,14 @@ namespace PCLParaphernalia
                     usePCLT = false;
                 }
 
-                _ttfHandler.GetPCLFontSelectData(ref _styleNoPCL,
-                                                  ref _weightNoPCL,
-                                                  ref symSetNoPCLT,
-                                                  ref styleNoPCLT,
-                                                  ref weightNoPCLT,
-                                                  ref typefaceNoPCLT,
-                                                  ref typefacePCLT,
-                                                  ref charCompPCLT);
+                _ttfHandler.GetPCLFontSelectData(out _styleNoPCL,
+                                                    out _weightNoPCL,
+                                                    out symSetNoPCLT,
+                                                    out styleNoPCLT,
+                                                    out weightNoPCLT,
+                                                    out typefaceNoPCLT,
+                                                    out typefacePCLT,
+                                                    out charCompPCLT);
 
                 _typefaceNoPCL = _defaultPCLTypefaceNo;
 
@@ -888,7 +883,7 @@ namespace PCLParaphernalia
                 if (_fontFiles[_indxFont].Contains("\\"))
                     _fontFilenameTTF = _fontFiles[_indxFont];
                 else
-                    _fontFilenameTTF = _fontsFolder + "\\" +_fontFiles[_indxFont];
+                    _fontFilenameTTF = _fontsFolder + "\\" + _fontFiles[_indxFont];
 
                 txtTTFFile.Text = _fontFilenameTTF;
             }
@@ -1291,7 +1286,7 @@ namespace PCLParaphernalia
                 //------------------------------------------------------------//
                 //                                                            //
                 // We only want:                                              //
-                //      .TTF    TrueType Font                                 // 
+                //      .TTF    TrueType Font                                 //
                 //      .OTF    OpenType Font                                 //
                 //      .TTC    TrueType Font Collection                      //
                 // not  .FON    etc.                                          //
@@ -1421,10 +1416,10 @@ namespace PCLParaphernalia
             // Note:                                                          //
             // (a) This doesn't return the standard font names.               //
             //     e.g. 'Arial Narrow Regular' appears to be reported as      //
-            //          family='Arial'                                        //   
-            //          stretch='Condensed'                                   //   
-            //          weight='Normal'                                       //   
-            //          style='Normal'                                        //   
+            //          family='Arial'                                        //
+            //          stretch='Condensed'                                   //
+            //          weight='Normal'                                       //
+            //          style='Normal'                                        //
             // (b) The names are returned unsorted.                           //
             // (c) It appears to return typeface variants which don't exist.  //
             //     e.g. Oblique, Bold and Bold Oblique variants of Symbol.    //
@@ -1472,7 +1467,7 @@ namespace PCLParaphernalia
                     // FontFamily.Source value is (usually) returned as an    //
                     // of two String elements: directory source; font family. //
                     // We only need the second of these.                      //
-                    
+
                     string[] familyName = typeface.FontFamily.Source.Split ('#');
 
                     // Return the font family name, and stretch, weight, and  //
@@ -1649,13 +1644,13 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
             //                                                                //
             // Create PropertyChanged event handler for each item in the      //
-            // collections.                                                   // 
+            // collections.                                                   //
             //                                                                //
             //----------------------------------------------------------------//
 
             foreach (PCLCharCollItem item in _charCollCompListUnicode)
             {
-                item.PropertyChanged +=cbPCLCharCollItem_PropertyChanged;
+                item.PropertyChanged += cbPCLCharCollItem_PropertyChanged;
             }
         }
 
@@ -1890,7 +1885,7 @@ namespace PCLParaphernalia
         // The only indexing used is Unicode, standard for TrueType fonts     //
         // (MSL indexing is only of use with Intellifont fonts).              //
         // Associate the collection with the ItemsSource of the combobox.     //
-        //                                                                    //  
+        //                                                                    //
         // Assume that there are 64 items, and that the collection has        //
         // defined them in order, starting with the one for bit 0 (the least  //
         // significant bit of the 64-bit array).                              //

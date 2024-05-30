@@ -1,6 +1,4 @@
-﻿using Microsoft.Win32;
-using System.IO;
-using System.Text;
+﻿using System.IO;
 using System.Windows;
 
 namespace PCLParaphernalia
@@ -14,7 +12,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
-    class ToolSoftFontGenPCLCommon
+    internal class ToolSoftFontGenPCLCommon
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -66,7 +64,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // g e t H d d r S e g m e n t s L e n                                //
@@ -208,16 +205,16 @@ namespace PCLParaphernalia
         {
             _ttfHandler = ttfHandler;
 
-            _ttfHandler.GetTableMetrics(ref _metrics_cvt,
-                                         ref _metrics_gdir,
-                                         ref _metrics_fpgm,
-                                         ref _metrics_head,
-                                         ref _metrics_hhea,
-                                         ref _metrics_hmtx,
-                                         ref _metrics_maxp,
-                                         ref _metrics_prep,
-                                         ref _metrics_vhea,
-                                         ref _metrics_vmtx);
+            _ttfHandler.GetTableMetrics(out _metrics_cvt,
+                                         out _metrics_gdir,
+                                         out _metrics_fpgm,
+                                         out _metrics_head,
+                                         out _metrics_hhea,
+                                         out _metrics_hmtx,
+                                         out _metrics_maxp,
+                                         out _metrics_prep,
+                                         out _metrics_vhea,
+                                         out _metrics_vmtx);
 
             bool flagOK = _ttfHandler.FontFileReOpen();
 
@@ -329,7 +326,7 @@ namespace PCLParaphernalia
                                ref BinaryWriter binWriter,
                                ref Stream opStream)
         {
-            SaveFileDialog saveDialog = ToolCommonFunctions.CreateSaveFileDialog(fontFilename);
+            var saveDialog = ToolCommonFunctions.CreateSaveFileDialog(fontFilename);
 
             if (pdlIsPCLXL)
             {
@@ -362,7 +359,7 @@ namespace PCLParaphernalia
             opStream = stream;
             _binWriter = writer;
             binWriter = writer;
-            
+
             return true;
         }
 
@@ -1211,10 +1208,10 @@ namespace PCLParaphernalia
             if (!flagOK)
                 return false;
 
-                WriteHddrFragment(pdlIsPCLXL,
-                                   convTextLen,
-                                   conversionText,
-                                   ref sumMod256);
+            WriteHddrFragment(pdlIsPCLXL,
+                               convTextLen,
+                               conversionText,
+                               ref sumMod256);
 
             return true;
         }

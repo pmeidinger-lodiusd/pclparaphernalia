@@ -69,7 +69,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public bool GenerateFont(ref string pclFilename,
-                                     ref bool monoSpaced,
+                                     out bool monoSpaced,
                                      bool symbolMapping,
                                      bool fmt16,
                                      bool segGTLast,
@@ -86,6 +86,8 @@ namespace PCLParaphernalia
                                      ulong charCollComp,
                                      byte[] conversionText)
         {
+            monoSpaced = false;
+
             bool useVMetrics;
 
             if (fmt16)
@@ -127,24 +129,15 @@ namespace PCLParaphernalia
             //                                                            //
             //------------------------------------------------------------//
 
-            ushort numChars = 0,
-                    firstCode = 0,
-                    lastCode = 0,
-                    maxGlyphId = 0,
-                    maxComponentDepth = 0,
-                    unitsPerEm = 0;
-
-            bool glyphZeroExists = false;
-
             _ttfHandler.GlyphReferencedUnmarkAll();
 
-            _ttfHandler.GetBasicMetrics(ref numChars,
-                                            ref firstCode,
-                                            ref lastCode,
-                                            ref maxGlyphId,
-                                            ref maxComponentDepth,
-                                            ref unitsPerEm,
-                                            ref glyphZeroExists);
+            _ttfHandler.GetBasicMetrics(out ushort numChars,
+                out ushort firstCode,
+                out ushort lastCode,
+                out ushort maxGlyphId,
+                out ushort maxComponentDepth,
+                out ushort unitsPerEm,
+                out bool glyphZeroExists);
 
             try
             {
@@ -154,7 +147,7 @@ namespace PCLParaphernalia
                 //                                                        //
                 //--------------------------------------------------------//
 
-                WriteHddr(ref monoSpaced,
+                WriteHddr(out monoSpaced,
                             fmt16,
                             segGTLast,
                             usePCLT,
@@ -293,17 +286,6 @@ namespace PCLParaphernalia
                                 ushort depth,
                                 ushort maxGlyphId)
         {
-            ushort glyphWidth = 0,
-                   glyphHeight = 0;
-
-            short glyphLSB = 0,
-                  glyphTSB = 0;
-
-            uint glyphOffset = 0,
-                   glyphLength = 0;
-
-            bool glyphComposite = false;
-
             byte checksumMod256;
 
             byte[] charHddr = new byte[cSizeCharHddr];
@@ -330,13 +312,13 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             _ttfHandler.GetGlyphData(glyphId,
-                                      ref glyphWidth,
-                                      ref glyphHeight,  // not used here
-                                      ref glyphLSB,
-                                      ref glyphTSB,     // not used here
-                                      ref glyphOffset,
-                                      ref glyphLength,
-                                      ref glyphComposite);
+                                      out ushort glyphWidth,
+                                      out ushort glyphHeight,  // not used here
+                                      out short glyphLSB,
+                                      out short glyphTSB,     // not used here
+                                      out uint glyphOffset,
+                                      out uint glyphLength,
+                                      out bool glyphComposite);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -562,7 +544,7 @@ namespace PCLParaphernalia
             {
                 ushort charCode = (ushort)i;
 
-                bool glyphExists = _ttfHandler.GetCharData(charCode, ref codepoint, ref glyphId);
+                bool glyphExists = _ttfHandler.GetCharData(charCode, out codepoint, out glyphId);
                 if (glyphExists)
                 {
                     WriteChar(charCode, codepoint, glyphId, 0, maxGlyphId);
@@ -622,7 +604,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool WriteHddr(ref bool monoSpaced,
+        private bool WriteHddr(out bool monoSpaced,
                                    bool fmt16,
                                    bool segGTLast,
                                    bool usePCLT,
@@ -642,33 +624,15 @@ namespace PCLParaphernalia
                                    ulong charCollComp,
                                    byte[] conversionText)
         {
-            ushort cellWidth = 0,
-                   cellHeight = 0,
-                   textWidth = 0,
-                   textHeight = 0,
-                   pitch = 0,
-                   xHeight = 0,
-                   capHeight = 0,
-                   mUlineDep = 0;
-
-            short mUlinePos = 0;
-
-            uint fontNo = 0;
-
             int sum;
             int convTextLen;
             int hddrLen;
 
             byte mod256;
-            byte serifStyle = 0;
             byte fontFormat;
             byte fontType;
             byte fontSpacing;
 
-            sbyte widthType = 0;
-
-            byte[] fontNamePCLT = new byte[ToolSoftFontGenTTF.cSizeFontname];
-            byte[] panoseData = new byte[ToolSoftFontGenTTF.cSizePanose];
             byte[] hddrDesc = new byte[cSizeHddrDesc];
 
             //----------------------------------------------------------------//
@@ -677,24 +641,22 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            monoSpaced = false;
-
             _ttfHandler.GetPCLFontHeaderData(usePCLT,
-                                              ref monoSpaced,
-                                              ref cellWidth,
-                                              ref cellHeight,
-                                              ref textWidth,
-                                              ref textHeight,
-                                              ref pitch,
-                                              ref xHeight,
-                                              ref capHeight,
-                                              ref mUlinePos,
-                                              ref mUlineDep,
-                                              ref fontNo,
-                                              ref serifStyle,
-                                              ref widthType,
-                                              ref fontNamePCLT,
-                                              ref panoseData);
+                                              out monoSpaced,
+                                              out ushort cellWidth,
+                                              out ushort cellHeight,
+                                              out ushort textWidth,
+                                              out ushort textHeight,
+                                              out ushort pitch,
+                                              out ushort xHeight,
+                                              out ushort capHeight,
+                                              out short mUlinePos,
+                                              out ushort mUlineDep,
+                                              out uint fontNo,
+                                              out byte serifStyle,
+                                              out sbyte widthType,
+                                              out byte[] fontNamePCLT,
+                                              out byte[] panoseData);
             ushort mUlinePosU = (ushort)mUlinePos;
 
             //----------------------------------------------------------------//
@@ -871,7 +833,6 @@ namespace PCLParaphernalia
 
             if (!flagOK)
                 return false;
-
 
             //--------------------------------------------------------//
             //                                                        //

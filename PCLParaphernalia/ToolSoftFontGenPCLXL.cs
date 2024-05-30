@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.IO;
-using System.Text;
 using System.Windows;
 
 namespace PCLParaphernalia
@@ -12,7 +11,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
-    class ToolSoftFontGenPCLXL
+    internal class ToolSoftFontGenPCLXL
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -20,11 +19,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int cSizeFontname = 16;
-        const int cSizeHddrDesc = 8;
-        const int cSizeCharHddrClass0 = 6;
-        const int cSizeCharHddrClass1 = 10;
-        const int cSizeCharHddrClass2 = 12;
+        private const int cSizeFontname = 16;
+        private const int cSizeHddrDesc = 8;
+        private const int cSizeCharHddrClass0 = 6;
+        private const int cSizeCharHddrClass1 = 10;
+        private const int cSizeCharHddrClass2 = 12;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -59,6 +58,7 @@ namespace PCLParaphernalia
 
             _ttfHandler = ttfHandler;
         }
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // g e n e r a t e F o n t                                            //
@@ -112,31 +112,21 @@ namespace PCLParaphernalia
             //                                                            //
             //------------------------------------------------------------//
 
-            int len,
-                    charClass;
-
-            ushort numChars = 0,
-                    firstCode = 0,
-                    lastCode = 0,
-                    maxGlyphId = 0,
-                    maxComponentDepth = 0,
-                    unitsPerEm = 0;
-
-            bool glyphZeroExists = false;
+            int charClass;
 
             byte[] fontNameXL = new byte[cSizeFontname];
 
             _ttfHandler.GlyphReferencedUnmarkAll();
 
-            _ttfHandler.GetBasicMetrics(ref numChars,
-                                            ref firstCode,
-                                            ref lastCode,
-                                            ref maxGlyphId,
-                                            ref maxComponentDepth,
-                                            ref unitsPerEm,
-                                            ref glyphZeroExists);
+            _ttfHandler.GetBasicMetrics(out ushort numChars,
+                out _,
+                out _,
+                out ushort maxGlyphId,
+                out ushort maxComponentDepth,
+                out ushort unitsPerEm,
+                out bool glyphZeroExists);
 
-            len = fontName.Length;
+            int len = fontName.Length;
 
             if (len > cSizeFontname)
                 len = cSizeFontname;
@@ -334,13 +324,13 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             _ttfHandler.GetGlyphData(glyphId,
-                                      ref glyphWidth,
-                                      ref glyphHeight,  // not used
-                                      ref glyphLSB,
-                                      ref glyphTSB,
-                                      ref glyphOffset,
-                                      ref glyphLength,
-                                      ref glyphComposite);
+                                      out glyphWidth,
+                                      out glyphHeight,  // not used
+                                      out glyphLSB,
+                                      out glyphTSB,
+                                      out glyphOffset,
+                                      out glyphLength,
+                                      out glyphComposite);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -507,7 +497,7 @@ namespace PCLParaphernalia
                         }
                         else
                         {
-                            // flagOK = 
+                            // flagOK =
                             WriteChar(charClass, 0xffff, 0, glyphCompId, (ushort)(depth + 1), maxGlyphId);
                         }
                     }
@@ -575,13 +565,11 @@ namespace PCLParaphernalia
             {
                 ushort charCode = (ushort)i;
 
-                bool glyphExists = _ttfHandler.GetCharData(charCode,
-                                           ref codepoint,
-                                           ref glyphId);
+                bool glyphExists = _ttfHandler.GetCharData(charCode, out codepoint, out glyphId);
+
                 if (glyphExists)
                 {
-                    WriteChar(charClass, charCode, codepoint,
-                               glyphId, 0, maxGlyphId);
+                    WriteChar(charClass, charCode, codepoint, glyphId, 0, maxGlyphId);
                 }
                 else if (!symSetUnbound)
                 {
