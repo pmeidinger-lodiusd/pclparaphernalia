@@ -17,7 +17,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class ToolSymbolSetGenerate : Window
     {
         //--------------------------------------------------------------------//
@@ -854,7 +853,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
             //                                                                //
             // Create PropertyChanged event handler for each item in the      //
-            // collections.                                                   // 
+            // collections.                                                   //
             //                                                                //
             //----------------------------------------------------------------//
 
@@ -1530,7 +1529,6 @@ namespace PCLParaphernalia
                                  ref ushort codeCt,
                                  ref PCLSymSetTypes.Index symSetType)
         {
-
             //----------------------------------------------------------------//
             //                                                                //
             // Minimum (significant) code-point.                              //
@@ -1716,7 +1714,7 @@ namespace PCLParaphernalia
                 _flagDonorSymSetMapPCL,
                 _donorSymSetFile);
 
-            if ((_targetSymSetFile != string.Empty) && (_targetSymSetFile != null))
+            if (!string.IsNullOrEmpty(_targetSymSetFile))
             {
                 _targetSymSetFolder = Path.GetDirectoryName(_targetSymSetFile);
             }
@@ -1743,7 +1741,7 @@ namespace PCLParaphernalia
         // default) or MSL indexing (only of use with Intellifont fonts), so  //
         // we associate the relevant collection with the ItemsSource of the   //
         // combobox.                                                          //
-        //                                                                    //  
+        //                                                                    //
         // We assume that there are 64 items, and that the collection has     //
         // defined them in order, starting with the one for bit 0 (the least  //
         // significant bit of the 64-bit array).                              //
