@@ -60,19 +60,16 @@ namespace PCLParaphernalia
             const int maxRead = 12;
             bool foundTerm = false;
 
-            int pos,
-                    maxPos;
-
             byte x;
 
             offset += prefixLen;
 
-            maxPos = offset + maxRead;
+            int maxPos = offset + maxRead;
 
             if (fileSize <= maxPos)
                 maxPos = (int)(fileSize - 1);
 
-            for (pos = offset; flagOK && (!foundTerm) && (pos < maxPos); pos++)
+            for (var pos = offset; flagOK && (!foundTerm) && (pos < maxPos); pos++)
             {
                 x = _binReader.ReadByte();
 
@@ -119,18 +116,12 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            bool fileOpen = MacroFileOpen(filename, ref fileSize);
-            bool macroIdPresent;
-            if (!fileOpen)
-            {
-                macroIdPresent = false;
-            }
-            else
-            {
-                macroIdPresent = CheckForMacroId(filename, fileSize, ref macroId);
+            if (!MacroFileOpen(filename, ref fileSize))
+                return false;
 
-                MacroFileClose();
-            }
+            var macroIdPresent = CheckForMacroId(filename, fileSize, ref macroId);
+
+            MacroFileClose();
 
             return macroIdPresent;
         }
@@ -238,9 +229,7 @@ namespace PCLParaphernalia
             if (_ipStream == null)
                 return false;
 
-            FileInfo fi = new FileInfo(fileName);
-
-            fileSize = fi.Length;
+            fileSize = new FileInfo(fileName).Length;
 
             _binReader = new BinaryReader(_ipStream);
 
