@@ -11,7 +11,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class ToolMiscSamples : Window
     {
         //--------------------------------------------------------------------//
@@ -20,17 +19,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int _sampleCtPCL_CID = 4;
-        const int _sampleCtPCLXL_RGB = 4;
-        const int _sampleCtPCLXL_Gray = 4;
-
-        const int _planeCtPCL_CID = 3;
-        const int _planeCtPCLXL_RGB = 3;
-        const int _planeCtPCLXL_Gray = 1;
-
-        const string _txtBoxRootNamePCL_CID = "txtColourPCL_CID_";
-        const string _txtBoxRootNamePCLXL_Gray = "txtColourPCLXL_Gray_";
-        const string _txtBoxRootNamePCLXL_RGB = "txtColourPCLXL_RGB_";
+        private const int _sampleCtPCL_CID = 4;
+        private const int _sampleCtPCLXL_RGB = 4;
+        private const int _sampleCtPCLXL_Gray = 4;
+        private const int _planeCtPCL_CID = 3;
+        private const int _planeCtPCLXL_RGB = 3;
+        private const int _planeCtPCLXL_Gray = 1;
+        private const string _txtBoxRootNamePCL_CID = "txtColourPCL_CID_";
+        private const string _txtBoxRootNamePCLXL_Gray = "txtColourPCLXL_Gray_";
+        private const string _txtBoxRootNamePCLXL_RGB = "txtColourPCLXL_RGB_";
 
         private enum ColourType : byte
         {
@@ -42,7 +39,7 @@ namespace PCLParaphernalia
 
         public enum PCLColourSpace : byte
         {
-            RGB,    // 0 - values as per PCL ConfigureImageData definition  
+            RGB,    // 0 - values as per PCL ConfigureImageData definition
             CMY,    // 1
             SRGB    // 2
         }
@@ -323,7 +320,7 @@ namespace PCLParaphernalia
             InitialiseDescColour();
         }
 
-        //--------------------------------------------------------------------// 
+        //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // i n i t i a l i s e D e s c C o l o u r                            //
         //--------------------------------------------------------------------//
@@ -698,7 +695,6 @@ namespace PCLParaphernalia
                                              ref int planeNo,
                                              ref int planeSig)
         {
-
             //----------------------------------------------------------------//
             //                                                                //
             // Work out which of the (mapping) text boxes has just lost       //
@@ -836,7 +832,7 @@ namespace PCLParaphernalia
             if (!flagOK)
             {
                 Helper_WPFFocusFix.Focus(source);   // need this to focus
-            }            
+            }
         }
 
         //--------------------------------------------------------------------//

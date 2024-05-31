@@ -8,7 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class ToolPrnPrintPersist
+    internal static class ToolPrnPrintPersist
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -16,16 +16,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _mainKey = MainForm._regMainKey;
-
-        const string _subKeyTools = "Tools";
-        const string _subKeyToolsPrnPrint = _subKeyTools + @"\PrnPrint";
-
-        const string _nameCaptureFile = "CaptureFile";
-        const string _nameFilename = "Filename";
-
-        const string _defaultCaptureFile = "CaptureFile_PrnPrint.prn";
-        const string _defaultFilename = "DefaultPrintFile.prn";
+        private const string _mainKey = MainForm._regMainKey;
+        private const string _subKeyTools = "Tools";
+        private const string _subKeyToolsPrnPrint = _subKeyTools + @"\PrnPrint";
+        private const string _nameCaptureFile = "CaptureFile";
+        private const string _nameFilename = "Filename";
+        private const string _defaultCaptureFile = "CaptureFile_PrnPrint.prn";
+        private const string _defaultFilename = "DefaultPrintFile.prn";
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

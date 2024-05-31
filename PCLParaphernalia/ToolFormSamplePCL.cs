@@ -8,7 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
-    static class ToolFormSamplePCL
+    internal static class ToolFormSamplePCL
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -16,7 +16,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int _logPageOffset = 142;
+        private const int _logPageOffset = 142;
 
         public enum MacroMethod : byte
         {
@@ -439,7 +439,7 @@ namespace PCLParaphernalia
                 // Not first page:                                                //
                 // - for simplex jobs:                                            //
                 //      - write 'form feed' sequence.                             //
-                // - for duplex jobs:                                             // 
+                // - for duplex jobs:                                             //
                 //      - write 'page side' sequence.                             //
                 //      - if rear face, and alternate orientations specified,     //
                 //        write 'set orientation' sequence.                       //

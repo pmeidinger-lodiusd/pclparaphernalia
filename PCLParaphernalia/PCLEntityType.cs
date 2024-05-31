@@ -6,7 +6,7 @@
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    class PCLEntityType
+    internal class PCLEntityType
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

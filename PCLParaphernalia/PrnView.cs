@@ -12,8 +12,7 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "properties renaming")]
-
-    class PrnView
+    internal class PrnView
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -33,10 +32,9 @@ namespace PCLParaphernalia
         private static long _fileSize = 0;
 
         private readonly bool _splitSlices = false;
-
-        PrnParseConstants.OptCharSetSubActs _indxCharSetSubAct = 0;
-        PrnParseConstants.OptCharSets _indxCharSetName = 0;
-        int _valCharSetSubCode = 0;
+        private PrnParseConstants.OptCharSetSubActs _indxCharSetSubAct = 0;
+        private PrnParseConstants.OptCharSets _indxCharSetName = 0;
+        private int _valCharSetSubCode = 0;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -44,7 +42,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // a d d R o w                                                        //
@@ -106,7 +103,7 @@ namespace PCLParaphernalia
 
                 return false;
             }
-            
+
             if (!File.Exists(fileName))
             {
                 MessageBox.Show($"Print file '{fileName}' does not exist.",
@@ -139,7 +136,7 @@ namespace PCLParaphernalia
             fileSize = fi.Length;
 
             _binReader = new BinaryReader(_ipStream);
-            
+
             return true;
         }
 
@@ -260,7 +257,6 @@ namespace PCLParaphernalia
                     // characters are encountered is in force.                //
                     //                                                        //
                     //--------------------------------------------------------//
-
 
                     for (int i = 0; (i < blockLen) && (!endReached); i += sliceLen)
                     {

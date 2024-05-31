@@ -6,7 +6,7 @@
     /// <para>© Chris Hutchinson 2017</para>
     ///
     /// </summary>
-    class UnicodeBlock
+    internal class UnicodeBlock
     {
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

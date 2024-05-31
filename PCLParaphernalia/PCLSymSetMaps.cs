@@ -9,7 +9,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2015</para>
     ///
     /// </summary>
-    static partial class PCLSymSetMaps
+    internal static partial class PCLSymSetMaps
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -324,198 +324,263 @@ namespace PCLParaphernalia
                     case SymSetMapId.mapNull:
                         UnicodeMapNull();
                         break;
+
                     case SymSetMapId.mapSymbol:
                         UnicodeMapSymbol();
                         break;
+
                     case SymSetMapId.mapUserSet:
                         UnicodeMapUserSet();
                         break;
+
                     case SymSetMapId.map_0D:
                         UnicodeMap_0D();
                         break;
+
                     case SymSetMapId.map_0H:
                         UnicodeMap_0H();
                         break;
+
                     case SymSetMapId.map_0I:
                         UnicodeMap_0I();
                         break;
+
                     case SymSetMapId.map_0N:
                         UnicodeMap_0N();
                         break;
+
                     case SymSetMapId.map_0S:
                         UnicodeMap_0S();
                         break;
+
                     case SymSetMapId.map_0U:
                         UnicodeMap_0U();
                         break;
+
                     case SymSetMapId.map_1E:
                         UnicodeMap_1E();
                         break;
+
                     case SymSetMapId.map_1F:
                         UnicodeMap_1F();
                         break;
+
                     case SymSetMapId.map_1G:
                         UnicodeMap_1G();
                         break;
+
                     case SymSetMapId.map_1T:
                         UnicodeMap_1T();
                         break;
+
                     case SymSetMapId.map_1U:
                         UnicodeMap_1U();
                         break;
+
                     case SymSetMapId.map_2N:
                         UnicodeMap_2N();
                         break;
+
                     case SymSetMapId.map_2S:
                         UnicodeMap_2S();
                         break;
+
                     case SymSetMapId.map_3N:
                         UnicodeMap_3N();
                         break;
+
                     case SymSetMapId.map_3R:
                         UnicodeMap_3R();
                         break;
+
                     case SymSetMapId.map_4N:
                         UnicodeMap_4N();
                         break;
+
                     case SymSetMapId.map_4U:
                         UnicodeMap_4U();
                         break;
+
                     case SymSetMapId.map_5M:
                         UnicodeMap_5M();
                         break;
+
                     case SymSetMapId.map_5N:
                         UnicodeMap_5N();
                         break;
+
                     case SymSetMapId.map_5T:
                         UnicodeMap_5T();
                         break;
+
                     case SymSetMapId.map_6J:
                         UnicodeMap_6J();
                         break;
+
                     case SymSetMapId.map_6N:
                         UnicodeMap_6N();
                         break;
+
                     case SymSetMapId.map_7H:
                         UnicodeMap_7H();
                         break;
+
                     case SymSetMapId.map_7J:
                         UnicodeMap_7J();
                         break;
+
                     case SymSetMapId.map_8G:
                         UnicodeMap_8G();
                         break;
+
                     case SymSetMapId.map_8H:
                         UnicodeMap_8H();
                         break;
+
                     case SymSetMapId.map_8M:
                         UnicodeMap_8M();
                         break;
+
                     case SymSetMapId.map_8U:
                         UnicodeMap_8U();
                         break;
+
                     case SymSetMapId.map_8V:
                         UnicodeMap_8V();
                         break;
+
                     case SymSetMapId.map_9E:
                         UnicodeMap_9E();
                         break;
+
                     case SymSetMapId.map_9G:
                         UnicodeMap_9G();
                         break;
+
                     case SymSetMapId.map_9J:
                         UnicodeMap_9J();
                         break;
+
                     case SymSetMapId.map_9N:
                         UnicodeMap_9N();
                         break;
+
                     case SymSetMapId.map_9R:
                         UnicodeMap_9R();
                         break;
+
                     case SymSetMapId.map_9T:
                         UnicodeMap_9T();
                         break;
+
                     case SymSetMapId.map_9U:
                         UnicodeMap_9U();
                         break;
+
                     case SymSetMapId.map_9V:
                         UnicodeMap_9V();
                         break;
+
                     case SymSetMapId.map_10G:
                         UnicodeMap_10G();
                         break;
+
                     case SymSetMapId.map_10J:
                         UnicodeMap_10J();
                         break;
+
                     case SymSetMapId.map_10N:
                         UnicodeMap_10N();
                         break;
+
                     case SymSetMapId.map_10U:
                         UnicodeMap_10U();
                         break;
+
                     case SymSetMapId.map_10V:
                         UnicodeMap_10V();
                         break;
+
                     case SymSetMapId.map_11N:
                         UnicodeMap_11N();
                         break;
+
                     case SymSetMapId.map_11U:
                         UnicodeMap_11U();
                         break;
+
                     case SymSetMapId.map_12G:
                         UnicodeMap_12G();
                         break;
+
                     case SymSetMapId.map_12J:
                         UnicodeMap_12J();
                         break;
+
                     case SymSetMapId.map_12N:
                         UnicodeMap_12N();
                         break;
+
                     case SymSetMapId.map_12U:
                         UnicodeMap_12U();
                         break;
+
                     case SymSetMapId.map_13U:
                         UnicodeMap_13U();
                         break;
+
                     case SymSetMapId.map_14R:
                         UnicodeMap_14R();
                         break;
+
                     case SymSetMapId.map_15H:
                         UnicodeMap_15H();
                         break;
+
                     case SymSetMapId.map_15U:
                         UnicodeMap_15U();
                         break;
+
                     case SymSetMapId.map_17U:
                         UnicodeMap_17U();
                         break;
+
                     case SymSetMapId.map_19L:
                         UnicodeMap_19L();
                         break;
+
                     case SymSetMapId.map_19U:
                         UnicodeMap_19U();
                         break;
+
                     case SymSetMapId.map_26U:
                         UnicodeMap_26U();
                         break;
+
                     case SymSetMapId.map_x901T:
                         UnicodeMap_x901T();
                         break;
+
                     case SymSetMapId.map_x1001T:
                         UnicodeMap_x1001T();
                         break;
+
                     case SymSetMapId.map_x1018C:
                         UnicodeMap_x1018C();
                         break;
+
                     case SymSetMapId.map_x1018T:
                         UnicodeMap_x1018T();
                         break;
+
                     case SymSetMapId.map_x1019K:
                         UnicodeMap_x1019K();
                         break;
+
                     case SymSetMapId.map_x1020C:
                         UnicodeMap_x1020C();
                         break;
+
                     default:
                         UnicodeMapMissing();   // to catch undefined maps //
                         break;

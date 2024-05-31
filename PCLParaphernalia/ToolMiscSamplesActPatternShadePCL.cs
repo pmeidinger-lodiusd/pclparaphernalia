@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
-    static class ToolMiscSamplesActPatternShadePCL
+    internal static class ToolMiscSamplesActPatternShadePCL
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -19,26 +19,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int _macroId = 1;
-        const ushort _unitsPerInch = PCLWriter.sessionUPI;
-
-        const short _pageOriginX = (_unitsPerInch * 1);
-        const short _pageOriginY = (_unitsPerInch * 1);
-        const short _incInch = (_unitsPerInch * 1);
-        const short _lineInc = (_unitsPerInch * 5) / 6;
-
-        const short _posXDesc = _pageOriginX;
-        const short _posXData1 = _pageOriginX + ((7 * _incInch) / 3);
-        const short _posXData2 = _posXData1 + (3 * _incInch / 2);
-        const short _posXData3 = _posXData2 + (3 * _incInch / 2);
-
-        const short _posYHddr = _pageOriginY;
-        const short _posYDesc1 = _pageOriginY + (2 * _incInch);
-        const short _posYDesc2 = _pageOriginY + (3 * _incInch / 2);
-        const short _posYData = _pageOriginY + (2 * _incInch);
-
-        const short _patternBase_300 = 300;
-        const short _patternBase_600 = 600;
+        private const int _macroId = 1;
+        private const ushort _unitsPerInch = PCLWriter.sessionUPI;
+        private const short _pageOriginX = (_unitsPerInch * 1);
+        private const short _pageOriginY = (_unitsPerInch * 1);
+        private const short _incInch = (_unitsPerInch * 1);
+        private const short _lineInc = (_unitsPerInch * 5) / 6;
+        private const short _posXDesc = _pageOriginX;
+        private const short _posXData1 = _pageOriginX + ((7 * _incInch) / 3);
+        private const short _posXData2 = _posXData1 + (3 * _incInch / 2);
+        private const short _posXData3 = _posXData2 + (3 * _incInch / 2);
+        private const short _posYHddr = _pageOriginY;
+        private const short _posYDesc1 = _pageOriginY + (2 * _incInch);
+        private const short _posYDesc2 = _pageOriginY + (3 * _incInch / 2);
+        private const short _posYData = _pageOriginY + (2 * _incInch);
+        private const short _patternBase_300 = 300;
+        private const short _patternBase_600 = 600;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -47,19 +43,17 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         //static readonly int _indxFontArial = PCLFonts.GetIndexForName("Arial");
-        static readonly int _indxFontCourier = PCLFonts.GetIndexForName("Courier");
+        private static readonly int _indxFontCourier = PCLFonts.GetIndexForName("Courier");
 
-        static int _logPageWidth;
-        static int _logPageHeight;
-        static int _paperWidth;
-        static int _paperHeight;
-
-        static int _patternsCt = 0;
-        static ushort[] _patternIds;
-        static ushort[] _patternHeights;
-        static ushort[] _patternWidths;
-
-        static string[] _patternDescs;
+        private static int _logPageWidth;
+        private static int _logPageHeight;
+        private static int _paperWidth;
+        private static int _paperHeight;
+        private static int _patternsCt = 0;
+        private static ushort[] _patternIds;
+        private static ushort[] _patternHeights;
+        private static ushort[] _patternWidths;
+        private static string[] _patternDescs;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

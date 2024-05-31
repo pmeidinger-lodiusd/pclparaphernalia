@@ -11,30 +11,25 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
-    static class ToolMiscSamplesActPatternXHatchPCLXL
+    internal static class ToolMiscSamplesActPatternXHatchPCLXL
     {
-        const string _formName = "MiscSamplesForm";
-
-        const int _symSet_19U = 629;
-        const ushort _unitsPerInch = PCLXLWriter._sessionUPI;
-
-        const short _pageOriginX = (_unitsPerInch * 1);
-        const short _pageOriginY = (_unitsPerInch * 1);
-        const short _incInch = (_unitsPerInch * 1);
-        const short _lineInc = (_unitsPerInch * 5) / 6;
-
-        const short _posXDesc = _pageOriginX;
-        const short _posXData1 = _pageOriginX + ((7 * _incInch) / 3);
-        const short _posXData2 = _posXData1 + (3 * _incInch / 2);
-        const short _posXData3 = _posXData2 + (3 * _incInch / 2);
-
-        const short _posYHddr = _pageOriginY;
-        const short _posYDesc1 = _pageOriginY + (2 * _incInch);
-        const short _posYDesc2 = _pageOriginY + (3 * _incInch / 2);
-        const short _posYData = _pageOriginY + (2 * _incInch);
-
-        const short _patternBase_300 = 300;
-        const short _patternBase_600 = 600;
+        private const string _formName = "MiscSamplesForm";
+        private const int _symSet_19U = 629;
+        private const ushort _unitsPerInch = PCLXLWriter._sessionUPI;
+        private const short _pageOriginX = (_unitsPerInch * 1);
+        private const short _pageOriginY = (_unitsPerInch * 1);
+        private const short _incInch = (_unitsPerInch * 1);
+        private const short _lineInc = (_unitsPerInch * 5) / 6;
+        private const short _posXDesc = _pageOriginX;
+        private const short _posXData1 = _pageOriginX + ((7 * _incInch) / 3);
+        private const short _posXData2 = _posXData1 + (3 * _incInch / 2);
+        private const short _posXData3 = _posXData2 + (3 * _incInch / 2);
+        private const short _posYHddr = _pageOriginY;
+        private const short _posYDesc1 = _pageOriginY + (2 * _incInch);
+        private const short _posYDesc2 = _pageOriginY + (3 * _incInch / 2);
+        private const short _posYData = _pageOriginY + (2 * _incInch);
+        private const short _patternBase_300 = 300;
+        private const short _patternBase_600 = 600;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -42,19 +37,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static readonly short _fontIndexArial = PCLFonts.GetIndexForName("Arial");
-        static readonly short _fontIndexCourier = PCLFonts.GetIndexForName("Courier");
-
-        static readonly string _fontNameArial = PCLFonts.GetPCLXLName(_fontIndexArial, PCLFonts.Variant.Regular);
-        static readonly string _fontNameCourier = PCLFonts.GetPCLXLName(_fontIndexCourier, PCLFonts.Variant.Regular);
-        static readonly string _fontNameCourierBold = PCLFonts.GetPCLXLName(_fontIndexCourier, PCLFonts.Variant.Bold);
-
-        static int _patternsCt = 0;
-        static ushort[] _patternIds;
-        static ushort[] _patternHeights;
-        static ushort[] _patternWidths;
-
-        static string[] _patternDescs;
+        private static readonly short _fontIndexArial = PCLFonts.GetIndexForName("Arial");
+        private static readonly short _fontIndexCourier = PCLFonts.GetIndexForName("Courier");
+        private static readonly string _fontNameArial = PCLFonts.GetPCLXLName(_fontIndexArial, PCLFonts.Variant.Regular);
+        private static readonly string _fontNameCourier = PCLFonts.GetPCLXLName(_fontIndexCourier, PCLFonts.Variant.Regular);
+        private static readonly string _fontNameCourierBold = PCLFonts.GetPCLXLName(_fontIndexCourier, PCLFonts.Variant.Bold);
+        private static int _patternsCt = 0;
+        private static ushort[] _patternIds;
+        private static ushort[] _patternHeights;
+        private static ushort[] _patternWidths;
+        private static string[] _patternDescs;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

@@ -9,7 +9,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2015</para>
     ///
     /// </summary>
-    static class PCLSymSetTypes
+    internal static class PCLSymSetTypes
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

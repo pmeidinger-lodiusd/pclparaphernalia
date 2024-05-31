@@ -11,7 +11,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class ToolMiscSamples : Window
     {
         //--------------------------------------------------------------------//
@@ -20,8 +19,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int _defLogPageOffLeftDPt = 170;
-        const int _defLogPageOffTopDPt = 0;
+        private const int _defLogPageOffLeftDPt = 170;
+        private const int _defLogPageOffTopDPt = 0;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -471,7 +470,6 @@ namespace PCLParaphernalia
 
             string crntText = txtLogPageOffLeftDPt.Text;
 
-
             int value;
             if (crntText?.Length == 0)
             {
@@ -536,7 +534,6 @@ namespace PCLParaphernalia
             bool OK = true;
 
             string crntText = txtLogPageOffTopDPt.Text;
-
 
             int value;
             if (crntText?.Length == 0)
@@ -603,7 +600,6 @@ namespace PCLParaphernalia
 
             string crntText = txtLogPageHeightDPt.Text;
 
-
             int value;
             if (crntText?.Length == 0)
             {
@@ -668,7 +664,6 @@ namespace PCLParaphernalia
             bool OK = true;
 
             string crntText = txtLogPageWidthDPt.Text;
-
 
             int value;
             if (crntText?.Length == 0)

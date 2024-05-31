@@ -6,7 +6,7 @@
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class PCLLocationTypes
+    internal static class PCLLocationTypes
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

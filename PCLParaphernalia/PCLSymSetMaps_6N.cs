@@ -6,7 +6,7 @@
     /// <para>© Chris Hutchinson 2015</para>
     ///
     /// </summary>
-    static partial class PCLSymSetMaps
+    internal static partial class PCLSymSetMaps
     {
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

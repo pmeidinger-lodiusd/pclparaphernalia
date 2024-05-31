@@ -1,5 +1,4 @@
 ﻿using Microsoft.Win32;
-using System.Windows.Input;
 
 namespace PCLParaphernalia
 {
@@ -12,7 +11,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2013</para>
     ///
     /// </summary>
-    static class ToolSymbolSetGenPersist
+    internal static class ToolSymbolSetGenPersist
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -20,34 +19,30 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _mainKey = MainForm._regMainKey;
-
-        const string _subKeyTools = "Tools";
-        const string _subKeyToolsSymSetGen = _subKeyTools + @"\SymSetGen";
-        const string _subKeyDonor = "Donor";
-        const string _subKeyTarget = "Target";
-
-        const string _nameFlagSymSetUserSet = "FlagSymSetUserSet";
-        const string _nameFlagSymSetMapPCL = "FlagSymSetMapPCL";
-        const string _nameFlagIgnoreC0 = "FlagIgnoreC0";
-        const string _nameFlagIgnoreC1 = "FlagIgnoreC1";
-        const string _nameFlagMapHex = "FlagMapHex";
-        const string _nameFlagIndexUnicode = "FlagIndexUnicode";
-        const string _nameFlagCharReqSpecific = "FlagCharReqSpecific";
-        const string _nameCharReqMSL = "CharReqMSL";
-        const string _nameCharReqUnicode = "CharReqUnicode";
-        const string _nameIndxRptFileFmt = "IndxRptFileFmt";
-        const string _nameIndxSymSet = "IndxSymSet";
-        const string _nameSymSetFile = "SymSetFile";
-        const string _nameSymSetFolder = "SymSetFolder";
-
-        const int _flagFalse = 0;
-        const int _flagTrue = 1;
-        const int _indexZero = 0;
-        const long _defaultReqMSL = 0;
-        const long _defaultReqUnicode = 1;
-
-        const string _defaultSymSetFile = "DefaultSymSetFile.pcl";
+        private const string _mainKey = MainForm._regMainKey;
+        private const string _subKeyTools = "Tools";
+        private const string _subKeyToolsSymSetGen = _subKeyTools + @"\SymSetGen";
+        private const string _subKeyDonor = "Donor";
+        private const string _subKeyTarget = "Target";
+        private const string _nameFlagSymSetUserSet = "FlagSymSetUserSet";
+        private const string _nameFlagSymSetMapPCL = "FlagSymSetMapPCL";
+        private const string _nameFlagIgnoreC0 = "FlagIgnoreC0";
+        private const string _nameFlagIgnoreC1 = "FlagIgnoreC1";
+        private const string _nameFlagMapHex = "FlagMapHex";
+        private const string _nameFlagIndexUnicode = "FlagIndexUnicode";
+        private const string _nameFlagCharReqSpecific = "FlagCharReqSpecific";
+        private const string _nameCharReqMSL = "CharReqMSL";
+        private const string _nameCharReqUnicode = "CharReqUnicode";
+        private const string _nameIndxRptFileFmt = "IndxRptFileFmt";
+        private const string _nameIndxSymSet = "IndxSymSet";
+        private const string _nameSymSetFile = "SymSetFile";
+        private const string _nameSymSetFolder = "SymSetFolder";
+        private const int _flagFalse = 0;
+        private const int _flagTrue = 1;
+        private const int _indexZero = 0;
+        private const long _defaultReqMSL = 0;
+        private const long _defaultReqUnicode = 1;
+        private const string _defaultSymSetFile = "DefaultSymSetFile.pcl";
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

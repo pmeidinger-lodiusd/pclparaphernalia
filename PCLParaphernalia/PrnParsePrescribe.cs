@@ -7,12 +7,12 @@ namespace PCLParaphernalia
     ///
     /// <para>
     /// Class provides routines associated with 'parsing' of
-	/// Kyocera Prescribe commands.
+    /// Kyocera Prescribe commands.
     /// </para>
     /// <para>© Chris Hutchinson 2017</para>
     ///
     /// </summary>
-    class PrnParsePrescribe
+    internal class PrnParsePrescribe
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -55,7 +55,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // p a r s e B u f f e r                                              //
@@ -92,7 +91,6 @@ namespace PCLParaphernalia
             _fileOffset = fileOffset;
 
             _analysisLevel = _linkData.AnalysisLevel;
-
 
             //----------------------------------------------------------------//
 
@@ -602,7 +600,6 @@ namespace PCLParaphernalia
                     sliceLenMax = PrnParseConstants.cRptA_colMax_Seq - indent;
 
                 sliceStart = bufOffset + sliceOffset;
-
 
                 string seq;
                 while (len > sliceLenMax)

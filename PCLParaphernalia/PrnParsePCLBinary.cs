@@ -13,7 +13,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2013</para>
     ///
     /// </summary>
-    class PrnParsePCLBinary
+    internal class PrnParsePCLBinary
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -27,7 +27,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        readonly PrnParseFontHddrPCL _parseFontHddrPCL;
+        private readonly PrnParseFontHddrPCL _parseFontHddrPCL;
 
         private readonly ASCIIEncoding _ascii = new ASCIIEncoding();
 
@@ -63,7 +63,7 @@ namespace PCLParaphernalia
             DataTable table)
         {
             const int lenMin = 1;
-            const int lenMax = 512;   // must be less than buffer size 
+            const int lenMax = 512;   // must be less than buffer size
 
             PrnParseConstants.ContType contType;
 
@@ -305,7 +305,7 @@ namespace PCLParaphernalia
             PrnParseOptions options,
             DataTable table)
         {
-            const int lenStd = 770;   // must be less than buffer size 
+            const int lenStd = 770;   // must be less than buffer size
 
             PrnParseConstants.ContType contType;
 
@@ -559,7 +559,7 @@ namespace PCLParaphernalia
             DataTable table)
         {
             const int lenMin = 5;
-            const int lenMax = 2047;   // must be less than buffer size 
+            const int lenMax = 2047;   // must be less than buffer size
 
             PrnParseConstants.ContType contType;
 
@@ -791,7 +791,7 @@ namespace PCLParaphernalia
             DataTable table)
         {
             const int lenMin = 6;
-            const int lenMax = 122;   // must be less than buffer size 
+            const int lenMax = 122;   // must be less than buffer size
 
             PrnParseConstants.ContType contType;
 
@@ -1668,7 +1668,7 @@ namespace PCLParaphernalia
             DataTable table)
         {
             const int lenMin = 6;
-            const int lenMax = 2047;   // must be less than buffer size 
+            const int lenMax = 2047;   // must be less than buffer size
 
             PrnParseConstants.ContType contType;
 
@@ -3099,7 +3099,6 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-
                 PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.Type.PCLDecode,
                     table,
@@ -3113,7 +3112,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 // Decode the elements in each 'component'.                   //
                 // Note that we don't know what some of these elements are    //
-                // for this format!                                           // 
+                // for this format!                                           //
                 //                                                            //
                 //------------------------------------------------------------//
 
@@ -3643,7 +3642,7 @@ namespace PCLParaphernalia
             DataTable table)
         {
             const int lenShort = 4;
-            const int lenLong = 10;   // must be less than buffer size 
+            const int lenLong = 10;   // must be less than buffer size
 
             PrnParseConstants.ContType contType;
 
@@ -4915,7 +4914,6 @@ namespace PCLParaphernalia
 
             matrixRem = linkData.EntryRem;
 
-
             //----------------------------------------------------------------//
 
             binDataRem = binDataLen;
@@ -5030,7 +5028,7 @@ namespace PCLParaphernalia
             DataTable table)
         {
             const int lenMin = 2;
-            const int lenMax = 100;   // arbitrary; less than buffer size 
+            const int lenMax = 100;   // arbitrary; less than buffer size
 
             PrnParseConstants.ContType contType;
 
@@ -5292,7 +5290,7 @@ namespace PCLParaphernalia
                                          DataTable table)
         {
             const int lenMin = 6;
-            const int lenMax = 2047;   // must be less than buffer size 
+            const int lenMax = 2047;   // must be less than buffer size
 
             PrnParseConstants.ContType contType;
 
@@ -5645,7 +5643,6 @@ namespace PCLParaphernalia
 
             options.GetOptCharSet(ref indxCharSetName, ref indxCharSetSubAct, ref valCharSetSubCode);
 
-
             //----------------------------------------------------------------//
 
             binDataRem = binDataLen;
@@ -5755,7 +5752,7 @@ namespace PCLParaphernalia
             const int itemLen = 3;
 
             const int lenMin = fixedLen + itemLen;
-            const int lenMax = fixedLen + (itemLen * 256);   // must be less than buffer size 
+            const int lenMax = fixedLen + (itemLen * 256);   // must be less than buffer size
 
             PrnParseConstants.ContType contType;
 
@@ -6256,6 +6253,7 @@ namespace PCLParaphernalia
                     case 20:
                         codeDesc = "20: Resolution-specified monochrome";
                         break;
+
                     default:
 
                         codeDesc = format.ToString() + ": unknown";
@@ -6569,7 +6567,6 @@ namespace PCLParaphernalia
             rowNo = linkData.EntryNo;
 
             indxOffsetFormat = options.IndxGenOffsetFormat;
-
 
             //----------------------------------------------------------------//
 

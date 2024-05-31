@@ -10,8 +10,7 @@ namespace PCLParaphernalia
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
-    class PCLFont
+    internal class PCLFont
     {
         private readonly ushort _symSetNumber;
         private readonly ushort _symSetDefault;
@@ -445,6 +444,7 @@ namespace PCLParaphernalia
             else
                 return _weightRegular;
         }
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // g e t P C L X L H e i g h t                                        //

@@ -366,7 +366,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        void cbCharColls_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void cbCharColls_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             cbCharColls.SelectedItem = null;
         }
@@ -381,7 +381,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        void cbCharCollsItem_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void cbCharCollsItem_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "IsChecked")
             {

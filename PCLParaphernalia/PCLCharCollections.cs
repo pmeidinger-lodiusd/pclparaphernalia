@@ -12,7 +12,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2013</para>
     ///
     /// </summary>
-    static class PCLCharCollections
+    internal static class PCLCharCollections
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

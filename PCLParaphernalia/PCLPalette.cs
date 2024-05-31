@@ -6,7 +6,7 @@
     /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
-    class PCLPalette
+    internal class PCLPalette
     {
         private byte _crntClrItem;
 

@@ -10,7 +10,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class PCLWriter
+    internal static class PCLWriter
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -454,6 +454,7 @@ namespace PCLParaphernalia
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // f o n t F i l e _ I d _ A s s o c i a t e                  I I     //
@@ -808,7 +809,7 @@ namespace PCLParaphernalia
                            PCLOrientations.GetIdPCL(indxOrientation) +
                            "o" +             // Orientation
                            PCLPlexModes.GetIdPCL(indxPlexMode) +
-                           "s" +             // plex mode 
+                           "s" +             // plex mode
                            "1l" +             // perforation skip enable
                            "0E" +             // Top Margin (lines)
                   _escChar + "&a0L";              // Left Margin (columns)
@@ -869,12 +870,12 @@ namespace PCLParaphernalia
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
 
             seq = _escChar + "&l" +
-                           "101" +           // custom paper ID   
+                           "101" +           // custom paper ID
                            "a" +             // Paper Size
                            PCLOrientations.GetIdPCL(indxOrientation) +
                            "o" +             // Orientation
                            PCLPlexModes.GetIdPCL(indxPlexMode) +
-                           "s" +             // plex mode 
+                           "s" +             // plex mode
                            "1l" +            // perforation skip enable
                            "0E" +            // Top Margin (lines)
                   _escChar + "&a0L";           // Left Margin (columns)
@@ -1035,7 +1036,7 @@ namespace PCLParaphernalia
             string seq = _escChar + "*c" +
                           patternID + "g" +    // Pattern ID
                           dataLen + "W";
-            
+
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
 
             prnWriter.Write(header, 0, headerLen);
@@ -1737,7 +1738,7 @@ namespace PCLParaphernalia
         public static void SetVMI(BinaryWriter prnWriter, float increment)
         {
             string seq = _escChar + "&l" +             // set VMI
-                           increment +          // 1/48 inch increments 
+                           increment +          // 1/48 inch increments
                            "C";
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);

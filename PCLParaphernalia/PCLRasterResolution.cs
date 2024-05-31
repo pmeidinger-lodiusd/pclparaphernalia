@@ -6,7 +6,7 @@
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    class PCLRasterResolution
+    internal class PCLRasterResolution
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

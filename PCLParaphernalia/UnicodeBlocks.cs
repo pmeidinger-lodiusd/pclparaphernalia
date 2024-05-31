@@ -6,12 +6,12 @@ namespace PCLParaphernalia
     ///
     /// <para>
     /// Class lists the defined Unicode blocks.
-	/// Correct as at Unicode.org "Blocks-10.0.0.txt" dated 2017-04-12
+    /// Correct as at Unicode.org "Blocks-10.0.0.txt" dated 2017-04-12
     /// </para>
     /// <para>© Chris Hutchinson 2017</para>
     ///
     /// </summary>
-    static class UnicodeBlocks
+    internal static class UnicodeBlocks
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

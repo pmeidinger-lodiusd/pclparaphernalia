@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
-    static class ToolSoftFontGenPersist
+    internal static class ToolSoftFontGenPersist
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -19,44 +19,41 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _mainKey = MainForm._regMainKey;
+        private const string _mainKey = MainForm._regMainKey;
+        private const string _subKeyTools = "Tools";
+        private const string _subKeyToolsSoftFontGen = _subKeyTools + @"\SoftFontGen";
+        private const string _subKeyMapping = "Mapping";
+        private const string _subKeyPCL5 = "PCL5";
+        private const string _subKeyPCL6 = "PCL6";
+        private const string _subKeyPCL = "PCL";
+        private const string _subKeyPCLXL = "PCLXL";
+        private const string _subKeyTTF = "TTF";
+        private const string _nameTargetFolder = "TargetFolder";
+        private const string _nameAdhocFontFile = "AdhocFontFile";
+        private const string _nameSymSetUserFile = "SymSetUserFile";
+        private const string _nameFlagLogVerbose = "FlagLogVerbose";
+        private const string _nameFlagFormat16 = "FlagFormat16";
+        private const string _nameFlagSegGTLast = "FlagSegGTLast";
+        private const string _nameFlagSymSetMapPCL = "FlagSymSetMapPCL";
+        private const string _nameFlagSymSetUnbound = "FlagSymSetUnbound";
+        private const string _nameFlagSymSetUserSet = "FlagSymSetUserSet";
+        private const string _nameFlagCharCompSpecific = "FlagCharCompSpecific";
+        private const string _nameFlagUsePCLT = "FlagUsePCLT";
+        private const string _nameCharCompUnicode = "CharCompUnicode";
+        private const string _nameFlagVMetrics = "FlagVMetrics";
+        private const string _nameIndxFont = "IndxFont";
+        private const string _nameIndxPDL = "IndxPDL";
+        private const string _nameIndxRptFileFmt = "IndxRptFileFmt";
+        private const string _nameIndxRptChkMarks = "indxRptChkMarks";
+        private const string _nameIndxSymSet = "IndxSymSet";
+        private const string _nameIndxUsePCLT = "IndxUsePCLT";
+        private const int _flagFalse = 0;
+        private const int _flagTrue = 1;
+        private const int _indexZero = 0;
+        private const long _defaultCompUnicode = -2;    // 0xfffffffffffffffe //
 
-        const string _subKeyTools = "Tools";
-        const string _subKeyToolsSoftFontGen = _subKeyTools + @"\SoftFontGen";
-        const string _subKeyMapping = "Mapping";
-        const string _subKeyPCL5 = "PCL5";
-        const string _subKeyPCL6 = "PCL6";
-        const string _subKeyPCL = "PCL";
-        const string _subKeyPCLXL = "PCLXL";
-        const string _subKeyTTF = "TTF";
-
-        const string _nameTargetFolder = "TargetFolder";
-        const string _nameAdhocFontFile = "AdhocFontFile";
-        const string _nameSymSetUserFile = "SymSetUserFile";
-        const string _nameFlagLogVerbose = "FlagLogVerbose";
-        const string _nameFlagFormat16 = "FlagFormat16";
-        const string _nameFlagSegGTLast = "FlagSegGTLast";
-        const string _nameFlagSymSetMapPCL = "FlagSymSetMapPCL";
-        const string _nameFlagSymSetUnbound = "FlagSymSetUnbound";
-        const string _nameFlagSymSetUserSet = "FlagSymSetUserSet";
-        const string _nameFlagCharCompSpecific = "FlagCharCompSpecific";
-        const string _nameFlagUsePCLT = "FlagUsePCLT";
-        const string _nameCharCompUnicode = "CharCompUnicode";
-        const string _nameFlagVMetrics = "FlagVMetrics";
-        const string _nameIndxFont = "IndxFont";
-        const string _nameIndxPDL = "IndxPDL";
-        const string _nameIndxRptFileFmt = "IndxRptFileFmt";
-        const string _nameIndxRptChkMarks = "indxRptChkMarks";
-        const string _nameIndxSymSet = "IndxSymSet";
-        const string _nameIndxUsePCLT = "IndxUsePCLT";
-
-        const int _flagFalse = 0;
-        const int _flagTrue = 1;
-        const int _indexZero = 0;
-        const long _defaultCompUnicode = -2;    // 0xfffffffffffffffe //
-
-        const string _defaultSymSetUserFile = "DefaultSymSetFile.pcl";
-        const string _defaultFontFileTTF = "DefaultFontFile.ttf";
+        private const string _defaultSymSetUserFile = "DefaultSymSetFile.pcl";
+        private const string _defaultFontFileTTF = "DefaultFontFile.ttf";
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

@@ -10,7 +10,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2017</para>
     ///
     /// </summary>
-    static class PrescribeCommands
+    internal static class PrescribeCommands
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -299,6 +299,7 @@ namespace PCLParaphernalia
         {
             return _cmdIntro.Description;
         }
+
         /*
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -1938,7 +1939,6 @@ namespace PCLParaphernalia
                           command,
                           "position symbols at the specified locations"));
 
-            
             */
 
             command = "XBUF";

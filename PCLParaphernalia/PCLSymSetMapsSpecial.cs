@@ -8,7 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2015</para>
     ///
     /// </summary>
-    static partial class PCLSymSetMaps
+    internal static partial class PCLSymSetMaps
     {
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -203,7 +203,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData[0][0];
             rangeMax = rangeData[0][1];
 
-            for (int i = rangeMin; i <= rangeMax; i++) // i > UInt6Max at end loop 
+            for (int i = rangeMin; i <= rangeMax; i++) // i > UInt6Max at end loop
             {
                 mapDataStd[0][i - rangeMin] = (ushort)i;
             }

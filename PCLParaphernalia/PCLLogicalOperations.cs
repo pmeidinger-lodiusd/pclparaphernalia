@@ -6,7 +6,7 @@
     /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
-    static class PCLLogicalOperations
+    internal static class PCLLogicalOperations
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

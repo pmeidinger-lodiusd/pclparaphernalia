@@ -2,7 +2,7 @@
 
 namespace PCLParaphernalia
 {
-    class PCLCharCollItem : INotifyPropertyChanged
+    internal class PCLCharCollItem : INotifyPropertyChanged
     {
         private bool _isChecked;
 

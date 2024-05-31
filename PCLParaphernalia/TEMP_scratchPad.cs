@@ -8,7 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class TEMP_scratchPad
+    internal static class TEMP_scratchPad
     {
         private static void Bits_01()
         {
@@ -177,7 +177,7 @@ namespace PCLParaphernalia
 
             PCL.setTextLength(prnWriter,
                                (Int16)((pageLength * 48) / _unitsPerInch));
-            
+
             PCL.printDirection(prnWriter, 180);
 
             //----------------------------------------------------------------//
@@ -266,7 +266,7 @@ namespace PCLParaphernalia
 
             private void MakeDataTables()
             {
-                // Run all of the functions. 
+                // Run all of the functions.
                 MakeParentTable ();
                 MakeChildTable ();
                 MakeDataRelation ();
@@ -281,8 +281,8 @@ namespace PCLParaphernalia
                 DataColumn column;
                 DataRow row;
 
-                // Create new DataColumn, set DataType, 
-                // ColumnName and add to DataTable.    
+                // Create new DataColumn, set DataType,
+                // ColumnName and add to DataTable.
                 column = new DataColumn ();
                 column.DataType = System.Type.GetType ("System.Int32");
                 column.ColumnName = "id";
@@ -312,7 +312,7 @@ namespace PCLParaphernalia
                 // Add the new DataTable to the DataSet.
                 dataSet.Tables.Add (table);
 
-                // Create three new DataRow objects and add 
+                // Create three new DataRow objects and add
                 // them to the DataTable
                 for (int i = 0; i <= 2; i++)
                 {
@@ -364,7 +364,7 @@ namespace PCLParaphernalia
 
                 dataSet.Tables.Add (table);
 
-                // Create three sets of DataRow objects, 
+                // Create three sets of DataRow objects,
                 // five rows each, and add to DataTable.
                 for (int i = 0; i <= 4; i++)
                 {
@@ -394,7 +394,7 @@ namespace PCLParaphernalia
 
             private void MakeDataRelation()
             {
-                // DataRelation requires two DataColumn 
+                // DataRelation requires two DataColumn
                 // (parent and child) and a name.
                 DataColumn parentColumn =
                     dataSet.Tables["ParentTable"].Columns["id"];
@@ -407,13 +407,12 @@ namespace PCLParaphernalia
 
             private void BindToDataGrid()
             {
-                // Instruct the DataGrid to bind to the DataSet, with the 
+                // Instruct the DataGrid to bind to the DataSet, with the
                 // ParentTable as the topmost DataTable.
             //    dataGrid1.SetDataBinding (dataSet, "ParentTable");// SetDataBinding not available with WPF DataGrid
-                dgAnalysis.DataContext = dataSet.Tables[0];  
+                dgAnalysis.DataContext = dataSet.Tables[0];
             }
             */
-
         }
     }
 }

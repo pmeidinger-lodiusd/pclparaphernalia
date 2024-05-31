@@ -8,8 +8,7 @@
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
-    class PCLXLWhitespace
+    internal class PCLXLWhitespace
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

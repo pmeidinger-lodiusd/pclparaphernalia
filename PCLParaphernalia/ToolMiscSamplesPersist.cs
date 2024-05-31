@@ -8,7 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
-    static class ToolMiscSamplesPersist
+    internal static class ToolMiscSamplesPersist
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -16,79 +16,70 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _mainKey = MainForm._regMainKey;
-
-        const string _subKeyTools = "Tools";
-        const string _subKeyToolsMiscSamples = _subKeyTools + @"\MiscSamples";
-        const string _subKeyPCL = "PCL";
-        const string _subKeyPCLXL = "PCLXL";
-
-        const string _subKeyCommon = "Common";
-
-        const string _subKeyColour = "Colour";
-        const string _subKeyLogOper = "LogOper";
-        const string _subKeyLogPage = "LogPage";
-        const string _subKeyPattern = "Pattern";
-        const string _subKeyTxtMod = "TxtMod";
-        const string _subKeyUnicode = "Unicode";
-
-        const string _nameCaptureFile = "CaptureFile";
-        const string _nameFlagAddStdPage = "FlagAddStdPage";
-        const string _nameFlagFormAsMacro = "FlagFormAsMacro";
-        const string _nameFlagMapHex = "FlagMapHex";
-        const string _nameFlagSrcTextPat = "FlagSrcTextPat";
-        const string _nameFlagUseColour = "FlagUseColour";
-        const string _nameFlagUseMacros = "FlagUseMacros";
-
-        const string _nameIndxColourMode = "IndxColourMode";
-        const string _nameIndxColourD1 = "IndxColourD1";
-        const string _nameIndxColourD2 = "IndxColourD2";
-        const string _nameIndxColourS1 = "IndxColourS1";
-        const string _nameIndxColourS2 = "IndxColourS2";
-        const string _nameIndxColourT1 = "IndxColourT1";
-        const string _nameIndxColourT2 = "IndxColourT2";
-        const string _nameIndxMonoD1 = "IndxMonoD1";
-        const string _nameIndxMonoD2 = "IndxMonoD2";
-        const string _nameIndxMonoS1 = "IndxMonoS1";
-        const string _nameIndxMonoS2 = "IndxMonoS2";
-        const string _nameIndxMonoT1 = "IndxMonoT1";
-        const string _nameIndxMonoT2 = "IndxMonoT2";
-        const string _nameIndxFont = "IndxFont";
-        const string _nameIndxOrientation = "IndxOrientation";
-        const string _nameIndxPaperSize = "IndxPaperSize";
-        const string _nameIndxPaperType = "IndxPaperType";
-        const string _nameIndxPDL = "IndxPDL";
-        const string _nameIndxPatternType = "IndxPatternType";
-        const string _nameIndxROPFrom = "IndxROPFrom";
-        const string _nameIndxROPTo = "IndxROPTo";
-        const string _nameIndxSampleType = "IndxSampleType";
-        const string _nameIndxTxtModType = "IndxTxtModType";
-        const string _nameIndxVariant = "IndxVariant";
-
-        const string _nameValueRoot = "_Value_";
-        const string _nameCodePoint = "CodePoint";
-        const string _nameOffsetLeft = "OffsetLeft";
-        const string _nameOffsetTop = "OffsetTop";
-        const string _namePageHeight = "PageHeight";
-        const string _namePageWidth = "PageWidth";
-
-        const int _flagFalse = 0;
-        const int _flagTrue = 1;
-        const int _indexZero = 0;
-        const int _indexNeg = -1;
-
-        const string _defaultCaptureFileRoot = "CaptureFile_MiscSamples_";
-
-        const int _defaultColour_0 = 0xff0000;
-        const int _defaultColour_1 = 0x00ff00;
-        const int _defaultColour_2 = 0x0000ff;
-        const int _defaultColour_3 = 0xffb450;
-        const int _defaultShade_0 = 0x20;
-        const int _defaultShade_1 = 0x40;
-        const int _defaultShade_2 = 0x80;
-        const int _defaultShade_3 = 0xc0;
-        const int _defaultCodePoint = 0x20ac;
-        const int _defaultIndxVariant = (int)PCLFonts.Variant.Regular;
+        private const string _mainKey = MainForm._regMainKey;
+        private const string _subKeyTools = "Tools";
+        private const string _subKeyToolsMiscSamples = _subKeyTools + @"\MiscSamples";
+        private const string _subKeyPCL = "PCL";
+        private const string _subKeyPCLXL = "PCLXL";
+        private const string _subKeyCommon = "Common";
+        private const string _subKeyColour = "Colour";
+        private const string _subKeyLogOper = "LogOper";
+        private const string _subKeyLogPage = "LogPage";
+        private const string _subKeyPattern = "Pattern";
+        private const string _subKeyTxtMod = "TxtMod";
+        private const string _subKeyUnicode = "Unicode";
+        private const string _nameCaptureFile = "CaptureFile";
+        private const string _nameFlagAddStdPage = "FlagAddStdPage";
+        private const string _nameFlagFormAsMacro = "FlagFormAsMacro";
+        private const string _nameFlagMapHex = "FlagMapHex";
+        private const string _nameFlagSrcTextPat = "FlagSrcTextPat";
+        private const string _nameFlagUseColour = "FlagUseColour";
+        private const string _nameFlagUseMacros = "FlagUseMacros";
+        private const string _nameIndxColourMode = "IndxColourMode";
+        private const string _nameIndxColourD1 = "IndxColourD1";
+        private const string _nameIndxColourD2 = "IndxColourD2";
+        private const string _nameIndxColourS1 = "IndxColourS1";
+        private const string _nameIndxColourS2 = "IndxColourS2";
+        private const string _nameIndxColourT1 = "IndxColourT1";
+        private const string _nameIndxColourT2 = "IndxColourT2";
+        private const string _nameIndxMonoD1 = "IndxMonoD1";
+        private const string _nameIndxMonoD2 = "IndxMonoD2";
+        private const string _nameIndxMonoS1 = "IndxMonoS1";
+        private const string _nameIndxMonoS2 = "IndxMonoS2";
+        private const string _nameIndxMonoT1 = "IndxMonoT1";
+        private const string _nameIndxMonoT2 = "IndxMonoT2";
+        private const string _nameIndxFont = "IndxFont";
+        private const string _nameIndxOrientation = "IndxOrientation";
+        private const string _nameIndxPaperSize = "IndxPaperSize";
+        private const string _nameIndxPaperType = "IndxPaperType";
+        private const string _nameIndxPDL = "IndxPDL";
+        private const string _nameIndxPatternType = "IndxPatternType";
+        private const string _nameIndxROPFrom = "IndxROPFrom";
+        private const string _nameIndxROPTo = "IndxROPTo";
+        private const string _nameIndxSampleType = "IndxSampleType";
+        private const string _nameIndxTxtModType = "IndxTxtModType";
+        private const string _nameIndxVariant = "IndxVariant";
+        private const string _nameValueRoot = "_Value_";
+        private const string _nameCodePoint = "CodePoint";
+        private const string _nameOffsetLeft = "OffsetLeft";
+        private const string _nameOffsetTop = "OffsetTop";
+        private const string _namePageHeight = "PageHeight";
+        private const string _namePageWidth = "PageWidth";
+        private const int _flagFalse = 0;
+        private const int _flagTrue = 1;
+        private const int _indexZero = 0;
+        private const int _indexNeg = -1;
+        private const string _defaultCaptureFileRoot = "CaptureFile_MiscSamples_";
+        private const int _defaultColour_0 = 0xff0000;
+        private const int _defaultColour_1 = 0x00ff00;
+        private const int _defaultColour_2 = 0x0000ff;
+        private const int _defaultColour_3 = 0xffb450;
+        private const int _defaultShade_0 = 0x20;
+        private const int _defaultShade_1 = 0x40;
+        private const int _defaultShade_2 = 0x80;
+        private const int _defaultShade_3 = 0xc0;
+        private const int _defaultCodePoint = 0x20ac;
+        private const int _defaultIndxVariant = (int)PCLFonts.Variant.Regular;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -141,7 +132,7 @@ namespace PCLParaphernalia
 
                 if (crntPDL == ToolCommonData.PrintLang.PCL)
                 {
-                    string key = _subKeyToolsMiscSamples + 
+                    string key = _subKeyToolsMiscSamples +
                                     "\\" + subKeyType +
                                     "\\" + _subKeyPCL;
 
@@ -317,7 +308,7 @@ namespace PCLParaphernalia
                         }
                     }
                 }
-            } 
+            }
         }
 
         //--------------------------------------------------------------------//

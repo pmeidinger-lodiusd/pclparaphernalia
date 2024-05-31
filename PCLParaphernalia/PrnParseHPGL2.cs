@@ -9,7 +9,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    class PrnParseHPGL2
+    internal class PrnParseHPGL2
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -46,6 +46,7 @@ namespace PCLParaphernalia
 
         //      private Int32 _textParsingMethod;
         private readonly int _analysisLevel = 0;    // TEMP?? //
+
         private readonly int _macroLevel = 0;    // TEMP?? //
 
         private bool _flagMiscBinData = false;
@@ -1135,10 +1136,10 @@ namespace PCLParaphernalia
                     //           60 - 126 (0x3c-7e)                               //
                     //          161       (0xa1)                                  //
                     //      and 254       (0xfe)                                  //
-                    // but perhaps it should be:                                  //  
+                    // but perhaps it should be:                                  //
                     //          161 - 254 (0xa1-fe)  ???                          //
                     //                                                            //
-                    // We'll just allow any character except ";".                 // 
+                    // We'll just allow any character except ";".                 //
                     //                                                            //
                     //------------------------------------------------------------//
 

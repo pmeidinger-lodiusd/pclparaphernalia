@@ -10,8 +10,7 @@ namespace PCLParaphernalia
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
-    class PCLSymbolSet
+    internal class PCLSymbolSet
     {
         private readonly PCLSymSetMaps.SymSetMapId _mapId;
 

@@ -9,7 +9,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class PCLXLDownloadFont
+    internal static class PCLXLDownloadFont
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -111,7 +111,7 @@ namespace PCLParaphernalia
 
                 return false;
             }
-            
+
             if (!File.Exists(fileName))
             {
                 MessageBox.Show($"Download font file '{fileName}' does not exist.",
@@ -132,7 +132,7 @@ namespace PCLParaphernalia
                                 "PCL XL soft font analysis",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
-                
+
                 return false;
             }
 

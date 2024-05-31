@@ -10,7 +10,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class PCLSimpleSeqs
+    internal static class PCLSimpleSeqs
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

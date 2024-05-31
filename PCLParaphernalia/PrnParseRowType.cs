@@ -6,7 +6,7 @@
     /// <para>© Chris Hutchinson 2017</para>
     ///
     /// </summary>
-    class PrnParseRowType
+    internal class PrnParseRowType
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

@@ -14,7 +14,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class ToolStatusReadback : Window
     {
         //--------------------------------------------------------------------//
@@ -61,11 +60,10 @@ namespace PCLParaphernalia
         private TargetCore.Target _targetType;
 
         private ToolCommonData.PrintLang _crntPDL;
-
-        PJLCommands.RequestType _reqTypePJL;
-        PJLCommands.RequestType _reqTypePJLFS;
-        PJLCommands.CmdIndex _cmdIndxPJL;
-        PJLCommands.CmdIndex _cmdIndxPJLFS;
+        private PJLCommands.RequestType _reqTypePJL;
+        private PJLCommands.RequestType _reqTypePJLFS;
+        private PJLCommands.CmdIndex _cmdIndxPJL;
+        private PJLCommands.CmdIndex _cmdIndxPJLFS;
 
         private int _ctPCLEntityTypes;
         private int _ctPCLLocTypes;

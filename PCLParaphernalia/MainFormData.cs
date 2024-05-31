@@ -6,7 +6,7 @@
     /// <para>© Chris Hutchinson 2011</para>
     ///
     /// </summary>
-    static class MainFormData
+    internal static class MainFormData
     {
         private static int _versionMajorOld = -1;
         private static int _versionMinorOld = -1;

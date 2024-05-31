@@ -8,7 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class ToolStatusReadbackPCL
+    internal static class ToolStatusReadbackPCL
     {
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -44,7 +44,7 @@ namespace PCLParaphernalia
                 {
                     seq = "\x1b" + "*s" +
                                    locTypeIdPCL +
-                                   "t" +       // loc. type 
+                                   "t" +       // loc. type
                                    "0u" +       // loc. unit = all
                                    entityIdPCL +
                                    "I";         // entity
@@ -116,7 +116,7 @@ namespace PCLParaphernalia
                     //--------------------------------------------------------//
                     //                                                        //
                     // <FF> at end of ECHO text is either not expected, or    //
-                    // has been read in a previous read action.               // 
+                    // has been read in a previous read action.               //
                     //                                                        //
                     //--------------------------------------------------------//
 
@@ -125,7 +125,7 @@ namespace PCLParaphernalia
                         //----------------------------------------------------//
                         //                                                    //
                         // Terminating <FF> found (as last byte of data       //
-                        // returned by current read action).                  // 
+                        // returned by current read action).                  //
                         //                                                    //
                         //----------------------------------------------------//
 

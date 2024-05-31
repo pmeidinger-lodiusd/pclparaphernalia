@@ -23,7 +23,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2013</para>
     ///
     /// </summary>
-    class PCLCharCollItems
+    internal class PCLCharCollItems
     {
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -58,7 +58,6 @@ namespace PCLParaphernalia
                 bitNo = PCLCharCollections.GetBitNo(i);
                 bitType = PCLCharCollections.GetBitType(i);
                 desc = PCLCharCollections.GetDescUnicode(i);
-
 
                 bool itemEnabled;
                 bool itemChecked;
@@ -124,7 +123,6 @@ namespace PCLParaphernalia
                 bitType = PCLCharCollections.GetBitType(i);
                 desc = PCLCharCollections.GetDescMSL(i);
 
-
                 bool itemEnabled;
                 bool itemChecked;
                 if (bitType == PCLCharCollections.BitType.Collection)
@@ -178,7 +176,6 @@ namespace PCLParaphernalia
                 bitNo = PCLCharCollections.GetBitNo(i);
                 bitType = PCLCharCollections.GetBitType(i);
                 desc = PCLCharCollections.GetDescUnicode(i);
-
 
                 bool itemEnabled;
                 bool itemChecked;

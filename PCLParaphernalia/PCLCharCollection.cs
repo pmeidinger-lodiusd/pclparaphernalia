@@ -9,7 +9,7 @@
     /// <para>© Chris Hutchinson 2013</para>
     ///
     /// </summary>
-    class PCLCharCollection
+    internal class PCLCharCollection
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

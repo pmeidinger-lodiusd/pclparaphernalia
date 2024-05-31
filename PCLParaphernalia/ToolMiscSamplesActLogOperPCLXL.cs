@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
-    static class ToolMiscSamplesActLogOperPCLXL
+    internal static class ToolMiscSamplesActLogOperPCLXL
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -19,39 +19,32 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int _symSet_19U = 629;
-        const ushort _unitsPerInch = PCLXLWriter._sessionUPI;
+        private const int _symSet_19U = 629;
+        private const ushort _unitsPerInch = PCLXLWriter._sessionUPI;
 
         //const short _rasterRes = 600;
-        const int _compCtRGB = 3;
+        private const int _compCtRGB = 3;
 
-        const string _streamIdDestBoxPage = "LogOperDestBoxPage";
-        const string _streamIdSrcBoxRow = "LogOperSrcBoxRow";
-
-        const int _patternId = 101;
-
-        const short _incInch = (_unitsPerInch * 1);
-        const short _pageOriginX = (_incInch * 1);
-        const short _pageOriginY = (_incInch * 1) / 2;
-        const short _rowInc = (_incInch * 5) / 4;
-        const short _colInc = (_incInch * 5) / 4;
-        const short _lineInc = (_incInch / 6);
-
-        const short _posXPage_1_Hddr = _pageOriginX;
-        const short _posYPage_1_Hddr = _pageOriginY + ((_incInch * 1) / 2);
-        const short _posYPage_1_Data1 = _pageOriginY + ((_incInch * 9) / 4);
-        const short _posYPage_1_Data2 = _pageOriginY + ((_incInch * 13) / 2);
-
-        const short _posXPage_n_Hddr = _pageOriginX;
-        const short _posYPage_n_Hddr = _pageOriginY;
-
-        const short _posXPage_n_Data = _pageOriginX;
-        const short _posYPage_n_Data = _pageOriginY + (_incInch / 3);
-
-        const ushort _destBoxSide = (ushort)_incInch;
-
-        const short _sourceImagePixelsWidth = 192;
-        const short _sourceImagePixelsHeight = 192;
+        private const string _streamIdDestBoxPage = "LogOperDestBoxPage";
+        private const string _streamIdSrcBoxRow = "LogOperSrcBoxRow";
+        private const int _patternId = 101;
+        private const short _incInch = (_unitsPerInch * 1);
+        private const short _pageOriginX = (_incInch * 1);
+        private const short _pageOriginY = (_incInch * 1) / 2;
+        private const short _rowInc = (_incInch * 5) / 4;
+        private const short _colInc = (_incInch * 5) / 4;
+        private const short _lineInc = (_incInch / 6);
+        private const short _posXPage_1_Hddr = _pageOriginX;
+        private const short _posYPage_1_Hddr = _pageOriginY + ((_incInch * 1) / 2);
+        private const short _posYPage_1_Data1 = _pageOriginY + ((_incInch * 9) / 4);
+        private const short _posYPage_1_Data2 = _pageOriginY + ((_incInch * 13) / 2);
+        private const short _posXPage_n_Hddr = _pageOriginX;
+        private const short _posYPage_n_Hddr = _pageOriginY;
+        private const short _posXPage_n_Data = _pageOriginX;
+        private const short _posYPage_n_Data = _pageOriginY + (_incInch / 3);
+        private const ushort _destBoxSide = (ushort)_incInch;
+        private const short _sourceImagePixelsWidth = 192;
+        private const short _sourceImagePixelsHeight = 192;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -59,13 +52,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static readonly short _indxFontArial = PCLFonts.GetIndexForFontArial();
-        static readonly short _indxFontCourier = PCLFonts.GetIndexForFontCourier();
-
-        static readonly string _nameFontArialBold = PCLFonts.GetPCLXLName(_indxFontArial, PCLFonts.Variant.Bold);
-        static readonly string _nameFontArialRegular = PCLFonts.GetPCLXLName(_indxFontArial, PCLFonts.Variant.Regular);
-        static readonly string _nameFontCourierBold = PCLFonts.GetPCLXLName(_indxFontCourier, PCLFonts.Variant.Bold);
-        static readonly string _nameFontCourierRegular = PCLFonts.GetPCLXLName(_indxFontCourier, PCLFonts.Variant.Regular);
+        private static readonly short _indxFontArial = PCLFonts.GetIndexForFontArial();
+        private static readonly short _indxFontCourier = PCLFonts.GetIndexForFontCourier();
+        private static readonly string _nameFontArialBold = PCLFonts.GetPCLXLName(_indxFontArial, PCLFonts.Variant.Bold);
+        private static readonly string _nameFontArialRegular = PCLFonts.GetPCLXLName(_indxFontArial, PCLFonts.Variant.Regular);
+        private static readonly string _nameFontCourierBold = PCLFonts.GetPCLXLName(_indxFontCourier, PCLFonts.Variant.Bold);
+        private static readonly string _nameFontCourierRegular = PCLFonts.GetPCLXLName(_indxFontCourier, PCLFonts.Variant.Regular);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

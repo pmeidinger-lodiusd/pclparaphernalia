@@ -14,7 +14,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class ToolTrayMap : Window
     {
         //--------------------------------------------------------------------//
@@ -23,8 +22,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int _maxSheetNo = 6;
-        const int _maxPaperTray = 299;
+        private const int _maxSheetNo = 6;
+        private const int _maxPaperTray = 299;
 
         private enum TrayOpt : byte
         {
@@ -340,6 +339,7 @@ namespace PCLParaphernalia
             else
                 _indxOrientFrontPCLXL[arrayIndex] = srcIndex;
         }
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // c b O r i e n t R e a r _ S e l e c t i o n C h a n g e d          //
@@ -1287,7 +1287,7 @@ namespace PCLParaphernalia
         // different for PCL and PCL XL), we need to change the correct item  //
         // values - the assumption is made that the identifier value is one   //
         // greater than the combo-box item index 9oin order to cater for the  //
-        // first entry which is for "<not specified>".                        // 
+        // first entry which is for "<not specified>".                        //
         //                                                                    //
         //--------------------------------------------------------------------//
 

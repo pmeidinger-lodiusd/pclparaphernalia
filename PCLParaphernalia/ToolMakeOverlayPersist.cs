@@ -8,7 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
-    static class ToolMakeOverlayPersist
+    internal static class ToolMakeOverlayPersist
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -16,33 +16,28 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _mainKey = MainForm._regMainKey;
-
-        const string _subKeyTools = "Tools";
-        const string _subKeyToolsMakeOverlay = _subKeyTools + @"\MakeOverlay";
-        const string _subKeyPCL5 = "PCL5";
-        const string _subKeyPCL6 = "PCL6";
-        const string _subKeyPCL = "PCL";
-        const string _subKeyPCLXL = "PCLXL";
-
-        const string _namePrnFilename = "PrintFilename";
-        const string _nameOvlFilename = "OverlayFilename";
-        const string _nameMacroId = "MacroId";
-        const string _nameStreamName = "StreamName";
-        const string _nameFlagEncapsulated = "FlagEncapsulated";
-        const string _nameFlagRestoreCursor = "FlagRestoreCursor";
-        const string _nameFlagRestoreGS = "FlagRestoreGS";
-        const string _nameIndxRptFileFmt = "IndxRptFileFmt";
-
-        const string _defaultPrnFilename = "DefaultPrintFile.prn";
-        const string _defaultOvlFilename = "DefaultOverlayFile";
-        const string _defaultStreamName = "Stream 001";
-
-        const int _defaultMacroId = 101;
-
-        const int _flagFalse = 0;
-        const int _flagTrue = 1;
-        const int _indexZero = 0;
+        private const string _mainKey = MainForm._regMainKey;
+        private const string _subKeyTools = "Tools";
+        private const string _subKeyToolsMakeOverlay = _subKeyTools + @"\MakeOverlay";
+        private const string _subKeyPCL5 = "PCL5";
+        private const string _subKeyPCL6 = "PCL6";
+        private const string _subKeyPCL = "PCL";
+        private const string _subKeyPCLXL = "PCLXL";
+        private const string _namePrnFilename = "PrintFilename";
+        private const string _nameOvlFilename = "OverlayFilename";
+        private const string _nameMacroId = "MacroId";
+        private const string _nameStreamName = "StreamName";
+        private const string _nameFlagEncapsulated = "FlagEncapsulated";
+        private const string _nameFlagRestoreCursor = "FlagRestoreCursor";
+        private const string _nameFlagRestoreGS = "FlagRestoreGS";
+        private const string _nameIndxRptFileFmt = "IndxRptFileFmt";
+        private const string _defaultPrnFilename = "DefaultPrintFile.prn";
+        private const string _defaultOvlFilename = "DefaultOverlayFile";
+        private const string _defaultStreamName = "Stream 001";
+        private const int _defaultMacroId = 101;
+        private const int _flagFalse = 0;
+        private const int _flagTrue = 1;
+        private const int _indexZero = 0;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -256,7 +251,7 @@ namespace PCLParaphernalia
                         subKey.SetValue(_nameOvlFilename, ovlFilename, RegistryValueKind.String);
 
                     subKey.SetValue(_nameFlagEncapsulated, flagEncapsulated ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
-                
+
                     subKey.SetValue(_nameFlagRestoreGS, flagRestoreGS ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
                     if (streamName != null)

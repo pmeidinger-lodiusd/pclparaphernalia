@@ -9,7 +9,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public static class ToolCommonData
     {
         //--------------------------------------------------------------------//
@@ -19,7 +18,6 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         [System.Reflection.Obfuscation(Exclude = true)]
-
         public enum ToolIds : byte
         {
             Min,
@@ -42,12 +40,13 @@ namespace PCLParaphernalia
         }
 
         [System.Reflection.Obfuscation(Exclude = true)]
-
         public enum ToolSubIds : byte
         {
             None,
+
             // used by ToolPrintLang:
             PCL,            //
+
             HPGL2,          //
             PCLXLTags,      //
             PCLXLEnums,     //
@@ -57,8 +56,10 @@ namespace PCLParaphernalia
             Fonts,          //
             PaperSizes,     //
             PrescribeCmds,  //
-                            // used by ToolMiscSamples:
+
+            // used by ToolMiscSamples:
             Colour,         //
+
             LogOper,        //
             LogPage,        //
             Pattern,        //
@@ -80,9 +81,8 @@ namespace PCLParaphernalia
             Unknown
         }
 
-        static readonly string _tmpFolder = Environment.GetEnvironmentVariable("TMP");
-
-        static string _defWorkFolder = _tmpFolder;
+        private static readonly string _tmpFolder = Environment.GetEnvironmentVariable("TMP");
+        private static string _defWorkFolder = _tmpFolder;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //

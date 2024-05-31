@@ -9,7 +9,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2013</para>
     ///
     /// </summary>
-    static class PCLDownloadSymSet
+    internal static class PCLDownloadSymSet
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -105,7 +105,7 @@ namespace PCLParaphernalia
                 SymSetFileClose();
                 return false;
             }
-            
+
             flagOK = ReadAndStoreSymSetMap(offset, symSetNo, firstCode, lastCode);
 
             if (!flagOK)
@@ -293,7 +293,7 @@ namespace PCLParaphernalia
 
                 return false;
             }
-            
+
             if ((hddrLen + hddrOffset) > fileSize)
             {
                 MessageBox.Show($"{messHeader}Header (offset = '{hddrOffset}') of length '{hddrLen} ' is inconsistent with a file size of '{fileSize}'.{messTrailer}",
@@ -323,14 +323,14 @@ namespace PCLParaphernalia
 
                 return false;
             }
-                
+
             if (hddrSize != hddrDescLen)
             {
                 MessageBox.Show($"{messHeader}Header size '{hddrSize}' does not equal expected size of '{hddrDescLen}'.{messTrailer}",
                                 "PCL symbol set file",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
-                    
+
                 return false;
             }
 
@@ -362,7 +362,6 @@ namespace PCLParaphernalia
             {
                 flagOK = false;
                 message = "Symbol set designator '" + symSetDes + "' is != number '" + symSetNo + "' from Assign sequence";
-
             }
             else if (format != 3)            // 3 = Unicode
             {
@@ -550,7 +549,7 @@ namespace PCLParaphernalia
 
                 return false;
             }
-            
+
             if (!File.Exists(fileName))
             {
                 MessageBox.Show($"Download symbol set file '{fileName}' does not exist.",
@@ -571,7 +570,7 @@ namespace PCLParaphernalia
                                     "PCL symbol set file",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
-                
+
                 return false;
             }
 

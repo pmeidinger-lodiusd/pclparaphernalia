@@ -10,7 +10,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class ToolImageBitmapCore
+    internal static class ToolImageBitmapCore
     {
         //--------------------------------------------------------------------//
         //                                                  S t r u c t u r e //
@@ -183,7 +183,7 @@ namespace PCLParaphernalia
 
                 return false;
             }
-            
+
             if (!File.Exists(fileName))
             {
                 MessageBox.Show($"Bitmap file '{fileName}' does not exist.",

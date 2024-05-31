@@ -9,7 +9,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class TargetPersist
+    internal static class TargetPersist
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -17,33 +17,34 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _mainKey = MainForm._regMainKey;
+        private const string _mainKey = MainForm._regMainKey;
+        private const string _subKeyTarget = "Target";
 
-        const string _subKeyTarget = "Target";
         //const string _subKeyTargetFile = "File";
-        const string _subKeyTargetPrinter = "Printer";
-        const string _subKeyTargetNetPrinter = "NetPrinter";
-        const string _subKeyTargetWinPrinter = "WinPrinter";
-        const string _subKeyWorkFolder = "WorkFolder";
+        private const string _subKeyTargetPrinter = "Printer";
 
-        const string _nameIndxTargetType = "IndxTargetType";
+        private const string _subKeyTargetNetPrinter = "NetPrinter";
+        private const string _subKeyTargetWinPrinter = "WinPrinter";
+        private const string _subKeyWorkFolder = "WorkFolder";
+        private const string _nameIndxTargetType = "IndxTargetType";
+
         //const string _nameFilename = "Filename";
-        const string _nameFoldername = "Foldername";
-        const string _namePrintername = "Printername";
-        const string _nameIPAddress = "IPAddress";
-        const string _namePort = "Port";
-        const string _nameTimeoutSend = "TimeoutMsecsSend";
-        const string _nameTimeoutReceive = "TimeoutMsecsReceive";
+        private const string _nameFoldername = "Foldername";
+
+        private const string _namePrintername = "Printername";
+        private const string _nameIPAddress = "IPAddress";
+        private const string _namePort = "Port";
+        private const string _nameTimeoutSend = "TimeoutMsecsSend";
+        private const string _nameTimeoutReceive = "TimeoutMsecsReceive";
 
         //const string _defaultFilename = "ItemNoLongerUsed";
-        const string _defaultPrintername = "<None>";
-        const string _defaultIPAddress = "192.168.0.98";
+        private const string _defaultPrintername = "<None>";
 
-        const int _indexZero = 0;
-        const int _defaultNetPort = 9100;
-
-        const int _defaultNetTimeoutSend = 15000;
-        const int _defaultNetTimeoutReceive = 10000;
+        private const string _defaultIPAddress = "192.168.0.98";
+        private const int _indexZero = 0;
+        private const int _defaultNetPort = 9100;
+        private const int _defaultNetTimeoutSend = 15000;
+        private const int _defaultNetTimeoutReceive = 10000;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

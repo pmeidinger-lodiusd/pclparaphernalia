@@ -7,8 +7,7 @@
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "properties renaming")]
-
-    class HPGL2Command
+    internal class HPGL2Command
     {
         private int _statsCtParent;
         private int _statsCtChild;

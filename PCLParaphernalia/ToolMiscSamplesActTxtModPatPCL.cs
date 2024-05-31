@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
-    static class ToolMiscSamplesActTxtModPatPCL
+    internal static class ToolMiscSamplesActTxtModPatPCL
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -19,23 +19,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int _macroId = 1;
-        const ushort _unitsPerInch = PCLWriter.sessionUPI;
-
-        const short _pageOriginX = (_unitsPerInch * 1);
-        const short _pageOriginY = (_unitsPerInch * 1);
-        const short _incInch = (_unitsPerInch * 1);
-        const short _lineInc = (_unitsPerInch * 5) / 6;
-
-        const short _posXDesc = _pageOriginX;
-        const short _posXData = _pageOriginX + (2 * _incInch);
-
-        const short _posYHddr = _pageOriginY;
-        const short _posYDesc = _pageOriginY + (2 * _incInch);
-        const short _posYData = _pageOriginY + (2 * _incInch);
-
-        const short _shade_1 = 40;
-        const short _shade_2 = 20;
+        private const int _macroId = 1;
+        private const ushort _unitsPerInch = PCLWriter.sessionUPI;
+        private const short _pageOriginX = (_unitsPerInch * 1);
+        private const short _pageOriginY = (_unitsPerInch * 1);
+        private const short _incInch = (_unitsPerInch * 1);
+        private const short _lineInc = (_unitsPerInch * 5) / 6;
+        private const short _posXDesc = _pageOriginX;
+        private const short _posXData = _pageOriginX + (2 * _incInch);
+        private const short _posYHddr = _pageOriginY;
+        private const short _posYDesc = _pageOriginY + (2 * _incInch);
+        private const short _posYData = _pageOriginY + (2 * _incInch);
+        private const short _shade_1 = 40;
+        private const short _shade_2 = 20;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -43,13 +39,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static readonly int _indxFontArial = PCLFonts.GetIndexForName("Arial");
-        static readonly int _indxFontCourier = PCLFonts.GetIndexForName("Courier");
-
-        static int _logPageWidth;
-        static int _logPageHeight;
-        static int _paperWidth;
-        static int _paperHeight;
+        private static readonly int _indxFontArial = PCLFonts.GetIndexForName("Arial");
+        private static readonly int _indxFontCourier = PCLFonts.GetIndexForName("Courier");
+        private static int _logPageWidth;
+        private static int _logPageHeight;
+        private static int _paperWidth;
+        private static int _paperHeight;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

@@ -8,7 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class ToolTrayMapPCL
+    internal static class ToolTrayMapPCL
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -16,22 +16,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int _macroIdBaseFront = 1;
-        const int _macroIdBaseRear = 11;
-        const int _noForm = -1;
-
-        const int _trayIdAutoSelectPCL = 7;
-
-        const ushort _unitsPerInch = PCLWriter.sessionUPI;
-
-        const short _posXName = (_unitsPerInch * 1);
-        const short _posXValue = (_unitsPerInch * 7) / 2;
-        const short _posXIncSub = (_unitsPerInch / 3);
-
-        const short _posYHddr = (_unitsPerInch * 1);
-        const short _posYDesc = (_unitsPerInch * 21) / 10;
-        const short _posYIncMain = (_unitsPerInch * 3) / 4;
-        const short _posYIncSub = (_unitsPerInch / 3);
+        private const int _macroIdBaseFront = 1;
+        private const int _macroIdBaseRear = 11;
+        private const int _noForm = -1;
+        private const int _trayIdAutoSelectPCL = 7;
+        private const ushort _unitsPerInch = PCLWriter.sessionUPI;
+        private const short _posXName = (_unitsPerInch * 1);
+        private const short _posXValue = (_unitsPerInch * 7) / 2;
+        private const short _posXIncSub = (_unitsPerInch / 3);
+        private const short _posYHddr = (_unitsPerInch * 1);
+        private const short _posYDesc = (_unitsPerInch * 21) / 10;
+        private const short _posYIncMain = (_unitsPerInch * 3) / 4;
+        private const short _posYIncSub = (_unitsPerInch / 3);
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -692,9 +688,9 @@ namespace PCLParaphernalia
             }
 
             //----------------------------------------------------------------//
-            //                                                                // 
-            // Rear face (if not simplex)                                     // 
-            //                                                                // 
+            //                                                                //
+            // Rear face (if not simplex)                                     //
+            //                                                                //
             //----------------------------------------------------------------//
 
             if (!simplex)

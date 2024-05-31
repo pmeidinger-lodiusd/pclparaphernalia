@@ -6,7 +6,7 @@
     /// <para>© Chris Hutchinson 2016</para>
     ///
     /// </summary>
-    class PCLPatternDef
+    internal class PCLPatternDef
     {
         private readonly PCLPatternDefs.Type _type;
 

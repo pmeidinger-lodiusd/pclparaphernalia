@@ -9,7 +9,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    class PrnParsePJL
+    internal class PrnParsePJL
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -56,7 +56,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // p a r s e B u f f e r                                              //
@@ -93,7 +92,6 @@ namespace PCLParaphernalia
             _fileOffset = fileOffset;
 
             _analysisLevel = _linkData.AnalysisLevel;
-
 
             //----------------------------------------------------------------//
 
@@ -380,7 +378,7 @@ namespace PCLParaphernalia
         //    value                 Associated with 'option' name or (if      //
         //                          that is not present, the command).        //
         //                          There may be more than one option=value   //
-        //                          pair.                                     // 
+        //                          pair.                                     //
         //                                                                    //
         // Whitespace (space or horizontal tab) characters MUST be present    //
         // between the @PJL introducer and the 'command', and between the     //

@@ -10,8 +10,7 @@ namespace PCLParaphernalia
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
-    class PCLPaperSize
+    internal class PCLPaperSize
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -19,8 +18,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const double _unitsToInches = (1.00 / PCLPaperSizes._paperSizeUPI);
-        const double _unitsToMilliMetres = (25.4 / PCLPaperSizes._paperSizeUPI);
+        private const double _unitsToInches = (1.00 / PCLPaperSizes._paperSizeUPI);
+        private const double _unitsToMilliMetres = (25.4 / PCLPaperSizes._paperSizeUPI);
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -574,7 +573,7 @@ namespace PCLParaphernalia
         //                                                                    //
         // Sets or returns the 'is metric size' attribute.                    //
         // The 'set' option would only apply to the special 'Custom' paper    //
-        // size.                                                              // 
+        // size.                                                              //
         //                                                                    //
         //--------------------------------------------------------------------//
 

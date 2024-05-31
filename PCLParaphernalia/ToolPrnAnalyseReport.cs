@@ -10,7 +10,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010-2017</para>
     ///
     /// </summary>
-    static class ToolPrnAnalyseReport
+    internal static class ToolPrnAnalyseReport
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -18,10 +18,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int _maxSizeNameTag = 15;
-        const int _colSpanNone = -1;
-
-        const bool _flagNone = false;
+        private const int _maxSizeNameTag = 15;
+        private const int _colSpanNone = -1;
+        private const bool _flagNone = false;
         //const bool _flagBlankBefore = true;
 
         //--------------------------------------------------------------------//
@@ -60,7 +59,6 @@ namespace PCLParaphernalia
                 fileExt = "xml";
             else
                 fileExt = "txt";
-
 
             bool OK;
             if (indxInfoType == ToolPrnAnalyse.InfoType.Analysis)

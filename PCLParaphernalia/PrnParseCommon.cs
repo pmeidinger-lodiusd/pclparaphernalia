@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class PrnParseCommon
+    internal static class PrnParseCommon
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -25,18 +25,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static bool _showMacroData = true;
-
-        static PrnParse.ParseType _parseType;
-
-        static int _macroLevel = 0;
-
-        const string _colName_RowType = PrnParseConstants.cRptA_colName_RowType;
-        const string _colName_Action = PrnParseConstants.cRptA_colName_Action;
-        const string _colName_Offset = PrnParseConstants.cRptA_colName_Offset;
-        const string _colName_Type = PrnParseConstants.cRptA_colName_Type;
-        const string _colName_Seq = PrnParseConstants.cRptA_colName_Seq;
-        const string _colName_Desc = PrnParseConstants.cRptA_colName_Desc;
+        private static bool _showMacroData = true;
+        private static PrnParse.ParseType _parseType;
+        private static int _macroLevel = 0;
+        private const string _colName_RowType = PrnParseConstants.cRptA_colName_RowType;
+        private const string _colName_Action = PrnParseConstants.cRptA_colName_Action;
+        private const string _colName_Offset = PrnParseConstants.cRptA_colName_Offset;
+        private const string _colName_Type = PrnParseConstants.cRptA_colName_Type;
+        private const string _colName_Seq = PrnParseConstants.cRptA_colName_Seq;
+        private const string _colName_Desc = PrnParseConstants.cRptA_colName_Desc;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

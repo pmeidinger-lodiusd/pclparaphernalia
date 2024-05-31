@@ -8,7 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class ToolPrintAreaPersist
+    internal static class ToolPrintAreaPersist
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -16,36 +16,32 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _mainKey = MainForm._regMainKey;
+        private const string _mainKey = MainForm._regMainKey;
+        private const string _subKeyTools = "Tools";
+        private const string _subKeyToolsPrintArea = _subKeyTools + @"\PrintArea";
+        private const string _subKeyPCL5 = "PCL5";
+        private const string _subKeyPCL6 = "PCL6";
+        private const string _subKeyPCL = "PCL";
+        private const string _subKeyPCLXL = "PCLXL";
+        private const string _nameCaptureFile = "CaptureFile";
+        private const string _nameFlagFormAsMacro = "FlagFormAsMacro";
+        private const string _nameFlagCustomUseMetric = "FlagCustomUseMetric";
+        private const string _nameCustomShortEdge = "CustomShortEdge";
+        private const string _nameCustomLongEdge = "CustomLongEdge";
+        private const string _nameIndxOrientation = "IndxOrientation";
+        private const string _nameIndxPaperSize = "IndxPaperSize";
+        private const string _nameIndxPaperType = "IndxPaperType";
+        private const string _nameIndxPDL = "IndxPDL";
+        private const string _nameIndxPJLCommand = "IndxPJLCommand";
+        private const string _nameIndxPlexMode = "IndxPlexMode";
+        private const int _flagFalse = 0;
+        private const int _flagTrue = 1;
+        private const int _indexZero = 0;
+        private const int _customShortEdgeDefault = 4960;    // A4 dots @ 600 dpi
+        private const int _customLongEdgeDefault = 7014;    // A4 dots @ 600 dpi
 
-        const string _subKeyTools = "Tools";
-        const string _subKeyToolsPrintArea = _subKeyTools + @"\PrintArea";
-        const string _subKeyPCL5 = "PCL5";
-        const string _subKeyPCL6 = "PCL6";
-        const string _subKeyPCL = "PCL";
-        const string _subKeyPCLXL = "PCLXL";
-
-        const string _nameCaptureFile = "CaptureFile";
-        const string _nameFlagFormAsMacro = "FlagFormAsMacro";
-        const string _nameFlagCustomUseMetric = "FlagCustomUseMetric";
-        const string _nameCustomShortEdge = "CustomShortEdge";
-        const string _nameCustomLongEdge = "CustomLongEdge";
-        const string _nameIndxOrientation = "IndxOrientation";
-        const string _nameIndxPaperSize = "IndxPaperSize";
-        const string _nameIndxPaperType = "IndxPaperType";
-        const string _nameIndxPDL = "IndxPDL";
-        const string _nameIndxPJLCommand = "IndxPJLCommand";
-        const string _nameIndxPlexMode = "IndxPlexMode";
-
-        const int _flagFalse = 0;
-        const int _flagTrue = 1;
-        const int _indexZero = 0;
-
-        const int _customShortEdgeDefault = 4960;    // A4 dots @ 600 dpi 
-        const int _customLongEdgeDefault = 7014;    // A4 dots @ 600 dpi 
-
-        const string _defaultCaptureFilePCL = "CaptureFile_PrintAreaPCL.prn";
-        const string _defaultCaptureFilePCLXL = "CaptureFile_PrintAreaPCLXL.prn";
+        private const string _defaultCaptureFilePCL = "CaptureFile_PrintAreaPCL.prn";
+        private const string _defaultCaptureFilePCLXL = "CaptureFile_PrintAreaPCLXL.prn";
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

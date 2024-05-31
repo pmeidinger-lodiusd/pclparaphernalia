@@ -8,7 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class ToolPrnAnalysePersist
+    internal static class ToolPrnAnalysePersist
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -16,77 +16,68 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _mainKey = MainForm._regMainKey;
-
-        const string _subKeyTools = "Tools";
-        const string _subKeyToolsAnalyse = _subKeyTools + @"\PrnAnalyse";
-        const string _subKeyOptCharSet = "OptCharSet";
-        const string _subKeyOptClrMap = "OptClrMap";
-        const string _subKeyOptGeneral = "OptGeneral";
-        const string _subKeyOptHPGL2 = "OptHPGL2";
-        const string _subKeyOptPCL = "OptPCL";
-        const string _subKeyOptPCLXL = "OptPCLXL";
-        const string _subKeyOptPML = "OptPML";
-        const string _subKeyOptStats = "OptStats";
-
-        const string _subKeyCrnt = "Crnt";
-        const string _subKeyUserThemeRoot = "UserTheme_";
-
-        const string _nameFilename = "Filename";
-        const string _nameTheme = "Name";
-        const string _nameFlagAutoAnalyse = "FlagAutoAnalyse";
-        const string _nameFlagDiagFileAccess = "FlagDiagFileAccess";
-        const string _nameFlagBinData = "FlagBinData";
-
-        const string _nameFlagAlphaNumId = "FlagAlphaNumId";
-        const string _nameFlagColourLookup = "FlagColourLookup";
-        const string _nameFlagConfIO = "FlagConfIO";
-        const string _nameFlagConfImageData = "FlagCIData";
-        const string _nameFlagConfRasterData = "FlagCRData";
-        const string _nameFlagDefLogPage = "FlagLogPageData";
-        const string _nameFlagDefSymSet = "FlagDefSymSet";
-        const string _nameFlagDitherMatrix = "FlagDitherMatrix";
-        const string _nameFlagDriverConf = "FlagDriverConf";
-        const string _nameFlagEscEncText = "FlagEscEncText";
-        const string _nameFlagPaletteConf = "FlagPaletteConf";
-        const string _nameFlagUserPattern = "FlagUserPattern";
-        const string _nameFlagViewIlluminant = "FlagViewIlluminant";
-
-        const string _nameFlagClrMapUseClr = "FlagUseClr";
-        const string _nameFlagMacroDisplay = "FlagMacroDisplay";
-        const string _nameFlagOperPos = "FlagOperPos";
-        const string _nameFlagPCLFontSelect = "FlagPCLFontSelect";
-        const string _nameFlagPCLPassThrough = "FlagPCLPassThrough";
-        const string _nameFlagWithinPCL = "FlagWithinPCL";
-        const string _nameFlagWithinPJL = "FlagWithinPJL";
-        const string _nameFlagFontChar = "FlagFontChar";
-        const string _nameFlagFontHddr = "FlagFontHddr";
-        const string _nameFlagFontDraw = "FlagFontDraw";
-        const string _nameFlagExcUnusedPCLObs = "FlagExcUnusedPCLObs";
-        const string _nameFlagExcUnusedPCLXLRes = "FlagExcUnusedPCLXLRes";
-        const string _nameFlagStyleData = "FlagStyleData";
-        const string _nameFlagUserStream = "FlagUserStream";
-        const string _nameFlagVerbose = "FlagVerbose";
-
-        const string _nameFontDrawHeight = "FontDrawHeight";
-        const string _nameFontDrawWidth = "FontDrawWidth";
-        const string _nameIndxClrMapRootBack = "IndxBack_";
-        const string _nameIndxClrMapRootFore = "IndxFore_";
-        const string _nameIndxName = "IndxName";
-        const string _nameIndxOffsetType = "IndxOffsetType";
-        const string _nameIndxRptFileFmt = "IndxRptFileFmt";
-        const string _nameIndxStatsLevel = "IndxStatsLevel";
-        const string _nameIndxSubAct = "IndxSubAct";
-        const string _nameIndxSubCode = "IndxSubCode";
-
-        const string _defaultFilename = "DefaultPrintFile.prn";
-        const string _defaultThemeName = "NoName";
-
-        const int _defaultSubCode = 191;
-
-        const int _flagFalse = 0;
-        const int _flagTrue = 1;
-        const int _indexZero = 0;
+        private const string _mainKey = MainForm._regMainKey;
+        private const string _subKeyTools = "Tools";
+        private const string _subKeyToolsAnalyse = _subKeyTools + @"\PrnAnalyse";
+        private const string _subKeyOptCharSet = "OptCharSet";
+        private const string _subKeyOptClrMap = "OptClrMap";
+        private const string _subKeyOptGeneral = "OptGeneral";
+        private const string _subKeyOptHPGL2 = "OptHPGL2";
+        private const string _subKeyOptPCL = "OptPCL";
+        private const string _subKeyOptPCLXL = "OptPCLXL";
+        private const string _subKeyOptPML = "OptPML";
+        private const string _subKeyOptStats = "OptStats";
+        private const string _subKeyCrnt = "Crnt";
+        private const string _subKeyUserThemeRoot = "UserTheme_";
+        private const string _nameFilename = "Filename";
+        private const string _nameTheme = "Name";
+        private const string _nameFlagAutoAnalyse = "FlagAutoAnalyse";
+        private const string _nameFlagDiagFileAccess = "FlagDiagFileAccess";
+        private const string _nameFlagBinData = "FlagBinData";
+        private const string _nameFlagAlphaNumId = "FlagAlphaNumId";
+        private const string _nameFlagColourLookup = "FlagColourLookup";
+        private const string _nameFlagConfIO = "FlagConfIO";
+        private const string _nameFlagConfImageData = "FlagCIData";
+        private const string _nameFlagConfRasterData = "FlagCRData";
+        private const string _nameFlagDefLogPage = "FlagLogPageData";
+        private const string _nameFlagDefSymSet = "FlagDefSymSet";
+        private const string _nameFlagDitherMatrix = "FlagDitherMatrix";
+        private const string _nameFlagDriverConf = "FlagDriverConf";
+        private const string _nameFlagEscEncText = "FlagEscEncText";
+        private const string _nameFlagPaletteConf = "FlagPaletteConf";
+        private const string _nameFlagUserPattern = "FlagUserPattern";
+        private const string _nameFlagViewIlluminant = "FlagViewIlluminant";
+        private const string _nameFlagClrMapUseClr = "FlagUseClr";
+        private const string _nameFlagMacroDisplay = "FlagMacroDisplay";
+        private const string _nameFlagOperPos = "FlagOperPos";
+        private const string _nameFlagPCLFontSelect = "FlagPCLFontSelect";
+        private const string _nameFlagPCLPassThrough = "FlagPCLPassThrough";
+        private const string _nameFlagWithinPCL = "FlagWithinPCL";
+        private const string _nameFlagWithinPJL = "FlagWithinPJL";
+        private const string _nameFlagFontChar = "FlagFontChar";
+        private const string _nameFlagFontHddr = "FlagFontHddr";
+        private const string _nameFlagFontDraw = "FlagFontDraw";
+        private const string _nameFlagExcUnusedPCLObs = "FlagExcUnusedPCLObs";
+        private const string _nameFlagExcUnusedPCLXLRes = "FlagExcUnusedPCLXLRes";
+        private const string _nameFlagStyleData = "FlagStyleData";
+        private const string _nameFlagUserStream = "FlagUserStream";
+        private const string _nameFlagVerbose = "FlagVerbose";
+        private const string _nameFontDrawHeight = "FontDrawHeight";
+        private const string _nameFontDrawWidth = "FontDrawWidth";
+        private const string _nameIndxClrMapRootBack = "IndxBack_";
+        private const string _nameIndxClrMapRootFore = "IndxFore_";
+        private const string _nameIndxName = "IndxName";
+        private const string _nameIndxOffsetType = "IndxOffsetType";
+        private const string _nameIndxRptFileFmt = "IndxRptFileFmt";
+        private const string _nameIndxStatsLevel = "IndxStatsLevel";
+        private const string _nameIndxSubAct = "IndxSubAct";
+        private const string _nameIndxSubCode = "IndxSubCode";
+        private const string _defaultFilename = "DefaultPrintFile.prn";
+        private const string _defaultThemeName = "NoName";
+        private const int _defaultSubCode = 191;
+        private const int _flagFalse = 0;
+        private const int _flagTrue = 1;
+        private const int _indexZero = 0;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

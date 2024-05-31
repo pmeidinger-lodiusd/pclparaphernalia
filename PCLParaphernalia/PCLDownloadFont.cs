@@ -9,7 +9,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class PCLDownloadFont
+    internal static class PCLDownloadFont
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -19,7 +19,7 @@ namespace PCLParaphernalia
 
         //const int _minHddrDescLen = 64;
 
-        const ushort _defaultPCLDotRes = 300;
+        private const ushort _defaultPCLDotRes = 300;
 
         private enum PCLFontFormat : byte
         {
@@ -115,7 +115,7 @@ namespace PCLParaphernalia
 
                 return false;
             }
-            
+
             if (!File.Exists(fileName))
             {
                 MessageBox.Show($"Download font file '{fileName}' does not exist.",
@@ -170,7 +170,7 @@ namespace PCLParaphernalia
             ref Double  pitch,
             ref Double  height,
             ref UInt16  style,
-            ref Int16   weight,   
+            ref Int16   weight,
             ref UInt16  typeface,
             ref UInt16  symSetNo,
             ref PCLSymSetTypes.eIndex symSetType)
@@ -214,7 +214,7 @@ namespace PCLParaphernalia
                                              ref pitch,
                                              ref height,
                                              ref style,
-                                             ref weight,   
+                                             ref weight,
                                              ref typeface,
                                              ref symSetNo,
                                              ref symSetType);
@@ -653,15 +653,15 @@ namespace PCLParaphernalia
             _ipStream.Seek(hddrOffset, SeekOrigin.Begin);
 
             _binReader.Read(hddr, 0, hddrDescLen);
-            
+
             //----------------------------------------------------------------//
-            
+
         //  bitmapFont   = false;
         //  intelliFont  = false;
         //  truetypeFont = false;
-            
+
             ePCLFontFormat hddrFormat;
-            
+
             hddrFormat  = (ePCLFontFormat) hddr[2];
 
             switch (hddrFormat)
@@ -690,7 +690,7 @@ namespace PCLParaphernalia
                 //  universalFont = true;
                     break;
             }
-            
+
             //----------------------------------------------------------------//
 
             if (bitmapFont)
@@ -705,18 +705,18 @@ namespace PCLParaphernalia
 
             if (hddrFormat == ePCLFontFormat.BitmapResSpec)
             {
-                dotResX = (UInt16)((hddr[64] * 256) + hddr[65]); 
-                dotResX = (UInt16)((hddr[66] * 256) + hddr[67]); 
+                dotResX = (UInt16)((hddr[64] * 256) + hddr[65]);
+                dotResX = (UInt16)((hddr[66] * 256) + hddr[67]);
             }
 
             //----------------------------------------------------------------//
-            
+
             symSetType = PCLSymSetTypes.getIndexForIdPCL (hddr[3]);
 
             bound = PCLSymSetTypes.isBound ((Int32) symSetType);
 
             //----------------------------------------------------------------//
-            
+
             if (hddr[13] == 0)
                 proportional = false;
             else
@@ -724,7 +724,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            symSetNo = (UInt16)((hddr[14] * 256) + hddr[15]); 
+            symSetNo = (UInt16)((hddr[14] * 256) + hddr[15]);
 
             //----------------------------------------------------------------//
 
@@ -776,7 +776,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             return OK;
-        }         
+        }
         */
         /*
         //--------------------------------------------------------------------//
@@ -803,7 +803,7 @@ namespace PCLParaphernalia
             UInt16 value  = 0;
 
             Byte[] buf = new Byte[3];
-            
+
             _binReader.Read(buf, 0, 3);
 
             if ((buf[0] != '\x1b') ||
@@ -839,10 +839,10 @@ namespace PCLParaphernalia
 
             if (! OK)
             {
-                MessageBox.Show(messHeader + 
+                MessageBox.Show(messHeader +
                                 "File does not start with a valid escape" +
                                 " sequence in the format <esc>)s#W"       +
-                                " (where # is a numeric value)."          + 
+                                " (where # is a numeric value)."          +
                                 messTrailer,
                                 "PCL soft font file",
                                 MessageBoxButton.OK,
@@ -854,7 +854,7 @@ namespace PCLParaphernalia
 
             if ((hddrLen + hddrOffset) > fileSize)
             {
-                MessageBox.Show(messHeader + 
+                MessageBox.Show(messHeader +
                                 "Header (offset = '" + hddrOffset + "') of" +
                                 "length '" + hddrLen + "' is inconsistent"  +
                                 " with a file size of '" + fileSize + "'."  +
@@ -866,12 +866,12 @@ namespace PCLParaphernalia
             }
 
             _binReader.Read(buf, 0, 2);
-    
+
             hddrDescLen = (UInt16)((buf[0]  * 256) + buf[1]);
 
             if (hddrDescLen > hddrLen)
             {
-                MessageBox.Show(messHeader + 
+                MessageBox.Show(messHeader +
                                 "Descriptor size '" + hddrDescLen + "' is" +
                                 " inconsistent with a header size of '"    +
                                 hddrLen + "'."                             +
@@ -880,8 +880,7 @@ namespace PCLParaphernalia
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
                 return false;
-
-            }   
+            }
 
             if (hddrDescLen < _minHddrDescLen)
             {
@@ -894,9 +893,8 @@ namespace PCLParaphernalia
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
                 return false;
+            }
 
-            }   
-         
             return true;
         }
         */

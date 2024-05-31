@@ -6,7 +6,7 @@
     /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
-    static class PCLPlexModes
+    internal static class PCLPlexModes
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

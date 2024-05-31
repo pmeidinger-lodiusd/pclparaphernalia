@@ -8,7 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    class PrnParseFontCharPCL
+    internal class PrnParseFontCharPCL
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -82,6 +82,7 @@ namespace PCLParaphernalia
         private int _charWidth;
 
         private int _charChksLen;
+
         //        private Int32 _charChksPos;
         private int _charChksVal;
 

@@ -9,7 +9,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
-    static class PCLDownloadMacro
+    internal static class PCLDownloadMacro
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -56,7 +56,7 @@ namespace PCLParaphernalia
             {
                 return false;
             }
-            
+
             const int maxRead = 12;
             bool foundTerm = false;
 
@@ -186,7 +186,7 @@ namespace PCLParaphernalia
             }
 
             MacroFileClose();
-            
+
             return true;
         }
 
@@ -210,7 +210,7 @@ namespace PCLParaphernalia
 
                 return false;
             }
-            
+
             if (!File.Exists(fileName))
             {
                 MessageBox.Show($"Download macro file '{fileName}' does not exist.",

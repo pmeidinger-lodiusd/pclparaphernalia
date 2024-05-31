@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
-    static class ToolMiscSamplesActLogOperPCL
+    internal static class ToolMiscSamplesActLogOperPCL
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -19,46 +19,39 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const ushort _unitsPerInch = PCLWriter.sessionUPI;
+        private const ushort _unitsPerInch = PCLWriter.sessionUPI;
+        private const short _rasterRes = 600;
+        private const byte _defaultROP = 252;
+        private const int _macroIdDestBox = 101;
+        private const int _macroIdDestBoxRow = 111;
+        private const int _macroIdDestBoxRowHddr = 112;
+        private const int _macroIdDestBoxPage = 121;
+        private const int _macroIdSrcBoxRasterPos = 201;
+        private const int _macroIdSrcBoxRasterNeg = 202;
 
-        const short _rasterRes = 600;
-        const byte _defaultROP = 252;
-
-        const int _macroIdDestBox = 101;
-        const int _macroIdDestBoxRow = 111;
-        const int _macroIdDestBoxRowHddr = 112;
-        const int _macroIdDestBoxPage = 121;
-        const int _macroIdSrcBoxRasterPos = 201;
-        const int _macroIdSrcBoxRasterNeg = 202;
         //const int _macroIdSrcBoxRasters = 211;
-        const int _macroIdSrcBoxText = 212;
-        const int _macroIdSrcBox = 221;
-        const int _macroIdSrcBoxRow = 231;
+        private const int _macroIdSrcBoxText = 212;
 
-        const int _patternId = 101;
-
-        const short _incInch = (_unitsPerInch * 1);
-        const short _pageOriginX = (_incInch * 1);
-        const short _pageOriginY = (_incInch * 1) / 2;
-        const short _rowInc = (_incInch * 5) / 4;
-        const short _colInc = (_incInch * 5) / 4;
-        const short _lineInc = (_incInch / 6);
-
-        const short _posXPage_1_Hddr = _pageOriginX;
-        const short _posYPage_1_Hddr = _pageOriginY + ((_incInch * 1) / 2);
-        const short _posYPage_1_Data1 = _pageOriginY + ((_incInch * 9) / 4);
-        const short _posYPage_1_Data2 = _pageOriginY + ((_incInch * 13) / 2);
-
-        const short _posXPage_n_Hddr = _pageOriginX;
-        const short _posYPage_n_Hddr = _pageOriginY;
-
-        const short _posXPage_n_Data = _pageOriginX;
-        const short _posYPage_n_Data = _pageOriginY + (_incInch / 3);
-
-        const short _destBoxSide = _incInch;
-
-        const short _sourceImagePixelsWidth = 192;
-        const short _sourceImagePixelsHeight = 192;
+        private const int _macroIdSrcBox = 221;
+        private const int _macroIdSrcBoxRow = 231;
+        private const int _patternId = 101;
+        private const short _incInch = (_unitsPerInch * 1);
+        private const short _pageOriginX = (_incInch * 1);
+        private const short _pageOriginY = (_incInch * 1) / 2;
+        private const short _rowInc = (_incInch * 5) / 4;
+        private const short _colInc = (_incInch * 5) / 4;
+        private const short _lineInc = (_incInch / 6);
+        private const short _posXPage_1_Hddr = _pageOriginX;
+        private const short _posYPage_1_Hddr = _pageOriginY + ((_incInch * 1) / 2);
+        private const short _posYPage_1_Data1 = _pageOriginY + ((_incInch * 9) / 4);
+        private const short _posYPage_1_Data2 = _pageOriginY + ((_incInch * 13) / 2);
+        private const short _posXPage_n_Hddr = _pageOriginX;
+        private const short _posYPage_n_Hddr = _pageOriginY;
+        private const short _posXPage_n_Data = _pageOriginX;
+        private const short _posYPage_n_Data = _pageOriginY + (_incInch / 3);
+        private const short _destBoxSide = _incInch;
+        private const short _sourceImagePixelsWidth = 192;
+        private const short _sourceImagePixelsHeight = 192;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -66,8 +59,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static readonly int _indxFontArial = PCLFonts.GetIndexForName("Arial");
-        static readonly int _indxFontCourier = PCLFonts.GetIndexForName("Courier");
+        private static readonly int _indxFontArial = PCLFonts.GetIndexForName("Arial");
+        private static readonly int _indxFontCourier = PCLFonts.GetIndexForName("Courier");
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -1501,7 +1494,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 // Colour mode is Simple Colour mode; this uses a predefined  //
                 // palette consisting of eight colours.                       //
-                //                                                            //   
+                //                                                            //
                 // When using this mode, the pixel encoding mode is always    //
                 // Indexed Planar.                                            //
                 // A palette of eight values implies three planes (since      //

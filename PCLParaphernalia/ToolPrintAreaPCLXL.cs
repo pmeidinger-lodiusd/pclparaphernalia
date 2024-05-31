@@ -9,7 +9,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class ToolPrintAreaPCLXL
+    internal static class ToolPrintAreaPCLXL
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -17,23 +17,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _formName = "FontSampleForm";
+        private const string _formName = "FontSampleForm";
+
         //const string _hexChars = "0123456789ABCDEF";
 
-        const int _symSet_19U = 629;
-        const ushort _sessionUPI = PCLXLWriter._sessionUPI;
-
-        const short _boxOuterEdge = (_sessionUPI * 1);
-        const short _rulerOriginX = (_sessionUPI * 1);
-        const short _rulerOriginY = (_sessionUPI * 1);
-        const short _rulerCell = (_sessionUPI * 1);
-        const short _rulerDiv = (_rulerCell / 5);
-
-        const short _posXHddr = _rulerOriginX + (2 * _rulerDiv);
-        const short _posXDesc = _rulerOriginX + (1 * _rulerDiv);
-        const short _posYHddr = _rulerOriginY - (2 * _rulerDiv);
-        const short _posYText = _rulerOriginY + (2 * _rulerDiv);
-        const short _posYDesc = _rulerOriginY + (6 * _rulerDiv);
+        private const int _symSet_19U = 629;
+        private const ushort _sessionUPI = PCLXLWriter._sessionUPI;
+        private const short _boxOuterEdge = (_sessionUPI * 1);
+        private const short _rulerOriginX = (_sessionUPI * 1);
+        private const short _rulerOriginY = (_sessionUPI * 1);
+        private const short _rulerCell = (_sessionUPI * 1);
+        private const short _rulerDiv = (_rulerCell / 5);
+        private const short _posXHddr = _rulerOriginX + (2 * _rulerDiv);
+        private const short _posXDesc = _rulerOriginX + (1 * _rulerDiv);
+        private const short _posYHddr = _rulerOriginY - (2 * _rulerDiv);
+        private const short _posYText = _rulerOriginY + (2 * _rulerDiv);
+        private const short _posYDesc = _rulerOriginY + (6 * _rulerDiv);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

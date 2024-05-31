@@ -6,7 +6,7 @@
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    class PCLPaperType
+    internal class PCLPaperType
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

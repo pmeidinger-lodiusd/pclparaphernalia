@@ -6,7 +6,7 @@
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    class PJLCategory
+    internal class PJLCategory
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

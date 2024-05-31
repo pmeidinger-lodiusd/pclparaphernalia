@@ -8,7 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class ToolStatusReadbackReport
+    internal static class ToolStatusReadbackReport
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

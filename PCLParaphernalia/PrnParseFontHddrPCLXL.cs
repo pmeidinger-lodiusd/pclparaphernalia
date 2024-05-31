@@ -8,7 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    class PrnParseFontHddrPCLXL
+    internal class PrnParseFontHddrPCLXL
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -43,7 +43,7 @@ namespace PCLParaphernalia
             BadSeqB
         }
 
-        const int _cHddrDescLen = 8; // Format 0 header
+        private const int _cHddrDescLen = 8; // Format 0 header
         //const int _cSegHddrLen = 6; // type (2) + size (4)
 
         //--------------------------------------------------------------------//

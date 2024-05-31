@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    class PrnParsePCLXL
+    internal class PrnParsePCLXL
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -19,10 +19,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int _decodeIndentNone = 0;
-        const int _decodeIndentStd = 4;
-        const int _decodeAreaMax = 48;
-        const int _decodeSliceMax = 4;
+        private const int _decodeIndentNone = 0;
+        private const int _decodeIndentStd = 4;
+        private const int _decodeAreaMax = 48;
+        private const int _decodeSliceMax = 4;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -345,7 +345,6 @@ namespace PCLParaphernalia
             _analysisOwner = _linkData.AnalysisOwner;
             _analysisLevel = _linkData.AnalysisLevel;
             _crntEmbedType = _linkData.PclxlEmbedType;
-
 
             //----------------------------------------------------------------//
 

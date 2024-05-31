@@ -3,6 +3,7 @@ using System.IO;
 using System.Net.Sockets;
 using System.Windows;
 using System.Windows.Controls;
+
 // using System.Windows.Media;
 
 namespace PCLParaphernalia
@@ -14,7 +15,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class ToolMiscSamples : Window
     {
         //--------------------------------------------------------------------//
@@ -23,15 +23,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const ushort _unitsPerInch = 600;
-        const ushort _dPtsPerInch = 720;
-
-        const double _unitsToDPts = (1.00 * _dPtsPerInch / _unitsPerInch);
-        const double _unitsToInches = (1.00 / _unitsPerInch);
-        const double _unitsToMilliMetres = (25.4 / _unitsPerInch);
-
-        const double _dPtsToInches = (1.00 / 720);
-        const double _dPtsToMilliMetres = (25.4 / 720);
+        private const ushort _unitsPerInch = 600;
+        private const ushort _dPtsPerInch = 720;
+        private const double _unitsToDPts = (1.00 * _dPtsPerInch / _unitsPerInch);
+        private const double _unitsToInches = (1.00 / _unitsPerInch);
+        private const double _unitsToMilliMetres = (25.4 / _unitsPerInch);
+        private const double _dPtsToInches = (1.00 / 720);
+        private const double _dPtsToMilliMetres = (25.4 / 720);
 
         private enum SampleType : byte
         {

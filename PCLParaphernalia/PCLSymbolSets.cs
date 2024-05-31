@@ -10,7 +10,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class PCLSymbolSets
+    internal static class PCLSymbolSets
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -25,11 +25,10 @@ namespace PCLParaphernalia
         //private const int _hex0100 = 256;
 
         [System.Reflection.Obfuscation(Exclude = true)]
-
         public enum SymSetGroup
         {
             Preset,     // Standard HP-defined symbol sets
-            Custom,     // Symbol set specified explicitly via identifier 
+            Custom,     // Symbol set specified explicitly via identifier
             NonStd,     // To allow mapStd of sets with no HP identifier
             Symbol,     // To allow definition of TTF 'symbol' mapStd table
             Unbound,    // Unbound
@@ -217,7 +216,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
         //                                                                    //
         // Return index of Symbol Set which matches supplied 'Kind1' value.   //
-        // Ignore the User defined entry.                                     // 
+        // Ignore the User defined entry.                                     //
         // TODO: must be a more efficient method (use Map?).                  //
         //                                                                    //
         //--------------------------------------------------------------------//
@@ -242,7 +241,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
         //                                                                    //
         // Return name of Symbol Set which matches supplied 'Kind1' value.    //
-        // Ignore the User defined entry.                                     // 
+        // Ignore the User defined entry.                                     //
         // TODO: must be a more efficient method (use Map?).                  //
         //                                                                    //
         //--------------------------------------------------------------------//
@@ -537,7 +536,7 @@ namespace PCLParaphernalia
             _sets.Add(new PCLSymbolSet(SymSetGroup.Symbol,
                                          PCLSymSetTypes.Index.Bound_PC8,
                                          PCLTextParsingMethods.Index.m0_1_byte_default,
-                                         0,                          //    ?? // 
+                                         0,                          //    ?? //
                                          string.Empty,
                                          "<symbol>",
                                          false,                // special map //
@@ -1624,7 +1623,7 @@ namespace PCLParaphernalia
         // The Kind1 value must be in the range 0 - 65535, although, given    //
         // the above restraints:                                              //
         //                                                                    //
-        // - the minimum value is 1     (equivalent to ID = 0A)               // 
+        // - the minimum value is 1     (equivalent to ID = 0A)               //
         // - the maximum value is 65530 (equivalent to ID = 2047Z)            //
         //                                                                    //
         //--------------------------------------------------------------------//
@@ -1633,7 +1632,7 @@ namespace PCLParaphernalia
         {
             const ushort badValue = 0;
 
-            if ((idNum < 1) || (idNum > 2047) || 
+            if ((idNum < 1) || (idNum > 2047) ||
                 (idAlpha < 0x40) || (idAlpha > 0x5a))
                 return badValue;
             else

@@ -9,7 +9,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class PCLFonts
+    internal static class PCLFonts
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -782,15 +782,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //  PresetFamily        - either the old 'base' value font:           //
         //                        e.g. Courier base value = typeface 3        //
-        //                                                                    // 
+        //                                                                    //
         //                      - or a font for which there is more than one  //
-        //                        with the same PCL typeface identifier       // 
+        //                        with the same PCL typeface identifier       //
         //                        e.g. Helvetica & Univers                    //
         //                             Have Narrow & Condensed versions       //
         //                             (respectively) as well as standard.    //
         //                        e.g. Line Printer                           //
         //                             Has several versions bound to          //
-        //                             different symbol sets.                 //     
+        //                             different symbol sets.                 //
         //                                                                    //
         //                       Fonts of this type are NOT included in the   //
         //                       set of Preset fonts used by the Font Sample  //

@@ -9,7 +9,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    class PrnParseFontHddrPCL
+    internal class PrnParseFontHddrPCL
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

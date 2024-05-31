@@ -6,7 +6,7 @@
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class PCLTrayDatas
+    internal static class PCLTrayDatas
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -16,14 +16,15 @@
 
         private enum PDL
         {
-            // must be in same order as _trayDatas array 
+            // must be in same order as _trayDatas array
             PCL,
+
             PCLXL
         }
 
         private static readonly PCLTrayData[] _trayDatas =
         {
-            // must be in same order as ePDL enumeration 
+            // must be in same order as ePDL enumeration
             new PCLTrayData(7, 0, 299, -1),
             new PCLTrayData(1, 0, 255, -1)
         };

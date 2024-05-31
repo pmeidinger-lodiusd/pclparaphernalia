@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
-    static class PrnParseDataUTF8
+    internal static class PrnParseDataUTF8
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -37,10 +37,10 @@ namespace PCLParaphernalia
             exceedsLegalMaximum = 22
         };
 
-        const byte cTrailByteMask = 0xBF;
-        const byte cTrailByteMark = 0x80;
+        private const byte cTrailByteMask = 0xBF;
+        private const byte cTrailByteMark = 0x80;
 
-        const int 
+        private const int
                     //cMaxBMP = 0x0000FFFF,
                     //cMaxUCS2 = 0x0000FFFF,
                     //cMaxUCS4 = 0x7FFFFFFF,
@@ -79,7 +79,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static readonly long[] cOffsetsUTF8 =
+        private static readonly long[] cOffsetsUTF8 =
         {
             0x0000000000,   // 0 trailing bytes //
             0x0000003080,   // 1 trailing byte  //
@@ -156,7 +156,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static readonly byte[] cLeadByteMarksUTF8 =
+        private static readonly byte[] cLeadByteMarksUTF8 =
         {
             0x00,           // 0 trailing bytes //
             0xC0,           // 1 trailing byte  //
@@ -524,7 +524,7 @@ namespace PCLParaphernalia
             switch (utf8SeqLen)
             {
                 // note: everything falls through hence use of GOTO (!!) as     //
-                //       C# does not support fall through.                      // 
+                //       C# does not support fall through.                      //
 
                 case 4:
                     utf8Seq[seqPos--] = (byte)((codepoint | cTrailByteMark) & cTrailByteMask);
@@ -626,7 +626,7 @@ namespace PCLParaphernalia
             switch (utf8SeqLen)
             {
                 // note: everything falls through hence use of GOTO (!!) as     //
-                //       C# does not support fall through.                      // 
+                //       C# does not support fall through.                      //
 
                 case 4:
                     utf8Seq[seqPos--] = (byte)((codepoint | cTrailByteMark) & cTrailByteMask);
@@ -681,7 +681,7 @@ namespace PCLParaphernalia
             int seqPos = 0;
 
             // note: everything falls through hence use of GOTO (!!) as     //
-            //       C# does not support fall through.                      // 
+            //       C# does not support fall through.                      //
             switch (utf8SeqLen)
             {
                 case 6:

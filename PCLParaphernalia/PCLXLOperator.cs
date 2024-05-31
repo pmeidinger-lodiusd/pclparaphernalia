@@ -8,8 +8,7 @@
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
-    class PCLXLOperator
+    internal class PCLXLOperator
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

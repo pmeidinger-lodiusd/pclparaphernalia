@@ -14,7 +14,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2014-2018</para>
     ///
     /// </summary>
-    static class TargetWinPrint
+    internal static class TargetWinPrint
     {
         //--------------------------------------------------------------------//
         //                                            D e c l a r a t i o n s //
@@ -23,7 +23,6 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-
         public class DOCINFOA
         {
             [MarshalAs(UnmanagedType.LPStr)] public string pDocName;
@@ -68,7 +67,6 @@ namespace PCLParaphernalia
                    SetLastError = true, CharSet = CharSet.Ansi,
                    ExactSpelling = true,
                    CallingConvention = CallingConvention.StdCall)]
-
         public static extern bool OpenPrinter(
             [MarshalAs(UnmanagedType.LPStr)] string szPrinter,
             out IntPtr hPrinter,
@@ -80,7 +78,6 @@ namespace PCLParaphernalia
                    SetLastError = true,
                    ExactSpelling = true,
                    CallingConvention = CallingConvention.StdCall)]
-
         public static extern bool ClosePrinter(IntPtr hPrinter);
 
         //--------------------------------------------------------------------//
@@ -89,7 +86,6 @@ namespace PCLParaphernalia
                    SetLastError = true, CharSet = CharSet.Ansi,
                    ExactSpelling = true,
                    CallingConvention = CallingConvention.StdCall)]
-
         public static extern bool StartDocPrinter(
             IntPtr hPrinter,
             int level,
@@ -101,7 +97,6 @@ namespace PCLParaphernalia
                     SetLastError = true,
                     ExactSpelling = true,
                     CallingConvention = CallingConvention.StdCall)]
-
         public static extern bool EndDocPrinter(IntPtr hPrinter);
 
         //--------------------------------------------------------------------//
@@ -110,7 +105,6 @@ namespace PCLParaphernalia
                     SetLastError = true,
                     ExactSpelling = true,
                     CallingConvention = CallingConvention.StdCall)]
-
         public static extern bool StartPagePrinter(IntPtr hPrinter);
 
         //--------------------------------------------------------------------//
@@ -119,7 +113,6 @@ namespace PCLParaphernalia
                     SetLastError = true,
                     ExactSpelling = true,
                     CallingConvention = CallingConvention.StdCall)]
-
         public static extern bool EndPagePrinter(IntPtr hPrinter);
 
         //--------------------------------------------------------------------//
@@ -128,7 +121,6 @@ namespace PCLParaphernalia
                     SetLastError = true,
                     ExactSpelling = true,
                     CallingConvention = CallingConvention.StdCall)]
-
         public static extern bool WritePrinter(
             IntPtr hPrinter,
             IntPtr pBytes,
@@ -141,7 +133,6 @@ namespace PCLParaphernalia
                     SetLastError = true,
                     ExactSpelling = true,
                     CallingConvention = CallingConvention.StdCall)]
-
         public static extern bool GetPrinterDriver(
             IntPtr hPrinter,
             string pEnvironment,
@@ -156,7 +147,6 @@ namespace PCLParaphernalia
                     SetLastError = true,
                     ExactSpelling = true,
                     CallingConvention = CallingConvention.StdCall)]
-
         public static extern uint GetLastError();
 
         //--------------------------------------------------------------------//
@@ -281,7 +271,7 @@ namespace PCLParaphernalia
                         //----------------------------------------------------//
                         //                                                    //
                         // Read contents of supplied stream and send to       //
-                        // windows printer.                                   // 
+                        // windows printer.                                   //
                         //                                                    //
                         //----------------------------------------------------//
 

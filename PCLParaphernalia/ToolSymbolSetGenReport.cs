@@ -8,7 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2013</para>
     ///
     /// </summary>
-    static class ToolSymbolSetGenReport
+    internal static class ToolSymbolSetGenReport
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -16,25 +16,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int _maxSizeNameTag = 22;
-        const int _colSpanNone = -1;
-
-        const bool _flagNone = false;
-        const bool _flagBlankBefore = true;
+        private const int _maxSizeNameTag = 22;
+        private const int _colSpanNone = -1;
+        private const bool _flagNone = false;
+        private const bool _flagBlankBefore = true;
 
         private const int cCodePointUnused = 65535;
         private const int cCodePointC1Min = 0x80;
         private const int cCodePointC1Max = 0x9f;
-
-        const int lm0 = 21;
-        const int lm1 = 57;
-
-        const int lcDec = 5;
-        const int lcHex = 4;
-        const int lrDec = 5;
-        const int lrHex = 4;
-
-        const int lSep = 1;
+        private const int lm0 = 21;
+        private const int lm1 = 57;
+        private const int lcDec = 5;
+        private const int lcHex = 4;
+        private const int lrDec = 5;
+        private const int lrHex = 4;
+        private const int lSep = 1;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

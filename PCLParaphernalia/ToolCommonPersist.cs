@@ -8,7 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2011</para>
     ///
     /// </summary>
-    static class ToolCommonPersist
+    internal static class ToolCommonPersist
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -16,13 +16,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _mainKey = MainForm._regMainKey;
-
-        const string _subKeyTools = "Tools";
-
-        const string _nameIndxToolType = "IndxToolType";
-
-        const int _indexZero = 0;
+        private const string _mainKey = MainForm._regMainKey;
+        private const string _subKeyTools = "Tools";
+        private const string _nameIndxToolType = "IndxToolType";
+        private const int _indexZero = 0;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

@@ -9,7 +9,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
-    static class PCLXLDownloadStream
+    internal static class PCLXLDownloadStream
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -149,7 +149,6 @@ namespace PCLParaphernalia
             streamNamePresent = CheckForStreamName(filename, fileSize, ref streamName);
 
             StreamFileClose();
-        
 
             return streamNamePresent;
         }
@@ -250,7 +249,7 @@ namespace PCLParaphernalia
 
                 return false;
             }
-            
+
             if (!File.Exists(fileName))
             {
                 MessageBox.Show($"Download stream file '{fileName}' does not exist.",

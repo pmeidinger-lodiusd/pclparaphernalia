@@ -9,7 +9,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class PCLXLEmbedDataDefs
+    internal static class PCLXLEmbedDataDefs
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

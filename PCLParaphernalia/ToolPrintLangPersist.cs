@@ -8,7 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class ToolPrintLangPersist
+    internal static class ToolPrintLangPersist
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -16,45 +16,43 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _mainKey = MainForm._regMainKey;
+        private const string _mainKey = MainForm._regMainKey;
+        private const string _subKeyTools = "Tools";
+        private const string _subKeyToolsPDLData = _subKeyTools + @"\PdlData";
+        private const string _subKeyToolsPrintLang = "PrintLang";
+        private const string _subKeyPCL = "PCL";
+        private const string _subKeyPCLXL = "PCLXL";
+        private const string _subKeyPML = "PML";
+        private const string _subKeySymSets = "SymSets";
+        private const string _subKeyFonts = "Fonts";
+        private const string _nameIndxInfoType = "IndxInfoType";
+        private const string _nameReportFile = "ReportFile";
+        private const string _nameFlagOptDiscrete = "FlagOptDiscrete";
+        private const string _nameFlagOptMapping = "FlagOptMapping";
 
-        const string _subKeyTools = "Tools";
-        const string _subKeyToolsPDLData = _subKeyTools + @"\PdlData";
-        const string _subKeyToolsPrintLang = "PrintLang";
-        const string _subKeyPCL = "PCL";
-        const string _subKeyPCLXL = "PCLXL";
-        const string _subKeyPML = "PML";
-        const string _subKeySymSets = "SymSets";
-        const string _subKeyFonts = "Fonts";
-
-        const string _nameIndxInfoType = "IndxInfoType";
-        const string _nameReportFile = "ReportFile";
-        const string _nameFlagOptDiscrete = "FlagOptDiscrete";
-        const string _nameFlagOptMapping = "FlagOptMapping";
         //const string _nameFlagOptMapDuo = "FlagOptMapDuo";
-        const string _nameFlagOptObsolete = "FlagOptObsolete";
-        const string _nameFlagOptReserved = "FlagOptReserved";
-        const string _nameFlagOptRptWrap = "FlagOptRptWrap";
-        const string _nameFlagSeqControl = "FlagSeqControl";
-        const string _nameFlagSeqComplex = "FlagSeqComplex";
-        const string _nameFlagSeqSimple = "FlagSeqSimple";
-        const string _nameFlagTagAction = "FlagTagAction";
-        const string _nameFlagTagAttrDefiner = "FlagTagAttrDefiner";
-        const string _nameFlagTagAttribute = "FlagTagAttribute";
-        const string _nameFlagTagDataType = "FlagTagDataType";
-        const string _nameFlagTagEmbedDataDef = "FlagTagEmbedDataDef";
-        const string _nameFlagTagOperator = "FlagTagOperator";
-        const string _nameFlagTagOutcome = "FlagTagOutcome";
-        const string _nameFlagTagWhitespace = "FlagTagWhitespace";
-        const string _nameIndxRptFileFmt = "IndxRptFileFmt";
-        const string _nameIndxRptChkMarks = "IndxRptChkMarks";
-        const string _nameSymSetMapType = "SymSetMapType";
+        private const string _nameFlagOptObsolete = "FlagOptObsolete";
 
-        const int _flagFalse = 0;
-        const int _flagTrue = 1;
-        const int _indexZero = 0;
-
-        const string _defaultFilename = "DefaultPDLReportFile.txt";
+        private const string _nameFlagOptReserved = "FlagOptReserved";
+        private const string _nameFlagOptRptWrap = "FlagOptRptWrap";
+        private const string _nameFlagSeqControl = "FlagSeqControl";
+        private const string _nameFlagSeqComplex = "FlagSeqComplex";
+        private const string _nameFlagSeqSimple = "FlagSeqSimple";
+        private const string _nameFlagTagAction = "FlagTagAction";
+        private const string _nameFlagTagAttrDefiner = "FlagTagAttrDefiner";
+        private const string _nameFlagTagAttribute = "FlagTagAttribute";
+        private const string _nameFlagTagDataType = "FlagTagDataType";
+        private const string _nameFlagTagEmbedDataDef = "FlagTagEmbedDataDef";
+        private const string _nameFlagTagOperator = "FlagTagOperator";
+        private const string _nameFlagTagOutcome = "FlagTagOutcome";
+        private const string _nameFlagTagWhitespace = "FlagTagWhitespace";
+        private const string _nameIndxRptFileFmt = "IndxRptFileFmt";
+        private const string _nameIndxRptChkMarks = "IndxRptChkMarks";
+        private const string _nameSymSetMapType = "SymSetMapType";
+        private const int _flagFalse = 0;
+        private const int _flagTrue = 1;
+        private const int _indexZero = 0;
+        private const string _defaultFilename = "DefaultPDLReportFile.txt";
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

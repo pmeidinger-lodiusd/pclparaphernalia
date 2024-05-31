@@ -8,7 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
-    static class ToolFormSamplePersist
+    internal static class ToolFormSamplePersist
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -16,58 +16,55 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _mainKey = MainForm._regMainKey;
-
-        const string _subKeyTools = "Tools";
-        const string _subKeyToolsFormSample = _subKeyTools + @"\FormSample";
-        const string _subKeyPCL5 = "PCL5";
-        const string _subKeyPCL6 = "PCL6";
-        const string _subKeyPCL = "PCL";
-        const string _subKeyPCLXL = "PCLXL";
-
-        const string _nameCaptureFile = "CaptureFile";
-        const string _nameFormNameMain = "FormNameMain";
-        const string _nameFormNameRear = "FormNameRear";
-        const string _nameFormFileMain = "FormFileMain";
-        const string _nameFormFileRear = "FormFileRear";
-        const string _namePrnDiskFileMain = "PrnDiskFileMain";
-        const string _namePrnDiskFileRear = "PrnDiskFileRear";
-        const string _nameMacroIdMain = "MacroIdMain";
-        const string _nameMacroIdRear = "MacroIdRear";
-        const string _nameFlagMacroRemove = "FlagMacroRemove";
-        const string _nameFlagMainForm = "FlagMainForm";
-        const string _nameFlagRearForm = "FlagRearForm";
-        const string _nameFlagMainOnPrnDisk = "FlagMainOnPrnDisk";
-        const string _nameFlagRearOnPrnDisk = "FlagRearOnPrnDisk";
-        const string _nameFlagRearBPlate = "FlagRearBPlate";
-        const string _nameFlagGSPushPop = "FlagGSPushPop";
-        const string _nameFlagPrintDescText = "FlagPrintDescText";
-        const string _nameTestPageCount = "TestPageCount";
-        const string _nameIndxMethod = "IndxMethod";
-        const string _nameIndxOrientation = "IndxOrientation";
-        const string _nameIndxOrientRear = "IndxOrientationRear";
-        const string _nameIndxPaperSize = "IndxPaperSize";
-        const string _nameIndxPaperType = "IndxPaperType";
-        const string _nameIndxPDL = "IndxPDL";
-        const string _nameIndxPlexMode = "IndxPlexMode";
-
-        const int _flagFalse = 0;
-        const int _flagTrue = 1;
-        const int _indexZero = 0;
+        private const string _mainKey = MainForm._regMainKey;
+        private const string _subKeyTools = "Tools";
+        private const string _subKeyToolsFormSample = _subKeyTools + @"\FormSample";
+        private const string _subKeyPCL5 = "PCL5";
+        private const string _subKeyPCL6 = "PCL6";
+        private const string _subKeyPCL = "PCL";
+        private const string _subKeyPCLXL = "PCLXL";
+        private const string _nameCaptureFile = "CaptureFile";
+        private const string _nameFormNameMain = "FormNameMain";
+        private const string _nameFormNameRear = "FormNameRear";
+        private const string _nameFormFileMain = "FormFileMain";
+        private const string _nameFormFileRear = "FormFileRear";
+        private const string _namePrnDiskFileMain = "PrnDiskFileMain";
+        private const string _namePrnDiskFileRear = "PrnDiskFileRear";
+        private const string _nameMacroIdMain = "MacroIdMain";
+        private const string _nameMacroIdRear = "MacroIdRear";
+        private const string _nameFlagMacroRemove = "FlagMacroRemove";
+        private const string _nameFlagMainForm = "FlagMainForm";
+        private const string _nameFlagRearForm = "FlagRearForm";
+        private const string _nameFlagMainOnPrnDisk = "FlagMainOnPrnDisk";
+        private const string _nameFlagRearOnPrnDisk = "FlagRearOnPrnDisk";
+        private const string _nameFlagRearBPlate = "FlagRearBPlate";
+        private const string _nameFlagGSPushPop = "FlagGSPushPop";
+        private const string _nameFlagPrintDescText = "FlagPrintDescText";
+        private const string _nameTestPageCount = "TestPageCount";
+        private const string _nameIndxMethod = "IndxMethod";
+        private const string _nameIndxOrientation = "IndxOrientation";
+        private const string _nameIndxOrientRear = "IndxOrientationRear";
+        private const string _nameIndxPaperSize = "IndxPaperSize";
+        private const string _nameIndxPaperType = "IndxPaperType";
+        private const string _nameIndxPDL = "IndxPDL";
+        private const string _nameIndxPlexMode = "IndxPlexMode";
+        private const int _flagFalse = 0;
+        private const int _flagTrue = 1;
+        private const int _indexZero = 0;
 
         //const string _defaultCaptureFile = "Capture_FormSample.prn";
-        const string _defaultCaptureFilePCL = "CaptureFile_FormSamplePCL.prn";
-        const string _defaultCaptureFilePCLXL = "CaptureFile_FormSamplePCLXL.prn";
-        const string _defaultFilePCLMain = "DefaultFilePCLMain.ovl";
-        const string _defaultFilePCLRear = "DefaultFilePCLRear.ovl";
-        const string _defaultFilePCLXLMain = "DefaultFilePCLXLMain.ovx";
-        const string _defaultFilePCLXLRear = "DefaultFilePCLXLRear.ovx";
-        const string _defaultFormNameMain = "TestFormMain";
-        const string _defaultFormNameRear = "TestFormRear";
+        private const string _defaultCaptureFilePCL = "CaptureFile_FormSamplePCL.prn";
 
-        const int _defaultMacroIdMain = 32767;
-        const int _defaultMacroIdRear = 32766;
-        const int _defaultTestPageCount = 3;
+        private const string _defaultCaptureFilePCLXL = "CaptureFile_FormSamplePCLXL.prn";
+        private const string _defaultFilePCLMain = "DefaultFilePCLMain.ovl";
+        private const string _defaultFilePCLRear = "DefaultFilePCLRear.ovl";
+        private const string _defaultFilePCLXLMain = "DefaultFilePCLXLMain.ovx";
+        private const string _defaultFilePCLXLRear = "DefaultFilePCLXLRear.ovx";
+        private const string _defaultFormNameMain = "TestFormMain";
+        private const string _defaultFormNameRear = "TestFormRear";
+        private const int _defaultMacroIdMain = 32767;
+        private const int _defaultMacroIdRear = 32766;
+        private const int _defaultTestPageCount = 3;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

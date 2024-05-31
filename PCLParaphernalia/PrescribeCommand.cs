@@ -7,8 +7,7 @@
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "properties renaming")]
-
-    class PrescribeCommand
+    internal class PrescribeCommand
     {
         private int _statsCtParent;
         private int _statsCtChild;

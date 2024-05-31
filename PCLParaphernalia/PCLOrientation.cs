@@ -6,7 +6,7 @@
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    class PCLOrientation
+    internal class PCLOrientation
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

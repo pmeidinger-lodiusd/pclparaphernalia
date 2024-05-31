@@ -10,7 +10,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class ToolImageBitmapPCLXL
+    internal static class ToolImageBitmapPCLXL
     {
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -332,7 +332,7 @@ namespace PCLParaphernalia
             //                    length   = 2 (= 2 * 1) bytes.               //
             //      Image data:   Each image pixel is defined by 1 bit        //
             //                    which is used an an index into the          //
-            //                    2-element palette.                          // 
+            //                    2-element palette.                          //
             //                                                                //
             //   -  1-bit colour                                              //
             //      Colour space: RGB (3 plane)                               //
@@ -342,7 +342,7 @@ namespace PCLParaphernalia
             //                    length   = 6 (= 2 * 3) bytes.               //
             //      Image data:   Each image pixel is defined by 1 bit        //
             //                    which is used an an index into the          //
-            //                    2-element palette.                          // 
+            //                    2-element palette.                          //
             //                                                                //
             //   -  4-bit:                                                    //
             //      Colour space: RGB (3-plane)                               //
@@ -352,7 +352,7 @@ namespace PCLParaphernalia
             //                    length   = 48 (= 16 * 3) bytes.             //
             //      Image data:   Each group of 4 bits defines an image       //
             //                    pixel by use as an index into the           //
-            //                    16-element palette.                         // 
+            //                    16-element palette.                         //
             //                                                                //
             //   -  24-bit:                                                   //
             //      Colour space: RGB (3-plane)                               //

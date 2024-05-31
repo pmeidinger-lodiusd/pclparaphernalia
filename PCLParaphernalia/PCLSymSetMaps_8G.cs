@@ -6,7 +6,7 @@
     /// <para>© Chris Hutchinson 2016</para>
     ///
     /// </summary>
-    static partial class PCLSymSetMaps
+    internal static partial class PCLSymSetMaps
     {
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -23,7 +23,7 @@
         //          The output from LJ 1320n and LJ M475dn is a subset of     //
         //          that obtained from the LJ M553x for the few fonts         //
         //          (CG Times, Courier, Letter Gothic, Univers) which support //
-        //          this symbol	set.                                          //	
+        //          this symbol	set.                                          //
         //                                                                    //
         //--------------------------------------------------------------------//
 

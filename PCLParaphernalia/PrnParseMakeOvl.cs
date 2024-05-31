@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
-    static class PrnParseMakeOvl
+    internal static class PrnParseMakeOvl
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -90,7 +90,7 @@ namespace PCLParaphernalia
             {
                 //------------------------------------------------------------//
                 //                                                            //
-                //   (action == PrnParseConstants.eOvlAct.PushGS)             // 
+                //   (action == PrnParseConstants.eOvlAct.PushGS)             //
                 //                        ||                                  //
                 //   (action == PrnParseConstants.eOvlAct.Remove)             //
                 //                        ||                                  //
@@ -1390,7 +1390,6 @@ namespace PCLParaphernalia
             short vInt16;
             string descComplex = string.Empty;
 
-
             //----------------------------------------------------------------//
             //                                                                //
             // Check sequence against entries in standard Complex             //
@@ -1430,7 +1429,6 @@ namespace PCLParaphernalia
             seqBuf[1] = iChar;
             seqBuf[2] = gChar;
             seqBuf[3] = tChar;
-
 
             int prefixLen;
             string seq;

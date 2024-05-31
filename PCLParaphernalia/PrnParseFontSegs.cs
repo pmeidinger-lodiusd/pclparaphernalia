@@ -9,7 +9,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    class PrnParseFontSegs
+    internal class PrnParseFontSegs
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -809,7 +809,6 @@ namespace PCLParaphernalia
                     string.Empty,
                     segSize + " (" + (segSize + segHddrLen) + " including type & size fields))");
 
-
                 //------------------------------------------------------------//
                 //                                                            //
                 // Adjust offsets and remainders.                             //
@@ -956,7 +955,6 @@ namespace PCLParaphernalia
                     (segSize + segHddrLen) +
                     " including type & size fields)");
 
-
                 //------------------------------------------------------------//
 
                 //------------------------------------------------------------//
@@ -1094,7 +1092,6 @@ namespace PCLParaphernalia
                     "        size:",
                     string.Empty,
                     segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
-
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1420,7 +1417,6 @@ namespace PCLParaphernalia
                     string.Empty,
                     segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
 
-
                 //------------------------------------------------------------//
                 //                                                            //
                 // Segment format is the standard Character Complement data.  //
@@ -1573,7 +1569,6 @@ namespace PCLParaphernalia
                     "        size:",
                     string.Empty,
                     segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
-
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -2230,7 +2225,6 @@ namespace PCLParaphernalia
                     (segSize + segHddrLen) +
                     " including type & size fields)");
 
-
                 //------------------------------------------------------------//
 
                 //------------------------------------------------------------//
@@ -2832,7 +2826,6 @@ namespace PCLParaphernalia
                     (segSize + segHddrLen) +
                     " including type & size fields)");
 
-
                 //------------------------------------------------------------//
 
                 //------------------------------------------------------------//
@@ -3144,7 +3137,6 @@ namespace PCLParaphernalia
                     string.Empty,
                     segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
 
-
                 //------------------------------------------------------------//
 
                 //------------------------------------------------------------//
@@ -3282,7 +3274,6 @@ namespace PCLParaphernalia
                     "        size:",
                     string.Empty,
                     segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
-
 
                 //------------------------------------------------------------//
 
@@ -4324,7 +4315,6 @@ namespace PCLParaphernalia
                     "        size:",
                     string.Empty,
                     segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
-
 
                 //------------------------------------------------------------//
 

@@ -8,7 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class ToolPrintLangReport
+    internal static class ToolPrintLangReport
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -16,13 +16,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int _maxSizeNameTag = 15;
-        const int _colSpanNone = -1;
-
-        const bool _flagNone = false;
-        const bool _flagBlankBefore = true;
-        const bool _flagBlankAfter = true;
-        const bool _flagNameAsHddr = true;
+        private const int _maxSizeNameTag = 15;
+        private const int _colSpanNone = -1;
+        private const bool _flagNone = false;
+        private const bool _flagBlankBefore = true;
+        private const bool _flagBlankAfter = true;
+        private const bool _flagNameAsHddr = true;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

@@ -6,7 +6,7 @@
     /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
-    class PCLLogicalOperation
+    internal class PCLLogicalOperation
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -14,10 +14,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int _maxPFLen = 11;
-
-        readonly short _opId;
-        readonly short _opCode;
+        private const int _maxPFLen = 11;
+        private readonly short _opId;
+        private readonly short _opCode;
 
         private readonly string _actPostfix;
 

@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2015</para>
     ///
     /// </summary>
-    static class ToolStatusReadbackPJLFS
+    internal static class ToolStatusReadbackPJLFS
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -97,7 +97,7 @@ namespace PCLParaphernalia
 
                 return false;
             }
-            
+
             if (!File.Exists(fileName))
             {
                 MessageBox.Show($"Binary source file '{fileName}' does not exist.",
@@ -111,7 +111,6 @@ namespace PCLParaphernalia
             try
             {
                 _ipStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.None);
-
             }
             catch (IOException e)
             {
@@ -358,7 +357,7 @@ namespace PCLParaphernalia
             {
                 //------------------------------------------------------------//
                 //                                                            //
-                // PJL FileSystem upload; request types:                      // 
+                // PJL FileSystem upload; request types:                      //
                 //  -   FSUPLOAD                                              //
                 //                                                            //
                 //------------------------------------------------------------//
@@ -447,7 +446,7 @@ namespace PCLParaphernalia
                     //--------------------------------------------------------//
                     //                                                        //
                     // <FF> at end of ECHO text is either not expected, or    //
-                    // has been read in a previous read action.               // 
+                    // has been read in a previous read action.               //
                     //                                                        //
                     //--------------------------------------------------------//
 
@@ -456,7 +455,7 @@ namespace PCLParaphernalia
                         //----------------------------------------------------//
                         //                                                    //
                         // Terminating <FF> found (as last byte of data       //
-                        // returned by current read action).                  // 
+                        // returned by current read action).                  //
                         //                                                    //
                         //----------------------------------------------------//
 
@@ -572,7 +571,7 @@ namespace PCLParaphernalia
                         //--------------------------------------------------------//
                         //                                                        //
                         // <FF> at end of ECHO text is either not expected, or    //
-                        // has been read in a previous read action.               // 
+                        // has been read in a previous read action.               //
                         //                                                        //
                         //--------------------------------------------------------//
 
@@ -581,7 +580,7 @@ namespace PCLParaphernalia
                             //----------------------------------------------------//
                             //                                                    //
                             // Terminating <FF> found (as last byte of data       //
-                            // returned by current read action).                  // 
+                            // returned by current read action).                  //
                             //                                                    //
                             //----------------------------------------------------//
 
@@ -779,7 +778,7 @@ namespace PCLParaphernalia
         // data to save to the binary output file.                            //
         //                                                                    //
         // Assume that the SIZE parameter will start with the last occurrence //
-        // of "S" before the terminating <LF> of the command.                 // 
+        // of "S" before the terminating <LF> of the command.                 //
         //                                                                    //
         //--------------------------------------------------------------------//
 
@@ -930,7 +929,7 @@ namespace PCLParaphernalia
             {
                 //------------------------------------------------------------//
                 //                                                            //
-                // PJL FileSystem upload to host workstation; request types:  // 
+                // PJL FileSystem upload to host workstation; request types:  //
                 //  -   FSUPLOAD                                              //
                 // Response from printer expected - write this direct to the  //
                 // target file (it could be (much) larger than standard reply //

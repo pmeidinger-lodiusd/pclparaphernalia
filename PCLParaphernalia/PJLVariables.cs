@@ -6,7 +6,7 @@
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class PJLVariables
+    internal static class PJLVariables
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

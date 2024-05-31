@@ -12,7 +12,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
-    static class ToolMiscSamplesActUnicodePCLXL
+    internal static class ToolMiscSamplesActUnicodePCLXL
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -20,26 +20,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _formName = "MiscSamplesForm";
-
-        const int _symSet_18N = 590;
-        const int _symSet_19U = 629;
-        const ushort _unitsPerInch = PCLXLWriter._sessionUPI;
-
-        const short _pageOriginX = _unitsPerInch * 1;
-        const short _pageOriginY = _unitsPerInch * 1;
-        const short _incInch = _unitsPerInch * 1;
-        const short _lineInc = _unitsPerInch * 5 / 6;
-
-        const short _posXDesc = _pageOriginX;
-        const short _posXData = _pageOriginX + (2 * _incInch);
-
-        const short _posYHddr = _pageOriginY;
-        const short _posYDesc = _pageOriginY + (2 * _incInch);
-        const short _posYData = _pageOriginY + (2 * _incInch);
-
-        const short _shade_1 = 40;
-        const short _shade_2 = 20;
+        private const string _formName = "MiscSamplesForm";
+        private const int _symSet_18N = 590;
+        private const int _symSet_19U = 629;
+        private const ushort _unitsPerInch = PCLXLWriter._sessionUPI;
+        private const short _pageOriginX = _unitsPerInch * 1;
+        private const short _pageOriginY = _unitsPerInch * 1;
+        private const short _incInch = _unitsPerInch * 1;
+        private const short _lineInc = _unitsPerInch * 5 / 6;
+        private const short _posXDesc = _pageOriginX;
+        private const short _posXData = _pageOriginX + (2 * _incInch);
+        private const short _posYHddr = _pageOriginY;
+        private const short _posYDesc = _pageOriginY + (2 * _incInch);
+        private const short _posYData = _pageOriginY + (2 * _incInch);
+        private const short _shade_1 = 40;
+        private const short _shade_2 = 20;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -47,12 +42,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static readonly short _fontIndexArial = PCLFonts.GetIndexForName("Arial");
-        static readonly short _fontIndexCourier = PCLFonts.GetIndexForName("Courier");
-
-        static readonly string _fontNameArial = PCLFonts.GetPCLXLName(_fontIndexArial, PCLFonts.Variant.Regular);
-        static readonly string _fontNameCourier = PCLFonts.GetPCLXLName(_fontIndexCourier, PCLFonts.Variant.Regular);
-        static readonly string _fontNameCourierBold = PCLFonts.GetPCLXLName(_fontIndexCourier, PCLFonts.Variant.Bold);
+        private static readonly short _fontIndexArial = PCLFonts.GetIndexForName("Arial");
+        private static readonly short _fontIndexCourier = PCLFonts.GetIndexForName("Courier");
+        private static readonly string _fontNameArial = PCLFonts.GetPCLXLName(_fontIndexArial, PCLFonts.Variant.Regular);
+        private static readonly string _fontNameCourier = PCLFonts.GetPCLXLName(_fontIndexCourier, PCLFonts.Variant.Regular);
+        private static readonly string _fontNameCourierBold = PCLFonts.GetPCLXLName(_fontIndexCourier, PCLFonts.Variant.Bold);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

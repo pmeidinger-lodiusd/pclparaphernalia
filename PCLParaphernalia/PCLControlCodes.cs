@@ -10,7 +10,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class PCLControlCodes
+    internal static class PCLControlCodes
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -295,7 +295,7 @@ namespace PCLParaphernalia
             // sequences.                                                     //
             // Don't include it here, as (with the current mechanism) it will //
             // always register a zero hit count in the statistics.            //
- 
+
             codeVal = 0x1b;                                       // 0x1b: Esc//
             _tags.Add(codeVal,
                 new PCLControlCode(codeVal, false,

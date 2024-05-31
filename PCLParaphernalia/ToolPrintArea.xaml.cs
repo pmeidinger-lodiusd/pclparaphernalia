@@ -13,7 +13,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class ToolPrintArea : Window
     {
         //--------------------------------------------------------------------//
@@ -22,10 +21,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const ushort _sessionUPI = 600;
-
-        const double _unitsToInches = 1.00 / _sessionUPI;
-        const double _unitsToMilliMetres = 25.4 / _sessionUPI;
+        private const ushort _sessionUPI = 600;
+        private const double _unitsToInches = 1.00 / _sessionUPI;
+        private const double _unitsToMilliMetres = 25.4 / _sessionUPI;
 
         private static readonly int[] _subsetPDLs =
         {
@@ -1395,7 +1393,7 @@ namespace PCLParaphernalia
                 // was triggered by a LostFocus event (in which case focus is //
                 // now elsewhere), or by some other event (the most usual     //
                 // being a TextChanged event).                                //
-                //                                                            // 
+                //                                                            //
                 // As the minimum value is several digits long, a TextChanged //
                 // event is not used, since this would cause a validation     //
                 // error if an existing value was highlighted and replaced by //
@@ -1544,7 +1542,7 @@ namespace PCLParaphernalia
                 // was triggered by a LostFocus event (in which case focus is //
                 // now elsewhere), or by some other event (the most usual     //
                 // being a TextChanged event).                                //
-                //                                                            // 
+                //                                                            //
                 // As the minimum value is several digits long, a TextChanged //
                 // event is not used, since this would cause a validation     //
                 // error if an existing value was highlighted and replaced by //

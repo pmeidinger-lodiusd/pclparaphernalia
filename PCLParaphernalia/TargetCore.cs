@@ -12,7 +12,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class TargetCore
+    internal static class TargetCore
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -75,7 +75,7 @@ namespace PCLParaphernalia
         //                                                                    //
         // Load current target metrics data from regisry.                     //
         // Note that 'capture file' data is not relevant for those tools      //
-        // which don't output a printer ready job.                            // 
+        // which don't output a printer ready job.                            //
         //                                                                    //
         //--------------------------------------------------------------------//
 
@@ -143,7 +143,6 @@ namespace PCLParaphernalia
             }
 
             //----------------------------------------------------------------//
-
             else if (crntToolId == ToolCommonData.ToolIds.MiscSamples)
             {
                 ToolMiscSamplesPersist.LoadDataCapture(
@@ -153,7 +152,6 @@ namespace PCLParaphernalia
             }
 
             //----------------------------------------------------------------//
-
             else
             {
                 //     Tool MakeOverlay // ***** Do DUMMY procs ? ***** //
@@ -335,7 +333,6 @@ namespace PCLParaphernalia
                 ToolTrayMapPersist.SaveDataCapture(crntPDL, saveFilename);
 
             //----------------------------------------------------------------//
-
             else if (crntToolId == ToolCommonData.ToolIds.MiscSamples)
                 ToolMiscSamplesPersist.SaveDataCapture(crntToolSubId, crntPDL, saveFilename);
 

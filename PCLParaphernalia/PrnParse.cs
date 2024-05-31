@@ -13,8 +13,7 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "properties renaming")]
-
-    class PrnParse
+    internal class PrnParse
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -185,7 +184,7 @@ namespace PCLParaphernalia
                 // Action 'current file' start conditions; this:              //
                 // - Sets initial PDL (to override default of PCL); _crntPDL  //
                 // - Sets PCL XL initial state (for PDL = PCL XL)             //
-                // - Returns requested start offset.                          // 
+                // - Returns requested start offset.                          //
                 //                                                            //
                 //------------------------------------------------------------//
 
@@ -1642,7 +1641,7 @@ namespace PCLParaphernalia
 
                 return false;
             }
-            
+
             if (!File.Exists(fileName))
             {
                 MessageBox.Show($"Print file '{fileName}' does not exist.",

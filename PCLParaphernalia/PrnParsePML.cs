@@ -10,7 +10,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    class PrnParsePML
+    internal class PrnParsePML
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -18,8 +18,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int _decodeAreaMax = 48;
-        const int _decodeSliceMax = 4;
+        private const int _decodeAreaMax = 48;
+        private const int _decodeSliceMax = 4;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -51,7 +51,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // p r o c e s s P M L A S C I I H e x                                //

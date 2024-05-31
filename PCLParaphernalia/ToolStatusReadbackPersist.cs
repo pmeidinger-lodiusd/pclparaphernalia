@@ -8,7 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class ToolStatusReadbackPersist
+    internal static class ToolStatusReadbackPersist
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -16,47 +16,40 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _mainKey = MainForm._regMainKey;
-
-        const string _subKeyTools = "Tools";
-        const string _subKeyToolsStatusReadback = _subKeyTools + @"\StatusReadback";
-        const string _subKeyPCL = "PCL";
-        const string _subKeyPJL = "PJL";
-        const string _subKeyPJLFS = "PJLFS";
-
-        const string _nameBinSrcFile = "BinSrcFile";
-        const string _nameBinTgtFile = "BinTgtFile";
-        const string _nameCaptureFile = "CaptureFile";
-        const string _nameCustomCat = "CustomCat";
-        const string _nameCustomVar = "CustomVar";
-        const string _nameObjectPath = "ObjectPath";
-        const string _nameReportFile = "ReportFile";
-        const string _nameFlagPJLFS = "flagPJLFS";
-        const string _nameFlagPJLFSSecJob = "flagPJLFSSecJob";
-        const string _nameIndxCategory = "IndxCategory";
-        const string _nameIndxCommand = "IndxCommand";
-        const string _nameIndxEntityType = "IndxEntityType";
-        const string _nameIndxLocationType = "IndxLocationType";
-        const string _nameIndxPDL = "IndxPDL";
-        const string _nameIndxRptFileFmt = "IndxRptFileFmt";
-        const string _nameIndxVariable = "IndxVariable";
-
-        const int _flagFalse = 0;
-        const int _flagTrue = 1;
-        const int _indexZero = 0;
-
-        const string _defaultCaptureFilePCL = "CaptureFile_StatusReadbackPCL.prn";
-        const string _defaultCaptureFilePJL = "CaptureFile_StatusReadbackPJL.prn";
-
-        const string _defaultReportFilePCL = "ReportFile_StatusReadbackPCL.txt";
-        const string _defaultReportFilePJL = "ReportFile_StatusReadbackPJL.txt";
-
-        const string _defaultCustomCatPJL = "CUSTOM_CAT_1";
-        const string _defaultCustomVarPJL = "CUSTOM_VAR_1";
-
-        const string _defaultBinSrcFilePJLFS = "BinSrcFile_PJLFS.pcl";
-        const string _defaultBinTgtFilePJLFS = "BinTgtFile_PJLFS.pcl";
-        const string _defaultObjectPathPJLFS = "0:\\pcl\\macros\\macro1";
+        private const string _mainKey = MainForm._regMainKey;
+        private const string _subKeyTools = "Tools";
+        private const string _subKeyToolsStatusReadback = _subKeyTools + @"\StatusReadback";
+        private const string _subKeyPCL = "PCL";
+        private const string _subKeyPJL = "PJL";
+        private const string _subKeyPJLFS = "PJLFS";
+        private const string _nameBinSrcFile = "BinSrcFile";
+        private const string _nameBinTgtFile = "BinTgtFile";
+        private const string _nameCaptureFile = "CaptureFile";
+        private const string _nameCustomCat = "CustomCat";
+        private const string _nameCustomVar = "CustomVar";
+        private const string _nameObjectPath = "ObjectPath";
+        private const string _nameReportFile = "ReportFile";
+        private const string _nameFlagPJLFS = "flagPJLFS";
+        private const string _nameFlagPJLFSSecJob = "flagPJLFSSecJob";
+        private const string _nameIndxCategory = "IndxCategory";
+        private const string _nameIndxCommand = "IndxCommand";
+        private const string _nameIndxEntityType = "IndxEntityType";
+        private const string _nameIndxLocationType = "IndxLocationType";
+        private const string _nameIndxPDL = "IndxPDL";
+        private const string _nameIndxRptFileFmt = "IndxRptFileFmt";
+        private const string _nameIndxVariable = "IndxVariable";
+        private const int _flagFalse = 0;
+        private const int _flagTrue = 1;
+        private const int _indexZero = 0;
+        private const string _defaultCaptureFilePCL = "CaptureFile_StatusReadbackPCL.prn";
+        private const string _defaultCaptureFilePJL = "CaptureFile_StatusReadbackPJL.prn";
+        private const string _defaultReportFilePCL = "ReportFile_StatusReadbackPCL.txt";
+        private const string _defaultReportFilePJL = "ReportFile_StatusReadbackPJL.txt";
+        private const string _defaultCustomCatPJL = "CUSTOM_CAT_1";
+        private const string _defaultCustomVarPJL = "CUSTOM_VAR_1";
+        private const string _defaultBinSrcFilePJLFS = "BinSrcFile_PJLFS.pcl";
+        private const string _defaultBinTgtFilePJLFS = "BinTgtFile_PJLFS.pcl";
+        private const string _defaultObjectPathPJLFS = "0:\\pcl\\macros\\macro1";
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

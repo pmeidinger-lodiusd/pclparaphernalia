@@ -8,7 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class MainFormPersist
+    internal static class MainFormPersist
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -16,21 +16,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _mainKey = MainForm._regMainKey;
-
-        const string _subKeyVersionData = "VersionData";
-        const string _subKeyWindowState = "WindowState";
-
-        const string _nameVersionBuild = "Build";
-        const string _nameVersionMajor = "Major";
-        const string _nameVersionMinor = "Minor";
-        const string _nameVersionRevision = "Revision";
-
-        const string _nameMainWindowLeft = "MainWindowLeft";
-        const string _nameMainWindowTop = "MainWindowTop";
-        const string _nameMainWindowHeight = "MainWindowHeight";
-        const string _nameMainWindowWidth = "MainWindowWidth";
-        const string _nameMainWindowScale = "MainWindowScale";
+        private const string _mainKey = MainForm._regMainKey;
+        private const string _subKeyVersionData = "VersionData";
+        private const string _subKeyWindowState = "WindowState";
+        private const string _nameVersionBuild = "Build";
+        private const string _nameVersionMajor = "Major";
+        private const string _nameVersionMinor = "Minor";
+        private const string _nameVersionRevision = "Revision";
+        private const string _nameMainWindowLeft = "MainWindowLeft";
+        private const string _nameMainWindowTop = "MainWindowTop";
+        private const string _nameMainWindowHeight = "MainWindowHeight";
+        private const string _nameMainWindowWidth = "MainWindowWidth";
+        private const string _nameMainWindowScale = "MainWindowScale";
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

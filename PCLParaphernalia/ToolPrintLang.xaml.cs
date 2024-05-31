@@ -13,10 +13,8 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0017:Simplify object initialization", Justification = "<Pending>")]
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-
     public partial class ToolPrintLang : Window
     {
         //--------------------------------------------------------------------//
@@ -49,8 +47,8 @@ namespace PCLParaphernalia
             Max
         }
 
-        readonly FontFamily _fontFixed = new FontFamily("Courier New");
-        readonly FontFamily _fontProp = new FontFamily("Arial");
+        private readonly FontFamily _fontFixed = new FontFamily("Courier New");
+        private readonly FontFamily _fontProp = new FontFamily("Arial");
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -1995,7 +1993,7 @@ namespace PCLParaphernalia
                 dataGridView1.Columns.Add(textColumn2);
                 textColumn2.SortMode = DataGridViewColumnSortMode.Programmatic;
                 textColumn2.HeaderCell.SortGlyphDirection = SortOrder.Ascending;
-                dataGridView1.DataSource = BS;         
+                dataGridView1.DataSource = BS;
             */
 
             dgSeq.FontFamily = _fontProp;

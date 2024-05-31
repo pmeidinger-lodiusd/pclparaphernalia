@@ -12,7 +12,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
-    static class ToolMiscSamplesActTxtModChrPCL
+    internal static class ToolMiscSamplesActTxtModChrPCL
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -20,21 +20,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int _macroId = 1;
-        const ushort _unitsPerInch = PCLWriter.sessionUPI;
-        const ushort _plotUnitsPerInch = PCLWriter.plotterUnitsPerInchHPGL2;
-
-        const short _pageOriginX = (_unitsPerInch * 1);
-        const short _pageOriginY = (_unitsPerInch * 1);
-        const short _incInch = (_unitsPerInch * 1);
-        const short _lineInc = (_unitsPerInch * 5) / 6;
-
-        const short _posXDesc = _pageOriginX;
-        const short _posXData1 = _pageOriginX + ((3 * _incInch) / 2);
-        const short _posXData2 = _pageOriginX + ((7 * _incInch) / 2);
-
-        const short _posYDesc = _pageOriginY;
-        const short _posYData = _pageOriginY;
+        private const int _macroId = 1;
+        private const ushort _unitsPerInch = PCLWriter.sessionUPI;
+        private const ushort _plotUnitsPerInch = PCLWriter.plotterUnitsPerInchHPGL2;
+        private const short _pageOriginX = (_unitsPerInch * 1);
+        private const short _pageOriginY = (_unitsPerInch * 1);
+        private const short _incInch = (_unitsPerInch * 1);
+        private const short _lineInc = (_unitsPerInch * 5) / 6;
+        private const short _posXDesc = _pageOriginX;
+        private const short _posXData1 = _pageOriginX + ((3 * _incInch) / 2);
+        private const short _posXData2 = _pageOriginX + ((7 * _incInch) / 2);
+        private const short _posYDesc = _pageOriginY;
+        private const short _posYData = _pageOriginY;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -42,13 +39,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static readonly int _indxFontArial = PCLFonts.GetIndexForName("Arial");
-        static readonly int _indxFontCourier = PCLFonts.GetIndexForName("Courier");
-
-        static int _logPageWidth;
-        static int _logPageHeight;
-        static int _paperWidth;
-        static int _paperHeight;
+        private static readonly int _indxFontArial = PCLFonts.GetIndexForName("Arial");
+        private static readonly int _indxFontCourier = PCLFonts.GetIndexForName("Courier");
+        private static int _logPageWidth;
+        private static int _logPageHeight;
+        private static int _paperWidth;
+        private static int _paperHeight;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -331,12 +327,12 @@ namespace PCLParaphernalia
             // Note that the default HP-GL/2 Y-axis has its origin at         //
             // lower-left of the picture frame, and Y-coordinate values       //
             // increase UP the page, whilst the PCL Y-axis has its origin at  //
-            // the top margin and Y-coordinate values increase DOWN the page. // 
+            // the top margin and Y-coordinate values increase DOWN the page. //
             //                                                                //
             // It is possible to use the same (600 upi) coordinates as PCL by //
             // using:                                                         //
-            //  SC0,1.6933,0,-1.6933,2                                        // 
-            //  IR0,100,100,0                                                 //   
+            //  SC0,1.6933,0,-1.6933,2                                        //
+            //  IR0,100,100,0                                                 //
             // Note that the IR coordinates shown in the example in the "PCL  //
             // Technical Reference" manual are different and are incorrect!   //
             // One drawback to using the same origin and axis direction is    //

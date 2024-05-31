@@ -6,7 +6,7 @@
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    class PrnParseLinkData
+    internal class PrnParseLinkData
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

@@ -10,7 +10,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class PMLActions
+    internal static class PMLActions
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

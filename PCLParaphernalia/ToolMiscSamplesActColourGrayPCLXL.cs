@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
-    static class ToolMiscSamplesActColourGrayPCLXL
+    internal static class ToolMiscSamplesActColourGrayPCLXL
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -19,32 +19,33 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _formName = "MiscSamplesForm";
+        private const string _formName = "MiscSamplesForm";
+        private const int _symSet_19U = 629;
+        private const ushort _unitsPerInch = PCLXLWriter._sessionUPI;
+        private const short _patternId_1 = 601;
+        private const short _pageOriginX = (_unitsPerInch * 1);
+        private const short _pageOriginY = (_unitsPerInch * 1);
+        private const short _incInch = (_unitsPerInch * 1);
+        private const short _lineInc = (_unitsPerInch * 5) / 6;
 
-        const int _symSet_19U = 629;
-        const ushort _unitsPerInch = PCLXLWriter._sessionUPI;
-        const short _patternId_1 = 601;
-
-        const short _pageOriginX = (_unitsPerInch * 1);
-        const short _pageOriginY = (_unitsPerInch * 1);
-        const short _incInch = (_unitsPerInch * 1);
-        const short _lineInc = (_unitsPerInch * 5) / 6;
         //const short _colInc = (_unitsPerInch * 3) / 2;
 
-        const short _posXDesc = _pageOriginX;
+        private const short _posXDesc = _pageOriginX;
+
         //const short _posXDesc1 = _posXDesc + ((_incInch * 15) / 4);
-        const short _posXDesc2 = _posXDesc + ((_incInch * 5) / 2);
-        const short _posXDesc3 = _posXDesc;
-        const short _posXDesc4 = _posXDesc;
+        private const short _posXDesc2 = _posXDesc + ((_incInch * 5) / 2);
 
-        const short _posYHddr = _pageOriginY;
+        private const short _posXDesc3 = _posXDesc;
+        private const short _posXDesc4 = _posXDesc;
+        private const short _posYHddr = _pageOriginY;
+
         //const short _posYDesc1 = _pageOriginY + _incInch;
-        const short _posYDesc2 = _pageOriginY + ((_incInch * 5) / 4);
-        const short _posYDesc3 = _pageOriginY + ((_incInch * 7) / 4);
-        const short _posYDesc4 = _pageOriginY + (_incInch * 2);
+        private const short _posYDesc2 = _pageOriginY + ((_incInch * 5) / 4);
 
-        const short _posXData = _posXDesc + ((_incInch * 5) / 2);
-        const short _posYData = _pageOriginY + ((_incInch * 7) / 4);
+        private const short _posYDesc3 = _pageOriginY + ((_incInch * 7) / 4);
+        private const short _posYDesc4 = _pageOriginY + (_incInch * 2);
+        private const short _posXData = _posXDesc + ((_incInch * 5) / 2);
+        private const short _posYData = _pageOriginY + ((_incInch * 7) / 4);
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -53,11 +54,12 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         //static readonly short _fontIndexArial = PCLFonts.GetIndexForName("Arial");
-        static readonly short _fontIndexCourier = PCLFonts.GetIndexForName("Courier");
+        private static readonly short _fontIndexCourier = PCLFonts.GetIndexForName("Courier");
 
         //static readonly string _fontNameArial = PCLFonts.GetPCLXLName(_fontIndexArial, PCLFonts.Variant.Regular);
-        static readonly string _fontNameCourier = PCLFonts.GetPCLXLName(_fontIndexCourier, PCLFonts.Variant.Regular);
-        static readonly string _fontNameCourierBold = PCLFonts.GetPCLXLName(_fontIndexCourier, PCLFonts.Variant.Bold);
+        private static readonly string _fontNameCourier = PCLFonts.GetPCLXLName(_fontIndexCourier, PCLFonts.Variant.Regular);
+
+        private static readonly string _fontNameCourierBold = PCLFonts.GetPCLXLName(_fontIndexCourier, PCLFonts.Variant.Bold);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -666,7 +668,6 @@ namespace PCLParaphernalia
 
             PCLXLWriter.Font(prnWriter, false, ptSize,
                              _symSet_19U, _fontNameCourier);
-
 
             //----------------------------------------------------------------//
 

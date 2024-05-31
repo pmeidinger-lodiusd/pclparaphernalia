@@ -7,8 +7,7 @@
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "properties renaming")]
-
-    class PJLCommand
+    internal class PJLCommand
     {
         private int _statsCtParent;
         private int _statsCtChild;

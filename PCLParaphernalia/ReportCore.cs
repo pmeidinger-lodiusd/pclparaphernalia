@@ -14,7 +14,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2017</para>
     ///
     /// </summary>
-    static class ReportCore
+    internal static class ReportCore
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -22,7 +22,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int _lcSep = PrnParseConstants.cColSeparatorLen;
+        private const int _lcSep = PrnParseConstants.cColSeparatorLen;
 
         public static string _chkMarkBoxSymFalse = '\u2610'.ToString();
         public static string _chkMarkBoxSymTrue = '\u2611'.ToString();
@@ -353,7 +353,7 @@ namespace PCLParaphernalia
 
             xmlWriter.WriteStartElement("body");
             xmlWriter.WriteStartElement("xsl", "apply-templates", null);
-            xmlWriter.WriteEndElement();               // 
+            xmlWriter.WriteEndElement();               //
 
             xmlWriter.WriteEndElement();               // </body
             xmlWriter.WriteEndElement();               // </html>

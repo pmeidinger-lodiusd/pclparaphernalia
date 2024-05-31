@@ -6,7 +6,7 @@
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class PCLPaperTypes
+    internal static class PCLPaperTypes
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

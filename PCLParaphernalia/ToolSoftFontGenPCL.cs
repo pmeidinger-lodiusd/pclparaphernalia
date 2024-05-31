@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
-    class ToolSoftFontGenPCL
+    internal class ToolSoftFontGenPCL
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -19,13 +19,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int cSizeHddrFmt15Max = 0xffff;
-        const int cSizeHddrDesc = 72;
-        const int cSizeHddrTrail = 2;
+        private const int cSizeHddrFmt15Max = 0xffff;
+        private const int cSizeHddrDesc = 72;
+        private const int cSizeHddrTrail = 2;
 
-        const int cSizeCharHddr = 4;
-        const int cSizeCharGlyphHddr = 4;
-        const int cSizeCharTrail = 2;
+        private const int cSizeCharHddr = 4;
+        private const int cSizeCharGlyphHddr = 4;
+        private const int cSizeCharTrail = 2;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -108,17 +108,11 @@ namespace PCLParaphernalia
 
             try
             {
-                flagOK = _baseHandler.StreamOpen(ref pclFilename,
-                                         false,
-                                         ref _binWriter,
-                                         ref _opStream);
+                flagOK = _baseHandler.StreamOpen(ref pclFilename, false, ref _binWriter, ref _opStream);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,
-                                "Failure to open output font file",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Error);
+                MessageBox.Show(ex.Message, "Failure to open output font file", MessageBoxButton.OK, MessageBoxImage.Error);
 
                 return false;
             }
@@ -440,10 +434,8 @@ namespace PCLParaphernalia
 
                 do
                 {
-                    glyphCompFlags = (ushort)((glyphData[indBuf] << 8) +
-                                                glyphData[indBuf + 1]);
-                    glyphCompId = (ushort)((glyphData[indBuf + 2] << 8) +
-                                                glyphData[indBuf + 3]);
+                    glyphCompFlags = (ushort)((glyphData[indBuf] << 8) + glyphData[indBuf + 1]);
+                    glyphCompId = (ushort)((glyphData[indBuf + 2] << 8) + glyphData[indBuf + 3]);
 
                     if (glyphCompId > maxGlyphId)
                     {
@@ -475,9 +467,8 @@ namespace PCLParaphernalia
                         }
                         else
                         {
-                            // flagOK = 
-                            WriteChar(0xffff, 0, glyphCompId,
-                                       (ushort)(depth + 1), maxGlyphId);
+                            // flagOK =
+                            WriteChar(0xffff, 0, glyphCompId, (ushort)(depth + 1), maxGlyphId);
                         }
                     }
 
@@ -486,26 +477,16 @@ namespace PCLParaphernalia
                         indBuf += 4;
 
                         if ((glyphCompFlags & ToolSoftFontGenTTF.mask_glyf_compFlag_ARG_1_AND_2_ARE_WORDS) != 0)
-                        {
                             indBuf += 4;
-                        }
                         else
-                        {
                             indBuf += 2;
-                        }
 
                         if ((glyphCompFlags & ToolSoftFontGenTTF.mask_glyf_compFlag_WE_HAVE_A_TWO_BY_TWO) != 0)
-                        {
                             indBuf += 8;
-                        }
                         else if ((glyphCompFlags & ToolSoftFontGenTTF.mask_glyf_compFlag_WE_HAVE_AN_X_AND_Y_SCALE) != 0)
-                        {
                             indBuf += 4;
-                        }
                         else if ((glyphCompFlags & ToolSoftFontGenTTF.mask_glyf_compFlag_WE_HAVE_A_SCALE) != 0)
-                        {
                             indBuf += 2;
-                        }
                     }
                 } while ((glyphCompFlags & ToolSoftFontGenTTF.mask_glyf_compFlag_MORE_COMPONENTS) != 0);
             }
@@ -702,7 +683,6 @@ namespace PCLParaphernalia
                             convTextLen) +
                       cSizeHddrTrail;
 
-            
             if ((hddrLen > cSizeHddrFmt15Max) && (!fmt16))
             {
                 MessageBox.Show($"Header length of '{hddrLen}' is incompatible with 'format 15' font.",

@@ -8,7 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class ToolImageBitmapPersist
+    internal static class ToolImageBitmapPersist
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -16,36 +16,33 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _mainKey = MainForm._regMainKey;
-
-        const string _subKeyTools = "Tools";
-        const string _subKeyToolsImageBitmap = _subKeyTools + @"\ImageBitmap";
-        const string _subKeyPCL5 = "PCL5";
-        const string _subKeyPCL6 = "PCL6";
-        const string _subKeyPCL = "PCL";
-        const string _subKeyPCLXL = "PCLXL";
-
-        const string _nameCaptureFile = "CaptureFile";
-        const string _nameCoordX = "CoordX";
-        const string _nameCoordY = "CoordY";
-        const string _nameFilename = "Filename";
-        const string _nameIndxOrientation = "IndxOrientation";
-        const string _nameIndxPaperSize = "IndxPaperSize";
-        const string _nameIndxPaperType = "IndxPaperType";
-        const string _nameIndxPDL = "IndxPDL";
-        const string _nameIndxRasterRes = "IndxRasterRes";
-        const string _nameScaleX = "ScaleX";
-        const string _nameScaleY = "ScaleY";
-
-        const int _indexZero = 0;
+        private const string _mainKey = MainForm._regMainKey;
+        private const string _subKeyTools = "Tools";
+        private const string _subKeyToolsImageBitmap = _subKeyTools + @"\ImageBitmap";
+        private const string _subKeyPCL5 = "PCL5";
+        private const string _subKeyPCL6 = "PCL6";
+        private const string _subKeyPCL = "PCL";
+        private const string _subKeyPCLXL = "PCLXL";
+        private const string _nameCaptureFile = "CaptureFile";
+        private const string _nameCoordX = "CoordX";
+        private const string _nameCoordY = "CoordY";
+        private const string _nameFilename = "Filename";
+        private const string _nameIndxOrientation = "IndxOrientation";
+        private const string _nameIndxPaperSize = "IndxPaperSize";
+        private const string _nameIndxPaperType = "IndxPaperType";
+        private const string _nameIndxPDL = "IndxPDL";
+        private const string _nameIndxRasterRes = "IndxRasterRes";
+        private const string _nameScaleX = "ScaleX";
+        private const string _nameScaleY = "ScaleY";
+        private const int _indexZero = 0;
 
         //const string _defaultCaptureFile = "CaptureFile_ImageBitmap.prn";
-        const string _defaultCaptureFilePCL = "CaptureFile_ImageBitmapPCL.prn";
-        const string _defaultCaptureFilePCLXL = "CaptureFile_ImageBitmapPCLXL.prn";
-        const string _defaultFilename = "DefaultImageFile.bmp";
+        private const string _defaultCaptureFilePCL = "CaptureFile_ImageBitmapPCL.prn";
 
-        const int _defaultCoord = 300;
-        const int _defaultScale = 100;
+        private const string _defaultCaptureFilePCLXL = "CaptureFile_ImageBitmapPCLXL.prn";
+        private const string _defaultFilename = "DefaultImageFile.bmp";
+        private const int _defaultCoord = 300;
+        private const int _defaultScale = 100;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -211,7 +208,6 @@ namespace PCLParaphernalia
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
-
                 if (crntPDL == ToolCommonData.PrintLang.PCL)
                 {
                     const string key = _subKeyToolsImageBitmap + "\\" + _subKeyPCL;

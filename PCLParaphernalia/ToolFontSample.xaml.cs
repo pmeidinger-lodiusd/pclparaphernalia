@@ -14,7 +14,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class ToolFontSample : Window
     {
         //--------------------------------------------------------------------//
@@ -235,17 +234,17 @@ namespace PCLParaphernalia
 
         private struct FontCustomPCL
         {
-            bool _proportional;
-            bool _scalable;
-            bool _bound;
-            ushort _style;
-            ushort _typeface;
-            short _weight;
-            double _height;
-            double _pitch;
-            int _symSetIndex;
-            ushort _symSetCustom;
-            string _symSetUserFile;
+            private bool _proportional;
+            private bool _scalable;
+            private bool _bound;
+            private ushort _style;
+            private ushort _typeface;
+            private short _weight;
+            private double _height;
+            private double _pitch;
+            private int _symSetIndex;
+            private ushort _symSetCustom;
+            private string _symSetUserFile;
 
             //----------------------------------------------------------------//
 
@@ -337,11 +336,11 @@ namespace PCLParaphernalia
 
         private struct FontCustomPCLXL
         {
-            string _fontName;
-            double _height;
-            int _symSetIndex;
-            ushort _symSetCustom;
-            string _symSetUserFile;
+            private string _fontName;
+            private double _height;
+            private int _symSetIndex;
+            private ushort _symSetCustom;
+            private string _symSetUserFile;
 
             //----------------------------------------------------------------//
 
@@ -397,15 +396,15 @@ namespace PCLParaphernalia
 
         private struct FontDownloadPCL
         {
-            string _downloadFile;
-            ushort _downloadId;
-            bool _selectById;
-            bool _downloadRemove;
-            double _height;
-            double _pitch;
-            int _symSetIndex;
-            ushort _symSetCustom;
-            string _symSetUserFile;
+            private string _downloadFile;
+            private ushort _downloadId;
+            private bool _selectById;
+            private bool _downloadRemove;
+            private double _height;
+            private double _pitch;
+            private int _symSetIndex;
+            private ushort _symSetCustom;
+            private string _symSetUserFile;
 
             //----------------------------------------------------------------//
 
@@ -485,12 +484,12 @@ namespace PCLParaphernalia
 
         private struct FontDownloadPCLXL
         {
-            string _downloadFile;
-            bool _downloadRemove;
-            double _height;
-            int _symSetIndex;
-            ushort _symSetCustom;
-            string _symSetUserFile;
+            private string _downloadFile;
+            private bool _downloadRemove;
+            private double _height;
+            private int _symSetIndex;
+            private ushort _symSetCustom;
+            private string _symSetUserFile;
 
             //----------------------------------------------------------------//
 
@@ -552,13 +551,13 @@ namespace PCLParaphernalia
 
         private struct FontPresetPCL
         {
-            int _fontIndex;
-            PCLFonts.Variant _variant;
-            double _height;
-            double _pitch;
-            int _symSetIndex;
-            ushort _symSetCustom;
-            string _symSetUserFile;
+            private int _fontIndex;
+            private PCLFonts.Variant _variant;
+            private double _height;
+            private double _pitch;
+            private int _symSetIndex;
+            private ushort _symSetCustom;
+            private string _symSetUserFile;
 
             //----------------------------------------------------------------//
 
@@ -636,12 +635,12 @@ namespace PCLParaphernalia
 
         private struct FontPresetPCLXL
         {
-            int _fontIndex;
-            PCLFonts.Variant _variant;
-            double _height;
-            int _symSetIndex;
-            ushort _symSetCustom;
-            string _symSetUserFile;
+            private int _fontIndex;
+            private PCLFonts.Variant _variant;
+            private double _height;
+            private int _symSetIndex;
+            private ushort _symSetCustom;
+            private string _symSetUserFile;
 
             //--------------------------------------------------------------------//
 
@@ -713,24 +712,24 @@ namespace PCLParaphernalia
 
         private struct FontPrnDiskPCL
         {
-            string _fontName;
-            ushort _fontId;
-            ushort _macroId;
-            bool _ramDataRemove;
-            bool _selectById;
-            bool _loadViaMacro;
-            bool _characteristicsKnown;
-            bool _proportional;
-            bool _scalable;
-            bool _bound;
-            ushort _style;
-            ushort _typeface;
-            short _weight;
-            double _height;
-            double _pitch;
-            int _symSetIndex;
-            ushort _symSetCustom;
-            string _symSetUserFile;
+            private string _fontName;
+            private ushort _fontId;
+            private ushort _macroId;
+            private bool _ramDataRemove;
+            private bool _selectById;
+            private bool _loadViaMacro;
+            private bool _characteristicsKnown;
+            private bool _proportional;
+            private bool _scalable;
+            private bool _bound;
+            private ushort _style;
+            private ushort _typeface;
+            private short _weight;
+            private double _height;
+            private double _pitch;
+            private int _symSetIndex;
+            private ushort _symSetCustom;
+            private string _symSetUserFile;
 
             //----------------------------------------------------------------//
 
@@ -1274,6 +1273,7 @@ namespace PCLParaphernalia
             _ctSamplePages = _ctSampleOffsetBlocks;
             txtSamplePageCt.Text = _ctSamplePages.ToString();
         }
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // b t n S y m S e t F i l e B r o w s e _ C l i c k                  //
@@ -2043,9 +2043,9 @@ namespace PCLParaphernalia
                     (_fontType == PCLFonts.FontType.PresetFamilyMember))
                 {
                     //--------------------------------------------------------//
-                    //                                                        // 
-                    // PCL font chosen from presented list.                   // 
-                    //                                                        // 
+                    //                                                        //
+                    // PCL font chosen from presented list.                   //
+                    //                                                        //
                     //--------------------------------------------------------//
 
                     _fontPresetPCL.Restore(ref _indxFontPCL,
@@ -2066,9 +2066,9 @@ namespace PCLParaphernalia
                 else if (_fontType == PCLFonts.FontType.Download)
                 {
                     //--------------------------------------------------------//
-                    //                                                        // 
-                    // PCL download font.                                     // 
-                    //                                                        // 
+                    //                                                        //
+                    // PCL download font.                                     //
+                    //                                                        //
                     //--------------------------------------------------------//
 
                     _fontDownloadPCL.Restore(ref _fontFilenamePCL,
@@ -2084,9 +2084,9 @@ namespace PCLParaphernalia
                 else if (_fontType == PCLFonts.FontType.PrnDisk)
                 {
                     //--------------------------------------------------------//
-                    //                                                        // 
-                    // PCL printer mass storage font.                         // 
-                    //                                                        // 
+                    //                                                        //
+                    // PCL printer mass storage font.                         //
+                    //                                                        //
                     //--------------------------------------------------------//
 
                     _fontPrnDiskPCL.Restore(ref _fontPrnDiskNamePCL,
@@ -2115,9 +2115,9 @@ namespace PCLParaphernalia
                 else // if (_fontType == PCLFonts.eFontType.Custom)
                 {
                     //--------------------------------------------------------//
-                    //                                                        // 
-                    // PCL font to be selected via specified characteristics.// 
-                    //                                                        // 
+                    //                                                        //
+                    // PCL font to be selected via specified characteristics.//
+                    //                                                        //
                     //--------------------------------------------------------//
 
                     _fontCustomPCL.Restore(ref _fontProportional,
@@ -2139,9 +2139,9 @@ namespace PCLParaphernalia
                     (_fontType == PCLFonts.FontType.PresetFamilyMember))
                 {
                     //--------------------------------------------------------//
-                    //                                                        // 
-                    // PCLXL font chosen from presented list.                  // 
-                    //                                                        // 
+                    //                                                        //
+                    // PCLXL font chosen from presented list.                  //
+                    //                                                        //
                     //--------------------------------------------------------//
 
                     _fontPresetPCLXL.Restore(ref _indxFontPCLXL,
@@ -2159,9 +2159,9 @@ namespace PCLParaphernalia
                 else if (_fontType == PCLFonts.FontType.Download)
                 {
                     //--------------------------------------------------------//
-                    //                                                        // 
-                    // PCLXL download font.                                   // 
-                    //                                                        // 
+                    //                                                        //
+                    // PCLXL download font.                                   //
+                    //                                                        //
                     //--------------------------------------------------------//
 
                     _fontDownloadPCLXL.Restore(ref _fontFilenamePCLXL,
@@ -2174,9 +2174,9 @@ namespace PCLParaphernalia
                 else // if (_fontType == PCLFonts.eFontType.Custom)
                 {
                     //--------------------------------------------------------//
-                    //                                                        // 
-                    // PCLXL font to be selected via specified characteristics.// 
-                    //                                                        // 
+                    //                                                        //
+                    // PCLXL font to be selected via specified characteristics.//
+                    //                                                        //
                     //--------------------------------------------------------//
 
                     _fontCustomPCLXL.Restore(ref _fontNamePCLXL,
@@ -3439,7 +3439,7 @@ namespace PCLParaphernalia
 
             if (openDialog.ShowDialog() == false)
                 return false;
-            
+
             fontFilename = openDialog.FileName;
 
             return true;
@@ -4019,6 +4019,7 @@ namespace PCLParaphernalia
                 txtPCLTypeface.Text = _fontTypefacePCL.ToString();
             }
         }
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // s e t F o n t O p t i o n s P C L S i z e                          //
@@ -5911,11 +5912,11 @@ namespace PCLParaphernalia
                     txtPCLPitch.Text = newText;
                 }
                 else
-            {
-                MessageBox.Show($"Pitch value '{crntText} ' is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal}\r\nnor\r\n\t<null> to represent <not applicable>.",
-                                    "PCL Font Selection Attribute Invalid",
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Error);
+                {
+                    MessageBox.Show($"Pitch value '{crntText} ' is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal}\r\nnor\r\n\t<null> to represent <not applicable>.",
+                                        "PCL Font Selection Attribute Invalid",
+                                        MessageBoxButton.OK,
+                                        MessageBoxImage.Error);
 
                     txtPCLPitch.Focus();
                     txtPCLPitch.SelectAll();

@@ -9,7 +9,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class PCLXLWriter
+    internal static class PCLXLWriter
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -31,9 +31,11 @@ namespace PCLParaphernalia
         private const int cSizeAttrUbyteArrayUnit = 1;
 
         private const int cSizeAttrUint16 = 5;
+
         //private const int cSizeAttrUint16ArrayBase = 6;
         //private const int cSizeAttrUint16ArrayUnit = 2;
         private const int cSizeAttrUint16Box = 11;
+
         //private const int cSizeAttrUint16XY = 7;
 
         private const int cSizeAttrUint32 = 7;
@@ -146,7 +148,7 @@ namespace PCLParaphernalia
         // Append a specified PCLXL Attribute sequence, with a 'real32'       //
         // data type, to the target buffer.                                   //
         // The data is supplied as a 'float' value.                           //
-        // Generated sequence size is 7 bytes.                                // 
+        // Generated sequence size is 7 bytes.                                //
         //                                                                    //
         //--------------------------------------------------------------------//
 
@@ -178,7 +180,7 @@ namespace PCLParaphernalia
         // Append a specified PCLXL Attribute sequence, with a 'real32_xy'    //
         // data type, to the target buffer.                                   //
         // The data is supplied as a pair of 'float' values.                  //
-        // Generated sequence size is 11 bytes.                               // 
+        // Generated sequence size is 11 bytes.                               //
         //                                                                    //
         //--------------------------------------------------------------------//
 
@@ -218,7 +220,7 @@ namespace PCLParaphernalia
         // Append a specified PCLXL Attribute sequence, with a 'sint16'       //
         // data type, to the target buffer.                                   //
         // The data is supplied as a 'short' value.                           //
-        // Generated sequence size is 5 bytes.                                // 
+        // Generated sequence size is 5 bytes.                                //
         //                                                                    //
         //--------------------------------------------------------------------//
 
@@ -248,7 +250,7 @@ namespace PCLParaphernalia
         // Append a specified PCLXL Attribute sequence, with a 'sint16_array' //
         // data type, to the target buffer.                                   //
         // The data is supplied as an array of 'short' values.                //
-        // Generated sequence size is 6 + (2 * arraySize) bytes.              // 
+        // Generated sequence size is 6 + (2 * arraySize) bytes.              //
         //                                                                    //
         //--------------------------------------------------------------------//
 
@@ -287,7 +289,7 @@ namespace PCLParaphernalia
         // Append a specified PCLXL Attribute sequence, with a 'sint16_box'   //
         // data type, to the target buffer.                                   //
         // The data is supplied as a quartet of 'short' values.               //
-        // Generated sequence size is 11 bytes.                               // 
+        // Generated sequence size is 11 bytes.                               //
         //                                                                    //
         //--------------------------------------------------------------------//
 
@@ -335,7 +337,7 @@ namespace PCLParaphernalia
         // Append a specified PCLXL Attribute sequence, with a 'sint16_xy'    //
         // data type, to the target buffer.                                   //
         // The data is supplied as a pair of 'short' values.                  //
-        // Generated sequence size is 7 bytes.                                // 
+        // Generated sequence size is 7 bytes.                                //
         //                                                                    //
         //--------------------------------------------------------------------//
 
@@ -371,7 +373,7 @@ namespace PCLParaphernalia
         // Append a specified PCLXL Attribute sequence, with a 'ubyte'        //
         // data type, to the target buffer.                                   //
         // The data is supplied as a 'byte' value.                            //
-        // Generated sequence size is 4 bytes.                                // 
+        // Generated sequence size is 4 bytes.                                //
         //                                                                    //
         //--------------------------------------------------------------------//
 
@@ -400,7 +402,7 @@ namespace PCLParaphernalia
         // The assumption is made that all the values are in the range:       //
         //  0 <= x <= 255                                                     //
         // i.e. we only use the least significant byte of each value.         //
-        // Generated sequence size is 6 + arraySize bytes.                    // 
+        // Generated sequence size is 6 + arraySize bytes.                    //
         //                                                                    //
         //--------------------------------------------------------------------//
 
@@ -438,7 +440,7 @@ namespace PCLParaphernalia
         // Append a specified PCLXL Attribute sequence, with a 'ubyte_array'  //
         // data type, to the target buffer.                                   //
         // The data is supplied as an array of 'byte' values.                 //
-        // Generated sequence size is 6 + arraySize bytes.                    // 
+        // Generated sequence size is 6 + arraySize bytes.                    //
         //                                                                    //
         //--------------------------------------------------------------------//
 
@@ -479,7 +481,7 @@ namespace PCLParaphernalia
         // The assumption is made that all the characters are in the ASCII    //
         // range (0x00 -> 0x7f) and are hence each represented using one      //
         // byte (i.e. no multi-byte characters are present).                  //
-        // Generated sequence size is 6 + string-length bytes.                // 
+        // Generated sequence size is 6 + string-length bytes.                //
         //                                                                    //
         //--------------------------------------------------------------------//
 
@@ -517,7 +519,7 @@ namespace PCLParaphernalia
         // Append a specified PCLXL Attribute sequence, with a 'uint16'       //
         // data type, to the target buffer.                                   //
         // The data is supplied as a 'ushort' value.                          //
-        // Generated sequence size is 5 bytes.                                // 
+        // Generated sequence size is 5 bytes.                                //
         //                                                                    //
         //--------------------------------------------------------------------//
 
@@ -547,7 +549,7 @@ namespace PCLParaphernalia
         // Append a specified PCLXL Attribute sequence, with a 'uint16_array' //
         // data type, to the target buffer.                                   //
         // The data is supplied as an array of 'ushort' values.               //
-        // Generated sequence size is 6 + (2 * arraySize) bytes.              // 
+        // Generated sequence size is 6 + (2 * arraySize) bytes.              //
         //                                                                    //
         //--------------------------------------------------------------------//
 
@@ -586,7 +588,7 @@ namespace PCLParaphernalia
         // Append a specified PCLXL Attribute sequence, with a 'uint16_box'   //
         // data type, to the target buffer.                                   //
         // The data is supplied as a quartet of 'ushort' values.              //
-        // Generated sequence size is 11 bytes.                               // 
+        // Generated sequence size is 11 bytes.                               //
         //                                                                    //
         //--------------------------------------------------------------------//
 
@@ -634,7 +636,7 @@ namespace PCLParaphernalia
         // Append a specified PCLXL Attribute sequence, with a 'uint16_xy'    //
         // data type, to the target buffer.                                   //
         // The data is supplied as a pair of 'ushort' values.                 //
-        // Generated sequence size is 7 bytes.                                // 
+        // Generated sequence size is 7 bytes.                                //
         //                                                                    //
         //--------------------------------------------------------------------//
 
@@ -670,7 +672,7 @@ namespace PCLParaphernalia
         // Append a specified PCLXL Attribute sequence, with a 'uint32'       //
         // data type, to the target buffer.                                   //
         // The data is supplied as a 'uint' value.                            //
-        // Generated sequence size is 7 bytes.                                // 
+        // Generated sequence size is 7 bytes.                                //
         //                                                                    //
         //--------------------------------------------------------------------//
 
@@ -700,8 +702,8 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
         //                                                                    //
         // Return PCLXL Embedded Data introduction sequence.                  //
-        // Generated sequence size is 2 bytes if dataLen value < 256          // 
-        //                         or 5 bytes otherwise.                      // 
+        // Generated sequence size is 2 bytes if dataLen value < 256          //
+        //                         or 5 bytes otherwise.                      //
         //                                                                    //
         //--------------------------------------------------------------------//
 
@@ -732,7 +734,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
         //                                                                    //
         // Append a specified PCLXL Operator.                                 //
-        // Generated sequence size is 1 byte.                                 // 
+        // Generated sequence size is 1 byte.                                 //
         //                                                                    //
         //--------------------------------------------------------------------//
 
@@ -1067,7 +1069,7 @@ namespace PCLParaphernalia
             int indBuf = 0;
 
             int lenBuf = cSizeAttrUint16 + cSizeAttrUint16 + cSizeOperator;
-         
+
             byte[] buffer = new byte[lenBuf];
 
             //----------------------------------------------------------------//
@@ -2159,21 +2161,21 @@ namespace PCLParaphernalia
 
             // stream header
             buffer[indBuf++] = 0x29;    // ) = binding format (binary L-E)
-            buffer[indBuf++] = 0x20;    //   = reserved byte 
+            buffer[indBuf++] = 0x20;    //   = reserved byte
             buffer[indBuf++] = 0x48;    // H = stream class name
             buffer[indBuf++] = 0x50;    // P
             buffer[indBuf++] = 0x2d;    // -
             buffer[indBuf++] = 0x50;    // P
             buffer[indBuf++] = 0x43;    // C
             buffer[indBuf++] = 0x4c;    // L
-            buffer[indBuf++] = 0x20;    //  
+            buffer[indBuf++] = 0x20;    //
             buffer[indBuf++] = 0x58;    // X
             buffer[indBuf++] = 0x4c;    // L
             buffer[indBuf++] = 0x3b;    // ;
             buffer[indBuf++] = 0x32;    // 2 = protocol class number
             buffer[indBuf++] = 0x3b;    // ;
             buffer[indBuf++] = 0x30;    // 0 = protocol class revision
-            buffer[indBuf++] = 0x3b;    // ; 
+            buffer[indBuf++] = 0x3b;    // ;
             buffer[indBuf++] = 0x63;    // c = comment
             buffer[indBuf++] = 0x6f;    // o
             buffer[indBuf++] = 0x6d;    // m

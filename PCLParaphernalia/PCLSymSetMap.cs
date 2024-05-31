@@ -11,8 +11,7 @@ namespace PCLParaphernalia
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
-    class PCLSymSetMap
+    internal class PCLSymSetMap
     {
         private readonly ushort[][] _mapDataStd;
         private readonly ushort[][] _mapDataPCL;

@@ -10,7 +10,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class PCLPaperSizes
+    internal static class PCLPaperSizes
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -521,8 +521,8 @@ namespace PCLParaphernalia
                                  101,           // PCL identifier
                                  _unknownEnum,  // PCLXL paper size enumeration,
                                  string.Empty,  // PCLXL paper size name
-                                 sizeIsMetric,  // is metric or imperial size?  
-                                 sizeIsCommon,  // is common or rare size?  
+                                 sizeIsMetric,  // is metric or imperial size?
+                                 sizeIsCommon,  // is common or rare size?
                                  _paperSizeUPI, // sizes are in these units
                                  9920,          // size short-edge
                                  14030,         // size long-edge
@@ -704,7 +704,7 @@ namespace PCLParaphernalia
                                  sizeIsMetric,
                                  sizeIsCommon,
                                  _paperSizeUPI,
-                                 4960,      // 105 mm 
+                                 4960,      // 105 mm
                                  6992,      // 148 mm
                                  284,
                                  236,
@@ -719,7 +719,7 @@ namespace PCLParaphernalia
                                  sizeIsMetric,
                                  sizeIsRare,
                                  _paperSizeUPI,
-                                 4800,      // various 
+                                 4800,      // various
                                  6000,      // various
                                  284,
                                  236,
@@ -929,7 +929,7 @@ namespace PCLParaphernalia
                                  sizeIsMetric,
                                  sizeIsRare,
                                  _paperSizeUPI,
-                                 4800,      // various 
+                                 4800,      // various
                                  6000,      // various
                                  284,
                                  236,
@@ -944,7 +944,7 @@ namespace PCLParaphernalia
                                  sizeIsMetric,
                                  sizeIsCommon,
                                  _paperSizeUPI,
-                                 8314,      // 176 mm 
+                                 8314,      // 176 mm
                                  11811,     // 250 mm
                                  284,
                                  236,
@@ -959,7 +959,7 @@ namespace PCLParaphernalia
                                  sizeIsMetric,
                                  sizeIsRare,
                                  _paperSizeUPI,
-                                 10818,     // 229 mm 
+                                 10818,     // 229 mm
                                  15307,     // 324 mm
                                  284,
                                  236,
@@ -974,7 +974,7 @@ namespace PCLParaphernalia
                                  sizeIsMetric,
                                  sizeIsCommon,
                                  _paperSizeUPI,
-                                 7653,      // 162 mm 
+                                 7653,      // 162 mm
                                  10818,     // 229 mm
                                  284,
                                  236,
@@ -989,7 +989,7 @@ namespace PCLParaphernalia
                                  sizeIsMetric,
                                  sizeIsCommon,
                                  _paperSizeUPI,
-                                 5385,      // 114 mm 
+                                 5385,      // 114 mm
                                  7653,      // 162 mm
                                  284,
                                  236,
@@ -1004,7 +1004,7 @@ namespace PCLParaphernalia
                                  sizeIsMetric,
                                  sizeIsCommon,
                                  _paperSizeUPI,
-                                 5196,      // 110 mm 
+                                 5196,      // 110 mm
                                  10393,     // 220 mm
                                  284,
                                  236,
@@ -1019,7 +1019,7 @@ namespace PCLParaphernalia
                                  sizeIsMetric,
                                  sizeIsRare,
                                  _paperSizeUPI,
-                                 5669,      // 120 mm 
+                                 5669,      // 120 mm
                                  11102,     // 235 mm
                                  284,
                                  236,
@@ -1034,7 +1034,7 @@ namespace PCLParaphernalia
                                  sizeIsMetric,
                                  sizeIsRare,
                                  _paperSizeUPI,
-                                 4251,      // 90 mm 
+                                 4251,      // 90 mm
                                  9685,      // 205 mm
                                  284,
                                  236,
@@ -1079,7 +1079,7 @@ namespace PCLParaphernalia
                                  sizeIsMetric,
                                  sizeIsRare,
                                  _paperSizeUPI,
-                                 5385,      // 114 mm 
+                                 5385,      // 114 mm
                                  10818,     // 229 mm
                                  284,
                                  236,
@@ -1154,7 +1154,7 @@ namespace PCLParaphernalia
                                  sizeIsMetric,
                                  sizeIsRare,
                                  _paperSizeUPI,
-                                 56173,     // 1189 mm 
+                                 56173,     // 1189 mm
                                  79464,     // 1682 mm
                                  284,
                                  236,
@@ -1169,7 +1169,7 @@ namespace PCLParaphernalia
                                  sizeIsMetric,
                                  sizeIsRare,
                                  _paperSizeUPI,
-                                 79464,     // 1682 mm 
+                                 79464,     // 1682 mm
                                  112346,    // 2378 mm
                                  284,
                                  236,
@@ -1184,7 +1184,7 @@ namespace PCLParaphernalia
                                  sizeIsMetric,
                                  sizeIsRare,
                                  _paperSizeUPI,
-                                 39732,     // 841 mm 
+                                 39732,     // 841 mm
                                  56173,     // 1189 mm
                                  284,
                                  236,
@@ -1199,7 +1199,7 @@ namespace PCLParaphernalia
                                  sizeIsMetric,
                                  sizeIsRare,
                                  _paperSizeUPI,
-                                 28062,     // 594 mm 
+                                 28062,     // 594 mm
                                  39732,     // 841 mm
                                  284,
                                  236,
@@ -1214,7 +1214,7 @@ namespace PCLParaphernalia
                                  sizeIsMetric,
                                  sizeIsRare,
                                  _paperSizeUPI,
-                                 19842,     // 420 mm 
+                                 19842,     // 420 mm
                                  28062,     // 594 mm
                                  284,
                                  236,
@@ -1229,7 +1229,7 @@ namespace PCLParaphernalia
                                  sizeIsMetric,
                                  sizeIsCommon,
                                  _paperSizeUPI,
-                                 14031,     // 297 mm 
+                                 14031,     // 297 mm
                                  19842,     // 420 mm
                                  284,
                                  236,
@@ -1679,7 +1679,7 @@ namespace PCLParaphernalia
                                  sizeIsMetric,
                                  sizeIsRare,
                                  _paperSizeUPI,
-                                 10204,     // 216 mm 
+                                 10204,     // 216 mm
                                  15590,     // 330 mm
                                  284,
                                  236,
@@ -1694,7 +1694,7 @@ namespace PCLParaphernalia
                                  sizeIsMetric,
                                  sizeIsCommon,
                                  _paperSizeUPI,
-                                 4724,      // 100 mm 
+                                 4724,      // 100 mm
                                  6992,      // 148 mm
                                  284,
                                  236,
@@ -1709,7 +1709,7 @@ namespace PCLParaphernalia
                                  sizeIsMetric,
                                  sizeIsCommon,
                                  _paperSizeUPI,
-                                 6992,      // 148 mm 
+                                 6992,      // 148 mm
                                  9448,      // 200 mm
                                  284,
                                  236,
@@ -1814,7 +1814,7 @@ namespace PCLParaphernalia
                                  sizeIsMetric,
                                  sizeIsCommon,
                                  _paperSizeUPI,
-                                 14409,     // 305 mm 
+                                 14409,     // 305 mm
                                  20314,     // 430 mm
                                  284,
                                  236,
@@ -1844,7 +1844,7 @@ namespace PCLParaphernalia
                                  sizeIsMetric,
                                  sizeIsCommon,
                                  _paperSizeUPI,
-                                 15118,     // 320 mm 
+                                 15118,     // 320 mm
                                  21259,     // 450 mm
                                  284,
                                  236,

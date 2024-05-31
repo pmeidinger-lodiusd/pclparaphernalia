@@ -10,7 +10,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class PCLXLAttributes
+    internal static class PCLXLAttributes
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

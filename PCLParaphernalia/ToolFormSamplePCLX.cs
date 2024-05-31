@@ -8,7 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
-    static class ToolFormSamplePCLX
+    internal static class ToolFormSamplePCLX
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -16,7 +16,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int _symSet_19U = 629;
+        private const int _symSet_19U = 629;
 
         public enum StreamMethod : byte
         {

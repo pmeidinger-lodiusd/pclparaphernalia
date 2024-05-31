@@ -8,7 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class ToolTrayMapPCLXL
+    internal static class ToolTrayMapPCLXL
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -16,22 +16,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _rootNameFront = "TrayMapFormFront";
-        const string _rootNameRear = "TrayMapFormRear";
-        const int _noForm = -1;
-
-        const int _trayIdAutoSelectPCLXL = 1;
-
-        const ushort _unitsPerInch = PCLXLWriter._sessionUPI;
-
-        const short _posXName = _unitsPerInch * 1;
-        const short _posXValue = _unitsPerInch * 7 / 2;
-        const short _posXIncSub = _unitsPerInch / 3;
-
-        const short _posYHddr = _unitsPerInch * 1;
-        const short _posYDesc = _unitsPerInch * 21 / 10;
-        const short _posYIncMain = _unitsPerInch * 3 / 4;
-        const short _posYIncSub = _unitsPerInch / 3;
+        private const string _rootNameFront = "TrayMapFormFront";
+        private const string _rootNameRear = "TrayMapFormRear";
+        private const int _noForm = -1;
+        private const int _trayIdAutoSelectPCLXL = 1;
+        private const ushort _unitsPerInch = PCLXLWriter._sessionUPI;
+        private const short _posXName = _unitsPerInch * 1;
+        private const short _posXValue = _unitsPerInch * 7 / 2;
+        private const short _posXIncSub = _unitsPerInch / 3;
+        private const short _posYHddr = _unitsPerInch * 1;
+        private const short _posYDesc = _unitsPerInch * 21 / 10;
+        private const short _posYIncMain = _unitsPerInch * 3 / 4;
+        private const short _posYIncSub = _unitsPerInch / 3;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -931,9 +927,9 @@ namespace PCLParaphernalia
             prnWriter.Write(bufStd, 0, indStd);
 
             //----------------------------------------------------------------//
-            //                                                                // 
-            // Rear face (if not simplex)                                     // 
-            //                                                                // 
+            //                                                                //
+            // Rear face (if not simplex)                                     //
+            //                                                                //
             //----------------------------------------------------------------//
 
             if (!simplex)

@@ -10,7 +10,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class PJLCommands
+    internal static class PJLCommands
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -40,7 +40,6 @@ namespace PCLParaphernalia
         }
 
         [System.Reflection.Obfuscation(Exclude = true)]
-
         public enum CmdIndex
         {
             Unknown,

@@ -6,7 +6,7 @@
     /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
-    class ToolSoftFontGenTTFTable
+    internal class ToolSoftFontGenTTFTable
     {
         private uint _checksum;
         private uint _offset;

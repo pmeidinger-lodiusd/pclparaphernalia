@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2013</para>
     ///
     /// </summary>
-    class ToolSymbolSetGenPCL
+    internal class ToolSymbolSetGenPCL
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -19,14 +19,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int cSizeHddrFixed = 18;
-
-        const int cSizeCharSet_8bit = 256;
-        const int cCodePointUnused = 65535;
-        const int cCodePointC0Min = 0x00;
-        const int cCodePointC0Max = 0x1f;
-        const int cCodePointC1Min = 0x80;
-        const int cCodePointC1Max = 0x9f;
+        private const int cSizeHddrFixed = 18;
+        private const int cSizeCharSet_8bit = 256;
+        private const int cCodePointUnused = 65535;
+        private const int cCodePointC0Min = 0x00;
+        private const int cCodePointC0Max = 0x1f;
+        private const int cCodePointC1Min = 0x80;
+        private const int cCodePointC1Max = 0x9f;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -43,7 +42,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // g e n e r a t e S y m S e t                                        //

@@ -9,7 +9,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2011</para>
     ///
     /// </summary>
-    static class ToolSoftFontGenLog
+    internal static class ToolSoftFontGenLog
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -18,13 +18,14 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         //const int cGridMain_Col_0_Max = 18;
-        const int cGridMain_Col_1_Max = 80;
+        private const int cGridMain_Col_1_Max = 80;
+
         //const int cColSeparatorLen = 2;
 
-        const byte cASCII_Space = 0x20;
-        const byte cASCII_LineFeed = 0x0a;
-        const byte cASCII_CarriageReturn = 0x0d;
-        const byte cASCII_HorizontalTab = 0x09;
+        private const byte cASCII_Space = 0x20;
+        private const byte cASCII_LineFeed = 0x0a;
+        private const byte cASCII_CarriageReturn = 0x0d;
+        private const byte cASCII_HorizontalTab = 0x09;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -110,8 +111,8 @@ namespace PCLParaphernalia
                 row[colWidth] = glyphWidth;
                 row[colLSB] = glyphLSB;
 
-                row[colHeight] = glyphHeight;   // for vertical rotated chars. 
-                row[colTSB] = glyphTSB;         // for vertical rotated chars. 
+                row[colHeight] = glyphHeight;   // for vertical rotated chars.
+                row[colTSB] = glyphTSB;         // for vertical rotated chars.
 
                 row[colLength] = glyphLength;
             }

@@ -9,7 +9,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    class PrnParsePCL
+    internal class PrnParsePCL
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -132,7 +132,6 @@ namespace PCLParaphernalia
             _fileOffset = fileOffset;
 
             _analysisLevel = linkData.AnalysisLevel;
-
 
             //----------------------------------------------------------------//
 
@@ -2457,7 +2456,6 @@ namespace PCLParaphernalia
                             vPosCrnt = vPosCrnt + binDataLen;
                             vPosFirst = vPosCrnt;
                             */
-
                         }  // end of download sequence processing
                     }  // end of 'if download sequence'
 
@@ -2745,7 +2743,7 @@ namespace PCLParaphernalia
         // Process data associated with a PCL parameterised sequence where    //
         // value field indicates the length of the (often binary) data        //
         // associated with, and following, the sequence parameter (or         //
-        // terminator) character.                                             // 
+        // terminator) character.                                             //
         //                                                                    //
         //--------------------------------------------------------------------//
 

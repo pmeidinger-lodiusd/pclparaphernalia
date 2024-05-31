@@ -8,7 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class ToolFontSamplePCLXL
+    internal static class ToolFontSamplePCLXL
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -16,24 +16,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _formName = "FontSampleForm";
-        const string _hexChars = "0123456789ABCDEF";
-
-        const int _symSet_19U = 629;
-        const short _gridDim = 16;
-        const int _gridDimHalf = _gridDim / 2;
-        const short _gridCols = _gridDim;
-        const short _gridRows = _gridDim;
-        const ushort _unitsPerInch = PCLXLWriter._sessionUPI;
-
-        const short _lineSpacing = _unitsPerInch / 4;
-        const short _cellWidth = (_unitsPerInch * 1) / 3;
-        const short _cellHeight = (_unitsPerInch * 25) / 60;
-
-        const short _marginX = (_unitsPerInch * 7) / 6;
-        const short _posYDesc = (_unitsPerInch * 3) / 4;
-        const short _posYGrid = _posYDesc + (_lineSpacing * 4);
-        const short _posYSelData = _posYGrid + (_cellHeight * (_gridRows + 2)) + (_lineSpacing * 2);
+        private const string _formName = "FontSampleForm";
+        private const string _hexChars = "0123456789ABCDEF";
+        private const int _symSet_19U = 629;
+        private const short _gridDim = 16;
+        private const int _gridDimHalf = _gridDim / 2;
+        private const short _gridCols = _gridDim;
+        private const short _gridRows = _gridDim;
+        private const ushort _unitsPerInch = PCLXLWriter._sessionUPI;
+        private const short _lineSpacing = _unitsPerInch / 4;
+        private const short _cellWidth = (_unitsPerInch * 1) / 3;
+        private const short _cellHeight = (_unitsPerInch * 25) / 60;
+        private const short _marginX = (_unitsPerInch * 7) / 6;
+        private const short _posYDesc = (_unitsPerInch * 3) / 4;
+        private const short _posYGrid = _posYDesc + (_lineSpacing * 4);
+        private const short _posYSelData = _posYGrid + (_cellHeight * (_gridRows + 2)) + (_lineSpacing * 2);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -1495,7 +1492,7 @@ namespace PCLParaphernalia
                     // The Unicode standard is such that the offset could  be //
                     // up to 0x10ff00; but PCL XL only uses ubyte or uint16   //
                     // arrays for text characters, hence we are limited to    //
-                    // offsets of 0xff00 or less.                             // 
+                    // offsets of 0xff00 or less.                             //
                     //                                                        //
                     //--------------------------------------------------------//
 

@@ -12,7 +12,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
-    static class PrnParseData
+    internal static class PrnParseData
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -20,7 +20,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int _decodeSliceMax = 4;
+        private const int _decodeSliceMax = 4;
 
         public enum CharType
         {
@@ -33,7 +33,7 @@ namespace PCLParaphernalia
             TwoByte
         }
 
-        const string 
+        private const string
                      //cCcName_0x07 = "<BEL>",
                      //cCcName_0x0a = "<LF>",
                      //cCcName_0x0c = "<FF>",
@@ -43,10 +43,10 @@ namespace PCLParaphernalia
                      cCcName_Extended = "<ext>",
                      cCcName_Unicode = "<U+x>";
 
-        const int cC0NameLen = 5;
-        const int cC1NameLen = 6;
+        private const int cC0NameLen = 5;
+        private const int cC1NameLen = 6;
 
-        const string cC0Names_List = "<NUL><SOH><STX><ETX>" +
+        private const string cC0Names_List = "<NUL><SOH><STX><ETX>" +
                                         "<EOT><ENQ><ACK><BEL>" +
                                         "<BS> <HT> <LF> <VT> " +
                                         "<FF> <CR> <SO> <SI> " +
@@ -56,7 +56,7 @@ namespace PCLParaphernalia
                                         "<FS> <GS> <RS> <US> " +
                                         "<SP> ";
 
-        const string cC1Names_List = "<PAD> <HOP> <BPH> <NBH> " +
+        private const string cC1Names_List = "<PAD> <HOP> <BPH> <NBH> " +
                                         "<IND> <NEL> <SSA> <ESA> " +
                                         "<HTS> <HTJ> <VTS> <PLD> " +
                                         "<PLU> <RI>  <SS2> <SS3> " +
@@ -71,7 +71,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static PrnParse.ParseType _parseType;
+        private static PrnParse.ParseType _parseType;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -478,7 +478,6 @@ namespace PCLParaphernalia
 
                 if (multiByteChar || utf8Char)
                     multiByteData = true;
-
 
                 string showChar;
                 //------------------------------------------------------------//

@@ -10,7 +10,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2012</para>
     ///
     /// </summary>
-    static class ToolMakeOverlayReport
+    internal static class ToolMakeOverlayReport
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -18,10 +18,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const int _maxSizeNameTag = 15;
-        const int _colSpanNone = -1;
-
-        const bool _flagNone = false;
+        private const int _maxSizeNameTag = 15;
+        private const int _colSpanNone = -1;
+        private const bool _flagNone = false;
         //const bool _flagBlankBefore = true;
 
         //--------------------------------------------------------------------//

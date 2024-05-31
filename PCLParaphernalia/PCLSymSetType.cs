@@ -8,8 +8,7 @@
     /// </summary>
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
-    class PCLSymSetType
+    internal class PCLSymSetType
     {
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

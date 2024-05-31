@@ -6,7 +6,7 @@
     /// <para>© Chris Hutchinson 2015</para>
     ///
     /// </summary>
-    static class PCLTextParsingMethods
+    internal static class PCLTextParsingMethods
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -57,7 +57,7 @@
             //                                                                //
             // Note that whilst the UTF-8 entries specify single-byte ranges  //
             // of 0x00 -> 0xff, the valid single-byte values are < 0x80; this //
-            // is catered for in the relevant PCL-specific code functions.    // 
+            // is catered for in the relevant PCL-specific code functions.    //
             //                                                                //
             //----------------------------------------------------------------//
 

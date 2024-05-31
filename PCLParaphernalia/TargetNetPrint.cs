@@ -12,7 +12,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class TargetNetPrint
+    internal static class TargetNetPrint
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -70,7 +70,6 @@ namespace PCLParaphernalia
             }
 
             //----------------------------------------------------------------//
-
             catch (SocketException e)
             {
                 MessageBox.Show($"SocketException:\r\n\r\nMessage: {e.Message}\r\n\r\nErrorCode: {e.ErrorCode}\r\n\r\nSocketErrorCode: {e.SocketErrorCode}",
@@ -178,7 +177,6 @@ namespace PCLParaphernalia
             }
 
             //------------------------------------------------------------//
-
             catch (SocketException e)
             {
                 MessageBox.Show($"SocketException:\r\n\r\nMessage: {e.Message}\r\n\r\nErrorCode: {e.ErrorCode}\r\n\r\nSocketErrorCode: {e.SocketErrorCode}",

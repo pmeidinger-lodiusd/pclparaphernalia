@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
-    static class ToolMiscSamplesActLogPagePCL
+    internal static class ToolMiscSamplesActLogPagePCL
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -21,19 +21,17 @@ namespace PCLParaphernalia
 
         //const string _hexChars = "0123456789ABCDEF";
 
-        const int _macroId = 1;
-        const ushort _unitsPerInch = PCLWriter.sessionUPI;
-
-        const short _rulerDivPerCell = 10;
-        const short _rulerVOriginX = (_unitsPerInch * 6);
-        const short _rulerHOriginY = (_unitsPerInch * 5);
-        const short _rulerCell = (_unitsPerInch * 1);
-        const short _rulerDiv = (_rulerCell / _rulerDivPerCell);
-
-        const short _posOrigin = _rulerCell;
-        const short _posXDesc = _posOrigin + (4 * _rulerDiv);
-        const short _posYHddr = _posOrigin - (4 * _rulerDiv);
-        const short _posYDesc = _posOrigin + (4 * _rulerDiv);
+        private const int _macroId = 1;
+        private const ushort _unitsPerInch = PCLWriter.sessionUPI;
+        private const short _rulerDivPerCell = 10;
+        private const short _rulerVOriginX = (_unitsPerInch * 6);
+        private const short _rulerHOriginY = (_unitsPerInch * 5);
+        private const short _rulerCell = (_unitsPerInch * 1);
+        private const short _rulerDiv = (_rulerCell / _rulerDivPerCell);
+        private const short _posOrigin = _rulerCell;
+        private const short _posXDesc = _posOrigin + (4 * _rulerDiv);
+        private const short _posYHddr = _posOrigin - (4 * _rulerDiv);
+        private const short _posYDesc = _posOrigin + (4 * _rulerDiv);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2014</para>
     ///
     /// </summary>
-    static class Helper_RegKey
+    internal static class Helper_RegKey
     {
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

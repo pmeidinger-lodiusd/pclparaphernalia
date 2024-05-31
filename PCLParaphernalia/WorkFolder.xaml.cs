@@ -11,10 +11,9 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class WorkFolder : Window
     {
-        readonly string _tmpFolder = Environment.GetEnvironmentVariable("TMP");
+        private readonly string _tmpFolder = Environment.GetEnvironmentVariable("TMP");
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -171,7 +170,7 @@ namespace PCLParaphernalia
                 return false;
 
             targetFolder = folderDialog.SelectedPath;
-            
+
             return true;
         }
 

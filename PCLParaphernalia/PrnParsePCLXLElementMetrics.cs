@@ -6,7 +6,7 @@
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    class PrnParsePCLXLElementMetrics
+    internal class PrnParsePCLXLElementMetrics
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -20,15 +20,15 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        bool _flagUbyteAsAscii,
+        private bool _flagUbyteAsAscii,
                 _flagUint16AsUnicode,
                 _flagArrayType;
 
-        int _decodeIndent,
+        private int _decodeIndent,
               _groupSize,
               _unitSize;
 
-        PCLXLDataTypes.BaseType _baseDataType;
+        private PCLXLDataTypes.BaseType _baseDataType;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

@@ -6,7 +6,7 @@
     /// <para>© Chris Hutchinson 2015</para>
     ///
     /// </summary>
-    class PCLTextParsingMethod
+    internal class PCLTextParsingMethod
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

@@ -10,7 +10,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2013</para>
     ///
     /// </summary>
-    static class HPGL2ControlCodes
+    internal static class HPGL2ControlCodes
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

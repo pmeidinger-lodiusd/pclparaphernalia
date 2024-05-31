@@ -8,7 +8,7 @@ namespace PCLParaphernalia
     /// <para>© Chris Hutchinson 2010</para>
     ///
     /// </summary>
-    static class ToolFontSamplePersist
+    internal static class ToolFontSamplePersist
     {
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -16,75 +16,70 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const string _mainKey = MainForm._regMainKey;
-
-        const string _subKeyTools = "Tools";
-        const string _subKeyToolsFontSample = _subKeyTools + @"\FontSample";
-        const string _subKeyPCL5 = "PCL5";
-        const string _subKeyPCL6 = "PCL6";
-        const string _subKeyPCL = "PCL";
-        const string _subKeyPCLXL = "PCLXL";
-        const string _subKeyCustom = "Custom";
-        const string _subKeyDownload = "Download";
-        const string _subKeyPreset = "Preset";
-        const string _subKeyPrnDisk = "PrnMassStore";
-
-        const string _nameCaptureFile = "CaptureFile";
-        const string _nameDownloadFile = "DownloadFile";
-        const string _nameDownloadId = "DownloadId";
-        const string _nameMassStoreFontFile = "Filename";
-        const string _nameMassStoreFontId = "AssociateFontId";
-        const string _nameMassStoreMacroId = "AssociateMacroId";
-        const string _nameFlagBound = "FlagBound";
-        const string _nameFlagMassStoreViaMacro = "FlagLoadViaMacro";
-        const string _nameFlagRamDataRemove = "FlagRamDataRemove";
-        const string _nameFlagDownloadRemove = "FlagDownloadRemove";
-        const string _nameFlagDetailsKnown = "FlagDetailsKnown";
-        const string _nameFlagFormAsMacro = "FlagFormAsMacro";
-        const string _nameFlagProportional = "FlagProportional";
-        const string _nameFlagScalable = "FlagScalable";
-        const string _nameFlagSelectById = "FlagSelectById";
-        const string _nameFlagShowC0Chars = "FlagShowC0Chars";
-        const string _nameFlagShowUserMapCodes = "FlagShowUserMapCodes";
-        const string _nameFlagShowMapCodesUCS2 = "FlagShowMapCodesUCS2";
-        const string _nameFlagShowMapCodesUTF8 = "FlagShowMapCodesUTF8";
-        const string _nameFlagOptGridVertical = "FlagOptGridVertical";
-        const string _nameFlagSymSetUserActEmbed = "FlagSymSetUserActEmbed";
-        const string _nameFontName = "FontName";
-        const string _nameHeight = "Height";
-        const string _nameIndxFont = "IndxFont";
-        const string _nameIndxOrientation = "IndxOrientation";
-        const string _nameIndxPaperSize = "IndxPaperSize";
-        const string _nameIndxPaperType = "IndxPaperType";
-        const string _nameIndxPDL = "IndxPDL";
-        const string _nameIndxSymSet = "IndxSymSet";
-        const string _nameIndxVariant = "IndxVariant";
-        const string _namePitch = "Pitch";
-        const string _nameStyle = "Style";
-        const string _nameSymSetNumber = "SymSetNumber";
-        const string _nameSymSetUserFile = "SymSetUserFile";
-        const string _nameTypeface = "Typeface";
-        const string _nameWeight = "Weight";
-
-        const int _flagFalse = 0;
-        const int _flagTrue = 1;
-        const int _indexZero = 0;
-
-        const string _defaultCaptureFilePCL = "CaptureFile_FontSamplePCL.prn";
-        const string _defaultCaptureFilePCLXL = "CaptureFile_FontSamplePCLXL.prn";
-        const string _defaultFontFilePCL = "DefaultFontFile.sft";
-        const string _defaultFontFilePCLXL = "DefaultFontFile.sfx";
-        const string _defaultFontName = "Arial";
-        const string _defaultSymSetUserFile = "DefaultSymSetFile.pcl";
-        const string _defaultMassStoreFontFile = "DefaultFont.sfp";
-
-        const int _sizeFactor = 1000;
-        const int _defaultHeightPtsK = 15 * _sizeFactor;
-        const int _defaultPitchPtsK = 8 * _sizeFactor;
-        const int _defaultSymSetNo = 14;
-        const int _defaultSoftFontIdPCL = 101;
-        const int _defaultSoftFontIdMacroPCL = 201;
-        const int _defaultIndxVariant = (int)PCLFonts.Variant.Regular;
+        private const string _mainKey = MainForm._regMainKey;
+        private const string _subKeyTools = "Tools";
+        private const string _subKeyToolsFontSample = _subKeyTools + @"\FontSample";
+        private const string _subKeyPCL5 = "PCL5";
+        private const string _subKeyPCL6 = "PCL6";
+        private const string _subKeyPCL = "PCL";
+        private const string _subKeyPCLXL = "PCLXL";
+        private const string _subKeyCustom = "Custom";
+        private const string _subKeyDownload = "Download";
+        private const string _subKeyPreset = "Preset";
+        private const string _subKeyPrnDisk = "PrnMassStore";
+        private const string _nameCaptureFile = "CaptureFile";
+        private const string _nameDownloadFile = "DownloadFile";
+        private const string _nameDownloadId = "DownloadId";
+        private const string _nameMassStoreFontFile = "Filename";
+        private const string _nameMassStoreFontId = "AssociateFontId";
+        private const string _nameMassStoreMacroId = "AssociateMacroId";
+        private const string _nameFlagBound = "FlagBound";
+        private const string _nameFlagMassStoreViaMacro = "FlagLoadViaMacro";
+        private const string _nameFlagRamDataRemove = "FlagRamDataRemove";
+        private const string _nameFlagDownloadRemove = "FlagDownloadRemove";
+        private const string _nameFlagDetailsKnown = "FlagDetailsKnown";
+        private const string _nameFlagFormAsMacro = "FlagFormAsMacro";
+        private const string _nameFlagProportional = "FlagProportional";
+        private const string _nameFlagScalable = "FlagScalable";
+        private const string _nameFlagSelectById = "FlagSelectById";
+        private const string _nameFlagShowC0Chars = "FlagShowC0Chars";
+        private const string _nameFlagShowUserMapCodes = "FlagShowUserMapCodes";
+        private const string _nameFlagShowMapCodesUCS2 = "FlagShowMapCodesUCS2";
+        private const string _nameFlagShowMapCodesUTF8 = "FlagShowMapCodesUTF8";
+        private const string _nameFlagOptGridVertical = "FlagOptGridVertical";
+        private const string _nameFlagSymSetUserActEmbed = "FlagSymSetUserActEmbed";
+        private const string _nameFontName = "FontName";
+        private const string _nameHeight = "Height";
+        private const string _nameIndxFont = "IndxFont";
+        private const string _nameIndxOrientation = "IndxOrientation";
+        private const string _nameIndxPaperSize = "IndxPaperSize";
+        private const string _nameIndxPaperType = "IndxPaperType";
+        private const string _nameIndxPDL = "IndxPDL";
+        private const string _nameIndxSymSet = "IndxSymSet";
+        private const string _nameIndxVariant = "IndxVariant";
+        private const string _namePitch = "Pitch";
+        private const string _nameStyle = "Style";
+        private const string _nameSymSetNumber = "SymSetNumber";
+        private const string _nameSymSetUserFile = "SymSetUserFile";
+        private const string _nameTypeface = "Typeface";
+        private const string _nameWeight = "Weight";
+        private const int _flagFalse = 0;
+        private const int _flagTrue = 1;
+        private const int _indexZero = 0;
+        private const string _defaultCaptureFilePCL = "CaptureFile_FontSamplePCL.prn";
+        private const string _defaultCaptureFilePCLXL = "CaptureFile_FontSamplePCLXL.prn";
+        private const string _defaultFontFilePCL = "DefaultFontFile.sft";
+        private const string _defaultFontFilePCLXL = "DefaultFontFile.sfx";
+        private const string _defaultFontName = "Arial";
+        private const string _defaultSymSetUserFile = "DefaultSymSetFile.pcl";
+        private const string _defaultMassStoreFontFile = "DefaultFont.sfp";
+        private const int _sizeFactor = 1000;
+        private const int _defaultHeightPtsK = 15 * _sizeFactor;
+        private const int _defaultPitchPtsK = 8 * _sizeFactor;
+        private const int _defaultSymSetNo = 14;
+        private const int _defaultSoftFontIdPCL = 101;
+        private const int _defaultSoftFontIdMacroPCL = 201;
+        private const int _defaultIndxVariant = (int)PCLFonts.Variant.Regular;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -736,7 +731,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void SaveDataCapture(ToolCommonData.PrintLang crntPDL,string captureFile)
+        public static void SaveDataCapture(ToolCommonData.PrintLang crntPDL, string captureFile)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -925,7 +920,7 @@ namespace PCLParaphernalia
                     subKey.SetValue(_nameDownloadId, downloadId, RegistryValueKind.DWord);
 
                     subKey.SetValue(_nameFlagDownloadRemove, flagDownloadRemove ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
-                    
+
                     subKey.SetValue(_nameFlagSelectById, flagSelectById ? _flagTrue : _flagFalse, RegistryValueKind.DWord);
 
                     subKey.SetValue(_nameHeight, height * _sizeFactor, RegistryValueKind.DWord);
