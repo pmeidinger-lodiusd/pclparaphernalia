@@ -40,10 +40,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string GetIdPCL()
-        {
-            return _entityIdPCL;
-        }
+        public string GetIdPCL() => _entityIdPCL;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -54,10 +51,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string GetName()
-        {
-            return _entityName;
-        }
+        public string GetName() => _entityName;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -68,9 +62,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLEntityTypes.Type GetEntityType()
-        {
-            return _entityType;
-        }
+        public PCLEntityTypes.Type GetEntityType() => _entityType;
     }
 }
