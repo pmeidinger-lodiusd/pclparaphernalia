@@ -272,95 +272,40 @@ namespace PCLParaphernalia
             const bool flagQuotedData = true;
             const bool flagSymbolMode = true;
 
-            string command = "??";                                             // ?? //
+            string command = "??";                                      // ?? //
             _cmdUnknown =
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "*** Unknown command ***");
+                new HPGL2Command(command, "*** Unknown command ***");
 
             command = "AA";                                             // AA //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Arc Absolute"));
+            _cmds.Add(command, new HPGL2Command(command, "Arc Absolute"));
+
             command = "AC";                                             // AC //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Anchor Corner"));
+            _cmds.Add(command, new HPGL2Command(command, "Anchor Corner"));
+
             command = "AD";                                             // AD //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Alternate Font Definition"));
+            _cmds.Add(command, new HPGL2Command(command, "Alternate Font Definition"));
+
             command = "AR";                                             // AR //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Arc Relative"));
+            _cmds.Add(command, new HPGL2Command(command, "Arc Relative"));
+
             command = "AT";                                             // AT //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Absolute Arc Three Point"));
+            _cmds.Add(command, new HPGL2Command(command, "Absolute Arc Three Point"));
+
             command = "BP";                                             // BP //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Begin Plot"));
+            _cmds.Add(command, new HPGL2Command(command, "Begin Plot"));
+
             command = "BR";                                             // BR //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Bezier Relative"));
+            _cmds.Add(command, new HPGL2Command(command, "Bezier Relative"));
+
             command = "BZ";                                             // BZ //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Bezier Absolute"));
+            _cmds.Add(command, new HPGL2Command(command, "Bezier Absolute"));
+
             command = "CF";                                             // CF //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Character Fill Mode"));
+            _cmds.Add(command, new HPGL2Command(command, "Character Fill Mode"));
+
             command = "CI";                                             // CI //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Circle"));
+            _cmds.Add(command, new HPGL2Command(command, "Circle"));
+
             command = "CO";                                             // CO //
             _cmds.Add(command,
                 new HPGL2Command(command,
@@ -370,37 +315,17 @@ namespace PCLParaphernalia
                                  flagQuotedData, flagNone,
                                  "Comment"));
             command = "CP";                                             // CP //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Character Plot"));
+            _cmds.Add(command, new HPGL2Command(command, "Character Plot"));
+
             command = "CR";                                             // CR //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Colour Range"));
+            _cmds.Add(command, new HPGL2Command(command, "Colour Range"));
+
             command = "CT";                                             // CT //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Chord Tolerance Mode"));
+            _cmds.Add(command, new HPGL2Command(command, "Chord Tolerance Mode"));
+
             command = "DC";                                             // DC //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Digitize Clear"));
+            _cmds.Add(command, new HPGL2Command(command, "Digitize Clear"));
+
             command = "DF";                                             // DF //
             _cmds.Add(command,
                 new HPGL2Command(command,
@@ -410,37 +335,17 @@ namespace PCLParaphernalia
                                  flagNone, flagNone,
                                  "Default Values"));
             command = "DI";                                             // DI //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Absolute Direction"));
+            _cmds.Add(command, new HPGL2Command(command, "Absolute Direction"));
+
             command = "DL";                                             // DL //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Download Character"));
+            _cmds.Add(command, new HPGL2Command(command, "Download Character"));
+
             command = "DP";                                             // DP //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Digitize Point"));
+            _cmds.Add(command, new HPGL2Command(command, "Digitize Point"));
+
             command = "DR";                                             // DR //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Relative Direction"));
+            _cmds.Add(command, new HPGL2Command(command, "Relative Direction"));
+
             command = "DT";                                             // DT //
             _cmds.Add(command,
                 new HPGL2Command(command,
@@ -450,101 +355,41 @@ namespace PCLParaphernalia
                                  flagNone, flagNone,
                                  "Define Label Terminator"));
             command = "DV";                                             // DV //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Define Variable Text Path"));
+            _cmds.Add(command, new HPGL2Command(command, "Define Variable Text Path"));
+
             command = "EA";                                             // EA //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Edge Rectangle Absolute"));
+            _cmds.Add(command, new HPGL2Command(command, "Edge Rectangle Absolute"));
+
             command = "EC";                                             // EC //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Enable Cutter"));
+            _cmds.Add(command, new HPGL2Command(command, "Enable Cutter"));
+
             command = "EP";                                             // EP //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Edge Polygon"));
+            _cmds.Add(command, new HPGL2Command(command, "Edge Polygon"));
+
             command = "ER";                                             // ER //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Edge Rectangle Relative"));
+            _cmds.Add(command, new HPGL2Command(command, "Edge Rectangle Relative"));
+
             command = "ES";                                             // ES //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Extra Space"));
+            _cmds.Add(command, new HPGL2Command(command, "Extra Space"));
+
             command = "EW";                                             // EW //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Edge Wedge"));
+            _cmds.Add(command, new HPGL2Command(command, "Edge Wedge"));
+
             command = "FI";                                             // FI //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Select Primary Font"));
+            _cmds.Add(command, new HPGL2Command(command, "Select Primary Font"));
+
             command = "FN";                                             // FN //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Select Secondary Font"));
+            _cmds.Add(command, new HPGL2Command(command, "Select Secondary Font"));
+
             command = "FP";                                             // FP //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Fill Polygon"));
+            _cmds.Add(command, new HPGL2Command(command, "Fill Polygon"));
+
             command = "FR";                                             // FR //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Frame Advance"));
+            _cmds.Add(command, new HPGL2Command(command, "Frame Advance"));
+
             command = "FT";                                             // FT //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Fill Type"));
+            _cmds.Add(command, new HPGL2Command(command, "Fill Type"));
+
             command = "IN";                                             // IN //
             _cmds.Add(command,
                 new HPGL2Command(command,
@@ -554,37 +399,17 @@ namespace PCLParaphernalia
                                  flagNone, flagNone,
                                  "Initialise"));
             command = "IP";                                             // IP //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Input P1 and P2"));
+            _cmds.Add(command, new HPGL2Command(command, "Input P1 and P2"));
+
             command = "IR";                                             // IR //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Input Relative P1 and P2"));
+            _cmds.Add(command, new HPGL2Command(command, "Input Relative P1 and P2"));
+
             command = "IW";                                             // IW //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Input Window"));
+            _cmds.Add(command, new HPGL2Command(command, "Input Window"));
+
             command = "LA";                                             // LA //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Line Attributes"));
+            _cmds.Add(command, new HPGL2Command(command, "Line Attributes"));
+
             command = "LB";                                             // LB //
             _cmds.Add(command,
                 new HPGL2Command(command,
@@ -594,141 +419,56 @@ namespace PCLParaphernalia
                                  flagNone, flagNone,
                                  "Label"));
             command = "LM";                                             // LM //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Label Mode"));
+            _cmds.Add(command, new HPGL2Command(command, "Label Mode"));
+
             command = "LO";                                             // LO //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Label Origin"));
+            _cmds.Add(command, new HPGL2Command(command, "Label Origin"));
+
             command = "LT";                                             // LT //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Line Type"));
+            _cmds.Add(command, new HPGL2Command(command, "Line Type"));
+
             command = "MC";                                             // MC //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Merge Control"));
+            _cmds.Add(command, new HPGL2Command(command, "Merge Control"));
+
             command = "MG";                                             // MG //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Message"));
+            _cmds.Add(command, new HPGL2Command(command, "Message"));
+
             command = "MT";                                             // MT //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Media Type"));
+            _cmds.Add(command, new HPGL2Command(command, "Media Type"));
+
             command = "NP";                                             // NP //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Number Of Pens"));
+            _cmds.Add(command, new HPGL2Command(command, "Number Of Pens"));
+
             command = "NR";                                             // NR //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Not Ready"));
+            _cmds.Add(command, new HPGL2Command(command, "Not Ready"));
+
             command = "OD";                                             // OD //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Output Digitized Point & Pen Status"));
+            _cmds.Add(command, new HPGL2Command(command, "Output Digitized Point & Pen Status"));
+
             command = "OE";                                             // OE //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Output Error"));
+            _cmds.Add(command, new HPGL2Command(command, "Output Error"));
+
             command = "OH";                                             // OH //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Output Hardclip Limits"));
+            _cmds.Add(command, new HPGL2Command(command, "Output Hardclip Limits"));
+
             command = "OI";                                             // OI //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Output Identification"));
+            _cmds.Add(command, new HPGL2Command(command, "Output Identification"));
+
             command = "OP";                                             // OP //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Output P1 and P2"));
+            _cmds.Add(command, new HPGL2Command(command, "Output P1 and P2"));
+
             command = "OS";                                             // OS //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Output Status"));
+            _cmds.Add(command, new HPGL2Command(command, "Output Status"));
+
             command = "PA";                                             // PA //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Plot Absolute"));
+            _cmds.Add(command, new HPGL2Command(command, "Plot Absolute"));
+
             command = "PC";                                             // PC //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Pen Colour Assignment"));
+            _cmds.Add(command, new HPGL2Command(command, "Pen Colour Assignment"));
+
             command = "PD";                                             // PD //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Pen Down"));
+            _cmds.Add(command, new HPGL2Command(command, "Pen Down"));
+
             command = "PE";                                             // PE //
             _cmds.Add(command,
                 new HPGL2Command(command,
@@ -738,173 +478,69 @@ namespace PCLParaphernalia
                                  flagNone, flagNone,
                                  "Polyline Encoded"));
             command = "PG";                                             // PG //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Advance Page"));
+            _cmds.Add(command, new HPGL2Command(command, "Advance Page"));
+
             command = "PM";                                             // PM //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Polygon Mode"));
+            _cmds.Add(command, new HPGL2Command(command, "Polygon Mode"));
+
             command = "PP";                                             // PP //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Pixel Placement"));
+            _cmds.Add(command, new HPGL2Command(command, "Pixel Placement"));
+
             command = "PR";                                             // PR //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Plot Relative"));
+            _cmds.Add(command, new HPGL2Command(command, "Plot Relative"));
+
             command = "PS";                                             // PS //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Plot Size"));
+            _cmds.Add(command, new HPGL2Command(command, "Plot Size"));
+
             command = "PU";                                             // PU //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Pen Up"));
+            _cmds.Add(command, new HPGL2Command(command, "Pen Up"));
+
             command = "PW";                                             // PW //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Pen Width"));
+            _cmds.Add(command, new HPGL2Command(command, "Pen Width"));
+
             command = "QL";                                             // QL //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Quality Level"));
+            _cmds.Add(command, new HPGL2Command(command, "Quality Level"));
+
             command = "RA";                                             // RA //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Fill Rectangle Absolute"));
+            _cmds.Add(command, new HPGL2Command(command, "Fill Rectangle Absolute"));
+
             command = "RF";                                             // RF //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Raster Fill Definition"));
+            _cmds.Add(command, new HPGL2Command(command, "Raster Fill Definition"));
+
             command = "RO";                                             // RO //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Rotate Coordinate System"));
+            _cmds.Add(command, new HPGL2Command(command, "Rotate Coordinate System"));
+
             command = "RP";                                             // RP //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Replot"));
+            _cmds.Add(command, new HPGL2Command(command, "Replot"));
+
             command = "RQ";                                             // RQ //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Quick Fill Rectangle Relative"));
+            _cmds.Add(command, new HPGL2Command(command, "Quick Fill Rectangle Relative"));
+
             command = "RR";                                             // RR //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Fill Rectangle Relative"));
+            _cmds.Add(command, new HPGL2Command(command, "Fill Rectangle Relative"));
+
             command = "RT";                                             // RT //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Relative Arc Three Point"));
+            _cmds.Add(command, new HPGL2Command(command, "Relative Arc Three Point"));
+
             command = "SA";                                             // SA //
             _cmds.Add(command,
                 new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
                                  "Select Alternate Font"));
             command = "SB";                                             // SB //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Scalable or Bitmap Fonts"));
+            _cmds.Add(command, new HPGL2Command(command, "Scalable or Bitmap Fonts"));
+
             command = "SC";                                             // SC //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Scale"));
+            _cmds.Add(command, new HPGL2Command(command, "Scale"));
+
             command = "SD";                                             // SD //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Standard Font Definition"));
+            _cmds.Add(command, new HPGL2Command(command, "Standard Font Definition"));
+
             command = "SI";                                             // SI //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Absolute Character Size"));
+            _cmds.Add(command, new HPGL2Command(command, "Absolute Character Size"));
+
             command = "SL";                                             // SL //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Character Slant"));
+            _cmds.Add(command, new HPGL2Command(command, "Character Slant"));
+
             command = "SM";                                             // SM //
             _cmds.Add(command,
                 new HPGL2Command(command,
@@ -914,45 +550,20 @@ namespace PCLParaphernalia
                                  flagNone, flagSymbolMode,
                                  "Symbol Mode"));
             command = "SP";                                             // SP //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Select Pen"));
+            _cmds.Add(command, new HPGL2Command(command, "Select Pen"));
+
             command = "SR";                                             // SR //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Relative Character Size"));
+            _cmds.Add(command, new HPGL2Command(command, "Relative Character Size"));
+
             command = "SS";                                             // SS //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Select Standard Font"));
+            _cmds.Add(command, new HPGL2Command(command, "Select Standard Font"));
+
             command = "ST";                                             // ST //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Sort"));
+            _cmds.Add(command, new HPGL2Command(command, "Sort"));
+
             command = "SV";                                             // SV //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Screened Vectors"));
+            _cmds.Add(command, new HPGL2Command(command, "Screened Vectors"));
+
             command = "TD";                                             // TD //
             _cmds.Add(command,
                 new HPGL2Command(command,
@@ -962,45 +573,19 @@ namespace PCLParaphernalia
                                  flagNone, flagNone,
                                  "Transparent Data"));
             command = "TR";                                             // TR //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Transparency Mode"));
+            _cmds.Add(command, new HPGL2Command(command, "Transparency Mode"));
+
             command = "UL";                                             // UL //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "User-defined Line Type"));
+            _cmds.Add(command, new HPGL2Command(command, "User-defined Line Type"));
+
             command = "VS";                                             // VS //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Velocity Select"));
+            _cmds.Add(command, new HPGL2Command(command, "Velocity Select"));
+
             command = "WG";                                             // WG //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Fill Wedge"));
+            _cmds.Add(command, new HPGL2Command(command, "Fill Wedge"));
+
             command = "WU";                                             // WU //
-            _cmds.Add(command,
-                new HPGL2Command(command,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 flagNone, flagNone,
-                                 "Pen Width Unit Selection"));
+            _cmds.Add(command, new HPGL2Command(command, "Pen Width Unit Selection"));
 
             _cmdsCount = _cmds.Count;
         }

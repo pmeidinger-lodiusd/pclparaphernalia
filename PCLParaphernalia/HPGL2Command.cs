@@ -45,6 +45,24 @@
             _statsCtChild = 0;
         }
 
+        public HPGL2Command(string mnemonic, string description)
+        {
+            Mnemonic = mnemonic;
+            Description = description;
+
+            FlagResetHPGL2 = false;
+            FlagBinaryData = false;
+            FlagFlipTransp = false;
+            FlagSetLblTerm = false;
+            FlagUseLblTerm = false;
+            FlagUseStdTerm = false;
+            FlagQuotedData = false;
+            FlagSymbolMode = false;
+
+            _statsCtParent = 0;
+            _statsCtChild = 0;
+        }
+
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
         // D e s c r i p t i o n                                              //
