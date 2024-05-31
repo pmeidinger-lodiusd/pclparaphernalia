@@ -295,8 +295,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        double calcPitch = 7200 /
-                                                (height * _contourRatio);
+                        double calcPitch = 7200 / (height * _contourRatio);
                         seq += calcPitch.ToString("F2") + "h";
                     }
                 }
@@ -352,10 +351,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public double GetPCLHeight()
-        {
-            return _pointSize;
-        }
+        public double GetPCLHeight() => _pointSize;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -366,10 +362,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public double GetPCLPitch()
-        {
-            return _pitch;
-        }
+        public double GetPCLPitch() => _pitch;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -381,10 +374,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public double GetPCLPitch(double ptSize)
-        {
-            return (double)(7200 / (ptSize * _contourRatio));
-        }
+        public double GetPCLPitch(double ptSize) => (double)(7200 / (ptSize * _contourRatio));
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -454,10 +444,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public double GetPCLXLHeight()
-        {
-            return _pointSize;
-        }
+        public double GetPCLXLHeight() => _pointSize;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -539,10 +526,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool IsBoundFont()
-        {
-            return _bound;
-        }
+        public bool IsBoundFont() => _bound;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -571,10 +555,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool IsProportionalFont()
-        {
-            return _proportional;
-        }
+        public bool IsProportionalFont() => _proportional;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
