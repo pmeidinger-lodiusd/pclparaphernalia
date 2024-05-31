@@ -23,8 +23,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Stream _ipStream = null;
-        private static BinaryReader _binReader = null;
+        private static Stream _ipStream;
+        private static BinaryReader _binReader;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -49,8 +49,7 @@ namespace PCLParaphernalia
             ref ushort lastCode,
             ref PCLSymSetTypes.Index symSetType)
         {
-            long fileSize = 0,
-                   offset = 0;
+            long offset = 0;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -59,7 +58,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             bool flagOK;
-            if (!SymSetFileOpen(filename, ref fileSize))
+            if (!TrySymSetFileOpen(filename, out long fileSize))
             {
                 MessageBox.Show($"Unable to open symbol set definition file '{filename}'.",
                                  "Symbol Set file invalid",
@@ -500,9 +499,7 @@ namespace PCLParaphernalia
 
         public static bool SymSetFileCopy(BinaryWriter prnWriter, string filename)
         {
-            long fileSize = 0;
-
-            if (!SymSetFileOpen(filename, ref fileSize))
+            if (!TrySymSetFileOpen(filename, out long fileSize))
                 return false;
 
             const int bufSize = 2048;
@@ -538,8 +535,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool SymSetFileOpen(string fileName, ref long fileSize)
+        private static bool TrySymSetFileOpen(string fileName, out long fileSize)
         {
+            fileSize = 0;
+
             if (string.IsNullOrEmpty(fileName))
             {
                 MessageBox.Show("Download symbol set file name is null.",
@@ -577,9 +576,7 @@ namespace PCLParaphernalia
             if (_ipStream == null)
                 return false;
 
-            FileInfo fi = new FileInfo(fileName);
-
-            fileSize = fi.Length;
+            fileSize = new FileInfo(fileName).Length;
 
             _binReader = new BinaryReader(_ipStream);
 

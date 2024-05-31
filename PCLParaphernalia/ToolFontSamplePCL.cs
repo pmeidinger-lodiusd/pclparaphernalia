@@ -40,9 +40,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static ushort _symSetUserMapMax = 0;
+        private static ushort _symSetUserMapMax;
 
-        private static ushort[] _symSetUserMap = null;
+        private static ushort[] _symSetUserMap;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
