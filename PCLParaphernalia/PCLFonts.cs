@@ -240,7 +240,6 @@ namespace PCLParaphernalia
 
         private static readonly List<PCLFont> _fonts = new List<PCLFont>();
 
-        private static int _fontsCount;
         private static int _fontsCountCustom;
         private static int _fontsCountDownload;
         private static int _fontsCountPrnDisk;
@@ -308,10 +307,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCount()
-        {
-            return _fontsCount;
-        }
+        public static int GetCount() => _fonts.Count;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -382,10 +378,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short GetIndexForFontArial()
-        {
-            return _indxFontArial;
-        }
+        public static short GetIndexForFontArial() => _indxFontArial;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -396,10 +389,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short GetIndexForFontCourier()
-        {
-            return _indxFontCourier;
-        }
+        public static short GetIndexForFontCourier() => _indxFontCourier;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -445,10 +435,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetName(int indxFont)
-        {
-            return _fonts[indxFont].Name;
-        }
+        public static string GetName(int indxFont) => _fonts[indxFont].Name;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -493,10 +480,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte GetPCLContourRatio(int indxFont)
-        {
-            return _fonts[indxFont].GetPCLContourRatio();
-        }
+        public static byte GetPCLContourRatio(int indxFont) => _fonts[indxFont].GetPCLContourRatio();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -527,10 +511,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static double GetPCLHeight(int indxFont)
-        {
-            return _fonts[indxFont].GetPCLHeight();
-        }
+        public static double GetPCLHeight(int indxFont) => _fonts[indxFont].GetPCLHeight();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -541,10 +522,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static double GetPCLPitch(int indxFont)
-        {
-            return _fonts[indxFont].GetPCLPitch();
-        }
+        public static double GetPCLPitch(int indxFont) => _fonts[indxFont].GetPCLPitch();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -556,10 +534,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static double GetPCLPitch(int indxFont, double ptSize)
-        {
-            return _fonts[indxFont].GetPCLPitch(ptSize);
-        }
+        public static double GetPCLPitch(int indxFont, double ptSize) => _fonts[indxFont].GetPCLPitch(ptSize);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -570,10 +545,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte GetPCLSpacing(int indxFont)
-        {
-            return _fonts[indxFont].GetPCLSpacing();
-        }
+        public static byte GetPCLSpacing(int indxFont) => _fonts[indxFont].GetPCLSpacing();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -584,11 +556,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort GetPCLStyle(int indxFont,
-                                          Variant variant)
-        {
-            return _fonts[indxFont].GetPCLStyle(variant);
-        }
+        public static ushort GetPCLStyle(int indxFont, Variant variant) => _fonts[indxFont].GetPCLStyle(variant);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -599,10 +567,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort GetPCLTypeface(int indxFont)
-        {
-            return _fonts[indxFont].Typeface;
-        }
+        public static ushort GetPCLTypeface(int indxFont) => _fonts[indxFont].Typeface;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -613,10 +578,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short GetPCLWeight(int indxFont, Variant variant)
-        {
-            return _fonts[indxFont].GetPCLWeight(variant);
-        }
+        public static short GetPCLWeight(int indxFont, Variant variant) => _fonts[indxFont].GetPCLWeight(variant);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -627,10 +589,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static double GetPCLXLHeight(int indxFont)
-        {
-            return _fonts[indxFont].GetPCLXLHeight();
-        }
+        public static double GetPCLXLHeight(int indxFont) => _fonts[indxFont].GetPCLXLHeight();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -641,10 +600,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetPCLXLName(int indxFont, Variant variant)
-        {
-            return _fonts[indxFont].GetPCLXLName(variant);
-        }
+        public static string GetPCLXLName(int indxFont, Variant variant) => _fonts[indxFont].GetPCLXLName(variant);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -670,10 +626,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort GetSymbolSetNumber(int indxFont)
-        {
-            return _fonts[indxFont].GetSymbolSetNumber();
-        }
+        public static ushort GetSymbolSetNumber(int indxFont) => _fonts[indxFont].GetSymbolSetNumber();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -684,10 +637,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static FontType GetType(int indxFont)
-        {
-            return _fonts[indxFont].Type;
-        }
+        public static FontType GetType(int indxFont) => _fonts[indxFont].Type;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -699,10 +649,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool IsBoundFont(int indxFont)
-        {
-            return _fonts[indxFont].IsBoundFont();
-        }
+        public static bool IsBoundFont(int indxFont) => _fonts[indxFont].IsBoundFont();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -714,10 +661,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool IsPresetFont(int indxFont)
-        {
-            return _fonts[indxFont].IsPresetFont();
-        }
+        public static bool IsPresetFont(int indxFont) => _fonts[indxFont].IsPresetFont();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -729,10 +673,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool IsProportionalFont(int indxFont)
-        {
-            return _fonts[indxFont].IsProportionalFont();
-        }
+        public static bool IsProportionalFont(int indxFont) => _fonts[indxFont].IsProportionalFont();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -744,10 +685,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool IsScalableFont(int indxFont)
-        {
-            return _fonts[indxFont].Scalable;
-        }
+        public static bool IsScalableFont(int indxFont) => _fonts[indxFont].Scalable;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -760,10 +698,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool IsSymSetInList(int indxFont, ushort symSetNo)
-        {
-            return _fonts[indxFont].IsSymSetInList(symSetNo);
-        }
+        public static bool IsSymSetInList(int indxFont, ushort symSetNo) => _fonts[indxFont].IsSymSetInList(symSetNo);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -824,6 +759,8 @@ namespace PCLParaphernalia
         {
             short fontIndex = 0;
 
+            const string emptyName = "                ";
+
             _fonts.AddRange(new PCLFont[]
             {
                 new PCLFont(
@@ -832,10 +769,10 @@ namespace PCLParaphernalia
                     "<select by characteristics>",
                     false, false, false,
                         0, 0, 0, 0, 0,
-                    false, 0, 0, "                ",
-                    false, 0, 0, "                ",
-                    false, 0, 0, "                ",
-                    false, 0, 0, "                ",
+                    false, 0, 0, emptyName,
+                    false, 0, 0, emptyName,
+                    false, 0, 0, emptyName,
+                    false, 0, 0, emptyName,
                     symSets_Dummy),
 
                 new PCLFont(
@@ -844,10 +781,10 @@ namespace PCLParaphernalia
                     "<download soft font>",
                     false, false, false,
                         0, 0, 0, 0, 0,
-                    false, 0, 0, "                ",
-                    false, 0, 0, "                ",
-                    false, 0, 0, "                ",
-                    false, 0, 0, "                ",
+                    false, 0, 0, emptyName,
+                    false, 0, 0, emptyName,
+                    false, 0, 0, emptyName,
+                    false, 0, 0, emptyName,
                     symSets_Dummy),
 
                 new PCLFont(
@@ -856,10 +793,10 @@ namespace PCLParaphernalia
                     "<load from printer storage>",
                     false, false, false,
                         0, 0, 0, 0, 0,
-                    false, 0, 0, "                ",
-                    false, 0, 0, "                ",
-                    false, 0, 0, "                ",
-                    false, 0, 0, "                ",
+                    false, 0, 0, emptyName,
+                    false, 0, 0, emptyName,
+                    false, 0, 0, emptyName,
+                    false, 0, 0, emptyName,
                     symSets_Dummy),
 
                 new PCLFont(
@@ -869,10 +806,10 @@ namespace PCLParaphernalia
                     false, true, true,
                         0, 266, 0, 0, 0,
                     // remaining values are dummy values for this entry
-                    true, 0, 0, "                ",
-                    true, 1, 0, "                ",
-                    true, 0, 3, "                ",
-                    true, 1, 3, "                ",
+                    true, 0, 0, emptyName,
+                    true, 1, 0, emptyName,
+                    true, 0, 3, emptyName,
+                    true, 1, 3, emptyName,
                     symSets_Dummy),
 
                 new PCLFont(
@@ -882,9 +819,9 @@ namespace PCLParaphernalia
                     false, true, true,
                         0, 4362, 0, 0, 0,
                     true, 0, 1, "Albertus      Md",
-                    false, 0, 0, "                ",
+                    false, 0, 0, emptyName,
                     true, 0, 4, "Albertus      Xb",
-                    false, 0, 0, "                ",
+                    false, 0, 0, emptyName,
                     symSets_Europe_Not_Hebrew_Greek_Cyrillic),
 
                 new PCLFont(
@@ -894,10 +831,10 @@ namespace PCLParaphernalia
                     false, true, true,
                         0, 72, 0, 0, 0,
                     // remaining values are dummy values for this entry
-                    true, 0, 0, "                ",
-                    true, 1, 0, "                ",
-                    true, 0, 3, "                ",
-                    true, 1, 3, "                ",
+                    true, 0, 0, emptyName,
+                    true, 1, 0, emptyName,
+                    true, 0, 3, emptyName,
+                    true, 1, 3, emptyName,
                     symSets_Dummy),
 
                 new PCLFont(
@@ -909,7 +846,7 @@ namespace PCLParaphernalia
                     true, 0, 0, "AntiqOlive      ",
                     true, 1, 0, "AntiqOlive    It",
                     true, 0, 3, "AntiqOlive    Bd",
-                    false, 1, 3, "                ",
+                    false, 1, 3, emptyName,
                     symSets_Europe_Not_Hebrew_Greek_Cyrillic)
             });
 
@@ -924,9 +861,9 @@ namespace PCLParaphernalia
                     true, true, true,
                       590, 17004, 0, 0, 0,
                     true, 0, 0, "Andale Mono WT J",
-                    false, 0, 0, "                ",
-                    false, 0, 0, "                ",
-                    false, 0, 0, "                ",
+                    false, 0, 0, emptyName,
+                    false, 0, 0, emptyName,
+                    false, 0, 0, emptyName,
                     symSets_Unicode),
 
                 new PCLFont(
@@ -936,9 +873,9 @@ namespace PCLParaphernalia
                     true, true, true,
                       590, 17005, 0, 0, 0,
                     true, 0, 0, "Andale Mono WT K",
-                    false, 0, 0, "                ",
-                    false, 0, 0, "                ",
-                    false, 0, 0, "                ",
+                    false, 0, 0, emptyName,
+                    false, 0, 0, emptyName,
+                    false, 0, 0, emptyName,
                     symSets_Unicode),
 
                 new PCLFont(
@@ -948,9 +885,9 @@ namespace PCLParaphernalia
                     true, true, true,
                       590, 17007, 0, 0, 0,
                     true, 0, 0, "Andale Mono WT S",
-                    false, 0, 0, "                ",
-                    false, 0, 0, "                ",
-                    false, 0, 0, "                ",
+                    false, 0, 0, emptyName,
+                    false, 0, 0, emptyName,
+                    false, 0, 0, emptyName,
                     symSets_Unicode),
 
                 new PCLFont(
@@ -960,9 +897,9 @@ namespace PCLParaphernalia
                     true, true, true,
                       590, 17006, 0, 0, 0,
                     true, 0, 0, "Andale Mono WT T",
-                    false, 0, 0, "                ",
-                    false, 0, 0, "                ",
-                    false, 0, 0, "                ",
+                    false, 0, 0, emptyName,
+                    false, 0, 0, emptyName,
+                    false, 0, 0, emptyName,
                     symSets_Unicode),
 
                 new PCLFont(
@@ -972,10 +909,10 @@ namespace PCLParaphernalia
                     false, true, true,
                         0, 218, 0, 0, 0,
                     // remaining values are dummy values for this entry
-                    true, 0, 0, "                ",
-                    true, 1, 0, "                ",
-                    true, 0, 3, "                ",
-                    true, 1, 3, "                ",
+                    true, 0, 0, emptyName,
+                    true, 1, 0, emptyName,
+                    true, 0, 3, emptyName,
+                    true, 1, 3, emptyName,
                     symSets_Dummy),
 
                 new PCLFont(
@@ -1021,10 +958,10 @@ namespace PCLParaphernalia
                     false, true, true,
                         0, 9, 0, 0, 0,
                     // remaining values are dummy values for this entry
-                    true, 0, 0, "                ",
-                    true, 1, 0, "                ",
-                    true, 0, 3, "                ",
-                    true, 1, 3, "                ",
+                    true, 0, 0, emptyName,
+                    true, 1, 0, emptyName,
+                    true, 0, 3, emptyName,
+                    true, 1, 3, emptyName,
                     symSets_Dummy),
 
                 new PCLFont(
@@ -1058,10 +995,10 @@ namespace PCLParaphernalia
                     false, true, true,
                         0, 44, 0, 0, 0,
                     // remaining values are dummy values for this entry
-                    true, 0, 0, "                ",
-                    true, 1, 0, "                ",
-                    true, 0, 3, "                ",
-                    true, 1, 3, "                ",
+                    true, 0, 0, emptyName,
+                    true, 1, 0, emptyName,
+                    true, 0, 3, emptyName,
+                    true, 1, 3, emptyName,
                     symSets_Dummy),
 
                 new PCLFont(
@@ -1070,10 +1007,10 @@ namespace PCLParaphernalia
                     "Clarendon Condensed",
                     false, true, true,
                         0, 4140, 0, 0, 0,
-                    false, 0, 0, "                ",
-                    false, 0, 0, "                ",
+                    false, 0, 0, emptyName,
+                    false, 0, 0, emptyName,
                     true, 4, 3, "Clarendon   CdBd",
-                    false, 0, 0, "                ",
+                    false, 0, 0, emptyName,
                     symSets_Europe_Not_Hebrew_Greek_Cyrillic),
 
                 new PCLFont(
@@ -1083,10 +1020,10 @@ namespace PCLParaphernalia
                     false, true, true,
                         0, 20, 0, 0, 0,
                     // remaining values are dummy values for this entry
-                    true, 0, 0, "                ",
-                    true, 1, 0, "                ",
-                    true, 0, 3, "                ",
-                    true, 1, 3, "                ",
+                    true, 0, 0, emptyName,
+                    true, 1, 0, emptyName,
+                    true, 0, 3, emptyName,
+                    true, 1, 3, emptyName,
                     symSets_Dummy),
 
                 new PCLFont(
@@ -1095,10 +1032,10 @@ namespace PCLParaphernalia
                     "Coronet",
                     false, true, true,
                         0, 4116, 0, 0, 0,
-                    false, 0, 0, "                ",
+                    false, 0, 0, emptyName,
                     true, 1, 0, "Coronet         ",
-                    false, 0, 3, "                ",
-                    false, 1, 3, "                ",
+                    false, 0, 3, emptyName,
+                    false, 1, 3, emptyName,
                     symSets_Europe_Not_Hebrew_Greek_Cyrillic),
 
                 new PCLFont(
@@ -1108,10 +1045,10 @@ namespace PCLParaphernalia
                     false, false, true,
                         0, 3, 0, 0, 0,
                     // remaining values are dummy values for this entry
-                    true, 0, 0, "                ",
-                    true, 1, 0, "                ",
-                    true, 0, 3, "                ",
-                    true, 1, 3, "                ",
+                    true, 0, 0, emptyName,
+                    true, 1, 0, emptyName,
+                    true, 0, 3, emptyName,
+                    true, 1, 3, emptyName,
                     symSets_Dummy)
             });
 
@@ -1150,10 +1087,10 @@ namespace PCLParaphernalia
                     false, false, true,
                         0, 2, 0, 0, 0,
                     // remaining values are dummy values for this entry
-                    true, 0, 0, "                ",
-                    true, 1, 0, "                ",
-                    true, 0, 3, "                ",
-                    true, 1, 3, "                ",
+                    true, 0, 0, emptyName,
+                    true, 1, 0, emptyName,
+                    true, 0, 3, emptyName,
+                    true, 1, 3, emptyName,
                     symSets_Dummy),
 
                 new PCLFont(
@@ -1163,10 +1100,10 @@ namespace PCLParaphernalia
                     false, true, true,
                         0, 101, 0, 0, 0,
                     // remaining values are dummy values for this entry
-                    true, 0, 0, "                ",
-                    true, 1, 0, "                ",
-                    true, 0, 3, "                ",
-                    true, 1, 3, "                ",
+                    true, 0, 0, emptyName,
+                    true, 1, 0, emptyName,
+                    true, 0, 3, emptyName,
+                    true, 1, 3, emptyName,
                     symSets_Dummy),
 
                 new PCLFont(
@@ -1188,10 +1125,10 @@ namespace PCLParaphernalia
                     false, true, true,
                         0, 37357, 0, 0, 0,
                     // remaining values are unknown for this entry
-                    true, 0, 0, "                ",
-                    false, 0, 0, "                ",
-                    false, 0, 0, "                ",
-                    false, 0, 0, "                ",
+                    true, 0, 0, emptyName,
+                    false, 0, 0, emptyName,
+                    false, 0, 0, emptyName,
+                    false, 0, 0, emptyName,
                     symSets_Unicode),
 
                 new PCLFont(
@@ -1201,10 +1138,10 @@ namespace PCLParaphernalia
                     false, true, true,
                         0, 4, 0, 0, 0,
                     // remaining values are dummy values for this entry
-                    true, 0, 0, "                ",
-                    true, 1, 0, "                ",
-                    true, 0, 3, "                ",
-                    true, 1, 3, "                ",
+                    true, 0, 0, emptyName,
+                    true, 1, 0, emptyName,
+                    true, 0, 3, emptyName,
+                    true, 1, 3, emptyName,
                     symSets_Dummy),
 
                 new PCLFont(
@@ -1214,10 +1151,10 @@ namespace PCLParaphernalia
                     false, true, true,
                         0, 24580, 0, 0, 0,
                     // remaining values are dummy values for this entry
-                    true, 0, 0, "                ",
-                    true, 1, 0, "                ",
-                    true, 0, 3, "                ",
-                    true, 1, 3, "                ",
+                    true, 0, 0, emptyName,
+                    true, 1, 0, emptyName,
+                    true, 0, 3, emptyName,
+                    true, 1, 3, emptyName,
                     symSets_Dummy),
 
                 new PCLFont(
@@ -1251,9 +1188,9 @@ namespace PCLParaphernalia
                     false, true, true,
                         0, 16585, 0, 0, 0,
                     true, 0, 0, "Dorit           ",
-                    false, 0, 0, "                ",
+                    false, 0, 0, emptyName,
                     true, 0, 3, "Dorit         Bd",
-                    false, 0, 0, "                ",
+                    false, 0, 0, emptyName,
                     symSets_Hebrew),
 
                 new PCLFont(
@@ -1265,7 +1202,7 @@ namespace PCLParaphernalia
                     true, 0, 0, "Malka           ",
                     true, 1, 0, "Malka         It",
                     true, 0, 3, "Malka         Bd",
-                    false, 0, 0, "                ",
+                    false, 0, 0, emptyName,
                     symSets_Hebrew),
 
                 new PCLFont(
@@ -1275,9 +1212,9 @@ namespace PCLParaphernalia
                     false, true, true,
                         0, 16587, 0, 0, 0,
                     true, 0, 0, "Naamit          ",
-                    false, 0, 0, "                ",
+                    false, 0, 0, emptyName,
                     true, 0, 3, "Naamit        Bd",
-                    false, 0, 0, "                ",
+                    false, 0, 0, emptyName,
                     symSets_Hebrew),
 
                 new PCLFont(
@@ -1287,10 +1224,10 @@ namespace PCLParaphernalia
                     false, true, true,
                         0, 31, 0, 0, 0,
                     // remaining values are dummy values for this entry
-                    true, 0, 0, "                ",
-                    true, 1, 0, "                ",
-                    true, 0, 3, "                ",
-                    true, 1, 3, "                ",
+                    true, 0, 0, emptyName,
+                    true, 1, 0, emptyName,
+                    true, 0, 3, emptyName,
+                    true, 1, 3, emptyName,
                     symSets_Dummy),
 
                 new PCLFont(
@@ -1312,10 +1249,10 @@ namespace PCLParaphernalia
                     false, true, true,
                         0, 47, 0, 0, 0,
                     // remaining values are dummy values for this entry
-                    true, 0, 0, "                ",
-                    true, 1, 0, "                ",
-                    true, 0, 3, "                ",
-                    true, 1, 3, "                ",
+                    true, 0, 0, emptyName,
+                    true, 1, 0, emptyName,
+                    true, 0, 3, emptyName,
+                    true, 1, 3, emptyName,
                     symSets_Dummy),
 
                 new PCLFont(
@@ -1337,10 +1274,10 @@ namespace PCLParaphernalia
                     false, true, true,
                         0, 168, 0, 0, 0,
                     // remaining values are dummy values for this entry
-                    true, 0, 0, "                ",
-                    true, 1, 0, "                ",
-                    true, 0, 3, "                ",
-                    true, 1, 3, "                ",
+                    true, 0, 0, emptyName,
+                    true, 1, 0, emptyName,
+                    true, 0, 3, emptyName,
+                    true, 1, 3, emptyName,
                     symSets_Dummy),
 
                 new PCLFont(
@@ -1350,9 +1287,9 @@ namespace PCLParaphernalia
                     false, false, true,
                         0, 4264, 60, 0, 0,
                     true, 0, 0, "Koufi           ",
-                    false, 0, 0, "                ",
+                    false, 0, 0, emptyName,
                     true, 0, 3, "Koufi         Bd",
-                    false, 0, 3, "                ",
+                    false, 0, 3, emptyName,
                     symSets_Arabic),
 
                 new PCLFont(
@@ -1362,10 +1299,10 @@ namespace PCLParaphernalia
                     false, true, true,
                         0, 6, 0, 0, 0,
                     // remaining values are dummy values for this entry
-                    true, 0, 0, "                ",
-                    true, 1, 0, "                ",
-                    true, 0, 3, "                ",
-                    true, 1, 3, "                ",
+                    true, 0, 0, emptyName,
+                    true, 1, 0, emptyName,
+                    true, 0, 3, emptyName,
+                    true, 1, 3, emptyName,
                     symSets_Dummy),
 
                 new PCLFont(
@@ -1977,8 +1914,6 @@ namespace PCLParaphernalia
                     false, 0, 0, "                ",
                     new ushort[] { PCLSymbolSets.TranslateIdToKind1("14L") })
             });
-
-            _fontsCount = _fonts.Count;
 
             _fontsCountCustom = 0;
             _fontsCountDownload = 0;
