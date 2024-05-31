@@ -86,19 +86,6 @@ namespace PCLParaphernalia
             {
                 const string key = _subKeyTarget + "\\" + _subKeyTargetNetPrinter;
 
-                //----------------------------------------------------------------//
-
-                using (var subKey = keyMain.CreateSubKey(_subKeyTarget))
-                {
-                    if (Helper_RegKey.KeyExists(subKey, _subKeyTargetPrinter))
-                    {
-                        // update from v2_5_0_0
-                        Helper_RegKey.RenameKey(subKey, _subKeyTargetPrinter, _subKeyTargetNetPrinter);
-                    }
-                }
-
-                //----------------------------------------------------------------//
-
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
                     ipAddress = (string)subKey.GetValue(_nameIPAddress, _defaultIPAddress);

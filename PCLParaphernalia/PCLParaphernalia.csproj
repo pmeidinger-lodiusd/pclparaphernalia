@@ -275,7 +275,6 @@
     <Compile Include="PrnParseRowTypes.cs" />
     <Compile Include="PrnView.cs" />
     <Compile Include="Helper_RawPrinter.cs" />
-    <Compile Include="Helper_RegKey.cs" />
     <Compile Include="ReportCore.cs" />
     <Compile Include="TargetFile.xaml.cs">
       <DependentUpon>TargetFile.xaml</DependentUpon>

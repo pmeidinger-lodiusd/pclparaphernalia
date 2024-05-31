@@ -69,15 +69,6 @@ namespace PCLParaphernalia
             {
                 string defWorkFolder = ToolCommonData.DefWorkFolder;
 
-                using (var subKey = keyMain.CreateSubKey(_subKeyTools))
-                {
-                    if (Helper_RegKey.KeyExists(subKey, _subKeyToolsPDLData))
-                    {
-                        // update from v2_5_0_0
-                        Helper_RegKey.RenameKey(subKey, _subKeyToolsPDLData, _subKeyToolsPrintLang);
-                    }
-                }
-
                 using (var subKey = keyMain.CreateSubKey(_subKeyToolsPrintLang))
                 {
                     indxInfoType = (int)subKey.GetValue(_nameIndxInfoType, _indexZero);

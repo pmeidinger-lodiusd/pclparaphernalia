@@ -176,18 +176,6 @@ namespace PCLParaphernalia
 
                 using (var subKey = keyMain.CreateSubKey(_subKeyToolsFontSample))
                 {
-                    if (Helper_RegKey.KeyExists(subKey, _subKeyPCL5))
-                    {
-                        // update from v2_5_0_0
-                        Helper_RegKey.RenameKey(subKey, _subKeyPCL5, _subKeyPCL);
-                    }
-
-                    if (Helper_RegKey.KeyExists(subKey, _subKeyPCL6))
-                    {
-                        // update from v2_5_0_0
-                        Helper_RegKey.RenameKey(subKey, _subKeyPCL6, _subKeyPCLXL);
-                    }
-
                     indxPDL = (int)subKey.GetValue(_nameIndxPDL, _indexZero);
 
                     tmpInt = (int)subKey.GetValue(_nameFlagOptGridVertical, _flagFalse);
