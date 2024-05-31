@@ -70,10 +70,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCount()
-        {
-            return _paperTypeCount;
-        }
+        public static int GetCount() => _paperTypeCount;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -84,10 +81,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetName(int index)
-        {
-            return _paperTypes[index].GetName();
-        }
+        public static string GetName(int index) => _paperTypes[index].GetName();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -98,9 +92,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static EntryType GetType(int index)
-        {
-            return _paperTypes[index].GetPaperType();
-        }
+        public static EntryType GetType(int index) => _paperTypes[index].GetPaperType();
     }
 }

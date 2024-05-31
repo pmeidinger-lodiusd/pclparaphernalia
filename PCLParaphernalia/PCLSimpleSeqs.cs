@@ -251,10 +251,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetSeqCount()
-        {
-            return _seqsCount;
-        }
+        public static int GetSeqCount() => _seqsCount;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

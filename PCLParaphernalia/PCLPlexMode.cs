@@ -49,10 +49,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte GetIdPCL()
-        {
-            return _plexModeIdPCL;
-        }
+        public byte GetIdPCL() => _plexModeIdPCL;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -64,13 +61,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte GetIdPCLXL(bool landscape)
-        {
-            if (landscape)
-                return _plexModeIdPCLXLLand;
-            else
-                return _plexModeIdPCLXLPort;
-        }
+        public byte GetIdPCLXL(bool landscape) => landscape ? _plexModeIdPCLXLLand : _plexModeIdPCLXLPort;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -81,10 +72,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string GetName()
-        {
-            return _plexModeName;
-        }
+        public string GetName() => _plexModeName;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -95,9 +83,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLPlexModes.PlexType GetPlexType()
-        {
-            return _plexType;
-        }
+        public PCLPlexModes.PlexType GetPlexType() => _plexType;
     }
 }

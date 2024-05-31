@@ -53,10 +53,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string GetDesc()
-        {
-            return _desc;
-        }
+        public string GetDesc() => _desc;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -85,10 +82,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLTextParsingMethods.Index GetMethodType()
-        {
-            return _indxMethod;
-        }
+        public PCLTextParsingMethods.Index GetMethodType() => _indxMethod;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -99,10 +93,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort[] GetRangeDataDouble()
-        {
-            return _rangeDataDouble;
-        }
+        public ushort[] GetRangeDataDouble() => _rangeDataDouble;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -130,10 +121,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort[] GetRangeDataSingle()
-        {
-            return _rangeDataSingle;
-        }
+        public ushort[] GetRangeDataSingle() => _rangeDataSingle;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -161,9 +149,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int GetValue()
-        {
-            return _value;
-        }
+        public int GetValue() => _value;
     }
 }

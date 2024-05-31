@@ -42,10 +42,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public short GetIdAutoSelect()
-        {
-            return _idAutoSelect;
-        }
+        public short GetIdAutoSelect() => _idAutoSelect;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -56,10 +53,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public short GetIdDefault()
-        {
-            return _idDefault;
-        }
+        public short GetIdDefault() => _idDefault;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -70,10 +64,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public short GetIdMaximum()
-        {
-            return _idMaximum;
-        }
+        public short GetIdMaximum() => _idMaximum;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -84,9 +75,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public short GetIdNotSet()
-        {
-            return _idNotSet;
-        }
+        public short GetIdNotSet() => _idNotSet;
     }
 }

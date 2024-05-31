@@ -39,10 +39,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string GetName()
-        {
-            return _paperTypeName;
-        }
+        public string GetName() => _paperTypeName;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -53,9 +50,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLPaperTypes.EntryType GetPaperType()
-        {
-            return _entryType;
-        }
+        public PCLPaperTypes.EntryType GetPaperType() => _entryType;
     }
 }

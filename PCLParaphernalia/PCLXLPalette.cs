@@ -92,10 +92,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string GetColourName(int item)
-        {
-            return _colourNames[item];
-        }
+        public string GetColourName(int item) => _colourNames[item];
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -106,10 +103,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte GetColourId(int item)
-        {
-            return _colourIds[item];
-        }
+        public byte GetColourId(int item) => _colourIds[item];
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -120,10 +114,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int GetColourRGB(int item)
-        {
-            return _colourRGBs[item];
-        }
+        public int GetColourRGB(int item) => _colourRGBs[item];
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -181,10 +172,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void SetClrItemBlack()
-        {
-            _clrItemBlack = (byte)(_crntClrItem - 1);
-        }
+        public void SetClrItemBlack() => _clrItemBlack = (byte)(_crntClrItem - 1);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -195,9 +183,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void SetClrItemWhite()
-        {
-            _clrItemWhite = (byte)(_crntClrItem - 1);
-        }
+        public void SetClrItemWhite() => _clrItemWhite = (byte)(_crntClrItem - 1);
     }
 }

@@ -106,10 +106,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCount()
-        {
-            return _setsCountTotal;
-        }
+        public static int GetCount() => _setsCountTotal;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -120,10 +117,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCountMapped()
-        {
-            return _setsCountMapped;
-        }
+        public static int GetCountMapped() => _setsCountMapped;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -134,10 +128,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCountStd()
-        {
-            return _setsCountStd;
-        }
+        public static int GetCountStd() => _setsCountStd;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -149,10 +140,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCountUserSet()
-        {
-            return _setsCountUserSet;
-        }
+        public static int GetCountUserSet() => _setsCountUserSet;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -163,10 +151,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static SymSetGroup GetGroup(int selection)
-        {
-            return _sets[selection].Group;
-        }
+        public static SymSetGroup GetGroup(int selection) => _sets[selection].Group;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -177,10 +162,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetId(int selection)
-        {
-            return _sets[selection].Id;
-        }
+        public static string GetId(int selection) => _sets[selection].Id;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -191,10 +173,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte GetIdAlpha(int selection)
-        {
-            return _sets[selection].IdAlpha;
-        }
+        public static byte GetIdAlpha(int selection) => _sets[selection].IdAlpha;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -205,10 +184,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort GetIdNum(int selection)
-        {
-            return _sets[selection].IdNum;
-        }
+        public static ushort GetIdNum(int selection) => _sets[selection].IdNum;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -290,10 +266,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort GetKind1(int selection)
-        {
-            return _sets[selection].Kind1;
-        }
+        public static ushort GetKind1(int selection) => _sets[selection].Kind1;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -305,10 +278,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort GetMapArrayMax(int selection)
-        {
-            return _sets[selection].MapArrayMax;
-        }
+        public static ushort GetMapArrayMax(int selection) => _sets[selection].MapArrayMax;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -340,10 +310,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort[] GetMapArraySymbol()
-        {
-            return _sets[_indxSymbol].MapArrayStd;
-        }
+        public static ushort[] GetMapArraySymbol() => _sets[_indxSymbol].MapArrayStd;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -354,10 +321,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort[] GetMapArrayUserSet()
-        {
-            return _sets[_indxUserSet].MapArrayUserSet;
-        }
+        public static ushort[] GetMapArrayUserSet() => _sets[_indxUserSet].MapArrayUserSet;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -368,10 +332,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetName(int selection)
-        {
-            return _sets[selection].Name;
-        }
+        public static string GetName(int selection) => _sets[selection].Name;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -383,11 +344,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static PCLTextParsingMethods.Index GetParsingMethod(
-            int selection)
-        {
-            return _sets[selection].ParsingMethod;
-        }
+        public static PCLTextParsingMethods.Index GetParsingMethod(int selection) => _sets[selection].ParsingMethod;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -429,17 +386,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static PCLSymSetTypes.Index GetType(int selection)
-        {
-            return _sets[selection].Type;
-        }
+        public static PCLSymSetTypes.Index GetType(int selection) => _sets[selection].Type;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
         // I n d e x S y m b o l                                              //
         //--------------------------------------------------------------------//
         //                                                                    //
-        // Set or return index of the 'symbol' Symbol Set.                    //
+        // Return index of the 'symbol' Symbol Set.                           //
         //                                                                    //
         //--------------------------------------------------------------------//
 
@@ -450,7 +404,7 @@ namespace PCLParaphernalia
         // I n d e x U n i c o d e                                            //
         //--------------------------------------------------------------------//
         //                                                                    //
-        // Set or return index of the 'Unicode' Symbol Set.                   //
+        // Return index of the 'Unicode' Symbol Set.                          //
         //                                                                    //
         //--------------------------------------------------------------------//
 
@@ -461,7 +415,7 @@ namespace PCLParaphernalia
         // I n d e x U s e r S e t                                            //
         //--------------------------------------------------------------------//
         //                                                                    //
-        // Set or return index of the 'user-defined' Symbol Set.              //
+        // Return index of the 'user-defined' Symbol Set.                     //
         //                                                                    //
         //--------------------------------------------------------------------//
 
@@ -488,10 +442,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool NullMapPCL(int selection)
-        {
-            return _sets[selection].NullMapPCL;
-        }
+        public static bool NullMapPCL(int selection) => _sets[selection].NullMapPCL;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -504,10 +455,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool NullMapStd(int selection)
-        {
-            return _sets[selection].NullMapStd;
-        }
+        public static bool NullMapStd(int selection) => _sets[selection].NullMapStd;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -1566,7 +1514,8 @@ namespace PCLParaphernalia
             {
                 kind1Num = Convert.ToUInt16(symbolSetId.Substring(0, len - 1));
 
-                if ((kind1Num < 0) || (kind1Num > 2047))
+                // kind1Num is unsigned, don't check if < 0
+                if (/*(kind1Num < 0) ||*/ (kind1Num > 2047))
                     dataValid = false;
             }
 
@@ -1634,9 +1583,13 @@ namespace PCLParaphernalia
 
             if ((idNum < 1) || (idNum > 2047) ||
                 (idAlpha < 0x40) || (idAlpha > 0x5a))
+            {
                 return badValue;
+            }
             else
+            {
                 return (ushort)((idNum * 32) + (idAlpha - 64));
+            }
         }
 
         //--------------------------------------------------------------------//

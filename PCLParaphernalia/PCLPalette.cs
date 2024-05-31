@@ -90,10 +90,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte GetColourId(int item)
-        {
-            return _colourIds[item];
-        }
+        public byte GetColourId(int item) => _colourIds[item];
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -104,10 +101,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string GetColourName(int item)
-        {
-            return _colourNames[item];
-        }
+        public string GetColourName(int item) => _colourNames[item];
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //

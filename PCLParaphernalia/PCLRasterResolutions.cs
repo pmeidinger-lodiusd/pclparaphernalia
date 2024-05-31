@@ -35,10 +35,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCount()
-        {
-            return _rasterResolutionCount;
-        }
+        public static int GetCount() => _rasterResolutionCount;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -49,9 +46,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort GetValue(int selection)
-        {
-            return _rasterResolutions[selection].GetValue();
-        }
+        public static ushort GetValue(int selection) => _rasterResolutions[selection].GetValue();
     }
 }

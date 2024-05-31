@@ -29,8 +29,6 @@
             new PCLTrayData(1, 0, 255, -1)
         };
 
-        //private static readonly int _trayDataCount = _trayDatas.GetUpperBound(0) + 1;
-
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // g e t I d A u t o S e l e c t P C L                                //
@@ -40,10 +38,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short GetIdAutoSelectPCL()
-        {
-            return _trayDatas[(int)PDL.PCL].GetIdAutoSelect();
-        }
+        public static short GetIdAutoSelectPCL() => _trayDatas[(int)PDL.PCL].GetIdAutoSelect();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -54,10 +49,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short GetIdAutoSelectPCLXL()
-        {
-            return _trayDatas[(int)PDL.PCLXL].GetIdAutoSelect();
-        }
+        public static short GetIdAutoSelectPCLXL() => _trayDatas[(int)PDL.PCLXL].GetIdAutoSelect();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -68,10 +60,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short GetIdDefaultPCL()
-        {
-            return _trayDatas[(int)PDL.PCL].GetIdDefault();
-        }
+        public static short GetIdDefaultPCL() => _trayDatas[(int)PDL.PCL].GetIdDefault();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -82,10 +71,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short GetIdDefaultPCLXL()
-        {
-            return _trayDatas[(int)PDL.PCLXL].GetIdDefault();
-        }
+        public static short GetIdDefaultPCLXL() => _trayDatas[(int)PDL.PCLXL].GetIdDefault();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -96,10 +82,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short GetIdMaximumPCL()
-        {
-            return _trayDatas[(int)PDL.PCL].GetIdMaximum();
-        }
+        public static short GetIdMaximumPCL() => _trayDatas[(int)PDL.PCL].GetIdMaximum();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -110,10 +93,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short GetIdMaximumPCLXL()
-        {
-            return _trayDatas[(int)PDL.PCLXL].GetIdMaximum();
-        }
+        public static short GetIdMaximumPCLXL() => _trayDatas[(int)PDL.PCLXL].GetIdMaximum();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -124,10 +104,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short GetIdNotSetPCL()
-        {
-            return _trayDatas[(int)PDL.PCL].GetIdNotSet();
-        }
+        public static short GetIdNotSetPCL() => _trayDatas[(int)PDL.PCL].GetIdNotSet();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -138,9 +115,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short GetIdNotSetPCLXL()
-        {
-            return _trayDatas[(int)PDL.PCLXL].GetIdNotSet();
-        }
+        public static short GetIdNotSetPCLXL() => _trayDatas[(int)PDL.PCLXL].GetIdNotSet();
     }
 }

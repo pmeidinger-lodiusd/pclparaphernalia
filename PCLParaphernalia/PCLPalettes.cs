@@ -131,10 +131,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte GetColourId(int paletteIndex, int colourIndex)
-        {
-            return _palettes[paletteIndex].GetColourId(colourIndex);
-        }
+        public static byte GetColourId(int paletteIndex, int colourIndex) => _palettes[paletteIndex].GetColourId(colourIndex);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -145,10 +142,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetColourName(int paletteIndex, int colourIndex)
-        {
-            return _palettes[paletteIndex].GetColourName(colourIndex);
-        }
+        public static string GetColourName(int paletteIndex, int colourIndex) => _palettes[paletteIndex].GetColourName(colourIndex);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -159,10 +153,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte GetClrItemBlack(int paletteIndex)
-        {
-            return _palettes[paletteIndex].ClrItemBlack;
-        }
+        public static byte GetClrItemBlack(int paletteIndex) => _palettes[paletteIndex].ClrItemBlack;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -173,10 +164,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte GetClrItemWhite(int paletteIndex)
-        {
-            return _palettes[paletteIndex].ClrItemWhite;
-        }
+        public static byte GetClrItemWhite(int paletteIndex) => _palettes[paletteIndex].ClrItemWhite;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -187,10 +175,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte GetCtClrItems(int paletteIndex)
-        {
-            return _palettes[paletteIndex].CtClrItems;
-        }
+        public static byte GetCtClrItems(int paletteIndex) => _palettes[paletteIndex].CtClrItems;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -201,10 +186,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short GetPaletteId(int paletteIndex)
-        {
-            return _palettes[paletteIndex].PaletteId;
-        }
+        public static short GetPaletteId(int paletteIndex) => _palettes[paletteIndex].PaletteId;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -215,10 +197,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetPaletteName(int paletteIndex)
-        {
-            return _palettes[paletteIndex].PaletteName;
-        }
+        public static string GetPaletteName(int paletteIndex) => _palettes[paletteIndex].PaletteName;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -229,9 +208,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool IsMonochrome(int paletteIndex)
-        {
-            return _palettes[paletteIndex].Monochrome;
-        }
+        public static bool IsMonochrome(int paletteIndex) => _palettes[paletteIndex].Monochrome;
     }
 }

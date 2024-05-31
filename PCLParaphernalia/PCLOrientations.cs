@@ -68,10 +68,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Aspect GetAspect(int index)
-        {
-            return _orientations[index].GetAspect();
-        }
+        public static Aspect GetAspect(int index) => _orientations[index].GetAspect();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -82,10 +79,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCount()
-        {
-            return _orientationCount;
-        }
+        public static int GetCount() => _orientationCount;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -96,10 +90,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte GetIdPCL(int index)
-        {
-            return _orientations[index].GetIdPCL();
-        }
+        public static byte GetIdPCL(int index) => _orientations[index].GetIdPCL();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -110,10 +101,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte GetIdPCLXL(int index)
-        {
-            return _orientations[index].GetIdPCLXL();
-        }
+        public static byte GetIdPCLXL(int index) => _orientations[index].GetIdPCLXL();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -124,10 +112,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetName(int index)
-        {
-            return _orientations[index].GetName();
-        }
+        public static string GetName(int index) => _orientations[index].GetName();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -139,9 +124,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool IsLandscape(int index)
-        {
-            return _orientations[index].GetAspect() == Aspect.Landscape;
-        }
+        public static bool IsLandscape(int index) => _orientations[index].GetAspect() == Aspect.Landscape;
     }
 }

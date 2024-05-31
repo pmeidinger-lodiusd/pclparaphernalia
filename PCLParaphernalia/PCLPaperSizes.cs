@@ -191,10 +191,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCount()
-        {
-            return _paperSizeCount;
-        }
+        public static int GetCount() => _paperSizeCount;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -205,10 +202,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetDesc(int index)
-        {
-            return _paperSizes[index].GetDesc();
-        }
+        public static string GetDesc(int index) => _paperSizes[index].GetDesc();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -219,10 +213,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte GetIdPCL(int index)
-        {
-            return _paperSizes[index].GetIdPCL();
-        }
+        public static byte GetIdPCL(int index) => _paperSizes[index].GetIdPCL();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -233,10 +224,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte GetIdPCLXL(int index)
-        {
-            return _paperSizes[index].GetIdPCLXL();
-        }
+        public static byte GetIdPCLXL(int index) => _paperSizes[index].GetIdPCLXL();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -338,10 +326,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetName(int index)
-        {
-            return _paperSizes[index].GetName();
-        }
+        public static string GetName(int index) => _paperSizes[index].GetName();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -374,10 +359,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetNamePCLXL(int index)
-        {
-            return _paperSizes[index].GetNamePCLXL();
-        }
+        public static string GetNamePCLXL(int index) => _paperSizes[index].GetNamePCLXL();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -448,10 +430,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool IsCustomSize(int index)
-        {
-            return _paperSizes[index].FlagCustomSize;
-        }
+        public static bool IsCustomSize(int index) => _paperSizes[index].FlagCustomSize;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -462,10 +441,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool IsEnumUnknownPCLXL(int index)
-        {
-            return _paperSizes[index].GetIdPCLXL() == _unknownEnum;
-        }
+        public static bool IsEnumUnknownPCLXL(int index) => _paperSizes[index].GetIdPCLXL() == _unknownEnum;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -476,10 +452,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool IsIdUnknownPCL(int index)
-        {
-            return _paperSizes[index].GetIdPCL() == _unknownID;
-        }
+        public static bool IsIdUnknownPCL(int index) => _paperSizes[index].GetIdPCL() == _unknownID;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -491,10 +464,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool IsRareSize(int index)
-        {
-            return _paperSizes[index].IsRareSize;
-        }
+        public static bool IsRareSize(int index) => _paperSizes[index].IsRareSize;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -1908,7 +1878,8 @@ namespace PCLParaphernalia
                                  12600,     // 10.5"
                                  300,
                                  240,
-                                 200)            };
+                                 200)
+            };
 
             _paperSizeCount = _paperSizes.GetUpperBound(0) + 1;
 

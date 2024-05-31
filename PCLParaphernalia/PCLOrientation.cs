@@ -42,10 +42,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLOrientations.Aspect GetAspect()
-        {
-            return _orientationAspect;
-        }
+        public PCLOrientations.Aspect GetAspect() => _orientationAspect;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -56,10 +53,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte GetIdPCL()
-        {
-            return _orientationIdPCL;
-        }
+        public byte GetIdPCL() => _orientationIdPCL;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -70,10 +64,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte GetIdPCLXL()
-        {
-            return _orientationIdPCLXL;
-        }
+        public byte GetIdPCLXL() => _orientationIdPCLXL;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -84,9 +75,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string GetName()
-        {
-            return _orientationName;
-        }
+        public string GetName() => _orientationName;
     }
 }

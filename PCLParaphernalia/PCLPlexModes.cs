@@ -57,8 +57,7 @@
                              (byte) PCLXLAttrEnums.Val.eDuplexHorizontalBinding)
         };
 
-        private static readonly int _plexModeCount =
-            _plexModes.GetUpperBound(0) + 1;
+        private static readonly int _plexModeCount = _plexModes.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -69,10 +68,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCount()
-        {
-            return _plexModeCount;
-        }
+        public static int GetCount() => _plexModeCount;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -83,10 +79,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte GetIdPCL(int index)
-        {
-            return _plexModes[index].GetIdPCL();
-        }
+        public static byte GetIdPCL(int index) => _plexModes[index].GetIdPCL();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -97,10 +90,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte GetIdPCLXL(int index, bool flagLandscape)
-        {
-            return _plexModes[index].GetIdPCLXL(flagLandscape);
-        }
+        public static byte GetIdPCLXL(int index, bool flagLandscape) => _plexModes[index].GetIdPCLXL(flagLandscape);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -111,10 +101,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetName(int index)
-        {
-            return _plexModes[index].GetName();
-        }
+        public static string GetName(int index) => _plexModes[index].GetName();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -125,10 +112,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static PlexType GetPlexType(int index)
-        {
-            return _plexModes[index].GetPlexType();
-        }
+        public static PlexType GetPlexType(int index) => _plexModes[index].GetPlexType();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -139,9 +123,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool IsSimplex(int index)
-        {
-            return _plexModes[index].GetPlexType() == PlexType.Simplex;
-        }
+        public static bool IsSimplex(int index) => _plexModes[index].GetPlexType() == PlexType.Simplex;
     }
 }

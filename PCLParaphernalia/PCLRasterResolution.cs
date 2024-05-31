@@ -22,10 +22,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLRasterResolution(ushort value)
-        {
-            _resolution = value;
-        }
+        public PCLRasterResolution(ushort value) => _resolution = value;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -36,9 +33,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort GetValue()
-        {
-            return _resolution;
-        }
+        public ushort GetValue() => _resolution;
     }
 }

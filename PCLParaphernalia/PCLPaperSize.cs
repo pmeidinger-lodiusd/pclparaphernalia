@@ -274,10 +274,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string GetDesc()
-        {
-            return _paperSizeDesc;
-        }
+        public string GetDesc() => _paperSizeDesc;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -288,10 +285,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte GetIdPCL()
-        {
-            return _paperSizeIdPCL;
-        }
+        public byte GetIdPCL() => _paperSizeIdPCL;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -302,10 +296,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte GetIdPCLXL()
-        {
-            return _paperSizeIdPCLXL;
-        }
+        public byte GetIdPCLXL() => _paperSizeIdPCLXL;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -353,13 +344,9 @@ namespace PCLParaphernalia
         public ushort GetLogPageWidth(ushort sessionUPI, PCLOrientations.Aspect aspect)
         {
             if (aspect == PCLOrientations.Aspect.Portrait)
-            {
                 return (ushort)(((CustomShortEdge - (_marginsLogicalPort * 2)) * sessionUPI) / _sizeUnitsPerInch);
-            }
             else
-            {
                 return (ushort)(((CustomLongEdge - (_marginsLogicalPort * 2)) * sessionUPI) / _sizeUnitsPerInch);
-            }
         }
 
         //--------------------------------------------------------------------//
@@ -371,10 +358,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort GetMarginsLogicalLand(ushort sessionUPI)
-        {
-            return (ushort)((_marginsLogicalLand * sessionUPI) / _sizeUnitsPerInch);
-        }
+        public ushort GetMarginsLogicalLand(ushort sessionUPI) => (ushort)((_marginsLogicalLand * sessionUPI) / _sizeUnitsPerInch);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -385,10 +369,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort GetMarginsLogicalPort(ushort sessionUPI)
-        {
-            return (ushort)((_marginsLogicalPort * sessionUPI) / _sizeUnitsPerInch);
-        }
+        public ushort GetMarginsLogicalPort(ushort sessionUPI) => (ushort)((_marginsLogicalPort * sessionUPI) / _sizeUnitsPerInch);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -400,10 +381,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort GetMarginsUnprintable(ushort sessionUPI)
-        {
-            return (ushort)((_marginsUnprintable * sessionUPI) / _sizeUnitsPerInch);
-        }
+        public ushort GetMarginsUnprintable(ushort sessionUPI) => (ushort)((_marginsUnprintable * sessionUPI) / _sizeUnitsPerInch);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -414,10 +392,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string GetName()
-        {
-            return Name;
-        }
+        public string GetName() => Name;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -428,10 +403,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string GetNamePCLXL()
-        {
-            return _paperSizeNamePCLXL;
-        }
+        public string GetNamePCLXL() => _paperSizeNamePCLXL;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -476,10 +448,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort GetSizeLongEdge(ushort sessionUPI)
-        {
-            return (ushort)((CustomLongEdge * sessionUPI) / _sizeUnitsPerInch);
-        }
+        public ushort GetSizeLongEdge(ushort sessionUPI) => (ushort)((CustomLongEdge * sessionUPI) / _sizeUnitsPerInch);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -490,10 +459,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort GetSizeShortEdge(ushort sessionUPI)
-        {
-            return (ushort)((CustomShortEdge * sessionUPI) / _sizeUnitsPerInch);
-        }
+        public ushort GetSizeShortEdge(ushort sessionUPI) => (ushort)((CustomShortEdge * sessionUPI) / _sizeUnitsPerInch);
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //

@@ -76,10 +76,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCount()
-        {
-            return _setsCountTotal;
-        }
+        public static int GetCount() => _setsCountTotal;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -90,10 +87,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCountBound()
-        {
-            return _setsCountBound;
-        }
+        public static int GetCountBound() => _setsCountBound;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -105,10 +99,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetDescShort(int selection)
-        {
-            return _sets[selection].DescShort;
-        }
+        public static string GetDescShort(int selection) => _sets[selection].DescShort;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -120,10 +111,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetDescStd(int selection)
-        {
-            return _sets[selection].DescStd;
-        }
+        public static string GetDescStd(int selection) => _sets[selection].DescStd;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -135,10 +123,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte GetIdPCL(int selection)
-        {
-            return _sets[selection].IdPCL;
-        }
+        public static byte GetIdPCL(int selection) => _sets[selection].IdPCL;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -177,10 +162,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool IsBound(int selection)
-        {
-            return _sets[selection].IsBound;
-        }
+        public static bool IsBound(int selection) => _sets[selection].IsBound;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

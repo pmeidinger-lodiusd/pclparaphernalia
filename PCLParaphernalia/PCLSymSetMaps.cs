@@ -150,13 +150,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort[] GetMapArray(int selection, bool flagMapPCL)
-        {
-            if (flagMapPCL)
-                return _sets[selection].MapDataPCL;
-            else
-                return _sets[selection].MapDataStd;
-        }
+        public static ushort[] GetMapArray(int selection, bool flagMapPCL) => flagMapPCL ? _sets[selection].MapDataPCL : _sets[selection].MapDataStd;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -168,10 +162,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort[] GetMapArraySymbol()
-        {
-            return _sets[(int)SymSetMapId.mapSymbol].MapDataStd;
-        }
+        public static ushort[] GetMapArraySymbol() => _sets[(int)SymSetMapId.mapSymbol].MapDataStd;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -182,10 +173,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort[] GetMapArrayUserSet()
-        {
-            return _sets[(int)SymSetMapId.mapUserSet].MapDataUserSet;
-        }
+        public static ushort[] GetMapArrayUserSet() => _sets[(int)SymSetMapId.mapUserSet].MapDataUserSet;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -225,10 +213,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string MappingDiff(int selection)
-        {
-            return _sets[selection].MappingDiff;
-        }
+        public static string MappingDiff(int selection) => _sets[selection].MappingDiff;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -268,10 +253,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string[] MapRowsDiff(int selection)
-        {
-            return _sets[selection].MapRowsDiff;
-        }
+        public static string[] MapRowsDiff(int selection) => _sets[selection].MapRowsDiff;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -283,10 +265,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool NullMapPCL(int selection)
-        {
-            return _sets[selection].NullMapPCL;
-        }
+        public static bool NullMapPCL(int selection) => _sets[selection].NullMapPCL;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -298,10 +277,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool NullMapStd(int selection)
-        {
-            return _sets[selection].NullMapStd;
-        }
+        public static bool NullMapStd(int selection) => _sets[selection].NullMapStd;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
