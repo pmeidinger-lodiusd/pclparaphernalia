@@ -46,13 +46,14 @@ namespace PCLParaphernalia
 
         public ObservableCollection<PCLCharCollItem> LoadCompListUnicode()
         {
-            ObservableCollection<PCLCharCollItem> objColEmp = new ObservableCollection<PCLCharCollItem>();
+            var objColEmp = new ObservableCollection<PCLCharCollItem>();
 
             PCLCharCollections.BitType bitType;
             int collsCt = PCLCharCollections.GetCollsCount();
 
             int bitNo;
             string desc;
+
             for (int i = 0; i < collsCt; i++)
             {
                 bitNo = PCLCharCollections.GetBitNo(i);
@@ -61,6 +62,7 @@ namespace PCLParaphernalia
 
                 bool itemEnabled;
                 bool itemChecked;
+
                 if (bitType == PCLCharCollections.BitType.Index_0)
                 {
                     itemEnabled = false;
@@ -82,11 +84,7 @@ namespace PCLParaphernalia
                     itemChecked = false;
                 }
 
-                objColEmp.Add(new PCLCharCollItem(bitNo,
-                                                    bitType,
-                                                    desc,
-                                                    itemEnabled,
-                                                    itemChecked));
+                objColEmp.Add(new PCLCharCollItem(bitNo, bitType, desc, itemEnabled, itemChecked));
             }
 
             return objColEmp;
@@ -110,13 +108,14 @@ namespace PCLParaphernalia
 
         public ObservableCollection<PCLCharCollItem> LoadReqListMSL()
         {
-            ObservableCollection<PCLCharCollItem> objColEmp = new ObservableCollection<PCLCharCollItem>();
+            var objColEmp = new ObservableCollection<PCLCharCollItem>();
 
             PCLCharCollections.BitType bitType;
             int collsCt = PCLCharCollections.GetCollsCount();
 
             int bitNo;
             string desc;
+
             for (int i = 0; i < collsCt; i++)
             {
                 bitNo = PCLCharCollections.GetBitNo(i);
@@ -125,6 +124,7 @@ namespace PCLParaphernalia
 
                 bool itemEnabled;
                 bool itemChecked;
+
                 if (bitType == PCLCharCollections.BitType.Collection)
                 {
                     itemEnabled = true;
@@ -136,11 +136,7 @@ namespace PCLParaphernalia
                     itemChecked = false;
                 }
 
-                objColEmp.Add(new PCLCharCollItem(bitNo,
-                                                    bitType,
-                                                    desc,
-                                                    itemEnabled,
-                                                    itemChecked));
+                objColEmp.Add(new PCLCharCollItem(bitNo, bitType, desc, itemEnabled, itemChecked));
             }
 
             return objColEmp;
@@ -164,13 +160,14 @@ namespace PCLParaphernalia
 
         public ObservableCollection<PCLCharCollItem> LoadReqListUnicode()
         {
-            ObservableCollection<PCLCharCollItem> objColEmp = new ObservableCollection<PCLCharCollItem>();
+            var objColEmp = new ObservableCollection<PCLCharCollItem>();
 
             PCLCharCollections.BitType bitType;
             int collsCt = PCLCharCollections.GetCollsCount();
 
             int bitNo;
             string desc;
+
             for (int i = 0; i < collsCt; i++)
             {
                 bitNo = PCLCharCollections.GetBitNo(i);
@@ -179,6 +176,7 @@ namespace PCLParaphernalia
 
                 bool itemEnabled;
                 bool itemChecked;
+
                 if (bitType == PCLCharCollections.BitType.Collection)
                 {
                     itemEnabled = true;
@@ -195,11 +193,7 @@ namespace PCLParaphernalia
                     itemChecked = false;
                 }
 
-                objColEmp.Add(new PCLCharCollItem(bitNo,
-                                                    bitType,
-                                                    desc,
-                                                    itemEnabled,
-                                                    itemChecked));
+                objColEmp.Add(new PCLCharCollItem(bitNo, bitType, desc, itemEnabled, itemChecked));
             }
 
             return objColEmp;
