@@ -37,8 +37,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Stream _ipStream = null;
-        private static BinaryReader _binReader = null;
+        private static Stream _ipStream;
+        private static BinaryReader _binReader;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -66,9 +66,7 @@ namespace PCLParaphernalia
 
         public static bool FontFileCopy(BinaryWriter prnWriter, string fontFilename)
         {
-            long fileSize = 0;
-
-            if (!FontFileOpen(fontFilename, ref fileSize))
+            if (!TryFontFileOpen(fontFilename, out long fileSize))
                 return false;
 
             const int bufSize = 2048;
@@ -104,8 +102,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool FontFileOpen(string fileName, ref long fileSize)
+        private static bool TryFontFileOpen(string fileName, out long fileSize)
         {
+            fileSize = 0;
+
             if (string.IsNullOrEmpty(fileName))
             {
                 MessageBox.Show("Download font file name is null.",
@@ -143,9 +143,7 @@ namespace PCLParaphernalia
             if (_ipStream == null)
                 return false;
 
-            FileInfo fi = new FileInfo(fileName);
-
-            fileSize = fi.Length;
+            fileSize = new FileInfo(fileName).Length;
 
             _binReader = new BinaryReader(_ipStream);
 
@@ -253,8 +251,6 @@ namespace PCLParaphernalia
 
             int fileOffset = 0;
 
-            long fileSize = 0;
-
             //----------------------------------------------------------------//
             //                                                                //
             // Read file to obtain characteristics.                           //
@@ -263,7 +259,7 @@ namespace PCLParaphernalia
 
             //      _fontFileName = fontFilename;
 
-            if (!FontFileOpen(fontFilename, ref fileSize))
+            if (!TryFontFileOpen(fontFilename, out long fileSize))
                 return false;
 
             bool OK = ReadHddrIntro(fontFilename,
