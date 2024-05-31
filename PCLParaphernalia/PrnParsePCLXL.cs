@@ -36,8 +36,6 @@ namespace PCLParaphernalia
 
         private readonly PrnParse.ParseType _parseType;
 
-        private PrnParseConstants.ActPCLXL _attrActType;
-
         private PrnParseConstants.OvlShow _operOvlShow;
 
         private DataTable _table;
@@ -1145,16 +1143,15 @@ namespace PCLParaphernalia
                 PCLXLAttributes.CheckTag(_attrIDLen,
                                           _attrID1,
                                           _attrID2,
-                                          ref dummyBool,
-                                          ref _attrEnumerated,
-                                          ref _attrOperEnumeration,
-                                          ref _attrUbyteAsAscii,
-                                          ref _attrUint16AsUnicode,
-                                          ref _attrValueIsEmbedLength,
-                                          ref _attrValueIsPCLArray,
-                                          ref _attrActType,
-                                          ref attrOvlAct,
-                                          ref desc);
+                                          out _,
+                                          out _attrEnumerated,
+                                          out _attrOperEnumeration,
+                                          out _attrUbyteAsAscii,
+                                          out _attrUint16AsUnicode,
+                                          out _attrValueIsEmbedLength,
+                                          out _attrValueIsPCLArray,
+                                          out attrOvlAct,
+                                          out desc);
 
                 if (!_operIDFound)
                 {

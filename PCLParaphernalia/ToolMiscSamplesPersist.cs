@@ -164,7 +164,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataCommon(ref int indxPDL, ref int indxSampleType)
+        public static void LoadDataCommon(out int indxPDL, out int indxSampleType)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -187,9 +187,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void LoadDataCommonPDL(string pdlName,
-                                              ref int indxOrientation,
-                                              ref int indxPaperSize,
-                                              ref int indxPaperType)
+                                              out int indxOrientation,
+                                              out int indxPaperSize,
+                                              out int indxPaperType)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -218,9 +218,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void LoadDataTypeColour(string pdlName,
-                                               ref int indxColourMode,
-                                               ref bool flagFormAsMacro,
-                                               ref bool flagMapHex)
+                                               out int indxColourMode,
+                                               out bool flagFormAsMacro,
+                                               out bool flagMapHex)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -321,23 +321,23 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void LoadDataTypeLogOper(string pdlName,
-                                                ref int indxMode,
-                                                ref int indxROPFrom,
-                                                ref int indxROPTo,
-                                                ref int indxClrD1,
-                                                ref int indxClrD2,
-                                                ref int indxClrS1,
-                                                ref int indxClrS2,
-                                                ref int indxClrT1,
-                                                ref int indxClrT2,
-                                                ref int indxMonoD1,
-                                                ref int indxMonoD2,
-                                                ref int indxMonoS1,
-                                                ref int indxMonoS2,
-                                                ref int indxMonoT1,
-                                                ref int indxMonoT2,
-                                                ref bool flagUseMacros,
-                                                ref bool flagSrcTextPat)
+                                                out int indxMode,
+                                                out int indxROPFrom,
+                                                out int indxROPTo,
+                                                out int indxClrD1,
+                                                out int indxClrD2,
+                                                out int indxClrS1,
+                                                out int indxClrS2,
+                                                out int indxClrT1,
+                                                out int indxClrT2,
+                                                out int indxMonoD1,
+                                                out int indxMonoD2,
+                                                out int indxMonoS1,
+                                                out int indxMonoS2,
+                                                out int indxMonoT1,
+                                                out int indxMonoT2,
+                                                out bool flagUseMacros,
+                                                out bool flagSrcTextPat)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -434,12 +434,12 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void LoadDataTypeLogPage(string pdlName,
-                                                ref int offsetLeft,
-                                                ref int offsetTop,
-                                                ref int pageHeight,
-                                                ref int pageWidth,
-                                                ref bool flagFormAsMacro,
-                                                ref bool flagAddStdPage)
+                                                out int offsetLeft,
+                                                out int offsetTop,
+                                                out int pageHeight,
+                                                out int pageWidth,
+                                                out bool flagFormAsMacro,
+                                                out bool flagAddStdPage)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -479,7 +479,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataTypePattern(string pdlName, ref int indxPatternType, ref bool flagFormAsMacro)
+        public static void LoadDataTypePattern(string pdlName, out int indxPatternType, out bool flagFormAsMacro)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -509,7 +509,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataTypeTxtMod(string pdlName, ref int indxTxtModType, ref bool flagFormAsMacro)
+        public static void LoadDataTypeTxtMod(string pdlName, out int indxTxtModType, out bool flagFormAsMacro)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -540,10 +540,10 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void LoadDataTypeUnicode(string pdlName,
-                                               ref int indxFont,
-                                               ref PCLFonts.Variant variant,
-                                               ref int codePoint,
-                                               ref bool flagFormAsMacro)
+                                               out int indxFont,
+                                               out PCLFonts.Variant variant,
+                                               out int codePoint,
+                                               out bool flagFormAsMacro)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {

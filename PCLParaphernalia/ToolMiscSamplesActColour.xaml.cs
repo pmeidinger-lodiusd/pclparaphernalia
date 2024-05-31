@@ -387,9 +387,9 @@ namespace PCLParaphernalia
 
             ToolMiscSamplesPersist.LoadDataTypeColour(
                 "PCL",
-                ref tmpInt,
-                ref _flagColourFormAsMacroPCL,
-                ref _flagColourFmtHexPCL);
+                out tmpInt,
+                out _flagColourFormAsMacroPCL,
+                out _flagColourFmtHexPCL);
 
             if (tmpInt == (int)ColourType.PCL_Simple)
                 _indxColourTypePCL = ColourType.PCL_Simple;
@@ -409,9 +409,9 @@ namespace PCLParaphernalia
 
             ToolMiscSamplesPersist.LoadDataTypeColour(
                 "PCLXL",
-                ref tmpInt,
-                ref _flagColourFormAsMacroPCLXL,
-                ref _flagColourFmtHexPCLXL);
+                out tmpInt,
+                out _flagColourFormAsMacroPCLXL,
+                out _flagColourFmtHexPCLXL);
 
             if (tmpInt == (int)ColourType.PCLXL_Gray)
                 _indxColourTypePCLXL = ColourType.PCLXL_Gray;

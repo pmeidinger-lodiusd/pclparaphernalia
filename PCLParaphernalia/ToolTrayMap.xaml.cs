@@ -956,11 +956,11 @@ namespace PCLParaphernalia
 
         private void MetricsLoad()
         {
-            ToolTrayMapPersist.LoadDataCommon(ref _indxPDL);
+            ToolTrayMapPersist.LoadDataCommon(out _indxPDL);
 
-            ToolTrayMapPersist.LoadDataPCLOpt(ref _formAsMacroPCL, ref _sheetCtPCL);
+            ToolTrayMapPersist.LoadDataPCLOpt(out _formAsMacroPCL, out _sheetCtPCL);
 
-            ToolTrayMapPersist.LoadDataPCLXLOpt(ref _formAsMacroPCLXL, ref _sheetCtPCLXL);
+            ToolTrayMapPersist.LoadDataPCLXLOpt(out _formAsMacroPCLXL, out _sheetCtPCLXL);
 
             //----------------------------------------------------------------//
 
@@ -976,12 +976,12 @@ namespace PCLParaphernalia
                 ToolTrayMapPersist.LoadDataSheetOpt(
                     "PCL",
                     i + 1,
-                    ref _indxPaperSizePCL[i],
-                    ref _indxPaperTypePCL[i],
-                    ref _indxPaperTrayPCL[i],
-                    ref _indxPlexModePCL[i],
-                    ref _indxOrientFrontPCL[i],
-                    ref _indxOrientRearPCL[i]);
+                    out _indxPaperSizePCL[i],
+                    out _indxPaperTypePCL[i],
+                    out _indxPaperTrayPCL[i],
+                    out _indxPlexModePCL[i],
+                    out _indxOrientFrontPCL[i],
+                    out _indxOrientRearPCL[i]);
 
                 if ((_indxPaperSizePCL[i] < 0) || (_indxPaperSizePCL[i] >= _ctPaperSizes))
                     _indxPaperSizePCL[i] = 0;
@@ -1008,12 +1008,12 @@ namespace PCLParaphernalia
                 ToolTrayMapPersist.LoadDataSheetOpt(
                     "PCLXL",
                     i + 1,
-                    ref _indxPaperSizePCLXL[i],
-                    ref _indxPaperTypePCLXL[i],
-                    ref _indxPaperTrayPCLXL[i],
-                    ref _indxPlexModePCLXL[i],
-                    ref _indxOrientFrontPCLXL[i],
-                    ref _indxOrientRearPCLXL[i]);
+                    out _indxPaperSizePCLXL[i],
+                    out _indxPaperTypePCLXL[i],
+                    out _indxPaperTrayPCLXL[i],
+                    out _indxPlexModePCLXL[i],
+                    out _indxOrientFrontPCLXL[i],
+                    out _indxOrientRearPCLXL[i]);
 
                 if ((_indxPaperSizePCLXL[i] < 0) || (_indxPaperSizePCLXL[i] >= _ctPaperSizes))
                     _indxPaperSizePCLXL[i] = 0;
@@ -1162,10 +1162,10 @@ namespace PCLParaphernalia
                 int netTimeoutSend = 0;
                 int netTimeoutReceive = 0;
 
-                TargetCore.MetricsLoadNetPrinter(ref netPrnAddress,
-                                                  ref netPrnPort,
-                                                  ref netTimeoutSend,
-                                                  ref netTimeoutReceive);
+                TargetCore.MetricsLoadNetPrinter(out netPrnAddress,
+                                                  out netPrnPort,
+                                                  out netTimeoutSend,
+                                                  out netTimeoutReceive);
 
                 btnGenerate.Content = $"Generate & send test data to\r\n{netPrnAddress} : {netPrnPort}";
             }
@@ -1173,7 +1173,7 @@ namespace PCLParaphernalia
             {
                 string winPrintername = string.Empty;
 
-                TargetCore.MetricsLoadWinPrinter(ref winPrintername);
+                TargetCore.MetricsLoadWinPrinter(out winPrintername);
 
                 btnGenerate.Content = $"Generate & send test data to printer\r\n{winPrintername}";
             }

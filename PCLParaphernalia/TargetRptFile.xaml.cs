@@ -10,7 +10,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class TargetRptFile : Window
     {
         //--------------------------------------------------------------------//
@@ -164,9 +163,9 @@ namespace PCLParaphernalia
                 btnOK.Visibility = Visibility.Visible;
 
                 TargetCore.MetricsReturnFileRpt(_crntToolId,
-                                                 ref _rptFileFmt,
-                                                 ref _rptChkMarks,
-                                                 ref _flagOptRptWrap);
+                                                 out _rptFileFmt,
+                                                 out _rptChkMarks,
+                                                 out _flagOptRptWrap);
 
                 if (_rptFileFmt == ReportCore.RptFileFmt.html)
                     rbRptFmtHtml.IsChecked = true;

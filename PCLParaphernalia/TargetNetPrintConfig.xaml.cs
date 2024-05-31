@@ -10,7 +10,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class TargetNetPrintConfig : Window
     {
         //--------------------------------------------------------------------//
@@ -79,10 +78,10 @@ namespace PCLParaphernalia
 
         private void Initialise()
         {
-            TargetCore.MetricsLoadNetPrinter(ref _printerAddress,
-                                              ref _printerPort,
-                                              ref _timeoutSend,
-                                              ref _timeoutReceive);
+            TargetCore.MetricsLoadNetPrinter(out _printerAddress,
+                                              out _printerPort,
+                                              out _timeoutSend,
+                                              out _timeoutReceive);
 
             txtPrinterAddress.Text = _printerAddress;
             txtPrinterPort.Text = _printerPort.ToString();

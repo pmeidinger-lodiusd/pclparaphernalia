@@ -39,7 +39,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadVersionData(ref int major, ref int minor, ref int build, ref int revision)
+        public static void LoadVersionData(out int major, out int minor, out int build, out int revision)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -63,7 +63,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadWindowData(ref int left, ref int top, ref int height, ref int width, ref int scale)
+        public static void LoadWindowData(out int left, out int top, out int height, out int width, out int scale)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {

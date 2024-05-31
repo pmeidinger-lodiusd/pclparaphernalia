@@ -89,7 +89,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadData(ref string filename)
+        public static void LoadData(out string filename)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -111,7 +111,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataRpt(ref int indxRptFileFmt)
+        public static void LoadDataRpt(out int indxRptFileFmt)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -132,9 +132,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadOptCharSet(ref int indxName,
-                                          ref int indxSubAct,
-                                          ref int indxSubCode)
+        public static void LoadOptCharSet(out int indxName,
+                                          out int indxSubAct,
+                                          out int indxSubCode)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -159,7 +159,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadOptClrMap(ref bool flagClrMapUseClr)
+        public static void LoadOptClrMap(out bool flagClrMapUseClr)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -273,7 +273,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void LoadOptClrMapThemeName(int number,
-                                                   ref string name)
+                                                   out string name)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -302,9 +302,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadOptGeneral(ref int indxOffsetType,
-                                          ref bool flagMiscAutoAnalyse,
-                                          ref bool flagDiagFileAccess)
+        public static void LoadOptGeneral(out int indxOffsetType,
+                                          out bool flagMiscAutoAnalyse,
+                                          out bool flagDiagFileAccess)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -337,7 +337,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadOptHPGL2(ref bool flagMiscBinData)
+        public static void LoadOptHPGL2(out bool flagMiscBinData)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -364,27 +364,27 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadOptPCL(ref bool flagFontHddr,
-                                      ref bool flagFontChar,
-                                      ref bool flagFontDraw,
-                                      ref int valFontDrawHeight,
-                                      ref int valFontDrawWidth,
-                                      ref bool flagMacroDisplay,
-                                      ref bool flagMiscStyleData,
-                                      ref bool flagMiscBinData,
-                                      ref bool flagTransAlphaNumId,
-                                      ref bool flagTransColourLookup,
-                                      ref bool flagTransConfIO,
-                                      ref bool flagTransConfImageData,
-                                      ref bool flagTransConfRasterData,
-                                      ref bool flagTransDefLogPage,
-                                      ref bool flagTransDefSymSet,
-                                      ref bool flagTransDitherMatrix,
-                                      ref bool flagTransDriverConf,
-                                      ref bool flagTransEscEncText,
-                                      ref bool flagTransPaletteConf,
-                                      ref bool flagTransUserPattern,
-                                      ref bool flagTransViewIlluminant)
+        public static void LoadOptPCL(out bool flagFontHddr,
+                                      out bool flagFontChar,
+                                      out bool flagFontDraw,
+                                      out int valFontDrawHeight,
+                                      out int valFontDrawWidth,
+                                      out bool flagMacroDisplay,
+                                      out bool flagMiscStyleData,
+                                      out bool flagMiscBinData,
+                                      out bool flagTransAlphaNumId,
+                                      out bool flagTransColourLookup,
+                                      out bool flagTransConfIO,
+                                      out bool flagTransConfImageData,
+                                      out bool flagTransConfRasterData,
+                                      out bool flagTransDefLogPage,
+                                      out bool flagTransDefSymSet,
+                                      out bool flagTransDitherMatrix,
+                                      out bool flagTransDriverConf,
+                                      out bool flagTransEscEncText,
+                                      out bool flagTransPaletteConf,
+                                      out bool flagTransUserPattern,
+                                      out bool flagTransViewIlluminant)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -523,17 +523,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadOptPCLXL(ref bool flagFontHddr,
-                                        ref bool flagFontChar,
-                                        ref bool flagFontDraw,
-                                        ref int valFontDrawHeight,
-                                        ref int valFontDrawWidth,
-                                        ref bool flagEncUserStream,
-                                        ref bool flagEncPCLPassThrough,
-                                        ref bool flagEncPCLFontSelect,
-                                        ref bool flagMiscOperPos,
-                                        ref bool flagMiscBinData,
-                                        ref bool flagMiscVerbose)
+        public static void LoadOptPCLXL(out bool flagFontHddr,
+                                        out bool flagFontChar,
+                                        out bool flagFontDraw,
+                                        out int valFontDrawHeight,
+                                        out int valFontDrawWidth,
+                                        out bool flagEncUserStream,
+                                        out bool flagEncPCLPassThrough,
+                                        out bool flagEncPCLFontSelect,
+                                        out bool flagMiscOperPos,
+                                        out bool flagMiscBinData,
+                                        out bool flagMiscVerbose)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -618,9 +618,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadOptPML(ref bool flagWithinPCL,
-                                      ref bool flagWithinPJL,
-                                      ref bool flagVerbose)
+        public static void LoadOptPML(out bool flagWithinPCL,
+                                      out bool flagWithinPJL,
+                                      out bool flagVerbose)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -655,9 +655,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadOptStats(ref int indxLevel,
-                                        ref bool flagExcUnusedPCLObs,
-                                        ref bool flagExcUnusedPCLXLRes)
+        public static void LoadOptStats(out int indxLevel,
+                                        out bool flagExcUnusedPCLObs,
+                                        out bool flagExcUnusedPCLXLRes)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {

@@ -19,8 +19,6 @@ namespace PCLParaphernalia
         private const string _mainKey = MainForm._regMainKey;
         private const string _subKeyTools = "Tools";
         private const string _subKeyToolsFontSample = _subKeyTools + @"\FontSample";
-        private const string _subKeyPCL5 = "PCL5";
-        private const string _subKeyPCL6 = "PCL6";
         private const string _subKeyPCL = "PCL";
         private const string _subKeyPCLXL = "PCLXL";
         private const string _subKeyCustom = "Custom";
@@ -90,8 +88,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataCapture(ToolCommonData.PrintLang crntPDL,
-                                            ref string captureFile)
+        public static void LoadDataCapture(ToolCommonData.PrintLang crntPDL, ref string captureFile)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -166,7 +163,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataCommon(ref int indxPDL, ref bool flagOptGridVertical)
+        public static void LoadDataCommon(out int indxPDL, out bool flagOptGridVertical)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -195,15 +192,15 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void LoadDataGeneral(string pdlName,
-                                            ref int indxOrientation,
-                                            ref int indxPaperSize,
-                                            ref int indxPaperType,
-                                            ref int indxFont,
-                                            ref bool flagFormAsMacro,
-                                            ref bool flagShowC0Chars,
-                                            ref bool flagShowMapCodesUCS2,
-                                            ref bool flagShowMapCodesUTF8,
-                                            ref bool flagSymSetUserActEmbed)
+                                            out int indxOrientation,
+                                            out int indxPaperSize,
+                                            out int indxPaperType,
+                                            out int indxFont,
+                                            out bool flagFormAsMacro,
+                                            out bool flagShowC0Chars,
+                                            out bool flagShowMapCodesUCS2,
+                                            out bool flagShowMapCodesUTF8,
+                                            out bool flagSymSetUserActEmbed)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -276,17 +273,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataPCLCustom(ref bool flagProportional,
-                                               ref bool flagScalable,
-                                               ref bool flagBound,
-                                               ref ushort style,
-                                               ref ushort typeface,
-                                               ref short weight,
-                                               ref double height,
-                                               ref double pitch,
-                                               ref int indxSymSet,
-                                               ref ushort symSetCustom,
-                                               ref string symSetUserFile)
+        public static void LoadDataPCLCustom(out bool flagProportional,
+                                               out bool flagScalable,
+                                               out bool flagBound,
+                                               out ushort style,
+                                               out ushort typeface,
+                                               out short weight,
+                                               out double height,
+                                               out double pitch,
+                                               out int indxSymSet,
+                                               out ushort symSetCustom,
+                                               out string symSetUserFile)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -347,15 +344,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataPCLDownload(ref string downloadFile,
-                                                 ref ushort downloadId,
-                                                 ref bool flagDownloadRemove,
-                                                 ref bool flagSelectById,
-                                                 ref double height,
-                                                 ref double pitch,
-                                                 ref int indxSymSet,
-                                                 ref ushort symSetCustom,
-                                                 ref string symSetUserFile)
+        public static void LoadDataPCLDownload(out string downloadFile,
+                                                 out ushort downloadId,
+                                                 out bool flagDownloadRemove,
+                                                 out bool flagSelectById,
+                                                 out double height,
+                                                 out double pitch,
+                                                 out int indxSymSet,
+                                                 out ushort symSetCustom,
+                                                 out string symSetUserFile)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -407,13 +404,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataPCLPreset(ref int indxFont,
-                                               ref PCLFonts.Variant variant,
-                                               ref double height,
-                                               ref double pitch,
-                                               ref int indxSymSet,
-                                               ref ushort symSetCustom,
-                                               ref string symSetUserFile)
+        public static void LoadDataPCLPreset(out int indxFont,
+                                               out PCLFonts.Variant variant,
+                                               out double height,
+                                               out double pitch,
+                                               out int indxSymSet,
+                                               out ushort symSetCustom,
+                                               out string symSetUserFile)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -460,24 +457,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataPCLPrnDisk(ref string fontFilename,
-                                               ref ushort fontId,
-                                               ref ushort macroId,
-                                               ref bool flagRamDataRemove,
-                                               ref bool flagSelById,
-                                               ref bool flagLoadViaMacro,
-                                               ref bool flagDetailsKnown,
-                                               ref bool flagProportional,
-                                               ref bool flagScalable,
-                                               ref bool flagBound,
-                                               ref ushort style,
-                                               ref ushort typeface,
-                                               ref short weight,
-                                               ref double height,
-                                               ref double pitch,
-                                               ref int indxSymSet,
-                                               ref ushort symSetCustom,
-                                               ref string symSetUserFile)
+        public static void LoadDataPCLPrnDisk(out string fontFilename,
+                                               out ushort fontId,
+                                               out ushort macroId,
+                                               out bool flagRamDataRemove,
+                                               out bool flagSelById,
+                                               out bool flagLoadViaMacro,
+                                               out bool flagDetailsKnown,
+                                               out bool flagProportional,
+                                               out bool flagScalable,
+                                               out bool flagBound,
+                                               out ushort style,
+                                               out ushort typeface,
+                                               out short weight,
+                                               out double height,
+                                               out double pitch,
+                                               out int indxSymSet,
+                                               out ushort symSetCustom,
+                                               out string symSetUserFile)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -585,11 +582,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataPCLXLCustom(ref string fontName,
-                                                ref double height,
-                                                ref int indxSymSet,
-                                                ref ushort symSetCustom,
-                                                ref string symSetUserFile)
+        public static void LoadDataPCLXLCustom(out string fontName,
+                                                out double height,
+                                                out int indxSymSet,
+                                                out ushort symSetCustom,
+                                                out string symSetUserFile)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -627,12 +624,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataPCLXLDownload(ref string downloadFile,
-                                                  ref bool flagDownloadRemove,
-                                                  ref double height,
-                                                  ref int indxSymSet,
-                                                  ref ushort symSetCustom,
-                                                  ref string symSetUserFile)
+        public static void LoadDataPCLXLDownload(out string downloadFile,
+                                                 out bool flagDownloadRemove,
+                                                 out double height,
+                                                 out int indxSymSet,
+                                                 out ushort symSetCustom,
+                                                 out string symSetUserFile)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -673,12 +670,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataPCLXLPreset(ref int indxFont,
-                                                ref PCLFonts.Variant variant,
-                                                ref double height,
-                                                ref int indxSymSet,
-                                                ref ushort symSetCustom,
-                                                ref string symSetUserFile)
+        public static void LoadDataPCLXLPreset(out int indxFont,
+                                                out PCLFonts.Variant variant,
+                                                out double height,
+                                                out int indxSymSet,
+                                                out ushort symSetCustom,
+                                                out string symSetUserFile)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {

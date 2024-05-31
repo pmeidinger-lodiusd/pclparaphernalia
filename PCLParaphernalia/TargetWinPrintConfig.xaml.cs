@@ -11,7 +11,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class TargetWinPrintConfig : Window
     {
         //--------------------------------------------------------------------//
@@ -108,7 +107,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            TargetCore.MetricsLoadWinPrinter(ref _printerName);
+            TargetCore.MetricsLoadWinPrinter(out _printerName);
 
             cbPrinters.Items.Clear();
 

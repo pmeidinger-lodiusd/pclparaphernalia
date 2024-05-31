@@ -23,8 +23,6 @@ namespace PCLParaphernalia
         private const string _subKeyTools = "Tools";
         private const string _subKeyToolsSoftFontGen = _subKeyTools + @"\SoftFontGen";
         private const string _subKeyMapping = "Mapping";
-        private const string _subKeyPCL5 = "PCL5";
-        private const string _subKeyPCL6 = "PCL6";
         private const string _subKeyPCL = "PCL";
         private const string _subKeyPCLXL = "PCLXL";
         private const string _subKeyTTF = "TTF";
@@ -64,7 +62,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataCommon(ref int indxPDL, ref bool flagLogVerbose)
+        public static void LoadDataCommon(out int indxPDL, out bool flagLogVerbose)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -90,11 +88,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataMapping(ref int indxSymSet,
-                                            ref bool flagSymSetMapPCL,
-                                            ref bool flagSymSetUnbound,
-                                            ref bool flagSymSetUserSet,
-                                            ref string symSetUserFile)
+        public static void LoadDataMapping(out int indxSymSet,
+                                            out bool flagSymSetMapPCL,
+                                            out bool flagSymSetUnbound,
+                                            out bool flagSymSetUserSet,
+                                            out string symSetUserFile)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -134,12 +132,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataPCL(ref string targetFolder,
-                                        ref bool flagFormat16,
-                                        ref bool flagCharCompSpecific,
-                                        ref bool flagVMetrics,
-                                        ref bool flagSegGTLast,
-                                        ref ulong charCompUnicode)
+        public static void LoadDataPCL(out string targetFolder,
+                                       out bool flagFormat16,
+                                       out bool flagCharCompSpecific,
+                                       out bool flagVMetrics,
+                                       out bool flagSegGTLast,
+                                       out ulong charCompUnicode)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -193,8 +191,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataPCLXL(ref string targetFolder,
-                                          ref bool flagVMetrics)
+        public static void LoadDataPCLXL(out string targetFolder,
+                                          out bool flagVMetrics)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -231,7 +229,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataRpt(ref int indxRptFileFmt, ref int indxRptChkMarks)
+        public static void LoadDataRpt(out int indxRptFileFmt, out int indxRptChkMarks)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -253,7 +251,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataTTF(ref int indxFont, ref bool flagUsePCLT, ref string adhocFontFile)
+        public static void LoadDataTTF(out int indxFont, out bool flagUsePCLT, out string adhocFontFile)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {

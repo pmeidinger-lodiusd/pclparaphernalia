@@ -63,7 +63,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataCommon(ref int indxInfoType, ref string reportFile)
+        public static void LoadDataCommon(out int indxInfoType, out string reportFile)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -87,7 +87,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataFonts(ref bool flagOptMap)
+        public static void LoadDataFonts(out bool flagOptMap)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -113,11 +113,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataPCL(ref bool flagSeqControl,
-                                       ref bool flagSeqSimple,
-                                       ref bool flagSeqComplex,
-                                       ref bool flagOptObsolete,
-                                       ref bool flagOptDiscrete)
+        public static void LoadDataPCL(out bool flagSeqControl,
+                                       out bool flagSeqSimple,
+                                       out bool flagSeqComplex,
+                                       out bool flagOptObsolete,
+                                       out bool flagOptDiscrete)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -159,13 +159,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataPCLXL(ref bool flagTagDataType,
-                                         ref bool flagTagAttribute,
-                                         ref bool flagTagOperator,
-                                         ref bool flagTagAttrDefiner,
-                                         ref bool flagTagEmbedDataDef,
-                                         ref bool flagTagWhitespace,
-                                         ref bool flagOptReserved)
+        public static void LoadDataPCLXL(out bool flagTagDataType,
+                                         out bool flagTagAttribute,
+                                         out bool flagTagOperator,
+                                         out bool flagTagAttrDefiner,
+                                         out bool flagTagEmbedDataDef,
+                                         out bool flagTagWhitespace,
+                                         out bool flagOptReserved)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -215,7 +215,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataPML(ref bool flagTagDataType, ref bool flagTagAction, ref bool flagTagOutcome)
+        public static void LoadDataPML(out bool flagTagDataType, out bool flagTagAction, out bool flagTagOutcome)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -249,7 +249,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataRpt(ref int indxRptFileFmt, ref int indxRptChkMarks, ref bool flagOptRptWrap)
+        public static void LoadDataRpt(out int indxRptFileFmt, out int indxRptChkMarks, out bool flagOptRptWrap)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -277,7 +277,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataSymSets(ref bool flagOptMap, ref int mapType)
+        public static void LoadDataSymSets(out bool flagOptMap, out int mapType)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {

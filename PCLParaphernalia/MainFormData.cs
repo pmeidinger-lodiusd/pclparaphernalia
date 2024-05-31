@@ -58,7 +58,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void GetVersionData(bool crnt, ref int major, ref int minor, ref int build, ref int revision)
+        public static void GetVersionData(bool crnt, out int major, out int minor, out int build, out int revision)
         {
             if (crnt)
             {

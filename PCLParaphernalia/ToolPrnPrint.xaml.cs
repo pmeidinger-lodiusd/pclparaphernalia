@@ -11,7 +11,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class ToolPrnPrint : Window
     {
         //--------------------------------------------------------------------//
@@ -192,7 +191,7 @@ namespace PCLParaphernalia
 
         private void MetricsLoad()
         {
-            ToolPrnPrintPersist.LoadDataGeneral(ref _prnFilename);
+            ToolPrnPrintPersist.LoadDataGeneral(out _prnFilename);
         }
 
         //--------------------------------------------------------------------//
@@ -244,7 +243,7 @@ namespace PCLParaphernalia
 
                 return false;
             }
-            
+
             if (!File.Exists(fileName))
             {
                 MessageBox.Show($"Print file '{fileName}' does not exist.",
@@ -273,7 +272,7 @@ namespace PCLParaphernalia
                 return false;
 
             _binReader = new BinaryReader(_ipStream);
-            
+
             return true;
         }
 
@@ -302,10 +301,10 @@ namespace PCLParaphernalia
                 int netTimeoutSend = 0;
                 int netTimeoutReceive = 0;
 
-                TargetCore.MetricsLoadNetPrinter(ref netPrnAddress,
-                                                  ref netPrnPort,
-                                                  ref netTimeoutSend,
-                                                  ref netTimeoutReceive);
+                TargetCore.MetricsLoadNetPrinter(out netPrnAddress,
+                                                  out netPrnPort,
+                                                  out netTimeoutSend,
+                                                  out netTimeoutReceive);
 
                 btnGenerate.Content = $"Send PRN file contents to\r\n{netPrnAddress}: {netPrnPort}";
             }
@@ -313,7 +312,7 @@ namespace PCLParaphernalia
             {
                 string winPrintername = string.Empty;
 
-                TargetCore.MetricsLoadWinPrinter(ref winPrintername);
+                TargetCore.MetricsLoadWinPrinter(out winPrintername);
 
                 btnGenerate.Content = "Send PRN file contents to printer\r\n" + winPrintername;
             }

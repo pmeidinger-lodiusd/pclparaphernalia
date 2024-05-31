@@ -31,7 +31,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadData(ref int indxToolType)
+        public static void LoadData(out int indxToolType)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {

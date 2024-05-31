@@ -74,16 +74,16 @@
         //--------------------------------------------------------------------//
 
         public void GetDetails(
-            ref bool flagReserved,
-            ref bool flagAttrEnum,
-            ref bool flagOperEnum,
-            ref bool flagUbyteTxt,
-            ref bool flagUintTxt,
-            ref bool flagValIsLen,
-            ref bool flagValIsPCL,
-            ref PrnParseConstants.ActPCLXL actionType,
-            ref PrnParseConstants.OvlAct makeOvlAct,
-            ref string description)
+            out bool flagReserved,
+            out bool flagAttrEnum,
+            out bool flagOperEnum,
+            out bool flagUbyteTxt,
+            out bool flagUintTxt,
+            out bool flagValIsLen,
+            out bool flagValIsPCL,
+            //out PrnParseConstants.ActPCLXL actionType,
+            out PrnParseConstants.OvlAct makeOvlAct,
+            out string description)
         {
             flagReserved = FlagReserved;
             flagAttrEnum = FlagAttrEnum;

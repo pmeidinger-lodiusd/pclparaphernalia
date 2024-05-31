@@ -49,7 +49,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataCommon(ref string prnFilename)
+        public static void LoadDataCommon(out string prnFilename)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -71,10 +71,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataPCL(ref string ovlFilename,
-                                        ref bool flagRestoreCursor,
-                                        ref bool flagEncapsulated,
-                                        ref int macroId)
+        public static void LoadDataPCL(out string ovlFilename,
+                                       out bool flagRestoreCursor,
+                                       out bool flagEncapsulated,
+                                       out int macroId)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -110,10 +110,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataPCLXL(ref string ovlFilename,
-                                        ref bool flagRestoreGS,
-                                        ref bool flagEncapsulated,
-                                        ref string streamName)
+        public static void LoadDataPCLXL(out string ovlFilename,
+                                            out bool flagRestoreGS,
+                                            out bool flagEncapsulated,
+                                            out string streamName)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -149,7 +149,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataRpt(ref int indxRptFileFmt)
+        public static void LoadDataRpt(out int indxRptFileFmt)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {

@@ -11,7 +11,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class TargetFile : Window
     {
         //--------------------------------------------------------------------//
@@ -155,7 +154,7 @@ namespace PCLParaphernalia
                 lbFileNA.Visibility = Visibility.Hidden;
                 btnOK.Visibility = Visibility.Visible;
 
-                TargetCore.MetricsReturnFileCapt(_crntToolId, _crntSubId, _crntPDL, ref _saveFilename);
+                TargetCore.MetricsReturnFileCapt(_crntToolId, _crntSubId, _crntPDL, out _saveFilename);
 
                 txtOpFilename.Text = _saveFilename;
             }

@@ -145,12 +145,12 @@ namespace PCLParaphernalia
         {
             ToolMiscSamplesPersist.LoadDataTypeLogPage(
                 "PCL",
-                ref _logPageOffLeftDPt,
-                ref _logPageOffTopDPt,
-                ref _logPageHeightDPt,
-                ref _logPageWidthDPt,
-                ref _flagLogPageFormAsMacroPCL,
-                ref _flagLogPageOptStdPagePCL);
+                out _logPageOffLeftDPt,
+                out _logPageOffTopDPt,
+                out _logPageHeightDPt,
+                out _logPageWidthDPt,
+                out _flagLogPageFormAsMacroPCL,
+                out _flagLogPageOptStdPagePCL);
         }
 
         //--------------------------------------------------------------------//

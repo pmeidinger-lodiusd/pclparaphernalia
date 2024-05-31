@@ -10,7 +10,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class ToolMiscSamples : Window
     {
         //--------------------------------------------------------------------//
@@ -1272,47 +1271,45 @@ namespace PCLParaphernalia
 
         public void MetricsLoadDataLogOper()
         {
-            bool dummyBool = false;
-
             ToolMiscSamplesPersist.LoadDataTypeLogOper(
                 "PCL",
-                ref _indxLogOperModePCL,
-                ref _indxLogOperROPFromPCL,
-                ref _indxLogOperROPToPCL,
-                ref _indxLogOperClrD1PCL,
-                ref _indxLogOperClrD2PCL,
-                ref _indxLogOperClrS1PCL,
-                ref _indxLogOperClrS2PCL,
-                ref _indxLogOperClrT1PCL,
-                ref _indxLogOperClrT2PCL,
-                ref _indxLogOperMonoD1PCL,
-                ref _indxLogOperMonoD2PCL,
-                ref _indxLogOperMonoS1PCL,
-                ref _indxLogOperMonoS2PCL,
-                ref _indxLogOperMonoT1PCL,
-                ref _indxLogOperMonoT2PCL,
-                ref _flagLogOperUseMacrosPCL,
-                ref dummyBool);
+                out _indxLogOperModePCL,
+                out _indxLogOperROPFromPCL,
+                out _indxLogOperROPToPCL,
+                out _indxLogOperClrD1PCL,
+                out _indxLogOperClrD2PCL,
+                out _indxLogOperClrS1PCL,
+                out _indxLogOperClrS2PCL,
+                out _indxLogOperClrT1PCL,
+                out _indxLogOperClrT2PCL,
+                out _indxLogOperMonoD1PCL,
+                out _indxLogOperMonoD2PCL,
+                out _indxLogOperMonoS1PCL,
+                out _indxLogOperMonoS2PCL,
+                out _indxLogOperMonoT1PCL,
+                out _indxLogOperMonoT2PCL,
+                out _flagLogOperUseMacrosPCL,
+                out _);
 
             ToolMiscSamplesPersist.LoadDataTypeLogOper(
                 "PCLXL",
-                ref _indxLogOperModePCLXL,
-                ref _indxLogOperROPFromPCLXL,
-                ref _indxLogOperROPToPCLXL,
-                ref _indxLogOperClrD1PCLXL,
-                ref _indxLogOperClrD2PCLXL,
-                ref _indxLogOperClrS1PCLXL,
-                ref _indxLogOperClrS2PCLXL,
-                ref _indxLogOperClrT1PCLXL,
-                ref _indxLogOperClrT2PCLXL,
-                ref _indxLogOperGrayD1PCLXL,
-                ref _indxLogOperGrayD2PCLXL,
-                ref _indxLogOperGrayS1PCLXL,
-                ref _indxLogOperGrayS2PCLXL,
-                ref _indxLogOperGrayT1PCLXL,
-                ref _indxLogOperGrayT2PCLXL,
-                ref _flagLogOperUseMacrosPCLXL,
-                ref _flagLogOperOptSrcTextPatPCLXL);
+                out _indxLogOperModePCLXL,
+                out _indxLogOperROPFromPCLXL,
+                out _indxLogOperROPToPCLXL,
+                out _indxLogOperClrD1PCLXL,
+                out _indxLogOperClrD2PCLXL,
+                out _indxLogOperClrS1PCLXL,
+                out _indxLogOperClrS2PCLXL,
+                out _indxLogOperClrT1PCLXL,
+                out _indxLogOperClrT2PCLXL,
+                out _indxLogOperGrayD1PCLXL,
+                out _indxLogOperGrayD2PCLXL,
+                out _indxLogOperGrayS1PCLXL,
+                out _indxLogOperGrayS2PCLXL,
+                out _indxLogOperGrayT1PCLXL,
+                out _indxLogOperGrayT2PCLXL,
+                out _flagLogOperUseMacrosPCLXL,
+                out _flagLogOperOptSrcTextPatPCLXL);
         }
 
         //--------------------------------------------------------------------//

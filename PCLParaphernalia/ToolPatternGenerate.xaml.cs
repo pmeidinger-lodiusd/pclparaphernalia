@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Windows;
-using System.Windows.Media;
 using System.Text;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 
 namespace PCLParaphernalia
 {
@@ -14,7 +14,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class ToolPatternGenerate : Window
     {
         //--------------------------------------------------------------------//
@@ -85,6 +84,7 @@ namespace PCLParaphernalia
         //   private static Boolean stateTglBtn_01f = false;
         //   private static Boolean stateBtn_01f = false;
         private static bool[] _patternStateBtns;
+
         private static UniformGrid _uGridPattern;
 
         //--------------------------------------------------------------------//
@@ -313,7 +313,7 @@ namespace PCLParaphernalia
             txtSrcMonoBW.Text       = srcBlackWhite.ToString();
 
             grpProps.Visibility = Visibility.Visible;
-            
+
             if (bitmapOpen)
             {
                 ToolImageBitmapCore.bitmapClose();
@@ -334,7 +334,7 @@ namespace PCLParaphernalia
         {
             if (_initialised && cbDonorPattern.HasItems)
             {
-                // to be added 
+                // to be added
             }
         }
 
@@ -625,7 +625,7 @@ namespace PCLParaphernalia
             /*
             Int32 tempPosX = 100,
                   tempPosY = 100;
-                  
+
             Int32 tempRasterRes = 0;
 
             ToolImageBitmapPersist.loadDataCommon(ref _indxPDL,
@@ -793,10 +793,10 @@ namespace PCLParaphernalia
                 int netTimeoutSend = 0;
                 int netTimeoutReceive = 0;
 
-                TargetCore.MetricsLoadNetPrinter(ref netPrnAddress,
-                                                  ref netPrnPort,
-                                                  ref netTimeoutSend,
-                                                  ref netTimeoutReceive);
+                TargetCore.MetricsLoadNetPrinter(out netPrnAddress,
+                                                  out netPrnPort,
+                                                  out netTimeoutSend,
+                                                  out netTimeoutReceive);
 
                 btnGenerate.Content = "Generate & send test data to " +
                                       "\r\n" +
@@ -807,7 +807,7 @@ namespace PCLParaphernalia
             {
                 string winPrintername = string.Empty;
 
-                TargetCore.MetricsLoadWinPrinter(ref winPrintername);
+                TargetCore.MetricsLoadWinPrinter(out winPrintername);
 
                 btnGenerate.Content = "Generate & send test data to printer " +
                                       "\r\n" +

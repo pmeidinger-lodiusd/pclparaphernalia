@@ -9,7 +9,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class ToolMiscSamples : Window
     {
         //--------------------------------------------------------------------//
@@ -140,14 +139,14 @@ namespace PCLParaphernalia
         {
             int tmpInt = 0;
 
-            ToolMiscSamplesPersist.LoadDataTypePattern("PCL", ref tmpInt, ref _flagPatternFormAsMacroPCL);
+            ToolMiscSamplesPersist.LoadDataTypePattern("PCL", out tmpInt, out _flagPatternFormAsMacroPCL);
 
             if (tmpInt == (int)PatternType.XHatch)
                 _indxPatternTypePCL = PatternType.XHatch;
             else
                 _indxPatternTypePCL = PatternType.Shading;
 
-            ToolMiscSamplesPersist.LoadDataTypePattern("PCLXL", ref tmpInt, ref _flagPatternFormAsMacroPCLXL);
+            ToolMiscSamplesPersist.LoadDataTypePattern("PCLXL", out tmpInt, out _flagPatternFormAsMacroPCLXL);
 
             if (tmpInt == (int)PatternType.XHatch)
                 _indxPatternTypePCLXL = PatternType.XHatch;

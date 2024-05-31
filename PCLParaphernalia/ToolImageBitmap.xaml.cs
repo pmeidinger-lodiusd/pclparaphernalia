@@ -13,7 +13,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class ToolImageBitmap : Window
     {
         //--------------------------------------------------------------------//
@@ -563,13 +562,13 @@ namespace PCLParaphernalia
 
             int tempRasterRes = 0;
 
-            ToolImageBitmapPersist.LoadDataCommon(ref _indxPDL,
-                                                  ref _bitmapFilename,
-                                                  ref tempPosX,
-                                                  ref tempPosY,
-                                                  ref _destScalePercentX,
-                                                  ref _destScalePercentY,
-                                                  ref tempRasterRes);
+            ToolImageBitmapPersist.LoadDataCommon(out _indxPDL,
+                                                  out _bitmapFilename,
+                                                  out tempPosX,
+                                                  out tempPosY,
+                                                  out _destScalePercentX,
+                                                  out _destScalePercentY,
+                                                  out tempRasterRes);
 
             if ((_indxPDL < 0) || (_indxPDL >= _ctPDLs))
                 _indxPDL = 0;
@@ -590,9 +589,9 @@ namespace PCLParaphernalia
             }
 
             ToolImageBitmapPersist.LoadDataPCL("PCL",
-                                               ref _indxOrientationPCL,
-                                               ref _indxPaperSizePCL,
-                                               ref _indxPaperTypePCL);
+                                               out _indxOrientationPCL,
+                                               out _indxPaperSizePCL,
+                                               out _indxPaperTypePCL);
 
             if ((_indxOrientationPCL < 0) ||
                 (_indxOrientationPCL >= _ctOrientations))
@@ -613,9 +612,9 @@ namespace PCLParaphernalia
             }
 
             ToolImageBitmapPersist.LoadDataPCL("PCLXL",
-                                               ref _indxOrientationPCLXL,
-                                               ref _indxPaperSizePCLXL,
-                                               ref _indxPaperTypePCLXL);
+                                               out _indxOrientationPCLXL,
+                                               out _indxPaperSizePCLXL,
+                                               out _indxPaperTypePCLXL);
 
             if ((_indxOrientationPCLXL < 0) ||
                 (_indxOrientationPCLXL >= _ctOrientations))
@@ -747,10 +746,10 @@ namespace PCLParaphernalia
                 int netTimeoutSend = 0;
                 int netTimeoutReceive = 0;
 
-                TargetCore.MetricsLoadNetPrinter(ref netPrnAddress,
-                                                  ref netPrnPort,
-                                                  ref netTimeoutSend,
-                                                  ref netTimeoutReceive);
+                TargetCore.MetricsLoadNetPrinter(out netPrnAddress,
+                                                  out netPrnPort,
+                                                  out netTimeoutSend,
+                                                  out netTimeoutReceive);
 
                 btnGenerate.Content = "Generate & send test data to\r\n" + netPrnAddress + " : " + netPrnPort.ToString();
             }
@@ -758,7 +757,7 @@ namespace PCLParaphernalia
             {
                 string winPrintername = string.Empty;
 
-                TargetCore.MetricsLoadWinPrinter(ref winPrintername);
+                TargetCore.MetricsLoadWinPrinter(out winPrintername);
 
                 btnGenerate.Content = "Generate & send test data to printer\r\n" + winPrintername;
             }

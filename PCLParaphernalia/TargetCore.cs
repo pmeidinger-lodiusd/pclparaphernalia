@@ -83,19 +83,19 @@ namespace PCLParaphernalia
         {
             int temp = 0;
 
-            TargetPersist.LoadDataCommon(ref temp);
+            TargetPersist.LoadDataCommon(out temp);
 
             if (temp < (int)Target.Max)
                 _targetType = (Target)temp;
             else
                 _targetType = Target.NetPrinter;
 
-            TargetPersist.LoadDataNetPrinter(ref _netPrinterAddress,
-                                              ref _netPrinterPort,
-                                              ref _netPrinterTimeoutSend,
-                                              ref _netPrinterTimeoutReceive);
+            TargetPersist.LoadDataNetPrinter(out _netPrinterAddress,
+                                              out _netPrinterPort,
+                                              out _netPrinterTimeoutSend,
+                                              out _netPrinterTimeoutReceive);
 
-            TargetPersist.LoadDataWinPrinter(ref _winPrinterName);
+            TargetPersist.LoadDataWinPrinter(out _winPrinterName);
         }
 
         //--------------------------------------------------------------------//
@@ -131,7 +131,7 @@ namespace PCLParaphernalia
             }
             else if (crntToolId == ToolCommonData.ToolIds.PrnPrint)
             {
-                ToolPrnPrintPersist.LoadDataCapture(crntPDL, ref _saveFilename);
+                ToolPrnPrintPersist.LoadDataCapture(crntPDL, out _saveFilename);
             }
             else if (crntToolId == ToolCommonData.ToolIds.StatusReadback)
             {
@@ -187,17 +187,17 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (crntToolId == ToolCommonData.ToolIds.MakeOverlay)
-                ToolMakeOverlayPersist.LoadDataRpt(ref tmpFmt);
+                ToolMakeOverlayPersist.LoadDataRpt(out tmpFmt);
             else if (crntToolId == ToolCommonData.ToolIds.PrintLang)
-                ToolPrintLangPersist.LoadDataRpt(ref tmpFmt, ref tmpChkMarks, ref _flagOptRptWrap);
+                ToolPrintLangPersist.LoadDataRpt(out tmpFmt, out tmpChkMarks, out _flagOptRptWrap);
             else if (crntToolId == ToolCommonData.ToolIds.PrnAnalyse)
-                ToolPrnAnalysePersist.LoadDataRpt(ref tmpFmt);
+                ToolPrnAnalysePersist.LoadDataRpt(out tmpFmt);
             else if (crntToolId == ToolCommonData.ToolIds.SoftFontGenerate)
-                ToolSoftFontGenPersist.LoadDataRpt(ref tmpFmt, ref tmpChkMarks);
+                ToolSoftFontGenPersist.LoadDataRpt(out tmpFmt, out tmpChkMarks);
             else if (crntToolId == ToolCommonData.ToolIds.StatusReadback)
-                ToolStatusReadbackPersist.LoadDataRpt(ref tmpFmt);
+                ToolStatusReadbackPersist.LoadDataRpt(out tmpFmt);
             else if (crntToolId == ToolCommonData.ToolIds.SymbolSetGenerate)
-                ToolSymbolSetGenPersist.LoadDataRpt(ref tmpFmt);
+                ToolSymbolSetGenPersist.LoadDataRpt(out tmpFmt);
             else
                 flagNA = true;
 
@@ -229,10 +229,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void MetricsLoadNetPrinter(ref string printerAddress,
-                                                  ref int printerPort,
-                                                  ref int timeoutSend,
-                                                  ref int timeoutReceive)
+        public static void MetricsLoadNetPrinter(out string printerAddress,
+                                                  out int printerPort,
+                                                  out int timeoutSend,
+                                                  out int timeoutReceive)
         {
             printerAddress = _netPrinterAddress;
             printerPort = _netPrinterPort;
@@ -250,7 +250,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void MetricsLoadWinPrinter(ref string printerName)
+        public static void MetricsLoadWinPrinter(out string printerName)
         {
             printerName = _winPrinterName;
         }
@@ -267,7 +267,7 @@ namespace PCLParaphernalia
         public static void MetricsReturnFileCapt(ToolCommonData.ToolIds crntToolId,
                                                  ToolCommonData.ToolSubIds crntToolSubId,
                                                  ToolCommonData.PrintLang crntPDL,
-                                                 ref string saveFilename)
+                                                 out string saveFilename)
         {
             MetricsLoadFileCapt(crntToolId, crntToolSubId, crntPDL);
 
@@ -284,9 +284,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void MetricsReturnFileRpt(ToolCommonData.ToolIds crntToolId,
-                                                ref ReportCore.RptFileFmt rptFileFmt,
-                                                ref ReportCore.RptChkMarks rptChkMarks,
-                                                ref bool flagOptWrap)
+                                                out ReportCore.RptFileFmt rptFileFmt,
+                                                out ReportCore.RptChkMarks rptChkMarks,
+                                                out bool flagOptWrap)
         {
             MetricsLoadFileRpt(crntToolId);
 
@@ -567,7 +567,7 @@ namespace PCLParaphernalia
 
                 IPAddress ipAddress = new IPAddress(0x00);
 
-                OK = TargetNetPrint.CheckIPAddress(_netPrinterAddress, ref ipAddress);
+                OK = TargetNetPrint.CheckIPAddress(_netPrinterAddress, out ipAddress);
 
                 if (!OK)
                 {

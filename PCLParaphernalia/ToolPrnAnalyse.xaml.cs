@@ -15,7 +15,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class ToolPrnAnalyse : Window
     {
         //--------------------------------------------------------------------//
@@ -100,8 +99,8 @@ namespace PCLParaphernalia
                 // If we ever support the 'doWork' mechanism:                 //
                 //                                                            //
                 //------------------------------------------------------------//
-                 
-                this._bkWk.RunWorkerAsync (); // Then move following code to DoWork  
+
+                this._bkWk.RunWorkerAsync (); // Then move following code to DoWork
                 */
 
                 PrnParse parseFile = new PrnParse(PrnParse.ParseType.Analyse, 0);
@@ -125,7 +124,7 @@ namespace PCLParaphernalia
             //      statusBar updates                                         //
             //                                                                //
             //----------------------------------------------------------------//
-        
+
             statusBar.Items[2] = dgAnalysis.Items.Count;
             txtRptSizeAnalysis.Text = dgAnalysis.Items.Count.ToString();
             */
@@ -206,7 +205,7 @@ namespace PCLParaphernalia
                 //      statusBar updates                                     //
                 //                                                            //
                 //------------------------------------------------------------//
-            
+
                 statusBar.Items[0] = _prnFilename;
                 statusBar.Items[1] = _fileSize;
                 statusBar.Items[2] = 0;
@@ -274,9 +273,9 @@ namespace PCLParaphernalia
                 PrnParseConstants.OptOffsetFormats.Decimal;
 
             TargetCore.MetricsReturnFileRpt(ToolCommonData.ToolIds.PrnAnalyse,
-                                             ref rptFileFmt,
-                                             ref rptChkMarks,
-                                             ref flagOptRptWrap);
+                                             out rptFileFmt,
+                                             out rptChkMarks,
+                                             out flagOptRptWrap);
 
             if (tabCtrl.SelectedItem == tabStatistics)
             {
@@ -583,7 +582,7 @@ namespace PCLParaphernalia
                 new RunWorkerCompletedEventHandler (this.bkWk_Completed);
 
             _bkWk.ProgressChanged +=
-                new ProgressChangedEventHandler (this.bkWk_Progress); 
+                new ProgressChangedEventHandler (this.bkWk_Progress);
             */
 
             //----------------------------------------------------------------//
@@ -612,7 +611,7 @@ namespace PCLParaphernalia
             //      statusBar updates                                         //
             //                                                                //
             //----------------------------------------------------------------//
-            
+
             statusBar.Items[0] = string.Empty;
             statusBar.Items[1] = string.Empty;
             */
@@ -730,7 +729,7 @@ namespace PCLParaphernalia
 
         private void MetricsLoad()
         {
-            ToolPrnAnalysePersist.LoadData(ref _prnFilename);
+            ToolPrnAnalysePersist.LoadData(out _prnFilename);
 
             _options.MetricsLoad();
         }
@@ -775,7 +774,7 @@ namespace PCLParaphernalia
 
                 return -1;
             }
-            
+
             if (!File.Exists(filename))
             {
                 MessageBox.Show("Print file '" + filename + "' does not exist.",
@@ -826,7 +825,6 @@ namespace PCLParaphernalia
         public void PrnFileProcess(string filename)
         {
             _prnFilename = filename;
-
 
             // Why not just use FileInfo?
             _fileSize = new FileInfo(_prnFilename).Length;
@@ -926,6 +924,7 @@ namespace PCLParaphernalia
         {
             // dummy method
         }
+
         /*
 //--------------------------------------------------------------------//
 //                                                        M e t h o d //
@@ -981,7 +980,7 @@ MessageBox.Show ("Failure",
                                _options,
                                _analysisTable,
                                worker);
-            
+
             dgAnalysis.DataContext = _analysisTable;  // bind to grid
         }
         */
@@ -1000,6 +999,5 @@ MessageBox.Show ("Failure",
             progressBar1.Value = e.ProgressPercentage;
         }
         */
-
     }
 }

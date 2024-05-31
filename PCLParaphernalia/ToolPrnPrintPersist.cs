@@ -34,7 +34,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataCapture(ToolCommonData.PrintLang crntPDL, ref string captureFile)
+        public static void LoadDataCapture(ToolCommonData.PrintLang crntPDL, out string captureFile)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -55,7 +55,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataGeneral(ref string filename)
+        public static void LoadDataGeneral(out string filename)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {

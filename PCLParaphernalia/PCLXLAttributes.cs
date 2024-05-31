@@ -184,44 +184,37 @@ namespace PCLParaphernalia
             int tagLen1,
             byte tagA,
             byte tagB,
-            ref bool flagReserved,
-            ref bool flagAttrEnum,
-            ref bool flagOperEnum,
-            ref bool flagUbyteTxt,
-            ref bool flagUintTxt,
-            ref bool flagValIsLen,
-            ref bool flagValIsPCL,
-            ref PrnParseConstants.ActPCLXL actionType,
-            ref PrnParseConstants.OvlAct makeOvlAct,
-            ref string description)
+            out bool flagReserved,
+            out bool flagAttrEnum,
+            out bool flagOperEnum,
+            out bool flagUbyteTxt,
+            out bool flagUintTxt,
+            out bool flagValIsLen,
+            out bool flagValIsPCL,
+            out PrnParseConstants.OvlAct makeOvlAct,
+            out string description)
         {
-            bool seqKnown;
+            bool seqKnown = false;
 
-            PCLXLAttribute tag;
+            PCLXLAttribute tag = _tagUnknown;
 
-            int key = key = (((tagLen1 * 256) + tagA) * 256) + tagB;
+            int key = (((tagLen1 * 256) + tagA) * 256) + tagB;
 
             if (_tags.IndexOfKey(key) != -1)
             {
                 seqKnown = true;
                 tag = _tags[key];
             }
-            else
-            {
-                seqKnown = false;
-                tag = _tagUnknown;
-            }
 
-            tag.GetDetails(ref flagReserved,
-                            ref flagAttrEnum,
-                            ref flagOperEnum,
-                            ref flagUbyteTxt,
-                            ref flagUintTxt,
-                            ref flagValIsLen,
-                            ref flagValIsPCL,
-                            ref actionType,
-                            ref makeOvlAct,
-                            ref description);
+            tag.GetDetails(out flagReserved,
+                           out flagAttrEnum,
+                           out flagOperEnum,
+                           out flagUbyteTxt,
+                           out flagUintTxt,
+                           out flagValIsLen,
+                           out flagValIsPCL,
+                           out makeOvlAct,
+                           out description);
 
             return seqKnown;
         }
@@ -285,8 +278,7 @@ namespace PCLParaphernalia
                     {
                         displaySeq = false;
                     }
-                    else if (excUnusedResTags &&
-                                                 (kvp.Value.FlagReserved))
+                    else if (excUnusedResTags && (kvp.Value.FlagReserved))
                     {
                         displaySeq = false;
                     }
@@ -372,8 +364,7 @@ namespace PCLParaphernalia
 
             bool tagReserved;
 
-            foreach (KeyValuePair<int, PCLXLAttribute> kvp
-                in _tags)
+            foreach (KeyValuePair<int, PCLXLAttribute> kvp in _tags)
             {
                 tagReserved = kvp.Value.FlagReserved;
 
@@ -454,11 +445,9 @@ namespace PCLParaphernalia
             //   Int32 tagLen2 = 2; // no 2-byte tags yet defined
 
             int key;
-
-            byte tagA;
             const byte tagB = 0x00;
 
-            tagA = 0x20;                                              // ?    //
+            byte tagA = 0x20;
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
             _tagUnknown =
                 new PCLXLAttribute(tagLen1, tagA, tagB,

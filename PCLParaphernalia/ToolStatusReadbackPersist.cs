@@ -129,7 +129,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataCommon(ref int indxPDL)
+        public static void LoadDataCommon(out int indxPDL)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -149,9 +149,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataPCL(ref int indxEntityType,
-                                       ref int indxLocationType,
-                                       ref string reportFile)
+        public static void LoadDataPCL(out int indxEntityType,
+                                       out int indxLocationType,
+                                       out string reportFile)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -214,12 +214,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataPJL(ref int indxCategory,
-                                       ref int indxCommand,
-                                       ref int indxVariable,
-                                       ref string customCat,
-                                       ref string customVar,
-                                       ref string reportFile)
+        public static void LoadDataPJL(out int indxCategory,
+                                       out int indxCommand,
+                                       out int indxVariable,
+                                       out string customCat,
+                                       out string customVar,
+                                       out string reportFile)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -288,12 +288,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataPJLFS(ref int indxCommand,
-                                          ref string objectPath,
-                                          ref string binSrcFile,
-                                          ref string binTgtFile,
-                                          ref bool flagPJLFS,
-                                          ref bool flagPJLFSSecJob)
+        public static void LoadDataPJLFS(out int indxCommand,
+                                         out string objectPath,
+                                         out string binSrcFile,
+                                         out string binTgtFile,
+                                         out bool flagPJLFS,
+                                         out bool flagPJLFSSecJob)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -333,7 +333,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataRpt(ref int indxRptFileFmt)
+        public static void LoadDataRpt(out int indxRptFileFmt)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {

@@ -342,9 +342,9 @@ namespace PCLParaphernalia
 
             TargetCore.MetricsReturnFileRpt(
                 ToolCommonData.ToolIds.StatusReadback,
-                ref rptFileFmt,
-                ref rptChkMarks,
-                ref flagOptRptWrap);
+                out rptFileFmt,
+                out rptChkMarks,
+                out flagOptRptWrap);
 
             if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
@@ -864,25 +864,25 @@ namespace PCLParaphernalia
         {
             int indxTemp = 0;
 
-            ToolStatusReadbackPersist.LoadDataCommon(ref indxTemp);
+            ToolStatusReadbackPersist.LoadDataCommon(out indxTemp);
 
-            ToolStatusReadbackPersist.LoadDataPCL(ref _indxPCLEntityType,
-                                                   ref _indxPCLLocType,
-                                                   ref _reportFilenamePCL);
+            ToolStatusReadbackPersist.LoadDataPCL(out _indxPCLEntityType,
+                                                   out _indxPCLLocType,
+                                                   out _reportFilenamePCL);
 
-            ToolStatusReadbackPersist.LoadDataPJL(ref _indxPJLCategory,
-                                                   ref _indxPJLCommand,
-                                                   ref _indxPJLVariable,
-                                                   ref _customCatPJL,
-                                                   ref _customVarPJL,
-                                                   ref _reportFilenamePJL);
+            ToolStatusReadbackPersist.LoadDataPJL(out _indxPJLCategory,
+                                                   out _indxPJLCommand,
+                                                   out _indxPJLVariable,
+                                                   out _customCatPJL,
+                                                   out _customVarPJL,
+                                                   out _reportFilenamePJL);
 
-            ToolStatusReadbackPersist.LoadDataPJLFS(ref _indxPJLFSCommand,
-                                                     ref _objPathPJLFS,
-                                                     ref _binSrcFilenamePJLFS,
-                                                     ref _binTgtFilenamePJLFS,
-                                                     ref _flagPJLFS,
-                                                     ref _flagPJLFSSecJob);
+            ToolStatusReadbackPersist.LoadDataPJLFS(out _indxPJLFSCommand,
+                                                     out _objPathPJLFS,
+                                                     out _binSrcFilenamePJLFS,
+                                                     out _binTgtFilenamePJLFS,
+                                                     out _flagPJLFS,
+                                                     out _flagPJLFSSecJob);
 
             //----------------------------------------------------------------//
 
@@ -1056,10 +1056,10 @@ namespace PCLParaphernalia
                 int netTimeoutSend = 0;
                 int netTimeoutReceive = 0;
 
-                TargetCore.MetricsLoadNetPrinter(ref netPrnAddress,
-                                                  ref netPrnPort,
-                                                  ref netTimeoutSend,
-                                                  ref netTimeoutReceive);
+                TargetCore.MetricsLoadNetPrinter(out netPrnAddress,
+                                                  out netPrnPort,
+                                                  out netTimeoutSend,
+                                                  out netTimeoutReceive);
 
                 btnGenerate.Content = "Generate request & read reply from\r\n" + netPrnAddress + " : " + netPrnPort.ToString();
             }
@@ -1067,7 +1067,7 @@ namespace PCLParaphernalia
             {
                 string winPrintername = string.Empty;
 
-                TargetCore.MetricsLoadWinPrinter(ref winPrintername);
+                TargetCore.MetricsLoadWinPrinter(out winPrintername);
 
                 btnGenerate.Content = "Generate & send test data to printer\r\n" + winPrintername;
             }

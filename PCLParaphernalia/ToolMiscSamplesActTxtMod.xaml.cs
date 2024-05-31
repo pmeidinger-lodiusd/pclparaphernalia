@@ -9,7 +9,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class ToolMiscSamples : Window
     {
         //--------------------------------------------------------------------//
@@ -189,7 +188,7 @@ namespace PCLParaphernalia
         {
             int tmpInt = 0;
 
-            ToolMiscSamplesPersist.LoadDataTypeTxtMod("PCL", ref tmpInt, ref _flagTxtModFormAsMacroPCL);
+            ToolMiscSamplesPersist.LoadDataTypeTxtMod("PCL", out tmpInt, out _flagTxtModFormAsMacroPCL);
 
             if (tmpInt == (int)TxtModType.Pat)
                 _indxTxtModTypePCL = TxtModType.Pat;
@@ -198,7 +197,7 @@ namespace PCLParaphernalia
             else
                 _indxTxtModTypePCL = TxtModType.Chr;
 
-            ToolMiscSamplesPersist.LoadDataTypeTxtMod("PCLXL", ref tmpInt, ref _flagTxtModFormAsMacroPCLXL);
+            ToolMiscSamplesPersist.LoadDataTypeTxtMod("PCLXL", out tmpInt, out _flagTxtModFormAsMacroPCLXL);
 
             if (tmpInt == (int)TxtModType.Pat)
                 _indxTxtModTypePCLXL = TxtModType.Pat;

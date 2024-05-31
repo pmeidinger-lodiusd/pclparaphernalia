@@ -2493,30 +2493,30 @@ namespace PCLParaphernalia
         private void MetricsLoad()
         {
             int indxFontTemp = 0;
-            ToolFontSamplePersist.LoadDataCommon(ref _indxPDL, ref _optGridVertical);
+            ToolFontSamplePersist.LoadDataCommon(out _indxPDL, out _optGridVertical);
 
             ToolFontSamplePersist.LoadDataGeneral("PCL",
-                                                  ref _indxOrientationPCL,
-                                                  ref _indxPaperSizePCL,
-                                                  ref _indxPaperTypePCL,
-                                                  ref indxFontTemp,
-                                                  ref _formAsMacroPCL,
-                                                  ref _showC0CharsPCL,
-                                                  ref _showMapCodesUCS2PCL,
-                                                  ref _showMapCodesUTF8PCL,
-                                                  ref _symSetUserActEmbedPCL);
+                                                  out _indxOrientationPCL,
+                                                  out _indxPaperSizePCL,
+                                                  out _indxPaperTypePCL,
+                                                  out indxFontTemp,
+                                                  out _formAsMacroPCL,
+                                                  out _showC0CharsPCL,
+                                                  out _showMapCodesUCS2PCL,
+                                                  out _showMapCodesUTF8PCL,
+                                                  out _symSetUserActEmbedPCL);
 
-            ToolFontSamplePersist.LoadDataPCLCustom(ref _fontProportional,
-                                                     ref _fontScalable,
-                                                     ref _fontBound,
-                                                     ref _fontStylePCL,
-                                                     ref _fontTypefacePCL,
-                                                     ref _fontWeightPCL,
-                                                     ref _fontHeightPCL,
-                                                     ref _fontPitchPCL,
-                                                     ref _indxSymSetPCL,
-                                                     ref _symSetNo,
-                                                     ref _symSetUserFile);
+            ToolFontSamplePersist.LoadDataPCLCustom(out _fontProportional,
+                                                     out _fontScalable,
+                                                     out _fontBound,
+                                                     out _fontStylePCL,
+                                                     out _fontTypefacePCL,
+                                                     out _fontWeightPCL,
+                                                     out _fontHeightPCL,
+                                                     out _fontPitchPCL,
+                                                     out _indxSymSetPCL,
+                                                     out _symSetNo,
+                                                     out _symSetUserFile);
 
             _fontCustomPCL.Store(_fontProportional,
                                   _fontScalable,
@@ -2530,15 +2530,15 @@ namespace PCLParaphernalia
                                   _symSetNo,
                                   _symSetUserFile);
 
-            ToolFontSamplePersist.LoadDataPCLDownload(ref _fontFilenamePCL,
-                                                       ref _fontDownloadIdPCL,
-                                                       ref _downloadRemovePCL,
-                                                       ref _downloadSelByIdPCL,
-                                                       ref _fontHeightPCL,
-                                                       ref _fontPitchPCL,
-                                                       ref _indxSymSetPCL,
-                                                       ref _symSetNo,
-                                                       ref _symSetUserFile);
+            ToolFontSamplePersist.LoadDataPCLDownload(out _fontFilenamePCL,
+                                                       out _fontDownloadIdPCL,
+                                                       out _downloadRemovePCL,
+                                                       out _downloadSelByIdPCL,
+                                                       out _fontHeightPCL,
+                                                       out _fontPitchPCL,
+                                                       out _indxSymSetPCL,
+                                                       out _symSetNo,
+                                                       out _symSetUserFile);
 
             _fontDownloadPCL.Store(_fontFilenamePCL,
                                     _fontDownloadIdPCL,
@@ -2550,24 +2550,24 @@ namespace PCLParaphernalia
                                     _symSetNo,
                                     _symSetUserFile);
 
-            ToolFontSamplePersist.LoadDataPCLPrnDisk(ref _fontPrnDiskNamePCL,
-                                                     ref _fontPrnDiskIdPCL,
-                                                     ref _fontPrnDiskMacroIdPCL,
-                                                     ref _prnDiskRemovePCL,
-                                                     ref _prnDiskSelByIdPCL,
-                                                     ref _prnDiskLoadViaMacro,
-                                                     ref _prnDiskFontDataKnownPCL,
-                                                     ref _fontProportional,
-                                                     ref _fontScalable,
-                                                     ref _fontBound,
-                                                     ref _fontStylePCL,
-                                                     ref _fontTypefacePCL,
-                                                     ref _fontWeightPCL,
-                                                     ref _fontHeightPCL,
-                                                     ref _fontPitchPCL,
-                                                     ref _indxSymSetPCL,
-                                                     ref _symSetNo,
-                                                     ref _symSetUserFile);
+            ToolFontSamplePersist.LoadDataPCLPrnDisk(out _fontPrnDiskNamePCL,
+                                                     out _fontPrnDiskIdPCL,
+                                                     out _fontPrnDiskMacroIdPCL,
+                                                     out _prnDiskRemovePCL,
+                                                     out _prnDiskSelByIdPCL,
+                                                     out _prnDiskLoadViaMacro,
+                                                     out _prnDiskFontDataKnownPCL,
+                                                     out _fontProportional,
+                                                     out _fontScalable,
+                                                     out _fontBound,
+                                                     out _fontStylePCL,
+                                                     out _fontTypefacePCL,
+                                                     out _fontWeightPCL,
+                                                     out _fontHeightPCL,
+                                                     out _fontPitchPCL,
+                                                     out _indxSymSetPCL,
+                                                     out _symSetNo,
+                                                     out _symSetUserFile);
 
             _fontPrnDiskPCL.Store(_fontPrnDiskNamePCL,
                                   _fontPrnDiskIdPCL,
@@ -2588,13 +2588,13 @@ namespace PCLParaphernalia
                                   _symSetNo,
                                   _symSetUserFile);
 
-            ToolFontSamplePersist.LoadDataPCLPreset(ref _indxFontPCL,
-                                                     ref _fontVar,
-                                                     ref _fontHeightPCL,
-                                                     ref _fontPitchPCL,
-                                                     ref _indxSymSetPCL,
-                                                     ref _symSetNo,
-                                                     ref _symSetUserFile);
+            ToolFontSamplePersist.LoadDataPCLPreset(out _indxFontPCL,
+                                                     out _fontVar,
+                                                     out _fontHeightPCL,
+                                                     out _fontPitchPCL,
+                                                     out _indxSymSetPCL,
+                                                     out _symSetNo,
+                                                     out _symSetUserFile);
 
             int indxFont = _subsetFonts[_indxFontPCL];
             _fontBound = PCLFonts.IsBoundFont(indxFont);
@@ -2616,21 +2616,21 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             ToolFontSamplePersist.LoadDataGeneral("PCLXL",
-                                                  ref _indxOrientationPCLXL,
-                                                  ref _indxPaperSizePCLXL,
-                                                  ref _indxPaperTypePCLXL,
-                                                  ref indxFontTemp,
-                                                  ref _formAsMacroPCLXL,
-                                                  ref _showC0CharsPCLXL,
-                                                  ref _showMapCodesUCS2PCLXL,
-                                                  ref _showMapCodesUTF8PCLXL,
-                                                  ref _symSetUserActEmbedPCLXL);
+                                                  out _indxOrientationPCLXL,
+                                                  out _indxPaperSizePCLXL,
+                                                  out _indxPaperTypePCLXL,
+                                                  out indxFontTemp,
+                                                  out _formAsMacroPCLXL,
+                                                  out _showC0CharsPCLXL,
+                                                  out _showMapCodesUCS2PCLXL,
+                                                  out _showMapCodesUTF8PCLXL,
+                                                  out _symSetUserActEmbedPCLXL);
 
-            ToolFontSamplePersist.LoadDataPCLXLCustom(ref _fontNamePCLXL,
-                                                     ref _fontHeightPCLXL,
-                                                     ref _indxSymSetPCLXL,
-                                                     ref _symSetNo,
-                                                     ref _symSetUserFile);
+            ToolFontSamplePersist.LoadDataPCLXLCustom(out _fontNamePCLXL,
+                                                      out _fontHeightPCLXL,
+                                                      out _indxSymSetPCLXL,
+                                                      out _symSetNo,
+                                                      out _symSetUserFile);
 
             _fontCustomPCLXL.Store(_fontNamePCLXL,
                                     _fontHeightPCLXL,
@@ -2638,12 +2638,12 @@ namespace PCLParaphernalia
                                     _symSetNo,
                                     _symSetUserFile);
 
-            ToolFontSamplePersist.LoadDataPCLXLDownload(ref _fontFilenamePCLXL,
-                                                       ref _downloadRemovePCLXL,
-                                                       ref _fontHeightPCLXL,
-                                                       ref _indxSymSetPCLXL,
-                                                       ref _symSetNo,
-                                                       ref _symSetUserFile);
+            ToolFontSamplePersist.LoadDataPCLXLDownload(out _fontFilenamePCLXL,
+                                                       out _downloadRemovePCLXL,
+                                                       out _fontHeightPCLXL,
+                                                       out _indxSymSetPCLXL,
+                                                       out _symSetNo,
+                                                       out _symSetUserFile);
 
             _fontDownloadPCLXL.Store(_fontFilenamePCLXL,
                                       _downloadRemovePCLXL,
@@ -2652,12 +2652,12 @@ namespace PCLParaphernalia
                                       _symSetNo,
                                       _symSetUserFile);
 
-            ToolFontSamplePersist.LoadDataPCLXLPreset(ref _indxFontPCLXL,
-                                                     ref _fontVar,
-                                                     ref _fontHeightPCLXL,
-                                                     ref _indxSymSetPCLXL,
-                                                     ref _symSetNo,
-                                                     ref _symSetUserFile);
+            ToolFontSamplePersist.LoadDataPCLXLPreset(out _indxFontPCLXL,
+                                                     out _fontVar,
+                                                     out _fontHeightPCLXL,
+                                                     out _indxSymSetPCLXL,
+                                                     out _symSetNo,
+                                                     out _symSetUserFile);
 
             indxFont = _subsetFonts[_indxFontPCLXL];
 
@@ -3405,10 +3405,10 @@ namespace PCLParaphernalia
                 int netTimeoutSend = 0;
                 int netTimeoutReceive = 0;
 
-                TargetCore.MetricsLoadNetPrinter(ref netPrnAddress,
-                                                  ref netPrnPort,
-                                                  ref netTimeoutSend,
-                                                  ref netTimeoutReceive);
+                TargetCore.MetricsLoadNetPrinter(out netPrnAddress,
+                                                  out netPrnPort,
+                                                  out netTimeoutSend,
+                                                  out netTimeoutReceive);
 
                 btnGenerate.Content = "Generate & send test data to\r\n" + netPrnAddress + " : " + netPrnPort.ToString();
             }
@@ -3416,7 +3416,7 @@ namespace PCLParaphernalia
             {
                 string winPrintername = string.Empty;
 
-                TargetCore.MetricsLoadWinPrinter(ref winPrintername);
+                TargetCore.MetricsLoadWinPrinter(out winPrintername);
 
                 btnGenerate.Content = "Generate & send test data to printer\r\n" + winPrintername;
             }

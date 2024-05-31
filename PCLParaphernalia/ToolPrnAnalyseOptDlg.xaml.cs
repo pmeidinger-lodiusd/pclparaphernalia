@@ -628,7 +628,7 @@ namespace PCLParaphernalia
                 {
                     _crntClrMapTheme = tempInt;
 
-                    ToolPrnAnalysePersist.LoadOptClrMapThemeName(_crntClrMapTheme, ref name);
+                    ToolPrnAnalysePersist.LoadOptClrMapThemeName(_crntClrMapTheme, out name);
 
                     txtClrMapThemeName.Text = name;
 
@@ -1230,6 +1230,7 @@ namespace PCLParaphernalia
                 _flagPCLXLMiscBinData = (bool)chkPCLXLMiscBinData.IsChecked;
             }
         }
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // c h k P C L M i s c O p e r P o s _ C h a n g e                    //
@@ -1749,7 +1750,7 @@ namespace PCLParaphernalia
             {
                 string name = string.Empty;
 
-                ToolPrnAnalysePersist.LoadOptClrMapThemeName(i, ref name);
+                ToolPrnAnalysePersist.LoadOptClrMapThemeName(i, out name);
 
                 _clrMapThemeNames[i] = name;
 
@@ -2271,6 +2272,7 @@ namespace PCLParaphernalia
                 }
             }
         }
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // r b C u r F I n i t L a n g _ C h e c k e d                        //
@@ -2632,6 +2634,7 @@ namespace PCLParaphernalia
 
             return OK;
         }
+
         /*
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

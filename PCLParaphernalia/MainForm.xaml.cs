@@ -13,7 +13,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class MainForm : Window
     {
         public const string _regMainKey = @"Software\PCLParaphernalia";
@@ -31,8 +30,10 @@ namespace PCLParaphernalia
         private ToolImageBitmap _subFormToolImageBitmap = null;
         private ToolMakeOverlay _subFormToolMakeOverlay = null;
         private ToolMiscSamples _subFormToolMiscSamples = null;
+
         //    private ToolPatternGenerate     _subFormToolPatternGenerate     = null;
         private ToolPrintArea _subFormToolPrintArea = null;
+
         private ToolPrintLang _subFormToolPrintLang = null;
         private ToolPrnAnalyse _subFormToolPrnAnalyse = null;
         private ToolPrnPrint _subFormToolPrnPrint = null;
@@ -75,11 +76,11 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            MainFormPersist.LoadWindowData(ref mwLeft,
-                                           ref mwTop,
-                                           ref mwHeight,
-                                           ref mwWidth,
-                                           ref mwScale);
+            MainFormPersist.LoadWindowData(out mwLeft,
+                                           out mwTop,
+                                           out mwHeight,
+                                           out mwWidth,
+                                           out mwScale);
 
             if ((mwLeft == -1) || (mwTop == -1) || (mwHeight == -1) || (mwWidth == -1))
             {
@@ -128,10 +129,10 @@ namespace PCLParaphernalia
                                                versionBuildCrnt,
                                                versionRevisionCrnt);
 
-            MainFormPersist.LoadVersionData(ref versionMajorOld,
-                                             ref versionMinorOld,
-                                             ref versionBuildOld,
-                                             ref versionRevisionOld);
+            MainFormPersist.LoadVersionData(out versionMajorOld,
+                                            out versionMinorOld,
+                                            out versionBuildOld,
+                                            out versionRevisionOld);
 
             MainFormData.SetVersionData(false, versionMajorOld,
                                                 versionMinorOld,
@@ -198,7 +199,7 @@ namespace PCLParaphernalia
             // 'PRN File Analyse' tool, and pass the parameter which          //
             // identifies the file to be analysed.                            //
             // Otherwise, load the tool in use when the application was last  //
-            // closed.                                                        // 
+            // closed.                                                        //
             //                                                                //
             //----------------------------------------------------------------//
 
@@ -211,7 +212,7 @@ namespace PCLParaphernalia
                 //------------------------------------------------------------//
                 //                                                            //
                 // Load 'XXX Diags' tool.                                     //
-                //                                                            // 
+                //                                                            //
                 // ***** for design time use only *****                       //
                 //                                                            //
                 //------------------------------------------------------------//
@@ -225,7 +226,6 @@ namespace PCLParaphernalia
                 // Load 'PRN File Analyse' tool and pass in file name.        //
                 //                                                            //
                 //------------------------------------------------------------//
-
 
                 toolPrnAnalyse_Selected(this, null);
 
@@ -242,7 +242,7 @@ namespace PCLParaphernalia
 
                 int crntToolIndex = 0;
 
-                ToolCommonPersist.LoadData(ref crntToolIndex);
+                ToolCommonPersist.LoadData(out crntToolIndex);
 
                 if ((crntToolIndex > (int)ToolCommonData.ToolIds.Min) && (crntToolIndex < (int)ToolCommonData.ToolIds.Max))
                     startToolId = (ToolCommonData.ToolIds)crntToolIndex;
@@ -857,6 +857,7 @@ namespace PCLParaphernalia
             grid1.Children.Clear();
             grid1.Children.Add(content as UIElement);
         }
+
         /*
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

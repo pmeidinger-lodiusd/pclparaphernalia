@@ -20,15 +20,11 @@ namespace PCLParaphernalia
         private const string _mainKey = MainForm._regMainKey;
         private const string _subKeyTarget = "Target";
 
-        //const string _subKeyTargetFile = "File";
-        private const string _subKeyTargetPrinter = "Printer";
-
         private const string _subKeyTargetNetPrinter = "NetPrinter";
         private const string _subKeyTargetWinPrinter = "WinPrinter";
         private const string _subKeyWorkFolder = "WorkFolder";
         private const string _nameIndxTargetType = "IndxTargetType";
 
-        //const string _nameFilename = "Filename";
         private const string _nameFoldername = "Foldername";
 
         private const string _namePrintername = "Printername";
@@ -56,7 +52,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataCommon(ref int indxTargetType)
+        public static void LoadDataCommon(out int indxTargetType)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -77,10 +73,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataNetPrinter(ref string ipAddress,
-                                               ref int port,
-                                               ref int timeoutSend,
-                                               ref int timeoutReceive)
+        public static void LoadDataNetPrinter(out string ipAddress,
+                                                out int port,
+                                                out int timeoutSend,
+                                                out int timeoutReceive)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -109,13 +105,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataWinPrinter(ref string printerName)
+        public static void LoadDataWinPrinter(out string printerName)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
                 const string key = _subKeyTarget + "\\" + _subKeyTargetWinPrinter;
-
-                //----------------------------------------------------------------//
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
@@ -133,7 +127,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataWorkFolder(ref string foldername)
+        public static void LoadDataWorkFolder(out string foldername)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {

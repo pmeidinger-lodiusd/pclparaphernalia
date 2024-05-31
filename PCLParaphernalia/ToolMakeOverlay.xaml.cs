@@ -14,7 +14,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class ToolMakeOverlay : Window
     {
         //--------------------------------------------------------------------//
@@ -221,27 +220,27 @@ namespace PCLParaphernalia
             flagOffsetHex = _options.IndxGenOffsetFormat != PrnParseConstants.OptOffsetFormats.Decimal;
 
             TargetCore.MetricsReturnFileRpt(ToolCommonData.ToolIds.MakeOverlay,
-                                             ref rptFileFmt,
-                                             ref rptChkMarks,
-                                             ref flagOptRptWrap);
+                                             out rptFileFmt,
+                                             out rptChkMarks,
+                                             out flagOptRptWrap);
 
             if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
                 ToolMakeOverlayReport.Generate(rptFileFmt,
-                                                           _tableProgress,
-                                                            _prnFilename,
-                                                            _ovlFilenamePCL,
-                                                            flagOffsetHex,
-                                                            _options);
+                                                _tableProgress,
+                                                _prnFilename,
+                                                _ovlFilenamePCL,
+                                                flagOffsetHex,
+                                                _options);
             }
             else
             {
                 ToolMakeOverlayReport.Generate(rptFileFmt,
-                                                           _tableProgress,
-                                                            _prnFilename,
-                                                            _ovlFilenamePCLXL,
-                                                            flagOffsetHex,
-                                                            _options);
+                                                _tableProgress,
+                                                _prnFilename,
+                                                _ovlFilenamePCLXL,
+                                                flagOffsetHex,
+                                                _options);
             }
 
             btnSaveReport.Visibility = Visibility.Visible;
@@ -598,17 +597,17 @@ namespace PCLParaphernalia
 
         private void MetricsLoad()
         {
-            ToolMakeOverlayPersist.LoadDataCommon(ref _prnFilename);
+            ToolMakeOverlayPersist.LoadDataCommon(out _prnFilename);
 
-            ToolMakeOverlayPersist.LoadDataPCL(ref _ovlFilenamePCL,
-                                                 ref _flagRestoreCursorPCL,
-                                                 ref _flagOvlEncPCL,
-                                                 ref _macroIdPCL);
+            ToolMakeOverlayPersist.LoadDataPCL(out _ovlFilenamePCL,
+                                                 out _flagRestoreCursorPCL,
+                                                 out _flagOvlEncPCL,
+                                                 out _macroIdPCL);
 
-            ToolMakeOverlayPersist.LoadDataPCLXL(ref _ovlFilenamePCLXL,
-                                                 ref _flagRestoreGSPCLXL,
-                                                 ref _flagOvlEncPCLXL,
-                                                 ref _streamNamePCLXL);
+            ToolMakeOverlayPersist.LoadDataPCLXL(out _ovlFilenamePCLXL,
+                                                 out _flagRestoreGSPCLXL,
+                                                 out _flagOvlEncPCLXL,
+                                                 out _streamNamePCLXL);
         }
 
         //--------------------------------------------------------------------//

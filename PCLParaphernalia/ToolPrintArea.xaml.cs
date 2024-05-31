@@ -568,29 +568,29 @@ namespace PCLParaphernalia
 
         private void MetricsLoad()
         {
-            ToolPrintAreaPersist.LoadDataCommon(ref _indxPDL);
+            ToolPrintAreaPersist.LoadDataCommon(out _indxPDL);
 
             ToolPrintAreaPersist.LoadDataPCL("PCL",
-                                             ref _indxOrientationPCL,
-                                             ref _indxPaperSizePCL,
-                                             ref _indxPaperTypePCL,
-                                             ref _indxPlexModePCL,
-                                             ref _indxPJLCommandPCL,
-                                             ref _formAsMacroPCL,
-                                             ref _flagCustomUseMetricPCL,
-                                             ref _customShortEdgeDotsPCL,
-                                             ref _customLongEdgeDotsPCL);
+                                             out _indxOrientationPCL,
+                                             out _indxPaperSizePCL,
+                                             out _indxPaperTypePCL,
+                                             out _indxPlexModePCL,
+                                             out _indxPJLCommandPCL,
+                                             out _formAsMacroPCL,
+                                             out _flagCustomUseMetricPCL,
+                                             out _customShortEdgeDotsPCL,
+                                             out _customLongEdgeDotsPCL);
 
             ToolPrintAreaPersist.LoadDataPCL("PCLXL",
-                                             ref _indxOrientationPCLXL,
-                                             ref _indxPaperSizePCLXL,
-                                             ref _indxPaperTypePCLXL,
-                                             ref _indxPlexModePCLXL,
-                                             ref _indxPJLCommandPCLXL,
-                                             ref _formAsMacroPCLXL,
-                                             ref _flagCustomUseMetricPCLXL,
-                                             ref _customShortEdgeDotsPCLXL,
-                                             ref _customLongEdgeDotsPCLXL);
+                                             out _indxOrientationPCLXL,
+                                             out _indxPaperSizePCLXL,
+                                             out _indxPaperTypePCLXL,
+                                             out _indxPlexModePCLXL,
+                                             out _indxPJLCommandPCLXL,
+                                             out _formAsMacroPCLXL,
+                                             out _flagCustomUseMetricPCLXL,
+                                             out _customShortEdgeDotsPCLXL,
+                                             out _customLongEdgeDotsPCLXL);
 
             //----------------------------------------------------------------//
 
@@ -859,10 +859,10 @@ namespace PCLParaphernalia
                 int netTimeoutSend = 0;
                 int netTimeoutReceive = 0;
 
-                TargetCore.MetricsLoadNetPrinter(ref netPrnAddress,
-                                                  ref netPrnPort,
-                                                  ref netTimeoutSend,
-                                                  ref netTimeoutReceive);
+                TargetCore.MetricsLoadNetPrinter(out netPrnAddress,
+                                                  out netPrnPort,
+                                                  out netTimeoutSend,
+                                                  out netTimeoutReceive);
 
                 btnGenerate.Content = $"Generate & send test data to\r\n{netPrnAddress}: {netPrnPort}";
             }
@@ -870,7 +870,7 @@ namespace PCLParaphernalia
             {
                 string winPrintername = string.Empty;
 
-                TargetCore.MetricsLoadWinPrinter(ref winPrintername);
+                TargetCore.MetricsLoadWinPrinter(out winPrintername);
 
                 btnGenerate.Content = "Generate & send test data to printer\r\n" + winPrintername;
             }

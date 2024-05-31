@@ -125,13 +125,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataCommon(ref int indxPDL,
-                                          ref string filename,
-                                          ref int destPosX,
-                                          ref int destPosY,
-                                          ref int destScaleX,
-                                          ref int destScaleY,
-                                          ref int indxRasterRes)
+        public static void LoadDataCommon(out int indxPDL,
+                                          out string filename,
+                                          out int destPosX,
+                                          out int destPosY,
+                                          out int destScaleX,
+                                          out int destScaleY,
+                                          out int indxRasterRes)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -166,9 +166,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void LoadDataPCL(string pdlName,
-                                       ref int indxOrientation,
-                                       ref int indxPaperSize,
-                                       ref int indxPaperType)
+                                       out int indxOrientation,
+                                       out int indxPaperSize,
+                                       out int indxPaperType)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {

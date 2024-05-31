@@ -187,9 +187,9 @@ namespace PCLParaphernalia
 
             TargetCore.MetricsReturnFileRpt(
                 ToolCommonData.ToolIds.SoftFontGenerate,
-                    ref rptFileFmt,
-                    ref rptChkMarks,
-                    ref flagOptRptWrap);
+                    out rptFileFmt,
+                    out rptChkMarks,
+                    out flagOptRptWrap);
 
             // If a file was selected, the font dropdown may not have a font name
             var fontName = string.IsNullOrEmpty(_fontNameTTF) ? _fontNameBase : _fontNameTTF;
@@ -1800,16 +1800,16 @@ namespace PCLParaphernalia
         {
             int indxTemp = 0;
 
-            ToolSoftFontGenPersist.LoadDataCommon(ref indxTemp, ref _flagLogVerbose);
+            ToolSoftFontGenPersist.LoadDataCommon(out indxTemp, out _flagLogVerbose);
 
             if (indxTemp == (int)ToolCommonData.PrintLang.PCLXL)
                 _crntPDL = ToolCommonData.PrintLang.PCLXL;
             else
                 _crntPDL = ToolCommonData.PrintLang.PCL;
 
-            ToolSoftFontGenPersist.LoadDataTTF(ref _indxFont,
-                                               ref _flagUsePCLT,
-                                               ref _fontFileAdhocTTF);
+            ToolSoftFontGenPersist.LoadDataTTF(out _indxFont,
+                                               out _flagUsePCLT,
+                                               out _fontFileAdhocTTF);
             /*
             if ((indxTemp < 0) || (indxTemp >= (Int32) ePCLTUse.Max))
                 _indxPCLTUse = ePCLTUse.Use;
@@ -1820,11 +1820,11 @@ namespace PCLParaphernalia
                 _indxFont = 0;
 
             ToolSoftFontGenPersist.LoadDataMapping(
-                ref _indxSymSetSubset,
-                ref _symSetMapPCL,
-                ref _symSetUnbound,
-                ref _symSetUserSet,
-                ref _symSetUserFile);
+                out _indxSymSetSubset,
+                out _symSetMapPCL,
+                out _symSetUnbound,
+                out _symSetUserSet,
+                out _symSetUserFile);
 
             if (_indxSymSetSubset < 0 || _indxSymSetSubset >= _ctMappedSymSets)
             {
@@ -1832,16 +1832,16 @@ namespace PCLParaphernalia
             }
 
             ToolSoftFontGenPersist.LoadDataPCL(
-                ref _fontFolderPCL,
-                ref _flagFormat16,
-                ref _flagCharCollCompSpecificPCL,
-                ref _flagVMetricsPCL,
-                ref _flagSegGTLastPCL,
-                ref _charCollCompPCLSpecific);
+                out _fontFolderPCL,
+                out _flagFormat16,
+                out _flagCharCollCompSpecificPCL,
+                out _flagVMetricsPCL,
+                out _flagSegGTLastPCL,
+                out _charCollCompPCLSpecific);
 
             ToolSoftFontGenPersist.LoadDataPCLXL(
-                ref _fontFolderPCLXL,
-                ref _flagVMetricsPCLXL);
+                out _fontFolderPCLXL,
+                out _flagVMetricsPCLXL);
         }
 
         //--------------------------------------------------------------------//

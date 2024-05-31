@@ -703,7 +703,7 @@ namespace PCLParaphernalia
 
         public void MetricsLoad()
         {
-            ToolPrnAnalysePersist.LoadData(ref _prnFilename);
+            ToolPrnAnalysePersist.LoadData(out _prnFilename);
 
             MetricsLoadCharSet();
             MetricsLoadClrMap();
@@ -735,9 +735,9 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            ToolPrnAnalysePersist.LoadOptCharSet(ref i1,
-                                                 ref i2,
-                                                 ref i3);
+            ToolPrnAnalysePersist.LoadOptCharSet(out i1,
+                                                 out i2,
+                                                 out i3);
 
             max = (int)PrnParseConstants.OptCharSets.Max;
 
@@ -774,7 +774,7 @@ namespace PCLParaphernalia
         // these values (which are passed by reference to the subsequent      //
         // 'load from registry' function) are used as defaults if the         //
         // registry items do not yet exist (i.e. on first run of the version  //
-        // which introduced the colour coding feature).                       // 
+        // which introduced the colour coding feature).                       //
         //                                                                    //
         //--------------------------------------------------------------------//
 
@@ -782,7 +782,7 @@ namespace PCLParaphernalia
         {
             PrnParseRowTypes.SetDefaultClrs(ref _indxClrMapBack, ref _indxClrMapFore);
 
-            ToolPrnAnalysePersist.LoadOptClrMap(ref _flagClrMapUseClr);
+            ToolPrnAnalysePersist.LoadOptClrMap(out _flagClrMapUseClr);
 
             ToolPrnAnalysePersist.LoadOptClrMapCrnt(ref _indxClrMapBack, ref _indxClrMapFore);
 
@@ -834,7 +834,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            ToolPrnAnalysePersist.LoadOptGeneral(ref i1, ref _flagGenMiscAutoAnalyse, ref _flagGenDiagFileAccess);
+            ToolPrnAnalysePersist.LoadOptGeneral(out i1, out _flagGenMiscAutoAnalyse, out _flagGenDiagFileAccess);
 
             max = (int)PrnParseConstants.OptOffsetFormats.Max;
 
@@ -855,7 +855,7 @@ namespace PCLParaphernalia
 
         private void MetricsLoadHPGL2()
         {
-            ToolPrnAnalysePersist.LoadOptHPGL2(ref _flagHPGL2MiscBinData);
+            ToolPrnAnalysePersist.LoadOptHPGL2(out _flagHPGL2MiscBinData);
         }
 
         //--------------------------------------------------------------------//
@@ -869,27 +869,27 @@ namespace PCLParaphernalia
 
         private void MetricsLoadPCL()
         {
-            ToolPrnAnalysePersist.LoadOptPCL(ref _flagPCLFontHddr,
-                                              ref _flagPCLFontChar,
-                                              ref _flagPCLFontDraw,
-                                              ref _valPCLFontDrawHeight,
-                                              ref _valPCLFontDrawWidth,
-                                              ref _flagPCLMacroDisplay,
-                                              ref _flagPCLMiscStyleData,
-                                              ref _flagPCLMiscBinData,
-                                              ref _flagPCLTransAlphaNumId,
-                                              ref _flagPCLTransColourLookup,
-                                              ref _flagPCLTransConfIO,
-                                              ref _flagPCLTransConfImageData,
-                                              ref _flagPCLTransConfRasterData,
-                                              ref _flagPCLTransDefLogPage,
-                                              ref _flagPCLTransDefSymSet,
-                                              ref _flagPCLTransDitherMatrix,
-                                              ref _flagPCLTransDriverConf,
-                                              ref _flagPCLTransEscEncText,
-                                              ref _flagPCLTransPaletteConf,
-                                              ref _flagPCLTransUserPattern,
-                                              ref _flagPCLTransViewIlluminant);
+            ToolPrnAnalysePersist.LoadOptPCL(out _flagPCLFontHddr,
+                                              out _flagPCLFontChar,
+                                              out _flagPCLFontDraw,
+                                              out _valPCLFontDrawHeight,
+                                              out _valPCLFontDrawWidth,
+                                              out _flagPCLMacroDisplay,
+                                              out _flagPCLMiscStyleData,
+                                              out _flagPCLMiscBinData,
+                                              out _flagPCLTransAlphaNumId,
+                                              out _flagPCLTransColourLookup,
+                                              out _flagPCLTransConfIO,
+                                              out _flagPCLTransConfImageData,
+                                              out _flagPCLTransConfRasterData,
+                                              out _flagPCLTransDefLogPage,
+                                              out _flagPCLTransDefSymSet,
+                                              out _flagPCLTransDitherMatrix,
+                                              out _flagPCLTransDriverConf,
+                                              out _flagPCLTransEscEncText,
+                                              out _flagPCLTransPaletteConf,
+                                              out _flagPCLTransUserPattern,
+                                              out _flagPCLTransViewIlluminant);
         }
 
         //--------------------------------------------------------------------//
@@ -903,17 +903,17 @@ namespace PCLParaphernalia
 
         private void MetricsLoadPCLXL()
         {
-            ToolPrnAnalysePersist.LoadOptPCLXL(ref _flagPCLXLFontHddr,
-                                                ref _flagPCLXLFontChar,
-                                                ref _flagPCLXLFontDraw,
-                                                ref _valPCLXLFontDrawHeight,
-                                                ref _valPCLXLFontDrawWidth,
-                                                ref _flagPCLXLEncUserStream,
-                                                ref _flagPCLXLEncPCLPassThrough,
-                                                ref _flagPCLXLEncPCLFontSelect,
-                                                ref _flagPCLXLMiscOperPos,
-                                                ref _flagPCLXLMiscBinData,
-                                                ref _flagPCLXLMiscVerbose);
+            ToolPrnAnalysePersist.LoadOptPCLXL(out _flagPCLXLFontHddr,
+                                                out _flagPCLXLFontChar,
+                                                out _flagPCLXLFontDraw,
+                                                out _valPCLXLFontDrawHeight,
+                                                out _valPCLXLFontDrawWidth,
+                                                out _flagPCLXLEncUserStream,
+                                                out _flagPCLXLEncPCLPassThrough,
+                                                out _flagPCLXLEncPCLFontSelect,
+                                                out _flagPCLXLMiscOperPos,
+                                                out _flagPCLXLMiscBinData,
+                                                out _flagPCLXLMiscVerbose);
         }
 
         //--------------------------------------------------------------------//
@@ -927,9 +927,9 @@ namespace PCLParaphernalia
 
         private void MetricsLoadPML()
         {
-            ToolPrnAnalysePersist.LoadOptPML(ref _flagPMLWithinPCL,
-                                              ref _flagPMLWithinPJL,
-                                              ref _flagPMLMiscVerbose);
+            ToolPrnAnalysePersist.LoadOptPML(out _flagPMLWithinPCL,
+                                             out _flagPMLWithinPJL,
+                                             out _flagPMLMiscVerbose);
         }
 
         //--------------------------------------------------------------------//
@@ -949,9 +949,9 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             ToolPrnAnalysePersist.LoadOptStats(
-                ref i1,
-                ref _flagStatsExcUnusedPCLObs,
-                ref _flagStatsExcUnusedPCLXLRes);
+                out i1,
+                out _flagStatsExcUnusedPCLObs,
+                out _flagStatsExcUnusedPCLXLRes);
 
             max = (int)PrnParseConstants.OptStatsLevel.Max;
 

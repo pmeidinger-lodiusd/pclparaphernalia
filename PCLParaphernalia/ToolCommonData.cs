@@ -106,7 +106,7 @@ namespace PCLParaphernalia
 
         public static void LoadWorkFoldername()
         {
-            TargetPersist.LoadDataWorkFolder(ref _defWorkFolder);
+            TargetPersist.LoadDataWorkFolder(out _defWorkFolder);
         }
     }
 }

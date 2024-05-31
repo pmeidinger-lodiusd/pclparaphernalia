@@ -14,7 +14,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class ToolFormSample : Window
     {
         //--------------------------------------------------------------------//
@@ -977,21 +976,21 @@ namespace PCLParaphernalia
         {
             int indxMethodTemp = 0;
 
-            ToolFormSamplePersist.LoadDataCommon(ref _indxPDL);
+            ToolFormSamplePersist.LoadDataCommon(out _indxPDL);
 
             ToolFormSamplePersist.LoadDataGeneral("PCL",
-                                                   ref _indxPaperTypePCL,
-                                                   ref _indxPaperSizePCL,
-                                                   ref _indxOrientationPCL,
-                                                   ref _indxPlexModePCL,
-                                                   ref _indxOrientRearPCL,
-                                                   ref indxMethodTemp,
-                                                   ref _testPageCountPCL,
-                                                   ref _flagMacroRemovePCL,
-                                                   ref _flagMainFormPCL,
-                                                   ref _flagRearFormPCL,
-                                                   ref _flagRearBPlatePCL,
-                                                   ref _flagPrintDescTextPCL);
+                                                   out _indxPaperTypePCL,
+                                                   out _indxPaperSizePCL,
+                                                   out _indxOrientationPCL,
+                                                   out _indxPlexModePCL,
+                                                   out _indxOrientRearPCL,
+                                                   out indxMethodTemp,
+                                                   out _testPageCountPCL,
+                                                   out _flagMacroRemovePCL,
+                                                   out _flagMainFormPCL,
+                                                   out _flagRearFormPCL,
+                                                   out _flagRearBPlatePCL,
+                                                   out _flagPrintDescTextPCL);
 
             if (indxMethodTemp < (int)ToolFormSamplePCL.MacroMethod.Max)
                 _indxMethodPCL = (ToolFormSamplePCL.MacroMethod)indxMethodTemp;
@@ -999,38 +998,38 @@ namespace PCLParaphernalia
                 _indxMethodPCL = ToolFormSamplePCL.MacroMethod.CallBegin;
 
             ToolFormSamplePersist.LoadDataGeneral("PCLXL",
-                                                   ref _indxPaperTypePCLXL,
-                                                   ref _indxPaperSizePCLXL,
-                                                   ref _indxOrientationPCLXL,
-                                                   ref _indxPlexModePCLXL,
-                                                   ref _indxOrientRearPCLXL,
-                                                   ref indxMethodTemp,
-                                                   ref _testPageCountPCLXL,
-                                                   ref _flagMacroRemovePCLXL,
-                                                   ref _flagMainFormPCLXL,
-                                                   ref _flagRearFormPCLXL,
-                                                   ref _flagRearBPlatePCLXL,
-                                                   ref _flagPrintDescTextPCLXL);
+                                                   out _indxPaperTypePCLXL,
+                                                   out _indxPaperSizePCLXL,
+                                                   out _indxOrientationPCLXL,
+                                                   out _indxPlexModePCLXL,
+                                                   out _indxOrientRearPCLXL,
+                                                   out indxMethodTemp,
+                                                   out _testPageCountPCLXL,
+                                                   out _flagMacroRemovePCLXL,
+                                                   out _flagMainFormPCLXL,
+                                                   out _flagRearFormPCLXL,
+                                                   out _flagRearBPlatePCLXL,
+                                                   out _flagPrintDescTextPCLXL);
 
             if (indxMethodTemp < (int)ToolFormSamplePCLX.StreamMethod.Max)
                 _indxMethodPCLXL = (ToolFormSamplePCLX.StreamMethod)indxMethodTemp;
             else
                 _indxMethodPCLXL = ToolFormSamplePCLX.StreamMethod.ExecuteBegin;
 
-            ToolFormSamplePersist.LoadDataPCL(ref _flagMainOnPrnDiskPCL,
-                                               ref _flagRearOnPrnDiskPCL,
-                                               ref _formFileMainPCL,
-                                               ref _formFileRearPCL,
-                                               ref _prnDiskFileMainPCL,
-                                               ref _prnDiskFileRearPCL,
-                                               ref _macroIdMainPCL,
-                                               ref _macroIdRearPCL);
+            ToolFormSamplePersist.LoadDataPCL(out _flagMainOnPrnDiskPCL,
+                                               out _flagRearOnPrnDiskPCL,
+                                               out _formFileMainPCL,
+                                               out _formFileRearPCL,
+                                               out _prnDiskFileMainPCL,
+                                               out _prnDiskFileRearPCL,
+                                               out _macroIdMainPCL,
+                                               out _macroIdRearPCL);
 
-            ToolFormSamplePersist.LoadDataPCLXL(ref _formFileMainPCLXL,
-                                                 ref _formFileRearPCLXL,
-                                                 ref _formNameMainPCLXL,
-                                                 ref _formNameRearPCLXL,
-                                                 ref _flagGSPushPopPCLXL);
+            ToolFormSamplePersist.LoadDataPCLXL(out _formFileMainPCLXL,
+                                                 out _formFileRearPCLXL,
+                                                 out _formNameMainPCLXL,
+                                                 out _formNameRearPCLXL,
+                                                 out _flagGSPushPopPCLXL);
 
             //----------------------------------------------------------------//
 
@@ -1749,10 +1748,10 @@ namespace PCLParaphernalia
                 int netTimeoutSend = 0;
                 int netTimeoutReceive = 0;
 
-                TargetCore.MetricsLoadNetPrinter(ref netPrnAddress,
-                                                  ref netPrnPort,
-                                                  ref netTimeoutSend,
-                                                  ref netTimeoutReceive);
+                TargetCore.MetricsLoadNetPrinter(out netPrnAddress,
+                                                  out netPrnPort,
+                                                  out netTimeoutSend,
+                                                  out netTimeoutReceive);
 
                 btnGenerate.Content = "Generate & send test data to\r\n" + netPrnAddress + " : " + netPrnPort.ToString();
             }
@@ -1760,7 +1759,7 @@ namespace PCLParaphernalia
             {
                 string winPrintername = string.Empty;
 
-                TargetCore.MetricsLoadWinPrinter(ref winPrintername);
+                TargetCore.MetricsLoadWinPrinter(out winPrintername);
 
                 btnGenerate.Content = "Generate & send test data to printer\r\n" + winPrintername;
             }
@@ -2228,7 +2227,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show($"{side} macro Id value '{crntText}' is invalid.\r\nValid range is:\r\n\t{ minVal} <= value <= { maxVal}\r\nor\n\r\t<null> to represent <not applicable>.",
+                    MessageBox.Show($"{side} macro Id value '{crntText}' is invalid.\r\nValid range is:\r\n\t{minVal} <= value <= {maxVal}\r\nor\n\r\t<null> to represent <not applicable>.",
                                     "PCL Macro Identifier Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);

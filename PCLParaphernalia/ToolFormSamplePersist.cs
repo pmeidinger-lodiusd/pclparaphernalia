@@ -19,8 +19,6 @@ namespace PCLParaphernalia
         private const string _mainKey = MainForm._regMainKey;
         private const string _subKeyTools = "Tools";
         private const string _subKeyToolsFormSample = _subKeyTools + @"\FormSample";
-        private const string _subKeyPCL5 = "PCL5";
-        private const string _subKeyPCL6 = "PCL6";
         private const string _subKeyPCL = "PCL";
         private const string _subKeyPCLXL = "PCLXL";
         private const string _nameCaptureFile = "CaptureFile";
@@ -148,7 +146,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataCommon(ref int indxPDL)
+        public static void LoadDataCommon(out int indxPDL)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -170,18 +168,18 @@ namespace PCLParaphernalia
 
         public static void LoadDataGeneral(
             string pdlName,
-            ref int indxPaperType,
-            ref int indxPaperSize,
-            ref int indxOrientation,
-            ref int indxPlexMode,
-            ref int indxOrientRear,
-            ref int indxMethod,
-            ref int testPageCount,
-            ref bool flagMacroRemove,
-            ref bool flagMainForm,
-            ref bool flagRearForm,
-            ref bool flagRearBPlate,
-            ref bool flagPrintDescText)
+            out int indxPaperType,
+            out int indxPaperSize,
+            out int indxOrientation,
+            out int indxPlexMode,
+            out int indxOrientRear,
+            out int indxMethod,
+            out int testPageCount,
+            out bool flagMacroRemove,
+            out bool flagMainForm,
+            out bool flagRearForm,
+            out bool flagRearBPlate,
+            out bool flagPrintDescText)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -231,14 +229,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataPCL(ref bool flagMainOnPrnDisk,
-                                        ref bool flagRearOnPrnDisk,
-                                        ref string formFileMain,
-                                        ref string formFileRear,
-                                        ref string prnDiskFileMain,
-                                        ref string prnDiskFileRear,
-                                        ref int macroIdMain,
-                                        ref int macroIdRear)
+        public static void LoadDataPCL(out bool flagMainOnPrnDisk,
+                                       out bool flagRearOnPrnDisk,
+                                       out string formFileMain,
+                                       out string formFileRear,
+                                       out string prnDiskFileMain,
+                                       out string prnDiskFileRear,
+                                       out int macroIdMain,
+                                       out int macroIdRear)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -279,11 +277,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataPCLXL(ref string formFileMain,
-                                          ref string formFileRear,
-                                          ref string formNameMain,
-                                          ref string formNameRear,
-                                          ref bool flagGSPushPop)
+        public static void LoadDataPCLXL(out string formFileMain,
+                                         out string formFileRear,
+                                         out string formNameMain,
+                                         out string formNameRear,
+                                         out bool flagGSPushPop)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {

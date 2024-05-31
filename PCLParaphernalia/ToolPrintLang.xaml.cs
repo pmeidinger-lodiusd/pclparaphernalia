@@ -173,9 +173,9 @@ namespace PCLParaphernalia
             ReportCore.RptChkMarks rptChkMarks = ReportCore.RptChkMarks.NA;
 
             TargetCore.MetricsReturnFileRpt(ToolCommonData.ToolIds.PrintLang,
-                                             ref rptFileFmt,
-                                             ref rptChkMarks,
-                                             ref flagOptRptWrap);
+                                             out rptFileFmt,
+                                             out rptChkMarks,
+                                             out flagOptRptWrap);
 
             ToolPrintLangReport.Generate(_subsetTypes[_indxType],
                                           rptFileFmt,
@@ -1188,31 +1188,29 @@ namespace PCLParaphernalia
         {
             int tmpInt = 0;
 
-            ToolPrintLangPersist.LoadDataCommon(ref _indxType,
-                                                 ref _saveFilename);
+            ToolPrintLangPersist.LoadDataCommon(out _indxType, out _saveFilename);
 
-            ToolPrintLangPersist.LoadDataPCL(ref _flagPCLSeqControl,
-                                              ref _flagPCLSeqSimple,
-                                              ref _flagPCLSeqComplex,
-                                              ref _flagPCLOptObsolete,
-                                              ref _flagPCLOptDiscrete);
+            ToolPrintLangPersist.LoadDataPCL(out _flagPCLSeqControl,
+                                              out _flagPCLSeqSimple,
+                                              out _flagPCLSeqComplex,
+                                              out _flagPCLOptObsolete,
+                                              out _flagPCLOptDiscrete);
 
-            ToolPrintLangPersist.LoadDataPCLXL(ref _flagPCLXLTagDataType,
-                                                ref _flagPCLXLTagAttribute,
-                                                ref _flagPCLXLTagOperator,
-                                                ref _flagPCLXLTagAttrDef,
-                                                ref _flagPCLXLTagEmbedDataLen,
-                                                ref _flagPCLXLTagWhitespace,
-                                                ref _flagPCLXLOptReserved);
+            ToolPrintLangPersist.LoadDataPCLXL(out _flagPCLXLTagDataType,
+                                                out _flagPCLXLTagAttribute,
+                                                out _flagPCLXLTagOperator,
+                                                out _flagPCLXLTagAttrDef,
+                                                out _flagPCLXLTagEmbedDataLen,
+                                                out _flagPCLXLTagWhitespace,
+                                                out _flagPCLXLOptReserved);
 
-            ToolPrintLangPersist.LoadDataPML(ref _flagPMLTagDataType,
-                                              ref _flagPMLTagAction,
-                                              ref _flagPMLTagOutcome);
+            ToolPrintLangPersist.LoadDataPML(out _flagPMLTagDataType,
+                                              out _flagPMLTagAction,
+                                              out _flagPMLTagOutcome);
 
-            ToolPrintLangPersist.LoadDataFonts(ref _flagSymSetList);
+            ToolPrintLangPersist.LoadDataFonts(out _flagSymSetList);
 
-            ToolPrintLangPersist.LoadDataSymSets(ref _flagSymSetMap,
-                                                  ref tmpInt);
+            ToolPrintLangPersist.LoadDataSymSets(out _flagSymSetMap, out tmpInt);
 
             //----------------------------------------------------------------//
 

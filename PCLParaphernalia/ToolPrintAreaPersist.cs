@@ -122,7 +122,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataCommon(ref int indxPDL)
+        public static void LoadDataCommon(out int indxPDL)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -143,23 +143,21 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void LoadDataPCL(string pdlName,
-                                       ref int indxOrientation,
-                                       ref int indxPaperSize,
-                                       ref int indxPaperType,
-                                       ref int indxPlexMode,
-                                       ref int indxPJLCommand,
-                                       ref bool flagFormAsMacro,
-                                       ref bool flagCustomUseMetric,
-                                       ref ushort customShortEdge,
-                                       ref ushort customLongEdge)
+                                       out int indxOrientation,
+                                       out int indxPaperSize,
+                                       out int indxPaperType,
+                                       out int indxPlexMode,
+                                       out int indxPJLCommand,
+                                       out bool flagFormAsMacro,
+                                       out bool flagCustomUseMetric,
+                                       out ushort customShortEdge,
+                                       out ushort customLongEdge)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
                 string key = _subKeyToolsPrintArea + "\\" + pdlName;
 
                 int tmpInt;
-
-                byte[] buffer = { 0x00 };
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {

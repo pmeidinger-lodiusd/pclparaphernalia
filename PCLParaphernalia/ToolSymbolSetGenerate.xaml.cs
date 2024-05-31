@@ -308,9 +308,9 @@ namespace PCLParaphernalia
 
             TargetCore.MetricsReturnFileRpt(
                 ToolCommonData.ToolIds.SymbolSetGenerate,
-                ref rptFileFmt,
-                ref rptChkMarks,    // not used by this tool //
-                ref flagOptRptWrap);
+                out rptFileFmt,
+                out rptChkMarks,    // not used by this tool //
+                out flagOptRptWrap);
 
             ToolSymbolSetGenReport.Generate(rptFileFmt,
                                              _targetSymSetFile,
@@ -1674,22 +1674,22 @@ namespace PCLParaphernalia
         private void MetricsLoad()
         {
             ToolSymbolSetGenPersist.LoadDataDonor(
-                ref _indxDonorSymSetSubset,
-                ref _flagDonorSymSetUserSet,
-                ref _flagDonorSymSetMapPCL,
-                ref _donorSymSetFile);
+                out _indxDonorSymSetSubset,
+                out _flagDonorSymSetUserSet,
+                out _flagDonorSymSetMapPCL,
+                out _donorSymSetFile);
 
             _donorSymSetFolder = Path.GetDirectoryName(_donorSymSetFile);
 
             ToolSymbolSetGenPersist.LoadDataTarget(
-                ref _flagMapHex,
-                ref _flagIgnoreC0,
-                ref _flagIgnoreC1,
-                ref _flagIndexUnicode,
-                ref _flagCharCollReqSpecific,
-                ref _targetCharCollReqUnicode,
-                ref _targetCharCollReqMSL,
-                ref _targetSymSetFolder);
+                out _flagMapHex,
+                out _flagIgnoreC0,
+                out _flagIgnoreC1,
+                out _flagIndexUnicode,
+                out _flagCharCollReqSpecific,
+                out _targetCharCollReqUnicode,
+                out _targetCharCollReqMSL,
+                out _targetSymSetFolder);
 
             if ((_indxDonorSymSetSubset < 0) || (_indxDonorSymSetSubset >= _ctMappedSymSets))
             {

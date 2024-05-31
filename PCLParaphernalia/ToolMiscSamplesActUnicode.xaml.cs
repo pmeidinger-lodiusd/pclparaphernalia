@@ -11,7 +11,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class ToolMiscSamples : Window
     {
         //--------------------------------------------------------------------//
@@ -305,19 +304,19 @@ namespace PCLParaphernalia
 
             ToolMiscSamplesPersist.LoadDataTypeUnicode(
                 "PCL",
-                ref _indxUnicodeFontPCL,
-                ref _unicodeFontVarPCL,
-                ref tmpInt,
-                ref _flagUnicodeFormAsMacroPCL);
+                out _indxUnicodeFontPCL,
+                out _unicodeFontVarPCL,
+                out tmpInt,
+                out _flagUnicodeFormAsMacroPCL);
 
             _unicodeUCS2PCL = (uint)tmpInt;
 
             ToolMiscSamplesPersist.LoadDataTypeUnicode(
                 "PCLXL",
-                ref _indxUnicodeFontPCLXL,
-                ref _unicodeFontVarPCLXL,
-                ref tmpInt,
-                ref _flagUnicodeFormAsMacroPCLXL);
+                out _indxUnicodeFontPCLXL,
+                out _unicodeFontVarPCLXL,
+                out tmpInt,
+                out _flagUnicodeFormAsMacroPCLXL);
 
             _unicodeUCS2PCLXL = (uint)tmpInt;
         }
@@ -447,7 +446,7 @@ namespace PCLParaphernalia
         // Set variant options relevant to selected font.                     //
         // Assume that this is a PresetTypeface or PresetFamilyMember type,   //
         // because this is all that we've added to the font selection subset. //
-        //                                                                    // 
+        //                                                                    //
         //--------------------------------------------------------------------//
 
         private void SetFontOptionsVariants(int indxFont, bool samePreset, ref PCLFonts.Variant fontVar)

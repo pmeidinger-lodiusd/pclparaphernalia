@@ -32,7 +32,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool CheckIPAddress(string ipString, ref IPAddress ipAddress)
+        public static bool CheckIPAddress(string ipString, out IPAddress ipAddress)
         {
             return IPAddress.TryParse(ipString, out ipAddress);
         }
@@ -110,7 +110,7 @@ namespace PCLParaphernalia
         {
             IPAddress ipAddress = new IPAddress(0x00);
 
-            if (!CheckIPAddress(ipString, ref ipAddress))
+            if (!CheckIPAddress(ipString, out ipAddress))
                 return;
 
             //------------------------------------------------------------//

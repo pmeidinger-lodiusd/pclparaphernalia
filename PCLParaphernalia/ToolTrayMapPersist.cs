@@ -54,8 +54,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataCapture(ToolCommonData.PrintLang crntPDL,
-                                            ref string captureFile)
+        public static void LoadDataCapture(ToolCommonData.PrintLang crntPDL, ref string captureFile)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -124,7 +123,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataCommon(ref int indxPDL)
+        public static void LoadDataCommon(out int indxPDL)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -144,7 +143,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataPCLOpt(ref bool flagFormAsMacro, ref int sheetCt)
+        public static void LoadDataPCLOpt(out bool flagFormAsMacro, out int sheetCt)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -152,18 +151,11 @@ namespace PCLParaphernalia
 
                 int tmpInt;
 
-                byte[] buffer = { 0x00 };
-
                 if (MainFormData.VersionChange)
                 {
                     bool update_2_8 = false;
 
-                    int vMaj = -1,
-                          vMin = -1,
-                          vBui = -1,
-                          vRev = -1;
-
-                    MainFormData.GetVersionData(false, ref vMaj, ref vMin, ref vBui, ref vRev);
+                    MainFormData.GetVersionData(false, out int vMaj, out int vMin, out _, out _);
 
                     if ((vMaj == 2) && (vMin < 8))
                         update_2_8 = true;
@@ -201,8 +193,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataPCLXLOpt(ref bool flagFormAsMacro,
-                                             ref int sheetCt)
+        public static void LoadDataPCLXLOpt(out bool flagFormAsMacro,
+                                             out int sheetCt)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -210,18 +202,11 @@ namespace PCLParaphernalia
 
                 int tmpInt;
 
-                byte[] buffer = { 0x00 };
-
                 if (MainFormData.VersionChange)
                 {
                     bool update_2_8 = false;
 
-                    int vMaj = -1,
-                          vMin = -1,
-                          vBui = -1,
-                          vRev = -1;
-
-                    MainFormData.GetVersionData(false, ref vMaj, ref vMin, ref vBui, ref vRev);
+                    MainFormData.GetVersionData(false, out int vMaj, out int vMin, out _, out _);
 
                     if ((vMaj == 2) && (vMin < 8))
                         update_2_8 = true;
@@ -261,12 +246,12 @@ namespace PCLParaphernalia
 
         public static void LoadDataSheetOpt(string pdlName,
                                              int sheetNo,
-                                             ref int indxPaperSize,
-                                             ref int indxPaperType,
-                                             ref int indxPaperTray,
-                                             ref int indxPlexMode,
-                                             ref int indxOrient_F,
-                                             ref int indxOrient_R)
+                                             out int indxPaperSize,
+                                             out int indxPaperType,
+                                             out int indxPaperTray,
+                                             out int indxPlexMode,
+                                             out int indxOrient_F,
+                                             out int indxOrient_R)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {

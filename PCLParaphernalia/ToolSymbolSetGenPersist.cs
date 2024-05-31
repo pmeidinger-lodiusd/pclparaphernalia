@@ -53,10 +53,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataDonor(ref int indxSymSet,
-                                          ref bool flagSymSetUserSet,
-                                          ref bool flagSymSetMapPCL,
-                                          ref string symSetFile)
+        public static void LoadDataDonor(out int indxSymSet,
+                                          out bool flagSymSetUserSet,
+                                          out bool flagSymSetMapPCL,
+                                          out string symSetFile)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -92,7 +92,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataRpt(ref int indxRptFileFmt)
+        public static void LoadDataRpt(out int indxRptFileFmt)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
@@ -112,14 +112,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void LoadDataTarget(ref bool flagMapHex,
-                                           ref bool flagIgnoreC0,
-                                           ref bool flagIgnoreC1,
-                                           ref bool flagIndexUnicode,
-                                           ref bool flagCharReqSpecific,
-                                           ref ulong charReqUnicode,
-                                           ref ulong charReqMSL,
-                                           ref string symSetFolder)
+        public static void LoadDataTarget(out bool flagMapHex,
+                                          out bool flagIgnoreC0,
+                                          out bool flagIgnoreC1,
+                                          out bool flagIndexUnicode,
+                                          out bool flagCharReqSpecific,
+                                          out ulong charReqUnicode,
+                                          out ulong charReqMSL,
+                                          out string symSetFolder)
         {
             using (var keyMain = Registry.CurrentUser.CreateSubKey(_mainKey))
             {
