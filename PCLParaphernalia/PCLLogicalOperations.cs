@@ -292,10 +292,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string ActInfix(int index)
-        {
-            return _rops[index].ActInfix;
-        }
+        public static string ActInfix(int index) => _rops[index].ActInfix;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -306,10 +303,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCount()
-        {
-            return _ropCount;
-        }
+        public static int GetCount() => _ropCount;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -324,10 +318,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetDescLong(int index)
-        {
-            return _rops[index].GetDescLong();
-        }
+        public static string GetDescLong(int index) => _rops[index].GetDescLong();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -341,10 +332,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetDescShort(int index)
-        {
-            return _rops[index].GetDescShort();
-        }
+        public static string GetDescShort(int index) => _rops[index].GetDescShort();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -356,9 +344,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short GetROPId(int index)
-        {
-            return _rops[index].GetROPId();
-        }
+        public static short GetROPId(int index) => _rops[index].GetROPId();
     }
 }

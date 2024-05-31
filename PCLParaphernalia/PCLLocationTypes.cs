@@ -45,10 +45,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCount()
-        {
-            return _locationTypeCount;
-        }
+        public static int GetCount() => _locationTypeCount;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -59,10 +56,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetIdPCL(int selection)
-        {
-            return _locationTypes[selection].GetIdPCL();
-        }
+        public static string GetIdPCL(int selection) => _locationTypes[selection].GetIdPCL();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -73,10 +67,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetName(int selection)
-        {
-            return _locationTypes[selection].GetName();
-        }
+        public static string GetName(int selection) => _locationTypes[selection].GetName();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -87,9 +78,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Type GetType(int selection)
-        {
-            return _locationTypes[selection].GetLocationType();
-        }
+        public static Type GetType(int selection) => _locationTypes[selection].GetLocationType();
     }
 }

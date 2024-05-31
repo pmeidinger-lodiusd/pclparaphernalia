@@ -110,9 +110,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public short GetROPId()
-        {
-            return _opId;
-        }
+        public short GetROPId() => _opId;
     }
 }

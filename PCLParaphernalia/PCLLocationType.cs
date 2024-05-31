@@ -40,10 +40,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string GetIdPCL()
-        {
-            return _locationIdPCL;
-        }
+        public string GetIdPCL() => _locationIdPCL;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -54,10 +51,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string GetName()
-        {
-            return _locationName;
-        }
+        public string GetName() => _locationName;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -68,9 +62,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLLocationTypes.Type GetLocationType()
-        {
-            return _locationType;
-        }
+        public PCLLocationTypes.Type GetLocationType() => _locationType;
     }
 }
