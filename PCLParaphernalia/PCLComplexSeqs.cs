@@ -32,8 +32,6 @@ namespace PCLParaphernalia
 
         private static PCLComplexSeq _seqUnknown;
 
-        private static int _seqsCount;
-
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L C o m p l e x S e q s                                        //
@@ -178,7 +176,6 @@ namespace PCLParaphernalia
             bool seqObsolete;
             bool valGeneric;
             bool valVarious;
-            //      Boolean valPresent;
 
             bool displaySeq;
 
@@ -224,16 +221,13 @@ namespace PCLParaphernalia
 
         public static void DisplayStatsCounts(DataTable table, bool incUsedSeqsOnly, bool excUnusedObsSeqs)
         {
-            bool displaySeq,
-                    hddrWritten;
-
             DataRow row;
 
-            hddrWritten = false;
+            var hddrWritten = false;
 
             //----------------------------------------------------------------//
 
-            displaySeq = true;
+            var displaySeq = true;
 
             int count = _seqUnknown.StatsCtTotal;
             if (count == 0)
@@ -348,10 +342,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetSeqCount()
-        {
-            return _seqsCount;
-        }
+        public static int GetSeqCount() => _seqs.Count;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -7783,8 +7774,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.OvlAct.PageMark,
                                    PrnParseConstants.SeqGrp.Unknown,
                                    "Bar Code Label"));
-
-            _seqsCount = _seqs.Count;
         }
 
         //--------------------------------------------------------------------//

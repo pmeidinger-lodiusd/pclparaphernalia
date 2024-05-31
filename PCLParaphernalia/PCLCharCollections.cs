@@ -36,10 +36,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static int _collsCount;
-
-        private static readonly SortedList<int, PCLCharCollection> _collsList =
-              new SortedList<int, PCLCharCollection>();
+        private static readonly SortedList<int, PCLCharCollection> _collsList = new SortedList<int, PCLCharCollection>();
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -61,10 +58,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCollsCount()
-        {
-            return _collsCount;
-        }
+        public static int GetCollsCount() => _collsList.Count;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -75,10 +69,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetBitNo(int index)
-        {
-            return _collsList[index].GetBitNo();
-        }
+        public static int GetBitNo(int index) => _collsList[index].GetBitNo();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -89,10 +80,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static BitType GetBitType(int index)
-        {
-            return _collsList[index].GetBitType();
-        }
+        public static BitType GetBitType(int index) => _collsList[index].GetBitType();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -103,10 +91,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetDescMSL(int index)
-        {
-            return _collsList[index].GetDescMSL();
-        }
+        public static string GetDescMSL(int index) => _collsList[index].GetDescMSL();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -118,10 +103,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetDescUnicode(int index)
-        {
-            return _collsList[index].GetDescUnicode();
-        }
+        public static string GetDescUnicode(int index) => _collsList[index].GetDescUnicode();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -132,10 +114,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetindexForKey(int bitNo)
-        {
-            return _collsList.IndexOfKey(bitNo);
-        }
+        public static int GetindexForKey(int bitNo) => _collsList.IndexOfKey(bitNo);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -148,7 +127,7 @@ namespace PCLParaphernalia
 
         private static void PopulateTable()
         {
-            int bitNo = 0;                                                  //  0 //
+            int bitNo = 0;                                              //  0 //
             _collsList.Add(
                 bitNo,
                 new PCLCharCollection(
@@ -723,8 +702,6 @@ namespace PCLParaphernalia
                     bitNo,
                     "Bit 63: Latin: Standard",
                     "Bit 63: Miscellaneous: reserved"));
-
-            _collsCount = _collsList.Count;
         }
     }
 }

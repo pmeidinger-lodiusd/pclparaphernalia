@@ -63,10 +63,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLCharCollections.BitType GetBitType()
-        {
-            return _bitType;
-        }
+        public PCLCharCollections.BitType GetBitType() => _bitType;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -77,10 +74,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string GetDescMSL()
-        {
-            return _descMSL;
-        }
+        public string GetDescMSL() => _descMSL;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -92,9 +86,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string GetDescUnicode()
-        {
-            return _descUnicode;
-        }
+        public string GetDescUnicode() => _descUnicode;
     }
 }

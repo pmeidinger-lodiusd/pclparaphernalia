@@ -22,8 +22,6 @@ namespace PCLParaphernalia
 
         private static HPGL2ControlCode _tagUnknown;
 
-        private static int _tagCount;
-
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // H P G L 2 C o n t r o l C o d e s                                  //
@@ -362,8 +360,6 @@ namespace PCLParaphernalia
                                       true,
                                       "<SP>",
                                       "Space"));
-
-            _tagCount = _tags.Count;
         }
 
         //--------------------------------------------------------------------//

@@ -22,8 +22,6 @@ namespace PCLParaphernalia
 
         private static PCLControlCode _tagUnknown;
 
-        private static int _tagsCount;
-
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L C o n t r o l C o d e s                                      //
@@ -209,10 +207,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetTagCount()
-        {
-            return _tagsCount;
-        }
+        public static int GetTagCount() => _tags.Count;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -303,8 +298,6 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eOvlAct.None,
                                    "Escape"));
             */
-
-            _tagsCount = _tags.Count;
         }
 
         //--------------------------------------------------------------------//

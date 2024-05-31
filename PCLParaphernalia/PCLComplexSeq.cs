@@ -24,8 +24,6 @@
         private int _statsCtParent;
         private int _statsCtChild;
 
-        private readonly PrnParseConstants.SeqGrp _seqGrp;
-
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L C o m p l e x S e q                                          //
@@ -68,7 +66,6 @@
             FlagDisplayHexVal = flagDisplayHexVal;
 
             MakeOvlAct = makeOvlAct;
-            _seqGrp = seqGrp;
 
             FlagValGeneric = value == PCLComplexSeqs._valueGeneric;
 

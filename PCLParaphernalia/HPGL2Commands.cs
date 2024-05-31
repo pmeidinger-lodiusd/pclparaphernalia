@@ -22,8 +22,6 @@ namespace PCLParaphernalia
 
         private static HPGL2Command _cmdUnknown;
 
-        private static int _cmdsCount;
-
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // H P G L 2 C o m m a n d s                                          //
@@ -246,10 +244,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetSeqCount()
-        {
-            return _cmdsCount;
-        }
+        public static int GetSeqCount() => _cmds.Count;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -273,8 +268,7 @@ namespace PCLParaphernalia
             const bool flagSymbolMode = true;
 
             string command = "??";                                      // ?? //
-            _cmdUnknown =
-                new HPGL2Command(command, "*** Unknown command ***");
+            _cmdUnknown = new HPGL2Command(command, "*** Unknown command ***");
 
             command = "AA";                                             // AA //
             _cmds.Add(command, new HPGL2Command(command, "Arc Absolute"));
@@ -586,8 +580,6 @@ namespace PCLParaphernalia
 
             command = "WU";                                             // WU //
             _cmds.Add(command, new HPGL2Command(command, "Pen Width Unit Selection"));
-
-            _cmdsCount = _cmds.Count;
         }
 
         //--------------------------------------------------------------------//
