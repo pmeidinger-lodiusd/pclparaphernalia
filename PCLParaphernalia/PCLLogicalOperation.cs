@@ -61,16 +61,7 @@
 
         public string GetDescLong()
         {
-            string prefix;
-
-            if (_opId < 10)
-                prefix = "  ";
-            else if (_opId < 100)
-                prefix = " ";
-            else
-                prefix = string.Empty;
-
-            return prefix + _opId.ToString() +
+            return _opId.ToString().PadLeft(3) +
                    ": " + _actPostfix.PadRight(_maxPFLen) +
                    " = " + ActInfix;
         }
@@ -88,16 +79,7 @@
 
         public string GetDescShort()
         {
-            string prefix;
-
-            if (_opId < 10)
-                prefix = "  ";
-            else if (_opId < 100)
-                prefix = " ";
-            else
-                prefix = string.Empty;
-
-            return prefix + _opId.ToString() +
+            return _opId.ToString().PadLeft(3) +
                    ": " + _actPostfix;
         }
 
