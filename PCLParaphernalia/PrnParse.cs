@@ -34,13 +34,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Stream _ipStream = null;
-        private Stream _opStream = null;
-        private Stream _subStream = null;
+        private Stream _ipStream;
+        private Stream _opStream;
+        private Stream _subStream;
 
-        private BinaryReader _binReader = null;
-        private BinaryWriter _binWriter = null;
-        private BinaryWriter _subWriter = null;
+        private BinaryReader _binReader;
+        private BinaryWriter _binWriter;
+        private BinaryWriter _subWriter;
 
         private readonly ParseType _parseType;
         private PrnParseOptions _options;
@@ -49,7 +49,7 @@ namespace PCLParaphernalia
         private ToolCommonData.PrintLang _crntPDL;
         //   private Int32 _perCentMax;
 
-        private long _fileSize = 0;
+        private long _fileSize;
 
         private readonly int _analysisLevel;
 
