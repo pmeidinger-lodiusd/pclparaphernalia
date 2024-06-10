@@ -200,8 +200,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            foreach (KeyValuePair<string, PJLCommand> kvp
-                in _cmds)
+            foreach (KeyValuePair<string, PJLCommand> kvp in _cmds)
             {
                 displaySeq = true;
 
