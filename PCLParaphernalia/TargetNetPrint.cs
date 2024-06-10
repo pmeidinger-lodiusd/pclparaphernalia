@@ -24,21 +24,6 @@ namespace PCLParaphernalia
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
-        // c h e c k I P A d d r e s s                                        //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Check that the provided string represents a valid (ipv4 or ipv6)   //
-        // address.                                                           //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public static bool CheckIPAddress(string ipString, out IPAddress ipAddress)
-        {
-            return IPAddress.TryParse(ipString, out ipAddress);
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
         // c l o s e R e s p o n s e C o n n e c t i o n                      //
         //--------------------------------------------------------------------//
         //                                                                    //
@@ -70,18 +55,18 @@ namespace PCLParaphernalia
             }
 
             //----------------------------------------------------------------//
-            catch (SocketException e)
+            catch (SocketException ex)
             {
-                MessageBox.Show($"SocketException:\r\n\r\nMessage: {e.Message}\r\n\r\nErrorCode: {e.ErrorCode}\r\n\r\nSocketErrorCode: {e.SocketErrorCode}",
+                MessageBox.Show($"SocketException:\n\nMessage: {ex.Message}\n\nErrorCode: {ex.ErrorCode}\n\nSocketErrorCode: {ex.SocketErrorCode}.",
                                 "Printer Output",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Exclamation);
 
                 OK = false;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                MessageBox.Show("Exception:\r\n\r\n" + e.Message,
+                MessageBox.Show($"Exception:\n\n{ex.Message}",
                                 "Printer output",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Exclamation);
@@ -108,9 +93,7 @@ namespace PCLParaphernalia
                                      int timeoutReceive,
                                      bool keepConnect)
         {
-            IPAddress ipAddress = new IPAddress(0x00);
-
-            if (!CheckIPAddress(ipString, out ipAddress))
+            if (!IPAddress.TryParse(ipString, out var ipAddress))
                 return;
 
             //------------------------------------------------------------//
@@ -121,18 +104,16 @@ namespace PCLParaphernalia
 
             try
             {
+                int readLen;
+                int sockRes;
+
                 //--------------------------------------------------------//
                 //                                                        //
                 // Open and connect socket.                               //
                 //                                                        //
                 //--------------------------------------------------------//
 
-                IPEndPoint ipEndPoint;
-
-                int readLen;
-                int sockRes;
-
-                ipEndPoint = new IPEndPoint(ipAddress, port);
+                var ipEndPoint = new IPEndPoint(ipAddress, port);
 
                 _socket = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp)
                 {
@@ -177,16 +158,16 @@ namespace PCLParaphernalia
             }
 
             //------------------------------------------------------------//
-            catch (SocketException e)
+            catch (SocketException ex)
             {
-                MessageBox.Show($"SocketException:\r\n\r\nMessage: {e.Message}\r\n\r\nErrorCode: {e.ErrorCode}\r\n\r\nSocketErrorCode: {e.SocketErrorCode}",
+                MessageBox.Show($"SocketException:\n\nMessage: {ex.Message}\n\nErrorCode: {ex.ErrorCode}\n\nSocketErrorCode: {ex.SocketErrorCode}.",
                                     "Printer Output",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Exclamation);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                MessageBox.Show("Exception:\r\n" + e.Message,
+                MessageBox.Show($"Exception:\n\n{ex.Message}",
                                 "Printer Output",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Exclamation);

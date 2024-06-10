@@ -3,6 +3,7 @@ using System;
 using System.Data;
 using System.IO;
 using System.Windows;
+using System.Windows.Navigation;
 
 namespace PCLParaphernalia
 {
@@ -75,8 +76,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParse(ParseType parseType,
-                        int analysisLevel)
+        public PrnParse(ParseType parseType, int analysisLevel)
         {
             _parseType = parseType;
 
@@ -498,8 +498,7 @@ namespace PCLParaphernalia
 
                         if (_linkData.IsContinuation())
                         {
-                            if (_linkData.GetContType() ==
-                                PrnParseConstants.ContType.Abort)
+                            if (_linkData.GetContType() == PrnParseConstants.ContType.Abort)
                             {
                                 endReached = true;
 
@@ -722,8 +721,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         "Start Language = PCLXL requested");
 
-                    if (indxXLBinding ==
-                        PrnParseConstants.PCLXLBinding.Unknown)
+                    if (indxXLBinding == PrnParseConstants.PCLXLBinding.Unknown)
                     {
                         PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.Type.MsgComment,
@@ -734,8 +732,7 @@ namespace PCLParaphernalia
                             string.Empty,
                             "Stream Header not yet read");
                     }
-                    else if (indxXLBinding ==
-                        PrnParseConstants.PCLXLBinding.BinaryLSFirst)
+                    else if (indxXLBinding == PrnParseConstants.PCLXLBinding.BinaryLSFirst)
                     {
                         PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.Type.MsgComment,
@@ -744,11 +741,9 @@ namespace PCLParaphernalia
                             string.Empty,
                             "Comment",
                             string.Empty,
-                            "Stream Header assumed: " +
-                            "binary low-byte first");
+                            "Stream Header assumed: binary low-byte first");
                     }
-                    else if (indxXLBinding ==
-                        PrnParseConstants.PCLXLBinding.BinaryMSFirst)
+                    else if (indxXLBinding == PrnParseConstants.PCLXLBinding.BinaryMSFirst)
                     {
                         PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.Type.MsgComment,
@@ -757,8 +752,7 @@ namespace PCLParaphernalia
                             string.Empty,
                             "Comment",
                             string.Empty,
-                            "Stream Header assumed: " +
-                            "binary high-byte first");
+                            "Stream Header assumed: binary high-byte first");
                     }
                 }
                 else if (_crntPDL == ToolCommonData.PrintLang.HPGL2)
@@ -815,9 +809,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         "Comment",
                         string.Empty,
-                        "Start Offset   = " + offsetStart +
-                        " (0x" + offsetStart.ToString("X8") +
-                        ") requested");
+                        $"Start Offset   = {offsetStart} (0x{offsetStart:X8}) requested");
                 }
 
                 if (offsetEnd != -1)
@@ -829,9 +821,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         "Comment",
                         string.Empty,
-                        "End   Offset   = " + offsetEnd +
-                        " (0x" + offsetEnd.ToString("X8") +
-                        ") requested");
+                        $"End   Offset   = {offsetEnd} (0x{offsetEnd:X8}) requested");
                 }
             }
 
@@ -868,136 +858,130 @@ namespace PCLParaphernalia
                                         PrnParseOptions options,
                                         DataTable table)
         {
-            bool OK = true;
             _options = options;
             _table = table;
             _prnFilename = prnFilename;
 
             _flagDiagFileAccess = _options.FlagGenDiagFileAccess;
 
-            bool ipOpen = PrnFileOpen(prnFilename, ref _fileSize);
-            if (!ipOpen)
-            {
-                OK = false;
-            }
+            if (!PrnFileOpen(prnFilename, ref _fileSize))
+                return false;
+
+            string typeText;
+            string detailTextA;
+
+            if (type == PCLXLOperators.EmbedDataType.PassThrough)
+                typeText = "PCL PassThrough";
+            else if (type == PCLXLOperators.EmbedDataType.Stream)
+                typeText = "User-Defined Stream";
+            else if (type == PCLXLOperators.EmbedDataType.FontHeader)
+                typeText = "Font Header";
+            else if (type == PCLXLOperators.EmbedDataType.FontChar)
+                typeText = "Font Character";
             else
+                typeText = "unknown entity";
+
+            detailTextA = $"Embedding level = {_analysisLevel}; size = {_fileSize} bytes";
+
+            if (type == PCLXLOperators.EmbedDataType.FontHeader)
             {
-                string typeText;
-                string detailTextA;
-
-                if (type == PCLXLOperators.EmbedDataType.PassThrough)
-                    typeText = "PCL PassThrough";
-                else if (type == PCLXLOperators.EmbedDataType.Stream)
-                    typeText = "User-Defined Stream";
-                else if (type == PCLXLOperators.EmbedDataType.FontHeader)
-                    typeText = "Font Header";
-                else if (type == PCLXLOperators.EmbedDataType.FontChar)
-                    typeText = "Font Character";
-                else
-                    typeText = "unknown entity";
-
-                detailTextA = "Embedding level = " + _analysisLevel +
-                              "; size = " + _fileSize + " bytes";
-
-                if (type == PCLXLOperators.EmbedDataType.FontHeader)
-                {
-                    _linkData.SetBacktrack(  // not really Backtrack but works!
-                        PrnParseConstants.ContType.PCLXLFontHddr,
-                        (int)_fileSize);
-                }
-                else if (type == PCLXLOperators.EmbedDataType.FontChar)
-                {
-                    _linkData.SetBacktrack(  // not really Backtrack but works!
-                        PrnParseConstants.ContType.PCLXLFontChar,
-                        (int)_fileSize);
-                }
-
-                //------------------------------------------------------------//
-
-                PrnParseCommon.AddTextRow(
-                    PrnParseRowTypes.Type.MsgComment,
-                    _table,
-                    PrnParseConstants.OvlShow.None,
-                    string.Empty,
-                    string.Empty,
-                    string.Empty,
-                    string.Empty);
-
-                PrnParseCommon.AddTextRow(
-                    PrnParseRowTypes.Type.MsgComment,
-                    _table,
-                    PrnParseConstants.OvlShow.None,
-                    string.Empty,
-                    ">>>>>>>>>>>>>>>>>>>>",
-                    string.Empty,
-                    ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-
-                PrnParseCommon.AddTextRow(
-                    PrnParseRowTypes.Type.MsgComment,
-                    _table,
-                    PrnParseConstants.OvlShow.None,
-                    string.Empty,
-                    "Comment",
-                    string.Empty,
-                    "Start analysis of embedded " + typeText);
-
-                PrnParseCommon.AddTextRow(
-                    PrnParseRowTypes.Type.MsgComment,
-                    _table,
-                    PrnParseConstants.OvlShow.None,
-                    string.Empty,
-                    "Comment",
-                    string.Empty,
-                    detailTextA);
-
-                //------------------------------------------------------------//
-
-                AnalyseAction(type);
-
-                //------------------------------------------------------------//
-
-                PrnParseCommon.AddTextRow(
-                    PrnParseRowTypes.Type.MsgComment,
-                    _table,
-                    PrnParseConstants.OvlShow.None,
-                    string.Empty,
-                    "Comment",
-                    string.Empty,
-                    "End analysis of embedded " + typeText);
-
-                PrnParseCommon.AddTextRow(
-                    PrnParseRowTypes.Type.MsgComment,
-                    _table,
-                    PrnParseConstants.OvlShow.None,
-                    string.Empty,
-                    "Comment",
-                    string.Empty,
-                    detailTextA);
-
-                PrnParseCommon.AddTextRow(
-                    PrnParseRowTypes.Type.MsgComment,
-                    _table,
-                    PrnParseConstants.OvlShow.None,
-                    string.Empty,
-                    "<<<<<<<<<<<<<<<<<<<<",
-                    string.Empty,
-                    "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-
-                PrnParseCommon.AddTextRow(
-                    PrnParseRowTypes.Type.MsgComment,
-                    _table,
-                    PrnParseConstants.OvlShow.None,
-                    string.Empty,
-                    string.Empty,
-                    string.Empty,
-                    string.Empty);
-
-                //------------------------------------------------------------//
-
-                PrnFileClose();
+                _linkData.SetBacktrack(  // not really Backtrack but works!
+                    PrnParseConstants.ContType.PCLXLFontHddr,
+                    (int)_fileSize);
+            }
+            else if (type == PCLXLOperators.EmbedDataType.FontChar)
+            {
+                _linkData.SetBacktrack(  // not really Backtrack but works!
+                    PrnParseConstants.ContType.PCLXLFontChar,
+                    (int)_fileSize);
             }
 
-            return OK;
+            //------------------------------------------------------------//
+
+            PrnParseCommon.AddTextRow(
+                PrnParseRowTypes.Type.MsgComment,
+                _table,
+                PrnParseConstants.OvlShow.None,
+                string.Empty,
+                string.Empty,
+                string.Empty,
+                string.Empty);
+
+            PrnParseCommon.AddTextRow(
+                PrnParseRowTypes.Type.MsgComment,
+                _table,
+                PrnParseConstants.OvlShow.None,
+                string.Empty,
+                ">>>>>>>>>>>>>>>>>>>>",
+                string.Empty,
+                ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+
+            PrnParseCommon.AddTextRow(
+                PrnParseRowTypes.Type.MsgComment,
+                _table,
+                PrnParseConstants.OvlShow.None,
+                string.Empty,
+                "Comment",
+                string.Empty,
+                "Start analysis of embedded " + typeText);
+
+            PrnParseCommon.AddTextRow(
+                PrnParseRowTypes.Type.MsgComment,
+                _table,
+                PrnParseConstants.OvlShow.None,
+                string.Empty,
+                "Comment",
+                string.Empty,
+                detailTextA);
+
+            //------------------------------------------------------------//
+
+            AnalyseAction(type);
+
+            //------------------------------------------------------------//
+
+            PrnParseCommon.AddTextRow(
+                PrnParseRowTypes.Type.MsgComment,
+                _table,
+                PrnParseConstants.OvlShow.None,
+                string.Empty,
+                "Comment",
+                string.Empty,
+                "End analysis of embedded " + typeText);
+
+            PrnParseCommon.AddTextRow(
+                PrnParseRowTypes.Type.MsgComment,
+                _table,
+                PrnParseConstants.OvlShow.None,
+                string.Empty,
+                "Comment",
+                string.Empty,
+                detailTextA);
+
+            PrnParseCommon.AddTextRow(
+                PrnParseRowTypes.Type.MsgComment,
+                _table,
+                PrnParseConstants.OvlShow.None,
+                string.Empty,
+                "<<<<<<<<<<<<<<<<<<<<",
+                string.Empty,
+                "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+
+            PrnParseCommon.AddTextRow(
+                PrnParseRowTypes.Type.MsgComment,
+                _table,
+                PrnParseConstants.OvlShow.None,
+                string.Empty,
+                string.Empty,
+                string.Empty,
+                string.Empty);
+
+            //------------------------------------------------------------//
+
+            PrnFileClose();
+            
+
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -1020,15 +1004,8 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                //    Random r = new Random ();
-                //    Int32 rInt = r.Next (0, 100);
-
-                _subFilename = Environment.GetEnvironmentVariable("TMP") +
-                               "\\" +
-                               DateTime.Now.ToString("yyyyMMdd_HHmmss_fff") +
-                               // "_" + rInt +
-                               "_" + _analysisLevel +
-                               ".tmp";
+                _subFilename = Path.Combine(Environment.GetEnvironmentVariable("TMP"),
+                                 $"{DateTime.Now:yyyyMMdd_HHmmss_fff}_{_analysisLevel}.tmp");
 
                 try
                 {
@@ -1054,7 +1031,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         _subFilename);
 
-                    MessageBox.Show($"IO Exception:\r\n{e.Message}\r\n\r\nCreating temporary file '{_subFilename}'.",
+                    MessageBox.Show($"IO Exception:\n\n{e.Message}\n\nCreating temporary file '{_subFilename}'.",
                                      "Embedded Data Store",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
@@ -1118,8 +1095,7 @@ namespace PCLParaphernalia
         {
             bool badSeq;
 
-            ToolCommonData.PrintLang crntPDL =
-                ToolCommonData.PrintLang.PCL;
+            var crntPDL = ToolCommonData.PrintLang.PCL;
 
             bool endReached = false;
 
@@ -1203,8 +1179,7 @@ namespace PCLParaphernalia
                     0,
                     -1);
 
-                PrnParse subParse = new PrnParse(_parseType,
-                                                  _analysisLevel + 1);
+                PrnParse subParse = new PrnParse(_parseType, _analysisLevel + 1);
 
                 subParse.AnalyseEmbeddedPCLXL(_subFilename,
                                                newPDL,
@@ -1217,7 +1192,7 @@ namespace PCLParaphernalia
                 }
                 catch (IOException e)
                 {
-                    MessageBox.Show($"IO Exception:\r\n{e.Message}\r\n\r\nDeleting temporary file '{_subFilename}'.",
+                    MessageBox.Show($"IO Exception:\n\n{e.Message}\n\nDeleting temporary file '{_subFilename}'.",
                                      "Embedded PCL XL Analysis",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
@@ -1265,52 +1240,47 @@ namespace PCLParaphernalia
                                        bool encapsulate,
                                        int macroId)
         {
-            bool OK = true;
             _options = options;
             _table = table;
 
-            bool ipOpen = PrnFileOpen(prnFilename, ref _fileSize);
-            if (!ipOpen)
-            {
-                OK = false;
-            }
+            if (!PrnFileOpen(prnFilename, ref _fileSize))
+                return false;
+
+            _linkData.MakeOvlXL = false;
+            _linkData.MakeOvlEncapsulate = encapsulate;
+
+            _linkData.FileSize = _fileSize;
+
+            OvlFileOpen(false, ref ovlFilename);
+
+            if (encapsulate)
+                _linkData.MakeOvlMacroId = macroId;
             else
+                _linkData.MakeOvlMacroId = -1;
+
+            PrnParseMakeOvl.InsertHeaderPCL(_parsePCL,
+                                                _table,
+                                                _binWriter,
+                                                encapsulate,
+                                                restoreCursor,
+                                                macroId);
+
+            AnalyseAction(PCLXLOperators.EmbedDataType.None);
+
+            if (_linkData.MakeOvlAct != PrnParseConstants.OvlAct.Terminate)
             {
-                _linkData.MakeOvlXL = false;
-                _linkData.MakeOvlEncapsulate = encapsulate;
-
-                _linkData.FileSize = _fileSize;
-
-                OvlFileOpen(false, ref ovlFilename);
-
-                if (encapsulate)
-                    _linkData.MakeOvlMacroId = macroId;
-                else
-                    _linkData.MakeOvlMacroId = -1;
-
-                PrnParseMakeOvl.InsertHeaderPCL(_parsePCL,
-                                                 _table,
-                                                 _binWriter,
-                                                 encapsulate,
-                                                 restoreCursor,
-                                                 macroId);
-
-                AnalyseAction(PCLXLOperators.EmbedDataType.None);
-
-                if (_linkData.MakeOvlAct != PrnParseConstants.OvlAct.Terminate)
-                {
-                    PrnParseMakeOvl.InsertTrailerPCL(_parsePCL,
-                                                      _table,
-                                                      _binWriter,
-                                                      encapsulate,
-                                                      restoreCursor);
-                }
-
-                PrnFileClose();
-                OvlFileClose();
+                PrnParseMakeOvl.InsertTrailerPCL(_parsePCL,
+                                                    _table,
+                                                    _binWriter,
+                                                    encapsulate,
+                                                    restoreCursor);
             }
 
-            return OK;
+            PrnFileClose();
+            OvlFileClose();
+            
+
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -1330,50 +1300,45 @@ namespace PCLParaphernalia
                                          bool encapsulate,
                                          string streamName)
         {
-            bool OK = true;
             _options = options;
             _table = table;
 
-            bool ipOpen = PrnFileOpen(prnFilename, ref _fileSize);
-            if (!ipOpen)
-            {
-                OK = false;
-            }
+            if (!PrnFileOpen(prnFilename, ref _fileSize))
+                return false;
+
+            _linkData.MakeOvlXL = true;
+            _linkData.MakeOvlEncapsulate = encapsulate;
+            _linkData.MakeOvlRestoreStateXL = restoreGS;
+
+            _linkData.FileSize = _fileSize;
+
+            OvlFileOpen(true, ref ovlFilename);
+
+            if (encapsulate)
+                _linkData.MakeOvlStreamName = streamName;
             else
+                _linkData.MakeOvlStreamName = string.Empty;
+
+            _parsePCLXL.MakeOverlayInsertHeader(_binWriter,
+                                                    encapsulate,
+                                                    streamName,
+                                                    _table);
+
+            AnalyseAction(PCLXLOperators.EmbedDataType.None);
+
+            if (_linkData.MakeOvlAct != PrnParseConstants.OvlAct.Terminate)
             {
-                _linkData.MakeOvlXL = true;
-                _linkData.MakeOvlEncapsulate = encapsulate;
-                _linkData.MakeOvlRestoreStateXL = restoreGS;
-
-                _linkData.FileSize = _fileSize;
-
-                OvlFileOpen(true, ref ovlFilename);
-
-                if (encapsulate)
-                    _linkData.MakeOvlStreamName = streamName;
-                else
-                    _linkData.MakeOvlStreamName = string.Empty;
-
-                _parsePCLXL.MakeOverlayInsertHeader(_binWriter,
-                                                     encapsulate,
-                                                     streamName,
-                                                     _table);
-
-                AnalyseAction(PCLXLOperators.EmbedDataType.None);
-
-                if (_linkData.MakeOvlAct != PrnParseConstants.OvlAct.Terminate)
-                {
-                    _parsePCLXL.MakeOverlayInsertTrailer(_binWriter,
-                                                          restoreGS,
-                                                          encapsulate,
-                                                          _table);
-                }
-
-                PrnFileClose();
-                OvlFileClose();
+                _parsePCLXL.MakeOverlayInsertTrailer(_binWriter,
+                                                        restoreGS,
+                                                        encapsulate,
+                                                        _table);
             }
 
-            return OK;
+            PrnFileClose();
+            OvlFileClose();
+            
+
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -1387,28 +1352,24 @@ namespace PCLParaphernalia
 
         public bool MakeOverlayScan(string prnFilename, PrnParseOptions options, ref ToolCommonData.PrintLang pdl)
         {
-            bool OK = true;
             _options = options;
 
-            bool ipOpen = PrnFileOpen(prnFilename, ref _fileSize);
-            if (!ipOpen)
+            if (!PrnFileOpen(prnFilename, ref _fileSize))
             {
-                OK = false;
-
                 pdl = ToolCommonData.PrintLang.Unknown;
-            }
-            else
-            {
-                _linkData.FileSize = _fileSize;
 
-                AnalyseAction(PCLXLOperators.EmbedDataType.None);
-
-                pdl = _crntPDL;
-
-                PrnFileClose();
+                return false;
             }
 
-            return OK;
+            _linkData.FileSize = _fileSize;
+
+            AnalyseAction(PCLXLOperators.EmbedDataType.None);
+
+            pdl = _crntPDL;
+
+            PrnFileClose();
+
+            return true;
         }
 
         //--------------------------------------------------------------------//
@@ -1460,13 +1421,8 @@ namespace PCLParaphernalia
 
         private void OvlFileOpen(bool makeOvlXL, ref string ovlFilename)
         {
-            SaveFileDialog saveDialog;
-
-            int ptr,
-                  len;
-
-            string saveDirectory,
-                   tmpFilename;
+            var saveDirectory = Path.GetDirectoryName(ovlFilename);
+            var tmpFilename = Path.GetFileName(ovlFilename);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1474,22 +1430,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ptr = ovlFilename.LastIndexOf("\\");
-
-            if (ptr <= 0)
-            {
-                saveDirectory = string.Empty;
-                tmpFilename = ovlFilename;
-            }
-            else
-            {
-                len = ovlFilename.Length;
-
-                saveDirectory = ovlFilename.Substring(0, ptr);
-                tmpFilename = ovlFilename.Substring(ptr + 1, len - ptr - 1);
-            }
-
-            saveDialog = new SaveFileDialog();
+            var saveDialog = new SaveFileDialog();
 
             if (makeOvlXL)
             {
@@ -1537,7 +1478,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     tmpFilename);
 
-                MessageBox.Show($"IO Exception:\r\n{e.Message}\r\n\r\nCreating temporary file '{tmpFilename}'.",
+                MessageBox.Show($"IO Exception:\n\n{e.Message}\n\nCreating temporary file '{tmpFilename}'.",
                                  "Open Overlay File",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
@@ -1591,9 +1532,9 @@ namespace PCLParaphernalia
             {
                 _ipStream.Close();
             }
-            catch (IOException e)
+            catch (IOException ex)
             {
-                MessageBox.Show($"IO Exception:\r\n{e.Message}\r\n\r\nClosing file.",
+                MessageBox.Show($"IO Exception:\n\n{ex.Message}\n\nClosing file.",
                                  "Input Stream/File Close",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
@@ -1656,9 +1597,9 @@ namespace PCLParaphernalia
             {
                 _ipStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.None);
             }
-            catch (IOException e)
+            catch (IOException ex)
             {
-                MessageBox.Show($"IO Exception:\r\n{e.Message}\r\n\r\nOpening print file '" + fileName + "'",
+                MessageBox.Show($"IO Exception:\r\n{ex.Message}\n\nOpening print file '{fileName}'",
                                 "Print File Selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);

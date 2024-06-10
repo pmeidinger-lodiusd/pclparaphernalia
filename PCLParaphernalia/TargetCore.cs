@@ -49,8 +49,8 @@ namespace PCLParaphernalia
         private static string _crntFilename;
         private static string _saveFilename;
 
-        private static Stream _opStream = null;
-        private static BinaryWriter _binWriter = null;
+        private static Stream _opStream;
+        private static BinaryWriter _binWriter;
 
         private static bool _flagOptRptWrap;
 
@@ -63,10 +63,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Target GetTargetType()
-        {
-            return _targetType;
-        }
+        public static Target GetTargetType() => _targetType;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -81,9 +78,8 @@ namespace PCLParaphernalia
 
         public static void InitialiseSettings()
         {
-            int temp = 0;
 
-            TargetPersist.LoadDataCommon(out temp);
+            TargetPersist.LoadDataCommon(out int temp);
 
             if (temp < (int)Target.Max)
                 _targetType = (Target)temp;
@@ -145,10 +141,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
             else if (crntToolId == ToolCommonData.ToolIds.MiscSamples)
             {
-                ToolMiscSamplesPersist.LoadDataCapture(
-                                         crntToolSubId,
-                                         crntPDL,
-                                         ref _saveFilename);
+                ToolMiscSamplesPersist.LoadDataCapture(crntToolSubId, crntPDL, ref _saveFilename);
             }
 
             //----------------------------------------------------------------//
@@ -469,31 +462,12 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                SaveFileDialog saveDialog;
+                var saveDirectory = Path.GetDirectoryName(_saveFilename);
+                _crntFilename = Path.GetFileName(_saveFilename);
 
-                int ptr,
-                      len;
-
-                string saveDirectory;
-
-                ptr = _saveFilename.LastIndexOf("\\");
-
-                if (ptr <= 0)
+                var saveDialog = new SaveFileDialog
                 {
-                    saveDirectory = string.Empty;
-                    _crntFilename = _saveFilename;
-                }
-                else
-                {
-                    len = _saveFilename.Length;
-
-                    saveDirectory = _saveFilename.Substring(0, ptr);
-                    _crntFilename = _saveFilename.Substring(ptr + 1, len - ptr - 1);
-                }
-
-                saveDialog = new SaveFileDialog
-                {
-                    Filter = "Print Files | *.prn",
+                    Filter = "Print Files|*.prn",
                     DefaultExt = "prn",
                     RestoreDirectory = true,
                     InitialDirectory = saveDirectory,
@@ -518,19 +492,16 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                _crntFilename = Environment.GetEnvironmentVariable("TMP") +
-                                "\\" +
-                                DateTime.Now.ToString("yyyyMMdd_HHmmss_fff") +
-                                ".dia";
+                _crntFilename = Path.Combine(Environment.GetEnvironmentVariable("TMP"),  $"{DateTime.Now:yyyyMMdd_HHmmss_fff}.dia");
             }
 
             try
             {
                 _opStream = File.Create(_crntFilename);
             }
-            catch (IOException e)
+            catch (IOException ex)
             {
-                MessageBox.Show($"IO Exception:\r\n{e.Message}\r\n\r\nCreating file '{_crntFilename}'.",
+                MessageBox.Show($"IO Exception:\n\n{ex.Message}\n\nCreating file '{_crntFilename}'.",
                                 "Target file",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
@@ -554,8 +525,7 @@ namespace PCLParaphernalia
 
         public static void RequestStreamWrite(bool keepNetConnect)
         {
-            if ((_targetType == Target.NetPrinter) &&
-                (_binWriter != null))
+            if ((_targetType == Target.NetPrinter) && (_binWriter != null))
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -563,15 +533,9 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bool OK;
-
-                IPAddress ipAddress = new IPAddress(0x00);
-
-                OK = TargetNetPrint.CheckIPAddress(_netPrinterAddress, out ipAddress);
-
-                if (!OK)
+                if (IPAddress.TryParse(_netPrinterAddress, out _))
                 {
-                    MessageBox.Show("Invalid address: " + _netPrinterAddress,
+                    MessageBox.Show($"Invalid address: {_netPrinterAddress}",
                                     "Printer IP Address",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Exclamation);
@@ -589,7 +553,7 @@ namespace PCLParaphernalia
                     //                                                    //
                     //----------------------------------------------------//
 
-                    BinaryReader binReader = new BinaryReader(_binWriter.BaseStream);
+                    var binReader = new BinaryReader(_binWriter.BaseStream);
 
                     TargetNetPrint.SendData(binReader,
                                             _netPrinterAddress,
@@ -601,8 +565,7 @@ namespace PCLParaphernalia
                     binReader.Close();
                 }
             }
-            else if ((_targetType == Target.WinPrinter) &&
-                     (_binWriter != null))
+            else if ((_targetType == Target.WinPrinter) && (_binWriter != null))
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -610,11 +573,9 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                BinaryReader binReader =
-                    new BinaryReader(_binWriter.BaseStream);
+                var binReader = new BinaryReader(_binWriter.BaseStream);
 
-                TargetWinPrint.SendData(binReader,
-                                         _winPrinterName);
+                TargetWinPrint.SendData(binReader, _winPrinterName);
 
                 binReader.Close();
             }
@@ -628,9 +589,9 @@ namespace PCLParaphernalia
                 {
                     File.Delete(_crntFilename);
                 }
-                catch (IOException e)
+                catch (IOException ex)
                 {
-                    MessageBox.Show($"IO Exception:\r\n{e.Message}\r\nDeleting file '{_crntFilename}'.",
+                    MessageBox.Show($"IO Exception:\n\n{ex.Message}\n\nDeleting file '{_crntFilename}'.",
                                      "Target Stream",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
@@ -649,8 +610,7 @@ namespace PCLParaphernalia
 
         public static void ResponseCloseConnection()
         {
-            if ((_targetType == Target.NetPrinter) &&
-                (_binWriter != null))
+            if ((_targetType == Target.NetPrinter) && (_binWriter != null))
             {
                 TargetNetPrint.CloseResponseConnection();
             }
