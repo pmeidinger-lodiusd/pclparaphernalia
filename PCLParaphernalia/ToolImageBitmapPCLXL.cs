@@ -193,7 +193,7 @@ namespace PCLParaphernalia
                 PCLXLWriter.AddAttrUbyte(ref bufStd,
                                    ref indStd,
                                    PCLXLAttributes.Tag.CompressMode,
-                                   (byte)PCLXLAttrEnums.Val.eNoCompression);
+                                   (byte)PCLXLAttrEnums.Val.NoCompression);
 
                 PCLXLWriter.AddOperator(ref bufStd,
                                   ref indStd,
@@ -366,33 +366,33 @@ namespace PCLParaphernalia
 
             if (srcBlackWhite)
             {
-                colourSpace = (byte)PCLXLAttrEnums.Val.eGray;
+                colourSpace = (byte)PCLXLAttrEnums.Val.Gray;
                 colourDepth = (byte)PCLXLAttrEnums.Val.e1Bit;
-                colourMapping = (byte)PCLXLAttrEnums.Val.eIndexedPixel;
+                colourMapping = (byte)PCLXLAttrEnums.Val.IndexedPixel;
                 paletteEntries = 2;
                 paletteSize = 2;
             }
             else if (srcBitsPerPixel == 1)
             {
-                colourSpace = (byte)PCLXLAttrEnums.Val.eRGB;
+                colourSpace = (byte)PCLXLAttrEnums.Val.RGB;
                 colourDepth = (byte)PCLXLAttrEnums.Val.e1Bit;
-                colourMapping = (byte)PCLXLAttrEnums.Val.eIndexedPixel;
+                colourMapping = (byte)PCLXLAttrEnums.Val.IndexedPixel;
                 paletteEntries = 0x00000001 << 1;
                 paletteSize = 3 * paletteEntries;    // one per plane
             }
             else if (srcBitsPerPixel == 4)
             {
-                colourSpace = (byte)PCLXLAttrEnums.Val.eRGB;
+                colourSpace = (byte)PCLXLAttrEnums.Val.RGB;
                 colourDepth = (byte)PCLXLAttrEnums.Val.e4Bit;
-                colourMapping = (byte)PCLXLAttrEnums.Val.eIndexedPixel;
+                colourMapping = (byte)PCLXLAttrEnums.Val.IndexedPixel;
                 paletteEntries = 0x00000001 << 4;
                 paletteSize = 3 * paletteEntries;    // one per plane
             }
             else if (srcBitsPerPixel == 24)
             {
-                colourSpace = (byte)PCLXLAttrEnums.Val.eRGB;
+                colourSpace = (byte)PCLXLAttrEnums.Val.RGB;
                 colourDepth = (byte)PCLXLAttrEnums.Val.e8Bit;
-                colourMapping = (byte)PCLXLAttrEnums.Val.eDirectPixel;
+                colourMapping = (byte)PCLXLAttrEnums.Val.DirectPixel;
                 paletteEntries = 0;
                 paletteSize = 0;
             }
@@ -614,7 +614,7 @@ namespace PCLParaphernalia
             PCLXLWriter.AddAttrUbyte(ref bufStd,
                                ref indStd,
                                PCLXLAttributes.Tag.SimplexPageMode,
-                               (byte)PCLXLAttrEnums.Val.eSimplexFrontSide);
+                               (byte)PCLXLAttrEnums.Val.SimplexFrontSide);
 
             PCLXLWriter.AddOperator(ref bufStd,
                               ref indStd,

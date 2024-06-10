@@ -42,19 +42,19 @@
             new PCLOrientation(Aspect.Portrait,
                                "Portrait",
                                0x00,
-                               (byte)PCLXLAttrEnums.Val.ePortraitOrientation),
+                               (byte)PCLXLAttrEnums.Val.PortraitOrientation),
             new PCLOrientation(Aspect.Landscape,
                                "Landscape",
                                0x01,
-                               (byte)PCLXLAttrEnums.Val.eLandscapeOrientation),
+                               (byte)PCLXLAttrEnums.Val.LandscapeOrientation),
             new PCLOrientation(Aspect.Portrait,
                                "Reverse Portrait",
                                0x02,
-                               (byte)PCLXLAttrEnums.Val.eReversePortrait),
+                               (byte)PCLXLAttrEnums.Val.ReversePortrait),
             new PCLOrientation(Aspect.Landscape,
                                "Reverse Landscape",
                                0x03,
-                               (byte)PCLXLAttrEnums.Val.eReverseLandscape)
+                               (byte)PCLXLAttrEnums.Val.ReverseLandscape)
         };
 
         private static readonly int _orientationCount = _orientations.GetUpperBound(0) + 1;

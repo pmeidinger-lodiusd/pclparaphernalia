@@ -239,7 +239,7 @@ namespace PCLParaphernalia
             PCLXLWriter.AddAttrUbyte(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.Tag.ColorSpace,
-                               (byte)PCLXLAttrEnums.Val.eGray);
+                               (byte)PCLXLAttrEnums.Val.Gray);
 
             PCLXLWriter.AddOperator(ref buffer,
                               ref indBuf,
@@ -772,7 +772,7 @@ namespace PCLParaphernalia
                             ref bufStd,
                             ref indStd,
                             PCLXLAttributes.Tag.CustomMediaSizeUnits,
-                            (byte)PCLXLAttrEnums.Val.eTenthsOfAMillimeter);
+                            (byte)PCLXLAttrEnums.Val.TenthsOfAMillimeter);
                     }
                     else
                     {
@@ -792,7 +792,7 @@ namespace PCLParaphernalia
                             ref bufStd,
                             ref indStd,
                             PCLXLAttributes.Tag.CustomMediaSizeUnits,
-                            (byte)PCLXLAttrEnums.Val.eInch);
+                            (byte)PCLXLAttrEnums.Val.Inch);
                     }
                 }
                 else if (trayIdUnknown)
@@ -834,14 +834,14 @@ namespace PCLParaphernalia
                     PCLXLWriter.AddAttrUbyte(ref bufStd,
                                      ref indStd,
                                      PCLXLAttributes.Tag.DuplexPageSide,
-                                     (byte)PCLXLAttrEnums.Val.eBackMediaSide);
+                                     (byte)PCLXLAttrEnums.Val.BackMediaSide);
                 }
                 else
                 {
                     PCLXLWriter.AddAttrUbyte(ref bufStd,
                                      ref indStd,
                                      PCLXLAttributes.Tag.DuplexPageSide,
-                                     (byte)PCLXLAttrEnums.Val.eFrontMediaSide);
+                                     (byte)PCLXLAttrEnums.Val.FrontMediaSide);
                 }
             }
             else
@@ -849,7 +849,7 @@ namespace PCLParaphernalia
                 PCLXLWriter.AddAttrUbyte(ref bufStd,
                                  ref indStd,
                                  PCLXLAttributes.Tag.SimplexPageMode,
-                                 (byte)PCLXLAttrEnums.Val.eSimplexFrontSide);
+                                 (byte)PCLXLAttrEnums.Val.SimplexFrontSide);
             }
 
             PCLXLWriter.AddOperator(ref bufStd,
@@ -868,7 +868,7 @@ namespace PCLParaphernalia
             PCLXLWriter.AddAttrUbyte(ref bufStd,
                                ref indStd,
                                PCLXLAttributes.Tag.ColorSpace,
-                               (byte)PCLXLAttrEnums.Val.eGray);
+                               (byte)PCLXLAttrEnums.Val.Gray);
 
             PCLXLWriter.AddOperator(ref bufStd,
                               ref indStd,

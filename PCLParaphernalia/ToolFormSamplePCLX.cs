@@ -353,7 +353,7 @@ namespace PCLParaphernalia
                 PCLXLWriter.AddAttrUbyte(ref buffer,
                                          ref indBuf,
                                          PCLXLAttributes.Tag.ColorSpace,
-                                         (byte)PCLXLAttrEnums.Val.eGray);
+                                         (byte)PCLXLAttrEnums.Val.Gray);
 
                 PCLXLWriter.AddOperator(ref buffer,
                                         ref indBuf,
