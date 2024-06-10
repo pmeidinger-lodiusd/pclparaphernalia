@@ -73,7 +73,7 @@ namespace PCLParaphernalia
 
             if (!ReadSymSetId(fileSize, ref offset, ref symSetNo))
             {
-                MessageBox.Show($"Symbol set definition file '{filename}':\r\n\r\nFile does not start with 'symbol set Id' escape sequence.",
+                MessageBox.Show($"Symbol set definition file '{filename}':\n\nFile does not start with 'symbol set Id' escape sequence.",
                                 "Symbol Set file invalid",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
@@ -96,7 +96,7 @@ namespace PCLParaphernalia
 
             if (!flagOK)
             {
-                MessageBox.Show($"Symbol set definition file '{filename}':\r\n\r\nHeader is invalid.",
+                MessageBox.Show($"Symbol set definition file '{filename}':\n\nHeader is invalid.",
                                     "Symbol Set file invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
@@ -109,7 +109,7 @@ namespace PCLParaphernalia
 
             if (!flagOK)
             {
-                MessageBox.Show($"Symbol set definition file '{filename}':\r\n\r\nMapping data is invalid.",
+                MessageBox.Show($"Symbol set definition file '{filename}':\n\nMapping data is invalid.",
                                     "Symbol Set file invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
@@ -360,22 +360,22 @@ namespace PCLParaphernalia
             if (symSetDes != symSetNo)
             {
                 flagOK = false;
-                message = "Symbol set designator '" + symSetDes + "' is != number '" + symSetNo + "' from Assign sequence";
+                message = $"Symbol set designator '{symSetDes}' is != number '{symSetNo}' from Assign sequence";
             }
             else if (format != 3)            // 3 = Unicode
             {
                 flagOK = false;
-                message = "Format '" + format + "' is != required value (3 = Unicode)";
+                message = $"Format '{format}' is != required value (3 = Unicode)";
             }
             else if (firstCode > lastCode)
             {
                 flagOK = false;
-                message = "First code '" + firstCode + " > Last Code ' " + lastCode + "'";
+                message = $"First code '{firstCode} > Last Code ' {lastCode}'";
             }
             else if (hddrLen != (hddrDescLen + (codeCt * 2)))
             {
                 flagOK = false;
-                message = "Data length '" + hddrLen + "' is inconsistent with mapping for ";
+                message = $"Data length '{hddrLen}' is inconsistent with mapping for ";
             }
 
             if (!flagOK)
@@ -565,7 +565,7 @@ namespace PCLParaphernalia
             }
             catch (IOException e)
             {
-                MessageBox.Show($"IO Exception:\r\n{e.Message}\r\nOpening symbol set file '{fileName}'.",
+                MessageBox.Show($"IO Exception:\n\n{e.Message}\n\nOpening symbol set file '{fileName}'.",
                                     "PCL symbol set file",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
