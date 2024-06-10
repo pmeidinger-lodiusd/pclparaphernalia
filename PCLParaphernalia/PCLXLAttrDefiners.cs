@@ -31,8 +31,6 @@ namespace PCLParaphernalia
 
         private static readonly SortedList<byte, PCLXLAttrDefiner> _tags = new SortedList<byte, PCLXLAttrDefiner>();
 
-        private static int _tagCount;
-
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L X L A t t r D e f i n e r s                                  //
@@ -88,19 +86,17 @@ namespace PCLParaphernalia
             const bool flagNone = false;
             const bool flagReserved = true;
 
-            byte tag = (byte)Tag.Ubyte;                                 // 0xf8 //
+            byte tag = (byte)Tag.Ubyte;                         // 0xf8 //
             _tags.Add(tag,
                 new PCLXLAttrDefiner(tag,
                                      flagNone,
                                      "ubyte"));
 
-            tag = (byte)Tag.Uint16;                                // 0xf9 //
+            tag = (byte)Tag.Uint16;                             // 0xf9 //
             _tags.Add(tag,
                 new PCLXLAttrDefiner(tag,
                                      flagReserved,
                                      "uint16"));
-
-            _tagCount = _tags.Count;
         }
     }
 }
