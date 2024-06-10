@@ -218,10 +218,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCount()
-        {
-            return _tagCount;
-        }
+        public static int GetCount() => _tagCount;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -232,10 +229,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetDesc(byte selection)
-        {
-            return _tags[selection].GetDesc();
-        }
+        public static string GetDesc(byte selection) => _tags[selection].GetDesc();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -249,54 +243,34 @@ namespace PCLParaphernalia
         private static void PopulateTable()
         {
             byte tag = 0x20;                                              // ?    //
-            _unknownTag =
-                new PMLDataType(tag,
-                                   "*** Unknown tag ***");
+            _unknownTag = new PMLDataType(tag, "*** Unknown tag ***");
 
             tag = (byte)Tag.ObjectID;                              // 0x00 //
-            _tags.Add(tag,
-                new PMLDataType(tag,
-                                   "Object Identifier"));
+            _tags.Add(tag, new PMLDataType(tag, "Object Identifier"));
 
             tag = (byte)Tag.Enumeration;                           // 0x01 //
-            _tags.Add(tag,
-                new PMLDataType(tag,
-                                   "Enumeration"));
+            _tags.Add(tag, new PMLDataType(tag, "Enumeration"));
 
             tag = (byte)Tag.Sint;                                  // 0x02 //
-            _tags.Add(tag,
-                new PMLDataType(tag,
-                                   "Signed Integer"));
+            _tags.Add(tag, new PMLDataType(tag, "Signed Integer"));
 
             tag = (byte)Tag.Real;                                  // 0x03 //
-            _tags.Add(tag,
-                new PMLDataType(tag,
-                                   "Real"));
+            _tags.Add(tag, new PMLDataType(tag, "Real"));
 
             tag = (byte)Tag.String;                                // 0x04 //
-            _tags.Add(tag,
-                new PMLDataType(tag,
-                                   "String"));
+            _tags.Add(tag, new PMLDataType(tag, "String"));
 
             tag = (byte)Tag.Binary;                                // 0x05 //
-            _tags.Add(tag,
-                new PMLDataType(tag,
-                                   "Binary"));
+            _tags.Add(tag, new PMLDataType(tag, "Binary"));
 
             tag = (byte)Tag.ErrorCode;                             // 0x06 //
-            _tags.Add(tag,
-                new PMLDataType(tag,
-                                   "Error Code"));
+            _tags.Add(tag, new PMLDataType(tag, "Error Code"));
 
             tag = (byte)Tag.NullValue;                             // 0x07 //
-            _tags.Add(tag,
-                new PMLDataType(tag,
-                                   "Null Value"));
+            _tags.Add(tag, new PMLDataType(tag, "Null Value"));
 
             tag = (byte)Tag.Collection;                            // 0x08 //
-            _tags.Add(tag,
-                new PMLDataType(tag,
-                                   "Collection"));
+            _tags.Add(tag, new PMLDataType(tag, "Collection"));
 
             _tagCount = _tags.Count;
         }

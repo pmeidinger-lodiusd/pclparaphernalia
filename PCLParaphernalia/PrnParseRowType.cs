@@ -38,10 +38,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string GetDesc()
-        {
-            return _rowTypeDesc;
-        }
+        public string GetDesc() => _rowTypeDesc;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -52,9 +49,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseRowTypes.Type GetRowType()
-        {
-            return _rowType;
-        }
+        public PrnParseRowTypes.Type GetRowType() => _rowType;
     }
 }

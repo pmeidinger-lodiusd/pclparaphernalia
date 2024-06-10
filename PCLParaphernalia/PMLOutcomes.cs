@@ -195,10 +195,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCount()
-        {
-            return _tagCount;
-        }
+        public static int GetCount() => _tagCount;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -209,10 +206,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetDesc(byte selection)
-        {
-            return _tags[selection].GetDesc();
-        }
+        public static string GetDesc(byte selection) => _tags[selection].GetDesc();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -226,69 +220,43 @@ namespace PCLParaphernalia
         private static void PopulateTable()
         {
             byte tag = 0x20;                                              // ?    //
-            _unknownTag =
-                new PMLOutcome(tag,
-                                    "*** Unknown tag ***");
+            _unknownTag = new PMLOutcome(tag, "*** Unknown tag ***");
 
             tag = 0x00;                                              // 0x00 //
-            _tags.Add(tag,
-                new PMLOutcome(tag,
-                                    "OK"));
+            _tags.Add(tag, new PMLOutcome(tag, "OK"));
 
             tag = 0x01;                                              // 0x01 //
-            _tags.Add(tag,
-                new PMLOutcome(tag,
-                                    "OKEndOfSupportedObjects"));
+            _tags.Add(tag, new PMLOutcome(tag, "OKEndOfSupportedObjects"));
 
             tag = 0x02;                                              // 0x02 //
-            _tags.Add(tag,
-                new PMLOutcome(tag,
-                                    "OKNearestLegalValueSubstituted"));
+            _tags.Add(tag, new PMLOutcome(tag, "OKNearestLegalValueSubstituted"));
 
             tag = 0x80;                                              // 0x80 //
-            _tags.Add(tag,
-                new PMLOutcome(tag,
-                                    "ErrorUnknownRequest"));
+            _tags.Add(tag, new PMLOutcome(tag, "ErrorUnknownRequest"));
 
             tag = 0x81;                                              // 0x81 //
-            _tags.Add(tag,
-                new PMLOutcome(tag,
-                                    "ErrorBufferOverflow"));
+            _tags.Add(tag, new PMLOutcome(tag, "ErrorBufferOverflow"));
 
             tag = 0x82;                                              // 0x82 //
-            _tags.Add(tag,
-                new PMLOutcome(tag,
-                                    "ErrorCommandExecutionError"));
+            _tags.Add(tag, new PMLOutcome(tag, "ErrorCommandExecutionError"));
 
             tag = 0x83;                                              // 0x83 //
-            _tags.Add(tag,
-                new PMLOutcome(tag,
-                                    "ErrorUnknownObjectIdentifier"));
+            _tags.Add(tag, new PMLOutcome(tag, "ErrorUnknownObjectIdentifier"));
 
             tag = 0x84;                                              // 0x84 //
-            _tags.Add(tag,
-                new PMLOutcome(tag,
-                                    "ErrorObjectDoesNotSupportSpecifiedAction"));
+            _tags.Add(tag, new PMLOutcome(tag, "ErrorObjectDoesNotSupportSpecifiedAction"));
 
             tag = 0x85;                                              // 0x85 //
-            _tags.Add(tag,
-                new PMLOutcome(tag,
-                                    "ErrorInvalidOrUnsupportedValue"));
+            _tags.Add(tag, new PMLOutcome(tag, "ErrorInvalidOrUnsupportedValue"));
 
             tag = 0x86;                                              // 0x86 //
-            _tags.Add(tag,
-                new PMLOutcome(tag,
-                                    "ErrorPastEndOfSupportedObjects"));
+            _tags.Add(tag, new PMLOutcome(tag, "ErrorPastEndOfSupportedObjects"));
 
             tag = 0x87;                                              // 0x87 //
-            _tags.Add(tag,
-                new PMLOutcome(tag,
-                                    "ErrorActionCanNotBePerformedNow"));
+            _tags.Add(tag, new PMLOutcome(tag, "ErrorActionCanNotBePerformedNow"));
 
             tag = 0x88;                                              // 0x88 //
-            _tags.Add(tag,
-                new PMLOutcome(tag,
-                                    "ErrorSyntaxError"));
+            _tags.Add(tag, new PMLOutcome(tag, "ErrorSyntaxError"));
 
             _tagCount = _tags.Count;
         }

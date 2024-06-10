@@ -267,10 +267,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCount()
-        {
-            return _cmdCount;
-        }
+        public static int GetCount() => _cmdCount;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -281,10 +278,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetDesc(string name)
-        {
-            return _cmds[name].Description;
-        }
+        public static string GetDesc(string name) => _cmds[name].Description;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -295,10 +289,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetDescCmdIntro()
-        {
-            return _cmdIntro.Description;
-        }
+        public static string GetDescCmdIntro() => _cmdIntro.Description;
 
         /*
         //--------------------------------------------------------------------//

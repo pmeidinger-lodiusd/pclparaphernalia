@@ -89,10 +89,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCount()
-        {
-            return _rowTypeCount;
-        }
+        public static int GetCount() => _rowTypeCount;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -103,10 +100,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetDesc(int selection)
-        {
-            return _rowTypes[selection].GetDesc();
-        }
+        public static string GetDesc(int selection) => _rowTypes[selection].GetDesc();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -117,10 +111,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Type GetType(int selection)
-        {
-            return _rowTypes[selection].GetRowType();
-        }
+        public static Type GetType(int selection) => _rowTypes[selection].GetRowType();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
