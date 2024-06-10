@@ -1669,9 +1669,7 @@ namespace PCLParaphernalia
             if (_ipStream == null)
                 return false;
 
-            FileInfo fi = new FileInfo(fileName);
-
-            fileSize = fi.Length;
+            fileSize = new FileInfo(fileName).Length;
 
             _binReader = new BinaryReader(_ipStream);
 
