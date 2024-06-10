@@ -83,11 +83,9 @@ namespace PCLParaphernalia
             }
             else
             {
-                DataRow row;
-
                 string offsetText;
 
-                row = table.NewRow();
+                DataRow row = table.NewRow();
 
                 if (offset < 0)
                 {
@@ -208,8 +206,6 @@ namespace PCLParaphernalia
         public static string ByteArrayToHexString(byte[] byteArray, int startByte, int byteCt)
         {
             const int triplet = 3;
-
-            int arrayLen = byteArray.Length;
 
             char[] chars = new char[byteCt * triplet];
 
