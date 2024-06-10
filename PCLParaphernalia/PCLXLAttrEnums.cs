@@ -399,9 +399,7 @@ namespace PCLParaphernalia
 
             attrLen = attrLen1;
 
-            _tagUnknown =
-                new PCLXLAttrEnum(0x00, 0x00, 0x00, 1, 0,
-                                  flagNone, "*** Unknown enum ***");
+            _tagUnknown = new PCLXLAttrEnum(0x00, 0x00, 0x00, 1, 0, flagNone, "*** Unknown enum ***");
 
             operTag = 0x00;                                         // ---- //
 
