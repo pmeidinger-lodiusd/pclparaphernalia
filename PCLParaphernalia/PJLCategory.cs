@@ -38,10 +38,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string GetName()
-        {
-            return _categoryName;
-        }
+        public string GetName() => _categoryName;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -52,9 +49,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PJLCategories.CategoryType GetCategoryType()
-        {
-            return _categoryType;
-        }
+        public PJLCategories.CategoryType GetCategoryType() => _categoryType;
     }
 }

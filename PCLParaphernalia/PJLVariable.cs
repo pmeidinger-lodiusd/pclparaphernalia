@@ -38,10 +38,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string GetName()
-        {
-            return _varName;
-        }
+        public string GetName() => _varName;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -52,9 +49,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PJLVariables.VarType GetVariableType()
-        {
-            return _varType;
-        }
+        public PJLVariables.VarType GetVariableType() => _varType;
     }
 }

@@ -195,10 +195,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCount()
-        {
-            return _tagCount;
-        }
+        public static int GetCount() => _tagCount;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -209,10 +206,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetDesc(byte selection)
-        {
-            return _tags[selection].GetDesc();
-        }
+        public static string GetDesc(byte selection) => _tags[selection].GetDesc();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

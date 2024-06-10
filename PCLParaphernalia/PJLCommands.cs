@@ -144,8 +144,7 @@ namespace PCLParaphernalia
         {
             int count = 0;
 
-            foreach (KeyValuePair<string, PJLCommand> kvp
-                in _cmds)
+            foreach (KeyValuePair<string, PJLCommand> kvp in _cmds)
             {
                 count++;
                 grid.Items.Add(kvp.Value);
@@ -288,10 +287,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCount()
-        {
-            return _cmdCount;
-        }
+        public static int GetCount() => _cmdCount;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -302,10 +298,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetDesc(CmdIndex key)
-        {
-            return _cmds[key.ToString()].Description;
-        }
+        public static string GetDesc(CmdIndex key) => _cmds[key.ToString()].Description;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -316,10 +309,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static CmdFormat GetFormat(CmdIndex key)
-        {
-            return _cmds[key.ToString()].Format;
-        }
+        public static CmdFormat GetFormat(CmdIndex key) => _cmds[key.ToString()].Format;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -330,10 +320,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetName(CmdIndex key)
-        {
-            return _cmds[key.ToString()].Name;
-        }
+        public static string GetName(CmdIndex key) => _cmds[key.ToString()].Name;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -344,10 +331,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static RequestType GetType(CmdIndex key)
-        {
-            return _cmds[key.ToString()].Type;
-        }
+        public static RequestType GetType(CmdIndex key) => _cmds[key.ToString()].Type;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

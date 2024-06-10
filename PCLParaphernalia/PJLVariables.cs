@@ -153,10 +153,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCount()
-        {
-            return _varCount;
-        }
+        public static int GetCount() => _varCount;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -167,10 +164,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetName(int selection)
-        {
-            return _vars[selection].GetName();
-        }
+        public static string GetName(int selection) => _vars[selection].GetName();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -181,9 +175,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static VarType GetType(int selection)
-        {
-            return _vars[selection].GetVariableType();
-        }
+        public static VarType GetType(int selection) => _vars[selection].GetVariableType();
     }
 }

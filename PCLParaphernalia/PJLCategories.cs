@@ -47,10 +47,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int GetCount()
-        {
-            return _categoryCount;
-        }
+        public static int GetCount() => _categoryCount;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -61,10 +58,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string GetName(int selection)
-        {
-            return _categories[selection].GetName();
-        }
+        public static string GetName(int selection) => _categories[selection].GetName();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -75,9 +69,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static CategoryType GetType(int selection)
-        {
-            return _categories[selection].GetCategoryType();
-        }
+        public static CategoryType GetType(int selection) => _categories[selection].GetCategoryType();
     }
 }
