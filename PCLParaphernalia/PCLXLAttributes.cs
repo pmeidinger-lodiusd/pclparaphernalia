@@ -166,11 +166,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        // TODO: Not used?
-        //static PCLXLAttributes()
-        //{
-        //    PopulateTable();
-        //}
+        static PCLXLAttributes()
+        {
+            PopulateTable();
+        }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -431,8 +430,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        // TODO: Not used?
-        /*
         private static void PopulateTable()
         {
             const bool flagNone = false;
@@ -1672,7 +1669,6 @@ namespace PCLParaphernalia
 
             _tagCount = _tags.Count;
         }
-        */
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

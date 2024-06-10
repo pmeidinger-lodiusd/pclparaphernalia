@@ -1495,7 +1495,7 @@ namespace PCLParaphernalia
                         ref buffer,
                         ref indBuf,
                         PCLXLAttributes.Tag.SimplexPageMode,
-                        (byte)PCLXLAttrEnums.Val.SimplexFrontSide);
+                        (byte)PCLXLAttrEnums.Val.eSimplexFrontSide);
                 }
             }
 
@@ -1517,7 +1517,7 @@ namespace PCLParaphernalia
                         ref buffer,
                         ref indBuf,
                         PCLXLAttributes.Tag.DuplexPageSide,
-                        (byte)PCLXLAttrEnums.Val.FrontMediaSide);
+                        (byte)PCLXLAttrEnums.Val.eFrontMediaSide);
                 }
                 else
                 {
@@ -1525,7 +1525,7 @@ namespace PCLParaphernalia
                         ref buffer,
                         ref indBuf,
                         PCLXLAttributes.Tag.DuplexPageSide,
-                        (byte)PCLXLAttrEnums.Val.BackMediaSide);
+                        (byte)PCLXLAttrEnums.Val.eBackMediaSide);
                 }
             }
 
@@ -1944,7 +1944,7 @@ namespace PCLParaphernalia
             AddAttrUbyte(ref bufStd,
                          ref indStd,
                          PCLXLAttributes.Tag.Measure,
-                         (byte)PCLXLAttrEnums.Val.Inch);
+                         (byte)PCLXLAttrEnums.Val.eInch);
 
             AddAttrUint16XY(ref bufStd,
                             ref indStd,
@@ -1955,7 +1955,7 @@ namespace PCLParaphernalia
             AddAttrUbyte(ref bufStd,
                          ref indStd,
                          PCLXLAttributes.Tag.ErrorReport,
-                         (byte)PCLXLAttrEnums.Val.ErrorPage);
+                         (byte)PCLXLAttrEnums.Val.eErrorPage);
 
             AddOperator(ref bufStd,
                         ref indStd,
@@ -1964,12 +1964,12 @@ namespace PCLParaphernalia
             AddAttrUbyte(ref bufStd,
                          ref indStd,
                          PCLXLAttributes.Tag.SourceType,
-                         (byte)PCLXLAttrEnums.Val.DefaultDataSource);
+                         (byte)PCLXLAttrEnums.Val.eDefaultDataSource);
 
             AddAttrUbyte(ref bufStd,
                          ref indStd,
                          PCLXLAttributes.Tag.DataOrg,
-                         (byte)PCLXLAttrEnums.Val.BinaryLowByteFirst);
+                         (byte)PCLXLAttrEnums.Val.eBinaryLowByteFirst);
 
             AddOperator(ref bufStd,
                         ref indStd,
@@ -2194,7 +2194,7 @@ namespace PCLParaphernalia
             AddAttrUbyte(ref buffer,
                          ref indBuf,
                          PCLXLAttributes.Tag.Measure,
-                         (byte)PCLXLAttrEnums.Val.Inch);
+                         (byte)PCLXLAttrEnums.Val.eInch);
 
             AddOperator(ref buffer,
                         ref indBuf,

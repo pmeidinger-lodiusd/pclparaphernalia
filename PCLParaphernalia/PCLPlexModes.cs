@@ -48,13 +48,13 @@
             new PCLPlexMode (PlexType.Duplex,
                              "Duplex Long-edge binding",
                              0x01,
-                             (byte) PCLXLAttrEnums.Val.DuplexHorizontalBinding,
-                             (byte) PCLXLAttrEnums.Val.DuplexVerticalBinding),
+                             (byte) PCLXLAttrEnums.Val.eDuplexHorizontalBinding,
+                             (byte) PCLXLAttrEnums.Val.eDuplexVerticalBinding),
             new PCLPlexMode (PlexType.Duplex,
                              "Duplex Short-edge binding",
                              0x02,
-                             (byte) PCLXLAttrEnums.Val.DuplexVerticalBinding,
-                             (byte) PCLXLAttrEnums.Val.DuplexHorizontalBinding)
+                             (byte) PCLXLAttrEnums.Val.eDuplexVerticalBinding,
+                             (byte) PCLXLAttrEnums.Val.eDuplexHorizontalBinding)
         };
 
         private static readonly int _plexModeCount = _plexModes.GetUpperBound(0) + 1;

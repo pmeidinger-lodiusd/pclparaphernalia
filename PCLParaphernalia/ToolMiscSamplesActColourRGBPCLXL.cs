@@ -191,7 +191,7 @@ namespace PCLParaphernalia
             PCLXLWriter.AddAttrUbyte(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.Tag.ColorSpace,
-                               (byte)PCLXLAttrEnums.Val.Gray);
+                               (byte)PCLXLAttrEnums.Val.eGray);
 
             PCLXLWriter.AddOperator(ref buffer,
                               ref indBuf,
@@ -246,7 +246,7 @@ namespace PCLParaphernalia
             PCLXLWriter.AddAttrUbyte(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.Tag.TxMode,
-                               (byte)PCLXLAttrEnums.Val.Transparent);
+                               (byte)PCLXLAttrEnums.Val.eTransparent);
 
             PCLXLWriter.AddOperator(ref buffer,
                               ref indBuf,
@@ -255,7 +255,7 @@ namespace PCLParaphernalia
             PCLXLWriter.AddAttrUbyte(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.Tag.TxMode,
-                               (byte)PCLXLAttrEnums.Val.Transparent);
+                               (byte)PCLXLAttrEnums.Val.eTransparent);
 
             PCLXLWriter.AddOperator(ref buffer,
                               ref indBuf,
@@ -429,7 +429,7 @@ namespace PCLParaphernalia
             PCLXLWriter.AddAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.Tag.ColorSpace,
-                                     (byte)PCLXLAttrEnums.Val.Gray);
+                                     (byte)PCLXLAttrEnums.Val.eGray);
 
             PCLXLWriter.AddAttrUbyte(ref buffer,
                                      ref indBuf,
@@ -463,7 +463,7 @@ namespace PCLParaphernalia
             PCLXLWriter.AddAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.Tag.TxMode,
-                                     (byte)PCLXLAttrEnums.Val.Transparent);
+                                     (byte)PCLXLAttrEnums.Val.eTransparent);
 
             PCLXLWriter.AddOperator(ref buffer,
                                     ref indBuf,
@@ -589,7 +589,7 @@ namespace PCLParaphernalia
             PCLXLWriter.AddAttrUbyte(ref bufStd,
                                ref indStd,
                                PCLXLAttributes.Tag.SimplexPageMode,
-                               (byte)PCLXLAttrEnums.Val.SimplexFrontSide);
+                               (byte)PCLXLAttrEnums.Val.eSimplexFrontSide);
 
             PCLXLWriter.AddOperator(ref bufStd,
                               ref indStd,
@@ -607,7 +607,7 @@ namespace PCLParaphernalia
             PCLXLWriter.AddAttrUbyte(ref bufStd,
                                ref indStd,
                                PCLXLAttributes.Tag.ColorSpace,
-                               (byte)PCLXLAttrEnums.Val.Gray);
+                               (byte)PCLXLAttrEnums.Val.eGray);
 
             PCLXLWriter.AddOperator(ref bufStd,
                               ref indStd,
@@ -750,7 +750,7 @@ namespace PCLParaphernalia
             PCLXLWriter.AddAttrUbyte(ref bufStd,
                                ref indStd,
                                PCLXLAttributes.Tag.ColorSpace,
-                               (byte)PCLXLAttrEnums.Val.RGB);
+                               (byte)PCLXLAttrEnums.Val.eRGB);
 
             PCLXLWriter.AddOperator(ref bufStd,
                               ref indStd,
@@ -927,10 +927,10 @@ namespace PCLParaphernalia
                                        patHeight,
                                        destWidth,
                                        destHeight,
-                                       PCLXLAttrEnums.Val.IndexedPixel,
+                                       PCLXLAttrEnums.Val.eIndexedPixel,
                                        PCLXLAttrEnums.Val.e1Bit,
-                                       PCLXLAttrEnums.Val.TempPattern,
-                                       PCLXLAttrEnums.Val.NoCompression,
+                                       PCLXLAttrEnums.Val.eTempPattern,
+                                       PCLXLAttrEnums.Val.eNoCompression,
                                        pattern);
         }
     }

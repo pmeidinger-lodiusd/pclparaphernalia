@@ -658,7 +658,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             hddrDesc[0] = 0;                    // Format
-            hddrDesc[1] = (byte)PCLXLAttrEnums.Val.PortraitOrientation;
+            hddrDesc[1] = (byte)PCLXLAttrEnums.Val.ePortraitOrientation;
             hddrDesc[2] = MsByte(symSet);      // Symbol set MSB
             hddrDesc[3] = LsByte(symSet);      // Symbol Set LSB
             hddrDesc[4] = 1;                    // Scaling = TrueType

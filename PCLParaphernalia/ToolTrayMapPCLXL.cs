@@ -236,7 +236,7 @@ namespace PCLParaphernalia
             PCLXLWriter.AddAttrUbyte(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.Tag.ColorSpace,
-                               (byte)PCLXLAttrEnums.Val.Gray);
+                               (byte)PCLXLAttrEnums.Val.eGray);
 
             PCLXLWriter.AddOperator(ref buffer,
                               ref indBuf,
@@ -345,7 +345,7 @@ namespace PCLParaphernalia
             PCLXLWriter.AddAttrUbyte(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.Tag.TxMode,
-                               (byte)PCLXLAttrEnums.Val.Transparent);
+                               (byte)PCLXLAttrEnums.Val.eTransparent);
 
             PCLXLWriter.AddOperator(ref buffer,
                               ref indBuf,
@@ -354,7 +354,7 @@ namespace PCLParaphernalia
             PCLXLWriter.AddAttrUbyte(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.Tag.TxMode,
-                               (byte)PCLXLAttrEnums.Val.Transparent);
+                               (byte)PCLXLAttrEnums.Val.eTransparent);
 
             PCLXLWriter.AddOperator(ref buffer,
                               ref indBuf,
@@ -463,7 +463,7 @@ namespace PCLParaphernalia
             PCLXLWriter.AddAttrUbyte(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.Tag.ColorSpace,
-                               (byte)PCLXLAttrEnums.Val.Gray);
+                               (byte)PCLXLAttrEnums.Val.eGray);
 
             PCLXLWriter.AddOperator(ref buffer,
                               ref indBuf,
@@ -792,7 +792,7 @@ namespace PCLParaphernalia
             PCLXLWriter.AddAttrUbyte(ref bufStd,
                                ref indStd,
                                PCLXLAttributes.Tag.ColorSpace,
-                               (byte)PCLXLAttrEnums.Val.Gray);
+                               (byte)PCLXLAttrEnums.Val.eGray);
 
             PCLXLWriter.AddOperator(ref bufStd,
                               ref indStd,
@@ -975,7 +975,7 @@ namespace PCLParaphernalia
                 PCLXLWriter.AddAttrUbyte(ref bufStd,
                                    ref indStd,
                                    PCLXLAttributes.Tag.ColorSpace,
-                                   (byte)PCLXLAttrEnums.Val.Gray);
+                                   (byte)PCLXLAttrEnums.Val.eGray);
 
                 PCLXLWriter.AddOperator(ref bufStd,
                                   ref indStd,
