@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Controls;
@@ -465,7 +466,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "PaletteDepth"));
+                                   Enum.GetName(typeof(Tag), Tag.PaletteDepth)));
 
             tagA = (byte)Tag.ColorSpace;                            // 0x03 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -475,7 +476,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "ColorSpace"));
+                                   Enum.GetName(typeof(Tag), Tag.ColorSpace)));
 
             tagA = (byte)Tag.NullBrush;                             // 0x04 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -485,7 +486,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "NullBrush"));
+                                   Enum.GetName(typeof(Tag), Tag.NullBrush)));
 
             tagA = (byte)Tag.NullPen;                               // 0x05 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -495,7 +496,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "NullPen"));
+                                   Enum.GetName(typeof(Tag), Tag.NullPen)));
 
             tagA = (byte)Tag.PaletteData;                           // 0x06 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -505,7 +506,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "PaletteData"));
+                                   Enum.GetName(typeof(Tag), Tag.PaletteData)));
 
             tagA = (byte)Tag.PaletteIndex;                          // 0x07 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -515,7 +516,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "PaletteIndex"));
+                                   Enum.GetName(typeof(Tag), Tag.PaletteIndex)));
 
             tagA = (byte)Tag.PatternSelectID;                       // 0x08 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -525,7 +526,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "PatternSelectID"));
+                                   Enum.GetName(typeof(Tag), Tag.PatternSelectID)));
 
             tagA = (byte)Tag.GrayLevel;                             // 0x09 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -535,7 +536,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "GrayLevel"));
+                                   Enum.GetName(typeof(Tag), Tag.GrayLevel)));
 
             tagA = (byte)Tag.RGBColor;                              // 0x0b //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -545,7 +546,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "RGBColor"));
+                                   Enum.GetName(typeof(Tag), Tag.RGBColor)));
 
             tagA = (byte)Tag.PatternOrigin;                         // 0x0c //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -555,7 +556,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "PatternOrigin"));
+                                   Enum.GetName(typeof(Tag), Tag.PatternOrigin)));
 
             tagA = (byte)Tag.NewDestinationSize;                    // 0x0d //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -565,7 +566,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "NewDestinationSize"));
+                                   Enum.GetName(typeof(Tag), Tag.NewDestinationSize)));
 
             tagA = (byte)Tag.PrimaryArray;                          // 0x0e //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -575,7 +576,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "PrimaryArray"));
+                                   Enum.GetName(typeof(Tag), Tag.PrimaryArray)));
 
             tagA = (byte)Tag.PrimaryDepth;                          // 0x0f //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -585,7 +586,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "PrimaryDepth"));
+                                   Enum.GetName(typeof(Tag), Tag.PrimaryDepth)));
 
             tagA = (byte)Tag.AllObjectTypes;                        // 0x1d //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -595,7 +596,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "AllObjectTypes"));
+                                   Enum.GetName(typeof(Tag), Tag.AllObjectTypes)));
 
             tagA = (byte)Tag.TextObjects;                           // 0x1e //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -605,7 +606,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "TextObjects"));
+                                   Enum.GetName(typeof(Tag), Tag.TextObjects)));
 
             tagA = (byte)Tag.VectorObjects;                         // 0x1f //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -615,7 +616,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "VectorObjects"));
+                                   Enum.GetName(typeof(Tag), Tag.VectorObjects)));
 
             tagA = (byte)Tag.RasterObjects;                         // 0x20 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -625,7 +626,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "RasterObjects"));
+                                   Enum.GetName(typeof(Tag), Tag.RasterObjects)));
 
             tagA = (byte)Tag.DeviceMatrix;                          // 0x21 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -635,7 +636,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "DeviceMatrix"));
+                                   Enum.GetName(typeof(Tag), Tag.DeviceMatrix)));
 
             tagA = (byte)Tag.DitherMatrixDataType;                  // 0x22 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -645,7 +646,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "DitherMatrixDataType"));
+                                   Enum.GetName(typeof(Tag), Tag.DitherMatrixDataType)));
 
             tagA = (byte)Tag.DitherOrigin;                          // 0x23 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -655,7 +656,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "DitherOrigin"));
+                                   Enum.GetName(typeof(Tag), Tag.DitherOrigin)));
 
             tagA = (byte)Tag.MediaDestination;                      // 0x24 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -665,7 +666,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "MediaDestination"));
+                                   Enum.GetName(typeof(Tag), Tag.MediaDestination)));
 
             tagA = (byte)Tag.MediaSize;                             // 0x25 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -675,7 +676,7 @@ namespace PCLParaphernalia
                                    flagUbyteTxt, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "MediaSize"));
+                                   Enum.GetName(typeof(Tag), Tag.MediaSize)));
 
             tagA = (byte)Tag.MediaSource;                           // 0x26 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -685,7 +686,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "MediaSource"));
+                                   Enum.GetName(typeof(Tag), Tag.MediaSource)));
 
             tagA = (byte)Tag.MediaType;                             // 0x27 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -695,7 +696,7 @@ namespace PCLParaphernalia
                                    flagUbyteTxt, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "MediaType"));
+                                   Enum.GetName(typeof(Tag), Tag.MediaType)));
 
             tagA = (byte)Tag.Orientation;                           // 0x28 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -705,7 +706,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "Orientation"));
+                                   Enum.GetName(typeof(Tag), Tag.Orientation)));
 
             tagA = (byte)Tag.PageAngle;                             // 0x29 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -715,7 +716,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "PageAngle"));
+                                   Enum.GetName(typeof(Tag), Tag.PageAngle)));
 
             tagA = (byte)Tag.PageOrigin;                            // 0x2a //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -725,7 +726,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "PageOrigin"));
+                                   Enum.GetName(typeof(Tag), Tag.PageOrigin)));
 
             tagA = (byte)Tag.PageScale;                             // 0x2b //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -735,7 +736,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "PageScale"));
+                                   Enum.GetName(typeof(Tag), Tag.PageScale)));
 
             tagA = (byte)Tag.ROP3;                                  // 0x2c //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -745,7 +746,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "ROP3"));
+                                   Enum.GetName(typeof(Tag), Tag.ROP3)));
 
             tagA = (byte)Tag.TxMode;                                // 0x2d //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -755,7 +756,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "TxMode"));
+                                   Enum.GetName(typeof(Tag), Tag.TxMode)));
 
             tagA = (byte)Tag.CustomMediaSize;                       // 0x2f //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -765,7 +766,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "CustomMediaSize"));
+                                   Enum.GetName(typeof(Tag), Tag.CustomMediaSize)));
 
             tagA = (byte)Tag.CustomMediaSizeUnits;                  // 0x30 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -775,7 +776,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "CustomMediaSizeUnits"));
+                                   Enum.GetName(typeof(Tag), Tag.CustomMediaSizeUnits)));
 
             tagA = (byte)Tag.PageCopies;                            // 0x31 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -785,7 +786,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "PageCopies"));
+                                   Enum.GetName(typeof(Tag), Tag.PageCopies)));
 
             tagA = (byte)Tag.DitherMatrixSize;                      // 0x32 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -795,7 +796,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "DitherMatrixSize"));
+                                   Enum.GetName(typeof(Tag), Tag.DitherMatrixSize)));
 
             tagA = (byte)Tag.DitherMatrixDepth;                     // 0x33 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -805,7 +806,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "DitherMatrixDepth"));
+                                   Enum.GetName(typeof(Tag), Tag.DitherMatrixDepth)));
 
             tagA = (byte)Tag.SimplexPageMode;                       // 0x34 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -815,7 +816,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "SimplexPageMode"));
+                                   Enum.GetName(typeof(Tag), Tag.SimplexPageMode)));
 
             tagA = (byte)Tag.DuplexPageMode;                        // 0x35 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -825,7 +826,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "DuplexPageMode"));
+                                   Enum.GetName(typeof(Tag), Tag.DuplexPageMode)));
 
             tagA = (byte)Tag.DuplexPageSide;                        // 0x36 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -835,7 +836,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "DuplexPageSide"));
+                                   Enum.GetName(typeof(Tag), Tag.DuplexPageSide)));
 
             tagA = (byte)Tag.ArcDirection;                          // 0x41 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -845,7 +846,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "ArcDirection"));
+                                   Enum.GetName(typeof(Tag), Tag.ArcDirection)));
 
             tagA = (byte)Tag.BoundingBox;                           // 0x42 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -855,7 +856,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "BoundingBox"));
+                                   Enum.GetName(typeof(Tag), Tag.BoundingBox)));
 
             tagA = (byte)Tag.DashOffset;                            // 0x43 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -865,7 +866,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "DashOffset"));
+                                   Enum.GetName(typeof(Tag), Tag.DashOffset)));
 
             tagA = (byte)Tag.EllipseDimension;                      // 0x44 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -875,7 +876,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "EllipseDimension"));
+                                   Enum.GetName(typeof(Tag), Tag.EllipseDimension)));
 
             tagA = (byte)Tag.EndPoint;                              // 0x45 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -885,7 +886,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "EndPoint"));
+                                   Enum.GetName(typeof(Tag), Tag.EndPoint)));
 
             tagA = (byte)Tag.FillMode;                              // 0x46 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -895,7 +896,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "FillMode"));
+                                   Enum.GetName(typeof(Tag), Tag.FillMode)));
 
             tagA = (byte)Tag.LineCapStyle;                          // 0x47 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -905,7 +906,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "LineCapStyle"));
+                                   Enum.GetName(typeof(Tag), Tag.LineCapStyle)));
 
             tagA = (byte)Tag.LineJoinStyle;                         // 0x48 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -915,7 +916,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "LineJoinStyle"));
+                                   Enum.GetName(typeof(Tag), Tag.LineJoinStyle)));
 
             tagA = (byte)Tag.MiterLength;                           // 0x49 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -925,7 +926,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "MiterLength"));
+                                   Enum.GetName(typeof(Tag), Tag.MiterLength)));
 
             tagA = (byte)Tag.LineDashStyle;                         // 0x4a //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -935,7 +936,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "LineDashStyle"));
+                                   Enum.GetName(typeof(Tag), Tag.LineDashStyle)));
 
             tagA = (byte)Tag.PenWidth;                              // 0x4b //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -945,7 +946,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "PenWidth"));
+                                   Enum.GetName(typeof(Tag), Tag.PenWidth)));
 
             tagA = (byte)Tag.Point;                                 // 0x4c //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -955,7 +956,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "Point"));
+                                   Enum.GetName(typeof(Tag), Tag.Point)));
 
             tagA = (byte)Tag.NumberOfPoints;                        // 0x4d //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -965,7 +966,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "NumberOfPoints"));
+                                   Enum.GetName(typeof(Tag), Tag.NumberOfPoints)));
 
             tagA = (byte)Tag.SolidLine;                             // 0x4e //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -975,7 +976,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "SolidLine"));
+                                   Enum.GetName(typeof(Tag), Tag.SolidLine)));
 
             tagA = (byte)Tag.StartPoint;                            // 0x4f //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -985,7 +986,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "StartPoint"));
+                                   Enum.GetName(typeof(Tag), Tag.StartPoint)));
 
             tagA = (byte)Tag.PointType;                             // 0x50 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -995,7 +996,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "PointType"));
+                                   Enum.GetName(typeof(Tag), Tag.PointType)));
 
             tagA = (byte)Tag.ControlPoint1;                         // 0x51 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1005,7 +1006,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "ControlPoint1"));
+                                   Enum.GetName(typeof(Tag), Tag.ControlPoint1)));
 
             tagA = (byte)Tag.ControlPoint2;                         // 0x52 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1015,7 +1016,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "ControlPoint2"));
+                                   Enum.GetName(typeof(Tag), Tag.ControlPoint2)));
 
             tagA = (byte)Tag.ClipRegion;                            // 0x53 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1025,7 +1026,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "ClipRegion"));
+                                   Enum.GetName(typeof(Tag), Tag.ClipRegion)));
 
             tagA = (byte)Tag.ClipMode;                              // 0x54 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1035,7 +1036,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "ClipMode"));
+                                   Enum.GetName(typeof(Tag), Tag.ClipMode)));
 
             tagA = (byte)Tag.ColorDepthArray;                       // 0x61 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1045,7 +1046,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "ColorDepthArray"));
+                                   Enum.GetName(typeof(Tag), Tag.ColorDepthArray)));
 
             tagA = (byte)Tag.ColorDepth;                            // 0x62 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1055,7 +1056,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "ColorDepth"));
+                                   Enum.GetName(typeof(Tag), Tag.ColorDepth)));
 
             tagA = (byte)Tag.BlockHeight;                           // 0x63 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1065,7 +1066,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "BlockHeight"));
+                                   Enum.GetName(typeof(Tag), Tag.BlockHeight)));
 
             tagA = (byte)Tag.ColorMapping;                          // 0x64 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1075,7 +1076,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "ColorMapping"));
+                                   Enum.GetName(typeof(Tag), Tag.ColorMapping)));
 
             tagA = (byte)Tag.CompressMode;                          // 0x65 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1085,7 +1086,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "CompressMode"));
+                                   Enum.GetName(typeof(Tag), Tag.CompressMode)));
 
             tagA = (byte)Tag.DestinationBox;                        // 0x66 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1095,7 +1096,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "DestinationBox"));
+                                   Enum.GetName(typeof(Tag), Tag.DestinationBox)));
 
             tagA = (byte)Tag.DestinationSize;                       // 0x67 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1105,7 +1106,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "DestinationSize"));
+                                   Enum.GetName(typeof(Tag), Tag.DestinationSize)));
 
             tagA = (byte)Tag.PatternPersistence;                    // 0x68 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1115,7 +1116,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "PatternPersistence"));
+                                   Enum.GetName(typeof(Tag), Tag.PatternPersistence)));
 
             tagA = (byte)Tag.PatternDefineID;                       // 0x69 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1125,7 +1126,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "PatternDefineID"));
+                                   Enum.GetName(typeof(Tag), Tag.PatternDefineID)));
 
             tagA = (byte)Tag.SourceHeight;                          // 0x6b //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1135,7 +1136,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "SourceHeight"));
+                                   Enum.GetName(typeof(Tag), Tag.SourceHeight)));
 
             tagA = (byte)Tag.SourceWidth;                           // 0x6c //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1145,7 +1146,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "SourceWidth"));
+                                   Enum.GetName(typeof(Tag), Tag.SourceWidth)));
 
             tagA = (byte)Tag.StartLine;                             // 0x6d //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1155,7 +1156,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "StartLine"));
+                                   Enum.GetName(typeof(Tag), Tag.StartLine)));
 
             tagA = (byte)Tag.PadBytesMultiple;                      // 0x6e //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1165,7 +1166,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "PadBytesMultiple"));
+                                   Enum.GetName(typeof(Tag), Tag.PadBytesMultiple)));
 
             tagA = (byte)Tag.BlockByteLength;                       // 0x6f //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1175,7 +1176,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "BlockByteLength"));
+                                   Enum.GetName(typeof(Tag), Tag.BlockByteLength)));
 
             tagA = (byte)Tag.NumberOfScanLines;                     // 0x73 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1185,7 +1186,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "NumberOfScanLines"));
+                                   Enum.GetName(typeof(Tag), Tag.NumberOfScanLines)));
 
             tagA = (byte)Tag.PrintableArea;                         // 0x74 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1195,7 +1196,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "PrintableArea"));
+                                   Enum.GetName(typeof(Tag), Tag.PrintableArea)));
 
             tagA = (byte)Tag.TumbleMode;                            // 0x75 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1205,7 +1206,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "TumbleMode"));
+                                   Enum.GetName(typeof(Tag), Tag.TumbleMode)));
 
             tagA = (byte)Tag.ContentOrientation;                    // 0x76 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1215,7 +1216,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "ContentOrientation"));
+                                   Enum.GetName(typeof(Tag), Tag.ContentOrientation)));
 
             tagA = (byte)Tag.FeedOrientation;                       // 0x77 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1225,7 +1226,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "FeedOrientation"));
+                                   Enum.GetName(typeof(Tag), Tag.FeedOrientation)));
 
             tagA = (byte)Tag.ColorTreatment;                        // 0x78 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1235,7 +1236,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "ColorTreatment"));
+                                   Enum.GetName(typeof(Tag), Tag.ColorTreatment)));
 
             tagA = (byte)Tag.CommentData;                           // 0x81 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1245,7 +1246,7 @@ namespace PCLParaphernalia
                                    flagUbyteTxt, flagUintTxt, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "CommentData"));
+                                   Enum.GetName(typeof(Tag), Tag.CommentData)));
 
             tagA = (byte)Tag.DataOrg;                               // 0x82 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1255,7 +1256,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "DataOrg"));
+                                   Enum.GetName(typeof(Tag), Tag.DataOrg)));
 
             tagA = (byte)Tag.Measure;                               // 0x86 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1265,7 +1266,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.Measure,
                                    PrnParseConstants.OvlAct.None,
-                                   "Measure"));
+                                   Enum.GetName(typeof(Tag), Tag.Measure)));
 
             tagA = (byte)Tag.SourceType;                            // 0x88 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1275,7 +1276,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "SourceType"));
+                                   Enum.GetName(typeof(Tag), Tag.SourceType)));
 
             tagA = (byte)Tag.UnitsPerMeasure;                       // 0x89 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1285,7 +1286,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.UnitsPerMeasure,
                                    PrnParseConstants.OvlAct.None,
-                                   "UnitsPerMeasure"));
+                                   Enum.GetName(typeof(Tag), Tag.UnitsPerMeasure)));
 
             tagA = (byte)Tag.QueryKey;                              // 0x8a //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1295,7 +1296,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "QueryKey"));
+                                   Enum.GetName(typeof(Tag), Tag.QueryKey)));
 
             tagA = (byte)Tag.StreamName;                            // 0x8b //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1305,7 +1306,7 @@ namespace PCLParaphernalia
                                    flagUbyteTxt, flagUintTxt, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "StreamName"));
+                                   Enum.GetName(typeof(Tag), Tag.StreamName)));
 
             tagA = (byte)Tag.StreamDataLength;                      // 0x8c //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1315,7 +1316,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "StreamDataLength"));
+                                   Enum.GetName(typeof(Tag), Tag.StreamDataLength)));
 
             tagA = (byte)Tag.PCLSelectFont;                         // 0x8d //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1325,7 +1326,7 @@ namespace PCLParaphernalia
                                    flagUbyteTxt, flagNone, flagNone, flagValIsPCL,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "PCLSelectFont"));
+                                   Enum.GetName(typeof(Tag), Tag.PCLSelectFont)));
 
             tagA = (byte)Tag.ErrorReport;                           // 0x8f //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1335,7 +1336,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.Remove,
-                                   "ErrorReport"));
+                                   Enum.GetName(typeof(Tag), Tag.ErrorReport)));
 
             tagA = (byte)Tag.VUExtension;                           // 0x91 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1345,7 +1346,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "VUExtension"));
+                                   Enum.GetName(typeof(Tag), Tag.VUExtension)));
 
             tagA = (byte)Tag.VUDataLength;                          // 0x92 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1355,7 +1356,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagValIsLen, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "VUDataLength"));
+                                   Enum.GetName(typeof(Tag), Tag.VUDataLength)));
 
             tagA = (byte)Tag.VUAttr1;                               // 0x93 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1365,7 +1366,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "VUAttr1"));
+                                   Enum.GetName(typeof(Tag), Tag.VUAttr1)));
 
             tagA = (byte)Tag.VUAttr2;                               // 0x94 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1375,7 +1376,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "VUAttr2"));
+                                   Enum.GetName(typeof(Tag), Tag.VUAttr2)));
 
             tagA = (byte)Tag.VUAttr3;                               // 0x95 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1385,7 +1386,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "VUAttr3"));
+                                   Enum.GetName(typeof(Tag), Tag.VUAttr3)));
 
             tagA = (byte)Tag.VUAttr4;                               // 0x96 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1395,7 +1396,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "VUAttr4"));
+                                   Enum.GetName(typeof(Tag), Tag.VUAttr4)));
 
             tagA = (byte)Tag.VUAttr5;                               // 0x97 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1405,7 +1406,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "VUAttr5"));
+                                   Enum.GetName(typeof(Tag), Tag.VUAttr5)));
 
             tagA = (byte)Tag.VUAttr6;                               // 0x98 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1415,7 +1416,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "VUAttr6"));
+                                   Enum.GetName(typeof(Tag), Tag.VUAttr6)));
 
             tagA = (byte)Tag.VUAttr7;                               // 0x99 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1425,7 +1426,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "VUAttr7"));
+                                   Enum.GetName(typeof(Tag), Tag.VUAttr7)));
 
             tagA = (byte)Tag.VUAttr8;                               // 0x9a //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1435,7 +1436,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "VUAttr8"));
+                                   Enum.GetName(typeof(Tag), Tag.VUAttr8)));
 
             tagA = (byte)Tag.VUAttr9;                               // 0x9b //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1445,7 +1446,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "VUAttr9"));
+                                   Enum.GetName(typeof(Tag), Tag.VUAttr9)));
 
             tagA = (byte)Tag.VUAttr10;                              // 0x9c //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1455,7 +1456,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "VUAttr10"));
+                                   Enum.GetName(typeof(Tag), Tag.VUAttr10)));
 
             tagA = (byte)Tag.VUAttr11;                              // 0x9d //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1465,7 +1466,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "VUAttr11"));
+                                   Enum.GetName(typeof(Tag), Tag.VUAttr11)));
 
             tagA = (byte)Tag.VUAttr12;                              // 0x9e //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1475,7 +1476,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "VUAttr12"));
+                                   Enum.GetName(typeof(Tag), Tag.VUAttr12)));
 
             tagA = 0x9f;                                               // 0x9f //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1495,7 +1496,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "EnableDiagnostics"));
+                                   Enum.GetName(typeof(Tag), Tag.EnableDiagnostics)));
 
             tagA = (byte)Tag.CharAngle;                             // 0xa1 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1505,7 +1506,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "CharAngle"));
+                                   Enum.GetName(typeof(Tag), Tag.CharAngle)));
 
             tagA = (byte)Tag.CharCode;                              // 0xa2 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1515,7 +1516,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "CharCode"));
+                                   Enum.GetName(typeof(Tag), Tag.CharCode)));
 
             tagA = (byte)Tag.CharDataSize;                          // 0xa3 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1525,7 +1526,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "CharDataSize"));
+                                   Enum.GetName(typeof(Tag), Tag.CharDataSize)));
 
             tagA = (byte)Tag.CharScale;                             // 0xa4 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1535,7 +1536,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "CharScale"));
+                                   Enum.GetName(typeof(Tag), Tag.CharScale)));
 
             tagA = (byte)Tag.CharShear;                             // 0xa5 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1545,7 +1546,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "CharShear"));
+                                   Enum.GetName(typeof(Tag), Tag.CharShear)));
 
             tagA = (byte)Tag.CharSize;                              // 0xa6 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1555,7 +1556,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.CharSize,
                                    PrnParseConstants.OvlAct.None,
-                                   "CharSize"));
+                                   Enum.GetName(typeof(Tag), Tag.CharSize)));
 
             tagA = (byte)Tag.FontHeaderLength;                      // 0xa7 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1565,7 +1566,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "FontHeaderLength"));
+                                   Enum.GetName(typeof(Tag), Tag.FontHeaderLength)));
 
             tagA = (byte)Tag.FontName;                              // 0xa8 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1575,7 +1576,7 @@ namespace PCLParaphernalia
                                    flagUbyteTxt, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "FontName"));
+                                   Enum.GetName(typeof(Tag), Tag.FontName)));
 
             tagA = (byte)Tag.FontFormat;                            // 0xa9 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1585,7 +1586,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "FontFormat"));
+                                   Enum.GetName(typeof(Tag), Tag.FontFormat)));
 
             tagA = (byte)Tag.SymbolSet;                             // 0xaa //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1595,7 +1596,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "SymbolSet"));
+                                   Enum.GetName(typeof(Tag), Tag.SymbolSet)));
 
             tagA = (byte)Tag.TextData;                              // 0xab //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1605,7 +1606,7 @@ namespace PCLParaphernalia
                                    flagUbyteTxt, flagUintTxt, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "TextData"));
+                                   Enum.GetName(typeof(Tag), Tag.TextData)));
 
             tagA = (byte)Tag.CharSubModeArray;                      // 0xac //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1615,7 +1616,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "CharSubModeArray"));
+                                   Enum.GetName(typeof(Tag), Tag.CharSubModeArray)));
 
             tagA = (byte)Tag.WritingMode;                           // 0xad //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1625,7 +1626,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "WritingMode"));
+                                   Enum.GetName(typeof(Tag), Tag.WritingMode)));
 
             tagA = (byte)Tag.BitmapCharScaling;                     // 0xae //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1635,7 +1636,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "BitmapCharScaling"));
+                                   Enum.GetName(typeof(Tag), Tag.BitmapCharScaling)));
 
             tagA = (byte)Tag.XSpacingData;                          // 0xaf //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1645,7 +1646,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "XSpacingData"));
+                                   Enum.GetName(typeof(Tag), Tag.XSpacingData)));
 
             tagA = (byte)Tag.YSpacingData;                          // 0xb0 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1655,7 +1656,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "YSpacingData"));
+                                   Enum.GetName(typeof(Tag), Tag.YSpacingData)));
 
             tagA = (byte)Tag.CharBoldValue;                         // 0xb1 //
             key = (((tagLen1 * 256) + tagA) * 256) + tagB;
@@ -1665,7 +1666,7 @@ namespace PCLParaphernalia
                                    flagNone, flagNone, flagNone, flagNone,
                                    PrnParseConstants.ActPCLXL.None,
                                    PrnParseConstants.OvlAct.None,
-                                   "CharBoldValue"));
+                                   Enum.GetName(typeof(Tag), Tag.CharBoldValue)));
 
             _tagCount = _tags.Count;
         }
