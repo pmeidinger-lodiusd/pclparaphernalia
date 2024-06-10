@@ -220,89 +220,55 @@ namespace PCLParaphernalia
         private static void PopulateTable()
         {
             byte tag = 0x20;                                              // ?    //
-            _unknownTag =
-                new PMLAction(tag,
-                                   "*** Unknown tag ***");
+            _unknownTag = new PMLAction(tag, "*** Unknown tag ***");
 
             tag = 0x00;                                              // 0x00 //
-            _tags.Add(tag,
-                new PMLAction(tag,
-                                   "GetRequest"));
+            _tags.Add(tag, new PMLAction(tag, "GetRequest"));
 
             tag = 0x01;                                              // 0x01 //
-            _tags.Add(tag,
-                new PMLAction(tag,
-                                   "GetNextRequest"));
+            _tags.Add(tag, new PMLAction(tag, "GetNextRequest"));
 
             tag = 0x02;                                              // 0x02 //
-            _tags.Add(tag,
-                new PMLAction(tag,
-                                   "GetBlockRequest"));
+            _tags.Add(tag, new PMLAction(tag, "GetBlockRequest"));
 
             tag = 0x03;                                              // 0x03 //
-            _tags.Add(tag,
-                new PMLAction(tag,
-                                   "GetNextBlockRequest"));
+            _tags.Add(tag, new PMLAction(tag, "GetNextBlockRequest"));
 
             tag = 0x04;                                              // 0x04 //
-            _tags.Add(tag,
-                new PMLAction(tag,
-                                   "SetRequest"));
+            _tags.Add(tag, new PMLAction(tag, "SetRequest"));
 
             tag = 0x05;                                              // 0x05 //
-            _tags.Add(tag,
-                new PMLAction(tag,
-                                   "EnableTrapRequest"));
+            _tags.Add(tag, new PMLAction(tag, "EnableTrapRequest"));
 
             tag = 0x06;                                              // 0x06 //
-            _tags.Add(tag,
-                new PMLAction(tag,
-                                   "DisableTrapRequest"));
+            _tags.Add(tag, new PMLAction(tag, "DisableTrapRequest"));
 
             tag = 0x07;                                              // 0x07 //
-            _tags.Add(tag,
-                new PMLAction(tag,
-                                   "TrapRequest"));
+            _tags.Add(tag, new PMLAction(tag, "TrapRequest"));
 
             tag = 0x80;                                              // 0x80 //
-            _tags.Add(tag,
-                new PMLAction(tag,
-                                   "GetReply"));
+            _tags.Add(tag, new PMLAction(tag, "GetReply"));
 
             tag = 0x81;                                              // 0x81 //
-            _tags.Add(tag,
-                new PMLAction(tag,
-                                   "GetNextReply"));
+            _tags.Add(tag, new PMLAction(tag, "GetNextReply"));
 
             tag = 0x82;                                              // 0x82 //
-            _tags.Add(tag,
-                new PMLAction(tag,
-                                   "GetBlockReply"));
+            _tags.Add(tag, new PMLAction(tag, "GetBlockReply"));
 
             tag = 0x83;                                              // 0x83 //
-            _tags.Add(tag,
-                new PMLAction(tag,
-                                   "GetNextBlockReply"));
+            _tags.Add(tag, new PMLAction(tag, "GetNextBlockReply"));
 
             tag = 0x84;                                              // 0x84 //
-            _tags.Add(tag,
-                new PMLAction(tag,
-                                   "SetReply"));
+            _tags.Add(tag, new PMLAction(tag, "SetReply"));
 
             tag = 0x85;                                              // 0x85 //
-            _tags.Add(tag,
-                new PMLAction(tag,
-                                   "EnableTrapReply"));
+            _tags.Add(tag, new PMLAction(tag, "EnableTrapReply"));
 
             tag = 0x86;                                              // 0x86 //
-            _tags.Add(tag,
-                new PMLAction(tag,
-                                   "DisableTrapReply"));
+            _tags.Add(tag, new PMLAction(tag, "DisableTrapReply"));
 
             tag = 0x87;                                              // 0x87 //
-            _tags.Add(tag,
-                new PMLAction(tag,
-                                   "TrapReply"));
+            _tags.Add(tag, new PMLAction(tag, "TrapReply"));
 
             _tagCount = _tags.Count;
         }
