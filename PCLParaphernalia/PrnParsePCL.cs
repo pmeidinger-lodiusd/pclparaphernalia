@@ -432,6 +432,7 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
+
                 _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.ContType.PCLConfigureImageData)
@@ -455,6 +456,7 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
+
                 _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.ContType.PCLConfigureRasterData)
@@ -478,6 +480,7 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
+
                 _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.ContType.PCLLogicalPageData)
@@ -501,6 +504,7 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
+
                 _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.ContType.PCLDefineSymbolSet)
@@ -524,6 +528,7 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
+
                 _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.ContType.PCLDefineSymbolSetMap)
@@ -657,6 +662,7 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
+
                 _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.ContType.PCLEscEncText)
@@ -680,6 +686,7 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
+
                 _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.ContType.PCLEscEncTextData)
@@ -703,6 +710,7 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
+
                 _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.ContType.PCLPaletteConfiguration)
@@ -726,9 +734,9 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
+
                 _linkData.ResetContData();
-            }
-            else if (contType ==
+            } else if (contType ==
                 PrnParseConstants.ContType.PCLUserDefPatternHddr)
             {
                 //------------------------------------------------------------//
@@ -750,10 +758,10 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
+
                 _linkData.ResetContData();
             }
-            else if (contType ==
-                PrnParseConstants.ContType.PCLUserDefPatternData)
+            else if (contType == PrnParseConstants.ContType.PCLUserDefPatternData)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -801,6 +809,7 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
+
                 _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.ContType.PCLEmbeddedPML)
@@ -823,6 +832,7 @@ namespace PCLParaphernalia
 
                 if (!dataOK)
                     invalidSeqFound = true;
+
                 _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.ContType.PCLMultiByteData)
@@ -836,10 +846,9 @@ namespace PCLParaphernalia
 
                 string typeText;
 
-                if ((_textParsingMethod ==
-                    (int)PCLTextParsingMethods.PCLVal.m83_UTF8) ||
-                    (_textParsingMethod ==
-                    (int)PCLTextParsingMethods.PCLVal.m1008_UTF8_alt))
+                if ((_textParsingMethod == (int)PCLTextParsingMethods.PCLVal.m83_UTF8) 
+                        ||
+                    (_textParsingMethod == (int)PCLTextParsingMethods.PCLVal.m1008_UTF8_alt))
                 {
                     typeText = "UTF-8 data";
                 }
@@ -1004,8 +1013,7 @@ namespace PCLParaphernalia
             bool invalidSeqFound = false;
             bool dummyBool = false;
 
-            while (!continuation && !breakpoint && !langSwitch &&
-                   !endReached && (bufRem > 0))
+            while (!continuation && !breakpoint && !langSwitch && !endReached && (bufRem > 0))
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1073,10 +1081,9 @@ namespace PCLParaphernalia
 
                         string typeText;
 
-                        if ((_textParsingMethod ==
-                            (int)PCLTextParsingMethods.PCLVal.m83_UTF8) ||
-                            (_textParsingMethod ==
-                            (int)PCLTextParsingMethods.PCLVal.m1008_UTF8_alt))
+                        if ((_textParsingMethod == (int)PCLTextParsingMethods.PCLVal.m83_UTF8) 
+                                                ||
+                            (_textParsingMethod == (int)PCLTextParsingMethods.PCLVal.m1008_UTF8_alt))
                         {
                             typeText = "UTF-8 data";
                         }
@@ -1108,8 +1115,7 @@ namespace PCLParaphernalia
                             _indxOffsetFormat,
                             _analysisLevel);
 
-                        if (_parseType == PrnParse.ParseType.MakeOverlay &&
-                            _linkData.MakeOvlPageMark)
+                        if (_parseType == PrnParse.ParseType.MakeOverlay && _linkData.MakeOvlPageMark)
                         {
                             PrnParseConstants.OvlPos makeOvlPos = _linkData.MakeOvlPos;
 
@@ -1125,8 +1131,7 @@ namespace PCLParaphernalia
                             _linkData.MakeOvlPos = makeOvlPos;
                         }
 
-                        if (_linkData.MakeOvlAct !=
-                                PrnParseConstants.OvlAct.None)
+                        if (_linkData.MakeOvlAct != PrnParseConstants.OvlAct.None)
                         {
                             breakpoint = true;
                         }
@@ -1610,7 +1615,7 @@ namespace PCLParaphernalia
                         _analysisLevel,
                         "*** Warning ***",
                         string.Empty,
-                        "<Esc> found before termination of " + text);
+                        $"<Esc> found before termination of {text}");
 
                     p_or_TChar = PrnParseConstants.asciiSUB;    // will not match any table entries //
 
@@ -1625,8 +1630,7 @@ namespace PCLParaphernalia
                 {
                     // already processed above
                 }
-                else if ((i == vPosNext) &&
-                         (crntByte == PrnParseConstants.asciiAngleLeft))
+                else if ((i == vPosNext) && (crntByte == PrnParseConstants.asciiAngleLeft))
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -1829,7 +1833,7 @@ namespace PCLParaphernalia
                         string text;
 
                         if (crntByte < PrnParseConstants.asciiGraphicMin)
-                            seq = "0x" + crntByte.ToString("x2");
+                            seq = $"0x{crntByte.ToString("x2")}";
                         else
                             seq = ((char)crntByte).ToString();
 
@@ -1850,7 +1854,7 @@ namespace PCLParaphernalia
                             _analysisLevel,
                             "*** Warning ***",
                             seq,
-                            "Invalid value in " + text);
+                            $"Invalid value in {text}");
                     }
                 }
 
@@ -2099,8 +2103,7 @@ namespace PCLParaphernalia
                         if (_macroLevel > 0)
                             _macroLevel--;
 
-                        PrnParseCommon.SetDisplayCriteria(_showMacroData,
-                                                          _macroLevel);
+                        PrnParseCommon.SetDisplayCriteria(_showMacroData, _macroLevel);
                     }
 
                     //--------------------------------------------------------//
@@ -2215,8 +2218,7 @@ namespace PCLParaphernalia
                             string.Empty,
                             "Comment",
                             string.Empty,
-                            "The following sequence is proprietary to " +
-                            vendorName + ":");
+                            $"The following sequence is proprietary to {vendorName}:");
                     }
 
                     if (vLen > 0)
@@ -2224,7 +2226,7 @@ namespace PCLParaphernalia
                         if (optDisplayHexVal &&
                             vCheck) // vCheck ensures we don't do this for invalid or fractional values
                         {
-                            val = _ascii.GetString(_buf, vPosCrnt, vLen) + " (0x" + vInt.ToString("x") + ")";
+                            val = _ascii.GetString(_buf, vPosCrnt, vLen) + $" (0x{vInt.ToString("x")})";
                         }
                         else
                         {
@@ -2256,8 +2258,8 @@ namespace PCLParaphernalia
                     {
                         if (seqKnown)
                         {
-                            if ((makeOvlAct ==
-                                    PrnParseConstants.OvlAct.IdMacro) &&
+                            if ((makeOvlAct == PrnParseConstants.OvlAct.IdMacro) 
+                                            &&
                                 (vInt != _linkData.MakeOvlMacroId))
                             {
                                 makeOvlAct = PrnParseConstants.OvlAct.None;
@@ -2272,8 +2274,7 @@ namespace PCLParaphernalia
                                                          descComplex,
                                                          val);
 
-                            if ((actType == PrnParseConstants.ActPCL.StyleData)
-                                  && _interpretStyle)
+                            if ((actType == PrnParseConstants.ActPCL.StyleData) && _interpretStyle)
                             {
                                 ProcessStyleData(vInt);
                             }
@@ -2339,14 +2340,12 @@ namespace PCLParaphernalia
                                 string.Empty,
                                 "Comment",
                                 string.Empty,
-                                "Preference options inhibit display of " +
-                                "macro contents");
+                                "Preference options inhibit display of macro contents");
                         }
 
                         _macroLevel++;
 
-                        PrnParseCommon.SetDisplayCriteria(_showMacroData,
-                                                          _macroLevel);
+                        PrnParseCommon.SetDisplayCriteria(_showMacroData, _macroLevel);
                     }
 
                     //--------------------------------------------------------//
@@ -3446,23 +3445,21 @@ namespace PCLParaphernalia
             bool optObsolete = false;
             bool optResetHPGL2 = false;
 
-            PrnParseConstants.OvlAct makeOvlAct =
-                PrnParseConstants.OvlAct.None;
+            var makeOvlAct = PrnParseConstants.OvlAct.None;
 
-            PrnParseConstants.OvlShow makeOvlShow =
-                PrnParseConstants.OvlShow.None;
+            var makeOvlShow = PrnParseConstants.OvlShow.None;
 
             string descSimple = string.Empty;
 
             iChar = _buf[bufOffset + 1];
 
             bool seqKnown = PCLSimpleSeqs.CheckSimpleSeq(
-    _analysisLevel + _macroLevel,
-    iChar,
-    ref optObsolete,
-    ref optResetHPGL2,
-    ref makeOvlAct,
-    ref descSimple);
+                _analysisLevel + _macroLevel,
+                iChar,
+                ref optObsolete,
+                ref optResetHPGL2,
+                ref makeOvlAct,
+                ref descSimple);
 
             if (seqKnown)
             {
@@ -3765,9 +3762,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void SetTable(DataTable table)
-        {
-            _table = table;
-        }
+        public void SetTable(DataTable table) => _table = table;
     }
 }

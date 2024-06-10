@@ -199,9 +199,9 @@ namespace PCLParaphernalia
                     {
                         ipStream.Seek(crntPos, SeekOrigin.Begin);
                     }
-                    catch (IOException e)
+                    catch (IOException ex)
                     {
-                        MessageBox.Show($"IO Exception:\r\n{e.Message}\r\n\r\nSeeking to offset {crntPos}.",
+                        MessageBox.Show($"IO Exception:\n\n{ex.Message}\n\nSeeking to offset {crntPos}.",
                                          "Synchronising",
                                          MessageBoxButton.OK,
                                          MessageBoxImage.Error);
@@ -246,9 +246,9 @@ namespace PCLParaphernalia
                                 }
                             }
                         }
-                        catch (IOException e)
+                        catch (IOException ex)
                         {
-                            MessageBox.Show($"IO Exception:\r\n{e.Message}\r\n\r\nCopying " + readLen + " bytes.",
+                            MessageBox.Show($"IO Exception:\n\n{ex.Message}\n\nCopying {readLen} bytes.",
                                              "Synchronising",
                                              MessageBoxButton.OK,
                                              MessageBoxImage.Error);
@@ -315,9 +315,9 @@ namespace PCLParaphernalia
 
                             binWriter.Write(termByte, 0, 1);
                         }
-                        catch (IOException e)
+                        catch (IOException ex)
                         {
-                            MessageBox.Show($"IO Exception:\r\n{e.Message}\r\n\r\nCopying " + readLen + " bytes.",
+                            MessageBox.Show($"IO Exception:\n\n{ex.Message}\n\nCopying {readLen} bytes.",
                                              "Synchronising",
                                              MessageBoxButton.OK,
                                              MessageBoxImage.Error);
@@ -351,8 +351,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    linkData.MakeOvlSkipBegin =
-                        (int)PrnParseConstants.OffsetPosition.Unknown;
+                    linkData.MakeOvlSkipBegin = (int)PrnParseConstants.OffsetPosition.Unknown;
                 }
 
                 if (action == PrnParseConstants.OvlAct.Replace_0x77)
@@ -551,7 +550,7 @@ namespace PCLParaphernalia
                             (int)pageStart,
                             analysisLevel,
                             string.Empty,
-                            "[" + pageLen + " bytes]",
+                            $"[{pageLen} bytes]",
                             "Subsequent page");
                     }
                 }
@@ -575,7 +574,7 @@ namespace PCLParaphernalia
                             (int)pageStart,
                             analysisLevel,
                             string.Empty,
-                            "[" + pageLen + " bytes]",
+                            $"[{pageLen} bytes]",
                             "Subsequent page");
                     }
                 }
@@ -701,8 +700,7 @@ namespace PCLParaphernalia
                 string.Empty,
                 "Error",
                 string.Empty,
-                "Macro identifier " + vInt +
-                " is the specified overlay identifier");
+                $"Macro identifier {vInt} is the specified overlay identifier");
 
             PrnParseCommon.AddTextRow(
                 PrnParseRowTypes.Type.MsgError,
@@ -813,7 +811,7 @@ namespace PCLParaphernalia
                             (int)offset,
                             analysisLevel,
                             "PCLXL embedding",
-                            "[" + copyLen + " bytes]",
+                            $"[{copyLen} bytes]",
                             "Encapsulated within ReadStream structure(s)");
                     }
                 }
@@ -1108,7 +1106,7 @@ namespace PCLParaphernalia
                         (int)linkData.MakeOvlSkipBegin,
                         analysisLevel,
                         string.Empty,
-                        "[" + pageLen + " bytes]",
+                        $"[{pageLen} bytes]",
                         "Subsequent page");
                 }
             }
@@ -1200,7 +1198,7 @@ namespace PCLParaphernalia
                             (int)offset,
                             analysisLevel,
                             "PCLXL embedding",
-                            "[" + copyLen + " bytes]",
+                            $"[{copyLen} bytes]",
                             "Encapsulated within ReadStream structure(s)");
                     }
                 }
@@ -1264,7 +1262,7 @@ namespace PCLParaphernalia
                             (int)offset,
                             analysisLevel,
                             "PCLXL embedding",
-                            "[" + copyLen + " bytes]",
+                            $"[{copyLen} bytes]",
                             "Encapsulated within ReadStream structure(s)");
                     }
                 }
@@ -1275,8 +1273,7 @@ namespace PCLParaphernalia
 
                 if (encapsulate)
                 {
-                    descText = "PushGS (encapsulated within" +
-                                               " ReadStream structure)";
+                    descText = "PushGS (encapsulated within ReadStream structure)";
                 }
                 else
                 {
@@ -1474,9 +1471,9 @@ namespace PCLParaphernalia
 
                 binWriter.Write(seqBuf, 3, 1);
             }
-            catch (IOException e)
+            catch (IOException ex)
             {
-                MessageBox.Show("IO Exception:\r\n" + e.Message,
+                MessageBox.Show($"IO Exception:\n\n{ex.Message}",
                                 "Inserting Sequences",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);

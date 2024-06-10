@@ -315,7 +315,7 @@ namespace PCLParaphernalia
                             _fileOffset + bufOffset + (sliceOffset - ccAdjust),
                             _analysisLevel,
                             "HP-GL/2 Control Code",
-                            "0x" + ccByte.ToString("x2"),
+                            $"0x{ccByte:x2}",
                             ccDesc);
 
                         firstSliceAfterCC = true;
@@ -431,7 +431,7 @@ namespace PCLParaphernalia
                             _fileOffset + bufOffset + (sliceOffset - ccAdjust),
                             _analysisLevel,
                             "HP-GL/2 Control Code",
-                            "0x" + ccByte.ToString("x2"),
+                            $"0x{ccByte:x2}",
                             ccDesc);
 
                         firstSliceAfterCC = true;
@@ -813,8 +813,7 @@ namespace PCLParaphernalia
                         if (badSeq)
                             invalidSeqFound = true;
                     }
-                    else if (_buf[bufOffset] ==
-                        PrnParseConstants.asciiSemiColon)
+                    else if (_buf[bufOffset] == PrnParseConstants.asciiSemiColon)
                     {
                         //----------------------------------------------------//
                         //                                                    //
@@ -863,7 +862,7 @@ namespace PCLParaphernalia
                                 _fileOffset + bufOffset,
                                 _analysisLevel,
                                 "HP-GL/2 Control Code",
-                                "0x" + c1.ToString("x2"),
+                                $"0x{c1:x2}",
                                 desc);
 
                             bufOffset++;
@@ -1243,8 +1242,7 @@ namespace PCLParaphernalia
                                 string.Empty,
                                 "*** Warning ***",
                                 string.Empty,
-                                "Invalid character prior to " +
-                                "opening quote character");
+                                "Invalid character prior to opening quote character");
                         }
                     }
                     else if (crntByte == PrnParseConstants.asciiSemiColon)
@@ -1514,7 +1512,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         "Comment",
                         string.Empty,
-                        "Label terminator is now " + showChar);
+                        $"Label terminator is now {showChar}");
                 }
                 else if (seqKnown && optToggleTransparency)
                 {
@@ -1572,7 +1570,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         "Comment",
                         string.Empty,
-                        "Label transparency is now " + showChar);
+                        $"Label transparency is now {showChar}");
                 }
             }
 

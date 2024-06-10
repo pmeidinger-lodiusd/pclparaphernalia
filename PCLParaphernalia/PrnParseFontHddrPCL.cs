@@ -201,8 +201,7 @@ namespace PCLParaphernalia
                             string.Empty,
                             "*** Warning ***",
                             string.Empty,
-                            "Descriptor (size " + _hddrDescLen +
-                            ") larger than header (size " + _hddrLen + ")");
+                            $"Descriptor (size {_hddrDescLen}) larger than header (size {_hddrLen})");
                     }
                     else if (_hddrDescLen < minHddrDescLen)
                     {
@@ -216,8 +215,7 @@ namespace PCLParaphernalia
                             string.Empty,
                             "*** Warning ***",
                             string.Empty,
-                            "Descriptor (size " + _hddrDescLen +
-                            ") less than minimum (" + minHddrDescLen + ")");
+                            $"Descriptor (size {_hddrDescLen}) less than minimum ({minHddrDescLen})");
                     }
                     else if (_hddrDescLen > bufRem)
                     {
@@ -752,7 +750,7 @@ namespace PCLParaphernalia
                 _fileOffset + bufOffset,
                 _analysisLevel,
                 "PCL Binary",
-                "[ " + _hddrDescLen.ToString() + " bytes ]",
+                $"[ {_hddrDescLen} bytes ]",
                 "Font header descriptor");
 
             if (_showBinData)
@@ -854,8 +852,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         "*** Warning ***",
                         string.Empty,
-                        "Intellifont Global Data length (" + _hddrDataLen +
-                        ") is negative or is longer than the header!");
+                        $"Intellifont Global Data length ({_hddrDataLen}) is negative or is longer than the header!");
                 }
                 else
                 {
@@ -923,7 +920,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     "*** Warning ***",
                     string.Empty,
-                    "Header format (" + _hddrFormat + ") is not recognised");
+                    $"Header format ({_hddrFormat}) is not recognised");
             }
 
             if (!_validHddr)
@@ -1177,50 +1174,49 @@ namespace PCLParaphernalia
 
                 ix1 = (_buf[bufOffset + 36] * 256) + _buf[bufOffset + 37];
                 ix2 = (_buf[bufOffset + 38] * 256) + _buf[bufOffset + 39];
+
+                if (_boundFont)
                 {
-                    if (_boundFont)
+                    PrnParseCommon.AddTextRow(
+                        PrnParseRowTypes.Type.PCLFontHddr,
+                        _table,
+                        PrnParseConstants.OvlShow.None,
+                        string.Empty,
+                        "First Code:",
+                        string.Empty,
+                        $"{ix1} (0x{ix1:x})");
+
+                    PrnParseCommon.AddTextRow(
+                        PrnParseRowTypes.Type.PCLFontHddr,
+                        _table,
+                        PrnParseConstants.OvlShow.None,
+                        string.Empty,
+                        "Last Code:",
+                        string.Empty,
+                        $"{ix2} (0x{ix2:x})");
+                }
+                else
+                {
+                    if (ix1 != 0)
                     {
                         PrnParseCommon.AddTextRow(
-                            PrnParseRowTypes.Type.PCLFontHddr,
+                            PrnParseRowTypes.Type.MsgComment,
                             _table,
                             PrnParseConstants.OvlShow.None,
                             string.Empty,
-                            "First Code:",
+                            "Comment",
                             string.Empty,
-                            ix1.ToString() + " (0x" + ix1.ToString("x") + ")");
-
-                        PrnParseCommon.AddTextRow(
-                            PrnParseRowTypes.Type.PCLFontHddr,
-                            _table,
-                            PrnParseConstants.OvlShow.None,
-                            string.Empty,
-                            "Last Code:",
-                            string.Empty,
-                            ix2.ToString() + " (0x" + ix2.ToString("x") + ")");
+                            $"First Code ({ix1}) should be zero!");
                     }
-                    else
-                    {
-                        if (ix1 != 0)
-                        {
-                            PrnParseCommon.AddTextRow(
-                                PrnParseRowTypes.Type.MsgComment,
-                                _table,
-                                PrnParseConstants.OvlShow.None,
-                                string.Empty,
-                                "Comment",
-                                string.Empty,
-                                "First Code (" + ix1.ToString() + ") should be zero!");
-                        }
 
-                        PrnParseCommon.AddTextRow(
-                            PrnParseRowTypes.Type.PCLFontHddr,
-                            _table,
-                            PrnParseConstants.OvlShow.None,
-                            string.Empty,
-                            "Character Count:",
-                            string.Empty,
-                            ix2 + " (maximum)");
-                    }
+                    PrnParseCommon.AddTextRow(
+                        PrnParseRowTypes.Type.PCLFontHddr,
+                        _table,
+                        PrnParseConstants.OvlShow.None,
+                        string.Empty,
+                        "Character Count:",
+                        string.Empty,
+                        ix2 + " (maximum)");
                 }
 
                 //------------------------------------------------------------//
@@ -1256,7 +1252,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     "Symbol Set:",
                     "Kind1 value:",
-                    ix1.ToString() + " (0x" + ix1.ToString("x2") + ")");
+                    $"{ix1} (0x{ix1:x2})");
 
                 if (indxSymSet == -1)
                 {
@@ -1278,8 +1274,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         "     ---->",
                         "Identifier:",
-                        ix2.ToString() + c +
-                        " (" + PCLSymbolSets.GetName(indxSymSet) + ")");
+                        $"{ix2}{c} ({PCLSymbolSets.GetName(indxSymSet)})");
                 }
 
                 //------------------------------------------------------------//
@@ -1432,7 +1427,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         "Pitch:",
                         string.Empty,
-                        fx1.ToString("F3") + " characters per inch");
+                        $"{fx1:F3} characters per inch");
 
                     if (!pitchSet)
                     {
@@ -1514,7 +1509,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         "Height:",
                         string.Empty,
-                        fx1.ToString("F2") + " PCL (1/72 inch) points");
+                        $"{fx1:F2} PCL (1/72 inch) points");
                 }
                 else if (_intelliFont)
                 {
@@ -1529,7 +1524,7 @@ namespace PCLParaphernalia
                             string.Empty,
                             "Height:",
                             string.Empty,
-                            fx1.ToString("F2") + " true (typesetter) points");
+                            $"{fx1:F2} true (typesetter) points");
                     }
                     else
                     {
@@ -1540,7 +1535,7 @@ namespace PCLParaphernalia
                             "Master Design:",
                             "Height:",
                             string.Empty,
-                            fx1.ToString("F2") + " true (typesetter) points");
+                            $"{fx1:F2} true (typesetter) points");
                     }
                 }
 
@@ -2422,7 +2417,7 @@ namespace PCLParaphernalia
                             string.Empty,
                             "Text Width:",
                             string.Empty,
-                            ix1 + " quarter dots");
+                            $"{ix1} quarter dots");
 
                         fx1 = ((float)(4 * _pclDotResX)) / ix1;
 
@@ -2433,7 +2428,7 @@ namespace PCLParaphernalia
                             string.Empty,
                             "     ---->",
                             "Average Spacing:",
-                            fx1.ToString("F1") + " characters per inch");
+                            $"{fx1:F1} characters per inch");
                     }
                     else
                     {
@@ -2444,7 +2439,7 @@ namespace PCLParaphernalia
                             string.Empty,
                             "Text Width:",
                             string.Empty,
-                            ix1 + " design units");
+                            $"{ix1} design units");
                     }
                 }
 
@@ -2469,7 +2464,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         "Cell Height:",
                         string.Empty,
-                        ix1 + " dots");
+                        $"{ix1} dots");
                 }
                 else
                 {
@@ -2480,7 +2475,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         "Cell Height:",
                         string.Empty,
-                        ix1 + " design units");
+                        $"{ix1} design units");
                 }
 
                 //------------------------------------------------------------//
@@ -2504,7 +2499,7 @@ namespace PCLParaphernalia
                             string.Empty,
                             "Text Height:",
                             string.Empty,
-                            ix1 + " quarter dots");
+                            $"{ix1} quarter dots");
 
                         fx1 = ((float)(4 * _pclDotResY)) / ix1;
 
@@ -2515,7 +2510,7 @@ namespace PCLParaphernalia
                             string.Empty,
                             "     ---->",
                             "Optimum Spacing:",
-                            fx1.ToString("F1") + " lines per inch");
+                            $"{fx1:F1} lines per inch");
                     }
                     else
                     {
@@ -2526,7 +2521,7 @@ namespace PCLParaphernalia
                             string.Empty,
                             "Text Height:",
                             string.Empty,
-                            ix1 + " design units");
+                            $"{ix1} design units");
                     }
                 }
 
@@ -2556,7 +2551,7 @@ namespace PCLParaphernalia
                             string.Empty,
                             "x-Height:",
                             string.Empty,
-                            ix1 + " quarter dots");
+                            $"{ix1} quarter dots");
                     }
                     else
                     {
@@ -2567,7 +2562,7 @@ namespace PCLParaphernalia
                             string.Empty,
                             "x-Height:",
                             string.Empty,
-                            ix1 + " design units");
+                            $"{ix1} design units");
                     }
                 }
 
@@ -2617,7 +2612,7 @@ namespace PCLParaphernalia
                             string.Empty,
                             "Cap Height:",
                             string.Empty,
-                            fx1.ToString("F2") + "% of Em");
+                            $"{fx1:F2}% of Em");
                     }
                 }
                 else if (ix1 != 0)
@@ -2629,7 +2624,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         "Cap Height:",
                         string.Empty,
-                        ix1 + " design units");
+                        $"{ix1} design units");
                 }
 
                 //------------------------------------------------------------//
@@ -2658,7 +2653,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         "Baseline:",
                         string.Empty,
-                        ix1 + " rows below top of cell");
+                        $"{ix1} rows below top of cell");
                 }
                 else if (_intelliFont)
                 {
@@ -2669,7 +2664,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         "Baseline:",
                         string.Empty,
-                        ix1 + " design units (Y co-ord)");
+                        $"{ix1} design units (Y co-ord)");
                 }
                 else if (_truetypeFont && (ix1 != 0))
                 {
@@ -2680,7 +2675,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         "Baseline:",
                         string.Empty,
-                        ix1 + ": should be zero!");
+                        $"{ix1}: should be zero!");
                 }
 
                 //------------------------------------------------------------//
@@ -2721,7 +2716,7 @@ namespace PCLParaphernalia
                             string.Empty,
                             "Underline:",
                             "Thickness:",
-                            ix1 + " dots");
+                            $"{ix1} dots");
                     }
                     else
                     {
@@ -2732,7 +2727,7 @@ namespace PCLParaphernalia
                             string.Empty,
                             "Underline:",
                             "Thickness:",
-                            ix1 + ": should be zero!");
+                            $"{ix1}: should be zero!");
                     }
                 }
 
@@ -2787,7 +2782,7 @@ namespace PCLParaphernalia
                                 string.Empty,
                                 "Underline:",
                                 "Position:",
-                                ix2 + ": should be zero!");
+                                $"{ix2}: should be zero!");
                         }
                         else
                         {
@@ -2798,7 +2793,7 @@ namespace PCLParaphernalia
                                 string.Empty,
                                 string.Empty,
                                 "Position:",
-                                ix2 + ": should be zero!");
+                                $"{ix2}: should be zero!");
                         }
                     }
                 }
@@ -2851,7 +2846,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         "Underline:",
                         "Thickness:",
-                        ix1 + " design units");
+                        $"{ix1} design units");
 
                     if (ix2 > 32767)
                         ix2 -= 65536;
@@ -2916,7 +2911,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         "OR Threshold:",
                         string.Empty,
-                        ix1 + " design units");
+                        $"{ix1} design units");
                 }
 
                 //------------------------------------------------------------//
@@ -3036,7 +3031,7 @@ namespace PCLParaphernalia
                     _fileOffset + bufOffset,
                     _analysisLevel,
                     "PCL Binary",
-                    "[ " + binDataLen + " bytes ]",
+                    $"[ {binDataLen} bytes ]",
                     "Font header Intellifont data");
 
                 if (_showBinData)

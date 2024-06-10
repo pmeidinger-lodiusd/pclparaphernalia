@@ -357,7 +357,7 @@ namespace PCLParaphernalia
                 _fileOffset + bufOffset,
                 _analysisLevel,
                 "PCLXL Binary",
-                "[ " + _cHddrDescLen.ToString() + " bytes ]",
+                $"[ {_cHddrDescLen} bytes ]",
                 "Font header");
 
             if (_showBinData)
@@ -415,7 +415,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     "*** Warning ***",
                     string.Empty,
-                    "Header format (" + _hddrFormat + ") is not recognised");
+                    $"Header format ({_hddrFormat}) is not recognised");
             }
 
             if (!_validHddr)
@@ -535,7 +535,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     "Mapping:",
                     "Kind1 value:",
-                    ix1.ToString() + " (0x" + ix1.ToString("x2") + ")");
+                    $"{ix1} (0x{ix1.ToString("x2")})");
 
                 if (indxSymSet == -1)
                 {
@@ -557,8 +557,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         "     ---->",
                         "Identifier:",
-                        ix2.ToString() + c +
-                        " (" + PCLSymbolSets.GetName(indxSymSet) + ")");
+                        $"{ix2}{c} ({PCLSymbolSets.GetName(indxSymSet)})");
                 }
 
                 //------------------------------------------------------------//

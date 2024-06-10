@@ -168,7 +168,7 @@ namespace PCLParaphernalia
                 else if ((!complement) && (charCollIndex == 0x00))
                     codeDesc = "'000' = MSL";
                 else
-                    codeDesc = "'" + charCollIndex.ToString() + "' not MSL value!";
+                    codeDesc = $"'{charCollIndex}' not MSL value!";
             }
             else
             {
@@ -177,7 +177,7 @@ namespace PCLParaphernalia
                 else if ((!complement) && (charCollIndex == 0x01))
                     codeDesc = "'001' = Unicode";
                 else
-                    codeDesc = "'" + charCollIndex.ToString() + "' not Unicode value!";
+                    codeDesc = $"'{charCollIndex}' not Unicode value!";
             }
 
             PrnParseCommon.AddTextRow(
@@ -364,7 +364,7 @@ namespace PCLParaphernalia
                     _fileOffset + bufOffset,
                     _analysisLevel,
                     text,
-                    "[ " + hddrDataRem + " bytes ]",
+                    $"[ {hddrDataRem} bytes ]",
                     "Font header segmented data");
             }
 
@@ -807,7 +807,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        size:",
                     string.Empty,
-                    segSize + " (" + (segSize + segHddrLen) + " including type & size fields))");
+                    $"{segSize} ({segSize + segHddrLen} including type & size fields))");
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -828,9 +828,8 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    ReportError(
-                        "Segment (size " + segSize + ") larger than",
-                        "remainder (" + hddrDataRem + ") of segmented data",
+                    ReportError($"Segment (size {segSize}) larger than",
+                        $"remainder ({hddrDataRem}) of segmented data",
                         "Header is  internally inconsistent");
 
                     _segRem = hddrDataRem;
@@ -867,7 +866,7 @@ namespace PCLParaphernalia
                                        ref int hddrRem,
                                        ref int hddrChksVal)
         {
-            string segTypeDesc = "0x" + segType.ToString("X4") + ": Unknown";
+            string segTypeDesc = $"0x{segType:X4}: Unknown";
 
             PrnParseConstants.ContType contType;
 
@@ -951,9 +950,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        size:",
                     string.Empty,
-                    segSize + " (" +
-                    (segSize + segHddrLen) +
-                    " including type & size fields)");
+                    $"{segSize} ({segSize + segHddrLen} including type & size fields)");
 
                 //------------------------------------------------------------//
 
@@ -976,9 +973,8 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    ReportError(
-                        "Segment (size " + segSize + ") larger than",
-                        "remainder (" + hddrDataRem + ") of segmented data",
+                    ReportError($"Segment (size {segSize}) larger than",
+                        $"remainder ({hddrDataRem}) of segmented data",
                         "Header is  internally inconsistent");
 
                     _segRem = hddrDataRem;
@@ -1091,7 +1087,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        size:",
                     string.Empty,
-                    segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
+                    $"{segSize} ({segSize + segHddrLen} including type & size fields)");
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1119,8 +1115,8 @@ namespace PCLParaphernalia
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
                     ReportError(
-                        "Segment (size " + segSize + ") larger than",
-                        "remainder (" + hddrDataRem + ") of segmented data",
+                        $"Segment (size {segSize}) larger than",
+                        $"remainder ({hddrDataRem}) of segmented data",
                         "Header is  internally inconsistent");
 
                     _segRem = hddrDataRem;
@@ -1235,7 +1231,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        size:",
                     string.Empty,
-                    segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
+                    $"{segSize} ({segSize + segHddrLen} including type & size fields)");
 
                 baseOffset += segHddrLen;
 
@@ -1294,8 +1290,8 @@ namespace PCLParaphernalia
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
                     ReportError(
-                        "Segment (size " + segSize + ") larger than",
-                        "remainder (" + hddrDataRem + ") of segmented data",
+                        $"Segment (size {segSize}) larger than",
+                        $"remainder ({hddrDataRem}) of segmented data",
                         "Header is  internally inconsistent");
 
                     _segRem = hddrDataRem;
@@ -1415,7 +1411,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        size:",
                     string.Empty,
-                    segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
+                    $"{segSize} ({segSize + segHddrLen} including type & size fields)");
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1454,8 +1450,8 @@ namespace PCLParaphernalia
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
                     ReportError(
-                        "Segment (size " + segSize + ") larger than",
-                        "remainder (" + hddrDataRem + ") of segmented data",
+                        $"Segment (size {segSize}) larger than",
+                        $"remainder ({hddrDataRem}) of segmented data",
                         "Header is  internally inconsistent");
 
                     _segRem = hddrDataRem;
@@ -1568,7 +1564,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        size:",
                     string.Empty,
-                    segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
+                    $"{segSize} ({segSize + segHddrLen} including type & size fields)");
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1596,8 +1592,8 @@ namespace PCLParaphernalia
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
                     ReportError(
-                        "Segment (size " + segSize + ") larger than",
-                        "remainder (" + hddrDataRem + ") of segmented data",
+                        $"Segment (size {segSize}) larger than",
+                        $"remainder ({hddrDataRem}) of segmented data",
                         "Header is  internally inconsistent");
 
                     _segRem = hddrDataRem;
@@ -1721,7 +1717,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        size:",
                     string.Empty,
-                    segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
+                    $"{segSize} ({segSize + segHddrLen} including type & size fields)");
 
                 baseOffset += segHddrLen;
 
@@ -1789,9 +1785,8 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    ReportError(
-                        "Segment (size " + segSize + ") larger than",
-                        "remainder (" + hddrDataRem + ") of segmented data",
+                    ReportError($"Segment (size {segSize}) larger than",
+                        $"remainder ({hddrDataRem}) of segmented data",
                         "Header is  internally inconsistent");
 
                     _segRem = hddrDataRem;
@@ -1950,7 +1945,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        size:",
                     string.Empty,
-                    segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
+                    $"{segSize} ({segSize + segHddrLen} including type & size fields)");
 
                 baseOffset += segHddrLen;
 
@@ -2072,12 +2067,9 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    ReportError(
-                        "Possibly corrupt: 'Region Count' value " + numRegions,
-                        "makes minimum segment header size " +
-                            (minSegLen + varSegSize) + " bytes",
-                        "This is larger than application buffer size of " +
-                            PrnParseConstants.bufSize + " bytes");
+                    ReportError($"Possibly corrupt: 'Region Count' value {numRegions}",
+                        $"makes minimum segment header size {minSegLen + varSegSize} bytes",
+                        $"This is larger than application buffer size of {PrnParseConstants.bufSize} bytes");
                 }
 
                 //------------------------------------------------------------//
@@ -2099,9 +2091,8 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    ReportError(
-                        "Segment (size " + segSize + ") larger than",
-                        "remainder (" + hddrDataRem + ") of segmented data",
+                    ReportError($"Segment (size {segSize}) larger than",
+                        $"remainder ({hddrDataRem}) of segmented data",
                         "Header is  internally inconsistent");
 
                     _segRem = hddrDataRem;
@@ -2221,9 +2212,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        size:",
                     string.Empty,
-                    segSize + " (" +
-                    (segSize + segHddrLen) +
-                    " including type & size fields)");
+                    $"{segSize} ({segSize + segHddrLen} including type & size fields)");
 
                 //------------------------------------------------------------//
 
@@ -2246,9 +2235,8 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    ReportError(
-                        "Segment (size " + segSize + ") larger than",
-                        "remainder (" + hddrDataRem + ") of segmented data",
+                    ReportError($"Segment (size {segSize}) larger than",
+                        $"remainder ({hddrDataRem}) of segmented data",
                         "Header is  internally inconsistent");
 
                     _segRem = hddrDataRem;
@@ -2417,7 +2405,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        size:",
                     string.Empty,
-                    segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
+                    $"{segSize} ({segSize + segHddrLen} including type & size fields)");
 
                 baseOffset += segHddrLen;
 
@@ -2444,7 +2432,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        data:",
                     "SFNT version:",
-                    "0x" + ui32a.ToString("X8"));
+                    $"0x{ui32a:X8}");
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -2583,7 +2571,7 @@ namespace PCLParaphernalia
                             _analysisLevel,
                             "        data:",
                             "      Checksum:",
-                            "0x" + ui32a.ToString("X8"));
+                            $"0x{ui32a:X8}");
 
                         //----------------------------------------------------//
                         //                                                    //
@@ -2622,7 +2610,7 @@ namespace PCLParaphernalia
                                 _analysisLevel,
                                 "        data:",
                                 "      Offset:",
-                                offset.ToString() + " relative (= " + ui32b.ToString() + " absolute)");
+                                $"{offset} relative (= {ui32b} absolute)");
                         }
 
                         //----------------------------------------------------//
@@ -2680,12 +2668,9 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    ReportError(
-                        "Possibly corrupt: 'Table Count' value " + numTables,
-                        "makes minimum segment header size " +
-                            (minSegLen + varSegSize) + " bytes",
-                        "This is larger than application buffer size of " +
-                            PrnParseConstants.bufSize + " bytes");
+                    ReportError($"Possibly corrupt: 'Table Count' value {numTables}",
+                        $"makes minimum segment header size {minSegLen + varSegSize} bytes",
+                        $"This is larger than application buffer size of {PrnParseConstants.bufSize} bytes");
                 }
 
                 //------------------------------------------------------------//
@@ -2707,9 +2692,8 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    ReportError(
-                        "Segment (size " + segSize + ") larger than",
-                        "remainder (" + hddrDataRem + ") of segmented data",
+                    ReportError($"Segment (size {segSize}) larger than",
+                        $"remainder ({hddrDataRem}) of segmented data",
                         "Header is  internally inconsistent");
 
                     _segRem = hddrDataRem;
@@ -2822,9 +2806,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        size:",
                     string.Empty,
-                    segSize + " (" +
-                    (segSize + segHddrLen) +
-                    " including type & size fields)");
+                    $"{segSize} ({segSize + segHddrLen} including type & size fields)");
 
                 //------------------------------------------------------------//
 
@@ -2847,9 +2829,8 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    ReportError(
-                        "Segment (size " + segSize + ") larger than",
-                        "remainder (" + hddrDataRem + ") of segmented data",
+                    ReportError($"Segment (size {segSize}) larger than",
+                        $"remainder ({hddrDataRem}) of segmented data",
                         "Header is  internally inconsistent");
 
                     _segRem = hddrDataRem;
@@ -2966,9 +2947,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        size:",
                     string.Empty,
-                    segSize + " (" +
-                    (segSize + segHddrLen) +
-                    " including type & size fields)");
+                    $"{segSize} ({segSize + segHddrLen} including type & size fields)");
 
                 baseOffset += segHddrLen;
 
@@ -3020,9 +2999,8 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    ReportError(
-                        "Segment (size " + segSize + ") larger than",
-                        "remainder (" + hddrDataRem + ") of segmented data",
+                    ReportError($"Segment (size {segSize}) larger than",
+                        $"remainder ({hddrDataRem}) of segmented data",
                         "Header is  internally inconsistent");
 
                     _segRem = hddrDataRem;
@@ -3135,7 +3113,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        size:",
                     string.Empty,
-                    segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
+                    $"{segSize} ({segSize + segHddrLen} including type & size fields)");
 
                 //------------------------------------------------------------//
 
@@ -3158,9 +3136,8 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    ReportError(
-                        "Segment (size " + segSize + ") larger than",
-                        "remainder (" + hddrDataRem + ") of segmented data",
+                    ReportError($"Segment (size {segSize}) larger than",
+                        $"remainder ({hddrDataRem}) of segmented data",
                         "Header is  internally inconsistent");
 
                     _segRem = hddrDataRem;
@@ -3273,7 +3250,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        size:",
                     string.Empty,
-                    segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
+                    $"{segSize} ({segSize + segHddrLen} including type & size fields)");
 
                 //------------------------------------------------------------//
 
@@ -3296,9 +3273,8 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    ReportError(
-                        "Segment (size " + segSize + ") larger than",
-                        "remainder (" + hddrDataRem + ") of segmented data",
+                    ReportError($"Segment (size {segSize}) larger than",
+                        $"remainder ({hddrDataRem}) of segmented data",
                         "Header is  internally inconsistent");
 
                     _segRem = hddrDataRem;
@@ -3456,7 +3432,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        size:",
                     string.Empty,
-                    segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
+                    $"{segSize} ({segSize + segHddrLen} including type & size fields)");
 
                 baseOffset += segHddrLen;
 
@@ -3523,7 +3499,7 @@ namespace PCLParaphernalia
                             _analysisLevel,
                             "        data:",
                             "Range FirstCode:",
-                            "0x" + ui16a.ToString("X4"));
+                            $"0x{ui16a:X4}");
 
                         j += 2;
 
@@ -3539,17 +3515,14 @@ namespace PCLParaphernalia
                             _analysisLevel,
                             "        data:",
                             "      LastCode:",
-                            "0x" + ui16a.ToString("X4"));
+                            $"0x{ui16a:X4}");
                     }
                 }
                 else
                 {
-                    ReportError(
-                        "Possibly corrupt: 'Range Count' value " + numRanges,
-                        "makes minimum segment header size " +
-                            (minSegLen + varSegSize) + " bytes",
-                        "This is larger than application buffer size of " +
-                            PrnParseConstants.bufSize + " bytes");
+                    ReportError("Possibly corrupt: 'Range Count' value " + numRanges,
+                        $"makes minimum segment header size {minSegLen + varSegSize} bytes",
+                        $"This is larger than application buffer size of {PrnParseConstants.bufSize} bytes");
                 }
 
                 //------------------------------------------------------------//
@@ -3571,9 +3544,8 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    ReportError(
-                        "Segment (size " + segSize + ") larger than",
-                        "remainder (" + hddrDataRem + ") of segmented data",
+                    ReportError($"Segment (size {segSize}) larger than",
+                        $"remainder ({hddrDataRem}) of segmented data",
                         "Header is  internally inconsistent");
 
                     _segRem = hddrDataRem;
@@ -3584,8 +3556,7 @@ namespace PCLParaphernalia
 
                     if (_segRem != 0)
                     {
-                        ReportError(
-                            "Segment remainder " + _segRem + " non-zero",
+                        ReportError($"Segment remainder {_segRem} non-zero",
                             string.Empty, string.Empty);
                     }
                 }
@@ -3704,7 +3675,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        size:",
                     string.Empty,
-                    segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
+                    $"{segSize} ({segSize + segHddrLen} including type & size fields)");
 
                 baseOffset += segHddrLen;
 
@@ -3772,9 +3743,8 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    ReportError(
-                        "Segment (size " + segSize + ") larger than",
-                        "remainder (" + hddrDataRem + ") of segmented data",
+                    ReportError($"Segment (size {segSize}) larger than",
+                        $"remainder ({hddrDataRem}) of segmented data",
                         "Header is  internally inconsistent");
 
                     _segRem = hddrDataRem;
@@ -3891,7 +3861,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        size:",
                     string.Empty,
-                    segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
+                    $"{segSize} ({segSize + segHddrLen} including type & size fields)");
 
                 baseOffset += segHddrLen;
 
@@ -3954,9 +3924,8 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    ReportError(
-                        "Segment (size " + segSize + ") larger than",
-                        "remainder (" + hddrDataRem + ") of segmented data",
+                    ReportError($"Segment (size {segSize}) larger than",
+                        $"remainder ({hddrDataRem}) of segmented data",
                         "Header is  internally inconsistent");
 
                     _segRem = hddrDataRem;
@@ -3967,8 +3936,7 @@ namespace PCLParaphernalia
 
                     if (_segRem != 0)
                     {
-                        ReportError(
-                            "Segment remainder " + _segRem + " non-zero",
+                        ReportError($"Segment remainder {_segRem} non-zero",
                             string.Empty, string.Empty);
                     }
                 }
@@ -4081,7 +4049,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        size:",
                     string.Empty,
-                    segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
+                    $"{segSize} ({segSize + segHddrLen} including type & size fields)");
 
                 baseOffset += segHddrLen;
 
@@ -4171,7 +4139,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        data:",
                     "EoT Marker 2:",
-                    "0x" + ui16a.ToString("X4"));
+                    $"0x{ui16a:X4}");
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -4192,9 +4160,8 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    ReportError(
-                        "Segment (size " + segSize + ") larger than",
-                        "remainder (" + hddrDataRem + ") of segmented data",
+                    ReportError($"Segment (size {segSize}) larger than",
+                        $"remainder ({hddrDataRem}) of segmented data",
                         "Header is  internally inconsistent");
 
                     _segRem = hddrDataRem;
@@ -4205,8 +4172,7 @@ namespace PCLParaphernalia
 
                     if (_segRem != 0)
                     {
-                        ReportError(
-                            "Segment remainder " + _segRem + " non-zero",
+                        ReportError($"Segment remainder {_segRem} non-zero",
                             string.Empty, string.Empty);
                     }
                 }
@@ -4314,7 +4280,7 @@ namespace PCLParaphernalia
                     _analysisLevel,
                     "        size:",
                     string.Empty,
-                    segSize + " (" + (segSize + segHddrLen) + " including type & size fields)");
+                    $"{segSize} ({segSize + segHddrLen} including type & size fields)");
 
                 //------------------------------------------------------------//
 
@@ -4337,9 +4303,8 @@ namespace PCLParaphernalia
 
                 if ((segSize - minSegLen) > hddrDataRem)
                 {
-                    ReportError(
-                        "Segment (size " + segSize + ") larger than",
-                        "remainder (" + hddrDataRem + ") of segmented data",
+                    ReportError($"Segment (size {segSize}) larger than",
+                        $"remainder ({hddrDataRem}) of segmented data",
                         "Header is  internally inconsistent");
 
                     _segRem = hddrDataRem;

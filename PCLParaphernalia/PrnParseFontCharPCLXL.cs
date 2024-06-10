@@ -198,8 +198,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                ProcessDataHeader(ref bufRem,
-                                   ref bufOffset);
+                ProcessDataHeader(ref bufRem, ref bufOffset);
             }
 
             if ((_nextStage == Stage.ShowDataBody) && (_charRem != 0))
@@ -330,7 +329,7 @@ namespace PCLParaphernalia
                         fileOffset + bufOffset,
                         _analysisLevel,
                         "PCLXL Binary",
-                        "[ " + binDataLen + " bytes ]",
+                        $"[ {binDataLen} bytes ]",
                         string.Empty);
 
                     bufRem -= binDataLen;
@@ -372,7 +371,7 @@ namespace PCLParaphernalia
                 _fileOffset + bufOffset,
                 _analysisLevel,
                 "PCLXL Binary",
-                "[ " + _blockHddrLen + " bytes ]",
+                $"[ {_blockHddrLen} bytes ]",
                 "Block header");
 
             if (_showBinData)
@@ -552,7 +551,7 @@ namespace PCLParaphernalia
                 _fileOffset + bufOffset,
                 _analysisLevel,
                 "PCLXL Binary",
-                "[ " + _charHddrLen + " bytes ]",
+                $"[ {_charHddrLen} bytes ]",
                 "Character data header");
 
             if (_showBinData)
@@ -642,8 +641,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     "Character Width:",
                     string.Empty,
-                    _charWidth + " dots (requires " +
-                    bytesPerRow + " padded bytes per row)");
+                    $"{_charWidth} dots (requires {bytesPerRow} padded bytes per row)");
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -679,9 +677,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     "Raster data size:",
                     string.Empty,
-                    ui32a + " bytes (assuming " +
-                    _charHeight + " rows of " +
-                    bytesPerRow + " bytes)");
+                    $"{ui32a} bytes (assuming {_charHeight} rows of {bytesPerRow} bytes)");
 
                 if (ui32a != (_charLen - _blockHddrLen - _charHddrLen))
                 {
@@ -696,8 +692,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         "*** Warning ***",
                         string.Empty,
-                        "Estimated data size (" + ui32a + " bytes)" +
-                        " inconsistent with");
+                        $"Estimated data size ({ui32a} bytes) inconsistent with");
 
                     PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.MsgWarning,
@@ -706,8 +701,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         string.Empty,
                         string.Empty,
-                        "download size = " + _charLen +
-                        ", block header = " + _blockHddrLen + " and ");
+                        $"download size = {_charLen}, block header = {_blockHddrLen} and ");
 
                     PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.MsgWarning,
@@ -716,7 +710,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         string.Empty,
                         string.Empty,
-                        "data header = " + _charHddrLen + " bytes");
+                        $"data header = {_charHddrLen} bytes");
                 }
             }
             else if (_truetypeFont)
@@ -746,9 +740,7 @@ namespace PCLParaphernalia
                     string.Empty,
                     "Character Data Size:",
                     string.Empty,
-                    _charDataSize.ToString() + " bytes " +
-                    " (header = " + _charHddrLen +
-                    "; glyph data = " + ui16a + ")");
+                    $"{_charDataSize.ToString()} bytes  (header = {_charHddrLen}; glyph data = {ui16a})");
 
                 if ((_charDataSize + _blockHddrLen) != _charLen)
                 {
@@ -761,8 +753,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         "*** Warning ***",
                         string.Empty,
-                        "Character Data Size (" + _charDataSize + " bytes)" +
-                        " inconsistent with");
+                        $"Character Data Size ({_charDataSize} bytes) inconsistent with");
 
                     PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.Type.MsgWarning,
@@ -771,8 +762,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         string.Empty,
                         string.Empty,
-                        "download size = " + _charLen +
-                        " and block header = " + _blockHddrLen + " bytes");
+                        $"download size = {_charLen} and block header = {_blockHddrLen} bytes");
                 }
                 else
                 {
@@ -990,7 +980,7 @@ namespace PCLParaphernalia
                     _fileOffset + bufOffset,
                     _analysisLevel,
                     "PCLXL Binary",
-                    "[ " + binDataLen + " bytes ]",
+                    $"[ {binDataLen} bytes ]",
                     "Raster character data");
 
                 if (_showBinData)
@@ -1084,7 +1074,7 @@ namespace PCLParaphernalia
                     _fileOffset + bufOffset,
                     _analysisLevel,
                     "PCLXL Binary",
-                    "[ " + binDataLen + " bytes ]",
+                    $"[ {binDataLen} bytes ]",
                     "Raster character data");
 
                 if (_showBinData)
@@ -1171,7 +1161,7 @@ namespace PCLParaphernalia
                     _fileOffset + bufOffset,
                     _analysisLevel,
                     "PCLXL Binary",
-                    "[ " + binDataLen + " bytes ]",
+                    $"[ {binDataLen} bytes ]",
                     "TrueType glyph data");
 
                 if (_showBinData)
@@ -1233,9 +1223,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         "Comment",
                         "Shape",
-                        "Height (" + _charHeight +
-                        ") > " + _drawCharMaxHeight +
-                        " dots");
+                        $"Height ({_charHeight}) > {_drawCharMaxHeight} dots");
                 }
 
                 if (_charWidth > _drawCharMaxWidth)
@@ -1247,9 +1235,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         "Comment",
                         "Shape",
-                        "Width (" + _charWidth +
-                        ") > " + _drawCharMaxWidth +
-                        " dots");
+                        $"Width ({_charWidth}) > {_drawCharMaxWidth} dots");
                 }
 
                 if (_charDataLen > PrnParseConstants.bufSize)
@@ -1261,9 +1247,7 @@ namespace PCLParaphernalia
                         string.Empty,
                         "Comment",
                         string.Empty,
-                        "Data   (" + _charDataLen +
-                        ") > " + PrnParseConstants.bufSize +
-                        " bytes");
+                        $"Data   ({_charDataLen}) > {PrnParseConstants.bufSize} bytes");
                 }
             }
             else if (_charClass == PCLXLCharClass.Bitmap)
