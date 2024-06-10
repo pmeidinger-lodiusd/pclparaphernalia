@@ -261,51 +261,35 @@ namespace PCLParaphernalia
         {
             byte tag = 0x20;                                              // ?    //
             _tagUnknown =
-                new PCLXLWhitespace(tag,
-                                     "??",
-                                     "*** Unknown tag ***");
+                new PCLXLWhitespace(tag, "??", "*** Unknown tag ***");
 
             tag = 0x00;                                               // 0x00 //
             _tags.Add(tag,
-                new PCLXLWhitespace(tag,
-                                     "<NUL>",
-                                     "Null"));
+                new PCLXLWhitespace(tag, "<NUL>", "Null"));
 
             tag = 0x09;                                               // 0x09 //
             _tags.Add(tag,
-                new PCLXLWhitespace(tag,
-                                     "<HT>",
-                                     "Horizontal Tab"));
+                new PCLXLWhitespace(tag, "<HT>", "Horizontal Tab"));
 
             tag = 0x0a;                                               // 0x0a //
             _tags.Add(tag,
-                new PCLXLWhitespace(tag,
-                                     "<LF>",
-                                     "Line Feed"));
+                new PCLXLWhitespace(tag, "<LF>", "Line Feed"));
 
             tag = 0x0b;                                               // 0x0b //
             _tags.Add(tag,
-                new PCLXLWhitespace(tag,
-                                     "<VT>",
-                                     "Vertical Tab"));
+                new PCLXLWhitespace(tag, "<VT>", "Vertical Tab"));
 
             tag = 0x0c;                                               // 0x0c //
             _tags.Add(tag,
-                new PCLXLWhitespace(tag,
-                                     "<FF>",
-                                     "Form Feed"));
+                new PCLXLWhitespace(tag, "<FF>", "Form Feed"));
 
             tag = 0x0d;                                               // 0x0d //
             _tags.Add(tag,
-                new PCLXLWhitespace(tag,
-                                     "<CR>",
-                                     "Carriage Return"));
+                new PCLXLWhitespace(tag, "<CR>", "Carriage Return"));
 
             tag = 0x20;                                               // 0x20 //
             _tags.Add(tag,
-                new PCLXLWhitespace(tag,
-                                     "<SP>",
-                                     "Space"));
+                new PCLXLWhitespace(tag, "<SP>", "Space"));
 
             _tagCount = _tags.Count;
         }
