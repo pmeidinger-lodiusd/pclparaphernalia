@@ -4266,7 +4266,6 @@ namespace PCLParaphernalia
 
             useEllipsis = false;
             displaySlice = false;
-            seq.Clear();
 
             if (_verboseMode || seqError)
             {
@@ -4323,8 +4322,8 @@ namespace PCLParaphernalia
                 //       hexBuf[hexPtr] = 0x00;
                 //       hexBuf2[hexPtr] = (Char) 0x00;
 
-                seq.Append("0x");
-                seq.Append(hexBuf, 0, hexPtr);
+                seq.Append("0x")
+                    .Append(hexBuf, 0, hexPtr);
 
                 if (useEllipsis)
                     seq.Append("..");
