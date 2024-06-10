@@ -132,7 +132,7 @@ namespace PCLParaphernalia
                         fileOffset + seqOffset,
                         level,
                         typeText,
-                        "[ " + seqLen + " bytes ]",
+                        $"[ {seqLen} bytes ]",
                         string.Empty);
                 }
                 else
@@ -143,7 +143,7 @@ namespace PCLParaphernalia
                         makeOvlShow,
                         string.Empty,
                         typeText,
-                        "[ " + seqLen + " bytes ]",
+                        $"[ {seqLen} bytes ]",
                         string.Empty);
                 }
             }
@@ -192,7 +192,7 @@ namespace PCLParaphernalia
                                 fileOffset + crntOffset,
                                 level,
                                 typeText,
-                                "[ " + seqLen + " bytes ]",
+                                $"[ {seqLen} bytes ]",
                                 preamble + PrnParseCommon.ByteArrayToHexString(buf, crntOffset, sliceLen) + "]");
                         }
                         else
@@ -203,7 +203,7 @@ namespace PCLParaphernalia
                                 makeOvlShow,
                                 string.Empty,
                                 typeText,
-                                "[ " + seqLen + " bytes ]",
+                                $"[ {seqLen} bytes ]",
                                 preamble + PrnParseCommon.ByteArrayToHexString(buf, crntOffset, sliceLen) + "]");
                         }
                     }
