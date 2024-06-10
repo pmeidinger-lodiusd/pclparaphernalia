@@ -64,7 +64,7 @@ namespace PCLParaphernalia
         {
             long fileSize = 0;
 
-            if (!FontFileOpen(fontFilename, ref fileSize))
+            if (!TryFontFileOpen(fontFilename, ref fileSize))
                 return false;
 
             const int bufSize = 2048;
@@ -100,7 +100,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool FontFileOpen(string fileName, ref long fileSize)
+        private static bool TryFontFileOpen(string fileName, ref long fileSize)
         {
             if (string.IsNullOrEmpty(fileName))
             {
@@ -170,7 +170,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            if (!FontFileOpen(fontFilename, ref fileSize))
+            if (!TryFontFileOpen(fontFilename, ref fileSize))
                 return false;
 
             bool OK = ReadHddrIntro(fontFilename,

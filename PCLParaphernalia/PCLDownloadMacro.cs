@@ -116,7 +116,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            if (!MacroFileOpen(filename, ref fileSize))
+            if (!TryMacroFileOpen(filename, ref fileSize))
                 return false;
 
             var macroIdPresent = CheckForMacroId(filename, fileSize, ref macroId);
@@ -154,7 +154,7 @@ namespace PCLParaphernalia
         {
             long fileSize = 0;
 
-            if (!MacroFileOpen(filename, ref fileSize))
+            if (!TryMacroFileOpen(filename, ref fileSize))
                 return false;
 
             const int bufSize = 2048;
@@ -190,7 +190,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool MacroFileOpen(string fileName, ref long fileSize)
+        private static bool TryMacroFileOpen(string fileName, ref long fileSize)
         {
             if (string.IsNullOrEmpty(fileName))
             {

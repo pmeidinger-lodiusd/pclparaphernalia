@@ -121,7 +121,7 @@ namespace PCLParaphernalia
 
             //  _perCentMax = 0;
 
-            if (!PrnFileOpen(prnFilename, ref _fileSize))
+            if (!TryPrnFileOpen(prnFilename, ref _fileSize))
                 return false;
 
             //  analyseAction (bkWk);
@@ -864,7 +864,7 @@ namespace PCLParaphernalia
 
             _flagDiagFileAccess = _options.FlagGenDiagFileAccess;
 
-            if (!PrnFileOpen(prnFilename, ref _fileSize))
+            if (!TryPrnFileOpen(prnFilename, ref _fileSize))
                 return false;
 
             string typeText;
@@ -1243,7 +1243,7 @@ namespace PCLParaphernalia
             _options = options;
             _table = table;
 
-            if (!PrnFileOpen(prnFilename, ref _fileSize))
+            if (!TryPrnFileOpen(prnFilename, ref _fileSize))
                 return false;
 
             _linkData.MakeOvlXL = false;
@@ -1303,7 +1303,7 @@ namespace PCLParaphernalia
             _options = options;
             _table = table;
 
-            if (!PrnFileOpen(prnFilename, ref _fileSize))
+            if (!TryPrnFileOpen(prnFilename, ref _fileSize))
                 return false;
 
             _linkData.MakeOvlXL = true;
@@ -1354,7 +1354,7 @@ namespace PCLParaphernalia
         {
             _options = options;
 
-            if (!PrnFileOpen(prnFilename, ref _fileSize))
+            if (!TryPrnFileOpen(prnFilename, ref _fileSize))
             {
                 pdl = ToolCommonData.PrintLang.Unknown;
 
@@ -1571,7 +1571,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool PrnFileOpen(string fileName, ref long fileSize)
+        private bool TryPrnFileOpen(string fileName, ref long fileSize)
         {
             if (string.IsNullOrEmpty(fileName))
             {

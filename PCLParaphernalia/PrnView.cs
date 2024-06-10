@@ -92,7 +92,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool OpenInputPrn(string fileName, ref long fileSize)
+        private bool TryPrnFileOpen(string fileName, ref long fileSize)
         {
             if (string.IsNullOrEmpty(fileName))
             {
@@ -149,7 +149,7 @@ namespace PCLParaphernalia
 
         public bool ViewFile(string prnFilename, PrnParseOptions options, DataTable table)
         {
-            if (!OpenInputPrn(prnFilename, ref _fileSize))
+            if (!TryPrnFileOpen(prnFilename, ref _fileSize))
                 return false;
 
             ViewFileAction(options, table);

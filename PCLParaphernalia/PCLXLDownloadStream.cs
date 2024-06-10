@@ -143,7 +143,7 @@ namespace PCLParaphernalia
 
             bool streamNamePresent;
 
-            if (!StreamFileOpen(filename, ref fileSize))
+            if (!TryStreamFileOpen(filename, ref fileSize))
                 return false;
 
             streamNamePresent = CheckForStreamName(filename, fileSize, ref streamName);
@@ -192,7 +192,7 @@ namespace PCLParaphernalia
         {
             long fileSize = 0;
 
-            if (!StreamFileOpen(filename, ref fileSize))
+            if (!TryStreamFileOpen(filename, ref fileSize))
                 return false;
 
             const int bufSize = 2048;
@@ -238,7 +238,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool StreamFileOpen(string fileName, ref long fileSize)
+        private static bool TryStreamFileOpen(string fileName, ref long fileSize)
         {
             if (string.IsNullOrEmpty(fileName))
             {
