@@ -585,7 +585,7 @@ namespace PCLParaphernalia
                 if (_symSets[i] == symSetNo)
                 {
                     symSetFound = true;
-                    i = symSetCt;   // force end of loop
+                    break;
                 }
             }
 

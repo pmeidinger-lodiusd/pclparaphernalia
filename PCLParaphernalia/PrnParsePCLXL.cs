@@ -2674,7 +2674,7 @@ namespace PCLParaphernalia
                 if (crntByte == PrnParseConstants.asciiLF)
                 {
                     termPos = i;
-                    i = bufRem; // force end of loop
+                    break;
                 }
             }
 

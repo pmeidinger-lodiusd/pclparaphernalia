@@ -554,7 +554,7 @@ namespace PCLParaphernalia
                     if (_buf[i] == PrnParseConstants.asciiSemiColon)
                     {
                         termPos = i;
-                        i = bufOffset + bufRem; // force end of loop
+                        break;
                     }
                 }
 
