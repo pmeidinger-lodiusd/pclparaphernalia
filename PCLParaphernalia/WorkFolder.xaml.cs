@@ -13,7 +13,7 @@ namespace PCLParaphernalia
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
     public partial class WorkFolder : Window
     {
-        private readonly string _tmpFolder = Environment.GetEnvironmentVariable("TMP");
+        private readonly string _tmpFolder = System.IO.Path.GetTempPath();
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

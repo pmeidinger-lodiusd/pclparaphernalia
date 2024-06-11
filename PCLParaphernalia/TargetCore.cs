@@ -492,7 +492,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                _crntFilename = Path.Combine(Environment.GetEnvironmentVariable("TMP"),  $"{DateTime.Now:yyyyMMdd_HHmmss_fff}.dia");
+                _crntFilename = Path.Combine(Path.GetTempPath(),  $"{DateTime.Now:yyyyMMdd_HHmmss_fff}.dia");
             }
 
             try

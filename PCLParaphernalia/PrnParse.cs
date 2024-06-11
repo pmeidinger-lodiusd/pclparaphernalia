@@ -1004,7 +1004,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                _subFilename = Path.Combine(Environment.GetEnvironmentVariable("TMP"),
+                _subFilename = Path.Combine(Path.GetTempPath(),
                                  $"{DateTime.Now:yyyyMMdd_HHmmss_fff}_{_analysisLevel}.tmp");
 
                 try

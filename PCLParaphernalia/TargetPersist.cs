@@ -133,7 +133,7 @@ namespace PCLParaphernalia
             {
                 const string key = _subKeyTarget + "\\" + _subKeyWorkFolder;
 
-                string defWorkFolder = Environment.GetEnvironmentVariable("TMP");
+                string defWorkFolder = System.IO.Path.GetTempPath();
 
                 using (var subKey = keyMain.CreateSubKey(key))
                 {
