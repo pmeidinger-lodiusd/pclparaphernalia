@@ -546,10 +546,7 @@ namespace PCLParaphernalia
                             PCLXLWriter.Text(prnWriter, false, false,
                                                                       PCLXLWriter.advances_Courier,
                                                                       crntPtSize, posX, posY,
-                                                                      formFileMain.Substring(0, halfLen) +
-                                                                      " ... " +
-                                                                      formFileMain.Substring(len - halfLen,
-                                                                                              halfLen));
+                                                                      formFileMain.Substring(0, halfLen) + " ... " + formFileMain.Substring(len - halfLen, halfLen));
                         }
                     }
 
@@ -573,10 +570,7 @@ namespace PCLParaphernalia
                             PCLXLWriter.Text(prnWriter, false, false,
                                                                       PCLXLWriter.advances_Courier,
                                                                       crntPtSize, posX, posY,
-                                                                      formFileRear.Substring(0, halfLen) +
-                                                                      " ... " +
-                                                                      formFileRear.Substring(len - halfLen,
-                                                                                              halfLen));
+                                                                      formFileRear.Substring(0, halfLen) + " ... " + formFileRear.Substring(len - halfLen, halfLen));
                         }
                     }
                 }

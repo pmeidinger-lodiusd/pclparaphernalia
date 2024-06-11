@@ -462,8 +462,7 @@ namespace PCLParaphernalia
             {
                 index = _subsetPDLs[i];
 
-                cbPDL.Items.Add(Enum.GetName(
-                    typeof(ToolCommonData.PrintLang), i));
+                cbPDL.Items.Add(Enum.GetName(typeof(ToolCommonData.PrintLang), i));
             }
 
             //----------------------------------------------------------------//
@@ -732,7 +731,7 @@ namespace PCLParaphernalia
 
         public void ResetTarget()
         {
-            TargetCore.Target targetType = TargetCore.GetTargetType();
+            var targetType = TargetCore.GetTargetType();
 
             if (targetType == TargetCore.Target.File)
             {
@@ -740,18 +739,12 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.Target.NetPrinter)
             {
-                string netPrnAddress = string.Empty;
-                int netPrnPort = 0;
+                TargetCore.MetricsLoadNetPrinter(out string netPrnAddress,
+                                                  out int netPrnPort,
+                                                  out _,
+                                                  out _);
 
-                int netTimeoutSend = 0;
-                int netTimeoutReceive = 0;
-
-                TargetCore.MetricsLoadNetPrinter(out netPrnAddress,
-                                                  out netPrnPort,
-                                                  out netTimeoutSend,
-                                                  out netTimeoutReceive);
-
-                btnGenerate.Content = "Generate & send test data to\r\n" + netPrnAddress + " : " + netPrnPort.ToString();
+                btnGenerate.Content = $"Generate & send test data to\n{netPrnAddress} : {netPrnPort.ToString()}";
             }
             else if (targetType == TargetCore.Target.WinPrinter)
             {
@@ -759,7 +752,7 @@ namespace PCLParaphernalia
 
                 TargetCore.MetricsLoadWinPrinter(out winPrintername);
 
-                btnGenerate.Content = "Generate & send test data to printer\r\n" + winPrintername;
+                btnGenerate.Content = "Generate & send test data to printer\n" + winPrintername;
             }
         }
 
@@ -774,7 +767,7 @@ namespace PCLParaphernalia
 
         private bool SelectImageFile(ref string selectedName)
         {
-            OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(selectedName);
+            var openDialog = ToolCommonFunctions.CreateOpenFileDialog(selectedName);
 
             openDialog.Filter = "Bitmap Files|*.bmp";
 

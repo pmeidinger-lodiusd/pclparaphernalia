@@ -284,14 +284,14 @@ namespace PCLParaphernalia
             }
             catch (SocketException ex)
             {
-                MessageBox.Show($"SocketException:\r\n\r\nMessage: {ex.Message}\r\n\r\nErrorCode: {ex.ErrorCode}\r\n\r\nSocketErrorCode: {ex.SocketErrorCode}",
+                MessageBox.Show($"SocketException:\n\nMessage: {ex.Message}\n\nErrorCode: {ex.ErrorCode}\n\nSocketErrorCode: {ex.SocketErrorCode}",
                                 "Generate Test Data",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Exception:\r\n" + ex.Message,
+                MessageBox.Show("Exception:\n\n" + ex.Message,
                                 "Generate Test Data",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
@@ -1734,7 +1734,7 @@ namespace PCLParaphernalia
 
         public void ResetTarget()
         {
-            TargetCore.Target targetType = TargetCore.GetTargetType();
+            var targetType = TargetCore.GetTargetType();
 
             if (targetType == TargetCore.Target.File)
             {
@@ -1742,18 +1742,12 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.Target.NetPrinter)
             {
-                string netPrnAddress = string.Empty;
-                int netPrnPort = 0;
+                TargetCore.MetricsLoadNetPrinter(out string netPrnAddress,
+                                                  out int netPrnPort,
+                                                  out _,
+                                                  out _);
 
-                int netTimeoutSend = 0;
-                int netTimeoutReceive = 0;
-
-                TargetCore.MetricsLoadNetPrinter(out netPrnAddress,
-                                                  out netPrnPort,
-                                                  out netTimeoutSend,
-                                                  out netTimeoutReceive);
-
-                btnGenerate.Content = "Generate & send test data to\r\n" + netPrnAddress + " : " + netPrnPort.ToString();
+                btnGenerate.Content = $"Generate & send test data to\n{netPrnAddress} : {netPrnPort}";
             }
             else if (targetType == TargetCore.Target.WinPrinter)
             {
@@ -1761,7 +1755,7 @@ namespace PCLParaphernalia
 
                 TargetCore.MetricsLoadWinPrinter(out winPrintername);
 
-                btnGenerate.Content = "Generate & send test data to printer\r\n" + winPrintername;
+                btnGenerate.Content = $"Generate & send test data to printer\n{winPrintername}";
             }
         }
 
@@ -1776,7 +1770,7 @@ namespace PCLParaphernalia
 
         private bool SelectPCLFormFile(ref string selectedName)
         {
-            OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(selectedName);
+            var openDialog = ToolCommonFunctions.CreateOpenFileDialog(selectedName);
 
             openDialog.Filter = "PCL Overlay Files|*.ovl|All Files|*.*";
 
@@ -1799,7 +1793,7 @@ namespace PCLParaphernalia
 
         private bool SelectPCLXLFormFile(ref string selectedName)
         {
-            OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(selectedName);
+            var openDialog = ToolCommonFunctions.CreateOpenFileDialog(selectedName);
 
             openDialog.Filter = "PCLXL Overlay Files|*.ovx|All Files|*.*";
 
@@ -1836,7 +1830,7 @@ namespace PCLParaphernalia
 
                 if (!File.Exists(fileName))
                 {
-                    MessageBox.Show($"Main form file '{fileName}' does not exist.\r\n\r\nPlease select an appropriate file.",
+                    MessageBox.Show($"Main form file '{fileName}' does not exist.\n\nPlease select an appropriate file.",
                                      "PCL Form File Invalid",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
@@ -1882,7 +1876,7 @@ namespace PCLParaphernalia
 
                 if (!File.Exists(fileName))
                 {
-                    MessageBox.Show($"Rear form file '{fileName}' does not exist.\r\n\r\nPlease select an appropriate file.",
+                    MessageBox.Show($"Rear form file '{fileName}' does not exist.\n\nPlease select an appropriate file.",
                                      "PCL Form File Invalid",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
@@ -2012,7 +2006,7 @@ namespace PCLParaphernalia
 
             if (!File.Exists(fileName))
             {
-                MessageBox.Show($"Main form file '{fileName}' does not exist.\r\n\r\nPlease select an appropriate file.",
+                MessageBox.Show($"Main form file '{fileName}' does not exist.\n\nPlease select an appropriate file.",
                                  "PCLXL Form File Invalid",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
@@ -2051,7 +2045,7 @@ namespace PCLParaphernalia
 
             if (!File.Exists(fileName))
             {
-                MessageBox.Show($"Rear form file '{fileName}' does not exist.\r\n\r\nPlease select an appropriate file.",
+                MessageBox.Show($"Rear form file '{fileName}' does not existr\n\nPlease select an appropriate file.",
                                  "PCLXL Form File Invalid",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
@@ -2209,7 +2203,7 @@ namespace PCLParaphernalia
                 {
                     string newText = defVal.ToString();
 
-                    MessageBox.Show($"{side} macro Id value '{crntText}' is invalid.\r\nValue will be reset to default '{newText}'",
+                    MessageBox.Show($"{side} macro Id value '{crntText}' is invalid.\n\nValue will be reset to default '{newText}'",
                                     "PCL Macro Identifier Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
@@ -2227,7 +2221,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show($"{side} macro Id value '{crntText}' is invalid.\r\nValid range is:\r\n\t{minVal} <= value <= {maxVal}\r\nor\n\r\t<null> to represent <not applicable>.",
+                    MessageBox.Show($"{side} macro Id value '{crntText}' is invalid.\n\nValid range is:\n\t{minVal} <= value <= {maxVal}\nor\n\t<null> to represent <not applicable>.",
                                     "PCL Macro Identifier Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
@@ -2359,7 +2353,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show($"Test page count value '{crntText}' is invalid.\r\nValid range is :\r\n\t{minVal} <= value <= {maxVal}.",
+                    MessageBox.Show($"Test page count value '{crntText}' is invalid.\nValid range is :\n\n\t{minVal} <= value <= {maxVal}.",
                                     "PCL Test Page Count Invalid",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
@@ -2470,8 +2464,6 @@ namespace PCLParaphernalia
 
         private bool ValidatePCLXLSelectionCombo()
         {
-            bool OK = true;
-
             if (_flagMainFormPCLXL && !File.Exists(_formFileMainPCLXL))
             {
                 MessageBox.Show($"Form file '{_formFileMainPCLXL}' does not exist or is inaccesible.",

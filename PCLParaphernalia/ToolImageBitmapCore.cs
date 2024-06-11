@@ -200,7 +200,7 @@ namespace PCLParaphernalia
             }
             catch (IOException e)
             {
-                MessageBox.Show($"IO Exception:\r\n{e.Message}\r\nOpening file '{fileName}'.",
+                MessageBox.Show($"IO Exception:\n\n{e.Message}\r\nOpening file '{fileName}'.",
                                 "Bitmap File Selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
