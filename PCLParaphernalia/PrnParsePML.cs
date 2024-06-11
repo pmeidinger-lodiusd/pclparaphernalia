@@ -122,7 +122,7 @@ namespace PCLParaphernalia
                 string.Empty,
                 "Comment",
                 string.Empty,
-                "of size " + seqDataLen + " ASCIIHEX characters (" + seqLen + " bytes)");
+                $"of size {seqDataLen} ASCIIHEX characters ({seqLen} bytes)");
 
             //----------------------------------------------------------------//
 
@@ -220,7 +220,7 @@ namespace PCLParaphernalia
                 string.Empty,
                 "Comment",
                 string.Empty,
-                "of size " + seqDataLen + " ASCIIHEX characters (" + seqLen + " bytes)");
+                $"of size {seqDataLen} ASCIIHEX characters ({seqLen} bytes)");
 
             PrnParseCommon.AddTextRow(
                 PrnParseRowTypes.Type.MsgComment,
@@ -295,7 +295,7 @@ namespace PCLParaphernalia
                 string.Empty,
                 "Comment",
                 string.Empty,
-                "of size " + dataLen + " bytes");
+                $"of size {dataLen} bytes");
 
             //----------------------------------------------------------------//
 
@@ -319,7 +319,7 @@ namespace PCLParaphernalia
                 string.Empty,
                 "Comment",
                 string.Empty,
-                "of size " + dataLen + " bytes");
+                $"of size {dataLen} bytes");
 
             PrnParseCommon.AddTextRow(
                 PrnParseRowTypes.Type.MsgComment,
@@ -1171,7 +1171,7 @@ namespace PCLParaphernalia
                 ix2 = ix1 >> 5;
                 ix3 = (ix1 & 0x1f) + 64;
 
-                chunkOp.Append(ix1 + " (= " + ix2.ToString() + (char)ix3 + ")");
+                chunkOp.Append($"{ix1} (= {ix2}{(char)ix3})");
             }
             else if (dataType == PMLDataTypes.Tag.String)
             {
