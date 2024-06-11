@@ -112,9 +112,9 @@ namespace PCLParaphernalia
             {
                 _ipStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.None);
             }
-            catch (IOException e)
+            catch (IOException ex)
             {
-                MessageBox.Show($"IO Exception:\r\n{e.Message}\r\n\r\nOpening PJL FS file '{fileName}'",
+                MessageBox.Show($"IO Exception:\n{ex.Message}\n\nOpening PJL FS file '{fileName}'.",
                                 "PJL FS File Error",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
@@ -174,7 +174,7 @@ namespace PCLParaphernalia
             }
             catch (IOException ex)
             {
-                MessageBox.Show($"IO Exception:\r\n{ex.Message}\r\nOpening print file '" + fileName,
+                MessageBox.Show($"IO Exception:\n{ex.Message}\n\nOpening print file '{fileName}'.",
                                 "Print File Selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
@@ -376,7 +376,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                return "No response is expected from the " + PJLCommands.GetName(cmdIndx) + " action command";
+                return $"No response is expected from the {PJLCommands.GetName(cmdIndx)} action command";
             }
         }
 
@@ -663,7 +663,7 @@ namespace PCLParaphernalia
                             //                                                    //
                             //----------------------------------------------------//
 
-                            reply = "SIZE data not found at start of response\r\n\r\nAll response data will be written to the target file:\r\n\r\n" + binTgtFilename;
+                            reply = $"SIZE data not found at start of response\r\n\r\nAll response data will be written to the target file:\r\n\r\n{binTgtFilename}";
 
                             binSize = -1;
                             binRem = 0;
