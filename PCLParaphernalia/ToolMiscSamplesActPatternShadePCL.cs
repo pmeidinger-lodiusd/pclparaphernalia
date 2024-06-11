@@ -49,7 +49,7 @@ namespace PCLParaphernalia
         private static int _logPageHeight;
         private static int _paperWidth;
         private static int _paperHeight;
-        private static int _patternsCt = 0;
+        private static int _patternsCt;
         private static ushort[] _patternIds;
         private static ushort[] _patternHeights;
         private static ushort[] _patternWidths;

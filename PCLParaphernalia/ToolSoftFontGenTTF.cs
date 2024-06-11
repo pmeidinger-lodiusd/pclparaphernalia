@@ -149,46 +149,46 @@ namespace PCLParaphernalia
 
         private readonly bool _logVerbose = true;
 
-        private Stream _ipStream = null;
-        private BinaryReader _binReader = null;
+        private Stream _ipStream;
+        private BinaryReader _binReader;
 
         private ushort[] _mappingTable;
 
         private readonly DataTable _tableDonor;
         private readonly DataTable _tableMapping;
 
-        private long _fontFileSize = 0;
+        private long _fontFileSize;
 
-        private ushort _cmap_numChars = 0;
-        private ushort _cmap_missChars = 0;
-        private ushort _cmap_firstCode = 0;
-        private ushort _cmap_lastCode = 0;
+        private ushort _cmap_numChars;
+        private ushort _cmap_missChars;
+        private ushort _cmap_firstCode;
+        private ushort _cmap_lastCode;
 
-        private ushort _head_unitsPerEm = 0;
-        private short _head_xMin = 0;
-        private short _head_xMax = 0;
-        private short _head_yMin = 0;
-        private short _head_yMax = 0;
-        private short _head_indxLocFmt = 0;
+        private ushort _head_unitsPerEm;
+        private short _head_xMin;
+        private short _head_xMax;
+        private short _head_yMin;
+        private short _head_yMax;
+        private short _head_indxLocFmt;
 
-        private ushort _hhea_numHMetrics = 0;
-        private short _hhea_ascender = 0;
-        private short _hhea_descender = 0;
-        private short _hhea_lineGap = 0;
+        private ushort _hhea_numHMetrics;
+        private short _hhea_ascender;
+        private short _hhea_descender;
+        private short _hhea_lineGap;
 
-        private ushort _vhea_numVMetrics = 0;
+        private ushort _vhea_numVMetrics;
 
-        private ushort _maxp_numGlyphs = 0;
-        private ushort _maxp_maxCompDepth = 0;
+        private ushort _maxp_numGlyphs;
+        private ushort _maxp_maxCompDepth;
 
-        private short _OS_2_xAvgCharWidth = 0;
-        private short _OS_2_sxHeight = 0;
-        private short _OS_2_sTypoDescender = 0;
+        private short _OS_2_xAvgCharWidth;
+        private short _OS_2_sxHeight;
+        private short _OS_2_sTypoDescender;
 
-        private ushort _OS_2_usWidthClass = 0;
-        private ushort _OS_2_usWeightClass = 0;
-        private ushort _OS_2_fsType = 0;
-        private ushort _OS_2_fsSelection = 0;
+        private ushort _OS_2_usWidthClass;
+        private ushort _OS_2_usWeightClass;
+        private ushort _OS_2_fsType;
+        private ushort _OS_2_fsSelection;
 
         private ushort _PCLT_symSet;
         private ushort _PCLT_typeFamily;
@@ -203,7 +203,7 @@ namespace PCLParaphernalia
         private sbyte _PCLT_widthType;
         private sbyte _PCLT_strokeWeight;
 
-        private uint _post_isFixedPitch = 0;
+        private uint _post_isFixedPitch;
 
         private string _name_fullFontnameStr = string.Empty;
 
@@ -212,9 +212,9 @@ namespace PCLParaphernalia
 
         private byte[] _OS_2_panose = new byte[cSizePanose];
 
-        private bool _glyphZeroExists = false;
-        private bool _tabPCLTPresent = false;
-        private bool _tabvmtxPresent = false;
+        private bool _glyphZeroExists;
+        private bool _tabPCLTPresent;
+        private bool _tabvmtxPresent;
 
         private readonly ToolSoftFontGenTTFTable _tab_OS_2;
         private readonly ToolSoftFontGenTTFTable _tab_PCLT;

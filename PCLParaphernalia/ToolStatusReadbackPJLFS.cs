@@ -25,11 +25,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Stream _ipStream = null;
-        private static Stream _opStream = null;
+        private static Stream _ipStream;
+        private static Stream _opStream;
 
-        private static BinaryReader _binReader = null;
-        private static BinaryWriter _binWriter = null;
+        private static BinaryReader _binReader;
+        private static BinaryWriter _binWriter;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

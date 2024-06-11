@@ -56,26 +56,26 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool _flagLogVerbose = false;
-        private bool _flagFormat16 = false;
-        private bool _flagSegGTLastPCL = false;
-        private bool _flagUsePCLT = false;
-        private bool _flagVMetricsPCL = false;
-        private bool _flagVMetricsPCLXL = false;
+        private bool _flagLogVerbose;
+        private bool _flagFormat16;
+        private bool _flagSegGTLastPCL;
+        private bool _flagUsePCLT;
+        private bool _flagVMetricsPCL;
+        private bool _flagVMetricsPCLXL;
 
-        private bool _flagSymSetNullMapPCL = false;
-        private bool _flagSymSetNullMapStd = false;
+        private bool _flagSymSetNullMapPCL;
+        private bool _flagSymSetNullMapStd;
 
-        private bool _flagCharCollCompInhibitPCL = false;
-        private bool _flagCharCollCompSpecificPCL = false;
+        private bool _flagCharCollCompInhibitPCL;
+        private bool _flagCharCollCompSpecificPCL;
 
-        private bool _initialised = false;
-        private bool _symSetUnbound = false;
-        private bool _symSetMapPCL = false;
-        private bool _symSetUserSet = false;
-        private bool _symbolMapping = false;
+        private bool _initialised;
+        private bool _symSetUnbound;
+        private bool _symSetMapPCL;
+        private bool _symSetUserSet;
+        private bool _symbolMapping;
 
-        private bool _fontWithinTTC = false;
+        private bool _fontWithinTTC;
 
         private ToolSoftFontGenTTF _ttfHandler;
 
@@ -97,7 +97,7 @@ namespace PCLParaphernalia
 
         private int[] _subsetSymSets;
 
-        private int _ctMappedSymSets = 0;
+        private int _ctMappedSymSets;
         private int _sizeCharSet;
 
         private int _indxSymSetSubset;
@@ -118,8 +118,8 @@ namespace PCLParaphernalia
         private ushort _symSetNoPCLXL;
 
         private ushort _typefaceNoPCL;
-        private ushort _typefaceVendorPCL = 0;
-        private ushort _typefaceBasecodePCL = 0;
+        private ushort _typefaceVendorPCL;
+        private ushort _typefaceBasecodePCL;
 
         private ulong _charCollCompPCL;
         private ulong _charCollCompPCLAll;

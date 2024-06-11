@@ -21,7 +21,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static readonly bool _flagBound = true;
-        private static readonly bool _flagUnbound = false;
+        private static readonly bool _flagUnbound;
 
         public enum Index
         {

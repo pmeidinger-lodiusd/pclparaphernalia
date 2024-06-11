@@ -41,7 +41,7 @@ namespace PCLParaphernalia
 
         private BinaryWriter _binWriter;
 
-        private ToolSoftFontGenTTF _ttfHandler = null;
+        private ToolSoftFontGenTTF _ttfHandler;
 
         //private readonly ASCIIEncoding _ascii = new ASCIIEncoding();
 

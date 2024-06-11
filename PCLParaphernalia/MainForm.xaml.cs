@@ -17,7 +17,7 @@ namespace PCLParaphernalia
     {
         public const string _regMainKey = @"Software\PCLParaphernalia";
 
-        public bool _runXXXDiags = false;  // ****  design time toggle ****//
+        public bool _runXXXDiags;  // ****  design time toggle ****//
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -25,23 +25,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private ToolFontSample _subFormToolFontSample = null;
-        private ToolFormSample _subFormToolFormSample = null;
-        private ToolImageBitmap _subFormToolImageBitmap = null;
-        private ToolMakeOverlay _subFormToolMakeOverlay = null;
-        private ToolMiscSamples _subFormToolMiscSamples = null;
+        private ToolFontSample _subFormToolFontSample;
+        private ToolFormSample _subFormToolFormSample;
+        private ToolImageBitmap _subFormToolImageBitmap;
+        private ToolMakeOverlay _subFormToolMakeOverlay;
+        private ToolMiscSamples _subFormToolMiscSamples;
 
         //    private ToolPatternGenerate     _subFormToolPatternGenerate     = null;
-        private ToolPrintArea _subFormToolPrintArea = null;
+        private ToolPrintArea _subFormToolPrintArea;
 
-        private ToolPrintLang _subFormToolPrintLang = null;
-        private ToolPrnAnalyse _subFormToolPrnAnalyse = null;
-        private ToolPrnPrint _subFormToolPrnPrint = null;
-        private ToolSoftFontGenerate _subFormToolSoftFontGenerate = null;
-        private ToolStatusReadback _subFormToolStatusReadback = null;
-        private ToolSymbolSetGenerate _subFormToolSymbolSetGenerate = null;
-        private ToolTrayMap _subFormToolTrayMap = null;
-        private ToolXXXDiags _subFormToolXXXDiags = null;
+        private ToolPrintLang _subFormToolPrintLang;
+        private ToolPrnAnalyse _subFormToolPrnAnalyse;
+        private ToolPrnPrint _subFormToolPrnPrint;
+        private ToolSoftFontGenerate _subFormToolSoftFontGenerate;
+        private ToolStatusReadback _subFormToolStatusReadback;
+        private ToolSymbolSetGenerate _subFormToolSymbolSetGenerate;
+        private ToolTrayMap _subFormToolTrayMap;
+        private ToolXXXDiags _subFormToolXXXDiags;
 
         private ToolCommonData.ToolIds _crntToolId = ToolCommonData.ToolIds.Min;
 

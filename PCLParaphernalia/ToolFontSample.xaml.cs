@@ -191,8 +191,8 @@ namespace PCLParaphernalia
 
         private ushort _symSetNo;
         private ushort _symSetNoUserSet;
-        private ushort _symSetUserFirstCode = 0;
-        private ushort _symSetUserLastCode = 0;
+        private ushort _symSetUserFirstCode;
+        private ushort _symSetUserLastCode;
 
         private string _symSetId;
 

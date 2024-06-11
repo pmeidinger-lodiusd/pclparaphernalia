@@ -33,8 +33,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Stream _opStream = null;
-        private BinaryWriter _binWriter = null;
+        private Stream _opStream;
+        private BinaryWriter _binWriter;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

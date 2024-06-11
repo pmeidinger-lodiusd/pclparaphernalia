@@ -49,8 +49,8 @@ namespace PCLParaphernalia
         private int _valCharSetSubCode;
 
         private int _textParsingMethod;
-        private int _analysisLevel = 0;
-        private int _macroLevel = 0;
+        private int _analysisLevel;
+        private int _macroLevel;
 
         private bool _analyseFontHddr;
         private bool _analyseFontChar;

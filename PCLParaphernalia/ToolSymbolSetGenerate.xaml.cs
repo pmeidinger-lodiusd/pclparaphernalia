@@ -50,37 +50,37 @@ namespace PCLParaphernalia
         private ushort[] _symSetMap8bit;
         private ushort[] _symSetMap16bit;
 
-        private ushort _codeMin = 0;
-        private ushort _codeMax = 0;
-        private ushort _codeCt = 0;
+        private ushort _codeMin;
+        private ushort _codeMax;
+        private ushort _codeCt;
 
         private int _sizeCharSet;
 
         private ushort _offsetMin;
         private ushort _offsetMax;
 
-        private bool _initialised = false;
-        private bool _initialisedOffsets = false;
-        private bool _flagDonorSymSetMapPCL = false;
-        private bool _flagDonorSymSetUserSet = false;
+        private bool _initialised;
+        private bool _initialisedOffsets;
+        private bool _flagDonorSymSetMapPCL;
+        private bool _flagDonorSymSetUserSet;
         private bool _flagMapHex = true;
-        private bool _flagCharCollReqInhibit = false;
-        private bool _flagCharCollReqSpecific = false;
+        private bool _flagCharCollReqInhibit;
+        private bool _flagCharCollReqSpecific;
         private bool _flagIndexUnicode = true;
         private bool _flagIgnoreC0 = true;
         private bool _flagIgnoreC1 = true;
-        private bool _flagMultiByteMap = false;
-        private bool _flagMultiByteSet = false;
+        private bool _flagMultiByteMap;
+        private bool _flagMultiByteSet;
 
-        private bool _flagSymSetNullMapPCL = false;
-        private bool _flagSymSetNullMapStd = false;
+        private bool _flagSymSetNullMapPCL;
+        private bool _flagSymSetNullMapStd;
 
         private readonly ASCIIEncoding _ascii = new ASCIIEncoding();
 
         private int[] _subsetSymSets;
 
-        private int _ctMappedSymSets = 0;
-        private int _indxOffsets = 0;
+        private int _ctMappedSymSets;
+        private int _indxOffsets;
 
         private int _indxDonorSymSetSubset;
 

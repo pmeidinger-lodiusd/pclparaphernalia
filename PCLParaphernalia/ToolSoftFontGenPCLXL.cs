@@ -35,14 +35,14 @@ namespace PCLParaphernalia
 
         //private readonly ASCIIEncoding _ascii = new ASCIIEncoding();
 
-        private Stream _opStream = null;
-        private BinaryWriter _binWriter = null;
+        private Stream _opStream;
+        private BinaryWriter _binWriter;
 
-        private readonly ToolSoftFontGenTTF _ttfHandler = null;
+        private readonly ToolSoftFontGenTTF _ttfHandler;
 
         private readonly DataTable _tableLog;
 
-        private bool _symbolMapping = false;
+        private bool _symbolMapping;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

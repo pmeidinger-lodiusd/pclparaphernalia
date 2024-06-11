@@ -42,7 +42,7 @@ namespace PCLParaphernalia
         private static readonly string _fontNameArial = PCLFonts.GetPCLXLName(_fontIndexArial, PCLFonts.Variant.Regular);
         private static readonly string _fontNameCourier = PCLFonts.GetPCLXLName(_fontIndexCourier, PCLFonts.Variant.Regular);
         private static readonly string _fontNameCourierBold = PCLFonts.GetPCLXLName(_fontIndexCourier, PCLFonts.Variant.Bold);
-        private static int _patternsCt = 0;
+        private static int _patternsCt;
         private static ushort[] _patternIds;
         private static ushort[] _patternHeights;
         private static ushort[] _patternWidths;

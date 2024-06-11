@@ -72,35 +72,35 @@ namespace PCLParaphernalia
             (int) ToolCommonData.ToolSubIds.PrescribeCmds
         };
 
-        private int _ctItems = 0;
-        private int _ctTypes = 0;
-        private int _indxType = 0;
+        private int _ctItems;
+        private int _ctTypes;
+        private int _indxType;
 
-        private bool _flagPCLSeqControl = false,
-                        _flagPCLSeqSimple = false,
-                        _flagPCLSeqComplex = false,
-                        _flagPCLOptObsolete = false,
-                        _flagPCLOptDiscrete = false;
+        private bool _flagPCLSeqControl,
+                        _flagPCLSeqSimple,
+                        _flagPCLSeqComplex,
+                        _flagPCLOptObsolete,
+                        _flagPCLOptDiscrete;
 
-        private bool _flagPCLXLTagDataType = false,
-                        _flagPCLXLTagAttribute = false,
-                        _flagPCLXLTagOperator = false,
-                        _flagPCLXLTagAttrDef = false,
-                        _flagPCLXLTagEmbedDataLen = false,
-                        _flagPCLXLTagWhitespace = false,
-                        _flagPCLXLOptReserved = false;
+        private bool _flagPCLXLTagDataType,
+                        _flagPCLXLTagAttribute,
+                        _flagPCLXLTagOperator,
+                        _flagPCLXLTagAttrDef,
+                        _flagPCLXLTagEmbedDataLen,
+                        _flagPCLXLTagWhitespace,
+                        _flagPCLXLOptReserved;
 
-        private bool _flagPMLTagDataType = false,
-                        _flagPMLTagAction = false,
-                        _flagPMLTagOutcome = false;
+        private bool _flagPMLTagDataType,
+                        _flagPMLTagAction,
+                        _flagPMLTagOutcome;
 
-        private bool _flagSymSetList = false;
+        private bool _flagSymSetList;
 
-        private bool _flagSymSetMap = false;
+        private bool _flagSymSetMap;
 
         private SymSetMapType _symSetMapType = SymSetMapType.Std;
 
-        private bool _initialised = false;
+        private bool _initialised;
 
         private static string _saveFilename;
 

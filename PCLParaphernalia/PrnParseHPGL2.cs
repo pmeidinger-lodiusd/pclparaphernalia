@@ -45,11 +45,11 @@ namespace PCLParaphernalia
         private int _valCharSetSubCode;
 
         //      private Int32 _textParsingMethod;
-        private readonly int _analysisLevel = 0;    // TEMP?? //
+        private readonly int _analysisLevel;    // TEMP?? //
 
-        private readonly int _macroLevel = 0;    // TEMP?? //
+        private readonly int _macroLevel;    // TEMP?? //
 
-        private bool _flagMiscBinData = false;
+        private bool _flagMiscBinData;
 
         private readonly ASCIIEncoding _ascii = new ASCIIEncoding();
 

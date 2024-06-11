@@ -71,7 +71,7 @@ namespace PCLParaphernalia
         private readonly PrnParsePCLXLElementMetrics _displayMetricsUbyte;
         private readonly PrnParsePCLXLElementMetrics _displayMetricsUint16;
 
-        private int _analysisLevel = 0;
+        private int _analysisLevel;
 
         private byte _attrID1,
                      _attrID2,

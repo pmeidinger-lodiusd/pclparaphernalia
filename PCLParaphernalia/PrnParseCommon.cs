@@ -27,7 +27,7 @@ namespace PCLParaphernalia
 
         private static bool _showMacroData = true;
         private static PrnParse.ParseType _parseType;
-        private static int _macroLevel = 0;
+        private static int _macroLevel;
         private const string _colName_RowType = PrnParseConstants.cRptA_colName_RowType;
         private const string _colName_Action = PrnParseConstants.cRptA_colName_Action;
         private const string _colName_Offset = PrnParseConstants.cRptA_colName_Offset;

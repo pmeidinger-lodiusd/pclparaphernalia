@@ -23,8 +23,8 @@ namespace PCLParaphernalia
 
         //   private Boolean _initialised;
 
-        private static Stream _ipStream = null;
-        private static BinaryReader _binReader = null;
+        private static Stream _ipStream;
+        private static BinaryReader _binReader;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
