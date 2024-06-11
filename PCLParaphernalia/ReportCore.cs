@@ -68,24 +68,23 @@ namespace PCLParaphernalia
         {
             if (rptFileFmt == RptFileFmt.html)
             {
-                HtmlTextWriter htmlWriter = (HtmlTextWriter)writer;
+                var htmlWriter = (HtmlTextWriter)writer;
                 htmlWriter.Close();
-                StreamWriter htmlStream = (StreamWriter)stream;
-
+                
+                var htmlStream = (StreamWriter)stream;
                 htmlStream.Close();
             }
             else if (rptFileFmt == RptFileFmt.xml)
             {
-                XmlWriter xmlWriter = (XmlWriter)writer;
+                var xmlWriter = (XmlWriter)writer;
                 xmlWriter.Close();
-                StreamWriter xmlStream = (StreamWriter)stream;
-
+                
+                var xmlStream = (StreamWriter)stream;
                 xmlStream.Close();
             }
             else
             {
-                StreamWriter txtWriter = (StreamWriter)writer;
-
+                var txtWriter = (StreamWriter)writer;
                 txtWriter.Close();
             }
         }
@@ -99,8 +98,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void DocFinalise(RptFileFmt rptFileFmt,
-                                        object writer)
+        public static void DocFinalise(RptFileFmt rptFileFmt, object writer)
         {
             if (rptFileFmt == RptFileFmt.html)
                 DocFinaliseHtml((HtmlTextWriter)writer);
@@ -234,8 +232,7 @@ namespace PCLParaphernalia
 
             htmlWriter.RenderBeginTag("style");
 
-            DocInitStyles(RptFileFmt.html, htmlWriter, ctRowClrStyles,
-                           rowClasses, rowClrBack, rowClrFore);
+            DocInitStyles(RptFileFmt.html, htmlWriter, ctRowClrStyles, rowClasses, rowClrBack, rowClrFore);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -819,7 +816,7 @@ namespace PCLParaphernalia
                                        ref object stream,
                                        ref object writer)
         {
-            SaveFileDialog saveDialog = ToolCommonFunctions.CreateSaveFileDialog(saveFilename);
+            var saveDialog = ToolCommonFunctions.CreateSaveFileDialog(saveFilename);
 
             if (rptFileFmt == RptFileFmt.html)
             {
@@ -860,7 +857,7 @@ namespace PCLParaphernalia
 
                 if (stream != null)
                 {
-                    XmlWriterSettings settings = new XmlWriterSettings
+                    var settings = new XmlWriterSettings
                     {
                         Encoding = Encoding.UTF8,
                         Indent = true
@@ -984,9 +981,7 @@ namespace PCLParaphernalia
 
             if (subHddr)
             {
-                int len = txtVal.Length;
-
-                txtWriter.WriteLine("-".PadRight(len, '-'));
+                txtWriter.WriteLine(new string('-', txtVal.Length));
             }
         }
 
@@ -1378,9 +1373,9 @@ namespace PCLParaphernalia
             {
                 int lastCol = colCt - 1;
 
-                string colSep = " ".PadRight(_lcSep, ' ');
+                var colSep = new string(' ', _lcSep);
 
-                StringBuilder line = new StringBuilder();
+                var line = new StringBuilder();
 
                 txtWriter.WriteLine(string.Empty);
 
@@ -1398,7 +1393,7 @@ namespace PCLParaphernalia
 
                 for (int i = 0; i < colCt; i++)
                 {
-                    line.Append("-".PadRight(colSizes[i], '-'));
+                    line.Append(new string('-', colSizes[i]));
 
                     if (i != lastCol)
                         line.Append(colSep);
@@ -1561,9 +1556,7 @@ namespace PCLParaphernalia
 
             int maxRows = 0;
 
-            const string space = " ";
-
-            string colSep = " ".PadRight(_lcSep, ' ');
+            var colSep = new string(' ', _lcSep);
 
             StringBuilder line = new StringBuilder();
 
@@ -1585,7 +1578,7 @@ namespace PCLParaphernalia
                 for (int j = 0; j < colCt; j++)
                 {
                     if (arrData[j].Length <= i)
-                        line.Append(space.PadRight(colSizes[j], ' '));
+                        line.Append(new string(' ', colSizes[j]));
                     else
                         line.Append(arrData[j][i].PadRight(colSizes[j], ' '));
 
@@ -1657,9 +1650,9 @@ namespace PCLParaphernalia
             {
                 htmlWriter.RenderBeginTag("td");
 
-                if (row[colNames[i]] is bool)
+                if (row[colNames[i]] is bool isBoolCol)
                 {
-                    if ((bool)row[colNames[i]])
+                    if (isBoolCol)
                     {
                         if (rptChkMarks == RptChkMarks.boxsym)
                             htmlWriter.Write(_chkMarkBoxSymTrue);
@@ -1717,17 +1710,17 @@ namespace PCLParaphernalia
         {
             int lastCol = colCt - 1;
 
-            string colSep = " ".PadRight(_lcSep, ' ');
+            var colSep = new string(' ', _lcSep);
 
-            StringBuilder line = new StringBuilder();
+            var line = new StringBuilder();
 
             for (int i = 0; i < colCt; i++)
             {
                 string itemData;
 
-                if (row[colNames[i]] is bool)
+                if (row[colNames[i]] is bool isBoolCol)
                 {
-                    if ((bool)row[colNames[i]])
+                    if (isBoolCol)
                     {
                         if (rptChkMarks == RptChkMarks.boxsym)
                             itemData = _chkMarkBoxSymTrue;
@@ -1788,9 +1781,9 @@ namespace PCLParaphernalia
             {
                 xmlWriter.WriteStartElement(colNames[i].ToLower());
 
-                if (row[colNames[i]] is bool)
+                if (row[colNames[i]] is bool isBoolCol)
                 {
-                    if ((bool)row[colNames[i]])
+                    if (isBoolCol)
                     {
                         if (rptChkMarks == RptChkMarks.boxsym)
                             xmlWriter.WriteString(_chkMarkBoxSymTrue);
@@ -1963,7 +1956,7 @@ namespace PCLParaphernalia
                 if (firstLine)
                     prefix = (txtName + ":").PadRight(maxSizeName, ' ');
                 else
-                    prefix = " ".PadRight(maxSizeName, ' ');
+                    prefix = new string(' ', maxSizeName);
 
                 txtWriter.WriteLine(prefix + txtVal.Substring(valPos, maxSizeVal));
 
@@ -1978,7 +1971,7 @@ namespace PCLParaphernalia
                 if (firstLine)
                     prefix = (txtName + ":").PadRight(maxSizeName, ' ');
                 else
-                    prefix = " ".PadRight(maxSizeName, ' ');
+                    prefix = new string(' ', maxSizeName);
 
                 txtWriter.WriteLine(prefix + txtVal.Substring(valPos, valLen - valPos));
             }
