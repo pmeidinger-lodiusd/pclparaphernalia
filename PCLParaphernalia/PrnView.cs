@@ -26,15 +26,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Stream _ipStream = null;
-        private static BinaryReader _binReader = null;
+        private static Stream _ipStream;
+        private static BinaryReader _binReader;
 
-        private static long _fileSize = 0;
+        private static long _fileSize;
 
-        private readonly bool _splitSlices = false;
-        private PrnParseConstants.OptCharSetSubActs _indxCharSetSubAct = 0;
-        private PrnParseConstants.OptCharSets _indxCharSetName = 0;
-        private int _valCharSetSubCode = 0;
+        private readonly bool _splitSlices;
+        private PrnParseConstants.OptCharSetSubActs _indxCharSetSubAct;
+        private PrnParseConstants.OptCharSets _indxCharSetName;
+        private int _valCharSetSubCode;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -118,9 +118,9 @@ namespace PCLParaphernalia
             {
                 _ipStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.None);
             }
-            catch (IOException e)
+            catch (IOException ex)
             {
-                MessageBox.Show($"IO Exception:\r\n{e.Message}\r\n\r\nOpening file '{fileName}'.",
+                MessageBox.Show($"IO Exception:\n\n{ex.Message}\n\nOpening file '{fileName}'.",
                                 "Print file content",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
@@ -214,7 +214,7 @@ namespace PCLParaphernalia
             {
                 AddRow(table,
                         "Comment",
-                        "Start Offset   = " + offsetStart + " (0x" + offsetStart.ToString("X8") + ") requested",
+                        $"Start Offset   = {offsetStart} (0x{offsetStart:X8}) requested",
                         string.Empty);
             }
 
@@ -222,7 +222,7 @@ namespace PCLParaphernalia
             {
                 AddRow(table,
                         "Comment",
-                        "End   Offset   = " + offsetEnd + " (0x" + offsetEnd.ToString("X8") + ") requested",
+                        $"End   Offset   = {offsetEnd} (0x{offsetEnd:X8}) requested",
                         string.Empty);
             }
 
