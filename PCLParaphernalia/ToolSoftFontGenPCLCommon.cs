@@ -25,8 +25,8 @@ namespace PCLParaphernalia
 
         private const int cSizeSegCC = 8;
         private const int cSizeSegGC = 6;
-        public const int cSizeSegGTDirEntry = 16;
-        public const int cSizeSegGTDirHddr = 12;
+        private const int cSizeSegGTDirEntry = 16;
+        private const int cSizeSegGTDirHddr = 12;
         private const int cSizeSegPA = 10;
         private const int cSizeSegVR = 4;
 
@@ -1339,55 +1339,37 @@ namespace PCLParaphernalia
             if (!pdlIsPCLXL)
             {
                 if (symSetUnbound)
-                {
                     flagOK = WriteHddrSegDataCC(pdlIsPCLXL, fmt16, charCollComp, ref sumMod256);
-                }
 
                 if (flagOK)
-                {
                     flagOK = WriteHddrSegDataPA(pdlIsPCLXL, fmt16, panoseData, ref sumMod256);
-                }
             }
 
             if (flagOK && (!segGTLast))
-            {
                 flagOK = WriteHddrSegDataGT(pdlIsPCLXL, fmt16, symSetUnbound, tabvmtxPresent, flagVMetrics, ref sumMod256);
-            }
 
             if (flagOK)
             {
                 if (glyphZeroExists)
-                {
                     flagOK = WriteHddrSegDataGC(pdlIsPCLXL, fmt16, ref sumMod256);
-                }
 
                 if (flagOK)
                 {
                     if (pdlIsPCLXL)
-                    {
                         flagOK = WriteHddrSegDataVI(pdlIsPCLXL, fmt16, conversionText, ref sumMod256);
-                    }
                     else
-                    {
                         flagOK = WriteHddrSegDataCP(pdlIsPCLXL, fmt16, conversionText, ref sumMod256);
-                    }
                 }
             }
 
             if (flagOK && tabvmtxPresent && flagVMetrics)
-            {
                 flagOK = WriteHddrSegDataVR(pdlIsPCLXL, fmt16, ref sumMod256);
-            }
 
             if (flagOK && segGTLast)
-            {
                 flagOK = WriteHddrSegDataGT(pdlIsPCLXL, fmt16, symSetUnbound, tabvmtxPresent, flagVMetrics, ref sumMod256);
-            }
 
             if (flagOK)
-            {
                 flagOK = WriteHddrSegDataNull(pdlIsPCLXL, fmt16, ref sumMod256);
-            }
 
             return flagOK;
         }
