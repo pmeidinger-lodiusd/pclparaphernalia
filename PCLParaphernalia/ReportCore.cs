@@ -119,7 +119,7 @@ namespace PCLParaphernalia
 
         public static void DocFinaliseHtml(HtmlTextWriter htmlWriter)
         {
-            htmlWriter.RenderBeginTag("p");
+            htmlWriter.RenderBeginTag(HtmlTextWriterTag.P);
             htmlWriter.Write("*** End of Report ***");
             htmlWriter.RenderEndTag();    // </p>
 
@@ -214,12 +214,14 @@ namespace PCLParaphernalia
 
             htmlWriter.WriteLine("<!doctype html>");
 
-            htmlWriter.RenderBeginTag("html");
+            htmlWriter.AddAttribute("lang", "en");
 
-            htmlWriter.RenderBeginTag("head");
+            htmlWriter.RenderBeginTag(HtmlTextWriterTag.Html);
+
+            htmlWriter.RenderBeginTag(HtmlTextWriterTag.Head);
 
             htmlWriter.AddAttribute("charset", "utf-8");
-            htmlWriter.RenderBeginTag("meta");
+            htmlWriter.RenderBeginTag(HtmlTextWriterTag.Meta);
             htmlWriter.RenderEndTag();
             htmlWriter.WriteLine(string.Empty);
 
@@ -230,7 +232,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            htmlWriter.RenderBeginTag("style");
+            htmlWriter.RenderBeginTag(HtmlTextWriterTag.Style);
 
             DocInitStyles(RptFileFmt.html, htmlWriter, ctRowClrStyles, rowClasses, rowClrBack, rowClrFore);
 
@@ -245,7 +247,7 @@ namespace PCLParaphernalia
             htmlWriter.RenderEndTag();    // </head>
             htmlWriter.WriteLine(string.Empty);
 
-            htmlWriter.RenderBeginTag("body");
+            htmlWriter.RenderBeginTag(HtmlTextWriterTag.Body);
         }
 
         //--------------------------------------------------------------------//
@@ -465,8 +467,7 @@ namespace PCLParaphernalia
                 xmlWriter.WriteStartElement("xsl", "attribute", null);
                 xmlWriter.WriteAttributeString("name", "class");
                 xmlWriter.WriteStartElement("xsl", "value-of", null);
-                xmlWriter.WriteAttributeString(
-                    "select", "concat(../@padType, ' ', @txtfmt)");
+                xmlWriter.WriteAttributeString("select", "concat(../@padType, ' ', @txtfmt)");
                 xmlWriter.WriteEndElement();       // </xsl:value-of>
                 xmlWriter.WriteEndElement();       // </xsl:attribute>
 
@@ -956,8 +957,8 @@ namespace PCLParaphernalia
 
         private static void HddrTitleHtml(HtmlTextWriter htmlWriter, string txtVal)
         {
-            htmlWriter.AddAttribute("class", "title");
-            htmlWriter.RenderBeginTag("p");
+            htmlWriter.AddAttribute(HtmlTextWriterAttribute.Class, "title");
+            htmlWriter.RenderBeginTag(HtmlTextWriterTag.P);
             htmlWriter.WriteEncodedText(txtVal);
             htmlWriter.RenderEndTag();
             htmlWriter.WriteLine(string.Empty);
@@ -1145,7 +1146,7 @@ namespace PCLParaphernalia
 
             if (firstItem)
             {
-                htmlWriter.RenderBeginTag("p");
+                htmlWriter.RenderBeginTag(HtmlTextWriterTag.P);
                 htmlWriter.Write("&nbsp;");
                 htmlWriter.RenderEndTag();
                 htmlWriter.WriteLine(string.Empty);
@@ -1153,7 +1154,7 @@ namespace PCLParaphernalia
 
             while (valPos + maxSizeVal < valLen)
             {
-                htmlWriter.RenderBeginTag("p");
+                htmlWriter.RenderBeginTag(HtmlTextWriterTag.P);
                 htmlWriter.WriteEncodedText(txtVal.Substring(valPos, maxSizeVal));
                 htmlWriter.RenderEndTag();
                 htmlWriter.WriteLine(string.Empty);
@@ -1163,7 +1164,7 @@ namespace PCLParaphernalia
 
             if (valPos <= valLen)
             {
-                htmlWriter.RenderBeginTag("p");
+                htmlWriter.RenderBeginTag(HtmlTextWriterTag.P);
                 htmlWriter.WriteEncodedText(txtVal.Substring(valPos, valLen - valPos));
                 htmlWriter.RenderEndTag();
                 htmlWriter.WriteLine(string.Empty);
@@ -1330,18 +1331,18 @@ namespace PCLParaphernalia
             int lastCol = colCt - 1;
 
             htmlWriter.WriteLine(string.Empty);
-            htmlWriter.RenderBeginTag("table");
+            htmlWriter.RenderBeginTag(HtmlTextWriterTag.Table);
 
             if (colCt > 0)
             {
-                htmlWriter.RenderBeginTag("tr");
+                htmlWriter.RenderBeginTag(HtmlTextWriterTag.Tr);
 
                 for (int i = 0; i < colCt; i++)
                 {
                     if (plain)
-                        htmlWriter.AddAttribute("class", "plain");
+                        htmlWriter.AddAttribute(HtmlTextWriterAttribute.Class, "plain");
 
-                    htmlWriter.RenderBeginTag("th");
+                    htmlWriter.RenderBeginTag(HtmlTextWriterTag.Th);
 
                     htmlWriter.WriteEncodedText(colHddrs[i]);
                     htmlWriter.RenderEndTag();    // </td>
@@ -1473,7 +1474,7 @@ namespace PCLParaphernalia
         private static void TableHddrPairHtml(HtmlTextWriter htmlWriter)
         {
             htmlWriter.WriteLine(string.Empty);
-            htmlWriter.RenderBeginTag("table");
+            htmlWriter.RenderBeginTag(HtmlTextWriterTag.Table);
             htmlWriter.WriteLine(string.Empty);
         }
 
@@ -1642,13 +1643,13 @@ namespace PCLParaphernalia
             int lastCol = colCt - 1;
 
             if (rowType != null)
-                htmlWriter.AddAttribute("class", rowType);
+                htmlWriter.AddAttribute(HtmlTextWriterAttribute.Class, rowType);
 
-            htmlWriter.RenderBeginTag("tr");
+            htmlWriter.RenderBeginTag(HtmlTextWriterTag.Tr);
 
             for (int i = 0; i < colCt; i++)
             {
-                htmlWriter.RenderBeginTag("td");
+                htmlWriter.RenderBeginTag(HtmlTextWriterTag.Td);
 
                 if (row[colNames[i]] is bool isBoolCol)
                 {
@@ -1866,7 +1867,7 @@ namespace PCLParaphernalia
         {
             string padClass = string.Empty;
 
-            htmlWriter.RenderBeginTag("tr");
+            htmlWriter.RenderBeginTag(HtmlTextWriterTag.Tr);
 
             //----------------------------------------------------------------//
 
@@ -1882,19 +1883,19 @@ namespace PCLParaphernalia
             if (padClass != string.Empty)
             {
                 if (nameAsHddr)
-                    htmlWriter.AddAttribute("class", padClass + " fmtAdorn");
+                    htmlWriter.AddAttribute(HtmlTextWriterAttribute.Class, padClass + " fmtAdorn");
                 else
-                    htmlWriter.AddAttribute("class", padClass);
+                    htmlWriter.AddAttribute(HtmlTextWriterAttribute.Class, padClass);
             }
             else if (nameAsHddr)
             {
-                htmlWriter.AddAttribute("class", "fmtAdorn");
+                htmlWriter.AddAttribute(HtmlTextWriterAttribute.Class, "fmtAdorn");
             }
 
             if (colSpanName != -1)
-                htmlWriter.AddAttribute("colspan", colSpanName.ToString());
+                htmlWriter.AddAttribute(HtmlTextWriterAttribute.Colspan, colSpanName.ToString());
 
-            htmlWriter.RenderBeginTag("td");
+            htmlWriter.RenderBeginTag(HtmlTextWriterTag.Td);
 
             htmlWriter.WriteEncodedText(txtName);
             htmlWriter.RenderEndTag();    // </td>
@@ -1904,12 +1905,12 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (padClass != string.Empty)
-                htmlWriter.AddAttribute("class", padClass);
+                htmlWriter.AddAttribute(HtmlTextWriterAttribute.Class, padClass);
 
             if (colSpanName != -1)
-                htmlWriter.AddAttribute("colspan", colSpanVal.ToString());
+                htmlWriter.AddAttribute(HtmlTextWriterAttribute.Colspan, colSpanVal.ToString());
 
-            htmlWriter.RenderBeginTag("td");
+            htmlWriter.RenderBeginTag(HtmlTextWriterTag.Td);
 
             htmlWriter.WriteEncodedText(txtVal);
             htmlWriter.RenderEndTag();    // </td>
@@ -2072,11 +2073,11 @@ namespace PCLParaphernalia
         {
             int lastCol = colCt - 1;
 
-            htmlWriter.RenderBeginTag("tr");
+            htmlWriter.RenderBeginTag(HtmlTextWriterTag.Tr);
 
             for (int i = 0; i < colCt; i++)
             {
-                htmlWriter.RenderBeginTag("td");
+                htmlWriter.RenderBeginTag(HtmlTextWriterTag.Td);
                 if ((i == 0) && (data[0]?.Length == 0))
                     htmlWriter.Write("&nbsp;");
                 else
@@ -2108,9 +2109,9 @@ namespace PCLParaphernalia
         {
             int lastCol = colCt - 1;
 
-            string colSep = " ".PadRight(_lcSep, ' ');
+            var colSep = new string(' ', _lcSep);
 
-            StringBuilder line = new StringBuilder();
+            var line = new StringBuilder();
 
             for (int i = 0; i < colCt; i++)
             {
