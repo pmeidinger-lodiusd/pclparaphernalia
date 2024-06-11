@@ -744,15 +744,13 @@ namespace PCLParaphernalia
                                                   out _,
                                                   out _);
 
-                btnGenerate.Content = $"Generate & send test data to\n{netPrnAddress} : {netPrnPort.ToString()}";
+                btnGenerate.Content = $"Generate & send test data to\n{netPrnAddress} : {netPrnPort}";
             }
             else if (targetType == TargetCore.Target.WinPrinter)
             {
-                string winPrintername = string.Empty;
+                TargetCore.MetricsLoadWinPrinter(out string winPrintername);
 
-                TargetCore.MetricsLoadWinPrinter(out winPrintername);
-
-                btnGenerate.Content = "Generate & send test data to printer\n" + winPrintername;
+                btnGenerate.Content = $"Generate & send test data to printer\n{winPrintername}";
             }
         }
 

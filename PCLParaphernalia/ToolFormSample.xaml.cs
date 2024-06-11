@@ -1751,9 +1751,7 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.Target.WinPrinter)
             {
-                string winPrintername = string.Empty;
-
-                TargetCore.MetricsLoadWinPrinter(out winPrintername);
+                TargetCore.MetricsLoadWinPrinter(out string winPrintername);
 
                 btnGenerate.Content = $"Generate & send test data to printer\n{winPrintername}";
             }

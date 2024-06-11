@@ -3408,7 +3408,7 @@ namespace PCLParaphernalia
             {
                 TargetCore.MetricsLoadWinPrinter(out string winPrintername);
 
-                btnGenerate.Content = "Generate & send test data to printer\n" + winPrintername;
+                btnGenerate.Content = $"Generate & send test data to printer\n{winPrintername}";
             }
         }
 
