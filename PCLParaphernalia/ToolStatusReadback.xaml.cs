@@ -335,16 +335,13 @@ namespace PCLParaphernalia
 
         private void btnSaveReport_Click(object sender, EventArgs e)
         {
-            bool flagOptRptWrap = false;
-
-            ReportCore.RptFileFmt rptFileFmt = ReportCore.RptFileFmt.NA;
-            ReportCore.RptChkMarks rptChkMarks = ReportCore.RptChkMarks.NA;
+            var rptFileFmt = ReportCore.RptFileFmt.NA;
 
             TargetCore.MetricsReturnFileRpt(
                 ToolCommonData.ToolIds.StatusReadback,
                 out rptFileFmt,
-                out rptChkMarks,
-                out flagOptRptWrap);
+                out _,
+                out _);
 
             if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {
@@ -639,10 +636,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void GiveCrntPDL(ref ToolCommonData.PrintLang crntPDL)
-        {
-            crntPDL = _crntPDL;
-        }
+        public void GiveCrntPDL(ref ToolCommonData.PrintLang crntPDL) => crntPDL = _crntPDL;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
