@@ -203,8 +203,7 @@ namespace PCLParaphernalia
             bool continuation = false;
             startPos = _fileOffset + bufOffset;
 
-            while (!continuation && !langSwitch &&
-                   !endReached && (bufRem > 0))
+            while (!continuation && !langSwitch && !endReached && (bufRem > 0))
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -213,8 +212,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if ((_endOffset != -1) &&
-                    ((_fileOffset + bufOffset) > _endOffset))
+                if ((_endOffset != -1) && ((_fileOffset + bufOffset) > _endOffset))
                 {
                     endReached = true;
                 }
@@ -498,8 +496,7 @@ namespace PCLParaphernalia
 
                 continuation = true;
 
-                PrnParseConstants.ContType contType = PrnParseConstants.ContType.PJL;
-                _linkData.SetBacktrack(contType, -bufRem);
+                _linkData.SetBacktrack(PrnParseConstants.ContType.PJL, -bufRem);
             }
             else
             {
@@ -574,22 +571,17 @@ namespace PCLParaphernalia
                         // nextstage = Whitespace;
                         endLoop = true;
                     }
-                    else if ((cmdRem == 2) &&
-                             (crntByte == PrnParseConstants.asciiCR))
-
+                    else if ((cmdRem == 2) && (crntByte == PrnParseConstants.asciiCR))
                     {
                         // nextstage = Terminator;
                         endLoop = true;
                     }
-                    else if ((cmdRem == 1) &&
-                             (crntByte == PrnParseConstants.asciiLF))
-
+                    else if ((cmdRem == 1) && (crntByte == PrnParseConstants.asciiLF))
                     {
                         // nextstage = Terminator;
                         endLoop = true;
                     }
                     else if (crntByte == PrnParseConstants.asciiEquals)
-
                     {
                         // nextstage = Part2;
                         endLoop = true;
@@ -777,7 +769,7 @@ namespace PCLParaphernalia
                 if ((commandName.Length == 5)
                                             &&
                                     (commandName.Substring(0, 5) == "ENTER")
-                        &&
+                                            &&
                                     (commandParams.Length > 9)
                                             &&
                                     (commandParams.Substring(0, 9) == "LANGUAGE="))
@@ -796,33 +788,27 @@ namespace PCLParaphernalia
 
                     langLen = lang.Length;
 
-                    if ((langLen >= 5) &&
-                        (lang.Substring(0, 5) == "PCLXL"))
+                    if ((langLen >= 5) && (lang.Substring(0, 5) == "PCLXL"))
                     {
                         crntPDL = ToolCommonData.PrintLang.PCLXL;
                     }
-                    else if ((langLen >= 7) &&
-                             (lang.Substring(0, 7) == "PCL3GUI"))
+                    else if ((langLen >= 7) && (lang.Substring(0, 7) == "PCL3GUI"))
                     {
                         crntPDL = ToolCommonData.PrintLang.PCL3GUI;
                     }
-                    else if ((langLen >= 3) &&
-                             (lang.Substring(0, 3) == "PCL"))
+                    else if ((langLen >= 3) && (lang.Substring(0, 3) == "PCL"))
                     {
                         crntPDL = ToolCommonData.PrintLang.PCL;
                     }
-                    else if ((langLen >= 10) &&
-                             (lang.Substring(0, 10) == "POSTSCRIPT"))
+                    else if ((langLen >= 10) && (lang.Substring(0, 10) == "POSTSCRIPT"))
                     {
                         crntPDL = ToolCommonData.PrintLang.PostScript;
                     }
-                    else if ((langLen >= 4) &&
-                             (lang.Substring(0, 4) == "HPGL"))
+                    else if ((langLen >= 4) && (lang.Substring(0, 4) == "HPGL"))
                     {
                         crntPDL = ToolCommonData.PrintLang.HPGL2;
                     }
-                    else if ((langLen >= 5) &&
-                             (lang.Substring(0, 5) == "XL2HB"))
+                    else if ((langLen >= 5) && (lang.Substring(0, 5) == "XL2HB"))
                     {
                         crntPDL = ToolCommonData.PrintLang.XL2HB;
                     }
