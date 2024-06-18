@@ -813,7 +813,7 @@ namespace PCLParaphernalia
 
         private bool SelectImageFile(ref string selectedName)
         {
-            const bool selected = false;
+            //const bool selected = false;
             /*
 
             String folderName = null;

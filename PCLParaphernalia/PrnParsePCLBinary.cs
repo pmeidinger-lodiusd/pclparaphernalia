@@ -4857,7 +4857,6 @@ namespace PCLParaphernalia
 
             int dataSize,
                   planeNo,
-                  offset,
                   matrixRem,
                   matrixHeight,
                   matrixWidth,

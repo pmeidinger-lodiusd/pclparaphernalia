@@ -1141,8 +1141,7 @@ namespace PCLParaphernalia
             PCLOrientations.Aspect aspect;
 
             int indxOrientation,
-                  indxPaperSize,
-                  indxPaperType;
+                  indxPaperSize;
 
             if (_crntPDL == ToolCommonData.PrintLang.PCL)
             {

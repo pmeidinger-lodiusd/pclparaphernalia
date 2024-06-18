@@ -323,8 +323,8 @@ namespace PCLParaphernalia
                   cmdLen,
                   cmdRem,
                   cmdStart,
-                  offset,
-                  lineStart;
+                  offset;
+
             bool invalidSeqFound,
                     cmdParaByte1Found,
                     endLoop,
