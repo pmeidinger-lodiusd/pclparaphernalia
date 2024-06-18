@@ -61,13 +61,13 @@ namespace PCLParaphernalia
                                        int[] indxOrientRear,
                                        bool formAsMacro)
         {
-            int[] indxFormsFront = new int[pageCount];
-            int[] indxFormsRear = new int[pageCount];
+            var indxFormsFront = new int[pageCount];
+            var indxFormsRear = new int[pageCount];
 
-            short[] macroIdsFront = new short[pageCount];
-            short[] macroIdsRear = new short[pageCount];
+            var macroIdsFront = new short[pageCount];
+            var macroIdsRear = new short[pageCount];
 
-            float[] scaleFactors = new float[pageCount];
+            var scaleFactors = new float[pageCount];
 
             int formCountFront = 0;
             int formCountRear = 0;
@@ -88,11 +88,11 @@ namespace PCLParaphernalia
             for (int i = 0; i < pageCount; i++)
             {
                 scaleFactors[i] =
-                PCLPaperSizes.GetPaperLength(
-                    indxPaperSize[i],
-                    _unitsPerInch,
-                    PCLOrientations.Aspect.Portrait) /
-                 A4LengthPort;
+                    PCLPaperSizes.GetPaperLength(
+                        indxPaperSize[i],
+                        _unitsPerInch,
+                        PCLOrientations.Aspect.Portrait) /
+                     A4LengthPort;
             }
 
             //----------------------------------------------------------------//
@@ -283,8 +283,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            posX = (short)((scaleFactor * (_posXValue + _posXIncSub)) -
-                             _logPageOffset);
+            posX = (short)((scaleFactor * (_posXValue + _posXIncSub)) - _logPageOffset);
             posY += (short)(scaleFactor * _posYIncSub);
 
             PCLWriter.Font(prnWriter, true, "19U", "s1p" + ptSizeSub + "v0s3b16602T");
@@ -394,7 +393,7 @@ namespace PCLParaphernalia
             short crntFormFront,
                   crntFormRear;
 
-            bool[] duplexSheet = new bool[pageCount];
+            var duplexSheet = new bool[pageCount];
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -419,8 +418,7 @@ namespace PCLParaphernalia
 
             crntFormFront = 0;
 
-            macroIdsFront[crntFormFront] =
-                (short)(_macroIdBaseFront + crntFormFront);
+            macroIdsFront[crntFormFront] = (short)(_macroIdBaseFront + crntFormFront);
 
             GenerateOverlayFront(prnWriter, true, macroIdsFront[crntFormFront], scaleFactors[0]);
 
@@ -456,8 +454,7 @@ namespace PCLParaphernalia
                     // New paper size.                                    //
                     //----------------------------------------------------//
 
-                    macroIdsFront[crntFormFront] =
-                        (short)(_macroIdBaseFront + crntFormFront);
+                    macroIdsFront[crntFormFront] = (short)(_macroIdBaseFront + crntFormFront);
 
                     GenerateOverlayFront(prnWriter, true, macroIdsFront[crntFormFront], scaleFactors[i]);
 
@@ -479,8 +476,7 @@ namespace PCLParaphernalia
 
             if (duplexSheet[0])
             {
-                macroIdsRear[crntFormRear] =
-                    (short)(_macroIdBaseRear + crntFormRear);
+                macroIdsRear[crntFormRear] = (short)(_macroIdBaseRear + crntFormRear);
 
                 GenerateOverlayRear(prnWriter, true, macroIdsRear[crntFormRear], scaleFactors[0]);
 
@@ -528,8 +524,7 @@ namespace PCLParaphernalia
 
                     if (!matchFound)
                     {
-                        macroIdsRear[crntFormRear] =
-                            (short)(_macroIdBaseRear + crntFormRear);
+                        macroIdsRear[crntFormRear] = (short)(_macroIdBaseRear + crntFormRear);
 
                         GenerateOverlayRear(prnWriter, true, macroIdsRear[crntFormRear], scaleFactors[i]);
 
@@ -605,6 +600,7 @@ namespace PCLParaphernalia
 
             PCLWriter.Font(prnWriter, true, "19U", "s0p" + pitchMain + "h0s3b4099T");
 
+            // TODO: Why are these the same?
             if (simplex)
             {
                 PCLWriter.Text(prnWriter, posX, posY, 0, pageNo.ToString() + " of " + pageCount.ToString());
