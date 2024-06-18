@@ -741,10 +741,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void GiveCrntType(ref ToolCommonData.ToolSubIds crntType)
-        {
-            crntType = (ToolCommonData.ToolSubIds)_subsetSampleTypes[_indxSampleType];
-        }
+        public ToolCommonData.ToolSubIds GetCurrentType() => (ToolCommonData.ToolSubIds)_subsetSampleTypes[_indxSampleType];
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
