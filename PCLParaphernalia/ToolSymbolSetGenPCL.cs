@@ -155,10 +155,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private byte LsByte(ushort value)
-        {
-            return (byte)(value & 0x00ff);
-        }
+        private byte LsByte(ushort value) => (byte)(value & 0x00ff);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -170,10 +167,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private ushort LsUInt16(uint value)
-        {
-            return (ushort)(value & 0x0000ffff);
-        }
+        private ushort LsUInt16(uint value) => (ushort)(value & 0x0000ffff);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -185,10 +179,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private uint LsUInt32(ulong value)
-        {
-            return (uint)(value & 0x0000ffffffff);
-        }
+        private uint LsUInt32(ulong value) => (uint)(value & 0x0000ffffffff);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -200,10 +191,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private byte MsByte(ushort value)
-        {
-            return (byte)((value & 0xff00) >> 8);
-        }
+        private byte MsByte(ushort value) => (byte)((value & 0xff00) >> 8);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -215,10 +203,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private ushort MsUInt16(uint value)
-        {
-            return (ushort)((value & 0xffff0000) >> 16);
-        }
+        private ushort MsUInt16(uint value) => (ushort)((value & 0xffff0000) >> 16);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -230,10 +215,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private uint MsUInt32(ulong value)
-        {
-            return (uint)((value & 0xffffffff00000000) >> 32);
-        }
+        private uint MsUInt32(ulong value) => (uint)((value & 0xffffffff00000000) >> 32);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
