@@ -1050,8 +1050,7 @@ namespace PCLParaphernalia
             PCLOrientations.Aspect aspect;
 
             int indxOrientation,
-                  indxPaperSize,
-                  indxPaperType;
+                  indxPaperSize;
 
             ushort sizeShortEdge,
                    sizeLongEdge,
@@ -1395,7 +1394,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                string errData = $"{edgeThis} Edge value {crntText} inch is invalid, or incompatible with {edgeOther} Edge value.\r\nValid range is :\r\n\t{minVal:F3} <= value <= {maxVal:F3}\r\n{edgeOther} Edge value is {edgeOtherVal} inch.";
+                string errData = $"{edgeThis} Edge value {crntText} inch is invalid, or incompatible with {edgeOther} Edge value.\n\nValid range is :\n\t{minVal:F3} <= value <= {maxVal:F3}\n{edgeOther} Edge value is {edgeOtherVal} inch.";
 
                 if (lostFocusEvent)
                 {
@@ -1406,7 +1405,7 @@ namespace PCLParaphernalia
                     else
                         newText = defValLong.ToString("F2");
 
-                    MessageBox.Show($"{errData}\r\nValue will be reset to default {newText}.",
+                    MessageBox.Show($"{errData}\n\nValue will be reset to default {newText}.",
                                     "Custom page size data",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Warning);
@@ -1544,7 +1543,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                string errData = $"{edgeThis} Edge value {crntText} mm is invalid, or incompatible with {edgeOther} Edge value.\r\nValid range is :\r\n\t{minVal:F0} <= value <= {maxVal:F0}\r\n{edgeOther} Edge value is {edgeOtherVal} mm.";
+                string errData = $"{edgeThis} Edge value {crntText} mm is invalid, or incompatible with {edgeOther} Edge value.\n\nValid range is :\n\t{minVal:F0} <= value <= {maxVal:F0}\n{edgeOther} Edge value is {edgeOtherVal} mm.";
 
                 if (lostFocusEvent)
                 {
