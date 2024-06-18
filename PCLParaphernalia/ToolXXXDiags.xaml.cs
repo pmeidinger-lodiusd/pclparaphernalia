@@ -12,7 +12,6 @@ namespace PCLParaphernalia
     ///
     /// </summary>
     [System.Reflection.Obfuscation(Feature = "renaming", ApplyToMembers = true)]
-
     public partial class ToolXXXDiags : Window
     {
         //--------------------------------------------------------------------//
@@ -36,7 +35,7 @@ namespace PCLParaphernalia
             Max
         }
 
-        private static Int32[] _subsetOrientations = 
+        private static Int32[] _subsetOrientations =
         {
             (Int32) PCLOrientations.eIndex.Portrait,
             (Int32) PCLOrientations.eIndex.Landscape,
@@ -139,10 +138,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void GiveCrntPDL(ref ToolCommonData.PrintLang crntPDL)
-        {
-            crntPDL = ToolCommonData.PrintLang.Unknown;
-        }
+        public ToolCommonData.PrintLang GetCurrentPDL() => ToolCommonData.PrintLang.Unknown;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -190,6 +186,7 @@ namespace PCLParaphernalia
 
             Prtdata_02();
         }
+
         /*
         private void rawPrinterTest_00 ()
         {
@@ -204,7 +201,7 @@ namespace PCLParaphernalia
                 PrintDialog pd  = new PrintDialog();
 
                 pd.PrinterSettings = new PrinterSettings();
-                
+
                 if( DialogResult.OK == pd.ShowDialog(this) )
                 {
                     // Print the file to the printer.
@@ -257,7 +254,6 @@ namespace PCLParaphernalia
                     txtPaperSource.Text = paperSource.SourceName;
                     txtKind.Text = paperSource.Kind.ToString ();
                     txtRawKind.Text = paperSource.RawKind.ToString ();
-
                 }
             }
         }

@@ -294,35 +294,35 @@ namespace PCLParaphernalia
         private void CrntToolResetPDL()
         {
             if (_crntToolId == ToolCommonData.ToolIds.FontSample)
-                _subFormToolFontSample.GiveCrntPDL(ref _crntPDL);
+                _crntPDL = _subFormToolFontSample.GetCurrentPDL();
             else if (_crntToolId == ToolCommonData.ToolIds.FormSample)
-                _subFormToolFormSample.GiveCrntPDL(ref _crntPDL);
+                _crntPDL = _subFormToolFormSample.GetCurrentPDL();
             else if (_crntToolId == ToolCommonData.ToolIds.ImageBitmap)
-                _subFormToolImageBitmap.GiveCrntPDL(ref _crntPDL);
+                _crntPDL = _subFormToolImageBitmap.GetCurrentPDL();
             else if (_crntToolId == ToolCommonData.ToolIds.MakeOverlay)
-                _subFormToolMakeOverlay.GiveCrntPDL(ref _crntPDL);
+                _crntPDL = _subFormToolMakeOverlay.GetCurrentPDL();
             else if (_crntToolId == ToolCommonData.ToolIds.MiscSamples)
-                _subFormToolMiscSamples.GiveCrntPDL(ref _crntPDL);
+                _crntPDL = _subFormToolMiscSamples.GetCurrentPDL();
             //     else if (_crntToolId == ToolCommonData.eToolIds.PatternGenerate)
-            //         _subFormToolPatternGenerate.giveCrntPDL(ref _crntPDL);
+            //         _crntPDL = _subFormToolPatternGenerate.GetCurrentPDL();
             else if (_crntToolId == ToolCommonData.ToolIds.PrintArea)
-                _subFormToolPrintArea.GiveCrntPDL(ref _crntPDL);
+                _crntPDL = _subFormToolPrintArea.GetCurrentPDL();
             else if (_crntToolId == ToolCommonData.ToolIds.PrintLang)
-                _subFormToolPrintLang.GiveCrntPDL(ref _crntPDL);
+                _crntPDL = _subFormToolPrintLang.GetCurrentPDL();
             else if (_crntToolId == ToolCommonData.ToolIds.PrnAnalyse)
-                _subFormToolPrnAnalyse.GiveCrntPDL(ref _crntPDL);
+                _crntPDL = _subFormToolPrnAnalyse.GetCurrentPDL();
             else if (_crntToolId == ToolCommonData.ToolIds.PrnPrint)
-                _subFormToolPrnPrint.GiveCrntPDL(ref _crntPDL);
+                _crntPDL = _subFormToolPrnPrint.GetCurrentPDL();
             else if (_crntToolId == ToolCommonData.ToolIds.SoftFontGenerate)
-                _subFormToolSoftFontGenerate.GiveCrntPDL(ref _crntPDL);
+                _crntPDL = _subFormToolSoftFontGenerate.GetCurrentPDL();
             else if (_crntToolId == ToolCommonData.ToolIds.StatusReadback)
-                _subFormToolStatusReadback.GiveCrntPDL(ref _crntPDL);
+                _crntPDL = _subFormToolStatusReadback.GetCurrentPDL();
             else if (_crntToolId == ToolCommonData.ToolIds.SymbolSetGenerate)
-                _subFormToolSymbolSetGenerate.GiveCrntPDL(ref _crntPDL);
+                _crntPDL = _subFormToolSymbolSetGenerate.GetCurrentPDL();
             else if (_crntToolId == ToolCommonData.ToolIds.TrayMap)
-                _subFormToolTrayMap.GiveCrntPDL(ref _crntPDL);
+                _crntPDL = _subFormToolTrayMap.GetCurrentPDL();
             else if (_crntToolId == ToolCommonData.ToolIds.XXXDiags)
-                _subFormToolXXXDiags.GiveCrntPDL(ref _crntPDL);
+                _crntPDL = _subFormToolXXXDiags.GetCurrentPDL();
         }
 
         //--------------------------------------------------------------------//

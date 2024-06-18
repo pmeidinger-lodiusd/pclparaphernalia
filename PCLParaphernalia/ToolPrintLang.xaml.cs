@@ -1063,10 +1063,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void GiveCrntPDL(ref ToolCommonData.PrintLang crntPDL)
-        {
-            crntPDL = ToolCommonData.PrintLang.Unknown;
-        }
+        public ToolCommonData.PrintLang GetCurrentPDL() => ToolCommonData.PrintLang.Unknown;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

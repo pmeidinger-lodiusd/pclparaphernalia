@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.IO;
 using System.Net.Sockets;
 using System.Windows;
@@ -850,10 +849,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void GiveCrntPDL(ref ToolCommonData.PrintLang crntPDL)
-        {
-            crntPDL = _crntPDL;
-        }
+        public ToolCommonData.PrintLang GetCurrentPDL() => _crntPDL;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
