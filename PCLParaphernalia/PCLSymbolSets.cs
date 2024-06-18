@@ -1235,140 +1235,142 @@ namespace PCLParaphernalia
 
             _indxUnicode = _sets.Count - 1;
 
-            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
-                                         PCLSymSetTypes.Index.Bound_8bit,
-                                         PCLTextParsingMethods.Index.m0_1_byte_default,
-                                         426,                        //   13J //
-                                         string.Empty,
-                                         "Ventura International",
-                                         false,
-                                         PCLSymSetMaps.SymSetMapId.mapNull));
+            _sets.AddRange(new PCLSymbolSet[] {
+                new PCLSymbolSet(SymSetGroup.Preset,
+                                             PCLSymSetTypes.Index.Bound_8bit,
+                                             PCLTextParsingMethods.Index.m0_1_byte_default,
+                                             426,                        //   13J //
+                                             string.Empty,
+                                             "Ventura International",
+                                             false,
+                                             PCLSymSetMaps.SymSetMapId.mapNull),
 
-            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
-                                         PCLSymSetTypes.Index.Bound_8bit,
-                                         PCLTextParsingMethods.Index.m0_1_byte_default,
-                                         205,                        //    6M //
-                                         string.Empty,
-                                         "Ventura Math",
-                                         false,
-                                         PCLSymSetMaps.SymSetMapId.mapNull));
+                new PCLSymbolSet(SymSetGroup.Preset,
+                                             PCLSymSetTypes.Index.Bound_8bit,
+                                             PCLTextParsingMethods.Index.m0_1_byte_default,
+                                             205,                        //    6M //
+                                             string.Empty,
+                                             "Ventura Math",
+                                             false,
+                                             PCLSymSetMaps.SymSetMapId.mapNull),
 
-            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
-                                         PCLSymSetTypes.Index.Bound_8bit,
-                                         PCLTextParsingMethods.Index.m0_1_byte_default,
-                                         458,                        //   14J //
-                                         string.Empty,
-                                         "Ventura US",
-                                         false,
-                                         PCLSymSetMaps.SymSetMapId.mapNull));
+                new PCLSymbolSet(SymSetGroup.Preset,
+                                             PCLSymSetTypes.Index.Bound_8bit,
+                                             PCLTextParsingMethods.Index.m0_1_byte_default,
+                                             458,                        //   14J //
+                                             string.Empty,
+                                             "Ventura US",
+                                             false,
+                                             PCLSymSetMaps.SymSetMapId.mapNull),
 
-            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
-                                         PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
-                                         PCLTextParsingMethods.Index.m0_1_byte_default,
-                                         309,                        //    9U //
-                                         "WIN30",
-                                         "Windows 3.0 Latin 1 (obsolete)",
-                                         true,
-                                         PCLSymSetMaps.SymSetMapId.map_9U));
+                new PCLSymbolSet(SymSetGroup.Preset,
+                                             PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
+                                             PCLTextParsingMethods.Index.m0_1_byte_default,
+                                             309,                        //    9U //
+                                             "WIN30",
+                                             "Windows 3.0 Latin 1 (obsolete)",
+                                             true,
+                                             PCLSymSetMaps.SymSetMapId.map_9U),
 
-            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
-                                         PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
-                                         PCLTextParsingMethods.Index.m0_1_byte_default,
-                                         620,                        //   19L //
-                                         "WINBALT",
-                                         "Windows Baltic (CP 1257)",
-                                         true,
-                                         PCLSymSetMaps.SymSetMapId.map_19L));
+                new PCLSymbolSet(SymSetGroup.Preset,
+                                             PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
+                                             PCLTextParsingMethods.Index.m0_1_byte_default,
+                                             620,                        //   19L //
+                                             "WINBALT",
+                                             "Windows Baltic (CP 1257)",
+                                             true,
+                                             PCLSymSetMaps.SymSetMapId.map_19L),
 
-            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
-                                         PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
-                                         PCLTextParsingMethods.Index.m0_1_byte_default,
-                                         629,                        //   19U //
-                                         "WINL1",
-                                         "Windows Latin 1 (CP 1252)",
-                                         true,
-                                         PCLSymSetMaps.SymSetMapId.map_19U));
+                new PCLSymbolSet(SymSetGroup.Preset,
+                                             PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
+                                             PCLTextParsingMethods.Index.m0_1_byte_default,
+                                             629,                        //   19U //
+                                             "WINL1",
+                                             "Windows Latin 1 (CP 1252)",
+                                             true,
+                                             PCLSymSetMaps.SymSetMapId.map_19U),
 
-            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
-                                         PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
-                                         PCLTextParsingMethods.Index.m0_1_byte_default,
-                                         293,                        //    9E //
-                                         "WINL2",
-                                         "Windows Latin 2 (CP 1250)",
-                                         true,
-                                         PCLSymSetMaps.SymSetMapId.map_9E));
+                new PCLSymbolSet(SymSetGroup.Preset,
+                                             PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
+                                             PCLTextParsingMethods.Index.m0_1_byte_default,
+                                             293,                        //    9E //
+                                             "WINL2",
+                                             "Windows Latin 2 (CP 1250)",
+                                             true,
+                                             PCLSymSetMaps.SymSetMapId.map_9E),
 
-            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
-                                         PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
-                                         PCLTextParsingMethods.Index.m0_1_byte_default,
-                                         180,                        //    5T //
-                                         "WINL5",
-                                         "Windows Latin 5 (CP 1254)",
-                                         true,
-                                         PCLSymSetMaps.SymSetMapId.map_5T));
+                new PCLSymbolSet(SymSetGroup.Preset,
+                                             PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
+                                             PCLTextParsingMethods.Index.m0_1_byte_default,
+                                             180,                        //    5T //
+                                             "WINL5",
+                                             "Windows Latin 5 (CP 1254)",
+                                             true,
+                                             PCLSymSetMaps.SymSetMapId.map_5T),
 
-            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
-                                         PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
-                                         PCLTextParsingMethods.Index.m0_1_byte_default,
-                                         310,                        //    9V //
-                                         "HPWARA",
-                                         "Windows Latin/Arabic",
-                                         true,
-                                         PCLSymSetMaps.SymSetMapId.map_9V));
+                new PCLSymbolSet(SymSetGroup.Preset,
+                                             PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
+                                             PCLTextParsingMethods.Index.m0_1_byte_default,
+                                             310,                        //    9V //
+                                             "HPWARA",
+                                             "Windows Latin/Arabic",
+                                             true,
+                                             PCLSymSetMaps.SymSetMapId.map_9V),
 
-            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
-                                         PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
-                                         PCLTextParsingMethods.Index.m0_1_byte_default,
-                                         306,                        //    9R //
-                                         "WINCYR",
-                                         "Windows Latin/Cyrillic (CP 1251)",
-                                         true,
-                                         PCLSymSetMaps.SymSetMapId.map_9R));
+                new PCLSymbolSet(SymSetGroup.Preset,
+                                             PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
+                                             PCLTextParsingMethods.Index.m0_1_byte_default,
+                                             306,                        //    9R //
+                                             "WINCYR",
+                                             "Windows Latin/Cyrillic (CP 1251)",
+                                             true,
+                                             PCLSymSetMaps.SymSetMapId.map_9R),
 
-            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
-                                         PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
-                                         PCLTextParsingMethods.Index.m0_1_byte_default,
-                                         295,                        //    9G //
-                                         "WINGRK",
-                                         "Windows Latin/Greek (CP 1253)",
-                                         true,
-                                         PCLSymSetMaps.SymSetMapId.map_9G));
+                new PCLSymbolSet(SymSetGroup.Preset,
+                                             PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
+                                             PCLTextParsingMethods.Index.m0_1_byte_default,
+                                             295,                        //    9G //
+                                             "WINGRK",
+                                             "Windows Latin/Greek (CP 1253)",
+                                             true,
+                                             PCLSymSetMaps.SymSetMapId.map_9G),
 
-            _sets.Add(new PCLSymbolSet(SymSetGroup.NonStd,
-                                         PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
-                                         PCLTextParsingMethods.Index.m0_1_byte_default,
-                                         28852,                      //  901T //
-                                         string.Empty,
-                                         "Windows Latin/Thai (CP 874)",
-                                         true,
-                                         PCLSymSetMaps.SymSetMapId.map_x901T));
+                new PCLSymbolSet(SymSetGroup.NonStd,
+                                             PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
+                                             PCLTextParsingMethods.Index.m0_1_byte_default,
+                                             28852,                      //  901T //
+                                             string.Empty,
+                                             "Windows Latin/Thai (CP 874)",
+                                             true,
+                                             PCLSymSetMaps.SymSetMapId.map_x901T),
 
-            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
-                                         PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
-                                         PCLTextParsingMethods.Index.m0_1_byte_default,
-                                         18540,                      //  579L //
-                                         string.Empty,
-                                         "Wingdings",
-                                         false,
-                                         PCLSymSetMaps.SymSetMapId.mapNull));
+                new PCLSymbolSet(SymSetGroup.Preset,
+                                             PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
+                                             PCLTextParsingMethods.Index.m0_1_byte_default,
+                                             18540,                      //  579L //
+                                             string.Empty,
+                                             "Wingdings",
+                                             false,
+                                             PCLSymSetMaps.SymSetMapId.mapNull),
 
-            _sets.Add(new PCLSymbolSet(SymSetGroup.Preset,
-                                         PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
-                                         PCLTextParsingMethods.Index.m0_1_byte_default,
-                                         460,                        //   14L //
-                                         string.Empty,
-                                         "ZapfDingBats",
-                                         false,
-                                         PCLSymSetMaps.SymSetMapId.mapNull));
+                new PCLSymbolSet(SymSetGroup.Preset,
+                                             PCLSymSetTypes.Index.Bound_PC8,        // no C0 //
+                                             PCLTextParsingMethods.Index.m0_1_byte_default,
+                                             460,                        //   14L //
+                                             string.Empty,
+                                             "ZapfDingBats",
+                                             false,
+                                             PCLSymSetMaps.SymSetMapId.mapNull),
 
-            _sets.Add(new PCLSymbolSet(SymSetGroup.UserSet,
-                                         PCLSymSetTypes.Index.Bound_PC8,
-                                         PCLTextParsingMethods.Index.m0_1_byte_default,
-                                         65530,                      //    ?? //
-                                         string.Empty,
-                                         "<user-defined via file>",
-                                         false,
-                                         PCLSymSetMaps.SymSetMapId.mapUserSet));
+                new PCLSymbolSet(SymSetGroup.UserSet,
+                                             PCLSymSetTypes.Index.Bound_PC8,
+                                             PCLTextParsingMethods.Index.m0_1_byte_default,
+                                             65530,                      //    ?? //
+                                             string.Empty,
+                                             "<user-defined via file>",
+                                             false,
+                                             PCLSymSetMaps.SymSetMapId.mapUserSet)
+            });
 
             _indxUserSet = _sets.Count - 1;
 
@@ -1397,9 +1399,7 @@ namespace PCLParaphernalia
                     _setsCountMapped++;
             }
 
-            _setsCountStd = _setsCountCustom +
-                            _setsCountPreset +
-                            _setsCountUnicode;
+            _setsCountStd = _setsCountCustom + _setsCountPreset + _setsCountUnicode;
         }
 
         //--------------------------------------------------------------------//
@@ -1412,10 +1412,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool IsMapped(int selection)
-        {
-            return _sets[selection].FlagMapped;
-        }
+        public static bool IsMapped(int selection) => _sets[selection].FlagMapped;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -1428,8 +1425,8 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void SetDataUserSet(ushort symSetNo,
-                                           PCLSymSetTypes.Index symSetType,
-                                           ushort[] mapArray)
+                                   PCLSymSetTypes.Index symSetType,
+                                   ushort[] mapArray)
         {
             _sets[_indxUserSet].Kind1 = symSetNo;
             _sets[_indxUserSet].Id = TranslateKind1ToId(symSetNo);
