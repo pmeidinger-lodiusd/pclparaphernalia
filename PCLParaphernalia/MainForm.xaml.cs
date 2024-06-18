@@ -342,7 +342,7 @@ namespace PCLParaphernalia
             _crntSubId = ToolCommonData.ToolSubIds.None;
 
             if (_crntToolId == ToolCommonData.ToolIds.MiscSamples)
-                _subFormToolMiscSamples.GiveCrntType(ref _crntSubId);
+                _crntSubId = _subFormToolMiscSamples.GetCurrentType();
         }
 
         //--------------------------------------------------------------------//
