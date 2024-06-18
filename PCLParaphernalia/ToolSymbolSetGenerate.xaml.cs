@@ -1,10 +1,8 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -74,8 +72,6 @@ namespace PCLParaphernalia
 
         private bool _flagSymSetNullMapPCL;
         private bool _flagSymSetNullMapStd;
-
-        private readonly ASCIIEncoding _ascii = new ASCIIEncoding();
 
         private int[] _subsetSymSets;
 
@@ -172,16 +168,14 @@ namespace PCLParaphernalia
         {
             const ushort offsetFactor = 100 * 32;
 
-            string idAlpha = string.Empty,
-                   idNum = string.Empty;
+            var idAlpha = string.Empty;
+            var idNum = string.Empty;
 
             int targetOffset = (_symSetNoTargetMax - _donorSymSetNo) / offsetFactor * offsetFactor;
 
             _targetSymSetNo = (ushort)(_donorSymSetNo + targetOffset);
 
-            PCLSymbolSets.TranslateKind1ToId(_targetSymSetNo,
-                                              ref idNum,
-                                              ref idAlpha);
+            PCLSymbolSets.TranslateKind1ToId(_targetSymSetNo, ref idNum, ref idAlpha);
 
             txtTargetSymSetNo.Text = _donorSymSetNo.ToString();
 
@@ -265,11 +259,11 @@ namespace PCLParaphernalia
 
         private void btnGenerateSymSet_Click(object sender, EventArgs e)
         {
-            ToolSymbolSetGenPCL PCLHandler = new ToolSymbolSetGenPCL();
+            var PCLHandler = new ToolSymbolSetGenPCL();
 
             MapMetrics(_flagIgnoreC0, _flagIgnoreC1, _sizeCharSet,
-                        ref _codeMin, ref _codeMax, ref _codeCt,
-                        ref _targetSymSetType);
+                        out _codeMin, out _codeMax, out _codeCt,
+                        out _targetSymSetType);
 
             PCLHandler.GenerateSymSet(ref _targetSymSetFile,
                                         _flagIgnoreC0,
@@ -301,16 +295,11 @@ namespace PCLParaphernalia
 
         private void btnLogSave_Click(object sender, EventArgs e)
         {
-            bool flagOptRptWrap = false;
-
-            ReportCore.RptFileFmt rptFileFmt = ReportCore.RptFileFmt.NA;
-            ReportCore.RptChkMarks rptChkMarks = ReportCore.RptChkMarks.NA;
-
             TargetCore.MetricsReturnFileRpt(
                 ToolCommonData.ToolIds.SymbolSetGenerate,
-                out rptFileFmt,
-                out rptChkMarks,    // not used by this tool //
-                out flagOptRptWrap);
+                out ReportCore.RptFileFmt rptFileFmt,
+                out _,    // not used by this tool //
+                out _);
 
             ToolSymbolSetGenReport.Generate(rptFileFmt,
                                              _targetSymSetFile,
@@ -338,11 +327,9 @@ namespace PCLParaphernalia
 
         private void btnTargetSymSetFileBrowse_Click(object sender, RoutedEventArgs e)
         {
-            bool selected;
-
             string filename = _targetSymSetFile;
 
-            selected = SelectTargetSymSetFile(ref filename);
+            bool selected = SelectTargetSymSetFile(ref filename);
 
             if (selected)
             {
@@ -383,10 +370,9 @@ namespace PCLParaphernalia
 
         private void cbCharCollsItem_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "IsChecked")
+            if (e.PropertyName == "IsChecked" && !_flagCharCollReqInhibit)
             {
-                if (!_flagCharCollReqInhibit)
-                    SetTargetCharCollReqArray(_flagIndexUnicode);
+                SetTargetCharCollReqArray(_flagIndexUnicode);
             }
         }
 
@@ -399,9 +385,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbDonorSymSet_SelectionChanged(
-            object sender,
-            SelectionChangedEventArgs e)
+        private void cbDonorSymSet_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_initialised && cbDonorSymSet.HasItems)
             {
@@ -422,9 +406,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbOffsetRange_SelectionChanged(
-            object sender,
-            SelectionChangedEventArgs e)
+        private void cbOffsetRange_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_initialisedOffsets && cbOffsetRange.HasItems)
             {
@@ -447,9 +429,9 @@ namespace PCLParaphernalia
 
         private bool CheckDonorSymSetFile()
         {
-            bool flagOK = true;
+            var flagOK = true;
 
-            bool selected = true;
+            var selected = true;
 
             if (!File.Exists(_donorSymSetFile))
             {
@@ -489,7 +471,7 @@ namespace PCLParaphernalia
                 ushort firstCode = 0,
                        lastCode = 0;
 
-                PCLSymSetTypes.Index symSetType = PCLSymSetTypes.Index.Unknown;
+                var symSetType = PCLSymSetTypes.Index.Unknown;
 
                 flagOK = PCLDownloadSymSet.CheckSymSetFile(
                     _donorSymSetFile,
@@ -622,7 +604,7 @@ namespace PCLParaphernalia
 
         private void DonorSymSetChange()
         {
-            bool flagOK = true;
+            var flagOK = true;
 
             if (_flagDonorSymSetUserSet)
                 flagOK = CheckDonorSymSetFile();
@@ -1491,8 +1473,8 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             MapMetrics(ignoreC0, ignoreC1, _sizeCharSet,
-                        ref codeMin, ref codeMax, ref codeCt,
-                        ref _targetSymSetType);
+                        out codeMin, out codeMax, out codeCt,
+                        out _targetSymSetType);
 
             txtCodeMin.Text = codeMin.ToString(format);
             txtCodeMax.Text = codeMax.ToString(format);
@@ -1524,10 +1506,10 @@ namespace PCLParaphernalia
         private void MapMetrics(bool ignoreC0,
                                  bool ignoreC1,
                                  int setSize,
-                                 ref ushort codeMin,
-                                 ref ushort codeMax,
-                                 ref ushort codeCt,
-                                 ref PCLSymSetTypes.Index symSetType)
+                                 out ushort codeMin,
+                                 out ushort codeMax,
+                                 out ushort codeCt,
+                                 out PCLSymSetTypes.Index symSetType)
         {
             //----------------------------------------------------------------//
             //                                                                //
@@ -2134,7 +2116,7 @@ namespace PCLParaphernalia
 
         private bool SelectDonorSymSetFile(ref string symSetFilename)
         {
-            OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(symSetFilename);
+            var openDialog = ToolCommonFunctions.CreateOpenFileDialog(symSetFilename);
 
             openDialog.Filter = "PCL Files|*.pcl|All Files|*.*";
 
@@ -2158,7 +2140,7 @@ namespace PCLParaphernalia
 
         private bool SelectTargetSymSetFile(ref string symSetFilename)
         {
-            OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(symSetFilename);
+            var openDialog = ToolCommonFunctions.CreateOpenFileDialog(symSetFilename);
 
             openDialog.CheckFileExists = false;
             openDialog.Filter = "PCL Files|*.pcl|All Files|*.*";
@@ -2182,8 +2164,8 @@ namespace PCLParaphernalia
 
         private void SetDonorSymSetAttributes()
         {
-            string idNum = string.Empty,
-                   idAlpha = string.Empty;
+            var idNum = string.Empty;
+            var idAlpha = string.Empty;
 
             grpTargetSymSetDetails.Visibility = Visibility.Hidden;
 
@@ -2576,8 +2558,8 @@ namespace PCLParaphernalia
                     format = string.Empty;
 
                 MapMetrics(_flagIgnoreC0, _flagIgnoreC1, _sizeCharSet,
-                            ref codeMin, ref codeMax, ref codeCt,
-                            ref _targetSymSetType);
+                            out codeMin, out codeMax, out codeCt,
+                            out _targetSymSetType);
 
                 txtCodeMin.Text = codeMin.ToString(format);
                 txtCodeMax.Text = codeMax.ToString(format);
