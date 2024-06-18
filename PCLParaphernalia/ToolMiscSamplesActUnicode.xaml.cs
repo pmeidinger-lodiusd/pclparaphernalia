@@ -57,7 +57,7 @@ namespace PCLParaphernalia
                 string utf8HexVal = string.Empty;
                 uint unicodeUCS2 = (uint)((cbUnicodeCp01.SelectedIndex * 256) + cbUnicodeCp02.SelectedIndex);
 
-                string unicodeBlock = UnicodeBlocks.getBlocknameForCodepoint(unicodeUCS2);
+                string unicodeBlock = UnicodeBlocks.GetBlocknameForCodepoint(unicodeUCS2);
 
                 UnicodeCategory unicodeCat = CharUnicodeInfo.GetUnicodeCategory((char)unicodeUCS2);
 
