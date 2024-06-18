@@ -182,12 +182,12 @@ namespace PCLParaphernalia
 
                 if (_crntPDL == ToolCommonData.PrintLang.PCL)
                 {
-                    int[] indxPaperSize = new int[_sheetCtPCL];
-                    int[] indxPaperType = new int[_sheetCtPCL];
-                    int[] indxPaperTray = new int[_sheetCtPCL];
-                    int[] indxPlexMode = new int[_sheetCtPCL];
-                    int[] indxOrientFront = new int[_sheetCtPCL];
-                    int[] indxOrientRear = new int[_sheetCtPCL];
+                    var indxPaperSize = new int[_sheetCtPCL];
+                    var indxPaperType = new int[_sheetCtPCL];
+                    var indxPaperTray = new int[_sheetCtPCL];
+                    var indxPlexMode = new int[_sheetCtPCL];
+                    var indxOrientFront = new int[_sheetCtPCL];
+                    var indxOrientRear = new int[_sheetCtPCL];
 
                     for (int i = 0; i < _sheetCtPCL; i++)
                     {
@@ -212,12 +212,12 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    int[] indxPaperSize = new int[_sheetCtPCLXL];
-                    int[] indxPaperType = new int[_sheetCtPCLXL];
-                    int[] indxPaperTray = new int[_sheetCtPCLXL];
-                    int[] indxPlexMode = new int[_sheetCtPCLXL];
-                    int[] indxOrientFront = new int[_sheetCtPCLXL];
-                    int[] indxOrientRear = new int[_sheetCtPCLXL];
+                    var indxPaperSize = new int[_sheetCtPCLXL];
+                    var indxPaperType = new int[_sheetCtPCLXL];
+                    var indxPaperTray = new int[_sheetCtPCLXL];
+                    var indxPlexMode = new int[_sheetCtPCLXL];
+                    var indxOrientFront = new int[_sheetCtPCLXL];
+                    var indxOrientRear = new int[_sheetCtPCLXL];
 
                     for (int i = 0; i < _sheetCtPCLXL; i++)
                     {
@@ -245,14 +245,14 @@ namespace PCLParaphernalia
             }
             catch (SocketException ex)
             {
-                MessageBox.Show($"SocketException:\r\n\r\nMessage: {ex.Message}\r\n\r\nErrorCode: {ex.ErrorCode}\r\n\r\nSocketErrorCode: {ex.SocketErrorCode}",
+                MessageBox.Show($"SocketException:\n\nMessage: {ex.Message}\n\nErrorCode: {ex.ErrorCode}\n\nSocketErrorCode: {ex.SocketErrorCode}",
                                 "Generate Test Data",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Exception:\r\n" + ex.Message,
+                MessageBox.Show("Exception:\n\n" + ex.Message,
                                 "Generate Test Data",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
@@ -309,7 +309,7 @@ namespace PCLParaphernalia
 
         private void cbOrientFront_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBox source = e.Source as ComboBox;
+            var source = e.Source as ComboBox;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -351,7 +351,7 @@ namespace PCLParaphernalia
 
         private void cbOrientRear_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBox source = e.Source as ComboBox;
+            var source = e.Source as ComboBox;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -393,7 +393,7 @@ namespace PCLParaphernalia
 
         private void cbPaperSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBox source = e.Source as ComboBox;
+            var source = e.Source as ComboBox;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -435,38 +435,38 @@ namespace PCLParaphernalia
 
         private void cbPaperTray_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (!_inhibitTrayIdChange)
+            if (_inhibitTrayIdChange)
+                return;
+
+            var source = e.Source as ComboBox;
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // Work out which combo box has just changed.                 //
+            // This is done by examining the combo box name.              //
+            // The names should be in the format 'cbnn_xyz', where 'nn'   //
+            // is a decimal value.                                        //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            string cbName = source.Name; // should be in format cbnn_xyz
+
+            if (!ushort.TryParse(cbName.Substring(2, 2), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out ushort sheetIndx)
+                ||
+                sheetIndx > _maxSheetNo)
             {
-                ComboBox source = e.Source as ComboBox;
+                MessageBox.Show("Unable to detemine which Tray Identifier item has just been changed!", "***** Internal error *****", MessageBoxButton.OK, MessageBoxImage.Warning);
 
-                //------------------------------------------------------------//
-                //                                                            //
-                // Work out which combo box has just changed.                 //
-                // This is done by examining the combo box name.              //
-                // The names should be in the format 'cbnn_xyz', where 'nn'   //
-                // is a decimal value.                                        //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                string cbName = source.Name; // should be in format cbnn_xyz
-
-                if (!ushort.TryParse(cbName.Substring(2, 2), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out ushort sheetIndx)
-                    ||
-                    sheetIndx > _maxSheetNo)
-                {
-                    MessageBox.Show("Unable to detemine which Tray Identifier item has just been changed!", "***** Internal error *****", MessageBoxButton.OK, MessageBoxImage.Warning);
-
-                    return;
-                }
-
-                int srcIndex = source.SelectedIndex;
-                int arrayIndex = sheetIndx - 1;
-
-                if (_crntPDL == ToolCommonData.PrintLang.PCL)
-                    _indxPaperTrayPCL[arrayIndex] = srcIndex;
-                else
-                    _indxPaperTrayPCLXL[arrayIndex] = srcIndex;
+                return;
             }
+
+            int srcIndex = source.SelectedIndex;
+            int arrayIndex = sheetIndx - 1;
+
+            if (_crntPDL == ToolCommonData.PrintLang.PCL)
+                _indxPaperTrayPCL[arrayIndex] = srcIndex;
+            else
+                _indxPaperTrayPCLXL[arrayIndex] = srcIndex;
         }
 
         //--------------------------------------------------------------------//
@@ -480,7 +480,7 @@ namespace PCLParaphernalia
 
         private void cbPaperType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBox source = e.Source as ComboBox;
+            var source = e.Source as ComboBox;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -544,7 +544,7 @@ namespace PCLParaphernalia
 
         private void cbPlexMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBox source = e.Source as ComboBox;
+            var source = e.Source as ComboBox;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -704,9 +704,6 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < _ctPDLs; i++)
             {
-                // TODO: Why is this assigned here?
-                index = _subsetPDLs[i];
-
                 cbPDL.Items.Add(Enum.GetName(typeof(ToolCommonData.PrintLang), i));
             }
 
