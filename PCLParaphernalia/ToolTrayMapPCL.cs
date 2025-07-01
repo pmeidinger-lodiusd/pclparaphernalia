@@ -86,19 +86,19 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             float A4LengthPort =
-                (float)PCLPaperSizes.getPaperLength(
+                PCLPaperSizes.getPaperLength(
                             (int)PCLPaperSizes.eIndex.ISO_A4,
                             _unitsPerInch,
                             PCLOrientations.eAspect.Portrait);
 
             for (int i = 0; i < pageCount; i++)
             {
-                scaleFactors[i] = (float)
-                (PCLPaperSizes.getPaperLength(
+                scaleFactors[i] =
+                PCLPaperSizes.getPaperLength(
                     indxPaperSize[i],
                     _unitsPerInch,
                     PCLOrientations.eAspect.Portrait) /
-                 A4LengthPort);
+                 A4LengthPort;
             }
 
             //----------------------------------------------------------------//

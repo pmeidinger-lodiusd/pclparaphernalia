@@ -111,7 +111,7 @@ namespace PCLParaphernalia
                     //--------------------------------------------------------//
 
                     PCLWriter.symSetDownloadCode(_binWriter,
-                                                  (ushort)symSetNo);
+                                                  symSetNo);
 
                     //--------------------------------------------------------//
                     //                                                        //

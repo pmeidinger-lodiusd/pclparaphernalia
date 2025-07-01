@@ -167,7 +167,7 @@ namespace PCLParaphernalia
 
             imageCrntLine = 0;
             imageHeight = srcHeight;
-            imageRowMult = (int)Math.Floor((double)maxImageBlock /
+            imageRowMult = (int)Math.Floor(maxImageBlock /
                                              (double)bytesPerRow);
 
             if (imageRowMult == 0)

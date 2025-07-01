@@ -2473,7 +2473,7 @@ namespace PCLParaphernalia
             {
                 if (PCLFonts.getType(i) != PCLFonts.eFontType.PresetFamily)
                 {
-                    _subsetFonts[index++] = (int)i;
+                    _subsetFonts[index++] = i;
                     cbFont.Items.Add(PCLFonts.getName(i));
                 }
             }
@@ -2494,7 +2494,7 @@ namespace PCLParaphernalia
                     (symSetGroup == PCLSymbolSets.eSymSetGroup.Unicode) ||
                     (symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet))
                 {
-                    _subsetSymSets[index++] = (int)i;
+                    _subsetSymSets[index++] = i;
                     cbSymSet.Items.Add(PCLSymbolSets.getName(i));
                 }
             }

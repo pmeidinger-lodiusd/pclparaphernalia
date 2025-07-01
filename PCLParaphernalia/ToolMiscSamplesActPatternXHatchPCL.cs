@@ -232,7 +232,7 @@ namespace PCLParaphernalia
                                   60);
 
             boxX = (short)((_unitsPerInch / 2) - logXOffset);
-            boxY = (short)(_unitsPerInch / 2);
+            boxY = _unitsPerInch / 2;
 
             boxWidth = (short)(_paperWidth - _unitsPerInch);
             boxHeight = (short)(_paperHeight - _unitsPerInch);
@@ -380,7 +380,7 @@ namespace PCLParaphernalia
                 generateOverlay(prnWriter, false, logXOffset,
                                 indxPaperSize, indxOrientation);
 
-            rectHeight = (short)(_lineInc / 2);
+            rectHeight = _lineInc / 2;
             rectWidth = _lineInc;
 
             //----------------------------------------------------------------//
@@ -550,11 +550,11 @@ namespace PCLParaphernalia
                 hddrFmt_20[6] = (byte)((_patternWidths[i] & 0xff00) >> 8);
                 hddrFmt_20[7] = (byte)(_patternWidths[i] & 0x00ff);
 
-                hddrFmt_20[8] = (byte)((dpi & 0xff00) >> 8);
-                hddrFmt_20[9] = (byte)(dpi & 0x00ff);
+                hddrFmt_20[8] = (dpi & 0xff00) >> 8;
+                hddrFmt_20[9] = dpi & 0x00ff;
 
-                hddrFmt_20[10] = (byte)((dpi & 0xff00) >> 8);
-                hddrFmt_20[11] = (byte)(dpi & 0x00ff);
+                hddrFmt_20[10] = (dpi & 0xff00) >> 8;
+                hddrFmt_20[11] = dpi & 0x00ff;
 
                 PCLWriter.patternDefine(
                     prnWriter, (short)(baseID + _patternIds[i]),

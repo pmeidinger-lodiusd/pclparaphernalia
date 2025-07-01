@@ -468,10 +468,8 @@ namespace PCLParaphernalia
                     indxClrBack = _indxClrMapBack[rowType];
                     indxClrFore = _indxClrMapFore[rowType];
 
-                    clrBack = (Color)(_stdClrsPropertyInfo[indxClrBack]
-                        as PropertyInfo).GetValue(null, null);
-                    clrFore = (Color)(_stdClrsPropertyInfo[indxClrFore]
-                        as PropertyInfo).GetValue(null, null);
+                    clrBack = (Color)_stdClrsPropertyInfo[indxClrBack].GetValue(null, null);
+                    clrFore = (Color)_stdClrsPropertyInfo[indxClrFore].GetValue(null, null);
 
                     brushBack.Color = clrBack;
                     brushFore.Color = clrFore;

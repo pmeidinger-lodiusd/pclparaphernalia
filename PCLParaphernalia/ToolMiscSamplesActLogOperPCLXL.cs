@@ -388,10 +388,10 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            srcOffsetX = (short)(((_destBoxSide / 2) -
-                                    _sourceImagePixelsWidth) / 2);
-            srcOffsetY = (short)((_destBoxSide -
-                                   _sourceImagePixelsHeight) / 2);
+            srcOffsetX = ((_destBoxSide / 2) -
+                                    _sourceImagePixelsWidth) / 2;
+            srcOffsetY = (_destBoxSide -
+                                   _sourceImagePixelsHeight) / 2;
 
             indStd = 0;
 
@@ -1121,10 +1121,10 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            srcOffsetX = (short)(((_destBoxSide / 2) -
-                                    _sourceImagePixelsWidth) / 2);
-            srcOffsetY = (short)((_destBoxSide -
-                                   _sourceImagePixelsHeight) / 2);
+            srcOffsetX = ((_destBoxSide / 2) -
+                                    _sourceImagePixelsWidth) / 2;
+            srcOffsetY = (_destBoxSide -
+                                   _sourceImagePixelsHeight) / 2;
 
             indStd = 0;
 
@@ -1259,7 +1259,7 @@ namespace PCLParaphernalia
             PCLXLWriter.font(prnWriter, false, ptSize, _symSet_19U,
                               _nameFontArialRegular);
 
-            posX = (short)(_posXPage_n_Data + _colInc);
+            posX = _posXPage_n_Data + _colInc;
             posY = _posYPage_n_Data;
 
             posX += srcOffsetX;
@@ -1881,9 +1881,9 @@ namespace PCLParaphernalia
             const int rowCt = patHeight;
 
             const ushort destWidth =
-                (ushort)((patWidth * _unitsPerInch) / 300);
+                (patWidth * _unitsPerInch) / 300;
             const ushort destHeight =
-                (ushort)((patHeight * _unitsPerInch) / 300);
+                (patHeight * _unitsPerInch) / 300;
 
             byte[] mask = { 0xC0, 0x01,      // row 00
                              0xE0, 0x00,      //     01
@@ -1958,7 +1958,7 @@ namespace PCLParaphernalia
 
             byte[] block;
 
-            blockHeight = (ushort)rowCt;
+            blockHeight = rowCt;
             blockSize = rowBytes * bitsPerPixel * rowCt;
             block = new byte[blockSize];
 
@@ -2094,8 +2094,8 @@ namespace PCLParaphernalia
                                   rowCtC + rowCtB + rowCtA;
             const ushort colCt = 24;
 
-            const ushort destWidth = (ushort)((colCt * 8 * _unitsPerInch) / 600);
-            const ushort destHeight = (ushort)((rowCt * 8 * _unitsPerInch) / 600);
+            const ushort destWidth = (colCt * 8 * _unitsPerInch) / 600;
+            const ushort destHeight = (rowCt * 8 * _unitsPerInch) / 600;
 
             ushort startLine = 0;
             ushort blockHeight;

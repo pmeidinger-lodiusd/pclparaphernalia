@@ -223,7 +223,7 @@ namespace PCLParaphernalia
                 var info = (DRIVER_INFO_8)Marshal.PtrToStructure(
                     driverInfo, typeof(DRIVER_INFO_8));
 
-                uint attributes = (uint)info.dwPrinterDriverAttributes;
+                uint attributes = info.dwPrinterDriverAttributes;
 
                 if ((attributes & PRINTER_DRIVER_XPS_FLAG) != 0)
                     bDriverXPS = true;

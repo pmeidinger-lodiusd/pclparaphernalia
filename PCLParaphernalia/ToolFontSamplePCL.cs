@@ -1054,7 +1054,7 @@ namespace PCLParaphernalia
             {
                 posX = (short)(marginX + (_cellWidth * (startIndxMajor + 1)) +
                                           (_cellWidth / 3));
-                posY = (short)(_posYGrid + (_cellHeight * 2 / 3));
+                posY = _posYGrid + (_cellHeight * 2 / 3);
             }
             else
             {
@@ -1132,7 +1132,7 @@ namespace PCLParaphernalia
 
                                 if (codeVal <= _symSetUserMapMax)
                                 {
-                                    mapVal = _symSetUserMap[(int)codeVal];
+                                    mapVal = _symSetUserMap[codeVal];
                                 }
                                 else
                                 {
@@ -1303,7 +1303,7 @@ namespace PCLParaphernalia
                         {
                             if (codeVal <= _symSetUserMapMax)
                             {
-                                mapVal = _symSetUserMap[(int)codeVal];
+                                mapVal = _symSetUserMap[codeVal];
                             }
                             else
                             {
@@ -1383,7 +1383,7 @@ namespace PCLParaphernalia
                         {
                             if (codeVal <= _symSetUserMapMax)
                             {
-                                mapVal = _symSetUserMap[(int)codeVal];
+                                mapVal = _symSetUserMap[codeVal];
                             }
                             else
                             {

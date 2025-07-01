@@ -400,8 +400,8 @@ namespace PCLParaphernalia
 
             patternDefineDpi300(prnWriter, formAsMacro);
 
-            rectHeight = (short)((_lineInc * 3) / 5);
-            rectWidth = (short)((_unitsPerInch * 9) / 10);
+            rectHeight = (_lineInc * 3) / 5;
+            rectWidth = (_unitsPerInch * 9) / 10;
 
             posX = _posXData;
             posY = _posYData - (_lineInc / 2);
@@ -804,9 +804,9 @@ namespace PCLParaphernalia
             const ushort patHeight = 16;
 
             const ushort destWidth =
-                (ushort)((patWidth * _unitsPerInch) / 300);
+                (patWidth * _unitsPerInch) / 300;
             const ushort destHeight =
-                (ushort)((patHeight * _unitsPerInch) / 300);
+                (patHeight * _unitsPerInch) / 300;
 
             byte[] pattern_LightGrey =
                                { 0x00, 0x00, 0x60, 0x60,

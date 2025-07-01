@@ -133,10 +133,10 @@ namespace PCLParaphernalia
 
             AssemblyName assemblyName = assembly.GetName();
 
-            versionMajorCrnt = (int)assemblyName.Version.Major;
-            versionMinorCrnt = (int)assemblyName.Version.Minor;
-            versionBuildCrnt = (int)assemblyName.Version.Build;
-            versionRevisionCrnt = (int)assemblyName.Version.Revision;
+            versionMajorCrnt = assemblyName.Version.Major;
+            versionMinorCrnt = assemblyName.Version.Minor;
+            versionBuildCrnt = assemblyName.Version.Build;
+            versionRevisionCrnt = assemblyName.Version.Revision;
 
             MainFormData.setVersionData(true, versionMajorCrnt,
                                                versionMinorCrnt,

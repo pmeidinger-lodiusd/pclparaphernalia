@@ -966,7 +966,7 @@ namespace PCLParaphernalia
                 for (j = 0; j < sliceLen; j++)
                 {
                     k = chunkOffset + chunkIpLen + j;
-                    thisByte = (byte)_buf[k];
+                    thisByte = _buf[k];
 
                     if (itemLen != 0)
                     {

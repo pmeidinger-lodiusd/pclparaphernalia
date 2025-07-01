@@ -587,8 +587,8 @@ namespace PCLParaphernalia
 
             _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
 
-            _destPosX = (float)(tempPosX / 100);
-            _destPosY = (float)(tempPosY / 100);
+            _destPosX = tempPosX / 100;
+            _destPosY = tempPosY / 100;
 
             if ((tempRasterRes < 0) ||
                 (tempRasterRes >= _ctRasterResolutions))

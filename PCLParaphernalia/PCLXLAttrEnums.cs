@@ -3706,7 +3706,7 @@ namespace PCLParaphernalia
                     {
                         id = PCLSymbolSets.translateKind1ToId(kind1);
 
-                        enumVal = (int)kind1;           // ---- 0xaa     n //
+                        enumVal = kind1;           // ---- 0xaa     n //
                         _tags.Add(root + ":" + enumVal.ToString("X8"),
                             new PCLXLAttrEnum(operTag, attrTagA, attrTagB,
                                                attrLen, enumVal,

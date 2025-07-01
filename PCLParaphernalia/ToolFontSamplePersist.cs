@@ -406,11 +406,11 @@ namespace PCLParaphernalia
 
                 tmpInt = (int)subKey.GetValue(_nameHeight,
                                                          _defaultHeightPtsK);
-                height = (double)(tmpInt / _sizeFactor);
+                height = tmpInt / _sizeFactor;
 
                 tmpInt = (int)subKey.GetValue(_namePitch,
                                                          _defaultPitchPtsK);
-                pitch = (double)(tmpInt / _sizeFactor);
+                pitch = tmpInt / _sizeFactor;
 
                 indxSymSet = (int)subKey.GetValue(_nameIndxSymSet,
                                                          _indexZero);
@@ -485,11 +485,11 @@ namespace PCLParaphernalia
 
                 tmpInt = (int)subKey.GetValue(_nameHeight,
                                                       _defaultHeightPtsK);
-                height = (double)(tmpInt / _sizeFactor);
+                height = tmpInt / _sizeFactor;
 
                 tmpInt = (int)subKey.GetValue(_namePitch,
                                                       _defaultPitchPtsK);
-                pitch = (double)(tmpInt / _sizeFactor);
+                pitch = tmpInt / _sizeFactor;
 
                 indxSymSet = (int)subKey.GetValue(_nameIndxSymSet,
                                                       _indexZero);
@@ -547,11 +547,11 @@ namespace PCLParaphernalia
 
                 tmpInt = (int)subKey.GetValue(_nameHeight,
                                                       _defaultHeightPtsK);
-                height = (double)(tmpInt / _sizeFactor);
+                height = tmpInt / _sizeFactor;
 
                 tmpInt = (int)subKey.GetValue(_namePitch,
                                                       _defaultPitchPtsK);
-                pitch = (double)(tmpInt / _sizeFactor);
+                pitch = tmpInt / _sizeFactor;
 
                 indxSymSet = (int)subKey.GetValue(_nameIndxSymSet,
                                                       _indexZero);
@@ -709,10 +709,10 @@ namespace PCLParaphernalia
                 weight = (short)tmpInt;
 
                 tmpInt = (int)subKey.GetValue(_nameHeight, _defaultHeightPtsK);
-                height = (double)(tmpInt / _sizeFactor);
+                height = tmpInt / _sizeFactor;
 
                 tmpInt = (int)subKey.GetValue(_namePitch, _defaultPitchPtsK);
-                pitch = (double)(tmpInt / _sizeFactor);
+                pitch = tmpInt / _sizeFactor;
 
                 //------------------------------------------------------------//
 
@@ -762,7 +762,7 @@ namespace PCLParaphernalia
 
                 tmpInt = (int)subKey.GetValue(_nameHeight,
                                                       _defaultHeightPtsK);
-                height = (double)(tmpInt / _sizeFactor);
+                height = tmpInt / _sizeFactor;
 
                 indxSymSet = (int)subKey.GetValue(_nameIndxSymSet,
                                                       _indexZero);
@@ -823,7 +823,7 @@ namespace PCLParaphernalia
 
                 tmpInt = (int)subKey.GetValue(_nameHeight,
                                                       _defaultHeightPtsK);
-                height = (double)(tmpInt / _sizeFactor);
+                height = tmpInt / _sizeFactor;
 
                 indxSymSet = (int)subKey.GetValue(_nameIndxSymSet,
                                                       _indexZero);
@@ -878,7 +878,7 @@ namespace PCLParaphernalia
 
                 tmpInt = (int)subKey.GetValue(_nameHeight,
                                                       _defaultHeightPtsK);
-                height = (double)(tmpInt / _sizeFactor);
+                height = tmpInt / _sizeFactor;
 
                 indxSymSet = (int)subKey.GetValue(_nameIndxSymSet,
                                                       _indexZero);

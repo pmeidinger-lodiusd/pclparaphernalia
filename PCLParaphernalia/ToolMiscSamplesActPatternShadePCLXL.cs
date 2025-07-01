@@ -627,7 +627,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            rectHeight = (short)(_lineInc / 2);
+            rectHeight = _lineInc / 2;
             rectWidth = _lineInc;
 
             PCLXLWriter.addAttrUbyte(ref bufStd,

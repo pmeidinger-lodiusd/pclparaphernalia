@@ -224,7 +224,7 @@ namespace PCLParaphernalia
                                   60);
 
             boxX = (short)((_unitsPerInch / 2) - logXOffset);
-            boxY = (short)(_unitsPerInch / 2);
+            boxY = _unitsPerInch / 2;
 
             boxWidth = (short)(_paperWidth - _unitsPerInch);
             boxHeight = (short)(_paperHeight - _unitsPerInch);
@@ -401,7 +401,7 @@ namespace PCLParaphernalia
                 generateOverlay(prnWriter, false, logXOffset,
                                 indxPaperSize, indxOrientation);
 
-            rectHeight = (short)(_lineInc / 2);
+            rectHeight = _lineInc / 2;
             rectWidth = _lineInc;
 
             //----------------------------------------------------------------//

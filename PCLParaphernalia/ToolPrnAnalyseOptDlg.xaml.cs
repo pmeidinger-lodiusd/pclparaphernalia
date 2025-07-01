@@ -261,8 +261,8 @@ namespace PCLParaphernalia
                 indxClrBack = _indxClrMapBack[i];
                 indxClrFore = _indxClrMapFore[i];
 
-                pInfoBack = _stdClrsPropertyInfo[indxClrBack] as PropertyInfo;
-                pInfoFore = _stdClrsPropertyInfo[indxClrFore] as PropertyInfo;
+                pInfoBack = _stdClrsPropertyInfo[indxClrBack];
+                pInfoFore = _stdClrsPropertyInfo[indxClrFore];
 
                 clrBack = (Color)pInfoBack.GetValue(null, null);
                 clrFore = (Color)pInfoFore.GetValue(null, null);
@@ -354,8 +354,8 @@ namespace PCLParaphernalia
                 indxClrBack = _indxClrMapBack[i];
                 indxClrFore = _indxClrMapFore[i];
 
-                pInfoBack = _stdClrsPropertyInfo[indxClrBack] as PropertyInfo;
-                pInfoFore = _stdClrsPropertyInfo[indxClrFore] as PropertyInfo;
+                pInfoBack = _stdClrsPropertyInfo[indxClrBack];
+                pInfoFore = _stdClrsPropertyInfo[indxClrFore];
 
                 clrBack = (Color)pInfoBack.GetValue(null, null);
                 clrFore = (Color)pInfoFore.GetValue(null, null);
@@ -1799,8 +1799,8 @@ namespace PCLParaphernalia
                 indxClrBack = _indxClrMapBack[i];
                 indxClrFore = _indxClrMapFore[i];
 
-                pInfoBack = _stdClrsPropertyInfo[indxClrBack] as PropertyInfo;
-                pInfoFore = _stdClrsPropertyInfo[indxClrFore] as PropertyInfo;
+                pInfoBack = _stdClrsPropertyInfo[indxClrBack];
+                pInfoFore = _stdClrsPropertyInfo[indxClrFore];
 
                 clrBack = (Color)pInfoBack.GetValue(null, null);
                 clrFore = (Color)pInfoFore.GetValue(null, null);

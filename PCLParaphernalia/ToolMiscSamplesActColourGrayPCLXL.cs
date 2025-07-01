@@ -652,7 +652,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            rectHeight = (short)(_lineInc / 2);
+            rectHeight = _lineInc / 2;
             rectWidth = _lineInc;
 
             //----------------------------------------------------------------//
@@ -886,9 +886,9 @@ namespace PCLParaphernalia
             const ushort patHeight = 16;
 
             const ushort destWidth =
-                (ushort)((patWidth * _unitsPerInch) / 600);
+                (patWidth * _unitsPerInch) / 600;
             const ushort destHeight =
-                (ushort)((patHeight * _unitsPerInch) / 600);
+                (patHeight * _unitsPerInch) / 600;
 
             byte[] pattern = { 0x00, 0x00, 0x60, 0x60,
                                0x60, 0x60, 0x00, 0x00,
