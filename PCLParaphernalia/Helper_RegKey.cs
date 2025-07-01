@@ -86,10 +86,7 @@ namespace PCLParaphernalia
         {
             using (RegistryKey subKey = parentKeyName.OpenSubKey(subKeyName))
             {
-                if (subKey == null)
-                    return false;
-                else
-                    return true;
+                return subKey != null;
             }
         }
 

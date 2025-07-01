@@ -193,10 +193,7 @@
 
         public bool zeroLength()
         {
-            if (_length == 0)
-                return true;
-            else
-                return false;
+            return _length == 0;
         }
     }
 }

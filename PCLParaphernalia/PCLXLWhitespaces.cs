@@ -258,10 +258,7 @@ namespace PCLParaphernalia
 
         public static bool isKnownTag(byte tagToCheck)
         {
-            if (_tags.IndexOfKey(tagToCheck) != -1)
-                return true;
-            else
-                return false;
+            return _tags.IndexOfKey(tagToCheck) != -1;
         }
 
         //--------------------------------------------------------------------//

@@ -117,10 +117,7 @@ namespace PCLParaphernalia
                 }
             }
 
-            if (beginFound)
-                return true;
-            else
-                return false;
+            return beginFound;
         }
 
         //--------------------------------------------------------------------//

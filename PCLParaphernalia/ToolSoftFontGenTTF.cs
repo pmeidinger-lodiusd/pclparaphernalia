@@ -289,10 +289,7 @@ namespace PCLParaphernalia
 
             public bool glyphPresent()
             {
-                if (_glyphPresent)
-                    return true;
-                else
-                    return false;
+                return _glyphPresent;
             }
 
             //----------------------------------------------------------------//

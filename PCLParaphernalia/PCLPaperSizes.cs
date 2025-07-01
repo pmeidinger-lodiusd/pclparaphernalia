@@ -482,10 +482,7 @@ namespace PCLParaphernalia
 
         public static bool IsEnumUnknownPCLXL(int index)
         {
-            if (_paperSizes[index].getIdPCLXL() == _unknownEnum)
-                return true;
-            else
-                return false;
+            return _paperSizes[index].getIdPCLXL() == _unknownEnum;
         }
 
         //--------------------------------------------------------------------//
@@ -499,10 +496,7 @@ namespace PCLParaphernalia
 
         public static bool IsIdUnknownPCL(int index)
         {
-            if (_paperSizes[index].getIdPCL() == _unknownID)
-                return true;
-            else
-                return false;
+            return _paperSizes[index].getIdPCL() == _unknownID;
         }
 
         //--------------------------------------------------------------------//
