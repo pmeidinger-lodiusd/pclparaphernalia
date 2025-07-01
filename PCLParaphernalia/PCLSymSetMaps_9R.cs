@@ -30,37 +30,37 @@ namespace PCLParaphernalia
         {
             const eSymSetMapId mapId = eSymSetMapId.map_9R;
 
-            const Int32 rangeCt = 3;
+            const int rangeCt = 3;
 
-            UInt16[][] rangeData = new UInt16[rangeCt][]
+            ushort[][] rangeData = new ushort[rangeCt][]
             {
-                new UInt16 [2] {0x20, 0x7f},
-                new UInt16 [2] {0x80, 0xbf},
-                new UInt16 [2] {0xc0, 0xff}
+                new ushort [2] {0x20, 0x7f},
+                new ushort [2] {0x80, 0xbf},
+                new ushort [2] {0xc0, 0xff}
             };
 
-            UInt16[] rangeSizes = new UInt16[rangeCt];
+            ushort[] rangeSizes = new ushort[rangeCt];
 
-            UInt16[][] mapDataStd = new UInt16[rangeCt][];
-            UInt16[][] mapDataPCL = new UInt16[rangeCt][];
+            ushort[][] mapDataStd = new ushort[rangeCt][];
+            ushort[][] mapDataPCL = new ushort[rangeCt][];
 
-            UInt16 rangeMin,
+            ushort rangeMin,
                    rangeMax,
                    rangeSize,
                    offset;
 
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i < rangeCt; i++)
+            for (int i = 0; i < rangeCt; i++)
             {
-                rangeSizes[i] = (UInt16)(rangeData[i][1] -
+                rangeSizes[i] = (ushort)(rangeData[i][1] -
                                            rangeData[i][0] + 1);
             }
 
-            for (Int32 i = 0; i < rangeCt; i++)
+            for (int i = 0; i < rangeCt; i++)
             {
-                mapDataStd[i] = new UInt16[rangeSizes[i]];
-                mapDataPCL[i] = new UInt16[rangeSizes[i]];
+                mapDataStd[i] = new ushort[rangeSizes[i]];
+                mapDataPCL[i] = new ushort[rangeSizes[i]];
             }
 
             //----------------------------------------------------------------//
@@ -73,7 +73,7 @@ namespace PCLParaphernalia
             rangeMax = rangeData[0][1];
             rangeSize = rangeSizes[0];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd[0][i - rangeMin] = i;
             }
@@ -82,7 +82,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            for (UInt16 i = 0; i < rangeSize; i++)
+            for (ushort i = 0; i < rangeSize; i++)
             {
                 mapDataPCL[0][i] = mapDataStd[0][i];
             }
@@ -171,7 +171,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            for (UInt16 i = 0; i < rangeSize; i++)
+            for (ushort i = 0; i < rangeSize; i++)
             {
                 mapDataPCL[1][i] = mapDataStd[1][i];
             }
@@ -188,14 +188,14 @@ namespace PCLParaphernalia
 
             offset = 0x0410 - 0x00c0;     // 0x0410 - 0x00c0 = 0x0350
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
-                mapDataStd[2][i - rangeMin] = (UInt16)(offset + i);
+                mapDataStd[2][i - rangeMin] = (ushort)(offset + i);
             }
 
             //----------------------------------------------------------------//
 
-            for (UInt16 i = 0; i < rangeSize; i++)
+            for (ushort i = 0; i < rangeSize; i++)
             {
                 mapDataPCL[2][i] = mapDataStd[2][i];
             }

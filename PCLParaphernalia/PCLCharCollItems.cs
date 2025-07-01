@@ -49,17 +49,17 @@ namespace PCLParaphernalia
                 new ObservableCollection<PCLCharCollItem>();
 
             PCLCharCollections.eBitType bitType;
-            Int32 collsCt;
+            int collsCt;
 
             collsCt = PCLCharCollections.getCollsCount();
 
-            Int32 bitNo;
-            String desc;
+            int bitNo;
+            string desc;
 
-            Boolean itemEnabled = true;
-            Boolean itemChecked = false;
+            bool itemEnabled = true;
+            bool itemChecked = false;
 
-            for (Int32 i = 0; i < collsCt; i++)
+            for (int i = 0; i < collsCt; i++)
             {
                 bitNo = PCLCharCollections.getBitNo(i);
                 bitType = PCLCharCollections.getBitType(i);
@@ -118,17 +118,17 @@ namespace PCLParaphernalia
                 new ObservableCollection<PCLCharCollItem>();
 
             PCLCharCollections.eBitType bitType;
-            Int32 collsCt;
+            int collsCt;
 
             collsCt = PCLCharCollections.getCollsCount();
 
-            Int32 bitNo;
-            String desc;
+            int bitNo;
+            string desc;
 
-            Boolean itemEnabled = true;
-            Boolean itemChecked = false;
+            bool itemEnabled = true;
+            bool itemChecked = false;
 
-            for (Int32 i = 0; i < collsCt; i++)
+            for (int i = 0; i < collsCt; i++)
             {
                 bitNo = PCLCharCollections.getBitNo(i);
                 bitType = PCLCharCollections.getBitType(i);
@@ -177,17 +177,17 @@ namespace PCLParaphernalia
                 new ObservableCollection<PCLCharCollItem>();
 
             PCLCharCollections.eBitType bitType;
-            Int32 collsCt;
+            int collsCt;
 
             collsCt = PCLCharCollections.getCollsCount();
 
-            Int32 bitNo;
-            String desc;
+            int bitNo;
+            string desc;
 
-            Boolean itemEnabled = true;
-            Boolean itemChecked = false;
+            bool itemEnabled = true;
+            bool itemChecked = false;
 
-            for (Int32 i = 0; i < collsCt; i++)
+            for (int i = 0; i < collsCt; i++)
             {
                 bitNo = PCLCharCollections.getBitNo(i);
                 bitType = PCLCharCollections.getBitType(i);

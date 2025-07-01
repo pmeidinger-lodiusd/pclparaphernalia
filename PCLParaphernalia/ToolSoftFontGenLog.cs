@@ -20,14 +20,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Int32 cGridMain_Col_0_Max = 18;
-        const Int32 cGridMain_Col_1_Max = 80;
-        const Int32 cColSeparatorLen = 2;
+        const int cGridMain_Col_0_Max = 18;
+        const int cGridMain_Col_1_Max = 80;
+        const int cColSeparatorLen = 2;
 
-        const Byte cASCII_Space = 0x20;
-        const Byte cASCII_LineFeed = 0x0a;
-        const Byte cASCII_CarriageReturn = 0x0d;
-        const Byte cASCII_HorizontalTab = 0x09;
+        const byte cASCII_Space = 0x20;
+        const byte cASCII_LineFeed = 0x0a;
+        const byte cASCII_CarriageReturn = 0x0d;
+        const byte cASCII_HorizontalTab = 0x09;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -45,32 +45,32 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void logCharDetails(DataTable table,
-                                           Boolean glyphAlreadyPresent,
-                                           Boolean composite,
-                                           UInt16 charCode,
-                                           UInt16 codepoint,
-                                           UInt16 glyphID,
-                                           UInt16 depth,
-                                           UInt16 glyphWidth,
-                                           UInt16 glyphHeight,
-                                           Int16 glyphLSB,
-                                           Int16 glyphTSB,
-                                           UInt32 glyphOffset,
-                                           UInt32 glyphLength)
+                                           bool glyphAlreadyPresent,
+                                           bool composite,
+                                           ushort charCode,
+                                           ushort codepoint,
+                                           ushort glyphID,
+                                           ushort depth,
+                                           ushort glyphWidth,
+                                           ushort glyphHeight,
+                                           short glyphLSB,
+                                           short glyphTSB,
+                                           uint glyphOffset,
+                                           uint glyphLength)
         {
-            const Int32 colDecCode = 0;
-            const Int32 colHexCode = 1;
-            const Int32 colUniCode = 2;
-            const Int32 colGlyphId = 3;
-            const Int32 colAbsent = 4;
-            const Int32 colPrevious = 5;
-            const Int32 colComposite = 6;
-            const Int32 colDepth = 7;
-            const Int32 colWidth = 8;
-            const Int32 colLSB = 9;
-            const Int32 colHeight = 10;
-            const Int32 colTSB = 11;
-            const Int32 colLength = 12;
+            const int colDecCode = 0;
+            const int colHexCode = 1;
+            const int colUniCode = 2;
+            const int colGlyphId = 3;
+            const int colAbsent = 4;
+            const int colPrevious = 5;
+            const int colComposite = 6;
+            const int colDepth = 7;
+            const int colWidth = 8;
+            const int colLSB = 9;
+            const int colHeight = 10;
+            const int colTSB = 11;
+            const int colLength = 12;
 
             DataRow row;
 
@@ -136,7 +136,7 @@ namespace PCLParaphernalia
 
         public static void logError(DataTable table,
                                     MessageBoxImage type,
-                                    String message)
+                                    string message)
         {
             if (type == MessageBoxImage.Information)
                 logNameAndValue(
@@ -164,15 +164,15 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void logMissingChar(DataTable table,
-                                           UInt16 charCode,
-                                           UInt16 codepoint)
+                                           ushort charCode,
+                                           ushort codepoint)
         {
-            const Int32 colDecCode = 0;
-            const Int32 colHexCode = 1;
-            const Int32 colUniCode = 2;
-            const Int32 colAbsent = 4;
-            const Int32 colPrevious = 5;
-            const Int32 colComposite = 6;
+            const int colDecCode = 0;
+            const int colHexCode = 1;
+            const int colUniCode = 2;
+            const int colAbsent = 4;
+            const int colPrevious = 5;
+            const int colComposite = 6;
 
             DataRow row;
 
@@ -198,29 +198,29 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void logNameAndValue(DataTable table,
-                                           Boolean blankBefore,
-                                           Boolean blankAfter,
-                                           String name,
-                                           String value)
+                                           bool blankBefore,
+                                           bool blankAfter,
+                                           string name,
+                                           string value)
         {
-            const Int32 colName = 0;
-            const Int32 colValue = 1;
+            const int colName = 0;
+            const int colValue = 1;
 
             DataRow row;
 
-            Int32 vLen,
+            int vLen,
                   vStart,
                   vPos,
                   vRem,
                   rowLen;
 
-            String logData,
+            string logData,
                    tempStr;
 
-            Char lastChar,
+            char lastChar,
                  nextChar;
 
-            Boolean firstLine;
+            bool firstLine;
 
             firstLine = true;
             vLen = value.Length;
@@ -290,7 +290,7 @@ namespace PCLParaphernalia
                         else
                         {
                             rowLen = vRem;
-                            nextChar = (Char)cASCII_Space;
+                            nextChar = (char)cASCII_Space;
                         }
 
                         lastChar = value[vStart + rowLen - 1];
@@ -303,15 +303,15 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        logData = tempStr.Replace((Char)cASCII_CarriageReturn,
-                                                   (Char)cASCII_Space);
+                        logData = tempStr.Replace((char)cASCII_CarriageReturn,
+                                                   (char)cASCII_Space);
 
                         tempStr = logData;
 
-                        logData = tempStr.Replace((Char)cASCII_HorizontalTab,
-                                                   (Char)cASCII_Space);
+                        logData = tempStr.Replace((char)cASCII_HorizontalTab,
+                                                   (char)cASCII_Space);
 
-                        vPos = logData.IndexOf((Char)cASCII_LineFeed);
+                        vPos = logData.IndexOf((char)cASCII_LineFeed);
 
                         if (vPos != -1)
                         {
@@ -321,14 +321,14 @@ namespace PCLParaphernalia
                             {
                                 rowLen = 1;
                                 logData = " ";
-                                lastChar = (Char)cASCII_Space;
-                                nextChar = (Char)cASCII_Space;
+                                lastChar = (char)cASCII_Space;
+                                nextChar = (char)cASCII_Space;
                             }
                             else
                             {
                                 logData = value.Substring(vStart, rowLen - 1);
                                 lastChar = value[vStart + rowLen - 1];
-                                nextChar = (Char)cASCII_Space;
+                                nextChar = (char)cASCII_Space;
                             }
                         }
 
@@ -345,7 +345,7 @@ namespace PCLParaphernalia
                         if ((nextChar != cASCII_Space) &&
                             (lastChar != cASCII_Space))
                         {
-                            vPos = logData.LastIndexOf((Char)cASCII_Space);
+                            vPos = logData.LastIndexOf((char)cASCII_Space);
 
                             if (vPos > 0)
                             {

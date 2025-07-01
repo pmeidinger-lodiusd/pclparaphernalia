@@ -34,7 +34,7 @@ namespace PCLParaphernalia
             DuplexShortEdge
         }
 
-        public const Int32 eSimplex = (Int32)eIndex.Simplex;
+        public const int eSimplex = (int)eIndex.Simplex;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -52,16 +52,16 @@ namespace PCLParaphernalia
             new PCLPlexMode (ePlexType.Duplex,
                              "Duplex Long-edge binding",
                              0x01,
-                             (Byte) PCLXLAttrEnums.eVal.eDuplexHorizontalBinding,
-                             (Byte) PCLXLAttrEnums.eVal.eDuplexVerticalBinding),
+                             (byte) PCLXLAttrEnums.eVal.eDuplexHorizontalBinding,
+                             (byte) PCLXLAttrEnums.eVal.eDuplexVerticalBinding),
             new PCLPlexMode (ePlexType.Duplex,
                              "Duplex Short-edge binding",
                              0x02,
-                             (Byte) PCLXLAttrEnums.eVal.eDuplexVerticalBinding,
-                             (Byte) PCLXLAttrEnums.eVal.eDuplexHorizontalBinding)
+                             (byte) PCLXLAttrEnums.eVal.eDuplexVerticalBinding,
+                             (byte) PCLXLAttrEnums.eVal.eDuplexHorizontalBinding)
         };
 
-        private static Int32 _plexModeCount =
+        private static int _plexModeCount =
             _plexModes.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
@@ -73,7 +73,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getCount()
+        public static int getCount()
         {
             return _plexModeCount;
         }
@@ -87,7 +87,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Byte getIdPCL(Int32 index)
+        public static byte getIdPCL(int index)
         {
             return _plexModes[index].getIdPCL();
         }
@@ -101,7 +101,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Byte getIdPCLXL(Int32 index, Boolean flagLandscape)
+        public static byte getIdPCLXL(int index, bool flagLandscape)
         {
             return _plexModes[index].getIdPCLXL(flagLandscape);
         }
@@ -115,7 +115,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getName(Int32 index)
+        public static string getName(int index)
         {
             return _plexModes[index].getName();
         }
@@ -129,7 +129,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ePlexType getPlexType(Int32 index)
+        public static ePlexType getPlexType(int index)
         {
             return _plexModes[index].getPlexType();
         }
@@ -143,7 +143,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean isSimplex(Int32 index)
+        public static bool isSimplex(int index)
         {
             return (_plexModes[index].getPlexType() == ePlexType.Simplex);
         }

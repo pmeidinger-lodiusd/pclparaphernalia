@@ -23,18 +23,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Byte _tag;
+        private byte _tag;
 
-        private String _description;
+        private string _description;
 
-        private Boolean _flagReserved;
-        private Boolean _flagArray;
+        private bool _flagReserved;
+        private bool _flagArray;
 
-        private Int32 _groupSize;
-        private Int32 _unitSize;
+        private int _groupSize;
+        private int _unitSize;
 
-        private Int32 _statsCtParent;
-        private Int32 _statsCtChild;
+        private int _statsCtParent;
+        private int _statsCtChild;
 
         private PCLXLDataTypes.eBaseType _baseType;
 
@@ -44,13 +44,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLXLDataType(Byte tag,
-                             Boolean flagReserved,
-                             Boolean flagArray,
-                             Int32 groupSize,
-                             Int32 unitSize,
+        public PCLXLDataType(byte tag,
+                             bool flagReserved,
+                             bool flagArray,
+                             int groupSize,
+                             int unitSize,
                              PCLXLDataTypes.eBaseType baseType,
-                             String description)
+                             string description)
         {
             _tag = tag;
             _flagReserved = flagReserved;
@@ -70,12 +70,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getDetails(ref Boolean flagReserved,
-                                ref Boolean flagArray,
-                                ref Int32 groupSize,
-                                ref Int32 unitSize,
+        public void getDetails(ref bool flagReserved,
+                                ref bool flagArray,
+                                ref int groupSize,
+                                ref int unitSize,
                                 ref PCLXLDataTypes.eBaseType baseType,
-                                ref String description)
+                                ref string description)
         {
             flagReserved = _flagReserved;
             flagArray = _flagArray;
@@ -91,7 +91,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Description
+        public string Description
         {
             get { return _description; }
         }
@@ -102,7 +102,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagReserved
+        public bool FlagReserved
         {
             get { return _flagReserved; }
         }
@@ -116,7 +116,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void incrementStatisticsCount(Int32 level)
+        public void incrementStatisticsCount(int level)
         {
             if (level == 0)
                 _statsCtParent++;
@@ -145,7 +145,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtChild
+        public int StatsCtChild
         {
             get { return _statsCtChild; }
         }
@@ -156,7 +156,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtParent
+        public int StatsCtParent
         {
             get { return _statsCtParent; }
         }
@@ -167,7 +167,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtTotal
+        public int StatsCtTotal
         {
             get { return (_statsCtParent + _statsCtChild); }
         }
@@ -178,7 +178,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Tag
+        public string Tag
         {
             get { return "0x" + _tag.ToString("x2"); }
         }
@@ -189,7 +189,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Type
+        public string Type
         {
             get { return "Data Type"; }
         }

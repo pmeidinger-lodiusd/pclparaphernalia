@@ -21,9 +21,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public const Int32 _valueVarious = 99999;
-        public const Int32 _valueGeneric = 99998;
-        public const Int32 _valueDummy = 99997;
+        public const int _valueVarious = 99999;
+        public const int _valueGeneric = 99998;
+        public const int _valueDummy = 99997;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -31,12 +31,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static SortedList<String, PCLComplexSeq> _seqs =
-            new SortedList<String, PCLComplexSeq>();
+        private static SortedList<string, PCLComplexSeq> _seqs =
+            new SortedList<string, PCLComplexSeq>();
 
         private static PCLComplexSeq _seqUnknown;
 
-        private static Int32 _seqsCount;
+        private static int _seqsCount;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -64,30 +64,30 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean checkComplexSeq(
-            Int32 macroLevel,
-            Byte iChar,
-            Byte gChar,
-            Byte tChar,
-            Boolean vCheck,
-            Int32 vInt,
-            ref Boolean optObsolete,
-            ref Boolean optResetGL2,
-            ref Boolean optNilGChar,
-            ref Boolean optNilValue,
-            ref Boolean optValIsLen,
-            ref Boolean optDisplayHexVal,
+        public static bool checkComplexSeq(
+            int macroLevel,
+            byte iChar,
+            byte gChar,
+            byte tChar,
+            bool vCheck,
+            int vInt,
+            ref bool optObsolete,
+            ref bool optResetGL2,
+            ref bool optNilGChar,
+            ref bool optNilValue,
+            ref bool optValIsLen,
+            ref bool optDisplayHexVal,
             ref PrnParseConstants.eActPCL actType,
             ref PrnParseConstants.eOvlAct makeOvlAct,
-            ref String description)
+            ref string description)
         {
-            Boolean seqKnown;
-            Boolean flagDiscrete;
-            Boolean flagValGeneric;
+            bool seqKnown;
+            bool flagDiscrete;
+            bool flagValGeneric;
 
             PCLComplexSeq seq;
 
-            String keyRoot,
+            string keyRoot,
                    key;
 
             keyRoot = iChar.ToString("X2") +
@@ -145,11 +145,11 @@ namespace PCLParaphernalia
 
             if ((flagDiscrete) && (flagValGeneric))
             {
-                Int32 ptr = description.IndexOf("discrete");
+                int ptr = description.IndexOf("discrete");
 
                 if (ptr != -1)
                 {
-                    String desc = seq.Description;
+                    string desc = seq.Description;
 
                     description = desc.Substring(0, ptr) +
                                   "unknown/illegal" +
@@ -174,21 +174,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 displaySeqList(DataGrid grid,
-                                           Boolean incObsoleteSeqs,
-                                           Boolean incDiscreteVal)
+        public static int displaySeqList(DataGrid grid,
+                                           bool incObsoleteSeqs,
+                                           bool incDiscreteVal)
         {
-            Int32 count = 0;
+            int count = 0;
 
-            Boolean seqDiscrete;
-            Boolean seqObsolete;
-            Boolean valGeneric;
-            Boolean valVarious;
+            bool seqDiscrete;
+            bool seqObsolete;
+            bool valGeneric;
+            bool valVarious;
             //      Boolean valPresent;
 
-            Boolean displaySeq;
+            bool displaySeq;
 
-            foreach (KeyValuePair<String, PCLComplexSeq> kvp in _seqs)
+            foreach (KeyValuePair<string, PCLComplexSeq> kvp in _seqs)
             {
                 displaySeq = true;
 
@@ -231,12 +231,12 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void displayStatsCounts(DataTable table,
-                                               Boolean incUsedSeqsOnly,
-                                               Boolean excUnusedObsSeqs)
+                                               bool incUsedSeqsOnly,
+                                               bool excUnusedObsSeqs)
         {
-            Int32 count = 0;
+            int count = 0;
 
-            Boolean displaySeq,
+            bool displaySeq,
                     hddrWritten;
 
             DataRow row;
@@ -273,7 +273,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            foreach (KeyValuePair<String, PCLComplexSeq> kvp in _seqs)
+            foreach (KeyValuePair<string, PCLComplexSeq> kvp in _seqs)
             {
                 displaySeq = true;
 
@@ -364,7 +364,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getSeqCount()
+        public static int getSeqCount()
         {
             return _seqsCount;
         }
@@ -397,20 +397,20 @@ namespace PCLParaphernalia
 
         private static void populateTable()
         {
-            const Boolean flagNone = false;
-            const Boolean flagDiscrete = true;
-            const Boolean flagNilGChar = true;
-            const Boolean flagNilValue = true;
-            const Boolean flagValIsLen = true;
-            const Boolean flagObsolete = true;
-            const Boolean flagDisplayHexVal = true;
+            const bool flagNone = false;
+            const bool flagDiscrete = true;
+            const bool flagNilGChar = true;
+            const bool flagNilValue = true;
+            const bool flagValIsLen = true;
+            const bool flagObsolete = true;
+            const bool flagDisplayHexVal = true;
             // const Boolean flagResetGL2 = true;      // not used //
 
-            Byte iChar, gChar, tChar;
-            Int32 value,
+            byte iChar, gChar, tChar;
+            int value,
                   count;
 
-            String root;
+            string root;
 
             iChar = 0x20;   //   //
             gChar = 0x20;   //   //
@@ -2067,7 +2067,7 @@ namespace PCLParaphernalia
 
             if (count > 0)
             {
-                for (Int32 i = 0; i < count; i++)
+                for (int i = 0; i < count; i++)
                 {
                     value = PCLOrientations.getIdPCL(i);
 
@@ -2537,9 +2537,9 @@ namespace PCLParaphernalia
 
             if (count > 0)
             {
-                for (Int32 i = 0; i < count; i++)
+                for (int i = 0; i < count; i++)
                 {
-                    if (i != (Byte)PCLTextParsingMethods.eIndex.not_specified)
+                    if (i != (byte)PCLTextParsingMethods.eIndex.not_specified)
                     {
                         value = PCLTextParsingMethods.getValue(i);
 
@@ -5769,7 +5769,7 @@ namespace PCLParaphernalia
 
             if (count > 0)
             {
-                for (Int32 i = 0; i < count; i++)
+                for (int i = 0; i < count; i++)
                 {
                     value = PCLLogicalOperations.getROPId(i);
 
@@ -7895,34 +7895,34 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void populateTableAddFonts(Byte iChar,
-                                                   Byte gChar,
-                                                   Byte tChar,
-                                                   String root)
+        private static void populateTableAddFonts(byte iChar,
+                                                   byte gChar,
+                                                   byte tChar,
+                                                   string root)
         {
-            const Boolean flagNone = false;
-            const Boolean flagDiscrete = true;
+            const bool flagNone = false;
+            const bool flagDiscrete = true;
 
-            Int32 ctFonts;
+            int ctFonts;
 
             ctFonts = PCLFonts.getCount();
 
             if (ctFonts > 0)
             {
-                String type;
-                String fontName = "";
+                string type;
+                string fontName = "";
 
-                Int32 value;
-                UInt16 typeface = 0;
+                int value;
+                ushort typeface = 0;
 
-                Boolean presetFont = false;
+                bool presetFont = false;
 
                 if (iChar == 0x28)
                     type = "Primary";
                 else
                     type = "Secondary";
 
-                for (Int32 i = 0; i < ctFonts; i++)
+                for (int i = 0; i < ctFonts; i++)
                 {
                     presetFont = PCLFonts.getPresetFontData(i,
                                                              ref typeface,
@@ -7956,23 +7956,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void populateTableAddPaperSizes(Byte iChar,
-                                                       Byte gChar,
-                                                       Byte tChar,
-                                                       String root)
+        private static void populateTableAddPaperSizes(byte iChar,
+                                                       byte gChar,
+                                                       byte tChar,
+                                                       string root)
         {
-            const Boolean flagNone = false;
-            const Boolean flagDiscrete = true;
+            const bool flagNone = false;
+            const bool flagDiscrete = true;
 
-            Int32 count;
+            int count;
 
             count = PCLPaperSizes.getCount();
 
             if (count > 0)
             {
-                Int32 value;
+                int value;
 
-                for (Int32 i = 0; i < count; i++)
+                for (int i = 0; i < count; i++)
                 {
                     if (!PCLPaperSizes.IsIdUnknownPCL(i))
                     {
@@ -8002,31 +8002,31 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void populateTableAddSymsets(Byte iChar,
-                                                     Byte gChar,
-                                                     Byte tChar,
-                                                     String root)
+        private static void populateTableAddSymsets(byte iChar,
+                                                     byte gChar,
+                                                     byte tChar,
+                                                     string root)
         {
-            const Boolean flagNone = false;
-            const Boolean flagDiscrete = true;
-            const Boolean flagNilGChar = true;
+            const bool flagNone = false;
+            const bool flagDiscrete = true;
+            const bool flagNilGChar = true;
 
-            Int32 ctSymsets;
+            int ctSymsets;
 
             ctSymsets = PCLSymbolSets.getCount();
 
             if (ctSymsets > 0)
             {
-                Int32 value;
-                UInt16 kind1 = 0;
-                UInt16 idNum = 0;
+                int value;
+                ushort kind1 = 0;
+                ushort idNum = 0;
 
-                String name = "";
-                String id = "";
+                string name = "";
+                string id = "";
 
-                Boolean matchFound = false;
+                bool matchFound = false;
 
-                for (Int32 i = 0; i < ctSymsets; i++)
+                for (int i = 0; i < ctSymsets; i++)
                 {
                     matchFound =
                         PCLSymbolSets.getSymsetDataForIdAlpha(i,
@@ -8037,7 +8037,7 @@ namespace PCLParaphernalia
 
                     if (matchFound)
                     {
-                        String type;
+                        string type;
 
                         value = idNum;
 
@@ -8077,7 +8077,7 @@ namespace PCLParaphernalia
 
             _seqUnknown.resetStatistics();
 
-            foreach (KeyValuePair<String, PCLComplexSeq> kvp in _seqs)
+            foreach (KeyValuePair<string, PCLComplexSeq> kvp in _seqs)
             {
                 seq = kvp.Value;
 

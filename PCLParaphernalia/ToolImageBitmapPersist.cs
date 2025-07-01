@@ -19,36 +19,36 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const String _mainKey = MainForm._regMainKey;
+        const string _mainKey = MainForm._regMainKey;
 
-        const String _subKeyTools = "Tools";
-        const String _subKeyToolsImageBitmap = "ImageBitmap";
-        const String _subKeyPCL5 = "PCL5";
-        const String _subKeyPCL6 = "PCL6";
-        const String _subKeyPCL = "PCL";
-        const String _subKeyPCLXL = "PCLXL";
+        const string _subKeyTools = "Tools";
+        const string _subKeyToolsImageBitmap = "ImageBitmap";
+        const string _subKeyPCL5 = "PCL5";
+        const string _subKeyPCL6 = "PCL6";
+        const string _subKeyPCL = "PCL";
+        const string _subKeyPCLXL = "PCLXL";
 
-        const String _nameCaptureFile = "CaptureFile";
-        const String _nameCoordX = "CoordX";
-        const String _nameCoordY = "CoordY";
-        const String _nameFilename = "Filename";
-        const String _nameIndxOrientation = "IndxOrientation";
-        const String _nameIndxPaperSize = "IndxPaperSize";
-        const String _nameIndxPaperType = "IndxPaperType";
-        const String _nameIndxPDL = "IndxPDL";
-        const String _nameIndxRasterRes = "IndxRasterRes";
-        const String _nameScaleX = "ScaleX";
-        const String _nameScaleY = "ScaleY";
+        const string _nameCaptureFile = "CaptureFile";
+        const string _nameCoordX = "CoordX";
+        const string _nameCoordY = "CoordY";
+        const string _nameFilename = "Filename";
+        const string _nameIndxOrientation = "IndxOrientation";
+        const string _nameIndxPaperSize = "IndxPaperSize";
+        const string _nameIndxPaperType = "IndxPaperType";
+        const string _nameIndxPDL = "IndxPDL";
+        const string _nameIndxRasterRes = "IndxRasterRes";
+        const string _nameScaleX = "ScaleX";
+        const string _nameScaleY = "ScaleY";
 
-        const Int32 _indexZero = 0;
+        const int _indexZero = 0;
 
-        const String _defaultCaptureFile = "CaptureFile_ImageBitmap.prn";
-        const String _defaultCaptureFilePCL = "CaptureFile_ImageBitmapPCL.prn";
-        const String _defaultCaptureFilePCLXL = "CaptureFile_ImageBitmapPCLXL.prn";
-        const String _defaultFilename = "DefaultImageFile.bmp";
+        const string _defaultCaptureFile = "CaptureFile_ImageBitmap.prn";
+        const string _defaultCaptureFilePCL = "CaptureFile_ImageBitmapPCL.prn";
+        const string _defaultCaptureFilePCLXL = "CaptureFile_ImageBitmapPCLXL.prn";
+        const string _defaultFilename = "DefaultImageFile.bmp";
 
-        const Int32 _defaultCoord = 300;
-        const Int32 _defaultScale = 100;
+        const int _defaultCoord = 300;
+        const int _defaultScale = 100;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -60,21 +60,21 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void loadDataCapture(ToolCommonData.ePrintLang crntPDL,
-                                            ref String captureFile)
+                                            ref string captureFile)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String oldKey = _subKeyTools + "\\" + _subKeyToolsImageBitmap;
-            String oldFile;
+            string oldKey = _subKeyTools + "\\" + _subKeyToolsImageBitmap;
+            string oldFile;
 
-            Boolean update_from_v2_5_0_0 = false;
+            bool update_from_v2_5_0_0 = false;
 
-            String defWorkFolder = ToolCommonData.DefWorkFolder;
+            string defWorkFolder = ToolCommonData.DefWorkFolder;
 
             using (RegistryKey subKey = keyMain.OpenSubKey(oldKey, true))
             {
-                oldFile = (String)subKey.GetValue(_nameCaptureFile);
+                oldFile = (string)subKey.GetValue(_nameCaptureFile);
 
                 if (oldFile != null)
                 {
@@ -86,7 +86,7 @@ namespace PCLParaphernalia
 
             if (update_from_v2_5_0_0)
             {
-                String keyPCL = _subKeyTools +
+                string keyPCL = _subKeyTools +
                                  "\\" + _subKeyToolsImageBitmap +
                                  "\\" + _subKeyPCL;
 
@@ -97,7 +97,7 @@ namespace PCLParaphernalia
                                      RegistryValueKind.String);
                 }
 
-                String keyPCLXL = _subKeyTools +
+                string keyPCLXL = _subKeyTools +
                                  "\\" + _subKeyToolsImageBitmap +
                                  "\\" + _subKeyPCLXL;
 
@@ -111,24 +111,24 @@ namespace PCLParaphernalia
 
             if (crntPDL == ToolCommonData.ePrintLang.PCL)
             {
-                String key = _subKeyTools + "\\" + _subKeyToolsImageBitmap +
+                string key = _subKeyTools + "\\" + _subKeyToolsImageBitmap +
                                             "\\" + _subKeyPCL;
 
                 using (RegistryKey subKey = keyMain.CreateSubKey(key))
                 {
-                    captureFile = (String)subKey.GetValue(
+                    captureFile = (string)subKey.GetValue(
                         _nameCaptureFile,
                         defWorkFolder + "\\" + _defaultCaptureFilePCL);
                 }
             }
             else if (crntPDL == ToolCommonData.ePrintLang.PCLXL)
             {
-                String key = _subKeyTools + "\\" + _subKeyToolsImageBitmap +
+                string key = _subKeyTools + "\\" + _subKeyToolsImageBitmap +
                                             "\\" + _subKeyPCLXL;
 
                 using (RegistryKey subKey = keyMain.CreateSubKey(key))
                 {
-                    captureFile = (String)subKey.GetValue(
+                    captureFile = (string)subKey.GetValue(
                         _nameCaptureFile,
                         defWorkFolder + "\\" + _defaultCaptureFilePCLXL);
                 }
@@ -145,20 +145,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCommon(ref Int32 indxPDL,
-                                          ref String filename,
-                                          ref Int32 destPosX,
-                                          ref Int32 destPosY,
-                                          ref Int32 destScaleX,
-                                          ref Int32 destScaleY,
-                                          ref Int32 indxRasterRes)
+        public static void loadDataCommon(ref int indxPDL,
+                                          ref string filename,
+                                          ref int destPosX,
+                                          ref int destPosY,
+                                          ref int destScaleX,
+                                          ref int destScaleY,
+                                          ref int indxRasterRes)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTools + "\\" + _subKeyToolsImageBitmap;
+            string key = _subKeyTools + "\\" + _subKeyToolsImageBitmap;
 
-            String defWorkFolder = ToolCommonData.DefWorkFolder;
+            string defWorkFolder = ToolCommonData.DefWorkFolder;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -170,26 +170,26 @@ namespace PCLParaphernalia
                     // update from v2_5_0_0
                     Helper_RegKey.renameKey(subKey, _subKeyPCL6, _subKeyPCLXL);
 
-                indxPDL = (Int32)subKey.GetValue(_nameIndxPDL,
+                indxPDL = (int)subKey.GetValue(_nameIndxPDL,
                                                        _indexZero);
 
-                filename = (String)subKey.GetValue(_nameFilename,
+                filename = (string)subKey.GetValue(_nameFilename,
                                                         defWorkFolder + "\\" +
                                                         _defaultFilename);
 
-                destPosX = (Int32)subKey.GetValue(_nameCoordX,
+                destPosX = (int)subKey.GetValue(_nameCoordX,
                                                        _defaultCoord);
 
-                destPosY = (Int32)subKey.GetValue(_nameCoordY,
+                destPosY = (int)subKey.GetValue(_nameCoordY,
                                                        _defaultCoord);
 
-                destScaleX = (Int32)subKey.GetValue(_nameScaleX,
+                destScaleX = (int)subKey.GetValue(_nameScaleX,
                                                        _defaultScale);
 
-                destScaleY = (Int32)subKey.GetValue(_nameScaleY,
+                destScaleY = (int)subKey.GetValue(_nameScaleY,
                                                        _defaultScale);
 
-                indxRasterRes = (Int32)subKey.GetValue(_nameIndxRasterRes,
+                indxRasterRes = (int)subKey.GetValue(_nameIndxRasterRes,
                                                        _indexZero);
             }
         }
@@ -203,26 +203,26 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCL(String pdlName,
-                                       ref Int32 indxOrientation,
-                                       ref Int32 indxPaperSize,
-                                       ref Int32 indxPaperType)
+        public static void loadDataPCL(string pdlName,
+                                       ref int indxOrientation,
+                                       ref int indxPaperSize,
+                                       ref int indxPaperType)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsImageBitmap +
                                  "\\" + pdlName;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxOrientation = (Int32)subKey.GetValue(_nameIndxOrientation,
+                indxOrientation = (int)subKey.GetValue(_nameIndxOrientation,
                                                          _indexZero);
-                indxPaperSize = (Int32)subKey.GetValue(_nameIndxPaperSize,
+                indxPaperSize = (int)subKey.GetValue(_nameIndxPaperSize,
                                                          _indexZero);
-                indxPaperType = (Int32)subKey.GetValue(_nameIndxPaperType,
+                indxPaperType = (int)subKey.GetValue(_nameIndxPaperType,
                                                          _indexZero);
             }
         }
@@ -237,14 +237,14 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void saveDataCapture(ToolCommonData.ePrintLang crntPDL,
-                                            String captureFile)
+                                            string captureFile)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
             if (crntPDL == ToolCommonData.ePrintLang.PCL)
             {
-                String key = _subKeyTools + "\\" + _subKeyToolsImageBitmap +
+                string key = _subKeyTools + "\\" + _subKeyToolsImageBitmap +
                                             "\\" + _subKeyPCL;
 
                 using (RegistryKey subKey = keyMain.CreateSubKey(key))
@@ -259,7 +259,7 @@ namespace PCLParaphernalia
             }
             else if (crntPDL == ToolCommonData.ePrintLang.PCLXL)
             {
-                String key = _subKeyTools + "\\" + _subKeyToolsImageBitmap +
+                string key = _subKeyTools + "\\" + _subKeyToolsImageBitmap +
                                             "\\" + _subKeyPCLXL;
 
                 using (RegistryKey subKey = keyMain.CreateSubKey(key))
@@ -283,18 +283,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCommon(Int32 indxPDL,
-                                          String filename,
-                                          Int32 destPosX,
-                                          Int32 destPosY,
-                                          Int32 destScaleX,
-                                          Int32 destScaleY,
-                                          Int32 indxRasterRes)
+        public static void saveDataCommon(int indxPDL,
+                                          string filename,
+                                          int destPosX,
+                                          int destPosY,
+                                          int destScaleX,
+                                          int destScaleY,
+                                          int indxRasterRes)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTools + "\\" + _subKeyToolsImageBitmap;
+            string key = _subKeyTools + "\\" + _subKeyToolsImageBitmap;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -340,15 +340,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCL(String pdlName,
-                                       Int32 indxOrientation,
-                                       Int32 indxPaperSize,
-                                       Int32 indxPaperType)
+        public static void saveDataPCL(string pdlName,
+                                       int indxOrientation,
+                                       int indxPaperSize,
+                                       int indxPaperType)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsImageBitmap +
                                  "\\" + pdlName;

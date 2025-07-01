@@ -20,7 +20,7 @@ namespace PCLParaphernalia
 
         private PCLPaperTypes.eEntryType _entryType;
 
-        private String _paperTypeName;
+        private string _paperTypeName;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -29,7 +29,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PCLPaperType(PCLPaperTypes.eEntryType entryType,
-                            String name)
+                            string name)
         {
             _entryType = entryType;
             _paperTypeName = name;
@@ -44,7 +44,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String getName()
+        public string getName()
         {
             return _paperTypeName;
         }

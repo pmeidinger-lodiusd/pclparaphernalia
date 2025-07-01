@@ -19,37 +19,37 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const String _mainKey = MainForm._regMainKey;
+        const string _mainKey = MainForm._regMainKey;
 
-        const String _subKeyTools = "Tools";
-        const String _subKeyToolsTrayMap = "TrayMap";
-        const String _subKeyPCL5 = "PCL5";
-        const String _subKeyPCL6 = "PCL6";
-        const String _subKeyPCL = "PCL";
-        const String _subKeyPCLXL = "PCLXL";
-        const String _subKeySheetRoot = "Sheet_";
+        const string _subKeyTools = "Tools";
+        const string _subKeyToolsTrayMap = "TrayMap";
+        const string _subKeyPCL5 = "PCL5";
+        const string _subKeyPCL6 = "PCL6";
+        const string _subKeyPCL = "PCL";
+        const string _subKeyPCLXL = "PCLXL";
+        const string _subKeySheetRoot = "Sheet_";
 
-        const String _nameCaptureFile = "CaptureFile";
-        const String _nameFlagFormAsMacro = "FlagFormAsMacro";
-        const String _nameIndxOrientation = "IndxOrientation"; // pre v2.8 //
-        const String _nameIndxOrientFront = "IndxOrientFront";
-        const String _nameIndxOrientRear = "IndxOrientRear";
-        const String _nameIndxPaperSize = "IndxPaperSize";
-        const String _nameIndxPaperType = "IndxPaperType";
-        const String _nameIndxPaperTray = "IndxPaperTray";
-        const String _nameIndxPDL = "IndxPDL";
-        const String _nameIndxPlexMode = "IndxPlexMode";
-        const String _nameIndxTrayIdOpt = "IndxTrayIdOpt"; // pre v2.8 //
-        const String _nameSheetCt = "SheetCt";
-        const String _nameTrayIdList = "TrayIdList"; // pre v2.8 //
+        const string _nameCaptureFile = "CaptureFile";
+        const string _nameFlagFormAsMacro = "FlagFormAsMacro";
+        const string _nameIndxOrientation = "IndxOrientation"; // pre v2.8 //
+        const string _nameIndxOrientFront = "IndxOrientFront";
+        const string _nameIndxOrientRear = "IndxOrientRear";
+        const string _nameIndxPaperSize = "IndxPaperSize";
+        const string _nameIndxPaperType = "IndxPaperType";
+        const string _nameIndxPaperTray = "IndxPaperTray";
+        const string _nameIndxPDL = "IndxPDL";
+        const string _nameIndxPlexMode = "IndxPlexMode";
+        const string _nameIndxTrayIdOpt = "IndxTrayIdOpt"; // pre v2.8 //
+        const string _nameSheetCt = "SheetCt";
+        const string _nameTrayIdList = "TrayIdList"; // pre v2.8 //
 
-        const Int32 _flagFalse = 0;
-        const Int32 _flagTrue = 1;
-        const Int32 _indexZero = 0;
-        const Int32 _indexOne = 1;
+        const int _flagFalse = 0;
+        const int _flagTrue = 1;
+        const int _indexZero = 0;
+        const int _indexOne = 1;
 
-        const String _defaultCaptureFilePCL = "CaptureFile_TrayMapPCL.prn";
-        const String _defaultCaptureFilePCLXL = "CaptureFile_TrayMapPCLXL.prn";
+        const string _defaultCaptureFilePCL = "CaptureFile_TrayMapPCL.prn";
+        const string _defaultCaptureFilePCLXL = "CaptureFile_TrayMapPCLXL.prn";
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -61,21 +61,21 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void loadDataCapture(ToolCommonData.ePrintLang crntPDL,
-                                            ref String captureFile)
+                                            ref string captureFile)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String oldKey = _subKeyTools + "\\" + _subKeyToolsTrayMap;
-            String oldFile;
+            string oldKey = _subKeyTools + "\\" + _subKeyToolsTrayMap;
+            string oldFile;
 
-            Boolean update_from_v2_5_0_0 = false;
+            bool update_from_v2_5_0_0 = false;
 
-            String defWorkFolder = ToolCommonData.DefWorkFolder;
+            string defWorkFolder = ToolCommonData.DefWorkFolder;
 
             using (RegistryKey subKey = keyMain.OpenSubKey(oldKey, true))
             {
-                oldFile = (String)subKey.GetValue(_nameCaptureFile);
+                oldFile = (string)subKey.GetValue(_nameCaptureFile);
 
                 if (oldFile != null)
                 {
@@ -87,7 +87,7 @@ namespace PCLParaphernalia
 
             if (update_from_v2_5_0_0)
             {
-                String keyPCL = _subKeyTools +
+                string keyPCL = _subKeyTools +
                                  "\\" + _subKeyToolsTrayMap +
                                  "\\" + _subKeyPCL;
 
@@ -98,7 +98,7 @@ namespace PCLParaphernalia
                                      RegistryValueKind.String);
                 }
 
-                String keyPCLXL = _subKeyTools +
+                string keyPCLXL = _subKeyTools +
                                  "\\" + _subKeyToolsTrayMap +
                                  "\\" + _subKeyPCLXL;
 
@@ -112,24 +112,24 @@ namespace PCLParaphernalia
 
             if (crntPDL == ToolCommonData.ePrintLang.PCL)
             {
-                String key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
+                string key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
                                             "\\" + _subKeyPCL;
 
                 using (RegistryKey subKey = keyMain.CreateSubKey(key))
                 {
-                    captureFile = (String)subKey.GetValue(
+                    captureFile = (string)subKey.GetValue(
                         _nameCaptureFile,
                         defWorkFolder + "\\" + _defaultCaptureFilePCL);
                 }
             }
             else if (crntPDL == ToolCommonData.ePrintLang.PCLXL)
             {
-                String key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
+                string key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
                                             "\\" + _subKeyPCLXL;
 
                 using (RegistryKey subKey = keyMain.CreateSubKey(key))
                 {
-                    captureFile = (String)subKey.GetValue(
+                    captureFile = (string)subKey.GetValue(
                         _nameCaptureFile,
                         defWorkFolder + "\\" + _defaultCaptureFilePCLXL);
                 }
@@ -145,12 +145,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCommon(ref Int32 indxPDL)
+        public static void loadDataCommon(ref int indxPDL)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTools + "\\" + _subKeyToolsTrayMap;
+            string key = _subKeyTools + "\\" + _subKeyToolsTrayMap;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -162,7 +162,7 @@ namespace PCLParaphernalia
                     // update from v2_5_0_0
                     Helper_RegKey.renameKey(subKey, _subKeyPCL6, _subKeyPCLXL);
 
-                indxPDL = (Int32)subKey.GetValue(_nameIndxPDL,
+                indxPDL = (int)subKey.GetValue(_nameIndxPDL,
                                                  _indexZero);
             }
         }
@@ -176,26 +176,26 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCLOpt(ref Boolean flagFormAsMacro,
-                                           ref Int32 sheetCt)
+        public static void loadDataPCLOpt(ref bool flagFormAsMacro,
+                                           ref int sheetCt)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
-            Int32 tmpInt;
+            int tmpInt;
 
-            Byte[] buffer = { 0x00 };
+            byte[] buffer = { 0x00 };
 
             key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
                                  "\\" + _subKeyPCL;
 
             if (MainFormData.VersionChange)
             {
-                Boolean update_2_8 = false;
+                bool update_2_8 = false;
 
-                Int32 vMaj = -1,
+                int vMaj = -1,
                       vMin = -1,
                       vBui = -1,
                       vRev = -1;
@@ -222,7 +222,7 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                tmpInt = (Int32)subKey.GetValue(_nameFlagFormAsMacro,
+                tmpInt = (int)subKey.GetValue(_nameFlagFormAsMacro,
                                                          _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -230,7 +230,7 @@ namespace PCLParaphernalia
                 else
                     flagFormAsMacro = true;
 
-                sheetCt = (Int32)subKey.GetValue(_nameSheetCt,
+                sheetCt = (int)subKey.GetValue(_nameSheetCt,
                                                  _indexOne);
             }
         }
@@ -244,26 +244,26 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCLXLOpt(ref Boolean flagFormAsMacro,
-                                             ref Int32 sheetCt)
+        public static void loadDataPCLXLOpt(ref bool flagFormAsMacro,
+                                             ref int sheetCt)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
-            Int32 tmpInt;
+            int tmpInt;
 
-            Byte[] buffer = { 0x00 };
+            byte[] buffer = { 0x00 };
 
             key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
                                  "\\" + _subKeyPCLXL;
 
             if (MainFormData.VersionChange)
             {
-                Boolean update_2_8 = false;
+                bool update_2_8 = false;
 
-                Int32 vMaj = -1,
+                int vMaj = -1,
                       vMin = -1,
                       vBui = -1,
                       vRev = -1;
@@ -290,7 +290,7 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                tmpInt = (Int32)subKey.GetValue(_nameFlagFormAsMacro,
+                tmpInt = (int)subKey.GetValue(_nameFlagFormAsMacro,
                                                          _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -298,7 +298,7 @@ namespace PCLParaphernalia
                 else
                     flagFormAsMacro = true;
 
-                sheetCt = (Int32)subKey.GetValue(_nameSheetCt,
+                sheetCt = (int)subKey.GetValue(_nameSheetCt,
                                                  _indexOne);
             }
         }
@@ -312,19 +312,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataSheetOpt(String pdlName,
-                                             Int32 sheetNo,
-                                             ref Int32 indxPaperSize,
-                                             ref Int32 indxPaperType,
-                                             ref Int32 indxPaperTray,
-                                             ref Int32 indxPlexMode,
-                                             ref Int32 indxOrient_F,
-                                             ref Int32 indxOrient_R)
+        public static void loadDataSheetOpt(string pdlName,
+                                             int sheetNo,
+                                             ref int indxPaperSize,
+                                             ref int indxPaperType,
+                                             ref int indxPaperTray,
+                                             ref int indxPlexMode,
+                                             ref int indxOrient_F,
+                                             ref int indxOrient_R)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
                                  "\\" + pdlName +
@@ -333,22 +333,22 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxPaperSize = (Int32)subKey.GetValue(_nameIndxPaperSize,
+                indxPaperSize = (int)subKey.GetValue(_nameIndxPaperSize,
                                                          _indexZero);
 
-                indxPaperType = (Int32)subKey.GetValue(_nameIndxPaperType,
+                indxPaperType = (int)subKey.GetValue(_nameIndxPaperType,
                                                          _indexZero);
 
-                indxPaperTray = (Int32)subKey.GetValue(_nameIndxPaperTray,
+                indxPaperTray = (int)subKey.GetValue(_nameIndxPaperTray,
                                                        _indexZero);
 
-                indxPlexMode = (Int32)subKey.GetValue(_nameIndxPlexMode,
+                indxPlexMode = (int)subKey.GetValue(_nameIndxPlexMode,
                                                       _indexZero);
 
-                indxOrient_F = (Int32)subKey.GetValue(_nameIndxOrientFront,
+                indxOrient_F = (int)subKey.GetValue(_nameIndxOrientFront,
                                                       _indexZero);
 
-                indxOrient_R = (Int32)subKey.GetValue(_nameIndxOrientRear,
+                indxOrient_R = (int)subKey.GetValue(_nameIndxOrientRear,
                                                       _indexZero);
             }
         }
@@ -363,14 +363,14 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void saveDataCapture(ToolCommonData.ePrintLang crntPDL,
-                                            String captureFile)
+                                            string captureFile)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
             if (crntPDL == ToolCommonData.ePrintLang.PCL)
             {
-                String key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
+                string key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
                                             "\\" + _subKeyPCL;
 
                 using (RegistryKey subKey = keyMain.CreateSubKey(key))
@@ -385,7 +385,7 @@ namespace PCLParaphernalia
             }
             else if (crntPDL == ToolCommonData.ePrintLang.PCLXL)
             {
-                String key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
+                string key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
                                             "\\" + _subKeyPCLXL;
 
                 using (RegistryKey subKey = keyMain.CreateSubKey(key))
@@ -409,12 +409,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCommon(Int32 indxPDL)
+        public static void saveDataCommon(int indxPDL)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTools + "\\" + _subKeyToolsTrayMap;
+            string key = _subKeyTools + "\\" + _subKeyToolsTrayMap;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -432,13 +432,13 @@ namespace PCLParaphernalia
         // Store current TrayMap PCL options.                                 //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCLOpt(Boolean flagFormAsMacro,
-                                           Int32 sheetCt)
+        public static void saveDataPCLOpt(bool flagFormAsMacro,
+                                           int sheetCt)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
                                  "\\" + _subKeyPCL;
@@ -468,13 +468,13 @@ namespace PCLParaphernalia
         // Store current TrayMap PCL XL options.                              //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCLXLOpt(Boolean flagFormAsMacro,
-                                             Int32 sheetCt)
+        public static void saveDataPCLXLOpt(bool flagFormAsMacro,
+                                             int sheetCt)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
                                  "\\" + _subKeyPCLXL;
@@ -505,19 +505,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataSheetOpt(String pdlName,
-                                             Int32 sheetNo,
-                                             Int32 indxPaperSize,
-                                             Int32 indxPaperType,
-                                             Int32 indxPaperTray,
-                                             Int32 indxPlexMode,
-                                             Int32 indxOrientFront,
-                                             Int32 indxOrientRear)
+        public static void saveDataSheetOpt(string pdlName,
+                                             int sheetNo,
+                                             int indxPaperSize,
+                                             int indxPaperType,
+                                             int indxPaperTray,
+                                             int indxPlexMode,
+                                             int indxOrientFront,
+                                             int indxOrientRear)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
                                  "\\" + pdlName +

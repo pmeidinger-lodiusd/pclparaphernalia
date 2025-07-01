@@ -20,21 +20,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const String _hexChars = "0123456789ABCDEF";
+        const string _hexChars = "0123456789ABCDEF";
 
-        const Int32 _macroId = 1;
-        const UInt16 _unitsPerInch = PCLWriter.sessionUPI;
+        const int _macroId = 1;
+        const ushort _unitsPerInch = PCLWriter.sessionUPI;
 
-        const Int16 _rulerDivPerCell = 10;
-        const Int16 _rulerVOriginX = (_unitsPerInch * 6);
-        const Int16 _rulerHOriginY = (_unitsPerInch * 5);
-        const Int16 _rulerCell = (_unitsPerInch * 1);
-        const Int16 _rulerDiv = (_rulerCell / _rulerDivPerCell);
+        const short _rulerDivPerCell = 10;
+        const short _rulerVOriginX = (_unitsPerInch * 6);
+        const short _rulerHOriginY = (_unitsPerInch * 5);
+        const short _rulerCell = (_unitsPerInch * 1);
+        const short _rulerDiv = (_rulerCell / _rulerDivPerCell);
 
-        const Int16 _posOrigin = _rulerCell;
-        const Int16 _posXDesc = _posOrigin + (4 * _rulerDiv);
-        const Int16 _posYHddr = _posOrigin - (4 * _rulerDiv);
-        const Int16 _posYDesc = _posOrigin + (4 * _rulerDiv);
+        const short _posOrigin = _rulerCell;
+        const short _posXDesc = _posOrigin + (4 * _rulerDiv);
+        const short _posYHddr = _posOrigin - (4 * _rulerDiv);
+        const short _posYDesc = _posOrigin + (4 * _rulerDiv);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -51,22 +51,22 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void generateJob(BinaryWriter prnWriter,
-                                       Int32 indxPaperSize,
-                                       Int32 indxPaperType,
-                                       Int32 indxOrientation,
-                                       Int16 logLeftOffset,
-                                       Int16 logTopOffset,
-                                       UInt16 logPageWidth,
-                                       UInt16 logPageHeight,
-                                       Boolean formAsMacro,
-                                       Boolean incStdPage)
+                                       int indxPaperSize,
+                                       int indxPaperType,
+                                       int indxOrientation,
+                                       short logLeftOffset,
+                                       short logTopOffset,
+                                       ushort logPageWidth,
+                                       ushort logPageHeight,
+                                       bool formAsMacro,
+                                       bool incStdPage)
         {
             const PCLOrientations.eAspect aspectPort
                     = PCLOrientations.eAspect.Portrait;
 
             PCLOrientations.eAspect aspect;
 
-            UInt16 paperWidth,
+            ushort paperWidth,
                    paperLength,
                    paperLengthPort,
                    logXOffset;
@@ -133,13 +133,13 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateJobHeader(BinaryWriter prnWriter,
-                                              Int32 indxPaperSize,
-                                              Int32 indxPaperType,
-                                              Int32 indxOrientation,
-                                              Boolean formAsMacro,
-                                              UInt16 paperWidth,
-                                              UInt16 paperLength,
-                                              UInt16 logXOffset)
+                                              int indxPaperSize,
+                                              int indxPaperType,
+                                              int indxOrientation,
+                                              bool formAsMacro,
+                                              ushort paperWidth,
+                                              ushort paperLength,
+                                              ushort logXOffset)
         {
             PCLWriter.stdJobHeader(prnWriter, "");
 
@@ -164,7 +164,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateJobTrailer(BinaryWriter prnWriter,
-                                               Boolean formAsMacro)
+                                               bool formAsMacro)
         {
             PCLWriter.stdJobTrailer(prnWriter, formAsMacro, _macroId);
         }
@@ -181,31 +181,31 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateOverlay(BinaryWriter prnWriter,
-                                            Boolean formAsMacro,
-                                            UInt16 paperWidth,
-                                            UInt16 paperLength,
-                                            UInt16 logXOffset)
+                                            bool formAsMacro,
+                                            ushort paperWidth,
+                                            ushort paperLength,
+                                            ushort logXOffset)
         {
-            Int16 rulerWidth;
-            Int16 rulerHeight;
+            short rulerWidth;
+            short rulerHeight;
 
-            Int16 rulerCellsX;
-            Int16 rulerCellsY;
+            short rulerCellsX;
+            short rulerCellsY;
 
-            Int16 posX,
+            short posX,
                   posY;
 
-            Int16 lineInc,
+            short lineInc,
                   ptSize;
 
-            Int16 stroke = 1;
+            short stroke = 1;
 
             //----------------------------------------------------------------//
 
-            rulerCellsX = (Int16)((paperWidth / _unitsPerInch) + 1);
-            rulerCellsY = (Int16)((paperLength / _unitsPerInch) + 1);
-            rulerWidth = (Int16)(rulerCellsX * _unitsPerInch);
-            rulerHeight = (Int16)(rulerCellsY * _unitsPerInch);
+            rulerCellsX = (short)((paperWidth / _unitsPerInch) + 1);
+            rulerCellsY = (short)((paperLength / _unitsPerInch) + 1);
+            rulerWidth = (short)(rulerCellsX * _unitsPerInch);
+            rulerHeight = (short)(rulerCellsY * _unitsPerInch);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -230,14 +230,14 @@ namespace PCLParaphernalia
 
             posY -= (_rulerDiv / 2);
 
-            for (Int32 i = 0; i < rulerCellsX; i++)
+            for (int i = 0; i < rulerCellsX; i++)
             {
                 PCLWriter.lineVertical(prnWriter, posX, posY,
                                        _rulerDiv * 2, stroke);
 
                 posX += _rulerDiv;
 
-                for (Int32 j = 1; j < _rulerDivPerCell; j++)
+                for (int j = 1; j < _rulerDivPerCell; j++)
                 {
                     PCLWriter.lineVertical(prnWriter, posX, posY,
                                            _rulerDiv, stroke);
@@ -259,14 +259,14 @@ namespace PCLParaphernalia
 
             posX -= (_rulerDiv / 2);
 
-            for (Int32 i = 0; i < rulerCellsY; i++)
+            for (int i = 0; i < rulerCellsY; i++)
             {
                 PCLWriter.lineHorizontal(prnWriter, posX, posY,
                                          _rulerDiv * 2, stroke);
 
                 posY += _rulerDiv;
 
-                for (Int32 j = 1; j < _rulerDivPerCell; j++)
+                for (int j = 1; j < _rulerDivPerCell; j++)
                 {
                     PCLWriter.lineHorizontal(prnWriter, posX, posY,
                                              _rulerDiv, stroke);
@@ -296,7 +296,7 @@ namespace PCLParaphernalia
             PCLWriter.font(prnWriter, true, "19U",
                       "s1p" + ptSize + "v0s0b16602T");
 
-            posX = (Int16)(_posXDesc - logXOffset);
+            posX = (short)(_posXDesc - logXOffset);
             posY = _posYDesc;
 
             PCLWriter.text(prnWriter, posX, posY, 0,
@@ -357,31 +357,31 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generatePage(BinaryWriter prnWriter,
-                                         Int32 indxPaperSize,
-                                         Int32 indxPaperType,
-                                         Int32 indxOrientation,
-                                         Boolean formAsMacro,
-                                         Boolean stdPage,
-                                         UInt16 paperWidth,
-                                         UInt16 paperLength,
-                                         UInt16 logXOffset,
-                                         Int16 logLeftOffset,
-                                         Int16 logTopOffset,
-                                         UInt16 logPageWidth,
-                                         UInt16 logPageHeight)
+                                         int indxPaperSize,
+                                         int indxPaperType,
+                                         int indxOrientation,
+                                         bool formAsMacro,
+                                         bool stdPage,
+                                         ushort paperWidth,
+                                         ushort paperLength,
+                                         ushort logXOffset,
+                                         short logLeftOffset,
+                                         short logTopOffset,
+                                         ushort logPageWidth,
+                                         ushort logPageHeight)
         {
-            const UInt16 dcptsPerInch = 720;
+            const ushort dcptsPerInch = 720;
 
-            const Double unitsToInches = (1.00 / _unitsPerInch);
-            const Double unitsToMilliMetres = (25.4 / _unitsPerInch);
+            const double unitsToInches = (1.00 / _unitsPerInch);
+            const double unitsToMilliMetres = (25.4 / _unitsPerInch);
 
-            const Double dcptsToInches = (1.00 / dcptsPerInch);
-            const Double dcptsToMilliMetres = (25.4 / dcptsPerInch);
+            const double dcptsToInches = (1.00 / dcptsPerInch);
+            const double dcptsToMilliMetres = (25.4 / dcptsPerInch);
 
-            Int16 posX,
+            short posX,
                   posY;
 
-            Int16 lineInc,
+            short lineInc,
                   ptSize;
 
             //----------------------------------------------------------------//
@@ -404,7 +404,7 @@ namespace PCLParaphernalia
             PCLWriter.font(prnWriter, true, "19U",
                       "s1p" + ptSize + "v0s0b16602T");
 
-            posX = (Int16)(_posXDesc - logXOffset);
+            posX = (short)(_posXDesc - logXOffset);
             posY = _posYHddr;
 
             if (stdPage)
@@ -430,7 +430,7 @@ namespace PCLParaphernalia
             PCLWriter.font(prnWriter, true, "19U",
                       "s0p" + (120 / ptSize) + "h0s3b4099T");
 
-            posX = (Int16)((_posXDesc + (_rulerCell * 2)) - logXOffset);
+            posX = (short)((_posXDesc + (_rulerCell * 2)) - logXOffset);
             posY = _posYDesc;
 
             PCLWriter.text(prnWriter, posX, posY, 0,
@@ -535,18 +535,18 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generatePageSet(BinaryWriter prnWriter,
-                                             Int32 indxPaperSize,
-                                             Int32 indxPaperType,
-                                             Int32 indxOrientation,
-                                             Boolean formAsMacro,
-                                             Boolean incStdPage,
-                                             UInt16 paperWidth,
-                                             UInt16 paperLength,
-                                             UInt16 logXOffset,
-                                             Int16 logLeftOffset,
-                                             Int16 logTopOffset,
-                                             UInt16 logPageWidth,
-                                             UInt16 logPageHeight)
+                                             int indxPaperSize,
+                                             int indxPaperType,
+                                             int indxOrientation,
+                                             bool formAsMacro,
+                                             bool incStdPage,
+                                             ushort paperWidth,
+                                             ushort paperLength,
+                                             ushort logXOffset,
+                                             short logLeftOffset,
+                                             short logTopOffset,
+                                             ushort logPageWidth,
+                                             ushort logPageHeight)
         {
             if (incStdPage)
             {

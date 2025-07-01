@@ -20,44 +20,44 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const String _mainKey = MainForm._regMainKey;
+        const string _mainKey = MainForm._regMainKey;
 
-        const String _subKeyTools = "Tools";
-        const String _subKeyToolsSoftFontGen = "SoftFontGen";
-        const String _subKeyMapping = "Mapping";
-        const String _subKeyPCL5 = "PCL5";
-        const String _subKeyPCL6 = "PCL6";
-        const String _subKeyPCL = "PCL";
-        const String _subKeyPCLXL = "PCLXL";
-        const String _subKeyTTF = "TTF";
+        const string _subKeyTools = "Tools";
+        const string _subKeyToolsSoftFontGen = "SoftFontGen";
+        const string _subKeyMapping = "Mapping";
+        const string _subKeyPCL5 = "PCL5";
+        const string _subKeyPCL6 = "PCL6";
+        const string _subKeyPCL = "PCL";
+        const string _subKeyPCLXL = "PCLXL";
+        const string _subKeyTTF = "TTF";
 
-        const String _nameTargetFolder = "TargetFolder";
-        const String _nameAdhocFontFile = "AdhocFontFile";
-        const String _nameSymSetUserFile = "SymSetUserFile";
-        const String _nameFlagLogVerbose = "FlagLogVerbose";
-        const String _nameFlagFormat16 = "FlagFormat16";
-        const String _nameFlagSegGTLast = "FlagSegGTLast";
-        const String _nameFlagSymSetMapPCL = "FlagSymSetMapPCL";
-        const String _nameFlagSymSetUnbound = "FlagSymSetUnbound";
-        const String _nameFlagSymSetUserSet = "FlagSymSetUserSet";
-        const String _nameFlagCharCompSpecific = "FlagCharCompSpecific";
-        const String _nameFlagUsePCLT = "FlagUsePCLT";
-        const String _nameCharCompUnicode = "CharCompUnicode";
-        const String _nameFlagVMetrics = "FlagVMetrics";
-        const String _nameIndxFont = "IndxFont";
-        const String _nameIndxPDL = "IndxPDL";
-        const String _nameIndxRptFileFmt = "IndxRptFileFmt";
-        const String _nameIndxRptChkMarks = "indxRptChkMarks";
-        const String _nameIndxSymSet = "IndxSymSet";
-        const String _nameIndxUsePCLT = "IndxUsePCLT";
+        const string _nameTargetFolder = "TargetFolder";
+        const string _nameAdhocFontFile = "AdhocFontFile";
+        const string _nameSymSetUserFile = "SymSetUserFile";
+        const string _nameFlagLogVerbose = "FlagLogVerbose";
+        const string _nameFlagFormat16 = "FlagFormat16";
+        const string _nameFlagSegGTLast = "FlagSegGTLast";
+        const string _nameFlagSymSetMapPCL = "FlagSymSetMapPCL";
+        const string _nameFlagSymSetUnbound = "FlagSymSetUnbound";
+        const string _nameFlagSymSetUserSet = "FlagSymSetUserSet";
+        const string _nameFlagCharCompSpecific = "FlagCharCompSpecific";
+        const string _nameFlagUsePCLT = "FlagUsePCLT";
+        const string _nameCharCompUnicode = "CharCompUnicode";
+        const string _nameFlagVMetrics = "FlagVMetrics";
+        const string _nameIndxFont = "IndxFont";
+        const string _nameIndxPDL = "IndxPDL";
+        const string _nameIndxRptFileFmt = "IndxRptFileFmt";
+        const string _nameIndxRptChkMarks = "indxRptChkMarks";
+        const string _nameIndxSymSet = "IndxSymSet";
+        const string _nameIndxUsePCLT = "IndxUsePCLT";
 
-        const Int32 _flagFalse = 0;
-        const Int32 _flagTrue = 1;
-        const Int32 _indexZero = 0;
-        const Int64 _defaultCompUnicode = -2;    // 0xfffffffffffffffe //
+        const int _flagFalse = 0;
+        const int _flagTrue = 1;
+        const int _indexZero = 0;
+        const long _defaultCompUnicode = -2;    // 0xfffffffffffffffe //
 
-        const String _defaultSymSetUserFile = "DefaultSymSetFile.pcl";
-        const String _defaultFontFileTTF = "DefaultFontFile.ttf";
+        const string _defaultSymSetUserFile = "DefaultSymSetFile.pcl";
+        const string _defaultFontFileTTF = "DefaultFontFile.ttf";
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -68,15 +68,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCommon(ref Int32 indxPDL,
-                                           ref Boolean flagLogVerbose)
+        public static void loadDataCommon(ref int indxPDL,
+                                           ref bool flagLogVerbose)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen;
+            string key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen;
 
-            Int32 tmpInt;
+            int tmpInt;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -88,10 +88,10 @@ namespace PCLParaphernalia
                     // update from v2_5_0_0
                     Helper_RegKey.renameKey(subKey, _subKeyPCL6, _subKeyPCLXL);
 
-                indxPDL = (Int32)subKey.GetValue(_nameIndxPDL,
+                indxPDL = (int)subKey.GetValue(_nameIndxPDL,
                                                  _indexZero);
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagLogVerbose,
+                tmpInt = (int)subKey.GetValue(_nameFlagLogVerbose,
                                                          _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -110,30 +110,30 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataMapping(ref Int32 indxSymSet,
-                                            ref Boolean flagSymSetMapPCL,
-                                            ref Boolean flagSymSetUnbound,
-                                            ref Boolean flagSymSetUserSet,
-                                            ref String symSetUserFile)
+        public static void loadDataMapping(ref int indxSymSet,
+                                            ref bool flagSymSetMapPCL,
+                                            ref bool flagSymSetUnbound,
+                                            ref bool flagSymSetUserSet,
+                                            ref string symSetUserFile)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
-            Int32 tmpInt;
+            int tmpInt;
 
-            String defWorkFolder = ToolCommonData.DefWorkFolder;
+            string defWorkFolder = ToolCommonData.DefWorkFolder;
 
             key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen +
                                  "\\" + _subKeyMapping;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxSymSet = (Int32)subKey.GetValue(_nameIndxSymSet,
+                indxSymSet = (int)subKey.GetValue(_nameIndxSymSet,
                                                          _indexZero);
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagSymSetMapPCL,
+                tmpInt = (int)subKey.GetValue(_nameFlagSymSetMapPCL,
                                                   _flagFalse);
 
                 if (tmpInt == _flagFalse)
@@ -141,7 +141,7 @@ namespace PCLParaphernalia
                 else
                     flagSymSetMapPCL = true;
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagSymSetUnbound,
+                tmpInt = (int)subKey.GetValue(_nameFlagSymSetUnbound,
                                                   _flagFalse);
 
                 if (tmpInt == _flagFalse)
@@ -149,7 +149,7 @@ namespace PCLParaphernalia
                 else
                     flagSymSetUnbound = true;
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagSymSetUserSet,
+                tmpInt = (int)subKey.GetValue(_nameFlagSymSetUserSet,
                                                   _flagFalse);
 
                 if (tmpInt == _flagFalse)
@@ -157,7 +157,7 @@ namespace PCLParaphernalia
                 else
                     flagSymSetUserSet = true;
 
-                symSetUserFile = (String)subKey.GetValue(_nameSymSetUserFile,
+                symSetUserFile = (string)subKey.GetValue(_nameSymSetUserFile,
                                                           defWorkFolder + "\\" +
                                                           _defaultSymSetUserFile);
             }
@@ -172,22 +172,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCL(ref String targetFolder,
-                                        ref Boolean flagFormat16,
-                                        ref Boolean flagCharCompSpecific,
-                                        ref Boolean flagVMetrics,
-                                        ref Boolean flagSegGTLast,
-                                        ref UInt64 charCompUnicode)
+        public static void loadDataPCL(ref string targetFolder,
+                                        ref bool flagFormat16,
+                                        ref bool flagCharCompSpecific,
+                                        ref bool flagVMetrics,
+                                        ref bool flagSegGTLast,
+                                        ref ulong charCompUnicode)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
-            Int32 tmpInt;
-            Int64 tmpInt64;
+            int tmpInt;
+            long tmpInt64;
 
-            String defWorkFolder = ToolCommonData.DefWorkFolder;
+            string defWorkFolder = ToolCommonData.DefWorkFolder;
 
             key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen +
                                  "\\" + _subKeyPCL;
@@ -201,10 +201,10 @@ namespace PCLParaphernalia
 
                 // update from v2_8_0_0 end   //
 
-                targetFolder = (String)subKey.GetValue(_nameTargetFolder,
+                targetFolder = (string)subKey.GetValue(_nameTargetFolder,
                                                        defWorkFolder);
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagLogVerbose,
+                tmpInt = (int)subKey.GetValue(_nameFlagLogVerbose,
                                                          _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -212,7 +212,7 @@ namespace PCLParaphernalia
                 else
                     flagFormat16 = true;
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagCharCompSpecific,
+                tmpInt = (int)subKey.GetValue(_nameFlagCharCompSpecific,
                                                  _flagFalse);
 
                 if (tmpInt == _flagFalse)
@@ -220,7 +220,7 @@ namespace PCLParaphernalia
                 else
                     flagCharCompSpecific = true;
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagVMetrics,
+                tmpInt = (int)subKey.GetValue(_nameFlagVMetrics,
                                                   _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -228,7 +228,7 @@ namespace PCLParaphernalia
                 else
                     flagVMetrics = true;
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagSegGTLast,
+                tmpInt = (int)subKey.GetValue(_nameFlagSegGTLast,
                                                   _flagFalse);
 
                 if (tmpInt == _flagFalse)
@@ -236,10 +236,10 @@ namespace PCLParaphernalia
                 else
                     flagSegGTLast = true;
 
-                tmpInt64 = (Int64)subKey.GetValue(_nameCharCompUnicode,
+                tmpInt64 = (long)subKey.GetValue(_nameCharCompUnicode,
                                                    _defaultCompUnicode);
 
-                charCompUnicode = (UInt64)tmpInt64;
+                charCompUnicode = (ulong)tmpInt64;
             }
         }
 
@@ -252,17 +252,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCLXL(ref String targetFolder,
-                                          ref Boolean flagVMetrics)
+        public static void loadDataPCLXL(ref string targetFolder,
+                                          ref bool flagVMetrics)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
-            Int32 tmpInt;
+            int tmpInt;
 
-            String defWorkFolder = ToolCommonData.DefWorkFolder;
+            string defWorkFolder = ToolCommonData.DefWorkFolder;
 
             key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen +
                                  "\\" + _subKeyPCLXL;
@@ -276,10 +276,10 @@ namespace PCLParaphernalia
 
                 // update from v2_8_0_0 end   //
 
-                targetFolder = (String)subKey.GetValue(_nameTargetFolder,
+                targetFolder = (string)subKey.GetValue(_nameTargetFolder,
                                                          defWorkFolder);
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagVMetrics,
+                tmpInt = (int)subKey.GetValue(_nameFlagVMetrics,
                                                   _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -298,20 +298,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataRpt(ref Int32 indxRptFileFmt,
-                                        ref Int32 indxRptChkMarks)
+        public static void loadDataRpt(ref int indxRptFileFmt,
+                                        ref int indxRptChkMarks)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen;
+            string key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxRptFileFmt = (Int32)subKey.GetValue(_nameIndxRptFileFmt,
+                indxRptFileFmt = (int)subKey.GetValue(_nameIndxRptFileFmt,
                                                          _indexZero);
 
-                indxRptChkMarks = (Int32)subKey.GetValue(_nameIndxRptChkMarks,
+                indxRptChkMarks = (int)subKey.GetValue(_nameIndxRptChkMarks,
                                                           _indexZero);
             }
         }
@@ -325,28 +325,28 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataTTF(ref Int32 indxFont,
-                                        ref Boolean flagUsePCLT,
+        public static void loadDataTTF(ref int indxFont,
+                                        ref bool flagUsePCLT,
                                         ref string adhocFontFile)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
-            Int32 tmpInt;
+            int tmpInt;
 
-            String defWorkFolder = ToolCommonData.DefWorkFolder;
+            string defWorkFolder = ToolCommonData.DefWorkFolder;
 
             key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen +
                                  "\\" + _subKeyTTF;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxFont = (Int32)subKey.GetValue(_nameIndxFont,
+                indxFont = (int)subKey.GetValue(_nameIndxFont,
                                                       _indexZero);
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagUsePCLT,
+                tmpInt = (int)subKey.GetValue(_nameFlagUsePCLT,
                                                 _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -354,7 +354,7 @@ namespace PCLParaphernalia
                 else
                     flagUsePCLT = true;
 
-                adhocFontFile = (String)subKey.GetValue(_nameAdhocFontFile,
+                adhocFontFile = (string)subKey.GetValue(_nameAdhocFontFile,
                                                          defWorkFolder + "\\" +
                                                          _defaultFontFileTTF);
             }
@@ -369,13 +369,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCommon(Int32 indxPDL,
-                                          Boolean flagLogVerbose)
+        public static void saveDataCommon(int indxPDL,
+                                          bool flagLogVerbose)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen;
+            string key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -403,16 +403,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataMapping(Int32 indxSymSet,
-                                            Boolean flagSymSetMapPCL,
-                                            Boolean flagSymSetUnbound,
-                                            Boolean flagSymSetUserSet,
-                                            String symSetUserFile)
+        public static void saveDataMapping(int indxSymSet,
+                                            bool flagSymSetMapPCL,
+                                            bool flagSymSetUnbound,
+                                            bool flagSymSetUserSet,
+                                            string symSetUserFile)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen +
                                  "\\" + _subKeyMapping;
@@ -468,19 +468,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCL(String targetFolder,
-                                        Boolean flagFormat16,
-                                        Boolean flagCharCompSpecific,
-                                        Boolean flagVMetrics,
-                                        Boolean flagSegGTLast,
-                                        UInt64 charCompUnicode)
+        public static void saveDataPCL(string targetFolder,
+                                        bool flagFormat16,
+                                        bool flagCharCompSpecific,
+                                        bool flagVMetrics,
+                                        bool flagSegGTLast,
+                                        ulong charCompUnicode)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
-            Int64 tmpInt64;
+            long tmpInt64;
 
             key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen +
                                  "\\" + _subKeyPCL;
@@ -530,7 +530,7 @@ namespace PCLParaphernalia
                                      _flagFalse,
                                      RegistryValueKind.DWord);
 
-                tmpInt64 = (Int64)charCompUnicode;
+                tmpInt64 = (long)charCompUnicode;
 
                 subKey.SetValue(_nameCharCompUnicode,
                                  tmpInt64,
@@ -547,13 +547,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCLXL(String targetFolder,
-                                         Boolean flagVMetrics)
+        public static void saveDataPCLXL(string targetFolder,
+                                         bool flagVMetrics)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen +
                                  "\\" + _subKeyPCLXL;
@@ -587,13 +587,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataRpt(Int32 indxRptFileFmt,
-                                        Int32 indxRptChkMarks)
+        public static void saveDataRpt(int indxRptFileFmt,
+                                        int indxRptChkMarks)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen;
+            string key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -616,14 +616,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataTTF(Int32 indxFont,
-                                        Boolean flagUsePCLT,
-                                        String adhocFontFile)
+        public static void saveDataTTF(int indxFont,
+                                        bool flagUsePCLT,
+                                        string adhocFontFile)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsSoftFontGen +
                                  "\\" + _subKeyTTF;

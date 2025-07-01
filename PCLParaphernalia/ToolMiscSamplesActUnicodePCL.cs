@@ -20,23 +20,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Int32 _macroId = 1;
-        const UInt16 _unitsPerInch = PCLWriter.sessionUPI;
+        const int _macroId = 1;
+        const ushort _unitsPerInch = PCLWriter.sessionUPI;
 
-        const Int16 _pageOriginX = (_unitsPerInch * 1);
-        const Int16 _pageOriginY = (_unitsPerInch * 1);
-        const Int16 _incInch = (_unitsPerInch * 1);
-        const Int16 _lineInc = (_unitsPerInch * 5) / 6;
+        const short _pageOriginX = (_unitsPerInch * 1);
+        const short _pageOriginY = (_unitsPerInch * 1);
+        const short _incInch = (_unitsPerInch * 1);
+        const short _lineInc = (_unitsPerInch * 5) / 6;
 
-        const Int16 _posXDesc = _pageOriginX;
-        const Int16 _posXData = _pageOriginX + (2 * _incInch);
+        const short _posXDesc = _pageOriginX;
+        const short _posXData = _pageOriginX + (2 * _incInch);
 
-        const Int16 _posYHddr = _pageOriginY;
-        const Int16 _posYDesc = _pageOriginY + (2 * _incInch);
-        const Int16 _posYData = _pageOriginY + (2 * _incInch);
+        const short _posYHddr = _pageOriginY;
+        const short _posYDesc = _pageOriginY + (2 * _incInch);
+        const short _posYData = _pageOriginY + (2 * _incInch);
 
-        const Int16 _shade_1 = 40;
-        const Int16 _shade_2 = 20;
+        const short _shade_1 = 40;
+        const short _shade_2 = 20;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -44,13 +44,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static Int32 _indxFontArial = PCLFonts.getIndexForName("Arial");
-        static Int32 _indxFontCourier = PCLFonts.getIndexForName("Courier");
+        static int _indxFontArial = PCLFonts.getIndexForName("Arial");
+        static int _indxFontCourier = PCLFonts.getIndexForName("Courier");
 
-        static Int32 _logPageWidth;
-        static Int32 _logPageHeight;
-        static Int32 _paperWidth;
-        static Int32 _paperHeight;
+        static int _logPageWidth;
+        static int _logPageHeight;
+        static int _paperWidth;
+        static int _paperHeight;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -67,17 +67,17 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void generateJob(BinaryWriter prnWriter,
-                                       Int32 indxPaperSize,
-                                       Int32 indxPaperType,
-                                       Int32 indxOrientation,
-                                       Boolean formAsMacro,
-                                       UInt32 codePoint,
-                                       Int32 indxFont,
+                                       int indxPaperSize,
+                                       int indxPaperType,
+                                       int indxOrientation,
+                                       bool formAsMacro,
+                                       uint codePoint,
+                                       int indxFont,
                                        PCLFonts.eVariant fontVar)
         {
             PCLOrientations.eAspect aspect;
 
-            UInt16 logXOffset;
+            ushort logXOffset;
 
             //----------------------------------------------------------------//
 
@@ -134,11 +134,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateJobHeader(BinaryWriter prnWriter,
-                                              Int32 indxPaperSize,
-                                              Int32 indxPaperType,
-                                              Int32 indxOrientation,
-                                              Boolean formAsMacro,
-                                              UInt16 logXOffset)
+                                              int indxPaperSize,
+                                              int indxPaperType,
+                                              int indxOrientation,
+                                              bool formAsMacro,
+                                              ushort logXOffset)
         {
             PCLWriter.stdJobHeader(prnWriter, "");
 
@@ -163,7 +163,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateJobTrailer(BinaryWriter prnWriter,
-                                               Boolean formAsMacro)
+                                               bool formAsMacro)
         {
             PCLWriter.stdJobTrailer(prnWriter, formAsMacro, _macroId);
         }
@@ -180,22 +180,22 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateOverlay(BinaryWriter prnWriter,
-                                            Boolean formAsMacro,
-                                            UInt16 logXOffset,
-                                            Int32 indxPaperSize,
-                                            Int32 indxOrientation)
+                                            bool formAsMacro,
+                                            ushort logXOffset,
+                                            int indxPaperSize,
+                                            int indxOrientation)
         {
-            Int16 posX,
+            short posX,
                   posY;
 
-            Int16 ptSize;
+            short ptSize;
 
-            Int16 boxX,
+            short boxX,
                   boxY,
                   boxHeight,
                   boxWidth;
 
-            Byte stroke = 1;
+            byte stroke = 1;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -217,11 +217,11 @@ namespace PCLParaphernalia
                                   PCLWriter.ePatternType.Shading,
                                   60);
 
-            boxX = (Int16)((_unitsPerInch / 2) - logXOffset);
-            boxY = (Int16)(_unitsPerInch / 2);
+            boxX = (short)((_unitsPerInch / 2) - logXOffset);
+            boxY = (short)(_unitsPerInch / 2);
 
-            boxWidth = (Int16)(_paperWidth - _unitsPerInch);
-            boxHeight = (Int16)(_paperHeight - _unitsPerInch);
+            boxWidth = (short)(_paperWidth - _unitsPerInch);
+            boxHeight = (short)(_paperHeight - _unitsPerInch);
 
             PCLWriter.rectangleOutline(prnWriter, boxX, boxY,
                                         boxHeight, boxWidth, stroke,
@@ -244,7 +244,7 @@ namespace PCLParaphernalia
                                                       PCLFonts.eVariant.Bold,
                                                       ptSize, 0));
 
-            posX = (Int16)(_posXDesc - logXOffset);
+            posX = (short)(_posXDesc - logXOffset);
             posY = _posYHddr;
 
             PCLWriter.text(prnWriter, posX, posY, 0,
@@ -302,24 +302,24 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generatePage(BinaryWriter prnWriter,
-                                         Int32 indxPaperSize,
-                                         Int32 indxPaperType,
-                                         Int32 indxOrientation,
-                                         Boolean formAsMacro,
-                                         UInt16 logXOffset,
-                                         UInt32 codePoint,
-                                         Int32 indxFont,
+                                         int indxPaperSize,
+                                         int indxPaperType,
+                                         int indxOrientation,
+                                         bool formAsMacro,
+                                         ushort logXOffset,
+                                         uint codePoint,
+                                         int indxFont,
                                          PCLFonts.eVariant fontVar)
         {
-            Int16 posX,
+            short posX,
                   posY;
 
-            Int16 ptSize;
+            short ptSize;
 
-            Byte[] utf8Seq = new Byte[4];
-            Int32 utf8Len = 0;
+            byte[] utf8Seq = new byte[4];
+            int utf8Len = 0;
 
-            String utf8HexVal = "";
+            string utf8HexVal = "";
 
             //----------------------------------------------------------------//
 
@@ -343,7 +343,7 @@ namespace PCLParaphernalia
                                                       PCLFonts.eVariant.Regular,
                                                       ptSize, 0));
 
-            posX = (Int16)(_posXData - logXOffset);
+            posX = (short)(_posXData - logXOffset);
             posY = _posYData;
 
             if (codePoint < 0x010000)

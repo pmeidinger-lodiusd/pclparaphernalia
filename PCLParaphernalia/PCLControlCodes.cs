@@ -21,12 +21,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static SortedList<Byte, PCLControlCode> _tags =
-            new SortedList<Byte, PCLControlCode>();
+        private static SortedList<byte, PCLControlCode> _tags =
+            new SortedList<byte, PCLControlCode>();
 
         private static PCLControlCode _tagUnknown;
 
-        private static Int32 _tagsCount;
+        private static int _tagsCount;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -52,15 +52,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean checkControlCode(
-            Int32 macroLevel,
-            Byte tagVal,
-            ref Boolean flagLineTerm,
-            ref String mnemonic,
+        public static bool checkControlCode(
+            int macroLevel,
+            byte tagVal,
+            ref bool flagLineTerm,
+            ref string mnemonic,
             ref PrnParseConstants.eOvlAct makeOvlAct,
-            ref String description)
+            ref string description)
         {
-            Boolean tagKnown;
+            bool tagKnown;
 
             PCLControlCode tag;
 
@@ -95,11 +95,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 displaySeqList(DataGrid grid)
+        public static int displaySeqList(DataGrid grid)
         {
-            Int32 count = 0;
+            int count = 0;
 
-            foreach (KeyValuePair<Byte, PCLControlCode> kvp in _tags)
+            foreach (KeyValuePair<byte, PCLControlCode> kvp in _tags)
             {
                 count++;
                 grid.Items.Add(kvp.Value);
@@ -118,11 +118,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void displayStatsCounts(DataTable table,
-                                               Boolean incUsedSeqsOnly)
+                                               bool incUsedSeqsOnly)
         {
-            Int32 count = 0;
+            int count = 0;
 
-            Boolean displaySeq,
+            bool displaySeq,
                     hddrWritten;
 
             DataRow row;
@@ -131,7 +131,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            foreach (KeyValuePair<Byte, PCLControlCode> kvp in _tags)
+            foreach (KeyValuePair<byte, PCLControlCode> kvp in _tags)
             {
                 displaySeq = true;
 
@@ -219,7 +219,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getTagCount()
+        public static int getTagCount()
         {
             return _tagsCount;
         }
@@ -235,7 +235,7 @@ namespace PCLParaphernalia
 
         private static void populateTable()
         {
-            Byte codeVal;
+            byte codeVal;
 
             codeVal = 0xff;                                       // 0xff:    //
             _tagUnknown =
@@ -332,7 +332,7 @@ namespace PCLParaphernalia
         {
             PCLControlCode tag;
 
-            foreach (KeyValuePair<Byte, PCLControlCode> kvp in _tags)
+            foreach (KeyValuePair<byte, PCLControlCode> kvp in _tags)
             {
                 tag = kvp.Value;
 

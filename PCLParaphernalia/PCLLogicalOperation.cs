@@ -18,13 +18,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Int32 _maxPFLen = 11;
+        const int _maxPFLen = 11;
 
-        Int16 _opId;
-        Int16 _opCode;
+        short _opId;
+        short _opCode;
 
-        private String _actPostfix;
-        private String _actInfix;
+        private string _actPostfix;
+        private string _actInfix;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -32,10 +32,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLLogicalOperation(Int16 opId,
-                                    Int16 opCode,
-                                    String actPostfix,
-                                    String actInfix)
+        public PCLLogicalOperation(short opId,
+                                    short opCode,
+                                    string actPostfix,
+                                    string actInfix)
         {
             _opId = opId;
             _opCode = opCode;       // not used at present //
@@ -54,7 +54,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String ActInfix
+        public string ActInfix
         {
             get { return _actInfix; }
         }
@@ -71,9 +71,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String getDescLong()
+        public string getDescLong()
         {
-            String prefix;
+            string prefix;
 
             if (_opId < 10)
                 prefix = "  ";
@@ -98,9 +98,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String getDescShort()
+        public string getDescShort()
         {
-            String prefix;
+            string prefix;
 
             if (_opId < 10)
                 prefix = "  ";
@@ -122,7 +122,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int16 getROPId()
+        public short getROPId()
         {
             return _opId;
         }

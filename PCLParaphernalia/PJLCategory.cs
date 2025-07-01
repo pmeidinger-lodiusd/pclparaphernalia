@@ -19,7 +19,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private PJLCategories.eCategoryType _categoryType;
-        private String _categoryName;
+        private string _categoryName;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -28,7 +28,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PJLCategory(PJLCategories.eCategoryType type,
-                           String name)
+                           string name)
         {
             _categoryType = type;
             _categoryName = name;
@@ -43,7 +43,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String getName()
+        public string getName()
         {
             return _categoryName;
         }

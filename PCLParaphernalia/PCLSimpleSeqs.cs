@@ -21,12 +21,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static SortedList<Byte, PCLSimpleSeq> _seqs =
-            new SortedList<Byte, PCLSimpleSeq>();
+        private static SortedList<byte, PCLSimpleSeq> _seqs =
+            new SortedList<byte, PCLSimpleSeq>();
 
         private static PCLSimpleSeq _seqUnknown;
 
-        private static Int32 _seqsCount;
+        private static int _seqsCount;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -52,15 +52,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean checkSimpleSeq(
-            Int32 macroLevel,
-            Byte iChar,
-            ref Boolean optObsolete,
-            ref Boolean optResetHPGL2,
+        public static bool checkSimpleSeq(
+            int macroLevel,
+            byte iChar,
+            ref bool optObsolete,
+            ref bool optResetHPGL2,
             ref PrnParseConstants.eOvlAct makeOvlAct,
-            ref String description)
+            ref string description)
         {
-            Boolean seqKnown;
+            bool seqKnown;
 
             PCLSimpleSeq seq;
 
@@ -94,14 +94,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 displaySeqList(DataGrid grid,
-                                           Boolean incObsSeqs)
+        public static int displaySeqList(DataGrid grid,
+                                           bool incObsSeqs)
         {
-            Int32 count = 0;
+            int count = 0;
 
-            Boolean seqObsolete;
+            bool seqObsolete;
 
-            foreach (KeyValuePair<Byte, PCLSimpleSeq> kvp in _seqs)
+            foreach (KeyValuePair<byte, PCLSimpleSeq> kvp in _seqs)
             {
                 seqObsolete = kvp.Value.FlagObsolete;
 
@@ -126,12 +126,12 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void displayStatsCounts(DataTable table,
-                                               Boolean incUsedSeqsOnly,
-                                               Boolean excUnusedObsSeqs)
+                                               bool incUsedSeqsOnly,
+                                               bool excUnusedObsSeqs)
         {
-            Int32 count = 0;
+            int count = 0;
 
-            Boolean displaySeq,
+            bool displaySeq,
                     hddrWritten;
 
             DataRow row;
@@ -168,7 +168,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            foreach (KeyValuePair<Byte, PCLSimpleSeq> kvp in _seqs)
+            foreach (KeyValuePair<byte, PCLSimpleSeq> kvp in _seqs)
             {
                 displaySeq = true;
 
@@ -259,7 +259,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getSeqCount()
+        public static int getSeqCount()
         {
             return _seqsCount;
         }
@@ -275,11 +275,11 @@ namespace PCLParaphernalia
 
         private static void populateTable()
         {
-            const Boolean flagNone = false;
-            const Boolean flagObsolete = true;
-            const Boolean flagResetGL2 = true;
+            const bool flagNone = false;
+            const bool flagObsolete = true;
+            const bool flagResetGL2 = true;
 
-            Byte sChar;
+            byte sChar;
 
             sChar = 0x20;                                                // ? //
             _seqUnknown =
@@ -435,7 +435,7 @@ namespace PCLParaphernalia
 
             _seqUnknown.resetStatistics();
 
-            foreach (KeyValuePair<Byte, PCLSimpleSeq> kvp in _seqs)
+            foreach (KeyValuePair<byte, PCLSimpleSeq> kvp in _seqs)
             {
                 seq = kvp.Value;
 

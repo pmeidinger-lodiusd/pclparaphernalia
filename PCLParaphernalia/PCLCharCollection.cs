@@ -20,9 +20,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private PCLCharCollections.eBitType _bitType;
-        private Int32 _bitNo;
-        private String _descMSL;
-        private String _descUnicode;
+        private int _bitNo;
+        private string _descMSL;
+        private string _descUnicode;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -32,9 +32,9 @@ namespace PCLParaphernalia
 
         public PCLCharCollection(
             PCLCharCollections.eBitType bitType,
-            Int32 bitNo,
-            String descMSL,
-            String descUnicode)
+            int bitNo,
+            string descMSL,
+            string descUnicode)
         {
             _bitType = bitType;
             _bitNo = bitNo;
@@ -51,7 +51,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 getBitNo()
+        public int getBitNo()
         {
             return _bitNo;
         }
@@ -79,7 +79,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String getDescMSL()
+        public string getDescMSL()
         {
             return _descMSL;
         }
@@ -94,7 +94,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String getDescUnicode()
+        public string getDescUnicode()
         {
             return _descUnicode;
         }

@@ -27,50 +27,50 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private const UInt16 _defaultMacroIdMainPCL = 32767;
-        private const UInt16 _defaultMacroIdRearPCL = 32766;
+        private const ushort _defaultMacroIdMainPCL = 32767;
+        private const ushort _defaultMacroIdRearPCL = 32766;
 
-        private const UInt16 _defaultPageCount = 3;
+        private const ushort _defaultPageCount = 3;
 
-        private const String _defaultFormNameRootPCLXL = "testform";
+        private const string _defaultFormNameRootPCLXL = "testform";
 
-        private static Int32[] _subsetPDLs =
+        private static int[] _subsetPDLs =
         {
-            (Int32) ToolCommonData.ePrintLang.PCL,
-            (Int32) ToolCommonData.ePrintLang.PCLXL,
+            (int) ToolCommonData.ePrintLang.PCL,
+            (int) ToolCommonData.ePrintLang.PCLXL,
         };
 
-        private static Int32[] _subsetOrientations =
+        private static int[] _subsetOrientations =
         {
-            (Int32) PCLOrientations.eIndex.Portrait,
-            (Int32) PCLOrientations.eIndex.Landscape,
-            (Int32) PCLOrientations.eIndex.ReversePortrait,
-            (Int32) PCLOrientations.eIndex.ReverseLandscape
+            (int) PCLOrientations.eIndex.Portrait,
+            (int) PCLOrientations.eIndex.Landscape,
+            (int) PCLOrientations.eIndex.ReversePortrait,
+            (int) PCLOrientations.eIndex.ReverseLandscape
         };
 
-        private static Int32[] _subsetPaperSizes =
+        private static int[] _subsetPaperSizes =
         {
-            (Int32) PCLPaperSizes.eIndex.ISO_A4,
-            (Int32) PCLPaperSizes.eIndex.ISO_A3,
-            (Int32) PCLPaperSizes.eIndex.ISO_A5,
-            (Int32) PCLPaperSizes.eIndex.ISO_A6,
-            (Int32) PCLPaperSizes.eIndex.ANSI_A_Letter,
-            (Int32) PCLPaperSizes.eIndex.ANSI_B_Ledger_Tabloid,
-            (Int32) PCLPaperSizes.eIndex.Legal,
-            (Int32) PCLPaperSizes.eIndex.Executive
+            (int) PCLPaperSizes.eIndex.ISO_A4,
+            (int) PCLPaperSizes.eIndex.ISO_A3,
+            (int) PCLPaperSizes.eIndex.ISO_A5,
+            (int) PCLPaperSizes.eIndex.ISO_A6,
+            (int) PCLPaperSizes.eIndex.ANSI_A_Letter,
+            (int) PCLPaperSizes.eIndex.ANSI_B_Ledger_Tabloid,
+            (int) PCLPaperSizes.eIndex.Legal,
+            (int) PCLPaperSizes.eIndex.Executive
         };
 
-        private static Int32[] _subsetPlexModes =
+        private static int[] _subsetPlexModes =
         {
-            (Int32) PCLPlexModes.eIndex.Simplex,
-            (Int32) PCLPlexModes.eIndex.DuplexLongEdge,
-            (Int32) PCLPlexModes.eIndex.DuplexShortEdge
+            (int) PCLPlexModes.eIndex.Simplex,
+            (int) PCLPlexModes.eIndex.DuplexLongEdge,
+            (int) PCLPlexModes.eIndex.DuplexShortEdge
         };
 
-        private static Int32[] _subsetPaperTypes =
+        private static int[] _subsetPaperTypes =
         {
-            (Int32) PCLPaperTypes.eIndex.NotSet,
-            (Int32) PCLPaperTypes.eIndex.Plain
+            (int) PCLPaperTypes.eIndex.NotSet,
+            (int) PCLPaperTypes.eIndex.Plain
         };
 
         //--------------------------------------------------------------------//
@@ -79,74 +79,74 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Int32 _macroIdMainPCL = _defaultMacroIdMainPCL;
-        private Int32 _macroIdRearPCL = _defaultMacroIdRearPCL;
+        private int _macroIdMainPCL = _defaultMacroIdMainPCL;
+        private int _macroIdRearPCL = _defaultMacroIdRearPCL;
 
         private ToolCommonData.ePrintLang _crntPDL;
 
         private ToolFormSamplePCL.eMacroMethod _indxMethodPCL;
         private ToolFormSamplePCLX.eStreamMethod _indxMethodPCLXL;
 
-        private Int32 _ctPDLs;
-        private Int32 _ctOrientations;
-        private Int32 _ctPaperSizes;
-        private Int32 _ctPaperTypes;
-        private Int32 _ctPlexModes;
+        private int _ctPDLs;
+        private int _ctOrientations;
+        private int _ctPaperSizes;
+        private int _ctPaperTypes;
+        private int _ctPlexModes;
 
-        private Int32 _indxPDL;
-        private Int32 _indxOrientationPCL;
-        private Int32 _indxOrientationPCLXL;
-        private Int32 _indxOrientRearPCL;
-        private Int32 _indxOrientRearPCLXL;
-        private Int32 _indxPaperSizePCL;
-        private Int32 _indxPaperSizePCLXL;
-        private Int32 _indxPaperTypePCL;
-        private Int32 _indxPaperTypePCLXL;
-        private Int32 _indxPlexModePCL;
-        private Int32 _indxPlexModePCLXL;
+        private int _indxPDL;
+        private int _indxOrientationPCL;
+        private int _indxOrientationPCLXL;
+        private int _indxOrientRearPCL;
+        private int _indxOrientRearPCLXL;
+        private int _indxPaperSizePCL;
+        private int _indxPaperSizePCLXL;
+        private int _indxPaperTypePCL;
+        private int _indxPaperTypePCLXL;
+        private int _indxPlexModePCL;
+        private int _indxPlexModePCLXL;
 
-        private Int32 _testPageCountPCL;
-        private Int32 _testPageCountPCLXL;
+        private int _testPageCountPCL;
+        private int _testPageCountPCLXL;
 
-        private Boolean _flagMacroRemovePCL;
-        private Boolean _flagMacroRemovePCLXL;
+        private bool _flagMacroRemovePCL;
+        private bool _flagMacroRemovePCLXL;
 
-        private Boolean _flagMainFormPCL;
-        private Boolean _flagMainFormPCLXL;
+        private bool _flagMainFormPCL;
+        private bool _flagMainFormPCLXL;
 
-        private Boolean _flagRearFormPCL;
-        private Boolean _flagRearFormPCLXL;
+        private bool _flagRearFormPCL;
+        private bool _flagRearFormPCLXL;
 
-        private Boolean _flagRearBPlatePCL;
-        private Boolean _flagRearBPlatePCLXL;
+        private bool _flagRearBPlatePCL;
+        private bool _flagRearBPlatePCLXL;
 
-        private Boolean _flagMainEncapsulatedPCL;
-        private Boolean _flagMainEncapsulatedPCLXL;
+        private bool _flagMainEncapsulatedPCL;
+        private bool _flagMainEncapsulatedPCLXL;
 
-        private Boolean _flagRearEncapsulatedPCL;
-        private Boolean _flagRearEncapsulatedPCLXL;
+        private bool _flagRearEncapsulatedPCL;
+        private bool _flagRearEncapsulatedPCLXL;
 
-        private Boolean _flagPrintDescTextPCL;
-        private Boolean _flagPrintDescTextPCLXL;
+        private bool _flagPrintDescTextPCL;
+        private bool _flagPrintDescTextPCLXL;
 
-        private Boolean _flagMainOnPrnDiskPCL;
-        private Boolean _flagRearOnPrnDiskPCL;
+        private bool _flagMainOnPrnDiskPCL;
+        private bool _flagRearOnPrnDiskPCL;
 
-        private Boolean _flagGSPushPopPCLXL;
+        private bool _flagGSPushPopPCLXL;
 
-        private Boolean _initialised;
+        private bool _initialised;
 
-        private String _formNameMainPCLXL;
-        private String _formNameRearPCLXL;
+        private string _formNameMainPCLXL;
+        private string _formNameRearPCLXL;
 
-        private String _formFileMainPCL;
-        private String _formFileMainPCLXL;
+        private string _formFileMainPCL;
+        private string _formFileMainPCLXL;
 
-        private String _formFileRearPCL;
-        private String _formFileRearPCLXL;
+        private string _formFileRearPCL;
+        private string _formFileRearPCLXL;
 
-        private String _prnDiskFileMainPCL;
-        private String _prnDiskFileRearPCL;
+        private string _prnDiskFileMainPCL;
+        private string _prnDiskFileRearPCL;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -174,7 +174,7 @@ namespace PCLParaphernalia
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            Boolean OK;
+            bool OK;
 
             _indxPDL = cbPDL.SelectedIndex;
             _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
@@ -197,9 +197,9 @@ namespace PCLParaphernalia
 
                     if (OK)
                     {
-                        Boolean rearBPlate;
+                        bool rearBPlate;
 
-                        String formFileMain,
+                        string formFileMain,
                                formFileRear;
 
                         TargetCore.requestStreamOpen(
@@ -317,9 +317,9 @@ namespace PCLParaphernalia
         private void btnPCLFormFileMainBrowse_Click(object sender,
                                                      RoutedEventArgs e)
         {
-            Boolean selected;
+            bool selected;
 
-            String filename = _formFileMainPCL;
+            string filename = _formFileMainPCL;
 
             selected = selectPCLFormFile(ref filename);
 
@@ -344,9 +344,9 @@ namespace PCLParaphernalia
         private void btnPCLFormFileRearBrowse_Click(object sender,
                                                      RoutedEventArgs e)
         {
-            Boolean selected;
+            bool selected;
 
-            String filename = _formFileRearPCL;
+            string filename = _formFileRearPCL;
 
             selected = selectPCLFormFile(ref filename);
 
@@ -371,9 +371,9 @@ namespace PCLParaphernalia
         private void btnPCLXLFormFileMainBrowse_Click(object sender,
                                                      RoutedEventArgs e)
         {
-            Boolean selected;
+            bool selected;
 
-            String filename = _formFileMainPCLXL;
+            string filename = _formFileMainPCLXL;
 
             selected = selectPCLXLFormFile(ref filename);
 
@@ -398,9 +398,9 @@ namespace PCLParaphernalia
         private void btnPCLXLFormFileRearBrowse_Click(object sender,
                                                      RoutedEventArgs e)
         {
-            Boolean selected;
+            bool selected;
 
-            String filename = _formFileRearPCLXL;
+            string filename = _formFileRearPCLXL;
 
             selected = selectPCLXLFormFile(ref filename);
 
@@ -513,7 +513,7 @@ namespace PCLParaphernalia
         {
             if (_initialised && cbPlexMode.HasItems)
             {
-                Int32 plexMode = cbPlexMode.SelectedIndex;
+                int plexMode = cbPlexMode.SelectedIndex;
 
                 if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                     _indxPlexModePCL = plexMode;
@@ -556,12 +556,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void checkPCLFormFile(Boolean main,
-                                        String filename)
+        private void checkPCLFormFile(bool main,
+                                        string filename)
         {
-            Boolean idPresent;
+            bool idPresent;
 
-            Int32 macroId = 0;
+            int macroId = 0;
 
             if (!File.Exists(filename))
                 idPresent = false;
@@ -619,12 +619,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void checkPCLXLFormFile(Boolean main,
-                                        String filename)
+        private void checkPCLXLFormFile(bool main,
+                                        string filename)
         {
-            Boolean idPresent;
+            bool idPresent;
 
-            String streamName = "";
+            string streamName = "";
 
             if (!File.Exists(filename))
                 idPresent = false;
@@ -904,7 +904,7 @@ namespace PCLParaphernalia
 
         private void initialise()
         {
-            Int32 index;
+            int index;
 
             _initialised = false;
 
@@ -918,7 +918,7 @@ namespace PCLParaphernalia
 
             _ctPDLs = _subsetPDLs.Length;
 
-            for (Int32 i = 0; i < _ctPDLs; i++)
+            for (int i = 0; i < _ctPDLs; i++)
             {
                 index = _subsetPDLs[i];
 
@@ -933,11 +933,11 @@ namespace PCLParaphernalia
 
             _ctOrientations = _subsetOrientations.Length;
 
-            for (Int32 i = 0; i < _ctOrientations; i++)
+            for (int i = 0; i < _ctOrientations; i++)
             {
                 index = _subsetOrientations[i];
 
-                String name = PCLOrientations.getName(index);
+                string name = PCLOrientations.getName(index);
 
                 cbOrientation.Items.Add(name);
                 cbRearOrientation.Items.Add(name);
@@ -949,7 +949,7 @@ namespace PCLParaphernalia
 
             _ctPaperSizes = _subsetPaperSizes.Length;
 
-            for (Int32 i = 0; i < _ctPaperSizes; i++)
+            for (int i = 0; i < _ctPaperSizes; i++)
             {
                 index = _subsetPaperSizes[i];
 
@@ -962,7 +962,7 @@ namespace PCLParaphernalia
 
             _ctPaperTypes = _subsetPaperTypes.Length;
 
-            for (Int32 i = 0; i < _ctPaperTypes; i++)
+            for (int i = 0; i < _ctPaperTypes; i++)
             {
                 index = _subsetPaperTypes[i];
 
@@ -975,7 +975,7 @@ namespace PCLParaphernalia
 
             _ctPlexModes = _subsetPlexModes.Length;
 
-            for (Int32 i = 0; i < _ctPlexModes; i++)
+            for (int i = 0; i < _ctPlexModes; i++)
             {
                 index = _subsetPlexModes[i];
 
@@ -996,7 +996,7 @@ namespace PCLParaphernalia
 
             pdlOptionsRestore();
 
-            cbPDL.SelectedIndex = (Byte)_indxPDL;
+            cbPDL.SelectedIndex = (byte)_indxPDL;
 
             _initialised = true;
         }
@@ -1012,7 +1012,7 @@ namespace PCLParaphernalia
 
         private void metricsLoad()
         {
-            Int32 indxMethodTemp = 0;
+            int indxMethodTemp = 0;
 
             ToolFormSamplePersist.loadDataCommon(ref _indxPDL);
 
@@ -1030,7 +1030,7 @@ namespace PCLParaphernalia
                                                    ref _flagRearBPlatePCL,
                                                    ref _flagPrintDescTextPCL);
 
-            if (indxMethodTemp < (Int32)ToolFormSamplePCL.eMacroMethod.Max)
+            if (indxMethodTemp < (int)ToolFormSamplePCL.eMacroMethod.Max)
                 _indxMethodPCL =
                     (ToolFormSamplePCL.eMacroMethod)indxMethodTemp;
             else
@@ -1051,7 +1051,7 @@ namespace PCLParaphernalia
                                                    ref _flagRearBPlatePCLXL,
                                                    ref _flagPrintDescTextPCLXL);
 
-            if (indxMethodTemp < (Int32)ToolFormSamplePCLX.eStreamMethod.Max)
+            if (indxMethodTemp < (int)ToolFormSamplePCLX.eStreamMethod.Max)
                 _indxMethodPCLXL =
                     (ToolFormSamplePCLX.eStreamMethod)indxMethodTemp;
             else
@@ -1147,7 +1147,7 @@ namespace PCLParaphernalia
                 _indxOrientationPCL,
                 _indxPlexModePCL,
                 _indxOrientRearPCL,
-                (Int32)_indxMethodPCL,
+                (int)_indxMethodPCL,
                 _testPageCountPCL,
                 _flagMacroRemovePCL,
                 _flagMainFormPCL,
@@ -1162,7 +1162,7 @@ namespace PCLParaphernalia
                 _indxOrientationPCLXL,
                 _indxPlexModePCLXL,
                 _indxOrientRearPCLXL,
-                (Int32)_indxMethodPCLXL,
+                (int)_indxMethodPCLXL,
                 _testPageCountPCLXL,
                 _flagMacroRemovePCLXL,
                 _flagMainFormPCLXL,
@@ -1815,11 +1815,11 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.eTarget.NetPrinter)
             {
-                String netPrnAddress = "";
-                Int32 netPrnPort = 0;
+                string netPrnAddress = "";
+                int netPrnPort = 0;
 
-                Int32 netTimeoutSend = 0;
-                Int32 netTimeoutReceive = 0;
+                int netTimeoutSend = 0;
+                int netTimeoutReceive = 0;
 
                 TargetCore.metricsLoadNetPrinter(ref netPrnAddress,
                                                   ref netPrnPort,
@@ -1833,7 +1833,7 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.eTarget.WinPrinter)
             {
-                String winPrintername = "";
+                string winPrintername = "";
 
                 TargetCore.metricsLoadWinPrinter(ref winPrintername);
 
@@ -1852,7 +1852,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectPCLFormFile(ref String selectedName)
+        private bool selectPCLFormFile(ref string selectedName)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(selectedName);
 
@@ -1876,7 +1876,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectPCLXLFormFile(ref String selectedName)
+        private bool selectPCLXLFormFile(ref string selectedName)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(selectedName);
 
@@ -1903,7 +1903,7 @@ namespace PCLParaphernalia
         private void txtPCLFormFileMain_LostFocus(object sender,
                                                     RoutedEventArgs e)
         {
-            String filename = txtPCLFormFileMain.Text;
+            string filename = txtPCLFormFileMain.Text;
 
             if (_flagMainOnPrnDiskPCL)
             {
@@ -1911,7 +1911,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                Boolean selected = true;
+                bool selected = true;
 
                 _formFileMainPCL = filename;
 
@@ -1952,7 +1952,7 @@ namespace PCLParaphernalia
         private void txtPCLFormFileRear_LostFocus(object sender,
                                                     RoutedEventArgs e)
         {
-            String filename = txtPCLFormFileRear.Text;
+            string filename = txtPCLFormFileRear.Text;
 
             if (_flagRearOnPrnDiskPCL)
             {
@@ -1960,7 +1960,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                Boolean selected = true;
+                bool selected = true;
 
                 _formFileRearPCL = filename;
 
@@ -2097,9 +2097,9 @@ namespace PCLParaphernalia
         private void txtPCLXLFormFileMain_LostFocus(object sender,
                                                    RoutedEventArgs e)
         {
-            Boolean selected = true;
+            bool selected = true;
 
-            String filename = txtPCLXLFormFileMain.Text;
+            string filename = txtPCLXLFormFileMain.Text;
 
             _formFileMainPCLXL = filename;
 
@@ -2139,9 +2139,9 @@ namespace PCLParaphernalia
         private void txtPCLXLFormFileRear_LostFocus(object sender,
                                                    RoutedEventArgs e)
         {
-            Boolean selected = true;
+            bool selected = true;
 
-            String filename = txtPCLXLFormFileRear.Text;
+            string filename = txtPCLXLFormFileRear.Text;
 
             _formFileRearPCLXL = filename;
 
@@ -2272,19 +2272,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLMacroId(Boolean rearForm,
-                                             Boolean lostFocusEvent)
+        private bool validatePCLMacroId(bool rearForm,
+                                             bool lostFocusEvent)
         {
-            const UInt16 minVal = 0;
-            const UInt16 maxVal = 32767;
-            UInt16 defVal;
+            const ushort minVal = 0;
+            const ushort maxVal = 32767;
+            ushort defVal;
 
-            UInt16 value;
+            ushort value;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText;
-            String side;
+            string crntText;
+            string side;
 
             if (rearForm)
             {
@@ -2299,7 +2299,7 @@ namespace PCLParaphernalia
                 crntText = txtPCLMacroIdMain.Text;
             }
 
-            OK = UInt16.TryParse(crntText, out value);
+            OK = ushort.TryParse(crntText, out value);
 
             if (OK)
                 if ((value < minVal) || (value > maxVal))
@@ -2316,7 +2316,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString();
+                    string newText = defVal.ToString();
 
                     MessageBox.Show(side + " macro Id value '" + crntText +
                                     "' is invalid.\n\n" +
@@ -2374,9 +2374,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLSelectionCombo()
+        private bool validatePCLSelectionCombo()
         {
-            Boolean OK = true;
+            bool OK = true;
 
             //----------------------------------------------------------------//
 
@@ -2458,19 +2458,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLTestPageCount(Boolean lostFocusEvent)
+        private bool validatePCLTestPageCount(bool lostFocusEvent)
         {
-            const UInt16 minVal = 1;
-            const UInt16 maxVal = 20;
-            const UInt16 defVal = _defaultPageCount;
+            const ushort minVal = 1;
+            const ushort maxVal = 20;
+            const ushort defVal = _defaultPageCount;
 
-            UInt16 value;
+            ushort value;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText = txtPCLTestPageCount.Text;
+            string crntText = txtPCLTestPageCount.Text;
 
-            OK = UInt16.TryParse(crntText, out value);
+            OK = ushort.TryParse(crntText, out value);
 
             if (OK)
                 if ((value < minVal) || (value > maxVal))
@@ -2484,7 +2484,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString();
+                    string newText = defVal.ToString();
 
                     MessageBox.Show("Test page count value '" + crntText +
                                     "' is invalid.\n\n" +
@@ -2525,19 +2525,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLXLFormName(Boolean rearForm,
-                                              Boolean lostFocusEvent)
+        private bool validatePCLXLFormName(bool rearForm,
+                                              bool lostFocusEvent)
         {
             //          const Int32 minLen = 14;
-            const Int32 maxLen = 20;
+            const int maxLen = 20;
 
-            String defVal;
-            String crntText;
-            String side;
+            string defVal;
+            string crntText;
+            string side;
 
-            Int32 len = 0;
+            int len = 0;
 
-            Boolean OK = true;
+            bool OK = true;
 
             if (rearForm)
             {
@@ -2622,9 +2622,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLXLSelectionCombo()
+        private bool validatePCLXLSelectionCombo()
         {
-            Boolean OK = true;
+            bool OK = true;
 
             if ((_flagMainFormPCLXL))
             {
@@ -2698,19 +2698,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLXLTestPageCount(Boolean lostFocusEvent)
+        private bool validatePCLXLTestPageCount(bool lostFocusEvent)
         {
-            const UInt16 minVal = 1;
-            const UInt16 maxVal = 20;
-            const UInt16 defVal = _defaultPageCount;
+            const ushort minVal = 1;
+            const ushort maxVal = 20;
+            const ushort defVal = _defaultPageCount;
 
-            UInt16 value;
+            ushort value;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText = txtPCLXLTestPageCount.Text;
+            string crntText = txtPCLXLTestPageCount.Text;
 
-            OK = UInt16.TryParse(crntText, out value);
+            OK = ushort.TryParse(crntText, out value);
 
             if (OK)
                 if ((value < minVal) || (value > maxVal))
@@ -2724,7 +2724,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString();
+                    string newText = defVal.ToString();
 
                     MessageBox.Show("Test page count value '" + crntText +
                                     "' is invalid.\n\n" +

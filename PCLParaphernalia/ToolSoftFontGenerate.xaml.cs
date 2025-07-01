@@ -31,25 +31,25 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private const String _fontRegistryRoot = "HKEY_LOCAL_MACHINE";
-        private const String _fontRegistryKey =
+        private const string _fontRegistryRoot = "HKEY_LOCAL_MACHINE";
+        private const string _fontRegistryKey =
             "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts";
 
-        private const Char _defaultSymSetIdAlpha = 'N';
-        private const UInt16 _defaultSymSetIdNum = 0;
-        private const UInt16 _defaultSymSetNo = 14;     //    0N //
-        private const UInt16 _defaultSymSetNoSymbol = 32769;  // 1024A //
-        private const UInt16 _symSetNoUnicode = 590;    //   18N //
-        private const UInt16 _symSetNoUnbound = 56;     //    1X //
+        private const char _defaultSymSetIdAlpha = 'N';
+        private const ushort _defaultSymSetIdNum = 0;
+        private const ushort _defaultSymSetNo = 14;     //    0N //
+        private const ushort _defaultSymSetNoSymbol = 32769;  // 1024A //
+        private const ushort _symSetNoUnicode = 590;    //   18N //
+        private const ushort _symSetNoUnbound = 56;     //    1X //
 
-        private const UInt16 _defaultPCLTypefaceNo = 61440;
-        private const UInt16 _defaultPCLStyleNo = 0;
-        private const SByte _defaultPCLWeightNo = 0;
+        private const ushort _defaultPCLTypefaceNo = 61440;
+        private const ushort _defaultPCLStyleNo = 0;
+        private const sbyte _defaultPCLWeightNo = 0;
 
-        private const Int32 cSizeCharSet_8bit = 256;
-        private const Int32 cSizeCharSet_UCS_2 = 65536;
+        private const int cSizeCharSet_8bit = 256;
+        private const int cSizeCharSet_UCS_2 = 65536;
 
-        private enum ePCLTUse : Byte
+        private enum ePCLTUse : byte
         {
             Ignore,
             Use,
@@ -62,26 +62,26 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean _flagLogVerbose = false;
-        private Boolean _flagFormat16 = false;
-        private Boolean _flagSegGTLastPCL = false;
-        private Boolean _flagUsePCLT = false;
-        private Boolean _flagVMetricsPCL = false;
-        private Boolean _flagVMetricsPCLXL = false;
+        private bool _flagLogVerbose = false;
+        private bool _flagFormat16 = false;
+        private bool _flagSegGTLastPCL = false;
+        private bool _flagUsePCLT = false;
+        private bool _flagVMetricsPCL = false;
+        private bool _flagVMetricsPCLXL = false;
 
-        private Boolean _flagSymSetNullMapPCL = false;
-        private Boolean _flagSymSetNullMapStd = false;
+        private bool _flagSymSetNullMapPCL = false;
+        private bool _flagSymSetNullMapStd = false;
 
-        private Boolean _flagCharCollCompInhibitPCL = false;
-        private Boolean _flagCharCollCompSpecificPCL = false;
+        private bool _flagCharCollCompInhibitPCL = false;
+        private bool _flagCharCollCompSpecificPCL = false;
 
-        private Boolean _initialised = false;
-        private Boolean _symSetUnbound = false;
-        private Boolean _symSetMapPCL = false;
-        private Boolean _symSetUserSet = false;
-        private Boolean _symbolMapping = false;
+        private bool _initialised = false;
+        private bool _symSetUnbound = false;
+        private bool _symSetMapPCL = false;
+        private bool _symSetUserSet = false;
+        private bool _symbolMapping = false;
 
-        private Boolean _fontWithinTTC = false;
+        private bool _fontWithinTTC = false;
 
         private ToolSoftFontGenTTF _ttfHandler;
 
@@ -99,64 +99,64 @@ namespace PCLParaphernalia
 
         private ASCIIEncoding _ascii = new ASCIIEncoding();
 
-        private Int32 _ctTTFFonts;
+        private int _ctTTFFonts;
 
-        private Int32[] _subsetSymSets;
+        private int[] _subsetSymSets;
 
-        private Int32 _ctMappedSymSets = 0;
-        private Int32 _sizeCharSet;
+        private int _ctMappedSymSets = 0;
+        private int _sizeCharSet;
 
-        private Int32 _indxSymSetSubset;
-        private Int32 _indxSymSetTarget;
-        private Int32 _indxSymSetDefault;
+        private int _indxSymSetSubset;
+        private int _indxSymSetTarget;
+        private int _indxSymSetDefault;
 
-        private Int32 _indxFont;
-        private Int32 _indxFontTTC;
+        private int _indxFont;
+        private int _indxFontTTC;
 
-        private UInt16 _styleNoPCL;
+        private ushort _styleNoPCL;
 
-        private SByte _weightNoPCL;
+        private sbyte _weightNoPCL;
 
-        private UInt16 _symSetNoTargetPCL;
-        private UInt16 _symSetNoTargetPCLXL;
-        private UInt16 _symSetNoUserSet;
-        private UInt16 _symSetNoPCL;
-        private UInt16 _symSetNoPCLXL;
+        private ushort _symSetNoTargetPCL;
+        private ushort _symSetNoTargetPCLXL;
+        private ushort _symSetNoUserSet;
+        private ushort _symSetNoPCL;
+        private ushort _symSetNoPCLXL;
 
-        private UInt16 _typefaceNoPCL;
-        private UInt16 _typefaceVendorPCL = 0;
-        private UInt16 _typefaceBasecodePCL = 0;
+        private ushort _typefaceNoPCL;
+        private ushort _typefaceVendorPCL = 0;
+        private ushort _typefaceBasecodePCL = 0;
 
-        private UInt64 _charCollCompPCL;
-        private UInt64 _charCollCompPCLAll;
-        private UInt64 _charCollCompPCLSpecific;
+        private ulong _charCollCompPCL;
+        private ulong _charCollCompPCLAll;
+        private ulong _charCollCompPCLSpecific;
 
         private PCLSymbolSets.eSymSetGroup _symSetGroup;
         private PCLSymSetTypes.eIndex _symSetType;
 
-        private String _fontNameBase;
-        private String _fontNamePCLXL;
-        private String _fontNameTTF;
+        private string _fontNameBase;
+        private string _fontNamePCLXL;
+        private string _fontNameTTF;
 
-        private String _fontFolderPCL;
-        private String _fontFolderPCLXL;
+        private string _fontFolderPCL;
+        private string _fontFolderPCLXL;
 
-        private String _fontFilenamePCL;
-        private String _fontFilenamePCLXL;
-        private String _fontFilenameTTF;
-        private String _fontFileAdhocTTF;
-        private String _symSetUserFile;
+        private string _fontFilenamePCL;
+        private string _fontFilenamePCLXL;
+        private string _fontFilenameTTF;
+        private string _fontFileAdhocTTF;
+        private string _symSetUserFile;
 
-        private String _fontsFolder;
+        private string _fontsFolder;
 
-        private String[] _fontFiles;
-        private String[] _fontNames;
-        private String[] _fontTTCNames;
+        private string[] _fontFiles;
+        private string[] _fontNames;
+        private string[] _fontTTCNames;
 
-        private UInt32[] _fontTTCOffsets;
+        private uint[] _fontTTCOffsets;
 
-        private Boolean _tabPCLTPresent;
-        private Boolean _tabvmtxPresent;
+        private bool _tabPCLTPresent;
+        private bool _tabvmtxPresent;
 
         private ObservableCollection<PCLCharCollItem> _charCollCompListUnicode =
                     new ObservableCollection<PCLCharCollItem>();
@@ -187,7 +187,7 @@ namespace PCLParaphernalia
 
         private void btnLogSave_Click(object sender, EventArgs e)
         {
-            Boolean flagOptRptWrap = false;
+            bool flagOptRptWrap = false;
 
             ReportCore.eRptFileFmt rptFileFmt = ReportCore.eRptFileFmt.NA;
             ReportCore.eRptChkMarks rptChkMarks = ReportCore.eRptChkMarks.NA;
@@ -233,9 +233,9 @@ namespace PCLParaphernalia
         private void btnPCLFontFileBrowse_Click(object sender,
                                                  RoutedEventArgs e)
         {
-            Boolean selected;
+            bool selected;
 
-            String filename = _fontFilenamePCL;
+            string filename = _fontFilenamePCL;
 
             selected = selectPCLFontFile(ref filename);
 
@@ -261,9 +261,9 @@ namespace PCLParaphernalia
         private void btnPCLXLFontFileBrowse_Click(object sender,
                                                  RoutedEventArgs e)
         {
-            Boolean selected;
+            bool selected;
 
-            String filename = _fontFilenamePCLXL;
+            string filename = _fontFilenamePCLXL;
 
             selected = selectPCLXLFontFile(ref filename);
 
@@ -287,11 +287,11 @@ namespace PCLParaphernalia
 
         private void btnPCLGenerate_Click(object sender, EventArgs e)
         {
-            Boolean proceed = true;
+            bool proceed = true;
 
             DateTime dateTimeNow = DateTime.Now;
 
-            String convTextStr = "Converted from '" + _fontFilenameTTF +
+            string convTextStr = "Converted from '" + _fontFilenameTTF +
                                  "' (" + _ttfHandler.FontFullname +
                                  ") by user '" + Environment.UserName +
                                  "' (domain user '" +
@@ -299,9 +299,9 @@ namespace PCLParaphernalia
                                  "') using system '" + Environment.MachineName +
                                  "' on " + dateTimeNow;
 
-            String licenceText = "";
+            string licenceText = "";
 
-            Byte[] conversionText;
+            byte[] conversionText;
 
             PCLSymSetTypes.eIndex symSetType;
 
@@ -356,15 +356,15 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                Byte symSetTypeID;
+                byte symSetTypeID;
 
-                Boolean monoSpaced = false;
+                bool monoSpaced = false;
 
                 _tableLogTarget.Clear();
                 _tableLogChars.Clear();
 
                 symSetType = PCLSymbolSets.getType(_indxSymSetTarget);
-                symSetTypeID = PCLSymSetTypes.getIdPCL((Int32)symSetType);
+                symSetTypeID = PCLSymSetTypes.getIdPCL((int)symSetType);
 
                 if (tabDetails.SelectedItem.Equals(tabPCL))
                 {
@@ -402,8 +402,8 @@ namespace PCLParaphernalia
                         new ToolSoftFontGenPCLXL(_tableLogChars,
                                                   _ttfHandler);
 
-                    Byte[] fontName =
-                        new Byte[ToolSoftFontGenTTF.cSizeFontname];
+                    byte[] fontName =
+                        new byte[ToolSoftFontGenTTF.cSizeFontname];
 
                     // perhaps need to use .GetByteCount and/or .GetMaxByteCount
                     // and different overload of GetBytes to make sure that
@@ -457,9 +457,9 @@ namespace PCLParaphernalia
         private void btnSymSetFileBrowse_Click(object sender,
                                                 RoutedEventArgs e)
         {
-            Boolean selected;
+            bool selected;
 
-            String filename = _symSetUserFile;
+            string filename = _symSetUserFile;
 
             selected = selectSymSetFile(ref filename);
 
@@ -491,9 +491,9 @@ namespace PCLParaphernalia
         private void btnTTFFontFileBrowse_Click(object sender,
                                                 RoutedEventArgs e)
         {
-            Boolean selected;
+            bool selected;
 
-            String filename = _fontFileAdhocTTF;
+            string filename = _fontFileAdhocTTF;
 
             selected = selectTTFFontFile(ref filename);
 
@@ -518,27 +518,27 @@ namespace PCLParaphernalia
 
         private void btnTTFSelect_Click(object sender, EventArgs e)
         {
-            Boolean flagOK = true;
+            bool flagOK = true;
 
-            Int32 indx;
-            Int32 sfntOffset = 0;
+            int indx;
+            int sfntOffset = 0;
 
-            UInt16 symSetNoTargetPCL;
-            UInt16 symSetNoTargetPCLXL;
-            UInt32 numFonts = 0;
+            ushort symSetNoTargetPCL;
+            ushort symSetNoTargetPCLXL;
+            uint numFonts = 0;
 
-            String filename,
+            string filename,
                    symSetIdTargetPCL,
                    symSetIdTargetPCLXL;
 
-            Boolean typeTTC = false,
+            bool typeTTC = false,
                     usePCLT = false;
 
             if (_fontWithinTTC)
             {
                 indx = cbTTCName.SelectedIndex;
 
-                sfntOffset = (Int32)_fontTTCOffsets[indx];
+                sfntOffset = (int)_fontTTCOffsets[indx];
 
                 ToolSoftFontGenLog.logNameAndValue(
                     _tableLogDonor, true, true,
@@ -606,8 +606,8 @@ namespace PCLParaphernalia
                              MessageBoxButton.OK,
                              MessageBoxImage.Information);
 
-                        _fontTTCOffsets = new UInt32[numFonts];
-                        _fontTTCNames = new String[numFonts];
+                        _fontTTCOffsets = new uint[numFonts];
+                        _fontTTCNames = new string[numFonts];
 
                         flagOK = _ttfHandler.getTTCData(_fontFilenameTTF,
                                                          numFonts,
@@ -618,7 +618,7 @@ namespace PCLParaphernalia
                         {
                             cbTTCName.Items.Clear();
 
-                            for (Int32 i = 0; i < numFonts; i++)
+                            for (int i = 0; i < numFonts; i++)
                             {
                                 cbTTCName.Items.Add(_fontTTCNames[i]);
                             }
@@ -636,17 +636,17 @@ namespace PCLParaphernalia
 
             if (flagOK && !typeTTC)
             {
-                UInt16 symSetNoPCLT = 0;
-                UInt16 typefaceNoPCLT = 0;
-                UInt16 styleNoPCLT = 0;
+                ushort symSetNoPCLT = 0;
+                ushort typefaceNoPCLT = 0;
+                ushort styleNoPCLT = 0;
 
-                UInt64 charCompPCLT = 0;
+                ulong charCompPCLT = 0;
 
-                SByte weightNoPCLT = 0;
+                sbyte weightNoPCLT = 0;
 
                 //   Byte [] typefacePCLT = new Byte [ToolSoftFontGenPCLXL.cSizeFontname];
 
-                String typefacePCLT = "";
+                string typefacePCLT = "";
 
                 if (!_fontWithinTTC)
                 {
@@ -1012,15 +1012,15 @@ namespace PCLParaphernalia
 
         private void checkPCLSymSetFile()
         {
-            Boolean flagOK = true;
+            bool flagOK = true;
 
-            Boolean selected = true;
+            bool selected = true;
 
-            UInt16[] symSetMap = new UInt16[256];
+            ushort[] symSetMap = new ushort[256];
 
             if (!File.Exists(_symSetUserFile))
             {
-                String filename = _symSetUserFile;
+                string filename = _symSetUserFile;
 
                 flagOK = false;
 
@@ -1047,7 +1047,7 @@ namespace PCLParaphernalia
 
             if (selected)
             {
-                UInt16 firstCode = 0,
+                ushort firstCode = 0,
                        lastCode = 0;
 
                 PCLSymSetTypes.eIndex symSetType =
@@ -1403,8 +1403,8 @@ namespace PCLParaphernalia
 
                 _ctTTFFonts = 0;
 
-                SortedList<String, String> fontList =
-                    new SortedList<String, String>();
+                SortedList<string, string> fontList =
+                    new SortedList<string, string>();
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1418,7 +1418,7 @@ namespace PCLParaphernalia
 
                 foreach (string valueName in key.GetValueNames())
                 {
-                    String value = key.GetValue(valueName).ToString();
+                    string value = key.GetValue(valueName).ToString();
 
                     if ((value.EndsWith(".ttf")) || (value.EndsWith(".TTF"))
                                                   ||
@@ -1436,10 +1436,10 @@ namespace PCLParaphernalia
                     }
                 }
 
-                _fontFiles = new String[_ctTTFFonts + 1];
-                _fontNames = new String[_ctTTFFonts + 1];
+                _fontFiles = new string[_ctTTFFonts + 1];
+                _fontNames = new string[_ctTTFFonts + 1];
 
-                Int32 indexFontFiles = 1;
+                int indexFontFiles = 1;
 
                 cbTTFName.Items.Clear();
 
@@ -1448,8 +1448,8 @@ namespace PCLParaphernalia
                 _fontFiles[0] =
                     "***** type or browse for required font file name *****";
 
-                const String ttfDesc = "(TrueType)";
-                Int32 ttfDescLen = ttfDesc.Length;
+                const string ttfDesc = "(TrueType)";
+                int ttfDescLen = ttfDesc.Length;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1461,11 +1461,11 @@ namespace PCLParaphernalia
 
                 foreach (string valueName in fontList.Keys)
                 {
-                    String value = key.GetValue(valueName).ToString();
-                    String name;
+                    string value = key.GetValue(valueName).ToString();
+                    string name;
 
-                    Int32 len = valueName.Length;
-                    Int32 indx;
+                    int len = valueName.Length;
+                    int indx;
 
                     if (valueName.EndsWith(ttfDesc))
                     {
@@ -1622,19 +1622,19 @@ namespace PCLParaphernalia
             _dataSetLogChars = new DataSet();
             _tableLogChars = new DataTable("Log Chars");
 
-            _tableLogChars.Columns.Add("DecCode", typeof(Int32));
-            _tableLogChars.Columns.Add("HexCode", typeof(String));
-            _tableLogChars.Columns.Add("Unicode", typeof(String));
-            _tableLogChars.Columns.Add("Glyph", typeof(Int32));
-            _tableLogChars.Columns.Add("Abs", typeof(Boolean));
-            _tableLogChars.Columns.Add("Prev", typeof(Boolean));
-            _tableLogChars.Columns.Add("Comp", typeof(Boolean));
-            _tableLogChars.Columns.Add("Depth", typeof(Int32));
-            _tableLogChars.Columns.Add("Width", typeof(Int32));
-            _tableLogChars.Columns.Add("LSB", typeof(Int32));
-            _tableLogChars.Columns.Add("Height", typeof(Int32));
-            _tableLogChars.Columns.Add("TSB", typeof(Int32));
-            _tableLogChars.Columns.Add("Length", typeof(Int32));
+            _tableLogChars.Columns.Add("DecCode", typeof(int));
+            _tableLogChars.Columns.Add("HexCode", typeof(string));
+            _tableLogChars.Columns.Add("Unicode", typeof(string));
+            _tableLogChars.Columns.Add("Glyph", typeof(int));
+            _tableLogChars.Columns.Add("Abs", typeof(bool));
+            _tableLogChars.Columns.Add("Prev", typeof(bool));
+            _tableLogChars.Columns.Add("Comp", typeof(bool));
+            _tableLogChars.Columns.Add("Depth", typeof(int));
+            _tableLogChars.Columns.Add("Width", typeof(int));
+            _tableLogChars.Columns.Add("LSB", typeof(int));
+            _tableLogChars.Columns.Add("Height", typeof(int));
+            _tableLogChars.Columns.Add("TSB", typeof(int));
+            _tableLogChars.Columns.Add("Length", typeof(int));
 
             _dataSetLogChars.Tables.Add(_tableLogChars);
 
@@ -1655,8 +1655,8 @@ namespace PCLParaphernalia
             _dataSetLogDonor = new DataSet();
             _tableLogDonor = new DataTable("Log Donor");
 
-            _tableLogDonor.Columns.Add("Name", typeof(String));
-            _tableLogDonor.Columns.Add("Value", typeof(String));
+            _tableLogDonor.Columns.Add("Name", typeof(string));
+            _tableLogDonor.Columns.Add("Value", typeof(string));
 
             _dataSetLogDonor.Tables.Add(_tableLogDonor);
 
@@ -1677,8 +1677,8 @@ namespace PCLParaphernalia
             _dataSetLogMapping = new DataSet();
             _tableLogMapping = new DataTable("Log Mapping");
 
-            _tableLogMapping.Columns.Add("Name", typeof(String));
-            _tableLogMapping.Columns.Add("Value", typeof(String));
+            _tableLogMapping.Columns.Add("Name", typeof(string));
+            _tableLogMapping.Columns.Add("Value", typeof(string));
 
             _dataSetLogMapping.Tables.Add(_tableLogMapping);
 
@@ -1699,8 +1699,8 @@ namespace PCLParaphernalia
             _dataSetLogTarget = new DataSet();
             _tableLogTarget = new DataTable("Log Target");
 
-            _tableLogTarget.Columns.Add("Name", typeof(String));
-            _tableLogTarget.Columns.Add("Value", typeof(String));
+            _tableLogTarget.Columns.Add("Name", typeof(string));
+            _tableLogTarget.Columns.Add("Value", typeof(string));
 
             _dataSetLogTarget.Tables.Add(_tableLogTarget);
 
@@ -1718,11 +1718,11 @@ namespace PCLParaphernalia
 
         private void initialisePCLCharCollCompLists()
         {
-            Int32 bitNo;
+            int bitNo;
 
-            UInt64 bitVal;
+            ulong bitVal;
 
-            Boolean bitSet;
+            bool bitSet;
 
             PCLCharCollections.eBitType bitType;
 
@@ -1755,7 +1755,7 @@ namespace PCLParaphernalia
                     if (bitSet)
                     {
                         bitNo = item.BitNo;
-                        bitVal = ((UInt64)0x01) << bitNo;
+                        bitVal = ((ulong)0x01) << bitNo;
 
                         _charCollCompPCLAll =
                             (_charCollCompPCLAll | bitVal);
@@ -1789,17 +1789,17 @@ namespace PCLParaphernalia
 
         private void initialiseSymSetList()
         {
-            Int32 index;
+            int index;
 
             cbSymSet.Items.Clear();
 
             _ctMappedSymSets = PCLSymbolSets.getCountMapped();
 
-            _subsetSymSets = new Int32[_ctMappedSymSets];
+            _subsetSymSets = new int[_ctMappedSymSets];
 
             PCLSymbolSets.getIndicesMapped(0, ref _subsetSymSets);
 
-            for (Int32 i = 0; i < _ctMappedSymSets; i++)
+            for (int i = 0; i < _ctMappedSymSets; i++)
             {
                 index = _subsetSymSets[i];
                 cbSymSet.Items.Add(PCLSymbolSets.getName(index));
@@ -1817,9 +1817,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void logFontSelectDataPCL(Boolean monoSpaced)
+        private void logFontSelectDataPCL(bool monoSpaced)
         {
-            String baseName = "";
+            string baseName = "";
 
             ToolSoftFontGenLog.logNameAndValue(
                 _tableLogTarget, false, false,
@@ -1935,12 +1935,12 @@ namespace PCLParaphernalia
 
         private void metricsLoad()
         {
-            Int32 indxTemp = 0;
+            int indxTemp = 0;
 
             ToolSoftFontGenPersist.loadDataCommon(ref indxTemp,
                                                   ref _flagLogVerbose);
 
-            if (indxTemp == (Int32)ToolCommonData.ePrintLang.PCLXL)
+            if (indxTemp == (int)ToolCommonData.ePrintLang.PCLXL)
                 _crntPDL = ToolCommonData.ePrintLang.PCLXL;
             else
                 _crntPDL = ToolCommonData.ePrintLang.PCL;
@@ -1992,7 +1992,7 @@ namespace PCLParaphernalia
 
         public void metricsSave()
         {
-            ToolSoftFontGenPersist.saveDataCommon((Int32)_crntPDL,
+            ToolSoftFontGenPersist.saveDataCommon((int)_crntPDL,
                                                    _flagLogVerbose);
 
             ToolSoftFontGenPersist.saveDataTTF(_indxFont,
@@ -2039,11 +2039,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void populatePCLCharCollComp(UInt64 collBits)
+        private void populatePCLCharCollComp(ulong collBits)
         {
-            UInt64 bitVal;
+            ulong bitVal;
 
-            Int32 bitNo;
+            int bitNo;
 
             PCLCharCollections.eBitType bitType;
 
@@ -2054,7 +2054,7 @@ namespace PCLParaphernalia
             foreach (PCLCharCollItem item in _charCollCompListUnicode)
             {
                 bitNo = item.BitNo;
-                bitVal = ((UInt64)0x01) << bitNo;
+                bitVal = ((ulong)0x01) << bitNo;
                 bitType = item.BitType;
 
                 if (bitType == PCLCharCollections.eBitType.Collection)
@@ -2382,7 +2382,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectPCLFontFile(ref String fontFilename)
+        private bool selectPCLFontFile(ref string fontFilename)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(fontFilename);
 
@@ -2406,7 +2406,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectPCLXLFontFile(ref String fontFilename)
+        private bool selectPCLXLFontFile(ref string fontFilename)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(fontFilename);
 
@@ -2430,7 +2430,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectSymSetFile(ref String symSetFile)
+        private bool selectSymSetFile(ref string symSetFile)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(symSetFile);
 
@@ -2454,7 +2454,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectTTFFontFile(ref String fontFilenameTTF)
+        private bool selectTTFFontFile(ref string fontFilenameTTF)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(fontFilenameTTF);
 
@@ -2488,10 +2488,10 @@ namespace PCLParaphernalia
 
         private void setPCLCharCollCompArray()
         {
-            UInt64 targetCharCollComp = 0,
+            ulong targetCharCollComp = 0,
                    bitVal;
 
-            Int32 bitNo;
+            int bitNo;
 
             if (cbPCLCharColls.ItemsSource != null)
             {
@@ -2501,7 +2501,7 @@ namespace PCLParaphernalia
 
                     if (!item.IsChecked)
                     {
-                        bitVal = ((UInt64)1) << bitNo;
+                        bitVal = ((ulong)1) << bitNo;
                         targetCharCollComp = targetCharCollComp | bitVal;
                     }
                 }
@@ -2523,7 +2523,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setPCLCharCollCompValue(UInt64 arrayVal)
+        private void setPCLCharCollCompValue(ulong arrayVal)
         {
             tblkPCLCharColls.Text = "0x" + arrayVal.ToString("x16");
         }
@@ -2539,7 +2539,7 @@ namespace PCLParaphernalia
 
         private void setPCLFontFileAttributes()
         {
-            Int32 indx;
+            int indx;
 
             indx = _fontFilenamePCL.LastIndexOf("\\");
 
@@ -2560,7 +2560,7 @@ namespace PCLParaphernalia
 
         private void setPCLXLFontFileAttributes()
         {
-            Int32 indx;
+            int indx;
 
             indx = _fontFilenamePCLXL.LastIndexOf("\\");
 
@@ -2581,7 +2581,7 @@ namespace PCLParaphernalia
 
         private void setSymSetAttributesTarget()
         {
-            String idNum = "",
+            string idNum = "",
                    idAlpha = "";
 
             if (_symSetUnbound)
@@ -2653,7 +2653,7 @@ namespace PCLParaphernalia
                 _symSetType = PCLSymbolSets.getType(_indxSymSetTarget);
 
                 txtSymSetType.Text =
-                    PCLSymSetTypes.getDescShort((Int32)_symSetType);
+                    PCLSymSetTypes.getDescShort((int)_symSetType);
 
                 txtPCLSymSetNo.Text = _symSetNoUserSet.ToString();
 
@@ -2667,7 +2667,7 @@ namespace PCLParaphernalia
             }
             else if (_indxSymSetSubset != -1)
             {
-                Int32 indxSymSet;
+                int indxSymSet;
 
                 _indxSymSetSubset = cbSymSet.SelectedIndex;
 
@@ -2703,7 +2703,7 @@ namespace PCLParaphernalia
                     //--------------------------------------------------------//
 
                     txtSymSetType.Text =
-                        PCLSymSetTypes.getDescShort((Int32)_symSetType);
+                        PCLSymSetTypes.getDescShort((int)_symSetType);
 
                     _indxSymSetTarget = indxSymSet;
                     _symSetNoTargetPCL = PCLSymbolSets.getKind1(indxSymSet);
@@ -2789,16 +2789,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void translateStyleNo(UInt16 style,
-                                       Boolean showSubIds,
-                                       ref String posture,
-                                       ref String width,
-                                       ref String structure)
+        private void translateStyleNo(ushort style,
+                                       bool showSubIds,
+                                       ref string posture,
+                                       ref string width,
+                                       ref string structure)
         {
-            Int32 index,
+            int index,
                   subId;
 
-            String subIdPosture,
+            string subIdPosture,
                    subIdWidth,
                    subIdStructure;
 
@@ -2814,79 +2814,79 @@ namespace PCLParaphernalia
 
             switch (index)
             {
-                case (UInt16)PCLFonts.eStyleStructure.Solid:
+                case (ushort)PCLFonts.eStyleStructure.Solid:
                     structure = subIdStructure + "Solid";
                     break;
 
-                case (UInt16)PCLFonts.eStyleStructure.Outline:
+                case (ushort)PCLFonts.eStyleStructure.Outline:
                     structure = subIdStructure + "Outline";
                     break;
 
-                case (UInt16)PCLFonts.eStyleStructure.Inline:
+                case (ushort)PCLFonts.eStyleStructure.Inline:
                     structure = subIdStructure + "Inline";
                     break;
 
-                case (UInt16)PCLFonts.eStyleStructure.Contour:
+                case (ushort)PCLFonts.eStyleStructure.Contour:
                     structure = subIdStructure + "Contour";
                     break;
 
-                case (UInt16)PCLFonts.eStyleStructure.Solid_Shadow:
+                case (ushort)PCLFonts.eStyleStructure.Solid_Shadow:
                     structure = subIdStructure + "Solid + Shadow";
                     break;
 
-                case (UInt16)PCLFonts.eStyleStructure.Outline_Shadow:
+                case (ushort)PCLFonts.eStyleStructure.Outline_Shadow:
                     structure = subIdStructure + "Outline + Shadow";
                     break;
 
-                case (UInt16)PCLFonts.eStyleStructure.Inline_Shadow:
+                case (ushort)PCLFonts.eStyleStructure.Inline_Shadow:
                     structure = subIdStructure + "Inline + Shadow";
                     break;
 
-                case (UInt16)PCLFonts.eStyleStructure.Contour_Shadow:
+                case (ushort)PCLFonts.eStyleStructure.Contour_Shadow:
                     structure = subIdStructure + "Contour + Shadow";
                     break;
 
-                case (UInt16)PCLFonts.eStyleStructure.Pattern:
+                case (ushort)PCLFonts.eStyleStructure.Pattern:
                     structure = subIdStructure + "Pattern";
                     break;
 
-                case (UInt16)PCLFonts.eStyleStructure.Pattern1:
+                case (ushort)PCLFonts.eStyleStructure.Pattern1:
                     structure = subIdStructure + "Pattern 1";
                     break;
 
-                case (UInt16)PCLFonts.eStyleStructure.Pattern2:
+                case (ushort)PCLFonts.eStyleStructure.Pattern2:
                     structure = subIdStructure + "Pattern 2";
                     break;
 
-                case (UInt16)PCLFonts.eStyleStructure.Pattern3:
+                case (ushort)PCLFonts.eStyleStructure.Pattern3:
                     structure = subIdStructure + "Pattern 3";
                     break;
 
-                case (UInt16)PCLFonts.eStyleStructure.Pattern_Shadow:
+                case (ushort)PCLFonts.eStyleStructure.Pattern_Shadow:
                     structure = subIdStructure + "Pattern + Shadow";
                     break;
 
-                case (UInt16)PCLFonts.eStyleStructure.Pattern1_Shadow:
+                case (ushort)PCLFonts.eStyleStructure.Pattern1_Shadow:
                     structure = subIdStructure + "Pattern 1 + Shadow";
                     break;
 
-                case (UInt16)PCLFonts.eStyleStructure.Pattern2_Shadow:
+                case (ushort)PCLFonts.eStyleStructure.Pattern2_Shadow:
                     structure = subIdStructure + "Pattern 2 + Shadow";
                     break;
 
-                case (UInt16)PCLFonts.eStyleStructure.Pattern3_Shadow:
+                case (ushort)PCLFonts.eStyleStructure.Pattern3_Shadow:
                     structure = subIdStructure + "Pattern 3 + Shadow";
                     break;
 
-                case (UInt16)PCLFonts.eStyleStructure.Inverse:
+                case (ushort)PCLFonts.eStyleStructure.Inverse:
                     structure = subIdStructure + "Inverse";
                     break;
 
-                case (UInt16)PCLFonts.eStyleStructure.Inverse_Border:
+                case (ushort)PCLFonts.eStyleStructure.Inverse_Border:
                     structure = subIdStructure + "Inverse + Border";
                     break;
 
-                case (UInt16)PCLFonts.eStyleStructure.Unknown:
+                case (ushort)PCLFonts.eStyleStructure.Unknown:
                     structure = subIdStructure + "Unknown";
                     break;
 
@@ -2907,35 +2907,35 @@ namespace PCLParaphernalia
 
             switch (index)
             {
-                case (Byte)PCLFonts.eStyleWidth.Normal:
+                case (byte)PCLFonts.eStyleWidth.Normal:
                     width = subIdWidth + "Normal";
                     break;
 
-                case (Byte)PCLFonts.eStyleWidth.Condensed:
+                case (byte)PCLFonts.eStyleWidth.Condensed:
                     width = subIdWidth + "Condensed";
                     break;
 
-                case (Byte)PCLFonts.eStyleWidth.Compressed:
+                case (byte)PCLFonts.eStyleWidth.Compressed:
                     width = subIdWidth + "Compressed";
                     break;
 
-                case (Byte)PCLFonts.eStyleWidth.ExtraCompressed:
+                case (byte)PCLFonts.eStyleWidth.ExtraCompressed:
                     width = subIdWidth + "Extra Compressed";
                     break;
 
-                case (Byte)PCLFonts.eStyleWidth.UltraCompressed:
+                case (byte)PCLFonts.eStyleWidth.UltraCompressed:
                     width = subIdWidth + "Ultra Compressed";
                     break;
 
-                case (Byte)PCLFonts.eStyleWidth.Reserved:
+                case (byte)PCLFonts.eStyleWidth.Reserved:
                     width = subIdWidth + "Reserved";
                     break;
 
-                case (Byte)PCLFonts.eStyleWidth.Expanded:
+                case (byte)PCLFonts.eStyleWidth.Expanded:
                     width = subIdWidth + "Expanded";
                     break;
 
-                case (Byte)PCLFonts.eStyleWidth.ExtraExpanded:
+                case (byte)PCLFonts.eStyleWidth.ExtraExpanded:
                     width = subIdWidth + "Extra Expanded";
                     break;
 
@@ -2956,19 +2956,19 @@ namespace PCLParaphernalia
 
             switch (index)
             {
-                case (Byte)PCLFonts.eStylePosture.Upright:
+                case (byte)PCLFonts.eStylePosture.Upright:
                     posture = subIdPosture + "Upright";
                     break;
 
-                case (Byte)PCLFonts.eStylePosture.Italic:
+                case (byte)PCLFonts.eStylePosture.Italic:
                     posture = subIdPosture + "Italic";
                     break;
 
-                case (Byte)PCLFonts.eStylePosture.ItalicAlt:
+                case (byte)PCLFonts.eStylePosture.ItalicAlt:
                     posture = subIdPosture + "Italic Alt.";
                     break;
 
-                case (Byte)PCLFonts.eStylePosture.Reserved:
+                case (byte)PCLFonts.eStylePosture.Reserved:
                     posture = subIdPosture + "Reserved";
                     break;
 
@@ -2988,14 +2988,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private String translateWeightNo(SByte weight,
-                                          Boolean showSubIds)
+        private string translateWeightNo(sbyte weight,
+                                          bool showSubIds)
         {
-            Int32 subId;
+            int subId;
 
-            String desc;
+            string desc;
 
-            String subIdWeight;
+            string subIdWeight;
 
             //----------------------------------------------------------------//
 
@@ -3008,63 +3008,63 @@ namespace PCLParaphernalia
 
             switch (weight)
             {
-                case (SByte)PCLFonts.eStrokeWeight.UltraThin:
+                case (sbyte)PCLFonts.eStrokeWeight.UltraThin:
                     desc = subIdWeight + "Ultra Thin";
                     break;
 
-                case (SByte)PCLFonts.eStrokeWeight.ExtraThin:
+                case (sbyte)PCLFonts.eStrokeWeight.ExtraThin:
                     desc = subIdWeight + "Extra Thin";
                     break;
 
-                case (SByte)PCLFonts.eStrokeWeight.Thin:
+                case (sbyte)PCLFonts.eStrokeWeight.Thin:
                     desc = subIdWeight + "Thin";
                     break;
 
-                case (SByte)PCLFonts.eStrokeWeight.ExtraLight:
+                case (sbyte)PCLFonts.eStrokeWeight.ExtraLight:
                     desc = subIdWeight + "Extra Light";
                     break;
 
-                case (SByte)PCLFonts.eStrokeWeight.Light:
+                case (sbyte)PCLFonts.eStrokeWeight.Light:
                     desc = subIdWeight + "Light";
                     break;
 
-                case (SByte)PCLFonts.eStrokeWeight.DemiLight:
+                case (sbyte)PCLFonts.eStrokeWeight.DemiLight:
                     desc = subIdWeight + "Demi Light";
                     break;
 
-                case (SByte)PCLFonts.eStrokeWeight.SemiLight:
+                case (sbyte)PCLFonts.eStrokeWeight.SemiLight:
                     desc = subIdWeight + "Semi Light";
                     break;
 
-                case (SByte)PCLFonts.eStrokeWeight.Medium:
+                case (sbyte)PCLFonts.eStrokeWeight.Medium:
                     desc = subIdWeight + "Medium";
                     break;
 
-                case (SByte)PCLFonts.eStrokeWeight.SemiBold:
+                case (sbyte)PCLFonts.eStrokeWeight.SemiBold:
                     desc = subIdWeight + "Semi Bold";
                     break;
 
-                case (SByte)PCLFonts.eStrokeWeight.DemiBold:
+                case (sbyte)PCLFonts.eStrokeWeight.DemiBold:
                     desc = subIdWeight + "Demi Bold";
                     break;
 
-                case (SByte)PCLFonts.eStrokeWeight.Bold:
+                case (sbyte)PCLFonts.eStrokeWeight.Bold:
                     desc = subIdWeight + "Bold";
                     break;
 
-                case (SByte)PCLFonts.eStrokeWeight.ExtraBold:
+                case (sbyte)PCLFonts.eStrokeWeight.ExtraBold:
                     desc = subIdWeight + "Extra Bold";
                     break;
 
-                case (SByte)PCLFonts.eStrokeWeight.Black:
+                case (sbyte)PCLFonts.eStrokeWeight.Black:
                     desc = subIdWeight + "Black";
                     break;
 
-                case (SByte)PCLFonts.eStrokeWeight.ExtraBlack:
+                case (sbyte)PCLFonts.eStrokeWeight.ExtraBlack:
                     desc = subIdWeight + "Extra Black";
                     break;
 
-                case (SByte)PCLFonts.eStrokeWeight.UltraBlack:
+                case (sbyte)PCLFonts.eStrokeWeight.UltraBlack:
                     desc = subIdWeight + "Ultra Black";
                     break;
 
@@ -3105,7 +3105,7 @@ namespace PCLParaphernalia
         private void txtPCLStyleNo_LostFocus(object sender,
                                               RoutedEventArgs e)
         {
-            String posture = "",
+            string posture = "",
                    width = "",
                    structure = "";
 
@@ -3135,7 +3135,7 @@ namespace PCLParaphernalia
         private void txtPCLStyleNo_TextChanged(object sender,
                                                 TextChangedEventArgs e)
         {
-            String posture = "",
+            string posture = "",
                    width = "",
                    structure = "";
 
@@ -3165,10 +3165,10 @@ namespace PCLParaphernalia
         private void txtPCLSymSetNo_LostFocus(object sender,
                                                RoutedEventArgs e)
         {
-            String idAlpha = "",
+            string idAlpha = "",
                    idNum = "";
 
-            String name = "";
+            string name = "";
 
             if (validatePCLSymSetNo(true, ref _symSetNoPCL))
             {
@@ -3199,10 +3199,10 @@ namespace PCLParaphernalia
         private void txtPCLSymSetNo_TextChanged(object sender,
                                                  TextChangedEventArgs e)
         {
-            String idAlpha = "",
+            string idAlpha = "",
                    idNum = "";
 
-            String name = "";
+            string name = "";
 
             if (validatePCLSymSetNo(false, ref _symSetNoPCL))
             {
@@ -3231,10 +3231,10 @@ namespace PCLParaphernalia
         private void txtPCLTypefaceNo_LostFocus(object sender,
                                                  RoutedEventArgs e)
         {
-            UInt16 vendor = 0,
+            ushort vendor = 0,
                    basecode = 0;
 
-            String name = "";
+            string name = "";
 
             if (validatePCLTypefaceNo(true, ref _typefaceNoPCL))
             {
@@ -3263,7 +3263,7 @@ namespace PCLParaphernalia
         private void txtPCLTypefaceNo_TextChanged(object sender,
                                                    TextChangedEventArgs e)
         {
-            String name = "";
+            string name = "";
 
             if (validatePCLTypefaceNo(false, ref _typefaceNoPCL))
             {
@@ -3292,7 +3292,7 @@ namespace PCLParaphernalia
         private void txtPCLWeightNo_LostFocus(object sender,
                                                RoutedEventArgs e)
         {
-            String weight = "";
+            string weight = "";
 
             if (validatePCLWeightNo(true, ref _weightNoPCL))
             {
@@ -3315,7 +3315,7 @@ namespace PCLParaphernalia
         private void txtPCLWeightNo_TextChanged(object sender,
                                                  TextChangedEventArgs e)
         {
-            String weight = "";
+            string weight = "";
 
             if (validatePCLWeightNo(false, ref _weightNoPCL))
             {
@@ -3370,10 +3370,10 @@ namespace PCLParaphernalia
         private void txtPCLXLSymSetNo_LostFocus(object sender,
                                                RoutedEventArgs e)
         {
-            String idAlpha = "",
+            string idAlpha = "",
                    idNum = "";
 
-            String name = "";
+            string name = "";
 
             if (validatePCLXLSymSetNo(true, ref _symSetNoPCLXL))
             {
@@ -3404,10 +3404,10 @@ namespace PCLParaphernalia
         private void txtPCLXLSymSetNo_TextChanged(object sender,
                                                  TextChangedEventArgs e)
         {
-            String idAlpha = "",
+            string idAlpha = "",
                    idNum = "";
 
-            String name = "";
+            string name = "";
 
             if (validatePCLXLSymSetNo(false, ref _symSetNoPCLXL))
             {
@@ -3476,20 +3476,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLStyleNo(Boolean lostFocusEvent,
-                                            ref UInt16 styleNo)
+        private bool validatePCLStyleNo(bool lostFocusEvent,
+                                            ref ushort styleNo)
         {
-            const UInt16 minVal = 0;
-            const UInt16 maxVal = 1023;
-            const UInt16 defVal = _defaultPCLStyleNo;
+            const ushort minVal = 0;
+            const ushort maxVal = 1023;
+            const ushort defVal = _defaultPCLStyleNo;
 
-            UInt16 value;
+            ushort value;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText = txtPCLStyleNo.Text;
+            string crntText = txtPCLStyleNo.Text;
 
-            OK = UInt16.TryParse(crntText, out value);
+            OK = ushort.TryParse(crntText, out value);
 
             if (OK)
             {
@@ -3507,7 +3507,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString();
+                    string newText = defVal.ToString();
 
                     MessageBox.Show
                         ("Style number '" + crntText +
@@ -3550,20 +3550,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLSymSetNo(Boolean lostFocusEvent,
-                                              ref UInt16 symSetNo)
+        private bool validatePCLSymSetNo(bool lostFocusEvent,
+                                              ref ushort symSetNo)
         {
-            const UInt16 minVal = 1;
-            const UInt16 maxVal = 65530;
-            const UInt16 defVal = _defaultSymSetNo;
+            const ushort minVal = 1;
+            const ushort maxVal = 65530;
+            const ushort defVal = _defaultSymSetNo;
 
-            UInt16 value;
+            ushort value;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText = txtPCLSymSetNo.Text;
+            string crntText = txtPCLSymSetNo.Text;
 
-            OK = UInt16.TryParse(crntText, out value);
+            OK = ushort.TryParse(crntText, out value);
 
             if (OK)
             {
@@ -3573,7 +3573,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    Int32 modVal = value % 32;
+                    int modVal = value % 32;
 
                     if ((modVal < 1) || (modVal > 26))
                         OK = false;
@@ -3591,7 +3591,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString();
+                    string newText = defVal.ToString();
 
                     MessageBox.Show
                         ("Symbol Set (kind1) number '" + crntText +
@@ -3636,20 +3636,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLTypefaceNo(Boolean lostFocusEvent,
-                                                ref UInt16 typefaceNo)
+        private bool validatePCLTypefaceNo(bool lostFocusEvent,
+                                                ref ushort typefaceNo)
         {
-            const UInt16 minVal = 0;
-            const UInt16 maxVal = 65535;
-            const UInt16 defVal = _defaultPCLTypefaceNo;
+            const ushort minVal = 0;
+            const ushort maxVal = 65535;
+            const ushort defVal = _defaultPCLTypefaceNo;
 
-            UInt16 value;
+            ushort value;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText = txtPCLTypefaceNo.Text;
+            string crntText = txtPCLTypefaceNo.Text;
 
-            OK = UInt16.TryParse(crntText, out value);
+            OK = ushort.TryParse(crntText, out value);
 
             if (OK)
             {
@@ -3667,7 +3667,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString();
+                    string newText = defVal.ToString();
 
                     MessageBox.Show("Typeface number '" + crntText +
                                     "' is invalid.\n\n" +
@@ -3708,20 +3708,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLWeightNo(Boolean lostFocusEvent,
-                                             ref SByte weightNo)
+        private bool validatePCLWeightNo(bool lostFocusEvent,
+                                             ref sbyte weightNo)
         {
-            const SByte minVal = -7;
-            const SByte maxVal = 7;
-            const SByte defVal = _defaultPCLWeightNo;
+            const sbyte minVal = -7;
+            const sbyte maxVal = 7;
+            const sbyte defVal = _defaultPCLWeightNo;
 
-            SByte value;
+            sbyte value;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText = txtPCLWeightNo.Text;
+            string crntText = txtPCLWeightNo.Text;
 
-            OK = SByte.TryParse(crntText, out value);
+            OK = sbyte.TryParse(crntText, out value);
 
             if (OK)
             {
@@ -3739,7 +3739,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString();
+                    string newText = defVal.ToString();
 
                     MessageBox.Show("Weight number '" + crntText +
                                     "' is invalid.\n\n" +
@@ -3780,20 +3780,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLXLSymSetNo(Boolean lostFocusEvent,
-                                              ref UInt16 symSetNo)
+        private bool validatePCLXLSymSetNo(bool lostFocusEvent,
+                                              ref ushort symSetNo)
         {
-            const UInt16 minVal = 0;
-            const UInt16 maxVal = 65530;
-            const UInt16 defVal = _defaultSymSetNo;
+            const ushort minVal = 0;
+            const ushort maxVal = 65530;
+            const ushort defVal = _defaultSymSetNo;
 
-            UInt16 value;
+            ushort value;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText = txtPCLXLSymSetNo.Text;
+            string crntText = txtPCLXLSymSetNo.Text;
 
-            OK = UInt16.TryParse(crntText, out value);
+            OK = ushort.TryParse(crntText, out value);
 
             if (OK)
             {
@@ -3803,7 +3803,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    Int32 modVal = value % 32;
+                    int modVal = value % 32;
 
                     if ((modVal < 1) || (modVal > 26) || (modVal == 24))
                         OK = false;
@@ -3818,7 +3818,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString();
+                    string newText = defVal.ToString();
 
                     MessageBox.Show
                         ("Symbol Set (kind1) number '" + crntText +

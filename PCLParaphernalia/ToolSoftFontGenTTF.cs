@@ -22,118 +22,118 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const UInt32 cTabID_cmap = 0x636D6170;
-        const UInt32 cTabID_head = 0x68656164;
-        const UInt32 cTabID_hhea = 0x68686561;
-        const UInt32 cTabID_hmtx = 0x686D7478;
-        const UInt32 cTabID_maxp = 0x6D617870;
-        const UInt32 cTabID_name = 0x6E616D65;
-        const UInt32 cTabID_OS_2 = 0x4F532F32;
-        const UInt32 cTabID_post = 0x706F7374;
-        const UInt32 cTabID_cvt = 0x63767420;
-        const UInt32 cTabID_fpgm = 0x6670676D;
-        const UInt32 cTabID_gdir = 0x67646972;
-        const UInt32 cTabID_glyf = 0x676C7966;
-        const UInt32 cTabID_loca = 0x6C6F6361;
-        const UInt32 cTabID_prep = 0x70726570;
-        const UInt32 cTabID_ttcf = 0x74746366;
-        const UInt32 cTabID_CFF = 0x43464620;
-        const UInt32 cTabID_VORG = 0x564F5247;
-        const UInt32 cTabID_EBDT = 0x45424454;
-        const UInt32 cTabID_EBLC = 0x45424C43;
-        const UInt32 cTabID_EBSC = 0x45425343;
-        const UInt32 cTabID_BASE = 0x42415345;
-        const UInt32 cTabID_GDEF = 0x47444546;
-        const UInt32 cTabID_GPOS = 0x47504F53;
-        const UInt32 cTabID_GSUB = 0x47535542;
-        const UInt32 cTabID_JSTF = 0x4A535446;
-        const UInt32 cTabID_DSIG = 0x44534947;
-        const UInt32 cTabID_gasp = 0x67617370;
-        const UInt32 cTabID_hdmx = 0x68646D78;
-        const UInt32 cTabID_kern = 0x6B65726E;
-        const UInt32 cTabID_LTSH = 0x4C545348;
-        const UInt32 cTabID_PCLT = 0x50434C54;
-        const UInt32 cTabID_VDMX = 0x56444D58;
-        const UInt32 cTabID_vhea = 0x76686561;
-        const UInt32 cTabID_vmtx = 0x766D7478;
+        const uint cTabID_cmap = 0x636D6170;
+        const uint cTabID_head = 0x68656164;
+        const uint cTabID_hhea = 0x68686561;
+        const uint cTabID_hmtx = 0x686D7478;
+        const uint cTabID_maxp = 0x6D617870;
+        const uint cTabID_name = 0x6E616D65;
+        const uint cTabID_OS_2 = 0x4F532F32;
+        const uint cTabID_post = 0x706F7374;
+        const uint cTabID_cvt = 0x63767420;
+        const uint cTabID_fpgm = 0x6670676D;
+        const uint cTabID_gdir = 0x67646972;
+        const uint cTabID_glyf = 0x676C7966;
+        const uint cTabID_loca = 0x6C6F6361;
+        const uint cTabID_prep = 0x70726570;
+        const uint cTabID_ttcf = 0x74746366;
+        const uint cTabID_CFF = 0x43464620;
+        const uint cTabID_VORG = 0x564F5247;
+        const uint cTabID_EBDT = 0x45424454;
+        const uint cTabID_EBLC = 0x45424C43;
+        const uint cTabID_EBSC = 0x45425343;
+        const uint cTabID_BASE = 0x42415345;
+        const uint cTabID_GDEF = 0x47444546;
+        const uint cTabID_GPOS = 0x47504F53;
+        const uint cTabID_GSUB = 0x47535542;
+        const uint cTabID_JSTF = 0x4A535446;
+        const uint cTabID_DSIG = 0x44534947;
+        const uint cTabID_gasp = 0x67617370;
+        const uint cTabID_hdmx = 0x68646D78;
+        const uint cTabID_kern = 0x6B65726E;
+        const uint cTabID_LTSH = 0x4C545348;
+        const uint cTabID_PCLT = 0x50434C54;
+        const uint cTabID_VDMX = 0x56444D58;
+        const uint cTabID_vhea = 0x76686561;
+        const uint cTabID_vmtx = 0x766D7478;
 
-        const UInt32 cTabVer_sfnt = 0x00010000;
-        const UInt32 cTabVer_head = 0x00010000;
-        const UInt32 cTabVer_hhea = 0x00010000;
-        const UInt32 cTabVer_maxp = 0x00010000;
-        const UInt32 cTabVer_PCLT = 0x00010000;
-        const UInt32 cTabVer_ttcf_1 = 0x00010000;
-        const UInt32 cTabVer_ttcf_2 = 0x00020000;
-        const UInt32 cTabVer_vhea_1_0 = 0x00010000;
-        const UInt32 cTabVer_vhea_1_1 = 0x00011000;
+        const uint cTabVer_sfnt = 0x00010000;
+        const uint cTabVer_head = 0x00010000;
+        const uint cTabVer_hhea = 0x00010000;
+        const uint cTabVer_maxp = 0x00010000;
+        const uint cTabVer_PCLT = 0x00010000;
+        const uint cTabVer_ttcf_1 = 0x00010000;
+        const uint cTabVer_ttcf_2 = 0x00020000;
+        const uint cTabVer_vhea_1_0 = 0x00010000;
+        const uint cTabVer_vhea_1_1 = 0x00011000;
 
-        const UInt16 cTabVer_OS_2_3 = 0x0003;
-        const UInt16 cTabVer_OS_2_4 = 0x0004;
+        const ushort cTabVer_OS_2_3 = 0x0003;
+        const ushort cTabVer_OS_2_4 = 0x0004;
 
-        const UInt16 mask_OS_2_fsSelection_ITALIC = 0x0001;
-        const UInt16 mask_OS_2_fsSelection_UNDERSCORE = 0x0002;
-        const UInt16 mask_OS_2_fsSelection_NEGATIVE = 0x0004;
-        const UInt16 mask_OS_2_fsSelection_OUTLINED = 0x0008;
-        const UInt16 mask_OS_2_fsSelection_STRIKEOUT = 0x0010;
-        const UInt16 mask_OS_2_fsSelection_BOLD = 0x0020;
-        const UInt16 mask_OS_2_fsSelection_REGULAR = 0x0040;
-        const UInt16 mask_OS_2_fsSelection_USE_TYPO_METRICS = 0x0080;
-        const UInt16 mask_OS_2_fsSelection_WWS = 0x0100;
-        const UInt16 mask_OS_2_fsSelection_OBLIQUE = 0x0200;
-        const UInt16 mask_OS_2_fsSelection_Reserved = 0xFC00;
+        const ushort mask_OS_2_fsSelection_ITALIC = 0x0001;
+        const ushort mask_OS_2_fsSelection_UNDERSCORE = 0x0002;
+        const ushort mask_OS_2_fsSelection_NEGATIVE = 0x0004;
+        const ushort mask_OS_2_fsSelection_OUTLINED = 0x0008;
+        const ushort mask_OS_2_fsSelection_STRIKEOUT = 0x0010;
+        const ushort mask_OS_2_fsSelection_BOLD = 0x0020;
+        const ushort mask_OS_2_fsSelection_REGULAR = 0x0040;
+        const ushort mask_OS_2_fsSelection_USE_TYPO_METRICS = 0x0080;
+        const ushort mask_OS_2_fsSelection_WWS = 0x0100;
+        const ushort mask_OS_2_fsSelection_OBLIQUE = 0x0200;
+        const ushort mask_OS_2_fsSelection_Reserved = 0xFC00;
 
-        const UInt16 mask_OS_2_fsType_INSTALLABLE_EMBED = 0x0000;
-        const UInt16 mask_OS_2_fsType_Reserved_A = 0x0001;
-        const UInt16 mask_OS_2_fsType_RESTRICTED_LICENSE_EMBED = 0x0002;
-        const UInt16 mask_OS_2_fsType_PREVIEW_AND_PRINT_EMBED = 0x0004;
-        const UInt16 mask_OS_2_fsType_EDITABLE_EMBED = 0x0008;
-        const UInt16 mask_OS_2_fsType_Reserved_B = 0x00F0;
-        const UInt16 mask_OS_2_fsType_NO_SUBSETTING = 0x0100;
-        const UInt16 mask_OS_2_fsType_BITMAP_EMBED_ONLY = 0x0200;
-        const UInt16 mask_OS_2_fsType_Reserved_C = 0xFC00;
+        const ushort mask_OS_2_fsType_INSTALLABLE_EMBED = 0x0000;
+        const ushort mask_OS_2_fsType_Reserved_A = 0x0001;
+        const ushort mask_OS_2_fsType_RESTRICTED_LICENSE_EMBED = 0x0002;
+        const ushort mask_OS_2_fsType_PREVIEW_AND_PRINT_EMBED = 0x0004;
+        const ushort mask_OS_2_fsType_EDITABLE_EMBED = 0x0008;
+        const ushort mask_OS_2_fsType_Reserved_B = 0x00F0;
+        const ushort mask_OS_2_fsType_NO_SUBSETTING = 0x0100;
+        const ushort mask_OS_2_fsType_BITMAP_EMBED_ONLY = 0x0200;
+        const ushort mask_OS_2_fsType_Reserved_C = 0xFC00;
 
-        const UInt16 mask_OS_2_usWidthClass_FWIDTH_ULTRA_CONDENSED = 1;
-        const UInt16 mask_OS_2_usWidthClass_FWIDTH_EXTRA_CONDENSED = 2;
-        const UInt16 mask_OS_2_usWidthClass_FWIDTH_CONDENSED = 3;
-        const UInt16 mask_OS_2_usWidthClass_FWIDTH_SEMI_CONDENSED = 4;
-        const UInt16 mask_OS_2_usWidthClass_FWIDTH_NORMAL = 5;
-        const UInt16 mask_OS_2_usWidthClass_FWIDTH_SEMI_EXPANDED = 6;
-        const UInt16 mask_OS_2_usWidthClass_FWIDTH_EXPANDED = 7;
-        const UInt16 mask_OS_2_usWidthClass_FWIDTH_EXTRA_EXPANDED = 8;
-        const UInt16 mask_OS_2_usWidthClass_FWIDTH_ULTRA_EXPANDED = 9;
+        const ushort mask_OS_2_usWidthClass_FWIDTH_ULTRA_CONDENSED = 1;
+        const ushort mask_OS_2_usWidthClass_FWIDTH_EXTRA_CONDENSED = 2;
+        const ushort mask_OS_2_usWidthClass_FWIDTH_CONDENSED = 3;
+        const ushort mask_OS_2_usWidthClass_FWIDTH_SEMI_CONDENSED = 4;
+        const ushort mask_OS_2_usWidthClass_FWIDTH_NORMAL = 5;
+        const ushort mask_OS_2_usWidthClass_FWIDTH_SEMI_EXPANDED = 6;
+        const ushort mask_OS_2_usWidthClass_FWIDTH_EXPANDED = 7;
+        const ushort mask_OS_2_usWidthClass_FWIDTH_EXTRA_EXPANDED = 8;
+        const ushort mask_OS_2_usWidthClass_FWIDTH_ULTRA_EXPANDED = 9;
 
-        const UInt16 mask_OS_2_usWeightClass_FW_THIN = 100;
-        const UInt16 mask_OS_2_usWeightClass_FW_EXTRALIGHT = 200;
-        const UInt16 mask_OS_2_usWeightClass_FW_LIGHT = 300;
-        const UInt16 mask_OS_2_usWeightClass_FW_NORMAL = 400;
-        const UInt16 mask_OS_2_usWeightClass_FW_MEDIUM = 500;
-        const UInt16 mask_OS_2_usWeightClass_FW_SEMIBOLD = 600;
-        const UInt16 mask_OS_2_usWeightClass_FW_BOLD = 700;
-        const UInt16 mask_OS_2_usWeightClass_FW_EXTRABOLD = 800;
-        const UInt16 mask_OS_2_usWeightClass_FW_BLACK = 900;
+        const ushort mask_OS_2_usWeightClass_FW_THIN = 100;
+        const ushort mask_OS_2_usWeightClass_FW_EXTRALIGHT = 200;
+        const ushort mask_OS_2_usWeightClass_FW_LIGHT = 300;
+        const ushort mask_OS_2_usWeightClass_FW_NORMAL = 400;
+        const ushort mask_OS_2_usWeightClass_FW_MEDIUM = 500;
+        const ushort mask_OS_2_usWeightClass_FW_SEMIBOLD = 600;
+        const ushort mask_OS_2_usWeightClass_FW_BOLD = 700;
+        const ushort mask_OS_2_usWeightClass_FW_EXTRABOLD = 800;
+        const ushort mask_OS_2_usWeightClass_FW_BLACK = 900;
 
-        const Byte cSpaceCodePoint = 0x20;
+        const byte cSpaceCodePoint = 0x20;
 
-        const Byte cPanoseFamilyAny = 0;
-        const Byte cPanoseFamilyNoFit = 1;
-        const Byte cPanoseFamilyLatinText = 2;
-        const Byte cPanoseFamilyLatinHandwritten = 3;
-        const Byte cPanoseFamilyLatinDecorative = 4;
-        const Byte cPanoseFamilyLatinSymbol = 5;
+        const byte cPanoseFamilyAny = 0;
+        const byte cPanoseFamilyNoFit = 1;
+        const byte cPanoseFamilyLatinText = 2;
+        const byte cPanoseFamilyLatinHandwritten = 3;
+        const byte cPanoseFamilyLatinDecorative = 4;
+        const byte cPanoseFamilyLatinSymbol = 5;
 
-        const Byte cPanoseMonoLatinText = 9;
-        const Byte cPanoseMonoLatinHandwritten = 3;
-        const Byte cPanoseMonoLatinDecorative = 9;
-        const Byte cPanoseMonoLatinSymbol = 3;
+        const byte cPanoseMonoLatinText = 9;
+        const byte cPanoseMonoLatinHandwritten = 3;
+        const byte cPanoseMonoLatinDecorative = 9;
+        const byte cPanoseMonoLatinSymbol = 3;
 
-        public const Int32 cSizePanose = 10;
-        public const Int32 cSizeFontname = 16;
+        public const int cSizePanose = 10;
+        public const int cSizeFontname = 16;
 
-        public const UInt16 mask_glyf_compFlag_ARG_1_AND_2_ARE_WORDS = 0x0001;
-        public const UInt16 mask_glyf_compFlag_WE_HAVE_A_SCALE = 0x0008;
-        public const UInt16 mask_glyf_compFlag_MORE_COMPONENTS = 0x0020;
-        public const UInt16 mask_glyf_compFlag_WE_HAVE_AN_X_AND_Y_SCALE = 0x0040;
-        public const UInt16 mask_glyf_compFlag_WE_HAVE_A_TWO_BY_TWO = 0x0080;
+        public const ushort mask_glyf_compFlag_ARG_1_AND_2_ARE_WORDS = 0x0001;
+        public const ushort mask_glyf_compFlag_WE_HAVE_A_SCALE = 0x0008;
+        public const ushort mask_glyf_compFlag_MORE_COMPONENTS = 0x0020;
+        public const ushort mask_glyf_compFlag_WE_HAVE_AN_X_AND_Y_SCALE = 0x0040;
+        public const ushort mask_glyf_compFlag_WE_HAVE_A_TWO_BY_TWO = 0x0080;
 
         public enum eLicenceType
         {
@@ -148,76 +148,76 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 _sizeCharSet;
+        public int _sizeCharSet;
 
-        private Boolean _logVerbose = true;
+        private bool _logVerbose = true;
 
         private Stream _ipStream = null;
         private BinaryReader _binReader = null;
 
-        private UInt16[] _mappingTable;
+        private ushort[] _mappingTable;
 
         private DataTable _tableDonor;
         private DataTable _tableMapping;
 
-        private Int64 _fontFileSize = 0;
+        private long _fontFileSize = 0;
 
-        private UInt16 _cmap_numChars = 0;
-        private UInt16 _cmap_missChars = 0;
-        private UInt16 _cmap_firstCode = 0;
-        private UInt16 _cmap_lastCode = 0;
+        private ushort _cmap_numChars = 0;
+        private ushort _cmap_missChars = 0;
+        private ushort _cmap_firstCode = 0;
+        private ushort _cmap_lastCode = 0;
 
-        private UInt16 _head_unitsPerEm = 0;
-        private Int16 _head_xMin = 0;
-        private Int16 _head_xMax = 0;
-        private Int16 _head_yMin = 0;
-        private Int16 _head_yMax = 0;
-        private Int16 _head_indxLocFmt = 0;
+        private ushort _head_unitsPerEm = 0;
+        private short _head_xMin = 0;
+        private short _head_xMax = 0;
+        private short _head_yMin = 0;
+        private short _head_yMax = 0;
+        private short _head_indxLocFmt = 0;
 
-        private UInt16 _hhea_numHMetrics = 0;
-        private Int16 _hhea_ascender = 0;
-        private Int16 _hhea_descender = 0;
-        private Int16 _hhea_lineGap = 0;
+        private ushort _hhea_numHMetrics = 0;
+        private short _hhea_ascender = 0;
+        private short _hhea_descender = 0;
+        private short _hhea_lineGap = 0;
 
-        private UInt16 _vhea_numVMetrics = 0;
+        private ushort _vhea_numVMetrics = 0;
 
-        private UInt16 _maxp_numGlyphs = 0;
-        private UInt16 _maxp_maxCompDepth = 0;
+        private ushort _maxp_numGlyphs = 0;
+        private ushort _maxp_maxCompDepth = 0;
 
-        private Int16 _OS_2_xAvgCharWidth = 0;
-        private Int16 _OS_2_sxHeight = 0;
-        private Int16 _OS_2_sTypoDescender = 0;
+        private short _OS_2_xAvgCharWidth = 0;
+        private short _OS_2_sxHeight = 0;
+        private short _OS_2_sTypoDescender = 0;
 
-        private UInt16 _OS_2_usWidthClass = 0;
-        private UInt16 _OS_2_usWeightClass = 0;
-        private UInt16 _OS_2_fsType = 0;
-        private UInt16 _OS_2_fsSelection = 0;
+        private ushort _OS_2_usWidthClass = 0;
+        private ushort _OS_2_usWeightClass = 0;
+        private ushort _OS_2_fsType = 0;
+        private ushort _OS_2_fsSelection = 0;
 
-        private UInt16 _PCLT_symSet;
-        private UInt16 _PCLT_typeFamily;
-        private UInt16 _PCLT_style;
-        private UInt16 _PCLT_pitch;
-        private UInt16 _PCLT_xHeight;
-        private UInt16 _PCLT_capHeight;
-        private UInt32 _PCLT_fontNo;
-        private UInt64 _PCLT_charComp;
+        private ushort _PCLT_symSet;
+        private ushort _PCLT_typeFamily;
+        private ushort _PCLT_style;
+        private ushort _PCLT_pitch;
+        private ushort _PCLT_xHeight;
+        private ushort _PCLT_capHeight;
+        private uint _PCLT_fontNo;
+        private ulong _PCLT_charComp;
 
-        private Byte _PCLT_serifStyle;
-        private SByte _PCLT_widthType;
-        private SByte _PCLT_strokeWeight;
+        private byte _PCLT_serifStyle;
+        private sbyte _PCLT_widthType;
+        private sbyte _PCLT_strokeWeight;
 
-        private UInt32 _post_isFixedPitch = 0;
+        private uint _post_isFixedPitch = 0;
 
-        private String _name_fullFontnameStr = "";
+        private string _name_fullFontnameStr = "";
 
-        private Byte[] _name_fullFontname = new Byte[cSizeFontname];
-        private Byte[] _PCLT_typeface = new Byte[cSizeFontname];
+        private byte[] _name_fullFontname = new byte[cSizeFontname];
+        private byte[] _PCLT_typeface = new byte[cSizeFontname];
 
-        private Byte[] _OS_2_panose = new Byte[cSizePanose];
+        private byte[] _OS_2_panose = new byte[cSizePanose];
 
-        private Boolean _glyphZeroExists = false;
-        private Boolean _tabPCLTPresent = false;
-        private Boolean _tabvmtxPresent = false;
+        private bool _glyphZeroExists = false;
+        private bool _tabPCLTPresent = false;
+        private bool _tabvmtxPresent = false;
 
         private ToolSoftFontGenTTFTable _tab_OS_2;
         private ToolSoftFontGenTTFTable _tab_PCLT;
@@ -241,7 +241,7 @@ namespace PCLParaphernalia
         private GlyphDataEntry[] _glyphData;
         private CharCodeEntry[] _charData;
 
-        private String _filenameTTF;
+        private string _filenameTTF;
 
         //--------------------------------------------------------------------//
         //                                                  S t r u c t u r e //
@@ -251,15 +251,15 @@ namespace PCLParaphernalia
 
         private struct CharCodeEntry
         {
-            UInt16 _codepoint;     // Unicode codepoint
-            UInt16 _glyphId;
-            Boolean _glyphPresent;
+            ushort _codepoint;     // Unicode codepoint
+            ushort _glyphId;
+            bool _glyphPresent;
 
             //----------------------------------------------------------------//
 
-            public CharCodeEntry(UInt16 codepoint,
-                                 UInt16 glyphId,
-                                 Boolean glyphPresent)
+            public CharCodeEntry(ushort codepoint,
+                                 ushort glyphId,
+                                 bool glyphPresent)
             {
                 _codepoint = codepoint;
                 _glyphId = glyphId;
@@ -268,7 +268,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public Boolean getGlyphId(ref UInt16 glyphId)
+            public bool getGlyphId(ref ushort glyphId)
             {
                 glyphId = _glyphId;
 
@@ -277,9 +277,9 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void getValues(ref UInt16 codepoint,
-                                  ref UInt16 glyphId,
-                                  ref Boolean glyphPresent)
+            public void getValues(ref ushort codepoint,
+                                  ref ushort glyphId,
+                                  ref bool glyphPresent)
             {
                 codepoint = _codepoint;
                 glyphId = _glyphId;
@@ -288,7 +288,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public Boolean glyphPresent()
+            public bool glyphPresent()
             {
                 if (_glyphPresent)
                     return true;
@@ -298,9 +298,9 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void setValues(UInt16 codepoint,
-                                  UInt16 glyphId,
-                                  Boolean glyphPresent)
+            public void setValues(ushort codepoint,
+                                  ushort glyphId,
+                                  bool glyphPresent)
             {
                 _codepoint = codepoint;
                 _glyphId = glyphId;
@@ -316,27 +316,27 @@ namespace PCLParaphernalia
 
         private struct GlyphDataEntry
         {
-            UInt16 _advanceWidth,
+            ushort _advanceWidth,
                    _advanceHeight;
 
-            Int16 _leftSideBearing,
+            short _leftSideBearing,
                    _topSideBearing;
 
-            UInt32 _offset,
+            uint _offset,
                    _length;
 
-            Boolean _composite,
+            bool _composite,
                     _referenced;
 
             //----------------------------------------------------------------//
 
-            public GlyphDataEntry(UInt16 advanceWidth,
-                                   UInt16 advanceHeight,
-                                   Int16 leftSideBearing,
-                                   Int16 topSideBearing,
-                                   UInt32 offset,
-                                   UInt32 length,
-                                   Boolean composite)
+            public GlyphDataEntry(ushort advanceWidth,
+                                   ushort advanceHeight,
+                                   short leftSideBearing,
+                                   short topSideBearing,
+                                   uint offset,
+                                   uint length,
+                                   bool composite)
             {
                 _advanceWidth = advanceWidth;
                 _advanceHeight = advanceHeight;
@@ -350,36 +350,36 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public Boolean checkComposite()
+            public bool checkComposite()
             {
                 return _composite;
             }
 
             //----------------------------------------------------------------//
 
-            public Boolean checkReferenced()
+            public bool checkReferenced()
             {
                 return _referenced;
             }
 
             //----------------------------------------------------------------//
 
-            public void getAdvance(ref UInt16 advance)
+            public void getAdvance(ref ushort advance)
             {
                 advance = _advanceWidth;
             }
 
             //----------------------------------------------------------------//
 
-            public void getFlags(ref Boolean composite)
+            public void getFlags(ref bool composite)
             {
                 composite = _composite;
             }
 
             //----------------------------------------------------------------//
 
-            public void getLocation(ref UInt32 offset,
-                                     ref UInt32 length)
+            public void getLocation(ref uint offset,
+                                     ref uint length)
             {
                 offset = _offset;
                 length = _length;
@@ -387,8 +387,8 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void getMetricsH(ref UInt16 advanceWidth,
-                                     ref Int16 leftSideBearing)
+            public void getMetricsH(ref ushort advanceWidth,
+                                     ref short leftSideBearing)
             {
                 advanceWidth = _advanceWidth;
                 leftSideBearing = _leftSideBearing;
@@ -396,8 +396,8 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void getMetricsV(ref UInt16 advanceHeight,
-                                     ref Int16 topSideBearing)
+            public void getMetricsV(ref ushort advanceHeight,
+                                     ref short topSideBearing)
             {
                 advanceHeight = _advanceHeight;
                 topSideBearing = _topSideBearing;
@@ -412,15 +412,15 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void setFlags(Boolean composite)
+            public void setFlags(bool composite)
             {
                 _composite = composite;
             }
 
             //----------------------------------------------------------------//
 
-            public void setLocation(UInt32 offset,
-                                     UInt32 length)
+            public void setLocation(uint offset,
+                                     uint length)
             {
                 _offset = offset;
                 _length = length;
@@ -428,8 +428,8 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void setMetricsH(UInt16 advanceWidth,
-                                     Int16 leftSideBearing)
+            public void setMetricsH(ushort advanceWidth,
+                                     short leftSideBearing)
             {
                 _advanceWidth = advanceWidth;
                 _leftSideBearing = leftSideBearing;
@@ -437,8 +437,8 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void setMetricsV(UInt16 advanceHeight,
-                                     Int16 topSideBearing)
+            public void setMetricsV(ushort advanceHeight,
+                                     short topSideBearing)
             {
                 _advanceHeight = advanceHeight;
                 _topSideBearing = topSideBearing;
@@ -460,8 +460,8 @@ namespace PCLParaphernalia
 
         public ToolSoftFontGenTTF(DataTable tableDonor,
                                   DataTable tableMapping,
-                                  Boolean logVerbose,
-                                  Int32 sizeCharSet)
+                                  bool logVerbose,
+                                  int sizeCharSet)
         {
             _tableDonor = tableDonor;
             _tableMapping = tableMapping;
@@ -490,7 +490,7 @@ namespace PCLParaphernalia
 
             _charData = new CharCodeEntry[sizeCharSet];
 
-            for (Int32 i = 0; i < sizeCharSet; i++)
+            for (int i = 0; i < sizeCharSet; i++)
             {
                 _charData[i].setValues(0, 0, false);
             }
@@ -507,22 +507,22 @@ namespace PCLParaphernalia
         //               [ BitConverter.IsLittleEndian ]                      //
         //--------------------------------------------------------------------//
 
-        private Int16 byteArrayToInt16(Byte[] Buf)
+        private short byteArrayToInt16(byte[] Buf)
         {
-            const Int32 sliceSize = 2;
+            const int sliceSize = 2;
 
-            UInt32 uiSub,
+            uint uiSub,
                    uiTot;
 
             uiTot = 0;
 
             for (int j = 0; j < sliceSize; j++)
             {
-                uiSub = (Byte)Buf[j];
+                uiSub = (byte)Buf[j];
                 uiTot = (uiTot << 8) | uiSub;
             }
 
-            return (Int16)uiTot;
+            return (short)uiTot;
         }
 
         //--------------------------------------------------------------------//
@@ -536,22 +536,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private UInt16 byteArrayToUInt16(Byte[] Buf)
+        private ushort byteArrayToUInt16(byte[] Buf)
         {
-            const Int32 sliceSize = 2;
+            const int sliceSize = 2;
 
-            UInt32 uiSub,
+            uint uiSub,
                    uiTot;
 
             uiTot = 0;
 
             for (int j = 0; j < sliceSize; j++)
             {
-                uiSub = (Byte)Buf[j];
+                uiSub = (byte)Buf[j];
                 uiTot = (uiTot << 8) | uiSub;
             }
 
-            return (UInt16)uiTot;
+            return (ushort)uiTot;
         }
 
         //--------------------------------------------------------------------//
@@ -565,18 +565,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private UInt32 byteArrayToUInt32(Byte[] Buf)
+        private uint byteArrayToUInt32(byte[] Buf)
         {
-            const Int32 sliceSize = 4;
+            const int sliceSize = 4;
 
-            UInt32 uiSub,
+            uint uiSub,
                    uiTot;
 
             uiTot = 0;
 
             for (int j = 0; j < sliceSize; j++)
             {
-                uiSub = (Byte)Buf[j];
+                uiSub = (byte)Buf[j];
                 uiTot = (uiTot << 8) | uiSub;
             }
 
@@ -594,18 +594,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private UInt64 byteArrayToUInt64(Byte[] Buf)
+        private ulong byteArrayToUInt64(byte[] Buf)
         {
-            const Int32 sliceSize = 8;
+            const int sliceSize = 8;
 
-            UInt64 uiSub,
+            ulong uiSub,
                    uiTot;
 
             uiTot = 0;
 
             for (int j = 0; j < sliceSize; j++)
             {
-                uiSub = (Byte)Buf[j];
+                uiSub = (byte)Buf[j];
                 uiTot = (uiTot << 8) | uiSub;
             }
 
@@ -622,7 +622,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean charReferencedCheck(UInt16 charCode)
+        public bool charReferencedCheck(ushort charCode)
         {
             return _charData[charCode].glyphPresent();
         }
@@ -637,14 +637,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean checkForTTC(String fileName,
-                                    ref Boolean typeTTC,
-                                    ref UInt32 numFonts)
+        public bool checkForTTC(string fileName,
+                                    ref bool typeTTC,
+                                    ref uint numFonts)
         {
-            String tabName = "ttcf";
+            string tabName = "ttcf";
 
-            Boolean flagOK = false;
-            Boolean fileOpen;
+            bool flagOK = false;
+            bool fileOpen;
 
             _fontFileSize = 0;
 
@@ -670,7 +670,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                UInt32 tabId = 0,
+                uint tabId = 0,
                        tabVersion = 0;
 
                 typeTTC = false;
@@ -736,7 +736,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public eLicenceType checkLicence(ref String licenceText)
+        public eLicenceType checkLicence(ref string licenceText)
         {
             eLicenceType licenceType = eLicenceType.NotAllowed;
 
@@ -816,10 +816,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean fontFileOpen(String filename,
-                                    ref Int64 fileSize)
+        public bool fontFileOpen(string filename,
+                                    ref long fileSize)
         {
-            Boolean open = false;
+            bool open = false;
 
             _filenameTTF = filename;
 
@@ -879,9 +879,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean fontFileReOpen()
+        public bool fontFileReOpen()
         {
-            Boolean flagOK = true;
+            bool flagOK = true;
 
             flagOK = fontFileOpen(_filenameTTF, ref _fontFileSize);
 
@@ -897,9 +897,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean fontFileSeek(Int32 offset)
+        private bool fontFileSeek(int offset)
         {
-            Boolean flagOK = true;
+            bool flagOK = true;
 
             try
             {
@@ -922,7 +922,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String FontFullname
+        public string FontFullname
         {
             get
             {
@@ -939,18 +939,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getBasicMetrics(ref UInt16 numChars,
-                                    ref UInt16 firstCode,
-                                    ref UInt16 lastCode,
-                                    ref UInt16 maxGlyphId,
-                                    ref UInt16 maxComponentDepth,
-                                    ref UInt16 unitsPerEm,
-                                    ref Boolean glyphZeroExists)
+        public void getBasicMetrics(ref ushort numChars,
+                                    ref ushort firstCode,
+                                    ref ushort lastCode,
+                                    ref ushort maxGlyphId,
+                                    ref ushort maxComponentDepth,
+                                    ref ushort unitsPerEm,
+                                    ref bool glyphZeroExists)
         {
             numChars = _cmap_numChars;
             firstCode = _cmap_firstCode;
             lastCode = _cmap_lastCode;
-            maxGlyphId = (UInt16)(_maxp_numGlyphs - 1);
+            maxGlyphId = (ushort)(_maxp_numGlyphs - 1);
             maxComponentDepth = _maxp_maxCompDepth;
             unitsPerEm = _head_unitsPerEm;
             glyphZeroExists = _glyphZeroExists;
@@ -969,11 +969,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean getCharData(UInt16 charCode,
-                                    ref UInt16 codepoint,
-                                    ref UInt16 glyphId)
+        public bool getCharData(ushort charCode,
+                                    ref ushort codepoint,
+                                    ref ushort glyphId)
         {
-            Boolean glyphPresent = false;
+            bool glyphPresent = false;
 
             _charData[charCode].getValues(ref codepoint,
                                            ref glyphId,
@@ -991,14 +991,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getGlyphData(UInt16 identifier,
-                                 ref UInt16 width,
-                                 ref UInt16 height,
-                                 ref Int16 leftSideBearing,
-                                 ref Int16 topSideBearing,
-                                 ref UInt32 offset,
-                                 ref UInt32 length,
-                                 ref Boolean composite)
+        public void getGlyphData(ushort identifier,
+                                 ref ushort width,
+                                 ref ushort height,
+                                 ref short leftSideBearing,
+                                 ref short topSideBearing,
+                                 ref uint offset,
+                                 ref uint length,
+                                 ref bool composite)
         {
             _glyphData[identifier].getMetricsH(ref width,
                                                 ref leftSideBearing);
@@ -1020,7 +1020,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int16 getOS2sTypoDescender()
+        public short getOS2sTypoDescender()
         {
             return _OS_2_sTypoDescender;
         }
@@ -1035,11 +1035,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int16 getOutputNumTables(Boolean pdlIsPCLXL,
-                                         Boolean symSetUnbound,
-                                         Boolean flagVMetrics)
+        public short getOutputNumTables(bool pdlIsPCLXL,
+                                         bool symSetUnbound,
+                                         bool flagVMetrics)
         {
-            Int32 numTables;
+            int numTables;
 
             if (pdlIsPCLXL)
             {
@@ -1084,7 +1084,7 @@ namespace PCLParaphernalia
             if (_tab_prep.TableLength != 0)
                 numTables++;
 
-            return (Int16)numTables;
+            return (short)numTables;
         }
 
         //--------------------------------------------------------------------//
@@ -1097,34 +1097,34 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getPCLFontHeaderData(Boolean usePCLT,
-                                          ref Boolean monoSpaced,
-                                          ref UInt16 cellWidth,
-                                          ref UInt16 cellHeight,
-                                          ref UInt16 textWidth,
-                                          ref UInt16 textHeight,
-                                          ref UInt16 pitch,
-                                          ref UInt16 xHeight,
-                                          ref UInt16 capHeight,
-                                          ref Int16 mUlinePos,
-                                          ref UInt16 mUlineDep,
-                                          ref UInt32 fontNo,
-                                          ref Byte serifStyle,
-                                          ref SByte widthType,
-                                          ref Byte[] fontName,
-                                          ref Byte[] panoseData)
+        public void getPCLFontHeaderData(bool usePCLT,
+                                          ref bool monoSpaced,
+                                          ref ushort cellWidth,
+                                          ref ushort cellHeight,
+                                          ref ushort textWidth,
+                                          ref ushort textHeight,
+                                          ref ushort pitch,
+                                          ref ushort xHeight,
+                                          ref ushort capHeight,
+                                          ref short mUlinePos,
+                                          ref ushort mUlineDep,
+                                          ref uint fontNo,
+                                          ref byte serifStyle,
+                                          ref sbyte widthType,
+                                          ref byte[] fontName,
+                                          ref byte[] panoseData)
         {
-            SByte defPCLWidthType = 0;
+            sbyte defPCLWidthType = 0;
 
-            Byte panoseFamily,
+            byte panoseFamily,
                  panoseProportion;
 
-            UInt16 defPCLPitch = 0,
+            ushort defPCLPitch = 0,
                    advWidthThis = 0,
                    advWidthCommon = 0,
                    glyphId = 0;
 
-            Boolean monoSpaced_panose,
+            bool monoSpaced_panose,
                     monoSpaced_post,
                     monoSpaced_glyphs,
                     glyphWidthSet,
@@ -1145,8 +1145,8 @@ namespace PCLParaphernalia
             defPCLWidthType = 0;
             defPCLPitch = 0;
 
-            textWidth = (UInt16)_OS_2_xAvgCharWidth;
-            xHeight = (UInt16)_OS_2_sxHeight;
+            textWidth = (ushort)_OS_2_xAvgCharWidth;
+            xHeight = (ushort)_OS_2_sxHeight;
 
             glyphPresent = _charData[cSpaceCodePoint].getGlyphId(ref glyphId);
 
@@ -1156,11 +1156,11 @@ namespace PCLParaphernalia
                 if (advWidthThis > 0)
                     defPCLPitch = advWidthThis;
                 else
-                    defPCLPitch = (UInt16)_OS_2_xAvgCharWidth;
+                    defPCLPitch = (ushort)_OS_2_xAvgCharWidth;
             }
             else
             {
-                defPCLPitch = (UInt16)_OS_2_xAvgCharWidth;
+                defPCLPitch = (ushort)_OS_2_xAvgCharWidth;
             }
 
             //------------------------------------------------------------//
@@ -1168,43 +1168,43 @@ namespace PCLParaphernalia
             switch (_OS_2_usWidthClass)
             {
                 case mask_OS_2_usWidthClass_FWIDTH_ULTRA_CONDENSED:
-                    defPCLWidthType = (SByte)PCLFonts.eWidthType.UltraCompressed;
+                    defPCLWidthType = (sbyte)PCLFonts.eWidthType.UltraCompressed;
                     break;
 
                 case mask_OS_2_usWidthClass_FWIDTH_EXTRA_CONDENSED:
-                    defPCLWidthType = (SByte)PCLFonts.eWidthType.ExtraCompressed;
+                    defPCLWidthType = (sbyte)PCLFonts.eWidthType.ExtraCompressed;
                     break;
 
                 case mask_OS_2_usWidthClass_FWIDTH_CONDENSED:
-                    defPCLWidthType = (SByte)PCLFonts.eWidthType.Compressed;
+                    defPCLWidthType = (sbyte)PCLFonts.eWidthType.Compressed;
                     break;
 
                 case mask_OS_2_usWidthClass_FWIDTH_SEMI_CONDENSED:
-                    defPCLWidthType = (SByte)PCLFonts.eWidthType.Condensed;
+                    defPCLWidthType = (sbyte)PCLFonts.eWidthType.Condensed;
                     break;
 
                 case mask_OS_2_usWidthClass_FWIDTH_NORMAL:
-                    defPCLWidthType = (SByte)PCLFonts.eWidthType.Normal;
+                    defPCLWidthType = (sbyte)PCLFonts.eWidthType.Normal;
                     break;
 
                 case mask_OS_2_usWidthClass_FWIDTH_SEMI_EXPANDED:
-                    defPCLWidthType = (SByte)PCLFonts.eWidthType.Expanded;
+                    defPCLWidthType = (sbyte)PCLFonts.eWidthType.Expanded;
                     break;
 
                 case mask_OS_2_usWidthClass_FWIDTH_EXPANDED:
-                    defPCLWidthType = (SByte)PCLFonts.eWidthType.Expanded;
+                    defPCLWidthType = (sbyte)PCLFonts.eWidthType.Expanded;
                     break;
 
                 case mask_OS_2_usWidthClass_FWIDTH_EXTRA_EXPANDED:
-                    defPCLWidthType = (SByte)PCLFonts.eWidthType.ExtraExpanded;
+                    defPCLWidthType = (sbyte)PCLFonts.eWidthType.ExtraExpanded;
                     break;
 
                 case mask_OS_2_usWidthClass_FWIDTH_ULTRA_EXPANDED:
-                    defPCLWidthType = (SByte)PCLFonts.eWidthType.ExtraExpanded;
+                    defPCLWidthType = (sbyte)PCLFonts.eWidthType.ExtraExpanded;
                     break;
 
                 default:
-                    defPCLWidthType = (SByte)PCLFonts.eWidthType.Normal;
+                    defPCLWidthType = (sbyte)PCLFonts.eWidthType.Normal;
                     break;
             }
 
@@ -1288,11 +1288,11 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            cellWidth = (UInt16)(_head_xMax - _head_xMin);
-            cellHeight = (UInt16)(_head_yMax - _head_yMin);
+            cellWidth = (ushort)(_head_xMax - _head_xMin);
+            cellHeight = (ushort)(_head_yMax - _head_yMin);
 
-            mUlinePos = (Int16)(-(_head_unitsPerEm * 20) / 100);
-            mUlineDep = (UInt16)((_head_unitsPerEm * 5) / 100);
+            mUlinePos = (short)(-(_head_unitsPerEm * 20) / 100);
+            mUlineDep = (ushort)((_head_unitsPerEm * 5) / 100);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1302,7 +1302,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            textHeight = (UInt16)(_hhea_ascender - _hhea_descender +
+            textHeight = (ushort)(_hhea_ascender - _hhea_descender +
                                    _hhea_lineGap);
 
             //----------------------------------------------------------------//
@@ -1322,7 +1322,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i < cSizePanose; i++)
+            for (int i = 0; i < cSizePanose; i++)
             {
                 panoseData[i] = _OS_2_panose[i];
             }
@@ -1373,7 +1373,7 @@ namespace PCLParaphernalia
 
             monoSpaced_glyphs = true;
 
-            for (Int32 i = _cmap_firstCode; i <= _cmap_lastCode; i++)
+            for (int i = _cmap_firstCode; i <= _cmap_lastCode; i++)
             {
                 glyphPresent = _charData[i].getGlyphId(ref glyphId);
 
@@ -1411,7 +1411,7 @@ namespace PCLParaphernalia
             {
                 MessageBoxResult mbResult;
 
-                String text_OS_2_panose,
+                string text_OS_2_panose,
                        text_OS_2_avgWidth,
                        text_post,
                        text_glyph,
@@ -1511,19 +1511,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getPCLFontSelectData(ref UInt16 styleNonPCLT,
-                                          ref SByte strokeWeightNonPCLT,
-                                          ref UInt16 symSetPCLT,
-                                          ref UInt16 stylePCLT,
-                                          ref SByte strokeWeightPCLT,
-                                          ref UInt16 typefaceNoPCLT,
-                                          ref String typefacePCLT,
-                                          ref UInt64 charCompPCLT)
+        public void getPCLFontSelectData(ref ushort styleNonPCLT,
+                                          ref sbyte strokeWeightNonPCLT,
+                                          ref ushort symSetPCLT,
+                                          ref ushort stylePCLT,
+                                          ref sbyte strokeWeightPCLT,
+                                          ref ushort typefaceNoPCLT,
+                                          ref string typefacePCLT,
+                                          ref ulong charCompPCLT)
         {
-            Byte stylePosture = 0,
+            byte stylePosture = 0,
                  styleWidth = 0;
 
-            UInt16 styleStructure;
+            ushort styleStructure;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1557,18 +1557,18 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if ((_OS_2_fsSelection & mask_OS_2_fsSelection_REGULAR) != 0)
-                stylePosture = (Byte)PCLFonts.eStylePosture.Upright;
+                stylePosture = (byte)PCLFonts.eStylePosture.Upright;
             else if ((_OS_2_fsSelection & mask_OS_2_fsSelection_ITALIC) != 0)
-                stylePosture = (Byte)PCLFonts.eStylePosture.Italic;
+                stylePosture = (byte)PCLFonts.eStylePosture.Italic;
             else if ((_OS_2_fsSelection & mask_OS_2_fsSelection_OBLIQUE) != 0)
-                stylePosture = (Byte)PCLFonts.eStylePosture.ItalicAlt;
+                stylePosture = (byte)PCLFonts.eStylePosture.ItalicAlt;
             else
-                stylePosture = (Byte)PCLFonts.eStylePosture.Upright;
+                stylePosture = (byte)PCLFonts.eStylePosture.Upright;
 
             if ((_OS_2_fsSelection & mask_OS_2_fsSelection_OUTLINED) != 0)
-                styleStructure = (UInt16)PCLFonts.eStyleStructure.Outline;
+                styleStructure = (ushort)PCLFonts.eStyleStructure.Outline;
             else
-                styleStructure = (UInt16)PCLFonts.eStyleStructure.Solid;
+                styleStructure = (ushort)PCLFonts.eStyleStructure.Solid;
 
             //------------------------------------------------------------//
             //                                                            //
@@ -1580,43 +1580,43 @@ namespace PCLParaphernalia
             switch (_OS_2_usWidthClass)
             {
                 case mask_OS_2_usWidthClass_FWIDTH_ULTRA_CONDENSED:
-                    styleWidth = (Byte)PCLFonts.eStyleWidth.UltraCompressed;
+                    styleWidth = (byte)PCLFonts.eStyleWidth.UltraCompressed;
                     break;
 
                 case mask_OS_2_usWidthClass_FWIDTH_EXTRA_CONDENSED:
-                    styleWidth = (Byte)PCLFonts.eStyleWidth.ExtraCompressed;
+                    styleWidth = (byte)PCLFonts.eStyleWidth.ExtraCompressed;
                     break;
 
                 case mask_OS_2_usWidthClass_FWIDTH_CONDENSED:
-                    styleWidth = (Byte)PCLFonts.eStyleWidth.Compressed;
+                    styleWidth = (byte)PCLFonts.eStyleWidth.Compressed;
                     break;
 
                 case mask_OS_2_usWidthClass_FWIDTH_SEMI_CONDENSED:
-                    styleWidth = (Byte)PCLFonts.eStyleWidth.Condensed;
+                    styleWidth = (byte)PCLFonts.eStyleWidth.Condensed;
                     break;
 
                 case mask_OS_2_usWidthClass_FWIDTH_NORMAL:
-                    styleWidth = (Byte)PCLFonts.eStyleWidth.Normal;
+                    styleWidth = (byte)PCLFonts.eStyleWidth.Normal;
                     break;
 
                 case mask_OS_2_usWidthClass_FWIDTH_SEMI_EXPANDED:
-                    styleWidth = (Byte)PCLFonts.eStyleWidth.Expanded;
+                    styleWidth = (byte)PCLFonts.eStyleWidth.Expanded;
                     break;
 
                 case mask_OS_2_usWidthClass_FWIDTH_EXPANDED:
-                    styleWidth = (Byte)PCLFonts.eStyleWidth.Expanded;
+                    styleWidth = (byte)PCLFonts.eStyleWidth.Expanded;
                     break;
 
                 case mask_OS_2_usWidthClass_FWIDTH_EXTRA_EXPANDED:
-                    styleWidth = (Byte)PCLFonts.eStyleWidth.ExtraExpanded;
+                    styleWidth = (byte)PCLFonts.eStyleWidth.ExtraExpanded;
                     break;
 
                 case mask_OS_2_usWidthClass_FWIDTH_ULTRA_EXPANDED:
-                    styleWidth = (Byte)PCLFonts.eStyleWidth.ExtraExpanded;
+                    styleWidth = (byte)PCLFonts.eStyleWidth.ExtraExpanded;
                     break;
 
                 default:
-                    styleWidth = (Byte)PCLFonts.eStyleWidth.Normal;
+                    styleWidth = (byte)PCLFonts.eStyleWidth.Normal;
                     break;
             }
 
@@ -1634,49 +1634,49 @@ namespace PCLParaphernalia
             switch (_OS_2_usWeightClass)
             {
                 case mask_OS_2_usWeightClass_FW_THIN:
-                    strokeWeightNonPCLT = (SByte)PCLFonts.eStrokeWeight.Thin;
+                    strokeWeightNonPCLT = (sbyte)PCLFonts.eStrokeWeight.Thin;
                     break;
 
                 case mask_OS_2_usWeightClass_FW_EXTRALIGHT:
-                    strokeWeightNonPCLT = (SByte)PCLFonts.eStrokeWeight.ExtraLight;
+                    strokeWeightNonPCLT = (sbyte)PCLFonts.eStrokeWeight.ExtraLight;
                     break;
 
                 case mask_OS_2_usWeightClass_FW_LIGHT:
-                    strokeWeightNonPCLT = (SByte)PCLFonts.eStrokeWeight.Light;
+                    strokeWeightNonPCLT = (sbyte)PCLFonts.eStrokeWeight.Light;
                     break;
 
                 case mask_OS_2_usWeightClass_FW_NORMAL:
-                    strokeWeightNonPCLT = (SByte)PCLFonts.eStrokeWeight.Medium;
+                    strokeWeightNonPCLT = (sbyte)PCLFonts.eStrokeWeight.Medium;
                     break;
 
                 case mask_OS_2_usWeightClass_FW_MEDIUM:
-                    strokeWeightNonPCLT = (SByte)PCLFonts.eStrokeWeight.Medium;
+                    strokeWeightNonPCLT = (sbyte)PCLFonts.eStrokeWeight.Medium;
                     break;
 
                 case mask_OS_2_usWeightClass_FW_SEMIBOLD:
-                    strokeWeightNonPCLT = (SByte)PCLFonts.eStrokeWeight.SemiBold;
+                    strokeWeightNonPCLT = (sbyte)PCLFonts.eStrokeWeight.SemiBold;
                     break;
 
                 case mask_OS_2_usWeightClass_FW_BOLD:
-                    strokeWeightNonPCLT = (SByte)PCLFonts.eStrokeWeight.Bold;
+                    strokeWeightNonPCLT = (sbyte)PCLFonts.eStrokeWeight.Bold;
                     break;
 
                 case mask_OS_2_usWeightClass_FW_EXTRABOLD:
-                    strokeWeightNonPCLT = (SByte)PCLFonts.eStrokeWeight.ExtraBold;
+                    strokeWeightNonPCLT = (sbyte)PCLFonts.eStrokeWeight.ExtraBold;
                     break;
 
                 case mask_OS_2_usWeightClass_FW_BLACK:
-                    strokeWeightNonPCLT = (SByte)PCLFonts.eStrokeWeight.Black;
+                    strokeWeightNonPCLT = (sbyte)PCLFonts.eStrokeWeight.Black;
                     break;
 
                 default:
-                    strokeWeightNonPCLT = (SByte)PCLFonts.eStrokeWeight.Medium;
+                    strokeWeightNonPCLT = (sbyte)PCLFonts.eStrokeWeight.Medium;
                     break;
             }
 
             //------------------------------------------------------------//
 
-            styleNonPCLT = (UInt16)(stylePosture +
+            styleNonPCLT = (ushort)(stylePosture +
                                     (4 * styleWidth) +
                                     (32 * styleStructure));
         }
@@ -1691,7 +1691,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16 getPCLTSymSet()
+        public ushort getPCLTSymSet()
         {
             return _PCLT_symSet;
         }
@@ -1706,7 +1706,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16 getPCLTTypeFamily()
+        public ushort getPCLTTypeFamily()
         {
             return _PCLT_typeFamily;
         }
@@ -1721,11 +1721,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt32 getSegGTTablesSize(Boolean pdlIsPCLXL,
-                                          Boolean symSetUnbound,
-                                          Boolean flagVMetrics)
+        public uint getSegGTTablesSize(bool pdlIsPCLXL,
+                                          bool symSetUnbound,
+                                          bool flagVMetrics)
         {
-            UInt32 sizeTables = 0;
+            uint sizeTables = 0;
 
             sizeTables = _tab_cvt.TablePadLen +
                          _tab_fpgm.TablePadLen +
@@ -1796,17 +1796,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean getTTCData(String fileName,
-                                   UInt32 numFonts,
-                                   ref UInt32[] fontOffsets,
-                                   ref String[] fontNames)
+        public bool getTTCData(string fileName,
+                                   uint numFonts,
+                                   ref uint[] fontOffsets,
+                                   ref string[] fontNames)
         {
-            String tabName = "ttcf";
+            string tabName = "ttcf";
 
-            Boolean flagOK = true;
-            Boolean fileOpen;
+            bool flagOK = true;
+            bool fileOpen;
 
-            Int32 offset;
+            int offset;
 
             fileOpen = fontFileOpen(fileName, ref _fontFileSize);
 
@@ -1828,7 +1828,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                UInt32 checkNumFonts = 0;
+                uint checkNumFonts = 0;
 
                 offset = 8;
 
@@ -1842,13 +1842,13 @@ namespace PCLParaphernalia
                 {
                     offset += 4;
 
-                    for (Int32 i = 0; i < numFonts; i++)
+                    for (int i = 0; i < numFonts; i++)
                     {
                         flagOK = readBytesAsUInt32(offset, ref fontOffsets[i]);
 
                         if (!flagOK)
                         {
-                            i = (Int32)numFonts;
+                            i = (int)numFonts;
                         }
                         else
                         {
@@ -1869,7 +1869,7 @@ namespace PCLParaphernalia
                                     fontOffsets[i].ToString());
                             }
 
-                            flagOK = readTableDirectory((Int32)fontOffsets[i],
+                            flagOK = readTableDirectory((int)fontOffsets[i],
                                                          true);
 
                             if (flagOK)
@@ -1896,7 +1896,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean glyphCompositeCheck(UInt16 glyphId)
+        public bool glyphCompositeCheck(ushort glyphId)
         {
             return _glyphData[glyphId].checkComposite();
         }
@@ -1911,7 +1911,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean glyphReferencedCheck(UInt16 glyphId)
+        public bool glyphReferencedCheck(ushort glyphId)
         {
             return _glyphData[glyphId].checkReferenced();
         }
@@ -1926,7 +1926,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void glyphReferencedMark(UInt16 glyphId)
+        public void glyphReferencedMark(ushort glyphId)
         {
             _glyphData[glyphId].markReferenced();
         }
@@ -1943,7 +1943,7 @@ namespace PCLParaphernalia
 
         public void glyphReferencedUnmarkAll()
         {
-            for (Int32 i = 0; i < _maxp_numGlyphs; i++)
+            for (int i = 0; i < _maxp_numGlyphs; i++)
             {
                 _glyphData[i].unmarkReferenced();
             }
@@ -1958,19 +1958,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean initialiseFontData(String fileName,
-                                          Int32 sfntOffset,
-                                          Int32 symSetIndx,
-                                          ref Boolean tabPCLTPresent,
-                                          ref Boolean tabvmtxPresent,
-                                          ref Boolean symbolMapping,
-                                          Boolean symSetUnbound,
-                                          Boolean symSetUserSet,
-                                          Boolean symSetMapPCL)
+        public bool initialiseFontData(string fileName,
+                                          int sfntOffset,
+                                          int symSetIndx,
+                                          ref bool tabPCLTPresent,
+                                          ref bool tabvmtxPresent,
+                                          ref bool symbolMapping,
+                                          bool symSetUnbound,
+                                          bool symSetUserSet,
+                                          bool symSetMapPCL)
         {
-            Boolean flagOK = false;
+            bool flagOK = false;
 
-            Boolean fileOpen;
+            bool fileOpen;
 
             _fontFileSize = 0;
             _cmap_numChars = 0;
@@ -1989,7 +1989,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                UInt32 tabVer_sfnt = 0;
+                uint tabVer_sfnt = 0;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -2040,7 +2040,7 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    String dummyString = "";
+                    string dummyString = "";
 
                     flagOK = readData_name(false, ref dummyString);
                 }
@@ -2148,7 +2148,7 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    UInt32 glyphOffset = 0,
+                    uint glyphOffset = 0,
                            glyphLength = 0;
 
                     _glyphData[0].getLocation(ref glyphOffset,
@@ -2179,7 +2179,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Byte[] PanoseData
+        public byte[] PanoseData
         {
             get
             {
@@ -2198,13 +2198,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean readByteArray(Int32 offset,
-                                      Int32 length,
-                                      ref Byte[] target)
+        public bool readByteArray(int offset,
+                                      int length,
+                                      ref byte[] target)
         {
-            Int32 readLen = 0;
+            int readLen = 0;
 
-            Boolean flagOK;
+            bool flagOK;
 
             flagOK = true;
 
@@ -2240,16 +2240,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean readByteAsSByte(Int32 offset,
-                                        ref SByte target)
+        private bool readByteAsSByte(int offset,
+                                        ref sbyte target)
         {
-            const Int32 sliceSize = 1;
+            const int sliceSize = 1;
 
-            Int32 readLen = 0;
+            int readLen = 0;
 
-            Boolean flagOK;
+            bool flagOK;
 
-            Byte[] slice = new Byte[sliceSize];
+            byte[] slice = new byte[sliceSize];
 
             flagOK = true;
 
@@ -2273,7 +2273,7 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                target = (SByte)slice[0];
+                target = (sbyte)slice[0];
             }
 
             return flagOK;
@@ -2290,16 +2290,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean readByteAsUByte(Int32 offset,
-                                        ref Byte target)
+        private bool readByteAsUByte(int offset,
+                                        ref byte target)
         {
-            const Int32 sliceSize = 1;
+            const int sliceSize = 1;
 
-            Int32 readLen = 0;
+            int readLen = 0;
 
-            Boolean flagOK;
+            bool flagOK;
 
-            Byte[] slice = new Byte[sliceSize];
+            byte[] slice = new byte[sliceSize];
 
             flagOK = true;
 
@@ -2341,16 +2341,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean readBytesAsInt16(Int32 offset,
-                                         ref Int16 target)
+        private bool readBytesAsInt16(int offset,
+                                         ref short target)
         {
-            const Int32 sliceSize = 2;
+            const int sliceSize = 2;
 
-            Int32 readLen = 0;
+            int readLen = 0;
 
-            Boolean flagOK;
+            bool flagOK;
 
-            Byte[] slice = new Byte[sliceSize];
+            byte[] slice = new byte[sliceSize];
 
             flagOK = true;
 
@@ -2392,16 +2392,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean readBytesAsUInt16(Int32 offset,
-                                          ref UInt16 target)
+        private bool readBytesAsUInt16(int offset,
+                                          ref ushort target)
         {
-            const Int32 sliceSize = 2;
+            const int sliceSize = 2;
 
-            Int32 readLen = 0;
+            int readLen = 0;
 
-            Boolean flagOK;
+            bool flagOK;
 
-            Byte[] slice = new Byte[sliceSize];
+            byte[] slice = new byte[sliceSize];
 
             flagOK = true;
 
@@ -2443,16 +2443,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean readBytesAsUInt32(Int32 offset,
-                                          ref UInt32 target)
+        private bool readBytesAsUInt32(int offset,
+                                          ref uint target)
         {
-            const Int32 sliceSize = 4;
+            const int sliceSize = 4;
 
-            Int32 readLen = 0;
+            int readLen = 0;
 
-            Boolean flagOK;
+            bool flagOK;
 
-            Byte[] slice = new Byte[sliceSize];
+            byte[] slice = new byte[sliceSize];
 
             flagOK = true;
 
@@ -2494,16 +2494,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean readBytesAsUInt64(Int32 offset,
-                                           ref UInt64 target)
+        private bool readBytesAsUInt64(int offset,
+                                           ref ulong target)
         {
-            const Int32 sliceSize = 8;
+            const int sliceSize = 8;
 
-            Int32 readLen = 0;
+            int readLen = 0;
 
-            Boolean flagOK;
+            bool flagOK;
 
-            Byte[] slice = new Byte[sliceSize];
+            byte[] slice = new byte[sliceSize];
 
             flagOK = true;
 
@@ -2548,29 +2548,29 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean readData_cmap(Int32 symSetIndx,
-                                       ref Boolean symbolMapping,
-                                       Boolean symSetUnbound,
-                                       Boolean symSetUserSet,
-                                       Boolean symSetMapPCL)
+        private bool readData_cmap(int symSetIndx,
+                                       ref bool symbolMapping,
+                                       bool symSetUnbound,
+                                       bool symSetUserSet,
+                                       bool symSetMapPCL)
         {
-            String tabName = "cmap";
+            string tabName = "cmap";
 
-            Boolean flagOK = true;
+            bool flagOK = true;
 
-            UInt32 tabOffset = 0,
+            uint tabOffset = 0,
                    tabLength = 0,
                    reqLength;
 
-            UInt32 subTabOffset = 0,
+            uint subTabOffset = 0,
                    subTabSymbol = 0,
                    subTabUnicode = 0;
 
-            UInt16 subTabPlatform = 0,
+            ushort subTabPlatform = 0,
                    subTabEncoding = 0,
                    subTabFormat = 0;
 
-            UInt16 fmt4Length = 0,
+            ushort fmt4Length = 0,
                    fmt4Lang = 0,
                    fmt4SegCountx2 = 0,
                    fmt4SegCount = 0,
@@ -2578,7 +2578,7 @@ namespace PCLParaphernalia
                    fmt4EntrySelector = 0,
                    fmt4RangeShift = 0;
 
-            Int32 baseEndCode = 0,
+            int baseEndCode = 0,
                    baseStartCode = 0,
                    baseIdDelta = 0,
                    baseIdRangeOffset = 0,
@@ -2586,14 +2586,14 @@ namespace PCLParaphernalia
                    sizeGlyphIdArray = 0,
                    subTabNo = -1;
 
-            UInt16 tabVersion = 0,
+            ushort tabVersion = 0,
                    tabNumTables = 0;
 
-            Boolean encodingSymbol,
+            bool encodingSymbol,
                     encodingUnicode;
 
-            String mapSymSet = "";
-            String mapSymSetType = "";
+            string mapSymSet = "";
+            string mapSymSetType = "";
 
             flagOK = true;
 
@@ -2625,7 +2625,7 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                flagOK = readBytesAsUInt16((Int32)tabOffset, ref tabVersion);
+                flagOK = readBytesAsUInt16((int)tabOffset, ref tabVersion);
 
                 if (!flagOK)
                 {
@@ -2635,11 +2635,11 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    flagOK = readBytesAsUInt16((Int32)(tabOffset + 2),
+                    flagOK = readBytesAsUInt16((int)(tabOffset + 2),
                                                 ref tabNumTables);
                     if (flagOK)
                     {
-                        reqLength = 4 + (8 * (UInt32)tabNumTables);
+                        reqLength = 4 + (8 * (uint)tabNumTables);
 
                         if (reqLength > tabLength)
                         {
@@ -2678,7 +2678,7 @@ namespace PCLParaphernalia
                                  tabNumTables.ToString() + " sub-tables");
                 }
 
-                for (Int32 i = 0; (i < tabNumTables) && (flagOK); i++)
+                for (int i = 0; (i < tabNumTables) && (flagOK); i++)
                 {
                     flagOK = readBytesAsUInt16(-1, ref subTabPlatform);
 
@@ -2692,8 +2692,8 @@ namespace PCLParaphernalia
                     {
                         if (_logVerbose)
                         {
-                            String platformDesc;
-                            String encDesc;
+                            string platformDesc;
+                            string encDesc;
 
                             switch (subTabPlatform)
                             {
@@ -2965,17 +2965,17 @@ namespace PCLParaphernalia
                     //                                                    //
                     //----------------------------------------------------//
 
-                    Int32 len = _mappingTable.Length;
-                    Int32 indx;
+                    int len = _mappingTable.Length;
+                    int indx;
 
-                    Boolean firstEntry = true;
-                    Boolean addLine;
+                    bool firstEntry = true;
+                    bool addLine;
 
-                    for (Int32 i = 0; i < len; i += 8)
+                    for (int i = 0; i < len; i += 8)
                     {
                         addLine = false;
 
-                        for (Int32 j = 0; j < 8; j++)
+                        for (int j = 0; j < 8; j++)
                         {
                             indx = i + j;
 
@@ -3002,7 +3002,7 @@ namespace PCLParaphernalia
 
                             mData.Append("U+");
 
-                            for (Int32 j = 0; j < 8; j++)
+                            for (int j = 0; j < 8; j++)
                             {
                                 indx = i + j;
 
@@ -3025,7 +3025,7 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    flagOK = readBytesAsUInt16((Int32)subTabOffset,
+                    flagOK = readBytesAsUInt16((int)subTabOffset,
                                                 ref subTabFormat);
                 }
 
@@ -3077,11 +3077,11 @@ namespace PCLParaphernalia
 
                         if (flagOK)
                         {
-                            Int16 x;
+                            short x;
 
-                            fmt4SegCount = (UInt16)(fmt4SegCountx2 / 2);
+                            fmt4SegCount = (ushort)(fmt4SegCountx2 / 2);
 
-                            x = (Int16)(16 + (8 * fmt4SegCount));
+                            x = (short)(16 + (8 * fmt4SegCount));
 
                             if (x > fmt4Length)
                             {
@@ -3096,7 +3096,7 @@ namespace PCLParaphernalia
                             {
                                 if (_logVerbose)
                                 {
-                                    String encDesc;
+                                    string encDesc;
 
                                     if (encodingSymbol)
                                         encDesc = "0 (Symbol)";
@@ -3117,17 +3117,17 @@ namespace PCLParaphernalia
                                 }
 
                                 baseEndCode =
-                                    (Int32)(subTabOffset + 14);
+                                    (int)(subTabOffset + 14);
                                 baseStartCode =
-                                    (Int32)(baseEndCode + fmt4SegCountx2 + 2);
+                                    (int)(baseEndCode + fmt4SegCountx2 + 2);
                                 baseIdDelta =
-                                    (Int32)(baseStartCode + fmt4SegCountx2);
+                                    (int)(baseStartCode + fmt4SegCountx2);
                                 baseIdRangeOffset =
-                                    (Int32)(baseIdDelta + fmt4SegCountx2);
+                                    (int)(baseIdDelta + fmt4SegCountx2);
                                 baseGlyphIdArray =
-                                    (Int32)(baseIdRangeOffset + fmt4SegCountx2);
+                                    (int)(baseIdRangeOffset + fmt4SegCountx2);
                                 sizeGlyphIdArray =
-                                    (Int32)(fmt4Length - x);
+                                    (int)(fmt4Length - x);
                             }
                         }
                     }
@@ -3158,13 +3158,13 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                Int32 totChars = 0;
+                int totChars = 0;
 
-                Byte[] indexEndCode = new Byte[fmt4SegCountx2];
-                Byte[] indexStartCode = new Byte[fmt4SegCountx2];
-                Byte[] indexIdDelta = new Byte[fmt4SegCountx2];
-                Byte[] indexIdRangeOffset = new Byte[fmt4SegCountx2];
-                Byte[] glyphIdArray = new Byte[sizeGlyphIdArray];
+                byte[] indexEndCode = new byte[fmt4SegCountx2];
+                byte[] indexStartCode = new byte[fmt4SegCountx2];
+                byte[] indexIdDelta = new byte[fmt4SegCountx2];
+                byte[] indexIdRangeOffset = new byte[fmt4SegCountx2];
+                byte[] glyphIdArray = new byte[sizeGlyphIdArray];
 
                 if (symSetUnbound)
                 {
@@ -3175,9 +3175,9 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    for (Int32 i = 0; i < _sizeCharSet; i++)
+                    for (int i = 0; i < _sizeCharSet; i++)
                     {
-                        _charData[i].setValues((UInt16)i, 0, false);
+                        _charData[i].setValues((ushort)i, 0, false);
                     }
                 }
                 else
@@ -3189,7 +3189,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    for (Int32 i = 0; i < _sizeCharSet; i++)
+                    for (int i = 0; i < _sizeCharSet; i++)
                     {
                         _charData[i].setValues(_mappingTable[i], 0, false);
                     }
@@ -3220,18 +3220,18 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    Int32 segx2;
+                    int segx2;
 
-                    UInt32 endCode,
+                    uint endCode,
                            startCode;
 
-                    UInt16 charCode,
+                    ushort charCode,
                            mapCode = 0,
                            idRangeOffset;
 
-                    Int16 idDelta;
+                    short idDelta;
 
-                    Boolean reqCode;
+                    bool reqCode;
 
                     if (_logVerbose)
                     {
@@ -3248,7 +3248,7 @@ namespace PCLParaphernalia
 
                     for (segx2 = 0; segx2 < fmt4SegCountx2; segx2 += 2)
                     {
-                        Byte[] ba2 = new Byte[2];
+                        byte[] ba2 = new byte[2];
 
                         ba2[0] = indexEndCode[segx2];
                         ba2[1] = indexEndCode[segx2 + 1];
@@ -3284,10 +3284,10 @@ namespace PCLParaphernalia
                                 "; r_O = " + idRangeOffset);
                         }
 
-                        for (UInt32 i = startCode; i <= endCode; i++)
+                        for (uint i = startCode; i <= endCode; i++)
                         {
                             totChars++;
-                            charCode = (UInt16)i;
+                            charCode = (ushort)i;
                             reqCode = false;
 
                             if (symSetUnbound)
@@ -3295,20 +3295,20 @@ namespace PCLParaphernalia
                                 if (charCode != 0xffff)
                                 {
                                     reqCode = true;
-                                    mapCode = (UInt16)i;
+                                    mapCode = (ushort)i;
                                 }
                             }
 
                             else
                             {
-                                for (UInt16 j = 0; j < _sizeCharSet; j++)
+                                for (ushort j = 0; j < _sizeCharSet; j++)
                                 {
                                     if ((charCode != 0xffff) &&
                                         (charCode == _mappingTable[j]))
                                     {
                                         reqCode = true;
                                         mapCode = j;
-                                        j = (UInt16)_sizeCharSet;
+                                        j = (ushort)_sizeCharSet;
                                     }
                                 }
                             }
@@ -3325,7 +3325,7 @@ namespace PCLParaphernalia
                                 //                                            //
                                 //--------------------------------------------//
 
-                                UInt16 glyphIndex = 0;
+                                ushort glyphIndex = 0;
 
                                 if (idRangeOffset == 0)
                                 {
@@ -3337,7 +3337,7 @@ namespace PCLParaphernalia
                                     //                                        //
                                     //----------------------------------------//
 
-                                    glyphIndex = (UInt16)((idDelta + charCode)
+                                    glyphIndex = (ushort)((idDelta + charCode)
                                                            % 65536);
 
                                     if (_logVerbose)
@@ -3377,7 +3377,7 @@ namespace PCLParaphernalia
                                     //                                        //
                                     //----------------------------------------//
 
-                                    Int32 j = (Int32)(idRangeOffset +
+                                    int j = (int)(idRangeOffset +
                                             ((charCode - startCode) * 2) -
                                             (fmt4SegCountx2 - segx2));
 
@@ -3400,7 +3400,7 @@ namespace PCLParaphernalia
 
                                         if (glyphIndex != 0)
                                             glyphIndex =
-                                                (UInt16)((idDelta + glyphIndex)
+                                                (ushort)((idDelta + glyphIndex)
                                                           % 65536);
 
                                         if (_logVerbose)
@@ -3440,7 +3440,7 @@ namespace PCLParaphernalia
 
                                 if (!symSetUnbound)
                                 {
-                                    for (Int32 k = mapCode + 1;
+                                    for (int k = mapCode + 1;
                                          k < _sizeCharSet;
                                          k++)
                                     {
@@ -3472,10 +3472,10 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    UInt16 codepoint = 0,
+                    ushort codepoint = 0,
                            glyphId = 0;
 
-                    String hexCt = "";
+                    string hexCt = "";
 
                     bool glyphPresent = false,
                          firstFound = false,
@@ -3491,7 +3491,7 @@ namespace PCLParaphernalia
                     else
                         hexCt = "x4";
 
-                    for (Int32 i = 0; i < _sizeCharSet; i++)
+                    for (int i = 0; i < _sizeCharSet; i++)
                     {
                         _charData[i].getValues(ref codepoint,
                                                ref glyphId,
@@ -3500,12 +3500,12 @@ namespace PCLParaphernalia
                         if (glyphPresent)
                         {
                             _cmap_numChars++;
-                            _cmap_lastCode = (UInt16)i;
+                            _cmap_lastCode = (ushort)i;
 
                             if (!firstFound)
                             {
                                 firstFound = true;
-                                _cmap_firstCode = (UInt16)i;
+                                _cmap_firstCode = (ushort)i;
                             }
                         }
                         else if (codepoint != 0xffff)
@@ -3618,17 +3618,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean readData_head()
+        private bool readData_head()
         {
-            String tabName = "head";
+            string tabName = "head";
 
-            Boolean flagOK = true;
+            bool flagOK = true;
 
-            UInt32 tabOffset = 0,
+            uint tabOffset = 0,
                    tabLength = 0,
                    reqLength;
 
-            UInt32 tabVersion = 0;
+            uint tabVersion = 0;
 
             flagOK = true;
 
@@ -3647,7 +3647,7 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                flagOK = readBytesAsUInt32((Int32)tabOffset, ref tabVersion);
+                flagOK = readBytesAsUInt32((int)tabOffset, ref tabVersion);
 
                 if (!flagOK)
                 {
@@ -3668,12 +3668,12 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    flagOK = readBytesAsUInt16((Int32)(tabOffset + 18),
+                    flagOK = readBytesAsUInt16((int)(tabOffset + 18),
                                                 ref _head_unitsPerEm);
 
                     if (flagOK)
                     {
-                        flagOK = readBytesAsInt16((Int32)(tabOffset + 36),
+                        flagOK = readBytesAsInt16((int)(tabOffset + 36),
                                                    ref _head_xMin);
                     }
 
@@ -3697,7 +3697,7 @@ namespace PCLParaphernalia
 
                     if (flagOK)
                     {
-                        flagOK = readBytesAsInt16((Int32)(tabOffset + 50),
+                        flagOK = readBytesAsInt16((int)(tabOffset + 50),
                                                    ref _head_indxLocFmt);
                     }
                 }
@@ -3759,17 +3759,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean readData_hhea()
+        private bool readData_hhea()
         {
-            String tabName = "hhea";
+            string tabName = "hhea";
 
-            Boolean flagOK = true;
+            bool flagOK = true;
 
-            UInt32 tabOffset = 0,
+            uint tabOffset = 0,
                    tabLength = 0,
                    reqLength;
 
-            UInt32 tabVersion = 0;
+            uint tabVersion = 0;
 
             flagOK = true;
 
@@ -3788,7 +3788,7 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                flagOK = readBytesAsUInt32((Int32)tabOffset, ref tabVersion);
+                flagOK = readBytesAsUInt32((int)tabOffset, ref tabVersion);
 
                 if (!flagOK)
                 {
@@ -3809,7 +3809,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    flagOK = readBytesAsInt16((Int32)(tabOffset + 4),
+                    flagOK = readBytesAsInt16((int)(tabOffset + 4),
                                                ref _hhea_ascender);
 
                     if (flagOK)
@@ -3826,7 +3826,7 @@ namespace PCLParaphernalia
 
                     if (flagOK)
                     {
-                        flagOK = readBytesAsUInt16((Int32)(tabOffset + 34),
+                        flagOK = readBytesAsUInt16((int)(tabOffset + 34),
                                                     ref _hhea_numHMetrics);
                     }
                 }
@@ -3876,19 +3876,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean readData_hmtx()
+        private bool readData_hmtx()
         {
-            String tabName = "hmtx";
+            string tabName = "hmtx";
 
-            Boolean flagOK = true;
+            bool flagOK = true;
 
-            UInt32 tabOffset = 0,
+            uint tabOffset = 0,
                    tabLength = 0,
                    reqLength;
 
-            Int32 hMetricsArrayLen = 0,
+            int hMetricsArrayLen = 0,
                   lsbArrayLen = 0;
-            Int32 hMetricsArraySize = 0,
+            int hMetricsArraySize = 0,
                   lsbArraySize = 0;
 
             flagOK = true;
@@ -3901,7 +3901,7 @@ namespace PCLParaphernalia
             hMetricsArraySize = 4 * hMetricsArrayLen;
             lsbArraySize = 2 * lsbArrayLen;
 
-            reqLength = (UInt32)(hMetricsArraySize + lsbArraySize);
+            reqLength = (uint)(hMetricsArraySize + lsbArraySize);
 
             if (_hhea_numHMetrics < 1)
             {
@@ -3932,10 +3932,10 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                Byte[] hMetricsArray = new Byte[hMetricsArraySize];
-                Byte[] lsbArray = new Byte[lsbArraySize];
+                byte[] hMetricsArray = new byte[hMetricsArraySize];
+                byte[] lsbArray = new byte[lsbArraySize];
 
-                flagOK = readByteArray((Int32)tabOffset,
+                flagOK = readByteArray((int)tabOffset,
                                         hMetricsArraySize,
                                         ref hMetricsArray);
 
@@ -3948,36 +3948,36 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    UInt16 glyphId = 0,
+                    ushort glyphId = 0,
                            advance = 0;
 
-                    Int16 lsb;
+                    short lsb;
 
-                    UInt32 advanceOffset,
+                    uint advanceOffset,
                            lsbOffset;
 
-                    for (Int32 indx = 0; indx < hMetricsArrayLen; indx++)
+                    for (int indx = 0; indx < hMetricsArrayLen; indx++)
                     {
-                        advanceOffset = (UInt32)(indx * 4);
+                        advanceOffset = (uint)(indx * 4);
                         lsbOffset = advanceOffset + 2;
 
-                        advance = (UInt16)((hMetricsArray[advanceOffset] << 8) +
+                        advance = (ushort)((hMetricsArray[advanceOffset] << 8) +
                                              hMetricsArray[advanceOffset + 1]);
 
-                        lsb = (Int16)((hMetricsArray[lsbOffset] << 8) +
+                        lsb = (short)((hMetricsArray[lsbOffset] << 8) +
                                         hMetricsArray[lsbOffset + 1]);
 
                         _glyphData[indx].setMetricsH(advance, lsb);
                     }
 
-                    for (Int32 indx = 0; indx < lsbArrayLen; indx++)
+                    for (int indx = 0; indx < lsbArrayLen; indx++)
                     {
-                        lsbOffset = (UInt32)(indx * 2);
+                        lsbOffset = (uint)(indx * 2);
 
-                        lsb = (Int16)((lsbArray[lsbOffset] << 8) +
+                        lsb = (short)((lsbArray[lsbOffset] << 8) +
                                         lsbArray[lsbOffset + 1]);
 
-                        glyphId = (UInt16)(hMetricsArrayLen + indx);
+                        glyphId = (ushort)(hMetricsArrayLen + indx);
 
                         _glyphData[glyphId].setMetricsH(advance, lsb);
                     }
@@ -4000,24 +4000,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean readData_loca_glyf()
+        private bool readData_loca_glyf()
         {
-            Boolean flagOK = true;
-            Boolean composite = false;
+            bool flagOK = true;
+            bool composite = false;
 
-            UInt32 locaOffset = 0,
+            uint locaOffset = 0,
                    locaLength = 0,
                    glyfOffset = 0,
                    glyfLength = 0;
 
-            UInt32 offsetThis = 0,
+            uint offsetThis = 0,
                    offsetNext = 0,
                    entryLen = 0,
                    entryOffset = 0;
 
-            UInt16 offsetTemp = 0;
+            ushort offsetTemp = 0;
 
-            Int16 numContours = 0;
+            short numContours = 0;
 
             flagOK = true;
 
@@ -4040,14 +4040,14 @@ namespace PCLParaphernalia
                     _maxp_numGlyphs.ToString());
             }
 
-            for (Int32 glyphId = 0;
+            for (int glyphId = 0;
                  (glyphId < _maxp_numGlyphs) && flagOK;
                  glyphId++)
             {
                 if (_head_indxLocFmt != 0)
                 {
                     flagOK = readBytesAsUInt32(
-                        (Int32)(locaOffset + (4 * glyphId)),
+                        (int)(locaOffset + (4 * glyphId)),
                         ref offsetThis);
 
                     if (flagOK)
@@ -4058,17 +4058,17 @@ namespace PCLParaphernalia
                 else
                 {
                     flagOK = readBytesAsUInt16(
-                        (Int32)(locaOffset + (2 * glyphId)),
+                        (int)(locaOffset + (2 * glyphId)),
                         ref offsetTemp);
 
                     if (flagOK)
                     {
-                        offsetThis = (UInt32)(offsetTemp * 2);
+                        offsetThis = (uint)(offsetTemp * 2);
 
                         flagOK = readBytesAsUInt16(-1, ref offsetTemp);
 
                         if (flagOK)
-                            offsetNext = (UInt32)(offsetTemp * 2);
+                            offsetNext = (uint)(offsetTemp * 2);
                     }
                 }
 
@@ -4092,7 +4092,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        flagOK = readBytesAsInt16((Int32)entryOffset,
+                        flagOK = readBytesAsInt16((int)entryOffset,
                                                    ref numContours);
 
                         if (numContours >= 0)
@@ -4119,9 +4119,9 @@ namespace PCLParaphernalia
 
                 if (_logVerbose)
                 {
-                    Int16 leftSideBearing = 0,
+                    short leftSideBearing = 0,
                           topSideBearing = 0;
-                    UInt16 advanceWidth = 0,
+                    ushort advanceWidth = 0,
                            advanceHeight = 0;
 
                     _glyphData[glyphId].getMetricsH(ref advanceWidth,
@@ -4185,17 +4185,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean readData_maxp()
+        private bool readData_maxp()
         {
-            String tabName = "maxp";
+            string tabName = "maxp";
 
-            Boolean flagOK = true;
+            bool flagOK = true;
 
-            UInt32 tabOffset = 0,
+            uint tabOffset = 0,
                    tabLength = 0,
                    reqLength;
 
-            UInt32 tabVersion = 0;
+            uint tabVersion = 0;
 
             flagOK = true;
 
@@ -4214,7 +4214,7 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                flagOK = readBytesAsUInt32((Int32)tabOffset, ref tabVersion);
+                flagOK = readBytesAsUInt32((int)tabOffset, ref tabVersion);
 
                 if (!flagOK)
                 {
@@ -4235,11 +4235,11 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    flagOK = readBytesAsUInt16((Int32)(tabOffset + 4),
+                    flagOK = readBytesAsUInt16((int)(tabOffset + 4),
                                                 ref _maxp_numGlyphs);
                     if (flagOK)
                     {
-                        flagOK = readBytesAsUInt16((Int32)(tabOffset + 30),
+                        flagOK = readBytesAsUInt16((int)(tabOffset + 30),
                                                     ref _maxp_maxCompDepth);
                     }
                 }
@@ -4283,18 +4283,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean readData_name(Boolean getTTCData,
-                                      ref String fullFontName)
+        private bool readData_name(bool getTTCData,
+                                      ref string fullFontName)
         {
-            String tabName = "name";
+            string tabName = "name";
 
-            Boolean flagOK = true;
+            bool flagOK = true;
 
-            UInt32 tabOffset = 0,
+            uint tabOffset = 0,
                    tabLength = 0,
                    reqLength;
 
-            UInt16 nameRecCount = 0,
+            ushort nameRecCount = 0,
                    nameRecPlatform = 0,
                    nameRecEncoding = 0,
                    nameRecLanguage = 0,
@@ -4302,7 +4302,7 @@ namespace PCLParaphernalia
                    nameRecLength = 0,
                    nameRecOffset = 0;
 
-            UInt16 tabFormat = 0,
+            ushort tabFormat = 0,
                    stringsOffset = 0;
 
             flagOK = true;
@@ -4341,7 +4341,7 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                flagOK = readBytesAsUInt16((Int32)tabOffset, ref tabFormat);
+                flagOK = readBytesAsUInt16((int)tabOffset, ref tabFormat);
 
                 if (!flagOK)
                 {
@@ -4360,17 +4360,17 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    flagOK = readBytesAsUInt16((Int32)(tabOffset + 2),
+                    flagOK = readBytesAsUInt16((int)(tabOffset + 2),
                                                 ref nameRecCount);
                     if (flagOK)
                     {
-                        flagOK = readBytesAsUInt16((Int32)(tabOffset + 4),
+                        flagOK = readBytesAsUInt16((int)(tabOffset + 4),
                                                     ref stringsOffset);
                     }
 
                     if (flagOK)
                     {
-                        UInt32 minLen = 6 + (12 * (UInt32)nameRecCount);
+                        uint minLen = 6 + (12 * (uint)nameRecCount);
 
                         if (minLen > tabLength)
                         {
@@ -4382,7 +4382,7 @@ namespace PCLParaphernalia
                                 " too short for " + nameRecCount +
                                 " encoding records");
                         }
-                        else if ((UInt32)stringsOffset > tabLength)
+                        else if ((uint)stringsOffset > tabLength)
                         {
                             flagOK = false;
 
@@ -4463,20 +4463,20 @@ namespace PCLParaphernalia
                 {
                 }
 
-                const Int32 maxNameRecStrLen = 2048;
+                const int maxNameRecStrLen = 2048;
 
-                Byte[] tempBuf = new Byte[maxNameRecStrLen];
+                byte[] tempBuf = new byte[maxNameRecStrLen];
 
-                Int32 textOffset;
+                int textOffset;
 
-                String nameText = "";
+                string nameText = "";
 
-                Boolean logIdData;
+                bool logIdData;
 
-                for (Int32 i = 0; (i < nameRecCount) && (flagOK); i++)
+                for (int i = 0; (i < nameRecCount) && (flagOK); i++)
                 {
                     flagOK = readBytesAsUInt16(
-                        (Int32)(tabOffset + 6 + (12 * i)),
+                        (int)(tabOffset + 6 + (12 * i)),
                         ref nameRecPlatform);
 
                     if (flagOK)
@@ -4496,7 +4496,7 @@ namespace PCLParaphernalia
 
                     if (flagOK)
                     {
-                        if ((UInt32)(stringsOffset + nameRecOffset + nameRecLength)
+                        if ((uint)(stringsOffset + nameRecOffset + nameRecLength)
                             > tabLength)
                         {
                             flagOK = false;
@@ -4534,9 +4534,9 @@ namespace PCLParaphernalia
                              (nameRecEncoding == 1)) &&
                             ((nameRecLanguage == 0x0409)))
                         {
-                            Boolean nameIsFullFontName = false;
+                            bool nameIsFullFontName = false;
 
-                            textOffset = (Int32)(tabOffset + stringsOffset +
+                            textOffset = (int)(tabOffset + stringsOffset +
                                                   nameRecOffset);
 
                             logIdData = true;
@@ -4651,7 +4651,7 @@ namespace PCLParaphernalia
 
                             if (logIdData)
                             {
-                                String recVal;
+                                string recVal;
 
                                 if (nameRecLength < maxNameRecStrLen)
                                 {
@@ -4673,9 +4673,9 @@ namespace PCLParaphernalia
                                         //                                    //
                                         //------------------------------------//
 
-                                        Byte byteMS;
+                                        byte byteMS;
 
-                                        for (Int32 j = 0;
+                                        for (int j = 0;
                                              j < nameRecLength;
                                              j = j + 2)
                                         {
@@ -4731,19 +4731,19 @@ namespace PCLParaphernalia
                                         ASCIIEncoding ascii =
                                             new ASCIIEncoding();
 
-                                        Byte[] temp = ascii.GetBytes(recVal);
+                                        byte[] temp = ascii.GetBytes(recVal);
 
-                                        Int32 len = temp.Length;
+                                        int len = temp.Length;
 
                                         if (len > cSizeFontname)
                                             len = cSizeFontname;
 
-                                        for (Int32 j = 0; j < len; j++)
+                                        for (int j = 0; j < len; j++)
                                         {
                                             _name_fullFontname[j] = temp[j];
                                         }
 
-                                        for (Int32 j = len; j < cSizeFontname; j++)
+                                        for (int j = len; j < cSizeFontname; j++)
                                         {
                                             _name_fullFontname[j] = 0x20;
                                         }
@@ -4779,17 +4779,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean readData_OS_2()
+        private bool readData_OS_2()
         {
-            String tabName = "OS/2";
+            string tabName = "OS/2";
 
-            Boolean flagOK = true;
+            bool flagOK = true;
 
-            UInt32 tabOffset = 0,
+            uint tabOffset = 0,
                    tabLength = 0,
                    minLength;
 
-            UInt16 tabVersion = 0;
+            ushort tabVersion = 0;
 
             flagOK = true;
 
@@ -4814,7 +4814,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                flagOK = readBytesAsUInt16((Int32)tabOffset, ref tabVersion);
+                flagOK = readBytesAsUInt16((int)tabOffset, ref tabVersion);
 
                 if (flagOK)
                 {
@@ -4842,14 +4842,14 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    flagOK = readByteArray((Int32)(tabOffset + 32),
+                    flagOK = readByteArray((int)(tabOffset + 32),
                                             cSizePanose,
                                             ref _OS_2_panose);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = readBytesAsUInt16((Int32)(tabOffset + 62),
+                    flagOK = readBytesAsUInt16((int)(tabOffset + 62),
                                                 ref _OS_2_fsSelection);
                 }
 
@@ -4857,7 +4857,7 @@ namespace PCLParaphernalia
                 {
                     _OS_2_sTypoDescender = 0;
 
-                    flagOK = readBytesAsInt16((Int32)(tabOffset + 70),
+                    flagOK = readBytesAsInt16((int)(tabOffset + 70),
                                                ref _OS_2_sTypoDescender);
                 }
 
@@ -4866,7 +4866,7 @@ namespace PCLParaphernalia
                     _OS_2_sxHeight = 0;
 
                     if (tabLength >= 88)
-                        flagOK = readBytesAsInt16((Int32)(tabOffset + 86),
+                        flagOK = readBytesAsInt16((int)(tabOffset + 86),
                                                    ref _OS_2_sxHeight);
                 }
 
@@ -4885,8 +4885,8 @@ namespace PCLParaphernalia
 
                 if (_logVerbose)
                 {
-                    String usWeightClassDesc = "";
-                    String usWidthClassDesc = "";
+                    string usWeightClassDesc = "";
+                    string usWidthClassDesc = "";
 
                     StringBuilder fsTypeDesc = new StringBuilder();
                     StringBuilder fsSelDesc = new StringBuilder();
@@ -5062,7 +5062,7 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    String licenceText = "";
+                    string licenceText = "";
 
                     eLicenceType licenceType = checkLicence(ref licenceText);
 
@@ -5119,13 +5119,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean readData_PCLT()
+        private bool readData_PCLT()
         {
-            String tabName = "PCLT";
+            string tabName = "PCLT";
 
-            Boolean flagOK = true;
+            bool flagOK = true;
 
-            UInt32 tabOffset = 0,
+            uint tabOffset = 0,
                    tabLength = 0,
                    reqLength;
 
@@ -5163,14 +5163,14 @@ namespace PCLParaphernalia
             }
             else
             {
-                UInt32 version = 0;
+                uint version = 0;
 
-                Byte[] charComp = new Byte[8];
-                Byte[] fileName = new Byte[6];
+                byte[] charComp = new byte[8];
+                byte[] fileName = new byte[6];
 
                 _tabPCLTPresent = true;
 
-                flagOK = readBytesAsUInt32((Int32)tabOffset,
+                flagOK = readBytesAsUInt32((int)tabOffset,
                                             ref version);
 
                 if (flagOK)
@@ -5378,17 +5378,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean readData_post()
+        private bool readData_post()
         {
-            String tabName = "post";
+            string tabName = "post";
 
-            Boolean flagOK = true;
+            bool flagOK = true;
 
-            UInt32 tabOffset = 0,
+            uint tabOffset = 0,
                    tabLength = 0,
                    minLength;
 
-            UInt16 tabVersion = 0;
+            ushort tabVersion = 0;
 
             flagOK = true;
 
@@ -5413,11 +5413,11 @@ namespace PCLParaphernalia
             }
             else
             {
-                flagOK = readBytesAsUInt16((Int32)tabOffset, ref tabVersion);
+                flagOK = readBytesAsUInt16((int)tabOffset, ref tabVersion);
 
                 if (flagOK)
                 {
-                    flagOK = readBytesAsUInt32((Int32)(tabOffset + 12),
+                    flagOK = readBytesAsUInt32((int)(tabOffset + 12),
                                                 ref _post_isFixedPitch);
                 }
 
@@ -5429,7 +5429,7 @@ namespace PCLParaphernalia
 
                 if (_logVerbose)
                 {
-                    String text;
+                    string text;
 
                     if (_post_isFixedPitch == 0)
                         text = " (= proportionally-spaced)";
@@ -5466,19 +5466,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean readData_ttcf(ref Boolean typeTTC,
-                                       ref UInt32 numFonts)
+        private bool readData_ttcf(ref bool typeTTC,
+                                       ref uint numFonts)
         {
-            String tabName = "ttcf";
+            string tabName = "ttcf";
 
-            Boolean flagOK = true;
+            bool flagOK = true;
 
             //    UInt32 tabOffset = 0,
             //           tabLength = 0,
             //           reqLength;
 
-            UInt32 tabVersion = 0;
-            UInt32 tabId = 0;
+            uint tabVersion = 0;
+            uint tabId = 0;
 
             typeTTC = false;
 
@@ -5494,7 +5494,7 @@ namespace PCLParaphernalia
             }
             else if (tabId == cTabID_ttcf)
             {
-                UInt32[] offsets;
+                uint[] offsets;
 
                 typeTTC = true;
 
@@ -5507,16 +5507,16 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    offsets = new UInt32[numFonts];
+                    offsets = new uint[numFonts];
 
-                    for (Int32 i = 0; i < numFonts; i++)
+                    for (int i = 0; i < numFonts; i++)
                     {
                         flagOK = readBytesAsUInt32(-1, ref offsets[i]);
                     }
                 }
                 else
                 {
-                    offsets = new UInt32[0];
+                    offsets = new uint[0];
                     numFonts = 0;
                 }
 
@@ -5546,7 +5546,7 @@ namespace PCLParaphernalia
                         "numFonts = " +
                         numFonts.ToString());
 
-                    for (Int32 i = 0; i < numFonts; i++)
+                    for (int i = 0; i < numFonts; i++)
                     {
                         ToolSoftFontGenLog.logNameAndValue(
                             _tableDonor, false, false,
@@ -5571,17 +5571,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean readData_vhea()
+        private bool readData_vhea()
         {
-            String tabName = "vhea";
+            string tabName = "vhea";
 
-            Boolean flagOK = true;
+            bool flagOK = true;
 
-            UInt32 tabOffset = 0,
+            uint tabOffset = 0,
                    tabLength = 0,
                    reqLength;
 
-            UInt32 tabVersion = 0;
+            uint tabVersion = 0;
 
             flagOK = true;
 
@@ -5600,7 +5600,7 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                flagOK = readBytesAsUInt32((Int32)tabOffset, ref tabVersion);
+                flagOK = readBytesAsUInt32((int)tabOffset, ref tabVersion);
 
                 if (!flagOK)
                 {
@@ -5622,7 +5622,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    flagOK = readBytesAsUInt16((Int32)(tabOffset + 34),
+                    flagOK = readBytesAsUInt16((int)(tabOffset + 34),
                                                ref _vhea_numVMetrics);
                 }
             }
@@ -5656,19 +5656,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean readData_vmtx()
+        private bool readData_vmtx()
         {
-            String tabName = "vmtx";
+            string tabName = "vmtx";
 
-            Boolean flagOK = true;
+            bool flagOK = true;
 
-            UInt32 tabOffset = 0,
+            uint tabOffset = 0,
                    tabLength = 0,
                    reqLength;
 
-            Int32 vMetricsArrayLen = 0,
+            int vMetricsArrayLen = 0,
                   tsbArrayLen = 0;
-            Int32 vMetricsArraySize = 0,
+            int vMetricsArraySize = 0,
                   tsbArraySize = 0;
 
             flagOK = true;
@@ -5683,7 +5683,7 @@ namespace PCLParaphernalia
             vMetricsArraySize = 4 * vMetricsArrayLen;
             tsbArraySize = 2 * tsbArrayLen;
 
-            reqLength = (UInt32)(vMetricsArraySize + tsbArraySize);
+            reqLength = (uint)(vMetricsArraySize + tsbArraySize);
 
             if (_vhea_numVMetrics < 1)
             {
@@ -5714,10 +5714,10 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                Byte[] vMetricsArray = new Byte[vMetricsArraySize];
-                Byte[] tsbArray = new Byte[tsbArraySize];
+                byte[] vMetricsArray = new byte[vMetricsArraySize];
+                byte[] tsbArray = new byte[tsbArraySize];
 
-                flagOK = readByteArray((Int32)tabOffset,
+                flagOK = readByteArray((int)tabOffset,
                                         vMetricsArraySize,
                                         ref vMetricsArray);
 
@@ -5732,36 +5732,36 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    UInt16 glyphId = 0,
+                    ushort glyphId = 0,
                            advance = 0;
 
-                    Int16 tsb;
+                    short tsb;
 
-                    UInt32 advanceOffset,
+                    uint advanceOffset,
                            tsbOffset;
 
-                    for (Int32 indx = 0; indx < vMetricsArrayLen; indx++)
+                    for (int indx = 0; indx < vMetricsArrayLen; indx++)
                     {
-                        advanceOffset = (UInt32)(indx * 4);
+                        advanceOffset = (uint)(indx * 4);
                         tsbOffset = advanceOffset + 2;
 
-                        advance = (UInt16)((vMetricsArray[advanceOffset] << 8) +
+                        advance = (ushort)((vMetricsArray[advanceOffset] << 8) +
                                              vMetricsArray[advanceOffset + 1]);
 
-                        tsb = (Int16)((vMetricsArray[tsbOffset] << 8) +
+                        tsb = (short)((vMetricsArray[tsbOffset] << 8) +
                                         vMetricsArray[tsbOffset + 1]);
 
                         _glyphData[indx].setMetricsV(advance, tsb);
                     }
 
-                    for (Int32 indx = 0; indx < tsbArrayLen; indx++)
+                    for (int indx = 0; indx < tsbArrayLen; indx++)
                     {
-                        tsbOffset = (UInt32)(indx * 2);
+                        tsbOffset = (uint)(indx * 2);
 
-                        tsb = (Int16)((tsbArray[tsbOffset] << 8) +
+                        tsb = (short)((tsbArray[tsbOffset] << 8) +
                                         tsbArray[tsbOffset + 1]);
 
-                        glyphId = (UInt16)(vMetricsArrayLen + indx);
+                        glyphId = (ushort)(vMetricsArrayLen + indx);
 
                         _glyphData[glyphId].setMetricsV(advance, tsb);
                     }
@@ -5782,17 +5782,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean readTableDirectory(Int32 dirOffset,
-                                           Boolean getTTCData)
+        private bool readTableDirectory(int dirOffset,
+                                           bool getTTCData)
         {
-            Boolean flagOK = true;
+            bool flagOK = true;
 
-            UInt16 numTables = 0;
-            UInt32 tabTag = 0,
+            ushort numTables = 0;
+            uint tabTag = 0,
                    tabChecksum = 0;
-            UInt32 tabOffset = 0,
+            uint tabOffset = 0,
                    tabLength = 0;
-            Int32 padBytes = 0;
+            int padBytes = 0;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -5856,7 +5856,7 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                Byte[] tabName = new Byte[4];
+                byte[] tabName = new byte[4];
 
                 if (_logVerbose && !getTTCData)
                 {
@@ -5896,7 +5896,7 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        padBytes = (Int32)(tabLength % 4);
+                        padBytes = (int)(tabLength % 4);
 
                         if (padBytes != 0)
                             padBytes = 4 - padBytes;
@@ -6024,10 +6024,10 @@ namespace PCLParaphernalia
                             ToolSoftFontGenLog.logNameAndValue(
                                 _tableDonor, false, false,
                                 "DIAG: table = " +
-                                ((Char)tabName[0]).ToString() +
-                                ((Char)tabName[1]).ToString() +
-                                ((Char)tabName[2]).ToString() +
-                                ((Char)tabName[3]).ToString() + ":",
+                                ((char)tabName[0]).ToString() +
+                                ((char)tabName[1]).ToString() +
+                                ((char)tabName[2]).ToString() +
+                                ((char)tabName[3]).ToString() + ":",
                                 "(0x" + tabTag.ToString("x8") +
                                 "); offset = " + tabOffset +
                                 "; length = " + tabLength);
@@ -6102,7 +6102,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 SizeCharSet
+        public int SizeCharSet
         {
             get { return _sizeCharSet; }
             set { _sizeCharSet = value; }
@@ -6118,7 +6118,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean TablevmtxPresent
+        public bool TablevmtxPresent
         {
             get { return _tabvmtxPresent; }
         }
@@ -6133,7 +6133,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Byte[] TypefaceName
+        public byte[] TypefaceName
         {
             get
             {

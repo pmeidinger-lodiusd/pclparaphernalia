@@ -19,7 +19,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private PJLVariables.eVarType _varType;
-        private String _varName;
+        private string _varName;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -28,7 +28,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PJLVariable(PJLVariables.eVarType type,
-                           String name)
+                           string name)
         {
             _varType = type;
             _varName = name;
@@ -43,7 +43,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String getName()
+        public string getName()
         {
             return _varName;
         }

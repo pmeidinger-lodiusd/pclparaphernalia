@@ -26,18 +26,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static Boolean _showMacroData = true;
+        static bool _showMacroData = true;
 
         static PrnParse.eParseType _parseType;
 
-        static Int32 _macroLevel = 0;
+        static int _macroLevel = 0;
 
-        static String _colName_RowType = PrnParseConstants.cRptA_colName_RowType;
-        static String _colName_Action = PrnParseConstants.cRptA_colName_Action;
-        static String _colName_Offset = PrnParseConstants.cRptA_colName_Offset;
-        static String _colName_Type = PrnParseConstants.cRptA_colName_Type;
-        static String _colName_Seq = PrnParseConstants.cRptA_colName_Seq;
-        static String _colName_Desc = PrnParseConstants.cRptA_colName_Desc;
+        static string _colName_RowType = PrnParseConstants.cRptA_colName_RowType;
+        static string _colName_Action = PrnParseConstants.cRptA_colName_Action;
+        static string _colName_Offset = PrnParseConstants.cRptA_colName_Offset;
+        static string _colName_Type = PrnParseConstants.cRptA_colName_Type;
+        static string _colName_Seq = PrnParseConstants.cRptA_colName_Seq;
+        static string _colName_Desc = PrnParseConstants.cRptA_colName_Desc;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -53,11 +53,11 @@ namespace PCLParaphernalia
             DataTable table,
             PrnParseConstants.eOvlShow makeOvlShow,
             PrnParseConstants.eOptOffsetFormats indxOffsetFormat,
-            Int32 offset,
-            Int32 level,
-            String type,
-            String seq,
-            String desc)
+            int offset,
+            int level,
+            string type,
+            string seq,
+            string desc)
         {
             if (_parseType == PrnParse.eParseType.ScanForPDL)
             {
@@ -91,17 +91,17 @@ namespace PCLParaphernalia
             {
                 DataRow row;
 
-                String offsetText;
+                string offsetText;
 
                 row = table.NewRow();
 
                 if (offset < 0)
                 {
                     if (offset ==
-                        (Int32)PrnParseConstants.eOffsetPosition.StartOfFile)
+                        (int)PrnParseConstants.eOffsetPosition.StartOfFile)
                         offsetText = "<Start>";
                     else if (offset ==
-                        (Int32)PrnParseConstants.eOffsetPosition.EndOfFile)
+                        (int)PrnParseConstants.eOffsetPosition.EndOfFile)
                         offsetText = "<End>";
                     else
                         offsetText = "";
@@ -112,18 +112,18 @@ namespace PCLParaphernalia
                         PrnParseConstants.eOptOffsetFormats.Decimal)
                     {
                         if (level == 0)
-                            offsetText = String.Format("{0:d10}", offset);
+                            offsetText = string.Format("{0:d10}", offset);
                         else
-                            offsetText = String.Format("{0:d2}", level) + ":" +
-                                         String.Format("{0:d10}", offset);
+                            offsetText = string.Format("{0:d2}", level) + ":" +
+                                         string.Format("{0:d10}", offset);
                     }
                     else
                     {
                         if (level == 0)
-                            offsetText = String.Format("{0:x8}", offset);
+                            offsetText = string.Format("{0:x8}", offset);
                         else
-                            offsetText = String.Format("{0:x2}", level) + ":" +
-                                         String.Format("{0:x8}", offset);
+                            offsetText = string.Format("{0:x2}", level) + ":" +
+                                         string.Format("{0:x8}", offset);
                     }
                 }
 
@@ -133,7 +133,7 @@ namespace PCLParaphernalia
                     row[_colName_Action] = makeOvlShow.ToString();
                 }
 
-                row[_colName_RowType] = (Int32)rowType;
+                row[_colName_RowType] = (int)rowType;
                 // row[_colName_RowType] = rowType.ToString(); // **** DIAG ************
                 row[_colName_Offset] = offsetText;
                 row[_colName_Type] = type;
@@ -157,10 +157,10 @@ namespace PCLParaphernalia
             PrnParseRowTypes.eType rowType,
             DataTable table,
             PrnParseConstants.eOvlShow makeOvlShow,
-            String offsetText,
-            String type,
-            String seq,
-            String desc)
+            string offsetText,
+            string type,
+            string seq,
+            string desc)
         {
             if (_parseType == PrnParse.eParseType.ScanForPDL)
             {
@@ -204,7 +204,7 @@ namespace PCLParaphernalia
                         row[_colName_Action] = "";
                 }
 
-                row[_colName_RowType] = (Int32)rowType;
+                row[_colName_RowType] = (int)rowType;
                 // row[_colName_RowType] = rowType.ToString(); // **** DIAG ************
                 row[_colName_Offset] = offsetText;
                 row[_colName_Type] = type;
@@ -220,27 +220,27 @@ namespace PCLParaphernalia
         // b y t e A r r a y T o H e x S t r i n g                            //
         //--------------------------------------------------------------------//
 
-        public static String byteArrayToHexString(Byte[] byteArray,
-                                                  Int32 startByte,
-                                                  Int32 byteCt)
+        public static string byteArrayToHexString(byte[] byteArray,
+                                                  int startByte,
+                                                  int byteCt)
         {
-            const Int32 triplet = 3;
+            const int triplet = 3;
 
-            Int32 arrayLen = byteArray.Length;
+            int arrayLen = byteArray.Length;
 
-            Char[] chars = new Char[byteCt * triplet];
+            char[] chars = new char[byteCt * triplet];
 
-            for (Int32 i = 0; i < byteCt; i++)
+            for (int i = 0; i < byteCt; i++)
             {
-                Int32 b = byteArray[startByte + i];
-                Int32 j = i * triplet;
+                int b = byteArray[startByte + i];
+                int j = i * triplet;
 
                 chars[j] = PrnParseConstants.cHexChars[b >> 4];
                 chars[j + 1] = PrnParseConstants.cHexChars[b & 0xF];
-                chars[j + 2] = (Char)PrnParseConstants.asciiSpace;
+                chars[j + 2] = (char)PrnParseConstants.asciiSpace;
             }
 
-            return new String(chars);
+            return new string(chars);
         }
 
         //--------------------------------------------------------------------//
@@ -248,26 +248,26 @@ namespace PCLParaphernalia
         // b y t e A r r a y P a i r T o H e x S t r i n g                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean byteArrayPairToHexString(Byte[] byteArray,
-                                                        Int32 startByte,
-                                                        Int32 byteCt,
-                                                        ref String hexData)
+        public static bool byteArrayPairToHexString(byte[] byteArray,
+                                                        int startByte,
+                                                        int byteCt,
+                                                        ref string hexData)
         {
-            const Int32 quintet = 5;
+            const int quintet = 5;
 
-            Boolean all_ffs = true;
+            bool all_ffs = true;
 
-            Int32 pairCt = byteCt / 2;
+            int pairCt = byteCt / 2;
 
-            Int32 b,
+            int b,
                   c;
 
-            Int32 j,
+            int j,
                   k;
 
-            Char[] chars = new Char[pairCt * quintet];
+            char[] chars = new char[pairCt * quintet];
 
-            for (Int32 i = 0; i < pairCt; i++)
+            for (int i = 0; i < pairCt; i++)
             {
                 k = i * 2;
 
@@ -283,10 +283,10 @@ namespace PCLParaphernalia
                 chars[j + 1] = PrnParseConstants.cHexChars[b & 0xF];
                 chars[j + 2] = PrnParseConstants.cHexChars[c >> 4];
                 chars[j + 3] = PrnParseConstants.cHexChars[c & 0xF];
-                chars[j + 4] = (Char)PrnParseConstants.asciiSpace;
+                chars[j + 4] = (char)PrnParseConstants.asciiSpace;
             }
 
-            hexData = new String(chars);
+            hexData = new string(chars);
 
             //    return new String(chars);
             return all_ffs;
@@ -297,16 +297,16 @@ namespace PCLParaphernalia
         // b y t e T o H e x S t r i n g                                      //
         //--------------------------------------------------------------------//
 
-        public static String byteToHexString(Byte byteVal)
+        public static string byteToHexString(byte byteVal)
         {
-            Char[] chars = new Char[2];
+            char[] chars = new char[2];
 
-            Int32 b = byteVal;
+            int b = byteVal;
 
             chars[0] = PrnParseConstants.cHexChars[b >> 4];
             chars[1] = PrnParseConstants.cHexChars[b & 0xF];
 
-            return new String(chars);
+            return new string(chars);
         }
 
         //--------------------------------------------------------------------//
@@ -314,9 +314,9 @@ namespace PCLParaphernalia
         // b y t e T o S t r i n g                                            //
         //--------------------------------------------------------------------//
 
-        public static String byteToString(Byte byteVal)
+        public static string byteToString(byte byteVal)
         {
-            return ((Char)byteVal).ToString();
+            return ((char)byteVal).ToString();
         }
 
         //--------------------------------------------------------------------//
@@ -338,7 +338,7 @@ namespace PCLParaphernalia
         // i s A l p h a b e t i c                                            //
         //--------------------------------------------------------------------//
 
-        public static Boolean isAlphabetic(Byte byteVal)
+        public static bool isAlphabetic(byte byteVal)
         {
             if (((byteVal >= PrnParseConstants.asciiAlphaLCMin)
                                    &&
@@ -375,8 +375,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setDisplayCriteria(Boolean showMacroData,
-                                              Int32 macroLevel)
+        public static void setDisplayCriteria(bool showMacroData,
+                                              int macroLevel)
         {
             _showMacroData = showMacroData;
             _macroLevel = macroLevel;

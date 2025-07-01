@@ -21,14 +21,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Int32 cSizeHddrFixed = 18;
+        const int cSizeHddrFixed = 18;
 
-        const Int32 cSizeCharSet_8bit = 256;
-        const Int32 cCodePointUnused = 65535;
-        const Int32 cCodePointC0Min = 0x00;
-        const Int32 cCodePointC0Max = 0x1f;
-        const Int32 cCodePointC1Min = 0x80;
-        const Int32 cCodePointC1Max = 0x9f;
+        const int cSizeCharSet_8bit = 256;
+        const int cCodePointUnused = 65535;
+        const int cCodePointC0Min = 0x00;
+        const int cCodePointC0Max = 0x1f;
+        const int cCodePointC1Min = 0x80;
+        const int cCodePointC1Max = 0x9f;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -59,17 +59,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean generateSymSet(ref String symSetFilename,
-                                       Boolean flagIgnoreC0,
-                                       Boolean flagIgnoreC1,
-                                       UInt16 symSetNo,
-                                       UInt16 codeMin,
-                                       UInt16 codeMax,
-                                       UInt64 charCollReq,
-                                       UInt16[] symSetMap,
+        public bool generateSymSet(ref string symSetFilename,
+                                       bool flagIgnoreC0,
+                                       bool flagIgnoreC1,
+                                       ushort symSetNo,
+                                       ushort codeMin,
+                                       ushort codeMax,
+                                       ulong charCollReq,
+                                       ushort[] symSetMap,
                                        PCLSymSetTypes.eIndex symSetType)
         {
-            Boolean flagOK = true;
+            bool flagOK = true;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -111,7 +111,7 @@ namespace PCLParaphernalia
                     //--------------------------------------------------------//
 
                     PCLWriter.symSetDownloadCode(_binWriter,
-                                                  (UInt16)symSetNo);
+                                                  (ushort)symSetNo);
 
                     //--------------------------------------------------------//
                     //                                                        //
@@ -120,7 +120,7 @@ namespace PCLParaphernalia
                     //--------------------------------------------------------//
 
                     writeHddr(symSetNo, codeMin, codeMax, charCollReq,
-                               PCLSymSetTypes.getIdPCL((Int32)symSetType));
+                               PCLSymSetTypes.getIdPCL((int)symSetType));
 
                     //--------------------------------------------------------//
                     //                                                        //
@@ -172,9 +172,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Byte lsByte(UInt16 value)
+        private byte lsByte(ushort value)
         {
-            return (Byte)(value & 0x00ff);
+            return (byte)(value & 0x00ff);
         }
 
         //--------------------------------------------------------------------//
@@ -187,9 +187,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private UInt16 lsUInt16(UInt32 value)
+        private ushort lsUInt16(uint value)
         {
-            return (UInt16)(value & 0x0000ffff);
+            return (ushort)(value & 0x0000ffff);
         }
 
         //--------------------------------------------------------------------//
@@ -202,9 +202,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private UInt32 lsUInt32(UInt64 value)
+        private uint lsUInt32(ulong value)
         {
-            return (UInt32)(value & 0x0000ffffffff);
+            return (uint)(value & 0x0000ffffffff);
         }
 
         //--------------------------------------------------------------------//
@@ -217,9 +217,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Byte msByte(UInt16 value)
+        private byte msByte(ushort value)
         {
-            return (Byte)((value & 0xff00) >> 8);
+            return (byte)((value & 0xff00) >> 8);
         }
 
         //--------------------------------------------------------------------//
@@ -232,9 +232,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private UInt16 msUInt16(UInt32 value)
+        private ushort msUInt16(uint value)
         {
-            return (UInt16)((value & 0xffff0000) >> 16);
+            return (ushort)((value & 0xffff0000) >> 16);
         }
 
         //--------------------------------------------------------------------//
@@ -247,9 +247,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private UInt32 msUInt32(UInt64 value)
+        private uint msUInt32(ulong value)
         {
-            return (UInt32)((value & 0xffffffff00000000) >> 32);
+            return (uint)((value & 0xffffffff00000000) >> 32);
         }
 
         //--------------------------------------------------------------------//
@@ -262,17 +262,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void streamOpen(ref String symSetFilename,
+        public void streamOpen(ref string symSetFilename,
                                 ref BinaryWriter binWriter,
                                 ref Stream opStream)
         {
             SaveFileDialog saveDialog;
 
-            Int32 ptr,
+            int ptr,
                   len;
 
-            String saveDirectory;
-            String tmpFilename;
+            string saveDirectory;
+            string tmpFilename;
 
             ptr = symSetFilename.LastIndexOf("\\");
 
@@ -326,8 +326,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void writeBuffer(Int32 bufLen,
-                                 Byte[] buffer)
+        public void writeBuffer(int bufLen,
+                                 byte[] buffer)
         {
             _binWriter.Write(buffer, 0, bufLen);
         }
@@ -342,20 +342,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void writeHddr(UInt16 symSetNo,
-                                UInt16 codeMin,
-                                UInt16 codeMax,
-                                UInt64 charCollReq,
-                                Byte symSetType)
+        private void writeHddr(ushort symSetNo,
+                                ushort codeMin,
+                                ushort codeMax,
+                                ulong charCollReq,
+                                byte symSetType)
         {
-            Int32 mapSize;
-            Int32 descSize;
+            int mapSize;
+            int descSize;
 
-            UInt16 valUInt16;
+            ushort valUInt16;
 
-            UInt32 valUInt32;
+            uint valUInt32;
 
-            Byte[] hddrDesc = new Byte[cSizeHddrFixed];
+            byte[] hddrDesc = new byte[cSizeHddrFixed];
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -367,7 +367,7 @@ namespace PCLParaphernalia
             mapSize = (codeMax - codeMin + 1) * 2;
             descSize = mapSize + cSizeHddrFixed;
 
-            PCLWriter.symSetDownloadDesc(_binWriter, (UInt32)descSize);
+            PCLWriter.symSetDownloadDesc(_binWriter, (uint)descSize);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -418,18 +418,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void writeMapData(Boolean flagIgnoreC1,
-                                   UInt16 codeMin,
-                                   UInt16 codeMax,
-                                   UInt16[] symSetMap)
+        private void writeMapData(bool flagIgnoreC1,
+                                   ushort codeMin,
+                                   ushort codeMax,
+                                   ushort[] symSetMap)
         {
-            Int32 mapSize = (codeMax - codeMin + 1) * 2;
+            int mapSize = (codeMax - codeMin + 1) * 2;
 
-            Byte[] mapArray = new Byte[mapSize];
+            byte[] mapArray = new byte[mapSize];
 
-            for (Int32 i = codeMin; i <= codeMax; i++)
+            for (int i = codeMin; i <= codeMax; i++)
             {
-                Int32 j = (i - codeMin) * 2;
+                int j = (i - codeMin) * 2;
 
                 if ((flagIgnoreC1) &&
                     ((i >= cCodePointC1Min) && (i <= cCodePointC1Max)))

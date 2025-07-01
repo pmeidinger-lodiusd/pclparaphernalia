@@ -44,7 +44,7 @@ namespace PCLParaphernalia
                                 "SIMMs/DIMMs")
         };
 
-        private static Int32 _locationTypeCount =
+        private static int _locationTypeCount =
             _locationTypes.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
@@ -56,7 +56,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getCount()
+        public static int getCount()
         {
             return _locationTypeCount;
         }
@@ -70,7 +70,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getIdPCL(Int32 selection)
+        public static string getIdPCL(int selection)
         {
             return _locationTypes[selection].getIdPCL();
         }
@@ -84,7 +84,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getName(Int32 selection)
+        public static string getName(int selection)
         {
             return _locationTypes[selection].getName();
         }
@@ -98,7 +98,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eType getType(Int32 selection)
+        public static eType getType(int selection)
         {
             return _locationTypes[selection].getType();
         }

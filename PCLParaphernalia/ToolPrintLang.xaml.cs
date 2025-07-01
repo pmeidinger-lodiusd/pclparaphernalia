@@ -59,33 +59,33 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Int32[] _subsetTypes =
+        private static int[] _subsetTypes =
         {
             // must be in same order as eInfoType enumeration
 
-            (Int32) ToolCommonData.eToolSubIds.PCL,
-            (Int32) ToolCommonData.eToolSubIds.HPGL2,
-            (Int32) ToolCommonData.eToolSubIds.PCLXLTags,
-            (Int32) ToolCommonData.eToolSubIds.PCLXLEnums,
-            (Int32) ToolCommonData.eToolSubIds.PJLCmds,
-            (Int32) ToolCommonData.eToolSubIds.PMLTags,
-            (Int32) ToolCommonData.eToolSubIds.SymbolSets,
-            (Int32) ToolCommonData.eToolSubIds.Fonts,
-            (Int32) ToolCommonData.eToolSubIds.PaperSizes,
-            (Int32) ToolCommonData.eToolSubIds.PrescribeCmds
+            (int) ToolCommonData.eToolSubIds.PCL,
+            (int) ToolCommonData.eToolSubIds.HPGL2,
+            (int) ToolCommonData.eToolSubIds.PCLXLTags,
+            (int) ToolCommonData.eToolSubIds.PCLXLEnums,
+            (int) ToolCommonData.eToolSubIds.PJLCmds,
+            (int) ToolCommonData.eToolSubIds.PMLTags,
+            (int) ToolCommonData.eToolSubIds.SymbolSets,
+            (int) ToolCommonData.eToolSubIds.Fonts,
+            (int) ToolCommonData.eToolSubIds.PaperSizes,
+            (int) ToolCommonData.eToolSubIds.PrescribeCmds
         };
 
-        private Int32 _ctItems = 0;
-        private Int32 _ctTypes = 0;
-        private Int32 _indxType = 0;
+        private int _ctItems = 0;
+        private int _ctTypes = 0;
+        private int _indxType = 0;
 
-        private Boolean _flagPCLSeqControl = false,
+        private bool _flagPCLSeqControl = false,
                         _flagPCLSeqSimple = false,
                         _flagPCLSeqComplex = false,
                         _flagPCLOptObsolete = false,
                         _flagPCLOptDiscrete = false;
 
-        private Boolean _flagPCLXLTagDataType = false,
+        private bool _flagPCLXLTagDataType = false,
                         _flagPCLXLTagAttribute = false,
                         _flagPCLXLTagOperator = false,
                         _flagPCLXLTagAttrDef = false,
@@ -93,19 +93,19 @@ namespace PCLParaphernalia
                         _flagPCLXLTagWhitespace = false,
                         _flagPCLXLOptReserved = false;
 
-        private Boolean _flagPMLTagDataType = false,
+        private bool _flagPMLTagDataType = false,
                         _flagPMLTagAction = false,
                         _flagPMLTagOutcome = false;
 
-        private Boolean _flagSymSetList = false;
+        private bool _flagSymSetList = false;
 
-        private Boolean _flagSymSetMap = false;
+        private bool _flagSymSetMap = false;
 
         private eSymSetMapType _symSetMapType = eSymSetMapType.Std;
 
-        private Boolean _initialised = false;
+        private bool _initialised = false;
 
-        private static String _saveFilename;
+        private static string _saveFilename;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -170,7 +170,7 @@ namespace PCLParaphernalia
 
         private void btnSaveReport_Click(object sender, EventArgs e)
         {
-            Boolean flagOptRptWrap = false;
+            bool flagOptRptWrap = false;
 
             ReportCore.eRptFileFmt rptFileFmt = ReportCore.eRptFileFmt.NA;
             ReportCore.eRptChkMarks rptChkMarks = ReportCore.eRptChkMarks.NA;
@@ -1242,7 +1242,7 @@ namespace PCLParaphernalia
 
         private void metricsLoad()
         {
-            Int32 tmpInt = 0;
+            int tmpInt = 0;
 
             ToolPrintLangPersist.loadDataCommon(ref _indxType,
                                                  ref _saveFilename);
@@ -1273,9 +1273,9 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if ((_indxType < 0) || (_indxType >= _ctTypes))
-                _indxType = (Int32)eInfoType.PCL;
+                _indxType = (int)eInfoType.PCL;
 
-            if ((tmpInt < 0) || (tmpInt >= (Int32)eSymSetMapType.Max))
+            if ((tmpInt < 0) || (tmpInt >= (int)eSymSetMapType.Max))
                 _symSetMapType = eSymSetMapType.Both;
             else
                 _symSetMapType = (eSymSetMapType)tmpInt;
@@ -1379,7 +1379,7 @@ namespace PCLParaphernalia
             ToolPrintLangPersist.saveDataFonts(_flagSymSetList);
 
             ToolPrintLangPersist.saveDataSymSets(_flagSymSetMap,
-                                                  (Int32)_symSetMapType);
+                                                  (int)_symSetMapType);
         }
 
         //--------------------------------------------------------------------//
@@ -1393,7 +1393,7 @@ namespace PCLParaphernalia
 
         private void rbSelTypeFonts_Click(object sender, RoutedEventArgs e)
         {
-            _indxType = (Int32)eInfoType.Fonts;
+            _indxType = (int)eInfoType.Fonts;
 
             tabInfoType.SelectedItem = tabFonts;
 
@@ -1413,7 +1413,7 @@ namespace PCLParaphernalia
 
         private void rbSelTypeHPGL2_Click(object sender, RoutedEventArgs e)
         {
-            _indxType = (Int32)eInfoType.HPGL2;
+            _indxType = (int)eInfoType.HPGL2;
 
             tabInfoType.SelectedItem = tabHPGL2;
 
@@ -1434,7 +1434,7 @@ namespace PCLParaphernalia
         private void rbSelTypePaperSizes_Click(object sender,
                                                RoutedEventArgs e)
         {
-            _indxType = (Int32)eInfoType.PaperSizes;
+            _indxType = (int)eInfoType.PaperSizes;
 
             tabInfoType.SelectedItem = tabPaperSizes;
 
@@ -1454,7 +1454,7 @@ namespace PCLParaphernalia
 
         private void rbSelTypePCL_Click(object sender, RoutedEventArgs e)
         {
-            _indxType = (Int32)eInfoType.PCL;
+            _indxType = (int)eInfoType.PCL;
 
             tabInfoType.SelectedItem = tabPCL;
 
@@ -1474,7 +1474,7 @@ namespace PCLParaphernalia
 
         private void rbSelTypePCLXLEnums_Click(object sender, RoutedEventArgs e)
         {
-            _indxType = (Int32)eInfoType.PCLXLEnums;
+            _indxType = (int)eInfoType.PCLXLEnums;
 
             tabInfoType.SelectedItem = tabPCLXLEnums;
 
@@ -1494,7 +1494,7 @@ namespace PCLParaphernalia
 
         private void rbSelTypePCLXLTags_Click(object sender, RoutedEventArgs e)
         {
-            _indxType = (Int32)eInfoType.PCLXLTags;
+            _indxType = (int)eInfoType.PCLXLTags;
 
             tabInfoType.SelectedItem = tabPCLXLTags;
 
@@ -1514,7 +1514,7 @@ namespace PCLParaphernalia
 
         private void rbSelTypePJLCmds_Click(object sender, RoutedEventArgs e)
         {
-            _indxType = (Int32)eInfoType.PJLCmds;
+            _indxType = (int)eInfoType.PJLCmds;
 
             tabInfoType.SelectedItem = tabPJLCmds;
 
@@ -1534,7 +1534,7 @@ namespace PCLParaphernalia
 
         private void rbSelTypePMLTags_Click(object sender, RoutedEventArgs e)
         {
-            _indxType = (Int32)eInfoType.PMLTags;
+            _indxType = (int)eInfoType.PMLTags;
 
             tabInfoType.SelectedItem = tabPMLTags;
 
@@ -1555,7 +1555,7 @@ namespace PCLParaphernalia
         private void rbSelTypePrescribeCmds_Click(object sender,
                                                    RoutedEventArgs e)
         {
-            _indxType = (Int32)eInfoType.PrescribeCmds;
+            _indxType = (int)eInfoType.PrescribeCmds;
 
             tabInfoType.SelectedItem = tabPrescribeCmds;
 
@@ -1575,7 +1575,7 @@ namespace PCLParaphernalia
 
         private void rbSelTypeSymbolSets_Click(object sender, RoutedEventArgs e)
         {
-            _indxType = (Int32)eInfoType.SymbolSets;
+            _indxType = (int)eInfoType.SymbolSets;
 
             tabInfoType.SelectedItem = tabSymbolSets;
 
@@ -2198,7 +2198,7 @@ namespace PCLParaphernalia
             DataGridCheckBoxColumn colFlagMapStd = null;
             DataGridCheckBoxColumn colFlagMapPCL = null;
 
-            Boolean showMaps = _flagSymSetMap;
+            bool showMaps = _flagSymSetMap;
 
             if (showMaps)
             {

@@ -52,26 +52,26 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean decodeAlphaNumericID(
-            Int32 binDataLen,
-            Int32 fileOffset,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        public bool decodeAlphaNumericID(
+            int binDataLen,
+            int fileOffset,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            const Int32 lenMin = 1;
-            const Int32 lenMax = 512;   // must be less than buffer size 
+            const int lenMin = 1;
+            const int lenMax = 512;   // must be less than buffer size 
 
             PrnParseConstants.eContType contType;
 
-            Byte opCode;
+            byte opCode;
 
-            Int32 binDataRem;
+            int binDataRem;
 
-            Boolean dataOK,
+            bool dataOK,
                     dummyBool = false;
 
             //----------------------------------------------------------------//
@@ -132,12 +132,12 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                String codeVal,
+                string codeVal,
                        codeDesc;
 
-                Int32 analysisLevel;
+                int analysisLevel;
 
-                Boolean showBinData;
+                bool showBinData;
 
                 PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
 
@@ -145,7 +145,7 @@ namespace PCLParaphernalia
                     PrnParseConstants.eOptCharSetSubActs.Hex;
                 PrnParseConstants.eOptCharSets indxCharSetName =
                     PrnParseConstants.eOptCharSets.ASCII;
-                Int32 valCharSetSubCode = 0x20;
+                int valCharSetSubCode = 0x20;
 
                 analysisLevel = linkData.AnalysisLevel;
 
@@ -290,7 +290,7 @@ namespace PCLParaphernalia
                     "String ID",
                     0,
                     indxCharSetSubAct,
-                    (Byte)valCharSetSubCode,
+                    (byte)valCharSetSubCode,
                     indxCharSetName,
                     indxOffsetFormat,
                     analysisLevel);
@@ -311,23 +311,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean decodeColourLookup(
-            Int32 binDataLen,
-            Int32 fileOffset,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        public bool decodeColourLookup(
+            int binDataLen,
+            int fileOffset,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            const Int32 lenStd = 770;   // must be less than buffer size 
+            const int lenStd = 770;   // must be less than buffer size 
 
             PrnParseConstants.eContType contType;
 
-            Int32 binDataRem;
+            int binDataRem;
 
-            Boolean dataOK;
+            bool dataOK;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -393,23 +393,23 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                const Int32 compCt = 3;
-                const Int32 mapSize = 256;  // multiple of lineLen //
-                const Int32 lineLen = 16;
+                const int compCt = 3;
+                const int mapSize = 256;  // multiple of lineLen //
+                const int lineLen = 16;
 
-                Int32 offset,
+                int offset,
                       lineBegin,
                       lineEnd;
 
-                Byte byteVal,
+                byte byteVal,
                      colourSpace;
 
-                String codeDesc,
+                string codeDesc,
                        textDesc;
 
-                Int32 analysisLevel;
+                int analysisLevel;
 
-                Boolean showBinData;
+                bool showBinData;
 
                 PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
 
@@ -520,11 +520,11 @@ namespace PCLParaphernalia
 
                 offset++;
 
-                for (Int32 i = 0; i < compCt; i++)
+                for (int i = 0; i < compCt; i++)
                 {
                     lineBegin = 0;
 
-                    for (Int32 j = 0; j < mapSize; j += lineLen)
+                    for (int j = 0; j < mapSize; j += lineLen)
                     {
                         lineEnd = lineBegin + (lineLen - 1);
 
@@ -578,24 +578,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean decodeConfigurationIO(
-            Int32 binDataLen,
-            Int32 fileOffset,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        public bool decodeConfigurationIO(
+            int binDataLen,
+            int fileOffset,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            const Int32 lenMin = 5;
-            const Int32 lenMax = 2047;   // must be less than buffer size 
+            const int lenMin = 5;
+            const int lenMax = 2047;   // must be less than buffer size 
 
             PrnParseConstants.eContType contType;
 
-            Int32 binDataRem;
+            int binDataRem;
 
-            Boolean dataOK;
+            bool dataOK;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -657,15 +657,15 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                Int32 lenKey = -1,
+                int lenKey = -1,
                       lenVal = -1,
                       dataStart;
 
-                Boolean dummyBool = false;
+                bool dummyBool = false;
 
-                Int32 analysisLevel;
+                int analysisLevel;
 
-                Boolean showBinData;
+                bool showBinData;
 
                 PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
 
@@ -673,7 +673,7 @@ namespace PCLParaphernalia
                     PrnParseConstants.eOptCharSetSubActs.Hex;
                 PrnParseConstants.eOptCharSets indxCharSetName =
                     PrnParseConstants.eOptCharSets.ASCII;
-                Int32 valCharSetSubCode = 0x20;
+                int valCharSetSubCode = 0x20;
 
                 analysisLevel = linkData.AnalysisLevel;
 
@@ -721,7 +721,7 @@ namespace PCLParaphernalia
 
                 dataStart = bufOffset;
 
-                for (Int32 i = 0; i < binDataRem; i++)
+                for (int i = 0; i < binDataRem; i++)
                 {
                     if (buf[bufOffset + i] == 0x20)
                     {
@@ -758,7 +758,7 @@ namespace PCLParaphernalia
                     "Key",
                     0,
                     indxCharSetSubAct,
-                    (Byte)valCharSetSubCode,
+                    (byte)valCharSetSubCode,
                     indxCharSetName,
                     indxOffsetFormat,
                     analysisLevel);
@@ -786,7 +786,7 @@ namespace PCLParaphernalia
                         "Value",
                         0,
                         indxCharSetSubAct,
-                        (Byte)valCharSetSubCode,
+                        (byte)valCharSetSubCode,
                         indxCharSetName,
                         indxOffsetFormat,
                         analysisLevel);
@@ -829,24 +829,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean decodeConfigureImageData(
-            Int32 binDataLen,
-            Int32 fileOffset,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        public bool decodeConfigureImageData(
+            int binDataLen,
+            int fileOffset,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            const Int32 lenMin = 6;
-            const Int32 lenMax = 122;   // must be less than buffer size 
+            const int lenMin = 6;
+            const int lenMax = 122;   // must be less than buffer size 
 
             PrnParseConstants.eContType contType;
 
-            Int32 binDataRem;
+            int binDataRem;
 
-            Boolean dataOK;
+            bool dataOK;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -909,20 +909,20 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                Int32 offset;
+                int offset;
 
-                Byte colourSpace;
-                Byte pixelEncodingMode;
-                Byte bitsPerIndex;
-                Byte bitsPerPrimary1;
-                Byte bitsPerPrimary2;
-                Byte bitsPerPrimary3;
+                byte colourSpace;
+                byte pixelEncodingMode;
+                byte bitsPerIndex;
+                byte bitsPerPrimary1;
+                byte bitsPerPrimary2;
+                byte bitsPerPrimary3;
 
-                String codeDesc;
+                string codeDesc;
 
-                Int32 analysisLevel;
+                int analysisLevel;
 
-                Boolean showBinData;
+                bool showBinData;
 
                 PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
 
@@ -1224,24 +1224,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean decodeConfigureImageData_0_and_1(
-            Int32 binDataLen,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        private bool decodeConfigureImageData_0_and_1(
+            int binDataLen,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             DataTable table)
         {
-            const Int32 fixedLen = 18 - 6;
+            const int fixedLen = 18 - 6;
 
-            Boolean dataOK = true;
+            bool dataOK = true;
 
             //----------------------------------------------------------------//
 
-            Int32 offset;
+            int offset;
 
-            String textDesc;
+            string textDesc;
 
-            Int16 sint16Val;
+            short sint16Val;
 
             //----------------------------------------------------------------//
 
@@ -1251,11 +1251,11 @@ namespace PCLParaphernalia
             {
                 textDesc = "White reference";
 
-                for (Int32 i = 0; i < 2; i++)
+                for (int i = 0; i < 2; i++)
                 {
-                    for (Int32 j = 0; j < 3; j++)
+                    for (int j = 0; j < 3; j++)
                     {
-                        sint16Val = (Int16)((buf[offset] * 256) + buf[offset + 1]);
+                        sint16Val = (short)((buf[offset] * 256) + buf[offset + 1]);
 
                         PrnParseCommon.addTextRow(
                             PrnParseRowTypes.eType.PCLDecode,
@@ -1292,22 +1292,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean decodeConfigureImageData_2(
-            Int32 binDataLen,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        private bool decodeConfigureImageData_2(
+            int binDataLen,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             DataTable table)
         {
-            const Int32 fixedLen = 86 - 6;
+            const int fixedLen = 86 - 6;
 
-            Boolean dataOK = true;
+            bool dataOK = true;
 
             //----------------------------------------------------------------//
 
-            Int32 offset;
+            int offset;
 
-            String codeDesc,
+            string codeDesc,
                    textDesc;
 
             //----------------------------------------------------------------//
@@ -1316,7 +1316,7 @@ namespace PCLParaphernalia
 
             if (binDataLen == fixedLen)
             {
-                for (Int32 i = 0; i < 4; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     if (i == 0)
                         textDesc = "Red";
@@ -1354,7 +1354,7 @@ namespace PCLParaphernalia
                     offset += 4;
                 }
 
-                for (Int32 i = 0; i < 3; i++)
+                for (int i = 0; i < 3; i++)
                 {
                     if (i == 0)
                         textDesc = "Red";
@@ -1390,7 +1390,7 @@ namespace PCLParaphernalia
                     offset += 4;
                 }
 
-                for (Int32 i = 0; i < 3; i++)
+                for (int i = 0; i < 3; i++)
                 {
                     if (i == 0)
                         textDesc = "Red";
@@ -1446,22 +1446,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean decodeConfigureImageData_3(
-            Int32 binDataLen,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        private bool decodeConfigureImageData_3(
+            int binDataLen,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             DataTable table)
         {
-            const Int32 fixedLen = 30 - 6;
+            const int fixedLen = 30 - 6;
 
-            Boolean dataOK = true;
+            bool dataOK = true;
 
             //----------------------------------------------------------------//
 
-            Int32 offset;
+            int offset;
 
-            String codeDesc,
+            string codeDesc,
                    textDesc;
 
             //----------------------------------------------------------------//
@@ -1470,7 +1470,7 @@ namespace PCLParaphernalia
 
             if (binDataLen == fixedLen)
             {
-                for (Int32 i = 0; i < 3; i++)
+                for (int i = 0; i < 3; i++)
                 {
                     if (i == 0)
                         textDesc = "L*";
@@ -1526,22 +1526,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean decodeConfigureImageData_4(
-            Int32 binDataLen,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        private bool decodeConfigureImageData_4(
+            int binDataLen,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             DataTable table)
         {
-            const Int32 fixedLen = 122 - 6;
+            const int fixedLen = 122 - 6;
 
-            Boolean dataOK = true;
+            bool dataOK = true;
 
             //----------------------------------------------------------------//
 
-            Int32 offset;
+            int offset;
 
-            String codeDesc,
+            string codeDesc,
                    textDesc;
 
             //----------------------------------------------------------------//
@@ -1550,7 +1550,7 @@ namespace PCLParaphernalia
 
             if (binDataLen == fixedLen)
             {
-                for (Int32 i = 0; i < 3; i++)
+                for (int i = 0; i < 3; i++)
                 {
                     textDesc = "Encoding: Primary " + (i + 1);
 
@@ -1594,7 +1594,7 @@ namespace PCLParaphernalia
                     offset += 4;
                 }
 
-                for (Int32 i = 0; i < 3; i++)
+                for (int i = 0; i < 3; i++)
                 {
                     textDesc = "Primary " + (i + 1);
 
@@ -1625,7 +1625,7 @@ namespace PCLParaphernalia
                     offset += 4;
                 }
 
-                for (Int32 i = 0; i < 4; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     if (i == 0)
                         textDesc = "Red";
@@ -1663,7 +1663,7 @@ namespace PCLParaphernalia
                     offset += 4;
                 }
 
-                for (Int32 i = 0; i < 3; i++)
+                for (int i = 0; i < 3; i++)
                 {
                     if (i == 0)
                         textDesc = "Red";
@@ -1720,24 +1720,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean decodeConfigureRasterData(
-            Int32 binDataLen,
-            Int32 fileOffset,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        public bool decodeConfigureRasterData(
+            int binDataLen,
+            int fileOffset,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            const Int32 lenMin = 6;
-            const Int32 lenMax = 2047;   // must be less than buffer size 
+            const int lenMin = 6;
+            const int lenMax = 2047;   // must be less than buffer size 
 
             PrnParseConstants.eContType contType;
 
-            Int32 binDataRem;
+            int binDataRem;
 
-            Boolean dataOK;
+            bool dataOK;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1799,7 +1799,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                Byte format;
+                byte format;
 
                 format = buf[bufOffset];
 
@@ -1929,25 +1929,25 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean decodeConfigureRasterData_1(
-            Int32 binDataLen,
-            Int32 fileOffset,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        private bool decodeConfigureRasterData_1(
+            int binDataLen,
+            int fileOffset,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            const String formatName = "1: Complex Direct Planar (obsolete)";
-            const String itemName = "Component";
+            const string formatName = "1: Complex Direct Planar (obsolete)";
+            const string itemName = "Component";
 
-            const Int32 fixedLen = 2;
-            const Int32 itemLen = 6;
+            const int fixedLen = 2;
+            const int itemLen = 6;
 
             PrnParseConstants.eContType contType;
 
-            Boolean dataOK = true;
+            bool dataOK = true;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1955,17 +1955,17 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            Int32 offset;
-            Int32 calcLen;
+            int offset;
+            int calcLen;
 
-            Byte format;
-            Byte itemCt;
+            byte format;
+            byte itemCt;
 
-            String codeDesc;
+            string codeDesc;
 
-            Int32 analysisLevel;
+            int analysisLevel;
 
-            Boolean showBinData;
+            bool showBinData;
 
             PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
 
@@ -2050,7 +2050,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                UInt16 uint16Val;
+                ushort uint16Val;
 
                 offset++;
 
@@ -2090,9 +2090,9 @@ namespace PCLParaphernalia
 
                 offset = bufOffset + fixedLen;
 
-                for (Int32 i = 1; i < (itemCt + 1); i++)
+                for (int i = 1; i < (itemCt + 1); i++)
                 {
-                    uint16Val = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                    uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                     codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
@@ -2109,7 +2109,7 @@ namespace PCLParaphernalia
 
                     offset += 2;
 
-                    uint16Val = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                    uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                     codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
@@ -2126,7 +2126,7 @@ namespace PCLParaphernalia
 
                     offset += 2;
 
-                    uint16Val = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                    uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                     codeDesc = uint16Val.ToString();
 
@@ -2165,25 +2165,25 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean decodeConfigureRasterData_2(
-            Int32 binDataLen,
-            Int32 fileOffset,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        private bool decodeConfigureRasterData_2(
+            int binDataLen,
+            int fileOffset,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            const String formatName = "2: Complex Direct Planar";
-            const String itemName = "Component";
+            const string formatName = "2: Complex Direct Planar";
+            const string itemName = "Component";
 
-            const Int32 fixedLen = 2;
-            const Int32 itemLen = 6;
+            const int fixedLen = 2;
+            const int itemLen = 6;
 
             PrnParseConstants.eContType contType;
 
-            Boolean dataOK = true;
+            bool dataOK = true;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -2191,17 +2191,17 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            Int32 offset;
-            Int32 calcLen;
+            int offset;
+            int calcLen;
 
-            Byte format;
-            Byte itemCt;
+            byte format;
+            byte itemCt;
 
-            String codeDesc;
+            string codeDesc;
 
-            Int32 analysisLevel;
+            int analysisLevel;
 
-            Boolean showBinData;
+            bool showBinData;
 
             PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
 
@@ -2286,7 +2286,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                UInt16 uint16Val;
+                ushort uint16Val;
 
                 offset++;
 
@@ -2326,9 +2326,9 @@ namespace PCLParaphernalia
 
                 offset = bufOffset + fixedLen;
 
-                for (Int32 i = 1; i < (itemCt + 1); i++)
+                for (int i = 1; i < (itemCt + 1); i++)
                 {
-                    uint16Val = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                    uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                     codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
@@ -2345,7 +2345,7 @@ namespace PCLParaphernalia
 
                     offset += 2;
 
-                    uint16Val = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                    uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                     codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
@@ -2362,7 +2362,7 @@ namespace PCLParaphernalia
 
                     offset += 2;
 
-                    uint16Val = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                    uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                     codeDesc = uint16Val.ToString();
 
@@ -2401,23 +2401,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean decodeConfigureRasterData_3(
-            Int32 binDataLen,
-            Int32 fileOffset,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        private bool decodeConfigureRasterData_3(
+            int binDataLen,
+            int fileOffset,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            const String formatName = "3: RGB Direct by Pixel";
+            const string formatName = "3: RGB Direct by Pixel";
 
-            const Int32 fixedLen = 8;
+            const int fixedLen = 8;
 
             PrnParseConstants.eContType contType;
 
-            Boolean dataOK = true;
+            bool dataOK = true;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -2425,16 +2425,16 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            Int32 offset;
-            Int32 calcLen;
+            int offset;
+            int calcLen;
 
-            Byte format;
+            byte format;
 
-            String codeDesc;
+            string codeDesc;
 
-            Int32 analysisLevel;
+            int analysisLevel;
 
-            Boolean showBinData;
+            bool showBinData;
 
             PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
 
@@ -2517,8 +2517,8 @@ namespace PCLParaphernalia
             }
             else
             {
-                UInt16 uint16Val;
-                Byte byteVal;
+                ushort uint16Val;
+                byte byteVal;
 
                 offset++;
 
@@ -2567,7 +2567,7 @@ namespace PCLParaphernalia
 
                 offset++;
 
-                uint16Val = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                 codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
@@ -2584,7 +2584,7 @@ namespace PCLParaphernalia
 
                 offset += 2;
 
-                uint16Val = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                 codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
@@ -2618,23 +2618,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean decodeConfigureRasterData_4(
-            Int32 binDataLen,
-            Int32 fileOffset,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        private bool decodeConfigureRasterData_4(
+            int binDataLen,
+            int fileOffset,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            const String formatName = "4: Indexed by Pixel";
+            const string formatName = "4: Indexed by Pixel";
 
-            const Int32 fixedLen = 6;
+            const int fixedLen = 6;
 
             PrnParseConstants.eContType contType;
 
-            Boolean dataOK = true;
+            bool dataOK = true;
 
             //------------------------------------------------------------//
             //                                                            //
@@ -2642,16 +2642,16 @@ namespace PCLParaphernalia
             //                                                            //
             //------------------------------------------------------------//
 
-            Int32 offset;
-            Int32 calcLen;
+            int offset;
+            int calcLen;
 
-            Byte format;
+            byte format;
 
-            String codeDesc;
+            string codeDesc;
 
-            Int32 analysisLevel;
+            int analysisLevel;
 
-            Boolean showBinData;
+            bool showBinData;
 
             PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
 
@@ -2734,8 +2734,8 @@ namespace PCLParaphernalia
             }
             else
             {
-                UInt16 uint16Val;
-                Byte byteVal;
+                ushort uint16Val;
+                byte byteVal;
 
                 offset++;
 
@@ -2754,7 +2754,7 @@ namespace PCLParaphernalia
 
                 offset++;
 
-                uint16Val = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                 codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
@@ -2771,7 +2771,7 @@ namespace PCLParaphernalia
 
                 offset += 2;
 
-                uint16Val = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                 codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
@@ -2805,23 +2805,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean decodeConfigureRasterData_5(
-            Int32 binDataLen,
-            Int32 fileOffset,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        private bool decodeConfigureRasterData_5(
+            int binDataLen,
+            int fileOffset,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            const String formatName = "5: Mixed Monochrome & Indexed by Pixel";
+            const string formatName = "5: Mixed Monochrome & Indexed by Pixel";
 
-            const Int32 fixedLen = 11;
+            const int fixedLen = 11;
 
             PrnParseConstants.eContType contType;
 
-            Boolean dataOK = true;
+            bool dataOK = true;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -2829,16 +2829,16 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            Int32 offset;
-            Int32 calcLen;
+            int offset;
+            int calcLen;
 
-            Byte format;
+            byte format;
 
-            String codeDesc;
+            string codeDesc;
 
-            Int32 analysisLevel;
+            int analysisLevel;
 
-            Boolean showBinData;
+            bool showBinData;
 
             PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
 
@@ -2921,8 +2921,8 @@ namespace PCLParaphernalia
             }
             else
             {
-                UInt16 uint16Val;
-                Byte byteVal;
+                ushort uint16Val;
+                byte byteVal;
 
                 offset++;
 
@@ -2941,7 +2941,7 @@ namespace PCLParaphernalia
 
                 offset++;
 
-                uint16Val = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                 codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
@@ -2958,7 +2958,7 @@ namespace PCLParaphernalia
 
                 offset += 2;
 
-                uint16Val = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                 codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
@@ -2975,7 +2975,7 @@ namespace PCLParaphernalia
 
                 offset += 2;
 
-                uint16Val = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                 codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
@@ -2992,7 +2992,7 @@ namespace PCLParaphernalia
 
                 offset += 2;
 
-                uint16Val = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                 codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
@@ -3064,25 +3064,25 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean decodeConfigureRasterData_6(
-            Int32 binDataLen,
-            Int32 fileOffset,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        private bool decodeConfigureRasterData_6(
+            int binDataLen,
+            int fileOffset,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            const String formatName = "6: identity name not known";
-            const String itemName = "Component";
+            const string formatName = "6: identity name not known";
+            const string itemName = "Component";
 
-            const Int32 fixedLen = 4;
-            const Int32 itemLen = 8;
+            const int fixedLen = 4;
+            const int itemLen = 8;
 
             PrnParseConstants.eContType contType;
 
-            Boolean dataOK = true;
+            bool dataOK = true;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -3090,17 +3090,17 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            Int32 offset;
-            Int32 calcLen;
+            int offset;
+            int calcLen;
 
-            Byte format;
-            UInt16 itemCt;
+            byte format;
+            ushort itemCt;
 
-            String codeDesc;
+            string codeDesc;
 
-            Int32 analysisLevel;
+            int analysisLevel;
 
-            Boolean showBinData;
+            bool showBinData;
 
             PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
 
@@ -3156,7 +3156,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            itemCt = (UInt16)((buf[offset + 2] * 256) + buf[offset + 3]);
+            itemCt = (ushort)((buf[offset + 2] * 256) + buf[offset + 3]);
 
             calcLen = fixedLen + (itemLen * itemCt);
 
@@ -3185,8 +3185,8 @@ namespace PCLParaphernalia
             }
             else
             {
-                UInt16 uint16Val;
-                Byte byteVal;
+                ushort uint16Val;
+                byte byteVal;
 
                 offset++;
 
@@ -3224,9 +3224,9 @@ namespace PCLParaphernalia
 
                 offset = bufOffset + fixedLen;
 
-                for (Int32 i = 1; i < (itemCt + 1); i++)
+                for (int i = 1; i < (itemCt + 1); i++)
                 {
-                    uint16Val = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                    uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                     codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
@@ -3243,7 +3243,7 @@ namespace PCLParaphernalia
 
                     offset += 2;
 
-                    uint16Val = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                    uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                     codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
@@ -3365,26 +3365,26 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean decodeConfigureRasterData_7(
-            Int32 binDataLen,
-            Int32 fileOffset,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        private bool decodeConfigureRasterData_7(
+            int binDataLen,
+            int fileOffset,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            const String formatName =
+            const string formatName =
                 "7: Complex Direct - Major-Specification Channel-ID";
-            const String itemName = "Pen";
+            const string itemName = "Pen";
 
-            const Int32 fixedLen = 4;
-            const Int32 itemLen = 8;
+            const int fixedLen = 4;
+            const int itemLen = 8;
 
             PrnParseConstants.eContType contType;
 
-            Boolean dataOK = true;
+            bool dataOK = true;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -3392,17 +3392,17 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            Int32 offset;
-            Int32 calcLen;
+            int offset;
+            int calcLen;
 
-            Byte format;
-            Byte itemCt;
+            byte format;
+            byte itemCt;
 
-            String codeDesc;
+            string codeDesc;
 
-            Int32 analysisLevel;
+            int analysisLevel;
 
-            Boolean showBinData;
+            bool showBinData;
 
             PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
 
@@ -3488,8 +3488,8 @@ namespace PCLParaphernalia
             }
             else
             {
-                UInt16 uint16Val;
-                Byte byteVal;
+                ushort uint16Val;
+                byte byteVal;
 
                 offset++;
 
@@ -3569,9 +3569,9 @@ namespace PCLParaphernalia
 
                 offset = bufOffset + fixedLen;
 
-                for (Int32 i = 1; i < (itemCt + 1); i++)
+                for (int i = 1; i < (itemCt + 1); i++)
                 {
-                    uint16Val = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                    uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                     codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
@@ -3588,7 +3588,7 @@ namespace PCLParaphernalia
 
                     offset += 2;
 
-                    uint16Val = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                    uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                     codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
@@ -3605,10 +3605,10 @@ namespace PCLParaphernalia
 
                     offset += 2;
 
-                    uint16Val = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                    uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                     codeDesc = uint16Val.ToString() + " (-> bits per pixel = " +
-                               Math.Ceiling((Math.Log((Double)uint16Val, 2))).ToString() +
+                               Math.Ceiling((Math.Log((double)uint16Val, 2))).ToString() +
                                ")";
 
                     PrnParseCommon.addTextRow(
@@ -3746,22 +3746,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean decodeDefineLogicalPage(
-            Int32 binDataLen,
-            Int32 fileOffset,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        public bool decodeDefineLogicalPage(
+            int binDataLen,
+            int fileOffset,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            const Int32 lenShort = 4;
-            const Int32 lenLong = 10;   // must be less than buffer size 
+            const int lenShort = 4;
+            const int lenLong = 10;   // must be less than buffer size 
 
             PrnParseConstants.eContType contType;
 
-            Boolean dataOK;
+            bool dataOK;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -3821,20 +3821,20 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                Int32 offset;
+                int offset;
 
-                Int16 pageOffset;
+                short pageOffset;
 
-                UInt16 pageSize;
+                ushort pageSize;
 
-                Byte pageOrientation,
+                byte pageOrientation,
                      reservedByte;
 
-                String codeDesc;
+                string codeDesc;
 
-                Int32 analysisLevel;
+                int analysisLevel;
 
-                Boolean showBinData;
+                bool showBinData;
 
                 PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
 
@@ -3875,7 +3875,7 @@ namespace PCLParaphernalia
 
                 offset = bufOffset;
 
-                pageOffset = (Int16)((buf[offset] * 256) + buf[offset + 1]);
+                pageOffset = (short)((buf[offset] * 256) + buf[offset + 1]);
 
                 codeDesc = pageOffset.ToString() + " decipoints";
 
@@ -3892,7 +3892,7 @@ namespace PCLParaphernalia
 
                 offset += 2;
 
-                pageOffset = (Int16)((buf[offset] * 256) + buf[offset + 1]);
+                pageOffset = (short)((buf[offset] * 256) + buf[offset + 1]);
 
                 codeDesc = pageOffset.ToString() + " decipoints";
 
@@ -3976,7 +3976,7 @@ namespace PCLParaphernalia
 
                     offset++;
 
-                    pageSize = (UInt16)((buf[offset] * 256) +
+                    pageSize = (ushort)((buf[offset] * 256) +
                                          buf[offset + 1]);
 
                     codeDesc = pageSize.ToString() + " decipoints";
@@ -3994,7 +3994,7 @@ namespace PCLParaphernalia
 
                     offset += 2;
 
-                    pageSize = (UInt16)((buf[offset] * 256) +
+                    pageSize = (ushort)((buf[offset] * 256) +
                                          buf[offset + 1]);
 
                     codeDesc = pageSize.ToString() + " decipoints";
@@ -4029,25 +4029,25 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean decodeDefineSymbolSet(
-            Int32 binDataLen,
-            Int32 fileOffset,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        public bool decodeDefineSymbolSet(
+            int binDataLen,
+            int fileOffset,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            const Int32 lenMin = 18;
-            const Int32 lenMax = (65536 * 2) + lenMin;
-            const Int32 kind1Max = 32762;
+            const int lenMin = 18;
+            const int lenMax = (65536 * 2) + lenMin;
+            const int kind1Max = 32762;
 
             PrnParseConstants.eContType contType;
 
-            Int32 binDataRem;
+            int binDataRem;
 
-            Boolean dataOK;
+            bool dataOK;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -4109,27 +4109,27 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                const Byte format_MSL = 1;
-                const Byte format_Unicode = 3;
+                const byte format_MSL = 1;
+                const byte format_Unicode = 3;
 
-                Int32 offset;
+                int offset;
 
-                Int32 mapLen,
+                int mapLen,
                       mapLenCalc,
                       codeCt;
 
-                Byte byteVal;
-                Byte format;
-                UInt16 uint16Val;
+                byte byteVal;
+                byte format;
+                ushort uint16Val;
 
-                UInt16 firstCode,
+                ushort firstCode,
                        lastCode;
 
-                String codeDesc;
+                string codeDesc;
 
-                Int32 analysisLevel;
+                int analysisLevel;
 
-                Boolean showBinData;
+                bool showBinData;
 
                 PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
 
@@ -4172,7 +4172,7 @@ namespace PCLParaphernalia
 
                 offset = bufOffset;
 
-                uint16Val = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                 PrnParseCommon.addTextRow(
                     PrnParseRowTypes.eType.PCLDecode,
@@ -4203,7 +4203,7 @@ namespace PCLParaphernalia
 
                 offset += 2;
 
-                uint16Val = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                 codeDesc = uint16Val.ToString() +
                             " (0x" + uint16Val.ToString("x") + ")" +
@@ -4275,22 +4275,22 @@ namespace PCLParaphernalia
                 {
                     case 0:
                         codeDesc = PCLSymSetTypes.getDescStd(
-                                       (Int32)PCLSymSetTypes.eIndex.Bound_7bit);
+                                       (int)PCLSymSetTypes.eIndex.Bound_7bit);
                         break;
 
                     case 1:
                         codeDesc = PCLSymSetTypes.getDescStd(
-                                       (Int32)PCLSymSetTypes.eIndex.Bound_8bit);
+                                       (int)PCLSymSetTypes.eIndex.Bound_8bit);
                         break;
 
                     case 2:
                         codeDesc = PCLSymSetTypes.getDescStd(
-                                       (Int32)PCLSymSetTypes.eIndex.Bound_PC8);
+                                       (int)PCLSymSetTypes.eIndex.Bound_PC8);
                         break;
 
                     case 3:
                         codeDesc = PCLSymSetTypes.getDescStd(
-                                       (Int32)PCLSymSetTypes.eIndex.Bound_16bit);
+                                       (int)PCLSymSetTypes.eIndex.Bound_16bit);
                         break;
 
                     default:
@@ -4311,7 +4311,7 @@ namespace PCLParaphernalia
 
                 offset++;
 
-                firstCode = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                firstCode = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                 PrnParseCommon.addTextRow(
                     PrnParseRowTypes.eType.PCLDecode,
@@ -4327,7 +4327,7 @@ namespace PCLParaphernalia
 
                 offset += 2;
 
-                lastCode = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                lastCode = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                 PrnParseCommon.addTextRow(
                     PrnParseRowTypes.eType.PCLDecode,
@@ -4441,40 +4441,40 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean decodeDefineSymbolSetMap(
-            Int32 binDataLen,
-            Int32 fileOffset,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        public bool decodeDefineSymbolSetMap(
+            int binDataLen,
+            int fileOffset,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            const Int32 lineMax = 16;
+            const int lineMax = 16;
 
             PrnParseConstants.eContType contType;
 
-            Boolean dataOK = true;
+            bool dataOK = true;
 
-            Int32 lineLen,
+            int lineLen,
                   offset;
 
-            Int32 mapBegin,
+            int mapBegin,
                   mapEnd,
                   mapSize;
 
-            Int32 binDataRem;
+            int binDataRem;
 
-            String codeDesc = "",
+            string codeDesc = "",
                    textDesc;
 
-            Int32 codeStart,
+            int codeStart,
                   codeCount;
 
-            Int32 analysisLevel;
+            int analysisLevel;
 
-            Boolean showBinData,
+            bool showBinData,
                     all_ffs;
 
             PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
@@ -4529,7 +4529,7 @@ namespace PCLParaphernalia
 
             //------------------------------------------------------------//
 
-            for (Int32 i = 0; i < mapSize; i += lineMax)
+            for (int i = 0; i < mapSize; i += lineMax)
             {
                 if ((mapSize - i) < lineMax)
                     lineLen = mapSize - i;
@@ -4603,24 +4603,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean decodeDitherMatrix(
-            Int32 binDataLen,
-            Int32 fileOffset,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        public bool decodeDitherMatrix(
+            int binDataLen,
+            int fileOffset,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            const Int32 lenMin = 2;
-            const Int32 lenMax = 32767;
+            const int lenMin = 2;
+            const int lenMax = 32767;
 
             PrnParseConstants.eContType contType;
 
-            Int32 binDataRem;
+            int binDataRem;
 
-            Boolean dataOK;
+            bool dataOK;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -4682,17 +4682,17 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                Int32 offset;
+                int offset;
 
-                Int32 planeCt;
+                int planeCt;
 
-                Byte byteVal;
+                byte byteVal;
 
-                String codeDesc;
+                string codeDesc;
 
-                Int32 analysisLevel;
+                int analysisLevel;
 
-                Boolean showBinData;
+                bool showBinData;
 
                 PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
 
@@ -4833,23 +4833,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean decodeDitherMatrixPlane(
-            Int32 binDataLen,
-            Int32 fileOffset,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        public bool decodeDitherMatrixPlane(
+            int binDataLen,
+            int fileOffset,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            const Int32 lenMin = 4;
+            const int lenMin = 4;
 
             PrnParseConstants.eContType contType;
 
-            Int32 binDataRem;
+            int binDataRem;
 
-            Boolean dataOK;
+            bool dataOK;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -4889,17 +4889,17 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                Int32 offset;
+                int offset;
 
-                Int32 planeNo,
+                int planeNo,
                       planeLen;
 
-                UInt16 height,
+                ushort height,
                        width;
 
-                Int32 analysisLevel;
+                int analysisLevel;
 
-                Boolean showBinData;
+                bool showBinData;
 
                 PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
 
@@ -4944,7 +4944,7 @@ namespace PCLParaphernalia
 
                 offset = bufOffset;
 
-                height = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                height = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                 PrnParseCommon.addTextRow(
                     PrnParseRowTypes.eType.PCLDecode,
@@ -4959,7 +4959,7 @@ namespace PCLParaphernalia
 
                 offset += 2;
 
-                width = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                width = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                 PrnParseCommon.addTextRow(
                     PrnParseRowTypes.eType.PCLDecode,
@@ -5038,21 +5038,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean decodeDitherMatrixPlaneData(
-            Int32 binDataLen,
-            Int32 fileOffset,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        public bool decodeDitherMatrixPlaneData(
+            int binDataLen,
+            int fileOffset,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
             PrnParseConstants.eContType contType;
 
-            Boolean dataOK = true;
+            bool dataOK = true;
 
-            Int32 dataSize,
+            int dataSize,
                   planeNo,
                   offset,
                   matrixRem,
@@ -5060,11 +5060,11 @@ namespace PCLParaphernalia
                   matrixWidth,
                   rows;
 
-            Int32 binDataRem;
+            int binDataRem;
 
-            Int32 analysisLevel;
+            int analysisLevel;
 
-            Boolean showBinData;
+            bool showBinData;
 
             PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
 
@@ -5072,7 +5072,7 @@ namespace PCLParaphernalia
                 PrnParseConstants.eOptCharSetSubActs.Hex;
             PrnParseConstants.eOptCharSets indxCharSetName =
                 PrnParseConstants.eOptCharSets.ASCII;
-            Int32 valCharSetSubCode = 0x20;
+            int valCharSetSubCode = 0x20;
 
             analysisLevel = linkData.AnalysisLevel;
 
@@ -5138,7 +5138,7 @@ namespace PCLParaphernalia
 
             //------------------------------------------------------------//
 
-            for (Int32 i = 0; i < rows; i++)
+            for (int i = 0; i < rows; i++)
             {
                 PrnParseData.processBinary(
                     table,
@@ -5214,24 +5214,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean decodeDriverConfiguration(
-            Int32 binDataLen,
-            Int32 fileOffset,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        public bool decodeDriverConfiguration(
+            int binDataLen,
+            int fileOffset,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            const Int32 lenMin = 2;
-            const Int32 lenMax = 100;   // arbitrary; less than buffer size 
+            const int lenMin = 2;
+            const int lenMax = 100;   // arbitrary; less than buffer size 
 
             PrnParseConstants.eContType contType;
 
-            Int32 binDataRem;
+            int binDataRem;
 
-            Boolean dataOK;
+            bool dataOK;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -5294,18 +5294,18 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                Int32 offset,
+                int offset,
                       argLen;
 
-                Byte deviceId;
-                Byte functionIndex;
-                Byte colourTreatment;
+                byte deviceId;
+                byte functionIndex;
+                byte colourTreatment;
 
-                String codeDesc;
+                string codeDesc;
 
-                Int32 analysisLevel;
+                int analysisLevel;
 
-                Boolean showBinData;
+                bool showBinData;
 
                 PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
 
@@ -5492,23 +5492,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean decodeEmbeddedPML(Int32 binDataLen,
-                                         Int32 fileOffset,
-                                         Byte[] buf,
-                                         ref Int32 bufRem,
-                                         ref Int32 bufOffset,
+        public bool decodeEmbeddedPML(int binDataLen,
+                                         int fileOffset,
+                                         byte[] buf,
+                                         ref int bufRem,
+                                         ref int bufOffset,
                                          PrnParseLinkData linkData,
                                          PrnParseOptions options,
                                          DataTable table)
         {
-            const Int32 lenMin = 6;
-            const Int32 lenMax = 2047;   // must be less than buffer size 
+            const int lenMin = 6;
+            const int lenMax = 2047;   // must be less than buffer size 
 
             PrnParseConstants.eContType contType;
 
-            Boolean dataOK = true;
+            bool dataOK = true;
 
-            Int32 binDataRem;
+            int binDataRem;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -5570,9 +5570,9 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                Int32 analysisLevel;
+                int analysisLevel;
 
-                Boolean showBinData;
+                bool showBinData;
 
                 PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
 
@@ -5630,24 +5630,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean decodeEscEncText(
-            Int32 binDataLen,
-            Int32 fileOffset,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        public bool decodeEscEncText(
+            int binDataLen,
+            int fileOffset,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            const Int32 lenMin = 1;
-            const Int32 lenMax = 32767;
+            const int lenMin = 1;
+            const int lenMax = 32767;
 
             PrnParseConstants.eContType contType;
 
-            Int32 binDataRem;
+            int binDataRem;
 
-            Boolean dataOK;
+            bool dataOK;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -5709,17 +5709,17 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                Int32 offset;
+                int offset;
 
-                Int32 tripletCt;
+                int tripletCt;
 
-                Byte byteVal;
+                byte byteVal;
 
-                String codeDesc;
+                string codeDesc;
 
-                Int32 analysisLevel;
+                int analysisLevel;
 
-                Boolean showBinData;
+                bool showBinData;
 
                 PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
 
@@ -5857,32 +5857,32 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean decodeEscEncTextData(
-            Int32 binDataLen,
-            Int32 fileOffset,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        public bool decodeEscEncTextData(
+            int binDataLen,
+            int fileOffset,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
             PrnParseConstants.eContType contType;
 
-            Boolean dataOK = true;
+            bool dataOK = true;
 
-            Int32 dataSize,
+            int dataSize,
                   offset;
 
-            Int32 binDataRem;
+            int binDataRem;
 
-            String codeDesc;
+            string codeDesc;
 
-            Int32 tripletCt;
+            int tripletCt;
 
-            Int32 analysisLevel;
+            int analysisLevel;
 
-            Boolean showBinData;
+            bool showBinData;
 
             PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
 
@@ -5890,7 +5890,7 @@ namespace PCLParaphernalia
                 PrnParseConstants.eOptCharSetSubActs.Hex;
             PrnParseConstants.eOptCharSets indxCharSetName =
                 PrnParseConstants.eOptCharSets.ASCII;
-            Int32 valCharSetSubCode = 0x20;
+            int valCharSetSubCode = 0x20;
 
             analysisLevel = linkData.AnalysisLevel;
 
@@ -5949,13 +5949,13 @@ namespace PCLParaphernalia
 
             //------------------------------------------------------------//
 
-            for (Int32 i = 0; i < tripletCt; i++)
+            for (int i = 0; i < tripletCt; i++)
             {
                 offset = bufOffset + (i * 3);
 
                 codeDesc = PrnParseData.processByte(buf[offset],
                                                     indxCharSetSubAct,
-                                                    (Byte)valCharSetSubCode,
+                                                    (byte)valCharSetSubCode,
                                                     indxCharSetName) +
                            " --> " +
                            processSint16(buf, offset + 1) +
@@ -6007,27 +6007,27 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean decodePaletteConfiguration(
-            Int32 binDataLen,
-            Int32 fileOffset,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        public bool decodePaletteConfiguration(
+            int binDataLen,
+            int fileOffset,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            const String itemName = "Palette Entry";
+            const string itemName = "Palette Entry";
 
-            const Int32 fixedLen = 9;
-            const Int32 itemLen = 3;
+            const int fixedLen = 9;
+            const int itemLen = 3;
 
-            Int32 lenMin = fixedLen + itemLen;
-            Int32 lenMax = fixedLen + (itemLen * 256);   // must be less than buffer size 
+            int lenMin = fixedLen + itemLen;
+            int lenMax = fixedLen + (itemLen * 256);   // must be less than buffer size 
 
             PrnParseConstants.eContType contType;
 
-            Boolean dataOK = true;
+            bool dataOK = true;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -6081,18 +6081,18 @@ namespace PCLParaphernalia
             }
             else
             {
-                Int32 offset;
-                Int32 calcLen;
+                int offset;
+                int calcLen;
 
-                Byte byteVal;
+                byte byteVal;
 
-                Int32 itemCt;
+                int itemCt;
 
-                String codeDesc;
+                string codeDesc;
 
-                Int32 analysisLevel;
+                int analysisLevel;
 
-                Boolean showBinData;
+                bool showBinData;
 
                 PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
 
@@ -6328,7 +6328,7 @@ namespace PCLParaphernalia
 
                     offset = bufOffset + fixedLen;
 
-                    for (Int32 i = 0; i < itemCt; i++)
+                    for (int i = 0; i < itemCt; i++)
                     {
                         byteVal = buf[offset];
 
@@ -6397,24 +6397,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean decodeUserDefinedPattern(
-            Int32 binDataLen,
-            Int32 fileOffset,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        public bool decodeUserDefinedPattern(
+            int binDataLen,
+            int fileOffset,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            Int32 lenMin = 6;
-            const Int32 lenMax = 32767;
+            int lenMin = 6;
+            const int lenMax = 32767;
 
             PrnParseConstants.eContType contType;
 
-            Int32 binDataRem;
+            int binDataRem;
 
-            Boolean dataOK;
+            bool dataOK;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -6481,26 +6481,26 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                Int32 offset;
+                int offset;
 
-                Int32 rowBytes = 1,
+                int rowBytes = 1,
                       patternBytes;
 
-                Byte byteVal,
+                byte byteVal,
                      format,
                      pixelEncoding;
 
-                UInt16 uint16Val,
+                ushort uint16Val,
                        patternHeight,
                        patternWidth;
 
-                Boolean badPattern = false;
+                bool badPattern = false;
 
-                String codeDesc;
+                string codeDesc;
 
-                Int32 analysisLevel;
+                int analysisLevel;
 
-                Boolean showBinData;
+                bool showBinData;
 
                 PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
 
@@ -6673,7 +6673,7 @@ namespace PCLParaphernalia
 
                 offset++;
 
-                patternHeight = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                patternHeight = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                 codeDesc = patternHeight.ToString() + " pixels";
 
@@ -6690,7 +6690,7 @@ namespace PCLParaphernalia
 
                 offset += 2;
 
-                patternWidth = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                patternWidth = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                 codeDesc = patternWidth.ToString() + " pixels";
 
@@ -6709,7 +6709,7 @@ namespace PCLParaphernalia
                 {
                     offset += 2;
 
-                    uint16Val = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                    uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                     codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
@@ -6726,7 +6726,7 @@ namespace PCLParaphernalia
 
                     offset += 2;
 
-                    uint16Val = (UInt16)((buf[offset] * 256) + buf[offset + 1]);
+                    uint16Val = (ushort)((buf[offset] * 256) + buf[offset + 1]);
 
                     codeDesc = uint16Val.ToString() + " pixels-per-inch";
 
@@ -6842,34 +6842,34 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean decodeUserDefinedPatternData(
-            Int32 binDataLen,
-            Int32 fileOffset,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        public bool decodeUserDefinedPatternData(
+            int binDataLen,
+            int fileOffset,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
             PrnParseConstants.eContType contType;
 
-            Boolean dataOK = true;
+            bool dataOK = true;
 
-            Int32 offset;
+            int offset;
 
-            Int32 chunkSize,
+            int chunkSize,
                   rowCt,
                   rowNo,
                   rowBytes;
 
-            Int32 binDataRem;
+            int binDataRem;
 
-            Int32 codeStart;
+            int codeStart;
 
-            Int32 analysisLevel;
+            int analysisLevel;
 
-            Boolean showBinData;
+            bool showBinData;
 
             PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
 
@@ -6894,7 +6894,7 @@ namespace PCLParaphernalia
             else
                 rowCt = binDataRem / rowBytes;
 
-            for (Int32 i = 0; i < rowCt; i++)
+            for (int i = 0; i < rowCt; i++)
             {
                 offset = bufOffset + (i * rowBytes);
 
@@ -6970,23 +6970,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean decodeViewIlluminant(
-            Int32 binDataLen,
-            Int32 fileOffset,
-            Byte[] buf,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        public bool decodeViewIlluminant(
+            int binDataLen,
+            int fileOffset,
+            byte[] buf,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            const Int32 lenStd = 8;
+            const int lenStd = 8;
 
             PrnParseConstants.eContType contType;
 
-            Int32 binDataRem;
+            int binDataRem;
 
-            Boolean dataOK;
+            bool dataOK;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -7048,11 +7048,11 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                Int32 offset;
+                int offset;
 
-                Int32 analysisLevel;
+                int analysisLevel;
 
-                Boolean showBinData;
+                bool showBinData;
 
                 PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
 
@@ -7145,22 +7145,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private String processSint16(Byte[] buf,
-                                     Int32 bufOffset)
+        private string processSint16(byte[] buf,
+                                     int bufOffset)
         {
-            const Int32 sliceLen = 2;
+            const int sliceLen = 2;
 
-            Int32 iSub,
+            int iSub,
                   iTot;
 
-            Boolean msByte;
+            bool msByte;
 
-            String tempStr;
+            string tempStr;
 
             iTot = 0;
             msByte = true;
 
-            for (Int32 j = 0; j < sliceLen; j++)
+            for (int j = 0; j < sliceLen; j++)
             {
                 iSub = buf[bufOffset + j];
 
@@ -7201,23 +7201,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private String processReal32(Byte[] buf,
-                                     Int32 bufOffset)
+        private string processReal32(byte[] buf,
+                                     int bufOffset)
         {
-            const Int32 sliceLen = 4;
+            const int sliceLen = 4;
 
-            UInt32 uiSub,
+            uint uiSub,
                    uiTot;
 
-            Byte[] byteArray;
+            byte[] byteArray;
 
-            Single f;
+            float f;
 
-            String tempStr;
+            string tempStr;
 
             uiTot = 0;
 
-            for (Int32 j = 0; j < sliceLen; j++)
+            for (int j = 0; j < sliceLen; j++)
             {
                 uiSub = buf[bufOffset + j];
                 uiTot = (uiTot * 256) + uiSub;

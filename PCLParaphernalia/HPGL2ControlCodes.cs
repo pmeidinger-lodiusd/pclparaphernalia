@@ -21,12 +21,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static SortedList<Byte, HPGL2ControlCode> _tags =
-            new SortedList<Byte, HPGL2ControlCode>();
+        private static SortedList<byte, HPGL2ControlCode> _tags =
+            new SortedList<byte, HPGL2ControlCode>();
 
         private static HPGL2ControlCode _tagUnknown;
 
-        private static Int32 _tagCount;
+        private static int _tagCount;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -48,10 +48,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean checkTag(Byte tagToCheck,
-                                        ref String description)
+        public static bool checkTag(byte tagToCheck,
+                                        ref string description)
         {
-            Boolean seqKnown;
+            bool seqKnown;
 
             HPGL2ControlCode tag;
 
@@ -81,11 +81,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void displayStatsCounts(DataTable table,
-                                               Boolean incUsedSeqsOnly)
+                                               bool incUsedSeqsOnly)
         {
-            Int32 count = 0;
+            int count = 0;
 
-            Boolean displaySeq,
+            bool displaySeq,
                     hddrWritten;
 
             DataRow row;
@@ -122,7 +122,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            foreach (KeyValuePair<Byte, HPGL2ControlCode> kvp in _tags)
+            foreach (KeyValuePair<byte, HPGL2ControlCode> kvp in _tags)
             {
                 displaySeq = true;
 
@@ -210,11 +210,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 displayTags(DataGrid grid)
+        public static int displayTags(DataGrid grid)
         {
-            Int32 count = 0;
+            int count = 0;
 
-            foreach (KeyValuePair<Byte, HPGL2ControlCode> kvp in _tags)
+            foreach (KeyValuePair<byte, HPGL2ControlCode> kvp in _tags)
             {
                 count++;
                 grid.Items.Add(kvp.Value);
@@ -232,8 +232,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void incrementStatsCount(Byte tagByte,
-                                                Int32 level)
+        public static void incrementStatsCount(byte tagByte,
+                                                int level)
         {
             HPGL2ControlCode tag;
 
@@ -254,7 +254,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean isKnownTag(Byte tagToCheck)
+        public static bool isKnownTag(byte tagToCheck)
         {
             if (_tags.IndexOfKey(tagToCheck) != -1)
                 return true;
@@ -273,7 +273,7 @@ namespace PCLParaphernalia
 
         private static void populateTable()
         {
-            Byte tag;
+            byte tag;
 
             tag = 0x20;                                              // ?    //
             _tagUnknown =
@@ -397,7 +397,7 @@ namespace PCLParaphernalia
 
             _tagUnknown.resetStatistics();
 
-            foreach (KeyValuePair<Byte, HPGL2ControlCode> kvp in _tags)
+            foreach (KeyValuePair<byte, HPGL2ControlCode> kvp in _tags)
             {
                 tag = kvp.Value;
 

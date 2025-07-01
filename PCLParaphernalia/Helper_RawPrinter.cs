@@ -25,9 +25,9 @@ namespace PCLParaphernalia
 
         private class DOCINFOA
         {
-            [MarshalAs(UnmanagedType.LPStr)] public String pDocName;
-            [MarshalAs(UnmanagedType.LPStr)] public String pOutputFile;
-            [MarshalAs(UnmanagedType.LPStr)] public String pDataType;
+            [MarshalAs(UnmanagedType.LPStr)] public string pDocName;
+            [MarshalAs(UnmanagedType.LPStr)] public string pOutputFile;
+            [MarshalAs(UnmanagedType.LPStr)] public string pDataType;
         }
 
         //--------------------------------------------------------------------//
@@ -38,7 +38,7 @@ namespace PCLParaphernalia
                    CallingConvention = CallingConvention.StdCall)]
 
         private static extern bool OpenPrinter(
-            [MarshalAs(UnmanagedType.LPStr)] String szPrinter,
+            [MarshalAs(UnmanagedType.LPStr)] string szPrinter,
             out IntPtr hPrinter,
             IntPtr pd);
 
@@ -59,7 +59,7 @@ namespace PCLParaphernalia
                    CallingConvention = CallingConvention.StdCall)]
 
         private static extern bool StartDocPrinter(
-            IntPtr hPrinter, Int32 level,
+            IntPtr hPrinter, int level,
             [In, MarshalAs(UnmanagedType.LPStruct)] DOCINFOA di);
 
         //--------------------------------------------------------------------//
@@ -94,7 +94,7 @@ namespace PCLParaphernalia
 
         private static extern bool WritePrinter(
             IntPtr hPrinter, IntPtr pBytes,
-            Int32 dwCount, out Int32 dwWritten);
+            int dwCount, out int dwWritten);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -107,16 +107,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool sendBytesToPrinter(String szPrinterName,
+        public static bool sendBytesToPrinter(string szPrinterName,
                                                IntPtr pBytes,
-                                               Int32 dwCount)
+                                               int dwCount)
         {
-            Int32 dwError = 0, dwWritten = 0;
+            int dwError = 0, dwWritten = 0;
             IntPtr hPrinter = new IntPtr(0);
 
             DOCINFOA di = new DOCINFOA();
 
-            Boolean bSuccess = false;
+            bool bSuccess = false;
 
             di.pDocName = "My C#.NET RAW Document";
             di.pDataType = "RAW";
@@ -207,8 +207,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool sendFileToPrinter(String szPrinterName,
-                                              String szFileName)
+        public static bool sendFileToPrinter(string szPrinterName,
+                                              string szFileName)
         {
             //----------------------------------------------------------------//
             //                                                                //
@@ -228,13 +228,13 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            Byte[] bytes = new Byte[fs.Length];
+            byte[] bytes = new byte[fs.Length];
 
-            Boolean bSuccess = false;
+            bool bSuccess = false;
 
             IntPtr pUnmanagedBytes = new IntPtr(0);
 
-            Int32 nLength;
+            int nLength;
 
             nLength = Convert.ToInt32(fs.Length);
 
@@ -285,11 +285,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static bool sendStringToPrinter(
-            String szPrinterName,
-            String szString)
+            string szPrinterName,
+            string szString)
         {
             IntPtr pBytes;
-            Int32 dwCount;
+            int dwCount;
 
             dwCount = szString.Length; // How many characters are in the string?
 

@@ -22,11 +22,11 @@ namespace PCLParaphernalia
 
         private PJLCommands.eRequestType _reqType;
         private PJLCommands.eCmdFormat _cmdFormat;
-        private String _cmdName;
-        private String _cmdDesc;
+        private string _cmdName;
+        private string _cmdDesc;
 
-        private Int32 _statsCtParent;
-        private Int32 _statsCtChild;
+        private int _statsCtParent;
+        private int _statsCtChild;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -37,7 +37,7 @@ namespace PCLParaphernalia
         public PJLCommand(PJLCommands.eCmdIndex indx,
                           PJLCommands.eCmdFormat format,
                           PJLCommands.eRequestType type,
-                          String desc)
+                          string desc)
         {
             if (indx == PJLCommands.eCmdIndex.Null)
                 _cmdName = PJLCommands.nullCmdKey;
@@ -58,7 +58,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Description
+        public string Description
         {
             get { return _cmdDesc; }
         }
@@ -83,7 +83,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void incrementStatisticsCount(Int32 level)
+        public void incrementStatisticsCount(int level)
         {
             if (level == 0)
                 _statsCtParent++;
@@ -97,7 +97,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Name
+        public string Name
         {
             get { return _cmdName; }
         }
@@ -123,7 +123,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtChild
+        public int StatsCtChild
         {
             get { return _statsCtChild; }
         }
@@ -134,7 +134,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtParent
+        public int StatsCtParent
         {
             get { return _statsCtParent; }
         }
@@ -145,7 +145,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtTotal
+        public int StatsCtTotal
         {
             get { return (_statsCtParent + _statsCtChild); }
         }

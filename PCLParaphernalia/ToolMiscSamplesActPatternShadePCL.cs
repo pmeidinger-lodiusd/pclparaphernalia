@@ -20,26 +20,26 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Int32 _macroId = 1;
-        const UInt16 _unitsPerInch = PCLWriter.sessionUPI;
+        const int _macroId = 1;
+        const ushort _unitsPerInch = PCLWriter.sessionUPI;
 
-        const Int16 _pageOriginX = (_unitsPerInch * 1);
-        const Int16 _pageOriginY = (_unitsPerInch * 1);
-        const Int16 _incInch = (_unitsPerInch * 1);
-        const Int16 _lineInc = (_unitsPerInch * 5) / 6;
+        const short _pageOriginX = (_unitsPerInch * 1);
+        const short _pageOriginY = (_unitsPerInch * 1);
+        const short _incInch = (_unitsPerInch * 1);
+        const short _lineInc = (_unitsPerInch * 5) / 6;
 
-        const Int16 _posXDesc = _pageOriginX;
-        const Int16 _posXData1 = _pageOriginX + ((7 * _incInch) / 3);
-        const Int16 _posXData2 = _posXData1 + ((3 * _incInch / 2));
-        const Int16 _posXData3 = _posXData2 + ((3 * _incInch / 2));
+        const short _posXDesc = _pageOriginX;
+        const short _posXData1 = _pageOriginX + ((7 * _incInch) / 3);
+        const short _posXData2 = _posXData1 + ((3 * _incInch / 2));
+        const short _posXData3 = _posXData2 + ((3 * _incInch / 2));
 
-        const Int16 _posYHddr = _pageOriginY;
-        const Int16 _posYDesc1 = _pageOriginY + (2 * _incInch);
-        const Int16 _posYDesc2 = _pageOriginY + ((3 * _incInch / 2));
-        const Int16 _posYData = _pageOriginY + (2 * _incInch);
+        const short _posYHddr = _pageOriginY;
+        const short _posYDesc1 = _pageOriginY + (2 * _incInch);
+        const short _posYDesc2 = _pageOriginY + ((3 * _incInch / 2));
+        const short _posYData = _pageOriginY + (2 * _incInch);
 
-        const Int16 _patternBase_300 = 300;
-        const Int16 _patternBase_600 = 600;
+        const short _patternBase_300 = 300;
+        const short _patternBase_600 = 600;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -47,20 +47,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static Int32 _indxFontArial = PCLFonts.getIndexForName("Arial");
-        static Int32 _indxFontCourier = PCLFonts.getIndexForName("Courier");
+        static int _indxFontArial = PCLFonts.getIndexForName("Arial");
+        static int _indxFontCourier = PCLFonts.getIndexForName("Courier");
 
-        static Int32 _logPageWidth;
-        static Int32 _logPageHeight;
-        static Int32 _paperWidth;
-        static Int32 _paperHeight;
+        static int _logPageWidth;
+        static int _logPageHeight;
+        static int _paperWidth;
+        static int _paperHeight;
 
-        static Int32 _patternsCt = 0;
-        static UInt16[] _patternIds;
-        static UInt16[] _patternHeights;
-        static UInt16[] _patternWidths;
+        static int _patternsCt = 0;
+        static ushort[] _patternIds;
+        static ushort[] _patternHeights;
+        static ushort[] _patternWidths;
 
-        static String[] _patternDescs;
+        static string[] _patternDescs;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -77,14 +77,14 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void generateJob(BinaryWriter prnWriter,
-                                       Int32 indxPaperSize,
-                                       Int32 indxPaperType,
-                                       Int32 indxOrientation,
-                                       Boolean formAsMacro)
+                                       int indxPaperSize,
+                                       int indxPaperType,
+                                       int indxOrientation,
+                                       bool formAsMacro)
         {
             PCLOrientations.eAspect aspect;
 
-            UInt16 logXOffset;
+            ushort logXOffset;
 
             //----------------------------------------------------------------//
 
@@ -148,11 +148,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateJobHeader(BinaryWriter prnWriter,
-                                              Int32 indxPaperSize,
-                                              Int32 indxPaperType,
-                                              Int32 indxOrientation,
-                                              Boolean formAsMacro,
-                                              UInt16 logXOffset)
+                                              int indxPaperSize,
+                                              int indxPaperType,
+                                              int indxOrientation,
+                                              bool formAsMacro,
+                                              ushort logXOffset)
         {
             PCLWriter.stdJobHeader(prnWriter, "");
 
@@ -177,7 +177,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateJobTrailer(BinaryWriter prnWriter,
-                                               Boolean formAsMacro)
+                                               bool formAsMacro)
         {
             PCLWriter.stdJobTrailer(prnWriter, formAsMacro, _macroId);
         }
@@ -194,22 +194,22 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateOverlay(BinaryWriter prnWriter,
-                                            Boolean formAsMacro,
-                                            UInt16 logXOffset,
-                                            Int32 indxPaperSize,
-                                            Int32 indxOrientation)
+                                            bool formAsMacro,
+                                            ushort logXOffset,
+                                            int indxPaperSize,
+                                            int indxOrientation)
         {
-            Int16 posX,
+            short posX,
                   posY;
 
-            Int16 ptSize;
+            short ptSize;
 
-            Int16 boxX,
+            short boxX,
                   boxY,
                   boxHeight,
                   boxWidth;
 
-            Byte stroke = 1;
+            byte stroke = 1;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -231,11 +231,11 @@ namespace PCLParaphernalia
                                   PCLWriter.ePatternType.Shading,
                                   60);
 
-            boxX = (Int16)((_unitsPerInch / 2) - logXOffset);
-            boxY = (Int16)(_unitsPerInch / 2);
+            boxX = (short)((_unitsPerInch / 2) - logXOffset);
+            boxY = (short)(_unitsPerInch / 2);
 
-            boxWidth = (Int16)(_paperWidth - _unitsPerInch);
-            boxHeight = (Int16)(_paperHeight - _unitsPerInch);
+            boxWidth = (short)(_paperWidth - _unitsPerInch);
+            boxHeight = (short)(_paperHeight - _unitsPerInch);
 
             PCLWriter.rectangleOutline(prnWriter, boxX, boxY,
                                         boxHeight, boxWidth, stroke,
@@ -258,7 +258,7 @@ namespace PCLParaphernalia
                                                       PCLFonts.eVariant.Bold,
                                                       ptSize, 0));
 
-            posX = (Int16)(_posXDesc - logXOffset);
+            posX = (short)(_posXDesc - logXOffset);
             posY = _posYHddr;
 
             PCLWriter.text(prnWriter, posX, posY, 0,
@@ -277,7 +277,7 @@ namespace PCLParaphernalia
 
             posY = _posYDesc1;
 
-            for (Int32 i = 0; i < _patternsCt; i++)
+            for (int i = 0; i < _patternsCt; i++)
             {
                 PCLWriter.text(prnWriter, posX, posY, 0,
                                "#" + (i + 1).ToString() + ": ");
@@ -298,7 +298,7 @@ namespace PCLParaphernalia
 
             posY = _posYDesc1 + (_lineInc / 4);
 
-            for (Int32 i = 0; i < _patternsCt; i++)
+            for (int i = 0; i < _patternsCt; i++)
             {
                 PCLWriter.text(prnWriter, posX, posY, 0,
                                _patternDescs[i] + ":");
@@ -318,17 +318,17 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             posY = _posYDesc2;
-            posX = (Int16)(_posXData1 - logXOffset);
+            posX = (short)(_posXData1 - logXOffset);
 
             PCLWriter.text(prnWriter, posX, posY, 0,
                       "Predefined");
 
-            posX = (Int16)(_posXData2 - logXOffset);
+            posX = (short)(_posXData2 - logXOffset);
 
             PCLWriter.text(prnWriter, posX, posY, 0,
                       "User-defined 300 dpi");
 
-            posX = (Int16)(_posXData3 - logXOffset);
+            posX = (short)(_posXData3 - logXOffset);
 
             PCLWriter.text(prnWriter, posX, posY, 0,
                       "User-defined 600 dpi");
@@ -358,13 +358,13 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generatePage(BinaryWriter prnWriter,
-                                         Int32 indxPaperSize,
-                                         Int32 indxPaperType,
-                                         Int32 indxOrientation,
-                                         Boolean formAsMacro,
-                                         UInt16 logXOffset)
+                                         int indxPaperSize,
+                                         int indxPaperType,
+                                         int indxOrientation,
+                                         bool formAsMacro,
+                                         ushort logXOffset)
         {
-            Int16 posX,
+            short posX,
                   posY,
                   rectX,
                   rectY,
@@ -380,7 +380,7 @@ namespace PCLParaphernalia
                 generateOverlay(prnWriter, false, logXOffset,
                                 indxPaperSize, indxOrientation);
 
-            rectHeight = (Int16)(_lineInc / 2);
+            rectHeight = (short)(_lineInc / 2);
             rectWidth = _lineInc;
 
             //----------------------------------------------------------------//
@@ -389,17 +389,17 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            posX = (Int16)(_posXData1 - logXOffset);
+            posX = (short)(_posXData1 - logXOffset);
             posY = _posYData;
 
             rectX = posX;
             rectY = posY;
 
-            for (Int32 i = 0; i < _patternsCt; i++)
+            for (int i = 0; i < _patternsCt; i++)
             {
                 PCLWriter.rectangleShaded(prnWriter, rectX, rectY,
                                           rectHeight, rectWidth,
-                                          (Int16)_patternIds[i],
+                                          (short)_patternIds[i],
                                           false, false);
 
                 rectY += _lineInc;
@@ -411,18 +411,18 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            posX = (Int16)(_posXData2 - logXOffset);
+            posX = (short)(_posXData2 - logXOffset);
             posY = _posYData;
 
             rectX = posX;
             rectY = posY;
 
-            for (Int32 i = 0; i < _patternsCt; i++)
+            for (int i = 0; i < _patternsCt; i++)
             {
                 PCLWriter.rectangleUserFill(
                     prnWriter, rectX, rectY,
                     rectHeight, rectWidth,
-                    (Int16)(_patternBase_300 + _patternIds[i]),
+                    (short)(_patternBase_300 + _patternIds[i]),
                     false, false);
 
                 rectY += _lineInc;
@@ -434,18 +434,18 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            posX = (Int16)(_posXData3 - logXOffset);
+            posX = (short)(_posXData3 - logXOffset);
             posY = _posYData;
 
             rectX = posX;
             rectY = posY;
 
-            for (Int32 i = 0; i < _patternsCt; i++)
+            for (int i = 0; i < _patternsCt; i++)
             {
                 PCLWriter.rectangleUserFill(
                     prnWriter, rectX, rectY,
                     rectHeight, rectWidth,
-                    (Int16)(_patternBase_600 + _patternIds[i]),
+                    (short)(_patternBase_600 + _patternIds[i]),
                     false, false);
 
                 rectY += _lineInc;
@@ -470,12 +470,12 @@ namespace PCLParaphernalia
             _patternsCt = PCLPatternDefs.getCount(
                 PCLPatternDefs.eType.Shading);
 
-            _patternIds = new UInt16[_patternsCt];
-            _patternHeights = new UInt16[_patternsCt];
-            _patternWidths = new UInt16[_patternsCt];
-            _patternDescs = new String[_patternsCt];
+            _patternIds = new ushort[_patternsCt];
+            _patternHeights = new ushort[_patternsCt];
+            _patternWidths = new ushort[_patternsCt];
+            _patternDescs = new string[_patternsCt];
 
-            for (Int32 i = 0; i < _patternsCt; i++)
+            for (int i = 0; i < _patternsCt; i++)
             {
                 _patternIds[i] = PCLPatternDefs.getId(
                     PCLPatternDefs.eType.Shading, i);
@@ -501,21 +501,21 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void patternDefineDpi300(BinaryWriter prnWriter,
-                                                 Int32 baseID)
+                                                 int baseID)
         {
-            Byte[] hddrFmt_0 = { 0x00, 0x00, 0x01, 0x00,
+            byte[] hddrFmt_0 = { 0x00, 0x00, 0x01, 0x00,
                                  0x00, 0x10, 0x00, 0x10 };
 
-            for (Int32 i = 0; i < _patternsCt; i++)
+            for (int i = 0; i < _patternsCt; i++)
             {
-                hddrFmt_0[4] = (Byte)((_patternHeights[i] & 0xff00) >> 8);
-                hddrFmt_0[5] = (Byte)(_patternHeights[i] & 0x00ff);
+                hddrFmt_0[4] = (byte)((_patternHeights[i] & 0xff00) >> 8);
+                hddrFmt_0[5] = (byte)(_patternHeights[i] & 0x00ff);
 
-                hddrFmt_0[6] = (Byte)((_patternWidths[i] & 0xff00) >> 8);
-                hddrFmt_0[7] = (Byte)(_patternWidths[i] & 0x00ff);
+                hddrFmt_0[6] = (byte)((_patternWidths[i] & 0xff00) >> 8);
+                hddrFmt_0[7] = (byte)(_patternWidths[i] & 0x00ff);
 
                 PCLWriter.patternDefine(
-                    prnWriter, (Int16)(baseID + _patternIds[i]),
+                    prnWriter, (short)(baseID + _patternIds[i]),
                     hddrFmt_0,
                     PCLPatternDefs.getBytes(
                         PCLPatternDefs.eType.Shading, i));
@@ -535,22 +535,22 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void patternDefineDpi600(BinaryWriter prnWriter,
-                                                Int32 baseID)
+                                                int baseID)
         {
-            Byte[] hddrFmt_20 = { 0x14, 0x00, 0x01, 0x00,
+            byte[] hddrFmt_20 = { 0x14, 0x00, 0x01, 0x00,
                                   0x00, 0x10, 0x00, 0x10,
                                   0x02, 0x58, 0x02, 0x58 };
 
-            for (Int32 i = 0; i < _patternsCt; i++)
+            for (int i = 0; i < _patternsCt; i++)
             {
-                hddrFmt_20[4] = (Byte)((_patternHeights[i] & 0xff00) >> 8);
-                hddrFmt_20[5] = (Byte)(_patternHeights[i] & 0x00ff);
+                hddrFmt_20[4] = (byte)((_patternHeights[i] & 0xff00) >> 8);
+                hddrFmt_20[5] = (byte)(_patternHeights[i] & 0x00ff);
 
-                hddrFmt_20[6] = (Byte)((_patternWidths[i] & 0xff00) >> 8);
-                hddrFmt_20[7] = (Byte)(_patternWidths[i] & 0x00ff);
+                hddrFmt_20[6] = (byte)((_patternWidths[i] & 0xff00) >> 8);
+                hddrFmt_20[7] = (byte)(_patternWidths[i] & 0x00ff);
 
                 PCLWriter.patternDefine(
-                    prnWriter, (Int16)(baseID + _patternIds[i]),
+                    prnWriter, (short)(baseID + _patternIds[i]),
                     hddrFmt_20,
                     PCLPatternDefs.getBytes(
                         PCLPatternDefs.eType.Shading, i));
@@ -567,12 +567,12 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void patternDeleteSet(BinaryWriter prnWriter,
-                                             Int32 baseID)
+                                             int baseID)
         {
-            for (Int32 i = 0; i < _patternsCt; i++)
+            for (int i = 0; i < _patternsCt; i++)
             {
                 PCLWriter.patternDelete(
-                    prnWriter, (Int16)(baseID + _patternIds[i]));
+                    prnWriter, (short)(baseID + _patternIds[i]));
             }
         }
     }

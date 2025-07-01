@@ -29,7 +29,7 @@ namespace PCLParaphernalia
         private ReportCore.eRptFileFmt _rptFileFmt;
         private ReportCore.eRptChkMarks _rptChkMarks;
 
-        private Boolean _flagOptRptWrap;
+        private bool _flagOptRptWrap;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -239,7 +239,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            Double windowScale = MainFormData.WindowScale;
+            double windowScale = MainFormData.WindowScale;
 
             zoomSlider.Value = windowScale;
 

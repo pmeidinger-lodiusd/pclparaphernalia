@@ -258,7 +258,7 @@ namespace PCLParaphernalia
                             "RESOURCESAVESIZE")
         };
 
-        private static Int32 _varCount = _vars.GetUpperBound(0) + 1;
+        private static int _varCount = _vars.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -269,7 +269,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getCount()
+        public static int getCount()
         {
             return _varCount;
         }
@@ -283,7 +283,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getName(Int32 selection)
+        public static string getName(int selection)
         {
             return _vars[selection].getName();
         }
@@ -297,7 +297,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eVarType getType(Int32 selection)
+        public static eVarType getType(int selection)
         {
             return _vars[selection].getType();
         }

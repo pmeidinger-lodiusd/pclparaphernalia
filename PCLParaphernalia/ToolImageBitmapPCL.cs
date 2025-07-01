@@ -24,25 +24,25 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateImage(BinaryWriter prnWriter,
-                                          Single destPosX,
-                                          Single destPosY,
-                                          Int32 destScalePercentX,
-                                          Int32 destScalePercentY,
-                                          Int32 rasterResolution)
+                                          float destPosX,
+                                          float destPosY,
+                                          int destScalePercentX,
+                                          int destScalePercentY,
+                                          int rasterResolution)
         {
-            Byte[] bufStd = new Byte[1024];
+            byte[] bufStd = new byte[1024];
 
-            Int32 srcWidth = 0,
+            int srcWidth = 0,
                   srcHeight = 0,
                   srcResX = 0,
                   srcResY = 0;
 
-            UInt32 srcCompression = 0,
+            uint srcCompression = 0,
                    srcPaletteEntries = 0;
 
-            UInt16 srcBitsPerPixel = 0;
+            ushort srcBitsPerPixel = 0;
 
-            Boolean srcBlackWhite = false;
+            bool srcBlackWhite = false;
 
             ToolImageBitmapCore.getBmpInfo(ref srcWidth,
                                            ref srcHeight,
@@ -112,14 +112,14 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateImageData(BinaryWriter prnWriter,
-                                              UInt16 srcBitsPerPixel,
-                                              Int32 srcWidth,
-                                              Int32 srcHeight)
+                                              ushort srcBitsPerPixel,
+                                              int srcWidth,
+                                              int srcHeight)
         {
-            Boolean firstBlock = true,
+            bool firstBlock = true,
                     indexed = true;
 
-            Int32 bytesPerRow,
+            int bytesPerRow,
                   bytesPerRowPadded,
                   padBytes;
 
@@ -155,9 +155,9 @@ namespace PCLParaphernalia
                 bytesPerRowPadded += padBytes;
             }
 
-            Byte[] bufSub = new Byte[bytesPerRowPadded];
+            byte[] bufSub = new byte[bytesPerRowPadded];
 
-            for (Int32 i = 0; i < srcHeight; i++)
+            for (int i = 0; i < srcHeight; i++)
             {
                 ToolImageBitmapCore.getNextImageBlock(ref bufSub,
                                                       bytesPerRowPadded,
@@ -167,10 +167,10 @@ namespace PCLParaphernalia
                 {
                     // change BGR components to RGB //
 
-                    Byte temp;
-                    Int32 endLine = bytesPerRow - 2;
+                    byte temp;
+                    int endLine = bytesPerRow - 2;
 
-                    for (Int32 k = 0; k <= endLine; k += 3)
+                    for (int k = 0; k <= endLine; k += 3)
                     {
                         if (bufSub[k] != bufSub[k + 2])
                         {
@@ -197,27 +197,27 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateImageHeader(BinaryWriter prnWriter,
-                                                UInt16 srcBitsPerPixel,
-                                                Int32 srcWidth,
-                                                Int32 srcHeight,
-                                                Int32 srcResX,
-                                                Int32 srcResY,
-                                                Single destPosX,
-                                                Single destPosY,
-                                                Int32 destScalePercentX,
-                                                Int32 destScalePercentY,
-                                                Int32 rasterResolution,
-                                                UInt32 srcPaletteEntries,
-                                                Boolean srcBlackWhite)
+                                                ushort srcBitsPerPixel,
+                                                int srcWidth,
+                                                int srcHeight,
+                                                int srcResX,
+                                                int srcResY,
+                                                float destPosX,
+                                                float destPosY,
+                                                int destScalePercentX,
+                                                int destScalePercentY,
+                                                int rasterResolution,
+                                                uint srcPaletteEntries,
+                                                bool srcBlackWhite)
         {
-            Int16 coordX,
+            short coordX,
                   coordY;
 
-            UInt32 paletteEntries = 0;
+            uint paletteEntries = 0;
 
-            Byte bitsPerIndex = 0x00;
+            byte bitsPerIndex = 0x00;
 
-            Boolean indexed = true;
+            bool indexed = true;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -225,8 +225,8 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            coordX = (Int16)(destPosX * 600);
-            coordY = (Int16)(destPosY * 600);
+            coordX = (short)(destPosX * 600);
+            coordY = (short)(destPosY * 600);
 
             PCLWriter.palettePushPop(prnWriter, PCLWriter.ePushPop.Push);
 
@@ -334,11 +334,11 @@ namespace PCLParaphernalia
 
                 if (paletteEntries != 0)
                 {
-                    Byte red = 0x00,
+                    byte red = 0x00,
                          green = 0x00,
                          blue = 0x00;
 
-                    for (Int16 i = 0; i < paletteEntries; i++)
+                    for (short i = 0; i < paletteEntries; i++)
                     {
                         ToolImageBitmapCore.getBmpPaletteEntry(i,
                                                                ref red,
@@ -396,14 +396,14 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void generateJob(BinaryWriter prnWriter,
-                                       Int32 paperSize,
-                                       Int32 paperType,
-                                       Int32 orientation,
-                                       Single destPosX,
-                                       Single destPosY,
-                                       Int32 destScalePercentX,
-                                       Int32 destScalePercentY,
-                                       Int32 rasterResolution)
+                                       int paperSize,
+                                       int paperType,
+                                       int orientation,
+                                       float destPosX,
+                                       float destPosY,
+                                       int destScalePercentX,
+                                       int destScalePercentY,
+                                       int rasterResolution)
         {
             generateJobHeader(prnWriter,
                               paperSize,
@@ -430,9 +430,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateJobHeader(BinaryWriter prnWriter,
-                                              Int32 paperSize,
-                                              Int32 paperType,
-                                              Int32 orientation)
+                                              int paperSize,
+                                              int paperType,
+                                              int orientation)
         {
             PCLWriter.stdJobHeader(prnWriter, "");
 

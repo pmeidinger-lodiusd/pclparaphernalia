@@ -23,19 +23,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Byte _tag;
+        private byte _tag;
 
-        private String _description;
+        private string _description;
 
-        private Boolean _flagReserved;
-        private Boolean _flagEndSession;
+        private bool _flagReserved;
+        private bool _flagEndSession;
 
         private PCLXLOperators.eEmbedDataType _embedDataType;
 
         private PrnParseConstants.eOvlAct _makeOvlAct;
 
-        private Int32 _statsCtParent;
-        private Int32 _statsCtChild;
+        private int _statsCtParent;
+        private int _statsCtChild;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -43,12 +43,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLXLOperator(Byte tag,
-                             Boolean flagEndSession,
-                             Boolean flagReserved,
+        public PCLXLOperator(byte tag,
+                             bool flagEndSession,
+                             bool flagReserved,
                              PCLXLOperators.eEmbedDataType embedDataType,
                              PrnParseConstants.eOvlAct makeOvlAct,
-                             String description)
+                             string description)
         {
             _tag = tag;
             _flagEndSession = flagEndSession;
@@ -68,11 +68,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public void getDetails(
-            ref Boolean flagEndSession,
-            ref Boolean flagReserved,
+            ref bool flagEndSession,
+            ref bool flagReserved,
             ref PCLXLOperators.eEmbedDataType embedDataType,
             ref PrnParseConstants.eOvlAct makeOvlAct,
-            ref String description)
+            ref string description)
         {
             flagEndSession = _flagEndSession;
             flagReserved = _flagReserved;
@@ -87,7 +87,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Description
+        public string Description
         {
             get { return _description; }
         }
@@ -109,7 +109,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagReserved
+        public bool FlagReserved
         {
             get { return _flagReserved; }
         }
@@ -120,7 +120,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagEndSession
+        public bool FlagEndSession
         {
             get { return _flagEndSession; }
         }
@@ -134,7 +134,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void incrementStatisticsCount(Int32 level)
+        public void incrementStatisticsCount(int level)
         {
             if (level == 0)
                 _statsCtParent++;
@@ -174,7 +174,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtChild
+        public int StatsCtChild
         {
             get { return _statsCtChild; }
         }
@@ -185,7 +185,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtParent
+        public int StatsCtParent
         {
             get { return _statsCtParent; }
         }
@@ -196,7 +196,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtTotal
+        public int StatsCtTotal
         {
             get { return (_statsCtParent + _statsCtChild); }
         }
@@ -207,7 +207,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Tag
+        public string Tag
         {
             get { return "0x" + _tag.ToString("x2"); }
         }
@@ -218,7 +218,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Type
+        public string Type
         {
             get { return "Operator"; }
         }

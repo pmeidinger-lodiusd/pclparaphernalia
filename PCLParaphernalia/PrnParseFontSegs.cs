@@ -32,15 +32,15 @@ namespace PCLParaphernalia
 
         private DataTable _table;
 
-        private Byte[] _buf;
+        private byte[] _buf;
 
-        private Int32 _fileOffset;
-        private Int32 _analysisLevel;
-        private Int32 _segRem;
+        private int _fileOffset;
+        private int _analysisLevel;
+        private int _segRem;
 
-        private Boolean _validSegs;
-        private Boolean _showBinData;
-        private Boolean _PCL;
+        private bool _validSegs;
+        private bool _showBinData;
+        private bool _PCL;
         private PrnParseOptions _options;
 
         private PrnParseConstants.eOptOffsetFormats _indxOffsetFormat;
@@ -60,42 +60,42 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean decodeCharCompReq(Boolean complement,
-                                         Boolean format_MSL,
-                                         Boolean PCL,
-                                         Int32 fileOffset,
-                                         Byte[] buf,
-                                         Int32 bufOffset,
+        public bool decodeCharCompReq(bool complement,
+                                         bool format_MSL,
+                                         bool PCL,
+                                         int fileOffset,
+                                         byte[] buf,
+                                         int bufOffset,
                                          PrnParseLinkData linkData,
                                          PrnParseOptions options,
                                          DataTable table)
         {
-            const Int32 arrayBytes = 8;
-            const Int32 bitsPerByte = 8;
-            const Int32 arrayBits = arrayBytes * bitsPerByte;
+            const int arrayBytes = 8;
+            const int bitsPerByte = 8;
+            const int arrayBits = arrayBytes * bitsPerByte;
 
             PCLCharCollections.eBitType bitType;
             PrnParseRowTypes.eType rowType;
 
-            Boolean dataOK = true;
+            bool dataOK = true;
 
-            UInt64 charCollArray,
+            ulong charCollArray,
                    charCollVal,
                    charCollIndex,
                    bitVal;
 
-            Int32 offset;
+            int offset;
 
-            String codeDesc,
+            string codeDesc,
                    textDesc;
 
-            Int32 analysisLevel;
-            Int32 listIndex;
+            int analysisLevel;
+            int listIndex;
 
-            Boolean bitSet,
+            bool bitSet,
                     bitSig;
 
-            Boolean showBinData;
+            bool showBinData;
 
             PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
 
@@ -124,7 +124,7 @@ namespace PCLParaphernalia
 
             charCollArray = 0;
 
-            for (Int32 i = 0; i < arrayBytes; i++)
+            for (int i = 0; i < arrayBytes; i++)
             {
                 charCollArray = (charCollArray << 8) + buf[offset + i];
             }
@@ -139,9 +139,9 @@ namespace PCLParaphernalia
             charCollVal = 0;
             charCollIndex = 0;
 
-            for (Int32 i = 0; i < arrayBits; i++)
+            for (int i = 0; i < arrayBits; i++)
             {
-                bitVal = ((UInt64)0x01) << i;
+                bitVal = ((ulong)0x01) << i;
 
                 if ((charCollArray & bitVal) != 0)
                 {
@@ -220,9 +220,9 @@ namespace PCLParaphernalia
             }
             else
             {
-                for (Int32 i = 0; i < arrayBits; i++)
+                for (int i = 0; i < arrayBits; i++)
                 {
-                    bitVal = ((UInt64)0x01) << i;
+                    bitVal = ((ulong)0x01) << i;
 
                     if ((charCollVal & bitVal) != 0)
                         bitSet = true;
@@ -288,29 +288,29 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean processSegData(Byte[] buf,
-                                      Int32 fileOffset,
-                                      Boolean PCL,
-                                      Boolean firstSeg,
-                                      Boolean largeSegs,
-                                      ref Int32 bufRem,
-                                      ref Int32 bufOffset,
-                                      ref Int32 hddrDataRem,
-                                      ref Int32 hddrRem,
-                                      ref Int32 hddrChksVal,
-                                      ref Boolean valid,
+        public bool processSegData(byte[] buf,
+                                      int fileOffset,
+                                      bool PCL,
+                                      bool firstSeg,
+                                      bool largeSegs,
+                                      ref int bufRem,
+                                      ref int bufOffset,
+                                      ref int hddrDataRem,
+                                      ref int hddrRem,
+                                      ref int hddrChksVal,
+                                      ref bool valid,
                                       PrnParseLinkData linkData,
                                       PrnParseOptions options,
                                       DataTable table)
         {
             PrnParseConstants.eContType contType;
 
-            Boolean continuation = false;
+            bool continuation = false;
 
-            Int32 binDataLen;
-            Int32 segHddrLen;
-            Int32 segSize;
-            Int32 segType;
+            int binDataLen;
+            int segHddrLen;
+            int segSize;
+            int segType;
 
             _buf = buf;
             _fileOffset = fileOffset;
@@ -359,7 +359,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                String text;
+                string text;
 
                 segSize = 0;
                 _segRem = 0;
@@ -695,7 +695,7 @@ namespace PCLParaphernalia
 
                     if (_PCL)
                     {
-                        for (Int32 i = 0; i < binDataLen; i++)
+                        for (int i = 0; i < binDataLen; i++)
                         {
                             hddrChksVal += _buf[bufOffset + i];
                         }
@@ -729,19 +729,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processSegNull(Int32 segSize,
-                                    Int32 segHddrLen,
-                                    ref Int32 bufRem,
-                                    ref Int32 bufOffset,
-                                    ref Int32 hddrDataRem,
-                                    ref Int32 hddrRem,
-                                    ref Int32 hddrChksVal)
+        private void processSegNull(int segSize,
+                                    int segHddrLen,
+                                    ref int bufRem,
+                                    ref int bufOffset,
+                                    ref int hddrDataRem,
+                                    ref int hddrRem,
+                                    ref int hddrChksVal)
         {
-            String segTypeDesc = "Null";
+            string segTypeDesc = "Null";
 
             PrnParseConstants.eContType contType;
 
-            Int32 baseOffset,
+            int baseOffset,
                   dataOffset,
                   minSegSize,
                   minSegLen;
@@ -785,7 +785,7 @@ namespace PCLParaphernalia
 
                 if (_PCL)
                 {
-                    for (Int32 i = 0; i < minSegLen; i++)
+                    for (int i = 0; i < minSegLen; i++)
                     {
                         hddrChksVal += _buf[bufOffset + i];
                     }
@@ -876,20 +876,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processSegUnknown(Int32 segType,
-                                       Int32 segSize,
-                                       Int32 segHddrLen,
-                                       ref Int32 bufRem,
-                                       ref Int32 bufOffset,
-                                       ref Int32 hddrDataRem,
-                                       ref Int32 hddrRem,
-                                       ref Int32 hddrChksVal)
+        private void processSegUnknown(int segType,
+                                       int segSize,
+                                       int segHddrLen,
+                                       ref int bufRem,
+                                       ref int bufOffset,
+                                       ref int hddrDataRem,
+                                       ref int hddrRem,
+                                       ref int hddrChksVal)
         {
-            String segTypeDesc = "0x" + segType.ToString("X4") + ": Unknown";
+            string segTypeDesc = "0x" + segType.ToString("X4") + ": Unknown";
 
             PrnParseConstants.eContType contType;
 
-            Int32 baseOffset,
+            int baseOffset,
                   dataOffset,
                   minSegSize,
                   minSegLen;
@@ -933,7 +933,7 @@ namespace PCLParaphernalia
 
                 if (_PCL)
                 {
-                    for (Int32 i = 0; i < minSegLen; i++)
+                    for (int i = 0; i < minSegLen; i++)
                     {
                         hddrChksVal += _buf[bufOffset + i];
                     }
@@ -1019,19 +1019,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processSeg_AP(Int32 segSize,
-                                   Int32 segHddrLen,
-                                   ref Int32 bufRem,
-                                   ref Int32 bufOffset,
-                                   ref Int32 hddrDataRem,
-                                   ref Int32 hddrRem,
-                                   ref Int32 hddrChksVal)
+        private void processSeg_AP(int segSize,
+                                   int segHddrLen,
+                                   ref int bufRem,
+                                   ref int bufOffset,
+                                   ref int hddrDataRem,
+                                   ref int hddrRem,
+                                   ref int hddrChksVal)
         {
-            String segTypeDesc = "AP: Application Support";
+            string segTypeDesc = "AP: Application Support";
 
             PrnParseConstants.eContType contType;
 
-            Int32 baseOffset,
+            int baseOffset,
                   dataOffset,
                   minSegSize,
                   minSegLen;
@@ -1075,7 +1075,7 @@ namespace PCLParaphernalia
 
                 if (_PCL)
                 {
-                    for (Int32 i = 0; i < minSegLen; i++)
+                    for (int i = 0; i < minSegLen; i++)
                     {
                         hddrChksVal += _buf[bufOffset + i];
                     }
@@ -1165,24 +1165,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processSeg_BR(Int32 segSize,
-                                   Int32 segHddrLen,
-                                   ref Int32 bufRem,
-                                   ref Int32 bufOffset,
-                                   ref Int32 hddrDataRem,
-                                   ref Int32 hddrRem,
-                                   ref Int32 hddrChksVal)
+        private void processSeg_BR(int segSize,
+                                   int segHddrLen,
+                                   ref int bufRem,
+                                   ref int bufOffset,
+                                   ref int hddrDataRem,
+                                   ref int hddrRem,
+                                   ref int hddrChksVal)
         {
-            String segTypeDesc = "BR: Bitmap Resolution";
+            string segTypeDesc = "BR: Bitmap Resolution";
 
             PrnParseConstants.eContType contType;
 
-            Int32 baseOffset,
+            int baseOffset,
                   dataOffset,
                   minSegSize,
                   minSegLen;
 
-            UInt16 ui16a;
+            ushort ui16a;
 
             minSegSize = 4;
             minSegLen = segHddrLen + minSegSize;
@@ -1223,7 +1223,7 @@ namespace PCLParaphernalia
 
                 if (_PCL)
                 {
-                    for (Int32 i = 0; i < minSegLen; i++)
+                    for (int i = 0; i < minSegLen; i++)
                     {
                         hddrChksVal += _buf[bufOffset + i];
                     }
@@ -1272,7 +1272,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                ui16a = (UInt16)((_buf[dataOffset] * 256) +
+                ui16a = (ushort)((_buf[dataOffset] * 256) +
                                   _buf[dataOffset + 1]);
 
                 PrnParseCommon.addDataRow(
@@ -1286,7 +1286,7 @@ namespace PCLParaphernalia
                     "X Resolution:",
                     ui16a + " dots per inch");
 
-                ui16a = (UInt16)((_buf[dataOffset + 2] * 256) +
+                ui16a = (ushort)((_buf[dataOffset + 2] * 256) +
                                   _buf[dataOffset + 3]);
 
                 PrnParseCommon.addDataRow(
@@ -1349,19 +1349,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processSeg_CC(Int32 segSize,
-                                   Int32 segHddrLen,
-                                   ref Int32 bufRem,
-                                   ref Int32 bufOffset,
-                                   ref Int32 hddrDataRem,
-                                   ref Int32 hddrRem,
-                                   ref Int32 hddrChksVal)
+        private void processSeg_CC(int segSize,
+                                   int segHddrLen,
+                                   ref int bufRem,
+                                   ref int bufOffset,
+                                   ref int hddrDataRem,
+                                   ref int hddrRem,
+                                   ref int hddrChksVal)
         {
-            String segTypeDesc = "CC: Character Complement";
+            string segTypeDesc = "CC: Character Complement";
 
             PrnParseConstants.eContType contType;
 
-            Int32 baseOffset,
+            int baseOffset,
                   dataOffset,
                   minSegSize,
                   minSegLen;
@@ -1405,7 +1405,7 @@ namespace PCLParaphernalia
 
                 if (_PCL)
                 {
-                    for (Int32 i = 0; i < minSegLen; i++)
+                    for (int i = 0; i < minSegLen; i++)
                     {
                         hddrChksVal += _buf[bufOffset + i];
                     }
@@ -1506,19 +1506,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processSeg_CE(Int32 segSize,
-                                   Int32 segHddrLen,
-                                   ref Int32 bufRem,
-                                   ref Int32 bufOffset,
-                                   ref Int32 hddrDataRem,
-                                   ref Int32 hddrRem,
-                                   ref Int32 hddrChksVal)
+        private void processSeg_CE(int segSize,
+                                   int segHddrLen,
+                                   ref int bufRem,
+                                   ref int bufOffset,
+                                   ref int hddrDataRem,
+                                   ref int hddrRem,
+                                   ref int hddrChksVal)
         {
-            String segTypeDesc = "CE: Character Enhancement";
+            string segTypeDesc = "CE: Character Enhancement";
 
             PrnParseConstants.eContType contType;
 
-            Int32 baseOffset,
+            int baseOffset,
                   dataOffset,
                   minSegSize,
                   minSegLen;
@@ -1562,7 +1562,7 @@ namespace PCLParaphernalia
 
                 if (_PCL)
                 {
-                    for (Int32 i = 0; i < minSegLen; i++)
+                    for (int i = 0; i < minSegLen; i++)
                     {
                         hddrChksVal += _buf[bufOffset + i];
                     }
@@ -1652,31 +1652,31 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processSeg_CP(Int32 segSize,
-                                   Int32 segHddrLen,
-                                   ref Int32 bufRem,
-                                   ref Int32 bufOffset,
-                                   ref Int32 hddrDataRem,
-                                   ref Int32 hddrRem,
-                                   ref Int32 hddrChksVal)
+        private void processSeg_CP(int segSize,
+                                   int segHddrLen,
+                                   ref int bufRem,
+                                   ref int bufOffset,
+                                   ref int hddrDataRem,
+                                   ref int hddrRem,
+                                   ref int hddrChksVal)
         {
-            String segTypeDesc = "CP: Copyright";
+            string segTypeDesc = "CP: Copyright";
 
-            const Int32 sliceMax = 50;
+            const int sliceMax = 50;
 
             PrnParseConstants.eContType contType;
 
-            Boolean firstLine;
+            bool firstLine;
 
-            String textA,
+            string textA,
                    textB;
 
-            Int32 baseOffset,
+            int baseOffset,
                   dataOffset,
                   minSegSize,
                   minSegLen;
 
-            Int32 cpyRem,
+            int cpyRem,
                   sliceLen,
                   cpyOffset;
 
@@ -1719,7 +1719,7 @@ namespace PCLParaphernalia
 
                 if (_PCL)
                 {
-                    for (Int32 i = 0; i < minSegLen; i++)
+                    for (int i = 0; i < minSegLen; i++)
                     {
                         hddrChksVal += _buf[bufOffset + i];
                     }
@@ -1850,28 +1850,28 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processSeg_GC(Int32 segSize,
-                                   Int32 segHddrLen,
-                                   ref Int32 bufRem,
-                                   ref Int32 bufOffset,
-                                   ref Int32 hddrDataRem,
-                                   ref Int32 hddrRem,
-                                   ref Int32 hddrChksVal)
+        private void processSeg_GC(int segSize,
+                                   int segHddrLen,
+                                   ref int bufRem,
+                                   ref int bufOffset,
+                                   ref int hddrDataRem,
+                                   ref int hddrRem,
+                                   ref int hddrChksVal)
         {
-            String segTypeDesc = "GC: Galley Character";
+            string segTypeDesc = "GC: Galley Character";
 
             PrnParseConstants.eContType contType;
 
-            Int32 baseOffset,
+            int baseOffset,
                   dataOffset,
                   minSegSize,
                   varSegSize,
                   minSegLen;
 
-            UInt16 ui16a,
+            ushort ui16a,
                    numRegions = 0;
 
-            Boolean numRegionsOK = false;
+            bool numRegionsOK = false;
 
             minSegSize = 6;
             varSegSize = 0;
@@ -1900,7 +1900,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                numRegions = (UInt16)((_buf[dataOffset + 4] * 256) +
+                numRegions = (ushort)((_buf[dataOffset + 4] * 256) +
                                        _buf[dataOffset + 5]);
 
                 varSegSize = 6 * numRegions;
@@ -1952,7 +1952,7 @@ namespace PCLParaphernalia
 
                 if (_PCL)
                 {
-                    for (Int32 i = 0; i < minSegLen; i++)
+                    for (int i = 0; i < minSegLen; i++)
                     {
                         hddrChksVal += _buf[bufOffset + i];
                     }
@@ -2000,7 +2000,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                ui16a = (UInt16)((_buf[dataOffset] * 256) +
+                ui16a = (ushort)((_buf[dataOffset] * 256) +
                                   _buf[dataOffset + 1]);
 
                 PrnParseCommon.addDataRow(
@@ -2020,7 +2020,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                ui16a = (UInt16)((_buf[dataOffset + 2] * 256) +
+                ui16a = (ushort)((_buf[dataOffset + 2] * 256) +
                                   _buf[dataOffset + 3]);
 
                 PrnParseCommon.addDataRow(
@@ -2064,11 +2064,11 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    for (Int32 i = 0; i < numRegions; i++)
+                    for (int i = 0; i < numRegions; i++)
                     {
-                        Int32 j = i * 6;
+                        int j = i * 6;
 
-                        ui16a = (UInt16)((_buf[dataOffset + 6 + j] * 256) +
+                        ui16a = (ushort)((_buf[dataOffset + 6 + j] * 256) +
                                           _buf[dataOffset + 7 + j]);
 
                         PrnParseCommon.addDataRow(
@@ -2082,7 +2082,7 @@ namespace PCLParaphernalia
                             "Region Start:",
                             "0x" + ui16a.ToString("X4"));
 
-                        ui16a = (UInt16)((_buf[dataOffset + 8 + j] * 256) +
+                        ui16a = (ushort)((_buf[dataOffset + 8 + j] * 256) +
                                           _buf[dataOffset + 9 + j]);
 
                         PrnParseCommon.addDataRow(
@@ -2096,7 +2096,7 @@ namespace PCLParaphernalia
                             "       End:",
                             "0x" + ui16a.ToString("X4"));
 
-                        ui16a = (UInt16)((_buf[dataOffset + 10 + j] * 256) +
+                        ui16a = (ushort)((_buf[dataOffset + 10 + j] * 256) +
                                           _buf[dataOffset + 11 + j]);
 
                         PrnParseCommon.addDataRow(
@@ -2170,19 +2170,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processSeg_GI(Int32 segSize,
-                                   Int32 segHddrLen,
-                                   ref Int32 bufRem,
-                                   ref Int32 bufOffset,
-                                   ref Int32 hddrDataRem,
-                                   ref Int32 hddrRem,
-                                   ref Int32 hddrChksVal)
+        private void processSeg_GI(int segSize,
+                                   int segHddrLen,
+                                   ref int bufRem,
+                                   ref int bufOffset,
+                                   ref int hddrDataRem,
+                                   ref int hddrRem,
+                                   ref int hddrChksVal)
         {
-            String segTypeDesc = "GI: Global Intellifont";
+            string segTypeDesc = "GI: Global Intellifont";
 
             PrnParseConstants.eContType contType;
 
-            Int32 baseOffset,
+            int baseOffset,
                   dataOffset,
                   minSegSize,
                   minSegLen;
@@ -2226,7 +2226,7 @@ namespace PCLParaphernalia
 
                 if (_PCL)
                 {
-                    for (Int32 i = 0; i < minSegLen; i++)
+                    for (int i = 0; i < minSegLen; i++)
                     {
                         hddrChksVal += _buf[bufOffset + i];
                     }
@@ -2312,38 +2312,38 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processSeg_GT(Int32 segSize,
-                                   Int32 segHddrLen,
-                                   ref Int32 bufRem,
-                                   ref Int32 bufOffset,
-                                   ref Int32 hddrDataRem,
-                                   ref Int32 hddrRem,
-                                   ref Int32 hddrChksVal)
+        private void processSeg_GT(int segSize,
+                                   int segHddrLen,
+                                   ref int bufRem,
+                                   ref int bufOffset,
+                                   ref int hddrDataRem,
+                                   ref int hddrRem,
+                                   ref int hddrChksVal)
         {
-            String segTypeDesc = "GT: Global TrueType";
+            string segTypeDesc = "GT: Global TrueType";
 
             PrnParseConstants.eContType contType;
 
-            Int32 baseOffset,
+            int baseOffset,
                   dataOffset,
                   minSegSize,
                   varSegSize,
                   minSegLen;
 
-            Int32 tableOffset,
+            int tableOffset,
                   padBytes;
 
-            UInt32 ui32a,
+            uint ui32a,
                    ui32b;
 
-            UInt32 offset,
+            uint offset,
                    size,
                    padSize;
 
-            UInt16 ui16a,
+            ushort ui16a,
                    numTables = 0;
 
-            Boolean numTablesOK = false;
+            bool numTablesOK = false;
 
             minSegSize = 12;
             varSegSize = 0;
@@ -2372,7 +2372,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                numTables = (UInt16)((_buf[dataOffset + 4] * 256) +
+                numTables = (ushort)((_buf[dataOffset + 4] * 256) +
                                       _buf[dataOffset + 5]);
 
                 varSegSize = 16 * numTables;
@@ -2424,7 +2424,7 @@ namespace PCLParaphernalia
 
                 if (_PCL)
                 {
-                    for (Int32 i = 0; i < minSegLen; i++)
+                    for (int i = 0; i < minSegLen; i++)
                     {
                         hddrChksVal += _buf[bufOffset + i];
                     }
@@ -2475,7 +2475,7 @@ namespace PCLParaphernalia
 
                 tableOffset = baseOffset;
 
-                ui32a = (UInt32)((_buf[dataOffset] * 65536 * 256) +
+                ui32a = (uint)((_buf[dataOffset] * 65536 * 256) +
                                  (_buf[dataOffset + 1] * 65536) +
                                  (_buf[dataOffset + 2] * 256) +
                                   _buf[dataOffset + 3]);
@@ -2516,7 +2516,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                ui16a = (UInt16)((_buf[dataOffset + 6] * 256) +
+                ui16a = (ushort)((_buf[dataOffset + 6] * 256) +
                                   _buf[dataOffset + 7]);
 
                 PrnParseCommon.addDataRow(
@@ -2538,7 +2538,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                ui16a = (UInt16)((_buf[dataOffset + 8] * 256) +
+                ui16a = (ushort)((_buf[dataOffset + 8] * 256) +
                                   _buf[dataOffset + 9]);
 
                 PrnParseCommon.addDataRow(
@@ -2560,7 +2560,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                ui16a = (UInt16)((_buf[dataOffset + 10] * 256) +
+                ui16a = (ushort)((_buf[dataOffset + 10] * 256) +
                                   _buf[dataOffset + 11]);
 
                 PrnParseCommon.addDataRow(
@@ -2587,9 +2587,9 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    for (Int32 i = 0; i < numTables; i++)
+                    for (int i = 0; i < numTables; i++)
                     {
-                        Int32 j = i * 16;
+                        int j = i * 16;
 
                         //----------------------------------------------------//
                         //                                                    //
@@ -2614,7 +2614,7 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        ui32a = (UInt32)((_buf[dataOffset + 16 + j] * 65536 * 256) +
+                        ui32a = (uint)((_buf[dataOffset + 16 + j] * 65536 * 256) +
                                          (_buf[dataOffset + 17 + j] * 65536) +
                                          (_buf[dataOffset + 18 + j] * 256) +
                                           _buf[dataOffset + 19 + j]);
@@ -2636,12 +2636,12 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        offset = (UInt32)((_buf[dataOffset + 20 + j] * 65536 * 256) +
+                        offset = (uint)((_buf[dataOffset + 20 + j] * 65536 * 256) +
                                            (_buf[dataOffset + 21 + j] * 65536) +
                                            (_buf[dataOffset + 22 + j] * 256) +
                                             _buf[dataOffset + 23 + j]);
 
-                        ui32b = (UInt32)(tableOffset + offset);
+                        ui32b = (uint)(tableOffset + offset);
 
                         if (offset == 0)
                             PrnParseCommon.addDataRow(
@@ -2677,12 +2677,12 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        size = (UInt32)((_buf[dataOffset + 24 + j] * 65536 * 256) +
+                        size = (uint)((_buf[dataOffset + 24 + j] * 65536 * 256) +
                                          (_buf[dataOffset + 25 + j] * 65536) +
                                          (_buf[dataOffset + 26 + j] * 256) +
                                           _buf[dataOffset + 27 + j]);
 
-                        padBytes = (Int32)(size % 4);
+                        padBytes = (int)(size % 4);
 
                         if (padBytes == 0)
                         {
@@ -2700,7 +2700,7 @@ namespace PCLParaphernalia
                         else
                         {
                             padBytes = 4 - padBytes;
-                            padSize = (UInt32)(size + padBytes);
+                            padSize = (uint)(size + padBytes);
 
                             PrnParseCommon.addDataRow(
                                 _rowType,
@@ -2776,19 +2776,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processSeg_IF(Int32 segSize,
-                                   Int32 segHddrLen,
-                                   ref Int32 bufRem,
-                                   ref Int32 bufOffset,
-                                   ref Int32 hddrDataRem,
-                                   ref Int32 hddrRem,
-                                   ref Int32 hddrChksVal)
+        private void processSeg_IF(int segSize,
+                                   int segHddrLen,
+                                   ref int bufRem,
+                                   ref int bufOffset,
+                                   ref int hddrDataRem,
+                                   ref int hddrRem,
+                                   ref int hddrChksVal)
         {
-            String segTypeDesc = "IF: Intellifont Face";
+            string segTypeDesc = "IF: Intellifont Face";
 
             PrnParseConstants.eContType contType;
 
-            Int32 baseOffset,
+            int baseOffset,
                   dataOffset,
                   minSegSize,
                   minSegLen;
@@ -2832,7 +2832,7 @@ namespace PCLParaphernalia
 
                 if (_PCL)
                 {
-                    for (Int32 i = 0; i < minSegLen; i++)
+                    for (int i = 0; i < minSegLen; i++)
                     {
                         hddrChksVal += _buf[bufOffset + i];
                     }
@@ -2918,26 +2918,26 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processSeg_PA(Int32 segSize,
-                                   Int32 segHddrLen,
-                                   ref Int32 bufRem,
-                                   ref Int32 bufOffset,
-                                   ref Int32 hddrDataRem,
-                                   ref Int32 hddrRem,
-                                   ref Int32 hddrChksVal)
+        private void processSeg_PA(int segSize,
+                                   int segHddrLen,
+                                   ref int bufRem,
+                                   ref int bufOffset,
+                                   ref int hddrDataRem,
+                                   ref int hddrRem,
+                                   ref int hddrChksVal)
         {
-            String segTypeDesc = "PA: Panose Description";
+            string segTypeDesc = "PA: Panose Description";
 
             PrnParseConstants.eContType contType;
 
-            Byte b;
+            byte b;
 
-            Int32 baseOffset,
+            int baseOffset,
                   dataOffset,
                   minSegSize,
                   minSegLen;
 
-            String panoseSet;
+            string panoseSet;
 
             minSegSize = 10;
             minSegLen = segHddrLen + minSegSize;
@@ -2978,7 +2978,7 @@ namespace PCLParaphernalia
 
                 if (_PCL)
                 {
-                    for (Int32 i = 0; i < minSegLen; i++)
+                    for (int i = 0; i < minSegLen; i++)
                     {
                         hddrChksVal += _buf[bufOffset + i];
                     }
@@ -3028,7 +3028,7 @@ namespace PCLParaphernalia
 
                 panoseSet = "";
 
-                for (Int32 i = 0; i < 10; i++)
+                for (int i = 0; i < 10; i++)
                 {
                     b = _buf[dataOffset + i];
 
@@ -3091,19 +3091,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processSeg_PF(Int32 segSize,
-                                   Int32 segHddrLen,
-                                   ref Int32 bufRem,
-                                   ref Int32 bufOffset,
-                                   ref Int32 hddrDataRem,
-                                   ref Int32 hddrRem,
-                                   ref Int32 hddrChksVal)
+        private void processSeg_PF(int segSize,
+                                   int segHddrLen,
+                                   ref int bufRem,
+                                   ref int bufOffset,
+                                   ref int hddrDataRem,
+                                   ref int hddrRem,
+                                   ref int hddrChksVal)
         {
-            String segTypeDesc = "PF: PostScript Font";
+            string segTypeDesc = "PF: PostScript Font";
 
             PrnParseConstants.eContType contType;
 
-            Int32 baseOffset,
+            int baseOffset,
                   dataOffset,
                   minSegSize,
                   minSegLen;
@@ -3147,7 +3147,7 @@ namespace PCLParaphernalia
 
                 if (_PCL)
                 {
-                    for (Int32 i = 0; i < minSegLen; i++)
+                    for (int i = 0; i < minSegLen; i++)
                     {
                         hddrChksVal += _buf[bufOffset + i];
                     }
@@ -3233,19 +3233,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processSeg_TF(Int32 segSize,
-                                   Int32 segHddrLen,
-                                   ref Int32 bufRem,
-                                   ref Int32 bufOffset,
-                                   ref Int32 hddrDataRem,
-                                   ref Int32 hddrRem,
-                                   ref Int32 hddrChksVal)
+        private void processSeg_TF(int segSize,
+                                   int segHddrLen,
+                                   ref int bufRem,
+                                   ref int bufOffset,
+                                   ref int hddrDataRem,
+                                   ref int hddrRem,
+                                   ref int hddrChksVal)
         {
-            String segTypeDesc = "TF: Type Face String";
+            string segTypeDesc = "TF: Type Face String";
 
             PrnParseConstants.eContType contType;
 
-            Int32 baseOffset,
+            int baseOffset,
                   dataOffset,
                   minSegSize,
                   minSegLen;
@@ -3289,7 +3289,7 @@ namespace PCLParaphernalia
 
                 if (_PCL)
                 {
-                    for (Int32 i = 0; i < minSegLen; i++)
+                    for (int i = 0; i < minSegLen; i++)
                     {
                         hddrChksVal += _buf[bufOffset + i];
                     }
@@ -3375,28 +3375,28 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processSeg_VE(Int32 segSize,
-                                   Int32 segHddrLen,
-                                   ref Int32 bufRem,
-                                   ref Int32 bufOffset,
-                                   ref Int32 hddrDataRem,
-                                   ref Int32 hddrRem,
-                                   ref Int32 hddrChksVal)
+        private void processSeg_VE(int segSize,
+                                   int segHddrLen,
+                                   ref int bufRem,
+                                   ref int bufOffset,
+                                   ref int hddrDataRem,
+                                   ref int hddrRem,
+                                   ref int hddrChksVal)
         {
-            String segTypeDesc = "VE: Vertical Exclude";
+            string segTypeDesc = "VE: Vertical Exclude";
 
             PrnParseConstants.eContType contType;
 
-            Int32 baseOffset,
+            int baseOffset,
                   dataOffset,
                   minSegSize,
                   varSegSize,
                   minSegLen;
 
-            UInt16 ui16a,
+            ushort ui16a,
                    numRanges = 0;
 
-            Boolean numRangesOK = false;
+            bool numRangesOK = false;
 
             minSegSize = 2;
             varSegSize = 0;
@@ -3476,7 +3476,7 @@ namespace PCLParaphernalia
 
                 if (_PCL)
                 {
-                    for (Int32 i = 0; i < minSegLen; i++)
+                    for (int i = 0; i < minSegLen; i++)
                     {
                         hddrChksVal += _buf[bufOffset + i];
                     }
@@ -3565,11 +3565,11 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    for (Int32 i = 0; i < numRanges; i++)
+                    for (int i = 0; i < numRanges; i++)
                     {
-                        Int32 j = i * 4;
+                        int j = i * 4;
 
-                        ui16a = (UInt16)((_buf[bufOffset + 8 + j] * 256) +
+                        ui16a = (ushort)((_buf[bufOffset + 8 + j] * 256) +
                                            _buf[bufOffset + 9 + j]);
 
                         PrnParseCommon.addDataRow(
@@ -3585,7 +3585,7 @@ namespace PCLParaphernalia
 
                         j += 2;
 
-                        ui16a = (UInt16)((_buf[bufOffset + 8 + j] * 256) +
+                        ui16a = (ushort)((_buf[bufOffset + 8 + j] * 256) +
                                            _buf[bufOffset + 9 + j]);
 
                         PrnParseCommon.addDataRow(
@@ -3659,31 +3659,31 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processSeg_VI(Int32 segSize,
-                                   Int32 segHddrLen,
-                                   ref Int32 bufRem,
-                                   ref Int32 bufOffset,
-                                   ref Int32 hddrDataRem,
-                                   ref Int32 hddrRem,
-                                   ref Int32 hddrChksVal)
+        private void processSeg_VI(int segSize,
+                                   int segHddrLen,
+                                   ref int bufRem,
+                                   ref int bufOffset,
+                                   ref int hddrDataRem,
+                                   ref int hddrRem,
+                                   ref int hddrChksVal)
         {
-            String segTypeDesc = "VI: Vendor Information";
+            string segTypeDesc = "VI: Vendor Information";
 
-            const Int32 sliceMax = 50;
+            const int sliceMax = 50;
 
             PrnParseConstants.eContType contType;
 
-            Boolean firstLine;
+            bool firstLine;
 
-            String textA,
+            string textA,
                    textB;
 
-            Int32 baseOffset,
+            int baseOffset,
                   dataOffset,
                   minSegSize,
                   minSegLen;
 
-            Int32 sliceLen,
+            int sliceLen,
                   infRem,
                   infOffset;
 
@@ -3726,7 +3726,7 @@ namespace PCLParaphernalia
 
                 if (_PCL)
                 {
-                    for (Int32 i = 0; i < minSegLen; i++)
+                    for (int i = 0; i < minSegLen; i++)
                     {
                         hddrChksVal += _buf[bufOffset + i];
                     }
@@ -3857,26 +3857,26 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processSeg_VR(Int32 segSize,
-                                   Int32 segHddrLen,
-                                   ref Int32 bufRem,
-                                   ref Int32 bufOffset,
-                                   ref Int32 hddrDataRem,
-                                   ref Int32 hddrRem,
-                                   ref Int32 hddrChksVal)
+        private void processSeg_VR(int segSize,
+                                   int segHddrLen,
+                                   ref int bufRem,
+                                   ref int bufOffset,
+                                   ref int hddrDataRem,
+                                   ref int hddrRem,
+                                   ref int hddrChksVal)
         {
-            String segTypeDesc = "VR: Vertical Rotation";
+            string segTypeDesc = "VR: Vertical Rotation";
 
             PrnParseConstants.eContType contType;
 
-            Int32 baseOffset,
+            int baseOffset,
                   dataOffset,
                   minSegSize,
                   minSegLen;
 
-            Int16 si16a;
+            short si16a;
 
-            UInt16 ui16a;
+            ushort ui16a;
 
             minSegSize = 4;
             minSegLen = segHddrLen + minSegSize;
@@ -3917,7 +3917,7 @@ namespace PCLParaphernalia
 
                 if (_PCL)
                 {
-                    for (Int32 i = 0; i < minSegLen; i++)
+                    for (int i = 0; i < minSegLen; i++)
                     {
                         hddrChksVal += _buf[bufOffset + i];
                     }
@@ -3965,7 +3965,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                ui16a = (UInt16)((_buf[dataOffset] * 256) +
+                ui16a = (ushort)((_buf[dataOffset] * 256) +
                                   _buf[dataOffset + 1]);
 
                 PrnParseCommon.addDataRow(
@@ -3985,7 +3985,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                si16a = (Int16)((_buf[dataOffset + 2] * 256) +
+                si16a = (short)((_buf[dataOffset + 2] * 256) +
                                  _buf[dataOffset + 3]);
 
                 PrnParseCommon.addDataRow(
@@ -4048,26 +4048,26 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processSeg_VT(Int32 segSize,
-                                   Int32 segHddrLen,
-                                   ref Int32 bufRem,
-                                   ref Int32 bufOffset,
-                                   ref Int32 hddrDataRem,
-                                   ref Int32 hddrRem,
-                                   ref Int32 hddrChksVal)
+        private void processSeg_VT(int segSize,
+                                   int segHddrLen,
+                                   ref int bufRem,
+                                   ref int bufOffset,
+                                   ref int hddrDataRem,
+                                   ref int hddrRem,
+                                   ref int hddrChksVal)
         {
-            String segTypeDesc = "VT: Vertical Transformation";
+            string segTypeDesc = "VT: Vertical Transformation";
 
             PrnParseConstants.eContType contType;
 
-            Int32 baseOffset,
+            int baseOffset,
                   dataOffset,
                   minSegSize,
                   minSegLen;
 
-            Int32 eoTMOffset;
+            int eoTMOffset;
 
-            UInt16 ui16a,
+            ushort ui16a,
                    numSubs;
 
             minSegSize = segSize;
@@ -4109,7 +4109,7 @@ namespace PCLParaphernalia
 
                 if (_PCL)
                 {
-                    for (Int32 i = 0; i < minSegLen; i++)
+                    for (int i = 0; i < minSegLen; i++)
                     {
                         hddrChksVal += _buf[bufOffset + i];
                     }
@@ -4157,7 +4157,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                numSubs = (UInt16)((segSize - 4) / 4);
+                numSubs = (ushort)((segSize - 4) / 4);
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -4168,11 +4168,11 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                for (Int32 i = 0; i < numSubs; i++)
+                for (int i = 0; i < numSubs; i++)
                 {
-                    Int32 j = i * 4;
+                    int j = i * 4;
 
-                    ui16a = (UInt16)((_buf[dataOffset + j] * 256) +
+                    ui16a = (ushort)((_buf[dataOffset + j] * 256) +
                                       _buf[dataOffset + j + 1]);
 
                     PrnParseCommon.addDataRow(
@@ -4186,7 +4186,7 @@ namespace PCLParaphernalia
                         "Glyph ID:",
                         ui16a.ToString());
 
-                    ui16a = (UInt16)((_buf[dataOffset + j + 2] * 256) +
+                    ui16a = (ushort)((_buf[dataOffset + j + 2] * 256) +
                                       _buf[dataOffset + j + 3]);
 
                     PrnParseCommon.addDataRow(
@@ -4211,7 +4211,7 @@ namespace PCLParaphernalia
                 eoTMOffset = segHddrLen + (numSubs * 4);
                 minSegLen = eoTMOffset + 4;
 
-                ui16a = (UInt16)((_buf[dataOffset + eoTMOffset] * 256) +
+                ui16a = (ushort)((_buf[dataOffset + eoTMOffset] * 256) +
                                   _buf[dataOffset + eoTMOffset + 1]);
 
                 PrnParseCommon.addDataRow(
@@ -4225,7 +4225,7 @@ namespace PCLParaphernalia
                     "EoT Marker 1:",
                     "0x" + ui16a.ToString("X4"));
 
-                ui16a = (UInt16)((_buf[dataOffset + eoTMOffset + 2] * 256) +
+                ui16a = (ushort)((_buf[dataOffset + eoTMOffset + 2] * 256) +
                                   _buf[dataOffset + eoTMOffset + 3]);
 
                 PrnParseCommon.addDataRow(
@@ -4289,19 +4289,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processSeg_XW(Int32 segSize,
-                                   Int32 segHddrLen,
-                                   ref Int32 bufRem,
-                                   ref Int32 bufOffset,
-                                   ref Int32 hddrDataRem,
-                                   ref Int32 hddrRem,
-                                   ref Int32 hddrChksVal)
+        private void processSeg_XW(int segSize,
+                                   int segHddrLen,
+                                   ref int bufRem,
+                                   ref int bufOffset,
+                                   ref int hddrDataRem,
+                                   ref int hddrRem,
+                                   ref int hddrChksVal)
         {
-            String segTypeDesc = "XW: X-Window Font";
+            string segTypeDesc = "XW: X-Window Font";
 
             PrnParseConstants.eContType contType;
 
-            Int32 baseOffset,
+            int baseOffset,
                   dataOffset,
                   minSegSize,
                   minSegLen;
@@ -4345,7 +4345,7 @@ namespace PCLParaphernalia
 
                 if (_PCL)
                 {
-                    for (Int32 i = 0; i < minSegLen; i++)
+                    for (int i = 0; i < minSegLen; i++)
                     {
                         hddrChksVal += _buf[bufOffset + i];
                     }
@@ -4431,9 +4431,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void reportError(String line1,
-                                  String line2,
-                                  String line3)
+        private void reportError(string line1,
+                                  string line2,
+                                  string line3)
         {
             _validSegs = false;
 

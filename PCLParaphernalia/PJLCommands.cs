@@ -78,7 +78,7 @@ namespace PCLParaphernalia
             USTATUSOFF
         }
 
-        public static String nullCmdKey = "<null>";
+        public static string nullCmdKey = "<null>";
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -86,12 +86,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static SortedList<String, PJLCommand> _cmds =
-            new SortedList<String, PJLCommand>();
+        private static SortedList<string, PJLCommand> _cmds =
+            new SortedList<string, PJLCommand>();
 
         private static PJLCommand _cmdUnknown;
 
-        private static Int32 _cmdCount;
+        private static int _cmdCount;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -113,11 +113,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean checkCmd(String name,
-                                        ref String description,
-                                        Int32 level)
+        public static bool checkCmd(string name,
+                                        ref string description,
+                                        int level)
         {
-            Boolean seqKnown = true;
+            bool seqKnown = true;
 
             PJLCommand cmd;
 
@@ -148,11 +148,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 displayCmds(DataGrid grid)
+        public static int displayCmds(DataGrid grid)
         {
-            Int32 count = 0;
+            int count = 0;
 
-            foreach (KeyValuePair<String, PJLCommand> kvp
+            foreach (KeyValuePair<string, PJLCommand> kvp
                 in _cmds)
             {
                 count++;
@@ -172,11 +172,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void displayStatsCounts(DataTable table,
-                                               Boolean incUsedSeqsOnly)
+                                               bool incUsedSeqsOnly)
         {
-            Int32 count = 0;
+            int count = 0;
 
-            Boolean displaySeq,
+            bool displaySeq,
                     hddrWritten;
 
             DataRow row;
@@ -213,7 +213,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            foreach (KeyValuePair<String, PJLCommand> kvp
+            foreach (KeyValuePair<string, PJLCommand> kvp
                 in _cmds)
             {
                 displaySeq = true;
@@ -302,7 +302,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getCount()
+        public static int getCount()
         {
             return _cmdCount;
         }
@@ -316,7 +316,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getDesc(eCmdIndex key)
+        public static string getDesc(eCmdIndex key)
         {
             return _cmds[key.ToString()].Description;
         }
@@ -344,7 +344,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getName(eCmdIndex key)
+        public static string getName(eCmdIndex key)
         {
             return _cmds[key.ToString()].Name;
         }
@@ -604,7 +604,7 @@ namespace PCLParaphernalia
 
             _cmdUnknown.resetStatistics();
 
-            foreach (KeyValuePair<String, PJLCommand> kvp in _cmds)
+            foreach (KeyValuePair<string, PJLCommand> kvp in _cmds)
             {
                 cmd = kvp.Value;
 

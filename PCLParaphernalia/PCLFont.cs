@@ -26,44 +26,44 @@ namespace PCLParaphernalia
 
         private PCLFonts.eFontType _fontType;
 
-        private String _fontName;
+        private string _fontName;
 
-        private Int16 _fontIndex;
+        private short _fontIndex;
 
-        private UInt16 _symSetNumber;
-        private UInt16 _symSetDefault;
+        private ushort _symSetNumber;
+        private ushort _symSetDefault;
 
-        private UInt16 _typeface;
+        private ushort _typeface;
 
-        private Double _pitch;
-        private Double _pointSize;
-        private Byte _contourRatio;
+        private double _pitch;
+        private double _pointSize;
+        private byte _contourRatio;
 
-        private Boolean _bound;
-        private Boolean _proportional;
-        private Boolean _scalable;
+        private bool _bound;
+        private bool _proportional;
+        private bool _scalable;
 
-        private Boolean _varRegular;
-        private Boolean _varItalic;
-        private Boolean _varBold;
-        private Boolean _varBoldItalic;
+        private bool _varRegular;
+        private bool _varItalic;
+        private bool _varBold;
+        private bool _varBoldItalic;
 
-        private UInt16 _styleRegular;
-        private UInt16 _styleItalic;
-        private UInt16 _styleBold;
-        private UInt16 _styleBoldItalic;
+        private ushort _styleRegular;
+        private ushort _styleItalic;
+        private ushort _styleBold;
+        private ushort _styleBoldItalic;
 
-        private Int16 _weightRegular;
-        private Int16 _weightItalic;
-        private Int16 _weightBold;
-        private Int16 _weightBoldItalic;
+        private short _weightRegular;
+        private short _weightItalic;
+        private short _weightBold;
+        private short _weightBoldItalic;
 
-        private String _nameRegular;
-        private String _nameItalic;
-        private String _nameBold;
-        private String _nameBoldItalic;
+        private string _nameRegular;
+        private string _nameItalic;
+        private string _nameBold;
+        private string _nameBoldItalic;
 
-        private UInt16[] _symSets;
+        private ushort[] _symSets;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -71,34 +71,34 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLFont(Int16 fontIndex,
+        public PCLFont(short fontIndex,
                         PCLFonts.eFontType fontType,
-                        String fontName,
-                        Boolean bound,
-                        Boolean proportional,
-                        Boolean scalable,
-                        UInt16 symbolSet,
-                        UInt16 typeface,
-                        Byte contourRatio,
-                        Double pitch,
-                        Double pointSize,
-                        Boolean varRegular,
-                        UInt16 styleRegular,
-                        Int16 weightRegular,
-                        String nameRegular,
-                        Boolean varItalic,
-                        UInt16 styleItalic,
-                        Int16 weightItalic,
-                        String nameItalic,
-                        Boolean varBold,
-                        UInt16 styleBold,
-                        Int16 weightBold,
-                        String nameBold,
-                        Boolean varBoldItalic,
-                        UInt16 styleBoldItalic,
-                        Int16 weightBoldItalic,
-                        String nameBoldItalic,
-                        UInt16[] symSets)
+                        string fontName,
+                        bool bound,
+                        bool proportional,
+                        bool scalable,
+                        ushort symbolSet,
+                        ushort typeface,
+                        byte contourRatio,
+                        double pitch,
+                        double pointSize,
+                        bool varRegular,
+                        ushort styleRegular,
+                        short weightRegular,
+                        string nameRegular,
+                        bool varItalic,
+                        ushort styleItalic,
+                        short weightItalic,
+                        string nameItalic,
+                        bool varBold,
+                        ushort styleBold,
+                        short weightBold,
+                        string nameBold,
+                        bool varBoldItalic,
+                        ushort styleBoldItalic,
+                        short weightBoldItalic,
+                        string nameBoldItalic,
+                        ushort[] symSets)
         {
             _fontIndex = fontIndex;
             _fontType = fontType;
@@ -150,7 +150,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String BoundSymbolSet
+        public string BoundSymbolSet
         {
             get
             {
@@ -170,10 +170,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String getHPGL2FontDef(PCLFonts.eVariant variant,
-                                       UInt16 symbolSet,
-                                       Double height,
-                                       Double pitch)
+        public string getHPGL2FontDef(PCLFonts.eVariant variant,
+                                       ushort symbolSet,
+                                       double height,
+                                       double pitch)
         {
             StringBuilder cmd = new StringBuilder(255);
 
@@ -250,7 +250,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Byte getPCLContourRatio()
+        public byte getPCLContourRatio()
         {
             return _contourRatio;
         }
@@ -265,10 +265,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean getPCLFontIdData(ref UInt16 typeface,
-                                         ref String fontName)
+        public bool getPCLFontIdData(ref ushort typeface,
+                                         ref string fontName)
         {
-            Boolean presetFont = false;
+            bool presetFont = false;
 
             if ((_fontType == PCLFonts.eFontType.PresetTypeface) ||
                 (_fontType == PCLFonts.eFontType.PresetFamily))
@@ -295,11 +295,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String getPCLFontSelect(PCLFonts.eVariant variant,
-                                        Double height,
-                                        Double pitch)
+        public string getPCLFontSelect(PCLFonts.eVariant variant,
+                                        double height,
+                                        double pitch)
         {
-            String seq;
+            string seq;
 
             if (_proportional)
                 seq = "s1p";
@@ -324,7 +324,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        Double calcPitch = (7200 /
+                        double calcPitch = (7200 /
                                                 (height * _contourRatio));
                         seq += calcPitch.ToString("F2") + "h";
                     }
@@ -378,7 +378,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Double getPCLHeight()
+        public double getPCLHeight()
         {
             return _pointSize;
         }
@@ -392,7 +392,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Double getPCLPitch()
+        public double getPCLPitch()
         {
             return _pitch;
         }
@@ -407,9 +407,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Double getPCLPitch(Double ptSize)
+        public double getPCLPitch(double ptSize)
         {
-            return (Double)((7200 / (ptSize * _contourRatio)));
+            return (double)((7200 / (ptSize * _contourRatio)));
         }
 
         //--------------------------------------------------------------------//
@@ -421,7 +421,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Byte getPCLSpacing()
+        public byte getPCLSpacing()
         {
             if (_proportional)
                 return 1;
@@ -438,7 +438,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16 getPCLStyle(PCLFonts.eVariant variant)
+        public ushort getPCLStyle(PCLFonts.eVariant variant)
         {
             if (variant == PCLFonts.eVariant.Italic)
                 return _styleItalic;
@@ -459,7 +459,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int16 getPCLWeight(PCLFonts.eVariant variant)
+        public short getPCLWeight(PCLFonts.eVariant variant)
         {
             if (variant == PCLFonts.eVariant.Italic)
                 return _weightItalic;
@@ -479,7 +479,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Double getPCLXLHeight()
+        public double getPCLXLHeight()
         {
             return _pointSize;
         }
@@ -493,7 +493,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String getPCLXLName(PCLFonts.eVariant variant)
+        public string getPCLXLName(PCLFonts.eVariant variant)
         {
             if (variant == PCLFonts.eVariant.Italic)
                 return _nameItalic;
@@ -514,7 +514,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16 getSymbolSetNumber()
+        public ushort getSymbolSetNumber()
         {
             if (_bound)
                 return _symSetNumber;
@@ -532,7 +532,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Height
+        public string Height
         {
             get
             {
@@ -552,7 +552,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int16 IndexNo
+        public short IndexNo
         {
             get
             {
@@ -570,7 +570,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean isBoundFont()
+        public bool isBoundFont()
         {
             if (_bound)
                 return true;
@@ -588,7 +588,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean isPresetFont()
+        public bool isPresetFont()
         {
             if ((_fontType == PCLFonts.eFontType.Custom) ||
                 (_fontType == PCLFonts.eFontType.Download) ||
@@ -608,7 +608,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean isProportionalFont()
+        public bool isProportionalFont()
         {
             if (_proportional)
                 return true;
@@ -627,11 +627,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean isSymSetInList(UInt16 symSetNo)
+        public bool isSymSetInList(ushort symSetNo)
         {
-            Int32 symSetCt = _symSets.Length;
+            int symSetCt = _symSets.Length;
 
-            Boolean symSetFound = false;
+            bool symSetFound = false;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -639,7 +639,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i < symSetCt; i++)
+            for (int i = 0; i < symSetCt; i++)
             {
                 if (_symSets[i] == symSetNo)
                 {
@@ -676,7 +676,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Name
+        public string Name
         {
             get { return _fontName; }
         }
@@ -691,7 +691,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Pitch
+        public string Pitch
         {
             get
             {
@@ -712,7 +712,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean Scalable
+        public bool Scalable
         {
             get
             {
@@ -733,7 +733,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Spacing
+        public string Spacing
         {
             get
             {
@@ -754,7 +754,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String SymbolSetBinding
+        public string SymbolSetBinding
         {
             get
             {
@@ -774,7 +774,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 SymbolSetCt
+        public int SymbolSetCt
         {
             get
             {
@@ -792,19 +792,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String[] SymbolSetRows
+        public string[] SymbolSetRows
         {
             get
             {
-                const Int32 maxPerRow = 20;
-                const Int32 itemSize = 5;   // typical size e.g "19U, "
+                const int maxPerRow = 20;
+                const int itemSize = 5;   // typical size e.g "19U, "
 
-                Int32 symSetCt,
+                int symSetCt,
                       rowCt,
                       rowSize,
                       rowIndx;
 
-                String[] mapRows;
+                string[] mapRows;
 
                 StringBuilder crntRow;
 
@@ -817,13 +817,13 @@ namespace PCLParaphernalia
                 rowSize = itemSize * maxPerRow;
                 rowIndx = 0;
 
-                mapRows = new String[rowCt];
+                mapRows = new string[rowCt];
 
                 crntRow = new StringBuilder(rowSize);
 
-                for (Int32 i = 0; i < symSetCt; i++)
+                for (int i = 0; i < symSetCt; i++)
                 {
-                    String symSetId =
+                    string symSetId =
                         PCLSymbolSets.translateKind1ToId(_symSets[i]);
 
                     crntRow.Append(symSetId);
@@ -857,19 +857,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String SymbolSets
+        public string SymbolSets
         {
             get
             {
-                const Int32 maxPerRow = 20;
+                const int maxPerRow = 20;
 
-                Int32 symSetCt = _symSets.Length;
+                int symSetCt = _symSets.Length;
 
                 StringBuilder symSetList = new StringBuilder(255);
 
-                for (Int32 i = 0; i < symSetCt; i++)
+                for (int i = 0; i < symSetCt; i++)
                 {
-                    String symSetId =
+                    string symSetId =
                         PCLSymbolSets.translateKind1ToId(_symSets[i]);
 
                     symSetList.Append(symSetId);
@@ -908,7 +908,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16 Typeface
+        public ushort Typeface
         {
             get { return _typeface; }
         }
@@ -922,7 +922,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean Var_Bold
+        public bool Var_Bold
         {
             get { return _varBold; }
         }
@@ -936,7 +936,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean Var_BoldItalic
+        public bool Var_BoldItalic
         {
             get { return _varBoldItalic; }
         }
@@ -950,7 +950,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean Var_Italic
+        public bool Var_Italic
         {
             get { return _varItalic; }
         }
@@ -964,7 +964,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean Var_Regular
+        public bool Var_Regular
         {
             get { return _varRegular; }
         }
@@ -978,7 +978,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean variantAvailable(PCLFonts.eVariant variant)
+        public bool variantAvailable(PCLFonts.eVariant variant)
         {
             if (variant == PCLFonts.eVariant.Italic)
                 return _varItalic;

@@ -18,10 +18,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Int16 _idAutoSelect;
-        private Int16 _idDefault;
-        private Int16 _idMaximum;
-        private Int16 _idNotSet;
+        private short _idAutoSelect;
+        private short _idDefault;
+        private short _idMaximum;
+        private short _idNotSet;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -29,10 +29,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLTrayData(Int16 idAutoSelect,
-                           Int16 idDefault,
-                           Int16 idMaximum,
-                           Int16 idNotSet)
+        public PCLTrayData(short idAutoSelect,
+                           short idDefault,
+                           short idMaximum,
+                           short idNotSet)
         {
             _idDefault = idDefault;
             _idAutoSelect = idAutoSelect;
@@ -49,7 +49,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int16 getIdAutoSelect()
+        public short getIdAutoSelect()
         {
             return _idAutoSelect;
         }
@@ -63,7 +63,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int16 getIdDefault()
+        public short getIdDefault()
         {
             return _idDefault;
         }
@@ -77,7 +77,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int16 getIdMaximum()
+        public short getIdMaximum()
         {
             return _idMaximum;
         }
@@ -91,7 +91,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int16 getIdNotSet()
+        public short getIdNotSet()
         {
             return _idNotSet;
         }

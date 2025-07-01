@@ -18,9 +18,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private UInt32 _rangeStart;
-        private UInt32 _rangeEnd;
-        private String _name;
+        private uint _rangeStart;
+        private uint _rangeEnd;
+        private string _name;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -29,9 +29,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public UnicodeBlock(
-            UInt32 rangeStart,
-            UInt32 rangeEnd,
-            String name)
+            uint rangeStart,
+            uint rangeEnd,
+            string name)
         {
             _rangeStart = rangeStart;
             _rangeEnd = rangeEnd;
@@ -44,7 +44,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Name
+        public string Name
         {
             get { return _name; }
         }
@@ -55,7 +55,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt32 RangeEnd
+        public uint RangeEnd
         {
             get { return _rangeEnd; }
         }
@@ -66,7 +66,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt32 RangeStart
+        public uint RangeStart
         {
             get { return _rangeStart; }
         }

@@ -19,11 +19,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Int32 _maxSizeNameTag = 22;
-        const Int32 _colSpanNone = -1;
+        const int _maxSizeNameTag = 22;
+        const int _colSpanNone = -1;
 
-        const Boolean _flagNone = false;
-        const Boolean _flagBlankBefore = true;
+        const bool _flagNone = false;
+        const bool _flagBlankBefore = true;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -46,17 +46,17 @@ namespace PCLParaphernalia
                                      DataTable tableMapping,
                                      DataTable tableTarget,
                                      DataTable tableChars,
-                                     String fontNameTTF,
-                                     String fontFilenameTTF,
-                                     String fontFilenamePCL)
+                                     string fontNameTTF,
+                                     string fontFilenameTTF,
+                                     string fontFilenamePCL)
         {
-            Object stream = null;
-            Object writer = null;
+            object stream = null;
+            object writer = null;
 
-            Boolean OK = false;
+            bool OK = false;
 
-            String fileExt;
-            String saveFilename = null;
+            string fileExt;
+            string saveFilename = null;
 
             if (rptFileFmt == ReportCore.eRptFileFmt.html)
                 fileExt = "html";
@@ -114,70 +114,70 @@ namespace PCLParaphernalia
         private static void reportBodyChars(
             ReportCore.eRptFileFmt rptFileFmt,
             ReportCore.eRptChkMarks rptChkMarks,
-            Object writer,
+            object writer,
             DataTable table)
         {
-            const Int32 colCt = 13;
+            const int colCt = 13;
 
-            const String c0Name = "DecCode";
-            const String c1Name = "HexCode";
-            const String c2Name = "Unicode";
-            const String c3Name = "Glyph";
-            const String c4Name = "Abs";
-            const String c5Name = "Prev";
-            const String c6Name = "Comp";
-            const String c7Name = "Depth";
-            const String c8Name = "Width";
-            const String c9Name = "LSB";
-            const String c10Name = "Height";
-            const String c11Name = "TSB";
-            const String c12Name = "Length";
+            const string c0Name = "DecCode";
+            const string c1Name = "HexCode";
+            const string c2Name = "Unicode";
+            const string c3Name = "Glyph";
+            const string c4Name = "Abs";
+            const string c5Name = "Prev";
+            const string c6Name = "Comp";
+            const string c7Name = "Depth";
+            const string c8Name = "Width";
+            const string c9Name = "LSB";
+            const string c10Name = "Height";
+            const string c11Name = "TSB";
+            const string c12Name = "Length";
 
-            const String c0Hddr = "DecCode";
-            const String c1Hddr = "HexCode";
-            const String c2Hddr = "Unicode";
-            const String c3Hddr = "Glyph";
-            const String c4Hddr = "Abs?";
-            const String c5Hddr = "Prev?";
-            const String c6Hddr = "Comp?";
-            const String c7Hddr = "Depth";
-            const String c8Hddr = "Width";
-            const String c9Hddr = "LSB";
-            const String c10Hddr = "Height";
-            const String c11Hddr = "TSB";
-            const String c12Hddr = "Length";
+            const string c0Hddr = "DecCode";
+            const string c1Hddr = "HexCode";
+            const string c2Hddr = "Unicode";
+            const string c3Hddr = "Glyph";
+            const string c4Hddr = "Abs?";
+            const string c5Hddr = "Prev?";
+            const string c6Hddr = "Comp?";
+            const string c7Hddr = "Depth";
+            const string c8Hddr = "Width";
+            const string c9Hddr = "LSB";
+            const string c10Hddr = "Height";
+            const string c11Hddr = "TSB";
+            const string c12Hddr = "Length";
 
-            const Int32 lc0 = 7;
-            const Int32 lc1 = 7;
-            const Int32 lc2 = 7;
-            const Int32 lc3 = 5;
-            const Int32 lc4 = 5;
-            const Int32 lc5 = 5;
-            const Int32 lc6 = 5;
-            const Int32 lc7 = 5;
-            const Int32 lc8 = 5;
-            const Int32 lc9 = 6;
-            const Int32 lc10 = 6;
-            const Int32 lc11 = 6;
-            const Int32 lc12 = 6;
+            const int lc0 = 7;
+            const int lc1 = 7;
+            const int lc2 = 7;
+            const int lc3 = 5;
+            const int lc4 = 5;
+            const int lc5 = 5;
+            const int lc6 = 5;
+            const int lc7 = 5;
+            const int lc8 = 5;
+            const int lc9 = 6;
+            const int lc10 = 6;
+            const int lc11 = 6;
+            const int lc12 = 6;
 
-            String[] colHddrs;
-            String[] colNames;
-            Int32[] colSizes;
+            string[] colHddrs;
+            string[] colNames;
+            int[] colSizes;
 
-            Int32 ctItems;
+            int ctItems;
 
             ctItems = table.Rows.Count;
 
-            colHddrs = new String[colCt] { c0Hddr, c1Hddr, c2Hddr, c3Hddr,
+            colHddrs = new string[colCt] { c0Hddr, c1Hddr, c2Hddr, c3Hddr,
                                            c4Hddr, c5Hddr, c6Hddr, c7Hddr,
                                            c8Hddr, c9Hddr, c10Hddr, c11Hddr,
                                            c12Hddr };
-            colNames = new String[colCt] { c0Name, c1Name, c2Name, c3Name,
+            colNames = new string[colCt] { c0Name, c1Name, c2Name, c3Name,
                                            c4Name, c5Name, c6Name, c7Name,
                                            c8Name, c9Name, c10Name, c11Name,
                                            c12Name };
-            colSizes = new Int32[colCt] { lc0, lc1, lc2, lc3,
+            colSizes = new int[colCt] { lc0, lc1, lc2, lc3,
                                           lc4, lc5, lc6, lc7,
                                           lc8, lc9, lc10, lc11,
                                           lc12};
@@ -197,7 +197,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i < ctItems; i++)
+            for (int i = 0; i < ctItems; i++)
             {
                 DataRow row = table.Rows[i];
 
@@ -227,28 +227,28 @@ namespace PCLParaphernalia
         private static void reportBodyStd(
             ReportCore.eRptFileFmt rptFileFmt,
             ReportCore.eRptChkMarks rptChkMarks,
-            Object writer,
+            object writer,
             DataTable table)
         {
-            const Int32 colCt = 2;
+            const int colCt = 2;
 
-            const String c0Name = "Name";
-            const String c1Name = "Value";
+            const string c0Name = "Name";
+            const string c1Name = "Value";
 
-            const Int32 lc0 = 21;
-            const Int32 lc1 = 57;
+            const int lc0 = 21;
+            const int lc1 = 57;
 
-            String[] colHddrs;
-            String[] colNames;
-            Int32[] colSizes;
+            string[] colHddrs;
+            string[] colNames;
+            int[] colSizes;
 
-            Int32 ctItems;
+            int ctItems;
 
             ctItems = table.Rows.Count;
 
-            colHddrs = new String[colCt] { c0Name, c1Name };
-            colNames = new String[colCt] { c0Name, c1Name };
-            colSizes = new Int32[colCt] { lc0, lc1 };
+            colHddrs = new string[colCt] { c0Name, c1Name };
+            colNames = new string[colCt] { c0Name, c1Name };
+            colSizes = new int[colCt] { lc0, lc1 };
 
             ctItems = table.Rows.Count;
 
@@ -267,7 +267,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i < ctItems; i++)
+            for (int i = 0; i < ctItems; i++)
             {
                 DataRow row = table.Rows[i];
 
@@ -295,14 +295,14 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void reportHddr(ReportCore.eRptFileFmt rptFileFmt,
-                                        Object writer,
-                                        String fontNameTTF,
-                                        String fontFilenameTTF,
-                                        String fontFilenamePCL)
+                                        object writer,
+                                        string fontNameTTF,
+                                        string fontFilenameTTF,
+                                        string fontFilenamePCL)
         {
-            Int32 maxLineLen = 80;
+            int maxLineLen = 80;
 
-            String title = "*** Soft Font Generator ***";
+            string title = "*** Soft Font Generator ***";
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -358,8 +358,8 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void reportHddrSub(ReportCore.eRptFileFmt rptFileFmt,
-                                           Object writer,
-                                           String subHead)
+                                           object writer,
+                                           string subHead)
         {
             //----------------------------------------------------------------//
             //                                                                //

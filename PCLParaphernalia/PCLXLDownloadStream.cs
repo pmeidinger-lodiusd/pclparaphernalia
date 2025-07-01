@@ -44,21 +44,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean checkForStreamName(String fileName,
-                                                  Int64 fileSize,
-                                                  ref String streamName)
+        private static bool checkForStreamName(string fileName,
+                                                  long fileSize,
+                                                  ref string streamName)
         {
-            const UInt16 minFileSize = 128; // enough to read initial operators
-            const Byte minStreamNameLen = 1;
-            const Byte maxStreamNameLen = 80;
+            const ushort minFileSize = 128; // enough to read initial operators
+            const byte minStreamNameLen = 1;
+            const byte maxStreamNameLen = 80;
 
-            Boolean OK = true;
-            Boolean beginFound = false;
+            bool OK = true;
+            bool beginFound = false;
 
-            Int32 dataLen,
+            int dataLen,
                   pos;
 
-            Byte[] buf = new Byte[minFileSize];
+            byte[] buf = new byte[minFileSize];
 
             _ipStream.Seek(0, SeekOrigin.Begin);
 
@@ -71,16 +71,16 @@ namespace PCLParaphernalia
 
             while (OK && !beginFound)
             {
-                if (buf[pos] == (Byte)PCLXLDataTypes.eTag.UbyteArray)
+                if (buf[pos] == (byte)PCLXLDataTypes.eTag.UbyteArray)
                 {
                     // start of ubyte array for StreamName attribute;
 
-                    if (buf[pos + 1] == (Byte)PCLXLDataTypes.eTag.Uint16)
+                    if (buf[pos + 1] == (byte)PCLXLDataTypes.eTag.Uint16)
                     {
                         dataLen = (buf[pos + 3] * 256) + buf[pos + 2];
                         pos += 4;
                     }
-                    else if (buf[pos + 1] == (Byte)PCLXLDataTypes.eTag.Ubyte)
+                    else if (buf[pos + 1] == (byte)PCLXLDataTypes.eTag.Ubyte)
                     {
                         dataLen = buf[pos + 2];
                         pos += 3;
@@ -96,18 +96,18 @@ namespace PCLParaphernalia
                     {
                         char[] streamNameArray = new char[dataLen];
 
-                        for (Int32 i = 0; i < dataLen; i++)
+                        for (int i = 0; i < dataLen; i++)
                         {
                             streamNameArray[i] = (char)buf[pos + i];
                         }
 
-                        streamName = new String(streamNameArray);
+                        streamName = new string(streamNameArray);
 
                         pos += dataLen;
                         pos += 2;
                     }
                 }
-                else if (buf[pos] == (Byte)PCLXLOperators.eTag.BeginStream)
+                else if (buf[pos] == (byte)PCLXLOperators.eTag.BeginStream)
                 {
                     beginFound = true;
                     pos += 1;
@@ -137,13 +137,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean checkStreamFile(String filename,
-                                              ref String streamName)
+        public static bool checkStreamFile(string filename,
+                                              ref string streamName)
         {
-            Boolean fileOpen = false;
-            Boolean streamNamePresent = false;
+            bool fileOpen = false;
+            bool streamNamePresent = false;
 
-            Int64 fileSize = 0;
+            long fileSize = 0;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -206,16 +206,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean streamFileEmbed(BinaryWriter prnWriter,
-                                              String filename,
-                                              String streamName,
-                                              Boolean encapsulated)
+        public static bool streamFileEmbed(BinaryWriter prnWriter,
+                                              string filename,
+                                              string streamName,
+                                              bool encapsulated)
         {
-            Boolean fileOpen = false;
+            bool fileOpen = false;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            Int64 fileSize = 0;
+            long fileSize = 0;
 
             fileOpen = streamFileOpen(filename, ref fileSize);
 
@@ -225,12 +225,12 @@ namespace PCLParaphernalia
             }
             else
             {
-                const Int32 bufSize = 2048;
-                Int32 readSize;
+                const int bufSize = 2048;
+                int readSize;
 
-                Boolean endLoop;
+                bool endLoop;
 
-                Byte[] buffer = new Byte[bufSize];
+                byte[] buffer = new byte[bufSize];
 
                 endLoop = false;
 
@@ -267,10 +267,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean streamFileOpen(String fileName,
-                                              ref Int64 fileSize)
+        private static bool streamFileOpen(string fileName,
+                                              ref long fileSize)
         {
-            Boolean open = false;
+            bool open = false;
 
             if ((fileName == null) || (fileName == ""))
             {

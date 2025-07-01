@@ -19,13 +19,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Int32 _maxSizeNameTag = 15;
-        const Int32 _colSpanNone = -1;
+        const int _maxSizeNameTag = 15;
+        const int _colSpanNone = -1;
 
-        const Boolean _flagNone = false;
-        const Boolean _flagBlankBefore = true;
-        const Boolean _flagBlankAfter = true;
-        const Boolean _flagNameAsHddr = true;
+        const bool _flagNone = false;
+        const bool _flagBlankBefore = true;
+        const bool _flagBlankAfter = true;
+        const bool _flagNameAsHddr = true;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -43,38 +43,38 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void generate(
-            Int32 indxInfoType,
+            int indxInfoType,
             ReportCore.eRptFileFmt rptFileFmt,
             ReportCore.eRptChkMarks rptChkMarks,
             DataGrid dgSeq,
-            ref String saveFilename,
-            Boolean flagPCLSeqControl,
-            Boolean flagPCLSeqSimple,
-            Boolean flagPCLSeqComplex,
-            Boolean flagPCLOptObsolete,
-            Boolean flagPCLOptDiscrete,
-            Boolean flagPCLXLTagDataType,
-            Boolean flagPCLXLTagAttribute,
-            Boolean flagPCLXLTagOperator,
-            Boolean flagPCLXLTagAttrDef,
-            Boolean flagPCLXLTagEmbedDataLen,
-            Boolean flagPCLXLTagWhitespace,
-            Boolean flagPCLXLOptReserved,
-            Boolean flagPMLTagDataType,
-            Boolean flagPMLTagAction,
-            Boolean flagPMLTagOutcome,
-            Boolean flagSymSetList,
-            Boolean flagSymSetMap,
-            Boolean flagOptRptWrap,
+            ref string saveFilename,
+            bool flagPCLSeqControl,
+            bool flagPCLSeqSimple,
+            bool flagPCLSeqComplex,
+            bool flagPCLOptObsolete,
+            bool flagPCLOptDiscrete,
+            bool flagPCLXLTagDataType,
+            bool flagPCLXLTagAttribute,
+            bool flagPCLXLTagOperator,
+            bool flagPCLXLTagAttrDef,
+            bool flagPCLXLTagEmbedDataLen,
+            bool flagPCLXLTagWhitespace,
+            bool flagPCLXLOptReserved,
+            bool flagPMLTagDataType,
+            bool flagPMLTagAction,
+            bool flagPMLTagOutcome,
+            bool flagSymSetList,
+            bool flagSymSetMap,
+            bool flagOptRptWrap,
             ToolPrintLang.eSymSetMapType symSetMapType)
         {
-            Object stream = null;
-            Object writer = null;
+            object stream = null;
+            object writer = null;
 
-            Boolean OK;
+            bool OK;
 
-            String saveFolder = null;
-            String fileExt;
+            string saveFolder = null;
+            string fileExt;
 
             ToolCommonData.eToolSubIds infoType =
                 (ToolCommonData.eToolSubIds)indxInfoType;
@@ -171,75 +171,75 @@ namespace PCLParaphernalia
         private static void reportBodyFonts(
             ReportCore.eRptFileFmt rptFileFmt,
             ReportCore.eRptChkMarks rptChkMarks,
-            Object writer,
+            object writer,
             DataGrid dgSeq,
-            Boolean flagSymSetList,
-            Boolean flagOptRptWrap)
+            bool flagSymSetList,
+            bool flagOptRptWrap)
         {
-            const Int32 colCtStd = 11;
-            const Int32 colCtExt = 12;
+            const int colCtStd = 11;
+            const int colCtExt = 12;
 
-            const String c0Name = "Typeface";
-            const String c1Name = "Name";
-            const String c2Name = "Spacing";
-            const String c3Name = "Scalable";
-            const String c4Name = "BoundSymbolSet";
-            const String c5Name = "Pitch";
-            const String c6Name = "Height";
-            const String c7Name = "Var_Regular";
-            const String c8Name = "Var_Italic";
-            const String c9Name = "Var_Bold";
-            const String c10Name = "Var_BoldItalic";
-            const String c11Name = "SymbolSets";
+            const string c0Name = "Typeface";
+            const string c1Name = "Name";
+            const string c2Name = "Spacing";
+            const string c3Name = "Scalable";
+            const string c4Name = "BoundSymbolSet";
+            const string c5Name = "Pitch";
+            const string c6Name = "Height";
+            const string c7Name = "Var_Regular";
+            const string c8Name = "Var_Italic";
+            const string c9Name = "Var_Bold";
+            const string c10Name = "Var_BoldItalic";
+            const string c11Name = "SymbolSets";
 
-            const String c0Hddr = "Typeface";
-            const String c1Hddr = "Name";
-            const String c2Hddr = "Spacing";
-            const String c3Hddr = "Scalable?";
-            const String c4Hddr = "Bound?";
-            const String c5Hddr = "Pitch";
-            const String c6Hddr = "Height";
-            const String c7Hddr = "Regular";
-            const String c8Hddr = "Italic ";
-            const String c9Hddr = " Bold  ";
-            const String c10Hddr = "Bold-It";
-            const String c11Hddr = "Supported Symbol Sets?";
+            const string c0Hddr = "Typeface";
+            const string c1Hddr = "Name";
+            const string c2Hddr = "Spacing";
+            const string c3Hddr = "Scalable?";
+            const string c4Hddr = "Bound?";
+            const string c5Hddr = "Pitch";
+            const string c6Hddr = "Height";
+            const string c7Hddr = "Regular";
+            const string c8Hddr = "Italic ";
+            const string c9Hddr = " Bold  ";
+            const string c10Hddr = "Bold-It";
+            const string c11Hddr = "Supported Symbol Sets?";
 
-            const Int32 lcSep = 2;
+            const int lcSep = 2;
 
-            const Int32 lc0 = 8;
-            const Int32 lc1 = 22;
-            const Int32 lc2 = 12;
-            const Int32 lc3 = 9;
-            const Int32 lc4 = 6;
-            const Int32 lc5 = 6;
-            const Int32 lc6 = 6;
-            const Int32 lc7 = 7;
-            const Int32 lc8 = 7;
-            const Int32 lc9 = 7;
-            const Int32 lc10 = 7;
-            const Int32 lc11 = 25;
+            const int lc0 = 8;
+            const int lc1 = 22;
+            const int lc2 = 12;
+            const int lc3 = 9;
+            const int lc4 = 6;
+            const int lc5 = 6;
+            const int lc6 = 6;
+            const int lc7 = 7;
+            const int lc8 = 7;
+            const int lc9 = 7;
+            const int lc10 = 7;
+            const int lc11 = 25;
 
-            String[] colHddrs;
-            String[] colNames;
-            Int32[] colSizes;
+            string[] colHddrs;
+            string[] colNames;
+            int[] colSizes;
 
-            Int32 ctItems,
+            int ctItems,
                   colCt;
 
-            Int32 colSpanName = -1,
+            int colSpanName = -1,
                   colSpanVal = -1;
 
             PCLFont pclFont;
 
-            String chkTrue,
+            string chkTrue,
                    chkTrue3,
                    chkTrue7,
                    chkTrue8,
                    chkTrue9,
                    chkTrue10;
 
-            String chkFalse,
+            string chkFalse,
                    chkFalse3,
                    chkFalse7,
                    chkFalse8,
@@ -280,15 +280,15 @@ namespace PCLParaphernalia
             {
                 colCt = colCtExt;
 
-                colHddrs = new String[colCtExt] { c0Hddr, c1Hddr, c2Hddr,
+                colHddrs = new string[colCtExt] { c0Hddr, c1Hddr, c2Hddr,
                                                   c3Hddr, c4Hddr, c5Hddr,
                                                   c6Hddr, c7Hddr, c8Hddr,
                                                   c9Hddr, c10Hddr, c11Hddr};
-                colNames = new String[colCtExt] { c0Name, c1Name, c2Name,
+                colNames = new string[colCtExt] { c0Name, c1Name, c2Name,
                                                   c3Name, c4Name, c5Name,
                                                   c6Name, c7Name, c8Name,
                                                   c9Name, c10Name, c11Name};
-                colSizes = new Int32[colCtExt] { lc0, lc1, lc2,
+                colSizes = new int[colCtExt] { lc0, lc1, lc2,
                                                  lc3, lc4, lc5,
                                                  lc6, lc7, lc8,
                                                  lc9, lc10, lc11};
@@ -300,15 +300,15 @@ namespace PCLParaphernalia
                 colSpanName = 2;
                 colSpanVal = colCt - colSpanName;
 
-                colHddrs = new String[colCtStd] { c0Hddr, c1Hddr, c2Hddr,
+                colHddrs = new string[colCtStd] { c0Hddr, c1Hddr, c2Hddr,
                                                   c3Hddr, c4Hddr, c5Hddr,
                                                   c6Hddr, c7Hddr, c8Hddr,
                                                   c9Hddr, c10Hddr};
-                colNames = new String[colCtStd] { c0Name, c1Name, c2Name,
+                colNames = new string[colCtStd] { c0Name, c1Name, c2Name,
                                                   c3Name, c4Name, c5Name,
                                                   c6Name, c7Name, c8Name,
                                                   c9Name, c10Name};
-                colSizes = new Int32[colCtStd] { lc0, lc1, lc2,
+                colSizes = new int[colCtStd] { lc0, lc1, lc2,
                                                  lc3, lc4, lc5,
                                                  lc6, lc7, lc8,
                                                  lc9, lc10};
@@ -329,9 +329,9 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i < ctItems; i++)
+            for (int i = 0; i < ctItems; i++)
             {
-                String[] data = new string[colCt];
+                string[] data = new string[colCt];
 
                 pclFont = (PCLFont)dgSeq.Items[i];
 
@@ -387,19 +387,19 @@ namespace PCLParaphernalia
                         //                                                        //
                         //--------------------------------------------------------//
 
-                        String[][] arrData = new String[colCt][];
+                        string[][] arrData = new string[colCt][];
 
-                        arrData[0] = new String[1];
-                        arrData[1] = new String[1];
-                        arrData[2] = new String[1];
-                        arrData[3] = new String[1];
-                        arrData[4] = new String[1];
-                        arrData[5] = new String[1];
-                        arrData[6] = new String[1];
-                        arrData[7] = new String[1];
-                        arrData[8] = new String[1];
-                        arrData[9] = new String[1];
-                        arrData[10] = new String[1];
+                        arrData[0] = new string[1];
+                        arrData[1] = new string[1];
+                        arrData[2] = new string[1];
+                        arrData[3] = new string[1];
+                        arrData[4] = new string[1];
+                        arrData[5] = new string[1];
+                        arrData[6] = new string[1];
+                        arrData[7] = new string[1];
+                        arrData[8] = new string[1];
+                        arrData[9] = new string[1];
+                        arrData[10] = new string[1];
 
                         arrData[0][0] = data[0];
                         arrData[1][0] = data[1];
@@ -428,7 +428,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    Int32 maxLineLen = 120;
+                    int maxLineLen = 120;
 
                     ReportCore.tableRowText(writer, rptFileFmt, colCt, data,
                                              colNames, colSizes);
@@ -464,16 +464,16 @@ namespace PCLParaphernalia
                             //                                                //
                             //------------------------------------------------//
 
-                            const Int32 colCtPair = 2;
+                            const int colCtPair = 2;
 
-                            Int32 tmpInt;
+                            int tmpInt;
 
-                            Int32[] colSizesPair = new Int32[colCtPair];
+                            int[] colSizesPair = new int[colCtPair];
 
-                            String[][] arrData = new String[colCtPair][];
+                            string[][] arrData = new string[colCtPair][];
 
                             tmpInt = 0;
-                            for (Int32 col = 0; col < colSpanName; col++)
+                            for (int col = 0; col < colSpanName; col++)
                             {
                                 if (col != 0)
                                     tmpInt += lcSep;
@@ -484,7 +484,7 @@ namespace PCLParaphernalia
                             colSizesPair[0] = tmpInt;
 
                             tmpInt = 0;
-                            for (Int32 col = 0; col < colSpanVal; col++)
+                            for (int col = 0; col < colSpanVal; col++)
                             {
                                 if (col != 0)
                                     tmpInt += lcSep;
@@ -494,7 +494,7 @@ namespace PCLParaphernalia
 
                             colSizesPair[1] = tmpInt;
 
-                            arrData[0] = new String[1];
+                            arrData[0] = new string[1];
 
                             arrData[0][0] = data[0];
                             arrData[0][0] = c11Hddr;
@@ -528,33 +528,33 @@ namespace PCLParaphernalia
 
         private static void reportBodyHPGL2Commands(
             ReportCore.eRptFileFmt rptFileFmt,
-            Object writer,
+            object writer,
             DataGrid dgSeq)
         {
-            const Int32 colCt = 2;
+            const int colCt = 2;
 
-            const String c0Name = "Mnemonic";
-            const String c1Name = "Description";
+            const string c0Name = "Mnemonic";
+            const string c1Name = "Description";
 
-            const String c0Hddr = "Mnemonic";
-            const String c1Hddr = "Description";
+            const string c0Hddr = "Mnemonic";
+            const string c1Hddr = "Description";
 
-            const Int32 lc0 = 8;
-            const Int32 lc1 = 35;
+            const int lc0 = 8;
+            const int lc1 = 35;
 
-            String[] colHddrs;
-            String[] colNames;
-            Int32[] colSizes;
+            string[] colHddrs;
+            string[] colNames;
+            int[] colSizes;
 
-            Int32 ctItems;
+            int ctItems;
 
             HPGL2Command hpgl2Command;
 
             ctItems = dgSeq.Items.Count;
 
-            colHddrs = new String[colCt] { c0Hddr, c1Hddr };
-            colNames = new String[colCt] { c0Name, c1Name };
-            colSizes = new Int32[colCt] { lc0, lc1 };
+            colHddrs = new string[colCt] { c0Hddr, c1Hddr };
+            colNames = new string[colCt] { c0Name, c1Name };
+            colSizes = new int[colCt] { lc0, lc1 };
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -571,9 +571,9 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i < ctItems; i++)
+            for (int i = 0; i < ctItems; i++)
             {
-                String[] data = new string[colCt];
+                string[] data = new string[colCt];
 
                 hpgl2Command = (HPGL2Command)dgSeq.Items[i];
 
@@ -604,47 +604,47 @@ namespace PCLParaphernalia
 
         private static void reportBodyPaperSizes(
             ReportCore.eRptFileFmt rptFileFmt,
-            Object writer,
+            object writer,
             DataGrid dgSeq)
         {
-            const Int32 colCt = 6;
+            const int colCt = 6;
 
-            const String c0Name = "Name";
-            const String c1Name = "Desc";
-            const String c2Name = "EdgeShort";
-            const String c3Name = "EdgeLong";
-            const String c4Name = "IdPCL";
-            const String c5Name = "IdNamePCLXL";
+            const string c0Name = "Name";
+            const string c1Name = "Desc";
+            const string c2Name = "EdgeShort";
+            const string c3Name = "EdgeLong";
+            const string c4Name = "IdPCL";
+            const string c5Name = "IdNamePCLXL";
 
-            const String c0Hddr = "Name";
-            const String c1Hddr = "Description";
-            const String c2Hddr = "Short edge";
-            const String c3Hddr = "Long edge";
-            const String c4Hddr = "PCL Id";
-            const String c5Hddr = "PCL XL Id/Name";
+            const string c0Hddr = "Name";
+            const string c1Hddr = "Description";
+            const string c2Hddr = "Short edge";
+            const string c3Hddr = "Long edge";
+            const string c4Hddr = "PCL Id";
+            const string c5Hddr = "PCL XL Id/Name";
 
-            const Int32 lc0 = 25;
-            const Int32 lc1 = 45;
-            const Int32 lc2 = 10;
-            const Int32 lc3 = 10;
-            const Int32 lc4 = 10;
-            const Int32 lc5 = 15;
+            const int lc0 = 25;
+            const int lc1 = 45;
+            const int lc2 = 10;
+            const int lc3 = 10;
+            const int lc4 = 10;
+            const int lc5 = 15;
 
-            String[] colHddrs;
-            String[] colNames;
-            Int32[] colSizes;
+            string[] colHddrs;
+            string[] colNames;
+            int[] colSizes;
 
-            Int32 ctItems;
+            int ctItems;
 
             PCLPaperSize paperSize;
 
             ctItems = dgSeq.Items.Count;
 
-            colHddrs = new String[colCt] { c0Hddr, c1Hddr, c2Hddr, c3Hddr,
+            colHddrs = new string[colCt] { c0Hddr, c1Hddr, c2Hddr, c3Hddr,
                                            c4Hddr, c5Hddr };
-            colNames = new String[colCt] { c0Name, c1Name, c2Name, c3Name,
+            colNames = new string[colCt] { c0Name, c1Name, c2Name, c3Name,
                                            c4Name, c5Name };
-            colSizes = new Int32[colCt] { lc0, lc1, lc2, lc3, lc4, lc5 };
+            colSizes = new int[colCt] { lc0, lc1, lc2, lc3, lc4, lc5 };
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -661,9 +661,9 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i < ctItems; i++)
+            for (int i = 0; i < ctItems; i++)
             {
-                String[] data = new string[colCt];
+                string[] data = new string[colCt];
 
                 paperSize = (PCLPaperSize)dgSeq.Items[i];
 
@@ -699,33 +699,33 @@ namespace PCLParaphernalia
         private static void reportBodyPCLSeqs(
             ReportCore.eRptFileFmt rptFileFmt,
             ReportCore.eRptChkMarks rptChkMarks,
-            Object writer,
+            object writer,
             DataGrid dgSeq)
         {
-            const Int32 colCt = 5;
+            const int colCt = 5;
 
-            const String c0Name = "Sequence";
-            const String c1Name = "Type";
-            const String c2Name = "Obsolete";
-            const String c3Name = "ValIsLen";
-            const String c4Name = "Description";
+            const string c0Name = "Sequence";
+            const string c1Name = "Type";
+            const string c2Name = "Obsolete";
+            const string c3Name = "ValIsLen";
+            const string c4Name = "Description";
 
-            const String c2Hddr = "Obsolete?";
-            const String c3Hddr = "#=length?";
+            const string c2Hddr = "Obsolete?";
+            const string c3Hddr = "#=length?";
 
-            const Int32 lc0 = 20;
-            const Int32 lc1 = 7;
-            const Int32 lc2 = 9;
-            const Int32 lc3 = 9;
-            const Int32 lc4 = 35;
+            const int lc0 = 20;
+            const int lc1 = 7;
+            const int lc2 = 9;
+            const int lc3 = 9;
+            const int lc4 = 35;
 
-            String[] colHddrs;
-            String[] colNames;
-            Int32[] colSizes;
+            string[] colHddrs;
+            string[] colNames;
+            int[] colSizes;
 
-            Int32 ctItems;
+            int ctItems;
 
-            String typeName;
+            string typeName;
 
             PCLControlCode pclControlCode;
 
@@ -733,11 +733,11 @@ namespace PCLParaphernalia
 
             PCLComplexSeq pclComplexSeq;
 
-            String chkTrue,
+            string chkTrue,
                    chkTrue2,
                    chkTrue3;
 
-            String chkFalse,
+            string chkFalse,
                    chkFalse2,
                    chkFalse3;
 
@@ -765,9 +765,9 @@ namespace PCLParaphernalia
 
             ctItems = dgSeq.Items.Count;
 
-            colHddrs = new String[colCt] { c0Name, c1Name, c2Hddr, c3Hddr, c4Name };
-            colNames = new String[colCt] { c0Name, c1Name, c2Name, c3Name, c4Name };
-            colSizes = new Int32[colCt] { lc0, lc1, lc2, lc3, lc4 };
+            colHddrs = new string[colCt] { c0Name, c1Name, c2Hddr, c3Hddr, c4Name };
+            colNames = new string[colCt] { c0Name, c1Name, c2Name, c3Name, c4Name };
+            colSizes = new int[colCt] { lc0, lc1, lc2, lc3, lc4 };
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -784,9 +784,9 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i < ctItems; i++)
+            for (int i = 0; i < ctItems; i++)
             {
-                String[] data = new string[colCt];
+                string[] data = new string[colCt];
 
                 typeName = dgSeq.Items[i].GetType().Name;
 
@@ -851,39 +851,39 @@ namespace PCLParaphernalia
 
         private static void reportBodyPCLXLEnums(
             ReportCore.eRptFileFmt rptFileFmt,
-            Object writer,
+            object writer,
             DataGrid dgSeq)
         {
-            const Int32 colCt = 4;
+            const int colCt = 4;
 
-            const String c0Name = "Operator";
-            const String c1Name = "Attribute";
-            const String c2Name = "Value";
-            const String c3Name = "Description";
+            const string c0Name = "Operator";
+            const string c1Name = "Attribute";
+            const string c2Name = "Value";
+            const string c3Name = "Description";
 
-            const String c0Hddr = "Operator";
-            const String c1Hddr = "Attribute";
-            const String c2Hddr = "Value";
-            const String c3Hddr = "Description";
+            const string c0Hddr = "Operator";
+            const string c1Hddr = "Attribute";
+            const string c2Hddr = "Value";
+            const string c3Hddr = "Description";
 
-            const Int32 lc0 = 21;
-            const Int32 lc1 = 20;
-            const Int32 lc2 = 10;
-            const Int32 lc3 = 35;
+            const int lc0 = 21;
+            const int lc1 = 20;
+            const int lc2 = 10;
+            const int lc3 = 35;
 
-            String[] colHddrs;
-            String[] colNames;
-            Int32[] colSizes;
+            string[] colHddrs;
+            string[] colNames;
+            int[] colSizes;
 
-            Int32 ctItems;
+            int ctItems;
 
             PCLXLAttrEnum xlAttrEnum;
 
             ctItems = dgSeq.Items.Count;
 
-            colHddrs = new String[colCt] { c0Hddr, c1Hddr, c2Hddr, c3Hddr };
-            colNames = new String[colCt] { c0Name, c1Name, c2Name, c3Name };
-            colSizes = new Int32[colCt] { lc0, lc1, lc2, lc3 };
+            colHddrs = new string[colCt] { c0Hddr, c1Hddr, c2Hddr, c3Hddr };
+            colNames = new string[colCt] { c0Name, c1Name, c2Name, c3Name };
+            colSizes = new int[colCt] { lc0, lc1, lc2, lc3 };
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -900,9 +900,9 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i < ctItems; i++)
+            for (int i = 0; i < ctItems; i++)
             {
-                String[] data = new string[colCt];
+                string[] data = new string[colCt];
 
                 xlAttrEnum = (PCLXLAttrEnum)dgSeq.Items[i];
 
@@ -936,33 +936,33 @@ namespace PCLParaphernalia
         private static void reportBodyPCLXLTags(
             ReportCore.eRptFileFmt rptFileFmt,
             ReportCore.eRptChkMarks rptChkMarks,
-            Object writer,
+            object writer,
             DataGrid dgSeq)
         {
-            const Int32 colCt = 4;
+            const int colCt = 4;
 
-            const String c0Name = "Operator";
-            const String c1Name = "Attribute";
-            const String c2Name = "Value";
-            const String c3Name = "Description";
+            const string c0Name = "Operator";
+            const string c1Name = "Attribute";
+            const string c2Name = "Value";
+            const string c3Name = "Description";
 
-            const String c0Hddr = "Tag";
-            const String c1Hddr = "Type";
-            const String c2Hddr = "Reserved";
-            const String c3Hddr = "Description";
+            const string c0Hddr = "Tag";
+            const string c1Hddr = "Type";
+            const string c2Hddr = "Reserved";
+            const string c3Hddr = "Description";
 
-            const Int32 lc0 = 4;
-            const Int32 lc1 = 18;
-            const Int32 lc2 = 5;
-            const Int32 lc3 = 35;
+            const int lc0 = 4;
+            const int lc1 = 18;
+            const int lc2 = 5;
+            const int lc3 = 35;
 
-            String[] colHddrs;
-            String[] colNames;
-            Int32[] colSizes;
+            string[] colHddrs;
+            string[] colNames;
+            int[] colSizes;
 
-            Int32 ctItems;
+            int ctItems;
 
-            String typeName;
+            string typeName;
 
             PCLXLAttrDefiner xlAttrDef;
             PCLXLAttribute xlAttribute;
@@ -971,10 +971,10 @@ namespace PCLParaphernalia
             PCLXLOperator xlOperator;
             PCLXLWhitespace xlWhitespace;
 
-            String chkTrue,
+            string chkTrue,
                    chkTrue2;
 
-            String chkFalse,
+            string chkFalse,
                    chkFalse2;
 
             if (rptChkMarks == ReportCore.eRptChkMarks.boxsym)
@@ -999,9 +999,9 @@ namespace PCLParaphernalia
 
             ctItems = dgSeq.Items.Count;
 
-            colHddrs = new String[colCt] { c0Hddr, c1Hddr, c2Hddr, c3Hddr };
-            colNames = new String[colCt] { c0Name, c1Name, c2Name, c3Name };
-            colSizes = new Int32[colCt] { lc0, lc1, lc2, lc3 };
+            colHddrs = new string[colCt] { c0Hddr, c1Hddr, c2Hddr, c3Hddr };
+            colNames = new string[colCt] { c0Name, c1Name, c2Name, c3Name };
+            colSizes = new int[colCt] { lc0, lc1, lc2, lc3 };
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1018,9 +1018,9 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i < ctItems; i++)
+            for (int i = 0; i < ctItems; i++)
             {
-                String[] data = new string[colCt];
+                string[] data = new string[colCt];
 
                 typeName = dgSeq.Items[i].GetType().Name;
 
@@ -1109,33 +1109,33 @@ namespace PCLParaphernalia
 
         private static void reportBodyPJLCommands(
             ReportCore.eRptFileFmt rptFileFmt,
-            Object writer,
+            object writer,
             DataGrid dgSeq)
         {
-            const Int32 colCt = 2;
+            const int colCt = 2;
 
-            const String c0Name = "Name";
-            const String c1Name = "Description";
+            const string c0Name = "Name";
+            const string c1Name = "Description";
 
-            const String c0Hddr = "Command";
-            const String c1Hddr = "Description";
+            const string c0Hddr = "Command";
+            const string c1Hddr = "Description";
 
-            const Int32 lc0 = 10;
-            const Int32 lc1 = 35;
+            const int lc0 = 10;
+            const int lc1 = 35;
 
-            String[] colHddrs;
-            String[] colNames;
-            Int32[] colSizes;
+            string[] colHddrs;
+            string[] colNames;
+            int[] colSizes;
 
-            Int32 ctItems;
+            int ctItems;
 
             PJLCommand pjlCommand;
 
             ctItems = dgSeq.Items.Count;
 
-            colHddrs = new String[colCt] { c0Hddr, c1Hddr };
-            colNames = new String[colCt] { c0Name, c1Name };
-            colSizes = new Int32[colCt] { lc0, lc1 };
+            colHddrs = new string[colCt] { c0Hddr, c1Hddr };
+            colNames = new string[colCt] { c0Name, c1Name };
+            colSizes = new int[colCt] { lc0, lc1 };
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1152,9 +1152,9 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i < ctItems; i++)
+            for (int i = 0; i < ctItems; i++)
             {
-                String[] data = new string[colCt];
+                string[] data = new string[colCt];
 
                 pjlCommand = (PJLCommand)dgSeq.Items[i];
 
@@ -1185,29 +1185,29 @@ namespace PCLParaphernalia
 
         private static void reportBodyPMLTags(
             ReportCore.eRptFileFmt rptFileFmt,
-            Object writer,
+            object writer,
             DataGrid dgSeq)
         {
-            const Int32 colCt = 3;
+            const int colCt = 3;
 
-            const String c0Name = "Tag";
-            const String c1Name = "Type";
-            const String c2Name = "Description";
+            const string c0Name = "Tag";
+            const string c1Name = "Type";
+            const string c2Name = "Description";
 
-            const String c0Hddr = "Tag";
-            const String c1Hddr = "Type";
-            const String c2Hddr = "Description";
+            const string c0Hddr = "Tag";
+            const string c1Hddr = "Type";
+            const string c2Hddr = "Description";
 
-            const Int32 lc0 = 4;
-            const Int32 lc1 = 10;
-            const Int32 lc2 = 35;
+            const int lc0 = 4;
+            const int lc1 = 10;
+            const int lc2 = 35;
 
-            String[] colHddrs;
-            String[] colNames;
-            Int32[] colSizes;
+            string[] colHddrs;
+            string[] colNames;
+            int[] colSizes;
 
-            Int32 ctItems;
-            String typeName;
+            int ctItems;
+            string typeName;
 
             PMLDataType pmlDataType;
             PMLAction pmlAction;
@@ -1215,9 +1215,9 @@ namespace PCLParaphernalia
 
             ctItems = dgSeq.Items.Count;
 
-            colHddrs = new String[colCt] { c0Hddr, c1Hddr, c2Hddr };
-            colNames = new String[colCt] { c0Name, c1Name, c2Name };
-            colSizes = new Int32[colCt] { lc0, lc1, lc2 };
+            colHddrs = new string[colCt] { c0Hddr, c1Hddr, c2Hddr };
+            colNames = new string[colCt] { c0Name, c1Name, c2Name };
+            colSizes = new int[colCt] { lc0, lc1, lc2 };
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1234,9 +1234,9 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i < ctItems; i++)
+            for (int i = 0; i < ctItems; i++)
             {
-                String[] data = new string[colCt];
+                string[] data = new string[colCt];
 
                 typeName = dgSeq.Items[i].GetType().Name;
 
@@ -1289,33 +1289,33 @@ namespace PCLParaphernalia
 
         private static void reportBodyPrescribeCommands(
             ReportCore.eRptFileFmt rptFileFmt,
-            Object writer,
+            object writer,
             DataGrid dgSeq)
         {
-            const Int32 colCt = 2;
+            const int colCt = 2;
 
-            const String c0Name = "Name";
-            const String c1Name = "Description";
+            const string c0Name = "Name";
+            const string c1Name = "Description";
 
-            const String c0Hddr = "Command";
-            const String c1Hddr = "Description";
+            const string c0Hddr = "Command";
+            const string c1Hddr = "Description";
 
-            const Int32 lc0 = 7;
-            const Int32 lc1 = 35;
+            const int lc0 = 7;
+            const int lc1 = 35;
 
-            String[] colHddrs;
-            String[] colNames;
-            Int32[] colSizes;
+            string[] colHddrs;
+            string[] colNames;
+            int[] colSizes;
 
-            Int32 ctItems;
+            int ctItems;
 
             PrescribeCommand prescribeCommand;
 
             ctItems = dgSeq.Items.Count;
 
-            colHddrs = new String[colCt] { c0Hddr, c1Hddr };
-            colNames = new String[colCt] { c0Name, c1Name };
-            colSizes = new Int32[colCt] { lc0, lc1 };
+            colHddrs = new string[colCt] { c0Hddr, c1Hddr };
+            colNames = new string[colCt] { c0Name, c1Name };
+            colSizes = new int[colCt] { lc0, lc1 };
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1332,9 +1332,9 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i < ctItems; i++)
+            for (int i = 0; i < ctItems; i++)
             {
-                String[] data = new string[colCt];
+                string[] data = new string[colCt];
 
                 prescribeCommand = (PrescribeCommand)dgSeq.Items[i];
 
@@ -1366,70 +1366,70 @@ namespace PCLParaphernalia
         private static void reportBodySymbolSets(
             ReportCore.eRptFileFmt rptFileFmt,
             ReportCore.eRptChkMarks rptChkMarks,
-            Object writer,
+            object writer,
             DataGrid dgSeq,
-            Boolean flagSymSetMap,
-            Boolean flagOptRptWrap,
+            bool flagSymSetMap,
+            bool flagOptRptWrap,
             ToolPrintLang.eSymSetMapType symSetMapType)
         {
-            const Int32 colCtNoMap = 8;
-            const Int32 colCtMapWrap = 6;
-            const Int32 colCtMapOne = 7;
-            const Int32 colCtMapBoth = 9;
+            const int colCtNoMap = 8;
+            const int colCtMapWrap = 6;
+            const int colCtMapOne = 7;
+            const int colCtMapBoth = 9;
 
-            const String c0Name = "Groupname";
-            const String c1Name = "TypeDescShort";
-            const String c2Name = "Id";
-            const String c3Name = "Kind1";
-            const String c4Name = "Alias";
-            const String c5Name = "Name";
-            const String c6aName = "FlagMapStd";
-            const String c6bName = "MappingStd";
-            const String c7aName = "FlagMapPCL";
-            const String c7bName = "MappingPCL";
-            const String c8Name = "MappingDiff";
+            const string c0Name = "Groupname";
+            const string c1Name = "TypeDescShort";
+            const string c2Name = "Id";
+            const string c3Name = "Kind1";
+            const string c4Name = "Alias";
+            const string c5Name = "Name";
+            const string c6aName = "FlagMapStd";
+            const string c6bName = "MappingStd";
+            const string c7aName = "FlagMapPCL";
+            const string c7bName = "MappingPCL";
+            const string c8Name = "MappingDiff";
 
-            const String c0Hddr = "Group";
-            const String c1Hddr = "Type";
-            const String c2Hddr = "Id";
-            const String c3Hddr = "Kind1";
-            const String c4Hddr = "Alias";
-            const String c5Hddr = "Name";
-            const String c6aHddr = "Map (Strict)?";
-            const String c6bHddr = "Mapping (Strict)";
-            const String c7aHddr = "Map (LaserJet)?";
-            const String c7bHddr = "Mapping (LaserJet)";
-            const String c8Hddr = "Mapping (differences)";
+            const string c0Hddr = "Group";
+            const string c1Hddr = "Type";
+            const string c2Hddr = "Id";
+            const string c3Hddr = "Kind1";
+            const string c4Hddr = "Alias";
+            const string c5Hddr = "Name";
+            const string c6aHddr = "Map (Strict)?";
+            const string c6bHddr = "Mapping (Strict)";
+            const string c7aHddr = "Map (LaserJet)?";
+            const string c7bHddr = "Mapping (LaserJet)";
+            const string c8Hddr = "Mapping (differences)";
 
-            const Int32 lc0 = 7;
-            const Int32 lc1 = 13;
-            const Int32 lc2 = 5;
-            const Int32 lc3 = 5;
-            const Int32 lc4 = 8;
-            const Int32 lc5 = 50;
-            const Int32 lc6a = 15;
-            const Int32 lc6b = 89;
-            const Int32 lc7a = 15;
-            const Int32 lc7b = 89;
-            const Int32 lc8 = 89;
+            const int lc0 = 7;
+            const int lc1 = 13;
+            const int lc2 = 5;
+            const int lc3 = 5;
+            const int lc4 = 8;
+            const int lc5 = 50;
+            const int lc6a = 15;
+            const int lc6b = 89;
+            const int lc7a = 15;
+            const int lc7b = 89;
+            const int lc8 = 89;
 
-            String[] colHddrs;
-            String[] colNames;
-            Int32[] colSizes;
+            string[] colHddrs;
+            string[] colNames;
+            int[] colSizes;
 
-            Int32 ctItems,
+            int ctItems,
                   colCt;
 
-            Int32 colSpanName = -1,
+            int colSpanName = -1,
                   colSpanVal = -1;
 
             PCLSymbolSet symbolSet;
 
-            String chkTrue,
+            string chkTrue,
                    chkTrue6a,
                    chkTrue7a;
 
-            String chkFalse,
+            string chkFalse,
                    chkFalse6a,
                    chkFalse7a;
 
@@ -1461,13 +1461,13 @@ namespace PCLParaphernalia
             {
                 colCt = colCtNoMap;
 
-                colHddrs = new String[colCtNoMap] { c0Hddr, c1Hddr, c2Hddr,
+                colHddrs = new string[colCtNoMap] { c0Hddr, c1Hddr, c2Hddr,
                                                     c3Hddr, c4Hddr, c5Hddr,
                                                     c6aHddr, c7aHddr };
-                colNames = new String[colCtNoMap] { c0Name, c1Name, c2Name,
+                colNames = new string[colCtNoMap] { c0Name, c1Name, c2Name,
                                                     c3Name, c4Name, c5Name,
                                                     c6aName, c7aName };
-                colSizes = new Int32[colCtNoMap] { lc0, lc1, lc2,
+                colSizes = new int[colCtNoMap] { lc0, lc1, lc2,
                                                    lc3, lc4, lc5,
                                                    lc6a, lc7a };
             }
@@ -1480,24 +1480,24 @@ namespace PCLParaphernalia
                     colSpanName = 2;
                     colSpanVal = colCt - colSpanName;
 
-                    colHddrs = new String[colCtMapWrap] { c0Hddr, c1Hddr, c2Hddr,
+                    colHddrs = new string[colCtMapWrap] { c0Hddr, c1Hddr, c2Hddr,
                                                           c3Hddr, c4Hddr, c5Hddr };
-                    colNames = new String[colCtMapWrap] { c0Name, c1Name, c2Name,
+                    colNames = new string[colCtMapWrap] { c0Name, c1Name, c2Name,
                                                           c3Name, c4Name, c5Name };
-                    colSizes = new Int32[colCtMapWrap] { lc0, lc1, lc2,
+                    colSizes = new int[colCtMapWrap] { lc0, lc1, lc2,
                                                          lc3, lc4, lc5 };
                 }
                 else if (symSetMapType == ToolPrintLang.eSymSetMapType.Std)
                 {
                     colCt = colCtMapOne;
 
-                    colHddrs = new String[colCtMapOne] { c0Hddr, c1Hddr, c2Hddr,
+                    colHddrs = new string[colCtMapOne] { c0Hddr, c1Hddr, c2Hddr,
                                                          c3Hddr, c4Hddr, c5Hddr,
                                                          c6bHddr };
-                    colNames = new String[colCtMapOne] { c0Name, c1Name, c2Name,
+                    colNames = new string[colCtMapOne] { c0Name, c1Name, c2Name,
                                                          c3Name, c4Name, c5Name,
                                                          c6bName };
-                    colSizes = new Int32[colCtMapOne] { lc0, lc1, lc2,
+                    colSizes = new int[colCtMapOne] { lc0, lc1, lc2,
                                                         lc3, lc4, lc5,
                                                         lc6b };
                 }
@@ -1505,13 +1505,13 @@ namespace PCLParaphernalia
                 {
                     colCt = colCtMapOne;
 
-                    colHddrs = new String[colCtMapOne] { c0Hddr, c1Hddr, c2Hddr,
+                    colHddrs = new string[colCtMapOne] { c0Hddr, c1Hddr, c2Hddr,
                                                          c3Hddr, c4Hddr, c5Hddr,
                                                          c7bHddr };
-                    colNames = new String[colCtMapOne] { c0Name, c1Name, c2Name,
+                    colNames = new string[colCtMapOne] { c0Name, c1Name, c2Name,
                                                          c3Name, c4Name, c5Name,
                                                          c7bName };
-                    colSizes = new Int32[colCtMapOne] { lc0, lc1, lc2,
+                    colSizes = new int[colCtMapOne] { lc0, lc1, lc2,
                                                         lc3, lc4, lc5,
                                                         lc7b };
                 }
@@ -1519,13 +1519,13 @@ namespace PCLParaphernalia
                 {
                     colCt = colCtMapBoth;
 
-                    colHddrs = new String[colCtMapBoth] { c0Hddr, c1Hddr, c2Hddr,
+                    colHddrs = new string[colCtMapBoth] { c0Hddr, c1Hddr, c2Hddr,
                                                           c3Hddr, c4Hddr, c5Hddr,
                                                           c6bHddr, c7bHddr, c8Hddr };
-                    colNames = new String[colCtMapBoth] { c0Name, c1Name, c2Name,
+                    colNames = new string[colCtMapBoth] { c0Name, c1Name, c2Name,
                                                           c3Name, c4Name, c5Name,
                                                           c6bName, c7bName, c8Name };
-                    colSizes = new Int32[colCtMapBoth] { lc0, lc1, lc2,
+                    colSizes = new int[colCtMapBoth] { lc0, lc1, lc2,
                                                          lc3, lc4, lc5,
                                                          lc6b, lc7b, lc8 };
                 }
@@ -1546,11 +1546,11 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i < ctItems; i++)
+            for (int i = 0; i < ctItems; i++)
             {
-                String[] data = new string[colCt];
+                string[] data = new string[colCt];
 
-                Boolean mapStd,
+                bool mapStd,
                         mapPCL;
 
                 symbolSet = (PCLSymbolSet)dgSeq.Items[i];
@@ -1587,7 +1587,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    Int32 maxLineLen = 120;
+                    int maxLineLen = 120;
 
                     ReportCore.tableRowText(writer, rptFileFmt, colCt, data,
                                              colNames, colSizes);
@@ -1698,13 +1698,13 @@ namespace PCLParaphernalia
                             //                                                //
                             //------------------------------------------------//
 
-                            const Int32 colCtPair = 2;
-                            Int32[] colSizesPair = new Int32[colCtPair] {
+                            const int colCtPair = 2;
+                            int[] colSizesPair = new int[colCtPair] {
                                                         22, 100 };          // *************** do this another way ????? **************
 
-                            String[][] arrData = new String[colCtPair][];
+                            string[][] arrData = new string[colCtPair][];
 
-                            arrData[0] = new String[1];
+                            arrData[0] = new string[1];
 
                             arrData[0][0] = data[0];
 
@@ -1794,14 +1794,14 @@ namespace PCLParaphernalia
                         //                                                        //
                         //--------------------------------------------------------//
 
-                        String[][] arrData = new String[colCt][];
+                        string[][] arrData = new string[colCt][];
 
-                        arrData[0] = new String[1];
-                        arrData[1] = new String[1];
-                        arrData[2] = new String[1];
-                        arrData[3] = new String[1];
-                        arrData[4] = new String[1];
-                        arrData[5] = new String[1];
+                        arrData[0] = new string[1];
+                        arrData[1] = new string[1];
+                        arrData[2] = new string[1];
+                        arrData[3] = new string[1];
+                        arrData[4] = new string[1];
+                        arrData[5] = new string[1];
 
                         arrData[0][0] = data[0];
                         arrData[1][0] = data[1];
@@ -1853,39 +1853,39 @@ namespace PCLParaphernalia
 
         private static void reportHeader(ToolCommonData.eToolSubIds infoType,
                                          ReportCore.eRptFileFmt rptFileFmt,
-                                         Object writer,
+                                         object writer,
                                          DataGrid dgSeq,
-                                         Boolean flagPCLSeqControl,
-                                         Boolean flagPCLSeqSimple,
-                                         Boolean flagPCLSeqComplex,
-                                         Boolean flagPCLOptObsolete,
-                                         Boolean flagPCLOptDiscrete,
-                                         Boolean flagPCLXLTagDataType,
-                                         Boolean flagPCLXLTagAttribute,
-                                         Boolean flagPCLXLTagOperator,
-                                         Boolean flagPCLXLTagAttrDef,
-                                         Boolean flagPCLXLTagEmbedDataLen,
-                                         Boolean flagPCLXLTagWhitespace,
-                                         Boolean flagPCLXLOptReserved,
-                                         Boolean flagPMLTagDataType,
-                                         Boolean flagPMLTagAction,
-                                         Boolean flagPMLTagOutcome,
-                                         Boolean flagSymSetList,
-                                         Boolean flagSymSetMap)
+                                         bool flagPCLSeqControl,
+                                         bool flagPCLSeqSimple,
+                                         bool flagPCLSeqComplex,
+                                         bool flagPCLOptObsolete,
+                                         bool flagPCLOptDiscrete,
+                                         bool flagPCLXLTagDataType,
+                                         bool flagPCLXLTagAttribute,
+                                         bool flagPCLXLTagOperator,
+                                         bool flagPCLXLTagAttrDef,
+                                         bool flagPCLXLTagEmbedDataLen,
+                                         bool flagPCLXLTagWhitespace,
+                                         bool flagPCLXLOptReserved,
+                                         bool flagPMLTagDataType,
+                                         bool flagPMLTagAction,
+                                         bool flagPMLTagOutcome,
+                                         bool flagSymSetList,
+                                         bool flagSymSetMap)
         {
-            Int32 maxLineLen = 80;          // ********************** set this from column sizes ????????????????
+            int maxLineLen = 80;          // ********************** set this from column sizes ????????????????
 
-            Int32 ctCols;
+            int ctCols;
 
-            String sort = "";
-            String colHddr = "";
-            String colSort = "";
+            string sort = "";
+            string colHddr = "";
+            string colSort = "";
 
-            Boolean selHddrStarted = false;
+            bool selHddrStarted = false;
 
             ctCols = dgSeq.Columns.Count;
 
-            for (Int32 i = 0; i < ctCols; i++)
+            for (int i = 0; i < ctCols; i++)
             {
                 colSort = dgSeq.ColumnFromDisplayIndex(i).SortDirection.ToString();
 

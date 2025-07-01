@@ -20,34 +20,34 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const String _mainKey = MainForm._regMainKey;
+        const string _mainKey = MainForm._regMainKey;
 
-        const String _subKeyTools = "Tools";
-        const String _subKeyToolsSymSetGen = "SymSetGen";
-        const String _subKeyDonor = "Donor";
-        const String _subKeyTarget = "Target";
+        const string _subKeyTools = "Tools";
+        const string _subKeyToolsSymSetGen = "SymSetGen";
+        const string _subKeyDonor = "Donor";
+        const string _subKeyTarget = "Target";
 
-        const String _nameFlagSymSetUserSet = "FlagSymSetUserSet";
-        const String _nameFlagSymSetMapPCL = "FlagSymSetMapPCL";
-        const String _nameFlagIgnoreC0 = "FlagIgnoreC0";
-        const String _nameFlagIgnoreC1 = "FlagIgnoreC1";
-        const String _nameFlagMapHex = "FlagMapHex";
-        const String _nameFlagIndexUnicode = "FlagIndexUnicode";
-        const String _nameFlagCharReqSpecific = "FlagCharReqSpecific";
-        const String _nameCharReqMSL = "CharReqMSL";
-        const String _nameCharReqUnicode = "CharReqUnicode";
-        const String _nameIndxRptFileFmt = "IndxRptFileFmt";
-        const String _nameIndxSymSet = "IndxSymSet";
-        const String _nameSymSetFile = "SymSetFile";
-        const String _nameSymSetFolder = "SymSetFolder";
+        const string _nameFlagSymSetUserSet = "FlagSymSetUserSet";
+        const string _nameFlagSymSetMapPCL = "FlagSymSetMapPCL";
+        const string _nameFlagIgnoreC0 = "FlagIgnoreC0";
+        const string _nameFlagIgnoreC1 = "FlagIgnoreC1";
+        const string _nameFlagMapHex = "FlagMapHex";
+        const string _nameFlagIndexUnicode = "FlagIndexUnicode";
+        const string _nameFlagCharReqSpecific = "FlagCharReqSpecific";
+        const string _nameCharReqMSL = "CharReqMSL";
+        const string _nameCharReqUnicode = "CharReqUnicode";
+        const string _nameIndxRptFileFmt = "IndxRptFileFmt";
+        const string _nameIndxSymSet = "IndxSymSet";
+        const string _nameSymSetFile = "SymSetFile";
+        const string _nameSymSetFolder = "SymSetFolder";
 
-        const Int32 _flagFalse = 0;
-        const Int32 _flagTrue = 1;
-        const Int32 _indexZero = 0;
-        const Int64 _defaultReqMSL = 0;
-        const Int64 _defaultReqUnicode = 1;
+        const int _flagFalse = 0;
+        const int _flagTrue = 1;
+        const int _indexZero = 0;
+        const long _defaultReqMSL = 0;
+        const long _defaultReqUnicode = 1;
 
-        const String _defaultSymSetFile = "DefaultSymSetFile.pcl";
+        const string _defaultSymSetFile = "DefaultSymSetFile.pcl";
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -58,29 +58,29 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataDonor(ref Int32 indxSymSet,
-                                          ref Boolean flagSymSetUserSet,
-                                          ref Boolean flagSymSetMapPCL,
-                                          ref String symSetFile)
+        public static void loadDataDonor(ref int indxSymSet,
+                                          ref bool flagSymSetUserSet,
+                                          ref bool flagSymSetMapPCL,
+                                          ref string symSetFile)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
-            Int32 tmpInt;
+            int tmpInt;
 
-            String defWorkFolder = ToolCommonData.DefWorkFolder;
+            string defWorkFolder = ToolCommonData.DefWorkFolder;
 
             key = _subKeyTools + "\\" + _subKeyToolsSymSetGen +
                                  "\\" + _subKeyDonor;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxSymSet = (Int32)subKey.GetValue(_nameIndxSymSet,
+                indxSymSet = (int)subKey.GetValue(_nameIndxSymSet,
                                                        _indexZero);
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagSymSetUserSet,
+                tmpInt = (int)subKey.GetValue(_nameFlagSymSetUserSet,
                                                        _flagFalse);
 
                 if (tmpInt == _flagFalse)
@@ -88,7 +88,7 @@ namespace PCLParaphernalia
                 else
                     flagSymSetUserSet = true;
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagSymSetMapPCL,
+                tmpInt = (int)subKey.GetValue(_nameFlagSymSetMapPCL,
                                                        _flagFalse);
 
                 if (tmpInt == _flagFalse)
@@ -96,7 +96,7 @@ namespace PCLParaphernalia
                 else
                     flagSymSetMapPCL = true;
 
-                symSetFile = (String)subKey.GetValue(_nameSymSetFile,
+                symSetFile = (string)subKey.GetValue(_nameSymSetFile,
                                                       defWorkFolder + "\\" +
                                                       _defaultSymSetFile);
             }
@@ -111,16 +111,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataRpt(ref Int32 indxRptFileFmt)
+        public static void loadDataRpt(ref int indxRptFileFmt)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTools + "\\" + _subKeyToolsSymSetGen;
+            string key = _subKeyTools + "\\" + _subKeyToolsSymSetGen;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxRptFileFmt = (Int32)subKey.GetValue(_nameIndxRptFileFmt,
+                indxRptFileFmt = (int)subKey.GetValue(_nameIndxRptFileFmt,
                                                          _indexZero);
             }
         }
@@ -134,31 +134,31 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataTarget(ref Boolean flagMapHex,
-                                           ref Boolean flagIgnoreC0,
-                                           ref Boolean flagIgnoreC1,
-                                           ref Boolean flagIndexUnicode,
-                                           ref Boolean flagCharReqSpecific,
-                                           ref UInt64 charReqUnicode,
-                                           ref UInt64 charReqMSL,
-                                           ref String symSetFolder)
+        public static void loadDataTarget(ref bool flagMapHex,
+                                           ref bool flagIgnoreC0,
+                                           ref bool flagIgnoreC1,
+                                           ref bool flagIndexUnicode,
+                                           ref bool flagCharReqSpecific,
+                                           ref ulong charReqUnicode,
+                                           ref ulong charReqMSL,
+                                           ref string symSetFolder)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
-            Int32 tmpInt;
-            Int64 tmpInt64;
+            int tmpInt;
+            long tmpInt64;
 
-            String defWorkFolder = ToolCommonData.DefWorkFolder;
+            string defWorkFolder = ToolCommonData.DefWorkFolder;
 
             key = _subKeyTools + "\\" + _subKeyToolsSymSetGen +
                                  "\\" + _subKeyTarget;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                tmpInt = (Int32)subKey.GetValue(_nameFlagMapHex,
+                tmpInt = (int)subKey.GetValue(_nameFlagMapHex,
                                                        _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -166,7 +166,7 @@ namespace PCLParaphernalia
                 else
                     flagMapHex = true;
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagIgnoreC0,
+                tmpInt = (int)subKey.GetValue(_nameFlagIgnoreC0,
                                                        _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -174,7 +174,7 @@ namespace PCLParaphernalia
                 else
                     flagIgnoreC0 = true;
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagIgnoreC1,
+                tmpInt = (int)subKey.GetValue(_nameFlagIgnoreC1,
                                                        _flagFalse);
 
                 if (tmpInt == _flagFalse)
@@ -182,7 +182,7 @@ namespace PCLParaphernalia
                 else
                     flagIgnoreC1 = true;
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagIndexUnicode,
+                tmpInt = (int)subKey.GetValue(_nameFlagIndexUnicode,
                                                        _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -190,7 +190,7 @@ namespace PCLParaphernalia
                 else
                     flagIndexUnicode = true;
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagCharReqSpecific,
+                tmpInt = (int)subKey.GetValue(_nameFlagCharReqSpecific,
                                                        _flagFalse);
 
                 if (tmpInt == _flagFalse)
@@ -198,16 +198,16 @@ namespace PCLParaphernalia
                 else
                     flagCharReqSpecific = true;
 
-                tmpInt64 = (Int64)subKey.GetValue(_nameCharReqUnicode,
+                tmpInt64 = (long)subKey.GetValue(_nameCharReqUnicode,
                                                         _defaultReqUnicode);
 
-                charReqUnicode = (UInt64)tmpInt64;
+                charReqUnicode = (ulong)tmpInt64;
 
-                tmpInt64 = (Int64)subKey.GetValue(_nameCharReqMSL,
+                tmpInt64 = (long)subKey.GetValue(_nameCharReqMSL,
                                                         _defaultReqMSL);
-                charReqMSL = (UInt64)tmpInt64;
+                charReqMSL = (ulong)tmpInt64;
 
-                symSetFolder = (String)subKey.GetValue(_nameSymSetFolder,
+                symSetFolder = (string)subKey.GetValue(_nameSymSetFolder,
                                                         defWorkFolder);
             }
         }
@@ -221,15 +221,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataDonor(Int32 indxSymSet,
-                                          Boolean flagSymSetUserSet,
-                                          Boolean flagSymSetMapPCL,
-                                          String symSetFile)
+        public static void saveDataDonor(int indxSymSet,
+                                          bool flagSymSetUserSet,
+                                          bool flagSymSetMapPCL,
+                                          string symSetFile)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsSymSetGen +
                                  "\\" + _subKeyDonor;
@@ -276,12 +276,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataRpt(Int32 indxRptFileFmt)
+        public static void saveDataRpt(int indxRptFileFmt)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTools + "\\" + _subKeyToolsSymSetGen;
+            string key = _subKeyTools + "\\" + _subKeyToolsSymSetGen;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -300,21 +300,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataTarget(Boolean flagMapHex,
-                                           Boolean flagIgnoreC0,
-                                           Boolean flagIgnoreC1,
-                                           Boolean flagIndexUnicode,
-                                           Boolean flagCharReqSpecific,
-                                           UInt64 charReqUnicode,
-                                           UInt64 charReqMSL,
-                                           String symSetFolder)
+        public static void saveDataTarget(bool flagMapHex,
+                                           bool flagIgnoreC0,
+                                           bool flagIgnoreC1,
+                                           bool flagIndexUnicode,
+                                           bool flagCharReqSpecific,
+                                           ulong charReqUnicode,
+                                           ulong charReqMSL,
+                                           string symSetFolder)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
-            Int64 tmpInt64;
+            long tmpInt64;
 
             key = _subKeyTools + "\\" + _subKeyToolsSymSetGen +
                                  "\\" + _subKeyTarget;
@@ -366,13 +366,13 @@ namespace PCLParaphernalia
                                     _flagFalse,
                                     RegistryValueKind.DWord);
 
-                tmpInt64 = (Int64)charReqUnicode;
+                tmpInt64 = (long)charReqUnicode;
 
                 subKey.SetValue(_nameCharReqUnicode,
                                  tmpInt64,
                                  RegistryValueKind.QWord);
 
-                tmpInt64 = (Int64)charReqMSL;
+                tmpInt64 = (long)charReqMSL;
 
                 subKey.SetValue(_nameCharReqMSL,
                                  tmpInt64,

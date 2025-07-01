@@ -23,27 +23,27 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Byte _keyPChar;
-        private Byte _keyGChar;
-        private Byte _keyTChar;
+        private byte _keyPChar;
+        private byte _keyGChar;
+        private byte _keyTChar;
 
-        private String _description;
+        private string _description;
 
-        private Boolean _flagDiscrete;
-        private Boolean _flagNilGChar;
-        private Boolean _flagNilValue;
-        private Boolean _flagObsolete;
-        private Boolean _flagResetGL2;
-        private Boolean _flagValIsLen;
+        private bool _flagDiscrete;
+        private bool _flagNilGChar;
+        private bool _flagNilValue;
+        private bool _flagObsolete;
+        private bool _flagResetGL2;
+        private bool _flagValIsLen;
 
-        private Boolean _flagDisplayHexVal;
+        private bool _flagDisplayHexVal;
 
-        private Boolean _flagValGeneric;
-        private Boolean _flagValVarious;
+        private bool _flagValGeneric;
+        private bool _flagValVarious;
 
-        private Int32 _value;
-        private Int32 _statsCtParent;
-        private Int32 _statsCtChild;
+        private int _value;
+        private int _statsCtParent;
+        private int _statsCtChild;
 
         private PrnParseConstants.eActPCL _actionType;
 
@@ -58,21 +58,21 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PCLComplexSeq(
-            Byte keyPChar,
-            Byte keyGChar,
-            Byte keyTChar,
-            Int32 value,
-            Boolean flagDiscrete,
-            Boolean flagNilGChar,
-            Boolean flagNilValue,
-            Boolean flagValIsLen,
-            Boolean flagObsolete,
-            Boolean flagResetGL2,
-            Boolean flagDisplayHexVal,
+            byte keyPChar,
+            byte keyGChar,
+            byte keyTChar,
+            int value,
+            bool flagDiscrete,
+            bool flagNilGChar,
+            bool flagNilValue,
+            bool flagValIsLen,
+            bool flagObsolete,
+            bool flagResetGL2,
+            bool flagDisplayHexVal,
             PrnParseConstants.eActPCL actionType,
             PrnParseConstants.eOvlAct makeOvlAct,
             PrnParseConstants.eSeqGrp seqGrp,
-            String description)
+            string description)
         {
             _keyPChar = keyPChar;
             _keyGChar = keyGChar;
@@ -126,7 +126,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Description
+        public string Description
         {
             get { return _description; }
         }
@@ -137,7 +137,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagDiscrete
+        public bool FlagDiscrete
         {
             get { return _flagDiscrete; }
         }
@@ -148,7 +148,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagDisplayHexVal
+        public bool FlagDisplayHexVal
         {
             get { return _flagDisplayHexVal; }
         }
@@ -159,7 +159,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagObsolete
+        public bool FlagObsolete
         {
             get { return _flagObsolete; }
         }
@@ -170,7 +170,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagNilGChar
+        public bool FlagNilGChar
         {
             get { return _flagNilGChar; }
         }
@@ -181,7 +181,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagNilValue
+        public bool FlagNilValue
         {
             get { return _flagNilValue; }
         }
@@ -192,7 +192,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagResetGL2
+        public bool FlagResetGL2
         {
             get { return _flagResetGL2; }
         }
@@ -203,7 +203,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagValGeneric
+        public bool FlagValGeneric
         {
             get { return _flagValGeneric; }
         }
@@ -214,7 +214,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagValIsLen
+        public bool FlagValIsLen
         {
             get { return _flagValIsLen; }
         }
@@ -225,7 +225,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagValVarious
+        public bool FlagValVarious
         {
             get { return _flagValVarious; }
         }
@@ -239,7 +239,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void incrementStatisticsCount(Int32 level)
+        public void incrementStatisticsCount(int level)
         {
             if (level == 0)
                 _statsCtParent++;
@@ -279,12 +279,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Sequence
+        public string Sequence
         {
             get
             {
-                String seq;
-                String value;
+                string seq;
+                string value;
 
                 if ((_flagDiscrete) && (!_flagValGeneric) && (!_flagValVarious))
                     value = " (#=" + _value.ToString() + ")";
@@ -293,24 +293,24 @@ namespace PCLParaphernalia
                 if (_flagNilValue)
                 {
                     if (_flagNilGChar)
-                        seq = "<Esc>" + (Char)_keyPChar +
-                                        (Char)_keyTChar;
+                        seq = "<Esc>" + (char)_keyPChar +
+                                        (char)_keyTChar;
                     else
-                        seq = "<Esc>" + (Char)_keyPChar +
-                                        (Char)_keyGChar +
-                                        (Char)_keyTChar;
+                        seq = "<Esc>" + (char)_keyPChar +
+                                        (char)_keyGChar +
+                                        (char)_keyTChar;
                 }
                 else if (_flagNilGChar)
                 {
-                    seq = "<Esc>" + (Char)_keyPChar + "#" +
-                                    (Char)_keyTChar +
+                    seq = "<Esc>" + (char)_keyPChar + "#" +
+                                    (char)_keyTChar +
                                     value;
                 }
                 else
                 {
-                    seq = "<Esc>" + (Char)_keyPChar +
-                                    (Char)_keyGChar + "#" +
-                                    (Char)_keyTChar +
+                    seq = "<Esc>" + (char)_keyPChar +
+                                    (char)_keyGChar + "#" +
+                                    (char)_keyTChar +
                                     value;
                 }
 
@@ -324,7 +324,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtChild
+        public int StatsCtChild
         {
             get { return _statsCtChild; }
         }
@@ -335,7 +335,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtParent
+        public int StatsCtParent
         {
             get { return _statsCtParent; }
         }
@@ -346,7 +346,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtTotal
+        public int StatsCtTotal
         {
             get { return (_statsCtParent + _statsCtChild); }
         }
@@ -357,7 +357,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Type
+        public string Type
         {
             get { return "Complex"; }
         }

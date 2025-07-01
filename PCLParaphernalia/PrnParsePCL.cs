@@ -40,43 +40,43 @@ namespace PCLParaphernalia
 
         private DataTable _table;
 
-        private Byte[] _buf;
+        private byte[] _buf;
 
-        private Int32 _fileOffset;
-        private Int32 _endOffset;
+        private int _fileOffset;
+        private int _endOffset;
 
         private PrnParseConstants.eOptOffsetFormats _indxOffsetFormat;
 
         private PrnParseConstants.eOptCharSetSubActs _indxCharSetSubAct;
         private PrnParseConstants.eOptCharSets _indxCharSetName;
-        private Int32 _valCharSetSubCode;
+        private int _valCharSetSubCode;
 
-        private Int32 _textParsingMethod;
-        private Int32 _analysisLevel = 0;
-        private Int32 _macroLevel = 0;
+        private int _textParsingMethod;
+        private int _analysisLevel = 0;
+        private int _macroLevel = 0;
 
-        private Boolean _analyseFontHddr;
-        private Boolean _analyseFontChar;
-        private Boolean _interpretStyle;
+        private bool _analyseFontHddr;
+        private bool _analyseFontChar;
+        private bool _interpretStyle;
 
-        private Boolean _transAlphaNumId;
-        private Boolean _transColourLookup;
-        private Boolean _transConfIO;
-        private Boolean _transConfImageData;
-        private Boolean _transConfRasterData;
-        private Boolean _transDefLogPage;
-        private Boolean _transDefSymSet;
-        private Boolean _transDitherMatrix;
-        private Boolean _transDriverConf;
-        private Boolean _transEscEncText;
-        private Boolean _transPaletteConf;
-        private Boolean _transUserPattern;
-        private Boolean _transViewIlluminant;
+        private bool _transAlphaNumId;
+        private bool _transColourLookup;
+        private bool _transConfIO;
+        private bool _transConfImageData;
+        private bool _transConfRasterData;
+        private bool _transDefLogPage;
+        private bool _transDefSymSet;
+        private bool _transDitherMatrix;
+        private bool _transDriverConf;
+        private bool _transEscEncText;
+        private bool _transPaletteConf;
+        private bool _transUserPattern;
+        private bool _transViewIlluminant;
 
-        private Boolean _showBinData;
-        private Boolean _showMacroData;
+        private bool _showBinData;
+        private bool _showMacroData;
 
-        private Boolean _analysePML;
+        private bool _analysePML;
 
         private ASCIIEncoding _ascii = new ASCIIEncoding();
 
@@ -93,7 +93,7 @@ namespace PCLParaphernalia
             _parseHPGL2 = parseHPGL2;
 
             _textParsingMethod =
-                (Int32)PCLTextParsingMethods.ePCLVal.m0_1_byte_default;
+                (int)PCLTextParsingMethods.ePCLVal.m0_1_byte_default;
 
             _parseFontHddrPCL = new PrnParseFontHddrPCL();
             _parseFontCharPCL = new PrnParseFontCharPCL();
@@ -110,18 +110,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean parseBuffer(
-            Byte[] buf,
-            ref Int32 fileOffset,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        public bool parseBuffer(
+            byte[] buf,
+            ref int fileOffset,
+            ref int bufRem,
+            ref int bufOffset,
             ref ToolCommonData.ePrintLang crntPDL,
-            ref Boolean endReached,
+            ref bool endReached,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            Boolean seqInvalid;
+            bool seqInvalid;
 
             //-------------------------------------------------------------------------//
             //                                                                         //
@@ -195,20 +195,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean parseContinuation(
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        private bool parseContinuation(
+            ref int bufRem,
+            ref int bufOffset,
             ref ToolCommonData.ePrintLang crntPDL,
-            ref Boolean endReached)
+            ref bool endReached)
         {
             PrnParseConstants.eContType contType;
 
-            Int32 prefixLen = 0,
+            int prefixLen = 0,
                   contDataLen = 0,
                   downloadRem = 0,
                   binDataLen;
 
-            Boolean hddrOK,
+            bool hddrOK,
                     charOK,
                     dataOK,
                     badSeq = false,
@@ -217,9 +217,9 @@ namespace PCLParaphernalia
                     backTrack = false,
                     dummyBool = false;
 
-            Boolean invalidSeqFound = false;
+            bool invalidSeqFound = false;
 
-            Byte prefixA = 0x00,
+            byte prefixA = 0x00,
                  prefixB = 0x00;
 
             contType = PrnParseConstants.eContType.None;
@@ -877,12 +877,12 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                String typeText;
+                string typeText;
 
                 if ((_textParsingMethod ==
-                    (Int32)PCLTextParsingMethods.ePCLVal.m83_UTF8) ||
+                    (int)PCLTextParsingMethods.ePCLVal.m83_UTF8) ||
                     (_textParsingMethod ==
-                    (Int32)PCLTextParsingMethods.ePCLVal.m1008_UTF8_alt))
+                    (int)PCLTextParsingMethods.ePCLVal.m1008_UTF8_alt))
                     typeText = "UTF-8 data";
                 else
                     typeText = "Data";
@@ -905,7 +905,7 @@ namespace PCLParaphernalia
                     typeText,
                     _textParsingMethod,
                     _indxCharSetSubAct,
-                    (Byte)_valCharSetSubCode,
+                    (byte)_valCharSetSubCode,
                     _indxCharSetName,
                     _indxOffsetFormat,
                     _analysisLevel);
@@ -951,7 +951,7 @@ namespace PCLParaphernalia
                     "Embedded data",
                     0,
                     _indxCharSetSubAct,
-                    (Byte)_valCharSetSubCode,
+                    (byte)_valCharSetSubCode,
                     _indxCharSetName,
                     _indxOffsetFormat,
                     _analysisLevel);
@@ -1031,19 +1031,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean parseSequence(
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        private bool parseSequence(
+            ref int bufRem,
+            ref int bufOffset,
             ref ToolCommonData.ePrintLang crntPDL,
-            ref Boolean endReached)
+            ref bool endReached)
         {
-            Boolean breakpoint = false;
-            Boolean continuation = false;
-            Boolean langSwitch = false;
-            Boolean badSeq = false;
-            Boolean invalidSeqFound = false;
-            Boolean seqKnown = false;
-            Boolean dummyBool = false;
+            bool breakpoint = false;
+            bool continuation = false;
+            bool langSwitch = false;
+            bool badSeq = false;
+            bool invalidSeqFound = false;
+            bool seqKnown = false;
+            bool dummyBool = false;
 
             while (!continuation && !breakpoint && !langSwitch &&
                    !endReached && (bufRem > 0))
@@ -1116,12 +1116,12 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        String typeText;
+                        string typeText;
 
                         if ((_textParsingMethod ==
-                            (Int32)PCLTextParsingMethods.ePCLVal.m83_UTF8) ||
+                            (int)PCLTextParsingMethods.ePCLVal.m83_UTF8) ||
                             (_textParsingMethod ==
-                            (Int32)PCLTextParsingMethods.ePCLVal.m1008_UTF8_alt))
+                            (int)PCLTextParsingMethods.ePCLVal.m1008_UTF8_alt))
                             typeText = "UTF-8 data";
                         else
                             typeText = "Data";
@@ -1144,7 +1144,7 @@ namespace PCLParaphernalia
                             typeText,
                             _textParsingMethod,
                             _indxCharSetSubAct,
-                            (Byte)_valCharSetSubCode,
+                            (byte)_valCharSetSubCode,
                             _indxCharSetName,
                             _indxOffsetFormat,
                             _analysisLevel);
@@ -1280,7 +1280,7 @@ namespace PCLParaphernalia
                                     "Data",
                                     0,
                                     _indxCharSetSubAct,
-                                    (Byte)_valCharSetSubCode,
+                                    (byte)_valCharSetSubCode,
                                     _indxCharSetName,
                                     _indxOffsetFormat,
                                     _analysisLevel);
@@ -1370,7 +1370,7 @@ namespace PCLParaphernalia
                             "Data",
                             0,
                             _indxCharSetSubAct,
-                            (Byte)_valCharSetSubCode,
+                            (byte)_valCharSetSubCode,
                             _indxCharSetName,
                             _indxOffsetFormat,
                             _analysisLevel);
@@ -1422,16 +1422,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean parseSequenceComplex(
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
-            ref Boolean continuation,
-            ref Boolean breakpoint,
+        private bool parseSequenceComplex(
+            ref int bufRem,
+            ref int bufOffset,
+            ref bool continuation,
+            ref bool breakpoint,
             ref ToolCommonData.ePrintLang crntPDL,
             //  Boolean CheckExtensionTable,
-            Boolean CheckStandardTable)
+            bool CheckStandardTable)
         {
-            Boolean invalidSeq = true;
+            bool invalidSeq = true;
 
             PrnParseConstants.eContType contType =
                 PrnParseConstants.eContType.None;
@@ -1445,12 +1445,12 @@ namespace PCLParaphernalia
             PrnParseConstants.eOvlShow makeOvlShow =
                 PrnParseConstants.eOvlShow.None;
 
-            Byte gChar = 0x20,
+            byte gChar = 0x20,
                  iChar = 0x20,
                  p_or_TChar,
                  crntByte;
 
-            Int32 vLen = 0,
+            int vLen = 0,
                   vtLen = 0,
                   processedLen,
                   seqLen,
@@ -1468,9 +1468,9 @@ namespace PCLParaphernalia
                   vPosCrnt;
             //   Int32 vendorCode;
 
-            Int64 comboStart = 0;
+            long comboStart = 0;
 
-            Boolean seqKnown,
+            bool seqKnown,
                     seqComplete,
                     seqProprietary = false,
                     comboSeq = false,
@@ -1480,7 +1480,7 @@ namespace PCLParaphernalia
                     backTrack = false,
                     p_or_TCharFound = false;
 
-            Boolean optObsolete = false,
+            bool optObsolete = false,
                     optResetHPGL2 = false,
                     optNilGChar = false,
                     optNilValue = false,
@@ -1488,7 +1488,7 @@ namespace PCLParaphernalia
                     optDisplayHexVal = false;
             // Boolean optValueAngleQuoted;
 
-            Boolean vCheck,
+            bool vCheck,
                     vInvalid,
                     vCharInvalid,
                     vNegative,
@@ -1499,7 +1499,7 @@ namespace PCLParaphernalia
                     vQuotedEnd,
                     vNumberStarted;
 
-            String descComplex = "",
+            string descComplex = "",
                    typeText,
                    vendorName;
 
@@ -1624,7 +1624,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    String text;
+                    string text;
 
                     seqComplete = true;
                     invalidSeq = true;
@@ -1741,7 +1741,7 @@ namespace PCLParaphernalia
                     //--------------------------------------------------------//
 
                     p_or_TCharFound = true;
-                    p_or_TChar = (Byte)(crntByte - 0x20);
+                    p_or_TChar = (byte)(crntByte - 0x20);
                     comboLast = false;
 
                     if (comboSeq)
@@ -1888,13 +1888,13 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        String seq;
-                        String text;
+                        string seq;
+                        string text;
 
                         if (crntByte < PrnParseConstants.asciiGraphicMin)
                             seq = "0x" + crntByte.ToString("x2");
                         else
-                            seq = ((Char)crntByte).ToString();
+                            seq = ((char)crntByte).ToString();
 
                         if (comboSeq)
                             text = "next (part of) combination sequence";
@@ -1935,8 +1935,8 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    String val;
-                    String seq;
+                    string val;
+                    string seq;
 
                     seqKnown = false;
                     seqProprietary = false;
@@ -2209,7 +2209,7 @@ namespace PCLParaphernalia
 
                     if (_parseType == PrnParse.eParseType.MakeOverlay)
                     {
-                        Int32 fragLen;
+                        int fragLen;
 
                         if (comboFirst)
                             fragLen = vtLen + prefixLen + 1;
@@ -2605,7 +2605,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                Int32 dataLen;
+                int dataLen;
 
                 if (p_or_TCharFound)
                 {
@@ -2675,20 +2675,20 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public void parseSequenceComplexDisplay(
-            Int32 offset,
-            Int32 prefixLen,
-            Boolean firstPart,
+            int offset,
+            int prefixLen,
+            bool firstPart,
             PrnParseConstants.eOvlShow makeOvlShow,
-            String type,
-            String sequence,
-            String description,
-            String value)
+            string type,
+            string sequence,
+            string description,
+            string value)
         {
-            const String escText = "<Esc>";
+            const string escText = "<Esc>";
 
-            Boolean firstSlice;
+            bool firstSlice;
 
-            Int32 len,
+            int len,
                   opSeqFixLen,
                   opSeqOffset,
                   sliceLen,
@@ -2696,7 +2696,7 @@ namespace PCLParaphernalia
                   sliceOffset,
                   crntOffset;
 
-            String opFixed,
+            string opFixed,
                    typeText,
                    descText,
                    seqSlice;
@@ -2721,7 +2721,7 @@ namespace PCLParaphernalia
             else
             {
                 opSeqOffset = opSeqFixLen + prefixLen;
-                opFixed = new String(' ', opSeqOffset);
+                opFixed = new string(' ', opSeqOffset);
             }
 
             sliceMax = PrnParseConstants.cRptA_colMax_Seq - opSeqOffset;
@@ -2745,7 +2745,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    Int32 ptr = description.IndexOf("#");
+                    int ptr = description.IndexOf("#");
 
                     sliceLen = len;
 
@@ -2800,7 +2800,7 @@ namespace PCLParaphernalia
 
                 sliceMax = PrnParseConstants.cRptA_colMax_Seq - opSeqOffset;
 
-                opFixed = new String(' ', opSeqOffset);
+                opFixed = new string(' ', opSeqOffset);
                 firstSlice = false;
             }
         }
@@ -2817,29 +2817,29 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean parseSequenceEmbeddedData(
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
-            ref Int32 binDataLen,
+        private bool parseSequenceEmbeddedData(
+            ref int bufRem,
+            ref int bufOffset,
+            ref int binDataLen,
             PrnParseConstants.eActPCL actType,
-            Int32 startPos,
-            Int32 endPos,
-            Int32 prefixLen,
-            Byte iChar,
-            Byte gChar,
-            Boolean seqComplete,
-            ref Boolean invalidSeqFound)
+            int startPos,
+            int endPos,
+            int prefixLen,
+            byte iChar,
+            byte gChar,
+            bool seqComplete,
+            ref bool invalidSeqFound)
         {
-            Boolean continuation,
+            bool continuation,
                     hddrOK,
                     charOK,
                     dataOK;
 
-            Boolean dummyBool = false;
+            bool dummyBool = false;
 
-            Boolean analyseRun;
+            bool analyseRun;
 
-            Int32 downloadRem = 0;
+            int downloadRem = 0;
 
             continuation = false;
             invalidSeqFound = false;
@@ -3392,7 +3392,7 @@ namespace PCLParaphernalia
                             "Embedded data",
                             0,
                             _indxCharSetSubAct,
-                            (Byte)_valCharSetSubCode,
+                            (byte)_valCharSetSubCode,
                             _indxCharSetName,
                             _indxOffsetFormat,
                             _analysisLevel);
@@ -3510,12 +3510,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean parseSequenceSimple(
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
-            ref Boolean breakpoint)
+        private bool parseSequenceSimple(
+            ref int bufRem,
+            ref int bufOffset,
+            ref bool breakpoint)
         {
-            Byte iChar;
+            byte iChar;
 
             bool seqKnown = false;
             bool optObsolete = false;
@@ -3527,7 +3527,7 @@ namespace PCLParaphernalia
             PrnParseConstants.eOvlShow makeOvlShow =
                 PrnParseConstants.eOvlShow.None;
 
-            String descSimple = "";
+            string descSimple = "";
 
             iChar = _buf[bufOffset + 1];
 
@@ -3610,7 +3610,7 @@ namespace PCLParaphernalia
                 _fileOffset + bufOffset,
                 _analysisLevel,
                 "PCL Simple",
-                "<Esc>" + (Char)iChar,
+                "<Esc>" + (char)iChar,
                 descSimple);
 
             bufRem = bufRem - 2;
@@ -3635,11 +3635,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processStyleData(Int32 style)
+        private void processStyleData(int style)
         {
-            Int32 index;
+            int index;
 
-            String itemDesc;
+            string itemDesc;
 
             index = (style >> 5) & 0x1f;
 
@@ -3829,7 +3829,7 @@ namespace PCLParaphernalia
 
         {
             _textParsingMethod =
-                 (Int32)PCLTextParsingMethods.ePCLVal.m0_1_byte_default;
+                 (int)PCLTextParsingMethods.ePCLVal.m0_1_byte_default;
             _macroLevel = 0;
         }
 

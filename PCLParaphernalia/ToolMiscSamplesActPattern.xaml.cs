@@ -38,8 +38,8 @@ namespace PCLParaphernalia
         private ePatternType _indxPatternTypePCL;
         private ePatternType _indxPatternTypePCLXL;
 
-        private Boolean _flagPatternFormAsMacroPCL;
-        private Boolean _flagPatternFormAsMacroPCLXL;
+        private bool _flagPatternFormAsMacroPCL;
+        private bool _flagPatternFormAsMacroPCLXL;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -147,14 +147,14 @@ namespace PCLParaphernalia
 
         public void metricsLoadDataPattern()
         {
-            Int32 tmpInt = 0;
+            int tmpInt = 0;
 
             ToolMiscSamplesPersist.loadDataTypePattern(
                 "PCL",
                 ref tmpInt,
                 ref _flagPatternFormAsMacroPCL);
 
-            if (tmpInt == (Int32)ePatternType.XHatch)
+            if (tmpInt == (int)ePatternType.XHatch)
                 _indxPatternTypePCL = ePatternType.XHatch;
             else
                 _indxPatternTypePCL = ePatternType.Shading;
@@ -164,7 +164,7 @@ namespace PCLParaphernalia
                 ref tmpInt,
                 ref _flagPatternFormAsMacroPCLXL);
 
-            if (tmpInt == (Int32)ePatternType.XHatch)
+            if (tmpInt == (int)ePatternType.XHatch)
                 _indxPatternTypePCLXL = ePatternType.XHatch;
             else
                 _indxPatternTypePCLXL = ePatternType.Shading;
@@ -183,12 +183,12 @@ namespace PCLParaphernalia
         {
             ToolMiscSamplesPersist.saveDataTypePattern(
                 "PCL",
-                (Int32)_indxPatternTypePCL,
+                (int)_indxPatternTypePCL,
                 _flagPatternFormAsMacroPCL);
 
             ToolMiscSamplesPersist.saveDataTypePattern(
                 "PCLXL",
-                (Int32)_indxPatternTypePCLXL,
+                (int)_indxPatternTypePCLXL,
                 _flagPatternFormAsMacroPCLXL);
         }
 
@@ -242,7 +242,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private void setFlagPatternFormAsMacro(
-            Boolean setFlag,
+            bool setFlag,
             ToolCommonData.ePrintLang crntPDL)
         {
             if (crntPDL == ToolCommonData.ePrintLang.PCL)

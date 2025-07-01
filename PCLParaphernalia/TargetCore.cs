@@ -40,21 +40,21 @@ namespace PCLParaphernalia
         private static ReportCore.eRptFileFmt _rptFileFmt;
         private static ReportCore.eRptChkMarks _rptChkMarks;
 
-        private static Int32 _netPrinterPort;
+        private static int _netPrinterPort;
 
-        private static Int32 _netPrinterTimeoutSend;
-        private static Int32 _netPrinterTimeoutReceive;
+        private static int _netPrinterTimeoutSend;
+        private static int _netPrinterTimeoutReceive;
 
-        private static String _netPrinterAddress;
-        private static String _winPrinterName;
+        private static string _netPrinterAddress;
+        private static string _winPrinterName;
 
-        private static String _crntFilename;
-        private static String _saveFilename;
+        private static string _crntFilename;
+        private static string _saveFilename;
 
         private static Stream _opStream = null;
         private static BinaryWriter _binWriter = null;
 
-        private static Boolean _flagOptRptWrap;
+        private static bool _flagOptRptWrap;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -83,11 +83,11 @@ namespace PCLParaphernalia
 
         public static void initialiseSettings()
         {
-            Int32 temp = 0;
+            int temp = 0;
 
             TargetPersist.loadDataCommon(ref temp);
 
-            if (temp < (Int32)eTarget.Max)
+            if (temp < (int)eTarget.Max)
                 _targetType = (eTarget)temp;
             else
                 _targetType = eTarget.NetPrinter;
@@ -171,13 +171,13 @@ namespace PCLParaphernalia
         public static void metricsLoadFileRpt(
             ToolCommonData.eToolIds crntToolId)
         {
-            Int32 tmpFmt = 0,
+            int tmpFmt = 0,
                   tmpChkMarks = 0;
 
-            Byte indxFmtNA = (Byte)ReportCore.eRptFileFmt.NA;
-            Byte indxOptChkNA = (Byte)ReportCore.eRptChkMarks.NA;
+            byte indxFmtNA = (byte)ReportCore.eRptFileFmt.NA;
+            byte indxOptChkNA = (byte)ReportCore.eRptChkMarks.NA;
 
-            Boolean flagNA = false;
+            bool flagNA = false;
 
             //----------------------------------------------------------------//
 
@@ -224,10 +224,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void metricsLoadNetPrinter(ref String printerAddress,
-                                                  ref Int32 printerPort,
-                                                  ref Int32 timeoutSend,
-                                                  ref Int32 timeoutReceive)
+        public static void metricsLoadNetPrinter(ref string printerAddress,
+                                                  ref int printerPort,
+                                                  ref int timeoutSend,
+                                                  ref int timeoutReceive)
         {
             printerAddress = _netPrinterAddress;
             printerPort = _netPrinterPort;
@@ -245,7 +245,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void metricsLoadWinPrinter(ref String printerName)
+        public static void metricsLoadWinPrinter(ref string printerName)
         {
             printerName = _winPrinterName;
         }
@@ -263,7 +263,7 @@ namespace PCLParaphernalia
             ToolCommonData.eToolIds crntToolId,
             ToolCommonData.eToolSubIds crntToolSubId,
             ToolCommonData.ePrintLang crntPDL,
-            ref String saveFilename)
+            ref string saveFilename)
         {
             metricsLoadFileCapt(crntToolId, crntToolSubId, crntPDL);
 
@@ -283,7 +283,7 @@ namespace PCLParaphernalia
             ToolCommonData.eToolIds crntToolId,
             ref ReportCore.eRptFileFmt rptFileFmt,
             ref ReportCore.eRptChkMarks rptChkMarks,
-            ref Boolean flagOptWrap)
+            ref bool flagOptWrap)
         {
             metricsLoadFileRpt(crntToolId);
 
@@ -305,13 +305,13 @@ namespace PCLParaphernalia
             ToolCommonData.eToolIds crntToolId,
             ToolCommonData.eToolSubIds crntToolSubId,
             ToolCommonData.ePrintLang crntPDL,
-            String saveFilename)
+            string saveFilename)
         {
             _targetType = eTarget.File;
 
             _saveFilename = saveFilename;
 
-            TargetPersist.saveDataCommon((Int32)_targetType);
+            TargetPersist.saveDataCommon((int)_targetType);
 
             //----------------------------------------------------------------//
 
@@ -368,10 +368,10 @@ namespace PCLParaphernalia
             ToolCommonData.eToolIds crntToolId,
             ReportCore.eRptFileFmt rptFileFmt,
             ReportCore.eRptChkMarks rptChkMarks,
-            Boolean flagOptRptWrap)
+            bool flagOptRptWrap)
         {
-            Int32 tmpFmt = (Int32)rptFileFmt;
-            Int32 tmpChkMarks = (Int32)rptChkMarks;
+            int tmpFmt = (int)rptFileFmt;
+            int tmpChkMarks = (int)rptChkMarks;
 
             if (crntToolId == ToolCommonData.eToolIds.MakeOverlay)
                 ToolMakeOverlayPersist.saveDataRpt(tmpFmt);
@@ -398,10 +398,10 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void metricsSaveNetPrinter(
-            String netPrinterAddress,
-            Int32 netPrinterPort,
-            Int32 netPrinterTimeoutSend,
-            Int32 netPrinterTimeoutReceive)
+            string netPrinterAddress,
+            int netPrinterPort,
+            int netPrinterTimeoutSend,
+            int netPrinterTimeoutReceive)
         {
             _targetType = eTarget.NetPrinter;
 
@@ -410,7 +410,7 @@ namespace PCLParaphernalia
             _netPrinterTimeoutSend = netPrinterTimeoutSend;
             _netPrinterTimeoutReceive = netPrinterTimeoutReceive;
 
-            TargetPersist.saveDataNetPrinter((Int32)_targetType,
+            TargetPersist.saveDataNetPrinter((int)_targetType,
                                               _netPrinterAddress,
                                               _netPrinterPort,
                                               _netPrinterTimeoutSend,
@@ -426,13 +426,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void metricsSaveWinPrinter(String printerName)
+        public static void metricsSaveWinPrinter(string printerName)
         {
             _targetType = eTarget.WinPrinter;
 
             _winPrinterName = printerName;
 
-            TargetPersist.saveDataWinPrinter((Int32)_targetType,
+            TargetPersist.saveDataWinPrinter((int)_targetType,
                                               _winPrinterName);
         }
 
@@ -449,7 +449,7 @@ namespace PCLParaphernalia
         {
             _targetType = type;
 
-            TargetPersist.saveDataCommon((Int32)_targetType);
+            TargetPersist.saveDataCommon((int)_targetType);
         }
 
         //--------------------------------------------------------------------//
@@ -483,10 +483,10 @@ namespace PCLParaphernalia
 
                 SaveFileDialog saveDialog;
 
-                Int32 ptr,
+                int ptr,
                       len;
 
-                String saveDirectory;
+                string saveDirectory;
 
                 ptr = _saveFilename.LastIndexOf("\\");
 
@@ -570,7 +570,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void requestStreamWrite(Boolean keepNetConnect)
+        public static void requestStreamWrite(bool keepNetConnect)
         {
             if ((_targetType == eTarget.NetPrinter) &&
                 (_binWriter != null))
@@ -581,7 +581,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                Boolean OK;
+                bool OK;
 
                 IPAddress ipAddress = new IPAddress(0x00);
 
@@ -688,12 +688,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean responseReadBlock(Int32 offset,
-                                                 Int32 bufRem,
-                                                 ref Byte[] replyData,
-                                                 ref Int32 blockLen)
+        public static bool responseReadBlock(int offset,
+                                                 int bufRem,
+                                                 ref byte[] replyData,
+                                                 ref int blockLen)
         {
-            Boolean OK = true;
+            bool OK = true;
 
             //----------------------------------------------------------------//
             //                                                                //

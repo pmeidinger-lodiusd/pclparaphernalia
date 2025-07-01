@@ -19,7 +19,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Int32 _logPageOffset = 142;
+        const int _logPageOffset = 142;
 
         public enum eMacroMethod : byte
         {
@@ -31,7 +31,7 @@ namespace PCLParaphernalia
             Max
         }
 
-        private static String[] macroMethodNames =
+        private static string[] macroMethodNames =
         {
           "Call macro (@ start of page)",
           "Call macro (@ end of page)",
@@ -63,28 +63,28 @@ namespace PCLParaphernalia
 
         public static void generateJob(
             BinaryWriter prnWriter,
-            Int32 indxPaperSize,
-            Int32 indxPaperType,
-            Int32 indxOrientation,
-            Int32 indxOrientRear,
-            Int32 indxPlexMode,
-            Int32 testPageCount,
-            Boolean flagMainEncapsulated,
-            Boolean flagRearEncapsulated,
-            Boolean flagMacroRemove,
-            Boolean flagMainForm,
-            Boolean flagRearForm,
-            Boolean flagMainOnPrnDisk,
-            Boolean flagRearOnPrnDisk,
-            Boolean flagRearBPlate,
-            Boolean flagPrintDescText,
-            String formFileMain,
-            String formFileRear,
+            int indxPaperSize,
+            int indxPaperType,
+            int indxOrientation,
+            int indxOrientRear,
+            int indxPlexMode,
+            int testPageCount,
+            bool flagMainEncapsulated,
+            bool flagRearEncapsulated,
+            bool flagMacroRemove,
+            bool flagMainForm,
+            bool flagRearForm,
+            bool flagMainOnPrnDisk,
+            bool flagRearOnPrnDisk,
+            bool flagRearBPlate,
+            bool flagPrintDescText,
+            string formFileMain,
+            string formFileRear,
             eMacroMethod indxMethod,
-            Int32 macroIdMain,
-            Int32 macroIdRear)
+            int macroIdMain,
+            int macroIdRear)
         {
-            Boolean flagSimplexJob = PCLPlexModes.isSimplex(indxPlexMode);
+            bool flagSimplexJob = PCLPlexModes.isSimplex(indxPlexMode);
 
             generateJobHeader(prnWriter,
                               indxPaperSize,
@@ -144,23 +144,23 @@ namespace PCLParaphernalia
 
         private static void generateJobHeader(
             BinaryWriter prnWriter,
-            Int32 indxPaperSize,
-            Int32 indxPaperType,
-            Int32 indxOrientation,
-            Int32 indxPlexMode,
-            Boolean flagSimplexJob,
-            Boolean flagMainEncapsulated,
-            Boolean flagRearEncapsulated,
-            Boolean flagMacroRemove,
-            Boolean flagMainForm,
-            Boolean flagRearForm,
-            Boolean flagMainOnPrnDisk,
-            Boolean flagRearOnPrnDisk,
-            String formFileMain,
-            String formFileRear,
+            int indxPaperSize,
+            int indxPaperType,
+            int indxOrientation,
+            int indxPlexMode,
+            bool flagSimplexJob,
+            bool flagMainEncapsulated,
+            bool flagRearEncapsulated,
+            bool flagMacroRemove,
+            bool flagMainForm,
+            bool flagRearForm,
+            bool flagMainOnPrnDisk,
+            bool flagRearOnPrnDisk,
+            string formFileMain,
+            string formFileRear,
             eMacroMethod indxMethod,
-            Int32 macroIdMain,
-            Int32 macroIdRear)
+            int macroIdMain,
+            int macroIdRear)
         {
             PCLWriter.stdJobHeader(prnWriter, "");
 
@@ -187,13 +187,13 @@ namespace PCLParaphernalia
                     //--------------------------------------------------------//
 
                     PCLWriter.macroFileIdAssociate(prnWriter,
-                                                    (UInt16)macroIdMain,
+                                                    (ushort)macroIdMain,
                                                     formFileMain);
 
                     if (!flagMacroRemove)
                         PCLWriter.macroControl(
                             prnWriter,
-                            (Int16)macroIdMain,
+                            (short)macroIdMain,
                             PCLWriter.eMacroControl.MakePermanent);
                 }
                 else
@@ -206,20 +206,20 @@ namespace PCLParaphernalia
 
                     if (!flagMainEncapsulated)
                         PCLWriter.macroControl(prnWriter,
-                                                (Int16)macroIdMain,
+                                                (short)macroIdMain,
                                                 PCLWriter.eMacroControl.StartDef);
 
                     PCLDownloadMacro.macroFileCopy(prnWriter, formFileMain);
 
                     if (!flagMainEncapsulated)
                         PCLWriter.macroControl(prnWriter,
-                                                (Int16)macroIdMain,
+                                                (short)macroIdMain,
                                                 PCLWriter.eMacroControl.StopDef);
 
                     if (!flagMacroRemove)
                         PCLWriter.macroControl(
                             prnWriter,
-                            (Int16)macroIdMain,
+                            (short)macroIdMain,
                             PCLWriter.eMacroControl.MakePermanent);
                 }
             }
@@ -251,13 +251,13 @@ namespace PCLParaphernalia
                         //----------------------------------------------------//
 
                         PCLWriter.macroFileIdAssociate(prnWriter,
-                                                        (UInt16)macroIdRear,
+                                                        (ushort)macroIdRear,
                                                         formFileRear);
 
                         if (!flagMacroRemove)
                             PCLWriter.macroControl(
                                 prnWriter,
-                                (Int16)macroIdRear,
+                                (short)macroIdRear,
                                 PCLWriter.eMacroControl.MakePermanent);
                     }
                     else
@@ -271,7 +271,7 @@ namespace PCLParaphernalia
                         if (!flagRearEncapsulated)
                             PCLWriter.macroControl(
                                 prnWriter,
-                                (Int16)macroIdRear,
+                                (short)macroIdRear,
                                 PCLWriter.eMacroControl.StartDef);
 
                         PCLDownloadMacro.macroFileCopy(prnWriter, formFileRear);
@@ -279,13 +279,13 @@ namespace PCLParaphernalia
                         if (!flagRearEncapsulated)
                             PCLWriter.macroControl(
                                 prnWriter,
-                                (Int16)macroIdRear,
+                                (short)macroIdRear,
                                 PCLWriter.eMacroControl.StopDef);
 
                         if (!flagMacroRemove)
                             PCLWriter.macroControl(
                                 prnWriter,
-                                (Int16)macroIdRear,
+                                (short)macroIdRear,
                                 PCLWriter.eMacroControl.MakePermanent);
                     }
                 }
@@ -302,24 +302,24 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateJobTrailer(BinaryWriter prnWriter,
-                                               Boolean flagMacroRemove,
-                                               Boolean flagMainForm,
-                                               Boolean flagRearForm,
-                                               Int32 macroIdMain,
-                                               Int32 macroIdRear)
+                                               bool flagMacroRemove,
+                                               bool flagMainForm,
+                                               bool flagRearForm,
+                                               int macroIdMain,
+                                               int macroIdRear)
         {
             if (flagMacroRemove)
             {
                 if (flagMainForm)
                     PCLWriter.macroControl(
                         prnWriter,
-                        (Int16)macroIdMain,
+                        (short)macroIdMain,
                         PCLWriter.eMacroControl.Delete);
 
                 if (flagRearForm)
                     PCLWriter.macroControl(
                         prnWriter,
-                        (Int16)macroIdRear,
+                        (short)macroIdRear,
                         PCLWriter.eMacroControl.Delete);
             }
 
@@ -336,38 +336,38 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generatePage(BinaryWriter prnWriter,
-                                         Int32 pageNo,
-                                         Int32 pageCount,
-                                         Int32 indxPaperSize,
-                                         Int32 indxPaperType,
-                                         Int32 indxOrientation,
-                                         Int32 indxOrientRear,
-                                         Int32 indxPlexMode,
-                                         Boolean flagFrontFace,
-                                         Boolean flagSimplexJob,
-                                         Boolean flagMainForm,
-                                         Boolean flagRearForm,
-                                         Boolean flagMainOnPrnDisk,
-                                         Boolean flagRearOnPrnDisk,
-                                         Boolean flagRearBPlate,
-                                         Boolean flagPrintDescText,
-                                         String formFileMain,
-                                         String formFileRear,
+                                         int pageNo,
+                                         int pageCount,
+                                         int indxPaperSize,
+                                         int indxPaperType,
+                                         int indxOrientation,
+                                         int indxOrientRear,
+                                         int indxPlexMode,
+                                         bool flagFrontFace,
+                                         bool flagSimplexJob,
+                                         bool flagMainForm,
+                                         bool flagRearForm,
+                                         bool flagMainOnPrnDisk,
+                                         bool flagRearOnPrnDisk,
+                                         bool flagRearBPlate,
+                                         bool flagPrintDescText,
+                                         string formFileMain,
+                                         string formFileRear,
                                          eMacroMethod indxMethod,
-                                         Int32 macroIdMain,
-                                         Int32 macroIdRear)
+                                         int macroIdMain,
+                                         int macroIdRear)
         {
-            const Int16 incPosY = 150;
+            const short incPosY = 150;
 
-            Boolean altOrient;
-            Boolean pageUsesForm;
-            Boolean firstPage;
+            bool altOrient;
+            bool pageUsesForm;
+            bool firstPage;
 
-            Int16 posX,
+            short posX,
                   posY;
 
-            Int32 macroId;
-            Int32 indxOrient;
+            int macroId;
+            int indxOrient;
 
             altOrient = (indxOrientation != indxOrientRear);
             firstPage = (pageNo == 1);
@@ -411,7 +411,7 @@ namespace PCLParaphernalia
                 if (indxMethod == eMacroMethod.Overlay)
                 {
                     PCLWriter.macroControl(prnWriter,
-                                            (Int16)macroIdMain,
+                                            (short)macroIdMain,
                                             PCLWriter.eMacroControl.Overlay);
                 }
             }
@@ -458,13 +458,13 @@ namespace PCLParaphernalia
                 if (indxMethod == eMacroMethod.CallBegin)
                 {
                     PCLWriter.macroControl(prnWriter,
-                                            (Int16)macroId,
+                                            (short)macroId,
                                             PCLWriter.eMacroControl.Call);
                 }
                 else if (indxMethod == eMacroMethod.ExecuteBegin)
                 {
                     PCLWriter.macroControl(prnWriter,
-                                            (Int16)macroId,
+                                            (short)macroId,
                                             PCLWriter.eMacroControl.Execute);
                 }
             }
@@ -558,7 +558,7 @@ namespace PCLParaphernalia
 
                 if (firstPage)
                 {
-                    String textOrientRear;
+                    string textOrientRear;
 
                     posY += incPosY;
 
@@ -578,7 +578,7 @@ namespace PCLParaphernalia
                     posY += incPosY;
 
                     PCLWriter.text(prnWriter, posX, posY, 0,
-                                    macroMethodNames[(Int32)indxMethod]);
+                                    macroMethodNames[(int)indxMethod]);
 
                     posY += incPosY;
 
@@ -601,10 +601,10 @@ namespace PCLParaphernalia
 
                     if (flagMainForm)
                     {
-                        const Int32 maxLen = 51;
-                        const Int32 halfLen = (maxLen - 5) / 2;
+                        const int maxLen = 51;
+                        const int halfLen = (maxLen - 5) / 2;
 
-                        Int32 len = formFileMain.Length;
+                        int len = formFileMain.Length;
 
                         if (len < maxLen)
                             PCLWriter.text(prnWriter, posX, posY, 0, formFileMain);
@@ -620,10 +620,10 @@ namespace PCLParaphernalia
 
                     if (flagRearForm)
                     {
-                        const Int32 maxLen = 51;
-                        const Int32 halfLen = (maxLen - 5) / 2;
+                        const int maxLen = 51;
+                        const int halfLen = (maxLen - 5) / 2;
 
-                        Int32 len = formFileRear.Length;
+                        int len = formFileRear.Length;
 
                         if (len < maxLen)
                             PCLWriter.text(prnWriter, posX, posY, 0, formFileRear);
@@ -649,13 +649,13 @@ namespace PCLParaphernalia
                 if (indxMethod == eMacroMethod.CallEnd)
                 {
                     PCLWriter.macroControl(prnWriter,
-                                            (Int16)macroId,
+                                            (short)macroId,
                                             PCLWriter.eMacroControl.Call);
                 }
                 else if (indxMethod == eMacroMethod.ExecuteEnd)
                 {
                     PCLWriter.macroControl(prnWriter,
-                                            (Int16)macroId,
+                                            (short)macroId,
                                             PCLWriter.eMacroControl.Execute);
                 }
             }
@@ -681,14 +681,14 @@ namespace PCLParaphernalia
                     (indxMethod == eMacroMethod.CallEnd))
                 {
                     PCLWriter.macroControl(prnWriter,
-                                            (Int16)macroIdRear,
+                                            (short)macroIdRear,
                                             PCLWriter.eMacroControl.Call);
                 }
                 else if ((indxMethod == eMacroMethod.ExecuteBegin) ||
                          (indxMethod == eMacroMethod.ExecuteEnd))
                 {
                     PCLWriter.macroControl(prnWriter,
-                                            (Int16)macroIdRear,
+                                            (short)macroIdRear,
                                             PCLWriter.eMacroControl.Execute);
                 }
             }
@@ -704,30 +704,30 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generatePageSet(BinaryWriter prnWriter,
-                                            Int32 pageCount,
-                                            Int32 indxPaperSize,
-                                            Int32 indxPaperType,
-                                            Int32 indxOrientation,
-                                            Int32 indxOrientRear,
-                                            Int32 indxPlexMode,
-                                            Boolean flagSimplexJob,
-                                            Boolean flagMainForm,
-                                            Boolean flagRearForm,
-                                            Boolean flagMainOnPrnDisk,
-                                            Boolean flagRearOnPrnDisk,
-                                            Boolean flagRearBPlate,
-                                            Boolean flagPrintDescText,
-                                            String formFileMain,
-                                            String formFileRear,
+                                            int pageCount,
+                                            int indxPaperSize,
+                                            int indxPaperType,
+                                            int indxOrientation,
+                                            int indxOrientRear,
+                                            int indxPlexMode,
+                                            bool flagSimplexJob,
+                                            bool flagMainForm,
+                                            bool flagRearForm,
+                                            bool flagMainOnPrnDisk,
+                                            bool flagRearOnPrnDisk,
+                                            bool flagRearBPlate,
+                                            bool flagPrintDescText,
+                                            string formFileMain,
+                                            string formFileRear,
                                             eMacroMethod indxMethod,
-                                            Int32 macroIdMain,
-                                            Int32 macroIdRear)
+                                            int macroIdMain,
+                                            int macroIdRear)
         {
-            Boolean flagFrontFace;
+            bool flagFrontFace;
 
             flagFrontFace = true;
 
-            for (Int32 pageNo = 1; pageNo <= pageCount; pageNo++)
+            for (int pageNo = 1; pageNo <= pageCount; pageNo++)
             {
                 //------------------------------------------------------------//
                 //                                                            //

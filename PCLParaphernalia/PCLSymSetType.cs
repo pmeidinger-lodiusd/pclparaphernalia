@@ -29,12 +29,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private String _descStd;
-        private String _descShort;
+        private string _descStd;
+        private string _descShort;
 
-        private Byte _idPCL;
+        private byte _idPCL;
 
-        private Boolean _flagBound;
+        private bool _flagBound;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -42,10 +42,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLSymSetType(Byte idPCL,
-                                 Boolean flagBound,
-                                 String descStd,
-                                 String descShort)
+        public PCLSymSetType(byte idPCL,
+                                 bool flagBound,
+                                 string descStd,
+                                 string descShort)
         {
             _idPCL = idPCL;
             _flagBound = flagBound;
@@ -62,7 +62,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String DescShort
+        public string DescShort
         {
             get { return _descShort; }
         }
@@ -76,7 +76,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String DescStd
+        public string DescStd
         {
             get { return _descStd; }
         }
@@ -90,7 +90,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Byte IdPCL
+        public byte IdPCL
         {
             get { return _idPCL; }
         }
@@ -105,7 +105,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean IsBound
+        public bool IsBound
         {
             get { return _flagBound; }
         }

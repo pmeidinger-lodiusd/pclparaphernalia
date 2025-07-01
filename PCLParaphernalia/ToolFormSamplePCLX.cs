@@ -19,7 +19,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Int32 _symSet_19U = 629;
+        const int _symSet_19U = 629;
 
         public enum eStreamMethod : byte
         {
@@ -28,7 +28,7 @@ namespace PCLParaphernalia
             Max
         }
 
-        private static String[] streamMethodNames =
+        private static string[] streamMethodNames =
         {
           "Execute stream (@ start of page)",
           "Execute stream (@ end of page)",
@@ -57,27 +57,27 @@ namespace PCLParaphernalia
 
         public static void generateJob(
             BinaryWriter prnWriter,
-            Int32 indxPaperSize,
-            Int32 indxPaperType,
-            Int32 indxOrientation,
-            Int32 indxOrientRear,
-            Int32 indxPlexMode,
-            Int32 testPageCount,
-            Boolean flagMainEncapsulated,
-            Boolean flagRearEncapsulated,
-            Boolean flagStreamRemove,
-            Boolean flagMainForm,
-            Boolean flagRearForm,
-            Boolean flagRearBPlate,
-            Boolean flagGSPushPop,
-            Boolean flagPrintDescText,
-            String formFileMain,
-            String formFileRear,
+            int indxPaperSize,
+            int indxPaperType,
+            int indxOrientation,
+            int indxOrientRear,
+            int indxPlexMode,
+            int testPageCount,
+            bool flagMainEncapsulated,
+            bool flagRearEncapsulated,
+            bool flagStreamRemove,
+            bool flagMainForm,
+            bool flagRearForm,
+            bool flagRearBPlate,
+            bool flagGSPushPop,
+            bool flagPrintDescText,
+            string formFileMain,
+            string formFileRear,
             eStreamMethod indxMethod,
-            String formNameMain,
-            String formNameRear)
+            string formNameMain,
+            string formNameRear)
         {
-            Boolean flagSimplexJob = PCLPlexModes.isSimplex(indxPlexMode);
+            bool flagSimplexJob = PCLPlexModes.isSimplex(indxPlexMode);
 
             generateJobHeader(prnWriter,
                               indxPaperSize,
@@ -134,21 +134,21 @@ namespace PCLParaphernalia
 
         private static void generateJobHeader(
             BinaryWriter prnWriter,
-            Int32 indxPaperSize,
-            Int32 indxPaperType,
-            Int32 indxOrientation,
-            Int32 indxPlexMode,
-            Boolean flagSimplexJob,
-            Boolean flagMainEncapsulated,
-            Boolean flagRearEncapsulated,
-            Boolean flagStreamRemove,
-            Boolean flagMainForm,
-            Boolean flagRearForm,
-            String formFileMain,
-            String formFileRear,
+            int indxPaperSize,
+            int indxPaperType,
+            int indxOrientation,
+            int indxPlexMode,
+            bool flagSimplexJob,
+            bool flagMainEncapsulated,
+            bool flagRearEncapsulated,
+            bool flagStreamRemove,
+            bool flagMainForm,
+            bool flagRearForm,
+            string formFileMain,
+            string formFileRear,
             eStreamMethod indxMethod,
-            String formNameMain,
-            String formNameRear)
+            string formNameMain,
+            string formNameRear)
         {
             PCLXLWriter.stdJobHeader(prnWriter, "");
 
@@ -196,11 +196,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateJobTrailer(BinaryWriter prnWriter,
-                                               Boolean flagStreamRemove,
-                                               Boolean flagMainForm,
-                                               Boolean flagRearForm,
-                                               String formNameMain,
-                                               String formNameRear)
+                                               bool flagStreamRemove,
+                                               bool flagMainForm,
+                                               bool flagRearForm,
+                                               string formNameMain,
+                                               string formNameRear)
         {
             if (flagStreamRemove)
             {
@@ -226,43 +226,43 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generatePage(BinaryWriter prnWriter,
-                                         Int32 pageNo,
-                                         Int32 pageCount,
-                                         Int32 indxPaperSize,
-                                         Int32 indxPaperType,
-                                         Int32 indxOrientation,
-                                         Int32 indxOrientRear,
-                                         Int32 indxPlexMode,
-                                         Boolean flagFrontFace,
-                                         Boolean flagSimplexJob,
-                                         Boolean flagMainForm,
-                                         Boolean flagRearForm,
-                                         Boolean flagRearBPlate,
-                                         Boolean flagGSPushPop,
-                                         Boolean flagPrintDescText,
-                                         String formFileMain,
-                                         String formFileRear,
+                                         int pageNo,
+                                         int pageCount,
+                                         int indxPaperSize,
+                                         int indxPaperType,
+                                         int indxOrientation,
+                                         int indxOrientRear,
+                                         int indxPlexMode,
+                                         bool flagFrontFace,
+                                         bool flagSimplexJob,
+                                         bool flagMainForm,
+                                         bool flagRearForm,
+                                         bool flagRearBPlate,
+                                         bool flagGSPushPop,
+                                         bool flagPrintDescText,
+                                         string formFileMain,
+                                         string formFileRear,
                                          eStreamMethod indxMethod,
-                                         String formNameMain,
-                                         String formNameRear)
+                                         string formNameMain,
+                                         string formNameRear)
         {
-            const Int32 lenBuf = 1024;
-            const Int16 incPosY = 150;
+            const int lenBuf = 1024;
+            const short incPosY = 150;
 
-            Byte[] buffer = new Byte[lenBuf];
+            byte[] buffer = new byte[lenBuf];
 
-            Boolean altOrient;
-            Boolean pageUsesForm;
-            Boolean firstPage;
+            bool altOrient;
+            bool pageUsesForm;
+            bool firstPage;
 
-            Int16 posX,
+            short posX,
                   posY;
 
-            String formName;
-            Int32 indxOrient;
+            string formName;
+            int indxOrient;
 
-            Int32 indBuf = 0;
-            Int32 crntPtSize;
+            int indBuf = 0;
+            int crntPtSize;
 
             altOrient = (indxOrientation != indxOrientRear);
             firstPage = (pageNo == 1);
@@ -354,7 +354,7 @@ namespace PCLParaphernalia
                 PCLXLWriter.addAttrUbyte(ref buffer,
                                          ref indBuf,
                                          PCLXLAttributes.eTag.ColorSpace,
-                                         (Byte)PCLXLAttrEnums.eVal.eGray);
+                                         (byte)PCLXLAttrEnums.eVal.eGray);
 
                 PCLXLWriter.addOperator(ref buffer,
                                         ref indBuf,
@@ -474,7 +474,7 @@ namespace PCLParaphernalia
 
                 if (firstPage)
                 {
-                    String textOrientRear;
+                    string textOrientRear;
 
                     posY += incPosY;
 
@@ -502,7 +502,7 @@ namespace PCLParaphernalia
                     PCLXLWriter.text(prnWriter, false, false,
                                       PCLXLWriter.advances_Courier, crntPtSize,
                                       posX, posY,
-                                      streamMethodNames[(Int32)indxMethod]);
+                                      streamMethodNames[(int)indxMethod]);
 
                     posY += incPosY;
 
@@ -527,10 +527,10 @@ namespace PCLParaphernalia
 
                     if (flagMainForm)
                     {
-                        const Int32 maxLen = 51;
-                        const Int32 halfLen = (maxLen - 5) / 2;
+                        const int maxLen = 51;
+                        const int halfLen = (maxLen - 5) / 2;
 
-                        Int32 len = formFileMain.Length;
+                        int len = formFileMain.Length;
 
                         if (len < maxLen)
                             PCLXLWriter.text(prnWriter, false, false,
@@ -550,10 +550,10 @@ namespace PCLParaphernalia
 
                     if (flagRearForm)
                     {
-                        const Int32 maxLen = 51;
-                        const Int32 halfLen = (maxLen - 5) / 2;
+                        const int maxLen = 51;
+                        const int halfLen = (maxLen - 5) / 2;
 
-                        Int32 len = formFileRear.Length;
+                        int len = formFileRear.Length;
 
                         if (len < maxLen)
                             PCLXLWriter.text(prnWriter, false, false,
@@ -649,29 +649,29 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generatePageSet(BinaryWriter prnWriter,
-                                            Int32 pageCount,
-                                            Int32 indxPaperSize,
-                                            Int32 indxPaperType,
-                                            Int32 indxOrientation,
-                                            Int32 indxOrientRear,
-                                            Int32 indxPlexMode,
-                                            Boolean flagSimplexJob,
-                                            Boolean flagMainForm,
-                                            Boolean flagRearForm,
-                                            Boolean flagRearBPlate,
-                                            Boolean flagGSPushPop,
-                                            Boolean flagPrintDescText,
-                                            String formFileMain,
-                                            String formFileRear,
+                                            int pageCount,
+                                            int indxPaperSize,
+                                            int indxPaperType,
+                                            int indxOrientation,
+                                            int indxOrientRear,
+                                            int indxPlexMode,
+                                            bool flagSimplexJob,
+                                            bool flagMainForm,
+                                            bool flagRearForm,
+                                            bool flagRearBPlate,
+                                            bool flagGSPushPop,
+                                            bool flagPrintDescText,
+                                            string formFileMain,
+                                            string formFileRear,
                                             eStreamMethod indxMethod,
-                                            String formNameMain,
-                                            String formNameRear)
+                                            string formNameMain,
+                                            string formNameRear)
         {
-            Boolean flagFrontFace;
+            bool flagFrontFace;
 
             flagFrontFace = true;
 
-            for (Int32 pageNo = 1; pageNo <= pageCount; pageNo++)
+            for (int pageNo = 1; pageNo <= pageCount; pageNo++)
             {
                 //------------------------------------------------------------//
                 //                                                            //

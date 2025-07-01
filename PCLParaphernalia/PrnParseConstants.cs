@@ -377,116 +377,116 @@ namespace PCLParaphernalia
             YellowGreen
         }
 
-        public const Int32 bufSize = 2048;        // multiple of 16         
-        public const Int32 viewBytesPerLine = 16; // divisor of 1024
+        public const int bufSize = 2048;        // multiple of 16         
+        public const int viewBytesPerLine = 16; // divisor of 1024
 
-        public const Byte asciiAngleLeft = 0x3c;
-        public const Byte asciiAngleRight = 0x3e;
-        public const Byte asciiAlphaLCMax = 0x7a;
-        public const Byte asciiAlphaLCMin = 0x61;
-        public const Byte asciiAlphaUCMax = 0x5a;
-        public const Byte asciiAlphaUCMin = 0x41;
-        public const Byte asciiApostrophe = 0x27;
-        public const Byte asciiAtSign = 0x40;
-        public const Byte asciiBEL = 0x07;
-        public const Byte asciiCR = 0x0d;
-        public const Byte asciiDEL = 0x7f;
-        public const Byte asciiDigit0 = 0x30;
-        public const Byte asciiGraphicMin = 0x21;
-        public const Byte asciiDigit1 = 0x31;
-        public const Byte asciiDigit9 = 0x39;
-        public const Byte asciiEquals = 0x3d;
-        public const Byte asciiEsc = 0x1b;
-        public const Byte asciiETX = 0x03;
-        public const Byte asciiExclamationMark = 0x21;
-        public const Byte asciiFF = 0x0c;
-        public const Byte asciiHT = 0x09;
-        public const Byte asciiLF = 0x0a;
-        public const Byte asciiMax8bit = 0xff;
-        public const Byte asciiMinus = 0x2d;
-        public const Byte asciiNUL = 0x00;
-        public const Byte asciiPeriod = 0x2e;
-        public const Byte asciiPipe = 0x7c;
-        public const Byte asciiPlus = 0x2b;
-        public const Byte asciiQuote = 0x22;
-        public const Byte asciiSemiColon = 0x3b;
-        public const Byte asciiSpace = 0x20;
-        public const Byte asciiSUB = 0x1f;
-        public const Byte asciiSubDefault = 0xbf;
+        public const byte asciiAngleLeft = 0x3c;
+        public const byte asciiAngleRight = 0x3e;
+        public const byte asciiAlphaLCMax = 0x7a;
+        public const byte asciiAlphaLCMin = 0x61;
+        public const byte asciiAlphaUCMax = 0x5a;
+        public const byte asciiAlphaUCMin = 0x41;
+        public const byte asciiApostrophe = 0x27;
+        public const byte asciiAtSign = 0x40;
+        public const byte asciiBEL = 0x07;
+        public const byte asciiCR = 0x0d;
+        public const byte asciiDEL = 0x7f;
+        public const byte asciiDigit0 = 0x30;
+        public const byte asciiGraphicMin = 0x21;
+        public const byte asciiDigit1 = 0x31;
+        public const byte asciiDigit9 = 0x39;
+        public const byte asciiEquals = 0x3d;
+        public const byte asciiEsc = 0x1b;
+        public const byte asciiETX = 0x03;
+        public const byte asciiExclamationMark = 0x21;
+        public const byte asciiFF = 0x0c;
+        public const byte asciiHT = 0x09;
+        public const byte asciiLF = 0x0a;
+        public const byte asciiMax8bit = 0xff;
+        public const byte asciiMinus = 0x2d;
+        public const byte asciiNUL = 0x00;
+        public const byte asciiPeriod = 0x2e;
+        public const byte asciiPipe = 0x7c;
+        public const byte asciiPlus = 0x2b;
+        public const byte asciiQuote = 0x22;
+        public const byte asciiSemiColon = 0x3b;
+        public const byte asciiSpace = 0x20;
+        public const byte asciiSUB = 0x1f;
+        public const byte asciiSubDefault = 0xbf;
 
-        public const Byte pclSimpleICharLow = 0x30;
-        public const Byte pclSimpleICharHigh = 0x7e;
+        public const byte pclSimpleICharLow = 0x30;
+        public const byte pclSimpleICharHigh = 0x7e;
 
-        public const Byte pclComplexICharLow = 0x21;
-        public const Byte pclComplexICharHigh = 0x2f;
+        public const byte pclComplexICharLow = 0x21;
+        public const byte pclComplexICharHigh = 0x2f;
 
-        public const Byte pclComplexGCharLow = 0x60;
-        public const Byte pclComplexGCharHigh = 0x7e;
+        public const byte pclComplexGCharLow = 0x60;
+        public const byte pclComplexGCharHigh = 0x7e;
 
-        public const Byte pclComplexPCharLow = 0x60;
-        public const Byte pclComplexPCharHigh = 0x7e;
+        public const byte pclComplexPCharLow = 0x60;
+        public const byte pclComplexPCharHigh = 0x7e;
 
-        public const Byte pclComplexTCharLow = 0x40;
-        public const Byte pclComplexTCharHigh = 0x5e;
+        public const byte pclComplexTCharLow = 0x40;
+        public const byte pclComplexTCharHigh = 0x5e;
 
-        public const Byte pclxlAttrUbyte = 0xf8;
-        public const Byte pclxlAttrUint16 = 0xf9;
-        public const Byte pclxlEmbedData = 0xfa;
-        public const Byte pclxlEmbedDataByte = 0xfb;
-        public const Byte pclxlDataTypeLow = 0xc0;
-        public const Byte pclxlDataTypeHigh = 0xef;
-        public const Byte pclxlDataTypeUbyte = 0xc0;
-        public const Byte pclxlDataTypeUint16 = 0xc1;
-        public const Byte pclxlOperatorLow = 0x41;
-        public const Byte pclxlOperatorHigh = 0xbf;
+        public const byte pclxlAttrUbyte = 0xf8;
+        public const byte pclxlAttrUint16 = 0xf9;
+        public const byte pclxlEmbedData = 0xfa;
+        public const byte pclxlEmbedDataByte = 0xfb;
+        public const byte pclxlDataTypeLow = 0xc0;
+        public const byte pclxlDataTypeHigh = 0xef;
+        public const byte pclxlDataTypeUbyte = 0xc0;
+        public const byte pclxlDataTypeUint16 = 0xc1;
+        public const byte pclxlOperatorLow = 0x41;
+        public const byte pclxlOperatorHigh = 0xbf;
 
-        public const Byte prescribeSCRCDefault = 0x52;  // R //
-        public const Byte prescribeSCRCDelimiter = 0x21;  // ! //
+        public const byte prescribeSCRCDefault = 0x52;  // R //
+        public const byte prescribeSCRCDelimiter = 0x21;  // ! //
 
-        public const String cRptA_colName_RowType = "RowType";  // not displayed
-        public const String cRptA_colName_Action = "Action";   // MakeOverlay only
-        public const String cRptA_colName_Offset = "Offset";
-        public const String cRptA_colName_Type = "Type";
-        public const String cRptA_colName_Seq = "Sequence";
-        public const String cRptA_colName_Desc = "Description";
+        public const string cRptA_colName_RowType = "RowType";  // not displayed
+        public const string cRptA_colName_Action = "Action";   // MakeOverlay only
+        public const string cRptA_colName_Offset = "Offset";
+        public const string cRptA_colName_Type = "Type";
+        public const string cRptA_colName_Seq = "Sequence";
+        public const string cRptA_colName_Desc = "Description";
 
-        public const String cRptC_colName_Offset = "Offset";
-        public const String cRptC_colName_Hex = "Hexadecimal";
-        public const String cRptC_colName_Text = "Text";
+        public const string cRptC_colName_Offset = "Offset";
+        public const string cRptC_colName_Hex = "Hexadecimal";
+        public const string cRptC_colName_Text = "Text";
 
-        public const String cRptS_colName_Seq = "Sequence";
-        public const String cRptS_colName_Desc = "Description";
-        public const String cRptS_colName_CtP = "Parent";
-        public const String cRptS_colName_CtE = "Embedded";
-        public const String cRptS_colName_CtT = "Total";
+        public const string cRptS_colName_Seq = "Sequence";
+        public const string cRptS_colName_Desc = "Description";
+        public const string cRptS_colName_CtP = "Parent";
+        public const string cRptS_colName_CtE = "Embedded";
+        public const string cRptS_colName_CtT = "Total";
 
-        public const Int32 cRptA_colMax_RowType = -1;   // not displayed
-        public const Int32 cRptA_colMax_Action = 10;   // MakeOverlay only
-        public const Int32 cRptA_colMax_Offset = 13;
-        public const Int32 cRptA_colMax_Type = 21;
-        public const Int32 cRptA_colMax_Seq = 16;
-        public const Int32 cRptA_colMax_Desc = 52;
+        public const int cRptA_colMax_RowType = -1;   // not displayed
+        public const int cRptA_colMax_Action = 10;   // MakeOverlay only
+        public const int cRptA_colMax_Offset = 13;
+        public const int cRptA_colMax_Type = 21;
+        public const int cRptA_colMax_Seq = 16;
+        public const int cRptA_colMax_Desc = 52;
 
-        public const Int32 cRptC_colMax_Offset = 13;
-        public const Int32 cRptC_colMax_Hex = 48;
-        public const Int32 cRptC_colMax_Text = 16;
+        public const int cRptC_colMax_Offset = 13;
+        public const int cRptC_colMax_Hex = 48;
+        public const int cRptC_colMax_Text = 16;
 
-        public const Int32 cRptS_colMax_Seq = 19;
-        public const Int32 cRptS_colMax_Desc = 52;
-        public const Int32 cRptS_colMax_CtP = 8;
-        public const Int32 cRptS_colMax_CtE = 8;
-        public const Int32 cRptS_colMax_CtT = 8;
+        public const int cRptS_colMax_Seq = 19;
+        public const int cRptS_colMax_Desc = 52;
+        public const int cRptS_colMax_CtP = 8;
+        public const int cRptS_colMax_CtE = 8;
+        public const int cRptS_colMax_CtT = 8;
 
-        public const Int32 cColSeparatorLen = 2;
+        public const int cColSeparatorLen = 2;
 
-        public const Int32 pclDotResDefault = 300;
+        public const int pclDotResDefault = 300;
 
-        public static Byte[] cHexBytes = {0x30, 0x31, 0x32, 0x33,  // 0123
+        public static byte[] cHexBytes = {0x30, 0x31, 0x32, 0x33,  // 0123
                                           0x34, 0x35, 0x36, 0x37,  // 4567
                                           0x38, 0x39, 0x61, 0x62,  // 89ab
                                           0x63, 0x64, 0x65, 0x66}; // cdef;
 
-        public static Char[] cHexChars = {'0', '1', '2', '3',
+        public static char[] cHexChars = {'0', '1', '2', '3',
                                           '4', '5', '6', '7',
                                           '8', '9', 'a', 'b',
                                           'c', 'd', 'e', 'f'};

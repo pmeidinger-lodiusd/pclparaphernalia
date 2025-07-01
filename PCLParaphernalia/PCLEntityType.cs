@@ -19,8 +19,8 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private PCLEntityTypes.eType _entityType;
-        private String _entityName;
-        private String _entityIdPCL;
+        private string _entityName;
+        private string _entityIdPCL;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -29,8 +29,8 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PCLEntityType(PCLEntityTypes.eType type,
-                             String id,
-                             String name)
+                             string id,
+                             string name)
         {
             _entityType = type;
             _entityIdPCL = id;
@@ -46,7 +46,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String getIdPCL()
+        public string getIdPCL()
         {
             return _entityIdPCL;
         }
@@ -60,7 +60,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String getName()
+        public string getName()
         {
             return _entityName;
         }

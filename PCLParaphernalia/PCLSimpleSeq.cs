@@ -23,14 +23,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Byte _keySChar;
-        private String _description;
+        private byte _keySChar;
+        private string _description;
 
-        private Boolean _flagObsolete;
-        private Boolean _flagResetHPGL2;
+        private bool _flagObsolete;
+        private bool _flagResetHPGL2;
 
-        private Int32 _statsCtParent;
-        private Int32 _statsCtChild;
+        private int _statsCtParent;
+        private int _statsCtChild;
 
         private PrnParseConstants.eOvlAct _makeOvlAct;
 
@@ -43,12 +43,12 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PCLSimpleSeq(
-            Byte keySChar,
-            Boolean flagObsolete,
-            Boolean flagResetHPGL2,
+            byte keySChar,
+            bool flagObsolete,
+            bool flagResetHPGL2,
             PrnParseConstants.eOvlAct makeOvlAct,
             PrnParseConstants.eSeqGrp seqGrp,
-            String description)
+            string description)
         {
             _keySChar = keySChar;
             _description = description;
@@ -69,7 +69,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Description
+        public string Description
         {
             get { return _description; }
         }
@@ -80,7 +80,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagObsolete
+        public bool FlagObsolete
         {
             get { return _flagObsolete; }
         }
@@ -91,7 +91,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagResetHPGL2
+        public bool FlagResetHPGL2
         {
             get { return _flagResetHPGL2; }
         }
@@ -102,7 +102,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagValIsLen
+        public bool FlagValIsLen
         {
             get { return false; }
         }
@@ -116,7 +116,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void incrementStatisticsCount(Int32 level)
+        public void incrementStatisticsCount(int level)
         {
             if (level == 0)
                 _statsCtParent++;
@@ -156,9 +156,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Sequence
+        public string Sequence
         {
-            get { return "<Esc>" + (Char)_keySChar; }
+            get { return "<Esc>" + (char)_keySChar; }
         }
 
         //--------------------------------------------------------------------//
@@ -167,7 +167,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtChild
+        public int StatsCtChild
         {
             get { return _statsCtChild; }
         }
@@ -178,7 +178,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtParent
+        public int StatsCtParent
         {
             get { return _statsCtParent; }
         }
@@ -189,7 +189,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtTotal
+        public int StatsCtTotal
         {
             get { return (_statsCtParent + _statsCtChild); }
         }
@@ -200,7 +200,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Type
+        public string Type
         {
             get { return "Simple"; }
         }

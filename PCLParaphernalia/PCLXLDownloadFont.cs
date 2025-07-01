@@ -20,9 +20,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private const Int32 _minHddrDescLen = 8;
+        private const int _minHddrDescLen = 8;
 
-        private const UInt16 _defaultPCLDotRes = 600;
+        private const ushort _defaultPCLDotRes = 600;
 
         private enum ePCLXLFontTechnology : byte
         {
@@ -63,14 +63,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean fontFileCopy(BinaryWriter prnWriter,
-                                           String fontFilename)
+        public static bool fontFileCopy(BinaryWriter prnWriter,
+                                           string fontFilename)
         {
-            Boolean fileOpen = false;
+            bool fileOpen = false;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            Int64 fileSize = 0;
+            long fileSize = 0;
 
             fileOpen = fontFileOpen(fontFilename, ref fileSize);
 
@@ -80,12 +80,12 @@ namespace PCLParaphernalia
             }
             else
             {
-                const Int32 bufSize = 2048;
-                Int32 readSize;
+                const int bufSize = 2048;
+                int readSize;
 
-                Boolean endLoop;
+                bool endLoop;
 
-                Byte[] buf = new Byte[bufSize];
+                byte[] buf = new byte[bufSize];
 
                 endLoop = false;
 
@@ -114,10 +114,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean fontFileOpen(String fileName,
-                                            ref Int64 fileSize)
+        private static bool fontFileOpen(string fileName,
+                                            ref long fileSize)
         {
-            Boolean open = false;
+            bool open = false;
 
             if ((fileName == null) || (fileName == ""))
             {
@@ -183,18 +183,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean getFontCharacteristics(String fontFilename,
-                                                     ref String fontName,
-                                                     ref Boolean scalable,
-                                                     ref Boolean bound,
-                                                     ref UInt16 symSetNo)
+        public static bool getFontCharacteristics(string fontFilename,
+                                                     ref string fontName,
+                                                     ref bool scalable,
+                                                     ref bool bound,
+                                                     ref ushort symSetNo)
         {
-            Boolean fileOpen = false;
+            bool fileOpen = false;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            UInt16 hddrOffset = 0;
-            Int64 fileSize = 0;
+            ushort hddrOffset = 0;
+            long fileSize = 0;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -239,21 +239,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean readHddrDescriptor(UInt16 hddrOffset,
-                                                  ref Boolean scalable,
-                                                  ref Boolean bound,
-                                                  ref UInt16 symSetNo)
+        private static bool readHddrDescriptor(ushort hddrOffset,
+                                                  ref bool scalable,
+                                                  ref bool bound,
+                                                  ref ushort symSetNo)
         {
-            const UInt16 symSetUnicode = 590;
+            const ushort symSetUnicode = 590;
 
-            const Byte techTrueType = 1;
+            const byte techTrueType = 1;
             //  const Byte techBitmap   = 254;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            Byte[] hddr = new Byte[_minHddrDescLen];
+            byte[] hddr = new byte[_minHddrDescLen];
 
-            Byte technology;
+            byte technology;
 
             _ipStream.Seek(hddrOffset, SeekOrigin.Begin);
 
@@ -261,7 +261,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            symSetNo = (UInt16)((hddr[2] * 256) + hddr[3]);
+            symSetNo = (ushort)((hddr[2] * 256) + hddr[3]);
 
             if (symSetNo == symSetUnicode)
                 bound = false;
@@ -307,22 +307,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean readHddrIntro(String fileName,
-                                             Int64 fileSize,
-                                             ref String fontName,
-                                             ref UInt16 hddrOffset)
+        private static bool readHddrIntro(string fileName,
+                                             long fileSize,
+                                             ref string fontName,
+                                             ref ushort hddrOffset)
         {
-            const UInt16 minFileSize = 64; // enough to read initial operators
-            const Byte minFontNameLen = 12;
-            const Byte maxFontNameLen = 20;
+            const ushort minFileSize = 64; // enough to read initial operators
+            const byte minFontNameLen = 12;
+            const byte maxFontNameLen = 20;
 
-            String messHeader = "Download font file '" + fileName + "':\n\n";
-            String messTrailer = "\n\nYou will have to choose another file.";
+            string messHeader = "Download font file '" + fileName + "':\n\n";
+            string messTrailer = "\n\nYou will have to choose another file.";
 
-            Boolean OK = true;
-            Boolean beginFound = false;
+            bool OK = true;
+            bool beginFound = false;
 
-            Int32 hddrDescLen = 0,
+            int hddrDescLen = 0,
                   dataLen,
                   pos;
 
@@ -338,7 +338,7 @@ namespace PCLParaphernalia
                 return false;
             }
 
-            Byte[] buf = new Byte[minFileSize];
+            byte[] buf = new byte[minFileSize];
 
             _ipStream.Seek(0, SeekOrigin.Begin);
 
@@ -348,16 +348,16 @@ namespace PCLParaphernalia
 
             while (OK && !beginFound)
             {
-                if (buf[pos] == (Byte)PCLXLDataTypes.eTag.UbyteArray)
+                if (buf[pos] == (byte)PCLXLDataTypes.eTag.UbyteArray)
                 {
                     // start of ubyte array for FontName attribute;
 
-                    if (buf[pos + 1] == (Byte)PCLXLDataTypes.eTag.Uint16)
+                    if (buf[pos + 1] == (byte)PCLXLDataTypes.eTag.Uint16)
                     {
                         dataLen = (buf[pos + 3] * 256) + buf[pos + 2];
                         pos += 4;
                     }
-                    else if (buf[pos + 1] == (Byte)PCLXLDataTypes.eTag.Ubyte)
+                    else if (buf[pos + 1] == (byte)PCLXLDataTypes.eTag.Ubyte)
                     {
                         dataLen = buf[pos + 2];
                         pos += 3;
@@ -373,36 +373,36 @@ namespace PCLParaphernalia
                     {
                         char[] fontNameArray = new char[dataLen];
 
-                        for (Int32 i = 0; i < dataLen; i++)
+                        for (int i = 0; i < dataLen; i++)
                         {
                             fontNameArray[i] = (char)buf[pos + i];
                         }
 
-                        fontName = new String(fontNameArray);
+                        fontName = new string(fontNameArray);
 
                         pos += dataLen;
 
-                        if ((buf[pos] != (Byte)PCLXLAttrDefiners.eTag.Ubyte) ||
-                            (buf[pos + 1] != (Byte)PCLXLAttributes.eTag.FontName))
+                        if ((buf[pos] != (byte)PCLXLAttrDefiners.eTag.Ubyte) ||
+                            (buf[pos + 1] != (byte)PCLXLAttributes.eTag.FontName))
                             OK = false;
                         else
                             pos += 2;
                     }
                 }
-                else if (buf[pos] == (Byte)PCLXLDataTypes.eTag.Ubyte)
+                else if (buf[pos] == (byte)PCLXLDataTypes.eTag.Ubyte)
                 {
                     // start of FontFormat attribute.
 
                     if ((buf[pos + 1] != 0) ||
-                        (buf[pos + 2] != (Byte)PCLXLAttrDefiners.eTag.Ubyte) ||
-                        (buf[pos + 3] != (Byte)PCLXLAttributes.eTag.FontFormat))
+                        (buf[pos + 2] != (byte)PCLXLAttrDefiners.eTag.Ubyte) ||
+                        (buf[pos + 3] != (byte)PCLXLAttributes.eTag.FontFormat))
                     {
                         OK = false;
                     }
                     else
                         pos += 4;
                 }
-                else if (buf[pos] == (Byte)PCLXLOperators.eTag.BeginFontHeader)
+                else if (buf[pos] == (byte)PCLXLOperators.eTag.BeginFontHeader)
                 {
                     beginFound = true;
                     pos += 1;
@@ -415,15 +415,15 @@ namespace PCLParaphernalia
 
             if (OK)
             {
-                if (buf[pos] == (Byte)PCLXLDataTypes.eTag.Uint16)
+                if (buf[pos] == (byte)PCLXLDataTypes.eTag.Uint16)
                 {
-                    dataLen = (UInt16)((buf[pos + 2] * 256) + buf[pos + 1]);
+                    dataLen = (ushort)((buf[pos + 2] * 256) + buf[pos + 1]);
 
                     if ((dataLen < _minHddrDescLen) ||
-                        (buf[pos + 3] != (Byte)PCLXLAttrDefiners.eTag.Ubyte) ||
+                        (buf[pos + 3] != (byte)PCLXLAttrDefiners.eTag.Ubyte) ||
                         (buf[pos + 4] !=
-                            (Byte)PCLXLAttributes.eTag.FontHeaderLength) ||
-                        (buf[pos + 5] != (Byte)PCLXLOperators.eTag.ReadFontHeader))
+                            (byte)PCLXLAttributes.eTag.FontHeaderLength) ||
+                        (buf[pos + 5] != (byte)PCLXLOperators.eTag.ReadFontHeader))
                     {
                         OK = false;
                     }
@@ -431,13 +431,13 @@ namespace PCLParaphernalia
                     {
                         pos += 6;
 
-                        if (buf[pos] == (Byte)PCLXLEmbedDataDefs.eTag.Byte)
+                        if (buf[pos] == (byte)PCLXLEmbedDataDefs.eTag.Byte)
                         {
                             hddrDescLen = buf[pos + 1];
 
                             pos += 2;
                         }
-                        else if (buf[pos] == (Byte)PCLXLEmbedDataDefs.eTag.Int)
+                        else if (buf[pos] == (byte)PCLXLEmbedDataDefs.eTag.Int)
                         {
                             hddrDescLen = (buf[pos + 4] * 256 * 256 * 256) +
                                           (buf[pos + 5] * 256 * 256) +
@@ -459,7 +459,7 @@ namespace PCLParaphernalia
 
             if (OK)
             {
-                hddrOffset = (UInt16)pos;
+                hddrOffset = (ushort)pos;
 
                 return true;
             }

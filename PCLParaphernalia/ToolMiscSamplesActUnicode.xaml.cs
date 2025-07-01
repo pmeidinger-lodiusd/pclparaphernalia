@@ -31,21 +31,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Int32 _ctUnicodeFonts = PCLFonts.getCountUnique();
+        private static int _ctUnicodeFonts = PCLFonts.getCountUnique();
 
-        private static Int32[] _subsetUnicodeFonts = new Int32[_ctUnicodeFonts];
+        private static int[] _subsetUnicodeFonts = new int[_ctUnicodeFonts];
 
-        private static UInt32 _unicodeUCS2PCL;
-        private static UInt32 _unicodeUCS2PCLXL;
+        private static uint _unicodeUCS2PCL;
+        private static uint _unicodeUCS2PCLXL;
 
-        private static Int32 _indxUnicodeFontPCL;
-        private static Int32 _indxUnicodeFontPCLXL;
+        private static int _indxUnicodeFontPCL;
+        private static int _indxUnicodeFontPCLXL;
 
         private static PCLFonts.eVariant _unicodeFontVarPCL;
         private static PCLFonts.eVariant _unicodeFontVarPCLXL;
 
-        private Boolean _flagUnicodeFormAsMacroPCL;
-        private Boolean _flagUnicodeFormAsMacroPCLXL;
+        private bool _flagUnicodeFormAsMacroPCL;
+        private bool _flagUnicodeFormAsMacroPCLXL;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -61,17 +61,17 @@ namespace PCLParaphernalia
         {
             if (_initialised)
             {
-                String utf8HexVal = "";
-                UInt32 unicodeUCS2;
+                string utf8HexVal = "";
+                uint unicodeUCS2;
 
-                unicodeUCS2 = (UInt32)((cbUnicodeCp01.SelectedIndex * 256) +
+                unicodeUCS2 = (uint)((cbUnicodeCp01.SelectedIndex * 256) +
                                          cbUnicodeCp02.SelectedIndex);
 
-                String unicodeBlock =
+                string unicodeBlock =
                     UnicodeBlocks.getBlocknameForCodepoint(unicodeUCS2);
 
                 UnicodeCategory unicodeCat =
-                    CharUnicodeInfo.GetUnicodeCategory((Char)unicodeUCS2);
+                    CharUnicodeInfo.GetUnicodeCategory((char)unicodeUCS2);
 
                 if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                     _unicodeUCS2PCL = unicodeUCS2;
@@ -103,8 +103,8 @@ namespace PCLParaphernalia
         {
             if (_initialised && cbUnicodeFont.HasItems)
             {
-                Int32 indxFont = cbUnicodeFont.SelectedIndex;
-                Boolean samePreset = false;
+                int indxFont = cbUnicodeFont.SelectedIndex;
+                bool samePreset = false;
 
                 if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                 {
@@ -142,7 +142,7 @@ namespace PCLParaphernalia
 
         private void initialiseDataUnicode()
         {
-            Int32 index,
+            int index,
                   ctr;
 
             _initialised = false;
@@ -157,7 +157,7 @@ namespace PCLParaphernalia
             ctr = PCLFonts.getCount();
             index = 0;
 
-            for (Int32 i = 0; i < ctr; i++)
+            for (int i = 0; i < ctr; i++)
             {
                 if ((PCLFonts.isBoundFont(i) == false) &&
                     ((PCLFonts.getType(i) ==
@@ -165,7 +165,7 @@ namespace PCLParaphernalia
                     (PCLFonts.getType(i) ==
                      PCLFonts.eFontType.PresetFamilyMember)))
                 {
-                    _subsetUnicodeFonts[index++] = (Int32)i;
+                    _subsetUnicodeFonts[index++] = (int)i;
                     cbUnicodeFont.Items.Add(PCLFonts.getName(i));
                 }
             }
@@ -174,14 +174,14 @@ namespace PCLParaphernalia
 
             cbUnicodeCp01.Items.Clear();
 
-            for (Int32 i = 0; i < 0x0100; i++)
+            for (int i = 0; i < 0x0100; i++)
             {
                 cbUnicodeCp01.Items.Add(i.ToString("x2"));
             }
 
             cbUnicodeCp02.Items.Clear();
 
-            for (Int32 i = 0; i < 0x0100; i++)
+            for (int i = 0; i < 0x0100; i++)
             {
                 cbUnicodeCp02.Items.Add(i.ToString("x2"));
             }
@@ -200,8 +200,8 @@ namespace PCLParaphernalia
                                         true,
                                         ref _unicodeFontVarPCL);
 
-                cbUnicodeCp01.SelectedIndex = (Int32)(_unicodeUCS2PCL / 256);
-                cbUnicodeCp02.SelectedIndex = (Int32)(_unicodeUCS2PCL % 256);
+                cbUnicodeCp01.SelectedIndex = (int)(_unicodeUCS2PCL / 256);
+                cbUnicodeCp02.SelectedIndex = (int)(_unicodeUCS2PCL % 256);
 
                 if (_flagUnicodeFormAsMacroPCL)
                     chkOptFormAsMacro.IsChecked = true;
@@ -220,8 +220,8 @@ namespace PCLParaphernalia
                                         true,
                                         ref _unicodeFontVarPCLXL);
 
-                cbUnicodeCp01.SelectedIndex = (Int32)(_unicodeUCS2PCLXL / 256);
-                cbUnicodeCp02.SelectedIndex = (Int32)(_unicodeUCS2PCLXL % 256);
+                cbUnicodeCp01.SelectedIndex = (int)(_unicodeUCS2PCLXL / 256);
+                cbUnicodeCp02.SelectedIndex = (int)(_unicodeUCS2PCLXL % 256);
 
                 if (_flagUnicodeFormAsMacroPCLXL)
                     chkOptFormAsMacro.IsChecked = true;
@@ -323,7 +323,7 @@ namespace PCLParaphernalia
 
         public void metricsLoadDataUnicode()
         {
-            Int32 tmpInt = 0;
+            int tmpInt = 0;
 
             ToolMiscSamplesPersist.loadDataTypeUnicode(
                 "PCL",
@@ -332,7 +332,7 @@ namespace PCLParaphernalia
                 ref tmpInt,
                 ref _flagUnicodeFormAsMacroPCL);
 
-            _unicodeUCS2PCL = (UInt32)tmpInt;
+            _unicodeUCS2PCL = (uint)tmpInt;
 
             ToolMiscSamplesPersist.loadDataTypeUnicode(
                 "PCLXL",
@@ -341,7 +341,7 @@ namespace PCLParaphernalia
                 ref tmpInt,
                 ref _flagUnicodeFormAsMacroPCLXL);
 
-            _unicodeUCS2PCLXL = (UInt32)tmpInt;
+            _unicodeUCS2PCLXL = (uint)tmpInt;
         }
 
         //--------------------------------------------------------------------//
@@ -360,14 +360,14 @@ namespace PCLParaphernalia
                 "PCL",
                 _indxUnicodeFontPCL,
                 _unicodeFontVarPCL,
-                (Int32)_unicodeUCS2PCL,
+                (int)_unicodeUCS2PCL,
                 _flagUnicodeFormAsMacroPCL);
 
             ToolMiscSamplesPersist.saveDataTypeUnicode(
                 "PCLXL",
                 _indxUnicodeFontPCLXL,
                 _unicodeFontVarPCLXL,
-                (Int32)_unicodeUCS2PCLXL,
+                (int)_unicodeUCS2PCLXL,
                 _flagUnicodeFormAsMacroPCLXL);
         }
 
@@ -450,7 +450,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private void setFlagUnicodeFormAsMacro(
-            Boolean setFlag,
+            bool setFlag,
             ToolCommonData.ePrintLang crntPDL)
         {
             if (crntPDL == ToolCommonData.ePrintLang.PCL)
@@ -480,17 +480,17 @@ namespace PCLParaphernalia
         //                                                                    // 
         //--------------------------------------------------------------------//
 
-        private void setFontOptionsVariants(Int32 indxFont,
-                                             Boolean samePreset,
+        private void setFontOptionsVariants(int indxFont,
+                                             bool samePreset,
                                              ref PCLFonts.eVariant fontVar)
         {
-            Boolean varB,
+            bool varB,
                     varBI,
                     varI,
                     varR,
                     varSet;
 
-            Int32 fontIndx;
+            int fontIndx;
 
             fontIndx = _subsetUnicodeFonts[indxFont];
 

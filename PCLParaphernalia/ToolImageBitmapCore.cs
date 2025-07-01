@@ -22,8 +22,8 @@ namespace PCLParaphernalia
 
         private struct BitmapFileHeader
         {
-            public UInt32 fileSize;
-            public UInt32 dataOffset;
+            public uint fileSize;
+            public uint dataOffset;
         };
 
         //--------------------------------------------------------------------//
@@ -34,17 +34,17 @@ namespace PCLParaphernalia
 
         private struct BitmapInfoHeader
         {
-            public UInt32 infoSize;
-            public Int32 width;
-            public Int32 height;
-            public UInt16 planes;
-            public UInt16 bitsPerPixel;
-            public UInt32 compressionType;
-            public UInt32 imageSize;
-            public Int32 xPelsPerMetre;
-            public Int32 yPelsPerMetre;
-            public UInt32 coloursUsed;
-            public UInt32 coloursImportant;
+            public uint infoSize;
+            public int width;
+            public int height;
+            public ushort planes;
+            public ushort bitsPerPixel;
+            public uint compressionType;
+            public uint imageSize;
+            public int xPelsPerMetre;
+            public int yPelsPerMetre;
+            public uint coloursUsed;
+            public uint coloursImportant;
         };
 
         /*
@@ -123,10 +123,10 @@ namespace PCLParaphernalia
 
         private struct BitmapRGBQuad
         {
-            public Byte blue;
-            public Byte green;
-            public Byte red;
-            public Byte reserved;
+            public byte blue;
+            public byte green;
+            public byte red;
+            public byte reserved;
         };
 
         //--------------------------------------------------------------------//
@@ -135,9 +135,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean _monochromeBlackWhite;
+        private static bool _monochromeBlackWhite;
 
-        private static UInt32 _paletteSize;
+        private static uint _paletteSize;
 
         private static BitmapRGBQuad[] _palette;
 
@@ -174,9 +174,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean bitmapOpen(String filename)
+        public static bool bitmapOpen(string filename)
         {
-            Boolean open = false;
+            bool open = false;
 
             if ((filename == null) || (filename == ""))
             {
@@ -227,14 +227,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void getBmpInfo(ref Int32 Width,
-                                      ref Int32 Height,
-                                      ref UInt16 BitsPerPixel,
-                                      ref UInt32 Compression,
-                                      ref Int32 ResX,
-                                      ref Int32 ResY,
-                                      ref UInt32 PaletteSize,
-                                      ref Boolean MonoBW)
+        public static void getBmpInfo(ref int Width,
+                                      ref int Height,
+                                      ref ushort BitsPerPixel,
+                                      ref uint Compression,
+                                      ref int ResX,
+                                      ref int ResY,
+                                      ref uint PaletteSize,
+                                      ref bool MonoBW)
         {
             Width = _infoHeader.width;
             Height = _infoHeader.height;
@@ -257,10 +257,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void getBmpPaletteEntry(Int32 Index,
-                                              ref Byte Red,
-                                              ref Byte Green,
-                                              ref Byte Blue)
+        public static void getBmpPaletteEntry(int Index,
+                                              ref byte Red,
+                                              ref byte Green,
+                                              ref byte Blue)
         {
             Red = _palette[Index].red;
             Green = _palette[Index].green;
@@ -276,14 +276,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void getNextImageBlock(ref Byte[] bufSub,
-                                             Int32 bufSize,
-                                             Boolean firstBlock)
+        public static void getNextImageBlock(ref byte[] bufSub,
+                                             int bufSize,
+                                             bool firstBlock)
         {
 
             if (firstBlock)
             {
-                Int32 offset = (Int32)_fileHeader.dataOffset +
+                int offset = (int)_fileHeader.dataOffset +
                                (bufSize * _infoHeader.height);
 
                 _ipStream.Seek(offset, SeekOrigin.Begin);
@@ -305,12 +305,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 readBmpFileHeader()
+        public static int readBmpFileHeader()
         {
-            Int32 result = 0;
+            int result = 0;
 
-            UInt32 temp;
-            Byte[] id = new Byte[2];
+            uint temp;
+            byte[] id = new byte[2];
 
             _binReader.Read(id, 0, 2);
 
@@ -344,9 +344,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 readBmpInfoHeader()
+        public static int readBmpInfoHeader()
         {
-            Int32 result = 0;
+            int result = 0;
 
             _infoHeader.infoSize = readUInt32LE();
 
@@ -382,24 +382,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 readBmpPalette()
+        public static int readBmpPalette()
         {
-            Int32 result = 0;
+            int result = 0;
 
-            UInt16 bitsPerPixel;
+            ushort bitsPerPixel;
 
-            UInt32 coloursUsed;
+            uint coloursUsed;
 
-            UInt32 entryMax;
+            uint entryMax;
 
-            Byte[] colourData = new Byte[4];
+            byte[] colourData = new byte[4];
 
             _monochromeBlackWhite = false;
 
             bitsPerPixel = _infoHeader.bitsPerPixel;
             coloursUsed = _infoHeader.coloursUsed;
 
-            entryMax = (UInt32)0x00000001 << bitsPerPixel;
+            entryMax = (uint)0x00000001 << bitsPerPixel;
 
             if (bitsPerPixel < 16)
             {
@@ -418,11 +418,11 @@ namespace PCLParaphernalia
 
             _palette = new BitmapRGBQuad[_paletteSize];
 
-            Int32 offset = 14 + (Int32)_infoHeader.infoSize;
+            int offset = 14 + (int)_infoHeader.infoSize;
 
             _ipStream.Seek(offset, SeekOrigin.Begin);
 
-            for (Int32 i = 0; i < _paletteSize; i++)
+            for (int i = 0; i < _paletteSize; i++)
             {
                 _binReader.Read(colourData, 0, 4);
 
@@ -460,9 +460,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Int32 readInt32LE()
+        private static int readInt32LE()
         {
-            Byte[] buf = new Byte[4];
+            byte[] buf = new byte[4];
 
             _binReader.Read(buf, 0, 4);
 
@@ -484,9 +484,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static UInt16 readUInt16LE()
+        private static ushort readUInt16LE()
         {
-            Byte[] buf = new Byte[2];
+            byte[] buf = new byte[2];
 
             _binReader.Read(buf, 0, 2);
 
@@ -508,9 +508,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static UInt32 readUInt32LE()
+        private static uint readUInt32LE()
         {
-            Byte[] buf = new Byte[4];
+            byte[] buf = new byte[4];
 
             _binReader.Read(buf, 0, 4);
 

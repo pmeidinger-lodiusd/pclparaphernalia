@@ -24,18 +24,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Int32 _lcSep = PrnParseConstants.cColSeparatorLen;
+        const int _lcSep = PrnParseConstants.cColSeparatorLen;
 
-        public static String _chkMarkBoxSymFalse = '\u2610'.ToString();
-        public static String _chkMarkBoxSymTrue = '\u2611'.ToString();
+        public static string _chkMarkBoxSymFalse = '\u2610'.ToString();
+        public static string _chkMarkBoxSymTrue = '\u2611'.ToString();
 
-        public static String _chkMarkTxtSymFalse = '\x2d'.ToString();
-        public static String _chkMarkTxtSymTrue = '\x2b'.ToString();
+        public static string _chkMarkTxtSymFalse = '\x2d'.ToString();
+        public static string _chkMarkTxtSymTrue = '\x2b'.ToString();
 
-        public static String _chkMarkTextFalse = "false";
-        public static String _chkMarkTextTrue = "true ";
+        public static string _chkMarkTextFalse = "false";
+        public static string _chkMarkTextTrue = "true ";
 
-        public enum eRptFileFmt : Byte
+        public enum eRptFileFmt : byte
         {
             text,
             html,
@@ -43,7 +43,7 @@ namespace PCLParaphernalia
             NA
         }
 
-        public enum eRptChkMarks : Byte
+        public enum eRptChkMarks : byte
         {
             text,
             txtsym,
@@ -67,8 +67,8 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void docClose(eRptFileFmt rptFileFmt,
-                                     Object stream,
-                                     Object writer)
+                                     object stream,
+                                     object writer)
         {
             if (rptFileFmt == eRptFileFmt.html)
             {
@@ -111,7 +111,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void docFinalise(eRptFileFmt rptFileFmt,
-                                        Object writer)
+                                        object writer)
         {
             if (rptFileFmt == eRptFileFmt.html)
                 docFinaliseHtml((HtmlTextWriter)writer);
@@ -188,13 +188,13 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void docInitialise(eRptFileFmt rptFileFmt,
-                                          Object writer,
-                                          Boolean useTables,
-                                          Boolean useLines,
-                                          Int32 ctRowClrStyles,
-                                          String[] rowClasses,
-                                          String[] rowClrBack,
-                                          String[] rowClrFore)
+                                          object writer,
+                                          bool useTables,
+                                          bool useLines,
+                                          int ctRowClrStyles,
+                                          string[] rowClasses,
+                                          string[] rowClrBack,
+                                          string[] rowClrFore)
         {
             if (rptFileFmt == eRptFileFmt.html)
                 docInitialiseHtml((HtmlTextWriter)writer,
@@ -224,10 +224,10 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void docInitialiseHtml(HtmlTextWriter htmlWriter,
-                                              Int32 ctRowClrStyles,
-                                              String[] rowClasses,
-                                              String[] rowClrBack,
-                                              String[] rowClrFore)
+                                              int ctRowClrStyles,
+                                              string[] rowClasses,
+                                              string[] rowClrBack,
+                                              string[] rowClrFore)
         {
             //----------------------------------------------------------------//
             //                                                                //
@@ -296,12 +296,12 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void docInitialiseXml(XmlWriter xmlWriter,
-                                             Boolean useTables,
-                                             Boolean useLines,
-                                             Int32 ctRowClrStyles,
-                                             String[] rowClasses,
-                                             String[] rowClrBack,
-                                             String[] rowClrFore)
+                                             bool useTables,
+                                             bool useLines,
+                                             int ctRowClrStyles,
+                                             string[] rowClasses,
+                                             string[] rowClrBack,
+                                             string[] rowClrFore)
         {
             xmlWriter.WriteStartDocument();
 
@@ -617,13 +617,13 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void docInitStyles(eRptFileFmt rptFileFmt,
-                                          Object writer,
-                                          Int32 ctRowClrStyles,
-                                          String[] rowClasses,
-                                          String[] rowClrBack,
-                                          String[] rowClrFore)
+                                          object writer,
+                                          int ctRowClrStyles,
+                                          string[] rowClasses,
+                                          string[] rowClrBack,
+                                          string[] rowClrFore)
         {
-            String[] stdStyles =
+            string[] stdStyles =
             {
                 "p",
                 "{",
@@ -739,11 +739,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void docInitStylesHtml(HtmlTextWriter htmlWriter,
-                                              String[] stdStyles,
-                                              Int32 ctRowClrStyles,
-                                              String[] rowClasses,
-                                              String[] rowClrBack,
-                                              String[] rowClrFore)
+                                              string[] stdStyles,
+                                              int ctRowClrStyles,
+                                              string[] rowClasses,
+                                              string[] rowClrBack,
+                                              string[] rowClrFore)
         {
             //----------------------------------------------------------------//
             //                                                                //
@@ -751,9 +751,9 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            Int32 ctLines = stdStyles.Length;
+            int ctLines = stdStyles.Length;
 
-            for (Int32 i = 0; i < ctLines; i++)
+            for (int i = 0; i < ctLines; i++)
             {
                 htmlWriter.WriteLine(stdStyles[i]);
             }
@@ -768,7 +768,7 @@ namespace PCLParaphernalia
             {
                 htmlWriter.WriteLine("");
 
-                for (Int32 i = 0; i < ctRowClrStyles; i++)
+                for (int i = 0; i < ctRowClrStyles; i++)
                 {
                     htmlWriter.Write("tr." +
                                       rowClasses[i] + " {");
@@ -797,11 +797,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void docInitStylesXml(XmlWriter xmlWriter,
-                                             String[] stdStyles,
-                                             Int32 ctRowClrStyles,
-                                             String[] rowClasses,
-                                             String[] rowClrBack,
-                                             String[] rowClrFore)
+                                             string[] stdStyles,
+                                             int ctRowClrStyles,
+                                             string[] rowClasses,
+                                             string[] rowClrBack,
+                                             string[] rowClrFore)
         {
             //----------------------------------------------------------------//
             //                                                                //
@@ -809,11 +809,11 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            Int32 ctLines = stdStyles.Length;
+            int ctLines = stdStyles.Length;
 
             xmlWriter.WriteString("\r\n");
 
-            for (Int32 i = 0; i < ctLines; i++)
+            for (int i = 0; i < ctLines; i++)
             {
                 xmlWriter.WriteString("\t\t\t" + stdStyles[i] + "\r\n");
             }
@@ -826,7 +826,7 @@ namespace PCLParaphernalia
 
             if (ctRowClrStyles > 0)
             {
-                for (Int32 i = 0; i < ctRowClrStyles; i++)
+                for (int i = 0; i < ctRowClrStyles; i++)
                 {
                     xmlWriter.WriteString("\t\t\t" + "tr." +
                                            rowClasses[i] + " {");
@@ -850,10 +850,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean docOpen(eRptFileFmt rptFileFmt,
-                                       ref String saveFilename,
-                                       ref Object stream,
-                                       ref Object writer)
+        public static bool docOpen(eRptFileFmt rptFileFmt,
+                                       ref string saveFilename,
+                                       ref object stream,
+                                       ref object writer)
         {
             SaveFileDialog saveDialog = ToolCommonFunctions.createSaveFileDialog(saveFilename);
 
@@ -874,7 +874,7 @@ namespace PCLParaphernalia
             }
 
             Nullable<Boolean> dialogResult = saveDialog.ShowDialog();
-            Boolean fileOpen = false;
+            bool fileOpen = false;
 
             if (dialogResult == true)
             {
@@ -928,7 +928,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void hddrClose(Object writer,
+        public static void hddrClose(object writer,
                                       eRptFileFmt rptFileFmt)
         {
             if (rptFileFmt == eRptFileFmt.html)
@@ -974,10 +974,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void hddrTitle(Object writer,
+        public static void hddrTitle(object writer,
                                       eRptFileFmt rptFileFmt,
-                                      Boolean subHddr,
-                                      String txtVal)
+                                      bool subHddr,
+                                      string txtVal)
         {
             if (rptFileFmt == eRptFileFmt.html)
                 hddrTitleHtml((HtmlTextWriter)writer, txtVal);
@@ -997,7 +997,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void hddrTitleHtml(HtmlTextWriter htmlWriter,
-                                           String txtVal)
+                                           string txtVal)
         {
             htmlWriter.AddAttribute("class", "title");
             htmlWriter.RenderBeginTag("p");
@@ -1016,8 +1016,8 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void hddrTitleText(StreamWriter txtWriter,
-                                           Boolean subHddr,
-                                           String txtVal)
+                                           bool subHddr,
+                                           string txtVal)
         {
             if (subHddr)
                 txtWriter.WriteLine("");
@@ -1026,7 +1026,7 @@ namespace PCLParaphernalia
 
             if (subHddr)
             {
-                Int32 len = txtVal.Length;
+                int len = txtVal.Length;
 
                 txtWriter.WriteLine("-".PadRight(len, '-'));
             }
@@ -1042,7 +1042,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void hddrTitleXml(XmlWriter xmlWriter,
-                                          String txtVal)
+                                          string txtVal)
         {
             xmlWriter.WriteStartElement("header");
 
@@ -1064,7 +1064,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void lineBlockClose(Object writer,
+        public static void lineBlockClose(object writer,
                                           eRptFileFmt rptFileFmt)
         {
             if (rptFileFmt == eRptFileFmt.html)
@@ -1111,10 +1111,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void lineBlockOpen(Object writer,
+        public static void lineBlockOpen(object writer,
                                           eRptFileFmt rptFileFmt)
         {
-            String tag = "lineblock";
+            string tag = "lineblock";
 
             if (rptFileFmt == eRptFileFmt.html)
                 lineBlockOpenHtml((HtmlTextWriter)writer, tag);
@@ -1132,7 +1132,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void lineBlockOpenHtml(HtmlTextWriter htmlWriter,
-                                               String tag)
+                                               string tag)
         {
             htmlWriter.RenderBeginTag(tag);
         }
@@ -1147,7 +1147,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void lineBlockOpenXml(XmlWriter xmlWriter,
-                                              String txtName)
+                                              string txtName)
         {
             xmlWriter.WriteStartElement(txtName);
         }
@@ -1161,11 +1161,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void lineItem(Object writer,
+        public static void lineItem(object writer,
                                      eRptFileFmt rptFileFmt,
-                                     String txtVal,
-                                     Int32 sizeVal,
-                                     Boolean firstItem)
+                                     string txtVal,
+                                     int sizeVal,
+                                     bool firstItem)
         {
             if (rptFileFmt == eRptFileFmt.html)
                 lineItemHtml((HtmlTextWriter)writer,
@@ -1187,11 +1187,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void lineItemHtml(HtmlTextWriter htmlWriter,
-                                          String txtVal,
-                                          Int32 maxSizeVal,
-                                          Boolean firstItem)
+                                          string txtVal,
+                                          int maxSizeVal,
+                                          bool firstItem)
         {
-            Int32 valPos,
+            int valPos,
                   valLen;
 
             valLen = txtVal.Length;
@@ -1236,11 +1236,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void lineItemText(StreamWriter txtWriter,
-                                          String txtVal,
-                                          Int32 maxSizeVal,
-                                          Boolean blankBefore)
+                                          string txtVal,
+                                          int maxSizeVal,
+                                          bool blankBefore)
         {
-            Int32 valPos,
+            int valPos,
                   valLen;
 
             if (blankBefore)
@@ -1274,13 +1274,13 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void lineItemXml(XmlWriter xmlWriter,
-                                         String txtVal)
+                                         string txtVal)
         {
             xmlWriter.WriteStartElement("item");
 
             try
             {
-                String validXml = XmlConvert.VerifyXmlChars(txtVal);
+                string validXml = XmlConvert.VerifyXmlChars(txtVal);
 
                 xmlWriter.WriteStartElement("value");
 
@@ -1288,9 +1288,9 @@ namespace PCLParaphernalia
             }
             catch
             {
-                Byte[] bytes = System.Text.Encoding.UTF8.GetBytes(txtVal);
+                byte[] bytes = System.Text.Encoding.UTF8.GetBytes(txtVal);
 
-                String base64 = Convert.ToBase64String(bytes);
+                string base64 = Convert.ToBase64String(bytes);
 
                 xmlWriter.WriteStartElement("valuebase64");
 
@@ -1311,7 +1311,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void tableClose(Object writer,
+        public static void tableClose(object writer,
                                        eRptFileFmt rptFileFmt)
         {
             if (rptFileFmt == eRptFileFmt.html)
@@ -1358,12 +1358,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void tableHddrData(Object writer,
+        public static void tableHddrData(object writer,
                                           eRptFileFmt rptFileFmt,
-                                          Boolean plain,
-                                          Int32 colCt,
-                                          String[] colHddrs,
-                                          Int32[] colSizes)
+                                          bool plain,
+                                          int colCt,
+                                          string[] colHddrs,
+                                          int[] colSizes)
         {
             if (rptFileFmt == eRptFileFmt.html)
                 tableHddrDataHtml((HtmlTextWriter)writer, plain,
@@ -1385,11 +1385,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void tableHddrDataHtml(HtmlTextWriter htmlWriter,
-                                               Boolean plain,
-                                               Int32 colCt,
-                                               String[] colHddrs)
+                                               bool plain,
+                                               int colCt,
+                                               string[] colHddrs)
         {
-            Int32 lastCol = colCt - 1;
+            int lastCol = colCt - 1;
 
             htmlWriter.WriteLine("");
             htmlWriter.RenderBeginTag("table");
@@ -1398,7 +1398,7 @@ namespace PCLParaphernalia
             {
                 htmlWriter.RenderBeginTag("tr");
 
-                for (Int32 i = 0; i < colCt; i++)
+                for (int i = 0; i < colCt; i++)
                 {
                     if (plain)
                         htmlWriter.AddAttribute("class", "plain");
@@ -1427,21 +1427,21 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void tableHddrDataText(StreamWriter txtWriter,
-                                               Int32 colCt,
-                                               String[] colHddrs,
-                                               Int32[] colSizes)
+                                               int colCt,
+                                               string[] colHddrs,
+                                               int[] colSizes)
         {
             if (colCt > 0)
             {
-                Int32 lastCol = colCt - 1;
+                int lastCol = colCt - 1;
 
-                String colSep = " ".PadRight(_lcSep, ' ');
+                string colSep = " ".PadRight(_lcSep, ' ');
 
                 StringBuilder line = new StringBuilder();
 
                 txtWriter.WriteLine("");
 
-                for (Int32 i = 0; i < colCt; i++)
+                for (int i = 0; i < colCt; i++)
                 {
                     line.Append(colHddrs[i].ToString().PadRight(colSizes[i],
                                                                    ' '));
@@ -1454,7 +1454,7 @@ namespace PCLParaphernalia
 
                 line.Clear();
 
-                for (Int32 i = 0; i < colCt; i++)
+                for (int i = 0; i < colCt; i++)
                 {
                     line.Append("-".PadRight(colSizes[i], '-'));
 
@@ -1476,9 +1476,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void tableHddrDataXml(XmlWriter xmlWriter,
-                                              Boolean plain,
-                                              Int32 colCt,
-                                              String[] colHddrs)
+                                              bool plain,
+                                              int colCt,
+                                              string[] colHddrs)
         {
             xmlWriter.WriteStartElement("tabledata");
 
@@ -1494,7 +1494,7 @@ namespace PCLParaphernalia
                     xmlWriter.WriteStartElement("hddr");
                 }
 
-                for (Int32 i = 0; i < colCt; i++)
+                for (int i = 0; i < colCt; i++)
                 {
                     xmlWriter.WriteStartElement("col");
                     xmlWriter.WriteString(colHddrs[i]);
@@ -1514,7 +1514,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void tableHddrPair(Object writer,
+        public static void tableHddrPair(object writer,
                                           eRptFileFmt rptFileFmt)
         {
             if (rptFileFmt == eRptFileFmt.html)
@@ -1581,14 +1581,14 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void tableMultiRowText(
-            Object writer,
+            object writer,
             eRptFileFmt rptFileFmt,
-            Int32 colCt,
-            String[][] arrData,
-            Int32[] colSizes,
-            Boolean blankBefore,
-            Boolean blankAfter,
-            Boolean blankAfterMultiRow)
+            int colCt,
+            string[][] arrData,
+            int[] colSizes,
+            bool blankBefore,
+            bool blankAfter,
+            bool blankAfterMultiRow)
         {
             if (rptFileFmt == eRptFileFmt.text)
             {
@@ -1611,26 +1611,26 @@ namespace PCLParaphernalia
 
         private static void tableMultiRowTextText(
             StreamWriter txtWriter,
-            Int32 colCt,
-            String[][] arrData,
-            Int32[] colSizes,
-            Boolean blankBefore,
-            Boolean blankAfter,
-            Boolean blankAfterMultiRow)
+            int colCt,
+            string[][] arrData,
+            int[] colSizes,
+            bool blankBefore,
+            bool blankAfter,
+            bool blankAfterMultiRow)
         {
-            Int32 lastCol = colCt - 1;
+            int lastCol = colCt - 1;
 
-            Int32 maxRows = 0;
+            int maxRows = 0;
 
-            String space = " ";
+            string space = " ";
 
-            String colSep = " ".PadRight(_lcSep, ' ');
+            string colSep = " ".PadRight(_lcSep, ' ');
 
             StringBuilder line = new StringBuilder();
 
-            for (Int32 i = 0; i < colCt; i++)
+            for (int i = 0; i < colCt; i++)
             {
-                Int32 x = arrData[i].Length;
+                int x = arrData[i].Length;
 
                 if (x > maxRows)
                     maxRows = x;
@@ -1641,9 +1641,9 @@ namespace PCLParaphernalia
                 txtWriter.WriteLine("");
             }
 
-            for (Int32 i = 0; i < maxRows; i++)
+            for (int i = 0; i < maxRows; i++)
             {
-                for (Int32 j = 0; j < colCt; j++)
+                for (int j = 0; j < colCt; j++)
                 {
                     if (arrData[j].Length <= i)
                         line.Append(space.PadRight(colSizes[j], ' '));
@@ -1673,14 +1673,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void tableRowData(Object writer,
+        public static void tableRowData(object writer,
                                          eRptFileFmt rptFileFmt,
                                          eRptChkMarks rptChkMarks,
-                                         Int32 colCt,
-                                         String rowType,
+                                         int colCt,
+                                         string rowType,
                                          DataRow row,
-                                         String[] colNames,
-                                         Int32[] colSizes)
+                                         string[] colNames,
+                                         int[] colSizes)
         {
             if (rptFileFmt == eRptFileFmt.html)
                 tableRowDataHtml((HtmlTextWriter)writer, rptChkMarks,
@@ -1705,25 +1705,25 @@ namespace PCLParaphernalia
 
         private static void tableRowDataHtml(HtmlTextWriter htmlWriter,
                                               eRptChkMarks rptChkMarks,
-                                              Int32 colCt,
-                                              String rowType,
+                                              int colCt,
+                                              string rowType,
                                               DataRow row,
-                                              String[] colNames)
+                                              string[] colNames)
         {
-            Int32 lastCol = colCt - 1;
+            int lastCol = colCt - 1;
 
             if (rowType != null)
                 htmlWriter.AddAttribute("class", rowType);
 
             htmlWriter.RenderBeginTag("tr");
 
-            for (Int32 i = 0; i < colCt; i++)
+            for (int i = 0; i < colCt; i++)
             {
                 htmlWriter.RenderBeginTag("td");
 
-                if (row[colNames[i]] is Boolean)
+                if (row[colNames[i]] is bool)
                 {
-                    if ((Boolean)row[colNames[i]] == true)
+                    if ((bool)row[colNames[i]] == true)
                     {
                         if (rptChkMarks == eRptChkMarks.boxsym)
                             htmlWriter.Write(_chkMarkBoxSymTrue);
@@ -1773,25 +1773,25 @@ namespace PCLParaphernalia
 
         private static void tableRowDataText(StreamWriter txtWriter,
                                               eRptChkMarks rptChkMarks,
-                                              Int32 colCt,
-                                              String rowType,
+                                              int colCt,
+                                              string rowType,
                                               DataRow row,
-                                              String[] colNames,
-                                              Int32[] colSizes)
+                                              string[] colNames,
+                                              int[] colSizes)
         {
-            Int32 lastCol = colCt - 1;
+            int lastCol = colCt - 1;
 
-            String colSep = " ".PadRight(_lcSep, ' ');
+            string colSep = " ".PadRight(_lcSep, ' ');
 
             StringBuilder line = new StringBuilder();
 
-            for (Int32 i = 0; i < colCt; i++)
+            for (int i = 0; i < colCt; i++)
             {
-                String itemData;
+                string itemData;
 
-                if (row[colNames[i]] is Boolean)
+                if (row[colNames[i]] is bool)
                 {
-                    if ((Boolean)row[colNames[i]] == true)
+                    if ((bool)row[colNames[i]] == true)
                     {
                         if (rptChkMarks == eRptChkMarks.boxsym)
                             itemData = _chkMarkBoxSymTrue;
@@ -1836,10 +1836,10 @@ namespace PCLParaphernalia
 
         private static void tableRowDataXml(XmlWriter xmlWriter,
                                               eRptChkMarks rptChkMarks,
-                                             Int32 colCt,
-                                             String rowType,
+                                             int colCt,
+                                             string rowType,
                                              DataRow row,
-                                             String[] colNames)
+                                             string[] colNames)
         {
             xmlWriter.WriteStartElement("item");
 
@@ -1848,13 +1848,13 @@ namespace PCLParaphernalia
                 xmlWriter.WriteAttributeString("rowType", rowType);
             }
 
-            for (Int32 i = 0; i < colCt; i++)
+            for (int i = 0; i < colCt; i++)
             {
                 xmlWriter.WriteStartElement(colNames[i].ToLower());
 
-                if (row[colNames[i]] is Boolean)
+                if (row[colNames[i]] is bool)
                 {
-                    if ((Boolean)row[colNames[i]] == true)
+                    if ((bool)row[colNames[i]] == true)
                     {
                         if (rptChkMarks == eRptChkMarks.boxsym)
                             xmlWriter.WriteString(_chkMarkBoxSymTrue);
@@ -1876,7 +1876,7 @@ namespace PCLParaphernalia
                 else
                 {
                     if ((i == 0) && (row[colNames[0]].ToString() == ""))
-                        xmlWriter.WriteCharEntity((Char)0xa0);
+                        xmlWriter.WriteCharEntity((char)0xa0);
                     else
                         xmlWriter.WriteString(row[colNames[i]].ToString());
                 }
@@ -1896,17 +1896,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void tableRowPair(Object writer,
+        public static void tableRowPair(object writer,
                                          eRptFileFmt rptFileFmt,
-                                         String txtName,
-                                         String txtVal,
-                                         Int32 colSpanName,
-                                         Int32 colSpanVal,
-                                         Int32 sizeName,
-                                         Int32 sizeVal,
-                                         Boolean blankBefore,
-                                         Boolean blankAfter,
-                                         Boolean nameAsHddr)
+                                         string txtName,
+                                         string txtVal,
+                                         int colSpanName,
+                                         int colSpanVal,
+                                         int sizeName,
+                                         int sizeVal,
+                                         bool blankBefore,
+                                         bool blankAfter,
+                                         bool nameAsHddr)
         {
             if (rptFileFmt == eRptFileFmt.html)
                 tableRowPairHtml((HtmlTextWriter)writer,
@@ -1933,15 +1933,15 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void tableRowPairHtml(HtmlTextWriter htmlWriter,
-                                              String txtName,
-                                              String txtVal,
-                                              Int32 colSpanName,
-                                              Int32 colSpanVal,
-                                              Boolean blankBefore,
-                                              Boolean blankAfter,
-                                              Boolean nameAsHddr)
+                                              string txtName,
+                                              string txtVal,
+                                              int colSpanName,
+                                              int colSpanVal,
+                                              bool blankBefore,
+                                              bool blankAfter,
+                                              bool nameAsHddr)
         {
-            String padClass = "";
+            string padClass = "";
 
             htmlWriter.RenderBeginTag("tr");
 
@@ -2006,16 +2006,16 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void tableRowPairText(StreamWriter txtWriter,
-                                              String txtName,
-                                              String txtVal,
-                                              Int32 maxSizeName,
-                                              Int32 maxSizeVal,
-                                              Boolean blankBefore)
+                                              string txtName,
+                                              string txtVal,
+                                              int maxSizeName,
+                                              int maxSizeVal,
+                                              bool blankBefore)
         {
-            Int32 valPos,
+            int valPos,
                   valLen;
 
-            Boolean firstLine = true;
+            bool firstLine = true;
 
             if (blankBefore)
                 txtWriter.WriteLine();
@@ -2025,7 +2025,7 @@ namespace PCLParaphernalia
 
             while (valPos + maxSizeVal < valLen)
             {
-                String prefix;
+                string prefix;
 
                 if (firstLine)
                     prefix = (txtName + ":").PadRight(maxSizeName, ' ');
@@ -2042,7 +2042,7 @@ namespace PCLParaphernalia
 
             if (valPos <= valLen)
             {
-                String prefix;
+                string prefix;
 
                 if (firstLine)
                     prefix = (txtName + ":").PadRight(maxSizeName, ' ');
@@ -2066,15 +2066,15 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void tableRowPairXml(XmlWriter xmlWriter,
-                                             String txtName,
-                                             String txtVal,
-                                             Int32 colSpanName,
-                                             Int32 colSpanVal,
-                                             Boolean blankBefore,
-                                             Boolean blankAfter,
-                                             Boolean nameAsHddr)
+                                             string txtName,
+                                             string txtVal,
+                                             int colSpanName,
+                                             int colSpanVal,
+                                             bool blankBefore,
+                                             bool blankAfter,
+                                             bool nameAsHddr)
         {
-            String padClass = "";
+            string padClass = "";
 
             //----------------------------------------------------------------//
 
@@ -2122,12 +2122,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void tableRowText(Object writer,
+        public static void tableRowText(object writer,
                                          eRptFileFmt rptFileFmt,
-                                         Int32 colCt,
-                                         String[] data,
-                                         String[] colNames,
-                                         Int32[] colSizes)
+                                         int colCt,
+                                         string[] data,
+                                         string[] colNames,
+                                         int[] colSizes)
         {
             if (rptFileFmt == eRptFileFmt.html)
                 tableRowTextHtml((HtmlTextWriter)writer, colCt, data);
@@ -2149,14 +2149,14 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void tableRowTextHtml(HtmlTextWriter htmlWriter,
-                                              Int32 colCt,
-                                              String[] data)
+                                              int colCt,
+                                              string[] data)
         {
-            Int32 lastCol = colCt - 1;
+            int lastCol = colCt - 1;
 
             htmlWriter.RenderBeginTag("tr");
 
-            for (Int32 i = 0; i < colCt; i++)
+            for (int i = 0; i < colCt; i++)
             {
                 htmlWriter.RenderBeginTag("td");
                 if ((i == 0) && (data[0] == ""))
@@ -2184,17 +2184,17 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void tableRowTextText(StreamWriter txtWriter,
-                                              Int32 colCt,
-                                              String[] data,
-                                              Int32[] colSizes)
+                                              int colCt,
+                                              string[] data,
+                                              int[] colSizes)
         {
-            Int32 lastCol = colCt - 1;
+            int lastCol = colCt - 1;
 
-            String colSep = " ".PadRight(_lcSep, ' ');
+            string colSep = " ".PadRight(_lcSep, ' ');
 
             StringBuilder line = new StringBuilder();
 
-            for (Int32 i = 0; i < colCt; i++)
+            for (int i = 0; i < colCt; i++)
             {
                 line.Append((data[i]).PadRight(colSizes[i], ' '));
 
@@ -2216,17 +2216,17 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void tableRowTextXml(XmlWriter xmlWriter,
-                                             Int32 colCt,
-                                             String[] data,
-                                             String[] colNames)
+                                             int colCt,
+                                             string[] data,
+                                             string[] colNames)
         {
             xmlWriter.WriteStartElement("item");
 
-            for (Int32 i = 0; i < colCt; i++)
+            for (int i = 0; i < colCt; i++)
             {
                 xmlWriter.WriteStartElement(colNames[i].ToLower());
                 if ((i == 0) && (data[0] == ""))
-                    xmlWriter.WriteCharEntity((Char)0xa0);
+                    xmlWriter.WriteCharEntity((char)0xa0);
                 else
                     xmlWriter.WriteString(data[i]);
                 xmlWriter.WriteEndElement();

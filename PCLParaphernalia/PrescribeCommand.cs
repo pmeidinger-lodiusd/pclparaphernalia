@@ -20,14 +20,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private String _cmdName;
-        private String _cmdDesc;
-        private Boolean _flagCmdIntro;
-        private Boolean _flagCmdExit;
-        private Boolean _flagCmdSetCRC;
+        private string _cmdName;
+        private string _cmdDesc;
+        private bool _flagCmdIntro;
+        private bool _flagCmdExit;
+        private bool _flagCmdSetCRC;
 
-        private Int32 _statsCtParent;
-        private Int32 _statsCtChild;
+        private int _statsCtParent;
+        private int _statsCtChild;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -35,11 +35,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrescribeCommand(String name,
-                                 String desc,
-                                 Boolean flagCmdIntro,
-                                 Boolean flagCmdExit,
-                                 Boolean flagCmdSetCRC)
+        public PrescribeCommand(string name,
+                                 string desc,
+                                 bool flagCmdIntro,
+                                 bool flagCmdExit,
+                                 bool flagCmdSetCRC)
         {
             _cmdName = name;
             _cmdDesc = desc;
@@ -57,7 +57,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Description
+        public string Description
         {
             get { return _cmdDesc; }
         }
@@ -71,7 +71,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void incrementStatisticsCount(Int32 level)
+        public void incrementStatisticsCount(int level)
         {
             if (level == 0)
                 _statsCtParent++;
@@ -88,7 +88,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean IsCmdExit
+        public bool IsCmdExit
         {
             get { return _flagCmdExit; }
         }
@@ -102,7 +102,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean IsCmdIntro
+        public bool IsCmdIntro
         {
             get { return _flagCmdIntro; }
         }
@@ -116,7 +116,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean IsCmdSetCRC
+        public bool IsCmdSetCRC
         {
             get { return _flagCmdSetCRC; }
         }
@@ -127,7 +127,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Name
+        public string Name
         {
             get { return _cmdName; }
         }
@@ -153,7 +153,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtChild
+        public int StatsCtChild
         {
             get { return _statsCtChild; }
         }
@@ -164,7 +164,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtParent
+        public int StatsCtParent
         {
             get { return _statsCtParent; }
         }
@@ -175,7 +175,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtTotal
+        public int StatsCtTotal
         {
             get { return (_statsCtParent + _statsCtChild); }
         }

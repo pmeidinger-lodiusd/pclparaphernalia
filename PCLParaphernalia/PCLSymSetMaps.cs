@@ -19,11 +19,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private const Int32 _hex0080 = 128;
-        private const Int32 _hex00a0 = 160;
-        private const Int32 _hex00c0 = 192;
-        private const Int32 _hex00e0 = 224;
-        private const Int32 _hex0100 = 256;
+        private const int _hex0080 = 128;
+        private const int _hex00a0 = 160;
+        private const int _hex00c0 = 192;
+        private const int _hex00e0 = 224;
+        private const int _hex0100 = 256;
 
         public enum eSymSetMapId
         {
@@ -124,7 +124,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getCodepointMax(Int32 selection)
+        public static ushort getCodepointMax(int selection)
         {
             return _sets[selection].CodepointMax;
         }
@@ -138,7 +138,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getCodepointMin(Int32 selection)
+        public static ushort getCodepointMin(int selection)
         {
             return _sets[selection].CodepointMin;
         }
@@ -153,8 +153,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16[] getMapArray(Int32 selection,
-                                             Boolean flagMapPCL)
+        public static ushort[] getMapArray(int selection,
+                                             bool flagMapPCL)
         {
             if (flagMapPCL)
                 return _sets[selection].MapDataPCL;
@@ -172,9 +172,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16[] getMapArraySymbol()
+        public static ushort[] getMapArraySymbol()
         {
-            return _sets[(Int32)eSymSetMapId.mapSymbol].MapDataStd;
+            return _sets[(int)eSymSetMapId.mapSymbol].MapDataStd;
         }
 
         //--------------------------------------------------------------------//
@@ -186,9 +186,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16[] getMapArrayUserSet()
+        public static ushort[] getMapArrayUserSet()
         {
-            return _sets[(Int32)eSymSetMapId.mapUserSet].MapDataUserSet;
+            return _sets[(int)eSymSetMapId.mapUserSet].MapDataUserSet;
         }
 
         //--------------------------------------------------------------------//
@@ -202,9 +202,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String mapping(Int32 selection,
-                                      Boolean flagMapPCL,
-                                      Boolean differentOnly)
+        public static string mapping(int selection,
+                                      bool flagMapPCL,
+                                      bool differentOnly)
         {
             if (flagMapPCL)
                 if (differentOnly)
@@ -227,7 +227,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String mappingDiff(Int32 selection)
+        public static string mappingDiff(int selection)
         {
             return _sets[selection].MappingDiff;
         }
@@ -243,9 +243,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String[] mapRows(Int32 selection,
-                                         Boolean flagMapPCL,
-                                         Boolean differentOnly)
+        public static string[] mapRows(int selection,
+                                         bool flagMapPCL,
+                                         bool differentOnly)
         {
             if (flagMapPCL)
                 if (differentOnly)
@@ -268,7 +268,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String[] mapRowsDiff(Int32 selection)
+        public static string[] mapRowsDiff(int selection)
         {
             return _sets[selection].MapRowsDiff;
         }
@@ -283,7 +283,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean nullMapPCL(Int32 selection)
+        public static bool nullMapPCL(int selection)
         {
             return _sets[selection].NullMapPCL;
         }
@@ -298,7 +298,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean nullMapStd(Int32 selection)
+        public static bool nullMapStd(int selection)
         {
             return _sets[selection].NullMapStd;
         }
@@ -532,9 +532,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setMapArrayUserSet(UInt16[] map)
+        public static void setMapArrayUserSet(ushort[] map)
         {
-            _sets[(Int32)eSymSetMapId.mapUserSet].MapDataUserSet = map;
+            _sets[(int)eSymSetMapId.mapUserSet].MapDataUserSet = map;
         }
     }
 }

@@ -22,10 +22,10 @@ namespace PCLParaphernalia
         // Creates a OpenFileDialog.                                          //
         //                                                                    //
         //--------------------------------------------------------------------//
-        public static OpenFileDialog createOpenFileDialog(String initialPath)
+        public static OpenFileDialog createOpenFileDialog(string initialPath)
         {
-            String folderName = null;
-            String fileName = null;
+            string folderName = null;
+            string fileName = null;
 
             ToolCommonFunctions.splitPathName(initialPath,
                                                ref folderName,
@@ -48,10 +48,10 @@ namespace PCLParaphernalia
         // Creates a SaveFileDialog.                                          //
         //                                                                    //
         //--------------------------------------------------------------------//
-        public static SaveFileDialog createSaveFileDialog(String initialPath)
+        public static SaveFileDialog createSaveFileDialog(string initialPath)
         {
-            String folderName = null;
-            String fileName = null;
+            string folderName = null;
+            string fileName = null;
 
             ToolCommonFunctions.splitPathName(initialPath,
                                                ref folderName,
@@ -80,13 +80,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void decomposePathName(String pathName,
-                                               ref String volName,
-                                               ref String folderName,
-                                               ref String lastName,
-                                               ref String extension)
+        private static void decomposePathName(string pathName,
+                                               ref string volName,
+                                               ref string folderName,
+                                               ref string lastName,
+                                               ref string extension)
         {
-            Int32 indxA,
+            int indxA,
                   indxB,
                   lenA,
                   lenB,
@@ -172,10 +172,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void getFolderName(String pathName,
-                                          ref String folderName)
+        public static void getFolderName(string pathName,
+                                          ref string folderName)
         {
-            String tmpVol = "",
+            string tmpVol = "",
                    tmpTname = "",
                    tmpExt = "";
 
@@ -193,10 +193,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void getTerminalName(String pathName,
-                                            ref String fileName)
+        public static void getTerminalName(string pathName,
+                                            ref string fileName)
         {
-            String tmpVol = null,
+            string tmpVol = null,
                    tmpFolder = null,
                    tmpTname = null,
                    tmpExt = null;
@@ -216,11 +216,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void splitPathName(String pathName,
-                                          ref String folderName,
-                                          ref String fileName)
+        private static void splitPathName(string pathName,
+                                          ref string folderName,
+                                          ref string fileName)
         {
-            String tmpVol = null,
+            string tmpVol = null,
                    tmpTname = null,
                    tmpExt = null;
 
@@ -239,12 +239,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void splitPathName(String pathName,
-                                          ref String volName,
-                                          ref String folderName,
-                                          ref String fileName)
+        public static void splitPathName(string pathName,
+                                          ref string volName,
+                                          ref string folderName,
+                                          ref string fileName)
         {
-            String tmpTname = null,
+            string tmpTname = null,
                    tmpExt = null;
 
             decomposePathName(pathName, ref volName,

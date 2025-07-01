@@ -31,34 +31,34 @@ namespace PCLParaphernalia
         {
             const eSymSetMapId mapId = eSymSetMapId.map_x901T;
 
-            const Int32 rangeCt = 3;
+            const int rangeCt = 3;
 
-            UInt16[][] rangeData = new UInt16[rangeCt][]
+            ushort[][] rangeData = new ushort[rangeCt][]
             {
-                new UInt16 [2] {0x20, 0x7f},
-                new UInt16 [2] {0x80, 0x9f},
-                new UInt16 [2] {0xa0, 0xff}
+                new ushort [2] {0x20, 0x7f},
+                new ushort [2] {0x80, 0x9f},
+                new ushort [2] {0xa0, 0xff}
             };
 
-            UInt16[] rangeSizes = new UInt16[rangeCt];
+            ushort[] rangeSizes = new ushort[rangeCt];
 
-            UInt16[][] mapDataStd = new UInt16[rangeCt][];
+            ushort[][] mapDataStd = new ushort[rangeCt][];
 
-            UInt16 rangeMin,
+            ushort rangeMin,
                    rangeMax,
                    offset;
 
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i < rangeCt; i++)
+            for (int i = 0; i < rangeCt; i++)
             {
-                rangeSizes[i] = (UInt16)(rangeData[i][1] -
+                rangeSizes[i] = (ushort)(rangeData[i][1] -
                                            rangeData[i][0] + 1);
             }
 
-            for (Int32 i = 0; i < rangeCt; i++)
+            for (int i = 0; i < rangeCt; i++)
             {
-                mapDataStd[i] = new UInt16[rangeSizes[i]];
+                mapDataStd[i] = new ushort[rangeSizes[i]];
             }
 
             //----------------------------------------------------------------//
@@ -70,7 +70,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData[0][0];
             rangeMax = rangeData[0][1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd[0][i - rangeMin] = i;
             }
@@ -86,7 +86,7 @@ namespace PCLParaphernalia
             rangeMin = rangeData[1][0];
             rangeMax = rangeData[1][1];
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
                 mapDataStd[1][i - rangeMin] = 0xffff;    //<not a character> //
             }
@@ -113,9 +113,9 @@ namespace PCLParaphernalia
 
             offset = 0x0e00 - 0x00a0;     // 0x0e00 - 0x00a0 = 0x0d60
 
-            for (UInt16 i = rangeMin; i <= rangeMax; i++)
+            for (ushort i = rangeMin; i <= rangeMax; i++)
             {
-                mapDataStd[2][i - rangeMin] = (UInt16)(offset + i);
+                mapDataStd[2][i - rangeMin] = (ushort)(offset + i);
             }
 
             mapDataStd[2][0xa0 - rangeMin] = 0x00a0;

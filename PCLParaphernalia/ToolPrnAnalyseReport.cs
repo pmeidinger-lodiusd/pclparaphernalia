@@ -20,11 +20,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Int32 _maxSizeNameTag = 15;
-        const Int32 _colSpanNone = -1;
+        const int _maxSizeNameTag = 15;
+        const int _colSpanNone = -1;
 
-        const Boolean _flagNone = false;
-        const Boolean _flagBlankBefore = true;
+        const bool _flagNone = false;
+        const bool _flagBlankBefore = true;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -45,20 +45,20 @@ namespace PCLParaphernalia
             ToolPrnAnalyse.eInfoType indxInfoType,
             ReportCore.eRptFileFmt rptFileFmt,
             DataTable table,
-            String prnFilename,
-            Int64 fileSize,
-            Boolean flagOffsetHex,
+            string prnFilename,
+            long fileSize,
+            bool flagOffsetHex,
             PrnParseOptions options)
         {
-            Object stream = null;
-            Object writer = null;
+            object stream = null;
+            object writer = null;
 
-            Boolean OK = false;
+            bool OK = false;
 
-            Int32 reportSize;
+            int reportSize;
 
-            String fileExt;
-            String saveFilename = null;
+            string fileExt;
+            string saveFilename = null;
 
             if (rptFileFmt == ReportCore.eRptFileFmt.html)
                 fileExt = "html";
@@ -78,17 +78,17 @@ namespace PCLParaphernalia
 
                 if (OK)
                 {
-                    Int32 ctClrMapRowTypes = PrnParseRowTypes.getCount();
+                    int ctClrMapRowTypes = PrnParseRowTypes.getCount();
 
-                    Boolean useClr = options.FlagClrMapUseClr;
+                    bool useClr = options.FlagClrMapUseClr;
 
                     reportSize = table.Rows.Count;
 
                     if (useClr)
                     {
-                        String[] rowClasses = new String[ctClrMapRowTypes];
-                        String[] rowClrBack = new String[ctClrMapRowTypes];
-                        String[] rowClrFore = new String[ctClrMapRowTypes];
+                        string[] rowClasses = new string[ctClrMapRowTypes];
+                        string[] rowClrBack = new string[ctClrMapRowTypes];
+                        string[] rowClrFore = new string[ctClrMapRowTypes];
 
                         getRowColourStyleData(options,
                                                ref rowClasses,
@@ -184,25 +184,25 @@ namespace PCLParaphernalia
 
         private static void getRowColourStyleData(
             PrnParseOptions options,
-            ref String[] classes,
-            ref String[] clrBack,
-            ref String[] clrFore)
+            ref string[] classes,
+            ref string[] clrBack,
+            ref string[] clrFore)
         {
-            Int32 indxClrBack;
-            Int32 indxClrFore;
+            int indxClrBack;
+            int indxClrFore;
 
             PropertyInfo[] stdClrsPropertyInfo = null;
 
-            Boolean flagClrMapUseClr = false;
+            bool flagClrMapUseClr = false;
 
             PropertyInfo pInfoBack,
                          pInfoFore;
 
-            Int32 ctClrMapRowTypes = PrnParseRowTypes.getCount();
-            Int32 ctClrMapStdClrs = 0;
+            int ctClrMapRowTypes = PrnParseRowTypes.getCount();
+            int ctClrMapStdClrs = 0;
 
-            Int32[] indxClrMapBack = new Int32[ctClrMapRowTypes];
-            Int32[] indxClrMapFore = new Int32[ctClrMapRowTypes];
+            int[] indxClrMapBack = new int[ctClrMapRowTypes];
+            int[] indxClrMapFore = new int[ctClrMapRowTypes];
 
             options.getOptClrMap(ref flagClrMapUseClr,
                                   ref indxClrMapBack,
@@ -213,9 +213,9 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i < ctClrMapRowTypes; i++)
+            for (int i = 0; i < ctClrMapRowTypes; i++)
             {
-                String rowType =
+                string rowType =
                     Enum.GetName(typeof(PrnParseRowTypes.eType), i);
 
                 indxClrBack = indxClrMapBack[i];
@@ -241,31 +241,31 @@ namespace PCLParaphernalia
 
         private static void reportBodyAnalysis(
             ReportCore.eRptFileFmt rptFileFmt,
-            Object writer,
+            object writer,
             DataTable table,
-            Boolean flagOffsetHex)
+            bool flagOffsetHex)
         {
-            const Int32 colCt = 4;
+            const int colCt = 4;
 
-            const String c0Name = PrnParseConstants.cRptA_colName_Offset;
-            const String c1Name = PrnParseConstants.cRptA_colName_Type;
-            const String c2Name = PrnParseConstants.cRptA_colName_Seq;
-            const String c3Name = PrnParseConstants.cRptA_colName_Desc;
+            const string c0Name = PrnParseConstants.cRptA_colName_Offset;
+            const string c1Name = PrnParseConstants.cRptA_colName_Type;
+            const string c2Name = PrnParseConstants.cRptA_colName_Seq;
+            const string c3Name = PrnParseConstants.cRptA_colName_Desc;
 
-            const Int32 lc0 = PrnParseConstants.cRptA_colMax_Offset;
-            const Int32 lc1 = PrnParseConstants.cRptA_colMax_Type;
-            const Int32 lc2 = PrnParseConstants.cRptA_colMax_Seq;
-            const Int32 lc3 = PrnParseConstants.cRptA_colMax_Desc;
+            const int lc0 = PrnParseConstants.cRptA_colMax_Offset;
+            const int lc1 = PrnParseConstants.cRptA_colMax_Type;
+            const int lc2 = PrnParseConstants.cRptA_colMax_Seq;
+            const int lc3 = PrnParseConstants.cRptA_colMax_Desc;
 
-            const String rtName = PrnParseConstants.cRptA_colName_RowType;
+            const string rtName = PrnParseConstants.cRptA_colName_RowType;
 
-            String c0Hddr;
+            string c0Hddr;
 
-            String[] colHddrs;
-            String[] colNames;
-            Int32[] colSizes;
+            string[] colHddrs;
+            string[] colNames;
+            int[] colSizes;
 
-            Int32 ctItems;
+            int ctItems;
 
             ctItems = table.Rows.Count;
 
@@ -274,9 +274,9 @@ namespace PCLParaphernalia
             else
                 c0Hddr = c0Name + ": dec";
 
-            colHddrs = new String[colCt] { c0Hddr, c1Name, c2Name, c3Name };
-            colNames = new String[colCt] { c0Name, c1Name, c2Name, c3Name };
-            colSizes = new Int32[colCt] { lc0, lc1, lc2, lc3 };
+            colHddrs = new string[colCt] { c0Hddr, c1Name, c2Name, c3Name };
+            colNames = new string[colCt] { c0Name, c1Name, c2Name, c3Name };
+            colSizes = new int[colCt] { lc0, lc1, lc2, lc3 };
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -293,13 +293,13 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i < ctItems; i++)
+            for (int i = 0; i < ctItems; i++)
             {
                 DataRow row = table.Rows[i];
 
-                Int32 indxRowType = (Int32)row[rtName];
+                int indxRowType = (int)row[rtName];
 
-                String rowType = Enum.GetName
+                string rowType = Enum.GetName
                                     (typeof(PrnParseRowTypes.eType),
                                      indxRowType);
 
@@ -330,27 +330,27 @@ namespace PCLParaphernalia
 
         private static void reportBodyContent(
             ReportCore.eRptFileFmt rptFileFmt,
-            Object writer,
+            object writer,
             DataTable table,
-            Boolean flagOffsetHex)
+            bool flagOffsetHex)
         {
-            const Int32 colCt = 3;
+            const int colCt = 3;
 
-            const String c0Name = PrnParseConstants.cRptC_colName_Offset;
-            const String c1Name = PrnParseConstants.cRptC_colName_Hex;
-            const String c2Name = PrnParseConstants.cRptC_colName_Text;
+            const string c0Name = PrnParseConstants.cRptC_colName_Offset;
+            const string c1Name = PrnParseConstants.cRptC_colName_Hex;
+            const string c2Name = PrnParseConstants.cRptC_colName_Text;
 
-            const Int32 lc0 = PrnParseConstants.cRptC_colMax_Offset;
-            const Int32 lc1 = PrnParseConstants.cRptC_colMax_Hex;
-            const Int32 lc2 = PrnParseConstants.cRptC_colMax_Text;
+            const int lc0 = PrnParseConstants.cRptC_colMax_Offset;
+            const int lc1 = PrnParseConstants.cRptC_colMax_Hex;
+            const int lc2 = PrnParseConstants.cRptC_colMax_Text;
 
-            String c0Hddr;
+            string c0Hddr;
 
-            String[] colHddrs;
-            String[] colNames;
-            Int32[] colSizes;
+            string[] colHddrs;
+            string[] colNames;
+            int[] colSizes;
 
-            Int32 ctItems;
+            int ctItems;
 
             ctItems = table.Rows.Count;
 
@@ -359,9 +359,9 @@ namespace PCLParaphernalia
             else
                 c0Hddr = c0Name + ": dec";
 
-            colHddrs = new String[colCt] { c0Hddr, c1Name, c2Name };
-            colNames = new String[colCt] { c0Name, c1Name, c2Name };
-            colSizes = new Int32[colCt] { lc0, lc1, lc2 };
+            colHddrs = new string[colCt] { c0Hddr, c1Name, c2Name };
+            colNames = new string[colCt] { c0Name, c1Name, c2Name };
+            colSizes = new int[colCt] { lc0, lc1, lc2 };
 
             ctItems = table.Rows.Count;
 
@@ -385,7 +385,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i < ctItems; i++)
+            for (int i = 0; i < ctItems; i++)
             {
                 DataRow row = table.Rows[i];
 
@@ -416,32 +416,32 @@ namespace PCLParaphernalia
 
         private static void reportBodyStatistics(
             ReportCore.eRptFileFmt rptFileFmt,
-            Object writer,
+            object writer,
             DataTable table)
         {
-            const Int32 colCt = 5;
+            const int colCt = 5;
 
-            const String c0Name = PrnParseConstants.cRptS_colName_Seq;
-            const String c1Name = PrnParseConstants.cRptS_colName_Desc;
-            const String c2Name = PrnParseConstants.cRptS_colName_CtP;
-            const String c3Name = PrnParseConstants.cRptS_colName_CtE;
-            const String c4Name = PrnParseConstants.cRptS_colName_CtT;
+            const string c0Name = PrnParseConstants.cRptS_colName_Seq;
+            const string c1Name = PrnParseConstants.cRptS_colName_Desc;
+            const string c2Name = PrnParseConstants.cRptS_colName_CtP;
+            const string c3Name = PrnParseConstants.cRptS_colName_CtE;
+            const string c4Name = PrnParseConstants.cRptS_colName_CtT;
 
-            const Int32 lc0 = PrnParseConstants.cRptS_colMax_Seq;
-            const Int32 lc1 = PrnParseConstants.cRptS_colMax_Desc;
-            const Int32 lc2 = PrnParseConstants.cRptS_colMax_CtP;
-            const Int32 lc3 = PrnParseConstants.cRptS_colMax_CtE;
-            const Int32 lc4 = PrnParseConstants.cRptS_colMax_CtT;
+            const int lc0 = PrnParseConstants.cRptS_colMax_Seq;
+            const int lc1 = PrnParseConstants.cRptS_colMax_Desc;
+            const int lc2 = PrnParseConstants.cRptS_colMax_CtP;
+            const int lc3 = PrnParseConstants.cRptS_colMax_CtE;
+            const int lc4 = PrnParseConstants.cRptS_colMax_CtT;
 
-            String[] colNames;
-            Int32[] colSizes;
+            string[] colNames;
+            int[] colSizes;
 
-            Int32 ctItems;
+            int ctItems;
 
             ctItems = table.Rows.Count;
 
-            colNames = new String[colCt] { c0Name, c1Name, c2Name, c3Name, c4Name };
-            colSizes = new Int32[colCt] { lc0, lc1, lc2, lc3, lc4 };
+            colNames = new string[colCt] { c0Name, c1Name, c2Name, c3Name, c4Name };
+            colSizes = new int[colCt] { lc0, lc1, lc2, lc3, lc4 };
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -458,7 +458,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i < ctItems; i++)
+            for (int i = 0; i < ctItems; i++)
             {
                 DataRow row = table.Rows[i];
 
@@ -490,14 +490,14 @@ namespace PCLParaphernalia
         private static void reportHeader(
             ToolPrnAnalyse.eInfoType indxInfoType,
             ReportCore.eRptFileFmt rptFileFmt,
-            Object writer,
-            String prnFilename,
-            Int64 fileSize,
-            Int32 reportSize)
+            object writer,
+            string prnFilename,
+            long fileSize,
+            int reportSize)
         {
-            Int32 maxLineLen = 0;
+            int maxLineLen = 0;
 
-            String title = "";
+            string title = "";
 
             if (indxInfoType == ToolPrnAnalyse.eInfoType.Analysis)
             {

@@ -25,17 +25,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Int32 _sampleCtPCL_CID = 4;
-        const Int32 _sampleCtPCLXL_RGB = 4;
-        const Int32 _sampleCtPCLXL_Gray = 4;
+        const int _sampleCtPCL_CID = 4;
+        const int _sampleCtPCLXL_RGB = 4;
+        const int _sampleCtPCLXL_Gray = 4;
 
-        const Int32 _planeCtPCL_CID = 3;
-        const Int32 _planeCtPCLXL_RGB = 3;
-        const Int32 _planeCtPCLXL_Gray = 1;
+        const int _planeCtPCL_CID = 3;
+        const int _planeCtPCLXL_RGB = 3;
+        const int _planeCtPCLXL_Gray = 1;
 
-        const String _txtBoxRootNamePCL_CID = "txtColourPCL_CID_";
-        const String _txtBoxRootNamePCLXL_Gray = "txtColourPCLXL_Gray_";
-        const String _txtBoxRootNamePCLXL_RGB = "txtColourPCLXL_RGB_";
+        const string _txtBoxRootNamePCL_CID = "txtColourPCL_CID_";
+        const string _txtBoxRootNamePCLXL_Gray = "txtColourPCLXL_Gray_";
+        const string _txtBoxRootNamePCLXL_RGB = "txtColourPCLXL_RGB_";
 
         private enum eColourType : byte
         {
@@ -61,15 +61,15 @@ namespace PCLParaphernalia
         private eColourType _indxColourTypePCL;
         private eColourType _indxColourTypePCLXL;
 
-        private Boolean _flagColourFmtHexPCL;
-        private Boolean _flagColourFmtHexPCLXL;
+        private bool _flagColourFmtHexPCL;
+        private bool _flagColourFmtHexPCLXL;
 
-        private Int32[] _samplesPCL_CID;
-        private Int32[] _samplesPCLXL_RGB;
-        private Int32[] _samplesPCLXL_Gray;
+        private int[] _samplesPCL_CID;
+        private int[] _samplesPCLXL_RGB;
+        private int[] _samplesPCLXL_Gray;
 
-        private Boolean _flagColourFormAsMacroPCL;
-        private Boolean _flagColourFormAsMacroPCLXL;
+        private bool _flagColourFormAsMacroPCL;
+        private bool _flagColourFormAsMacroPCLXL;
 
         /*
         //--------------------------------------------------------------------//
@@ -117,11 +117,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void colourMapPCL_CID_Display(Boolean hexDisplay)
+        private void colourMapPCL_CID_Display(bool hexDisplay)
         {
-            Int32 x;
+            int x;
 
-            String format;
+            string format;
 
             if (hexDisplay)
                 format = "x2";
@@ -168,11 +168,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void colourMapPCLXL_Gray_Display(Boolean hexDisplay)
+        private void colourMapPCLXL_Gray_Display(bool hexDisplay)
         {
-            Int32 x;
+            int x;
 
-            String format;
+            string format;
 
             if (hexDisplay)
                 format = "x2";
@@ -203,11 +203,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void colourMapPCLXL_RGB_Display(Boolean hexDisplay)
+        private void colourMapPCLXL_RGB_Display(bool hexDisplay)
         {
-            Int32 x;
+            int x;
 
-            String format;
+            string format;
 
             if (hexDisplay)
                 format = "x2";
@@ -401,7 +401,7 @@ namespace PCLParaphernalia
 
         public void metricsLoadDataColour()
         {
-            Int32 tmpInt = 0;
+            int tmpInt = 0;
 
             ToolMiscSamplesPersist.loadDataTypeColour(
                 "PCL",
@@ -409,12 +409,12 @@ namespace PCLParaphernalia
                 ref _flagColourFormAsMacroPCL,
                 ref _flagColourFmtHexPCL);
 
-            if (tmpInt == (Int32)eColourType.PCL_Simple)
+            if (tmpInt == (int)eColourType.PCL_Simple)
                 _indxColourTypePCL = eColourType.PCL_Simple;
             else
                 _indxColourTypePCL = eColourType.PCL_Imaging;
 
-            _samplesPCL_CID = new Int32[_sampleCtPCL_CID];
+            _samplesPCL_CID = new int[_sampleCtPCL_CID];
 
             ToolMiscSamplesPersist.loadDataTypeColourSample(
                 "PCL",
@@ -431,12 +431,12 @@ namespace PCLParaphernalia
                 ref _flagColourFormAsMacroPCLXL,
                 ref _flagColourFmtHexPCLXL);
 
-            if (tmpInt == (Int32)eColourType.PCLXL_Gray)
+            if (tmpInt == (int)eColourType.PCLXL_Gray)
                 _indxColourTypePCLXL = eColourType.PCLXL_Gray;
             else
                 _indxColourTypePCLXL = eColourType.PCLXL_RGB;
 
-            _samplesPCLXL_Gray = new Int32[_sampleCtPCLXL_Gray];
+            _samplesPCLXL_Gray = new int[_sampleCtPCLXL_Gray];
 
             ToolMiscSamplesPersist.loadDataTypeColourSample(
                 "PCLXL",
@@ -445,7 +445,7 @@ namespace PCLParaphernalia
                 ref _samplesPCLXL_Gray,
                 true);
 
-            _samplesPCLXL_RGB = new Int32[_sampleCtPCLXL_RGB];
+            _samplesPCLXL_RGB = new int[_sampleCtPCLXL_RGB];
 
             ToolMiscSamplesPersist.loadDataTypeColourSample(
                 "PCLXL",
@@ -468,7 +468,7 @@ namespace PCLParaphernalia
         {
             ToolMiscSamplesPersist.saveDataTypeColour(
                 "PCL",
-                (Int32)_indxColourTypePCL,
+                (int)_indxColourTypePCL,
                 _flagColourFormAsMacroPCL,
                 _flagColourFmtHexPCL);
 
@@ -480,7 +480,7 @@ namespace PCLParaphernalia
 
             ToolMiscSamplesPersist.saveDataTypeColour(
                 "PCLXL",
-                (Int32)_indxColourTypePCLXL,
+                (int)_indxColourTypePCLXL,
                 _flagColourFormAsMacroPCLXL,
                 _flagColourFmtHexPCLXL);
 
@@ -690,7 +690,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private void setFlagColourFormAsMacro(
-            Boolean setFlag,
+            bool setFlag,
             ToolCommonData.ePrintLang crntPDL)
         {
             if (crntPDL == ToolCommonData.ePrintLang.PCL)
@@ -719,19 +719,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean txtColourCheckBoxId(TextBox source,
-                                             Int32 nameRootLen,
-                                             Int32 sampleCt,
-                                             Int32 planeCt,
-                                             ref Int32 sampleNo,
-                                             ref Int32 planeNo,
-                                             ref Int32 planeSig)
+        private bool txtColourCheckBoxId(TextBox source,
+                                             int nameRootLen,
+                                             int sampleCt,
+                                             int planeCt,
+                                             ref int sampleNo,
+                                             ref int planeNo,
+                                             ref int planeSig)
         {
-            Boolean flagOK = true;
+            bool flagOK = true;
 
-            UInt16 mapIndx;
+            ushort mapIndx;
 
-            String txtBoxName;
+            string txtBoxName;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -747,7 +747,7 @@ namespace PCLParaphernalia
 
             txtBoxName = source.Name;
 
-            flagOK = UInt16.TryParse(txtBoxName.Substring(nameRootLen, 2),
+            flagOK = ushort.TryParse(txtBoxName.Substring(nameRootLen, 2),
                                       NumberStyles.Integer,
                                       CultureInfo.InvariantCulture,
                                       out mapIndx);
@@ -807,18 +807,18 @@ namespace PCLParaphernalia
         private void txtColourPCL_CID_LostFocus(object sender,
                                                  RoutedEventArgs e)
         {
-            Int32 nameRootLen = _txtBoxRootNamePCL_CID.Length;
+            int nameRootLen = _txtBoxRootNamePCL_CID.Length;
 
-            Int32 planeCt = _planeCtPCL_CID;
-            Int32 sampleCt = _sampleCtPCL_CID;
+            int planeCt = _planeCtPCL_CID;
+            int sampleCt = _sampleCtPCL_CID;
 
-            Int32 sampleNo = 0,
+            int sampleNo = 0,
                   planeNo = 0,
                   planeSig = 0;
 
             TextBox source = e.Source as TextBox;
 
-            Boolean flagOK = false;
+            bool flagOK = false;
 
             flagOK = txtColourCheckBoxId(source, nameRootLen, sampleCt, planeCt,
                                           ref sampleNo, ref planeNo,
@@ -850,18 +850,18 @@ namespace PCLParaphernalia
         private void txtColourPCLXL_Gray_GotFocus(object sender,
                                                    RoutedEventArgs e)
         {
-            Int32 nameRootLen = _txtBoxRootNamePCLXL_Gray.Length;
+            int nameRootLen = _txtBoxRootNamePCLXL_Gray.Length;
 
-            Int32 planeCt = _planeCtPCLXL_Gray;
-            Int32 sampleCt = _sampleCtPCLXL_Gray;
+            int planeCt = _planeCtPCLXL_Gray;
+            int sampleCt = _sampleCtPCLXL_Gray;
 
-            Int32 sampleNo = 0,
+            int sampleNo = 0,
                   planeNo = 0,
                   planeSig = 0;
 
             TextBox source = e.Source as TextBox;
 
-            Boolean flagOK = false;
+            bool flagOK = false;
 
             flagOK = txtColourCheckBoxId(source, nameRootLen, sampleCt, planeCt,
                                           ref sampleNo, ref planeNo,
@@ -893,18 +893,18 @@ namespace PCLParaphernalia
         private void txtColourPCLXL_Gray_LostFocus(object sender,
                                                     RoutedEventArgs e)
         {
-            Int32 nameRootLen = _txtBoxRootNamePCLXL_RGB.Length;
+            int nameRootLen = _txtBoxRootNamePCLXL_RGB.Length;
 
-            Int32 planeCt = _planeCtPCLXL_RGB;
-            Int32 sampleCt = _sampleCtPCLXL_RGB;
+            int planeCt = _planeCtPCLXL_RGB;
+            int sampleCt = _sampleCtPCLXL_RGB;
 
-            Int32 sampleNo = 0,
+            int sampleNo = 0,
                   planeNo = 0,
                   planeSig = 0;
 
             TextBox source = e.Source as TextBox;
 
-            Boolean flagOK = false;
+            bool flagOK = false;
 
             flagOK = txtColourCheckBoxId(source, nameRootLen, sampleCt, planeCt,
                                           ref sampleNo, ref planeNo,
@@ -965,34 +965,34 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validateMapEntry(TextBox source,
-                                          Int32 sampleNo,
-                                          Int32 planeNo,
-                                          Int32 planeSig,
-                                          Boolean hexFormat,
-                                          ref Int32[] sampleDef)
+        private bool validateMapEntry(TextBox source,
+                                          int sampleNo,
+                                          int planeNo,
+                                          int planeSig,
+                                          bool hexFormat,
+                                          ref int[] sampleDef)
         {
-            Boolean OK = true;
+            bool OK = true;
 
-            Byte value;
+            byte value;
 
-            String txtNewVal = source.Text;
+            string txtNewVal = source.Text;
 
             if (hexFormat)
-                OK = Byte.TryParse(txtNewVal,
+                OK = byte.TryParse(txtNewVal,
                                     NumberStyles.HexNumber,
                                     CultureInfo.InvariantCulture,
                                     out value);
             else
-                OK = Byte.TryParse(txtNewVal, out value);
+                OK = byte.TryParse(txtNewVal, out value);
 
             if (OK)
             {
-                Int32 oldVal = sampleDef[sampleNo];
-                Int32 mask = 0xffff00;
-                Int32 newComp = value;
+                int oldVal = sampleDef[sampleNo];
+                int mask = 0xffff00;
+                int newComp = value;
 
-                for (Int32 i = 0; i < planeSig; i++)
+                for (int i = 0; i < planeSig; i++)
                 {
                     mask = ((mask << 8) & 0xffffff) | 0xff;
                     newComp = newComp << 8;
@@ -1002,11 +1002,11 @@ namespace PCLParaphernalia
             }
             else
             {
-                String format,
+                string format,
                        formatDesc,
                        txtOldVal;
 
-                Int32 x;
+                int x;
 
                 if (hexFormat)
                 {
@@ -1021,7 +1021,7 @@ namespace PCLParaphernalia
 
                 x = sampleDef[sampleNo];
 
-                for (Int32 i = 1; i < planeNo; i++)
+                for (int i = 1; i < planeNo; i++)
                 {
                     x = x >> 8;
                 }

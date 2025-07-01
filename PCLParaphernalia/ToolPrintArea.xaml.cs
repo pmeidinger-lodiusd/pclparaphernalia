@@ -26,72 +26,72 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const UInt16 _sessionUPI = 600;
+        const ushort _sessionUPI = 600;
 
-        const Double _unitsToInches = (1.00 / _sessionUPI);
-        const Double _unitsToMilliMetres = (25.4 / _sessionUPI);
+        const double _unitsToInches = (1.00 / _sessionUPI);
+        const double _unitsToMilliMetres = (25.4 / _sessionUPI);
 
-        private static Int32[] _subsetPDLs =
+        private static int[] _subsetPDLs =
         {
-            (Int32) ToolCommonData.ePrintLang.PCL,
-            (Int32) ToolCommonData.ePrintLang.PCLXL,
+            (int) ToolCommonData.ePrintLang.PCL,
+            (int) ToolCommonData.ePrintLang.PCLXL,
         };
 
-        private static Int32[] _subsetOrientations =
+        private static int[] _subsetOrientations =
         {
-            (Int32) PCLOrientations.eIndex.Portrait,
-            (Int32) PCLOrientations.eIndex.Landscape,
-            (Int32) PCLOrientations.eIndex.ReversePortrait,
-            (Int32) PCLOrientations.eIndex.ReverseLandscape
+            (int) PCLOrientations.eIndex.Portrait,
+            (int) PCLOrientations.eIndex.Landscape,
+            (int) PCLOrientations.eIndex.ReversePortrait,
+            (int) PCLOrientations.eIndex.ReverseLandscape
         };
 
-        private static Int32[] _subsetPaperSizes =
+        private static int[] _subsetPaperSizes =
         {
-            (Int32) PCLPaperSizes.eIndex.ISO_A4,
-            (Int32) PCLPaperSizes.eIndex.ISO_A3,
-            (Int32) PCLPaperSizes.eIndex.ISO_A5,
-            (Int32) PCLPaperSizes.eIndex.ISO_A6,
-            (Int32) PCLPaperSizes.eIndex.RA4,
-            (Int32) PCLPaperSizes.eIndex.ANSI_A_Letter,
-            (Int32) PCLPaperSizes.eIndex.ANSI_B_Ledger_Tabloid,
-            (Int32) PCLPaperSizes.eIndex.Legal,
-            (Int32) PCLPaperSizes.eIndex.Executive,
-            (Int32) PCLPaperSizes.eIndex.Foolscap,
-            (Int32) PCLPaperSizes.eIndex.Statement,
-            (Int32) PCLPaperSizes.eIndex.Env_Monarch,
-            (Int32) PCLPaperSizes.eIndex.Env_Com9,
-            (Int32) PCLPaperSizes.eIndex.Env_Com10,
-            (Int32) PCLPaperSizes.eIndex.Env_Intl_DL,
-            (Int32) PCLPaperSizes.eIndex.Env_Intl_B5,
-            (Int32) PCLPaperSizes.eIndex.Env_Intl_C5,
-            (Int32) PCLPaperSizes.eIndex.Env_Intl_C6,
-            (Int32) PCLPaperSizes.eIndex.JIS_B5,
-            (Int32) PCLPaperSizes.eIndex.JIS_B6,
-            (Int32) PCLPaperSizes.eIndex.JP_Postcard,
-            (Int32) PCLPaperSizes.eIndex.JP_PostcardDouble,
-            (Int32) PCLPaperSizes.eIndex.CN_16K,
-            (Int32) PCLPaperSizes.eIndex.CN_16K_184x260,
-            (Int32) PCLPaperSizes.eIndex.CN_16K_195x270,
-            (Int32) PCLPaperSizes.eIndex.Oficio_216x340,
-            (Int32) PCLPaperSizes.eIndex.Card_10x15cm,
-            (Int32) PCLPaperSizes.eIndex.Card_3x5,
-            (Int32) PCLPaperSizes.eIndex.Card_4x6,
-            (Int32) PCLPaperSizes.eIndex.Card_5x7,
-            (Int32) PCLPaperSizes.eIndex.Card_5x8,
-            (Int32) PCLPaperSizes.eIndex.Custom,
+            (int) PCLPaperSizes.eIndex.ISO_A4,
+            (int) PCLPaperSizes.eIndex.ISO_A3,
+            (int) PCLPaperSizes.eIndex.ISO_A5,
+            (int) PCLPaperSizes.eIndex.ISO_A6,
+            (int) PCLPaperSizes.eIndex.RA4,
+            (int) PCLPaperSizes.eIndex.ANSI_A_Letter,
+            (int) PCLPaperSizes.eIndex.ANSI_B_Ledger_Tabloid,
+            (int) PCLPaperSizes.eIndex.Legal,
+            (int) PCLPaperSizes.eIndex.Executive,
+            (int) PCLPaperSizes.eIndex.Foolscap,
+            (int) PCLPaperSizes.eIndex.Statement,
+            (int) PCLPaperSizes.eIndex.Env_Monarch,
+            (int) PCLPaperSizes.eIndex.Env_Com9,
+            (int) PCLPaperSizes.eIndex.Env_Com10,
+            (int) PCLPaperSizes.eIndex.Env_Intl_DL,
+            (int) PCLPaperSizes.eIndex.Env_Intl_B5,
+            (int) PCLPaperSizes.eIndex.Env_Intl_C5,
+            (int) PCLPaperSizes.eIndex.Env_Intl_C6,
+            (int) PCLPaperSizes.eIndex.JIS_B5,
+            (int) PCLPaperSizes.eIndex.JIS_B6,
+            (int) PCLPaperSizes.eIndex.JP_Postcard,
+            (int) PCLPaperSizes.eIndex.JP_PostcardDouble,
+            (int) PCLPaperSizes.eIndex.CN_16K,
+            (int) PCLPaperSizes.eIndex.CN_16K_184x260,
+            (int) PCLPaperSizes.eIndex.CN_16K_195x270,
+            (int) PCLPaperSizes.eIndex.Oficio_216x340,
+            (int) PCLPaperSizes.eIndex.Card_10x15cm,
+            (int) PCLPaperSizes.eIndex.Card_3x5,
+            (int) PCLPaperSizes.eIndex.Card_4x6,
+            (int) PCLPaperSizes.eIndex.Card_5x7,
+            (int) PCLPaperSizes.eIndex.Card_5x8,
+            (int) PCLPaperSizes.eIndex.Custom,
         };
 
-        private static Int32[] _subsetPlexModes =
+        private static int[] _subsetPlexModes =
         {
-            (Int32) PCLPlexModes.eIndex.Simplex,
-            (Int32) PCLPlexModes.eIndex.DuplexLongEdge,
-            (Int32) PCLPlexModes.eIndex.DuplexShortEdge
+            (int) PCLPlexModes.eIndex.Simplex,
+            (int) PCLPlexModes.eIndex.DuplexLongEdge,
+            (int) PCLPlexModes.eIndex.DuplexShortEdge
         };
 
-        private static Int32[] _subsetPaperTypes =
+        private static int[] _subsetPaperTypes =
         {
-            (Int32) PCLPaperTypes.eIndex.NotSet,
-            (Int32) PCLPaperTypes.eIndex.Plain
+            (int) PCLPaperTypes.eIndex.NotSet,
+            (int) PCLPaperTypes.eIndex.Plain
         };
 
         //--------------------------------------------------------------------//
@@ -102,42 +102,42 @@ namespace PCLParaphernalia
 
         private ToolCommonData.ePrintLang _crntPDL;
 
-        private Int32 _ctPDLs;
-        private Int32 _ctOrientations;
-        private Int32 _ctPaperSizes;
-        private Int32 _ctPaperTypes;
-        private Int32 _ctPlexModes;
-        private Int32 _ctPJLCommands;
+        private int _ctPDLs;
+        private int _ctOrientations;
+        private int _ctPaperSizes;
+        private int _ctPaperTypes;
+        private int _ctPlexModes;
+        private int _ctPJLCommands;
 
-        private Int32 _indxPDL;
-        private Int32 _indxOrientationPCL;
-        private Int32 _indxOrientationPCLXL;
-        private Int32 _indxPaperSizePCL;
-        private Int32 _indxPaperSizePCLXL;
-        private Int32 _indxPaperTypePCL;
-        private Int32 _indxPaperTypePCLXL;
-        private Int32 _indxPlexModePCL;
-        private Int32 _indxPlexModePCLXL;
-        private Int32 _indxPJLCommandPCL;
-        private Int32 _indxPJLCommandPCLXL;
+        private int _indxPDL;
+        private int _indxOrientationPCL;
+        private int _indxOrientationPCLXL;
+        private int _indxPaperSizePCL;
+        private int _indxPaperSizePCLXL;
+        private int _indxPaperTypePCL;
+        private int _indxPaperTypePCLXL;
+        private int _indxPlexModePCL;
+        private int _indxPlexModePCLXL;
+        private int _indxPJLCommandPCL;
+        private int _indxPJLCommandPCLXL;
 
-        private UInt16 _customShortEdgeDots;
-        private UInt16 _customShortEdgeDotsPCL;
-        private UInt16 _customShortEdgeDotsPCLXL;
-        private UInt16 _customLongEdgeDots;
-        private UInt16 _customLongEdgeDotsPCL;
-        private UInt16 _customLongEdgeDotsPCLXL;
+        private ushort _customShortEdgeDots;
+        private ushort _customShortEdgeDotsPCL;
+        private ushort _customShortEdgeDotsPCLXL;
+        private ushort _customLongEdgeDots;
+        private ushort _customLongEdgeDotsPCL;
+        private ushort _customLongEdgeDotsPCLXL;
 
-        private Boolean _formAsMacroPCL;
-        private Boolean _formAsMacroPCLXL;
-        private Boolean _flagCustomPaperSize;
-        private Boolean _flagTrayIdUnknown;
-        private Boolean _flagForceCustomPaperSize;
-        private Boolean _flagCustomUseMetric;
-        private Boolean _flagCustomUseMetricPCL;
-        private Boolean _flagCustomUseMetricPCLXL;
+        private bool _formAsMacroPCL;
+        private bool _formAsMacroPCLXL;
+        private bool _flagCustomPaperSize;
+        private bool _flagTrayIdUnknown;
+        private bool _flagForceCustomPaperSize;
+        private bool _flagCustomUseMetric;
+        private bool _flagCustomUseMetricPCL;
+        private bool _flagCustomUseMetricPCLXL;
 
-        private Boolean _initialised;
+        private bool _initialised;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -188,9 +188,9 @@ namespace PCLParaphernalia
 
             try
             {
-                String pjlCommand;
+                string pjlCommand;
 
-                Int32 indxPaperSize;
+                int indxPaperSize;
 
                 BinaryWriter binWriter = null;
 
@@ -213,7 +213,7 @@ namespace PCLParaphernalia
                     {
                         PCLPaperSizes.customDataCopy(indxPaperSize);
 
-                        indxPaperSize = (Int32)PCLPaperSizes.eIndex.Custom;
+                        indxPaperSize = (int)PCLPaperSizes.eIndex.Custom;
                     }
 
                     ToolPrintAreaPCL.generateJob(
@@ -238,7 +238,7 @@ namespace PCLParaphernalia
                     {
                         PCLPaperSizes.customDataCopy(indxPaperSize);
 
-                        indxPaperSize = (Int32)PCLPaperSizes.eIndex.Custom;
+                        indxPaperSize = (int)PCLPaperSizes.eIndex.Custom;
                     }
 
                     ToolPrintAreaPCLXL.generateJob(
@@ -400,7 +400,7 @@ namespace PCLParaphernalia
         {
             if (_initialised && cbPlexMode.HasItems)
             {
-                Int32 plexMode = cbPlexMode.SelectedIndex;
+                int plexMode = cbPlexMode.SelectedIndex;
 
                 if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                     _indxPlexModePCL = plexMode;
@@ -467,7 +467,7 @@ namespace PCLParaphernalia
 
         private void initialise()
         {
-            Int32 index;
+            int index;
 
             _initialised = false;
 
@@ -481,7 +481,7 @@ namespace PCLParaphernalia
 
             _ctPDLs = _subsetPDLs.Length;
 
-            for (Int32 i = 0; i < _ctPDLs; i++)
+            for (int i = 0; i < _ctPDLs; i++)
             {
                 index = _subsetPDLs[i];
 
@@ -495,7 +495,7 @@ namespace PCLParaphernalia
 
             _ctOrientations = _subsetOrientations.Length;
 
-            for (Int32 i = 0; i < _ctOrientations; i++)
+            for (int i = 0; i < _ctOrientations; i++)
             {
                 index = _subsetOrientations[i];
 
@@ -508,7 +508,7 @@ namespace PCLParaphernalia
 
             _ctPaperSizes = _subsetPaperSizes.Length;
 
-            for (Int32 i = 0; i < _ctPaperSizes; i++)
+            for (int i = 0; i < _ctPaperSizes; i++)
             {
                 index = _subsetPaperSizes[i];
 
@@ -521,7 +521,7 @@ namespace PCLParaphernalia
 
             _ctPaperTypes = _subsetPaperTypes.Length;
 
-            for (Int32 i = 0; i < _ctPaperTypes; i++)
+            for (int i = 0; i < _ctPaperTypes; i++)
             {
                 index = _subsetPaperTypes[i];
 
@@ -534,7 +534,7 @@ namespace PCLParaphernalia
 
             _ctPlexModes = _subsetPlexModes.Length;
 
-            for (Int32 i = 0; i < _ctPlexModes; i++)
+            for (int i = 0; i < _ctPlexModes; i++)
             {
                 index = _subsetPlexModes[i];
 
@@ -567,7 +567,7 @@ namespace PCLParaphernalia
 
             pdlOptionsRestore();
 
-            cbPDL.SelectedIndex = (Byte)_indxPDL;
+            cbPDL.SelectedIndex = (byte)_indxPDL;
 
             if (_flagCustomUseMetric)
                 rbCustomUseMetric.IsChecked = true;
@@ -669,7 +669,7 @@ namespace PCLParaphernalia
         {
             pdlOptionsStore();
 
-            ToolPrintAreaPersist.saveDataCommon((Int32)_indxPDL);
+            ToolPrintAreaPersist.saveDataCommon((int)_indxPDL);
 
             ToolPrintAreaPersist.saveDataPCL("PCL",
                                              _indxOrientationPCL,
@@ -891,11 +891,11 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.eTarget.NetPrinter)
             {
-                String netPrnAddress = "";
-                Int32 netPrnPort = 0;
+                string netPrnAddress = "";
+                int netPrnPort = 0;
 
-                Int32 netTimeoutSend = 0;
-                Int32 netTimeoutReceive = 0;
+                int netTimeoutSend = 0;
+                int netTimeoutReceive = 0;
 
                 TargetCore.metricsLoadNetPrinter(ref netPrnAddress,
                                                   ref netPrnPort,
@@ -909,7 +909,7 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.eTarget.WinPrinter)
             {
-                String winPrintername = "";
+                string winPrintername = "";
 
                 TargetCore.metricsLoadWinPrinter(ref winPrintername);
 
@@ -930,7 +930,7 @@ namespace PCLParaphernalia
 
         private void setCustomPaperControls()
         {
-            Int32 indxPaperSize;
+            int indxPaperSize;
 
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                 indxPaperSize = _subsetPaperSizes[_indxPaperSizePCL];
@@ -995,7 +995,7 @@ namespace PCLParaphernalia
 
         private void setPaperIdentifiers()
         {
-            Int32 indxPaperSize;
+            int indxPaperSize;
 
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
             {
@@ -1039,7 +1039,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                String idName = "";
+                string idName = "";
 
                 indxPaperSize = _subsetPaperSizes[_indxPaperSizePCLXL];
 
@@ -1102,24 +1102,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setPaperMetrics(Boolean logicalOnly)
+        private void setPaperMetrics(bool logicalOnly)
         {
-            const Int32 zero = 0;
+            const int zero = 0;
 
             PCLOrientations.eAspect aspect;
 
-            Int32 indxOrientation,
+            int indxOrientation,
                   indxPaperSize,
                   indxPaperType;
 
-            UInt16 sizeShortEdge,
+            ushort sizeShortEdge,
                    sizeLongEdge,
                    marginsLogicalLand,
                    marginsLogicalPort,
                    marginsLogical,
                    marginsUnprintable;
 
-            UInt16 widthPrintable,
+            ushort widthPrintable,
                    widthLogical,
                    lengthPrintable,
                    lengthLogical;
@@ -1161,31 +1161,31 @@ namespace PCLParaphernalia
             {
                 marginsLogical = marginsLogicalPort;
 
-                widthPrintable = (UInt16)(sizeShortEdge -
+                widthPrintable = (ushort)(sizeShortEdge -
                                           (marginsUnprintable * 2));
 
-                widthLogical = (UInt16)(sizeShortEdge -
+                widthLogical = (ushort)(sizeShortEdge -
                                           (marginsLogicalPort * 2));
 
-                lengthPrintable = (UInt16)(sizeLongEdge -
+                lengthPrintable = (ushort)(sizeLongEdge -
                                           (marginsUnprintable * 2));
 
-                lengthLogical = (UInt16)(sizeLongEdge);
+                lengthLogical = (ushort)(sizeLongEdge);
             }
             else
             {
                 marginsLogical = marginsLogicalLand;
 
-                widthPrintable = (UInt16)(sizeLongEdge -
+                widthPrintable = (ushort)(sizeLongEdge -
                                           (marginsUnprintable * 2));
 
-                widthLogical = (UInt16)(sizeLongEdge -
+                widthLogical = (ushort)(sizeLongEdge -
                                           (marginsLogicalLand * 2));
 
-                lengthPrintable = (UInt16)(sizeShortEdge -
+                lengthPrintable = (ushort)(sizeShortEdge -
                                           (marginsUnprintable * 2));
 
-                lengthLogical = (UInt16)(sizeShortEdge);
+                lengthLogical = (ushort)(sizeShortEdge);
             }
 
             //----------------------------------------------------------------//
@@ -1432,29 +1432,29 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validateEdgeImperial(Boolean shortEdge,
-                                             Boolean lostFocusEvent)
+        private bool validateEdgeImperial(bool shortEdge,
+                                             bool lostFocusEvent)
         {
-            const Double scaleToDots = 1 / _unitsToInches;
-            const Double minValShort = 3.00;
-            const Double maxValShort = 12.00;
-            const Double minValLong = 5.00;
-            const Double maxValLong = 18.00;
-            const Double defValShort = 8.27;  // A4 dimension
-            const Double defValLong = 11.69;
+            const double scaleToDots = 1 / _unitsToInches;
+            const double minValShort = 3.00;
+            const double maxValShort = 12.00;
+            const double minValLong = 5.00;
+            const double maxValLong = 18.00;
+            const double defValShort = 8.27;  // A4 dimension
+            const double defValLong = 11.69;
 
-            Double minVal,
+            double minVal,
                    maxVal,
                    value = 0;
 
-            UInt16 valueDots = 0;
+            ushort valueDots = 0;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText;
-            String edgeThis;
-            String edgeOther;
-            String edgeOtherVal;
+            string crntText;
+            string edgeThis;
+            string edgeOther;
+            string edgeOtherVal;
 
             if (shortEdge)
             {
@@ -1479,13 +1479,13 @@ namespace PCLParaphernalia
                 crntText = txtLongEdgeImperial.Text;
             }
 
-            OK = Double.TryParse(crntText, out value);
+            OK = double.TryParse(crntText, out value);
 
             if ((value < minVal) || (value > maxVal))
                 OK = false;
             else
             {
-                valueDots = (UInt16)(value * scaleToDots);
+                valueDots = (ushort)(value * scaleToDots);
 
                 if (shortEdge)
                 {
@@ -1525,7 +1525,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                String errData = edgeThis + " Edge value " + crntText +
+                string errData = edgeThis + " Edge value " + crntText +
                                  " inch is invalid, or incompatible with " +
                                  edgeOther + " Edge value.\n\n" +
                                  "Valid range is :\n\t" +
@@ -1535,7 +1535,7 @@ namespace PCLParaphernalia
                                  " inch.";
                 if (lostFocusEvent)
                 {
-                    String newText;
+                    string newText;
 
                     if (shortEdge)
                         newText = defValShort.ToString("F2");
@@ -1552,14 +1552,14 @@ namespace PCLParaphernalia
                     if (shortEdge)
                     {
                         _customShortEdgeDots =
-                            (UInt16)(defValShort * scaleToDots);
+                            (ushort)(defValShort * scaleToDots);
 
                         txtShortEdgeImperial.Text = newText;
                     }
                     else
                     {
                         _customLongEdgeDots =
-                            (UInt16)(defValLong * scaleToDots);
+                            (ushort)(defValLong * scaleToDots);
 
                         txtLongEdgeImperial.Text = newText;
                     }
@@ -1598,30 +1598,30 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validateEdgeMetric(Boolean shortEdge,
-                                           Boolean lostFocusEvent)
+        private bool validateEdgeMetric(bool shortEdge,
+                                           bool lostFocusEvent)
         {
-            const Double scaleToDots = 1 / _unitsToMilliMetres;
-            const Double scaleMinMax = _sessionUPI * _unitsToMilliMetres;
-            const Double minValShort = scaleMinMax * 3.00;
-            const Double maxValShort = scaleMinMax * 12.00;
-            const Double minValLong = scaleMinMax * 5.00;
-            const Double maxValLong = scaleMinMax * 18.00;
-            const Double defValShort = 210;  // A4 dimension
-            const Double defValLong = 297;
+            const double scaleToDots = 1 / _unitsToMilliMetres;
+            const double scaleMinMax = _sessionUPI * _unitsToMilliMetres;
+            const double minValShort = scaleMinMax * 3.00;
+            const double maxValShort = scaleMinMax * 12.00;
+            const double minValLong = scaleMinMax * 5.00;
+            const double maxValLong = scaleMinMax * 18.00;
+            const double defValShort = 210;  // A4 dimension
+            const double defValLong = 297;
 
-            Double minVal,
+            double minVal,
                    maxVal,
                    value = 0;
 
-            UInt16 valueDots = 0;
+            ushort valueDots = 0;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText;
-            String edgeThis;
-            String edgeOther;
-            String edgeOtherVal;
+            string crntText;
+            string edgeThis;
+            string edgeOther;
+            string edgeOtherVal;
 
             if (shortEdge)
             {
@@ -1646,13 +1646,13 @@ namespace PCLParaphernalia
                 crntText = txtLongEdgeMetric.Text;
             }
 
-            OK = Double.TryParse(crntText, out value);
+            OK = double.TryParse(crntText, out value);
 
             if ((value < minVal) || (value > maxVal))
                 OK = false;
             else
             {
-                valueDots = (UInt16)(value * scaleToDots);
+                valueDots = (ushort)(value * scaleToDots);
 
                 if (shortEdge)
                 {
@@ -1692,7 +1692,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                String errData = edgeThis + " Edge value " + crntText +
+                string errData = edgeThis + " Edge value " + crntText +
                                  " mm is invalid, or incompatible with " +
                                  edgeOther + " Edge value.\n\n" +
                                  "Valid range is :\n\t" +
@@ -1703,7 +1703,7 @@ namespace PCLParaphernalia
 
                 if (lostFocusEvent)
                 {
-                    String newText;
+                    string newText;
 
                     if (shortEdge)
                         newText = defValShort.ToString("F0");
@@ -1720,14 +1720,14 @@ namespace PCLParaphernalia
                     if (shortEdge)
                     {
                         _customShortEdgeDots =
-                            (UInt16)(defValShort * scaleToDots);
+                            (ushort)(defValShort * scaleToDots);
 
                         txtShortEdgeMetric.Text = newText;
                     }
                     else
                     {
                         _customLongEdgeDots =
-                            (UInt16)(defValLong * scaleToDots);
+                            (ushort)(defValLong * scaleToDots);
 
                         txtLongEdgeMetric.Text = newText;
                     }

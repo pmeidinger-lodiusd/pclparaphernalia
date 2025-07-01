@@ -20,9 +20,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Int32 _minHddrDescLen = 64;
+        const int _minHddrDescLen = 64;
 
-        const UInt16 _defaultPCLDotRes = 300;
+        const ushort _defaultPCLDotRes = 300;
 
         private enum ePCLFontFormat : byte
         {
@@ -67,14 +67,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean fontFileCopy(BinaryWriter prnWriter,
-                                           String fontFilename)
+        public static bool fontFileCopy(BinaryWriter prnWriter,
+                                           string fontFilename)
         {
-            Boolean OK = true;
+            bool OK = true;
 
-            Boolean fileOpen = false;
+            bool fileOpen = false;
 
-            Int64 fileSize = 0;
+            long fileSize = 0;
 
             fileOpen = fontFileOpen(fontFilename, ref fileSize);
 
@@ -84,12 +84,12 @@ namespace PCLParaphernalia
             }
             else
             {
-                const Int32 bufSize = 2048;
-                Int32 readSize;
+                const int bufSize = 2048;
+                int readSize;
 
-                Boolean endLoop;
+                bool endLoop;
 
-                Byte[] buf = new Byte[bufSize];
+                byte[] buf = new byte[bufSize];
 
                 endLoop = false;
 
@@ -118,10 +118,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean fontFileOpen(String fileName,
-                                            ref Int64 fileSize)
+        private static bool fontFileOpen(string fileName,
+                                            ref long fileSize)
         {
-            Boolean open = false;
+            bool open = false;
 
             if ((fileName == null) || (fileName == ""))
             {
@@ -247,28 +247,28 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean getFontCharacteristics(
-            String fontFilename,
-            ref Boolean proportional,
-            ref Boolean scalable,
-            ref Boolean bound,
-            ref Double pitch,
-            ref Double height,
-            ref UInt16 style,
-            ref Int16 weight,
-            ref UInt16 typeface,
-            ref UInt16 symSetNo,
+        public static bool getFontCharacteristics(
+            string fontFilename,
+            ref bool proportional,
+            ref bool scalable,
+            ref bool bound,
+            ref double pitch,
+            ref double height,
+            ref ushort style,
+            ref short weight,
+            ref ushort typeface,
+            ref ushort symSetNo,
             ref PCLSymSetTypes.eIndex symSetType)
         {
-            Boolean OK = true;
+            bool OK = true;
 
-            Boolean fileOpen = false;
+            bool fileOpen = false;
 
-            UInt16 hddrLen = 0;
+            ushort hddrLen = 0;
 
-            Int32 fileOffset = 0;
+            int fileOffset = 0;
 
-            Int64 fontFileSize = 0;
+            long fontFileSize = 0;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -322,40 +322,40 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean getFontSelectionData(
-            Int32 hddrOffset,
-            Int32 hddrLen,
-            ref Boolean proportional,
-            ref Boolean scalable,
-            ref Boolean bound,
-            ref Double pitch,
-            ref Double height,
-            ref UInt16 style,
-            ref Int16 weight,
-            ref UInt16 typeface,
-            ref UInt16 symSetNo,
+        private static bool getFontSelectionData(
+            int hddrOffset,
+            int hddrLen,
+            ref bool proportional,
+            ref bool scalable,
+            ref bool bound,
+            ref double pitch,
+            ref double height,
+            ref ushort style,
+            ref short weight,
+            ref ushort typeface,
+            ref ushort symSetNo,
             ref PCLSymSetTypes.eIndex symSetType)
         {
-            Boolean OK = true;
+            bool OK = true;
 
-            UInt16 hddrDescLen;
+            ushort hddrDescLen;
 
-            Byte[] hddr;
+            byte[] hddr;
 
-            Boolean bitmapFont = false;
+            bool bitmapFont = false;
 
-            UInt16 dotResX,
+            ushort dotResX,
                    dotResY;
 
-            Byte[] buf = new Byte[2];
+            byte[] buf = new byte[2];
 
             _ipStream.Seek(hddrOffset, SeekOrigin.Begin);
 
             _binReader.Read(buf, 0, 2);
 
-            hddrDescLen = (UInt16)((buf[0] << 8) + buf[1]);
+            hddrDescLen = (ushort)((buf[0] << 8) + buf[1]);
 
-            hddr = new Byte[hddrDescLen];       // if universal bitmap, want whole header read, inclduing segments
+            hddr = new byte[hddrDescLen];       // if universal bitmap, want whole header read, inclduing segments
 
             _ipStream.Seek(hddrOffset, SeekOrigin.Begin);
 
@@ -414,18 +414,18 @@ namespace PCLParaphernalia
                 {
                     // need to read BR segment to get resolutions
 
-                    Boolean endSegs = false;
+                    bool endSegs = false;
 
-                    Byte[] segData;
+                    byte[] segData;
 
-                    Int32 segDataLen;
-                    Int32 segSize;
-                    Int32 segType;
-                    Int32 offset;
+                    int segDataLen;
+                    int segSize;
+                    int segType;
+                    int offset;
 
                     segDataLen = hddrLen - hddrDescLen;
 
-                    segData = new Byte[segDataLen];
+                    segData = new byte[segDataLen];
 
                     //      _ipStream.Seek (hddrOffset, SeekOrigin.Begin); // already at correct position ?
 
@@ -453,9 +453,9 @@ namespace PCLParaphernalia
                             ((offset + 6 + segSize) < hddrLen))
                         {
                             // BR
-                            dotResX = (UInt16)((segData[offset + 6] << 8) +
+                            dotResX = (ushort)((segData[offset + 6] << 8) +
                                                 segData[offset + 7]);
-                            dotResY = (UInt16)((segData[offset + 8] << 8) +
+                            dotResY = (ushort)((segData[offset + 8] << 8) +
                                                 segData[offset + 9]);
                         }
                         else if (segType == 0xffff)
@@ -476,8 +476,8 @@ namespace PCLParaphernalia
             }
             else if (hddrFormat == ePCLFontFormat.BitmapResSpec)
             {
-                dotResX = (UInt16)((hddr[64] << 8) + hddr[65]);
-                dotResY = (UInt16)((hddr[66] << 8) + hddr[67]);
+                dotResX = (ushort)((hddr[64] << 8) + hddr[65]);
+                dotResY = (ushort)((hddr[66] << 8) + hddr[67]);
             }
             else //if (hddrFormat == PCLSoftFonts.eIdHddrFormat.BitmapResSpec)
             {
@@ -489,7 +489,7 @@ namespace PCLParaphernalia
 
             symSetType = PCLSymSetTypes.getIndexForIdPCL(hddr[3]);
 
-            bound = PCLSymSetTypes.isBound((Int32)symSetType);
+            bound = PCLSymSetTypes.isBound((int)symSetType);
 
             //----------------------------------------------------------------//
 
@@ -500,18 +500,18 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            symSetNo = (UInt16)((hddr[14] << 8) + hddr[15]);
+            symSetNo = (ushort)((hddr[14] << 8) + hddr[15]);
 
             //----------------------------------------------------------------//
 
             if (bitmapFont)
             {
-                UInt16 dotsQtr = 0;
-                UInt16 dotsExt = 0;
-                Double dotsK = 0.0;
+                ushort dotsQtr = 0;
+                ushort dotsExt = 0;
+                double dotsK = 0.0;
 
-                dotsQtr = (UInt16)((hddr[16] << 8) + hddr[17]);
-                dotsExt = (UInt16)(hddr[40]);
+                dotsQtr = (ushort)((hddr[16] << 8) + hddr[17]);
+                dotsExt = (ushort)(hddr[40]);
                 dotsK = (dotsQtr << 8) + dotsExt;
 
                 if ((dotsQtr == 0) && (dotsExt == 0))
@@ -524,8 +524,8 @@ namespace PCLParaphernalia
                     pitch = (dotResX << 10) / dotsK;
                 }
 
-                dotsQtr = (UInt16)((hddr[18] << 8) + hddr[19]);
-                dotsExt = (UInt16)(hddr[41]);
+                dotsQtr = (ushort)((hddr[18] << 8) + hddr[19]);
+                dotsExt = (ushort)(hddr[41]);
 
                 if ((dotsQtr == 0) && (dotsExt == 0))
                 {
@@ -545,9 +545,9 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            style = (UInt16)((hddr[4] << 8) + hddr[23]);
-            weight = (Int16)hddr[24];
-            typeface = (UInt16)((hddr[26] << 8) + hddr[25]);
+            style = (ushort)((hddr[4] << 8) + hddr[23]);
+            weight = (short)hddr[24];
+            typeface = (ushort)((hddr[26] << 8) + hddr[25]);
 
             //----------------------------------------------------------------//
 
@@ -564,22 +564,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean readHddrIntro(
-            String fileName,
-            Int64 fontFileSize,
-            ref Int32 fileOffset,
-            ref UInt16 hddrLen)
+        private static bool readHddrIntro(
+            string fileName,
+            long fontFileSize,
+            ref int fileOffset,
+            ref ushort hddrLen)
         {
-            String messHeader = "Download font file '" + fileName + "':\r\n";
-            String messTrailer = "\r\nYou will have to choose another file.";
+            string messHeader = "Download font file '" + fileName + "':\r\n";
+            string messTrailer = "\r\nYou will have to choose another file.";
 
-            Boolean OK = false;
+            bool OK = false;
 
-            UInt16 value = 0;
+            ushort value = 0;
 
-            UInt16 seqLen = 0;
+            ushort seqLen = 0;
 
-            Byte[] buf = new Byte[3];
+            byte[] buf = new byte[3];
 
             _binReader.Read(buf, 0, 3);
 
@@ -591,9 +591,9 @@ namespace PCLParaphernalia
             }
             else
             {
-                Byte x;
+                byte x;
 
-                for (Int32 i = 0; i < 12; i++)
+                for (int i = 0; i < 12; i++)
                 {
                     x = _binReader.ReadByte();
 
@@ -601,7 +601,7 @@ namespace PCLParaphernalia
                     {
                         OK = true;
 
-                        seqLen = (UInt16)(i + 4);
+                        seqLen = (ushort)(i + 4);
 
                         i = 12;
                     }
@@ -610,7 +610,7 @@ namespace PCLParaphernalia
                     else if (x > '\x39')
                         OK = false;
                     else
-                        value = (UInt16)((value * 10) + (x - '\x30'));
+                        value = (ushort)((value * 10) + (x - '\x30'));
                 }
             }
 

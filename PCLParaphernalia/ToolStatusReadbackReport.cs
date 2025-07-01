@@ -30,14 +30,14 @@ namespace PCLParaphernalia
 
         public static void generate(ReportCore.eRptFileFmt rptFileFmt,
                                      TextBox txtReply,
-                                     ref String saveFilename)
+                                     ref string saveFilename)
         {
-            Object stream = null;
-            Object writer = null;
+            object stream = null;
+            object writer = null;
 
-            Boolean OK = false;
+            bool OK = false;
 
-            String saveFolder = null,
+            string saveFolder = null,
                    fileExt;
 
             ToolCommonFunctions.getFolderName(saveFilename,
@@ -84,22 +84,22 @@ namespace PCLParaphernalia
 
         private static void reportBody(
             ReportCore.eRptFileFmt rptFileFmt,
-            Object writer,
+            object writer,
             TextBox txtReply)
         {
-            const Int32 maxLineLen = 127;
+            const int maxLineLen = 127;
 
-            Int32 ct;
+            int ct;
 
             ReportCore.lineBlockOpen(writer, rptFileFmt);
 
             ct = txtReply.LineCount;
 
-            for (Int32 i = 0; i < ct; i++)
+            for (int i = 0; i < ct; i++)
             {
-                String line = txtReply.GetLineText(i);
+                string line = txtReply.GetLineText(i);
 
-                String removedCC = line.Replace("\r\n", "")    // not "<CR><LF>")
+                string removedCC = line.Replace("\r\n", "")    // not "<CR><LF>")
                                        .Replace("\n", "")    // not "<LF>")
                                        .Replace("\r", "")    // not "<CR>")
                                        .Replace("\f", "<FF>")

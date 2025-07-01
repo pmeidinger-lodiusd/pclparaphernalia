@@ -24,18 +24,18 @@ namespace PCLParaphernalia
 
         public static void generateRequest(BinaryWriter prnWriter,
                                             PJLCommands.eCmdIndex cmdIndx,
-                                            Int32 indexCategory,
-                                            Int32 indexVariable,
-                                            String customCat,
-                                            String customVar)
+                                            int indexCategory,
+                                            int indexVariable,
+                                            string customCat,
+                                            string customVar)
         {
-            String seq;
+            string seq;
 
             if (cmdIndx != PJLCommands.eCmdIndex.Unknown)
             {
                 PJLCommands.eRequestType reqType;
 
-                String cmdName;
+                string cmdName;
 
                 reqType = PJLCommands.getType(cmdIndx);
                 cmdName = PJLCommands.getName(cmdIndx);
@@ -57,7 +57,7 @@ namespace PCLParaphernalia
                         }
                         else
                         {
-                            String categoryName;
+                            string categoryName;
 
                             categoryName = PJLCategories.getName(indexCategory);
 
@@ -91,8 +91,8 @@ namespace PCLParaphernalia
                         }
                         else
                         {
-                            String variableName;
-                            String personality;
+                            string variableName;
+                            string personality;
 
                             variableName = PJLVariables.getName(indexVariable);
 
@@ -151,22 +151,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String readResponse()
+        public static string readResponse()
         {
-            const Int32 replyBufLen = 32768;
+            const int replyBufLen = 32768;
 
-            Byte[] replyData = new Byte[replyBufLen];
+            byte[] replyData = new byte[replyBufLen];
 
-            Int32 replyLen = 0;
+            int replyLen = 0;
 
-            Boolean readFF_A = false;            // two <FF>s expected //
-            Boolean OK = false;
-            Boolean replyComplete = false;
+            bool readFF_A = false;            // two <FF>s expected //
+            bool OK = false;
+            bool replyComplete = false;
 
-            Int32 offset = 0;
-            Int32 endOffset = 0;
-            Int32 bufRem = replyBufLen;
-            Int32 blockLen = 0;
+            int offset = 0;
+            int endOffset = 0;
+            int bufRem = replyBufLen;
+            int blockLen = 0;
 
             while (!replyComplete)
             {
@@ -194,7 +194,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    for (Int32 i = offset; i < endOffset; i++)
+                    for (int i = offset; i < endOffset; i++)
                     {
                         if (replyData[i] == 0x0c)
                         {

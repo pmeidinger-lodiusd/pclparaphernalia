@@ -46,8 +46,8 @@ namespace PCLParaphernalia
             BadSeqB
         }
 
-        const Int32 _cHddrDescLen = 8; // Format 0 header
-        const Int32 _cSegHddrLen = 6; // type (2) + size (4)
+        const int _cHddrDescLen = 8; // Format 0 header
+        const int _cSegHddrLen = 6; // type (2) + size (4)
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -64,21 +64,21 @@ namespace PCLParaphernalia
         private eStage _nextStage;
         private ePCLXLFontFormat _hddrFormat;
 
-        private Byte[] _buf;
+        private byte[] _buf;
 
-        private Int32 _fileOffset;
-        private Int32 _analysisLevel;
+        private int _fileOffset;
+        private int _analysisLevel;
 
-        private Boolean _validHddr;
-        private Boolean _firstSeg;
+        private bool _validHddr;
+        private bool _firstSeg;
 
-        private Int32 _hddrLen;
-        private Int32 _hddrRem;
-        private Int32 _hddrPos;
-        private Int32 _hddrDataLen;
-        private Int32 _hddrDataRem;
+        private int _hddrLen;
+        private int _hddrRem;
+        private int _hddrPos;
+        private int _hddrDataLen;
+        private int _hddrDataRem;
 
-        private Boolean _showBinData;
+        private bool _showBinData;
 
         private PrnParseConstants.eOptOffsetFormats _indxOffsetFormat;
 
@@ -103,21 +103,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean analyseFontHddr(Int32 hddrLen,
-                                       Byte[] buf,
-                                       Int32 fileOffset,
-                                       ref Int32 bufRem,
-                                       ref Int32 bufOffset,
+        public bool analyseFontHddr(int hddrLen,
+                                       byte[] buf,
+                                       int fileOffset,
+                                       ref int bufRem,
+                                       ref int bufOffset,
                                        PrnParseLinkData linkData,
                                        PrnParseOptions options,
                                        DataTable table)
         {
-            Int32 binDataLen;
-            Boolean validSegs = false;
+            int binDataLen;
+            bool validSegs = false;
 
             PrnParseConstants.eContType contType;
 
-            Boolean continuation = false;
+            bool continuation = false;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -209,7 +209,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                Int32 dummy = 0;
+                int dummy = 0;
 
                 continuation = _parseSegs.processSegData(_buf,
                                                           _fileOffset,
@@ -338,18 +338,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processFontHeader(ref Int32 bufLen,
-                                       ref Int32 bufOffset)
+        private void processFontHeader(ref int bufLen,
+                                       ref int bufOffset)
         {
-            Char c;
+            char c;
 
-            Int32 ix1,
+            int ix1,
                   ix2,
                   ix3;
 
-            Int32 indxSymSet;
+            int indxSymSet;
 
-            String itemDesc;
+            string itemDesc;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -532,10 +532,10 @@ namespace PCLParaphernalia
 
                 ix2 = ix1 >> 5;
                 ix3 = (ix1 & 0x1f) + 64;
-                c = (Char)ix3;
+                c = (char)ix3;
 
                 indxSymSet =
-                    PCLSymbolSets.getIndexForId((UInt16)ix1);
+                    PCLSymbolSets.getIndexForId((ushort)ix1);
 
                 PrnParseCommon.addTextRow(
                     PrnParseRowTypes.eType.PCLXLFontHddr,

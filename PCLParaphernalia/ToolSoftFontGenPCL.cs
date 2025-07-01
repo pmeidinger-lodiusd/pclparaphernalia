@@ -21,13 +21,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Int32 cSizeHddrFmt15Max = 0xffff;
-        const Int32 cSizeHddrDesc = 72;
-        const Int32 cSizeHddrTrail = 2;
+        const int cSizeHddrFmt15Max = 0xffff;
+        const int cSizeHddrDesc = 72;
+        const int cSizeHddrTrail = 2;
 
-        const Int32 cSizeCharHddr = 4;
-        const Int32 cSizeCharGlyphHddr = 4;
-        const Int32 cSizeCharTrail = 2;
+        const int cSizeCharHddr = 4;
+        const int cSizeCharGlyphHddr = 4;
+        const int cSizeCharTrail = 2;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -44,7 +44,7 @@ namespace PCLParaphernalia
 
         private DataTable _tableLog;
 
-        private Boolean _symbolMapping = false;
+        private bool _symbolMapping = false;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -71,26 +71,26 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean generateFont(ref String pclFilename,
-                                     ref Boolean monoSpaced,
-                                     Boolean symbolMapping,
-                                     Boolean fmt16,
-                                     Boolean segGTLast,
-                                     Boolean usePCLT,
-                                     Boolean symSetUnbound,
-                                     Boolean tabvmtxPresent,
-                                     Boolean flagVMetrics,
-                                     Byte symSetType,
-                                     Int32 sizeCharSet,
-                                     UInt16 symSet,
-                                     UInt16 style,
-                                     SByte strokeWeight,
-                                     UInt16 typeface,
-                                     UInt64 charCollComp,
-                                     Byte[] conversionText)
+        public bool generateFont(ref string pclFilename,
+                                     ref bool monoSpaced,
+                                     bool symbolMapping,
+                                     bool fmt16,
+                                     bool segGTLast,
+                                     bool usePCLT,
+                                     bool symSetUnbound,
+                                     bool tabvmtxPresent,
+                                     bool flagVMetrics,
+                                     byte symSetType,
+                                     int sizeCharSet,
+                                     ushort symSet,
+                                     ushort style,
+                                     sbyte strokeWeight,
+                                     ushort typeface,
+                                     ulong charCollComp,
+                                     byte[] conversionText)
         {
-            Boolean flagOK = true;
-            Boolean useVMetrics;
+            bool flagOK = true;
+            bool useVMetrics;
 
             if (fmt16)
                 useVMetrics = flagVMetrics;
@@ -132,14 +132,14 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                UInt16 numChars = 0,
+                ushort numChars = 0,
                        firstCode = 0,
                        lastCode = 0,
                        maxGlyphId = 0,
                        maxComponentDepth = 0,
                        unitsPerEm = 0;
 
-                Boolean glyphZeroExists = false;
+                bool glyphZeroExists = false;
 
                 _ttfHandler.glyphReferencedUnmarkAll();
 
@@ -226,9 +226,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Byte lsByte(UInt16 value)
+        private byte lsByte(ushort value)
         {
-            return (Byte)(value & 0x00ff);
+            return (byte)(value & 0x00ff);
         }
 
         //--------------------------------------------------------------------//
@@ -241,9 +241,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private UInt16 lsUInt16(UInt32 value)
+        private ushort lsUInt16(uint value)
         {
-            return (UInt16)(value & 0x0000ffff);
+            return (ushort)(value & 0x0000ffff);
         }
 
         //--------------------------------------------------------------------//
@@ -256,9 +256,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Byte msByte(UInt16 value)
+        private byte msByte(ushort value)
         {
-            return (Byte)((value & 0xff00) >> 8);
+            return (byte)((value & 0xff00) >> 8);
         }
 
         //--------------------------------------------------------------------//
@@ -271,9 +271,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private UInt16 msUInt16(UInt32 value)
+        private ushort msUInt16(uint value)
         {
-            return (UInt16)((value & 0xffff0000) >> 16);
+            return (ushort)((value & 0xffff0000) >> 16);
         }
 
         //--------------------------------------------------------------------//
@@ -294,31 +294,31 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void writeChar(UInt16 charCode,
-                                UInt16 codepoint,
-                                UInt16 glyphId,
-                                UInt16 depth,
-                                UInt16 maxGlyphId)
+        private void writeChar(ushort charCode,
+                                ushort codepoint,
+                                ushort glyphId,
+                                ushort depth,
+                                ushort maxGlyphId)
         {
-            UInt16 glyphWidth = 0,
+            ushort glyphWidth = 0,
                    glyphHeight = 0,
                    charBlockSize = 0,
                    charDataSize = 0;
 
-            Int16 glyphLSB = 0,
+            short glyphLSB = 0,
                   glyphTSB = 0;
 
-            UInt32 glyphOffset = 0,
+            uint glyphOffset = 0,
                    glyphLength = 0;
 
-            Boolean glyphComposite = false;
+            bool glyphComposite = false;
 
-            Byte checksumMod256;
+            byte checksumMod256;
 
-            Byte[] charHddr = new Byte[cSizeCharHddr];
-            Byte[] charGlyphHddr = new Byte[cSizeCharGlyphHddr];
-            Byte[] charTrail = new Byte[cSizeCharTrail];
-            Byte[] glyphData = null;
+            byte[] charHddr = new byte[cSizeCharHddr];
+            byte[] charGlyphHddr = new byte[cSizeCharGlyphHddr];
+            byte[] charTrail = new byte[cSizeCharTrail];
+            byte[] glyphData = null;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -376,7 +376,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            charBlockSize = (UInt16)(cSizeCharHddr + cSizeCharGlyphHddr +
+            charBlockSize = (ushort)(cSizeCharHddr + cSizeCharGlyphHddr +
                                       glyphLength + cSizeCharTrail);
 
             PCLWriter.charDownloadCode(_binWriter, charCode);
@@ -407,7 +407,7 @@ namespace PCLParaphernalia
 
             checksumMod256 = 0;
 
-            charDataSize = (UInt16)(cSizeCharGlyphHddr + glyphLength);
+            charDataSize = (ushort)(cSizeCharGlyphHddr + glyphLength);
 
             charGlyphHddr[0] = msByte(charDataSize);
             charGlyphHddr[1] = lsByte(charDataSize);
@@ -431,16 +431,16 @@ namespace PCLParaphernalia
 
             if (glyphLength > 0)
             {
-                Boolean flagOK = true;
+                bool flagOK = true;
 
-                glyphData = new Byte[glyphLength];
+                glyphData = new byte[glyphLength];
 
-                flagOK = _ttfHandler.readByteArray((Int32)glyphOffset,
-                                                    (Int32)glyphLength,
+                flagOK = _ttfHandler.readByteArray((int)glyphOffset,
+                                                    (int)glyphLength,
                                                     ref glyphData);
                 // TODO: what if flagOK = true (i.e. read fails?
 
-                _baseHandler.writeCharFragment((Int32)glyphLength,
+                _baseHandler.writeCharFragment((int)glyphLength,
                                                 glyphData,
                                                 ref checksumMod256);
             }
@@ -451,7 +451,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            checksumMod256 = (Byte)((256 - checksumMod256) % 256);
+            checksumMod256 = (byte)((256 - checksumMod256) % 256);
 
             charTrail[0] = 0;                  // Reserved byte
             charTrail[1] = checksumMod256;     // Checksum byte
@@ -468,18 +468,18 @@ namespace PCLParaphernalia
             {
                 // if we move this to TTFHandler, do the maxGlyphId check there instead
 
-                Int32 indBuf;
+                int indBuf;
 
-                UInt16 glyphCompFlags,
+                ushort glyphCompFlags,
                        glyphCompId;
 
                 indBuf = 10; // point to first set of component data //
 
                 do
                 {
-                    glyphCompFlags = (UInt16)((glyphData[indBuf] << 8) +
+                    glyphCompFlags = (ushort)((glyphData[indBuf] << 8) +
                                                 glyphData[indBuf + 1]);
-                    glyphCompId = (UInt16)((glyphData[indBuf + 2] << 8) +
+                    glyphCompId = (ushort)((glyphData[indBuf + 2] << 8) +
                                                 glyphData[indBuf + 3]);
 
                     if (glyphCompId > maxGlyphId)
@@ -514,7 +514,7 @@ namespace PCLParaphernalia
                         {
                             // flagOK = 
                             writeChar(0xffff, 0, glyphCompId,
-                                       (UInt16)(depth + 1), maxGlyphId);
+                                       (ushort)(depth + 1), maxGlyphId);
                         }
                     }
 
@@ -556,13 +556,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void writeCharSet(UInt16 maxGlyphId,
-                                   Int32 sizeCharSet,
-                                   Boolean symSetUnbound)
+        private void writeCharSet(ushort maxGlyphId,
+                                   int sizeCharSet,
+                                   bool symSetUnbound)
         {
-            Boolean glyphExists = false;
+            bool glyphExists = false;
 
-            UInt16 startCode,
+            ushort startCode,
                    endCode,
                    glyphId = 0,
                    codepoint = 0;
@@ -574,11 +574,11 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             startCode = 0;
-            endCode = (UInt16)(sizeCharSet - 1);
+            endCode = (ushort)(sizeCharSet - 1);
 
-            for (Int32 i = startCode; i <= endCode; i++)
+            for (int i = startCode; i <= endCode; i++)
             {
-                UInt16 charCode = (UInt16)i;
+                ushort charCode = (ushort)i;
 
                 glyphExists = _ttfHandler.getCharData(charCode,
                                                        ref codepoint,
@@ -646,29 +646,29 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean writeHddr(ref Boolean monoSpaced,
-                                   Boolean fmt16,
-                                   Boolean segGTLast,
-                                   Boolean usePCLT,
-                                   Boolean glyphZeroExists,
-                                   Boolean symSetUnbound,
-                                   Boolean tabvmtxPresent,
-                                   Boolean flagVMetrics,
-                                   Byte symSetType,
-                                   UInt16 firstCode,
-                                   UInt16 lastCode,
-                                   UInt16 numChars,
-                                   UInt16 unitsPerEm,
-                                   UInt16 symSet,
-                                   UInt16 style,
-                                   SByte strokeWeight,
-                                   UInt16 typeface,
-                                   UInt64 charCollComp,
-                                   Byte[] conversionText)
+        private bool writeHddr(ref bool monoSpaced,
+                                   bool fmt16,
+                                   bool segGTLast,
+                                   bool usePCLT,
+                                   bool glyphZeroExists,
+                                   bool symSetUnbound,
+                                   bool tabvmtxPresent,
+                                   bool flagVMetrics,
+                                   byte symSetType,
+                                   ushort firstCode,
+                                   ushort lastCode,
+                                   ushort numChars,
+                                   ushort unitsPerEm,
+                                   ushort symSet,
+                                   ushort style,
+                                   sbyte strokeWeight,
+                                   ushort typeface,
+                                   ulong charCollComp,
+                                   byte[] conversionText)
         {
-            Boolean flagOK = true;
+            bool flagOK = true;
 
-            UInt16 cellWidth = 0,
+            ushort cellWidth = 0,
                    cellHeight = 0,
                    textWidth = 0,
                    textHeight = 0,
@@ -678,25 +678,25 @@ namespace PCLParaphernalia
                    mUlinePosU = 0,
                    mUlineDep = 0;
 
-            Int16 mUlinePos = 0;
+            short mUlinePos = 0;
 
-            UInt32 fontNo = 0;
+            uint fontNo = 0;
 
-            Int32 sum;
-            Int32 convTextLen;
-            Int32 hddrLen;
+            int sum;
+            int convTextLen;
+            int hddrLen;
 
-            Byte mod256;
-            Byte serifStyle = 0;
-            Byte fontFormat;
-            Byte fontType;
-            Byte fontSpacing;
+            byte mod256;
+            byte serifStyle = 0;
+            byte fontFormat;
+            byte fontType;
+            byte fontSpacing;
 
-            SByte widthType = 0;
+            sbyte widthType = 0;
 
-            Byte[] fontNamePCLT = new Byte[ToolSoftFontGenTTF.cSizeFontname];
-            Byte[] panoseData = new Byte[ToolSoftFontGenTTF.cSizePanose];
-            Byte[] hddrDesc = new Byte[cSizeHddrDesc];
+            byte[] fontNamePCLT = new byte[ToolSoftFontGenTTF.cSizeFontname];
+            byte[] panoseData = new byte[ToolSoftFontGenTTF.cSizePanose];
+            byte[] hddrDesc = new byte[cSizeHddrDesc];
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -723,7 +723,7 @@ namespace PCLParaphernalia
                                               ref fontNamePCLT,
                                               ref panoseData);
 
-            mUlinePosU = (UInt16)mUlinePos;
+            mUlinePosU = (ushort)mUlinePos;
 
             //----------------------------------------------------------------//
 
@@ -782,7 +782,7 @@ namespace PCLParaphernalia
             else
             {
 
-                PCLWriter.fontDownloadHddr(_binWriter, (UInt32)hddrLen);
+                PCLWriter.fontDownloadHddr(_binWriter, (uint)hddrLen);
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -813,9 +813,9 @@ namespace PCLParaphernalia
                 hddrDesc[19] = 0;                   // Height LSB
                 hddrDesc[20] = msByte(xHeight);    // xHeight MSB
                 hddrDesc[21] = msByte(xHeight);    // xHeight LSB
-                hddrDesc[22] = (Byte)widthType;    // Width Type
+                hddrDesc[22] = (byte)widthType;    // Width Type
                 hddrDesc[23] = lsByte(style);      // Style LSB
-                hddrDesc[24] = (Byte)strokeWeight; // Stroke Weight
+                hddrDesc[24] = (byte)strokeWeight; // Stroke Weight
                 hddrDesc[25] = lsByte(typeface);   // Typeface LSB
                 hddrDesc[26] = msByte(typeface);   // Typeface MSB
                 hddrDesc[27] = serifStyle;          // Serif Style
@@ -875,12 +875,12 @@ namespace PCLParaphernalia
 
                 sum = 0;
 
-                for (Int32 i = 64; i < cSizeHddrDesc; i++)
+                for (int i = 64; i < cSizeHddrDesc; i++)
                 {
                     sum += hddrDesc[i];
                 }
 
-                mod256 = (Byte)(sum % 256);
+                mod256 = (byte)(sum % 256);
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -908,9 +908,9 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    mod256 = (Byte)((256 - mod256) % 256);
+                    mod256 = (byte)((256 - mod256) % 256);
 
-                    Byte[] trailer = new Byte[cSizeHddrTrail];
+                    byte[] trailer = new byte[cSizeHddrTrail];
 
                     trailer[0] = 0;
                     trailer[1] = mod256;

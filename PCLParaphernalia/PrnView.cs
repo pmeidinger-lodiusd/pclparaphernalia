@@ -33,13 +33,13 @@ namespace PCLParaphernalia
         private static Stream _ipStream = null;
         private static BinaryReader _binReader = null;
 
-        private static Int64 _fileSize = 0;
+        private static long _fileSize = 0;
 
-        private Boolean _splitSlices = false;
+        private bool _splitSlices = false;
 
         PrnParseConstants.eOptCharSetSubActs _indxCharSetSubAct = 0;
         PrnParseConstants.eOptCharSets _indxCharSetName = 0;
-        Int32 _valCharSetSubCode = 0;
+        int _valCharSetSubCode = 0;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -61,13 +61,13 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private void addRow(DataTable table,
-                            String offset,
-                            String hexVal,
-                            String textVal)
+                            string offset,
+                            string hexVal,
+                            string textVal)
         {
-            const Int32 colOffset = 0;
-            const Int32 colHex = 1;
-            const Int32 colText = 2;
+            const int colOffset = 0;
+            const int colHex = 1;
+            const int colText = 2;
 
             DataRow row;
 
@@ -106,10 +106,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean openInputPrn(String filename,
-                                     ref Int64 fileSize)
+        private bool openInputPrn(string filename,
+                                     ref long fileSize)
         {
-            Boolean open = false;
+            bool open = false;
 
             if ((filename == null) || (filename == ""))
             {
@@ -175,13 +175,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean viewFile(String prnFilename,
+        public bool viewFile(string prnFilename,
                                 PrnParseOptions options,
                                 DataTable table)
         {
-            Boolean OK = true;
+            bool OK = true;
 
-            Boolean ipOpen = false;
+            bool ipOpen = false;
 
             ipOpen = openInputPrn(prnFilename, ref _fileSize);
 
@@ -211,21 +211,21 @@ namespace PCLParaphernalia
         private void viewFileAction(PrnParseOptions options,
                                     DataTable table)
         {
-            Int32 blockLen,
+            int blockLen,
                   sliceLen,
                   blockStart = 0;
 
-            Int32 offsetStart = 0,
+            int offsetStart = 0,
                   offsetEnd = -1,
                   offsetCrnt;
 
-            String offsetFormat;
-            String offsetStr;
+            string offsetFormat;
+            string offsetStr;
 
-            Boolean rowLimitReached = false;
-            Boolean endReached = false;
+            bool rowLimitReached = false;
+            bool endReached = false;
 
-            Byte[] buf = new Byte[PrnParseConstants.bufSize];
+            byte[] buf = new byte[PrnParseConstants.bufSize];
 
             //----------------------------------------------------------------//
 
@@ -326,7 +326,7 @@ namespace PCLParaphernalia
 
                         offsetCrnt = blockStart + i;
 
-                        offsetStr = String.Format(offsetFormat, offsetCrnt);
+                        offsetStr = string.Format(offsetFormat, offsetCrnt);
 
                         sliceLen = viewFileSlice(buf,
                                                   offsetStr,
@@ -369,22 +369,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Int32 viewFileSlice(Byte[] buf,
-                                    String crntOffset,
-                                    Int32 blockOffset,
-                                    Int32 sliceMax,
+        private int viewFileSlice(byte[] buf,
+                                    string crntOffset,
+                                    int blockOffset,
+                                    int sliceMax,
                                     //                      Int32     rowNo,
                                     DataTable table)
         {
-            Int32 sliceLen;
+            int sliceLen;
 
-            Boolean endSlice;
+            bool endSlice;
 
-            Byte crntByte;
+            byte crntByte;
 
-            Char cx;
+            char cx;
 
-            Int32 sub;
+            int sub;
 
             StringBuilder hexBuf = new StringBuilder();
             StringBuilder strBuf = new StringBuilder();
@@ -424,7 +424,7 @@ namespace PCLParaphernalia
 
                         case PrnParseConstants.eOptCharSetSubActs.Substitute:
 
-                            strBuf.Append((Char)_valCharSetSubCode);
+                            strBuf.Append((char)_valCharSetSubCode);
                             break;
 
                         default:
@@ -435,7 +435,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    strBuf.Append((Char)crntByte);
+                    strBuf.Append((char)crntByte);
                 }
 
                 sub = crntByte;

@@ -32,10 +32,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static SortedList<Byte, PCLXLEmbedDataDef> _tags =
-            new SortedList<Byte, PCLXLEmbedDataDef>();
+        private static SortedList<byte, PCLXLEmbedDataDef> _tags =
+            new SortedList<byte, PCLXLEmbedDataDef>();
 
-        private static Int32 _tagCount;
+        private static int _tagCount;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -57,14 +57,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 displayTags(DataGrid grid,
-                                        Boolean incResTags)
+        public static int displayTags(DataGrid grid,
+                                        bool incResTags)
         {
-            Int32 count = 0;
+            int count = 0;
 
-            Boolean tagReserved;
+            bool tagReserved;
 
-            foreach (KeyValuePair<Byte, PCLXLEmbedDataDef> kvp in _tags)
+            foreach (KeyValuePair<byte, PCLXLEmbedDataDef> kvp in _tags)
             {
                 tagReserved = kvp.Value.FlagReserved;
 
@@ -90,17 +90,17 @@ namespace PCLParaphernalia
 
         private static void populateTable()
         {
-            const Boolean flagNone = false;
+            const bool flagNone = false;
 
-            Byte tag;
+            byte tag;
 
-            tag = (Byte)eTag.Int;                                   // 0xfa //
+            tag = (byte)eTag.Int;                                   // 0xfa //
             _tags.Add(tag,
                 new PCLXLEmbedDataDef(tag,
                                          flagNone,
                                          "data length integer"));
 
-            tag = (Byte)eTag.Byte;                                  // 0xfb //
+            tag = (byte)eTag.Byte;                                  // 0xfb //
             _tags.Add(tag,
                 new PCLXLEmbedDataDef(tag,
                                          flagNone,

@@ -23,25 +23,25 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Int32 _tagLen;
-        private Byte _tagA;
-        private Byte _tagB;
+        private int _tagLen;
+        private byte _tagA;
+        private byte _tagB;
 
-        private String _description;
+        private string _description;
 
-        private Boolean _flagReserved;
-        private Boolean _flagAttrEnum;
-        private Boolean _flagOperEnum;
-        private Boolean _flagUbyteTxt;
-        private Boolean _flagUintTxt;
-        private Boolean _flagValIsLen;
-        private Boolean _flagValIsPCL;
+        private bool _flagReserved;
+        private bool _flagAttrEnum;
+        private bool _flagOperEnum;
+        private bool _flagUbyteTxt;
+        private bool _flagUintTxt;
+        private bool _flagValIsLen;
+        private bool _flagValIsPCL;
 
         private PrnParseConstants.eActPCLXL _actionType;
         private PrnParseConstants.eOvlAct _makeOvlAct;
 
-        private Int32 _statsCtParent;
-        private Int32 _statsCtChild;
+        private int _statsCtParent;
+        private int _statsCtChild;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -49,19 +49,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLXLAttribute(Int32 tagLen,
-                              Byte tagA,
-                              Byte tagB,
-                              Boolean flagReserved,
-                              Boolean flagAttrEnum,
-                              Boolean flagOperEnum,
-                              Boolean flagUbyteTxt,
-                              Boolean flagUintTxt,
-                              Boolean flagValIsLen,
-                              Boolean flagValIsPCL,
+        public PCLXLAttribute(int tagLen,
+                              byte tagA,
+                              byte tagB,
+                              bool flagReserved,
+                              bool flagAttrEnum,
+                              bool flagOperEnum,
+                              bool flagUbyteTxt,
+                              bool flagUintTxt,
+                              bool flagValIsLen,
+                              bool flagValIsPCL,
                               PrnParseConstants.eActPCLXL actionType,
                               PrnParseConstants.eOvlAct makeOvlAct,
-                              String description)
+                              string description)
         {
             _tagLen = tagLen;
             _tagA = tagA;
@@ -88,16 +88,16 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public void getDetails(
-            ref Boolean flagReserved,
-            ref Boolean flagAttrEnum,
-            ref Boolean flagOperEnum,
-            ref Boolean flagUbyteTxt,
-            ref Boolean flagUintTxt,
-            ref Boolean flagValIsLen,
-            ref Boolean flagValIsPCL,
+            ref bool flagReserved,
+            ref bool flagAttrEnum,
+            ref bool flagOperEnum,
+            ref bool flagUbyteTxt,
+            ref bool flagUintTxt,
+            ref bool flagValIsLen,
+            ref bool flagValIsPCL,
             ref PrnParseConstants.eActPCLXL actionType,
             ref PrnParseConstants.eOvlAct makeOvlAct,
-            ref String description)
+            ref string description)
         {
             flagReserved = _flagReserved;
             flagAttrEnum = _flagAttrEnum;
@@ -116,7 +116,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Description
+        public string Description
         {
             get { return _description; }
         }
@@ -127,7 +127,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagAttrEnum
+        public bool FlagAttrEnum
         {
             get { return _flagAttrEnum; }
         }
@@ -138,7 +138,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagOperEnum
+        public bool FlagOperEnum
         {
             get { return _flagOperEnum; }
         }
@@ -149,7 +149,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagReserved
+        public bool FlagReserved
         {
             get { return _flagReserved; }
         }
@@ -163,7 +163,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void incrementStatisticsCount(Int32 level)
+        public void incrementStatisticsCount(int level)
         {
             if (level == 0)
                 _statsCtParent++;
@@ -203,7 +203,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtChild
+        public int StatsCtChild
         {
             get { return _statsCtChild; }
         }
@@ -214,7 +214,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtParent
+        public int StatsCtParent
         {
             get { return _statsCtParent; }
         }
@@ -225,7 +225,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtTotal
+        public int StatsCtTotal
         {
             get { return (_statsCtParent + _statsCtChild); }
         }
@@ -236,7 +236,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Tag
+        public string Tag
         {
             get
             {
@@ -253,7 +253,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Type
+        public string Type
         {
             get { return "Attribute"; }
         }

@@ -20,8 +20,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Int32 _decodeAreaMax = 48;
-        const Int32 _decodeSliceMax = 4;
+        const int _decodeAreaMax = 48;
+        const int _decodeSliceMax = 4;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -31,19 +31,19 @@ namespace PCLParaphernalia
 
         private DataTable _table;
 
-        private Byte[] _buf;
+        private byte[] _buf;
 
-        private Int32 _fileOffset;
+        private int _fileOffset;
 
-        private Int32 _analysisLevel;
+        private int _analysisLevel;
 
         private PrnParseConstants.eOptOffsetFormats _indxOffsetFormat;
 
-        private Boolean _verboseMode;
+        private bool _verboseMode;
 
         private PrnParseConstants.eOptCharSetSubActs _indxCharSetSubAct;
         private PrnParseConstants.eOptCharSets _indxCharSetName;
-        private Int32 _valCharSetSubCode;
+        private int _valCharSetSubCode;
 
         private ASCIIEncoding _ascii = new ASCIIEncoding();
 
@@ -68,24 +68,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean processPMLASCIIHex(Byte[] buf,
-                                           Int32 fileOffset,
-                                           Int32 seqDataLen,
-                                           Int32 bufOffset,
+        public bool processPMLASCIIHex(byte[] buf,
+                                           int fileOffset,
+                                           int seqDataLen,
+                                           int bufOffset,
                                            PrnParseLinkData linkData,
                                            PrnParseOptions options,
                                            DataTable table)
         {
-            const Byte digitZero = 0x30;
-            const Byte digitNine = 0x39;
-            const Byte upperA = 0x41;
-            const Byte upperF = 0x46;
-            const Byte lowerA = 0x61;
-            const Byte lowerF = 0x66;
+            const byte digitZero = 0x30;
+            const byte digitNine = 0x39;
+            const byte upperA = 0x41;
+            const byte upperF = 0x46;
+            const byte lowerA = 0x61;
+            const byte lowerF = 0x66;
 
-            Boolean invalidSeqFound = false;
+            bool invalidSeqFound = false;
 
-            Int32 seqLen = 0,
+            int seqLen = 0,
                   offset;
 
             //----------------------------------------------------------------//
@@ -152,15 +152,15 @@ namespace PCLParaphernalia
             }
             else
             {
-                Byte crntByte;
+                byte crntByte;
 
-                Int32 hexVal = 0;
+                int hexVal = 0;
 
-                _buf = new Byte[seqLen];
+                _buf = new byte[seqLen];
 
                 offset = bufOffset;
 
-                for (Int32 i = 0; (i < seqLen) && (!invalidSeqFound); i++)
+                for (int i = 0; (i < seqLen) && (!invalidSeqFound); i++)
                 {
                     crntByte = buf[offset];
 
@@ -191,7 +191,7 @@ namespace PCLParaphernalia
 
                     if (!invalidSeqFound)
                     {
-                        _buf[i] = (Byte)hexVal;
+                        _buf[i] = (byte)hexVal;
                         offset += 2;
                     }
                 }
@@ -257,15 +257,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean processPMLEmbedded(Byte[] buf,
-                                          Int32 fileOffset,
-                                          Int32 dataLen,
-                                          Int32 bufOffset,
+        public bool processPMLEmbedded(byte[] buf,
+                                          int fileOffset,
+                                          int dataLen,
+                                          int bufOffset,
                                           PrnParseLinkData linkData,
                                           PrnParseOptions options,
                                           DataTable table)
         {
-            Boolean seqOK = true;
+            bool seqOK = true;
 
             _table = table;
             _buf = buf;
@@ -357,24 +357,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean processPMLSeq(Int32 seqLen,
-                                       Int32 seqOffset,
-                                       Boolean hddrExpected)
+        private bool processPMLSeq(int seqLen,
+                                       int seqOffset,
+                                       bool hddrExpected)
         {
-            const Byte cPMLReplyTypeMin = 0x80;
+            const byte cPMLReplyTypeMin = 0x80;
             //  const Byte cPMLErrorTypeMin = 0x80;
 
-            Boolean invalidSeqFound = false;
+            bool invalidSeqFound = false;
 
-            Int32 partOffset,
+            int partOffset,
                   partLen,
                   dataLen,
                   remLen;
 
-            Byte crntByte,
+            byte crntByte,
                  dataType;
 
-            String tagDesc = "";
+            string tagDesc = "";
 
             invalidSeqFound = false;
             partOffset = 0;
@@ -449,7 +449,7 @@ namespace PCLParaphernalia
                     {
                         crntByte = _buf[seqOffset + partOffset];
 
-                        dataType = (Byte)(crntByte / 4);
+                        dataType = (byte)(crntByte / 4);
                         dataLen = ((crntByte & 0x03) * 256) +
                                     _buf[seqOffset + partOffset + 1];
 
@@ -473,7 +473,7 @@ namespace PCLParaphernalia
                         }
                         else
                         {
-                            if (dataType == (Byte)PMLDataTypes.eTag.String)
+                            if (dataType == (byte)PMLDataTypes.eTag.String)
                             {
                                 partLen = 2;
 
@@ -583,7 +583,7 @@ namespace PCLParaphernalia
                     {
                         crntByte = _buf[seqOffset + partOffset];
 
-                        dataType = (Byte)(crntByte / 4);
+                        dataType = (byte)(crntByte / 4);
                         dataLen = ((crntByte & 0x03) * 256) +
                                     _buf[seqOffset + partOffset + 1];
 
@@ -607,7 +607,7 @@ namespace PCLParaphernalia
                         }
                         else if (dataLen != 0)
                         {
-                            if (dataType == (Byte)PMLDataTypes.eTag.String)
+                            if (dataType == (byte)PMLDataTypes.eTag.String)
                             {
                                 partLen = 2;
 
@@ -676,14 +676,14 @@ namespace PCLParaphernalia
 
         private void showElement(PrnParseConstants.ePMLSeqType seqType,
                                   PMLDataTypes.eTag dataType,
-                                  Int32 seqOffset,
-                                  Int32 seqLen,
-                                  String typeText,
-                                  String descText)
+                                  int seqOffset,
+                                  int seqLen,
+                                  string typeText,
+                                  string descText)
         {
-            const Int32 maxSlice = 4;
+            const int maxSlice = 4;
 
-            Int32 sliceLen,
+            int sliceLen,
                   chunkIpLen,
                   chunkOpLen,
                   chunkOffset,
@@ -692,13 +692,13 @@ namespace PCLParaphernalia
                   heldItem,
                   heldItemLen;
 
-            Boolean firstLine,
+            bool firstLine,
                     firstSlice,
                     lastSlice,
                     chunkComplete,
                     seqError;
 
-            String seq,
+            string seq,
                    decode;
 
             StringBuilder chunkOp = new StringBuilder();
@@ -910,27 +910,27 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private String showElementDecodeData(
+        private string showElementDecodeData(
             ref StringBuilder chunkOp,
-            ref Int32 chunkIpLen,
-            ref Int32 chunkOpLen,
-            ref Int32 heldItem,
-            ref Int32 heldItemLen,
-            ref Boolean chunkComplete,
-            ref Boolean seqError,
-            Int32 sliceOffset,
-            Int32 sliceLen,
-            Int32 chunkOffset,
-            Boolean firstLine,
-            Boolean firstSlice,
-            Boolean lastSlice,
+            ref int chunkIpLen,
+            ref int chunkOpLen,
+            ref int heldItem,
+            ref int heldItemLen,
+            ref bool chunkComplete,
+            ref bool seqError,
+            int sliceOffset,
+            int sliceLen,
+            int chunkOffset,
+            bool firstLine,
+            bool firstSlice,
+            bool lastSlice,
             PMLDataTypes.eTag dataType)
         {
             StringBuilder decode = new StringBuilder();
 
-            Int32 decodeMax = _decodeAreaMax;
+            int decodeMax = _decodeAreaMax;
 
-            Int32 itemLen = 0;
+            int itemLen = 0;
 
             if (dataType == PMLDataTypes.eTag.ObjectID)
             {
@@ -955,7 +955,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                Int32 j,
+                int j,
                       k,
                       thisByte,
                       item;
@@ -966,7 +966,7 @@ namespace PCLParaphernalia
                 for (j = 0; j < sliceLen; j++)
                 {
                     k = chunkOffset + chunkIpLen + j;
-                    thisByte = (Byte)_buf[k];
+                    thisByte = (byte)_buf[k];
 
                     if (itemLen != 0)
                     {
@@ -1029,12 +1029,12 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    Int32 iSub,
+                    int iSub,
                           iTot;
 
-                    Boolean msByte;
+                    bool msByte;
 
-                    String tempStr;
+                    string tempStr;
 
                     iTot = 0;
                     msByte = true;
@@ -1083,17 +1083,17 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    Int32 iSub,
+                    int iSub,
                           iTot;
 
-                    Boolean msByte;
+                    bool msByte;
 
-                    String tempStr;
+                    string tempStr;
 
                     iTot = 0;
                     msByte = true;
 
-                    for (Int32 j = 0; j < sliceLen; j++)
+                    for (int j = 0; j < sliceLen; j++)
                     {
                         iSub = _buf[sliceOffset + j];
 
@@ -1138,18 +1138,18 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    UInt32 uiSub,
+                    uint uiSub,
                            uiTot;
 
-                    Byte[] byteArray;
+                    byte[] byteArray;
 
-                    Single f;
+                    float f;
 
-                    String tempStr;
+                    string tempStr;
 
                     uiTot = 0;
 
-                    for (Int32 j = 0; j < sliceLen; j++)
+                    for (int j = 0; j < sliceLen; j++)
                     {
                         uiSub = _buf[sliceOffset + j];
                         uiTot = (uiTot * 256) + uiSub;
@@ -1188,7 +1188,7 @@ namespace PCLParaphernalia
                 //                                                        //
                 //--------------------------------------------------------//
 
-                Int32 ix1,
+                int ix1,
                       ix2,
                       ix3;
 
@@ -1199,7 +1199,7 @@ namespace PCLParaphernalia
 
                 chunkOp.Append(ix1 + " (= " +
                                          ix2.ToString() +
-                                         (Char)ix3 + ")");
+                                         (char)ix3 + ")");
             }
             else if (dataType == PMLDataTypes.eTag.String)
             {
@@ -1214,16 +1214,16 @@ namespace PCLParaphernalia
                 //                                                        //
                 //--------------------------------------------------------//
 
-                Int32 k;
+                int k;
 
-                for (Int32 j = 0; j < sliceLen; j++)
+                for (int j = 0; j < sliceLen; j++)
                 {
                     k = chunkOffset + chunkIpLen + j;
 
                     chunkOp.Append(PrnParseData.processByte(
                         _buf[k],
                         _indxCharSetSubAct,
-                        (Byte)_valCharSetSubCode,
+                        (byte)_valCharSetSubCode,
                         _indxCharSetName));
                 }
             }
@@ -1239,7 +1239,7 @@ namespace PCLParaphernalia
                 //                                                        //
                 //--------------------------------------------------------//
 
-                String seq;
+                string seq;
 
                 seq = PrnParseCommon.byteArrayToHexString(_buf,
                                                            sliceOffset,
@@ -1260,7 +1260,7 @@ namespace PCLParaphernalia
                 //                                                        //
                 //--------------------------------------------------------//
 
-                String tempStr = "";
+                string tempStr = "";
 
                 if (sliceLen != 1)
                 {
@@ -1300,7 +1300,7 @@ namespace PCLParaphernalia
                 //                                                        //
                 //--------------------------------------------------------//
 
-                String seq;
+                string seq;
 
                 seq = PrnParseCommon.byteArrayToHexString(_buf,
                                                            sliceOffset,
@@ -1353,27 +1353,27 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private String showElementSeqData(Int32 sliceLen,
-                                           Int32 sliceOffset,
-                                           Int32 chunkIpLen,
-                                           Int32 chunkOffset,
-                                           Boolean lastSlice,
-                                           Boolean chunkComplete,
-                                           Boolean seqError)
+        private string showElementSeqData(int sliceLen,
+                                           int sliceOffset,
+                                           int chunkIpLen,
+                                           int chunkOffset,
+                                           bool lastSlice,
+                                           bool chunkComplete,
+                                           bool seqError)
         {
             StringBuilder seq = new StringBuilder();
 
-            Byte crntByte;
+            byte crntByte;
 
-            Int32 hexPtr,
+            int hexPtr,
                   hexStart = 0,
                   hexEnd = 0,
                   sub;
 
-            Boolean useEllipsis,
+            bool useEllipsis,
                     displaySlice;
 
-            Char[] hexBuf = new Char[(_decodeSliceMax * 2) + 1];
+            char[] hexBuf = new char[(_decodeSliceMax * 2) + 1];
 
             useEllipsis = false;
             displaySlice = false;
@@ -1418,16 +1418,16 @@ namespace PCLParaphernalia
             {
                 hexPtr = 0;
 
-                for (Int32 j = hexStart; j < hexEnd; j++)
+                for (int j = hexStart; j < hexEnd; j++)
                 {
                     sub = (_buf[j]);
                     sub = sub >> 4;
                     crntByte = PrnParseConstants.cHexBytes[sub];
-                    hexBuf[hexPtr++] = (Char)crntByte;
+                    hexBuf[hexPtr++] = (char)crntByte;
 
                     sub = (_buf[j] & 0x0f);
                     crntByte = PrnParseConstants.cHexBytes[sub];
-                    hexBuf[hexPtr++] = (Char)crntByte;
+                    hexBuf[hexPtr++] = (char)crntByte;
                 }
 
                 seq.Append("0x");

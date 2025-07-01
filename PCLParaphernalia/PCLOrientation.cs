@@ -19,9 +19,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private PCLOrientations.eAspect _orientationAspect;
-        private String _orientationName;
-        private Byte _orientationIdPCL;
-        private Byte _orientationIdPCLXL;
+        private string _orientationName;
+        private byte _orientationIdPCL;
+        private byte _orientationIdPCLXL;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -30,9 +30,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PCLOrientation(PCLOrientations.eAspect aspect,
-                              String name,
-                              Byte idPCL,
-                              Byte idPCLXL)
+                              string name,
+                              byte idPCL,
+                              byte idPCLXL)
         {
             _orientationAspect = aspect;
             _orientationName = name;
@@ -63,7 +63,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Byte getIdPCL()
+        public byte getIdPCL()
         {
             return _orientationIdPCL;
         }
@@ -77,7 +77,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Byte getIdPCLXL()
+        public byte getIdPCLXL()
         {
             return _orientationIdPCLXL;
         }
@@ -91,7 +91,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String getName()
+        public string getName()
         {
             return _orientationName;
         }

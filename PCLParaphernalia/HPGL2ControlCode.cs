@@ -23,15 +23,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Byte _tag;
+        private byte _tag;
 
-        private String _description;
-        private String _mnemonic;
+        private string _description;
+        private string _mnemonic;
 
-        private Boolean _noOp;
+        private bool _noOp;
 
-        private Int32 _statsCtParent;
-        private Int32 _statsCtChild;
+        private int _statsCtParent;
+        private int _statsCtChild;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -39,10 +39,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public HPGL2ControlCode(Byte tag,
-                                 Boolean noOp,
-                                 String mnemonic,
-                                 String description)
+        public HPGL2ControlCode(byte tag,
+                                 bool noOp,
+                                 string mnemonic,
+                                 string description)
         {
             _tag = tag;
             _noOp = noOp;
@@ -59,7 +59,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String DescExcMnemonic
+        public string DescExcMnemonic
         {
             get { return _description; }
         }
@@ -70,7 +70,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Description
+        public string Description
         {
             get { return _mnemonic + ": " + _description; }
         }
@@ -81,7 +81,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Mnemonic
+        public string Mnemonic
         {
             get { return _mnemonic; }
         }
@@ -92,7 +92,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean NoOp
+        public bool NoOp
         {
             get { return _noOp; }
         }
@@ -106,7 +106,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void incrementStatisticsCount(Int32 level)
+        public void incrementStatisticsCount(int level)
         {
             if (level == 0)
                 _statsCtParent++;
@@ -135,7 +135,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Sequence
+        public string Sequence
         {
             get { return "0x" + _tag.ToString("x2"); }
         }
@@ -146,7 +146,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtChild
+        public int StatsCtChild
         {
             get { return _statsCtChild; }
         }
@@ -157,7 +157,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtParent
+        public int StatsCtParent
         {
             get { return _statsCtParent; }
         }
@@ -168,7 +168,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtTotal
+        public int StatsCtTotal
         {
             get { return (_statsCtParent + _statsCtChild); }
         }
@@ -179,7 +179,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Tag
+        public string Tag
         {
             get { return "0x" + _tag.ToString("x2"); }
         }
@@ -190,7 +190,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Type
+        public string Type
         {
             get { return "Control Code"; }
         }

@@ -122,7 +122,7 @@ namespace PCLParaphernalia
         private Boolean[] _idSetPCL;
         private Boolean[] _idSetPCLXL;
         */
-        private Boolean _initialised;
+        private bool _initialised;
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // T o o l X X X D i a g s                                            //

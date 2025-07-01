@@ -23,19 +23,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Byte _operTag;
-        private Byte _attrTagA;
-        private Byte _attrTagB;
+        private byte _operTag;
+        private byte _attrTagA;
+        private byte _attrTagB;
 
-        private Int32 _value;
-        private Int32 _attrTagLen;
+        private int _value;
+        private int _attrTagLen;
 
-        private String _description;
+        private string _description;
 
-        private Boolean _flagValIsTxt;
+        private bool _flagValIsTxt;
 
-        private Int32 _statsCtParent;
-        private Int32 _statsCtChild;
+        private int _statsCtParent;
+        private int _statsCtChild;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -43,13 +43,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLXLAttrEnum(Byte operTag,
-                             Byte attrTagA,
-                             Byte attrTagB,
-                             Int32 attrTagLen,
-                             Int32 value,
-                             Boolean flagValIsTxt,
-                             String description)
+        public PCLXLAttrEnum(byte operTag,
+                             byte attrTagA,
+                             byte attrTagB,
+                             int attrTagLen,
+                             int value,
+                             bool flagValIsTxt,
+                             string description)
         {
             _operTag = operTag;
             _attrTagA = attrTagA;
@@ -69,7 +69,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Attribute
+        public string Attribute
         {
             get
             {
@@ -85,7 +85,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Description
+        public string Description
         {
             get { return _description; }
         }
@@ -96,7 +96,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagValIsTxt
+        public bool FlagValIsTxt
         {
             get { return _flagValIsTxt; }
         }
@@ -107,8 +107,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getDetails(ref Boolean flagValIsTxt,
-                                ref String description)
+        public void getDetails(ref bool flagValIsTxt,
+                                ref string description)
         {
             flagValIsTxt = _flagValIsTxt;
             description = _description;
@@ -123,7 +123,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void incrementStatisticsCount(Int32 level)
+        public void incrementStatisticsCount(int level)
         {
             if (level == 0)
                 _statsCtParent++;
@@ -137,7 +137,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Operator
+        public string Operator
         {
             get
             {
@@ -169,7 +169,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtChild
+        public int StatsCtChild
         {
             get { return _statsCtChild; }
         }
@@ -180,7 +180,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtParent
+        public int StatsCtParent
         {
             get { return _statsCtParent; }
         }
@@ -191,7 +191,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtTotal
+        public int StatsCtTotal
         {
             get { return (_statsCtParent + _statsCtChild); }
         }
@@ -202,7 +202,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Type
+        public string Type
         {
             get { return "Attribute Enumeration"; }
         }
@@ -213,7 +213,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Value
+        public string Value
         {
             get
             {
@@ -230,13 +230,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String ValueWithOpAndAttr
+        public string ValueWithOpAndAttr
         {
             get
             {
-                String oper;
-                String attr;
-                String text;
+                string oper;
+                string attr;
+                string text;
 
                 if (_operTag == 0x00)
                     oper = "----";

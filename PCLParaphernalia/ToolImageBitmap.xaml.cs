@@ -26,30 +26,30 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Int32[] _subsetPDLs =
+        private static int[] _subsetPDLs =
         {
-            (Int32) ToolCommonData.ePrintLang.PCL,
-            (Int32) ToolCommonData.ePrintLang.PCLXL,
+            (int) ToolCommonData.ePrintLang.PCL,
+            (int) ToolCommonData.ePrintLang.PCLXL,
         };
 
-        private static Int32[] _subsetOrientations =
+        private static int[] _subsetOrientations =
         {
-            (Int32) PCLOrientations.eIndex.Portrait,
-            (Int32) PCLOrientations.eIndex.Landscape,
-            (Int32) PCLOrientations.eIndex.ReversePortrait,
-            (Int32) PCLOrientations.eIndex.ReverseLandscape
+            (int) PCLOrientations.eIndex.Portrait,
+            (int) PCLOrientations.eIndex.Landscape,
+            (int) PCLOrientations.eIndex.ReversePortrait,
+            (int) PCLOrientations.eIndex.ReverseLandscape
         };
 
-        private static Int32[] _subsetPaperSizes =
+        private static int[] _subsetPaperSizes =
         {
-            (Int32) PCLPaperSizes.eIndex.ISO_A4,
-            (Int32) PCLPaperSizes.eIndex.ANSI_A_Letter
+            (int) PCLPaperSizes.eIndex.ISO_A4,
+            (int) PCLPaperSizes.eIndex.ANSI_A_Letter
         };
 
-        private static Int32[] _subsetPaperTypes =
+        private static int[] _subsetPaperTypes =
         {
-            (Int32) PCLPaperTypes.eIndex.NotSet,
-            (Int32) PCLPaperTypes.eIndex.Plain
+            (int) PCLPaperTypes.eIndex.NotSet,
+            (int) PCLPaperTypes.eIndex.Plain
         };
 
         //--------------------------------------------------------------------//
@@ -60,30 +60,30 @@ namespace PCLParaphernalia
 
         private ToolCommonData.ePrintLang _crntPDL;
 
-        private Int32 _ctPDLs;
-        private Int32 _ctOrientations;
-        private Int32 _ctPaperSizes;
-        private Int32 _ctPaperTypes;
-        private Int32 _ctRasterResolutions;
+        private int _ctPDLs;
+        private int _ctOrientations;
+        private int _ctPaperSizes;
+        private int _ctPaperTypes;
+        private int _ctRasterResolutions;
 
-        private Int32 _indxPDL;
-        private Int32 _indxOrientationPCL;
-        private Int32 _indxOrientationPCLXL;
-        private Int32 _indxPaperSizePCL;
-        private Int32 _indxPaperSizePCLXL;
-        private Int32 _indxPaperTypePCL;
-        private Int32 _indxPaperTypePCLXL;
-        private Int32 _indxRasterResolutionPCL;
+        private int _indxPDL;
+        private int _indxOrientationPCL;
+        private int _indxOrientationPCLXL;
+        private int _indxPaperSizePCL;
+        private int _indxPaperSizePCLXL;
+        private int _indxPaperTypePCL;
+        private int _indxPaperTypePCLXL;
+        private int _indxRasterResolutionPCL;
 
-        private Int32 _destScalePercentX;
-        private Int32 _destScalePercentY;
+        private int _destScalePercentX;
+        private int _destScalePercentY;
 
-        private Single _destPosX;
-        private Single _destPosY;
+        private float _destPosX;
+        private float _destPosY;
 
-        private String _bitmapFilename;
+        private string _bitmapFilename;
 
-        private Boolean _initialised;
+        private bool _initialised;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -111,9 +111,9 @@ namespace PCLParaphernalia
 
         private void btnFilenameBrowse_Click(object sender, RoutedEventArgs e)
         {
-            Boolean selected;
+            bool selected;
 
-            String filename = _bitmapFilename;
+            string filename = _bitmapFilename;
 
             selected = selectImageFile(ref filename);
 
@@ -135,9 +135,9 @@ namespace PCLParaphernalia
 
         private void btnGenerate_Click(object sender, RoutedEventArgs e)
         {
-            Int32 result = 0;
+            int result = 0;
 
-            Boolean bitmapOpen = false;
+            bool bitmapOpen = false;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -250,21 +250,21 @@ namespace PCLParaphernalia
 
         private void btnGetProperties_Click(object sender, RoutedEventArgs e)
         {
-            Int32 result = 0;
+            int result = 0;
 
-            Int32 srcWidth = 0,
+            int srcWidth = 0,
                   srcHeight = 0,
                   srcResX = 0,
                   srcResY = 0;
 
-            UInt32 srcCompression = 0,
+            uint srcCompression = 0,
                    srcPaletteEntries = 0;
 
-            UInt16 srcBitsPerPixel = 0;
+            ushort srcBitsPerPixel = 0;
 
-            Boolean srcBlackWhite = false;
+            bool srcBlackWhite = false;
 
-            Boolean bitmapOpen = false;
+            bool bitmapOpen = false;
 
             bitmapOpen = ToolImageBitmapCore.bitmapOpen(_bitmapFilename);
 
@@ -301,8 +301,8 @@ namespace PCLParaphernalia
             txtSrcHeight.Text = srcHeight.ToString();
             txtSrcResX.Text = srcResX.ToString();
             txtSrcResY.Text = srcResY.ToString();
-            txtSrcResXDpi.Text = ((Int32)(srcResX / 39.37)).ToString();
-            txtSrcResYDpi.Text = ((Int32)(srcResY / 39.37)).ToString();
+            txtSrcResXDpi.Text = ((int)(srcResX / 39.37)).ToString();
+            txtSrcResYDpi.Text = ((int)(srcResY / 39.37)).ToString();
             txtSrcBPP.Text = srcBitsPerPixel.ToString();
             txtSrcCompression.Text = srcCompression.ToString();
             txtSrcMonoBW.Text = srcBlackWhite.ToString();
@@ -430,7 +430,7 @@ namespace PCLParaphernalia
             {
                 if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                     _indxRasterResolutionPCL =
-                        (UInt16)cbResolution.SelectedIndex;
+                        (ushort)cbResolution.SelectedIndex;
             }
         }
 
@@ -456,7 +456,7 @@ namespace PCLParaphernalia
 
         private void initialise()
         {
-            Int32 index;
+            int index;
 
             _initialised = false;
 
@@ -470,7 +470,7 @@ namespace PCLParaphernalia
 
             _ctPDLs = _subsetPDLs.Length;
 
-            for (Int32 i = 0; i < _ctPDLs; i++)
+            for (int i = 0; i < _ctPDLs; i++)
             {
                 index = _subsetPDLs[i];
 
@@ -484,7 +484,7 @@ namespace PCLParaphernalia
 
             _ctOrientations = _subsetOrientations.Length;
 
-            for (Int32 i = 0; i < _ctOrientations; i++)
+            for (int i = 0; i < _ctOrientations; i++)
             {
                 index = _subsetOrientations[i];
 
@@ -497,7 +497,7 @@ namespace PCLParaphernalia
 
             _ctPaperSizes = _subsetPaperSizes.Length;
 
-            for (Int32 i = 0; i < _ctPaperSizes; i++)
+            for (int i = 0; i < _ctPaperSizes; i++)
             {
                 index = _subsetPaperSizes[i];
 
@@ -510,7 +510,7 @@ namespace PCLParaphernalia
 
             _ctPaperTypes = _subsetPaperTypes.Length;
 
-            for (Int32 i = 0; i < _ctPaperTypes; i++)
+            for (int i = 0; i < _ctPaperTypes; i++)
             {
                 index = _subsetPaperTypes[i];
 
@@ -523,7 +523,7 @@ namespace PCLParaphernalia
 
             _ctRasterResolutions = PCLRasterResolutions.getCount();
 
-            for (Int32 i = 0; i < _ctRasterResolutions; i++)
+            for (int i = 0; i < _ctRasterResolutions; i++)
             {
                 cbResolution.Items.Add(
                     PCLRasterResolutions.getValue(i).ToString());
@@ -553,7 +553,7 @@ namespace PCLParaphernalia
 
             pdlOptionsRestore();
 
-            cbPDL.SelectedIndex = (Byte)_indxPDL;
+            cbPDL.SelectedIndex = (byte)_indxPDL;
 
             _initialised = true;
         }
@@ -569,10 +569,10 @@ namespace PCLParaphernalia
 
         private void metricsLoad()
         {
-            Int32 tempPosX = 100,
+            int tempPosX = 100,
                   tempPosY = 100;
 
-            Int32 tempRasterRes = 0;
+            int tempRasterRes = 0;
 
             ToolImageBitmapPersist.loadDataCommon(ref _indxPDL,
                                                   ref _bitmapFilename,
@@ -587,8 +587,8 @@ namespace PCLParaphernalia
 
             _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
 
-            _destPosX = (Single)(tempPosX / 100);
-            _destPosY = (Single)(tempPosY / 100);
+            _destPosX = (float)(tempPosX / 100);
+            _destPosY = (float)(tempPosY / 100);
 
             if ((tempRasterRes < 0) ||
                 (tempRasterRes >= _ctRasterResolutions))
@@ -644,8 +644,8 @@ namespace PCLParaphernalia
         {
             ToolImageBitmapPersist.saveDataCommon(_indxPDL,
                                                   _bitmapFilename,
-                                                  (Int32)(_destPosX * 100),
-                                                  (Int32)(_destPosY * 100),
+                                                  (int)(_destPosX * 100),
+                                                  (int)(_destPosY * 100),
                                                   _destScalePercentX,
                                                   _destScalePercentY,
                                                   _indxRasterResolutionPCL);
@@ -736,11 +736,11 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.eTarget.NetPrinter)
             {
-                String netPrnAddress = "";
-                Int32 netPrnPort = 0;
+                string netPrnAddress = "";
+                int netPrnPort = 0;
 
-                Int32 netTimeoutSend = 0;
-                Int32 netTimeoutReceive = 0;
+                int netTimeoutSend = 0;
+                int netTimeoutReceive = 0;
 
                 TargetCore.metricsLoadNetPrinter(ref netPrnAddress,
                                                   ref netPrnPort,
@@ -754,7 +754,7 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.eTarget.WinPrinter)
             {
-                String winPrintername = "";
+                string winPrintername = "";
 
                 TargetCore.metricsLoadWinPrinter(ref winPrintername);
 
@@ -773,7 +773,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectImageFile(ref String selectedName)
+        private bool selectImageFile(ref string selectedName)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(selectedName);
 

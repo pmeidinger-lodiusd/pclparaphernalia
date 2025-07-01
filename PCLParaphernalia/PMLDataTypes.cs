@@ -44,12 +44,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static SortedList<Byte, PMLDataType> _tags =
-            new SortedList<Byte, PMLDataType>();
+        private static SortedList<byte, PMLDataType> _tags =
+            new SortedList<byte, PMLDataType>();
 
         private static PMLDataType _unknownTag;
 
-        private static Int32 _tagCount;
+        private static int _tagCount;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -71,11 +71,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean checkTag(
-            Byte tagToCheck,
-            ref String description)
+        public static bool checkTag(
+            byte tagToCheck,
+            ref string description)
         {
-            Boolean seqKnown;
+            bool seqKnown;
 
             PMLDataType tag;
 
@@ -107,11 +107,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void displayStatsCounts(DataTable table,
-                                               Boolean incUsedSeqsOnly)
+                                               bool incUsedSeqsOnly)
         {
-            Int32 count = 0;
+            int count = 0;
 
-            Boolean displaySeq,
+            bool displaySeq,
                     hddrWritten;
 
             DataRow row;
@@ -120,7 +120,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            foreach (KeyValuePair<Byte, PMLDataType> kvp in _tags)
+            foreach (KeyValuePair<byte, PMLDataType> kvp in _tags)
             {
                 displaySeq = true;
 
@@ -208,11 +208,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 displayTags(DataGrid grid)
+        public static int displayTags(DataGrid grid)
         {
-            Int32 count = 0;
+            int count = 0;
 
-            foreach (KeyValuePair<Byte, PMLDataType> kvp in _tags)
+            foreach (KeyValuePair<byte, PMLDataType> kvp in _tags)
             {
                 count++;
                 grid.Items.Add(kvp.Value);
@@ -230,7 +230,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getCount()
+        public static int getCount()
         {
             return _tagCount;
         }
@@ -244,7 +244,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getDesc(Byte selection)
+        public static string getDesc(byte selection)
         {
             return _tags[selection].getDesc();
         }
@@ -260,54 +260,54 @@ namespace PCLParaphernalia
 
         private static void populateTable()
         {
-            Byte tag;
+            byte tag;
 
             tag = 0x20;                                              // ?    //
             _unknownTag =
                 new PMLDataType(tag,
                                    "*** Unknown tag ***");
 
-            tag = (Byte)eTag.ObjectID;                              // 0x00 //
+            tag = (byte)eTag.ObjectID;                              // 0x00 //
             _tags.Add(tag,
                 new PMLDataType(tag,
                                    "Object Identifier"));
 
-            tag = (Byte)eTag.Enumeration;                           // 0x01 //
+            tag = (byte)eTag.Enumeration;                           // 0x01 //
             _tags.Add(tag,
                 new PMLDataType(tag,
                                    "Enumeration"));
 
-            tag = (Byte)eTag.Sint;                                  // 0x02 //
+            tag = (byte)eTag.Sint;                                  // 0x02 //
             _tags.Add(tag,
                 new PMLDataType(tag,
                                    "Signed Integer"));
 
-            tag = (Byte)eTag.Real;                                  // 0x03 //
+            tag = (byte)eTag.Real;                                  // 0x03 //
             _tags.Add(tag,
                 new PMLDataType(tag,
                                    "Real"));
 
-            tag = (Byte)eTag.String;                                // 0x04 //
+            tag = (byte)eTag.String;                                // 0x04 //
             _tags.Add(tag,
                 new PMLDataType(tag,
                                    "String"));
 
-            tag = (Byte)eTag.Binary;                                // 0x05 //
+            tag = (byte)eTag.Binary;                                // 0x05 //
             _tags.Add(tag,
                 new PMLDataType(tag,
                                    "Binary"));
 
-            tag = (Byte)eTag.ErrorCode;                             // 0x06 //
+            tag = (byte)eTag.ErrorCode;                             // 0x06 //
             _tags.Add(tag,
                 new PMLDataType(tag,
                                    "Error Code"));
 
-            tag = (Byte)eTag.NullValue;                             // 0x07 //
+            tag = (byte)eTag.NullValue;                             // 0x07 //
             _tags.Add(tag,
                 new PMLDataType(tag,
                                    "Null Value"));
 
-            tag = (Byte)eTag.Collection;                            // 0x08 //
+            tag = (byte)eTag.Collection;                            // 0x08 //
             _tags.Add(tag,
                 new PMLDataType(tag,
                                    "Collection"));

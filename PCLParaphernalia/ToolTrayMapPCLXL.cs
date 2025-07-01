@@ -19,22 +19,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const String _rootNameFront = "TrayMapFormFront";
-        const String _rootNameRear = "TrayMapFormRear";
-        const Int32 _noForm = -1;
+        const string _rootNameFront = "TrayMapFormFront";
+        const string _rootNameRear = "TrayMapFormRear";
+        const int _noForm = -1;
 
-        const Int32 _trayIdAutoSelectPCLXL = 1;
+        const int _trayIdAutoSelectPCLXL = 1;
 
-        const UInt16 _unitsPerInch = PCLXLWriter._sessionUPI;
+        const ushort _unitsPerInch = PCLXLWriter._sessionUPI;
 
-        const Int16 _posXName = (_unitsPerInch * 1);
-        const Int16 _posXValue = (_unitsPerInch * 7) / 2;
-        const Int16 _posXIncSub = (_unitsPerInch / 3);
+        const short _posXName = (_unitsPerInch * 1);
+        const short _posXValue = (_unitsPerInch * 7) / 2;
+        const short _posXIncSub = (_unitsPerInch / 3);
 
-        const Int16 _posYHddr = (_unitsPerInch * 1);
-        const Int16 _posYDesc = (_unitsPerInch * 21) / 10;
-        const Int16 _posYIncMain = (_unitsPerInch * 3) / 4;
-        const Int16 _posYIncSub = (_unitsPerInch / 3);
+        const short _posYHddr = (_unitsPerInch * 1);
+        const short _posYDesc = (_unitsPerInch * 21) / 10;
+        const short _posYIncMain = (_unitsPerInch * 3) / 4;
+        const short _posYIncSub = (_unitsPerInch / 3);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -51,25 +51,25 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void generateJob(BinaryWriter prnWriter,
-                                       Int32 pageCount,
-                                       Int32[] indxPaperSize,
-                                       Int32[] indxPaperType,
-                                       Int32[] indxPaperTray,
-                                       Int32[] indxPlexMode,
-                                       Int32[] indxOrientFront,
-                                       Int32[] indxOrientRear,
-                                       Boolean formAsMacro)
+                                       int pageCount,
+                                       int[] indxPaperSize,
+                                       int[] indxPaperType,
+                                       int[] indxPaperTray,
+                                       int[] indxPlexMode,
+                                       int[] indxOrientFront,
+                                       int[] indxOrientRear,
+                                       bool formAsMacro)
         {
-            Int32[] indxFormsFront = new Int32[pageCount];
-            Int32[] indxFormsRear = new Int32[pageCount];
+            int[] indxFormsFront = new int[pageCount];
+            int[] indxFormsRear = new int[pageCount];
 
-            String[] formNamesFront = new String[pageCount];
-            String[] formNamesRear = new String[pageCount];
+            string[] formNamesFront = new string[pageCount];
+            string[] formNamesRear = new string[pageCount];
 
-            Single[] scaleFactors = new Single[pageCount];
+            float[] scaleFactors = new float[pageCount];
 
-            Int32 formCountFront = 0;
-            Int32 formCountRear = 0;
+            int formCountFront = 0;
+            int formCountRear = 0;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -78,15 +78,15 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            Single A4LengthPort =
-                (Single)PCLPaperSizes.getPaperLength(
-                            (Int32)PCLPaperSizes.eIndex.ISO_A4,
+            float A4LengthPort =
+                (float)PCLPaperSizes.getPaperLength(
+                            (int)PCLPaperSizes.eIndex.ISO_A4,
                             _unitsPerInch,
                             PCLOrientations.eAspect.Portrait);
 
-            for (Int32 i = 0; i < pageCount; i++)
+            for (int i = 0; i < pageCount; i++)
             {
-                scaleFactors[i] = (Single)
+                scaleFactors[i] = (float)
                 (PCLPaperSizes.getPaperLength(
                     indxPaperSize[i],
                     _unitsPerInch,
@@ -176,17 +176,17 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateOverlayDeletes(BinaryWriter prnWriter,
-                                                     Int32 formCountFront,
-                                                     Int32 formCountRear,
-                                                     String[] formNamesFront,
-                                                     String[] formNamesRear)
+                                                     int formCountFront,
+                                                     int formCountRear,
+                                                     string[] formNamesFront,
+                                                     string[] formNamesRear)
         {
-            for (Int32 i = 0; i < formCountFront; i++)
+            for (int i = 0; i < formCountFront; i++)
             {
                 PCLXLWriter.streamRemove(prnWriter, formNamesFront[i]);
             }
 
-            for (Int32 i = 0; i < formCountRear; i++)
+            for (int i = 0; i < formCountRear; i++)
             {
                 PCLXLWriter.streamRemove(prnWriter, formNamesRear[i]);
             }
@@ -204,26 +204,26 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateOverlayFront(BinaryWriter prnWriter,
-                                                  Boolean formAsMacro,
-                                                  String formName,
-                                                  Single scaleFactor)
+                                                  bool formAsMacro,
+                                                  string formName,
+                                                  float scaleFactor)
         {
-            const Int32 lenBuf = 1024;
+            const int lenBuf = 1024;
 
-            Int16 rectHeight = (Int16)(scaleFactor * (_unitsPerInch / 2));
-            Int16 rectWidth = (Int16)(scaleFactor * ((_unitsPerInch * 7) / 2));
-            Int16 rectStroke = (Int16)(scaleFactor * (_unitsPerInch / 200));
-            Int16 rectCorner = (Int16)(scaleFactor * (_unitsPerInch / 3));
+            short rectHeight = (short)(scaleFactor * (_unitsPerInch / 2));
+            short rectWidth = (short)(scaleFactor * ((_unitsPerInch * 7) / 2));
+            short rectStroke = (short)(scaleFactor * (_unitsPerInch / 200));
+            short rectCorner = (short)(scaleFactor * (_unitsPerInch / 3));
 
-            Int16 ptSizeHddr = (Int16)(scaleFactor * 24),
-                  ptSizeMain = (Int16)(scaleFactor * 18),
-                  ptSizeSub = (Int16)(scaleFactor * 8);
+            short ptSizeHddr = (short)(scaleFactor * 24),
+                  ptSizeMain = (short)(scaleFactor * 18),
+                  ptSizeSub = (short)(scaleFactor * 8);
 
-            Byte[] buffer = new Byte[lenBuf];
+            byte[] buffer = new byte[lenBuf];
 
-            Int32 indBuf;
+            int indBuf;
 
-            Int16 posX,
+            short posX,
                   posY,
                   posYInc;
 
@@ -239,7 +239,7 @@ namespace PCLParaphernalia
             PCLXLWriter.addAttrUbyte(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.eTag.ColorSpace,
-                               (Byte)PCLXLAttrEnums.eVal.eGray);
+                               (byte)PCLXLAttrEnums.eVal.eGray);
 
             PCLXLWriter.addOperator(ref buffer,
                               ref indBuf,
@@ -264,9 +264,9 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            posYInc = (Int16)(scaleFactor * _posYIncMain);
-            posX = (Int16)(scaleFactor * _posXName);
-            posY = (Int16)(scaleFactor * _posYHddr);
+            posYInc = (short)(scaleFactor * _posYIncMain);
+            posX = (short)(scaleFactor * _posXName);
+            posY = (short)(scaleFactor * _posYHddr);
 
             PCLXLWriter.text(prnWriter, formAsMacro, false,
                        PCLXLWriter.advances_ArialBold, ptSizeHddr,
@@ -279,7 +279,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            posY = (Int16)(scaleFactor * _posYDesc);
+            posY = (short)(scaleFactor * _posYDesc);
 
             PCLXLWriter.text(prnWriter, formAsMacro, false,
                        PCLXLWriter.advances_ArialBold, ptSizeMain,
@@ -328,8 +328,8 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            posX = (Int16)(scaleFactor * (_posXValue + _posXIncSub));
-            posY += (Int16)(scaleFactor * _posYIncSub);
+            posX = (short)(scaleFactor * (_posXValue + _posXIncSub));
+            posY += (short)(scaleFactor * _posYIncSub);
 
             PCLXLWriter.text(prnWriter, formAsMacro, false,
                        PCLXLWriter.advances_ArialBold, ptSizeSub,
@@ -338,8 +338,8 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            posX = (Int16)(scaleFactor * _posXValue);
-            posY -= (Int16)(scaleFactor * (_posXIncSub * 2));
+            posX = (short)(scaleFactor * _posXValue);
+            posY -= (short)(scaleFactor * (_posXIncSub * 2));
 
             PCLXLWriter.addOperator(ref buffer,
                               ref indBuf,
@@ -348,7 +348,7 @@ namespace PCLParaphernalia
             PCLXLWriter.addAttrUbyte(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.eTag.TxMode,
-                               (Byte)PCLXLAttrEnums.eVal.eTransparent);
+                               (byte)PCLXLAttrEnums.eVal.eTransparent);
 
             PCLXLWriter.addOperator(ref buffer,
                               ref indBuf,
@@ -357,7 +357,7 @@ namespace PCLParaphernalia
             PCLXLWriter.addAttrUbyte(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.eTag.TxMode,
-                               (Byte)PCLXLAttrEnums.eVal.eTransparent);
+                               (byte)PCLXLAttrEnums.eVal.eTransparent);
 
             PCLXLWriter.addOperator(ref buffer,
                               ref indBuf,
@@ -375,7 +375,7 @@ namespace PCLParaphernalia
             PCLXLWriter.addAttrUbyte(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.eTag.PenWidth,
-                               (Byte)rectStroke);
+                               (byte)rectStroke);
 
             PCLXLWriter.addOperator(ref buffer,
                               ref indBuf,
@@ -393,14 +393,14 @@ namespace PCLParaphernalia
             PCLXLWriter.addAttrUint16XY(ref buffer,
                                   ref indBuf,
                                   PCLXLAttributes.eTag.EllipseDimension,
-                                  (UInt16)rectCorner, (UInt16)rectCorner);
+                                  (ushort)rectCorner, (ushort)rectCorner);
 
             PCLXLWriter.addAttrUint16Box(ref buffer,
                                    ref indBuf,
                                    PCLXLAttributes.eTag.BoundingBox,
-                                   (UInt16)posX, (UInt16)posY,
-                                   (UInt16)(posX + rectWidth),
-                                   (UInt16)(posY + rectHeight));
+                                   (ushort)posX, (ushort)posY,
+                                   (ushort)(posX + rectWidth),
+                                   (ushort)(posY + rectHeight));
 
             PCLXLWriter.addOperator(ref buffer,
                               ref indBuf,
@@ -437,22 +437,22 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateOverlayRear(BinaryWriter prnWriter,
-                                                 Boolean formAsMacro,
-                                                 String formName,
-                                                 Single scaleFactor)
+                                                 bool formAsMacro,
+                                                 string formName,
+                                                 float scaleFactor)
         {
-            const Int32 lenBuf = 1024;
+            const int lenBuf = 1024;
 
-            Byte[] buffer = new Byte[lenBuf];
+            byte[] buffer = new byte[lenBuf];
 
-            Int32 indBuf;
+            int indBuf;
 
-            Int16 posX,
+            short posX,
                   posY,
                   posYInc;
 
-            Int32 ptSizeHddr = (Int32)(scaleFactor * 24),
-                  ptSizeMain = (Int32)(scaleFactor * 18);
+            int ptSizeHddr = (int)(scaleFactor * 24),
+                  ptSizeMain = (int)(scaleFactor * 18);
 
             indBuf = 0;
 
@@ -466,7 +466,7 @@ namespace PCLParaphernalia
             PCLXLWriter.addAttrUbyte(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.eTag.ColorSpace,
-                               (Byte)PCLXLAttrEnums.eVal.eGray);
+                               (byte)PCLXLAttrEnums.eVal.eGray);
 
             PCLXLWriter.addOperator(ref buffer,
                               ref indBuf,
@@ -491,10 +491,10 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            posYInc = (Int16)(scaleFactor * _posYIncMain);
+            posYInc = (short)(scaleFactor * _posYIncMain);
 
-            posX = (Int16)(scaleFactor * _posXName);
-            posY = (Int16)(scaleFactor * _posYHddr);
+            posX = (short)(scaleFactor * _posXName);
+            posY = (short)(scaleFactor * _posYHddr);
 
             PCLXLWriter.text(prnWriter, formAsMacro, false,
                        PCLXLWriter.advances_ArialBold, ptSizeHddr,
@@ -507,13 +507,13 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            posY = (Int16)(scaleFactor * _posYDesc);
+            posY = (short)(scaleFactor * _posYDesc);
 
             PCLXLWriter.text(prnWriter, formAsMacro, false,
                        PCLXLWriter.advances_ArialBold, ptSizeMain,
                        posX, posY, "Page Number:");
 
-            posY += (Int16)(posYInc * 4);
+            posY += (short)(posYInc * 4);
 
             PCLXLWriter.text(prnWriter, formAsMacro, false,
                        PCLXLWriter.advances_ArialBold, ptSizeMain,
@@ -543,21 +543,21 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void generateOverlaySet(BinaryWriter prnWriter,
-                                               Int32 pageCount,
-                                               Int32[] indxPaperSize,
-                                               Int32[] indxPlexMode,
-                                               Single[] scaleFactors,
-                                               ref Int32 formCountFront,
-                                               ref Int32 formCountRear,
-                                               ref Int32[] indxFormsFront,
-                                               ref Int32[] indxFormsRear,
-                                               ref String[] formNamesFront,
-                                               ref String[] formNamesRear)
+                                               int pageCount,
+                                               int[] indxPaperSize,
+                                               int[] indxPlexMode,
+                                               float[] scaleFactors,
+                                               ref int formCountFront,
+                                               ref int formCountRear,
+                                               ref int[] indxFormsFront,
+                                               ref int[] indxFormsRear,
+                                               ref string[] formNamesFront,
+                                               ref string[] formNamesRear)
         {
-            Int32 crntFormFront,
+            int crntFormFront,
                   crntFormRear;
 
-            Boolean[] duplexSheet = new Boolean[pageCount];
+            bool[] duplexSheet = new bool[pageCount];
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -565,7 +565,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i < pageCount; i++)
+            for (int i = 0; i < pageCount; i++)
             {
                 if (PCLPlexModes.isSimplex(indxPlexMode[i]))
                     duplexSheet[i] = false;
@@ -599,11 +599,11 @@ namespace PCLParaphernalia
             // Subsequent sheets.                                             //
             //----------------------------------------------------------------//
 
-            for (Int32 i = 1; i < pageCount; i++)
+            for (int i = 1; i < pageCount; i++)
             {
-                Boolean matchFound = false;
+                bool matchFound = false;
 
-                for (Int32 j = 0; j < i; j++)
+                for (int j = 0; j < i; j++)
                 {
                     if (indxPaperSize[i] == indxPaperSize[j])
                     {
@@ -670,7 +670,7 @@ namespace PCLParaphernalia
             // Subsequent sheets.                                             //
             //----------------------------------------------------------------//
 
-            for (Int32 i = 1; i < pageCount; i++)
+            for (int i = 1; i < pageCount; i++)
             {
                 if (!duplexSheet[i])
                 {
@@ -678,9 +678,9 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    Boolean matchFound = false;
+                    bool matchFound = false;
 
-                    for (Int32 j = 0; j < i; j++)
+                    for (int j = 0; j < i; j++)
                     {
                         if (indxPaperSize[i] == indxPaperSize[j] &&
                             duplexSheet[j])
@@ -730,34 +730,34 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generatePage(BinaryWriter prnWriter,
-                                         Int32 pageNo,
-                                         Int32 pageCount,
-                                         Int32 indxPaperSize,
-                                         Int32 indxPaperType,
-                                         Int32 indxPaperTray,
-                                         Int32 indxPlexMode,
-                                         Int32 indxOrientFront,
-                                         Int32 indxOrientRear,
-                                         String formNameFront,
-                                         String formNameRear,
-                                         Single scaleFactor,
-                                         Boolean formAsMacro)
+                                         int pageNo,
+                                         int pageCount,
+                                         int indxPaperSize,
+                                         int indxPaperType,
+                                         int indxPaperTray,
+                                         int indxPlexMode,
+                                         int indxOrientFront,
+                                         int indxOrientRear,
+                                         string formNameFront,
+                                         string formNameRear,
+                                         float scaleFactor,
+                                         bool formAsMacro)
         {
-            const Int32 sizeStd = 1024;
+            const int sizeStd = 1024;
 
-            Byte[] bufStd = new Byte[sizeStd];
+            byte[] bufStd = new byte[sizeStd];
 
-            Int32 indStd;
+            int indStd;
 
-            Int32 ptSizeMain = (Int32)(scaleFactor * 20);
+            int ptSizeMain = (int)(scaleFactor * 20);
 
-            Int16 posX,
+            short posX,
                   posY,
                   posYInc;
 
-            String tmpStr;
+            string tmpStr;
 
-            Boolean simplex = PCLPlexModes.isSimplex(indxPlexMode);
+            bool simplex = PCLPlexModes.isSimplex(indxPlexMode);
 
             indStd = 0;
 
@@ -800,7 +800,7 @@ namespace PCLParaphernalia
             PCLXLWriter.addAttrUbyte(ref bufStd,
                                ref indStd,
                                PCLXLAttributes.eTag.ColorSpace,
-                               (Byte)PCLXLAttrEnums.eVal.eGray);
+                               (byte)PCLXLAttrEnums.eVal.eGray);
 
             PCLXLWriter.addOperator(ref bufStd,
                               ref indStd,
@@ -834,10 +834,10 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            posYInc = (Int16)(scaleFactor * _posYIncMain);
+            posYInc = (short)(scaleFactor * _posYIncMain);
 
-            posX = (Int16)(scaleFactor * _posXValue);
-            posY = (Int16)(scaleFactor * _posYDesc);
+            posX = (short)(scaleFactor * _posXValue);
+            posY = (short)(scaleFactor * _posYDesc);
 
             tmpStr = pageNo.ToString() + " of " + pageCount.ToString();
 
@@ -979,7 +979,7 @@ namespace PCLParaphernalia
                 PCLXLWriter.addAttrUbyte(ref bufStd,
                                    ref indStd,
                                    PCLXLAttributes.eTag.ColorSpace,
-                                   (Byte)PCLXLAttrEnums.eVal.eGray);
+                                   (byte)PCLXLAttrEnums.eVal.eGray);
 
                 PCLXLWriter.addOperator(ref bufStd,
                                   ref indStd,
@@ -1013,8 +1013,8 @@ namespace PCLParaphernalia
 
                 //----------------------------------------------------------------//
 
-                posX = (Int16)(scaleFactor * _posXValue);
-                posY = (Int16)(scaleFactor * _posYDesc);
+                posX = (short)(scaleFactor * _posXValue);
+                posY = (short)(scaleFactor * _posYDesc);
 
                 tmpStr = pageNo.ToString() + " (rear) of " + pageCount.ToString();
 
@@ -1024,7 +1024,7 @@ namespace PCLParaphernalia
 
                 //----------------------------------------------------------------//
 
-                posY += (Int16)(posYInc * 4);
+                posY += (short)(posYInc * 4);
 
                 if (indxOrientRear >= PCLOrientations.getCount())
                     tmpStr = "*** unknown ***";
@@ -1060,26 +1060,26 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generatePageSet(BinaryWriter prnWriter,
-                                             Int32 pageCount,
-                                             Int32[] indxPaperSize,
-                                             Int32[] indxPaperType,
-                                             Int32[] indxPaperTray,
-                                             Int32[] indxPlexMode,
-                                             Int32[] indxOrientFront,
-                                             Int32[] indxOrientRear,
-                                             Int32[] indxFormsFront,
-                                             Int32[] indxFormsRear,
-                                             String[] formNamesFront,
-                                             String[] formNamesRear,
-                                             Single[] scaleFactors,
-                                             Boolean formAsMacro)
+                                             int pageCount,
+                                             int[] indxPaperSize,
+                                             int[] indxPaperType,
+                                             int[] indxPaperTray,
+                                             int[] indxPlexMode,
+                                             int[] indxOrientFront,
+                                             int[] indxOrientRear,
+                                             int[] indxFormsFront,
+                                             int[] indxFormsRear,
+                                             string[] formNamesFront,
+                                             string[] formNamesRear,
+                                             float[] scaleFactors,
+                                             bool formAsMacro)
         {
-            for (Int32 i = 0; i < pageCount; i++)
+            for (int i = 0; i < pageCount; i++)
             {
-                String formNameFront;
-                String formNameRear;
+                string formNameFront;
+                string formNameRear;
 
-                Int32 index;
+                int index;
 
                 if (formAsMacro)
                 {
@@ -1125,7 +1125,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 TrayIdAutoSelect
+        public static int TrayIdAutoSelect
         {
             get
             {

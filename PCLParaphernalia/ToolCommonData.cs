@@ -23,7 +23,7 @@ namespace PCLParaphernalia
 
         [System.Reflection.ObfuscationAttribute(Exclude = true)]
 
-        public enum eToolIds : Byte
+        public enum eToolIds : byte
         {
             Min,
             FontSample,
@@ -46,7 +46,7 @@ namespace PCLParaphernalia
 
         [System.Reflection.ObfuscationAttribute(Exclude = true)]
 
-        public enum eToolSubIds : Byte
+        public enum eToolSubIds : byte
         {
             None,
             // used by ToolPrintLang:
@@ -83,9 +83,9 @@ namespace PCLParaphernalia
             Unknown
         }
 
-        static String _tmpFolder = Environment.GetEnvironmentVariable("TMP");
+        static string _tmpFolder = Environment.GetEnvironmentVariable("TMP");
 
-        static String _defWorkFolder = _tmpFolder;
+        static string _defWorkFolder = _tmpFolder;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -96,7 +96,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String DefWorkFolder
+        public static string DefWorkFolder
         {
             get { return _defWorkFolder; }
         }

@@ -45,18 +45,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean checkSymSetFile(
-            String filename,
-            ref UInt16 symSetNo,
-            ref UInt16 firstCode,
-            ref UInt16 lastCode,
+        public static bool checkSymSetFile(
+            string filename,
+            ref ushort symSetNo,
+            ref ushort firstCode,
+            ref ushort lastCode,
             ref PCLSymSetTypes.eIndex symSetType)
         {
-            Boolean flagOK = true;
+            bool flagOK = true;
 
-            Boolean fileOpen = false;
+            bool fileOpen = false;
 
-            Int64 fileSize = 0,
+            long fileSize = 0,
                    offset = 0;
 
             //----------------------------------------------------------------//
@@ -97,8 +97,8 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    Byte symSetFormat = 0;
-                    Byte symSetTypeId = 0;
+                    byte symSetFormat = 0;
+                    byte symSetTypeId = 0;
 
                     flagOK = readSymSetHddr(filename,
                                              fileSize,
@@ -158,19 +158,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean readSymSetId(Int64 fileSize,
-                                             ref Int64 fileOffset,
-                                             ref UInt16 symSetId)
+        private static bool readSymSetId(long fileSize,
+                                             ref long fileOffset,
+                                             ref ushort symSetId)
         {
-            const Int32 prefixLen = 3;
+            const int prefixLen = 3;
 
-            Boolean flagOK = true;
+            bool flagOK = true;
 
-            Int32 offset = (Int32)fileOffset;
+            int offset = (int)fileOffset;
 
-            Int32 value = 0;
+            int value = 0;
 
-            Byte[] buf = new Byte[prefixLen];
+            byte[] buf = new byte[prefixLen];
 
             _binReader.Read(buf, 0, prefixLen);
 
@@ -182,20 +182,20 @@ namespace PCLParaphernalia
             }
             else
             {
-                const Int32 maxRead = 12;
-                Boolean foundTerm = false;
+                const int maxRead = 12;
+                bool foundTerm = false;
 
-                Int32 pos,
+                int pos,
                       maxPos;
 
-                Byte x;
+                byte x;
 
                 offset += prefixLen;
 
                 maxPos = offset + maxRead;
 
                 if (fileSize <= maxPos)
-                    maxPos = (Int32)(fileSize - 1);
+                    maxPos = (int)(fileSize - 1);
 
                 for (pos = offset;
                      (flagOK) && (!foundTerm) && (pos < maxPos);
@@ -215,7 +215,7 @@ namespace PCLParaphernalia
 
                 if (foundTerm)
                 {
-                    symSetId = (UInt16)value;
+                    symSetId = (ushort)value;
                     fileOffset = pos;
                 }
             }
@@ -233,31 +233,31 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean readSymSetHddr(String fileName,
-                                               Int64 fileSize,
-                                               UInt16 symSetNo,
-                                               ref Byte format,
-                                               ref Byte type,
-                                               ref Int64 fileOffset,
-                                               ref UInt16 firstCode,
-                                               ref UInt16 lastCode)
+        private static bool readSymSetHddr(string fileName,
+                                               long fileSize,
+                                               ushort symSetNo,
+                                               ref byte format,
+                                               ref byte type,
+                                               ref long fileOffset,
+                                               ref ushort firstCode,
+                                               ref ushort lastCode)
         {
-            const Int32 hddrDescLen = 18;
-            const Int32 prefixLen = 3;
+            const int hddrDescLen = 18;
+            const int prefixLen = 3;
 
-            Boolean flagOK = true;
+            bool flagOK = true;
 
-            String messHeader = "Download symbol set file '" + fileName + "':\n\n";
-            String messTrailer = "\n\nYou will have to choose another file.";
+            string messHeader = "Download symbol set file '" + fileName + "':\n\n";
+            string messTrailer = "\n\nYou will have to choose another file.";
 
-            Int32 offset = (Int32)fileOffset;
-            Int32 value = 0;
+            int offset = (int)fileOffset;
+            int value = 0;
 
-            Int32 hddrSize = 0,
+            int hddrSize = 0,
                   hddrLen = 0,
                   hddrOffset = 0;
 
-            Byte[] buf = new Byte[hddrDescLen];
+            byte[] buf = new byte[hddrDescLen];
 
             _binReader.Read(buf, 0, prefixLen);
 
@@ -269,20 +269,20 @@ namespace PCLParaphernalia
             }
             else
             {
-                const Int32 maxRead = 12;
-                Boolean foundTerm = false;
+                const int maxRead = 12;
+                bool foundTerm = false;
 
-                Int32 pos,
+                int pos,
                       maxPos;
 
-                Byte x;
+                byte x;
 
                 offset += prefixLen;
 
                 maxPos = offset + maxRead;
 
                 if (fileSize <= maxPos)
-                    maxPos = (Int32)(fileSize - 1);
+                    maxPos = (int)(fileSize - 1);
 
                 for (pos = offset;
                      (flagOK) && (!foundTerm) && (pos < maxPos);
@@ -352,7 +352,7 @@ namespace PCLParaphernalia
 
                 _binReader.Read(buf, 0, hddrDescLen);
 
-                hddrSize = (UInt16)((buf[0] * 256) + buf[1]);
+                hddrSize = (ushort)((buf[0] * 256) + buf[1]);
 
                 if (hddrSize > hddrLen)
                 {
@@ -390,17 +390,17 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                UInt16 symSetDes;
+                ushort symSetDes;
 
-                Int32 codeCt;
+                int codeCt;
 
-                symSetDes = (UInt16)((buf[2] * 256) + buf[3]);
+                symSetDes = (ushort)((buf[2] * 256) + buf[3]);
 
                 format = buf[4];
                 type = buf[5];
 
-                firstCode = (UInt16)((buf[6] * 256) + buf[7]);
-                lastCode = (UInt16)((buf[8] * 256) + buf[9]);
+                firstCode = (ushort)((buf[6] * 256) + buf[7]);
+                lastCode = (ushort)((buf[8] * 256) + buf[9]);
 
                 codeCt = lastCode - firstCode + 1;
 
@@ -472,23 +472,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean readAndStoreSymSetMap(Int64 mapOffset,
-                                                      UInt16 symSetNo,
-                                                      UInt16 firstCode,
-                                                      UInt16 lastCode)
+        private static bool readAndStoreSymSetMap(long mapOffset,
+                                                      ushort symSetNo,
+                                                      ushort firstCode,
+                                                      ushort lastCode)
         {
-            const Int32 rangeC1Min = 0x80;
-            const Int32 rangeC1Max = 0x9f;
+            const int rangeC1Min = 0x80;
+            const int rangeC1Max = 0x9f;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            Boolean usesC1Range = false;
+            bool usesC1Range = false;
 
             PCLSymSetTypes.eIndex symSetType;
 
-            UInt16 mapCode;
+            ushort mapCode;
 
-            Int32 codeCt,
+            int codeCt,
                   mapBytes,
                   mapIndx,
                   mapPos;
@@ -496,8 +496,8 @@ namespace PCLParaphernalia
             codeCt = lastCode - firstCode + 1;
             mapBytes = codeCt * 2;
 
-            Byte[] buf = new Byte[mapBytes];
-            UInt16[] map = new UInt16[lastCode + 1];
+            byte[] buf = new byte[mapBytes];
+            ushort[] map = new ushort[lastCode + 1];
 
             _ipStream.Seek(mapOffset, SeekOrigin.Begin);
 
@@ -505,16 +505,16 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i <= lastCode; i++)
+            for (int i = 0; i <= lastCode; i++)
             {
                 map[i] = 0xffff;
             }
 
-            for (Int32 i = 0; i < codeCt; i++)
+            for (int i = 0; i < codeCt; i++)
             {
                 mapPos = i * 2;
 
-                mapCode = (UInt16)((buf[mapPos] * 256) + buf[mapPos + 1]);
+                mapCode = (ushort)((buf[mapPos] * 256) + buf[mapPos + 1]);
 
                 mapIndx = firstCode + i;
 
@@ -567,14 +567,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean symSetFileCopy(BinaryWriter prnWriter,
-                                             String filename)
+        public static bool symSetFileCopy(BinaryWriter prnWriter,
+                                             string filename)
         {
-            Boolean OK = true;
+            bool OK = true;
 
-            Boolean fileOpen = false;
+            bool fileOpen = false;
 
-            Int64 fileSize = 0;
+            long fileSize = 0;
 
             fileOpen = symSetFileOpen(filename, ref fileSize);
 
@@ -584,12 +584,12 @@ namespace PCLParaphernalia
             }
             else
             {
-                const Int32 bufSize = 2048;
-                Int32 readSize;
+                const int bufSize = 2048;
+                int readSize;
 
-                Boolean endLoop;
+                bool endLoop;
 
-                Byte[] buf = new Byte[bufSize];
+                byte[] buf = new byte[bufSize];
 
                 endLoop = false;
 
@@ -618,10 +618,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean symSetFileOpen(String fileName,
-                                              ref Int64 fileSize)
+        private static bool symSetFileOpen(string fileName,
+                                              ref long fileSize)
         {
-            Boolean open = false;
+            bool open = false;
 
             if ((fileName == null) || (fileName == ""))
             {

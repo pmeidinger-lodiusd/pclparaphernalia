@@ -20,20 +20,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private String _mnemonic;
-        private String _description;
+        private string _mnemonic;
+        private string _description;
 
-        private Boolean _flagResetHPGL2;
-        private Boolean _flagBinaryData;
-        private Boolean _flagFlipTransp;
-        private Boolean _flagSetLblTerm;
-        private Boolean _flagUseLblTerm;
-        private Boolean _flagUseStdTerm;
-        private Boolean _flagQuotedData;
-        private Boolean _flagSymbolMode;
+        private bool _flagResetHPGL2;
+        private bool _flagBinaryData;
+        private bool _flagFlipTransp;
+        private bool _flagSetLblTerm;
+        private bool _flagUseLblTerm;
+        private bool _flagUseStdTerm;
+        private bool _flagQuotedData;
+        private bool _flagSymbolMode;
 
-        private Int32 _statsCtParent;
-        private Int32 _statsCtChild;
+        private int _statsCtParent;
+        private int _statsCtChild;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -41,16 +41,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public HPGL2Command(String mnemonic,
-                            Boolean flagResetHPGL2,
-                            Boolean flagBinaryData,
-                            Boolean flagFlipTransp,
-                            Boolean flagSetLblTerm,
-                            Boolean flagUseLblTerm,
-                            Boolean flagUseStdTerm,
-                            Boolean flagQuotedData,
-                            Boolean flagSymbolMode,
-                            String description)
+        public HPGL2Command(string mnemonic,
+                            bool flagResetHPGL2,
+                            bool flagBinaryData,
+                            bool flagFlipTransp,
+                            bool flagSetLblTerm,
+                            bool flagUseLblTerm,
+                            bool flagUseStdTerm,
+                            bool flagQuotedData,
+                            bool flagSymbolMode,
+                            string description)
         {
             _mnemonic = mnemonic;
             _description = description;
@@ -74,7 +74,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Description
+        public string Description
         {
             get { return _description; }
         }
@@ -85,7 +85,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagBinaryData
+        public bool FlagBinaryData
         {
             get { return _flagBinaryData; }
         }
@@ -96,7 +96,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagFlipTransp
+        public bool FlagFlipTransp
         {
             get { return _flagFlipTransp; }
         }
@@ -107,7 +107,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagQuotedData
+        public bool FlagQuotedData
         {
             get { return _flagQuotedData; }
         }
@@ -118,7 +118,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagResetHPGL2
+        public bool FlagResetHPGL2
         {
             get { return _flagResetHPGL2; }
         }
@@ -129,7 +129,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagSetLblTerm
+        public bool FlagSetLblTerm
         {
             get { return _flagSetLblTerm; }
         }
@@ -140,7 +140,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagSymbolMode
+        public bool FlagSymbolMode
         {
             get { return _flagSymbolMode; }
         }
@@ -151,7 +151,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagUseLblTerm
+        public bool FlagUseLblTerm
         {
             get { return _flagUseLblTerm; }
         }
@@ -162,7 +162,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagUseStdTerm
+        public bool FlagUseStdTerm
         {
             get { return _flagUseStdTerm; }
         }
@@ -176,7 +176,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void incrementStatisticsCount(Int32 level)
+        public void incrementStatisticsCount(int level)
         {
             if (level == 0)
                 _statsCtParent++;
@@ -190,7 +190,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Mnemonic
+        public string Mnemonic
         {
             get { return _mnemonic; }
         }
@@ -216,7 +216,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtChild
+        public int StatsCtChild
         {
             get { return _statsCtChild; }
         }
@@ -227,7 +227,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtParent
+        public int StatsCtParent
         {
             get { return _statsCtParent; }
         }
@@ -238,7 +238,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtTotal
+        public int StatsCtTotal
         {
             get { return (_statsCtParent + _statsCtChild); }
         }

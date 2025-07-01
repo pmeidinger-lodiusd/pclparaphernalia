@@ -24,21 +24,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Int32 _logOperROPMin = 0;
-        private static Int32 _logOperROPMax = 255;
-        private static Int32 _logOperROPInc = 8;
+        private static int _logOperROPMin = 0;
+        private static int _logOperROPMax = 255;
+        private static int _logOperROPInc = 8;
 
-        private static Int16[] _subsetLogOperModesPCL =
+        private static short[] _subsetLogOperModesPCL =
         {
-            (Int32) PCLPalettes.eIndex.PCLMonochrome,
-            (Int32) PCLPalettes.eIndex.PCLSimpleColourCMY,
-            (Int32) PCLPalettes.eIndex.PCLSimpleColourRGB
+            (int) PCLPalettes.eIndex.PCLMonochrome,
+            (int) PCLPalettes.eIndex.PCLSimpleColourCMY,
+            (int) PCLPalettes.eIndex.PCLSimpleColourRGB
         };
 
-        private static Int16[] _subsetLogOperModesPCLXL =
+        private static short[] _subsetLogOperModesPCLXL =
         {
-            (Int32) PCLXLPalettes.eIndex.PCLXLGray,
-            (Int32) PCLXLPalettes.eIndex.PCLXLRGB
+            (int) PCLXLPalettes.eIndex.PCLXLGray,
+            (int) PCLXLPalettes.eIndex.PCLXLRGB
         };
 
         //--------------------------------------------------------------------//
@@ -47,57 +47,57 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean _flagLogOperUseMacrosPCL;
-        private Boolean _flagLogOperUseMacrosPCLXL;
-        private Boolean _flagLogOperOptSrcTextPatPCLXL;
+        private bool _flagLogOperUseMacrosPCL;
+        private bool _flagLogOperUseMacrosPCLXL;
+        private bool _flagLogOperOptSrcTextPatPCLXL;
 
-        private Int32 _indxLogOperModePCL;
-        private Int32 _indxLogOperModePCLXL;
+        private int _indxLogOperModePCL;
+        private int _indxLogOperModePCLXL;
 
-        private Int32 _indxLogOperROPFromPCL;
-        private Int32 _indxLogOperROPFromPCLXL;
-        private Int32 _indxLogOperROPToPCL;
-        private Int32 _indxLogOperROPToPCLXL;
+        private int _indxLogOperROPFromPCL;
+        private int _indxLogOperROPFromPCLXL;
+        private int _indxLogOperROPToPCL;
+        private int _indxLogOperROPToPCLXL;
 
-        private Int32 _indxLogOperClrD1PCL;
-        private Int32 _indxLogOperClrD2PCL;
-        private Int32 _indxLogOperClrS1PCL;
-        private Int32 _indxLogOperClrS2PCL;
-        private Int32 _indxLogOperClrT1PCL;
-        private Int32 _indxLogOperClrT2PCL;
+        private int _indxLogOperClrD1PCL;
+        private int _indxLogOperClrD2PCL;
+        private int _indxLogOperClrS1PCL;
+        private int _indxLogOperClrS2PCL;
+        private int _indxLogOperClrT1PCL;
+        private int _indxLogOperClrT2PCL;
 
-        private Int32 _indxLogOperClrD1PCLXL;
-        private Int32 _indxLogOperClrD2PCLXL;
-        private Int32 _indxLogOperClrS1PCLXL;
-        private Int32 _indxLogOperClrS2PCLXL;
-        private Int32 _indxLogOperClrT1PCLXL;
-        private Int32 _indxLogOperClrT2PCLXL;
+        private int _indxLogOperClrD1PCLXL;
+        private int _indxLogOperClrD2PCLXL;
+        private int _indxLogOperClrS1PCLXL;
+        private int _indxLogOperClrS2PCLXL;
+        private int _indxLogOperClrT1PCLXL;
+        private int _indxLogOperClrT2PCLXL;
 
-        private Int32 _indxLogOperGrayD1PCLXL;
-        private Int32 _indxLogOperGrayD2PCLXL;
-        private Int32 _indxLogOperGrayS1PCLXL;
-        private Int32 _indxLogOperGrayS2PCLXL;
-        private Int32 _indxLogOperGrayT1PCLXL;
-        private Int32 _indxLogOperGrayT2PCLXL;
+        private int _indxLogOperGrayD1PCLXL;
+        private int _indxLogOperGrayD2PCLXL;
+        private int _indxLogOperGrayS1PCLXL;
+        private int _indxLogOperGrayS2PCLXL;
+        private int _indxLogOperGrayT1PCLXL;
+        private int _indxLogOperGrayT2PCLXL;
 
-        private Int32 _indxLogOperMonoD1PCL;
-        private Int32 _indxLogOperMonoD2PCL;
-        private Int32 _indxLogOperMonoS1PCL;
-        private Int32 _indxLogOperMonoS2PCL;
-        private Int32 _indxLogOperMonoT1PCL;
-        private Int32 _indxLogOperMonoT2PCL;
+        private int _indxLogOperMonoD1PCL;
+        private int _indxLogOperMonoD2PCL;
+        private int _indxLogOperMonoS1PCL;
+        private int _indxLogOperMonoS2PCL;
+        private int _indxLogOperMonoT1PCL;
+        private int _indxLogOperMonoT2PCL;
 
-        private Int32 _ctLogOperModesPCL;
-        private Int32 _ctLogOperModesPCLXL;
+        private int _ctLogOperModesPCL;
+        private int _ctLogOperModesPCLXL;
 
-        private Int16 _maxLogOperClrItemsPCL;
-        private Int16 _maxLogOperClrItemsPCLXL;
+        private short _maxLogOperClrItemsPCL;
+        private short _maxLogOperClrItemsPCLXL;
 
-        private Int16[] _ctLogOperClrsPCL;
-        private Int16[] _ctLogOperClrsPCLXL;
+        private short[] _ctLogOperClrsPCL;
+        private short[] _ctLogOperClrsPCLXL;
 
-        private String[,] _clrsLogOperPCL;
-        private String[,] _clrsLogOperPCLXL;
+        private string[,] _clrsLogOperPCL;
+        private string[,] _clrsLogOperPCLXL;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -118,13 +118,13 @@ namespace PCLParaphernalia
                      cbLogOperClrD1PCL.HasItems)
                 {
                     _indxLogOperClrD1PCL =
-                        (Byte)cbLogOperClrD1PCL.SelectedIndex;
+                        (byte)cbLogOperClrD1PCL.SelectedIndex;
                 }
                 else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
                      cbLogOperClrD1PCLXL.HasItems)
                 {
                     _indxLogOperClrD1PCLXL =
-                        (Byte)cbLogOperClrD1PCLXL.SelectedIndex;
+                        (byte)cbLogOperClrD1PCLXL.SelectedIndex;
                 }
             }
         }
@@ -148,13 +148,13 @@ namespace PCLParaphernalia
                      cbLogOperClrD2PCL.HasItems)
                 {
                     _indxLogOperClrD2PCL =
-                        (Byte)cbLogOperClrD2PCL.SelectedIndex;
+                        (byte)cbLogOperClrD2PCL.SelectedIndex;
                 }
                 else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
                      cbLogOperClrD2PCLXL.HasItems)
                 {
                     _indxLogOperClrD2PCLXL =
-                        (Byte)cbLogOperClrD2PCLXL.SelectedIndex;
+                        (byte)cbLogOperClrD2PCLXL.SelectedIndex;
                 }
             }
         }
@@ -178,13 +178,13 @@ namespace PCLParaphernalia
                      cbLogOperClrS1PCL.HasItems)
                 {
                     _indxLogOperClrS1PCL =
-                        (Byte)cbLogOperClrS1PCL.SelectedIndex;
+                        (byte)cbLogOperClrS1PCL.SelectedIndex;
                 }
                 else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
                      cbLogOperClrS1PCLXL.HasItems)
                 {
                     _indxLogOperClrS1PCLXL =
-                        (Byte)cbLogOperClrS1PCLXL.SelectedIndex;
+                        (byte)cbLogOperClrS1PCLXL.SelectedIndex;
                 }
             }
         }
@@ -208,13 +208,13 @@ namespace PCLParaphernalia
                      cbLogOperClrS2PCL.HasItems)
                 {
                     _indxLogOperClrS2PCL =
-                        (Byte)cbLogOperClrS2PCL.SelectedIndex;
+                        (byte)cbLogOperClrS2PCL.SelectedIndex;
                 }
                 else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
                      cbLogOperClrS2PCLXL.HasItems)
                 {
                     _indxLogOperClrS2PCLXL =
-                        (Byte)cbLogOperClrS2PCLXL.SelectedIndex;
+                        (byte)cbLogOperClrS2PCLXL.SelectedIndex;
                 }
             }
         }
@@ -238,13 +238,13 @@ namespace PCLParaphernalia
                      cbLogOperClrT1PCL.HasItems)
                 {
                     _indxLogOperClrT1PCL =
-                        (Byte)cbLogOperClrT1PCL.SelectedIndex;
+                        (byte)cbLogOperClrT1PCL.SelectedIndex;
                 }
                 else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
                      cbLogOperClrT1PCLXL.HasItems)
                 {
                     _indxLogOperClrT1PCLXL =
-                        (Byte)cbLogOperClrT1PCLXL.SelectedIndex;
+                        (byte)cbLogOperClrT1PCLXL.SelectedIndex;
                 }
             }
         }
@@ -269,13 +269,13 @@ namespace PCLParaphernalia
                      cbLogOperClrT2PCL.HasItems)
                 {
                     _indxLogOperClrT2PCL =
-                        (Byte)cbLogOperClrT2PCL.SelectedIndex;
+                        (byte)cbLogOperClrT2PCL.SelectedIndex;
                 }
                 else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
                      cbLogOperClrT2PCLXL.HasItems)
                 {
                     _indxLogOperClrT2PCLXL =
-                        (Byte)cbLogOperClrT2PCLXL.SelectedIndex;
+                        (byte)cbLogOperClrT2PCLXL.SelectedIndex;
                 }
             }
         }
@@ -299,13 +299,13 @@ namespace PCLParaphernalia
                      cbLogOperMonoD1PCL.HasItems)
                 {
                     _indxLogOperMonoD1PCL =
-                        (Byte)cbLogOperMonoD1PCL.SelectedIndex;
+                        (byte)cbLogOperMonoD1PCL.SelectedIndex;
                 }
                 else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
                      cbLogOperGrayD1PCLXL.HasItems)
                 {
                     _indxLogOperGrayD1PCLXL =
-                        (Byte)cbLogOperGrayD1PCLXL.SelectedIndex;
+                        (byte)cbLogOperGrayD1PCLXL.SelectedIndex;
                 }
             }
         }
@@ -329,13 +329,13 @@ namespace PCLParaphernalia
                     cbLogOperMonoD2PCL.HasItems)
                 {
                     _indxLogOperMonoD2PCL =
-                        (Byte)cbLogOperMonoD2PCL.SelectedIndex;
+                        (byte)cbLogOperMonoD2PCL.SelectedIndex;
                 }
                 else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
                      cbLogOperGrayD2PCLXL.HasItems)
                 {
                     _indxLogOperGrayD2PCLXL =
-                        (Byte)cbLogOperGrayD2PCLXL.SelectedIndex;
+                        (byte)cbLogOperGrayD2PCLXL.SelectedIndex;
                 }
             }
         }
@@ -359,13 +359,13 @@ namespace PCLParaphernalia
                     cbLogOperMonoS1PCL.HasItems)
                 {
                     _indxLogOperMonoS1PCL =
-                        (Byte)cbLogOperMonoS1PCL.SelectedIndex;
+                        (byte)cbLogOperMonoS1PCL.SelectedIndex;
                 }
                 else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
                      cbLogOperGrayS1PCLXL.HasItems)
                 {
                     _indxLogOperGrayS1PCLXL =
-                        (Byte)cbLogOperGrayS1PCLXL.SelectedIndex;
+                        (byte)cbLogOperGrayS1PCLXL.SelectedIndex;
                 }
             }
         }
@@ -389,13 +389,13 @@ namespace PCLParaphernalia
                     cbLogOperMonoS2PCL.HasItems)
                 {
                     _indxLogOperMonoS2PCL =
-                        (Byte)cbLogOperMonoS2PCL.SelectedIndex;
+                        (byte)cbLogOperMonoS2PCL.SelectedIndex;
                 }
                 else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
                      cbLogOperGrayS2PCLXL.HasItems)
                 {
                     _indxLogOperGrayS2PCLXL =
-                        (Byte)cbLogOperGrayS2PCLXL.SelectedIndex;
+                        (byte)cbLogOperGrayS2PCLXL.SelectedIndex;
                 }
             }
         }
@@ -419,13 +419,13 @@ namespace PCLParaphernalia
                     cbLogOperMonoT1PCL.HasItems)
                 {
                     _indxLogOperMonoT1PCL =
-                        (Byte)cbLogOperMonoT1PCL.SelectedIndex;
+                        (byte)cbLogOperMonoT1PCL.SelectedIndex;
                 }
                 else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
                      cbLogOperGrayT1PCLXL.HasItems)
                 {
                     _indxLogOperGrayT1PCLXL =
-                        (Byte)cbLogOperGrayT1PCLXL.SelectedIndex;
+                        (byte)cbLogOperGrayT1PCLXL.SelectedIndex;
                 }
             }
         }
@@ -449,13 +449,13 @@ namespace PCLParaphernalia
                     cbLogOperMonoT2PCL.HasItems)
                 {
                     _indxLogOperMonoT2PCL =
-                        (Byte)cbLogOperMonoT2PCL.SelectedIndex;
+                        (byte)cbLogOperMonoT2PCL.SelectedIndex;
                 }
                 else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
                      cbLogOperGrayT2PCLXL.HasItems)
                 {
                     _indxLogOperGrayT2PCLXL =
-                        (Byte)cbLogOperGrayT2PCLXL.SelectedIndex;
+                        (byte)cbLogOperGrayT2PCLXL.SelectedIndex;
                 }
             }
         }
@@ -478,7 +478,7 @@ namespace PCLParaphernalia
                 if ((_crntPDL == ToolCommonData.ePrintLang.PCL) &&
                     cbLogOperModePCL.HasItems)
                 {
-                    _indxLogOperModePCL = (Byte)cbLogOperModePCL.SelectedIndex;
+                    _indxLogOperModePCL = (byte)cbLogOperModePCL.SelectedIndex;
 
                     if (PCLPalettes.isMonochrome(_indxLogOperModePCL))
                     {
@@ -496,7 +496,7 @@ namespace PCLParaphernalia
                 else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
                     cbLogOperModePCLXL.HasItems)
                 {
-                    _indxLogOperModePCLXL = (Byte)cbLogOperModePCLXL.SelectedIndex;
+                    _indxLogOperModePCLXL = (byte)cbLogOperModePCLXL.SelectedIndex;
 
                     if (PCLXLPalettes.isMonochrome(_indxLogOperModePCLXL))
                     {
@@ -532,7 +532,7 @@ namespace PCLParaphernalia
                 if ((_crntPDL == ToolCommonData.ePrintLang.PCL) &&
                     cbLogOperROPFromPCL.HasItems)
                 {
-                    Int32 temp = cbLogOperROPFromPCL.SelectedIndex;
+                    int temp = cbLogOperROPFromPCL.SelectedIndex;
 
                     if (temp <= _indxLogOperROPToPCL)
                     {
@@ -540,7 +540,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        Int32 toVal = (_logOperROPInc *
+                        int toVal = (_logOperROPInc *
                                         (_indxLogOperROPToPCL + 1)) - 1,
                               fromVal = (_logOperROPInc * temp),
                               maxVal = (_logOperROPInc *
@@ -561,7 +561,7 @@ namespace PCLParaphernalia
                 else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
                     cbLogOperROPFromPCLXL.HasItems)
                 {
-                    Int32 temp = cbLogOperROPFromPCLXL.SelectedIndex;
+                    int temp = cbLogOperROPFromPCLXL.SelectedIndex;
 
                     if (temp <= _indxLogOperROPToPCLXL)
                     {
@@ -569,7 +569,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        Int32 toVal = (_logOperROPInc *
+                        int toVal = (_logOperROPInc *
                                         (_indxLogOperROPToPCLXL + 1)) - 1,
                               fromVal = (_logOperROPInc * temp),
                               maxVal = (_logOperROPInc *
@@ -608,7 +608,7 @@ namespace PCLParaphernalia
                 if ((_crntPDL == ToolCommonData.ePrintLang.PCL) &&
                     cbLogOperROPToPCL.HasItems)
                 {
-                    Int32 temp = cbLogOperROPToPCL.SelectedIndex;
+                    int temp = cbLogOperROPToPCL.SelectedIndex;
 
                     if (temp >= _indxLogOperROPFromPCL)
                     {
@@ -616,7 +616,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        Int32 toVal = (_logOperROPInc * (temp + 1)) - 1,
+                        int toVal = (_logOperROPInc * (temp + 1)) - 1,
                               fromVal = (_logOperROPInc *
                                          _indxLogOperROPFromPCL),
                               minVal = fromVal + (_logOperROPInc - 1);
@@ -636,7 +636,7 @@ namespace PCLParaphernalia
                 else if ((_crntPDL == ToolCommonData.ePrintLang.PCLXL) &&
                     cbLogOperROPToPCLXL.HasItems)
                 {
-                    Int32 temp = cbLogOperROPToPCLXL.SelectedIndex;
+                    int temp = cbLogOperROPToPCLXL.SelectedIndex;
 
                     if (temp >= _indxLogOperROPFromPCLXL)
                     {
@@ -644,7 +644,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        Int32 toVal = (_logOperROPInc * (temp + 1)) - 1,
+                        int toVal = (_logOperROPInc * (temp + 1)) - 1,
                               fromVal = (_logOperROPInc *
                                          _indxLogOperROPFromPCLXL),
                               minVal = fromVal + (_logOperROPInc - 1);
@@ -673,14 +673,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseDataLogOper(Boolean typeChange)
+        private void initialiseDataLogOper(bool typeChange)
         {
-            Int16 index;
+            short index;
 
             if (typeChange)
             {
-                Int16 tempCt;
-                Int16 tempInc;
+                short tempCt;
+                short tempInc;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -705,7 +705,7 @@ namespace PCLParaphernalia
                 _ctLogOperModesPCL = _subsetLogOperModesPCL.Length;
                 tempCt = 0;
 
-                for (Int32 i = 0; i < _ctLogOperModesPCL; i++)
+                for (int i = 0; i < _ctLogOperModesPCL; i++)
                 {
                     index = _subsetLogOperModesPCL[i];
 
@@ -723,19 +723,19 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                _clrsLogOperPCL = new String[_ctLogOperModesPCL,
+                _clrsLogOperPCL = new string[_ctLogOperModesPCL,
                                               _maxLogOperClrItemsPCL];
 
-                _ctLogOperClrsPCL = new Int16[_ctLogOperModesPCL];
+                _ctLogOperClrsPCL = new short[_ctLogOperModesPCL];
 
-                for (Int32 i = 0; i < _ctLogOperModesPCL; i++)
+                for (int i = 0; i < _ctLogOperModesPCL; i++)
                 {
                     index = _subsetLogOperModesPCL[i];
 
                     tempCt = PCLPalettes.getCtClrItems(index);
                     _ctLogOperClrsPCL[i] = tempCt;
 
-                    for (Int16 j = 0; j < tempCt; j++)
+                    for (short j = 0; j < tempCt; j++)
                     {
                         _clrsLogOperPCL[i, j] =
                             PCLPalettes.getColourName(index, j);
@@ -749,11 +749,11 @@ namespace PCLParaphernalia
                 cbLogOperROPFromPCL.Items.Clear();
                 cbLogOperROPToPCL.Items.Clear();
 
-                tempCt = (Int16)((_logOperROPMax - _logOperROPMin) /
+                tempCt = (short)((_logOperROPMax - _logOperROPMin) /
                                   _logOperROPInc);
-                tempInc = (Int16)(_logOperROPInc - 1);
+                tempInc = (short)(_logOperROPInc - 1);
 
-                for (Int32 i = _logOperROPMin; i < _logOperROPMax;
+                for (int i = _logOperROPMin; i < _logOperROPMax;
                            i += _logOperROPInc)
                 {
                     cbLogOperROPFromPCL.Items.Add(i.ToString());
@@ -783,7 +783,7 @@ namespace PCLParaphernalia
                 _ctLogOperModesPCLXL = _subsetLogOperModesPCLXL.Length;
                 tempCt = 0;
 
-                for (Int32 i = 0; i < _ctLogOperModesPCLXL; i++)
+                for (int i = 0; i < _ctLogOperModesPCLXL; i++)
                 {
                     index = _subsetLogOperModesPCLXL[i];
 
@@ -802,19 +802,19 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                _clrsLogOperPCLXL = new String[_ctLogOperModesPCLXL,
+                _clrsLogOperPCLXL = new string[_ctLogOperModesPCLXL,
                                                 _maxLogOperClrItemsPCLXL];
 
-                _ctLogOperClrsPCLXL = new Int16[_ctLogOperModesPCLXL];
+                _ctLogOperClrsPCLXL = new short[_ctLogOperModesPCLXL];
 
-                for (Int32 i = 0; i < _ctLogOperModesPCLXL; i++)
+                for (int i = 0; i < _ctLogOperModesPCLXL; i++)
                 {
                     index = _subsetLogOperModesPCLXL[i];
 
                     tempCt = PCLXLPalettes.getCtClrItems(index);
                     _ctLogOperClrsPCLXL[i] = tempCt;
 
-                    for (Int16 j = 0; j < tempCt; j++)
+                    for (short j = 0; j < tempCt; j++)
                     {
                         _clrsLogOperPCLXL[i, j] =
                             PCLXLPalettes.getColourName(index, j);
@@ -828,11 +828,11 @@ namespace PCLParaphernalia
                 cbLogOperROPFromPCLXL.Items.Clear();
                 cbLogOperROPToPCLXL.Items.Clear();
 
-                tempCt = (Int16)((_logOperROPMax - _logOperROPMin) /
+                tempCt = (short)((_logOperROPMax - _logOperROPMin) /
                                    _logOperROPInc);
-                tempInc = (Int16)(_logOperROPInc - 1);
+                tempInc = (short)(_logOperROPInc - 1);
 
-                for (Int32 i = _logOperROPMin; i < _logOperROPMax;
+                for (int i = _logOperROPMin; i < _logOperROPMax;
                            i += _logOperROPInc)
                 {
                     cbLogOperROPFromPCLXL.Items.Add(i.ToString());
@@ -925,7 +925,7 @@ namespace PCLParaphernalia
 
         private void initialiseDataLogOperClrsPCL()
         {
-            Int16 tempCt;
+            short tempCt;
 
             //------------------------------------------------------------//
             //                                                            //
@@ -939,7 +939,7 @@ namespace PCLParaphernalia
 
             tempCt = _ctLogOperClrsPCL[_indxLogOperModePCL];
 
-            for (Int32 i = 0; i < tempCt; i++)
+            for (int i = 0; i < tempCt; i++)
             {
                 cbLogOperClrD1PCL.Items.Add(
                     _clrsLogOperPCL[_indxLogOperModePCL, i]);
@@ -981,7 +981,7 @@ namespace PCLParaphernalia
 
             tempCt = _ctLogOperClrsPCL[_indxLogOperModePCL];
 
-            for (Int32 i = 0; i < tempCt; i++)
+            for (int i = 0; i < tempCt; i++)
             {
                 cbLogOperClrD2PCL.Items.Add(
                     _clrsLogOperPCL[_indxLogOperModePCL, i]);
@@ -1023,7 +1023,7 @@ namespace PCLParaphernalia
 
         private void initialiseDataLogOperClrsPCLXL()
         {
-            Int16 tempCt;
+            short tempCt;
 
             //------------------------------------------------------------//
             //                                                            //
@@ -1037,7 +1037,7 @@ namespace PCLParaphernalia
 
             tempCt = _ctLogOperClrsPCLXL[_indxLogOperModePCLXL];
 
-            for (Int32 i = 0; i < tempCt; i++)
+            for (int i = 0; i < tempCt; i++)
             {
                 cbLogOperClrD1PCLXL.Items.Add(
                     _clrsLogOperPCLXL[_indxLogOperModePCLXL, i]);
@@ -1079,7 +1079,7 @@ namespace PCLParaphernalia
 
             tempCt = _ctLogOperClrsPCLXL[_indxLogOperModePCLXL];
 
-            for (Int32 i = 0; i < tempCt; i++)
+            for (int i = 0; i < tempCt; i++)
             {
                 cbLogOperClrD2PCLXL.Items.Add(
                     _clrsLogOperPCLXL[_indxLogOperModePCLXL, i]);
@@ -1121,11 +1121,11 @@ namespace PCLParaphernalia
 
         private void initialiseDataLogOperGrayPCLXL()
         {
-            const Byte minLevel = 0;
-            const Byte maxLevel = 255;
+            const byte minLevel = 0;
+            const byte maxLevel = 255;
 
-            const Int32 grayPalette =
-                (Int32)PCLXLPalettes.eIndex.PCLXLGray;
+            const int grayPalette =
+                (int)PCLXLPalettes.eIndex.PCLXLGray;
 
             //------------------------------------------------------------//
             //                                                            //
@@ -1141,10 +1141,10 @@ namespace PCLParaphernalia
             cbLogOperGrayS2PCLXL.Items.Clear();
             cbLogOperGrayT2PCLXL.Items.Clear();
 
-            for (Int32 i = minLevel; i <= maxLevel; i++)
+            for (int i = minLevel; i <= maxLevel; i++)
             {
-                String name = PCLXLPalettes.getGrayLevel(grayPalette,
-                                                          (Byte)i);
+                string name = PCLXLPalettes.getGrayLevel(grayPalette,
+                                                          (byte)i);
 
                 cbLogOperGrayD1PCLXL.Items.Add(name);
                 cbLogOperGrayS1PCLXL.Items.Add(name);
@@ -1211,7 +1211,7 @@ namespace PCLParaphernalia
 
         private void initialiseDataLogOperMonoPCL()
         {
-            Int16 tempCt;
+            short tempCt;
 
             //------------------------------------------------------------//
             //                                                            //
@@ -1225,7 +1225,7 @@ namespace PCLParaphernalia
 
             tempCt = _ctLogOperClrsPCL[_indxLogOperModePCL];
 
-            for (Int32 i = 0; i < tempCt; i++)
+            for (int i = 0; i < tempCt; i++)
             {
                 cbLogOperMonoD1PCL.Items.Add(
                     _clrsLogOperPCL[_indxLogOperModePCL, i]);
@@ -1267,7 +1267,7 @@ namespace PCLParaphernalia
 
             tempCt = _ctLogOperClrsPCL[_indxLogOperModePCL];
 
-            for (Int32 i = 0; i < tempCt; i++)
+            for (int i = 0; i < tempCt; i++)
             {
                 cbLogOperMonoD2PCL.Items.Add(
                     _clrsLogOperPCL[_indxLogOperModePCL, i]);
@@ -1336,7 +1336,7 @@ namespace PCLParaphernalia
 
         public void metricsLoadDataLogOper()
         {
-            Boolean dummyBool = false;
+            bool dummyBool = false;
 
             ToolMiscSamplesPersist.loadDataTypeLogOper(
                 "PCL",
@@ -1390,7 +1390,7 @@ namespace PCLParaphernalia
 
         public void metricsSaveDataLogOper()
         {
-            Boolean dummyBool = false;
+            bool dummyBool = false;
 
             ToolMiscSamplesPersist.saveDataTypeLogOper(
                 "PCL",
@@ -1475,7 +1475,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private void setFlagLogOperFormAsMacro(
-            Boolean setFlag,
+            bool setFlag,
             ToolCommonData.ePrintLang crntPDL)
         {
             if (crntPDL == ToolCommonData.ePrintLang.PCL)

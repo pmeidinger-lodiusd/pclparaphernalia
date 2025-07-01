@@ -23,14 +23,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Byte _value;
-        private String _mnemonic;
-        private String _description;
+        private byte _value;
+        private string _mnemonic;
+        private string _description;
 
-        private Boolean _flagLineTerm;
+        private bool _flagLineTerm;
 
-        private Int32 _statsCtParent;
-        private Int32 _statsCtChild;
+        private int _statsCtParent;
+        private int _statsCtChild;
 
         private PrnParseConstants.eOvlAct _makeOvlAct;
 
@@ -43,12 +43,12 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PCLControlCode(
-            Byte value,
-            Boolean flagLineTerm,
-            String mnemonic,
+            byte value,
+            bool flagLineTerm,
+            string mnemonic,
             PrnParseConstants.eOvlAct makeOvlAct,
             PrnParseConstants.eSeqGrp seqGrp,
-            String description)
+            string description)
         {
             _value = value;
             _mnemonic = mnemonic;
@@ -67,7 +67,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String DescExcMnemonic
+        public string DescExcMnemonic
         {
             get { return _description; }
         }
@@ -78,7 +78,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Description
+        public string Description
         {
             get { return _mnemonic + ": " + _description; }
         }
@@ -89,7 +89,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagLineTerm
+        public bool FlagLineTerm
         {
             get { return _flagLineTerm; }
         }
@@ -100,7 +100,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagObsolete
+        public bool FlagObsolete
         {
             get { return false; }
         }
@@ -111,7 +111,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagValIsLen
+        public bool FlagValIsLen
         {
             get { return false; }
         }
@@ -125,7 +125,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void incrementStatisticsCount(Int32 level)
+        public void incrementStatisticsCount(int level)
         {
             if (level == 0)
                 _statsCtParent++;
@@ -150,7 +150,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Mnemonic
+        public string Mnemonic
         {
             get { return _mnemonic; }
         }
@@ -176,7 +176,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Sequence
+        public string Sequence
         {
             get { return "0x" + _value.ToString("x2"); }
         }
@@ -187,7 +187,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtChild
+        public int StatsCtChild
         {
             get { return _statsCtChild; }
         }
@@ -198,7 +198,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtParent
+        public int StatsCtParent
         {
             get { return _statsCtParent; }
         }
@@ -209,7 +209,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 StatsCtTotal
+        public int StatsCtTotal
         {
             get { return (_statsCtParent + _statsCtChild); }
         }
@@ -220,7 +220,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Type
+        public string Type
         {
             get { return "Control"; }
         }

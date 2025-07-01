@@ -25,7 +25,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private String _prnFilename;
+        private string _prnFilename;
 
         //   private Boolean _initialised;
 
@@ -58,9 +58,9 @@ namespace PCLParaphernalia
 
         private void btnFilenameBrowse_Click(object sender, RoutedEventArgs e)
         {
-            Boolean selected;
+            bool selected;
 
-            String filename = _prnFilename;
+            string filename = _prnFilename;
 
             selected = selectPrnFile(ref filename);
 
@@ -104,12 +104,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean copyPrnFile(String prnFilename,
+        public static bool copyPrnFile(string prnFilename,
                                           BinaryWriter prnWriter)
         {
-            Boolean OK = true;
+            bool OK = true;
 
-            Boolean fileOpen = false;
+            bool fileOpen = false;
 
             fileOpen = prnOpen(prnFilename);
 
@@ -119,12 +119,12 @@ namespace PCLParaphernalia
             }
             else
             {
-                const Int32 bufSize = 2048;
-                Int32 readSize;
+                const int bufSize = 2048;
+                int readSize;
 
-                Boolean endLoop;
+                bool endLoop;
 
-                Byte[] buf = new Byte[bufSize];
+                byte[] buf = new byte[bufSize];
 
                 endLoop = false;
 
@@ -241,9 +241,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean prnOpen(String filename)
+        public static bool prnOpen(string filename)
         {
-            Boolean open = false;
+            bool open = false;
 
             if ((filename == null) || (filename == ""))
             {
@@ -301,11 +301,11 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.eTarget.NetPrinter)
             {
-                String netPrnAddress = "";
-                Int32 netPrnPort = 0;
+                string netPrnAddress = "";
+                int netPrnPort = 0;
 
-                Int32 netTimeoutSend = 0;
-                Int32 netTimeoutReceive = 0;
+                int netTimeoutSend = 0;
+                int netTimeoutReceive = 0;
 
                 TargetCore.metricsLoadNetPrinter(ref netPrnAddress,
                                                   ref netPrnPort,
@@ -319,7 +319,7 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.eTarget.WinPrinter)
             {
-                String winPrintername = "";
+                string winPrintername = "";
 
                 TargetCore.metricsLoadWinPrinter(ref winPrintername);
 
@@ -338,7 +338,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectPrnFile(ref String prnFilename)
+        private bool selectPrnFile(ref string prnFilename)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(prnFilename);
 

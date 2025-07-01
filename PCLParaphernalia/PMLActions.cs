@@ -21,12 +21,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static SortedList<Byte, PMLAction> _tags =
-            new SortedList<Byte, PMLAction>();
+        private static SortedList<byte, PMLAction> _tags =
+            new SortedList<byte, PMLAction>();
 
         private static PMLAction _unknownTag;
 
-        private static Int32 _tagCount;
+        private static int _tagCount;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -48,11 +48,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean checkTag(
-            Byte tagToCheck,
-            ref String description)
+        public static bool checkTag(
+            byte tagToCheck,
+            ref string description)
         {
-            Boolean seqKnown;
+            bool seqKnown;
 
             PMLAction tag;
 
@@ -83,11 +83,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 displayTags(DataGrid grid)
+        public static int displayTags(DataGrid grid)
         {
-            Int32 count = 0;
+            int count = 0;
 
-            foreach (KeyValuePair<Byte, PMLAction> kvp in _tags)
+            foreach (KeyValuePair<byte, PMLAction> kvp in _tags)
             {
                 count++;
                 grid.Items.Add(kvp.Value);
@@ -106,11 +106,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void displayStatsCounts(DataTable table,
-                                               Boolean incUsedSeqsOnly)
+                                               bool incUsedSeqsOnly)
         {
-            Int32 count = 0;
+            int count = 0;
 
-            Boolean displaySeq,
+            bool displaySeq,
                     hddrWritten;
 
             DataRow row;
@@ -119,7 +119,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            foreach (KeyValuePair<Byte, PMLAction> kvp in _tags)
+            foreach (KeyValuePair<byte, PMLAction> kvp in _tags)
             {
                 displaySeq = true;
 
@@ -207,7 +207,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getCount()
+        public static int getCount()
         {
             return _tagCount;
         }
@@ -221,7 +221,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getDesc(Byte selection)
+        public static string getDesc(byte selection)
         {
             return _tags[selection].getDesc();
         }
@@ -237,7 +237,7 @@ namespace PCLParaphernalia
 
         private static void populateTable()
         {
-            Byte tag;
+            byte tag;
 
             tag = 0x20;                                              // ?    //
             _unknownTag =

@@ -31,19 +31,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private UInt16[][] _rangeData;
+        private ushort[][] _rangeData;
 
-        private UInt16[][] _mapDataStd;
-        private UInt16[][] _mapDataPCL;
+        private ushort[][] _mapDataStd;
+        private ushort[][] _mapDataPCL;
 
-        private UInt16 _rangeCt;
+        private ushort _rangeCt;
 
-        private UInt16 _codepointMin;
-        private UInt16 _codepointMax;
+        private ushort _codepointMin;
+        private ushort _codepointMax;
 
-        private Boolean _flagMapDiff;
-        private Boolean _flagNullMapPCL;
-        private Boolean _flagNullMapStd;
+        private bool _flagMapDiff;
+        private bool _flagNullMapPCL;
+        private bool _flagNullMapStd;
 
         private PCLSymSetMaps.eSymSetMapId _mapId;
 
@@ -54,10 +54,10 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PCLSymSetMap(PCLSymSetMaps.eSymSetMapId mapId,
-                             UInt16 rangeCt,
-                             UInt16[][] rangeData,
-                             UInt16[][] mapDataStd,
-                             UInt16[][] mapDataPCL)
+                             ushort rangeCt,
+                             ushort[][] rangeData,
+                             ushort[][] mapDataStd,
+                             ushort[][] mapDataPCL)
         {
             _mapId = mapId;
             _rangeCt = rangeCt;
@@ -95,10 +95,10 @@ namespace PCLParaphernalia
             }
             else
             {
-                Int32 lenMainPCL = _mapDataPCL.Length;
-                Int32 lenMainStd = _mapDataStd.Length;
-                Int32 lenSubPCL;
-                Int32 lenSubStd;
+                int lenMainPCL = _mapDataPCL.Length;
+                int lenMainStd = _mapDataStd.Length;
+                int lenSubPCL;
+                int lenSubStd;
 
                 if (lenMainPCL != lenMainStd)
                 {
@@ -106,7 +106,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    for (Int32 i = 0; i < lenMainStd; i++)
+                    for (int i = 0; i < lenMainStd; i++)
                     {
                         lenSubPCL = _mapDataPCL[i].Length;
                         lenSubStd = _mapDataStd[i].Length;
@@ -117,7 +117,7 @@ namespace PCLParaphernalia
                         }
                         else
                         {
-                            for (Int32 j = 0; j < lenSubStd; j++)
+                            for (int j = 0; j < lenSubStd; j++)
                             {
                                 if (_mapDataPCL[i][j] != _mapDataStd[i][j])
                                 {
@@ -139,7 +139,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16 CodepointMax
+        public ushort CodepointMax
         {
             get { return _codepointMax; }
         }
@@ -153,7 +153,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16 CodepointMin
+        public ushort CodepointMin
         {
             get { return _codepointMin; }
         }
@@ -167,37 +167,37 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16[] MapDataPCL
+        public ushort[] MapDataPCL
         {
             get
             {
-                UInt16 rangeMin,
+                ushort rangeMin,
                        rangeMax,
                        rangeSize;
 
-                UInt16[] mapData = new UInt16[_codepointMax + 1];
+                ushort[] mapData = new ushort[_codepointMax + 1];
 
-                for (Int32 i = 0; i < _codepointMax; i++)
+                for (int i = 0; i < _codepointMax; i++)
                 {
                     mapData[i] = 0xffff;
                 }
 
-                for (Int32 i = 0; i < _rangeCt; i++)
+                for (int i = 0; i < _rangeCt; i++)
                 {
                     rangeMin = _rangeData[i][0];
                     rangeMax = _rangeData[i][1];
-                    rangeSize = (UInt16)(rangeMax - rangeMin + 1);
+                    rangeSize = (ushort)(rangeMax - rangeMin + 1);
 
                     if (!_flagNullMapPCL)
                     {
-                        for (Int32 j = 0; j < rangeSize; j++)
+                        for (int j = 0; j < rangeSize; j++)
                         {
                             mapData[rangeMin + j] = _mapDataPCL[i][j];
                         }
                     }
                     else
                     {
-                        for (Int32 j = 0; j < rangeSize; j++)
+                        for (int j = 0; j < rangeSize; j++)
                         {
                             mapData[rangeMin + j] = _mapDataStd[i][j];
                         }
@@ -217,37 +217,37 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16[] MapDataStd
+        public ushort[] MapDataStd
         {
             get
             {
-                UInt16 rangeMin,
+                ushort rangeMin,
                        rangeMax,
                        rangeSize;
 
-                UInt16[] mapData = new UInt16[_codepointMax + 1];
+                ushort[] mapData = new ushort[_codepointMax + 1];
 
-                for (Int32 i = 0; i < _codepointMax; i++)
+                for (int i = 0; i < _codepointMax; i++)
                 {
                     mapData[i] = 0xffff;
                 }
 
-                for (Int32 i = 0; i < _rangeCt; i++)
+                for (int i = 0; i < _rangeCt; i++)
                 {
                     rangeMin = _rangeData[i][0];
                     rangeMax = _rangeData[i][1];
-                    rangeSize = (UInt16)(rangeMax - rangeMin + 1);
+                    rangeSize = (ushort)(rangeMax - rangeMin + 1);
 
                     if (!_flagNullMapStd)
                     {
-                        for (Int32 j = 0; j < rangeSize; j++)
+                        for (int j = 0; j < rangeSize; j++)
                         {
                             mapData[rangeMin + j] = _mapDataStd[i][j];
                         }
                     }
                     else
                     {
-                        for (Int32 j = 0; j < rangeSize; j++)
+                        for (int j = 0; j < rangeSize; j++)
                         {
                             mapData[rangeMin + j] = _mapDataPCL[i][j];
                         }
@@ -270,15 +270,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16[] MapDataUserSet
+        public ushort[] MapDataUserSet
         {
             get
             {
-                UInt16 rangeMin;
+                ushort rangeMin;
 
-                UInt16[] mapData = new UInt16[_codepointMax + 1];
+                ushort[] mapData = new ushort[_codepointMax + 1];
 
-                for (Int32 i = 0; i < _codepointMax; i++)
+                for (int i = 0; i < _codepointMax; i++)
                 {
                     mapData[i] = 0xffff;
                 }
@@ -287,7 +287,7 @@ namespace PCLParaphernalia
                 //    rangeMax = _rangeData [0] [1];
                 //    rangeSize = (UInt16) (rangeMax - rangeMin + 1);
 
-                for (Int32 j = 0; j <= _codepointMax; j++)
+                for (int j = 0; j <= _codepointMax; j++)
                 {
                     mapData[rangeMin + j] = _mapDataStd[0][j];
                 }
@@ -299,9 +299,9 @@ namespace PCLParaphernalia
 
             set
             {
-                _codepointMax = (UInt16)(value.Length - 1);
+                _codepointMax = (ushort)(value.Length - 1);
 
-                for (Int32 j = 0; j <= _codepointMax; j++)
+                for (int j = 0; j <= _codepointMax; j++)
                 {
                     _mapDataStd[0][j] = value[j];
                 }
@@ -319,7 +319,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String MappingDiff
+        public string MappingDiff
         {
             get
             {
@@ -332,18 +332,18 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    const Int32 rowLen = 16;
-                    const Int32 rowSize = 9 + (rowLen * 5) + 2;
+                    const int rowLen = 16;
+                    const int rowSize = 9 + (rowLen * 5) + 2;
 
-                    Boolean difference = false;
+                    bool difference = false;
 
-                    UInt16 mapValStd,
+                    ushort mapValStd,
                            mapValPCL;
 
-                    UInt16 rangeMin,
+                    ushort rangeMin,
                            rangeMax;
 
-                    Int32 rowCt,
+                    int rowCt,
                           rowTot,
                           rowId,
                           mapIndx,
@@ -363,7 +363,7 @@ namespace PCLParaphernalia
                     rowTot = 0;
                     rangeLastIndx = _rangeCt - 1;
 
-                    for (Int32 i = 0; i < _rangeCt; i++)
+                    for (int i = 0; i < _rangeCt; i++)
                     {
                         rowTot += (_rangeData[i][1] >> 4) -
                                   (_rangeData[i][0] >> 4) + 1;
@@ -382,7 +382,7 @@ namespace PCLParaphernalia
 
                     map.Clear();
 
-                    for (Int32 i = 0; i < _rangeCt; i++)
+                    for (int i = 0; i < _rangeCt; i++)
                     {
                         rangeMin = _rangeData[i][0];
                         rangeMax = _rangeData[i][1];
@@ -393,7 +393,7 @@ namespace PCLParaphernalia
 
                         mapIndx = 0;
 
-                        for (Int32 j = 0; j < rowCt; j++)
+                        for (int j = 0; j < rowCt; j++)
                         {
                             if (rowId < 0x10)
                                 map.Append("0x" + rowId.ToString("X1") +
@@ -404,7 +404,7 @@ namespace PCLParaphernalia
 
                             cell = (rowId * rowLen);
 
-                            for (Int32 k = 0; k < rowLen; k++)
+                            for (int k = 0; k < rowLen; k++)
                             {
                                 if (cell < rangeMin)
                                 {
@@ -466,7 +466,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String MappingPCL
+        public string MappingPCL
         {
             get
             {
@@ -477,15 +477,15 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    const Int32 rowLen = 16;
-                    const Int32 rowSize = 9 + (rowLen * 5) + 2;
+                    const int rowLen = 16;
+                    const int rowSize = 9 + (rowLen * 5) + 2;
 
-                    UInt16 mapVal;
+                    ushort mapVal;
 
-                    UInt16 rangeMin,
+                    ushort rangeMin,
                            rangeMax;
 
-                    Int32 rowCt,
+                    int rowCt,
                           rowTot,
                           rowId,
                           mapIndx,
@@ -505,7 +505,7 @@ namespace PCLParaphernalia
                     rowTot = 0;
                     rangeLastIndx = _rangeCt - 1;
 
-                    for (Int32 i = 0; i < _rangeCt; i++)
+                    for (int i = 0; i < _rangeCt; i++)
                     {
                         rowTot += (_rangeData[i][1] >> 4) -
                                   (_rangeData[i][0] >> 4) + 1;
@@ -524,7 +524,7 @@ namespace PCLParaphernalia
 
                     map.Clear();
 
-                    for (Int32 i = 0; i < _rangeCt; i++)
+                    for (int i = 0; i < _rangeCt; i++)
                     {
                         rangeMin = _rangeData[i][0];
                         rangeMax = _rangeData[i][1];
@@ -535,7 +535,7 @@ namespace PCLParaphernalia
 
                         mapIndx = 0;
 
-                        for (Int32 j = 0; j < rowCt; j++)
+                        for (int j = 0; j < rowCt; j++)
                         {
                             if (rowId < 0x10)
                                 map.Append("0x" + rowId.ToString("X1") + "0->   ");
@@ -544,7 +544,7 @@ namespace PCLParaphernalia
 
                             cell = (rowId * rowLen);
 
-                            for (Int32 k = 0; k < rowLen; k++)
+                            for (int k = 0; k < rowLen; k++)
                             {
                                 if (cell < rangeMin)
                                 {
@@ -600,7 +600,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String MappingPCLDiff
+        public string MappingPCLDiff
         {
             get
             {
@@ -624,7 +624,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String MappingStd
+        public string MappingStd
         {
             get
             {
@@ -635,15 +635,15 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    const Int32 rowLen = 16;
-                    const Int32 rowSize = 9 + (rowLen * 5) + 2;
+                    const int rowLen = 16;
+                    const int rowSize = 9 + (rowLen * 5) + 2;
 
-                    UInt16 mapVal;
+                    ushort mapVal;
 
-                    UInt16 rangeMin,
+                    ushort rangeMin,
                            rangeMax;
 
-                    Int32 rowCt,
+                    int rowCt,
                           rowTot,
                           rowId,
                           mapIndx,
@@ -663,7 +663,7 @@ namespace PCLParaphernalia
                     rowTot = 0;
                     rangeLastIndx = _rangeCt - 1;
 
-                    for (Int32 i = 0; i < _rangeCt; i++)
+                    for (int i = 0; i < _rangeCt; i++)
                     {
                         rowTot += (_rangeData[i][1] >> 4) -
                                   (_rangeData[i][0] >> 4) + 1;
@@ -682,7 +682,7 @@ namespace PCLParaphernalia
 
                     map.Clear();
 
-                    for (Int32 i = 0; i < _rangeCt; i++)
+                    for (int i = 0; i < _rangeCt; i++)
                     {
                         rangeMin = _rangeData[i][0];
                         rangeMax = _rangeData[i][1];
@@ -693,7 +693,7 @@ namespace PCLParaphernalia
 
                         mapIndx = 0;
 
-                        for (Int32 j = 0; j < rowCt; j++)
+                        for (int j = 0; j < rowCt; j++)
                         {
                             if (rowId < 0x10)
                                 map.Append("0x" + rowId.ToString("X1") +
@@ -704,7 +704,7 @@ namespace PCLParaphernalia
 
                             cell = (rowId * rowLen);
 
-                            for (Int32 k = 0; k < rowLen; k++)
+                            for (int k = 0; k < rowLen; k++)
                             {
                                 if (cell < rangeMin)
                                 {
@@ -760,17 +760,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String[] MapRowsDiff
+        public string[] MapRowsDiff
         {
             get
             {
-                String[] mapRows;
+                string[] mapRows;
 
-                Boolean difference = false;
+                bool difference = false;
 
                 if (!_flagMapDiff)
                 {
-                    mapRows = new String[1];
+                    mapRows = new string[1];
 
                     if ((_flagNullMapStd) || (_flagNullMapPCL))
                         mapRows[0] = "Not applicable (only one set defined)";
@@ -779,16 +779,16 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    const Int32 rowLen = 16;
-                    const Int32 rowSize = 9 + (rowLen * 5) + 2;
+                    const int rowLen = 16;
+                    const int rowSize = 9 + (rowLen * 5) + 2;
 
-                    UInt16 mapValStd,
+                    ushort mapValStd,
                            mapValPCL;
 
-                    UInt16 rangeMin,
+                    ushort rangeMin,
                            rangeMax;
 
-                    Int32 rowCt,
+                    int rowCt,
                           rowTot,
                           rowIndx,
                           rowId,
@@ -808,7 +808,7 @@ namespace PCLParaphernalia
                     rowTot = 0;
                     rangeLastIndx = _rangeCt - 1;
 
-                    for (Int32 i = 0; i < _rangeCt; i++)
+                    for (int i = 0; i < _rangeCt; i++)
                     {
                         rowTot += (_rangeData[i][1] >> 4) -
                                   (_rangeData[i][0] >> 4) + 1;
@@ -823,7 +823,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    mapRows = new String[rowTot];
+                    mapRows = new string[rowTot];
 
                     crntRow = new StringBuilder(rowSize);
 
@@ -831,7 +831,7 @@ namespace PCLParaphernalia
 
                     rowIndx = 0;
 
-                    for (Int32 i = 0; i < _rangeCt; i++)
+                    for (int i = 0; i < _rangeCt; i++)
                     {
                         rangeMin = _rangeData[i][0];
                         rangeMax = _rangeData[i][1];
@@ -841,7 +841,7 @@ namespace PCLParaphernalia
 
                         mapIndx = 0;
 
-                        for (Int32 j = 0; j < rowCt; j++)
+                        for (int j = 0; j < rowCt; j++)
                         {
                             if (rowId < 0x10)
                                 crntRow.Append("0x" + rowId.ToString("X1") +
@@ -852,7 +852,7 @@ namespace PCLParaphernalia
 
                             cell = (rowId * rowLen);
 
-                            for (Int32 k = 0; k < rowLen; k++)
+                            for (int k = 0; k < rowLen; k++)
                             {
                                 if (cell < rangeMin)
                                 {
@@ -902,7 +902,7 @@ namespace PCLParaphernalia
                     return mapRows;
                 else
                 {
-                    String[] mapRowsSame = new String[1] { "none" };
+                    string[] mapRowsSame = new string[1] { "none" };
                     return mapRowsSame;
                 }
             }
@@ -919,29 +919,29 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String[] MapRowsPCL
+        public string[] MapRowsPCL
         {
             get
             {
-                String[] mapRows;
+                string[] mapRows;
 
                 if (_flagNullMapPCL)
                 {
-                    mapRows = new String[1];
+                    mapRows = new string[1];
                     mapRows[0] = "Not defined - see Standard (Strict)" +
                                   " mapping definition";
                 }
                 else
                 {
-                    const Int32 rowLen = 16;
-                    const Int32 rowSize = 9 + (rowLen * 5) + 2;
+                    const int rowLen = 16;
+                    const int rowSize = 9 + (rowLen * 5) + 2;
 
-                    UInt16 mapVal;
+                    ushort mapVal;
 
-                    UInt16 rangeMin,
+                    ushort rangeMin,
                            rangeMax;
 
-                    Int32 rowCt,
+                    int rowCt,
                           rowTot,
                           rowIndx,
                           rowId,
@@ -961,7 +961,7 @@ namespace PCLParaphernalia
                     rowTot = 0;
                     rangeLastIndx = _rangeCt - 1;
 
-                    for (Int32 i = 0; i < _rangeCt; i++)
+                    for (int i = 0; i < _rangeCt; i++)
                     {
                         rowTot += (_rangeData[i][1] >> 4) -
                                   (_rangeData[i][0] >> 4) + 1;
@@ -976,7 +976,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    mapRows = new String[rowTot];
+                    mapRows = new string[rowTot];
 
                     crntRow = new StringBuilder(rowSize);
 
@@ -984,7 +984,7 @@ namespace PCLParaphernalia
 
                     rowIndx = 0;
 
-                    for (Int32 i = 0; i < _rangeCt; i++)
+                    for (int i = 0; i < _rangeCt; i++)
                     {
                         rangeMin = _rangeData[i][0];
                         rangeMax = _rangeData[i][1];
@@ -994,7 +994,7 @@ namespace PCLParaphernalia
 
                         mapIndx = 0;
 
-                        for (Int32 j = 0; j < rowCt; j++)
+                        for (int j = 0; j < rowCt; j++)
                         {
                             if (rowId < 0x10)
                                 crntRow.Append("0x" + rowId.ToString("X1") +
@@ -1005,7 +1005,7 @@ namespace PCLParaphernalia
 
                             cell = (rowId * rowLen);
 
-                            for (Int32 k = 0; k < rowLen; k++)
+                            for (int k = 0; k < rowLen; k++)
                             {
                                 if (cell < rangeMin)
                                 {
@@ -1063,7 +1063,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String[] MapRowsPCLDiff
+        public string[] MapRowsPCLDiff
         {
             get
             {
@@ -1073,7 +1073,7 @@ namespace PCLParaphernalia
                     return MapRowsPCL;
                 else
                 {
-                    String[] noDiff = new String[1] {
+                    string[] noDiff = new string[1] {
                         "Not defined" +
                         " - see Standard (Strict) mapping definition"};
 
@@ -1093,29 +1093,29 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String[] MapRowsStd
+        public string[] MapRowsStd
         {
             get
             {
-                String[] mapRows;
+                string[] mapRows;
 
                 if (_flagNullMapStd)
                 {
-                    mapRows = new String[1];
+                    mapRows = new string[1];
                     mapRows[0] = "Not defined - see LaserJet " +
                                   " mapping definition";
                 }
                 else
                 {
-                    const Int32 rowLen = 16;
-                    const Int32 rowSize = 9 + (rowLen * 5) + 2;
+                    const int rowLen = 16;
+                    const int rowSize = 9 + (rowLen * 5) + 2;
 
-                    UInt16 mapVal;
+                    ushort mapVal;
 
-                    UInt16 rangeMin,
+                    ushort rangeMin,
                            rangeMax;
 
-                    Int32 rowCt,
+                    int rowCt,
                           rowTot,
                           rowIndx,
                           rowId,
@@ -1135,7 +1135,7 @@ namespace PCLParaphernalia
                     rowTot = 0;
                     rangeLastIndx = _rangeCt - 1;
 
-                    for (Int32 i = 0; i < _rangeCt; i++)
+                    for (int i = 0; i < _rangeCt; i++)
                     {
                         rowTot += (_rangeData[i][1] >> 4) -
                                   (_rangeData[i][0] >> 4) + 1;
@@ -1150,7 +1150,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    mapRows = new String[rowTot];
+                    mapRows = new string[rowTot];
 
                     crntRow = new StringBuilder(rowSize);
 
@@ -1158,7 +1158,7 @@ namespace PCLParaphernalia
 
                     rowIndx = 0;
 
-                    for (Int32 i = 0; i < _rangeCt; i++)
+                    for (int i = 0; i < _rangeCt; i++)
                     {
                         rangeMin = _rangeData[i][0];
                         rangeMax = _rangeData[i][1];
@@ -1168,7 +1168,7 @@ namespace PCLParaphernalia
 
                         mapIndx = 0;
 
-                        for (Int32 j = 0; j < rowCt; j++)
+                        for (int j = 0; j < rowCt; j++)
                         {
                             if (rowId < 0x10)
                                 crntRow.Append("0x" + rowId.ToString("X1") +
@@ -1179,7 +1179,7 @@ namespace PCLParaphernalia
 
                             cell = (rowId * rowLen);
 
-                            for (Int32 k = 0; k < rowLen; k++)
+                            for (int k = 0; k < rowLen; k++)
                             {
                                 if (cell < rangeMin)
                                 {
@@ -1234,7 +1234,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean NullMapPCL
+        public bool NullMapPCL
         {
             get { return _flagNullMapPCL; }
         }
@@ -1249,7 +1249,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean NullMapStd
+        public bool NullMapStd
         {
             get { return _flagNullMapStd; }
         }
@@ -1263,7 +1263,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16 RangeCt
+        public ushort RangeCt
         {
             get { return _rangeCt; }
         }
@@ -1277,7 +1277,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16[][] RangeData
+        public ushort[][] RangeData
         {
             get { return _rangeData; }
         }

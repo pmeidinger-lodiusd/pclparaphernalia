@@ -23,15 +23,15 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void generateRequest(BinaryWriter prnWriter,
-                                           Int32 indexEntity,
-                                           Int32 indexLocType)
+                                           int indexEntity,
+                                           int indexLocType)
         {
-            String seq;
+            string seq;
 
             PCLEntityTypes.eType entityType;
 
-            String entityIdPCL;
-            String locTypeIdPCL;
+            string entityIdPCL;
+            string locTypeIdPCL;
 
             if (indexEntity < PCLEntityTypes.getCount())
             {
@@ -68,22 +68,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String readResponse()
+        public static string readResponse()
         {
-            const Int32 replyBufLen = 32768;
+            const int replyBufLen = 32768;
 
-            Byte[] replyData = new Byte[replyBufLen];
+            byte[] replyData = new byte[replyBufLen];
 
-            Int32 replyLen = 0;
+            int replyLen = 0;
 
             //  Boolean readFF_A = true;            // only one <FF> expected //
-            Boolean OK = false;
-            Boolean replyComplete = false;
+            bool OK = false;
+            bool replyComplete = false;
 
-            Int32 offset = 0;
-            Int32 endOffset = 0;
-            Int32 bufRem = replyBufLen;
-            Int32 blockLen = 0;
+            int offset = 0;
+            int endOffset = 0;
+            int bufRem = replyBufLen;
+            int blockLen = 0;
 
             while (!replyComplete)
             {

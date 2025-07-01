@@ -24,26 +24,26 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateImage(BinaryWriter prnWriter,
-                                          Single destPosX,
-                                          Single destPosY,
-                                          Int32 destScalePercentX,
-                                          Int32 destScalePercentY)
+                                          float destPosX,
+                                          float destPosY,
+                                          int destScalePercentX,
+                                          int destScalePercentY)
         {
-            const Int32 sizeStd = 1024;
+            const int sizeStd = 1024;
 
-            Byte[] bufStd = new Byte[sizeStd];
+            byte[] bufStd = new byte[sizeStd];
 
-            Int32 srcWidth = 0,
+            int srcWidth = 0,
                   srcHeight = 0,
                   srcResX = 0,
                   srcResY = 0;
 
-            UInt32 srcCompression = 0,
+            uint srcCompression = 0,
                    srcPaletteEntries = 0;
 
-            UInt16 srcBitsPerPixel = 0;
+            ushort srcBitsPerPixel = 0;
 
-            Boolean srcBlackWhite = false;
+            bool srcBlackWhite = false;
 
             ToolImageBitmapCore.getBmpInfo(ref srcWidth,
                                            ref srcHeight,
@@ -112,24 +112,24 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateImageData(BinaryWriter prnWriter,
-                                              UInt16 srcBitsPerPixel,
-                                              Int32 srcWidth,
-                                              Int32 srcHeight)
+                                              ushort srcBitsPerPixel,
+                                              int srcWidth,
+                                              int srcHeight)
         {
-            const Int32 maxImageBlock = 2048;
-            const Int32 sizeStd = 64;
+            const int maxImageBlock = 2048;
+            const int sizeStd = 64;
 
-            Byte[] bufStd = new Byte[sizeStd];
+            byte[] bufStd = new byte[sizeStd];
 
-            Int32 indStd = 0;
+            int indStd = 0;
 
-            Boolean firstBlock = true,
+            bool firstBlock = true,
                     indexed = true;
 
-            Int32 bytesPerRow,
+            int bytesPerRow,
                   padBytes;
 
-            Int32 imageCrntLine,
+            int imageCrntLine,
                   imageHeight,
                   imageRowMult,
                   imageBlockHeight,
@@ -167,15 +167,15 @@ namespace PCLParaphernalia
 
             imageCrntLine = 0;
             imageHeight = srcHeight;
-            imageRowMult = (Int32)Math.Floor((Double)maxImageBlock /
-                                             (Double)bytesPerRow);
+            imageRowMult = (int)Math.Floor((double)maxImageBlock /
+                                             (double)bytesPerRow);
 
             if (imageRowMult == 0)
                 imageRowMult = 1;
 
-            Byte[] bufSub = new Byte[bytesPerRow];
+            byte[] bufSub = new byte[bytesPerRow];
 
-            for (Int32 i = 0; i < imageHeight; i += imageRowMult)
+            for (int i = 0; i < imageHeight; i += imageRowMult)
             {
                 if ((imageCrntLine + imageRowMult) >= imageHeight)
                     imageBlockHeight = imageHeight - imageCrntLine;
@@ -187,17 +187,17 @@ namespace PCLParaphernalia
                 PCLXLWriter.addAttrUint16(ref bufStd,
                                     ref indStd,
                                     PCLXLAttributes.eTag.StartLine,
-                                    (UInt16)imageCrntLine);
+                                    (ushort)imageCrntLine);
 
                 PCLXLWriter.addAttrUint16(ref bufStd,
                                     ref indStd,
                                     PCLXLAttributes.eTag.BlockHeight,
-                                    (UInt16)imageBlockHeight);
+                                    (ushort)imageBlockHeight);
 
                 PCLXLWriter.addAttrUbyte(ref bufStd,
                                    ref indStd,
                                    PCLXLAttributes.eTag.CompressMode,
-                                   (Byte)PCLXLAttrEnums.eVal.eNoCompression);
+                                   (byte)PCLXLAttrEnums.eVal.eNoCompression);
 
                 PCLXLWriter.addOperator(ref bufStd,
                                   ref indStd,
@@ -210,7 +210,7 @@ namespace PCLParaphernalia
                 prnWriter.Write(bufStd, 0, indStd);
                 indStd = 0;
 
-                for (Int32 j = 0; j < imageRowMult; j++)
+                for (int j = 0; j < imageRowMult; j++)
                 {
                     if ((i + j) >= imageHeight)
                         j = imageRowMult;
@@ -225,10 +225,10 @@ namespace PCLParaphernalia
                         {
                             // change BGR components to RGB //
 
-                            Byte temp;
-                            Int32 endLine = bytesPerRow - 2;
+                            byte temp;
+                            int endLine = bytesPerRow - 2;
 
-                            for (Int32 k = 0; k <= endLine; k += 3)
+                            for (int k = 0; k <= endLine; k += 3)
                             {
                                 if (bufSub[k] != bufSub[k + 2])
                                 {
@@ -259,31 +259,31 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateImageHeader(BinaryWriter prnWriter,
-                                                UInt16 srcBitsPerPixel,
-                                                Int32 srcWidth,
-                                                Int32 srcHeight,
-                                                Int32 srcResX,
-                                                Int32 srcResY,
-                                                Single destPosX,
-                                                Single destPosY,
-                                                Int32 destScalePercentX,
-                                                Int32 destScalePercentY,
-                                                UInt32 srcPaletteEntries,
-                                                Boolean srcBlackWhite)
+                                                ushort srcBitsPerPixel,
+                                                int srcWidth,
+                                                int srcHeight,
+                                                int srcResX,
+                                                int srcResY,
+                                                float destPosX,
+                                                float destPosY,
+                                                int destScalePercentX,
+                                                int destScalePercentY,
+                                                uint srcPaletteEntries,
+                                                bool srcBlackWhite)
         {
-            const Int32 sizeStd = 256;
+            const int sizeStd = 256;
 
-            Byte[] bufStd = new Byte[sizeStd];
+            byte[] bufStd = new byte[sizeStd];
 
-            Int32 indStd = 0;
+            int indStd = 0;
 
-            Int32 destWidth = 0,
+            int destWidth = 0,
                   destHeight = 0;
 
-            UInt32 paletteEntries = 0,
+            uint paletteEntries = 0,
                    paletteSize = 0;
 
-            Byte colourDepth = 0,
+            byte colourDepth = 0,
                  colourMapping = 0,
                  colourSpace = 0;
 
@@ -296,12 +296,12 @@ namespace PCLParaphernalia
             if (srcResX == 0)
                 srcResX = 96; // DefaultSourceBitmapResolution;
             else
-                srcResX = (Int32)(srcResX / 39.37);
+                srcResX = (int)(srcResX / 39.37);
 
             if (srcResY == 0)
                 srcResY = 96; // DefaultSourceBitmapResolution;
             else
-                srcResY = (Int32)(srcResY / 39.37);
+                srcResY = (int)(srcResY / 39.37);
 
             destWidth = ((srcWidth * PCLXLWriter._sessionUPI) / srcResX) *
                           (destScalePercentX / 100);
@@ -317,8 +317,8 @@ namespace PCLParaphernalia
             PCLXLWriter.addAttrSint16XY(ref bufStd,
                                   ref indStd,
                                   PCLXLAttributes.eTag.Point,
-                                  (Int16)(destPosX * PCLXLWriter._sessionUPI),
-                                  (Int16)(destPosY * PCLXLWriter._sessionUPI));
+                                  (short)(destPosX * PCLXLWriter._sessionUPI),
+                                  (short)(destPosY * PCLXLWriter._sessionUPI));
 
             PCLXLWriter.addOperator(ref bufStd,
                               ref indStd,
@@ -372,33 +372,33 @@ namespace PCLParaphernalia
 
             if (srcBlackWhite)
             {
-                colourSpace = (Byte)PCLXLAttrEnums.eVal.eGray;
-                colourDepth = (Byte)PCLXLAttrEnums.eVal.e1Bit;
-                colourMapping = (Byte)PCLXLAttrEnums.eVal.eIndexedPixel;
+                colourSpace = (byte)PCLXLAttrEnums.eVal.eGray;
+                colourDepth = (byte)PCLXLAttrEnums.eVal.e1Bit;
+                colourMapping = (byte)PCLXLAttrEnums.eVal.eIndexedPixel;
                 paletteEntries = 2;
                 paletteSize = 2;
             }
             else if (srcBitsPerPixel == 1)
             {
-                colourSpace = (Byte)PCLXLAttrEnums.eVal.eRGB;
-                colourDepth = (Byte)PCLXLAttrEnums.eVal.e1Bit;
-                colourMapping = (Byte)PCLXLAttrEnums.eVal.eIndexedPixel;
+                colourSpace = (byte)PCLXLAttrEnums.eVal.eRGB;
+                colourDepth = (byte)PCLXLAttrEnums.eVal.e1Bit;
+                colourMapping = (byte)PCLXLAttrEnums.eVal.eIndexedPixel;
                 paletteEntries = 0x00000001 << 1;
                 paletteSize = 3 * paletteEntries;    // one per plane
             }
             else if (srcBitsPerPixel == 4)
             {
-                colourSpace = (Byte)PCLXLAttrEnums.eVal.eRGB;
-                colourDepth = (Byte)PCLXLAttrEnums.eVal.e4Bit;
-                colourMapping = (Byte)PCLXLAttrEnums.eVal.eIndexedPixel;
+                colourSpace = (byte)PCLXLAttrEnums.eVal.eRGB;
+                colourDepth = (byte)PCLXLAttrEnums.eVal.e4Bit;
+                colourMapping = (byte)PCLXLAttrEnums.eVal.eIndexedPixel;
                 paletteEntries = 0x00000001 << 4;
                 paletteSize = 3 * paletteEntries;    // one per plane
             }
             else if (srcBitsPerPixel == 24)
             {
-                colourSpace = (Byte)PCLXLAttrEnums.eVal.eRGB;
-                colourDepth = (Byte)PCLXLAttrEnums.eVal.e8Bit;
-                colourMapping = (Byte)PCLXLAttrEnums.eVal.eDirectPixel;
+                colourSpace = (byte)PCLXLAttrEnums.eVal.eRGB;
+                colourDepth = (byte)PCLXLAttrEnums.eVal.e8Bit;
+                colourMapping = (byte)PCLXLAttrEnums.eVal.eDirectPixel;
                 paletteEntries = 0;
                 paletteSize = 0;
             }
@@ -434,15 +434,15 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    Int32 offset;
+                    int offset;
 
-                    Byte red = 0x00,
+                    byte red = 0x00,
                          green = 0x00,
                          blue = 0x00;
 
-                    Byte[] tempUByteArray = new Byte[paletteSize];
+                    byte[] tempUByteArray = new byte[paletteSize];
 
-                    for (Int32 i = 0; i < srcPaletteEntries; i++)
+                    for (int i = 0; i < srcPaletteEntries; i++)
                     {
                         offset = i * 3;
 
@@ -459,7 +459,7 @@ namespace PCLParaphernalia
                     PCLXLWriter.addAttrUbyteArray(ref bufStd,
                                             ref indStd,
                                             PCLXLAttributes.eTag.PaletteData,
-                                            (Int16)paletteSize,
+                                            (short)paletteSize,
                                             tempUByteArray);
                 }
             }
@@ -487,18 +487,18 @@ namespace PCLParaphernalia
             PCLXLWriter.addAttrUint16(ref bufStd,
                                 ref indStd,
                                 PCLXLAttributes.eTag.SourceWidth,
-                                (UInt16)srcWidth);
+                                (ushort)srcWidth);
 
             PCLXLWriter.addAttrUint16(ref bufStd,
                                 ref indStd,
                                 PCLXLAttributes.eTag.SourceHeight,
-                                (UInt16)srcHeight);
+                                (ushort)srcHeight);
 
             PCLXLWriter.addAttrUint16XY(ref bufStd,
                                   ref indStd,
                                   PCLXLAttributes.eTag.DestinationSize,
-                                  (UInt16)destWidth,
-                                  (UInt16)destHeight);
+                                  (ushort)destWidth,
+                                  (ushort)destHeight);
 
             PCLXLWriter.addOperator(ref bufStd,
                               ref indStd,
@@ -518,11 +518,11 @@ namespace PCLParaphernalia
 
         private static void generateImageTrailer(BinaryWriter prnWriter)
         {
-            const Int32 sizeStd = 16;
+            const int sizeStd = 16;
 
-            Byte[] bufStd = new Byte[sizeStd];
+            byte[] bufStd = new byte[sizeStd];
 
-            Int32 indStd;
+            int indStd;
 
             indStd = 0;
 
@@ -547,13 +547,13 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void generateJob(BinaryWriter prnWriter,
-                                       Int32 paperSize,
-                                       Int32 paperType,
-                                       Int32 orientation,
-                                       Single destPosX,
-                                       Single destPosY,
-                                       Int32 destScalePercentX,
-                                       Int32 destScalePercentY)
+                                       int paperSize,
+                                       int paperType,
+                                       int orientation,
+                                       float destPosX,
+                                       float destPosY,
+                                       int destScalePercentX,
+                                       int destScalePercentY)
         {
             generateJobHeader(prnWriter,
                               paperSize,
@@ -579,15 +579,15 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateJobHeader(BinaryWriter prnWriter,
-                                              Int32 paperSize,
-                                              Int32 paperType,
-                                              Int32 orientation)
+                                              int paperSize,
+                                              int paperType,
+                                              int orientation)
         {
-            const Int32 sizeStd = 1024;
+            const int sizeStd = 1024;
 
-            Byte[] bufStd = new Byte[sizeStd];
+            byte[] bufStd = new byte[sizeStd];
 
-            Int32 indStd;
+            int indStd;
 
             PCLXLWriter.stdJobHeader(prnWriter, "");
 
@@ -622,7 +622,7 @@ namespace PCLParaphernalia
             PCLXLWriter.addAttrUbyte(ref bufStd,
                                ref indStd,
                                PCLXLAttributes.eTag.SimplexPageMode,
-                               (Byte)PCLXLAttrEnums.eVal.eSimplexFrontSide);
+                               (byte)PCLXLAttrEnums.eVal.eSimplexFrontSide);
 
             PCLXLWriter.addOperator(ref bufStd,
                               ref indStd,
@@ -669,11 +669,11 @@ namespace PCLParaphernalia
 
         private static void generateJobTrailer(BinaryWriter prnWriter)
         {
-            const Int32 sizeStd = 32;
+            const int sizeStd = 32;
 
-            Byte[] bufStd = new Byte[sizeStd];
+            byte[] bufStd = new byte[sizeStd];
 
-            Int32 indStd;
+            int indStd;
 
             indStd = 0;
 

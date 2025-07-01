@@ -27,91 +27,91 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private const String _defaultFontNamePCLXL = "Arial           ";
-        private const String _defaultPrnDiskNamePCL = "MassStoreFont.sfp";
+        private const string _defaultFontNamePCLXL = "Arial           ";
+        private const string _defaultPrnDiskNamePCL = "MassStoreFont.sfp";
 
-        private const Char _defaultSymSetIdAlpha = 'N';
-        private const UInt16 _defaultSymSetIdNum = 0;
-        private const UInt16 _defaultSymSetNo = 14;
+        private const char _defaultSymSetIdAlpha = 'N';
+        private const ushort _defaultSymSetIdNum = 0;
+        private const ushort _defaultSymSetNo = 14;
 
-        private const Double _defaultFontHeightPCLXL = 15.00;
-        private const Double _defaultFontHeightPCL = 15.00;
-        private const Double _defaultFontPitchPCL = 8.00;
+        private const double _defaultFontHeightPCLXL = 15.00;
+        private const double _defaultFontHeightPCL = 15.00;
+        private const double _defaultFontPitchPCL = 8.00;
 
-        private const UInt16 _defaultSoftFontIdPCL = 32767;
-        private const UInt16 _defaultSoftFontIdMacroPCL = 1001;
+        private const ushort _defaultSoftFontIdPCL = 32767;
+        private const ushort _defaultSoftFontIdMacroPCL = 1001;
 
-        private const UInt16 _defaultFontStylePCL = 0;
-        private const UInt16 _defaultFontTypefacePCL = 16602;
-        private const Int16 _defaultFontWeightPCL = 0;
+        private const ushort _defaultFontStylePCL = 0;
+        private const ushort _defaultFontTypefacePCL = 16602;
+        private const short _defaultFontWeightPCL = 0;
 
-        private static Int32[] _subsetPDLs =
+        private static int[] _subsetPDLs =
         {
-            (Int32) ToolCommonData.ePrintLang.PCL,
-            (Int32) ToolCommonData.ePrintLang.PCLXL,
+            (int) ToolCommonData.ePrintLang.PCL,
+            (int) ToolCommonData.ePrintLang.PCLXL,
         };
 
-        private static Int32[] _subsetOrientations =
+        private static int[] _subsetOrientations =
         {
-            (Int32) PCLOrientations.eIndex.Portrait,
-            (Int32) PCLOrientations.eIndex.ReversePortrait
+            (int) PCLOrientations.eIndex.Portrait,
+            (int) PCLOrientations.eIndex.ReversePortrait
         };
 
-        private static Int32[] _subsetPaperSizes =
+        private static int[] _subsetPaperSizes =
         {
-            (Int32) PCLPaperSizes.eIndex.ISO_A4,
-            (Int32) PCLPaperSizes.eIndex.ANSI_A_Letter
+            (int) PCLPaperSizes.eIndex.ISO_A4,
+            (int) PCLPaperSizes.eIndex.ANSI_A_Letter
         };
 
-        private static Int32[] _subsetPaperTypes =
+        private static int[] _subsetPaperTypes =
         {
-            (Int32) PCLPaperTypes.eIndex.NotSet,
-            (Int32) PCLPaperTypes.eIndex.Plain
+            (int) PCLPaperTypes.eIndex.NotSet,
+            (int) PCLPaperTypes.eIndex.Plain
         };
 
-        private static Int32[] _subsetParseMethodsPCLAll =
+        private static int[] _subsetParseMethodsPCLAll =
         {
-            (Int32) PCLTextParsingMethods.eIndex.not_specified,
-            (Int32) PCLTextParsingMethods.eIndex.m0_1_byte_default,
-            (Int32) PCLTextParsingMethods.eIndex.m1_1_byte_alt,
-            (Int32) PCLTextParsingMethods.eIndex.m2_2_byte,
-            (Int32) PCLTextParsingMethods.eIndex.m21_1_or_2_byte_Asian7bit,
-            (Int32) PCLTextParsingMethods.eIndex.m31_1_or_2_byte_ShiftJIS,
-            (Int32) PCLTextParsingMethods.eIndex.m38_1_or_2_byte_Asian8bit,
-            (Int32) PCLTextParsingMethods.eIndex.m83_UTF8,
-            (Int32) PCLTextParsingMethods.eIndex.m1008_UTF8_alt
+            (int) PCLTextParsingMethods.eIndex.not_specified,
+            (int) PCLTextParsingMethods.eIndex.m0_1_byte_default,
+            (int) PCLTextParsingMethods.eIndex.m1_1_byte_alt,
+            (int) PCLTextParsingMethods.eIndex.m2_2_byte,
+            (int) PCLTextParsingMethods.eIndex.m21_1_or_2_byte_Asian7bit,
+            (int) PCLTextParsingMethods.eIndex.m31_1_or_2_byte_ShiftJIS,
+            (int) PCLTextParsingMethods.eIndex.m38_1_or_2_byte_Asian8bit,
+            (int) PCLTextParsingMethods.eIndex.m83_UTF8,
+            (int) PCLTextParsingMethods.eIndex.m1008_UTF8_alt
         };
 
-        private static Int32[] _subsetParseMethodsPCLDirect =
+        private static int[] _subsetParseMethodsPCLDirect =
         {
-            (Int32) PCLTextParsingMethods.eIndex.m83_UTF8,
-            (Int32) PCLTextParsingMethods.eIndex.m1008_UTF8_alt
+            (int) PCLTextParsingMethods.eIndex.m83_UTF8,
+            (int) PCLTextParsingMethods.eIndex.m1008_UTF8_alt
         };
 
-        private static Int32[] _subsetParseMethodsPCLXLAll =
+        private static int[] _subsetParseMethodsPCLXLAll =
         {
-            (Int32) PCLTextParsingMethods.eIndex.m0_1_byte_default,
-            (Int32) PCLTextParsingMethods.eIndex.m2_2_byte,
-            (Int32) PCLTextParsingMethods.eIndex.m21_1_or_2_byte_Asian7bit,
-            (Int32) PCLTextParsingMethods.eIndex.m31_1_or_2_byte_ShiftJIS,
-            (Int32) PCLTextParsingMethods.eIndex.m38_1_or_2_byte_Asian8bit
+            (int) PCLTextParsingMethods.eIndex.m0_1_byte_default,
+            (int) PCLTextParsingMethods.eIndex.m2_2_byte,
+            (int) PCLTextParsingMethods.eIndex.m21_1_or_2_byte_Asian7bit,
+            (int) PCLTextParsingMethods.eIndex.m31_1_or_2_byte_ShiftJIS,
+            (int) PCLTextParsingMethods.eIndex.m38_1_or_2_byte_Asian8bit
         };
 
-        private static Int32[] _subsetParseMethodsPCLXLDirect =
+        private static int[] _subsetParseMethodsPCLXLDirect =
         {
-            (Int32) PCLTextParsingMethods.eIndex.m2_2_byte,
+            (int) PCLTextParsingMethods.eIndex.m2_2_byte,
         };
 
-        private static Int32 _ctFonts = PCLFonts.getCountUnique();
+        private static int _ctFonts = PCLFonts.getCountUnique();
 
-        private static Int32[] _subsetFonts = new Int32[_ctFonts];
+        private static int[] _subsetFonts = new int[_ctFonts];
 
-        private static Int32 _ctSymSets = PCLSymbolSets.getCountStd() +
+        private static int _ctSymSets = PCLSymbolSets.getCountStd() +
                                           PCLSymbolSets.getCountUserSet();
 
-        private static Int32[] _subsetSymSets = new Int32[_ctSymSets];
+        private static int[] _subsetSymSets = new int[_ctSymSets];
 
-        private static Int32[] _subsetParseMethods;
+        private static int[] _subsetParseMethods;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -119,11 +119,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private UInt16 _fontDownloadIdPCL = _defaultSoftFontIdPCL;
-        private UInt16 _fontPrnDiskIdPCL = _defaultSoftFontIdPCL;
-        private UInt16 _fontPrnDiskMacroIdPCL = _defaultSoftFontIdMacroPCL;
+        private ushort _fontDownloadIdPCL = _defaultSoftFontIdPCL;
+        private ushort _fontPrnDiskIdPCL = _defaultSoftFontIdPCL;
+        private ushort _fontPrnDiskMacroIdPCL = _defaultSoftFontIdMacroPCL;
 
-        private UInt16[] _sampleOffsetBlocks = new UInt16[256];
+        private ushort[] _sampleOffsetBlocks = new ushort[256];
 
         private FontCustomPCL _fontCustomPCL;
         private FontDownloadPCL _fontDownloadPCL;
@@ -136,94 +136,94 @@ namespace PCLParaphernalia
 
         private ToolCommonData.ePrintLang _crntPDL;
 
-        private Int32 _ctPDLs;
-        private Int32 _ctOrientations;
-        private Int32 _ctPaperSizes;
-        private Int32 _ctPaperTypes;
-        private Int32 _ctSampleOffsetBlocks;
-        private Int32 _ctSamplePages;
-        private Int32 _ctParseMethods;
+        private int _ctPDLs;
+        private int _ctOrientations;
+        private int _ctPaperSizes;
+        private int _ctPaperTypes;
+        private int _ctSampleOffsetBlocks;
+        private int _ctSamplePages;
+        private int _ctParseMethods;
 
-        private Int32 _indxPDL;
-        private Int32 _indxFontPCL;
-        private Int32 _indxFontPCLXL;
-        private Int32 _indxSymSetPCL;
-        private Int32 _indxSymSetPCLXL;
+        private int _indxPDL;
+        private int _indxFontPCL;
+        private int _indxFontPCLXL;
+        private int _indxSymSetPCL;
+        private int _indxSymSetPCLXL;
 
-        private Int32 _indxParseMethod;
+        private int _indxParseMethod;
 
-        private Int32 _indxOrientationPCL;
-        private Int32 _indxOrientationPCLXL;
-        private Int32 _indxPaperSizePCL;
-        private Int32 _indxPaperSizePCLXL;
-        private Int32 _indxPaperTypePCL;
-        private Int32 _indxPaperTypePCLXL;
+        private int _indxOrientationPCL;
+        private int _indxOrientationPCLXL;
+        private int _indxPaperSizePCL;
+        private int _indxPaperSizePCLXL;
+        private int _indxPaperTypePCL;
+        private int _indxPaperTypePCLXL;
 
-        private Boolean _prnDiskLoadViaMacro;
+        private bool _prnDiskLoadViaMacro;
 
-        private Boolean _fontBound;
-        private Boolean _fontProportional;
-        private Boolean _fontScalable;
+        private bool _fontBound;
+        private bool _fontProportional;
+        private bool _fontScalable;
 
-        private Boolean _formAsMacroPCL;
-        private Boolean _formAsMacroPCLXL;
+        private bool _formAsMacroPCL;
+        private bool _formAsMacroPCLXL;
 
-        private Boolean _showC0CharsPCL;
-        private Boolean _showC0CharsPCLXL;
+        private bool _showC0CharsPCL;
+        private bool _showC0CharsPCLXL;
 
-        private Boolean _mapCodesRelevant;
-        private Boolean _showMapCodesUCS2PCL;
-        private Boolean _showMapCodesUCS2PCLXL;
-        private Boolean _showMapCodesUTF8PCL;
-        private Boolean _showMapCodesUTF8PCLXL;
+        private bool _mapCodesRelevant;
+        private bool _showMapCodesUCS2PCL;
+        private bool _showMapCodesUCS2PCLXL;
+        private bool _showMapCodesUTF8PCL;
+        private bool _showMapCodesUTF8PCLXL;
 
-        private Boolean _downloadSelByIdPCL;
-        private Boolean _downloadRemovePCL;
-        private Boolean _downloadRemovePCLXL;
+        private bool _downloadSelByIdPCL;
+        private bool _downloadRemovePCL;
+        private bool _downloadRemovePCLXL;
 
-        private Boolean _prnDiskSelByIdPCL;
-        private Boolean _prnDiskRemovePCL;
-        private Boolean _prnDiskFontPCL;
-        private Boolean _prnDiskFontDataKnownPCL;
+        private bool _prnDiskSelByIdPCL;
+        private bool _prnDiskRemovePCL;
+        private bool _prnDiskFontPCL;
+        private bool _prnDiskFontDataKnownPCL;
 
-        private Boolean _optGridVertical;
+        private bool _optGridVertical;
 
-        private Boolean _initialised;
-        private Boolean _settingSymSetAttributes;
-        private Boolean _useSampleBlocks;
-        private Boolean _symSetUserFileValid;
-        private Boolean _symSetUserActEmbedPCL;
-        private Boolean _symSetUserActEmbedPCLXL;   // dummy
+        private bool _initialised;
+        private bool _settingSymSetAttributes;
+        private bool _useSampleBlocks;
+        private bool _symSetUserFileValid;
+        private bool _symSetUserActEmbedPCL;
+        private bool _symSetUserActEmbedPCLXL;   // dummy
 
-        private UInt16 _symSetNo;
-        private UInt16 _symSetNoUserSet;
-        private UInt16 _symSetUserFirstCode = 0;
-        private UInt16 _symSetUserLastCode = 0;
+        private ushort _symSetNo;
+        private ushort _symSetNoUserSet;
+        private ushort _symSetUserFirstCode = 0;
+        private ushort _symSetUserLastCode = 0;
 
-        private String _symSetId;
+        private string _symSetId;
 
-        private String _symSetName;
-        private String _fontDesc;
-        private String _fontNamePCLXL;
+        private string _symSetName;
+        private string _fontDesc;
+        private string _fontNamePCLXL;
 
-        private String _fontPrnDiskNamePCL;
+        private string _fontPrnDiskNamePCL;
 
-        private String _fontFilenamePCL;
-        private String _fontFilenamePCLXL;
+        private string _fontFilenamePCL;
+        private string _fontFilenamePCLXL;
 
-        private String _fontSelSeqPCL;
-        private String _fontSelDescPCL;
-        private String _fontLoadDescPCL;
-        private String _symSetUserFile;
+        private string _fontSelSeqPCL;
+        private string _fontSelDescPCL;
+        private string _fontLoadDescPCL;
+        private string _symSetUserFile;
 
-        private UInt16 _fontTypefacePCL;
+        private ushort _fontTypefacePCL;
 
-        private Double _fontHeightPCL;
-        private Double _fontPitchPCL;
-        private Double _fontHeightPCLXL;
+        private double _fontHeightPCL;
+        private double _fontPitchPCL;
+        private double _fontHeightPCLXL;
 
-        private UInt16 _fontStylePCL;
-        private Int16 _fontWeightPCL;
+        private ushort _fontStylePCL;
+        private short _fontWeightPCL;
 
         private PCLFonts.eVariant _fontVar;
         private PCLFonts.eFontType _fontType;
@@ -240,31 +240,31 @@ namespace PCLParaphernalia
 
         private struct FontCustomPCL
         {
-            Boolean _proportional;
-            Boolean _scalable;
-            Boolean _bound;
-            UInt16 _style;
-            UInt16 _typeface;
-            Int16 _weight;
-            Double _height;
-            Double _pitch;
-            Int32 _symSetIndex;
-            UInt16 _symSetCustom;
-            String _symSetUserFile;
+            bool _proportional;
+            bool _scalable;
+            bool _bound;
+            ushort _style;
+            ushort _typeface;
+            short _weight;
+            double _height;
+            double _pitch;
+            int _symSetIndex;
+            ushort _symSetCustom;
+            string _symSetUserFile;
 
             //----------------------------------------------------------------//
 
-            public FontCustomPCL(Boolean proportional,
-                                  Boolean scalable,
-                                  Boolean bound,
-                                  UInt16 style,
-                                  UInt16 typeface,
-                                  Int16 weight,
-                                  Double height,
-                                  Double pitch,
-                                  Int32 symSetIndex,
-                                  UInt16 symSetCustom,
-                                  String symSetUserFile)
+            public FontCustomPCL(bool proportional,
+                                  bool scalable,
+                                  bool bound,
+                                  ushort style,
+                                  ushort typeface,
+                                  short weight,
+                                  double height,
+                                  double pitch,
+                                  int symSetIndex,
+                                  ushort symSetCustom,
+                                  string symSetUserFile)
             {
                 _proportional = proportional;
                 _scalable = scalable;
@@ -281,17 +281,17 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void restore(ref Boolean proportional,
-                                ref Boolean scalable,
-                                ref Boolean bound,
-                                ref UInt16 style,
-                                ref UInt16 typeface,
-                                ref Int16 weight,
-                                ref Double height,
-                                ref Double pitch,
-                                ref Int32 symSetIndex,
-                                ref UInt16 symSetCustom,
-                                ref String symSetUserFile)
+            public void restore(ref bool proportional,
+                                ref bool scalable,
+                                ref bool bound,
+                                ref ushort style,
+                                ref ushort typeface,
+                                ref short weight,
+                                ref double height,
+                                ref double pitch,
+                                ref int symSetIndex,
+                                ref ushort symSetCustom,
+                                ref string symSetUserFile)
             {
                 proportional = _proportional;
                 scalable = _scalable;
@@ -308,17 +308,17 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void store(Boolean proportional,
-                              Boolean scalable,
-                              Boolean bound,
-                              UInt16 style,
-                              UInt16 typeface,
-                              Int16 weight,
-                              Double height,
-                              Double pitch,
-                              Int32 symSetIndex,
-                              UInt16 symSetCustom,
-                              String symSetUserFile)
+            public void store(bool proportional,
+                              bool scalable,
+                              bool bound,
+                              ushort style,
+                              ushort typeface,
+                              short weight,
+                              double height,
+                              double pitch,
+                              int symSetIndex,
+                              ushort symSetCustom,
+                              string symSetUserFile)
             {
                 _proportional = proportional;
                 _scalable = scalable;
@@ -342,19 +342,19 @@ namespace PCLParaphernalia
 
         private struct FontCustomPCLXL
         {
-            String _fontName;
-            Double _height;
-            Int32 _symSetIndex;
-            UInt16 _symSetCustom;
-            String _symSetUserFile;
+            string _fontName;
+            double _height;
+            int _symSetIndex;
+            ushort _symSetCustom;
+            string _symSetUserFile;
 
             //----------------------------------------------------------------//
 
-            public FontCustomPCLXL(String fontName,
-                                    Double height,
-                                    Int32 symSetIndex,
-                                    UInt16 symSetCustom,
-                                    String symSetUserFile)
+            public FontCustomPCLXL(string fontName,
+                                    double height,
+                                    int symSetIndex,
+                                    ushort symSetCustom,
+                                    string symSetUserFile)
             {
                 _fontName = fontName;
                 _height = height;
@@ -365,11 +365,11 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void restore(ref String fontName,
-                                 ref Double height,
-                                 ref Int32 symSetIndex,
-                                 ref UInt16 symSetCustom,
-                                 ref String symSetUserFile)
+            public void restore(ref string fontName,
+                                 ref double height,
+                                 ref int symSetIndex,
+                                 ref ushort symSetCustom,
+                                 ref string symSetUserFile)
             {
                 fontName = _fontName;
                 height = _height;
@@ -380,11 +380,11 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void store(String fontName,
-                               Double height,
-                               Int32 symSetIndex,
-                               UInt16 symSetCustom,
-                               String symSetUserFile)
+            public void store(string fontName,
+                               double height,
+                               int symSetIndex,
+                               ushort symSetCustom,
+                               string symSetUserFile)
             {
                 _fontName = fontName;
                 _height = height;
@@ -402,27 +402,27 @@ namespace PCLParaphernalia
 
         private struct FontDownloadPCL
         {
-            String _downloadFile;
-            UInt16 _downloadId;
-            Boolean _selectById;
-            Boolean _downloadRemove;
-            Double _height;
-            Double _pitch;
-            Int32 _symSetIndex;
-            UInt16 _symSetCustom;
-            String _symSetUserFile;
+            string _downloadFile;
+            ushort _downloadId;
+            bool _selectById;
+            bool _downloadRemove;
+            double _height;
+            double _pitch;
+            int _symSetIndex;
+            ushort _symSetCustom;
+            string _symSetUserFile;
 
             //----------------------------------------------------------------//
 
-            public FontDownloadPCL(String downloadFile,
-                                    UInt16 downloadId,
-                                    Boolean downloadRemove,
-                                    Boolean selectById,
-                                    Double height,
-                                    Double pitch,
-                                    Int32 symSetIndex,
-                                    UInt16 symSetCustom,
-                                    String symSetUserFile)
+            public FontDownloadPCL(string downloadFile,
+                                    ushort downloadId,
+                                    bool downloadRemove,
+                                    bool selectById,
+                                    double height,
+                                    double pitch,
+                                    int symSetIndex,
+                                    ushort symSetCustom,
+                                    string symSetUserFile)
             {
                 _downloadFile = downloadFile;
                 _downloadId = downloadId;
@@ -437,15 +437,15 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void restore(ref String downloadFile,
-                                ref UInt16 downloadId,
-                                ref Boolean downloadRemove,
-                                ref Boolean selectById,
-                                ref Double height,
-                                ref Double pitch,
-                                ref Int32 symSetIndex,
-                                ref UInt16 symSetCustom,
-                                ref String symSetUserFile)
+            public void restore(ref string downloadFile,
+                                ref ushort downloadId,
+                                ref bool downloadRemove,
+                                ref bool selectById,
+                                ref double height,
+                                ref double pitch,
+                                ref int symSetIndex,
+                                ref ushort symSetCustom,
+                                ref string symSetUserFile)
             {
                 downloadFile = _downloadFile;
                 downloadId = _downloadId;
@@ -460,15 +460,15 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void store(String downloadFile,
-                              UInt16 downloadId,
-                              Boolean downloadRemove,
-                              Boolean selectById,
-                              Double height,
-                              Double pitch,
-                              Int32 symSetIndex,
-                              UInt16 symSetCustom,
-                              String symSetUserFile)
+            public void store(string downloadFile,
+                              ushort downloadId,
+                              bool downloadRemove,
+                              bool selectById,
+                              double height,
+                              double pitch,
+                              int symSetIndex,
+                              ushort symSetCustom,
+                              string symSetUserFile)
             {
                 _downloadFile = downloadFile;
                 _downloadId = downloadId;
@@ -490,21 +490,21 @@ namespace PCLParaphernalia
 
         private struct FontDownloadPCLXL
         {
-            String _downloadFile;
-            Boolean _downloadRemove;
-            Double _height;
-            Int32 _symSetIndex;
-            UInt16 _symSetCustom;
-            String _symSetUserFile;
+            string _downloadFile;
+            bool _downloadRemove;
+            double _height;
+            int _symSetIndex;
+            ushort _symSetCustom;
+            string _symSetUserFile;
 
             //----------------------------------------------------------------//
 
-            public FontDownloadPCLXL(String downloadFile,
-                                      Boolean downloadRemove,
-                                      Double height,
-                                      Int32 symSetIndex,
-                                      UInt16 symSetCustom,
-                                      String symSetUserFile)
+            public FontDownloadPCLXL(string downloadFile,
+                                      bool downloadRemove,
+                                      double height,
+                                      int symSetIndex,
+                                      ushort symSetCustom,
+                                      string symSetUserFile)
             {
                 _downloadFile = downloadFile;
                 _downloadRemove = downloadRemove;
@@ -516,12 +516,12 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void restore(ref String downloadFile,
-                                ref Boolean downloadRemove,
-                                ref Double height,
-                                ref Int32 symSetIndex,
-                                ref UInt16 symSetCustom,
-                                ref String symSetUserFile)
+            public void restore(ref string downloadFile,
+                                ref bool downloadRemove,
+                                ref double height,
+                                ref int symSetIndex,
+                                ref ushort symSetCustom,
+                                ref string symSetUserFile)
             {
                 downloadFile = _downloadFile;
                 downloadRemove = _downloadRemove;
@@ -533,12 +533,12 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void store(String downloadFile,
-                              Boolean downloadRemove,
-                              Double height,
-                              Int32 symSetIndex,
-                              UInt16 symSetCustom,
-                              String symSetUserFile)
+            public void store(string downloadFile,
+                              bool downloadRemove,
+                              double height,
+                              int symSetIndex,
+                              ushort symSetCustom,
+                              string symSetUserFile)
             {
                 _downloadFile = downloadFile;
                 _downloadRemove = downloadRemove;
@@ -557,23 +557,23 @@ namespace PCLParaphernalia
 
         private struct FontPresetPCL
         {
-            Int32 _fontIndex;
+            int _fontIndex;
             PCLFonts.eVariant _variant;
-            Double _height;
-            Double _pitch;
-            Int32 _symSetIndex;
-            UInt16 _symSetCustom;
-            String _symSetUserFile;
+            double _height;
+            double _pitch;
+            int _symSetIndex;
+            ushort _symSetCustom;
+            string _symSetUserFile;
 
             //----------------------------------------------------------------//
 
-            public FontPresetPCL(Int32 fontIndex,
+            public FontPresetPCL(int fontIndex,
                                   PCLFonts.eVariant variant,
-                                  Double height,
-                                  Double pitch,
-                                  Int32 symSetIndex,
-                                  UInt16 symSetCustom,
-                                  String symSetUserFile)
+                                  double height,
+                                  double pitch,
+                                  int symSetIndex,
+                                  ushort symSetCustom,
+                                  string symSetUserFile)
             {
                 _fontIndex = fontIndex;
                 _variant = variant;
@@ -586,13 +586,13 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void restore(ref Int32 fontIndex,
+            public void restore(ref int fontIndex,
                                 ref PCLFonts.eVariant variant,
-                                ref Double height,
-                                ref Double pitch,
-                                ref Int32 symSetIndex,
-                                ref UInt16 symSetCustom,
-                                ref String symSetUserFile)
+                                ref double height,
+                                ref double pitch,
+                                ref int symSetIndex,
+                                ref ushort symSetCustom,
+                                ref string symSetUserFile)
             {
                 fontIndex = _fontIndex;
                 variant = _variant;
@@ -605,15 +605,15 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void store(Int32 fontIndex,
-                              Boolean fontScalable,
-                              Boolean fontBound,
+            public void store(int fontIndex,
+                              bool fontScalable,
+                              bool fontBound,
                               PCLFonts.eVariant variant,
-                              Double height,
-                              Double pitch,
-                              Int32 symSetIndex,
-                              UInt16 symSetCustom,
-                              String symSetUserFile)
+                              double height,
+                              double pitch,
+                              int symSetIndex,
+                              ushort symSetCustom,
+                              string symSetUserFile)
             {
                 _fontIndex = fontIndex;
                 _variant = variant;
@@ -641,21 +641,21 @@ namespace PCLParaphernalia
 
         private struct FontPresetPCLXL
         {
-            Int32 _fontIndex;
+            int _fontIndex;
             PCLFonts.eVariant _variant;
-            Double _height;
-            Int32 _symSetIndex;
-            UInt16 _symSetCustom;
-            String _symSetUserFile;
+            double _height;
+            int _symSetIndex;
+            ushort _symSetCustom;
+            string _symSetUserFile;
 
             //--------------------------------------------------------------------//
 
-            public FontPresetPCLXL(Int32 fontIndex,
+            public FontPresetPCLXL(int fontIndex,
                                     PCLFonts.eVariant variant,
-                                    Double height,
-                                    Int32 symSetIndex,
-                                    UInt16 symSetCustom,
-                                    String symSetUserFile)
+                                    double height,
+                                    int symSetIndex,
+                                    ushort symSetCustom,
+                                    string symSetUserFile)
             {
                 _fontIndex = fontIndex;
                 _variant = variant;
@@ -667,12 +667,12 @@ namespace PCLParaphernalia
 
             //--------------------------------------------------------------------//
 
-            public void restore(ref Int32 fontIndex,
+            public void restore(ref int fontIndex,
                                 ref PCLFonts.eVariant variant,
-                                ref Double height,
-                                ref Int32 symSetIndex,
-                                ref UInt16 symSetCustom,
-                                ref String symSetUserFile)
+                                ref double height,
+                                ref int symSetIndex,
+                                ref ushort symSetCustom,
+                                ref string symSetUserFile)
             {
                 fontIndex = _fontIndex;
                 variant = _variant;
@@ -684,14 +684,14 @@ namespace PCLParaphernalia
 
             //--------------------------------------------------------------------//
 
-            public void store(Int32 fontIndex,
-                              Boolean fontScalable,
-                              Boolean fontBound,
+            public void store(int fontIndex,
+                              bool fontScalable,
+                              bool fontBound,
                               PCLFonts.eVariant variant,
-                              Double height,
-                              Int32 symSetIndex,
-                              UInt16 symSetCustom,
-                              String symSetUserFile)
+                              double height,
+                              int symSetIndex,
+                              ushort symSetCustom,
+                              string symSetUserFile)
             {
                 _fontIndex = fontIndex;
                 _variant = variant;
@@ -718,45 +718,45 @@ namespace PCLParaphernalia
 
         private struct FontPrnDiskPCL
         {
-            String _fontName;
-            UInt16 _fontId;
-            UInt16 _macroId;
-            Boolean _ramDataRemove;
-            Boolean _selectById;
-            Boolean _loadViaMacro;
-            Boolean _characteristicsKnown;
-            Boolean _proportional;
-            Boolean _scalable;
-            Boolean _bound;
-            UInt16 _style;
-            UInt16 _typeface;
-            Int16 _weight;
-            Double _height;
-            Double _pitch;
-            Int32 _symSetIndex;
-            UInt16 _symSetCustom;
-            String _symSetUserFile;
+            string _fontName;
+            ushort _fontId;
+            ushort _macroId;
+            bool _ramDataRemove;
+            bool _selectById;
+            bool _loadViaMacro;
+            bool _characteristicsKnown;
+            bool _proportional;
+            bool _scalable;
+            bool _bound;
+            ushort _style;
+            ushort _typeface;
+            short _weight;
+            double _height;
+            double _pitch;
+            int _symSetIndex;
+            ushort _symSetCustom;
+            string _symSetUserFile;
 
             //----------------------------------------------------------------//
 
-            public FontPrnDiskPCL(String fontName,
-                                   UInt16 fontId,
-                                   UInt16 macroId,
-                                   Boolean ramDataRemove,
-                                   Boolean selectById,
-                                   Boolean loadViaMacro,
-                                   Boolean characteristicsKnown,
-                                   Boolean proportional,
-                                   Boolean scalable,
-                                   Boolean bound,
-                                   UInt16 style,
-                                   UInt16 typeface,
-                                   Int16 weight,
-                                   Double height,
-                                   Double pitch,
-                                   Int32 symSetIndex,
-                                   UInt16 symSetCustom,
-                                   String symSetUserFile)
+            public FontPrnDiskPCL(string fontName,
+                                   ushort fontId,
+                                   ushort macroId,
+                                   bool ramDataRemove,
+                                   bool selectById,
+                                   bool loadViaMacro,
+                                   bool characteristicsKnown,
+                                   bool proportional,
+                                   bool scalable,
+                                   bool bound,
+                                   ushort style,
+                                   ushort typeface,
+                                   short weight,
+                                   double height,
+                                   double pitch,
+                                   int symSetIndex,
+                                   ushort symSetCustom,
+                                   string symSetUserFile)
             {
                 _fontName = fontName;
                 _fontId = fontId;
@@ -780,24 +780,24 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void restore(ref String fontName,
-                                 ref UInt16 fontId,
-                                 ref UInt16 macroId,
-                                 ref Boolean ramDataRemove,
-                                 ref Boolean selectById,
-                                 ref Boolean loadViaMacro,
-                                 ref Boolean characteristicsKnown,
-                                 ref Boolean proportional,
-                                 ref Boolean scalable,
-                                 ref Boolean bound,
-                                 ref UInt16 style,
-                                 ref UInt16 typeface,
-                                 ref Int16 weight,
-                                 ref Double height,
-                                 ref Double pitch,
-                                 ref Int32 symSetIndex,
-                                 ref UInt16 symSetCustom,
-                                 ref String symSetUserFile)
+            public void restore(ref string fontName,
+                                 ref ushort fontId,
+                                 ref ushort macroId,
+                                 ref bool ramDataRemove,
+                                 ref bool selectById,
+                                 ref bool loadViaMacro,
+                                 ref bool characteristicsKnown,
+                                 ref bool proportional,
+                                 ref bool scalable,
+                                 ref bool bound,
+                                 ref ushort style,
+                                 ref ushort typeface,
+                                 ref short weight,
+                                 ref double height,
+                                 ref double pitch,
+                                 ref int symSetIndex,
+                                 ref ushort symSetCustom,
+                                 ref string symSetUserFile)
             {
                 fontName = _fontName;
                 fontId = _fontId;
@@ -821,24 +821,24 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void store(String fontName,
-                               UInt16 fontId,
-                               UInt16 macroId,
-                               Boolean ramDataRemove,
-                               Boolean selectById,
-                               Boolean loadViaMacro,
-                               Boolean characteristicsKnown,
-                               Boolean proportional,
-                               Boolean scalable,
-                               Boolean bound,
-                               UInt16 style,
-                               UInt16 typeface,
-                               Int16 weight,
-                               Double height,
-                               Double pitch,
-                               Int32 symSetIndex,
-                               UInt16 symSetCustom,
-                               String symSetUserFile)
+            public void store(string fontName,
+                               ushort fontId,
+                               ushort macroId,
+                               bool ramDataRemove,
+                               bool selectById,
+                               bool loadViaMacro,
+                               bool characteristicsKnown,
+                               bool proportional,
+                               bool scalable,
+                               bool bound,
+                               ushort style,
+                               ushort typeface,
+                               short weight,
+                               double height,
+                               double pitch,
+                               int symSetIndex,
+                               ushort symSetCustom,
+                               string symSetUserFile)
             {
                 _fontName = fontName;
                 _fontId = fontId;
@@ -887,7 +887,7 @@ namespace PCLParaphernalia
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            Boolean flagOK = true;
+            bool flagOK = true;
 
             _indxPDL = cbPDL.SelectedIndex;
             _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
@@ -926,11 +926,11 @@ namespace PCLParaphernalia
 
                 try
                 {
-                    Boolean downloadFont = false;
+                    bool downloadFont = false;
 
                     BinaryWriter binWriter = null;
 
-                    UInt16[] sampleBlocks;
+                    ushort[] sampleBlocks;
 
                     TargetCore.requestStreamOpen(
                         ref binWriter,
@@ -942,7 +942,7 @@ namespace PCLParaphernalia
 
                     if ((_ctSamplePages == 0) || (!_useSampleBlocks))
                     {
-                        sampleBlocks = new UInt16[1];
+                        sampleBlocks = new ushort[1];
 
                         sampleBlocks[0] = 0;
                     }
@@ -950,11 +950,11 @@ namespace PCLParaphernalia
                     {
                         CheckBox chk;
 
-                        Int32 pageNo = 0;
+                        int pageNo = 0;
 
-                        sampleBlocks = new UInt16[_ctSamplePages];
+                        sampleBlocks = new ushort[_ctSamplePages];
 
-                        for (Int32 i = 0; i < _ctSampleOffsetBlocks; i++)
+                        for (int i = 0; i < _ctSampleOffsetBlocks; i++)
                         {
                             chk = (CheckBox)lstSampleOffsets.Items[i];
 
@@ -975,7 +975,7 @@ namespace PCLParaphernalia
                     if ((_symSetGroup == PCLSymbolSets.eSymSetGroup.Preset) ||
                         (_symSetGroup == PCLSymbolSets.eSymSetGroup.Unicode))
                     {
-                        Int32 index;
+                        int index;
 
                         if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                             index = _subsetSymSets[_indxSymSetPCL];
@@ -1031,14 +1031,14 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        Boolean symSetUserSet,
+                        bool symSetUserSet,
                                  fontSelById;
 
-                        Double fontSize;
+                        double fontSize;
 
-                        UInt16 fontIdNo;
+                        ushort fontIdNo;
 
-                        String parseMethodText = "",
+                        string parseMethodText = "",
                                fontFilename;
 
                         PCLTextParsingMethods.eIndex parseMethod;
@@ -1139,7 +1139,7 @@ namespace PCLParaphernalia
                     }
                     else    // if (_crntPDL == ToolCommonData.ePrintLang.PCLXL)
                     {
-                        Boolean symSetUserSet;
+                        bool symSetUserSet;
 
                         if (_symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet)
                             symSetUserSet = true;
@@ -1207,9 +1207,9 @@ namespace PCLParaphernalia
         private void btnPCLSoftFontFileBrowse_Click(object sender,
                                                      RoutedEventArgs e)
         {
-            Boolean selected;
+            bool selected;
 
-            String filename = _fontFilenamePCL;
+            string filename = _fontFilenamePCL;
 
             selected = selectPCLFontFile(ref filename);
 
@@ -1235,9 +1235,9 @@ namespace PCLParaphernalia
         private void btnPCLXLFontFileBrowse_Click(object sender,
                                                  RoutedEventArgs e)
         {
-            Boolean selected;
+            bool selected;
 
-            String filename = _fontFilenamePCLXL;
+            string filename = _fontFilenamePCLXL;
 
             selected = selectPCLXLFontFile(ref filename);
 
@@ -1266,7 +1266,7 @@ namespace PCLParaphernalia
         {
             CheckBox chk;
 
-            for (Int32 i = 0; i < _ctSampleOffsetBlocks; i++)
+            for (int i = 0; i < _ctSampleOffsetBlocks; i++)
             {
                 chk = (CheckBox)lstSampleOffsets.Items[i];
                 chk.IsChecked = false;
@@ -1291,7 +1291,7 @@ namespace PCLParaphernalia
         {
             CheckBox chk;
 
-            for (Int32 i = 0; i < _ctSampleOffsetBlocks; i++)
+            for (int i = 0; i < _ctSampleOffsetBlocks; i++)
             {
                 chk = (CheckBox)lstSampleOffsets.Items[i];
                 chk.IsChecked = true;
@@ -1319,10 +1319,10 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            Boolean selected;
-            Boolean flagOK = true;
+            bool selected;
+            bool flagOK = true;
 
-            String filename = _symSetUserFile;
+            string filename = _symSetUserFile;
 
             selected = selectSymSetFile(ref filename);
 
@@ -1440,7 +1440,7 @@ namespace PCLParaphernalia
         {
             if (_initialised && cbParseMethod.HasItems)
             {
-                Int32 index;
+                int index;
 
                 index = cbParseMethod.SelectedIndex;
 
@@ -1516,9 +1516,9 @@ namespace PCLParaphernalia
 
         private void checkFontSupportsSymSet()
         {
-            Boolean check = true;
+            bool check = true;
 
-            Int32 indxFont = cbFont.SelectedIndex;
+            int indxFont = cbFont.SelectedIndex;
 
             PCLFonts.eFontType fontType =
                 PCLFonts.getType(_subsetFonts[indxFont]);
@@ -1534,9 +1534,9 @@ namespace PCLParaphernalia
                     (!PCLFonts.isSymSetInList(_subsetFonts[indxFont],
                                              _symSetNo)))
                 {
-                    Int32 symSetIndx = PCLSymbolSets.getIndexForId(_symSetNo);
+                    int symSetIndx = PCLSymbolSets.getIndexForId(_symSetNo);
 
-                    String symSetName,
+                    string symSetName,
                            symSetId;
 
                     if (symSetIndx == -1)
@@ -1567,13 +1567,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean checkPCLSoftFontFile()
+        private bool checkPCLSoftFontFile()
         {
-            Boolean flagOK = true;
+            bool flagOK = true;
 
-            Boolean selected = true;
+            bool selected = true;
 
-            String filename = _fontFilenamePCL;
+            string filename = _fontFilenamePCL;
 
             if (!File.Exists(filename))
             {
@@ -1633,13 +1633,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean checkPCLSymSetFile()
+        private bool checkPCLSymSetFile()
         {
-            Boolean flagOK = true;
+            bool flagOK = true;
 
-            Boolean selected = true;
+            bool selected = true;
 
-            String filename = _symSetUserFile;
+            string filename = _symSetUserFile;
 
             if (!File.Exists(filename))
             {
@@ -1710,13 +1710,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean checkPCLXLFontFile()
+        private bool checkPCLXLFontFile()
         {
-            Boolean flagOK = true;
+            bool flagOK = true;
 
-            Boolean selected = true;
+            bool selected = true;
 
-            String filename = _fontFilenamePCLXL;
+            string filename = _fontFilenamePCLXL;
 
             if (!File.Exists(filename))
             {
@@ -1773,7 +1773,7 @@ namespace PCLParaphernalia
 
         private void checkSymSetType()
         {
-            Int32 indxSymSet;
+            int indxSymSet;
 
             grpSymSetFile.Visibility = Visibility.Hidden;
 
@@ -1781,13 +1781,13 @@ namespace PCLParaphernalia
 
             if (indxSymSet != -1)
             {
-                Int32 indxList = _subsetSymSets[indxSymSet];
+                int indxList = _subsetSymSets[indxSymSet];
 
                 _symSetGroup = PCLSymbolSets.getGroup(indxList);
 
                 if (_symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet)
                 {
-                    Boolean flagOK;
+                    bool flagOK;
 
                     grpSymSetFile.Visibility = Visibility.Visible;
 
@@ -2099,9 +2099,9 @@ namespace PCLParaphernalia
 
         private void fontChoicesRestore()
         {
-            Boolean samePreset = false;
+            bool samePreset = false;
 
-            Int32 indxFont = 0;
+            int indxFont = 0;
 
             indxFont = cbFont.SelectedIndex;
 
@@ -2398,7 +2398,7 @@ namespace PCLParaphernalia
 
         private void initialise()
         {
-            Int32 index,
+            int index,
                   ctr;
 
             PCLSymbolSets.eSymSetGroup symSetGroup;
@@ -2415,7 +2415,7 @@ namespace PCLParaphernalia
 
             _ctPDLs = _subsetPDLs.Length;
 
-            for (Int32 i = 0; i < _ctPDLs; i++)
+            for (int i = 0; i < _ctPDLs; i++)
             {
                 index = _subsetPDLs[i];
 
@@ -2429,7 +2429,7 @@ namespace PCLParaphernalia
 
             _ctOrientations = _subsetOrientations.Length;
 
-            for (Int32 i = 0; i < _ctOrientations; i++)
+            for (int i = 0; i < _ctOrientations; i++)
             {
                 index = _subsetOrientations[i];
 
@@ -2442,7 +2442,7 @@ namespace PCLParaphernalia
 
             _ctPaperSizes = _subsetPaperSizes.Length;
 
-            for (Int32 i = 0; i < _ctPaperSizes; i++)
+            for (int i = 0; i < _ctPaperSizes; i++)
             {
                 index = _subsetPaperSizes[i];
 
@@ -2455,7 +2455,7 @@ namespace PCLParaphernalia
 
             _ctPaperTypes = _subsetPaperTypes.Length;
 
-            for (Int32 i = 0; i < _ctPaperTypes; i++)
+            for (int i = 0; i < _ctPaperTypes; i++)
             {
                 index = _subsetPaperTypes[i];
 
@@ -2469,11 +2469,11 @@ namespace PCLParaphernalia
             ctr = PCLFonts.getCount();
             index = 0;
 
-            for (Int32 i = 0; i < ctr; i++)
+            for (int i = 0; i < ctr; i++)
             {
                 if (PCLFonts.getType(i) != PCLFonts.eFontType.PresetFamily)
                 {
-                    _subsetFonts[index++] = (Int32)i;
+                    _subsetFonts[index++] = (int)i;
                     cbFont.Items.Add(PCLFonts.getName(i));
                 }
             }
@@ -2485,7 +2485,7 @@ namespace PCLParaphernalia
             ctr = PCLSymbolSets.getCount();
             index = 0;
 
-            for (Int32 i = 0; i < ctr; i++)
+            for (int i = 0; i < ctr; i++)
             {
                 symSetGroup = PCLSymbolSets.getGroup(i);
 
@@ -2494,7 +2494,7 @@ namespace PCLParaphernalia
                     (symSetGroup == PCLSymbolSets.eSymSetGroup.Unicode) ||
                     (symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet))
                 {
-                    _subsetSymSets[index++] = (Int32)i;
+                    _subsetSymSets[index++] = (int)i;
                     cbSymSet.Items.Add(PCLSymbolSets.getName(i));
                 }
             }
@@ -2514,7 +2514,7 @@ namespace PCLParaphernalia
             pdlOptionsRestore();
             fontChoicesRestore();
 
-            cbPDL.SelectedIndex = (Byte)_indxPDL;
+            cbPDL.SelectedIndex = (byte)_indxPDL;
 
             if (_optGridVertical)
                 rbOptGridV.IsChecked = true;
@@ -2580,8 +2580,8 @@ namespace PCLParaphernalia
 
         private void metricsLoad()
         {
-            Int32 indxFontTemp = 0;
-            Int32 indxFont = 0;
+            int indxFontTemp = 0;
+            int indxFont = 0;
 
             ToolFontSamplePersist.loadDataCommon(ref _indxPDL,
                                                  ref _optGridVertical);
@@ -3538,11 +3538,11 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.eTarget.NetPrinter)
             {
-                String netPrnAddress = "";
-                Int32 netPrnPort = 0;
+                string netPrnAddress = "";
+                int netPrnPort = 0;
 
-                Int32 netTimeoutSend = 0;
-                Int32 netTimeoutReceive = 0;
+                int netTimeoutSend = 0;
+                int netTimeoutReceive = 0;
 
                 TargetCore.metricsLoadNetPrinter(ref netPrnAddress,
                                                   ref netPrnPort,
@@ -3556,7 +3556,7 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.eTarget.WinPrinter)
             {
-                String winPrintername = "";
+                string winPrintername = "";
 
                 TargetCore.metricsLoadWinPrinter(ref winPrintername);
 
@@ -3575,7 +3575,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectPCLFontFile(ref String fontFilename)
+        private bool selectPCLFontFile(ref string fontFilename)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(fontFilename);
 
@@ -3600,7 +3600,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectPCLXLFontFile(ref String fontFilename)
+        private bool selectPCLXLFontFile(ref string fontFilename)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(fontFilename);
 
@@ -3624,7 +3624,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectSymSetFile(ref String symSetFile)
+        private bool selectSymSetFile(ref string symSetFile)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(symSetFile);
 
@@ -3652,7 +3652,7 @@ namespace PCLParaphernalia
         {
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
             {
-                Boolean showDetails = true;
+                bool showDetails = true;
 
                 if (_fontType == PCLFonts.eFontType.Download)
                 {
@@ -3741,9 +3741,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setFontOptions(Int32 indxFont,
-                                    Boolean restoreSymSet,
-                                    Boolean samePreset)
+        private void setFontOptions(int indxFont,
+                                    bool restoreSymSet,
+                                    bool samePreset)
         {
             setFontOptionsVariants(indxFont, samePreset);
 
@@ -3771,10 +3771,10 @@ namespace PCLParaphernalia
 
                 cbSymSet.IsEnabled = false;
 
-                Int32 index,
+                int index,
                       indxSymSet;
 
-                String idNum = "",
+                string idNum = "",
                        idAlpha = "";
 
                 PCLSymbolSets.translateKind1ToId(_symSetNo,
@@ -3853,7 +3853,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setFontOptionsPCL(Int32 indxFont)
+        private void setFontOptionsPCL(int indxFont)
         {
             _indxFontPCL = indxFont;
 
@@ -4020,10 +4020,10 @@ namespace PCLParaphernalia
 
                 _prnDiskFontPCL = false;
 
-                Double fontHeight;
-                Double fontPitch;
+                double fontHeight;
+                double fontPitch;
 
-                Int32 fontIndx = _subsetFonts[indxFont];
+                int fontIndx = _subsetFonts[indxFont];
 
                 _fontBound = PCLFonts.isBoundFont(fontIndx);
                 _fontScalable = PCLFonts.isScalableFont(fontIndx);
@@ -4060,8 +4060,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setFontOptionsPCLBasic(Boolean visible,
-                                             Boolean enabled)
+        private void setFontOptionsPCLBasic(bool visible,
+                                             bool enabled)
         {
             if (!visible)
             {
@@ -4142,8 +4142,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setFontOptionsPCLDesign(Boolean visible,
-                                              Boolean enabled)
+        private void setFontOptionsPCLDesign(bool visible,
+                                              bool enabled)
         {
             if (!visible)
             {
@@ -4192,8 +4192,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setFontOptionsPCLSize(Boolean prnDiskFont,
-                                           Boolean prnDiskFontDataKnown)
+        private void setFontOptionsPCLSize(bool prnDiskFont,
+                                           bool prnDiskFontDataKnown)
         {
             if (prnDiskFont && !prnDiskFontDataKnown)
             {
@@ -4204,8 +4204,8 @@ namespace PCLParaphernalia
             }
             else
             {
-                Boolean setHeight = false;
-                Boolean setPitch = false;
+                bool setHeight = false;
+                bool setPitch = false;
 
                 if (_fontProportional)
                 {
@@ -4292,7 +4292,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setFontOptionsPCLXL(Int32 indxFont)
+        private void setFontOptionsPCLXL(int indxFont)
         {
             _indxFontPCLXL = indxFont;
 
@@ -4383,9 +4383,9 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                Double fontHeight;
+                double fontHeight;
 
-                Int32 fontIndx = _subsetFonts[indxFont];
+                int fontIndx = _subsetFonts[indxFont];
 
                 txtPCLXLFontName.IsEnabled = false;
 
@@ -4434,16 +4434,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setFontOptionsVariants(Int32 indxFont,
-                                            Boolean samePreset)
+        private void setFontOptionsVariants(int indxFont,
+                                            bool samePreset)
         {
-            Boolean varB,
+            bool varB,
                     varBI,
                     varI,
                     varR,
                     varSet;
 
-            Int32 fontIndx = _subsetFonts[indxFont];
+            int fontIndx = _subsetFonts[indxFont];
 
             //----------------------------------------------------------------//
 
@@ -4556,7 +4556,7 @@ namespace PCLParaphernalia
 
         private void setFontSelectData()
         {
-            Int32 indxFont = cbFont.SelectedIndex;
+            int indxFont = cbFont.SelectedIndex;
 
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                 setFontSelectDataPCL(indxFont);
@@ -4573,12 +4573,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setFontSelectDataPCL(Int32 indxFont)
+        private void setFontSelectDataPCL(int indxFont)
         {
-            String symSetId,
+            string symSetId,
                    selSeqAttr = "";
 
-            Boolean selById = false;
+            bool selById = false;
 
             _indxFontPCL = indxFont;
 
@@ -4641,7 +4641,7 @@ namespace PCLParaphernalia
             }
             else if (_fontType == PCLFonts.eFontType.PrnDisk)
             {
-                Int32 binLen = _fontPrnDiskNamePCL.Length + 1;
+                int binLen = _fontPrnDiskNamePCL.Length + 1;
 
                 if (_prnDiskLoadViaMacro)
                 {
@@ -4704,7 +4704,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setFontSelectDataPCLXL(Int32 indxFont)
+        private void setFontSelectDataPCLXL(int indxFont)
         {
             if ((_symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet) &&
                 (!_symSetUserActEmbedPCLXL)) // this should always be true
@@ -4730,9 +4730,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private String setFontTitle(Int32 indxFont)
+        private string setFontTitle(int indxFont)
         {
-            String fontTitle;
+            string fontTitle;
 
             if (_fontType == PCLFonts.eFontType.Download)
             {
@@ -4772,24 +4772,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private String setPCLFontSelectSeq(
-            Int32 indxFont,
+        private string setPCLFontSelectSeq(
+            int indxFont,
             PCLFonts.eVariant variant,
-            Boolean prnDiskFontDataKnown,
-            Boolean selectById,
-            Boolean proportional,
-            Boolean scalable,
-            Double height,
-            Double pitch,
-            UInt16 style,
-            Int16 weight,
-            UInt16 typeface)
+            bool prnDiskFontDataKnown,
+            bool selectById,
+            bool proportional,
+            bool scalable,
+            double height,
+            double pitch,
+            ushort style,
+            short weight,
+            ushort typeface)
         {
             PCLFonts.eFontType fontType;
 
-            String seq = "";
+            string seq = "";
 
-            Boolean sizeSelect = false,
+            bool sizeSelect = false,
                     fullSelect = false;
 
             fontType = PCLFonts.getType(indxFont);
@@ -4927,11 +4927,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setSampleAttributes(Int32 indxSymSetEntry)
+        private void setSampleAttributes(int indxSymSetEntry)
         {
-            Int32 tmpIndex;
+            int tmpIndex;
 
-            Boolean found;
+            bool found;
 
             grpSample.Visibility = Visibility.Hidden;
 
@@ -4955,19 +4955,19 @@ namespace PCLParaphernalia
                 if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                 {
                     _subsetParseMethods = _subsetParseMethodsPCLDirect;
-                    _indxParseMethod = (Int32)PCLTextParsingMethods.eIndex.m83_UTF8;
+                    _indxParseMethod = (int)PCLTextParsingMethods.eIndex.m83_UTF8;
                 }
                 else // if (_crntPDL == ToolCommonData.ePrintLang.PCLXL)
                 {
                     _subsetParseMethods = _subsetParseMethodsPCLXLDirect;
-                    _indxParseMethod = (Int32)PCLTextParsingMethods.eIndex.m2_2_byte;
+                    _indxParseMethod = (int)PCLTextParsingMethods.eIndex.m2_2_byte;
                 }
 
                 _ctParseMethods = _subsetParseMethods.Length;
 
                 cbParseMethod.Items.Clear();
 
-                for (Int32 i = 0; i < _ctParseMethods; i++)
+                for (int i = 0; i < _ctParseMethods; i++)
                 {
                     tmpIndex = _subsetParseMethods[i];
 
@@ -4978,7 +4978,7 @@ namespace PCLParaphernalia
 
                 found = false;
 
-                for (Int32 i = 0;
+                for (int i = 0;
                      (i < _ctParseMethods) && (found == false);
                      i++)
                 {
@@ -5014,7 +5014,7 @@ namespace PCLParaphernalia
                 grpSample.Visibility = Visibility.Visible;
 
                 _indxParseMethod =
-                    (Int32)PCLSymbolSets.getParsingMethod(indxSymSetEntry);
+                    (int)PCLSymbolSets.getParsingMethod(indxSymSetEntry);
 
                 if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                 {
@@ -5029,7 +5029,7 @@ namespace PCLParaphernalia
 
                 cbParseMethod.Items.Clear();
 
-                for (Int32 i = 0; i < _ctParseMethods; i++)
+                for (int i = 0; i < _ctParseMethods; i++)
                 {
                     tmpIndex = _subsetParseMethods[i];
 
@@ -5040,7 +5040,7 @@ namespace PCLParaphernalia
 
                 found = false;
 
-                for (Int32 i = 0;
+                for (int i = 0;
                      (i < _ctParseMethods) && (found == false);
                      i++)
                 {
@@ -5123,9 +5123,9 @@ namespace PCLParaphernalia
 
         private void setSymSetAttributes()
         {
-            Boolean setIdText = false;
+            bool setIdText = false;
 
-            Int32 indxSymSetEntry,
+            int indxSymSetEntry,
                   indxSymSet;
 
             _settingSymSetAttributes = true;
@@ -5141,7 +5141,7 @@ namespace PCLParaphernalia
                 _symSetType = PCLSymbolSets.getType(indxSymSetEntry);
 
                 _indxParseMethod =
-                    (Int32)PCLTextParsingMethods.eIndex.not_specified;
+                    (int)PCLTextParsingMethods.eIndex.not_specified;
 
                 if (_symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet)
                 {
@@ -5233,7 +5233,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    Int32 indxTemp;
+                    int indxTemp;
 
                     txtSymSetIdNum.IsEnabled = true;
                     txtSymSetIdAlpha.IsEnabled = true;
@@ -5245,7 +5245,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        String idNum = _defaultSymSetIdNum.ToString(),
+                        string idNum = _defaultSymSetIdNum.ToString(),
                                idAlpha = _defaultSymSetIdAlpha.ToString();
 
                         PCLSymbolSets.translateKind1ToId(_symSetNo, ref idNum, ref idAlpha);
@@ -5266,9 +5266,9 @@ namespace PCLParaphernalia
 
                 if (setIdText)
                 {
-                    String symSetId = _symSetId;
+                    string symSetId = _symSetId;
 
-                    Int32 len = _symSetId.Length;
+                    int len = _symSetId.Length;
 
                     if (len > 1)
                     {
@@ -5283,7 +5283,7 @@ namespace PCLParaphernalia
                 }
 
                 txtSymSetType.Text =
-                    PCLSymSetTypes.getDescShort((Int32)_symSetType);
+                    PCLSymSetTypes.getDescShort((int)_symSetType);
 
                 setSampleAttributes(indxSymSetEntry);
 
@@ -5308,16 +5308,16 @@ namespace PCLParaphernalia
         private void setSymSetOffsetRanges(
             PCLSymbolSets.eSymSetGroup symSetGroup,
             PCLSymSetTypes.eIndex symSetType,
-            Int32 indxParseMethod)
+            int indxParseMethod)
         {
-            UInt16[] rangesStd;
-            UInt16[] rangesSingle;
-            UInt16[] rangesDouble;
+            ushort[] rangesStd;
+            ushort[] rangesSingle;
+            ushort[] rangesDouble;
 
-            Int32 blockMin,
+            int blockMin,
                   blockMax;
 
-            Int32 ctRangesStd,
+            int ctRangesStd,
                   ctRangesDouble;
 
             CheckBox chkOffset;
@@ -5332,7 +5332,7 @@ namespace PCLParaphernalia
 
             if (symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet)
             {
-                rangesStd = new UInt16[2];
+                rangesStd = new ushort[2];
 
                 rangesStd[0] = _symSetUserFirstCode;
                 rangesStd[1] = _symSetUserLastCode;
@@ -5341,7 +5341,7 @@ namespace PCLParaphernalia
                      (symSetType == PCLSymSetTypes.eIndex.Bound_8bit) ||
                      (symSetType == PCLSymSetTypes.eIndex.Bound_PC8))
             {
-                rangesStd = new UInt16[2];
+                rangesStd = new ushort[2];
 
                 rangesStd[0] = 0x00;
                 rangesStd[1] = 0xff;
@@ -5357,7 +5357,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    rangesStd = new UInt16[2];
+                    rangesStd = new ushort[2];
 
                     rangesStd[0] = 0x00;
                     rangesStd[1] = 0xff;
@@ -5389,12 +5389,12 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i <= ctRangesStd; i += 2)
+            for (int i = 0; i <= ctRangesStd; i += 2)
             {
                 blockMin = rangesStd[i] >> 8;
                 blockMax = rangesStd[i + 1] >> 8;
 
-                for (Int32 j = blockMin; j <= blockMax; j++)
+                for (int j = blockMin; j <= blockMax; j++)
                 {
                     chkOffset = new CheckBox();
                     chkOffset.Margin = new Thickness(1, 1, 1, 1);
@@ -5407,16 +5407,16 @@ namespace PCLParaphernalia
                     chkOffset.Checked += new RoutedEventHandler(chkOffset_Checked);
                     chkOffset.Unchecked += new RoutedEventHandler(chkOffset_Unchecked);
 
-                    _sampleOffsetBlocks[_ctSampleOffsetBlocks++] = (UInt16)(j << 8);
+                    _sampleOffsetBlocks[_ctSampleOffsetBlocks++] = (ushort)(j << 8);
                 }
             }
 
-            for (Int32 i = 0; i <= ctRangesDouble; i += 2)
+            for (int i = 0; i <= ctRangesDouble; i += 2)
             {
                 blockMin = rangesDouble[i] >> 8;
                 blockMax = rangesDouble[i + 1] >> 8;
 
-                for (Int32 j = blockMin; j <= blockMax; j++)
+                for (int j = blockMin; j <= blockMax; j++)
                 {
                     chkOffset = new CheckBox();
                     chkOffset.Margin = new Thickness(1, 1, 1, 1);
@@ -5429,7 +5429,7 @@ namespace PCLParaphernalia
                     chkOffset.Checked += new RoutedEventHandler(chkOffset_Checked);
                     chkOffset.Unchecked += new RoutedEventHandler(chkOffset_Unchecked);
 
-                    _sampleOffsetBlocks[_ctSampleOffsetBlocks++] = (UInt16)(j << 8);
+                    _sampleOffsetBlocks[_ctSampleOffsetBlocks++] = (ushort)(j << 8);
                 }
             }
 
@@ -5521,9 +5521,9 @@ namespace PCLParaphernalia
         private void txtPCLSoftFontFile_LostFocus(object sender,
                                                    RoutedEventArgs e)
         {
-            Boolean selected = true;
+            bool selected = true;
 
-            String filename = txtPCLSoftFontFile.Text;
+            string filename = txtPCLSoftFontFile.Text;
 
             if (_fontType == PCLFonts.eFontType.Download)
             {
@@ -5745,9 +5745,9 @@ namespace PCLParaphernalia
         private void txtPCLXLFontFile_LostFocus(object sender,
                                                RoutedEventArgs e)
         {
-            Boolean selected = true;
+            bool selected = true;
 
-            String filename = txtPCLXLSoftFontFile.Text;
+            string filename = txtPCLXLSoftFontFile.Text;
 
             _fontFilenamePCLXL = filename;
 
@@ -5821,9 +5821,9 @@ namespace PCLParaphernalia
         private void txtSymSetFile_LostFocus(object sender,
                                               RoutedEventArgs e)
         {
-            Boolean selected = true;
+            bool selected = true;
 
-            String filename = txtSymSetFile.Text;
+            string filename = txtSymSetFile.Text;
 
             if (!File.Exists(filename))
             {
@@ -5980,9 +5980,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLFontCharacteristics()
+        private bool validatePCLFontCharacteristics()
         {
-            Boolean OK = true;
+            bool OK = true;
 
             OK = validatePCLFontHeight(false);
 
@@ -6010,17 +6010,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLFontHeight(Boolean lostFocusEvent)
+        private bool validatePCLFontHeight(bool lostFocusEvent)
         {
-            const Double minVal = 0.25;
-            const Double maxVal = 999.75;
-            const Double defVal = _defaultFontHeightPCL;
+            const double minVal = 0.25;
+            const double maxVal = 999.75;
+            const double defVal = _defaultFontHeightPCL;
 
-            Double value = 0;
+            double value = 0;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText = txtPCLHeight.Text;
+            string crntText = txtPCLHeight.Text;
 
             if (crntText == "")
             {
@@ -6034,7 +6034,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                OK = Double.TryParse(crntText, out value);
+                OK = double.TryParse(crntText, out value);
 
                 if ((value < minVal) || (value > maxVal))
                     OK = false;
@@ -6048,7 +6048,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString("F2");
+                    string newText = defVal.ToString("F2");
 
                     MessageBox.Show("Height value '" + crntText +
                                     "' is invalid.\n\n" +
@@ -6091,17 +6091,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLFontPitch(Boolean lostFocusEvent)
+        private bool validatePCLFontPitch(bool lostFocusEvent)
         {
-            const Double minVal = 0.10;
-            const Double maxVal = 576;
-            const Double defVal = _defaultFontPitchPCL;
+            const double minVal = 0.10;
+            const double maxVal = 576;
+            const double defVal = _defaultFontPitchPCL;
 
-            Double value = 0;
+            double value = 0;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText = txtPCLPitch.Text;
+            string crntText = txtPCLPitch.Text;
 
             if (crntText == "")
             {
@@ -6115,7 +6115,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                OK = Double.TryParse(crntText, out value);
+                OK = double.TryParse(crntText, out value);
 
                 if ((value < minVal) || (value > maxVal))
                     OK = false;
@@ -6129,7 +6129,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString("F2");
+                    string newText = defVal.ToString("F2");
 
                     MessageBox.Show("Pitch value '" + crntText +
                                     "' is invalid.\n\n" +
@@ -6172,19 +6172,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLFontStyle(Boolean lostFocusEvent)
+        private bool validatePCLFontStyle(bool lostFocusEvent)
         {
-            const UInt16 minVal = 0;
-            const UInt16 maxVal = 32767;
-            const UInt16 defVal = _defaultFontStylePCL;
+            const ushort minVal = 0;
+            const ushort maxVal = 32767;
+            const ushort defVal = _defaultFontStylePCL;
 
-            UInt16 value;
+            ushort value;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText = txtPCLStyle.Text;
+            string crntText = txtPCLStyle.Text;
 
-            OK = UInt16.TryParse(crntText, out value);
+            OK = ushort.TryParse(crntText, out value);
 
             if (OK)
                 if ((value < minVal) || (value > maxVal))
@@ -6198,7 +6198,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString();
+                    string newText = defVal.ToString();
 
                     MessageBox.Show("Style value '" + crntText +
                                     "' is invalid.\n\n" +
@@ -6241,19 +6241,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLFontTypeface(Boolean lostFocusEvent)
+        private bool validatePCLFontTypeface(bool lostFocusEvent)
         {
-            const UInt16 minVal = 0;
-            const UInt16 maxVal = 65535;
-            const UInt16 defVal = _defaultFontTypefacePCL;
+            const ushort minVal = 0;
+            const ushort maxVal = 65535;
+            const ushort defVal = _defaultFontTypefacePCL;
 
-            UInt16 value;
+            ushort value;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText = txtPCLTypeface.Text;
+            string crntText = txtPCLTypeface.Text;
 
-            OK = UInt16.TryParse(crntText, out value);
+            OK = ushort.TryParse(crntText, out value);
 
             if (OK)
                 if ((value < minVal) || (value > maxVal))
@@ -6267,7 +6267,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString();
+                    string newText = defVal.ToString();
 
                     MessageBox.Show("Typeface value '" + crntText +
                                     "' is invalid.\n\n" +
@@ -6310,19 +6310,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLFontWeight(Boolean lostFocusEvent)
+        private bool validatePCLFontWeight(bool lostFocusEvent)
         {
-            const Int16 minVal = -7;
-            const Int16 maxVal = 7;
-            const Int16 defVal = _defaultFontWeightPCL;
+            const short minVal = -7;
+            const short maxVal = 7;
+            const short defVal = _defaultFontWeightPCL;
 
-            Int16 value;
+            short value;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText = txtPCLWeight.Text;
+            string crntText = txtPCLWeight.Text;
 
-            OK = Int16.TryParse(crntText, out value);
+            OK = short.TryParse(crntText, out value);
 
             if (OK)
                 if ((value < minVal) || (value > maxVal))
@@ -6336,7 +6336,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString();
+                    string newText = defVal.ToString();
 
                     MessageBox.Show("Weight value '" + crntText +
                                     "' is invalid.\n\n" +
@@ -6379,19 +6379,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLSoftFontId(Boolean lostFocusEvent)
+        private bool validatePCLSoftFontId(bool lostFocusEvent)
         {
-            const UInt16 minVal = 0;
-            const UInt16 maxVal = 32767;
-            const UInt16 defVal = _defaultSoftFontIdPCL;
+            const ushort minVal = 0;
+            const ushort maxVal = 32767;
+            const ushort defVal = _defaultSoftFontIdPCL;
 
-            UInt16 value;
+            ushort value;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText = txtPCLSoftFontId.Text;
+            string crntText = txtPCLSoftFontId.Text;
 
-            OK = UInt16.TryParse(crntText, out value);
+            OK = ushort.TryParse(crntText, out value);
 
             if (OK)
                 if ((value < minVal) || (value > maxVal))
@@ -6408,7 +6408,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString();
+                    string newText = defVal.ToString();
 
                     MessageBox.Show("Font Id value '" + crntText +
                                     "' is invalid.\n\n" +
@@ -6454,19 +6454,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLSoftFontMacroId(Boolean lostFocusEvent)
+        private bool validatePCLSoftFontMacroId(bool lostFocusEvent)
         {
-            const UInt16 minVal = 0;
-            const UInt16 maxVal = 32767;
-            const UInt16 defVal = _defaultSoftFontIdMacroPCL;
+            const ushort minVal = 0;
+            const ushort maxVal = 32767;
+            const ushort defVal = _defaultSoftFontIdMacroPCL;
 
-            UInt16 value;
+            ushort value;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText = txtPCLSoftFontMacroId.Text;
+            string crntText = txtPCLSoftFontMacroId.Text;
 
-            OK = UInt16.TryParse(crntText, out value);
+            OK = ushort.TryParse(crntText, out value);
 
             if (OK)
                 if ((value < minVal) || (value > maxVal))
@@ -6480,7 +6480,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString();
+                    string newText = defVal.ToString();
 
                     MessageBox.Show("Macro Id value '" + crntText +
                                     "' is invalid.\n\n" +
@@ -6523,9 +6523,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLXLFontCharacteristics()
+        private bool validatePCLXLFontCharacteristics()
         {
-            Boolean OK = true;
+            bool OK = true;
 
             OK = validatePCLXLFontName(false);
 
@@ -6544,17 +6544,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLXLFontHeight(Boolean lostFocusEvent)
+        private bool validatePCLXLFontHeight(bool lostFocusEvent)
         {
-            const Double minVal = 0.25;
-            const Double maxVal = 999.75;
-            const Double defVal = _defaultFontHeightPCL;
+            const double minVal = 0.25;
+            const double maxVal = 999.75;
+            const double defVal = _defaultFontHeightPCL;
 
-            Double value = 0;
+            double value = 0;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText = txtPCLXLHeight.Text;
+            string crntText = txtPCLXLHeight.Text;
 
             if (crntText == "")
             {
@@ -6563,7 +6563,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                OK = Double.TryParse(crntText, out value);
+                OK = double.TryParse(crntText, out value);
 
                 if ((value < minVal) || (value > maxVal))
                     OK = false;
@@ -6577,7 +6577,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString("F2");
+                    string newText = defVal.ToString("F2");
 
                     MessageBox.Show("Height value '" + crntText +
                                     "' is invalid.\n\n" +
@@ -6620,17 +6620,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLXLFontName(Boolean lostFocusEvent)
+        private bool validatePCLXLFontName(bool lostFocusEvent)
         {
             //          const Int32 minLen = 14;
-            const Int32 maxLen = 20;
-            const String defVal = _defaultFontNamePCLXL;
+            const int maxLen = 20;
+            const string defVal = _defaultFontNamePCLXL;
 
-            Int32 len = 0;
+            int len = 0;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText = txtPCLXLFontName.Text;
+            string crntText = txtPCLXLFontName.Text;
 
             len = crntText.Length;
 
@@ -6686,19 +6686,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validateSymSetIdAlpha(Boolean lostFocusEvent)
+        private bool validateSymSetIdAlpha(bool lostFocusEvent)
         {
-            const Char minVal = 'A';
-            const Char maxVal = 'Z';
-            const Char badVal = 'X';
-            const Char defVal = _defaultSymSetIdAlpha;
+            const char minVal = 'A';
+            const char maxVal = 'Z';
+            const char badVal = 'X';
+            const char defVal = _defaultSymSetIdAlpha;
 
-            Int32 value = 0,
+            int value = 0,
                   len;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText = txtSymSetIdAlpha.Text;
+            string crntText = txtSymSetIdAlpha.Text;
 
             len = crntText.Length;
 
@@ -6708,7 +6708,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                value = Char.ConvertToUtf32(crntText, 0);
+                value = char.ConvertToUtf32(crntText, 0);
 
                 if ((value < minVal) || (value > maxVal) || (value == badVal))
                     OK = false;
@@ -6761,19 +6761,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validateSymSetIdNum(Boolean lostFocusEvent)
+        private bool validateSymSetIdNum(bool lostFocusEvent)
         {
-            const UInt16 minVal = 0;
-            const UInt16 maxVal = 2047;
-            const UInt16 defVal = _defaultSymSetIdNum;
+            const ushort minVal = 0;
+            const ushort maxVal = 2047;
+            const ushort defVal = _defaultSymSetIdNum;
 
-            UInt16 value;
+            ushort value;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText = txtSymSetIdNum.Text;
+            string crntText = txtSymSetIdNum.Text;
 
-            OK = UInt16.TryParse(crntText, out value);
+            OK = ushort.TryParse(crntText, out value);
 
             if (OK)
                 if ((value < minVal) || (value > maxVal))
@@ -6783,7 +6783,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString();
+                    string newText = defVal.ToString();
 
                     MessageBox.Show("Numeric part '" + crntText +
                                     "' of identifier is invalid.\n\n" +

@@ -13,12 +13,12 @@ namespace PCLParaphernalia
 
         private PCLCharCollections.eBitType _bitType;
 
-        private Int32 _bitNo;
+        private int _bitNo;
 
-        private String _desc;
+        private string _desc;
 
-        private Boolean _isChecked;
-        private Boolean _isEnabled;
+        private bool _isChecked;
+        private bool _isEnabled;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -28,11 +28,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLCharCollItem(Int32 bitNo,
+        public PCLCharCollItem(int bitNo,
                                 PCLCharCollections.eBitType bitType,
-                                String desc,
-                                Boolean isEnabled,
-                                Boolean isChecked)
+                                string desc,
+                                bool isEnabled,
+                                bool isChecked)
         {
             _bitNo = bitNo;
             _bitType = bitType;
@@ -47,7 +47,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 BitNo
+        public int BitNo
         {
             get { return _bitNo; }
             set { _bitNo = value; }
@@ -71,7 +71,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Desc
+        public string Desc
         {
             get { return _desc; }
             set { _desc = value; }
@@ -83,7 +83,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean IsChecked
+        public bool IsChecked
         {
             get { return _isChecked; }
 
@@ -101,7 +101,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean IsEnabled
+        public bool IsEnabled
         {
             get { return _isEnabled; }
 
@@ -114,7 +114,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void onPropertyChanged(String propertyName)
+        private void onPropertyChanged(string propertyName)
         {
             if (this.PropertyChanged != null)
             {

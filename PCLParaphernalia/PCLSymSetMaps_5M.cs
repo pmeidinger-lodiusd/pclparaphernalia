@@ -29,33 +29,33 @@ namespace PCLParaphernalia
         {
             const eSymSetMapId mapId = eSymSetMapId.map_5M;
 
-            const Int32 rangeCt = 2;
+            const int rangeCt = 2;
 
-            UInt16[][] rangeData = new UInt16[rangeCt][]
+            ushort[][] rangeData = new ushort[rangeCt][]
             {
-                new UInt16 [2] {0x20, 0x7f},
-                new UInt16 [2] {0xa0, 0xff}
+                new ushort [2] {0x20, 0x7f},
+                new ushort [2] {0xa0, 0xff}
             };
 
-            UInt16[] rangeSizes = new UInt16[rangeCt];
+            ushort[] rangeSizes = new ushort[rangeCt];
 
-            UInt16[][] mapDataPCL = new UInt16[rangeCt][];
+            ushort[][] mapDataPCL = new ushort[rangeCt][];
 
-            UInt16 rangeMin,
+            ushort rangeMin,
                    rangeMax,
                    rangeSize;
 
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i < rangeCt; i++)
+            for (int i = 0; i < rangeCt; i++)
             {
-                rangeSizes[i] = (UInt16)(rangeData[i][1] -
+                rangeSizes[i] = (ushort)(rangeData[i][1] -
                                            rangeData[i][0] + 1);
             }
 
-            for (Int32 i = 0; i < rangeCt; i++)
+            for (int i = 0; i < rangeCt; i++)
             {
-                mapDataPCL[i] = new UInt16[rangeSizes[i]];
+                mapDataPCL[i] = new ushort[rangeSizes[i]];
             }
 
             //----------------------------------------------------------------//

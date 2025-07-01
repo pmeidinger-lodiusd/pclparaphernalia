@@ -44,7 +44,7 @@ namespace PCLParaphernalia
                               "Font Extended")
         };
 
-        private static Int32 _entityTypeCount = _entityTypes.GetUpperBound(0) + 1;
+        private static int _entityTypeCount = _entityTypes.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -55,7 +55,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getCount()
+        public static int getCount()
         {
             return _entityTypeCount;
         }
@@ -69,7 +69,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getIdPCL(Int32 selection)
+        public static string getIdPCL(int selection)
         {
             return _entityTypes[selection].getIdPCL();
         }
@@ -83,7 +83,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getName(Int32 selection)
+        public static string getName(int selection)
         {
             return _entityTypes[selection].getName();
         }
@@ -97,7 +97,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eType getType(Int32 selection)
+        public static eType getType(int selection)
         {
             return _entityTypes[selection].getType();
         }

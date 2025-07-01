@@ -20,7 +20,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private const Int32 HPGL2MnemonicLen = 2;
+        private const int HPGL2MnemonicLen = 2;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -34,30 +34,30 @@ namespace PCLParaphernalia
 
         private DataTable _table;
 
-        private Byte[] _buf;
+        private byte[] _buf;
 
-        private Byte _finalByte;
+        private byte _finalByte;
 
-        private Int32 _fileOffset;
-        private Int32 _endOffset;
+        private int _fileOffset;
+        private int _endOffset;
 
         private PrnParseConstants.eOptOffsetFormats _indxOffsetFormat;
 
         private PrnParseConstants.eOptCharSetSubActs _indxCharSetSubAct;
         private PrnParseConstants.eOptCharSets _indxCharSetName;
-        private Int32 _valCharSetSubCode;
+        private int _valCharSetSubCode;
 
         //      private Int32 _textParsingMethod;
-        private Int32 _analysisLevel = 0;    // TEMP?? //
-        private Int32 _macroLevel = 0;    // TEMP?? //
+        private int _analysisLevel = 0;    // TEMP?? //
+        private int _macroLevel = 0;    // TEMP?? //
 
-        private Boolean _flagMiscBinData = false;
+        private bool _flagMiscBinData = false;
 
         private ASCIIEncoding _ascii = new ASCIIEncoding();
 
-        private Byte _labelTerm;
+        private byte _labelTerm;
 
-        private Boolean _labelTrans;
+        private bool _labelTrans;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -79,15 +79,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void displayHPGL2Command(ref Int32 bufOffset,
-                                         Int32 seqLen,
-                                         Int32 prefixLen,
-                                         Boolean binarySeq,
-                                         Boolean continued,
-                                         Boolean continuation,
-                                         String desc)
+        private void displayHPGL2Command(ref int bufOffset,
+                                         int seqLen,
+                                         int prefixLen,
+                                         bool binarySeq,
+                                         bool continued,
+                                         bool continuation,
+                                         string desc)
         {
-            Int32 len;
+            int len;
 
             len = seqLen;
 
@@ -109,7 +109,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                String typeText;
+                string typeText;
 
                 if (prefixLen != 0)
                 {
@@ -175,24 +175,24 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                Int32 sliceLen,
+                int sliceLen,
                       sliceLenMax,
                       sliceStart,
                       sliceOffset,
                       seqBufOffset,
                       ccAdjust;
 
-                Boolean firstSlice,
+                bool firstSlice,
                         firstSliceAfterCC,
                         nonGraphics,
                         knownCC;
                 ;
 
-                String seq = "",
+                string seq = "",
                        ccDesc = "";
 
-                Byte[] seqBuf = new Byte[PrnParseConstants.cRptA_colMax_Seq];
-                Byte seqByte,
+                byte[] seqBuf = new byte[PrnParseConstants.cRptA_colMax_Seq];
+                byte seqByte,
                      ccByte;
 
                 firstSlice = true;
@@ -205,7 +205,7 @@ namespace PCLParaphernalia
                 {
                     sliceLenMax = PrnParseConstants.cRptA_colMax_Seq - prefixLen;
 
-                    for (Int32 i = 0; i < prefixLen; i++)
+                    for (int i = 0; i < prefixLen; i++)
                     {
                         seqBuf[seqBufOffset++] = 0x20;
                     }
@@ -229,7 +229,7 @@ namespace PCLParaphernalia
                     ccByte = 0x20;
                     ccAdjust = 0;
 
-                    for (Int32 i = 0; i < sliceLenMax; i++)
+                    for (int i = 0; i < sliceLenMax; i++)
                     {
                         seqByte = _buf[sliceStart + i];
 
@@ -299,7 +299,7 @@ namespace PCLParaphernalia
                     sliceLenMax = PrnParseConstants.cRptA_colMax_Seq - prefixLen;
                     seqBufOffset = 0;
 
-                    for (Int32 i = 0; i < prefixLen; i++)
+                    for (int i = 0; i < prefixLen; i++)
                     {
                         seqBuf[seqBufOffset++] = 0x20;
                     }
@@ -347,7 +347,7 @@ namespace PCLParaphernalia
 
                 while (len > 0)
                 {
-                    for (Int32 i = 0; i < sliceLen; i++)
+                    for (int i = 0; i < sliceLen; i++)
                     {
                         seqByte = _buf[sliceStart + i];
 
@@ -418,7 +418,7 @@ namespace PCLParaphernalia
                     sliceLen = len;
                     seqBufOffset = 0;
 
-                    for (Int32 i = 0; i < prefixLen; i++)
+                    for (int i = 0; i < prefixLen; i++)
                     {
                         seqBuf[seqBufOffset++] = 0x20;
                     }
@@ -466,18 +466,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean parseBuffer(
-            Byte[] buf,
-            ref Int32 fileOffset,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        public bool parseBuffer(
+            byte[] buf,
+            ref int fileOffset,
+            ref int bufRem,
+            ref int bufOffset,
             ref ToolCommonData.ePrintLang crntPDL,
-            ref Boolean endReached,
+            ref bool endReached,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            Boolean seqInvalid;
+            bool seqInvalid;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -532,28 +532,28 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean parseContinuation(
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        private bool parseContinuation(
+            ref int bufRem,
+            ref int bufOffset,
         //  ref ToolCommonData.ePrintLang    xcrntPDL,
-            ref Boolean endReached)
+            ref bool endReached)
         {
             PrnParseConstants.eContType contType;
 
             contType = PrnParseConstants.eContType.None;
 
-            Int32 prefixLen = 0,
+            int prefixLen = 0,
                   contDataLen = 0,
                   downloadRem = 0,
                   termPos;
 
-            Boolean badSeq = false,
+            bool badSeq = false,
                     continuation = false,
                     backTrack = false;
 
-            Boolean invalidSeqFound = false;
+            bool invalidSeqFound = false;
 
-            Byte prefixA = 0x00,
+            byte prefixA = 0x00,
                  prefixB = 0x00;
 
             _linkData.getContData(ref contType,
@@ -575,7 +575,7 @@ namespace PCLParaphernalia
 
                 termPos = 0;
 
-                for (Int32 i = bufOffset; i < (bufOffset + bufRem); i++)
+                for (int i = bufOffset; i < (bufOffset + bufRem); i++)
                 {
                     if (_buf[i] == PrnParseConstants.asciiSemiColon)
                     {
@@ -615,7 +615,7 @@ namespace PCLParaphernalia
                     //                                                                //
                     //----------------------------------------------------------------//
 
-                    Int32 seqLen = termPos + 1;
+                    int seqLen = termPos + 1;
 
                     displayHPGL2Command(ref bufOffset,
                                         seqLen,
@@ -639,7 +639,7 @@ namespace PCLParaphernalia
                 //                                                                   //
                 //-------------------------------------------------------------------//
 
-                Boolean termFound;
+                bool termFound;
 
                 termFound = PrnParseData.processLines(
                     _table,
@@ -659,7 +659,7 @@ namespace PCLParaphernalia
                     "HP-GL/2 Label",
                     0,
                     _indxCharSetSubAct,
-                    (Byte)_valCharSetSubCode,
+                    (byte)_valCharSetSubCode,
                     _indxCharSetName,
                     _indxOffsetFormat,
                     _analysisLevel);
@@ -721,20 +721,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean parseSequences(
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        private bool parseSequences(
+            ref int bufRem,
+            ref int bufOffset,
             ref ToolCommonData.ePrintLang crntPDL,
-            ref Boolean endReached)
+            ref bool endReached)
         {
             PrnParseConstants.eContType contType =
                 PrnParseConstants.eContType.None;
 
-            Boolean continuation = false;
-            Boolean langSwitch = false;
-            Boolean badSeq = false;
-            Boolean invalidSeqFound = false;
-            Boolean dummyBool = false;
+            bool continuation = false;
+            bool langSwitch = false;
+            bool badSeq = false;
+            bool invalidSeqFound = false;
+            bool dummyBool = false;
 
             continuation = false;
             _finalByte = PrnParseConstants.asciiSemiColon;
@@ -884,11 +884,11 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        Boolean knownWS = false;
+                        bool knownWS = false;
 
-                        String desc = "";
+                        string desc = "";
 
-                        Byte c1 = _buf[bufOffset];
+                        byte c1 = _buf[bufOffset];
 
                         knownWS = HPGL2ControlCodes.checkTag(
                                     c1,
@@ -952,7 +952,7 @@ namespace PCLParaphernalia
                                 "Data",
                                 0,
                                 _indxCharSetSubAct,
-                                (Byte)_valCharSetSubCode,
+                                (byte)_valCharSetSubCode,
                                 _indxCharSetName,
                                 _indxOffsetFormat,
                                 _analysisLevel);
@@ -983,31 +983,31 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean processHPGL2Command(ref Int32 bufRem,
-                                            ref Int32 bufOffset,
-                                            ref Boolean continuation)
+        private bool processHPGL2Command(ref int bufRem,
+                                            ref int bufOffset,
+                                            ref bool continuation)
         {
             PrnParseConstants.eContType contType =
                 PrnParseConstants.eContType.None;
 
-            Byte cmdByteA = 0x20,
+            byte cmdByteA = 0x20,
                  cmdByteB = 0x20;
 
-            Byte paraByte1 = 0x20,
+            byte paraByte1 = 0x20,
                  crntByte;
 
-            Int32 seqLen = 0,
+            int seqLen = 0,
                   prefixLen = 0,
                   contDataLen = 0,
                   downloadRem = 0;
 
-            Boolean seqKnown,
+            bool seqKnown,
                     backTrack = false,
                     inclusiveTerm = false,
                     termFound,
                     firstQuoteFound = false;
 
-            Boolean optReset = false,
+            bool optReset = false,
                     optBinarySeq = false,
                     optToggleTransparency = false,
                     optSetLabelTerm = false,
@@ -1016,9 +1016,9 @@ namespace PCLParaphernalia
                     optQuoted = false,
                     optSymbolMode = false;
 
-            Boolean invalidSeqFound;
+            bool invalidSeqFound;
 
-            String desc = "",
+            string desc = "",
                    command,
                    showChar;
 
@@ -1075,8 +1075,8 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            command = ((Char)cmdByteA).ToString() +           // need to convert these to UPPER for check
-                      ((Char)cmdByteB).ToString();
+            command = ((char)cmdByteA).ToString() +           // need to convert these to UPPER for check
+                      ((char)cmdByteB).ToString();
 
             seqKnown = HPGL2Commands.checkCmd((_analysisLevel + _macroLevel),
                                                command,
@@ -1144,7 +1144,7 @@ namespace PCLParaphernalia
                     "HP-GL/2 Label",
                     0,
                     _indxCharSetSubAct,
-                    (Byte)_valCharSetSubCode,
+                    (byte)_valCharSetSubCode,
                     _indxCharSetName,
                     _indxOffsetFormat,
                     _analysisLevel);
@@ -1177,7 +1177,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                Byte paraByte2 = 0x20;
+                byte paraByte2 = 0x20;
 
                 termFound = false;
                 inclusiveTerm = false;
@@ -1555,7 +1555,7 @@ namespace PCLParaphernalia
                     showChar = PrnParseData.processByte(
                         _labelTerm,
                         _indxCharSetSubAct,
-                        (Byte)_valCharSetSubCode,
+                        (byte)_valCharSetSubCode,
                         _indxCharSetName);
 
                     PrnParseCommon.addTextRow(

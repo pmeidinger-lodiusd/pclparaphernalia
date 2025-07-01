@@ -19,8 +19,8 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private PCLLocationTypes.eType _locationType;
-        private String _locationName;
-        private String _locationIdPCL;
+        private string _locationName;
+        private string _locationIdPCL;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -29,8 +29,8 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PCLLocationType(PCLLocationTypes.eType type,
-                               String id,
-                               String name)
+                               string id,
+                               string name)
         {
             _locationType = type;
             _locationIdPCL = id;
@@ -46,7 +46,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String getIdPCL()
+        public string getIdPCL()
         {
             return _locationIdPCL;
         }
@@ -60,7 +60,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String getName()
+        public string getName()
         {
             return _locationName;
         }

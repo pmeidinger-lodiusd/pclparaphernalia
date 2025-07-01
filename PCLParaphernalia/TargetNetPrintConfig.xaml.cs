@@ -24,11 +24,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Int32 _printerPort;
-        private Int32 _timeoutReceive;
-        private Int32 _timeoutSend;
+        private int _printerPort;
+        private int _timeoutReceive;
+        private int _timeoutSend;
 
-        private String _printerAddress;
+        private string _printerAddress;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -109,7 +109,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            Double windowScale = MainFormData.WindowScale;
+            double windowScale = MainFormData.WindowScale;
 
             zoomSlider.Value = windowScale;
 
@@ -173,7 +173,7 @@ namespace PCLParaphernalia
         private void txtPrinterPort_TextChanged(object sender,
                                                 TextChangedEventArgs e)
         {
-            _printerPort = Int32.Parse(txtPrinterPort.Text);
+            _printerPort = int.Parse(txtPrinterPort.Text);
         }
 
         //--------------------------------------------------------------------//
@@ -188,7 +188,7 @@ namespace PCLParaphernalia
         private void txtTimeoutReceive_TextChanged(object sender,
                                                     TextChangedEventArgs e)
         {
-            _timeoutReceive = Int32.Parse(txtTimeoutReceive.Text);
+            _timeoutReceive = int.Parse(txtTimeoutReceive.Text);
         }
 
         //--------------------------------------------------------------------//
@@ -203,7 +203,7 @@ namespace PCLParaphernalia
         private void txtTimeoutSend_TextChanged(object sender,
                                                  TextChangedEventArgs e)
         {
-            _timeoutSend = Int32.Parse(txtTimeoutSend.Text);
+            _timeoutSend = int.Parse(txtTimeoutSend.Text);
         }
     }
 }

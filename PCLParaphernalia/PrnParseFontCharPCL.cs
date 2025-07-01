@@ -51,7 +51,7 @@ namespace PCLParaphernalia
             Unknown
         }
 
-        private const Int32 _blockHddrLen = 2;
+        private const int _blockHddrLen = 2;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -68,38 +68,38 @@ namespace PCLParaphernalia
         private ePCLCharFormat _charFormat;
         private ePCLCharClass _charClass;
 
-        private Byte[] _buf;
+        private byte[] _buf;
 
-        private Byte _charDescLen;
+        private byte _charDescLen;
 
-        private Int32 _fileOffset;
-        private Int32 _analysisLevel;
+        private int _fileOffset;
+        private int _analysisLevel;
 
-        private Int32 _charLen;
-        private Int32 _charRem;
-        private Int32 _charPos;
-        private Int32 _charDataLen;
-        private Int32 _charDataRem;
-        private Int32 _charDataBlockRem;
-        private Int32 _charHeight;
-        private Int32 _charWidth;
+        private int _charLen;
+        private int _charRem;
+        private int _charPos;
+        private int _charDataLen;
+        private int _charDataRem;
+        private int _charDataBlockRem;
+        private int _charHeight;
+        private int _charWidth;
 
-        private Int32 _charChksLen;
+        private int _charChksLen;
         //        private Int32 _charChksPos;
-        private Int32 _charChksVal;
+        private int _charChksVal;
 
-        private Int32 _charResvLen;
+        private int _charResvLen;
         //        private Int32 _charResvPos;
 
-        private Int32 _drawCharMaxHeight;
-        private Int32 _drawCharMaxWidth;
+        private int _drawCharMaxHeight;
+        private int _drawCharMaxWidth;
 
-        private Boolean _showBinData;
-        private Boolean _validChar;
-        private Boolean _contChar;
+        private bool _showBinData;
+        private bool _validChar;
+        private bool _contChar;
         //      private Boolean _contCharExpected;
 
-        private Boolean _drawCharShape;
+        private bool _drawCharShape;
 
         //      private Boolean _bitmapFont;
         //      private Boolean _intelliFont;
@@ -118,16 +118,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean analyseFontChar(Int32 charLen,
-                                       Int32 fileOffset,
-                                       Byte[] buf,
-                                       ref Int32 bufRem,
-                                       ref Int32 bufOffset,
+        public bool analyseFontChar(int charLen,
+                                       int fileOffset,
+                                       byte[] buf,
+                                       ref int bufRem,
+                                       ref int bufOffset,
                                        PrnParseLinkData linkData,
                                        PrnParseOptions options,
                                        DataTable table)
         {
-            Int32 binDataLen;
+            int binDataLen;
 
             PrnParseConstants.eContType contType;
 
@@ -504,10 +504,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processBlockHeader(ref Int32 bufRem,
-                                         ref Int32 bufOffset)
+        private void processBlockHeader(ref int bufRem,
+                                         ref int bufOffset)
         {
-            String itemDesc;
+            string itemDesc;
 
             PrnParseCommon.addDataRow(
                 PrnParseRowTypes.eType.DataBinary,
@@ -618,8 +618,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processChecksum(ref Int32 bufRem,
-                                      ref Int32 bufOffset)
+        private void processChecksum(ref int bufRem,
+                                      ref int bufOffset)
         {
             PrnParseConstants.eContType contType;
 
@@ -685,7 +685,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        Byte crntByte;
+                        byte crntByte;
 
                         contType = PrnParseConstants.eContType.None;
                         _linkData.resetContData();
@@ -738,7 +738,7 @@ namespace PCLParaphernalia
 
                         if (_charChksVal != crntByte)
                         {
-                            crntByte = (Byte)_charChksVal;
+                            crntByte = (byte)_charChksVal;
 
                             PrnParseCommon.addTextRow(
                                 PrnParseRowTypes.eType.MsgWarning,
@@ -779,15 +779,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processDescriptor(ref Int32 bufRem,
-                                       ref Int32 bufOffset)
+        private void processDescriptor(ref int bufRem,
+                                       ref int bufOffset)
         {
-            UInt32 ui32a;
-            UInt16 ui16a;
+            uint ui32a;
+            ushort ui16a;
 
-            Int16 si16a;
+            short si16a;
 
-            String itemDesc;
+            string itemDesc;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -900,7 +900,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                UInt16 bytesPerRow;
+                ushort bytesPerRow;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -956,7 +956,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                si16a = (Int16)((_buf[bufOffset + 4] * 256) +
+                si16a = (short)((_buf[bufOffset + 4] * 256) +
                                   _buf[bufOffset + 5]);
 
                 PrnParseCommon.addTextRow(
@@ -977,7 +977,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                si16a = (Int16)((_buf[bufOffset + 6] * 256) +
+                si16a = (short)((_buf[bufOffset + 6] * 256) +
                                   _buf[bufOffset + 7]);
 
                 PrnParseCommon.addTextRow(
@@ -995,10 +995,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                _charWidth = (UInt16)((_buf[bufOffset + 8] * 256) +
+                _charWidth = (ushort)((_buf[bufOffset + 8] * 256) +
                                         _buf[bufOffset + 9]);
 
-                bytesPerRow = (UInt16)((_charWidth / 8));
+                bytesPerRow = (ushort)((_charWidth / 8));
 
                 if ((_charWidth % 8) != 0)
                     bytesPerRow++;
@@ -1019,7 +1019,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                _charHeight = (UInt16)((_buf[bufOffset + 10] * 256) +
+                _charHeight = (ushort)((_buf[bufOffset + 10] * 256) +
                                          _buf[bufOffset + 11]);
 
                 PrnParseCommon.addTextRow(
@@ -1041,7 +1041,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                si16a = (Int16)((_buf[bufOffset + 12] * 256) +
+                si16a = (short)((_buf[bufOffset + 12] * 256) +
                                   _buf[bufOffset + 13]);
 
                 PrnParseCommon.addTextRow(
@@ -1062,7 +1062,7 @@ namespace PCLParaphernalia
 
                 if (_charClass == ePCLCharClass.Bitmap)
                 {
-                    ui32a = (UInt32)(bytesPerRow * _charHeight);
+                    ui32a = (uint)(bytesPerRow * _charHeight);
 
                     PrnParseCommon.addTextRow(
                         PrnParseRowTypes.eType.PCLFontChar,
@@ -1122,7 +1122,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                Int32 charDescExtra = _charDescLen - 2;
+                int charDescExtra = _charDescLen - 2;
 
                 if (charDescExtra > 0)
                 {
@@ -1156,7 +1156,7 @@ namespace PCLParaphernalia
             }
             else if (_charFormat == ePCLCharFormat.TrueType)
             {
-                Int32 charDescExtra = _charDescLen - 2;
+                int charDescExtra = _charDescLen - 2;
 
                 if (charDescExtra > 0)
                 {
@@ -1186,12 +1186,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processIntellifontDataBody(ref Int32 bufRem,
-                                                 ref Int32 bufOffset)
+        private void processIntellifontDataBody(ref int bufRem,
+                                                 ref int bufOffset)
         {
             PrnParseConstants.eContType contType;
 
-            Int32 binDataLen;
+            int binDataLen;
 
             if (_charDataBlockRem > bufRem)
             {
@@ -1262,7 +1262,7 @@ namespace PCLParaphernalia
                         _analysisLevel);
                 }
 
-                for (Int32 i = 0; i < binDataLen; i++)
+                for (int i = 0; i < binDataLen; i++)
                 {
                     _charChksVal += _buf[bufOffset + i];
                 }
@@ -1281,22 +1281,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processIntellifontDataHddr(ref Int32 bufRem,
-                                                ref Int32 bufOffset)
+        private void processIntellifontDataHddr(ref int bufRem,
+                                                ref int bufOffset)
         {
             PrnParseConstants.eContType contType;
 
-            Int32 hddrLen;
+            int hddrLen;
 
-            UInt16 contourDataSize;
+            ushort contourDataSize;
 
-            Int16 metricDataOffset,
+            short metricDataOffset,
                   charDataOffset,
                   contourTreeOffset,
                   xyDataOffset,
                   compEscapement;
 
-            Byte compCount;
+            byte compCount;
 
             if (_charClass == ePCLCharClass.Intellifont)
                 hddrLen = 10;
@@ -1352,7 +1352,7 @@ namespace PCLParaphernalia
                         _analysisLevel);
                 }
 
-                for (Int32 i = 0; i < hddrLen; i++)
+                for (int i = 0; i < hddrLen; i++)
                 {
                     _charChksVal += _buf[bufOffset + i];
                 }
@@ -1365,9 +1365,9 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    contourDataSize = (UInt16)((_buf[bufOffset] * 256) +
+                    contourDataSize = (ushort)((_buf[bufOffset] * 256) +
                                                  _buf[bufOffset + 1]);
-                    _charDataLen = (UInt16)(contourDataSize - hddrLen);
+                    _charDataLen = (ushort)(contourDataSize - hddrLen);
 
                     PrnParseCommon.addTextRow(
                         PrnParseRowTypes.eType.PCLFontChar,
@@ -1386,7 +1386,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    metricDataOffset = (Int16)((_buf[bufOffset + 2] * 256) +
+                    metricDataOffset = (short)((_buf[bufOffset + 2] * 256) +
                                                  _buf[bufOffset + 3]);
 
                     PrnParseCommon.addTextRow(
@@ -1404,7 +1404,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    charDataOffset = (Int16)((_buf[bufOffset + 4] * 256) +
+                    charDataOffset = (short)((_buf[bufOffset + 4] * 256) +
                                                _buf[bufOffset + 5]);
 
                     PrnParseCommon.addTextRow(
@@ -1422,7 +1422,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    contourTreeOffset = (Int16)((_buf[bufOffset + 6] * 256) +
+                    contourTreeOffset = (short)((_buf[bufOffset + 6] * 256) +
                                                   _buf[bufOffset + 7]);
 
                     PrnParseCommon.addTextRow(
@@ -1440,7 +1440,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    xyDataOffset = (Int16)((_buf[bufOffset + 8] * 256) +
+                    xyDataOffset = (short)((_buf[bufOffset + 8] * 256) +
                                              _buf[bufOffset + 9]);
 
                     PrnParseCommon.addTextRow(
@@ -1460,7 +1460,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    compEscapement = (Int16)((_buf[bufOffset] * 256) +
+                    compEscapement = (short)((_buf[bufOffset] * 256) +
                                                _buf[bufOffset + 1]);
 
                     PrnParseCommon.addTextRow(
@@ -1538,14 +1538,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processRasterDataBody(ref Int32 bufRem,
-                                            ref Int32 bufOffset)
+        private void processRasterDataBody(ref int bufRem,
+                                            ref int bufOffset)
         {
             PrnParseConstants.eContType contType;
 
-            Int32 binDataLen;
+            int binDataLen;
 
-            Boolean shapeTooLarge = false;
+            bool shapeTooLarge = false;
 
             if (_drawCharShape)
             {
@@ -1668,12 +1668,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processRasterDataRem(ref Int32 bufRem,
-                                          ref Int32 bufOffset)
+        private void processRasterDataRem(ref int bufRem,
+                                          ref int bufOffset)
         {
             PrnParseConstants.eContType contType;
 
-            Int32 binDataLen;
+            int binDataLen;
 
             if (_charRem > bufRem)
             {
@@ -1759,12 +1759,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processTrueTypeDataBody(ref Int32 bufRem,
-                                              ref Int32 bufOffset)
+        private void processTrueTypeDataBody(ref int bufRem,
+                                              ref int bufOffset)
         {
             PrnParseConstants.eContType contType;
 
-            Int32 binDataLen;
+            int binDataLen;
 
             if (_charDataBlockRem > bufRem)
             {
@@ -1834,7 +1834,7 @@ namespace PCLParaphernalia
                         _analysisLevel);
                 }
 
-                for (Int32 i = 0; i < binDataLen; i++)
+                for (int i = 0; i < binDataLen; i++)
                 {
                     _charChksVal += _buf[bufOffset + i];
                 }
@@ -1853,16 +1853,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processTrueTypeDataHddr(ref Int32 bufRem,
-                                             ref Int32 bufOffset)
+        private void processTrueTypeDataHddr(ref int bufRem,
+                                             ref int bufOffset)
         {
             PrnParseConstants.eContType contType;
 
-            Int32 hddrLen;
+            int hddrLen;
 
-            UInt16 charDataSize;
+            ushort charDataSize;
 
-            Int16 glyphID;
+            short glyphID;
 
             hddrLen = 4;
 
@@ -1915,7 +1915,7 @@ namespace PCLParaphernalia
                         _analysisLevel);
                 }
 
-                for (Int32 i = 0; i < hddrLen; i++)
+                for (int i = 0; i < hddrLen; i++)
                 {
                     _charChksVal += _buf[bufOffset + i];
                 }
@@ -1926,9 +1926,9 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                charDataSize = (UInt16)((_buf[bufOffset] * 256) +
+                charDataSize = (ushort)((_buf[bufOffset] * 256) +
                                           _buf[bufOffset + 1]);
-                _charDataLen = (UInt16)(charDataSize - hddrLen);
+                _charDataLen = (ushort)(charDataSize - hddrLen);
 
                 PrnParseCommon.addTextRow(
                     PrnParseRowTypes.eType.PCLFontChar,
@@ -1947,7 +1947,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                glyphID = (Int16)((_buf[bufOffset + 2] * 256) +
+                glyphID = (short)((_buf[bufOffset + 2] * 256) +
                                     _buf[bufOffset + 3]);
 
                 PrnParseCommon.addTextRow(
@@ -2008,9 +2008,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rasterDraw(Int32 bufOffset,
-                                 Int32 dataLen,
-                                 Boolean shapeTooLarge)
+        private void rasterDraw(int bufOffset,
+                                 int dataLen,
+                                 bool shapeTooLarge)
         {
             if (shapeTooLarge)
             {
@@ -2079,14 +2079,14 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                Boolean firstLine;
+                bool firstLine;
 
-                Int32 bytesPerRow,
+                int bytesPerRow,
                       sliceLen,
                       crntOffset,
                       sub;
 
-                String rowImage;
+                string rowImage;
 
                 bytesPerRow = (_charWidth / 8);
 
@@ -2096,7 +2096,7 @@ namespace PCLParaphernalia
                 firstLine = true;
                 crntOffset = bufOffset;
 
-                for (Int32 i = 0; i < dataLen; i += bytesPerRow)
+                for (int i = 0; i < dataLen; i += bytesPerRow)
                 {
                     if ((i + bytesPerRow) > dataLen)
                     {
@@ -2121,13 +2121,13 @@ namespace PCLParaphernalia
 
                     rowImage = "";
 
-                    for (Int32 j = crntOffset;
+                    for (int j = crntOffset;
                          j < (crntOffset + sliceLen);
                          j++)
                     {
                         sub = (_buf[j]);
 
-                        for (Int32 k = 0; k < 8; k++)
+                        for (int k = 0; k < 8; k++)
                         {
                             if ((sub & 0x80) != 0)
                                 rowImage += "@";
@@ -2179,16 +2179,16 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                Boolean firstLine,
+                bool firstLine,
                         blackDot;
 
-                Int32 pos,
+                int pos,
                       crntOffset,
                       colCt,
                       dotCt,
                       rptCt;
 
-                String rowImage;
+                string rowImage;
 
                 firstLine = true;
                 crntOffset = bufOffset;
@@ -2209,7 +2209,7 @@ namespace PCLParaphernalia
                         dotCt = _buf[crntOffset + pos];
                         colCt += dotCt;
 
-                        for (Int32 i = 0; i < dotCt; i++)
+                        for (int i = 0; i < dotCt; i++)
                         {
                             if (blackDot)
                                 rowImage += "@";
@@ -2221,7 +2221,7 @@ namespace PCLParaphernalia
                         pos++;
                     }
 
-                    for (Int32 j = 0; j <= rptCt; j++)
+                    for (int j = 0; j <= rptCt; j++)
                     {
                         if (firstLine)
                         {

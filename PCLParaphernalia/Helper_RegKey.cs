@@ -25,8 +25,8 @@ namespace PCLParaphernalia
 
         private static void copyKey(
             RegistryKey parentKey,
-            String sourceKeyName,
-            String targetKeyName)
+            string sourceKeyName,
+            string targetKeyName)
         {
             RegistryKey targetKey = parentKey.CreateSubKey(targetKeyName);
 
@@ -52,7 +52,7 @@ namespace PCLParaphernalia
                 RegistryKey sourceKey,
                 RegistryKey targetKey)
         {
-            foreach (String valueName in sourceKey.GetValueNames())
+            foreach (string valueName in sourceKey.GetValueNames())
             {
                 object objValue = sourceKey.GetValue(valueName);
 
@@ -61,7 +61,7 @@ namespace PCLParaphernalia
                 targetKey.SetValue(valueName, objValue, valKind);
             }
 
-            foreach (String sourceSubKeyName in sourceKey.GetSubKeyNames())
+            foreach (string sourceSubKeyName in sourceKey.GetSubKeyNames())
             {
                 RegistryKey sourceSubKey =
                     sourceKey.OpenSubKey(sourceSubKeyName);
@@ -81,9 +81,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean keyExists(
+        public static bool keyExists(
             RegistryKey parentKeyName,
-            String subKeyName)
+            string subKeyName)
         {
             using (RegistryKey subKey = parentKeyName.OpenSubKey(subKeyName))
             {
@@ -110,8 +110,8 @@ namespace PCLParaphernalia
 
         public static void renameKey(
             RegistryKey parentKey,
-            String oldSubKeyName,
-            String newSubKeyName)
+            string oldSubKeyName,
+            string newSubKeyName)
         {
             RegistryKey subKey = parentKey.OpenSubKey(oldSubKeyName);
 

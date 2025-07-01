@@ -56,7 +56,7 @@ namespace PCLParaphernalia
 
         public static void Focus(UIElement element)
         {
-            ThreadPool.QueueUserWorkItem(delegate (Object objName)
+            ThreadPool.QueueUserWorkItem(delegate (object objName)
             {
                 UIElement elem = (UIElement)objName;
 

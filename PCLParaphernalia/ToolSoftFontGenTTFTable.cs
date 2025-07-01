@@ -24,11 +24,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private UInt32 _tag;
-        private UInt32 _checksum;
-        private UInt32 _offset;
-        private UInt32 _length;
-        private Int32 _padBytes;
+        private uint _tag;
+        private uint _checksum;
+        private uint _offset;
+        private uint _length;
+        private int _padBytes;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -36,7 +36,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ToolSoftFontGenTTFTable(UInt32 tag)
+        public ToolSoftFontGenTTFTable(uint tag)
         {
             _tag = tag;
             _checksum = 0;
@@ -54,7 +54,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt32 TableChecksum
+        public uint TableChecksum
         {
             get { return _checksum; }
         }
@@ -68,7 +68,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt32 TableLength
+        public uint TableLength
         {
             get { return _length; }
         }
@@ -82,7 +82,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt32 TableOffset
+        public uint TableOffset
         {
             get { return _offset; }
         }
@@ -97,7 +97,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 TablePadBytes
+        public int TablePadBytes
         {
             get { return _padBytes; }
         }
@@ -111,9 +111,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt32 TablePadLen
+        public uint TablePadLen
         {
-            get { return (UInt32)(_length + _padBytes); }
+            get { return (uint)(_length + _padBytes); }
         }
 
         //--------------------------------------------------------------------//
@@ -125,7 +125,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt32 TableTag
+        public uint TableTag
         {
             get { return _tag; }
         }
@@ -139,8 +139,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getByteRange(ref UInt32 offset,
-                                 ref UInt32 length)
+        public void getByteRange(ref uint offset,
+                                 ref uint length)
         {
             offset = _offset;
             length = _length;
@@ -172,10 +172,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setMetrics(UInt32 checksum,
-                               UInt32 offset,
-                               UInt32 length,
-                               Int32 padBytes)
+        public void setMetrics(uint checksum,
+                               uint offset,
+                               uint length,
+                               int padBytes)
         {
             _checksum = checksum;
             _offset = offset;
@@ -193,7 +193,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean zeroLength()
+        public bool zeroLength()
         {
             if (_length == 0)
                 return true;

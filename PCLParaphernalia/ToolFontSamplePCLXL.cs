@@ -19,24 +19,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const String _formName = "FontSampleForm";
-        const String _hexChars = "0123456789ABCDEF";
+        const string _formName = "FontSampleForm";
+        const string _hexChars = "0123456789ABCDEF";
 
-        const Int32 _symSet_19U = 629;
-        const Int16 _gridDim = 16;
-        const Int32 _gridDimHalf = _gridDim / 2;
-        const Int16 _gridCols = _gridDim;
-        const Int16 _gridRows = _gridDim;
-        const UInt16 _unitsPerInch = PCLXLWriter._sessionUPI;
+        const int _symSet_19U = 629;
+        const short _gridDim = 16;
+        const int _gridDimHalf = _gridDim / 2;
+        const short _gridCols = _gridDim;
+        const short _gridRows = _gridDim;
+        const ushort _unitsPerInch = PCLXLWriter._sessionUPI;
 
-        const Int16 _lineSpacing = _unitsPerInch / 4;
-        const Int16 _cellWidth = (_unitsPerInch * 1) / 3;
-        const Int16 _cellHeight = (_unitsPerInch * 25) / 60;
+        const short _lineSpacing = _unitsPerInch / 4;
+        const short _cellWidth = (_unitsPerInch * 1) / 3;
+        const short _cellHeight = (_unitsPerInch * 25) / 60;
 
-        const Int16 _marginX = (_unitsPerInch * 7) / 6;
-        const Int16 _posYDesc = (_unitsPerInch * 3) / 4;
-        const Int16 _posYGrid = _posYDesc + (_lineSpacing * 4);
-        const Int16 _posYSelData = _posYGrid +
+        const short _marginX = (_unitsPerInch * 7) / 6;
+        const short _posYDesc = (_unitsPerInch * 3) / 4;
+        const short _posYGrid = _posYDesc + (_lineSpacing * 4);
+        const short _posYSelData = _posYGrid +
                                           (_cellHeight * (_gridRows + 2)) +
                                           (_lineSpacing * 2);
 
@@ -55,32 +55,32 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void generateJob(BinaryWriter prnWriter,
-                                       Int32 indxPaperSize,
-                                       Int32 indxPaperType,
-                                       Int32 indxOrientation,
-                                       Boolean formAsMacro,
-                                       Boolean showC0Chars,
-                                       Boolean optGridVertical,
-                                       String fontId,
-                                       String fontDesc,
-                                       UInt16 symbolSet,
-                                       String fontName,
-                                       String symbolSetName,
-                                       UInt16[] sampleRangeOffsets,
-                                       Double pointSize,
-                                       Boolean downloadFont,
-                                       Boolean downloadFontRemove,
-                                       String fontFilename,
-                                       Boolean symSetUserSet,
-                                       Boolean showMapCodesUCS2,
-                                       Boolean showMapCodesUTF8,
-                                       String symSetUserFile)
+                                       int indxPaperSize,
+                                       int indxPaperType,
+                                       int indxOrientation,
+                                       bool formAsMacro,
+                                       bool showC0Chars,
+                                       bool optGridVertical,
+                                       string fontId,
+                                       string fontDesc,
+                                       ushort symbolSet,
+                                       string fontName,
+                                       string symbolSetName,
+                                       ushort[] sampleRangeOffsets,
+                                       double pointSize,
+                                       bool downloadFont,
+                                       bool downloadFontRemove,
+                                       string fontFilename,
+                                       bool symSetUserSet,
+                                       bool showMapCodesUCS2,
+                                       bool showMapCodesUTF8,
+                                       string symSetUserFile)
         {
-            Int32 pageCt = sampleRangeOffsets.Length;
+            int pageCt = sampleRangeOffsets.Length;
 
-            UInt16 symSetUserMapMax = 0;
+            ushort symSetUserMapMax = 0;
 
-            UInt16[] symSetUserMap = null;
+            ushort[] symSetUserMap = null;
 
             //----------------------------------------------------------------//
 
@@ -101,16 +101,16 @@ namespace PCLParaphernalia
                 symSetUserMapMax = PCLSymbolSets.getMapArrayMax(
                           PCLSymbolSets.IndexUserSet);
 
-                symSetUserMap = new UInt16[symSetUserMapMax + 1];
+                symSetUserMap = new ushort[symSetUserMapMax + 1];
 
                 symSetUserMap = PCLSymbolSets.getMapArrayUserSet();
             }
 
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i < pageCt; i++)
+            for (int i = 0; i < pageCt; i++)
             {
-                UInt16 rangeOffset = sampleRangeOffsets[i];
+                ushort rangeOffset = sampleRangeOffsets[i];
 
                 generatePage(prnWriter,
                          indxPaperSize,
@@ -164,10 +164,10 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateJobTrailer(BinaryWriter prnWriter,
-                                               Boolean formAsMacro,
-                                               Boolean downloadFont,
-                                               Boolean downloadFontRemove,
-                                               String fontName)
+                                               bool formAsMacro,
+                                               bool downloadFont,
+                                               bool downloadFontRemove,
+                                               string fontName)
         {
             if ((downloadFont) && (downloadFontRemove))
             {
@@ -189,25 +189,25 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateOverlay(BinaryWriter prnWriter,
-                                            Boolean formAsMacro,
-                                            Boolean optGridVertical)
+                                            bool formAsMacro,
+                                            bool optGridVertical)
         {
-            const Int16 twoCellWidth = _cellWidth * 2;
-            const Int16 twoCellHeight = _cellHeight * 2;
+            const short twoCellWidth = _cellWidth * 2;
+            const short twoCellHeight = _cellHeight * 2;
 
-            const Int16 gridWidthInner = _cellWidth * _gridCols;
-            const Int16 gridHeightInner = _cellHeight * _gridRows;
-            const Int16 gridWidthOuter = _cellWidth * (_gridCols + 2);
-            const Int16 gridHeightOuter = _cellHeight * (_gridRows + 2);
+            const short gridWidthInner = _cellWidth * _gridCols;
+            const short gridHeightInner = _cellHeight * _gridRows;
+            const short gridWidthOuter = _cellWidth * (_gridCols + 2);
+            const short gridHeightOuter = _cellHeight * (_gridRows + 2);
 
-            const Int32 lenBuf = 1024;
-            const Int16 patternID = 1;
-            const UInt16 patWidth = 24;
-            const UInt16 patHeight = 24;
+            const int lenBuf = 1024;
+            const short patternID = 1;
+            const ushort patWidth = 24;
+            const ushort patHeight = 24;
 
-            Byte[] buffer = new Byte[lenBuf];
+            byte[] buffer = new byte[lenBuf];
 
-            Byte[] pattern_1 = { 0x00, 0x0c, 0x00, 0x00, 0x00, 0x00,
+            byte[] pattern_1 = { 0x00, 0x0c, 0x00, 0x00, 0x00, 0x00,
                                  0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                                  0x00, 0xc0, 0xc0, 0x00, 0x00, 0x00,
                                  0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -220,11 +220,11 @@ namespace PCLParaphernalia
                                  0x00, 0xc0, 0xc0, 0x00, 0x00, 0x00,
                                  0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 
-            Int32 indBuf;
+            int indBuf;
 
-            Int16 crntPtSize;
+            short crntPtSize;
 
-            Int16 posX1,
+            short posX1,
                   posX2,
                   posY1,
                   posY2;
@@ -251,7 +251,7 @@ namespace PCLParaphernalia
             PCLXLWriter.addAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.eTag.ColorSpace,
-                                     (Byte)PCLXLAttrEnums.eVal.eGray);
+                                     (byte)PCLXLAttrEnums.eVal.eGray);
 
             PCLXLWriter.addOperator(ref buffer,
                                     ref indBuf,
@@ -471,7 +471,7 @@ namespace PCLParaphernalia
             PCLXLWriter.addAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.eTag.ArcDirection,
-                                     (Byte)PCLXLAttrEnums.eVal.eCounterClockWise);
+                                     (byte)PCLXLAttrEnums.eVal.eCounterClockWise);
 
             PCLXLWriter.addOperator(ref buffer,
                                     ref indBuf,
@@ -514,25 +514,25 @@ namespace PCLParaphernalia
                                          PCLXLAttributes.eTag.BoundingBox,
                                          posX1,
                                          posY1,
-                                         (Int16)(posX1 + twoCellWidth),
-                                         (Int16)(posY1 + twoCellHeight));
+                                         (short)(posX1 + twoCellWidth),
+                                         (short)(posY1 + twoCellHeight));
 
             PCLXLWriter.addAttrSint16XY(ref buffer,
                                         ref indBuf,
                                         PCLXLAttributes.eTag.StartPoint,
-                                        (Int16)(posX1 + _cellWidth),
-                                        (Int16)(posY1 + twoCellHeight));
+                                        (short)(posX1 + _cellWidth),
+                                        (short)(posY1 + twoCellHeight));
 
             PCLXLWriter.addAttrSint16XY(ref buffer,
                                         ref indBuf,
                                         PCLXLAttributes.eTag.EndPoint,
-                                        (Int16)(posX1 + twoCellWidth),
-                                        (Int16)(posY1 + _cellHeight));
+                                        (short)(posX1 + twoCellWidth),
+                                        (short)(posY1 + _cellHeight));
 
             PCLXLWriter.addAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.eTag.ArcDirection,
-                                     (Byte)PCLXLAttrEnums.eVal.eCounterClockWise);
+                                     (byte)PCLXLAttrEnums.eVal.eCounterClockWise);
 
             PCLXLWriter.addOperator(ref buffer,
                                     ref indBuf,
@@ -607,7 +607,7 @@ namespace PCLParaphernalia
             posX2 = gridWidthOuter;         // relative draw X
             posY2 = 0;                      // relative draw Y
 
-            for (Int32 i = 1; i < _gridRows; i++)
+            for (int i = 1; i < _gridRows; i++)
             {
                 PCLXLWriter.addAttrSint16XY(ref buffer,
                                             ref indBuf,
@@ -665,7 +665,7 @@ namespace PCLParaphernalia
             posX2 = 0;                      // relative draw X
             posY2 = gridHeightOuter;        // relative draw Y
 
-            for (Int32 i = 1; i < _gridCols; i++)
+            for (int i = 1; i < _gridCols; i++)
             {
                 PCLXLWriter.addAttrSint16XY(ref buffer,
                                             ref indBuf,
@@ -710,12 +710,12 @@ namespace PCLParaphernalia
             PCLXLWriter.addAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.eTag.ColorSpace,
-                                     (Byte)PCLXLAttrEnums.eVal.eGray);
+                                     (byte)PCLXLAttrEnums.eVal.eGray);
 
             PCLXLWriter.addAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.eTag.PaletteDepth,
-                                     (Byte)PCLXLAttrEnums.eVal.e8Bit);
+                                     (byte)PCLXLAttrEnums.eVal.e8Bit);
 
             PCLXLWriter.addAttrUbyteArray(ref buffer,
                                           ref indBuf,
@@ -739,7 +739,7 @@ namespace PCLParaphernalia
             PCLXLWriter.addAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.eTag.TxMode,
-                                     (Byte)PCLXLAttrEnums.eVal.eTransparent);
+                                     (byte)PCLXLAttrEnums.eVal.eTransparent);
 
             PCLXLWriter.addOperator(ref buffer,
                                     ref indBuf,
@@ -780,31 +780,31 @@ namespace PCLParaphernalia
 
             if (optGridVertical)
             {
-                posX2 = (Int16)(posX1 + twoCellWidth);
-                posY2 = (Int16)(posY1 + gridHeightInner);
+                posX2 = (short)(posX1 + twoCellWidth);
+                posY2 = (short)(posY1 + gridHeightInner);
 
                 PCLXLWriter.addAttrUint16Box(ref buffer,
                                              ref indBuf,
                                              PCLXLAttributes.eTag.BoundingBox,
-                                             (UInt16)posX1,
-                                             (UInt16)posY1,
-                                             (UInt16)posX2,
-                                             (UInt16)posY2);
+                                             (ushort)posX1,
+                                             (ushort)posY1,
+                                             (ushort)posX2,
+                                             (ushort)posY2);
 
                 PCLXLWriter.addOperator(ref buffer,
                                         ref indBuf,
                                         PCLXLOperators.eTag.Rectangle);
 
                 posX1 += (_cellWidth * _gridDimHalf);
-                posX2 = (Int16)(posX1 + twoCellWidth);
+                posX2 = (short)(posX1 + twoCellWidth);
 
                 PCLXLWriter.addAttrUint16Box(ref buffer,
                                              ref indBuf,
                                              PCLXLAttributes.eTag.BoundingBox,
-                                             (UInt16)posX1,
-                                             (UInt16)posY1,
-                                             (UInt16)posX2,
-                                             (UInt16)posY2);
+                                             (ushort)posX1,
+                                             (ushort)posY1,
+                                             (ushort)posX2,
+                                             (ushort)posY2);
 
                 PCLXLWriter.addOperator(ref buffer,
                                         ref indBuf,
@@ -812,31 +812,31 @@ namespace PCLParaphernalia
             }
             else
             {
-                posX2 = (Int16)(posX1 + gridWidthInner);
-                posY2 = (Int16)(posY1 + twoCellHeight);
+                posX2 = (short)(posX1 + gridWidthInner);
+                posY2 = (short)(posY1 + twoCellHeight);
 
                 PCLXLWriter.addAttrUint16Box(ref buffer,
                                              ref indBuf,
                                              PCLXLAttributes.eTag.BoundingBox,
-                                             (UInt16)posX1,
-                                             (UInt16)posY1,
-                                             (UInt16)posX2,
-                                             (UInt16)posY2);
+                                             (ushort)posX1,
+                                             (ushort)posY1,
+                                             (ushort)posX2,
+                                             (ushort)posY2);
 
                 PCLXLWriter.addOperator(ref buffer,
                                         ref indBuf,
                                         PCLXLOperators.eTag.Rectangle);
 
                 posY1 += (_cellHeight * _gridDimHalf);
-                posY2 = (Int16)(posY1 + twoCellHeight);
+                posY2 = (short)(posY1 + twoCellHeight);
 
                 PCLXLWriter.addAttrUint16Box(ref buffer,
                                              ref indBuf,
                                              PCLXLAttributes.eTag.BoundingBox,
-                                             (UInt16)posX1,
-                                             (UInt16)posY1,
-                                             (UInt16)posX2,
-                                             (UInt16)posY2);
+                                             (ushort)posX1,
+                                             (ushort)posY1,
+                                             (ushort)posX2,
+                                             (ushort)posY2);
 
                 PCLXLWriter.addOperator(ref buffer,
                                         ref indBuf,
@@ -946,7 +946,7 @@ namespace PCLParaphernalia
 
             if (optGridVertical)
             {
-                for (Int32 i = 0; i < _gridRows; i++)
+                for (int i = 0; i < _gridRows; i++)
                 {
                     PCLXLWriter.text(prnWriter, formAsMacro, false,
                                      PCLXLWriter.advances_Courier, crntPtSize,
@@ -958,7 +958,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                for (Int32 i = 0; i < _gridRows; i++)
+                for (int i = 0; i < _gridRows; i++)
                 {
                     PCLXLWriter.text(prnWriter, formAsMacro, false,
                                      PCLXLWriter.advances_Courier, crntPtSize,
@@ -974,7 +974,7 @@ namespace PCLParaphernalia
 
             if (optGridVertical)
             {
-                for (Int32 i = 0; i < _gridRows; i++)
+                for (int i = 0; i < _gridRows; i++)
                 {
                     PCLXLWriter.text(prnWriter, formAsMacro, false,
                                      PCLXLWriter.advances_Courier, crntPtSize,
@@ -986,11 +986,11 @@ namespace PCLParaphernalia
             }
             else
             {
-                for (Int32 i = 0; i < _gridRows; i++)
+                for (int i = 0; i < _gridRows; i++)
                 {
-                    String tmpStr = (i * _gridDim).ToString();
+                    string tmpStr = (i * _gridDim).ToString();
 
-                    Int32 len = tmpStr.Length;
+                    int len = tmpStr.Length;
 
                     if (len == 2)
                         tmpStr = " " + tmpStr;
@@ -1116,46 +1116,46 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generatePage(BinaryWriter prnWriter,
-                                         Int32 indxPaperSize,
-                                         Int32 indxPaperType,
-                                         Int32 indxOrientation,
-                                         Boolean formAsMacro,
-                                         Boolean showC0Chars,
-                                         Boolean optGridVertical,
-                                         String fontId,
-                                         String fontDesc,
-                                         UInt16 symSetKind1,
-                                         String fontName,
-                                         String symbolSetName,
-                                         Int32 sampleRangeOffset,
-                                         Double pointSize,
-                                         Boolean downloadFont,
-                                         String fontFilename,
-                                         Boolean symSetUserSet,
-                                         Boolean showMapCodesUCS2,
-                                         Boolean showMapCodesUTF8,
-                                         String symSetUserFile,
-                                         UInt16 symSetUserMapMax,
-                                         UInt16[] symSetUserMap)
+                                         int indxPaperSize,
+                                         int indxPaperType,
+                                         int indxOrientation,
+                                         bool formAsMacro,
+                                         bool showC0Chars,
+                                         bool optGridVertical,
+                                         string fontId,
+                                         string fontDesc,
+                                         ushort symSetKind1,
+                                         string fontName,
+                                         string symbolSetName,
+                                         int sampleRangeOffset,
+                                         double pointSize,
+                                         bool downloadFont,
+                                         string fontFilename,
+                                         bool symSetUserSet,
+                                         bool showMapCodesUCS2,
+                                         bool showMapCodesUTF8,
+                                         string symSetUserFile,
+                                         ushort symSetUserMapMax,
+                                         ushort[] symSetUserMap)
         {
-            const Int32 indxMajorC0Start = 0;
-            const Int32 indxMajorC0End = 2;
-            const Int32 lenBuf = 1024;
+            const int indxMajorC0Start = 0;
+            const int indxMajorC0End = 2;
+            const int lenBuf = 1024;
 
-            Byte[] buffer = new Byte[lenBuf];
+            byte[] buffer = new byte[lenBuf];
 
-            Int32 indBuf;
+            int indBuf;
 
-            Int16 posX,
+            short posX,
                   posY,
                   posXStart,
                   posYStart;
 
-            Single crntPtSize;
-            Single charSize;
-            String displayCharSize;
+            float crntPtSize;
+            float charSize;
+            string displayCharSize;
 
-            String symSetId;
+            string symSetId;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1165,8 +1165,8 @@ namespace PCLParaphernalia
 
             indBuf = 0;
 
-            symSetId = PCLSymbolSets.translateKind1ToId((UInt16)symSetKind1);
-            charSize = PCLXLWriter.getCharSize((Single)pointSize);
+            symSetId = PCLSymbolSets.translateKind1ToId((ushort)symSetKind1);
+            charSize = PCLXLWriter.getCharSize((float)pointSize);
             displayCharSize = charSize.ToString("F2");
 
             if (indxOrientation < PCLOrientations.getCount())
@@ -1198,7 +1198,7 @@ namespace PCLParaphernalia
             PCLXLWriter.addAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.eTag.SimplexPageMode,
-                                     (Byte)PCLXLAttrEnums.eVal.eSimplexFrontSide);
+                                     (byte)PCLXLAttrEnums.eVal.eSimplexFrontSide);
 
             PCLXLWriter.addOperator(ref buffer,
                                     ref indBuf,
@@ -1269,12 +1269,12 @@ namespace PCLParaphernalia
 
             if (downloadFont)
             {
-                const Int32 maxLen = 51;
-                const Int32 halfLen = (maxLen - 5) / 2;
+                const int maxLen = 51;
+                const int halfLen = (maxLen - 5) / 2;
 
-                String tempId;
+                string tempId;
 
-                Int32 len = fontFilename.Length;
+                int len = fontFilename.Length;
 
                 if (len < maxLen)
                     tempId = fontFilename;
@@ -1310,7 +1310,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                String offsetText;
+                string offsetText;
 
                 offsetText = ": Range offset 0x" +
                              sampleRangeOffset.ToString("X4");
@@ -1337,10 +1337,10 @@ namespace PCLParaphernalia
 
             if (symSetUserSet)
             {
-                const Int32 maxLen = 61;
-                const Int32 halfLen = (maxLen - 5) / 2;
+                const int maxLen = 61;
+                const int halfLen = (maxLen - 5) / 2;
 
-                Int32 len = symSetUserFile.Length;
+                int len = symSetUserFile.Length;
 
                 posY += _lineSpacing / 2;
 
@@ -1392,7 +1392,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            crntPtSize = (Single)pointSize;
+            crntPtSize = (float)pointSize;
 
             PCLXLWriter.addAttrUbyte(ref buffer,
                                      ref indBuf,
@@ -1411,10 +1411,10 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            Int32 startIndxMajor;
-            Int32 startRow;
-            Int32 startCol;
-            Int16 rowSize;
+            int startIndxMajor;
+            int startRow;
+            int startCol;
+            short rowSize;
 
             if ((showC0Chars) || (sampleRangeOffset != 0))
                 startIndxMajor = indxMajorC0Start;
@@ -1428,11 +1428,11 @@ namespace PCLParaphernalia
                 startRow = 0;
                 startCol = startIndxMajor;
 
-                rowSize = (Int16)(_gridDim - startIndxMajor);
+                rowSize = (short)(_gridDim - startIndxMajor);
 
-                posX = (Int16)(_marginX + (_cellWidth * (startIndxMajor + 1)) +
+                posX = (short)(_marginX + (_cellWidth * (startIndxMajor + 1)) +
                                           (_cellWidth / 3));
-                posY = (Int16)(_posYGrid + _cellHeight +
+                posY = (short)(_posYGrid + _cellHeight +
                                           (_cellHeight * 2 / 3));
             }
             else
@@ -1443,25 +1443,25 @@ namespace PCLParaphernalia
                 rowSize = _gridDim;
 
                 posX = _marginX + _cellWidth + (_cellWidth / 3);
-                posY = (Int16)(_posYGrid + (_cellHeight * (startIndxMajor + 1)) +
+                posY = (short)(_posYGrid + (_cellHeight * (startIndxMajor + 1)) +
                                            (_cellHeight * 2 / 3));
             }
 
             posXStart = posX;
             posYStart = posY;
 
-            Int16[] tmpAdvance = new Int16[rowSize];
+            short[] tmpAdvance = new short[rowSize];
 
-            for (Int32 i = 0; i < rowSize; i++)
+            for (int i = 0; i < rowSize; i++)
             {
                 tmpAdvance[i] = _cellWidth;
             }
 
-            for (Int32 row = startRow;
+            for (int row = startRow;
                        row < _gridDim;
                        row++)
             {
-                Int32 indxMajor;
+                int indxMajor;
 
                 PCLXLWriter.addAttrSint16XY(ref buffer,
                                             ref indBuf,
@@ -1482,26 +1482,26 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    Byte[] codes8Bit = new Byte[rowSize];
+                    byte[] codes8Bit = new byte[rowSize];
 
                     if (optGridVertical)
                     {
-                        for (Int32 col = 0;
+                        for (int col = 0;
                                    col < rowSize;
                                    col++)
                         {
                             codes8Bit[col] =
-                                (Byte)(((startIndxMajor + col) * _gridDim) +
+                                (byte)(((startIndxMajor + col) * _gridDim) +
                                        row);
                         }
                     }
                     else
                     {
-                        for (Int32 col = 0;
+                        for (int col = 0;
                                    col < rowSize;
                                    col++)
                         {
-                            codes8Bit[col] = (Byte)((indxMajor * _gridDim) +
+                            codes8Bit[col] = (byte)((indxMajor * _gridDim) +
                                                     col);
                         }
                     }
@@ -1527,28 +1527,28 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    UInt16[] codes16Bit = new UInt16[rowSize];
+                    ushort[] codes16Bit = new ushort[rowSize];
 
                     if (optGridVertical)
                     {
-                        for (Int32 col = 0;
+                        for (int col = 0;
                                    col < rowSize;
                                    col++)
                         {
                             codes16Bit[col] =
-                                (UInt16)(sampleRangeOffset +
+                                (ushort)(sampleRangeOffset +
                                           ((startIndxMajor + col) * _gridDim) +
                                            row);
                         }
                     }
                     else
                     {
-                        for (Int32 col = 0;
+                        for (int col = 0;
                                    col < rowSize;
                                    col++)
                         {
                             codes16Bit[col] =
-                                (UInt16)(sampleRangeOffset +
+                                (ushort)(sampleRangeOffset +
                                           (indxMajor * _gridDim) + col);
                         }
                     }
@@ -1563,9 +1563,9 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        Int32 indx;
+                        int indx;
 
-                        for (Int32 i = 0; i < rowSize; i++)
+                        for (int i = 0; i < rowSize; i++)
                         {
                             indx = codes16Bit[i];
 
@@ -1613,8 +1613,8 @@ namespace PCLParaphernalia
 
             if (showMapCodesUCS2)
             {
-                Int16 posXStartCopy = posXStart;
-                Int16 posYStartCopy = posYStart;
+                short posXStartCopy = posXStart;
+                short posYStartCopy = posYStart;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1635,23 +1635,23 @@ namespace PCLParaphernalia
                 PCLXLWriter.font(prnWriter, false, crntPtSize,
                                  _symSet_19U, "Arial           ");
 
-                for (Int32 indxMajor = startIndxMajor;
+                for (int indxMajor = startIndxMajor;
                            indxMajor < _gridDim;
                            indxMajor++)
                 {
-                    UInt16 codeVal,
+                    ushort codeVal,
                            mapVal;
 
-                    for (Int32 indxMinor = 0; indxMinor < _gridDim; indxMinor++)
+                    for (int indxMinor = 0; indxMinor < _gridDim; indxMinor++)
                     {
-                        codeVal = (UInt16)(((indxMajor * _gridDim) +
+                        codeVal = (ushort)(((indxMajor * _gridDim) +
                                              indxMinor) + sampleRangeOffset);
 
                         if (symSetUserSet)
                         {
                             if (codeVal <= symSetUserMapMax)
                             {
-                                mapVal = symSetUserMap[(Int32)codeVal];
+                                mapVal = symSetUserMap[(int)codeVal];
                             }
                             else
                             {
@@ -1711,23 +1711,23 @@ namespace PCLParaphernalia
                 PCLXLWriter.font(prnWriter, false, crntPtSize,
                                  _symSet_19U, "Arial           ");
 
-                for (Int32 indxMajor = startIndxMajor;
+                for (int indxMajor = startIndxMajor;
                            indxMajor < _gridDim;
                            indxMajor++)
                 {
-                    UInt16 codeVal,
+                    ushort codeVal,
                            mapVal;
 
-                    for (Int32 indxMinor = 0; indxMinor < _gridDim; indxMinor++)
+                    for (int indxMinor = 0; indxMinor < _gridDim; indxMinor++)
                     {
-                        codeVal = (UInt16)(((indxMajor * _gridDim) +
+                        codeVal = (ushort)(((indxMajor * _gridDim) +
                                              indxMinor) + sampleRangeOffset);
 
                         if (symSetUserSet)
                         {
                             if (codeVal <= symSetUserMapMax)
                             {
-                                mapVal = symSetUserMap[(Int32)codeVal];
+                                mapVal = symSetUserMap[(int)codeVal];
                             }
                             else
                             {
@@ -1741,7 +1741,7 @@ namespace PCLParaphernalia
 
                         if (mapVal != 0xffff)
                         {
-                            String utf8Hex = null;
+                            string utf8Hex = null;
 
                             PrnParseDataUTF8.convertUTF32ToUTF8HexString(
                                 mapVal,

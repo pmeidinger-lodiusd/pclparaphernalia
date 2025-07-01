@@ -18,25 +18,25 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Int32 _maxSizeNameTag = 22;
-        const Int32 _colSpanNone = -1;
+        const int _maxSizeNameTag = 22;
+        const int _colSpanNone = -1;
 
-        const Boolean _flagNone = false;
-        const Boolean _flagBlankBefore = true;
+        const bool _flagNone = false;
+        const bool _flagBlankBefore = true;
 
-        private const Int32 cCodePointUnused = 65535;
-        private const Int32 cCodePointC1Min = 0x80;
-        private const Int32 cCodePointC1Max = 0x9f;
+        private const int cCodePointUnused = 65535;
+        private const int cCodePointC1Min = 0x80;
+        private const int cCodePointC1Max = 0x9f;
 
-        const Int32 lm0 = 21;
-        const Int32 lm1 = 57;
+        const int lm0 = 21;
+        const int lm1 = 57;
 
-        const Int32 lcDec = 5;
-        const Int32 lcHex = 4;
-        const Int32 lrDec = 5;
-        const Int32 lrHex = 4;
+        const int lcDec = 5;
+        const int lcHex = 4;
+        const int lrDec = 5;
+        const int lrHex = 4;
 
-        const Int32 lSep = 1;
+        const int lSep = 1;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -54,25 +54,25 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void generate(ReportCore.eRptFileFmt rptFileFmt,
-                                     String symSetFilename,
-                                     UInt16 symSetNo,
-                                     UInt16[] symSetMap,
-                                     UInt16 codeMin,
-                                     UInt16 codeMax,
-                                     UInt16 codeCt,
-                                     UInt64 charCollReq,
-                                     Boolean flagIgnoreC0,
-                                     Boolean flagIgnoreC1,
-                                     Boolean flagMapHex,
+                                     string symSetFilename,
+                                     ushort symSetNo,
+                                     ushort[] symSetMap,
+                                     ushort codeMin,
+                                     ushort codeMax,
+                                     ushort codeCt,
+                                     ulong charCollReq,
+                                     bool flagIgnoreC0,
+                                     bool flagIgnoreC1,
+                                     bool flagMapHex,
                                      PCLSymSetTypes.eIndex symSetType)
         {
-            Object stream = null;
-            Object writer = null;
+            object stream = null;
+            object writer = null;
 
-            Boolean OK = false;
+            bool OK = false;
 
-            String fileExt;
-            String saveFilename = null;
+            string fileExt;
+            string saveFilename = null;
 
             if (rptFileFmt == ReportCore.eRptFileFmt.html)
                 fileExt = "html";
@@ -122,19 +122,19 @@ namespace PCLParaphernalia
 
         private static void reportBodyMain(
             ReportCore.eRptFileFmt rptFileFmt,
-            Object writer,
+            object writer,
         //  String symSetFilename,
-            UInt16 symSetNo,
-            UInt16 codeMin,
-            UInt16 codeMax,
-            UInt16 codeCt,
-            UInt64 charCollReq,
-            Boolean flagIgnoreC0,
-            Boolean flagIgnoreC1,
-            Boolean flagMapHex,
+            ushort symSetNo,
+            ushort codeMin,
+            ushort codeMax,
+            ushort codeCt,
+            ulong charCollReq,
+            bool flagIgnoreC0,
+            bool flagIgnoreC1,
+            bool flagMapHex,
             PCLSymSetTypes.eIndex symSetType)
         {
-            const Int32 maxLineLen = 80;        // ***************** constant elsewhere ???????????????
+            const int maxLineLen = 80;        // ***************** constant elsewhere ???????????????
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -225,37 +225,37 @@ namespace PCLParaphernalia
 
         private static void reportBodyMap(
             ReportCore.eRptFileFmt rptFileFmt,
-            Object writer,
-            UInt16[] symSetMap,
-            UInt16 codeMin,
-            UInt16 codeMax,
-            Boolean flagIgnoreC0,
-            Boolean flagIgnoreC1,
-            Boolean flagMapHex)
+            object writer,
+            ushort[] symSetMap,
+            ushort codeMin,
+            ushort codeMax,
+            bool flagIgnoreC0,
+            bool flagIgnoreC1,
+            bool flagMapHex)
         {
-            const Int32 maxLineLen = 80;        // ***************** constant elsewhere ???????????????
+            const int maxLineLen = 80;        // ***************** constant elsewhere ???????????????
 
-            const Int32 lcDec = 5;
-            const Int32 lcHex = 4;
-            const Int32 lrDec = 5;
-            const Int32 lrHex = 4;
+            const int lcDec = 5;
+            const int lcHex = 4;
+            const int lrDec = 5;
+            const int lrHex = 4;
 
-            const Int32 colCt = 17;
+            const int colCt = 17;
 
-            Int32 lcCol,
+            int lcCol,
                   lrHddr;
 
-            String fmtHddr,
+            string fmtHddr,
                    fmtVal;
 
-            Int32 mapIndx,
+            int mapIndx,
                   rowIndx;
 
-            String[] colHddrs = new String[colCt];
-            String[] colNames = new String[colCt];
-            Int32[] colSizes = new Int32[colCt];
+            string[] colHddrs = new string[colCt];
+            string[] colNames = new string[colCt];
+            int[] colSizes = new int[colCt];
 
-            Int32 ctItems;
+            int ctItems;
 
             ctItems = symSetMap.Length;
 
@@ -297,7 +297,7 @@ namespace PCLParaphernalia
                 colNames[0] = "row";
                 colHddrs[0] = "";
 
-                for (Int32 i = 1; i < colCt; i++)
+                for (int i = 1; i < colCt; i++)
                 {
                     colSizes[i] = lcHex;
                     colNames[i] = "col" + (i - 1).ToString("D2");
@@ -316,7 +316,7 @@ namespace PCLParaphernalia
                 colNames[0] = "row";
                 colHddrs[0] = "";
 
-                for (Int32 i = 1; i < colCt; i++)
+                for (int i = 1; i < colCt; i++)
                 {
                     colSizes[i] = lcDec;
                     colNames[i] = "col" + (i - 1).ToString("D2");
@@ -333,14 +333,14 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            Int32 colCtData = colCt - 1;
+            int colCtData = colCt - 1;
 
             mapIndx = 0;
             rowIndx = codeMin / colCtData;
 
-            for (Int32 i = rowIndx; mapIndx < codeMax; i++)
+            for (int i = rowIndx; mapIndx < codeMax; i++)
             {
-                String[] rowData = new String[colCt];
+                string[] rowData = new string[colCt];
 
                 rowIndx = (i * colCtData);
 
@@ -356,9 +356,9 @@ namespace PCLParaphernalia
                                     PadLeft(lrHddr, ' ');
                 }
 
-                for (Int32 j = 0; j < colCtData; j++)
+                for (int j = 0; j < colCtData; j++)
                 {
-                    String val;
+                    string val;
 
                     mapIndx = rowIndx + j;
 
@@ -405,12 +405,12 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void reportHddr(ReportCore.eRptFileFmt rptFileFmt,
-                                        Object writer,
-                                        String symSetFilename)
+                                        object writer,
+                                        string symSetFilename)
         {
-            Int32 maxLineLen = 80;
+            int maxLineLen = 80;
 
-            String title = "*** Symbol Set Generator ***";
+            string title = "*** Symbol Set Generator ***";
 
             //----------------------------------------------------------------//
             //                                                                //

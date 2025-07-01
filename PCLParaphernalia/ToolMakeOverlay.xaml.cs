@@ -28,9 +28,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private const UInt16 _defaultPCLMacroId = 1;
+        private const ushort _defaultPCLMacroId = 1;
 
-        private const String _defaultPCLXLSStreamName = "Stream 001";
+        private const string _defaultPCLXLSStreamName = "Stream 001";
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -40,32 +40,32 @@ namespace PCLParaphernalia
 
         private ToolCommonData.ePrintLang _crntPDL;
 
-        private String _prnFilename;
-        private String _ovlFilenamePCL;
-        private String _ovlFilenamePCLXL;
+        private string _prnFilename;
+        private string _ovlFilenamePCL;
+        private string _ovlFilenamePCLXL;
 
-        private String _streamNamePCLXL;
+        private string _streamNamePCLXL;
 
-        private Int32 _macroIdPCL;
+        private int _macroIdPCL;
 
         private PrnParseOptions _options;
 
         private PropertyInfo[] _stdClrsPropertyInfo;
 
-        private Int32 _ctClrMapStdClrs;
+        private int _ctClrMapStdClrs;
 
-        private Int32[] _indxClrMapBack;
-        private Int32[] _indxClrMapFore;
+        private int[] _indxClrMapBack;
+        private int[] _indxClrMapFore;
 
-        private Boolean _flagClrMapUseClr;
+        private bool _flagClrMapUseClr;
 
         private DataTable _tableProgress;
 
-        private Boolean _flagRestoreCursorPCL;
-        private Boolean _flagRestoreGSPCLXL;
+        private bool _flagRestoreCursorPCL;
+        private bool _flagRestoreGSPCLXL;
 
-        private Boolean _flagOvlEncPCL;
-        private Boolean _flagOvlEncPCLXL;
+        private bool _flagOvlEncPCL;
+        private bool _flagOvlEncPCLXL;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -140,9 +140,9 @@ namespace PCLParaphernalia
         private void btnPCLOvlFilenameBrowse_Click(object sender,
                                                     RoutedEventArgs e)
         {
-            Boolean selected;
+            bool selected;
 
-            String filename = _ovlFilenamePCL;
+            string filename = _ovlFilenamePCL;
 
             selected = selectOvlFilePCL(ref filename);
 
@@ -166,9 +166,9 @@ namespace PCLParaphernalia
         private void btnPCLXLOvlFilenameBrowse_Click(object sender,
                                                     RoutedEventArgs e)
         {
-            Boolean selected;
+            bool selected;
 
-            String filename = _ovlFilenamePCLXL;
+            string filename = _ovlFilenamePCLXL;
 
             selected = selectOvlFilePCLXL(ref filename);
 
@@ -191,9 +191,9 @@ namespace PCLParaphernalia
         private void btnPrnFilenameBrowse_Click(object sender,
                                                 RoutedEventArgs e)
         {
-            Boolean selected;
+            bool selected;
 
-            String filename = _prnFilename;
+            string filename = _prnFilename;
 
             selected = selectPrnFile(ref filename);
 
@@ -221,7 +221,7 @@ namespace PCLParaphernalia
 
         private void btnSaveReport_Click(object sender, RoutedEventArgs e)
         {
-            Boolean flagOffsetHex,
+            bool flagOffsetHex,
                     flagOptRptWrap = false;
 
             ReportCore.eRptFileFmt rptFileFmt = ReportCore.eRptFileFmt.NA;
@@ -267,9 +267,9 @@ namespace PCLParaphernalia
 
         private void btnScan_Click(object sender, RoutedEventArgs e)
         {
-            Boolean validPDL = false;
+            bool validPDL = false;
 
-            Int32 ptr;
+            int ptr;
 
             ToolCommonData.ePrintLang scanPDL;
 
@@ -446,17 +446,17 @@ namespace PCLParaphernalia
             DataRowView rowView = (DataRowView)e.Row.Item;
             DataRow row = rowView.Row;
 
-            Boolean nullRow =
+            bool nullRow =
                 row.IsNull(PrnParseConstants.cRptA_colName_RowType);
 
             if (!nullRow)
             {
                 if (_flagClrMapUseClr)
                 {
-                    Int32 indxClrBack,
+                    int indxClrBack,
                           indxClrFore;
 
-                    Int32 rowType;
+                    int rowType;
 
                     Color clrBack = new Color(),
                           clrFore = new Color();
@@ -464,7 +464,7 @@ namespace PCLParaphernalia
                     SolidColorBrush brushBack = new SolidColorBrush(),
                                     brushFore = new SolidColorBrush();
 
-                    rowType = (Int32)row[PrnParseConstants.cRptA_colName_RowType];
+                    rowType = (int)row[PrnParseConstants.cRptA_colName_RowType];
 
                     indxClrBack = _indxClrMapBack[rowType];
                     indxClrFore = _indxClrMapFore[rowType];
@@ -574,10 +574,10 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            Int32 ctRowTypes = PrnParseRowTypes.getCount();
+            int ctRowTypes = PrnParseRowTypes.getCount();
 
-            _indxClrMapBack = new Int32[ctRowTypes];
-            _indxClrMapFore = new Int32[ctRowTypes];
+            _indxClrMapBack = new int[ctRowTypes];
+            _indxClrMapFore = new int[ctRowTypes];
 
             _options.getOptClrMap(ref _flagClrMapUseClr,
                                    ref _indxClrMapBack,
@@ -605,17 +605,17 @@ namespace PCLParaphernalia
             _tableProgress = new DataTable("Progress");
 
             _tableProgress.Columns.Add(PrnParseConstants.cRptA_colName_RowType,
-                                        typeof(Int32));
+                                        typeof(int));
             _tableProgress.Columns.Add(PrnParseConstants.cRptA_colName_Action,
-                                        typeof(String));
+                                        typeof(string));
             _tableProgress.Columns.Add(PrnParseConstants.cRptA_colName_Offset,
-                                        typeof(String));
+                                        typeof(string));
             _tableProgress.Columns.Add(PrnParseConstants.cRptA_colName_Type,
-                                        typeof(String));
+                                        typeof(string));
             _tableProgress.Columns.Add(PrnParseConstants.cRptA_colName_Seq,
-                                        typeof(String));
+                                        typeof(string));
             _tableProgress.Columns.Add(PrnParseConstants.cRptA_colName_Desc,
-                                        typeof(String));
+                                        typeof(string));
 
             dgProgress.DataContext = _tableProgress;  // bind to grid
         }
@@ -761,7 +761,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectOvlFilePCL(ref String selectedName)
+        private bool selectOvlFilePCL(ref string selectedName)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(selectedName);
 
@@ -786,7 +786,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectOvlFilePCLXL(ref String selectedName)
+        private bool selectOvlFilePCLXL(ref string selectedName)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(selectedName);
 
@@ -811,7 +811,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectPrnFile(ref String selectedName)
+        private bool selectPrnFile(ref string selectedName)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(selectedName);
 
@@ -946,20 +946,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLMacroId(Boolean lostFocusEvent,
-                                            ref Int32 macroId)
+        private bool validatePCLMacroId(bool lostFocusEvent,
+                                            ref int macroId)
         {
-            const UInt16 minVal = 0;
-            const UInt16 maxVal = 32767;
-            const UInt16 defVal = _defaultPCLMacroId;
+            const ushort minVal = 0;
+            const ushort maxVal = 32767;
+            const ushort defVal = _defaultPCLMacroId;
 
-            UInt16 value;
+            ushort value;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText = txtPCLMacroId.Text;
+            string crntText = txtPCLMacroId.Text;
 
-            OK = UInt16.TryParse(crntText, out value);
+            OK = ushort.TryParse(crntText, out value);
 
             if (OK)
             {
@@ -977,7 +977,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString();
+                    string newText = defVal.ToString();
 
                     MessageBox.Show("Macro identifier '" + crntText +
                                     "' is invalid.\n\n" +

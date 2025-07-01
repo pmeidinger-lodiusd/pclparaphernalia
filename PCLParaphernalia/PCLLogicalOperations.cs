@@ -540,7 +540,7 @@ namespace PCLParaphernalia
                                      "1"          , "White")
         };
 
-        private static Int32 _ropCount = _rops.GetUpperBound(0) + 1;
+        private static int _ropCount = _rops.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -552,7 +552,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String actInfix(Int32 index)
+        public static string actInfix(int index)
         {
             return _rops[index].ActInfix;
         }
@@ -566,7 +566,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getCount()
+        public static int getCount()
         {
             return _ropCount;
         }
@@ -584,7 +584,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getDescLong(Int32 index)
+        public static string getDescLong(int index)
         {
             return _rops[index].getDescLong();
         }
@@ -601,7 +601,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getDescShort(Int32 index)
+        public static string getDescShort(int index)
         {
             return _rops[index].getDescShort();
         }
@@ -616,7 +616,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int16 getROPId(Int32 index)
+        public static short getROPId(int index)
         {
             return _rops[index].getROPId();
         }

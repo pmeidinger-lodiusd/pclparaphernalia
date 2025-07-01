@@ -18,15 +18,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private String _desc;
+        private string _desc;
         private PCLPatternDefs.eType _type;
 
-        private UInt16 _id;
-        private UInt16 _idSec;
-        private UInt16 _height;
-        private UInt16 _width;
+        private ushort _id;
+        private ushort _idSec;
+        private ushort _height;
+        private ushort _width;
 
-        private Byte[] _pattern;
+        private byte[] _pattern;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -34,13 +34,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLPatternDef(String desc,
+        public PCLPatternDef(string desc,
                               PCLPatternDefs.eType type,
-                              UInt16 id,
-                              UInt16 idSec,
-                              UInt16 height,
-                              UInt16 width,
-                              Byte[] pattern)
+                              ushort id,
+                              ushort idSec,
+                              ushort height,
+                              ushort width,
+                              byte[] pattern)
         {
             _desc = desc;
             _type = type;
@@ -60,7 +60,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Desc
+        public string Desc
         {
             get { return _desc; }
         }
@@ -74,7 +74,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16 Height
+        public ushort Height
         {
             get { return _height; }
         }
@@ -88,7 +88,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16 Id
+        public ushort Id
         {
             get { return _id; }
         }
@@ -102,7 +102,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16 IdSec
+        public ushort IdSec
         {
             get { return _idSec; }
         }
@@ -116,7 +116,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Byte[] Pattern
+        public byte[] Pattern
         {
             get { return _pattern; }
         }
@@ -130,7 +130,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16 Width
+        public ushort Width
         {
             get { return _width; }
         }

@@ -59,12 +59,12 @@ namespace PCLParaphernalia
 
         private static void binSrcFileCopy(BinaryWriter prnWriter)
         {
-            const Int32 bufSize = 2048;
-            Int32 readSize;
+            const int bufSize = 2048;
+            int readSize;
 
-            Boolean endLoop;
+            bool endLoop;
 
-            Byte[] buf = new Byte[bufSize];
+            byte[] buf = new byte[bufSize];
 
             endLoop = false;
 
@@ -88,10 +88,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean binSrcFileOpen(String fileName,
-                                               ref Int64 fileSize)
+        private static bool binSrcFileOpen(string fileName,
+                                               ref long fileSize)
         {
-            Boolean open = false;
+            bool open = false;
 
             if ((fileName == null) || (fileName == ""))
             {
@@ -158,9 +158,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean binTgtFileOpen(String fileName)
+        private static bool binTgtFileOpen(string fileName)
         {
-            Boolean open = false;
+            bool open = false;
 
             if ((fileName == null) || (fileName == ""))
             {
@@ -198,9 +198,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void binTgtFileWrite(Byte[] buf,
-                                             Int32 bufOffset,
-                                             Int32 writeLen)
+        private static void binTgtFileWrite(byte[] buf,
+                                             int bufOffset,
+                                             int writeLen)
         {
             _binWriter.Write(buf, bufOffset, writeLen);
         }
@@ -216,22 +216,22 @@ namespace PCLParaphernalia
 
         public static void generateRequest(BinaryWriter prnWriter,
                                             PJLCommands.eCmdIndex cmdIndx,
-                                            Boolean secJob,
-                                            String password,
-                                            String pathname,
-                                            String binSrcFilename,
-                                            Int32 option1,
-                                            Int32 option2)
+                                            bool secJob,
+                                            string password,
+                                            string pathname,
+                                            string binSrcFilename,
+                                            int option1,
+                                            int option2)
         {
-            String seq;
-            String jobHddr;
-            String jobEnd;
+            string seq;
+            string jobHddr;
+            string jobEnd;
 
             if (cmdIndx != PJLCommands.eCmdIndex.Unknown)
             {
                 PJLCommands.eRequestType reqType;
 
-                String cmdName;
+                string cmdName;
 
                 reqType = PJLCommands.getType(cmdIndx);
                 cmdName = PJLCommands.getName(cmdIndx);
@@ -254,9 +254,9 @@ namespace PCLParaphernalia
 
                 if (reqType == PJLCommands.eRequestType.FSBinSrc)
                 {
-                    Boolean OK = true;
+                    bool OK = true;
 
-                    Int64 fileSize = 0;
+                    long fileSize = 0;
 
                     OK = binSrcFileOpen(binSrcFilename, ref fileSize);
 
@@ -337,9 +337,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String readResponse(
+        public static string readResponse(
             PJLCommands.eCmdIndex cmdIndx,
-            String binTgtFilenamePJLFS)
+            string binTgtFilenamePJLFS)
         {
             PJLCommands.eRequestType reqType = PJLCommands.getType(cmdIndx);
 
@@ -399,22 +399,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static String readResponseQuery()
+        private static string readResponseQuery()
         {
-            const Int32 replyBufLen = 32768;
+            const int replyBufLen = 32768;
 
-            Byte[] replyData = new Byte[replyBufLen];
+            byte[] replyData = new byte[replyBufLen];
 
-            Int32 replyLen = 0;
+            int replyLen = 0;
 
             //  Boolean readFF_A = true;    // only one <FF> expected //
-            Boolean OK = false;
-            Boolean replyComplete = false;
+            bool OK = false;
+            bool replyComplete = false;
 
-            Int32 offset = 0;
-            Int32 endOffset = 0;
-            Int32 bufRem = replyBufLen;
-            Int32 blockLen = 0;
+            int offset = 0;
+            int endOffset = 0;
+            int bufRem = replyBufLen;
+            int blockLen = 0;
 
             while (!replyComplete)
             {
@@ -515,13 +515,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static String readResponseUpload(String binTgtFilename)
+        private static string readResponseUpload(string binTgtFilename)
         {
-            const Int32 replyBufLen = 32768;
+            const int replyBufLen = 32768;
 
-            String reply = "";
+            string reply = "";
 
-            Boolean binFileOpen = false;
+            bool binFileOpen = false;
 
             binFileOpen = binTgtFileOpen(binTgtFilename);
 
@@ -532,23 +532,23 @@ namespace PCLParaphernalia
             }
             else
             {
-                Int32 binSize = -1;
-                Byte[] replyBlock = new Byte[replyBufLen];
+                int binSize = -1;
+                byte[] replyBlock = new byte[replyBufLen];
 
                 //   Boolean readFF_A = true;    // only one <FF> expected //
-                Boolean OK = true;
-                Boolean replyComplete = false;
-                Boolean firstBlock = true;
-                Boolean supDataWritten = false;
+                bool OK = true;
+                bool replyComplete = false;
+                bool firstBlock = true;
+                bool supDataWritten = false;
 
-                Int32 offset = 0;
-                Int32 endOffset = 0;
-                Int32 bufRem = replyBufLen;
-                Int32 blockLen = 0;
-                Int32 binLen = 0;
-                Int32 binTot = 0;
-                Int32 binRem = 0;
-                Int32 supLen = 0;
+                int offset = 0;
+                int endOffset = 0;
+                int bufRem = replyBufLen;
+                int blockLen = 0;
+                int binLen = 0;
+                int binTot = 0;
+                int binRem = 0;
+                int supLen = 0;
 
                 while (OK && !replyComplete)
                 {
@@ -620,7 +620,7 @@ namespace PCLParaphernalia
                         //                                                        //
                         //--------------------------------------------------------//
 
-                        Int32 cmdLen;
+                        int cmdLen;
 
                         firstBlock = false;
 
@@ -823,20 +823,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Int32 readResponseUploadSize(Byte[] replyBlock,
-                                                     Int32 cmdLen)
+        private static int readResponseUploadSize(byte[] replyBlock,
+                                                     int cmdLen)
         {
-            Int32 binSize = 0;
+            int binSize = 0;
 
-            Byte[] textSize = new Byte[] { 0x53, 0x49, 0x5a, 0x45 };
+            byte[] textSize = new byte[] { 0x53, 0x49, 0x5a, 0x45 };
 
-            Byte firstByte = textSize[0];
+            byte firstByte = textSize[0];
 
-            Int32 cmdRem = cmdLen - 1;
-            Int32 cmdOffset = cmdLen - 1;
-            Int32 indxText = -1;
+            int cmdRem = cmdLen - 1;
+            int cmdOffset = cmdLen - 1;
+            int indxText = -1;
 
-            Boolean sizeTextFound = false;
+            bool sizeTextFound = false;
 
             indxText = Array.LastIndexOf(replyBlock, firstByte,
                                           cmdOffset, cmdRem);
@@ -845,7 +845,7 @@ namespace PCLParaphernalia
             {
                 sizeTextFound = true;
 
-                for (Int32 i = 0; i < textSize.Length; i++)
+                for (int i = 0; i < textSize.Length; i++)
                 {
                     if ((indxText + i >= cmdLen) ||
                         (textSize[i] != replyBlock[indxText + i]))
@@ -861,11 +861,11 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                Int32 indxVal = indxText + textSize.Length;
+                int indxVal = indxText + textSize.Length;
 
-                Byte crntByte;
+                byte crntByte;
 
-                Boolean valInvalid,
+                bool valInvalid,
                         valStarted,
                         valComplete;
 
@@ -873,7 +873,7 @@ namespace PCLParaphernalia
                 valStarted = false;
                 valComplete = false;
 
-                for (Int32 i = indxVal; i < cmdLen; i++)
+                for (int i = indxVal; i < cmdLen; i++)
                 {
                     crntByte = replyBlock[i];
 

@@ -21,9 +21,9 @@ namespace PCLParaphernalia
 
     public partial class MainForm : Window
     {
-        public const String _regMainKey = "Software\\PCLParaphernalia";
+        public const string _regMainKey = "Software\\PCLParaphernalia";
 
-        public Boolean _runXXXDiags = false;  // ****  design time toggle ****//
+        public bool _runXXXDiags = false;  // ****  design time toggle ****//
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -62,27 +62,27 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public MainForm(String filename)
+        public MainForm(string filename)
         {
             InitializeComponent();
 
-            Int32 mwLeft = -1,
+            int mwLeft = -1,
                   mwTop = -1,
                   mwHeight = -1,
                   mwWidth = -1,
                   mwScale = 100;
 
-            Int32 versionMajorOld = -1;
-            Int32 versionMinorOld = -1;
-            Int32 versionBuildOld = -1;
-            Int32 versionRevisionOld = -1;
+            int versionMajorOld = -1;
+            int versionMinorOld = -1;
+            int versionBuildOld = -1;
+            int versionRevisionOld = -1;
 
-            Int32 versionMajorCrnt = -1;
-            Int32 versionMinorCrnt = -1;
-            Int32 versionBuildCrnt = -1;
-            Int32 versionRevisionCrnt = -1;
+            int versionMajorCrnt = -1;
+            int versionMinorCrnt = -1;
+            int versionBuildCrnt = -1;
+            int versionRevisionCrnt = -1;
 
-            Double windowScale = 1.0;
+            double windowScale = 1.0;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -118,7 +118,7 @@ namespace PCLParaphernalia
                 mwScale = 100;
             }
 
-            windowScale = ((Double)mwScale / 100);
+            windowScale = ((double)mwScale / 100);
 
             MainFormData.WindowScale = windowScale;
 
@@ -134,10 +134,10 @@ namespace PCLParaphernalia
 
             AssemblyName assemblyName = assembly.GetName();
 
-            versionMajorCrnt = (Int32)assemblyName.Version.Major;
-            versionMinorCrnt = (Int32)assemblyName.Version.Minor;
-            versionBuildCrnt = (Int32)assemblyName.Version.Build;
-            versionRevisionCrnt = (Int32)assemblyName.Version.Revision;
+            versionMajorCrnt = (int)assemblyName.Version.Major;
+            versionMinorCrnt = (int)assemblyName.Version.Minor;
+            versionBuildCrnt = (int)assemblyName.Version.Build;
+            versionRevisionCrnt = (int)assemblyName.Version.Revision;
 
             MainFormData.setVersionData(true, versionMajorCrnt,
                                                versionMinorCrnt,
@@ -264,12 +264,12 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                Int32 crntToolIndex = 0;
+                int crntToolIndex = 0;
 
                 ToolCommonPersist.loadData(ref crntToolIndex);
 
-                if ((crntToolIndex > (Int32)ToolCommonData.eToolIds.Min) &&
-                    (crntToolIndex < (Int32)ToolCommonData.eToolIds.Max))
+                if ((crntToolIndex > (int)ToolCommonData.eToolIds.Min) &&
+                    (crntToolIndex < (int)ToolCommonData.eToolIds.Max))
                     startToolId = (ToolCommonData.eToolIds)crntToolIndex;
                 else
                     startToolId = ToolCommonData.eToolIds.PrintLang;
@@ -471,7 +471,7 @@ namespace PCLParaphernalia
         private void crntToolSaveMetrics()
         {
             if (_crntToolId != ToolCommonData.eToolIds.Min)
-                ToolCommonPersist.saveData((Int32)_crntToolId);
+                ToolCommonPersist.saveData((int)_crntToolId);
 
             if (_crntToolId ==
                 ToolCommonData.eToolIds.FontSample)
@@ -572,9 +572,9 @@ namespace PCLParaphernalia
 
         private void helpAbout_Click(object sender, RoutedEventArgs e)
         {
-            String deploymentVersion = "";
-            String assemblyVersion = "";
-            String crntVersion = "";
+            string deploymentVersion = "";
+            string assemblyVersion = "";
+            string crntVersion = "";
 
             if (ApplicationDeployment.IsNetworkDeployed)
                 deploymentVersion =
@@ -617,10 +617,10 @@ namespace PCLParaphernalia
 
         private void helpContents_Click(object sender, RoutedEventArgs e)
         {
-            String appStartPath = Path.GetDirectoryName(
+            string appStartPath = Path.GetDirectoryName(
                 Process.GetCurrentProcess().MainModule.FileName);
 
-            String helpFile = appStartPath + @"\PCLParaphernalia.chm";
+            string helpFile = appStartPath + @"\PCLParaphernalia.chm";
 
             if (File.Exists(helpFile))
             {
@@ -1321,11 +1321,11 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             MainFormPersist.saveWindowData(
-                (Int32)this.Left,
-                (Int32)this.Top,
-                (Int32)this.Height,
-                (Int32)this.Width,
-                (Int32)(MainFormData.WindowScale * 100));
+                (int)this.Left,
+                (int)this.Top,
+                (int)this.Height,
+                (int)this.Width,
+                (int)(MainFormData.WindowScale * 100));
         }
 
         //--------------------------------------------------------------------//

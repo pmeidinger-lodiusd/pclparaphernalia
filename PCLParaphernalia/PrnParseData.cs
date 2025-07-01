@@ -21,7 +21,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Int32 _decodeSliceMax = 4;
+        const int _decodeSliceMax = 4;
 
         public enum eCharType
         {
@@ -34,7 +34,7 @@ namespace PCLParaphernalia
             TwoByte
         }
 
-        const String cCcName_0x07 = "<BEL>",
+        const string cCcName_0x07 = "<BEL>",
                      cCcName_0x0a = "<LF>",
                      cCcName_0x0c = "<FF>",
                      cCcName_0x0d = "<CR>",
@@ -43,10 +43,10 @@ namespace PCLParaphernalia
                      cCcName_Extended = "<ext>",
                      cCcName_Unicode = "<U+x>";
 
-        const Int32 cC0NameLen = 5;
-        const Int32 cC1NameLen = 6;
+        const int cC0NameLen = 5;
+        const int cC1NameLen = 6;
 
-        const String cC0Names_List = "<NUL><SOH><STX><ETX>" +
+        const string cC0Names_List = "<NUL><SOH><STX><ETX>" +
                                          "<EOT><ENQ><ACK><BEL>" +
                                          "<BS> <HT> <LF> <VT> " +
                                          "<FF> <CR> <SO> <SI> " +
@@ -56,7 +56,7 @@ namespace PCLParaphernalia
                                          "<FS> <GS> <RS> <US> " +
                                          "<SP> ";
 
-        const String cC1Names_List = "<PAD> <HOP> <BPH> <NBH> " +
+        const string cC1Names_List = "<PAD> <HOP> <BPH> <NBH> " +
                                          "<IND> <NEL> <SSA> <ESA> " +
                                          "<HTS> <HTJ> <VTS> <PLD> " +
                                          "<PLU> <RI>  <SS2> <SS3> " +
@@ -102,18 +102,18 @@ namespace PCLParaphernalia
         public static void processBinary(
             DataTable table,
             PrnParseConstants.eOvlShow makeOvlShow,
-            Byte[] buf,
-            Int32 fileOffset,
-            Int32 seqOffset,
-            Int32 seqLen,
-            String typeText,
-            Boolean showAsHex,
-            Boolean indent,
-            Boolean showOffset,
+            byte[] buf,
+            int fileOffset,
+            int seqOffset,
+            int seqLen,
+            string typeText,
+            bool showAsHex,
+            bool indent,
+            bool showOffset,
             PrnParseConstants.eOptOffsetFormats indxOffsetFormat,
-            Int32 level)
+            int level)
         {
-            const Int32 iBytesPerLine = 16;
+            const int iBytesPerLine = 16;
 
             if (!showAsHex)
             {
@@ -159,13 +159,13 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                Int32 sliceLen,
+                int sliceLen,
                       crntOffset;
                 ;
 
-                Boolean firstLine;
+                bool firstLine;
 
-                String preamble;
+                string preamble;
 
                 if (indent)
                     preamble = "    [ ";
@@ -271,13 +271,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String processByte(
-            Byte dataByte,
+        public static string processByte(
+            byte dataByte,
             PrnParseConstants.eOptCharSetSubActs showCCAction,
-            Byte showSubCode,
+            byte showSubCode,
             PrnParseConstants.eOptCharSets showCharSet)
         {
-            Int32 charVal = dataByte;
+            int charVal = dataByte;
 
             return processValue(charVal,
                                  showCCAction,
@@ -306,18 +306,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String processBytePair(
-            Byte byteA,
-            Byte byteB,
-            Boolean highByteFirst,
+        public static string processBytePair(
+            byte byteA,
+            byte byteB,
+            bool highByteFirst,
             PrnParseConstants.eOptCharSetSubActs showCCAction,
-            Byte showSubCode,
+            byte showSubCode,
             PrnParseConstants.eOptCharSets showCharSet)
         {
-            Byte highByte,
+            byte highByte,
                  lowByte;
 
-            Int32 charVal;
+            int charVal;
 
             if (highByteFirst)
             {
@@ -350,44 +350,44 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean processLines(
+        public static bool processLines(
             DataTable table,
             PrnParseConstants.eOvlShow makeOvlShow,
             PrnParseLinkData linkData,
             ToolCommonData.ePrintLang crntPDL,
-            Byte[] buf,
-            Int32 fileOffset,
-            Int32 maxLen,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
-            ref Boolean continuation,
-            Boolean showOffset,
-            Boolean ignoreFirst,
-            Boolean ignoreFEs,
-            Byte termChar,
-            String typeText,
-            Int32 textMode,
+            byte[] buf,
+            int fileOffset,
+            int maxLen,
+            ref int bufRem,
+            ref int bufOffset,
+            ref bool continuation,
+            bool showOffset,
+            bool ignoreFirst,
+            bool ignoreFEs,
+            byte termChar,
+            string typeText,
+            int textMode,
             PrnParseConstants.eOptCharSetSubActs showCCAction,
-            Byte showSubCode,
+            byte showSubCode,
             PrnParseConstants.eOptCharSets showCharSet,
             PrnParseConstants.eOptOffsetFormats indxOffsetFormat,
-            Int32 level)
+            int level)
         {
-            Boolean foundTerm = true;
+            bool foundTerm = true;
 
-            Byte c1,
+            byte c1,
                  c2;
 
-            String showChar = "";
-            String line;
+            string showChar = "";
+            string line;
 
-            Int32 len,
+            int len,
                   protectedLen,
                   offset,
                   lineStart,
                   lineLen;
 
-            Boolean foundEsc,
+            bool foundEsc,
                     foundLF,
                     firstChar,
                     ignoreFE,
@@ -396,15 +396,15 @@ namespace PCLParaphernalia
                     multiByteData,
                     contLine;
 
-            Boolean knownCC = false;
-            Boolean optCCLineTerm = false;
-            Boolean pageMarked = false;
+            bool knownCC = false;
+            bool optCCLineTerm = false;
+            bool pageMarked = false;
 
             PrnParseConstants.eOvlAct makeOvlAct;
             PrnParseConstants.eOvlShow crntOvlShow;
 
-            String descCC = "";
-            String mnemonicCC = "";
+            string descCC = "";
+            string mnemonicCC = "";
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -481,19 +481,19 @@ namespace PCLParaphernalia
                 utf8Char = false;
 
                 if (textMode ==
-                    (Int32)PCLTextParsingMethods.ePCLVal.m21_1_or_2_byte_Asian7bit)
+                    (int)PCLTextParsingMethods.ePCLVal.m21_1_or_2_byte_Asian7bit)
                 {
                     if (c1 >= 0x21)
                         multiByteChar = true;
                 }
                 else if (textMode ==
-                    (Int32)PCLTextParsingMethods.ePCLVal.m2_2_byte)
+                    (int)PCLTextParsingMethods.ePCLVal.m2_2_byte)
                 {
                     if (c1 != 0x1b)
                         multiByteChar = true;
                 }
                 else if (textMode ==
-                    (Int32)PCLTextParsingMethods.ePCLVal.m31_1_or_2_byte_ShiftJIS)
+                    (int)PCLTextParsingMethods.ePCLVal.m31_1_or_2_byte_ShiftJIS)
                 {
                     if ((c1 >= 0x81) && (c1 <= 0x9f))
                         multiByteChar = true;
@@ -501,19 +501,19 @@ namespace PCLParaphernalia
                         multiByteChar = true;
                 }
                 else if (textMode ==
-                    (Int32)PCLTextParsingMethods.ePCLVal.m38_1_or_2_byte_Asian8bit)
+                    (int)PCLTextParsingMethods.ePCLVal.m38_1_or_2_byte_Asian8bit)
                 {
                     if (c1 >= 0x80)
                         multiByteChar = true;
                 }
                 else if (textMode ==
-                    (Int32)PCLTextParsingMethods.ePCLVal.m83_UTF8)
+                    (int)PCLTextParsingMethods.ePCLVal.m83_UTF8)
                 {
                     if (c1 >= 0x80)
                         utf8Char = true;
                 }
                 else if (textMode ==
-                    (Int32)PCLTextParsingMethods.ePCLVal.m1008_UTF8_alt)
+                    (int)PCLTextParsingMethods.ePCLVal.m1008_UTF8_alt)
                 {
                     if (c1 >= 0x80)
                         utf8Char = true;
@@ -567,7 +567,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    Int32 seqLen = PrnParseDataUTF8.cTrailByteCountsUTF8[c1] + 1;
+                    int seqLen = PrnParseDataUTF8.cTrailByteCountsUTF8[c1] + 1;
 
                     pageMarked = true;
 
@@ -577,13 +577,13 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        Int32 codepoint = 0;
+                        int codepoint = 0;
 
                         PrnParseDataUTF8.eUTF8Result result;
 
-                        Byte[] seq = new Byte[seqLen];
+                        byte[] seq = new byte[seqLen];
 
-                        for (Int32 i = 0; i < seqLen; i++)
+                        for (int i = 0; i < seqLen; i++)
                         {
                             seq[i] = buf[offset + i];
                         }
@@ -713,7 +713,7 @@ namespace PCLParaphernalia
 
                             if (!contLine)
                             {
-                                String seqBytes;
+                                string seqBytes;
 
                                 if (multiByteData)
                                 {
@@ -850,7 +850,7 @@ namespace PCLParaphernalia
 
                         if (!contLine)
                         {
-                            String seqBytes;
+                            string seqBytes;
 
                             if (multiByteData)
                             {
@@ -1005,23 +1005,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static String processValue(
-            Int32 charVal,
+        private static string processValue(
+            int charVal,
             PrnParseConstants.eOptCharSetSubActs showCCAction,
-            Byte showSubCode,
+            byte showSubCode,
             PrnParseConstants.eOptCharSets showCharSet)
         {
-            String outStr = "";
+            string outStr = "";
 
-            Byte highByte,
+            byte highByte,
                  lowByte;
 
             eCharType charType;
 
-            String ccName;
+            string ccName;
 
-            highByte = (Byte)((charVal >> 8) & 0xff);
-            lowByte = (Byte)(charVal & 0xff);
+            highByte = (byte)((charVal >> 8) & 0xff);
+            lowByte = (byte)(charVal & 0xff);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1256,22 +1256,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static String showElementSeqData(Byte[] buf,
-                                           Int32 sliceOffset,
-                                           Int32 sliceLen)
+        private static string showElementSeqData(byte[] buf,
+                                           int sliceOffset,
+                                           int sliceLen)
         {
             StringBuilder seq = new StringBuilder();
 
-            Byte crntByte;
+            byte crntByte;
 
-            Int32 hexPtr,
+            int hexPtr,
                   hexStart = 0,
                   hexEnd = 0,
                   sub;
 
-            Boolean useEllipsis;
+            bool useEllipsis;
 
-            Char[] hexBuf = new Char[(_decodeSliceMax * 2) + 1];
+            char[] hexBuf = new char[(_decodeSliceMax * 2) + 1];
 
             useEllipsis = false;
 
@@ -1295,16 +1295,16 @@ namespace PCLParaphernalia
 
             hexPtr = 0;
 
-            for (Int32 j = hexStart; j < hexEnd; j++)
+            for (int j = hexStart; j < hexEnd; j++)
             {
                 sub = (buf[j]);
                 sub = sub >> 4;
                 crntByte = PrnParseConstants.cHexBytes[sub];
-                hexBuf[hexPtr++] = (Char)crntByte;
+                hexBuf[hexPtr++] = (char)crntByte;
 
                 sub = (buf[j] & 0x0f);
                 crntByte = PrnParseConstants.cHexBytes[sub];
-                hexBuf[hexPtr++] = (Char)crntByte;
+                hexBuf[hexPtr++] = (char)crntByte;
             }
 
             seq.Clear();

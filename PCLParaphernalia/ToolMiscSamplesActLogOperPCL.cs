@@ -20,46 +20,46 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const UInt16 _unitsPerInch = PCLWriter.sessionUPI;
+        const ushort _unitsPerInch = PCLWriter.sessionUPI;
 
-        const Int16 _rasterRes = 600;
-        const Byte _defaultROP = 252;
+        const short _rasterRes = 600;
+        const byte _defaultROP = 252;
 
-        const Int32 _macroIdDestBox = 101;
-        const Int32 _macroIdDestBoxRow = 111;
-        const Int32 _macroIdDestBoxRowHddr = 112;
-        const Int32 _macroIdDestBoxPage = 121;
-        const Int32 _macroIdSrcBoxRasterPos = 201;
-        const Int32 _macroIdSrcBoxRasterNeg = 202;
-        const Int32 _macroIdSrcBoxRasters = 211;
-        const Int32 _macroIdSrcBoxText = 212;
-        const Int32 _macroIdSrcBox = 221;
-        const Int32 _macroIdSrcBoxRow = 231;
+        const int _macroIdDestBox = 101;
+        const int _macroIdDestBoxRow = 111;
+        const int _macroIdDestBoxRowHddr = 112;
+        const int _macroIdDestBoxPage = 121;
+        const int _macroIdSrcBoxRasterPos = 201;
+        const int _macroIdSrcBoxRasterNeg = 202;
+        const int _macroIdSrcBoxRasters = 211;
+        const int _macroIdSrcBoxText = 212;
+        const int _macroIdSrcBox = 221;
+        const int _macroIdSrcBoxRow = 231;
 
-        const Int32 _patternId = 101;
+        const int _patternId = 101;
 
-        const Int16 _incInch = (_unitsPerInch * 1);
-        const Int16 _pageOriginX = (_incInch * 1);
-        const Int16 _pageOriginY = (_incInch * 1) / 2;
-        const Int16 _rowInc = (_incInch * 5) / 4;
-        const Int16 _colInc = (_incInch * 5) / 4;
-        const Int16 _lineInc = (_incInch / 6);
+        const short _incInch = (_unitsPerInch * 1);
+        const short _pageOriginX = (_incInch * 1);
+        const short _pageOriginY = (_incInch * 1) / 2;
+        const short _rowInc = (_incInch * 5) / 4;
+        const short _colInc = (_incInch * 5) / 4;
+        const short _lineInc = (_incInch / 6);
 
-        const Int16 _posXPage_1_Hddr = _pageOriginX;
-        const Int16 _posYPage_1_Hddr = _pageOriginY + (_incInch * 1) / 2;
-        const Int16 _posYPage_1_Data1 = _pageOriginY + (_incInch * 9) / 4;
-        const Int16 _posYPage_1_Data2 = _pageOriginY + (_incInch * 13) / 2;
+        const short _posXPage_1_Hddr = _pageOriginX;
+        const short _posYPage_1_Hddr = _pageOriginY + (_incInch * 1) / 2;
+        const short _posYPage_1_Data1 = _pageOriginY + (_incInch * 9) / 4;
+        const short _posYPage_1_Data2 = _pageOriginY + (_incInch * 13) / 2;
 
-        const Int16 _posXPage_n_Hddr = _pageOriginX;
-        const Int16 _posYPage_n_Hddr = _pageOriginY;
+        const short _posXPage_n_Hddr = _pageOriginX;
+        const short _posYPage_n_Hddr = _pageOriginY;
 
-        const Int16 _posXPage_n_Data = _pageOriginX;
-        const Int16 _posYPage_n_Data = _pageOriginY + (_incInch / 3);
+        const short _posXPage_n_Data = _pageOriginX;
+        const short _posYPage_n_Data = _pageOriginY + (_incInch / 3);
 
-        const Int16 _destBoxSide = _incInch;
+        const short _destBoxSide = _incInch;
 
-        const Int16 _sourceImagePixelsWidth = 192;
-        const Int16 _sourceImagePixelsHeight = 192;
+        const short _sourceImagePixelsWidth = 192;
+        const short _sourceImagePixelsHeight = 192;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -67,8 +67,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static Int32 _indxFontArial = PCLFonts.getIndexForName("Arial");
-        static Int32 _indxFontCourier = PCLFonts.getIndexForName("Courier");
+        static int _indxFontArial = PCLFonts.getIndexForName("Arial");
+        static int _indxFontCourier = PCLFonts.getIndexForName("Courier");
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -85,33 +85,33 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void generateJob(BinaryWriter prnWriter,
-                                       Int32 indxPaperSize,
-                                       Int32 indxPaperType,
-                                       Int32 indxOrientation,
-                                       Int32 indxPalette,
-                                       Int32 indxClrD1,
-                                       Int32 indxClrD2,
-                                       Int32 indxClrS1,
-                                       Int32 indxClrS2,
-                                       Int32 indxClrT1,
-                                       Int32 indxClrT2,
-                                       Int32 minROP,
-                                       Int32 maxROP,
-                                       Boolean flagUseMacros)
+                                       int indxPaperSize,
+                                       int indxPaperType,
+                                       int indxOrientation,
+                                       int indxPalette,
+                                       int indxClrD1,
+                                       int indxClrD2,
+                                       int indxClrS1,
+                                       int indxClrS2,
+                                       int indxClrT1,
+                                       int indxClrT2,
+                                       int minROP,
+                                       int maxROP,
+                                       bool flagUseMacros)
         {
             const PCLOrientations.eAspect aspectPort
                     = PCLOrientations.eAspect.Portrait;
 
             PCLOrientations.eAspect aspect;
 
-            UInt16 paperWidth,
+            ushort paperWidth,
                    paperLength,
                    paperLengthPort,
                    logXOffset;
 
-            Boolean flagOptColour;
+            bool flagOptColour;
 
-            Byte idClrD1 = 0,
+            byte idClrD1 = 0,
                  idClrD2 = 0,
                  idClrS1 = 0,
                  idClrS2 = 0,
@@ -120,7 +120,7 @@ namespace PCLParaphernalia
                  idClrBlack = 0,
                  idClrWhite = 0;
 
-            String nameClrD1,
+            string nameClrD1,
                    nameClrD2,
                    nameClrS1,
                    nameClrS2,
@@ -271,10 +271,10 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateJobHeader(BinaryWriter prnWriter,
-                                              Int32 indxPaperSize,
-                                              Int32 indxPaperType,
-                                              Int32 indxOrientation,
-                                              UInt16 logXOffset)
+                                              int indxPaperSize,
+                                              int indxPaperType,
+                                              int indxOrientation,
+                                              ushort logXOffset)
         {
             PCLWriter.stdJobHeader(prnWriter, "");
 
@@ -282,7 +282,7 @@ namespace PCLParaphernalia
                                  indxPaperSize,
                                  indxPaperType,
                                  indxOrientation,
-                                 (Int32)PCLPlexModes.eIndex.DuplexLongEdge);
+                                 (int)PCLPlexModes.eIndex.DuplexLongEdge);
         }
 
         //--------------------------------------------------------------------//
@@ -295,7 +295,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateJobTrailer(BinaryWriter prnWriter,
-                                                Boolean flagUseMacros)
+                                                bool flagUseMacros)
         {
             PCLWriter.patternDelete(prnWriter, _patternId);
 
@@ -342,39 +342,39 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generatePage_1(BinaryWriter prnWriter,
-                                            UInt16 logXOffset,
-                                            Int32 indxPalette,
-                                            Byte minROP,
-                                            Byte maxROP,
-                                            Byte idClrD1,
-                                            Byte idClrD2,
-                                            Byte idClrS1,
-                                            Byte idClrS2,
-                                            Byte idClrBlack,
-                                            Byte idClrWhite,
-                                            String nameClrD1,
-                                            String nameClrD2,
-                                            String nameClrS1,
-                                            String nameClrS2,
-                                            String nameClrT1,
-                                            String nameClrT2,
-                                            Boolean flagOptColour,
-                                            Boolean flagUseMacros)
+                                            ushort logXOffset,
+                                            int indxPalette,
+                                            byte minROP,
+                                            byte maxROP,
+                                            byte idClrD1,
+                                            byte idClrD2,
+                                            byte idClrS1,
+                                            byte idClrS2,
+                                            byte idClrBlack,
+                                            byte idClrWhite,
+                                            string nameClrD1,
+                                            string nameClrD2,
+                                            string nameClrS1,
+                                            string nameClrS2,
+                                            string nameClrT1,
+                                            string nameClrT2,
+                                            bool flagOptColour,
+                                            bool flagUseMacros)
         {
-            Int16 posX,
+            short posX,
                   posY;
 
-            Int16 ptSize,
+            short ptSize,
                   srcOffsetX,
                   srcOffsetY;
 
-            String nameClrSpace;
+            string nameClrSpace;
 
             //----------------------------------------------------------------//
 
-            srcOffsetX = (Int16)(((_destBoxSide / 2) -
+            srcOffsetX = (short)(((_destBoxSide / 2) -
                                     _sourceImagePixelsWidth) / 2);
-            srcOffsetY = (Int16)((_destBoxSide -
+            srcOffsetY = (short)((_destBoxSide -
                                    _sourceImagePixelsHeight) / 2);
 
             //----------------------------------------------------------------//
@@ -395,7 +395,7 @@ namespace PCLParaphernalia
                                                       PCLFonts.eVariant.Bold,
                                                       ptSize, 0));
 
-            posX = (Int16)(_posXPage_1_Hddr - logXOffset);
+            posX = (short)(_posXPage_1_Hddr - logXOffset);
             posY = _posYPage_1_Hddr;
 
             PCLWriter.text(prnWriter, posX, posY, 0,
@@ -540,7 +540,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            posX = (Int16)(_posXPage_1_Hddr - logXOffset);
+            posX = (short)(_posXPage_1_Hddr - logXOffset);
             posX += (_rowInc * 3);
 
             posY = _posYPage_1_Data1;
@@ -599,7 +599,7 @@ namespace PCLParaphernalia
 
             ptSize = 12;
 
-            posX = (Int16)(_posXPage_1_Hddr - logXOffset);
+            posX = (short)(_posXPage_1_Hddr - logXOffset);
             posY = _posYPage_1_Data2;
 
             PCLWriter.font(prnWriter, true, "19U",
@@ -738,29 +738,29 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generatePage_n(BinaryWriter prnWriter,
-                                            UInt16 logXOffset,
-                                            Byte startROP,
-                                            Byte idClrD1,
-                                            Byte idClrD2,
-                                            Byte idClrS1,
-                                            Byte idClrS2,
-                                            Byte idClrBlack,
-                                            Byte idClrWhite,
-                                            Boolean flagOptColour,
-                                            Boolean flagUseMacros)
+                                            ushort logXOffset,
+                                            byte startROP,
+                                            byte idClrD1,
+                                            byte idClrD2,
+                                            byte idClrS1,
+                                            byte idClrS2,
+                                            byte idClrBlack,
+                                            byte idClrWhite,
+                                            bool flagOptColour,
+                                            bool flagUseMacros)
         {
-            Int16 posX,
+            short posX,
                   posY;
 
-            Int16 ptSize,
+            short ptSize,
                   srcOffsetX,
                   srcOffsetY;
 
             //----------------------------------------------------------------//
 
-            srcOffsetX = (Int16)(((_destBoxSide / 2) -
+            srcOffsetX = (short)(((_destBoxSide / 2) -
                                     _sourceImagePixelsWidth) / 2);
-            srcOffsetY = (Int16)((_destBoxSide -
+            srcOffsetY = (short)((_destBoxSide -
                                    _sourceImagePixelsHeight) / 2);
 
             //----------------------------------------------------------------//
@@ -769,7 +769,7 @@ namespace PCLParaphernalia
                                   PCLWriter.ePatternType.SolidBlack,
                                   -1);
 
-            PCLWriter.setROP(prnWriter, (Byte)(_defaultROP));
+            PCLWriter.setROP(prnWriter, (byte)(_defaultROP));
 
             ptSize = 10;
 
@@ -778,10 +778,10 @@ namespace PCLParaphernalia
                                                       PCLFonts.eVariant.Regular,
                                                       ptSize, 0));
 
-            posX = (Int16)(_posXPage_n_Data - logXOffset);
+            posX = (short)(_posXPage_n_Data - logXOffset);
             posY = _posYPage_n_Data;
 
-            for (Int32 i = 0; i < 8; i++)
+            for (int i = 0; i < 8; i++)
             {
                 PCLWriter.text(prnWriter, posX, posY, 0,
                                 PCLLogicalOperations.getDescShort(startROP + i));
@@ -825,7 +825,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            posX = (Int16)(_posXPage_n_Data + _colInc - logXOffset);
+            posX = (short)(_posXPage_n_Data + _colInc - logXOffset);
             posY = _posYPage_n_Data;
 
             posX += srcOffsetX;
@@ -837,9 +837,9 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            for (Int32 i = 0; i < 8; i++)
+            for (int i = 0; i < 8; i++)
             {
-                PCLWriter.setROP(prnWriter, (Byte)(startROP + i));
+                PCLWriter.setROP(prnWriter, (byte)(startROP + i));
 
                 if (flagUseMacros)
                 {
@@ -868,30 +868,30 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generatePageSet(BinaryWriter prnWriter,
-                                             UInt16 logXOffset,
-                                             Int32 indxPalette,
-                                             Byte idClrD1,
-                                             Byte idClrD2,
-                                             Byte idClrS1,
-                                             Byte idClrS2,
-                                             Byte idClrBlack,
-                                             Byte idClrWhite,
-                                             String nameClrD1,
-                                             String nameClrD2,
-                                             String nameClrS1,
-                                             String nameClrS2,
-                                             String nameClrT1,
-                                             String nameClrT2,
-                                             Int32 minROP,
-                                             Int32 maxROP,
-                                             Boolean flagOptColour,
-                                             Boolean flagUseMacros)
+                                             ushort logXOffset,
+                                             int indxPalette,
+                                             byte idClrD1,
+                                             byte idClrD2,
+                                             byte idClrS1,
+                                             byte idClrS2,
+                                             byte idClrBlack,
+                                             byte idClrWhite,
+                                             string nameClrD1,
+                                             string nameClrD2,
+                                             string nameClrS1,
+                                             string nameClrS2,
+                                             string nameClrT1,
+                                             string nameClrT2,
+                                             int minROP,
+                                             int maxROP,
+                                             bool flagOptColour,
+                                             bool flagUseMacros)
         {
             generatePage_1(prnWriter,
                             logXOffset,
                             indxPalette,
-                            (Byte)minROP,
-                            (Byte)maxROP,
+                            (byte)minROP,
+                            (byte)maxROP,
                             idClrD1,
                             idClrD2,
                             idClrS1,
@@ -909,11 +909,11 @@ namespace PCLParaphernalia
 
             PCLWriter.formFeed(prnWriter);
 
-            for (Int32 i = minROP; i < maxROP; i += 8)
+            for (int i = minROP; i < maxROP; i += 8)
             {
                 generatePage_n(prnWriter,
                                 logXOffset,
-                                (Byte)i,
+                                (byte)i,
                                 idClrD1,
                                 idClrD2,
                                 idClrS1,
@@ -938,14 +938,14 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void writeDestBox(BinaryWriter prnWriter,
-                                          Byte idClrD1,
-                                          Byte idClrD2,
-                                          Byte idClrBlack,
-                                          Boolean flagOptColour,
-                                          Boolean flagUseMacros)
+                                          byte idClrD1,
+                                          byte idClrD2,
+                                          byte idClrBlack,
+                                          bool flagOptColour,
+                                          bool flagUseMacros)
         {
-            const Int16 macroId = _macroIdDestBox;
-            const Int16 halfBox = _destBoxSide / 2;
+            const short macroId = _macroIdDestBox;
+            const short halfBox = _destBoxSide / 2;
 
             if (flagUseMacros)
             {
@@ -1039,16 +1039,16 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void writeDestBoxPage(BinaryWriter prnWriter,
-                                              UInt16 logXOffset,
-                                              Byte idClrD1,
-                                              Byte idClrD2,
-                                              Byte idClrBlack,
-                                              Boolean flagOptColour,
-                                              Boolean flagUseMacros)
+                                              ushort logXOffset,
+                                              byte idClrD1,
+                                              byte idClrD2,
+                                              byte idClrBlack,
+                                              bool flagOptColour,
+                                              bool flagUseMacros)
         {
-            const Int16 macroId = _macroIdDestBoxPage;
+            const short macroId = _macroIdDestBoxPage;
 
-            Int16 posX,
+            short posX,
                   posY;
 
             if (flagUseMacros)
@@ -1063,7 +1063,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            posX = (Int16)(_posXPage_n_Hddr - logXOffset);
+            posX = (short)(_posXPage_n_Hddr - logXOffset);
             posY = _posYPage_n_Hddr;
 
             PCLWriter.cursorPosition(prnWriter,
@@ -1082,14 +1082,14 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            posX = (Int16)(_posXPage_n_Data + _colInc - logXOffset);
+            posX = (short)(_posXPage_n_Data + _colInc - logXOffset);
             posY = _posYPage_n_Data;
 
             PCLWriter.cursorPosition(prnWriter,
                                       posX,
                                       posY);
 
-            for (Int32 i = 0; i < 8; i++)
+            for (int i = 0; i < 8; i++)
             {
                 if (flagUseMacros)
                     PCLWriter.macroControl(prnWriter, _macroIdDestBoxRow,
@@ -1124,13 +1124,13 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void writeDestBoxRow(BinaryWriter prnWriter,
-                                             Byte idClrD1,
-                                             Byte idClrD2,
-                                             Byte idClrBlack,
-                                             Boolean flagOptColour,
-                                             Boolean flagUseMacros)
+                                             byte idClrD1,
+                                             byte idClrD2,
+                                             byte idClrBlack,
+                                             bool flagOptColour,
+                                             bool flagUseMacros)
         {
-            const Int16 macroId = _macroIdDestBoxRow;
+            const short macroId = _macroIdDestBoxRow;
 
             if (flagUseMacros)
             {
@@ -1203,11 +1203,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void writeDestBoxRowHddr(BinaryWriter prnWriter,
-                                                 Boolean flagUseMacros)
+                                                 bool flagUseMacros)
         {
-            const Int16 macroId = _macroIdDestBoxRowHddr;
+            const short macroId = _macroIdDestBoxRowHddr;
 
-            Int16 ptSize;
+            short ptSize;
 
             if (flagUseMacros)
             {
@@ -1254,7 +1254,7 @@ namespace PCLParaphernalia
                                                       PCLFonts.eVariant.Regular,
                                                       ptSize, 0));
 
-            for (Int32 i = 0; i < 2; i++)
+            for (int i = 0; i < 2; i++)
             {
                 PCLWriter.cursorPushPop(prnWriter, PCLWriter.ePushPop.Push);
 
@@ -1293,20 +1293,20 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void writePattern(BinaryWriter prnWriter,
-                                          Int16 patternId,
-                                          Byte idClrT1,
-                                          Byte idClrT2,
-                                          Boolean flagOptColour)
+                                          short patternId,
+                                          byte idClrT1,
+                                          byte idClrT2,
+                                          bool flagOptColour)
         {
-            const UInt16 patWidth = 16; // multiple of 8
-            const UInt16 patHeight = 16; // multiple of 8
+            const ushort patWidth = 16; // multiple of 8
+            const ushort patHeight = 16; // multiple of 8
 
-            Byte patWidthMS = (Byte)((patWidth >> 8) & 0xff);
-            Byte patWidthLS = (Byte)(patWidth & 0xff);
-            Byte patHeightMS = (Byte)((patHeight >> 8) & 0xff);
-            Byte patHeightLS = (Byte)(patHeight & 0xff);
+            byte patWidthMS = (byte)((patWidth >> 8) & 0xff);
+            byte patWidthLS = (byte)(patWidth & 0xff);
+            byte patHeightMS = (byte)((patHeight >> 8) & 0xff);
+            byte patHeightLS = (byte)(patHeight & 0xff);
 
-            Byte[] patternBase = { 0xC0, 0x01,      // row 00
+            byte[] patternBase = { 0xC0, 0x01,      // row 00
                                     0xE0, 0x00,      //     01
                                     0x70, 0x00,      //     02
                                     0x38, 0x00,      //     03
@@ -1337,21 +1337,21 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                const Byte format = 1;
-                const Byte bitsPerPixel = 8;
+                const byte format = 1;
+                const byte bitsPerPixel = 8;
 
-                Int32 patSize = (patWidth * patHeight * bitsPerPixel) / 8;
+                int patSize = (patWidth * patHeight * bitsPerPixel) / 8;
 
-                Int32 rowBytes = patWidth / 8;
+                int rowBytes = patWidth / 8;
 
-                Int32 rowVal;
+                int rowVal;
 
-                UInt32 mask;
+                uint mask;
 
-                Int32 indexIp,
+                int indexIp,
                       indexOp;
 
-                Byte[] hddrFmt_01 = { format,
+                byte[] hddrFmt_01 = { format,
                                       0x00,
                                       bitsPerPixel,
                                       0x00,
@@ -1360,9 +1360,9 @@ namespace PCLParaphernalia
                                       patWidthMS,
                                       patWidthLS };
 
-                Byte[] pattern = new Byte[patSize];
+                byte[] pattern = new byte[patSize];
 
-                for (Int32 i = 0; i < patHeight; i++)
+                for (int i = 0; i < patHeight; i++)
                 {
                     mask = 0x01 << (patWidth - 1);
 
@@ -1371,13 +1371,13 @@ namespace PCLParaphernalia
 
                     rowVal = 0;
 
-                    for (Int32 k = 0; k < rowBytes; k++)
+                    for (int k = 0; k < rowBytes; k++)
                     {
                         rowVal = (rowVal * 256) +
                                  patternBase[indexIp + k];
                     }
 
-                    for (Int32 j = 0; j < patWidth; j++)
+                    for (int j = 0; j < patWidth; j++)
                     {
                         if ((rowVal & mask) != 0)
                             pattern[indexOp + j] = idClrT1;
@@ -1402,15 +1402,15 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                const Int16 rasterRes = 300;
+                const short rasterRes = 300;
 
-                const Byte format = 20;
-                const Byte bitsPerPixel = 1;
+                const byte format = 20;
+                const byte bitsPerPixel = 1;
 
-                Byte rasterResMS = (Byte)((rasterRes >> 8) & 0xff);
-                Byte rasterResLS = (Byte)(rasterRes & 0xff);
+                byte rasterResMS = (byte)((rasterRes >> 8) & 0xff);
+                byte rasterResLS = (byte)(rasterRes & 0xff);
 
-                Byte[] hddrFmt_20 = { format,
+                byte[] hddrFmt_20 = { format,
                                       0x00,
                                       bitsPerPixel,
                                       0x00,
@@ -1439,13 +1439,13 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void writeSrcBox(BinaryWriter prnWriter,
-                                         Byte idClrS1,
-                                         Byte idClrS2,
-                                         Byte idClrBlack,
-                                         Boolean flagOptColour,
-                                         Boolean flagUseMacros)
+                                         byte idClrS1,
+                                         byte idClrS2,
+                                         byte idClrBlack,
+                                         bool flagOptColour,
+                                         bool flagUseMacros)
         {
-            const Int16 macroId = _macroIdSrcBox;
+            const short macroId = _macroIdSrcBox;
 
             if (flagUseMacros)
             {
@@ -1516,74 +1516,74 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void writeSrcBoxRaster(BinaryWriter prnWriter,
-                                               Byte idClrS1,
-                                               Byte idClrS2,
-                                               Boolean inverse,
-                                               Boolean flagOptColour,
-                                               Boolean flagUseMacros)
+                                               byte idClrS1,
+                                               byte idClrS2,
+                                               bool inverse,
+                                               bool flagOptColour,
+                                               bool flagUseMacros)
         {
-            const Int16 macroIdPos = _macroIdSrcBoxRasterPos;
-            const Int16 macroIdNeg = _macroIdSrcBoxRasterNeg;
+            const short macroIdPos = _macroIdSrcBoxRasterPos;
+            const short macroIdNeg = _macroIdSrcBoxRasterNeg;
 
-            const Int16 blockCt = 7;    // A + B + C + D + C + B + A
+            const short blockCt = 7;    // A + B + C + D + C + B + A
 
-            const Int16 compressModeRLE = 1;
-            const Int16 compressModeDeltaRow = 3;
-            const Int16 compressModeAdaptive = 5;
+            const short compressModeRLE = 1;
+            const short compressModeDeltaRow = 3;
+            const short compressModeAdaptive = 5;
 
-            const Int16 rowCtA = 16;
-            const Int16 rowCtB = 16;
-            const Int16 rowCtC = 32;
-            const Int16 rowCtD = 64;
+            const short rowCtA = 16;
+            const short rowCtB = 16;
+            const short rowCtC = 32;
+            const short rowCtD = 64;
 
-            Byte[] maskRowAPos = { 0x03, 0xff,
+            byte[] maskRowAPos = { 0x03, 0xff,
                                    0x03, 0x00,
                                    0x07, 0xff,
                                    0x03, 0x00,
                                    0x03, 0xff };
-            Byte[] maskRowANeg = { 0x03, 0x00,
+            byte[] maskRowANeg = { 0x03, 0x00,
                                    0x03, 0xff,
                                    0x07, 0x00,
                                    0x03, 0xff,
                                    0x03, 0x00 };
 
-            Byte[] maskRowBPos = { 0x01, 0xff,
+            byte[] maskRowBPos = { 0x01, 0xff,
                                    0x13, 0x00,
                                    0x01, 0xff };
-            Byte[] maskRowBNeg = { 0x01, 0x00,
+            byte[] maskRowBNeg = { 0x01, 0x00,
                                    0x13, 0xff,
                                    0x01, 0x00 };
 
-            Byte[] maskRowCPos = { 0x03, 0x00,
+            byte[] maskRowCPos = { 0x03, 0x00,
                                    0x03, 0xff,
                                    0x07, 0x00,
                                    0x03, 0xff,
                                    0x03, 0x00 };
-            Byte[] maskRowCNeg = { 0x03, 0xff,
+            byte[] maskRowCNeg = { 0x03, 0xff,
                                    0x03, 0x00,
                                    0x07, 0xff,
                                    0x03, 0x00,
                                    0x03, 0xff };
 
-            Byte[] maskRowDPos = { 0x01, 0xff,
+            byte[] maskRowDPos = { 0x01, 0xff,
                                    0x05, 0x00,
                                    0x07, 0xff,
                                    0x05, 0x00,
                                    0x01, 0xff };
-            Byte[] maskRowDNeg = { 0x01, 0x00,
+            byte[] maskRowDNeg = { 0x01, 0x00,
                                    0x05, 0xff,
                                    0x07, 0x00,
                                    0x05, 0xff,
                                    0x01, 0x00 };
 
-            Byte[] maskRowCrnt;
+            byte[] maskRowCrnt;
 
-            Int32 maskLen;
+            int maskLen;
 
-            Int16 rowCtCrnt;
-            Int16 macroId;
+            short rowCtCrnt;
+            short macroId;
 
-            Int32 blockSize,
+            int blockSize,
                   rowSize;
 
             //----------------------------------------------------------------//
@@ -1617,9 +1617,9 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                const Int32 planeCt = 3;
+                const int planeCt = 3;
 
-                Int32 indxClr1,
+                int indxClr1,
                       indxClr2;
 
                 PCLWriter.rasterBegin(prnWriter,
@@ -1629,7 +1629,7 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                for (Int32 blockNo = 0; blockNo < blockCt; blockNo++)
+                for (int blockNo = 0; blockNo < blockCt; blockNo++)
                 {
                     if ((blockNo == 0) || (blockNo == 6))
                     {
@@ -1673,11 +1673,11 @@ namespace PCLParaphernalia
 
                     maskLen = maskRowCrnt.Length;
 
-                    Byte[] opRow = new Byte[maskLen];
+                    byte[] opRow = new byte[maskLen];
 
-                    for (Int32 plane = 0; plane < planeCt; plane++)
+                    for (int plane = 0; plane < planeCt; plane++)
                     {
-                        for (Int32 j = 0; j < maskLen; j++)
+                        for (int j = 0; j < maskLen; j++)
                         {
                             if ((j & 1) == 0)
                             {
@@ -1687,11 +1687,11 @@ namespace PCLParaphernalia
                             else
                             {
                                 // even bytes are the RLE bit pattern bytes
-                                Int32 opByte = 0;
+                                int opByte = 0;
 
-                                Int32 ipByte = maskRowCrnt[j];
+                                int ipByte = maskRowCrnt[j];
 
-                                for (Int32 k = 0; k < 8; k++)
+                                for (int k = 0; k < 8; k++)
                                 {
                                     if (k != 0)
                                     {
@@ -1711,7 +1711,7 @@ namespace PCLParaphernalia
                                     }
                                 }
 
-                                opRow[j] = (Byte)opByte;
+                                opRow[j] = (byte)opByte;
                             }
                         }
 
@@ -1731,7 +1731,7 @@ namespace PCLParaphernalia
                     PCLWriter.rasterCompressionMode(prnWriter,
                                                      compressModeDeltaRow);
 
-                    for (Int32 j = 1; j < rowCtCrnt; j++)
+                    for (int j = 1; j < rowCtCrnt; j++)
                     {
                         PCLWriter.rasterTransferRow(prnWriter, 0, null);
                     }
@@ -1771,18 +1771,18 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                const Int32 sizeTLL = 3;
+                const int sizeTLL = 3;
 
                 PCLWriter.rasterBegin(prnWriter,
                                        _sourceImagePixelsWidth,
                                        _sourceImagePixelsHeight,
                                        compressModeAdaptive);
 
-                for (Int32 blockNo = 0; blockNo < blockCt; blockNo++)
+                for (int blockNo = 0; blockNo < blockCt; blockNo++)
                 {
-                    Byte[] block;
+                    byte[] block;
 
-                    Int32 offset;
+                    int offset;
 
                     if ((blockNo == 0) || (blockNo == 6))
                     {
@@ -1825,13 +1825,13 @@ namespace PCLParaphernalia
 
                     blockSize = sizeTLL + rowSize + sizeTLL;
 
-                    block = new Byte[blockSize];
+                    block = new byte[blockSize];
 
                     block[0] = 0x01;        // type 01 - RLE
                     block[1] = 0x00;        // length - assume < 256;
-                    block[2] = (Byte)rowSize;
+                    block[2] = (byte)rowSize;
 
-                    for (Int32 byteNo = 0; byteNo < rowSize; byteNo++)
+                    for (int byteNo = 0; byteNo < rowSize; byteNo++)
                     {
                         block[3 + byteNo] = maskRowCrnt[byteNo];
                     }
@@ -1840,7 +1840,7 @@ namespace PCLParaphernalia
 
                     block[offset] = 0x05;   // type 05 - repeat
                     block[offset + 1] = 0x00;   // repeat count - assume < 256
-                    block[offset + 2] = (Byte)(rowCtCrnt - 1);
+                    block[offset + 2] = (byte)(rowCtCrnt - 1);
 
                     PCLWriter.rasterTransferRow(prnWriter,
                                                  blockSize,
@@ -1871,13 +1871,13 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void writeSrcBoxRow(BinaryWriter prnWriter,
-                                            Byte idClrS1,
-                                            Byte idClrS2,
-                                            Byte idClrBlack,
-                                            Boolean flagOptColour,
-                                            Boolean flagUseMacros)
+                                            byte idClrS1,
+                                            byte idClrS2,
+                                            byte idClrBlack,
+                                            bool flagOptColour,
+                                            bool flagUseMacros)
         {
-            const Int16 macroId = _macroIdSrcBoxRow;
+            const short macroId = _macroIdSrcBoxRow;
 
             if (flagUseMacros)
             {
@@ -1966,13 +1966,13 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void writeSrcBoxText(BinaryWriter prnWriter,
-                                             Byte idClrS1,
-                                             Byte idClrS2,
-                                             Byte idClrBlack,
-                                             Boolean flagOptColour,
-                                             Boolean flagUseMacros)
+                                             byte idClrS1,
+                                             byte idClrS2,
+                                             byte idClrBlack,
+                                             bool flagOptColour,
+                                             bool flagUseMacros)
         {
-            const Int16 macroId = _macroIdSrcBoxText;
+            const short macroId = _macroIdSrcBoxText;
 
             if (flagUseMacros)
             {

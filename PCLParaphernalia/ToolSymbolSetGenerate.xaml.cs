@@ -30,18 +30,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private const Char _defaultSymSetIdAlpha = 'N';
-        private const UInt16 _defaultSymSetIdNum = 0;
-        private const UInt16 _defaultSymSetNo = 14;          //    0N //
-        private const UInt16 _symSetNoTargetMax = 32762;       // 1023Z //
+        private const char _defaultSymSetIdAlpha = 'N';
+        private const ushort _defaultSymSetIdNum = 0;
+        private const ushort _defaultSymSetNo = 14;          //    0N //
+        private const ushort _symSetNoTargetMax = 32762;       // 1023Z //
 
-        private const Int32 cSizeCharSet_8bit = 256;
-        private const Int32 cSizeCharSet_16bit = 65536;
-        private const Int32 cCodePointUnused = 65535;
-        private const Int32 cCodePointC0Min = 0x00;
-        private const Int32 cCodePointC0Max = 0x1f;
-        private const Int32 cCodePointC1Min = 0x80;
-        private const Int32 cCodePointC1Max = 0x9f;
+        private const int cSizeCharSet_8bit = 256;
+        private const int cSizeCharSet_16bit = 65536;
+        private const int cCodePointUnused = 65535;
+        private const int cCodePointC0Min = 0x00;
+        private const int cCodePointC0Max = 0x1f;
+        private const int cCodePointC1Min = 0x80;
+        private const int cCodePointC1Max = 0x9f;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -49,64 +49,64 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private UInt16[] _symSetMapDonor;
-        private UInt16[] _symSetMapUserSet;
-        private UInt16[] _symSetMapTarget;
-        private UInt16[] _symSetMap8bit;
-        private UInt16[] _symSetMap16bit;
+        private ushort[] _symSetMapDonor;
+        private ushort[] _symSetMapUserSet;
+        private ushort[] _symSetMapTarget;
+        private ushort[] _symSetMap8bit;
+        private ushort[] _symSetMap16bit;
 
-        private UInt16 _codeMin = 0;
-        private UInt16 _codeMax = 0;
-        private UInt16 _codeCt = 0;
+        private ushort _codeMin = 0;
+        private ushort _codeMax = 0;
+        private ushort _codeCt = 0;
 
-        private Int32 _sizeCharSet;
+        private int _sizeCharSet;
 
-        private UInt16 _offsetMin;
-        private UInt16 _offsetMax;
+        private ushort _offsetMin;
+        private ushort _offsetMax;
 
-        private Boolean _initialised = false;
-        private Boolean _initialisedOffsets = false;
-        private Boolean _flagDonorSymSetMapPCL = false;
-        private Boolean _flagDonorSymSetUserSet = false;
-        private Boolean _flagMapHex = true;
-        private Boolean _flagCharCollReqInhibit = false;
-        private Boolean _flagCharCollReqSpecific = false;
-        private Boolean _flagIndexUnicode = true;
-        private Boolean _flagIgnoreC0 = true;
-        private Boolean _flagIgnoreC1 = true;
-        private Boolean _flagMultiByteMap = false;
-        private Boolean _flagMultiByteSet = false;
+        private bool _initialised = false;
+        private bool _initialisedOffsets = false;
+        private bool _flagDonorSymSetMapPCL = false;
+        private bool _flagDonorSymSetUserSet = false;
+        private bool _flagMapHex = true;
+        private bool _flagCharCollReqInhibit = false;
+        private bool _flagCharCollReqSpecific = false;
+        private bool _flagIndexUnicode = true;
+        private bool _flagIgnoreC0 = true;
+        private bool _flagIgnoreC1 = true;
+        private bool _flagMultiByteMap = false;
+        private bool _flagMultiByteSet = false;
 
-        private Boolean _flagSymSetNullMapPCL = false;
-        private Boolean _flagSymSetNullMapStd = false;
+        private bool _flagSymSetNullMapPCL = false;
+        private bool _flagSymSetNullMapStd = false;
 
         private ASCIIEncoding _ascii = new ASCIIEncoding();
 
-        private Int32[] _subsetSymSets;
+        private int[] _subsetSymSets;
 
-        private Int32 _ctMappedSymSets = 0;
-        private Int32 _indxOffsets = 0;
+        private int _ctMappedSymSets = 0;
+        private int _indxOffsets = 0;
 
-        private Int32 _indxDonorSymSetSubset;
+        private int _indxDonorSymSetSubset;
 
-        private UInt64 _targetCharCollReq;
-        private UInt64 _targetCharCollReqMSL;
-        private UInt64 _targetCharCollReqUnicode;
-        private UInt64 _targetCharCollReqAllMSL;
-        private UInt64 _targetCharCollReqAllUnicode;
+        private ulong _targetCharCollReq;
+        private ulong _targetCharCollReqMSL;
+        private ulong _targetCharCollReqUnicode;
+        private ulong _targetCharCollReqAllMSL;
+        private ulong _targetCharCollReqAllUnicode;
 
-        private UInt16 _targetSymSetNo;
-        private UInt16 _donorSymSetNo;
-        private UInt16 _donorSymSetNoUserSet;
+        private ushort _targetSymSetNo;
+        private ushort _donorSymSetNo;
+        private ushort _donorSymSetNoUserSet;
 
         private PCLSymbolSets.eSymSetGroup _donorSymSetGroup;
 
         private PCLSymSetTypes.eIndex _targetSymSetType;
 
-        private String _donorSymSetFile;
-        private String _donorSymSetFolder;
-        private String _targetSymSetFile;
-        private String _targetSymSetFolder;
+        private string _donorSymSetFile;
+        private string _donorSymSetFolder;
+        private string _targetSymSetFile;
+        private string _targetSymSetFolder;
 
         private ObservableCollection<PCLCharCollItem> _charCollReqListMSL =
                     new ObservableCollection<PCLCharCollItem>();
@@ -139,7 +139,7 @@ namespace PCLParaphernalia
 
         private void btnCodePtClear_Click(object sender, EventArgs e)
         {
-            for (Int32 i = 0; i < cSizeCharSet_8bit; i++)
+            for (int i = 0; i < cSizeCharSet_8bit; i++)
             {
                 _symSetMapTarget[_offsetMin + i] = cCodePointUnused;
             }
@@ -159,7 +159,7 @@ namespace PCLParaphernalia
 
         private void btnCodePtClearAll_Click(object sender, EventArgs e)
         {
-            for (Int32 i = 0; i < cSizeCharSet_16bit; i++)
+            for (int i = 0; i < cSizeCharSet_16bit; i++)
             {
                 _symSetMapTarget[i] = cCodePointUnused;
             }
@@ -179,15 +179,15 @@ namespace PCLParaphernalia
 
         private void btnDefineSymSet_Click(object sender, EventArgs e)
         {
-            const UInt16 offsetFactor = 100 * 32;
+            const ushort offsetFactor = 100 * 32;
 
-            String idAlpha = "",
+            string idAlpha = "",
                    idNum = "";
 
-            Int32 targetOffset = ((_symSetNoTargetMax - _donorSymSetNo) /
+            int targetOffset = ((_symSetNoTargetMax - _donorSymSetNo) /
                                  (offsetFactor)) * (offsetFactor);
 
-            _targetSymSetNo = (UInt16)(_donorSymSetNo + targetOffset);
+            _targetSymSetNo = (ushort)(_donorSymSetNo + targetOffset);
 
             PCLSymbolSets.translateKind1ToId(_targetSymSetNo,
                                               ref idNum,
@@ -209,7 +209,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                Int32 sizeDonorSet;
+                int sizeDonorSet;
 
                 sizeDonorSet = PCLSymbolSets.getMapArrayMax(
                     _subsetSymSets[_indxDonorSymSetSubset]) + 1;
@@ -225,12 +225,12 @@ namespace PCLParaphernalia
 
                 setMultiByteData(_flagMultiByteSet);
 
-                for (Int32 i = 0; i < sizeDonorSet; i++)
+                for (int i = 0; i < sizeDonorSet; i++)
                 {
                     _symSetMapTarget[i] = _symSetMapDonor[i];
                 }
 
-                for (Int32 i = sizeDonorSet; i < _sizeCharSet; i++)
+                for (int i = sizeDonorSet; i < _sizeCharSet; i++)
                 {
                     _symSetMapTarget[i] = cCodePointUnused;
                 }
@@ -256,9 +256,9 @@ namespace PCLParaphernalia
         private void btnDonorSymSetFileBrowse_Click(object sender,
                                                      RoutedEventArgs e)
         {
-            Boolean selected;
+            bool selected;
 
-            String filename = _donorSymSetFile;
+            string filename = _donorSymSetFile;
 
             selected = selectDonorSymSetFile(ref filename);
 
@@ -322,7 +322,7 @@ namespace PCLParaphernalia
 
         private void btnLogSave_Click(object sender, EventArgs e)
         {
-            Boolean flagOptRptWrap = false;
+            bool flagOptRptWrap = false;
 
             ReportCore.eRptFileFmt rptFileFmt = ReportCore.eRptFileFmt.NA;
             ReportCore.eRptChkMarks rptChkMarks = ReportCore.eRptChkMarks.NA;
@@ -360,9 +360,9 @@ namespace PCLParaphernalia
         private void btnTargetSymSetFileBrowse_Click(object sender,
                                                       RoutedEventArgs e)
         {
-            Boolean selected;
+            bool selected;
 
-            String filename = _targetSymSetFile;
+            string filename = _targetSymSetFile;
 
             selected = selectTargetSymSetFile(ref filename);
 
@@ -471,15 +471,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean checkDonorSymSetFile()
+        private bool checkDonorSymSetFile()
         {
-            Boolean flagOK = true;
+            bool flagOK = true;
 
-            Boolean selected = true;
+            bool selected = true;
 
             if (!File.Exists(_donorSymSetFile))
             {
-                String filename = _donorSymSetFile;
+                string filename = _donorSymSetFile;
 
                 MessageBox.Show(
                     "File " + _donorSymSetFile + " does not exist",
@@ -514,7 +514,7 @@ namespace PCLParaphernalia
 
             if (selected)
             {
-                UInt16 firstCode = 0,
+                ushort firstCode = 0,
                        lastCode = 0;
 
                 PCLSymSetTypes.eIndex symSetType =
@@ -529,7 +529,7 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    Int32 sizeDonorSet;
+                    int sizeDonorSet;
 
                     sizeDonorSet = lastCode + 1;
 
@@ -542,12 +542,12 @@ namespace PCLParaphernalia
 
                     _symSetMapUserSet = PCLSymbolSets.getMapArrayUserSet();
 
-                    for (Int32 i = 0; i < sizeDonorSet; i++)
+                    for (int i = 0; i < sizeDonorSet; i++)
                     {
                         _symSetMapTarget[i] = _symSetMapUserSet[i];
                     }
 
-                    for (Int32 i = sizeDonorSet; i < _sizeCharSet; i++)
+                    for (int i = sizeDonorSet; i < _sizeCharSet; i++)
                     {
                         _symSetMapTarget[i] = cCodePointUnused;
                     }
@@ -652,7 +652,7 @@ namespace PCLParaphernalia
 
         private void donorSymSetChange()
         {
-            Boolean flagOK = true;
+            bool flagOK = true;
 
             if (_flagDonorSymSetUserSet)
                 flagOK = checkDonorSymSetFile();
@@ -741,7 +741,7 @@ namespace PCLParaphernalia
 
             setOffsetRanges();
 
-            _symSetMap8bit = new UInt16[cSizeCharSet_8bit];
+            _symSetMap8bit = new ushort[cSizeCharSet_8bit];
             _symSetMapTarget = _symSetMap8bit;
 
             _flagMultiByteSet = false;
@@ -820,11 +820,11 @@ namespace PCLParaphernalia
 
         private void initialiseCharCollReqLists()
         {
-            Int32 bitNo;
+            int bitNo;
 
-            UInt64 bitVal;
+            ulong bitVal;
 
-            Boolean bitSet;
+            bool bitSet;
 
             PCLCharCollections.eBitType bitType;
 
@@ -858,7 +858,7 @@ namespace PCLParaphernalia
                     if (bitSet)
                     {
                         bitNo = item.BitNo;
-                        bitVal = ((UInt64)0x01) << bitNo;
+                        bitVal = ((ulong)0x01) << bitNo;
 
                         _targetCharCollReqAllMSL =
                             (_targetCharCollReqAllMSL | bitVal);
@@ -879,7 +879,7 @@ namespace PCLParaphernalia
                     if (bitSet)
                     {
                         bitNo = item.BitNo;
-                        bitVal = ((UInt64)0x01) << bitNo;
+                        bitVal = ((ulong)0x01) << bitNo;
 
                         _targetCharCollReqAllUnicode =
                             (_targetCharCollReqAllUnicode | bitVal);
@@ -920,17 +920,17 @@ namespace PCLParaphernalia
 
         private void initialiseSymSetList()
         {
-            Int32 index;
+            int index;
 
             cbDonorSymSet.Items.Clear();
 
             _ctMappedSymSets = PCLSymbolSets.getCountMapped();
 
-            _subsetSymSets = new Int32[_ctMappedSymSets];
+            _subsetSymSets = new int[_ctMappedSymSets];
 
             PCLSymbolSets.getIndicesMapped(0, ref _subsetSymSets);
 
-            for (Int32 i = 0; i < _ctMappedSymSets; i++)
+            for (int i = 0; i < _ctMappedSymSets; i++)
             {
                 index = _subsetSymSets[i];
                 cbDonorSymSet.Items.Add(PCLSymbolSets.getName(index));
@@ -946,18 +946,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void mapDisplay(Boolean hexDisplay,
-                                 Boolean ignoreC0,
-                                 Boolean ignoreC1,
-                                 UInt16 offset)
+        private void mapDisplay(bool hexDisplay,
+                                 bool ignoreC0,
+                                 bool ignoreC1,
+                                 ushort offset)
         {
-            const Int32 noGlyph = 65535;
+            const int noGlyph = 65535;
 
-            UInt16 codeMin = 0,
+            ushort codeMin = 0,
                    codeMax = 0,
                    codeCt = 0;
 
-            String format;
+            string format;
 
             //----------------------------------------------------------------//
 
@@ -1565,16 +1565,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void mapMetrics(Boolean ignoreC0,
-                                 Boolean ignoreC1,
-                                 Int32 setSize,
-                                 ref UInt16 codeMin,
-                                 ref UInt16 codeMax,
-                                 ref UInt16 codeCt,
+        private void mapMetrics(bool ignoreC0,
+                                 bool ignoreC1,
+                                 int setSize,
+                                 ref ushort codeMin,
+                                 ref ushort codeMax,
+                                 ref ushort codeCt,
                                  ref PCLSymSetTypes.eIndex symSetType)
         {
-            Boolean usesC1Range = false;
-            Boolean codePointSig = false;
+            bool usesC1Range = false;
+            bool codePointSig = false;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1584,7 +1584,7 @@ namespace PCLParaphernalia
 
             codeMin = 0;
 
-            for (Int32 i = 0; i < setSize; i++)
+            for (int i = 0; i < setSize; i++)
             {
                 if ((i >= cCodePointC0Min) && (i <= cCodePointC0Max))
                 {
@@ -1607,7 +1607,7 @@ namespace PCLParaphernalia
 
                 if ((codePointSig) && (_symSetMapTarget[i] != cCodePointUnused))
                 {
-                    codeMin = (UInt16)i;
+                    codeMin = (ushort)i;
 
                     i = setSize; // end loop
                 }
@@ -1621,7 +1621,7 @@ namespace PCLParaphernalia
 
             codeMax = 0;
 
-            for (Int32 i = (setSize - 1); i >= 0; i--)
+            for (int i = (setSize - 1); i >= 0; i--)
             {
                 if ((i >= cCodePointC0Min) && (i <= cCodePointC0Max))
                 {
@@ -1644,7 +1644,7 @@ namespace PCLParaphernalia
 
                 if ((codePointSig) && (_symSetMapTarget[i] != cCodePointUnused))
                 {
-                    codeMax = (UInt16)i;
+                    codeMax = (ushort)i;
 
                     i = -1; // end loop
                 }
@@ -1658,7 +1658,7 @@ namespace PCLParaphernalia
 
             codeCt = 0;
 
-            for (Int32 i = 0; i < setSize; i++)
+            for (int i = 0; i < setSize; i++)
             {
                 if ((i >= cCodePointC0Min) && (i <= cCodePointC0Max))
                 {
@@ -1695,8 +1695,8 @@ namespace PCLParaphernalia
 
             if (!ignoreC1)
             {
-                Int32 checkMin;
-                Int32 checkMax;
+                int checkMin;
+                int checkMax;
 
                 if (codeMin < cCodePointC1Min)
                     checkMin = cCodePointC1Min;
@@ -1708,7 +1708,7 @@ namespace PCLParaphernalia
                 else
                     checkMax = codeMax;
 
-                for (Int32 i = checkMin; i < checkMax; i++)
+                for (int i = checkMin; i < checkMax; i++)
                 {
                     if (_symSetMapTarget[i] != cCodePointUnused)
                         usesC1Range = true;
@@ -1816,11 +1816,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void populateCharCollReq(Boolean flagIndexUnicode)
+        private void populateCharCollReq(bool flagIndexUnicode)
         {
-            UInt64 bitVal;
+            ulong bitVal;
 
-            Int32 bitNo;
+            int bitNo;
 
             PCLCharCollections.eBitType bitType;
 
@@ -1833,7 +1833,7 @@ namespace PCLParaphernalia
                 foreach (PCLCharCollItem item in _charCollReqListUnicode)
                 {
                     bitNo = item.BitNo;
-                    bitVal = ((UInt64)0x01) << bitNo;
+                    bitVal = ((ulong)0x01) << bitNo;
                     bitType = item.BitType;
 
                     if (bitType == PCLCharCollections.eBitType.Collection)
@@ -1861,7 +1861,7 @@ namespace PCLParaphernalia
                 foreach (PCLCharCollItem item in _charCollReqListMSL)
                 {
                     bitNo = item.BitNo;
-                    bitVal = ((UInt64)1) << bitNo;
+                    bitVal = ((ulong)1) << bitNo;
                     bitType = item.BitType;
 
                     if (bitType == PCLCharCollections.eBitType.Collection)
@@ -2182,15 +2182,15 @@ namespace PCLParaphernalia
             if (!_flagMultiByteMap)
             {
                 _flagMultiByteMap = true;
-                _symSetMap16bit = new UInt16[cSizeCharSet_16bit];
+                _symSetMap16bit = new ushort[cSizeCharSet_16bit];
                 _symSetMapTarget = _symSetMap16bit;
 
-                for (Int32 i = 0; i < cSizeCharSet_8bit; i++)
+                for (int i = 0; i < cSizeCharSet_8bit; i++)
                 {
                     _symSetMapTarget[i] = _symSetMap8bit[i];
                 }
 
-                for (Int32 i = cSizeCharSet_8bit; i < cSizeCharSet_16bit; i++)
+                for (int i = cSizeCharSet_8bit; i < cSizeCharSet_16bit; i++)
                 {
                     _symSetMapTarget[i] = cCodePointUnused;
                 }
@@ -2232,7 +2232,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectDonorSymSetFile(ref String symSetFilename)
+        private bool selectDonorSymSetFile(ref string symSetFilename)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(symSetFilename);
 
@@ -2257,7 +2257,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectTargetSymSetFile(ref String symSetFilename)
+        private bool selectTargetSymSetFile(ref string symSetFilename)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(symSetFilename);
 
@@ -2284,7 +2284,7 @@ namespace PCLParaphernalia
 
         private void setDonorSymSetAttributes()
         {
-            String idNum = "",
+            string idNum = "",
                    idAlpha = "";
 
             grpTargetSymSetDetails.Visibility = Visibility.Hidden;
@@ -2319,7 +2319,7 @@ namespace PCLParaphernalia
             }
             else if (_indxDonorSymSetSubset != -1)
             {
-                Int32 indxDonorSymSet;
+                int indxDonorSymSet;
 
                 _indxDonorSymSetSubset = cbDonorSymSet.SelectedIndex;
 
@@ -2396,7 +2396,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setMultiByteData(Boolean multiByte)
+        private void setMultiByteData(bool multiByte)
         {
             if (multiByte)
             {
@@ -2410,7 +2410,7 @@ namespace PCLParaphernalia
                 {
                     _flagMultiByteMap = true;
 
-                    _symSetMap16bit = new UInt16[cSizeCharSet_16bit];
+                    _symSetMap16bit = new ushort[cSizeCharSet_16bit];
 
                     _symSetMapTarget = _symSetMap16bit;
 
@@ -2442,8 +2442,8 @@ namespace PCLParaphernalia
 
         private void setOffsetData()
         {
-            _offsetMin = (UInt16)(_indxOffsets * 256);
-            _offsetMax = (UInt16)(_offsetMin + 0xff);
+            _offsetMin = (ushort)(_indxOffsets * 256);
+            _offsetMax = (ushort)(_offsetMin + 0xff);
 
             if (_flagMapHex)
             {
@@ -2478,7 +2478,7 @@ namespace PCLParaphernalia
 
             cbOffsetRange.Items.Clear();
 
-            for (Int32 i = 0; i < 256; i++)
+            for (int i = 0; i < 256; i++)
             {
                 cbOffsetRange.Items.Add(i.ToString("x2") + "00");
             }
@@ -2499,12 +2499,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setTargetCharCollReqArray(Boolean flagIndexUnicode)
+        private void setTargetCharCollReqArray(bool flagIndexUnicode)
         {
-            UInt64 targetCharCollReq = 0,
+            ulong targetCharCollReq = 0,
                    bitVal;
 
-            Int32 bitNo;
+            int bitNo;
 
             if (cbCharColls.ItemsSource != null)
             {
@@ -2514,7 +2514,7 @@ namespace PCLParaphernalia
 
                     if (item.IsChecked)
                     {
-                        bitVal = ((UInt64)1) << bitNo;
+                        bitVal = ((ulong)1) << bitNo;
                         targetCharCollReq = targetCharCollReq | bitVal;
                     }
                 }
@@ -2539,7 +2539,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setTargetCharCollReqValue(UInt64 arrayVal)
+        private void setTargetCharCollReqValue(ulong arrayVal)
         {
             tblkCharColls.Text = "0x" + arrayVal.ToString("x16");
         }
@@ -2555,7 +2555,7 @@ namespace PCLParaphernalia
 
         private void setTargetSymSetAttributes()
         {
-            String symSetId = txtTargetSymSetIdNum.Text +
+            string symSetId = txtTargetSymSetIdNum.Text +
                               txtTargetSymSetIdAlpha.Text;
 
             _targetSymSetNo = PCLSymbolSets.translateIdToKind1(symSetId);
@@ -2574,7 +2574,7 @@ namespace PCLParaphernalia
 
         private void setTargetSymSetFilename()
         {
-            String mapType;
+            string mapType;
 
             if (_flagDonorSymSetMapPCL)
                 mapType = "_LJ";
@@ -2635,13 +2635,13 @@ namespace PCLParaphernalia
 
         private void txtMap_LostFocus(object sender, RoutedEventArgs e)
         {
-            Boolean flagOK = false;
+            bool flagOK = false;
 
-            UInt16 mapIndx;
+            ushort mapIndx;
 
             TextBox source = e.Source as TextBox;
 
-            String txtBoxName;
+            string txtBoxName;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -2654,7 +2654,7 @@ namespace PCLParaphernalia
 
             txtBoxName = source.Name; // should be in format txtMap0xpq
 
-            flagOK = UInt16.TryParse(txtBoxName.Substring(8, 2),
+            flagOK = ushort.TryParse(txtBoxName.Substring(8, 2),
                                       NumberStyles.HexNumber,
                                       CultureInfo.InvariantCulture,
                                       out mapIndx);
@@ -2675,15 +2675,15 @@ namespace PCLParaphernalia
             }
             else
             {
-                flagOK = validateMapEntry(source, (UInt16)(_offsetMin + mapIndx));
+                flagOK = validateMapEntry(source, (ushort)(_offsetMin + mapIndx));
 
                 if (flagOK)
                 {
-                    UInt16 codeMin = 0,
+                    ushort codeMin = 0,
                            codeMax = 0,
                            codeCt = 0;
 
-                    String format;
+                    string format;
 
                     if (_flagMapHex)
                         format = "x4";
@@ -2848,22 +2848,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validateMapEntry(TextBox source,
-                                          UInt16 mapIndx)
+        private bool validateMapEntry(TextBox source,
+                                          ushort mapIndx)
         {
-            Boolean OK = true;
+            bool OK = true;
 
-            UInt16 value;
+            ushort value;
 
-            String txtCodepoint = source.Text;
+            string txtCodepoint = source.Text;
 
             if (_flagMapHex)
-                OK = UInt16.TryParse(txtCodepoint,
+                OK = ushort.TryParse(txtCodepoint,
                                       NumberStyles.HexNumber,
                                       CultureInfo.InvariantCulture,
                                       out value);
             else
-                OK = UInt16.TryParse(txtCodepoint, out value);
+                OK = ushort.TryParse(txtCodepoint, out value);
 
             if (OK)
             {
@@ -2871,7 +2871,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                String format,
+                string format,
                        formatDesc,
                        valText,
                        indxText;
@@ -2915,19 +2915,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validateTargetSymSetIdAlpha(Boolean lostFocusEvent)
+        private bool validateTargetSymSetIdAlpha(bool lostFocusEvent)
         {
-            const Char minVal = 'A';
-            const Char maxVal = 'Z';
-            const Char badVal = 'X';
-            const Char defVal = _defaultSymSetIdAlpha;
+            const char minVal = 'A';
+            const char maxVal = 'Z';
+            const char badVal = 'X';
+            const char defVal = _defaultSymSetIdAlpha;
 
-            Int32 value = 0,
+            int value = 0,
                   len;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText = txtTargetSymSetIdAlpha.Text;
+            string crntText = txtTargetSymSetIdAlpha.Text;
 
             len = crntText.Length;
 
@@ -2937,7 +2937,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                value = Char.ConvertToUtf32(crntText, 0);
+                value = char.ConvertToUtf32(crntText, 0);
 
                 if ((value < minVal) || (value > maxVal) || (value == badVal))
                     OK = false;
@@ -2995,19 +2995,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validateTargetSymSetIdNum(Boolean lostFocusEvent)
+        private bool validateTargetSymSetIdNum(bool lostFocusEvent)
         {
-            const UInt16 minVal = 0;
-            const UInt16 maxVal = 1023;
-            const UInt16 defVal = _defaultSymSetIdNum;
+            const ushort minVal = 0;
+            const ushort maxVal = 1023;
+            const ushort defVal = _defaultSymSetIdNum;
 
-            UInt16 value;
+            ushort value;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText = txtTargetSymSetIdNum.Text;
+            string crntText = txtTargetSymSetIdNum.Text;
 
-            OK = UInt16.TryParse(crntText, out value);
+            OK = ushort.TryParse(crntText, out value);
 
             if (OK)
                 if ((value < minVal) || (value > maxVal))
@@ -3017,7 +3017,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString();
+                    string newText = defVal.ToString();
 
                     MessageBox.Show("Numeric part '" + crntText +
                                     "' of identifier is invalid.\n\n" +

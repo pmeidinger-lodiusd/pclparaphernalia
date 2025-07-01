@@ -27,30 +27,30 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Int32[] _subsetPDLs =
+        private static int[] _subsetPDLs =
         {
-            (Int32) ToolCommonData.ePrintLang.PCL,
-            (Int32) ToolCommonData.ePrintLang.PCLXL,
+            (int) ToolCommonData.ePrintLang.PCL,
+            (int) ToolCommonData.ePrintLang.PCLXL,
         };
 
-        private static Int32[] _subsetOrientations =
+        private static int[] _subsetOrientations =
         {
-            (Int32) PCLOrientations.eIndex.Portrait,
-            (Int32) PCLOrientations.eIndex.Landscape,
-            (Int32) PCLOrientations.eIndex.ReversePortrait,
-            (Int32) PCLOrientations.eIndex.ReverseLandscape
+            (int) PCLOrientations.eIndex.Portrait,
+            (int) PCLOrientations.eIndex.Landscape,
+            (int) PCLOrientations.eIndex.ReversePortrait,
+            (int) PCLOrientations.eIndex.ReverseLandscape
         };
 
-        private static Int32[] _subsetPaperSizes =
+        private static int[] _subsetPaperSizes =
         {
-            (Int32) PCLPaperSizes.eIndex.ISO_A4,
-            (Int32) PCLPaperSizes.eIndex.ANSI_A_Letter
+            (int) PCLPaperSizes.eIndex.ISO_A4,
+            (int) PCLPaperSizes.eIndex.ANSI_A_Letter
         };
 
-        private static Int32[] _subsetPaperTypes =
+        private static int[] _subsetPaperTypes =
         {
-            (Int32) PCLPaperTypes.eIndex.NotSet,
-            (Int32) PCLPaperTypes.eIndex.Plain
+            (int) PCLPaperTypes.eIndex.NotSet,
+            (int) PCLPaperTypes.eIndex.Plain
         };
 
         //--------------------------------------------------------------------//
@@ -61,19 +61,19 @@ namespace PCLParaphernalia
 
         private ToolCommonData.ePrintLang _crntPDL;
 
-        private Int32 _ctPDLs;
-        private Int32 _ctOrientations;
-        private Int32 _ctPaperSizes;
-        private Int32 _ctPaperTypes;
+        private int _ctPDLs;
+        private int _ctOrientations;
+        private int _ctPaperSizes;
+        private int _ctPaperTypes;
         //   private Int32 _ctRasterResolutions;
 
-        private Int32 _indxPDL;
-        private Int32 _indxOrientationPCL;
-        private Int32 _indxOrientationPCLXL;
-        private Int32 _indxPaperSizePCL;
-        private Int32 _indxPaperSizePCLXL;
-        private Int32 _indxPaperTypePCL;
-        private Int32 _indxPaperTypePCLXL;
+        private int _indxPDL;
+        private int _indxOrientationPCL;
+        private int _indxOrientationPCLXL;
+        private int _indxPaperSizePCL;
+        private int _indxPaperSizePCLXL;
+        private int _indxPaperTypePCL;
+        private int _indxPaperTypePCLXL;
         //   private Int32 _indxRasterResolutionPCL;
 
         //   private Int32 _destScalePercentX;
@@ -82,13 +82,13 @@ namespace PCLParaphernalia
         //   private Single _destPosX;
         //   private Single _destPosY;
 
-        private String _bitmapFilename;
+        private string _bitmapFilename;
 
-        private Boolean _initialised;
+        private bool _initialised;
 
         //   private static Boolean stateTglBtn_01f = false;
         //   private static Boolean stateBtn_01f = false;
-        private static Boolean[] _patternStateBtns;
+        private static bool[] _patternStateBtns;
         private static UniformGrid _uGridPattern;
 
         //--------------------------------------------------------------------//
@@ -117,9 +117,9 @@ namespace PCLParaphernalia
 
         private void btnFilenameBrowse_Click(object sender, RoutedEventArgs e)
         {
-            Boolean selected;
+            bool selected;
 
-            String filename = _bitmapFilename;
+            string filename = _bitmapFilename;
 
             selected = selectImageFile(ref filename);
 
@@ -488,7 +488,7 @@ namespace PCLParaphernalia
 
         private void initialise()
         {
-            Int32 index;
+            int index;
 
             _initialised = false;
 
@@ -502,7 +502,7 @@ namespace PCLParaphernalia
 
             _ctPDLs = _subsetPDLs.Length;
 
-            for (Int32 i = 0; i < _ctPDLs; i++)
+            for (int i = 0; i < _ctPDLs; i++)
             {
                 index = _subsetPDLs[i];
 
@@ -516,7 +516,7 @@ namespace PCLParaphernalia
 
             _ctOrientations = _subsetOrientations.Length;
 
-            for (Int32 i = 0; i < _ctOrientations; i++)
+            for (int i = 0; i < _ctOrientations; i++)
             {
                 index = _subsetOrientations[i];
 
@@ -529,7 +529,7 @@ namespace PCLParaphernalia
 
             _ctPaperSizes = _subsetPaperSizes.Length;
 
-            for (Int32 i = 0; i < _ctPaperSizes; i++)
+            for (int i = 0; i < _ctPaperSizes; i++)
             {
                 index = _subsetPaperSizes[i];
 
@@ -542,7 +542,7 @@ namespace PCLParaphernalia
 
             _ctPaperTypes = _subsetPaperTypes.Length;
 
-            for (Int32 i = 0; i < _ctPaperTypes; i++)
+            for (int i = 0; i < _ctPaperTypes; i++)
             {
                 index = _subsetPaperTypes[i];
 
@@ -587,7 +587,7 @@ namespace PCLParaphernalia
 
             pdlOptionsRestore();
 
-            cbPDL.SelectedIndex = (Byte)_indxPDL;
+            cbPDL.SelectedIndex = (byte)_indxPDL;
 
             _uGridPattern = new UniformGrid();
 
@@ -596,15 +596,15 @@ namespace PCLParaphernalia
             _uGridPattern.Rows = 16;
             _uGridPattern.Columns = 16;
 
-            Int32 btnCt = _uGridPattern.Rows * _uGridPattern.Columns;
+            int btnCt = _uGridPattern.Rows * _uGridPattern.Columns;
 
-            _patternStateBtns = new Boolean[btnCt];
+            _patternStateBtns = new bool[btnCt];
 
             //   btn_04.Style = (Style)FindResource("PrimaryButton");
             //   btn_04.Style = (Style)("{StaticResource PrimaryButton}");
             //   btn_04.Style = PrimaryButton;
 
-            for (Int32 i = 0; i < btnCt; i++)
+            for (int i = 0; i < btnCt; i++)
             {
                 ToggleButton x = new ToggleButton();
 
@@ -796,11 +796,11 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.eTarget.NetPrinter)
             {
-                String netPrnAddress = "";
-                Int32 netPrnPort = 0;
+                string netPrnAddress = "";
+                int netPrnPort = 0;
 
-                Int32 netTimeoutSend = 0;
-                Int32 netTimeoutReceive = 0;
+                int netTimeoutSend = 0;
+                int netTimeoutReceive = 0;
 
                 TargetCore.metricsLoadNetPrinter(ref netPrnAddress,
                                                   ref netPrnPort,
@@ -814,7 +814,7 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.eTarget.WinPrinter)
             {
-                String winPrintername = "";
+                string winPrintername = "";
 
                 TargetCore.metricsLoadWinPrinter(ref winPrintername);
 
@@ -833,9 +833,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectImageFile(ref String selectedName)
+        private bool selectImageFile(ref string selectedName)
         {
-            Boolean selected = false;
+            bool selected = false;
             /*
 
             String folderName = null;
@@ -892,9 +892,9 @@ namespace PCLParaphernalia
 
         private void btn_CheckPattern_Click(object sender, RoutedEventArgs e)
         {
-            Int32 btnCt = _uGridPattern.Children.Count;
+            int btnCt = _uGridPattern.Children.Count;
 
-            for (Int32 i = 0; i < btnCt; i++)
+            for (int i = 0; i < btnCt; i++)
             {
                 ToggleButton x = (ToggleButton)_uGridPattern.Children[i];
 
@@ -912,7 +912,7 @@ namespace PCLParaphernalia
 
             StringBuilder setBtns = new StringBuilder();
 
-            for (Int32 i = 0; i < btnCt; i++)
+            for (int i = 0; i < btnCt; i++)
             {
 
                 if (_patternStateBtns[i] == true)

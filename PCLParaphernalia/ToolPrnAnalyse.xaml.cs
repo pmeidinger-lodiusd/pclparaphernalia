@@ -48,22 +48,22 @@ namespace PCLParaphernalia
 
         private PropertyInfo[] _stdClrsPropertyInfo;
 
-        private Int32 _ctClrMapStdClrs;
+        private int _ctClrMapStdClrs;
 
-        private String _prnFilename;
+        private string _prnFilename;
 
-        private Int64 _fileSize;
+        private long _fileSize;
 
-        private Int32[] _indxClrMapBack;
-        private Int32[] _indxClrMapFore;
+        private int[] _indxClrMapBack;
+        private int[] _indxClrMapFore;
 
-        private Boolean _flagClrMapUseClr;
+        private bool _flagClrMapUseClr;
 
         //  private Boolean _initialised;
 
-        private Boolean _redoAnalysis;
-        private Boolean _redoContent;
-        private Boolean _redoStatistics;
+        private bool _redoAnalysis;
+        private bool _redoContent;
+        private bool _redoStatistics;
 
         private DataTable _tableAnalysis;
         private DataTable _tableContent;
@@ -202,8 +202,8 @@ namespace PCLParaphernalia
 
         private void btnOpenFile_Click(object sender, RoutedEventArgs e)
         {
-            Boolean selected;
-            String filename = _prnFilename;
+            bool selected;
+            string filename = _prnFilename;
 
             selected = prnFileSelect(ref filename);
 
@@ -277,7 +277,7 @@ namespace PCLParaphernalia
 
         private void btnSaveReport_Click(object sender, RoutedEventArgs e)
         {
-            Boolean flagOffsetHex,
+            bool flagOffsetHex,
                     flagOptRptWrap = false;
 
             ReportCore.eRptFileFmt rptFileFmt = ReportCore.eRptFileFmt.NA;
@@ -342,9 +342,9 @@ namespace PCLParaphernalia
                 PrnParseConstants.eOptStatsLevel level =
                     PrnParseConstants.eOptStatsLevel.ReferencedOnly;
 
-                Boolean incUsedSeqsOnly = false;
-                Boolean excUnusedObsPCLSeqs = false;
-                Boolean excUnusedResPCLXLTags = false;
+                bool incUsedSeqsOnly = false;
+                bool excUnusedObsPCLSeqs = false;
+                bool excUnusedResPCLXLTags = false;
 
                 _options.getOptStats(ref level,
                                       ref excUnusedObsPCLSeqs,
@@ -480,17 +480,17 @@ namespace PCLParaphernalia
             DataRowView rowView = (DataRowView)e.Row.Item;
             DataRow row = rowView.Row;
 
-            Boolean nullRow =
+            bool nullRow =
                 row.IsNull(PrnParseConstants.cRptA_colName_RowType);
 
             if (!nullRow)
             {
                 if (_flagClrMapUseClr)
                 {
-                    Int32 indxClrBack,
+                    int indxClrBack,
                           indxClrFore;
 
-                    Int32 rowType;
+                    int rowType;
 
                     Color clrBack = new Color(),
                           clrFore = new Color();
@@ -498,7 +498,7 @@ namespace PCLParaphernalia
                     SolidColorBrush brushBack = new SolidColorBrush(),
                                     brushFore = new SolidColorBrush();
 
-                    rowType = (Int32)row[PrnParseConstants.cRptA_colName_RowType];
+                    rowType = (int)row[PrnParseConstants.cRptA_colName_RowType];
 
                     indxClrBack = _indxClrMapBack[rowType];
                     indxClrFore = _indxClrMapFore[rowType];
@@ -644,10 +644,10 @@ namespace PCLParaphernalia
 
             _fileSize = -1;
 
-            Int32 ctRowTypes = PrnParseRowTypes.getCount();
+            int ctRowTypes = PrnParseRowTypes.getCount();
 
-            _indxClrMapBack = new Int32[ctRowTypes];
-            _indxClrMapFore = new Int32[ctRowTypes];
+            _indxClrMapBack = new int[ctRowTypes];
+            _indxClrMapFore = new int[ctRowTypes];
 
             _options.getOptClrMap(ref _flagClrMapUseClr,
                                    ref _indxClrMapBack,
@@ -696,15 +696,15 @@ namespace PCLParaphernalia
             _tableAnalysis = new DataTable("Analysis");
 
             _tableAnalysis.Columns.Add(PrnParseConstants.cRptA_colName_RowType,
-                                        typeof(Int32));
+                                        typeof(int));
             _tableAnalysis.Columns.Add(PrnParseConstants.cRptA_colName_Offset,
-                                        typeof(String));
+                                        typeof(string));
             _tableAnalysis.Columns.Add(PrnParseConstants.cRptA_colName_Type,
-                                        typeof(String));
+                                        typeof(string));
             _tableAnalysis.Columns.Add(PrnParseConstants.cRptA_colName_Seq,
-                                        typeof(String));
+                                        typeof(string));
             _tableAnalysis.Columns.Add(PrnParseConstants.cRptA_colName_Desc,
-                                        typeof(String));
+                                        typeof(string));
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -731,11 +731,11 @@ namespace PCLParaphernalia
             _tableContent = new DataTable("Content");
 
             _tableContent.Columns.Add(PrnParseConstants.cRptC_colName_Offset,
-                                       typeof(String));
+                                       typeof(string));
             _tableContent.Columns.Add(PrnParseConstants.cRptC_colName_Hex,
-                                       typeof(String));
+                                       typeof(string));
             _tableContent.Columns.Add(PrnParseConstants.cRptC_colName_Text,
-                                       typeof(String));
+                                       typeof(string));
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -762,15 +762,15 @@ namespace PCLParaphernalia
             _tableStatistics = new DataTable("Statistics");
 
             _tableStatistics.Columns.Add(PrnParseConstants.cRptS_colName_Seq,
-                                          typeof(String));
+                                          typeof(string));
             _tableStatistics.Columns.Add(PrnParseConstants.cRptS_colName_Desc,
-                                          typeof(String));
+                                          typeof(string));
             _tableStatistics.Columns.Add(PrnParseConstants.cRptS_colName_CtP,
-                                          typeof(String));
+                                          typeof(string));
             _tableStatistics.Columns.Add(PrnParseConstants.cRptS_colName_CtE,
-                                          typeof(String));
+                                          typeof(string));
             _tableStatistics.Columns.Add(PrnParseConstants.cRptS_colName_CtT,
-                                          typeof(String));
+                                          typeof(string));
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -824,11 +824,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Int64 prnFileGetSize(String filename)
+        private long prnFileGetSize(string filename)
         {
             Stream ipStream = null;
 
-            Int64 fileSize = -1;
+            long fileSize = -1;
 
             if ((filename == null) || (filename == ""))
             {
@@ -887,7 +887,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void prnFileProcess(String filename)
+        public void prnFileProcess(string filename)
         {
             _prnFilename = filename;
 
@@ -925,7 +925,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean prnFileSelect(ref String prnFilename)
+        private bool prnFileSelect(ref string prnFilename)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(prnFilename);
 

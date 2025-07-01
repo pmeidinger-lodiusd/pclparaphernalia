@@ -19,45 +19,45 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const String _mainKey = MainForm._regMainKey;
+        const string _mainKey = MainForm._regMainKey;
 
-        const String _subKeyTools = "Tools";
-        const String _subKeyToolsPDLData = "PdlData";
-        const String _subKeyToolsPrintLang = "PrintLang";
-        const String _subKeyPCL = "PCL";
-        const String _subKeyPCLXL = "PCLXL";
-        const String _subKeyPML = "PML";
-        const String _subKeySymSets = "SymSets";
-        const String _subKeyFonts = "Fonts";
+        const string _subKeyTools = "Tools";
+        const string _subKeyToolsPDLData = "PdlData";
+        const string _subKeyToolsPrintLang = "PrintLang";
+        const string _subKeyPCL = "PCL";
+        const string _subKeyPCLXL = "PCLXL";
+        const string _subKeyPML = "PML";
+        const string _subKeySymSets = "SymSets";
+        const string _subKeyFonts = "Fonts";
 
-        const String _nameIndxInfoType = "IndxInfoType";
-        const String _nameReportFile = "ReportFile";
-        const String _nameFlagOptDiscrete = "FlagOptDiscrete";
-        const String _nameFlagOptMapping = "FlagOptMapping";
-        const String _nameFlagOptMapDuo = "FlagOptMapDuo";
-        const String _nameFlagOptObsolete = "FlagOptObsolete";
-        const String _nameFlagOptReserved = "FlagOptReserved";
-        const String _nameFlagOptRptWrap = "FlagOptRptWrap";
-        const String _nameFlagSeqControl = "FlagSeqControl";
-        const String _nameFlagSeqComplex = "FlagSeqComplex";
-        const String _nameFlagSeqSimple = "FlagSeqSimple";
-        const String _nameFlagTagAction = "FlagTagAction";
-        const String _nameFlagTagAttrDefiner = "FlagTagAttrDefiner";
-        const String _nameFlagTagAttribute = "FlagTagAttribute";
-        const String _nameFlagTagDataType = "FlagTagDataType";
-        const String _nameFlagTagEmbedDataDef = "FlagTagEmbedDataDef";
-        const String _nameFlagTagOperator = "FlagTagOperator";
-        const String _nameFlagTagOutcome = "FlagTagOutcome";
-        const String _nameFlagTagWhitespace = "FlagTagWhitespace";
-        const String _nameIndxRptFileFmt = "IndxRptFileFmt";
-        const String _nameIndxRptChkMarks = "IndxRptChkMarks";
-        const String _nameSymSetMapType = "SymSetMapType";
+        const string _nameIndxInfoType = "IndxInfoType";
+        const string _nameReportFile = "ReportFile";
+        const string _nameFlagOptDiscrete = "FlagOptDiscrete";
+        const string _nameFlagOptMapping = "FlagOptMapping";
+        const string _nameFlagOptMapDuo = "FlagOptMapDuo";
+        const string _nameFlagOptObsolete = "FlagOptObsolete";
+        const string _nameFlagOptReserved = "FlagOptReserved";
+        const string _nameFlagOptRptWrap = "FlagOptRptWrap";
+        const string _nameFlagSeqControl = "FlagSeqControl";
+        const string _nameFlagSeqComplex = "FlagSeqComplex";
+        const string _nameFlagSeqSimple = "FlagSeqSimple";
+        const string _nameFlagTagAction = "FlagTagAction";
+        const string _nameFlagTagAttrDefiner = "FlagTagAttrDefiner";
+        const string _nameFlagTagAttribute = "FlagTagAttribute";
+        const string _nameFlagTagDataType = "FlagTagDataType";
+        const string _nameFlagTagEmbedDataDef = "FlagTagEmbedDataDef";
+        const string _nameFlagTagOperator = "FlagTagOperator";
+        const string _nameFlagTagOutcome = "FlagTagOutcome";
+        const string _nameFlagTagWhitespace = "FlagTagWhitespace";
+        const string _nameIndxRptFileFmt = "IndxRptFileFmt";
+        const string _nameIndxRptChkMarks = "IndxRptChkMarks";
+        const string _nameSymSetMapType = "SymSetMapType";
 
-        const Int32 _flagFalse = 0;
-        const Int32 _flagTrue = 1;
-        const Int32 _indexZero = 0;
+        const int _flagFalse = 0;
+        const int _flagTrue = 1;
+        const int _indexZero = 0;
 
-        const String _defaultFilename = "DefaultPDLReportFile.txt";
+        const string _defaultFilename = "DefaultPDLReportFile.txt";
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -68,15 +68,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCommon(ref Int32 indxInfoType,
-                                          ref String reportFile)
+        public static void loadDataCommon(ref int indxInfoType,
+                                          ref string reportFile)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTools + "\\" + _subKeyToolsPrintLang;
+            string key = _subKeyTools + "\\" + _subKeyToolsPrintLang;
 
-            String defWorkFolder = ToolCommonData.DefWorkFolder;
+            string defWorkFolder = ToolCommonData.DefWorkFolder;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(_subKeyTools))
             {
@@ -89,10 +89,10 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxInfoType = (Int32)subKey.GetValue(_nameIndxInfoType,
+                indxInfoType = (int)subKey.GetValue(_nameIndxInfoType,
                                                       _indexZero);
 
-                reportFile = (String)subKey.GetValue(_nameReportFile,
+                reportFile = (string)subKey.GetValue(_nameReportFile,
                                                       defWorkFolder + "\\" +
                                                       _defaultFilename);
             }
@@ -107,21 +107,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataFonts(ref Boolean flagOptMap)
+        public static void loadDataFonts(ref bool flagOptMap)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
-            Int32 tmpInt;
+            int tmpInt;
 
             key = _subKeyTools + "\\" + _subKeyToolsPrintLang +
                                  "\\" + _subKeyFonts;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                tmpInt = (Int32)subKey.GetValue(_nameFlagOptMapping,
+                tmpInt = (int)subKey.GetValue(_nameFlagOptMapping,
                                                   _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -140,25 +140,25 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCL(ref Boolean flagSeqControl,
-                                       ref Boolean flagSeqSimple,
-                                       ref Boolean flagSeqComplex,
-                                       ref Boolean flagOptObsolete,
-                                       ref Boolean flagOptDiscrete)
+        public static void loadDataPCL(ref bool flagSeqControl,
+                                       ref bool flagSeqSimple,
+                                       ref bool flagSeqComplex,
+                                       ref bool flagOptObsolete,
+                                       ref bool flagOptDiscrete)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
-            Int32 tmpInt;
+            int tmpInt;
 
             key = _subKeyTools + "\\" + _subKeyToolsPrintLang +
                                  "\\" + _subKeyPCL;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                tmpInt = (Int32)subKey.GetValue(_nameFlagSeqControl,
+                tmpInt = (int)subKey.GetValue(_nameFlagSeqControl,
                                                 _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -166,7 +166,7 @@ namespace PCLParaphernalia
                 else
                     flagSeqControl = true;
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagSeqSimple,
+                tmpInt = (int)subKey.GetValue(_nameFlagSeqSimple,
                                                 _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -174,7 +174,7 @@ namespace PCLParaphernalia
                 else
                     flagSeqSimple = true;
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagSeqComplex,
+                tmpInt = (int)subKey.GetValue(_nameFlagSeqComplex,
                                                 _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -182,7 +182,7 @@ namespace PCLParaphernalia
                 else
                     flagSeqComplex = true;
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagOptObsolete,
+                tmpInt = (int)subKey.GetValue(_nameFlagOptObsolete,
                                                 _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -190,7 +190,7 @@ namespace PCLParaphernalia
                 else
                     flagOptObsolete = true;
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagOptDiscrete,
+                tmpInt = (int)subKey.GetValue(_nameFlagOptDiscrete,
                                                 _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -209,27 +209,27 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCLXL(ref Boolean flagTagDataType,
-                                         ref Boolean flagTagAttribute,
-                                         ref Boolean flagTagOperator,
-                                         ref Boolean flagTagAttrDefiner,
-                                         ref Boolean flagTagEmbedDataDef,
-                                         ref Boolean flagTagWhitespace,
-                                         ref Boolean flagOptReserved)
+        public static void loadDataPCLXL(ref bool flagTagDataType,
+                                         ref bool flagTagAttribute,
+                                         ref bool flagTagOperator,
+                                         ref bool flagTagAttrDefiner,
+                                         ref bool flagTagEmbedDataDef,
+                                         ref bool flagTagWhitespace,
+                                         ref bool flagOptReserved)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
-            Int32 tmpInt;
+            int tmpInt;
 
             key = _subKeyTools + "\\" + _subKeyToolsPrintLang +
                                  "\\" + _subKeyPCLXL;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                tmpInt = (Int32)subKey.GetValue(_nameFlagTagDataType,
+                tmpInt = (int)subKey.GetValue(_nameFlagTagDataType,
                                                 _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -237,7 +237,7 @@ namespace PCLParaphernalia
                 else
                     flagTagDataType = true;
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagTagAttribute,
+                tmpInt = (int)subKey.GetValue(_nameFlagTagAttribute,
                                                 _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -245,7 +245,7 @@ namespace PCLParaphernalia
                 else
                     flagTagAttribute = true;
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagTagOperator,
+                tmpInt = (int)subKey.GetValue(_nameFlagTagOperator,
                                                 _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -253,7 +253,7 @@ namespace PCLParaphernalia
                 else
                     flagTagOperator = true;
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagTagAttrDefiner,
+                tmpInt = (int)subKey.GetValue(_nameFlagTagAttrDefiner,
                                                 _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -261,7 +261,7 @@ namespace PCLParaphernalia
                 else
                     flagTagAttrDefiner = true;
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagTagEmbedDataDef,
+                tmpInt = (int)subKey.GetValue(_nameFlagTagEmbedDataDef,
                                                 _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -269,7 +269,7 @@ namespace PCLParaphernalia
                 else
                     flagTagEmbedDataDef = true;
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagTagWhitespace,
+                tmpInt = (int)subKey.GetValue(_nameFlagTagWhitespace,
                                                 _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -277,7 +277,7 @@ namespace PCLParaphernalia
                 else
                     flagTagWhitespace = true;
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagOptReserved,
+                tmpInt = (int)subKey.GetValue(_nameFlagOptReserved,
                                                 _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -297,23 +297,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPML(ref Boolean flagTagDataType,
-                                        ref Boolean flagTagAction,
-                                        ref Boolean flagTagOutcome)
+        public static void loadDataPML(ref bool flagTagDataType,
+                                        ref bool flagTagAction,
+                                        ref bool flagTagOutcome)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
-            Int32 tmpInt;
+            int tmpInt;
 
             key = _subKeyTools + "\\" + _subKeyToolsPrintLang +
                                  "\\" + _subKeyPML;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                tmpInt = (Int32)subKey.GetValue(_nameFlagTagDataType,
+                tmpInt = (int)subKey.GetValue(_nameFlagTagDataType,
                                                   _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -321,7 +321,7 @@ namespace PCLParaphernalia
                 else
                     flagTagDataType = true;
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagTagAction,
+                tmpInt = (int)subKey.GetValue(_nameFlagTagAction,
                                                   _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -329,7 +329,7 @@ namespace PCLParaphernalia
                 else
                     flagTagAction = true;
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagTagOutcome,
+                tmpInt = (int)subKey.GetValue(_nameFlagTagOutcome,
                                                   _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -348,26 +348,26 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataRpt(ref Int32 indxRptFileFmt,
-                                        ref Int32 indxRptChkMarks,
-                                        ref Boolean flagOptRptWrap)
+        public static void loadDataRpt(ref int indxRptFileFmt,
+                                        ref int indxRptChkMarks,
+                                        ref bool flagOptRptWrap)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTools + "\\" + _subKeyToolsPrintLang;
+            string key = _subKeyTools + "\\" + _subKeyToolsPrintLang;
 
-            Int32 tmpInt;
+            int tmpInt;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxRptFileFmt = (Int32)subKey.GetValue(_nameIndxRptFileFmt,
+                indxRptFileFmt = (int)subKey.GetValue(_nameIndxRptFileFmt,
                                                          _indexZero);
 
-                indxRptChkMarks = (Int32)subKey.GetValue(_nameIndxRptChkMarks,
+                indxRptChkMarks = (int)subKey.GetValue(_nameIndxRptChkMarks,
                                                           _indexZero);
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagOptRptWrap,
+                tmpInt = (int)subKey.GetValue(_nameFlagOptRptWrap,
                                 _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -386,22 +386,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataSymSets(ref Boolean flagOptMap,
-                                           ref Int32 mapType)
+        public static void loadDataSymSets(ref bool flagOptMap,
+                                           ref int mapType)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
-            Int32 tmpInt;
+            int tmpInt;
 
             key = _subKeyTools + "\\" + _subKeyToolsPrintLang +
                                  "\\" + _subKeySymSets;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                tmpInt = (Int32)subKey.GetValue(_nameFlagOptMapping,
+                tmpInt = (int)subKey.GetValue(_nameFlagOptMapping,
                                                   _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -409,7 +409,7 @@ namespace PCLParaphernalia
                 else
                     flagOptMap = true;
 
-                mapType = (Int32)subKey.GetValue(_nameSymSetMapType,
+                mapType = (int)subKey.GetValue(_nameSymSetMapType,
                                                    _indexZero);
             }
         }
@@ -423,13 +423,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCommon(Int32 indxInfoType,
-                                          String reportFile)
+        public static void saveDataCommon(int indxInfoType,
+                                          string reportFile)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTools + "\\" + _subKeyToolsPrintLang;
+            string key = _subKeyTools + "\\" + _subKeyToolsPrintLang;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -455,12 +455,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataFonts(Boolean flagOptMap)
+        public static void saveDataFonts(bool flagOptMap)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsPrintLang +
                                  "\\" + _subKeyFonts;
@@ -487,16 +487,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCL(Boolean flagSeqControl,
-                                       Boolean flagSeqSimple,
-                                       Boolean flagSeqComplex,
-                                       Boolean flagOptObsolete,
-                                       Boolean flagOptDiscrete)
+        public static void saveDataPCL(bool flagSeqControl,
+                                       bool flagSeqSimple,
+                                       bool flagSeqComplex,
+                                       bool flagOptObsolete,
+                                       bool flagOptDiscrete)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsPrintLang +
                                  "\\" + _subKeyPCL;
@@ -559,18 +559,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCLXL(Boolean flagTagDataType,
-                                         Boolean flagTagAttribute,
-                                         Boolean flagTagOperator,
-                                         Boolean flagTagAttrDefiner,
-                                         Boolean flagTagEmbedDataDef,
-                                         Boolean flagTagWhitespace,
-                                         Boolean flagOptReserved)
+        public static void saveDataPCLXL(bool flagTagDataType,
+                                         bool flagTagAttribute,
+                                         bool flagTagOperator,
+                                         bool flagTagAttrDefiner,
+                                         bool flagTagEmbedDataDef,
+                                         bool flagTagWhitespace,
+                                         bool flagOptReserved)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsPrintLang +
                                  "\\" + _subKeyPCLXL;
@@ -651,14 +651,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPML(Boolean flagTagDataType,
-                                        Boolean flagTagAction,
-                                        Boolean flagTagOutcome)
+        public static void saveDataPML(bool flagTagDataType,
+                                        bool flagTagAction,
+                                        bool flagTagOutcome)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsPrintLang +
                                  "\\" + _subKeyPML;
@@ -703,14 +703,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataRpt(Int32 indxRptFileFmt,
-                                        Int32 indxRptChkMarks,
-                                        Boolean flagOptRptWrap)
+        public static void saveDataRpt(int indxRptFileFmt,
+                                        int indxRptChkMarks,
+                                        bool flagOptRptWrap)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTools + "\\" + _subKeyToolsPrintLang;
+            string key = _subKeyTools + "\\" + _subKeyToolsPrintLang;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -742,13 +742,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataSymSets(Boolean flagOptMap,
-                                           Int32 mapType)
+        public static void saveDataSymSets(bool flagOptMap,
+                                           int mapType)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsPrintLang +
                                  "\\" + _subKeySymSets;

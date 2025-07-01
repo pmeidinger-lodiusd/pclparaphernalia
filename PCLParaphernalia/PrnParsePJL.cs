@@ -20,9 +20,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private const Int32 _lenPJLIntro = 4;       // @PJL //
-        private const Int32 _maxPJLCmdLen = 1024;
-        private const Int32 _maxPJLLineLen = 50;
+        private const int _lenPJLIntro = 4;       // @PJL //
+        private const int _maxPJLCmdLen = 1024;
+        private const int _maxPJLLineLen = 50;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -36,20 +36,20 @@ namespace PCLParaphernalia
 
         private DataTable _table;
 
-        private Byte[] _buf;
+        private byte[] _buf;
 
-        private Int32 _analysisLevel;
+        private int _analysisLevel;
 
-        private Int32 _fileOffset;
-        private Int32 _endOffset;
+        private int _fileOffset;
+        private int _endOffset;
 
         private PrnParseConstants.eOptOffsetFormats _indxOffsetFormat;
 
-        private Boolean _showPML;
+        private bool _showPML;
 
         private PrnParseConstants.eOptCharSetSubActs _indxCharSetSubAct;
         private PrnParseConstants.eOptCharSets _indxCharSetName;
-        private Int32 _valCharSetSubCode;
+        private int _valCharSetSubCode;
 
         private ASCIIEncoding _ascii = new ASCIIEncoding();
 
@@ -83,22 +83,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean findPJLTerminator(
-            Int32 bufRem,
-            Int32 bufOffset,
-            ref Int32 commandLen,
-            ref Boolean continuation)
+        private bool findPJLTerminator(
+            int bufRem,
+            int bufOffset,
+            ref int commandLen,
+            ref bool continuation)
         {
             PrnParseConstants.eContType contType =
                 PrnParseConstants.eContType.None;
 
-            Byte crntByte;
+            byte crntByte;
 
-            Int32 cmdLen,
+            int cmdLen,
                   rem,
                   offset;
 
-            Boolean foundTerm,
+            bool foundTerm,
                     foundLF;
 
             continuation = false;
@@ -175,18 +175,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean parseBuffer(
-            Byte[] buf,
-            ref Int32 fileOffset,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        public bool parseBuffer(
+            byte[] buf,
+            ref int fileOffset,
+            ref int bufRem,
+            ref int bufOffset,
             ref ToolCommonData.ePrintLang crntPDL,
-            ref Boolean endReached,
+            ref bool endReached,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            Boolean seqInvalid;
+            bool seqInvalid;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -241,25 +241,25 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean parseContinuation(
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        private bool parseContinuation(
+            ref int bufRem,
+            ref int bufOffset,
             ref ToolCommonData.ePrintLang crntPDL,
-            ref Boolean endReached)
+            ref bool endReached)
         {
             PrnParseConstants.eContType contType;
 
             contType = PrnParseConstants.eContType.None;
 
-            Int32 prefixLen = 0,
+            int prefixLen = 0,
                   contDataLen = 0,
                   downloadRem = 0;
 
-            Boolean backTrack = false;
+            bool backTrack = false;
 
-            Boolean invalidSeqFound = false;
+            bool invalidSeqFound = false;
 
-            Byte prefixA = 0x00,
+            byte prefixA = 0x00,
                  prefixB = 0x00;
 
             _linkData.getContData(ref contType,
@@ -306,22 +306,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean parseSequences(
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        private bool parseSequences(
+            ref int bufRem,
+            ref int bufOffset,
             ref ToolCommonData.ePrintLang crntPDL,
-            ref Boolean endReached)
+            ref bool endReached)
         {
-            Int64 startPos;
+            long startPos;
 
             PrnParseConstants.eContType contType =
                 PrnParseConstants.eContType.None;
 
-            Boolean continuation = false;
-            Boolean langSwitch = false;
-            Boolean badSeq = false;
-            Boolean invalidSeqFound = false;
-            Boolean dummyBool = false;
+            bool continuation = false;
+            bool langSwitch = false;
+            bool badSeq = false;
+            bool invalidSeqFound = false;
+            bool dummyBool = false;
 
             continuation = false;
             startPos = _fileOffset + bufOffset;
@@ -442,7 +442,7 @@ namespace PCLParaphernalia
                             "Data",
                             0,
                             _indxCharSetSubAct,
-                            (Byte)_valCharSetSubCode,
+                            (byte)_valCharSetSubCode,
                             _indxCharSetName,
                             _indxOffsetFormat,
                             _analysisLevel);
@@ -519,22 +519,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean processPJLCommand(
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
-            ref Boolean continuation,
-            ref Boolean langSwitch,
+        private bool processPJLCommand(
+            ref int bufRem,
+            ref int bufOffset,
+            ref bool continuation,
+            ref bool langSwitch,
             ref ToolCommonData.ePrintLang crntPDL)
         {
             PrnParseConstants.eContType contType =
                 PrnParseConstants.eContType.None;
 
-            Byte crntByte;
+            byte crntByte;
 
-            Char crntChar,
+            char crntChar,
                  normChar;
 
-            Int32 len,
+            int len,
                   cmdLen,
                   cmdRem,
                   langLen,
@@ -542,19 +542,19 @@ namespace PCLParaphernalia
                   lineStart,
                   seqLen = 0;
 
-            Int32 quoteStart = 0,
+            int quoteStart = 0,
                   quoteEnd = 0;
 
-            Boolean invalidSeqFound,
+            bool invalidSeqFound,
                     endLoop,
                     foundTerm,
                     firstLine;
 
-            Boolean foundStartQuote;
-            Boolean seqKnown = false;
-            Boolean noWhitespace = false;
+            bool foundStartQuote;
+            bool seqKnown = false;
+            bool noWhitespace = false;
 
-            String lang,
+            string lang,
                    commandName,
                    commandParams,
                    line,
@@ -680,7 +680,7 @@ namespace PCLParaphernalia
                         showChar = PrnParseData.processByte(
                                         crntByte,
                                         _indxCharSetSubAct,
-                                        (Byte)_valCharSetSubCode,
+                                        (byte)_valCharSetSubCode,
                                         _indxCharSetName);
 
                         cmdPart1.Append(showChar);
@@ -742,14 +742,14 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        crntChar = (Char)crntByte;
-                        normChar = Char.ToUpper(crntChar);
+                        crntChar = (char)crntByte;
+                        normChar = char.ToUpper(crntChar);
                         cmd.Append(normChar);
 
                         showChar = PrnParseData.processByte(
                                         crntByte,
                                         _indxCharSetSubAct,
-                                        (Byte)_valCharSetSubCode,
+                                        (byte)_valCharSetSubCode,
                                         _indxCharSetName);
 
                         cmdPart1.Append(showChar);
@@ -802,13 +802,13 @@ namespace PCLParaphernalia
                         }
                     }
 
-                    crntChar = (Char)crntByte;
-                    normChar = Char.ToUpper(crntChar);
+                    crntChar = (char)crntByte;
+                    normChar = char.ToUpper(crntChar);
 
                     showChar = PrnParseData.processByte(
                                     crntByte,
                                     _indxCharSetSubAct,
-                                    (Byte)_valCharSetSubCode,
+                                    (byte)_valCharSetSubCode,
                                     _indxCharSetName);
 
                     cmdPart2.Append(showChar);
@@ -822,7 +822,7 @@ namespace PCLParaphernalia
                                          ||
                              (crntByte < PrnParseConstants.asciiSpace))
                     {
-                        seq.Append((Char)PrnParseConstants.asciiPeriod);
+                        seq.Append((char)PrnParseConstants.asciiPeriod);
                     }
                     else
                     {

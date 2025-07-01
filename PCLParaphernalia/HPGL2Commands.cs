@@ -21,12 +21,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static SortedList<String, HPGL2Command> _cmds =
-            new SortedList<String, HPGL2Command>();
+        private static SortedList<string, HPGL2Command> _cmds =
+            new SortedList<string, HPGL2Command>();
 
         private static HPGL2Command _cmdUnknown;
 
-        private static Int32 _cmdsCount;
+        private static int _cmdsCount;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -52,19 +52,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean checkCmd(Int32 macroLevel,
-                                       String mnemonic,
-                                       ref Boolean optResetHPGL2,
-                                       ref Boolean optBinaryData,
-                                       ref Boolean optFlipTransp,
-                                       ref Boolean optSetLblTerm,
-                                       ref Boolean optUseLblTerm,
-                                       ref Boolean optUseStdTerm,
-                                       ref Boolean optQuotedData,
-                                       ref Boolean optSymbolMode,
-                                       ref String description)
+        public static bool checkCmd(int macroLevel,
+                                       string mnemonic,
+                                       ref bool optResetHPGL2,
+                                       ref bool optBinaryData,
+                                       ref bool optFlipTransp,
+                                       ref bool optSetLblTerm,
+                                       ref bool optUseLblTerm,
+                                       ref bool optUseStdTerm,
+                                       ref bool optQuotedData,
+                                       ref bool optSymbolMode,
+                                       ref string description)
         {
-            Boolean cmdKnown;
+            bool cmdKnown;
 
             HPGL2Command cmd;
 
@@ -104,11 +104,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 displaySeqList(DataGrid grid)
+        public static int displaySeqList(DataGrid grid)
         {
-            Int32 count = 0;
+            int count = 0;
 
-            foreach (KeyValuePair<String, HPGL2Command> kvp in _cmds)
+            foreach (KeyValuePair<string, HPGL2Command> kvp in _cmds)
             {
                 count++;
                 grid.Items.Add(kvp.Value);
@@ -127,11 +127,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void displayStatsCounts(DataTable table,
-                                               Boolean incUsedSeqsOnly)
+                                               bool incUsedSeqsOnly)
         {
-            Int32 count = 0;
+            int count = 0;
 
-            Boolean displaySeq,
+            bool displaySeq,
                     hddrWritten;
 
             DataRow row;
@@ -168,7 +168,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            foreach (KeyValuePair<String, HPGL2Command> kvp in _cmds)
+            foreach (KeyValuePair<string, HPGL2Command> kvp in _cmds)
             {
                 displaySeq = true;
 
@@ -256,7 +256,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getSeqCount()
+        public static int getSeqCount()
         {
             return _cmdsCount;
         }
@@ -272,17 +272,17 @@ namespace PCLParaphernalia
 
         private static void populateTable()
         {
-            const Boolean flagNone = false;
-            const Boolean flagResetHPGL2 = true;
-            const Boolean flagBinaryData = true;
-            const Boolean flagFlipTransp = true;
-            const Boolean flagSetLblTerm = true;
-            const Boolean flagUseLblTerm = true;
-            const Boolean flagUseStdTerm = true;
-            const Boolean flagQuotedData = true;
-            const Boolean flagSymbolMode = true;
+            const bool flagNone = false;
+            const bool flagResetHPGL2 = true;
+            const bool flagBinaryData = true;
+            const bool flagFlipTransp = true;
+            const bool flagSetLblTerm = true;
+            const bool flagUseLblTerm = true;
+            const bool flagUseStdTerm = true;
+            const bool flagQuotedData = true;
+            const bool flagSymbolMode = true;
 
-            String command;
+            string command;
 
             command = "??";                                             // ?? //
             _cmdUnknown =
@@ -1032,7 +1032,7 @@ namespace PCLParaphernalia
 
             _cmdUnknown.resetStatistics();
 
-            foreach (KeyValuePair<String, HPGL2Command> kvp in _cmds)
+            foreach (KeyValuePair<string, HPGL2Command> kvp in _cmds)
             {
                 cmd = kvp.Value;
 

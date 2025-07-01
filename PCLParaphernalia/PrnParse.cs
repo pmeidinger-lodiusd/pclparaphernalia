@@ -52,9 +52,9 @@ namespace PCLParaphernalia
         private ToolCommonData.ePrintLang _crntPDL;
         //   private Int32 _perCentMax;
 
-        private Int64 _fileSize = 0;
+        private long _fileSize = 0;
 
-        private Int32 _analysisLevel;
+        private int _analysisLevel;
 
         private PrnParsePCL _parsePCL;
         private PrnParsePCLXL _parsePCLXL;
@@ -64,13 +64,13 @@ namespace PCLParaphernalia
 
         private PrnParseLinkData _linkData;
 
-        private Boolean _flagDiagFileAccess;
-        private Boolean _PCLXLFirstCall;
-        private Boolean _subFileOpen;
-        private Boolean _subFileCreated;
+        private bool _flagDiagFileAccess;
+        private bool _PCLXLFirstCall;
+        private bool _subFileOpen;
+        private bool _subFileCreated;
 
-        private String _prnFilename;
-        private String _subFilename;
+        private string _prnFilename;
+        private string _subFilename;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -79,7 +79,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PrnParse(eParseType parseType,
-                        Int32 analysisLevel)
+                        int analysisLevel)
         {
             _parseType = parseType;
 
@@ -114,15 +114,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean analyse(String prnFilename,
+        public bool analyse(string prnFilename,
                                PrnParseOptions options,
                                DataTable table)
         //                 ToolPrnAnalyse   owner,
         //                 BackgroundWorker bkWk)
         {
-            Boolean OK = true;
+            bool OK = true;
 
-            Boolean ipOpen = false;
+            bool ipOpen = false;
 
             _options = options;
             _table = table;
@@ -164,7 +164,7 @@ namespace PCLParaphernalia
         private void analyseAction(
             PCLXLOperators.eEmbedDataType pclxlEmbedType)
         {
-            Int32 blockLen,
+            int blockLen,
                   contDataLen = 0,
                   bufRem,
                   bufOffset = 0,
@@ -179,15 +179,15 @@ namespace PCLParaphernalia
             PrnParseConstants.eOptCharSets indxCharSetName = 0;
             PrnParseConstants.eOptOffsetFormats indxOffsetFormat = 0;
 
-            Int32 valCharSetSubCode = 0;
+            int valCharSetSubCode = 0;
 
-            Boolean backTrack = false;
-            Boolean rowLimitReached = false;
-            Boolean endReached = false;
-            Boolean badSeq = false;
-            Boolean invalidSeqFound = false;
+            bool backTrack = false;
+            bool rowLimitReached = false;
+            bool endReached = false;
+            bool badSeq = false;
+            bool invalidSeqFound = false;
 
-            Byte[] buf = new Byte[PrnParseConstants.bufSize];
+            byte[] buf = new byte[PrnParseConstants.bufSize];
 
             //   bkWk.ReportProgress (perCent);
 
@@ -399,10 +399,10 @@ namespace PCLParaphernalia
 
                         if (newPDL != _crntPDL)
                         {
-                            Boolean makeMacroScan,
+                            bool makeMacroScan,
                                     makeMacroRun;
 
-                            String langName;
+                            string langName;
 
                             makeMacroScan = (_parseType == eParseType.ScanForPDL);
                             makeMacroRun = (_parseType == eParseType.MakeOverlay);
@@ -603,7 +603,7 @@ namespace PCLParaphernalia
                 {
                     if (_linkData.isContinuation())
                     {
-                        Boolean dummyBool = false;
+                        bool dummyBool = false;
 
                         invalidSeqFound = true;
 
@@ -640,7 +640,7 @@ namespace PCLParaphernalia
                                 "Unknown",
                                 0,
                                 indxCharSetSubAct,
-                                (Byte)valCharSetSubCode,
+                                (byte)valCharSetSubCode,
                                 indxCharSetName,
                                 indxOffsetFormat,
                                 _analysisLevel);
@@ -720,9 +720,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Int32 analyseActionStart()
+        private int analyseActionStart()
         {
-            Int32 offsetStart = 0,
+            int offsetStart = 0,
                   offsetEnd = -1;
 
             PrnParseConstants.ePCLXLBinding indxXLBinding =
@@ -888,16 +888,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean analyseEmbeddedPCLXL(
-            String prnFilename,
+        public bool analyseEmbeddedPCLXL(
+            string prnFilename,
             ToolCommonData.ePrintLang newPDL,
             PCLXLOperators.eEmbedDataType type,
             PrnParseOptions options,
             DataTable table)
         {
-            Boolean OK = true;
+            bool OK = true;
 
-            Boolean ipOpen = false;
+            bool ipOpen = false;
 
             _options = options;
             _table = table;
@@ -913,8 +913,8 @@ namespace PCLParaphernalia
             }
             else
             {
-                String typeText;
-                String detailTextA;
+                string typeText;
+                string detailTextA;
 
                 if (type == PCLXLOperators.eEmbedDataType.PassThrough)
                     typeText = "PCL PassThrough";
@@ -934,13 +934,13 @@ namespace PCLParaphernalia
                 {
                     _linkData.setBacktrack(  // not really Backtrack but works!
                         PrnParseConstants.eContType.PCLXLFontHddr,
-                        (Int32)_fileSize);
+                        (int)_fileSize);
                 }
                 else if (type == PCLXLOperators.eEmbedDataType.FontChar)
                 {
                     _linkData.setBacktrack(  // not really Backtrack but works!
                         PrnParseConstants.eContType.PCLXLFontChar,
-                        (Int32)_fileSize);
+                        (int)_fileSize);
                 }
 
                 //------------------------------------------------------------//
@@ -1039,9 +1039,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void embeddedDataStore(Byte[] buf,
-                                       Int32 seqOffset,
-                                       Int32 seqLen)
+        public void embeddedDataStore(byte[] buf,
+                                       int seqOffset,
+                                       int seqLen)
         {
             if (!_subFileCreated)
             {
@@ -1143,21 +1143,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean embeddedPCLAnalyse(
-            Byte[] buf,
-            ref Int32 fileOffset,
-            ref Int32 bufRem,
-            ref Int32 bufOffset,
+        public bool embeddedPCLAnalyse(
+            byte[] buf,
+            ref int fileOffset,
+            ref int bufRem,
+            ref int bufOffset,
             PrnParseLinkData linkData,
             PrnParseOptions options,
             DataTable table)
         {
-            Boolean badSeq;
+            bool badSeq;
 
             ToolCommonData.ePrintLang crntPDL =
                 ToolCommonData.ePrintLang.PCL;
 
-            Boolean endReached = false;
+            bool endReached = false;
 
             linkData.macroLevelAdjust(true);
 
@@ -1198,7 +1198,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                String fName = ((FileStream)_subStream).Name;
+                string fName = ((FileStream)_subStream).Name;
 
                 _subFileOpen = false;
 
@@ -1299,17 +1299,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean makeOverlayPCL(String prnFilename,
-                                       ref String ovlFilename,
+        public bool makeOverlayPCL(string prnFilename,
+                                       ref string ovlFilename,
                                        PrnParseOptions options,
                                        DataTable table,
-                                       Boolean restoreCursor,
-                                       Boolean encapsulate,
-                                       Int32 macroId)
+                                       bool restoreCursor,
+                                       bool encapsulate,
+                                       int macroId)
         {
-            Boolean OK = true;
+            bool OK = true;
 
-            Boolean ipOpen = false;
+            bool ipOpen = false;
 
             _options = options;
             _table = table;
@@ -1368,17 +1368,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean makeOverlayPCLXL(String prnFilename,
-                                         ref String ovlFilename,
+        public bool makeOverlayPCLXL(string prnFilename,
+                                         ref string ovlFilename,
                                          PrnParseOptions options,
                                          DataTable table,
-                                         Boolean restoreGS,
-                                         Boolean encapsulate,
-                                         String streamName)
+                                         bool restoreGS,
+                                         bool encapsulate,
+                                         string streamName)
         {
-            Boolean OK = true;
+            bool OK = true;
 
-            Boolean ipOpen = false;
+            bool ipOpen = false;
 
             _options = options;
             _table = table;
@@ -1435,13 +1435,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean makeOverlayScan(String prnFilename,
+        public bool makeOverlayScan(string prnFilename,
                                        PrnParseOptions options,
                                        ref ToolCommonData.ePrintLang pdl)
         {
-            Boolean OK = true;
+            bool OK = true;
 
-            Boolean ipOpen = false;
+            bool ipOpen = false;
 
             _options = options;
 
@@ -1479,7 +1479,7 @@ namespace PCLParaphernalia
 
         private void ovlFileClose()
         {
-            String fName = ((FileStream)_opStream).Name;
+            string fName = ((FileStream)_opStream).Name;
 
             _binWriter.Close();
             _opStream.Close();
@@ -1515,15 +1515,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void ovlFileOpen(Boolean makeOvlXL,
-                                 ref String ovlFilename)
+        private void ovlFileOpen(bool makeOvlXL,
+                                 ref string ovlFilename)
         {
             SaveFileDialog saveDialog;
 
-            Int32 ptr,
+            int ptr,
                   len;
 
-            String saveDirectory,
+            string saveDirectory,
                    tmpFilename;
 
             //----------------------------------------------------------------//
@@ -1646,7 +1646,7 @@ namespace PCLParaphernalia
 
         private void prnFileClose()
         {
-            String fName = ((FileStream)_ipStream).Name;
+            string fName = ((FileStream)_ipStream).Name;
 
             _binReader.Close();
 
@@ -1696,10 +1696,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean prnFileOpen(String filename,
-                                    ref Int64 fileSize)
+        private bool prnFileOpen(string filename,
+                                    ref long fileSize)
         {
-            Boolean open = false;
+            bool open = false;
 
             if ((filename == null) || (filename == ""))
             {

@@ -27,15 +27,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private const Int32 _defaultPJLFSCount = 100;
-        private const Int32 _defaultPJLFSEntry = 1;
-        private const Int32 _defaultPJLFSOffset = 0;
-        private const Int32 _defaultPJLFSSize = 999999;
+        private const int _defaultPJLFSCount = 100;
+        private const int _defaultPJLFSEntry = 1;
+        private const int _defaultPJLFSOffset = 0;
+        private const int _defaultPJLFSSize = 999999;
 
-        private const String _defaultPJLFSPassword = "65535";
+        private const string _defaultPJLFSPassword = "65535";
 
-        private const String _defaultPJLFSObjPath = "0:\\pcl\\macros\\macro1";
-        private const String _defaultPJLFSVolume = "0:";
+        private const string _defaultPJLFSObjPath = "0:\\pcl\\macros\\macro1";
+        private const string _defaultPJLFSVolume = "0:";
 
         private static PJLCommands.eCmdIndex[] _subsetPJLCommands =
         {
@@ -71,39 +71,39 @@ namespace PCLParaphernalia
         PJLCommands.eCmdIndex _cmdIndxPJL;
         PJLCommands.eCmdIndex _cmdIndxPJLFS;
 
-        private Int32 _ctPCLEntityTypes;
-        private Int32 _ctPCLLocTypes;
-        private Int32 _ctPJLCategories;
-        private Int32 _ctPJLCommands;
-        private Int32 _ctPJLFSCommands;
-        private Int32 _ctPJLVariables;
+        private int _ctPCLEntityTypes;
+        private int _ctPCLLocTypes;
+        private int _ctPJLCategories;
+        private int _ctPJLCommands;
+        private int _ctPJLFSCommands;
+        private int _ctPJLVariables;
 
-        private Int32 _indxPCLEntityType;
-        private Int32 _indxPCLLocType;
-        private Int32 _indxPJLCategory;
-        private Int32 _indxPJLCommand;
-        private Int32 _indxPJLFSCommand;
-        private Int32 _indxPJLVariable;
+        private int _indxPCLEntityType;
+        private int _indxPCLLocType;
+        private int _indxPJLCategory;
+        private int _indxPJLCommand;
+        private int _indxPJLFSCommand;
+        private int _indxPJLVariable;
 
-        private Int32 _valPJLFSOpt1;
-        private Int32 _valPJLFSOpt2;
+        private int _valPJLFSOpt1;
+        private int _valPJLFSOpt2;
 
-        private static String _reportFilenamePCL;
-        private static String _reportFilenamePJL;
+        private static string _reportFilenamePCL;
+        private static string _reportFilenamePJL;
 
-        private static String _customCatPJL;
-        private static String _customVarPJL;
+        private static string _customCatPJL;
+        private static string _customVarPJL;
 
-        private static String _binSrcFilenamePJLFS;
-        private static String _binTgtFilenamePJLFS;
-        private static String _objPathPJLFS;
-        private static String _objVolPJLFS;
-        private static String _objDirPJLFS;
-        private static String _objFilPJLFS;
-        private static String _passwordPJLFS;
+        private static string _binSrcFilenamePJLFS;
+        private static string _binTgtFilenamePJLFS;
+        private static string _objPathPJLFS;
+        private static string _objVolPJLFS;
+        private static string _objDirPJLFS;
+        private static string _objFilPJLFS;
+        private static string _passwordPJLFS;
 
-        private Boolean _flagPJLFS;
-        private Boolean _flagPJLFSSecJob;
+        private bool _flagPJLFS;
+        private bool _flagPJLFSSecJob;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -184,7 +184,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    String path;
+                    string path;
 
                     if (_reqTypePJLFS == PJLCommands.eRequestType.FSInit)
                         path = _objVolPJLFS;
@@ -307,10 +307,10 @@ namespace PCLParaphernalia
 
         private void btnPJLFSLocPathBrowse_Click(object sender, EventArgs e)
         {
-            Boolean selected,
+            bool selected,
                     upload;
 
-            String filename;
+            string filename;
 
             if (_reqTypePJLFS == PJLCommands.eRequestType.FSUpload)
             {
@@ -351,7 +351,7 @@ namespace PCLParaphernalia
 
         private void btnSaveReport_Click(object sender, EventArgs e)
         {
-            Boolean flagOptRptWrap = false;
+            bool flagOptRptWrap = false;
 
             ReportCore.eRptFileFmt rptFileFmt = ReportCore.eRptFileFmt.NA;
             ReportCore.eRptChkMarks rptChkMarks = ReportCore.eRptChkMarks.NA;
@@ -674,7 +674,7 @@ namespace PCLParaphernalia
 
             PJLCommands.eCmdIndex indxCmd;
 
-            String personality;
+            string personality;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -686,7 +686,7 @@ namespace PCLParaphernalia
 
             _ctPCLEntityTypes = PCLEntityTypes.getCount();
 
-            for (Int32 i = 0; i < _ctPCLEntityTypes; i++)
+            for (int i = 0; i < _ctPCLEntityTypes; i++)
             {
                 cbPCLEntityType.Items.Add(PCLEntityTypes.getName(i));
             }
@@ -697,7 +697,7 @@ namespace PCLParaphernalia
 
             _ctPCLLocTypes = PCLLocationTypes.getCount();
 
-            for (Int32 i = 0; i < _ctPCLLocTypes; i++)
+            for (int i = 0; i < _ctPCLLocTypes; i++)
             {
                 cbPCLLocType.Items.Add(PCLLocationTypes.getName(i));
             }
@@ -708,7 +708,7 @@ namespace PCLParaphernalia
 
             _ctPJLCommands = _subsetPJLCommands.Length;
 
-            for (Int32 i = 0; i < _ctPJLCommands; i++)
+            for (int i = 0; i < _ctPJLCommands; i++)
             {
                 indxCmd = (PJLCommands.eCmdIndex)_subsetPJLCommands[i];
 
@@ -721,7 +721,7 @@ namespace PCLParaphernalia
 
             _ctPJLFSCommands = _subsetPJLFSCommands.Length;
 
-            for (Int32 i = 0; i < _ctPJLFSCommands; i++)
+            for (int i = 0; i < _ctPJLFSCommands; i++)
             {
                 indxCmd = (PJLCommands.eCmdIndex)_subsetPJLFSCommands[i];
 
@@ -734,7 +734,7 @@ namespace PCLParaphernalia
 
             _ctPJLCategories = PJLCategories.getCount();
 
-            for (Int32 i = 0; i < _ctPJLCategories; i++)
+            for (int i = 0; i < _ctPJLCategories; i++)
             {
                 cbPJLCategory.Items.Add(PJLCategories.getName(i));
             }
@@ -745,7 +745,7 @@ namespace PCLParaphernalia
 
             _ctPJLVariables = PJLVariables.getCount();
 
-            for (Int32 i = 0; i < _ctPJLVariables; i++)
+            for (int i = 0; i < _ctPJLVariables; i++)
             {
                 varType = PJLVariables.getType(i);
 
@@ -872,7 +872,7 @@ namespace PCLParaphernalia
 
         private void metricsLoad()
         {
-            Int32 indxTemp = 0;
+            int indxTemp = 0;
 
             ToolStatusReadbackPersist.loadDataCommon(ref indxTemp);
 
@@ -896,7 +896,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if (indxTemp == (Int32)ToolCommonData.ePrintLang.PJL)
+            if (indxTemp == (int)ToolCommonData.ePrintLang.PJL)
                 _crntPDL = ToolCommonData.ePrintLang.PJL;
             else
                 _crntPDL = ToolCommonData.ePrintLang.PCL;
@@ -941,7 +941,7 @@ namespace PCLParaphernalia
 
         public void metricsSave()
         {
-            ToolStatusReadbackPersist.saveDataCommon((Int32)_crntPDL);
+            ToolStatusReadbackPersist.saveDataCommon((int)_crntPDL);
 
             ToolStatusReadbackPersist.saveDataPCL(_indxPCLEntityType,
                                                _indxPCLLocType,
@@ -1054,11 +1054,11 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.eTarget.NetPrinter)
             {
-                String netPrnAddress = "";
-                Int32 netPrnPort = 0;
+                string netPrnAddress = "";
+                int netPrnPort = 0;
 
-                Int32 netTimeoutSend = 0;
-                Int32 netTimeoutReceive = 0;
+                int netTimeoutSend = 0;
+                int netTimeoutReceive = 0;
 
                 TargetCore.metricsLoadNetPrinter(ref netPrnAddress,
                                                   ref netPrnPort,
@@ -1072,7 +1072,7 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.eTarget.WinPrinter)
             {
-                String winPrintername = "";
+                string winPrintername = "";
 
                 TargetCore.metricsLoadWinPrinter(ref winPrintername);
 
@@ -1094,10 +1094,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectLocBinFile(Boolean upload,
-                                          ref String locBinFilename)
+        private bool selectLocBinFile(bool upload,
+                                          ref string locBinFilename)
         {
-            Boolean selected;
+            bool selected;
 
             if (upload)
                 selected = selectLocBinTgtFile(ref locBinFilename);
@@ -1118,7 +1118,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectLocBinSrcFile(ref String locBinFilename)
+        private bool selectLocBinSrcFile(ref string locBinFilename)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(locBinFilename);
 
@@ -1152,7 +1152,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectLocBinTgtFile(ref String locBinFilename)
+        private bool selectLocBinTgtFile(ref string locBinFilename)
         {
             SaveFileDialog saveDialog = ToolCommonFunctions.createSaveFileDialog(locBinFilename);
 
@@ -1429,15 +1429,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePJLFSOpt1(Boolean lostFocusEvent,
-                                           ref Int32 newValue)
+        private bool validatePJLFSOpt1(bool lostFocusEvent,
+                                           ref int newValue)
         {
-            Int32 value;
-            Int32 defVal;
+            int value;
+            int defVal;
 
-            String boxName;
+            string boxName;
 
-            Boolean OK = true;
+            bool OK = true;
 
             if (_reqTypePJLFS == PJLCommands.eRequestType.FSDirList)
             {
@@ -1450,9 +1450,9 @@ namespace PCLParaphernalia
                 defVal = _defaultPJLFSSize;
             }
 
-            String crntText = txtPJLFSOpt1.Text;
+            string crntText = txtPJLFSOpt1.Text;
 
-            OK = Int32.TryParse(crntText, out value);
+            OK = int.TryParse(crntText, out value);
 
             if (OK)
                 if (value < 0)
@@ -1466,7 +1466,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString();
+                    string newText = defVal.ToString();
 
                     MessageBox.Show(boxName + " value is invalid.\n\n" +
                                      "Value will be reset to default '" +
@@ -1504,15 +1504,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePJLFSOpt2(Boolean lostFocusEvent,
-                                           ref Int32 newValue)
+        private bool validatePJLFSOpt2(bool lostFocusEvent,
+                                           ref int newValue)
         {
-            Int32 value;
-            Int32 defVal;
+            int value;
+            int defVal;
 
-            String boxName;
+            string boxName;
 
-            Boolean OK = true;
+            bool OK = true;
 
             if (_reqTypePJLFS == PJLCommands.eRequestType.FSDirList)
             {
@@ -1525,9 +1525,9 @@ namespace PCLParaphernalia
                 defVal = _defaultPJLFSOffset;
             }
 
-            String crntText = txtPJLFSOpt2.Text;
+            string crntText = txtPJLFSOpt2.Text;
 
-            OK = Int32.TryParse(crntText, out value);
+            OK = int.TryParse(crntText, out value);
 
             if (OK)
                 if (value < 0)
@@ -1541,7 +1541,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString();
+                    string newText = defVal.ToString();
 
                     MessageBox.Show(boxName + " value is invalid.\n\n" +
                                      "Value will be reset to default '" +

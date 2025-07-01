@@ -24,8 +24,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Int32 _defLogPageOffLeftDPt = 170;
-        const Int32 _defLogPageOffTopDPt = 0;
+        const int _defLogPageOffLeftDPt = 170;
+        const int _defLogPageOffTopDPt = 0;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -33,15 +33,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Int32 _logPageOffLeftDPt;
-        private Int32 _logPageOffTopDPt;
+        private int _logPageOffLeftDPt;
+        private int _logPageOffTopDPt;
 
-        private Int32 _logPageWidthDPt;
-        private Int32 _logPageHeightDPt;
+        private int _logPageWidthDPt;
+        private int _logPageHeightDPt;
 
-        private Boolean _flagLogPageOptStdPagePCL;
+        private bool _flagLogPageOptStdPagePCL;
 
-        private Boolean _flagLogPageFormAsMacroPCL;
+        private bool _flagLogPageFormAsMacroPCL;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -194,7 +194,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private void setFlagLogPageFormAsMacro(
-            Boolean setFlag,
+            bool setFlag,
             ToolCommonData.ePrintLang crntPDL)
         {
             if (crntPDL == ToolCommonData.ePrintLang.PCL)
@@ -521,17 +521,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validateLogPageOffLeftDPt(Boolean lostFocusEvent)
+        private bool validateLogPageOffLeftDPt(bool lostFocusEvent)
         {
-            const Int32 minVal = -32767;
-            const Int32 maxVal = 32767;
-            const Int32 defVal = _defLogPageOffLeftDPt;
+            const int minVal = -32767;
+            const int maxVal = 32767;
+            const int defVal = _defLogPageOffLeftDPt;
 
-            Int32 value = 0;
+            int value = 0;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText = txtLogPageOffLeftDPt.Text;
+            string crntText = txtLogPageOffLeftDPt.Text;
 
             if (crntText == "")
             {
@@ -539,7 +539,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                OK = Int32.TryParse(crntText, out value);
+                OK = int.TryParse(crntText, out value);
 
                 if ((value < minVal) || (value > maxVal))
                     OK = false;
@@ -553,7 +553,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString("F2");
+                    string newText = defVal.ToString("F2");
 
                     MessageBox.Show("Left offset value '" + crntText +
                                     "' is invalid.\n\n" +
@@ -594,17 +594,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validateLogPageOffTopDPt(Boolean lostFocusEvent)
+        private bool validateLogPageOffTopDPt(bool lostFocusEvent)
         {
-            const Int32 minVal = -32767;
-            const Int32 maxVal = 32767;
-            const Int32 defVal = _defLogPageOffTopDPt;
+            const int minVal = -32767;
+            const int maxVal = 32767;
+            const int defVal = _defLogPageOffTopDPt;
 
-            Int32 value = 0;
+            int value = 0;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText = txtLogPageOffTopDPt.Text;
+            string crntText = txtLogPageOffTopDPt.Text;
 
             if (crntText == "")
             {
@@ -612,7 +612,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                OK = Int32.TryParse(crntText, out value);
+                OK = int.TryParse(crntText, out value);
 
                 if ((value < minVal) || (value > maxVal))
                     OK = false;
@@ -626,7 +626,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString("F2");
+                    string newText = defVal.ToString("F2");
 
                     MessageBox.Show("Top offset value '" + crntText +
                                     "' is invalid.\n\n" +
@@ -667,17 +667,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validateLogPageHeightDPt(Boolean lostFocusEvent)
+        private bool validateLogPageHeightDPt(bool lostFocusEvent)
         {
-            const Int32 minVal = 1;
-            const Int32 maxVal = 65535;
-            Int32 defVal = (Int32)(_paperLengthLogical * _unitsToDPts);
+            const int minVal = 1;
+            const int maxVal = 65535;
+            int defVal = (int)(_paperLengthLogical * _unitsToDPts);
 
-            Int32 value = 0;
+            int value = 0;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText = txtLogPageHeightDPt.Text;
+            string crntText = txtLogPageHeightDPt.Text;
 
             if (crntText == "")
             {
@@ -685,7 +685,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                OK = Int32.TryParse(crntText, out value);
+                OK = int.TryParse(crntText, out value);
 
                 if ((value < minVal) || (value > maxVal))
                     OK = false;
@@ -699,7 +699,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString("F2");
+                    string newText = defVal.ToString("F2");
 
                     MessageBox.Show("Logical page height value '" + crntText +
                                     "' is invalid.\n\n" +
@@ -740,17 +740,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validateLogPageWidthDPt(Boolean lostFocusEvent)
+        private bool validateLogPageWidthDPt(bool lostFocusEvent)
         {
-            const Int32 minVal = 1;
-            const Int32 maxVal = 65535;
-            Int32 defVal = (Int32)(_paperWidthLogical * _unitsToDPts);
+            const int minVal = 1;
+            const int maxVal = 65535;
+            int defVal = (int)(_paperWidthLogical * _unitsToDPts);
 
-            Int32 value = 0;
+            int value = 0;
 
-            Boolean OK = true;
+            bool OK = true;
 
-            String crntText = txtLogPageWidthDPt.Text;
+            string crntText = txtLogPageWidthDPt.Text;
 
             if (crntText == "")
             {
@@ -758,7 +758,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                OK = Int32.TryParse(crntText, out value);
+                OK = int.TryParse(crntText, out value);
 
                 if ((value < minVal) || (value > maxVal))
                     OK = false;
@@ -772,7 +772,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString("F2");
+                    string newText = defVal.ToString("F2");
 
                     MessageBox.Show("Logical page width value '" + crntText +
                                     "' is invalid.\n\n" +

@@ -18,7 +18,7 @@ namespace PCLParaphernalia
 
     public partial class WorkFolder : Window
     {
-        String _tmpFolder = Environment.GetEnvironmentVariable("TMP");
+        string _tmpFolder = Environment.GetEnvironmentVariable("TMP");
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -26,7 +26,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private String _workFoldername;
+        private string _workFoldername;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -67,9 +67,9 @@ namespace PCLParaphernalia
 
         private void btnFoldernameBrowse_Click(object sender, RoutedEventArgs e)
         {
-            Boolean selected;
+            bool selected;
 
-            String filename = _workFoldername;
+            string filename = _workFoldername;
 
             selected = selectDefWorkFolder(ref filename);
 
@@ -125,7 +125,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            Double windowScale = MainFormData.WindowScale;
+            double windowScale = MainFormData.WindowScale;
 
             zoomSlider.Value = windowScale;
 
@@ -164,9 +164,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectDefWorkFolder(ref String targetFolder)
+        private bool selectDefWorkFolder(ref string targetFolder)
         {
-            Boolean selected = false;
+            bool selected = false;
 
             FolderBrowserDialog folderDialog = new FolderBrowserDialog();
 

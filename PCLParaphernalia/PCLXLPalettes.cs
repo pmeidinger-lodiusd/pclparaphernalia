@@ -67,7 +67,7 @@ namespace PCLParaphernalia
                               16)   // include 8 'pure' colours + 8 grays
         };
 
-        private static Int32 _paletteCount =
+        private static int _paletteCount =
             _palettes.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
@@ -84,57 +84,57 @@ namespace PCLParaphernalia
 
         static PCLXLPalettes()
         {
-            Int32 crntIndex;
+            int crntIndex;
 
             //----------------------------------------------------------------//
 
-            crntIndex = (Int32)eIndex.PCLXLGray;
+            crntIndex = (int)eIndex.PCLXLGray;
 
             _palettes[crntIndex].addColour("Black", 0x00000000,
-                                             (Byte)eMono_2.Black);
+                                             (byte)eMono_2.Black);
             _palettes[crntIndex].setClrItemBlack();
             _palettes[crntIndex].addColour("White", 0x00ffffff,
-                                             (Byte)eMono_2.White);
+                                             (byte)eMono_2.White);
             _palettes[crntIndex].setClrItemWhite();
 
             //----------------------------------------------------------------//
 
-            crntIndex = (Int32)eIndex.PCLXLRGB;
+            crntIndex = (int)eIndex.PCLXLRGB;
 
             _palettes[crntIndex].addColour("Black", 0x00000000,
-                                             (Byte)eRGB_16.Black);
+                                             (byte)eRGB_16.Black);
             _palettes[crntIndex].setClrItemBlack();
             _palettes[crntIndex].addColour("Blue", 0x000000ff,
-                                             (Byte)eRGB_16.Blue);
+                                             (byte)eRGB_16.Blue);
             _palettes[crntIndex].addColour("Cyan", 0x0000ffff,
-                                             (Byte)eRGB_16.Cyan);
+                                             (byte)eRGB_16.Cyan);
             _palettes[crntIndex].addColour("Green", 0x0000ff00,
-                                             (Byte)eRGB_16.Green);
+                                             (byte)eRGB_16.Green);
             _palettes[crntIndex].addColour("Magenta", 0x00ff00ff,
-                                             (Byte)eRGB_16.Magenta);
+                                             (byte)eRGB_16.Magenta);
             _palettes[crntIndex].addColour("Red", 0x00ff0000,
-                                             (Byte)eRGB_16.Red);
+                                             (byte)eRGB_16.Red);
             _palettes[crntIndex].addColour("White", 0x00ffffff,
-                                             (Byte)eRGB_16.White);
+                                             (byte)eRGB_16.White);
             _palettes[crntIndex].setClrItemWhite();
             _palettes[crntIndex].addColour("Yellow", 0x00ffff00,
-                                             (Byte)eRGB_16.Yellow);
+                                             (byte)eRGB_16.Yellow);
             _palettes[crntIndex].addColour("Gray1", 0x00f0f0f0,
-                                             (Byte)eRGB_16.Gray1);
+                                             (byte)eRGB_16.Gray1);
             _palettes[crntIndex].addColour("Gray2", 0x00d0d0d0,
-                                             (Byte)eRGB_16.Gray2);
+                                             (byte)eRGB_16.Gray2);
             _palettes[crntIndex].addColour("Gray3", 0x00b0b0b0,
-                                             (Byte)eRGB_16.Gray3);
+                                             (byte)eRGB_16.Gray3);
             _palettes[crntIndex].addColour("Gray4", 0x00909090,
-                                             (Byte)eRGB_16.Gray4);
+                                             (byte)eRGB_16.Gray4);
             _palettes[crntIndex].addColour("Gray5", 0x00707070,
-                                             (Byte)eRGB_16.Gray5);
+                                             (byte)eRGB_16.Gray5);
             _palettes[crntIndex].addColour("Gray6", 0x00505050,
-                                             (Byte)eRGB_16.Gray6);
+                                             (byte)eRGB_16.Gray6);
             _palettes[crntIndex].addColour("Gray7", 0x00303030,
-                                             (Byte)eRGB_16.Gray7);
+                                             (byte)eRGB_16.Gray7);
             _palettes[crntIndex].addColour("Gray8", 0x00101010,
-                                             (Byte)eRGB_16.Gray8);
+                                             (byte)eRGB_16.Gray8);
         }
 
         //--------------------------------------------------------------------//
@@ -147,8 +147,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Byte getColourId(Int32 paletteIndex,
-                                        Int32 colourIndex)
+        public static byte getColourId(int paletteIndex,
+                                        int colourIndex)
         {
             return _palettes[paletteIndex].getColourId(colourIndex);
         }
@@ -162,8 +162,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getColourName(Int32 paletteIndex,
-                                            Int32 colourIndex)
+        public static string getColourName(int paletteIndex,
+                                            int colourIndex)
         {
             return _palettes[paletteIndex].getColourName(colourIndex);
         }
@@ -177,8 +177,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getColourRGB(Int32 paletteIndex,
-                                          Int32 colourIndex)
+        public static int getColourRGB(int paletteIndex,
+                                          int colourIndex)
         {
             return _palettes[paletteIndex].getColourRGB(colourIndex);
         }
@@ -192,7 +192,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Byte getClrItemBlack(Int32 paletteIndex)
+        public static byte getClrItemBlack(int paletteIndex)
         {
             return _palettes[paletteIndex].ClrItemBlack;
         }
@@ -206,7 +206,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Byte getClrItemWhite(Int32 paletteIndex)
+        public static byte getClrItemWhite(int paletteIndex)
         {
             return _palettes[paletteIndex].ClrItemWhite;
         }
@@ -220,7 +220,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Byte getCtClrItems(Int32 paletteIndex)
+        public static byte getCtClrItems(int paletteIndex)
         {
             return _palettes[paletteIndex].CtClrItems;
         }
@@ -236,8 +236,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getGrayLevel(Int32 paletteIndex,
-                                           Byte level)
+        public static string getGrayLevel(int paletteIndex,
+                                           byte level)
         {
             return _palettes[paletteIndex].getGrayLevel(level);
         }
@@ -251,7 +251,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getPaletteName(Int32 paletteIndex)
+        public static string getPaletteName(int paletteIndex)
         {
             return _palettes[paletteIndex].PaletteName;
         }
@@ -265,7 +265,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean isMonochrome(Int32 paletteIndex)
+        public static bool isMonochrome(int paletteIndex)
         {
             return _palettes[paletteIndex].Monochrome;
         }

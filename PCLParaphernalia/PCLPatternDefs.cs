@@ -18,8 +18,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Byte cPatternHeight = 16;
-        const Byte cPatternWidth = 16;
+        const byte cPatternHeight = 16;
+        const byte cPatternWidth = 16;
 
         public enum eType : byte
         {
@@ -36,7 +36,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static Byte[] _shade_1 = { 0x00, 0x00, 0x00, 0x00,
+        static byte[] _shade_1 = { 0x00, 0x00, 0x00, 0x00,
                                    0x40, 0x40, 0x00, 0x00,
                                    0x00, 0x00, 0x00, 0x00,
                                    0x00, 0x00, 0x00, 0x00,
@@ -45,7 +45,7 @@ namespace PCLParaphernalia
                                    0x00, 0x00, 0x00, 0x00,
                                    0x00, 0x00, 0x00, 0x00 };
 
-        static Byte[] _shade_2 = { 0x00, 0x00, 0x00, 0x00,
+        static byte[] _shade_2 = { 0x00, 0x00, 0x00, 0x00,
                                    0x40, 0x40, 0x00, 0x00,
                                    0x00, 0x00, 0x00, 0x00,
                                    0x04, 0x04, 0x00, 0x00,
@@ -54,7 +54,7 @@ namespace PCLParaphernalia
                                    0x00, 0x00, 0x00, 0x00,
                                    0x04, 0x04, 0x00, 0x00 };
 
-        static Byte[] _shade_3 = { 0x00, 0x00, 0x60, 0x60,
+        static byte[] _shade_3 = { 0x00, 0x00, 0x60, 0x60,
                                    0x60, 0x60, 0x00, 0x00,
                                    0x00, 0x00, 0x06, 0x06,
                                    0x06, 0x06, 0x00, 0x00,
@@ -63,7 +63,7 @@ namespace PCLParaphernalia
                                    0x00, 0x00, 0x06, 0x06,
                                    0x06, 0x06, 0x00, 0x00 };
 
-        static Byte[] _shade_4 = { 0xC1, 0xC1, 0xC1, 0xC1,
+        static byte[] _shade_4 = { 0xC1, 0xC1, 0xC1, 0xC1,
                                    0x80, 0x80, 0x08, 0x08,
                                    0x1C, 0x1C, 0x1C, 0x1C,
                                    0x08, 0x08, 0x80, 0x80,
@@ -72,7 +72,7 @@ namespace PCLParaphernalia
                                    0x1C, 0x1C, 0x1C, 0x1C,
                                    0x08, 0x08, 0x80, 0x80 };
 
-        static Byte[] _shade_5 = { 0xC1, 0xC1, 0xEB, 0xEB,
+        static byte[] _shade_5 = { 0xC1, 0xC1, 0xEB, 0xEB,
                                    0xC1, 0xC1, 0x88, 0x88,
                                    0x1C, 0x1C, 0xBE, 0xBE,
                                    0x1C, 0x1C, 0x88, 0x88,
@@ -81,7 +81,7 @@ namespace PCLParaphernalia
                                    0x1C, 0x1C, 0xBE, 0xBE,
                                    0x1C, 0x1C, 0x88, 0x88 };
 
-        static Byte[] _shade_6 = { 0xE3, 0xE3, 0xE3, 0xE3,
+        static byte[] _shade_6 = { 0xE3, 0xE3, 0xE3, 0xE3,
                                    0xE3, 0xE3, 0xFF, 0xFF,
                                    0x3E, 0x3E, 0x3E, 0x3E,
                                    0x3E, 0x3E, 0xFF, 0xFF,
@@ -90,7 +90,7 @@ namespace PCLParaphernalia
                                    0x3E, 0x3E, 0x3E, 0x3E,
                                    0x3E, 0x3E, 0xFF, 0xFF };
 
-        static Byte[] _shade_7 = { 0xF7, 0xF7, 0xE3, 0xE3,
+        static byte[] _shade_7 = { 0xF7, 0xF7, 0xE3, 0xE3,
                                    0xF7, 0xF7, 0xFF, 0xFF,
                                    0x7F, 0x7F, 0x3E, 0x3E,
                                    0x7F, 0x7F, 0xFF, 0xFF,
@@ -99,7 +99,7 @@ namespace PCLParaphernalia
                                    0x7F, 0x7F, 0x3E, 0x3E,
                                    0x7F, 0x7F, 0xFF, 0xFF };
 
-        static Byte[] _shade_8 = { 0xFF, 0xFF, 0xFF, 0xFF,
+        static byte[] _shade_8 = { 0xFF, 0xFF, 0xFF, 0xFF,
                                    0xFF, 0xFF, 0xFF, 0xFF,
                                    0xFF, 0xFF, 0xFF, 0xFF,
                                    0xFF, 0xFF, 0xFF, 0xFF,
@@ -110,7 +110,7 @@ namespace PCLParaphernalia
 
         //--------------------------------------------------------------------//
 
-        static Byte[] _hatch_1 = { 0x00, 0x00, 0x00, 0x00,
+        static byte[] _hatch_1 = { 0x00, 0x00, 0x00, 0x00,
                                    0x00, 0x00, 0x00, 0x00,
                                    0x00, 0x00, 0x00, 0x00,
                                    0x00, 0x00, 0xFF, 0xFF,
@@ -119,7 +119,7 @@ namespace PCLParaphernalia
                                    0x00, 0x00, 0x00, 0x00,
                                    0x00, 0x00, 0x00, 0x00 };
 
-        static Byte[] _hatch_2 = { 0x01, 0x80, 0x01, 0x80,
+        static byte[] _hatch_2 = { 0x01, 0x80, 0x01, 0x80,
                                    0x01, 0x80, 0x01, 0x80,
                                    0x01, 0x80, 0x01, 0x80,
                                    0x01, 0x80, 0x01, 0x80,
@@ -128,7 +128,7 @@ namespace PCLParaphernalia
                                    0x01, 0x80, 0x01, 0x80,
                                    0x01, 0x80, 0x01, 0x80 };
 
-        static Byte[] _hatch_3 = { 0x80, 0x03, 0x00, 0x07,
+        static byte[] _hatch_3 = { 0x80, 0x03, 0x00, 0x07,
                                    0x00, 0x0E, 0x00, 0x1C,
                                    0x00, 0x38, 0x00, 0x70,
                                    0x00, 0xE0, 0x01, 0xC0,
@@ -137,7 +137,7 @@ namespace PCLParaphernalia
                                    0x38, 0x00, 0x70, 0x00,
                                    0xE0, 0x00, 0xC0, 0x01 };
 
-        static Byte[] _hatch_4 = { 0xC0, 0x01, 0xE0, 0x00,
+        static byte[] _hatch_4 = { 0xC0, 0x01, 0xE0, 0x00,
                                    0x70, 0x00, 0x38, 0x00,
                                    0x1C, 0x00, 0x0E, 0x00,
                                    0x07, 0x00, 0x03, 0x80,
@@ -146,7 +146,7 @@ namespace PCLParaphernalia
                                    0x00, 0x1C, 0x00, 0x0E,
                                    0x00, 0x07, 0x80, 0x03 };
 
-        static Byte[] _hatch_5 = { 0x01, 0x80, 0x01, 0x80,
+        static byte[] _hatch_5 = { 0x01, 0x80, 0x01, 0x80,
                                    0x01, 0x80, 0x01, 0x80,
                                    0x01, 0x80, 0x01, 0x80,
                                    0x01, 0x80, 0xFF, 0xFF,
@@ -155,7 +155,7 @@ namespace PCLParaphernalia
                                    0x01, 0x80, 0x01, 0x80,
                                    0x01, 0x80, 0x01, 0x80 };
 
-        static Byte[] _hatch_6 = { 0xC0, 0x03, 0xE0, 0x07,
+        static byte[] _hatch_6 = { 0xC0, 0x03, 0xE0, 0x07,
                                    0x70, 0x0E, 0x38, 0x1C,
                                    0x1C, 0x38, 0x0E, 0x70,
                                    0x07, 0xE0, 0x03, 0xC0,
@@ -288,10 +288,10 @@ namespace PCLParaphernalia
 
         //--------------------------------------------------------------------//
 
-        private static Int32 _patternsCtShade =
+        private static int _patternsCtShade =
             _patternsShade.GetUpperBound(0) + 1;
 
-        private static Int32 _patternsCtHatch =
+        private static int _patternsCtHatch =
             _patternsHatch.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
@@ -314,7 +314,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getCount(eType type)
+        public static int getCount(eType type)
         {
             if (type == eType.Shading)
                 return _patternsCtShade;
@@ -333,8 +333,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Byte[] getBytes(eType type,
-                                       Int32 patternDefIndex)
+        public static byte[] getBytes(eType type,
+                                       int patternDefIndex)
         {
             if (type == eType.Shading)
                 return _patternsShade[patternDefIndex].Pattern;
@@ -353,8 +353,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getDesc(eType type,
-                                      Int32 patternDefIndex)
+        public static string getDesc(eType type,
+                                      int patternDefIndex)
         {
             if (type == eType.Shading)
                 return _patternsShade[patternDefIndex].Desc;
@@ -373,8 +373,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getHeight(eType type,
-                                       Int32 patternDefIndex)
+        public static ushort getHeight(eType type,
+                                       int patternDefIndex)
         {
             if (type == eType.Shading)
                 return _patternsShade[patternDefIndex].Height;
@@ -393,8 +393,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getId(eType type,
-                                   Int32 patternDefIndex)
+        public static ushort getId(eType type,
+                                   int patternDefIndex)
         {
             if (type == eType.Shading)
                 return _patternsShade[patternDefIndex].Id;
@@ -413,8 +413,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getIdSec(eType type,
-                                      Int32 patternDefIndex)
+        public static ushort getIdSec(eType type,
+                                      int patternDefIndex)
         {
             if (type == eType.Shading)
                 return _patternsShade[patternDefIndex].IdSec;
@@ -433,8 +433,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getWidth(eType type,
-                                      Int32 patternDefIndex)
+        public static ushort getWidth(eType type,
+                                      int patternDefIndex)
         {
             if (type == eType.Shading)
                 return _patternsShade[patternDefIndex].Width;

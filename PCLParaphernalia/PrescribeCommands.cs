@@ -21,13 +21,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static SortedList<String, PrescribeCommand> _cmds =
-            new SortedList<String, PrescribeCommand>();
+        private static SortedList<string, PrescribeCommand> _cmds =
+            new SortedList<string, PrescribeCommand>();
 
         private static PrescribeCommand _cmdUnknown;
         private static PrescribeCommand _cmdIntro;
 
-        private static Int32 _cmdCount;
+        private static int _cmdCount;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -49,13 +49,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean checkCmd(String name,
-                                        ref String description,
-                                        ref Boolean flagCmdExit,
-                                        ref Boolean flagCmdSetCRC,
-                                        Int32 level)
+        public static bool checkCmd(string name,
+                                        ref string description,
+                                        ref bool flagCmdExit,
+                                        ref bool flagCmdSetCRC,
+                                        int level)
         {
-            Boolean seqKnown = true;
+            bool seqKnown = true;
 
             PrescribeCommand cmd;
 
@@ -88,8 +88,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void checkCmdIntro(ref String description,
-                                          Int32 level)
+        public static void checkCmdIntro(ref string description,
+                                          int level)
         {
             description = _cmdIntro.Description;
 
@@ -105,11 +105,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 displayCmds(DataGrid grid)
+        public static int displayCmds(DataGrid grid)
         {
-            Int32 count = 0;
+            int count = 0;
 
-            foreach (KeyValuePair<String, PrescribeCommand> kvp
+            foreach (KeyValuePair<string, PrescribeCommand> kvp
                 in _cmds)
             {
                 count++;
@@ -129,11 +129,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void displayStatsCounts(DataTable table,
-                                               Boolean incUsedSeqsOnly)
+                                               bool incUsedSeqsOnly)
         {
-            Int32 count = 0;
+            int count = 0;
 
-            Boolean displaySeq,
+            bool displaySeq,
                     hddrWritten;
 
             DataRow row;
@@ -196,7 +196,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            foreach (KeyValuePair<String, PrescribeCommand> kvp
+            foreach (KeyValuePair<string, PrescribeCommand> kvp
                 in _cmds)
             {
                 displaySeq = true;
@@ -285,7 +285,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getCount()
+        public static int getCount()
         {
             return _cmdCount;
         }
@@ -299,7 +299,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getDesc(String name)
+        public static string getDesc(string name)
         {
             return _cmds[name].Description;
         }
@@ -313,7 +313,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getDescCmdIntro()
+        public static string getDescCmdIntro()
         {
             return _cmdIntro.Description;
         }
@@ -343,7 +343,7 @@ namespace PCLParaphernalia
 
         public static void populateTable()
         {
-            String command;
+            string command;
 
             command = "?";
             _cmdUnknown =
@@ -1994,7 +1994,7 @@ namespace PCLParaphernalia
             _cmdUnknown.resetStatistics();
             _cmdIntro.resetStatistics();
 
-            foreach (KeyValuePair<String, PrescribeCommand> kvp in _cmds)
+            foreach (KeyValuePair<string, PrescribeCommand> kvp in _cmds)
             {
                 cmd = kvp.Value;
 

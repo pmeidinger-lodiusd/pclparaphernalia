@@ -18,19 +18,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Double _windowScale = 1.0;
+        private static double _windowScale = 1.0;
 
-        private static Boolean _versionChange = false;
+        private static bool _versionChange = false;
 
-        private static Int32 _versionMajorOld = -1;
-        private static Int32 _versionMinorOld = -1;
-        private static Int32 _versionBuildOld = -1;
-        private static Int32 _versionRevisionOld = -1;
+        private static int _versionMajorOld = -1;
+        private static int _versionMinorOld = -1;
+        private static int _versionBuildOld = -1;
+        private static int _versionRevisionOld = -1;
 
-        private static Int32 _versionMajorCrnt = -1;
-        private static Int32 _versionMinorCrnt = -1;
-        private static Int32 _versionBuildCrnt = -1;
-        private static Int32 _versionRevisionCrnt = -1;
+        private static int _versionMajorCrnt = -1;
+        private static int _versionMinorCrnt = -1;
+        private static int _versionBuildCrnt = -1;
+        private static int _versionRevisionCrnt = -1;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -45,12 +45,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean checkOldVersion(Int32 major,
-                                               Int32 minor,
-                                               Int32 build,
-                                               Int32 revision)
+        public static bool checkOldVersion(int major,
+                                               int minor,
+                                               int build,
+                                               int revision)
         {
-            Boolean oldMatch = false;
+            bool oldMatch = false;
 
             if (VersionChange)
             {
@@ -75,11 +75,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void getVersionData(Boolean crnt,
-                                           ref Int32 major,
-                                           ref Int32 minor,
-                                           ref Int32 build,
-                                           ref Int32 revision)
+        public static void getVersionData(bool crnt,
+                                           ref int major,
+                                           ref int minor,
+                                           ref int build,
+                                           ref int revision)
         {
             if (crnt)
             {
@@ -106,11 +106,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setVersionData(Boolean crnt,
-                                           Int32 major,
-                                           Int32 minor,
-                                           Int32 build,
-                                           Int32 revision)
+        public static void setVersionData(bool crnt,
+                                           int major,
+                                           int minor,
+                                           int build,
+                                           int revision)
         {
             if (crnt)
             {
@@ -137,7 +137,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean VersionChange
+        public static bool VersionChange
         {
             get { return _versionChange; }
             set
@@ -152,7 +152,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Double WindowScale
+        public static double WindowScale
         {
             get { return _windowScale; }
             set

@@ -19,47 +19,47 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const String _mainKey = MainForm._regMainKey;
+        const string _mainKey = MainForm._regMainKey;
 
-        const String _subKeyTools = "Tools";
-        const String _subKeyToolsStatusReadback = "StatusReadback";
-        const String _subKeyPCL = "PCL";
-        const String _subKeyPJL = "PJL";
-        const String _subKeyPJLFS = "PJLFS";
+        const string _subKeyTools = "Tools";
+        const string _subKeyToolsStatusReadback = "StatusReadback";
+        const string _subKeyPCL = "PCL";
+        const string _subKeyPJL = "PJL";
+        const string _subKeyPJLFS = "PJLFS";
 
-        const String _nameBinSrcFile = "BinSrcFile";
-        const String _nameBinTgtFile = "BinTgtFile";
-        const String _nameCaptureFile = "CaptureFile";
-        const String _nameCustomCat = "CustomCat";
-        const String _nameCustomVar = "CustomVar";
-        const String _nameObjectPath = "ObjectPath";
-        const String _nameReportFile = "ReportFile";
-        const String _nameFlagPJLFS = "flagPJLFS";
-        const String _nameFlagPJLFSSecJob = "flagPJLFSSecJob";
-        const String _nameIndxCategory = "IndxCategory";
-        const String _nameIndxCommand = "IndxCommand";
-        const String _nameIndxEntityType = "IndxEntityType";
-        const String _nameIndxLocationType = "IndxLocationType";
-        const String _nameIndxPDL = "IndxPDL";
-        const String _nameIndxRptFileFmt = "IndxRptFileFmt";
-        const String _nameIndxVariable = "IndxVariable";
+        const string _nameBinSrcFile = "BinSrcFile";
+        const string _nameBinTgtFile = "BinTgtFile";
+        const string _nameCaptureFile = "CaptureFile";
+        const string _nameCustomCat = "CustomCat";
+        const string _nameCustomVar = "CustomVar";
+        const string _nameObjectPath = "ObjectPath";
+        const string _nameReportFile = "ReportFile";
+        const string _nameFlagPJLFS = "flagPJLFS";
+        const string _nameFlagPJLFSSecJob = "flagPJLFSSecJob";
+        const string _nameIndxCategory = "IndxCategory";
+        const string _nameIndxCommand = "IndxCommand";
+        const string _nameIndxEntityType = "IndxEntityType";
+        const string _nameIndxLocationType = "IndxLocationType";
+        const string _nameIndxPDL = "IndxPDL";
+        const string _nameIndxRptFileFmt = "IndxRptFileFmt";
+        const string _nameIndxVariable = "IndxVariable";
 
-        const Int32 _flagFalse = 0;
-        const Int32 _flagTrue = 1;
-        const Int32 _indexZero = 0;
+        const int _flagFalse = 0;
+        const int _flagTrue = 1;
+        const int _indexZero = 0;
 
-        const String _defaultCaptureFilePCL = "CaptureFile_StatusReadbackPCL.prn";
-        const String _defaultCaptureFilePJL = "CaptureFile_StatusReadbackPJL.prn";
+        const string _defaultCaptureFilePCL = "CaptureFile_StatusReadbackPCL.prn";
+        const string _defaultCaptureFilePJL = "CaptureFile_StatusReadbackPJL.prn";
 
-        const String _defaultReportFilePCL = "ReportFile_StatusReadbackPCL.txt";
-        const String _defaultReportFilePJL = "ReportFile_StatusReadbackPJL.txt";
+        const string _defaultReportFilePCL = "ReportFile_StatusReadbackPCL.txt";
+        const string _defaultReportFilePJL = "ReportFile_StatusReadbackPJL.txt";
 
-        const String _defaultCustomCatPJL = "CUSTOM_CAT_1";
-        const String _defaultCustomVarPJL = "CUSTOM_VAR_1";
+        const string _defaultCustomCatPJL = "CUSTOM_CAT_1";
+        const string _defaultCustomVarPJL = "CUSTOM_VAR_1";
 
-        const String _defaultBinSrcFilePJLFS = "BinSrcFile_PJLFS.pcl";
-        const String _defaultBinTgtFilePJLFS = "BinTgtFile_PJLFS.pcl";
-        const String _defaultObjectPathPJLFS = "0:\\pcl\\macros\\macro1";
+        const string _defaultBinSrcFilePJLFS = "BinSrcFile_PJLFS.pcl";
+        const string _defaultBinTgtFilePJLFS = "BinTgtFile_PJLFS.pcl";
+        const string _defaultObjectPathPJLFS = "0:\\pcl\\macros\\macro1";
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -71,21 +71,21 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void loadDataCapture(ToolCommonData.ePrintLang crntPDL,
-                                            ref String captureFile)
+                                            ref string captureFile)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String oldKey = _subKeyTools + "\\" + _subKeyToolsStatusReadback;
-            String oldFile;
+            string oldKey = _subKeyTools + "\\" + _subKeyToolsStatusReadback;
+            string oldFile;
 
-            Boolean update_from_v2_5_0_0 = false;
+            bool update_from_v2_5_0_0 = false;
 
-            String defWorkFolder = ToolCommonData.DefWorkFolder;
+            string defWorkFolder = ToolCommonData.DefWorkFolder;
 
             using (RegistryKey subKey = keyMain.OpenSubKey(oldKey, true))
             {
-                oldFile = (String)subKey.GetValue(_nameCaptureFile);
+                oldFile = (string)subKey.GetValue(_nameCaptureFile);
 
                 if (oldFile != null)
                 {
@@ -97,7 +97,7 @@ namespace PCLParaphernalia
 
             if (update_from_v2_5_0_0)
             {
-                String keyPCL = _subKeyTools +
+                string keyPCL = _subKeyTools +
                                  "\\" + _subKeyToolsStatusReadback +
                                  "\\" + _subKeyPCL;
 
@@ -108,7 +108,7 @@ namespace PCLParaphernalia
                                      RegistryValueKind.String);
                 }
 
-                String keyPJL = _subKeyTools +
+                string keyPJL = _subKeyTools +
                                  "\\" + _subKeyToolsStatusReadback +
                                  "\\" + _subKeyPJL;
 
@@ -122,24 +122,24 @@ namespace PCLParaphernalia
 
             if (crntPDL == ToolCommonData.ePrintLang.PCL)
             {
-                String key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
+                string key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
                                             "\\" + _subKeyPCL;
 
                 using (RegistryKey subKey = keyMain.CreateSubKey(key))
                 {
-                    captureFile = (String)subKey.GetValue(
+                    captureFile = (string)subKey.GetValue(
                         _nameCaptureFile,
                         defWorkFolder + "\\" + _defaultCaptureFilePCL);
                 }
             }
             else if (crntPDL == ToolCommonData.ePrintLang.PJL)
             {
-                String key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
+                string key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
                                             "\\" + _subKeyPJL;
 
                 using (RegistryKey subKey = keyMain.CreateSubKey(key))
                 {
-                    captureFile = (String)subKey.GetValue(
+                    captureFile = (string)subKey.GetValue(
                         _nameCaptureFile,
                         defWorkFolder + "\\" + _defaultCaptureFilePJL);
                 }
@@ -155,16 +155,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCommon(ref Int32 indxPDL)
+        public static void loadDataCommon(ref int indxPDL)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTools + "\\" + _subKeyToolsStatusReadback;
+            string key = _subKeyTools + "\\" + _subKeyToolsStatusReadback;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxPDL = (Int32)subKey.GetValue(_nameIndxPDL,
+                indxPDL = (int)subKey.GetValue(_nameIndxPDL,
                                                  _indexZero);
             }
         }
@@ -178,25 +178,25 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCL(ref Int32 indxEntityType,
-                                       ref Int32 indxLocationType,
-                                       ref String reportFile)
+        public static void loadDataPCL(ref int indxEntityType,
+                                       ref int indxLocationType,
+                                       ref string reportFile)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
-            String oldKey = _subKeyTools + "\\" + _subKeyToolsStatusReadback;
-            String oldFile;
+            string oldKey = _subKeyTools + "\\" + _subKeyToolsStatusReadback;
+            string oldFile;
 
-            Boolean update_from_v2_5_0_0 = false;
+            bool update_from_v2_5_0_0 = false;
 
-            String defWorkFolder = ToolCommonData.DefWorkFolder;
+            string defWorkFolder = ToolCommonData.DefWorkFolder;
 
             using (RegistryKey subKey = keyMain.OpenSubKey(oldKey, true))
             {
-                oldFile = (String)subKey.GetValue(_nameReportFile);
+                oldFile = (string)subKey.GetValue(_nameReportFile);
 
                 if (oldFile != null)
                 {
@@ -208,7 +208,7 @@ namespace PCLParaphernalia
 
             if (update_from_v2_5_0_0)
             {
-                String keyPCL = _subKeyTools +
+                string keyPCL = _subKeyTools +
                                  "\\" + _subKeyToolsStatusReadback +
                                  "\\" + _subKeyPCL;
 
@@ -219,7 +219,7 @@ namespace PCLParaphernalia
                                      RegistryValueKind.String);
                 }
 
-                String keyPJL = _subKeyTools +
+                string keyPJL = _subKeyTools +
                                  "\\" + _subKeyToolsStatusReadback +
                                  "\\" + _subKeyPJL;
 
@@ -236,13 +236,13 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxEntityType = (Int32)subKey.GetValue(_nameIndxEntityType,
+                indxEntityType = (int)subKey.GetValue(_nameIndxEntityType,
                                                         _indexZero);
 
-                indxLocationType = (Int32)subKey.GetValue(_nameIndxLocationType,
+                indxLocationType = (int)subKey.GetValue(_nameIndxLocationType,
                                                           _indexZero);
 
-                reportFile = (String)subKey.GetValue(_nameReportFile,
+                reportFile = (string)subKey.GetValue(_nameReportFile,
                                                       defWorkFolder + "\\" +
                                                       _defaultReportFilePCL);
             }
@@ -257,28 +257,28 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPJL(ref Int32 indxCategory,
-                                       ref Int32 indxCommand,
-                                       ref Int32 indxVariable,
-                                       ref String customCat,
-                                       ref String customVar,
-                                       ref String reportFile)
+        public static void loadDataPJL(ref int indxCategory,
+                                       ref int indxCommand,
+                                       ref int indxVariable,
+                                       ref string customCat,
+                                       ref string customVar,
+                                       ref string reportFile)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
-            String oldKey = _subKeyTools + "\\" + _subKeyToolsStatusReadback;
-            String oldFile;
+            string oldKey = _subKeyTools + "\\" + _subKeyToolsStatusReadback;
+            string oldFile;
 
-            Boolean update_from_v2_5_0_0 = false;
+            bool update_from_v2_5_0_0 = false;
 
-            String defWorkFolder = ToolCommonData.DefWorkFolder;
+            string defWorkFolder = ToolCommonData.DefWorkFolder;
 
             using (RegistryKey subKey = keyMain.OpenSubKey(oldKey, true))
             {
-                oldFile = (String)subKey.GetValue(_nameReportFile);
+                oldFile = (string)subKey.GetValue(_nameReportFile);
 
                 if (oldFile != null)
                 {
@@ -290,7 +290,7 @@ namespace PCLParaphernalia
 
             if (update_from_v2_5_0_0)
             {
-                String keyPCL = _subKeyTools +
+                string keyPCL = _subKeyTools +
                                  "\\" + _subKeyToolsStatusReadback +
                                  "\\" + _subKeyPCL;
 
@@ -301,7 +301,7 @@ namespace PCLParaphernalia
                                      RegistryValueKind.String);
                 }
 
-                String keyPJL = _subKeyTools +
+                string keyPJL = _subKeyTools +
                                  "\\" + _subKeyToolsStatusReadback +
                                  "\\" + _subKeyPJL;
 
@@ -318,22 +318,22 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxCategory = (Int32)subKey.GetValue(_nameIndxCategory,
+                indxCategory = (int)subKey.GetValue(_nameIndxCategory,
                                                       _indexZero);
 
-                indxCommand = (Int32)subKey.GetValue(_nameIndxCommand,
+                indxCommand = (int)subKey.GetValue(_nameIndxCommand,
                                                       _indexZero);
 
-                indxVariable = (Int32)subKey.GetValue(_nameIndxVariable,
+                indxVariable = (int)subKey.GetValue(_nameIndxVariable,
                                                       _indexZero);
 
-                customCat = (String)subKey.GetValue(_nameCustomCat,
+                customCat = (string)subKey.GetValue(_nameCustomCat,
                                                      _defaultCustomCatPJL);
 
-                customVar = (String)subKey.GetValue(_nameCustomVar,
+                customVar = (string)subKey.GetValue(_nameCustomVar,
                                                      _defaultCustomVarPJL);
 
-                reportFile = (String)subKey.GetValue(_nameReportFile,
+                reportFile = (string)subKey.GetValue(_nameReportFile,
                                                       defWorkFolder + "\\" +
                                                       _defaultReportFilePJL);
             }
@@ -348,40 +348,40 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPJLFS(ref Int32 indxCommand,
-                                          ref String objectPath,
-                                          ref String binSrcFile,
-                                          ref String binTgtFile,
-                                          ref Boolean flagPJLFS,
-                                          ref Boolean flagPJLFSSecJob)
+        public static void loadDataPJLFS(ref int indxCommand,
+                                          ref string objectPath,
+                                          ref string binSrcFile,
+                                          ref string binTgtFile,
+                                          ref bool flagPJLFS,
+                                          ref bool flagPJLFSSecJob)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
-            Int32 tmpInt;
+            int tmpInt;
 
-            String defWorkFolder = ToolCommonData.DefWorkFolder;
+            string defWorkFolder = ToolCommonData.DefWorkFolder;
 
             key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
                                  "\\" + _subKeyPJLFS;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxCommand = (Int32)subKey.GetValue(_nameIndxCommand,
+                indxCommand = (int)subKey.GetValue(_nameIndxCommand,
                                                       _indexZero);
 
-                objectPath = (String)subKey.GetValue(_nameObjectPath,
+                objectPath = (string)subKey.GetValue(_nameObjectPath,
                                                        _defaultObjectPathPJLFS);
 
-                binSrcFile = (String)subKey.GetValue(_nameBinSrcFile,
+                binSrcFile = (string)subKey.GetValue(_nameBinSrcFile,
                                                        _defaultBinSrcFilePJLFS);
 
-                binTgtFile = (String)subKey.GetValue(_nameBinTgtFile,
+                binTgtFile = (string)subKey.GetValue(_nameBinTgtFile,
                                                        _defaultBinTgtFilePJLFS);
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagPJLFS,
+                tmpInt = (int)subKey.GetValue(_nameFlagPJLFS,
                                                   _flagFalse);
 
                 if (tmpInt == _flagFalse)
@@ -389,7 +389,7 @@ namespace PCLParaphernalia
                 else
                     flagPJLFS = true;
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagPJLFSSecJob,
+                tmpInt = (int)subKey.GetValue(_nameFlagPJLFSSecJob,
                                                   _flagFalse);
 
                 if (tmpInt == _flagFalse)
@@ -408,16 +408,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataRpt(ref Int32 indxRptFileFmt)
+        public static void loadDataRpt(ref int indxRptFileFmt)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTools + "\\" + _subKeyToolsStatusReadback;
+            string key = _subKeyTools + "\\" + _subKeyToolsStatusReadback;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxRptFileFmt = (Int32)subKey.GetValue(_nameIndxRptFileFmt,
+                indxRptFileFmt = (int)subKey.GetValue(_nameIndxRptFileFmt,
                                                          _indexZero);
             }
         }
@@ -432,14 +432,14 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void saveDataCapture(ToolCommonData.ePrintLang crntPDL,
-                                            String captureFile)
+                                            string captureFile)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
             if (crntPDL == ToolCommonData.ePrintLang.PCL)
             {
-                String key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
+                string key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
                                             "\\" + _subKeyPCL;
 
                 using (RegistryKey subKey = keyMain.CreateSubKey(key))
@@ -454,7 +454,7 @@ namespace PCLParaphernalia
             }
             else if (crntPDL == ToolCommonData.ePrintLang.PJL)
             {
-                String key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
+                string key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
                                             "\\" + _subKeyPJL;
 
                 using (RegistryKey subKey = keyMain.CreateSubKey(key))
@@ -478,12 +478,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCommon(Int32 indxPDL)
+        public static void saveDataCommon(int indxPDL)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTools + "\\" + _subKeyToolsStatusReadback;
+            string key = _subKeyTools + "\\" + _subKeyToolsStatusReadback;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -502,14 +502,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCL(Int32 indxEntityType,
-                                       Int32 indxLocType,
-                                       String reportFile)
+        public static void saveDataPCL(int indxEntityType,
+                                       int indxLocType,
+                                       string reportFile)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
                                  "\\" + _subKeyPCL;
@@ -542,17 +542,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPJL(Int32 indxCategory,
-                                       Int32 indxCommand,
-                                       Int32 indxVariable,
-                                       String customCat,
-                                       String customVar,
-                                       String reportFile)
+        public static void saveDataPJL(int indxCategory,
+                                       int indxCommand,
+                                       int indxVariable,
+                                       string customCat,
+                                       string customVar,
+                                       string reportFile)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
                                  "\\" + _subKeyPJL;
@@ -603,17 +603,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPJLFS(Int32 indxCommand,
-                                          String objectPath,
-                                          String binSrcFile,
-                                          String binTgtFile,
-                                          Boolean flagPJLFS,
-                                          Boolean flagPJLFSSecJob)
+        public static void saveDataPJLFS(int indxCommand,
+                                          string objectPath,
+                                          string binSrcFile,
+                                          string binTgtFile,
+                                          bool flagPJLFS,
+                                          bool flagPJLFSSecJob)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
                                  "\\" + _subKeyPJLFS;
@@ -674,12 +674,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataRpt(Int32 indxRptFileFmt)
+        public static void saveDataRpt(int indxRptFileFmt)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTools + "\\" + _subKeyToolsStatusReadback;
+            string key = _subKeyTools + "\\" + _subKeyToolsStatusReadback;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {

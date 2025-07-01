@@ -23,11 +23,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Byte _tag;
+        private byte _tag;
 
-        private String _description;
+        private string _description;
 
-        private Boolean _flagReserved;
+        private bool _flagReserved;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -35,9 +35,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLXLEmbedDataDef(Byte tag,
-                                    Boolean flagReserved,
-                                    String description)
+        public PCLXLEmbedDataDef(byte tag,
+                                    bool flagReserved,
+                                    string description)
         {
             _tag = tag;
             _flagReserved = flagReserved;
@@ -50,7 +50,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Description
+        public string Description
         {
             get
             {
@@ -64,7 +64,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean FlagReserved
+        public bool FlagReserved
         {
             get
             {
@@ -78,11 +78,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Tag
+        public string Tag
         {
             get
             {
-                String tag;
+                string tag;
 
                 tag = "0x" + _tag.ToString("x2");
 
@@ -96,7 +96,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String Type
+        public string Type
         {
             get
             {

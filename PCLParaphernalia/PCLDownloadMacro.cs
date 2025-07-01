@@ -40,18 +40,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean checkForMacroId(String fileName,
-                                               Int64 fileSize,
-                                               ref Int32 macroId)
+        private static bool checkForMacroId(string fileName,
+                                               long fileSize,
+                                               ref int macroId)
         {
-            const Int32 prefixLen = 3;
+            const int prefixLen = 3;
 
-            Boolean flagOK = true;
+            bool flagOK = true;
 
-            Int32 offset = 0;
-            Int32 value = 0;
+            int offset = 0;
+            int value = 0;
 
-            Byte[] buf = new Byte[prefixLen];
+            byte[] buf = new byte[prefixLen];
 
             _binReader.Read(buf, 0, prefixLen);
 
@@ -63,20 +63,20 @@ namespace PCLParaphernalia
             }
             else
             {
-                const Int32 maxRead = 12;
-                Boolean foundTerm = false;
+                const int maxRead = 12;
+                bool foundTerm = false;
 
-                Int32 pos,
+                int pos,
                       maxPos;
 
-                Byte x;
+                byte x;
 
                 offset += prefixLen;
 
                 maxPos = offset + maxRead;
 
                 if (fileSize <= maxPos)
-                    maxPos = (Int32)(fileSize - 1);
+                    maxPos = (int)(fileSize - 1);
 
                 for (pos = offset;
                      (flagOK) && (!foundTerm) && (pos < maxPos);
@@ -122,13 +122,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean checkMacroFile(String filename,
-                                             ref Int32 macroId)
+        public static bool checkMacroFile(string filename,
+                                             ref int macroId)
         {
-            Boolean fileOpen = false;
-            Boolean macroIdPresent = false;
+            bool fileOpen = false;
+            bool macroIdPresent = false;
 
-            Int64 fileSize = 0;
+            long fileSize = 0;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -178,14 +178,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean macroFileCopy(BinaryWriter prnWriter,
-                                            String filename)
+        public static bool macroFileCopy(BinaryWriter prnWriter,
+                                            string filename)
         {
-            Boolean OK = true;
+            bool OK = true;
 
-            Boolean fileOpen = false;
+            bool fileOpen = false;
 
-            Int64 fileSize = 0;
+            long fileSize = 0;
 
             fileOpen = macroFileOpen(filename, ref fileSize);
 
@@ -195,12 +195,12 @@ namespace PCLParaphernalia
             }
             else
             {
-                const Int32 bufSize = 2048;
-                Int32 readSize;
+                const int bufSize = 2048;
+                int readSize;
 
-                Boolean endLoop;
+                bool endLoop;
 
-                Byte[] buf = new Byte[bufSize];
+                byte[] buf = new byte[bufSize];
 
                 endLoop = false;
 
@@ -229,10 +229,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean macroFileOpen(String fileName,
-                                             ref Int64 fileSize)
+        private static bool macroFileOpen(string fileName,
+                                             ref long fileSize)
         {
-            Boolean open = false;
+            bool open = false;
 
             if ((fileName == null) || (fileName == ""))
             {

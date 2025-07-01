@@ -58,41 +58,41 @@ namespace PCLParaphernalia
         private eStage _nextStage;
         private ePCLFontFormat _hddrFormat;
 
-        private Byte[] _buf;
+        private byte[] _buf;
 
-        private Int32 _fileOffset;
-        private Int32 _analysisLevel;
+        private int _fileOffset;
+        private int _analysisLevel;
 
-        private Boolean _validHddr;
-        private Boolean _firstSeg;
+        private bool _validHddr;
+        private bool _firstSeg;
 
-        private Boolean _bitmapFont;
-        private Boolean _intelliFont;
-        private Boolean _truetypeFont;
-        private Boolean _boundFont;
+        private bool _bitmapFont;
+        private bool _intelliFont;
+        private bool _truetypeFont;
+        private bool _boundFont;
 
-        private Int32 _pclDotResX;
-        private Int32 _pclDotResY;
-        private Int32 _fontType;
-        private Int32 _fontScaleFactor;
+        private int _pclDotResX;
+        private int _pclDotResY;
+        private int _fontType;
+        private int _fontScaleFactor;
 
-        private Int32 _hddrLen;
-        private Int32 _hddrRem;
-        private Int32 _hddrPos;
-        private Int32 _hddrChksLen;
-        private Int32 _hddrChksPos;
-        private Int32 _hddrChksVal;
-        private Int32 _hddrCpyrLen;
-        private Int32 _hddrCpyrPos;
-        private Int32 _hddrCpyrRem;
-        private Int32 _hddrDataLen;
-        private Int32 _hddrDataPos;
-        private Int32 _hddrDataRem;
-        private Int32 _hddrDescLen;
-        private Int32 _hddrResvLen;
-        private Int32 _hddrResvPos;
+        private int _hddrLen;
+        private int _hddrRem;
+        private int _hddrPos;
+        private int _hddrChksLen;
+        private int _hddrChksPos;
+        private int _hddrChksVal;
+        private int _hddrCpyrLen;
+        private int _hddrCpyrPos;
+        private int _hddrCpyrRem;
+        private int _hddrDataLen;
+        private int _hddrDataPos;
+        private int _hddrDataRem;
+        private int _hddrDescLen;
+        private int _hddrResvLen;
+        private int _hddrResvPos;
 
-        private Boolean _showBinData;
+        private bool _showBinData;
 
         private PrnParseConstants.eOptOffsetFormats _indxOffsetFormat;
 
@@ -117,24 +117,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean analyseFontHddr(Int32 hddrLen,
-                                       Int32 fileOffset,
-                                       Byte[] buf,
-                                       ref Int32 bufRem,
-                                       ref Int32 bufOffset,
+        public bool analyseFontHddr(int hddrLen,
+                                       int fileOffset,
+                                       byte[] buf,
+                                       ref int bufRem,
+                                       ref int bufOffset,
                                        PrnParseLinkData linkData,
                                        PrnParseOptions options,
                                        DataTable table)
         {
-            const Int32 minHddrDescLen = 64;
+            const int minHddrDescLen = 64;
 
-            Int32 binDataLen;
-            Boolean largeSegs;
-            Boolean validSegs = false;
+            int binDataLen;
+            bool largeSegs;
+            bool validSegs = false;
 
             PrnParseConstants.eContType contType;
 
-            Boolean continuation = false;
+            bool continuation = false;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -476,8 +476,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processChecksum(ref Int32 bufRem,
-                                      ref Int32 bufOffset)
+        private void processChecksum(ref int bufRem,
+                                      ref int bufOffset)
         {
             PrnParseConstants.eContType contType;
 
@@ -531,7 +531,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        Byte crntByte;
+                        byte crntByte;
 
                         contType = PrnParseConstants.eContType.None;
                         _linkData.resetContData();
@@ -584,7 +584,7 @@ namespace PCLParaphernalia
 
                         if (_hddrChksVal != crntByte)
                         {
-                            crntByte = (Byte)_hddrChksVal;
+                            crntByte = (byte)_hddrChksVal;
 
                             PrnParseCommon.addTextRow(
                                 PrnParseRowTypes.eType.MsgWarning,
@@ -624,24 +624,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processCopyrightData(ref Int32 bufRem,
-                                          ref Int32 bufOffset)
+        private void processCopyrightData(ref int bufRem,
+                                          ref int bufOffset)
         {
-            const Int32 sliceMax = 50;
+            const int sliceMax = 50;
 
             ASCIIEncoding ascii = new ASCIIEncoding();
 
             PrnParseConstants.eContType contType;
 
-            Int32 sliceLen;
+            int sliceLen;
 
-            String typeText;
+            string typeText;
 
-            Int32 remLen,
+            int remLen,
                   dataLen,
                   offset;
 
-            Boolean firstLine;
+            bool firstLine;
 
             if (_hddrCpyrRem > bufRem)
             {
@@ -693,7 +693,7 @@ namespace PCLParaphernalia
                     _analysisLevel);
             }
 
-            for (Int32 i = 0; i < dataLen; i++)
+            for (int i = 0; i < dataLen; i++)
             {
                 _hddrChksVal += _buf[bufOffset + i];
             }
@@ -740,25 +740,25 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processDescriptor(ref Int32 bufLen,
-                                       ref Int32 bufOffset)
+        private void processDescriptor(ref int bufLen,
+                                       ref int bufOffset)
         {
             ASCIIEncoding ascii = new ASCIIEncoding();
 
-            Char c;
+            char c;
 
-            Int32 ix1,
+            int ix1,
                   ix2,
                   ix3;
 
-            Int32 indxSymSet;
+            int indxSymSet;
 
-            Single fx1;
+            float fx1;
 
-            Boolean pitchSet,
+            bool pitchSet,
                     valOK;
 
-            String itemDesc;
+            string itemDesc;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -796,7 +796,7 @@ namespace PCLParaphernalia
 
             if (_hddrDescLen > 64)
             {
-                for (Int32 i = 64; i < _hddrDescLen; i++)
+                for (int i = 64; i < _hddrDescLen; i++)
                 {
                     _hddrChksVal += _buf[bufOffset + i];
                 }
@@ -1148,33 +1148,33 @@ namespace PCLParaphernalia
                 {
                     case 0:
                         itemDesc = PCLSymSetTypes.getDescStd(
-                                       (Int32)PCLSymSetTypes.eIndex.Bound_7bit);
+                                       (int)PCLSymSetTypes.eIndex.Bound_7bit);
                         break;
 
                     case 1:
                         itemDesc = PCLSymSetTypes.getDescStd(
-                                       (Int32)PCLSymSetTypes.eIndex.Bound_8bit);
+                                       (int)PCLSymSetTypes.eIndex.Bound_8bit);
                         break;
 
                     case 2:
                         itemDesc = PCLSymSetTypes.getDescStd(
-                                       (Int32)PCLSymSetTypes.eIndex.Bound_PC8);
+                                       (int)PCLSymSetTypes.eIndex.Bound_PC8);
                         break;
 
                     case 3:
                         itemDesc = PCLSymSetTypes.getDescStd(
-                                       (Int32)PCLSymSetTypes.eIndex.Bound_16bit);
+                                       (int)PCLSymSetTypes.eIndex.Bound_16bit);
                         break;
 
                     case 10:
                         itemDesc = PCLSymSetTypes.getDescStd(
-                                       (Int32)PCLSymSetTypes.eIndex.Unbound_MSL);
+                                       (int)PCLSymSetTypes.eIndex.Unbound_MSL);
                         _boundFont = false;
                         break;
 
                     case 11:
                         itemDesc = PCLSymSetTypes.getDescStd(
-                                       (Int32)PCLSymSetTypes.eIndex.Unbound_Unicode);
+                                       (int)PCLSymSetTypes.eIndex.Unbound_Unicode);
                         _boundFont = false;
                         break;
 
@@ -1277,10 +1277,10 @@ namespace PCLParaphernalia
 
                 ix2 = ix1 >> 5;
                 ix3 = (ix1 & 0x1f) + 64;
-                c = (Char)ix3;
+                c = (char)ix3;
 
                 indxSymSet =
-                    PCLSymbolSets.getIndexForId((UInt16)ix1);
+                    PCLSymbolSets.getIndexForId((ushort)ix1);
 
                 PrnParseCommon.addTextRow(
                     PrnParseRowTypes.eType.PCLFontHddr,
@@ -1456,7 +1456,7 @@ namespace PCLParaphernalia
                 if (_bitmapFont)
                 {
                     ix3 = (ix1 * 256) + ix2;
-                    fx1 = ((Single)(1024 * _pclDotResX)) / ix3;
+                    fx1 = ((float)(1024 * _pclDotResX)) / ix3;
 
                     PrnParseCommon.addTextRow(
                         PrnParseRowTypes.eType.PCLFontHddr,
@@ -1537,7 +1537,7 @@ namespace PCLParaphernalia
                 }
                 else if (_bitmapFont)
                 {
-                    fx1 = ((Single)(72 * ((ix1 * 256) + ix2))) /
+                    fx1 = ((float)(72 * ((ix1 * 256) + ix2))) /
                                    (1024 * _pclDotResY);
 
                     PrnParseCommon.addTextRow(
@@ -1551,7 +1551,7 @@ namespace PCLParaphernalia
                 }
                 else if (_intelliFont)
                 {
-                    fx1 = (Single)ix1 / 8;
+                    fx1 = (float)ix1 / 8;
 
                     if (pitchSet)
                     {
@@ -2457,7 +2457,7 @@ namespace PCLParaphernalia
                             "",
                             ix1 + " quarter dots");
 
-                        fx1 = ((Single)(4 * _pclDotResX)) / ix1;
+                        fx1 = ((float)(4 * _pclDotResX)) / ix1;
 
                         PrnParseCommon.addTextRow(
                             PrnParseRowTypes.eType.PCLFontHddr,
@@ -2539,7 +2539,7 @@ namespace PCLParaphernalia
                             "",
                             ix1 + " quarter dots");
 
-                        fx1 = ((Single)(4 * _pclDotResY)) / ix1;
+                        fx1 = ((float)(4 * _pclDotResY)) / ix1;
 
                         PrnParseCommon.addTextRow(
                             PrnParseRowTypes.eType.PCLFontHddr,
@@ -2641,7 +2641,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        fx1 = ((Single)(ix1 * 100)) / 65535;
+                        fx1 = ((float)(ix1 * 100)) / 65535;
 
                         PrnParseCommon.addTextRow(
                             PrnParseRowTypes.eType.PCLFontHddr,
@@ -2771,7 +2771,7 @@ namespace PCLParaphernalia
 
                 if (ix2 != 0)
                 {
-                    String text1,
+                    string text1,
                            text3;
 
                     if (_bitmapFont)
@@ -2965,7 +2965,7 @@ namespace PCLParaphernalia
                 {
                     ix1 = _buf[bufOffset + 76];
 
-                    fx1 = ((Single)ix1) / 32768;
+                    fx1 = ((float)ix1) / 32768;
 
                     PrnParseCommon.addTextRow(
                         PrnParseRowTypes.eType.PCLFontHddr,
@@ -3017,12 +3017,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void processGlobalData(ref Int32 bufRem,
-                                       ref Int32 bufOffset)
+        private void processGlobalData(ref int bufRem,
+                                       ref int bufOffset)
         {
             PrnParseConstants.eContType contType;
 
-            Int32 binDataLen;
+            int binDataLen;
 
             if (_hddrDataRem > bufRem)
             {
@@ -3090,7 +3090,7 @@ namespace PCLParaphernalia
                         _analysisLevel);
                 }
 
-                for (Int32 i = 0; i < binDataLen; i++)
+                for (int i = 0; i < binDataLen; i++)
                 {
                     _hddrChksVal += _buf[bufOffset + i];
                 }

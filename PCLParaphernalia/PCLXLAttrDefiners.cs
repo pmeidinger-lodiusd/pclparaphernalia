@@ -32,10 +32,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static SortedList<Byte, PCLXLAttrDefiner> _tags =
-            new SortedList<Byte, PCLXLAttrDefiner>();
+        private static SortedList<byte, PCLXLAttrDefiner> _tags =
+            new SortedList<byte, PCLXLAttrDefiner>();
 
-        private static Int32 _tagCount;
+        private static int _tagCount;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -57,14 +57,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 displayTags(DataGrid grid,
-                                        Boolean incResTags)
+        public static int displayTags(DataGrid grid,
+                                        bool incResTags)
         {
-            Int32 count = 0;
+            int count = 0;
 
-            Boolean tagReserved;
+            bool tagReserved;
 
-            foreach (KeyValuePair<Byte, PCLXLAttrDefiner> kvp in _tags)
+            foreach (KeyValuePair<byte, PCLXLAttrDefiner> kvp in _tags)
             {
                 tagReserved = kvp.Value.FlagReserved;
 
@@ -90,18 +90,18 @@ namespace PCLParaphernalia
 
         private static void populateTable()
         {
-            const Boolean flagNone = false;
-            const Boolean flagReserved = true;
+            const bool flagNone = false;
+            const bool flagReserved = true;
 
-            Byte tag;
+            byte tag;
 
-            tag = (Byte)eTag.Ubyte;                                 // 0xf8 //
+            tag = (byte)eTag.Ubyte;                                 // 0xf8 //
             _tags.Add(tag,
                 new PCLXLAttrDefiner(tag,
                                      flagNone,
                                      "ubyte"));
 
-            tag = (Byte)eTag.Uint16;                                // 0xf9 //
+            tag = (byte)eTag.Uint16;                                // 0xf9 //
             _tags.Add(tag,
                 new PCLXLAttrDefiner(tag,
                                      flagReserved,

@@ -20,10 +20,10 @@ namespace PCLParaphernalia
 
         private PCLPlexModes.ePlexType _plexType;
 
-        private String _plexModeName;
-        private Byte _plexModeIdPCL;
-        private Byte _plexModeIdPCLXLLand;
-        private Byte _plexModeIdPCLXLPort;
+        private string _plexModeName;
+        private byte _plexModeIdPCL;
+        private byte _plexModeIdPCLXLLand;
+        private byte _plexModeIdPCLXLPort;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -32,10 +32,10 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PCLPlexMode(PCLPlexModes.ePlexType plexType,
-                            String name,
-                            Byte idPCL,
-                            Byte idPCLXLLand,
-                            Byte idPCLXLPort)
+                            string name,
+                            byte idPCL,
+                            byte idPCLXLLand,
+                            byte idPCLXLPort)
         {
             _plexType = plexType;
             _plexModeName = name;
@@ -53,7 +53,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Byte getIdPCL()
+        public byte getIdPCL()
         {
             return _plexModeIdPCL;
         }
@@ -68,7 +68,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Byte getIdPCLXL(Boolean landscape)
+        public byte getIdPCLXL(bool landscape)
         {
             if (landscape)
                 return _plexModeIdPCLXLLand;
@@ -85,7 +85,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String getName()
+        public string getName()
         {
             return _plexModeName;
         }

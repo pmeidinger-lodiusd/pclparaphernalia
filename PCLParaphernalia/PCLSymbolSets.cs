@@ -20,11 +20,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private const Int32 _hex0080 = 128;
-        private const Int32 _hex00a0 = 160;
-        private const Int32 _hex00c0 = 192;
-        private const Int32 _hex00e0 = 224;
-        private const Int32 _hex0100 = 256;
+        private const int _hex0080 = 128;
+        private const int _hex00a0 = 160;
+        private const int _hex00c0 = 192;
+        private const int _hex00e0 = 224;
+        private const int _hex0100 = 256;
 
         [System.Reflection.ObfuscationAttribute(Exclude = true)]
 
@@ -48,19 +48,19 @@ namespace PCLParaphernalia
         private static List<PCLSymbolSet> _sets =
             new List<PCLSymbolSet>();
 
-        private static Int32 _indxSymbol;
-        private static Int32 _indxUnbound;
-        private static Int32 _indxUnicode;
-        private static Int32 _indxUserSet;
+        private static int _indxSymbol;
+        private static int _indxUnbound;
+        private static int _indxUnicode;
+        private static int _indxUserSet;
 
-        private static Int32 _setsCountCustom;
-        private static Int32 _setsCountPreset;
-        private static Int32 _setsCountUnicode;
-        private static Int32 _setsCountUserSet;
+        private static int _setsCountCustom;
+        private static int _setsCountPreset;
+        private static int _setsCountUnicode;
+        private static int _setsCountUserSet;
 
-        private static Int32 _setsCountMapped;
-        private static Int32 _setsCountStd;
-        private static Int32 _setsCountTotal;
+        private static int _setsCountMapped;
+        private static int _setsCountStd;
+        private static int _setsCountTotal;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -82,9 +82,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 displaySeqList(DataGrid grid)
+        public static int displaySeqList(DataGrid grid)
         {
-            Int32 count = 0;
+            int count = 0;
 
             foreach (PCLSymbolSet v in _sets)
             {
@@ -114,7 +114,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getCount()
+        public static int getCount()
         {
             return _setsCountTotal;
         }
@@ -128,7 +128,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getCountMapped()
+        public static int getCountMapped()
         {
             return _setsCountMapped;
         }
@@ -142,7 +142,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getCountStd()
+        public static int getCountStd()
         {
             return _setsCountStd;
         }
@@ -157,7 +157,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getCountUserSet()
+        public static int getCountUserSet()
         {
             return _setsCountUserSet;
         }
@@ -171,7 +171,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eSymSetGroup getGroup(Int32 selection)
+        public static eSymSetGroup getGroup(int selection)
         {
             return _sets[selection].Group;
         }
@@ -185,7 +185,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getId(Int32 selection)
+        public static string getId(int selection)
         {
             return _sets[selection].Id;
         }
@@ -199,7 +199,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Byte getIdAlpha(Int32 selection)
+        public static byte getIdAlpha(int selection)
         {
             return _sets[selection].IdAlpha;
         }
@@ -213,7 +213,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getIdNum(Int32 selection)
+        public static ushort getIdNum(int selection)
         {
             return _sets[selection].IdNum;
         }
@@ -229,7 +229,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getIndexForId(UInt16 kind1)
+        public static int getIndexForId(ushort kind1)
         {
             for (int i = 0; i < _setsCountTotal; i++)
             {
@@ -252,10 +252,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void getNameForId(UInt16 kind1,
-                                        ref String name)
+        public static void getNameForId(ushort kind1,
+                                        ref string name)
         {
-            Int32 index = -1;
+            int index = -1;
 
             index = getIndexForId(kind1);
 
@@ -274,12 +274,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void getIndicesMapped(Int32 firstIndex,
-                                             ref Int32[] subset)
+        public static void getIndicesMapped(int firstIndex,
+                                             ref int[] subset)
         {
-            Int32 index = firstIndex;
+            int index = firstIndex;
 
-            for (Int32 i = 0; i < _setsCountTotal; i++)
+            for (int i = 0; i < _setsCountTotal; i++)
             {
                 if (_sets[i].FlagMapped)
                 {
@@ -300,7 +300,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getKind1(Int32 selection)
+        public static ushort getKind1(int selection)
         {
             return _sets[selection].Kind1;
         }
@@ -315,7 +315,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getMapArrayMax(Int32 selection)
+        public static ushort getMapArrayMax(int selection)
         {
             return _sets[selection].MapArrayMax;
         }
@@ -330,8 +330,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16[] getMapArray(Int32 selection,
-                                             Boolean flagMapPCL)
+        public static ushort[] getMapArray(int selection,
+                                             bool flagMapPCL)
         {
             if (_sets[selection].Group == eSymSetGroup.UserSet)
                 return _sets[selection].MapArrayUserSet;
@@ -351,7 +351,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16[] getMapArraySymbol()
+        public static ushort[] getMapArraySymbol()
         {
             return _sets[_indxSymbol].MapArrayStd;
         }
@@ -365,7 +365,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16[] getMapArrayUserSet()
+        public static ushort[] getMapArrayUserSet()
         {
             return _sets[_indxUserSet].MapArrayUserSet;
         }
@@ -379,7 +379,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getName(Int32 selection)
+        public static string getName(int selection)
         {
             return _sets[selection].Name;
         }
@@ -395,7 +395,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static PCLTextParsingMethods.eIndex getParsingMethod(
-            Int32 selection)
+            int selection)
         {
             return _sets[selection].ParsingMethod;
         }
@@ -410,12 +410,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean getSymsetData(Int32 selection,
-                                            ref UInt16 kind1,
-                                            ref UInt16 idNum,
-                                            ref String name)
+        public static bool getSymsetData(int selection,
+                                            ref ushort kind1,
+                                            ref ushort idNum,
+                                            ref string name)
         {
-            Boolean symsetPresent;
+            bool symsetPresent;
 
             symsetPresent = _sets[selection].getSymsetData(ref kind1,
                                                             ref idNum,
@@ -435,13 +435,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean getSymsetDataForIdAlpha(Int32 selection,
-                                                      Byte idAlpha,
-                                                      ref UInt16 kind1,
-                                                      ref UInt16 idNum,
-                                                      ref String name)
+        public static bool getSymsetDataForIdAlpha(int selection,
+                                                      byte idAlpha,
+                                                      ref ushort kind1,
+                                                      ref ushort idNum,
+                                                      ref string name)
         {
-            Boolean symsetPresent;
+            bool symsetPresent;
 
             symsetPresent = _sets[selection].getSymsetDataForIdAlpha(idAlpha,
                                                                       ref kind1,
@@ -460,7 +460,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static PCLSymSetTypes.eIndex getType(Int32 selection)
+        public static PCLSymSetTypes.eIndex getType(int selection)
         {
             return _sets[selection].Type;
         }
@@ -474,7 +474,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 IndexSymbol
+        public static int IndexSymbol
         {
             get { return _indxSymbol; }
             //    set { _indxSymbol = value; }
@@ -489,7 +489,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 IndexUnicode
+        public static int IndexUnicode
         {
             get { return _indxUnicode; }
             //    set { _indxUnicode = value; }
@@ -504,7 +504,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 IndexUserSet
+        public static int IndexUserSet
         {
             get { return _indxUserSet; }
             //    set { _indxUserSet = value; }
@@ -519,7 +519,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 IndexUnbound
+        public static int IndexUnbound
         {
             get { return _indxUnbound; }
             //    set { _indxUnbound = value; }
@@ -535,7 +535,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean nullMapPCL(Int32 selection)
+        public static bool nullMapPCL(int selection)
         {
             return _sets[selection].NullMapPCL;
         }
@@ -551,7 +551,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean nullMapStd(Int32 selection)
+        public static bool nullMapStd(int selection)
         {
             return _sets[selection].NullMapStd;
         }
@@ -1476,7 +1476,7 @@ namespace PCLParaphernalia
             _setsCountUserSet = 0;
             _setsCountMapped = 0;
 
-            for (Int32 i = 0; i < _setsCountTotal; i++)
+            for (int i = 0; i < _setsCountTotal; i++)
             {
                 group = _sets[i].Group;
 
@@ -1508,7 +1508,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean isMapped(Int32 selection)
+        public static bool isMapped(int selection)
         {
             if (_sets[selection].FlagMapped)
                 return true;
@@ -1526,9 +1526,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setDataUserSet(UInt16 symSetNo,
+        public static void setDataUserSet(ushort symSetNo,
                                            PCLSymSetTypes.eIndex symSetType,
-                                           UInt16[] mapArray)
+                                           ushort[] mapArray)
         {
             _sets[_indxUserSet].Kind1 = symSetNo;
             _sets[_indxUserSet].Id = translateKind1ToId(symSetNo);
@@ -1553,11 +1553,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setDataUserSetDefault(UInt16 symSetNo)
+        public static void setDataUserSetDefault(ushort symSetNo)
         {
-            Int32 index;
+            int index;
 
-            UInt16[] mapArray;
+            ushort[] mapArray;
 
             index = getIndexForId(symSetNo);
 
@@ -1582,14 +1582,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 translateIdToKind1(String symbolSetId)
+        public static ushort translateIdToKind1(string symbolSetId)
         {
             bool dataValid = true;
 
-            UInt16 kind1Num = 0,
+            ushort kind1Num = 0,
                    kind1Alpha = 0;
 
-            Int32 len;
+            int len;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1627,7 +1627,7 @@ namespace PCLParaphernalia
 
             if (dataValid)
             {
-                Char termChar = symbolSetId[len - 1];
+                char termChar = symbolSetId[len - 1];
 
                 if ((termChar >= 0x41) && (termChar <= 0x5a))
                     kind1Alpha = termChar;
@@ -1643,7 +1643,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (dataValid)
-                return (UInt16)((kind1Num * 32) + (kind1Alpha - 64));
+                return (ushort)((kind1Num * 32) + (kind1Alpha - 64));
             else
                 return 65535;
         }
@@ -1675,17 +1675,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 translateIdToKind1(UInt16 idNum,
-                                                Byte idAlpha)
+        public static ushort translateIdToKind1(ushort idNum,
+                                                byte idAlpha)
         {
-            UInt16 badValue = 0;
+            ushort badValue = 0;
 
             if ((idNum < 1) || (idNum > 2047))
                 return badValue;
             else if ((idAlpha < 0x40) || (idAlpha > 0x5a))
                 return badValue;
             else
-                return (UInt16)((idNum * 32) + (idAlpha - 64));
+                return (ushort)((idNum * 32) + (idAlpha - 64));
         }
 
         //--------------------------------------------------------------------//
@@ -1713,9 +1713,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String translateKind1ToId(UInt16 kind1)
+        public static string translateKind1ToId(ushort kind1)
         {
-            UInt16 kind1Num = 0,
+            ushort kind1Num = 0,
                    kind1Alpha = 0;
 
             if ((kind1 < 1) || (kind1 > 65530))
@@ -1724,9 +1724,9 @@ namespace PCLParaphernalia
             }
             else
             {
-                kind1Num = (UInt16)(kind1 / 32);
+                kind1Num = (ushort)(kind1 / 32);
 
-                kind1Alpha = (UInt16)((kind1 - (kind1Num * 32)) + 64);
+                kind1Alpha = (ushort)((kind1 - (kind1Num * 32)) + 64);
 
                 return kind1Num.ToString() + Convert.ToChar(kind1Alpha);
             }
@@ -1757,11 +1757,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void translateKind1ToId(UInt16 kind1,
-                                              ref String idNum,
-                                              ref String idAlpha)
+        public static void translateKind1ToId(ushort kind1,
+                                              ref string idNum,
+                                              ref string idAlpha)
         {
-            UInt16 kind1Num = 0,
+            ushort kind1Num = 0,
                    kind1Alpha = 0;
 
             if ((kind1 < 1) || (kind1 > 65530))
@@ -1773,8 +1773,8 @@ namespace PCLParaphernalia
             }
             else
             {
-                kind1Num = (UInt16)(kind1 / 32);
-                kind1Alpha = (UInt16)((kind1 - (kind1Num * 32)) + 64);
+                kind1Num = (ushort)(kind1 / 32);
+                kind1Alpha = (ushort)((kind1 - (kind1Num * 32)) + 64);
 
                 idNum = kind1Num.ToString();
                 idAlpha = Convert.ToChar(kind1Alpha).ToString();

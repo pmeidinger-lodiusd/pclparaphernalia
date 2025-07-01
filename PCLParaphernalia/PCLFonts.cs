@@ -38,7 +38,7 @@ namespace PCLParaphernalia
             BoldItalic
         }
 
-        public enum eWidthType : SByte
+        public enum eWidthType : sbyte
         {
             UltraCompressed = -5,
             ExtraCompressed = -4,
@@ -49,7 +49,7 @@ namespace PCLParaphernalia
             ExtraExpanded = 3
         }
 
-        public enum eStrokeWeight : SByte
+        public enum eStrokeWeight : sbyte
         {
             UltraThin = -7,
             ExtraThin = -6,
@@ -68,7 +68,7 @@ namespace PCLParaphernalia
             UltraBlack
         }
 
-        public enum eStylePosture : Byte
+        public enum eStylePosture : byte
         {
             Upright = 0,
             Italic,
@@ -76,7 +76,7 @@ namespace PCLParaphernalia
             Reserved
         }
 
-        public enum eStyleWidth : Byte
+        public enum eStyleWidth : byte
         {
             Normal = 0,
             Condensed,
@@ -88,7 +88,7 @@ namespace PCLParaphernalia
             ExtraExpanded
         }
 
-        public enum eStyleStructure : UInt16
+        public enum eStyleStructure : ushort
         {
             Solid = 0,
             Outline,
@@ -111,13 +111,13 @@ namespace PCLParaphernalia
             Unknown = 31
         }
 
-        private static UInt16[] symSets_Dummy = new UInt16[]
+        private static ushort[] symSets_Dummy = new ushort[]
             { 0xffff };
 
-        private static UInt16[] symSets_Unicode = new UInt16[]
+        private static ushort[] symSets_Unicode = new ushort[]
             { PCLSymbolSets.translateIdToKind1("18N") };
 
-        private static UInt16[] symSets_Europe = new UInt16[]
+        private static ushort[] symSets_Europe = new ushort[]
             { PCLSymbolSets.translateIdToKind1("0D"),
               PCLSymbolSets.translateIdToKind1("0H"),
               PCLSymbolSets.translateIdToKind1("0I"),
@@ -171,7 +171,7 @@ namespace PCLParaphernalia
               PCLSymbolSets.translateIdToKind1("26U")
             };
 
-        private static UInt16[] symSets_Europe_Not_Hebrew_Greek_Cyrillic = new UInt16[]
+        private static ushort[] symSets_Europe_Not_Hebrew_Greek_Cyrillic = new ushort[]
             { PCLSymbolSets.translateIdToKind1("0D"),
               PCLSymbolSets.translateIdToKind1("0I"),
               PCLSymbolSets.translateIdToKind1("0N"),
@@ -212,7 +212,7 @@ namespace PCLParaphernalia
               PCLSymbolSets.translateIdToKind1("26U")
             };
 
-        private static UInt16[] symSets_Arabic = new UInt16[]
+        private static ushort[] symSets_Arabic = new ushort[]
             { PCLSymbolSets.translateIdToKind1("0U"),
               PCLSymbolSets.translateIdToKind1("5M"),
               PCLSymbolSets.translateIdToKind1("8M"),
@@ -222,7 +222,7 @@ namespace PCLParaphernalia
               PCLSymbolSets.translateIdToKind1("11N")
             };
 
-        private static UInt16[] symSets_Hebrew = new UInt16[]
+        private static ushort[] symSets_Hebrew = new ushort[]
             { PCLSymbolSets.translateIdToKind1("0H"),
               PCLSymbolSets.translateIdToKind1("0U"),
               PCLSymbolSets.translateIdToKind1("5M"),
@@ -242,14 +242,14 @@ namespace PCLParaphernalia
         private static List<PCLFont> _fonts =
             new List<PCLFont>();
 
-        private static Int32 _fontsCount;
-        private static Int32 _fontsCountCustom;
-        private static Int32 _fontsCountDownload;
-        private static Int32 _fontsCountPrnDisk;
-        private static Int32 _fontsCountPreset;
+        private static int _fontsCount;
+        private static int _fontsCountCustom;
+        private static int _fontsCountDownload;
+        private static int _fontsCountPrnDisk;
+        private static int _fontsCountPreset;
 
-        private static Int16 _indxFontArial;
-        private static Int16 _indxFontCourier;
+        private static short _indxFontArial;
+        private static short _indxFontCourier;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -285,9 +285,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 displayFontList(DataGrid grid)
+        public static int displayFontList(DataGrid grid)
         {
-            Int32 count = 0;
+            int count = 0;
 
             foreach (PCLFont v in _fonts)
             {
@@ -311,7 +311,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getCount()
+        public static int getCount()
         {
             return _fontsCount;
         }
@@ -346,7 +346,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getCountUnique()
+        public static int getCountUnique()
         {
             return (_fontsCountCustom +
                     _fontsCountDownload +
@@ -367,11 +367,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getHPGL2FontDef(Int32 indxFont,
+        public static string getHPGL2FontDef(int indxFont,
                                               eVariant variant,
-                                              UInt16 symbolSet,
-                                              Double height,
-                                              Double pitch)
+                                              ushort symbolSet,
+                                              double height,
+                                              double pitch)
         {
             return _fonts[indxFont].getHPGL2FontDef(variant, symbolSet,
                                                       height, pitch);
@@ -386,7 +386,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int16 getIndexForFontArial()
+        public static short getIndexForFontArial()
         {
             return _indxFontArial;
         }
@@ -400,7 +400,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int16 getIndexForFontCourier()
+        public static short getIndexForFontCourier()
         {
             return _indxFontCourier;
         }
@@ -414,11 +414,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int16 getIndexForName(String fontName)
+        public static short getIndexForName(string fontName)
         {
-            Boolean fontNameKnown = false;
+            bool fontNameKnown = false;
 
-            Int16 indxFont = -1;
+            short indxFont = -1;
 
             foreach (PCLFont v in _fonts)
             {
@@ -449,7 +449,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getName(Int32 indxFont)
+        public static string getName(int indxFont)
         {
             return _fonts[indxFont].Name;
         }
@@ -464,10 +464,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean getNameForIdPCL(UInt16 typefaceId,
-                                               ref String name)
+        public static bool getNameForIdPCL(ushort typefaceId,
+                                               ref string name)
         {
-            Boolean typefaceKnown = false;
+            bool typefaceKnown = false;
 
             foreach (PCLFont v in _fonts)
             {
@@ -498,7 +498,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Byte getPCLContourRatio(Int32 indxFont)
+        public static byte getPCLContourRatio(int indxFont)
         {
             return _fonts[indxFont].getPCLContourRatio();
         }
@@ -515,10 +515,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getPCLFontSelect(Int32 indxFont,
+        public static string getPCLFontSelect(int indxFont,
                                                eVariant variant,
-                                               Double height,
-                                               Double pitch)
+                                               double height,
+                                               double pitch)
         {
             return _fonts[indxFont].getPCLFontSelect(variant, height, pitch);
         }
@@ -532,7 +532,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Double getPCLHeight(Int32 indxFont)
+        public static double getPCLHeight(int indxFont)
         {
             return _fonts[indxFont].getPCLHeight();
         }
@@ -546,7 +546,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Double getPCLPitch(Int32 indxFont)
+        public static double getPCLPitch(int indxFont)
         {
             return _fonts[indxFont].getPCLPitch();
         }
@@ -561,8 +561,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Double getPCLPitch(Int32 indxFont,
-                                          Double ptSize)
+        public static double getPCLPitch(int indxFont,
+                                          double ptSize)
         {
             return _fonts[indxFont].getPCLPitch(ptSize);
         }
@@ -576,7 +576,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Byte getPCLSpacing(Int32 indxFont)
+        public static byte getPCLSpacing(int indxFont)
         {
             return _fonts[indxFont].getPCLSpacing();
         }
@@ -590,7 +590,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getPCLStyle(Int32 indxFont,
+        public static ushort getPCLStyle(int indxFont,
                                           eVariant variant)
         {
             return _fonts[indxFont].getPCLStyle(variant);
@@ -605,7 +605,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getPCLTypeface(Int32 indxFont)
+        public static ushort getPCLTypeface(int indxFont)
         {
             return _fonts[indxFont].Typeface;
         }
@@ -619,7 +619,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int16 getPCLWeight(Int32 indxFont,
+        public static short getPCLWeight(int indxFont,
                                           eVariant variant)
         {
             return _fonts[indxFont].getPCLWeight(variant);
@@ -634,7 +634,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Double getPCLXLHeight(Int32 indxFont)
+        public static double getPCLXLHeight(int indxFont)
         {
             return _fonts[indxFont].getPCLXLHeight();
         }
@@ -648,7 +648,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getPCLXLName(Int32 indxFont,
+        public static string getPCLXLName(int indxFont,
                                            eVariant variant)
         {
             return _fonts[indxFont].getPCLXLName(variant);
@@ -664,11 +664,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean getPresetFontData(Int32 indxFont,
-                                                ref UInt16 typeface,
-                                                ref String fontName)
+        public static bool getPresetFontData(int indxFont,
+                                                ref ushort typeface,
+                                                ref string fontName)
         {
-            Boolean typefacePreset;
+            bool typefacePreset;
 
             typefacePreset = _fonts[indxFont].getPCLFontIdData(ref typeface,
                                                                 ref fontName);
@@ -685,7 +685,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getSymbolSetNumber(Int32 indxFont)
+        public static ushort getSymbolSetNumber(int indxFont)
         {
             return _fonts[indxFont].getSymbolSetNumber();
         }
@@ -699,7 +699,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eFontType getType(Int32 indxFont)
+        public static eFontType getType(int indxFont)
         {
             return _fonts[indxFont].Type;
         }
@@ -714,7 +714,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean isBoundFont(Int32 indxFont)
+        public static bool isBoundFont(int indxFont)
         {
             return _fonts[indxFont].isBoundFont();
         }
@@ -729,7 +729,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean isPresetFont(Int32 indxFont)
+        public static bool isPresetFont(int indxFont)
         {
             return _fonts[indxFont].isPresetFont();
         }
@@ -744,7 +744,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean isProportionalFont(Int32 indxFont)
+        public static bool isProportionalFont(int indxFont)
         {
             return _fonts[indxFont].isProportionalFont();
         }
@@ -759,7 +759,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean isScalableFont(Int32 indxFont)
+        public static bool isScalableFont(int indxFont)
         {
             return _fonts[indxFont].Scalable;
         }
@@ -775,8 +775,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean isSymSetInList(Int32 indxFont,
-                                              UInt16 symSetNo)
+        public static bool isSymSetInList(int indxFont,
+                                              ushort symSetNo)
         {
             return _fonts[indxFont].isSymSetInList(symSetNo);
         }
@@ -838,7 +838,7 @@ namespace PCLParaphernalia
 
         private static void populateTable()
         {
-            Int16 fontIndex = 0;
+            short fontIndex = 0;
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
@@ -1411,7 +1411,7 @@ namespace PCLParaphernalia
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
-                new UInt16[] { PCLSymbolSets.translateIdToKind1("0N") }));
+                new ushort[] { PCLSymbolSets.translateIdToKind1("0N") }));
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
@@ -1423,7 +1423,7 @@ namespace PCLParaphernalia
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
-                new UInt16[] { PCLSymbolSets.translateIdToKind1("1U") }));
+                new ushort[] { PCLSymbolSets.translateIdToKind1("1U") }));
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
@@ -1435,7 +1435,7 @@ namespace PCLParaphernalia
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
-                new UInt16[] { PCLSymbolSets.translateIdToKind1("2N") }));
+                new ushort[] { PCLSymbolSets.translateIdToKind1("2N") }));
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
@@ -1447,7 +1447,7 @@ namespace PCLParaphernalia
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
-                new UInt16[] { PCLSymbolSets.translateIdToKind1("5N") }));
+                new ushort[] { PCLSymbolSets.translateIdToKind1("5N") }));
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
@@ -1459,7 +1459,7 @@ namespace PCLParaphernalia
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
-                new UInt16[] { PCLSymbolSets.translateIdToKind1("6N") }));
+                new ushort[] { PCLSymbolSets.translateIdToKind1("6N") }));
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
@@ -1471,7 +1471,7 @@ namespace PCLParaphernalia
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
-                new UInt16[] { PCLSymbolSets.translateIdToKind1("8U") }));
+                new ushort[] { PCLSymbolSets.translateIdToKind1("8U") }));
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
@@ -1483,7 +1483,7 @@ namespace PCLParaphernalia
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
-                new UInt16[] { PCLSymbolSets.translateIdToKind1("9N") }));
+                new ushort[] { PCLSymbolSets.translateIdToKind1("9N") }));
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
@@ -1495,7 +1495,7 @@ namespace PCLParaphernalia
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
-                new UInt16[] { PCLSymbolSets.translateIdToKind1("10N") }));
+                new ushort[] { PCLSymbolSets.translateIdToKind1("10N") }));
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
@@ -1507,7 +1507,7 @@ namespace PCLParaphernalia
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
-                new UInt16[] { PCLSymbolSets.translateIdToKind1("10U") }));
+                new ushort[] { PCLSymbolSets.translateIdToKind1("10U") }));
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
@@ -1519,7 +1519,7 @@ namespace PCLParaphernalia
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
-                new UInt16[] { PCLSymbolSets.translateIdToKind1("11U") }));
+                new ushort[] { PCLSymbolSets.translateIdToKind1("11U") }));
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
@@ -1531,7 +1531,7 @@ namespace PCLParaphernalia
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
-                new UInt16[] { PCLSymbolSets.translateIdToKind1("12U") }));
+                new ushort[] { PCLSymbolSets.translateIdToKind1("12U") }));
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
@@ -1644,7 +1644,7 @@ namespace PCLParaphernalia
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
-                new UInt16[] { PCLSymbolSets.translateIdToKind1("0O") }));
+                new ushort[] { PCLSymbolSets.translateIdToKind1("0O") }));
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
@@ -1656,7 +1656,7 @@ namespace PCLParaphernalia
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
-                new UInt16[] { PCLSymbolSets.translateIdToKind1("1O") }));
+                new ushort[] { PCLSymbolSets.translateIdToKind1("1O") }));
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
@@ -1796,7 +1796,7 @@ namespace PCLParaphernalia
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
-                new UInt16[] { PCLSymbolSets.translateIdToKind1("19M") }));
+                new ushort[] { PCLSymbolSets.translateIdToKind1("19M") }));
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
@@ -1808,7 +1808,7 @@ namespace PCLParaphernalia
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
-                new UInt16[] { PCLSymbolSets.translateIdToKind1("19M") }));
+                new ushort[] { PCLSymbolSets.translateIdToKind1("19M") }));
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
@@ -1933,7 +1933,7 @@ namespace PCLParaphernalia
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
-                new UInt16[] { PCLSymbolSets.translateIdToKind1("579L") }));
+                new ushort[] { PCLSymbolSets.translateIdToKind1("579L") }));
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
@@ -1983,7 +1983,7 @@ namespace PCLParaphernalia
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
                 false, 0, 0, "                ",
-                new UInt16[] { PCLSymbolSets.translateIdToKind1("14L") }));
+                new ushort[] { PCLSymbolSets.translateIdToKind1("14L") }));
 
             _fontsCount = _fonts.Count;
 
@@ -2027,12 +2027,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void translateTypeface(UInt16 typeface,
-                                             ref UInt16 vendor,
-                                             ref UInt16 basecode)
+        public static void translateTypeface(ushort typeface,
+                                             ref ushort vendor,
+                                             ref ushort basecode)
         {
-            vendor = (UInt16)(typeface >> 12);
-            basecode = (UInt16)(typeface & 0xfff);
+            vendor = (ushort)(typeface >> 12);
+            basecode = (ushort)(typeface & 0xfff);
 
             return;
         }
@@ -2047,7 +2047,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean variantExists(Int32 indxFont,
+        public static bool variantExists(int indxFont,
                                             eVariant variant)
         {
             return _fonts[indxFont].variantAvailable(variant);

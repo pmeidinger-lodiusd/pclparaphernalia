@@ -24,9 +24,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean _initialised;
+        private bool _initialised;
 
-        private String _printerName;
+        private string _printerName;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -107,10 +107,10 @@ namespace PCLParaphernalia
 
         private void initialise()
         {
-            Int32 indxPrinter = 0;
-            Int32 ctPrinters = 0;
+            int indxPrinter = 0;
+            int ctPrinters = 0;
 
-            String printerName;
+            string printerName;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -124,7 +124,7 @@ namespace PCLParaphernalia
 
             ctPrinters = PrinterSettings.InstalledPrinters.Count;
 
-            for (Int32 i = 0; i < ctPrinters; i++)
+            for (int i = 0; i < ctPrinters; i++)
             {
                 printerName = PrinterSettings.InstalledPrinters[i];
 
@@ -156,7 +156,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            Double windowScale = MainFormData.WindowScale;
+            double windowScale = MainFormData.WindowScale;
 
             zoomSlider.Value = windowScale;
 

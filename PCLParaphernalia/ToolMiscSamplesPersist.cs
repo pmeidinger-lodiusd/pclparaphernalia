@@ -19,79 +19,79 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const String _mainKey = MainForm._regMainKey;
+        const string _mainKey = MainForm._regMainKey;
 
-        const String _subKeyTools = "Tools";
-        const String _subKeyToolsMiscSamples = "MiscSamples";
-        const String _subKeyPCL = "PCL";
-        const String _subKeyPCLXL = "PCLXL";
+        const string _subKeyTools = "Tools";
+        const string _subKeyToolsMiscSamples = "MiscSamples";
+        const string _subKeyPCL = "PCL";
+        const string _subKeyPCLXL = "PCLXL";
 
-        const String _subKeyCommon = "Common";
+        const string _subKeyCommon = "Common";
 
-        const String _subKeyColour = "Colour";
-        const String _subKeyLogOper = "LogOper";
-        const String _subKeyLogPage = "LogPage";
-        const String _subKeyPattern = "Pattern";
-        const String _subKeyTxtMod = "TxtMod";
-        const String _subKeyUnicode = "Unicode";
+        const string _subKeyColour = "Colour";
+        const string _subKeyLogOper = "LogOper";
+        const string _subKeyLogPage = "LogPage";
+        const string _subKeyPattern = "Pattern";
+        const string _subKeyTxtMod = "TxtMod";
+        const string _subKeyUnicode = "Unicode";
 
-        const String _nameCaptureFile = "CaptureFile";
-        const String _nameFlagAddStdPage = "FlagAddStdPage";
-        const String _nameFlagFormAsMacro = "FlagFormAsMacro";
-        const String _nameFlagMapHex = "FlagMapHex";
-        const String _nameFlagSrcTextPat = "FlagSrcTextPat";
-        const String _nameFlagUseColour = "FlagUseColour";
-        const String _nameFlagUseMacros = "FlagUseMacros";
+        const string _nameCaptureFile = "CaptureFile";
+        const string _nameFlagAddStdPage = "FlagAddStdPage";
+        const string _nameFlagFormAsMacro = "FlagFormAsMacro";
+        const string _nameFlagMapHex = "FlagMapHex";
+        const string _nameFlagSrcTextPat = "FlagSrcTextPat";
+        const string _nameFlagUseColour = "FlagUseColour";
+        const string _nameFlagUseMacros = "FlagUseMacros";
 
-        const String _nameIndxColourMode = "IndxColourMode";
-        const String _nameIndxColourD1 = "IndxColourD1";
-        const String _nameIndxColourD2 = "IndxColourD2";
-        const String _nameIndxColourS1 = "IndxColourS1";
-        const String _nameIndxColourS2 = "IndxColourS2";
-        const String _nameIndxColourT1 = "IndxColourT1";
-        const String _nameIndxColourT2 = "IndxColourT2";
-        const String _nameIndxMonoD1 = "IndxMonoD1";
-        const String _nameIndxMonoD2 = "IndxMonoD2";
-        const String _nameIndxMonoS1 = "IndxMonoS1";
-        const String _nameIndxMonoS2 = "IndxMonoS2";
-        const String _nameIndxMonoT1 = "IndxMonoT1";
-        const String _nameIndxMonoT2 = "IndxMonoT2";
-        const String _nameIndxFont = "IndxFont";
-        const String _nameIndxOrientation = "IndxOrientation";
-        const String _nameIndxPaperSize = "IndxPaperSize";
-        const String _nameIndxPaperType = "IndxPaperType";
-        const String _nameIndxPDL = "IndxPDL";
-        const String _nameIndxPatternType = "IndxPatternType";
-        const String _nameIndxROPFrom = "IndxROPFrom";
-        const String _nameIndxROPTo = "IndxROPTo";
-        const String _nameIndxSampleType = "IndxSampleType";
-        const String _nameIndxTxtModType = "IndxTxtModType";
-        const String _nameIndxVariant = "IndxVariant";
+        const string _nameIndxColourMode = "IndxColourMode";
+        const string _nameIndxColourD1 = "IndxColourD1";
+        const string _nameIndxColourD2 = "IndxColourD2";
+        const string _nameIndxColourS1 = "IndxColourS1";
+        const string _nameIndxColourS2 = "IndxColourS2";
+        const string _nameIndxColourT1 = "IndxColourT1";
+        const string _nameIndxColourT2 = "IndxColourT2";
+        const string _nameIndxMonoD1 = "IndxMonoD1";
+        const string _nameIndxMonoD2 = "IndxMonoD2";
+        const string _nameIndxMonoS1 = "IndxMonoS1";
+        const string _nameIndxMonoS2 = "IndxMonoS2";
+        const string _nameIndxMonoT1 = "IndxMonoT1";
+        const string _nameIndxMonoT2 = "IndxMonoT2";
+        const string _nameIndxFont = "IndxFont";
+        const string _nameIndxOrientation = "IndxOrientation";
+        const string _nameIndxPaperSize = "IndxPaperSize";
+        const string _nameIndxPaperType = "IndxPaperType";
+        const string _nameIndxPDL = "IndxPDL";
+        const string _nameIndxPatternType = "IndxPatternType";
+        const string _nameIndxROPFrom = "IndxROPFrom";
+        const string _nameIndxROPTo = "IndxROPTo";
+        const string _nameIndxSampleType = "IndxSampleType";
+        const string _nameIndxTxtModType = "IndxTxtModType";
+        const string _nameIndxVariant = "IndxVariant";
 
-        const String _nameValueRoot = "_Value_";
-        const String _nameCodePoint = "CodePoint";
-        const String _nameOffsetLeft = "OffsetLeft";
-        const String _nameOffsetTop = "OffsetTop";
-        const String _namePageHeight = "PageHeight";
-        const String _namePageWidth = "PageWidth";
+        const string _nameValueRoot = "_Value_";
+        const string _nameCodePoint = "CodePoint";
+        const string _nameOffsetLeft = "OffsetLeft";
+        const string _nameOffsetTop = "OffsetTop";
+        const string _namePageHeight = "PageHeight";
+        const string _namePageWidth = "PageWidth";
 
-        const Int32 _flagFalse = 0;
-        const Int32 _flagTrue = 1;
-        const Int32 _indexZero = 0;
-        const Int32 _indexNeg = -1;
+        const int _flagFalse = 0;
+        const int _flagTrue = 1;
+        const int _indexZero = 0;
+        const int _indexNeg = -1;
 
-        const String _defaultCaptureFileRoot = "CaptureFile_MiscSamples_";
+        const string _defaultCaptureFileRoot = "CaptureFile_MiscSamples_";
 
-        const Int32 _defaultColour_0 = 0xff0000;
-        const Int32 _defaultColour_1 = 0x00ff00;
-        const Int32 _defaultColour_2 = 0x0000ff;
-        const Int32 _defaultColour_3 = 0xffb450;
-        const Int32 _defaultShade_0 = 0x20;
-        const Int32 _defaultShade_1 = 0x40;
-        const Int32 _defaultShade_2 = 0x80;
-        const Int32 _defaultShade_3 = 0xc0;
-        const Int32 _defaultCodePoint = 0x20ac;
-        const Int32 _defaultIndxVariant = (Int32)(PCLFonts.eVariant.Regular);
+        const int _defaultColour_0 = 0xff0000;
+        const int _defaultColour_1 = 0x00ff00;
+        const int _defaultColour_2 = 0x0000ff;
+        const int _defaultColour_3 = 0xffb450;
+        const int _defaultShade_0 = 0x20;
+        const int _defaultShade_1 = 0x40;
+        const int _defaultShade_2 = 0x80;
+        const int _defaultShade_3 = 0xc0;
+        const int _defaultCodePoint = 0x20ac;
+        const int _defaultIndxVariant = (int)(PCLFonts.eVariant.Regular);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -105,15 +105,15 @@ namespace PCLParaphernalia
         public static void loadDataCapture(
             ToolCommonData.eToolSubIds crntToolSubId,
             ToolCommonData.ePrintLang crntPDL,
-            ref String captureFile)
+            ref string captureFile)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String subKeyType = "";
-            String defFileBase = "";
+            string subKeyType = "";
+            string defFileBase = "";
 
-            String defWorkFolder = ToolCommonData.DefWorkFolder;
+            string defWorkFolder = ToolCommonData.DefWorkFolder;
 
             if (crntToolSubId == ToolCommonData.eToolSubIds.Colour)
             {
@@ -148,26 +148,26 @@ namespace PCLParaphernalia
 
             if (crntPDL == ToolCommonData.ePrintLang.PCL)
             {
-                String key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
+                string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                             "\\" + subKeyType +
                                             "\\" + _subKeyPCL;
 
                 using (RegistryKey subKey = keyMain.CreateSubKey(key))
                 {
-                    captureFile = (String)subKey.GetValue(
+                    captureFile = (string)subKey.GetValue(
                         _nameCaptureFile,
                         defWorkFolder + "\\" + defFileBase + _subKeyPCL + ".prn");
                 }
             }
             else if (crntPDL == ToolCommonData.ePrintLang.PCLXL)
             {
-                String key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
+                string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                             "\\" + subKeyType +
                                             "\\" + _subKeyPCLXL;
 
                 using (RegistryKey subKey = keyMain.CreateSubKey(key))
                 {
-                    captureFile = (String)subKey.GetValue(
+                    captureFile = (string)subKey.GetValue(
                         _nameCaptureFile,
                         defWorkFolder + "\\" + defFileBase + _subKeyPCLXL + ".prn");
                 }
@@ -183,20 +183,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCommon(ref Int32 indxPDL,
-                                          ref Int32 indxSampleType)
+        public static void loadDataCommon(ref int indxPDL,
+                                          ref int indxSampleType)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTools + "\\" + _subKeyToolsMiscSamples;
+            string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxPDL = (Int32)subKey.GetValue(_nameIndxPDL,
+                indxPDL = (int)subKey.GetValue(_nameIndxPDL,
                                                  _indexZero);
 
-                indxSampleType = (Int32)subKey.GetValue(_nameIndxSampleType,
+                indxSampleType = (int)subKey.GetValue(_nameIndxSampleType,
                                                          _indexZero);
             }
         }
@@ -210,15 +210,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCommonPDL(String pdlName,
-                                              ref Int32 indxOrientation,
-                                              ref Int32 indxPaperSize,
-                                              ref Int32 indxPaperType)
+        public static void loadDataCommonPDL(string pdlName,
+                                              ref int indxOrientation,
+                                              ref int indxPaperSize,
+                                              ref int indxPaperType)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyCommon +
@@ -226,13 +226,13 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxOrientation = (Int32)subKey.GetValue(_nameIndxOrientation,
+                indxOrientation = (int)subKey.GetValue(_nameIndxOrientation,
                                                          _indexZero);
 
-                indxPaperSize = (Int32)subKey.GetValue(_nameIndxPaperSize,
+                indxPaperSize = (int)subKey.GetValue(_nameIndxPaperSize,
                                                          _indexZero);
 
-                indxPaperType = (Int32)subKey.GetValue(_nameIndxPaperType,
+                indxPaperType = (int)subKey.GetValue(_nameIndxPaperType,
                                                          _indexZero);
             }
         }
@@ -246,17 +246,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataTypeColour(String pdlName,
-                                               ref Int32 indxColourMode,
-                                               ref Boolean flagFormAsMacro,
-                                               ref Boolean flagMapHex)
+        public static void loadDataTypeColour(string pdlName,
+                                               ref int indxColourMode,
+                                               ref bool flagFormAsMacro,
+                                               ref bool flagMapHex)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
-            Int32 tmpInt;
+            int tmpInt;
 
             key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyColour +
@@ -264,10 +264,10 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxColourMode = (Int32)subKey.GetValue(_nameIndxColourMode,
+                indxColourMode = (int)subKey.GetValue(_nameIndxColourMode,
                                                           _indexZero);
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagFormAsMacro,
+                tmpInt = (int)subKey.GetValue(_nameFlagFormAsMacro,
                                                   _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -275,7 +275,7 @@ namespace PCLParaphernalia
                 else
                     flagFormAsMacro = true;
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagMapHex,
+                tmpInt = (int)subKey.GetValue(_nameFlagMapHex,
                                                   _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -294,16 +294,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataTypeColourSample(String pdlName,
-                                                     String sampleName,
-                                                     Int32 sampleCt,
-                                                     ref Int32[] values,
-                                                     Boolean monochrome)
+        public static void loadDataTypeColourSample(string pdlName,
+                                                     string sampleName,
+                                                     int sampleCt,
+                                                     ref int[] values,
+                                                     bool monochrome)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyColour +
@@ -313,9 +313,9 @@ namespace PCLParaphernalia
             {
                 using (RegistryKey subKey = keyMain.CreateSubKey(key))
                 {
-                    Int32 defVal;
+                    int defVal;
 
-                    for (Int32 i = 0; i < sampleCt; i++)
+                    for (int i = 0; i < sampleCt; i++)
                     {
                         if (i == 0)
                             defVal = _defaultShade_0;
@@ -326,7 +326,7 @@ namespace PCLParaphernalia
                         else
                             defVal = _defaultShade_3;
 
-                        values[i] = (Int32)subKey.GetValue(
+                        values[i] = (int)subKey.GetValue(
                             sampleName + _nameValueRoot + i, defVal);
                     }
                 }
@@ -335,9 +335,9 @@ namespace PCLParaphernalia
             {
                 using (RegistryKey subKey = keyMain.CreateSubKey(key))
                 {
-                    for (Int32 i = 0; i < sampleCt; i++)
+                    for (int i = 0; i < sampleCt; i++)
                     {
-                        Int32 defVal;
+                        int defVal;
 
                         if (i == 0)
                             defVal = _defaultColour_0;
@@ -348,7 +348,7 @@ namespace PCLParaphernalia
                         else
                             defVal = _defaultColour_3;
 
-                        values[i] = (Int32)subKey.GetValue(
+                        values[i] = (int)subKey.GetValue(
                             sampleName + _nameValueRoot + i, defVal);
                     }
                 }
@@ -364,32 +364,32 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataTypeLogOper(String pdlName,
-                                                ref Int32 indxMode,
-                                                ref Int32 indxROPFrom,
-                                                ref Int32 indxROPTo,
-                                                ref Int32 indxClrD1,
-                                                ref Int32 indxClrD2,
-                                                ref Int32 indxClrS1,
-                                                ref Int32 indxClrS2,
-                                                ref Int32 indxClrT1,
-                                                ref Int32 indxClrT2,
-                                                ref Int32 indxMonoD1,
-                                                ref Int32 indxMonoD2,
-                                                ref Int32 indxMonoS1,
-                                                ref Int32 indxMonoS2,
-                                                ref Int32 indxMonoT1,
-                                                ref Int32 indxMonoT2,
-                                                ref Boolean flagUseMacros,
-                                                ref Boolean flagSrcTextPat)
+        public static void loadDataTypeLogOper(string pdlName,
+                                                ref int indxMode,
+                                                ref int indxROPFrom,
+                                                ref int indxROPTo,
+                                                ref int indxClrD1,
+                                                ref int indxClrD2,
+                                                ref int indxClrS1,
+                                                ref int indxClrS2,
+                                                ref int indxClrT1,
+                                                ref int indxClrT2,
+                                                ref int indxMonoD1,
+                                                ref int indxMonoD2,
+                                                ref int indxMonoS1,
+                                                ref int indxMonoS2,
+                                                ref int indxMonoT1,
+                                                ref int indxMonoT2,
+                                                ref bool flagUseMacros,
+                                                ref bool flagSrcTextPat)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
-            Int32 tmpInt;
-            Int32 indxClrBlack,
+            int tmpInt;
+            int indxClrBlack,
                   indxClrWhite,
                   indxMonoBlack,
                   indxMonoWhite;
@@ -400,22 +400,22 @@ namespace PCLParaphernalia
 
             if (pdlName == _subKeyPCL)
             {
-                Byte indxPalCMY =
-                    (Byte)PCLPalettes.eIndex.PCLSimpleColourCMY;
+                byte indxPalCMY =
+                    (byte)PCLPalettes.eIndex.PCLSimpleColourCMY;
 
                 indxClrBlack = PCLPalettes.getClrItemBlack(indxPalCMY);
                 indxClrWhite = PCLPalettes.getClrItemWhite(indxPalCMY);
 
-                Byte indxPalMono =
-                    (Byte)PCLPalettes.eIndex.PCLMonochrome;
+                byte indxPalMono =
+                    (byte)PCLPalettes.eIndex.PCLMonochrome;
 
                 indxMonoBlack = PCLPalettes.getClrItemBlack(indxPalMono);
                 indxMonoWhite = PCLPalettes.getClrItemWhite(indxPalMono);
             }
             else // if (pdlName == _subKeyPCLXL)
             {
-                Byte indxPalRGB =
-                    (Byte)PCLXLPalettes.eIndex.PCLXLRGB;
+                byte indxPalRGB =
+                    (byte)PCLXLPalettes.eIndex.PCLXLRGB;
 
                 indxClrBlack = PCLXLPalettes.getClrItemBlack(indxPalRGB);
                 indxClrWhite = PCLXLPalettes.getClrItemWhite(indxPalRGB);
@@ -426,52 +426,52 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxMode = (Int32)subKey.GetValue(_nameIndxColourMode,
+                indxMode = (int)subKey.GetValue(_nameIndxColourMode,
                                                     _indexZero);
 
-                indxROPFrom = (Int32)subKey.GetValue(_nameIndxROPFrom,
+                indxROPFrom = (int)subKey.GetValue(_nameIndxROPFrom,
                                                        _indexZero);
 
-                indxROPTo = (Int32)subKey.GetValue(_nameIndxROPTo,
+                indxROPTo = (int)subKey.GetValue(_nameIndxROPTo,
                                                      _indexNeg);
 
-                indxClrD1 = (Int32)subKey.GetValue(_nameIndxColourD1,
+                indxClrD1 = (int)subKey.GetValue(_nameIndxColourD1,
                                                      indxClrBlack);
 
-                indxClrD2 = (Int32)subKey.GetValue(_nameIndxColourD2,
+                indxClrD2 = (int)subKey.GetValue(_nameIndxColourD2,
                                                      indxClrWhite);
 
-                indxClrS1 = (Int32)subKey.GetValue(_nameIndxColourS1,
+                indxClrS1 = (int)subKey.GetValue(_nameIndxColourS1,
                                                      indxClrBlack);
 
-                indxClrS2 = (Int32)subKey.GetValue(_nameIndxColourS2,
+                indxClrS2 = (int)subKey.GetValue(_nameIndxColourS2,
                                                      indxClrWhite);
 
-                indxClrT1 = (Int32)subKey.GetValue(_nameIndxColourT1,
+                indxClrT1 = (int)subKey.GetValue(_nameIndxColourT1,
                                                      indxClrBlack);
 
-                indxClrT2 = (Int32)subKey.GetValue(_nameIndxColourT2,
+                indxClrT2 = (int)subKey.GetValue(_nameIndxColourT2,
                                                      indxClrWhite);
 
-                indxMonoD1 = (Int32)subKey.GetValue(_nameIndxMonoD1,
+                indxMonoD1 = (int)subKey.GetValue(_nameIndxMonoD1,
                                                      indxMonoBlack);
 
-                indxMonoD2 = (Int32)subKey.GetValue(_nameIndxMonoD2,
+                indxMonoD2 = (int)subKey.GetValue(_nameIndxMonoD2,
                                                      indxMonoWhite);
 
-                indxMonoS1 = (Int32)subKey.GetValue(_nameIndxMonoS1,
+                indxMonoS1 = (int)subKey.GetValue(_nameIndxMonoS1,
                                                      indxMonoBlack);
 
-                indxMonoS2 = (Int32)subKey.GetValue(_nameIndxMonoS2,
+                indxMonoS2 = (int)subKey.GetValue(_nameIndxMonoS2,
                                                      indxMonoWhite);
 
-                indxMonoT1 = (Int32)subKey.GetValue(_nameIndxMonoT1,
+                indxMonoT1 = (int)subKey.GetValue(_nameIndxMonoT1,
                                                      indxMonoBlack);
 
-                indxMonoT2 = (Int32)subKey.GetValue(_nameIndxMonoT2,
+                indxMonoT2 = (int)subKey.GetValue(_nameIndxMonoT2,
                                                      indxMonoWhite);
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagUseMacros,
+                tmpInt = (int)subKey.GetValue(_nameFlagUseMacros,
                                                   _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -481,7 +481,7 @@ namespace PCLParaphernalia
 
                 if (pdlName == _subKeyPCLXL)
                 {
-                    tmpInt = (Int32)subKey.GetValue(_nameFlagSrcTextPat,
+                    tmpInt = (int)subKey.GetValue(_nameFlagSrcTextPat,
                                                       _flagTrue);
 
                     if (tmpInt == _flagFalse)
@@ -505,20 +505,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataTypeLogPage(String pdlName,
-                                                ref Int32 offsetLeft,
-                                                ref Int32 offsetTop,
-                                                ref Int32 pageHeight,
-                                                ref Int32 pageWidth,
-                                                ref Boolean flagFormAsMacro,
-                                                ref Boolean flagAddStdPage)
+        public static void loadDataTypeLogPage(string pdlName,
+                                                ref int offsetLeft,
+                                                ref int offsetTop,
+                                                ref int pageHeight,
+                                                ref int pageWidth,
+                                                ref bool flagFormAsMacro,
+                                                ref bool flagAddStdPage)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
-            Int32 tmpInt;
+            int tmpInt;
 
             key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyLogPage +
@@ -526,19 +526,19 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                offsetLeft = (Int32)subKey.GetValue(_nameOffsetLeft,
+                offsetLeft = (int)subKey.GetValue(_nameOffsetLeft,
                                                          _indexZero);
 
-                offsetTop = (Int32)subKey.GetValue(_nameOffsetTop,
+                offsetTop = (int)subKey.GetValue(_nameOffsetTop,
                                                          _indexZero);
 
-                pageHeight = (Int32)subKey.GetValue(_namePageHeight,
+                pageHeight = (int)subKey.GetValue(_namePageHeight,
                                                          _indexZero);
 
-                pageWidth = (Int32)subKey.GetValue(_namePageWidth,
+                pageWidth = (int)subKey.GetValue(_namePageWidth,
                                                          _indexZero);
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagFormAsMacro,
+                tmpInt = (int)subKey.GetValue(_nameFlagFormAsMacro,
                                                   _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -546,7 +546,7 @@ namespace PCLParaphernalia
                 else
                     flagFormAsMacro = true;
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagAddStdPage,
+                tmpInt = (int)subKey.GetValue(_nameFlagAddStdPage,
                                                          _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -565,16 +565,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataTypePattern(String pdlName,
-                                               ref Int32 indxPatternType,
-                                               ref Boolean flagFormAsMacro)
+        public static void loadDataTypePattern(string pdlName,
+                                               ref int indxPatternType,
+                                               ref bool flagFormAsMacro)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
-            Int32 tmpInt;
+            int tmpInt;
 
             key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyPattern +
@@ -582,10 +582,10 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxPatternType = (Int32)subKey.GetValue(_nameIndxPatternType,
+                indxPatternType = (int)subKey.GetValue(_nameIndxPatternType,
                                                          _indexZero);
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagFormAsMacro,
+                tmpInt = (int)subKey.GetValue(_nameFlagFormAsMacro,
                                                   _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -604,16 +604,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataTypeTxtMod(String pdlName,
-                                               ref Int32 indxTxtModType,
-                                               ref Boolean flagFormAsMacro)
+        public static void loadDataTypeTxtMod(string pdlName,
+                                               ref int indxTxtModType,
+                                               ref bool flagFormAsMacro)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
-            Int32 tmpInt;
+            int tmpInt;
 
             key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyTxtMod +
@@ -621,10 +621,10 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxTxtModType = (Int32)subKey.GetValue(_nameIndxTxtModType,
+                indxTxtModType = (int)subKey.GetValue(_nameIndxTxtModType,
                                                          _indexZero);
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagFormAsMacro,
+                tmpInt = (int)subKey.GetValue(_nameFlagFormAsMacro,
                                                   _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -643,18 +643,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataTypeUnicode(String pdlName,
-                                               ref Int32 indxFont,
+        public static void loadDataTypeUnicode(string pdlName,
+                                               ref int indxFont,
                                                ref PCLFonts.eVariant variant,
-                                               ref Int32 codePoint,
-                                               ref Boolean flagFormAsMacro)
+                                               ref int codePoint,
+                                               ref bool flagFormAsMacro)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
-            Int32 tmpInt;
+            int tmpInt;
 
             key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyUnicode +
@@ -662,17 +662,17 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxFont = (Int32)subKey.GetValue(_nameIndxFont,
+                indxFont = (int)subKey.GetValue(_nameIndxFont,
                                                   _indexZero);
 
-                tmpInt = (Int32)subKey.GetValue(_nameIndxVariant,
+                tmpInt = (int)subKey.GetValue(_nameIndxVariant,
                                                       _defaultIndxVariant);
                 variant = (PCLFonts.eVariant)tmpInt;
 
-                codePoint = (Int32)subKey.GetValue(_nameCodePoint,
+                codePoint = (int)subKey.GetValue(_nameCodePoint,
                                                    _defaultCodePoint);
 
-                tmpInt = (Int32)subKey.GetValue(_nameFlagFormAsMacro,
+                tmpInt = (int)subKey.GetValue(_nameFlagFormAsMacro,
                                                   _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -694,12 +694,12 @@ namespace PCLParaphernalia
         public static void saveDataCapture(
             ToolCommonData.eToolSubIds crntToolSubId,
             ToolCommonData.ePrintLang crntPDL,
-            String captureFile)
+            string captureFile)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String subKeyType = "";
+            string subKeyType = "";
 
             if (crntToolSubId == ToolCommonData.eToolSubIds.Colour)
                 subKeyType = "\\" + _subKeyColour;
@@ -716,7 +716,7 @@ namespace PCLParaphernalia
 
             if (crntPDL == ToolCommonData.ePrintLang.PCL)
             {
-                String key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
+                string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                             "\\" + subKeyType +
                                             "\\" + _subKeyPCL;
 
@@ -732,7 +732,7 @@ namespace PCLParaphernalia
             }
             else if (crntPDL == ToolCommonData.ePrintLang.PCLXL)
             {
-                String key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
+                string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                             "\\" + subKeyType +
                                             "\\" + _subKeyPCLXL;
 
@@ -757,13 +757,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCommon(Int32 indxPDL,
-                                          Int32 indxSampleType)
+        public static void saveDataCommon(int indxPDL,
+                                          int indxSampleType)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTools + "\\" + _subKeyToolsMiscSamples;
+            string key = _subKeyTools + "\\" + _subKeyToolsMiscSamples;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -786,15 +786,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCommonPDL(String pdlName,
-                                             Int32 indxOrientation,
-                                             Int32 indxPaperSize,
-                                             Int32 indxPaperType)
+        public static void saveDataCommonPDL(string pdlName,
+                                             int indxOrientation,
+                                             int indxPaperSize,
+                                             int indxPaperType)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyCommon +
@@ -825,15 +825,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataTypeColour(String pdlName,
-                                               Int32 indxColourMode,
-                                               Boolean flagFormAsMacro,
-                                               Boolean flagMapHex)
+        public static void saveDataTypeColour(string pdlName,
+                                               int indxColourMode,
+                                               bool flagFormAsMacro,
+                                               bool flagMapHex)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyColour +
@@ -874,15 +874,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataTypeColourSample(String pdlName,
-                                                     String sampleName,
-                                                     Int32 sampleCt,
-                                                     Int32[] values)
+        public static void saveDataTypeColourSample(string pdlName,
+                                                     string sampleName,
+                                                     int sampleCt,
+                                                     int[] values)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyColour +
@@ -890,7 +890,7 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                for (Int32 i = 0; i < sampleCt; i++)
+                for (int i = 0; i < sampleCt; i++)
                 {
                     subKey.SetValue(sampleName + _nameValueRoot + i,
                                     values[i],
@@ -908,29 +908,29 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataTypeLogOper(String pdlName,
-                                                Int32 indxMode,
-                                                Int32 indxROPFrom,
-                                                Int32 indxROPTo,
-                                                Int32 indxClrD1,
-                                                Int32 indxClrD2,
-                                                Int32 indxClrS1,
-                                                Int32 indxClrS2,
-                                                Int32 indxClrT1,
-                                                Int32 indxClrT2,
-                                                Int32 indxMonoD1,
-                                                Int32 indxMonoD2,
-                                                Int32 indxMonoS1,
-                                                Int32 indxMonoS2,
-                                                Int32 indxMonoT1,
-                                                Int32 indxMonoT2,
-                                                Boolean flagUseMacros,
-                                                Boolean flagSrcTextPat)
+        public static void saveDataTypeLogOper(string pdlName,
+                                                int indxMode,
+                                                int indxROPFrom,
+                                                int indxROPTo,
+                                                int indxClrD1,
+                                                int indxClrD2,
+                                                int indxClrS1,
+                                                int indxClrS2,
+                                                int indxClrT1,
+                                                int indxClrT2,
+                                                int indxMonoD1,
+                                                int indxMonoD2,
+                                                int indxMonoS1,
+                                                int indxMonoS2,
+                                                int indxMonoT1,
+                                                int indxMonoT2,
+                                                bool flagUseMacros,
+                                                bool flagSrcTextPat)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyLogOper +
@@ -1030,18 +1030,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataTypeLogPage(String pdlName,
-                                               Int32 offsetLeft,
-                                               Int32 offsetTop,
-                                               Int32 pageHeight,
-                                               Int32 pageWidth,
-                                               Boolean flagFormAsMacro,
-                                               Boolean flagAddStdPage)
+        public static void saveDataTypeLogPage(string pdlName,
+                                               int offsetLeft,
+                                               int offsetTop,
+                                               int pageHeight,
+                                               int pageWidth,
+                                               bool flagFormAsMacro,
+                                               bool flagAddStdPage)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyLogPage +
@@ -1094,14 +1094,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataTypePattern(String pdlName,
-                                               Int32 indxPatternType,
-                                               Boolean flagFormAsMacro)
+        public static void saveDataTypePattern(string pdlName,
+                                               int indxPatternType,
+                                               bool flagFormAsMacro)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyPattern +
@@ -1133,14 +1133,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataTypeTxtMod(String pdlName,
-                                              Int32 indxTxtModType,
-                                              Boolean flagFormAsMacro)
+        public static void saveDataTypeTxtMod(string pdlName,
+                                              int indxTxtModType,
+                                              bool flagFormAsMacro)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyTxtMod +
@@ -1172,16 +1172,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataTypeUnicode(String pdlName,
-                                               Int32 indxFont,
+        public static void saveDataTypeUnicode(string pdlName,
+                                               int indxFont,
                                                PCLFonts.eVariant variant,
-                                               Int32 codePoint,
-                                               Boolean flagFormAsMacro)
+                                               int codePoint,
+                                               bool flagFormAsMacro)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key;
+            string key;
 
             key = _subKeyTools + "\\" + _subKeyToolsMiscSamples +
                                  "\\" + _subKeyUnicode +
@@ -1194,7 +1194,7 @@ namespace PCLParaphernalia
                                 RegistryValueKind.DWord);
 
                 subKey.SetValue(_nameIndxVariant,
-                                (Int32)variant,
+                                (int)variant,
                                 RegistryValueKind.DWord);
 
                 subKey.SetValue(_nameCodePoint,

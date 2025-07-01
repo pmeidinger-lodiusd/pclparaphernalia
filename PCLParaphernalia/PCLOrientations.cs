@@ -46,22 +46,22 @@ namespace PCLParaphernalia
             new PCLOrientation(eAspect.Portrait,
                                "Portrait",
                                0x00,
-                               (Byte)PCLXLAttrEnums.eVal.ePortraitOrientation),
+                               (byte)PCLXLAttrEnums.eVal.ePortraitOrientation),
             new PCLOrientation(eAspect.Landscape,
                                "Landscape",
                                0x01,
-                               (Byte)PCLXLAttrEnums.eVal.eLandscapeOrientation),
+                               (byte)PCLXLAttrEnums.eVal.eLandscapeOrientation),
             new PCLOrientation(eAspect.Portrait,
                                "Reverse Portrait",
                                0x02,
-                               (Byte)PCLXLAttrEnums.eVal.eReversePortrait),
+                               (byte)PCLXLAttrEnums.eVal.eReversePortrait),
             new PCLOrientation(eAspect.Landscape,
                                "Reverse Landscape",
                                0x03,
-                               (Byte)PCLXLAttrEnums.eVal.eReverseLandscape)
+                               (byte)PCLXLAttrEnums.eVal.eReverseLandscape)
         };
 
-        private static Int32 _orientationCount =
+        private static int _orientationCount =
             _orientations.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
@@ -73,7 +73,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eAspect getAspect(Int32 index)
+        public static eAspect getAspect(int index)
         {
             return _orientations[index].getAspect();
         }
@@ -87,7 +87,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getCount()
+        public static int getCount()
         {
             return _orientationCount;
         }
@@ -101,7 +101,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Byte getIdPCL(Int32 index)
+        public static byte getIdPCL(int index)
         {
             return _orientations[index].getIdPCL();
         }
@@ -115,7 +115,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Byte getIdPCLXL(Int32 index)
+        public static byte getIdPCLXL(int index)
         {
             return _orientations[index].getIdPCLXL();
         }
@@ -129,7 +129,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getName(Int32 index)
+        public static string getName(int index)
         {
             return _orientations[index].getName();
         }
@@ -144,7 +144,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean isLandscape(Int32 index)
+        public static bool isLandscape(int index)
         {
             if (_orientations[index].getAspect() == eAspect.Landscape)
                 return true;

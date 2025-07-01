@@ -19,7 +19,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private PrnParseRowTypes.eType _rowType;
-        private String _rowTypeDesc;
+        private string _rowTypeDesc;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -28,7 +28,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PrnParseRowType(PrnParseRowTypes.eType type,
-                                String desc)
+                                string desc)
         {
             _rowType = type;
             _rowTypeDesc = desc;
@@ -43,7 +43,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String getDesc()
+        public string getDesc()
         {
             return _rowTypeDesc;
         }

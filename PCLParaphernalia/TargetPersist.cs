@@ -19,33 +19,33 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const String _mainKey = MainForm._regMainKey;
+        const string _mainKey = MainForm._regMainKey;
 
-        const String _subKeyTarget = "Target";
-        const String _subKeyTargetFile = "File";
-        const String _subKeyTargetPrinter = "Printer";
-        const String _subKeyTargetNetPrinter = "NetPrinter";
-        const String _subKeyTargetWinPrinter = "WinPrinter";
-        const String _subKeyWorkFolder = "WorkFolder";
+        const string _subKeyTarget = "Target";
+        const string _subKeyTargetFile = "File";
+        const string _subKeyTargetPrinter = "Printer";
+        const string _subKeyTargetNetPrinter = "NetPrinter";
+        const string _subKeyTargetWinPrinter = "WinPrinter";
+        const string _subKeyWorkFolder = "WorkFolder";
 
-        const String _nameIndxTargetType = "IndxTargetType";
-        const String _nameFilename = "Filename";
-        const String _nameFoldername = "Foldername";
-        const String _namePrintername = "Printername";
-        const String _nameIPAddress = "IPAddress";
-        const String _namePort = "Port";
-        const String _nameTimeoutSend = "TimeoutMsecsSend";
-        const String _nameTimeoutReceive = "TimeoutMsecsReceive";
+        const string _nameIndxTargetType = "IndxTargetType";
+        const string _nameFilename = "Filename";
+        const string _nameFoldername = "Foldername";
+        const string _namePrintername = "Printername";
+        const string _nameIPAddress = "IPAddress";
+        const string _namePort = "Port";
+        const string _nameTimeoutSend = "TimeoutMsecsSend";
+        const string _nameTimeoutReceive = "TimeoutMsecsReceive";
 
-        const String _defaultFilename = "ItemNoLongerUsed";
-        const String _defaultPrintername = "<None>";
-        const String _defaultIPAddress = "192.168.0.98";
+        const string _defaultFilename = "ItemNoLongerUsed";
+        const string _defaultPrintername = "<None>";
+        const string _defaultIPAddress = "192.168.0.98";
 
-        const Int32 _indexZero = 0;
-        const Int32 _defaultNetPort = 9100;
+        const int _indexZero = 0;
+        const int _defaultNetPort = 9100;
 
-        const Int32 _defaultNetTimeoutSend = 15000;
-        const Int32 _defaultNetTimeoutReceive = 10000;
+        const int _defaultNetTimeoutSend = 15000;
+        const int _defaultNetTimeoutReceive = 10000;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -57,16 +57,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCommon(ref Int32 indxTargetType)
+        public static void loadDataCommon(ref int indxTargetType)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTarget;
+            string key = _subKeyTarget;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                indxTargetType = (Int32)subKey.GetValue(_nameIndxTargetType,
+                indxTargetType = (int)subKey.GetValue(_nameIndxTargetType,
                                                         _indexZero);
             }
         }
@@ -81,15 +81,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataNetPrinter(ref String ipAddress,
-                                               ref Int32 port,
-                                               ref Int32 timeoutSend,
-                                               ref Int32 timeoutReceive)
+        public static void loadDataNetPrinter(ref string ipAddress,
+                                               ref int port,
+                                               ref int timeoutSend,
+                                               ref int timeoutReceive)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTarget + "\\" + _subKeyTargetNetPrinter;
+            string key = _subKeyTarget + "\\" + _subKeyTargetNetPrinter;
 
             //----------------------------------------------------------------//
 
@@ -106,16 +106,16 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                ipAddress = (String)subKey.GetValue(_nameIPAddress,
+                ipAddress = (string)subKey.GetValue(_nameIPAddress,
                                                      _defaultIPAddress);
 
-                port = (Int32)subKey.GetValue(_namePort,
+                port = (int)subKey.GetValue(_namePort,
                                                _defaultNetPort);
 
-                timeoutSend = (Int32)subKey.GetValue(_nameTimeoutSend,
+                timeoutSend = (int)subKey.GetValue(_nameTimeoutSend,
                                                _defaultNetTimeoutSend);
 
-                timeoutReceive = (Int32)subKey.GetValue(_nameTimeoutReceive,
+                timeoutReceive = (int)subKey.GetValue(_nameTimeoutReceive,
                                                _defaultNetTimeoutReceive);
             }
         }
@@ -130,18 +130,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataWinPrinter(ref String printerName)
+        public static void loadDataWinPrinter(ref string printerName)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTarget + "\\" + _subKeyTargetWinPrinter;
+            string key = _subKeyTarget + "\\" + _subKeyTargetWinPrinter;
 
             //----------------------------------------------------------------//
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                printerName = (String)subKey.GetValue(_namePrintername,
+                printerName = (string)subKey.GetValue(_namePrintername,
                                                         _defaultPrintername);
             }
         }
@@ -155,18 +155,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataWorkFolder(ref String foldername)
+        public static void loadDataWorkFolder(ref string foldername)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTarget + "\\" + _subKeyWorkFolder;
+            string key = _subKeyTarget + "\\" + _subKeyWorkFolder;
 
-            String defWorkFolder = Environment.GetEnvironmentVariable("TMP");
+            string defWorkFolder = Environment.GetEnvironmentVariable("TMP");
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                foldername = (String)subKey.GetValue(_nameFoldername,
+                foldername = (string)subKey.GetValue(_nameFoldername,
                                                      defWorkFolder);
             }
         }
@@ -180,12 +180,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCommon(Int32 indxTargetType)
+        public static void saveDataCommon(int indxTargetType)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTarget;
+            string key = _subKeyTarget;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -204,16 +204,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataNetPrinter(Int32 indxTargetType,
-                                               String ipAddress,
-                                               Int32 port,
-                                               Int32 timeoutSend,
-                                               Int32 timeoutReceive)
+        public static void saveDataNetPrinter(int indxTargetType,
+                                               string ipAddress,
+                                               int port,
+                                               int timeoutSend,
+                                               int timeoutReceive)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTarget;
+            string key = _subKeyTarget;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -253,13 +253,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataWinPrinter(Int32 indxTargetType,
-                                               String printerName)
+        public static void saveDataWinPrinter(int indxTargetType,
+                                               string printerName)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTarget;
+            string key = _subKeyTarget;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -287,12 +287,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataWorkFolder(String saveFoldername)
+        public static void saveDataWorkFolder(string saveFoldername)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
-            String key = _subKeyTarget + "\\" + _subKeyWorkFolder;
+            string key = _subKeyTarget + "\\" + _subKeyWorkFolder;
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
