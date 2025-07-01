@@ -1,5 +1,4 @@
-﻿using System;
-using System.Deployment.Application;
+﻿using System.Deployment.Application;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
