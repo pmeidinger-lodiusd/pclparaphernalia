@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing.Printing;
+﻿using System.Drawing.Printing;
 using System.Windows;
 
 namespace PCLParaphernalia

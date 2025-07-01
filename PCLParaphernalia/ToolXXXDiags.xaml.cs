@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Printing;
 using System.Printing.IndexedProperties;
 using System.Windows;
