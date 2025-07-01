@@ -20,7 +20,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static SortedList<string, HPGL2Command> _cmds =
+        private static readonly SortedList<string, HPGL2Command> _cmds =
             new SortedList<string, HPGL2Command>();
 
         private static HPGL2Command _cmdUnknown;

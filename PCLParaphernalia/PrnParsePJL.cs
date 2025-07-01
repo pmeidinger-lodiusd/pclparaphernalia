@@ -50,7 +50,7 @@ namespace PCLParaphernalia
         private PrnParseConstants.eOptCharSets _indxCharSetName;
         private int _valCharSetSubCode;
 
-        private ASCIIEncoding _ascii = new ASCIIEncoding();
+        private readonly ASCIIEncoding _ascii = new ASCIIEncoding();
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

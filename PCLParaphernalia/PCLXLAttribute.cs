@@ -21,22 +21,22 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private int _tagLen;
-        private byte _tagA;
-        private byte _tagB;
+        private readonly int _tagLen;
+        private readonly byte _tagA;
+        private readonly byte _tagB;
 
-        private string _description;
+        private readonly string _description;
 
-        private bool _flagReserved;
-        private bool _flagAttrEnum;
-        private bool _flagOperEnum;
-        private bool _flagUbyteTxt;
-        private bool _flagUintTxt;
-        private bool _flagValIsLen;
-        private bool _flagValIsPCL;
+        private readonly bool _flagReserved;
+        private readonly bool _flagAttrEnum;
+        private readonly bool _flagOperEnum;
+        private readonly bool _flagUbyteTxt;
+        private readonly bool _flagUintTxt;
+        private readonly bool _flagValIsLen;
+        private readonly bool _flagValIsPCL;
 
-        private PrnParseConstants.eActPCLXL _actionType;
-        private PrnParseConstants.eOvlAct _makeOvlAct;
+        private readonly PrnParseConstants.eActPCLXL _actionType;
+        private readonly PrnParseConstants.eOvlAct _makeOvlAct;
 
         private int _statsCtParent;
         private int _statsCtChild;

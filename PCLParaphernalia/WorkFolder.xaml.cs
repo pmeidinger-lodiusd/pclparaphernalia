@@ -18,7 +18,7 @@ namespace PCLParaphernalia
 
     public partial class WorkFolder : Window
     {
-        string _tmpFolder = Environment.GetEnvironmentVariable("TMP");
+        readonly string _tmpFolder = Environment.GetEnvironmentVariable("TMP");
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

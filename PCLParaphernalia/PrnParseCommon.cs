@@ -31,12 +31,12 @@ namespace PCLParaphernalia
 
         static int _macroLevel = 0;
 
-        static string _colName_RowType = PrnParseConstants.cRptA_colName_RowType;
-        static string _colName_Action = PrnParseConstants.cRptA_colName_Action;
-        static string _colName_Offset = PrnParseConstants.cRptA_colName_Offset;
-        static string _colName_Type = PrnParseConstants.cRptA_colName_Type;
-        static string _colName_Seq = PrnParseConstants.cRptA_colName_Seq;
-        static string _colName_Desc = PrnParseConstants.cRptA_colName_Desc;
+        static readonly string _colName_RowType = PrnParseConstants.cRptA_colName_RowType;
+        static readonly string _colName_Action = PrnParseConstants.cRptA_colName_Action;
+        static readonly string _colName_Offset = PrnParseConstants.cRptA_colName_Offset;
+        static readonly string _colName_Type = PrnParseConstants.cRptA_colName_Type;
+        static readonly string _colName_Seq = PrnParseConstants.cRptA_colName_Seq;
+        static readonly string _colName_Desc = PrnParseConstants.cRptA_colName_Desc;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

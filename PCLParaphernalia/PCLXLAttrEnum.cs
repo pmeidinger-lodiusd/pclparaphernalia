@@ -21,16 +21,16 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private byte _operTag;
-        private byte _attrTagA;
-        private byte _attrTagB;
+        private readonly byte _operTag;
+        private readonly byte _attrTagA;
+        private readonly byte _attrTagB;
 
-        private int _value;
-        private int _attrTagLen;
+        private readonly int _value;
+        private readonly int _attrTagLen;
 
-        private string _description;
+        private readonly string _description;
 
-        private bool _flagValIsTxt;
+        private readonly bool _flagValIsTxt;
 
         private int _statsCtParent;
         private int _statsCtChild;

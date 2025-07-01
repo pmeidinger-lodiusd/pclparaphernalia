@@ -26,7 +26,7 @@
             FontExtended
         }
 
-        private static PCLEntityType[] _entityTypes =
+        private static readonly PCLEntityType[] _entityTypes =
         {
             new PCLEntityType(eType.Memory,         "1",
                               "Memory"),
@@ -42,7 +42,7 @@
                               "Font Extended")
         };
 
-        private static int _entityTypeCount = _entityTypes.GetUpperBound(0) + 1;
+        private static readonly int _entityTypeCount = _entityTypes.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

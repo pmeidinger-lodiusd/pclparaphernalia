@@ -29,13 +29,13 @@ namespace PCLParaphernalia
 
         private PrnParseOptions _options;
 
-        private PrnParse.eParseType _parseType;
+        private readonly PrnParse.eParseType _parseType;
 
-        private PrnParseHPGL2 _parseHPGL2;
+        private readonly PrnParseHPGL2 _parseHPGL2;
 
-        private PrnParseFontHddrPCL _parseFontHddrPCL;
-        private PrnParseFontCharPCL _parseFontCharPCL;
-        private PrnParsePCLBinary _parsePCLBinary;
+        private readonly PrnParseFontHddrPCL _parseFontHddrPCL;
+        private readonly PrnParseFontCharPCL _parseFontCharPCL;
+        private readonly PrnParsePCLBinary _parsePCLBinary;
 
         private DataTable _table;
 
@@ -77,7 +77,7 @@ namespace PCLParaphernalia
 
         private bool _analysePML;
 
-        private ASCIIEncoding _ascii = new ASCIIEncoding();
+        private readonly ASCIIEncoding _ascii = new ASCIIEncoding();
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

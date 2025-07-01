@@ -42,16 +42,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static short _fontIndexArial = PCLFonts.getIndexForName("Arial");
-        static short _fontIndexCourier = PCLFonts.getIndexForName("Courier");
+        static readonly short _fontIndexArial = PCLFonts.getIndexForName("Arial");
+        static readonly short _fontIndexCourier = PCLFonts.getIndexForName("Courier");
 
-        static string _fontNameArial =
+        static readonly string _fontNameArial =
             PCLFonts.getPCLXLName(_fontIndexArial,
                                   PCLFonts.eVariant.Regular);
-        static string _fontNameCourier =
+        static readonly string _fontNameCourier =
             PCLFonts.getPCLXLName(_fontIndexCourier,
                                   PCLFonts.eVariant.Regular);
-        static string _fontNameCourierBold =
+        static readonly string _fontNameCourierBold =
             PCLFonts.getPCLXLName(_fontIndexCourier,
                                   PCLFonts.eVariant.Bold);
 

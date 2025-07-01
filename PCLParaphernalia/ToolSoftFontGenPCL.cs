@@ -35,14 +35,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private ToolSoftFontGenPCLCommon _baseHandler;
+        private readonly ToolSoftFontGenPCLCommon _baseHandler;
 
         private Stream _opStream = null;
         private BinaryWriter _binWriter = null;
 
-        private ToolSoftFontGenTTF _ttfHandler = null;
+        private readonly ToolSoftFontGenTTF _ttfHandler = null;
 
-        private DataTable _tableLog;
+        private readonly DataTable _tableLog;
 
         private bool _symbolMapping = false;
 

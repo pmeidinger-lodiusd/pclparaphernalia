@@ -20,7 +20,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static SortedList<byte, PMLOutcome> _tags =
+        private static readonly SortedList<byte, PMLOutcome> _tags =
             new SortedList<byte, PMLOutcome>();
 
         private static PMLOutcome _unknownTag;

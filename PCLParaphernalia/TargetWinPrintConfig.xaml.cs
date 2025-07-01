@@ -23,7 +23,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool _initialised;
+        private readonly bool _initialised;
 
         private string _printerName;
 

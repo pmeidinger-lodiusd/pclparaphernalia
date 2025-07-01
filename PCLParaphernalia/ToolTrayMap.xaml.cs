@@ -38,13 +38,13 @@ namespace PCLParaphernalia
             Max
         }
 
-        private static int[] _subsetPDLs =
+        private static readonly int[] _subsetPDLs =
         {
             (int) ToolCommonData.ePrintLang.PCL,
             (int) ToolCommonData.ePrintLang.PCLXL,
         };
 
-        private static int[] _subsetOrientations =
+        private static readonly int[] _subsetOrientations =
         {
             (int) PCLOrientations.eIndex.Portrait,
             (int) PCLOrientations.eIndex.Landscape,
@@ -52,7 +52,7 @@ namespace PCLParaphernalia
             (int) PCLOrientations.eIndex.ReverseLandscape
         };
 
-        private static int[] _subsetPaperSizes =
+        private static readonly int[] _subsetPaperSizes =
         {
             (int) PCLPaperSizes.eIndex.ISO_A4,
             (int) PCLPaperSizes.eIndex.ISO_A3,
@@ -63,7 +63,7 @@ namespace PCLParaphernalia
             (int) PCLPaperSizes.eIndex.Executive
         };
 
-        private static int[] _subsetPaperTypes =
+        private static readonly int[] _subsetPaperTypes =
         {
             (int) PCLPaperTypes.eIndex.NotSet,
             (int) PCLPaperTypes.eIndex.Plain,
@@ -78,7 +78,7 @@ namespace PCLParaphernalia
             (int) PCLPaperTypes.eIndex.Rough
         };
 
-        private static int[] _subsetPlexModes =
+        private static readonly int[] _subsetPlexModes =
         {
             (int) PCLPlexModes.eIndex.Simplex,
             (int) PCLPlexModes.eIndex.DuplexLongEdge,

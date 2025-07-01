@@ -78,7 +78,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static long[] cOffsetsUTF8 =
+        static readonly long[] cOffsetsUTF8 =
         {
             0x0000000000,   // 0 trailing bytes //
             0x0000003080,   // 1 trailing byte  //
@@ -155,7 +155,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static byte[] cLeadByteMarksUTF8 =
+        static readonly byte[] cLeadByteMarksUTF8 =
         {
             0x00,           // 0 trailing bytes //
             0xC0,           // 1 trailing byte  //

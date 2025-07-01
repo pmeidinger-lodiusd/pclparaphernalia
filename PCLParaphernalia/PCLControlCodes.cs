@@ -20,7 +20,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static SortedList<byte, PCLControlCode> _tags =
+        private static readonly SortedList<byte, PCLControlCode> _tags =
             new SortedList<byte, PCLControlCode>();
 
         private static PCLControlCode _tagUnknown;

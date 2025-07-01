@@ -66,8 +66,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static int _indxFontArial = PCLFonts.getIndexForName("Arial");
-        static int _indxFontCourier = PCLFonts.getIndexForName("Courier");
+        static readonly int _indxFontArial = PCLFonts.getIndexForName("Arial");
+        static readonly int _indxFontCourier = PCLFonts.getIndexForName("Courier");
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

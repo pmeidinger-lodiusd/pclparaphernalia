@@ -20,7 +20,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static SortedList<byte, PCLSimpleSeq> _seqs =
+        private static readonly SortedList<byte, PCLSimpleSeq> _seqs =
             new SortedList<byte, PCLSimpleSeq>();
 
         private static PCLSimpleSeq _seqUnknown;

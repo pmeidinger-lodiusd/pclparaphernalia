@@ -149,15 +149,15 @@ namespace PCLParaphernalia
 
         public int _sizeCharSet;
 
-        private bool _logVerbose = true;
+        private readonly bool _logVerbose = true;
 
         private Stream _ipStream = null;
         private BinaryReader _binReader = null;
 
         private ushort[] _mappingTable;
 
-        private DataTable _tableDonor;
-        private DataTable _tableMapping;
+        private readonly DataTable _tableDonor;
+        private readonly DataTable _tableMapping;
 
         private long _fontFileSize = 0;
 
@@ -209,7 +209,7 @@ namespace PCLParaphernalia
 
         private string _name_fullFontnameStr = "";
 
-        private byte[] _name_fullFontname = new byte[cSizeFontname];
+        private readonly byte[] _name_fullFontname = new byte[cSizeFontname];
         private byte[] _PCLT_typeface = new byte[cSizeFontname];
 
         private byte[] _OS_2_panose = new byte[cSizePanose];
@@ -218,27 +218,27 @@ namespace PCLParaphernalia
         private bool _tabPCLTPresent = false;
         private bool _tabvmtxPresent = false;
 
-        private ToolSoftFontGenTTFTable _tab_OS_2;
-        private ToolSoftFontGenTTFTable _tab_PCLT;
-        private ToolSoftFontGenTTFTable _tab_cmap;
-        private ToolSoftFontGenTTFTable _tab_cvt;
-        private ToolSoftFontGenTTFTable _tab_fpgm;
-        private ToolSoftFontGenTTFTable _tab_gdir;
-        private ToolSoftFontGenTTFTable _tab_glyf;
-        private ToolSoftFontGenTTFTable _tab_head;
-        private ToolSoftFontGenTTFTable _tab_hhea;
-        private ToolSoftFontGenTTFTable _tab_hmtx;
-        private ToolSoftFontGenTTFTable _tab_loca;
-        private ToolSoftFontGenTTFTable _tab_maxp;
-        private ToolSoftFontGenTTFTable _tab_name;
-        private ToolSoftFontGenTTFTable _tab_post;
-        private ToolSoftFontGenTTFTable _tab_prep;
-        private ToolSoftFontGenTTFTable _tab_ttcf;
-        private ToolSoftFontGenTTFTable _tab_vhea;
-        private ToolSoftFontGenTTFTable _tab_vmtx;
+        private readonly ToolSoftFontGenTTFTable _tab_OS_2;
+        private readonly ToolSoftFontGenTTFTable _tab_PCLT;
+        private readonly ToolSoftFontGenTTFTable _tab_cmap;
+        private readonly ToolSoftFontGenTTFTable _tab_cvt;
+        private readonly ToolSoftFontGenTTFTable _tab_fpgm;
+        private readonly ToolSoftFontGenTTFTable _tab_gdir;
+        private readonly ToolSoftFontGenTTFTable _tab_glyf;
+        private readonly ToolSoftFontGenTTFTable _tab_head;
+        private readonly ToolSoftFontGenTTFTable _tab_hhea;
+        private readonly ToolSoftFontGenTTFTable _tab_hmtx;
+        private readonly ToolSoftFontGenTTFTable _tab_loca;
+        private readonly ToolSoftFontGenTTFTable _tab_maxp;
+        private readonly ToolSoftFontGenTTFTable _tab_name;
+        private readonly ToolSoftFontGenTTFTable _tab_post;
+        private readonly ToolSoftFontGenTTFTable _tab_prep;
+        private readonly ToolSoftFontGenTTFTable _tab_ttcf;
+        private readonly ToolSoftFontGenTTFTable _tab_vhea;
+        private readonly ToolSoftFontGenTTFTable _tab_vmtx;
 
         private GlyphDataEntry[] _glyphData;
-        private CharCodeEntry[] _charData;
+        private readonly CharCodeEntry[] _charData;
 
         private string _filenameTTF;
 

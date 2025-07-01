@@ -38,7 +38,7 @@ namespace PCLParaphernalia
 
         private static int _collsCount;
 
-        private static SortedList<int, PCLCharCollection> _collsList =
+        private static readonly SortedList<int, PCLCharCollection> _collsList =
               new SortedList<int, PCLCharCollection>();
 
         //--------------------------------------------------------------------//

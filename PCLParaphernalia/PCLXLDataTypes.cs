@@ -71,7 +71,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static SortedList<byte, PCLXLDataType> _tags =
+        private static readonly SortedList<byte, PCLXLDataType> _tags =
             new SortedList<byte, PCLXLDataType>();
 
         private static PCLXLDataType _tagUnknown;

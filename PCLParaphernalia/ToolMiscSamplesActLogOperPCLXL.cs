@@ -59,19 +59,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static short _indxFontArial = PCLFonts.getIndexForFontArial();
-        static short _indxFontCourier = PCLFonts.getIndexForFontCourier();
+        static readonly short _indxFontArial = PCLFonts.getIndexForFontArial();
+        static readonly short _indxFontCourier = PCLFonts.getIndexForFontCourier();
 
-        static string _nameFontArialBold =
+        static readonly string _nameFontArialBold =
             PCLFonts.getPCLXLName(_indxFontArial,
                                    PCLFonts.eVariant.Bold);
-        static string _nameFontArialRegular =
+        static readonly string _nameFontArialRegular =
             PCLFonts.getPCLXLName(_indxFontArial,
                                    PCLFonts.eVariant.Regular);
-        static string _nameFontCourierBold =
+        static readonly string _nameFontCourierBold =
             PCLFonts.getPCLXLName(_indxFontCourier,
                                    PCLFonts.eVariant.Bold);
-        static string _nameFontCourierRegular =
+        static readonly string _nameFontCourierRegular =
             PCLFonts.getPCLXLName(_indxFontCourier,
                                    PCLFonts.eVariant.Regular);
 

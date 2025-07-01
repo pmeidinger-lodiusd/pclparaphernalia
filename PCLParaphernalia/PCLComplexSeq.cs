@@ -21,33 +21,33 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private byte _keyPChar;
-        private byte _keyGChar;
-        private byte _keyTChar;
+        private readonly byte _keyPChar;
+        private readonly byte _keyGChar;
+        private readonly byte _keyTChar;
 
-        private string _description;
+        private readonly string _description;
 
-        private bool _flagDiscrete;
-        private bool _flagNilGChar;
-        private bool _flagNilValue;
-        private bool _flagObsolete;
-        private bool _flagResetGL2;
-        private bool _flagValIsLen;
+        private readonly bool _flagDiscrete;
+        private readonly bool _flagNilGChar;
+        private readonly bool _flagNilValue;
+        private readonly bool _flagObsolete;
+        private readonly bool _flagResetGL2;
+        private readonly bool _flagValIsLen;
 
-        private bool _flagDisplayHexVal;
+        private readonly bool _flagDisplayHexVal;
 
-        private bool _flagValGeneric;
-        private bool _flagValVarious;
+        private readonly bool _flagValGeneric;
+        private readonly bool _flagValVarious;
 
-        private int _value;
+        private readonly int _value;
         private int _statsCtParent;
         private int _statsCtChild;
 
-        private PrnParseConstants.eActPCL _actionType;
+        private readonly PrnParseConstants.eActPCL _actionType;
 
-        private PrnParseConstants.eOvlAct _makeOvlAct;
+        private readonly PrnParseConstants.eOvlAct _makeOvlAct;
 
-        private PrnParseConstants.eSeqGrp _seqGrp;
+        private readonly PrnParseConstants.eSeqGrp _seqGrp;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

@@ -23,46 +23,46 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private PCLFonts.eFontType _fontType;
+        private readonly PCLFonts.eFontType _fontType;
 
-        private string _fontName;
+        private readonly string _fontName;
 
-        private short _fontIndex;
+        private readonly short _fontIndex;
 
-        private ushort _symSetNumber;
-        private ushort _symSetDefault;
+        private readonly ushort _symSetNumber;
+        private readonly ushort _symSetDefault;
 
-        private ushort _typeface;
+        private readonly ushort _typeface;
 
-        private double _pitch;
-        private double _pointSize;
-        private byte _contourRatio;
+        private readonly double _pitch;
+        private readonly double _pointSize;
+        private readonly byte _contourRatio;
 
-        private bool _bound;
-        private bool _proportional;
-        private bool _scalable;
+        private readonly bool _bound;
+        private readonly bool _proportional;
+        private readonly bool _scalable;
 
-        private bool _varRegular;
-        private bool _varItalic;
-        private bool _varBold;
-        private bool _varBoldItalic;
+        private readonly bool _varRegular;
+        private readonly bool _varItalic;
+        private readonly bool _varBold;
+        private readonly bool _varBoldItalic;
 
-        private ushort _styleRegular;
-        private ushort _styleItalic;
-        private ushort _styleBold;
-        private ushort _styleBoldItalic;
+        private readonly ushort _styleRegular;
+        private readonly ushort _styleItalic;
+        private readonly ushort _styleBold;
+        private readonly ushort _styleBoldItalic;
 
-        private short _weightRegular;
-        private short _weightItalic;
-        private short _weightBold;
-        private short _weightBoldItalic;
+        private readonly short _weightRegular;
+        private readonly short _weightItalic;
+        private readonly short _weightBold;
+        private readonly short _weightBoldItalic;
 
-        private string _nameRegular;
-        private string _nameItalic;
-        private string _nameBold;
-        private string _nameBoldItalic;
+        private readonly string _nameRegular;
+        private readonly string _nameItalic;
+        private readonly string _nameBold;
+        private readonly string _nameBoldItalic;
 
-        private ushort[] _symSets;
+        private readonly ushort[] _symSets;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

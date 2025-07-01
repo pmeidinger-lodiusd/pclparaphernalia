@@ -25,9 +25,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private string _saveFilename;
-        private ToolCommonData.eToolIds _crntToolId;
-        private ToolCommonData.eToolSubIds _crntSubId;
-        private ToolCommonData.ePrintLang _crntPDL;
+        private readonly ToolCommonData.eToolIds _crntToolId;
+        private readonly ToolCommonData.eToolSubIds _crntSubId;
+        private readonly ToolCommonData.ePrintLang _crntPDL;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

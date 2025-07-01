@@ -21,18 +21,18 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private byte _value;
-        private string _mnemonic;
-        private string _description;
+        private readonly byte _value;
+        private readonly string _mnemonic;
+        private readonly string _description;
 
-        private bool _flagLineTerm;
+        private readonly bool _flagLineTerm;
 
         private int _statsCtParent;
         private int _statsCtChild;
 
-        private PrnParseConstants.eOvlAct _makeOvlAct;
+        private readonly PrnParseConstants.eOvlAct _makeOvlAct;
 
-        private PrnParseConstants.eSeqGrp _seqGrp;
+        private readonly PrnParseConstants.eSeqGrp _seqGrp;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

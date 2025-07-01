@@ -22,7 +22,7 @@
             Std
         }
 
-        private static PJLCategory[] _categories =
+        private static readonly PJLCategory[] _categories =
         {
             new PJLCategory(eCategoryType.Custom,
                             "<specify value>"),
@@ -50,7 +50,7 @@
                             "USTATUS")
         };
 
-        private static int _categoryCount = _categories.GetUpperBound(0) + 1;
+        private static readonly int _categoryCount = _categories.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

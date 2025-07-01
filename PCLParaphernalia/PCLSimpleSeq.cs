@@ -21,18 +21,18 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private byte _keySChar;
-        private string _description;
+        private readonly byte _keySChar;
+        private readonly string _description;
 
-        private bool _flagObsolete;
-        private bool _flagResetHPGL2;
+        private readonly bool _flagObsolete;
+        private readonly bool _flagResetHPGL2;
 
         private int _statsCtParent;
         private int _statsCtChild;
 
-        private PrnParseConstants.eOvlAct _makeOvlAct;
+        private readonly PrnParseConstants.eOvlAct _makeOvlAct;
 
-        private PrnParseConstants.eSeqGrp _seqGrp;
+        private readonly PrnParseConstants.eSeqGrp _seqGrp;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

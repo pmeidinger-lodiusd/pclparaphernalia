@@ -22,8 +22,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool _flagBound = true;
-        private static bool _flagUnbound = false;
+        private static readonly bool _flagBound = true;
+        private static readonly bool _flagUnbound = false;
 
         public enum eIndex
         {
@@ -53,7 +53,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static List<PCLSymSetType> _sets =
+        private static readonly List<PCLSymSetType> _sets =
             new List<PCLSymSetType>();
 
         private static int _setsCountBound;

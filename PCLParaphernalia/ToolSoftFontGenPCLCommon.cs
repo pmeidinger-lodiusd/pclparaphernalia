@@ -45,7 +45,7 @@ namespace PCLParaphernalia
 
         private ToolSoftFontGenTTF _ttfHandler = null;
 
-        private ASCIIEncoding _ascii = new ASCIIEncoding();
+        private readonly ASCIIEncoding _ascii = new ASCIIEncoding();
 
         private byte[] _dataBuf = new byte[cDataBufLen];
 

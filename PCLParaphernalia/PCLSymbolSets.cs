@@ -45,7 +45,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static List<PCLSymbolSet> _sets =
+        private static readonly List<PCLSymbolSet> _sets =
             new List<PCLSymbolSet>();
 
         private static int _indxSymbol;

@@ -56,7 +56,7 @@ namespace PCLParaphernalia
 
         private PrnParseOptions _options;
 
-        private PrnParseFontSegs _parseSegs;
+        private readonly PrnParseFontSegs _parseSegs;
 
         private DataTable _table;
 

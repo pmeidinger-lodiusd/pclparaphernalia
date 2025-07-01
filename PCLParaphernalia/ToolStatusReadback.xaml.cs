@@ -37,14 +37,14 @@ namespace PCLParaphernalia
         private const string _defaultPJLFSObjPath = "0:\\pcl\\macros\\macro1";
         private const string _defaultPJLFSVolume = "0:";
 
-        private static PJLCommands.eCmdIndex[] _subsetPJLCommands =
+        private static readonly PJLCommands.eCmdIndex[] _subsetPJLCommands =
         {
             PJLCommands.eCmdIndex.DINQUIRE,
             PJLCommands.eCmdIndex.INFO,
             PJLCommands.eCmdIndex.INQUIRE
         };
 
-        private static PJLCommands.eCmdIndex[] _subsetPJLFSCommands =
+        private static readonly PJLCommands.eCmdIndex[] _subsetPJLFSCommands =
         {
             PJLCommands.eCmdIndex.FSAPPEND,
             PJLCommands.eCmdIndex.FSDELETE,

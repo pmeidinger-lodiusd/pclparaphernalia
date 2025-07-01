@@ -18,11 +18,11 @@
 
         const int _maxPFLen = 11;
 
-        short _opId;
-        short _opCode;
+        readonly short _opId;
+        readonly short _opCode;
 
-        private string _actPostfix;
-        private string _actInfix;
+        private readonly string _actPostfix;
+        private readonly string _actInfix;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

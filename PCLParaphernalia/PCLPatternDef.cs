@@ -16,15 +16,15 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private string _desc;
-        private PCLPatternDefs.eType _type;
+        private readonly string _desc;
+        private readonly PCLPatternDefs.eType _type;
 
-        private ushort _id;
-        private ushort _idSec;
-        private ushort _height;
-        private ushort _width;
+        private readonly ushort _id;
+        private readonly ushort _idSec;
+        private readonly ushort _height;
+        private readonly ushort _width;
 
-        private byte[] _pattern;
+        private readonly byte[] _pattern;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

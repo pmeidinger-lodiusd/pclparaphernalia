@@ -21,8 +21,8 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private byte _tag;
-        private string _description;
+        private readonly byte _tag;
+        private readonly string _description;
 
         private int _statsCtParent;
         private int _statsCtChild;

@@ -18,17 +18,17 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private string _mnemonic;
-        private string _description;
+        private readonly string _mnemonic;
+        private readonly string _description;
 
-        private bool _flagResetHPGL2;
-        private bool _flagBinaryData;
-        private bool _flagFlipTransp;
-        private bool _flagSetLblTerm;
-        private bool _flagUseLblTerm;
-        private bool _flagUseStdTerm;
-        private bool _flagQuotedData;
-        private bool _flagSymbolMode;
+        private readonly bool _flagResetHPGL2;
+        private readonly bool _flagBinaryData;
+        private readonly bool _flagFlipTransp;
+        private readonly bool _flagSetLblTerm;
+        private readonly bool _flagUseLblTerm;
+        private readonly bool _flagUseStdTerm;
+        private readonly bool _flagQuotedData;
+        private readonly bool _flagSymbolMode;
 
         private int _statsCtParent;
         private int _statsCtChild;

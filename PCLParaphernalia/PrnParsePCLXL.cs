@@ -36,7 +36,7 @@ namespace PCLParaphernalia
         private PrnParse _analysisOwner;
         private PrnParseOptions _options;
 
-        private PrnParse.eParseType _parseType;
+        private readonly PrnParse.eParseType _parseType;
 
         private PrnParseConstants.eActPCLXL _attrActType;
 
@@ -44,8 +44,8 @@ namespace PCLParaphernalia
 
         private DataTable _table;
 
-        private PrnParseFontHddrPCLXL _parseFontHddrPCLXL;
-        private PrnParseFontCharPCLXL _parseFontCharPCLXL;
+        private readonly PrnParseFontHddrPCLXL _parseFontHddrPCLXL;
+        private readonly PrnParseFontCharPCLXL _parseFontCharPCLXL;
 
         private byte[] _buf;
 
@@ -66,14 +66,14 @@ namespace PCLParaphernalia
 
         private PCLXLOperators.eEmbedDataType _crntEmbedType;
 
-        private PrnParsePCLXLElementMetrics _displayMetricsCrnt;
-        private PrnParsePCLXLElementMetrics _displayMetricsEmbedByte;
-        private PrnParsePCLXLElementMetrics _displayMetricsEmbedWord;
-        private PrnParsePCLXLElementMetrics _displayMetricsHddr;
-        private PrnParsePCLXLElementMetrics _displayMetricsNil;
-        private PrnParsePCLXLElementMetrics _displayMetricsString;
-        private PrnParsePCLXLElementMetrics _displayMetricsUbyte;
-        private PrnParsePCLXLElementMetrics _displayMetricsUint16;
+        private readonly PrnParsePCLXLElementMetrics _displayMetricsCrnt;
+        private readonly PrnParsePCLXLElementMetrics _displayMetricsEmbedByte;
+        private readonly PrnParsePCLXLElementMetrics _displayMetricsEmbedWord;
+        private readonly PrnParsePCLXLElementMetrics _displayMetricsHddr;
+        private readonly PrnParsePCLXLElementMetrics _displayMetricsNil;
+        private readonly PrnParsePCLXLElementMetrics _displayMetricsString;
+        private readonly PrnParsePCLXLElementMetrics _displayMetricsUbyte;
+        private readonly PrnParsePCLXLElementMetrics _displayMetricsUint16;
 
         private int _analysisLevel = 0;
 
@@ -113,7 +113,7 @@ namespace PCLParaphernalia
                         _continuation,
                         _breakpoint;
 
-        private ASCIIEncoding _ascii = new ASCIIEncoding();
+        private readonly ASCIIEncoding _ascii = new ASCIIEncoding();
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

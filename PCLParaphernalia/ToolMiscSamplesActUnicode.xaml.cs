@@ -30,9 +30,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static int _ctUnicodeFonts = PCLFonts.getCountUnique();
+        private static readonly int _ctUnicodeFonts = PCLFonts.getCountUnique();
 
-        private static int[] _subsetUnicodeFonts = new int[_ctUnicodeFonts];
+        private static readonly int[] _subsetUnicodeFonts = new int[_ctUnicodeFonts];
 
         private static uint _unicodeUCS2PCL;
         private static uint _unicodeUCS2PCLXL;

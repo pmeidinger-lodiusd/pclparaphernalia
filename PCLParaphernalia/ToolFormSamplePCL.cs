@@ -30,7 +30,7 @@ namespace PCLParaphernalia
             Max
         }
 
-        private static string[] macroMethodNames =
+        private static readonly string[] macroMethodNames =
         {
           "Call macro (@ start of page)",
           "Call macro (@ end of page)",

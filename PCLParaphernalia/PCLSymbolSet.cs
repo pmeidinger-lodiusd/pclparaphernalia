@@ -29,22 +29,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private PCLSymbolSets.eSymSetGroup _group;
+        private readonly PCLSymbolSets.eSymSetGroup _group;
         private PCLSymSetTypes.eIndex _indxType;
-        private PCLSymSetMaps.eSymSetMapId _mapId;
+        private readonly PCLSymSetMaps.eSymSetMapId _mapId;
 
         private PCLTextParsingMethods.eIndex _parsingMethod;
 
-        private string _name;
-        private string _alias;
+        private readonly string _name;
+        private readonly string _alias;
 
         private ushort _kind1;
 
         private string _id;
-        private ushort _idNum;
-        private byte _idAlpha;
+        private readonly ushort _idNum;
+        private readonly byte _idAlpha;
 
-        private bool _mapped = false;
+        private readonly bool _mapped = false;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

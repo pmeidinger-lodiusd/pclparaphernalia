@@ -30,21 +30,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private ushort[][] _rangeData;
+        private readonly ushort[][] _rangeData;
 
-        private ushort[][] _mapDataStd;
-        private ushort[][] _mapDataPCL;
+        private readonly ushort[][] _mapDataStd;
+        private readonly ushort[][] _mapDataPCL;
 
-        private ushort _rangeCt;
+        private readonly ushort _rangeCt;
 
-        private ushort _codepointMin;
+        private readonly ushort _codepointMin;
         private ushort _codepointMax;
 
-        private bool _flagMapDiff;
-        private bool _flagNullMapPCL;
-        private bool _flagNullMapStd;
+        private readonly bool _flagMapDiff;
+        private readonly bool _flagNullMapPCL;
+        private readonly bool _flagNullMapStd;
 
-        private PCLSymSetMaps.eSymSetMapId _mapId;
+        private readonly PCLSymSetMaps.eSymSetMapId _mapId;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

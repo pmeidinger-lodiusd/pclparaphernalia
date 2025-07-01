@@ -45,31 +45,31 @@ namespace PCLParaphernalia
         private const ushort _defaultFontTypefacePCL = 16602;
         private const short _defaultFontWeightPCL = 0;
 
-        private static int[] _subsetPDLs =
+        private static readonly int[] _subsetPDLs =
         {
             (int) ToolCommonData.ePrintLang.PCL,
             (int) ToolCommonData.ePrintLang.PCLXL,
         };
 
-        private static int[] _subsetOrientations =
+        private static readonly int[] _subsetOrientations =
         {
             (int) PCLOrientations.eIndex.Portrait,
             (int) PCLOrientations.eIndex.ReversePortrait
         };
 
-        private static int[] _subsetPaperSizes =
+        private static readonly int[] _subsetPaperSizes =
         {
             (int) PCLPaperSizes.eIndex.ISO_A4,
             (int) PCLPaperSizes.eIndex.ANSI_A_Letter
         };
 
-        private static int[] _subsetPaperTypes =
+        private static readonly int[] _subsetPaperTypes =
         {
             (int) PCLPaperTypes.eIndex.NotSet,
             (int) PCLPaperTypes.eIndex.Plain
         };
 
-        private static int[] _subsetParseMethodsPCLAll =
+        private static readonly int[] _subsetParseMethodsPCLAll =
         {
             (int) PCLTextParsingMethods.eIndex.not_specified,
             (int) PCLTextParsingMethods.eIndex.m0_1_byte_default,
@@ -82,13 +82,13 @@ namespace PCLParaphernalia
             (int) PCLTextParsingMethods.eIndex.m1008_UTF8_alt
         };
 
-        private static int[] _subsetParseMethodsPCLDirect =
+        private static readonly int[] _subsetParseMethodsPCLDirect =
         {
             (int) PCLTextParsingMethods.eIndex.m83_UTF8,
             (int) PCLTextParsingMethods.eIndex.m1008_UTF8_alt
         };
 
-        private static int[] _subsetParseMethodsPCLXLAll =
+        private static readonly int[] _subsetParseMethodsPCLXLAll =
         {
             (int) PCLTextParsingMethods.eIndex.m0_1_byte_default,
             (int) PCLTextParsingMethods.eIndex.m2_2_byte,
@@ -97,19 +97,19 @@ namespace PCLParaphernalia
             (int) PCLTextParsingMethods.eIndex.m38_1_or_2_byte_Asian8bit
         };
 
-        private static int[] _subsetParseMethodsPCLXLDirect =
+        private static readonly int[] _subsetParseMethodsPCLXLDirect =
         {
             (int) PCLTextParsingMethods.eIndex.m2_2_byte,
         };
 
-        private static int _ctFonts = PCLFonts.getCountUnique();
+        private static readonly int _ctFonts = PCLFonts.getCountUnique();
 
-        private static int[] _subsetFonts = new int[_ctFonts];
+        private static readonly int[] _subsetFonts = new int[_ctFonts];
 
-        private static int _ctSymSets = PCLSymbolSets.getCountStd() +
+        private static readonly int _ctSymSets = PCLSymbolSets.getCountStd() +
                                           PCLSymbolSets.getCountUserSet();
 
-        private static int[] _subsetSymSets = new int[_ctSymSets];
+        private static readonly int[] _subsetSymSets = new int[_ctSymSets];
 
         private static int[] _subsetParseMethods;
 
@@ -123,7 +123,7 @@ namespace PCLParaphernalia
         private ushort _fontPrnDiskIdPCL = _defaultSoftFontIdPCL;
         private ushort _fontPrnDiskMacroIdPCL = _defaultSoftFontIdMacroPCL;
 
-        private ushort[] _sampleOffsetBlocks = new ushort[256];
+        private readonly ushort[] _sampleOffsetBlocks = new ushort[256];
 
         private FontCustomPCL _fontCustomPCL;
         private FontDownloadPCL _fontDownloadPCL;

@@ -27,7 +27,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static ASCIIEncoding _ascii = new ASCIIEncoding();
+        private static readonly ASCIIEncoding _ascii = new ASCIIEncoding();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

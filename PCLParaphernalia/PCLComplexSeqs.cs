@@ -30,7 +30,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static SortedList<string, PCLComplexSeq> _seqs =
+        private static readonly SortedList<string, PCLComplexSeq> _seqs =
             new SortedList<string, PCLComplexSeq>();
 
         private static PCLComplexSeq _seqUnknown;

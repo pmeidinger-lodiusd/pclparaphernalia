@@ -18,11 +18,11 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private string _cmdName;
-        private string _cmdDesc;
-        private bool _flagCmdIntro;
-        private bool _flagCmdExit;
-        private bool _flagCmdSetCRC;
+        private readonly string _cmdName;
+        private readonly string _cmdDesc;
+        private readonly bool _flagCmdIntro;
+        private readonly bool _flagCmdExit;
+        private readonly bool _flagCmdSetCRC;
 
         private int _statsCtParent;
         private int _statsCtChild;

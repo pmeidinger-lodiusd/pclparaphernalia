@@ -153,7 +153,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static SortedList<string, PCLXLAttrEnum> _tags =
+        private static readonly SortedList<string, PCLXLAttrEnum> _tags =
             new SortedList<string, PCLXLAttrEnum>();
 
         private static PCLXLAttrEnum _tagUnknown;

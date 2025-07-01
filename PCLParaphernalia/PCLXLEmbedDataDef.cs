@@ -21,11 +21,11 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private byte _tag;
+        private readonly byte _tag;
 
-        private string _description;
+        private readonly string _description;
 
-        private bool _flagReserved;
+        private readonly bool _flagReserved;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

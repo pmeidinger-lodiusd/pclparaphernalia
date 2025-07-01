@@ -83,7 +83,7 @@ namespace PCLParaphernalia
             Unknown
         }
 
-        static string _tmpFolder = Environment.GetEnvironmentVariable("TMP");
+        static readonly string _tmpFolder = Environment.GetEnvironmentVariable("TMP");
 
         static string _defWorkFolder = _tmpFolder;
 

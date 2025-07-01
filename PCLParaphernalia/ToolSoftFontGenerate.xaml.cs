@@ -97,7 +97,7 @@ namespace PCLParaphernalia
         private DataTable _tableLogMapping;
         private DataTable _tableLogTarget;
 
-        private ASCIIEncoding _ascii = new ASCIIEncoding();
+        private readonly ASCIIEncoding _ascii = new ASCIIEncoding();
 
         private int _ctTTFFonts;
 

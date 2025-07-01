@@ -16,19 +16,19 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private string _name;
+        private readonly string _name;
 
-        private bool _flagMonochrome;
+        private readonly bool _flagMonochrome;
 
-        private byte _ctClrItems;
+        private readonly byte _ctClrItems;
         private byte _crntClrItem;
 
         private byte _clrItemWhite;
         private byte _clrItemBlack;
 
-        private byte[] _colourIds;
-        private int[] _colourRGBs;
-        private string[] _colourNames;
+        private readonly byte[] _colourIds;
+        private readonly int[] _colourRGBs;
+        private readonly string[] _colourNames;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

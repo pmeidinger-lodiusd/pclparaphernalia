@@ -45,7 +45,7 @@ namespace PCLParaphernalia
         private BinaryWriter _binWriter = null;
         private BinaryWriter _subWriter = null;
 
-        private eParseType _parseType;
+        private readonly eParseType _parseType;
         private PrnParseOptions _options;
         private DataTable _table;
 
@@ -54,15 +54,15 @@ namespace PCLParaphernalia
 
         private long _fileSize = 0;
 
-        private int _analysisLevel;
+        private readonly int _analysisLevel;
 
-        private PrnParsePCL _parsePCL;
-        private PrnParsePCLXL _parsePCLXL;
-        private PrnParseHPGL2 _parseHPGL2;
-        private PrnParsePJL _parsePJL;
-        private PrnParsePrescribe _parsePrescribe;
+        private readonly PrnParsePCL _parsePCL;
+        private readonly PrnParsePCLXL _parsePCLXL;
+        private readonly PrnParseHPGL2 _parseHPGL2;
+        private readonly PrnParsePJL _parsePJL;
+        private readonly PrnParsePrescribe _parsePrescribe;
 
-        private PrnParseLinkData _linkData;
+        private readonly PrnParseLinkData _linkData;
 
         private bool _flagDiagFileAccess;
         private bool _PCLXLFirstCall;

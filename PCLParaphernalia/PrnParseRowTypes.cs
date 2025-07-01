@@ -51,7 +51,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static PrnParseRowType[] _rowTypes =
+        private static readonly PrnParseRowType[] _rowTypes =
         {
             new PrnParseRowType(eType.MsgError,
                                 "Error message"),
@@ -105,7 +105,7 @@
                                 "Prescribe command")
        };
 
-        private static int _rowTypeCount = _rowTypes.GetUpperBound(0) + 1;
+        private static readonly int _rowTypeCount = _rowTypes.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

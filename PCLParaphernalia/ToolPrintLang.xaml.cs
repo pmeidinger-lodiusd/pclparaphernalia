@@ -50,8 +50,8 @@ namespace PCLParaphernalia
             Max
         }
 
-        FontFamily _fontFixed = new FontFamily("Courier New");
-        FontFamily _fontProp = new FontFamily("Arial");
+        readonly FontFamily _fontFixed = new FontFamily("Courier New");
+        readonly FontFamily _fontProp = new FontFamily("Arial");
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -59,7 +59,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static int[] _subsetTypes =
+        private static readonly int[] _subsetTypes =
         {
             // must be in same order as eInfoType enumeration
 

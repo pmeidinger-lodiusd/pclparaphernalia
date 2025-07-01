@@ -23,14 +23,14 @@
             PCLXL
         }
 
-        private static PCLTrayData[] _trayDatas =
+        private static readonly PCLTrayData[] _trayDatas =
         {
             // must be in same order as ePDL enumeration 
             new PCLTrayData(7, 0, 299, -1),
             new PCLTrayData(1, 0, 255, -1)
         };
 
-        private static int _trayDataCount = _trayDatas.GetUpperBound(0) + 1;
+        private static readonly int _trayDataCount = _trayDatas.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

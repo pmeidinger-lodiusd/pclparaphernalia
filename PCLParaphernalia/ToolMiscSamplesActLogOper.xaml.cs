@@ -23,18 +23,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static int _logOperROPMin = 0;
-        private static int _logOperROPMax = 255;
-        private static int _logOperROPInc = 8;
+        private static readonly int _logOperROPMin = 0;
+        private static readonly int _logOperROPMax = 255;
+        private static readonly int _logOperROPInc = 8;
 
-        private static short[] _subsetLogOperModesPCL =
+        private static readonly short[] _subsetLogOperModesPCL =
         {
             (int) PCLPalettes.eIndex.PCLMonochrome,
             (int) PCLPalettes.eIndex.PCLSimpleColourCMY,
             (int) PCLPalettes.eIndex.PCLSimpleColourRGB
         };
 
-        private static short[] _subsetLogOperModesPCLXL =
+        private static readonly short[] _subsetLogOperModesPCLXL =
         {
             (int) PCLXLPalettes.eIndex.PCLXLGray,
             (int) PCLXLPalettes.eIndex.PCLXLRGB

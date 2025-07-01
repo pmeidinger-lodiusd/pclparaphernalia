@@ -27,7 +27,7 @@
         private PrnParseConstants.eOvlPos _makeOvlPos;
         private PrnParseConstants.eOvlShow _makeOvlShow;
 
-        private PrnParse _analysisOwner;
+        private readonly PrnParse _analysisOwner;
 
         private int _analysisLevel;
         private int _macroLevel;

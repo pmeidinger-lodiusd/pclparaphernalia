@@ -16,8 +16,8 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private PJLVariables.eVarType _varType;
-        private string _varName;
+        private readonly PJLVariables.eVarType _varType;
+        private readonly string _varName;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

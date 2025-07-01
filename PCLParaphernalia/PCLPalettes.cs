@@ -59,7 +59,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static PCLPalette[] _palettes =
+        private static readonly PCLPalette[] _palettes =
         {
             new PCLPalette ("Monochrome",
                             true,
@@ -77,7 +77,7 @@
                             8)
         };
 
-        private static int _paletteCount =
+        private static readonly int _paletteCount =
             _palettes.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//

@@ -17,10 +17,10 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private PCLCharCollections.eBitType _bitType;
-        private int _bitNo;
-        private string _descMSL;
-        private string _descUnicode;
+        private readonly PCLCharCollections.eBitType _bitType;
+        private readonly int _bitNo;
+        private readonly string _descMSL;
+        private readonly string _descUnicode;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

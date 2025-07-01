@@ -34,7 +34,7 @@ namespace PCLParaphernalia
 
         private static long _fileSize = 0;
 
-        private bool _splitSlices = false;
+        private readonly bool _splitSlices = false;
 
         PrnParseConstants.eOptCharSetSubActs _indxCharSetSubAct = 0;
         PrnParseConstants.eOptCharSets _indxCharSetName = 0;

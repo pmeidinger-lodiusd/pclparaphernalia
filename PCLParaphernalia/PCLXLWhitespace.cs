@@ -21,10 +21,10 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private byte _tag;
+        private readonly byte _tag;
 
-        private string _mnemonic;
-        private string _description;
+        private readonly string _mnemonic;
+        private readonly string _description;
 
         private int _statsCtParent;
         private int _statsCtChild;

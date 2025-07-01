@@ -16,10 +16,10 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private PCLOrientations.eAspect _orientationAspect;
-        private string _orientationName;
-        private byte _orientationIdPCL;
-        private byte _orientationIdPCLXL;
+        private readonly PCLOrientations.eAspect _orientationAspect;
+        private readonly string _orientationName;
+        private readonly byte _orientationIdPCL;
+        private readonly byte _orientationIdPCLXL;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

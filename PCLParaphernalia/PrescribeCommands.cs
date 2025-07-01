@@ -20,7 +20,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static SortedList<string, PrescribeCommand> _cmds =
+        private static readonly SortedList<string, PrescribeCommand> _cmds =
             new SortedList<string, PrescribeCommand>();
 
         private static PrescribeCommand _cmdUnknown;

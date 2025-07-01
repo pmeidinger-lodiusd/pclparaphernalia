@@ -16,7 +16,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static PCLRasterResolution[] _rasterResolutions =
+        private static readonly PCLRasterResolution[] _rasterResolutions =
         {
             new PCLRasterResolution(75),
             new PCLRasterResolution(100),
@@ -26,7 +26,7 @@
             new PCLRasterResolution(600)
         };
 
-        private static int _rasterResolutionCount =
+        private static readonly int _rasterResolutionCount =
             _rasterResolutions.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//

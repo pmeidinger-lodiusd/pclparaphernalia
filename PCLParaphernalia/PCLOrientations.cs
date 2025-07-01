@@ -39,7 +39,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static PCLOrientation[] _orientations =
+        private static readonly PCLOrientation[] _orientations =
         {
             new PCLOrientation(eAspect.Portrait,
                                "Portrait",
@@ -59,7 +59,7 @@
                                (byte)PCLXLAttrEnums.eVal.eReverseLandscape)
         };
 
-        private static int _orientationCount =
+        private static readonly int _orientationCount =
             _orientations.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//

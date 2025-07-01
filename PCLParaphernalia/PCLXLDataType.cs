@@ -21,20 +21,20 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private byte _tag;
+        private readonly byte _tag;
 
-        private string _description;
+        private readonly string _description;
 
-        private bool _flagReserved;
-        private bool _flagArray;
+        private readonly bool _flagReserved;
+        private readonly bool _flagArray;
 
-        private int _groupSize;
-        private int _unitSize;
+        private readonly int _groupSize;
+        private readonly int _unitSize;
 
         private int _statsCtParent;
         private int _statsCtChild;
 
-        private PCLXLDataTypes.eBaseType _baseType;
+        private readonly PCLXLDataTypes.eBaseType _baseType;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

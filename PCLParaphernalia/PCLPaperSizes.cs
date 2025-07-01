@@ -125,7 +125,7 @@ namespace PCLParaphernalia
             USGovt_Letter
         }
 
-        private static int _eIndexCt = Enum.GetNames(typeof(eIndex)).Length;
+        private static readonly int _eIndexCt = Enum.GetNames(typeof(eIndex)).Length;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //

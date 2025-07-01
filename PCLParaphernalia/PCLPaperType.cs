@@ -16,9 +16,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private PCLPaperTypes.eEntryType _entryType;
+        private readonly PCLPaperTypes.eEntryType _entryType;
 
-        private string _paperTypeName;
+        private readonly string _paperTypeName;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

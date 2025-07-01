@@ -20,7 +20,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static SortedList<byte, PCLXLWhitespace> _tags =
+        private static readonly SortedList<byte, PCLXLWhitespace> _tags =
             new SortedList<byte, PCLXLWhitespace>();
 
         private static PCLXLWhitespace _tagUnknown;

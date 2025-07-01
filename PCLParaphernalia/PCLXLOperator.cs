@@ -21,16 +21,16 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private byte _tag;
+        private readonly byte _tag;
 
-        private string _description;
+        private readonly string _description;
 
-        private bool _flagReserved;
-        private bool _flagEndSession;
+        private readonly bool _flagReserved;
+        private readonly bool _flagEndSession;
 
-        private PCLXLOperators.eEmbedDataType _embedDataType;
+        private readonly PCLXLOperators.eEmbedDataType _embedDataType;
 
-        private PrnParseConstants.eOvlAct _makeOvlAct;
+        private readonly PrnParseConstants.eOvlAct _makeOvlAct;
 
         private int _statsCtParent;
         private int _statsCtChild;

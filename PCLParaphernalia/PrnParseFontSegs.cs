@@ -45,7 +45,7 @@ namespace PCLParaphernalia
         private PrnParseConstants.eOptOffsetFormats _indxOffsetFormat;
         private PrnParseRowTypes.eType _rowType;
 
-        private ASCIIEncoding _ascii = new ASCIIEncoding();
+        private readonly ASCIIEncoding _ascii = new ASCIIEncoding();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

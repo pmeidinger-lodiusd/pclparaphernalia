@@ -27,12 +27,12 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private string _descStd;
-        private string _descShort;
+        private readonly string _descStd;
+        private readonly string _descShort;
 
-        private byte _idPCL;
+        private readonly byte _idPCL;
 
-        private bool _flagBound;
+        private readonly bool _flagBound;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

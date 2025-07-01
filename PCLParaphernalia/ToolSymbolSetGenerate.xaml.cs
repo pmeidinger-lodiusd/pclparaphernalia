@@ -80,7 +80,7 @@ namespace PCLParaphernalia
         private bool _flagSymSetNullMapPCL = false;
         private bool _flagSymSetNullMapStd = false;
 
-        private ASCIIEncoding _ascii = new ASCIIEncoding();
+        private readonly ASCIIEncoding _ascii = new ASCIIEncoding();
 
         private int[] _subsetSymSets;
 

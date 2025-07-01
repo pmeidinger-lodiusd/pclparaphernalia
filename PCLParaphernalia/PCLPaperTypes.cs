@@ -46,7 +46,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static PCLPaperType[] _paperTypes =
+        private static readonly PCLPaperType[] _paperTypes =
         {
             new PCLPaperType(eEntryType.NotSet,  "<not set>"),
             new PCLPaperType(eEntryType.Standard,"Plain"),
@@ -61,7 +61,7 @@
             new PCLPaperType(eEntryType.Standard,"Rough")
         };
 
-        private static int _paperTypeCount = _paperTypes.GetUpperBound(0) + 1;
+        private static readonly int _paperTypeCount = _paperTypes.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //

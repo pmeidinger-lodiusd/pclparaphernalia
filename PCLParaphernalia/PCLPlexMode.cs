@@ -16,12 +16,12 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private PCLPlexModes.ePlexType _plexType;
+        private readonly PCLPlexModes.ePlexType _plexType;
 
-        private string _plexModeName;
-        private byte _plexModeIdPCL;
-        private byte _plexModeIdPCLXLLand;
-        private byte _plexModeIdPCLXLPort;
+        private readonly string _plexModeName;
+        private readonly byte _plexModeIdPCL;
+        private readonly byte _plexModeIdPCLXLLand;
+        private readonly byte _plexModeIdPCLXLPort;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

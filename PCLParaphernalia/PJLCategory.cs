@@ -16,8 +16,8 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private PJLCategories.eCategoryType _categoryType;
-        private string _categoryName;
+        private readonly PJLCategories.eCategoryType _categoryType;
+        private readonly string _categoryName;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //

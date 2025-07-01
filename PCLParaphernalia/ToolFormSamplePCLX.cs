@@ -27,7 +27,7 @@ namespace PCLParaphernalia
             Max
         }
 
-        private static string[] streamMethodNames =
+        private static readonly string[] streamMethodNames =
         {
           "Execute stream (@ start of page)",
           "Execute stream (@ end of page)",

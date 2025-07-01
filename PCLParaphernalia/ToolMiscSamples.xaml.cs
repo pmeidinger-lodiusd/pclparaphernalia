@@ -49,7 +49,7 @@ namespace PCLParaphernalia
             Unicode
         };
 
-        private string[] sSampleNames =
+        private readonly string[] sSampleNames =
         {
             // must be in same order as _subsetTypes array
 
@@ -67,13 +67,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static int[] _subsetPDLs =
+        private static readonly int[] _subsetPDLs =
         {
             (int) ToolCommonData.ePrintLang.PCL,
             (int) ToolCommonData.ePrintLang.PCLXL
         };
 
-        private static int[] _subsetSampleTypes =
+        private static readonly int[] _subsetSampleTypes =
         {
             // must be in same order as eSampleTypes enumeration
 
@@ -85,7 +85,7 @@ namespace PCLParaphernalia
             (int) ToolCommonData.eToolSubIds.Unicode
         };
 
-        private static int[] _subsetOrientations =
+        private static readonly int[] _subsetOrientations =
         {
             (int) PCLOrientations.eIndex.Portrait,
             (int) PCLOrientations.eIndex.Landscape,
@@ -93,13 +93,13 @@ namespace PCLParaphernalia
             (int) PCLOrientations.eIndex.ReverseLandscape
         };
 
-        private static int[] _subsetPaperSizes =
+        private static readonly int[] _subsetPaperSizes =
         {
             (int) PCLPaperSizes.eIndex.ISO_A4,
             (int) PCLPaperSizes.eIndex.ANSI_A_Letter,
         };
 
-        private static int[] _subsetPaperTypes =
+        private static readonly int[] _subsetPaperTypes =
         {
             (int) PCLPaperTypes.eIndex.NotSet,
             (int) PCLPaperTypes.eIndex.Plain

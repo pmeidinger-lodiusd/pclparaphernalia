@@ -16,9 +16,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private uint _rangeStart;
-        private uint _rangeEnd;
-        private string _name;
+        private readonly uint _rangeStart;
+        private readonly uint _rangeEnd;
+        private readonly string _name;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
