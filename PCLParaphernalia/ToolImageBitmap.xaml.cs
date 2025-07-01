@@ -15,7 +15,7 @@ namespace PCLParaphernalia
     /// 
     /// </summary>
 
-    [System.Reflection.ObfuscationAttribute(Feature = "renaming",
+    [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
     public partial class ToolImageBitmap : Window
@@ -779,7 +779,7 @@ namespace PCLParaphernalia
 
             openDialog.Filter = "Bitmap Files|*.bmp; *.BMP";
 
-            Nullable<Boolean> dialogResult = openDialog.ShowDialog();
+            bool? dialogResult = openDialog.ShowDialog();
 
             if (dialogResult == true)
                 selectedName = openDialog.FileName;

@@ -41,7 +41,7 @@ namespace PCLParaphernalia
             Words
         }
 
-        [System.Reflection.ObfuscationAttribute(Exclude = true)]
+        [System.Reflection.Obfuscation(Exclude = true)]
 
         public enum eCmdIndex
         {

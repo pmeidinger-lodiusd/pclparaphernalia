@@ -14,7 +14,7 @@ namespace PCLParaphernalia
     /// 
     /// </summary>
 
-    [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
+    [System.Reflection.Obfuscation(Feature = "properties renaming")]
 
     class PrnParse
     {
@@ -1566,7 +1566,7 @@ namespace PCLParaphernalia
             saveDialog.OverwritePrompt = true;
             saveDialog.FileName = tmpFilename;
 
-            Nullable<Boolean> dialogResult = saveDialog.ShowDialog();
+            bool? dialogResult = saveDialog.ShowDialog();
 
             if (dialogResult == true)
             {

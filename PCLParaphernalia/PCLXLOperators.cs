@@ -173,7 +173,7 @@ namespace PCLParaphernalia
             byte tagToCheck,
             ref bool flagEndSession,
             ref bool flagReserved,
-            ref PCLXLOperators.eEmbedDataType embedDataType,
+            ref eEmbedDataType embedDataType,
             ref PrnParseConstants.eOvlAct makeOvlAct,
             ref string description)
         {

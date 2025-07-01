@@ -17,7 +17,7 @@ namespace PCLParaphernalia
     /// 
     /// </summary>
 
-    [System.Reflection.ObfuscationAttribute(Feature = "renaming",
+    [Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
     public partial class ToolMakeOverlay : Window
@@ -769,7 +769,7 @@ namespace PCLParaphernalia
             openDialog.Filter = "Overlay Files|*.ovl; *.OVL" +
                                 "|All files|*.*";
 
-            Nullable<Boolean> dialogResult = openDialog.ShowDialog();
+            bool? dialogResult = openDialog.ShowDialog();
 
             if (dialogResult == true)
                 selectedName = openDialog.FileName;
@@ -794,7 +794,7 @@ namespace PCLParaphernalia
             openDialog.Filter = "Overlay Files|*.ovx; *.OVX" +
                                 "|All files|*.*";
 
-            Nullable<Boolean> dialogResult = openDialog.ShowDialog();
+            bool? dialogResult = openDialog.ShowDialog();
 
             if (dialogResult == true)
                 selectedName = openDialog.FileName;
@@ -818,7 +818,7 @@ namespace PCLParaphernalia
             openDialog.Filter = "Print Files|*.prn; *.PRN" +
                                 "|All files|*.*";
 
-            Nullable<Boolean> dialogResult = openDialog.ShowDialog();
+            bool? dialogResult = openDialog.ShowDialog();
 
             if (dialogResult == true)
                 selectedName = openDialog.FileName;

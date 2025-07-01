@@ -873,7 +873,7 @@ namespace PCLParaphernalia
                 saveDialog.DefaultExt = "txt";
             }
 
-            Nullable<Boolean> dialogResult = saveDialog.ShowDialog();
+            bool? dialogResult = saveDialog.ShowDialog();
             bool fileOpen = false;
 
             if (dialogResult == true)

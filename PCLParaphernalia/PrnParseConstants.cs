@@ -8,7 +8,7 @@
     /// 
     /// </summary>
 
-    [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
+    [System.Reflection.Obfuscation(Feature = "properties renaming")]
 
     public static class PrnParseConstants
     {
@@ -138,7 +138,7 @@
             AfterPages
         }
 
-        [System.Reflection.ObfuscationAttribute(Exclude = true)]
+        [System.Reflection.Obfuscation(Exclude = true)]
 
         public enum eOvlShow
         {

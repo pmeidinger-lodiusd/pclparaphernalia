@@ -26,7 +26,7 @@ namespace PCLParaphernalia
         private const int _hex00e0 = 224;
         private const int _hex0100 = 256;
 
-        [System.Reflection.ObfuscationAttribute(Exclude = true)]
+        [System.Reflection.Obfuscation(Exclude = true)]
 
         public enum eSymSetGroup
         {

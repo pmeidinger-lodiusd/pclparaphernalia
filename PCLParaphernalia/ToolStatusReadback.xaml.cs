@@ -16,7 +16,7 @@ namespace PCLParaphernalia
     /// 
     /// </summary>
 
-    [System.Reflection.ObfuscationAttribute(Feature = "renaming",
+    [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
     public partial class ToolStatusReadback : Window
@@ -1134,7 +1134,7 @@ namespace PCLParaphernalia
                                 "|All files|" +
                                 "*.*";
 
-            Nullable<Boolean> dialogResult = openDialog.ShowDialog();
+            bool? dialogResult = openDialog.ShowDialog();
 
             if (dialogResult == true)
                 locBinFilename = openDialog.FileName;
@@ -1170,7 +1170,7 @@ namespace PCLParaphernalia
 
             saveDialog.DefaultExt = "pcl";
 
-            Nullable<Boolean> dialogResult = saveDialog.ShowDialog();
+            bool? dialogResult = saveDialog.ShowDialog();
 
             if (dialogResult == true)
                 locBinFilename = saveDialog.FileName;

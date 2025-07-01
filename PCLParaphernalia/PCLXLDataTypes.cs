@@ -103,7 +103,7 @@ namespace PCLParaphernalia
                                         ref bool flagArray,
                                         ref int groupSize,
                                         ref int unitSize,
-                                        ref PCLXLDataTypes.eBaseType baseType,
+                                        ref eBaseType baseType,
                                         ref string description)
         {
             bool seqKnown;

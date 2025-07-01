@@ -12,7 +12,7 @@ namespace PCLParaphernalia
     /// </summary>
 
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.ObfuscationAttribute(
+    [System.Reflection.Obfuscation(
         Feature = "renaming",
         ApplyToMembers = true)]
 

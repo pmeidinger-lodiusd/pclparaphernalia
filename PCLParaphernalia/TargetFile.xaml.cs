@@ -13,7 +13,7 @@ namespace PCLParaphernalia
     /// 
     /// </summary>
 
-    [System.Reflection.ObfuscationAttribute(Feature = "renaming",
+    [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
     public partial class TargetFile : Window
@@ -236,7 +236,7 @@ namespace PCLParaphernalia
         {
             SaveFileDialog saveDialog = ToolCommonFunctions.createSaveFileDialog(targetFile);
 
-            Nullable<Boolean> dialogResult = saveDialog.ShowDialog();
+            bool? dialogResult = saveDialog.ShowDialog();
 
             if (dialogResult == true)
                 targetFile = saveDialog.FileName;

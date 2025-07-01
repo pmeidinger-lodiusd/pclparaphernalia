@@ -16,7 +16,7 @@ namespace PCLParaphernalia
     /// 
     /// </summary>
 
-    [System.Reflection.ObfuscationAttribute(Feature = "renaming",
+    [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
     public partial class ToolFontSample : Window
@@ -3583,7 +3583,7 @@ namespace PCLParaphernalia
                                                "*.SFP; *.SFS; *.SFT;" +
                                 "|All files|*.*";
 
-            Nullable<Boolean> dialogResult = openDialog.ShowDialog();
+            bool? dialogResult = openDialog.ShowDialog();
 
             if (dialogResult == true)
                 fontFilename = openDialog.FileName;
@@ -3607,7 +3607,7 @@ namespace PCLParaphernalia
             openDialog.Filter = "PCLXL Font files|*.sfx; *.SFX" +
                                 "|All files|*.*";
 
-            Nullable<Boolean> dialogResult = openDialog.ShowDialog();
+            bool? dialogResult = openDialog.ShowDialog();
 
             if (dialogResult == true)
                 fontFilename = openDialog.FileName;
@@ -3631,7 +3631,7 @@ namespace PCLParaphernalia
             openDialog.Filter = "PCL files|*.pcl; *.PCL;" +
                                 "|All files|*.*";
 
-            Nullable<Boolean> dialogResult = openDialog.ShowDialog();
+            bool? dialogResult = openDialog.ShowDialog();
 
             if (dialogResult == true)
                 symSetFile = openDialog.FileName;

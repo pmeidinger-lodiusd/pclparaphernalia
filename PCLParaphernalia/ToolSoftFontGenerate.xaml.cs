@@ -20,7 +20,7 @@ namespace PCLParaphernalia
     /// 
     /// </summary>
 
-    [System.Reflection.ObfuscationAttribute(Feature = "renaming",
+    [System.Reflection.Obfuscation(Feature = "renaming",
                                             ApplyToMembers = true)]
 
     public partial class ToolSoftFontGenerate : Window
@@ -2389,7 +2389,7 @@ namespace PCLParaphernalia
             openDialog.CheckFileExists = false;
             openDialog.Filter = "PCLETTO font files|*.sft; *.SFT";
 
-            Nullable<Boolean> dialogResult = openDialog.ShowDialog();
+            bool? dialogResult = openDialog.ShowDialog();
 
             if (dialogResult == true)
                 fontFilename = openDialog.FileName;
@@ -2413,7 +2413,7 @@ namespace PCLParaphernalia
             openDialog.CheckFileExists = false;
             openDialog.Filter = "PCLXLETTO font files|*.sfx; *.SFX";
 
-            Nullable<Boolean> dialogResult = openDialog.ShowDialog();
+            bool? dialogResult = openDialog.ShowDialog();
 
             if (dialogResult == true)
                 fontFilename = openDialog.FileName;
@@ -2437,7 +2437,7 @@ namespace PCLParaphernalia
             openDialog.Filter = "PCL files|*.pcl; *.PCL;" +
                                 "|All files|*.*";
 
-            Nullable<Boolean> dialogResult = openDialog.ShowDialog();
+            bool? dialogResult = openDialog.ShowDialog();
 
             if (dialogResult == true)
                 symSetFile = openDialog.FileName;
@@ -2463,7 +2463,7 @@ namespace PCLParaphernalia
                                 "*.ttf; *.otf; *.ttc" +
                                 "*.TTF; *.OTF; *.TTC";
 
-            Nullable<Boolean> dialogResult = openDialog.ShowDialog();
+            bool? dialogResult = openDialog.ShowDialog();
 
             if (dialogResult == true)
                 fontFilenameTTF = openDialog.FileName;

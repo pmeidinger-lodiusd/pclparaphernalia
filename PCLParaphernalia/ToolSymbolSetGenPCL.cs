@@ -300,7 +300,7 @@ namespace PCLParaphernalia
             saveDialog.OverwritePrompt = true;
             saveDialog.FileName = tmpFilename;
 
-            Nullable<Boolean> dialogResult = saveDialog.ShowDialog();
+            bool? dialogResult = saveDialog.ShowDialog();
 
             if (dialogResult == true)
             {
