@@ -98,18 +98,18 @@ namespace PCLParaphernalia
             if ((mwLeft == -1) || (mwTop == -1) ||
                 (mwHeight == -1) || (mwWidth == -1))
             {
-                this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                this.Width = 801;
-                this.Height = 842;
+                WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                Width = 801;
+                Height = 842;
             }
             else
             {
-                this.WindowStartupLocation = WindowStartupLocation.Manual;
+                WindowStartupLocation = WindowStartupLocation.Manual;
 
-                this.Left = mwLeft;
-                this.Top = mwTop;
-                this.Height = mwHeight;
-                this.Width = mwWidth;
+                Left = mwLeft;
+                Top = mwTop;
+                Height = mwHeight;
+                Width = mwWidth;
             }
 
             if ((mwScale < 25) || (mwScale > 1000))
@@ -557,7 +557,7 @@ namespace PCLParaphernalia
 
         private void fileExit_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         //--------------------------------------------------------------------//
@@ -1320,10 +1320,10 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             MainFormPersist.saveWindowData(
-                (int)this.Left,
-                (int)this.Top,
-                (int)this.Height,
-                (int)this.Width,
+                (int)Left,
+                (int)Top,
+                (int)Height,
+                (int)Width,
                 (int)(MainFormData.WindowScale * 100));
         }
 

@@ -115,9 +115,9 @@ namespace PCLParaphernalia
 
         private void onPropertyChanged(string propertyName)
         {
-            if (this.PropertyChanged != null)
+            if (PropertyChanged != null)
             {
-                this.PropertyChanged(
+                PropertyChanged(
                     this,
                     new PropertyChangedEventArgs(propertyName));
             }
